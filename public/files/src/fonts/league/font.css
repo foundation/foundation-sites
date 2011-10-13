@@ -1,0 +1,18 @@
+/*
+
+Copy and paste the code below to include the League Gothic Font
+
+Do not use bold, italic or bold-italic styles with this font as the 
+browser will do a terrible job of re-rendering it
+
+*/
+
+@font-face {
+	font-family: 'LeagueGothicRegular';
+	src: url('../fonts/league/League_Gothic-webfont.eot');
+	src: url('../fonts/league/League_Gothic-webfont.woff') format('woff'), url('../fonts/league/League_Gothic-webfont.ttf') format('truetype'), url('../fonts/league/League_Gothic-webfont.svg#webfontpm5EArBj') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.league { font-family: 'LeagueGothicRegular', Impact, "Arial", sans-serif; font-weight: normal !important; }

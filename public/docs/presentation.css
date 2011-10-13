@@ -1,0 +1,231 @@
+/* Artfully masterminded by ZURB  /
+ 
+ 
+/* -----------------------------------------
+   Foundation-specific presentation CSS
+----------------------------------------- */
+
+body { padding-bottom: 60px; }
+
+div.foundation-header { margin: 0 0 40px 0; padding: 30px 0 0 0; border-bottom: solid 1px #ccc; }
+div.foundation-header h1 { margin-bottom: 0; padding: 0; }
+div.foundation-header h1 a { color: #181818; }
+div.foundation-header h1 a:hover { color: #181818; }
+div.foundation-header .subheader { margin-bottom: 9px; }
+
+div.highlight { margin-bottom: 12px; }
+
+img.beta { position: absolute; top: 0px; right: 0px; }
+
+/* Footer */
+footer.row {
+  margin-top: 80px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 20px; }
+footer.row h6 {
+  color: #6f6f6f;
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-bottom: 4px; }
+footer.row p {
+  color: #626262;
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 18px; }
+footer.row a {
+  color: #222222; }
+footer.row a:hover {
+  text-decoration: underline; }
+  
+
+
+.row.display { background: #f4f4f4; margin-bottom: 10px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+.row.display .column, .row.display .columns { background: #e7e7e7; font-size: 11px; text-indent: 3px; padding-top: 6px; padding-bottom: 6px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+
+/* ZURB bar */
+#zurBar {
+  background: #222222;
+  border-bottom: solid 4px #00a5ff;
+  padding: 15px 20px 13px 20px; }
+  
+@media handheld, only screen and (max-width: 767px) {
+	#zurBar { padding: 15px 0px 13px 0px; }
+}
+
+#zurBar h1, #zurBar h2 {
+  margin-bottom: 0;
+  line-height: 1; }
+#zurBar h1 {
+  color: white;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: 800; }
+#zurBar h1 a { color: #fff; }
+#zurBar h2 a {
+  text-indent: -99999px;
+  display: block;
+  width: 82px;
+  height: 14px;
+  background: url('../images/by-zurb.png'); }
+  
+
+#zurBar strong { display: block; margin: 0; padding: 0; height: 14px; line-height: 14px; position: relative; bottom: 4px; }
+#zurBar strong a {
+  line-height: 14px;
+  color: #fff;
+  font-weight: 500;
+  padding-right: 12px;
+}
+#zurBar strong a.button { padding: 4px 10px; font-weight: bold; }
+
+
+/* -----------------------------------------
+   Orbit Demo CSS
+----------------------------------------- */
+
+.orbit, .orbit-wrapper { width: 100% !important; }
+
+.orbit-bullets {
+    position: absolute;
+    z-index: 1000;
+    list-style: none;
+    bottom: -40px;
+    left: 50%;
+	margin-left: -50px;
+    padding: 0; }
+
+.orbit-bullets li {
+    float: left;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #999;
+    text-indent: -9999px;
+    background: url(public/images/orbit-demo/orbit/bullets.jpg) no-repeat 4px 0;
+    width: 13px;
+    height: 12px;
+    overflow: hidden; }
+
+.orbit-bullets li.has-thumb {
+    background: none;
+    width: 100px;
+    height: 75px; }
+
+.orbit-bullets li.active {
+    color: #222;
+    background-position: -8px 0; }
+
+.orbit-bullets li.active.has-thumb {
+    background-position: 0 0;
+    border-top: 2px solid #000; }
+
+
+/* stuff for ZURB demo but not needed at all for orbit */
+
+#orbitDemo .content {
+	background: url(../images/orbit-demo/coffee.jpg);
+}
+#orbitDemo .content h1 {
+	font-family: 'Helvetica', 'Arial', serif;
+	color: #2f260f; 
+	font-weight: bold !important;
+	text-transform: uppercase; 
+	text-shadow: 
+		1px 1px 0 #f8f0d1,
+		2px 2px 0 #f8f0d1,
+		3px 3px 0 #1a5774;
+	text-align: center; 
+	margin-top: 15%;
+}
+#orbitDemo .content h3 {
+	font-family: 'Helvetica', 'Arial', serif;
+	color: #7f6b37; 
+	font-weight: bold !important;
+	text-align: center; 
+}
+
+#orbitDemo { background: url(../images/spinner.gif) no-repeat center center #000; height: 305px; margin-bottom: 20px; }
+#orbitDemo.orbit { height: auto; }
+#orbitDemo img, #orbitDemo div { display: none; }
+#orbitDemo.orbit img, #orbitDemo.orbit div { display: block; }
+
+@media handheld, only screen and (max-width: 767px) {
+
+	#orbitDemo { height: 165px; }
+	#orbitDemo.orbit { height: auto; }
+
+	dl.nice.tabs.mobile { margin-bottom: 0px; }
+	.nice.tabs.mobile dd a { padding: 12px 20px; }
+	
+	div.foundation-header h1 { font-size: 32px; font-size: 3.2rem; }
+}
+
+
+
+
+
+/* Font-Face */
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-regular-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-regular-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-regular-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-regular-webfont.eot');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-regularitalic-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-regularitalic-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-regularitalic-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-regularitalic-webfont.eot');
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-light-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-light-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-light-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-light-webfont.eot');
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-lightitalic-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-lightitalic-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-lightitalic-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-lightitalic-webfont.eot');
+  font-weight: 300;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-semibold-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-semibold-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-semibold-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-semibold-webfont.eot');
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-semibolditalic-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-semibolditalic-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-semibolditalic-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-semibolditalic-webfont.eot');
+  font-weight: 600;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-bold-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-bold-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-bold-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-bold-webfont.eot');
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-bolditalic-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-bolditalic-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-bolditalic-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-bolditalic-webfont.eot');
+  font-weight: 800;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('../fonts/fonts/proximanova-extrabold-webfont.woff') format('woff'), url('../fonts/fonts/proximanova-extrabold-webfont.ttf') format('truetype'), url('../fonts/fonts/proximanova-extrabold-webfont.svg') format('svg');
+  src: url('../fonts/fonts/proximanova-extrabold-webfont.eot');
+  font-weight: 900;
+  font-style: normal; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Proxima Nova", "Helvetica Neue", "Helvetica", Arial, sans-serif; }
