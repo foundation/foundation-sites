@@ -29,7 +29,7 @@
 		border-radius: 5px;
 		-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
 		-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
-		-box-shadow: 0 0 10px rgba(0,0,0,.4);
+		box-shadow: 0 0 10px rgba(0,0,0,.4);
 		}
 		
 	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
