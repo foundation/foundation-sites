@@ -1,10 +1,5 @@
 <?# These files are being included - to omit files, move them to the block below. ?>
 
-	<!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
 	<script src="javascripts/jquery-1.5.1.min.js"></script>
 	<script src="javascripts/jquery.reveal.js"></script>
 	<script src="javascripts/jquery.orbit-1.3.0.js"></script>
