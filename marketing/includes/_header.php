@@ -15,13 +15,13 @@
   
   
 	<!-- Included CSS Files -->
-	<link rel="stylesheet" href="src/stylesheets/globals.css">
-	<link rel="stylesheet" href="src/stylesheets/ui.css">
-	<link rel="stylesheet" href="src/stylesheets/forms.css">
-	<link rel="stylesheet" href="src/stylesheets/orbit.css">
-	<link rel="stylesheet" href="src/stylesheets/reveal.css">
-	<link rel="stylesheet" href="src/stylesheets/app.css">
-	<link rel="stylesheet" href="src/stylesheets/mobile.css">
+	<link rel="stylesheet" href="../stylesheets/globals.css">
+	<link rel="stylesheet" href="../stylesheets/ui.css">
+	<link rel="stylesheet" href="../stylesheets/forms.css">
+	<link rel="stylesheet" href="../stylesheets/orbit.css">
+	<link rel="stylesheet" href="../stylesheets/reveal.css">
+	<link rel="stylesheet" href="../stylesheets/app.css">
+	<link rel="stylesheet" href="../stylesheets/mobile.css">
 	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
@@ -33,14 +33,14 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<script src="src/javascripts/jquery-1.5.1.min.js"></script>
+	<script src="../javascripts/jquery-1.5.1.min.js"></script>
 	<script src="jswipe.js"></script>
-	<script src="src/javascripts/jquery.reveal.js"></script>
-	<script src="src/javascripts/jquery.orbit-1.3.0.js"></script>
-	<script src="src/javascripts/forms.jquery.js"></script>
-	<script src="src/javascripts/jquery.customforms.js"></script>
-	<script src="src/javascripts/app.js"></script>
-	<script src="src/javascripts/mobile.js"></script>
+	<script src="../javascripts/jquery.reveal.js"></script>
+	<script src="../javascripts/jquery.orbit-1.3.0.js"></script>
+	<script src="../javascripts/forms.jquery.js"></script>
+	<script src="../javascripts/jquery.customforms.js"></script>
+	<script src="../javascripts/app.js"></script>
+	<script src="../javascripts/mobile.js"></script>
 	<script src="swipe.js"></script>
   
   
