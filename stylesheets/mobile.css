@@ -3,13 +3,13 @@
 	-------------------------------------------------- */
 	
 	/* Tablet screens */
-	@media handheld, only screen and (device-width: 768px), (device-width: 800px) {
+	@media only screen and (device-width: 768px), (device-width: 800px) {
 		/* Currently unused */
 	}
 	
 	
 	/* Mobile */
-	@media handheld, only screen and (max-width: 767px) {
+	@media only screen and (max-width: 767px) {
 		body { -webkit-text-size-adjust: none; }
 		
 		.row, body, .container { width: 100%; min-width: 0; margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; }
@@ -24,7 +24,7 @@
 	:: Block Grids
 	-------------------------------------------------- */	
 	
-	@media handheld, only screen and (max-width: 767px) {
+	@media only screen and (max-width: 767px) {
 		.block-grid.mobile li { float: none; width: 100%; }
 	}
 	
@@ -44,7 +44,7 @@
 	.hide-on-desktops { display: none; }
 	
 	
-	@media handheld, only screen and (device-width: 768px), only screen and (device-width: 1280px), only screen and (device-width: 800px) {
+	@media only screen and (device-width: 768px), only screen and (device-width: 1280px), only screen and (device-width: 800px) {
 		.hide-on-phones { display: block !important; }
 		.hide-on-tablets { display: none !important; }
 		.hide-on-desktops { display: block !important; }
@@ -55,7 +55,7 @@
 	}
 	
 		
-	@media handheld, only screen and (max-width: 767px) {
+	@media only screen and (max-width: 767px) {
 		.hide-on-phones { display: none !important; }
 		.hide-on-tablets { display: block !important; }
 		.hide-on-desktops { display: block !important; }
@@ -71,7 +71,7 @@
 ---------------------------------------------------*/	
 
 
-	@media handheld, only screen and (max-width: 767px) {
+	@media only screen and (max-width: 767px) {
 		input.input-text, input.input-text.oversize, textarea,
 		form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { display: block; width: 96%; padding: 6px 2% 4px; font-size: 18px; }
 		form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { -webkit-border-radius: 2px; -moz-border-radius: 2px; }
@@ -87,14 +87,14 @@
 ---------------------------------------------------*/	
 	
 	/* Buttons */
-	@media handheld, only screen and (max-width: 767px) {
+	@media only screen and (max-width: 767px) {
 		.button { display: block; }
 		button.button { width: 100%; padding-left: 0px; padding-right: 0px; }
 	}
 	
 	/* Tabs */
 	
-	@media handheld, only screen and (max-width: 767px) {
+	@media only screen and (max-width: 767px) {
 		dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
 		dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
 		
