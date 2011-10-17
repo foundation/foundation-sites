@@ -16,8 +16,10 @@
 	<!-- Included CSS Files -->
 	<? include_once("_css.php"); ?>
 	
-	<!-- Included JS Files  -->
-	<? include_once("_js.php"); ?>
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 
 </head>
 <body>
