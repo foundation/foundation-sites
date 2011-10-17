@@ -230,11 +230,18 @@
 		
 	
 	/* Clear the columns automagically */
-	 .row:after, .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	/*
+ .row:after, .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	 .row:last-child:after { content: ""; }
 	 * html .row, * html .clearfix { height: 1%; }
 	 .row, .clearfix { display: inline-block; }
 	 .row, .clearfix { display: block; }
+*/
+	 
+	 /* Testing Nicolas Gallagher's micro clearfix */
+	 .row:before, .row:after, .clearfix:before, .clearfix:after { content:""; display:table; }
+	 .row:after, .clearfix:after { clear: both; }
+	 .row, .clearfix { zoom: 1; }
 
 
 
