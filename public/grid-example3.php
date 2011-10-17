@@ -1,7 +1,7 @@
 <? $page_title = "Mobile Grids" ?>
 <?php include("includes/_header.php"); ?>
   
-  <style type="text/css">
+  <style>
   
   	.example .row, .example .row .column, .example .row .columns { border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
   	.example .row { margin-bottom: 10px; }

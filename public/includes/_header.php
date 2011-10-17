@@ -1,10 +1,10 @@
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
 	
@@ -15,17 +15,17 @@
   
   
 	<!-- Included CSS Files -->
-	<link rel="stylesheet" type="text/css" href="src/stylesheets/globals.css">
-	<link rel="stylesheet" type="text/css" href="src/stylesheets/ui.css">
-	<link rel="stylesheet" type="text/css" href="src/stylesheets/forms.css">
-	<link rel="stylesheet" type="text/css" href="src/stylesheets/orbit.css">
-	<link rel="stylesheet" type="text/css" href="src/stylesheets/reveal.css">
-	<link rel="stylesheet" type="text/css" href="src/stylesheets/app.css">
-	<link rel="stylesheet" type="text/css" href="src/stylesheets/mobile.css">
-	<link rel="stylesheet" type="text/css" href="presentation.css">
+	<link rel="stylesheet" href="src/stylesheets/globals.css">
+	<link rel="stylesheet" href="src/stylesheets/ui.css">
+	<link rel="stylesheet" href="src/stylesheets/forms.css">
+	<link rel="stylesheet" href="src/stylesheets/orbit.css">
+	<link rel="stylesheet" href="src/stylesheets/reveal.css">
+	<link rel="stylesheet" href="src/stylesheets/app.css">
+	<link rel="stylesheet" href="src/stylesheets/mobile.css">
+	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" type="text/css" href="src/stylesheets/ie.css">
+		<link rel="stylesheet" href="src/stylesheets/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
@@ -44,7 +44,7 @@
 	<script src="swipe.js"></script>
   
   
-  <script type="text/javascript">
+  <script>
   $(window).load(function() {
      $('#featured').orbit({
        animation: 'fade',

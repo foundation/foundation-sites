@@ -31,7 +31,7 @@
 				
 				<h4>Simple Buttons</h4>
 				<p>Foundation buttons have a number of parameters and styles - you can see a few examples below. The out of the box classes include size, color and style (square, slightly rounded, and completely rounded).</p>
-				<p><script type="text/javascript" src="http://snipt.net/embed/269a08f1db74949e80ee8b40351e609c"></script></p><br />
+				<p><script src="http://snipt.net/embed/269a08f1db74949e80ee8b40351e609c"></script></p><br />
 				<div class="row">
 					<div class="six columns">
 						<a href="#" class="small blue button radius">Do Something &raquo;</a><br /><br />

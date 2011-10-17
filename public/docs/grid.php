@@ -34,13 +34,13 @@
 				<p>The grid is built around three key elements: containers, rows, and columns. Containers create base padding for the page; rows create a max-width and contain the columns; and columns create the final structure. Everything on your page that you don't give a specific structural style to should be within a container, row and column.</p>
 				
 				<p>What you need to know is that <strong>columns don't have a fixed width:</strong> they can vary based on the resolution of the screen, or the size of the window (try scaling down this window to see what we mean). Design with that in mind.</p>
-				<script type="text/javascript" src="http://snipt.net/embed/3b3c66062f90d4cdf9d5e1f7b61c8ce8"></script>
+				<script src="http://snipt.net/embed/3b3c66062f90d4cdf9d5e1f7b61c8ce8"></script>
 				
 				<hr />
 				
 				<h4>Nesting Support</h4>
 				<p>In the Grid you can nest columns down as far as you'd like. Just embed rows inside columns and go from there. Each embedded row can contain up to 12 columns.</p>
-				<script type="text/javascript" src="http://snipt.net/embed/00599221b2f133b974b012dbe0ed001e"></script>
+				<script src="http://snipt.net/embed/00599221b2f133b974b012dbe0ed001e"></script>
 				
 				<hr />
 				

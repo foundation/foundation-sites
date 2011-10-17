@@ -50,7 +50,7 @@
 					<li id="simple3Tab">This is simple tab 3's content. It's only okay.</li>
 				</ul>
 				
-				<script type="text/javascript" src="http://snipt.net/embed/beabf0c3da0338ec44d9d383d9c405f4"></script>
+				<script src="http://snipt.net/embed/beabf0c3da0338ec44d9d383d9c405f4"></script>
 				
 				<hr />
 				
@@ -68,7 +68,7 @@
 					<li id="simpleContained3Tab">This is simple tab 3's content. It's only okay.</li>
 				</ul>
 				
-				<script type="text/javascript" src="http://snipt.net/embed/79e2cd3515daf12475946930a3d0f011"></script>
+				<script src="http://snipt.net/embed/79e2cd3515daf12475946930a3d0f011"></script>
 				
 				<hr />
 				
@@ -86,7 +86,7 @@
 					<li id="nice3Tab">This is simple tab 3's content. It's only okay.</li>
 				</ul>
 				
-				<script type="text/javascript" src="http://snipt.net/embed/63e549cb8b9606acbaed87b1b37b51e1"></script>
+				<script src="http://snipt.net/embed/63e549cb8b9606acbaed87b1b37b51e1"></script>
 				
 				<hr />
 				
@@ -110,7 +110,7 @@
 					<li><a href="">&raquo;</a></li>
 				</ul>
 				
-				<script type="text/javascript" src="http://snipt.net/embed/724214a9eba6436e1565fc748693e61b"></script>
+				<script src="http://snipt.net/embed/724214a9eba6436e1565fc748693e61b"></script>
 				
 				<hr />
 				
@@ -156,11 +156,11 @@
 					</li>
 				</ol>
 				
-				<script type="text/javascript" src="http://snipt.net/embed/e2ac671a4319fbcfc175ddc7fce26101"></script>
+				<script src="http://snipt.net/embed/e2ac671a4319fbcfc175ddc7fce26101"></script>
 				
 				<p>When using .nice lists you can either specify the bullets and numbers yourself, or let ui.js do it for you. A nice list without the appropriate span.bullet or span.number will have those inject automatically, so they can pick up your CSS. Thus you can create sweet looking lists with all kinds of control, but still write them like this:</p>
 				
-				<script type="text/javascript" src="http://snipt.net/embed/e7c5ed6d56488b4c3b84c6d4f85a5dbe"></script>
+				<script src="http://snipt.net/embed/e7c5ed6d56488b4c3b84c6d4f85a5dbe"></script>
 				
 				<hr />
 -->

@@ -1,9 +1,6 @@
 <? $page_title = "Games Site Prototyping Example" ?>
 <?php include("includes/_header.php"); ?>
-  
-  <style type="text/css">
-  
-  </style>
+
   
   <!-- Grid BG -->
   <div id="gridBgShort" class="container">

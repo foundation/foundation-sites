@@ -1,7 +1,7 @@
 <? $page_title = "Social Network Prototyping Example" ?>
 <?php include("includes/_header.php"); ?>
   
-  <style type="text/css">
+  <style>
   	#exampleHeader { background: #333; padding: 10px 0 8px; margin-bottom: 30px; margin-top: -70px; }
   	#exampleHeader h3 { color: #fff; }
   	#exampleHeader a { color: #fff; position: relative; top: 10px; }

@@ -47,16 +47,16 @@
 					<li>Go to the includes/_js.php file and include the Orbit JS (jQuery also need to be included if it's not already) </li>
 					<li>Do the same for includes/_css.php and include the Orbit CSS</li>
 					<li>Get some markup like this in your page: <br /><br/>
-					<script type="text/javascript" src="http://snipt.net/embed/227e566c916fdf7dfa91327dd245787b"></script><br />
+					<script src="http://snipt.net/embed/227e566c916fdf7dfa91327dd245787b"></script><br />
 					</li>
 					<li>Activate Orbit. You can embed the call in the specific page like this: <br /><br />
-						<script type="text/javascript" src="http://snipt.net/embed/190e852a2d48b2c8091028bf35e2a2ad"></script><br />
+						<script src="http://snipt.net/embed/190e852a2d48b2c8091028bf35e2a2ad"></script><br />
 						...Or you could just put it in the app.js file if you're using that.
 					</li>
 				</ol>
 				<hr />	
 				<h4>Options</h4>
-				<script type="text/javascript" src="http://snipt.net/embed/9acd55b305f0d09f9dd1696070c05949"></script>
+				<script src="http://snipt.net/embed/9acd55b305f0d09f9dd1696070c05949"></script>
 
 			</div>
 			<div class="four columns">

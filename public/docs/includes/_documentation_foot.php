@@ -20,7 +20,7 @@
 				<g:plusone size="medium"></g:plusone>
 				
 				<!-- Place this render call where appropriate -->
-				<script type="text/javascript">
+				<script>
 				  (function() {
 				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 				    po.src = 'https://apis.google.com/js/plusone.js';
@@ -43,7 +43,7 @@
 	  <!-- /Das Footer -->
 	</div>
 
-  <script type="text/javascript"> 
+  <script> 
 
     var _gaq = _gaq || [];
   	_gaq.push(

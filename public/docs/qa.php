@@ -1,7 +1,7 @@
 <? $page_title = "QA, Browser Support and Known Issues"; ?>
 <?php include("includes/_documentation_head.php"); ?>
 	
-	<style type="text/css">
+	<style>
 		sup { position: relative; bottom: 18px; left: 3px; font-size: 10px; font-weight: bold; }
 	</style>
 	

@@ -43,14 +43,14 @@
 				</p>
 				
 				<p>That example uses the 'show-on-x' classes seen here:</p>
-				<script type="text/javascript" src="http://snipt.net/embed/a7968083577a212d09620877721886ab"></script>
+				<script src="http://snipt.net/embed/a7968083577a212d09620877721886ab"></script>
 				
 				<p>This example uses the opposite rules, so the following text should describe the device you're using:				
 					<strong class="hide-on-desktops">You are not on a desktop machine.</strong>
 					<strong class="hide-on-tablets">You are not on a tablet device.</strong>
 					<strong class="hide-on-phones">You are not on a smartphone like an iPhone or Android phone.</strong>
 				</p>
-				<script type="text/javascript" src="http://snipt.net/embed/130c5ea301ed6dee9b79dd188c2e1b5b"></script>
+				<script src="http://snipt.net/embed/130c5ea301ed6dee9b79dd188c2e1b5b"></script>
 				
 				<p>Each of these classes have an implied 'only' as in 'show <strong>only</strong> on tablet' or 'hide <strong>only</strong> on phones'.</p>
 				
