@@ -92,7 +92,7 @@
 
 	p { line-height: 17px; margin: 0 0 18px; }
 	p img { margin: 0; }
-	p.lead { font-size: 1.8rem; font-size: 18px; line-height: 24px;  }
+	p.lead { font-size: 18px; font-size: 1.8rem; line-height: 24px;  }
 	
 		/* Mobile */
 		
@@ -111,7 +111,7 @@
 	blockquote { margin: 0 0 18px; padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
 	blockquote cite { display: block; font-size: 12px; font-size: 1.2rem; color: #555; }
 	blockquote cite:before { content: "\2014 \0020"; }
-	blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
+	blockquote cite a, blockquote cite a:visited { color: #555; }
 	
 	hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 12px 0 18px; height: 0; }
 	
