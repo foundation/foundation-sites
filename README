@@ -19,12 +19,13 @@ http://www.zurb.com
 REPO CONTENTS
 
 1. README
-2. PUBLIC
-	a. Entire marketing site
-	b. Downloadable files
-	c. Font stack
-	d. Documentation
-	e. Base source
+2. IMAGES - Base images for Orbit and some standard elements
+3. INCLUDES - Header and footer (currently PHP)
+4. index.php
+5. JAVASCRIPTS - jQuery, app.js placeholder, mobile.js placeholder
+6. MARKETING - the entire marketing site (foundation.zurb.com)
+7. robots.txt - Boilerplate robots file
+8. STYLESHEETS - the Foundation stylesheets
 	
 ------------------------	
 
