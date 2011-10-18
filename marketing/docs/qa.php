@@ -22,6 +22,7 @@
 					<dd><a href="ui.php">UI</a></dd>
 					<dd><a href="orbit.php">Orbit</a></dd>
 					<dd><a href="reveal.php">Reveal</a></dd>
+					<dd><a href="rails.php">Rails</a></dd>
 					<dd><a href="qa.php" class="active">QA</a></dd>
 				</dl>
 			</div>
