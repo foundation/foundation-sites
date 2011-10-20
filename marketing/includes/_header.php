@@ -67,7 +67,7 @@
   <div id="zurBar" class="container">
     <div class="row">
       <div class="four columns">
-        <h1><a href="index.php">Foundation</a></h1>
+        <h1><a href="./">Foundation</a></h1>
       </div>
       <div class="eight columns hide-on-phones">
       	<strong class="right">

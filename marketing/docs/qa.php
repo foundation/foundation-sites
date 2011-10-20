@@ -128,15 +128,14 @@
 					
 				</table>
 				<ol>
-					<li>Reveal relies on RGBa colors, which IE7 does not support.</li>
+					<li>Reveal uses RGBa colors, which IE7 does not support. You can manually exchange RGBa for PNGs to provide IE7 support in Reveal</li>
 				</ol>
 				
 				<hr />
 				
 				<h4>Known Issues</h4>
 				<ul class="disc">
-					<li><strong>Orbit:</strong> The current embedded version of Orbit has some loading and scaling bugs on responsive layouts. We're finishing a new version of Orbit that corrects this.</li>
-					<li><strong>Media Query:</strong> We're currently having difficulty correctly detecting between some Android tablets and smaller laptop resolutions in order to correctly handle the mobile visibility classes. We may have to drop visibility support for the Motorola Xoom.</li>
+					<li><strong>Media Query:</strong> We're currently having difficulty detecting between some Android tablets and smaller laptop resolutions in order to correctly handle the mobile visibility classes. We may have to drop visibility hide/show support for the Motorola Xoom.</li>
 				</ul>
 				
 				
