@@ -59,7 +59,7 @@
       		<a href="../case-soapbox.php">Case Studies</a>
       		<a href="index.php">Documentation</a>
       		<a href="http://github.com/zurb/foundation">Github</a>
-      		<a href="../files/foundation-download.zip src-download" class="small blue nice button">Download</a>
+      		<a href="../files/foundation-download.zip" class="small blue nice button src-download">Download</a>
       		
       	</strong>
       </div>
