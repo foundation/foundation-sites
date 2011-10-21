@@ -118,13 +118,15 @@
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
-					</tr>
+					</tr><!--
+
 					<tr>
 						<td><strong>Blackberry</strong></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
+-->
 					
 				</table>
 				<ol>
