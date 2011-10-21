@@ -1,4 +1,5 @@
 WELCOME TO FOUNDATION
+=====================
 
 Foundation is a rock-solid, responsive framework for rapidly prototyping and iterating into production code. It includes a 12-column, future-friendly grid and tons of great tools and elements that'll get you up and running in no time. Clone the repo to get the marketing site, docs, and base source. You can also visit http://foundation.zurb.com to download just the base source as a starting boilerplate.
 
@@ -8,33 +9,27 @@ Download:      http://foundation.zurb.com/files/foundation-download.zip
 
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
 
------------------------
+Repo Contents
+=============
 
-Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA
-http://www.zurb.com
+* README
+* IMAGES - Base images for Orbit and some standard elements
+* INCLUDES - Header and footer (currently PHP)
+* index.php
+* JAVASCRIPTS - jQuery, app.js placeholder, mobile.js placeholder
+* MARKETING - the entire marketing site (foundation.zurb.com)
+* robots.txt - Boilerplate robots file
+* STYLESHEETS - the Foundation stylesheets
 
-------------------------
+ZURB
+====
 
+Foundation was made by [ZURB](http://www.zurb.com), an interaction design and design strategy firm in Campbell, CA.
 
-REPO CONTENTS
-
-1. README
-2. IMAGES - Base images for Orbit and some standard elements
-3. INCLUDES - Header and footer (currently PHP)
-4. index.php
-5. JAVASCRIPTS - jQuery, app.js placeholder, mobile.js placeholder
-6. MARKETING - the entire marketing site (foundation.zurb.com)
-7. robots.txt - Boilerplate robots file
-8. STYLESHEETS - the Foundation stylesheets
-	
-------------------------	
-
-If Foundation knocks your socks off the way we hope it does and you want more, why not check out http://www.zurb.com/talent/jobs?
-
-
--------------------------
+If Foundation knocks your socks off the way we hope it does and you want more, why not check out [our jobs](http://www.zurb.com/talent/jobs)?
 
 MIT Open Source License
+=======================
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
