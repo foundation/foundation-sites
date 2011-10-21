@@ -1,13 +1,6 @@
 <? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
 <?php include("includes/_header.php"); ?>
-  
-  <script>
-  $(document).ready(function() {
-    $(window).resize(function() {
-      console.log($(window).width());
-    });
-  });
-  </script>
+
   <!-- Grid BG -->
   <div id="gridBg" class="container">
     <div class="row">
