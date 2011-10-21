@@ -39,7 +39,7 @@
               <dt>Version 2.0.1</dt>
               <dd>Resolved some issues, restructured the repo for easier initial use.</dd>
             </dl>
-            <a href="#">Commit cb221e22d3c19cc5ce5d465756b372c2386eca7c &raquo;</a>
+            <a href="https://github.com/zurb/foundation">Commit cb221e22d3c19cc5ce5d465756b372c2386eca7c &raquo;</a>
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>
