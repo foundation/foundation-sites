@@ -77,7 +77,7 @@
 						.two.columns				
 					</div>
 					<div class="eight columns">
-						.four.columns				
+						.eight.columns				
 					</div>
 					<div class="two columns">
 						.two.columns				
