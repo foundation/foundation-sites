@@ -12,7 +12,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<title>Foundation: <?= $page_title ?></title>
-  
+  	<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+	<link rel="icon" type="image/ico" href="../favicon.ico">
   
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="../../stylesheets/globals.css">
