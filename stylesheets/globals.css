@@ -285,17 +285,17 @@
 	-------------------------------------------------- */
 	
 	.block-grid { display: block; overflow: hidden; }
-	.block-grid li { display: block; height: auto; float: left; }
+	.block-grid>li { display: block; height: auto; float: left; }
 	
 	.block-grid.two-up { margin-left: -4% }
-	.block-grid.two-up li { margin-left: 4%; width: 46%; }
+	.block-grid.two-up>li { margin-left: 4%; width: 46%; }
 	
 	.block-grid.three-up { margin-left: -2% }
-	.block-grid.three-up li { margin-left: 2%; width: 31.3%; }
+	.block-grid.three-up>li { margin-left: 2%; width: 31.3%; }
 	
 	.block-grid.four-up { margin-left: -2% }
-	.block-grid.four-up li { margin-left: 2%; width: 23%; }
+	.block-grid.four-up>li { margin-left: 2%; width: 23%; }
 	
 	.block-grid.five-up { margin-left: -1.5% }
-	.block-grid.five-up li { margin-left: 1.5%; width: 18.5%; }
+	.block-grid.five-up>li { margin-left: 1.5%; width: 18.5%; }
 	
