@@ -3,9 +3,9 @@ WELCOME TO FOUNDATION
 
 Foundation is a rock-solid, responsive framework for rapidly prototyping and iterating into production code. It includes a 12-column, future-friendly grid and tons of great tools and elements that'll get you up and running in no time. Clone the repo to get the marketing site, docs, and base source. You can also visit http://foundation.zurb.com to download just the base source as a starting boilerplate.
 
-Homepage:      http://foundation.zurb.com
-Documentation: http://foundation.zurb.com/docs
-Download:      http://foundation.zurb.com/files/foundation-download.zip
+Homepage:      http://foundation.zurb.com  
+Documentation: http://foundation.zurb.com/docs  
+Download:      http://foundation.zurb.com/files/foundation-download.zip  
 
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
 
