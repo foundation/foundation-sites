@@ -1,4 +1,4 @@
-<? $page_title = "Buttons"; ?>
+<? $page_title = "Rails Gem"; ?>
 <?php include("includes/_documentation_head.php"); ?>
 	
 	<div class="container">
