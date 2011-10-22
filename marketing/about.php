@@ -80,16 +80,16 @@
 	 		<h5>iPhone Desktops</h5>
 	 		<ul class="block-grid four-up">
 	 			<li>
-	 				<a href="files/lurking-yeti-640x960.jpg"><img src="files/lurking-yeti-640x960" /></a>
+	 				<a href="files/lurking-yeti-640x960.jpg"><img src="files/lurking-yeti-640x960.jpg" /></a>
 	 			</li>
 	 			<li>
-	 				<a href="files/tropical-yeti-640x960.jpg"><img src="files/tropical-yeti-640x960" /></a>
+	 				<a href="files/tropical-yeti-640x960.jpg"><img src="files/tropical-yeti-640x960.jpg" /></a>
 	 			</li>
 	 			<li>
-	 				<a href="files/yeti-dance-640x960.jpg"><img src="files/yeti-dance-640x960" /></a>
+	 				<a href="files/yeti-dance-640x960.jpg"><img src="files/yeti-dance-640x960.jpg" /></a>
 	 			</li>
 	 			<li>
-	 				<a href="files/yeti-love-640x960.jpg"><img src="files/yeti-love-640x960" /></a>
+	 				<a href="files/yeti-love-640x960.jpg"><img src="files/yeti-love-640x960.jpg" /></a>
 	 			</li>
 	 		</ul>
 	 	</div>
