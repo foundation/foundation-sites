@@ -41,7 +41,7 @@
 	<script src="../../javascripts/jquery.orbit-1.3.0.js"></script>
 	<script src="../../javascripts/forms.jquery.js"></script>
 	<script src="../../javascripts/jquery.customforms.js"></script>
-	<script src="../../javascripts/jquery.placeholder.js"></script>
+	<script src="../../javascripts/jquery.placeholder.min.js"></script>
 	<script src="../../javascripts/app.js"></script>
 	<script src="../../javascripts/mobile.js"></script>
 	<script src="presentation.js"></script>
