@@ -1,4 +1,4 @@
-WELCOME TO FOUNDATION
+Welcome to Foundation
 =====================
 
 Foundation is a rock-solid, responsive framework for rapidly prototyping and iterating into production code. It includes a 12-column, future-friendly grid and tons of great tools and elements that'll get you up and running in no time. Clone the repo to get the marketing site, docs, and base source. You can also visit http://foundation.zurb.com to download just the base source as a starting boilerplate.

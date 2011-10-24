@@ -17,6 +17,8 @@
   
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="../../stylesheets/globals.css">
+	<link rel="stylesheet" href="../../stylesheets/typography.css">
+	<link rel="stylesheet" href="../../stylesheets/grid.css">
 	<link rel="stylesheet" href="../../stylesheets/ui.css">
 	<link rel="stylesheet" href="../../stylesheets/forms.css">
 	<link rel="stylesheet" href="../../stylesheets/orbit.css">
