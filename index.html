@@ -124,103 +124,159 @@
 
 				<h3>Forms</h3>
 				<form>
-					<p>Inputs support a number of different base classes. Any text input has a class of 'input-text' and supports several sizes.</p>
-					<label>Standard Input</label>
-					<input type="text" class="input-text" />
+					<p>All form fields are encapsulated within a 'form-field' div. Inputs support a number of different base classes and supports several sizes.</p>
+					<div class='form-field'>
+						<label>Standard Input</label>
+						<input type="text" />
+					</div>
 
-					<label>Small Input</label>
-					<input type="text" class="small input-text" />
+					<div class='form-field'>
+						<label>Small Input</label>
+						<input type="text" class="small" />
+					</div>
 
-					<label>Medium Input</label>
-					<input type="text" class="medium input-text" />
+					<div class='form-field'>
+						<label>Medium Input</label>
+						<input type="text" class="medium" />
+					</div>
 
-					<label>Large Input</label>
-					<input type="text" class="large input-text" />
+					<div class='form-field'>
+						<label>Large Input</label>
+						<input type="text" class="large" />
+					</div>
 
-					<label>Oversize Input</label>
-					<input type="text" class="oversize input-text" />
+					<div class='form-field'>
+						<label>Oversize Input</label>
+						<input type="text" class="oversize" />
+					</div>
 
 					<p>Inline labels are accomplished using the HTML5 Placeholder attribute, with a built-in JS fallback.</p>
-					<input type="text" class="input-text" placeholder="Inline label" />
+					<div class='form-field'>
+						<input type="text" placeholder="Inline label" />
+					</div>
 
-					<p>Error states are built to be as flexible as they need to. Simple color classes can apply to labels and inputs, and a small element can be also be placed for the error message.</p>
-					<label class="red">Medium Input</label>
-					<input type="text" class="red medium input-text" />
-					<small class="error">Whoa, cowboy. Try that again.</small>
+					<p>Error states are set on the 'form-field' div. A small element can be also be placed for the error message.</p>
+					<div class='form-field error'>
+						<label>Medium Input</label>
+						<input type="text" class="medium" />
+						<small>Whoa, cowboy. Try that again.</small>
+					</div>
 
-					<label>Textarea</label>
-					<textarea>This is a textarea</textarea>
-					<label>Inline Label Textarea</label>
+					<div class='form-field'>
+						<label>Textarea</label>
+						<textarea>This is a textarea</textarea>
+					</div>
 
-					<textarea placeholder="This is a text area"></textarea>
+					<div class='form-field'>
+						<label>Inline Label Textarea</label>
+						<textarea placeholder="This is a text area"></textarea>
+					</div>
 
-					<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
+					<div class='form-field'>
+						<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
+					</div>
 
-					<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
+					<div class='form-field'>
+						<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
+					</div>
 
-					<label>Dropdown Label</label>
-					<select>
-						<option>This is a dropdown</option>
-						<option>This is another option</option>
-						<option>Look, a third option</option>
-					</select>
+					<div class='form-field'>
+						<label>Dropdown Label</label>
+						<select>
+							<option>This is a dropdown</option>
+							<option>This is another option</option>
+							<option>Look, a third option</option>
+						</select>
+					</div>
 
-					<div class="row"><div class="seven columns">
-						<fieldset>
-							<h5>Fieldset Header H2</h5>
-							<p>This is a paragraph within a fieldset.</p>
+					<div class="row">
+						<div class="seven columns">
+							<fieldset>
+								<h5>Fieldset Header H2</h5>
+								<p>This is a paragraph within a fieldset.</p>
 
-							<label>Standard Input</label> <input type="text" class="input-text" />
-						</fieldset>
-					</div></div>
+								<div class='form-field'>
+									<label>Standard Input</label>
+									<input type="text" />
+								</div>
+							</fieldset>
+						</div>
+					</div>
 				</form>
 				<hr>
 				<form class="nice">
 					<p>Changing the form style to a slightly fancier version is dead simple - just add a class of 'nice' to the form itself.</p>
 
-					<label>Standard Input</label>
-					<input type="text" class="input-text" />
+					<div class='form-field'>
+						<label>Standard Input</label>
+						<input type="text" />
+					</div>
 
-					<input type="text" class="input-text" placeholder="Inline label" />
+					<div class='form-field'>
+						<input type="text" placeholder="Inline label" />
+					</div>
 
-					<label>Small Input</label>
-					<input type="text" class="small input-text" />
+					<div class='form-field'>
+						<label>Small Input</label>
+						<input type="text" class="small" />
+					</div>
 
-					<label class="red">Medium Input</label>
-					<input type="text" class="medium input-text" />
-					<small class="error">Whoa, cowboy. Try that again.</small>
+					<div class='form-field error'>
+						<label>Medium Input</label>
+						<input type="text" class="medium" />
+						<small>Whoa, cowboy. Try that again.</small>
+					</div>
 
-					<label>Large Input</label>
-					<input type="text" class="large input-text" />
+					<div class='form-field'>
+						<label>Large Input</label>
+						<input type="text" class="large" />
+					</div>
 
-					<label>Oversize Input</label>
-					<input type="text" class="oversize input-text" />
+					<div class='form-field'>
+						<label>Oversize Input</label>
+						<input type="text" class="oversize" />
+					</div>
 
-					<label>Textarea</label>
-					<textarea>This is a textarea</textarea>
+					<div class='form-field'>
+						<label>Textarea</label>
+						<textarea>This is a textarea</textarea>
+					</div>
 
-					<label>Inline Label Textarea</label>
-					<textarea placeholder="This is a text area"></textarea>
+					<div class='form-field'>
+						<label>Inline Label Textarea</label>
+						<textarea placeholder="This is a text area"></textarea>
+					</div>
 
-					<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
+					<div class='form-field'>
+						<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
+					</div>
 
-					<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
+					<div class='form-field'>
+						<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
+					</div>
 
-					<label>Dropdown Label</label>
-					<select>
-						<option>This is a dropdown</option>
-						<option>This is another option</option>
-						<option>Look, a third option</option>
-					</select>
+					<div class='form-field'>
+						<label>Dropdown Label</label>
+						<select>
+							<option>This is a dropdown</option>
+							<option>This is another option</option>
+							<option>Look, a third option</option>
+						</select>
+					</div>
 
-					<div class="row"><div class="seven columns">
-						<fieldset>
-							<h5>Fieldset Header H2</h5>
-							<p>This is a paragraph within a fieldset.</p>
+					<div class="row">
+						<div class="seven columns">
+							<fieldset>
+								<h5>Fieldset Header H2</h5>
+								<p>This is a paragraph within a fieldset.</p>
 
-							<label>Standard Input</label> <input type="text" class="input-text" />
-						</fieldset>
-					</div></div>
+								<div class='form-field'>
+									<label>Standard Input</label>
+									<input type="text" />
+								</div>
+							</fieldset>
+						</div>
+					</div>
 				</form>
 			</div>
 
