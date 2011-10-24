@@ -16,7 +16,7 @@ Repo Contents
 * IMAGES - Base images for Orbit and some standard elements
 * INCLUDES - Header and footer (currently PHP)
 * index.php
-* JAVASCRIPTS - jQuery, app.js placeholder, mobile.js placeholder
+* JAVASCRIPTS - jQuery, app.js placeholder, placeholder
 * MARKETING - the entire marketing site (foundation.zurb.com)
 * robots.txt - Boilerplate robots file
 * STYLESHEETS - the Foundation stylesheets
