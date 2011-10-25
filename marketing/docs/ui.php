@@ -30,6 +30,35 @@
 				<h4 class="subheader">Need tabs, tables, or other common UI elements?<br />Yeah, we got that.</h4>
 				<hr />
 				
+				<h4>Alerts</h4>
+				<p>Alerts are a handy element you can drop into a form or inline on a page to communicate success, warnings, failure or just information. The syntax is extremely simple and like anything else in Foundation, easy to customize.</p>
+				
+				<div class="alert-box">
+					This is a standard alert (div.alert-box).
+					<a href="" class="close">&times;</a>
+				</div>
+				
+				<div class="alert-box success">
+					This is a success alert (div.alert-box.success).
+					<a href="" class="close">&times;</a>
+				</div>
+				
+				<div class="alert-box warning">
+					This is a warning alert (div.alert-box.warning).
+					<a href="" class="close">&times;</a>
+				</div>
+				
+				<div class="alert-box error">
+					This is an error alert (div.alert-box.error).
+					<a href="" class="close">&times;</a>
+				</div>
+						
+				<p>
+					<script type="text/javascript" src="http://snipt.net/embed/e291c9b926573dfd81fe24168d554c92"></script>
+				</p>		
+				
+				<hr />
+				
 				<h4>Tabs</h4>
 				<div class="row">
 					<div class="six columns">
