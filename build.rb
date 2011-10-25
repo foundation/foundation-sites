@@ -8,7 +8,7 @@
 `cp javascripts/app.js public/src/javascripts/app.js`
 
 File.open('public/src/stylesheets/foundation.css', "w") do |file|  
-  %w{stylesheets/globals.css stylesheets/typography.css stylesheets/grid.css stylesheets/ui.css stylesheets/forms.css stylesheets/orbit.css stylesheets/reveal.css stylesheets/app.css stylesheets/mobile.css}.each do |stylesheet|
+  %w{stylesheets/globals.css stylesheets/typography.css stylesheets/grid.css stylesheets/ui.css stylesheets/forms.css stylesheets/orbit.css stylesheets/reveal.css stylesheets/mobile.css}.each do |stylesheet|
     file.puts File.read(stylesheet)
   end
 end
