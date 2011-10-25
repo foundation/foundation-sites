@@ -60,7 +60,7 @@ footer.row a:hover {
   font-size: 16px;
   font-size: 1.6rem;
   font-weight: 800; }
-#zurBar h1 a { color: #fff; }
+#zurBar h1 a { color: #fff; font-weight: bold; }
 #zurBar h2 a {
   text-indent: -99999px;
   display: block;
