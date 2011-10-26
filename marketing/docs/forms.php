@@ -32,12 +32,9 @@
 				<h4 class="subheader">Forms are not a lot of fun. We've taken that lack of fun and dodged it with this ready-made code. In this release there are two sets of forms styles - basic and nice. Both are simple, both are flexible, both are easy to customize. <strong>Make sure to include app.js if you're going to use these forms.</strong></h4>
 				<hr />
 				
-				<h4>Simple Forms</h4>
+				<h4>Forms</h4>
 				<form>
-
 					<p>Inputs support a number of different base classes. Any text input has a class of 'input-text' and supports several sizes:</p>
-					<p><script type="text/javascript" src="http://snipt.net/embed/59fb7e2a620f661f436fdf387d18ff8e"></script></p>
-
 					<label>Standard Input</label>
 					<input type="text" class="input-text" />
 
@@ -53,64 +50,80 @@
 					<label>Oversize Input</label>
 					<input type="text" class="oversize input-text" />
 
+					<h5>Inline Labels</h5>
 					<p>Inline labels are accomplished using the HTML5 Placeholder attribute, with a built-in JS fallback.</p>
-					<p><script type="text/javascript" src="http://snipt.net/embed/5a386d145be845626eec7c1543fdc62a"></script></p>
 					<input type="text" class="input-text" placeholder="Inline label" />
-
-					<p>Error states are built to be as flexible as they need to. Simple color classes can apply to labels and inputs, and a small element can be also be placed for the error message.</p>
-					<p><script type="text/javascript" src="http://snipt.net/embed/beace3fd172387e1ed25c3872fe9c83a"></script></p>
-
+					
+					
+					<h5>Error States</h5>
+					<p>Error states can be applied in two ways:</p>
+					<ul class="disc">
+						<li>Using a wrapper for div.form-field.error, which will apply styles to text inputs, labels, and a small.error message (optional). This is ideal for programmatically generated forms.</li>
+						<li>You can also apply the .red class to labels, inputs, and also append a small.error.</li>
+					</ul>
+					
+					<div class='form-field error'>
+						<label>Medium Input (with wrapper)</label>
+						<input type="text" class="medium input-text" />
+						<small>Whoa, cowboy. Try that again.</small>
+					</div>
+					
 					<label class="red">Medium Input</label>
-					<input type="text" class="red medium input-text" />
+					<input type="text" class="medium input-text red" />
 					<small class="error">Whoa, cowboy. Try that again.</small>
 
 					<label>Textarea</label>
 					<textarea>This is a textarea</textarea>
-					
+
 					<label>Inline Label Textarea</label>
 					<textarea placeholder="This is a text area"></textarea>
-					
+
 					<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
 
 					<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
 
-					<label>Dropdown Label</label>
-					<select>
-						<option>This is a dropdown</option>
-						<option>This is another option</option>
-						<option>Look, a third option</option>
-					</select>
+						<label>Dropdown Label</label>
+						<select>
+							<option>This is a dropdown</option>
+							<option>This is another option</option>
+							<option>Look, a third option</option>
+						</select>
 
-					<div class="row"><div class="seven columns">
-						<fieldset>
-							<h5>Fieldset Header H2</h5>
-							<p>This is a paragraph within a fieldset.</p>
+					<div class="row">
+						<div class="seven columns">
+							<fieldset>
+								<h5>Fieldset Header H2</h5>
+								<p>This is a paragraph within a fieldset.</p>
 
-							<label>Standard Input</label> <input type="text" class="input-text" />
-						</fieldset>
-					</div></div>
-
-
+								<label>Standard Input</label>
+								<input type="text" class="input-text" />
+							</fieldset>
+						</div>
+					</div>
 				</form>
 
 				<hr />
 
 				<h4>Nice Forms</h4>
 				<form class="nice">
-
 					<p>Changing the form style to a slightly fancier version is dead simple - just add a class of 'nice' to the form itself.</p>
-					<p><script type="text/javascript" src="http://snipt.net/embed/47160da7cd2018c3522784dd1f1310b1"></script></p>
-					
+
 					<label>Standard Input</label>
 					<input type="text" class="input-text" />
 
-					<input type="text" class="input-text" placeholder="Inline label" />
+					<input type="text" placeholder="Inline label" class="input-text" />
 
 					<label>Small Input</label>
 					<input type="text" class="small input-text" />
 
+					<div class='form-field error'>
+						<label>Medium Input (with wrapper)</label>
+						<input type="text" class="medium input-text" />
+						<small>Whoa, cowboy. Try that again.</small>
+					</div>
+					
 					<label class="red">Medium Input</label>
-					<input type="text" class="medium input-text" />
+					<input type="text" class="medium red input-text" />
 					<small class="error">Whoa, cowboy. Try that again.</small>
 
 					<label>Large Input</label>
@@ -121,7 +134,7 @@
 
 					<label>Textarea</label>
 					<textarea>This is a textarea</textarea>
-					
+
 					<label>Inline Label Textarea</label>
 					<textarea placeholder="This is a text area"></textarea>
 
@@ -136,18 +149,18 @@
 						<option>Look, a third option</option>
 					</select>
 
-					<div class="row"><div class="seven columns">
-						<fieldset>
-							<h5>Fieldset Header H2</h5>
-							<p>This is a paragraph within a fieldset.</p>
+					<div class="row">
+						<div class="seven columns">
+							<fieldset>
+								<h5>Fieldset Header H2</h5>
+								<p>This is a paragraph within a fieldset.</p>
 
-							<label>Standard Input</label> <input type="text" class="input-text" />
-						</fieldset>
-					</div></div>
-
-
+								<label>Standard Input</label>
+								<input type="text" class="input-text" />
+							</fieldset>
+						</div>
+					</div>
 				</form>
-
 
 				<hr />
 
