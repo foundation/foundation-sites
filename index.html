@@ -115,9 +115,165 @@
 				<p><a href="#" class="nice radius small blue button">Nice Blue Button</a></p>
 				<p><a href="#" class="nice radius blue button">Nice Blue Button</a></p>
 				<p><a href="#" class="nice radius large blue button">Nice Blue Button</a></p>
-				
+
+				<h3>Forms</h3>
+				<form>
+					<p>All form fields are encapsulated within a 'form-field' div. Inputs support a number of different base classes and supports several sizes.</p>
+					<div class='form-field'>
+						<label>Standard Input</label>
+						<input type="text" />
+					</div>
+
+					<div class='form-field'>
+						<label>Small Input</label>
+						<input type="text" class="small" />
+					</div>
+
+					<div class='form-field'>
+						<label>Medium Input</label>
+						<input type="text" class="medium" />
+					</div>
+
+					<div class='form-field'>
+						<label>Large Input</label>
+						<input type="text" class="large" />
+					</div>
+
+					<div class='form-field'>
+						<label>Oversize Input</label>
+						<input type="text" class="oversize" />
+					</div>
+
+					<p>Inline labels are accomplished using the HTML5 Placeholder attribute, with a built-in JS fallback.</p>
+					<div class='form-field'>
+						<input type="text" placeholder="Inline label" />
+					</div>
+
+					<p>Error states are set on the 'form-field' div. A small element can be also be placed for the error message.</p>
+					<div class='form-field error'>
+						<label>Medium Input</label>
+						<input type="text" class="medium" />
+						<small>Whoa, cowboy. Try that again.</small>
+					</div>
+
+					<div class='form-field'>
+						<label>Textarea</label>
+						<textarea>This is a textarea</textarea>
+					</div>
+
+					<div class='form-field'>
+						<label>Inline Label Textarea</label>
+						<textarea placeholder="This is a text area"></textarea>
+					</div>
+
+					<div class='form-field'>
+						<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
+					</div>
+
+					<div class='form-field'>
+						<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
+					</div>
+
+					<div class='form-field'>
+						<label>Dropdown Label</label>
+						<select>
+							<option>This is a dropdown</option>
+							<option>This is another option</option>
+							<option>Look, a third option</option>
+						</select>
+					</div>
+
+					<div class="row">
+						<div class="seven columns">
+							<fieldset>
+								<h5>Fieldset Header H2</h5>
+								<p>This is a paragraph within a fieldset.</p>
+
+								<div class='form-field'>
+									<label>Standard Input</label>
+									<input type="text" />
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</form>
+				<hr>
+				<form class="nice">
+					<p>Changing the form style to a slightly fancier version is dead simple - just add a class of 'nice' to the form itself.</p>
+
+					<div class='form-field'>
+						<label>Standard Input</label>
+						<input type="text" />
+					</div>
+
+					<div class='form-field'>
+						<input type="text" placeholder="Inline label" />
+					</div>
+
+					<div class='form-field'>
+						<label>Small Input</label>
+						<input type="text" class="small" />
+					</div>
+
+					<div class='form-field error'>
+						<label>Medium Input</label>
+						<input type="text" class="medium" />
+						<small>Whoa, cowboy. Try that again.</small>
+					</div>
+
+					<div class='form-field'>
+						<label>Large Input</label>
+						<input type="text" class="large" />
+					</div>
+
+					<div class='form-field'>
+						<label>Oversize Input</label>
+						<input type="text" class="oversize" />
+					</div>
+
+					<div class='form-field'>
+						<label>Textarea</label>
+						<textarea>This is a textarea</textarea>
+					</div>
+
+					<div class='form-field'>
+						<label>Inline Label Textarea</label>
+						<textarea placeholder="This is a text area"></textarea>
+					</div>
+
+					<div class='form-field'>
+						<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
+					</div>
+
+					<div class='form-field'>
+						<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
+					</div>
+
+					<div class='form-field'>
+						<label>Dropdown Label</label>
+						<select>
+							<option>This is a dropdown</option>
+							<option>This is another option</option>
+							<option>Look, a third option</option>
+						</select>
+					</div>
+
+					<div class="row">
+						<div class="seven columns">
+							<fieldset>
+								<h5>Fieldset Header H2</h5>
+								<p>This is a paragraph within a fieldset.</p>
+
+								<div class='form-field'>
+									<label>Standard Input</label>
+									<input type="text" />
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</form>
 			</div>
-			
+
 			<div class="four columns">
 				<h4>Getting Started</h4>
 				<p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
