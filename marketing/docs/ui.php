@@ -90,7 +90,7 @@
 				<dl class="tabs contained">
 					<dd><a href="#simpleContained1" class="active">Simple Tab 1</a></dd>
 					<dd><a href="#simpleContained2">Simple Tab 2</a></dd>
-					<dd class="hide-on-phones"><a href="#simpleContained2">Simple Tab 3</a></dd>
+					<dd class="hide-on-phones"><a href="#simpleContained3">Simple Tab 3</a></dd>
 				</dl>
 				<ul class="tabs-content contained">
 					<li class="active" id="simpleContained1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
