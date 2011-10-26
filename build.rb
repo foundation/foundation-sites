@@ -5,6 +5,7 @@
 `cp -R humans.txt images index.html robots.txt public/src`
 `cp public/assets/foundation.js public/src/javascripts`
 `cp stylesheets/ie.css public/src/stylesheets/ie.css`
+`cp stylesheets/app.css public/src/stylesheets/app.css`
 `cp javascripts/app.js public/src/javascripts/app.js`
 
 File.open('public/src/stylesheets/foundation.css', "w") do |file|  
