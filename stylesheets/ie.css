@@ -1,4 +1,3 @@
-/* This is for all IE specfific style less than IE9 and
-we make IE 8 render like 7. We hate IE. */
+/* This is for all IE specfific style less than IE9. We hate IE. */
 
 	div.panel { border: 1px solid #ccc; }

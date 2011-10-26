@@ -31,19 +31,19 @@
         <div class="row">
           <div class="two columns">
             <h6>Latest Update</h6>
-            <time>Oct 21, 2011</time>
+            <time>Oct 26, 2011</time>
             <a href="github-mac://openRepo/https://github.com/zurb/foundation" class="nice small white button">Clone Now</a>
           </div>
           <article class="seven columns">
             <dl>
-              <dt>Version 2.0.1</dt>
-              <dd>Resolved some issues, restructured the repo for easier initial use.</dd>
+              <dt>Version 2.0.2</dt>
+              <dd>Download pack is now consolidated for faster loads, added alert styles to UI, bug fixes.</dd>
             </dl>
-            <a href="https://github.com/zurb/foundation">Commit cb221e22d3c19cc5ce5d465756b372c2386eca7c &raquo;</a>
+            <a href="https://github.com/zurb/foundation">Commit 702123a52b20ede50b8c18c89e005367a042fd7f &raquo;</a>
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>
-            <a href="files/foundation-download.zip">Download Foundation 2.0.1 &raquo;</a>
+            <a href="files/foundation-download.zip">Download Foundation 2.0.2 &raquo;</a>
           </aside>
         </div>
 	    </section>
