@@ -36,7 +36,7 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<script src="../javascripts/jquery-1.5.1.min.js"></script>
+	<script src="../javascripts/jquery.min.js"></script>
 	<script src="jswipe.js"></script>
 	<script src="../javascripts/jquery.reveal.js"></script>
 	<script src="../javascripts/jquery.orbit-1.3.0.js"></script>

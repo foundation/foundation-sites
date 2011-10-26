@@ -451,7 +451,7 @@ footer.row a:hover {
   text-decoration: underline; }
 
 /* Mobile Slickness */
-@media handheld, only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   #zurBar {
     padding-left: 20px;
     padding-right: 20px; }
@@ -471,74 +471,69 @@ footer.row a:hover {
   #updates aside a {
     display: inline;
     margin-right: 30px; } }
-@media handheld, only screen and (min-width: 967px) {
+@media only screen and (min-width: 967px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
     width: 4.08%; }
 }
-@media handheld, only screen and (min-width: 950px) {
+@media only screen and (min-width: 950px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
     width: 4.08%; }
 }
-@media handheld, only screen and (min-width: 942px) {
+@media only screen and (min-width: 942px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 4.0%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 926px) {
+@media only screen and (min-width: 926px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.99%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 910px) {
+@media only screen and (min-width: 910px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.97%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 895px) {
+@media only screen and (min-width: 894px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.97%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 880px) {
+@media only screen and (min-width: 878px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.96%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 864px) {
+@media only screen and (min-width: 862px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.96%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 849px) {
+@media only screen and (min-width: 846px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.95%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 834px) {
+@media only screen and (min-width: 830px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.94%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 818px) {
+@media only screen and (min-width: 814px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.93%; }
+    display:none; }
 }
-@media handheld, only screen and (min-width: 805px) {
+@media only screen and (min-width: 798px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.92%; }
+    display:none; }
 }
-/*@media handheld, only screen and (max-width: 800px) {
-  header {
-    margin-top: 40px;
-  }
-}*/
-@media handheld, only screen and (max-width: 780px) {
+@media only screen and (min-width: 782px) {
+  #gridBg .row .columns, #gridBgShort .row .columns {
+    display:none; }
+}
+@media only screen and (min-width: 766px) {
+  #gridBg .row .columns, #gridBgShort .row .columns {
+    display:none; }
+}
+@media only screen and (max-width: 780px) {
   #gridBg {
     display: none;
   }
   header { margin-top: 40px; }
 }
-@media handheld, only screen and (min-width: 789px) {
-  #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 3.91%; }
-}
-@media handheld, only screen and (min-width: 771px) {
-  #gridBg .row .columns, #gridBgShort .row .columns {
-    width: 4.08%; }
-}
-@media handheld, only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   #zurBar {
     padding-left: 0;
     padding-right: 0; }
@@ -667,13 +662,13 @@ footer.row a:hover {
     width: 100%; }
   #insideContainer .examples div {
     margin-bottom: 20px; } }
-@media handheld, only screen and (max-width: 650px) {
+@media only screen and (max-width: 650px) {
   ul#swipeMeParent {
     height: 350px; } }
-@media handheld, only screen and (max-width: 530px) {
+@media only screen and (max-width: 530px) {
   ul#swipeMeParent {
     height: 335px; } }
-@media handheld, only screen and (max-width: 520px) {
+@media only screen and (max-width: 520px) {
   h3 {
     font-size: 24px;
     font-size: 2.4rem; }
@@ -727,6 +722,6 @@ footer.row a:hover {
 
   #swipeArea ul li img {
     width: 90%; } }
-@media handheld, only screen and (max-width: 460px) {
+@media only screen and (max-width: 460px) {
   #swipeArea ul li img {
     width: 88%; } }
