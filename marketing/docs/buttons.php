@@ -49,9 +49,9 @@
 						<a href="#" class="white radius button">Do Something &raquo;</a><br /><br />
 						<a href="#" class="large white button radius">Do Something &raquo;</a><br /><br />
 						<br /><br />
-						<a href="#" class="small charcoal button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="charcoal button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large charcoal button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small black button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="black button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="large black button radius">Do Something &raquo;</a><br /><br />
 						<br /><br />
 					</div>
 				</div>		
@@ -77,9 +77,9 @@
 						<a href="#" class="white radius nice button">Do Something &raquo;</a><br /><br />
 						<a href="#" class="large white nice button radius">Do Something &raquo;</a><br /><br />
 						<br /><br />
-						<a href="#" class="small charcoal nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="charcoal nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large charcoal nice button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small black nice button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="black nice button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="large black nice button radius">Do Something &raquo;</a><br /><br />
 						<br /><br />
 					</div>
 				</div>
