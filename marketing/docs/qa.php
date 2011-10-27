@@ -137,7 +137,7 @@
 				
 				<h4>Known Issues</h4>
 				<ul class="disc">
-					<li><strong>Media Query:</strong> We're currently having difficulty detecting between some Android tablets and smaller laptop resolutions in order to correctly handle the mobile visibility classes. We may have to drop visibility hide/show support for the Motorola Xoom.</li>
+					<li><strong>Media Query:</strong> Currently the Motorola Xoom tablet will be identified as a desktop machine in landscape, and a tablet in portrait mode. Given the disparity in the screen widths at those orientations it actually makes a perverse kind of sense. Can't identify it correctly every time without identifying MacBooks as tablets.</li>
 				</ul>
 				
 				
