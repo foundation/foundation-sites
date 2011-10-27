@@ -82,43 +82,6 @@ footer.row a:hover {
 /* -----------------------------------------
    Orbit Demo CSS
 ----------------------------------------- */
-
-.orbit, .orbit-wrapper { width: 100% !important; }
-
-.orbit-bullets {
-    position: absolute;
-    z-index: 1000;
-    list-style: none;
-    bottom: -40px;
-    left: 50%;
-	margin-left: -50px;
-    padding: 0; }
-
-.orbit-bullets li {
-    float: left;
-    margin-left: 5px;
-    cursor: pointer;
-    color: #999;
-    text-indent: -9999px;
-    background: url(public/images/orbit-demo/orbit/bullets.jpg) no-repeat 4px 0;
-    width: 13px;
-    height: 12px;
-    overflow: hidden; }
-
-.orbit-bullets li.has-thumb {
-    background: none;
-    width: 100px;
-    height: 75px; }
-
-.orbit-bullets li.active {
-    color: #222;
-    background-position: -8px 0; }
-
-.orbit-bullets li.active.has-thumb {
-    background-position: 0 0;
-    border-top: 2px solid #000; }
-
-
 /* stuff for ZURB demo but not needed at all for orbit */
 
 #orbitDemo .content {
