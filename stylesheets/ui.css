@@ -32,6 +32,7 @@
 		line-height: 1;
 		position: relative;
 		cursor: pointer;
+		border: none;
 	}
 	
 	.button.nice { 
