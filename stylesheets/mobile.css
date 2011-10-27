@@ -44,7 +44,7 @@
 	.hide-on-desktops { display: none; }
 	
 	
-	@media only screen and (device-width: 768px), only screen and (device-width: 1280px), only screen and (device-width: 800px) {
+	@media only screen and (max-device-width: 800px), only screen and (device-width: 800px) {
 		.hide-on-phones { display: block !important; }
 		.hide-on-tablets { display: none !important; }
 		.hide-on-desktops { display: block !important; }
@@ -64,6 +64,8 @@
 		.show-on-tablets { display: none !important; }
 		.show-on-desktops { display: none !important; }
 	}
+	
+	/* only screen and (device-width: 1280px), only screen and (max-device-width: 1280px),  /*
 	
 	
 /* -------------------------------------------------- 
