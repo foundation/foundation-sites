@@ -43,7 +43,7 @@
 	  	<div class="four columns">
 	  		<h5>Showing the Grid</h5>
 	  		<div class="frame"><img src="images/case-foundation-1.jpg"></div>
-	  		<p>Once thing you may have noticed is the grid background on each page. Try scaling down the homepage &mdash; the background grid actually resizes based on the screen (the lines are attached to divs, not a background image). Nerdy, but we wanted to show the real grid.</p>
+	  		<p>One thing you may have noticed is the grid background on each page. Try scaling down the homepage &mdash; the background grid actually resizes based on the screen (the lines are attached to divs, not a background image). Nerdy, but we wanted to show the real grid.</p>
 	  	</div>
 	  	<div class="four columns">
 	  		<h5>Mobile Slider</h5>

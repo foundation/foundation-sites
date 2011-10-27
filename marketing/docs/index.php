@@ -43,7 +43,7 @@
 					</div>
 					<div class="six columns">
 						<ul>
-							<li><h5><a href="forms.php">Forms</a></h5> Hate forms? So do we. They're a pain. Well, we're simplifying that by creating two base styles for forms that are tested, include validation styles, have proper spacing...all the good stuff. We even included custom radio buttons, checkboxes and select lists so you can style up every form element. They're easy to modify, like everything else.</li>
+							<li><h5><a href="forms.php">Forms</a></h5> Hate forms? So do we. They're a pain. Well, we're simplifying that by creating two base styles for forms that are tested, include validation styles, have proper spacing&hellip;all the good stuff. We even included custom radio buttons, checkboxes and select lists so you can style up every form element. They're easy to modify, like everything else.</li>
 							<li><h5><a href="orbit.php">Orbit</a></h5> That's right - Orbit, the awesome way to put image or content sliders on your page, is packaged in with Foundation. It even works on mobile.</li>
 							<li><h5><a href="reveal.php">Reveal</a></h5> Finally, we've created a whole new plugin for modal dialogs in Foundation. Reveal is easy to call, supports several intro animations right out of the box, and is completely stylable. It also works on mobile.</li>
 						</ul>
@@ -53,7 +53,7 @@
 				<hr />
 				
 				<h4>What's Next for Foundation</h4>
-				<p>We're not content to sit still - we're going to keep polishing Foundation, fixing edge cases, and preparing for the next major release. Coming to Foundation: templates, site generation, more common elements, and even better mobile support.</p>
+				<p>We're not content to sit still &mdash; we're going to keep polishing Foundation, fixing edge cases, and preparing for the next major release. Coming to Foundation: templates, site generation, more common elements, and even better mobile support.</p>
 				
 				<hr />
 				
