@@ -33,8 +33,6 @@
 				<h4>Using Reveal</h4>
 				<p>Reveal is a cinch to hook up - just include the JS and CSS. You can either call it in the JS or just include a new "data-reveal-id" parameter. If you need detailed steps check out the <a href="http://www.zurb.com/playground/reveal-modal-plugin">playground for Reveal</a>, but here are the steps to get it started:</p>
 				<ol>
-					<li>Go to the includes/_js.php file and include the Reveal JS (jQuery also need to be included if it's not already) </li>
-					<li>Do the same for includes/_css.php and include the Reveal CSS</li>
 					<li>The markup goes something like this:<br /><br />
 					<script src="http://snipt.net/embed/abdf882c25e08d9ba219fe33f17591fe"></script><br />
 					</li>
