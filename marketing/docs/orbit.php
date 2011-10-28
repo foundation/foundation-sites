@@ -45,8 +45,6 @@
 				<h4>The Basic Implementation</h4>
 				<p>Orbit is going to be the easiest slider you've ever hooked up. Below are the steps, but for more detail checkout the <a href="http://www.zurb.com/playground/orbit-jquery-image-slider">playground docs</a>.</p>
 				<ol>
-					<li>Go to the includes/_js.php file and include the Orbit JS (jQuery also need to be included if it's not already) </li>
-					<li>Do the same for includes/_css.php and include the Orbit CSS</li>
 					<li>Get some markup like this in your page: <br /><br/>
 					<script src="http://snipt.net/embed/227e566c916fdf7dfa91327dd245787b"></script><br />
 					</li>
@@ -57,7 +55,7 @@
 				</ol>
 				<hr />	
 				<h4>Options</h4>
-				<script src="http://snipt.net/embed/9acd55b305f0d09f9dd1696070c05949"></script>
+				<script type="text/javascript" src="http://snipt.net/embed/3f431686a51441e4c9f3fe6eecfb11fb"></script>
 
 			</div>
 			<div class="four columns">
