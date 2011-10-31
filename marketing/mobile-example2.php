@@ -48,7 +48,7 @@
 	  			<dd><a href="#" class="active">Llamas</a></dd>
 	  			<dd><a href="#">Alpacas</a></dd>
 	  			<dd><a href="#">Vicunas</a></dd>
-	  			<dd><a href="#">Other</a></dd>
+	  			<dd class="hide-on-phones"><a href="#">Other</a></dd>
 	  		</dl>
 	  		<p>This tab block will continue to look like tabs on any kind of device. Through the use of mobile visibility classes you can easily place nav blocks on top of the page for desktops, and at the bottom for phones.</p>
 	  	</div>
