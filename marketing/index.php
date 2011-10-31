@@ -36,14 +36,14 @@
           </div>
           <article class="seven columns">
             <dl>
-              <dt>Version 2.0.2</dt>
-              <dd>Download pack is now consolidated for faster loads, added alert styles to UI, bug fixes.</dd>
+              <dt>Version 2.0.3</dt>
+              <dd>Various bug fixes, as well as correcting an issue with the Rails gem.</dd>
             </dl>
-            <a href="https://github.com/zurb/foundation">Commit 702123a52b20ede50b8c18c89e005367a042fd7f &raquo;</a>
+            <a href="https://github.com/zurb/foundation">Commit 748242f9c43d27e3861bce5afdf217a026449681 &raquo;</a>
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>
-            <a href="files/foundation-download.zip">Download Foundation 2.0.2 &raquo;</a>
+            <a href="files/foundation-download.zip">Download Foundation 2.0.3 &raquo;</a>
           </aside>
         </div>
 	    </section>
