@@ -30,6 +30,7 @@
 		text-decoration: none;
 		font-weight: bold;
 		line-height: 1;
+		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
 		position: relative;
 		cursor: pointer;
 		border: none;
@@ -74,9 +75,9 @@
 	.button:active {}
 	
 	/* Sizes ---------- */
-	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; }
-	.medium.button 			{ font-size: 13px; }
-	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; }
+	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; width: auto; }
+	.medium.button 			{ font-size: 13px; width: auto; }
+	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
 	
 	/* Nice Sizes ---------- */
 	.nice.small.button 		{ background-position: 0 -36px; }
