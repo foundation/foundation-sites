@@ -3,12 +3,9 @@ $(document).ready(function() {
     url: "http://github.com/api/v2/json/commits/list/zurb/foundation/master",
     dataType: 'jsonp',
     success: function(json) {
-			var latest = json.commits[0];
-      console.log(latest);
-			var stamp = new Date(latest.committed_date);
-			console.log(stamp.toDateString());
-			var stampString = month[stamp.getMonth()] + ' ' + stamp.getDate() + ', ' + stamp.getFullYear();
-			console.log(stampString);
+			var latest = json.commits[0],
+			    stamp = new Date(latest.committed_date),
+          stampString = month[stamp.getMonth()] + ' ' + stamp.getDate() + ', ' + stamp.getFullYear();
 			$('#latestCommitMessage').text(latest.message);
 			$('#latestCommitTime').text(stampString);
 			$('#latestCommitURL').html('Commit ' + latest.id + ' &raquo;');
@@ -23,11 +20,10 @@ $(document).ready(function() {
 			for ( var key in json.tags ) {
 				tags.push(key)
 			}
-			console.log(tags[tags.length - 1]);
 			$('#latestVersion').text(tags[tags.length - 1]);
     } 
   });
-	var month=new Array(12);
+	var month = new Array(12);
 	month[0]="Jan";
 	month[1]="Feb";
 	month[2]="Mar";
