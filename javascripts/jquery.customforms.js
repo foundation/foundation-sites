@@ -70,6 +70,8 @@ jQuery(document).ready(function ($) {
 
     input.checked = ((input.checked) ? false : true);
     $element.toggleClass('checked');
+    
+    $input.trigger('change');
   }
   
   function toggleRadio($element) {
@@ -88,6 +90,8 @@ jQuery(document).ready(function ($) {
     event.stopPropagation();
     
     toggleCheckbox($(this));
+    
+    $input.trigger('change');
   });
   
   $('form.custom span.custom.radio').live('click', function (event) {
@@ -158,5 +162,7 @@ jQuery(document).ready(function ($) {
       
     });
     $select[0].selectedIndex = selectedIndex;
+    
+    $select.trigger('change');
   });
 })(jQuery);
