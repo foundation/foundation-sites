@@ -58,7 +58,7 @@
 				<hr />
 				
 				<h4>Contributing to Foundation</h4>
-				<p>Foundation is <a href="https://github.com/zurb/foundation">hosted on git</a>. If you have questions or bugs please file them through Git, but you can also <a href="mailto:jonathan+foundation@zurb.com">talk to us</a> if you want to get into Foundation and help build out the next generation way of rapidly prototyping. Yeah, we're thinking big.</p>
+				<p>Foundation is <a href="https://github.com/zurb/foundation">hosted on Github</a>. If you have questions or bugs please file them through Github, but you can also <a href="mailto:jonathan+foundation@zurb.com">talk to us</a> if you want to get into Foundation and help build out the next generation way of rapidly prototyping. Yeah, we're thinking big.</p>
 			</div>
 			<div class="four columns">
 				<? include("includes/_download.php"); ?>
