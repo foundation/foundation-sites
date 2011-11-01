@@ -31,15 +31,15 @@
         <div class="row">
           <div class="two columns">
             <h6>Latest Update</h6>
-            <time>Oct 26, 2011</time>
+            <time id="latestCommitTime">Loading...</time>
             <a href="github-mac://openRepo/https://github.com/zurb/foundation" class="nice small white button">Clone Now</a>
           </div>
           <article class="seven columns">
             <dl>
-              <dt>Version 2.0.3</dt>
-              <dd>Various bug fixes, as well as correcting an issue with the Rails gem.</dd>
+              <dt id="latestVersion">Loading...</dt>
+              <dd id="latestCommitMessage">Loading...</dd>
             </dl>
-            <a href="https://github.com/zurb/foundation">Commit 748242f9c43d27e3861bce5afdf217a026449681 &raquo;</a>
+            <a id="latestCommitURL" href="https://github.com/zurb/foundation">Loading...</a>
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>

@@ -45,6 +45,7 @@
 	<script src="../javascripts/jquery.placeholder.min.js"></script>
 	<script src="../javascripts/app.js"></script>
 	<script src="swipe.js"></script>
+	<script src="github.js"></script>
   
   
   <script>
