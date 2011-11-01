@@ -83,6 +83,8 @@ jQuery(document).ready(function ($) {
     });
     input.checked = ((input.checked) ? false : true);
     $element.toggleClass('checked');
+    
+    $input.trigger('change');
   }
   
   $('form.custom span.custom.checkbox').live('click', function (event) {
@@ -90,8 +92,6 @@ jQuery(document).ready(function ($) {
     event.stopPropagation();
     
     toggleCheckbox($(this));
-    
-    $input.trigger('change');
   });
   
   $('form.custom span.custom.radio').live('click', function (event) {
