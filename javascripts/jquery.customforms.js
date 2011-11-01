@@ -92,6 +92,8 @@ jQuery(document).ready(function ($) {
     event.stopPropagation();
     
     toggleCheckbox($(this));
+    
+    $input.trigger('change');
   });
   
   $('form.custom span.custom.radio').live('click', function (event) {
