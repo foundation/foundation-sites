@@ -36,14 +36,14 @@
           </div>
           <article class="seven columns">
             <dl>
-              <dt id="latestVersion">Loading...</dt>
+              <dt class="">Latest Update to GitHub</dt>
               <dd id="latestCommitMessage">Loading...</dd>
             </dl>
             <a id="latestCommitURL" href="https://github.com/zurb/foundation">Loading...</a>
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>
-            <a href="files/foundation-download.zip">Download Foundation 2.0.3 &raquo;</a>
+            <a href="files/foundation-download.zip">Download Foundation <span id="latestVersion">...</span> &raquo;</a>
           </aside>
         </div>
 	    </section>
