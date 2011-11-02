@@ -162,53 +162,7 @@
     ul.nice, ol.nice { list-style: none; margin: 0; }
     ul.nice li, ol.nice li { padding-left: 13px; position: relative }
     ul.nice li span.bullet, ol.nice li span.number { position: absolute; left: 0px; top: 0px; color: #ccc; }
-    
-
-/* -------------------------------------------------- 
-   Notices/Alerts
----------------------------------------------------*/
-/* Alerts cannot be closed and notices can */
-
-	.notice, .alert { 
-		position: relative;
-	    background: #222 url(../images/misc/button-overlay.png) repeat-x bottom;
-	    width: 100%;
-	    margin: 10px 0;
-	    -moz-border-radius: 3px;
-	    -webkit-border-radius: 3px;
-	    border-radius: 3px;
-	    color: #fff;
-	    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-	    font-weight: bold;
-	}
-	.notice>span, .alert>span {
-	    display: block;
-	    padding: 5px 10px 6px;
-	}
-	.notice a.close {
-	    font-size: 20px;
-	    line-height: .5;
-	    color: #fff;
-	    text-shadow: 0 -1px 1px rbga(0,0,0,.25);
-	    font-weight: bold; 
-	    cursor: pointer;
-	    position: absolute; 
-	    right: 10px; 
-	    top: 6px; 
-	} 
-	
-	/*  NOTES
-	
-	Close button entity is &#215; 
-	Sample Markup: 
-	<div class="notice"><span>
-		This is awesome
-		<a class="close" href="#">&#215;</a>
-	</span></div>
-
-*/
-
-
+   
 
 /*	--------------------------------------------------
 	Panels
