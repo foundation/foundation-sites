@@ -24,8 +24,8 @@
 			body, p {  font-size: 15px; font-size: 1.5rem; line-height: 1.4; }
 		}
 	
-	em { font-style: italic; line-height: inherit; }
-	strong { font-weight: bold; line-height: inherit; }
+	em, i { font-style: italic; line-height: inherit; }
+	strong, b { font-weight: bold; line-height: inherit; }
 	small { font-size: 60%; line-height: inherit; }
 	
 	h1 small, h2 small, h3 small, h4 small, h5 small { color: #777; }
