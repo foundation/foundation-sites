@@ -25,7 +25,8 @@
 	-------------------------------------------------- */	
 	
 	@media only screen and (max-width: 767px) {
-		.block-grid.mobile li { float: none; width: 100%; }
+		.block-grid.mobile { margin-left: 0%; }
+		.block-grid.mobile li { float: none; width: 100%; margin-left: 0%; }
 	}
 	
 	
