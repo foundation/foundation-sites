@@ -33,6 +33,10 @@ div.orbit {
     height: 1px;
     position: relative;
     overflow: hidden }
+    
+div.orbit.with-bullets {
+    margin-bottom: 40px;
+}
 
 div.orbit>img {
     position: absolute;
@@ -215,7 +219,7 @@ div.slider-nav span.left {
     position: absolute;
     z-index: 1000;
     list-style: none;
-    bottom: -40px;
+    bottom: -50px;
     left: 50%;
 	margin-left: -50px;
     padding: 0; }
