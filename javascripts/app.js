@@ -40,4 +40,9 @@ $(document).ready(function() {
 	
 	$('input, textarea').placeholder();
 	
+	
+	/* DISABLED BUTTONS ------------- */
+	/* Gives elements with a class of 'disabled' a return: false; */
+	
+	
 });

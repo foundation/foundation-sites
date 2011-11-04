@@ -102,6 +102,10 @@
 	.white.button:hover		{ background-color: #dadada; color: #333; }
 	.black.button:hover	{ background-color: #000; }
 	
+	
+	/* Disabled ---------- */
+	.button.disabled, .button[disabled] { opacity: 0.6; cursor: default; }
+	
 
 
 /*	--------------------------------------------------
