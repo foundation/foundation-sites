@@ -42,7 +42,9 @@
 	.row .offset-by-ten 	{ margin-left: 91.4%;  }
 	/*.row .offset-by-eleven 	{ margin-left: 95.7%;  }*/
 	
-	.row .one.centered { margin-left: 47.9%; }
+	.row .centered { float: none; margin: 0 auto; }
+	
+	/*.row .one.centered { margin-left: 47.9%; }
 	.row .two.centered { margin-left: 43.5%; }
 	.row .three.centered { margin-left: 39.2%; }
 	.row .four.centered { margin-left: 34.8%; }
@@ -52,7 +54,7 @@
 	.row .eight.centered { margin-left: 17.4%; }
 	.row .nine.centered { margin-left: 13.1%; }
 	.row .ten.centered { margin-left: 8.7%; }
-	.row .eleven.centered { margin-left: 4.3%; }
+	.row .eleven.centered { margin-left: 4.3%; }*/
 
 	.row .offset-by-one:first-child 	{ margin-left: 8.7%;  }
 	.row .offset-by-two:first-child 	{ margin-left: 17.4%;  }
