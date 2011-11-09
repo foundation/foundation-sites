@@ -13,7 +13,7 @@
 				
 				<div class="jobs hide-on-phones">
 					<h4>Looking for a Product Engineer or Design job?</h4>
-					<script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3"></script>
+					<script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3&variation=foundation-sidebar"></script>
 				<a id="via" href="zurbjobs.com"><span class="jobs-link">via ZURBjobs</span></a>
 
 				
