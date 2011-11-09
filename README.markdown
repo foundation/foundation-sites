@@ -28,6 +28,20 @@ Foundation was made by [ZURB](http://www.zurb.com), an interaction design and de
 
 If Foundation knocks your socks off the way we hope it does and you want more, why not check out [our jobs](http://www.zurb.com/talent/jobs)?
 
+Community
+=========
+
+Many thanks to all the people working on implementations of Foundation for their favorite framework. If want to get on this list send an email to foundation@zurb.com.
+
+WordPress
+
+* [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
+* [Optional install for roots](https://github.com/retlehs/roots) by Corey Wagehoft
+
+.NET
+
+* [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau
+
 MIT Open Source License
 =======================
 
