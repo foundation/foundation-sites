@@ -17,7 +17,7 @@
 .jobs { padding-left: 20px;}
 .jobs-link { font-size: 13px !important;white-space: nowrap;  text-decoration: underline; font-weight: inherit; margin-bottom: 20px;}
 .jobs-link a { color: # 555 !important;}
-.location {display:block; padding-left:3px;}
+.location {display:block;}
 .positionTitle  { font-weight: 600; }
 
 div.jobs .location { white-space: nowrap;color: #555;}
