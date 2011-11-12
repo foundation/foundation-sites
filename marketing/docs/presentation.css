@@ -22,10 +22,10 @@
 
 div.jobs .location { white-space: nowrap;color: #555;}
 div.jobs { padding-bottom: 20px;}
-div.jobs h4 { margin-bottom: 15px;}
+div.jobs h5 { margin-bottom: 15px;font-weight: bold;}
 
-a#via { color: #555 ;}
-a#via:hover { color: #999;}
+a#via { color: #999 ;}
+a#via:hover { color: #555;}
 
 
 /*
