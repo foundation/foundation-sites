@@ -11,6 +11,8 @@
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
+	<meta name="description" content="Foundation is an easy to use, powerful, and flexible framework for building rapid prototypes and production code on any kind of device." />
+	
 	<title>Foundation: <?= $page_title ?></title>
   	<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
 	<link rel="icon" type="image/ico" href="../favicon.ico">
