@@ -8,33 +8,6 @@
    Foundation-specific presentation CSS
 ----------------------------------------- */
 
-/*
----------------------
-	ZURBjobs START
----------------------
-*/
-
-.jobs { padding-left: 20px;}
-.jobs-link { font-size: 13px !important;white-space: nowrap;  text-decoration: underline; font-weight: inherit; margin-bottom: 20px;}
-.jobs-link a { color: # 555 !important;}
-.location {display:block;}
-.positionTitle  { font-weight: 600; }
-
-div.jobs .location { white-space: nowrap;color: #555;}
-div.jobs { padding-bottom: 20px;}
-div.jobs h5 { margin-bottom: 15px;font-weight: bold;}
-
-a#via { color: #999 ;}
-a#via:hover { color: #555;}
-
-
-/*
----------------------
-   ZURBjobs END
----------------------
-*/
-
-
 
 body { padding-bottom: 60px; }
 
@@ -153,6 +126,21 @@ footer.row a:hover {
 	div.foundation-header h1 { font-size: 32px; font-size: 3.2rem; }
 }
 
+
+
+
+/* ZURBjobs */
+
+.jobs { border: 1px solid #eee; padding: 20px; }
+.jobs .location { display: block; white-space: nowrap; color: #555; }
+.jobs ul { margin-bottom: 0px; }
+.jobs h5 { font-weight: bold; font-size: 15px; margin-bottom: 10px; }
+
+.jobs-link { font-size: 13px !important; white-space: nowrap;  text-decoration: underline; font-weight: inherit; margin-bottom: 20px;}
+.jobs-link a { color: # 555 !important;}
+
+.jobs a#via { color: #aaa ;}
+.jobs a#via:hover { color: #555;}
 
 
 
