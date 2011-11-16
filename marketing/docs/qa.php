@@ -133,6 +133,8 @@
 					<li>Reveal uses RGBa colors, which IE7 does not support. You can manually exchange RGBa for PNGs to provide IE7 support in Reveal</li>
 				</ol>
 				
+				<!--
+
 				<hr />
 				
 				<h4>Known Issues</h4>
@@ -140,6 +142,7 @@
 					<li><strong>Media Query:</strong> Currently the Motorola Xoom tablet will be identified as a desktop machine in landscape, and a tablet in portrait mode. Given the disparity in the screen widths at those orientations it actually makes a perverse kind of sense. Can't identify it correctly every time without identifying MacBooks as tablets.</li>
 				</ul>
 				
+				-->
 				
 				
 			</div>
