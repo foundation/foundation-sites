@@ -90,7 +90,7 @@
 	  			<div class="three columns">
 	  				<a href="case-swizzle.php"><img src="images/img-swizzle.jpg" alt="Get Swizzle" /></a>
 	  				<h4><a href="case-soapbox.php">Swizzle</a></h4>
-	  				<p>This sweet-looking site for freelance agency Get Swizzle was built just a month after the release of Foundation, and is beautifully responsive. Read the <a href="case-swizzle.php">case study &rarr;</a></p>
+	  				<p>This sweet-looking site for online service and design agency Swizzle was built just a month after the release of Foundation, and is beautifully responsive. Read the <a href="case-swizzle.php">case study &rarr;</a></p>
 	  			</div>
 	  			<div class="three columns">
 	  				<a href="case-soapbox.php"><img src="images/img-soapbox.jpg" alt="ZURBsoapbox" /></a>
@@ -133,6 +133,11 @@
 	        <a href="case-reel.php"><img src="images/mobileimg-reel.jpg" alt="Reel" /></a>
           <h3><a href="case-reel.php">Reel</a></h3>
           <p>Reel is a little app we built to let people upload, get feedback on, and review presos or mockups. It wasn't enough to just show slides, we wanted an app that worked on any kind of device, and Foundation was the tool we used to build it.<br /><a href="case-reel.php">View the Case Study &rarr;</a></p>
+	      </li>
+	      <li id="swipeme4">
+	        <a href="case-swizzle.php"><img src="images/mobileimg-swizzle.jpg" alt="Reel" /></a>
+          <h3><a href="case-swizzle.php">Swizzle</a></h3>
+          <p>This sweet-looking site for online service and design agency Swizzle was built just a month after the release of Foundation, and is beautifully responsive. Read the <a href="case-swizzle.php">case study &rarr;</a></p>
 	      </li>
 	    </ul>
 	  </section>
