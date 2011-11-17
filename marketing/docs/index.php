@@ -53,6 +53,25 @@
 				
 				<hr />
 				
+				<h4>Changelog</h4>
+				<h5>2.1</h5>
+				<p>Added in a four-column mobile grid which can be optionally attached to existing grid elements. Retooled the documentation site for better scalability and added in a vertical tabs element. Also included documentation for the new SaSS gem.</p>
+				
+				<h5>2.0.3</h5>
+				<p>Major fixes for Orbit in responsive layouts, various other grid and common element bug fixes.</p>
+				
+				<h5>2.0.2</h5>
+				<p>Changed the download pack to combine CSS and JS into single files for fewer requests on mobile. Split out typography and the Grid into separate files on Github for easier hacking.</p>
+				
+				<h5>2.0.1</h5>
+				<p>Removed PHP from the base download requirements, numerous bugfixes.</p>
+				
+				<h5>2.0.0</h5>
+				<p>Initial public release.</p>
+				
+				
+				<hr />
+				
 				<h4>What's Next for Foundation</h4>
 				<p>We're not content to sit still &mdash; we're going to keep polishing Foundation, fixing edge cases, and preparing for the next major release. Coming to Foundation: templates, site generation, more common elements, and even better mobile support.</p>
 				
