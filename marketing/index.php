@@ -83,36 +83,32 @@
 	  <!-- /Who's Using -->
 	  
 	  <!-- Case Studies > Desktop -->
-	  <section id="caseStudies" class="row hide-on-phones">
-	    <article class="twelve columns">
-	      <div class="row">
-	        <div class="twelve columns">
-	          <h4>Case Studies</h4>
-	        </div>
-	      </div>
-	      <div id="featured"> 
-          <div class="content">
-            <a href="case-soapbox.php"><img src="images/img-soapbox.jpg" alt="ZURBsoapbox" /></a>
-            <h3><a href="case-soapbox.php">ZURBsoapbox</a></h3>
-            <div class="row">
-            	<p>At ZURB we host all kinds of entrepreneurs, designers and product builders at short lunch presos we call ZURBsoapbox. In order to bring Soapbox to a larger audience, and keep our friends and attendees involved, we rapidly built out zurbsoapbox.com.</p>
-            	<p>Foundation allowed us to not only quickly prototype but also iterate on it, modify it for mobile, and launch it in record time. Check out some of the pieces we used from Foundation by viewing the <a href="case-soapbox.php">case study &rarr;</a></p>
-            </div>
-            
-          </div>
-          <div class="content">
-            <a href="case-foundation.php"><img src="images/img-foundation.jpg" alt="Foundation Marketing Site" /></a>
-            <h3><a href="case-foundation.php">Foundation</a></h3>
-            <p>Pretty meta, right? We built this site using Foundation and learned a few neat tricks along the way.</p><p>You can view the case study to see some of the cooler things going on behind the scenes, as well as grab the entire marketing site and source by checking out the project on Github. <a href="case-foundation.php">View the Case Study &rarr;</a></p>
-          </div>
-          <div class="content">
-            <a href="case-reel.php"><img src="images/img-reel.jpg" alt="Reel: Online presos with feedback" /></a>
-            <h3><a href="case-reel.php">Reel</a></h3>
-            <p>Reel is a little app we built to let people upload, get feedback on, and review presos or mockups. It wasn't enough to just show slides, we wanted an app that worked on any kind of device, and Foundation was the tool we used to build it.</p>
-            <p>Check out this quick case study to see some of the things we did with Foundation to make Reel as awesome as possible. <a href="case-reel.php">View the Case Study &rarr;</a></p>
-          </div>
-        </div>
-	    </article>
+	  <section class="row hide-on-phones">
+	  	<div class="twelve columns">
+	  		<h4>Case Studies</h4>
+	  		<div class="row">
+	  			<div class="three columns">
+	  				<a href="case-swizzle.php"><img src="images/img-swizzle.jpg" alt="Get Swizzle" /></a>
+	  				<h4><a href="case-soapbox.php">Swizzle</a></h4>
+	  				<p>This sweet-looking site for freelance agency Get Swizzle was built just a month after the release of Foundation, and is beautifully responsive. Read the <a href="case-swizzle.php">case study &rarr;</a></p>
+	  			</div>
+	  			<div class="three columns">
+	  				<a href="case-soapbox.php"><img src="images/img-soapbox.jpg" alt="ZURBsoapbox" /></a>
+	  				<h4><a href="case-soapbox.php">ZURBsoapbox</a></h4>
+	  				<p>We quickly prototyped and built a site for our speaking series using Foundation. Check out some of the pieces we used from Foundation by viewing the <a href="case-soapbox.php">case study &rarr;</a></p>
+	  			</div>
+	  			<div class="three columns">
+	  				<a href="case-foundation.php"><img src="images/img-foundation.jpg" alt="Foundation Marketing Site" /></a>
+	  				<h4><a href="case-soapbox.php">ZURBsoapbox</a></h4>
+	  				<p>Pretty meta, right? We built this site and the documentation using FOundation during its development. Grab the entire site on Github, or check out <a href="case-foundation.php">the Case Study &rarr;</a></p>
+	  			</div>
+	  			<div class="three columns">
+	  				<a href="case-reel.php"><img src="images/img-reel.jpg" alt="Reel: Online presos with feedback" /></a>
+	  				<h4><a href="case-reel.php">Reel</a></h4>
+	  				<p>This free web app for showing off and getting quick feedback on preso was built to be responsive from the start using Foundation. Read the <a href="case-reel.php">case study &rarr;</a></p>
+	  			</div>
+	  		</div>
+	  	</div>
 	  </section>
 	  <!-- /Case Studies > Desktop -->
 	  

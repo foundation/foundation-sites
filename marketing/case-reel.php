@@ -1,4 +1,4 @@
-<? $page_title = "ZURBsoapbox Case Study" ?>
+<? $page_title = "Reel Case Study" ?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->
@@ -19,6 +19,7 @@
 	    <div class="twelve columns">
 	    	<nav class="on-page hide-on-phones">
 	    		<ul>
+	    			<li><a href="case-swizzle.php">Swizzle</a></li>
 	    			<li><a href="case-soapbox.php">ZURBsoapbox</a></li>
 	    			<li><a href="case-foundation.php">Foundation</a></li>
 	    			<li class="current"><a href="case-reel.php">Reel</a></li>

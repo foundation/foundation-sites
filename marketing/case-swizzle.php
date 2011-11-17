@@ -1,4 +1,4 @@
-<? $page_title = "Foundation Case Study" ?>
+<? $page_title = "Swizzle Case Study" ?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->
@@ -13,47 +13,48 @@
 	<div id="insideContainer" class="container">
 	  <div class="row hide-on-phones">
 	    <a href="index.php" class="back two columns hide-on-phones">&larr; Home</a>
+	    <!-- / Nav -->
 	  </div>
 	  
 	  <div class="row">
 	    <div class="twelve columns">
 	    	<nav class="on-page hide-on-phones">
 	    		<ul>
-	    			<li><a href="case-swizzle.php">Swizzle</a></li>
+	    			<li class="current"><a href="case-swizzle.php">Swizzle</a></li>
 	    			<li><a href="case-soapbox.php">ZURBsoapbox</a></li>
-	    			<li class="current"><a href="case-foundation.php">Foundation</a></li>
+	    			<li><a href="case-foundation.php">Foundation</a></li>
 	    			<li><a href="case-reel.php">Reel</a></li>
 	    		</ul>
 	    	</nav>
-	      <h1 class="light-weight">Launching Foundation</h1>
+	      <h1 class="light-weight">Get Swizzle</h1>
 	    </div>
 	  </div>
 	  <div class="row">
 	  	<div class="eight columns">
-	      <div class="frame"><img src="images/case-foundation.jpg"></div>
+	      <div class="frame"><img src="images/case-swizzle.jpg"></div>
 	    </div>
 	    <div class="four columns">
-	      <h4>Pretty meta, we know.</h4>
-	      <p>Since day one we've built the Foundation documentation, and now this new site, with Foundation. Dating back to the original fixed-width Foundation (born of the ZURB global CSS) we've always built with the tool to better understand how it works, explain it, and test it.</p><p>See any mistakes on this site or the docs? <a href="mailto:foundation@zurb.com">Let us know</a> and we'll get right on it. We want Foundation to be as badass and bulletproof as possible.</p>
+	      <h4>Beautiful and Built<br />in the Browser</h4>
+	      <p>We were thrilled to see this site for Swizzle, an online service and design studio in Canada. Built on Foundation it's not only beautiful, but scales in incredibly smart ways. <a href="http://www.getswizzle.com">Check it out</a> on your desktop or mobile device to see what we mean, or read below what Laura Hutchinson from Swizzle said about how Foundation helped, and what they have in store next.</p>
 	    </div>
 	  </div>
 	  <br /><br />
 	  
 	  <div class="row">
 	  	<div class="four columns">
-	  		<h5>Showing the Grid</h5>
-	  		<div class="frame"><img src="images/case-foundation-1.jpg"></div>
-	  		<p>One thing you may have noticed is the grid background on each page. Try scaling down the homepage &mdash; the background grid actually resizes based on the screen (the lines are attached to divs, not a background image). Nerdy, but we wanted to show the real grid.</p>
+	  		<h5>Built in the Browser</h5>
+	  		<img src="images/case-swizzle-1.jpg">
+	  		<p>Using Foundation we were able to quickly implement the desktop and mobile site. It was easy to setup the shell how we wanted because the overall width is customizable, and it was fun to experiment with different layouts on the fly using the built-in responsive grid.</p>
 	  	</div>
 	  	<div class="four columns">
-	  		<h5>Mobile Slider</h5>
-	  		<img src="images/case-foundation-2.jpg">
-	  		<p>The case studies slider on the homepage is powered by <a href="docs/orbit.php">Orbit</a>, a jQuery plugin we created to quickly create image or content sliders. On mobile devices we swap that out in favor of a slider you can actually swipe with gestures, powered by <a href="http://plugins.jquery.com/project/swipe" rel="nofollow">jQuery Swipe</a>.</p>
+	  		<h5>Device-Specific Navigation</h5>
+	  		<div class="frame"><img src="images/case-swizzle-2.jpg"></div>
+	  		<p>We used Foundation's mobile visibility classes to hide the top navigation from mobile devices, and replace it with a menu link (the menu link is hidden from desktops with the visibility classes too). The link anchors to the footer navigation which uses a bit of CSS to change the layout.</p>
 	  	</div>
 	  	<div class="four columns">
-	  		<h5>Next Steps: Case Studies</h5>
-	  		<img src="images/case-foundation-3.jpg">
-	  		<p>Are you using Foundation? We'd love to hear about it! Let us know how you're using Foundation and we might feature you as a case study for the framework. Just <a href="mailto:foundation@zurb.com?subject=I'm%20using%20Foundation">let us know via email &rarr;</a></p>
+	  		<h5>Next Steps: Client Friendly</h5>
+	  		<div class="frame"><img src="images/case-swizzle-3.jpg"></div>
+	  		<p>What's next is to switch our client portal over to using Foundation. We've got lots of forms in our client portal, and until now they've been a real headache to style. We're also going to use Reveal for some great interactive features.</p>
 	  	</div>
 	  </div>
 	 
