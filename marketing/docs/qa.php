@@ -62,7 +62,7 @@
 						<td><img src="../images/check.png" /></td>
 					</tr>
 					<tr>
-						<td><strong>Safari 5</strong></td>
+						<td><strong>Safari (Edge)</strong></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
