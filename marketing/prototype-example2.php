@@ -2,7 +2,7 @@
 <?php include("includes/_header.php"); ?>
   
   <style>
-  	#exampleHeader { background: #333; padding: 10px 0 8px; margin-bottom: 30px; margin-top: -70px; }
+  	#exampleHeader { background: #333; padding: 10px 0 8px; margin-bottom: 30px; margin-top: -50px; }
   	#exampleHeader h3 { color: #fff; }
   	#exampleHeader a { color: #fff; position: relative; top: 10px; }
   	
@@ -21,15 +21,6 @@
 	<div id="insideContainer" class="container">
 	  <div class="row hide-on-phones">
 	    <a href="prototyping.php" class="back two columns hide-on-phones">&larr; About Prototyping</a>
-	    <!-- Nav -->
-	    <nav class="ten columns">
-	  	    <ul>
-	  	      <li><a href="docs/">Documentation</a></li>
-	  	      <li><a href="#">On Github</a></li>
-	  	      <li><a class="nice small blue button src-download" href="files/foundation-download.zip">Download</a></li>
-	  	    </ul>
-  	  	</nav>
-	    <!-- / Nav -->
 	  </div>
 	</div>
 	  
@@ -48,17 +39,17 @@
 	  
 	  <div class="row">
 	  	<div class="seven columns">
-	  		<div class="row">
-	  			<div class="two columns">
+	  		<div class="row mobile">
+	  			<div class="two phone-one columns">
 	  				<img src="http://placehold.it/200x200" />
 	  			</div>
-	  			<div class="ten columns">
+	  			<div class="ten phone-three columns">
 	  				<p><strong><a href="">Jake Sully</a> said:</strong><br />Guys, check out this awesome website I found about trees. Man, I love trees. Big trees.</p>
 	  				<div class="row">
-	  					<div class="four columns">
+	  					<div class="four phone-one columns">
 	  						<img src="http://placehold.it/300x300" />
 	  					</div>
-	  					<div class="eight columns">
+	  					<div class="eight phone-three columns">
 	  						<p><a href="#">Huge Trees and You: How to live in a giant tree</a><br />
 	  						This is a website for people who live in gigantic trees. Learn about how to go from branch to branch, and where to keep your crazy screaming flying dragon thing.</p>
 	  					</div>
@@ -67,34 +58,34 @@
 	  				
 		  			<section class="comments">
 		  				<div class="row">
-		  					<div class="two columns">
+		  					<div class="two phone-one columns">
 		  						<img src="http://placehold.it/50x50" />
 		  					</div>
-		  					<div class="ten columns"><a href="">TheColonel</a> says "Don't get too comfy, I'm coming for that tree."</div>
+		  					<div class="ten phone-three columns"><a href="">TheColonel</a> says "Don't get too comfy, I'm coming for that tree."</div>
 		  				</div>
 		  				<div class="row">
-		  					<div class="two columns">
+		  					<div class="two phone-one columns">
 		  						<img src="http://placehold.it/50x50" />
 		  					</div>
-		  					<div class="ten columns"><a href="">Jake</a> says "You're such a tool."</div>
+		  					<div class="ten phone-three columns"><a href="">Jake</a> says "You're such a tool."</div>
 		  				</div>
 		  			</section>
 	  			</div>
 	  		</div>
 	  		<div class="row">
-	  			<div class="two columns">
+	  			<div class="two phone-one columns">
 	  				<img src="http://placehold.it/200x200" />
 	  			</div>
-	  			<div class="ten columns">
+	  			<div class="ten phone-three columns">
 	  				<p><strong><a href="">Jake Sully</a> said:</strong><br />Has anyone seen my wheelchair? This isn't funny guys.</p>
 	  				
 	  				
 		  			<section class="comments">
 		  				<div class="row">
-		  					<div class="two columns">
+		  					<div class="two phone-one columns">
 		  						<img src="http://placehold.it/50x50" />
 		  					</div>
-		  					<div class="ten columns"><a href="">Jake</a> says "Found it. Whoever decided it'd be a fun game to kick it around with those walkers owes me a new one."</div>
+		  					<div class="ten phone-three columns"><a href="">Jake</a> says "Found it. Whoever decided it'd be a fun game to kick it around with those walkers owes me a new one."</div>
 		  				</div>
 		  			</section>
 	  			</div>
@@ -148,6 +139,7 @@
 	
 	</div>
 	   	  
+	<div class="container">
 	   	  
 	
 <?php include("includes/_footer.php");  ?>

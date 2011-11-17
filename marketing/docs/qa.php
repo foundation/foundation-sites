@@ -12,8 +12,12 @@
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
-			
-				<dl class="nice tabs mobile hide-on-phones">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="two columns">
+				<dl class="nice tabs vertical hide-on-phones">
 					<dd><a href="index.php">Getting Started</a></dd>
 					<dd><a href="grid.php">Grid</a></dd>
 					<dd><a href="buttons.php">Buttons</a></dd>
@@ -26,10 +30,7 @@
 					<dd><a href="qa.php" class="active">QA</a></dd>
 				</dl>
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="eight columns">
+			<div class="six columns">
 				<h3>QA</h3>
 				<h4 class="subheader">Foundation's no use to you or anyone else if it doesn't work. On this page you can see the current state of browser support, as well as known issues, for Foundation. Found a bug? <a href="mailto:foundation@zurb.com">Let us know &rarr;</a></h4>
 				<hr />
@@ -133,16 +134,14 @@
 					<li>Reveal uses RGBa colors, which IE7 does not support. You can manually exchange RGBa for PNGs to provide IE7 support in Reveal</li>
 				</ol>
 				
-				<!--
 
 				<hr />
 				
 				<h4>Known Issues</h4>
 				<ul class="disc">
-					<li><strong>Media Query:</strong> Currently the Motorola Xoom tablet will be identified as a desktop machine in landscape, and a tablet in portrait mode. Given the disparity in the screen widths at those orientations it actually makes a perverse kind of sense. Can't identify it correctly every time without identifying MacBooks as tablets.</li>
+					<li><em>There are currently no major known issues. Visit the <a href="https://github.com/zurb/foundation/issues?sort=created&direction=desc&state=open">Github Issues page</a> for individual reports on smaller bugs.</em></li>
 				</ul>
 				
-				-->
 				
 				
 			</div>

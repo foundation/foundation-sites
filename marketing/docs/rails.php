@@ -8,8 +8,12 @@
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
-			
-				<dl class="nice tabs mobile hide-on-phones">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="two columns">
+				<dl class="nice tabs vertical hide-on-phones">
 					<dd><a href="index.php">Getting Started</a></dd>
 					<dd><a href="grid.php">Grid</a></dd>
 					<dd><a href="buttons.php">Buttons</a></dd>
@@ -22,10 +26,7 @@
 					<dd><a href="qa.php">QA</a></dd>
 				</dl>
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="eight columns">
+			<div class="six columns">
 				<h3>Rails</h3>
 				<h4 class="subheader">Want to use Foundation in a Rails 3.1+ application?  Use our gem, it'll make it super duper easy!</h4>
 				<hr />

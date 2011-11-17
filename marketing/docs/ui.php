@@ -8,8 +8,12 @@
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
-			
-				<dl class="nice tabs mobile hide-on-phones">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="two columns">
+				<dl class="nice tabs vertical hide-on-phones">
 					<dd><a href="index.php">Getting Started</a></dd>
 					<dd><a href="grid.php">Grid</a></dd>
 					<dd><a href="buttons.php">Buttons</a></dd>
@@ -22,10 +26,7 @@
 					<dd><a href="qa.php">QA</a></dd>
 				</dl>
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="eight columns">
+			<div class="six columns">
 				<h3>UI Elements</h3>
 				<h4 class="subheader">Need tabs, tables, or other common UI elements?<br />Yeah, we got that.</h4>
 				<hr />
@@ -117,6 +118,19 @@
 				</ul>
 				
 				<script src="http://snipt.net/embed/63e549cb8b9606acbaed87b1b37b51e1"></script>
+				
+				<hr />
+				
+				<h5>Vertical Tabs</h5>
+				<p>You can also use tabs in a vertical configuration by adding a class of 'vertical' to the DL element. These are great for more scalable nav, and you can see how they work on this page on a tablet or desktop.</p>
+				
+				<dl class="nice vertical tabs">
+					<dd><a href="#vertical1" class="active">Vertical Tab 1</a></dd>
+					<dd><a href="#vertical1">Vertical Tab 2</a></dd>
+					<dd><a href="#vertical1">Vertical Tab 3</a></dd>
+				</dl>
+				
+				<script type="text/javascript" src="http://snipt.net/embed/4086cc6652ec6713851eba85db00c3e5"></script>
 				
 				<hr />
 				

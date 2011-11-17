@@ -139,6 +139,16 @@
 		.nice.tabs dd a { padding: 7px 18px 9px; font-size: 15px; font-size: 1.5rem; color: #555555; background: none; border: none; }
 		.nice.tabs dd a.active { font-weight: bold; color: #333; background: #fff; border-left: 1px solid #eee; border-right: 1px solid #eee; border-top: 3px solid #00a6fc; margin: 0 10px; position: relative; top: -5px; }
 		.nice.tabs dd:first-child a.active { margin-left: 0; }
+		
+	dl.tabs.vertical { height: auto; }
+	dl.tabs.vertical dt, dl.tabs.vertical dd, dl.nice.tabs.vertical dt, dl.nice.tabs.vertical dd { float: none; height: auto; }
+	dl.tabs.vertical dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0px #ccc; border-width: 1px 1px 0px; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
+	dl.tabs.vertical dd a.active { height: auto; margin: 0; border-width: 1px 0px 0px; background: #fff; }
+	
+		.nice.tabs.vertical { border-bottom: solid 1px #eee; height: auto; }
+		.nice.tabs.vertical dd a { padding: 15px 20px; border: none; border-left: 1px solid #eee; border-right: 1px solid #eee; border-top: 1px solid #eee; background: #fff; }
+		.nice.tabs.vertical dd a.active { border: none; background: #00a6fc; color: #fff; margin: 0; position: static; top: 0px; height: auto; }
+		.nice.tabs.vertical dd:first-child a.active { margin: 0; }
     
     ul.tabs-content { margin: 0; display: block; }
     ul.tabs-content > li { display:none; }

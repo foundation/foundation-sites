@@ -14,15 +14,6 @@
 	<div id="insideContainer" class="container">
 	  <div class="row hide-on-phones">
 	    <a href="prototyping.php" class="back two columns hide-on-phones">&larr; About Prototyping</a>
-	    <!-- Nav -->
-	    <nav class="ten columns">
-	  	    <ul>
-	  	      <li><a href="docs/">Documentation</a></li>
-	  	      <li><a href="#">On Github</a></li>
-	  	      <li><a class="nice small blue button src-download" href="files/foundation-download.zip">Download</a></li>
-	  	    </ul>
-  	  	</nav>
-	    <!-- / Nav -->
 	  </div>
 	  
 	  <div class="row"><hr /></div>
@@ -78,30 +69,30 @@
 	  	<div class="six columns">
 	  		<h4>Top of the Charts</h4>
 	  		<div class="row">
-	  			<div class="two columns hide-on-phones">
+	  			<div class="two phone-one columns">
 	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
 	  			</div>
-	  			<div class="ten columns">
+	  			<div class="ten phone-three columns">
 	  				<h5 class="right">$85k</h5>
 	  				<h4><a href="#">Tetris</a></h4>
 	  				<p>This newfangled game has you slotting together blocks in soviet Russia. Weird, but fun.</p>
 	  			</div>
 	  		</div>
 	  		<div class="row">
-	  			<div class="two columns hide-on-phones">
+	  			<div class="two phone-one columns">
 	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
 	  			</div>
-	  			<div class="ten columns">
+	  			<div class="ten phone-three columns">
 	  				<h5 class="right">$52k</h5>
 	  				<h4><a href="#">Pong</a></h4>
 	  				<p>The original and best game ever. It's like Tennis, and so realistic!</p>
 	  			</div>
 	  		</div>
 	  		<div class="row">
-	  			<div class="two columns hide-on-phones">
+	  			<div class="two phone-one columns">
 	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
 	  			</div>
-	  			<div class="ten columns">
+	  			<div class="ten phone-three columns">
 	  				<h5 class="right">$35k</h5>
 	  				<h4><a href="#">Centipede</a></h4>
 	  				<p>We're pretty sure this is a game about drugs, but it's on the charts, so here you go.</p>
@@ -112,6 +103,6 @@
 	  
 	</div>
 	   	  
-	   	  
+	<div class="container">   	  
 	
 <?php include("includes/_footer.php");  ?>

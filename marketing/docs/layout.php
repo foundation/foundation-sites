@@ -12,8 +12,12 @@
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
-			
-				<dl class="nice tabs mobile hide-on-phones">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="two columns">
+				<dl class="nice tabs vertical hide-on-phones">
 					<dd><a href="index.php">Getting Started</a></dd>
 					<dd><a href="grid.php">Grid</a></dd>
 					<dd><a href="buttons.php">Buttons</a></dd>
@@ -26,10 +30,7 @@
 					<dd><a href="qa.php">QA</a></dd>
 				</dl>
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="eight columns example">
+			<div class="six columns example">
 				<h3>Layout</h3>
 				<h4 class="subheader">Reusable, easy to modify layout conventions, for when the Grid isn't quite enough.</h4>
 				<hr />

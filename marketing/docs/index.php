@@ -8,8 +8,12 @@
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
-			
-				<dl class="nice tabs mobile hide-on-phones">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="two columns">
+				<dl class="nice tabs vertical hide-on-phones">
 					<dd><a href="index.php" class="active">Getting Started</a></dd>
 					<dd><a href="grid.php">Grid</a></dd>
 					<dd><a href="buttons.php">Buttons</a></dd>
@@ -22,10 +26,7 @@
 					<dd><a href="qa.php">QA</a></dd>
 				</dl>
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="eight columns">
+			<div class="six columns">
 				<h3>Welcome to Foundation!</h3>
 				<h4 class="subheader">Welcome to the Foundation documentation. Here you can learn what Foundation includes, as well as how to use it on mobile and on the desktop Web.</h4>
 				

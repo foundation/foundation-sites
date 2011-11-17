@@ -10,6 +10,7 @@
 
 
 body { padding-bottom: 60px; }
+.row { max-width: 1200px; }
 
 div.foundation-header { margin: 0 0 40px 0; padding: 30px 0 0 0; border-bottom: solid 1px #ccc; }
 div.foundation-header h1 { margin-bottom: 0; padding: 0; }
@@ -132,7 +133,7 @@ footer.row a:hover {
 /* ZURBjobs */
 
 .jobs { border: 1px solid #eee; padding: 20px; }
-.jobs .location { display: block; white-space: nowrap; color: #555; }
+.jobs .location { display: block; color: #555; }
 .jobs ul { margin-bottom: 0px; }
 .jobs h5 { font-weight: bold; font-size: 15px; margin-bottom: 10px; }
 

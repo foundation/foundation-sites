@@ -8,8 +8,12 @@
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
-			
-				<dl class="nice tabs mobile hide-on-phones">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="two columns">
+				<dl class="nice tabs vertical hide-on-phones">
 					<dd><a href="index.php">Getting Started</a></dd>
 					<dd><a href="grid.php">Grid</a></dd>
 					<dd><a href="buttons.php" class="active">Buttons</a></dd>
@@ -22,10 +26,7 @@
 					<dd><a href="qa.php">QA</a></dd>
 				</dl>
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="eight columns">
+			<div class="six columns">
 				<h3>Buttons</h3>
 				<h4 class="subheader">We &lt;3 buttons. And so do you! That's why Foundation has multiple buttons styles and color that are not only badass out of the box, but easy to customize for your projects.</h4>
 				<hr />
@@ -35,23 +36,23 @@
 				<p><script src="http://snipt.net/embed/269a08f1db74949e80ee8b40351e609c"></script></p><br />
 				<div class="row">
 					<div class="six columns">
-						<a href="#" class="small blue button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="blue button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large blue button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small blue button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="blue button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="large blue button radius">Button &raquo;</a><br /><br />
 						<br /><br />
-						<a href="#" class="small red button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="red button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large red button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small red button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="red button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="large red button radius">Button &raquo;</a><br /><br />
 						<br /><br />
 					</div>
 					<div class="six columns">
-						<a href="#" class="small white button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="white radius button">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large white button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small white button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="white radius button">Button &raquo;</a><br /><br />
+						<a href="#" class="large white button radius">Button &raquo;</a><br /><br />
 						<br /><br />
-						<a href="#" class="small black button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="black button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large black button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small black button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="black button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="large black button radius">Button &raquo;</a><br /><br />
 						<br /><br />
 					</div>
 				</div>		
@@ -63,23 +64,23 @@
 				<p><script type="text/javascript" src="http://snipt.net/embed/ac514168311a363dd4b5130a20cd1efb"></script></p><br />
 				<div class="row">
 					<div class="six columns">
-						<a href="#" class="small blue nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="blue nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large blue nice button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small blue nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="blue nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="large blue nice button radius">Button &raquo;</a><br /><br />
 						<br /><br />
-						<a href="#" class="small red nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="red nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large red nice button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small red nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="red nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="large red nice button radius">Button &raquo;</a><br /><br />
 						<br /><br />
 					</div>
 					<div class="six columns">
-						<a href="#" class="small white nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="white radius nice button">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large white nice button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small white nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="white radius nice button">Button &raquo;</a><br /><br />
+						<a href="#" class="large white nice button radius">Button &raquo;</a><br /><br />
 						<br /><br />
-						<a href="#" class="small black nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="black nice button radius">Do Something &raquo;</a><br /><br />
-						<a href="#" class="large black nice button radius">Do Something &raquo;</a><br /><br />
+						<a href="#" class="small black nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="black nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="large black nice button radius">Button &raquo;</a><br /><br />
 						<br /><br />
 					</div>
 				</div>

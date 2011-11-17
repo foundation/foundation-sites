@@ -8,8 +8,12 @@
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
-			
-				<dl class="nice tabs mobile hide-on-phones">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="two columns">
+				<dl class="nice tabs vertical hide-on-phones">
 					<dd><a href="index.php">Getting Started</a></dd>
 					<dd><a href="grid.php" class="active">Grid</a></dd>
 					<dd><a href="buttons.php">Buttons</a></dd>
@@ -22,10 +26,7 @@
 					<dd><a href="qa.php">QA</a></dd>
 				</dl>
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="eight columns">
+			<div class="six columns">
 				<h3>The Grid</h3>
 				<h4 class="subheader">The Grid lets you quickly put together page layouts for mobile devices and the desktop. You don't need two different sites - the Grid is built to create a rock-solid experience on all kinds of devices with the exact same markup.</h4>
 				
@@ -289,6 +290,43 @@
 						.eleven.columns.centered				
 					</div>
 				</div>
+				
+				<hr />
+				
+				<h4>Mobile Grid</h4>
+				<p>The grid has two modes of adapting for small displays like phones. The first requires no work at all &mdash; the grid will linearize on a small device so your columns stack vertically. This is useful to quickly adapt a desktop layout to a simple scrolling mobile layout. The other option is to use some simple classes to implement a four-column phone grid.</p>
+				
+				<h5>Four Column Mobile Grid</h5>
+				<p>When you're creating your layout you can optionally attach classes that take your existing grid elements and attach them to a four column phone grid.</p>
+				
+				<div class="row display">
+					<div class="three phone-one columns">
+						.three.phone-one.columns				
+					</div>
+					<div class="nine phone-three columns">
+						.nine.phone-three.columns				
+					</div>
+				</div>
+				<div class="row display">
+					<div class="six phone-two columns">
+						.three.phone-one.columns				
+					</div>
+					<div class="six phone-two columns">
+						.nine.phone-three.columns				
+					</div>
+				</div>
+				<div class="row display">
+					<div class="nine phone-three columns">
+						.nine.phone-three.columns				
+					</div>
+					<div class="three phone-one columns">
+						.three.phone-one.columns				
+					</div>
+				</div>
+				
+				<script type="text/javascript" src="http://snipt.net/embed/65d7bb9f3cf79b366fa1c9e970892817"></script>
+				
+				
 			</div>
 			<div class="four columns">
 				<? include("includes/_download.php"); ?>
