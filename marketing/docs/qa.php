@@ -44,13 +44,13 @@
 						<th style="width: 25%;">JS</th>
 					</thead>
 					<tr>
-						<td><strong>Chrome 14</strong></td>
+						<td><strong>Chrome (Edge)</strong></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
 					</tr>
 					<tr>
-						<td><strong>Firefox 6</strong></td>
+						<td><strong>Firefox (Edge)</strong></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
