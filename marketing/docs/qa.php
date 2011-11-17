@@ -103,7 +103,7 @@
 						<th style="width: 25%;">JS</th>
 					</thead>
 					<tr>
-						<td><strong>Mobile Webkit (iOS 4)</strong></td>
+						<td><strong>Mobile Webkit (iOS 5)</strong></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
