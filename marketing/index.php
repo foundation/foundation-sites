@@ -15,7 +15,7 @@
 		  <header class="twelve columns">
 		    <h1>Foundation</h1>
   		  	<h2>An easy to use, powerful, and flexible framework for building prototypes and production code on any kind of device. <strong>Start here, build everywhere.</strong></h2>
-  		  	<a id="mainDownload" href="files/foundation-download.zip" class="nice blue button src-download">Download Foundation 2.0<br><small>Boilerplate &bull; CSS &bull; JS &bull; Plugins</small><img src="images/homepage-yeti.png" class="show-on-desktops" /></a>
+  		  	<a id="mainDownload" href="files/foundation-download.zip" class="nice blue button src-download">Download Foundation 2.1<br><small>Boilerplate &bull; CSS &bull; JS &bull; Plugins</small><img src="images/homepage-yeti.png" class="show-on-desktops" /></a>
   		  	<p><a href="docs/">View the Documentation &raquo;</a><a href="http://github.com/zurb/foundation">View on Github &raquo;</a></p>
     		<img src="images/devices-awesomeness.png" alt="Foundation works on any device!">
 		  </header>
