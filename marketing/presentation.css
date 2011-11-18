@@ -250,10 +250,13 @@ header img {
  
   #mainDownload { position: relative; }
   #mainDownload img { position: absolute; right: -84px; top: -26px; margin: 0; padding: 0; }
+  #mainDownload:hover, #mainDownload:focus { overflow: visible; }
 
 /* Update Bar */
 #updates {
-  margin-bottom: 60px; }
+  margin-bottom: 60px;
+  border-bottom: solid 1px #e0e0e0;
+  background: #fff; }
 #updates div.two.columns {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b7b7b7), color-stop(100%, #a6a6a6));
   background-image: -moz-linear-gradient(top, #b7b7b7, #a6a6a6);
@@ -284,7 +287,7 @@ header img {
 #updates article {
   background: white;
   border-top: solid 1px #e0e0e0;
-  border-bottom: solid 1px #e0e0e0;
+  border-bottom: none;
   margin-left: 0;
   padding: 12px 17px 11px 2%; }
 #updates article dl {
@@ -306,8 +309,9 @@ header img {
   background: white;
   margin-left: 0;
   padding: 12px 17px 13px 2%;
-  border: solid 1px #e0e0e0;
-  width: 210px; }
+  border: solid 0px #e0e0e0;
+  border-width: 1px 1px 0px 1px;
+  width: 221px; }
 #updates aside > a {
   background: url('images/icon-docs.png?1309564181') 0 4px no-repeat;
   padding-left: 26px;
@@ -457,12 +461,14 @@ footer.row a:hover {
     padding-right: 20px; }
 
   #updates {
-    margin-left: 1%; }
+    margin-left: 1%; background: none;
+    border-bottom: none; }
   #updates div.two.columns {
     width: 14%; }
   #updates article {
     width: 76%;
-    border-right: solid 1px #e0e0e0; }
+    border-right: solid 1px #e0e0e0;
+    border-bottom: solid 1px #e0e0e0; }
   #updates aside {
     background: none;
     border: none;

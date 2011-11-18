@@ -75,8 +75,6 @@
 		text-indent: 12px;
 	}
 	
-	.button:active {}
-	
 	/* Sizes ---------- */
 	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; width: auto; }
 	.medium.button 			{ font-size: 13px; width: auto; }
@@ -90,20 +88,20 @@
 	.blue.button			{ background-color: #00a6fc;  }
 	.red.button				{ background-color: #e91c21; }
 	.white.button			{ background-color: #e9e9e9; color: #333; }
-	.black.button		{ background-color: #141414; }
+	.black.button			{ background-color: #141414; }
 	
 	/* Nice Colors ---------- */
 	.nice.blue.button		{ border: 1px solid #0593dc;  }
 	.nice.red.button		{ border: 1px solid #b90b0b;  }
 	.nice.white.button		{ border: 1px solid #cacaca; text-shadow: none !important; }
-	.nice.black.button	{ border: 1px solid #000; }
+	.nice.black.button		{ border: 1px solid #000; }
 	
 	/* Hovers ---------- */
-	.button:hover,.button:focus 			{ background-color: #0192dd; color: #fff; }
-	.blue.button:hover,.blue.button:focus		{ background-color: #0192dd; 	}
-	.red.button:hover,.red.button:focus 		{ background-color: #d01217; 	}
-	.white.button:hover.white.button:focus		{ background-color: #dadada; color: #333; }
-	.black.button:hover,.black.button:focus	{ background-color: #000; }
+	.button:hover, .button:focus 				{ background-color: #0192dd; color: #fff; }
+	.blue.button:hover, .blue.button:focus		{ background-color: #0192dd; 	}
+	.red.button:hover, .red.button:focus 		{ background-color: #d01217; 	}
+	.white.button:hover, .white.button:focus	{ background-color: #dadada; color: #333; }
+	.black.button:hover, .black.button:focus	{ background-color: #000; }
 	
 	
 	/* Disabled ---------- */
