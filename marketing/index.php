@@ -43,7 +43,7 @@
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>
-            <a href="files/foundation-download.zip">Download Foundation <span id="latestVersion">...</span> &raquo;</a>
+            <a href="files/foundation-download.zip">Download Foundation 2.1 <!-- <span id="latestVersion">...</span> -->&raquo;</a>
           </aside>
         </div>
 	    </section>
@@ -99,7 +99,7 @@
 	  			</div>
 	  			<div class="three columns">
 	  				<a href="case-foundation.php"><img src="images/img-foundation.jpg" alt="Foundation Marketing Site" /></a>
-	  				<h4><a href="case-soapbox.php">ZURBsoapbox</a></h4>
+	  				<h4><a href="case-soapbox.php">Foundation</a></h4>
 	  				<p>Pretty meta, right? We built this site and the documentation using FOundation during its development. Grab the entire site on Github, or check out the <a href="case-foundation.php">Case Study &rarr;</a></p>
 	  			</div>
 	  			<div class="three columns">

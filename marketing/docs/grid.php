@@ -309,10 +309,10 @@
 				</div>
 				<div class="row display">
 					<div class="six phone-two columns">
-						.three.phone-one.columns				
+						.six.phone-two.columns				
 					</div>
 					<div class="six phone-two columns">
-						.nine.phone-three.columns				
+						.six.phone-two.columns				
 					</div>
 				</div>
 				<div class="row display">
