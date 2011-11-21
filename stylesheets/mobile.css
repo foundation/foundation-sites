@@ -52,11 +52,11 @@
 	
 	.show-on-phones { display: none !important; }	
 	.show-on-tablets { display: none !important; }
-	.show-on-desktops { display: block; }
+	.show-on-desktops { display: block !important; }
 	
 	.hide-on-phones { display: block !important; }	
 	.hide-on-tablets { display: block !important; }
-	.hide-on-desktops { display: none; }
+	.hide-on-desktops { display: none !important; }
 	
 	
 	@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px) {
