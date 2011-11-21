@@ -54,6 +54,9 @@
 				<hr />
 				
 				<h4>Changelog</h4>
+				<h5>2.1.1</h5>
+				<p>Fixed an issue with buttons modifying their bottom margin on hover, as well as fixing bugs with rows inside a Reveal modal and changing the desktop visibility for objects with a declared display property.</p>
+				
 				<h5>2.1</h5>
 				<p>Added in a four-column mobile grid which can be optionally attached to existing grid elements. Retooled the documentation site for better scalability and added in a vertical tabs element. Also included documentation for the new SaSS gem.</p>
 				

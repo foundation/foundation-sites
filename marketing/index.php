@@ -43,7 +43,7 @@
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>
-            <a href="files/foundation-download.zip">Download Foundation 2.1 <!-- <span id="latestVersion">...</span> -->&raquo;</a>
+            <a href="files/foundation-download.zip">Download Foundation 2.1.1 <!-- <span id="latestVersion">...</span> -->&raquo;</a>
           </aside>
         </div>
 	    </section>
