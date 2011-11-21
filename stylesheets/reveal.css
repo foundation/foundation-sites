@@ -48,6 +48,9 @@
 		cursor: pointer;
 		} 
 	
+	.reveal-modal .row {
+		min-width: 0px;
+	}
 	
 	/* Mobile */
 		
