@@ -89,7 +89,7 @@
 	  		<div class="row">
 	  			<div class="three columns">
 	  				<a href="case-swizzle.php"><img src="images/img-swizzle.jpg" alt="Get Swizzle" /></a>
-	  				<h4><a href="case-soapbox.php">Swizzle</a></h4>
+	  				<h4><a href="case-swizzle.php">Swizzle</a></h4>
 	  				<p>This sweet-looking site for online service and design agency Swizzle was built just a month after the release of Foundation, and is beautifully responsive. Read the <a href="case-swizzle.php">case study &rarr;</a></p>
 	  			</div>
 	  			<div class="three columns">
@@ -99,7 +99,7 @@
 	  			</div>
 	  			<div class="three columns">
 	  				<a href="case-foundation.php"><img src="images/img-foundation.jpg" alt="Foundation Marketing Site" /></a>
-	  				<h4><a href="case-soapbox.php">Foundation</a></h4>
+	  				<h4><a href="case-foundation.php">Foundation</a></h4>
 	  				<p>Pretty meta, right? We built this site and the documentation using FOundation during its development. Grab the entire site on Github, or check out the <a href="case-foundation.php">Case Study &rarr;</a></p>
 	  			</div>
 	  			<div class="three columns">
