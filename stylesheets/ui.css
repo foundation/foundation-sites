@@ -149,16 +149,16 @@
 		.nice.tabs.vertical dd:first-child a.active { margin: 0; }
     
     ul.tabs-content { margin: 0; display: block; }
-    ul.tabs-content > li { display:none; }
-    ul.tabs-content > li.active { display: block; }
+    ul.tabs-content>li { display:none; }
+    ul.tabs-content>li.active { display: block; }
     
     dl.contained, dl.nice.contained { margin-bottom: 0px; }
     dl.contained.tabs dd a { padding: 0px 14px; }
     dl.nice.contained.tabs dd a { padding: 7px 18px 9px; }
     
     ul.contained.tabs-content { padding: 0; }
-    ul.contained.tabs-content li { padding: 20px; border: solid 0px #ddd; border-width: 0px 1px 1px 1px; }
-    ul.nice.contained.tabs-content li { border-color: #eee; }
+	ul.contained.tabs-content>li { padding: 20px; border: solid 0px #ddd; border-width: 0px 1px 1px 1px; }
+	ul.nice.contained.tabs-content>li { border-color: #eee; }
     
 /*  --------------------------------------------------
     Pagination
