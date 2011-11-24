@@ -126,8 +126,8 @@
 				
 				<dl class="nice vertical tabs">
 					<dd><a href="#vertical1" class="active">Vertical Tab 1</a></dd>
-					<dd><a href="#vertical1">Vertical Tab 2</a></dd>
-					<dd><a href="#vertical1">Vertical Tab 3</a></dd>
+					<dd><a href="#vertical2">Vertical Tab 2</a></dd>
+					<dd><a href="#vertical3">Vertical Tab 3</a></dd>
 				</dl>
 				
 				<script type="text/javascript" src="http://snipt.net/embed/4086cc6652ec6713851eba85db00c3e5"></script>
