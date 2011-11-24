@@ -78,7 +78,7 @@ jQuery(document).ready(function ($) {
     var $input = $element.prev(),
         input = $input[0];
 
-    $('input:radio[name=' + $input.attr('name') + ']').each(function () {
+    $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
       $(this).next().removeClass('checked');
     });
     input.checked = ((input.checked) ? false : true);
