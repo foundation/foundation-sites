@@ -1,12 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 	/* Use this js doc for all application specific JS */
 
 	/* TABS --------------------------------- */
 	/* Remove if you don't need :) */
-	
-	var tabs = $('dl.tabs');
-		tabsContent = $('ul.tabs-content')
 	
 	function activateTab($tab) {
 	  var $activeTab = $tab.closest('dl').find('a.active'),
@@ -21,15 +18,15 @@ $(document).ready(function() {
 		$(contentLocation).show();
 	}
 	
-	tabs.each(function(i) {
+	$('dl.tabs').each(function () {
 		//Get all tabs
-		var tab = $(this).children('dd').children('a');
-		tab.click(function(e) {
+		var tabs = $(this).children('dd').children('a');
+		tabs.click(function (e) {
 		  activateTab($(this));
 		});
 	});
 	
-	if(window.location.hash) {
+	if (window.location.hash) {
     activateTab($('a[href="' + window.location.hash + '"]'));
   }
 	
