@@ -8,31 +8,30 @@ $(document).ready(function() {
 	var tabs = $('dl.tabs');
 		tabsContent = $('ul.tabs-content')
 	
+	function activateTab($tab) {
+	  var $activeTab = $tab.closest('dl').find('a.active'),
+	      contentLocation = $tab.attr("href") + 'Tab';
+	      
+	  //Make Tab Active
+	  $activeTab.removeClass('active');
+	  $tab.addClass('active');
+	  
+    //Show Tab Content
+		$(contentLocation).closest('.tabs-content').find('li').hide();
+		$(contentLocation).show();
+	}
+	
 	tabs.each(function(i) {
 		//Get all tabs
 		var tab = $(this).children('dd').children('a');
 		tab.click(function(e) {
-			
-			//Get Location of tab's content
-			var contentLocation = $(this).attr("href")
-			contentLocation = contentLocation + "Tab";
-			
-			//Let go if not a hashed one
-			if(contentLocation.charAt(0)=="#") {
-			
-				e.preventDefault();
-			
-				//Make Tab Active
-				tab.removeClass('active');
-				$(this).addClass('active');
-				
-				//Show Tab Content
-				$(contentLocation).parent('.tabs-content').children('li').css({"display":"none"});
-				$(contentLocation).css({"display":"block"});
-				
-			} 
+		  activateTab($(this));
 		});
 	});
+	
+	if(window.location.hash) {
+    activateTab($('a[href="' + window.location.hash + '"]'));
+  }
 	
 	
 	/* PLACEHOLDER FOR FORMS ------------- */
