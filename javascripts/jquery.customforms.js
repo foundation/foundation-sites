@@ -10,14 +10,16 @@ jQuery(document).ready(function ($) {
   
   function appendCustomMarkup(type) {
     $('form.custom input:' + type).each(function () {
-      var $span = $('<span class="custom ' + type + '"></span>');
-      if ($(this).next('span.custom.' + type).length === 0) {
-        if (this.checked) {
-          $span.addClass('checked');
-        }
-        $(this)
-          .hide()
-          .after($span);
+      var selector = 'span.custom.' + type,
+          $this = $(this).hide();
+
+      if ($this.next(selector).length === 0) {
+        $('<span class="custom ' + type + '"></span>')
+          .toggleClass('checked', $this.is(':checked'))
+          .insertAfter($this);
+      }
+      else {
+        $this.next(selector).toggleClass('checked', $this.is(':checked'));
       }
     });
   }
