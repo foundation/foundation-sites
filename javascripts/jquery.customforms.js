@@ -149,7 +149,6 @@ jQuery(document).ready(function ($) {
     toggleRadio($(this));
   });
   
-//  $('form.custom').delegate('select','change', function (event) {
   $('form.custom select').live('change', function (event) {
     refreshCustomSelect($(this));
   });
