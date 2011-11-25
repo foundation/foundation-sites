@@ -23,7 +23,6 @@ jQuery(document).ready(function ($) {
   }
   appendCustomMarkup('checkbox');
   appendCustomMarkup('radio');
-  
 
   function appendCustomSelect(sel) {
     var $this = $(sel),
@@ -79,15 +78,17 @@ jQuery(document).ready(function ($) {
 
 (function ($) {
   
-  function refreshSelect($select) {
+  function refreshCustomSelect($select) {
+    var maxWidth = 0;
     var $customSelect = $select.next();
     $options = $select.find('option');
     $customSelect.find('ul').html('');
+    
     $options.each(function () {
       $li = $('<li>' + $(this).html() + '</li>');
       $customSelect.find('ul').append($li);
     });
-
+    
     // re-populate
     $options.each(function (index) {
       if (this.selected) {
@@ -97,6 +98,8 @@ jQuery(document).ready(function ($) {
     });
     
     // fix width
+    $customSelect.removeAttr('style')
+      .find('ul').removeAttr('style');
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
       if ($(this).outerWidth() > maxWidth) {
@@ -106,7 +109,6 @@ jQuery(document).ready(function ($) {
     });
     $customSelect.css('width', maxWidth + 18 + 'px');
     $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
-    
     
   }
   
@@ -147,8 +149,9 @@ jQuery(document).ready(function ($) {
     toggleRadio($(this));
   });
   
-  $('form.custom').delegate('select','change', function (event) {
-    refreshSelect($(this));
+//  $('form.custom').delegate('select','change', function (event) {
+  $('form.custom select').live('change', function (event) {
+    refreshCustomSelect($(this));
   });
   
   $('form.custom label').live('click', function (event) {
