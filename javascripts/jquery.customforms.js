@@ -10,17 +10,15 @@ jQuery(document).ready(function ($) {
   
   function appendCustomMarkup(type) {
     $('form.custom input:' + type).each(function () {
-      var selector = 'span.custom.' + type,
-          $this = $(this).hide();
 
-      if ($this.next(selector).length === 0) {
-        $('<span class="custom ' + type + '"></span>')
-          .toggleClass('checked', $this.is(':checked'))
-          .insertAfter($this);
+      var $this = $(this).hide(),
+          $span = $this.next('span.custom.' + type);
+
+      if ($span.length === 0) {
+        $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
       }
-      else {
-        $this.next(selector).toggleClass('checked', $this.is(':checked'));
-      }
+
+      $span.toggleClass('checked', $this.is(':checked'));
     });
   }
   appendCustomMarkup('checkbox');
