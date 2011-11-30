@@ -60,8 +60,8 @@
 	    <br><br>
 	    <nav class="ten columns show-on-phones">
   	    <ul>
-  	      <li><a href="#">Documentation</a></li>
-  	      <li><a href="#">On Github</a></li>
+  	      <li><a href="docs/">Documentation</a></li>
+  	      <li><a href="http://github.com/zurb/foundation">On Github</a></li>
   	      <li><a class="nice small blue button src-download" href="files/foundation-download.zip">Download</a></li>
   	    </ul>
   	  </nav>
