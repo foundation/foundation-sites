@@ -16,8 +16,8 @@
   </style>
   
   <!-- Grid BG -->
-  <div id="gridBgShort" class="container">
-    <div class="white-fade hide-on-phones"></div>
+  <div id="gridBgShort" class="container hide-on-phones">
+    <div class="white-fade"></div>
     <div class="row">
       <div class="one columns"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div>
     </div>
@@ -105,6 +105,8 @@
 		 </div>
 	  </section>
 	 </div>
+	   	  
+	 <div class="container">  
 	   	  
 	   	  
 	

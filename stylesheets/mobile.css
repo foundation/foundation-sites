@@ -9,18 +9,18 @@
 	
 	
 	/* Mobile */
-	@media only screen and (max-width: 767px) {
-		body { -webkit-text-size-adjust: none; }
-		
-		.row, body, .container { width: 100%; min-width: 0; margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; }
+	@media only screen and (max-width: 767px) {		
+		body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+		.container { min-width: 0; margin-left: 0; margin-right: 0; }
+		.row { width: 100%; min-width: 0; margin-left: 0; margin-right: 0; }
 		.row .row .column, .row .row .columns { padding: 0; }
-		.column, .columns { width: auto !important; float: none; margin-left: 0px; margin-right: 0px; padding-left: 20px; padding-right: 20px; }
-		.column:last-child, .columns:last-child { margin-right: 0px; }
-		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0% !important; }
+		.column, .columns { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
+		.column:last-child, .columns:last-child { margin-right: 0; }
+		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0 !important; }
 		
 		
 		/* Mobile 4-column Grid */
-		.row .phone-one.column:first-child, .row .phone-two.column:first-child, .row .phone-three.column:first-child, .row .phone-four.column:first-child, .row .phone-one.columns:first-child, .row .phone-two.columns:first-child, .row .phone-three.columns:first-child, .row .phone-four.columns:first-child { margin-left: 0px; }
+		.row .phone-one.column:first-child, .row .phone-two.column:first-child, .row .phone-three.column:first-child, .row .phone-four.column:first-child, .row .phone-one.columns:first-child, .row .phone-two.columns:first-child, .row .phone-three.columns:first-child, .row .phone-four.columns:first-child { margin-left: 0; }
 		
 		.row .phone-one.column, .row .phone-two.column, .row .phone-three.column, .row .phone-four.column,
 		.row .phone-one.columns, .row .phone-two.columns, .row .phone-three.columns, .row .phone-four.columns { margin-left: 4.4%; float: left; min-height: 1px; position: relative; padding: 0; }
@@ -39,8 +39,8 @@
 	-------------------------------------------------- */	
 	
 	@media only screen and (max-width: 767px) {
-		.block-grid.mobile { margin-left: 0%; }
-		.block-grid.mobile li { float: none; width: 100%; margin-left: 0%; }
+		.block-grid.mobile { margin-left: 0; }
+		.block-grid.mobile li { float: none; width: 100%; margin-left: 0; }
 	}
 	
 	
@@ -110,7 +110,7 @@
 	@media only screen and (max-width: 767px) {
 		div.form-field input, div.form-field input.small, div.form-field input.medium, div.form-field input.large, div.form-field input.oversize, input.input-text, input.input-text.oversize, textarea,
 		form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { display: block; width: 96%; padding: 6px 2% 4px; font-size: 18px; }
-		form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { -webkit-border-radius: 2px; -moz-border-radius: 2px; }
+		form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
 		form.nice div.form-field.error small, form.nice small.error { padding: 6px 2%; display: block; }
 		form.nice div.form-field.error .small + small, form.nice .small + .error { width: auto; }
 		form.nice div.form-field.error .medium + small, form.nice .medium + .error { width: auto; }
@@ -125,7 +125,7 @@
 	/* Buttons */
 	@media only screen and (max-width: 767px) {
 		.button { display: block; }
-		button.button { width: 100%; padding-left: 0px; padding-right: 0px; }
+		button.button { width: 100%; padding-left: 0; padding-right: 0; }
 	}
 	
 	/* Tabs */
@@ -134,15 +134,15 @@
 		dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
 		dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
 
-		dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0px #ccc; border-width: 1px 0px 0px; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
-		dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0px 0px; }
+		dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
+		dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
 	
 		.nice.tabs.mobile { border-bottom: solid 1px #ccc; height: auto; }
 		.nice.tabs.mobile dd a { padding: 18px 20px; border: none; border-left: none; border-right: none; border-top: 1px solid #ccc; background: #fff; }
-		.nice.tabs.mobile dd a.active { border: none; background: #00a6fc; color: #fff; margin: 0; position: static; top: 0px; height: auto; }
+		.nice.tabs.mobile dd a.active { border: none; background: #00a6fc; color: #fff; margin: 0; position: static; top: 0; height: auto; }
 		.nice.tabs.mobile dd:first-child a.active { margin: 0; }
 		
-		dl.contained.mobile, dl.nice.contained.mobile { margin-bottom: 0px; }
+		dl.contained.mobile, dl.nice.contained.mobile { margin-bottom: 0; }
 		dl.contained.tabs.mobile dd a { padding: 18px 20px; }
 		dl.nice.contained.tabs.mobile dd a { padding: 18px 20px; }
 	}

@@ -113,12 +113,12 @@
 	Alerts
 	-------------------------------------------------- */
 
-	div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; text-shadow: 0px 1px rgba(255,255,255,0.9); position: relative; }
-	.alert-box.success { background-color: #7fae00; color: #fff; text-shadow: 0px -1px rgba(0,0,0,0.3); }
-	.alert-box.warning { background-color: #c08c00; color: #fff; text-shadow: 0px -1px rgba(0,0,0,0.3); }
-	.alert-box.error { background-color: #c00000; color: #fff; text-shadow: 0px -1px rgba(0,0,0,0.3); }
+	div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; text-shadow: 0 1px rgba(255,255,255,0.9); position: relative; }
+	.alert-box.success { background-color: #7fae00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
+	.alert-box.warning { background-color: #c08c00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
+	.alert-box.error { background-color: #c00000; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
 	
-	.alert-box a.close { color: #000; position: absolute; right: 4px; top: 0px; font-size: 18px; opacity: 0.2; padding: 4px; }
+	.alert-box a.close { color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; }
 	.alert-box a.close:hover,.alert-box a.close:focus { opacity: 0.4; }
 	
 
@@ -127,11 +127,11 @@
     Tabs
     -------------------------------------------------- */
     dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
-    dl.tabs dt { display: block; width: auto; height: 30px; padding: 0px 9px 0 20px; line-height: 30px; float: left; color: #999; font-size: 11px; text-transform: uppercase; cursor: default; }
-    dl.tabs dt:first-child { padding: 0 9px 0 0px; }
+    dl.tabs dt { display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; font-size: 11px; text-transform: uppercase; cursor: default; }
+    dl.tabs dt:first-child { padding: 0 9px 0 0; }
     dl.tabs dd { display: block; width: auto; height: 30px; padding: 0; float: left; }
-    dl.tabs dd a { display: block; width: auto; height: 29px; padding: 0px 9px; line-height: 30px; border: solid 1px #ddd; margin: 0 -1px 0 0; color: #555; background: #eee; }
-    dl.tabs dd a.active { background: #fff; border-width: 1px 1px 0px 1px; height: 30px; }
+    dl.tabs dd a { display: block; width: auto; height: 29px; padding: 0 9px; line-height: 30px; border: solid 1px #ddd; margin: 0 -1px 0 0; color: #555; background: #eee; }
+    dl.tabs dd a.active { background: #fff; border-width: 1px 1px 0 1px; height: 30px; }
 
 		.nice.tabs { border-bottom: solid 1px #eee; margin: 0 0 30px 0; height:43px; }
 		.nice.tabs dd a { padding: 7px 18px 9px; font-size: 15px; font-size: 1.5rem; color: #555555; background: none; border: none; }
@@ -140,24 +140,24 @@
 		
 	dl.tabs.vertical { height: auto; }
 	dl.tabs.vertical dt, dl.tabs.vertical dd, dl.nice.tabs.vertical dt, dl.nice.tabs.vertical dd { float: none; height: auto; }
-	dl.tabs.vertical dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0px #ccc; border-width: 1px 1px 0px; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
-	dl.tabs.vertical dd a.active { height: auto; margin: 0; border-width: 1px 0px 0px; background: #fff; }
+	dl.tabs.vertical dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 1px 0; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
+	dl.tabs.vertical dd a.active { height: auto; margin: 0; border-width: 1px 0 0; background: #fff; }
 	
 		.nice.tabs.vertical { border-bottom: solid 1px #eee; height: auto; }
 		.nice.tabs.vertical dd a { padding: 15px 20px; border: none; border-left: 1px solid #eee; border-right: 1px solid #eee; border-top: 1px solid #eee; background: #fff; }
-		.nice.tabs.vertical dd a.active { border: none; background: #00a6fc; color: #fff; margin: 0; position: static; top: 0px; height: auto; }
+		.nice.tabs.vertical dd a.active { border: none; background: #00a6fc; color: #fff; margin: 0; position: static; top: 0; height: auto; }
 		.nice.tabs.vertical dd:first-child a.active { margin: 0; }
     
     ul.tabs-content { margin: 0; display: block; }
     ul.tabs-content>li { display:none; }
     ul.tabs-content>li.active { display: block; }
     
-    dl.contained, dl.nice.contained { margin-bottom: 0px; }
-    dl.contained.tabs dd a { padding: 0px 14px; }
+    dl.contained, dl.nice.contained { margin-bottom: 0; }
+    dl.contained.tabs dd a { padding: 0 14px; }
     dl.nice.contained.tabs dd a { padding: 7px 18px 9px; }
     
     ul.contained.tabs-content { padding: 0; }
-	ul.contained.tabs-content>li { padding: 20px; border: solid 0px #ddd; border-width: 0px 1px 1px 1px; }
+	ul.contained.tabs-content>li { padding: 20px; border: solid 0 #ddd; border-width: 0 1px 1px 1px; }
 	ul.nice.contained.tabs-content>li { border-color: #eee; }
     
 /*  --------------------------------------------------
@@ -176,7 +176,7 @@
     -------------------------------------------------- */ 
     ul.nice, ol.nice { list-style: none; margin: 0; }
     ul.nice li, ol.nice li { padding-left: 13px; position: relative }
-    ul.nice li span.bullet, ol.nice li span.number { position: absolute; left: 0px; top: 0px; color: #ccc; }
+    ul.nice li span.bullet, ol.nice li span.number { position: absolute; left: 0; top: 0; color: #ccc; }
    
 
 /*	--------------------------------------------------
@@ -188,9 +188,9 @@
 		background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%); 
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#F4F4F4',GradientType=0 );
-		box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
-		-webkit-box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
-		-moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
+		box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+		-webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+		-moz-box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 		margin: 0 0 20px 0;
 	}
 	

@@ -6,12 +6,16 @@
   	#exampleHeader h3 { color: #fff; }
   	#exampleHeader a { color: #fff; position: relative; top: 10px; }
   	
+  	@media only screen and (max-width: 767px) {	
+  		#exampleHeader { margin-top: 30px; }	
+  	}
+  	
   	.comments { background: #eee; padding: 10px; margin-bottom: 20px; }
   </style>
   
   <!-- Grid BG -->
-  <div id="gridBgShort" class="container">
-    <div class="white-fade hide-on-phones"></div>
+  <div id="gridBgShort" class="container hide-on-phones">
+    <div class="white-fade"></div>
     <div class="row">
       <div class="one columns"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div>
     </div>
@@ -19,8 +23,9 @@
   <!-- /Grid BG -->
   
 	<div id="insideContainer" class="container">
-	  <div class="row hide-on-phones">
-	    <a href="prototyping.php" class="back two columns hide-on-phones">&larr; About Prototyping</a>
+	  <div class="row">
+	    <a href="prototyping.php" class="back two columns">&larr; About Prototyping</a>
+	    <hr />
 	  </div>
 	</div>
 	  
