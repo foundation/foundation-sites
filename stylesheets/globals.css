@@ -79,8 +79,7 @@
 	-------------------------------------------------- */
 	a { color: #2a85e8; text-decoration: none; line-height: inherit; }
 	a:hover { color: #11639d; }
-	a:focus { color: #cc4714; }
-	a:hover, a:active { outline: none; }
+	a:focus { color: #cc4714; outline: none; }
 	p a, p a:visited { line-height: inherit; }
 	
 
@@ -102,7 +101,7 @@
 /*	--------------------------------------------------
 	:: Tables
 	-------------------------------------------------- */
-	table { background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 100%; margin: 0 0 18px; border: 1px solid #ddd;  }
+	table { background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; display: block; margin: 0 0 18px; border: 1px solid #ddd;  }
 	
 	table thead, table tfoot { background: #f5f5f5; }
 	table thead tr th,

@@ -49,7 +49,7 @@
 		} 
 	
 	.reveal-modal .row {
-		min-width: 0px;
+		min-width: 0;
 	}
 	
 	/* Mobile */
@@ -61,7 +61,7 @@
 			.reveal-modal.small,
 			.reveal-modal.medium,
 			.reveal-modal.large,
-			.reveal-modal.xlarge { width: 60%; top: 30%; left: 15%; margin-left: 0px; padding: 5%; height: auto; }
+			.reveal-modal.xlarge { width: 60%; top: 30%; left: 15%; margin-left: 0; padding: 5%; height: auto; }
 		}
 		
 		@media handheld, only screen and (max-width: 767px) {
@@ -71,7 +71,7 @@
 			.reveal-modal.small,
 			.reveal-modal.medium,
 			.reveal-modal.large,
-			.reveal-modal.xlarge { width: 80%; top: 15%; left: 5%; margin-left: 0px; padding: 5%; height: auto; }
+			.reveal-modal.xlarge { width: 80%; top: 15%; left: 5%; margin-left: 0; padding: 5%; height: auto; }
 		}
 	
 	
