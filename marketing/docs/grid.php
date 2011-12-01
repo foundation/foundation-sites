@@ -172,6 +172,12 @@
 						.one				
 					</div>
 				</div>
+				<div class="row display">
+					<div class="twelve columns">
+						.twelve.columns				
+					</div>				
+					</div>
+				</div>
 
 
 				<hr />
@@ -288,6 +294,11 @@
 				<div class="row display">
 					<div class="eleven columns centered">
 						.eleven.columns.centered				
+					</div>
+				</div>
+				<div class="row display">
+					<div class="twelve columns centered">
+						.twelve.columns.centered				
 					</div>
 				</div>
 				
