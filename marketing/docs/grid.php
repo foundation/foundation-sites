@@ -175,7 +175,6 @@
 				<div class="row display">
 					<div class="twelve columns">
 						.twelve.columns				
-					</div>				
 					</div>
 				</div>
 
