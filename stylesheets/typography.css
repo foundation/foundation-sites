@@ -18,12 +18,6 @@
 	p img { margin: 0; }
 	p.lead { font-size: 18px; font-size: 1.8rem; line-height: 24px;  }
 	
-		/* Mobile */
-		
-		@media handheld, only screen and (max-width: 767px) {
-			body, p {  font-size: 15px; font-size: 1.5rem; line-height: 1.4; }
-		}
-	
 	em, i { font-style: italic; line-height: inherit; }
 	strong, b { font-weight: bold; line-height: inherit; }
 	small { font-size: 60%; line-height: inherit; }
