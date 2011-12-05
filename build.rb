@@ -35,5 +35,5 @@ end
   prepend_text(file_name, "/* Foundation v#{VERSION_STRING} http://foundation.zurb.com */")
 end
 
-`cd public/src && zip -r ../../marketing/files/foundation-download.zip *`
+`cd public/src && zip -r ../../marketing/files/foundation-download-#{VERSION_STRING}.zip *`
 `rm -rf public`
