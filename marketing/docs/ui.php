@@ -139,6 +139,61 @@
 				
 				<hr />
 				
+				<h4>Nav Bar</h4>
+				<p>If you need a more traditional nav bar with dropdowns, you can use this sucka. The dropdowns are optional - omitting the flyout element means it will act as a standard link. The flyouts can hold arbitrary content, including grid objects, and have three sizes (.small, standard, and .large).</p>
+				
+				<ul class="nav-bar">
+					<li><a href="#">Nav Item 1</a>
+						<div class="flyout small">
+							<h5>Small Example (200px)</h5>
+							<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. </p>
+						</div>
+					</li>
+					<li><a href="#">Nav Item 2</a>
+						<div class="flyout">
+				        	<div class="row">
+				         		<div class="twelve columns">
+				         			<h5>Medium Example (400px)</h5>
+				     				<div class="row">
+				   				  		<div class="six columns">
+				   				  			<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+				     					</div>
+				     					<div class="six columns">
+				     						<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+				     					</div>
+				     				</div>
+				  				</div>
+				  			</div>
+				  		</div>
+					</li>
+					<li><a href="#">Nav Item 3</a>
+						<div class="flyout large">
+				        	<div class="row">
+				        		<div class="twelve columns">
+				        			<h5>Large Example (600px)</h5>
+				    				<div class="row">
+				           				<div class="four columns">
+				            				<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+				            				<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+				            			</div>
+				            			<div class="four columns">
+											<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+											<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+										</div>
+										<div class="four columns">
+											<img src="http://placehold.it/200x250"
+											</div>
+										</div>
+				  				</div>
+				  			</div>
+				  		</div>
+					</li>
+				</ul>
+      			
+      			<script type="text/javascript" src="http://snipt.net/embed/7dd4b241f040a3437468b7e7176429a6"></script>
+      			
+      			<hr />
+				
 				<h4>Pagination</h4>
 				<p>Breaking stuff up into pages? Yeah you are. Here's some pagination to get you started.</p>
 				
@@ -157,57 +212,6 @@
 				<script src="http://snipt.net/embed/724214a9eba6436e1565fc748693e61b"></script>
 				
 				<hr />
-				
-<!--
-				<h4>Lists</h4>
-				<p>Sure, you can use standard unordered and ordered lists. Or you can be a baller and use nice lists, which have the added benefit of making the bullets and numbers styleable.</p>
-				
-				<ul class="nice">
-					<li>
-						<span class="bullet">&bull;</span>
-						This is the first item in a nice unordered list
-					</li>
-					<li>
-						<span class="bullet">&bull;</span>
-						This is the second item in a nice unordered list
-					</li>
-					<li>
-						<span class="bullet">&bull;</span>
-						This is the third item in a nice unordered list
-					</li>
-					<li>
-						<span class="bullet">&bull;</span>
-						This is the fourth item in a nice unordered list, but who cares? It's unordered!
-					</li>
-				</ul>
-				
-				<ol class="nice">
-					<li>
-						<span class="number">1.</span>
-						This is the first item in a nice ordered list.
-					</li>
-					<li>
-						<span class="number">2.</span>
-						This is the second item in a nice ordered list.
-					</li>
-					<li>
-						<span class="number">3.</span>
-						This is the third item in a nice ordered list.
-					</li>
-					<li>
-						<span class="number">4.</span>
-						This is the fourth item in a nice ordered list, duh. Didn't you see the styleable number?
-					</li>
-				</ol>
-				
-				<script src="http://snipt.net/embed/e2ac671a4319fbcfc175ddc7fce26101"></script>
-				
-				<p>When using .nice lists you can either specify the bullets and numbers yourself, or let ui.js do it for you. A nice list without the appropriate span.bullet or span.number will have those inject automatically, so they can pick up your CSS. Thus you can create sweet looking lists with all kinds of control, but still write them like this:</p>
-				
-				<script src="http://snipt.net/embed/e7c5ed6d56488b4c3b84c6d4f85a5dbe"></script>
-				
-				<hr />
--->
 				
 				<h4>Tables</h4>
 				<p>Okay, they're not the sexiest things ever, but tables get the job done (for tabular data).</p>
@@ -248,6 +252,39 @@
 						</tr>
 					</tbody>
 				</table>
+				
+				
+				<hr />
+				
+				
+				<h4>Microformats</h4>
+				<p>Microformats are formats for data objects represented on the page using standard HTML. By applying specific classes to objects parsers like the operator plugin can detect relevant data and display it. This can be especially handy for contact info, events, locations and news articles. We've supplied some base styling for microformats, as well as the relevant markup.</p>
+				
+				<h5>hCard</h5>
+				<p>hCards are a microformat for contact information. We've represented the correct syntax here to ensure they are machine readable, as well as applied some minimal styling.</p>
+				
+				<ul class="vcard">
+				    <li class="fn">John T. Yeti</li>
+				    <li class="nickname">Yeti</li>
+				    <li class="org">Foundation, Inc.</li>
+				    <li class="tel"><a href="tel:408-867-5309">408-867-5309</a></li>
+				    <li><a class="url" href="http://foundation.zurb.com/">http://foundation.zurb.com/</a></li>
+				</ul>
+				
+				<p><script type="text/javascript" src="http://snipt.net/embed/eb809555f900b7fa2651d6f31b35d941"></script></p>
+				
+				<h5>hCalendar</h5>
+				<p>An hCalendar event is an iCalendar formatted entry for an event at a specific time and location. This can be interpreted by parsing tools to recognize events and add them to a calendar.</p>
+				
+				<p class="vevent">
+				    The <span class="summary">Foundation Launch Party</span> 
+				    was on October 13 2011 from
+				    <abbr class="dtstart" title="2011-10-13T14:00:00+06:00">2</abbr>&ndash;<abbr class="dtend" title="2011-10-13T16:00:00+06:00">4</abbr>pm at 
+				    <span class="location">ZURB HQ</span> 
+				    (<a class="url" href="http://foundation.zurb.com">More Info</a>)
+				</p>
+				
+				<p><script type="text/javascript" src="http://snipt.net/embed/ef85ba34e235c9bc712baa62cc8bdf4c"></script></p>
 				
 				
 			</div>

@@ -2,7 +2,7 @@
 
 
 
-/* -------------------------------------------------- 
+/* --------------------------------------------------
    Table of Contents
 -----------------------------------------------------
 :: Buttons
@@ -12,11 +12,13 @@
 :: Pagination
 :: Lists
 :: Panels
+:: Nav
+:: Microformats
 */
 
 
 
-	
+
 /*	--------------------------------------------------
 	Buttons
 	-------------------------------------------------- */
@@ -36,7 +38,7 @@
 		border: none;
 	}
 	
-  /* Don't use native buttons on iOS */
+  	/* Don't use native buttons on iOS */
 	input[type=submit].button { -webkit-appearance: none; }
 	
 	.button.nice { 
@@ -49,29 +51,29 @@
 		border: 1px solid #0593dc;
 		-webkit-transition: background-color .15s ease-in-out;
 		-moz-transition: background-color .15s ease-in-out;
-		-o-transition: background-color .15s ease-in-out; 
+		-o-transition: background-color .15s ease-in-out;
 	}
 
-	.button.radius { 
+	.button.radius {
 		-moz-border-radius: 3px;
 		-webkit-border-radius: 3px;
 		border-radius: 3px;
 	}
-	.button.round { 
+	.button.round {
 		-moz-border-radius: 1000px;
 		-webkit-border-radius: 1000px;
 		border-radius: 1000px;
 	}
-	
-	.button.full-width { 
+
+	.button.full-width {
 		width: 100%;
 		padding-left: 0 !important;
 		padding-right: 0 !important;
-		text-align: center; 
+		text-align: center;
 	}
-	
-	.button.left-align { 
-		text-align: left; 
+
+	.button.left-align {
+		text-align: left;
 		text-indent: 12px;
 	}
 	
@@ -79,11 +81,11 @@
 	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; width: auto; }
 	.medium.button 			{ font-size: 13px; width: auto; }
 	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
-	
+
 	/* Nice Sizes ---------- */
 	.nice.small.button 		{ background-position: 0 -36px; }
 	.nice.large.button 		{ background-position: 0 -30px; }
-	 
+
 	/* Colors ---------- */
 	.blue.button			{ background-color: #00a6fc;  }
 	.red.button				{ background-color: #e91c21; }
@@ -103,10 +105,9 @@
 	.white.button:hover, .white.button:focus	{ background-color: #dadada; color: #333; }
 	.black.button:hover, .black.button:focus	{ background-color: #000; }
 	
-	
 	/* Disabled ---------- */
 	.button.disabled, .button[disabled] { opacity: 0.6; cursor: default; }
-	
+
 
 
 /*	--------------------------------------------------
@@ -120,7 +121,6 @@
 	
 	.alert-box a.close { color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; }
 	.alert-box a.close:hover,.alert-box a.close:focus { opacity: 0.4; }
-	
 
 
 /*    --------------------------------------------------
@@ -155,14 +155,14 @@
     dl.contained, dl.nice.contained { margin-bottom: 0; }
     dl.contained.tabs dd a { padding: 0 14px; }
     dl.nice.contained.tabs dd a { padding: 7px 18px 9px; }
-    
+
     ul.contained.tabs-content { padding: 0; }
 	ul.contained.tabs-content>li { padding: 20px; border: solid 0 #ddd; border-width: 0 1px 1px 1px; }
 	ul.nice.contained.tabs-content>li { border-color: #eee; }
-    
+	
 /*  --------------------------------------------------
     Pagination
-    -------------------------------------------------- */ 
+    -------------------------------------------------- */
     ul.pagination { display: block; height: 24px; margin-left: -5px; }
     ul.pagination li { float: left; display: block; height: 24px; color: #999; font-size: 15px; margin-left: 5px; }
     ul.pagination li a { display: block; padding: 6px 7px 4px; color: #555; }
@@ -170,22 +170,20 @@
     ul.pagination li.unavailable a { cursor: default; color: #999; }
     ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { border-bottom: none; }
     
-    
 /*  --------------------------------------------------
     Lists
-    -------------------------------------------------- */ 
+    -------------------------------------------------- */
     ul.nice, ol.nice { list-style: none; margin: 0; }
     ul.nice li, ol.nice li { padding-left: 13px; position: relative }
     ul.nice li span.bullet, ol.nice li span.number { position: absolute; left: 0; top: 0; color: #ccc; }
-   
 
 /*	--------------------------------------------------
 	Panels
 	-------------------------------------------------- */
-	div.panel { 
+	div.panel {
 		padding: 20px 20px 2px 20px;
 		background: #efefef;
-		background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%); 
+		background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#F4F4F4',GradientType=0 );
 		box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -193,6 +191,40 @@
 		-moz-box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 		margin: 0 0 20px 0;
 	}
-	
-	
 
+/*	--------------------------------------------------
+   	Nav Bar with Dropdowns
+	-------------------------------------------------- */
+	
+	.nav-bar { height: 45px; background: #fff; margin-top: 20px; border: 1px solid #ddd; }	
+	.nav-bar li { float: left; display: block; position: relative; padding: 0; margin: 0; border: none; }
+	.nav-bar li a { position: relative; font-size: 14px; padding: 14px 36px 13px 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; border-right: 1px solid #ddd; } 
+	.nav-bar li a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8;  display: block; position: absolute; right: 18px; bottom: 20px; }
+	.nav-bar li:hover a { color: #141414; z-index: 2; }
+	.nav-bar li:hover a:after { border-top-color: #141414; }
+
+	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 10; }
+	.flyout.small { width: 200px; }
+	.flyout.large { width: 600px; }
+	.flyout p:last-child { margin-bottom: 0; }
+	.nav-bar li .flyout { display: none; }
+	.nav-bar li:hover .flyout { display: block; }
+
+
+
+/*	--------------------------------------------------
+   	Microformats
+	-------------------------------------------------- */
+	
+	/* hCard */
+	ul.vcard { display: inline-block; margin: 0 0 12px 0; border: 1px solid #ddd; padding: 10px; }
+	ul.vcard li { margin: 0; display: block; }
+	ul.vcard li.fn { font-weight: bold; font-size: 15px; font-size: 1.5rem; }
+	
+	p.vevent span.summary { font-weight: bold; }
+	p.vevent abbr { cursor: default; text-decoration: none; font-weight: bold; border: none; padding: 0 1px; }
+	
+	
+	
+	
+	

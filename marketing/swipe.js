@@ -20,7 +20,7 @@
     // Detect Resize for offset animation
     $(window).resize(function(e) {
       offset = $('#swipeMeParent').width()+40;
-      $('#swipeme1, #swipeme2, #swipeme3').css({
+      $('#swipeme1, #swipeme2, #swipeme3, #swipeme4').css({
         left: offset
       });
       $('#swipeme' + currentSlide).css({
