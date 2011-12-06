@@ -142,6 +142,8 @@
 				<h4>Nav Bar</h4>
 				<p>If you need a more traditional nav bar with dropdowns, you can use this sucka. The dropdowns are optional - omitting the flyout element and .has-flyout class means it will act as a standard link. The flyouts can hold arbitrary content, including grid objects, and have three sizes (.small, standard, and .large).</p>
 				
+				<p><em>Note: In IE7 the dropdowns are obscured by the code snippet below. This is due to IE7s iframe z-index bug, and is not an issue with the dropdowns themselves. Try not to have dropdown elements over an iframe.</em></p>
+				
 				<ul class="nav-bar">
 					<li><a href="#">Nav Item 1</a></li>
 					<li class="has-flyout"><a href="#">Nav Item 2</a>

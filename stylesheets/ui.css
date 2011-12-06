@@ -207,6 +207,7 @@
 	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 10; }
 	.flyout.small { width: 200px; }
 	.flyout.large { width: 600px; }
+	.flyout.right { left: auto; right: 0; }
 	.flyout p:last-child { margin-bottom: 0; }
 	.nav-bar li .flyout { display: none; }
 	.nav-bar li:hover .flyout { display: block; }
