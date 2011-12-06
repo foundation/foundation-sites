@@ -198,8 +198,9 @@
 	
 	.nav-bar { height: 45px; background: #fff; margin-top: 20px; border: 1px solid #ddd; }	
 	.nav-bar li { float: left; display: block; position: relative; padding: 0; margin: 0; border: none; }
-	.nav-bar li a { position: relative; font-size: 14px; padding: 14px 36px 13px 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; border-right: 1px solid #ddd; } 
-	.nav-bar li a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8;  display: block; position: absolute; right: 18px; bottom: 20px; }
+	.nav-bar li a { position: relative; font-size: 14px; padding: 14px 20px 13px 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; border-right: 1px solid #ddd; } 
+	.nav-bar li.has-flyout a { padding-right: 36px; }
+	.nav-bar li.has-flyout a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; position: absolute; right: 18px; bottom: 20px; }
 	.nav-bar li:hover a { color: #141414; z-index: 2; }
 	.nav-bar li:hover a:after { border-top-color: #141414; }
 

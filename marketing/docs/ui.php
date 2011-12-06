@@ -140,16 +140,17 @@
 				<hr />
 				
 				<h4>Nav Bar</h4>
-				<p>If you need a more traditional nav bar with dropdowns, you can use this sucka. The dropdowns are optional - omitting the flyout element means it will act as a standard link. The flyouts can hold arbitrary content, including grid objects, and have three sizes (.small, standard, and .large).</p>
+				<p>If you need a more traditional nav bar with dropdowns, you can use this sucka. The dropdowns are optional - omitting the flyout element and .has-flyout class means it will act as a standard link. The flyouts can hold arbitrary content, including grid objects, and have three sizes (.small, standard, and .large).</p>
 				
 				<ul class="nav-bar">
-					<li><a href="#">Nav Item 1</a>
+					<li><a href="#">Nav Item 1</a></li>
+					<li class="has-flyout"><a href="#">Nav Item 2</a>
 						<div class="flyout small">
 							<h5>Small Example (200px)</h5>
 							<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. </p>
 						</div>
 					</li>
-					<li><a href="#">Nav Item 2</a>
+					<li class="has-flyout"><a href="#">Nav Item 3</a>
 						<div class="flyout">
 				        	<div class="row">
 				         		<div class="twelve columns">
@@ -166,8 +167,8 @@
 				  			</div>
 				  		</div>
 					</li>
-					<li><a href="#">Nav Item 3</a>
-						<div class="flyout large">
+					<li class="has-flyout hide-on-tablets"><a href="#">Nav Item 4</a>
+						<div class="flyout large right">
 				        	<div class="row">
 				        		<div class="twelve columns">
 				        			<h5>Large Example (600px)</h5>
