@@ -54,7 +54,7 @@
 				<hr />
 				
 				<h4>Changelog</h4>
-				<h5>2.1.2 <small>December 6, 2011</small></h5>
+				<h5>2.1.2 <small>December 7, 2011</small></h5>
 				<p>Added nav bar styles to ui.css including arbitrary-content dropdowns. Added basic support for microformats. Modified how the grid handles phone sizes through margin and padding, and in the process fixed a bug which broke the phone grid when used outside another column.</p>
 				
 				<h5>2.1.1 <small>November 21, 2011</small></h5>
