@@ -1,3 +1,4 @@
+<? $version = "2.1.2"; ?>
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -80,7 +81,7 @@
       		<a href="case-soapbox.php">Case Studies</a>
       		<a href="docs/">Documentation</a>
       		<a href="http://github.com/zurb/foundation">Github</a>
-      		<a href="files/foundation-download.zip" class="small blue nice button src-download">Download</a>
+      		<a href="files/foundation-download-<?= $version ?>.zip" class="small blue nice button src-download">Download</a>
       		
       	</strong>
       </div>
