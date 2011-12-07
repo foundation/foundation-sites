@@ -37,23 +37,24 @@ $(document).ready(function () {
 	$('input, textarea').placeholder();
 
 	/* DROPDOWN NAV ------------- */
-	$('.nav-bar li a').bind('touchend click', function(e){
-		e.preventDefault();
-		e.stopPropagation();
-		var f = $(this).siblings('.flyout');
-		if (!f.is(':visible') && f.length > 0) {
-			$('.nav-bar li .flyout').hide();
-			f.show();
-		} else {
-			window.location = $(this).attr('href');
-		}
-	});
-	$('.nav-bar, .nav-bar li .flyout').bind('touchend touchstart touchmove mousemove mouseup mouseover mousedown click', function(e) {
-		return false;
-	});
-	$('body').bind('touchend', function(e) {
-		$('.nav-bar li .flyout').hide();
-	});
+	// $('.nav-bar li a').bind('touchend click', function(e){
+	// 	var f = $(this).siblings('.flyout');
+	// 	if (!f.is(':visible') && f.length > 0) {
+	// 		$('.nav-bar li .flyout').hide();
+	// 		f.show();
+	// 	} else {
+	// 		window.location = $(this).attr('href');
+	// 	}
+	// 	return false;
+	// });
+	// $('.nav-bar').bind('touchstart touchmove touchend click', function(e) {
+	// 	e.stopPropagation();
+	// });
+	// $('body').bind('touchstart', function(e) {
+	// 	if (e.target !== $('.nav-bar')) {
+	// 		$('.nav-bar li .flyout').hide();
+	// 	}
+	// });
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
