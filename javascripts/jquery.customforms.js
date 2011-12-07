@@ -23,33 +23,41 @@ jQuery(document).ready(function ($) {
   }
   appendCustomMarkup('checkbox');
   appendCustomMarkup('radio');
-  
-  $('form.custom select').each(function () {
-    var $this = $(this),
+
+  function appendCustomSelect(sel) {
+    var $this = $(sel),
         $customSelect = $this.next('div.custom.dropdown'),
         $options = $this.find('option'),
         maxWidth = 0,
         $li;
-    
-    if ($customSelect.length === 0) {      
+
+    if ($customSelect.length === 0) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
       $options.each(function () {
         $li = $('<li>' + $(this).html() + '</li>');
         $customSelect.find('ul').append($li);
       });
       $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
-      
+
       $this.after($customSelect);
       $this.hide();
+      
+    } else {
+      // refresh the ul with options from the select in case the supplied markup doesn't match
+      $customSelect.find('ul').html('');
+      $options.each(function () {
+        $li = $('<li>' + $(this).html() + '</li>');
+        $customSelect.find('ul').append($li);
+      });
     }
-    
+
     $options.each(function (index) {
       if (this.selected) {
         $customSelect.find('li').eq(index).addClass('selected');
         $customSelect.find('.current').html($(this).html());
       }
     });
-    
+
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
       if ($(this).outerWidth() > maxWidth) {
@@ -59,10 +67,50 @@ jQuery(document).ready(function ($) {
     });
     $customSelect.css('width', maxWidth + 18 + 'px');
     $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
+
+  }
+
+  $('form.custom select').each(function () {
+    appendCustomSelect(this);
   });
+  
 });
 
 (function ($) {
+  
+  function refreshCustomSelect($select) {
+    var maxWidth = 0;
+    var $customSelect = $select.next();
+    $options = $select.find('option');
+    $customSelect.find('ul').html('');
+    
+    $options.each(function () {
+      $li = $('<li>' + $(this).html() + '</li>');
+      $customSelect.find('ul').append($li);
+    });
+    
+    // re-populate
+    $options.each(function (index) {
+      if (this.selected) {
+        $customSelect.find('li').eq(index).addClass('selected');
+        $customSelect.find('.current').html($(this).html());
+      }
+    });
+    
+    // fix width
+    $customSelect.removeAttr('style')
+      .find('ul').removeAttr('style');
+    $customSelect.find('li').each(function () {
+      $customSelect.addClass('open');
+      if ($(this).outerWidth() > maxWidth) {
+        maxWidth = $(this).outerWidth();
+      }
+      $customSelect.removeClass('open');
+    });
+    $customSelect.css('width', maxWidth + 18 + 'px');
+    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
+    
+  }
   
   function toggleCheckbox($element) {
     var $input = $element.prev(),
@@ -99,6 +147,10 @@ jQuery(document).ready(function ($) {
     event.stopPropagation();
     
     toggleRadio($(this));
+  });
+  
+  $('form.custom select').live('change', function (event) {
+    refreshCustomSelect($(this));
   });
   
   $('form.custom label').live('click', function (event) {
