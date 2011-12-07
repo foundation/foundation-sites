@@ -237,6 +237,15 @@
 					</select>
 
 				</form>
+				
+				<h5>Adding Custom Forms with JavaScript</h5>
+
+				<p>If you are creating these custom forms using JavaScript (via AJAX, JavaScript templates or whatever), you will also need to create the custom markup that Foundation typically creates for you.</p>
+
+				<p>Foundation detects any custom forms when the document has loaded and adds the custom markup required to make the forms pretty. However if you are adding these forms after the document has loaded, Foundation does not know to append this markup.</p>
+
+				<p>All the custom forms events are bound using jQuery.fn.on(), so you don't need to worry about event handlers not being bound to new elements.</p>
+				
 			</div>
 			<div class="four columns">
 				<? include("includes/_download.php"); ?>
