@@ -100,7 +100,7 @@
 	  			<div class="three columns">
 	  				<a href="case-foundation.php"><img src="images/img-foundation.jpg" alt="Foundation Marketing Site" /></a>
 	  				<h4><a href="case-foundation.php">Foundation</a></h4>
-	  				<p>Pretty meta, right? We built this site and the documentation using FOundation during its development. Grab the entire site on Github, or check out the <a href="case-foundation.php">Case Study &rarr;</a></p>
+	  				<p>Pretty meta, right? We built this site and the documentation using Foundation during its development. Grab the entire site on Github, or check out the <a href="case-foundation.php">case study &rarr;</a></p>
 	  			</div>
 	  			<div class="three columns">
 	  				<a href="case-reel.php"><img src="images/img-reel.jpg" alt="Reel: Online presos with feedback" /></a>
