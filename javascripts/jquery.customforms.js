@@ -87,21 +87,21 @@ jQuery(document).ready(function ($) {
     $input.trigger('change');
   }
   
-  $('form.custom span.custom.checkbox').live('click', function (event) {
+  $(document).on('click', 'form.custom span.custom.checkbox', function (event) {
     event.preventDefault();
     event.stopPropagation();
     
     toggleCheckbox($(this));
   });
   
-  $('form.custom span.custom.radio').live('click', function (event) {
+  $(document).on('click', 'form.custom span.custom.radio', function (event) {
     event.preventDefault();
     event.stopPropagation();
     
     toggleRadio($(this));
   });
   
-  $('form.custom label').live('click', function (event) {
+  $(document).on('click', 'form.custom label', function (event) {
     var $associatedElement = $('#' + $(this).attr('for')),
         $customCheckbox,
         $customRadio;
@@ -118,7 +118,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  $('form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector').live('click', function (event) {
+  $(document).on('click', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (event) {
     var $this = $(this),
         $dropdown = $this.closest('div.custom.dropdown');
     
@@ -135,7 +135,7 @@ jQuery(document).ready(function ($) {
     }
   });
   
-  $('form.custom div.custom.dropdown li').live('click', function (event) {
+  $(document).on('click', 'form.custom div.custom.dropdown li', function (event) {
     var $this = $(this),
         $customDropdown = $this.closest('div.custom.dropdown'),
         $select = $customDropdown.prev(),

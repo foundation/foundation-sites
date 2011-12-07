@@ -33,12 +33,12 @@
 	form fieldset { padding: 9px 9px 2px 9px; border: solid 1px #ddd; margin: 18px 0; }
 
 	/* Inlined Radio & Checkbox */
-	div.form-field input[type=radio], div.form-field input[type=checkbox] { display: inline; width:auto; margin-bottom:0; }
+	.form-field input[type=radio], div.form-field input[type=checkbox] { display: inline; width:auto; margin-bottom:0; }
 
 	/* Errors */
-	div.form-field.error input, input.input-text.red { border-color: red; background-color: rgba(255,0,0,0.15); }
-	div.form-field.error label, label.red { color: red; }
-	div.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: red; width: 260px; }
+	.form-field.error input, input.input-text.red { border-color: red; background-color: rgba(255,0,0,0.15); }
+	.form-field.error label, label.red { color: red; }
+	.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: red; width: 260px; }
 
 	.small + small.error { width: 140px; }
 	.medium + small.error { width: 260px; }
