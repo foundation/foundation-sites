@@ -37,24 +37,37 @@ $(document).ready(function () {
 	$('input, textarea').placeholder();
 
 	/* DROPDOWN NAV ------------- */
-	// $('.nav-bar li a').bind('touchend click', function(e){
-	// 	var f = $(this).siblings('.flyout');
-	// 	if (!f.is(':visible') && f.length > 0) {
-	// 		$('.nav-bar li .flyout').hide();
-	// 		f.show();
-	// 	} else {
-	// 		window.location = $(this).attr('href');
-	// 	}
-	// 	return false;
-	// });
-	// $('.nav-bar').bind('touchstart touchmove touchend click', function(e) {
-	// 	e.stopPropagation();
-	// });
-	// $('body').bind('touchstart', function(e) {
-	// 	if (e.target !== $('.nav-bar')) {
-	// 		$('.nav-bar li .flyout').hide();
-	// 	}
-	// });
+	$('.nav-bar li a, .nav-bar li a:after').each(function() {
+		$(this).data('clicks', 0);
+	});
+	$('.nav-bar li a, .nav-bar li a:after').bind('touchend click', function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		var f = $(this).siblings('.flyout');
+		$(this).data('clicks', ($(this).data('clicks') + 1));
+		if (!f.is(':visible') && f.length > 0) {
+			$('.nav-bar li .flyout').hide();
+			f.show();
+		}
+	});
+	$('.nav-bar li a, .nav-bar li a:after').bind(' touchend click', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		if ($(this).data('clicks') > 1) {
+			window.location = $(this).attr('href');
+		}
+	});
+	$('.nav-bar').bind('touchend click', function(e) {
+		e.stopPropagation();
+		if (!$(e.target).parents('.nav-bar li .flyout') || $(e.target) != $('.nav-bar li .flyout')) {
+			e.preventDefault();
+		}
+	});
+	$('body').bind('touchend', function(e) {
+		if (!$(e.target).parents('.nav-bar li .flyout') || $(e.target) != $('.nav-bar li .flyout')) {
+			$('.nav-bar li .flyout').hide();
+		}
+	});
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
