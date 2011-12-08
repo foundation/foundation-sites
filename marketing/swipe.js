@@ -24,7 +24,7 @@
         left: offset
       });
       $('#swipeme' + currentSlide).css({
-        left: '20px'
+        left: '0px'
       });
       $('#swipeMeParent').children('li').width(offset);
       $('#swipeMeParent').height('#swipeMeParent li');
