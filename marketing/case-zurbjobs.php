@@ -51,12 +51,12 @@
 	  	<div class="four columns">
 	  		<h5>Mobile Optimized</h5>
 	  		<img src="images/case-zurbjobs-2.jpg" />
-	  		<p>Of course since we built with Foundation the site works great on mobile devices. CSS3 helps us avoid extraneous image requests, ensuring that things feel snappy even on slower connections. The layout also adapts to be simple and straightforward.</p>
+	  		<p>Of course, since we built with Foundation, the site works great on mobile devices. CSS3 helps us avoid extraneous image requests, ensuring that things feel snappy even on slower connections. The layout also adapts to be simple and straightforward.</p>
 	  	</div>
 	  	<div class="four columns">
 	  		<h5>Next Steps: Managing Jobs</h5>
 	  		<div class="frame"><img src="images/case-zurbjobs-3.jpg" /></div>
-	  		<p>Like any project there's more to do and more to refine. Up next we'll be fleshing out the customer admin tools, so people can create, modify, and close out their own postings.</p>
+	  		<p>Like any project there's more to do and more to refine. Up next, we'll be fleshing out the customer admin tools so people can create, modify, and close out their own postings.</p>
 	  	</div>
 	  </div>
 	 
