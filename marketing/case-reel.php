@@ -23,6 +23,7 @@
 	    			<li><a href="case-soapbox.php">ZURBsoapbox</a></li>
 	    			<li><a href="case-foundation.php">Foundation</a></li>
 	    			<li class="current"><a href="case-reel.php">Reel</a></li>
+	    			<li><a href="case-zurbjobs.php">ZURBjobs</a></li>
 	    		</ul>
 	    	</nav>
 	      <h1 class="light-weight">Reeling in Feedback</h1>
@@ -61,9 +62,9 @@
 	  <br><br>
 	  <div class="row">
 	    <div class="twelve columns">
-	      <a class="hide-on-phones nice blue button right" href="case-soapbox.php">Case Study: Soapbox &rarr;</a>
+	      <a class="hide-on-phones nice blue button right" href="case-zurbjobs.php">Case Study: ZURBjobs &rarr;</a>
 	      <!-- <a class="left hide-on-desktops" href="mobile.php">&larr; Mobility</a> -->
-	      <a class="right show-on-phones" href="case-soapbox.php">Case Study: Soapbox &rarr;</a>
+	      <a class="right show-on-phones" href="case-zurbjobs.php">Case Study: ZURBjobs &rarr;</a>
 	    </div>
 	    <br><br>
 	    <nav class="ten columns show-on-phones">

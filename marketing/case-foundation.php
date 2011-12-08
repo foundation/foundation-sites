@@ -23,6 +23,7 @@
 	    			<li><a href="case-soapbox.php">ZURBsoapbox</a></li>
 	    			<li class="current"><a href="case-foundation.php">Foundation</a></li>
 	    			<li><a href="case-reel.php">Reel</a></li>
+	    			<li><a href="case-zurbjobs.php">ZURBjobs</a></li>
 	    		</ul>
 	    	</nav>
 	      <h1 class="light-weight">Launching Foundation</h1>
