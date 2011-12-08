@@ -71,7 +71,7 @@
 
 				      // The Showing Animation
 				      $('#swipeme' + incrementMe).animate({
-				        left: '20px'
+				        left: '0px'
 				      }, 300);
 
 				      // Looping on Last Case Study  
@@ -105,7 +105,7 @@
 
 				      // The Showing Animation
 				      $('#swipeme' + incrementMe).animate({
-				        left: '20px'
+				        left: '0px'
 				      }, 300);
 
 				      // Looping on Last Case Study  
