@@ -166,14 +166,15 @@
 
 	@media only screen and (max-width: 767px) {
 		.nav-bar { height: auto; }
-		.nav-bar li { float: none; display: block; }
-		.nav-bar li a { text-align: left; border-top: 1px solid #ddd; border-right: none; } 
-		.nav-bar li:first-child a { border-top: none; }
-		.nav-bar li.has-flyout a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
-		.nav-bar li:hover a { font-weight: bold; }
-		.nav-bar li:hover ul { position: relative; }
+		.nav-bar>li { float: none; display: block; border-right: none; }
+		.nav-bar>li>a { text-align: left; border-top: 1px solid #ddd; border-right: none; } 
+		.nav-bar>li:first-child>a { border-top: none; }
+		.nav-bar>li.has-flyout>a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
+		.nav-bar>li:hover>a { font-weight: bold; }
+		.nav-bar>li:hover ul { position: relative; }
 		
 		.flyout { position: relative; width: auto; top: auto; margin-right: -2px; border-width: 1px 1px 0px 1px; }
+		.flyout.right { float: none; right: auto; left: -1px; }
 		.flyout.small, .flyout.large { width: auto; }
 		.flyout p:last-child { margin-bottom: 18px; }
 	}
