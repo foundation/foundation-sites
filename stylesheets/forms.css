@@ -36,9 +36,9 @@
 	.form-field input[type=radio], div.form-field input[type=checkbox] { display: inline; width:auto; margin-bottom:0; }
 
 	/* Errors */
-	.form-field.error input, input.input-text.red { border-color: red; background-color: rgba(255,0,0,0.15); }
-	.form-field.error label, label.red { color: red; }
-	.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: red; width: 260px; }
+	.form-field.error input, input.input-text.red { border-color: #C00000; background-color: rgba(255,0,0,0.15); }
+	.form-field.error label, label.red { color: #C00000; }
+	.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 260px; }
 
 	.small + small.error { width: 140px; }
 	.medium + small.error { width: 260px; }
@@ -55,7 +55,7 @@
 
 	form.nice div.form-field input[type=radio], form.nice div.form-field input[type=checkbox] { display: inline; width:auto; margin-bottom:0; }
 
-	form.nice div.form-field.error small, form.nice small.error { padding: 6px 4px; border: solid 0 red; border-width: 0 1px 1px 1px; margin-top: -10px; background: red; color: #fff; font-size: 12px; font-weight: bold; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; -webkit-border-bottom-left-radius: 2px; -webkit-border-bottom-right-radius: 2px; -moz-border-radius-bottomleft: 2px; -moz-border-radius-bottomright: 2px; }
+	form.nice div.form-field.error small, form.nice small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #C00000; color: #fff; font-size: 12px; font-weight: bold; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; -webkit-border-bottom-left-radius: 2px; -webkit-border-bottom-right-radius: 2px; -moz-border-radius-bottomleft: 2px; -moz-border-radius-bottomright: 2px; }
 
  	form.nice div.form-field.error .small + small, form.nice .small + small.error { width: 132px; }
 	form.nice div.form-field.error .medium + small, form.nice .medium + small.error { width: 252px; }
