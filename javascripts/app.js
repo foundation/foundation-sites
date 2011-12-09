@@ -37,6 +37,7 @@ $(document).ready(function () {
 	$('input, textarea').placeholder();
 
 	/* DROPDOWN NAV ------------- */
+	/*
 	$('.nav-bar li a, .nav-bar li a:after').each(function() {
 		$(this).data('clicks', 0);
 	});
@@ -68,6 +69,7 @@ $(document).ready(function () {
 			$('.nav-bar li .flyout').hide();
 		}
 	});
+	*/
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
