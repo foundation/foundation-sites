@@ -197,20 +197,23 @@
 	-------------------------------------------------- */
 	
 	.nav-bar { height: 45px; background: #fff; margin-top: 20px; border: 1px solid #ddd; }	
-	.nav-bar li { float: left; display: block; position: relative; padding: 0; margin: 0; border: none; }
-	.nav-bar li>a { position: relative; font-size: 14px; padding: 14px 20px 13px 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; border-right: 1px solid #ddd; } 
-	.nav-bar li.has-flyout>a { padding-right: 36px; }
-	.nav-bar li.has-flyout>a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; position: absolute; right: 18px; bottom: 20px; }
-	.nav-bar li:hover>a { color: #141414; z-index: 2; }
-	.nav-bar li:hover>a:after { border-top-color: #141414; }
+	.nav-bar>li { float: left; display: block; position: relative; padding: 0; margin: 0; border-right: 1px solid #ddd; line-height: 45px; }
+	.nav-bar>li>a { position: relative; font-size: 14px; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
+	.nav-bar>li>input { margin: 0 16px; }
+	.nav-bar>li ul { margin-bottom: 0; }
+	.nav-bar>li li { line-height: 1.3; }
+	.nav-bar>li.has-flyout>a { padding-right: 36px; }
+	.nav-bar>li.has-flyout>a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; position: absolute; right: 18px; bottom: 20px; }
+	.nav-bar>li:hover>a { color: #141414; z-index: 2; }
+	.nav-bar>li:hover>a:after { border-top-color: #141414; }
 
 	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 10; }
 	.flyout.small { width: 200px; }
 	.flyout.large { width: 600px; }
 	.flyout.right { left: auto; right: 0; }
 	.flyout p:last-child { margin-bottom: 0; }
-	.nav-bar li .flyout { display: none; }
-	.nav-bar li:hover .flyout { display: block; }
+	.nav-bar>li .flyout { display: none; }
+	.nav-bar>li:hover .flyout { display: block; }
 
 
 

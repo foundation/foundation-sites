@@ -187,6 +187,7 @@
 											<img src="http://placehold.it/200x250"
 											</div>
 										</div>
+									</div>
 				  				</div>
 				  			</div>
 				  		</div>
@@ -194,6 +195,21 @@
 				</ul>
       			
       			<script type="text/javascript" src="http://snipt.net/embed/7dd4b241f040a3437468b7e7176429a6"></script>
+      			
+      			<p>You can also drop inputs into the nav in place of an anchor. Here you can see a search input.</p>
+      			
+      			<ul class="nav-bar">
+      				<li><input type="search" /></li>
+      				<li class="has-flyout"><a href="">Nav Element</a>
+      					<div class="flyout">
+      						<ul>
+      							<li><a href="">This is a link in a UL.</a></li>
+      							<li><a href="">This is a link in a UL.</a></li>
+      							<li><a href="">This is a link in a UL.</a></li>
+      						</ul>
+      					</div>
+      				</li>
+      			</ul>
       			
       			<hr />
 				
