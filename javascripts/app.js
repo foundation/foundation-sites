@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 	function activateTab($tab) {
 		var $activeTab = $tab.closest('dl').find('a.active'),
-		contentLocation = $tab.attr("href") + 'Tab';
+				contentLocation = $tab.attr("href") + 'Tab';
 
 		//Make Tab Active
 		$activeTab.removeClass('active');
