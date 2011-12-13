@@ -14,7 +14,7 @@ $(document).ready(function () {
 		$tab.addClass('active');
 
 		//Show Tab Content
-		$(contentLocation).closest('.tabs-content').find('li').hide();
+		$(contentLocation).closest('ul.tabs-content').find('> li').hide();
 		$(contentLocation).show();
 	}
 
