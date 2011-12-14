@@ -29,6 +29,13 @@ $(document).ready(function () {
 	if (window.location.hash) {
 		activateTab($('a[href="' + window.location.hash + '"]'));
 	}
+	
+	/* ALERT BOXES ------------ */
+	$(".alert-box").delegate("a.close", "click", function() {
+	  $(this).closest(".alert-box").fadeOut(function(){
+	    $(this).remove();
+	  });
+	});
 
 
 	/* PLACEHOLDER FOR FORMS ------------- */
