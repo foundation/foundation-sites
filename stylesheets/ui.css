@@ -13,6 +13,7 @@
 :: Lists
 :: Panels
 :: Nav
+:: Video
 :: Microformats
 */
 
@@ -214,6 +215,34 @@
 	.flyout p:last-child { margin-bottom: 0; }
 	.nav-bar>li .flyout { display: none; }
 	.nav-bar>li:hover .flyout { display: block; }
+
+
+/*	--------------------------------------------------
+   	Video
+   	Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
+	-------------------------------------------------- */
+	
+	.video {
+		position: relative;
+		padding-top: 25px;
+		padding-bottom: 67.5%;
+		height: 0;
+		margin-bottom: 16px;
+		overflow: hidden;
+	}
+	
+	.video.widescreen { padding-bottom: 57.25%; }
+	.video.vimeo { padding-top: 0; }
+	
+	.video iframe,
+	.video object,
+	.video embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 
 
 
