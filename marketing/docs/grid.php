@@ -238,7 +238,7 @@
 				
 				<hr />
 				<h4>Centered Columns</h4>
-				<p>Like offset, centering a group of columns adds space on the left. This is a convenient way to make sure a block is centered, even if you change the number of columns it contains. Note: for this to work, there cannot be any other column blocks in the row.</p>
+				<p>Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element itself. This is a convenient way to make sure a block is centered, even if you change the number of columns it contains. Note: for this to work, there cannot be any other column blocks in the row.</p>
 
 				<div class="row display">
 					<div class="one columns centered">
@@ -303,6 +303,87 @@
 				
 				<hr />
 				
+				<h4>Source Ordering</h4>
+				<p>Sometimes within the grid you want the order of your markup to not necessarily be the same as the order items are flowed into the grid. Using these source ordering classes you can shift columns around on desktops and tablets. On phones the grid will still be linearized into the order of the markup.</p>
+				
+				<div class="row display">
+					<div class="two columns push-ten">
+						.two.columns		
+					</div>
+					<div class="ten columns pull-two">
+						.ten.columns (last)				
+					</div>
+				</div>
+				<div class="row display">
+					<div class="three columns push-nine">
+						.three.columns		
+					</div>
+					<div class="nine columns pull-three">
+						.nine.columns (last)				
+					</div>
+				</div>
+				<div class="row display">
+					<div class="four columns push-eight">
+						.four.columns			
+					</div>
+					<div class="eight columns pull-four">
+						.eight.columns (last)				
+					</div>
+				</div>
+				<div class="row display">
+					<div class="five columns push-seven">
+						.five				
+					</div>
+					<div class="seven columns pull-five">
+						.seven.columns (last)			
+					</div>
+				</div>
+				<div class="row display">
+					<div class="six columns push-six">
+						.six.columns				
+					</div>
+					<div class="six columns pull-six">
+						.six.columns (last)			
+					</div>
+				</div>
+				<div class="row display">
+					<div class="seven columns push-five">
+						.seven.columns				
+					</div>
+					<div class="five columns pull-seven">
+						.five.columns (last)			
+					</div>
+				</div>
+				<div class="row display">
+					<div class="eight columns push-four">
+						.eight.columns	
+					</div>
+					<div class="four columns pull-eight">
+						.four.columns (last)			
+					</div>
+				</div>
+				<div class="row display">
+					<div class="nine columns push-three">
+						.nine.columns				
+					</div>
+					<div class="three columns pull-nine">
+						.three.columns (last)		
+					</div>
+				</div>
+				<div class="row display">
+					<div class="ten columns push-two">
+						.ten.columns	
+					</div>
+					<div class="two columns pull-ten">
+						.two (last)		
+					</div>
+				</div>
+				
+				The syntax supports push and pull for two to ten columns, and is added directly to the columns themselves.
+				<p><script type="text/javascript" src="http://snipt.net/embed/460eb186c71df2e01b381b23423ad0d2"></script></p>
+				
+				<hr />
+				
 				<h4>Mobile Grid</h4>
 				<p>The grid has two modes of adapting for small displays like phones. The first requires no work at all &mdash; the grid will linearize on a small device so your columns stack vertically. This is useful to quickly adapt a desktop layout to a simple scrolling mobile layout. The other option is to use some simple classes to implement a four-column phone grid.</p>
 				
@@ -319,7 +400,7 @@
 				</div>
 				<div class="row display">
 					<div class="six phone-two columns">
-						.six.phone-two.columns				
+						.six.phone-two.columns		
 					</div>
 					<div class="six phone-two columns">
 						.six.phone-two.columns				
@@ -335,6 +416,9 @@
 				</div>
 				
 				<script type="text/javascript" src="http://snipt.net/embed/65d7bb9f3cf79b366fa1c9e970892817"></script>
+				
+				<h5>Mobile Source Ordering</h5>
+				<p>You can use the same push and pull style classes on the 4 column phone grid. The syntax includes .pull-one-phone, .pull-two-phone, .pull-three-phone, as well as .push-one-phone, .push-two-phone, .push-three.phone.</p>
 				
 				
 			</div>
