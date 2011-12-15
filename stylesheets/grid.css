@@ -88,9 +88,9 @@
 	
 	.block-grid.four-up { margin-left: -2% }
 	.block-grid.four-up>li { margin-left: 2%; width: 23%; }
-	.block-grid.four-up>li:nth-child(2n+1) {clear: left;}
+	.block-grid.four-up>li:nth-child(4n+1) {clear: left;}
 	
 	.block-grid.five-up { margin-left: -1.5% }
 	.block-grid.five-up>li { margin-left: 1.5%; width: 18.5%; }
-	.block-grid.five-up>li:nth-child(2n+1) {clear: left;}
+	.block-grid.five-up>li:nth-child(5n+1) {clear: left;}
 
