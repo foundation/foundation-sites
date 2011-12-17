@@ -74,7 +74,7 @@ div.timer {
     right: 10px;
     opacity: .6;
     cursor: pointer;
-    z-index: 1001; }
+    z-index: 3; }
 
 span.rotator {
     display: block;
@@ -133,7 +133,7 @@ span.pause.active {
 .orbit-wrapper .orbit-caption {
     background: #000;
     background: rgba(0,0,0,.6);
-    z-index: 1000;
+    z-index: 3;
     color: #fff;
 	text-align: center;
 	padding: 7px 0;
@@ -155,7 +155,7 @@ div.slider-nav span {
     height: 100px;
     text-indent: -9999px;
     position: absolute;
-    z-index: 1000;
+    z-index: 3;
     top: 50%;
     margin-top: -50px;
     cursor: pointer; }
@@ -173,7 +173,7 @@ div.slider-nav span.left {
 
 .orbit-bullets {
     position: absolute;
-    z-index: 1000;
+    z-index: 3;
     list-style: none;
     bottom: -40px;
     left: 50%;
@@ -217,7 +217,7 @@ div.slider-nav span.left {
 
 .orbit-bullets {
     position: absolute;
-    z-index: 1000;
+    z-index: 3;
     list-style: none;
     bottom: -50px;
     left: 50%;
