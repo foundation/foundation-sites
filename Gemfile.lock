@@ -1,0 +1,20 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
+    jammit (0.6.5)
+      yui-compressor (>= 0.9.3)
+    open4 (1.3.0)
+    sass (3.1.12)
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  jammit (~> 0.6.5)
+  sass (~> 3.1.11)
