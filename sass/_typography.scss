@@ -3,14 +3,39 @@
 /*	--------------------------------------------------
     :: Typography
 	-------------------------------------------------- */
-	h1, h2, h3, h4, h5, h6 { color: #181818; font-weight: bold; line-height: 1.25 }
+	h1, h2, h3, h4, h5, h6 { color: #181818; font-weight: bold; line-height: $default_heading_line_height }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
-	h1 { font-size: 46px; font-size: 4.6rem; margin-bottom: 12px;}
-	h2 { font-size: 35px; font-size: 3.5rem; margin-bottom: 9px; }
-	h3 { font-size: 28px; font-size: 2.8rem; margin-bottom: 9px; }
-	h4 { font-size: 21px; font-size: 2.1rem; margin-bottom: 3px; }
-	h5 { font-size: 18px; font-size: 1.8rem; font-weight: normal; margin-bottom: 3px;  }
-	h6 { font-size: 15px; font-size: 1.5rem; font-weight: normal; }
+	h1 { 
+		font-size: $largest_heading_size_px + px; 
+		font-size:  $largest_heading_size_rem + rem; 
+		margin-bottom: $largest_heading_margin_bottom + px;
+	}
+	h2 { 
+		font-size: round($largest_heading_size_px * 0.78) +px; 
+		font-size: round($largest_heading_size_rem * 0.78) + rem; 
+		margin-bottom: round($largest_heading_margin_bottom * 0.75) + px; 
+	}
+	h3 { 
+		font-size: round($largest_heading_size_px * 0.61) +px; 
+		font-size: round($largest_heading_size_rem * 0.61) + rem; 
+		margin-bottom: round($largest_heading_margin_bottom * 0.75) + px; 
+	}
+	h4 { 
+		font-size: round($largest_heading_size_px * 0.45) +px; 
+		font-size: round($largest_heading_size_rem * 0.45) + rem; 
+		margin-bottom: round($largest_heading_margin_bottom * 0.25) + px; 
+	}
+	h5 { 
+		font-size: round($largest_heading_size_px * 0.39) +px; 
+		font-size: round($largest_heading_size_rem * 0.39) + rem; 
+		font-weight: normal;
+		margin-bottom: round($largest_heading_margin_bottom * 0.25) + px; 
+	}
+	h6 { 
+		font-size: round($largest_heading_size_px * 0.32) +px; 
+		font-size: round($largest_heading_size_rem * 0.32) + rem; 
+		font-weight: normal;
+	}
 
 	.subheader { color: #777; font-weight: 300; margin-bottom: 24px; }
 
