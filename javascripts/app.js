@@ -1,3 +1,21 @@
+function resize_video() {
+	// this function is helpful when using a 100% width on your iframes for youtube or vimeo videos to automatically ajust the height
+	$('.video iframe, .video object, .video embed').each(function(){
+		var width = $(this).width();
+		var vidheight = (width * 0.5625);
+		$(this).css({height : vidheight});
+	});
+}
+
+$(window).resize(function(){
+	// Run the auto height function on resize
+	resize_video();
+});
+
+$(window).load(function(){
+	// Run the auto height function on load
+	resize_video();
+});
 $(document).ready(function () {
 
 	/* Use this js doc for all application specific JS */
