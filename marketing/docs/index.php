@@ -54,6 +54,9 @@
 				<hr />
 				
 				<h4>Changelog</h4>
+				<h5>2.1.4 <small>December 19, 2011</small></h5>
+				<p>Two semi-major new features: <a href="grid.php">source ordering</a> and <a href="ui.php">video embed</a> support. You can now reorder the grid (both desktop/tablet and phone) using push and pull classes. If you need to embed Youtube or Vimeo videos you can wrap them in a simple .flex-video class to have them scale by proportion within the grid. We also updated the nav-bar to work properly across more devices, and fixed a number of other small bugs.</p>
+				
 				<h5>2.1.3 <small>December 9, 2011</small></h5>
 				<p>We've fixed a number of inheritance issues with dropdown nav, and turned off the JS hooks for that element while we resolve some iOS / Android inconsistencies. Dropdowns will work as expected based on their CSS, but have no special mobile functionality at the moment.</p>
 				
