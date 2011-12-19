@@ -1,6 +1,6 @@
 # Creates a zip file of the Foundation template and the compessed assets
 
-VERSION_STRING = '2.1.3'
+VERSION_STRING = '2.1.4'
 
 def prepend_text(file_name, text)
   `exec 3<> '#{file_name}' && awk -v TEXT="#{text}" 'BEGIN {print TEXT}{print}' '#{file_name}' >&3`
