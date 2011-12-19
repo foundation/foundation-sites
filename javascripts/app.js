@@ -83,8 +83,9 @@ $(document).ready(function () {
 		}
 	});
 	$('body').live('click', function(e) {
-		alert('nay');
-		$('.nav-bar li .flyout').hide();
+		if (!$(e.target).parents().is('.flyout') || !$(e.target).is('.flyout')) {
+			$('.nav-bar li .flyout').hide();
+		}
 	});
 
 	/* DISABLED BUTTONS ------------- */
