@@ -55,6 +55,29 @@
 	.row .offset-by-ten:first-child 	{ margin-left: 87%;  }
 	.row .offset-by-eleven:first-child 	{ margin-left: 95.7%;  }
 	
+	/* Source Ordering */
+	.push-two 		{ left: 17.4% }
+	.push-three 	{ left: 26.1%; }
+	.push-four 		{ left: 34.8%; }
+	.push-five 		{ left: 43.5%; }
+	.push-six 		{ left: 52.2%; }
+	.push-seven 	{ left: 60.9%; }
+	.push-eight 	{ left: 69.6%; }
+	.push-nine 		{ left: 78.3%; }
+	.push-ten 		{ left: 87%; }
+	
+	.pull-two 		{ right: 17.4% }
+	.pull-three 	{ right: 26.1%; }
+	.pull-four 		{ right: 34.8%; }
+	.pull-five 		{ right: 43.5%; }
+	.pull-six 		{ right: 52.2%; }
+	.pull-seven 	{ right: 60.9%; }
+	.pull-eight 	{ right: 69.6%; }
+	.pull-nine 		{ right: 78.3%; }
+	.pull-ten 		{ right: 87%; }
+	
+	
+	
 	img, object, embed { max-width: 100%; height: auto; }
 	img { -ms-interpolation-mode: bicubic; }
 	 
@@ -73,6 +96,11 @@
 	for repeating blocks of content. Add 'mobile' to
 	them to switch them just like the layout grid
 	(one item per line) on phones
+	
+	For IE7/8 compatibility block-grid items need to be
+	the same height. You can optionally uncomment the
+	lines below to support arbitrary height, but know
+	that IE7/8 do not support :nth-child.
 	-------------------------------------------------- */
 	
 	.block-grid { display: block; overflow: hidden; }
@@ -80,13 +108,17 @@
 	
 	.block-grid.two-up { margin-left: -4% }
 	.block-grid.two-up>li { margin-left: 4%; width: 46%; }
+/* 	.block-grid.two-up>li:nth-child(2n+1) {clear: left;} */
 	
 	.block-grid.three-up { margin-left: -2% }
 	.block-grid.three-up>li { margin-left: 2%; width: 31.3%; }
+/* 	.block-grid.three-up>li:nth-child(3n+1) {clear: left;} */
 	
 	.block-grid.four-up { margin-left: -2% }
 	.block-grid.four-up>li { margin-left: 2%; width: 23%; }
+/* 	.block-grid.four-up>li:nth-child(4n+1) {clear: left;} */
 	
 	.block-grid.five-up { margin-left: -1.5% }
 	.block-grid.five-up>li { margin-left: 1.5%; width: 18.5%; }
+/* 	.block-grid.five-up>li:nth-child(5n+1) {clear: left;} */
 

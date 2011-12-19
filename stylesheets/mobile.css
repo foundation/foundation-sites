@@ -31,8 +31,11 @@
 		.row .row .column, .row .row .columns { padding: 0; }
 		.column, .columns { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
 		.column:last-child, .columns:last-child { margin-right: 0; }
+		
 		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0 !important; }
 		
+		.push-two, .push-three, .push-four, .push-five, .push-six, .push-seven, .push-eight, .push-nine, .push-ten { left: auto; }
+		.pull-two, .pull-three, .pull-four, .pull-five, .pull-six, .pull-seven, .pull-eight, .pull-nine, .pull-ten { right: auto; }
 		
 		/* Mobile 4-column Grid */
 		.row .phone-one.column:first-child, .row .phone-two.column:first-child, .row .phone-three.column:first-child, .row .phone-four.column:first-child, .row .phone-one.columns:first-child, .row .phone-two.columns:first-child, .row .phone-three.columns:first-child, .row .phone-four.columns:first-child { margin-left: 0; }
@@ -40,10 +43,18 @@
 		.row .phone-one.column, .row .phone-two.column, .row .phone-three.column, .row .phone-four.column,
 		.row .phone-one.columns, .row .phone-two.columns, .row .phone-three.columns, .row .phone-four.columns { margin-left: 4.4%; float: left; min-height: 1px; position: relative; padding: 0; }
 		
-		.row .phone-one.columns { width: 21.68% !important; }
-		.row .phone-two.columns { width: 47.8% !important; }
-		.row .phone-three.columns { width: 73.9% !important; }
-		.row .phone-four.columns { width: 100% !important; }
+		.row .phone-one.columns 	{ width: 21.68% !important; }
+		.row .phone-two.columns 	{ width: 47.8% !important; }
+		.row .phone-three.columns 	{ width: 73.9% !important; }
+		.row .phone-four.columns 	{ width: 100% !important; }
+		
+		.row .columns.push-one-phone { left: 26.08%; }
+		.row .columns.push-two-phone { left: 52.2% }
+		.row .columns.push-three-phone { left: 78.3% }
+		
+		.row .columns.pull-one-phone { right: 26.08% }
+		.row .columns.pull-two-phone { right: 52.2% }
+		.row .columns.pull-three-phone { right: 78.3%; }
 		
 		
 	}
@@ -177,4 +188,10 @@
 		.flyout.right { float: none; right: auto; left: -1px; }
 		.flyout.small, .flyout.large { width: auto; }
 		.flyout p:last-child { margin-bottom: 18px; }
+	}
+	
+	/* Nav Bar */
+	
+	@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+		.video { padding-top: 0; }
 	}
