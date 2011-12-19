@@ -69,11 +69,9 @@ $(document).ready(function () {
 		$(this).data('clicks', ($(this).data('clicks') + 1));
 		var f = $(this).siblings('.flyout');
 		if (!f.is(':visible') && $(this).parent('.has-flyout').length > 1) {
-			alert('yay');
 			$('.nav-bar li .flyout').hide();
 			f.show();
 		} else if (($(this).data('clicks') > 1) || ($(this).parent('.has-flyout').length < 1)) {
-			alert('nay');
 			window.location = $(this).attr('href');
 		}
 	});
