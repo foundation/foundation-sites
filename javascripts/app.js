@@ -31,8 +31,9 @@ $(document).ready(function () {
 	}
 	
 	/* ALERT BOXES ------------ */
-	$(".alert-box").delegate("a.close", "click", function() {
-	  $(this).closest(".alert-box").fadeOut(function(){
+	$(".alert-box").delegate("a.close", "click", function(event) {
+    event.preventDefault();
+	  $(this).closest(".alert-box").fadeOut(function(event){
 	    $(this).remove();
 	  });
 	});
