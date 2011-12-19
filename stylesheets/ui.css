@@ -222,7 +222,7 @@
    	Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
 	-------------------------------------------------- */
 	
-	.video {
+	.flex-video {
 		position: relative;
 		padding-top: 25px;
 		padding-bottom: 67.5%;
@@ -231,12 +231,12 @@
 		overflow: hidden;
 	}
 	
-	.video.widescreen { padding-bottom: 57.25%; }
-	.video.vimeo { padding-top: 0; }
+	.flex-video.widescreen { padding-bottom: 57.25%; }
+	.flex-video.vimeo { padding-top: 0; }
 	
-	.video iframe,
-	.video object,
-	.video embed {
+	.flex-video iframe,
+	.flex-video object,
+	.flex-video embed {
 		position: absolute;
 		top: 0;
 		left: 0;
