@@ -6,15 +6,15 @@ $(document).ready(function () {
 	/* Remove if you don't need :) */
 
 	function activateTab($tab) {
-	  var $activeTab = $tab.closest('dl').find('a.active'),
-	      contentLocation = $tab.attr("href") + 'Tab';
+		var $activeTab = $tab.closest('dl').find('a.active'),
+				contentLocation = $tab.attr("href") + 'Tab';
 
-	  //Make Tab Active
-	  $activeTab.removeClass('active');
-	  $tab.addClass('active');
+		//Make Tab Active
+		$activeTab.removeClass('active');
+		$tab.addClass('active');
 
-    //Show Tab Content
-		$(contentLocation).closest('.tabs-content').find('li').hide();
+    	//Show Tab Content
+		$(contentLocation).closest('.tabs-content').children('li').hide();
 		$(contentLocation).show();
 	}
 
@@ -22,19 +22,36 @@ $(document).ready(function () {
 		//Get all tabs
 		var tabs = $(this).children('dd').children('a');
 		tabs.click(function (e) {
-		  activateTab($(this));
+			activateTab($(this));
 		});
 	});
 
 	if (window.location.hash) {
-    activateTab($('a[href="' + window.location.hash + '"]'));
-  }
+		activateTab($('a[href="' + window.location.hash + '"]'));
+	}
+
+	/* ALERT BOXES ------------ */
+	$(".alert-box").delegate("a.close", "click", function() {
+	  $(this).closest(".alert-box").fadeOut(function(){
+	    $(this).remove();
+	  });
+	});
 
 
 	/* PLACEHOLDER FOR FORMS ------------- */
 	/* Remove this and jquery.placeholder.min.js if you don't need :) */
 
 	$('input, textarea').placeholder();
+
+
+
+	/* UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE6/7/8 SUPPORT AND ARE USING .block-grids */
+//	$('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'left'});
+//	$('.block-grid.three-up>li:nth-child(3n+1)').css({clear: 'left'});
+//	$('.block-grid.four-up>li:nth-child(4n+1)').css({clear: 'left'});
+//	$('.block-grid.five-up>li:nth-child(5n+1)').css({clear: 'left'});
+
+
 
 	/* DROPDOWN NAV ------------- */
 
@@ -72,6 +89,5 @@ $(document).ready(function () {
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
-
 
 });

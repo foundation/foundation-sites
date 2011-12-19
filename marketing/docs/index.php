@@ -54,6 +54,9 @@
 				<hr />
 				
 				<h4>Changelog</h4>
+				<h5>2.1.3 <small>December 9, 2011</small></h5>
+				<p>We've fixed a number of inheritance issues with dropdown nav, and turned off the JS hooks for that element while we resolve some iOS / Android inconsistencies. Dropdowns will work as expected based on their CSS, but have no special mobile functionality at the moment.</p>
+				
 				<h5>2.1.2 <small>December 7, 2011</small></h5>
 				<p>Added nav bar styles to ui.css including arbitrary-content dropdowns. Added basic support for microformats. Modified how the grid handles phone sizes through margin and padding, and in the process fixed a bug which broke the phone grid when used outside another column.</p>
 				
