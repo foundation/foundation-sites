@@ -63,7 +63,6 @@ $(document).ready(function () {
 	$('.nav-bar li a, .nav-bar li a:after').live('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		$('.nav-bar li .flyout').hide();
 		if (currentFoundationDropdown !== $(this).index() || currentFoundationDropdown === null) {
 			$(this).data('clicks', 0);
 			currentFoundationDropdown = $(this).index();
@@ -71,6 +70,7 @@ $(document).ready(function () {
 		$(this).data('clicks', ($(this).data('clicks') + 1));
 		var f = $(this).siblings('.flyout');
 		if (!f.is(':visible') && $(this).parent('.has-flyout').length > 1) {
+			$('.nav-bar li .flyout').hide();
 			f.show();
 		} else if (($(this).data('clicks') > 1) || ($(this).parent('.has-flyout').length < 1)) {
 			window.location = $(this).attr('href');
@@ -82,10 +82,8 @@ $(document).ready(function () {
 			e.preventDefault();
 		}
 	});
-	$('body').live('click', function(e) {
-		if (!$(e.target).parents().is('.flyout') || !$(e.target).is('.flyout')) {
-			$('.nav-bar li .flyout').hide();
-		}
+	$('body').click(function() {
+		$('.nav-bar li .flyout').hide();
 	});
 
 	/* DISABLED BUTTONS ------------- */
