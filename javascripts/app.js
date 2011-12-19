@@ -62,7 +62,6 @@ $(document).ready(function () {
 	});
 	$('.nav-bar li a, .nav-bar li a:after').live('click', function(e) {
 		e.preventDefault();
-		e.stopPropagation();
 		if (currentFoundationDropdown !== $(this).index() || currentFoundationDropdown === null) {
 			$(this).data('clicks', 0);
 			currentFoundationDropdown = $(this).index();
@@ -82,9 +81,11 @@ $(document).ready(function () {
 			e.preventDefault();
 		}
 	});
-	$('body').click(function() {
-		$('.nav-bar li .flyout').hide();
-	});
+	// $('body').bind('touchend', function(e) {
+	// 	if (!$(e.target).parents().is('.nav-bar') || !$(e.target).is('.nav-bar')) {
+	// 		$('.nav-bar li .flyout').is(':visible').hide();
+	// 	}
+	// });
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
