@@ -1,34 +1,50 @@
+/* Foundation v2.1.3 http://foundation.zurb.com */
 $(document).ready(function () {
 
-	/* Use this js doc for all application specific JS */
+  /* Use this js doc for all application specific JS */
 
 	/* TABS --------------------------------- */
 	/* Remove if you don't need :) */
 
-	function activateTab($tab) {
-		var $activeTab = $tab.closest('dl').find('a.active'),
-				contentLocation = $tab.attr("href") + 'Tab';
+	function activateTabByHash(locationHash) {
+	  activateTab($('dl.tabs > dd > a[href="' + locationHash + '"]'), locationHash);
+  }
 
-		//Make Tab Active
-		$activeTab.removeClass('active');
-		$tab.addClass('active');
+	function activateTab($tab, nav) {
+	  var $activeTab = $tab.closest('dl.tabs').find('a.active');
+    var contentLocation = (nav === undefined ? $tab.attr("href") : nav) + 'Tab';
 
-		//Show Tab Content
-		$(contentLocation).closest('ul.tabs-content').find('> li').hide();
+	  //Make Tab Active
+	  $activeTab.removeClass('active');
+	  $tab.addClass('active');
+
+    //Show Tab Content
+		$(contentLocation).closest('.tabs-content').find('> li').hide();
 		$(contentLocation).show();
+		
+		var containingTab = $(contentLocation).closest('.tabs-content').parentsUntil('.tabs-content').last().attr('id');
+    if ( containingTab !== undefined ) {
+  		var containingHash = "#" + containingTab.substring(0, containingTab.length-3) // - 'Tab'
+  		activateTabByHash(containingHash); // activate containing tab
+    }
 	}
 
 	$('dl.tabs').each(function () {
 		//Get all tabs
 		var tabs = $(this).children('dd').children('a');
 		tabs.click(function (e) {
-			activateTab($(this));
+		  activateTab($(this));
 		});
 	});
 
 	if (window.location.hash) {
-		activateTab($('a[href="' + window.location.hash + '"]'));
-	}
+    activateTabByHash(window.location.hash);
+  }
+  
+  $('a.nav').click(function(){
+    var hash = this.href.substring(this.href.indexOf("#"));
+    activateTabByHash(hash);
+  })
 
 
 	/* PLACEHOLDER FOR FORMS ------------- */
@@ -73,5 +89,6 @@ $(document).ready(function () {
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
+
 
 });
