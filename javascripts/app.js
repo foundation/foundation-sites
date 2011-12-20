@@ -71,6 +71,91 @@ $(document).ready(function () {
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
-
+  
+  
+  /* TOOLTIPS ---------- */
+  /* Positiong and options for adding tooltips */
+  var allTips = $('.has-tip');
+  
+  allTips.each(function() {
+    var tips = $(this),
+        tipWords = tips.attr('title'), 
+        tipWidths = tips.attr('data-width');
+        
+    tips.append('<span>' + tipWords + '<span class="nub"></span></span>');    
+    var tipSpans = tips.children('span');
+    
+    tipSpans.css('width', tipWidths);     
+    var tipHeights = tipSpans.outerHeight(),
+        trueTipWidths = tipSpans.outerWidth(),
+        nubSize = tipSpans.children('.nub').outerWidth(),
+        windowWidth = $(window).width();
+    
+    // Make it clickable for mobile devices
+    if ( navigator.userAgent.match(/Android/i) ||
+         navigator.userAgent.match(/webOS/i) ||
+         navigator.userAgent.match(/iPhone/i) ||
+         navigator.userAgent.match(/iPod/i) ||
+         navigator.userAgent.match(/iPad/i) ){    
+      
+      tips.click(function() {
+        allTips.hide();
+        tipSpans.toggle();
+      });
+    }
+    
+    function tipHover() {
+      tips.hover(function() {
+        tipSpans.toggle();
+        tips.attr('title', '');
+      });
+    }
+    
+    // If we're looking at the site on smaller screen sizes
+    if (windowWidth < 767) {
+      tipHover();
+      
+      tipSpans.css({
+        top: -tipHeights,
+        left: 0,
+        width: '100%'
+      });
+      
+    } else {
+      tipHover();
+      
+      tipSpans.css({
+        top: (tipHeights / 2),
+        left: 0
+      });
+      
+      if (tips.hasClass('top')) {
+        tipSpans.css({
+          top: auto,
+	        bottom: nubSize
+        });
+        
+      } else if (tips.hasClass('left')) {
+        tipSpans.children('.nub').css({
+          left: trueTipWidths,
+          top: (tipHeights / 2) - (nubSize / 2)
+        });
+        tipSpans.css({
+          left: -(trueTipWidths + (nubSize / 2)),
+          top: -((tipHeights / 2) - (nubSize / 2)) 
+        });
+      
+      } else if (tips.hasClass('right')) {
+        tipSpans.children('.nub').css({
+          left: -nubSize,
+          top: (tipHeights / 2) - (nubSize / 2)
+        });
+        tipSpans.css({
+          left: tips.width() + (nubSize / 2),
+          top: -((tipHeights / 2) - (nubSize / 2))
+        });
+      }
+    }
+  });
 
 });

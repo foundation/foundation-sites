@@ -177,3 +177,19 @@
 		.flyout.small, .flyout.large { width: auto; }
 		.flyout p:last-child { margin-bottom: 18px; }
 	}
+
+	/* Tooltips */
+	@media only screen and (max-width: 767px) {
+  	.has-tip > span {
+  	  font-size: 13px;
+  	  font-size: 1.3rem;
+  	  width: 100% !important;
+  	}
+  	.has-tip:hover > span {
+  	  width: 100% !important;
+  	}
+  	.has-tip.right > span {
+  	  
+  	}
+  }
+	
