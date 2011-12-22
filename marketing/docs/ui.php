@@ -187,6 +187,7 @@
 											<img src="http://placehold.it/200x250"
 											</div>
 										</div>
+									</div>
 				  				</div>
 				  			</div>
 				  		</div>
@@ -194,6 +195,21 @@
 				</ul>
       			
       			<script type="text/javascript" src="http://snipt.net/embed/7dd4b241f040a3437468b7e7176429a6"></script>
+      			
+      			<p>You can also drop inputs into the nav in place of an anchor. Here you can see a search input.</p>
+      			
+      			<ul class="nav-bar">
+      				<li><input type="search" /></li>
+      				<li class="has-flyout"><a href="">Nav Element</a>
+      					<div class="flyout">
+      						<ul>
+      							<li><a href="">This is a link in a UL.</a></li>
+      							<li><a href="">This is a link in a UL.</a></li>
+      							<li><a href="">This is a link in a UL.</a></li>
+      						</ul>
+      					</div>
+      				</li>
+      			</ul>
       			
       			<hr />
 				
@@ -259,6 +275,38 @@
 				
 				<hr />
 				
+				<h4>Video</h4>
+				<p>If you're embedding video from YouTube, Vimeo, or another site that uses iframe, embed or object elements you can wrap your video in <code>div.flex-video</code> to create an intrinsic ratio that will properly scale your video on any device.</p>
+				
+				<dl class="tabs contained">
+					<dd><a href="#video1" class="active">4:3</a></dd>
+					<dd><a href="#video2">Widescreen</a></dd>
+					<dd><a href="#video3">Vimeo</a></dd>
+				</dl>
+				<ul class="tabs-content contained">
+					<li class="active" id="video1Tab">
+						<div class="flex-video">
+							<iframe width="420" height="315" src="http://www.youtube.com/embed/9otNWTHOJi8" frameborder="0" allowfullscreen></iframe>
+						</div>
+						4:3 is the default size for the .video element, and the assumption for .video for chrome (controls) height is based on YouTube.
+					</li>
+					<li id="video2Tab">
+						<div class="flex-video widescreen">
+							<iframe width="560" height="315" src="http://www.youtube.com/embed/N966cATFWjI" frameborder="0" allowfullscreen></iframe>
+						</div>
+						By adding a class of .widescreen we change the ratio to 16:9, ideal for more recent video and most popular YouTube or Vimeo embeds.
+					</li>
+					<li id="video3Tab">
+						<div class="flex-video widescreen vimeo">
+							<iframe src="http://player.vimeo.com/video/21762736?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+						</div>
+						Because Vimeo places their chrome on the player itself, adding a class of .vimeo creates a container that is sized for the video only - no extra padding for the controls.
+					</li>
+				</ul>
+				
+				<script type="text/javascript" src="http://snipt.net/embed/723bad35ef085d939ed09fff20fca68e"></script>
+				
+				<hr />
 				
 				<h4>Microformats</h4>
 				<p>Microformats are formats for data objects represented on the page using standard HTML. By applying specific classes to objects parsers like the operator plugin can detect relevant data and display it. This can be especially handy for contact info, events, locations and news articles. We've supplied some base styling for microformats, as well as the relevant markup.</p>

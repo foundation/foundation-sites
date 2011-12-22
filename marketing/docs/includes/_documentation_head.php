@@ -1,4 +1,4 @@
-<? $version = "2.1.2"; ?>
+<? $version = "2.1.4"; ?>
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -45,6 +45,7 @@
 	<script src="../../javascripts/forms.jquery.js"></script>
 	<script src="../../javascripts/jquery.customforms.js"></script>
 	<script src="../../javascripts/jquery.placeholder.min.js"></script>
+	<script src="../../javascripts/modernizr.foundation.js"></script>
 	<script src="../../javascripts/app.js"></script>
 	<script src="presentation.js"></script>
 
