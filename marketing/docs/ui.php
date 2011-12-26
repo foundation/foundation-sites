@@ -60,6 +60,19 @@
 				
 				<hr />
 				
+				<h4>Panel</h4>
+				<p>A panel is a helpful css class that enables you to outline sections of your page easily. This allows you to view your page sections as you add content to them. Just add a "panel" class to a &lt;div&gt; tag.</p>
+				
+				<div class="panel">
+					<h5>My Panel is bigger than yours</h5>
+				</div>
+				
+				<p>
+					<script type="text/javascript" src="http://snipt.net/embed/3d0e300df47141037c18db6489773a63"></script>
+				</p>
+				
+				<hr/>
+				
 				<h4>Tabs</h4>
 				<div class="row">
 					<div class="six columns">
