@@ -79,8 +79,8 @@ jQuery(document).ready(function ($) {
 (function ($) {
   
   function refreshCustomSelect($select) {
-    var maxWidth = 0;
-    var $customSelect = $select.next();
+    var maxWidth = 0,
+        $customSelect = $select.next();
     $options = $select.find('option');
     $customSelect.find('ul').html('');
     
