@@ -207,7 +207,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-		$('.src-download').live('click', function (event) {
+		$(document).on('click', '.src-download', function (event) {
 			_gaq.push(['_trackEvent', 'Foundation', 'Downloaded']);
 		});
   </script>

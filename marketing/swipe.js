@@ -20,11 +20,11 @@
     // Detect Resize for offset animation
     $(window).resize(function(e) {
       offset = $('#swipeMeParent').width()+40;
-      $('#swipeme1, #swipeme2, #swipeme3').css({
+      $('#swipeme1, #swipeme2, #swipeme3, #swipeme4').css({
         left: offset
       });
       $('#swipeme' + currentSlide).css({
-        left: '20px'
+        left: '0px'
       });
       $('#swipeMeParent').children('li').width(offset);
       $('#swipeMeParent').height('#swipeMeParent li');
@@ -71,7 +71,7 @@
 
 				      // The Showing Animation
 				      $('#swipeme' + incrementMe).animate({
-				        left: '20px'
+				        left: '0px'
 				      }, 300);
 
 				      // Looping on Last Case Study  
@@ -105,7 +105,7 @@
 
 				      // The Showing Animation
 				      $('#swipeme' + incrementMe).animate({
-				        left: '20px'
+				        left: '0px'
 				      }, 300);
 
 				      // Looping on Last Case Study  

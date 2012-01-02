@@ -46,11 +46,16 @@
             <p><script type="text/javascript" src="http://snipt.net/embed/6c8d15f730bd05a7f6e19ac7777ec3db"></script></p>
             
             <h4>Create Your First Project</h4>
-            <p>In the command line, navigate to the directory you'd like to use for your new project or include the path with your 'compass create' command. This will create a directory that includes all the Foundation files, config.rb, and a directory called sass.</p>
+            <p>In the command line, navigate to the directory you'd like to use for your new project or include the path with your 'compass create' command. This will create a directory that includes all the Foundation files.</p>
             <p><script type="text/javascript" src="http://snipt.net/embed/7dadb17aa6b95f469d55c1c3fffd6b53"></script></p>
-            </p><em>The sass directory contains the sass files for Foundation and config.rb is where you can set some project specific settings.</em></p>
+            <p>Our Compass Gem defaults to SCSS, but can easily be switched to SASS on the fly when you create a project, just run the following:</p>
+            <p><script type="text/javascript" src="http://snipt.net/embed/1f8dc276f8040001419c64e9d18f09cd"></script></p>
             
-            <h4>Using Compass to Compile Your SASS into CSS</h4>
+            <h5>Adding to Existing Projects</h5>
+            <p>We've also made it very easy to add out gem to existing project. You just need to make sure to add <strong>require "ZURB-foundation"</strong> to the top of your config file. The navigate to your project directory and run:</p>
+            <p><script type="text/javascript" src="http://snipt.net/embed/49b9cebdffc1ef28654b73c1e656602b"></script></p>
+            
+            <h4>Using Compass to Compile Your SASS/SCSS into CSS</h4>
             <p>Navigate into your new project directory from the command line and run the following line, which will tell Compass to watch your sass files for when you save. Each time you save, Compass will compile the file into plain CSS and give you error if there are any.</p>
             <p><script type="text/javascript" src="http://snipt.net/embed/c9c8c237f2e7ad74c01ef6e272513dd6"></script></p>
             

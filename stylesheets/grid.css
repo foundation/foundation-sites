@@ -8,27 +8,27 @@
 	
 	-------------------------------------------------- */
 
-	.container { padding: 0px 20px; }
+	.container { padding: 0 20px; }
 	
 	.row { width: 100%; max-width: 980px; min-width: 727px; margin: 0 auto; }
 	/* To fix the grid into a certain size, set max-width to width */
-	.row .row { min-width: 0px; }
+	.row .row { min-width: 0; }
 	
 	.column, .columns { margin-left: 4.4%; float: left; min-height: 1px; position: relative; }
-	.column:first-child, .columns:first-child { margin-left: 0px; }
+	.column:first-child, .columns:first-child { margin-left: 0; }
 	
-	.row .one.columns { width: 4.3%; }
-	.row .two.columns { width: 13%; }
-	.row .three.columns { width: 21.68%; }
-	.row .four.columns { width: 30.4%; }
-	.row .five.columns { width: 39.1%; }
-	.row .six.columns { width: 47.8%; }
-	.row .seven.columns { width: 56.5%; }
-	.row .eight.columns { width: 65.2%; }
-	.row .nine.columns { width: 73.9%; }
-	.row .ten.columns { width: 82.6%; }
-	.row .eleven.columns { width: 91.3%; }
-	.row .twelve.columns { width: 100%; }
+	.row .one.columns 		{ width: 4.3%; }
+	.row .two.columns 		{ width: 13%; }
+	.row .three.columns 	{ width: 21.68%; }
+	.row .four.columns 		{ width: 30.37%; }
+	.row .five.columns 		{ width: 39.1%; }
+	.row .six.columns 		{ width: 47.8%; }
+	.row .seven.columns 	{ width: 56.5%; }
+	.row .eight.columns 	{ width: 65.2%; }
+	.row .nine.columns 		{ width: 73.9%; }
+	.row .ten.columns 		{ width: 82.6%; }
+	.row .eleven.columns 	{ width: 91.3%; }
+	.row .twelve.columns 	{ width: 100%; }
 	
 	.row .offset-by-one 	{ margin-left: 13.1%;  }
 	.row .offset-by-two 	{ margin-left: 21.8%;  }
@@ -40,21 +40,8 @@
 	.row .offset-by-eight 	{ margin-left: 74.0%;  }
 	.row .offset-by-nine 	{ margin-left: 82.7%;  }
 	.row .offset-by-ten 	{ margin-left: 91.4%;  }
-	/*.row .offset-by-eleven 	{ margin-left: 95.7%;  }*/
 	
 	.row .centered { float: none; margin: 0 auto; }
-	
-	/*.row .one.centered { margin-left: 47.9%; }
-	.row .two.centered { margin-left: 43.5%; }
-	.row .three.centered { margin-left: 39.2%; }
-	.row .four.centered { margin-left: 34.8%; }
-	.row .five.centered { margin-left: 30.5%; }
-	.row .six.centered { margin-left: 26.1%; }
-	.row .seven.centered { margin-left: 21.8%; }
-	.row .eight.centered { margin-left: 17.4%; }
-	.row .nine.centered { margin-left: 13.1%; }
-	.row .ten.centered { margin-left: 8.7%; }
-	.row .eleven.centered { margin-left: 4.3%; }*/
 
 	.row .offset-by-one:first-child 	{ margin-left: 8.7%;  }
 	.row .offset-by-two:first-child 	{ margin-left: 17.4%;  }
@@ -67,6 +54,29 @@
 	.row .offset-by-nine:first-child 	{ margin-left: 78.3%;  }
 	.row .offset-by-ten:first-child 	{ margin-left: 87%;  }
 	.row .offset-by-eleven:first-child 	{ margin-left: 95.7%;  }
+	
+	/* Source Ordering */
+	.push-two 		{ left: 17.4% }
+	.push-three 	{ left: 26.1%; }
+	.push-four 		{ left: 34.8%; }
+	.push-five 		{ left: 43.5%; }
+	.push-six 		{ left: 52.2%; }
+	.push-seven 	{ left: 60.9%; }
+	.push-eight 	{ left: 69.6%; }
+	.push-nine 		{ left: 78.3%; }
+	.push-ten 		{ left: 87%; }
+	
+	.pull-two 		{ right: 17.4% }
+	.pull-three 	{ right: 26.1%; }
+	.pull-four 		{ right: 34.8%; }
+	.pull-five 		{ right: 43.5%; }
+	.pull-six 		{ right: 52.2%; }
+	.pull-seven 	{ right: 60.9%; }
+	.pull-eight 	{ right: 69.6%; }
+	.pull-nine 		{ right: 78.3%; }
+	.pull-ten 		{ right: 87%; }
+	
+	
 	
 	img, object, embed { max-width: 100%; height: auto; }
 	img { -ms-interpolation-mode: bicubic; }
@@ -86,6 +96,11 @@
 	for repeating blocks of content. Add 'mobile' to
 	them to switch them just like the layout grid
 	(one item per line) on phones
+	
+	For IE7/8 compatibility block-grid items need to be
+	the same height. You can optionally uncomment the
+	lines below to support arbitrary height, but know
+	that IE7/8 do not support :nth-child.
 	-------------------------------------------------- */
 	
 	.block-grid { display: block; overflow: hidden; }
@@ -93,13 +108,17 @@
 	
 	.block-grid.two-up { margin-left: -4% }
 	.block-grid.two-up>li { margin-left: 4%; width: 46%; }
+/* 	.block-grid.two-up>li:nth-child(2n+1) {clear: left;} */
 	
 	.block-grid.three-up { margin-left: -2% }
 	.block-grid.three-up>li { margin-left: 2%; width: 31.3%; }
+/* 	.block-grid.three-up>li:nth-child(3n+1) {clear: left;} */
 	
 	.block-grid.four-up { margin-left: -2% }
 	.block-grid.four-up>li { margin-left: 2%; width: 23%; }
+/* 	.block-grid.four-up>li:nth-child(4n+1) {clear: left;} */
 	
 	.block-grid.five-up { margin-left: -1.5% }
 	.block-grid.five-up>li { margin-left: 1.5%; width: 18.5%; }
+/* 	.block-grid.five-up>li:nth-child(5n+1) {clear: left;} */
 

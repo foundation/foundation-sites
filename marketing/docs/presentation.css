@@ -54,7 +54,9 @@ footer.row a:hover {
   padding: 15px 20px 13px 20px; }
   
 @media handheld, only screen and (max-width: 767px) {
-	#zurBar { padding: 15px 0px 13px 0px; }
+  #zurBar {
+    padding-left: 20px;
+    padding-right: 20px; }
 }
 
 #zurBar h1, #zurBar h2 {

@@ -1,6 +1,6 @@
 # Creates a zip file of the Foundation template and the compessed assets
 
-VERSION_STRING = '2.1.1'
+VERSION_STRING = '2.1.4'
 
 def prepend_text(file_name, text)
   `exec 3<> '#{file_name}' && awk -v TEXT="#{text}" 'BEGIN {print TEXT}{print}' '#{file_name}' >&3`
@@ -35,5 +35,5 @@ end
   prepend_text(file_name, "/* Foundation v#{VERSION_STRING} http://foundation.zurb.com */")
 end
 
-`cd public/src && zip -r ../../marketing/files/foundation-download.zip *`
+`cd public/src && zip -r ../../marketing/files/foundation-download-#{VERSION_STRING}.zip *`
 `rm -rf public`

@@ -1,3 +1,4 @@
+<? $version = "2.1.4"; ?>
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -39,6 +40,7 @@
 	<![endif]-->
 
 	<script src="../javascripts/jquery.min.js"></script>
+	<script src="../javascripts/modernizr.foundation.js"></script>
 	<script src="jswipe.js"></script>
 	<script src="../javascripts/jquery.reveal.js"></script>
 	<script src="../javascripts/jquery.orbit-1.3.0.js"></script>
@@ -80,7 +82,7 @@
       		<a href="case-soapbox.php">Case Studies</a>
       		<a href="docs/">Documentation</a>
       		<a href="http://github.com/zurb/foundation">Github</a>
-      		<a href="files/foundation-download.zip" class="small blue nice button src-download">Download</a>
+      		<a href="files/foundation-download-<?= $version ?>.zip" class="small blue nice button src-download">Download</a>
       		
       	</strong>
       </div>

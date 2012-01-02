@@ -16,8 +16,8 @@
   </style>
   
   <!-- Grid BG -->
-  <div id="gridBgShort" class="container">
-    <div class="white-fade hide-on-phones"></div>
+  <div id="gridBgShort" class="container hide-on-phones">
+    <div class="white-fade"></div>
     <div class="row">
       <div class="one columns"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div>
     </div>
@@ -32,7 +32,7 @@
 	  	    <ul>
 	  	      <li><a href="docs/">Documentation</a></li>
 	  	      <li><a href="#">On Github</a></li>
-	  	      <li><a class="nice small blue button src-download" href="files/foundation-download.zip">Download</a></li>
+	  	      <li><a class="nice small blue button src-download" href="files/foundation-download-<?= $version ?>.zip">Download</a></li>
 	  	    </ul>
   	  	</nav>
 	    <!-- / Nav -->
@@ -89,6 +89,8 @@
 		 </div>
 	  </section>
 	 </div>
+	   	  
+	 <div class="container">
 	   	  
 	   	  
 	

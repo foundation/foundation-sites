@@ -1,3 +1,4 @@
+<? $version = "2.1.4"; ?>
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -30,7 +31,7 @@
 	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="../src/stylesheets/ie.css">
+		<link rel="stylesheet" href="../../stylesheets/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
@@ -44,6 +45,7 @@
 	<script src="../../javascripts/forms.jquery.js"></script>
 	<script src="../../javascripts/jquery.customforms.js"></script>
 	<script src="../../javascripts/jquery.placeholder.min.js"></script>
+	<script src="../../javascripts/modernizr.foundation.js"></script>
 	<script src="../../javascripts/app.js"></script>
 	<script src="presentation.js"></script>
 
@@ -62,7 +64,7 @@
       		<a href="../case-soapbox.php">Case Studies</a>
       		<a href="index.php">Documentation</a>
       		<a href="http://github.com/zurb/foundation">Github</a>
-      		<a href="../files/foundation-download.zip" class="small blue nice button src-download">Download</a>
+      		<a href="../files/foundation-download-<?= $version ?>.zip" class="small blue nice button src-download">Download</a>
       		
       	</strong>
       </div>

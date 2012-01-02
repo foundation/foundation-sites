@@ -15,7 +15,7 @@
 		  <header class="twelve columns">
 		    <h1>Foundation</h1>
   		  	<h2>An easy to use, powerful, and flexible framework for building prototypes and production code on any kind of device. <strong>Start here, build everywhere.</strong></h2>
-  		  	<a id="mainDownload" href="files/foundation-download.zip" class="nice blue button src-download">Download Foundation 2.1<br><small>Boilerplate &bull; CSS &bull; JS &bull; Plugins</small><img src="images/homepage-yeti.png" class="show-on-desktops" /></a>
+  		  	<a id="mainDownload" href="files/foundation-download-<?= $version ?>.zip" class="nice blue button src-download">Download Foundation 2.1<br><small>Boilerplate &bull; CSS &bull; JS &bull; Plugins</small><img src="images/homepage-yeti.png" class="show-on-desktops" /></a>
   		  	<p><a href="docs/">View the Documentation &raquo;</a><a href="http://github.com/zurb/foundation">View on Github &raquo;</a></p>
     		<img src="images/devices-awesomeness.png" alt="Foundation works on any device!">
 		  </header>
@@ -43,7 +43,7 @@
           </article>
           <aside class="three columns">
             <a href="docs/">View the Documentation &raquo;</a>
-            <a href="files/foundation-download.zip">Download Foundation 2.1.1 <!-- <span id="latestVersion">...</span> -->&raquo;</a>
+            <a href="files/foundation-download-<?= $version ?>.zip">Download Foundation 2.1.4 <!-- <span id="latestVersion">...</span> -->&raquo;</a>
           </aside>
         </div>
 	    </section>
@@ -100,9 +100,14 @@
 	  			<div class="three columns">
 	  				<a href="case-foundation.php"><img src="images/img-foundation.jpg" alt="Foundation Marketing Site" /></a>
 	  				<h4><a href="case-foundation.php">Foundation</a></h4>
-	  				<p>Pretty meta, right? We built this site and the documentation using FOundation during its development. Grab the entire site on Github, or check out the <a href="case-foundation.php">Case Study &rarr;</a></p>
+	  				<p>Pretty meta, right? We built this site and the documentation using Foundation during its development. Grab the entire site on Github, or check out the <a href="case-foundation.php">case study &rarr;</a></p>
 	  			</div>
 	  			<div class="three columns">
+	  				<a href="case-zurbjobs.php"><img src="images/img-zurbjobs.jpg" alt="ZURBjobs" /></a>
+	  				<h4><a href="case-zurbjobs.php">ZURBjobs</a></h4>
+	  				<p>It's hard to find great product design talent. ZURBjobs helps with specific, targeted job postings from the best companies around. Read the <a href="case-zurbjobs.php">case study &rarr;</a></p>
+	  			</div>
+	  			<div class="three columns" style="display:none;">
 	  				<a href="case-reel.php"><img src="images/img-reel.jpg" alt="Reel: Online presos with feedback" /></a>
 	  				<h4><a href="case-reel.php">Reel</a></h4>
 	  				<p>This free web app for showing off and getting quick feedback on preso was built to be responsive from the start using Foundation. Read the <a href="case-reel.php">case study &rarr;</a></p>
@@ -129,10 +134,17 @@
           <h3><a href="case-foundation.php">Foundation</a></h3>
           <p>Pretty meta, right? We built this site using Foundation and learned a few neat tricks along the way.</p><p>You can view the case study to see some of the cooler things going on behind the scenes, as well as grab the entire marketing site and source by checking out the project on Github. <a href="case-foundation.php">View the Case Study &rarr;</a></p>
 	      </li>
-	       <li id="swipeme3">
-	        <a href="case-reel.php"><img src="images/mobileimg-reel.jpg" alt="Reel" /></a>
-          <h3><a href="case-reel.php">Reel</a></h3>
-          <p>Reel is a little app we built to let people upload, get feedback on, and review presos or mockups. It wasn't enough to just show slides, we wanted an app that worked on any kind of device, and Foundation was the tool we used to build it.<br /><a href="case-reel.php">View the Case Study &rarr;</a></p>
+	      <!--
+	      <li id="swipeme3">
+	      	<a href="case-reel.php"><img src="images/mobileimg-reel.jpg" alt="Reel" /></a>
+          	<h3><a href="case-reel.php">Reel</a></h3>
+          	<p>Reel is a little app we built to let people upload, get feedback on, and review presos or mockups. It wasn't enough to just show slides, we wanted an app that worked on any kind of device, and Foundation was the tool we used to build it.<br /><a href="case-reel.php">View the Case Study &rarr;</a></p>
+	      </li>
+-->
+	      <li id="swipeme3">
+	        <a href="case-zurbjobs.php"><img src="images/mobileimg-zurbjobs.jpg" alt="Reel" /></a>
+          	<h3><a href="case-zurbjobs.php">ZURBjobs</a></h3>
+          	<p>It's hard to find great product design talent. ZURBjobs helps with specific, targeted job postings from the best companies around. Of course, we built and launched the site using Foundation.<br /><a href="case-zurbjobs.php">View the Case Study &rarr;</a></p>
 	      </li>
 	      <li id="swipeme4">
 	        <a href="case-swizzle.php"><img src="images/mobileimg-swizzle.jpg" alt="Reel" /></a>
