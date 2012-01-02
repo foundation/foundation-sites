@@ -149,10 +149,13 @@ jQuery(document).ready(function ($) {
     toggleRadio($(this));
   });
   
+<<<<<<< HEAD
   $(document).on('change', 'form.custom select', function (event) {
     refreshCustomSelect($(this));
   });
   
+=======
+>>>>>>> master
   $(document).on('click', 'form.custom label', function (event) {
     var $associatedElement = $('#' + $(this).attr('for')),
         $customCheckbox,
