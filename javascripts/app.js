@@ -55,15 +55,12 @@ $(document).ready(function () {
 
 
 	/* DROPDOWN NAV ------------- */
-	// FIX for IE 7-8
-	var afterSelectorSupport = '';
-	if(jQuery.support.leadingWhitespace == true) afterSelectorSupport = ', .nav-bar li a:after';
 
 	var currentFoundationDropdown = null;
-	$('.nav-bar li a'+afterSelectorSupport).each(function() {
+	$('.nav-bar li a').each(function() {
 		$(this).data('clicks', 0);
 	});
-	$('.nav-bar li a'+afterSelectorSupport).live('click', function(e) {
+	$('.nav-bar li a').live('click', function(e) {
 		e.preventDefault();
 		if (currentFoundationDropdown !== $(this).index() || currentFoundationDropdown === null) {
 			$(this).data('clicks', 0);
