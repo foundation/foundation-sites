@@ -57,10 +57,10 @@ $(document).ready(function () {
 	/* DROPDOWN NAV ------------- */
 
 	var currentFoundationDropdown = null;
-	$('.nav-bar li a, .nav-bar li a:after').each(function() {
+	$('.nav-bar li a').each(function() {
 		$(this).data('clicks', 0);
 	});
-	$('.nav-bar li a, .nav-bar li a:after').live('click', function(e) {
+	$('.nav-bar li a').live('click', function(e) {
 		e.preventDefault();
 		if (currentFoundationDropdown !== $(this).index() || currentFoundationDropdown === null) {
 			$(this).data('clicks', 0);
