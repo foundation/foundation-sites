@@ -80,6 +80,7 @@
 	
 	img, object, embed { max-width: 100%; height: auto; }
 	img { -ms-interpolation-mode: bicubic; }
+	#map_canvas img, .map_canvas img {max-width: none!important;}
 	 
 	 /* Nicolas Gallagher's micro clearfix */
 	 .row:before, .row:after, .clearfix:before, .clearfix:after { content:""; display:table; }
