@@ -31,7 +31,7 @@ If Foundation knocks your socks off the way we hope it does and you want more, w
 Community
 =========
 
-Many thanks to all the people working on implementations of Foundation for their favorite framework. If want to get on this list send an email to foundation@zurb.com.
+Many thanks to all the people working on Foundation either to improve the base code or to support specific frameworks. If you want to get on this readme send an email to foundation@zurb.com, and if you have questions you can join the Unofficial Foundation Google Group here: http://groups.google.com/group/foundation-framework-
 
 WordPress
 
