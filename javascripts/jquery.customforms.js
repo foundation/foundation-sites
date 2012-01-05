@@ -135,25 +135,25 @@ jQuery(document).ready(function ($) {
     $input.trigger('change');
   }
   
-  $(document).on('click', 'form.custom span.custom.checkbox', function (event) {
+  $('form.custom span.custom.checkbox').live('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     
     toggleCheckbox($(this));
   });
   
-  $(document).on('click', 'form.custom span.custom.radio', function (event) {
+  $('form.custom span.custom.radio').live('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     
     toggleRadio($(this));
   });
   
-  $(document).on('change', 'form.custom select', function (event) {
+  $('form.custom select').live('change', function (event) {
     refreshCustomSelect($(this));
   });
   
-  $(document).on('click', 'form.custom label', function (event) {
+  $('form.custom label').live('click', function (event) {
     var $associatedElement = $('#' + $(this).attr('for')),
         $customCheckbox,
         $customRadio;
@@ -170,7 +170,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  $(document).on('click', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (event) {
+  $('form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector').live('click', function (event) {
     var $this = $(this),
         $dropdown = $this.closest('div.custom.dropdown');
     
@@ -187,7 +187,7 @@ jQuery(document).ready(function ($) {
     }
   });
   
-  $(document).on('click', 'form.custom div.custom.dropdown li', function (event) {
+  $('form.custom div.custom.dropdown li').live('click', function (event) {
     var $this = $(this),
         $customDropdown = $this.closest('div.custom.dropdown'),
         $select = $customDropdown.prev(),
