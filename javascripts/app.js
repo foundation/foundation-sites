@@ -42,7 +42,7 @@ $(document).ready(function () {
 	/* PLACEHOLDER FOR FORMS ------------- */
 	/* Remove this and jquery.placeholder.min.js if you don't need :) */
 
-	$('input, textarea').placeholder();
+	$('input:not(:checkbox), textarea').placeholder();
 
 
 
