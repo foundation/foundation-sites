@@ -69,14 +69,12 @@ new function( $ ) {
 						}		
 					})
 					.bind("updateCheck", function(){
-						console.log($(this).is(":checked"));
 						if ( th.css("display") ==  "table-cell") {
 							$(this).attr("checked", true);
 						}
 						else {
 							$(this).attr("checked", false);
 						}
-						console.log($(this).is(":checked"));
 						return true;
 					})
 					.trigger("updateCheck");  
