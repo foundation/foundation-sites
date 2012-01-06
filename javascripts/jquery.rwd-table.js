@@ -107,14 +107,3 @@ new function( $ ) {
 		}) // end _create
 	} 
 }( jQuery );
-
-
-
-$(function(){ // on DOM ready
-
-	$("#tech-companies").table({
-		idprefix: "co-",
-		persist: "persist"
-	});
-
-});  // end DOM ready

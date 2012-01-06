@@ -44,6 +44,10 @@ $(document).ready(function () {
 
 	$('input:not(:checkbox), textarea').placeholder();
 
+	$(".responsive-table").table({
+		idprefix: "co-",
+		persist: "persist"
+	});
 
 
 	/* UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE6/7/8 SUPPORT AND ARE USING .block-grids */
