@@ -111,7 +111,6 @@ $(document).ready(function () {
     
     // Make it clickable for mobile devices
     if ( navigator.userAgent.match(/Android/i) ||
-         navigator.userAgent.match(/webOS/i) ||
          navigator.userAgent.match(/iPhone/i) ||
          navigator.userAgent.match(/iPod/i) ||
          navigator.userAgent.match(/iPad/i) ){    
@@ -138,7 +137,8 @@ $(document).ready(function () {
         left: 0,
         width: '100%'
       });
-      
+    
+    // If we're on a normal screen
     } else {
       tipHover();
       
@@ -146,11 +146,17 @@ $(document).ready(function () {
         top: (tipHeights / 2),
         left: 0
       });
-      
+            
       if (tips.hasClass('top')) {
+        tipSpans.children('.nub').css({
+          left: 10,
+          bottom: -nubSize,
+          top: 'auto'
+        });
         tipSpans.css({
-          top: auto,
-	        bottom: nubSize
+          top: 'auto',
+	        bottom: tipHeights + (nubSize / 2),
+	        left: '0'
         });
         
       } else if (tips.hasClass('left')) {

@@ -200,6 +200,7 @@
 		.flyout p:last-child { margin-bottom: 18px; }
 	}
 
+
 	/* Tooltips */
 	@media only screen and (max-width: 767px) {
   	.has-tip > span {
