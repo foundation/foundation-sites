@@ -50,7 +50,7 @@
 	<script src="presentation.js"></script>
 
 </head>
-<body id="<?= $page_name ?>-page" class="<?=$browser?>">
+<body>
 
   <!-- ZURBar -->
   <div id="zurBar" class="container">
