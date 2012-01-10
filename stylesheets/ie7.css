@@ -1,0 +1,9 @@
+/* This is for all IE specfific style less than IE9. We hate IE. */
+
+	
+form.custom span.custom.radio.checked > * {
+ display: block;
+ width: 10px;
+ height: 10px;
+ background: #bbb;
+}

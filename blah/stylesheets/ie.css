@@ -1,0 +1,5 @@
+/* This is for all IE specfific style less than IE9. We hate IE. */
+
+	div.panel { border: 1px solid #ccc; }
+	.lt-ie8 .nav-bar li.has-flyout a { padding-right: 20px; }
+	.lt-ie8 .nav-bar li.has-flyout a:after { border-top: none; }
