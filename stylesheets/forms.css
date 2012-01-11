@@ -24,10 +24,11 @@
 	input.placeholder, textarea.placeholder { color: #888; }
 
 	/* Text input and textarea sizes */
-	input.input-text, textarea { width: 254px; }
+	input.input-text, textarea { width: 254px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
 	input.small, textarea.small { width: 134px; }
 	input.medium, textarea.medium { width: 254px; }
 	input.large, textarea.large { width: 434px; }
+	input.expand, textarea.expand { width: 100%; }
 
 	/* Fieldsets */
 	form fieldset { padding: 9px 9px 2px 9px; border: solid 1px #ddd; margin: 18px 0; }
@@ -38,11 +39,12 @@
 	/* Errors */
 	.form-field.error input, input.input-text.red { border-color: #C00000; background-color: rgba(255,0,0,0.15); }
 	.form-field.error label, label.red { color: #C00000; }
-	.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 260px; }
+	.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 254px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
 
-	.small + small.error { width: 140px; }
-	.medium + small.error { width: 260px; }
-	.large + small.error { width: 440px; }
+	.small + small.error { width: 134px; }
+	.medium + small.error { width: 254px; }
+	.large + small.error { width: 434px; }
+	.expand + small.error { width: 100%; }
 
 	/* -----------------------------------------
 	   Nicer Forms

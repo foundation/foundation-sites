@@ -145,12 +145,13 @@
 
 	@media only screen and (max-width: 767px) {
 		div.form-field input, div.form-field input.small, div.form-field input.medium, div.form-field input.large, div.form-field input.oversize, input.input-text, input.input-text.oversize, textarea,
-		form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { display: block; width: 96%; padding: 6px 2% 4px; font-size: 18px; }
+		form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { display: block; width: 100%; padding: 6px 2% 4px; font-size: 18px; }
 		form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
 		form.nice div.form-field.error small, form.nice small.error { padding: 6px 2%; display: block; }
 		form.nice div.form-field.error .small + small, form.nice .small + .error { width: auto; }
 		form.nice div.form-field.error .medium + small, form.nice .medium + .error { width: auto; }
 		form.nice div.form-field.error .large + small, form.nice .large + .error { width: auto; }
+		form.nice div.form-field.error .expand + small, form.nice .expand + .error { width: auto; }
 	}
 	
 	
