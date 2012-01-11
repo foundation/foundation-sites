@@ -40,7 +40,7 @@
 	}
 	
   	/* Don't use native buttons on iOS */
-	input[type=submit].button { -webkit-appearance: none; }
+	input[type=submit].button, button.button { -webkit-appearance: none; }
 	
 	.button.nice { 
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px;
