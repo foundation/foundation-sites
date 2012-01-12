@@ -299,6 +299,7 @@ header img {
   font-size: 14px;
   font-size: 1.4rem;
   margin-bottom: 4px; }
+#updates article dl dd { height: 17px; overflow: hidden; }
 #updates article a {
   font-size: 11px;
   font-size: 1.1rem;
