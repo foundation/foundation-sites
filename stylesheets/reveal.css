@@ -7,7 +7,7 @@
 		height: 100%;
 		width: 100%;
 		background: #000;
-		z-index: 2000;
+		z-index: 40;
 		display: none;
 		top: 0;
 		left: 0; 
@@ -21,7 +21,7 @@
 		width: 520px;
 		background: #eee url(../images/misc/modal-gloss.png) no-repeat -200px -80px;
 		position: absolute;
-		z-index: 2001;
+		z-index: 41;
 		padding: 30px 40px 34px;
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
