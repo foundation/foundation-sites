@@ -266,7 +266,6 @@
 	.has-tip {
 	  border-bottom: dotted 1px #ccc;
 	  cursor: help;
-	  position: relative;
 	  font-weight: bold;
 	  color: #333;
 	}
@@ -274,8 +273,8 @@
 	  border-bottom: dotted 1px #0593dc;
 	  color: #0192dd;
 	}
-	.has-tip > span {
-	  display: none;
+	.has-tip + span {
+	  display: block;
 	  background: rgb(0,0,0);
 	  background: rgba(0,0,0,0.85);
 	  position: absolute;
@@ -287,7 +286,7 @@
 	  padding: 5px 9px 7px 8px;
 	  z-index: 999;
 	}
-	.has-tip > span > .nub {
+	.has-tip + span > .nub {
 	  display: block;
 	  width: 0;
 	  height: 0;
@@ -298,25 +297,25 @@
 	  top: -12px;
     left: 10px;
 	}
-	.has-tip.top > span > .nub {
+	.has-tip.top + span > .nub {
 	  border-color: rgb(0,0,0) transparent transparent transparent;
 	  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
 	}
 	.has-tip.left, .has-tip.right {
 	  float: none;
 	}
-	.has-tip.left > span > .nub {
+	.has-tip.left + span > .nub {
 	  border-color: transparent transparent transparent rgb(0,0,0);
 	  border-color: transparent transparent transparent rgba(0,0,0,0.85);
 	}
-	.has-tip.right > span > .nub {
+	.has-tip.right + span > .nub {
 	  border-color: transparent rgb(0,0,0) transparent transparent;
 	  border-color: transparent rgba(0,0,0,0.85) transparent transparent;
 	}
 	/*.has-tip:hover > span {
 	  display: block;
 	}*/
-	.has-tip.radius > span {
+	.has-tip.radius + span {
 	  -webkit-border-radius: 6px;
 	     -moz-border-radius: 6px;
 	          border-radius: 6px;

@@ -93,33 +93,43 @@ $(document).ready(function () {
   
   /* TOOLTIPS ---------- */
   /* Positiong and options for adding tooltips */
+  
+  //
+  // NOT TO SELF:
+  // Associate <span> with a data-id that matches the id of the parent.
+  // Use javascript to position all the tips absolutely on the page.
+  //
+  
   var allTips = $('.has-tip');
   
   allTips.each(function() {
     var tips = $(this),
         tipWords = tips.attr('title'), 
+        tipParentID = tips.attr('id'),
         tipWidths = tips.attr('data-width');
         
-    tips.append('<span>' + tipWords + '<span class="nub"></span></span>');    
-    var tipSpans = tips.children('span');
+    $('<span data-id="' + tipParentID + '">' + tipWords + '<span class="nub"></span></span>').insertAfter(tips);    
+    var tipSpans = tips.siblings('span');
     
     tipSpans.css('width', tipWidths);     
     var tipHeights = tipSpans.outerHeight(),
         trueTipWidths = tipSpans.outerWidth(),
         nubSize = tipSpans.children('.nub').outerWidth(),
         windowWidth = $(window).width();
-    
+        
+        // console.log('tipID: '+ tipParentID + ', Offset Top:' + tips.offset().top + ', Offset Left:' + tips.offset().left);
+
     // Make it clickable for mobile devices
-    if ( navigator.userAgent.match(/Android/i) ||
-         navigator.userAgent.match(/iPhone/i) ||
-         navigator.userAgent.match(/iPod/i) ||
-         navigator.userAgent.match(/iPad/i) ){    
-      
-      tips.click(function() {
-        allTips.hide();
-        tipSpans.toggle();
-      });
-    }
+    // if ( navigator.userAgent.match(/Android/i) ||
+    //          navigator.userAgent.match(/iPhone/i) ||
+    //          navigator.userAgent.match(/iPod/i) ||
+    //          navigator.userAgent.match(/iPad/i) ){    
+    //       
+    //       tips.click(function() {
+    //         allTips.hide();
+    //         tipSpans.toggle();
+    //       });
+    //     }
     
     function tipHover() {
       tips.hover(function() {
@@ -142,43 +152,56 @@ $(document).ready(function () {
     } else {
       tipHover();
       
-      tipSpans.css({
-        top: (tipHeights / 2),
-        left: 0
-      });
-            
       if (tips.hasClass('top')) {
-        tipSpans.children('.nub').css({
-          left: 10,
-          bottom: -nubSize,
-          top: 'auto'
-        });
-        tipSpans.css({
-          top: 'auto',
-	        bottom: tipHeights + (nubSize / 2),
-	        left: '0'
-        });
+        // tipSpans.children('.nub').css({
+        //           left: 10,
+        //           bottom: -nubSize,
+        //           top: 'auto'
+        //         });
+        //         tipSpans.css({
+        //           top: 'auto',
+        //          bottom: tipHeights + (nubSize / 2),
+        //          left: '0'
+        //         });
         
       } else if (tips.hasClass('left')) {
-        tipSpans.children('.nub').css({
-          left: trueTipWidths,
-          top: (tipHeights / 2) - (nubSize / 2)
-        });
         tipSpans.css({
-          left: -(trueTipWidths + (nubSize / 2)),
-          top: -((tipHeights / 2) - (nubSize / 2)) 
+          top: tips.offset().top
         });
+        // tipSpans.children('.nub').css({
+        //           left: trueTipWidths,
+        //           top: (tipHeights / 2) - (nubSize / 2)
+        //         });
+        //         tipSpans.css({
+        //           left: -(trueTipWidths + (nubSize / 2)),
+        //           top: -((tipHeights / 2) - (nubSize / 2)) 
+        //         });
       
       } else if (tips.hasClass('right')) {
-        tipSpans.children('.nub').css({
-          left: -nubSize,
-          top: (tipHeights / 2) - (nubSize / 2)
-        });
+        // tipSpans.children('.nub').css({
+        //   left: -nubSize,
+        //   top: (tipHeights / 2) - (nubSize / 2)
+        // });
+        // tipSpans.css({
+        //   left: tips.width() + (nubSize / 2),
+        //   top: -((tipHeights / 2) - (nubSize / 2))
+        // });
+        
+      } else {
         tipSpans.css({
-          left: tips.width() + (nubSize / 2),
-          top: -((tipHeights / 2) - (nubSize / 2))
+          top: tips.offset().top - (tipHeights / 2),
+          left: tips.offset().left
         });
       }
+      
+      $(window).resize(function() {
+        console.log(tips.offset().top - (tipHeights / 2));
+
+        tipSpans.css({
+          top: tips.offset().top - (tipHeights / 2),
+          left: tips.offset().left
+        });
+      });
     }
   });
 
