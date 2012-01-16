@@ -199,8 +199,7 @@
 											<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
 										</div>
 										<div class="four columns">
-											<img src="http://placehold.it/200x250"
-											</div>
+											<img src="http://placehold.it/200x250" />
 										</div>
 									</div>
 				  				</div>
