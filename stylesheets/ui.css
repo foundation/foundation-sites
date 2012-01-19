@@ -127,35 +127,9 @@
     Labels
     -------------------------------------------------- */
 
-	.label {
-		padding: 1px 6px 2px;
-		font-size: 11px;
-		font-weight: bold;
-		text-align: center;
-		text-decoration: none;
-		line-height: 1;
-		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
-		white-space: nowrap;
-		display: inline;
-		position: relative;
-		bottom: 1px;
-		margin-right: 4px;
-		color: #fff;
-		background: #00a6fc;
-	}
-	
-	.label.radius {
-		-moz-border-radius: 2px;
-		-webkit-border-radius: 2px;
-		border-radius: 2px;
-	}
-	
-	.label.round {
-		padding: 1px 8px 2px;
-		-moz-border-radius: 1000px;
-		-webkit-border-radius: 1000px;
-		border-radius: 1000px;
-	}
+	.label { padding: 0px 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; }
+	.label.radius { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
+	.label.round { padding: 1px 7px 2px; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
 	
 	/* Colors ---------- */
 	.blue.label				{ background-color: #00a6fc; }
