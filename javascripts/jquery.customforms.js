@@ -19,6 +19,7 @@ jQuery(document).ready(function ($) {
       }
 
       $span.toggleClass('checked', $this.is(':checked'));
+      $span.toggleClass('disabled', $this.is(':disabled'));
     });
   }
   appendCustomMarkup('checkbox');
@@ -50,6 +51,8 @@ jQuery(document).ready(function ($) {
         $customSelect.find('ul').append($li);
       });
     }
+
+    $customSelect.toggleClass('disabled', $this.is(':disabled'));
 
     $options.each(function (index) {
       if (this.selected) {
@@ -116,10 +119,12 @@ jQuery(document).ready(function ($) {
     var $input = $element.prev(),
         input = $input[0];
 
-    input.checked = ((input.checked) ? false : true);
-    $element.toggleClass('checked');
-    
-    $input.trigger('change');
+    if (false == $input.is(':disabled')) {
+        input.checked = ((input.checked) ? false : true);
+        $element.toggleClass('checked');
+
+        $input.trigger('change');
+    }
   }
   
   function toggleRadio($element) {
@@ -172,18 +177,22 @@ jQuery(document).ready(function ($) {
 
   $('form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector').live('click', function (event) {
     var $this = $(this),
-        $dropdown = $this.closest('div.custom.dropdown');
+        $dropdown = $this.closest('div.custom.dropdown'),
+        $select = $dropdown.prev();
     
     event.preventDefault();
-    $dropdown.toggleClass('open');
     
-    if ($dropdown.hasClass('open')) {
-      $(document).bind('click.customdropdown', function (event) {
-        $dropdown.removeClass('open');
-        $(document).unbind('.customdropdown');
-      });
-    } else {
-      $(document).unbind('.customdropdown');
+    if (false == $select.is(':disabled')) {
+        $dropdown.toggleClass('open');
+
+        if ($dropdown.hasClass('open')) {
+          $(document).bind('click.customdropdown', function (event) {
+            $dropdown.removeClass('open');
+            $(document).unbind('.customdropdown');
+          });
+        } else {
+          $(document).unbind('.customdropdown');
+        }
     }
   });
   
