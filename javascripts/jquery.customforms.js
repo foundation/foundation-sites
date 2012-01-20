@@ -6,8 +6,8 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-jQuery(function ($) {
-  
+(function ($) {
+
   function appendCustomMarkup(type) {
     $('form.custom input:' + type).each(function () {
 
@@ -22,18 +22,16 @@ jQuery(function ($) {
         .toggleClass('disabled', $this.is(':disabled'));
     });
   }
-  appendCustomMarkup('checkbox');
-  appendCustomMarkup('radio');
 
-  function appendCustomSelect($select) {
-    var $customSelect = $select.next('div.custom.dropdown'),
+  function refreshCustomSelect($select, append) {
+    var $customSelect = $select.next(append ? 'div.custom.dropdown' : ''),
         $options = $select.find('option'),
         maxWidth = 0,
         outerWidth,
         li = '',
         $ul;
 
-    if ($customSelect.length === 0) {
+    if (append && $customSelect.length === 0) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
       $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
 
@@ -41,13 +39,14 @@ jQuery(function ($) {
 
       $ul = $customSelect.find('ul');
     } else {
-      // refresh the ul with options from the select in case the supplied markup doesn't match
       $ul = $customSelect.find('ul').html('');
       $customSelect.removeAttr('style');
-      $ul.removeAttr('style');
+      $ul.removeAttr('style');  
     }
 
-    $customSelect.toggleClass('disabled', $select.is(':disabled'));
+    if (append) {
+      $customSelect.toggleClass('disabled', $select.is(':disabled'));
+    }
 
     $options.each(function () {
       li += '<li>' + $(this).html() + '</li>';
@@ -76,53 +75,17 @@ jQuery(function ($) {
 
   }
 
-  $('form.custom select').each(function () {
-    appendCustomSelect($(this));
+  $(function () {
+
+    appendCustomMarkup('checkbox');
+    appendCustomMarkup('radio');
+
+    $('form.custom select').each(function () {
+      refreshCustomSelect($(this), true);
+    });
+
   });
 
-});
-
-(function ($) {
-  
-function refreshCustomSelect($select) {
-    var $customSelect = $select.next(),
-        $options = $select.find('option'),
-        maxWidth = 0,
-        outerWidth,
-        li = '',
-        $ul;
-
-    $ul = $customSelect.find('ul').html('');
-    $customSelect.removeAttr('style');
-    $ul.removeAttr('style');
-    
-    $options.each(function () {
-      li += '<li>' + $(this).html() + '</li>';
-    });
-    $ul.append(li);
-
-    // re-populate
-    $options.each(function (index) {
-      if (this.selected) {
-        $customSelect.find('li').eq(index).addClass('selected');
-        $customSelect.find('.current').html($(this).html());
-      }
-    });
-    
-    // fix width
-    $customSelect.find('li').each(function () {
-      $customSelect.addClass('open');
-      outerWidth = $(this).outerWidth();
-      if (outerWidth > maxWidth) {
-        maxWidth = outerWidth;
-      }
-      $customSelect.removeClass('open');
-    });
-    $customSelect.css('width', maxWidth + 18 + 'px');
-    $ul.css('width', maxWidth + 16 + 'px');
-
-  }
-  
   function toggleCheckbox($element) {
     var $input = $element.prev(),
         input = $input[0];
