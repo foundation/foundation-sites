@@ -34,10 +34,6 @@ jQuery(document).ready(function ($) {
 
     if ($customSelect.length === 0) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
-      $options.each(function () {
-        $li = $('<li>' + $(this).html() + '</li>');
-        $customSelect.find('ul').append($li);
-      });
       $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
 
       $this.after($customSelect);
@@ -46,11 +42,12 @@ jQuery(document).ready(function ($) {
     } else {
       // refresh the ul with options from the select in case the supplied markup doesn't match
       $customSelect.find('ul').html('');
-      $options.each(function () {
-        $li = $('<li>' + $(this).html() + '</li>');
-        $customSelect.find('ul').append($li);
-      });
     }
+
+    $options.each(function () {
+      $li = $('<li>' + $(this).html() + '</li>');
+      $customSelect.find('ul').append($li);
+    });
 
     $customSelect.toggleClass('disabled', $this.is(':disabled'));
 
