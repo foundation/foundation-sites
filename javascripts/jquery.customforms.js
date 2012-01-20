@@ -159,18 +159,18 @@ jQuery(document).ready(function ($) {
   });
   
   $('form.custom label').live('click', function (event) {
-    var $associatedElement = $('#' + $(this).attr('for')),
-        $customCheckbox,
-        $customRadio;
+    var $this = $(this),
+        $associatedElement = $('#' + $this.attr('for')),
+        spanSelector = 'span.custom.',
+        type;
     if ($associatedElement.length !== 0) {
-      if ($associatedElement.attr('type') === 'checkbox') {
+      type = $associatedElement.attr('type');
+      if (type === 'checkbox') {
         event.preventDefault();
-        $customCheckbox = $(this).find('span.custom.checkbox');
-        toggleCheckbox($customCheckbox);
-      } else if ($associatedElement.attr('type') === 'radio') {
+        toggleCheckbox($this.find(spanSelector + type));
+      } else if (type === 'radio') {
         event.preventDefault();
-        $customRadio = $(this).find('span.custom.radio');
-        toggleRadio($customRadio);
+        toggleRadio($this.find(spanSelector + type));
       }
     }
   });
