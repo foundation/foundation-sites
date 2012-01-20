@@ -25,10 +25,9 @@ jQuery(function ($) {
   appendCustomMarkup('checkbox');
   appendCustomMarkup('radio');
 
-  function appendCustomSelect(sel) {
-    var $this = $(sel),
-        $customSelect = $this.next('div.custom.dropdown'),
-        $options = $this.find('option'),
+  function appendCustomSelect($select) {
+    var $customSelect = $select.next('div.custom.dropdown'),
+        $options = $select.find('option'),
         maxWidth = 0,
         outerWidth,
         li = '',
@@ -38,20 +37,24 @@ jQuery(function ($) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
       $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
 
-      $this.hide().after($customSelect);
-      
+      $select.hide().after($customSelect);
+
+      $ul = $customSelect.find('ul');
     } else {
       // refresh the ul with options from the select in case the supplied markup doesn't match
-      $customSelect.find('ul').html('');
+      $ul = $customSelect.find('ul').html('');
+      $customSelect.removeAttr('style');
+      $ul.removeAttr('style');
     }
+
+    $customSelect.toggleClass('disabled', $select.is(':disabled'));
 
     $options.each(function () {
       li += '<li>' + $(this).html() + '</li>';
     });
-    $ul = $customSelect.find('ul').append(li);
+    $ul.append(li);
 
-    $customSelect.toggleClass('disabled', $this.is(':disabled'));
-
+    // re-populate
     $options.each(function (index) {
       if (this.selected) {
         $customSelect.find('li').eq(index).addClass('selected');
@@ -59,6 +62,7 @@ jQuery(function ($) {
       }
     });
 
+    // fix width
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
       outerWidth = $(this).outerWidth();
@@ -73,22 +77,25 @@ jQuery(function ($) {
   }
 
   $('form.custom select').each(function () {
-    appendCustomSelect(this);
+    appendCustomSelect($(this));
   });
 
 });
 
 (function ($) {
   
-  function refreshCustomSelect($select) {
-    var maxWidth = 0,
+function refreshCustomSelect($select) {
+    var $customSelect = $select.next(),
+        $options = $select.find('option'),
+        maxWidth = 0,
         outerWidth,
-        $customSelect = $select.next(),
         li = '',
         $ul;
-    $options = $select.find('option');
-    $ul = $customSelect.find('ul').html('');
 
+    $ul = $customSelect.find('ul').html('');
+    $customSelect.removeAttr('style');
+    $ul.removeAttr('style');
+    
     $options.each(function () {
       li += '<li>' + $(this).html() + '</li>';
     });
@@ -103,8 +110,6 @@ jQuery(function ($) {
     });
     
     // fix width
-    $customSelect.removeAttr('style');
-    $ul.removeAttr('style');
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
       outerWidth = $(this).outerWidth();
