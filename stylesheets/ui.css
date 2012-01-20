@@ -231,6 +231,42 @@
 	.nav-bar>li .flyout { display: none; }
 	.nav-bar>li:hover .flyout { display: block; }
 
+/*	--------------------------------------------------
+   	Sub Navs
+   	http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na
+   	
+	-------------------------------------------------- */
+
+  dl.sub-nav {
+    width: auto;
+    height: 27px;
+    margin: 0 0 18px;
+  }
+
+  dl.sub-nav dt, dl.sub-nav dd {
+    float: left;
+    display: inline;
+  }
+
+  dl.sub-nav dt {
+    color: #999;
+    font-weight: normal;
+  }
+
+  dl.sub-nav dd a {
+    margin-left: 6px;
+    padding: 5px 12px;
+    text-decoration: none;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+  }
+  dl.sub-nav a:hover {
+    background: #eee;
+  }
+  dl.sub-nav dd.active a {
+    background: #00A6FC;
+    color: #fff;
+  }
 
 /*	--------------------------------------------------
    	Video
