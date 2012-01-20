@@ -258,7 +258,7 @@
       	
       	<h4>Sub Nav</h4>
       	
-      	<p>If you need a way to provide simple and effective on-page navigation, to either jump to content on the page of flip to another view use this awesome little sub-nav.</p>
+      	<p>If you need to provide simple and effective on-page navigation, to either jump to content on the page or flip to another view then use this awesome little sub-nav.</p>
       	
       	<dl class="sub-nav">
       	 <dt>Filter:</dt>
