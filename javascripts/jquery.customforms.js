@@ -18,8 +18,8 @@ jQuery(document).ready(function ($) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
       }
 
-      $span.toggleClass('checked', $this.is(':checked'));
-      $span.toggleClass('disabled', $this.is(':disabled'));
+      $span.toggleClass('checked', $this.is(':checked'))
+        .toggleClass('disabled', $this.is(':disabled'));
     });
   }
   appendCustomMarkup('checkbox');
@@ -30,7 +30,8 @@ jQuery(document).ready(function ($) {
         $customSelect = $this.next('div.custom.dropdown'),
         $options = $this.find('option'),
         maxWidth = 0,
-        li = '';
+        li = '',
+        $ul;
 
     if ($customSelect.length === 0) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
@@ -47,7 +48,7 @@ jQuery(document).ready(function ($) {
     $options.each(function () {
       li += '<li>' + $(this).html() + '</li>';
     });
-    $customSelect.find('ul').append(li);
+    $ul = $customSelect.find('ul').append(li);
 
     $customSelect.toggleClass('disabled', $this.is(':disabled'));
 
@@ -66,7 +67,7 @@ jQuery(document).ready(function ($) {
       $customSelect.removeClass('open');
     });
     $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
+    $ul.css('width', maxWidth + 16 + 'px');
 
   }
 
@@ -81,14 +82,15 @@ jQuery(document).ready(function ($) {
   function refreshCustomSelect($select) {
     var maxWidth = 0,
         $customSelect = $select.next(),
-        li = '';
+        li = '',
+        $ul;
     $options = $select.find('option');
-    $customSelect.find('ul').html('');
-    
+    $ul = $customSelect.find('ul').html('');
+
     $options.each(function () {
       li += '<li>' + $(this).html() + '</li>';
     });
-    $customSelect.find('ul').append(li);
+    $ul.append(li);
 
     // re-populate
     $options.each(function (index) {
@@ -99,8 +101,8 @@ jQuery(document).ready(function ($) {
     });
     
     // fix width
-    $customSelect.removeAttr('style')
-      .find('ul').removeAttr('style');
+    $customSelect.removeAttr('style');
+    $ul.removeAttr('style');
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
       if ($(this).outerWidth() > maxWidth) {
@@ -109,8 +111,8 @@ jQuery(document).ready(function ($) {
       $customSelect.removeClass('open');
     });
     $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
-    
+    $ul.css('width', maxWidth + 16 + 'px');
+
   }
   
   function toggleCheckbox($element) {
@@ -176,20 +178,20 @@ jQuery(document).ready(function ($) {
   $('form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector').live('click', function (event) {
     var $this = $(this),
         $dropdown = $this.closest('div.custom.dropdown'),
-        $select = $dropdown.prev();
+        $select = $dropdown.prev(),
+        $document = $(document);
     
     event.preventDefault();
     
     if (false == $select.is(':disabled')) {
         $dropdown.toggleClass('open');
-
         if ($dropdown.hasClass('open')) {
-          $(document).bind('click.customdropdown', function (event) {
+          $document.bind('click.customdropdown', function (event) {
             $dropdown.removeClass('open');
-            $(document).unbind('.customdropdown');
+            $document.unbind('.customdropdown');
           });
         } else {
-          $(document).unbind('.customdropdown');
+          $document.unbind('.customdropdown');
         }
     }
   });
