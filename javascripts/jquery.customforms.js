@@ -80,7 +80,8 @@ jQuery(document).ready(function ($) {
   
   function refreshCustomSelect($select) {
     var maxWidth = 0,
-        $customSelect = $select.next();
+        $customSelect = $select.next(),
+        $li;
     $options = $select.find('option');
     $customSelect.find('ul').html('');
     
