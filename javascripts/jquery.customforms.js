@@ -90,7 +90,7 @@
         input = $input[0];
 
     if (!$input.is(':disabled')) {
-        input.checked = ((input.checked) ? false : true);
+        input.checked = !input.checked;
         $element.toggleClass('checked');
 
         $input.trigger('change');
@@ -104,7 +104,7 @@
     $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
       $(this).next().removeClass('checked');
     });
-    input.checked = ((input.checked) ? false : true);
+    input.checked = !input.checked;
     $element.toggleClass('checked');
     
     $input.trigger('change');
