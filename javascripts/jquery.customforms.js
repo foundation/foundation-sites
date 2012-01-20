@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-jQuery(document).ready(function ($) {
+jQuery(function ($) {
   
   function appendCustomMarkup(type) {
     $('form.custom input:' + type).each(function () {
@@ -30,6 +30,7 @@ jQuery(document).ready(function ($) {
         $customSelect = $this.next('div.custom.dropdown'),
         $options = $this.find('option'),
         maxWidth = 0,
+        outerWidth,
         li = '',
         $ul;
 
@@ -37,8 +38,7 @@ jQuery(document).ready(function ($) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
       $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
 
-      $this.after($customSelect);
-      $this.hide();
+      $this.hide().after($customSelect);
       
     } else {
       // refresh the ul with options from the select in case the supplied markup doesn't match
@@ -61,8 +61,9 @@ jQuery(document).ready(function ($) {
 
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
-      if ($(this).outerWidth() > maxWidth) {
-        maxWidth = $(this).outerWidth();
+      outerWidth = $(this).outerWidth();
+      if (outerWidth > maxWidth) {
+        maxWidth = outerWidth;
       }
       $customSelect.removeClass('open');
     });
@@ -74,13 +75,14 @@ jQuery(document).ready(function ($) {
   $('form.custom select').each(function () {
     appendCustomSelect(this);
   });
-  
+
 });
 
 (function ($) {
   
   function refreshCustomSelect($select) {
     var maxWidth = 0,
+        outerWidth,
         $customSelect = $select.next(),
         li = '',
         $ul;
@@ -105,8 +107,9 @@ jQuery(document).ready(function ($) {
     $ul.removeAttr('style');
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
-      if ($(this).outerWidth() > maxWidth) {
-        maxWidth = $(this).outerWidth();
+      outerWidth = $(this).outerWidth();
+      if (outerWidth > maxWidth) {
+        maxWidth = outerWidth;
       }
       $customSelect.removeClass('open');
     });
@@ -119,7 +122,7 @@ jQuery(document).ready(function ($) {
     var $input = $element.prev(),
         input = $input[0];
 
-    if (false == $input.is(':disabled')) {
+    if (!$input.is(':disabled')) {
         input.checked = ((input.checked) ? false : true);
         $element.toggleClass('checked');
 
@@ -183,7 +186,7 @@ jQuery(document).ready(function ($) {
     
     event.preventDefault();
     
-    if (false == $select.is(':disabled')) {
+    if (!$select.is(':disabled')) {
         $dropdown.toggleClass('open');
         if ($dropdown.hasClass('open')) {
           $document.bind('click.customdropdown', function (event) {
