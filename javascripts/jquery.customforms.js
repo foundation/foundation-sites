@@ -29,7 +29,8 @@
         maxWidth = 0,
         outerWidth,
         li = '',
-        $ul;
+        $ul,
+        html;
 
     if (append && $customSelect.length === 0) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
@@ -49,17 +50,15 @@
     }
 
     $options.each(function () {
-      li += '<li>' + $(this).html() + '</li>';
+      html = $(this).html();
+      li += '<li';
+      if (this.selected) {
+        li += ' class="selected"';
+        $customSelect.find('.current').html(html);
+      }
+      li += '>' + html + '</li>';
     });
     $ul.append(li);
-
-    // re-populate
-    $options.each(function (index) {
-      if (this.selected) {
-        $customSelect.find('li').eq(index).addClass('selected');
-        $customSelect.find('.current').html($(this).html());
-      }
-    });
 
     // fix width
     $customSelect.find('li').each(function () {
