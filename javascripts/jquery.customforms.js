@@ -30,7 +30,7 @@ jQuery(document).ready(function ($) {
         $customSelect = $this.next('div.custom.dropdown'),
         $options = $this.find('option'),
         maxWidth = 0,
-        $li;
+        li = '';
 
     if ($customSelect.length === 0) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
@@ -45,9 +45,9 @@ jQuery(document).ready(function ($) {
     }
 
     $options.each(function () {
-      $li = $('<li>' + $(this).html() + '</li>');
-      $customSelect.find('ul').append($li);
+      li += '<li>' + $(this).html() + '</li>';
     });
+    $customSelect.find('ul').append(li);
 
     $customSelect.toggleClass('disabled', $this.is(':disabled'));
 
@@ -81,15 +81,15 @@ jQuery(document).ready(function ($) {
   function refreshCustomSelect($select) {
     var maxWidth = 0,
         $customSelect = $select.next(),
-        $li;
+        li = '';
     $options = $select.find('option');
     $customSelect.find('ul').html('');
     
     $options.each(function () {
-      $li = $('<li>' + $(this).html() + '</li>');
-      $customSelect.find('ul').append($li);
+      li += '<li>' + $(this).html() + '</li>';
     });
-    
+    $customSelect.find('ul').append(li);
+
     // re-populate
     $options.each(function (index) {
       if (this.selected) {
