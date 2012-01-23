@@ -86,6 +86,8 @@
 		.show-on-phones { display: none !important; }
 		.show-on-tablets { display: block !important; }
 		.show-on-desktops { display: none !important; }
+		th.desktop, td.desktop {display: none}
+		th.tablet, td.tablet {display: table-cell}
 	}
 	
 	/* Modernizr-enabled tablet targeting */
@@ -97,6 +99,8 @@
 		.touch .show-on-phones { display: none !important; }
 		.touch .show-on-tablets { display: block !important; }
 		.touch .show-on-desktops { display: none !important; }
+		.touch th.desktop, .touch td.desktop {display: none}
+		.touch th.tablet, .touch td.tablet {display: table-cell}
 	}
 	
 		
@@ -108,8 +112,10 @@
 		.show-on-phones { display: block !important; }
 		.show-on-tablets { display: none !important; }
 		.show-on-desktops { display: none !important; }
+		
+		th.desktop, td.desktop, th.tablet, td.tablet {display: none}
 	}
-	
+
 	/* only screen and (device-width: 1280px), only screen and (max-device-width: 1280px),  /*
 	/* Keeping this in as a reminder to address support for other tablet devices like the Xoom in the future */
 	
@@ -188,10 +194,13 @@
 		.nav-bar>li:hover>a { font-weight: bold; }
 		.nav-bar>li:hover ul { position: relative; }
 		
+		
 		.flyout { position: relative; width: auto; top: auto; margin-right: -2px; border-width: 1px 1px 0px 1px; }
 		.flyout.right { float: none; right: auto; left: -1px; }
 		.flyout.small, .flyout.large { width: auto; }
 		.flyout p:last-child { margin-bottom: 18px; }
+		
+		.table-menu .nav-bar.right {float: none; display: block}
 	}
 	
 	/* Nav Bar */

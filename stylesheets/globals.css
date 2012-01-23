@@ -105,6 +105,7 @@
 	table thead, table tfoot { background: #f5f5f5; }
 	table thead tr th,
 	table tfoot tr th,
+	table tbody tr th,
 	table tbody tr td,
 	table tr td,
 	table tfoot tr td { font-size: 12px; line-height: 18px; text-align: left; }
@@ -116,7 +117,7 @@
 	table tbody tr.even,
 	table tbody tr.alt { background: #f9f9f9; }
 	table tbody tr:nth-child(even) { background: #f9f9f9; }
-	table tbody tr td { color: #333; padding: 9px 10px; vertical-align: top; border: none; }
+	table tbody tr td, table tbody tr th { color: #333; padding: 9px 10px; vertical-align: top; border: none; }
 
 /* -------------------------------------------------- 
 	:: Misc

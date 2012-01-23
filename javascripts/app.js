@@ -42,9 +42,12 @@ $(document).ready(function () {
 	/* PLACEHOLDER FOR FORMS ------------- */
 	/* Remove this and jquery.placeholder.min.js if you don't need :) */
 
-	$('input, textarea').placeholder();
+	$('input:not(:checkbox), textarea').placeholder();
 
-
+	$("#responsive-table").table({
+		idprefix: "co-",
+		persist: "persist"
+	});
 
 	/* UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE6/7/8 SUPPORT AND ARE USING .block-grids */
 //	$('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'left'});
@@ -77,7 +80,7 @@ $(document).ready(function () {
 	});
 	$('.nav-bar').on('click', function(e) {
 		e.stopPropagation();
-		if ($(e.target).parents().is('.flyout') || $(e.target).is('.flyout')) {
+		if (($(e.target).parents().is('.flyout') || $(e.target).is('.flyout')) && (!$(e.target).is(':input') && !$(e.target).is('label'))) {
 			e.preventDefault();
 		}
 	});

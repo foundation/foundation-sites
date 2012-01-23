@@ -268,6 +268,8 @@
     padding: 3px 9px;
   }
 
+	.table-menu .nav-bar>li {border-right: none;}
+	
 /*	--------------------------------------------------
    	Video
    	Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
