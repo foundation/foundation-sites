@@ -253,8 +253,24 @@
       					</div>
       				</li>
       			</ul>
+      	
+      	<hr />
+      	
+      	<h4>Sub Nav</h4>
+      	
+      	<p>If you need to provide simple and effective on-page navigation, to either jump to content on the page or flip to another view then use this awesome little sub-nav.</p>
+      	
+      	<dl class="sub-nav">
+			<dt>Filter:</dt>
+			<dd class="active"><a href="#">All</a></dd>
+			<dd><a href="#">Active</a></dd>
+			<dd><a href="#">Pending</a></dd>
+			<dd><a href="#">Suspended</a></dd>
+      	</dl>
+      	
+      	<script type="text/javascript" src="http://snipt.net/embed/f05cca3ec55b4de8d2f5090e8e790fa9"></script>
       			
-      			<hr />
+      	<hr />
 				
 				<h4>Pagination</h4>
 				<p>Breaking stuff up into pages? Yeah you are. Here's some pagination to get you started.</p>
