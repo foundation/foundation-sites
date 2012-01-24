@@ -420,6 +420,9 @@
 				<h5>Mobile Source Ordering</h5>
 				<p>You can use the same push and pull style classes on the 4 column phone grid. The syntax includes .pull-one-phone, .pull-two-phone, .pull-three-phone, as well as .push-one-phone, .push-two-phone, .push-three.phone.</p>
 				
+				<h4>Other Layout Options</h4>
+				<p>Be sure to check out the <a href="layout.php">Layout docs</a> to see how you can turn various grid elements on and off, as well as use 2/3/4/5-up block grids for gallery style layouts.</p>
+				
 				
 			</div>
 			<div class="four columns">
