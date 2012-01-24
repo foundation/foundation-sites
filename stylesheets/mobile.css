@@ -17,12 +17,6 @@
 	:: Grid
 	-------------------------------------------------- */
 	
-	/* Tablet screens */
-	@media only screen and (device-width: 768px), (device-width: 800px) {
-		/* Currently unused */
-	}
-	
-	
 	/* Mobile */
 	@media only screen and (max-width: 767px) {		
 		body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }

@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="src/stylesheets/ie.css">
+		<link rel="stylesheet" href="../stylesheets/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->

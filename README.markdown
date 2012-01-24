@@ -40,7 +40,11 @@ WordPress
 
 .NET
 
-* [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau
+* [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau, @EdCharbeneau
+
+Editors
+
+* [Textmate/Sublime Text2 Bundle](https://github.com/liamr/Zurb-Foundation-Textmate-Bundle) by Liam R, @liamr
 
 MIT Open Source License
 =======================

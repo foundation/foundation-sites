@@ -60,6 +60,35 @@
 				
 				<hr />
 				
+				<h4>Labels</h4>
+				<p>Labels are useful inline styles that can be dropped into body copy to call out certain sections or to attach metadata. Examples might be noting when something was updated or that something is new. The syntax is simple, just a <code>span</code> element with a class of .label. The border styling mirrors that of the Foundation buttons.</p>
+				
+				<div class="row">
+					<div class="three columns phone-one">
+						<p>
+							<span class="label">Regular Label</span><br /><br />
+							<span class="radius label">Radius Label</span><br /><br />
+							<span class="round label">Round Label</span>
+						</p>
+					</div>
+					<div class="three columns phone-one">
+						<p>
+							<span class="blue radius label">Blue Label</span><br /><br />
+							<span class="red radius label">Red Label</span><br /><br />
+							<span class="black radius label">Black Label</span><br /><br />
+							<span class="green radius label">Green Label</span><br /><br />
+							<span class="white radius label">White Label</span>
+						</p>
+					</div>
+					<div class="six columns phone-two">
+						<p><span class="radius label">Added 01/19</span> This paragraph has an inline label to let you know that it was added on January 19, 2012 courtesy of Thomas Klemm. Thanks man!</p>
+					</div>
+				</div>
+				
+				<p><script type="text/javascript" src="http://snipt.net/embed/eabd94fbda853d866057cbda5e8ab64a"></script></p>
+				
+				<hr />
+				
 				<h4>Panels</h4>
 				<p>A panel is a simple, helpful css class that enables you to outline sections of your page easily. This allows you to view your page sections as you add content to them, or add emphasis to a section (for example the download box on the right).</p>
 				
@@ -232,8 +261,24 @@
       					</div>
       				</li>
       			</ul>
+      	
+      	<hr />
+      	
+      	<h4>Sub Nav</h4>
+      	
+      	<p>If you need to provide simple and effective on-page navigation, to either jump to content on the page or flip to another view then use this awesome little sub-nav.</p>
+      	
+      	<dl class="sub-nav">
+			<dt>Filter:</dt>
+			<dd class="active"><a href="#">All</a></dd>
+			<dd><a href="#">Active</a></dd>
+			<dd><a href="#">Pending</a></dd>
+			<dd><a href="#">Suspended</a></dd>
+      	</dl>
+      	
+      	<script type="text/javascript" src="http://snipt.net/embed/f05cca3ec55b4de8d2f5090e8e790fa9"></script>
       			
-      			<hr />
+      	<hr />
 				
 				<h4>Pagination</h4>
 				<p>Breaking stuff up into pages? Yeah you are. Here's some pagination to get you started.</p>

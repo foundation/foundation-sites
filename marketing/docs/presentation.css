@@ -127,6 +127,8 @@ footer.row a:hover {
 	.nice.tabs.mobile dd a { padding: 12px 20px; }
 	
 	div.foundation-header h1 { font-size: 32px; font-size: 3.2rem; }
+	
+	div.slider-nav span { height: 50px; width: 39px; background-size: 100% auto; margin-top: -25px; }
 }
 
 
