@@ -42,6 +42,12 @@ WordPress
 
 * [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau, @EdCharbeneau
 
+Other Implementations
+
+* [Mobile First](https://github.com/admfrhd/mobile-first-foundation) by Adam Fairhead
+* [Less Version](https://github.com/justinmarsan/FoundationLess) by Justin Marsan
+* [Less with Color Scheme](https://github.com/matalin/FoundationLess) by Matalin Hatchard
+
 Editors
 
 * [Textmate/Sublime Text2 Bundle](https://github.com/liamr/Zurb-Foundation-Textmate-Bundle) by Liam R, @liamr
