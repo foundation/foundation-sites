@@ -55,6 +55,7 @@
   <div id="zurBar" class="container">
     <div class="row">
       <div class="four columns">
+      	<a href="#" id="mobileNav" data-reveal-id="navModal" class="small nice button show-on-phones">Nav</a>
         <h1><a href="../">Foundation</a></h1>
       </div>
       <div class="eight columns hide-on-phones">
