@@ -160,14 +160,18 @@
 				<p><em>Note: In IE7 the dropdowns are obscured by the code snippet below. This is due to IE7s iframe z-index bug, and is not an issue with the dropdowns themselves. Try not to have dropdown elements over an iframe.</em></p>
 				
 				<ul class="nav-bar">
-					<li><a href="#">Nav Item 1</a></li>
-					<li class="has-flyout"><a href="#">Nav Item 2</a>
+					<li><a href="#" class="main">Nav Item 1</a></li>
+					<li class="has-flyout">
+						<a href="#" class="main">Nav Item 2</a>
+						<a href="#" class="flyout-toggle"><span> </span></a>
 						<div class="flyout small">
 							<h5>Small Example (200px)</h5>
 							<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. </p>
 						</div>
 					</li>
-					<li class="has-flyout"><a href="#">Nav Item 3</a>
+					<li class="has-flyout">
+						<a href="#" class="main">Nav Item 3</a>
+						<a href="#" class="flyout-toggle"><span> </span></a>
 						<div class="flyout">
 				        	<div class="row">
 				         		<div class="twelve columns">
@@ -184,7 +188,9 @@
 				  			</div>
 				  		</div>
 					</li>
-					<li class="has-flyout hide-on-tablets"><a href="#">Nav Item 4</a>
+					<li class="has-flyout hide-on-tablets">
+						<a href="#" class="main">Nav Item 4</a>
+						<a href="#" class="flyout-toggle"><span> </span></a>
 						<div class="flyout large right">
 				        	<div class="row">
 				        		<div class="twelve columns">
@@ -214,7 +220,9 @@
       			
       			<ul class="nav-bar">
       				<li><input type="search" /></li>
-      				<li class="has-flyout"><a href="">Nav Element</a>
+      				<li class="has-flyout">
+	      				<a href="" class="main">Nav Element</a>
+	      				<a href="http://www.zurb.com" class="flyout-toggle"><span> </span></a>
       					<div class="flyout">
       						<ul>
       							<li><a href="">This is a link in a UL.</a></li>
