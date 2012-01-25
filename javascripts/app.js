@@ -92,7 +92,8 @@ $(document).ready(function () {
       nub = tip.children('.nub');
       tip.addClass(classes).removeClass('has-tip').appendTo('body').css({
         'top' : (target.offset().top + target.outerHeight() + 10),
-        'left' : target.offset().left
+        'left' : target.offset().left,
+        'width' : width
       });
       if ($(window).width() < 767) {
         var row = target.parents('.row');
@@ -116,8 +117,12 @@ $(document).ready(function () {
       }
       tip.hide();
     });
+    $(window).resize(function() {
+      
+    });
     targets.hover(function() {
       $('span[data-id=' + $(this).attr('id') + ']').show();
+      targets.attr('title', "");
     }, function() {
       $('span[data-id=' + $(this).attr('id') + ']').hide();
     });

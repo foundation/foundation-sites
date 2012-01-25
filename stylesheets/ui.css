@@ -355,8 +355,8 @@
 	  top: auto;
 	  bottom: -12px;
 	}
-	.tooltip.left, .tooltip.right {
-	  float: none;
+	.tooltip.left, .tooltip.right, .has-tip.left, .has-tip.right {
+	  float: none !important;
 	}
 	.tooltip.left > .nub {
 	  border-color: transparent transparent transparent rgb(0,0,0);
@@ -370,9 +370,6 @@
 	  right: auto;
 	  left: -12px;
 	}
-	/*.has-tip:hover > span {
-	  display: block;
-	}*/
 	.tooltip.radius {
 	  -webkit-border-radius: 6px;
 	     -moz-border-radius: 6px;
