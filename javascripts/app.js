@@ -118,8 +118,26 @@ $(document).ready(function () {
       tip.hide();
     });
     $(window).resize(function() {
-      
-    });
+      var tips = $('.tooltip');
+      tips.each(function() {
+        var target = $('#' + $(this).data('id')),
+        tip = $(this),
+        classes = tip.attr('class');
+
+        if (classes.indexOf('top') > -1) {
+          tip.css({
+            'left' : target.offset().left,
+            'top' : target.offset().top - tip.outerHeight()
+          });
+        }
+        if (classes.indexOf('left') > -1) {
+          tip.css({
+            'left' : target.offset().left - tip.outerWidth() - 10
+          });
+        }
+      });
+        
+    });    
     targets.hover(function() {
       $('span[data-id=' + $(this).attr('id') + ']').show();
       targets.attr('title', "");
