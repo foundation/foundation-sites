@@ -273,7 +273,7 @@
 	  border-bottom: dotted 1px #0593dc;
 	  color: #0192dd;
 	}
-	.has-tip + span {
+	.tooltip {
 	  display: block;
 	  background: rgb(0,0,0);
 	  background: rgba(0,0,0,0.85);
@@ -286,7 +286,7 @@
 	  padding: 5px 9px 7px 8px;
 	  z-index: 999;
 	}
-	.has-tip + span > .nub {
+	.tooltip > .nub {
 	  display: block;
 	  width: 0;
 	  height: 0;
@@ -297,25 +297,31 @@
 	  top: -12px;
     left: 10px;
 	}
-	.has-tip.top + span > .nub {
+	.tooltip.top > .nub {
 	  border-color: rgb(0,0,0) transparent transparent transparent;
 	  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+	  top: auto;
+	  bottom: -12px;
 	}
-	.has-tip.left, .has-tip.right {
+	.tooltip.left, .tooltip.right {
 	  float: none;
 	}
-	.has-tip.left + span > .nub {
+	.tooltip.left > .nub {
 	  border-color: transparent transparent transparent rgb(0,0,0);
 	  border-color: transparent transparent transparent rgba(0,0,0,0.85);
+	  right: -12px;
+	  left: auto;
 	}
-	.has-tip.right + span > .nub {
+	.tooltip.right > .nub {
 	  border-color: transparent rgb(0,0,0) transparent transparent;
 	  border-color: transparent rgba(0,0,0,0.85) transparent transparent;
+	  right: auto;
+	  left: -12px;
 	}
 	/*.has-tip:hover > span {
 	  display: block;
 	}*/
-	.has-tip.radius + span {
+	.tooltip.radius {
 	  -webkit-border-radius: 6px;
 	     -moz-border-radius: 6px;
 	          border-radius: 6px;

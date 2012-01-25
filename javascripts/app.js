@@ -93,116 +93,52 @@ $(document).ready(function () {
   
   /* TOOLTIPS ---------- */
   /* Positiong and options for adding tooltips */
-  
-  //
-  // NOT TO SELF:
-  // Associate <span> with a data-id that matches the id of the parent.
-  // Use javascript to position all the tips absolutely on the page.
-  //
-  
-  var allTips = $('.has-tip');
-  
-  allTips.each(function() {
-    var tips = $(this),
-        tipWords = tips.attr('title'), 
-        tipParentID = tips.attr('id'),
-        tipWidths = tips.attr('data-width');
-        
-    $('<span data-id="' + tipParentID + '">' + tipWords + '<span class="nub"></span></span>').insertAfter(tips);    
-    var tipSpans = tips.siblings('span');
-    
-    tipSpans.css('width', tipWidths);     
-    var tipHeights = tipSpans.outerHeight(),
-        trueTipWidths = tipSpans.outerWidth(),
-        nubSize = tipSpans.children('.nub').outerWidth(),
-        windowWidth = $(window).width();
-        
-        // console.log('tipID: '+ tipParentID + ', Offset Top:' + tips.offset().top + ', Offset Left:' + tips.offset().left);
 
-    // Make it clickable for mobile devices
-    // if ( navigator.userAgent.match(/Android/i) ||
-    //          navigator.userAgent.match(/iPhone/i) ||
-    //          navigator.userAgent.match(/iPod/i) ||
-    //          navigator.userAgent.match(/iPad/i) ){    
-    //       
-    //       tips.click(function() {
-    //         allTips.hide();
-    //         tipSpans.toggle();
-    //       });
-    //     }
-    
-    function tipHover() {
-      tips.hover(function() {
-        tipSpans.toggle();
-        tips.attr('title', '');
+  function foundationTooltipsInit() {
+    var targets = $('.has-tip'),
+    tipTemplate = function(target, content) {
+      return '<span data-id="' + target + '" class="tooltip">' + content + '<span class="nub"></span></span>';
+    };
+    targets.each(function(){
+      var target = $(this),
+      width = target.data('width'),
+      content = target.attr('title'),
+      id = target.attr('id'),
+      classes = target.attr('class'),
+      tip = $(tipTemplate(id, content)),
+      nub = tip.children('.nub');
+      tip.addClass(classes).removeClass('has-tip').appendTo('body').css({
+        'top' : (target.offset().top + target.outerHeight() + 10),
+        'left' : target.offset().left
       });
-    }
-    
-    // If we're looking at the site on smaller screen sizes
-    if (windowWidth < 767) {
-      tipHover();
-      
-      tipSpans.css({
-        top: -tipHeights,
-        left: 0,
-        width: '100%'
-      });
-    
-    // If we're on a normal screen
-    } else {
-      tipHover();
-      
-      if (tips.hasClass('top')) {
-        // tipSpans.children('.nub').css({
-        //           left: 10,
-        //           bottom: -nubSize,
-        //           top: 'auto'
-        //         });
-        //         tipSpans.css({
-        //           top: 'auto',
-        //          bottom: tipHeights + (nubSize / 2),
-        //          left: '0'
-        //         });
-        
-      } else if (tips.hasClass('left')) {
-        tipSpans.css({
-          top: tips.offset().top
-        });
-        // tipSpans.children('.nub').css({
-        //           left: trueTipWidths,
-        //           top: (tipHeights / 2) - (nubSize / 2)
-        //         });
-        //         tipSpans.css({
-        //           left: -(trueTipWidths + (nubSize / 2)),
-        //           top: -((tipHeights / 2) - (nubSize / 2)) 
-        //         });
-      
-      } else if (tips.hasClass('right')) {
-        // tipSpans.children('.nub').css({
-        //   left: -nubSize,
-        //   top: (tipHeights / 2) - (nubSize / 2)
-        // });
-        // tipSpans.css({
-        //   left: tips.width() + (nubSize / 2),
-        //   top: -((tipHeights / 2) - (nubSize / 2))
-        // });
-        
+      if ($(window).width() < 767) {
+        var row = target.parents('.row');
+        tip.width(row.outerWidth()).css('left', row.offset().left);
+        nub.css('left', (target.offset().left + 10));
       } else {
-        tipSpans.css({
-          top: tips.offset().top - (tipHeights / 2),
-          left: tips.offset().left
-        });
+        if (classes.indexOf('top') > -1) {
+          tip.css('top', target.offset().top - tip.outerHeight());
+        }
+        if (classes.indexOf('left') > -1) {
+          tip.css({
+            'top' : target.offset().top - (target.outerHeight() / 2),
+            'left' : target.offset().left - tip.outerWidth() - 10
+          }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
+        } else if (classes.indexOf('right') > -1){
+          tip.css({
+            'top' : target.offset().top - (target.outerHeight() / 2),
+            'left' : target.offset().left + target.outerWidth() + 10
+          }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
+        } 
       }
-      
-      $(window).resize(function() {
-        console.log(tips.offset().top - (tipHeights / 2));
-
-        tipSpans.css({
-          top: tips.offset().top - (tipHeights / 2),
-          left: tips.offset().left
-        });
-      });
-    }
-  });
+      tip.hide();
+    });
+    targets.hover(function() {
+      $('span[data-id=' + $(this).attr('id') + ']').show();
+    }, function() {
+      $('span[data-id=' + $(this).attr('id') + ']').hide();
+    });
+  }
+  foundationTooltipsInit();
 
 });
