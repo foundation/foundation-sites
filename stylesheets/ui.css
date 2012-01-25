@@ -7,7 +7,7 @@
 -----------------------------------------------------
 :: Buttons
 :: Alerts
-:: Notices/Alerts
+:: Labels
 :: Tabs
 :: Pagination
 :: Lists
@@ -40,7 +40,7 @@
 	}
 	
   	/* Don't use native buttons on iOS */
-	input[type=submit].button { -webkit-appearance: none; }
+	input[type=submit].button, button.button { -webkit-appearance: none; }
 	
 	.button.nice { 
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px;
@@ -123,11 +123,26 @@
 	.alert-box a.close { color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; }
 	.alert-box a.close:hover,.alert-box a.close:focus { opacity: 0.4; }
 
+/*    --------------------------------------------------
+    Labels
+    -------------------------------------------------- */
+
+	.label { padding: 0px 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; }
+	.label.radius { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
+	.label.round { padding: 1px 7px 2px; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+	
+	/* Colors ---------- */
+	.blue.label				{ background-color: #00a6fc; }
+	.red.label				{ background-color: #e91c21; }
+	.green.label			{ background-color: #7fae00; }
+	.white.label			{ background-color: #e9e9e9; color: #333; }
+	.black.label			{ background-color: #141414; }
+	
 
 /*    --------------------------------------------------
     Tabs
     -------------------------------------------------- */
-    dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
+		dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
     dl.tabs dt { display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; font-size: 11px; text-transform: uppercase; cursor: default; }
     dl.tabs dt:first-child { padding: 0 9px 0 0; }
     dl.tabs dd { display: block; width: auto; height: 30px; padding: 0; float: left; }
@@ -199,14 +214,15 @@
 	
 	.nav-bar { height: 45px; background: #fff; margin-top: 20px; border: 1px solid #ddd; }	
 	.nav-bar>li { float: left; display: block; position: relative; padding: 0; margin: 0; border-right: 1px solid #ddd; line-height: 45px; }
-	.nav-bar>li>a { position: relative; font-size: 14px; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
+	.nav-bar>li>a.main { position: relative; font-size: 14px; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
 	.nav-bar>li>input { margin: 0 16px; }
 	.nav-bar>li ul { margin-bottom: 0; }
 	.nav-bar>li li { line-height: 1.3; }
-	.nav-bar>li.has-flyout>a { padding-right: 36px; }
-	.nav-bar>li.has-flyout>a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; position: absolute; right: 18px; bottom: 20px; }
-	.nav-bar>li:hover>a { color: #141414; z-index: 2; }
-	.nav-bar>li:hover>a:after { border-top-color: #141414; }
+	.nav-bar>li.has-flyout>a.main { padding-right: 36px; }
+	.nav-bar>li.has-flyout>a.flyout-toggle { display: none; }
+	.nav-bar>li.has-flyout>a.main:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; position: absolute; right: 18px; bottom: 20px; }
+	.nav-bar>li:hover>a.main { color: #141414; z-index: 2; }
+	.nav-bar>li:hover>a.main:after { border-top-color: #141414; }
 
 	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 10; }
 	.flyout.small { width: 200px; }
@@ -216,6 +232,42 @@
 	.nav-bar>li .flyout { display: none; }
 	.nav-bar>li:hover .flyout { display: block; }
 
+/*	--------------------------------------------------
+   	Sub Navs
+   	http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na
+   	
+	-------------------------------------------------- */
+
+  dl.sub-nav {
+  	display: block;
+    width: auto;
+    overflow: hidden;
+    margin: -4px 0 18px -9px;
+    padding-top: 4px;
+  }
+
+  dl.sub-nav dt, dl.sub-nav dd {
+    float: left;
+    display: inline;
+    margin-left: 9px;
+    margin-bottom: 4px;
+  }
+
+  dl.sub-nav dt {
+    color: #999;
+    font-weight: normal;
+  }
+
+  dl.sub-nav dd a {
+    text-decoration: none;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+  }
+  dl.sub-nav dd.active a {
+    background: #00A6FC;
+    color: #fff;
+    padding: 3px 9px;
+  }
 
 /*	--------------------------------------------------
    	Video

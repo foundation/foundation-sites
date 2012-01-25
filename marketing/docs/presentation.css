@@ -20,6 +20,11 @@ div.foundation-header .subheader { margin-bottom: 9px; }
 
 div.highlight { margin-bottom: 12px; }
 
+#mobileNav { padding: 6px 10px; position: absolute; top: -5px; right: -5px; }
+#navModal { padding-bottom: 10px; }
+#navModal dl.tabs { margin-left: -15px; margin-right: -15px; margin-bottom: 0; }
+#navModal dl.tabs dd a { padding-top: 10px; padding-bottom: 10px; background: rgba(255,255,255,0.5); }
+
 img.beta { position: absolute; top: 0px; right: 0px; }
 
 /* Footer */
@@ -127,6 +132,8 @@ footer.row a:hover {
 	.nice.tabs.mobile dd a { padding: 12px 20px; }
 	
 	div.foundation-header h1 { font-size: 32px; font-size: 3.2rem; }
+	
+	div.slider-nav span { height: 50px; width: 39px; background-size: 100% auto; margin-top: -25px; }
 }
 
 

@@ -102,8 +102,8 @@
 	  <div class="row">
 	    <nav class="ten columns hide-on-desktops">
   	    <ul>
-  	      <li><a href="#">Documentation</a></li>
-  	      <li><a href="#">On Github</a></li>
+  	      <li><a href="docs/">Documentation</a></li>
+  	      <li><a href="http://github.com/zurb/foundation">On Github</a></li>
   	      <li><a class="nice small blue button src-download" href="files/foundation-download-<?= $version ?>.zip">Download</a></li>
   	    </ul>
   	  </nav>

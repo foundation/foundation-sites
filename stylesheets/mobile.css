@@ -17,12 +17,6 @@
 	:: Grid
 	-------------------------------------------------- */
 	
-	/* Tablet screens */
-	@media only screen and (device-width: 768px), (device-width: 800px) {
-		/* Currently unused */
-	}
-	
-	
 	/* Mobile */
 	@media only screen and (max-width: 767px) {		
 		body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
@@ -66,7 +60,7 @@
 	
 	@media only screen and (max-width: 767px) {
 		.block-grid.mobile { margin-left: 0; }
-		.block-grid.mobile li { float: none; width: 100%; margin-left: 0; }
+		.block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
 	}
 	
 	
@@ -188,16 +182,20 @@
 	@media only screen and (max-width: 767px) {
 		.nav-bar { height: auto; }
 		.nav-bar>li { float: none; display: block; border-right: none; }
-		.nav-bar>li>a { text-align: left; border-top: 1px solid #ddd; border-right: none; } 
-		.nav-bar>li:first-child>a { border-top: none; }
-		.nav-bar>li.has-flyout>a:after { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
-		.nav-bar>li:hover>a { font-weight: bold; }
+		.nav-bar>li>a.main { text-align: left; border-top: 1px solid #ddd; border-right: none; }
+		.nav-bar>li.has-flyout>a.main:after { display: none; }
+		.nav-bar>li:first-child>a.main { border-top: none; }
+		.nav-bar>li.has-flyout>a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; border-left: 1px dashed #eee; display: block; }
+		.nav-bar>li.has-flyout>a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
+		.nav-bar>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
+		.nav-bar>li:hover>a.main { font-weight: bold; }
 		.nav-bar>li:hover ul { position: relative; }
 		
 		.flyout { position: relative; width: auto; top: auto; margin-right: -2px; border-width: 1px 1px 0px 1px; }
 		.flyout.right { float: none; right: auto; left: -1px; }
 		.flyout.small, .flyout.large { width: auto; }
 		.flyout p:last-child { margin-bottom: 18px; }
+		.nav-bar>li:hover .flyout { display: none; }
 	}
 
 
