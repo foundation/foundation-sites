@@ -35,15 +35,13 @@ div.orbit {
     overflow: hidden }
     
 div.orbit.with-bullets {
-    margin-bottom: 40px;
-}
+    margin-bottom: 40px; }
 
 div.orbit .orbit-slide {
-  max-width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
 
 div.orbit a.orbit-slide {
     border: none;
@@ -130,8 +128,8 @@ span.pause.active {
     background: rgba(0,0,0,.6);
     z-index: 30;
     color: #fff;
-	text-align: center;
-	padding: 7px 0;
+    text-align: center;
+    padding: 7px 0;
     font-size: 13px;
     position: absolute;
     right: 0;
@@ -202,11 +200,10 @@ div.slider-nav span.left {
 /* FLUID LAYOUT
    ================================================== */
 .orbit .fluid-placeholder {
-  visibility: hidden;
-  position: static;
-  display: block;
-  width: 100%;
-}
+    visibility: hidden;
+    position: static;
+    display: block;
+    width: 100%; }
 
 .orbit, .orbit-wrapper { width: 100% !important; }
 
