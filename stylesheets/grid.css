@@ -16,6 +16,7 @@
 	
 	.column, .columns { margin-left: 4.4%; float: left; min-height: 1px; position: relative; }
 	.column:first-child, .columns:first-child { margin-left: 0; }
+	.column:last-child, .columns:last-child, .column.last .columns.last { float: right; }
 	
 	.row .one.columns 		{ width: 4.3%; }
 	.row .two.columns 		{ width: 13%; }
