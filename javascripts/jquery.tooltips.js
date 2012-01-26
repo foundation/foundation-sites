@@ -1,3 +1,4 @@
+$(document).ready(function () {
 /* TOOLTIPS ---------- */
   /* Positiong and options for adding tooltips */
 
@@ -97,3 +98,4 @@
     }
   }
   foundationTooltipsInit();
+});

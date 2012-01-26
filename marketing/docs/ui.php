@@ -88,6 +88,17 @@
 				<p><script type="text/javascript" src="http://snipt.net/embed/eabd94fbda853d866057cbda5e8ab64a"></script></p>
 				
 				<hr />
+
+				<h4>Tooltips</h4>
+				<p>Tooltips are a quick way to provide extended information on a term or action on a page. They work cross browser and cross platfrom and are easily added to a page by including the jquery.tooltip.js plugin. You can apply the <strong>has-tip</strong> class to any element, as long as you assign it a unique ID.</p>
+
+				<p>By default the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
+
+				<p>The tooltips can be positioned <span class="has-tip top radius" id="tipTop" data-width="210" title="I'm on the top and rounded!">top</span>, <span class="has-tip" id="tipDefault" data-width="210" title="I'm on top and the default position.">bottom</span>, <span class="has-tip left" id="tipLeft" data-width="210" title="I'm on the left!">left</span>, or <span class="has-tip right" id="tipRight" data-width="210" title="I'm on the right!">right</span> of the target element.In a mobile environment the tooltips are full width and bottom aligned.</p>
+
+				<script type="text/javascript" src="http://snipt.net/embed/204626ad26dbd0a11ed592797965e30f"></script>
+
+				<hr />
 				
 				<h4>Panels</h4>
 				<p>A panel is a simple, helpful css class that enables you to outline sections of your page easily. This allows you to view your page sections as you add content to them, or add emphasis to a section (for example the download box on the right).</p>
