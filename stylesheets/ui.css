@@ -381,8 +381,8 @@
 	}
 	.tap-to-close {
 	  display: block;
-	  font-size: 9px;
-	  font-size: 0.9rem;
+	  font-size: 10px;
+	  font-size: 1.0rem;
 	  color: #888;
 	  font-weight: normal;
 	}

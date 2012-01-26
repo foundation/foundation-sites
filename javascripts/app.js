@@ -145,7 +145,7 @@ $(document).ready(function () {
           nubPos(nub, ((tip.outerHeight() / 2) - (nub.outerHeight / 2)), 'auto', 'auto', -nubHeight);
         } 
       }
-      if ( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i)) {
+      if ( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Silk/i)) {
         tip.click(function() {
           target.css({
             color: '#333',
