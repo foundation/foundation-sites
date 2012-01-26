@@ -9,6 +9,13 @@
 
 (function($) {
   
+  $.fn.findFirstImage = function () {
+	  return this.first()
+	          .find('img')
+            .andSelf().filter('img')
+            .first();
+	};
+  
   var ORBIT = {
     
     defaults: {  
@@ -142,7 +149,8 @@
       self.$element.add(self.$wrapper).height(this.$slides.first().height());
       self.orbitWidth = this.$slides.first().width();
       self.orbitHeight = this.$slides.first().height();
-      $fluidPlaceholder = this.$slides.first().clone();
+      $fluidPlaceholder = this.$slides.first().findFirstImage().clone();
+        
       
       this.$slides.each(function () {
         var slide = $(this),
@@ -156,7 +164,7 @@
         if (slideHeight > self.$element.height()) {
           self.$element.add(self.$wrapper).height(slideHeight);
           self.orbitHeight = self.$element.height();
-          $fluidPlaceholder = $(this).clone();
+          $fluidPlaceholder = $(this).findFirstImage().clone();
 	      }
         self.numberSlides += 1;
       });
