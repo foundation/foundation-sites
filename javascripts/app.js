@@ -120,21 +120,30 @@ $(document).ready(function () {
     function reposition(target, tip, classes) {
       var width = target.data('width'),
       nub = tip.children('.nub'),
-      nubHeight = nub.outerHeight();
+      nubHeight = nub.outerHeight(),
+      nubWidth = nub.outerWidth();
       tip.css({
         'top' : (target.offset().top + target.outerHeight() + 10),
         'left' : target.offset().left,
         'width' : width
       });
+      function nubPos(nub, top, right, bottom, left) {
+        nub.css({
+          'top' : top,
+          'bottom' : bottom,
+          'left' : left,
+          'right' : right
+        });
+      }
       nubPos(nub, -nubHeight, 'auto', 'auto', 10);
       if ($(window).width() < 767) {
         var row = target.parents('.row');
-        tip.width(row.outerWidth()).css('left', row.offset().left);
-        nubPos(nub, -nubHeight, 'auto', 'auto', (target.offset().left + 10))
+        tip.width(row.outerWidth() - 20).css('left', row.offset().left);
+        nubPos(nub, -nubHeight, 'auto', 'auto', (target.offset().left + 10));
       } else {
         if (classes.indexOf('top') > -1) {
           tip.css('top', target.offset().top - tip.outerHeight());
-          nubPos(nub, 'auto', 'auto', -nubHeight, 'auto');
+          nubPos(nub, 'auto', 'auto', -nubHeight, nubWidth);
         }
         if (classes.indexOf('left') > -1) {
           tip.css({
@@ -149,14 +158,31 @@ $(document).ready(function () {
           }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
           nubPos(nub, ((tip.outerHeight() / 2) - (nub.outerHeight / 2)), 'auto', 'auto', -nubHeight);
         } 
-        function nubPos(nub, top, right, bottom, left) {
-          nub.css({
-            'top' : top,
-            'bottom' : bottom,
-            'left' : left,
-            'right' : right
+      }
+      if ( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Silk/i)) {
+        tip.click(function() {
+          target.css({
+            color: '#333',
+            'border-bottom': 'dotted 1px #ccc'
           });
-        }
+          tip.hide();
+        });
+        target.hover(function(){
+          target.css({
+            color: '#333',
+            'border-bottom': 'dotted 1px #ccc'
+          });
+        });
+        target.live('click', function() {
+          if (target.hasClass('opened')) {
+            target.removeClass('opened');
+            tip.hide();
+          } else {
+            target.addClass('opened');
+            tip.show();
+          }
+        });
+        tip.append('<span class="tap-to-close">tap to close </span>');
       }
     }    
     targets.hover(function() {

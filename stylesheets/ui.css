@@ -371,6 +371,15 @@
 	     -moz-border-radius: 6px;
 	          border-radius: 6px;
 	}
-
-	
+	.has-tip.opened {
+	  color: #0192DD !important;
+	  border-bottom: dotted 1px #0593DC !important;
+	}
+	.tap-to-close {
+	  display: block;
+	  font-size: 10px;
+	  font-size: 1.0rem;
+	  color: #888;
+	  font-weight: normal;
+	}
 	
