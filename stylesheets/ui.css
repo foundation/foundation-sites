@@ -379,4 +379,11 @@
 	  color: #0192DD !important;
 	  border-bottom: dotted 1px #0593DC !important;
 	}
+	.tap-to-close {
+	  display: block;
+	  font-size: 9px;
+	  font-size: 0.9rem;
+	  color: #888;
+	  font-weight: normal;
+	}
 	

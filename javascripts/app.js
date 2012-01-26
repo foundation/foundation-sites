@@ -168,7 +168,7 @@ $(document).ready(function () {
             tip.show();
           }
         });
-        tip.append('tap to close');
+        tip.append('<span class="tap-to-close">tap to close </span>');
       }
     }    
     targets.hover(function() {
