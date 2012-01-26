@@ -38,24 +38,19 @@ div.orbit.with-bullets {
     margin-bottom: 40px;
 }
 
-div.orbit>img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* display: none; */ }
+div.orbit .orbit-slide {
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
-div.orbit>a {
+div.orbit a.orbit-slide {
     border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
     line-height: 0; 
     display: none; }
 
-.orbit>div {
-    position: absolute;
-    top: 0;
-    left: 0;
+div.orbit div.orbit-slider {
     width: 100%;
     height: 100%; }
 

@@ -113,6 +113,8 @@
         .addClass('orbit')
         .css({width: '1px', height: '1px'});
         
+      this.$slides.addClass('orbit-slide');
+        
       this.setDimentionsFromLargestSlide();
       this.updateOptionsIfOnlyOneSlide();
       this.setupFirstSlide();
