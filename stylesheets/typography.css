@@ -14,9 +14,9 @@
 
 	.subheader { color: #777; font-weight: 300; margin-bottom: 24px; }
 
-	p { line-height: 17px; margin: 0 0 18px; }
+	p { font-size: 13px; font-size: 1.3rem; line-height: 1.25; margin: 0 0 18px; }
 	p img { margin: 0; }
-	p.lead { font-size: 18px; font-size: 1.8rem; line-height: 24px;  }
+	p.lead { font-size: 18px; font-size: 1.8rem; line-height: 1.5;  }
 	
 	em, i { font-style: italic; line-height: inherit; }
 	strong, b { font-weight: bold; line-height: inherit; }

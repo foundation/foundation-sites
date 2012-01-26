@@ -1,8 +1,8 @@
-/* 	Artfully masterminded by ZURB  
-	Make sure to include app.js / foundation.js if you are going to use inline label inputs 
+/* 	Artfully masterminded by ZURB
+	Make sure to include app.js / foundation.js if you are going to use inline label inputs
 */
- 
- 
+
+
 /* -----------------------------------------
    Standard Forms
 ----------------------------------------- */
@@ -19,6 +19,9 @@
 	input.input-text:focus, textarea:focus { outline: none !important; }
 	input.input-text.oversize, textarea.oversize { font-size: 18px !important; padding: 4px 5px !important; }
 	input.input-text:focus, textarea:focus { background: #f9f9f9; }
+
+	/* Text input and textarea, disabled */
+	input.input-text[disabled], textarea[disabled] { background-color: #ddd; }
 
 	/* Inlined Label Style */
 	input.placeholder, textarea.placeholder { color: #888; }
@@ -51,6 +54,9 @@
 	form.nice div.form-field input, form.nice input.input-text, form.nice textarea { font-size: 13px; padding: 6px 3px 4px; outline: none !important; background: url(../images/misc/input-bg.png) #fff; }
 	form.nice div.form-field input:focus, form.nice input.input-text:focus, form.nice textarea:focus { background-color: #f9f9f9; }
 
+	/* Text input and textarea, disabled */
+	form.nice div.form-field input[disabled], form.nice input.input-text[disabled], form.nice textarea[disabled] { background-color: #ddd; }
+
 	form.nice fieldset { border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
 
 	form.nice div.form-field input[type=radio], form.nice div.form-field input[type=checkbox] { display: inline; width:auto; margin-bottom:0; }
@@ -69,20 +75,30 @@
 	form.custom span.custom.radio { border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; }
 	form.custom span.custom.radio.checked { background-position: 0 -14px; }
 	form.custom span.custom.checkbox.checked { background-position: 0 -28px; }
-	
+
 	form.custom div.custom.dropdown { position: relative; display: inline-block; width: auto; height: 28px; margin-bottom: 9px; }
 	form.custom div.custom.dropdown a.current { display: block; width: auto; line-height: 26px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; }
 	form.custom div.custom.dropdown a.selector { position: absolute; width: 26px; height: 26px; display: block; background: url(../images/misc/custom-form-sprites.png) -14px 0 no-repeat; right: 0; top: 0; border: solid 1px #ddd; }
 	form.custom div.custom.dropdown:hover a.selector,
 	form.custom div.custom.dropdown.open a.selector { background-position: -14px -26px; }
-	
+
 	form.custom div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; left: 0; top: 27px; margin: 0; padding: 0; background: rgba(255,255,255,0.9); border: solid 1px #ddd; z-index: 10; }
 	form.custom div.custom.dropdown ul li { cursor: pointer; padding: 3px 38px 3px 6px; margin: 0; white-space: nowrap}
 	form.custom div.custom.dropdown ul li.selected { background: url(../images/misc/custom-form-sprites.png) right -52px no-repeat; }
 	form.custom div.custom.dropdown ul li:hover { background-color: #2a85e8; color: #fff; }
 	form.custom div.custom.dropdown ul li.selected:hover { background: url(../images/misc/custom-form-sprites.png) #2a85e8 right -78px no-repeat; }
 	form.custom div.custom.dropdown ul.show { display: block; }
-	
+
 	form.custom div.custom.dropdown.open ul { display: block; }
 
-	
+	/* Custom input, disabled */
+	form.custom .custom.disabled { background-color: #ddd; }
+
+	/* -----------------------------------------
+	   Nicer Custom Forms
+	----------------------------------------- */
+	form.custom.nice span.custom.checkbox { border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; }
+
+	form.custom.nice div.custom.dropdown a.current { border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; background-image: url(../images/misc/input-bg-outset.png); background-position: bottom right; }
+	form.custom.nice div.custom.dropdown a.selector { height: 27px; border-width: 0 0 0 1px; }
+	form.custom.nice div.custom.dropdown ul { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; -webkit-border-bottom-left-radius: 2px; -webkit-border-bottom-right-radius: 2px; -moz-border-radius-bottomleft: 2px; -moz-border-radius-bottomright: 2px; }

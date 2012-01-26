@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="src/stylesheets/ie.css">
+		<link rel="stylesheet" href="../stylesheets/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
@@ -44,7 +44,6 @@
 	<script src="jswipe.js"></script>
 	<script src="../javascripts/jquery.reveal.js"></script>
 	<script src="../javascripts/jquery.orbit-1.3.0.js"></script>
-	<script src="../javascripts/forms.jquery.js"></script>
 	<script src="../javascripts/jquery.customforms.js"></script>
 	<script src="../javascripts/jquery.placeholder.min.js"></script>
 	<script src="../javascripts/app.js"></script>
