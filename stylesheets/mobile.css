@@ -201,6 +201,12 @@
 
 	/* Tooltips */
 	@media only screen and (max-width: 767px) {
+	  .tooltip {
+	    font-size: 14px;
+	    font-size: 1.4rem;
+	    line-height: 1.4;
+	    padding: 7px 10px 9px 10px;
+	  }
   	.tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
 		  border-color: transparent transparent rgb(0,0,0) transparent;
 		  border-color: transparent transparent rgba(0,0,0,0.85) transparent;
