@@ -84,13 +84,29 @@ $(document).ready(function () {
     };
     targets.each(function(){
       var target = $(this),
-      width = target.data('width'),
       content = target.attr('title'),
-      id = target.attr('id'),
       classes = target.attr('class'),
-      tip = $(tipTemplate(id, content)),
+      id = target.attr('id'),
+      tip = $(tipTemplate(id, content));
+      tip.addClass(classes).removeClass('has-tip').appendTo('body');
+      reposition(target, tip, classes);
+      tip.hide();
+    });
+    $(window).resize(function() {
+      var tips = $('.tooltip');
+      tips.each(function() {
+        var target = $('#' + $(this).data('id')),
+        tip = $(this),
+        classes = tip.attr('class');
+        reposition(target, tip, classes);
+      });
+        
+    });
+    
+    function reposition(target, tip, classes) {
+      var width = target.data('width'),
       nub = tip.children('.nub');
-      tip.addClass(classes).removeClass('has-tip').appendTo('body').css({
+      tip.css({
         'top' : (target.offset().top + target.outerHeight() + 10),
         'left' : target.offset().left,
         'width' : width
@@ -115,29 +131,7 @@ $(document).ready(function () {
           }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
         } 
       }
-      tip.hide();
-    });
-    $(window).resize(function() {
-      var tips = $('.tooltip');
-      tips.each(function() {
-        var target = $('#' + $(this).data('id')),
-        tip = $(this),
-        classes = tip.attr('class');
-
-        if (classes.indexOf('top') > -1) {
-          tip.css({
-            'left' : target.offset().left,
-            'top' : target.offset().top - tip.outerHeight()
-          });
-        }
-        if (classes.indexOf('left') > -1) {
-          tip.css({
-            'left' : target.offset().left - tip.outerWidth() - 10
-          });
-        }
-      });
-        
-    });    
+    }    
     targets.hover(function() {
       $('span[data-id=' + $(this).attr('id') + ']').show();
       targets.attr('title', "");
