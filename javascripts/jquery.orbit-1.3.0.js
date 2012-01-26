@@ -215,7 +215,7 @@
 
     	if (this.$timer.is(':hidden')) {
         this.clock = setInterval(function () {
-          this.$element.trigger('orbit.next');
+          self.$element.trigger('orbit.next');
         }, this.options.advanceSpeed);            		
     	} else {
         this.timerRunning = true;
