@@ -68,6 +68,20 @@ $(document).ready(function () {
 		}
 		lockNavBar = true;
 	});
+  if (Modernizr.touch) {
+    $('.nav-bar>li.has-flyout>a.main').css({
+      'padding-right' : '75px',
+    });
+    $('.nav-bar>li.has-flyout>a.flyout-toggle').css({
+      'border-left' : '1px dashed #eee'
+    });
+  } else {
+    $('.nav-bar>li.has-flyout').hover(function() {
+      $(this).children('.flyout').show();
+    }, function() {
+      $(this).children('.flyout').hide();
+    })
+  }
 
 
 	/* DISABLED BUTTONS ------------- */
