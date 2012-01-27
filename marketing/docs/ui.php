@@ -365,7 +365,7 @@
 						<div class="flex-video">
 							<iframe width="420" height="315" src="http://www.youtube.com/embed/9otNWTHOJi8" frameborder="0" allowfullscreen></iframe>
 						</div>
-						4:3 is the default size for the .video element, and the assumption for .video for chrome (controls) height is based on YouTube.
+						4:3 is the default size for the .flex-video element, and the assumption for .flex-video for chrome (controls) height is based on YouTube.
 					</li>
 					<li id="video2Tab">
 						<div class="flex-video widescreen">
