@@ -16,6 +16,7 @@ end
 `cp stylesheets/app.css public/src/stylesheets/app.css`
 `cp javascripts/app.js public/src/javascripts/app.js`
 `cp javascripts/modernizr.foundation.js public/src/javascripts/modernizr.foundation.js`
+`cp javascripts/jquery.min.js public/src/javascripts/jquery.min.js`
 
 File.open('public/src/stylesheets/foundation.css', "w") do |file|  
   %w{stylesheets/globals.css stylesheets/typography.css stylesheets/grid.css stylesheets/ui.css stylesheets/forms.css stylesheets/orbit.css stylesheets/reveal.css stylesheets/mobile.css}.each do |stylesheet|
