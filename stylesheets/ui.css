@@ -214,7 +214,7 @@
 	
 	.nav-bar { height: 45px; background: #fff; margin-top: 20px; border: 1px solid #ddd; }	
 	.nav-bar>li { float: left; display: block; position: relative; padding: 0; margin: 0; border-right: 1px solid #ddd; line-height: 45px; }
-	.nav-bar>li>a.main { position: relative; font-size: 14px; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
+	.nav-bar>li>a.main { position: relative; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
 	.nav-bar>li>input { margin: 0 16px; }
 	.nav-bar>li ul { margin-bottom: 0; }
 	.nav-bar>li li { line-height: 1.3; }
