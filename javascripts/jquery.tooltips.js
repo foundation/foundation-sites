@@ -14,11 +14,11 @@ $(document).ready(function () {
       id = target.attr('id'),
       tip = $(tipTemplate(id, content));
       tip.addClass(classes).removeClass('has-tip').appendTo('body');
-      reposition(target, tip, classes);
-      tip.hide();
       if (Modernizr.touch) {
         tip.append('<span class="tap-to-close">tap to close </span>');
       }
+      reposition(target, tip, classes);
+      tip.hide();
     });
     $(window).resize(function() {
       var tips = $('.tooltip');
@@ -36,11 +36,7 @@ $(document).ready(function () {
       nub = tip.children('.nub'),
       nubHeight = nub.outerHeight(),
       nubWidth = nub.outerWidth();
-      tip.css({
-        'top' : (target.offset().top + target.outerHeight() + 10),
-        'left' : target.offset().left,
-        'width' : width
-      });
+      
       function nubPos(nub, top, right, bottom, left) {
         nub.css({
           'top' : top,
@@ -49,37 +45,51 @@ $(document).ready(function () {
           'right' : right
         });
       }
+
+      tip.css({
+        'top' : (target.offset().top + target.outerHeight() + 10),
+        'left' : target.offset().left,
+        'width' : width
+      });
       nubPos(nub, -nubHeight, 'auto', 'auto', 10);
+
       if ($(window).width() < 767) {
         var row = target.parents('.row');
         tip.width(row.outerWidth() - 20).css('left', row.offset().left);
         nubPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
         if (classes.indexOf('top') > -1) {
-          tip.css('top', target.offset().top - tip.outerHeight());
-          nubPos(nub, 'auto', 'auto', -nubHeight, nubWidth);
-        }
-        if (classes.indexOf('left') > -1) {
+          var top = target.offset().top - tip.outerHeight() - nubHeight;
           tip.css({
-            'top' : target.offset().top - (target.outerHeight() / 2),
-            'left' : target.offset().left - tip.outerWidth() - 10
-          }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
-          nubPos(nub, ((tip.outerHeight() / 2) - (nub.outerHeight / 2)), -nubHeight, 'auto', 'auto');
+            'top' : top,
+            'left' : target.offset().left,
+            'width' : width
+          });
+          nubPos(nub, 'auto', 'auto', -nubHeight, 'auto');
+        } else if (classes.indexOf('left') > -1) {
+          tip.css({
+            'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
+            'left' : target.offset().left - tip.outerWidth() - 10,
+            'width' : width
+          });
+          nubPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -nubHeight, 'auto', 'auto');
         } else if (classes.indexOf('right') > -1){
           tip.css({
-            'top' : target.offset().top - (target.outerHeight() / 2),
-            'left' : target.offset().left + target.outerWidth() + 10
-          }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
-          nubPos(nub, ((tip.outerHeight() / 2) - (nub.outerHeight / 2)), 'auto', 'auto', -nubHeight);
-        } 
+            'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
+            'left' : target.offset().left + target.outerWidth() + 10,
+            'width' : width
+          });
+          nubPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -nubHeight);
+        }
       }
     }
     if (Modernizr.touch) {
-      $('.tooltip').live('click', function(e) {
+      $('.tooltip').live('click touchend', function(e) {
         e.preventDefault();
         $(this).hide();
       });
-      targets.live('click', function(){
+      targets.live('click touchend', function(e){
+        e.preventDefault();
         targets.hover(function() {
           $('span[data-id=' + $(this).attr('id') + ']').show();
           targets.attr('title', "");

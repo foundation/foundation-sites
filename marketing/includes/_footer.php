@@ -44,6 +44,31 @@
 	</div>
 	<!-- /Main Container -->
 
+	<script src="../javascripts/jquery.min.js"></script>
+	<script src="../javascripts/modernizr.foundation.js"></script>
+	<script src="jswipe.js"></script>
+	<script src="../javascripts/jquery.reveal.js"></script>
+	<script src="../javascripts/jquery.orbit-1.4.0.js"></script>
+	<script src="../javascripts/jquery.customforms.js"></script>
+	<script src="../javascripts/jquery.placeholder.min.js"></script>
+	<script src="../javascripts/app.js"></script>
+	<script src="swipe.js"></script>
+	<script src="github.js"></script>
+  
+  
+  <script>
+  $(window).load(function() {
+     $('#featured').orbit({
+       animation: 'fade',
+       animationSpeed: 800,
+       timer: true,
+       advanceSpeed: 12000,
+       captionAnimation: "fade",
+       captionAnimationSpeed: 800
+     });
+  });
+  </script>
+
   <script> 
 
     var _gaq = _gaq || [];
