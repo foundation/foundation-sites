@@ -90,12 +90,9 @@ $(document).ready(function () {
       });
       targets.live('click touchend', function(e){
         e.preventDefault();
-        targets.hover(function() {
-          $('span[data-id=' + $(this).attr('id') + ']').show();
-          targets.attr('title', "");
-        }, function() {
-          $('span[data-id=' + $(this).attr('id') + ']').hide();
-        }); 
+        $('.tooltip').hide();
+        $('span[data-id=' + $(this).attr('id') + ']').show();
+        targets.attr('title', "");
       });
 
     } else {
