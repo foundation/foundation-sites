@@ -23,32 +23,31 @@
 		.container { min-width: 0; margin-left: 0; margin-right: 0; }
 		.row { width: 100%; min-width: 0; margin-left: 0; margin-right: 0; }
 		.row .row .column, .row .row .columns { padding: 0; }
-		.column, .columns { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
-		.column:last-child, .columns:last-child { margin-right: 0; }
+		[class*='column'] { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
+		[class*='column']:last-child { margin-right: 0; }
 		
-		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0 !important; }
+		[class*='offset-by-'], .centered { margin-left: 0 !important; }
 		
-		.push-two, .push-three, .push-four, .push-five, .push-six, .push-seven, .push-eight, .push-nine, .push-ten { left: auto; }
-		.pull-two, .pull-three, .pull-four, .pull-five, .pull-six, .pull-seven, .pull-eight, .pull-nine, .pull-ten { right: auto; }
+		[class*='push-'] { left: auto; }
+		[class*='pull-'] { right: auto; }
 		
 		/* Mobile 4-column Grid */
-		.row .phone-one.column:first-child, .row .phone-two.column:first-child, .row .phone-three.column:first-child, .row .phone-four.column:first-child, .row .phone-one.columns:first-child, .row .phone-two.columns:first-child, .row .phone-three.columns:first-child, .row .phone-four.columns:first-child { margin-left: 0; }
+		.row [class*='phone-']:first-child { margin-left: 0; }
 		
-		.row .phone-one.column, .row .phone-two.column, .row .phone-three.column, .row .phone-four.column,
-		.row .phone-one.columns, .row .phone-two.columns, .row .phone-three.columns, .row .phone-four.columns { margin-left: 4.4%; float: left; min-height: 1px; position: relative; padding: 0; }
+		.row [class*='phone-'] { margin-left: 4.4%; float: left; min-height: 1px; position: relative; padding: 0; }
 		
-		.row .phone-one.columns 	{ width: 21.68% !important; }
-		.row .phone-two.columns 	{ width: 47.8% !important; }
-		.row .phone-three.columns 	{ width: 73.9% !important; }
-		.row .phone-four.columns 	{ width: 100% !important; }
+		.row .phone-one 	{ width: 21.68% !important; }
+		.row .phone-two 	{ width: 47.8% !important; }
+		.row .phone-three 	{ width: 73.9% !important; }
+		.row .phone-four 	{ width: 100% !important; }
 		
-		.row .columns.push-one-phone { left: 26.08%; }
-		.row .columns.push-two-phone { left: 52.2% }
-		.row .columns.push-three-phone { left: 78.3% }
+		.row .push-one-phone { left: 26.08%; }
+		.row .push-two-phone { left: 52.2% }
+		.row .push-three-phone { left: 78.3% }
 		
-		.row .columns.pull-one-phone { right: 26.08% }
-		.row .columns.pull-two-phone { right: 52.2% }
-		.row .columns.pull-three-phone { right: 78.3%; }
+		.row .pull-one-phone { right: 26.08% }
+		.row .pull-two-phone { right: 52.2% }
+		.row .pull-three-phone { right: 78.3%; }
 		
 		
 	}
