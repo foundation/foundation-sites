@@ -70,7 +70,7 @@ $(document).ready(function () {
 	});
   if (Modernizr.touch) {
     $('.nav-bar>li.has-flyout>a.main').css({
-      'padding-right' : '75px',
+      'padding-right' : '75px'
     });
     $('.nav-bar>li.has-flyout>a.flyout-toggle').css({
       'border-left' : '1px dashed #eee'
