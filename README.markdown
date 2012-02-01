@@ -38,6 +38,10 @@ WordPress
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
 * [Optional install for roots](https://github.com/retlehs/roots) by Corey Wagehoft
 
+Drupal
+
+* [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
+
 .NET
 
 * [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau, @EdCharbeneau
