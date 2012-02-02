@@ -46,6 +46,10 @@
 	.small + small.error { width: 140px; }
 	.medium + small.error { width: 260px; }
 	.large + small.error { width: 440px; }
+	
+	.small.oversize + small.error { width: 144px; }
+	.medium.oversize + small.error { width: 264px; }
+	.large.oversize + small.error { width: 444px; }
 
 	/* -----------------------------------------
 	   Nicer Forms
@@ -66,6 +70,10 @@
  	form.nice div.form-field.error .small + small, form.nice .small + small.error { width: 132px; }
 	form.nice div.form-field.error .medium + small, form.nice .medium + small.error { width: 252px; }
 	form.nice div.form-field.error .large + small, form.nice .large + small.error { width: 432px; }
+	
+	form.nice div.form-field.error .small.oversize + small, form.nice .small.oversize + small.error { width: 136px; }
+	form.nice div.form-field.error .medium.oversize + small, form.nice .medium.oversize + small.error { width: 256px; }
+	form.nice div.form-field.error .large.oversize + small, form.nice .large.oversize + small.error { width: 436px; }
 
 	/* -----------------------------------------
 	   Custom Forms
