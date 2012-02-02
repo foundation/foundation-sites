@@ -202,6 +202,7 @@
 		background: #efefef;
 		background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
+		background: -o-linear-gradient(top, #ffffff 0%,#f4f4f4 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#F4F4F4',GradientType=0 );
 		box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 		-webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
