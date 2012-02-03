@@ -24,7 +24,7 @@
 		.row { width: 100%; min-width: 0; margin-left: 0; margin-right: 0; }
 		.row .row .column, .row .row .columns { padding: 0; }
 		.column, .columns { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
-		.column:last-child, .columns:last-child { margin-right: 0; }
+		.column:last-child, .columns:last-child { margin-right: 0; float: none; }
 		
 		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0 !important; }
 		
@@ -33,6 +33,7 @@
 		
 		/* Mobile 4-column Grid */
 		.row .phone-one:first-child, .row .phone-two:first-child, .row .phone-three:first-child, .row .phone-four:first-child { margin-left: 0; }
+		.row .phone-one:last-child, .row .phone-two:last-child, .row .phone-three:last-child, .row .phone-four:last-child { float: right; }
 		
 		.row .phone-one, .row .phone-two, .row .phone-three, .row .phone-four { margin-left: 4.4%; float: left; min-height: 1px; position: relative; padding: 0; }
 		
