@@ -54,6 +54,9 @@
 				<hr />
 				
 				<h4>Changelog</h4>
+				<h5>2.1.5 <small>January 26, 2012</small></h5>
+				<p>Numerous bug fixes around the nav, UI elements, edge cases and general code cleanliness. Also added in <a href="ui.php">tooltips and inline labels</a>. The tooltips can be attached to most objects and work cross-device on click or tap. <strong>Note:</strong> Within this version we now include a build of Modernizr to detect touch-enabled devices. Is it not mandatory, but the nav works best with it in place. You can use another build of Modernizr if you have touch-detection and classes turned on.</p>
+				
 				<h5>2.1.4 <small>December 19, 2011</small></h5>
 				<p>Two semi-major new features: <a href="grid.php">source ordering</a> and <a href="ui.php">video embed</a> support. You can now reorder the grid (both desktop/tablet and phone) using push and pull classes. If you need to embed Youtube or Vimeo videos you can wrap them in a simple .flex-video class to have them scale by proportion within the grid. We also updated the nav-bar to work properly across more devices, and fixed a number of other small bugs.</p>
 				

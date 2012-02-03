@@ -1,4 +1,4 @@
-<? $version = "2.1.4"; ?>
+<? $version = "2.1.5"; ?>
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -39,16 +39,6 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<script src="../../javascripts/jquery.min.js"></script>
-	<script src="../../javascripts/jquery.reveal.js"></script>
-	<script src="../../javascripts/jquery.orbit-1.3.0.js"></script>
-	<script src="../../javascripts/forms.jquery.js"></script>
-	<script src="../../javascripts/jquery.customforms.js"></script>
-	<script src="../../javascripts/jquery.placeholder.min.js"></script>
-	<script src="../../javascripts/modernizr.foundation.js"></script>
-	<script src="../../javascripts/app.js"></script>
-	<script src="presentation.js"></script>
-
 </head>
 <body>
 
@@ -56,6 +46,7 @@
   <div id="zurBar" class="container">
     <div class="row">
       <div class="four columns">
+      	<a href="#" id="mobileNav" data-reveal-id="navModal" class="small nice button show-on-phones">Nav</a>
         <h1><a href="../">Foundation</a></h1>
       </div>
       <div class="eight columns hide-on-phones">

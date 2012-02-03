@@ -8,7 +8,7 @@
 /* ZURB TEAM */
   Design Lead: Jonathan Smiley
   Site: rienaretrancher.net
-  Twitter: @smileyj68
+  Twitter: @smiley
   
   Engineer: Matt Kelly
   Twitter: @mkelly12

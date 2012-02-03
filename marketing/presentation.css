@@ -169,7 +169,7 @@ h2.by-zurb a {
 header {
   text-align: center;
   position: relative;
-  z-index: 100;
+  z-index: 30;
   /*top: -645px;*/
   margin-top: -605px; }
 header h1 {
@@ -299,6 +299,7 @@ header img {
   font-size: 14px;
   font-size: 1.4rem;
   margin-bottom: 4px; }
+#updates article dl dd { height: 17px; overflow: hidden; }
 #updates article a {
   font-size: 11px;
   font-size: 1.1rem;
@@ -413,7 +414,7 @@ div.timer {
 #insideContainer {
   position: relative;
   top: -80px;
-  z-index: 100; }
+  z-index: 30; }
 #insideContainer nav ul {
   float: right;
   position: relative;

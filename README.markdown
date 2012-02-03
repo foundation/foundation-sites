@@ -38,9 +38,23 @@ WordPress
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
 * [Optional install for roots](https://github.com/retlehs/roots) by Corey Wagehoft
 
+Drupal
+
+* [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
+
 .NET
 
-* [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau
+* [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau, @EdCharbeneau
+
+Other Implementations
+
+* [Mobile First](https://github.com/admfrhd/mobile-first-foundation) by Adam Fairhead
+* [Less Version](https://github.com/justinmarsan/FoundationLess) by Justin Marsan
+* [Less with Color Scheme](https://github.com/matalin/FoundationLess) by Matalin Hatchard
+
+Editors
+
+* [Textmate/Sublime Text2 Bundle](https://github.com/liamr/Zurb-Foundation-Textmate-Bundle) by Liam R, @liamr
 
 MIT Open Source License
 =======================
