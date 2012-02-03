@@ -46,6 +46,7 @@
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px;
 		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		text-shadow: 0 -1px 1px rgba(0,0,0,0.28);
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
@@ -88,23 +89,30 @@
 	.nice.large.button 		{ background-position: 0 -30px; }
 
 	/* Colors ---------- */
-	.blue.button			{ background-color: #00a6fc;  }
+	.blue.button			{ background-color: #00a6fc; }
 	.red.button				{ background-color: #e91c21; }
 	.white.button			{ background-color: #e9e9e9; color: #333; }
 	.black.button			{ background-color: #141414; }
 	
 	/* Nice Colors ---------- */
-	.nice.blue.button		{ border: 1px solid #0593dc;  }
-	.nice.red.button		{ border: 1px solid #b90b0b;  }
+	.nice.blue.button		{ border: 1px solid #0593dc; }
+	.nice.red.button		{ border: 1px solid #b90b0b; }
 	.nice.white.button		{ border: 1px solid #cacaca; text-shadow: none !important; }
 	.nice.black.button		{ border: 1px solid #000; }
 	
 	/* Hovers ---------- */
 	.button:hover, .button:focus 				{ background-color: #0192dd; color: #fff; }
-	.blue.button:hover, .blue.button:focus		{ background-color: #0192dd; 	}
-	.red.button:hover, .red.button:focus 		{ background-color: #d01217; 	}
+	.blue.button:hover, .blue.button:focus		{ background-color: #0192dd; }
+	.red.button:hover, .red.button:focus 		{ background-color: #d01217; }
 	.white.button:hover, .white.button:focus	{ background-color: #dadada; color: #333; }
 	.black.button:hover, .black.button:focus	{ background-color: #000; }
+	
+	/* Hovers ---------- */
+	.nice.button:active 	{ 
+		-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
+		-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
+		box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
+	}
 	
 	/* Disabled ---------- */
 	.button.disabled, .button[disabled] { opacity: 0.6; cursor: default; }
