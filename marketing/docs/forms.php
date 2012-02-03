@@ -47,6 +47,9 @@
 
 					<label>Large Input</label>
 					<input type="text" class="large input-text" />
+					
+					<label>Expanded (Full Width) Input</label>
+					<input type="text" class="expand input-text" />
 
 					<label>Oversize Input</label>
 					<input type="text" class="oversize input-text" />
@@ -129,6 +132,9 @@
 
 					<label>Large Input</label>
 					<input type="text" class="large input-text" />
+					
+					<label>Expanded (Full Width) Input</label>
+					<input type="text" class="expand input-text" />
 
 					<label>Oversize Input</label>
 					<input type="text" class="oversize input-text" />
