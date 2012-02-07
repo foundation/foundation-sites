@@ -101,8 +101,6 @@
 		.show-on-desktops { display: none !important; }
 	}
 	
-	/* only screen and (device-width: 1280px), only screen and (max-device-width: 1280px),  /*
-	/* Keeping this in as a reminder to address support for other tablet devices like the Xoom in the future */
 	
 	/* Specific overrides for elements that require something other than display: block */
 	
@@ -110,16 +108,16 @@
 	table.hide-on-phones { display: table !important; }	
 	table.hide-on-tablets { display: table !important; }
 	
-	@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px) {
-		table.hide-on-phones { display: block !important; }
-		table.hide-on-desktops { display: block !important; }
-		table.show-on-tablets { display: block !important; }
+	@media only screen and (max-width: 1280px) and (min-width: 768px) {
+		.touch table.hide-on-phones { display: table !important; }
+		.touch table.hide-on-desktops { display: table !important; }
+		.touch table.show-on-tablets { display: table !important; }
 	}
 	
 	@media only screen and (max-width: 767px) {
-		table.hide-on-tablets { display: block !important; }
-		table.hide-on-desktops { display: block !important; }
-		table.show-on-phones { display: block !important; }
+		table.hide-on-tablets { display: table !important; }
+		table.hide-on-desktops { display: table !important; }
+		table.show-on-phones { display: table !important; }
 	}
 	
 	
