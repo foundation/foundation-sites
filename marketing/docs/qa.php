@@ -109,13 +109,7 @@
 						<td><img src="../images/check.png" /></td>
 					</tr>
 					<tr>
-						<td><strong>Android Browser</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-					</tr>
-					<tr>
-						<td><strong>Chrome for Android</strong></td>
+						<td><strong>Android Browser</strong><sup>2</sup></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
 						<td><img src="../images/check.png" /></td>
@@ -132,6 +126,7 @@
 				</table>
 				<ol>
 					<li>Reveal uses RGBa colors, which IE7 does not support. You can manually exchange RGBa for PNGs to provide IE7 support in Reveal</li>
+					<li>This includes the shipping browser on the Motorola XOOM and several newer Android phones. However, there is no single Android browser so testing is slightly constrained.</li>
 				</ol>
 				
 
