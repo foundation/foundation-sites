@@ -52,7 +52,7 @@
             <p><script type="text/javascript" src="http://snipt.net/embed/1f8dc276f8040001419c64e9d18f09cd"></script></p>
             
             <h5>Adding to Existing Projects</h5>
-            <p>We've also made it very easy to add out gem to existing project. You just need to make sure to add <strong>require "ZURB-foundation"</strong> to the top of your config file. Then navigate to your project directory and run:</p>
+            <p>We've also made it very easy to add our gem to existing project. You just need to make sure to add <strong>require "ZURB-foundation"</strong> to the top of your config file. Then navigate to your project directory and run:</p>
             <p><script type="text/javascript" src="http://snipt.net/embed/49b9cebdffc1ef28654b73c1e656602b"></script></p>
             
             <h4>Using Compass to Compile Your SASS/SCSS into CSS</h4>
