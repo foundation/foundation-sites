@@ -1,37 +1,68 @@
-$(document).ready(function () {
-/* TOOLTIPS ---------- */
-  /* Positiong and options for adding tooltips */
+/*
+ * jQuery Foundation Tooltip Plugin 1.0
+ * http://foundation.zurb.com
+ * Copyright 2012, ZURB
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+*/
 
-  function foundationTooltipsInit() {
-    var targets = $('.has-tip'),
-    tipTemplate = function(target, content) {
-      return '<span data-id="' + target + '" class="tooltip">' + content + '<span class="nub"></span></span>';
-    };
-    targets.each(function(){
-      var target = $(this),
-      content = target.attr('title'),
-      classes = target.attr('class'),
-      id = target.attr('id'),
-      tip = $(tipTemplate(id, content));
-      tip.addClass(classes).removeClass('has-tip').appendTo('body');
-      if (Modernizr.touch) {
-        tip.append('<span class="tap-to-close">tap to close </span>');
-      }
-      reposition(target, tip, classes);
-      tip.hide();
-    });
-    $(window).resize(function() {
-      var tips = $('.tooltip');
-      tips.each(function() {
-        var target = $('#' + $(this).data('id')),
-        tip = $(this),
-        classes = tip.attr('class');
-        reposition(target, tip, classes);
+;(function($) {
+  var methods = {
+    init : function( options ) { 
+
+      return this.each(function() {    
+        var targets = $('.has-tip'),
+        tipTemplate = function(target, content) {
+          return '<span data-id="' + target + '" class="tooltip">' + content + '<span class="nub"></span></span>';
+        };
+        targets.each(function(){
+          var target = $(this),
+          content = target.attr('title'),
+          classes = target.attr('class'),
+          id = target.attr('id'),
+          tip = $(tipTemplate(id, content));
+          tip.addClass(classes).removeClass('has-tip').appendTo('body');
+          if (Modernizr.touch) {
+            tip.append('<span class="tap-to-close">tap to close </span>');
+          }
+          methods.reposition(target, tip, classes);
+          tip.hide();
+        });
+        $(window).resize(function() {
+          var tips = $('.tooltip');
+          tips.each(function() {
+            var target = $('#' + $(this).data('id')),
+            tip = $(this),
+            classes = tip.attr('class');
+            methods.reposition(target, tip, classes);
+          });
+            
+        });
+
+        if (Modernizr.touch) {
+          $('.tooltip').live('click touchstart touchend', function(e) {
+            e.preventDefault();
+            $(this).hide();
+          });
+          targets.live('click touchstart touchend', function(e){
+            e.preventDefault();
+            $('.tooltip').hide();
+            $('span[data-id=' + $(this).attr('id') + ']').show();
+            targets.attr('title', "");
+          });
+
+        } else {
+          targets.hover(function() {
+            $('span[data-id=' + $(this).attr('id') + ']').show();
+            targets.attr('title', "");
+          }, function() {
+            $('span[data-id=' + $(this).attr('id') + ']').hide();
+          }); 
+        }
+
       });
-        
-    });
-    
-    function reposition(target, tip, classes) {
+    },
+    reposition : function(target, tip, classes) {
       var width = target.data('width'),
       nub = tip.children('.nub'),
       nubHeight = nub.outerHeight(),
@@ -83,26 +114,18 @@ $(document).ready(function () {
         }
       }
     }
-    if (Modernizr.touch) {
-      $('.tooltip').live('click touchend', function(e) {
-        e.preventDefault();
-        $(this).hide();
-      });
-      targets.live('click touchend', function(e){
-        e.preventDefault();
-        $('.tooltip').hide();
-        $('span[data-id=' + $(this).attr('id') + ']').show();
-        targets.attr('title', "");
-      });
+  };
 
+  $.fn.tooltips = function( method ) {
+    
+    // Method calling logic
+    if ( methods[method] ) {
+      return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+    } else if ( typeof method === 'object' || ! method ) {
+      return methods.init.apply( this, arguments );
     } else {
-      targets.hover(function() {
-        $('span[data-id=' + $(this).attr('id') + ']').show();
-        targets.attr('title', "");
-      }, function() {
-        $('span[data-id=' + $(this).attr('id') + ']').hide();
-      }); 
-    }
-  }
-  foundationTooltipsInit();
-});
+      $.error( 'Method ' +  method + ' does not exist on jQuery.zSlide' );
+    }    
+  
+  };
+})(jQuery);;

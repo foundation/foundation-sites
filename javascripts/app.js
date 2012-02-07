@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     	//Show Tab Content
 		$(contentLocation).closest('.tabs-content').children('li').hide();
-		$(contentLocation).show();
+		$(contentLocation).css('display', 'block');
 	}
 
 	$('dl.tabs').each(function () {
@@ -43,6 +43,9 @@ $(document).ready(function () {
 	/* Remove this and jquery.placeholder.min.js if you don't need :) */
 
 	$('input, textarea').placeholder();
+
+	/* TOOLTIPS ------------ */
+	$(this).tooltips();
 
 
 
