@@ -42,6 +42,10 @@ Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
 
+MODX
+
+* [MODX Version](http://designfromwithin.com/blog/2012/02/07/foundation-modx/) by Menno Pietersen
+
 .NET
 
 * [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau, @EdCharbeneau
