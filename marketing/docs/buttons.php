@@ -84,6 +84,14 @@
 						<br /><br />
 					</div>
 				</div>
+				
+				<div class="row">
+					<div class="twelve columns">
+						
+						<a href="" class="nice tiny blue button">Button</a> <button type="submit" class="nice tiny blue button">Button</button> <input type="submit" class="nice tiny blue button" value="Button" />
+						
+					</div>
+				</div>
 			</div>
 			<div class="four columns">
 				<? include("includes/_download.php"); ?>

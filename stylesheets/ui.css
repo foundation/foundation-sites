@@ -32,11 +32,13 @@
 		color: #fff;
 		text-decoration: none;
 		font-weight: bold;
+		font-size: 13px; font-size: 1.3rem;
 		line-height: 1;
 		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
 		position: relative;
 		cursor: pointer;
 		border: none;
+		margin: 0;
 	}
 	
   	/* Don't use native buttons on iOS */
@@ -80,6 +82,7 @@
 	}
 	
 	/* Sizes ---------- */
+	.tiny.button			{ font-size: 10px; padding: 6px 14px 8px; width: auto; }
 	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; width: auto; }
 	.medium.button 			{ font-size: 13px; width: auto; }
 	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
