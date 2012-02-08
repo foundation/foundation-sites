@@ -153,7 +153,7 @@
 /*    --------------------------------------------------
     Tabs
     -------------------------------------------------- */
-		dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
+	dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
     dl.tabs dt { display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; font-size: 11px; text-transform: uppercase; cursor: default; }
     dl.tabs dt:first-child { padding: 0 9px 0 0; }
     dl.tabs dd { display: block; width: auto; height: 30px; padding: 0; float: left; }
