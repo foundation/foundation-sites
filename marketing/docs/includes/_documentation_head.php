@@ -1,3 +1,4 @@
+<? $version = "2.1.5"; ?>
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -30,7 +31,7 @@
 	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="../src/stylesheets/ie.css">
+		<link rel="stylesheet" href="../../stylesheets/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
@@ -38,22 +39,14 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<script src="../../javascripts/jquery.min.js"></script>
-	<script src="../../javascripts/jquery.reveal.js"></script>
-	<script src="../../javascripts/jquery.orbit-1.3.0.js"></script>
-	<script src="../../javascripts/forms.jquery.js"></script>
-	<script src="../../javascripts/jquery.customforms.js"></script>
-	<script src="../../javascripts/jquery.placeholder.min.js"></script>
-	<script src="../../javascripts/app.js"></script>
-	<script src="presentation.js"></script>
-
 </head>
-<body id="<?= $page_name ?>-page" class="<?=$browser?>">
+<body>
 
   <!-- ZURBar -->
   <div id="zurBar" class="container">
     <div class="row">
       <div class="four columns">
+      	<a href="#" id="mobileNav" data-reveal-id="navModal" class="small nice button show-on-phones">Nav</a>
         <h1><a href="../">Foundation</a></h1>
       </div>
       <div class="eight columns hide-on-phones">
@@ -62,7 +55,7 @@
       		<a href="../case-soapbox.php">Case Studies</a>
       		<a href="index.php">Documentation</a>
       		<a href="http://github.com/zurb/foundation">Github</a>
-      		<a href="../files/foundation-download.zip" class="small blue nice button src-download">Download</a>
+      		<a href="../files/foundation-download-<?= $version ?>.zip" class="small blue nice button src-download">Download</a>
       		
       	</strong>
       </div>

@@ -41,7 +41,33 @@
 	    </section>
 	  </footer>
 	  <!-- /Das Footer -->
+	  
+		<div id="navModal" class="reveal-modal">
+			<h3>Foundation Docs</h3>
+			<dl class="nice tabs vertical">
+				<dd><a href="index.php">Getting Started</a></dd>
+				<dd><a href="grid.php">Grid</a></dd>
+				<dd><a href="buttons.php">Buttons</a></dd>
+				<dd><a href="forms.php">Forms</a></dd>
+				<dd><a href="layout.php">Layout</a></dd>
+				<dd><a href="ui.php">UI</a></dd>
+				<dd><a href="orbit.php">Orbit</a></dd>
+				<dd><a href="reveal.php">Reveal</a></dd>
+				<dd><a href="gems.php">Gems</a></dd>
+				<dd><a href="qa.php">QA</a></dd>
+			</dl>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
 	</div>
+	<script src="../../javascripts/jquery.min.js"></script>
+	<script src="../../javascripts/jquery.reveal.js"></script>
+	<script src="../../javascripts/jquery.orbit-1.4.0.js"></script>
+	<script src="../../javascripts/jquery.customforms.js"></script>
+	<script src="../../javascripts/jquery.placeholder.min.js"></script>
+	<script src="../../javascripts/modernizr.foundation.js"></script>
+	<script src="../../javascripts/jquery.tooltips.js"></script>
+	<script src="../../javascripts/app.js"></script>
+	<script src="presentation.js"></script>
 
   <script> 
 

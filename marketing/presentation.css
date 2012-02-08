@@ -169,7 +169,7 @@ h2.by-zurb a {
 header {
   text-align: center;
   position: relative;
-  z-index: 100;
+  z-index: 30;
   /*top: -645px;*/
   margin-top: -605px; }
 header h1 {
@@ -299,6 +299,7 @@ header img {
   font-size: 14px;
   font-size: 1.4rem;
   margin-bottom: 4px; }
+#updates article dl dd { height: 17px; overflow: hidden; }
 #updates article a {
   font-size: 11px;
   font-size: 1.1rem;
@@ -413,7 +414,7 @@ div.timer {
 #insideContainer {
   position: relative;
   top: -80px;
-  z-index: 100; }
+  z-index: 30; }
 #insideContainer nav ul {
   float: right;
   position: relative;
@@ -546,14 +547,16 @@ footer.row a:hover {
 }
 @media only screen and (max-width: 767px) {
   #zurBar {
-    padding-left: 0;
-    padding-right: 0; }
+    padding-left: 20px;
+    padding-right: 20px; }
   #zurBar h1 {
     float: left; }
   #gridBg {
     display: none;
   }
-
+	
+  #insideContainer { top: 20px; }
+  
   header {
     margin-top: 40px; }
   header img {
@@ -589,7 +592,8 @@ footer.row a:hover {
 
   #logos {
     text-align: center;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    border-bottom: none; }
   #logos h4 {
     font-size: 20px;
     font-size: 2rem; }
@@ -602,19 +606,22 @@ footer.row a:hover {
     height: 200px; }
 
   footer.row {
-    margin-top: 0; }
+    margin-top: 0;
+    border-top: none; }
 
   div.slider-nav span.left {
     left: 94% !important; }
 
   /* Swipey, swipey $3.50 */
+  
   #swipeArea {
     background: #f0f0f0;
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(0, 0, 0, 0.27) inset;
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(0, 0, 0, 0.27) inset;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(0, 0, 0, 0.27) inset;
     margin-bottom: 0;
-    padding-top: 16px;
+    padding-top: 16px; padding-left: 20px; padding-right: 20px;
+    margin-left: -20px; margin-right: -20px;
     overflow: hidden; }
   #swipeArea h5 {
     margin-bottom: 12px;

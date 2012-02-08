@@ -1,3 +1,4 @@
+<? $version = "2.1.5"; ?>
 <!DOCTYPE html>	
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -30,39 +31,13 @@
 	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="src/stylesheets/ie.css">
+		<link rel="stylesheet" href="../stylesheets/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-
-	<script src="../javascripts/jquery.min.js"></script>
-	<script src="jswipe.js"></script>
-	<script src="../javascripts/jquery.reveal.js"></script>
-	<script src="../javascripts/jquery.orbit-1.3.0.js"></script>
-	<script src="../javascripts/forms.jquery.js"></script>
-	<script src="../javascripts/jquery.customforms.js"></script>
-	<script src="../javascripts/jquery.placeholder.min.js"></script>
-	<script src="../javascripts/app.js"></script>
-	<script src="swipe.js"></script>
-	<script src="github.js"></script>
-  
-  
-  <script>
-  $(window).load(function() {
-     $('#featured').orbit({
-       animation: 'fade',
-       animationSpeed: 800,
-       timer: true,
-       advanceSpeed: 12000,
-       captionAnimation: "fade",
-       captionAnimationSpeed: 800
-     });
-  });
-  </script>
-
 
 </head>
 <body>
@@ -80,7 +55,7 @@
       		<a href="case-soapbox.php">Case Studies</a>
       		<a href="docs/">Documentation</a>
       		<a href="http://github.com/zurb/foundation">Github</a>
-      		<a href="files/foundation-download.zip" class="small blue nice button src-download">Download</a>
+      		<a href="files/foundation-download-<?= $version ?>.zip" class="small blue nice button src-download">Download</a>
       		
       	</strong>
       </div>

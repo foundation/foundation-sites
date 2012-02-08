@@ -41,8 +41,7 @@
 	<script src="../javascripts/jquery.min.js"></script>
 	<script src="jswipe.js"></script>
 	<script src="../javascripts/jquery.reveal.js"></script>
-	<script src="../javascripts/jquery.orbit-1.3.0.js"></script>
-	<script src="../javascripts/forms.jquery.js"></script>
+	<script src="../javascripts/jquery.orbit-1.4.0.js"></script>
 	<script src="../javascripts/jquery.customforms.js"></script>
 	<script src="../javascripts/jquery.placeholder.min.js"></script>
 	<script src="../javascripts/app.js"></script>
@@ -207,7 +206,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-		$('.src-download').live('click', function (event) {
+		$(document).on('click', '.src-download', function (event) {
 			_gaq.push(['_trackEvent', 'Foundation', 'Downloaded']);
 		});
   </script>

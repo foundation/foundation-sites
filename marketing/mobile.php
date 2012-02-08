@@ -2,8 +2,8 @@
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->
-  <div id="gridBgShort" class="container">
-    <div class="white-fade hide-on-phones"></div>
+  <div id="gridBgShort" class="container hide-on-phones">
+    <div class="white-fade"></div>
     <div class="row">
       <div class="one columns"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div>
     </div>
@@ -60,9 +60,9 @@
 	    <br><br>
 	    <nav class="ten columns show-on-phones">
   	    <ul>
-  	      <li><a href="#">Documentation</a></li>
-  	      <li><a href="#">On Github</a></li>
-  	      <li><a class="nice small blue button src-download" href="files/foundation-download.zip">Download</a></li>
+  	      <li><a href="docs/">Documentation</a></li>
+  	      <li><a href="http://github.com/zurb/foundation">On Github</a></li>
+  	      <li><a class="nice small blue button src-download" href="files/foundation-download-<?= $version ?>.zip">Download</a></li>
   	    </ul>
   	  </nav>
 	  </div>
