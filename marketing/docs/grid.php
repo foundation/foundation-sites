@@ -212,7 +212,7 @@
 						.one				
 					</div>
 					<div class="eight columns offset-by-three">
-						.eight.columns.offset-by.three				
+						.eight.columns.offset-by-three				
 					</div>
 				</div>
 				<div class="row display">
