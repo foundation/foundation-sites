@@ -46,19 +46,23 @@
             modal.delay(options.animationSpeed / 2).animate({
               "top": $(document).scrollTop() + topMeasure + 'px',
               "opacity": 1
-            }, options.animationSpeed, unlockModal);
+            }, options.animationSpeed, function () {
+              modal.trigger('reveal:opened');
+            });
           }
           if (options.animation == "fade") {
             modal.css({'opacity': 0, 'visibility': 'visible', 'top': $(document).scrollTop() + topMeasure});
             modalBg.fadeIn(options.animationSpeed / 2);
             modal.delay(options.animationSpeed / 2).animate({
               "opacity": 1
-            }, options.animationSpeed, unlockModal);
+            }, options.animationSpeed, function () {
+              modal.trigger('reveal:opened');
+            });
           }
           if (options.animation == "none") {
             modal.css({'visibility': 'visible', 'top': $(document).scrollTop() + topMeasure});
             modalBg.css({"display": "block"});
-            unlockModal();
+            modal.trigger('reveal:opened');
           }
         }
         modal.unbind('reveal:open', openAnimation);
@@ -69,32 +73,37 @@
         if (!locked) {
           lockModal();
           if (options.animation == "fadeAndPop") {
-            modalBg.delay(options.animationSpeed).fadeOut(options.animationSpeed);
             modal.animate({
               "top":  $(document).scrollTop() - topOffset + 'px',
               "opacity": 0
             }, options.animationSpeed / 2, function () {
               modal.css({'top': topMeasure, 'opacity': 1, 'visibility': 'hidden'});
-              unlockModal();
+            });
+            modalBg.delay(options.animationSpeed).fadeOut(options.animationSpeed, function () {
+              modal.trigger('reveal:closed');
             });
           }
           if (options.animation == "fade") {
-            modalBg.delay(options.animationSpeed).fadeOut(options.animationSpeed);
             modal.animate({
               "opacity" : 0
             }, options.animationSpeed, function () {
               modal.css({'opacity': 1, 'visibility': 'hidden', 'top': topMeasure});
-              unlockModal();
+            });
+            modalBg.delay(options.animationSpeed).fadeOut(options.animationSpeed, function () {
+              modal.trigger('reveal:closed');
             });
           }
           if (options.animation == "none") {
             modal.css({'visibility': 'hidden', 'top': topMeasure});
             modalBg.css({'display': 'none'});
+            modal.trigger('reveal:closed');
           }
         }
         modal.unbind('reveal:close', closeAnimation);
       }
       modal.bind('reveal:close', closeAnimation);
+      modal.bind('reveal:opened reveal:closed', unlockModal);
+      
       modal.trigger('reveal:open');
 
       var closeButton = $('.' + options.dismissModalClass).bind('click.modalEvent', function () {
