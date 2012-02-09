@@ -6,8 +6,8 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-jQuery(document).ready(function ($) {
-  
+(function ($) {
+
   function appendCustomMarkup(type) {
     $('form.custom input:' + type).each(function () {
 
@@ -18,109 +18,79 @@ jQuery(document).ready(function ($) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
       }
 
-      $span.toggleClass('checked', $this.is(':checked'));
-      $span.toggleClass('disabled', $this.is(':disabled'));
+      $span.toggleClass('checked', $this.is(':checked'))
+        .toggleClass('disabled', $this.is(':disabled'));
     });
   }
-  appendCustomMarkup('checkbox');
-  appendCustomMarkup('radio');
 
-  function appendCustomSelect(sel) {
-    var $this = $(sel),
-        $customSelect = $this.next('div.custom.dropdown'),
-        $options = $this.find('option'),
+  function refreshCustomSelect($select, append) {
+    var $customSelect = $select.next(append ? 'div.custom.dropdown' : ''),
+        $options = $select.find('option'),
         maxWidth = 0,
-        $li;
+        outerWidth,
+        li = '',
+        $ul,
+        html;
 
-    if ($customSelect.length === 0) {
+    if (append && $customSelect.length === 0) {
       $customSelect = $('<div class="custom dropdown"><a href="#" class="selector"></a><ul></ul></div>"');
-      $options.each(function () {
-        $li = $('<li>' + $(this).html() + '</li>');
-        $customSelect.find('ul').append($li);
-      });
       $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
 
-      $this.after($customSelect);
-      $this.hide();
-      
+      $select.hide().after($customSelect);
+
+      $ul = $customSelect.find('ul');
     } else {
-      // refresh the ul with options from the select in case the supplied markup doesn't match
-      $customSelect.find('ul').html('');
-      $options.each(function () {
-        $li = $('<li>' + $(this).html() + '</li>');
-        $customSelect.find('ul').append($li);
-      });
+      $ul = $customSelect.find('ul').html('');
+      $customSelect.removeAttr('style');
+      $ul.removeAttr('style');  
     }
 
-    $customSelect.toggleClass('disabled', $this.is(':disabled'));
+    if (append) {
+      $customSelect.toggleClass('disabled', $select.is(':disabled'));
+    }
 
-    $options.each(function (index) {
-      if (this.selected) {
-        $customSelect.find('li').eq(index).addClass('selected');
-        $customSelect.find('.current').html($(this).html());
-      }
-    });
-
-    $customSelect.find('li').each(function () {
-      $customSelect.addClass('open');
-      if ($(this).outerWidth() > maxWidth) {
-        maxWidth = $(this).outerWidth();
-      }
-      $customSelect.removeClass('open');
-    });
-    $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
-
-  }
-
-  $('form.custom select').each(function () {
-    appendCustomSelect(this);
-  });
-  
-});
-
-(function ($) {
-  
-  function refreshCustomSelect($select) {
-    var maxWidth = 0,
-        $customSelect = $select.next();
-    $options = $select.find('option');
-    $customSelect.find('ul').html('');
-    
     $options.each(function () {
-      $li = $('<li>' + $(this).html() + '</li>');
-      $customSelect.find('ul').append($li);
-    });
-    
-    // re-populate
-    $options.each(function (index) {
+      html = $(this).html();
+      li += '<li';
       if (this.selected) {
-        $customSelect.find('li').eq(index).addClass('selected');
-        $customSelect.find('.current').html($(this).html());
+        li += ' class="selected"';
+        $customSelect.find('.current').html(html);
       }
+      li += '>' + html + '</li>';
     });
-    
+    $ul.append(li);
+
     // fix width
-    $customSelect.removeAttr('style')
-      .find('ul').removeAttr('style');
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
-      if ($(this).outerWidth() > maxWidth) {
-        maxWidth = $(this).outerWidth();
+      outerWidth = $(this).outerWidth();
+      if (outerWidth > maxWidth) {
+        maxWidth = outerWidth;
       }
       $customSelect.removeClass('open');
     });
     $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
-    
+    $ul.css('width', maxWidth + 16 + 'px');
+
   }
-  
+
+  $(function () {
+
+    appendCustomMarkup('checkbox');
+    appendCustomMarkup('radio');
+
+    $('form.custom select').each(function () {
+      refreshCustomSelect($(this), true);
+    });
+
+  });
+
   function toggleCheckbox($element) {
     var $input = $element.prev(),
         input = $input[0];
 
-    if (false == $input.is(':disabled')) {
-        input.checked = ((input.checked) ? false : true);
+    if (!$input.is(':disabled')) {
+        input.checked = !input.checked;
         $element.toggleClass('checked');
 
         $input.trigger('change');
@@ -134,7 +104,7 @@ jQuery(document).ready(function ($) {
     $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
       $(this).next().removeClass('checked');
     });
-    input.checked = ((input.checked) ? false : true);
+    input.checked = !input.checked;
     $element.toggleClass('checked');
     
     $input.trigger('change');
@@ -159,18 +129,18 @@ jQuery(document).ready(function ($) {
   });
   
   $('form.custom label').live('click', function (event) {
-    var $associatedElement = $('#' + $(this).attr('for')),
-        $customCheckbox,
-        $customRadio;
+    var $this = $(this),
+        $associatedElement = $('#' + $this.attr('for')),
+        spanSelector = 'span.custom.',
+        type;
     if ($associatedElement.length !== 0) {
-      if ($associatedElement.attr('type') === 'checkbox') {
+      type = $associatedElement.attr('type');
+      if (type === 'checkbox') {
         event.preventDefault();
-        $customCheckbox = $(this).find('span.custom.checkbox');
-        toggleCheckbox($customCheckbox);
-      } else if ($associatedElement.attr('type') === 'radio') {
+        toggleCheckbox($this.find(spanSelector + type));
+      } else if (type === 'radio') {
         event.preventDefault();
-        $customRadio = $(this).find('span.custom.radio');
-        toggleRadio($customRadio);
+        toggleRadio($this.find(spanSelector + type));
       }
     }
   });
@@ -178,20 +148,20 @@ jQuery(document).ready(function ($) {
   $('form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector').live('click', function (event) {
     var $this = $(this),
         $dropdown = $this.closest('div.custom.dropdown'),
-        $select = $dropdown.prev();
+        $select = $dropdown.prev(),
+        $document = $(document);
     
     event.preventDefault();
     
-    if (false == $select.is(':disabled')) {
+    if (!$select.is(':disabled')) {
         $dropdown.toggleClass('open');
-
         if ($dropdown.hasClass('open')) {
-          $(document).bind('click.customdropdown', function (event) {
+          $document.bind('click.customdropdown', function (event) {
             $dropdown.removeClass('open');
-            $(document).unbind('.customdropdown');
+            $document.unbind('.customdropdown');
           });
         } else {
-          $(document).unbind('.customdropdown');
+          $document.unbind('.customdropdown');
         }
     }
   });
