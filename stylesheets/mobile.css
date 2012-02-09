@@ -25,6 +25,9 @@
 		.row .row .column, .row .row .columns { padding: 0; }
 		.column, .columns { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
 		.column:last-child, .columns:last-child { margin-right: 0; float: none; }
+		[class*="column"] + [class*="column"]:last-child { float: none; }
+		[class*="column"]:before, [class*="column"]:after { content:""; display:table; }
+		[class*="column"]:after { clear: both; }
 		
 		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0 !important; }
 		
@@ -165,6 +168,8 @@
 		dl.contained.mobile, dl.nice.contained.mobile { margin-bottom: 0; }
 		dl.contained.tabs.mobile dd a { padding: 18px 20px; }
 		dl.nice.contained.tabs.mobile dd a { padding: 18px 20px; }
+		
+		dl.tabs.mobile + ul.contained { margin-left: -20px; margin-right: -20px; border-width: 0 0 1px 0; }
 	}
 	
 	/* Nav Bar */

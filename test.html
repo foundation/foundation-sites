@@ -171,7 +171,7 @@
 				</div>
 
 				<h3>Tabs</h3>
-				<dl class="contained tabs">
+				<dl class="contained mobile tabs">
 					<dd><a href="#simple1" class="active">Complex Form Content</a></dd>
 					<dd><a href="#simple2">Modal Dialog Call</a></dd>
 					<dd><a href="#simple3">UI Elements</a></dd>
@@ -262,6 +262,24 @@
 						<p><a href="#" class="nice radius large black button">Nice Black Button</a></p>
 					</div>
 				</div>
+				
+				<h3>Reveal</h3>
+				<div class="row">
+					<div class="six columns">
+					  <h6>Data Attributes</h6>
+						<p>
+						  <a href="#" class="tiny blue button" data-reveal-id="testModal">Default</a>
+						  <a href="#" class="tiny blue button" data-reveal-id="testModal" data-animation="fade">Fade</a>
+						  <a href="#" class="tiny blue button" data-reveal-id="testModal" data-animation="none">None</a>
+						</p>
+						<h6>JavaScript</h6>
+						<p>
+						  <a href="#" id="fireReveal" class="tiny blue button">Default</a>
+						  <a href="#" id="fireRevealFade" class="tiny blue button">Fade</a>
+						  <a href="#" id="fireRevealNone" class="tiny blue button">None</a>
+						</p>
+					</div>
+				</div>
 
 			</div>
 
@@ -324,6 +342,27 @@
 	<script src="javascripts/jquery.tooltips.js"></script>
 	<!-- End Combine and Compress These JS Files -->
 	<script src="javascripts/app.js"></script>
+	
+	<script>
+	  $('#testModal').bind('reveal:open reveal:opened reveal:close reveal:closed', function (event) {
+	    console.log(event);
+	  });
+	  
+	  $('#fireReveal').click(function (event) {
+	    event.preventDefault();
+	    $('#testModal').reveal();
+	  });
+	  
+	  $('#fireRevealFade').click(function (event) {
+	    event.preventDefault();
+	    $('#testModal').reveal({animation: 'fade'});
+	  });
+	  
+	  $('#fireRevealNone').click(function (event) {
+	    event.preventDefault();
+	    $('#testModal').reveal({animation: 'none'});
+	  });
+	</script>
 
 </body>
 </html>
