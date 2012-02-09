@@ -128,7 +128,7 @@
 
 	div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; text-shadow: 0 1px rgba(255,255,255,0.9); position: relative; }
 	.alert-box.success { background-color: #7fae00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
-	.alert-box.warning { background-color: #c08c00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
+	.alert-box.warning { background-color: #f68b01; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
 	.alert-box.error { background-color: #c00000; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
 	
 	.alert-box a.close { color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; }
