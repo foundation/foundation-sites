@@ -19,7 +19,11 @@
       animation: 'fadeAndPop',                // fade, fadeAndPop, none
       animationSpeed: 300,                    // how fast animtions are
       closeOnBackgroundClick: true,           // if you click background will modal close?
-      dismissModalClass: 'close-reveal-modal' // the class of a button or element that will close an open modal
+      dismissModalClass: 'close-reveal-modal', // the class of a button or element that will close an open modal
+      open: $.noop,
+      opened: $.noop,
+      close: $.noop,
+      closed: $.noop
     };
     options = $.extend({}, defaults, options);
 
@@ -112,6 +116,10 @@
       }
       modal.bind('reveal:close', closeAnimation);
       modal.bind('reveal:opened reveal:closed', unlockModal);
+      modal.bind('reveal:open', options.open);
+      modal.bind('reveal:opened', options.opened);
+      modal.bind('reveal:close', options.close);
+      modal.bind('reveal:closed', options.closed);
       
       modal.trigger('reveal:open');
 
