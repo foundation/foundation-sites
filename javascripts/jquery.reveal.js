@@ -49,8 +49,6 @@
       }
 
       function openAnimation() {
-        modalBg.unbind('click.modalEvent');
-        $('.' + options.dismissModalClass).unbind('click.modalEvent');
         if (!locked) {
           lockModal();
           if (options.animation === "fadeAndPop") {
@@ -78,9 +76,8 @@
             modal.trigger('reveal:opened');
           }
         }
-        modal.unbind('reveal:open', openAnimation);
       }
-      modal.bind('reveal:open', openAnimation);
+      modal.bind('reveal:open.reveal', openAnimation);
 
       function closeAnimation() {
         if (!locked) {
@@ -112,29 +109,39 @@
             modal.trigger('reveal:closed');
           }
         }
-        modal.unbind('reveal:close', closeAnimation);
       }
-      modal.bind('reveal:close', closeAnimation);
-      modal.bind('reveal:opened reveal:closed', unlockModal);
-      modal.bind('reveal:open', options.open);
-      modal.bind('reveal:opened', options.opened);
-      modal.bind('reveal:close', options.close);
-      modal.bind('reveal:closed', options.closed);
+
+      function destroy() {
+        modal.unbind('.reveal');
+        modalBg.unbind('.reveal');
+        $('.' + options.dismissModalClass).unbind('.reveal');
+        $('body').unbind('.reveal');
+      }
+
+      modal.bind('reveal:close.reveal', closeAnimation);
+      modal.bind('reveal:opened.reveal reveal:closed.reveal', unlockModal);
+      modal.bind('reveal:closed.reveal', destroy);
+      
+      modal.bind('reveal:open.reveal', options.open);
+      modal.bind('reveal:opened.reveal', options.opened);
+      modal.bind('reveal:close.reveal', options.close);
+      modal.bind('reveal:closed.reveal', options.closed);
       
       modal.trigger('reveal:open');
 
-      closeButton = $('.' + options.dismissModalClass).bind('click.modalEvent', function () {
+      closeButton = $('.' + options.dismissModalClass).bind('click.reveal', function () {
         modal.trigger('reveal:close');
       });
 
       if (options.closeOnBackgroundClick) {
         modalBg.css({"cursor": "pointer"});
-        modalBg.bind('click.modalEvent', function () {
+        modalBg.bind('click.reveal', function () {
           modal.trigger('reveal:close');
         });
       }
 
-      $('body').keyup(function (event) {
+      $('body').bind('keyup.reveal', function (event) {
+        debugger;
         if (event.which === 27) { // 27 is the keycode for the Escape key
           modal.trigger('reveal:close');
         }
