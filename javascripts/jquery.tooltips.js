@@ -26,7 +26,7 @@
             tip.append('<span class="tap-to-close">tap to close </span>');
           }
           methods.reposition(target, tip, classes);
-          tip.hide();
+          tip.fadeOut(150);
         });
         $(window).resize(function() {
           var tips = $('.tooltip');
@@ -42,21 +42,21 @@
         if (Modernizr.touch) {
           $('.tooltip').live('click touchstart touchend', function(e) {
             e.preventDefault();
-            $(this).hide();
+            $(this).fadeOut(150);
           });
           targets.live('click touchstart touchend', function(e){
             e.preventDefault();
-            $('.tooltip').hide();
-            $('span[data-id=' + $(this).attr('id') + ']').show();
+            $('.tooltip').fadeOut(150);
+            $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
             targets.attr('title', "");
           });
 
         } else {
           targets.hover(function() {
-            $('span[data-id=' + $(this).attr('id') + ']').show();
+            $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
             targets.attr('title', "");
           }, function() {
-            $('span[data-id=' + $(this).attr('id') + ']').hide();
+            $('span[data-id=' + $(this).attr('id') + ']').fadeOut(150);
           }); 
         }
 

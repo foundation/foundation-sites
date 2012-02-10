@@ -335,54 +335,57 @@
 	  color: #0192dd;
 	}
 	.tooltip {
-	  display: block;
+      display: none;
 	  background: rgb(0,0,0);
-	  background: rgba(0,0,0,0.85);
+	  background: rgba(0,0,0,0.8);
 	  position: absolute;
 	  color: #fff;
 	  font-weight: bold;
 	  font-size: 12px;
 	  font-size: 1.2rem;
-	  width: auto;
-	  padding: 5px 9px 7px 8px;
+	  padding: 5px;
 	  z-index: 999;
+	  -webkit-border-radius: 4px;
+	  -moz-border-radius: 4px;
+	  border-radius: 4px;
+	  line-height: normal;
 	}
 	.tooltip > .nub {
 	  display: block;
 	  width: 0;
 	  height: 0;
-	  border: solid 6px;
+	  border: solid 5px;
 	  border-color: transparent transparent rgb(0,0,0) transparent;
-	  border-color: transparent transparent rgba(0,0,0,0.85) transparent;
+	  border-color: transparent transparent rgba(0,0,0,0.8) transparent;
 	  position: absolute;
-	  top: -12px;
-    left: 10px;
+	  top: -10px;
+	  left: 10px;
 	}
 	.tooltip.top > .nub {
 	  border-color: rgb(0,0,0) transparent transparent transparent;
-	  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+	  border-color: rgba(0,0,0,0.8) transparent transparent transparent;
 	  top: auto;
-	  bottom: -12px;
+	  bottom: -10px;
 	}
 	.tooltip.left, .tooltip.right, .has-tip.left, .has-tip.right {
 	  float: none !important;
 	}
 	.tooltip.left > .nub {
 	  border-color: transparent transparent transparent rgb(0,0,0);
-	  border-color: transparent transparent transparent rgba(0,0,0,0.85);
-	  right: -12px;
+	  border-color: transparent transparent transparent rgba(0,0,0,0.8);
+	  right: -10px;
 	  left: auto;
 	}
 	.tooltip.right > .nub {
 	  border-color: transparent rgb(0,0,0) transparent transparent;
-	  border-color: transparent rgba(0,0,0,0.85) transparent transparent;
+	  border-color: transparent rgba(0,0,0,0.8) transparent transparent;
 	  right: auto;
-	  left: -12px;
+	  left: -10px;
 	}
-	.tooltip.radius {
-	  -webkit-border-radius: 6px;
-	     -moz-border-radius: 6px;
-	          border-radius: 6px;
+	.tooltip.noradius {
+	  -webkit-border-radius: 0;
+	  -moz-border-radius: 0;
+	  border-radius: 0;
 	}
 	.has-tip.opened {
 	  color: #0192DD !important;
