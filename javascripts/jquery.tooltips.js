@@ -1,52 +1,73 @@
-$(document).ready(function () {
-/* TOOLTIPS ---------- */
-  /* Positiong and options for adding tooltips */
+/*
+ * jQuery Foundation Tooltip Plugin 1.0
+ * http://foundation.zurb.com
+ * Copyright 2012, ZURB
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+*/
 
-  function foundationTooltipsInit() {
-    var targets = $('.has-tip'),
+;(function($) {
+  var methods = {
+    init : function( options ) { 
 
-    tipTemplate = function(target, content) {
-      return '<span data-id="' + target + '" class="tooltip">' + content + '<span class="nub"></span></span>';
-    };
+      return this.each(function() {    
+        var targets = $('.has-tip'),
+        tipTemplate = function(target, content) {
+          return '<span data-id="' + target + '" class="tooltip">' + content + '<span class="nub"></span></span>';
+        };
+        targets.each(function(){
+          var target = $(this),
+          content = target.attr('title'),
+          classes = target.attr('class'),
+          id = target.attr('id'),
+          tip = $(tipTemplate(id, content));
+          tip.addClass(classes).removeClass('has-tip').appendTo('body');
+          if (Modernizr.touch) {
+            tip.append('<span class="tap-to-close">tap to close </span>');
+          }
+          methods.reposition(target, tip, classes);
+          tip.fadeOut(150);
+        });
+        $(window).resize(function() {
+          var tips = $('.tooltip');
+          tips.each(function() {
+            var target = $('#' + $(this).data('id')),
+            tip = $(this),
+            classes = tip.attr('class');
+            methods.reposition(target, tip, classes);
+          });
+            
+        });
 
-    targets.each(function(){
-      var target = $(this),
-      content = target.attr('title'),
-      classes = target.attr('class'),
-      id = target.attr('id'),
-      tip = $(tipTemplate(id, content));
-      tip.addClass(classes).removeClass('has-tip').appendTo('body');
-      reposition(target, tip, classes);
-      tip.hide();
+        if (Modernizr.touch) {
+          $('.tooltip').live('click touchstart touchend', function(e) {
+            e.preventDefault();
+            $(this).fadeOut(150);
+          });
+          targets.live('click touchstart touchend', function(e){
+            e.preventDefault();
+            $('.tooltip').fadeOut(150);
+            $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
+            targets.attr('title', "");
+          });
 
-      if (Modernizr.touch) {
-        tip.append('<span class="tap-to-close">tap to close </span>');
-      }
-    });
+        } else {
+          targets.hover(function() {
+            $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
+            targets.attr('title', "");
+          }, function() {
+            $('span[data-id=' + $(this).attr('id') + ']').fadeOut(150);
+          }); 
+        }
 
-    $(window).resize(function() {
-      var tips = $('.tooltip');
-
-      tips.each(function() {
-        var target = $('#' + $(this).data('id')),
-        tip = $(this),
-        classes = tip.attr('class');
-        reposition(target, tip, classes);
       });
-    });
-
-    function reposition(target, tip, classes) {
+    },
+    reposition : function(target, tip, classes) {
       var width = target.data('width'),
       nub = tip.children('.nub'),
       nubHeight = nub.outerHeight(),
       nubWidth = nub.outerWidth();
-
-      tip.css({
-        'top' : (target.offset().top + target.outerHeight() + 10),
-        'left' : target.offset().left,
-        'width' : width
-      });
-
+      
       function nubPos(nub, top, right, bottom, left) {
         nub.css({
           'top' : top,
@@ -56,6 +77,11 @@ $(document).ready(function () {
         });
       }
 
+      tip.css({
+        'top' : (target.offset().top + target.outerHeight() + 10),
+        'left' : target.offset().left,
+        'width' : width
+      });
       nubPos(nub, -nubHeight, 'auto', 'auto', 10);
 
       if ($(window).width() < 767) {
@@ -64,51 +90,42 @@ $(document).ready(function () {
         nubPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
         if (classes.indexOf('top') > -1) {
-          tip.css('top', target.offset().top - tip.outerHeight());
-          nubPos(nub, 'auto', 'auto', -nubHeight, nubWidth);
-        }
-
-        if (classes.indexOf('left') > -1) {
+          var top = target.offset().top - tip.outerHeight() - nubHeight;
           tip.css({
-            'top' : target.offset().top - (target.outerHeight() / 2),
-            'left' : target.offset().left - tip.outerWidth() - 10
-          }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
-
-          nubPos(nub, ((tip.outerHeight() / 2) - (nub.outerHeight / 2)), -nubHeight, 'auto', 'auto');
+            'top' : top,
+            'left' : target.offset().left,
+            'width' : width
+          });
+          nubPos(nub, 'auto', 'auto', -nubHeight, 'auto');
+        } else if (classes.indexOf('left') > -1) {
+          tip.css({
+            'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
+            'left' : target.offset().left - tip.outerWidth() - 10,
+            'width' : width
+          });
+          nubPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -nubHeight, 'auto', 'auto');
         } else if (classes.indexOf('right') > -1){
           tip.css({
-            'top' : target.offset().top - (target.outerHeight() / 2),
-            'left' : target.offset().left + target.outerWidth() + 10
-          }).children('.nub').css('top', (tip.outerHeight() / 2) - (nub.outerHeight() / 2));
-
-          nubPos(nub, ((tip.outerHeight() / 2) - (nub.outerHeight / 2)), 'auto', 'auto', -nubHeight);
+            'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
+            'left' : target.offset().left + target.outerWidth() + 10,
+            'width' : width
+          });
+          nubPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -nubHeight);
         }
       }
     }
+  };
 
-    if (Modernizr.touch) {
-      $('.tooltip').live('click', function(e) {
-        e.preventDefault();
-        $(this).hide();
-      });
-
-      targets.live('click', function(){
-        targets.hover(function() {
-          $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
-          targets.attr('title', "");
-        }, function() {
-          $('span[data-id=' + $(this).attr('id') + ']').fadeOut(150);
-        });
-      });
+  $.fn.tooltips = function( method ) {
+    
+    // Method calling logic
+    if ( methods[method] ) {
+      return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+    } else if ( typeof method === 'object' || ! method ) {
+      return methods.init.apply( this, arguments );
     } else {
-      targets.hover(function() {
-        $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
-        targets.attr('title', "");
-      }, function() {
-        $('span[data-id=' + $(this).attr('id') + ']').fadeOut(150);
-      });
-    }
-  }
-
-  foundationTooltipsInit();
-});
+      $.error( 'Method ' +  method + ' does not exist on jQuery.zSlide' );
+    }    
+  
+  };
+})(jQuery);;

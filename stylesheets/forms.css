@@ -27,10 +27,11 @@
 	input.placeholder, textarea.placeholder { color: #888; }
 
 	/* Text input and textarea sizes */
-	input.input-text, textarea { width: 254px; }
+	input.input-text, textarea { width: 254px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
 	input.small, textarea.small { width: 134px; }
 	input.medium, textarea.medium { width: 254px; }
 	input.large, textarea.large { width: 434px; }
+	input.expand, textarea.expand { width: 100%; }
 
 	/* Fieldsets */
 	form fieldset { padding: 9px 9px 2px 9px; border: solid 1px #ddd; margin: 18px 0; }
@@ -41,11 +42,17 @@
 	/* Errors */
 	.form-field.error input, input.input-text.red { border-color: #C00000; background-color: rgba(255,0,0,0.15); }
 	.form-field.error label, label.red { color: #C00000; }
-	.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 260px; }
+	.form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 254px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
 
-	.small + small.error { width: 140px; }
-	.medium + small.error { width: 260px; }
-	.large + small.error { width: 440px; }
+	.small + small.error { width: 134px; }
+	.medium + small.error { width: 254px; }
+	.large + small.error { width: 434px; }
+	.expand + small.error { width: 100%; }
+	
+	.small.oversize + small.error { width: 144px; }
+	.medium.oversize + small.error { width: 264px; }
+	.large.oversize + small.error { width: 444px; }
+	.expand.oversize + small.error { width: 100%; }
 
 	/* -----------------------------------------
 	   Nicer Forms
@@ -66,6 +73,10 @@
  	form.nice div.form-field.error .small + small, form.nice .small + small.error { width: 132px; }
 	form.nice div.form-field.error .medium + small, form.nice .medium + small.error { width: 252px; }
 	form.nice div.form-field.error .large + small, form.nice .large + small.error { width: 432px; }
+	
+	form.nice div.form-field.error .small.oversize + small, form.nice .small.oversize + small.error { width: 136px; }
+	form.nice div.form-field.error .medium.oversize + small, form.nice .medium.oversize + small.error { width: 256px; }
+	form.nice div.form-field.error .large.oversize + small, form.nice .large.oversize + small.error { width: 436px; }
 
 	/* -----------------------------------------
 	   Custom Forms
@@ -76,7 +87,7 @@
 	form.custom span.custom.radio.checked { background-position: 0 -14px; }
 	form.custom span.custom.checkbox.checked { background-position: 0 -28px; }
 
-	form.custom div.custom.dropdown { position: relative; display: inline-block; width: auto; height: 28px; margin-bottom: 9px; }
+	form.custom div.custom.dropdown { position: relative; display: block; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px; }
 	form.custom div.custom.dropdown a.current { display: block; width: auto; line-height: 26px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; }
 	form.custom div.custom.dropdown a.selector { position: absolute; width: 26px; height: 26px; display: block; background: url(../images/misc/custom-form-sprites.png) -14px 0 no-repeat; right: 0; top: 0; border: solid 1px #ddd; }
 	form.custom div.custom.dropdown:hover a.selector,

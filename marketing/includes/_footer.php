@@ -20,7 +20,7 @@
 				<g:plusone size="medium"></g:plusone>
 				
 				<!-- Place this render call where appropriate -->
-				<script>
+				<script type="text/javascript">
 				  (function() {
 				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 				    po.src = 'https://apis.google.com/js/plusone.js';
@@ -43,6 +43,31 @@
 	  <!-- /Das Footer -->
 	</div>
 	<!-- /Main Container -->
+
+	<script src="../javascripts/jquery.min.js"></script>
+	<script src="../javascripts/modernizr.foundation.js"></script>
+	<script src="jswipe.js"></script>
+	<script src="../javascripts/jquery.reveal.js"></script>
+	<script src="../javascripts/jquery.orbit-1.4.0.js"></script>
+	<script src="../javascripts/jquery.customforms.js"></script>
+	<script src="../javascripts/jquery.placeholder.min.js"></script>
+	<script src="../javascripts/app.js"></script>
+	<script src="swipe.js"></script>
+	<script src="github.js"></script>
+  
+  
+  <script>
+  $(window).load(function() {
+     $('#featured').orbit({
+       animation: 'fade',
+       animationSpeed: 800,
+       timer: true,
+       advanceSpeed: 12000,
+       captionAnimation: "fade",
+       captionAnimationSpeed: 800
+     });
+  });
+  </script>
 
   <script> 
 

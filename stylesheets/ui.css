@@ -32,11 +32,13 @@
 		color: #fff;
 		text-decoration: none;
 		font-weight: bold;
+		font-size: 13px; font-size: 1.3rem;
 		line-height: 1;
 		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
 		position: relative;
 		cursor: pointer;
 		border: none;
+		margin: 0;
 	}
 	
   	/* Don't use native buttons on iOS */
@@ -46,6 +48,7 @@
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px;
 		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		text-shadow: 0 -1px 1px rgba(0,0,0,0.28);
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
@@ -79,6 +82,7 @@
 	}
 	
 	/* Sizes ---------- */
+	.tiny.button			{ font-size: 10px; padding: 6px 14px 8px; width: auto; }
 	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; width: auto; }
 	.medium.button 			{ font-size: 13px; width: auto; }
 	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
@@ -88,23 +92,30 @@
 	.nice.large.button 		{ background-position: 0 -30px; }
 
 	/* Colors ---------- */
-	.blue.button			{ background-color: #00a6fc;  }
+	.blue.button			{ background-color: #00a6fc; }
 	.red.button				{ background-color: #e91c21; }
 	.white.button			{ background-color: #e9e9e9; color: #333; }
 	.black.button			{ background-color: #141414; }
 	
 	/* Nice Colors ---------- */
-	.nice.blue.button		{ border: 1px solid #0593dc;  }
-	.nice.red.button		{ border: 1px solid #b90b0b;  }
+	.nice.blue.button		{ border: 1px solid #0593dc; }
+	.nice.red.button		{ border: 1px solid #b90b0b; }
 	.nice.white.button		{ border: 1px solid #cacaca; text-shadow: none !important; }
 	.nice.black.button		{ border: 1px solid #000; }
 	
 	/* Hovers ---------- */
 	.button:hover, .button:focus 				{ background-color: #0192dd; color: #fff; }
-	.blue.button:hover, .blue.button:focus		{ background-color: #0192dd; 	}
-	.red.button:hover, .red.button:focus 		{ background-color: #d01217; 	}
+	.blue.button:hover, .blue.button:focus		{ background-color: #0192dd; }
+	.red.button:hover, .red.button:focus 		{ background-color: #d01217; }
 	.white.button:hover, .white.button:focus	{ background-color: #dadada; color: #333; }
 	.black.button:hover, .black.button:focus	{ background-color: #000; }
+	
+	/* Hovers ---------- */
+	.nice.button:active 	{ 
+		-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
+		-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
+		box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
+	}
 	
 	/* Disabled ---------- */
 	.button.disabled, .button[disabled] { opacity: 0.6; cursor: default; }
@@ -117,7 +128,7 @@
 
 	div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; text-shadow: 0 1px rgba(255,255,255,0.9); position: relative; }
 	.alert-box.success { background-color: #7fae00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
-	.alert-box.warning { background-color: #c08c00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
+	.alert-box.warning { background-color: #f68b01; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
 	.alert-box.error { background-color: #c00000; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
 	
 	.alert-box a.close { color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; }
@@ -142,7 +153,7 @@
 /*    --------------------------------------------------
     Tabs
     -------------------------------------------------- */
-		dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
+	dl.tabs { display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; }
     dl.tabs dt { display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; font-size: 11px; text-transform: uppercase; cursor: default; }
     dl.tabs dt:first-child { padding: 0 9px 0 0; }
     dl.tabs dd { display: block; width: auto; height: 30px; padding: 0; float: left; }
@@ -174,6 +185,7 @@
 
     ul.contained.tabs-content { padding: 0; }
 	ul.contained.tabs-content>li { padding: 20px; border: solid 0 #ddd; border-width: 0 1px 1px 1px; }
+	ul.contained.vertical.tabs-content>li { border-width: 1px 1px 1px 1px; }
 	ul.nice.contained.tabs-content>li { border-color: #eee; }
 	
 /*  --------------------------------------------------
@@ -201,6 +213,7 @@
 		background: #efefef;
 		background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
+		background: -o-linear-gradient(top, #ffffff 0%,#f4f4f4 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#F4F4F4',GradientType=0 );
 		box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 		-webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -214,7 +227,7 @@
 	
 	.nav-bar { height: 45px; background: #fff; margin-top: 20px; border: 1px solid #ddd; }	
 	.nav-bar>li { float: left; display: block; position: relative; padding: 0; margin: 0; border-right: 1px solid #ddd; line-height: 45px; }
-	.nav-bar>li>a.main { position: relative; font-size: 14px; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
+	.nav-bar>li>a.main { position: relative; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
 	.nav-bar>li>input { margin: 0 16px; }
 	.nav-bar>li ul { margin-bottom: 0; }
 	.nav-bar>li li { line-height: 1.3; }
@@ -322,7 +335,7 @@
 	  color: #0192dd;
 	}
 	.tooltip {
-	  display: block;
+      display: none;
 	  background: rgb(0,0,0);
 	  background: rgba(0,0,0,0.8);
 	  position: absolute;

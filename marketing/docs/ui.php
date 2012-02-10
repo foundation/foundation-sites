@@ -64,14 +64,14 @@
 				<p>Labels are useful inline styles that can be dropped into body copy to call out certain sections or to attach metadata. Examples might be noting when something was updated or that something is new. The syntax is simple, just a <code>span</code> element with a class of .label. The border styling mirrors that of the Foundation buttons.</p>
 				
 				<div class="row">
-					<div class="three columns phone-one">
+					<div class="three columns phone-two">
 						<p>
 							<span class="label">Regular Label</span><br /><br />
 							<span class="radius label">Radius Label</span><br /><br />
 							<span class="round label">Round Label</span>
 						</p>
 					</div>
-					<div class="three columns phone-one">
+					<div class="three columns phone-two">
 						<p>
 							<span class="blue radius label">Blue Label</span><br /><br />
 							<span class="red radius label">Red Label</span><br /><br />
@@ -80,10 +80,9 @@
 							<span class="white radius label">White Label</span>
 						</p>
 					</div>
-					<div class="six columns phone-two">
-						<p><span class="radius label">Added 01/19</span> This paragraph has an inline label to let you know that it was added on January 19, 2012 courtesy of Thomas Klemm. Thanks man!</p>
-					</div>
 				</div>
+				
+				<p><span class="label">Added 01/19</span> This paragraph has an inline label to let you know that it was added on January 19, 2012 courtesy of Thomas Klemm. Thanks man!</p>
 				
 				<p><script type="text/javascript" src="http://snipt.net/embed/eabd94fbda853d866057cbda5e8ab64a"></script></p>
 				
@@ -94,9 +93,8 @@
 
 				<p>By default the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
 
-				<p>The tooltips can be positioned <span class="has-tip top" id="tipTop" data-width="210" title="I'm on the top!">top</span>, <span class="has-tip noradius" id="tipDefault" data-width="210" title="I'm on bottom and the default position, and not rounded.">bottom</span>, <span class="has-tip left" id="tipLeft" data-width="90" title="I'm on the left!">left</span>, or <span class="has-tip right" id="tipRight" data-width="90" title="I'm on the right!">right</span> of the target element.In a mobile environment the tooltips are full width and bottom aligned.</p>
+				<p>The tooltips can be positioned on the <span class="has-tip" id="tipDefault" data-width="210" title="I'm on bottom and the default position.">"bottom"</span>, which is the default position, <span class="has-tip top noradius" id="tipTop" data-width="210" title="I'm on the top and I'm not rounded!">"top"</span>, <span class="has-tip left" id="tipLeft" data-width="90" title="I'm on the left!">"left"</span>, or <span class="has-tip right" id="tipRight" data-width="90" title="I'm on the right!">"right"</span> of the target element.In a mobile environment the tooltips are full width and bottom aligned.</p>
 
-				<script type="text/javascript" src="http://snipt.net/embed/204626ad26dbd0a11ed592797965e30f"></script>
 
 				<hr />
 				
@@ -366,7 +364,7 @@
 						<div class="flex-video">
 							<iframe width="420" height="315" src="http://www.youtube.com/embed/9otNWTHOJi8" frameborder="0" allowfullscreen></iframe>
 						</div>
-						4:3 is the default size for the .video element, and the assumption for .video for chrome (controls) height is based on YouTube.
+						4:3 is the default size for the .flex-video element, and the assumption for .flex-video for chrome (controls) height is based on YouTube.
 					</li>
 					<li id="video2Tab">
 						<div class="flex-video widescreen">
