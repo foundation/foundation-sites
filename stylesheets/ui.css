@@ -138,7 +138,7 @@
     Labels
     -------------------------------------------------- */
 
-	.label { padding: 0px 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; }
+	.label { padding: 0 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; }
 	.label.radius { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 	.label.round { padding: 1px 7px 2px; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
 	
@@ -234,7 +234,7 @@
 	.nav-bar>li.has-flyout>a.main { padding-right: 36px; }
 	.nav-bar>li.has-flyout>a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
 	.nav-bar>li.has-flyout>a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
-	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 10; }
+	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 40; }
 	.flyout.small { width: 200px; }
 	.flyout.large { width: 600px; }
 	.flyout.right { left: auto; right: 0; }
