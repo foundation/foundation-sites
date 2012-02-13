@@ -55,6 +55,13 @@
 						<a href="#" class="large black button radius">Button &raquo;</a><br /><br />
 						<br /><br />
 					</div>
+					<div class="six columns">
+						<a href="#" class="small green button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="white green button">Button &raquo;</a><br /><br />
+						<a href="#" class="large green button radius">Button &raquo;</a><br /><br />
+						<br /><br />
+					</div>
+
 				</div>		
 				
 				<hr />
@@ -81,6 +88,12 @@
 						<a href="#" class="small black nice button radius">Button &raquo;</a><br /><br />
 						<a href="#" class="black nice button radius">Button &raquo;</a><br /><br />
 						<a href="#" class="large black nice button radius">Button &raquo;</a><br /><br />
+						<br /><br />
+					</div>
+					<div class="six columns">
+						<a href="#" class="small green nice button radius">Button &raquo;</a><br /><br />
+						<a href="#" class="green radius nice button">Button &raquo;</a><br /><br />
+						<a href="#" class="large green nice button radius">Button &raquo;</a><br /><br />
 						<br /><br />
 					</div>
 				</div>
