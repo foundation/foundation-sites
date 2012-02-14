@@ -12,28 +12,36 @@
 
       return this.each(function() {    
         var targets = $('.has-tip'),
+        tips = $('.tooltip'),
         tipTemplate = function(target, content) {
           return '<span data-id="' + target + '" class="tooltip">' + content + '<span class="nub"></span></span>';
         };
-        targets.each(function(){
-          var target = $(this),
-          content = target.attr('title'),
-          classes = target.attr('class'),
-          id = target.attr('id'),
-          tip = $(tipTemplate(id, content));
-          tip.addClass(classes).removeClass('has-tip').appendTo('body');
-          if (Modernizr.touch) {
-            tip.append('<span class="tap-to-close">tap to close </span>');
-          }
-          methods.reposition(target, tip, classes);
-          tip.fadeOut(150);
-        });
+        if (tips.length < 1) {
+          targets.each(function(i){
+            var target = $(this),
+            id = 'foundationTooltip' + i,
+            content = target.attr('title'),
+            classes = target.attr('class');
+            target.data('id', id);
+            var tip = $(tipTemplate(id, content));
+            tip.addClass(classes).removeClass('has-tip').appendTo('body');
+            if (Modernizr.touch) {
+              tip.append('<span class="tap-to-close">tap to close </span>');
+            }
+            methods.reposition(target, tip, classes);
+            tip.fadeOut(150);
+          });
+        }
         $(window).resize(function() {
           var tips = $('.tooltip');
           tips.each(function() {
-            var target = $('#' + $(this).data('id')),
+            var data = $(this).data();
+            target = targets = $('.has-tip'),
             tip = $(this),
             classes = tip.attr('class');
+            targets.each(function() {
+              ($(this).data().id == data.id) ? target = $(this) : target = target;
+            });
             methods.reposition(target, tip, classes);
           });
             
@@ -46,17 +54,17 @@
           });
           targets.live('click touchstart touchend', function(e){
             e.preventDefault();
-            $('.tooltip').fadeOut(150);
-            $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
+            $('.tooltip').hide();
+            $('span[data-id=' + $(this).data('id') + '].tooltip').fadeIn(150);
             targets.attr('title', "");
           });
 
         } else {
           targets.hover(function() {
-            $('span[data-id=' + $(this).attr('id') + ']').fadeIn(150);
+            $('span[data-id=' + $(this).data('id') + '].tooltip').fadeIn(150);
             targets.attr('title', "");
           }, function() {
-            $('span[data-id=' + $(this).attr('id') + ']').fadeOut(150);
+            $('span[data-id=' + $(this).data('id') + '].tooltip').fadeOut(150);
           }); 
         }
 
@@ -118,7 +126,6 @@
 
   $.fn.tooltips = function( method ) {
     
-    // Method calling logic
     if ( methods[method] ) {
       return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } else if ( typeof method === 'object' || ! method ) {
