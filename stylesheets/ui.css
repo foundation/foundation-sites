@@ -45,13 +45,13 @@
 	input[type=submit].button, button.button { -webkit-appearance: none; }
 	
 	.button.nice { 
-		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px;
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px;
 		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		text-shadow: 0 -1px 1px rgba(0,0,0,0.28);
-		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
-		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
 		border: 1px solid #0593dc;
 		-webkit-transition: background-color .15s ease-in-out;
 		-moz-transition: background-color .15s ease-in-out;
@@ -88,7 +88,8 @@
 	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
 
 	/* Nice Sizes ---------- */
-	.nice.small.button 		{ background-position: 0 -36px; }
+	.nice.tiny.button 		{ background-position: 0 -37px; }
+	.nice.small.button 		{ background-position: 0 -34px; }
 	.nice.large.button 		{ background-position: 0 -30px; }
 
 	/* Colors ---------- */
@@ -111,7 +112,7 @@
 	.red.button:hover, .red.button:focus 		{ background-color: #d01217; }
 	.white.button:hover, .white.button:focus	{ background-color: #dadada; color: #333; }
 	.black.button:hover, .black.button:focus	{ background-color: #000; }
-	.green.button:hover, .green.button:focus		{ background-color: #699c40; }	
+	.green.button:hover, .green.button:focus	{ background-color: #699c40; }	
 
 	/* Hovers ---------- */
 	.nice.button:active 	{ 
