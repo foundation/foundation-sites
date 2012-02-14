@@ -29,7 +29,7 @@
               tip.append('<span class="tap-to-close">tap to close </span>');
             }
             methods.reposition(target, tip, classes);
-            tip.hide();
+            tip.fadeOut(150);
           });
         }
         $(window).resize(function() {
@@ -42,7 +42,6 @@
             targets.each(function() {
               ($(this).data().id == data.id) ? target = $(this) : target = target;
             });
-            console.log(target);
             methods.reposition(target, tip, classes);
           });
             
@@ -51,21 +50,21 @@
         if (Modernizr.touch) {
           $('.tooltip').live('click touchstart touchend', function(e) {
             e.preventDefault();
-            $(this).hide();
+            $(this).fadeOut(150);
           });
           targets.live('click touchstart touchend', function(e){
             e.preventDefault();
             $('.tooltip').hide();
-            $('span[data-id=' + $(this).data('id') + '].tooltip').show();
+            $('span[data-id=' + $(this).data('id') + '].tooltip').fadeIn(150);
             targets.attr('title', "");
           });
 
         } else {
           targets.hover(function() {
-            $('span[data-id=' + $(this).data('id') + '].tooltip').show();
+            $('span[data-id=' + $(this).data('id') + '].tooltip').fadeIn(150);
             targets.attr('title', "");
           }, function() {
-            $('span[data-id=' + $(this).data('id') + '].tooltip').hide();
+            $('span[data-id=' + $(this).data('id') + '].tooltip').fadeOut(150);
           }); 
         }
 

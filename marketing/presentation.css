@@ -437,6 +437,11 @@ div.timer {
   
 #insideContainer a.back { height: 20px; margin-bottom: 30px; }
 
+@media only screen and (max-width: 767px) {
+	#insideContainer nav ul li { float: none; }
+}
+
+
 /* Footer */
 footer.row {
   margin-top: 80px;

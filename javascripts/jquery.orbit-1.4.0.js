@@ -27,6 +27,8 @@
       startClockOnMouseOut: false, 		// if clock should start on MouseOut
       startClockOnMouseOutAfter: 1000, 	// how long after MouseOut should the timer start again
       directionalNav: true, 				// manual advancing directional navs
+      directionalNavRightText: 'Right', // text of right directional element for accessibility
+      directionalNavLeftText: 'Left', // text of left directional element for accessibility
       captions: true, 					// do you want captions?
       captionAnimation: 'fade', 			// fade, slideOpen, none
       captionAnimationSpeed: 600, 		// if so how quickly should they animate in
@@ -48,7 +50,7 @@
     wrapperHTML: '<div class="orbit-wrapper" />',
     timerHTML: '<div class="timer"><span class="mask"><span class="rotator"></span></span><span class="pause"></span></div>',
     captionHTML: '<div class="orbit-caption"></div>',
-    directionalNavHTML: '<div class="slider-nav"><span class="right">Right</span><span class="left">Left</span></div>',
+    directionalNavHTML: '<div class="slider-nav"><span class="right"></span><span class="left"></span></div>',
     bulletHTML: '<ul class="orbit-bullets"></ul>',
     
     init: function (element, options) {
@@ -355,9 +357,13 @@
     },
     
     setupDirectionalNav: function () {
-      var self = this;
+      var self = this,
+          $directionalNav = $(this.directionalNavHTML);
+      
+      $directionalNav.find('.right').html(this.options.directionalNavRightText);
+      $directionalNav.find('.left').html(this.options.directionalNavLeftText);
 
-      this.$wrapper.append(this.directionalNavHTML);
+      this.$wrapper.append($directionalNav);
       
       this.$wrapper.find('.left').click(function () { 
         self.stopClock();

@@ -60,6 +60,7 @@
             }, options.animationSpeed, function () {
               modal.trigger('reveal:opened');
             });
+
           }
           if (options.animation === "fade") {
             modal.css({'opacity': 0, 'visibility': 'visible', 'top': $(document).scrollTop() + topMeasure});
@@ -69,6 +70,7 @@
             }, options.animationSpeed, function () {
               modal.trigger('reveal:opened');
             });
+
           }
           if (options.animation === "none") {
             modal.css({'visibility': 'visible', 'top': $(document).scrollTop() + topMeasure});
@@ -145,7 +147,6 @@
           modal.trigger('reveal:close');
         }
       });
-
     });
   };
 } (jQuery));
