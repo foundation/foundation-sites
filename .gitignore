@@ -43,3 +43,11 @@ marketing/fonts
 build/buildinfo.properties
 build/config/buildinfo.properties
 marketing/files/foundation-download.zip
+
+fonts/pictos-web.eot
+
+fonts/pictos-web.svg
+
+fonts/pictos-web.ttf
+
+fonts/pictos-web.woff
