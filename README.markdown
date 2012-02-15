@@ -36,6 +36,7 @@ Many thanks to all the people working on Foundation either to improve the base c
 WordPress
 
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
+* [Reverie](http://themefortress.com/reverie/) by Zhen
 
 Drupal
 
