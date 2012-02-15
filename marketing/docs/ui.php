@@ -270,23 +270,23 @@
       				</li>
       			</ul>
       	
-      	<hr />
-      	
-      	<h4>Sub Nav</h4>
-      	
-      	<p>If you need to provide simple and effective on-page navigation, to either jump to content on the page or flip to another view then use this awesome little sub-nav.</p>
-      	
-      	<dl class="sub-nav">
-			<dt>Filter:</dt>
-			<dd class="active"><a href="#">All</a></dd>
-			<dd><a href="#">Active</a></dd>
-			<dd><a href="#">Pending</a></dd>
-			<dd><a href="#">Suspended</a></dd>
-      	</dl>
-      	
-      	<script type="text/javascript" src="http://snipt.net/embed/f05cca3ec55b4de8d2f5090e8e790fa9"></script>
-      			
-      	<hr />
+		      	<hr />
+		      	
+		      	<h4>Sub Nav</h4>
+		      	
+		      	<p>If you need to provide simple and effective on-page navigation, to either jump to content on the page or flip to another view then use this awesome little sub-nav.</p>
+		      	
+		      	<dl class="sub-nav">
+					<dt>Filter:</dt>
+					<dd class="active"><a href="#">All</a></dd>
+					<dd><a href="#">Active</a></dd>
+					<dd><a href="#">Pending</a></dd>
+					<dd><a href="#">Suspended</a></dd>
+		      	</dl>
+		      	
+		      	<script type="text/javascript" src="http://snipt.net/embed/f05cca3ec55b4de8d2f5090e8e790fa9"></script>
+		      			
+		      	<hr />
 				
 				<h4>Pagination</h4>
 				<p>Breaking stuff up into pages? Yeah you are. Here's some pagination to get you started.</p>
@@ -304,6 +304,28 @@
 				</ul>
 				
 				<script src="http://snipt.net/embed/724214a9eba6436e1565fc748693e61b"></script>
+				
+				<hr />
+				
+				<h4>Breadcrumbs</h4>
+				<p>Walking through a linear flow, or want to show where someone is in the hierarchy? Breadcrumbs are totally boss.</p>
+				<p>Breadcrumbs are built with a UL just like pagination, and they can support span or anchor elements with 'current' and 'unavailable' classes.</p>
+				
+				<ul class="breadcrumbs">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Features</a></li>
+					<li class="unavailable"><a href="#">Gene Splicing</a></li>
+					<li class="current"><a href="#">Home</a></li>
+				</ul>
+				
+				<ul class="breadcrumbs">
+					<li><span>Home</span></li>
+					<li><span>Features</span></li>
+					<li><span>Gene Splicing</span></li>
+					<li class="current"><span>Home</span></li>
+				</ul>
+				
+				<script type="text/javascript" src="http://snipt.net/embed/19f73f5dd789f687f48e3928a0ddc157"></script>
 				
 				<hr />
 				

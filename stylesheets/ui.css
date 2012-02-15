@@ -10,6 +10,7 @@
 :: Labels
 :: Tabs
 :: Pagination
+:: Breadcrumbs
 :: Lists
 :: Panels
 :: Nav
@@ -210,6 +211,21 @@
     ul.pagination li.current a, ul.pagination li:hover a, ul.pagination li a:focus { border-bottom: solid 2px #00a6fc; color: #141414; }
     ul.pagination li.unavailable a { cursor: default; color: #999; }
     ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { border-bottom: none; }
+    
+/*  --------------------------------------------------
+    Breadcrumbs
+    -------------------------------------------------- */    
+    ul.breadcrumbs { display: block; background: #f4f4f4; padding: 7px 10px; border: 1px solid #ddd; border-radius: 2px; overflow: hidden; }
+	ul.breadcrumbs li { margin: 0; padding: 0 12px 0 0; float: left; }
+	ul.breadcrumbs li a, ul.breadcrumbs li span { text-transform: uppercase; font-size: 11px; padding-left: 12px; }
+	ul.breadcrumbs li:first-child a, ul.breadcrumbs li:first-child span { padding-left: 0; }
+	ul.breadcrumbs li:before { content: "/"; color: #aaa; }
+	ul.breadcrumbs li:first-child:before { content: ""; }
+	ul.breadcrumbs li.current a { cursor: default; color: #333; }
+	ul.breadcrumbs li:hover a, ul.breadcrumbs li a:focus { text-decoration: underline; }
+	ul.breadcrumbs li.current:hover a, ul.breadcrumbs li.current a:focus { text-decoration: none; }
+	ul.breadcrumbs li.unavailable a { color: #999; }
+    ul.breadcrumbs li.unavailable:hover a, ul.pagination li.unavailable a:focus { text-decoration: none; color: #999; cursor: default; }
     
 /*  --------------------------------------------------
     Lists

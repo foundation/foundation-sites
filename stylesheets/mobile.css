@@ -148,7 +148,7 @@
 	/* Buttons */
 	@media only screen and (max-width: 767px) {
 		.button { display: block; }
-		button.button { width: 100%; padding-left: 0; padding-right: 0; }
+		button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; margin-bottom: 5px; }
 	}
 	
 	/* Tabs */
