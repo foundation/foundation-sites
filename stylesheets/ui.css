@@ -39,11 +39,17 @@
 		position: relative;
 		cursor: pointer;
 		border: none;
+		outline: none;
 		margin: 0;
 	}
 	
   	/* Don't use native buttons on iOS */
 	input[type=submit].button, button.button { -webkit-appearance: none; }
+	
+	/* Hide inner focus effect in Firefox */
+	button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner {
+		border: none;
+	}
 	
 	.button.nice { 
 		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px;
