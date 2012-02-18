@@ -7,6 +7,11 @@
 */
 
 ;(function($) {
+  var attributes = {
+    bodyHeight : 0,
+    pollInterval : 1000
+  };
+
   var methods = {
     init : function( options ) { 
 
@@ -15,7 +20,8 @@
         tips = $('.tooltip'),
         tipTemplate = function(target, content) {
           return '<span data-id="' + target + '" class="tooltip">' + content + '<span class="nub"></span></span>';
-        };
+        },
+        poll = setInterval(methods.isDomResized, attributes.pollInterval);
         if (tips.length < 1) {
           targets.each(function(i){
             var target = $(this),
@@ -120,6 +126,13 @@
           });
           nubPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -nubHeight);
         }
+      }
+    },
+    isDomResized : function() {
+      $body = $('body');
+      if(attributes.bodyHeight != $body.height()) {
+        attributes.bodyHeight = $body.height();
+        $(window).trigger('resize');
       }
     }
   };
