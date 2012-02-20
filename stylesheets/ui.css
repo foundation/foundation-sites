@@ -370,7 +370,7 @@
 	  color: #0192dd;
 	}
 	.tooltip {
-      display: none;
+    display: none;
 	  background: rgb(0,0,0);
 	  background: rgba(0,0,0,0.8);
 	  position: absolute;
@@ -395,6 +395,11 @@
 	  position: absolute;
 	  top: -10px;
 	  left: 10px;
+	}
+	.tooltip.tip-override > .nub {
+	  border-color: transparent transparent rgb(0,0,0) transparent !important;
+	  border-color: transparent transparent rgba(0,0,0,0.8) transparent !important;
+	  top: -10px !important;
 	}
 	.tooltip.tip-top > .nub {
 	  border-color: rgb(0,0,0) transparent transparent transparent;
