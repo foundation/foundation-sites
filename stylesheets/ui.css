@@ -396,22 +396,22 @@
 	  top: -10px;
 	  left: 10px;
 	}
-	.tooltip.top > .nub {
+	.tooltip.tip-top > .nub {
 	  border-color: rgb(0,0,0) transparent transparent transparent;
 	  border-color: rgba(0,0,0,0.8) transparent transparent transparent;
 	  top: auto;
 	  bottom: -10px;
 	}
-	.tooltip.left, .tooltip.right, .has-tip.left, .has-tip.right {
+	.tooltip.tip-left, .tooltip.tip-right, .has-tip.tip-left, .has-tip.tip-right {
 	  float: none !important;
 	}
-	.tooltip.left > .nub {
+	.tooltip.tip-left > .nub {
 	  border-color: transparent transparent transparent rgb(0,0,0);
 	  border-color: transparent transparent transparent rgba(0,0,0,0.8);
 	  right: -10px;
 	  left: auto;
 	}
-	.tooltip.right > .nub {
+	.tooltip.tip-right > .nub {
 	  border-color: transparent rgb(0,0,0) transparent transparent;
 	  border-color: transparent rgba(0,0,0,0.8) transparent transparent;
 	  right: auto;

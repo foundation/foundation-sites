@@ -93,7 +93,7 @@
 
 				<p>By default the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
 
-				<p>The tooltips can be positioned on the <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"bottom"</span>, which is the default position, <span class="has-tip top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"top"</span>, <span class="has-tip left" data-width="90" title="I'm on the left!">"left"</span>, or <span class="has-tip right" data-width="90" title="I'm on the right!">"right"</span> of the target element.In a mobile environment the tooltips are full width and bottom aligned.</p>
+				<p>The tooltips can be positioned on the <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"bottom"</span>, which is the default position, <span class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"top"</span>, <span class="has-tip tip-left" data-width="90" title="I'm on the left!">"left"</span>, or <span class="has-tip tip-right" data-width="90" title="I'm on the right!">"right"</span> of the target element.In a mobile environment the tooltips are full width and bottom aligned.</p>
 
 				<hr />
 				

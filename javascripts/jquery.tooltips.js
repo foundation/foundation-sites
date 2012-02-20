@@ -94,10 +94,10 @@
 
       if ($(window).width() < 767) {
         var row = target.parents('.row');
-        tip.width(row.outerWidth() - 20).css('left', row.offset().left);
+        tip.width(row.outerWidth() - 20).css('tip-left', row.offset().left);
         nubPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
-        if (classes.indexOf('top') > -1) {
+        if (classes.indexOf('tip-top') > -1) {
           var top = target.offset().top - tip.outerHeight() - nubHeight;
           tip.css({
             'top' : top,
@@ -105,14 +105,14 @@
             'width' : width
           });
           nubPos(nub, 'auto', 'auto', -nubHeight, 'auto');
-        } else if (classes.indexOf('left') > -1) {
+        } else if (classes.indexOf('tip-left') > -1) {
           tip.css({
             'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
             'left' : target.offset().left - tip.outerWidth() - 10,
             'width' : width
           });
           nubPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -nubHeight, 'auto', 'auto');
-        } else if (classes.indexOf('right') > -1){
+        } else if (classes.indexOf('tip-right') > -1){
           tip.css({
             'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
             'left' : target.offset().left + target.outerWidth() + 10,
