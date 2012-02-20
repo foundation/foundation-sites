@@ -54,6 +54,9 @@
 				<hr />
 				
 				<h4>Changelog</h4>
+				<h5>2.2 <small>February 21, 2012</small></h5>
+				<p>Added breadcrumbs to UI, and made numerous changes to the JS plugins for stability and cross-browser behaviour. Numerous bug fixes both in JS and CSS.</p>
+				
 				<h5>2.1.5 <small>January 26, 2012</small></h5>
 				<p>Numerous bug fixes around the nav, UI elements, edge cases and general code cleanliness. Also added in <a href="ui.php">tooltips and inline labels</a>. The tooltips can be attached to most objects and work cross-device on click or tap. <strong>Note:</strong> Within this version we now include a build of Modernizr to detect touch-enabled devices. Is it not mandatory, but the nav works best with it in place. You can use another build of Modernizr if you have touch-detection and classes turned on.</p>
 				
