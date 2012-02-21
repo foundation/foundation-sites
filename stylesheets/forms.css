@@ -100,7 +100,12 @@
 	form.custom div.custom.dropdown ul li.selected:hover { background: url(../images/misc/custom-form-sprites.png) #2a85e8 right -78px no-repeat; }
 	form.custom div.custom.dropdown ul.show { display: block; }
 
-	form.custom div.custom.dropdown.open ul { display: block; z-index: 10; }
+	form.custom div.custom.dropdown.open ul { display: block; z-index: 10; box-sizing: border-box; }
+	
+	form.custom div.custom.dropdown.small, form.custom div.custom.dropdown.open.small ul { width: 134px !important; }
+	form.custom div.custom.dropdown.medium, form.custom div.custom.dropdown.open.medium ul { width: 254px !important; }
+	form.custom div.custom.dropdown.large, form.custom div.custom.dropdown.open.large ul { width: 434px !important; }
+	form.custom div.custom.dropdown.expand, form.custom div.custom.dropdown.open.expand ul { width: 100% !important; }
 
 	/* Custom input, disabled */
 	form.custom .custom.disabled { background-color: #ddd; }
@@ -113,3 +118,8 @@
 	form.custom.nice div.custom.dropdown a.current { border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; background-image: url(../images/misc/input-bg-outset.png); background-position: bottom right; }
 	form.custom.nice div.custom.dropdown a.selector { height: 27px; border-width: 0 0 0 1px; }
 	form.custom.nice div.custom.dropdown ul { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; -webkit-border-bottom-left-radius: 2px; -webkit-border-bottom-right-radius: 2px; -moz-border-radius-bottomleft: 2px; -moz-border-radius-bottomright: 2px; }
+	
+	form.custom.nice div.custom.dropdown.open.small ul { width: 132px !important; }
+	form.custom.nice div.custom.dropdown.open.medium ul { width: 252px !important; }
+	form.custom.nice div.custom.dropdown.open.large ul { width: 432px !important; }
+	form.custom.nice div.custom.dropdown.open.expand ul { width: 100% !important; }
