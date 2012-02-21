@@ -5,7 +5,7 @@ Foundation is a rock-solid, responsive framework for rapidly prototyping and ite
 
 Homepage:      http://foundation.zurb.com  
 Documentation: http://foundation.zurb.com/docs  
-Download:      http://foundation.zurb.com/files/foundation-download-2.1.5.zip  
+Download:      http://foundation.zurb.com/files/foundation-download-2.2.zip  
 
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
 
