@@ -51,6 +51,7 @@
 	<script src="../javascripts/jquery.orbit-1.4.0.js"></script>
 	<script src="../javascripts/jquery.customforms.js"></script>
 	<script src="../javascripts/jquery.placeholder.min.js"></script>
+	<script src="../javascripts/jquery.tooltips.js"></script>
 	<script src="../javascripts/app.js"></script>
 	<script src="swipe.js"></script>
 	<script src="github.js"></script>
