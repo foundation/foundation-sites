@@ -78,8 +78,11 @@ jQuery(document).ready(function ($) {
       }
       $customSelect.removeClass('open');
     });
-    $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
+    
+    if (!$customSelect.is('.small, .medium, .large, .expand')) {
+      $customSelect.css('width', maxWidth + 18 + 'px');
+      $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
+    }
 
   }
 
