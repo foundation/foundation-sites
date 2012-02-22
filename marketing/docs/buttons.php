@@ -57,7 +57,7 @@
 					</div>
 					<div class="six columns">
 						<a href="#" class="small green button radius">Button &raquo;</a><br /><br />
-						<a href="#" class="white green button">Button &raquo;</a><br /><br />
+						<a href="#" class="green radius button">Button &raquo;</a><br /><br />
 						<a href="#" class="large green button radius">Button &raquo;</a><br /><br />
 						<br /><br />
 					</div>
