@@ -194,7 +194,7 @@ jQuery(document).ready(function ($) {
         $select = $dropdown.prev();
     
     event.preventDefault();
-    
+
     if (false == $select.is(':disabled')) {
         $dropdown.toggleClass('open');
 
@@ -206,6 +206,7 @@ jQuery(document).ready(function ($) {
         } else {
           $(document).unbind('.customdropdown');
         }
+        return false;
     }
   });
   
