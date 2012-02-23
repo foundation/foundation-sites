@@ -96,7 +96,7 @@
 					<div class="row">
 						<div class="seven columns">
 							<fieldset>
-								<h5>Fieldset Header H2</h5>
+								<h5>Fieldset Header H5</h5>
 								<p>This is a paragraph within a fieldset.</p>
 
 								<label for="fieldsetInput">Standard Input</label>
