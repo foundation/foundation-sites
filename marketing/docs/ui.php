@@ -1,6 +1,25 @@
 <? $page_title = "UI Elements"; ?>
 <?php include("includes/_documentation_head.php"); ?>
 	
+	
+	<aside class="aside ">
+			<div  class="menu ">
+				<dl class="nice tabs vertical vertical-middle">
+					<dd><a href="index.php">Getting Started</a></dd>
+					<dd><a href="grid.php">Grid</a></dd>
+					<dd><a href="buttons.php">Buttons</a></dd>
+					<dd><a href="forms.php" class="active">Forms</a></dd>
+					<dd><a href="layout.php">Layout</a></dd>
+					<dd><a href="ui.php">UI</a></dd>
+					<dd><a href="orbit.php">Orbit</a></dd>
+					<dd><a href="reveal.php">Reveal</a></dd>
+					<dd><a href="gems.php">Gems</a></dd>
+					<dd><a href="qa.php">QA</a></dd>
+				</dl>	
+			<div class="nice button white small radius close">Cerrar</div>	
+		</div>				
+	</aside>	
+				
 	<div class="container">
 		<div class="row">
 			<div class="twelve columns">
@@ -434,6 +453,12 @@
 				
 				<p><script type="text/javascript" src="http://snipt.net/embed/ef85ba34e235c9bc712baa62cc8bdf4c"></script></p>
 				
+				<h5>Aside menu for phones</h5>
+				<p>
+					Use an div, section, article, or aside tags, with class "aside", and into the tags, other tags with the class "menu". <br />
+					the close menu with a button class "close".
+					<a class="nice button blue radius small right aside-button">Menu aside</a>
+				</p>
 				
 			</div>
 			<div class="four columns">
@@ -456,6 +481,7 @@
 				</dl>
 			</div>
 		</div>
+		
 		
 		
 <?php include("includes/_documentation_foot.php");  ?>

@@ -90,5 +90,21 @@ jQuery(document).ready(function ($) {
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
   
+  
+	/* Fuction for menu aside*/
+	$('.close').click(function(){
+		$('.aside').css('display','none');
+		$('.aside').css('opacity','0');
+	});
+	$('.aside-button').click(function (){
+		if($('.aside').css('display')!='block'){
+			$('.aside').css('display','block');
+			$('.aside').css('opacity','1');
+			$('.menu').css('height',$(window).height());
+		}else {
+			$('.aside').css('display','none');
+			$('.aside').css('opacity','0');
+		}
+	});
 
 });

@@ -2,15 +2,17 @@
 <?php include("includes/_documentation_head.php"); ?>
 <style>
 /*	input, select {display: inline !important;}*/
-</style>	
+</style>		
 	<div class="container">
 		<div class="row">
-			<div class="twelve columns">
+			<div class="twelve columns ">
 				<div class="foundation-header">
 					<h1><a href="index.php">Foundation Docs</a></h1>
 					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
 				</div>
+				
 			</div>
+
 		</div>
 		
 		<div class="row">
@@ -34,6 +36,8 @@
 				<hr />
 				
 				<h4>Forms</h4>
+				
+				
 				<form>
 					<p>Inputs support a number of different base classes. Any text input has a class of 'input-text' and supports several sizes:</p>
 					<label for="standardInput">Standard Input</label>
@@ -104,6 +108,20 @@
 							</fieldset>
 						</div>
 					</div>
+					
+					
+					<div>
+						<label>Form Inline</label>
+						<input type="text" placeholder="User" class="input-text inline" />
+						<input type="password" placeholder="Password" class="input-text inline" />
+					</div>
+					
+					<div>
+						<label>Form with height</label>
+						<input type="text" placeholder="Height medium" class="height-medium input-text inline" />
+						<input type="text" placeholder="Height large" class="height-large input-text inline" />
+					</div>
+					
 				</form>
 
 				<hr />
@@ -167,10 +185,25 @@
 							</fieldset>
 						</div>
 					</div>
+					
+					
+					<div>
+						<label>Form Inline</label>
+						<input type="text" placeholder="User" class="input-text inline" />
+						<input type="password" placeholder="Password" class="input-text inline" />
+					</div>
+					
+					<div>
+						<label>Form with height</label>
+						<input type="text" placeholder="Height medium" class="height-medium input-text inline" />
+						<input type="text" placeholder="Height large" class="height-large input-text inline" />
+					</div>
+					
+					
 				</form>
 
 				<hr />
-
+				
 				<h3>Custom Forms</h3>	
 				
 				<form class="custom">

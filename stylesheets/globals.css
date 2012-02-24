@@ -128,4 +128,6 @@
 	.text-center { text-align: center; }
 	.hide        { display: none; }
 	.highlight   { background: #ff0; }
+	.inline		 { display: inline !important; margin-right:8px;}
+	.fixed       { position:fixed; z-index:999; width:100%; }
 	
