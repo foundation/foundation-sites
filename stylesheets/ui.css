@@ -279,39 +279,13 @@
 /*	--------------------------------------------------
    	Sub Navs
    	http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na
-   	
 	-------------------------------------------------- */
-
-  dl.sub-nav {
-  	display: block;
-    width: auto;
-    overflow: hidden;
-    margin: -4px 0 18px -9px;
-    padding-top: 4px;
-  }
-
-  dl.sub-nav dt, dl.sub-nav dd {
-    float: left;
-    display: inline;
-    margin-left: 9px;
-    margin-bottom: 4px;
-  }
-
-  dl.sub-nav dt {
-    color: #999;
-    font-weight: normal;
-  }
-
-  dl.sub-nav dd a {
-    text-decoration: none;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-  }
-  dl.sub-nav dd.active a {
-    background: #00A6FC;
-    color: #fff;
-    padding: 3px 9px;
-  }
+	
+	dl.sub-nav { display: block; width: auto; overflow: hidden; margin: -4px 0 18px -9px; padding-top: 4px; }
+	dl.sub-nav dt, dl.sub-nav dd { float: left; display: inline; margin-left: 9px; margin-bottom: 4px; }
+	dl.sub-nav dt { color: #999; font-weight: normal; }
+	dl.sub-nav dd a { text-decoration: none; border-radius: 12px; }
+	dl.sub-nav dd.active a { background: #00A6FC; color: #fff; padding: 3px 9px; }
 
 /*	--------------------------------------------------
    	Video
