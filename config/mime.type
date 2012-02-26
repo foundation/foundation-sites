@@ -1,0 +1,46 @@
+# ----------------------------------------------------------------------
+# Proper MIME type for all files
+# ----------------------------------------------------------------------
+
+text/html					html htm
+application/xhtml+xml				xhtml xht
+application/xml					xml xsl
+application/xml-dtd				dtd
+
+# JavaScript
+#   Normalize to standard type (it's sniffed in IE anyways)
+#   tools.ietf.org/html/rfc4329#section-7.2
+application/javascript         js
+
+# Audio
+audio/ogg                      oga ogg
+audio/mp4                      m4a
+
+# Video
+video/ogg                      ogv
+video/mp4                      mp4 m4v
+video/webm                     webm
+
+# SVG
+#   Required for svg webfonts on iPad
+#   twitter.com/FontSquirrel/status/14855840545
+    image/svg+xml              svg svgz
+AddEncoding gzip                       svgz
+
+# Webfonts
+application/vnd.ms-fontobject  eot
+application/x-font-ttf         ttf ttc
+font/opentype                  otf
+application/x-font-woff        woff
+
+# Assorted types
+image/x-icon                        ico
+image/webp                          webp
+text/cache-manifest                 appcache manifest
+text/x-component                    htc
+application/x-chrome-extension      crx
+application/x-opera-extension       oex
+application/x-xpinstall             xpi
+application/octet-stream            safariextz
+application/x-web-app-manifest+json webapp
+text/x-vcard                        vcf
