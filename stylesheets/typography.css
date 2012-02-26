@@ -37,10 +37,10 @@
 	abbr { text-transform: none; }
 	
 	/* color the text */
-	.red{ color:#e91c21;}
-	.blue{color:#00a6fc;}
-	.green {color:#5b8737;}
-	.white{color:white;};
+	.text-red{ color:#e91c21;}
+	.text-blue{color:#00a6fc;}
+	.text-green {color:#5b8737;}
+	.text-white{color:white;};
 
 	/**
  	 * Print styles.
