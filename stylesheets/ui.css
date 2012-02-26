@@ -244,7 +244,7 @@
 	Panels
 	-------------------------------------------------- */
 	div.panel, section.panel {
-		padding: 20px 20px 2px 20px;
+		padding: 20px 20px 10px 20px;
 		background: #efefef;
 		background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
