@@ -5,7 +5,7 @@ Foundation is a rock-solid, responsive framework for rapidly prototyping and ite
 
 Homepage:      http://foundation.zurb.com  
 Documentation: http://foundation.zurb.com/docs  
-Download:      http://foundation.zurb.com/files/foundation-download-2.1.4.zip  
+Download:      http://foundation.zurb.com/files/foundation-download-2.2.zip  
 
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
 
@@ -36,7 +36,7 @@ Many thanks to all the people working on Foundation either to improve the base c
 WordPress
 
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
-* [Optional install for roots](https://github.com/retlehs/roots) by Corey Wagehoft
+* [Reverie](http://themefortress.com/reverie/) by Zhen
 
 Drupal
 
@@ -59,6 +59,10 @@ Other Implementations
 Editors
 
 * [Textmate/Sublime Text2 Bundle](https://github.com/liamr/Zurb-Foundation-Textmate-Bundle) by Liam R, @liamr
+
+PSD Templates
+
+* [Desktop, Tablet and Phone Grid Templates](http://foundation.zurb.com/files/foundation-psd-templates.zip ) by Bruce Abel at Portfolio Creative Services Group
 
 MIT Open Source License
 =======================

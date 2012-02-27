@@ -85,12 +85,66 @@
 				        		Content...
 				  		</div>
 					</li>
+					<li class="has-flyout">
+					  <a href="#" class="main" data-reveal-id="testModal">Reveal</a>
+					  <a href="#" class="flyout-toggle"><span></span></a>
+					  <div class="flyout large right">
+              Content...
+				  	</div>
+					</li>
 				</ul>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="eight columns">
+			
+				<ul class="breadcrumbs">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Features</a></li>
+					<li><a href="#">Gene Splicing</a></li>
+					<li><a href="#">Features</a></li>
+					<li><a href="#">Gene Splicing</a></li>
+					<li><a href="#">Features</a></li>
+					<li><a href="#">Gene Splicing</a></li>
+					<li class="current"><a href="#">Home</a></li>
+				</ul>
+				
+				<ul class="breadcrumbs">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Features</a></li>
+					<li class="unavailable"><a href="#">Gene Splicing</a></li>
+					<li class="current"><a href="#">Home</a></li>
+				</ul>
+				
+				<ul class="breadcrumbs">
+					<li><span>Home</span></li>
+					<li><span>Features</span></li>
+					<li><span>Gene Splicing</span></li>
+					<li class="current"><span>Home</span></li>
+				</ul>
+			
+				
+				<form>
+					<input type="submit" class="tiny blue nice button radius" />
+					<a href="#" class="tiny blue nice button radius">Link Button</a>
+				</form>
+				
+				<form>
+					<input type="submit" class="small blue nice button radius" />
+					<a href="#" class="small blue nice button radius">Link Button</a>
+				</form>
+				
+				<form>
+					<input type="submit" class="medium blue nice button radius" />
+					<a href="#" class="medium blue nice button radius">Link Button</a>
+				</form>
+				
+				<form>
+					<input type="submit" class="large blue nice button radius" />
+					<a href="#" class="large blue nice button radius">Link Button</a>
+				</form>
+			
 				<h3>The Grid</h3>
 
 				<div class="display-grid">
@@ -205,13 +259,30 @@
 							<input type="submit" class="nice blue button" value="Submit Input" />
 						</form>
 						
-						<form class="nice custom">
+						<form class="custom">
 							<label>Custom Form Label</label>
 							<input type="text" class="input-text expand" placeholder="input.input-text.expand" />
 							
 							<p>This is a paragraph with an inline select element.
+								<select class="small">
+									<option></option>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+									<option>Option 5</option>
+									<option>Option 6</option>
+								</select>
+							</p>
+							
+							<p>This is a paragraph with an inline select element.
 								<select>
 									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+									<option>Option 5</option>
+									<option>Option 6</option>
 								</select>
 							</p>
 							
@@ -250,16 +321,34 @@
 				<h3>Buttons</h3>
 				<div class="row">
 					<div class="six columns">
-						<p><a href="#" class="tiny blue button">Tiny White Button</a></p>
+						<p><a href="#" class="tiny white button">Tiny White Button</a></p>
 						<p><a href="#" class="small blue button">Small Blue Button</a></p>
 						<p><a href="#" class="red button">Medium Red Button</a></p>
 						<p><a href="#" class="large black button">Large Black Button</a></p>
 					</div>
 					<div class="six columns">
-						<p><a href="#" class="nice radius tiny blue button">Tiny White Button</a></p>
+						<p><a href="#" class="nice radius tiny white button">Tiny White Button</a></p>
 						<p><a href="#" class="nice radius small blue button">Nice Blue Button</a></p>
 						<p><a href="#" class="nice radius red button">Nice Red Button</a></p>
 						<p><a href="#" class="nice radius large black button">Nice Black Button</a></p>
+					</div>
+				</div>
+				
+				<h3>Reveal</h3>
+				<div class="row">
+					<div class="six columns">
+					  <h6>Data Attributes</h6>
+						<p>
+						  <a href="#" class="tiny blue button" data-reveal-id="testModal">Default</a>
+						  <a href="#" class="tiny blue button" data-reveal-id="testModal" data-animation="fade">Fade</a>
+						  <a href="#" class="tiny blue button" data-reveal-id="testModal" data-animation="none">None</a>
+						</p>
+						<h6>JavaScript</h6>
+						<p>
+						  <a href="#" id="fireReveal" class="tiny blue button">Default</a>
+						  <a href="#" id="fireRevealFade" class="tiny blue button">Fade</a>
+						  <a href="#" id="fireRevealNone" class="tiny blue button">None</a>
+						</p>
 					</div>
 				</div>
 
@@ -280,6 +369,8 @@
 					<li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
 					<li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
 				</ul>
+				
+				<p><a href="#" class="tiny white button">Tiny White Button</a></p>
 			</div>
 		</div>
 
@@ -324,6 +415,27 @@
 	<script src="javascripts/jquery.tooltips.js"></script>
 	<!-- End Combine and Compress These JS Files -->
 	<script src="javascripts/app.js"></script>
+	
+	<script>
+	  $('#testModal').bind('reveal:open reveal:opened reveal:close reveal:closed', function (event) {
+	    console.log(event);
+	  });
+	  
+	  $('#fireReveal').click(function (event) {
+	    event.preventDefault();
+	    $('#testModal').reveal();
+	  });
+	  
+	  $('#fireRevealFade').click(function (event) {
+	    event.preventDefault();
+	    $('#testModal').reveal({animation: 'fade'});
+	  });
+	  
+	  $('#fireRevealNone').click(function (event) {
+	    event.preventDefault();
+	    $('#testModal').reveal({animation: 'none'});
+	  });
+	</script>
 
 </body>
 </html>

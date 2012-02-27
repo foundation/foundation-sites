@@ -1,25 +1,10 @@
 /* CSS for jQuery Orbit Plugin 1.4.0
- * www.ZURB.com/playground
- * Copyright 2010, ZURB
+ * Maintained for Foundation. foundation.zurb.com
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  
  
  
-/* PUT IN YOUR SLIDER ID AND SIZE TO MAKE LOAD BEAUTIFULLY
-   ================================================== */
-#caseStudies { 
-	width: 1000px;
-	height: 210px;
-	background: #fff url('../images/orbit/loading.gif') no-repeat center center;
-	overflow: hidden; }
-#caseStudies>img,  
-#caseStudies>div,
-#caseStudies>a { display: none; }
-
-
-
-
 /* CONTAINER
    ================================================== */
 

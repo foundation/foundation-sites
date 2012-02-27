@@ -82,7 +82,7 @@
 					</div>
 				</div>
 				
-				<p><span class="radius label">Added 01/19</span> This paragraph has an inline label to let you know that it was added on January 19, 2012 courtesy of Thomas Klemm. Thanks man!</p>
+				<p><span class="label">Added 01/19</span> This paragraph has an inline label to let you know that it was added on January 19, 2012 courtesy of Thomas Klemm. Thanks man!</p>
 				
 				<p><script type="text/javascript" src="http://snipt.net/embed/eabd94fbda853d866057cbda5e8ab64a"></script></p>
 				
@@ -93,8 +93,7 @@
 
 				<p>By default the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
 
-				<p>The tooltips can be positioned on the <span class="has-tip" id="tipDefault" data-width="210" title="I'm on bottom and the default position.">"bottom"</span>, which is the default position, <span class="has-tip top radius" id="tipTop" data-width="210" title="I'm on the top and rounded!">"top"</span>, <span class="has-tip left" id="tipLeft" data-width="90" title="I'm on the left!">"left"</span>, or <span class="has-tip right" id="tipRight" data-width="90" title="I'm on the right!">"right"</span> of the target element.In a mobile environment the tooltips are full width and bottom aligned.</p>
-
+				<p>The tooltips can be positioned on the <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span class="has-tip tip-right" data-width="90" title="I'm on the right!">"tip-right"</span> of the target element.In a mobile environment the tooltips are full width and bottom aligned.</p>
 
 				<hr />
 				
@@ -271,23 +270,23 @@
       				</li>
       			</ul>
       	
-      	<hr />
-      	
-      	<h4>Sub Nav</h4>
-      	
-      	<p>If you need to provide simple and effective on-page navigation, to either jump to content on the page or flip to another view then use this awesome little sub-nav.</p>
-      	
-      	<dl class="sub-nav">
-			<dt>Filter:</dt>
-			<dd class="active"><a href="#">All</a></dd>
-			<dd><a href="#">Active</a></dd>
-			<dd><a href="#">Pending</a></dd>
-			<dd><a href="#">Suspended</a></dd>
-      	</dl>
-      	
-      	<script type="text/javascript" src="http://snipt.net/embed/f05cca3ec55b4de8d2f5090e8e790fa9"></script>
-      			
-      	<hr />
+		      	<hr />
+		      	
+		      	<h4>Sub Nav</h4>
+		      	
+		      	<p>If you need to provide simple and effective on-page navigation, to either jump to content on the page or flip to another view then use this awesome little sub-nav.</p>
+		      	
+		      	<dl class="sub-nav">
+					<dt>Filter:</dt>
+					<dd class="active"><a href="#">All</a></dd>
+					<dd><a href="#">Active</a></dd>
+					<dd><a href="#">Pending</a></dd>
+					<dd><a href="#">Suspended</a></dd>
+		      	</dl>
+		      	
+		      	<script type="text/javascript" src="http://snipt.net/embed/f05cca3ec55b4de8d2f5090e8e790fa9"></script>
+		      			
+		      	<hr />
 				
 				<h4>Pagination</h4>
 				<p>Breaking stuff up into pages? Yeah you are. Here's some pagination to get you started.</p>
@@ -305,6 +304,28 @@
 				</ul>
 				
 				<script src="http://snipt.net/embed/724214a9eba6436e1565fc748693e61b"></script>
+				
+				<hr />
+				
+				<h4>Breadcrumbs</h4>
+				<p>Walking through a linear flow, or want to show where someone is in the hierarchy? Breadcrumbs are totally boss.</p>
+				<p>Breadcrumbs are built with a UL just like pagination, and they can support span or anchor elements with 'current' and 'unavailable' classes.</p>
+				
+				<ul class="breadcrumbs">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Features</a></li>
+					<li class="unavailable"><a href="#">Gene Splicing</a></li>
+					<li class="current"><a href="#">Home</a></li>
+				</ul>
+				
+				<ul class="breadcrumbs">
+					<li><span>Home</span></li>
+					<li><span>Features</span></li>
+					<li><span>Gene Splicing</span></li>
+					<li class="current"><span>Home</span></li>
+				</ul>
+				
+				<script type="text/javascript" src="http://snipt.net/embed/19f73f5dd789f687f48e3928a0ddc157"></script>
 				
 				<hr />
 				

@@ -87,20 +87,30 @@
 	form.custom span.custom.radio.checked { background-position: 0 -14px; }
 	form.custom span.custom.checkbox.checked { background-position: 0 -28px; }
 
-	form.custom div.custom.dropdown { position: relative; display: block; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px; }
-	form.custom div.custom.dropdown a.current { display: block; width: auto; line-height: 26px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; }
-	form.custom div.custom.dropdown a.selector { position: absolute; width: 26px; height: 26px; display: block; background: url(../images/misc/custom-form-sprites.png) -14px 0 no-repeat; right: 0; top: 0; border: solid 1px #ddd; }
+	form.custom div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px; }
+	form.custom div.custom.dropdown a.current { display: block; width: auto; line-height: 26px; min-height: 26px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; background-color: #fff; }
+	form.custom div.custom.dropdown a.selector { position: absolute; width: 26px; height: 26px; display: block; background: url(../images/misc/custom-form-sprites.png) -14px 1px no-repeat; right: 0; top: 0; border: solid 1px #ddd; }
 	form.custom div.custom.dropdown:hover a.selector,
 	form.custom div.custom.dropdown.open a.selector { background-position: -14px -26px; }
 
-	form.custom div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; left: 0; top: 27px; margin: 0; padding: 0; background: rgba(255,255,255,0.9); border: solid 1px #ddd; z-index: 10; }
-	form.custom div.custom.dropdown ul li { cursor: pointer; padding: 3px 38px 3px 6px; margin: 0; white-space: nowrap}
+	form.custom div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; left: 0; top: 27px; margin: 0; padding: 0; background: #fff; background: rgba(255,255,255,0.95); border: solid 1px #ddd; }
+	form.custom div.custom.dropdown ul li { cursor: pointer; padding: 3px 38px 3px 6px; min-height: 18px; margin: 0; white-space: nowrap}
 	form.custom div.custom.dropdown ul li.selected { background: url(../images/misc/custom-form-sprites.png) right -52px no-repeat; }
 	form.custom div.custom.dropdown ul li:hover { background-color: #2a85e8; color: #fff; }
 	form.custom div.custom.dropdown ul li.selected:hover { background: url(../images/misc/custom-form-sprites.png) #2a85e8 right -78px no-repeat; }
 	form.custom div.custom.dropdown ul.show { display: block; }
 
-	form.custom div.custom.dropdown.open ul { display: block; }
+	form.custom div.custom.dropdown.open ul { display: block; z-index: 10; }
+	
+	form.custom div.custom.dropdown.small { width: 134px !important; }
+	form.custom div.custom.dropdown.medium { width: 254px !important; }
+	form.custom div.custom.dropdown.large { width: 434px !important; }
+	form.custom div.custom.dropdown.expand { width: 100% !important; }
+	
+	form.custom div.custom.dropdown.open.small ul { width: 132px !important; }
+	form.custom div.custom.dropdown.open.medium ul { width: 252px !important; }
+	form.custom div.custom.dropdown.open.large ul { width: 432px !important; }
+	form.custom div.custom.dropdown.open.expand ul { width: 100% !important; box-sizing: border-box; }
 
 	/* Custom input, disabled */
 	form.custom .custom.disabled { background-color: #ddd; }

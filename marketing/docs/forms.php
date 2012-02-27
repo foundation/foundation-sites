@@ -36,23 +36,23 @@
 				<h4>Forms</h4>
 				<form>
 					<p>Inputs support a number of different base classes. Any text input has a class of 'input-text' and supports several sizes:</p>
-					<label>Standard Input</label>
-					<input type="text" class="input-text" />
+					<label for="standardInput">Standard Input</label>
+					<input type="text" class="input-text" id="standardInput" />
 
-					<label>Small Input</label>
-					<input type="text" class="small input-text" />
+					<label for="smallInput">Small Input</label>
+					<input type="text" class="small input-text" id="smallInput" />
 
-					<label>Medium Input</label>
-					<input type="text" class="medium input-text" />
+					<label for="mediumInput">Medium Input</label>
+					<input type="text" class="medium input-text" id="mediumInput" />
 
-					<label>Large Input</label>
-					<input type="text" class="large input-text" />
+					<label for="largeInput">Large Input</label>
+					<input type="text" class="large input-text" id="largeInput" />
 					
-					<label>Expanded (Full Width) Input</label>
-					<input type="text" class="expand input-text" />
+					<label for="expandedInput">Expanded (Full Width) Input</label>
+					<input type="text" class="expand input-text" id="expandedInput" />
 
-					<label>Oversize Input</label>
-					<input type="text" class="oversize input-text" />
+					<label for="oversizeInput">Oversize Input</label>
+					<input type="text" class="oversize input-text" id="oversizeInput" />
 
 					<h5>Inline Labels</h5>
 					<p>Inline labels are accomplished using the HTML5 Placeholder attribute, with a built-in JS fallback.</p>
@@ -67,27 +67,27 @@
 					</ul>
 					
 					<div class='form-field error'>
-						<label>Medium Input (with wrapper)</label>
-						<input type="text" class="medium input-text" />
+						<label for="mediumInputWrapper">Medium Input (with wrapper)</label>
+						<input type="text" class="medium input-text" id="mediumInputWrapper" />
 						<small>Whoa, cowboy. Try that again.</small>
 					</div>
 					
-					<label class="red">Medium Input</label>
-					<input type="text" class="medium input-text red" />
+					<label class="red" for="errorInput">Medium Input</label>
+					<input type="text" class="medium input-text red" id="errorInput" />
 					<small class="error">Whoa, cowboy. Try that again.</small>
 
-					<label>Textarea</label>
-					<textarea>This is a textarea</textarea>
+					<label for="standardTextarea">Textarea</label>
+					<textarea id="standardTexted">This is a textarea</textarea>
 
-					<label>Inline Label Textarea</label>
-					<textarea placeholder="This is a text area"></textarea>
+					<label for="inlineTextarea">Inline Label Textarea</label>
+					<textarea placeholder="This is a text area" id="inlineTextarea"></textarea>
 
 					<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
 
 					<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
 
-						<label>Dropdown Label</label>
-						<select>
+						<label for="standardDropdown">Dropdown Label</label>
+						<select id="standardDropdown">
 							<option>This is a dropdown</option>
 							<option>This is another option</option>
 							<option>Look, a third option</option>
@@ -96,11 +96,11 @@
 					<div class="row">
 						<div class="seven columns">
 							<fieldset>
-								<h5>Fieldset Header H2</h5>
+								<h5>Fieldset Header H5</h5>
 								<p>This is a paragraph within a fieldset.</p>
 
-								<label>Standard Input</label>
-								<input type="text" class="input-text" />
+								<label for="fieldsetInput">Standard Input</label>
+								<input type="text" class="input-text" id="fieldsetInput" />
 							</fieldset>
 						</div>
 					</div>
@@ -112,45 +112,45 @@
 				<form class="nice">
 					<p>Changing the form style to a slightly fancier version is dead simple - just add a class of 'nice' to the form itself.</p>
 
-					<label>Standard Input</label>
-					<input type="text" class="input-text" />
+					<label for="standardNiceInput">Standard Input</label>
+					<input type="text" class="input-text" id="standardNiceInput" />
 
 					<input type="text" placeholder="Inline label" class="input-text" />
 
-					<label>Small Input</label>
-					<input type="text" class="small input-text" />
+					<label for="smallNiceInput">Small Input</label>
+					<input type="text" class="small input-text" id="smallNiceInput" />
 
 					<div class='form-field error'>
-						<label>Medium Input (with wrapper)</label>
-						<input type="text" class="medium input-text" />
+						<label for="mediumNiceInput">Medium Input (with wrapper)</label>
+						<input type="text" class="medium input-text" id="mediumNiceInput" />
 						<small>Whoa, cowboy. Try that again.</small>
 					</div>
 					
-					<label class="red">Medium Input</label>
-					<input type="text" class="medium red input-text" />
+					<label class="red" for="errorNiceInput">Medium Input</label>
+					<input type="text" class="medium red input-text" id="errorNiceInput" />
 					<small class="error">Whoa, cowboy. Try that again.</small>
 
-					<label>Large Input</label>
-					<input type="text" class="large input-text" />
+					<label for="largeNiceInput">Large Input</label>
+					<input type="text" class="large input-text" id="largeNiceInput" />
 					
-					<label>Expanded (Full Width) Input</label>
-					<input type="text" class="expand input-text" />
+					<label for="expandedNiceInput">Expanded (Full Width) Input</label>
+					<input type="text" class="expand input-text" id="expandedNiceInput" />
 
-					<label>Oversize Input</label>
-					<input type="text" class="oversize input-text" />
+					<label for="oversizeNiceInput">Oversize Input</label>
+					<input type="text" class="oversize input-text" id="oversizeNiceInput" />
 
-					<label>Textarea</label>
-					<textarea>This is a textarea</textarea>
+					<label for="niceTextarea">Textarea</label>
+					<textarea id="niceTextarea">This is a textarea</textarea>
 
-					<label>Inline Label Textarea</label>
-					<textarea placeholder="This is a text area"></textarea>
+					<label for="inlineNiceTextarea">Inline Label Textarea</label>
+					<textarea placeholder="This is a text area" id="inlineNiceTextarea"></textarea>
 
 					<label for="checkbox1"><input type="checkbox" id="checkbox1"> Label for Checkbox</label>
 
 					<label for="radio1"><input type="radio" id="radio1"> Label for Radio</label>
 
-					<label>Dropdown Label</label>
-					<select>
+					<label for="niceDropdown">Dropdown Label</label>
+					<select id="niceDropdown">
 						<option>This is a dropdown</option>
 						<option>This is another option</option>
 						<option>Look, a third option</option>
@@ -162,8 +162,8 @@
 								<h5>Fieldset Header H2</h5>
 								<p>This is a paragraph within a fieldset.</p>
 
-								<label>Standard Input</label>
-								<input type="text" class="input-text" />
+								<label for="niceFieldsetInput">Standard Input</label>
+								<input type="text" class="input-text" id="niceFieldssetInput" />
 							</fieldset>
 						</div>
 					</div>
@@ -217,8 +217,8 @@
 						<script type="text/javascript" src="http://snipt.net/embed/bb153a86cba41617b41d91268828bb42"></script>
 					</p>
 	
-					<label>Dropdown Label</label>
-					<select style="display:none;">
+					<label for="customDropdown">Dropdown Label</label>
+					<select style="display:none;" id="customDropdown">
 						<option SELECTED>This is a dropdown</option>
 						<option>This is another option</option>
 						<option>Look, a third option</option>
@@ -235,8 +235,8 @@
 						</ul>
 					</div>
 					
-					<label>Dropdown Label</label>
-					<select>
+					<label for="customDropdown2">Dropdown Label</label>
+					<select id="customDropdown2">
 						<option>This is a dropdown</option>
 						<option SELECTED>This is another option</option>
 						<option>Look, a third option</option>

@@ -10,6 +10,7 @@
 :: Labels
 :: Tabs
 :: Pagination
+:: Breadcrumbs
 :: Lists
 :: Panels
 :: Nav
@@ -38,20 +39,26 @@
 		position: relative;
 		cursor: pointer;
 		border: none;
+		outline: none;
 		margin: 0;
 	}
 	
   	/* Don't use native buttons on iOS */
 	input[type=submit].button, button.button { -webkit-appearance: none; }
 	
+	/* Hide inner focus effect in Firefox */
+	button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner {
+		border: none;
+	}
+	
 	.button.nice { 
-		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px;
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px;
 		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		text-shadow: 0 -1px 1px rgba(0,0,0,0.28);
-		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
-		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -34px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
 		border: 1px solid #0593dc;
 		-webkit-transition: background-color .15s ease-in-out;
 		-moz-transition: background-color .15s ease-in-out;
@@ -88,7 +95,8 @@
 	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
 
 	/* Nice Sizes ---------- */
-	.nice.small.button 		{ background-position: 0 -36px; }
+	.nice.tiny.button 		{ background-position: 0 -37px; }
+	.nice.small.button 		{ background-position: 0 -34px; }
 	.nice.large.button 		{ background-position: 0 -30px; }
 
 	/* Colors ---------- */
@@ -96,12 +104,14 @@
 	.red.button				{ background-color: #e91c21; }
 	.white.button			{ background-color: #e9e9e9; color: #333; }
 	.black.button			{ background-color: #141414; }
+	.green.button			{ background-color: #5b8737; }
 	
 	/* Nice Colors ---------- */
 	.nice.blue.button		{ border: 1px solid #0593dc; }
 	.nice.red.button		{ border: 1px solid #b90b0b; }
 	.nice.white.button		{ border: 1px solid #cacaca; text-shadow: none !important; }
 	.nice.black.button		{ border: 1px solid #000; }
+	.nice.green.button		{ border: 1px solid #4a6b2d; }
 	
 	/* Hovers ---------- */
 	.button:hover, .button:focus 				{ background-color: #0192dd; color: #fff; }
@@ -109,7 +119,8 @@
 	.red.button:hover, .red.button:focus 		{ background-color: #d01217; }
 	.white.button:hover, .white.button:focus	{ background-color: #dadada; color: #333; }
 	.black.button:hover, .black.button:focus	{ background-color: #000; }
-	
+	.green.button:hover, .green.button:focus	{ background-color: #699c40; }	
+
 	/* Hovers ---------- */
 	.nice.button:active 	{ 
 		-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
@@ -119,6 +130,15 @@
 	
 	/* Disabled ---------- */
 	.button.disabled, .button[disabled] { opacity: 0.6; cursor: default; }
+	
+	/* Correct FF button padding */
+	@-moz-document url-prefix(http://) {
+		input[type=submit].button::-moz-focus-inner, button.button::-moz-focus-inner { border: 0; padding: 0; }
+		input[type=submit].tiny.button		{ padding: 5px 14px 7px; }
+		input[type=submit].small.button		{ padding: 7px 20px 8px; }
+		input[type=submit].medium.button	{ padding: 8px 34px 9px; }
+		input[type=submit].large.button		{ padding: 9px 48px 10px; }
+	}
 
 
 
@@ -128,7 +148,7 @@
 
 	div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; text-shadow: 0 1px rgba(255,255,255,0.9); position: relative; }
 	.alert-box.success { background-color: #7fae00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
-	.alert-box.warning { background-color: #c08c00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
+	.alert-box.warning { background-color: #f68b01; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
 	.alert-box.error { background-color: #c00000; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
 	
 	.alert-box a.close { color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; }
@@ -138,7 +158,7 @@
     Labels
     -------------------------------------------------- */
 
-	.label { padding: 0px 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; }
+	.label { padding: 0 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; }
 	.label.radius { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 	.label.round { padding: 1px 7px 2px; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
 	
@@ -199,6 +219,21 @@
     ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { border-bottom: none; }
     
 /*  --------------------------------------------------
+    Breadcrumbs
+    -------------------------------------------------- */    
+    ul.breadcrumbs { display: block; background: #f4f4f4; padding: 7px 10px; border: 1px solid #ddd; border-radius: 2px; overflow: hidden; }
+	ul.breadcrumbs li { margin: 0; padding: 0 12px 0 0; float: left; }
+	ul.breadcrumbs li a, ul.breadcrumbs li span { text-transform: uppercase; font-size: 11px; padding-left: 12px; }
+	ul.breadcrumbs li:first-child a, ul.breadcrumbs li:first-child span { padding-left: 0; }
+	ul.breadcrumbs li:before { content: "/"; color: #aaa; }
+	ul.breadcrumbs li:first-child:before { content: ""; }
+	ul.breadcrumbs li.current a { cursor: default; color: #333; }
+	ul.breadcrumbs li:hover a, ul.breadcrumbs li a:focus { text-decoration: underline; }
+	ul.breadcrumbs li.current:hover a, ul.breadcrumbs li.current a:focus { text-decoration: none; }
+	ul.breadcrumbs li.unavailable a { color: #999; }
+    ul.breadcrumbs li.unavailable:hover a, ul.pagination li.unavailable a:focus { text-decoration: none; color: #999; cursor: default; }
+    
+/*  --------------------------------------------------
     Lists
     -------------------------------------------------- */
     ul.nice, ol.nice { list-style: none; margin: 0; }
@@ -234,7 +269,7 @@
 	.nav-bar>li.has-flyout>a.main { padding-right: 36px; }
 	.nav-bar>li.has-flyout>a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
 	.nav-bar>li.has-flyout>a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
-	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 10; }
+	.flyout { background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 40; }
 	.flyout.small { width: 200px; }
 	.flyout.large { width: 600px; }
 	.flyout.right { left: auto; right: 0; }
@@ -244,39 +279,13 @@
 /*	--------------------------------------------------
    	Sub Navs
    	http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na
-   	
 	-------------------------------------------------- */
-
-  dl.sub-nav {
-  	display: block;
-    width: auto;
-    overflow: hidden;
-    margin: -4px 0 18px -9px;
-    padding-top: 4px;
-  }
-
-  dl.sub-nav dt, dl.sub-nav dd {
-    float: left;
-    display: inline;
-    margin-left: 9px;
-    margin-bottom: 4px;
-  }
-
-  dl.sub-nav dt {
-    color: #999;
-    font-weight: normal;
-  }
-
-  dl.sub-nav dd a {
-    text-decoration: none;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-  }
-  dl.sub-nav dd.active a {
-    background: #00A6FC;
-    color: #fff;
-    padding: 3px 9px;
-  }
+	
+	dl.sub-nav { display: block; width: auto; overflow: hidden; margin: -4px 0 18px -9px; padding-top: 4px; }
+	dl.sub-nav dt, dl.sub-nav dd { float: left; display: inline; margin-left: 9px; margin-bottom: 4px; }
+	dl.sub-nav dt { color: #999; font-weight: normal; }
+	dl.sub-nav dd a { text-decoration: none; border-radius: 12px; }
+	dl.sub-nav dd.active a { background: #00A6FC; color: #fff; padding: 3px 9px; }
 
 /*	--------------------------------------------------
    	Video
@@ -335,54 +344,62 @@
 	  color: #0192dd;
 	}
 	.tooltip {
-	  display: block;
+    display: none;
 	  background: rgb(0,0,0);
-	  background: rgba(0,0,0,0.85);
+	  background: rgba(0,0,0,0.8);
 	  position: absolute;
 	  color: #fff;
 	  font-weight: bold;
 	  font-size: 12px;
 	  font-size: 1.2rem;
-	  width: auto;
-	  padding: 5px 9px 7px 8px;
+	  padding: 5px;
 	  z-index: 999;
+	  -webkit-border-radius: 4px;
+	  -moz-border-radius: 4px;
+	  border-radius: 4px;
+	  line-height: normal;
 	}
 	.tooltip > .nub {
 	  display: block;
 	  width: 0;
 	  height: 0;
-	  border: solid 6px;
+	  border: solid 5px;
 	  border-color: transparent transparent rgb(0,0,0) transparent;
-	  border-color: transparent transparent rgba(0,0,0,0.85) transparent;
+	  border-color: transparent transparent rgba(0,0,0,0.8) transparent;
 	  position: absolute;
-	  top: -12px;
-    left: 10px;
+	  top: -10px;
+	  left: 10px;
 	}
-	.tooltip.top > .nub {
+	.tooltip.tip-override > .nub {
+	  border-color: transparent transparent rgb(0,0,0) transparent !important;
+	  border-color: transparent transparent rgba(0,0,0,0.8) transparent !important;
+	  top: -10px !important;
+	}
+	.tooltip.tip-top > .nub {
 	  border-color: rgb(0,0,0) transparent transparent transparent;
-	  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+	  border-color: rgba(0,0,0,0.8) transparent transparent transparent;
 	  top: auto;
-	  bottom: -12px;
+	  bottom: -10px;
 	}
-	.tooltip.left, .tooltip.right, .has-tip.left, .has-tip.right {
+	.tooltip.tip-left, .tooltip.tip-right, .has-tip.tip-left, .has-tip.tip-right {
 	  float: none !important;
 	}
-	.tooltip.left > .nub {
+	.tooltip.tip-left > .nub {
 	  border-color: transparent transparent transparent rgb(0,0,0);
-	  border-color: transparent transparent transparent rgba(0,0,0,0.85);
-	  right: -12px;
+	  border-color: transparent transparent transparent rgba(0,0,0,0.8);
+	  right: -10px;
 	  left: auto;
 	}
-	.tooltip.right > .nub {
+	.tooltip.tip-right > .nub {
 	  border-color: transparent rgb(0,0,0) transparent transparent;
-	  border-color: transparent rgba(0,0,0,0.85) transparent transparent;
+	  border-color: transparent rgba(0,0,0,0.8) transparent transparent;
 	  right: auto;
-	  left: -12px;
+	  left: -10px;
 	}
-	.tooltip.radius {
-	  -webkit-border-radius: 6px;
-	     -moz-border-radius: 6px;
-	          border-radius: 6px;
+	.tooltip.noradius {
+	  -webkit-border-radius: 0;
+	  -moz-border-radius: 0;
+	  border-radius: 0;
 	}
 	.has-tip.opened {
 	  color: #0192DD !important;
