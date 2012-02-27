@@ -133,21 +133,26 @@ a:hover {
 }
 #zurBar strong a.button { padding: 4px 10px; font-weight: bold; }
 
+
 /* Grid BG */
+#gridBg *, #gridBgShort * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  behavior: url(/boxsizing.htc); }
 #gridBg .row .columns {
   border-left: dashed 1px #e1e1e1;
   border-right: dashed 1px #e1e1e1;
   height: 645px;
-  width: 4.085%; }
-
+  /*margin-left: 0;*/ }
+#gridBg [class*="column"]:last-child, #gridBgShort [class*="column"]:last-child { float: left; }
 #gridBgShort {
   height: 105px;
   position: relative; }
 #gridBgShort .row .columns {
   border-left: dashed 1px #e1e1e1;
   border-right: dashed 1px #e1e1e1;
-  height: 105px;
-  width: 4.085%; }
+  height: 105px; }
 #gridBgShort div.white-fade {
   background: url('images/white-fade.png?1310443585') left bottom repeat-x;
   position: absolute;
@@ -483,7 +488,7 @@ footer.row a:hover {
   #updates aside a {
     display: inline;
     margin-right: 30px; } }
-@media only screen and (min-width: 967px) {
+/*@media only screen and (min-width: 967px) {
   #gridBg .row .columns, #gridBgShort .row .columns {
     width: 4.08%; }
 }
@@ -544,7 +549,7 @@ footer.row a:hover {
     display: none;
   }
   header { margin-top: 40px; }
-}
+}*/
 @media only screen and (max-width: 767px) {
   #zurBar {
     padding-left: 20px;
