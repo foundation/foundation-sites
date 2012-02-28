@@ -66,7 +66,7 @@ PSD Templates
 
 Grid Generator
 
-* [Expirimental Grid Generator](http://pumpula.net/p/gridlover/foundation/) courtesy of [Ville Vanninen](http://foolproof.me)
+* [Experimental Grid Generator](http://pumpula.net/p/gridlover/foundation/) courtesy of [Ville Vanninen](http://foolproof.me)
 
 MIT Open Source License
 =======================
