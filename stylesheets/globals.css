@@ -129,3 +129,9 @@
 	.hide        { display: none; }
 	.highlight   { background: #ff0; }
 	
+	#googlemap img, object, embed { max-width: none; }
+
+	#map_canvas embed { max-width: none; }
+	#map_canvas img { max-width: none; }
+	#map_canvas object { max-width: none; }
+	
