@@ -7,15 +7,15 @@ jQuery(document).ready(function ($) {
 
 	function activateTab($tab) {
 		var $activeTab = $tab.closest('dl').find('a.active'),
-				contentLocation = $tab.attr("href") + 'Tab';
+				$contentLocation = $( $tab.attr("href") + 'Tab');
 
 		//Make Tab Active
 		$activeTab.removeClass('active');
 		$tab.addClass('active');
 
     	//Show Tab Content
-		$(contentLocation).closest('.tabs-content').children('li').hide();
-		$(contentLocation).css('display', 'block');
+		$contentLocation.closest('.tabs-content').children('li').hide();
+		$contentLocation.css('display', 'block');
 	}
 
 	$('dl.tabs').each(function () {
@@ -90,5 +90,11 @@ jQuery(document).ready(function ($) {
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
   
+	/* SEGMENTED BUTTONS ------------- */
+    $('ul.segment li a').click(function() {
+      var $seg = $(this);
+      $seg.closest('ul').find('a.active').removeClass('active');
+      $seg.addClass('active');
+    });
 
 });
