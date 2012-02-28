@@ -196,7 +196,8 @@
 		.nice.tabs.vertical dd:first-child a.active { margin: 0; }
     
     ul.tabs-content { margin: 0; display: block; }
-    ul.tabs-content>li { display:none; }
+    ul.tabs-content>li { display: none; }
+    .no-js ul.tabs-content>li { display: block; }
     ul.tabs-content>li.active { display: block; }
     
     dl.contained, dl.nice.contained { margin-bottom: 0; }
