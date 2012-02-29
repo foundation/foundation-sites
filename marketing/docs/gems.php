@@ -60,7 +60,7 @@
             <ul>
               <li><strong>$experimental-support-for-khtml</strong>&ndash; Set this to true to add support </li>
               <li><strong>$experimental-support-for-microsoft</strong>&ndash; Set this to true to add support </li>
-              <li><strong>Font Stacks</strong>&ndash; Customize the default font stack we use.</li>
+              <li><strong>$helvetica-font-stack</strong>&ndash; Customize the default font stack we use.</li>
               <li><strong>$body-font-size</strong>&ndash; Default font size.</li>
               <li><strong>$body-font-family</strong>&ndash; Default font family.</li>
               <li><strong>$body-background</strong>&ndash; Default background color.</li>
