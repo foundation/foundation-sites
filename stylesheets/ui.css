@@ -132,7 +132,7 @@
 	.button.disabled, .button[disabled] { opacity: 0.6; cursor: default; }
 	
 	/* Correct FF button padding */
-	@-moz-document url-prefix(http://) {
+	@-moz-document url-prefix("http://") {
 		input[type=submit].button::-moz-focus-inner, button.button::-moz-focus-inner { border: 0; padding: 0; }
 		input[type=submit].tiny.button		{ padding: 5px 14px 7px; }
 		input[type=submit].small.button		{ padding: 7px 20px 8px; }
@@ -196,7 +196,8 @@
 		.nice.tabs.vertical dd:first-child a.active { margin: 0; }
     
     ul.tabs-content { margin: 0; display: block; }
-    ul.tabs-content>li { display:none; }
+    ul.tabs-content>li { display: none; }
+    .no-js ul.tabs-content>li { display: block; }
     ul.tabs-content>li.active { display: block; }
     
     dl.contained, dl.nice.contained { margin-bottom: 0; }
