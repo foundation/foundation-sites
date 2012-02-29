@@ -57,7 +57,7 @@
             
             <h5>Customizable Settings</h5>
             <p>We're in the process of making our gem even more customizable! Here are the settings we've extrapolated so far, just uncomment them and change to what you need:</p>
-            <ul>
+            <ul class="disc">
               <li><strong>$experimental-support-for-khtml</strong>&ndash; Set this to true to add support </li>
               <li><strong>$experimental-support-for-microsoft</strong>&ndash; Set this to true to add support </li>
               <li><strong>$helvetica-font-stack</strong>&ndash; Customize the default font stack we use.</li>
