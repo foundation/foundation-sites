@@ -35,6 +35,12 @@
 	
 	abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222; border-bottom: 1px solid #ddd; cursor: help; }
 	abbr { text-transform: none; }
+	
+	/* color the text */
+	.text-red{ color:#e91c21;}
+	.text-blue{color:#00a6fc;}
+	.text-green {color:#5b8737;}
+	.text-white{color:white;};
 
 	/**
  	 * Print styles.

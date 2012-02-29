@@ -244,8 +244,8 @@
 /*	--------------------------------------------------
 	Panels
 	-------------------------------------------------- */
-	div.panel {
-		padding: 20px 20px 2px 20px;
+	div.panel, section.panel {
+		padding: 10px 20px 10px 20px;
 		background: #efefef;
 		background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
@@ -255,6 +255,12 @@
 		-webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 		-moz-box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 		margin: 0 0 20px 0;
+	}
+	
+	.panel.radius { 
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
 	}
 
 /*	--------------------------------------------------
@@ -413,4 +419,21 @@
 	  color: #888;
 	  font-weight: normal;
 	}
+
+	/* MENU  aside */
+	
+	.aside{
+		position:fixed;
+		top:0px;
+		bottom:0px;
+		width:256px;
+		opacity:0;
+		z-index:888; 
+		display:none;
+		padding-left:0px;
+		
+	}
+	.aside .menu{background-color:#252525; padding:10px;}
+	
+	
 	

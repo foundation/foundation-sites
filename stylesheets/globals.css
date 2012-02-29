@@ -128,6 +128,11 @@
 	.text-center { text-align: center; }
 	.hide        { display: none; }
 	.highlight   { background: #ff0; }
+<<<<<<< HEAD
+	.inline		 { display: inline !important; margin-right:8px;}
+	.fixed       { position:fixed; z-index:999; width:100%; }
+	
+=======
 	
 	#googlemap img, object, embed { max-width: none; }
 
@@ -135,3 +140,4 @@
 	#map_canvas img { max-width: none; }
 	#map_canvas object { max-width: none; }
 	
+>>>>>>> remoteRepo/master
