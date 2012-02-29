@@ -48,7 +48,7 @@ MODX
 
 .NET
 
-* [NuGet Package for ASP.Net MVC](http://nuget.org/List/Packages/Zurb_Foundation_MPC3) by Edward Charbeneau, @EdCharbeneau
+* [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Zurb_Foundation_MVC3) by Edward Charbeneau, @EdCharbeneau
 
 Other Implementations
 
