@@ -13,6 +13,7 @@
 	input.input-text, textarea { border-right: 1px solid #bbb; border-bottom: 1px solid #bbb; }
 	input.input-text, textarea, select { display: block; margin-bottom: 9px; }
 	label + input.input-text, label + textarea, label + select, label + div.dropdown, select + div.dropdown { margin-top: -9px; }
+	textarea { max-width: 100%; }
 
 	/* Text input and textarea font and padding */
 	input.input-text, textarea { font-size: 13px; padding: 4px 3px 2px; background: #fff; }
