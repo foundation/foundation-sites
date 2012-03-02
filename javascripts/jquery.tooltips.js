@@ -13,9 +13,9 @@
   };
 
   var methods = {
-    init : function( options ) { 
+    init : function( options ) {
 
-      return this.each(function() {    
+      return this.each(function() {
         var targets = $('.has-tip'),
         tips = $('.tooltip'),
         tipTemplate = function(target, content) {
@@ -50,7 +50,7 @@
             });
             methods.reposition(target, tip, classes);
           });
-            
+
         });
 
         if (Modernizr.touch) {
@@ -71,7 +71,7 @@
             targets.attr('title', "");
           }, function() {
             $('span[data-id=' + $(this).data('id') + '].tooltip').fadeOut(150);
-          }); 
+          });
         }
 
       });
@@ -81,7 +81,7 @@
       nub = tip.children('.nub'),
       nubHeight = nub.outerHeight(),
       nubWidth = nub.outerWidth();
-      
+
       function nubPos(nub, top, right, bottom, left) {
         nub.css({
           'top' : top,
@@ -104,23 +104,22 @@
         nubPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
         if (classes.indexOf('tip-top') > -1) {
-          var top = target.offset().top - tip.outerHeight() - nubHeight;
           tip.css({
-            'top' : top,
+            'top' : target.offset().top - tip.outerHeight() - nubHeight,
             'left' : target.offset().left,
             'width' : width
           }).removeClass('tip-override');
           nubPos(nub, 'auto', 'auto', -nubHeight, 'auto');
         } else if (classes.indexOf('tip-left') > -1) {
           tip.css({
-            'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
+            'top' : target.offset().top + (target.outerHeight() / 2) - nubHeight,
             'left' : target.offset().left - tip.outerWidth() - 10,
             'width' : width
           }).removeClass('tip-override');
           nubPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -nubHeight, 'auto', 'auto');
         } else if (classes.indexOf('tip-right') > -1){
           tip.css({
-            'top' : target.offset().top - (target.outerHeight() / 2) - (nubHeight / 2),
+            'top' : target.offset().top + (target.outerHeight() / 2) - nubHeight,
             'left' : target.offset().left + target.outerWidth() + 10,
             'width' : width
           }).removeClass('tip-override');
@@ -138,14 +137,14 @@
   };
 
   $.fn.tooltips = function( method ) {
-    
+
     if ( methods[method] ) {
       return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } else if ( typeof method === 'object' || ! method ) {
       return methods.init.apply( this, arguments );
     } else {
       $.error( 'Method ' +  method + ' does not exist on jQuery.tooltips' );
-    }    
-  
+    }
+
   };
 })(jQuery);;
