@@ -33,6 +33,12 @@
 	input.medium, textarea.medium { width: 254px; }
 	input.large, textarea.large { width: 434px; }
 	input.expand, textarea.expand { width: 100%; }
+	
+	/* Lock textareas so they can't be resized beyond their set width in webkit */
+	textarea.locked 	{ max-width: 254px; }
+    	textarea.locked.small 	{ max-width: 134px; }
+    	textarea.locked.large 	{ max-width: 434px; }
+    	textarea.locked.expand 	{ max-width: 100%; }
 
 	/* Fieldsets */
 	form fieldset { padding: 9px 9px 2px 9px; border: solid 1px #ddd; margin: 18px 0; }
