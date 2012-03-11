@@ -6,210 +6,302 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-jQuery(document).ready(function ($) {
-  
+(function ($) {
+
+  var $currentDropdown,
+      currentPosition = 0,
+      focus,
+      $document = $(document),
+      ownEvent = 'foundation',
+      maxVisibleOptions = 10;
+
   function appendCustomMarkup(type) {
     $('form.custom input:' + type).each(function () {
 
-      var $this = $(this).hide(),
+      var $this = $(this).addClass('customized').removeAttr('style'),
           $span = $this.next('span.custom.' + type);
 
       if ($span.length === 0) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
       }
 
-      $span.toggleClass('checked', $this.is(':checked'));
-      $span.toggleClass('disabled', $this.is(':disabled'));
+      $span.toggleClass('checked', $this.is(':checked'))
+        .toggleClass('disabled', $this.is(':disabled'));
     });
   }
-  appendCustomMarkup('checkbox');
-  appendCustomMarkup('radio');
 
-  function appendCustomSelect(sel) {
-    var $this = $(sel),
-        $customSelect = $this.next('div.custom.dropdown'),
-        $options = $this.find('option'),
+  function refreshCustomSelect($select, append) {
+    var $customSelect = $select.next(append ? 'div.custom.dropdown' : ''),
+        $options = $select.find('option'),
         maxWidth = 0,
-        $li;
+        outerWidth,
+        li = '',
+        $ul,
+        html,
+        $li,
+        customSelectSize = '';
 
-    if ($customSelect.length === 0) {
-      $customSelectSize = '';
-      if ($(sel).hasClass('small')) {
-      	$customSelectSize = 'small';
-      } else if ($(sel).hasClass('medium')) {
-      	$customSelectSize = 'medium';
-      } else if ($(sel).hasClass('large')) {
-      	$customSelectSize = 'large';
-      } else if ($(sel).hasClass('expand')) {
-      	$customSelectSize = 'expand';
+    if (append && $customSelect.length === 0) {
+      if ($select.hasClass('small')) {
+        customSelectSize = 'small';
+      } else if ($select.hasClass('medium')) {
+        customSelectSize = 'medium';
+      } else if ($select.hasClass('large')) {
+        customSelectSize = 'large';
+      } else if ($select.hasClass('expand')) {
+        customSelectSize = 'expand';
       }
-      $customSelect = $('<div class="custom dropdown ' + $customSelectSize + '"><a href="#" class="selector"></a><ul></ul></div>"');
-      $options.each(function () {
-        $li = $('<li>' + $(this).html() + '</li>');
-        $customSelect.find('ul').append($li);
-      });
-      $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
 
-      $this.after($customSelect);
-      $this.hide();
-      
+      $customSelect = $('<div class="custom dropdown ' + customSelectSize + '"><span class="selector"></span><ul></ul></div>"')
+        .prepend('<span class="current">' + $options.first().html() + '</span>');
+
+      $select.after($customSelect);
+      $ul = $customSelect.find('ul');
     } else {
-      // refresh the ul with options from the select in case the supplied markup doesn't match
-      $customSelect.find('ul').html('');
-      $options.each(function () {
-        $li = $('<li>' + $(this).html() + '</li>');
-        $customSelect.find('ul').append($li);
-      });
+      $customSelect.removeAttr('style');
+      $ul = $customSelect.find('ul')
+        .html('').removeAttr('style');  
     }
 
-    $customSelect.toggleClass('disabled', $this.is(':disabled'));
+    if (append) {
+      $customSelect.toggleClass('disabled', $select.is(':disabled'));
+      $select.addClass('customized').removeAttr('style');
+    }
 
-    $options.each(function (index) {
+    $options.each(function () {
+      html = $(this).html() || '&nbsp;';
+      li += '<li';
       if (this.selected) {
-        $customSelect.find('li').eq(index).addClass('selected');
-        $customSelect.find('.current').html($(this).html());
+        li += ' class="selected"';
+        $customSelect.find('.current').html(html);
       }
+      li += '>' + html + '</li>';
     });
+    $ul.append(li);
 
-    $customSelect.find('li').each(function () {
+    $li = $customSelect.find('li');
+
+    // fix width
+    $li.each(function () {
       $customSelect.addClass('open');
-      if ($(this).outerWidth() > maxWidth) {
-        maxWidth = $(this).outerWidth();
+      outerWidth = $(this).outerWidth();
+      if (outerWidth > maxWidth) {
+        maxWidth = outerWidth;
       }
       $customSelect.removeClass('open');
     });
-    
+
     if (!$customSelect.is('.small, .medium, .large, .expand')) {
       $customSelect.css('width', maxWidth + 18 + 'px');
       $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
     }
 
-  }
-
-  $('form.custom select').each(function () {
-    appendCustomSelect(this);
-  });
-  
-});
-
-(function ($) {
-  
-  function refreshCustomSelect($select) {
-    var maxWidth = 0,
-        $customSelect = $select.next();
-    $options = $select.find('option');
-    $customSelect.find('ul').html('');
-    
-    $options.each(function () {
-      $li = $('<li>' + $(this).html() + '</li>');
-      $customSelect.find('ul').append($li);
-    });
-    
-    // re-populate
-    $options.each(function (index) {
-      if (this.selected) {
-        $customSelect.find('li').eq(index).addClass('selected');
-        $customSelect.find('.current').html($(this).html());
-      }
-    });
-    
-    // fix width
-    $customSelect.removeAttr('style')
-      .find('ul').removeAttr('style');
-    $customSelect.find('li').each(function () {
+    if ($li.length > maxVisibleOptions) {
       $customSelect.addClass('open');
-      if ($(this).outerWidth() > maxWidth) {
-        maxWidth = $(this).outerWidth();
-      }
+      $ul.css('height', $li.first().outerHeight() * maxVisibleOptions + 'px');
       $customSelect.removeClass('open');
-    });
-    $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
-    
+    }
   }
-  
-  function toggleCheckbox($element) {
-    var $input = $element.prev(),
-        input = $input[0];
 
-    if (false == $input.is(':disabled')) {
-        input.checked = ((input.checked) ? false : true);
-        $element.toggleClass('checked');
+  $document.ready(function () {
 
-        $input.trigger('change');
+    appendCustomMarkup('checkbox');
+    appendCustomMarkup('radio');
+
+    $('form.custom select').each(function () {
+      refreshCustomSelect($(this), true);
+    });
+
+  });
+
+  function toggleCheckbox($input, $element) {
+    var input = $input[0];
+    $element = $element || $input.next();
+    if (!$input.is(':disabled')) {
+      input.checked = !input.checked;
+      $element.toggleClass('checked', input.checked);
+      $input.trigger('change', [ownEvent]);
     }
   }
   
-  function toggleRadio($element) {
-    var $input = $element.prev(),
-        input = $input[0];
+  function toggleRadio($input, $element, trigger) {
+    var input = $input[0];
+    $element = $element || $input.next();
 
-    $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
-      $(this).next().removeClass('checked');
-    });
-    input.checked = ((input.checked) ? false : true);
-    $element.toggleClass('checked');
-    
-    $input.trigger('change');
+    if (!$input.is(':disabled')) {
+      $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
+        $(this).next().removeClass('checked');
+      });
+      input.checked = true;
+      $element.toggleClass('checked', input.checked);
+      if (trigger) {
+        $input.trigger('change', [ownEvent]);
+      }
+    }
   }
   
   $('form.custom span.custom.checkbox').live('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     
-    toggleCheckbox($(this));
+    toggleCheckbox($(this).prev(), $(this));
   });
   
   $('form.custom span.custom.radio').live('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     
-    toggleRadio($(this));
+    toggleRadio($(this).prev(), $(this), true);
   });
-  
-  $('form.custom select').live('change', function (event) {
-    refreshCustomSelect($(this));
+
+  $('form.custom input[type=checkbox]').live('keydown', function (event, own) {
+    if(event.keyCode == 32) {
+      event.preventDefault();
+      event.stopPropagation();
+    
+      toggleCheckbox($(this));
+    }
   });
-  
+
+  $('form.custom input[type=radio]').live('keyup', function (event) {
+    if(event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 39 || event.keyCode == 40) {
+      event.preventDefault();
+      event.stopPropagation();
+    
+      toggleRadio($(this));
+    }
+  });
+
+  $('form.custom select').live('change', function (event, own) {
+    if (own !== ownEvent) {
+      refreshCustomSelect($(this));
+    }
+  });
+
   $('form.custom label').live('click', function (event) {
-    var $associatedElement = $('#' + $(this).attr('for')),
-        $customCheckbox,
-        $customRadio;
+    var $this = $(this),
+        $associatedElement = $this.find('input'),
+        type;
+    if ($associatedElement.length !== 1) {
+      $associatedElement = $('.customized#' + $this.attr('for'));
+    }
     if ($associatedElement.length !== 0) {
-      if ($associatedElement.attr('type') === 'checkbox') {
+      type = $associatedElement.attr('type');
+      if (type === 'checkbox') {
         event.preventDefault();
-        $customCheckbox = $(this).find('span.custom.checkbox');
-        toggleCheckbox($customCheckbox);
-      } else if ($associatedElement.attr('type') === 'radio') {
+        event.stopPropagation();
+    
+        toggleCheckbox($associatedElement);
+      } else if (type === 'radio') {
         event.preventDefault();
-        $customRadio = $(this).find('span.custom.radio');
-        toggleRadio($customRadio);
+        event.stopPropagation();
+
+        toggleRadio($associatedElement, undefined, event.clientX !== 0 || event.clientY !== 0);
       }
     }
   });
 
-  $('form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector').live('click', function (event) {
+  function dropdownChange ($dropdown, selected) {
+    $currentDropdown = $dropdown;
+    if ($currentDropdown) {
+      currentPosition = $currentDropdown.prev()[0].selectedIndex;
+      if (selected) {
+        var $currentLi = $currentDropdown.find('li')
+              .removeClass('selected hover')
+              .eq(currentPosition).addClass('selected');
+
+          if (currentPosition > maxVisibleOptions - 1) {
+            $currentDropdown.find('ul').scrollTop(currentPosition * $currentLi.outerHeight());
+          }
+      }  
+    }
+  }
+
+  function changeFocus(target, focused) {
+    var $input = $(target).next().toggleClass('focus', focused);
+    if (target.nodeName.toLowerCase() == 'select') {
+      dropdownChange(focused && $input);
+      focus = focused;
+    }
+  }
+
+  $('form.custom .customized').live('focus', function (event) {
+    changeFocus(this, true);
+  });
+
+  $('form.custom .customized').live('blur', function (event) {
+    changeFocus(this, false);
+  });
+
+  $document.bind('keydown', function (event) {
+    if ($currentDropdown) {
+      if (event.keyCode == 9) { //tab
+        $document.trigger('click.customdropdown');
+      }
+    }
+  });
+
+  $document.bind('keyup', function (event) {
+    if ($currentDropdown) {
+      currentPosition = event.target.selectedIndex;
+
+      var $li = $currentDropdown.find('li'),
+          $currentLi = $li.eq(currentPosition),
+          keyCode = event.keyCode,
+          $select = $(event.target);
+
+      $currentDropdown.find('.current')
+        .html($currentLi.html());
+
+      if ($currentDropdown.hasClass('open')) {
+
+        if (keyCode == 13 || keyCode == 27) { //return & escape
+          $currentDropdown.removeClass('open');
+          $document.unbind('.customdropdown');
+          $select.trigger('change', [ownEvent]);
+          return true;
+        }
+
+        $li.removeClass('selected hover');
+        $currentLi.addClass('selected hover');
+
+        if ($li.length > maxVisibleOptions) {
+          $currentDropdown.find('ul').scrollTop(currentPosition * $currentLi.outerHeight());
+        }
+      }
+    }
+  });
+
+  $('form.custom div.custom.dropdown .current, form.custom div.custom.dropdown .selector').live('click', function (event) {
     var $this = $(this),
         $dropdown = $this.closest('div.custom.dropdown'),
         $select = $dropdown.prev();
     
     event.preventDefault();
-
-    if (false == $select.is(':disabled')) {
-        $dropdown.toggleClass('open');
-
-        if ($dropdown.hasClass('open')) {
-          $(document).bind('click.customdropdown', function (event) {
-            $dropdown.removeClass('open');
-            $(document).unbind('.customdropdown');
-          });
-        } else {
-          $(document).unbind('.customdropdown');
+    event.stopPropagation();
+    
+    if (!$select.is(':disabled')) {
+        if (!$dropdown.hasClass('open')) {
+          $document.trigger('click.customdropdown');
         }
-        return false;
+        $dropdown.toggleClass('open');
+        if(!$select.is(':focus')) {
+          $select.focus();
+        }
+        if ($dropdown.hasClass('open')) {
+          $document.bind('click.customdropdown', function (event) {
+            $dropdown.removeClass('open');
+            dropdownChange();
+            $document.unbind('.customdropdown');
+          });
+          dropdownChange($dropdown, true);
+        } else {
+          dropdownChange();
+          $document.unbind('.customdropdown');
+        }
     }
   });
-  
+
   $('form.custom div.custom.dropdown li').live('click', function (event) {
     var $this = $(this),
         $customDropdown = $this.closest('div.custom.dropdown'),
@@ -218,16 +310,17 @@ jQuery(document).ready(function ($) {
         
     event.preventDefault();
     event.stopPropagation();
-    
+    $document.unbind('.customdropdown');
+
     $this
       .closest('ul')
       .find('li')
-      .removeClass('selected');
+      .removeClass('selected hover');
     $this.addClass('selected');
     
     $customDropdown
       .removeClass('open')
-      .find('a.current')
+      .find('.current')
       .html($this.html());
     
     $this.closest('ul').find('li').each(function (index) {
@@ -237,7 +330,12 @@ jQuery(document).ready(function ($) {
       
     });
     $select[0].selectedIndex = selectedIndex;
-    
-    $select.trigger('change');
+    $select.trigger('change', [ownEvent]);
   });
+
+  $('form.custom div.custom.dropdown').live('mousedown', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  });
+
 })(jQuery);
