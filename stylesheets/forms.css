@@ -105,6 +105,7 @@
 	   Custom Forms
 	----------------------------------------- */
 	form.custom .customized { position: absolute; left: -9999px; }
+	.msb form.custom select.customized { display:none; }
 	form.custom span.custom { display: inline-block; width: 14px; height: 14px; position: relative; top: 2px; border: solid 1px #ccc; background: url(../images/misc/custom-form-sprites.png) 0 0 no-repeat; }
 	form.custom span.custom.focus {
 		background-color: #f9f9f9;

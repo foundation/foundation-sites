@@ -13,7 +13,13 @@
       focus,
       $document = $(document),
       ownEvent = 'foundation',
-      maxVisibleOptions = 10;
+      maxVisibleOptions = 10,
+      // Mac select bug
+      msb = /Mac/.test(navigator.userAgent) && $.browser.webkit;
+
+  if (msb) {
+    $('html').addClass('msb');
+  }
 
   function appendCustomMarkup(type) {
     $('form.custom input:' + type).each(function () {
@@ -242,7 +248,7 @@
   });
 
   $document.bind('keyup', function (event) {
-    if ($currentDropdown) {
+    if ($currentDropdown && !msb) {
       currentPosition = event.target.selectedIndex;
 
       var $li = $currentDropdown.find('li'),
@@ -285,7 +291,7 @@
           $document.trigger('click.customdropdown');
         }
         $dropdown.toggleClass('open');
-        if(!$select.is(':focus')) {
+        if(!$select.is(':focus') && !msb) {
           $select.focus();
         }
         if ($dropdown.hasClass('open')) {
