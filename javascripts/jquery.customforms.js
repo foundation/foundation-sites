@@ -144,13 +144,15 @@ jQuery(document).ready(function ($) {
     var $input = $element.prev(),
         input = $input[0];
 
-    $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
-      $(this).next().removeClass('checked');
-    });
-    input.checked = ((input.checked) ? false : true);
-    $element.toggleClass('checked');
+    if (false == $input.is(':disabled')) {
+      $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
+        $(this).next().removeClass('checked');
+      });
+      input.checked = ((input.checked) ? false : true);
+      $element.toggleClass('checked');
     
-    $input.trigger('change');
+      $input.trigger('change');
+    }
   }
   
   $('form.custom span.custom.checkbox').live('click', function (event) {
