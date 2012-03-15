@@ -235,6 +235,44 @@
     ul.breadcrumbs li.unavailable:hover a, ul.pagination li.unavailable a:focus { text-decoration: none; color: #999; cursor: default; }
     
 /*  --------------------------------------------------
+    Segmented Buttons
+    -------------------------------------------------- */    
+    ul.segment {
+      text-align: center;
+      border: solid 1px #ddd;
+      color: #555;
+      background: #ddd;
+      overflow: hidden;
+      display: table;
+      table-layout: fixed;
+    }
+
+    ul.segment li {
+      float: left;
+      border-top: none;
+      padding: 0;
+      margin: 0;
+      border-right: solid 1px rgba(0,0,0,.15) ;
+      display: table-cell;
+    }
+
+    /* last segment has no border on the right */
+    ul.segment li:last-child { border-right: none; }
+
+    ul.segment li a { padding: 0.5em 0.5em; text-overflow: ellipsis; }
+
+    ul.segment li a.active { 
+      background-color: #0192dd; color: #fff; 
+      -moz-box-shadow: inset 2px 2px 0 rgba(0,0,0,.25);
+      -webkit-box-shadow: inset 2px 2px 0 rgba(0,0,0,.25);
+      box-shadow: inset 2px 2px 0 rgba(0,0,0,.25);
+    }
+    ul.segment li a.button.white.active { background-color: #dadada; color: #333; }
+    ul.segment li a.button.blue.active { background-color: #0192dd; }
+    ul.segment li a.button.red.active { background-color: #d01217; }
+    ul.segment li a.button.green.active { background-color: #699c40; } 
+    
+/*  --------------------------------------------------
     Lists
     -------------------------------------------------- */
     ul.nice, ol.nice { list-style: none; margin: 0; }
