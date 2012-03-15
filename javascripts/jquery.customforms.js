@@ -32,6 +32,7 @@ jQuery(document).ready(function ($) {
         maxWidth = 0,
         $li;
 
+    if ($this.hasClass('no-custom')) { return; }
     if ($customSelect.length === 0) {
       $customSelectSize = '';
       if ($(sel).hasClass('small')) {
