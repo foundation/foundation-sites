@@ -33,6 +33,12 @@
 	input.medium, textarea.medium { width: 254px; }
 	input.large, textarea.large { width: 434px; }
 	input.expand, textarea.expand { width: 100%; }
+	
+	/* Lock textareas so they can't be resized beyond their set width in webkit */
+	textarea.locked 	{ max-width: 254px; }
+    	textarea.locked.small 	{ max-width: 134px; }
+    	textarea.locked.large 	{ max-width: 434px; }
+    	textarea.locked.expand 	{ max-width: 100%; }
 
 	/* Fieldsets */
 	form fieldset { padding: 9px 9px 2px 9px; border: solid 1px #ddd; margin: 18px 0; }
@@ -89,7 +95,7 @@
 	form.custom span.custom.checkbox.checked { background-position: 0 -28px; }
 
 	form.custom div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px; }
-	form.custom div.custom.dropdown a.current { display: block; width: auto; line-height: 26px; min-height: 26px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; background-color: #fff; }
+	form.custom div.custom.dropdown a.current { display: block; width: auto; line-height: 26px; min-height: 26px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; background-color: #fff; word-wrap: nowrap; }
 	form.custom div.custom.dropdown a.selector { position: absolute; width: 26px; height: 26px; display: block; background: url(../images/misc/custom-form-sprites.png) -14px 1px no-repeat; right: 0; top: 0; border: solid 1px #ddd; }
 	form.custom div.custom.dropdown:hover a.selector,
 	form.custom div.custom.dropdown.open a.selector { background-position: -14px -26px; }
