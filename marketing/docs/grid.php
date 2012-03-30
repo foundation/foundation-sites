@@ -177,6 +177,25 @@
 						.twelve.columns				
 					</div>
 				</div>
+				
+				<p><strong>Note:</strong> In order to work around browsers' different rounding behaviours, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns you can tag the last column with <strong>class="end"</strong> in order to override that behaviour.</p>
+				
+				<div class="row display">
+					<div class="four columns">
+						.four.columns				
+					</div>
+					<div class="four columns">
+						.four.columns				
+					</div>
+				</div>
+				<div class="row display">
+					<div class="four columns">
+						.four.columns				
+					</div>
+					<div class="four columns end">
+						.four.columns.end				
+					</div>
+				</div>
 
 
 				<hr />
