@@ -227,7 +227,7 @@
 	ul.breadcrumbs li a, ul.breadcrumbs li span { text-transform: uppercase; font-size: 11px; padding-left: 12px; }
 	ul.breadcrumbs li:first-child a, ul.breadcrumbs li:first-child span { padding-left: 0; }
 	ul.breadcrumbs li:before { content: "/"; color: #aaa; }
-	ul.breadcrumbs li:first-child:before { content: ""; }
+	ul.breadcrumbs li:first-child:before { content: " "; }
 	ul.breadcrumbs li.current a { cursor: default; color: #333; }
 	ul.breadcrumbs li:hover a, ul.breadcrumbs li a:focus { text-decoration: underline; }
 	ul.breadcrumbs li.current:hover a, ul.breadcrumbs li.current a:focus { text-decoration: none; }
