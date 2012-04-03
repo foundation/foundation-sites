@@ -72,6 +72,10 @@ Grid Generator
 
 * [Experimental Grid Generator](http://www.gridlover.net/foundation/) courtesy of [Ville Vanninen](http://foolproof.me)
 
+Grid displayer
+
+* [Grid displayer bookmarklet](http://alefeuvre.github.com/foundation-grid-displayer/) by [Antoine Lefeuvre](http://twitter.com/jiraisurfer)
+
 MIT Open Source License
 =======================
 
