@@ -73,6 +73,9 @@ jQuery(document).ready(function ($) {
       }
     });
 
+    $customSelect.css('width', 'inherit');
+    $customSelect.find('ul').css('width', 'inherit');
+
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
       if ($(this).outerWidth() > maxWidth) {
@@ -98,7 +101,6 @@ jQuery(document).ready(function ($) {
   };
 
   $.foundation.customForms.appendCustomMarkup();
-  
 });
 
 (function ($) {

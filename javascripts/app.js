@@ -31,6 +31,7 @@ jQuery(document).ready(function ($) {
 
 	if (window.location.hash) {
 		activateTab($('a[href="' + window.location.hash + '"]'));
+		$.foundation.customForms.appendCustomMarkup();
 	}
 
 	/* ALERT BOXES ------------ */
@@ -93,5 +94,4 @@ jQuery(document).ready(function ($) {
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
   
-
 });
