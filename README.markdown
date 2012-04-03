@@ -38,6 +38,10 @@ WordPress
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
 * [Reverie](http://themefortress.com/reverie/) by Zhen
 
+Joomla
+
+* [Joomla Template](https://github.com/meridiansoftech/joomla_foundation_template) by Arnold Mwumva Ford, Meridian Softech
+
 Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly

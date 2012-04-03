@@ -6,6 +6,9 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
+jQuery.foundation = jQuery.foundation || {};
+jQuery.foundation.customForms = jQuery.foundation.customForms || {};
+
 jQuery(document).ready(function ($) {
   
   function appendCustomMarkup(type) {
@@ -22,8 +25,6 @@ jQuery(document).ready(function ($) {
       $span.toggleClass('disabled', $this.is(':disabled'));
     });
   }
-  appendCustomMarkup('checkbox');
-  appendCustomMarkup('radio');
 
   function appendCustomSelect(sel) {
     var $this = $(sel),
@@ -32,6 +33,7 @@ jQuery(document).ready(function ($) {
         maxWidth = 0,
         $li;
 
+    if ($this.hasClass('no-custom')) { return; }
     if ($customSelect.length === 0) {
       $customSelectSize = '';
       if ($(sel).hasClass('small')) {
@@ -71,6 +73,9 @@ jQuery(document).ready(function ($) {
       }
     });
 
+    $customSelect.css('width', 'inherit');
+    $customSelect.find('ul').css('width', 'inherit');
+
     $customSelect.find('li').each(function () {
       $customSelect.addClass('open');
       if ($(this).outerWidth() > maxWidth) {
@@ -85,11 +90,17 @@ jQuery(document).ready(function ($) {
     }
 
   }
-
-  $('form.custom select').each(function () {
-    appendCustomSelect(this);
-  });
   
+  $.foundation.customForms.appendCustomMarkup = function () {
+    appendCustomMarkup('checkbox');
+    appendCustomMarkup('radio');
+  
+    $('form.custom select').each(function () {
+      appendCustomSelect(this);
+    });
+  };
+
+  $.foundation.customForms.appendCustomMarkup();
 });
 
 (function ($) {
@@ -144,13 +155,15 @@ jQuery(document).ready(function ($) {
     var $input = $element.prev(),
         input = $input[0];
 
-    $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
-      $(this).next().removeClass('checked');
-    });
-    input.checked = ((input.checked) ? false : true);
-    $element.toggleClass('checked');
+    if (false == $input.is(':disabled')) {
+      $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
+        $(this).next().removeClass('checked');
+      });
+      input.checked = ((input.checked) ? false : true);
+      $element.toggleClass('checked');
     
-    $input.trigger('change');
+      $input.trigger('change');
+    }
   }
   
   $('form.custom span.custom.checkbox').live('click', function (event) {
