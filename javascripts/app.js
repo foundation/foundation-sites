@@ -5,32 +5,27 @@ jQuery(document).ready(function ($) {
 	/* TABS --------------------------------- */
 	/* Remove if you don't need :) */
 
-	function activateTab($tab) {
-		var $activeTab = $tab.closest('dl').find('a.active'),
-				contentLocation = $tab.attr("href") + 'Tab';
-				
-		// Strip off the current url that IE adds
-		contentLocation = contentLocation.replace(/^.+#/, '#');
+	function activateTab() {
+		var loc = window.location.hash,
+			$theTab = $('a[href="' + loc + '"]'),
+			$content = $(loc+'Tab'),
+			$activeTab;
 
-		//Make Tab Active
+		// Activate contents
+		$content.closest('.tabs-content').children('li').hide();
+		$content.css('display', 'block');
+		
+		// De-active old tab
+		$activeTab = $theTab.closest('dl').find('a.active');
 		$activeTab.removeClass('active');
-		$tab.addClass('active');
-
-    //Show Tab Content
-		$(contentLocation).closest('.tabs-content').children('li').hide();
-		$(contentLocation).css('display', 'block');
+		
+		// Activate new tab
+		$theTab.addClass('active');
 	}
 
-	$('dl.tabs').each(function () {
-		//Get all tabs
-		var tabs = $(this).children('dd').children('a');
-		tabs.click(function (e) {
-			activateTab($(this));
-		});
-	});
-
+	$(window).on('hashchange', activateTab);
 	if (window.location.hash) {
-		activateTab($('a[href="' + window.location.hash + '"]'));
+		activateTab();
 		$.foundation.customForms.appendCustomMarkup();
 	}
 
