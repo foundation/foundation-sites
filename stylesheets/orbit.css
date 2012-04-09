@@ -224,3 +224,8 @@ ul.orbit-bullets li.active {
 ul.orbit-bullets li.active.has-thumb {
     background-position: 0 0;
     border-top: 2px solid #000; }
+    
+    
+/* Correct timer in IE */
+	.timer { display: none !important; }
+	div.caption { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
