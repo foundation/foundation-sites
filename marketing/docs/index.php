@@ -54,6 +54,9 @@
 				<hr />
 				
 				<h4>Changelog</h4>
+				<h5>2.2.1 <small>April 10, 2012</small></h5>
+				<p>Numerous bug fixes and tweaks to cement Foundation 2 and let us move into Foundation 3.</p>
+				
 				<h5>2.2 <small>February 21, 2012</small></h5>
 				<p>Added breadcrumbs to UI, and made numerous changes to the JS plugins for stability and cross-browser behaviour. Numerous bug fixes both in JS and CSS.</p>
 				
