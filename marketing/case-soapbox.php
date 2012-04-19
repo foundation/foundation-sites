@@ -1,4 +1,7 @@
-<? $page_title = "ZURBsoapbox Case Study" ?>
+<? 
+  $page_title = "ZURBsoapbox Case Study";
+  $caseStudiesTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->

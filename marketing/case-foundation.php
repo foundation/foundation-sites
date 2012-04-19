@@ -1,4 +1,7 @@
-<? $page_title = "Foundation Case Study" ?>
+<? 
+  $page_title = "Foundation Case Study";
+  $caseStudiesTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->

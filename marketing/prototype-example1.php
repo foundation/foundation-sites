@@ -1,4 +1,7 @@
-<? $page_title = "Games Site Prototyping Example" ?>
+<? 
+  $page_title = "Games Site Prototyping Example";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
 
   

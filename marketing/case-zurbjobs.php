@@ -1,4 +1,7 @@
-<? $page_title = "ZURBjobs Case Study" ?>
+<? 
+  $page_title = "ZURBjobs Case Study";
+  $caseStudiesTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->

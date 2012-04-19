@@ -1,4 +1,7 @@
-<? $page_title = "All Grid Sizes" ?>
+<? 
+  $page_title = "All Grid Sizes";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <style>

@@ -1,4 +1,7 @@
-<? $page_title = "Built-in Elements for Rapid Prototyping" ?>
+<? 
+  $page_title = "Built-in Elements for Rapid Prototyping";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->

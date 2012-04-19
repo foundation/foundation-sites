@@ -1,4 +1,7 @@
-<? $page_title = "Reel Case Study" ?>
+<? 
+  $page_title = "Reel Case Study";
+  $caseStudiesTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->

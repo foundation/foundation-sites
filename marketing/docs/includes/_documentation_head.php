@@ -28,6 +28,8 @@
 	<link rel="stylesheet" href="../../stylesheets/reveal.css">
 	<link rel="stylesheet" href="../../stylesheets/app.css">
 	<link rel="stylesheet" href="../../stylesheets/mobile.css">
+	<link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
+  <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
 	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
@@ -43,22 +45,37 @@
 <body>
 
   <!-- ZURBar -->
-  <div id="zurBar" class="container">
-    <div class="row">
-      <div class="four columns">
-      	<a href="#" id="mobileNav" data-reveal-id="navModal" class="small nice button show-on-phones">Nav</a>
-        <h1><a href="../">Foundation</a></h1>
-      </div>
-      <div class="eight columns hide-on-phones">
-      	<strong class="right">
-      		<a href="../grid.php">Features</a>
-      		<a href="../case-soapbox.php">Case Studies</a>
-      		<a href="index.php">Documentation</a>
-      		<a href="http://github.com/zurb/foundation">Github</a>
-      		<a href="../files/foundation-download-<?= $version ?>.zip" class="small blue nice button src-download">Download</a>
-      		
-      	</strong>
-      </div>
-    </div>
+  <div class="container top-bar home-border">
+    <div class="attached">
+      <div class="name" onclick="void(0);">
+        <span><a href="http://foundation.zurb.com">Foundation</a> <a href="#" class="toggle-nav"></a></span>
+  		</div>
+
+  		<ul class="right">			
+  			<li>
+  			  <a href="grid.php">Features</a>
+  			</li>			
+  			<li>
+  			  <a href="case-soapbox.php">Case Studies</a>
+  			</li>
+  			<li>
+  			  <a href="docs" class="current">Documentation</a>
+  			</li>
+  		  <li>
+  		    <a href="http://github.com/zurb/foundation">GitHub</a>
+  			</li>
+  			<li class="download"><a class="small blue nice button src-download" href="files/foundation-download-2.2.1.zip">Download</a></li>
+  		</ul>
+  	</div>
   </div>
+
+  <!-- INSERT MEGA DROP DOWN HERE -->
+  <?php
+  $megadropfile = '../cache/navigation_bar.html';
+
+  if (file_exists($megadropfile)) {
+      include $megadropfile;
+  }
+  ?>
+
   <!-- /ZURBar -->

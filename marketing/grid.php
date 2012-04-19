@@ -1,4 +1,7 @@
-<? $page_title = "Flexible, Fluid Grid" ?>
+<? 
+  $page_title = "Flexible, Fluid Grid";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->

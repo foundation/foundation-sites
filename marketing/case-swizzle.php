@@ -1,4 +1,7 @@
-<? $page_title = "Swizzle Case Study" ?>
+<? 
+  $page_title = "Swizzle Case Study";
+  $caseStudiesTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->
