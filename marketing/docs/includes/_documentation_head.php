@@ -53,10 +53,10 @@
 
   		<ul class="right">			
   			<li>
-  			  <a href="grid.php">Features</a>
+  			  <a href="../grid.php">Features</a>
   			</li>			
   			<li>
-  			  <a href="case-soapbox.php">Case Studies</a>
+  			  <a href="../case-soapbox.php">Case Studies</a>
   			</li>
   			<li>
   			  <a href="docs" class="current">Documentation</a>
