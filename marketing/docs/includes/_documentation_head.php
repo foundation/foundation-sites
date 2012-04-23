@@ -59,7 +59,7 @@
   			  <a href="../case-soapbox.php">Case Studies</a>
   			</li>
   			<li>
-  			  <a href="docs" class="current">Documentation</a>
+  			  <a href="index.php" class="current">Documentation</a>
   			</li>
   		  <li>
   		    <a href="http://github.com/zurb/foundation">GitHub</a>
