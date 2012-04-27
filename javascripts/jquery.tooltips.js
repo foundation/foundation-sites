@@ -94,7 +94,7 @@
        });
     },
     reposition : function(target, tip, classes) {
-      var width, nub, nubHeight, nubWidth, row;
+      var width, nub, nubHeight, nubWidth, row, objPos;
 
       width = target.data('width');
       nub = tip.children('.nub');
