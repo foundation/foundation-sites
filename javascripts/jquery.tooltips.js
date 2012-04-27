@@ -17,6 +17,8 @@
       return this.each(function() {
         var targets, tips, tipTemplate, poll;
 
+        $(window).data('tooltips', 'init');
+
         targets = $('.has-tip');
         tips = $('.tooltip');
         tipTemplate = function(target, content) {
@@ -39,7 +41,7 @@
             tip.fadeOut(150);
           });
         }
-        $(window).resize(function() {
+        $(window).on('resize.tooltip', function() {
           var tips = $('.tooltip');
           tips.each(function() {
             var data, target, tip, classes;
@@ -57,11 +59,11 @@
         });
 
         if (Modernizr.touch) {
-          $('.tooltip').live('click touchstart touchend', function(e) {
+          $('.tooltip').on('click.tooltip touchstart.tooltip touchend.tooltip', function(e) {
             e.preventDefault();
             $(this).fadeOut(150);
           });
-          targets.live('click touchstart touchend', function(e){
+          targets.on('click.tooltip touchstart.tooltip touchend.tooltip', function(e){
             e.preventDefault();
             $('.tooltip').hide();
             $('span[data-id=' + $(this).data('id') + '].tooltip').fadeIn(150);
@@ -77,6 +79,19 @@
         }
 
       });
+    },
+    reload : function() {
+      var $self = $(this);
+      ($self.data('tooltips')) ? $self.tooltips('destroy').tooltips('init') : $self.tooltips('init');
+    },
+    destroy : function() {
+       return this.each(function(){
+         $(window).unbind('.tooltip');
+         $('.has-tip').unbind('.tooltip');
+         $('.tooltip').each(function(i){
+          $($('.has-tip').get(i)).attr('title', $(this).text());
+         }).remove();
+       });
     },
     reposition : function(target, tip, classes) {
       var width, nub, nubHeight, nubWidth, row;
