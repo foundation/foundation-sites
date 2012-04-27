@@ -45,7 +45,7 @@
 	
 	.row .centered { float: none; margin: 0 auto; }
 
-	.row .offset-by-one:first-child 	{ margin-left: 8.7%;  }
+	.row .offset-by-one:first-child 	{ margin-left: 8.7%;   }
 	.row .offset-by-two:first-child 	{ margin-left: 17.4%;  }
 	.row .offset-by-three:first-child 	{ margin-left: 26.1%;  }
 	.row .offset-by-four:first-child 	{ margin-left: 34.8%;  }
@@ -54,9 +54,23 @@
 	.row .offset-by-seven:first-child 	{ margin-left: 60.9%;  }
 	.row .offset-by-eight:first-child 	{ margin-left: 69.6%;  }
 	.row .offset-by-nine:first-child 	{ margin-left: 78.3%;  }
-	.row .offset-by-ten:first-child 	{ margin-left: 87%;  }
+	.row .offset-by-ten:first-child 	{ margin-left: 87%;    }
 	.row .offset-by-eleven:first-child 	{ margin-left: 95.7%;  }
 	
+	/* Remove leading for custom margins/padding */
+	.row .tight { margin-left: 0; }
+	.row .one.tight:not(:first-child) 		{ width: 8.7%;   }
+	.row .two.tight:not(:first-child) 		{ width: 17.4%;  }
+	.row .three.tight:not(:first-child) 	{ width: 26.1%;  }
+	.row .four.tight:not(:first-child) 		{ width: 34.8%;  }
+	.row .five.tight:not(:first-child) 		{ width: 43.5%;  }
+	.row .six.tight:not(:first-child) 		{ width: 52.2%;  }
+	.row .seven.tight:not(:first-child) 	{ width: 60.9%;  }
+	.row .eight.tight:not(:first-child) 	{ width: 69.6%;  }
+	.row .nine.tight:not(:first-child) 		{ width: 78.3%;  }
+	.row .ten.tight:not(:first-child) 		{ width: 87%;    }
+	.row .eleven.tight:not(:first-child) 	{ width: 95.7%;  }
+
 	/* Source Ordering */
 	.push-two 		{ left: 17.4% }
 	.push-three 	{ left: 26.1%; }
