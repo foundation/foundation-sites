@@ -82,7 +82,7 @@
     },
     reload : function() {
       var $self = $(this);
-      ($self.data('tooltips')) ? $self.tooltips('destroy').tooltips('init') : $self.tooltips('init');
+      return ($self.data('tooltips')) ? $self.tooltips('destroy').tooltips('init') : $self.tooltips('init');
     },
     destroy : function() {
        return this.each(function(){
