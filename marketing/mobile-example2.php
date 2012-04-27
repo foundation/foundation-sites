@@ -1,4 +1,7 @@
-<? $page_title = "Mobile Navigation" ?>
+<? 
+  $page_title = "Mobile Navigation";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->

@@ -246,7 +246,7 @@
 				</div>
 				<div class="row display">
 					<div class="five columns offset-by-seven">
-						.five.columns.offset-by-six					
+						.five.columns.offset-by-seven					
 					</div>
 				</div>
 				<div class="row display">

@@ -1,4 +1,7 @@
-<? $page_title = "Mobile Grid" ?>
+<? 
+  $page_title = "Mobile Grid";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <style>

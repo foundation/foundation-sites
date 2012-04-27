@@ -1,4 +1,7 @@
-<? $page_title = "Nesting the Grid" ?>
+<? 
+  $page_title = "Nesting the Grid";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <style>

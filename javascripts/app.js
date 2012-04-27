@@ -21,13 +21,9 @@ jQuery(document).ready(function ($) {
 		$(contentLocation).css('display', 'block');
 	}
 
-	$('dl.tabs').each(function () {
-		//Get all tabs
-		var tabs = $(this).children('dd').children('a');
-		tabs.click(function (e) {
-			activateTab($(this));
-		});
-	});
+  $('dl.tabs dd a').live('click', function (event) {
+    activateTab($(this));
+  });
 
 	if (window.location.hash) {
 		activateTab($('a[href="' + window.location.hash + '"]'));

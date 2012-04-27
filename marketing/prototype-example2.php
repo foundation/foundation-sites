@@ -1,4 +1,7 @@
-<? $page_title = "Social Network Prototyping Example" ?>
+<? 
+  $page_title = "Social Network Prototyping Example";
+  $featuresTab = true;
+?>
 <?php include("includes/_header.php"); ?>
   
   <style>

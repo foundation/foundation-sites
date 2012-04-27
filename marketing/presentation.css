@@ -102,36 +102,15 @@ a:hover {
 .normal-weight {
   font-weight: normal !important; }
 
-/* ZURB bar */
-#zurBar {
-  background: #222222;
-  border-bottom: solid 4px #00a5ff;
-  padding: 15px 20px 13px 20px; }
-  
-
-@media handheld, only screen and (max-width: 767px) {
-	#zurBar { padding: 15px 0px 13px 0px; }
-}
-
-#zurBar h1, #zurBar h2 {
-  margin-bottom: 0;
-  line-height: 1; }
-#zurBar h1 {
-  color: white;
-  font-size: 16px;
-  font-size: 1.6rem;
-  font-weight: bold; }
-#zurBar h1 a { color: #fff; }
-  
-
-#zurBar strong { display: block; margin: 0; padding: 0; height: 14px; line-height: 14px; position: relative; bottom: 4px; }
-#zurBar strong a {
-  line-height: 14px;
-  color: #fff;
-  font-weight: 500;
-  padding-right: 12px;
-}
-#zurBar strong a.button { padding: 4px 10px; font-weight: bold; }
+/* Top bar */
+.container.top-bar { margin-bottom: 0; }
+.top-bar { -webkit-box-shadow: rgba(0,0,0,0.0976562) 0px 5px 5px; -moz-box-shadow: rgba(0,0,0,0.0976562) 0px 5px 5px; box-shadow: rgba(0,0,0,0.0976562) 0px 5px 5px; border-bottom: 3px solid #00a5ff; }
+.top-bar li { margin-bottom: 0; }
+.top-bar .attached > ul.right > li.download { border-right: 0; }
+.top-bar .attached > ul.right > li.download a { padding: 6px 13px 6px; }
+.top-bar .small.button { height: auto; top: 10px; }
+.top-bar a:hover { color: white; }
+.top-bar .attached > ul.right > li.download:hover > a { background-color: #00a5ff; }
 
 
 /* Grid BG */
