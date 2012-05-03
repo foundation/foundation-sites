@@ -20,9 +20,8 @@
 	[class*="column"] + [class*="column"].end { float: left; }
 	
 	/* --------------------------------------------------------------------- 
-		Grid percentages update. Rounding doesn't work well in IE7.
-		Updated 5/3/2012 by David French - www.interactivestrategies.com
-		Please leave code credits for my work. 
+	Grid percentages update. Rounding doesn't work well in IE7.
+	Updated 5/3/2012 by David French - www.interactivestrategies.com
 	-----------------------------------------------------------------------*/
 	.row .one { width: 4.27503%; }
 	.row .two { width: 12.97730%; }
