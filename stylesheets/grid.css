@@ -19,64 +19,69 @@
 	[class*="column"] + [class*="column"]:last-child { float: right; }
 	[class*="column"] + [class*="column"].end { float: left; }
 	
-	.row .one 		{ width: 4.3%; }
-	.row .two 		{ width: 13%; }
-	.row .three 	{ width: 21.679%; }
-	.row .four 		{ width: 30.37%; }
-	.row .five 		{ width: 39.1%; }
-	.row .six 		{ width: 47.8%; }
-	.row .seven 	{ width: 56.5%; }
-	.row .eight 	{ width: 65.2%; }
-	.row .nine 		{ width: 73.9%; }
-	.row .ten 		{ width: 82.6%; }
-	.row .eleven 	{ width: 91.3%; }
-	.row .twelve 	{ width: 100%; }
+	/* --------------------------------------------------------------------- 
+		Grid percentages update. Rounding doesn't work well in IE7.
+		Updated 5/3/2012 by David French - www.interactivestrategies.com
+		Please leave code credits for my work. 
+	-----------------------------------------------------------------------*/
+	.row .one { width: 4.27503%; }
+	.row .two { width: 12.97730%; }
+	.row .three { width: 21.67957%; }
+	.row .four { width: 30.37999%; }
+	.row .five { width: 39.08411%; }
+	.row .six { width: 47.78638%; }
+	.row .seven { width: 56.48865%; }
+	.row .eight { width: 65.19092%; }
+	.row .nine { width: 73.89319%; }
+	.row .ten { width: 82.59546%; }
+	.row .eleven { width: 91.29773%; }
+	.row .twelve { width: 100%; }
 	
-	.row .offset-by-one 	{ margin-left: 13.1%;  }
-	.row .offset-by-two 	{ margin-left: 21.8%;  }
-	.row .offset-by-three 	{ margin-left: 30.5%;  }
-	.row .offset-by-four 	{ margin-left: 39.2%;  }
-	.row .offset-by-five 	{ margin-left: 47.9%;  }
-	.row .offset-by-six 	{ margin-left: 56.6%;  }
-	.row .offset-by-seven 	{ margin-left: 65.3%;  }
-	.row .offset-by-eight 	{ margin-left: 74.0%;  }
-	.row .offset-by-nine 	{ margin-left: 82.7%;  }
-	.row .offset-by-ten 	{ margin-left: 91.4%;  }
+	.row .offset-by-one { margin-left: 12.97730%; }
+	.row .offset-by-two { margin-left: 21.67957%; }
+	.row .offset-by-three { margin-left: 30.38184%; }
+	.row .offset-by-four { margin-left: 39.08226%; }
+	.row .offset-by-five { margin-left: 47.78638%; }
+	.row .offset-by-six { margin-left: 56.48865%; }
+	.row .offset-by-seven { margin-left: 65.19092%; }
+	.row .offset-by-eight { margin-left: 73.89319%; }
+	.row .offset-by-nine { margin-left: 82.59546%; }
+	.row .offset-by-ten { margin-left: 91.29773%; }
 	
 	.row .centered { float: none; margin: 0 auto; }
-
-	.row .offset-by-one:first-child 	{ margin-left: 8.7%;  }
-	.row .offset-by-two:first-child 	{ margin-left: 17.4%;  }
-	.row .offset-by-three:first-child 	{ margin-left: 26.1%;  }
-	.row .offset-by-four:first-child 	{ margin-left: 34.8%;  }
-	.row .offset-by-five:first-child 	{ margin-left: 43.5%;  }
-	.row .offset-by-six:first-child 	{ margin-left: 52.2%;  }
-	.row .offset-by-seven:first-child 	{ margin-left: 60.9%;  }
-	.row .offset-by-eight:first-child 	{ margin-left: 69.6%;  }
-	.row .offset-by-nine:first-child 	{ margin-left: 78.3%;  }
-	.row .offset-by-ten:first-child 	{ margin-left: 87%;  }
-	.row .offset-by-eleven:first-child 	{ margin-left: 95.7%;  }
+	
+	.row .offset-by-one:first-child { margin-left: 8.626165%; }
+	.row .offset-by-two:first-child { margin-left: 17.328435%; }
+	.row .offset-by-three:first-child { margin-left: 26.030705%; }
+	.row .offset-by-four:first-child { margin-left: 34.731125%; }
+	.row .offset-by-five:first-child { margin-left: 43.435245%; }
+	.row .offset-by-six:first-child { margin-left: 52.137515%; }
+	.row .offset-by-seven:first-child { margin-left: 60.839785%; }
+	.row .offset-by-eight:first-child { margin-left: 69.542055%; }
+	.row .offset-by-nine:first-child { margin-left: 78.244325%; }
+	.row .offset-by-ten:first-child { margin-left: 86.946595%; }
+	.row .offset-by-eleven:first-child { margin-left: 95.648865%; }
 	
 	/* Source Ordering */
-	.push-two 		{ left: 17.4% }
-	.push-three 	{ left: 26.1%; }
-	.push-four 		{ left: 34.8%; }
-	.push-five 		{ left: 43.5%; }
-	.push-six 		{ left: 52.2%; }
-	.push-seven 	{ left: 60.9%; }
-	.push-eight 	{ left: 69.6%; }
-	.push-nine 		{ left: 78.3%; }
-	.push-ten 		{ left: 87%; }
+	.push-two { left: 17.328435%; }
+	.push-three { left: 26.030705%; }
+	.push-four { left: 34.731125%; }
+	.push-five { left: 43.435245%; }
+	.push-six { left: 52.137515%; }
+	.push-seven { left: 60.839785%; }
+	.push-eight { left: 69.542055%; }
+	.push-nine { left: 78.244325%; }
+	.push-ten { left: 86.946595%; }
 	
-	.pull-two 		{ right: 17.4% }
-	.pull-three 	{ right: 26.1%; }
-	.pull-four 		{ right: 34.8%; }
-	.pull-five 		{ right: 43.5%; }
-	.pull-six 		{ right: 52.2%; }
-	.pull-seven 	{ right: 60.9%; }
-	.pull-eight 	{ right: 69.6%; }
-	.pull-nine 		{ right: 78.3%; }
-	.pull-ten 		{ right: 87%; }
+	.pull-two { right: 17.328435%; }
+	.pull-three { right: 26.030705%; }
+	.pull-four { right: 34.731125%; }
+	.pull-five { right: 43.435245%; }
+	.pull-six { right: 52.137515%; }
+	.pull-seven { right: 60.839785%; }
+	.pull-eight { right: 69.542055%; }
+	.pull-nine { right: 78.244325%; }
+	.pull-ten { right: 86.946595%; }
 	
 	
 	
