@@ -64,6 +64,7 @@
   Paul Irish (paulirish.com): Smartypants who wrote at least some of this code through HTML5 Boilerplate
   Eric Meyer (meyerweb.com): Master resetter
   Kyle Kneath (github.com): Loves him some column clearing
+  David French (www.interactivestrategies.com): Cleaned up the grid percentages in IE7
 
 /* MUCHOS LOTS OF MANY THANKS TO */
   Dave Gamache @dhg (davegamache.com): Twitter designer, coding rockstar, sexy guy
