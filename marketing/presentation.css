@@ -732,3 +732,6 @@ footer.row a:hover {
 @media only screen and (max-width: 460px) {
   #swipeArea ul li img {
     width: 88%; } }
+
+/* MegaDrop */
+.sitemap-link {display:none;}
