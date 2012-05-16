@@ -30,7 +30,7 @@
       directionalNavRightText: 'Right', // text of right directional element for accessibility
       directionalNavLeftText: 'Left', // text of left directional element for accessibility
       captions: true, 					// do you want captions?
-      captionAnimation: 'fade', 			// fade, slideOpen, none
+      captionAnimation: 'fade', 			// fade, slideOpen, slideOpenClose, none
       captionAnimationSpeed: 600, 		// if so how quickly should they animate in
       resetTimerOnClick: false,      // true resets the timer instead of pausing slideshow progress on manual navigation
       bullets: false,						// true or false to activate the bullet navigation
@@ -343,6 +343,12 @@
           case 'slideOpen':
             this.$caption.slideDown(this.options.captionAnimationSpeed);
             break;
+          case 'slideOpenClose':
+            this.$caption.delay(this.options.animationSpeed/2)
+                .slideDown(this.options.captionAnimationSpeed)
+                .delay(this.options.advanceSpeed - 2*(this.options.captionAnimationSpeed) - (this.options.animationSpeed/2))
+                .slideUp(this.options.captionAnimationSpeed); // hides the caption between slides
+            break;
         }
     	} else {
     		//Animations for Caption exits
@@ -354,6 +360,7 @@
             this.$caption.fadeOut(this.options.captionAnimationSpeed);
             break;
           case 'slideOpen':
+          case 'slideOpenClose':
             this.$caption.slideUp(this.options.captionAnimationSpeed);
             break;
         }
