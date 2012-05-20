@@ -2,7 +2,7 @@
 <?php include("includes/_header.php"); ?>
   
   <!-- Grid BG -->
-  <div id="gridBgShort" class="container">
+  <div id="gridBgShort" class="container hide-on-phones">
     <div class="white-fade hide-on-phones"></div>
     <div class="row">
       <div class="one columns"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div>
@@ -108,7 +108,6 @@
   	    </ul>
   	  </nav>
 	  </div>
-	</div>
 	   	  
 	
 <?php include("includes/_footer.php");  ?>
