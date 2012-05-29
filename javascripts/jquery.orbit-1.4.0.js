@@ -328,6 +328,12 @@
 
     	//Set HTML for the caption if it exists
     	if (captionLocation) {
+
+        //if caption text is blank, don't show captions
+        if ($.trim($(captionLocation).text()).length < 1){
+          return false;
+        }
+      
     	  captionHTML = $(captionLocation).html(); //get HTML from the matching HTML entity
     		this.$caption
       		.attr('id', captionLocation) // Add ID caption TODO why is the id being set?
@@ -627,3 +633,4 @@
 	}
 
 }(jQuery));
+
