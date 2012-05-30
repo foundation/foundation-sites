@@ -98,7 +98,7 @@
 	form.custom div.custom.dropdown a.current { display: block; width: auto; line-height: 26px; min-height: 26px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; background-color: #fff; word-wrap: nowrap; }
 	form.custom div.custom.dropdown a.selector { position: absolute; width: 26px; height: 26px; display: block; background: url(../images/misc/custom-form-sprites.png) -14px 1px no-repeat; right: 0; top: 0; border: solid 1px #ddd; }
 	form.custom div.custom.dropdown:hover a.selector,
-	form.custom div.custom.dropdown.open a.selector { background-position: -14px -26px; }
+	form.custom div.custom.dropdown.open a.selector { background-position: -14px -25px; }
 
 	form.custom div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; left: 0; top: 27px; margin: 0; padding: 0; background: #fff; background: rgba(255,255,255,0.95); border: solid 1px #ddd; }
 	form.custom div.custom.dropdown ul li { cursor: pointer; padding: 3px 38px 3px 6px; min-height: 18px; margin: 0; white-space: nowrap}
