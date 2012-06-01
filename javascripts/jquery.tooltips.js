@@ -47,7 +47,6 @@
     },
     showOrCreateTip : function($target) {
       var $tip = methods.getTip($target);
-      console.log($tip);
       if ($tip && $tip.length > 0) {
         methods.show($target);
       } else {
@@ -71,7 +70,6 @@
     },
     create : function($target) {
       var $tip = $(settings.tipTemplate(methods.selector($target), $target.attr('title')));
-      console.log($tip);
       $tip.addClass($target.attr('class')).removeClass(settings.targetClass.substring(1)).appendTo('body');
       if (Modernizr.touch) $tip.append('<span class="tap-to-close">tap to close </span>');
       methods.show($target);
@@ -95,7 +93,6 @@
           'width' : (width) ? width : 'auto'
         }).end();
       };
-
 
       objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', target.offset().left, width);
       objPos(nub, -nubHeight, 'auto', 'auto', 10);
@@ -135,13 +132,13 @@
       return ($self.data('tooltips')) ? $self.tooltips('destroy').tooltips('init') : $self.tooltips('init');
     },
     destroy : function() {
-       return this.each(function(){
-         $(window).unbind('.tooltip');
-         $(settings.targetClass).unbind('.tooltip');
-         $(settings.tooltipClass).each(function(i){
+      return this.each(function(){
+        $(window).unbind('.tooltip');
+        $(settings.targetClass).unbind('.tooltip');
+        $(settings.tooltipClass).each(function(i){
           $($(settings.targetClass).get(i)).attr('title', $(this).text());
-         }).remove();
-       });
+        }).remove();
+      });
     },
   };
 
