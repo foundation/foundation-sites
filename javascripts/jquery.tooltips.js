@@ -72,6 +72,7 @@
       var $tip = $(settings.tipTemplate(methods.selector($target), $target.attr('title')));
       $tip.addClass($target.attr('class')).removeClass(settings.targetClass.substring(1)).appendTo('body');
       if (Modernizr.touch) $tip.append('<span class="tap-to-close">tap to close </span>');
+      $target.removeAttr('title');
       methods.show($target);
     },
     reposition : function(target, tip, classes) {
