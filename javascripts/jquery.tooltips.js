@@ -139,7 +139,7 @@
           $($(settings.targetClass).get(i)).attr('title', $(this).text());
         }).remove();
       });
-    },
+    }
   };
 
   $.fn.tooltips = function( method ) {
