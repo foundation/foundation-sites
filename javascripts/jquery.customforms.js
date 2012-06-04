@@ -30,6 +30,7 @@ jQuery(document).ready(function ($) {
     var $this = $(sel),
         $customSelect = $this.next('div.custom.dropdown'),
         $options = $this.find('option'),
+        $seloptions = $this.find('option:selected'),
         maxWidth = 0,
         $li;
 
@@ -50,7 +51,7 @@ jQuery(document).ready(function ($) {
         $li = $('<li>' + $(this).html() + '</li>');
         $customSelect.find('ul').append($li);
       });
-      $customSelect.prepend('<a href="#" class="current">' + $options.first().html() + '</a>');
+      $customSelect.prepend('<a href="#" class="current">' + $seloptions.html() + '</a>');
 
       $this.after($customSelect);
       $this.hide();
