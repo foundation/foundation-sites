@@ -89,7 +89,8 @@
               "top":  $(document).scrollTop() - topOffset + 'px',
               "opacity": 0
             }, options.animationSpeed / 2, function () {
-              modal.css({'top': topMeasure, 'opacity': 1, 'visibility': 'hidden'});
+              // changed opacity: 1 to 0 - fixes issue where iframe remains visible after modal window closed
+              modal.css({'top': topMeasure, 'opacity': 0, 'visibility': 'hidden'});
             });
             modalBg.delay(options.animationSpeed).fadeOut(options.animationSpeed, function () {
               modal.trigger('reveal:closed');
