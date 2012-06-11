@@ -8,6 +8,7 @@
 /*globals jQuery */
 
 (function ($) {
+  
   $('a[data-reveal-id]').live('click', function (event) {
     event.preventDefault();
     var modalLocation = $(this).attr('data-reveal-id');
