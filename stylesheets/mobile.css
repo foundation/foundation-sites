@@ -107,20 +107,35 @@
 	
 	/* Specific overrides for elements that require something other than display: block */
 	
+	table.show-on-phones { display: none !important; }	
+	table.show-on-tablets { display: none !important; }
 	table.show-on-desktops { display: table !important; }
+	
 	table.hide-on-phones { display: table !important; }	
 	table.hide-on-tablets { display: table !important; }
+	table.hide-on-desktops { display: none !important; }
 	
+	
+	/* Modernizr-enabled tablet targeting */
 	@media only screen and (max-width: 1280px) and (min-width: 768px) {
 		.touch table.hide-on-phones { display: table !important; }
+		.touch table.hide-on-tablets { display: none !important; }
 		.touch table.hide-on-desktops { display: table !important; }
+		
+		.touch table.show-on-phones { display: none !important; }
 		.touch table.show-on-tablets { display: table !important; }
+		.touch table.show-on-desktops { display: none !important; }
 	}
 	
+		
 	@media only screen and (max-width: 767px) {
+		table.hide-on-phones { display: none !important; }
 		table.hide-on-tablets { display: table !important; }
 		table.hide-on-desktops { display: table !important; }
+		
 		table.show-on-phones { display: table !important; }
+		table.show-on-tablets { display: none !important; }
+		table.show-on-desktops { display: none !important; }
 	}
 	
 	
