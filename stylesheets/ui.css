@@ -277,6 +277,9 @@
 	.flyout.right { left: auto; right: 0; }
 	.flyout p:last-child { margin-bottom: 0; }
 	.nav-bar>li .flyout { display: none; }
+	
+	.js.touch .nav-bar>li.has-flyout>a.flyout-toggle {border-left: 1px dashed #eee}
+	.js.touch .nav-bar>li.has-flyout>a.main {padding-right:75px;}
 
 /*	--------------------------------------------------
    	Sub Navs
