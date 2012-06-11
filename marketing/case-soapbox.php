@@ -27,6 +27,7 @@
 	    			<li><a href="case-foundation.php">Foundation</a></li>
 	    			<li><a href="case-reel.php">Reel</a></li>
 	    			<li><a href="case-zurbjobs.php">ZURBjobs</a></li>
+	    			<li><a href="case-flite.php">Flite</a></li>
 	    		</ul>
 	    	</nav>
 	      <h1 class="light-weight">Building ZURBsoapbox</h1>
