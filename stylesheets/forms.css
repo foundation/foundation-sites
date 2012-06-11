@@ -119,6 +119,8 @@
 	form.custom div.custom.dropdown.open.large ul { width: 432px !important; }
 	form.custom div.custom.dropdown.open.expand ul { width: 100% !important; box-sizing: border-box; }
 
+	form.custom label + select + div.custom.dropdown > a.current { margin-top: -9px; }
+
 	/* Custom input, disabled */
 	form.custom .custom.disabled { background-color: #ddd; }
 
