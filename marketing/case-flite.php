@@ -1,5 +1,5 @@
 <? 
-  $page_title = "ZURBjobs Case Study";
+  $page_title = "Flite Case Study";
   $caseStudiesTab = true;
 ?>
 <?php include("includes/_header.php"); ?>
@@ -72,6 +72,7 @@ Andy had Foundation up and running in a day. Then it was just a matter of buildi
 	  		<a href="http://www.flite.com/" target="_blank">
 		  		<img src="images/case-flite2.jpg">
 		  	</a>
+		  	
 		  	<br/>
 		  	<br/>
 		  	<h5>Would Use it Again</h5>

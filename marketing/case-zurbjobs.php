@@ -68,7 +68,7 @@
 	  <br><br>
 	  <div class="row">
 	    <div class="twelve columns">
-	      <a class="hide-on-phones nice blue button right" href="case-swizzle.php">Case Study: Swizzle &rarr;</a>
+	      <a class="hide-on-phones nice blue button right" href="case-flite.php">Case Study: Flite &rarr;</a>
 	      <!-- <a class="left hide-on-desktops" href="mobile.php">&larr; Mobility</a> -->
 	      <a class="right show-on-phones" href="case-swizzle.php">Case Study: Swizzle &rarr;</a>
 	    </div>
