@@ -227,5 +227,5 @@ ul.orbit-bullets li.active.has-thumb {
     
     
 /* Correct timer in IE */
-	.timer { display: none !important; }
+	html.lt-ie9 .timer { display: none !important; }
 	div.caption { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
