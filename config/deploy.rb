@@ -21,13 +21,15 @@ namespace :deploy do
   task :default do
     update
   end
-  
+
   desc "Symlink cached files"
   task :link_cached_files do
     run "rm -rf #{release_path}/marketing/cache"
     run "ln -nfs #{shared_path}/cache #{release_path}/marketing/cache"
+    run "ln -nfs #{release_path}/images/misc #{release_path}/marketing/images/misc"
+    run "ln -nfs #{release_path}/images/orbit #{release_path}/marketing/images/orbit"
   end
-  
+
   desc "Symlink to stylesheets and javascripts"
   task :link_assets do
     run "ln -nfs #{release_path}/stylesheets #{release_path}/marketing/stylesheets"
