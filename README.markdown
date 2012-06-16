@@ -42,6 +42,10 @@ Joomla
 
 * [Joomla Template](https://github.com/meridiansoftech/joomla_foundation_template) by Arnold Mwumva Ford, Meridian Softech
 
+Django
+
+* [A foundation theme for the Pinax](http://pypi.python.org/pypi/pinax-theme-foundation)
+
 Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
