@@ -44,7 +44,7 @@ Joomla
 
 Django
 
-* [A foundation theme for the Pinax](http://pypi.python.org/pypi/pinax-theme-foundation)
+* [A foundation theme for the Pinax](http://pypi.python.org/pypi/pinax-theme-foundation) by Christopher Clarke, Kwesi Aguillera & Lendl Smith
 
 Drupal
 
