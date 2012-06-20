@@ -17,8 +17,9 @@ jQuery(document).ready(function ($) {
 		$tab.addClass('active');
 
     //Show Tab Content
-		$(contentLocation).closest('.tabs-content').children('li').hide();
+		$(contentLocation).closest('.tabs-content').children('li').removeClass('active').hide();
 		$(contentLocation).css('display', 'block');
+		$(contentLocation).addClass('active')
 	}
 
   $('dl.tabs dd a').live('click', function (event) {
