@@ -26,11 +26,11 @@
     -------------------------------------------------- */
 
     .button {
-        background: #00a6fc;
+        background: @bPrimary;
         display: inline-block;
         text-align: center;
         padding: 9px 34px 11px;
-        color: #fff;
+        color: @white;
         text-decoration: none;
         font-weight: bold;
         font-size: 13px; font-size: 1.3rem;
@@ -53,14 +53,14 @@
     
     .button {
         &.nice { 
-            background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px;
+            background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px;
             -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
             -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
             box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
             text-shadow: 0 -1px 1px rgba(0,0,0,0.28);
-            background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
-            background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
-            border: 1px solid #0593dc;
+            background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
+            background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
+            border: 1px solid darken(@bPrimary, 10%);
             -webkit-transition: background-color .15s ease-in-out;
             -moz-transition: background-color .15s ease-in-out;
             -o-transition: background-color .15s ease-in-out;
@@ -99,28 +99,28 @@
         }
 
         /* Colors ---------- */
-        &.blue { background-color: #00a6fc; }
-        &.red { background-color: #e91c21; }
-        &.white { background-color: #e9e9e9; color: #333; }
-        &.black { background-color: #141414; }
+        &.blue { background-color: @bPrimary; }
+        &.red { background-color: @bSecondary; }
+        &.white { background-color: @bWhite; color: #333; }
+        &.black { background-color: @bBlack; }
         &.green { background-color: #5b8737; }
         
         /* Nice Colors ---------- */
         &.nice {
-            &.blue { border: 1px solid #0593dc; }
-            &.red { border: 1px solid #b90b0b; }
-            &.white { border: 1px solid #cacaca; text-shadow: none !important; }
-            &.black { border: 1px solid #000; }
+            &.blue { border: 1px solid darken(@bPrimary, 10%); }
+            &.red { border: 1px solid darken(@bSecondary, 10%); }
+            &.white { border: 1px solid darken(@bWhite, 10%); text-shadow: none !important; }
+            &.black { border: 1px solid darken(@bBlack, 10%); }
             &.green { border: 1px solid #4a6b2d; }
         }
         
         /* Hovers ---------- */
         &:hover, &:focus { 
-            background-color: #0192dd; color: #fff; 
-            &.blue { background-color: #0192dd; }
-            &.red { background-color: #d01217; }
-            &.white { background-color: #dadada; color: #333; }
-            &.black { background-color: #000; }
+            background-color: darken(@bPrimary, 5%); color: @white; 
+            &.blue { background-color: darken(@bPrimary, 5%); }
+            &.red { background-color: darken(@bSecondary, 5%); }
+            &.white { background-color: darken(@bWhite, 5%); color: #333; }
+            &.black { background-color: darken(@bBlack, 5%); }
             &.green { background-color: #699c40; }  
         }
 
@@ -150,11 +150,11 @@
     Alerts
     -------------------------------------------------- */
 
-    div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; .round(3); text-shadow: 0 1px rgba(255,255,255,0.9); position: relative; }
+    div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: @grayLighter; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; .round(3); .txt-shadow(0 1px rgba(255,255,255,0.9)); position: relative; }
     .alert-box {
-        &.success { background-color: #7fae00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
-        &.warning { background-color: #f68b01; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
-        &.error { background-color: #c00000; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
+        &.success { background-color: #7fae00; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
+        &.warning { background-color: #f68b01; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
+        &.error { background-color: #c00000; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
         
         a.close { 
             color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; 
@@ -167,16 +167,16 @@
     -------------------------------------------------- */
 
     .label { 
-        padding: 0 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; 
+        padding: 0 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: @white; background: @bPrimary; 
         &.radius { .round(2); }
         &.round { padding: 1px 7px 2px; .round(8); }
         
         /* Colors ---------- */
-        &.blue { background-color: #00a6fc; }
-        &.red { background-color: #e91c21; }
+        &.blue { background-color: @bPrimary; }
+        &.red { background-color: @bSecondary; }
         &.green { background-color: #7fae00; }
-        &.white { background-color: #e9e9e9; color: #333; }
-        &.black { background-color: #141414; }
+        &.white { background-color: @bWhite; color: #333; }
+        &.black { background-color: @bBlack; }
     }
     
 
@@ -191,15 +191,15 @@
         }
         dd { 
             display: block; width: auto; height: 30px; padding: 0; float: left; 
-            a { display: block; width: auto; height: 29px; padding: 0 9px; line-height: 30px; border: solid 1px #ddd; margin: 0 -1px 0 0; color: #555; background: #eee; }
-            a.active { background: #fff; border-width: 1px 1px 0 1px; height: 30px; }
+            a { display: block; width: auto; height: 29px; padding: 0 9px; line-height: 30px; border: solid 1px #ddd; margin: 0 -1px 0 0; color: #555; background: @grayLighter; }
+            a.active { background: @white; border-width: 1px 1px 0 1px; height: 30px; }
         }
     }
 
     .nice.tabs { 
-        border-bottom: solid 1px #eee; margin: 0 0 30px 0; height:43px; 
+        border-bottom: solid 1px @grayLighter; margin: 0 0 30px 0; height:43px; 
         dd a { padding: 7px 18px 9px; font-size: 15px; font-size: 1.5rem; color: #555555; background: none; border: none; }
-        dd a.active { font-weight: bold; color: #333; background: #fff; border-left: 1px solid #eee; border-right: 1px solid #eee; border-top: 3px solid #00a6fc; margin: 0 10px; position: relative; top: -5px; }
+        dd a.active { font-weight: bold; color: #333; background: @white; border-left: 1px solid @grayLighter; border-right: 1px solid @grayLighter; border-top: 3px solid @bPrimary; margin: 0 10px; position: relative; top: -5px; }
         dd:first-child a.active { margin-left: 0; }
     }
         
@@ -208,14 +208,14 @@
         dt, dd, { float: none; height: auto; }
     }
     dl.tabs.vertical {
-        dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 1px 0; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
-        dd a.active { height: auto; margin: 0; border-width: 1px 0 0; background: #fff; }
+        dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 1px 0; margin: 0; color: #555; background: @grayLighter; font-size: 15px; font-size: 1.5rem; }
+        dd a.active { height: auto; margin: 0; border-width: 1px 0 0; background: @white; }
     }
     
     .nice.tabs.vertical { 
-        border-bottom: solid 1px #eee; height: auto; 
-        dd a { padding: 15px 20px; border: none; border-left: 1px solid #eee; border-right: 1px solid #eee; border-top: 1px solid #eee; background: #fff; }
-        dd a.active { border: none; background: #00a6fc; color: #fff; margin: 0; position: static; top: 0; height: auto; }
+        border-bottom: solid 1px @grayLighter; height: auto; 
+        dd a { padding: 15px 20px; border: none; border-left: 1px solid @grayLighter; border-right: 1px solid @grayLighter; border-top: 1px solid @grayLighter; background: @white; }
+        dd a.active { border: none; background: @bPrimary; color: @white; margin: 0; position: static; top: 0; height: auto; }
         dd:first-child a.active { margin: 0; }
     }
     
@@ -231,7 +231,7 @@
     ul.contained.tabs-content { padding: 0; }
     ul.contained.tabs-content>li { padding: 20px; border: solid 0 #ddd; border-width: 0 1px 1px 1px; }
     ul.contained.vertical.tabs-content>li { border-width: 1px 1px 1px 1px; }
-    ul.nice.contained.tabs-content>li { border-color: #eee; }
+    ul.nice.contained.tabs-content>li { border-color: @grayLighter; }
     
 /*  --------------------------------------------------
     Pagination
@@ -240,7 +240,7 @@
         display: block; height: 24px; margin-left: -5px; 
         li { float: left; display: block; height: 24px; color: #999; font-size: 15px; margin-left: 5px; }
         li a { display: block; padding: 6px 7px 4px; color: #555; }
-        li.current a, li:hover a, li a:focus { border-bottom: solid 2px #00a6fc; color: #141414; }
+        li.current a, li:hover a, li a:focus { border-bottom: solid 2px @bPrimary; color: @bBlack; }
         li.unavailable a { cursor: default; color: #999; }
         li.unavailable:hover a, li.unavailable a:focus { border-bottom: none; }
     }
@@ -281,9 +281,7 @@
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
         background: -o-linear-gradient(top, #ffffff 0%,#f4f4f4 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#F4F4F4',GradientType=0 );
-        box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+        .box-shadow(0 2px 5px rgba(0,0,0,0.15));
         margin: 0 0 20px 0;
     }
 
@@ -292,7 +290,7 @@
     -------------------------------------------------- */
     
     .nav-bar { 
-        height: 45px; background: #fff; margin-top: 20px; border: 1px solid #ddd; 
+        height: 45px; background: @white; margin-top: 20px; border: 1px solid #ddd; 
         >li { 
             float: left; display: block; position: relative; padding: 0; margin: 0; border-right: 1px solid #ddd; line-height: 45px; 
             >a.main { position: relative; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
@@ -303,12 +301,12 @@
             &.has-flyout {
                 >a.main { padding-right: 36px; }
                 >a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
-                >a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
+                >a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid @linkcol; display: block; }
             }
         }
     }  
     .flyout { 
-        background: #fff; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 40; 
+        background: @white; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 40; 
         &.small { width: 200px; }
         &.large { width: 600px; }
         &.right { left: auto; right: 0; }
@@ -316,7 +314,7 @@
     }
     .nav-bar>li .flyout { display: none; }
     
-    .js.touch .nav-bar>li.has-flyout>a.flyout-toggle {border-left: 1px dashed #eee}
+    .js.touch .nav-bar>li.has-flyout>a.flyout-toggle {border-left: 1px dashed @grayLighter}
     .js.touch .nav-bar>li.has-flyout>a.main {padding-right:75px;}
 
 /*  --------------------------------------------------
@@ -329,7 +327,7 @@
         dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 4px; }
         dt { color: #999; font-weight: normal; }
         dd a { text-decoration: none; .round(12); }
-        dd.active a { background: #00A6FC; color: #fff; padding: 3px 9px; }
+        dd.active a { background: @bPrimary; color: @white; padding: 3px 9px; }
     }
 
 /*  --------------------------------------------------
@@ -386,7 +384,7 @@
         font-weight: bold;
         color: #333;
         &:hover {
-            border-bottom: dotted 1px #0593dc;
+            border-bottom: dotted 1px darken(@bPrimary, 10%);
             color: #0192dd;
         }
     }
@@ -395,7 +393,7 @@
         background: rgb(0,0,0);
         background: rgba(0,0,0,0.8);
         position: absolute;
-        color: #fff;
+        color: @white;
         font-weight: bold;
         font-size: 12px;
         font-size: 1.2rem;
@@ -446,7 +444,7 @@
     }
     .has-tip.opened {
         color: #0192DD !important;
-        border-bottom: dotted 1px #0593DC !important;
+        border-bottom: dotted 1px darken(@bPrimary, 10%) !important;
     }
     .tap-to-close {
         display: block;

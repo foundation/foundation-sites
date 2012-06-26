@@ -71,7 +71,7 @@
     sub {vertical-align: sub;}
     sup {vertical-align: super;}
     
-    body { background: #fff; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; font-size: 1.3rem; line-height: 18px; color: #555; position: relative; -webkit-font-smoothing: antialiased; }
+    body { background: @white; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; font-size: 1.3rem; line-height: 18px; color: @gray; position: relative; -webkit-font-smoothing: antialiased; }
     
 
 
@@ -79,9 +79,9 @@
     :: Links
     -------------------------------------------------- */
     a { 
-        color: #2a85e8; text-decoration: none; line-height: inherit; 
-        &:hover { color: #11639d; }
-        &:focus { color: #cc4714; outline: none; }
+        color: @linkcol; text-decoration: none; line-height: inherit; 
+        &:hover { color: @linkcolhover; }
+        &:focus { color: @linkcolfocus; outline: none; }
     }
     p a, p a:visited { line-height: inherit; }
     
@@ -104,23 +104,23 @@
     :: Tables
     -------------------------------------------------- */
     table { 
-        background: #fff; .round(3); margin: 0 0 18px; border: 1px solid #ddd; 
+        background: @white; .round(3); margin: 0 0 18px; border: 1px solid #ddd; 
     
-        thead, tfoot { background: #f5f5f5; }
+        thead, tfoot { background-color: darken(@tablecol, 5%); }
         thead tr th,
         tfoot tr th,
         tbody tr td,
         tr td,
         tfoot tr td { font-size: 12px; line-height: 18px; text-align: left; }
         thead tr th,
-        tfoot tr td { padding: 8px 10px 9px; font-size: 14px; font-weight: bold; color: #222; }
+        tfoot tr td { padding: 8px 10px 9px; font-size: 14px; font-weight: bold; color: lighten(@black, 15%); }
         thead tr th:first-child, tfoot tr td:first-child { border-left: none; }
         thead tr th:last-child, tfoot tr td:last-child { border-right: none; }
 
         tbody tr.even,
-        tbody tr.alt { background: #f9f9f9; }
-        tbody tr:nth-child(even) { background: #f9f9f9; }
-        tbody tr td { color: #333; padding: 9px 10px; vertical-align: top; border: none; }
+        tbody tr.alt { background-color: @tablecol; }
+        tbody tr:nth-child(even) { background-color: @tablecol; }
+        tbody tr td { color: lighten(@black, 15%); padding: 9px 10px; vertical-align: top; border: none; }
     }
 
 /* -------------------------------------------------- 
@@ -132,7 +132,7 @@
     .text-right  { text-align: right; }
     .text-center { text-align: center; }
     .hide        { display: none; }
-    .highlight   { background: #ff0; }
+    .highlight   { background: @basecol; }
     
     #googlemap img, object, embed { max-width: none; }
 
