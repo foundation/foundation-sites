@@ -9,7 +9,7 @@
 
     form { 
         margin: 0 0 18px; 
-        label { display: block; font-size: 13px; line-height: 18px; cursor: pointer; margin-bottom: 9px; }
+        label { display: block; .font-size(13); line-height: 18px; cursor: pointer; margin-bottom: 9px; }
     }
 
     input.input-text, textarea { border-right: 1px solid #bbb; border-bottom: 1px solid #bbb; }
@@ -19,9 +19,9 @@
 
     /* Text input and textarea font and padding */
     input.input-text, textarea { 
-        font-size: 13px; padding: 4px 3px 2px; background: @white; 
+        .font-size(13); padding: 4px 3px 2px; background: @white; 
         &:focus { outline: none !important; }
-        &.oversize { font-size: 18px !important; padding: 4px 5px !important; }
+        &.oversize { font-size: 18px !important; font-size:1.8rem !important; padding: 4px 5px !important; }
         &:focus { background: #f9f9f9; }
 
         /* Text input and textarea, disabled */
@@ -55,7 +55,7 @@
     /* Errors */
     .form-field.error input, input.input-text.red { border-color: #C00000; background-color: rgba(255,0,0,0.15); }
     .form-field.error label, label.red { color: #C00000; }
-    .form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 254px; .box-sizing(border-box); }
+    .form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; .font-size(11); color: #C00000; width: 254px; .box-sizing(border-box); }
 
     .small + small.error { width: 134px; }
     .medium + small.error { width: 254px; }
@@ -74,7 +74,7 @@
         
         div.form-field input, input.input-text, textarea { 
             border: solid 1px #bbb; .round(2);
-            font-size: 13px; padding: 6px 3px 4px; outline: none !important; background: url(../images/misc/input-bg.png) @white;
+            .font-size(13); padding: 6px 3px 4px; outline: none !important; background: url(../images/misc/input-bg.png) @white;
             &:focus { background-color: #f9f9f9; }
 
             /* Text input and textarea, disabled */
@@ -88,7 +88,7 @@
 
         }
 
-        div.form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #C00000; color: @white; font-size: 12px; font-weight: bold; .border-radius(0, 0, 2, 2); }
+        div.form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #C00000; color: @white; .font-size(12); font-weight: bold; .border-radius(0, 0, 2, 2); }
 
         div.form-field.error .small + small, .small + small.error { width: 132px; }
         div.form-field.error .medium + small, .medium + small.error { width: 252px; }

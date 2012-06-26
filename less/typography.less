@@ -7,19 +7,19 @@
         color: @headcol; font-weight: bold; line-height: 1.25 
         a { font-weight: inherit; }
     }
-    h1 { font-size: 46px; font-size: 4.6rem; margin-bottom: @baseline / 1.6;}
-    h2 { font-size: 35px; font-size: 3.5rem; margin-bottom: @baseline / 2.2; }
-    h3 { font-size: 28px; font-size: 2.8rem; margin-bottom: @baseline / 2.2; }
-    h4 { font-size: 21px; font-size: 2.1rem; margin-bottom: @baseline / 6.6; }
-    h5 { font-size: 18px; font-size: 1.8rem; font-weight: normal; margin-bottom: @baseline / 6.6;  }
-    h6 { font-size: 15px; font-size: 1.5rem; font-weight: normal; }
+    h1 { .font-size(46); margin-bottom: @baseline / 1.6;}
+    h2 { .font-size(35); margin-bottom: @baseline / 2.2; }
+    h3 { .font-size(28); margin-bottom: @baseline / 2.2; }
+    h4 { .font-size(21); margin-bottom: @baseline / 6.6; }
+    h5 { .font-size(18); font-weight: normal; margin-bottom: @baseline / 6.6;  }
+    h6 { .font-size(15); font-weight: normal; }
 
     .subheader { color: @gray; font-weight: 300; margin-bottom: 24px; }
 
     p { 
-        font-size: 13px; font-size: 1.3rem; line-height: 1.25; margin-bottom: @baseline / 1.1; 
+        .font-size(13); line-height: 1.25; margin-bottom: @baseline / 1.1; 
         img { margin: 0; }
-        &.lead { font-size: 18px; font-size: 1.8rem; line-height: 1.5;  }
+        &.lead { .font-size(18); line-height: 1.5;  }
     }
     
     em, i { font-style: italic; line-height: inherit; }
@@ -35,7 +35,7 @@
     blockquote { 
         margin: 0 0 @baseline/1.1; padding: 9px 20px 0 19px; border-left: 1px solid @grayLight; 
         cite { 
-            display: block; font-size: 12px; font-size: 1.2rem; color: #555; 
+            display: block; .font-size(12); color: #555; 
             &:before { content: "\2014 \0020"; }
             a, a:visited { color: #555; }
         }

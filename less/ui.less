@@ -33,7 +33,7 @@
         color: @white;
         text-decoration: none;
         font-weight: bold;
-        font-size: 13px; font-size: 1.3rem;
+        .font-size(13);
         line-height: 1;
         font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
         position: relative;
@@ -82,10 +82,10 @@
         }
         
         /* Sizes ---------- */
-        &.tiny { font-size: 10px; padding: 6px 14px 8px; width: auto; }
-        &.small { font-size: 11px; padding: 8px 20px 10px; width: auto; }
-        &.medium { font-size: 13px; width: auto; }
-        &.large { font-size: 18px; padding: 11px 48px 13px; width: auto; }
+        &.tiny { .font-size(10); padding: 6px 14px 8px; width: auto; }
+        &.small { .font-size(11); padding: 8px 20px 10px; width: auto; }
+        &.medium { .font-size(13); width: auto; }
+        &.large { .font-size(18); padding: 11px 48px 13px; width: auto; }
 
         /* Nice Sizes ---------- */
         &.nice {
@@ -144,14 +144,14 @@
     Alerts
     -------------------------------------------------- */
 
-    div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: @grayLighter; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; .round(3); .txt-shadow(0 1px rgba(255,255,255,0.9)); position: relative; }
+    div.alert-box { display: block; padding: 6px 7px; font-weight: bold; .font-size(13); background: @grayLighter; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; .round(3); .txt-shadow(0 1px rgba(255,255,255,0.9)); position: relative; }
     .alert-box {
         &.success { background-color: #7fae00; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
         &.warning { background-color: #f68b01; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
         &.error { background-color: #c00000; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
         
         a.close { 
-            color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; .opacity(20); padding: 4px; 
+            color: #000; position: absolute; right: 4px; top: 0; .font-size(18); .opacity(20); padding: 4px; 
             &:hover, &:focus { .opacity(40); }
         }
     }
@@ -161,7 +161,7 @@
     -------------------------------------------------- */
 
     .label { 
-        padding: 0 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: @white; background: @bPrimary; 
+        padding: 0 4px 2px; .font-size(11); font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: @white; background: @bPrimary; 
         &.radius { .round(2); }
         &.round { padding: 1px 7px 2px; .round(8); }
         
@@ -180,7 +180,7 @@
     dl.tabs { 
         display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; 
         dt { 
-            display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; font-size: 11px; text-transform: uppercase; cursor: default; 
+            display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; .font-size(11); text-transform: uppercase; cursor: default; 
             &:first-child { padding: 0 9px 0 0; }
         }
         dd { 
@@ -192,7 +192,7 @@
 
     .nice.tabs { 
         border-bottom: solid 1px @grayLighter; margin: 0 0 30px 0; height:43px; 
-        dd a { padding: 7px 18px 9px; font-size: 15px; font-size: 1.5rem; color: #555555; background: none; border: none; }
+        dd a { padding: 7px 18px 9px; .font-size(15); color: #555555; background: none; border: none; }
         dd a.active { font-weight: bold; color: #333; background: @white; border-left: 1px solid @grayLighter; border-right: 1px solid @grayLighter; border-top: 3px solid @bPrimary; margin: 0 10px; position: relative; top: -5px; }
         dd:first-child a.active { margin-left: 0; }
     }
@@ -202,7 +202,7 @@
         dt, dd, { float: none; height: auto; }
     }
     dl.tabs.vertical {
-        dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 1px 0; margin: 0; color: #555; background: @grayLighter; font-size: 15px; font-size: 1.5rem; }
+        dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 1px 0; margin: 0; color: #555; background: @grayLighter; .font-size(15); }
         dd a.active { height: auto; margin: 0; border-width: 1px 0 0; background: @white; }
     }
     
@@ -232,7 +232,7 @@
     -------------------------------------------------- */
     ul.pagination { 
         display: block; height: 24px; margin-left: -5px; 
-        li { float: left; display: block; height: 24px; color: #999; font-size: 15px; margin-left: 5px; }
+        li { float: left; display: block; height: 24px; color: #999; .font-size(15); margin-left: 5px; }
         li a { display: block; padding: 6px 7px 4px; color: #555; }
         li.current a, li:hover a, li a:focus { border-bottom: solid 2px @bPrimary; color: @bBlack; }
         li.unavailable a { cursor: default; color: #999; }
@@ -245,7 +245,7 @@
     ul.breadcrumbs { 
         display: block; background: #f4f4f4; padding: 7px 10px; border: 1px solid #ddd; .round(2); overflow: hidden; 
         li { margin: 0; padding: 0 12px 0 0; float: left; }
-        li a, ul.breadcrumbs li span { text-transform: uppercase; font-size: 11px; padding-left: 12px; }
+        li a, ul.breadcrumbs li span { text-transform: uppercase; .font-size(11); padding-left: 12px; }
         li:first-child a, ul.breadcrumbs li:first-child span { padding-left: 0; }
         li:before { content: "/"; color: #aaa; }
         li:first-child:before { content: " "; }
@@ -287,7 +287,7 @@
         height: 45px; background: @white; margin-top: 20px; border: 1px solid #ddd; 
         >li { 
             float: left; display: block; position: relative; padding: 0; margin: 0; border-right: 1px solid #ddd; line-height: 45px; 
-            >a.main { position: relative; padding: 0 20px; display: block; text-decoration: none; font-size: 15px; font-size: 1.5rem; }
+            >a.main { position: relative; padding: 0 20px; display: block; text-decoration: none; .font-size(15); }
             >input { margin: 0 16px; }
             >input.input-text { display: inline-block; }
             ul { margin-bottom: 0; }
@@ -361,7 +361,7 @@
     ul.vcard { 
         display: inline-block; margin: 0 0 12px 0; border: 1px solid #ddd; padding: 10px; 
         li { margin: 0; display: block; }
-        li.fn { font-weight: bold; font-size: 15px; font-size: 1.5rem; }
+        li.fn { font-weight: bold; .font-size(15); }
     }
     
     p.vevent span.summary { font-weight: bold; }
@@ -389,8 +389,7 @@
         position: absolute;
         color: @white;
         font-weight: bold;
-        font-size: 12px;
-        font-size: 1.2rem;
+        .font-size(12);
         padding: 5px;
         z-index: 999;
         .round(4);
@@ -442,8 +441,7 @@
     }
     .tap-to-close {
         display: block;
-        font-size: 10px;
-        font-size: 1.0rem;
+        .font-size(10);
         color: #888;
         font-weight: normal;
     }

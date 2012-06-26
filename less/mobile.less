@@ -3,13 +3,13 @@
     -------------------------------------------------- */
     
     @media handheld, only screen and (max-width: 767px) {
-        h1 { font-size: 32px; font-size: 3.2rem; line-height: 1.3; }
-        h2 { font-size: 28px; font-size: 2.8rem; line-height: 1.3; }
-        h3 { font-size: 21px; font-size: 2.1rem; line-height: 1.3; }
-        h4 { font-size: 18px; font-size: 1.8rem; line-height: 1.2; }
-        h5 { font-size: 16px; font-size: 1.6rem; line-height: 1.2; }
-        h6 { font-size: 15px; font-size: 1.5rem; line-height: 1.2; }
-        body, p {  font-size: 15px; font-size: 1.5rem; line-height: 1.4; }
+        h1 { .font-size(32); line-height: 1.3; }
+        h2 { .font-size(28); line-height: 1.3; }
+        h3 { .font-size(21); line-height: 1.3; }
+        h4 { .font-size(18); line-height: 1.2; }
+        h5 { .font-size(16); line-height: 1.2; }
+        h6 { .font-size(15); line-height: 1.2; }
+        body, p {  .font-size(15); line-height: 1.4; }
     }
 
 
@@ -146,7 +146,7 @@
 
     @media only screen and (max-width: 767px) {
         div.form-field input, div.form-field input.small, div.form-field input.medium, div.form-field input.large, div.form-field input.oversize, input.input-text, input.input-text.oversize, textarea,
-        form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { display: block; width: 100%; padding: 6px 2% 4px; font-size: 18px; }
+        form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { display: block; width: 100%; padding: 6px 2% 4px; .font-size(18px); }
         form.nice div.form-field input, form.nice div.form-field input.oversize, form.nice input.input-text, form.nice input.input-text.oversize, form.nice textarea { .round(2); }
         form.nice div.form-field.error small, form.nice small.error { padding: 6px 2%; display: block; }
         form.nice div.form-field.error .small + small, form.nice .small + .error { width: auto; }
@@ -172,7 +172,7 @@
         dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
         dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
 
-        dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
+        dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; .font-size(15); }
         dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
     
         .nice.tabs.mobile { border-bottom: solid 1px #ccc; height: auto; }
@@ -191,7 +191,7 @@
 
     /* Modernizr-enabled tablet targeting */
     @media only screen and (max-width: 1280px) and (min-width: 768px) {
-        .touch .nav-bar li a { font-size: 13px; font-size: 1.3rem; }
+        .touch .nav-bar li a { .font-size(13); }
         .touch .nav-bar li.has-flyout>a.flyout-toggle { padding: 20px; }
     }
 
@@ -214,8 +214,7 @@
     /* Tooltips */
     @media only screen and (max-width: 767px) {
       .tooltip {
-        font-size: 14px;
-        font-size: 1.4rem;
+        .font-size(14);
         line-height: 1.4;
         padding: 7px 10px 9px 10px;
       }

@@ -71,7 +71,7 @@
     sub {vertical-align: sub;}
     sup {vertical-align: super;}
     
-    body { background: @white; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; font-size: 1.3rem; line-height: 18px; color: @gray; position: relative; -webkit-font-smoothing: antialiased; }
+    body { background: @white; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; .font-size(13); line-height: 18px; color: @gray; position: relative; -webkit-font-smoothing: antialiased; }
     
 
 
@@ -111,9 +111,9 @@
         tfoot tr th,
         tbody tr td,
         tr td,
-        tfoot tr td { font-size: 12px; line-height: 18px; text-align: left; }
+        tfoot tr td { .font-size(12); line-height: 18px; text-align: left; }
         thead tr th,
-        tfoot tr td { padding: 8px 10px 9px; font-size: 14px; font-weight: bold; color: lighten(@black, 15%); }
+        tfoot tr td { padding: 8px 10px 9px; .font-size(14); font-weight: bold; color: lighten(@black, 15%); }
         thead tr th:first-child, tfoot tr td:first-child { border-left: none; }
         thead tr th:last-child, tfoot tr td:last-child { border-right: none; }
 
