@@ -1,0 +1,108 @@
+/* -------------------------------------------------- 
+    Configuration File
+
+    Check for colour deficiencies http://www.vischeck.com/vischeck/vischeckURL.php
+----------------------------------------------------- */
+
+                // Base colour
+@basecol:       #4088BF;
+
+                // Complementary colour
+@compcol:       spin(@basecol, 180);
+
+/* -------------------------------------------------- 
+    ::Header
+----------------------------------------------------- */
+
+                // Header colour
+@headcol:       @basecol;       
+
+                // Header size
+@headsize:      70;
+
+                // Header font
+@headfont:      "Helvetica Neue", "Helvetica", Arial, sans-serif;
+
+/* -------------------------------------------------- 
+    ::Links
+----------------------------------------------------- */
+
+@linkcol:        rgb(1,53,104);     
+@linkcolhover:   darken(@linkcol, 10);
+@linkcolvisited: @linkcolhover;
+@linkcolfocus:   @linkcolhover;
+
+/* -------------------------------------------------- 
+    ::Forms
+----------------------------------------------------- */
+
+@errorcol:       #F1D43C;
+@errortext:      #333333;
+@labelhover:     #FFFFDD;
+
+/* -------------------------------------------------- 
+    ::Grey Scale
+----------------------------------------------------- */
+
+@black:          rgb(0,0,0);
+@grayDark:       lighten(@black, 25%);
+@gray:           lighten(@black, 50%);
+@grayLight:      lighten(@black, 75%);
+@grayLighter:    lighten(@black, 90%);
+@white:          rgb(255,255,255);
+
+/* -------------------------------------------------- 
+    ::Colour palettes
+----------------------------------------------------- */
+
+@col_l1:         lighten(@basecol, 5%);     // Lighten base
+@col_l2:         lighten(@basecol, 10%);
+@col_l3:         lighten(@basecol, 15%);
+@col_l4:         lighten(@basecol, 20%);
+
+@col_d1:         darken(@basecol, 5%);      // Darken base
+@col_d2:         darken(@basecol, 10%);
+@col_d3:         darken(@basecol, 15%);
+@col_d4:         darken(@basecol, 20%);
+
+@comp_l1:        lighten(@compcol, 5%);     // Lighten complementary
+@comp_l2:        lighten(@compcol, 10%);
+@comp_l3:        lighten(@compcol, 15%);
+@comp_l4:        lighten(@compcol, 20%);
+
+@comp_d1:        darken(@compcol, 5%);      // Darken complementary
+@comp_d2:        darken(@compcol, 10%);
+@comp_d3:        darken(@compcol, 15%);
+@comp_d4:        darken(@compcol, 20%);
+
+/* -------------------------------------------------- 
+    ::Buttons Colors
+----------------------------------------------------- */
+
+@bPrimary:       @comp_l4;      // Change to a suitable primary button colour as needed.
+@bSecondary:     @col_l4;       // Change to a suitable secondary button colour as needed.
+@bWhite:         @grayLighter;
+@bBlack:         @grayDark;
+
+/* -------------------------------------------------- 
+    ::Table Colours
+----------------------------------------------------- */
+
+@tablecol:       lighten(@basecol, 45%);        // Change to a visible colour if it is not displaying
+
+/* -------------------------------------------------- 
+    ::Accent Colors
+----------------------------------------------------- */
+
+@blue:           #08b5fb;
+@green:          #46a546;
+@red:            #9d261d;
+@yellow:         #ffc40d;
+@orange:         #f89406;
+@pink:           #c3325f;
+@purple:         #7a43b6;
+
+/* -------------------------------------------------- 
+    ::Baseline grid
+----------------------------------------------------- */
+@baseline:          20px;

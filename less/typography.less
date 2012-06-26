@@ -1,0 +1,71 @@
+/* Artfully Masterminded by ZURB */
+
+/*  --------------------------------------------------
+    :: Typography
+    -------------------------------------------------- */
+    h1, h2, h3, h4, h5, h6 { 
+        color: @headcol; font-weight: bold; line-height: 1.25; 
+        a { font-weight: inherit; }
+    }
+    h1 { .font-size(46); margin-bottom: @baseline / 1.6;}
+    h2 { .font-size(35); margin-bottom: @baseline / 2.2; }
+    h3 { .font-size(28); margin-bottom: @baseline / 2.2; }
+    h4 { .font-size(21); margin-bottom: @baseline / 6.6; }
+    h5 { .font-size(18); font-weight: normal; margin-bottom: @baseline / 6.6;  }
+    h6 { .font-size(15); font-weight: normal; }
+
+    .subheader { color: @gray; font-weight: 300; margin-bottom: 24px; }
+
+    p { 
+        .font-size(13); line-height: 1.25; margin-bottom: @baseline / 1.1; 
+        img { margin: 0; }
+        &.lead { .font-size(18); line-height: 1.5;  }
+    }
+    
+    em, i { font-style: italic; line-height: inherit; }
+    strong, b { font-weight: bold; line-height: inherit; }
+    small { font-size: 60%; line-height: inherit; }
+    
+    h1, h2, h3, h4, h5 {
+        small { color: @gray; }
+    }
+    
+    /*  Blockquotes  */
+    blockquote, blockquote p { line-height: @baseline; color: @gray; }
+    blockquote { 
+        margin: 0 0 @baseline/1.1; padding: 9px 20px 0 19px; border-left: 1px solid @grayLight; 
+        cite { 
+            display: block; .font-size(12); color: #555; 
+            &:before { content: "\2014 \0020"; }
+            a, a:visited { color: #555; }
+        }
+    }
+    
+    hr { border: solid @grayLight; border-width: 1px 0 0; clear: both; margin: 12px 0 18px; height: 0; }
+    
+    abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222; border-bottom: 1px solid @grayLight; cursor: help; }
+    abbr { text-transform: none; }
+
+    /**
+     * Print styles.
+     *
+     * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+     * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+     */
+    .print-only { display: none !important; }
+    @media print {
+        * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
+        -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
+        p a, p a:visited { color: #444 !important; text-decoration: underline; }
+        p a[href]:after { content: " (" attr(href) ")"; }
+        abbr[title]:after { content: " (" attr(title) ")"; }
+        .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+        pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+        thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+        tr, img { page-break-inside: avoid; }
+        @page { margin: 0.5cm; }
+        p, h2, h3 { orphans: 3; widows: 3; }
+        h2, h3{ page-break-after: avoid; }
+        .hide-on-print { display: none !important; }
+        .print-only { display: block !important; }
+    }

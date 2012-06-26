@@ -1,0 +1,448 @@
+/* Artfully masterminded by ZURB  */
+
+
+
+/* --------------------------------------------------
+   Table of Contents
+-----------------------------------------------------
+:: Buttons
+:: Alerts
+:: Labels
+:: Tabs
+:: Pagination
+:: Breadcrumbs
+:: Lists
+:: Panels
+:: Nav
+:: Video
+:: Microformats
+*/
+
+
+
+
+/*  --------------------------------------------------
+    Buttons
+    -------------------------------------------------- */
+
+    .button {
+        background: @bPrimary;
+        display: inline-block;
+        text-align: center;
+        padding: 9px 34px 11px;
+        color: @white;
+        text-decoration: none;
+        font-weight: bold;
+        .font-size(13);
+        line-height: 1;
+        font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+        position: relative;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        margin: 0;
+    }
+    
+    /* Don't use native buttons on iOS */
+    input[type=submit].button, button.button { -webkit-appearance: none; }
+    
+    /* Hide inner focus effect in Firefox */
+    button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner {
+        border: none;
+    }
+    
+    .button {
+        &.nice { 
+            background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px;
+            .box-shadow(inset 0 1px 0 rgba(255,255,255,.5));
+            .txt-shadow(0 -1px 1px rgba(0,0,0,0.28));
+            background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
+            background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
+            border: 1px solid darken(@bPrimary, 10%);
+            .transition(background-color .15s ease-in-out);
+        }
+
+        &.radius {
+            .round(3);
+        }
+        &.button.round {
+            .round(1000);
+        }
+
+        &.full-width {
+            width: 100%;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            text-align: center;
+        }
+
+        &.left-align {
+            text-align: left;
+            text-indent: 12px;
+        }
+        
+        /* Sizes ---------- */
+        &.tiny { .font-size(10); padding: 6px 14px 8px; width: auto; }
+        &.small { .font-size(11); padding: 8px 20px 10px; width: auto; }
+        &.medium { .font-size(13); width: auto; }
+        &.large { .font-size(18); padding: 11px 48px 13px; width: auto; }
+
+        /* Nice Sizes ---------- */
+        &.nice {
+            &.tiny { background-position: 0 -37px; }
+            &.small { background-position: 0 -34px; }
+            &.large { background-position: 0 -30px; }
+        }
+
+        /* Colors ---------- */
+        &.blue { background-color: @bPrimary; }
+        &.red { background-color: @bSecondary; }
+        &.white { background-color: @bWhite; color: #333; }
+        &.black { background-color: @bBlack; }
+        &.green { background-color: #5b8737; }
+        
+        /* Nice Colors ---------- */
+        &.nice {
+            &.blue { border: 1px solid darken(@bPrimary, 10%); }
+            &.red { border: 1px solid darken(@bSecondary, 10%); }
+            &.white { border: 1px solid darken(@bWhite, 10%); text-shadow: none !important; }
+            &.black { border: 1px solid darken(@bBlack, 10%); }
+            &.green { border: 1px solid #4a6b2d; }
+        }
+        
+        /* Hovers ---------- */
+        &:hover, &:focus { 
+            background-color: darken(@bPrimary, 5%); color: @white; 
+            &.blue { background-color: darken(@bPrimary, 5%); }
+            &.red { background-color: darken(@bSecondary, 5%); }
+            &.white { background-color: darken(@bWhite, 5%); color: #333; }
+            &.black { background-color: darken(@bBlack, 5%); }
+            &.green { background-color: #699c40; }  
+        }
+
+        /* Hovers ---------- */
+        &.nice:active     { 
+            .box-shadow(inset 0 1px 0 rgba(0,0,0,.15));
+        }
+
+        /* Disabled ---------- */
+        &.disabled, &[disabled] { .opacity(60); cursor: default; }
+    }
+
+    /* Correct FF button padding */
+    @-moz-document url-prefix("http://") {
+        input[type=submit].button::-moz-focus-inner, button.button::-moz-focus-inner { border: 0; padding: 0; }
+        input[type=submit].tiny.button      { padding: 5px 14px 7px; }
+        input[type=submit].small.button     { padding: 7px 20px 8px; }
+        input[type=submit].medium.button    { padding: 8px 34px 9px; }
+        input[type=submit].large.button     { padding: 9px 48px 10px; }
+    }
+
+
+
+/*  --------------------------------------------------
+    Alerts
+    -------------------------------------------------- */
+
+    div.alert-box { display: block; padding: 6px 7px; font-weight: bold; .font-size(13); background: @grayLighter; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; .round(3); .txt-shadow(0 1px rgba(255,255,255,0.9)); position: relative; }
+    .alert-box {
+        &.success { background-color: #7fae00; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
+        &.warning { background-color: #f68b01; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
+        &.error { background-color: #c00000; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
+        
+        a.close { 
+            color: #000; position: absolute; right: 4px; top: 0; .font-size(18); .opacity(20); padding: 4px; 
+            &:hover, &:focus { .opacity(40); }
+        }
+    }
+
+/*    --------------------------------------------------
+    Labels
+    -------------------------------------------------- */
+
+    .label { 
+        padding: 0 4px 2px; .font-size(11); font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: @white; background: @bPrimary; 
+        &.radius { .round(2); }
+        &.label.round { padding: 1px 7px 2px; .round(8); }
+        
+        /* Colors ---------- */
+        &.blue { background-color: @bPrimary; }
+        &.red { background-color: @bSecondary; }
+        &.green { background-color: #7fae00; }
+        &.white { background-color: @bWhite; color: #333; }
+        &.black { background-color: @bBlack; }
+    }
+    
+
+/*    --------------------------------------------------
+    Tabs
+    -------------------------------------------------- */
+    dl.tabs { 
+        display: block; margin: 0 0 20px 0; padding: 0; height: 30px; border-bottom: solid 1px #ddd; 
+        dt { 
+            display: block; width: auto; height: 30px; padding: 0 9px 0 20px; line-height: 30px; float: left; color: #999; .font-size(11); text-transform: uppercase; cursor: default; 
+            &:first-child { padding: 0 9px 0 0; }
+        }
+        dd { 
+            display: block; width: auto; height: 30px; padding: 0; float: left; 
+            a { display: block; width: auto; height: 29px; padding: 0 9px; line-height: 30px; border: solid 1px #ddd; margin: 0 -1px 0 0; color: #555; background: @grayLighter; }
+            a.active { background: @white; border-width: 1px 1px 0 1px; height: 30px; }
+        }
+    }
+
+    .nice.tabs { 
+        border-bottom: solid 1px @grayLighter; margin: 0 0 30px 0; height:43px; 
+        dd a { padding: 7px 18px 9px; .font-size(15); color: #555555; background: none; border: none; }
+        dd a.active { font-weight: bold; color: #333; background: @white; border-left: 1px solid @grayLighter; border-right: 1px solid @grayLighter; border-top: 3px solid @bPrimary; margin: 0 10px; position: relative; top: -5px; }
+        dd:first-child a.active { margin-left: 0; }
+    }
+        
+    dl.tabs.vertical, dl.nice.tabs.vertical { 
+        height: auto; 
+        dt, dd, { float: none; height: auto; }
+    }
+    dl.tabs.vertical {
+        dd a { display: block; width: auto; height: auto; padding: 15px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 1px 0; margin: 0; color: #555; background: @grayLighter; .font-size(15); }
+        dd a.active { height: auto; margin: 0; border-width: 1px 0 0; background: @white; }
+    }
+    
+    .nice.tabs.vertical { 
+        border-bottom: solid 1px @grayLighter; height: auto; 
+        dd a { padding: 15px 20px; border: none; border-left: 1px solid @grayLighter; border-right: 1px solid @grayLighter; border-top: 1px solid @grayLighter; background: @white; }
+        dd a.active { border: none; background: @bPrimary; color: @white; margin: 0; position: static; top: 0; height: auto; }
+        dd:first-child a.active { margin: 0; }
+    }
+    
+    ul.tabs-content { margin: 0; display: block; }
+    ul.tabs-content>li { display: none; }
+    .no-js ul.tabs-content>li { display: block; }
+    ul.tabs-content>li.active { display: block; }
+    
+    dl.contained, dl.nice.contained { margin-bottom: 0; }
+    dl.contained.tabs dd a { padding: 0 14px; }
+    dl.nice.contained.tabs dd a { padding: 7px 18px 9px; }
+
+    ul.contained.tabs-content { padding: 0; }
+    ul.contained.tabs-content>li { padding: 20px; border: solid 0 #ddd; border-width: 0 1px 1px 1px; }
+    ul.contained.vertical.tabs-content>li { border-width: 1px 1px 1px 1px; }
+    ul.nice.contained.tabs-content>li { border-color: @grayLighter; }
+    
+/*  --------------------------------------------------
+    Pagination
+    -------------------------------------------------- */
+    ul.pagination { 
+        display: block; height: 24px; margin-left: -5px; 
+        li { float: left; display: block; height: 24px; color: #999; .font-size(15); margin-left: 5px; }
+        li a { display: block; padding: 6px 7px 4px; color: #555; }
+        li.current a, li:hover a, li a:focus { border-bottom: solid 2px @bPrimary; color: @bBlack; }
+        li.unavailable a { cursor: default; color: #999; }
+        li.unavailable:hover a, li.unavailable a:focus { border-bottom: none; }
+    }
+    
+/*  --------------------------------------------------
+    Breadcrumbs
+    -------------------------------------------------- */    
+    ul.breadcrumbs { 
+        display: block; background: #f4f4f4; padding: 7px 10px; border: 1px solid #ddd; .round(2); overflow: hidden; 
+        li { margin: 0; padding: 0 12px 0 0; float: left; }
+        li a, ul.breadcrumbs li span { text-transform: uppercase; .font-size(11); padding-left: 12px; }
+        li:first-child a, ul.breadcrumbs li:first-child span { padding-left: 0; }
+        li:before { content: "/"; color: #aaa; }
+        li:first-child:before { content: " "; }
+        li.current a { cursor: default; color: #333; }
+        li:hover a, ul.breadcrumbs li a:focus { text-decoration: underline; }
+        li.current:hover a, ul.breadcrumbs li.current a:focus { text-decoration: none; }
+        li.unavailable a { color: #999; }
+        li.unavailable:hover a, li.unavailable a:focus { text-decoration: none; color: #999; cursor: default; }
+    }
+    
+/*  --------------------------------------------------
+    Lists
+    -------------------------------------------------- */
+    ul.nice, ol.nice { 
+        list-style: none; margin: 0; 
+        li { padding-left: 13px; position: relative }
+    }
+    ul.nice li span.bullet, ol.nice li span.number { position: absolute; left: 0; top: 0; color: #ccc; }
+
+/*  --------------------------------------------------
+    Panels
+    -------------------------------------------------- */
+    div.panel {
+        padding: 20px 20px 2px 20px;
+        background: #efefef;
+        background: -moz-linear-gradient(top, #FFFFFF 0%, #F4F4F4 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#F4F4F4));
+        background: -o-linear-gradient(top, #ffffff 0%,#f4f4f4 100%);
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#%s',GradientType=%s )", #F4F4F4, 0));
+        .box-shadow(0 2px 5px rgba(0,0,0,0.15));
+        margin: 0 0 20px 0;
+    }
+
+/*  --------------------------------------------------
+    Nav Bar with Dropdowns
+    -------------------------------------------------- */
+    
+    .nav-bar { 
+        height: 45px; background: @white; margin-top: 20px; border: 1px solid #ddd; 
+        >li { 
+            float: left; display: block; position: relative; padding: 0; margin: 0; border-right: 1px solid #ddd; line-height: 45px; 
+            >a.main { position: relative; padding: 0 20px; display: block; text-decoration: none; .font-size(15); }
+            >input { margin: 0 16px; }
+            >input.input-text { display: inline-block; }
+            ul { margin-bottom: 0; }
+            li { line-height: 1.3; }
+            &.has-flyout {
+                >a.main { padding-right: 36px; }
+                >a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
+                >a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid @linkcol; display: block; }
+            }
+        }
+    }  
+    .flyout { 
+        background: @white; margin: 0; padding: 20px; border: 1px solid #ddd; position: absolute; top: 45px; left: -1px; width: 400px; z-index: 40; 
+        &.small { width: 200px; }
+        &.large { width: 600px; }
+        &.right { left: auto; right: 0; }
+        p:last-child { margin-bottom: 0; }
+    }
+    .nav-bar>li .flyout { display: none; }
+    
+    .js.touch .nav-bar>li.has-flyout>a.flyout-toggle {border-left: 1px dashed @grayLighter}
+    .js.touch .nav-bar>li.has-flyout>a.main {padding-right:75px;}
+
+/*  --------------------------------------------------
+    Sub Navs
+    http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na
+    -------------------------------------------------- */
+    
+    dl.sub-nav { 
+        display: block; width: auto; overflow: hidden; margin: -4px 0 18px -9px; padding-top: 4px; 
+        dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 4px; }
+        dt { color: #999; font-weight: normal; }
+        dd a { text-decoration: none; .round(12); }
+        dd.active a { background: @bPrimary; color: @white; padding: 3px 9px; }
+    }
+
+/*  --------------------------------------------------
+    Video
+    Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
+    -------------------------------------------------- */
+    
+    .flex-video {
+        position: relative;
+        padding-top: 25px;
+        padding-bottom: 67.5%;
+        height: 0;
+        margin-bottom: 16px;
+        overflow: hidden;
+        
+        &.widescreen { padding-bottom: 57.25%; }
+        &.vimeo { padding-top: 0; }
+        
+        iframe,
+        object,
+        embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+
+
+/*  --------------------------------------------------
+    Microformats
+    -------------------------------------------------- */
+    
+    /* hCard */
+    ul.vcard { 
+        display: inline-block; margin: 0 0 12px 0; border: 1px solid #ddd; padding: 10px; 
+        li { margin: 0; display: block; }
+        li.fn { font-weight: bold; .font-size(15); }
+    }
+    
+    p.vevent span.summary { font-weight: bold; }
+    p.vevent abbr { cursor: default; text-decoration: none; font-weight: bold; border: none; padding: 0 1px; }
+    
+    
+
+/*  --------------------------------------------------
+    Tooltips
+    -------------------------------------------------- */
+    .has-tip {
+        border-bottom: dotted 1px #ccc;
+        cursor: help;
+        font-weight: bold;
+        color: #333;
+        &:hover {
+            border-bottom: dotted 1px darken(@bPrimary, 10%);
+            color: #0192dd;
+        }
+    }
+    .tooltip {
+        display: none;
+        background: rgb(0,0,0);
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        color: @white;
+        font-weight: bold;
+        .font-size(12);
+        padding: 5px;
+        z-index: 999;
+        .round(4);
+        line-height: normal;
+        > .nub {
+            display: block;
+            width: 0;
+            height: 0;
+            border: solid 5px;
+            border-color: transparent transparent rgb(0,0,0) transparent;
+            border-color: transparent transparent rgba(0,0,0,0.8) transparent;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        &.tip-override > .nub {
+            border-color: transparent transparent rgb(0,0,0) transparent !important;
+            border-color: transparent transparent rgba(0,0,0,0.8) transparent !important;
+            top: -10px !important;
+        }
+        &.tip-top > .nub {
+            border-color: rgb(0,0,0) transparent transparent transparent;
+            border-color: rgba(0,0,0,0.8) transparent transparent transparent;
+            top: auto;
+            bottom: -10px;
+        }
+    }
+    .tooltip.tip-left, .tooltip.tip-right, .has-tip.tip-left, .has-tip.tip-right {
+        float: none !important;
+    }
+    .tooltip.tip-left > .nub {
+        border-color: transparent transparent transparent rgb(0,0,0);
+        border-color: transparent transparent transparent rgba(0,0,0,0.8);
+        right: -10px;
+        left: auto;
+    }
+    .tooltip.tip-right > .nub {
+        border-color: transparent rgb(0,0,0) transparent transparent;
+        border-color: transparent rgba(0,0,0,0.8) transparent transparent;
+        right: auto;
+        left: -10px;
+    }
+    .tooltip.noradius {
+        .round(0);
+    }
+    .has-tip.opened {
+        color: #0192DD !important;
+        border-bottom: dotted 1px darken(@bPrimary, 10%) !important;
+    }
+    .tap-to-close {
+        display: block;
+        .font-size(10);
+        color: #888;
+        font-weight: normal;
+    }
+    

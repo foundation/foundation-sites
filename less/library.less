@@ -1,0 +1,381 @@
+// Helpers
+//--------------------------------------------------
+.taj, .align_justify { text-align:justify; }
+.tac, .align_center { text-align:center; }
+.tal, .align_left { text-align:left; }
+.tar, .align_right { text-align:right; }
+.fl, .float_left { float:left; }
+.fr, .float_right { float:right; }
+.ttu, .uppercase { text-transform:uppercase; }
+.ttl, .lowercase { text-transform:lowercase; }
+.ttc, .capitalize { text-transform:capitalize; }
+
+// Misc
+//--------------------------------------------------
+.true-height(@height) {
+    height: e("@{height}px");
+    line-height: e("@{height}px");
+}
+
+.box-sizing(@type: border-box) {
+    box-sizing: @type;
+    -moz-box-sizing: @type;
+    -ms-box-sizing: @type;
+    -webkit-box-sizing: @type;
+    -khtml-box-sizing: @type;
+}
+
+// Text
+//--------------------------------------------------
+
+.font-size(@font-size: 16) {
+    @rem: (@font-size / 10);
+    font-size: @font-size * 1px;
+    font-size: e("@{rem}rem");
+}
+
+
+.font(@size: @textSize, @color: inherit) {
+    color: @color;
+    font-size: e("@{size}px");
+}
+
+.text-hide {
+    line-height:0px;
+    text-indent:-9999px;
+    overflow:hidden;
+}
+
+.box-image(@link) {
+    background-image: url("@{link}");
+    background-repeat:no-repeat;
+    display:block;
+}
+
+.bold(@weight: bold) {
+    font-weight: @weight;
+}
+
+.underline(@type: underline) {
+    text-decoration: @type;
+}
+
+
+// Positioning
+//--------------------------------------------------
+.pos-tl(@left, @top) {
+    position:absolute;
+    top: e("@{top}px");
+    left: e("@{left}px");
+}
+
+.pos-bl(@left, @bottom) {
+    position:absolute;
+    bottom: e("@{bottom}px");
+    left: e("@{left}px");
+}
+
+.pos-tr(@right, @top) {
+    position:absolute;
+    top: e("@{top}px");
+    right: e("@{right}px");
+}
+
+.pos-br(@right, @bottom) {
+    position:absolute;
+    bottom: e("@{bottom}px");
+    right: e("@{right}px");
+}
+.hide {
+    display:none;
+}
+
+// Backgrounds
+//--------------------------------------------------
+.bg(@link) {
+    background-image:url("@{link}");
+    background-repeat:no-repeat;
+}
+.bg-color(@color) {
+    background-color: @color;
+}
+
+.bg-pos(@x: 0px, @y: 0px) {
+    background-position: @x @y;
+}
+
+.bg-rep(@direction) {
+    background-repeat:e(%("repeat-%d",@direction));
+}
+
+// Mixins
+//--------------------------------------------------
+
+// Strip an element down
+.reset {
+    padding:0px;
+    margin:0px;
+    border:none;
+    line-height:normal;
+    list-style:none;
+}
+
+// Clearfix for clearing floats like a boss
+.clearfix {
+    zoom: 1;
+    &:after {
+        display: block;
+        visibility: hidden;
+        height: 0;
+        clear: both;
+        content: ".";
+    }
+}
+
+// Center-align a block level element
+.pos-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.padding(@top, @right, @bottom, @left)
+{
+    padding: e("@{top}px @{right}px @{bottom}px @{left}px");
+}
+
+.margin(@top, @right, @bottom, @left)
+{
+    margin: e("@{top}px @{right}px @{bottom}px @{left}px");
+}
+
+
+.width(@width:5)
+{
+    width: e("@{width}px");
+}
+
+.height(@height:5)
+{
+    height: e("@{height}px");
+}
+
+.min-height(@height:5)
+{
+    min-height: e("@{height}px");
+}
+
+.max-height(@height:5)
+{
+    max-height: e("@{height}px");
+}
+
+// Sizing shortcuts
+.size(@width: 5, @height: 5) {
+        height: e("@{height}px");
+        width: e("@{width}px");
+}
+.box(@size: 5) {
+        .size(@size, @size);
+}
+
+// Input placeholder text
+.placeholder(@color: gray) {
+    &:-moz-placeholder {
+        color: @color;
+    }
+    &::-webkit-input-placeholder {
+        color: @color;
+    }
+}
+
+// Border Radius
+.stroke(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE, @size: 1) {
+    border-top: solid e("@{size}px" @top-color);
+    border-left: solid e("@{size}px" @left-color);
+    border-right: solid e("@{size}px" @right-color);
+    border-bottom: solid e("@{size}px" @bottom-color);
+}
+.text-shadow(@color: #000, @x-axis: 1, @y-axis: 1, @blur: 1) {
+    text-shadow: e("@{x-axis}px @{y-axis}px @{blur}px @{color}");
+}
+.txt-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+    -webkit-text-shadow: @shadow;
+    -moz-text-shadow: @shadow;
+    text-shadow: @shadow;
+}
+
+.round(@radius: @radiusStandard) {
+    -webkit-border-radius: e("@{radius}px");
+    -moz-border-radius: e("@{radius}px");
+    border-radius: e("@{radius}px");
+}
+.border-radius(@topleft: 0, @topright: 0, @bottomleft: 0, @bottomright: 0) {
+    -webkit-border-top-right-radius: e("@{topright}px");
+    -webkit-border-bottom-right-radius: e("@{bottomright}px");
+    -webkit-border-bottom-left-radius: e("@{bottomleft}px");
+    -webkit-border-top-left-radius: e("@{topleft}px");
+    -moz-border-radius-topright: e("@{topright}px");
+    -moz-border-radius-bottomright: e("@{bottomright}px");
+    -moz-border-radius-bottomleft: e("@{bottomleft}px");
+    -moz-border-radius-topleft: e("@{topleft}px");
+    border-top-right-radius: e("@{topright}px");
+    border-bottom-right-radius: e("@{bottomright}px");
+    border-bottom-left-radius: e("@{bottomleft}px");
+    border-top-left-radius: e("@{topleft}px");
+}
+
+// Drop shadows
+.inner-shadow(@color: #333, @x: 1, @y: 1, @blur: 1) {
+    -webkit-box-shadow: e("inset @{x}px @{y}px @{blur}px @{color}");
+    -moz-box-shadow: e("inset @{x}px @{y}px @{blur}px @{color}");
+    box-shadow: e("inset @{x}px @{y}px @{blur}px @{color}");
+}
+
+.outer-shadow(@color: #333, @x: 1, @y: 1, @blur: 1) {
+    -webkit-box-shadow: e("@{x}px @{y}px @{blur}px @{color}");
+    -moz-box-shadow: e("@{x}px @{y}px @{blur}px @{color}");
+    box-shadow: e("@{x}px @{y}px @{blur}px @{color}");
+}
+
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow: @shadow;
+    box-shadow: @shadow;
+}
+
+// Transitions
+.transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+// CSS3 Content Columns
+.content-columns(@columnCount, @columnGap: 20px) {
+    -webkit-column-count: @columnCount;
+    -webkit-column-gap: @columnGap;
+    -moz-column-count: @columnCount;
+    -moz-column-gap: @columnGap;
+    column-count: @columnCount;
+    column-gap: @columnGap;
+}
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+#translucent {
+    .background(@color: @white, @alpha: 1) {
+        background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+    }
+    .border(@color: @white, @alpha: 1) {
+        border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+        background-clip: padding-box;
+    }
+}
+
+// Gradients
+#gradient {
+    .horizontal (@startColor: #555, @endColor: #333) {
+        background-color: @endColor;
+        background-repeat: repeat-x;
+        background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); // Konqueror */
+        background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+ */
+        background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10 */
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+ */
+        background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+ */
+        background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10 */
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE6 & IE7 */
+        -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); // IE8+ */
+        background-image: linear-gradient(left, @startColor, @endColor); // the standard */
+    }
+    .vertical (@startColor: #555, @endColor: #333) {
+        background-color: @endColor;
+        background-repeat: repeat-x;
+        background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
+        background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
+        background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+        background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
+        background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE6 & IE7
+        -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); // IE8+
+        background-image: linear-gradient(@startColor, @endColor); // the standard
+    }
+    .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
+        background-color: @endColor;
+        background-repeat: repeat-x;
+        background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
+        background-image: -ms-linear-gradient(@deg, @startColor, @endColor); // IE10
+        background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+        background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
+        background-image: linear-gradient(@deg, @startColor, @endColor); // the standard
+    }
+    .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+        background-color: @endColor;
+        background-repeat: no-repeat;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+        background-image: -webkit-linear-gradient(@startColor, color-stop(@colorStop, @midColor), @endColor);
+        background-image: -moz-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+    }
+}
+
+// Opacity
+.opacity(@op: 100) {
+    filter: e(%("alpha(opacity=%d)", @op));
+    -khtml-opacity: @op / 100;
+    -moz-opacity: @op / 100;
+    -webkit-opacity: @op;
+    opacity: @op / 100;
+}
+
+// CSS3 Flexible Box Module
+#flexbox {
+    // #flexbox > .display-box; must be used along with other flexbox mixins
+    .display-box {
+        display: -moz-box;
+        display: -webkit-box;
+        display: box;
+    }
+    // Box align [ start | end | center | baseline | stretch ]
+    .box-align(@alignment: stretch) {
+        -moz-box-align: @alignment;
+        -webkit-box-align: @alignment;
+        box-align: @alignment;
+    }
+    // Box direction [ normal | reverse | inherit ]
+    .box-direction(@direction: normal) {
+        -moz-box-direction: @direction;
+        -webkit-box-direction: @direction;
+        box-direction: @direction;
+    }
+    // Box flex [ integer ]
+    .box-flex(@flex: 0) {
+        -moz-box-flex: @flex;
+        -webkit-box-flex: @flex;
+        box-flex: @flex;
+    }
+    // Box flex group [ integer ]
+    .box-flex-group(@group: 1) {
+        -moz-box-flex-group: @group;
+        -webkit-box-flex-group: @group;
+        box-flex-group: @group;
+    }
+    // Box orientation [ horizontal | vertical | inline-axis | block-axis | inherit ]
+    .box-orient(@orientation: horizontal) {
+        -moz-box-orient: @orientation;
+        -webkit-box-orient: @orientation;
+        box-orient: @orientation;
+    }
+    // Box ordinal group [ integer ]
+    .box-ordinal-group(@group: 1) {
+        -moz-box-ordinal-group: @group;
+        -webkit-box-ordinal-group:@group;
+        box-flex-ordinal-group: @group;
+    }
+    // Box pack  [ start | end | center | justify ]
+    .box-pack(@pack: start) {
+        -moz-box-pack: @pack;
+        -webkit-box-pack: @pack;
+        box-pack: @pack;
+    }
+}
