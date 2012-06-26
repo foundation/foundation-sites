@@ -1,0 +1,137 @@
+// Typography
+//------------------------------------------------
+
+#{headings(all)}
+  color: #181818
+  font-weight: bold
+  line-height: 1.25
+  a
+    font-weight: inherit
+h1
+  +font-size(46)
+  margin-bottom: 12px
+h2
+  +font-size(35)
+  margin-bottom: 9px
+h3
+  +font-size(28)
+  margin-bottom: 9px
+h4
+  +font-size(21)
+  margin-bottom: 3px
+h5
+  +font-size(18)
+  margin-bottom: 3px
+  font-weight: normal
+h6
+  +font-size(15)
+  font-weight: normal
+
+.subheader
+  color: #777
+  font-weight: 300
+  margin-bottom: 24px
+
+p
+  +font-size(13)
+  line-height: 1.25
+  margin: 0 0 18px
+  img
+    margin: 0
+  &.lead
+    +font-size(18)
+    line-height: 1.5
+
+em, i
+  font-style: italic
+  line-height: inherit
+strong, b
+  font-weight: bold
+  line-height: inherit
+small
+  font-size: 60%
+  line-height: inherit
+h1 small, h2 small, h3 small, h4 small, h5 small
+  color: #777
+
+// Blockquotes
+//--------------------------------------------
+blockquote, blockquote p
+  line-height: 20px
+  color: #777
+blockquote
+  margin: 0 0 18px
+  padding: 9px 20px 0 19px
+  border-left: 1px solid #ddd
+  cite
+    display: block
+    +font-size(12)
+    color: #555
+    &:before
+      content: "\2014 \0020"
+    a, a:visited
+      color: #555
+
+hr
+  border: solid #ddd
+  border-width: 1px 0 0
+  clear: both
+  margin: 12px 0 18px
+  height: 0
+
+abbr, acronym
+  text-transform: uppercase
+  font-size: 90%
+  color: #222
+  border-bottom: 1px solid #ddd
+  cursor: help
+abbr
+  text-transform: none
+
+// Print styles
+//-------------------------------------------
+
+// Notes:
+//
+//  Using "@media print" to avoid additional HTTP request to print.css
+//  Source: http://www.phpied.com/delay-loading-your-print-css/
+//  Credit: Paul Irish & HTML5 Boilerplate (http://html5boilerplate.com/)
+
+.print-only
+  display: none !important
+
+@media print
+  *
+    background: transparent !important
+    color: $black !important 
+    text-shadow: none !important
+    filter: none !important
+    -ms-filter: none !important
+  p
+    a, a:visited
+      color: #444 !important
+      text-decoration: underline
+    a[href]:after
+      content: " (" attr(href) ")"
+  abbr[title]:after
+    content: " (" attr(href) ")"
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after
+    content: ""
+  pre, blockquote
+    border: solid 1px #999
+    page-break-inside: avoid
+  thead
+    display: table-header-group
+  tr, img
+    page-break-inside: avoid
+  @page
+    margin: 0.5cm
+  p, h2, h3
+    orphans: 3
+    widows: 3
+  h2, h3
+    page-break-after: avoid
+  .hide-on-print
+    display: none !important
+  .print-only
+    display: block !important

@@ -1,0 +1,36 @@
+// Compass imports
+//------------------------------------------------
+
+@import compass/css3
+@import compass/utilities
+
+// Font stack
+//------------------------------------------------
+
+@mixin HelveticaFontStack
+  font-family: $helvetica-font-stack
+
+// Font size mixin to include px and rem
+//------------------------------------------------
+
+@mixin font-size($size, $is-important: false)
+  @if $is-important
+    font-size: $size + px !important
+    font-size: ($size / 10) + rem !important
+  @else
+    font-size: $size + px 
+    font-size: ($size / 10) + rem
+
+// WebKit font-smoothing
+//------------------------------------------------
+
+// References:
+//
+// 1. http://maxvoltar.com/sandbox/fontsmoothing/
+// 2. http://maxvoltar.com/archive/-webkit-font-smoothing
+//
+// Values: none, antialiased (default), subpixel-antialiased
+//
+
+@mixin font-smoothing($value: antialiased)
+  -webkit-font-smoothing: $value
