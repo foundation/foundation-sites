@@ -54,16 +54,12 @@
     .button {
         &.nice { 
             background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px;
-            -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
-            -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
-            text-shadow: 0 -1px 1px rgba(0,0,0,0.28);
+            .box-shadow(inset 0 1px 0 rgba(255,255,255,.5));
+            .txt-shadow(0 -1px 1px rgba(0,0,0,0.28));
             background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px, -moz-linear-gradient(top, rgba(255,255,255,.4) 0%, transparent 100%);
             background: @bPrimary url(../images/misc/button-gloss.png) repeat-x 0 -31px, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.4)), color-stop(100%,transparent));
             border: 1px solid darken(@bPrimary, 10%);
-            -webkit-transition: background-color .15s ease-in-out;
-            -moz-transition: background-color .15s ease-in-out;
-            -o-transition: background-color .15s ease-in-out;
+            .transition(background-color .15s ease-in-out);
         }
 
         &.radius {
@@ -126,13 +122,11 @@
 
         /* Hovers ---------- */
         &.nice:active     { 
-            -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
-            -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
-            box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
+            .box-shadow(inset 0 1px 0 rgba(0,0,0,.15));
         }
 
         /* Disabled ---------- */
-        &.disabled, &[disabled] { opacity: 0.6; cursor: default; }
+        &.disabled, &[disabled] { .opacity(60); cursor: default; }
     }
 
     /* Correct FF button padding */
@@ -157,8 +151,8 @@
         &.error { background-color: #c00000; color: @white; .txt-shadow(0 -1px rgba(0,0,0,0.3)); }
         
         a.close { 
-            color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; opacity: 0.2; padding: 4px; 
-            &:hover, &:focus { opacity: 0.4; }
+            color: #000; position: absolute; right: 4px; top: 0; font-size: 18px; .opacity(20); padding: 4px; 
+            &:hover, &:focus { .opacity(40); }
         }
     }
 

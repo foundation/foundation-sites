@@ -50,7 +50,7 @@ div.orbit-wrapper div.timer {
     position: absolute;
     top: 10px;
     right: 10px;
-    opacity: .6;
+    .opacity(60);
     cursor: pointer;
     z-index: 31; }
 
@@ -91,14 +91,14 @@ div.orbit-wrapper span.pause {
     left: 0;
     background: url(../images/orbit/pause-black.png) no-repeat;
     z-index: 4;
-    opacity: 0; }
+    .opacity(0); }
 
 div.orbit-wrapper span.pause.active {
     background: url(../images/orbit/pause-black.png) no-repeat 0 -40px }
 
 div.orbit-wrapper div.timer:hover span.pause,
 div.orbit-wrapper span.pause.active {
-    opacity: 1 }
+    .opacity(100); }
 
 
 /* CAPTIONS
