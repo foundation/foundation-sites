@@ -67,14 +67,10 @@
         }
 
         &.radius {
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
+            .round(3);
         }
         &.round {
-            -moz-border-radius: 1000px;
-            -webkit-border-radius: 1000px;
-            border-radius: 1000px;
+            .round(1000);
         }
 
         &.full-width {
@@ -154,7 +150,7 @@
     Alerts
     -------------------------------------------------- */
 
-    div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; text-shadow: 0 1px rgba(255,255,255,0.9); position: relative; }
+    div.alert-box { display: block; padding: 6px 7px; font-weight: bold; font-size: 13px; background: #eee; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 12px; .round(3); text-shadow: 0 1px rgba(255,255,255,0.9); position: relative; }
     .alert-box {
         &.success { background-color: #7fae00; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
         &.warning { background-color: #f68b01; color: #fff; text-shadow: 0 -1px rgba(0,0,0,0.3); }
@@ -172,8 +168,8 @@
 
     .label { 
         padding: 0 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; 
-        &.radius { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
-        &.round { padding: 1px 7px 2px; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+        &.radius { .round(2); }
+        &.round { padding: 1px 7px 2px; .round(8); }
         
         /* Colors ---------- */
         &.blue { background-color: #00a6fc; }
@@ -253,7 +249,7 @@
     Breadcrumbs
     -------------------------------------------------- */    
     ul.breadcrumbs { 
-        display: block; background: #f4f4f4; padding: 7px 10px; border: 1px solid #ddd; border-radius: 2px; overflow: hidden; 
+        display: block; background: #f4f4f4; padding: 7px 10px; border: 1px solid #ddd; .round(2); overflow: hidden; 
         li { margin: 0; padding: 0 12px 0 0; float: left; }
         li a, ul.breadcrumbs li span { text-transform: uppercase; font-size: 11px; padding-left: 12px; }
         li:first-child a, ul.breadcrumbs li:first-child span { padding-left: 0; }
@@ -332,7 +328,7 @@
         display: block; width: auto; overflow: hidden; margin: -4px 0 18px -9px; padding-top: 4px; 
         dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 4px; }
         dt { color: #999; font-weight: normal; }
-        dd a { text-decoration: none; border-radius: 12px; }
+        dd a { text-decoration: none; .round(12); }
         dd.active a { background: #00A6FC; color: #fff; padding: 3px 9px; }
     }
 
@@ -405,9 +401,7 @@
         font-size: 1.2rem;
         padding: 5px;
         z-index: 999;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
+        .round(4);
         line-height: normal;
         > .nub {
             display: block;
@@ -448,9 +442,7 @@
         left: -10px;
     }
     .tooltip.noradius {
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
+        .round(0);
     }
     .has-tip.opened {
         color: #0192DD !important;

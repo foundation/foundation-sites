@@ -31,7 +31,7 @@
         &.placeholder { color: #888; }
 
         /* Text input and textarea sizes */
-        width: 254px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
+        width: 254px; .box-sizing(border-box);
         &.small { width: 134px; }
         &.medium { width: 254px; }
         &.large { width: 434px; }
@@ -55,7 +55,7 @@
     /* Errors */
     .form-field.error input, input.input-text.red { border-color: #C00000; background-color: rgba(255,0,0,0.15); }
     .form-field.error label, label.red { color: #C00000; }
-    .form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 254px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
+    .form-field.error small, small.error { margin-top: -6px; display: block; margin-bottom: 9px; font-size: 11px; color: #C00000; width: 254px; .box-sizing(border-box); }
 
     .small + small.error { width: 134px; }
     .medium + small.error { width: 254px; }
@@ -73,7 +73,7 @@
     form.nice {
         
         div.form-field input, input.input-text, textarea { 
-            border: solid 1px #bbb; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px;
+            border: solid 1px #bbb; .round(2);
             font-size: 13px; padding: 6px 3px 4px; outline: none !important; background: url(../images/misc/input-bg.png) #fff;
             &:focus { background-color: #f9f9f9; }
 
@@ -81,14 +81,14 @@
             &[disabled] { background-color: #ddd; }
         }
         
-        fieldset { border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+        fieldset { .round(3); }
         
         div.form-field {
             input[type=radio], input[type=checkbox] { display: inline; width:auto; margin-bottom:0; }
 
         }
 
-        div.form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #C00000; color: #fff; font-size: 12px; font-weight: bold; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; -webkit-border-bottom-left-radius: 2px; -webkit-border-bottom-right-radius: 2px; -moz-border-radius-bottomleft: 2px; -moz-border-radius-bottomright: 2px; }
+        div.form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #C00000; color: #fff; font-size: 12px; font-weight: bold; .border-radius(0, 0, 2, 2); }
 
         div.form-field.error .small + small, .small + small.error { width: 132px; }
         div.form-field.error .medium + small, .medium + small.error { width: 252px; }
@@ -107,7 +107,7 @@
         
         span.custom { 
             display: inline-block; width: 14px; height: 14px; position: relative; top: 2px; border: solid 1px #ccc; background: url(../images/misc/custom-form-sprites.png) 0 0 no-repeat; 
-            &.radio { border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; }
+            &.radio { .round(7); }
             &.radio.checked { background-position: 0 -14px; }
             &.checkbox.checked { background-position: 0 -28px; }
         }
@@ -138,7 +138,7 @@
             &.open.small ul { width: 132px !important; }
             &.open.medium ul { width: 252px !important; }
             &.open.large ul { width: 432px !important; }
-            &.open.expand ul { width: 100% !important; box-sizing: border-box; }
+            &.open.expand ul { width: 100% !important; .box-sizing(border-box); }
         }
 
         label + select + div.custom.dropdown > a.current { margin-top: -9px; }
@@ -151,11 +151,11 @@
        Nicer Custom Forms
     ----------------------------------------- */
     form.custom.nice {
-        span.custom.checkbox { border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; }
+        span.custom.checkbox { .round(2); }
 
         div.custom.dropdown {
-            a.current { border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; background-image: url(../images/misc/input-bg-outset.png); background-position: bottom right; }
+            a.current { .round(2); background-image: url(../images/misc/input-bg-outset.png); background-position: bottom right; }
             a.selector { height: 27px; border-width: 0 0 0 1px; }
-            ul { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; -webkit-border-bottom-left-radius: 2px; -webkit-border-bottom-right-radius: 2px; -moz-border-radius-bottomleft: 2px; -moz-border-radius-bottomright: 2px; }
+            ul { .border-radius(0, 0, 2, 2); }
         }
     }
