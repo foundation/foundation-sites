@@ -1,4 +1,4 @@
-/* Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA */
+/* Foundation was made by ZURB, a product design agency in Campbell, CA */
 /* zurb.com */
 /* humanstxt.org */
 
@@ -7,39 +7,39 @@
 
 /* ZURB TEAM */
   Design Lead: Jonathan Smiley
-  Site: rienaretrancher.net
   Twitter: @smiley
   
   Lead Engineer: Matt Kelly
   Twitter: @mkelly12
-
-  Designer: Anthony Tadina
-  Site: anthonytadina.com
-  Twitter: @muyheckatighto
   
   Designer: Chris Michel
-  Site: chrismdesign.com
   Twitter: @hatefulcrawdad
+
+  Designer: Anthony Tadina
+  Twitter: @muyheckatighto
   
-  Design Lead: Tanya Breshears
-  Site: maybefriday.com
-  Twitter: @maybefriday
+  Designer: Jackie Ngo
+  Twitter: @MadeService
+  
+  Designer: Ghaida Zahran
+  Twitter: @GhaidaZahran
+  
+  Designer: Alina Senderzon
+  
+  Design Contractor: Arthur de la Rocha
+  Twitter: @arthurdelarocha
+  
+  Design Intern: Danielle Polini
+  Twitter: @pensive_oliver
   
   Engineer: Mark Hayes
   Twitter: @mhayes
   
   Engineer: Jordan Humphreys
-  
-  Design Intern: Jerome de Joya
-  
-  Partner: Jeremy Britton
-  Twitter: @jebritton
+  Twitter: @offwithyou
   
   Editor: Ryan Riddle
   Twitter: @ryantriddle
-  
-  Marketing: Dmitry Dragilev
-  Twitter: @dragilev
   
   Marketing: Forrest Kobiyashi
   Twitter: @forrestkoba
@@ -62,16 +62,12 @@
   
 /* CREDIT WHERE CREDIT'S DUE */
   Paul Irish (paulirish.com): Smartypants who wrote at least some of this code through HTML5 Boilerplate
-  Eric Meyer (meyerweb.com): Master resetter
   Kyle Kneath (github.com): Loves him some column clearing
-  David French (www.interactivestrategies.com): Cleaned up the grid percentages in IE7
 
 /* MUCHOS LOTS OF MANY THANKS TO */
-  Dave Gamache @dhg (davegamache.com): Twitter designer, coding rockstar, sexy guy
-  Mark Otto @mdo (markdotto.com): Twitter designer, cuddly bear
-  Jake Olefsky (toodledo.com): Front-end hacker, feedback star
+  Chris Eppstein: Sass and Compass Author, who checked over the Sassy parts
 
 /* SITE */
   Standards: HTML5, CSS3
   Components: jQuery, Orbit, Reveal
-  Software: Coda, Textmate, Git
+  Software: Coda 2, Sass, Compass, Textmate, Git

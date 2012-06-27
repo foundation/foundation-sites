@@ -5,7 +5,8 @@ PATH
       compass (~> 0.12.1)
       linguistics (~> 1.0.9)
       modular-scale (~> 0.0.5)
-      sass (~> 3.1.19)
+      rake
+      sass (~> 3.2.0.alpha.247)
 
 GEM
   remote: https://rubygems.org/
@@ -20,11 +21,10 @@ GEM
     modular-scale (0.0.5)
       compass (>= 0.11.5)
     rake (0.9.2.2)
-    sass (3.1.19)
+    sass (3.2.0.alpha.247)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   foundation!
-  rake

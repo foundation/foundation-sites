@@ -21,31 +21,32 @@
 	<link rel="icon" type="image/ico" href="favicon.ico">
   
 	<!-- Included CSS Files -->
-	<?php if (true) {?>
-	  <link rel="stylesheet" href="stylesheets/presentation.css">
-	  <link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
-    <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
-	<?php } else {?>
-	<link rel="stylesheet" href="../stylesheets/globals.css">
-	<link rel="stylesheet" href="../stylesheets/typography.css">
-	<link rel="stylesheet" href="../stylesheets/grid.css">
-	<link rel="stylesheet" href="../stylesheets/ui.css">
-	<link rel="stylesheet" href="../stylesheets/forms.css">
-	<link rel="stylesheet" href="../stylesheets/orbit.css">
-	<link rel="stylesheet" href="../stylesheets/reveal.css">
-	<link rel="stylesheet" href="../stylesheets/app.css">
-	<link rel="stylesheet" href="../stylesheets/mobile.css">
-	<?php }?>
-
+	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" href="../css/globals.css">
+	<link rel="stylesheet" href="../css/typography.css">
+	<link rel="stylesheet" href="../css/grid.css">
+	<link rel="stylesheet" href="../css/ui.css">
+	<link rel="stylesheet" href="../css/buttons.css">
+	<link rel="stylesheet" href="../css/tabs.css">
+	<link rel="stylesheet" href="../css/navbar.css">
+	<link rel="stylesheet" href="../css/forms.css">
+	<link rel="stylesheet" href="../css/orbit.css">
+	<link rel="stylesheet" href="../css/reveal.css">
+	<link rel="stylesheet" href="../css/app.css">
+	<link rel="stylesheet" href="../css/mobile.css">
+	<link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
+  <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
+	<link rel="stylesheet" href="presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="../stylesheets/ie.css">
+		<link rel="stylesheet" href="../css/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+
 </head>
 <body>
 
@@ -62,7 +63,7 @@
   			  <a href="grid.php" <?php if (isset($featuresTab)) echo 'class="current"'; ?>>Features</a>
   			</li>			
   			<li>
-  			  <a href="case-soapbox.php" <?php if (isset($caseStudiesTab)) echo 'class="current"'; ?>>Case Studies</a>
+  			  <a href="case-flite.php" <?php if (isset($caseStudiesTab)) echo 'class="current"'; ?>>Case Studies</a>
   			</li>
   			<li>
   			  <a href="docs">Documentation</a>
@@ -70,7 +71,7 @@
   		  <li>
   		    <a href="http://github.com/zurb/foundation">GitHub</a>
   			</li>
-  			<li class="download"><a class="small blue nice button src-download" href="files/foundation-download-2.2.1.zip">Download</a></li>
+  			<li class="download"><a class="small blue nice button src-download" href="download.php">Download</a></li>
   		</ul>
   	</div>
   </div>

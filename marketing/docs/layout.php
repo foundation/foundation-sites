@@ -1,10 +1,6 @@
 <? $page_title = "Layout Tools"; ?>
 <?php include("includes/_documentation_head.php"); ?>
 	
-	<style>
-		.example .block-grid li { padding: 10px 0px; background: #ddd; }
-	</style>
-	
 	<div class="container">
 		<div class="row">
 			<div class="twelve columns">
@@ -114,7 +110,7 @@
 					<dd><a href="grid.php">Grid</a></dd>
 					<dd><a href="buttons.php">Buttons</a></dd>
 					<dd><a href="forms.php">Forms</a></dd>
-					<dd><a href="layout.php" class="active">Layout</a></dd>
+					<dd class="active"><a href="layout.php">Layout</a></dd>
 					<dd><a href="ui.php">UI</a></dd>
 					<dd><a href="orbit.php">Orbit</a></dd>
 					<dd><a href="reveal.php">Reveal</a></dd>

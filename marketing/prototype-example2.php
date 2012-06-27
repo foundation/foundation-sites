@@ -1,153 +1,102 @@
-<? 
-  $page_title = "Social Network Prototyping Example";
-  $featuresTab = true;
-?>
+<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
 <?php include("includes/_header.php"); ?>
   
-  <style>
-  	#exampleHeader { background: #333; padding: 10px 0 8px; margin-bottom: 30px; margin-top: -50px; }
-  	#exampleHeader h3 { color: #fff; }
-  	#exampleHeader a { color: #fff; position: relative; top: 10px; }
-  	
-  	@media only screen and (max-width: 767px) {	
-  		#exampleHeader { margin-top: 30px; }	
-  	}
-  	
-  	.comments { background: #eee; padding: 10px; margin-bottom: 20px; }
-  </style>
+
   
-  <!-- Grid BG -->
-  <div id="gridBgShort" class="container hide-on-phones">
-    <div class="white-fade"></div>
+  <header>
     <div class="row">
-      <div class="one columns"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div>
+      <div class="twelve columns">
+        <h1>All Grid Sizes</h1>
+        <h4></h4>
+      </div>
     </div>
-  </div>
-  <!-- /Grid BG -->
+  </header>
   
-	<div id="insideContainer" class="container">
-	  <div class="row">
-	    <a href="prototyping.php" class="back two columns">&larr; About Prototyping</a>
-	    <hr />
+  <section id="mainContent" class="example">
+  
+	<div class="row">
+	  	<div class="eight columns">
+	  		<h3>Ye Olde Game Reviews</h3>
+	  	</div>
+	  	<div class="four columns hide-for-small">
+	  		<p class="right"><a href="#">Login</a> <a href="#" class="small blue nice radius button">Sign Up</a>
+	  	</div>
+	  	<div class="four columns show-for-small">
+	  		<p><a href="#">Login</a> <a href="#" class="">Sign Up</a>
+	  	</div>
 	  </div>
-	</div>
-	  
-	  <section id="exampleHeader">
-	  	<div class="container">
-	  		<div class="row">
-	  			<div class="twelve columns">
-	  				<p class="right"><a href="">Login</a></p>
-	  				<h3>A Social Network</h3>
-	  			</div>
-	  		</div>
-	  	</div>
-	  </section>
-	  
-	<div class="container">
 	  
 	  <div class="row">
-	  	<div class="seven columns">
-	  		<div class="row mobile">
+	  	<div class="twelve columns">
+	  		<ul class="block-grid four-up">
+	  			<li>
+	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
+	  				<h5><a href="#">Pong</a></h5>
+	  			</li>
+	  			<li>
+	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
+	  				<h5><a href="#">Galaga</a></h5>
+	  			</li>
+	  			<li>
+	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
+	  				<h5><a href="#">Pitfall</a></h5>
+	  			</li>
+	  			<li>
+	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
+	  				<h5><a href="#">Donkey Kong</a></h5>
+	  			</li>
+	  		</ul>
+	  	</div>
+	  </div>
+	  
+	  <div class="row">
+	  	<hr />
+	  </div>
+	  
+	  <div class="row">
+	  	<div class="six columns">
+	  		<h4>Gaming News</h4>
+	  		<h5><a href="#">Games of the Future will have 16 Bits</a></h5>
+	  		<p>We don't even know what it means, but we heard from a trusted source that games in the future will have 16 whole bits in them. Get ready, we guess? <a href="#">Read More &rarr;</a></p>
+	  		
+	  		<h5><a href="#">Does Nintendo Have Plans for Games?</a></h5>
+	  		<p>Japenese playing card manufacturer Nintendo may have ideas about entering the gaming industry. We've heard rumors they are working on something called Famicon, but take it with a grain of salt. We imagine Atari will dominate games for the next 20 or 30 years. <a href="#">Read More &rarr;</a></p>
+	  	</div>
+	  	<div class="six columns">
+	  		<h4>Top of the Charts</h4>
+	  		<div class="row">
 	  			<div class="two phone-one columns">
-	  				<img src="http://placehold.it/200x200" />
+	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
 	  			</div>
 	  			<div class="ten phone-three columns">
-	  				<p><strong><a href="">Jake Sully</a> said:</strong><br />Guys, check out this awesome website I found about trees. Man, I love trees. Big trees.</p>
-	  				<div class="row">
-	  					<div class="four phone-one columns">
-	  						<img src="http://placehold.it/300x300" />
-	  					</div>
-	  					<div class="eight phone-three columns">
-	  						<p><a href="#">Huge Trees and You: How to live in a giant tree</a><br />
-	  						This is a website for people who live in gigantic trees. Learn about how to go from branch to branch, and where to keep your crazy screaming flying dragon thing.</p>
-	  					</div>
-	  				</div>
-	  				
-	  				
-		  			<section class="comments">
-		  				<div class="row">
-		  					<div class="two phone-one columns">
-		  						<img src="http://placehold.it/50x50" />
-		  					</div>
-		  					<div class="ten phone-three columns"><a href="">TheColonel</a> says "Don't get too comfy, I'm coming for that tree."</div>
-		  				</div>
-		  				<div class="row">
-		  					<div class="two phone-one columns">
-		  						<img src="http://placehold.it/50x50" />
-		  					</div>
-		  					<div class="ten phone-three columns"><a href="">Jake</a> says "You're such a tool."</div>
-		  				</div>
-		  			</section>
+	  				<h5 class="right">$85k</h5>
+	  				<h4><a href="#">Tetris</a></h4>
+	  				<p>This newfangled game has you slotting together blocks in soviet Russia. Weird, but fun.</p>
 	  			</div>
 	  		</div>
 	  		<div class="row">
 	  			<div class="two phone-one columns">
-	  				<img src="http://placehold.it/200x200" />
+	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
 	  			</div>
 	  			<div class="ten phone-three columns">
-	  				<p><strong><a href="">Jake Sully</a> said:</strong><br />Has anyone seen my wheelchair? This isn't funny guys.</p>
-	  				
-	  				
-		  			<section class="comments">
-		  				<div class="row">
-		  					<div class="two phone-one columns">
-		  						<img src="http://placehold.it/50x50" />
-		  					</div>
-		  					<div class="ten phone-three columns"><a href="">Jake</a> says "Found it. Whoever decided it'd be a fun game to kick it around with those walkers owes me a new one."</div>
-		  				</div>
-		  			</section>
+	  				<h5 class="right">$52k</h5>
+	  				<h4><a href="#">Pong</a></h4>
+	  				<p>The original and best game ever. It's like Tennis, and so realistic!</p>
+	  			</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="two phone-one columns">
+	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
+	  			</div>
+	  			<div class="ten phone-three columns">
+	  				<h5 class="right">$35k</h5>
+	  				<h4><a href="#">Centipede</a></h4>
+	  				<p>We're pretty sure this is a game about drugs, but it's on the charts, so here you go.</p>
 	  			</div>
 	  		</div>
 	  	</div>
-	  	<div class="four columns offset-by-one">
-	  		<dl class="tabs">
-			  <dd><a href="#recent" class="active">Recent Media</a></dd>
-			  <dd><a href="#interesting">Top Media</a></dd>
-			</dl>
-			<ul class="tabs-content">
-				<li id="recentTab" class="active">
-					<h5>Photos</h5>
-					<ul class="block-grid four-up">
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-					</ul>
-					
-					<h5>Videos</h5>
-					<img src="http://placehold.it/400x300" />
-					<strong><a href="#">A Sweet Video</a></strong> &bull; YouTube
-				</li>
-				<li id="interestingTab">
-					<h5>Photos</h5>
-					<ul class="block-grid four-up">
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-						<li><img src="http://placehold.it/100x100" /></li>
-					</ul>
-					
-					<h5>Links</h5>
-					<p><strong><a href="#">Huge Trees and You: How to live in a giant tree</a></strong> This is a website for people who live in gigantic trees. Learn about...</p>
-				</li>
-			</ul>
-	  	</div>
-	  </div>	  
-	
-	</div>
-	   	  
-	<div class="container">
-	   	  
-	
+	  </div>
+  
+  </section>  
+  	
 <?php include("includes/_footer.php");  ?>
