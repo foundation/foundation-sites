@@ -1,0 +1,77 @@
+/* Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA */
+/* zurb.com */
+/* humanstxt.org */
+
+/* If Foundation knocks your socks off the way we hope it does and you want more, why not check out zurb.com/jobs? */
+
+
+/* ZURB TEAM */
+  Design Lead: Jonathan Smiley
+  Site: rienaretrancher.net
+  Twitter: @smiley
+  
+  Lead Engineer: Matt Kelly
+  Twitter: @mkelly12
+
+  Designer: Anthony Tadina
+  Site: anthonytadina.com
+  Twitter: @muyheckatighto
+  
+  Designer: Chris Michel
+  Site: chrismdesign.com
+  Twitter: @hatefulcrawdad
+  
+  Design Lead: Tanya Breshears
+  Site: maybefriday.com
+  Twitter: @maybefriday
+  
+  Engineer: Mark Hayes
+  Twitter: @mhayes
+  
+  Engineer: Jordan Humphreys
+  
+  Design Intern: Jerome de Joya
+  
+  Partner: Jeremy Britton
+  Twitter: @jebritton
+  
+  Editor: Ryan Riddle
+  Twitter: @ryantriddle
+  
+  Marketing: Dmitry Dragilev
+  Twitter: @dragilev
+  
+  Marketing: Forrest Kobiyashi
+  Twitter: @forrestkoba
+  
+  Marketing: Tony Albanese
+  Twitter: @albanesetr
+  
+  Customer Service: Louis Corso
+  Twitter: @lcorso37
+  
+  Business Development: Roeland van Krieken
+  Twitter: @rvkrieken
+  
+  Office Manager: Michelle Archuleta
+  Twitter: @michellearchuleta
+  
+  Boss Man: Bryan Zmijewski
+  Twitter: @bryanzmijewski
+  
+  
+/* CREDIT WHERE CREDIT'S DUE */
+  Paul Irish (paulirish.com): Smartypants who wrote at least some of this code through HTML5 Boilerplate
+  Eric Meyer (meyerweb.com): Master resetter
+  Kyle Kneath (github.com): Loves him some column clearing
+  David French (www.interactivestrategies.com): Cleaned up the grid percentages in IE7
+
+/* MUCHOS LOTS OF MANY THANKS TO */
+  Dave Gamache @dhg (davegamache.com): Twitter designer, coding rockstar, sexy guy
+  Mark Otto @mdo (markdotto.com): Twitter designer, cuddly bear
+  Jake Olefsky (toodledo.com): Front-end hacker, feedback star
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: jQuery, Orbit, Reveal
+  Software: Coda, Textmate, Git
