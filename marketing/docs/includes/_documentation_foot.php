@@ -59,14 +59,14 @@
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 	</div>
-	<script src="../../javascripts/jquery.min.js"></script>
-	<script src="../../javascripts/jquery.reveal.js"></script>
-	<script src="../../javascripts/jquery.orbit-1.4.0.js"></script>
-	<script src="../../javascripts/jquery.customforms.js"></script>
-	<script src="../../javascripts/jquery.placeholder.min.js"></script>
-	<script src="../../javascripts/modernizr.foundation.js"></script>
-	<script src="../../javascripts/jquery.tooltips.js"></script>
-	<script src="../../javascripts/app.js"></script>
+	<script src="../javascripts/foundation/jquery.min.js"></script>
+	<script src="../javascripts/foundation/jquery.reveal.js"></script>
+	<script src="../javascripts/foundation/jquery.orbit-1.4.0.js"></script>
+	<script src="../javascripts/foundation/jquery.customforms.js"></script>
+	<script src="../javascripts/foundation/jquery.placeholder.min.js"></script>
+	<script src="../javascripts/foundation/modernizr.foundation.js"></script>
+	<script src="../javascripts/foundation/jquery.tooltips.js"></script>
+	<script src="../javascripts/foundation/app.js"></script>
 	<script src="presentation.js"></script>
 	<script src="http://www.zurb.com/assets/zurb.mega-drop.js"></script>
 

@@ -1,10 +1,7 @@
-http_path = "/"
-project_path = File.dirname(__FILE__)
+#http_path = "/"
 add_import_path File.join("..", "stylesheets")
-images_path = File.join(project_path, "..", "vendor", "assets", "images", "foundation")
-javascripts_path = File.join(project_path, "..", "vendor", "assets", "javascripts", "foundation")
-
+preferred_syntax = :sass
 line_comments = false
 relative_assets = true
-output_style = :expand
+output_style = :compact
 sass_options = { :cache => "false" }
