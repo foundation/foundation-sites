@@ -58,6 +58,7 @@ jQuery(document).ready(function ($) {
   /* DROPDOWN NAV ------------- */
 
   var lockNavBar = false;
+  if (Modernizr.touch) {
   $('.nav-bar a.flyout-toggle').on('click.fndtn touchstart.fndtn mousedown.fndtn mouseup.fndtn mouseover.fndtn mouseout.fndtn', function(e) {
     e.preventDefault();
     console.log($(this).data('events'));
@@ -70,7 +71,6 @@ jQuery(document).ready(function ($) {
     }
     lockNavBar = true;
   });
-  if (Modernizr.touch) {
     $('.nav-bar>li.has-flyout').addClass('is-touch');
   } else {
     $('.nav-bar>li.has-flyout').hover(function() {
