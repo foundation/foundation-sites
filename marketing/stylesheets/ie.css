@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* This is for all IE specfific style less than IE9. We hate IE. */
 .lt-ie8 .row { max-width: 1000px; }
 

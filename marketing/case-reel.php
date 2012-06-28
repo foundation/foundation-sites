@@ -13,21 +13,11 @@
   <section id="mainContent">
   
     <div class="row">
-      <div class="two columns">
-        <ul class="side-nav">
-          <li><a href="index.php">&larr; Home</a></li>
-          <li class="divider"></li>
-          <li><a href="case-flite.php">Flite</a></li>
-          <li><a href="case-swizzle.php">Swizzle</a></li>
-          <li><a href="case-soapbox.php">ZURBsoapbox</a></li>
-          <li class="active"><a href="case-reel.php">Reel</a></li>
-          <li><a href="case-zurbjobs.php">ZURBjobs</a></li>
-        </ul>
-      </div>
       
-      <div class="ten columns">
+      <div class="ten columns push-two">
         <div class="row">
           <div class="six columns">
+            <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
             <h2>Reeling in Feedback</h2>
             <h4 class="subheader">Powerpoint sucks, especially online.</h4>
             <p><a href="http://reelapp.com">Reel</a> is a little app we built to help people post mockups, sketches, wireframes, and entire presos (PDF or PPT). They can get quick "thumbs up or down" feedback. But it wasn't enough to just show slides, we wanted to be able to view the preso, give feedback, and review feedback on any device.</p>
@@ -52,7 +42,18 @@
         </div>
             
      
-       </div>
+      </div>
+      <div class="two columns pull-ten">
+        <ul class="side-nav">
+          <li><a href="index.php">&larr; Home</a></li>
+          <li class="divider"></li>
+          <li><a href="case-flite.php">Flite</a></li>
+          <li><a href="case-swizzle.php">Swizzle</a></li>
+          <li><a href="case-soapbox.php">ZURBsoapbox</a></li>
+          <li class="active"><a href="case-reel.php">Reel</a></li>
+          <li><a href="case-zurbjobs.php">ZURBjobs</a></li>
+        </ul>
+      </div>
     </div>
   
   </section>  

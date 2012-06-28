@@ -58,18 +58,19 @@ jQuery(document).ready(function ($) {
   /* DROPDOWN NAV ------------- */
 
   var lockNavBar = false;
-  $('.nav-bar a.flyout-toggle').on('click.fndtn touchstart.fndtn', function(e) {
-    e.preventDefault();
-    var flyout = $(this).siblings('.flyout');
-    if (lockNavBar === false) {
-      $('.nav-bar .flyout').not(flyout).slideUp(500);
-      flyout.slideToggle(500, function(){
-        lockNavBar = false;
-      });
-    }
-    lockNavBar = true;
-  });
-  if (Modernizr.touch) {
+  /* Windows Phone, sadly, does not register touch events :( */
+  if (Modernizr.touch || navigator.userAgent.match(/Windows Phone/i)) {
+    $('.nav-bar a.flyout-toggle').on('click.fndtn touchstart.fndtn', function(e) {
+      e.preventDefault();
+      var flyout = $(this).siblings('.flyout').first();
+      if (lockNavBar === false) {
+        $('.nav-bar .flyout').not(flyout).slideUp(500);
+        flyout.slideToggle(500, function(){
+          lockNavBar = false;
+        });
+      }
+      lockNavBar = true;
+    });
     $('.nav-bar>li.has-flyout').addClass('is-touch');
   } else {
     $('.nav-bar>li.has-flyout').hover(function() {

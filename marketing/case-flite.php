@@ -12,22 +12,11 @@
   
   <section id="mainContent">
   
-    <div class="row">
-      <div class="two columns">
-        <ul class="side-nav">
-          <li><a href="index.php">&larr; Home</a></li>
-          <li class="divider"></li>
-          <li class="active"><a href="case-flite.php">Flite</a></li>
-          <li><a href="case-swizzle.php">Swizzle</a></li>
-          <li><a href="case-soapbox.php">ZURBsoapbox</a></li>
-          <li><a href="case-reel.php">Reel</a></li>
-          <li><a href="case-zurbjobs.php">ZURBjobs</a></li>
-        </ul>
-      </div>
-      
-      <div class="ten columns">
+    <div class="row">      
+      <div class="ten columns push-two">
         <div class="row">
           <div class="six columns">
+            <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
             <h2>Flite</h2>
             <h4 class="subheader">Foundation was the way to go.</h4>
             
@@ -44,12 +33,12 @@
         </div>
       
         <div class="row">
-          <div class="six columns">
-            <img src="images/case-flite-2.png" />
-          </div>
-          <div class="six columns">
+          <div class="six columns push-six">
             <h4>Integrating Their Design with Foundation</h4>
             <p>Flite started the design work on the site before deciding to use Foundation. The company had already solidified the design for their site. However, they didn't have much trouble backing the design into Foundation's framework. Not only that but Flite was able to integrate Foundation into its Sass+Compass workflow. George told us that was a real boon for the team.</p>
+          </div>
+          <div class="six columns pull-six">
+            <img src="images/case-flite-2.png" />
           </div>
         </div>
             
@@ -62,6 +51,18 @@
         <p>In the end, the new site looked fantastic on all devices thanks to Foundation. Flite found a new tool that easily integrates with the other tools, such as Sass and Compass, in its toolbox. And the team would use Foundation again.</p>
         
         <blockquote>"Overall, I would definitely use it again for other projects."<cite>Andy</cite></blockquote>
+      </div>
+      
+      <div class="two columns pull-ten">
+        <ul class="side-nav">
+          <li><a href="index.php">&larr; Home</a></li>
+          <li class="divider"></li>
+          <li class="active"><a href="case-flite.php">Flite</a></li>
+          <li><a href="case-swizzle.php">Swizzle</a></li>
+          <li><a href="case-soapbox.php">ZURBsoapbox</a></li>
+          <li><a href="case-reel.php">Reel</a></li>
+          <li><a href="case-zurbjobs.php">ZURBjobs</a></li>
+        </ul>
       </div>
     </div>
   

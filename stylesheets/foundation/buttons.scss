@@ -52,6 +52,11 @@
   /* Don't use native buttons on iOS */
 	input[type=submit].button, button.button { -webkit-appearance: none; }
 
+	 @media #{$media-small} {
+    .button { display: block; }
+    button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
+  }
+
   /* Correct FF button padding */
   @-moz-document url-prefix() {
     button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner { border: none; padding: 0;  }

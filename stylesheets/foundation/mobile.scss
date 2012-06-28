@@ -10,193 +10,23 @@
 
   @import "base";
 
-/* Typography ---------------------- */
-
-  @media #{$media-small} {
-
-  }
-
-/* Visibility Affordances ---------------------- */
-
-  /* Desktop visibility targeting */
-  .show-for-small,
-  .show-for-medium,
-  .hide-for-large,
-  .show-for-xlarge { display: none !important; }
-
-  .hide-for-xlarge,
-  .show-for-large,
-  .hide-for-small,
-  .hide-for-medium { display: block !important; }
-
-  /* Very large display targeting */
-  @media #{$media-xlarge} {
-    .hide-for-small,
-    .hide-for-medium,
-    .hide-for-large,
-    .show-for-xlarge { display: block !important; }
-
-    .show-for-small,
-    .show-for-medium,
-    .show-for-large,
-    .hide-for-xlarge { display: none !important; }
-  }
-
-  /* Modernizr-enabled tablet targeting */
-  @media #{$media-medium} {
-    .hide-for-small,
-    .show-for-medium,
-    .hide-for-large,
-    .hide-for-xlarge { display: block !important; }
-
-    .show-for-small,
-    .hide-for-medium,
-    .show-for-large,
-    .show-for-xlarge { display: none !important; }
-  }
-
-  /* Small device targeting */
-  @media #{$media-small} {
-    .show-for-small,
-    .hide-for-medium,
-    .hide-for-large,
-    .hide-for-xlarge { display: block !important; }
-
-    .hide-for-small,
-    .show-for-medium,
-    .show-for-large,
-    .show-for-xlarge { display: none !important; }
-  }
-
-  /* Orientation targeting */
-  .show-for-landscape,
-  .hide-for-portrait { display: block !important; }
-  .hide-for-landscape,
-  .show-for-portrait { display: none !important; }
-
-  @media #{$media-landscape} {
-    .show-for-landscape,
-    .hide-for-portrait { display: block !important; }
-    .hide-for-landscape,
-    .show-for-portrait { display: none !important; }
-  }
-
-  @media #{$media-portrait} {
-    .show-for-portrait,
-    .hide-for-landscape { display: block !important; }
-    .hide-for-portrait,
-    .show-for-landscape { display: none !important; }
-  }
-
-  /* Touch-enabled device targeting */
-  .show-for-touch { display: none !important; }
-  .hide-for-touch { display: block !important; }
-  .touch .show-for-touch { display: block !important; }
-  .touch .hide-for-touch { display: none !important; }
-
-  /* Specific overrides for elements that require something other than display: block */
-
-  table.show-for-xlarge,
-  table.show-for-large,
-  table.hide-for-small,
-  table.hide-for-medium { display: table !important; }
-
-  @media #{$media-medium} {
-    .touch table.hide-for-xlarge,
-    .touch table.hide-for-large,
-    .touch table.hide-for-small,
-    .touch table.show-for-medium { display: table !important; }
-  }
-
-  @media #{$media-small} {
-    table.hide-for-xlarge,
-    table.hide-for-large,
-    table.hide-for-medium,
-    table.show-for-small { display: table !important; }
-  }
 
 
 /* Forms ---------------------- */
 
-  @media #{$media-small} {
-    label.right { text-align: left; }
-  }
+  
 
 /* UI ---------------------- */
 
   /* Buttons */
-  @media #{$media-small} {
-    .button { display: block; }
-    button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; margin-bottom: 5px; }
-  }
+ 
 
   /* Tabs */
-  @media #{$media-small} {
-    dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
-    dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
-
-    dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; @include font-size(15); }
-    dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
-
-
-    .tabs.mobile { border-bottom: solid 1px #ccc; height: auto;
-
-      dd a { padding: 18px 20px; border: none; border-left: none; border-right: none; border-top: 1px solid #ccc; background: #fff; }
-      dd a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
-      dd:first-child a.active { margin: 0; }
-    }
-
-    dl.contained.mobile, dl.nice.contained.mobile { margin-bottom: 0; }
-    dl.contained.tabs.mobile dd a { padding: 18px 20px; }
-
-    dl.tabs.mobile + ul.contained { margin-left: -20px; margin-right: -20px; border-width: 0 0 1px 0; }
-  }
-
-  /* Nav Bar */
-
-  /* Modernizr-enabled tablet targeting */
-  @media #{$media-medium} {
-    .touch .nav-bar li a { @include font-size(13); }
-    .touch .nav-bar li.has-flyout>a.flyout-toggle { padding: 20px; }
-  }
-
-  @media #{$media-small} {
-    .nav-bar { height: auto;
-
-      &>li { float: none; display: block; border-right: none; }
-      &>li>a.main { text-align: left; border-top: 1px solid #ddd; border-right: none; }
-      &>li:first-child>a.main { border-top: none; }
-      &>li.has-flyout>a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; border-left: 1px dashed #eee; display: block; }
-      &>li.has-flyout>a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
-      &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
-    }
-
-    .flyout { position: relative; width: auto; top: auto; margin-right: -2px; border-width: 1px 1px 0 1px;
-
-      &.right { float: none; right: auto; left: -1px; }
-      &.small, .flyout.large { width: auto; }
-      p:last-child { margin-bottom: 18px; }
-    }
-
-  }
+  
 
   /* Tooltips */
-  @media #{$media-small} {
-    .tooltip {
-      @include font-size(14);
-      line-height: 1.4;
-      padding: 7px 10px 9px 10px;
-    }
-    .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
-      border-color: transparent transparent rgb(0,0,0) transparent;
-      border-color: transparent transparent rgba(0,0,0,0.85) transparent;
-      top: -12px;
-      left: 10px;
-    }
-  }
+  
 
 
   /* Video */
-  @media #{$media-all} {
-    .flex-video { padding-top: 0; }
-  }
+  

@@ -3,6 +3,7 @@
 
 /* Table of Contents
 
+:: Visibility
 :: Alerts
 :: Labels
 :: Tooltips
@@ -21,6 +22,105 @@
 */
 
   @import "base";
+  
+  /* Visibility Classes ---------------------- */
+
+  /* Standard visibility targeting */
+  .show-for-small,
+  .show-for-medium,
+  .hide-for-large,
+  .show-for-xlarge { display: none !important; }
+
+  .hide-for-xlarge,
+  .show-for-large,
+  .hide-for-small,
+  .hide-for-medium { display: block !important; }
+
+  /* Very large display targeting */
+  @media #{$media-xlarge} {
+    .hide-for-small,
+    .hide-for-medium,
+    .hide-for-large,
+    .show-for-xlarge { display: block !important; }
+
+    .show-for-small,
+    .show-for-medium,
+    .show-for-large,
+    .hide-for-xlarge { display: none !important; }
+  }
+
+  /* Medium display targeting */
+  @media #{$media-medium} {
+    .hide-for-small,
+    .show-for-medium,
+    .hide-for-large,
+    .hide-for-xlarge { display: block !important; }
+
+    .show-for-small,
+    .hide-for-medium,
+    .show-for-large,
+    .show-for-xlarge { display: none !important; }
+  }
+
+  /* Small display targeting */
+  @media #{$media-small} {
+    .show-for-small,
+    .hide-for-medium,
+    .hide-for-large,
+    .hide-for-xlarge { display: block !important; }
+
+    .hide-for-small,
+    .show-for-medium,
+    .show-for-large,
+    .show-for-xlarge { display: none !important; }
+  }
+
+  /* Orientation targeting */
+  .show-for-landscape,
+  .hide-for-portrait { display: block !important; }
+  .hide-for-landscape,
+  .show-for-portrait { display: none !important; }
+
+  @media #{$media-landscape} {
+    .show-for-landscape,
+    .hide-for-portrait { display: block !important; }
+    .hide-for-landscape,
+    .show-for-portrait { display: none !important; }
+  }
+
+  @media #{$media-portrait} {
+    .show-for-portrait,
+    .hide-for-landscape { display: block !important; }
+    .hide-for-portrait,
+    .show-for-landscape { display: none !important; }
+  }
+
+  /* Touch-enabled device targeting */
+  .show-for-touch { display: none !important; }
+  .hide-for-touch { display: block !important; }
+  .touch .show-for-touch { display: block !important; }
+  .touch .hide-for-touch { display: none !important; }
+
+  /* Specific overrides for elements that require something other than display: block */
+
+  table.show-for-xlarge,
+  table.show-for-large,
+  table.hide-for-small,
+  table.hide-for-medium { display: table !important; }
+
+  @media #{$media-medium} {
+    .touch table.hide-for-xlarge,
+    .touch table.hide-for-large,
+    .touch table.hide-for-small,
+    .touch table.show-for-medium { display: table !important; }
+  }
+
+  @media #{$media-small} {
+    table.hide-for-xlarge,
+    table.hide-for-large,
+    table.hide-for-medium,
+    table.show-for-small { display: table !important; }
+  }
 
   /* Alerts ---------------------- */
 
@@ -75,6 +175,20 @@
   }
 
   .tap-to-close { display: block; @include font-size(10); color: #888; font-weight: normal; }
+  
+  @media #{$media-small} {
+    .tooltip {
+      @include font-size(14);
+      line-height: 1.4;
+      padding: 7px 10px 9px 10px;
+    }
+    .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
+      border-color: transparent transparent rgb(0,0,0) transparent;
+      border-color: transparent transparent rgba(0,0,0,0.85) transparent;
+      top: -12px;
+      left: 10px;
+    }
+  }
 
   /* Panels ---------------------- */
 
@@ -178,7 +292,7 @@
 
   /* Keytroke Characters ---------------------- */
 
-  .keystroke { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; white-space: nowrap; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
+  .keystroke { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
 
 
   /* Video - Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/ ---------------------- */
@@ -196,6 +310,10 @@
 
     iframe, object, embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+  }
+  
+  @media #{$media-all} {
+    .flex-video { padding-top: 0; }
   }
 
   /* Tables ---------------------- */

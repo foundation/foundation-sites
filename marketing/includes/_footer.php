@@ -40,7 +40,7 @@
           <li><a href="docs/index.php">Documentation</a></li>
           <li><a href="docs/install.php">Install</a></li>
           <li><a href="about.php">About</a></li>
-          <li><a href="http://feeds.feedburner.com/zurb/blog"><span class="glyph"></span> Subscribe to the ZURBlog</a></li>
+          <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
         </ul>
       </div>
     </div>
@@ -54,6 +54,7 @@
 	<script src="javascripts/foundation/jquery.customforms.js"></script>
 	<script src="javascripts/foundation/jquery.placeholder.min.js"></script>
 	<script src="javascripts/foundation/jquery.tooltips.js"></script>
+  <script src="javascripts/foundation.top-bar.js"></script>
 	<script src="javascripts/foundation/app.js"></script>
 	<script src="swipe.js"></script>
 	<script src="github.js"></script>

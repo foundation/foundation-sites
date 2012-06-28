@@ -13,17 +13,9 @@
   <section id="mainContent">
   
     <div class="row">
-      <div class="two columns">
-        <ul class="side-nav">
-          <li><a href="index.php">&larr; Home</a></li>
-          <li class="divider"></li>
-          <li><a href="grid.php">The Grid</a></li>
-          <li class="active"><a href="prototyping.php">Rapid Prototyping</a></li>
-          <li><a href="mobile.php">Mobility</a></li>
-        </ul>
-      </div>
       
-      <div class="ten columns">
+      <div class="ten columns push-two">
+        <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
       	<img src="images/feature-prototyping-1.jpg">
         <h4>Mockups don't tell a story. Build a prototype in no time.</h4>
         <p>The difference between a good site and a great site is iteration &mdash; building something, playing with it, refining it. In Foundation we've included dozens of styles to help you quickly prototype a site; multiple button sizes and styles, tabs, custom form elements, modal dialogs, image sliders and a lot more. All of the prototype elements are production-ready code, and easy to style up. <a href="docs/ui.php">UI Docs &rarr;</a></p>
@@ -51,6 +43,15 @@ Wireframe Prototype</p>
         	</div>
         </div>
         
+      </div>
+      <div class="two columns pull-ten">
+        <ul class="side-nav">
+          <li><a href="index.php">&larr; Home</a></li>
+          <li class="divider"></li>
+          <li><a href="grid.php">The Grid</a></li>
+          <li class="active"><a href="prototyping.php">Rapid Prototyping</a></li>
+          <li><a href="mobile.php">Mobility</a></li>
+        </ul>
       </div>
     </div>
   
