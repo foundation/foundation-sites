@@ -64,7 +64,7 @@
           <script src="https://gist.github.com/2980465.js?file=f3-nav-main.html"></script>
           
           <h5>Dropdown Lists</h5>
-          <p>In the nav bar you can use a dropdown to only contain a <code>ul</code> of anchors which will act as a dropdown on hover. The individual entry includes a main link (which can lead to a top-level page) and the dropdown element. Note that dropdowns require the parent to have <code>.has-dropdown</code>.
+          <p>In the nav bar you can use a dropdown to only contain a <code>ul</code> of anchors, which will act as a dropdown on hover. The individual entry includes a main link (which can lead to a top-level page) and the dropdown element. Note that dropdowns require the parent to have <code>.has-dropdown</code>.
           
           <script src="https://gist.github.com/2980469.js?file=f3-nav-dropdown-list.html"></script>
           
@@ -120,7 +120,7 @@
   				    
   				  </div>
   				  <div class="eight columns">
-  				    <p>The same nav bar seen above, with the same structure, can be made a vertical nav bar which still supports flyout content by adding a class of <code>.vertical</code> to the element. This is ideal for sidebar navigation, and is very similar to the vertical tabs seen on the Tabs documentation page.</p>
+  				    <p>The same nav bar seen above, with the same structure, can be made a vertical nav bar that still supports flyout content by adding a class of <code>.vertical</code> to the element. This is ideal for sidebar navigation, and is very similar to the vertical tabs seen on the Tabs documentation page.</p>
   				  </div>
   				</div> 
   				
@@ -157,7 +157,7 @@
 		      <hr />
 		      
 		      <h4>Pagination</h4>
-		      <p>Moving between pages has become less common with the advent of longer pages, and AJAX loading, but it can still be useful for long repetitive listings or content.</p>
+		      <p>Moving between pages has become less common with the advent of longer pages and AJAX loading, but it can still be useful for long repetitive listings or content.</p>
 		      
           <ul class="pagination">
           	<li class="arrow unavailable"><a href="">&laquo;</a></li>

@@ -26,7 +26,7 @@
       <div class="ten columns">
       	<img src="images/feature-grid-1.png" />
         <h4>Flexible, efficient layout.</h4>
-        <p>You've probably used a grid framework before &mdash; we think you'll like this one. It's a 12 column flexible grid that can scale out to an arbitrary size (defined by the max-width of the row) that's also easily nested, so you can build out complicated layouts without creating a lot of custom elements. And when the Grid isn't enough for your site, it just gets out of the way. <br/> <a href="docs/grid.php">Grid docs &rarr;</a></p>
+        <p>You've probably used a grid framework before &mdash; we think you'll like this one. It's a 12-column flexible grid that can scale out to an arbitrary size (defined by the max-width of the row) that's also easily nested, so you can build out complicated layouts without creating a lot of custom elements. And when the Grid isn't enough for your site, it just gets out of the way. <br/> <a href="docs/grid.php">Grid docs &rarr;</a></p>
         
         <h4>Examples</h4>
         <div class="row">

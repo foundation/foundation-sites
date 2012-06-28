@@ -6,7 +6,7 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>Tabs</h3>
-    			<h4 class="subheader">Tabs are very versatile both as organization and navigational constructs. With the base Foundation package, tabs in the markup specified below are already hooked up - no extra work required.</h4>
+    			<h4 class="subheader">Tabs are very versatile both as organization and navigational constructs. With the base Foundation package, tabs in the markup specified below are already hooked up &mdash; no extra work required.</h4>
   				
   				<hr />
   				
@@ -53,7 +53,7 @@
   				<hr />
   
   				<h4>Contained Tabs</h4>
-  				<p>Contained tabs have a simple added class of 'contained' on the tabs-content element. What that means is the tab content has a border around it tying it to the tabs. You can still use standard column sizes inside a tab element.</p>
+  				<p>Contained tabs have a simple added class of "contained" on the tabs-content element. What that means is the tab content has a border around it tying it to the tabs. You can still use standard column sizes inside a tab element.</p>
   				
   				<p>You'll also notice in this example that a <code>dt</code> element can serve to label groups of tabs.</p>
   
@@ -75,7 +75,7 @@
   				<hr />
   				
   				<h4>Pill-Style Tabs</h4>
-  				<p>If you need an alternate view for tabs (especially for filters, or similar) you can use pill-style tabs. They look like this:</p>
+  				<p>If you need an alternate view for tabs (especially for filters, or similar), you can use pill-style tabs. They look like this:</p>
   				
           <dl class="tabs pill">
           	<dd class="active"><a href="#pillTab1">Pill Tab 1</a></dd>
@@ -101,7 +101,7 @@
   				<hr />
   
   				<h4>Mobile Tabs</h4>
-  				<p>If you want a standard, horizontal tab group to act vertical on small devices, adding a class of 'mobile' to a standard (not vertical) tab group will switch them to full width nav bars on small screens.</p>   			
+  				<p>If you want a standard, horizontal tab group to act vertical on small devices, adding a class of "mobile" to a standard (not vertical) tab group will switch them to full width nav bars on small screens.</p>   			
       			
     		</div>
     		<div class="four columns">

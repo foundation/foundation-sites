@@ -6,10 +6,10 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>Typography</h3>
-    			<h4 class="subheader">Foundation 3 uses a modular scale to generate typography. That means a great, logical vertical rythm whether you use the SCSS version, or just download the CSS.</h4>
+    			<h4 class="subheader">Foundation 3 uses a modular scale to generate typography. That means a great, logical vertical rhythm whether you use the SCSS version, or just download the CSS.</h4>
     			
     			<h4>How a Modular Scale Works</h4>
-  				<p>Based on some stellar work by <a href="http://www.alistapart.com/articles/more-meaningful-typography/">Tim Brown</a>, the idea of a <a href="http://www.zurb.com/article/1000/foundation-30-typography-and-modular-scal">modular scale</a> is that the size and spacing of all of the typography in the framework is derived from an initial value, another arbitrary 'important' value, and a particular ratio. We chose to use the Golden ratio, but there are others available.</p>
+  				<p>Based on some stellar work by <a href="http://www.alistapart.com/articles/more-meaningful-typography/">Tim Brown</a>, the idea of a <a href="http://www.zurb.com/article/1000/foundation-30-typography-and-modular-scal">modular scale</a> is that the size and spacing of all of the typography in the framework is derived from an initial value, another arbitrary "important"" value, and a particular ratio. We chose to use the golden ratio, but there are others available.</p>
   				<p>We then use Sass to generate sizes based on those values, in an ascending scale of size and spacing. If you use the SCSS version of Foundation you can easily change these values, otherwise we default to a 14px base with a 44px important value (based on common UI element size).</p>
   				
   				<script src="https://gist.github.com/2952520.js?file=f3-modscale.scss"></script>
@@ -17,7 +17,7 @@
   				<hr />
   				
   				<h4>General Typography</h4>
-  				<p>These are the basic elements of typography and rythm in Foundation 3.</p>   
+  				<p>These are the basic elements of typography and rhythm in Foundation 3.</p>   
   				
   				<div class="typography">
   				
@@ -28,14 +28,14 @@
   				  <h5>h5. This is small header.</h5>
   				  <h6>h6. This is very small header.</h6>
   				  
-  				  <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rythm. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  				  <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, let's see...did you know that there are storms occurring on Jupiter that are larger than the Earth? That's pretty cool.</p>
   				
   				</div>
   				
   				<hr />
   				
   				<h4>Header Styles</h4>
-  				<p>Foundation 3 includes a number of different styles and treatments for typographic elements, like subheaders or small header segments.</p>
+  				<p>Foundation 3 includes a number of different styles and treatments for typographic elements, such as subheaders or small header segments.</p>
   				
   				<div class="typography">
   				
@@ -65,7 +65,7 @@
   				<hr />
   				
   				<h4>Lists</h4>
-  				<p>Lists are helpful for, well, lists of things. Foundation 3 uses <a href="http://necolas.github.com/normalize.css/">Normalize.css</a> so lists won't be reset as they were in previous versions, however we still provide a few simple affordances for lists.</p>
+  				<p>Lists are helpful for, well, lists of things. Foundation 3 uses <a href="http://necolas.github.com/normalize.css/">Normalize.css</a> so lists won't be reset as they were in previous versions. However, we still provide a few simple affordances for lists.</p>
   				
   				<div class="row">
   				

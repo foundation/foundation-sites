@@ -9,8 +9,7 @@
     			<h4 class="subheader">Start using Foundation the way you want, with more control than ever before.</h4>
 
     			<h4>SCSS and CSS</h4>
-  				<p>There are two ways you can use Foundation: with Sass (SCSS), and with straight up CSS. If you're comfortable with Sass, working that way will give you a little more control over the framework as well as a lot of other niceties. If you're not comfortable with preprocessors, the CSS version is full featured and can be customized as well.</p>
-
+  				<p>There are two ways you can use Foundation &mdash; with Sass (SCSS), and with straight up CSS. If you're comfortable with Sass, working that way will give you a little more control over the framework as well as a lot of other niceties. If you're not comfortable with preprocessors, the CSS version is full featured and can be customized as well.</p>
   				<hr />
 
   				<h4>SCSS: Installing with Compass</h4>
@@ -26,9 +25,8 @@
 
   				<h4>CSS: Customize and Download</h4>
   				<p>If you'd rather not work with a preprocessor like Sass, you can download Foundation as a single code pack with everything you need to create a responsive site.</p>
-
-  				<p>Visit the <a href="../download.php">download page</a> to get started with a CSS pack. You can choose to simply download everything, with most files joined to reduce requests, and with smart defaults that we've set. Alternately you can customize your download by including or omitting different pieces of the framework, and setting many of the Sass variables like colors, grid size and columns, etc.</p>
-
+  				
+  				<p>Visit the <a href="../download.php">download page</a> to get started with a CSS pack. You can choose to simply download everything, with most files joined to reduce requests and with smart defaults that we've set. Alternately you can customize your download by including or omitting different pieces of the framework, and setting many of the Sass variables like colors, grid size and columns, etc.</p>
     		</div>
     		<div class="four columns">
     		  <? include("includes/_download.php"); ?>

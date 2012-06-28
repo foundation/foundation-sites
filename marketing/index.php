@@ -25,13 +25,13 @@
             <div class="pic" id="homepageImgSass"></div>
             
             <h5>Developed with Sass</h5>
-            <p>Foundation 3 is built with Sass, a powerful CSS preprocessor which allows us to much more quickly develop Foundation itself - and gives you new tools to quickly customize and built on top of Foundation.</p>
+            <p>Foundation 3 is built with Sass, a powerful CSS preprocessor, which allows us to much more quickly develop Foundation itself &mdash; and gives you new tools to quickly customize and built on top of Foundation.</p>
           </div>
           <div class="four columns">
             <div class="pic" id="homepageImgFeatures"></div>
             
             <h5>Feature Complete</h5>
-            <p>We've added new elements, new options, and tons of streamlining to make this the fastest way to prototype responsively, and take that right into production.</p>
+            <p>We've added new elements, new options, and tons of streamlining to make this the fastest way to prototype responsively &mdash; and take that right into production.</p>
           </div>
           <div class="four columns">
             <div class="pic" id="homepageImgAdvanced"></div>
