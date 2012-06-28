@@ -709,7 +709,7 @@ label { font-size: 13px; color: #4d4d4d; cursor: pointer; display: block; font-w
 label.right { float: none; text-align: right; padding-top: 6px; }
 
 @media only screen and (max-width: 767px) { label.right { text-align: left; } }
-.prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: 30px; line-height: 30px; }
+.prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: 31px; line-height: 31px; }
 
 span.prefix, span.postfix { background: #f2f2f2; border: 1px solid #cccccc; }
 
@@ -721,9 +721,6 @@ input[type="text"], textarea { border: 1px solid #cccccc; -webkit-border-radius:
 input[type="text"].oversize, textarea.oversize { font-size: 18px !important; font-size: 1.8 rem !important; }
 input[type="text"]:focus, textarea:focus { background: #fafafa; outline: none !important; border-color: #b3b3b3; }
 input[type="text"][disabled], textarea[disabled] { background-color: #ddd; }
-
-/* Correct FF input padding */
-@-moz-document url-prefix() { input[type="text"], textarea { padding: 7px 6px 6px; } }
 
 select { width: 100%; }
 
@@ -741,11 +738,23 @@ fieldset legend { font-weight: bold; background: white; padding: 0 3px; margin: 
 
 .form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #c60f13; color: #fff; font-size: 12px; font-size: 1.2 rem; font-weight: bold; -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; -ms-border-top-left-radius: 2px; -o-border-top-left-radius: 2px; border-top-left-radius: 2px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+@media only screen and (max-width: 767px) { input[type="text"].one, textarea.one { width: 100% !important; }
+  input[type="text"].two, textarea.two { width: 100% !important; }
+  input[type="text"].three, textarea.three { width: 100% !important; }
+  input[type="text"].four, textarea.four { width: 100% !important; }
+  input[type="text"].five, textarea.five { width: 100% !important; }
+  input[type="text"].six, textarea.six { width: 100% !important; }
+  input[type="text"].seven, textarea.seven { width: 100% !important; }
+  input[type="text"].eight, textarea.eight { width: 100% !important; }
+  input[type="text"].nine, textarea.nine { width: 100% !important; }
+  input[type="text"].ten, textarea.ten { width: 100% !important; }
+  input[type="text"].eleven, textarea.eleven { width: 100% !important; }
+  input[type="text"].twelve, textarea.twelve { width: 100% !important; } }
 /* Custom Forms ---------------------- */
 form.custom { /* Custom input, disabled */ }
 form.custom span.custom { display: inline-block; width: 14px; height: 14px; position: relative; top: 2px; border: solid 1px #ccc; background: #fff; }
 form.custom span.custom.radio { -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; border-radius: 100px; }
-form.custom span.custom.checkbox:before { content: "\00d7"; position: relative; top: -3px; left: 2px; font-size: 13px; color: #fff; }
+form.custom span.custom.checkbox:before { content: "\00d7"; position: relative; top: -2px; left: 2px; font-size: 13px; color: #fff; }
 form.custom span.custom.radio.checked:before { content: ""; display: block; width: 8px; height: 8px; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; border-radius: 100px; background: #222; position: relative; top: 2px; left: 2px; }
 form.custom span.custom.checkbox.checked:before { content: "\00d7"; position: relative; top: -3px; left: 2px; font-size: 13px; color: #222; }
 form.custom div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px; }
