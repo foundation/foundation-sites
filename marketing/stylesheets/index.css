@@ -299,6 +299,7 @@ that IE7/8 do not support :nth-child.
 /* Requires: globals.css */
 /* Table of Contents
 
+:: Visibility
 :: Alerts
 :: Labels
 :: Tooltips
@@ -315,6 +316,44 @@ that IE7/8 do not support :nth-child.
 :: Microformats
 
 */
+/* Visibility Classes ---------------------- */
+/* Standard visibility targeting */
+.show-for-small, .show-for-medium, .hide-for-large, .show-for-xlarge { display: none !important; }
+
+.hide-for-xlarge, .show-for-large, .hide-for-small, .hide-for-medium { display: block !important; }
+
+/* Very large display targeting */
+@media only screen and (min-width: 1441px) { .hide-for-small, .hide-for-medium, .hide-for-large, .show-for-xlarge { display: block !important; }
+  .show-for-small, .show-for-medium, .show-for-large, .hide-for-xlarge { display: none !important; } }
+/* Medium display targeting */
+@media only screen and (max-width: 1279px) and (min-width: 768px) { .hide-for-small, .show-for-medium, .hide-for-large, .hide-for-xlarge { display: block !important; }
+  .show-for-small, .hide-for-medium, .show-for-large, .show-for-xlarge { display: none !important; } }
+/* Small display targeting */
+@media only screen and (max-width: 767px) { .show-for-small, .hide-for-medium, .hide-for-large, .hide-for-xlarge { display: block !important; }
+  .hide-for-small, .show-for-medium, .show-for-large, .show-for-xlarge { display: none !important; } }
+/* Orientation targeting */
+.show-for-landscape, .hide-for-portrait { display: block !important; }
+
+.hide-for-landscape, .show-for-portrait { display: none !important; }
+
+@media screen and (orientation: landscape) { .show-for-landscape, .hide-for-portrait { display: block !important; }
+  .hide-for-landscape, .show-for-portrait { display: none !important; } }
+@media screen and (orientation: portrait) { .show-for-portrait, .hide-for-landscape { display: block !important; }
+  .hide-for-portrait, .show-for-landscape { display: none !important; } }
+/* Touch-enabled device targeting */
+.show-for-touch { display: none !important; }
+
+.hide-for-touch { display: block !important; }
+
+.touch .show-for-touch { display: block !important; }
+
+.touch .hide-for-touch { display: none !important; }
+
+/* Specific overrides for elements that require something other than display: block */
+table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-for-medium { display: table !important; }
+
+@media only screen and (max-width: 1279px) and (min-width: 768px) { .touch table.hide-for-xlarge, .touch table.hide-for-large, .touch table.hide-for-small, .touch table.show-for-medium { display: table !important; } }
+@media only screen and (max-width: 767px) { table.hide-for-xlarge, table.hide-for-large, table.hide-for-medium, table.show-for-small { display: table !important; } }
 /* Alerts ---------------------- */
 div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: 14px; color: white; background-color: #2ba6cb; border: 1px solid rgba(0, 0, 0, 0.1); margin-bottom: 12px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; text-shadow: 0 -1px rgba(0, 0, 0, 0.3); position: relative; }
 div.alert-box.success { background-color: #5da423; color: #fff; text-shadow: 0 -1px rgba(0, 0, 0, 0.3); }
@@ -348,6 +387,8 @@ div.alert-box a.close:hover, div.alert-box a.close:focus { opacity: 0.4; }
 
 .tap-to-close { display: block; font-size: 10px; font-size: 1 rem; color: #888; font-weight: normal; }
 
+@media only screen and (max-width: 767px) { .tooltip { font-size: 14px; font-size: 1.4 rem; line-height: 1.4; padding: 7px 10px 9px 10px; }
+  .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub { border-color: transparent transparent black transparent; border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent; top: -12px; left: 10px; } }
 /* Panels ---------------------- */
 div.panel { background: #f2f2f2; border: solid 1px #e6e6e6; margin: 0 0 22px 0; padding: 20px; }
 div.panel *:first-child { margin-top: 0; }
@@ -414,6 +455,7 @@ ul.link-list li a { display: block; }
 .flex-video.vimeo { padding-top: 0; }
 .flex-video iframe, .flex-video object, .flex-video embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) { .flex-video { padding-top: 0; } }
 /* Tables ---------------------- */
 table { background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin: 0 0 18px; border: 1px solid #ddd; }
 
@@ -473,6 +515,8 @@ p.vevent abbr { cursor: default; text-decoration: none; font-weight: bold; borde
 /* Don't use native buttons on iOS */
 input[type=submit].button, button.button { -webkit-appearance: none; }
 
+@media only screen and (max-width: 767px) { .button { display: block; }
+  button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; } }
 /* Correct FF button padding */
 @-moz-document url-prefix() { button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner { border: none; padding: 0; }
   input[type="submit"].tiny.button { padding: 3px 10px 4px; }
@@ -584,6 +628,17 @@ ul.tabs-content.contained.vertical > li { border-width: 1px 1px 1px 1px; }
 
 .no-js ul.tabs-content > li { display: block; }
 
+@media only screen and (max-width: 767px) { dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
+  dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
+  dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5 rem; }
+  dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
+  .tabs.mobile { border-bottom: solid 1px #ccc; height: auto; }
+  .tabs.mobile dd a { padding: 18px 20px; border: none; border-left: none; border-right: none; border-top: 1px solid #ccc; background: #fff; }
+  .tabs.mobile dd a.active { border: none; background: #2ba6cb; color: #fff; margin: 0; position: static; top: 0; height: auto; }
+  .tabs.mobile dd:first-child a.active { margin: 0; }
+  dl.contained.mobile, dl.nice.contained.mobile { margin-bottom: 0; }
+  dl.contained.tabs.mobile dd a { padding: 18px 20px; }
+  dl.tabs.mobile + ul.contained { margin-left: -20px; margin-right: -20px; border-width: 0 0 1px 0; } }
 /* Requires globals.css */
 .nav-bar { height: 40px; background: #4d4d4d; margin-top: 20px; padding: 0; }
 .nav-bar > li { float: left; display: block; position: relative; padding: 0; margin: 0; border: 1px solid #333333; border-right: none; line-height: 38px; -webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset; -moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset; box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset; }
@@ -649,6 +704,7 @@ form { margin: 0 0 19.416px; }
 label { font-size: 13px; color: #4d4d4d; cursor: pointer; display: block; font-weight: 500; margin-bottom: 3px; }
 label.right { float: none; text-align: right; padding-top: 6px; }
 
+@media only screen and (max-width: 767px) { label.right { text-align: left; } }
 .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: 30px; line-height: 30px; }
 
 span.prefix, span.postfix { background: #f2f2f2; border: 1px solid #cccccc; }
@@ -832,65 +888,9 @@ ul.orbit-bullets li.active.has-thumb { background-position: 0 0; border-top: 2px
 ----------------------------------------- */
 /* Requires: buttons.css forms.css grid.css tabs.css typography.css ui.css modernizr
 */
-/* Typography ---------------------- */
-/* Visibility Affordances ---------------------- */
-/* Desktop visibility targeting */
-.show-for-small, .show-for-medium, .hide-for-large, .show-for-xlarge { display: none !important; }
-
-.hide-for-xlarge, .show-for-large, .hide-for-small, .hide-for-medium { display: block !important; }
-
-/* Very large display targeting */
-@media only screen and (min-width: 1441px) { .hide-for-small, .hide-for-medium, .hide-for-large, .show-for-xlarge { display: block !important; }
-  .show-for-small, .show-for-medium, .show-for-large, .hide-for-xlarge { display: none !important; } }
-/* Modernizr-enabled tablet targeting */
-@media only screen and (max-width: 1279px) and (min-width: 768px) { .hide-for-small, .show-for-medium, .hide-for-large, .hide-for-xlarge { display: block !important; }
-  .show-for-small, .hide-for-medium, .show-for-large, .show-for-xlarge { display: none !important; } }
-/* Small device targeting */
-@media only screen and (max-width: 767px) { .show-for-small, .hide-for-medium, .hide-for-large, .hide-for-xlarge { display: block !important; }
-  .hide-for-small, .show-for-medium, .show-for-large, .show-for-xlarge { display: none !important; } }
-/* Orientation targeting */
-.show-for-landscape, .hide-for-portrait { display: block !important; }
-
-.hide-for-landscape, .show-for-portrait { display: none !important; }
-
-@media screen and (orientation: landscape) { .show-for-landscape, .hide-for-portrait { display: block !important; }
-  .hide-for-landscape, .show-for-portrait { display: none !important; } }
-@media screen and (orientation: portrait) { .show-for-portrait, .hide-for-landscape { display: block !important; }
-  .hide-for-portrait, .show-for-landscape { display: none !important; } }
-/* Touch-enabled device targeting */
-.show-for-touch { display: none !important; }
-
-.hide-for-touch { display: block !important; }
-
-.touch .show-for-touch { display: block !important; }
-
-.touch .hide-for-touch { display: none !important; }
-
-/* Specific overrides for elements that require something other than display: block */
-table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-for-medium { display: table !important; }
-
-@media only screen and (max-width: 1279px) and (min-width: 768px) { .touch table.hide-for-xlarge, .touch table.hide-for-large, .touch table.hide-for-small, .touch table.show-for-medium { display: table !important; } }
-@media only screen and (max-width: 767px) { table.hide-for-xlarge, table.hide-for-large, table.hide-for-medium, table.show-for-small { display: table !important; } }
 /* Forms ---------------------- */
-@media only screen and (max-width: 767px) { label.right { text-align: left; } }
 /* UI ---------------------- */
 /* Buttons */
-@media only screen and (max-width: 767px) { .button { display: block; }
-  button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; margin-bottom: 5px; } }
 /* Tabs */
-@media only screen and (max-width: 767px) { dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
-  dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
-  dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5 rem; }
-  dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
-  .tabs.mobile { border-bottom: solid 1px #ccc; height: auto; }
-  .tabs.mobile dd a { padding: 18px 20px; border: none; border-left: none; border-right: none; border-top: 1px solid #ccc; background: #fff; }
-  .tabs.mobile dd a.active { border: none; background: #2ba6cb; color: #fff; margin: 0; position: static; top: 0; height: auto; }
-  .tabs.mobile dd:first-child a.active { margin: 0; }
-  dl.contained.mobile, dl.nice.contained.mobile { margin-bottom: 0; }
-  dl.contained.tabs.mobile dd a { padding: 18px 20px; }
-  dl.tabs.mobile + ul.contained { margin-left: -20px; margin-right: -20px; border-width: 0 0 1px 0; } }
 /* Tooltips */
-@media only screen and (max-width: 767px) { .tooltip { font-size: 14px; font-size: 1.4 rem; line-height: 1.4; padding: 7px 10px 9px 10px; }
-  .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub { border-color: transparent transparent black transparent; border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent; top: -12px; left: 10px; } }
 /* Video */
-@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) { .flex-video { padding-top: 0; } }

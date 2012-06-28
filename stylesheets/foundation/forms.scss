@@ -20,6 +20,10 @@
 
     &.right { float: none; text-align: right; padding-top: ($formSpacing / 2); }
   }
+  
+  @media #{$media-small} {
+    label.right { text-align: left; }
+  }
 
   .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: 30px; line-height: 30px;  }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
