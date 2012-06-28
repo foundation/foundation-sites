@@ -40,7 +40,7 @@
           <li><a href="docs/index.php">Documentation</a></li>
           <li><a href="docs/install.php">Install</a></li>
           <li><a href="about.php">About</a></li>
-          <li><a href="http://feeds.feedburner.com/zurb/blog"><span class="glyph"></span> Subscribe to the ZURBlog</a></li>
+          <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
         </ul>
       </div>
     </div>
