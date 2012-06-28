@@ -58,8 +58,9 @@ jQuery(document).ready(function ($) {
   /* DROPDOWN NAV ------------- */
 
   var lockNavBar = false;
-  $('.nav-bar a.flyout-toggle').on('click.fndtn touchstart.fndtn', function(e) {
+  $('.nav-bar a.flyout-toggle').on('click.fndtn touchstart.fndtn mousedown.fndtn mouseup.fndtn mouseover.fndtn mouseout.fndtn', function(e) {
     e.preventDefault();
+    console.log($(this).data('events'));
     var flyout = $(this).siblings('.flyout');
     if (lockNavBar === false) {
       $('.nav-bar .flyout').not(flyout).slideUp(500);
