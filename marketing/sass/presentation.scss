@@ -18,13 +18,15 @@ footer span.glyph { font-size: 23px; }
 #copyright p, #copyright ul.link-list { margin-bottom: 0; }
 #copyright a { color: #fff; }
 
-.gist .gist-file { border-radius: 3px; }
-.gist .gist-file .gist-data { background: #f9f9f9 !important; border-radius: 3px; }
+.gist .gist-file {
+  .gist-file { border-radius: 3px; }
+  .gist-file .gist-data { background: #f9f9f9 !important; border-radius: 3px; }
+  .gist-file .gist-data { border-bottom: none !important; }
+  .gist-file .gist-meta { background: #fff !important; border: none !important; color: #ccc !important; padding-top: 11px !important; }
+  .gist-file .gist-meta a { color: #999 !important; }
+  .gist-file .gist-meta a:hover { text-decoration: underline; }
+}
 .gist-data pre { font-size: 13px; font-size: 1.3rem; line-height: 18px; }
-.gist .gist-file .gist-data { border-bottom: none !important; }
-.gist .gist-file .gist-meta { background: #fff !important; border: none !important; color: #ccc !important; padding-top: 11px !important; }
-.gist .gist-file .gist-meta a { color: #999 !important; }
-.gist .gist-file .gist-meta a:hover { text-decoration: underline; }
 
 header { background-color: #2ba6cb; padding: 22px 0; 
   
@@ -72,6 +74,7 @@ header#homepage { background: image-url("device-bg.png") center bottom no-repeat
   span, #github a { color: #fff; font-size: 12px; font-size: 1.2rem; display: block; word-wrap: break-word; line-height: 1.3; margin-bottom: 3px; }
   span { font-weight: bold; }
   span.date { text-transform: uppercase; color: #d8f7fd; }
+  a.commit { font-weight: bold; font-size: 12px; font-size: 1.2rem; word-break: break-word; }
   a.button { margin: 22px 0 44px; color: #3f3f3f; border: none; background: #fff; }
   a.button:hover { background: #eee; }
   img { display: block; }  
@@ -98,8 +101,25 @@ header#homepage { background: image-url("device-bg.png") center bottom no-repeat
   .block-grid li a img { display: block; margin: 0 auto; }  
 }
 
-.case-study { background: image-url("case-study-bg.png") left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; }
-.case-study img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; }
+.case-study { background: image-url("case-study-bg.png") left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; overflow: hidden; 
+  
+  img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; }
+}
+
+@media #{$media-portrait} {
+  .case-study { padding-left: 20px;
+    
+    img { width: 50%; z-index: 2; opacity: 0.1; }
+    h4, p { position: relative; z-index: 3; }
+  }
+}
+
+@media #{$media-small} {
+  .case-study { padding-left: 20px; padding-bottom: 140px;
+  
+    img { width: auto; height: 120px; }
+  }
+}
 
 
 /* Secondary Pages */
@@ -132,10 +152,12 @@ header#homepage { background: image-url("device-bg.png") center bottom no-repeat
 
 
 /* Customizer Page */
-.customizer li { padding: 6px 0; }
-.customizer li:first-child { padding-top: 0; }
-.customizer li label { font-size: 13px; font-size: 1.3rem; line-height: 1; margin-bottom: 0; }
-.customizer li em { padding-left: 16px; font-size: 11px; font-size: 1.1rem; color: #777; font-style: normal; }
+.customize {
+  li { padding: 6px 0; }
+  li:first-child { padding-top: 0; }
+  li label { font-size: 13px; font-size: 1.3rem; line-height: 1; margin-bottom: 0; }
+  li em { padding-left: 16px; font-size: 11px; font-size: 1.1rem; color: #777; font-style: normal; }
+}
 
 /* Fonts */
 
