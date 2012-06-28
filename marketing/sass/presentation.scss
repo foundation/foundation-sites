@@ -82,13 +82,15 @@ header#homepage .button:hover { background: #006582; }
 #usingFoundation .block-grid li a img { display: block; margin: 0 auto; }
 
 @media only screen and (max-width: 767px) { #usingFoundation a.top-right { display: none; } }
+
 .case-study { background: url('../images/case-study-bg.png?1340846519') left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; overflow: hidden; }
-.case-study a img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; border: none; }
+.case-study a img { position: absolute; width: 45%; height: auto; left: 0; bottom: 0; display: block; border: none; }
 
 @media screen and (orientation: portrait) { .case-study { padding-left: 20px; }
   .case-study img { width: 50%; z-index: 2; opacity: 0.1; }
   .case-study h4, .case-study p { position: relative; z-index: 3; } }
-@media only screen and (max-width: 767px) { .case-study { padding-left: 20px; padding-bottom: 110px; }
+@media only screen and (max-width: 767px) { 
+  .case-study { padding-left: 20px; padding-bottom: 130px; }
   .case-study img { width: auto; height: 120px; opacity: 1; } }
 /* Secondary Pages */
 #mainContent { margin-top: 44px; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid #eee; overflow: hidden; }
