@@ -1,8 +1,8 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Rapid Prototyping Social Network Example" ?>
 <?php include("includes/_header.php"); ?>
-  
 
-  
+
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -11,9 +11,9 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent" class="example">
-  
+
 	<div class="row">
 	  	<div class="eight columns">
 	  		<h3>Ye Olde Game Reviews</h3>
@@ -25,7 +25,7 @@
 	  		<p><a href="#">Login</a> <a href="#" class="">Sign Up</a>
 	  	</div>
 	  </div>
-	  
+
 	  <div class="row">
 	  	<div class="twelve columns">
 	  		<ul class="block-grid four-up">
@@ -48,17 +48,17 @@
 	  		</ul>
 	  	</div>
 	  </div>
-	  
+
 	  <div class="row">
 	  	<hr />
 	  </div>
-	  
+
 	  <div class="row">
 	  	<div class="six columns">
 	  		<h4>Gaming News</h4>
 	  		<h5><a href="#">Games of the Future will have 16 Bits</a></h5>
 	  		<p>We don't even know what it means, but we heard from a trusted source that games in the future will have 16 whole bits in them. Get ready, we guess? <a href="#">Read More &rarr;</a></p>
-	  		
+
 	  		<h5><a href="#">Does Nintendo Have Plans for Games?</a></h5>
 	  		<p>Japenese playing card manufacturer Nintendo may have ideas about entering the gaming industry. We've heard rumors they are working on something called Famicon, but take it with a grain of salt. We imagine Atari will dominate games for the next 20 or 30 years. <a href="#">Read More &rarr;</a></p>
 	  	</div>
@@ -96,7 +96,7 @@
 	  		</div>
 	  	</div>
 	  </div>
-  
-  </section>  
-  	
+
+  </section>
+
 <?php include("includes/_footer.php");  ?>

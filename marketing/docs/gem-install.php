@@ -18,9 +18,9 @@
 
               <dl class="sub-nav">
                 <dt>Go to:</dt>
-                <dd class="active"><a href="#installing">Installing</a></dd>
-                <dd class="active"><a href="#settings">Settings</a></dd>
-                <dd class="active"><a href="#mixins">Mixins &amp; Functions</a></dd>
+                <dd><a href="#installing">Installing</a></dd>
+                <dd><a href="#settings">Settings</a></dd>
+                <dd><a href="#mixins">Mixins &amp; Functions</a></dd>
               </dl>
 
               <hr>

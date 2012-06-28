@@ -1,6 +1,6 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Mobile Visibility" ?>
 <?php include("includes/_header.php"); ?>
-  
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -9,9 +9,9 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent">
-  
+
 	 <div class="row hide-for-small">
 	  	<div class="twelve columns">
 	  		<h3>Larger Interface</h3><br />
@@ -60,10 +60,10 @@
 	      </ul>
 	     </div>
 	  </div>
-	  
+
 	  <div class="row show-for-small">
 	  	<div class="twelve columns">
-	  		
+
 	  		<h3>Small Interface</h3><br />
 	  		<p>As an example, you'll only see this interface if you're on a phone (something with a resolution lower than desktops or tablets). On a phone our columns will all stack, and we would place navigation at the bottom of the page.</p>
 	  		<ul class="block-grid three-up">
@@ -76,7 +76,7 @@
 	  		</ul>
 	  	</div>
 	  </div>
-	  
+
 	  <div class="row show-for-small">
 	  	<div class="twelve columns">
 	  		<dl class="nice mobile tabs">
@@ -87,8 +87,8 @@
 	  	</div>
 	  </div>
   </section>
-	 
-  
-    
-  	
+
+
+
+
 <?php include("includes/_footer.php");  ?>

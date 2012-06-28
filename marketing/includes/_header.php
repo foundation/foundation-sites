@@ -13,15 +13,27 @@
 
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- For third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicons/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicons/apple-touch-icon-114x114-precomposed.png">
+  <!-- For first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicons/apple-touch-icon-72x72-precomposed.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="images/favicons/apple-touch-icon-precomposed.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
 
-	<meta name="description" content="Foundation is an easy to use, powerful, and flexible framework for building rapid prototypes and production code on any kind of device." />
+  <link rel="icon" href="images/favicons/favicon.ico" type="image/x-icon" />
+
+  <meta name="keywords" content="design strategy, interaction design, design thinking, zurb, design" />
+  <meta name="description" content="ZURB, creating unique customer and user experiences. We are brand engineers that provide companies with strategic marketing, design and branding solutions.  Work includes identity, branding, information design, web design, illustration, software design, icon design, and multimedia work." />
+  <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
+  <meta name="copyright" content="ZURB, inc. Copyright (c) 2012" />
 
 	<title>Foundation: <?= $page_title ?></title>
-	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
-	<link rel="icon" type="image/ico" href="favicon.ico">
+  <meta name="description" content="Foundation is an easy to use, powerful, and flexible framework for building rapid prototypes and production code on any kind of device." />
 
 	<!-- Included CSS Files -->
-
   <link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
   <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
 	<link rel="stylesheet" href="stylesheets/presentation.css">
