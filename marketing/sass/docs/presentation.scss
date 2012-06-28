@@ -71,7 +71,8 @@ header .subheader { position: relative; top: -18px; }
   .top-bar .attached > .name span { padding-left: 0 !important; }
 }
 @media only screen and (max-width: 767px) {
-  .top-bar { height: auto !important; }
+  .top-bar { overflow: hidden; height: 45px; }
+  .top-bar.expanded { height: auto !important; }
   .top-bar .name span { margin-left: 0px !important; }
   .top-bar .attached > ul > li > a, .top-bar .attached > ul > li > span { padding-left: 0px; padding-right: 0px; }
   .top-bar .attached > ul > li.download a { margin-bottom: 30px !important; margin-top: 10px; }
