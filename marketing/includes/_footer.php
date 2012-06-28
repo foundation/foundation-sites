@@ -46,15 +46,15 @@
     </div>
   </div>
   
-  <script src="../js/jquery.min.js"></script>
-	<script src="../js/modernizr.foundation.js"></script>
+  <script src="javascripts/foundation/jquery.min.js"></script>
+	<script src="javascripts/foundation/modernizr.foundation.js"></script>
 	<script src="jswipe.js"></script>
-	<script src="../js/jquery.reveal.js"></script>
-	<script src="../js/jquery.orbit-1.4.0.js"></script>
-	<script src="../js/jquery.customforms.js"></script>
-	<script src="../js/jquery.placeholder.min.js"></script>
-	<script src="../js/jquery.tooltips.js"></script>
-	<script src="../js/app.js"></script>
+	<script src="javascripts/foundation/jquery.reveal.js"></script>
+	<script src="javascripts/foundation/jquery.orbit-1.4.0.js"></script>
+	<script src="javascripts/foundation/jquery.customforms.js"></script>
+	<script src="javascripts/foundation/jquery.placeholder.min.js"></script>
+	<script src="javascripts/foundation/jquery.tooltips.js"></script>
+	<script src="javascripts/foundation/app.js"></script>
 	<script src="swipe.js"></script>
 	<script src="github.js"></script>
 	<script src="http://www.zurb.com/assets/zurb.mega-drop.js"></script>
