@@ -934,7 +934,13 @@ header#homepage .button:hover { background: #006582; }
 #homepageFeatures h3 { color: #2ba6cb; }
 #homepageFeatures div.pic { width: 110px; height: 110px; background-size: 100% 100%; }
 
+<<<<<<< HEAD
 .pic#homepageImgSass { background-image: url('../images/homepageImgSass.png?1340842456'); }
+=======
+@media only screen and (max-width: 767px) { header#homepage { background-size: auto 130px; padding-bottom: 150px; }
+  #homepageFeatures { padding-top: 30px; } }
+.pic#homepageImgSass { background-image: url('../images/homepageImgSass.png?1340846519'); }
+>>>>>>> Retooled the marketing site for mobile
 
 .pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures.png?1340842456'); }
 
@@ -977,8 +983,8 @@ header#homepage .button:hover { background: #006582; }
 @media screen and (orientation: portrait) { .case-study { padding-left: 20px; }
   .case-study img { width: 50%; z-index: 2; opacity: 0.1; }
   .case-study h4, .case-study p { position: relative; z-index: 3; } }
-@media only screen and (max-width: 767px) { .case-study { padding-left: 20px; padding-bottom: 140px; }
-  .case-study img { width: auto; height: 120px; } }
+@media only screen and (max-width: 767px) { .case-study { padding-left: 20px; padding-bottom: 110px; }
+  .case-study img { width: auto; height: 120px; opacity: 1; } }
 /* Secondary Pages */
 #mainContent { margin-top: 44px; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid #eee; overflow: hidden; }
 
