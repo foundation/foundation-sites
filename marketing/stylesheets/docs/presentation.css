@@ -960,14 +960,32 @@ header .subheader { position: relative; top: -18px; }
 .container.top-bar { margin-bottom: 0; }
 
 .top-bar { -webkit-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; -moz-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; border-bottom: none; }
-.top-bar .attached { width: 1440px; max-width: 100%; padding: 0 15px; }
+
+.top-bar .attached { padding: 0 15px; width: 100%; max-width: 100%; }
+
 .top-bar li { margin-bottom: 0; line-height: 46px; }
+
 .top-bar .attached > ul.right > li.download { border-right: 0; }
+
 .top-bar .attached > ul.right > li.download a { padding: 6px 13px 6px; }
+
 .top-bar .small.button { height: auto; top: 10px; }
+
 .top-bar a:hover { color: white; }
+
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url("../images/plus-toggle-2-retina.png?1340846519"); background-size: 100% 100%; }
+  .top-bar .attached > .name span { padding-left: 0 !important; margin-left: 0 !important; } }
+@media only screen and (max-width: 1024px) and (min-width: 768px) { .top-bar { height: 47px !important; }
+  .top-bar .attached { height: auto; }
+  .top-bar .attached > .name { height: auto; padding: 0 !important; margin-top: 0; text-indent: 0 !important; }
+  .top-bar .attached > .name span { width: auto; padding: 0 !important; text-indent: 0 !important; margin-left: 0 !important; padding-left: 0 !important; }
+  .top-bar .attached > .name span > a { width: auto; padding: 0 !important; text-indent: 0 !important; }
+  .top-bar .attached > ul > li > a, .top-bar .attached > ul > li > span { height: 45px !important; text-indent: 0; }
+  .top-bar .attached > ul > li > a.button { height: auto !important; } }
+@media only screen and (device-width: 1280px) { .top-bar .attached > .name span { padding-left: 0 !important; } }
+@media only screen and (max-width: 767px) { .top-bar .attached > w.name span { margin-left: 0px !important; } }
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../../images/plus-toggle-2-retina.png?1340842456'); background-size: 100% 100%; } }
 #megaDrop li { list-style: none; }
 
