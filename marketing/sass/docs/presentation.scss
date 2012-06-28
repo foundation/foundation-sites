@@ -55,7 +55,7 @@ header .subheader { position: relative; top: -18px; }
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
-  .top-bar .attached > .name span > a.toggle-nav { background-image: url(../images/plus-toggle-2-retina.png); background-size: 100% 100%; }
+  .top-bar .attached > .name span > a.toggle-nav { background-image: image-url("plus-toggle-2-retina.png"); background-size: 100% 100%; }
 }
 
 #megaDrop li { list-style: none; }
