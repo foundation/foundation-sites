@@ -117,6 +117,17 @@ body.off-canvas { padding: 0; margin: 0; }
   [role="navigation"]#topMenu { display: none; }
 }
 
+.lt-ie9 {
+  
+  [role="complementary"] { width: 20%; margin-left: 0; float: left; padding: 0 15px; }
+  [role="main"] { width: 80%; padding: 0 15px; }
+  .paneled [role="main"] { width: 100%; padding: 0; background: #f4f4f4; left: 0 !important; }
+  .page-panel { display: block; min-height: 800px; float: none; margin: 0; width: 100%; background: #f4f4f4; }
+  .hide-extras [role="main"] { width: 100%; }
+  .hide-extras [role="complementary"] { display: none; }
+  [role="navigation"]#topMenu { display: none; }
+}
+
 
 
 /* -----------------------------------------
