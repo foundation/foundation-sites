@@ -6,19 +6,19 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>The Grid</h3>
-    			<h4 class="subheader">Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation 3 grid. If you're familiar with grid systems you'll feel right at home.</h4>
+    			<h4 class="subheader">Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation 3 grid. If you're familiar with grid systems, you'll feel right at home.</h4>
     			
     			<h4>The Basics</h4>
-  				<p>The grid is built around two key elements: rows, and columns. Rows create a max-width and contain the columns; and columns create the actual structure. For layouts to work properly, always put your page content inside a row and a column.</p>
+  				<p>The grid is built around two key elements: rows and columns. Rows create a max-width and contain the columns; columns create the actual structure. For layouts to work properly, always put your page content inside a row and a column.</p>
   				
-  				<p>What you need to know is that <strong>columns don't have a fixed width:</strong> they can vary based on the resolution of the screen, or the size of the window (try scaling down this window to see what we mean). Design with that in mind.</p>
+  				<p>What you need to know is that <strong>columns don't have a fixed width.</strong> They can vary based on the resolution of the screen, or the size of the window (try scaling down this window to see what we mean). Design with that in mind.</p>
   				<script src="https://gist.github.com/2951087.js?file=f3-grid.html"></script>
   				
   				<hr />
   				
   				<h4>Technical Details</h4>
-  				<p>The Foundation 3 Grid, like everything else in Foundation 3, is built with <code>box-sizing: border-box</code>, a powerful CSS property that tells the browser to consider border and padding as part of the width of an object rather than as an addition. That enables us to construct the grid extremely simply, good news for anyone who lamented how difficult it was to modify the Foundation 2 grid.</p>
-  				<p>Now, gutters are created simply with padding on the columns, meaning columns have simple widths like 25%, or 50%. Adjusting the padding adjusts the gutters, and this can be controlled either through SCSS variables, the download customizer, or through the CSS itself.</p>
+  				<p>The Foundation 3 grid, like everything else in Foundation 3, is built with <code>box-sizing: border-box</code>, a powerful CSS property that tells the browser to consider border and padding as part of the width of an object rather than as an addition. That enables us to construct the grid extremely simply, which is good news for anyone who lamented how difficult it was to modify the Foundation 2 grid.</p>
+  				<p>Now, gutters are created simply with padding on the columns. That means columns have simple widths like 25%, or 50%. Adjusting the padding adjusts the gutters, and this can be controlled either through SCSS variables, the download customizer, or through the CSS itself.</p>
   				
   				<hr />
   				
@@ -160,7 +160,7 @@
   					</div>
   				</div>
   				
-  				<p><strong>Note:</strong> In order to work around browsers' different rounding behaviours, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns you can tag the last column with <strong>class="end"</strong> in order to override that behaviour.</p>
+  				<p><strong>Note:</strong> In order to work around browsers' different rounding behaviours, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with <strong>class="end"</strong> in order to override that behaviour.</p>
   				
   				<div class="row display">
   					<div class="four columns">
@@ -239,7 +239,7 @@
   				
   				<hr />
   				<h4>Centered Columns</h4>
-  				<p>Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element itself. This is a convenient way to make sure a block is centered, even if you change the number of columns it contains. Note: for this to work, there cannot be any other column blocks in the row.</p>
+  				<p>Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element itself. This is a convenient way to make sure a block is centered, even if you change the number of columns it contains. Note: There cannot be any other column blocks in the row for this to work.</p>
   
   				<div class="row display">
   					<div class="one columns centered">
@@ -305,7 +305,7 @@
   				<hr />
   				
   				<h4>Source Ordering</h4>
-  				<p>Sometimes within the grid you want the order of your markup to not necessarily be the same as the order items are flowed into the grid. Using these source ordering classes you can shift columns around on desktops and tablets. On phones the grid will still be linearized into the order of the markup.</p>
+  				<p>Sometimes within the grid you want the order of your markup to not necessarily be the same as the order items are flowed into the grid. Using these source ordering classes, you can shift columns around on desktops and tablets. On phones, the grid will still be linearized into the order of the markup.</p>
   				
   				<div class="row display">
   					<div class="two columns push-ten">
@@ -419,13 +419,13 @@
   				<script type="text/javascript" src="http://snipt.net/embed/65d7bb9f3cf79b366fa1c9e970892817"></script>
   				
   				<h5>Mobile Source Ordering</h5>
-  				<p>You can use the same push and pull style classes on the 4 column phone grid. The syntax includes .pull-one-phone, .pull-two-phone, .pull-three-phone, as well as .push-one-phone, .push-two-phone, .push-three.phone.</p>
+  				<p>You can use the same push and pull style classes on the 4-column phone grid. The syntax includes .pull-one-phone, .pull-two-phone, .pull-three-phone, as well as .push-one-phone, .push-two-phone, .push-three.phone.</p>
   				
   				<hr />
   				
   				<h4>Block Grids</h4>
-  				<p>Block grids are <code>ul</code> with 2-up, 3-up, 4-up and 5-up styles. These are ideal for blocked-in content generated by an application, as they do not require rows or even numbers of elements to display correctly.</p>
-  				<p>By default these blocks will stay in their N-up configuration on mobile devices, but you can add a class of 'mobile' to have them reshuffle on smartphones into one element per line, just like the Grid.</p>
+  				<p>Block grids are <code>ul</code> with two-up, three-up, four-up and five-up styles. These are ideal for blocked-in content generated by an application, as they do not require rows or even numbers of elements to display correctly.</p>
+  				<p>By default, these blocks will stay in their N-up configuration on mobile devices, but you can add a class of "mobile" to have them reshuffle on smartphones into one element per line, just like the grid.</p>
   				
   				<h5>Two-up</h5>
   				<ul class="block-grid two-up">

@@ -1,8 +1,8 @@
 @import "foundation";
 
 /* Artfully masterminded by ZURB  /
- 
- 
+
+
 /* -----------------------------------------
    Foundation-specific presentation CSS
 ----------------------------------------- */
@@ -65,11 +65,11 @@ header .subheader { position: relative; top: -18px; }
 
 	header { border-bottom: 1px solid #ddd; position: relative; }
 	header .subheader { margin-bottom: 0; }
-	
+
 	header .menu-action { float: left; position: relative; top: 1px; margin-top: -12px; }
 	header .menu-action .button.small { padding: 8px; }
 	header .menu-action .button.small svg { opacity: 0.5; }
-	
+
 	header h1 { font-size: 27px; font-size: 2.7rem; margin-bottom: 18px; }
 	header h4 { font-size: 17px; font-size: 1.7rem; }
 }
@@ -114,7 +114,7 @@ body.off-canvas { padding: 0; margin: 0; }
   .page-panel { display: block; min-height: 800px; float: none; margin: 0; width: 100%; background: #f4f4f4; }
   .hide-extras [role="main"] { width: 100%; }
   .hide-extras [role="complementary"] { display: none; }
-  [role="navigation"]#topMenu { display: none; } 
+  [role="navigation"]#topMenu { display: none; }
 }
 
 
@@ -129,21 +129,21 @@ body.off-canvas { padding: 0; margin: 0; }
 }
 #orbitDemo .content h1 {
 	font-family: 'Helvetica', 'Arial', serif;
-	color: #2f260f; 
+	color: #2f260f;
 	font-weight: bold !important;
-	text-transform: uppercase; 
-	text-shadow: 
+	text-transform: uppercase;
+	text-shadow:
 		1px 1px 0 #f8f0d1,
 		2px 2px 0 #f8f0d1,
 		3px 3px 0 #1a5774;
-	text-align: center; 
+	text-align: center;
 	margin-top: 15%;
 }
 #orbitDemo .content h3 {
 	font-family: 'Helvetica', 'Arial', serif;
-	color: #7f6b37; 
+	color: #7f6b37;
 	font-weight: bold !important;
-	text-align: center; 
+	text-align: center;
 }
 
 #orbitDemo { background: url(../images/spinner.gif) no-repeat center center #000; height: 305px; margin-bottom: 20px; }
@@ -158,9 +158,9 @@ body.off-canvas { padding: 0; margin: 0; }
 
 	dl.nice.tabs.mobile { margin-bottom: 0px; }
 	.nice.tabs.mobile dd a { padding: 12px 20px; }
-	
+
 	div.foundation-header h1 { font-size: 32px; font-size: 3.2rem; }
-	
+
 	div.slider-nav span { height: 50px; width: 39px; background-size: 100% auto; margin-top: -25px; }
 }
 

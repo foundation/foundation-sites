@@ -25,7 +25,7 @@
       
       <div class="ten columns">
       	<img src="images/feature-mobile-1.jpg">
-        <h4>Mockups don't tell a story. Build a prototype in no time.</h4>
+        <h4>Build for the future.</h4>
         <p>Mobile devices are already eclipsing desktops in adoption and internet use &mdash; that's why Foundation was built from the ground up to support any kind of device, any size screen, with any resolution. You can get going quickly by building once for all devices, or you can create a site tailored to a specific experience. We've even included CSS styles to hide and show elements on different device types, so you can easily turn pieces on and off for each experience.</p>
         
         <h4>Examples</h4>

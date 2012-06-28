@@ -6,12 +6,12 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>Welcome to Foundation 3.</h3>
-    			<p>Foundation 3 is built on 14 years of experience at ZURB building sites and apps for the Web. We believe designing responsively &mdash; designing for all devices, and any device &mdash; is the future. Foundation is our way of helping you to do that. What changed in Foundation 3? Almost everything. Here's what makes Foundation, Foundation.</p>
+    			<p>Foundation 3 is built on 14 years of experience at ZURB building sites and apps for the Web. We believe designing responsively &mdash; designing for all devices and any device &mdash; is the future. Foundation is our way of helping you do that. What changed in Foundation 3? Almost everything. Here's what makes Foundation, Foundation.</p>
     			
     			<div class="row">
     			  <div class="four columns">
       			  <h5>Developed with Sass</h5>
-      			  <p>Foundation 3 is built with Sass, a powerful CSS preprocessor which allows us to much more quickly develop Foundation itself, as well as sites built with it. You can use the Sass or straight CSS version of Foundation.</p>   			  
+      			  <p>Foundation 3 is built with Sass, a powerful CSS preprocessor, which allows us to much more quickly develop Foundation itself, as well as sites built with it. You can use the Sass or straight CSS version of Foundation.</p>   			  
     			  </div>
     			  <div class="four columns">
       			  <h5>Feature Complete</h5>
@@ -29,10 +29,10 @@
     			<div class="row">
       			<div class="six columns">
         			<h4><a href="grid.php">The Grid</a></h4>
-        			<p>Much of the power of Foundation comes from the grid, a 12-column typographic grid designed to work on almost any size device screen. With support for nesting, source ordering, offsets and small device presentation it almost makes this too easy.</p>
+        			<p>Much of the power of Foundation comes from the grid, a 12-column typographic grid designed to work on almost any sized device screen. With support for nesting, source ordering, offsets and small device presentation it almost makes this too easy.</p>
         			
         			<h4><a href="typography.php">Typography</a></h4>
-        			<p>The typography in Foundation is based on a golden ratio modular scale, so all of your typgraphic elements look great together. Through the power of Sass, the typography is also easy to change both in base size and ratio.</p>
+        			<p>The typography in Foundation is based on a golden ratio modular scale, so all of your typgraphic elements look great together. Through the power of Sass, the typography is also easy to change both in the base size and ratio.</p>
         			
         			<h4><a href="buttons.php">Buttons</a></h4>
         			<p>Buttons are one of the core interactive elements of the Web. We've included styles and patterns for buttons that make it simple to create everything from simple marketing CTAs to complex application toolbars.</p>
@@ -45,7 +45,7 @@
         		  <p>People have to get around. Navigation styles in Foundation include simple top bars, sidebars, and subnav pills. We've also included a crazy powerful, responsive top bar that supports N-level dropdowns.</p>
         		  
         		  <h4><a href="tabs.php">Tabs</a></h4>
-        		  <p>Whether it's pages or simply tabbed content, Foundation's tabs are not only styled up but interactive out of the box.
+        		  <p>Whether it's pages or simply tabbed content, Foundation's tabs are not only styled up, but interactive out of the box.
       			</div>
     			</div>
     		</div>

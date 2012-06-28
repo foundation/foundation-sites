@@ -99,6 +99,10 @@ header#homepage .button:hover { background: #006582; }
 #sideDeviceDesktop { max-width: 240%; }
 #sideDeviceiPad { max-width: 140%; }
 
+@media #{$media-small} {
+  #sideDeviceDesktop { max-width: 100%; }
+  #sideDeviceiPad { max-width: 100%; }
+}
 
 /* Top bar */
 .container.top-bar { margin-bottom: 0; }

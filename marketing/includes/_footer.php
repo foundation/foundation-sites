@@ -1,7 +1,7 @@
   <footer class="row">
     <section class="five columns">
       <h6><strong>Made by ZURB</strong></h6>
-      <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design agency in Campbell, California. We've put over 14 years of experience building web products, services and websites into this framework. <a href="../about.php">Foundation Info and Goodies &rarr;</a></p>
+      <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design agency in Campbell, California. We've put more than 14 years of experience building web products, services and websites into this framework. <a href="../about.php">Foundation Info and Goodies &rarr;</a></p>
     </section>
     
     <section class="three columns">
