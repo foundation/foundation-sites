@@ -24,6 +24,11 @@
         &>a:first-child { padding-right: 36px; position: relative;
           &:after { @include css-triangle(4px, darken($white, 10%), top); position: absolute; right: 20px; top: 17px; }
         }
+        &>a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
+        &.is-touch {
+          &>a:first-child { padding-right: 55px;}
+          &>a.flyout-toggle { border-left: 1px dashed #666; }
+        }
       }
     }
 

@@ -5,12 +5,12 @@ jQuery(document).ready(function ($) {
   /* TABS --------------------------------- */
   /* Remove if you don't need :) */
 
-	function activateTab($tab) {
-		var $activeTab = $tab.closest('dl').find('dd.active'),
-				contentLocation = $tab.children('a').attr("href") + 'Tab';
+  function activateTab($tab) {
+    var $activeTab = $tab.closest('dl').find('dd.active'),
+        contentLocation = $tab.children('a').attr("href") + 'Tab';
 
-		// Strip off the current url that IE adds
-		contentLocation = contentLocation.replace(/^.+#/, '#');
+    // Strip off the current url that IE adds
+    contentLocation = contentLocation.replace(/^.+#/, '#');
 
     // Strip off the current url that IE adds
     contentLocation = contentLocation.replace(/^.+#/, '#');
@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
     $(contentLocation).css('display', 'block');
   }
 
-  $('dl.tabs dd a').live('click', function (event) {
+  $('dl.tabs dd a').on('click.fndtn', function (event) {
     activateTab($(this).parent('dd'));
   });
 
@@ -41,7 +41,6 @@ jQuery(document).ready(function ($) {
     });
   });
 
-
   /* PLACEHOLDER FOR FORMS ------------- */
   /* Remove this and jquery.placeholder.min.js if you don't need :) */
   $('input, textarea').placeholder();
@@ -49,22 +48,17 @@ jQuery(document).ready(function ($) {
   /* TOOLTIPS ------------ */
   $(this).tooltips();
 
-
-
-
-
   /* UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE6/7/8 SUPPORT AND ARE USING .block-grids */
-//  $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'left'});
-//  $('.block-grid.three-up>li:nth-child(3n+1)').css({clear: 'left'});
-//  $('.block-grid.four-up>li:nth-child(4n+1)').css({clear: 'left'});
-//  $('.block-grid.five-up>li:nth-child(5n+1)').css({clear: 'left'});
-
+  //  $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'left'});
+  //  $('.block-grid.three-up>li:nth-child(3n+1)').css({clear: 'left'});
+  //  $('.block-grid.four-up>li:nth-child(4n+1)').css({clear: 'left'});
+  //  $('.block-grid.five-up>li:nth-child(5n+1)').css({clear: 'left'});
 
 
   /* DROPDOWN NAV ------------- */
 
   var lockNavBar = false;
-  $('.nav-bar a.flyout-toggle').live('click', function(e) {
+  $('.nav-bar a.flyout-toggle').on('click.fndtn touchstart.fndtn', function(e) {
     e.preventDefault();
     var flyout = $(this).siblings('.flyout');
     if (lockNavBar === false) {
@@ -76,12 +70,7 @@ jQuery(document).ready(function ($) {
     lockNavBar = true;
   });
   if (Modernizr.touch) {
-    $('.nav-bar>li.has-flyout>a.main').css({
-      'padding-right' : '75px'
-    });
-    $('.nav-bar>li.has-flyout>a.flyout-toggle').css({
-      'border-left' : '1px dashed #eee'
-    });
+    $('.nav-bar>li.has-flyout').addClass('is-touch');
   } else {
     $('.nav-bar>li.has-flyout').hover(function() {
       $(this).children('.flyout').show();
@@ -90,8 +79,8 @@ jQuery(document).ready(function ($) {
     });
   }
 
-	/* DISABLED BUTTONS ------------- */
-	/* Gives elements with a class of 'disabled' a return: false; */
+  /* DISABLED BUTTONS ------------- */
+  /* Gives elements with a class of 'disabled' a return: false; */
 
   /* SPLIT BUTTONS/DROPDOWNS */
   $('.button.dropdown > ul').addClass('no-hover');
