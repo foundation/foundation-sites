@@ -89,7 +89,7 @@ header#homepage .button:hover { background: #006582; }
 @media screen and (orientation: portrait) { .case-study { padding-left: 20px; }
   .case-study img { width: 50%; z-index: 2; opacity: 0.1; }
   .case-study h4, .case-study p { position: relative; z-index: 3; } }
-@media only screen and (max-width: 767px) { 
+@media only screen and (max-width: 767px) {
   .case-study { padding-left: 20px; padding-bottom: 130px; }
   .case-study img { width: auto; height: 120px; opacity: 1; } }
 /* Secondary Pages */
@@ -140,6 +140,9 @@ header#homepage .button:hover { background: #006582; }
   .touch .top-bar { height: 45px !important; }
   .touch .top-bar .attached { height: 45px !important; }
   .touch .top-bar .attached > ul.right { overflow: hidden; height: 45px !important; }
+}
+@media only screen and (orientation: landscape) {
+  .touch .top-bar .attached > ul.right { height: 45px !important; overflow: hidden !important; }
 }
 
 #megaDrop li { list-style: none; }

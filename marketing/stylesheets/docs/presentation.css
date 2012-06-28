@@ -1000,6 +1000,7 @@ header .subheader { position: relative; top: -18px; }
   .touch .top-bar { height: 45px !important; }
   .touch .top-bar .attached { height: 45px !important; }
   .touch .top-bar .attached > ul.right { overflow: hidden; height: 45px !important; } }
+@media only screen and (orientation: landscape) { .touch .top-bar .attached > ul.right { height: 45px !important; overflow: hidden !important; } }
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../../images/plus-toggle-2-retina.png?1340842456'); background-size: 100% 100%; } }
 #megaDrop li { list-style: none; }
 
