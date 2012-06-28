@@ -20,4 +20,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "linguistics", "~> 1.0.9"
   gem.add_dependency "modular-scale", "~> 0.0.5"
   gem.add_dependency "rake"
+  gem.add_development_dependency "capistrano"
 end
