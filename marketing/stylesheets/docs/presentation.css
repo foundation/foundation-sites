@@ -1,78 +1,111 @@
-@charset "UTF-8";
 /* Requires: normalize.css -box-sizing.htc */
 /* Global Reset & Standards ---------------------- */
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
-Backtrace:
-/Users/mark/Sites/foundation/marketing/sass/foundation.scss:
-/Users/mark/Sites/foundation/marketing/sass/foundation.scss:1
-/Users/mark/Sites/foundation/marketing/sass/foundation.scss:1
-/Users/mark/Sites/foundation/marketing/sass/docs/presentation.scss:1
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:378:in `handle_import_loop!'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:141:in `visit_import'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:20:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:146:in `map'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:20:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:146:in `map'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:20:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:29:in `block in visit_children'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:41:in `with_environment'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:28:in `visit_children'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:49:in `visit_root'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:20:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/tree/root_node.rb:20:in `render'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/engine.rb:309:in `_render'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.0.alpha.247/lib/sass/engine.rb:256:in `render'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `call'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `run_callback'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:55:in `callback_action'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:35:in `update'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:39:in `block in modified'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:37:in `each'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:37:in `modified'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:18:in `refresh'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `each'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `block in run'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `loop'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `run'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/monitor.rb:26:in `run'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm.rb:70:in `monitor'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass:44:in `call'
-/Users/mark/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
-/Users/mark/.rbenv/versions/1.9.3-p194/bin/compass:23:in `load'
-/Users/mark/.rbenv/versions/1.9.3-p194/bin/compass:23:in `<main>'
+html { font-size: 62.5%; }
+
+body { background: white; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 14; font-size: 1.4 rem; line-height: 1; color: #222222; position: relative; -webkit-font-smoothing: antialiased; }
+
+/* Links ---------------------- */
+a { color: #2ba6cb; text-decoration: none; line-height: inherit; }
+
+a:hover { color: #2795b6; }
+
+a:focus { color: #2ba6cb; outline: none; }
+
+p a, p a:visited { line-height: inherit; }
+
+/* Misc ---------------------- */
+.left { float: left; }
+
+.right { float: right; }
+
+.text-left { text-align: left; }
+
+.text-right { text-align: right; }
+
+.text-center { text-align: center; }
+
+.hide { display: none; }
+
+.highlight { background: #ffff99; }
+
+#googlemap img, object, embed { max-width: none; }
+
+#map_canvas embed { max-width: none; }
+
+#map_canvas img { max-width: none; }
+
+#map_canvas object { max-width: none; }
+
+/* Base Type Styles Using Modular Scale ---------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td { margin: 0; padding: 0; font-size: 14px; }
+
+p { font-size: 14px; line-height: 1.6; margin-bottom: 17px; }
+p.lead { font-size: 17.5px; line-height: 1.6; margin-bottom: 17px; }
+p img.left, p img { margin: 17px; margin-left: 0; }
+p img.right { margin: 17px; margin-right: 0; }
+
+aside p { font-size: 13px; line-height: 1.35; font-style: italic; }
+
+h1, h2, h3, h4, h5, h6 { text-rendering: optimizeLegibility; line-height: 1.1; margin-bottom: 14px; margin-top: 14px; }
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #888; line-height: 0; }
+
+h1 { font-size: 44px; }
+
+h2 { font-size: 37px; }
+
+h3 { font-size: 27px; }
+
+h4 { font-size: 23px; }
+
+h5 { font-size: 17px; }
+
+h6 { font-size: 14px; }
+
+hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 22px 0 21px; height: 0; }
+
+.subheader { line-height: 1.3; color: #777; font-weight: 300; margin-bottom: 17px; }
+
+em, i { font-style: italic; line-height: inherit; }
+
+strong, b { font-weight: bold; line-height: inherit; }
+
+small { font-size: 60%; line-height: inherit; }
+
+code { font-weight: bold; background: #ffff99; }
+
+/* Lists ---------------------- */
+ul, ol { font-size: 14px; line-height: 1.6; margin-bottom: 17px; list-style-position: inside; }
+
+ul.square, ul.circle, ul.disc { margin-left: 17px; }
+
+ul.square { list-style-type: square; }
+
+ul.circle { list-style-type: circle; }
+
+ul.disc { list-style-type: disc; }
+
+ul.no-bullet { list-style: none; }
+
+ul.large li { line-height: 21px; }
+
+/* Blockquotes ---------------------- */
+blockquote, blockquote p { line-height: 1.5; color: #777; }
+
+blockquote { margin: 0 0 17px; padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
+
+blockquote cite { display: block; font-size: 13px; color: #555; }
+
+blockquote cite:before { content: "\2014 \0020"; }
+
+blockquote cite a, blockquote cite a:visited { color: #555; }
+
+abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222; border-bottom: 1px solid #ddd; cursor: help; }
+
+abbr { text-transform: none; }
+
+/* Print styles.  Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/ Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
 */
 .print-only { display: none !important; }
 
@@ -410,7 +443,7 @@ p.vevent abbr { cursor: default; text-decoration: none; font-weight: bold; borde
 
 /* Requires globals.css */
 /* Normal Buttons ---------------------- */
-.button { width: auto; background: #2ba6cb; border: 1px solid #1e728c; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; color: white; cursor: pointer; display: inline-block; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 14px; font-weight: bold; line-height: 1; margin: 0; outline: none; padding: 10px 20px 11px; position: relative; text-align: center; text-decoration: none; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; /* Hovers */ /* Sizes */ /* Colors */ /* Radii */ /* Layout */ /* Disabled ---------- */ }
+.button { width: auto; background: #2ba6cb; border: 1px solid #1e728c; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; color: white; cursor: pointer; display: inline-block; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 14px; font-weight: bold; line-height: 1; margin: 0; outline: none; padding: 10px 20px 11px; position: relative; text-align: center; text-decoration: none; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -ms-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; /* Hovers */ /* Sizes */ /* Colors */ /* Radii */ /* Layout */ /* Disabled ---------- */ }
 .button:hover { color: white; background-color: #2284a1; }
 .button:active { -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; }
 .button:focus { -webkit-box-shadow: 0 0 4px #2ba6cb, 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 0 4px #2ba6cb, 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 0 4px #2ba6cb, 0 1px 0 rgba(255, 255, 255, 0.5) inset; color: white; }
@@ -469,12 +502,12 @@ input[type=submit].button, button.button { -webkit-appearance: none; }
 .button.dropdown.split.alert:hover { background-color: #c60f13; }
 .button.dropdown.split.success:hover { background-color: #5da423; }
 .button.dropdown.split.secondary:hover { background-color: #e9e9e9; }
-.button.dropdown.split > a { color: white; display: block; padding: 10px 50px 11px 20px; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; }
+.button.dropdown.split > a { color: white; display: block; padding: 10px 50px 11px 20px; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -ms-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; }
 .button.dropdown.split > a:hover { background-color: #2284a1; }
 .button.dropdown.split.large > a { padding: 15px 75px 16px 30px; }
 .button.dropdown.split.small > a { padding: 7px 35px 8px 14px; }
 .button.dropdown.split.tiny > a { padding: 5px 25px 6px 10px; }
-.button.dropdown.split > span { background-color: #2ba6cb; position: absolute; right: 0; top: 0; height: 100%; width: 30px; border-left: 1px solid #1e728c; -webkit-box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; }
+.button.dropdown.split > span { background-color: #2ba6cb; position: absolute; right: 0; top: 0; height: 100%; width: 30px; border-left: 1px solid #1e728c; -webkit-box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -ms-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; }
 .button.dropdown.split > span:hover { background-color: #2284a1; }
 .button.dropdown.split > span:after { content: ""; display: block; width: 0; height: 0; border: solid 6px; border-color: white transparent transparent transparent; position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
 .button.dropdown.split.large span { width: 45px; }
@@ -605,11 +638,11 @@ label.right { float: none; text-align: right; padding-top: 6px; }
 
 span.prefix, span.postfix { background: #f2f2f2; border: 1px solid #cccccc; }
 
-.prefix { left: 2px; -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; border-top-left-radius: 2px; -moz-border-radius-bottomleft: 2px; -webkit-border-bottom-left-radius: 2px; border-bottom-left-radius: 2px; }
+.prefix { left: 2px; -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; -ms-border-top-left-radius: 2px; -o-border-top-left-radius: 2px; border-top-left-radius: 2px; -moz-border-radius-bottomleft: 2px; -webkit-border-bottom-left-radius: 2px; -ms-border-bottom-left-radius: 2px; -o-border-bottom-left-radius: 2px; border-bottom-left-radius: 2px; }
 
-.postfix { right: 2px; -moz-border-radius-topright: 2px; -webkit-border-top-right-radius: 2px; border-top-right-radius: 2px; -moz-border-radius-bottomright: 2px; -webkit-border-bottom-right-radius: 2px; border-bottom-right-radius: 2px; }
+.postfix { right: 2px; -moz-border-radius-topright: 2px; -webkit-border-top-right-radius: 2px; -ms-border-top-right-radius: 2px; -o-border-top-right-radius: 2px; border-top-right-radius: 2px; -moz-border-radius-bottomright: 2px; -webkit-border-bottom-right-radius: 2px; -ms-border-bottom-right-radius: 2px; -o-border-bottom-right-radius: 2px; border-bottom-right-radius: 2px; }
 
-input[type="text"], textarea { border: 1px solid #cccccc; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); color: rgba(0, 0, 0, 0.75); display: block; font-size: 14px; margin: 0 0 12px 0; padding: 6px; width: 100%; -webkit-transition: all 0.15s linear; -moz-transition: all 0.15s linear; -o-transition: all 0.15s linear; transition: all 0.15s linear; }
+input[type="text"], textarea { border: 1px solid #cccccc; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); color: rgba(0, 0, 0, 0.75); display: block; font-size: 14px; margin: 0 0 12px 0; padding: 6px; width: 100%; -webkit-transition: all 0.15s linear; -moz-transition: all 0.15s linear; -ms-transition: all 0.15s linear; -o-transition: all 0.15s linear; transition: all 0.15s linear; }
 input[type="text"].oversize, textarea.oversize { font-size: 18 !important; font-size: 1.8 rem !important; }
 input[type="text"]:focus, textarea:focus { background: #fafafa; outline: none !important; border-color: #b3b3b3; }
 input[type="text"][disabled], textarea[disabled] { background-color: #ddd; }
@@ -631,7 +664,7 @@ fieldset legend { font-weight: bold; background: white; padding: 0 3px; margin: 
 
 .form-field.error label, label.alert { color: #c60f13; }
 
-.form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #c60f13; color: #fff; font-size: 12; font-size: 1.2 rem; font-weight: bold; -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; border-top-left-radius: 2px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: #c60f13; color: #fff; font-size: 12; font-size: 1.2 rem; font-weight: bold; -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; -ms-border-top-left-radius: 2px; -o-border-top-left-radius: 2px; border-top-left-radius: 2px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 /* Custom Forms ---------------------- */
 form.custom { /* Custom input, disabled */ }
@@ -689,17 +722,17 @@ div.orbit div.orbit-slide { width: 100%; height: 100%; }
 /* Timer ---------------------- */
 div.orbit-wrapper div.timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; right: 10px; opacity: .6; cursor: pointer; z-index: 31; }
 
-div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../../images/foundation/orbit/rotator-black.png?1340839300') no-repeat; z-index: 3; }
+div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../../images/foundation/orbit/rotator-black.png?1340830882') no-repeat; z-index: 3; }
 
 div.orbit-wrapper span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; right: 0; z-index: 2; overflow: hidden; }
 
 div.orbit-wrapper span.rotator.move { left: 0; }
 
-div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../../images/foundation/orbit/timer-black.png?1340839300') repeat 0 0; }
+div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../../images/foundation/orbit/timer-black.png?1340830882') repeat 0 0; }
 
-div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../../images/foundation/orbit/pause-black.png?1340839300') no-repeat; z-index: 4; opacity: 0; }
+div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../../images/foundation/orbit/pause-black.png?1340830882') no-repeat; z-index: 4; opacity: 0; }
 
-div.orbit-wrapper span.pause.active { background: url('../../images/foundation/orbit/pause-black.png?1340839300') no-repeat 0 -40px; }
+div.orbit-wrapper span.pause.active { background: url('../../images/foundation/orbit/pause-black.png?1340830882') no-repeat 0 -40px; }
 
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper span.pause.active { opacity: 1; }
 
@@ -713,14 +746,14 @@ div.orbit-wrapper div.slider-nav { display: block; }
 
 div.orbit-wrapper div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
 
-div.orbit-wrapper div.slider-nav span.right { background: url('../../images/foundation/orbit/right-arrow.png?1340839300'); background-size: 100%; right: 0; }
+div.orbit-wrapper div.slider-nav span.right { background: url('../../images/foundation/orbit/right-arrow.png?1340830882'); background-size: 100%; right: 0; }
 
-div.orbit-wrapper div.slider-nav span.left { background: url('../../images/foundation/orbit/left-arrow.png?1340839300'); background-size: 100%; left: 0; }
+div.orbit-wrapper div.slider-nav span.left { background: url('../../images/foundation/orbit/left-arrow.png?1340830882'); background-size: 100%; left: 0; }
 
 /* Bullet Nav ---------------------- */
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1340839282') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1340830882') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.active { color: #222; background-position: -8px 0; }
 
@@ -735,7 +768,7 @@ div.orbit, div.orbit-wrapper { width: 100% !important; }
 
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -50px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1340839282') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1340830882') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.has-thumb { background: none; width: 100px; height: 75px; }
 
@@ -924,7 +957,7 @@ header .subheader { position: relative; top: -18px; }
 
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../../images/plus-toggle-2-retina.png?1340846519'); background-size: 100% 100%; } }
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../../images/plus-toggle-2-retina.png?1340830882'); background-size: 100% 100%; } }
 #megaDrop li { list-style: none; }
 
 #megaDrop .show-on-phones, #megaDrop .sitemap-link { display: none !important; }
