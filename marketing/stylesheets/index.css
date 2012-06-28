@@ -657,7 +657,7 @@ ul.tabs-content.contained.vertical > li { border-width: 1px 1px 1px 1px; }
 .nav-bar > li .flyout { display: none; }
 .nav-bar > li.has-flyout > a:first-child { padding-right: 36px; position: relative; }
 .nav-bar > li.has-flyout > a:first-child:after { content: ""; display: block; width: 0; height: 0; border: solid 4px; border-color: #e6e6e6 transparent transparent transparent; position: absolute; right: 20px; top: 17px; }
-.nav-bar > li.has-flyout > a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
+.nav-bar > li.has-flyout > a.flyout-toggle { border-left: 0 !important; position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
 .nav-bar > li.has-flyout.is-touch > a:first-child { padding-right: 55px; }
 .nav-bar > li.has-flyout.is-touch > a.flyout-toggle { border-left: 1px dashed #666; }
 .nav-bar > li > a:first-child { position: relative; padding: 0 20px; display: block; text-decoration: none; font-size: 14px; }
@@ -682,14 +682,16 @@ ul.flyout li a, .nav-bar li ul li a { background: #f2f2f2; border: 1px solid #e6
 ul.flyout li a:hover, .nav-bar li ul li a:hover { background: #ebebeb; color: #333; }
 
 /* Mobile Styles */
+@media only screen and (max-device-width: 1280px) { .touch .nav-bar li.has-flyout > a { padding-right: 36px !important; } }
 @media only screen and (max-width: 1279px) and (min-width: 768px) { .touch .nav-bar li a { font-size: 13px; font-size: 1.3 rem; }
-  .touch .nav-bar li.has-flyout > a.flyout-toggle { padding: 20px; } }
+  .touch .nav-bar li.has-flyout > a.flyout-toggle { padding: 20px !important; }
+  .touch .nav-bar li.has-flyout > a { padding-right: 36px !important; } }
 @media only screen and (max-width: 767px) { .nav-bar { height: auto; }
   .nav-bar > li { float: none; display: block; border-right: none; }
   .nav-bar > li > a.main { text-align: left; border-top: 1px solid #ddd; border-right: none; }
   .nav-bar > li:first-child > a.main { border-top: none; }
-  .nav-bar > li.has-flyout > a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; border-left: 1px dashed #eee; display: block; }
-  .nav-bar > li.has-flyout > a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
+  .nav-bar > li.has-flyout > a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
+  .nav-bar > li.has-flyout.is-touch > a.flyout-toggle span { content: ""; width: 0; height: 0; display: block; }
   .nav-bar > li.has-flyout > a.flyout-toggle:hover span { border-top-color: #141414; }
   .nav-bar.vertical > li.has-flyout > .flyout { left: 0; }
   .flyout { position: relative; width: 100% !important; top: auto; margin-right: -2px; border-width: 1px 1px 0 1px; }
