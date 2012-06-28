@@ -152,34 +152,6 @@
     dl.tabs.mobile + ul.contained { margin-left: -20px; margin-right: -20px; border-width: 0 0 1px 0; }
   }
 
-  /* Nav Bar */
-
-  /* Modernizr-enabled tablet targeting */
-  @media #{$media-medium} {
-    .touch .nav-bar li a { @include font-size(13); }
-    .touch .nav-bar li.has-flyout>a.flyout-toggle { padding: 20px; }
-  }
-
-  @media #{$media-small} {
-    .nav-bar { height: auto;
-
-      &>li { float: none; display: block; border-right: none; }
-      &>li>a.main { text-align: left; border-top: 1px solid #ddd; border-right: none; }
-      &>li:first-child>a.main { border-top: none; }
-      &>li.has-flyout>a.flyout-toggle { position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; border-left: 1px dashed #eee; display: block; }
-      &>li.has-flyout>a.flyout-toggle span { content: ""; width: 0; height: 0; border-left: 4px solid transparent;border-right: 4px solid transparent; border-top: 4px solid #2a85e8; display: block; }
-      &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
-    }
-
-    .flyout { position: relative; width: auto; top: auto; margin-right: -2px; border-width: 1px 1px 0 1px;
-
-      &.right { float: none; right: auto; left: -1px; }
-      &.small, .flyout.large { width: auto; }
-      p:last-child { margin-bottom: 18px; }
-    }
-
-  }
-
   /* Tooltips */
   @media #{$media-small} {
     .tooltip {
