@@ -78,8 +78,11 @@
     /* Mobile 4-column Grid */
     @for $i from 1 through $mobile_total_columns {
       .row {
-        .mobile-#{convert-number-to-word($i)} { width: grid-calc($i, $mobile_total_columns); float: left; padding: 0 ($column_gutter/2);
+        .mobile-#{convert-number-to-word($i)} { width: grid-calc($i, $mobile_total_columns) !important; float: left; padding: 0 ($column_gutter/2);
           &:last-child { float: right; }
+        }
+        &.collapse {
+          .mobile-#{convert-number-to-word($i)} { padding: 0; }
         }
       }
     }
