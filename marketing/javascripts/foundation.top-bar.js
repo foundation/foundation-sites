@@ -11,8 +11,6 @@
     // Pull element out of the DOM for manipulation
     $attached.detach();
 
-    console.log($attached, $attached.find('li.has-dropdown>a'));
-
     $attached.find('li.has-dropdown>a').each(function () {
       var $link = $(this),
           $dropdown = $link.siblings('ul.dropdown'),
@@ -30,12 +28,10 @@
 
   $('.top-bar .name').on('click', function (event) {
     var $this = $(this);
-    console.log('clicked');
+
     if (onMobile()) {
       event.preventDefault();
-      console.log('mobile');
       if (!$this.hasClass('top-bar-initialized')) {
-        console.log('add initialized');
         initializeMarkup($this.closest('.top-bar'));
         $this.addClass('top-bar-initialized');
       }
@@ -53,7 +49,7 @@
     }
   });
 
-  $('.top-bar .has-dropdown>a').live('click', function (event) {
+  $('.top-bar .has-dropdown>a').on('click', function (event) {
     if (onMobile()) {
       var $this = $(this),
           $selectedLi = $this.closest('li'),
@@ -83,7 +79,7 @@
     }
   });
 
-  $('.top-bar .has-dropdown .back').live('click', function (event) {
+  $('.top-bar .has-dropdown .back').on('click', function (event) {
     var $this = $(this),
         $activeLi = $this.closest('li.active'),
         $attached = $this.closest('.attached'),
