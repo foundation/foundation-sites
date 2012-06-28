@@ -1,5 +1,5 @@
 <? $version = "2.2.1"; ?>
-<!DOCTYPE html>	
+<!DOCTYPE html>
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -8,25 +8,25 @@
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
-	
+
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
+
 	<meta name="description" content="Foundation is an easy to use, powerful, and flexible framework for building rapid prototypes and production code on any kind of device." />
-	
+
 	<title>Foundation: <?= $page_title ?></title>
   	<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
 	<link rel="icon" type="image/ico" href="../favicon.ico">
-  
+
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
   <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
 	<link rel="stylesheet" href="../stylesheets/docs/presentation.css">
-	
+
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" href="../stylesheets/ie.css">
 	<![endif]-->
-	
+
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,10 +42,13 @@
         <span><a href="http://foundation.zurb.com">Foundation</a> <a href="#" class="toggle-nav"></a></span>
   		</div>
 
-  		<ul class="right">			
+  		<ul class="right">
+        <li class="show-for-small">
+          <a href="#">Home</a>
+        </li>
   			<li>
   			  <a href="grid.php" <?php if (isset($featuresTab)) echo 'class="current"'; ?>>Features</a>
-  			</li>			
+  			</li>
   			<li>
   			  <a href="case-soapbox.php" <?php if (isset($caseStudiesTab)) echo 'class="current"'; ?>>Case Studies</a>
   			</li>
@@ -75,7 +78,7 @@
 	  <div class="eight columns">
 	    <h1><a href="index.php">Foundation 3 Documentation</a></h1>
 	    <h4 class="subheader">Everything you need to know to build for the future.</h4>
-	    
+
   	  <div class="show-for-small menu-action">
   	    <a class='sidebar-button small secondary button' id='sidebarButton' href="#sidebar" >
     	    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -87,5 +90,5 @@
           </svg>
   	    </a>
   	  </div>
-	  </div>	
+	  </div>
 	</header>
