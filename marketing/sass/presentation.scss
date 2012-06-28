@@ -106,6 +106,10 @@ header#homepage { background: image-url("device-bg.png") center bottom no-repeat
   .block-grid li a img { display: block; margin: 0 auto; }  
 }
 
+@media #{$media-small} {
+  #usingFoundation a.top-right { display: none; }
+}
+
 .case-study { background: image-url("case-study-bg.png") left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; overflow: hidden; 
   
   img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; }

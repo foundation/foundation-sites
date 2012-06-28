@@ -391,35 +391,35 @@
   				<h5>Four Column Mobile Grid</h5>
   				<p>When you're creating your layout you can optionally attach classes that take your existing grid elements and attach them to a four column phone grid.</p>
 
+          <div class="row display">
+          	<div class="three mobile-one columns">
+          		.three.mobile-one.columns
+          	</div>
+          	<div class="nine mobile-three columns">
+          		.nine.mobile-three.columns
+          	</div>
+          </div>
   				<div class="row display">
-  					<div class="three phone-one columns">
-  						.three.phone-one.columns
+  					<div class="six mobile-two columns">
+  						.six.mobile-two.columns
   					</div>
-  					<div class="nine phone-three columns">
-  						.nine.phone-three.columns
+  					<div class="six mobile-two columns">
+  						.six.mobile-two.columns
   					</div>
   				</div>
   				<div class="row display">
-  					<div class="six phone-two columns">
-  						.six.phone-two.columns
+  					<div class="nine mobile-three columns">
+  						.nine.mobile-three.columns
   					</div>
-  					<div class="six phone-two columns">
-  						.six.phone-two.columns
-  					</div>
-  				</div>
-  				<div class="row display">
-  					<div class="nine phone-three columns">
-  						.nine.phone-three.columns
-  					</div>
-  					<div class="three phone-one columns">
-  						.three.phone-one.columns
+  					<div class="three mobile-one columns">
+  						.three.mobile-one.columns
   					</div>
   				</div>
 
-  				<script type="text/javascript" src="http://snipt.net/embed/65d7bb9f3cf79b366fa1c9e970892817"></script>
+  				<script src="https://gist.github.com/3009422.js?file=f3-mobile-grid.html"></script>
 
   				<h5>Mobile Source Ordering</h5>
-  				<p>You can use the same push and pull style classes on the 4-column phone grid. The syntax includes .pull-one-phone, .pull-two-phone, .pull-three-phone, as well as .push-one-phone, .push-two-phone, .push-three.phone.</p>
+  				<p>You can use the same push and pull style classes on the 4-column phone grid. The syntax includes <code>.pull-one-mobile</code>, <code>.pull-two-mobile</code>, <code>.pull-three-mobile</code>, as well as <code>.push-one-mobile</code>, <code>.push-two-mobile</code>, <code>.push-three-mobile</code>.</p>
 
   				<hr />
 

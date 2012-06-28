@@ -46,26 +46,26 @@
 
           <form>
             <div class="row">
-              <div class="two columns">
+              <div class="two mobile-one columns">
                 <label class="right">Address Name:</label>
               </div>
-              <div class="ten columns">
+              <div class="ten mobile-three columns">
                 <input type="text" placeholder="e.g. Home" class="eight" />
               </div>
             </div>
             <div class="row">
-              <div class="two columns">
+              <div class="two mobile-one columns">
                 <label class="right">City:</label>
               </div>
-              <div class="ten columns">
+              <div class="ten mobile-three columns">
                 <input type="text" class="eight" />
               </div>
             </div>
             <div class="row">
-              <div class="two columns">
+              <div class="two mobile-one columns">
                 <label class="right">ZIP:</label>
               </div>
-              <div class="ten columns">
+              <div class="ten mobile-three columns">
                 <input type="text" class="three" />
               </div>
             </div>
@@ -102,25 +102,27 @@
           <div class="row">
             <div class="four columns">
               <div class="row collapse">
-                <div class="two columns">
+                <div class="two mobile-one columns">
                   <span class="prefix">#</span>
                 </div>
-                <div class="ten columns">
+                <div class="ten mobile-three columns">
                   <input type="text" />
                 </div>
               </div>
             </div>
           </div>
           <script src="https://gist.github.com/2954955.js?file=f3-prefix-form.html"></script>
+          
+          <p><strong>Note:</strong> for these prefix and postfix labels we're using the <a href="grid.php">mobile grid</a> to size our labels correctly on small devices.</p>
 
           <label>Input with a postfix label</label>
           <div class="row">
             <div class="five columns">
               <div class="row collapse">
-                <div class="nine columns">
+                <div class="nine mobile-three columns">
                   <input type="text" />
                 </div>
-                <div class="three columns">
+                <div class="three mobile-one columns">
                   <span class="postfix">.com</span>
                 </div>
               </div>
@@ -132,10 +134,10 @@
           <div class="row">
             <div class="five columns">
               <div class="row collapse">
-                <div class="eight columns">
+                <div class="eight mobile-three columns">
                   <input type="text" />
                 </div>
-                <div class="four columns">
+                <div class="four mobile-one columns">
                   <a class="button postfix">Search</a>
                 </div>
               </div>
@@ -158,20 +160,20 @@
 
                   <label>Twitter</label>
                   <div class="row collapse">
-                    <div class="two columns">
+                    <div class="two mobile-one columns">
                       <span class="prefix">@</span>
                     </div>
-                    <div class="ten columns">
+                    <div class="ten mobile-three columns">
                       <input type="text" placeholder="foundationzurb" />
                     </div>
                   </div>
 
                   <label>URL</label>
                   <div class="row collapse">
-                    <div class="nine columns">
+                    <div class="nine mobile-three columns">
                       <input type="text" placeholder="foundation.zurb" />
                     </div>
-                    <div class="three columns">
+                    <div class="three mobile-one columns">
                       <span class="postfix">.com</span>
                     </div>
                   </div>
