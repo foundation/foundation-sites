@@ -622,7 +622,7 @@ ul.flyout li, .nav-bar li ul li { border-left: solid 3px #CCC; }
 ul.flyout li a, .nav-bar li ul li a { background: #f2f2f2; border: 1px solid #e6e6e6; border-width: 1px 1px 0 0; color: #555; display: block; font-size: 14px; height: auto; line-height: 1; padding: 15px 20px; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
 ul.flyout li a:hover, .nav-bar li ul li a:hover { background: #ebebeb; color: #333; }
 
-/* Mobile Styles */
+/* Mobile Stylesss */
 @media only screen and (max-width: 1279px) and (min-width: 768px) { .touch .nav-bar li a { font-size: 13px; font-size: 1.3 rem; }
   .touch .nav-bar li.has-flyout > a.flyout-toggle { padding: 20px; } }
 @media only screen and (max-width: 767px) { .nav-bar { height: auto; }
@@ -761,12 +761,12 @@ div.orbit-wrapper div.slider-nav { display: block; }
 
 div.orbit-wrapper div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
 
-div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png'); background-size: 100%; right: 0; }
+div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1340862868'); background-size: 100%; right: 0; }
 
 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1340846519'); background-size: 100%; left: 0; }
 
-.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow-small.png?1340857106'); }
-.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow-small.png?1340857109'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow-small.png?1340862688'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow-small.png?1340862688'); }
 
 /* Bullet Nav ---------------------- */
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; left: 50%; margin-left: -50px; padding: 0; }
@@ -939,11 +939,7 @@ header#homepage .button:hover { background: #006582; }
 
 @media only screen and (max-width: 767px) { header#homepage { background-size: auto 130px; padding-bottom: 150px; }
   #homepageFeatures { padding-top: 30px; } }
-<<<<<<< HEAD
-.pic#homepageImgSass { background-image: url('../images/homepageImgSass.png?1340842456'); }
-=======
 .pic#homepageImgSass { background-image: url('../images/homepageImgSass.png?1340846519'); }
->>>>>>> Fixes for IE8, starting to fix the mobile grid
 
 .pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures.png?1340846519'); }
 
