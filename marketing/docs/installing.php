@@ -11,18 +11,7 @@
     			<h4>SCSS and CSS</h4>
   				<p>There are two ways you can use Foundation: with Sass (SCSS), and with straight up CSS. If you're comfortable with Sass, working that way will give you a little more control over the framework as well as a lot of other niceties. If you're not comfortable with preprocessors, the CSS version is full featured and can be customized as well.</p>
 
-  				<hr />
-
-  				<h4>SCSS: Installing with Compass</h4>
-  				<p>To create your first project using our Compass gem, you'll need to have the zurb-foundation gem installed. This includes all the necessary dependencies to that you'll need to get going.</p>
-          <h6>To install from Ruby Gems:</h6>
-          <p class="keystroke">[sudo] gem install zurb-foundation</p>
-          <br>
-          <h5>Creating Your first project</h5>
-          <p class="keystroke">
-            cd path/to/where-you-want-your-project
-          </p>
-  				<hr />
+          <hr>
 
   				<h4>CSS: Customize and Download</h4>
   				<p>If you'd rather not work with a preprocessor like Sass, you can download Foundation as a single code pack with everything you need to create a responsive site.</p>
