@@ -71,7 +71,7 @@
   }
 
 
-  /* Mobile Stylesss */
+  /* Mobile Styles */
 
   @media #{$media-medium} {
     .touch .nav-bar li a { @include font-size(13); }
