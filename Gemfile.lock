@@ -1,18 +1,18 @@
 PATH
   remote: .
   specs:
-    foundation (3.0.0.alpha21)
-      compass (~> 0.12.1)
+    foundation (3.0.0.alpha22)
+      compass (= 0.12.1)
       linguistics (~> 1.0.9)
       modular-scale (~> 0.0.5)
       rake
-      sass (~> 3.2.0.alpha.247)
+      sass (= 3.2.0.alpha.244)
 
 GEM
   remote: https://rubygems.org/
   specs:
     chunky_png (1.2.5)
-    compass (0.12.2)
+    compass (0.12.1)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
@@ -21,7 +21,7 @@ GEM
     modular-scale (0.0.5)
       compass (>= 0.11.5)
     rake (0.9.2.2)
-    sass (3.2.0.alpha.247)
+    sass (3.2.0.alpha.244)
 
 PLATFORMS
   ruby

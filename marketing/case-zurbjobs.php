@@ -35,7 +35,7 @@
            <p>We launched <a href="http://www.zurbjobs.com">ZURBjobs</a> to help companies find talent in their own quest for world domination. ZURBjobs had to look amazing on every device, so we used Foundation to quickly build the site. Here are some of the highlights of how we built and launched using Foundation.</p>
                        
            <h4>Minimal Code Required</h4>
-           <p>Using Foundation, we were able to quickly insert <a href="docs/forms.php">form elements</a> on the site using its preset elements. This kicked us into warp speed &mdash; we didn’t have to code entirely new elements, simply adapt the existing ones with light custom styles.</p>
+           <p>Using Foundation, we were able to quickly insert <a href="docs/forms.php">form elements</a> on the site using its preset elements. This kicked us into warp speed &mdash; we didn’t have to code entirely new elements. We simply had to adapt the existing ones with light custom styles.</p>
 
           </div>
           <div class="six columns">

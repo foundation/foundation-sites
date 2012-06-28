@@ -6,7 +6,7 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>Forms</h3>
-    			<h4 class="subheader">We set out in Foundation 3 to create an easy to handle, powerful, versatile form layout system. A combination of form styles and the Foundation Grid means you can do basically anything.</h4>
+    			<h4 class="subheader">We set out in Foundation 3 to create an easy to handle, powerful, and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
     			
     			<h4>The Basics</h4>
   				<p>Form elements in Foundation 3 are styled based on their type attribute rather than <code>.input-text</code> classes, so the SCSS/CSS is much simpler.</p>
@@ -205,13 +205,13 @@
           
           <h4>Custom Inputs</h4>
           <form class="custom">
-  					<p>Creating easy to style custom form elements is so crazy easy, it's practically a crime. Just add a class of 'custom' to a form and, if you want, jquery.customforms.js will do everything for you.</p>
+  					<p>Creating easy to style custom form elements is so crazy easy, it's practically a crime. Just add a class of "custom" to a form and, if you want, jquery.customforms.js will do everything for you.</p>
   					<p>The Foundation forms js will look for any checkbox, radio button, or select element and replace it with custom markup that is already styled with forms.css.</p>
   					
   					<script src="https://gist.github.com/2955124.js?file=f3-custom-form.html"></script>
   					
   					<p>If you want to avoid a potential flash (waiting for js to load and replace your default elements) you can supply the custom markup as part of the page, and the js will instead simply map the custom elements to the inputs.</p>
-  					<p>Foundation custom forms will even correctly respect and apply default states for radio, checkbox and select elements. You can use the 'checked' or 'selected' properties just like normal, and the js will apply that as soon as the page loads.</p>
+  					<p>Foundation custom forms will even correctly respect and apply default states for radio, checkbox and select elements. You can use the "checked" or "selected" properties just like normal, and the js will apply that as soon as the page loads.</p>
   	
   					<h5>Radio Buttons and Checkboxes</h5>
   					<div class="row">
@@ -273,7 +273,7 @@
   
   				<p>If you are creating these custom forms using JavaScript (via AJAX, JavaScript templates or whatever), you will also need to create the custom markup that Foundation typically creates for you.</p>
   
-  				<p>Foundation detects any custom forms when the document has loaded and adds the custom markup required to make the forms pretty. However if you are adding these forms after the document has loaded, Foundation does not know to append this markup.</p>
+  				<p>Foundation detects any custom forms when the document has loaded and adds the custom markup required to make the forms pretty. However, if you are adding these forms after the document has loaded, Foundation does not know to append this markup.</p>
   
   				<p>All the custom forms events are bound using jQuery.fn.on(), so you don't need to worry about event handlers not being bound to new elements.</p>
           

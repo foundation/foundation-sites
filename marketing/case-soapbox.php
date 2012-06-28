@@ -30,7 +30,7 @@
           <div class="six columns">
             <h2>ZURBsoapbox</h2>
             <h4 class="subheader">Rapidly launching and iterating for our audience.</h4>
-            <p>ZURBsoapbox is a speaking series we host at the ZURB offices, where we invite influential entrepreneurs, designers, and other tech types to come and share their experiences.</p>
+            <p>ZURBsoapbox is a speaking series we host at ZURB HQ, where we invite influential entrepreneurs, designers, and other tech types to come and share their experiences.</p>
             <p>We launched <a href="http://www.zurbsoapbox.com">ZURBsoapbox</a>, the first site built with Foundation, in order to raise engagement and create a resource for anyone who can't attend in person. <strong>Here's some of the highlights.</strong></p>
             
             <h4>Instant Mobile Site</h4>
@@ -50,7 +50,7 @@
             <p>Mobile devices can't handle our standard flash audio player, so we used <a href="docs/layout.php">Foundation's mobile visibility classes</a> to selectively hide the flash element, and show a mobile-friendly audio file link.</p>
             
             <h4>Next Steps: Images</h4>
-            <p>We practice what we preach, and we're always iterating on Foundation-based sites. Our next step is to implement a more mobile-friendly image solution, so devices don't have to load quite as much data.</p>
+            <p>We practice what we preach, and we're always iterating on Foundation-based sites. Our next step is to implement a more mobile-friendly image solution, so devices don't have to load quite as much data. There's a lot of good work going on in this area, but also a lot to figure out.</p>
           </div>
         </div>        
         

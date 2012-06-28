@@ -6,9 +6,9 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>Buttons</h3>
-    			<h4 class="subheader">Buttons are a convenient tool when it comes to more traditional actions. To that end Foundation includes a lot of easy to use button styles that you can customize or override.</h4>
+    			<h4 class="subheader">Buttons are a convenient tool when it comes to more traditional actions. To that end, Foundation includes a lot of easy to use button styles that you can customize or override.</h4>
     			
-  				<p>Foundation buttons have a number of parameters and styles - you can see a few examples below. The out of the box classes include size, type (color) and style (square, slightly rounded, and completely rounded).</p>
+  				<p>Foundation buttons have a number of parameters and styles &mdash; you can see a few examples below. The out of the box classes include size, type (color) and style (square, slightly rounded, and completely rounded).</p>
   				
   				<script src="https://gist.github.com/2969496.js?file=f3-buttons.html"></script>
   				
@@ -48,10 +48,10 @@
   				<hr />
 
   				<h4>Button Groups</h4>
-  				<p>When you need a group of actions, button groups give you some easy to use options.</p>
+  				<p>When you need a group of actions, button groups give you some easy-to-use options.</p>
   				
   				<h5>Button Group - Radius</h5>
-  				<p>A button group is simply a <code>ul.button-group</code> in which each <code>li</code> contains a button. You can attach a button style like radius or rounded to the entire group, and Foundation will apply the style to the first and last buttons in the group.</p>
+  				<p>A button group is simply a <code>ul.button-group</code> in which each <code>li</code> contains a button. You can attach a button style, such as radius or rounded, to the entire group, and Foundation will apply the style to the first and last buttons in the group.</p>
           <ul class="button-group radius">
             <li><a href="#" class="button radius">Button 1</a></li>
             <li><a href="#" class="button radius">Button 2</a></li>
@@ -95,7 +95,7 @@
           <hr />
           
           <h4>Dropdown Buttons</h4>
-          <p>Foundation 3 includes two types of dropdown buttons: buttons which create a dropdown when you click them, and buttons which have a dropdown when you click specifically on the down-arrow part of the button (a split button). These are useful when an action has several possible outcomes to select from, or when there are secondary choices you can make in lieu of a primary action.</p>
+          <p>Foundation 3 includes two types of dropdown buttons: buttons which create a dropdown when you click them and buttons which have a dropdown when you click specifically on the down-arrow part of the button (a split button). These are useful when an action has several possible outcomes to select from, or when there are secondary choices you can make in lieu of a primary action.</p>
           
           <h5>Dropdown Buttons</h5>
           <p>Dropdown buttons use the same classes as any other button, but a different structure.</p>
