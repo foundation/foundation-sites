@@ -16,8 +16,7 @@
   				<h4>CSS: Customize and Download</h4>
   				<p>If you'd rather not work with a preprocessor like Sass, you can download Foundation as a single code pack with everything you need to create a responsive site.</p>
 
-  				<p>Visit the <a href="../download.php">download page</a> to get started with a CSS pack. You can choose to simply download everything, with most files joined to reduce requests, and with smart defaults that we've set. Alternately you can customize your download by including or omitting different pieces of the framework, and setting many of the Sass variables like colors, grid size and columns, etc.</p>
-
+  				<p>Visit the <a href="../download.php">download page</a> to get started with a CSS pack. You can choose to simply download everything, with most files joined to reduce requests and with smart defaults that we've set. Alternately you can customize your download by including or omitting different pieces of the framework, and setting many of the Sass variables like colors, grid size and columns, etc.</p>
     		</div>
     		<div class="four columns">
     		  <? include("includes/_download.php"); ?>
