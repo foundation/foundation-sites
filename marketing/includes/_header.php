@@ -21,28 +21,11 @@
 	<link rel="icon" type="image/ico" href="favicon.ico">
   
 	<!-- Included CSS Files -->
-	<?php if (true) { ?>
+
   <link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
   <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
 	<link rel="stylesheet" href="stylesheets/presentation.css">
-	<?php } else {?>
-	<link rel="stylesheet" href="../css/normalize.css">
-	<link rel="stylesheet" href="../css/globals.css">
-	<link rel="stylesheet" href="../css/typography.css">
-	<link rel="stylesheet" href="../css/grid.css">
-	<link rel="stylesheet" href="../css/ui.css">
-	<link rel="stylesheet" href="../css/buttons.css">
-	<link rel="stylesheet" href="../css/tabs.css">
-	<link rel="stylesheet" href="../css/navbar.css">
-	<link rel="stylesheet" href="../css/forms.css">
-	<link rel="stylesheet" href="../css/orbit.css">
-	<link rel="stylesheet" href="../css/reveal.css">
-	<link rel="stylesheet" href="../css/app.css">
-	<link rel="stylesheet" href="../css/mobile.css">
-	<link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
-  <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
-	<link rel="stylesheet" href="presentation.css">
-	<?php } ?>
+
 	
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" href="../css/ie.css">

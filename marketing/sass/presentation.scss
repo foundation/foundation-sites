@@ -34,7 +34,7 @@ p.disclaimer { color: #999; }
 
 /* Homepage */
 
-header#homepage { background: url(images/device-bg.png) center bottom no-repeat #2ba6cb; padding: 22px 0 262px; }
+header#homepage { background: image-url("device-bg.png") center bottom no-repeat #2ba6cb; padding: 22px 0 262px; }
 header#homepage h4 { margin-bottom: 44px; }
 
 header#homepage .button { background: #137795; border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
@@ -42,7 +42,7 @@ header#homepage .button:hover { background: #006582; }
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
 
-  header#homepage { background-size: auto 357.5px; background-image: url(images/device-bg-retina.png); }
+  header#homepage { background-size: auto 357.5px; background-image: image-url("device-bg-retina.png"); }
 }
 
 
@@ -50,15 +50,15 @@ header#homepage .button:hover { background: #006582; }
 #homepageFeatures h3 { color: #2ba6cb; }
 #homepageFeatures div.pic { width: 110px; height: 110px; background-size: 100% 100%; }
 
-.pic#homepageImgSass { background-image: url(images/homepageImgSass.png); }
-.pic#homepageImgFeatures { background-image: url(images/homepageImgFeatures.png); }
-.pic#homepageImgAdvanced { background-image: url(images/homepageImgAdvanced.png); }
+.pic#homepageImgSass { background-image: image-url("homepageImgSass.png"); }
+.pic#homepageImgFeatures { background-image: image-url("homepageImgFeatures.png"); }
+.pic#homepageImgAdvanced { background-image: image-url("homepageImgAdvanced.png"); }
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
 
-  .pic#homepageImgSass { background-image: url(images/homepageImgSass-retina.png); }
-  .pic#homepageImgFeatures { background-image: url(images/homepageImgFeatures-retina.png); }
-  .pic#homepageImgAdvanced { background-image: url(images/homepageImgAdvanced-retina.png); }
+  .pic#homepageImgSass { background-image: image-url("homepageImgSass-retina.png"); }
+  .pic#homepageImgFeatures { background-image: image-url("homepageImgFeatures-retina.png"); }
+  .pic#homepageImgAdvanced { background-image: image-url("homepageImgAdvanced-retina.png"); }
 }
 
 #github { background: #3f3f3f; padding: 20px 30px 0; }
@@ -71,15 +71,15 @@ header#homepage .button:hover { background: #006582; }
 #github img { display: block; }
 
 #frameworkFeatures a.pic { width: 205px; height: 130px; display: block; background-repeat: none; background-size: 100% 100%; }
-#featureGrid { background-image: url(images/featureGrid.png); }
-#featurePrototype { background-image: url(images/featurePrototype.png); }
-#featureDevices { background-image: url(images/featureDevices.png); }
+#featureGrid { background-image: image-url("featureGrid.png"); }
+#featurePrototype { background-image: image-url("featurePrototype.png"); }
+#featureDevices { background-image: image-url("featureDevices.png"); }
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
 
-  #featureGrid { background-image: url(images/featureGrid-retina.png); }
-  #featurePrototype { background-image: url(images/featurePrototype-retina.png); }
-  #featureDevices { background-image: url(images/featureDevices-retina.png); }
+  #featureGrid { background-image: image-url("featureGrid-retina.png"); }
+  #featurePrototype { background-image: image-url("featurePrototype-retina.png"); }
+  #featureDevices { background-image: image-url("featureDevices-retina.png"); }
 }
 
 #usingFoundation { background: #2ba6cb; padding: 22px 0; margin: 44px 0; }
@@ -89,7 +89,7 @@ header#homepage .button:hover { background: #006582; }
 #usingFoundation .block-grid li a { display: block; }
 #usingFoundation .block-grid li a img { display: block; margin: 0 auto; }
 
-.case-study { background: url(images/case-study-bg.png) left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; }
+.case-study { background: image-url("case-study-bg.png") left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; }
 .case-study img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; }
 
 
@@ -111,7 +111,7 @@ header#homepage .button:hover { background: #006582; }
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
-  .top-bar .attached > .name span > a.toggle-nav { background-image: url(images/plus-toggle-2-retina.png); background-size: 100% 100%; }
+  .top-bar .attached > .name span > a.toggle-nav { background-image: image-url("plus-toggle-2-retina.png"); background-size: 100% 100%; }
 }
 
 #megaDrop li { list-style: none; }
