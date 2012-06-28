@@ -13,21 +13,11 @@
   <section id="mainContent">
   
     <div class="row">
-      <div class="two columns">
-        <ul class="side-nav">
-          <li><a href="index.php">&larr; Home</a></li>
-          <li class="divider"></li>
-          <li><a href="case-flite.php">Flite</a></li>
-          <li><a href="case-swizzle.php">Swizzle</a></li>
-          <li class="active"><a href="case-soapbox.php">ZURBsoapbox</a></li>
-          <li><a href="case-reel.php">Reel</a></li>
-          <li><a href="case-zurbjobs.php">ZURBjobs</a></li>
-        </ul>
-      </div>
       
-      <div class="ten columns">
+      <div class="ten columns push-two">
         <div class="row">
           <div class="six columns">
+            <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
             <h2>ZURBsoapbox</h2>
             <h4 class="subheader">Rapidly launching and iterating for our audience.</h4>
             <p>ZURBsoapbox is a speaking series we host at ZURB HQ, where we invite influential entrepreneurs, designers, and other tech types to come and share their experiences.</p>
@@ -42,18 +32,29 @@
         </div>
       
         <div class="row">
-          <div class="six columns">
-            <img src="images/case-soapbox-2.jpg" />
-          </div>
-          <div class="six columns"> 
+          <div class="six columns push-six"> 
             <h4>Device-Specific Function</h4>
             <p>Mobile devices can't handle our standard flash audio player, so we used <a href="docs/layout.php">Foundation's mobile visibility classes</a> to selectively hide the flash element, and show a mobile-friendly audio file link.</p>
             
             <h4>Next Steps: Images</h4>
             <p>We practice what we preach, and we're always iterating on Foundation-based sites. Our next step is to implement a more mobile-friendly image solution, so devices don't have to load quite as much data. There's a lot of good work going on in this area, but also a lot to figure out.</p>
           </div>
+          <div class="six columns pull-six">
+            <img src="images/case-soapbox-2.jpg" />
+          </div>
         </div>        
         
+      </div>
+      <div class="two columns pull-ten">
+        <ul class="side-nav">
+          <li><a href="index.php">&larr; Home</a></li>
+          <li class="divider"></li>
+          <li><a href="case-flite.php">Flite</a></li>
+          <li><a href="case-swizzle.php">Swizzle</a></li>
+          <li class="active"><a href="case-soapbox.php">ZURBsoapbox</a></li>
+          <li><a href="case-reel.php">Reel</a></li>
+          <li><a href="case-zurbjobs.php">ZURBjobs</a></li>
+        </ul>
       </div>
     </div>
   

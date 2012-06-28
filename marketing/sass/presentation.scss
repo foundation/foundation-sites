@@ -50,11 +50,16 @@ header#homepage { background: image-url("device-bg.png") center bottom no-repeat
   header#homepage { background-size: auto 357.5px; background-image: image-url("device-bg-retina.png"); }
 }
 
-
 #homepageFeatures { background: #ecf8ff; padding: 88px 0 44px 0; margin-bottom: 44px; 
   
   h3 { color: #2ba6cb; }
   div.pic { width: 110px; height: 110px; background-size: 100% 100%; }  
+}
+
+@media #{$media-small} {
+  
+  header#homepage { background-size: auto 130px; padding-bottom: 150px; } 
+  #homepageFeatures { padding-top: 30px; } 
 }
 
 .pic#homepageImgSass { background-image: image-url("homepageImgSass.png"); }
@@ -115,9 +120,9 @@ header#homepage { background: image-url("device-bg.png") center bottom no-repeat
 }
 
 @media #{$media-small} {
-  .case-study { padding-left: 20px; padding-bottom: 140px;
+  .case-study { padding-left: 20px; padding-bottom: 110px;
   
-    img { width: auto; height: 120px; }
+    img { width: auto; height: 120px; opacity: 1; }
   }
 }
 
