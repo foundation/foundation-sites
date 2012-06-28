@@ -59,8 +59,8 @@
 
 			<dl class="tabs vertical hide-on-phones">
 				<dd class="active"><a href="index.php">Getting Started</a></dd>
-				<dd><a href="installing.php">Using CSS</a></dd>
-        <dd><a href="gem-install.php">Using Gems</a></dd>
+				<dd><a href="installing.php">CSS Version</a></dd>
+        <dd><a href="gem-install.php">Gem Versions</a></dd>
 				<dd><a href="grid.php">The Grid</a></dd>
 				<dd><a href="typography.php">Typography</a></dd>
 				<dd><a href="buttons.php">Buttons</a></dd>

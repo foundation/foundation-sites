@@ -6,27 +6,37 @@
       <div class="row">
         <div class="eight columns">
 
-          <dl class="tabs pill">
-            <dd class="active"><a href="#scss">Using SCSS</a></dd>
-            <dd><a href="#rails">Using Rails</a></dd>
+          <dl class="tabs" style="margin-top: 3px;">
+            <dd class="active"><a href="#simple1">Using SCSS</a></dd>
+            <dd><a href="#simple2">Using Rails</a></dd>
           </dl>
 
           <ul class="tabs-content">
-            <li class="active" id="scss">
+            <li class="active" id="simple1">
               <h3>SCSS: Installing with Compass</h3>
               <h4 class="subheader">Start using Foundation the way you want, with more control than ever before.</h4>
 
-              <p>To create your first project using our Compass gem, you'll need to have the zurb-foundation gem installed. This includes all the necessary dependencies to that you'll need to get going.</p>
-              <h5>To install from Ruby Gems:</h5>
-              <p class="keystroke">[sudo] gem install zurb-foundation</p>
-              <br>
+              <dl class="sub-nav">
+                <dt>Go to:</dt>
+                <dd class="active"><a href="#installing">Installing</a></dd>
+                <dd class="active"><a href="#settings">Settings</a></dd>
+                <dd class="active"><a href="#mixins">Mixins &amp; Functions</a></dd>
+              </dl>
+
+              <hr>
+
+              <a name="installing"></a>
+              <h4>Installation</h4>
+              <p>To create your first project using our Compass gem, you'll need to have the zurb-foundation gem installed. This includes all the necessary dependencies that you'll need to get going.</p>
+              <p class="btm-marg keystroke">[sudo] gem install zurb-foundation</p>
+
               <h5>Creating Your first project</h5>
               <p class="keystroke">
                 &bullet; cd path/to/where-you-want-your-project <br>
                 &bullet; compass create &lt;project-name&gt; -r zurb-foundation --using zurb-foundation
               </p>
               <p>
-              <p>Now you should have a new project folder created with foundation included along with all the awesome advantages that comes with SASS and Compass.</p>
+              <p class="btm-marg">Now you should have a new project folder created with foundation included along with all the awesome advantages that comes with SASS and Compass.</p>
               <h5>Adding Foundation to an existing project</h5>
               <ul class="disc">
                 <li>Add <span class="keystroke">require "ZURB-foundation"</span> to your config.rb file</li>
@@ -36,6 +46,7 @@
 
               <hr>
 
+              <a name="settings"></a>
               <h3>Settings</h3>
               <h4 class="subheader">Work with your own colors, font sizes, radii, etc by adjusting the _settings.scss file in your new project!</h4>
               <p>We include a _settings.scss file with every new compass project. Here we have default variables listed out that you can uncomment and change as you see fit.</p>
@@ -87,8 +98,14 @@
                 <li><strong>$navFlyoutBaseWidth:</strong> The base number used to calculate dropdown widths.</li>
               </ul>
               <span class="btm-marg"><script src="https://gist.github.com/3008766.js?file=ui-settings.scss"></script></span>
+
+              <hr>
+
+              <a name="mixins"></a>
+              <h3>Mixins &amp; Functions</h3>
+              <h4 class="subheader">Work with your own colors, font sizes, radii, etc by adjusting the _settings.scss file in your new project!</h4>
             </li>
-            <li id="rails">
+            <li id="simple2">
               Hey
             </li>
           </ul>
@@ -104,8 +121,8 @@
 
       <dl class="tabs vertical hide-on-phones">
         <dd><a href="index.php">Getting Started</a></dd>
-        <dd><a href="installing.php">Using CSS</a></dd>
-        <dd class="active"><a href="gem-install.php">Using Gems</a></dd>
+        <dd><a href="installing.php">CSS Version</a></dd>
+        <dd class="active"><a href="gem-install.php">Gem Versions</a></dd>
         <dd><a href="grid.php">The Grid</a></dd>
         <dd><a href="typography.php">Typography</a></dd>
         <dd><a href="buttons.php">Buttons</a></dd>

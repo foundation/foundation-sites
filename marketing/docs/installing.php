@@ -5,11 +5,8 @@
 		<section role="main">
 		  <div class="row">
 		    <div class="eight columns">
-    			<h3>Installing</h3>
+    			<h3>CSS</h3>
     			<h4 class="subheader">Start using Foundation the way you want, with more control than ever before.</h4>
-
-    			<h4>SCSS and CSS</h4>
-  				<p>There are two ways you can use Foundation: with Sass (SCSS), and with straight up CSS. If you're comfortable with Sass, working that way will give you a little more control over the framework as well as a lot of other niceties. If you're not comfortable with preprocessors, the CSS version is full featured and can be customized as well.</p>
 
           <hr>
 
@@ -28,8 +25,8 @@
 
 			<dl class="tabs vertical hide-on-phones">
 				<dd><a href="index.php">Getting Started</a></dd>
-				<dd class="active"><a href="installing.php">Using CSS</a></dd>
-        <dd><a href="gem-install.php">Using Gems</a></dd>
+				<dd class="active"><a href="installing.php">CSS Version</a></dd>
+        <dd><a href="gem-install.php">Gem Versions</a></dd>
 				<dd><a href="grid.php">The Grid</a></dd>
 				<dd><a href="typography.php">Typography</a></dd>
 				<dd><a href="buttons.php">Buttons</a></dd>
