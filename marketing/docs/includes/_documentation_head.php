@@ -21,7 +21,7 @@
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">
   <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
-	<link rel="stylesheet" href="presentation.css">
+	<link rel="stylesheet" href="../stylesheets/docs/presentation.css">
 	
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" href="../stylesheets/ie.css">
