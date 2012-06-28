@@ -991,7 +991,7 @@ header#homepage .button:hover { background: #006582; }
 
 @media only screen and (max-width: 767px) { #usingFoundation a.top-right { display: none; } }
 .case-study { background: url('../images/case-study-bg.png?1340846519') left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; overflow: hidden; }
-.case-study img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; }
+.case-study a img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; border: none; }
 
 @media screen and (orientation: portrait) { .case-study { padding-left: 20px; }
   .case-study img { width: 50%; z-index: 2; opacity: 0.1; }
@@ -1011,20 +1011,22 @@ header#homepage .button:hover { background: #006582; }
 .container.top-bar { margin-bottom: 0; }
 
 .top-bar { -webkit-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; -moz-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; border-bottom: none; }
-
+.top-bar .attached { padding: 0 15px; width: 1000px; max-width: 100%; }
 .top-bar li { margin-bottom: 0; line-height: 46px; }
-
 .top-bar .attached > ul.right > li.download { border-right: 0; }
-
 .top-bar .attached > ul.right > li.download a { padding: 6px 13px 6px; }
-
 .top-bar .small.button { height: auto; top: 10px; }
-
 .top-bar a:hover { color: white; }
-
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../images/plus-toggle-2-retina.png?1340846519'); background-size: 100% 100%; } }
+@media only screen and (max-width: 1024px) and (min-width: 768px) { .top-bar { height: 47px !important; }
+  .top-bar .attached { height: auto; }
+  .top-bar .attached > .name { height: auto; padding: 0 !important; margin-top: 0; text-indent: 0 !important; background: red; }
+  .top-bar .attached > .name span { width: auto; padding: 0 !important; text-indent: 0 !important; background: blue; }
+  .top-bar .attached > .name span > a { width: auto; padding: 0 !important; text-indent: 0 !important; }
+  .top-bar .attached > ul > li > a, .top-bar .attached > ul > li > span { height: 45px !important; text-indent: 0; }
+  .top-bar .attached > ul > li > a.button { height: auto !important; } }
 #megaDrop li { list-style: none; }
 
 #megaDrop .show-on-phones, #megaDrop .sitemap-link { display: none !important; }

@@ -9,7 +9,7 @@
     			<h4 class="subheader">Foundation was designed for and tested on numerous browsers and devices. Here's the rundown on what's tested, and what to do if something misbehaves.</h4>
 
     			<h4>Browser and Device Support</h4>
-  				<p>We go to great lengths to ensure that Foundation works as expected on a variety of common browsers and devices. Given how forward-facing Foundation is there are some aesthetic properties which are not supported in older browsers (border radii, box shadows, etc) but the core elements are reliable across the board.</p>
+  				<p>We go to great lengths to ensure that Foundation works as expected on a variety of common browsers and devices. Given how forward-facing Foundation is there are some aesthetic properties which are not supported in older browsers (border radii, box shadows, etc), but the core elements are reliable across the board.</p>
 
   				<div class="row support">
   				  <div class="three columns"><h5>Browser/OS</h5></div>
@@ -83,8 +83,8 @@
 
   				<h4>Frequently Asked Questions</h4>
   				<h5>Why doesn't Foundation 3 support IE6 or IE7?</h5>
-  				<p>Both IE6 and IE7 have serious issues which make support for them detrimental to the overall experience. Rather than having a single codebase that supports all the way back to those browsers, but is less useful and flexible for everyone, we opted to not support these browsers. Not only do they have extremely small, rapidly dwindling user bases, not supporting them allows us the use of things like <code>box-sizing: border-box</code> and other tools.</p>
-  				<p>If IE7 support is important for your users / customers, you can use <a href="#">Foundation 2.2.1</a> which supports IE7.</p>
+  				<p>Both IE6 and IE7 have serious issues which make support for them detrimental to the overall experience. Rather than having a single codebase that supports all the way back to those browsers, but is less useful and flexible for everyone, we opted to not support these browsers. Not only do they have extremely small, rapidly dwindling user bases, but not supporting them allows us the use of things like <code>box-sizing: border-box</code> and other tools.</p>
+  				<p>If IE7 support is important for your users / customers, you can use <a href="#">Foundation 2.2.1</a>, which supports IE7.</p>
 
   				<h5>Why can't I see the responsive stuff in IE8?</h5>
   				<p>The responsive nature of Foundation takes effect through media queries, which IE8 does not support. However, the intent of media queries is to make changes for devices, rather than uncommonly small IE8 windows, so this is not an issue that comes up in practice.</p>
@@ -108,10 +108,10 @@
   				<p>If you've found a bug in the framework (or think you have) you can file it here. We try and address these as part of ongoing development. Please use this only for bugs or things that seem incorrect, support requests will not be addressed quickly here.</p>
 
   				<h5><a href="http://twitter.com/foundationzurb">@foundationzurb</a></h5>
-  				<p>Follow us on Twitter to hear about new sites using Foundation, code examples, playground pieces from ZURB and more. You can also ping us with quick questions or other support issues, we're usually pretty speedy.</p>
+  				<p><a href="http://twitter.com/foundationzurb">Follow us on Twitter</a> to hear about new sites using Foundation, code examples, playground pieces from ZURB and more. You can also ping us with quick questions or other support issues, we're usually pretty speedy.</p>
 
   				<h5><a href="mailto:foundation@zurb.com">Get in Touch</a></h5>
-  				<p>If you're totally stuck and need some help, shoot us an email and we'll typically get back within a day or two.</p>
+  				<p>If you're totally stuck and need some help, shoot us <a href="mailto:foundation@zurb.com">an email</a> and we'll typically get back within a day or two.</p>
 
     		</div>
     		<div class="four columns">

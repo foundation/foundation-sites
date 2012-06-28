@@ -18,7 +18,7 @@
   				<p>Implementing Orbit is easy, but there are a few things to keep in mind when it comes to using Orbit in its simplest form.</p>
 
   				<h5>Included Files</h5>
-  				<p>First, ensure you're including the Orbit JS and CSS. If you're using the SCSS version of Foundation these will be part of your environment already, and if you download Foundation as simple CSS the two files will be part of <strong>foundation.js</strong> and <strong>foundation.css</strong>, respectively. Also ensure you're including jQuery, also provided as part of any Foundation distribution.</p>
+  				<p>First, ensure you're including the Orbit JS and CSS. If you're using the SCSS version of Foundation, these will be part of your environment already, and if you download Foundation as simple CSS the two files will be part of <strong>foundation.js</strong> and <strong>foundation.css</strong>, respectively. Also ensure you're including jQuery, also provided as part of any Foundation distribution.</p>
 
   				<h5>Setting Up Your Slider</h5>
   				<p>Your Orbit slider is simply a <code>div</code> with a unique ID. For our examples we'll use <code>&lt;div id="featured"&gt;</code>, an example of which you can see above. The markup looks like this:</p>
@@ -26,7 +26,7 @@
   				<script src="https://gist.github.com/2960362.js?file=f3-orbit-markup.html"></script>
 
   				<h5>Activating Orbit</h5>
-  				<p>With your <code>#featured</code> element in place, we just need to call Orbit. <strong>Remember:</strong> your call to Orbit needs to come <em>after</em> you've included jQuery and foundation.js. By default those are at the end of your document, so this code snippet should come at the very end:</p>
+  				<p>With your <code>#featured</code> element in place, we just need to call Orbit. <strong>Remember:</strong> your call to Orbit needs to come <em>after</em> you've included jQuery and foundation.js. By default, those are at the end of your document, so this code snippet should come at the very end:</p>
   				<script src="https://gist.github.com/2960375.js?file=f3-orbit-call.html"></script>
 
   				<p>That's all you need to trigger Orbit on a series of images. It includes the timer element, and the left and right hand paddles.</p>
@@ -34,7 +34,7 @@
   				<hr />
 
   				<h4>Options</h4>
-  				<p>Orbit has a number of options available, which you can specify when you call Orbit. In the example above we kept all of the default values, but you can optionally use any of these options:</p>
+  				<p>Orbit has a number of options available, which you can specify when you call <code>.orbit()</code>. In the example above, we kept all of the default values, but you can optionally use any of these options:</p>
 
   				<script src="https://gist.github.com/2960382.js?file=f3-orbit-options.js"></script>
 
