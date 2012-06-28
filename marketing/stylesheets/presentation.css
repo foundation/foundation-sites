@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Requires: normalize.css -box-sizing.htc */
 /* Global Reset & Standards ---------------------- */
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
@@ -723,41 +722,17 @@ div.orbit div.orbit-slide { width: 100%; height: 100%; }
 /* Timer ---------------------- */
 div.orbit-wrapper div.timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; right: 10px; opacity: .6; cursor: pointer; z-index: 31; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../images/foundation/orbit/rotator-black.png?1340842456') no-repeat; z-index: 3; }
-=======
-div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../images/foundation/orbit/rotator-black.png?1340839300') no-repeat; z-index: 3; }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../images/foundation/orbit/rotator-black.png?1340846519') no-repeat; z-index: 3; }
->>>>>>> Shitload of copy edits, thanks Ryan
 
 div.orbit-wrapper span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; right: 0; z-index: 2; overflow: hidden; }
 
 div.orbit-wrapper span.rotator.move { left: 0; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../images/foundation/orbit/timer-black.png?1340842456') repeat 0 0; }
-
-div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../images/foundation/orbit/pause-black.png?1340842456') no-repeat; z-index: 4; opacity: 0; }
-
-div.orbit-wrapper span.pause.active { background: url('../images/foundation/orbit/pause-black.png?1340842456') no-repeat 0 -40px; }
-=======
-div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../images/foundation/orbit/timer-black.png?1340839300') repeat 0 0; }
-
-div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../images/foundation/orbit/pause-black.png?1340839300') no-repeat; z-index: 4; opacity: 0; }
-
-div.orbit-wrapper span.pause.active { background: url('../images/foundation/orbit/pause-black.png?1340839300') no-repeat 0 -40px; }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../images/foundation/orbit/timer-black.png?1340846519') repeat 0 0; }
 
 div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../images/foundation/orbit/pause-black.png?1340846519') no-repeat; z-index: 4; opacity: 0; }
 
 div.orbit-wrapper span.pause.active { background: url('../images/foundation/orbit/pause-black.png?1340846519') no-repeat 0 -40px; }
->>>>>>> Shitload of copy edits, thanks Ryan
 
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper span.pause.active { opacity: 1; }
 
@@ -771,34 +746,14 @@ div.orbit-wrapper div.slider-nav { display: block; }
 
 div.orbit-wrapper div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1340842456'); background-size: 100%; right: 0; }
-
-div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1340842456'); background-size: 100%; left: 0; }
-=======
-div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1340839300'); background-size: 100%; right: 0; }
-
-div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1340839300'); background-size: 100%; left: 0; }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1340846519'); background-size: 100%; right: 0; }
 
 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1340846519'); background-size: 100%; left: 0; }
->>>>>>> Shitload of copy edits, thanks Ryan
 
 /* Bullet Nav ---------------------- */
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; left: 50%; margin-left: -50px; padding: 0; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340842444') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
-=======
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340839282') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340846477') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
->>>>>>> Shitload of copy edits, thanks Ryan
 
 ul.orbit-bullets li.active { color: #222; background-position: -8px 0; }
 
@@ -813,15 +768,7 @@ div.orbit, div.orbit-wrapper { width: 100% !important; }
 
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -50px; left: 50%; margin-left: -50px; padding: 0; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340842444') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
-=======
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340839282') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340846477') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
->>>>>>> Shitload of copy edits, thanks Ryan
 
 ul.orbit-bullets li.has-thumb { background: none; width: 100px; height: 75px; }
 
@@ -976,68 +923,24 @@ footer span.glyph { font-size: 23px; }
 .gist .gist-file .gist-meta a:hover { text-decoration: underline; }
 
 header { background-color: #2ba6cb; padding: 22px 0; }
-
 header h1 { color: #fff; font-weight: 500; }
-
 header h4 { color: #fff; font-weight: 300; }
 
 p.disclaimer { color: #999; }
 
 /* Homepage */
-<<<<<<< HEAD
-<<<<<<< HEAD
-header#homepage { background: url('../images/device-bg.png?1340842456') center bottom no-repeat #2ba6cb; padding: 22px 0 262px; }
-=======
-header#homepage { background: url('../images/device-bg.png?1340839300') center bottom no-repeat #2ba6cb; padding: 22px 0 262px; }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 header#homepage { background: url('../images/device-bg.png?1340846519') center bottom no-repeat #2ba6cb; padding: 22px 0 262px; }
->>>>>>> Shitload of copy edits, thanks Ryan
-
 header#homepage h4 { margin-bottom: 44px; }
-
 header#homepage .button { background: #137795; border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
-
 header#homepage .button:hover { background: #006582; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { header#homepage { background-size: auto 357.5px; background-image: url('../images/device-bg-retina.png?1340842456'); } }
-=======
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { header#homepage { background-size: auto 357.5px; background-image: url('../images/device-bg-retina.png?1340839300'); } }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { header#homepage { background-size: auto 357.5px; background-image: url('../images/device-bg-retina.png?1340846519'); } }
->>>>>>> Shitload of copy edits, thanks Ryan
 #homepageFeatures { background: #ecf8ff; padding: 88px 0 44px 0; margin-bottom: 44px; }
 
 #homepageFeatures h3 { color: #2ba6cb; }
 
 #homepageFeatures div.pic { width: 110px; height: 110px; background-size: 100% 100%; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.pic#homepageImgSass { background-image: url('../images/homepageImgSass.png?1340842456'); }
-
-.pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures.png?1340842456'); }
-
-.pic#homepageImgAdvanced { background-image: url('../images/homepageImgAdvanced.png?1340842456'); }
-
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .pic#homepageImgSass { background-image: url('../images/homepageImgSass-retina.png?1340842456'); }
-  .pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures-retina.png?1340842456'); }
-  .pic#homepageImgAdvanced { background-image: url('../images/homepageImgAdvanced-retina.png?1340842456'); } }
-=======
-.pic#homepageImgSass { background-image: url('../images/homepageImgSass.png?1340839300'); }
-
-.pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures.png?1340839300'); }
-
-.pic#homepageImgAdvanced { background-image: url('../images/homepageImgAdvanced.png?1340839300'); }
-
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .pic#homepageImgSass { background-image: url('../images/homepageImgSass-retina.png?1340839300'); }
-  .pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures-retina.png?1340839300'); }
-  .pic#homepageImgAdvanced { background-image: url('../images/homepageImgAdvanced-retina.png?1340839300'); } }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 .pic#homepageImgSass { background-image: url('../images/homepageImgSass.png?1340846519'); }
 
 .pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures.png?1340846519'); }
@@ -1047,7 +950,6 @@ header#homepage .button:hover { background: #006582; }
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .pic#homepageImgSass { background-image: url('../images/homepageImgSass-retina.png?1340846519'); }
   .pic#homepageImgFeatures { background-image: url('../images/homepageImgFeatures-retina.png?1340846519'); }
   .pic#homepageImgAdvanced { background-image: url('../images/homepageImgAdvanced-retina.png?1340846519'); } }
->>>>>>> Shitload of copy edits, thanks Ryan
 #github { background: #3f3f3f; padding: 20px 30px 0; }
 
 #github h4 { color: #fff; }
@@ -1066,29 +968,6 @@ header#homepage .button:hover { background: #006582; }
 
 #frameworkFeatures a.pic { width: 205px; height: 130px; display: block; background-repeat: none; background-size: 100% 100%; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#featureGrid { background-image: url('../images/featureGrid.png?1340842456'); }
-
-#featurePrototype { background-image: url('../images/featurePrototype.png?1340842456'); }
-
-#featureDevices { background-image: url('../images/featureDevices.png?1340842456'); }
-
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { #featureGrid { background-image: url('../images/featureGrid-retina.png?1340842456'); }
-  #featurePrototype { background-image: url('../images/featurePrototype-retina.png?1340842456'); }
-  #featureDevices { background-image: url('../images/featureDevices-retina.png?1340842456'); } }
-=======
-#featureGrid { background-image: url('../images/featureGrid.png?1340839300'); }
-
-#featurePrototype { background-image: url('../images/featurePrototype.png?1340839300'); }
-
-#featureDevices { background-image: url('../images/featureDevices.png?1340839300'); }
-
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { #featureGrid { background-image: url('../images/featureGrid-retina.png?1340839300'); }
-  #featurePrototype { background-image: url('../images/featurePrototype-retina.png?1340839300'); }
-  #featureDevices { background-image: url('../images/featureDevices-retina.png?1340839300'); } }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 #featureGrid { background-image: url('../images/featureGrid.png?1340846519'); }
 
 #featurePrototype { background-image: url('../images/featurePrototype.png?1340846519'); }
@@ -1098,7 +977,6 @@ header#homepage .button:hover { background: #006582; }
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { #featureGrid { background-image: url('../images/featureGrid-retina.png?1340846519'); }
   #featurePrototype { background-image: url('../images/featurePrototype-retina.png?1340846519'); }
   #featureDevices { background-image: url('../images/featureDevices-retina.png?1340846519'); } }
->>>>>>> Shitload of copy edits, thanks Ryan
 #usingFoundation { background: #2ba6cb; padding: 22px 0; margin: 44px 0; }
 
 #usingFoundation h3, #usingFoundation a { color: #fff; }
@@ -1111,15 +989,7 @@ header#homepage .button:hover { background: #006582; }
 
 #usingFoundation .block-grid li a img { display: block; margin: 0 auto; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.case-study { background: url('../images/case-study-bg.png?1340842456') left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; }
-=======
-.case-study { background: url('../images/case-study-bg.png?1340839300') left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 .case-study { background: url('../images/case-study-bg.png?1340846519') left bottom repeat-x #f8f8f8; padding: 8px 20px 8px 45%; margin-bottom: 30px; position: relative; }
->>>>>>> Shitload of copy edits, thanks Ryan
 
 .case-study img { position: absolute; width: 45%; left: 0; bottom: 0; display: block; }
 
@@ -1149,15 +1019,7 @@ header#homepage .button:hover { background: #006582; }
 
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../images/plus-toggle-2-retina.png?1340842456'); background-size: 100% 100%; } }
-=======
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../images/plus-toggle-2-retina.png?1340839300'); background-size: 100% 100%; } }
->>>>>>> 299e393697e5955614d345cfaea5c1c8631d94d6
-=======
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../images/plus-toggle-2-retina.png?1340846519'); background-size: 100% 100%; } }
->>>>>>> Shitload of copy edits, thanks Ryan
 #megaDrop li { list-style: none; }
 
 #megaDrop .show-on-phones, #megaDrop .sitemap-link { display: none !important; }
