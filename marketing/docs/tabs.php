@@ -60,9 +60,9 @@
           <dl class="tabs contained">
           	<dt>Title 1</dt>
           	<dd class="active"><a href="#simpleContained1">Simple Tab 1</a></dd>
-          	<dd><a href="#simpleContained2">Simple Tab 2</a></dd>
-          	<dt>Title 1</dt>
-          	<dd class="hide-on-phones"><a href="#simpleContained3">Simple Tab 3</a></dd>
+          	<dd class="hide-for-small"><a href="#simpleContained2">Simple Tab 2</a></dd>
+          	<dt class="hide-for-small">Title 1</dt>
+          	<dd class="hide-for-small"><a href="#simpleContained3">Simple Tab 3</a></dd>
           </dl>
           <ul class="tabs-content contained">
           	<li class="active" id="simpleContained1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
@@ -80,7 +80,7 @@
           <dl class="tabs pill">
           	<dd class="active"><a href="#pillTab1">Pill Tab 1</a></dd>
           	<dd><a href="#pillTab2">Pill Tab 2</a></dd>
-          	<dd><a href="#pillTab3">Pill Tab 3</a></dd>
+          	<dd class="hide-for-small"><a href="#pillTab3">Pill Tab 3</a></dd>
           </dl>
 
   				<script src="https://gist.github.com/3000706.js?file=f3-pill-tabs.html"></script>

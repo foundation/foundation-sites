@@ -13,21 +13,11 @@
   <section id="mainContent">
   
     <div class="row">
-      <div class="two columns">
-        <ul class="side-nav">
-          <li><a href="index.php">&larr; Home</a></li>
-          <li class="divider"></li>
-          <li><a href="case-flite.php">Flite</a></li>
-          <li><a href="case-swizzle.php">Swizzle</a></li>
-          <li><a href="case-soapbox.php">ZURBsoapbox</a></li>
-          <li><a href="case-reel.php">Reel</a></li>
-          <li class="active"><a href="case-zurbjobs.php">ZURBjobs</a></li>
-        </ul>
-      </div>
       
-      <div class="ten columns">
+      <div class="ten columns push-two">
         <div class="row">
           <div class="six columns">
+            <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
             <h2>ZURBjobs</h2>
             <h4 class="subheader">Closing the Product Design Talent Gap</h4>
             <p>Lots of companies struggle to find great designers. Every week, clients ask us to recommend a designer for them to hire internally, and with our huge following of talented designers, we knew there had to be an easy way to bring the two together.</p>
@@ -53,6 +43,17 @@
           </div>
         </div>
             
+      </div>
+      <div class="two columns pull-ten">
+        <ul class="side-nav">
+          <li><a href="index.php">&larr; Home</a></li>
+          <li class="divider"></li>
+          <li><a href="case-flite.php">Flite</a></li>
+          <li><a href="case-swizzle.php">Swizzle</a></li>
+          <li><a href="case-soapbox.php">ZURBsoapbox</a></li>
+          <li><a href="case-reel.php">Reel</a></li>
+          <li class="active"><a href="case-zurbjobs.php">ZURBjobs</a></li>
+        </ul>
       </div>
     </div>
   
