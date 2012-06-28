@@ -124,6 +124,8 @@ header#homepage .button:hover { background: #006582; }
 @media only screen and (device-width: 1280px) {
   .top-bar .attached > .name span { padding-left: 0 !important; }
 }
+@media only screen and (max-width: 767px) { .top-bar .name span { margin-left: 0px !important; } }
+
 #megaDrop li { list-style: none; }
 
 #megaDrop .show-on-phones, #megaDrop .sitemap-link { display: none !important; }
