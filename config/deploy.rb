@@ -5,15 +5,17 @@ default_run_options[:pty] = true
 set :application, "foundation"
 set :repository,  "git@github.com:zurb/#{application}.git"
 set :user, application
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/var/www/staging/#{application}"
+set :deploy_via, :remote_cache
 set :use_sudo, false
+set :branch, "3.0-gem"
 
 set :scm, :git
 
 server 'app1', :web
 
 #after "deploy:update_code", "deploy:link_cached_files"
-#after "deploy:update_code", "deploy:link_assets"
+after "deploy:update_code", "deploy:link_assets"
 set :keep_releases, 3
 after "deploy:update", "deploy:cleanup"
 
