@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="../stylesheets/presentation.css">
 	
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="../../css/ie.css">
+		<link rel="stylesheet" href="../stylesheets/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
