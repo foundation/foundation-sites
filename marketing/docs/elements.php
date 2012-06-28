@@ -6,7 +6,7 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>Elements</h3>
-    			<h4 class="subheader">Prototyping, and production, requires more than just navigation or tabs or typography. We've created a number of additional elements to help rapidly prototype, and like everything else they are production-ready and easy to restyle or override.</h4>
+    			<h4 class="subheader">Prototyping and production requires more than just navigation or tabs or typography. We've created a number of additional elements to help rapidly prototype, and like everything else they are production-ready and easy to restyle or override.</h4>
 
     			<hr />
 
@@ -53,7 +53,7 @@
   				<hr />
 
     			<h4>Alerts</h4>
-  				<p>Alerts are a handy element you can drop into a form or inline on a page to communicate success, warnings, failure or just information. The syntax is extremely simple and like anything else in Foundation, easy to customize.</p>
+  				<p>Alerts are a handy element you can drop into a form or inline on a page to communicate success, warnings, failure or just information. The syntax is extremely simple and like everything else in Foundation, easy to customize.</p>
 
   				<div class="alert-box">
   					This is a standard alert (div.alert-box).
@@ -99,18 +99,18 @@
   					</div>
   				</div>
 
-          <p><span class="radius label">Example Label</span> This label could read a date for an update, or it could include an author name, or anything really. Inline labels are pretty handy when you need to draw attention or visually separate a short piece of content.</p>
+          <p><span class="radius label">Example Label</span> This label could read a date for an update or it could include an author name or anything really. Inline labels are pretty handy when you need to draw attention or visually separate a short piece of content.</p>
 
           <script src="https://gist.github.com/2984340.js?file=f3-inline-labels.html"></script>
 
           <hr />
 
           <h4>Tooltips</h4>
-  				<p>Tooltips are a quick way to provide extended information on a term or action on a page. They work cross browser and cross platfrom and are easily added to a page by including the jquery.tooltip.js plugin. You can apply the <strong>has-tip</strong> class to any element.</p>
+  				<p>Tooltips are a quick way to provide extended information on a term or action on a page. They work cross browser and cross platform and are easily added to a page by including the jquery.tooltip.js plugin. You can apply the <strong>has-tip</strong> class to any element.</p>
 
-  				<p>By default the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
+  				<p>By default, the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
 
-  				<p>The tooltips can be positioned on the <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span class="has-tip tip-right" data-width="120" title="I'm on the right!">"tip-right"</span> of the target element. On a small device the tooltips are full width and bottom aligned.</p>
+  				<p>The tooltips can be positioned on the <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span class="has-tip tip-right" data-width="120" title="I'm on the right!">"tip-right"</span> of the target element. On a small device, the tooltips are full width and bottom aligned.</p>
 
   				<script src="https://gist.github.com/2984356.js?file=f3-tooltips.html"></script>
 

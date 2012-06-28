@@ -13,7 +13,7 @@
   				<hr />
 
   				<h4>Using Reveal</h4>
-  				<p>Reveal is easy to hook up. Include the JS and CSS (both of which are included in foundation.css and foundation.js, if you use the downloaded code pack). You can either call it in the JS or include a "data-reveal-id" parameter. Here are the steps to get started:</p>
+  				<p>Reveal is easy to hook up. Include the JS and CSS in your <code>head</code> (both of which are included in foundation.css and foundation.js, if you use the downloaded code pack). You can either call it in the JS or include a "data-reveal-id" parameter. Here are the steps to get started:</p>
 
 				  <h5>Markup</h5>
 					<p><strong>Remember:</strong> your modal should be at the end of the page, after any of your rows or columns.</p>
@@ -23,7 +23,7 @@
 		   		<p>There are two ways to do call a Reveal modal. The first is to attach a handler to something (button most likely) then call Reveal:</p>
 					<script src="https://gist.github.com/2955951.js?file=f3-reveal.html"></script>
 
-					<p>The new hotness is to just add a data-reveal-id to the object which you want to fire the modal when clicked...</p>
+					<p>The new hotness: just add a data-reveal-id to the object which you want to fire the modal when clicked...</p>
 					<script src="https://gist.github.com/2955957.js?file=f3-reveal-id.html"></script>
 
 					<p>This will launch the modal with the ID "myModal2" without attaching a handler or calling the plugin (since the plugin is always listening for this). You can also pass any of the parameters simply by putting a data-nameOfParameter="value" (i.e. data-animation="fade")</p>
