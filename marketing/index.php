@@ -6,7 +6,7 @@
     <div class="row">
       <div class="twelve columns">
         <h1>Foundation 3</h1>
-        <h4>The most advanced responsive framework in the world.</h4>
+        <h4>The most advanced responsive front-end framework in the world.</h4>
         
         <a href="download.php" class="large button">Download Foundation 3.0</a>
       </div>
