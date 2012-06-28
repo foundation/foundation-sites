@@ -26,19 +26,22 @@ footer span.glyph { font-size: 23px; }
 .gist .gist-file .gist-meta a { color: #999 !important; }
 .gist .gist-file .gist-meta a:hover { text-decoration: underline; }
 
-header { background-color: #2ba6cb; padding: 22px 0; }
-header h1 { color: #fff; font-weight: 500; }
-header h4 { color: #fff; font-weight: 300; }
+header { background-color: #2ba6cb; padding: 22px 0; 
+  
+  h1 { color: #fff; font-weight: 500; }
+  h4 { color: #fff; font-weight: 300; } 
+}
 
 p.disclaimer { color: #999; }
 
 /* Homepage */
 
-header#homepage { background: image-url("device-bg.png") center bottom no-repeat #2ba6cb; padding: 22px 0 262px; }
-header#homepage h4 { margin-bottom: 44px; }
-
-header#homepage .button { background: #137795; border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
-header#homepage .button:hover { background: #006582; }
+header#homepage { background: image-url("device-bg.png") center bottom no-repeat #2ba6cb; padding: 22px 0 262px; 
+  
+  h4 { margin-bottom: 44px; }
+  .button { background: #137795; border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+  .button:hover { background: #006582; }
+}
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
 
