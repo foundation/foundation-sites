@@ -83,10 +83,10 @@
 
       a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; background-color: #fff; word-wrap: nowrap; }
       a.selector { position: absolute; width: 27px; height: 28px; display: block; right: 0; top: 0; border: solid 1px #ddd;
-        &:after { content: ""; display: block; @include css-triangle(5px, #aaa, top); position: absolute; left: 50%; top: 50%; margin-top: -2px; margin-left: -5px;  }
+        &:after { content: ""; display: block; @include cssTriangle(5px, #aaa, top); position: absolute; left: 50%; top: 50%; margin-top: -2px; margin-left: -5px;  }
       }
       &:hover, &.open {
-        a.selector { &:after { @include css-triangle(5px, #222, top); } }
+        a.selector { &:after { @include cssTriangle(5px, #222, top); } }
       }
 
       &.open ul { display: block; z-index: 10; }

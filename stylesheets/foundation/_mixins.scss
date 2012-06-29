@@ -24,7 +24,7 @@
 
   // Create CSS Triangles in a Breeze
 
-  @mixin css-triangle($triangleSize, $triangleColor, $triangleDirection) {
+  @mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
     content: "";
     display: block;
     width: 0;

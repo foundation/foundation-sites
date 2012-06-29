@@ -76,10 +76,10 @@
     &.tiny { padding-right: ($tinyBtnBase * 2) * 2; }
 
     /* Triangles */
-    &:after { @include css-triangle(6px, #fff, top); position: absolute; top: 50%; right: $btnBase * 2; margin-top: -2px; }
-    &.large:after { @include css-triangle(7px, #fff, top); margin-top: -3px; right: $largeBtnBase * 2; }
-    &.small:after { @include css-triangle(5px, #fff, top); margin-top: -2px; right: $smallBtnBase * 2; }
-    &.tiny:after { @include css-triangle(4px, #fff, top); margin-top: -1px; right: $tinyBtnBase * 2; }
+    &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; right: $btnBase * 2; margin-top: -2px; }
+    &.large:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; right: $largeBtnBase * 2; }
+    &.small:after { @include cssTriangle(5px, #fff, top); margin-top: -2px; right: $smallBtnBase * 2; }
+    &.tiny:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; right: $tinyBtnBase * 2; }
 
     /* Flyout List */
     &>ul { @include box-sizing(content-box); display: none; position: absolute; left: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken($white, 20%); border-top: none; min-width: 100%; z-index: 40;
@@ -118,15 +118,15 @@
       /* Triangle Spans */
       &>span { background-color: $mainColor; position: absolute; right: 0; top: 0; height: 100%; width: $btnBase * 3; border-left: 1px solid darken($mainColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
         &:hover { background-color: darken($mainColor, 10%); }
-        &:after { @include css-triangle(6px, #fff, top); position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
+        &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
       }
       &.large span { width: $largeBtnBase * 3; }
       &.small span { width: $smallBtnBase * 3; }
       &.tiny span { width: $tinyBtnBase * 3; }
 
-      &.large span:after { @include css-triangle(7px, #fff, top); margin-top: -3px; margin-left: -7px; }
-      &.small span:after { @include css-triangle(4px, #fff, top); margin-top: -1px; margin-left: -4px; }
-      &.tiny span:after { @include css-triangle(3px, #fff, top); margin-top: -1px; margin-left: -3px; }
+      &.large span:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; margin-left: -7px; }
+      &.small span:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; margin-left: -4px; }
+      &.tiny span:after { @include cssTriangle(3px, #fff, top); margin-top: -1px; margin-left: -3px; }
 
       /* Colors */
       &.alert>span { background-color: $alertColor; border-left-color: darken($alertColor, 15%); }

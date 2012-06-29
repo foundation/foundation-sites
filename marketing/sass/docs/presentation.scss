@@ -73,10 +73,10 @@ header .subheader { position: relative; top: -18px; }
 }
 @media only screen and (max-width: 767px) {
   .top-bar { position: relative; overflow: hidden;
-    &:after { @include css-triangle(8px, #fff, top); position: absolute; right: 20px; top: 19px; }
+    &:after { @include cssTriangle(8px, #fff, top); position: absolute; right: 20px; top: 19px; }
   }
   .top-bar.expanded { height: auto !important;
-    &:after { @include css-triangle(8px, #888, bottom); top: 10px; }
+    &:after { @include cssTriangle(8px, #888, bottom); top: 10px; }
   }
   .top-bar .name span { margin-left: 0px !important; }
   .top-bar .attached > ul > li > a, .top-bar .attached > ul > li > span { padding-left: 0px; padding-right: 0px; }
