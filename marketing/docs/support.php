@@ -84,7 +84,7 @@
   				<h4>Frequently Asked Questions</h4>
   				<h5>Why doesn't Foundation 3 support IE6 or IE7?</h5>
   				<p>Both IE6 and IE7 have serious issues which make support for them detrimental to the overall experience. Rather than having a single codebase that supports all the way back to those browsers, but is less useful and flexible for everyone, we opted to not support these browsers. Not only do they have extremely small, rapidly dwindling user bases, but not supporting them allows us the use of things like <code>box-sizing: border-box</code> and other tools.</p>
-  				<p>If IE7 support is important for your users / customers, you can use <a href="#">Foundation 2.2.1</a>, which supports IE7.</p>
+  				<p>If IE7 support is important for your users / customers, you can use <a href="../files/foundation-download-2.2.1.zip">Foundation 2.2.1</a>, which supports IE7.</p>
 
   				<h5>Why can't I see the responsive stuff in IE8?</h5>
   				<p>The responsive nature of Foundation takes effect through media queries, which IE8 does not support. However, the intent of media queries is to make changes for devices, rather than uncommonly small IE8 windows, so this is not an issue that comes up in practice.</p>
