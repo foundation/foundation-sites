@@ -12,8 +12,8 @@
 
   // Grid Calculation for Percentages
 
-  @function grid-calc($col_number, $total_columns) {
-    @return percentage(($col_number / $total_columns));
+  @function grid-calc($colNumber, $totalColumns) {
+    @return percentage(($colNumber / $totalColumns));
   }
 
   // Default Font Stack

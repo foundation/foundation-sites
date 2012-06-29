@@ -32,7 +32,7 @@
   }
 
   /* Mobile */
-  @media #{$media-small} {
+  @media #{$mediaSmall} {
     .reveal-modal-bg { position: absolute; }
 
     .reveal-modal,

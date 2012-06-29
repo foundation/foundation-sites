@@ -2,10 +2,10 @@
 
 // Grid Settings
 
-$row_width: 1000px;
-$column_gutter: 30px;
-$total_columns: 12;
-$mobile_total_columns: 4;
+$rowWidth: 1000px;
+$columnGutter: 30px;
+$totalColumns: 12;
+$mobileTotalColumns: 4;
 
 // Colors Settings
 
@@ -59,14 +59,14 @@ $base-size: 14px 44px;
 // Do not include in CSS download customizer below this comment
 
 // Media Queries
-$screen-small: 767px;
-$screen-medium: 1279px;
-$screen-xlarge: 1441px;
+$screenSmall: 767px;
+$screenMedium: 1279px;
+$screenXlarge: 1441px;
 
-$media-small: "only screen and (max-width: 767px)";
-$media-medium: "only screen and (max-width: 1279px) and (min-width: 768px)";
-$media-xlarge: "only screen and (min-width: 1441px)";
-$media-landscape: "screen and (orientation: landscape)";
-$media-portrait: "screen and (orientation: portrait)";
-$media-all: "only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)";
+$mediaSmall: "only screen and (max-width: 767px)";
+$mediaMedium: "only screen and (max-width: 1279px) and (min-width: 768px)";
+$mediaXlarge: "only screen and (min-width: 1441px)";
+$mediaLandscape: "screen and (orientation: landscape)";
+$mediaPortrait: "screen and (orientation: portrait)";
+$mediaAll: "only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)";
 

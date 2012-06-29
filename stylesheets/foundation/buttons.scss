@@ -52,7 +52,7 @@
   /* Don't use native buttons on iOS */
 	input[type=submit].button, button.button { -webkit-appearance: none; }
 
-	 @media #{$media-small} {
+	 @media #{$mediaSmall} {
     .button { display: block; }
     button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
   }

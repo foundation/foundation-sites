@@ -1,20 +1,21 @@
 
+
   @import "base";
 
   /* The Grid ---------------------- */
 
-  .row { width: $row_width; max-width: 100%; min-width: $screen-small; margin: 0 auto;
-    .row { width: auto; max-width: none; min-width: 0; margin: 0 (-($column_gutter/2)); }
+  .row { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto;
+    .row { width: auto; max-width: none; min-width: 0; margin: 0 (-($columnGutter/2)); }
 
     &.collapse {
       .column, .columns { padding: 0; }
     }
-    .row { width: auto; max-width: none; min-width: 0; margin: 0 (-($column_gutter/2));
+    .row { width: auto; max-width: none; min-width: 0; margin: 0 (-($columnGutter/2));
       &.collapse { margin: 0; }
     }
   }
 
-  .column, .columns { float: left; min-height: 1px; padding: 0 ($column_gutter/2); position: relative;
+  .column, .columns { float: left; min-height: 1px; padding: 0 ($columnGutter/2); position: relative;
     &.centered { float: none; margin: 0 auto; }
   }
 
@@ -22,23 +23,23 @@
   [class*="column"] + [class*="column"].end { float: left; }
 
   // Creating .row-# classes
-  @for $i from 1 through $total_columns {
+  @for $i from 1 through $totalColumns {
     .row {
-      .#{convert-number-to-word($i)} { width: grid-calc($i, $total_columns); }
+      .#{convert-number-to-word($i)} { width: grid-calc($i, $totalColumns); }
     }
   }
 
   // Creating .row.offset-by-# classes
-  @for $i from 1 through $total_columns - 2 {
+  @for $i from 1 through $totalColumns - 2 {
     .row {
-      .offset-by-#{convert-number-to-word($i)} { margin-left: grid-calc($i, $total_columns); }
+      .offset-by-#{convert-number-to-word($i)} { margin-left: grid-calc($i, $totalColumns); }
     }
   }
 
   // Creating .row.push-# classes
-  @for $i from 2 through $total_columns - 2 {
-    .push-#{convert-number-to-word($i)} { left: grid-calc($i, $total_columns); }
-    .pull-#{convert-number-to-word($i)} { right: grid-calc($i, $total_columns); }
+  @for $i from 2 through $totalColumns - 2 {
+    .push-#{convert-number-to-word($i)} { left: grid-calc($i, $totalColumns); }
+    .pull-#{convert-number-to-word($i)} { right: grid-calc($i, $totalColumns); }
   }
 
   img, object, embed { max-width: 100%; height: auto; }
@@ -52,7 +53,7 @@
 
   /* Mobile Grid and Overrides ---------------------- */
 
-  @media #{$media-small} {
+  @media #{$mediaSmall} {
     body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
     .row { width: auto; min-width: 0; margin-left: 0; margin-right: 0; }
@@ -67,18 +68,18 @@
     %left-auto { left: auto; }
     %right-auto { right: auto; }
 
-    @for $i from 1 through $total_columns - 2 {
+    @for $i from 1 through $totalColumns - 2 {
       .offset-by-#{convert-number-to-word($i)} { @extend %no-left-margin; }
     }
-    @for $i from 2 through $total_columns - 2 {
+    @for $i from 2 through $totalColumns - 2 {
       .push-#{convert-number-to-word($i)} { @extend %left-auto; }
       .pull-#{convert-number-to-word($i)} { @extend %right-auto; }
     }
 
     /* Mobile 4-column Grid */
-    @for $i from 1 through $mobile_total_columns {
+    @for $i from 1 through $mobileTotalColumns {
       .row {
-        .mobile-#{convert-number-to-word($i)} { width: grid-calc($i, $mobile_total_columns) !important; float: left; padding: 0 ($column_gutter/2);
+        .mobile-#{convert-number-to-word($i)} { width: grid-calc($i, $mobileTotalColumns) !important; float: left; padding: 0 ($columnGutter/2);
           &:last-child { float: right; }
         }
         &.collapse {
@@ -86,9 +87,9 @@
         }
       }
     }
-    @for $i from 1 through $mobile_total_columns - 1 {
-      .push-#{convert-number-to-word($i)}-mobile { left: grid-calc($i, $mobile_total_columns); }
-      .pull-#{convert-number-to-word($i)}-mobile { right: grid-calc($i, $mobile_total_columns); }
+    @for $i from 1 through $mobileTotalColumns - 1 {
+      .push-#{convert-number-to-word($i)}-mobile { left: grid-calc($i, $mobileTotalColumns); }
+      .pull-#{convert-number-to-word($i)}-mobile { right: grid-calc($i, $mobileTotalColumns); }
     }
   }
 
@@ -127,7 +128,7 @@ that IE7/8 do not support :nth-child.
   /*  .block-grid.five-up>li:nth-child(5n+1) {clear: left;} */
 
   /* Mobile Block Grids */
-  @media #{$media-small} {
+  @media #{$mediaSmall} {
     .block-grid.mobile { margin-left: 0; }
     .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
   }
