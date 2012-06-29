@@ -182,7 +182,7 @@
 
   				<hr />
   				<h4>Offsets</h4>
-  				<p>Offsets allow you to create additional space between columns in a row. The offsets run from offset-by-one all the way up to offset-by-eleven. Like the rest of the grid they're nestable.</p>
+  				<p>Offsets allow you to create additional space between columns in a row. The offsets run from offset-by-one all the way up to offset-by-eleven. Like the rest of the grid, they're nestable.</p>
 
   				<div class="row display">
   					<div class="one columns">

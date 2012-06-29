@@ -6,7 +6,7 @@
 		  <div class="row">
 		    <div class="eight columns">
     			<h3>Welcome to Foundation 3.</h3>
-    			<p>Foundation 3 is built on 14 years of experience at ZURB building sites and apps for the Web. We believe designing responsively &mdash; designing for all devices and any device &mdash; is the future. Foundation is our way of helping you do that. What changed in Foundation 3? Almost everything. Here's what makes Foundation, Foundation.</p>
+    			<p>Foundation 3 is built on ZURB's 14 years of experience at building sites and apps for the Web. We believe designing responsively &mdash; designing for all devices and any device &mdash; is the future. Foundation is our way of helping you do that. What changed in Foundation 3? Almost everything. Here's what makes Foundation, Foundation.</p>
 
     			<div class="row">
     			  <div class="four columns">
@@ -38,7 +38,7 @@
         			<p>Buttons are one of the core interactive elements of the Web. We've included styles and patterns for buttons that make it simple to create everything from simple marketing CTAs to complex application toolbars.</p>
         			
         		  <h4><a href="forms.php">Forms</a></h4>
-        		  <p>A combination of robust, extensible form styles and the built-in power of the Foundation Grid means you can create simple or complicated forms quickly and easily. Validation states, custom select and radio buttons and more are included.</p>
+        		  <p>A combination of robust, extensible form styles and the built-in power of the Foundation Grid means you can create simple or complicated forms quickly and easily; validation states, custom select and radio buttons and more are included.</p>
       			</div>
       			
       			<div class="six columns">

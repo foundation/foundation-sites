@@ -52,7 +52,7 @@
               <div class="row">
                 <div class="six columns">
                   <ul class="no-bullet customizer">
-                    <li><label><input type="checkbox"> All</label> <em>Kitchen sync</em></li> <!-- Need to have this check everything -->
+                    <li><label><input type="checkbox" id="toggleCss"> All</label> <em>Kitchen sync</em></li> <!-- Need to have this check everything -->
                     <li><label><input type="checkbox"> globals.css</label> <em>Body and misc styles</em></li>
                     <li><label><input type="checkbox"> typography.css</label> <em>Global typography elements</em></li>
                     <li><label><input type="checkbox"> grid.css</label> <em>Responsive grid</em></li>
@@ -144,7 +144,7 @@
                   <label for="rowWidth">Max-Width</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="940" placeholder="#" id="rowWidth" />
+                      <input type="text" value="940" placeholder="#" />
                     </div>
                     <div class="two columns">
                       <span class="postfix">px</span>
