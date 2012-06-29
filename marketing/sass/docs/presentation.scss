@@ -15,6 +15,12 @@ h1, h2, h3, h4, h5 { font-family: "OpenSans"; font-weight: 500; }
 
 header .subheader { position: relative; top: -18px; }
 
+#copyright { background: #3f3f3f; color: #fff; padding: 11px 0; margin-top: 44px; }
+
+#copyright p, #copyright ul.link-list { margin-bottom: 0; }
+
+#copyright a { color: #fff; }
+
 .row.display { background: #f4f4f4; margin-bottom: 10px; }
 .row.display .column, .row.display .columns, .block-grid li { background: #e7e7e7; border: 1px solid #ddd; font-size: 11px; text-indent: 3px; padding-top: 6px; padding-bottom: 6px; }
 

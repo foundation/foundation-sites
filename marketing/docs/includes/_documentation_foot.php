@@ -30,7 +30,24 @@
       	</ul>
 	    </section>
 	  </footer>
-	  <!-- /Das Footer -->
+	  
+	  <div id="copyright">
+      <div class="row">
+        <div class="four columns">
+          <p>Site content &copy; 2012 ZURB, inc.</p>
+        </div>
+        <div class="eight columns">
+          <ul class="link-list right">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="download.php">Download</a></li>
+            <li><a href="docs/index.php">Documentation</a></li>
+            <li><a href="docs/installing.php">Install</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 	  
 		<div id="navModal" class="reveal-modal">
 			<h3>Foundation Docs</h3>
