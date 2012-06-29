@@ -47,6 +47,7 @@ header .subheader { position: relative; top: -18px; }
 .container.top-bar { margin-bottom: 0; }
 
 .top-bar { -webkit-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; -moz-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; border-bottom: none; }
+.top-bar .attached > .name:hover { color: #fff !important; }
 .top-bar .attached { padding: 0 15px; width: 100%; max-width: 100%; }
 .top-bar li { margin-bottom: 0; line-height: 46px; }
 .top-bar .attached > ul.right { overflow: hidden; }

@@ -106,6 +106,7 @@ header#homepage .button:hover { background: #006582; }
 
 .top-bar { -webkit-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; -moz-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; border-bottom: none; }
 .top-bar .attached { padding: 0 15px; width: 1000px; max-width: 100%; }
+.top-bar .attached > .name:hover { color: #fff !important; }
 .top-bar li { margin-bottom: 0; line-height: 46px; }
 .top-bar .attached > ul.right { overflow: hidden; }
 .top-bar .attached > ul.right > li.download { border-right: 0; }

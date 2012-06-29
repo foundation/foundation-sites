@@ -1044,6 +1044,8 @@ header#homepage .button:hover { background: #006582; }
 
 .top-bar .attached { padding: 0 15px; width: 1000px; max-width: 100%; }
 
+.top-bar .attached > .name:hover { color: #fff !important; }
+
 .top-bar li { margin-bottom: 0; line-height: 46px; }
 
 .top-bar .attached > ul.right { overflow: hidden; }
