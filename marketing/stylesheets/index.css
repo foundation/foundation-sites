@@ -810,17 +810,17 @@ div.orbit div.orbit-slide { width: 100%; height: 100%; }
 /* Timer ---------------------- */
 div.orbit-wrapper div.timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; right: 10px; opacity: .6; cursor: pointer; z-index: 31; }
 
-div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../images/foundation/orbit/rotator-black.png?1340842456') no-repeat; z-index: 3; }
+div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../images/foundation/orbit/rotator-black.png?1340846519') no-repeat; z-index: 3; }
 
 div.orbit-wrapper span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; right: 0; z-index: 2; overflow: hidden; }
 
 div.orbit-wrapper span.rotator.move { left: 0; }
 
-div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../images/foundation/orbit/timer-black.png?1340842456') repeat 0 0; }
+div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../images/foundation/orbit/timer-black.png?1340846519') repeat 0 0; }
 
-div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../images/foundation/orbit/pause-black.png?1340842456') no-repeat; z-index: 4; opacity: 0; }
+div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../images/foundation/orbit/pause-black.png?1340846519') no-repeat; z-index: 4; opacity: 0; }
 
-div.orbit-wrapper span.pause.active { background: url('../images/foundation/orbit/pause-black.png?1340842456') no-repeat 0 -40px; }
+div.orbit-wrapper span.pause.active { background: url('../images/foundation/orbit/pause-black.png?1340846519') no-repeat 0 -40px; }
 
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper span.pause.active { opacity: 1; }
 
@@ -834,17 +834,17 @@ div.orbit-wrapper div.slider-nav { display: block; }
 
 div.orbit-wrapper div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
 
-div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1340900207'); background-size: 100%; right: 0; }
+div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1340862868'); background-size: 100%; right: 0; }
 
-div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1340842456'); background-size: 100%; left: 0; }
+div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1340846519'); background-size: 100%; left: 0; }
 
-.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow-small.png?1340900207'); }
-.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow-small.png?1340900207'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow-small.png?1340862688'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow-small.png?1340862688'); }
 
 /* Bullet Nav ---------------------- */
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340842444') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340846477') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.active { color: #222; background-position: -8px 0; }
 
@@ -859,7 +859,7 @@ div.orbit, div.orbit-wrapper { width: 100% !important; }
 
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -50px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340842444') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340846477') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.has-thumb { background: none; width: 100px; height: 75px; }
 
