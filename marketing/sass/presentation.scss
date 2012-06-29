@@ -109,7 +109,7 @@ header#homepage .button:hover { background: #006582; }
 .top-bar .attached { padding: 0 15px; width: 1000px; max-width: 100%; }
 .top-bar .attached > .name:hover { color: #fff !important; }
 .top-bar li { margin-bottom: 0; line-height: 46px; }
-.top-bar .attached > ul.right { overflow: hidden; }
+.top-bar .attached > ul.right { overflow: hidden; float: right; }
 .top-bar .attached > ul.right > li.download { border-right: 0; }
 .top-bar .attached > ul.right > li.download a { padding: 6px 13px 6px; }
 .top-bar .small.button { height: auto; top: 10px; }
