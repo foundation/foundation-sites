@@ -15,13 +15,13 @@
     
       <ul class="link-list">
       	<li>
-    	    <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Ffoundation.zurb.com%2F&t=Foundation%20from%20ZURB" target="_blank"><span class="glyph social">d</span></a>
+    	    <a href="http://www.facebook.com/ZURB" target="_blank"><span class="glyph social">d</span></a>
     		</li>
     		<li>
           <a href="https://plusone.google.com/_/+1/confirm?url=http://foundation.zurb.com&title=Foundation%20from%20ZURB" target="_blank"><span class="glyph social">l</span></a>
     		</li>
     		<li>
-    			<a href="http://www.twitter.com/share?url=http://foundation.zurb.com/" target="_blank"><span class="glyph social">e</span></a>
+    			<a href="http://www.twitter.com/foundationzurb" target="_blank"><span class="glyph social">e</span></a>
     		</li>
     	</ul>
       
