@@ -2,7 +2,7 @@
 					<h4>Get Foundation</h4>
 					<p>Grab the style of Foundation that works for you, whether that's SCSS or straight CSS, everything or just bits and pieces.</p>
 					<p>
-						<a href="../files/foundation-download-<?= $version ?>.zip" class="button mobile src-download">Install Foundation</a>
+						<a href="../download.php" class="button mobile src-download">Install Foundation</a>
 					</p>
 				</div>
 
