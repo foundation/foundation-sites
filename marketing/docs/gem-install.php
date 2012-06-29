@@ -1,4 +1,4 @@
-<? $page_title = "Gem Versions, SASS, Compass, Rails, Etc." ?>
+<? $page_title = "Gem Versions, Sass, Compass, Rails, Etc." ?>
 <?php include("includes/_documentation_head.php"); ?>
   <style type="text/css">.btm-marg{display: block; margin-bottom: 30px;}</style>
   <div class="row">
@@ -27,7 +27,7 @@
 
               <a name="installing"></a>
               <h4>Installation</h4>
-              <p>To create your first project using our Compass gem, you'll need to have the zurb-foundation gem installed. This includes all the necessary dependencies that you'll need to get going.</p>
+              <p>To create your first project using our Compass extension, you'll need to have the zurb-foundation gem installed. This includes all the necessary dependencies that you'll need to get going.</p>
               <p class="btm-marg keystroke">[sudo] gem install zurb-foundation</p>
 
               <h5>Creating Your first project</h5>
@@ -36,7 +36,7 @@
                 &bullet; compass create &lt;project-name&gt; -r zurb-foundation --using zurb-foundation
               </p>
               <p>
-              <p class="btm-marg">Now you should have a new project folder created with foundation included along with all the awesome advantages that comes with SASS and Compass.</p>
+              <p class="btm-marg">Now you should have a new project folder created with foundation included along with all the awesome advantages that comes with <a href="http://sass-lang.com/" rel="nofollow">Sass</a> and <a href="http://compass-style.org/" rel="nofollow">Compass</a>.</p>
               <h5>Adding Foundation to an existing project</h5>
               <ul class="disc">
                 <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
@@ -49,7 +49,7 @@
               <a name="settings"></a>
               <h3>Settings</h3>
               <h4 class="subheader">Work with your own colors, font sizes, radii, etc by adjusting the _settings.scss file in your new project!</h4>
-              <p>We include a _settings.scss file with every new compass project. Here we have default variables listed out that you can uncomment and change as you see fit.</p>
+              <p>We include a _settings.scss file with every new compass project, this file contains the default variables used through foundation which you can uncomment and. changes to match your needs</p>
 
               <h5>Grid Settings</h5>
               <ul class="disc">
@@ -132,7 +132,7 @@
               </span>
 
               <h5>Modular Scale</h5>
-              <p>The typography in Foundation is set to a specific modular scale, which you can update in your _settings.php file. In order to utilize the scale, you must follow the correct syntax.</p>
+              <p>The typography in Foundation is set to a specific modular scale, which you can update in your _settings.scss file. In order to utilize the scale, you must follow the correct syntax.</p>
               <ul class="disc">
                 <li><strong>ms(#);</strong> Tell your font which number from the scale to use.</li>
               </ul>

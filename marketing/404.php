@@ -1,7 +1,7 @@
 <? $page_title = "404 Error, the Yeti Couldn't Find What You Were Looking For" ?>
 <?php include("includes/_header.php"); ?>
 
-	 <header>
+	<header>
     <div class="row">
       <div class="twelve columns">
         <h1>Hmmm, we couldn't find that.</h1>
