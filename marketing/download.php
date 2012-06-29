@@ -16,7 +16,7 @@
       <div class="four columns">
         <h4>Default CSS</h4>
         <p>This version of Foundation includes smart defaults and doesn't require Sass or any other tools. Everything in this is minified, so you would use this to build on top of Foundation.</p>
-        <p><a href="#" class="radius button">Download Foundation CSS</a></p>
+        <p><a href="files/foundation3.zip" class="radius button">Download Foundation CSS</a></p>
       </div>
       <div class="four columns">
         <h4>Custom CSS</h4>
