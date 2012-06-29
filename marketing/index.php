@@ -22,19 +22,19 @@
 
         <div class="row">
           <div class="four columns">
-            <div class="pic" id="homepageImgSass"></div>
+            <a href="whats-new.php"><div class="pic" id="homepageImgSass"></div></a>
 
             <h5>Developed with Sass</h5>
             <p>Foundation 3 is built with Sass, a powerful CSS preprocessor, which allows us to much more quickly develop Foundation itself &mdash; and gives you new tools to quickly customize and built on top of Foundation.</p>
           </div>
           <div class="four columns">
-            <div class="pic" id="homepageImgFeatures"></div>
+            <a href="whats-new.php"><div class="pic" id="homepageImgFeatures"></div></a>
 
             <h5>Feature Complete</h5>
             <p>We've added new elements, new options, and tons of streamlining to make this the fastest way to prototype responsively &mdash; and take that right into production.</p>
           </div>
           <div class="four columns">
-            <div class="pic" id="homepageImgAdvanced"></div>
+            <a href="whats-new.php"><div class="pic" id="homepageImgAdvanced"></div></a>
 
             <h5>Freakishly Advanced</h5>
             <p>Foundation is the most advanced front-end framework in the world. While the framework works all the way back to IE8, we're taking advantage of new, awesome Web technology to help you build better and faster.</p>

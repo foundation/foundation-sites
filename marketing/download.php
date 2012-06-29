@@ -26,7 +26,7 @@
       <div class="four columns">
         <h4>Sass + Compass</h4>
         <p>Foundation is built using SCSS, and you can work with it in the same way. To get Foundation using Sass and Compass, check out the instructions on the Install documentation page.</p>
-        <p><a href="docs/installing.php" class="secondary radius button">Install Foundation SCSS</a></p>
+        <p><a href="docs/gem-install.php" class="secondary radius button">Install Foundation SCSS</a></p>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
         <hr />
 
         <h3 id="customizeFoundation">Customize Foundation</h3>
-        <form id="customBuild" 
+        <form id="customBuild"
           action="http://foundation-generator.dev/assembler"
           method="post">
 
