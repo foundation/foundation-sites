@@ -2,8 +2,8 @@
 require File.expand_path('../lib/foundation/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Mark Hayes"]
-  gem.email         = ["mark@zurb.com"]
+  gem.authors       = ["ZURB"]
+  gem.email         = ["foundation@zurb.com"]
   gem.description   = %q{ZURB Foundation on SASS/Compass}
   gem.summary       = %q{ZURB Foundation on SASS/Compass}
   gem.homepage      = "http://foundation.zurb.com"
