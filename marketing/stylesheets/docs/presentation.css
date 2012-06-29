@@ -977,8 +977,6 @@ header .subheader { position: relative; top: -18px; }
 
 .top-bar .small.button { height: auto; top: 10px; }
 
-.top-bar a:hover { color: white; }
-
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 
 .top-bar .attached > .name > span > a.toggle-nav { right: -45px !important; }
@@ -986,6 +984,7 @@ header .subheader { position: relative; top: -18px; }
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url("../images/plus-toggle-2-retina.png?1340846519"); background-size: 100% 100%; } }
 @media only screen and (max-width: 1024px) and (min-width: 768px) { .top-bar { height: 45px !important; }
   .top-bar .attached { height: auto; }
+  .top-bar .attached > ul.right { overflow: visible !important; height: 45px !important; }
   .top-bar .attached > .name { height: auto; padding: 0 !important; margin-top: 0; text-indent: 0 !important; }
   .top-bar .attached > .name span { width: auto; padding: 0 !important; text-indent: 0 !important; margin-left: 0 !important; padding-left: 0 !important; }
   .top-bar .attached > .name span > a { width: auto; padding: 0 !important; text-indent: 0 !important; }
@@ -993,13 +992,15 @@ header .subheader { position: relative; top: -18px; }
   .top-bar .attached > ul > li > a.button { height: auto !important; } }
 @media only screen and (device-width: 1280px) { .top-bar { height: 45px !important; }
   .top-bar .attached > .name span { padding-left: 0 !important; } }
-@media only screen and (max-width: 767px) { .top-bar { overflow: hidden; height: 45px; }
+@media only screen and (max-width: 767px) { .top-bar { position: relative; overflow: hidden; }
+  .top-bar:after { content: ""; display: block; width: 0; height: 0; border: solid 8px; border-color: white transparent transparent transparent; position: absolute; right: 20px; top: 19px; }
   .top-bar.expanded { height: auto !important; }
+  .top-bar.expanded:after { content: ""; display: block; width: 0; height: 0; border: solid 8px; border-color: transparent transparent #888888 transparent; top: 10px; }
   .top-bar .name span { margin-left: 0px !important; }
   .top-bar .attached > ul > li > a, .top-bar .attached > ul > li > span { padding-left: 0px; padding-right: 0px; }
   .top-bar .attached > ul > li.download a { margin-bottom: 30px !important; margin-top: 10px; }
   .top-bar .attached > .name > span > a.toggle-nav { right: -45px !important; } }
-@media only screen and (orientation: portrait) { .top-bar { overflow: hidden; height: 45px; }
+@media only screen and (orientation: portrait) and (min-device-width: 768px) { .top-bar { overflow: hidden; height: 45px; }
   .top-bar.expanded { height: auto !important; }
   .touch .top-bar .attached { height: 45px !important; }
   .touch .top-bar .attached > ul.right { overflow: hidden; height: 45px !important; } }
