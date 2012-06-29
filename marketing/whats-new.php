@@ -30,7 +30,7 @@
       </div>
       <div class="eight columns pull-four">
         <h3>Feature Complete!</h3>
-        <h5 class="subheader">This means we've got all the UI elements and tools you could image. You have access to everything from buttons with dropdowns, to simple keystroke characters, to advanced semantic grid systems.</h5>
+        <h5 class="subheader">This means we've got all the UI elements and tools you could imagine. You have access to everything from buttons with dropdowns, to simple keystroke characters, to advanced semantic grid systems.</h5>
         <p>Take a scroll and some clicks through our documentation and you'll quickly see how much awesomess you have at your fingertips. Building a prototype or production site has never been easier. With Foundation 3, you'll be working more efficiently towards your web development goals.</p>
         <p>Sure, other frameworks have the same elements, but within Foundation these become more than a styleguide. You have complete control to easily override base Foundation styles and make your web project shine so bright they could melt the Yeti.</p>
       </div>
