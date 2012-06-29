@@ -17,7 +17,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "compass", "0.12.2"
   gem.add_dependency "sass", "3.2.0.alpha.244"
-  gem.add_dependency "modular-scale", "~> 0.0.5"
   gem.add_dependency "rake"
   gem.add_development_dependency "capistrano"
 end
