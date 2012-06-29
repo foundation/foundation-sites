@@ -50,7 +50,7 @@ header .subheader { position: relative; top: -18px; }
 .top-bar .attached > .name:hover { color: #fff !important; }
 .top-bar .attached { padding: 0 15px; width: 100%; max-width: 100%; }
 .top-bar li { margin-bottom: 0; line-height: 46px; }
-.top-bar .attached > ul.right { overflow: hidden; }
+.top-bar .attached > ul.right { overflow: hidden; float: right; }
 .top-bar .attached > ul.right > li.download { border-right: 0; }
 .top-bar .attached > ul.right > li.download a { padding: 6px 13px 6px; }
 .top-bar .attached > ul.right > li > a:hover { color: $white; }
