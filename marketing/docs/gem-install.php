@@ -8,8 +8,8 @@
 
           <dl class="tabs" style="margin-top: 3px;">
             <dd class="active"><a href="#simple1">Using SCSS</a></dd>
-            <dd><a href="#simple2">Using Rails</a></dd>
-          </dl>
+<!--             <dd><a href="#simple2">Using Rails</a></dd>
+ -->          </dl>
 
           <ul class="tabs-content">
             <li class="active" id="simple1Tab">
@@ -156,9 +156,9 @@
             </li>
 
 
-            <li id="simple2Tab">
+            <!-- <li id="simple2Tab">
               Hey
-            </li>
+            </li> -->
           </ul>
 
         </div>
