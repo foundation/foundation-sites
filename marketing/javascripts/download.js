@@ -230,5 +230,11 @@ function setColor($this) {
       $(this).val('#' + $(this).val());
     });
     $('#customBuild').submit();
+    $("#columnCount, #columnGutter, #rowWidth, #maxWidth, #baseFontSize, #importantNumber, #baseButtonRadius, #baseButtonSize").each(function() {
+      $(this).val($(this).val().split('px')[0]);
+    });
+    $('.color-picker').each(function(){
+      $(this).val($(this).val().split('#')[1]);
+    });
   });
 })(jQuery);
