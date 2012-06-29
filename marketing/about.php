@@ -1,7 +1,7 @@
 <? $page_title = "Learn More and Get Goodies" ?>
 <?php include("includes/_header.php"); ?>
 
-	 <header>
+	<header>
     <div class="row">
       <div class="twelve columns">
         <h1>About Foundation</h1>
@@ -159,51 +159,59 @@
 		 			</div>
 		 		</div>
 		 	</div>
-	 	<div class="six columns show-for-small">
-	 		<h5>iPhone Desktops</h5>
-	 		<ul class="block-grid four-up">
-	 			<li>
-	 				<a href="files/f3/foundation-yeti-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/foundation-monster-640x960.png" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/f3/stretch-yeti-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/stretch-yeti-640x960.png" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/f3/tiny-yeti-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/tiny-yeti-640x960.png" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/f3/tools-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/tools-640x960.png" /></a>
-	 			</li>
+		 	<div class="twelve columns show-for-small">
+		 		<h5>iPhone Desktops</h5>
+		 		<ul class="block-grid four-up">
+		 			<li>
+		 				<a href="files/f3/foundation-yeti-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/foundation-monster-640x960.png" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/f3/stretch-yeti-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/stretch-yeti-640x960.png" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/f3/tiny-yeti-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/tiny-yeti-640x960.png" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/f3/tools-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/tools-640x960.png" /></a>
+		 			</li>
 
-	 			<li>
-	 				<a href="files/f3/yeti-lab-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yeti-lab-640x960.png" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/f3/yeti-moon-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yeti-moon-640x960.png" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/f3/yeti-vortex-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yeti-vortex-640x960.png" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/f3/yetified-3-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yetified-3-640x960.png" /></a>
-	 			</li>
+		 			<li>
+		 				<a href="files/f3/yeti-lab-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yeti-lab-640x960.png" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/f3/yeti-moon-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yeti-moon-640x960.png" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/f3/yeti-vortex-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yeti-vortex-640x960.png" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/f3/yetified-3-640x960.png"><img style="border: solid 1px #eee;" src="files/f3/yetified-3-640x960.png" /></a>
+		 			</li>
 
-	 			<li>
-	 				<a href="files/f3/lurking-yeti-640x960.jpg"><img style="border: solid 1px #eee;" src="files/lurking-yeti-640x960.jpg" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/tropical-yeti-640x960.jpg"><img style="border: solid 1px #eee;" src="files/tropical-yeti-640x960.jpg" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/yeti-dance-640x960.jpg"><img style="border: solid 1px #eee;" src="files/yeti-dance-640x960.jpg" /></a>
-	 			</li>
-	 			<li>
-	 				<a href="files/yeti-love-640x960.jpg"><img style="border: solid 1px #eee;" src="files/yeti-love-640x960.jpg" /></a>
-	 			</li>
-	 		</ul>
-	 	</div>
-	 </div>
-	 </section>
-
+		 			<li>
+		 				<a href="files/f3/lurking-yeti-640x960.jpg"><img style="border: solid 1px #eee;" src="files/lurking-yeti-640x960.jpg" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/tropical-yeti-640x960.jpg"><img style="border: solid 1px #eee;" src="files/tropical-yeti-640x960.jpg" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/yeti-dance-640x960.jpg"><img style="border: solid 1px #eee;" src="files/yeti-dance-640x960.jpg" /></a>
+		 			</li>
+		 			<li>
+		 				<a href="files/yeti-love-640x960.jpg"><img style="border: solid 1px #eee;" src="files/yeti-love-640x960.jpg" /></a>
+		 			</li>
+		 		</ul>
+	 		</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="twelve columns">
+				<h3>Yeti for Download</h3>
+				<p>We've made that really easy (as long as you have the right software) to download your very own vector yeti to use as you want. We'd love to see how you're using it or even if you create a new desktop wallpaper. Let us know and we might feature it on this page!</p>
+				<a class="small button" href="files/yeti.zip" alt="Vector Yeti">Download the Yeti</a>
+			</div>
+		</div>
+		<br><br>
+	</section>
 
 <?php include("includes/_footer.php");  ?>
