@@ -114,4 +114,7 @@ jQuery(document).ready(function ($) {
   $('.button.dropdown.small > ul').css('top', smallButtonHeight);
   $('.button.dropdown.tiny > ul').css('top', tinyButtonHeight);
 
+  /* CUSTOM FORMS */
+  $.foundation.customForms.appendCustomMarkup();
+
 });

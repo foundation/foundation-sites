@@ -153,21 +153,21 @@
       var self = this,
           $fluidPlaceholder;
 
-      self.$element.add(self.$wrapper).width(this.$slides.first().width());
+      self.$element.add(self.$wrapper).width(this.$slides.first().outerWidth());
       self.$element.add(self.$wrapper).height(this.$slides.first().height());
-      self.orbitWidth = this.$slides.first().width();
+      self.orbitWidth = this.$slides.first().outerWidth();
       self.orbitHeight = this.$slides.first().height();
       $fluidPlaceholder = this.$slides.first().findFirstImage().clone();
 
 
       this.$slides.each(function () {
         var slide = $(this),
-            slideWidth = slide.width(),
+            slideWidth = slide.outerWidth(),
             slideHeight = slide.height();
 
-        if (slideWidth > self.$element.width()) {
+        if (slideWidth > self.$element.outerWidth()) {
           self.$element.add(self.$wrapper).width(slideWidth);
-          self.orbitWidth = self.$element.width();
+          self.orbitWidth = self.$element.outerWidth();
         }
         if (slideHeight > self.$element.height()) {
           self.$element.add(self.$wrapper).height(slideHeight);
@@ -188,7 +188,7 @@
         self.$element.add(self.$wrapper).css({height: 'inherit'});
 
         $(window).bind('resize', function () {
-          self.orbitWidth = self.$element.width();
+          self.orbitWidth = self.$element.outerWidth();
           self.orbitHeight = self.$element.height();
         });
       }
@@ -328,6 +328,10 @@
 
       //Set HTML for the caption if it exists
       if (captionLocation) {
+        //if caption text is blank, don't show captions
+        if ($.trim($(captionLocation).text()).length < 1){
+          return false;
+        }
         captionHTML = $(captionLocation).html(); //get HTML from the matching HTML entity
         this.$caption
           .attr('id', captionLocation) // Add ID caption TODO why is the id being set?
@@ -393,7 +397,7 @@
       this.$wrapper.append(this.$bullets);
       this.$slides.each(this.addBullet);
       this.$element.addClass('with-bullets');
-      if (this.options.centerBullets) this.$bullets.css('margin-left', -this.$bullets.width() / 2);
+      if (this.options.centerBullets) this.$bullets.css('margin-left', -this.$bullets.outerWidth() / 2);
     },
 
     addBullet: function (index, slide) {
