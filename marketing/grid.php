@@ -1,6 +1,6 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Grid System" ?>
 <?php include("includes/_header.php"); ?>
-  
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -9,17 +9,17 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent">
-  
+
     <div class="row">
-      
+
       <div class="ten columns push-two">
         <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
       	<img src="images/feature-grid-1.png" />
         <h4>Flexible, efficient layout.</h4>
         <p>You've probably used a grid framework before &mdash; we think you'll like this one. It's a 12-column flexible grid that can scale out to an arbitrary size (defined by the max-width of the row) that's also easily nested, so you can build out complicated layouts without creating a lot of custom elements. And when the Grid isn't enough for your site, it just gets out of the way. <br/> <a href="docs/grid.php">Grid docs &rarr;</a></p>
-        
+
         <h4>Examples</h4>
         <div class="row">
         	<div class="four columns">
@@ -41,7 +41,7 @@
         	  </a>
         	</div>
         </div>
-        
+
       </div>
       <div class="two columns pull-ten">
         <ul class="side-nav">
@@ -53,7 +53,7 @@
         </ul>
       </div>
     </div>
-  
-  </section>  
-  	
+
+  </section>
+
 <?php include("includes/_footer.php");  ?>

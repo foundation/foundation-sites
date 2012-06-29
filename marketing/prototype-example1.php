@@ -1,8 +1,8 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Rapid Prototyping Marketing Site" ?>
 <?php include("includes/_header.php"); ?>
-  
 
-  
+
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -11,9 +11,9 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent" class="example">
-  
+
 	<div class="row">
 			<div class="three columns">
 				<a href="index.php"><img src="http://placehold.it/200x60" /></a>
@@ -30,13 +30,13 @@
 				</nav>
 			</div>
 		</div>
-	
+
 	</div>
 </header>
 	<div class="container">
 		<div class="row">
 			<div class="twelve columns">
-			
+
 				<div class="jumbotron homepage">
 					<img src="http://placehold.it/940x300" class="bg" />
 					<div class="content">
@@ -44,14 +44,14 @@
 						<h1>Rebekah Children's Services helps kids and families in need with tons of great programs.</h1>
 						<a href="get-involved/" class="large radius nice blue button">Get Involved</a>
 					</div>
-					
+
 					<a href="#" id="prev" class="slider">&larr;</a>
 					<a href="#" id="next" class="slider">&rarr;</a>
 				</div>
-			
+
 			</div>
-		</div>	
-		
+		</div>
+
 		<div class="row">
 			<div class="four columns">
 				<a href="services/adoption-foster-care.php"><img src="http://placehold.it/400x300" /></a>
@@ -66,7 +66,7 @@
 				<h3><a href="/events">Next Event: Let It Snow</a></h3>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="twelve columns">
 				<div class="blog panel">
@@ -75,7 +75,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="six columns">
 				<div class="row">
@@ -102,7 +102,7 @@
 				</div>
 			</div>
 		</div>
-  
-  </section>  
-  	
+
+  </section>
+
 <?php include("includes/_footer.php");  ?>

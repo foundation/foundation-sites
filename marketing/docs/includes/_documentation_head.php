@@ -1,4 +1,6 @@
-<? $version = "2.2.1"; ?>
+<? $version = "3.0"; ?>
+<!DOCTYPE html>
+
 <!DOCTYPE html>
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -7,16 +9,28 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8" />
+  <meta charset="utf-8" />
 
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- For third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/favicons/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/favicons/apple-touch-icon-114x114-precomposed.png">
+  <!-- For first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/favicons/apple-touch-icon-72x72-precomposed.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../images/favicons/apple-touch-icon-precomposed.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
 
-	<meta name="description" content="Foundation is an easy to use, powerful, and flexible framework for building rapid prototypes and production code on any kind of device." />
+  <link rel="icon" href="../images/favicons/favicon.ico" type="image/x-icon" />
 
-	<title>Foundation: <?= $page_title ?></title>
-  	<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
-	<link rel="icon" type="image/ico" href="../favicon.ico">
+  <meta name="keywords" content="foundation, design, frameworks, framework, css framework, html framework, html5, css3, SASS, SCSS, compass, responsive, design" />
+  <meta name="description" content="Documentation for Foundation by ZURB. Foundation is the most advanced responsive front-end framework in the world." />
+  <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
+  <meta name="copyright" content="ZURB, inc. Copyright (c) 2012" />
+
+  <title>Foundation Documentation: <?= $page_title ?></title>
 
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">

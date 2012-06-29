@@ -84,7 +84,7 @@ header .subheader { position: relative; top: -18px; }
   .touch .top-bar .attached { height: 45px !important; }
   .touch .top-bar .attached > ul.right { overflow: hidden; height: 45px !important; }
 }
-@media only screen and (orientation: landscape) {
+@media only screen and (orientation: landscape) and (min-device-width: 768px) {
   .touch .top-bar .attached > ul.right { height: 45px !important; overflow: hidden !important; }
 }
 

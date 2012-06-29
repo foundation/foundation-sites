@@ -1,4 +1,4 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Gem Versions, SASS, Compass, Rails, Etc." ?>
 <?php include("includes/_documentation_head.php"); ?>
   <style type="text/css">.btm-marg{display: block; margin-bottom: 30px;}</style>
   <div class="row">
@@ -18,9 +18,9 @@
 
               <dl class="sub-nav">
                 <dt>Go to:</dt>
-                <dd class="active"><a href="#installing">Installing</a></dd>
-                <dd class="active"><a href="#settings">Settings</a></dd>
-                <dd class="active"><a href="#mixins">Mixins &amp; Functions</a></dd>
+                <dd><a href="#installing">Installing</a></dd>
+                <dd><a href="#settings">Settings</a></dd>
+                <dd><a href="#mixins">Mixins &amp; Functions</a></dd>
               </dl>
 
               <hr>

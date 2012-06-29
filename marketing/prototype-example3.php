@@ -1,8 +1,8 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Rapid Prototyping Social Network Example" ?>
 <?php include("includes/_header.php"); ?>
-  
 
-  
+
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -11,15 +11,15 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent" class="example">
-  
+
 	<div class="row">
 	    <a href="prototyping.php" class="back two columns">&larr; About Prototyping</a>
 	    <hr />
 	  </div>
 	</div>
-	  
+
 	  <section id="exampleHeader">
 	  	<div class="container">
 	  		<div class="row">
@@ -30,9 +30,9 @@
 	  		</div>
 	  	</div>
 	  </section>
-	  
+
 	<div class="container">
-	  
+
 	  <div class="row">
 	  	<div class="seven columns">
 	  		<div class="row mobile">
@@ -50,8 +50,8 @@
 	  						This is a website for people who live in gigantic trees. Learn about how to go from branch to branch, and where to keep your crazy screaming flying dragon thing.</p>
 	  					</div>
 	  				</div>
-	  				
-	  				
+
+
 		  			<section class="comments">
 		  				<div class="row">
 		  					<div class="two phone-one columns">
@@ -69,15 +69,15 @@
 	  			</div>
 	  		</div>
 	  		<hr />
-	  		
+
 	  		<div class="row">
 	  			<div class="two phone-one columns">
 	  				<img src="http://placehold.it/200x200" />
 	  			</div>
 	  			<div class="ten phone-three columns">
 	  				<p><strong><a href="">Jake Sully</a> said:</strong><br />Has anyone seen my wheelchair? This isn't funny guys.</p>
-	  				
-	  				
+
+
 		  			<section class="comments">
 		  				<div class="row">
 		  					<div class="two phone-one columns">
@@ -111,7 +111,7 @@
 						<li><img src="http://placehold.it/100x100" /></li>
 						<li><img src="http://placehold.it/100x100" /></li>
 					</ul>
-					
+
 					<h5>Videos</h5>
 					<img src="http://placehold.it/400x300" />
 					<strong><a href="#">A Sweet Video</a></strong> &bull; YouTube
@@ -127,14 +127,14 @@
 						<li><img src="http://placehold.it/100x100" /></li>
 						<li><img src="http://placehold.it/100x100" /></li>
 					</ul>
-					
+
 					<h5>Links</h5>
 					<p><strong><a href="#">Huge Trees and You: How to live in a giant tree</a></strong> This is a website for people who live in gigantic trees. Learn about...</p>
 				</li>
 			</ul>
 	  	</div>
 	  </div>
-  
-  </section>  
-  	
+
+  </section>
+
 <?php include("includes/_footer.php");  ?>
