@@ -46,7 +46,7 @@
         <p>We're using <strong>box-sizing: border-box</strong> on the entire framework, meaning padding and sizing is much simpler and more flexible. The framework core uses no images at all, relying entirely on resolution-independent elements like CSS shapes or unicode. (To be fair, Orbit still has some included images. We'll get there.)</p>
         <p>Advanced CSS is one thing, but we also wanted to push the envelope in Sass. We're using a modular scale for our typography that is based on ratios and numbers of your choice!. We're also using Sass' invisible classes to streamline our development.</p>
         <p>Foundation 3 is also now right at the forefront of Web development best practices, with an included semantic grid system. If the presentational nature of CSS-based grid systems gets you down and you want to remove all those columns and rows from your markup, we've got you covered with a very robust set of Sass mixins to attach row and column styles to any element you choose.
-        <p class="lead"><a href="download.php">Download it now &raquo;</a></p>
+        <p><a class="button" href="download.php">Download it now &raquo;</a></p>
       </div>
     </div>
 

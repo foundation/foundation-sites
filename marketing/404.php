@@ -1,17 +1,17 @@
 <? $page_title = "404 Error, the Yeti Couldn't Find What You Were Looking For" ?>
 <?php include("includes/_header.php"); ?>
 
-	<header>
-    <div class="row">
-      <div class="twelve columns">
-        <h1>Hmmm, we couldn't find that.</h1>
-        <h4>This would be one of those 404 errors we hear so much about.</h4>
-      </div>
-    </div>
-  </header>
-
   <section id="mainContent">
 
+    <div class="row">
+      <div class="twelve columns">
+        <img src="images/404.png" style="margin-top: 30px; margin-left: -3px;" alt="404, page doesn't exist">
+        <h1 class="text-center">Hmm, we couldn't find what you were looking for.</h1>
+        <h4 class="subheader text-center">Don't mine our three eyes, we'll just be watching you until you move on.</h4>
+      </div>
+    </div>
+    <br><br><br><br><br>
+    <hr>
     <div class="row">
       <div class="four columns">
         <h3>Were you looking for a case study?</h3>
