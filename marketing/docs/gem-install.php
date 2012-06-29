@@ -132,7 +132,7 @@
               </span>
 
               <h5>Modular Scale</h5>
-              <p>The typography in Foundation is set to a specific modular scale, which you can update in your _settings.scss file. In order to utilize the scale, you must follow the correct syntax.</p>
+              <p>The typography in Foundation is set to a specific <a href="https://github.com/scottkellum/modular-scale" rel="nofollow">modular scale</a>, which you can update in your _settings.scss file. In order to utilize the scale, you must follow the correct syntax.</p>
               <ul class="disc">
                 <li><strong>ms(#);</strong> Tell your font which number from the scale to use.</li>
               </ul>
@@ -146,7 +146,7 @@
               <span class="btm-marg"><script src="https://gist.github.com/3009156.js?file=font-size.scss"></script></span>
 
               <h5>CSS Triangles</h5>
-              <p>If you area unfamiliar with CSS triangles, learn more <a href="http://css-tricks.com/snippets/css/css-triangle/">here &rarr;</a> We use them all in foundation for the arrows in dropdowns and pips on tooltips flyouts.</p>
+              <p>If you are unfamiliar with CSS triangles, learn more <a href="http://css-tricks.com/snippets/css/css-triangle/">here.</a> We use them all over in foundation for things like the arrows in dropdowns and pips on tooltips flyouts.</p>
 
               <ul class="disc">
                 <li><strong>@include cssTriangle(size, color, direction);</strong> Easily create awesome triangles!</li>
