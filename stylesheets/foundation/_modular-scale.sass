@@ -1,0 +1,332 @@
+// SASSY MODULAR-SCALE
+// https://github.com/scottkellum/modular-scale
+
+@charset "UTF-8"
+
+// Ratios
+$golden: 1.618 
+$gold: $golden
+$double-octave: (4 / 1)
+$major-twelfth: (3 / 1)
+$major-eleventh: (8 / 3)
+$major-tenth: (5 / 2)
+$octave: (2 / 1)
+$major-seventh: (15 / 8)
+$minor-seventh: (16 / 9)
+$major-sixth: (5 / 3)
+$minor-sixth: (8 / 5)
+$fifth: (3 / 2)
+$augfourth: (1 / 1.4142135623730950488) // (1 / square root 2)
+$fourth: (4 / 3)
+$major-third: (5 / 4)
+$minor-third: (6 / 5)
+$major-second: (9 / 8)
+$minor-second: (16 / 15)
+
+// Defaults
+$ratio: $golden !default
+$base-size: 16px !default
+$property: font-size !default
+$class-slug: ms !default
+
+// Modular Scale function
+@function modular-scale($multiple, $base-size, $ratio)
+  // return the $base-size if $multiple is zero
+  @if $multiple == 0
+    @if type-of($base-size) == 'list'
+      $base-size: sort-list($base-size)
+      @return nth($base-size, 1)
+    // return just the simple $base-size value if it's not a list
+    @return $base-size
+
+  // if multiple base-sizes are passed in as a list
+  // and multiple ratios are passed in as a list
+  // calculate values in using each base-size / ratio combination
+  @if type-of($base-size) == 'list' and type-of($ratio) == 'list'
+    @if unit(ms-multibase-multiratio($multiple, $base-size, $ratio)) == 'px'
+      @return round(ms-multibase-multiratio($multiple, $base-size, $ratio))
+    @return ms-multibase-multiratio($multiple, $base-size, $ratio)
+    
+  // if multiple base-sizes are passed in as a list
+  // calculate values in using each base-size
+  @if type-of($base-size) == 'list' and type-of($ratio) == 'number'
+    @if unit(ms-multibase($multiple, $base-size, $ratio)) == 'px'
+      @return round(ms-multibase($multiple, $base-size, $ratio))
+    @return ms-multibase($multiple, $base-size, $ratio)
+      
+  // if multiple ratios are passed in as a list
+  // calculate values in using each ratio
+  @if type-of($base-size) == 'number' and type-of($ratio) == 'list'
+    @if unit(ms-multiratio($multiple, $base-size, $ratio)) == 'px'
+      @return round(ms-multiratio($multiple, $base-size, $ratio))
+    @return ms-multiratio($multiple, $base-size, $ratio)
+    
+  // If there are no lists just run the simple function
+  @if unit(exponent($ratio, $multiple) * $base-size) == 'px'
+    @return round(exponent($ratio, $multiple) * $base-size)
+  @return exponent($ratio, $multiple) * $base-size
+  
+  
+// calculate values in using each base-size / ratio combination
+@function ms-multibase-multiratio($multiple, $base-size, $ratio)
+  // start with an empty list to place all values in
+  $scale-values: ()
+  // make sure base sizes are in ascending order
+  $base-size: sort-list($base-size)
+  // take each base-size in turn
+  $k: 1
+  @while $k <= length($base-size)
+    // add each $base-size to the list except the first
+    @if $k > 1
+      $scale-values: append($scale-values, nth($base-size, $k))
+    // take each ratio in turn
+    $j: 1
+    @while $j <= length($ratio)
+      // reset $modular-scale for each set
+      $modular-scale: nth($base-size, $k)
+      // do the scale for each base-size using this ratio 
+      @if $multiple > 0
+        // up $multiple times
+        // and add the result to $scale-values        
+        @for $i from 1 through $multiple
+          $modular-scale: exponent(nth($ratio, $j), $i) * nth($base-size, $k)
+          $scale-values: append($scale-values, $modular-scale)
+        // and down until the value is lower than the lowest $base-size
+        // and add the result to $scale-values
+        $i: -1
+        $modular-scale: nth($base-size, $k)
+        @while $modular-scale >= nth($base-size, 1)
+          $modular-scale: exponent(nth($ratio, $j), $i) * nth($base-size, $k)
+          $scale-values: append($scale-values, $modular-scale)
+          $i: $i - 1
+      @if $multiple < 0
+        // do the scale down for each set to below 1px
+        $i: -1
+        $modular-scale: nth($base-size, $k)
+        @while $modular-scale > 1
+          $modular-scale: exponent(nth($ratio, $j), $i) * nth($base-size, $k)
+          $scale-values: append($scale-values, $modular-scale)
+          $i: $i - 1
+      $j: $j + 1
+    $k: $k + 1
+  // return trimmed and sorted final list
+  @return trim-sort($multiple, $scale-values, $base-size)
+    
+    
+// calculate values in using each base-size
+@function ms-multibase($multiple, $base-size, $ratio)
+  // start with an empty list to place all values in
+  $scale-values: ()
+  // make sure base sizes are in ascending order
+  $base-size: sort-list($base-size)
+  // take each base-size in turn
+  $k: 1
+  @while $k <= length($base-size)
+    // add each $base-size to the list except the first
+    @if $k > 1
+      $scale-values: append($scale-values, nth($base-size, $k))
+    // reset $modular-scale for each set
+    $modular-scale: nth($base-size, $k)
+    // do the scale for each base-size using this ratio 
+    @if $multiple > 0
+      // up $multiple times
+      // and add the result to $scale-values        
+      @for $i from 1 through $multiple
+        $modular-scale: exponent($ratio, $i) * nth($base-size, $k)
+        $scale-values: append($scale-values, $modular-scale)
+      // and down until the value is lower than the lowest $base-size
+      // and add the result to $scale-values
+      $i: -1
+      $modular-scale: nth($base-size, $k)
+      @while $modular-scale >= nth($base-size, 1)
+        $modular-scale: exponent($ratio, $i) * nth($base-size, $k)
+        $scale-values: append($scale-values, $modular-scale)
+        $i: $i - 1
+    @if $multiple < 0
+      // do the scale down for each set to below 1px
+      $i: -1
+      $modular-scale: nth($base-size, $k)
+      @while $modular-scale > 1
+        $modular-scale: exponent($ratio, $i) * nth($base-size, $k)
+        $scale-values: append($scale-values, $modular-scale)
+        $i: $i - 1
+    $k: $k + 1
+  // return trimmed and sorted final list
+  @return trim-sort($multiple, $scale-values, $base-size)
+
+    
+// calculate values in using each ratio
+@function ms-multiratio($multiple, $base-size, $ratio)
+  // start with an empty list to place all values in
+  $scale-values: ()
+  // If $multiple is a positive integer (up the scale)
+  @if $multiple > 0
+    // take each ratio in turn
+    $j: 1
+    @while $j <= length($ratio)
+      // reset $modular-scale for each set
+      $modular-scale: $base-size
+      // do the scale using this ratio thru the multiple, and add the result to $scale-values
+      @for $i from 1 through $multiple
+        $modular-scale: exponent(nth($ratio, $j), $i) * $base-size
+        $scale-values: append($scale-values, $modular-scale)
+      $j: $j + 1
+    // sort acsending      
+    $scale-values: sort-list($scale-values)
+    // return the final value using the laced list
+    @return nth($scale-values, $multiple)
+  // If $multiple is a negative integer (down the scale)
+  @if $multiple < 0
+    // take each ratio in turn
+    $j: 1
+    @while $j <= length($ratio)
+      // reset $modular-scale for each set
+      $modular-scale: $base-size
+      // do the scale using this ratio thru the multiple, and add the result to $scale-values
+      @for $i from 1 through ($multiple * -1)
+        $modular-scale: exponent(nth($ratio, $j), -$i) * $base-size
+        $scale-values: append($scale-values, $modular-scale)
+      $j: $j + 1
+    // sort decending
+    $scale-values: sort-list($scale-values, 'dec')
+    // return the final value using the laced list
+    @return nth($scale-values, $multiple * -1)
+    
+    
+// trim and sort the final list
+@function trim-sort($multiple, $scale-values, $base-size)
+  @if $multiple > 0
+    // trim list so we can count from the lowest $base-size
+    $scale-values: trim-list($scale-values, nth($base-size, 1))
+    // sort acsending      
+    $scale-values: sort-list($scale-values)
+    // return the final value using the laced list
+    @return nth($scale-values, $multiple)
+  @else
+    // trim list so we can count from the lowest $base-size
+    $scale-values: trim-list($scale-values, nth($base-size, 1), 'dec')
+    // sort acsending      
+    $scale-values: sort-list($scale-values, 'dec')
+    // return the final value using the laced list
+    @return nth($scale-values, -$multiple)
+  
+  
+/////////////////////////////////////////////////////////////////////////
+  
+// Shortcut
+@function ms($multiple, $base-size, $ratio)
+  // Return the value from the Modular Scale function
+  @return modular-scale($multiple, $base-size, $ratio)
+
+// Classes Mixin
+=modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
+  
+  // Loop from 0 through the value of $multiple and generate a range of classes
+  @for $i from 0 through $multiple
+    .#{$class-slug}-#{$i}
+      // Print the $property and return the value from the Modular Scale function
+      #{$property}: modular-scale($i, $base-size, $ratio)
+
+=ms-classes($multiple, $property, $class-slug, $base-size, $ratio)
+  +modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
+
+// Write Modular Scale List
+@function modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  $ms-list: unquote("MS-LIST:")
+  @for $i from $start through $finish
+    $ms-list: append($ms-list, ms($i, $base-size, $ratio))
+  @return $ms-list
+
+@function ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  @return modular-scale-list($start, $finish, $base-size, $ratio)
+
+=modular-scale-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  @debug modular-scale-list($start, $finish, $base-size, $ratio)
+
+=ms-list($start: 0, $finish: 20, $base-size: $base-size, $ratio: $ratio)
+  @debug modular-scale-list($start, $finish, $base-size, $ratio)
+
+/////////////////////////////////////////////////////////////////////////
+
+
+// Sass exponent support
+@function exponent($base, $exponent)
+  // reset value
+  $value: $base
+  // positive intergers get multiplied
+  @if $exponent > 1
+    @for $i from 2 through $exponent
+      $value: $value * $base
+  // negitive intergers get divided. A number divided by itself is 1
+  @if $exponent < 1
+    @for $i from 0 through -$exponent
+      $value: $value / $base
+  // return the last value written
+  @return $value
+
+
+// Sass list sorting support
+@function sort-list($list, $dir: 'asc')
+  // built-in list sorting in Sass would make this go away.
+  // declare some empty lists to put our new order and temporary values 
+  $new-order: ()
+  $temp: ()
+  // fill $temp with the contents of $list
+  $temp: join($temp, $list)
+  // if sorting ascending
+  @if $dir == 'asc'
+    // loop through all values in $list
+    @for $i from 1 through length($list)
+      // impossibly high starter value to compare
+      $low: 1000000
+      // check for lowest value in $temp
+      @for $j from 1 through length($temp)
+        @if nth($temp, $j) < $low
+          $low: nth($temp, $j)
+      // add lowest value to $new-order
+      $new-order: append($new-order, $low)
+      // empty $temp for the next comparison
+      $temp: ()
+      // re-populate $temp with remaining values to sort
+      @for $k from 1 through length($list)
+        @if nth($list, $k) > $low
+          $temp: append($temp, nth($list, $k))
+  @if $dir == 'dec'
+    // loop through all values in $list
+    @for $i from 1 through length($list)
+      // 0 starter value
+      $high: 0
+      // check for highest value in $temp
+      @for $j from 1 through length($temp)
+        @if nth($temp, $j) > $high
+          $high: nth($temp, $j)
+      $new-order: append($new-order, $high)
+      // empty $temp for the next comparison
+      $temp: ()
+      // re-populate $temp with remaining values to sort
+      @for $k from 1 through length($list)
+        @if nth($list, $k) < $high
+          $temp: append($temp, nth($list, $k))
+  @return $new-order
+  
+  
+// Sass list trimming support
+@function trim-list($list, $start, $dir: 'asc')
+  // built-in list trimming in Sass would make this go away.
+  // declare some empty lists to put our trimmed values
+  $trimmed: ()
+  // if sorting ascending
+  @if $dir == 'asc'
+    // loop through all values in $list
+    @for $i from 1 through length($list)
+      @if nth($list, $i) >= $start
+        $trimmed: append($trimmed, nth($list, $i))
+  @if $dir == 'dec'
+    // loop through all values in $list
+    @for $i from 1 through length($list)
+      @if nth($list, $i) <= $start
+        $trimmed: append($trimmed, nth($list, $i))
+  @return $trimmed
+
+// Other libraries can easily query if this function is avalible
+$modular-scale-loaded: true

@@ -3,7 +3,6 @@ PATH
   specs:
     foundation (3.0.0.alpha34)
       compass (= 0.12.2)
-      modular-scale (~> 0.0.5)
       rake
       sass (= 3.2.0.alpha.244)
 
@@ -23,8 +22,6 @@ GEM
       sass (~> 3.1)
     fssm (0.2.9)
     highline (1.6.12)
-    modular-scale (0.0.5)
-      compass (>= 0.11.5)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
