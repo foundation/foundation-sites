@@ -25,21 +25,21 @@
   // Creating .row-# classes
   @for $i from 1 through $totalColumns {
     .row {
-      .#{convert-number-to-word($i)} { width: grid-calc($i, $totalColumns); }
+      .#{convert-number-to-word($i)} { width: gridCalc($i, $totalColumns); }
     }
   }
 
   // Creating .row.offset-by-# classes
   @for $i from 1 through $totalColumns - 2 {
     .row {
-      .offset-by-#{convert-number-to-word($i)} { margin-left: grid-calc($i, $totalColumns); }
+      .offset-by-#{convert-number-to-word($i)} { margin-left: gridCalc($i, $totalColumns); }
     }
   }
 
   // Creating .row.push-# classes
   @for $i from 2 through $totalColumns - 2 {
-    .push-#{convert-number-to-word($i)} { left: grid-calc($i, $totalColumns); }
-    .pull-#{convert-number-to-word($i)} { right: grid-calc($i, $totalColumns); }
+    .push-#{convert-number-to-word($i)} { left: gridCalc($i, $totalColumns); }
+    .pull-#{convert-number-to-word($i)} { right: gridCalc($i, $totalColumns); }
   }
 
   img, object, embed { max-width: 100%; height: auto; }
@@ -79,7 +79,7 @@
     /* Mobile 4-column Grid */
     @for $i from 1 through $mobileTotalColumns {
       .row {
-        .mobile-#{convert-number-to-word($i)} { width: grid-calc($i, $mobileTotalColumns) !important; float: left; padding: 0 ($columnGutter/2);
+        .mobile-#{convert-number-to-word($i)} { width: gridCalc($i, $mobileTotalColumns) !important; float: left; padding: 0 ($columnGutter/2);
           &:last-child { float: right; }
         }
         &.collapse {
@@ -88,8 +88,8 @@
       }
     }
     @for $i from 1 through $mobileTotalColumns - 1 {
-      .push-#{convert-number-to-word($i)}-mobile { left: grid-calc($i, $mobileTotalColumns); }
-      .pull-#{convert-number-to-word($i)}-mobile { right: grid-calc($i, $mobileTotalColumns); }
+      .push-#{convert-number-to-word($i)}-mobile { left: gridCalc($i, $mobileTotalColumns); }
+      .pull-#{convert-number-to-word($i)}-mobile { right: gridCalc($i, $mobileTotalColumns); }
     }
   }
 

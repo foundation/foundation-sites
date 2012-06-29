@@ -2,7 +2,7 @@
 
 // Mixin for Semantic Grid reponsiveness
 
-  @mixin respond-to($media) {
+  @mixin respondTo($media) {
     @if $media == smallScreen { @media #{$mediaSmall} { @content; }
     } @else if $media == mediumScreen { @media #{$mediaMedium} { @content; }
     } @else if $media == largeScreen { @media #{$mediaXlarge} { @content; } }
@@ -14,8 +14,8 @@
     &:before, &:after { content: ""; display: table; }
     &:after { clear: both; }
   }
-  @mixin mobile-clearfix() {
-    @include respond-to(smallScreen) { &:before, &:after { content: ""; display: table; }
+  @mixin mobileClearfix() {
+    @include respondTo(smallScreen) { &:before, &:after { content: ""; display: table; }
       &:after { clear: both; }
       &:last-child { float: none; }
     }
@@ -23,11 +23,11 @@
 
   // Outer row mixin for container rows
 
-  @mixin outer-row() { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @include clearfix(); @include respond-to(small-screen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; } }
+  @mixin outerRow() { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @include clearfix(); @include respondTo(smallScreen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; } }
 
   // Inner row mixin for nested rows, must be a child of an outer-row element. $behavior can be 'collapse' to get rid of margins
 
-  @mixin inner-row($behavior: false) {
+  @mixin innerRow($behavior: false) {
     @if $behavior == collapse { width: auto; max-width: none; min-width: 0; margin: 0; @include clearfix();
     } @else { width: auto; max-width: none; min-width: 0; margin: 0 (-($columnGutter/2)); @include clearfix(); }
   }
@@ -35,29 +35,29 @@
   // Columns mixin, syntax is ($columns, $behavior). Behavior can be 'centered' which centers things or 'collapse' which collapses the gutters. ex @include row(4,[center | collapse])
 
   @mixin column($columns:$columns, $behavior: false) {
-    @if $behavior == center { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: grid-calc($columns, $totalColumns); @include respond-to(small-screen) { width: auto !important; float: none; } @include mobile-clearfix();
-    } @else if $behavior == collapse { float: left; position: relative; min-height: 1px; padding: 0; width: grid-calc($columns, $totalColumns); @include respond-to(small-screen) { width: auto !important; float: none; } @include mobile-clearfix();
-    } @else { float: left; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: grid-calc($columns, $totalColumns); @include respond-to(small-screen) { width: auto !important; float: none; } @include mobile-clearfix(); }
+    @if $behavior == center { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { width: auto !important; float: none; } @include mobileClearfix();
+    } @else if $behavior == collapse { float: left; position: relative; min-height: 1px; padding: 0; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { width: auto !important; float: none; } @include mobileClearfix();
+    } @else { float: left; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { width: auto !important; float: none; } @include mobileClearfix(); }
   }
 
   // Offset Mixin, include after a column mixin to manipulate its grid offset.
 
-  @mixin offset-by($offset:1) { margin-left: grid-calc($offset, $totalColumns); }
+  @mixin offsetBy($offset:1) { margin-left: gridCalc($offset, $totalColumns); }
 
   // Push/Pull Mixins, include after a column mixin to manipulate stack ordering.
 
-  @mixin push($push:1) { left: grid-calc($push, $totalColumns); }
-  @mixin pull($push:1) { right: grid-calc($push, $totalColumns); }
+  @mixin push($push:1) { left: gridCalc($push, $totalColumns); }
+  @mixin pull($push:1) { right: gridCalc($push, $totalColumns); }
 
   // Mobile Row, synctax is @include mobile-row();
 
-  @mixin mobile-row() { @include respond-to(small-screen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; @include clearfix(); } }
+  @mixin mobileRow() { @include respondTo(smallScreen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; @include clearfix(); } }
 
   // Mobile Columns, syntax is @include mobile-column(#);
 
-  @mixin mobile-column($columns:$columns) { @include respond-to(small-screen) { width: grid-calc($columns, $mobileTotalColumns); float: left; padding: 0 ($columnGutter/2); } }
+  @mixin mobileColumn($columns:$columns) { @include respondTo(smallScreen) { width: gridCalc($columns, $mobileTotalColumns); float: left; padding: 0 ($columnGutter/2); } }
 
   // Mobile Push/Pull Mixin
 
-  @mixin mobile-push($push:1) { @include respond-to(small-screen) { left: grid-calc($push, $mobileTotalColumns); } }
-  @mixin mobile-pull($push:1) { @include respond-to(small-screen) { right: grid-calc($push, $mobileTotalColumns); } }
+  @mixin mobilePush($push:1) { @include respondTo(smallScreen) { left: gridCalc($push, $mobileTotalColumns); } }
+  @mixin mobilePull($push:1) { @include respondTo(smallScreen) { right: gridCalc($push, $mobileTotalColumns); } }

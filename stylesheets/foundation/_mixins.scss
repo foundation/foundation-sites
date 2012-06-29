@@ -12,7 +12,7 @@
 
   // Grid Calculation for Percentages
 
-  @function grid-calc($colNumber, $totalColumns) {
+  @function gridCalc($colNumber, $totalColumns) {
     @return percentage(($colNumber / $totalColumns));
   }
 
