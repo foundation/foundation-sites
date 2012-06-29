@@ -997,7 +997,7 @@ header#homepage .button:hover { background: #006582; }
 
 #github span.date { text-transform: uppercase; color: #d8f7fd; }
 
-#github a.commit { font-weight: bold; font-size: 12px; font-size: 1.2rem; word-break: break-word; }
+#github a.commit { font-weight: bold; font-size: 12px; font-size: 1.2rem; word-break: break-word; word-wrap: break-word; }
 
 #github a.button { margin: 22px 0 44px; color: #3f3f3f; border: none; background: #fff; }
 
