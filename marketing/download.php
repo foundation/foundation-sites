@@ -42,7 +42,7 @@
         <hr />
 
         <h3 id="customizeFoundation">Customize Foundation</h3>
-        <form id="customBuild" action="http://foundation-generator.dev/assembler" method="post">
+        <form id="customBuild" action="http://comedian.local:9393/download" method="post">
 
           <div class="row">
             <div class="six columns">
