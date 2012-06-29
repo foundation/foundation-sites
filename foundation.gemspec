@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\).reject {|f| /marketing\/*/.match(f)}
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "foundation"
+  gem.name          = "zurb-foundation"
   gem.require_paths = ["lib"]
   gem.version       = Foundation::VERSION
 
