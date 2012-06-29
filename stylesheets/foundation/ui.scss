@@ -22,7 +22,7 @@
 */
 
   @import "base";
-  
+
   /* Visibility Classes ---------------------- */
 
   /* Standard visibility targeting */
@@ -37,7 +37,7 @@
   .hide-for-medium { display: block !important; }
 
   /* Very large display targeting */
-  @media #{$media-xlarge} {
+  @media #{$mediaXlarge} {
     .hide-for-small,
     .hide-for-medium,
     .hide-for-large,
@@ -50,7 +50,7 @@
   }
 
   /* Medium display targeting */
-  @media #{$media-medium} {
+  @media #{$mediaMedium} {
     .hide-for-small,
     .show-for-medium,
     .hide-for-large,
@@ -63,7 +63,7 @@
   }
 
   /* Small display targeting */
-  @media #{$media-small} {
+  @media #{$mediaSmall} {
     .show-for-small,
     .hide-for-medium,
     .hide-for-large,
@@ -81,14 +81,14 @@
   .hide-for-landscape,
   .show-for-portrait { display: none !important; }
 
-  @media #{$media-landscape} {
+  @media #{$mediaLandscape} {
     .show-for-landscape,
     .hide-for-portrait { display: block !important; }
     .hide-for-landscape,
     .show-for-portrait { display: none !important; }
   }
 
-  @media #{$media-portrait} {
+  @media #{$mediaPortrait} {
     .show-for-portrait,
     .hide-for-landscape { display: block !important; }
     .hide-for-portrait,
@@ -108,14 +108,14 @@
   table.hide-for-small,
   table.hide-for-medium { display: table !important; }
 
-  @media #{$media-medium} {
+  @media #{$mediaMedium} {
     .touch table.hide-for-xlarge,
     .touch table.hide-for-large,
     .touch table.hide-for-small,
     .touch table.show-for-medium { display: table !important; }
   }
 
-  @media #{$media-small} {
+  @media #{$mediaSmall} {
     table.hide-for-xlarge,
     table.hide-for-large,
     table.hide-for-medium,
@@ -175,8 +175,8 @@
   }
 
   .tap-to-close { display: block; @include font-size(10); color: #888; font-weight: normal; }
-  
-  @media #{$media-small} {
+
+  @media #{$mediaSmall} {
     .tooltip {
       @include font-size(14);
       line-height: 1.4;
@@ -311,8 +311,8 @@
     iframe, object, embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
   }
-  
-  @media #{$media-all} {
+
+  @media #{$mediaAll} {
     .flex-video { padding-top: 0; }
   }
 

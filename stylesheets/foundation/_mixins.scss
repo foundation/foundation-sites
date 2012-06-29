@@ -12,8 +12,8 @@
 
   // Grid Calculation for Percentages
 
-  @function grid-calc($col_number, $total_columns) {
-    @return percentage(($col_number / $total_columns));
+  @function gridCalc($colNumber, $totalColumns) {
+    @return percentage(($colNumber / $totalColumns));
   }
 
   // Default Font Stack
@@ -24,7 +24,7 @@
 
   // Create CSS Triangles in a Breeze
 
-  @mixin css-triangle($triangleSize, $triangleColor, $triangleDirection) {
+  @mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
     content: "";
     display: block;
     width: 0;

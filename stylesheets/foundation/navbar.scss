@@ -22,7 +22,7 @@
 
       &.has-flyout {
         &>a:first-child { padding-right: 36px; position: relative;
-          &:after { @include css-triangle(4px, darken($white, 10%), top); position: absolute; right: 20px; top: 17px; }
+          &:after { @include cssTriangle(4px, darken($white, 10%), top); position: absolute; right: 20px; top: 17px; }
         }
         &>a.flyout-toggle { border-left: 0 !important; position: absolute; right: 0; top: 0; padding: 22px; z-index: 2; display: block; }
         &.is-touch {
@@ -39,7 +39,7 @@
 
       &>li { float: none; border-bottom: none;
 
-        &.has-flyout>a:first-child:after { @include css-triangle(4px, darken($white, 10%), left); }
+        &.has-flyout>a:first-child:after { @include cssTriangle(4px, darken($white, 10%), left); }
         .flyout { left: 100%; top: -1px;
           &.right { left: auto; right: 100%; }
         }
@@ -76,13 +76,13 @@
     .touch .nav-bar li.has-flyout>a { padding-right: 36px !important; }
   }
 
-  @media #{$media-medium} {
+  @media #{$mediaMedium} {
     .touch .nav-bar li a { @include font-size(13); }
     .touch .nav-bar li.has-flyout>a.flyout-toggle { padding: 20px !important; }
     .touch .nav-bar li.has-flyout>a { padding-right: 36px !important; }
   }
 
-  @media #{$media-small} {
+  @media #{$mediaSmall} {
     .nav-bar { height: auto;
 
       &>li { float: none; display: block; border-right: none; }

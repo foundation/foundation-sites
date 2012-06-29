@@ -47,13 +47,16 @@ header .subheader { position: relative; top: -18px; }
 .container.top-bar { margin-bottom: 0; }
 
 .top-bar { -webkit-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; -moz-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; border-bottom: none; }
+.top-bar .attached > .name:hover { color: #fff !important; }
 .top-bar .attached { padding: 0 15px; width: 100%; max-width: 100%; }
 .top-bar li { margin-bottom: 0; line-height: 46px; }
 .top-bar .attached > ul.right { overflow: hidden; }
 .top-bar .attached > ul.right > li.download { border-right: 0; }
 .top-bar .attached > ul.right > li.download a { padding: 6px 13px 6px; }
+.top-bar .attached > ul.right > li > a:hover { color: $white; }
 .top-bar .small.button { height: auto; top: 10px; }
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
+.top-bar .attached > .name span > a:hover { color: $white; }
 .top-bar .attached > .name > span > a.toggle-nav { right: -45px !important; }
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../images/plus-toggle-2-retina.png?1340846519'); background-size: 100% 100%; } }
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
@@ -72,10 +75,10 @@ header .subheader { position: relative; top: -18px; }
 }
 @media only screen and (max-width: 767px) {
   .top-bar { position: relative; overflow: hidden;
-    &:after { @include css-triangle(8px, #fff, top); position: absolute; right: 20px; top: 19px; }
+    &:after { @include cssTriangle(8px, #fff, top); position: absolute; right: 20px; top: 19px; }
   }
   .top-bar.expanded { height: auto !important;
-    &:after { @include css-triangle(8px, #888, bottom); top: 10px; }
+    &:after { @include cssTriangle(8px, #888, bottom); top: 10px; }
   }
   .top-bar .name span { margin-left: 0px !important; }
   .top-bar .attached > ul > li > a, .top-bar .attached > ul > li > span { padding-left: 0px; padding-right: 0px; }

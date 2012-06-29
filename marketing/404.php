@@ -7,7 +7,7 @@
       <div class="twelve columns">
         <img src="images/404.png" style="margin-top: 30px; margin-left: -3px;" alt="404, page doesn't exist">
         <h1 class="text-center">Hmm, we couldn't find what you were looking for.</h1>
-        <h4 class="subheader text-center">Don't mine our three eyes, we'll just be watching you until you move on.</h4>
+        <h4 class="subheader text-center">Don't mind our three eyes, we'll just be watching you until you move on.</h4>
       </div>
     </div>
     <br><br><br><br><br>

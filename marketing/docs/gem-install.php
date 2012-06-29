@@ -53,10 +53,10 @@
 
               <h5>Grid Settings</h5>
               <ul class="disc">
-                <li><strong>$row_width:</strong> Width of the grid.</li>
-                <li><strong>$column_gutter:</strong> Width of the gutter.</li>
-                <li><strong>$total_columns:</strong> Adjust how many columns are in the grid.</li>
-                <li><strong>$mobile_total_columns:</strong> Adjust how many columns in the mobile grid.</li>
+                <li><strong>$rowWidth:</strong> Width of the grid.</li>
+                <li><strong>$columnGutter:</strong> Width of the gutter.</li>
+                <li><strong>$totalColumns:</strong> Adjust how many columns are in the grid.</li>
+                <li><strong>$mobileTotalColumns:</strong> Adjust how many columns in the mobile grid.</li>
               </ul>
               <span class="btm-marg"><script src="https://gist.github.com/3008570.js?file=grid-settings"></script></span>
 
@@ -108,19 +108,19 @@
               <h5>Semantic Grid</h5>
               <p>Are you tired of adding extra divs just to include classes for building your grid? We are too! Our semantic grid mixins will help you write more semantic markup. Here's how they work:</p>
               <ul class="disc">
-                <li><strong>@include outer-row();</strong> Create container rows to start the grid.</li>
-                <li><strong>@include inner-row();</strong> Nested rows, must be inside a column.</li>
-                <li><strong>@include inner-row(collapse);</strong> Collapse the margins of a nested row.</li>
+                <li><strong>@include outerRow();</strong> Create container rows to start the grid.</li>
+                <li><strong>@include innerRow();</strong> Nested rows, must be inside a column.</li>
+                <li><strong>@include innerRow(collapse);</strong> Collapse the margins of a nested row.</li>
                 <li><strong>@include column(#);</strong> Create columns inside of any row. It must contain a number.</li>
                 <li><strong>@include column(#, center);</strong> Center your columns within a row.</li>
                 <li><strong>@include column(#, collapse);</strong> Collapse the column gutter for postfix and prefix elements.</li>
-                <li><strong>@include offset-by(#);</strong> Offset your columns to the right.</li>
+                <li><strong>@include offsetBy(#);</strong> Offset your columns to the right.</li>
                 <li><strong>@include push(#);</strong> Source ordering to push columns around.</li>
                 <li><strong>@include pull(#);</strong> Source ordering to pull columns around.</li>
-                <li><strong>@include mobile-row();</strong> Create rows that appear on mobile layouts.</li>
-                <li><strong>@include mobile-column(#);</strong> Create mobile columns inside mobile rows.</li>
-                <li><strong>@include mobile-push(#);</strong> Source ordering to push columns around on mobile.</li>
-                <li><strong>@include mobile-pull(#);</strong> Source ordering to pull columns around on mobile.</li>
+                <li><strong>@include mobileRow();</strong> Create rows that appear on mobile layouts.</li>
+                <li><strong>@include mobileColumn(#);</strong> Create mobile columns inside mobile rows.</li>
+                <li><strong>@include mobilePush(#);</strong> Source ordering to push columns around on mobile.</li>
+                <li><strong>@include mobilePull(#);</strong> Source ordering to pull columns around on mobile.</li>
               </ul>
               <span>
                 <strong>Markup Example:</strong>
@@ -132,7 +132,7 @@
               </span>
 
               <h5>Modular Scale</h5>
-              <p>The typography in Foundation is set to a specific modular scale, which you can update in your _settings.scss file. In order to utilize the scale, you must follow the correct syntax.</p>
+              <p>The typography in Foundation is set to a specific <a href="https://github.com/scottkellum/modular-scale" rel="nofollow">modular scale</a>, which you can update in your _settings.scss file. In order to utilize the scale, you must follow the correct syntax.</p>
               <ul class="disc">
                 <li><strong>ms(#);</strong> Tell your font which number from the scale to use.</li>
               </ul>
@@ -146,10 +146,10 @@
               <span class="btm-marg"><script src="https://gist.github.com/3009156.js?file=font-size.scss"></script></span>
 
               <h5>CSS Triangles</h5>
-              <p>If you area unfamiliar with CSS triangles, learn more <a href="http://css-tricks.com/snippets/css/css-triangle/">here &rarr;</a> We use them all in foundation for the arrows in dropdowns and pips on tooltips flyouts.</p>
+              <p>If you are unfamiliar with CSS triangles, learn more <a href="http://css-tricks.com/snippets/css/css-triangle/">here.</a> We use them all over in foundation for things like the arrows in dropdowns and pips on tooltips flyouts.</p>
 
               <ul class="disc">
-                <li><strong>@include css-triangle(size, color, direction);</strong> Easily create awesome triangles!</li>
+                <li><strong>@include cssTriangle(size, color, direction);</strong> Easily create awesome triangles!</li>
               </ul>
               <span class="btm-marg"><script src="https://gist.github.com/3009123.js?file=css-triangles.scss"></script></span>
 
