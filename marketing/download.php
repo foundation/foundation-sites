@@ -42,7 +42,9 @@
         <hr />
 
         <h3 id="customizeFoundation">Customize Foundation</h3>
-        <form id="customBuild">
+        <form id="customBuild" 
+          action="http://foundation-generator.dev/assembler"
+          method="post">
 
           <div class="row">
             <div class="six columns">
@@ -53,19 +55,19 @@
                 <div class="six columns">
                   <ul class="no-bullet customizer">
                     <li><label><input type="checkbox"> All</label> <em>Kitchen sync</em></li> <!-- Need to have this check everything -->
-                    <li><label><input type="checkbox"> globals.css</label> <em>Body and misc styles</em></li>
-                    <li><label><input type="checkbox"> typography.css</label> <em>Global typography elements</em></li>
-                    <li><label><input type="checkbox"> grid.css</label> <em>Responsive grid</em></li>
-                    <li><label><input type="checkbox"> forms.css</label> <em>Normal and custom forms</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="globals"> globals.css</label> <em>Body and misc styles</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="typography"> typography.css</label> <em>Global typography elements</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="grid"> grid.css</label> <em>Responsive grid</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="forms"> forms.css</label> <em>Normal and custom forms</em></li>
                   </ul>
                 </div>
                 <div class="six columns">
                   <ul class="no-bullet customizer">
-                    <li><label><input type="checkbox"> button.css</label> <em>Entire button set</em></li>
-                    <li><label><input type="checkbox"> ui.css</label> <em>Reuseable UI elements</em></li>
-                    <li><label><input type="checkbox"> navbar.css</label> <em>Different navigation elements</em></li>
-                    <li><label><input type="checkbox"> tabs.css</label> <em>Tabbed elements</em></li>
-                    <li><label><input type="checkbox"> mobile.css</label> <em>Media Query responsiveness</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="buttons"> button.css</label> <em>Entire button set</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="ui"> ui.css</label> <em>Reusable UI elements</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="navbar"> navbar.css</label> <em>Different navigation elements</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="tabs"> tabs.css</label> <em>Tabbed elements</em></li>
+                    <li><label><input type="checkbox" name="css[]" value="mobile"> mobile.css</label> <em>Media Query responsiveness</em></li>
                   </ul>
                 </div>
               </div>
@@ -76,9 +78,9 @@
                 <div class="six columns">
                   <ul class="no-bullet customizer">
                     <li><label><input type="checkbox"> All</label> <em>Get it all</em></li>
-                    <li><label><input type="checkbox"> jquery.customforms.js</label> <em>Customizable form elements</em></li>
-                    <li><label><input type="checkbox"> jquery.placeholder.min.js</label> <em>Input placeholders that toggle on click.</em></li>
-                    <li><label><input type="checkbox"> jquery.tooltips.js</label> <em>Hoverable tooltips for elements</em></li>
+                    <li><label><input type="checkbox" name="js[]" value="customforms"> jquery.customforms.js</label> <em>Customizable form elements</em></li>
+                    <li><label><input type="checkbox" name="js[]" value="placeholder"> jquery.placeholder.min.js</label> <em>Input placeholders that toggle on click.</em></li>
+                    <li><label><input type="checkbox" name="js[]" value="tooltips"> jquery.tooltips.js</label> <em>Hoverable tooltips for elements</em></li>
                   </ul>
                 </div>
                 <div class="six columns">
@@ -94,8 +96,8 @@
                 <div class="six columns">
                   <ul class="no-bullet customizer">
                     <li><label><input type="checkbox"> All</label> <em>Get both</em></li>
-                    <li><label><input type="checkbox"> Orbit</label> <em>Slider with JS/CSS</em></li>
-                    <li><label><input type="checkbox"> Reveal</label> <em>Modal with JS/CSS</em></li>
+                    <li><label><input type="checkbox" name="js[]" value="orbit"> Orbit</label> <em>Slider with JS/CSS</em></li>
+                    <li><label><input type="checkbox" name="js[]" value="reveal"> Reveal</label> <em>Modal with JS/CSS</em></li>
                   </ul>
                 </div>
                 <div class="six columns">
@@ -113,13 +115,13 @@
               <div class="row">
                 <div class="six columns">
                   <label for="columnCount"># of Columns</label>
-                  <input type="text" value="12" placeholder="#" id="columnCount" />
+                  <input type="text" value="12" placeholder="#" id="columnCount" name="sass_settings[columnCount]" />
                 </div>
                 <div class="six columns">
                   <label for="columnGutter">Gutter</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="30" placeholder="#" id="columnGutter" />
+                      <input type="text" value="30" placeholder="#" id="columnGutter" name="sass_settings[columnGutter]" />
                     </div>
                     <div class="two columns">
                       <span class="postfix">px</span>
@@ -133,7 +135,7 @@
                   <label for="rowWidth"># of Mobile Columns</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="1000" placeholder="#" id="rowWidth" />
+                      <input type="text" value="1000" placeholder="#" id="rowWidth" name="sass_settings[mobileColumnCount]" />
                     </div>
                     <div class="two columns">
                       <span class="postfix">px</span>
@@ -144,7 +146,7 @@
                   <label for="rowWidth">Max-Width</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="940" placeholder="#" id="rowWidth" />
+                      <input type="text" value="940" placeholder="#" id="maxWidth" name="sass_settings[maxWidth]" />
                     </div>
                     <div class="two columns">
                       <span class="postfix">px</span>
@@ -163,7 +165,7 @@
                       <span class="prefix">#</span>
                     </div>
                     <div class="ten columns">
-                      <input type="text" value="2ba6cb" placeholder="Hex" id="mainColor" />
+                      <input type="text" value="2ba6cb" placeholder="Hex" id="mainColor" name="sass_settings[mainColor]" />
                     </div>
                   </div>
                 </div>
@@ -174,7 +176,7 @@
                       <span class="prefix">#</span>
                     </div>
                     <div class="ten columns">
-                      <input type="text" value="e9e9e9" placeholder="Hex" id="secondaryColor" />
+                      <input type="text" value="e9e9e9" placeholder="Hex" id="secondaryColor" name="sass_settings[secondaryColor]" />
                     </div>
                   </div>
                 </div>
@@ -188,7 +190,7 @@
                       <span class="prefix">#</span>
                     </div>
                     <div class="ten columns">
-                      <input type="text" value="c60f13" placeholder="Hex" id="alertColor" />
+                      <input type="text" value="c60f13" placeholder="Hex" id="alertColor" name="sass_settings[alertColor]" />
                     </div>
                   </div>
                 </div>
@@ -199,7 +201,7 @@
                       <span class="prefix">#</span>
                     </div>
                     <div class="ten columns">
-                      <input type="text" value="5da423" placeholder="Hex" id="successColor" />
+                      <input type="text" value="5da423" placeholder="Hex" id="successColor" name="sass_settings[successColor]" />
                     </div>
                   </div>
                 </div>
@@ -213,7 +215,7 @@
                       <span class="prefix">#</span>
                     </div>
                     <div class="ten columns">
-                      <input type="text" value="222222" placeholder="Hex" id="textColor" />
+                      <input type="text" value="222222" placeholder="Hex" id="textColor" name="sass_settings[textColor]" />
                     </div>
                   </div>
                 </div>
@@ -224,7 +226,7 @@
                       <span class="prefix">#</span>
                     </div>
                     <div class="ten columns">
-                      <input type="text" value="ffff99" placeholder="Hex" id="highlightColor" />
+                      <input type="text" value="ffff99" placeholder="Hex" id="highlightColor" name="sass_settings[highlightColor]" />
                     </div>
                   </div>
                 </div>
@@ -237,7 +239,7 @@
                   <label for="baseFontSize">Base Font Size</label>
                   <div class="row collapse">
                     <div class="nine columns">
-                      <input type="text" value="14" placeholder="px" id="baseFontSize" />
+                      <input type="text" value="14" placeholder="px" id="baseFontSize" name="sass_settings[baseFontSize]" />
                     </div>
                     <div class="three columns">
                       <span class="postfix">px</span>
@@ -248,7 +250,7 @@
                   <label for="importantNumber">Important Number</label>
                   <div class="row collapse">
                     <div class="nine columns">
-                      <input type="text" value="44" placeholder="px" id="importantNumber" />
+                      <input type="text" value="44" placeholder="px" id="importantNumber" name="sass_settings[importantNumber]" />
                     </div>
                     <div class="three columns">
                       <span class="postfix">px</span>
@@ -257,7 +259,7 @@
                 </div>
                 <div class="four columns">
                   <label for="fontRatio">Ratio</label>
-                  <select>
+                  <select name="sass_settings[fontRatio]">
                     <option selected value="golden">Golden Ratio</option>
                     <option value="fifth">Perfect Fifth</option>
                   </select>
@@ -270,7 +272,7 @@
                   <label for"baseButtonRadius">Button Radius</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="3" placeholder="px" id="baseButtonRadius" />
+                      <input type="text" value="3" placeholder="px" id="baseButtonRadius" name="sass_settings[baseButtonRadius]" />
                     </div>
                     <div class="two column">
                       <span class="postfix">px</span>
@@ -281,7 +283,7 @@
                   <label for"baseButtonSize">Button Size <em style="font-size: 11px;">(based on padding-top)</em></label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="10" placeholder="px" id="baseButtonSize" />
+                      <input type="text" value="10" placeholder="px" id="baseButtonSize" name="sass_settings[baseButtonSize]" />
                     </div>
                     <div class="two column">
                       <span class="postfix">px</span>
