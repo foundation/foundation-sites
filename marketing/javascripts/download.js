@@ -191,6 +191,11 @@ function setColor($this) {
     }
   });
 
+  $('#rowWidth, #columnCount').keyup(function(e) {
+    var val = $(this).val();
+    if(val > 16) $(this).val(16);
+  });
+
   $('.color-picker').each(function() {
     setColor($(this));
   });
