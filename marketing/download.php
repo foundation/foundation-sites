@@ -1,4 +1,4 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Downloads and Customization" ?>
 <?php include("includes/_header.php"); ?>
 
   <header>
@@ -280,7 +280,7 @@
                   </div>
                 </div>
                 <div class="six columns">
-                  <label for"baseButtonSize">Button Size <em style="font-size: 11px;">(based on padding-top)<em></label>
+                  <label for"baseButtonSize">Button Size <em style="font-size: 11px;">(based on padding-top)</em></label>
                   <div class="row collapse">
                     <div class="ten columns">
                       <input type="text" value="10" placeholder="px" id="baseButtonSize" name="sass_settings[baseButtonSize]" />

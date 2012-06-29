@@ -1,4 +1,4 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Get Started" ?>
 <?php include("includes/_documentation_head.php"); ?>
 
 	<div class="row">
@@ -36,28 +36,28 @@
 
         			<h4><a href="buttons.php">Buttons</a></h4>
         			<p>Buttons are one of the core interactive elements of the Web. We've included styles and patterns for buttons that make it simple to create everything from simple marketing CTAs to complex application toolbars.</p>
-        			
+
         		  <h4><a href="forms.php">Forms</a></h4>
         		  <p>A combination of robust, extensible form styles and the built-in power of the Foundation Grid means you can create simple or complicated forms quickly and easily. Validation states, custom select and radio buttons and more are included.</p>
       			</div>
-      			
+
       			<div class="six columns">
         		  <h4><a href="navigation.php">Navigation</a></h4>
         		  <p>People have to get around. Navigation styles in Foundation include simple top bars, sidebars, and subnav pills. We've also included a crazy powerful, responsive top bar that supports N-level dropdowns.</p>
-        		  
+
         		  <h4><a href="tabs.php">Tabs</a></h4>
         		  <p>Whether it's pages or simply tabbed content, Foundation's tabs are not only styled up, but interactive out of the box.</p>
-        		   
+
         		  <h4><a href="elements.php">Elements</a></h4>
         		  <p>We've also included lots of useful elements like visibility classes (to hide or show things based on screen size or orientation), labels, alerts, tooltips, panels and a lot more.</p>
-        		  
+
         		  <h4><a href="orbit.php">Orbit</a></h4>
         		  <p>Orbit is an image or content slider that's designed to work responsively, and includes lots of useful options like timers, paddles, bullets, thumbs and more. It's easy to use and very flexible.</p>
-        		  
+
         		  <h4><a href="reveal.php">Reveal</a></h4>
         		  <p>If you need modal dialogs Reveal has you covered. You can easily call modals without writing any JS, and modals can now even call subsequent modals cleanly on the same page.</p>
 
-        		  
+
       			</div>
     			</div>
     		</div>

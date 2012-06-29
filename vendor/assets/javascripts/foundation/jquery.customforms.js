@@ -207,6 +207,7 @@ jQuery(document).ready(function ($) {
         $select = $dropdown.prev();
 
     event.preventDefault();
+    $('div.dropdown').removeClass('open');
 
     if (false == $select.is(':disabled')) {
         $dropdown.toggleClass('open');
@@ -231,6 +232,7 @@ jQuery(document).ready(function ($) {
 
     event.preventDefault();
     event.stopPropagation();
+    $('div.dropdown').removeClass('open');
 
     $this
       .closest('ul')

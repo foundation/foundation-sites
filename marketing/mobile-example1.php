@@ -1,20 +1,20 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Mobile Grid" ?>
 <?php include("includes/_header.php"); ?>
-  
+
   <style>
-  
+
   	.example .row, .example .row .column, .example .row .columns { background: #eee; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; height: 32px; text-indent: 4px; line-height: 32px; }
   	.example .row { margin-bottom: 10px; }
   	.example .row .column, .example .row .columns { background: #ccc; }
-  	
+
   	@media handheld, only screen and (max-width: 767px) {
 		.example .row { height: auto; }
 		.example .row .column, .example .row .columns { margin-bottom: 10px; }
 		.example .row .column:last-child, .example .row .columns:last-child { margin-bottom: 0; }
 	}
-  
+
   </style>
-  
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -23,9 +23,9 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent">
-  
+
   	<section  class="example">
 	 <div class="row">
 	  	.row
@@ -47,7 +47,7 @@
 	  	<div class="twelve columns">
 	  		<h3>Block Grid</h3>
 	  		<p>Foundation also includes block grids, literal two-up, three-up, four-up and five-up grids that persist on any kind of device. These are ideal for grids of images, icons, or anything that has similar sizes.</p>
-	  		
+
 	  		<ul class="block-grid four-up">
 	  			<li><img src="http://placehold.it/100x100" /></li>
 	  			<li><img src="http://placehold.it/100x100" /></li>
@@ -58,12 +58,12 @@
 	  			<li><img src="http://placehold.it/100x100" /></li>
 	  			<li><img src="http://placehold.it/100x100" /></li>
 	  		</ul>
-	  		
+
 	  	</div>
 	  </div>
   </section>
-	 
-  
-    
-  	
+
+
+
+
 <?php include("includes/_footer.php");  ?>

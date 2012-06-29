@@ -1,6 +1,6 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Flite Case Study" ?>
 <?php include("includes/_header.php"); ?>
-  
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -9,29 +9,29 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent">
-  
-    <div class="row">      
+
+    <div class="row">
       <div class="ten columns push-two">
         <div class="row">
           <div class="six columns">
             <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
             <h2>Flite</h2>
             <h4 class="subheader">Foundation was the way to go.</h4>
-            
+
             <p>When online advertising tech firm <a href="http://www.flite.com/">Flite</a> needed to do a redesign of its website, it knew that it had to work on any device, not just desktops. So the company looked around for a responsive framework. George Penston, VP of Product Design, had been following all that we do at ZURB and knew that the company had to take a look at Foundation to meet its needs. Foundation integrated well with Sass and Compass, something Flite has made essential to its development toolkit. While there were other frameworks out there, George said that Foundation was the way to go.</p>
-            
+
             <p>For the folks at Flite, Foundation had a nice, complete package with all the buttons and forms that they needed. As Andy Yang, Principal UX Designer, put it:</p>
             <blockquote>"Getting up to speed was super easy"</blockquote>
-            
+
             <p>Andy had Foundation up and running in a day. Then it was just a matter of building out the entire site, which took about another two weeks.</p>
           </div>
           <div class="six columns">
             <img src="images/case-flite-1.jpg" id="sideDeviceDesktop" />
           </div>
         </div>
-      
+
         <div class="row">
           <div class="six columns push-six">
             <h4>Integrating Their Design with Foundation</h4>
@@ -41,18 +41,18 @@
             <img src="images/case-flite-2.png" />
           </div>
         </div>
-            
+
         <h4>Retina display? No problem.</h4>
         <p>Preparing for the new iPad and its retina display ahead of time, the folks at Flite added retina support for key graphical elements into their SCSS/CSS. Take a look to see how they did it:</p>
-        
+
         <script src="https://gist.github.com/2990579.js?file=f3-case-flite-retina.html"></script>
-        
+
         <h4>Would Use Again</h4>
         <p>In the end, the new site looked fantastic on all devices thanks to Foundation. Flite found a new tool that easily integrates with the other tools, such as Sass and Compass, in its toolbox. And the team would use Foundation again.</p>
-        
+
         <blockquote>"Overall, I would definitely use it again for other projects."<cite>Andy</cite></blockquote>
       </div>
-      
+
       <div class="two columns pull-ten">
         <ul class="side-nav">
           <li><a href="index.php">&larr; Home</a></li>
@@ -65,7 +65,7 @@
         </ul>
       </div>
     </div>
-  
-  </section>  
-  	
+
+  </section>
+
 <?php include("includes/_footer.php");  ?>
