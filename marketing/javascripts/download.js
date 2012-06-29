@@ -161,7 +161,6 @@ function borderColor(color) {
     hsl = rgbToHsl(rgb.r, rgb.g, rgb.b),
     plus_10 = hslToRgb(hsl[0], hsl[1], (hsl[2] - (hsl[2] * 0.1))),
     new_rgb = 'rgb(' + Math.ceil(plus_10[0]) + ',' + Math.ceil(plus_10[1]) + ',' + Math.ceil(plus_10[2]) + ')';
-    console.log(new_rgb);
   return new_rgb;
 }
 
@@ -175,7 +174,7 @@ function setColor($this) {
     pallete.css('background-color', '#' + val);
     temp = pallete.colorcontrast('calculateYIQ', '#' + val);
     if (temp === 'light') {
-      pallete.css({'border-color': bColor, 'color': '#555'});
+      pallete.css({'border-color': bColor, 'color': '#333'});
     } else {
       pallete.css({'border-color': bColor, 'color': '#eee'});
     }
