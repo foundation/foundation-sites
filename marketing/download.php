@@ -119,7 +119,7 @@
                   <label for="columnGutter">Gutter</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="30" placeholder="#" id="columnGutter" name="sass_settings[columnGutter]" />
+                      <input type="text" value="30" placeholder="#" id="columnGutter" name="sass_settings[columnGutter]" class="pixel-value" />
                     </div>
                     <div class="two columns">
                       <span class="postfix">px</span>
@@ -253,11 +253,11 @@
                   </div>
                 </div>
                 <div class="four columns">
-                  <label for="fontRatio">Ratio</label>
-                  <select name="sass_settings[fontRatio]">
-                    <option selected value="golden">Golden Ratio</option>
-                    <option value="fifth">Perfect Fifth</option>
-                  </select>
+                  <!-- <label for="fontRatio">Ratio</label>
+                                    <select name="sass_settings[fontRatio]">
+                                      <option selected value="golden">Golden Ratio</option>
+                                      <option value="fifth">Perfect Fifth</option>
+                                    </select> -->
                 </div>
               </div>
 
