@@ -33,7 +33,7 @@
               <h5>Creating Your first project</h5>
               <p class="keystroke">
                 &bullet; cd path/to/where-you-want-your-project <br>
-                &bullet; compass create &lt;project-name&gt; -r zurb-foundation --using zurb-foundation
+                &bullet; compass create &lt;project-name&gt; -r zurb-foundation --using foundation
               </p>
               <p>
               <p class="btm-marg">Now you should have a new project folder created with foundation included along with all the awesome advantages that comes with <a href="http://sass-lang.com/" rel="nofollow">Sass</a> and <a href="http://compass-style.org/" rel="nofollow">Compass</a>.</p>
