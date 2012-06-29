@@ -1,7 +1,7 @@
 module Foundation
   module Sass::Script::Functions
     def convert_number_to_word(number)
-      val = case number
+      val = case number.to_i
       when 1 then "one"
       when 2 then "two"
       when 3 then "three"
