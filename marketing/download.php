@@ -133,7 +133,7 @@
                   <label for="rowWidth"># of Mobile Columns</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="1000" placeholder="#" id="rowWidth" name="sass_settings[mobileColumnCount]" />
+                      <input type="text" value="4" placeholder="#" id="rowWidth" name="sass_settings[mobileColumnCount]" />
                     </div>
                     <div class="two columns">
                       <span class="postfix">px</span>
