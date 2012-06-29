@@ -12,7 +12,7 @@
           </dl>
 
           <ul class="tabs-content">
-            <li class="active" id="simple1">
+            <li class="active" id="simple1Tab">
               <h3>SCSS: Installing with Compass</h3>
               <h4 class="subheader">Start using Foundation the way you want, with more control than ever before.</h4>
 
@@ -156,7 +156,7 @@
             </li>
 
 
-            <li id="simple2">
+            <li id="simple2Tab">
               Hey
             </li>
           </ul>

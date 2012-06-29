@@ -78,9 +78,9 @@ header .subheader { position: relative; top: -18px; }
   .top-bar .attached > ul > li.download a { margin-bottom: 30px !important; margin-top: 10px; }
   .top-bar .attached > .name > span > a.toggle-nav { right: -45px !important; }
 }
-@media only screen and (orientation: portrait) and (min-device-width: 768px) {
-  .top-bar { height: 100%; }
-  .touch .top-bar { height: 45px !important; }
+@media only screen and (orientation: portrait) {
+  .top-bar { overflow: hidden; height: 45px; }
+  .top-bar.expanded { height: auto !important; }
   .touch .top-bar .attached { height: 45px !important; }
   .touch .top-bar .attached > ul.right { overflow: hidden; height: 45px !important; }
 }
