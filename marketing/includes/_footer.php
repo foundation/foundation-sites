@@ -55,6 +55,7 @@
 	<script src="javascripts/foundation/jquery.placeholder.min.js"></script>
 	<script src="javascripts/foundation/jquery.tooltips.js"></script>
   <script src="javascripts/foundation.top-bar.js"></script>
+  <script src="javascripts/download.js"></script>
 	<script src="javascripts/foundation/app.js"></script>
 	<script src="swipe.js"></script>
 	<script src="github.js"></script>

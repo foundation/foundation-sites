@@ -39,7 +39,7 @@
               <p class="btm-marg">Now you should have a new project folder created with foundation included along with all the awesome advantages that comes with <a href="http://sass-lang.com/" rel="nofollow">Sass</a> and <a href="http://compass-style.org/" rel="nofollow">Compass</a>.</p>
               <h5>Adding Foundation to an existing project</h5>
               <ul class="disc">
-                <li>Add <span class="keystroke">require "ZURB-foundation"</span> to your config.rb file</li>
+                <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
                 <li><span class="keystroke">cd path/to/your-project</span></li>
                 <li>run <span class="keystrok">compass install zurb-foundation</span></li>
               </ul>
