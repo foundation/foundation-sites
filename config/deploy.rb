@@ -8,7 +8,7 @@ set :user, application
 set :deploy_to, "/var/www/staging/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
-set :branch, "3.0-gem"
+set :branch, "master"
 
 set :scm, :git
 

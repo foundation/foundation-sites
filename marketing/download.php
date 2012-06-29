@@ -227,39 +227,39 @@
                 </div>
               </div>
 
-              <h5>Typography</h5>
+              <!-- <h5>Typography</h5>
 
-              <div class="row">
-                <div class="four columns">
-                  <label for="baseFontSize">Base Font Size</label>
-                  <div class="row collapse">
-                    <div class="nine columns">
-                      <input type="text" value="14" placeholder="px" class="pixel-value" id="baseFontSize" name="sass_settings[base-size]" />
-                    </div>
-                    <div class="three columns">
-                      <span class="postfix">px</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="four columns">
-                  <label for="importantNumber">Important Number</label>
-                  <div class="row collapse">
-                    <div class="nine columns">
-                      <!-- <input type="text" value="44" placeholder="px" class="pixel-value" id="importantNumber" name="sass_settings[importantNumber]" /> -->
-                    </div>
-                    <div class="three columns">
-                      <span class="postfix">px</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="four columns">
-                  <!-- <label for="fontRatio">Ratio</label>
-                                    <select name="sass_settings[fontRatio]">
-                                      <option selected value="golden">Golden Ratio</option>
-                                      <option value="fifth">Perfect Fifth</option>
-                                    </select> -->
-                </div>
-              </div>
+                            <div class="row">
+                              <div class="four columns">
+                                <label for="baseFontSize">Base Font Size</label>
+                                <div class="row collapse">
+                                  <div class="nine columns">
+                                    <input type="text" value="14" placeholder="px" class="pixel-value" id="baseFontSize" name="sass_settings[base-size]" />
+                                  </div>
+                                  <div class="three columns">
+                                    <span class="postfix">px</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="four columns">
+                                <label for="importantNumber">Important Number</label>
+                                <div class="row collapse">
+                                  <div class="nine columns">
+                                    <input type="text" value="44" placeholder="px" class="pixel-value" id="importantNumber" name="sass_settings[importantNumber]" />
+                                  </div>
+                                  <div class="three columns">
+                                    <span class="postfix">px</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="four columns">
+                                <label for="fontRatio">Ratio</label>
+                                                  <select name="sass_settings[fontRatio]">
+                                                    <option selected value="golden">Golden Ratio</option>
+                                                    <option value="fifth">Perfect Fifth</option>
+                                                  </select>
+                              </div>
+                            </div> -->
 
               <h5>Buttons</h5>
               <div class="row">
