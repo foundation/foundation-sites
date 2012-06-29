@@ -26,7 +26,7 @@
     <br><br><br>
     <div class="row">
       <div class="four columns push-eight">
-        <img src="http://placehold.it/600x400">
+        <img src="images/feature-th.png">
       </div>
       <div class="eight columns pull-four">
         <h3>Feature Complete!</h3>
@@ -38,7 +38,7 @@
     <br><br><br>
     <div class="row">
       <div class="four columns">
-        <img src="http://placehold.it/600x400">
+        <img src="images/advanced-th.png">
       </div>
       <div class="eight columns">
         <h3>Freakishly Advanced</h3>

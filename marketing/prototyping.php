@@ -18,7 +18,7 @@
         <p class="show-for-small"><a href="index.php">&larr; Back to Home</a></p>
       	<img src="images/feature-prototyping-1.jpg">
         <h4>Mockups don't tell a story. Build a prototype in no time.</h4>
-        <p>The difference between a good site and a great site is iteration &mdash; building something, playing with it, refining it. In Foundation we've included dozens of styles to help you quickly prototype a site; multiple button sizes and styles, tabs, custom form elements, modal dialogs, image sliders and a lot more. All of the prototype elements are production-ready code, and easy to style up. <a href="docs/ui.php">UI Docs &rarr;</a></p>
+        <p>The difference between a good site and a great site is iteration &mdash; building something, playing with it, refining it. In Foundation we've included dozens of styles to help you quickly prototype a site; multiple button sizes and styles, tabs, custom form elements, modal dialogs, image sliders and a lot more. All of the prototype elements are production-ready code, and easy to style up. <a href="docs/elements.php">UI Docs &rarr;</a></p>
 
         <h4>Examples</h4>
         <div class="row">
