@@ -59,9 +59,6 @@
   		</div>
 
   		<ul class="right">
-        <li class="show-for-small">
-          <a href="#">Home</a>
-        </li>
   			<li>
   			  <a href="grid.php" <?php if (isset($featuresTab)) echo 'class="current"'; ?>>Features</a>
   			</li>
