@@ -1,4 +1,4 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Reveal" ?>
 <?php include("includes/_documentation_head.php"); ?>
 
 	<div class="row">

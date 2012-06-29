@@ -1,4 +1,4 @@
-<? $page_title = "Goodies" ?>
+<? $page_title = "Learn More and Get Goodies" ?>
 <?php include("includes/_header.php"); ?>
 
 	 <header>
@@ -9,9 +9,9 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent">
-	 
+
 	 <div class="row">
 	 	<div class="four columns">
 	 		<h3>Why build it?</h3>
@@ -26,11 +26,11 @@
 	 		<p>So tell us! File it on <a href="http://www.github.com/zurb/foundation">Github</a> or simply <a href="mailto:foundation@zurb.com">email us</a>. We crave feedback, and we want to keep polishing Foundation until it's the best, most badass code framework you've ever seen.</p>
 	 	</div>
 	 </div>
-	 
+
 	 <div class="row">
 	 	<hr /><br /><br />
 	 </div>
-	 
+
 	 <div class="row">
 	 	<div class="six columns">
 	 		<h3>Why a yeti?</h3>
@@ -98,6 +98,6 @@
 	 	</div>
 	 </div>
 	 </section>
-	   	  
-	
+
+
 <?php include("includes/_footer.php");  ?>

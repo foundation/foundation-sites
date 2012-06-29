@@ -1,5 +1,5 @@
 <?
-  $version = "2.2.1";
+  $version = "3.0";
 ?>
 <!DOCTYPE html>
 
@@ -25,13 +25,12 @@
 
   <link rel="icon" href="images/favicons/favicon.ico" type="image/x-icon" />
 
-  <meta name="keywords" content="design strategy, interaction design, design thinking, zurb, design" />
-  <meta name="description" content="ZURB, creating unique customer and user experiences. We are brand engineers that provide companies with strategic marketing, design and branding solutions.  Work includes identity, branding, information design, web design, illustration, software design, icon design, and multimedia work." />
+  <meta name="keywords" content="foundation, design, frameworks, framework, css framework, html framework, html5, css3, SASS, SCSS, compass, responsive, design" />
+  <meta name="description" content="Foundation by ZURB is the most advanced responsive front-end framework in the world." />
   <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
   <meta name="copyright" content="ZURB, inc. Copyright (c) 2012" />
 
 	<title>Foundation: <?= $page_title ?></title>
-  <meta name="description" content="Foundation is an easy to use, powerful, and flexible framework for building rapid prototypes and production code on any kind of device." />
 
 	<!-- Included CSS Files -->
   <link rel="stylesheet" href="http://www.zurb.com/assets/foundation.top-bar.css">

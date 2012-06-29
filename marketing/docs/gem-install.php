@@ -1,4 +1,4 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Gem Versions, SASS, Compass, Rails, Etc." ?>
 <?php include("includes/_documentation_head.php"); ?>
   <style type="text/css">.btm-marg{display: block; margin-bottom: 30px;}</style>
   <div class="row">

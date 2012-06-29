@@ -1,19 +1,19 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Nesting the Grid" ?>
 <?php include("includes/_header.php"); ?>
   <style>
-  
+
   	.example .row, .example .row .column, .example .row .columns { background: #f4f4f4; }
   	.example .row { margin-bottom: 10px; }
   	.example .row .column, .example .row .columns { background: #eee; border: 1px solid #ddd; }
-  	
+
   	@media handheld, only screen and (max-width: 767px) {
   		.example .row { height: auto; }
   		.example .row .column, .example .row .columns { margin-bottom: 10px; }
   		.example .row .column:last-child, .example .row .columns:last-child { margin-bottom: 0; }
     }
-  
+
   </style>
-  
+
   <header>
     <div class="row">
       <div class="twelve columns">
@@ -22,9 +22,9 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent" class="example">
-  
+
 		  <div class="row">
 		 	<div class="twelve columns">
 		 		<h3>Page Title (.twelve .columns)</h3>
@@ -83,7 +83,7 @@
 		 		</div>
 		 	</div>
 		 </div>
-  
-  </section>  
-  	
+
+  </section>
+
 <?php include("includes/_footer.php");  ?>

@@ -1,4 +1,4 @@
-<? $page_title = "Goodies" ?>
+<? $page_title = "404 Error, the Yeti Couldn't Find What You Were Looking For" ?>
 <?php include("includes/_header.php"); ?>
 
 	 <header>
@@ -9,14 +9,14 @@
       </div>
     </div>
   </header>
-  
+
   <section id="mainContent">
-	 
+
     <div class="row">
       <div class="four columns">
         <h3>Were you looking for a case study?</h3>
         <p>If so, here's some links to our current case studies so you can find out how we and others are using Foundation.</p>
-        
+
         <ul class="side-nav">
           <li><a href="case-flite.php">Flite Case Study &rarr;</a></li>
           <li><a href="case-reel.php">Reel Case Study &rarr;</a></li>
@@ -25,11 +25,11 @@
           <li><a href="case-zurbjobs.php">ZURBjobs Case Study &rarr;</a></li>
         </ul>
       </div>
-      
+
       <div class="four columns">
         <h3>Were you looking for documentation?</h3>
         <p>Here's the full list of doc pages. Whatever you're trying to do in Foundation, these should help you do it.</p>
-        
+
         <ul class="side-nav">
           <li><a href="docs/installing.php">CSS Version &rarr;</a></li>
           <li><a href="docs/gem-install.php">Sass or Ruby Version &rarr;</a></li>
@@ -45,11 +45,11 @@
           <li><a href="docs/support.php">Support &rarr;</a></li>
         </ul>
       </div>
-      
+
       <div class="four columns">
         <h3>Not what you needed? Hmmm...</h3>
         <p>If none of this is what you're looking for, here are some other resources to get you on the right path.</p>
-        
+
         <ul class="side-nav">
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/foundation-framework-">Google Group &rarr;</a></li>
           <li><a href="http://twitter.com/foundationzurb">Ping us on Twitter &rarr;</a></li>
@@ -58,6 +58,6 @@
       </div>
     </div>
   </section>
-	   	  
-	
+
+
 <?php include("includes/_footer.php");  ?>

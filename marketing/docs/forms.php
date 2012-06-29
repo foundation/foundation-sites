@@ -1,4 +1,4 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Forms" ?>
 <?php include("includes/_documentation_head.php"); ?>
 
 	<div class="row">
@@ -112,7 +112,7 @@
             </div>
           </div>
           <script src="https://gist.github.com/2954955.js?file=f3-prefix-form.html"></script>
-          
+
           <p><strong>Note:</strong> for these prefix and postfix labels we're using the <a href="grid.php">mobile grid</a> to size our labels correctly on small devices.</p>
 
           <label>Input with a postfix label</label>
