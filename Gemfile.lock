@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    foundation (3.0.0.alpha22)
-      compass (= 0.12.1)
+    foundation (3.0.0.alpha28)
+      compass (= 0.12.2)
       linguistics (~> 1.0.9)
       modular-scale (~> 0.0.5)
       rake
@@ -18,7 +18,7 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
     chunky_png (1.2.5)
-    compass (0.12.1)
+    compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)

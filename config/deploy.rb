@@ -28,7 +28,6 @@ namespace :deploy do
   task :link_cached_files do
     run "rm -rf #{release_path}/marketing/cache"
     run "ln -nfs #{shared_path}/cache #{release_path}/marketing/cache"
-    run "ln -nfs #{release_path}/images/misc #{release_path}/marketing/images/misc"
     run "ln -nfs #{release_path}/images/orbit #{release_path}/marketing/images/orbit"
   end
 

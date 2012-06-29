@@ -1,9 +1,9 @@
 description 'Foundation Compass Gem'
 
 # Sass Files
-stylesheet 'sass/app.sass',        :to => 'app.sass', :media => "screen, projector, print"
-stylesheet 'sass/ie.sass',         :to => 'ie.sass', :condition => "IE lt 9"
-stylesheet 'sass/_settings.sass',  :to => '_settings.sass'
+stylesheet 'sass/app.scss',        :to => 'app.scss', :media => "screen, projector, print"
+stylesheet 'sass/ie.scss',         :to => 'ie.scss', :condition => "IE lt 9"
+stylesheet 'sass/_settings.scss',  :to => '_settings.scss'
 
 # Relative asset paths
 js_path = "/../../vendor/assets/javascripts/foundation"
@@ -26,21 +26,16 @@ file 'robots.txt'
 file 'MIT-LICENSE.txt'
 
 # Image Files
-image "#{images_path}/misc/button-gloss.png",        :to => "foundation/misc/button-gloss.png"
-image "#{images_path}/misc/button-overlay.png",      :to => "foundation/misc/button-overlay.png"
-image "#{images_path}/misc/custom-form-sprites.png", :to => "foundation/misc/custom-form-sprites.png"
-image "#{images_path}/misc/input-bg.png",            :to => "foundation/misc/input-bg.png"
-image "#{images_path}/misc/input-bg-outset.png",     :to => "foundation/misc/input-bg-outset.png"
-image "#{images_path}/misc/modal-gloss.png",         :to => "foundation/misc/modal-gloss.png"
-image "#{images_path}/misc/table-sorter.png",        :to => "foundation/misc/table-sorter.png"
-image "#{images_path}/orbit/bullets.jpg",            :to => "foundation/orbit/bullets.jpg"
-image "#{images_path}/orbit/left-arrow.png",         :to => "foundation/orbit/left-arrow.png"
-image "#{images_path}/orbit/loading.gif",            :to => "foundation/orbit/loading.gif"
-image "#{images_path}/orbit/mask-black.png",         :to => "foundation/orbit/mask-black.png"
-image "#{images_path}/orbit/pause-black.png",        :to => "foundation/orbit/pause-black.png"
-image "#{images_path}/orbit/right-arrow.png",        :to => "foundation/orbit/right-arrow.png"
-image "#{images_path}/orbit/rotator-black.png",      :to => "foundation/orbit/rotator-black.png"
-image "#{images_path}/orbit/timer-black.png",        :to => "foundation/orbit/timer-black.png"
+image "#{images_path}/orbit/bullets.jpg",                   :to => "foundation/orbit/bullets.jpg"
+image "#{images_path}/orbit/left-arrow.png",                :to => "foundation/orbit/left-arrow.png"
+image "#{images_path}/orbit/left-arrow-small.png",          :to => "foundation/orbit/left-arrow-small.png"
+image "#{images_path}/orbit/loading.gif",                   :to => "foundation/orbit/loading.gif"
+image "#{images_path}/orbit/mask-black.png",                :to => "foundation/orbit/mask-black.png"
+image "#{images_path}/orbit/pause-black.png",               :to => "foundation/orbit/pause-black.png"
+image "#{images_path}/orbit/right-arrow.png",               :to => "foundation/orbit/right-arrow.png"
+image "#{images_path}/orbit/right-arrow-small.png",         :to => "foundation/orbit/right-arrow-small.png"
+image "#{images_path}/orbit/rotator-black.png",             :to => "foundation/orbit/rotator-black.png"
+image "#{images_path}/orbit/timer-black.png",               :to => "foundation/orbit/timer-black.png"
 
 
 help %Q{
