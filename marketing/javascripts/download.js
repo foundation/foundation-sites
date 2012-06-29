@@ -161,8 +161,24 @@ function borderColor(color) {
     hsl = rgbToHsl(rgb.r, rgb.g, rgb.b),
     plus_10 = hslToRgb(hsl[0], hsl[1], (hsl[2] - (hsl[2] * 0.1))),
     new_rgb = 'rgb(' + Math.ceil(plus_10[0]) + ',' + Math.ceil(plus_10[1]) + ',' + Math.ceil(plus_10[2]) + ')';
-    console.log(new_rgb);
   return new_rgb;
+}
+
+function setColor($this) {
+  var temp, pallete, bColor, val;
+
+  val = $this.val();
+  if (val.length > 0) {
+    bColor = borderColor(val);
+    pallete = $this.closest('.row').find('.prefix');
+    pallete.css('background-color', '#' + val);
+    temp = pallete.colorcontrast('calculateYIQ', '#' + val);
+    if (temp === 'light') {
+      pallete.css({'border-color': bColor, 'color': '#333'});
+    } else {
+      pallete.css({'border-color': bColor, 'color': '#eee'});
+    }
+  }
 }
 
 (function ($) {
@@ -176,32 +192,11 @@ function borderColor(color) {
   });
 
   $('.color-picker').each(function() {
-    var temp, pallete, bColor;
-
-    bColor = borderColor($(this).val());
-    console.log(bColor);
-    pallete = $(this).closest('.row').find('.prefix');
-    pallete.css('background-color', '#' + $(this).val());
-    temp = pallete.colorcontrast('calculateYIQ', '#' + $(this).val());
-    if (temp === 'light') {
-      pallete.css({'border-color': bColor, 'color': '#555'});
-    } else {
-      pallete.css({'border-color': bColor, 'color': '#eee'});
-    }
+    setColor($(this));
   });
 
   $('.color-picker').keyup(function() {
-    var temp, pallete, bColor;
-
-    bColor = borderColor($(this).val());
-    pallete = $(this).closest('.row').find('.prefix');
-    pallete.css('background-color', '#' + $(this).val());
-    temp = pallete.colorcontrast('calculateYIQ', '#' + $(this).val());
-    if (temp === 'dark') {
-      pallete.css({'border-color': bColor, 'color': '#555'});
-    } else {
-      pallete.css({'border-color': bColor, 'color': '#eee'});
-    }
+    setColor($(this));
   });
 
   $("#columnCount, #columnGutter, #rowWidth, #maxWidth, #baseFontSize, #importantNumber, #baseButtonRadius, #baseButtonSize").keydown(function(event) {
