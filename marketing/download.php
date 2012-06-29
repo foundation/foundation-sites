@@ -66,7 +66,7 @@
                     <li><label><input type="checkbox" name="css[]" value="navbar" checked="checked"> navbar.css</label> <em>Different navigation elements</em></li>
                     <li><label><input type="checkbox" name="css[]" value="tabs" checked="checked"> tabs.css</label> <em>Tabbed elements</em></li>
                     <!-- <li><label><input type="checkbox" name="css[]" value="mobile" checked="checked"> mobile.css</label> <em>Media Query responsiveness</em></li> -->
-                  </ul>''
+                  </ul>
                 </div>
               </div>
 
