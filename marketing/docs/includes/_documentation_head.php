@@ -72,7 +72,7 @@
   		  <li>
   		    <a href="http://github.com/zurb/foundation">GitHub</a>
   			</li>
-  			<li class="download"><a class="small blue nice button src-download" href="files/foundation-download-2.2.1.zip">Download</a></li>
+  			<li class="download"><a class="small blue nice button src-download" href="../download.php">Download</a></li>
   		</ul>
   	</div>
   </div>
