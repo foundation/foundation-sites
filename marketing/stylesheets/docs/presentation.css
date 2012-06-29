@@ -889,6 +889,26 @@ ul.orbit-bullets li.active.has-thumb { background-position: 0 0; border-top: 2px
   .reveal-modal, .reveal-modal.small, .reveal-modal.medium, .reveal-modal.large, .reveal-modal.xlarge { width: 80%; top: 15px; left: 50%; margin-left: -40%; padding: 20px; height: auto; } }
   /* NOTES Close button entity is &#215;
  Example markup <div id="myModal" class="reveal-modal"> <h2>Awesome. I have it.</h2> <p class="lead">Your couch.  I it's mine.</p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p> <a class="close-reveal-modal">&#215;</a> </div> */
+/* This is for all IE specfific style less than IE9. We hate IE. */
+.lt-ie8 .row { max-width: 1000px; }
+
+div.panel { border: 1px solid #ccc; }
+
+.lt-ie8 .nav-bar li.has-flyout a { padding-right: 20px; }
+
+.lt-ie8 .nav-bar li.has-flyout a:after { border-top: none; }
+
+/* Correct IE7 button padding */
+.lt-ie8 input[type=submit].nice.button { filter: chroma(color=black); position: relative; top: -2px; }
+
+.lt-ie8 input[type=submit].tiny.button { padding: 5px 5px 7px; }
+
+.lt-ie8 input[type=submit].small.button { padding: 8px 7px 9px; }
+
+.lt-ie8 input[type=submit].medium.button { padding: 9px 13px 9px; }
+
+.lt-ie8 input[type=submit].large.button { padding: 9px 18px 10px; }
+
 /* -------------------------------------------------- Table of Contents
 -----------------------------------------------------
 :: Shared Styles
@@ -901,14 +921,6 @@ ul.orbit-bullets li.active.has-thumb { background-position: 0 0; border-top: 2px
 ----------------------------------------- */
 /* ----------------------------------------- Page Name 2
 ----------------------------------------- */
-/* Requires: buttons.css forms.css grid.css tabs.css typography.css ui.css modernizr
-*/
-/* Forms ---------------------- */
-/* UI ---------------------- */
-/* Buttons */
-/* Tabs */
-/* Tooltips */
-/* Video */
 /* Artfully masterminded by ZURB  /
 
 

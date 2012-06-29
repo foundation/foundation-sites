@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foundation (3.0.0.alpha28)
+    foundation (3.0.0.alpha34)
       compass (= 0.12.2)
       linguistics (~> 1.0.9)
       modular-scale (~> 0.0.5)
