@@ -29,14 +29,14 @@
     }
   }
 
-  // Creating .row.offset-by-# classes
+  // Creating .row .offset-by-# classes
   @for $i from 1 through $totalColumns - 2 {
     .row {
       .offset-by-#{convert-number-to-word($i)} { margin-left: gridCalc($i, $totalColumns); }
     }
   }
 
-  // Creating .row.push-# classes
+  // Creating .row .push-# classes
   @for $i from 2 through $totalColumns - 2 {
     .push-#{convert-number-to-word($i)} { left: gridCalc($i, $totalColumns); }
     .pull-#{convert-number-to-word($i)} { right: gridCalc($i, $totalColumns); }
