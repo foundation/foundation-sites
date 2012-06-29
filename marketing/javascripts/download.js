@@ -220,4 +220,15 @@ function setColor($this) {
       }
     }
   });
+
+  $('#packageSubmit').on('click', function(e) {
+    e.preventDefault();
+    $('.pixel-value').each(function(){
+      $(this).val($(this).val() + 'px');
+    });
+    $('.color-picker').each(function(){
+      $(this).val('#' + $(this).val());
+    });
+    $('#customBuild').submit();
+  });
 })(jQuery);

@@ -132,11 +132,8 @@
                 <div class="six columns">
                   <label for="rowWidth"># of Mobile Columns</label>
                   <div class="row collapse">
-                    <div class="ten columns">
+                    <div class="twelve columns">
                       <input type="text" value="4" placeholder="#" id="rowWidth" name="sass_settings[mobileColumnCount]" />
-                    </div>
-                    <div class="two columns">
-                      <span class="postfix">px</span>
                     </div>
                   </div>
                 </div>
@@ -144,7 +141,7 @@
                   <label for="rowWidth">Max-Width</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="940" placeholder="#" id="maxWidth" name="sass_settings[maxWidth]" />
+                      <input type="text" value="940" placeholder="#" class="pixel-value" id="maxWidth" name="sass_settings[maxWidth]" />
                     </div>
                     <div class="two columns">
                       <span class="postfix">px</span>
@@ -237,7 +234,7 @@
                   <label for="baseFontSize">Base Font Size</label>
                   <div class="row collapse">
                     <div class="nine columns">
-                      <input type="text" value="14" placeholder="px" id="baseFontSize" name="sass_settings[baseFontSize]" />
+                      <input type="text" value="14" placeholder="px" class="pixel-value" id="baseFontSize" name="sass_settings[baseFontSize]" />
                     </div>
                     <div class="three columns">
                       <span class="postfix">px</span>
@@ -248,7 +245,7 @@
                   <label for="importantNumber">Important Number</label>
                   <div class="row collapse">
                     <div class="nine columns">
-                      <input type="text" value="44" placeholder="px" id="importantNumber" name="sass_settings[importantNumber]" />
+                      <input type="text" value="44" placeholder="px" class="pixel-value" id="importantNumber" name="sass_settings[importantNumber]" />
                     </div>
                     <div class="three columns">
                       <span class="postfix">px</span>
@@ -270,7 +267,7 @@
                   <label for="baseButtonRadius">Button Radius</label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="3" placeholder="px" id="baseButtonRadius" name="sass_settings[baseButtonRadius]" />
+                      <input type="text" value="3" placeholder="px" class="pixel-value" id="baseButtonRadius" name="sass_settings[baseButtonRadius]" />
                     </div>
                     <div class="two column">
                       <span class="postfix">px</span>
@@ -281,7 +278,7 @@
                   <label for="baseButtonSize">Button Size <em style="font-size: 11px;">(based on padding-top)</em></label>
                   <div class="row collapse">
                     <div class="ten columns">
-                      <input type="text" value="10" placeholder="px" id="baseButtonSize" name="sass_settings[baseButtonSize]" />
+                      <input type="text" value="10" placeholder="px" class="pixel-value" id="baseButtonSize" name="sass_settings[baseButtonSize]" />
                     </div>
                     <div class="two column">
                       <span class="postfix">px</span>
@@ -292,7 +289,7 @@
 
             </div>
           </div>
-          <input type="submit" class="radius button" value="Download Custom Build" />
+          <input type="submit" class="radius button" id="packageSubmit" value="Download Custom Build" />
         </form>
       </div>
     </div>
