@@ -53,6 +53,7 @@ header .subheader { position: relative; top: -18px; }
 .top-bar .attached > ul.right { overflow: hidden; }
 .top-bar .attached > ul.right > li.download { border-right: 0; }
 .top-bar .attached > ul.right > li.download a { padding: 6px 13px 6px; }
+.top-bar .attached > ul.right > li > a:hover { color: $white; }
 .top-bar .small.button { height: auto; top: 10px; }
 .top-bar .attached > ul.right > li.download:hover > a { background-color: #2284A1; }
 .top-bar .attached > .name > span > a.toggle-nav { right: -45px !important; }

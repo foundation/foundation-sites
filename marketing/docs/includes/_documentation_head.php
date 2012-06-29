@@ -61,13 +61,13 @@
           <a href="../index.php">Home</a>
         </li>
   			<li>
-  			  <a href="grid.php" <?php if (isset($featuresTab)) echo 'class="current"'; ?>>Features</a>
+  			  <a href="../grid.php" <?php if (isset($featuresTab)) echo 'class="current"'; ?>>Features</a>
   			</li>
   			<li>
-  			  <a href="case-soapbox.php" <?php if (isset($caseStudiesTab)) echo 'class="current"'; ?>>Case Studies</a>
+  			  <a href="../case-soapbox.php" <?php if (isset($caseStudiesTab)) echo 'class="current"'; ?>>Case Studies</a>
   			</li>
   			<li>
-  			  <a href="docs">Documentation</a>
+  			  <a href="index.php">Documentation</a>
   			</li>
   		  <li>
   		    <a href="http://github.com/zurb/foundation">GitHub</a>
