@@ -37,7 +37,7 @@
             <h4>Mobile Grid</h4>
             <p>The mobile grid (phone-one, phone-two etc) work and function the same as before.</p>
 
-            <p><a href="forms.php">View the Grid Docs &rarr;</a></p>
+            <p><a href="docs/grid.php">View the Grid Docs &rarr;</a></p>
           </div>
           <div class="five columns">
             <script src="https://gist.github.com/3001136.js?file=f3-migrate-grid.html"></script>
@@ -65,7 +65,7 @@
 
             <h4>Sizes</h4>
             <p>Foundation 3 includes the same sizes as Foundation 2 including <code>.large</code>, <code>.small</code>, etc.</p>
-            <p><a href="buttons.php">View the Visibility Docs &rarr;</a></p>
+            <p><a href="docs/buttons.php">View the Visibility Docs &rarr;</a></p>
           </div>
           <div class="five columns">
             <script src="https://gist.github.com/3001205.js?file=f3-migrate-buttons.html"></script>
@@ -80,7 +80,7 @@
             <p>Forms in Foundation 3 have undergone some significant changes. One of the challenges we saw with forms was sizing them &mdash; fixed pixel sizes weren't ideal, and percentage sizes didn't allow for easy form layout. In Foundation 3 all forms are sized to be 100% the width of their container, with the intent that the Grid will be used to lay out the forms.</p>
             <p>Form size classes like <code>.large</code> will not be recognized by Foundation 3. Form layouts that already fall inside the grid will behave more or less as expected, but you may need to create some additional structure to achieve certain form layouts. The bright side is that the tools for laying out forms, and the available form elements, in Foundation 3 is significantly greater.</p>
             <p>One other notable change is that inputs are now targeted based on their type rather than an additional class like <code>.input-text</code>.</p>
-            <p><a href="forms.php">View the Visibility Docs &rarr;</a></p>
+            <p><a href="docs/forms.php">View the Visibility Docs &rarr;</a></p>
           </div>
           <div class="five columns">
             <script src="https://gist.github.com/3001259.js?file=f3-migrate-forms.html"></script>
@@ -93,7 +93,7 @@
         <div class="row">
           <div class="seven columns">
             <p>Stylistically, navigation and tabs have been changed or augmented. However, the syntax is largely unchanged. Rather than having <code>.active</code> place on the anchor, it is now placed on the <code>dd</code> or <code>li</code>.</p>
-            <p><a href="navbar.php">View the Navigation Docs &rarr;</a><br /><a href="tabs.php">View the Tabs Docs &rarr;</a></p>
+            <p><a href="docs/navbar.php">View the Navigation Docs &rarr;</a><br /><a href="tabs.php">View the Tabs Docs &rarr;</a></p>
           </div>
         </div>
 
@@ -105,7 +105,7 @@
             <p>In Foundation 2 classes like <code>.show-on-phones</code> allowed you to turn things on and off for certain types of devices. With the breadth of devices on the market, specific targets like tablets or phones no longer makes sense.</p>
             <p>Foundation 3, instead of using device-category classes, now uses classes that are specific to particular characteristics. Instead of <code>.show-on-phones</code> you could use <code>.show-for-small</code> or <code>.show-for-touch</code> to show on a small screen, or on touch devices.</p>
             <p>This means you will need to adjust any and all of your mobile visibility classes to the new scheme. We promise this is a better way to do it.</p>
-            <p><a href="elements.php">View the Visibility Docs &rarr;</a></p>
+            <p><a href="docs/elements.php">View the Visibility Docs &rarr;</a></p>
           </div>
         </div>
 
