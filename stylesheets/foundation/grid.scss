@@ -51,7 +51,7 @@
 
   /* Mobile Grid and Overrides ---------------------- */
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 
     .row { width: auto; min-width: 0; margin-left: 0; margin-right: 0; }
@@ -62,16 +62,16 @@
     .column:after, .columns:after { clear: both; }
 
     // Silent Placeholder classes for mobile grid overrides
-    %no-left-margin { margin-left: 0 !important; }
-    %left-auto { left: auto; }
-    %right-auto { right: auto; }
+    .no-left-margin { margin-left: 0 !important; }
+    .left-auto { left: auto; }
+    .right-auto { right: auto; }
 
     @for $i from 1 through $totalColumns - 2 {
-      .offset-by-#{convert-number-to-word($i)} { @extend %no-left-margin; }
+      .offset-by-#{convert-number-to-word($i)} { @extend .no-left-margin; }
     }
     @for $i from 2 through $totalColumns - 2 {
-      .push-#{convert-number-to-word($i)} { @extend %left-auto; }
-      .pull-#{convert-number-to-word($i)} { @extend %right-auto; }
+      .push-#{convert-number-to-word($i)} { @extend .left-auto; }
+      .pull-#{convert-number-to-word($i)} { @extend .right-auto; }
     }
 
     /* Mobile 4-column Grid */
@@ -126,7 +126,7 @@ that IE7/8 do not support :nth-child.
   /*  .block-grid.five-up>li:nth-child(5n+1) {clear: left;} */
 
   /* Mobile Block Grids */
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .block-grid.mobile { margin-left: 0; }
     .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
   }

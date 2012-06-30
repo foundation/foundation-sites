@@ -32,7 +32,7 @@
   }
 
   /* Mobile */
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .reveal-modal-bg { position: absolute; }
 
     .reveal-modal,

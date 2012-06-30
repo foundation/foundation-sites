@@ -67,7 +67,7 @@
 
   .no-js ul.tabs-content>li { display: block; }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
     dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
 

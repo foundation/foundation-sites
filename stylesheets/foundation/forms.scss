@@ -21,7 +21,7 @@
     &.right { float: none; text-align: right; padding-top: ($formSpacing / 2); }
   }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     label.right { text-align: left; }
   }
 
@@ -56,7 +56,7 @@
   .form-field.error label, label.alert { color: $alertColor; }
   .form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-top-left-radius(2px); @include box-sizing(border-box); }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     @for $i from 1 through $totalColumns {
       input[type="text"].#{convert-number-to-word($i)}, textarea.#{convert-number-to-word($i)} { width: 100% !important; }
     }

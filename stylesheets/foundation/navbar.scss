@@ -76,13 +76,13 @@
     .touch .nav-bar li.has-flyout>a { padding-right: 36px !important; }
   }
 
-  @media #{$mediaMedium} {
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
     .touch .nav-bar li a { @include font-size(13); }
     .touch .nav-bar li.has-flyout>a.flyout-toggle { padding: 20px !important; }
     .touch .nav-bar li.has-flyout>a { padding-right: 36px !important; }
   }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .nav-bar { height: auto;
 
       &>li { float: none; display: block; border-right: none; }

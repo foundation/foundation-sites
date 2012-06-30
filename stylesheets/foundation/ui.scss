@@ -37,7 +37,7 @@
   .hide-for-medium { display: block !important; }
 
   /* Very large display targeting */
-  @media #{$mediaXlarge} {
+  @media only screen and (min-width: $screenXlarge) {
     .hide-for-small,
     .hide-for-medium,
     .hide-for-large,
@@ -50,7 +50,7 @@
   }
 
   /* Medium display targeting */
-  @media #{$mediaMedium} {
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
     .hide-for-small,
     .show-for-medium,
     .hide-for-large,
@@ -63,7 +63,7 @@
   }
 
   /* Small display targeting */
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .show-for-small,
     .hide-for-medium,
     .hide-for-large,
@@ -81,14 +81,14 @@
   .hide-for-landscape,
   .show-for-portrait { display: none !important; }
 
-  @media #{$mediaLandscape} {
+  @media screen and (orientation: landscape) {
     .show-for-landscape,
     .hide-for-portrait { display: block !important; }
     .hide-for-landscape,
     .show-for-portrait { display: none !important; }
   }
 
-  @media #{$mediaPortrait} {
+  @media screen and (orientation: portrait) {
     .show-for-portrait,
     .hide-for-landscape { display: block !important; }
     .hide-for-portrait,
@@ -108,14 +108,14 @@
   table.hide-for-small,
   table.hide-for-medium { display: table !important; }
 
-  @media #{$mediaMedium} {
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
     .touch table.hide-for-xlarge,
     .touch table.hide-for-large,
     .touch table.hide-for-small,
     .touch table.show-for-medium { display: table !important; }
   }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     table.hide-for-xlarge,
     table.hide-for-large,
     table.hide-for-medium,
@@ -176,7 +176,7 @@
 
   .tap-to-close { display: block; @include font-size(10); color: #888; font-weight: normal; }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .tooltip {
       @include font-size(14);
       line-height: 1.4;
@@ -312,7 +312,7 @@
 
   }
 
-  @media #{$mediaAll} {
+  @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
     .flex-video { padding-top: 0; }
   }
 
