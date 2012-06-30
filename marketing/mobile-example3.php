@@ -5,7 +5,7 @@
     <div class="row">
       <div class="twelve columns">
         <h1>Mobile Visibility</h1>
-        <h4>Foundation is designed to quickly prototype, and one thing we've found very helpful is a series of visibility classes that can be applied to turn things on and off for different device characteristics. On this page, you'll different elements on different screen sizes or orientations.</h4>
+        <h4>Foundation is designed to quickly prototype, and one thing we've found very helpful is a series of visibility classes that can be applied to turn things on and off for different device characteristics. On this page, you'll see different elements on different screen sizes or orientations.</h4>
       </div>
     </div>
   </header>
