@@ -27,7 +27,7 @@
         <div class="row">
           <div class="seven columns">
             <p>A major change from Foundation 2 to 3 is the grid. While the syntax is very similar the way the Grid is actually constructed has changed considerably.</p>
-            <p>The grid in Foundation 2 was built with <code>.container > .row > .columns</code>. The container kept the left and right padding on small devices, the row fixed the page overall width, and columns provided the layout. In Foundation 3 we've dropped the <code>.container</code> which is no longer required. Containers in your pages will simply not add padding as they did before.</p>
+            <p>The grid in Foundation 2 was built with <code>.container > .row > .columns</code>. The container kept the left and right padding on small devices, the row fixed the page overall width and columns provided the layout. In Foundation 3 we've dropped the <code>.container</code> which is no longer required. Containers in your pages will simply not add padding as they did before.</p>
             <p>In Foundation 3 we're using <code>box-sizing: border-box</code> meaning that padding and borders no longer increase the width of an element, they only go inward. That means that while in Foundation 2 a <code>.three.columns</code> block might have a width of 21.58% and a left margin of 4.4%, in Foundation 3 the width is simple 25%, with 15px of padding on the left and right. That padding now creates the gutters between columns, rather than a margin.</p>
             <p>If you retooled the Foundation 2 grid or modified widths, added background or used them as a visual element the new grid will change that. Columns run right up against each other and padding is what keeps the content from colliding.</p>
 
@@ -58,7 +58,7 @@
         <h3>Buttons</h3>
         <div class="row">
           <div class="seven columns">
-            <p>The syntax for buttons has also not changed, but has been streamlined. While Foundation 2 had two styles of buttons (regular and <code>.nice</code> Foundation 3 has dropped that presentational aspect of the elements, so there are only buttons now. Classes of <code>.nice</code> will simply be ignored, and all buttons will get a simple but good looking button style.</p>
+            <p>The syntax for buttons has also not changed, but has been streamlined. While Foundation 2 had two styles of buttons (regular and <code>.nice</code>). Foundation 3 has dropped that presentational aspect of the elements, so there are only buttons now. Classes of <code>.nice</code> will simply be ignored, and all buttons will get a simple but good looking button style.</p>
 
             <h4>Color and Semantics</h4>
             <p>In Foundation 2 buttons were styled with presentational classes like <code>.blue</code>, <code>.red</code>, etc. In Foundation 3 those have been replaced with classes like <code>.alert</code> and <code>.success</code>.
