@@ -75,6 +75,7 @@ Grid Generator
 Grid displayer
 
 * [Grid displayer bookmarklet](http://alefeuvre.github.com/foundation-grid-displayer/) by [Antoine Lefeuvre](http://twitter.com/jiraisurfer)
+* [Responsive Design Bookmarklet](http://responsive.victorcoulon.fr/) by [Victor Coulon](https://twitter.com/_victa)
 
 MIT Open Source License
 =======================
