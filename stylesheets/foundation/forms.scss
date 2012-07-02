@@ -32,7 +32,7 @@
   .prefix { left: 2px; @include border-corner-radius(top, left, 2px); @include border-corner-radius(bottom, left, 2px); }
   .postfix { right: 2px; @include border-corner-radius(top, right, 2px); @include border-corner-radius(bottom, right, 2px); }
 
-  input[type="text"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { @include font-size(18, true); }
 
