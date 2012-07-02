@@ -308,7 +308,7 @@
     &.widescreen { padding-bottom: 57.25%; }
     &.vimeo { padding-top: 0; }
 
-    iframe, object, embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    iframe, object, embed, video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
   }
 
