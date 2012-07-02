@@ -11,7 +11,7 @@
       &:last-child { border-right: solid 1px lighten($black, 20%); @include box-shadow(1px 0 0 fade-out($shinyEdge, .3) inset, 1px 0 0 fade-out($shinyEdge, .3)); }
 
       &.active { background: $mainColor; border-color: darken($mainColor, 10%);
-        a { color: $white; cursor: default; }
+        &>a { color: $white; cursor: default; }
         &:hover { background: $mainColor; cursor: default; }
       }
       &:hover { background: lighten($black, 20%); }

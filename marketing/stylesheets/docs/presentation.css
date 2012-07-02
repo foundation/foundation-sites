@@ -647,7 +647,7 @@ ul.tabs-content.contained.vertical > li { border-width: 1px 1px 1px 1px; }
 .nav-bar > li:first-child { -webkit-box-shadow: 0 0 0; -moz-box-shadow: 0 0 0; box-shadow: 0 0 0; }
 .nav-bar > li:last-child { border-right: solid 1px #333333; -webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset, 1px 0 0 rgba(255, 255, 255, 0.2); -moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset, 1px 0 0 rgba(255, 255, 255, 0.2); box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset, 1px 0 0 rgba(255, 255, 255, 0.2); }
 .nav-bar > li.active { background: #2ba6cb; border-color: #2284a1; }
-.nav-bar > li.active a { color: white; cursor: default; }
+.nav-bar > li.active > a { color: white; cursor: default; }
 .nav-bar > li.active:hover { background: #2ba6cb; cursor: default; }
 .nav-bar > li:hover { background: #333333; }
 .nav-bar > li a { color: #e6e6e6; }
