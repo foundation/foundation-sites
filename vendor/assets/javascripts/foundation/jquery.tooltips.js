@@ -23,18 +23,18 @@
           self = this;
 
         if (Modernizr.touch) {
-          $body.delegate(settings.targetClass, 'click.tooltip touchstart.tooltip touchend.tooltip', function (e) {
+          $body.delegate('click.tooltip touchstart.tooltip touchend.tooltip', settings.targetClass, function (e) {
             e.preventDefault();
             var $this = $(this);
             $(settings.tooltipClass).hide();
             methods.showOrCreateTip($this);
           });
-          $(settings.tooltipClass).live('click.tooltip touchstart.tooltip touchend.tooltip', function (e) {
+          $(settings.tooltipClass).on('click.tooltip touchstart.tooltip touchend.tooltip', function (e) {
             e.preventDefault();
             $(this).fadeOut(150);
           });
         } else {
-          $body.delegate(settings.targetClass, 'mouseover.tooltip mouseout.tooltip', function (e) {
+          $body.on('mouseover.tooltip mouseout.tooltip', settings.targetClass, function (e) {
             var $this = $(this);
             if (e.type == 'mouseover') {
               methods.showOrCreateTip($this);
@@ -145,8 +145,8 @@
     },
     destroy : function () {
       return this.each(function () {
-        $(window).unbind('.tooltip');
-        $(settings.targetClass).unbind('.tooltip');
+        $(window).off('.tooltip');
+        $(settings.targetClass).off('.tooltip');
         $(settings.tooltipClass).each(function(i) {
           $($(settings.targetClass).get(i)).attr('title', $(this).text());
         }).remove();
