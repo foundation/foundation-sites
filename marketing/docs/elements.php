@@ -118,7 +118,7 @@
 
   				<h4>Keystrokes</h4>
   				<p>If you have keyboard affordances you might need to explain them, and to that end there's a simple keystroke character affordance in Foundation.</p>
-  				<p>For example, to close your browser hit <span class="keystroke">Cmd</span> + <span class="keystroke">Q</span>. Don't actually do it. There's more docs to read.</p>
+  				<p>For example, to close your browser hit <kbd>Cmd</kbd> + <kbd>Q</kbd>. Don't actually do it. There's more docs to read.</p>
   				<script src="https://gist.github.com/3000680.js?file=f3-keystroke.html"></script>
 
   				<hr />
