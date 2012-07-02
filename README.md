@@ -42,6 +42,10 @@ Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
 
+Django
+
+* [A foundation theme for the Pinax](http://pypi.python.org/pypi/pinax-theme-foundation) by Christopher Clarke, Kwesi Aguillera & Lendl Smith
+
 MODX
 
 * [MODX Version](http://designfromwithin.com/blog/2012/02/07/foundation-modx/) by Menno Pietersen
