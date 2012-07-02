@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Tooltip Plugin 2.0
+ * jQuery Foundation Tooltip Plugin 2.0.1
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -36,9 +36,9 @@
         } else {
           $body.on('mouseover.tooltip mouseout.tooltip', settings.targetClass, function (e) {
             var $this = $(this);
-            if (e.type == 'mouseover') {
+            if (e.type === 'mouseover') {
               methods.showOrCreateTip($this);
-            } else if (e.type == 'mouseout') {
+            } else if (e.type === 'mouseout') {
               methods.hide($this);
             }
           });
