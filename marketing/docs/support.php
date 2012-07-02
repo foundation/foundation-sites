@@ -112,6 +112,13 @@
 
   				<h5><a href="mailto:foundation@zurb.com">Get in Touch</a></h5>
   				<p>If you're totally stuck and need some help, shoot us <a href="mailto:foundation@zurb.com">an email</a> and we'll typically get back within a day or two.</p>
+  				
+  				<hr />
+  				
+  				<h4>Changelog</h4>
+  				
+  				<h5>3.0 &mdash; June 30, 2012</h5>
+  				<p>Initial launch of Foundation 3, deprecating Foundation 2.2.1. Major enhancements include Sass/SCSS development, new grid system with box-sizing: border-box, new form styles, new UI elements, retooled download and install options, new docs, new marketing site.</p>
 
     		</div>
     		<div class="four columns">
