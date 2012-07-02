@@ -12,9 +12,6 @@ jQuery(document).ready(function ($) {
     // Strip off the current url that IE adds
     contentLocation = contentLocation.replace(/^.+#/, '#');
 
-    // Strip off the current url that IE adds
-    contentLocation = contentLocation.replace(/^.+#/, '#');
-
     //Make Tab Active
     $activeTab.removeClass('active');
     $tab.addClass('active');
