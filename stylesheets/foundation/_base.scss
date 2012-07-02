@@ -1,6 +1,14 @@
-@import "compass/css3/border-radius";
-@import "compass/css3/text-shadow";
-@import "compass/css3/transition";
+// Imports
+
+// Compass Mixins
+@import "compass";
+// Speed up compilation by importing only the compass mixins
+// that are actually used by Foundation
+// @import "compass/css3/border-radius";
+// @import "compass/css3/text-shadow";
+// @import "compass/css3/transition";
+
+// Foundation Mixins and Settings
 @import "foundation/modular-scale";
 @import "foundation/settings";
 @import "foundation/semantic-grid";
