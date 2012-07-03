@@ -78,6 +78,25 @@
 	<script src="../javascripts/foundation/app.js"></script>
 	<script src="presentation.js"></script>
 	<script src="http://www.zurb.com/assets/zurb.mega-drop.js"></script>
+  <script>
 
+    var _gaq = _gaq || [];
+  	_gaq.push(
+  	  ['_setAccount', 'UA-2195009-2'],
+  	  ['_trackPageview'],
+  	  ['b._setAccount', 'UA-2195009-27'],
+  	  ['b._trackPageview']
+  	);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+		$(document).on('click', '.src-download', function (event) {
+			_gaq.push(['_trackEvent', 'Foundation', 'Downloaded']);
+		});
+  </script>
 </body>
 </html>
