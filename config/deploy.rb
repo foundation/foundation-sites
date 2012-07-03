@@ -29,6 +29,9 @@ namespace :deploy do
     run "rm -rf #{release_path}/marketing/cache"
     run "ln -nfs #{shared_path}/cache #{release_path}/marketing/cache"
     run "ln -nfs #{release_path}/images/orbit #{release_path}/marketing/images/orbit"
+    run "ln -nfs #{release_path}/marketing/images #{release_path}/marketing/docs/images"
+    run "ln -nfs #{release_path}/marketing/stylesheets #{release_path}/marketing/docs/stylesheets"
+    run "ln -nfs #{release_path}/marketing/javascripts #{release_path}/marketing/docs/javascripts"
   end
 
   desc "Symlink to stylesheets and javascripts"
