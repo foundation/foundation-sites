@@ -5,7 +5,7 @@ Foundation is the most advanced responsive front-end framework in the world. Wit
 
 Homepage:      http://foundation.zurb.com  
 Documentation: http://foundation.zurb.com/docs  
-Download:      http://foundation.zurb.com/files/download.php  
+Download:      http://foundation.zurb.com/download.php  
 
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
 
@@ -56,7 +56,7 @@ MODX
 
 Other Implementations
 
-* [Mobile First](https://github.com/admfrhd/mobile-first-foundation) by Adam Fairhead
+* [Mobile First](https://github.com/adamfairhead/mobile-first-foundation) by Adam Fairhead
 * [Less Version](https://github.com/justinmarsan/FoundationLess) by Justin Marsan
 * [Less with Color Scheme](https://github.com/matalin/FoundationLess) by Matalin Hatchard
 
