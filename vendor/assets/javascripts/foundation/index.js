@@ -1,4 +1,5 @@
 /*
+=require foundation/app
 =require foundation/modernizr.foundation
 =require foundation/jquery.customforms
 =require foundation/jquery.orbit-1.4.0
