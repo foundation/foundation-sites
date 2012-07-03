@@ -165,7 +165,7 @@
                 <dt>Go to:</dt>
                 <dd><a href="#gemfile">Gemfile</a></dd>
                 <dd><a href="#configuration">Configuration</a></dd>
-                <dd><a href="#upgrade">Upgrading from 2.X</a></dd>
+                <dd><a href="#upgrading">Upgrading from 2.X</a></dd>
               </dl>
 
               <hr>
