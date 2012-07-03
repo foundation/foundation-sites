@@ -35,12 +35,12 @@
 		 	<div class="four columns">
 		 		<h5>Section 1</h5>
 		 		<img src="http://placehold.it/300x100" />
-		 		<p>This is a four column section (so three of them across to add up to twelve. As noted above on mobile these columns will be stacked on top of each other.</p>
+		 		<p>This is a four column section (so three of them across add up to twelve). As noted above on mobile, these columns will be stacked on top of each other.</p>
 		 	</div>
 		 	<div class="four columns">
 		 		<h5>Section 2</h5>
 		 		<img src="http://placehold.it/300x100" />
-		 		<p>This is another four column section which will be stacked on top of the others. The next section though...</p>
+		 		<p>This is another four column section which will be stacked on top of the others. The next section though&#8230;</p>
 		 	</div>
 		 	<div class="four columns">
 		 		<h5>Section 3</h5>
