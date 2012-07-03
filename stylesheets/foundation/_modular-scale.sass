@@ -4,7 +4,7 @@
 @charset "UTF-8"
 
 // Ratios
-$golden: 1.618 
+$golden: 1.618
 $gold: $golden
 $double-octave: (4 / 1)
 $major-twelfth: (3 / 1)
@@ -24,8 +24,8 @@ $major-second: (9 / 8)
 $minor-second: (16 / 15)
 
 // Defaults
-$ratio: $golden !default
-$base-size: 16px !default
+// $ratio: $golden !default
+// $base-size: 16px !default
 $property: font-size !default
 $class-slug: ms !default
 
@@ -46,27 +46,27 @@ $class-slug: ms !default
     @if unit(ms-multibase-multiratio($multiple, $base-size, $ratio)) == 'px'
       @return round(ms-multibase-multiratio($multiple, $base-size, $ratio))
     @return ms-multibase-multiratio($multiple, $base-size, $ratio)
-    
+
   // if multiple base-sizes are passed in as a list
   // calculate values in using each base-size
   @if type-of($base-size) == 'list' and type-of($ratio) == 'number'
     @if unit(ms-multibase($multiple, $base-size, $ratio)) == 'px'
       @return round(ms-multibase($multiple, $base-size, $ratio))
     @return ms-multibase($multiple, $base-size, $ratio)
-      
+
   // if multiple ratios are passed in as a list
   // calculate values in using each ratio
   @if type-of($base-size) == 'number' and type-of($ratio) == 'list'
     @if unit(ms-multiratio($multiple, $base-size, $ratio)) == 'px'
       @return round(ms-multiratio($multiple, $base-size, $ratio))
     @return ms-multiratio($multiple, $base-size, $ratio)
-    
+
   // If there are no lists just run the simple function
   @if unit(exponent($ratio, $multiple) * $base-size) == 'px'
     @return round(exponent($ratio, $multiple) * $base-size)
   @return exponent($ratio, $multiple) * $base-size
-  
-  
+
+
 // calculate values in using each base-size / ratio combination
 @function ms-multibase-multiratio($multiple, $base-size, $ratio)
   // start with an empty list to place all values in
@@ -84,10 +84,10 @@ $class-slug: ms !default
     @while $j <= length($ratio)
       // reset $modular-scale for each set
       $modular-scale: nth($base-size, $k)
-      // do the scale for each base-size using this ratio 
+      // do the scale for each base-size using this ratio
       @if $multiple > 0
         // up $multiple times
-        // and add the result to $scale-values        
+        // and add the result to $scale-values
         @for $i from 1 through $multiple
           $modular-scale: exponent(nth($ratio, $j), $i) * nth($base-size, $k)
           $scale-values: append($scale-values, $modular-scale)
@@ -111,8 +111,8 @@ $class-slug: ms !default
     $k: $k + 1
   // return trimmed and sorted final list
   @return trim-sort($multiple, $scale-values, $base-size)
-    
-    
+
+
 // calculate values in using each base-size
 @function ms-multibase($multiple, $base-size, $ratio)
   // start with an empty list to place all values in
@@ -127,10 +127,10 @@ $class-slug: ms !default
       $scale-values: append($scale-values, nth($base-size, $k))
     // reset $modular-scale for each set
     $modular-scale: nth($base-size, $k)
-    // do the scale for each base-size using this ratio 
+    // do the scale for each base-size using this ratio
     @if $multiple > 0
       // up $multiple times
-      // and add the result to $scale-values        
+      // and add the result to $scale-values
       @for $i from 1 through $multiple
         $modular-scale: exponent($ratio, $i) * nth($base-size, $k)
         $scale-values: append($scale-values, $modular-scale)
@@ -154,7 +154,7 @@ $class-slug: ms !default
   // return trimmed and sorted final list
   @return trim-sort($multiple, $scale-values, $base-size)
 
-    
+
 // calculate values in using each ratio
 @function ms-multiratio($multiple, $base-size, $ratio)
   // start with an empty list to place all values in
@@ -171,7 +171,7 @@ $class-slug: ms !default
         $modular-scale: exponent(nth($ratio, $j), $i) * $base-size
         $scale-values: append($scale-values, $modular-scale)
       $j: $j + 1
-    // sort acsending      
+    // sort acsending
     $scale-values: sort-list($scale-values)
     // return the final value using the laced list
     @return nth($scale-values, $multiple)
@@ -191,28 +191,28 @@ $class-slug: ms !default
     $scale-values: sort-list($scale-values, 'dec')
     // return the final value using the laced list
     @return nth($scale-values, $multiple * -1)
-    
-    
+
+
 // trim and sort the final list
 @function trim-sort($multiple, $scale-values, $base-size)
   @if $multiple > 0
     // trim list so we can count from the lowest $base-size
     $scale-values: trim-list($scale-values, nth($base-size, 1))
-    // sort acsending      
+    // sort acsending
     $scale-values: sort-list($scale-values)
     // return the final value using the laced list
     @return nth($scale-values, $multiple)
   @else
     // trim list so we can count from the lowest $base-size
     $scale-values: trim-list($scale-values, nth($base-size, 1), 'dec')
-    // sort acsending      
+    // sort acsending
     $scale-values: sort-list($scale-values, 'dec')
     // return the final value using the laced list
     @return nth($scale-values, -$multiple)
-  
-  
+
+
 /////////////////////////////////////////////////////////////////////////
-  
+
 // Shortcut
 @function ms($multiple, $base-size, $ratio)
   // Return the value from the Modular Scale function
@@ -220,7 +220,7 @@ $class-slug: ms !default
 
 // Classes Mixin
 =modular-scale-classes($multiple, $property, $class-slug, $base-size, $ratio)
-  
+
   // Loop from 0 through the value of $multiple and generate a range of classes
   @for $i from 0 through $multiple
     .#{$class-slug}-#{$i}
@@ -268,7 +268,7 @@ $class-slug: ms !default
 // Sass list sorting support
 @function sort-list($list, $dir: 'asc')
   // built-in list sorting in Sass would make this go away.
-  // declare some empty lists to put our new order and temporary values 
+  // declare some empty lists to put our new order and temporary values
   $new-order: ()
   $temp: ()
   // fill $temp with the contents of $list
@@ -308,8 +308,8 @@ $class-slug: ms !default
         @if nth($list, $k) < $high
           $temp: append($temp, nth($list, $k))
   @return $new-order
-  
-  
+
+
 // Sass list trimming support
 @function trim-list($list, $start, $dir: 'asc')
   // built-in list trimming in Sass would make this go away.
