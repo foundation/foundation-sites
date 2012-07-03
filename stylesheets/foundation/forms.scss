@@ -39,6 +39,8 @@
     &:focus { background: darken($white, 2%); outline: none !important; border-color: darken($white, 30%); }
     &[disabled] { background-color: #ddd; }
   }
+  
+  textarea { height: auto; }
 
   select { width: 100%; }
 

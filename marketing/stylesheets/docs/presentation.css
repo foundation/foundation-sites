@@ -726,6 +726,8 @@ input[type="text"].oversize, input[type="password"].oversize, input[type="date"]
 input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus { background: #fafafa; outline: none !important; border-color: #b3b3b3; }
 input[type="text"][disabled], input[type="password"][disabled], input[type="date"][disabled], input[type="datetime"][disabled], input[type="email"][disabled], input[type="number"][disabled], input[type="search"][disabled], input[type="tel"][disabled], input[type="time"][disabled], input[type="url"][disabled], textarea[disabled] { background-color: #ddd; }
 
+textarea { height: auto; }
+
 select { width: 100%; }
 
 /* Fieldsets */
