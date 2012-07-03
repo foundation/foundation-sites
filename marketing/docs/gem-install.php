@@ -7,13 +7,13 @@
         <div class="eight columns">
 
           <dl class="tabs" style="margin-top: 3px;">
-            <dd class="active"><a href="#simple1">Using SCSS</a></dd>
-<!--             <dd><a href="#simple2">Using Rails</a></dd>
- -->          </dl>
+            <dd class="active"><a href="#simple1">Compass</a></dd>
+            <dd><a href="#simple2">Rails</a></dd>
+          </dl>
 
           <ul class="tabs-content">
             <li class="active" id="simple1Tab">
-              <h3>SCSS: Installing with Compass</h3>
+              <h3>Installing with Compass</h3>
               <h4 class="subheader">Start using Foundation the way you want, with more control than ever before.</h4>
 
               <dl class="sub-nav">
@@ -156,9 +156,64 @@
             </li>
 
 
-            <!-- <li id="simple2Tab">
-              Hey
-            </li> -->
+            <li id="simple2Tab">
+            
+              <h3>Installing with Rails</h3>
+              <h4 class="subheader">Start using Foundation in your Rails project.</h4>
+
+              <dl class="sub-nav">
+                <dt>Go to:</dt>
+                <dd><a href="#gemfile">Gemfile</a></dd>
+                <dd><a href="#configuration">Configuration</a></dd>
+                <dd><a href="#upgrading">Upgrading from 2.X</a></dd>
+              </dl>
+
+              <hr>
+
+              <a name="gemfile"></a>
+              <h4>Gemfile</h4>
+              <p>First you'll want to add the following gems to the <strong>assets</strong> group in your Gemfile like so:</p>
+                
+              <script src="https://gist.github.com/3036269.js?file=Gemfile"></script>
+                
+              <p>Then run <strong>bundle install</strong> to install these gems.  You may see the following error:</p>
+              
+              <script src="https://gist.github.com/3036269.js?file=bundle_install_error"></script>
+              
+              <p>If you see that don't panic, just run <strong>bundle update sass</strong> and you should be on your merry way!</p>
+              
+              <h5>Notes on SASS alpha dependency</h5>
+              <p>Foundation is currently utilizing some of the new media query features available in SASS 3.2, such as those mentioned in <a href="http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32" rel="nofollow">this article.</a>  From what we've seen so far this is a stable enough release on which to build Foundation, especially since 3.2 is due to be released soon.</p>
+              
+              <a name="configuration"></a>
+              <h4>Configuration</h4>
+              
+              <h5>Layout</h5>
+              <p>Add the following to the <strong>&lt;head&gt;</strong> tag of your page layouts (i.e. <strong>app/views/layouts/application.html.erb</strong>) to set the viewport width for mobile devices.</p>
+              
+              <script src="https://gist.github.com/3036269.js?file=application.html.erb"></script>
+              
+              <h5>SASS Files</h5>
+              <p>Since Foundation is now SASSified you'll need to include it a little differently.  If you're using a standard Rails installation you should rename <strong>application.css</strong> to <strong>application.scss</strong> in the <strong>app/assets/stylesheets</strong> directory.</p>
+              
+              <script src="https://gist.github.com/3036269.js?file=application.scss"></script>
+              
+              <p>That will import all the foundation related styles into your application.  Take a look at the other documentation pages if you'd like to further customize the stylesheet that gets generated.</p>
+              
+              <h5>Javascripts</h5>
+              <p>To include all the Foundation related javascripts on your page add <strong>=require foundation</strong> to your <strong>app/assets/javascripts/application.js</strong> sprockets manifest file.</p>
+              <script src="https://gist.github.com/3036269.js?file=application.js"></script>
+              
+              <a name="upgrading"></a>
+              <h4>Upgrading from 2.X</h4>
+              
+              <p>For those of you upgrading from a previous version of the gem things are a little different.  In your <strong>app/assets/stylesheets/application.css</strong> you probably had a bit of code like this:</p>
+              
+              <script src="https://gist.github.com/3036269.js?file=old_application.css"></script>
+              
+              <p>Just rename <strong>application.css</strong> to <strong>application.scss</strong> making sure to replace any <strong>=require</strong> to the sass <strong>@import</strong> syntax.</p>
+              
+            </li>
           </ul>
 
         </div>

@@ -80,7 +80,7 @@
             <p>Forms in Foundation 3 have undergone some significant changes. One of the challenges we saw with forms was sizing them &mdash; fixed pixel sizes weren't ideal, and percentage sizes didn't allow for easy form layout. In Foundation 3 all forms are sized to be 100% the width of their container, with the intent that the Grid will be used to lay out the forms.</p>
             <p>Form size classes like <code>.large</code> will not be recognized by Foundation 3. Form layouts that already fall inside the grid will behave more or less as expected, but you may need to create some additional structure to achieve certain form layouts. The bright side is that the tools for laying out forms, and the available form elements, in Foundation 3 is significantly greater.</p>
             <p>One other notable change is that inputs are now targeted based on their type rather than an additional class like <code>.input-text</code>.</p>
-            <p><a href="docs/forms.php">View the Visibility Docs &rarr;</a></p>
+            <p><a href="docs/forms.php">View the Form Docs &rarr;</a></p>
           </div>
           <div class="five columns">
             <script src="https://gist.github.com/3001259.js?file=f3-migrate-forms.html"></script>
@@ -93,7 +93,7 @@
         <div class="row">
           <div class="seven columns">
             <p>Stylistically, navigation and tabs have been changed or augmented. However, the syntax is largely unchanged. Rather than having <code>.active</code> place on the anchor, it is now placed on the <code>dd</code> or <code>li</code>.</p>
-            <p><a href="docs/navbar.php">View the Navigation Docs &rarr;</a><br /><a href="tabs.php">View the Tabs Docs &rarr;</a></p>
+            <p><a href="docs/navbar.php">View the Navigation Docs &rarr;</a><br /><a href="docs/tabs.php">View the Tabs Docs &rarr;</a></p>
           </div>
         </div>
 
