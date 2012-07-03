@@ -92,7 +92,6 @@ jQuery(document).ready(function ($) {
     $(this).siblings('ul').toggleClass('show-dropdown');
   });
   $('.button.dropdown').not('.split').on('click.fndtn touchstart.fndtn', function (e) {
-    e.preventDefault();
     $('.button.dropdown').not(this).children('ul').removeClass('show-dropdown');
     $(this).children('ul').toggleClass('show-dropdown');
   });
