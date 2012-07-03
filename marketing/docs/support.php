@@ -94,6 +94,9 @@
 
   				<h5>Is Foundation tested on [some other device or browser]?</h5>
   				<p>We try and be comprehensive in our testing, but there are thousands of devices so it's often just not feasible. We'd love to hear about Foundation's behaviour on other devices, but the list above is what we test each release on. If your browser or device is not listed your results may vary.</p>
+  				
+  				<h5>Where can I find the Foundation 2 docs?</h5>
+  				<p>For those of you still working on Foundation 2 sites, or who need to continue supporting IE7 with Foundation, we keep the Foundation 2 docs available. <a href="f2/">View the Foundation 2 Docs &rarr;</a></p>
 
   				<hr />
 
