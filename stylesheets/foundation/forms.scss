@@ -18,7 +18,8 @@
 
   label { font-size: ms(0); color: lighten($black, 30%); cursor: pointer; display: block; font-weight: 500; margin-bottom: 3px;
 
-    &.right { float: none; text-align: right; padding-top: ($formSpacing / 2); }
+    &.right { float: none; text-align: right; }
+    &.inline { line-height: (ms(0) + ($formSpacing * 1.5)); margin: 0 0 $formSpacing 0; }
   }
 
   @media only screen and (max-width: $screenSmall - 1) {
