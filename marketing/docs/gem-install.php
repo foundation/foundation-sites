@@ -41,7 +41,7 @@
               <ul class="disc">
                 <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
                 <li><span class="keystroke">cd path/to/your-project</span></li>
-                <li>run <span class="keystrok">compass install foundation</span></li>
+                <li>run <span class="keystroke">compass install foundation</span></li>
               </ul>
 
               <hr>
