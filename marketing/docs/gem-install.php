@@ -182,6 +182,9 @@
               
               <p>If you see that don't panic, just run <strong>bundle update sass</strong> and you should be on your merry way!</p>
               
+              <h5>Notes on SASS alpha dependency</h5>
+              <p>Foundation is currently utilizing some of the new media query features available in SASS 3.2, such as those mentioned in <a href="http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32" rel="nofollow">this article.</a>  From what we've seen so far this is a stable enough release on which to build Foundation, especially since 3.2 is due to be released soon.</p>
+              
               <a name="configuration"></a>
               <h4>Configuration</h4>
               
