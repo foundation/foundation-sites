@@ -23,7 +23,7 @@
           self = this;
 
         if (Modernizr.touch) {
-          $body.delegate('click.tooltip touchstart.tooltip touchend.tooltip', settings.targetClass, function (e) {
+          $body.on('click.tooltip touchstart.tooltip touchend.tooltip', settings.targetClass, function (e) {
             e.preventDefault();
             var $this = $(this);
             $(settings.tooltipClass).hide();
