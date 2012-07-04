@@ -23,7 +23,7 @@
         <h4>Examples</h4>
         <div class="row">
         	<div class="four columns">
-        	  <a href="http://zurb.net/zurbwired2011/projects/zurbwired2011/frame/prototype/public/" target="_blank">
+        	  <a href="prototype-example1.php" target="_blank">
         	    <img src="images/feature-prototyping-2.png">
         	    <p>Rebekah Children's Services
 Wireframe Prototype</p>
