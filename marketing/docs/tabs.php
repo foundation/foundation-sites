@@ -14,7 +14,7 @@
 
     			<p>Tabs are made of <strong>two objects:</strong> a <code>dl</code> object containing the tabs themselves, and a <code>ul</code> object containing the tab content. If you simply want visual tabs (as seen in this documentation) without the on-page hookup, you only need the DL. If you want functional tabs, just be sure that each tab is linked to an ID, and that the corresponding tab has an ID of <code>#tabnameTab</code>. Check out these examples.</p>
 
-  				<p><em>Note: The third tab is using the <a href="layout.php">mobile visibility classes</a> to hide on small devices.</em></p>
+  				<p><em>Note: The third tab is using the <a href="elements.php">mobile visibility classes</a> to hide on small devices.</em></p>
 
   				<dl class="tabs">
   					<dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
