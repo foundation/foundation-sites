@@ -797,7 +797,7 @@ form.custom .custom.disabled { background-color: #ddd; }
 /* Container ---------------------- */
 div.orbit-wrapper { width: 1px; height: 1px; position: relative; }
 
-div.orbit { width: 1px; height: 1px; position: relative; overflow: hidden; }
+div.orbit { width: 1px; height: 1px; position: relative; overflow: hidden; margin-bottom: 17px; }
 
 div.orbit.with-bullets { margin-bottom: 40px; }
 
