@@ -111,6 +111,8 @@
               </ul>
             </div>
           </p>
+          
+          <p>If you need your dropdown to go up, simple add a class of <code>.up</code> to <code>.button.dropdown</code>.</p>
 
           <script src="https://gist.github.com/2978975.js?file=f3-dropdown-button.html"></script>
 
