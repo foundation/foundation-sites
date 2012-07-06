@@ -9,7 +9,7 @@
     			<h4 class="subheader">Foundation 3 uses a modular scale to generate typography. That means a great, logical vertical rhythm whether you use the SCSS version, or just download the CSS.</h4>
 
     			<h4>How a Modular Scale Works</h4>
-  				<p>Based on some stellar work by <a href="http://www.alistapart.com/articles/more-meaningful-typography/">Tim Brown</a>, the idea of a <a href="http://www.zurb.com/article/1000/foundation-30-typography-and-modular-scal">modular scale</a> is that the size and spacing of all of the typography in the framework is derived from an initial value, another arbitrary "important"" value, and a particular ratio. We chose to use the golden ratio, but there are others available.</p>
+  				<p>Based on some stellar work by <a href="http://www.alistapart.com/articles/more-meaningful-typography/">Tim Brown</a>, the idea of a <a href="http://www.zurb.com/article/1000/foundation-30-typography-and-modular-scal">modular scale</a> is that the size and spacing of all of the typography in the framework is derived from an initial value, another arbitrary "important" value, and a particular ratio. We chose to use the golden ratio, but there are others available.</p>
   				<p>We then use Sass to generate sizes based on those values, in an ascending scale of size and spacing. If you use the SCSS version of Foundation you can easily change these values, otherwise we default to a 14px base with a 44px important value (based on common UI element size).</p>
 
   				<script src="https://gist.github.com/2952520.js?file=f3-modscale.scss"></script>
@@ -28,7 +28,7 @@
   				  <h5>h5. This is small header.</h5>
   				  <h6>h6. This is very small header.</h6>
 
-  				  <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, let's see...did you know that there are storms occurring on Jupiter that are larger than the Earth? That's pretty cool.</p>
+  				  <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, let's see&#8230; did you know that there are storms occurring on Jupiter that are larger than the Earth? That's pretty cool.</p>
 
   				</div>
 

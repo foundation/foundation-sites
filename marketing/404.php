@@ -47,7 +47,7 @@
       </div>
 
       <div class="four columns">
-        <h3>Not what you needed? Hmmm...</h3>
+        <h3>Not what you needed? Hmmm&#8230;</h3>
         <p>If none of this is what you're looking for, here are some other resources to get you on the right path.</p>
 
         <ul class="side-nav">
