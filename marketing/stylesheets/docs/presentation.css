@@ -709,7 +709,8 @@ form { margin: 0 0 19.416px; }
 .row form .row.collapse .column, .row form .row.collapse .columns { padding: 0; }
 
 label { font-size: 14px; color: #4d4d4d; cursor: pointer; display: block; font-weight: 500; margin-bottom: 3px; }
-label.right { float: none; text-align: right; padding-top: 6px; }
+label.right { float: none; text-align: right; }
+label.inline { line-height: 32px; margin: 0 0 12px 0; }
 
 @media only screen and (max-width: 767px) { label.right { text-align: left; } }
 .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: 32px; line-height: 31px; }

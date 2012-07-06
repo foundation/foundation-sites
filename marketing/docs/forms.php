@@ -42,7 +42,7 @@
 
           <script src="https://gist.github.com/2952683.js?file=f3-simple-form.html"></script>
 
-          <p>Sometimes you want a form with labels to the left of your inputs. Piece of cake.
+          <p>Sometimes you want a form with labels to the left of your inputs. Piece of cake. You can add a class of <code>.right</code> to a label to have it align to the right, and if your label is next to an input (in another column) adding a class of <code>.inline</code> will have it vertically center against an input.</p>
 
           <form>
             <div class="row">
