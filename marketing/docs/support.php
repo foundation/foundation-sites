@@ -120,6 +120,19 @@
   				
   				<h4>Changelog</h4>
   				
+  				<h5>3.0.4 &mdash; July 6, 2012</h5>
+  				<p>Fixed a number of bugs around the Sass/Gem installs and documentation. Some smaller items:</p>
+  				<ul class="disc">
+  				  <li>Fixed a bug with dropdown buttons to allow clicking on their anchors again.</li>
+  				  <li>Added styles for HTML5 (and other) input styles, not just text.</li>
+  				  <li>Added error states back to the forms documentation.</li>
+  				  <li>Flyouts in a nav bar can now expand up as well as down.</li>
+  				  <li>In SCSS you can now set $base-size correctly, but we're still working to correct modifying the $ratio variable.</li>
+  				</ul>
+  				
+  				<h5>3.0.1 to 3.0.3 &mdash; July 2 to July 4</h5>
+  				<p>Various bug fixes with the downloader, gem, and Sass install.</p>
+  				
   				<h5>3.0 &mdash; June 30, 2012</h5>
   				<p>Initial launch of Foundation 3, deprecating Foundation 2.2.1. Major enhancements include Sass/SCSS development, new grid system with box-sizing: border-box, new form styles, new UI elements, retooled download and install options, new docs, new marketing site.</p>
 
