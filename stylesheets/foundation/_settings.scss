@@ -31,7 +31,7 @@ $largeBtnBase: $btnBase + 5 !default;
 
 // Form Settings
 
-$formSpacing: 12px !default;
+$formSpacing: 14px !default;
 
 // Tab Settings
 
@@ -57,9 +57,9 @@ $base-size: 14px 44px !default;
 
 // Media Queries
 
-$screenSmall: 768px !default;
-$screenMedium: 1279px !default;
-$screenXlarge: 1441px !default;
+$screenSmall: 44em !default;
+$screenMedium: 77em !default;
+$screenXlarge: 104em !default;
 
 // Saving for Sass 3.2 stable release
 // $mediaSmall: "only screen and (max-width: 767px)" !default;
