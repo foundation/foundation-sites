@@ -37,10 +37,6 @@
   <link rel="stylesheet" href="http://www.zurb.com/assets/zurb.mega-drop.css">
 	<link rel="stylesheet" href="../stylesheets/docs/presentation.css">
 
-	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="../stylesheets/ie.css">
-	<![endif]-->
-
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

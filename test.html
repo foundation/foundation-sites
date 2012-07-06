@@ -16,9 +16,6 @@
   <!-- Included CSS Files -->
   <link rel="stylesheet" href="marketing/stylesheets/index.css">
 
-  <!--[if lt IE 9]>
-    <link rel="stylesheet" href="marketing/stylesheets/ie.css">
-  <![endif]-->
 
   <script src="vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
 
@@ -148,7 +145,7 @@
 			    <li><a href="#" class="small button">Button 3</a></li>
 			  </ul>
 
-        <div href="#" class="large button dropdown">
+        <div href="#" class="large button dropdown up">
   			  Dropdown Button
   			  <ul>
   			    <li><a href="#">Dropdown Item</a></li>
@@ -745,7 +742,7 @@
         fluid: '16x9'
        });
     });
-	
+
 	  $('#testModal').bind('reveal:open reveal:opened reveal:close reveal:closed', function (event) {
 	    console.log(event);
 	  });

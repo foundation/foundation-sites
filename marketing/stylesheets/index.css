@@ -540,6 +540,7 @@ input[type=submit].button, button.button { -webkit-appearance: none; }
 .button.dropdown > ul li a { display: block; color: #555; font-size: 13px; font-weight: normal; padding: 6px 14px; text-align: left; }
 .button.dropdown > ul li:hover { background-color: #e3f4f9; color: #222; }
 .button.dropdown > ul li.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: #ededed; }
+.button.dropdown.up > ul { border-top: 1px solid #cccccc; border-bottom: none; }
 .button.dropdown ul.no-hover.show-dropdown { display: block !important; }
 .button.dropdown:hover > ul.no-hover { display: none; }
 .button.dropdown.split { padding: 0; position: relative; /* Sizes */ /* Triangle Spans */ /* Colors */ }
@@ -797,7 +798,7 @@ form.custom .custom.disabled { background-color: #ddd; }
 /* Container ---------------------- */
 div.orbit-wrapper { width: 1px; height: 1px; position: relative; }
 
-div.orbit { width: 1px; height: 1px; position: relative; overflow: hidden; }
+div.orbit { width: 1px; height: 1px; position: relative; overflow: hidden; margin-bottom: 17px; }
 
 div.orbit.with-bullets { margin-bottom: 40px; }
 
@@ -811,17 +812,17 @@ div.orbit div.orbit-slide { width: 100%; height: 100%; }
 /* Timer ---------------------- */
 div.orbit-wrapper div.timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; right: 10px; opacity: .6; cursor: pointer; z-index: 31; }
 
-div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../images/foundation/orbit/rotator-black.png?1341516620') no-repeat; z-index: 3; }
+div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../images/foundation/orbit/rotator-black.png?1340999421') no-repeat; z-index: 3; }
 
 div.orbit-wrapper span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; right: 0; z-index: 2; overflow: hidden; }
 
 div.orbit-wrapper span.rotator.move { left: 0; }
 
-div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../images/foundation/orbit/timer-black.png?1341516620') repeat 0 0; }
+div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../images/foundation/orbit/timer-black.png?1340999421') repeat 0 0; }
 
-div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../images/foundation/orbit/pause-black.png?1341516620') no-repeat; z-index: 4; opacity: 0; }
+div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../images/foundation/orbit/pause-black.png?1340999421') no-repeat; z-index: 4; opacity: 0; }
 
-div.orbit-wrapper span.pause.active { background: url('../images/foundation/orbit/pause-black.png?1341516620') no-repeat 0 -40px; }
+div.orbit-wrapper span.pause.active { background: url('../images/foundation/orbit/pause-black.png?1340999421') no-repeat 0 -40px; }
 
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper span.pause.active { opacity: 1; }
 
@@ -835,17 +836,17 @@ div.orbit-wrapper div.slider-nav { display: block; }
 
 div.orbit-wrapper div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
 
-div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1341516620'); background-size: 100%; right: 0; }
+div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow.png?1340999421'); background-size: 100%; right: 0; }
 
-div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1341516620'); background-size: 100%; left: 0; }
+div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow.png?1340999421'); background-size: 100%; left: 0; }
 
-.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow-small.png?1341516620'); }
-.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow-small.png?1341516620'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../images/foundation/orbit/right-arrow-small.png?1340999421'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../images/foundation/orbit/left-arrow-small.png?1340999421'); }
 
 /* Bullet Nav ---------------------- */
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1341516620') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.active { color: #222; background-position: -8px 0; }
 
@@ -860,7 +861,7 @@ div.orbit, div.orbit-wrapper { width: 100% !important; }
 
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -50px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1341516620') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../images/foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.has-thumb { background: none; width: 100px; height: 75px; }
 
@@ -892,26 +893,6 @@ ul.orbit-bullets li.active.has-thumb { background-position: 0 0; border-top: 2px
   .reveal-modal, .reveal-modal.small, .reveal-modal.medium, .reveal-modal.large, .reveal-modal.xlarge { width: 80%; top: 15px; left: 50%; margin-left: -40%; padding: 20px; height: auto; } }
   /* NOTES Close button entity is &#215;
  Example markup <div id="myModal" class="reveal-modal"> <h2>Awesome. I have it.</h2> <p class="lead">Your couch.  I it's mine.</p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p> <a class="close-reveal-modal">&#215;</a> </div> */
-/* This is for all IE specfific style less than IE9. We hate IE. */
-.lt-ie8 .row { max-width: 1000px; }
-
-div.panel { border: 1px solid #ccc; }
-
-.lt-ie8 .nav-bar li.has-flyout a { padding-right: 20px; }
-
-.lt-ie8 .nav-bar li.has-flyout a:after { border-top: none; }
-
-/* Correct IE7 button padding */
-.lt-ie8 input[type=submit].nice.button { filter: chroma(color=black); position: relative; top: -2px; }
-
-.lt-ie8 input[type=submit].tiny.button { padding: 5px 5px 7px; }
-
-.lt-ie8 input[type=submit].small.button { padding: 8px 7px 9px; }
-
-.lt-ie8 input[type=submit].medium.button { padding: 9px 13px 9px; }
-
-.lt-ie8 input[type=submit].large.button { padding: 9px 18px 10px; }
-
 /* -------------------------------------------------- Table of Contents
 -----------------------------------------------------
 :: Shared Styles
