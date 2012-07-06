@@ -540,6 +540,7 @@ input[type=submit].button, button.button { -webkit-appearance: none; }
 .button.dropdown > ul li a { display: block; color: #555; font-size: 13px; font-weight: normal; padding: 6px 14px; text-align: left; }
 .button.dropdown > ul li:hover { background-color: #e3f4f9; color: #222; }
 .button.dropdown > ul li.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: #ededed; }
+.button.dropdown.up > ul { border-top: 1px solid #cccccc; border-bottom: none; }
 .button.dropdown ul.no-hover.show-dropdown { display: block !important; }
 .button.dropdown:hover > ul.no-hover { display: none; }
 .button.dropdown.split { padding: 0; position: relative; /* Sizes */ /* Triangle Spans */ /* Colors */ }

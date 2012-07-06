@@ -91,6 +91,8 @@
       }
     }
 
+    &.up>ul { border-top: 1px solid darken($white, 20%); border-bottom: none; }
+    
     ul.no-hover.show-dropdown { display: block !important; }
     &:hover {
       &>ul.no-hover {
