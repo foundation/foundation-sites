@@ -109,6 +109,13 @@
 		<div class="row">
 			<div class="eight columns">
 
+			   <div id="orbitTest">
+			     <div><a href="http://www.zurb.com"><img src="marketing/images/orbit-demo/demo1.jpg" /></a></div>
+			     <div><a href="http://www.zurb.com"><img src="marketing/images/orbit-demo/demo2.jpg" /></a></div>
+			     <div><a href="http://www.zurb.com"><img src="marketing/images/orbit-demo/demo3.jpg" /></a></div>
+			   </div>
+
+
 			   <div class="button-bar">
   			  <ul class="button-group">
   			    <li><a href="#" class="secondary button">Button 1</a></li>
@@ -724,17 +731,21 @@
 
 
 	<!-- Included JS Files -->
-	<script src="js/jquery.min.js"></script>
-	<!-- Combine and Compress These JS Files -->
-	<script src="js/jquery.reveal.js"></script>
-	<script src="js/jquery.orbit-1.4.0.js"></script>
-	<script src="js/jquery.customforms.js"></script>
-	<script src="js/jquery.placeholder.min.js"></script>
-	<script src="js/jquery.tooltips.js"></script>
-	<!-- End Combine and Compress These JS Files -->
-	<script src="js/app.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.min.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.reveal.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.orbit-1.4.0.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.customforms.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.placeholder.min.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.tooltips.js"></script>
+  <script src="vendor/assets/javascripts/foundation/app.js"></script>
 
 	<script>
+	  $(window).load(function() {
+       $('#orbitTest').orbit({
+        fluid: '16x9'
+       });
+    });
+	
 	  $('#testModal').bind('reveal:open reveal:opened reveal:close reveal:closed', function (event) {
 	    console.log(event);
 	  });
