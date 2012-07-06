@@ -74,7 +74,8 @@
           <script src="https://gist.github.com/2980479.js?file=f3-navbar-content.html"></script>
 
           <h5>Flyout Direction</h5>
-          <p>Flyouts are pinned left by default, but you can pin them right in instances where they may run off the page or over other content by adding <code>.right</code> to the <code>div.flyout</code> element.
+          <p>Flyouts are pinned left by default, but you can pin them right in instances where they may run off the page or over other content by adding <code>.right</code> to the <code>div.flyout</code> element.</p>
+          <p>Flyouts also go down by default, but if your nav bar is on the bottom you can have the flyouts expand up by adding a class of <code>.up</code> to the <code>.flyout</code> element.</p>
 
           <script src="https://gist.github.com/2980485.js?file=f3-navbar-right.html"></script>
 

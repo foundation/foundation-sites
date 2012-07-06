@@ -673,6 +673,7 @@ ul.tabs-content.contained.vertical > li { border-width: 1px 1px 1px 1px; }
 .flyout.small { width: 166.667px; }
 .flyout.large { width: 437.5px; }
 .flyout.right { left: auto; right: -2px; }
+.flyout.up { top: auto; bottom: 39px; }
 
 ul.flyout, .nav-bar li ul { padding: 0; list-style: none; }
 ul.flyout li, .nav-bar li ul li { border-left: solid 3px #CCC; }

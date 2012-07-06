@@ -47,7 +47,7 @@
           <form>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right">Address Name:</label>
+                <label class="right inline">Address Name:</label>
               </div>
               <div class="ten mobile-three columns">
                 <input type="text" placeholder="e.g. Home" class="eight" />
@@ -55,7 +55,7 @@
             </div>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right">City:</label>
+                <label class="right inline">City:</label>
               </div>
               <div class="ten mobile-three columns">
                 <input type="text" class="eight" />
@@ -63,7 +63,7 @@
             </div>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right">ZIP:</label>
+                <label class="right inline">ZIP:</label>
               </div>
               <div class="ten mobile-three columns">
                 <input type="text" class="three" />
