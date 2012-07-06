@@ -34,7 +34,7 @@
         <div class="row">
           <div class="six columns push-six">
             <h4>Device-Specific Function</h4>
-            <p>Mobile devices can't handle our standard flash audio player, so we used <a href="docs/layout.php">Foundation's mobile visibility classes</a> to selectively hide the flash element, and show a mobile-friendly audio file link.</p>
+            <p>Mobile devices can't handle our standard flash audio player, so we used <a href="docs/elements.php">Foundation's mobile visibility classes</a> to selectively hide the flash element, and show a mobile-friendly audio file link.</p>
 
             <h4>Next Steps: Images</h4>
             <p>We practice what we preach, and we're always iterating on Foundation-based sites. Our next step is to implement a more mobile-friendly image solution, so devices don't have to load quite as much data. There's a lot of good work going on in this area, but also a lot to figure out.</p>

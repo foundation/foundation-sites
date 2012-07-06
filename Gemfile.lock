@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    zurb-foundation (3.0.2)
+    zurb-foundation (3.0.3)
       compass (>= 0.12.2)
       rake
-      sass (>= 3.2.0.alpha244)
+      sass (>= 3.2.0.alpha.244)
 
 GEM
   remote: https://rubygems.org/

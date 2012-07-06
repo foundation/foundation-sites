@@ -45,51 +45,51 @@
 					</thead>
 					<tr>
 						<td><strong>Chrome (Edge)</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr>
 					<tr>
 						<td><strong>Firefox (Edge)</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr>
 					<tr>
 						<td><strong>Firefox 3.6</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr>
 					<tr>
 						<td><strong>Safari (Edge)</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr>
 					<tr>
 						<td><strong>IE 9</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr>
 					<tr>
 						<td><strong>IE 8</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr>
 					<tr>
 						<td><strong>IE 7</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /><sup>1</sup></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /><sup>1</sup></td>
 					</tr>
 					<tr>
 						<td><strong>IE 6</strong></td>
-						<td><img src="../images/error.png" /></td>
-						<td><img src="../images/error.png" /></td>
-						<td><img src="../images/error.png" /></td>
+						<td><img src="images/error.png" /></td>
+						<td><img src="images/error.png" /></td>
+						<td><img src="images/error.png" /></td>
 					</tr>
 					
 				</table>
@@ -104,15 +104,15 @@
 					</thead>
 					<tr>
 						<td><strong>Mobile Webkit (iOS 5)</strong></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr>
 					<tr>
 						<td><strong>Android Browser</strong><sup>2</sup></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
-						<td><img src="../images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
+						<td><img src="images/check.png" /></td>
 					</tr><!--
 
 					<tr>
