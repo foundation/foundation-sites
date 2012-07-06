@@ -19,7 +19,7 @@
     <div class="row">
       <div class="twelve columns">
         <h1>Mobile Grid</h1>
-        <h4>On small mobile devices like iPhones or Android, the grid collapses to stack all columns on top of each other. Here an example: try viewing this on a desktop and phone, or simply resize your browser window.</h4>
+        <h4>On small mobile devices like iPhones or Android, the grid collapses to stack all columns on top of each other. Here's an example: try viewing this on a desktop and phone, or simply resize your browser window.</h4>
       </div>
     </div>
   </header>
