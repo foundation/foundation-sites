@@ -35,7 +35,7 @@
             <p>In Foundation 3 source ordering (push/pull classes) work and function the same as before.</p>
 
             <h4>Mobile Grid</h4>
-            <p>The mobile grid (phone-one, phone-two etc) work and function the same as before.</p>
+            <p>The mobile grid (phone-one, phone-two etc) work and function the same as before, but their classes have been changed to <code>.mobile-one</code>, <code>.mobile-two</code>, etc.</p>
 
             <p><a href="docs/grid.php">View the Grid Docs &rarr;</a></p>
           </div>
@@ -93,7 +93,7 @@
         <div class="row">
           <div class="seven columns">
             <p>Stylistically, navigation and tabs have been changed or augmented. However, the syntax is largely unchanged. Rather than having <code>.active</code> place on the anchor, it is now placed on the <code>dd</code> or <code>li</code>.</p>
-            <p><a href="docs/navbar.php">View the Navigation Docs &rarr;</a><br /><a href="docs/tabs.php">View the Tabs Docs &rarr;</a></p>
+            <p><a href="docs/navigation.php">View the Navigation Docs &rarr;</a><br /><a href="docs/tabs.php">View the Tabs Docs &rarr;</a></p>
           </div>
         </div>
 
