@@ -50,13 +50,10 @@
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0 0 0 -3px; }
   }
 
-  /* Inlined Radio & Checkbox */
-  .form-field input[type=radio], div.form-field input[type=checkbox] { display: inline; width: auto; margin-bottom: 0; }
-
   /* Errors */
-  .form-field.error input, input.input-text.alert { border-color: $alertColor; background-color: rgba(255,0,0,0.15); }
-  .form-field.error label, label.alert { color: $alertColor; }
-  .form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-top-left-radius(2px); @include box-sizing(border-box); }
+  .error input, input.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
+  .error label, label.error { color: $alertColor; }
+  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-bottom-left-radius(2px); @include border-bottom-right-radius(2px); }
 
   @media only screen and (max-width: $screenSmall - 1) {
     @for $i from 1 through $totalColumns {

@@ -145,6 +145,29 @@
           </div>
           <script src="https://gist.github.com/2954957.js?file=f3-form-postfix.html"></script>
 
+          <hr />
+          
+          <h4>Error States</h4>
+          <p>Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically. You can attach a class of <code>.error</code> either to the individual elements (label, input, small) or to a container column or div.</p>
+          
+          <div class="row">
+            <div class="five columns">
+              <label class="error">Field with Error</label>
+              <input type="text" class="error" />
+              <small class="error">Invalid entry</small>
+            </div>
+            
+            <div class="five columns end error">
+              <label>Another Error</label>
+              <input type="text" />
+              <small>Invalid entry</small>
+            </div>
+          </div>
+          
+          <script src="https://gist.github.com/3061004.js?file=f3-form-errors.html"></script>
+          
+          <hr />
+
           <form>
             <fieldset>
               <legend>Large Form Example</legend>
@@ -178,6 +201,20 @@
                     </div>
                   </div>
 
+                </div>
+                
+                <div class="five columns">
+                  
+                  <label class="error">Field with Error</label>
+                  <input type="text" class="error" />
+                  <small class="error">Invalid entry</small>
+                  
+                  <div class="error">
+                    <label>Another Error</label>
+                    <input type="text" />
+                    <small>Invalid entry</small>
+                  </div>
+                  
                 </div>
               </div>
 
