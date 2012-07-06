@@ -53,6 +53,7 @@
                 <div class="six columns">
                   <ul class="no-bullet customizer css">
                     <li><label><input type="checkbox" id="toggleCss" checked="checked"> All</label> <em>Kitchen sink</em></li> <!-- Need to have this check everything -->
+                    <li><label><input type="checkbox" name="css[]" value="globals" checked="checked"> globals.css</label> <em>Global typography elements</em></li>
                     <li><label><input type="checkbox" name="css[]" value="typography" checked="checked"> typography.css</label> <em>Global typography elements</em></li>
                     <li><label><input type="checkbox" name="css[]" value="grid" checked="checked"> grid.css</label> <em>Responsive grid</em></li>
                     <li><label><input type="checkbox" name="css[]" value="forms" checked="checked"> forms.css</label> <em>Normal and custom forms</em></li>
