@@ -539,7 +539,7 @@
               // Trigger the modal 'closed' event.
               // This should trigger any method set in the options.closed propety.
               //
-              modal.trigger('reveal:closed');
+              modal.trigger( 'reveal:closed' );
             
             } // end if !modalQueued
             //
@@ -607,7 +607,7 @@
               // Trigger the modal 'closed' event.
               // This should trigger any method set in the options.closed propety.
               //
-              modal.trigger('reveal:closed');
+              modal.trigger( 'reveal:closed' );
           
             } // end if !modalQueued
           
@@ -635,7 +635,7 @@
             // Trigger the modal 'closed' event.
             // This should trigger any method set in the options.closed propety.
             //
-            modal.trigger('reveal:closed');
+            modal.trigger( 'reveal:closed' );
           
           } // end if not animating
 
@@ -656,7 +656,7 @@
         //
         // Unbind all .reveal events from the modal background.
         //
-        modalBg.unbind('.reveal');
+        modalBg.unbind( '.reveal' );
         //
         // Unbind all .reveal events from the modal 'close' button.
         //
@@ -716,7 +716,7 @@
      //
      // Bind the element 'click' event and handler.
      //
-     .bind('click.reveal', function () {
+     .bind( 'click.reveal', function () {
         //
         // Trigger the modal 'close' event.
         //
@@ -741,7 +741,7 @@
         //
         // Trigger the modal 'close' event.
         //
-        modal.trigger('reveal:close');
+        modal.trigger( 'reveal:close' );
       
       });
      
@@ -751,7 +751,7 @@
      // Bind keyup functions on the body element.
      // We'll want to close the modal when the 'escape' key is hit.
      //
-     $( 'body' ).bind('keyup.reveal', function ( event ) {
+     $( 'body' ).bind( 'keyup.reveal', function ( event ) {
       //
       // Did the escape key get triggered?
       //
