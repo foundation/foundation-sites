@@ -25,27 +25,35 @@
 
   /* Visibility Classes ---------------------- */
 
-  /* Standard visibility targeting */
+  /* Standard (large) display targeting */
   .show-for-small,
   .show-for-medium,
+  .show-for-medium-down,
   .hide-for-large,
+  .hide-for-large-up,
   .show-for-xlarge { display: none !important; }
 
   .hide-for-xlarge,
   .show-for-large,
+  .show-for-large-up,
   .hide-for-small,
-  .hide-for-medium { display: block !important; }
+  .hide-for-medium,
+  .hide-for-medium-down { display: block !important; }
 
   /* Very large display targeting */
   @media only screen and (min-width: $screenXlarge) {
     .hide-for-small,
     .hide-for-medium,
+    .hide-for-medium-down,
     .hide-for-large,
+    .show-for-large-up,
     .show-for-xlarge { display: block !important; }
 
     .show-for-small,
     .show-for-medium,
+    .show-for-medium-down,
     .show-for-large,
+    .hide-for-large-up,
     .hide-for-xlarge { display: none !important; }
   }
 
@@ -53,25 +61,33 @@
   @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
     .hide-for-small,
     .show-for-medium,
+    .show-for-medium-down,
     .hide-for-large,
+    .hide-for-large-up,
     .hide-for-xlarge { display: block !important; }
 
     .show-for-small,
     .hide-for-medium,
+    .hide-for-medium-down,
     .show-for-large,
+    .show-for-large-up,
     .show-for-xlarge { display: none !important; }
   }
 
   /* Small display targeting */
   @media only screen and (max-width: $screenSmall - 1) {
     .show-for-small,
+    .show-for-medium-down,
     .hide-for-medium,
     .hide-for-large,
+    .hide-for-large-up,
     .hide-for-xlarge { display: block !important; }
 
     .hide-for-small,
     .show-for-medium,
+    .show-for-medium-down,
     .show-for-large,
+    .show-for-large-up,
     .show-for-xlarge { display: none !important; }
   }
 

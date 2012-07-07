@@ -319,20 +319,20 @@ that IE7/8 do not support :nth-child.
 
 */
 /* Visibility Classes ---------------------- */
-/* Standard visibility targeting */
-.show-for-small, .show-for-medium, .hide-for-large, .show-for-xlarge { display: none !important; }
+/* Standard (large) display targeting */
+.show-for-small, .show-for-medium, .show-for-medium-down, .hide-for-large, .hide-for-large-up, .show-for-xlarge { display: none !important; }
 
-.hide-for-xlarge, .show-for-large, .hide-for-small, .hide-for-medium { display: block !important; }
+.hide-for-xlarge, .show-for-large, .show-for-large-up, .hide-for-small, .hide-for-medium, .hide-for-medium-down { display: block !important; }
 
 /* Very large display targeting */
-@media only screen and (min-width: 104em) { .hide-for-small, .hide-for-medium, .hide-for-large, .show-for-xlarge { display: block !important; }
-  .show-for-small, .show-for-medium, .show-for-large, .hide-for-xlarge { display: none !important; } }
+@media only screen and (min-width: 104em) { .hide-for-small, .hide-for-medium, .hide-for-medium-down, .hide-for-large, .show-for-large-up, .show-for-xlarge { display: block !important; }
+  .show-for-small, .show-for-medium, .show-for-medium-down, .show-for-large, .hide-for-large-up, .hide-for-xlarge { display: none !important; } }
 /* Medium display targeting */
-@media only screen and (max-width: 77em) and (min-width: 44em) { .hide-for-small, .show-for-medium, .hide-for-large, .hide-for-xlarge { display: block !important; }
-  .show-for-small, .hide-for-medium, .show-for-large, .show-for-xlarge { display: none !important; } }
+@media only screen and (max-width: 77em) and (min-width: 44em) { .hide-for-small, .show-for-medium, .show-for-medium-down, .hide-for-large, .hide-for-large-up, .hide-for-xlarge { display: block !important; }
+  .show-for-small, .hide-for-medium, .hide-for-medium-down, .show-for-large, .show-for-large-up, .show-for-xlarge { display: none !important; } }
 /* Small display targeting */
-@media only screen and (max-width: 43em) { .show-for-small, .hide-for-medium, .hide-for-large, .hide-for-xlarge { display: block !important; }
-  .hide-for-small, .show-for-medium, .show-for-large, .show-for-xlarge { display: none !important; } }
+@media only screen and (max-width: 43em) { .show-for-small, .show-for-medium-down, .hide-for-medium, .hide-for-large, .hide-for-large-up, .hide-for-xlarge { display: block !important; }
+  .hide-for-small, .show-for-medium, .show-for-medium-down, .show-for-large, .show-for-large-up, .show-for-xlarge { display: none !important; } }
 /* Orientation targeting */
 .show-for-landscape, .hide-for-portrait { display: block !important; }
 
