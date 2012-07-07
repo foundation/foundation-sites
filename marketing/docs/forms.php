@@ -42,12 +42,12 @@
 
           <script src="https://gist.github.com/2952683.js?file=f3-simple-form.html"></script>
 
-          <p>Sometimes you want a form with labels to the left of your inputs. Piece of cake.
+          <p>Sometimes you want a form with labels to the left of your inputs. Piece of cake. You can add a class of <code>.right</code> to a label to have it align to the right, and if your label is next to an input (in another column) adding a class of <code>.inline</code> will have it vertically center against an input.</p>
 
           <form>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right">Address Name:</label>
+                <label class="right inline">Address Name:</label>
               </div>
               <div class="ten mobile-three columns">
                 <input type="text" placeholder="e.g. Home" class="eight" />
@@ -55,7 +55,7 @@
             </div>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right">City:</label>
+                <label class="right inline">City:</label>
               </div>
               <div class="ten mobile-three columns">
                 <input type="text" class="eight" />
@@ -63,7 +63,7 @@
             </div>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right">ZIP:</label>
+                <label class="right inline">ZIP:</label>
               </div>
               <div class="ten mobile-three columns">
                 <input type="text" class="three" />
@@ -145,6 +145,29 @@
           </div>
           <script src="https://gist.github.com/2954957.js?file=f3-form-postfix.html"></script>
 
+          <hr />
+          
+          <h4>Error States</h4>
+          <p>Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically. You can attach a class of <code>.error</code> either to the individual elements (label, input, small) or to a container column or div.</p>
+          
+          <div class="row">
+            <div class="five columns">
+              <label class="error">Field with Error</label>
+              <input type="text" class="error" />
+              <small class="error">Invalid entry</small>
+            </div>
+            
+            <div class="five columns end error">
+              <label>Another Error</label>
+              <input type="text" />
+              <small>Invalid entry</small>
+            </div>
+          </div>
+          
+          <script src="https://gist.github.com/3061004.js?file=f3-form-errors.html"></script>
+          
+          <hr />
+
           <form>
             <fieldset>
               <legend>Large Form Example</legend>
@@ -178,6 +201,20 @@
                     </div>
                   </div>
 
+                </div>
+                
+                <div class="five columns">
+                  
+                  <label class="error">Field with Error</label>
+                  <input type="text" class="error" />
+                  <small class="error">Invalid entry</small>
+                  
+                  <div class="error">
+                    <label>Another Error</label>
+                    <input type="text" />
+                    <small>Invalid entry</small>
+                  </div>
+                  
                 </div>
               </div>
 

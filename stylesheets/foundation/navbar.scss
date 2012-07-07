@@ -56,7 +56,9 @@
 
     &.small { width: $navFlyoutBaseWidth / 1.5; }
     &.large { width: $navFlyoutBaseWidth * 1.75; }
+    
     &.right { left: auto; right: -2px; }
+    &.up { top: auto; bottom: $navBarHeight - 1; }
 
   }
 

@@ -29,6 +29,7 @@
               <h4>Installation</h4>
               <p>To create your first project using our Compass extension, you'll need to have the zurb-foundation gem installed. This includes all the necessary dependencies that you'll need to get going.</p>
               <p class="btm-marg keystroke">[sudo] gem install zurb-foundation</p>
+              <em style="position: relative; top: -20px; font-size: 12px;">Note: Make sure you aren't using 'ZURB-foundation' as that is the 2.2 version.</em>
 
               <h5>Creating Your first project</h5>
               <p class="keystroke">
@@ -37,11 +38,25 @@
               </p>
               <p>
               <p class="btm-marg">Now you should have a new project folder created with foundation included along with all the awesome advantages that comes with <a href="http://sass-lang.com/" rel="nofollow">Sass</a> and <a href="http://compass-style.org/" rel="nofollow">Compass</a>.</p>
+
               <h5>Adding Foundation to an existing project</h5>
-              <ul class="disc">
+              <ul class="disc" style="margin-bottom: 35px;">
                 <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
                 <li><span class="keystroke">cd path/to/your-project</span></li>
                 <li>run <span class="keystroke">compass install foundation</span></li>
+              </ul>
+              <h5>Upgrading Your Gem</h5>
+              <p>To upgrade your gem to the latest public release you just paste this line into your command line.</p>
+              <p class="btm-marg keystroke">[sudo] gem update zurb-foundation</p>
+
+              <h5>Using CodeKit?</h5>
+              <p>We're using a cutting edge version of Sass that doesn't come with CodeKit. This means that you'll need to do a couple steps in order to get everything to compile correctly. Once Sass 3.2.0 is out of alpha it will be packaged with CodeKit, until then do this:</p>
+              <ul class="disc">
+                <li>Run `sudo gem environment` in the command line, note your gem paths.</li>
+                <li>Go into <strong>Codekit prefs</strong>, click on <strong>Sass/Scss</strong></li>
+                <li>Click on <strong>"Use the Sass Executable at this path:"</strong></li>
+                <li>Navigate to the <strong>bin</strong> folder at the gem path you found earlier.</li>
+                <li>Select sass.bin</li>
               </ul>
 
               <hr>
@@ -49,7 +64,7 @@
               <a name="settings"></a>
               <h3>Settings</h3>
               <h4 class="subheader">Work with your own colors, font sizes, radii, etc by adjusting the _settings.scss file in your new project!</h4>
-              <p>We include a _settings.scss file with every new compass project, this file contains the default variables used through foundation which you can uncomment and. changes to match your needs</p>
+              <p>We include a _settings.scss file with every new compass project, this file contains the default variables used through foundation which you can uncomment and. changes to match your needs.</p>
 
               <h5>Grid Settings</h5>
               <ul class="disc">
