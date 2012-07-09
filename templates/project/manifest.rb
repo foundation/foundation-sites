@@ -2,16 +2,17 @@ description 'Foundation Compass Gem'
 
 # Sass Files
 stylesheet 'sass/_settings.scss',                :to => '_settings.scss'
-stylesheet 'sass/foundation-styles/globals.scss',       :to => 'foundation-styles/globals.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/typography.scss',    :to => 'foundation-styles/typography.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/grid.scss',          :to => 'foundation-styles/grid.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/ui.scss',            :to => 'foundation-styles/ui.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/buttons.scss',       :to => 'foundation-styles/buttons.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/tabs.scss',          :to => 'foundation-styles/tabs.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/navbar.scss',        :to => 'foundation-styles/navbar.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/forms.scss',         :to => 'foundation-styles/forms.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/orbit.scss',         :to => 'foundation-styles/orbit.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-styles/reveal.scss',        :to => 'foundation-styles/reveal.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/base.scss',          :to => 'foundation/base.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/globals.scss',       :to => 'foundation/globals.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/typography.scss',    :to => 'foundation/typography.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/grid.scss',          :to => 'foundation/grid.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/ui.scss',            :to => 'foundation/ui.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/buttons.scss',       :to => 'foundation/buttons.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/tabs.scss',          :to => 'foundation/tabs.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/navbar.scss',        :to => 'foundation/navbar.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/forms.scss',         :to => 'foundation/forms.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/orbit.scss',         :to => 'foundation/orbit.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/reveal.scss',        :to => 'foundation/reveal.scss', :media => "screen, projector, print"
 stylesheet 'sass/app.scss',                      :to => 'app.scss', :media => "screen, projector, print"
 
 # Relative asset paths
