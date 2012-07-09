@@ -2,7 +2,7 @@ description 'Foundation Compass Gem'
 
 # Sass Files
 stylesheet 'sass/_settings.scss',                           :to => '_settings.scss'
-stylesheet 'sass/foundation/foundation-base.scss',          :to => 'foundation/foundation-base.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/_foundation-base.scss',         :to => 'foundation/_foundation-base.scss', :media => "screen, projector, print"
 stylesheet 'sass/foundation/globals.scss',                  :to => 'foundation/globals.scss', :media => "screen, projector, print"
 stylesheet 'sass/foundation/typography.scss',               :to => 'foundation/typography.scss', :media => "screen, projector, print"
 stylesheet 'sass/foundation/grid.scss',                     :to => 'foundation/grid.scss', :media => "screen, projector, print"
