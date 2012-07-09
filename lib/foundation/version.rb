@@ -1,3 +1,3 @@
 module Foundation
-  VERSION = "3.0.4.alpha12"
+  VERSION = "3.0.4.alpha13"
 end
