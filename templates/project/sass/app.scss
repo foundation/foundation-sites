@@ -1,9 +1,9 @@
 /* Artfully masterminded by ZURB  */
 @import "settings";
-@import "foundation";
+// @import "foundation";
 
 // Import Each Specific Piece for SASS
-// @import "foundation/base";
+@import "foundation/base";
 // @import "foundation/globals";
 // @import "foundation/typography";
 // @import "foundation/grid";
@@ -14,6 +14,4 @@
 // @import "foundation/forms";
 // @import "foundation/orbit";
 // @import "foundation/reveal";
-// @import "foundation/app";
-
 

@@ -1,8 +1,18 @@
 description 'Foundation Compass Gem'
 
 # Sass Files
-stylesheet 'sass/app.scss',        :to => 'app.scss', :media => "screen, projector, print"
-stylesheet 'sass/_settings.scss',  :to => '_settings.scss'
+stylesheet 'sass/_settings.scss',                :to => '_settings.scss'
+stylesheet 'sass/foundation-styles/globals.scss',       :to => 'foundation-styles/globals.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/typography.scss',    :to => 'foundation-styles/typography.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/grid.scss',          :to => 'foundation-styles/grid.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/ui.scss',            :to => 'foundation-styles/ui.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/buttons.scss',       :to => 'foundation-styles/buttons.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/tabs.scss',          :to => 'foundation-styles/tabs.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/navbar.scss',        :to => 'foundation-styles/navbar.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/forms.scss',         :to => 'foundation-styles/forms.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/orbit.scss',         :to => 'foundation-styles/orbit.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation-styles/reveal.scss',        :to => 'foundation-styles/reveal.scss', :media => "screen, projector, print"
+stylesheet 'sass/app.scss',                      :to => 'app.scss', :media => "screen, projector, print"
 
 # Relative asset paths
 js_path = "/../../vendor/assets/javascripts/foundation"
