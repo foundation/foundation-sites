@@ -80,7 +80,7 @@ jQuery(document).ready(function ($) {
           }, // end adjust
 
           /**
-           * Restets the elements previous state.
+           * Resets the elements previous state.
            *
            * @method reset
            */
@@ -109,10 +109,10 @@ jQuery(document).ready(function ($) {
                 //
                 // Remove the style attribute.
                 //
-                $elem.removeAttr('style');
+                $elem.removeAttr( 'style' );
               else
                 //
-                // Otherwise, reset it's style attribute.
+                // Otherwise, reset the element style attribute.
                 //
                 $elem.attr( 'style', _tmp );
 
@@ -150,7 +150,7 @@ jQuery(document).ready(function ($) {
 
     function appendCustomSelect(idx, sel) {
           //
-          // jQueryify the select element and cache it.
+          // jQueryify the <select> element and cache it.
           //
       var $this = $( sel ),
           //
