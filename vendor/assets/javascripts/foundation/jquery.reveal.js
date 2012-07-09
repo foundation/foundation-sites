@@ -39,79 +39,84 @@
    * @property {Object} [options] Reveal options
    */
   $.fn.reveal = function ( options ) {
-      //
-      // Default property values.
-      //
-    var defaults = {
-      /**
-       * Possible options: fade, fadeAndPop, none
-       *
-       * @property animation
-       * @type {String}
-       * @default fadeAndPop
+      /*
+       * Cache the document object.
        */
-      animation: 'fadeAndPop',
-      /**
-       * Speed at which the reveal should show. How fast animtions are.
-       *
-       * @property animationSpeed
-       * @type {Integer}
-       * @default 300
-       */
-      animationSpeed: 300,
-      /**
-       * Should the modal close when the background is clicked?
-       *
-       * @property closeOnBackgroundClick
-       * @type {Boolean}
-       * @default true
-       */
-      closeOnBackgroundClick: true,
-      /**
-       * Specify a class name for the 'close modal' element.
-       * This element will close an open modal.
-       *
-       @example
-       <a href='#close' class='close-reveal-modal'>Close Me</a>
-       *
-       * @property dismissModalClass
-       * @type {String}
-       * @default close-reveal-modal
-       */
-      dismissModalClass: 'close-reveal-modal',
-      /**
-       * Specify a callback function that triggers 'before' the modal opens.
-       *
-       * @property open
-       * @type {Function}
-       * @default function(){}
-       */
-      open: $.noop,
-      /**
-       * Specify a callback function that triggers 'after' the modal is opened.
-       *
-       * @property opened
-       * @type {Function}
-       * @default function(){}
-       */
-      opened: $.noop,
-      /**
-       * Specify a callback function that triggers 'before' the modal prepares to close.
-       *
-       * @property close
-       * @type {Function}
-       * @default function(){}
-       */
-      close: $.noop,
-      /**
-       * Specify a callback function that triggers 'after' the modal is closed.
-       *
-       * @property closed
-       * @type {Function}
-       * @default function(){}
-       */
-      closed: $.noop
-    };
+    var $doc = $( document ),
+        /*
+         * Default property values.
+         */
+        defaults = {
+          /**
+           * Possible options: fade, fadeAndPop, none
+           *
+           * @property animation
+           * @type {String}
+           * @default fadeAndPop
+           */
+          animation: 'fadeAndPop',
+          /**
+           * Speed at which the reveal should show. How fast animtions are.
+           *
+           * @property animationSpeed
+           * @type {Integer}
+           * @default 300
+           */
+          animationSpeed: 300,
+          /**
+           * Should the modal close when the background is clicked?
+           *
+           * @property closeOnBackgroundClick
+           * @type {Boolean}
+           * @default true
+           */
+          closeOnBackgroundClick: true,
+          /**
+           * Specify a class name for the 'close modal' element.
+           * This element will close an open modal.
+           *
+           @example
+           <a href='#close' class='close-reveal-modal'>Close Me</a>
+           *
+           * @property dismissModalClass
+           * @type {String}
+           * @default close-reveal-modal
+           */
+          dismissModalClass: 'close-reveal-modal',
+          /**
+           * Specify a callback function that triggers 'before' the modal opens.
+           *
+           * @property open
+           * @type {Function}
+           * @default function(){}
+           */
+          open: $.noop,
+          /**
+           * Specify a callback function that triggers 'after' the modal is opened.
+           *
+           * @property opened
+           * @type {Function}
+           * @default function(){}
+           */
+          opened: $.noop,
+          /**
+           * Specify a callback function that triggers 'before' the modal prepares to close.
+           *
+           * @property close
+           * @type {Function}
+           * @default function(){}
+           */
+          close: $.noop,
+          /**
+           * Specify a callback function that triggers 'after' the modal is closed.
+           *
+           * @property closed
+           * @type {Function}
+           * @default function(){}
+           */
+          closed: $.noop
+        }
+    ;
     //
     // Extend the default options.
     // This replaces the passed in option (options) values with default values.
@@ -126,10 +131,6 @@
         // Cache the modal element
         //
       var modal = $( this ),
-        //
-        // Cache the document element
-        //
-        $doc = $( document ),
         //
         // Get the current css 'top' property value in decimal format.
         //
