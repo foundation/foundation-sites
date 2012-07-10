@@ -119,7 +119,8 @@
   				<hr />
   				
   				<h4>Changelog</h4>
-  				
+  				<h5>3.0.5 &mdash; July 10, 2012</h5>
+  				<p>Fixed Compass performance issues by separating out each Foundation file and removing extraneous imports.</p>
   				<h5>3.0.4 &mdash; July 6, 2012</h5>
   				<p>Fixed a number of bugs around the Sass/Gem installs and documentation. Some smaller items:</p>
   				<ul class="disc">
