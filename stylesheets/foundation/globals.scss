@@ -2,8 +2,6 @@
    normalize.css
    -box-sizing.htc */
 
-  @import "base";
-
 /* Global Reset & Standards ---------------------- */
 
   * { @include box-sizing(border-box); }
