@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
       
       },
       /**
-       * Helper object used to quickly adjust all hidden parent element's, display and visilbility properties.
+       * Helper object used to quickly adjust all hidden parent element's, display and visibility properties.
        * This is currently used for the custom drop downs. When the dropdowns are contained within a reveal modal
        * we cannot accurately determine the list-item elements width property, since the modal's display property is set
        * to 'none'.
@@ -92,7 +92,7 @@ jQuery(document).ready(function ($) {
             //
             // Loop through our hidden element collection.
             //
-            this.hidden.each( function( i ) {
+            _self.hidden.each( function( i ) {
                 //
                 // Cache this element.
                 //
