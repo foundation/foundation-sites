@@ -1,8 +1,6 @@
 /* Requires
    globals.css */
 
-  @import "base";
-
 /* Standard Forms ---------------------- */
 
   form { margin: 0 0 ($formSpacing * $ratio); }
@@ -40,7 +38,7 @@
     &:focus { background: darken($white, 2%); outline: none !important; border-color: darken($white, 30%); }
     &[disabled] { background-color: #ddd; }
   }
-  
+
   textarea { height: auto; }
 
   select { width: 100%; }

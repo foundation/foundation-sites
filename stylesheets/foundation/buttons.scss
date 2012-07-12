@@ -1,8 +1,6 @@
 /* Requires
    globals.css */
 
-  @import "base";
-
 /* Normal Buttons ---------------------- */
 
   .button { width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; @include defaultFontFamily; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; outline: none; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
@@ -92,7 +90,7 @@
     }
 
     &.up>ul { border-top: 1px solid darken($white, 20%); border-bottom: none; }
-    
+
     ul.no-hover.show-dropdown { display: block !important; }
     &:hover {
       &>ul.no-hover {
