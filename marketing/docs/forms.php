@@ -77,19 +77,21 @@
 
           <h4>Fieldsets</h4>
           <p>Simple elements that can contain all or part of a form to create better division.</p>
-
-          <fieldset>
-
-            <legend>Fieldset Name</legend>
-
-            <label>This is a label.</label>
-            <input type="text" placeholder="Standard Input" />
-
-            <label>Address</label>
-            <input type="text" />
-            <input type="text" class="six" />
-
-          </fieldset>
+          
+          <form class="custom">
+            <fieldset>
+  
+              <legend>Fieldset Name</legend>
+  
+              <label>This is a label.</label>
+              <input type="text" placeholder="Standard Input" />
+  
+              <label>Address</label>
+              <input type="text" />
+              <input type="text" class="six" />
+  
+            </fieldset>
+          </form>
 
           <script src="https://gist.github.com/2952713.js?file=f3-fieldset.html"></script>
 

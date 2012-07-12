@@ -574,12 +574,12 @@ input[type=submit].button, button.button { -webkit-appearance: none; }
 ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; overflow: hidden; }
 ul.button-group li { padding: 0; margin: 0 0 0 -1px; float: left; }
 ul.button-group li:first-child { margin-left: 0; }
-ul.button-group.radius li:first-child a.button, ul.button-group.radius li:first-child a.button.radius, ul.button-group.radius li:first-child a.button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
-ul.button-group.radius li + li a.button, ul.button-group.radius li + li a.button.radius, ul.button-group.radius li + li a.button.rounded { border-radius: 0; }
-ul.button-group.radius li:last-child a.button, ul.button-group.radius li:last-child a.button.radius, ul.button-group.radius li:last-child a.button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
-ul.button-group.rounded li:first-child a.button, ul.button-group.rounded li:first-child a.button.radius, ul.button-group.rounded li:first-child a.button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-left-radius: 1000px; border-bottom-left-radius: 1000px; }
-ul.button-group.rounded li + li a.button, ul.button-group.rounded li + li a.button.radius, ul.button-group.rounded li + li a.button.rounded { border-radius: 0; }
-ul.button-group.rounded li:last-child a.button, ul.button-group.rounded li:last-child a.button.radius, ul.button-group.rounded li:last-child a.button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-right-radius: 1000px; border-bottom-right-radius: 1000px; }
+ul.button-group.radius li:first-child .button, ul.button-group.radius li:first-child .button.radius, ul.button-group.radius li:first-child .button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
+ul.button-group.radius li + li .button, ul.button-group.radius li + li .button.radius, ul.button-group.radius li + li .button.rounded { border-radius: 0; }
+ul.button-group.radius li:last-child .button, ul.button-group.radius li:last-child .button.radius, ul.button-group.radius li:last-child .button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
+ul.button-group.rounded li:first-child .button, ul.button-group.rounded li:first-child .button.radius, ul.button-group.rounded li:first-child .button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-left-radius: 1000px; border-bottom-left-radius: 1000px; }
+ul.button-group.rounded li + li .button, ul.button-group.rounded li + li .button.radius, ul.button-group.rounded li + li .button.rounded { border-radius: 0; }
+ul.button-group.rounded li:last-child .button, ul.button-group.rounded li:last-child .button.radius, ul.button-group.rounded li:last-child .button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-right-radius: 1000px; border-bottom-right-radius: 1000px; }
 ul.button-group.even a.button { width: 100%; }
 ul.button-group.even.two-up li { width: 50%; }
 ul.button-group.even.three-up li { width: 33.3%; }
@@ -587,6 +587,12 @@ ul.button-group.even.three-up li:first-child { width: 33.4%; }
 ul.button-group.even.four-up li { width: 25%; }
 ul.button-group.even.five-up li { width: 20%; }
 
+@media only screen and (max-width: 767px) { .button-group button.button, .button-group input[type="submit"].button { width: auto; padding: 10px 20px 11px; }
+  .button-group button.button.large, .button-group input[type="submit"].button.large { padding: 15px 30px 16px; }
+  .button-group button.button.medium, .button-group input[type="submit"].button.medium { padding: 10px 20px 11px; }
+  .button-group button.button.small, .button-group input[type="submit"].button.small { padding: 7px 14px 8px; }
+  .button-group button.button.tiny, .button-group input[type="submit"].button.tiny { padding: 5px 10px 6px; }
+  .button-group.even button.button, .button-group.even input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; } }
 div.button-bar { overflow: hidden; }
 div.button-bar ul.button-group { float: left; margin-right: 8px; }
 div.button-bar ul.button-group:last-child { margin-left: 0; }
@@ -975,13 +981,13 @@ header#homepage .button:hover { background: #006582; }
 
 #github h4 { color: #fff; }
 
-#github span, #github #github a { color: #fff; font-size: 12px; font-size: 1.2rem; display: block; word-wrap: break-word; line-height: 1.3; margin-bottom: 3px; }
+#github span, #github #github a { color: #fff; font-size: 12px; font-size: 1.2rem; display: block; white-space: break-word; line-height: 1.3; margin-bottom: 3px; }
 
 #github span { font-weight: bold; }
 
 #github span.date { text-transform: uppercase; color: #d8f7fd; }
 
-#github a.commit { font-weight: bold; font-size: 12px; font-size: 1.2rem; word-break: break-word; word-wrap: break-word; }
+#github a.commit { font-weight: bold; font-size: 12px; font-size: 1.2rem; word-break: break-word; white-space: break-word; }
 
 #github a.button { margin: 22px 0 44px; color: #3f3f3f; border: none; background: #fff; }
 
