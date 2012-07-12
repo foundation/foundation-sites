@@ -127,7 +127,7 @@ abbr { text-transform: none; }
   .hide-on-print { display: none !important; }
   .print-only { display: block !important; } }
 /* The Grid ---------------------- */
-.row { width: 1000px; max-width: 100%; min-width: 44em; margin: 0 auto; }
+.row { width: 1000px; max-width: 100%; min-width: 768px; margin: 0 auto; }
 .row .row { width: auto; max-width: none; min-width: 0; margin: 0 -15px; }
 .row.collapse .column, .row.collapse .columns { padding: 0; }
 .row .row { width: auto; max-width: none; min-width: 0; margin: 0 -15px; }
@@ -232,7 +232,7 @@ img { -ms-interpolation-mode: bicubic; }
 .row:after { clear: both; }
 
 /* Mobile Grid and Overrides ---------------------- */
-@media only screen and (max-width: 43em) { body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+@media only screen and (max-width: 767px) { body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
   .row { width: auto; min-width: 0; margin-left: 0; margin-right: 0; }
   .column, .columns { width: auto !important; float: none; }
   .column:last-child, .columns:last-child { float: none; }
@@ -296,7 +296,7 @@ that IE7/8 do not support :nth-child.
 
 /*  .block-grid.five-up>li:nth-child(5n+1) {clear: left;} */
 /* Mobile Block Grids */
-@media only screen and (max-width: 43em) { .block-grid.mobile { margin-left: 0; }
+@media only screen and (max-width: 767px) { .block-grid.mobile { margin-left: 0; }
   .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; } }
 /* Requires: globals.css */
 /* Table of Contents
@@ -325,13 +325,13 @@ that IE7/8 do not support :nth-child.
 .hide-for-xlarge, .show-for-large, .show-for-large-up, .hide-for-small, .hide-for-medium, .hide-for-medium-down { display: block !important; }
 
 /* Very large display targeting */
-@media only screen and (min-width: 104em) { .hide-for-small, .hide-for-medium, .hide-for-medium-down, .hide-for-large, .show-for-large-up, .show-for-xlarge { display: block !important; }
+@media only screen and (min-width: 1441px) { .hide-for-small, .hide-for-medium, .hide-for-medium-down, .hide-for-large, .show-for-large-up, .show-for-xlarge { display: block !important; }
   .show-for-small, .show-for-medium, .show-for-medium-down, .show-for-large, .hide-for-large-up, .hide-for-xlarge { display: none !important; } }
 /* Medium display targeting */
-@media only screen and (max-width: 77em) and (min-width: 44em) { .hide-for-small, .show-for-medium, .show-for-medium-down, .hide-for-large, .hide-for-large-up, .hide-for-xlarge { display: block !important; }
+@media only screen and (max-width: 1279px) and (min-width: 768px) { .hide-for-small, .show-for-medium, .show-for-medium-down, .hide-for-large, .hide-for-large-up, .hide-for-xlarge { display: block !important; }
   .show-for-small, .hide-for-medium, .hide-for-medium-down, .show-for-large, .show-for-large-up, .show-for-xlarge { display: none !important; } }
 /* Small display targeting */
-@media only screen and (max-width: 43em) { .show-for-small, .show-for-medium-down, .hide-for-medium, .hide-for-large, .hide-for-large-up, .hide-for-xlarge { display: block !important; }
+@media only screen and (max-width: 767px) { .show-for-small, .show-for-medium-down, .hide-for-medium, .hide-for-large, .hide-for-large-up, .hide-for-xlarge { display: block !important; }
   .hide-for-small, .show-for-medium, .show-for-medium-down, .show-for-large, .show-for-large-up, .show-for-xlarge { display: none !important; } }
 /* Orientation targeting */
 .show-for-landscape, .hide-for-portrait { display: block !important; }
@@ -354,8 +354,8 @@ that IE7/8 do not support :nth-child.
 /* Specific overrides for elements that require something other than display: block */
 table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-for-medium { display: table !important; }
 
-@media only screen and (max-width: 77em) and (min-width: 44em) { .touch table.hide-for-xlarge, .touch table.hide-for-large, .touch table.hide-for-small, .touch table.show-for-medium { display: table !important; } }
-@media only screen and (max-width: 43em) { table.hide-for-xlarge, table.hide-for-large, table.hide-for-medium, table.show-for-small { display: table !important; } }
+@media only screen and (max-width: 1279px) and (min-width: 768px) { .touch table.hide-for-xlarge, .touch table.hide-for-large, .touch table.hide-for-small, .touch table.show-for-medium { display: table !important; } }
+@media only screen and (max-width: 767px) { table.hide-for-xlarge, table.hide-for-large, table.hide-for-medium, table.show-for-small { display: table !important; } }
 /* Alerts ---------------------- */
 div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: 14px; color: white; background-color: #2ba6cb; border: 1px solid rgba(0, 0, 0, 0.1); margin-bottom: 12px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; text-shadow: 0 -1px rgba(0, 0, 0, 0.3); position: relative; }
 div.alert-box.success { background-color: #5da423; color: #fff; text-shadow: 0 -1px rgba(0, 0, 0, 0.3); }
@@ -389,7 +389,7 @@ div.alert-box a.close:hover, div.alert-box a.close:focus { opacity: 0.4; }
 
 .tap-to-close { display: block; font-size: 10px; font-size: 1rem; color: #888; font-weight: normal; }
 
-@media only screen and (max-width: 43em) { .tooltip { font-size: 14px; font-size: 1.4rem; line-height: 1.4; padding: 7px 10px 9px 10px; }
+@media only screen and (max-width: 767px) { .tooltip { font-size: 14px; font-size: 1.4rem; line-height: 1.4; padding: 7px 10px 9px 10px; }
   .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub { border-color: transparent transparent black transparent; border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent; top: -12px; left: 10px; } }
 /* Panels ---------------------- */
 div.panel { background: #f2f2f2; border: solid 1px #e6e6e6; margin: 0 0 22px 0; padding: 20px; }
@@ -517,7 +517,7 @@ p.vevent abbr { cursor: default; text-decoration: none; font-weight: bold; borde
 /* Don't use native buttons on iOS */
 input[type=submit].button, button.button { -webkit-appearance: none; }
 
-@media only screen and (max-width: 43em) { .button { display: block; }
+@media only screen and (max-width: 767px) { .button { display: block; }
   button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; } }
 /* Correct FF button padding */
 @-moz-document url-prefix() { button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner { border: none; padding: 0; }
@@ -631,7 +631,7 @@ ul.tabs-content.contained.vertical > li { border-width: 1px 1px 1px 1px; }
 
 .no-js ul.tabs-content > li { display: block; }
 
-@media only screen and (max-width: 43em) { dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
+@media only screen and (max-width: 767px) { dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
   dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
   dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; font-size: 15px; font-size: 1.5rem; }
   dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
@@ -685,10 +685,10 @@ ul.flyout li.active a, .nav-bar li ul li.active a { background: #4d4d4d; border:
 
 /* Mobile Styles */
 @media only screen and (max-device-width: 1280px) { .touch .nav-bar li.has-flyout > a { padding-right: 36px !important; } }
-@media only screen and (max-width: 77em) and (min-width: 44em) { .touch .nav-bar li a { font-size: 13px; font-size: 1.3rem; }
+@media only screen and (max-width: 1279px) and (min-width: 768px) { .touch .nav-bar li a { font-size: 13px; font-size: 1.3rem; }
   .touch .nav-bar li.has-flyout > a.flyout-toggle { padding: 20px !important; }
   .touch .nav-bar li.has-flyout > a { padding-right: 36px !important; } }
-@media only screen and (max-width: 43em) { .nav-bar { height: auto; }
+@media only screen and (max-width: 767px) { .nav-bar { height: auto; }
   .nav-bar > li { float: none; display: block; border-right: none; }
   .nav-bar > li > a.main { text-align: left; border-top: 1px solid #ddd; border-right: none; }
   .nav-bar > li:first-child > a.main { border-top: none; }
@@ -713,7 +713,7 @@ label { font-size: 14px; color: #4d4d4d; cursor: pointer; display: block; font-w
 label.right { float: none; text-align: right; }
 label.inline { line-height: 32px; margin: 0 0 12px 0; }
 
-@media only screen and (max-width: 43em) { label.right { text-align: left; } }
+@media only screen and (max-width: 767px) { label.right { text-align: left; } }
 .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: 32px; line-height: 31px; }
 
 a.button.prefix, a.button.postfix { padding-left: 0; padding-right: 0; text-align: center; }
@@ -744,7 +744,7 @@ fieldset legend { font-weight: bold; background: white; padding: 0 3px; margin: 
 
 .error small, small.error { display: block; padding: 6px 4px; margin-top: -13px; margin-bottom: 12px; background: #c60f13; color: #fff; font-size: 12px; font-size: 1.2rem; font-weight: bold; -moz-border-radius-bottomleft: 2px; -webkit-border-bottom-left-radius: 2px; border-bottom-left-radius: 2px; -moz-border-radius-bottomright: 2px; -webkit-border-bottom-right-radius: 2px; border-bottom-right-radius: 2px; }
 
-@media only screen and (max-width: 43em) { input[type="text"].one, textarea.one { width: 100% !important; }
+@media only screen and (max-width: 767px) { input[type="text"].one, textarea.one { width: 100% !important; }
   input[type="text"].two, textarea.two { width: 100% !important; }
   input[type="text"].three, textarea.three { width: 100% !important; }
   input[type="text"].four, textarea.four { width: 100% !important; }
@@ -812,17 +812,17 @@ div.orbit div.orbit-slide { width: 100%; height: 100%; }
 /* Timer ---------------------- */
 div.orbit-wrapper div.timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; right: 10px; opacity: .6; cursor: pointer; z-index: 31; }
 
-div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../../images/foundation/orbit/rotator-black.png?1340999421') no-repeat; z-index: 3; }
+div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../../images/foundation/orbit/rotator-black.png?1341516620') no-repeat; z-index: 3; }
 
 div.orbit-wrapper span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; right: 0; z-index: 2; overflow: hidden; }
 
 div.orbit-wrapper span.rotator.move { left: 0; }
 
-div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../../images/foundation/orbit/timer-black.png?1340999421') repeat 0 0; }
+div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../../images/foundation/orbit/timer-black.png?1341516620') repeat 0 0; }
 
-div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../../images/foundation/orbit/pause-black.png?1340999421') no-repeat; z-index: 4; opacity: 0; }
+div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../../images/foundation/orbit/pause-black.png?1341516620') no-repeat; z-index: 4; opacity: 0; }
 
-div.orbit-wrapper span.pause.active { background: url('../../images/foundation/orbit/pause-black.png?1340999421') no-repeat 0 -40px; }
+div.orbit-wrapper span.pause.active { background: url('../../images/foundation/orbit/pause-black.png?1341516620') no-repeat 0 -40px; }
 
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper span.pause.active { opacity: 1; }
 
@@ -836,17 +836,17 @@ div.orbit-wrapper div.slider-nav { display: block; }
 
 div.orbit-wrapper div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
 
-div.orbit-wrapper div.slider-nav span.right { background: url('../../images/foundation/orbit/right-arrow.png?1340999421'); background-size: 100%; right: 0; }
+div.orbit-wrapper div.slider-nav span.right { background: url('../../images/foundation/orbit/right-arrow.png?1341516620'); background-size: 100%; right: 0; }
 
-div.orbit-wrapper div.slider-nav span.left { background: url('../../images/foundation/orbit/left-arrow.png?1340999421'); background-size: 100%; left: 0; }
+div.orbit-wrapper div.slider-nav span.left { background: url('../../images/foundation/orbit/left-arrow.png?1341516620'); background-size: 100%; left: 0; }
 
-.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../../images/foundation/orbit/right-arrow-small.png?1340999421'); }
-.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../../images/foundation/orbit/left-arrow-small.png?1340999421'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../../images/foundation/orbit/right-arrow-small.png?1341516620'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../../images/foundation/orbit/left-arrow-small.png?1341516620'); }
 
 /* Bullet Nav ---------------------- */
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1341516620') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.active { color: #222; background-position: -8px 0; }
 
@@ -861,7 +861,7 @@ div.orbit, div.orbit-wrapper { width: 100% !important; }
 
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -50px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../images/foundation/orbit/bullets.jpg?1341516620') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.has-thumb { background: none; width: 100px; height: 75px; }
 
@@ -889,7 +889,7 @@ ul.orbit-bullets li.active.has-thumb { background-position: 0 0; border-top: 2px
 .reveal-modal .row { min-width: 0; }
 
 /* Mobile */
-@media only screen and (max-width: 43em) { .reveal-modal-bg { position: absolute; }
+@media only screen and (max-width: 767px) { .reveal-modal-bg { position: absolute; }
   .reveal-modal, .reveal-modal.small, .reveal-modal.medium, .reveal-modal.large, .reveal-modal.xlarge { width: 80%; top: 15px; left: 50%; margin-left: -40%; padding: 20px; height: auto; } }
   /* NOTES Close button entity is &#215;
  Example markup <div id="myModal" class="reveal-modal"> <h2>Awesome. I have it.</h2> <p class="lead">Your couch.  I it's mine.</p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p> <a class="close-reveal-modal">&#215;</a> </div> */
@@ -1011,7 +1011,7 @@ header .subheader { position: relative; top: -18px; }
   .touch .top-bar .attached { height: 45px !important; }
   .touch .top-bar .attached > ul.right { overflow: hidden; height: 45px !important; } }
 @media only screen and (orientation: landscape) and (min-device-width: 768px) { .touch .top-bar .attached > ul.right { height: 45px !important; overflow: hidden !important; } }
-@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../../images/plus-toggle-2-retina.png?1340999420'); background-size: 100% 100%; } }
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { .top-bar .attached > .name span > a.toggle-nav { background-image: url('../../images/plus-toggle-2-retina.png?1341516620'); background-size: 100% 100%; } }
 #megaDrop li { list-style: none; }
 
 #megaDrop .show-on-phones, #megaDrop .sitemap-link { display: none !important; }
