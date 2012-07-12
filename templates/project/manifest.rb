@@ -2,7 +2,6 @@ description 'Foundation Compass Gem'
 
 # Sass Files
 stylesheet 'sass/app.scss',        :to => 'app.scss', :media => "screen, projector, print"
-stylesheet 'sass/ie.scss',         :to => 'ie.scss', :condition => "IE lt 9"
 stylesheet 'sass/_settings.scss',  :to => '_settings.scss'
 
 # Relative asset paths
