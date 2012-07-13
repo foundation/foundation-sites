@@ -60,10 +60,12 @@
 
   /* Blockquotes ---------------------- */
   blockquote, blockquote p { line-height: 1.5; color: #777; }
-  blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
-  blockquote cite { display: block; font-size: ms(0) - 1; color: #555; }
-  blockquote cite:before { content: "\2014 \0020"; }
-  blockquote cite a, blockquote cite a:visited { color: #555; }
+  blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-left: 1px solid #ddd;
+    cite { display: block; font-size: ms(0) - 1; color: #555;
+      &:before { content: "\2014 \0020"; }
+      a, a:visited { color: #555; }
+    }
+  }
 
   abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222; border-bottom: 1px solid #ddd; cursor: help; }
   abbr { text-transform: none; }

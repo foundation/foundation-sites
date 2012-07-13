@@ -93,11 +93,8 @@ ul.large li { line-height: 21px; }
 blockquote, blockquote p { line-height: 1.5; color: #777; }
 
 blockquote { margin: 0 0 17px; padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
-
 blockquote cite { display: block; font-size: 13px; color: #555; }
-
 blockquote cite:before { content: "\2014 \0020"; }
-
 blockquote cite a, blockquote cite a:visited { color: #555; }
 
 abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222; border-bottom: 1px solid #ddd; cursor: help; }
@@ -392,8 +389,8 @@ div.alert-box a.close:hover, div.alert-box a.close:focus { opacity: 0.4; }
   .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub { border-color: transparent transparent black transparent; border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent; top: -12px; left: 10px; } }
 /* Panels ---------------------- */
 div.panel { background: #f2f2f2; border: solid 1px #e6e6e6; margin: 0 0 22px 0; padding: 20px; }
-div.panel *:first-child { margin-top: 0; }
-div.panel *:last-child { margin-bottom: 0; }
+div.panel > :first-child { margin-top: 0; }
+div.panel > :last-child { margin-bottom: 0; }
 div.panel.callout { background: #2ba6cb; color: #fff; border-color: #2284a1; -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5); -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5); box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5); }
 div.panel.callout a { color: #fff; }
 div.panel.callout .button { background: white; border: none; color: #2ba6cb; text-shadow: none; }
