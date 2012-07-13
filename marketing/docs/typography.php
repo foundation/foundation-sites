@@ -74,7 +74,13 @@
   				    <ul class="disc">
   				      <li>List item with a much longer description or more content.</li>
   				      <li>List item</li>
-  				      <li>List item</li>
+  				      <li>List item
+                  <ul>
+                    <li>Nested List Item</li>
+                    <li>Nested List Item</li>
+                    <li>Nested List Item</li>
+                  </ul>
+                </li>
   				      <li>List item</li>
   				      <li>List item</li>
   				      <li>List item</li>
@@ -85,7 +91,13 @@
   				    <ul class="circle">
   				      <li>List item with a much longer description or more content.</li>
   				      <li>List item</li>
-  				      <li>List item</li>
+  				      <li>List item
+                  <ul>
+                    <li>Nested List Item</li>
+                    <li>Nested List Item</li>
+                    <li>Nested List Item</li>
+                  </ul>
+                </li>
   				      <li>List item</li>
   				      <li>List item</li>
   				      <li>List item</li>
@@ -96,7 +108,13 @@
   				    <ul class="square">
   				      <li>List item with a much longer description or more content.</li>
   				      <li>List item</li>
-  				      <li>List item</li>
+  				      <li>List item
+                  <ul>
+                    <li>Nested List Item</li>
+                    <li>Nested List Item</li>
+                    <li>Nested List Item</li>
+                  </ul>
+                </li>
   				      <li>List item</li>
   				      <li>List item</li>
   				      <li>List item</li>

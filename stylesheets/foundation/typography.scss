@@ -38,13 +38,25 @@
   code { font-weight: bold; background: $highlightColor; }
 
   /* Lists ---------------------- */
-  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
-  ul.square, ul.circle, ul.disc { margin-left: ms(1); }
-  ul.square { list-style-type: square; }
-  ul.circle { list-style-type: circle ; }
-  ul.disc { list-style-type: disc; }
-  ul.no-bullet { list-style: none; }
-  ul.large li { line-height: 21px; }
+  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: outside; }
+  ul {
+    li {
+      ul { margin-left: 20px; margin-bottom: 0; list-style: outside; }
+    }
+    &.square, &.circle, &.disc { margin-left: ms(1); }
+    &.square { list-style-type: square;
+      li ul { list-style: inherit; }
+    }
+    &.circle { list-style-type: circle;
+      li ul { list-style: inherit; }
+    }
+    &.disc { list-style-type: disc;
+      li ul { list-style: inherit; }
+    }
+    &.no-bullet { list-style: none; }
+    &.large li { line-height: 21px; }
+  }
+
 
   /* Blockquotes ---------------------- */
   blockquote, blockquote p { line-height: 1.5; color: #777; }
