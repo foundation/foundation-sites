@@ -27,7 +27,7 @@
 
   // Outer row mixin for container rows
 
-  @mixin outerRow() { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @include clearfix(); @include respondTo(smallScreen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; } }
+  @mixin outerRow() { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @include clearfix(); }
 
   // Inner row mixin for nested rows, must be a child of an outer-row element. $behavior can be 'collapse' to get rid of margins
 
@@ -39,9 +39,9 @@
   // Columns mixin, syntax is ($columns, $behavior). Behavior can be 'centered' which centers things or 'collapse' which collapses the gutters. ex @include row(4,[center | collapse])
 
   @mixin column($columns:$columns, $behavior: false) {
-    @if $behavior == center { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { width: auto !important; float: none; } @include mobileClearfix();
-    } @else if $behavior == collapse { float: left; position: relative; min-height: 1px; padding: 0; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { width: auto !important; float: none; } @include mobileClearfix();
-    } @else { float: left; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { width: auto !important; float: none; } @include mobileClearfix(); }
+    @if $behavior == center { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $totalColumns);
+    } @else if $behavior == collapse { float: left; position: relative; min-height: 1px; padding: 0; width: gridCalc($columns, $totalColumns);
+    } @else { float: left; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $totalColumns); }
   }
 
   // Offset Mixin, include after a column mixin to manipulate its grid offset.
@@ -59,7 +59,11 @@
 
   // Mobile Columns, syntax is @include mobile-column(#);
 
-  @mixin mobileColumn($columns:$columns) { @include respondTo(smallScreen) { width: gridCalc($columns, $mobileTotalColumns); float: left; padding: 0 ($columnGutter/2); } }
+  @mixin mobileColumn($columns:$columns, $behavior: false) {
+    @if $behavior == center { @include respondTo(smallScreen) { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $mobileTotalColumns); }
+    } @else if $behavior == collapse { @include respondTo(smallScreen) { float: left; position: relative; min-height: 1px; padding: 0; width: gridCalc($columns, $mobileTotalColumns); }
+    } @else { @include respondTo(smallScreen) { width: gridCalc($columns, $mobileTotalColumns); float: left; padding: 0 ($columnGutter/2); } }
+  }
 
   // Mobile Push/Pull Mixin
 

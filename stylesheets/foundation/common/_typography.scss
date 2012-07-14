@@ -1,5 +1,3 @@
-@import "base";
-
   /* Base Type Styles Using Modular Scale ---------------------- */
 
   body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td {
@@ -40,20 +38,34 @@
   code { font-weight: bold; background: $highlightColor; }
 
   /* Lists ---------------------- */
-  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
-  ul.square, ul.circle, ul.disc { margin-left: ms(1); }
-  ul.square { list-style-type: square; }
-  ul.circle { list-style-type: circle ; }
-  ul.disc { list-style-type: disc; }
-  ul.no-bullet { list-style: none; }
-  ul.large li { line-height: 21px; }
+  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: outside; }
+  ul {
+    li {
+      ul { margin-left: 20px; margin-bottom: 0; list-style: outside; }
+    }
+    &.square, &.circle, &.disc { margin-left: ms(1); }
+    &.square { list-style-type: square;
+      li ul { list-style: inherit; }
+    }
+    &.circle { list-style-type: circle;
+      li ul { list-style: inherit; }
+    }
+    &.disc { list-style-type: disc;
+      li ul { list-style: inherit; }
+    }
+    &.no-bullet { list-style: none; }
+    &.large li { line-height: 21px; }
+  }
+
 
   /* Blockquotes ---------------------- */
   blockquote, blockquote p { line-height: 1.5; color: #777; }
-  blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
-  blockquote cite { display: block; font-size: ms(0) - 1; color: #555; }
-  blockquote cite:before { content: "\2014 \0020"; }
-  blockquote cite a, blockquote cite a:visited { color: #555; }
+  blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-left: 1px solid #ddd;
+    cite { display: block; font-size: ms(0) - 1; color: #555;
+      &:before { content: "\2014 \0020"; }
+      a, a:visited { color: #555; }
+    }
+  }
 
   abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222; border-bottom: 1px solid #ddd; cursor: help; }
   abbr { text-transform: none; }
