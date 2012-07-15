@@ -31,7 +31,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	/* ALERT BOXES ------------ */
-	$(".alert-box").delegate("a.close", "click", function(event) {
+	$(document).on("click", ".alert-box a.close", function(event) {
     event.preventDefault();
 	  $(this).closest(".alert-box").fadeOut(function(event){
 	    $(this).remove();
