@@ -58,16 +58,16 @@
     .column:after, .columns:after { clear: both; }
 
     // Placeholder classes for mobile grid overrides
-    .no-left-margin { margin-left: 0 !important; }
-    .left-auto { left: auto; }
-    .right-auto { right: auto; }
+    %no-left-margin { margin-left: 0 !important; }
+    %left-auto { left: auto; }
+    %right-auto { right: auto; }
 
     @for $i from 1 through $totalColumns - 2 {
-      .offset-by-#{convert-number-to-word($i)} { @extend .no-left-margin; }
+      .offset-by-#{convert-number-to-word($i)} { @extend %no-left-margin; }
     }
     @for $i from 2 through $totalColumns - 2 {
-      .push-#{convert-number-to-word($i)} { @extend .left-auto; }
-      .pull-#{convert-number-to-word($i)} { @extend .right-auto; }
+      .push-#{convert-number-to-word($i)} { @extend %left-auto; }
+      .pull-#{convert-number-to-word($i)} { @extend %right-auto; }
     }
 
     /* Mobile 4-column Grid */
