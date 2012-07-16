@@ -23,6 +23,7 @@ jQuery(document).ready(function ($) {
 
   $('dl.tabs dd a').on('click.fndtn', function (event) {
     activateTab($(this).parent('dd'));
+    return false;
   });
 
   if (window.location.hash) {
