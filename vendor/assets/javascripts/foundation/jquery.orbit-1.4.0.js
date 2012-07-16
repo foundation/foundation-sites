@@ -235,13 +235,13 @@
         }, this.options.advanceSpeed);
       } else {
         this.timerRunning = true;
-        this.$pause.removeClass('active')
-        this.clock = setInterval(this.rotateTimer, this.options.advanceSpeed / 180);
+        this.$pause.removeClass('active');
+        this.clock = setInterval(this.rotateTimer, this.options.advanceSpeed / 180, false);
       }
     },
 
     rotateTimer: function (reset) {
-      var degreeCSS = "rotate(" + this.degrees + "deg)"
+      var degreeCSS = "rotate(" + this.degrees + "deg)";
       this.degrees += 2;
       this.$rotator.css({
         "-webkit-transform": degreeCSS,

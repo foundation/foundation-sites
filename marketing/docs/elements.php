@@ -17,7 +17,9 @@
   				<p>The following text should describe the device you're using:
             <strong class="show-for-xlarge">You are on a very large screen.</strong>
             <strong class="show-for-large">You are on a large screen.</strong>
+            <strong class="show-for-large-up">You are on a large or very large screen.</strong>
             <strong class="show-for-medium">You are on a medium screen.</strong>
+            <strong class="show-for-medium-down">You are on a medium or small screen.</strong>
             <strong class="show-for-small">You are on a small screen, like a smartphone.</strong>
   				</p>
 
@@ -26,6 +28,8 @@
   				<p>This example uses the opposite rules, so the following text should inversely describe the device you're using:
             <strong class="hide-for-xlarge">You are not on a very large screen.</strong>
             <strong class="hide-for-large">You are not on a large screen.</strong>
+            <strong class="hide-for-large-up">You are not on a large or very large screen.</strong>
+            <strong class="hide-for-medium-down">You are not on a medium or small screen.</strong>
             <strong class="hide-for-medium">You are not on a medium screen.</strong>
             <strong class="hide-for-small">You are not on a small screen.</strong>
   				</p>
@@ -35,7 +39,7 @@
   				<h5>Orientation Detection</h5>
   				<p>The following text should describe the device you're using:
             <strong class="show-for-landscape">You are in landscape orientation.</strong>
-            <strong class="show-for-portrait">You are in protrait orientation.</strong>
+            <strong class="show-for-portrait">You are in portrait orientation.</strong>
   				</p>
 
   				<script src="https://gist.github.com/2993845.js?file=f3-orientation.html"></script>

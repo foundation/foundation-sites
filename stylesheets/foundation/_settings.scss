@@ -61,6 +61,12 @@ $screenSmall: 768px !default;
 $screenMedium: 1279px !default;
 $screenXlarge: 1441px !default;
 
+
+// Saving for better em-based testing
+// $screenSmall: 44em !default;
+// $screenMedium: 77em !default;
+// $screenXlarge: 104em !default;
+
 // Saving for Sass 3.2 stable release
 // $mediaSmall: "only screen and (max-width: 767px)" !default;
 // $mediaMedium: "only screen and (max-width: 1279px) and (min-width: 768px)" !default;

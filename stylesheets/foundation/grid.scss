@@ -57,7 +57,7 @@
     .column:before, .columns:before, .column:after, .columns:after { content:""; display:table; }
     .column:after, .columns:after { clear: both; }
 
-    // Silent Placeholder classes for mobile grid overrides
+    // Placeholder classes for mobile grid overrides
     .no-left-margin { margin-left: 0 !important; }
     .left-auto { left: auto; }
     .right-auto { right: auto; }

@@ -29,7 +29,7 @@
     display: block;
     width: 0;
     height: 0;
-    border: solid   $triangleSize;
+    border: solid $triangleSize;
     @if ($triangleDirection == top) {
       border-color: $triangleColor transparent transparent transparent;
     }
