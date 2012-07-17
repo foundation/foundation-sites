@@ -1,110 +1,108 @@
-<? 
-  $page_title = "Games Site Prototyping Example";
-  $featuresTab = true;
-?>
+<? $page_title = "Rapid Prototyping Marketing Site" ?>
 <?php include("includes/_header.php"); ?>
 
-  
-  <!-- Grid BG -->
-  <div id="gridBgShort" class="container hide-on-phones">
-    <div class="white-fade"></div>
+
+
+  <header>
     <div class="row">
-      <div class="one columns"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div><div class="one columns hide-on-phones"></div>
+      <div class="twelve columns">
+        <h1>All Grid Sizes</h1>
+        <h4></h4>
+      </div>
     </div>
-  </div>
-  <!-- /Grid BG -->
-  
-	<div id="insideContainer" class="container">
-	  <div class="row">
-	    <a href="prototyping.php" class="back two columns">&larr; About Prototyping</a>
-	    <hr />
-	  </div>
-	  
-	  <div class="row">
-	  	<div class="eight columns">
-	  		<h3>Ye Olde Game Reviews</h3>
-	  	</div>
-	  	<div class="four columns hide-on-phones">
-	  		<p class="right"><a href="#">Login</a> <a href="#" class="small blue nice radius button">Sign Up</a>
-	  	</div>
-	  	<div class="four columns show-on-phones">
-	  		<p><a href="#">Login</a> <a href="#" class="">Sign Up</a>
-	  	</div>
-	  </div>
-	  
-	  <div class="row">
-	  	<div class="twelve columns">
-	  		<ul class="block-grid four-up">
-	  			<li>
-	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
-	  				<h5><a href="#">Pong</a></h5>
-	  			</li>
-	  			<li>
-	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
-	  				<h5><a href="#">Galaga</a></h5>
-	  			</li>
-	  			<li>
-	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
-	  				<h5><a href="#">Pitfall</a></h5>
-	  			</li>
-	  			<li>
-	  				<a href="#"><img src="http://placehold.it/240x300" /></a>
-	  				<h5><a href="#">Donkey Kong</a></h5>
-	  			</li>
-	  		</ul>
-	  	</div>
-	  </div>
-	  
-	  <div class="row">
-	  	<hr />
-	  </div>
-	  
-	  <div class="row">
-	  	<div class="six columns">
-	  		<h4>Gaming News</h4>
-	  		<h5><a href="#">Games of the Future will have 16 Bits</a></h5>
-	  		<p>We don't even know what it means, but we heard from a trusted source that games in the future will have 16 whole bits in them. Get ready, we guess? <a href="#">Read More &rarr;</a></p>
-	  		
-	  		<h5><a href="#">Does Nintendo Have Plans for Games?</a></h5>
-	  		<p>Japenese playing card manufacturer Nintendo may have ideas about entering the gaming industry. We've heard rumors they are working on something called Famicon, but take it with a grain of salt. We imagine Atari will dominate games for the next 20 or 30 years. <a href="#">Read More &rarr;</a></p>
-	  	</div>
-	  	<div class="six columns">
-	  		<h4>Top of the Charts</h4>
-	  		<div class="row">
-	  			<div class="two phone-one columns">
-	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
-	  			</div>
-	  			<div class="ten phone-three columns">
-	  				<h5 class="right">$85k</h5>
-	  				<h4><a href="#">Tetris</a></h4>
-	  				<p>This newfangled game has you slotting together blocks in soviet Russia. Weird, but fun.</p>
-	  			</div>
-	  		</div>
-	  		<div class="row">
-	  			<div class="two phone-one columns">
-	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
-	  			</div>
-	  			<div class="ten phone-three columns">
-	  				<h5 class="right">$52k</h5>
-	  				<h4><a href="#">Pong</a></h4>
-	  				<p>The original and best game ever. It's like Tennis, and so realistic!</p>
-	  			</div>
-	  		</div>
-	  		<div class="row">
-	  			<div class="two phone-one columns">
-	  				<a href="#"><img src="http://placehold.it/80x100" /></a>
-	  			</div>
-	  			<div class="ten phone-three columns">
-	  				<h5 class="right">$35k</h5>
-	  				<h4><a href="#">Centipede</a></h4>
-	  				<p>We're pretty sure this is a game about drugs, but it's on the charts, so here you go.</p>
-	  			</div>
-	  		</div>
-	  	</div>
-	  </div>
-	  
+  </header>
+
+  <section id="mainContent" class="example">
+
+	<div class="row">
+			<div class="three columns">
+				<a href="index.php"><img src="http://placehold.it/200x60" /></a>
+			</div>
+			<div class="nine columns">
+				<nav>
+					<ul>
+						<li><a href="services/adoption-foster-care.php">Adopt and Foster</a></li>
+						<li><a href="services/">Services</a></li>
+						<li><a href="culinary-academy/">Culinary Academy</a></li>
+						<li><a href="blog/">Blog</a></li>
+						<li><a href="get-involved/">Get Involved</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
 	</div>
-	   	  
-	<div class="container">   	  
-	
+</header>
+	<div class="container">
+		<div class="row">
+			<div class="twelve columns">
+
+				<div class="jumbotron homepage">
+					<img src="http://placehold.it/940x300" class="bg" />
+					<div class="content">
+						<blockquote>"Rebekah Children's Services made all the difference to me" <cite>Jane Doe</cite></blockquote>
+						<h1>Rebekah Children's Services helps kids and families in need with tons of great programs.</h1>
+						<a href="get-involved/" class="large radius nice blue button">Get Involved</a>
+					</div>
+
+					<a href="#" id="prev" class="slider">&larr;</a>
+					<a href="#" id="next" class="slider">&rarr;</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="four columns">
+				<a href="services/adoption-foster-care.php"><img src="http://placehold.it/400x300" /></a>
+				<h3><a href="services/adoption-foster-care.php">Adoption and Fostering</a></h3>
+			</div>
+			<div class="four columns">
+				<a href="culinary-academy/"><img src="http://placehold.it/400x300" /></a>
+				<h3><a href="culinary-academy/">Culinary Academy</a></h3>
+			</div>
+			<div class="four columns">
+				<a href="events/"><img src="http://placehold.it/400x300" /></a>
+				<h3><a href="/events">Next Event: Let It Snow</a></h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="twelve columns">
+				<div class="blog panel">
+					<h4>Blog</h4>
+					<a href="blog/blog-post.php">This is the most recent blog post. You can read more about it here &larr;</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="six columns">
+				<div class="row">
+					<div class="five columns">
+						<img src="http://placehold.it/200x140" />
+					</div>
+					<div class="seven columns">
+						<h5>Family Story</h5>
+						<h4>The Smith Family</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+				</div>
+			</div>
+			<div class="six columns">
+				<div class="row">
+					<div class="five columns">
+						<img src="http://placehold.it/200x140" />
+					</div>
+					<div class="seven columns">
+						<h5>Family Story</h5>
+						<h4>The Smith Family</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+  </section>
+
 <?php include("includes/_footer.php");  ?>

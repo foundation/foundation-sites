@@ -1,126 +1,92 @@
-<? $page_title = "Rapid Prototyping and Building Framework from ZURB" ?>
+<? $page_title = "Get Started" ?>
 <?php include("includes/_documentation_head.php"); ?>
 
-	<div class="container">
-		<div class="row">
-			<div class="twelve columns">
-				<div class="foundation-header">
-					<h1><a href="index.php">Foundation Docs</a></h1>
-					<h4 class="subheader">Rapid prototyping and building library from ZURB.</h4>
-				</div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="two columns">
-				<dl class="nice tabs vertical hide-on-phones">
-					<dd><a href="index.php" class="active">Getting Started</a></dd>
-					<dd><a href="grid.php">Grid</a></dd>
-					<dd><a href="buttons.php">Buttons</a></dd>
-					<dd><a href="forms.php">Forms</a></dd>
-					<dd><a href="layout.php">Layout</a></dd>
-					<dd><a href="ui.php">UI</a></dd>
-					<dd><a href="orbit.php">Orbit</a></dd>
-					<dd><a href="reveal.php">Reveal</a></dd>
-					<dd><a href="gems.php">Gems</a></dd>
-					<dd><a href="qa.php">QA</a></dd>
-				</dl>
-			</div>
-			<div class="six columns">
-				<h3>Welcome to Foundation!</h3>
-				<h4 class="subheader">Welcome to the Foundation documentation. Here you can learn what Foundation includes, as well as how to use it on mobile and on the desktop Web.</h4>
-				
-				<hr />
-				
-				<h4>What's in Foundation?</h4>
-				<p>So much good stuff, girl. We've built Foundation to help you quickly get a site off the ground and to a state where you can easily adapt and modify it into a release. Here's the highlights:</p>
-				<div class="row">
-					<div class="six columns">
-						<ul>
-							<li><h5>Global</h5> Foundation's global styles include Eric Meyer's rock-solid reset, tested styles for typography, links, lists, tables and more.</li>
-							<li><h5><a href="grid.php">The Grid</a></h5> You're gonna like this. Within global.css you'll find The Grid (not the one from Tron), a layout framework that works on mobile devices, small screens and full-on modern desktops. It's a twelve column, semi-liquid, mobile-scaling grid of awesomeness that you're gonna love. It even supports arbitrary nesting.</li>
-							<li><h5><a href="buttons.php">Buttons</a></h5> We love buttons at ZURB. Foundation includes two base styles, three sizes, and several colors that are preconfigured and super easy to modify.</li>
-						</ul>
-					</div>
-					<div class="six columns">
-						<ul>
-							<li><h5><a href="forms.php">Forms</a></h5> Hate forms? So do we. They're a pain. Well, we're simplifying that by creating two base styles for forms that are tested, include validation styles, have proper spacing&hellip;all the good stuff. We even included custom radio buttons, checkboxes and select lists so you can style up every form element. They're easy to modify, like everything else.</li>
-							<li><h5><a href="orbit.php">Orbit</a></h5> That's right - Orbit, the awesome way to put image or content sliders on your page, is packaged in with Foundation. It even works on mobile.</li>
-							<li><h5><a href="reveal.php">Reveal</a></h5> Finally, we've created a whole new plugin for modal dialogs in Foundation. Reveal is easy to call, supports several intro animations right out of the box, and is completely stylable. It also works on mobile.</li>
-						</ul>
-					</div>
-				</div>
-				
-				<hr />
-				
-				<h4>Changelog</h4>
-				<h5>2.2.1 <small>April 10, 2012</small></h5>
-				<p>Numerous bug fixes and tweaks to cement Foundation 2 and let us move into Foundation 3.</p>
-				
-				<h5>2.2 <small>February 21, 2012</small></h5>
-				<p>Added breadcrumbs to UI, and made numerous changes to the JS plugins for stability and cross-browser behaviour. Numerous bug fixes both in JS and CSS.</p>
-				
-				<h5>2.1.5 <small>January 26, 2012</small></h5>
-				<p>Numerous bug fixes around the nav, UI elements, edge cases and general code cleanliness. Also added in <a href="ui.php">tooltips and inline labels</a>. The tooltips can be attached to most objects and work cross-device on click or tap. <strong>Note:</strong> Within this version we now include a build of Modernizr to detect touch-enabled devices. Is it not mandatory, but the nav works best with it in place. You can use another build of Modernizr if you have touch-detection and classes turned on.</p>
-				
-				<h5>2.1.4 <small>December 19, 2011</small></h5>
-				<p>Two semi-major new features: <a href="grid.php">source ordering</a> and <a href="ui.php">video embed</a> support. You can now reorder the grid (both desktop/tablet and phone) using push and pull classes. If you need to embed Youtube or Vimeo videos you can wrap them in a simple .flex-video class to have them scale by proportion within the grid. We also updated the nav-bar to work properly across more devices, and fixed a number of other small bugs.</p>
-				
-				<h5>2.1.3 <small>December 9, 2011</small></h5>
-				<p>We've fixed a number of inheritance issues with dropdown nav, and turned off the JS hooks for that element while we resolve some iOS / Android inconsistencies. Dropdowns will work as expected based on their CSS, but have no special mobile functionality at the moment.</p>
-				
-				<h5>2.1.2 <small>December 7, 2011</small></h5>
-				<p>Added nav bar styles to ui.css including arbitrary-content dropdowns. Added basic support for microformats. Modified how the grid handles phone sizes through margin and padding, and in the process fixed a bug which broke the phone grid when used outside another column.</p>
-				
-				<h5>2.1.1 <small>November 21, 2011</small></h5>
-				<p>Fixed an issue with buttons modifying their bottom margin on hover, as well as fixing bugs with rows inside a Reveal modal and changing the desktop visibility for objects with a declared display property.</p>
-				
-				<h5>2.1 <small>November 18, 2011</small></h5>
-				<p>Added in a four-column mobile grid which can be optionally attached to existing grid elements. Retooled the documentation site for better scalability and added in a vertical tabs element. Also included documentation for the new SaSS gem.</p>
-				
-				<h5>2.0.3</h5>
-				<p>Major fixes for Orbit in responsive layouts, various other grid and common element bug fixes.</p>
-				
-				<h5>2.0.2</h5>
-				<p>Changed the download pack to combine CSS and JS into single files for fewer requests on mobile. Split out typography and the Grid into separate files on Github for easier hacking.</p>
-				
-				<h5>2.0.1</h5>
-				<p>Removed PHP from the base download requirements, numerous bugfixes.</p>
-				
-				<h5>2.0.0</h5>
-				<p>Initial public release.</p>
-				
-				
-				<hr />
-				
-				<h4>What's Next for Foundation</h4>
-				<p>We're not content to sit still &mdash; we're going to keep polishing Foundation, fixing edge cases, and preparing for the next major release. Coming to Foundation: templates, site generation, more common elements, and even better mobile support.</p>
-				
-				<hr />
-				
-				<h4>Contributing to Foundation</h4>
-				<p>Foundation is <a href="https://github.com/zurb/foundation">hosted on Github</a>. If you have questions or bugs please file them through Github, but you can also <a href="mailto:jonathan+foundation@zurb.com">talk to us</a> if you want to get into Foundation and help build out the next generation way of rapidly prototyping. Yeah, we're thinking big.</p>
-			</div>
-			<div class="four columns">
-				<? include("includes/_download.php"); ?>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="twelve columns">
-				<dl class="nice tabs mobile show-on-phones">
-					<dd><a href="index.php" class="active">Getting Started</a></dd>
-					<dd><a href="grid.php">Grid</a></dd>
-					<dd><a href="buttons.php">Buttons</a></dd>
-					<dd><a href="forms.php">Forms</a></dd>
-					<dd><a href="layout.php">Layout</a></dd>
-					<dd><a href="ui.php">UI</a></dd>
-					<dd><a href="orbit.php">Orbit</a></dd>
-					<dd><a href="reveal.php">Reveal</a></dd>
-					<dd><a href="qa.php">QA</a></dd>
-				</dl>
-			</div>
-		</div>
-		
-		
+	<div class="row">
+		<section role="main">
+		  <div class="row">
+		    <div class="eight columns">
+    			<h3>Welcome to Foundation 3.</h3>
+    			<p>Foundation 3 is built on ZURB's 14 years of experience at building sites and apps for the Web. We believe designing responsively &mdash; designing for all devices and any device &mdash; is the future. Foundation is our way of helping you do that. What changed in Foundation 3? Almost everything. Here's what makes Foundation, Foundation.</p>
+
+    			<div class="row">
+    			  <div class="four columns">
+      			  <h5>Developed with Sass</h5>
+      			  <p>Foundation 3 is built with Sass, a powerful CSS preprocessor, which allows us to much more quickly develop Foundation itself, as well as sites built with it. You can use the Sass or straight CSS version of Foundation.</p>
+    			  </div>
+    			  <div class="four columns">
+      			  <h5>Feature Complete</h5>
+      			  <p>New button elements, new navigation types, new form styles and options, and tons of streamlining make this the fastest way to prototype responsively, and to take that code and go right to production.</p>
+    			  </div>
+    			  <div class="four columns">
+      			  <h5>Freakishly Advanced</h5>
+      			  <p>Foundation is the most advanced front-end Web framework in the world. While the Framework works back all the way to IE8, we're taking advantage of new, awesome Web technology to help you build faster and better.</p>
+    			  </div>
+    			</div>
+
+    			<hr />
+
+    			<h3>Features of Foundation</h3>
+    			<div class="row">
+      			<div class="six columns">
+        			<h4><a href="grid.php">The Grid</a></h4>
+        			<p>Much of the power of Foundation comes from the grid, a 12-column typographic grid designed to work on almost any sized device screen. With support for nesting, source ordering, offsets and small device presentation it almost makes this too easy.</p>
+
+        			<h4><a href="typography.php">Typography</a></h4>
+        			<p>The typography in Foundation is based on a golden ratio modular scale, so all of your typgraphic elements look great together. Through the power of Sass, the typography is also easy to change both in the base size and ratio.</p>
+
+        			<h4><a href="buttons.php">Buttons</a></h4>
+        			<p>Buttons are one of the core interactive elements of the Web. We've included styles and patterns for buttons that make it simple to create everything from simple marketing CTAs to complex application toolbars.</p>
+
+        		  <h4><a href="forms.php">Forms</a></h4>
+        		  <p>A combination of robust, extensible form styles and the built-in power of the Foundation Grid means you can create simple or complicated forms quickly and easily; validation states, custom select and radio buttons and more are included.</p>
+      			</div>
+
+      			<div class="six columns">
+        		  <h4><a href="navigation.php">Navigation</a></h4>
+        		  <p>People have to get around. Navigation styles in Foundation include simple top bars, sidebars, and subnav pills. We've also included a crazy powerful, responsive top bar that supports N-level dropdowns.</p>
+
+        		  <h4><a href="tabs.php">Tabs</a></h4>
+        		  <p>Whether it's pages or simply tabbed content, Foundation's tabs are not only styled up, but interactive out of the box.</p>
+
+        		  <h4><a href="elements.php">Elements</a></h4>
+        		  <p>We've also included lots of useful elements like visibility classes (to hide or show things based on screen size or orientation), labels, alerts, tooltips, panels and a lot more.</p>
+
+        		  <h4><a href="orbit.php">Orbit</a></h4>
+        		  <p>Orbit is an image or content slider that's designed to work responsively, and includes lots of useful options like timers, paddles, bullets, thumbs and more. It's easy to use and very flexible.</p>
+
+        		  <h4><a href="reveal.php">Reveal</a></h4>
+        		  <p>If you need modal dialogs Reveal has you covered. You can easily call modals without writing any JS, and modals can now even call subsequent modals cleanly on the same page.</p>
+
+
+      			</div>
+    			</div>
+    		</div>
+    		<div class="four columns">
+    		  <? include("includes/_download.php"); ?>
+    		</div>
+      </div>
+		</section>
+
+		<section id="sidebar" role="complementary">
+
+			<dl class="tabs vertical hide-on-phones">
+				<dd class="active"><a href="index.php">Getting Started</a></dd>
+				<dd><a href="installing.php">CSS Version</a></dd>
+        <dd><a href="gem-install.php">Gem Versions</a></dd>
+				<dd><a href="grid.php">The Grid</a></dd>
+				<dd><a href="typography.php">Typography</a></dd>
+				<dd><a href="buttons.php">Buttons</a></dd>
+				<dd><a href="forms.php">Forms</a></dd>
+				<dd><a href="navigation.php">Navigation</a></dd>
+				<dd><a href="tabs.php">Tabs</a></dd>
+				<dd><a href="elements.php">Elements</a></dd>
+				<dd><a href="orbit.php">Orbit</a></dd>
+				<dd><a href="reveal.php">Reveal</a></dd>
+				<dd><a href="support.php">Support</a></dd>
+			</dl>
+
+		</section>
+	</div>
+
+
 <?php include("includes/_documentation_foot.php");  ?>

@@ -1,3 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem "jammit", "~> 0.6.5"
+# Specify your gem's dependencies in foundation.gemspec
+gemspec

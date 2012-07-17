@@ -6,470 +6,127 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8" />
+  <meta charset="utf-8" />
 
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width" />
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
 
-	<title>Welcome to Foundation Testing</title>
+  <title>Welcome to Foundation</title>
 
-	<!-- Included CSS Files -->
-	<!-- Combine and Compress These CSS Files -->
-	<link rel="stylesheet" href="stylesheets/globals.css">
-	<link rel="stylesheet" href="stylesheets/typography.css">
-	<link rel="stylesheet" href="stylesheets/grid.css">
-	<link rel="stylesheet" href="stylesheets/ui.css">
-	<link rel="stylesheet" href="stylesheets/forms.css">
-	<link rel="stylesheet" href="stylesheets/orbit.css">
-	<link rel="stylesheet" href="stylesheets/reveal.css">
-	<link rel="stylesheet" href="stylesheets/mobile.css">
-	<!-- End Combine and Compress These CSS Files -->
-	<link rel="stylesheet" href="stylesheets/app.css">
+  <!-- Included CSS Files -->
+  <link rel="stylesheet" href="marketing/stylesheets/index.css">
 
-	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="stylesheets/ie.css">
-	<![endif]-->
 
-	<script src="javascripts/modernizr.foundation.js"></script>
+  <script src="vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
 
-	<!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
 
-	<style type="text/css">
+    .display-grid .row { background: #eee; margin-bottom: 8px; }
+    .display-grid .column, .display-grid .columns { background: #ddd; }
 
-		.display-grid .row { background: #eee; margin-bottom: 8px; }
-		.display-grid .column, .display-grid .columns { background: #ddd; }
-
-	</style>
-
+  </style>
 </head>
 <body>
 
-	<!-- container -->
-	<div class="container">
-
-		<div class="row">
-			<div class="twelve columns">
-				<h2>Foundation Testbed</h2>
-				<p>This page includes common elements and weird edge cases so we can test the crap out of stuff. It will probably change in each release to test new elements.</p>
-				<hr />
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="twelve columns">
-				<ul class="nav-bar">
-					<li>
-						<a href="#" class="main">Nav Item 1</a>
-				        </li>
-					<li class="has-flyout">
-						<a href="#" class="main">Nav Item 2</a>
-						<a href="#" class="flyout-toggle"><span></span></a>
-						<div class="flyout small">
-							<h5>Small Example (200px)</h5>
-							<p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. </p>
-						</div>
-					</li>
-					<li class="has-flyout">
-						<a href="#" class="main">Nav Item 3</a>
-						<a href="#" class="flyout-toggle"><span></span></a>
-						<div class="flyout">
-				  			Content...
-				  		</div>
-					</li>
-					<li class="has-flyout">
-						<a href="#" class="main">Nav Item 4</a>
-						<a href="#" class="flyout-toggle"><span></span></a>
-						<div class="flyout large right">
-				        		Content...
-				  		</div>
-					</li>
-					<li class="has-flyout">
-					  <a href="#" class="main" data-reveal-id="testModal">Reveal</a>
-					  <a href="#" class="flyout-toggle"><span></span></a>
-					  <div class="flyout large right">
-              Content...
-				  	</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="eight columns">
-
-				<ul class="breadcrumbs">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Features</a></li>
-					<li><a href="#">Gene Splicing</a></li>
-					<li><a href="#">Features</a></li>
-					<li><a href="#">Gene Splicing</a></li>
-					<li><a href="#">Features</a></li>
-					<li><a href="#">Gene Splicing</a></li>
-					<li class="current"><a href="#">Home</a></li>
-				</ul>
-
-				<ul class="breadcrumbs">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Features</a></li>
-					<li class="unavailable"><a href="#">Gene Splicing</a></li>
-					<li class="current"><a href="#">Home</a></li>
-				</ul>
-
-				<ul class="breadcrumbs">
-					<li><span>Home</span></li>
-					<li><span>Features</span></li>
-					<li><span>Gene Splicing</span></li>
-					<li class="current"><span>Home</span></li>
-				</ul>
-
-
-				<form>
-					<input type="submit" class="tiny blue nice button radius" />
-					<a href="#" class="tiny blue nice button radius">Link Button</a>
-				</form>
-
-				<form>
-					<input type="submit" class="small blue nice button radius" />
-					<a href="#" class="small blue nice button radius">Link Button</a>
-				</form>
-
-				<form>
-					<input type="submit" class="medium blue nice button radius" />
-					<a href="#" class="medium blue nice button radius">Link Button</a>
-				</form>
-
-				<form>
-					<input type="submit" class="large blue nice button radius" />
-					<a href="#" class="large blue nice button radius">Link Button</a>
-				</form>
-
-				<h3>The Grid</h3>
-
-				<div class="display-grid">
-					<div class="row">
-						<div class="twelve columns">
-							This is a twelve column section in a row.
-						</div>
-					</div>
-					<div class="row">
-						<div class="six columns">
-							Six Columns
-						</div>
-						<div class="six columns">
-							Six Columns
-						</div>
-					</div>
-					<div class="row">
-						<div class="eight columns">
-							Eight Columns
-						</div>
-						<div class="four columns">
-							Four Columns
-						</div>
-					</div>
-					<div class="row">
-						<div class="four columns">
-							Four Columns
-						</div>
-						<div class="four columns">
-							Four Columns
-						</div>
-						<div class="four columns">
-							Four Columns
-						</div>
-					</div>
-					<div class="row">
-						<div class="three columns">
-							Three Columns
-						</div>
-						<div class="three columns">
-							Three Columns
-						</div>
-						<div class="three columns">
-							Three Columns
-						</div>
-						<div class="three columns">
-							Three Columns
-						</div>
-					</div>
-					<div class="row">
-						<div class="ten columns">
-							Ten Columns
-						</div>
-						<div class="two columns">
-							Two
-						</div>
-					</div>
-					<div class="row">
-						<div class="two columns">
-							Two
-						</div>
-						<div class="two columns">
-							Two
-						</div>
-						<div class="two columns">
-							Two
-						</div>
-						<div class="two columns">
-							Two
-						</div>
-						<div class="two columns">
-							Two
-						</div>
-						<div class="two columns">
-							Two
-						</div>
-					</div>
-				</div>
-
-				<h3>Tabs</h3>
-				<dl class="contained mobile tabs">
-					<dd><a href="#simple1" class="active">Complex Form Content</a></dd>
-					<dd><a href="#simple2">Modal Dialog Call</a></dd>
-					<dd><a href="#simple3">UI Elements</a></dd>
-				</dl>
-
-				<ul class="contained tabs-content">
-					<li class="active" id="simple1Tab">
-						<form>
-							<label>Label</label>
-							<input type="text" class="input-text expand" placeholder="input.input-text.expand" />
-
-							<p>This is a paragraph with an inline select element.
-								<select>
-									<option>Option 1</option>
-								</select>
-							</p>
-
-							<input type="submit" class="blue button" value="Submit Input" />
-						</form>
-
-						<form class="nice">
-							<label>Nice Form Label</label>
-							<input type="text" class="input-text expand" placeholder="input.input-text.expand" />
-
-							<p>This is a paragraph with an inline select element.
-								<select>
-									<option>Option 1</option>
-								</select>
-							</p>
-
-							<input type="submit" class="nice blue button" value="Submit Input" />
-						</form>
-
-						<form class="custom">
-							<label>Custom Form Label</label>
-							<input type="text" class="input-text expand" placeholder="input.input-text.expand" />
-
-							<p>This is a paragraph with an inline select element.
-								<select class="small">
-									<option></option>
-									<option>Option 1</option>
-									<option>Option 2</option>
-									<option>Option 3</option>
-									<option>Option 4</option>
-									<option>Option 5</option>
-									<option>Option 6</option>
-								</select>
-							</p>
-
-							<p>This is a paragraph with an inline select element.
-								<select>
-									<option>Option 1</option>
-									<option>Option 2</option>
-									<option>Option 3</option>
-									<option>Option 4</option>
-									<option>Option 5</option>
-									<option>Option 6</option>
-								</select>
-							</p>
-
-							<input type="submit" class="nice blue button" value="Submit Input" />
-						</form>
-
-					</li>
-					<li id="simple2Tab">
-						<p>This button calls a modal from within the tabs.</p>
-						<a href="#" data-reveal-id="testModal" class="nice blue button">Fire Reveal Modal</a>
-
-						<form class="custom">
-							<label>Custom Form Label</label>
-							<input type="text" class="input-text expand" placeholder="input.input-text.expand" />
-
-							<p>This is a paragraph with an inline select element.
-								<select class="small">
-									<option></option>
-									<option>Option 1</option>
-									<option>Option 2</option>
-									<option>Option 3</option>
-									<option>Option 4</option>
-									<option>Option 5</option>
-									<option>Option 6</option>
-								</select>
-							</p>
-
-							<p>This is a paragraph with an inline select element.
-								<select>
-									<option>Option 1</option>
-									<option>Option 2</option>
-									<option>Option 3</option>
-									<option>Option 4</option>
-									<option>Option 5</option>
-									<option>Option 6</option>
-								</select>
-							</p>
-
-							<input type="submit" class="nice blue button" value="Submit Input" />
-						</form>
-					</li>
-					<li id="simple3Tab">
-						<div class="alert-box success">
-							This is a success alert (div.alert-box.success).
-							<a href="" class="close">&times;</a>
-						</div>
-
-						<p>
-							<span class="blue radius label">Added 01/19</span> This <span class="has-tip bottom" id="interestingTip" data-width="210" title="Some small explanation or tidbit that would live within the tooltip. Should only work for simple text tips.">paragraph</span> has an inline label to let you know that it was added on January 19, 2012 courtesy of Thomas Klemm. Thanks man!
-						</p>
-
-						<ul class="pagination">
-							<li class="unavailable"><a href="">&laquo;</a></li>
-							<li class="current"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">4</a></li>
-							<li class="unavailable"><a href="">&hellip;</a></li>
-							<li><a href="">12</a></li>
-							<li><a href="">13</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
-					</li>
-				</ul>
-
-				<h3>Buttons</h3>
-				<div class="row">
-					<div class="six columns">
-						<p><a href="#" class="tiny white button">Tiny White Button</a></p>
-						<p><a href="#" class="small blue button">Small Blue Button</a></p>
-						<p><a href="#" class="red button">Medium Red Button</a></p>
-						<p><a href="#" class="large black button">Large Black Button</a></p>
-					</div>
-					<div class="six columns">
-						<p><a href="#" class="nice radius tiny white button">Tiny White Button</a></p>
-						<p><a href="#" class="nice radius small blue button">Nice Blue Button</a></p>
-						<p><a href="#" class="nice radius red button">Nice Red Button</a></p>
-						<p><a href="#" class="nice radius large black button">Nice Black Button</a></p>
-					</div>
-				</div>
-
-				<h3>Reveal</h3>
-				<div class="row">
-					<div class="six columns">
-					  <h6>Data Attributes</h6>
-						<p>
-						  <a href="#" class="tiny blue button" data-reveal-id="testModal">Default</a>
-						  <a href="#" class="tiny blue button" data-reveal-id="testModal" data-animation="fade">Fade</a>
-						  <a href="#" class="tiny blue button" data-reveal-id="testModal" data-animation="none">None</a>
-						</p>
-						<h6>JavaScript</h6>
-						<p>
-						  <a href="#" id="fireReveal" class="tiny blue button">Default</a>
-						  <a href="#" id="fireRevealFade" class="tiny blue button">Fade</a>
-						  <a href="#" id="fireRevealNone" class="tiny blue button">None</a>
-						</p>
-					</div>
-				</div>
-
-				<h3>Disabled Forms</h3>
-				<form class="custom">
-
-  				<label for="radio1"><input name="radio1" type="radio" id="radio1" style="display: none; "> Radio Button 1</label>
-  				<label for="radio2"><input name="radio1" type="radio" id="radio2" style="display: none; "> Radio Button 2</label>
-  				<label for="radio3"><input name="radio1" disabled="DISABLED" type="radio" id="radio3" style="display: none; "> Radio Button 3</label>
-
-					<label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none; "> Label for Checkbox</label>
-					<label for="checkbox2"><input type="checkbox" id="checkbox2" checked="" style="display: none; "> Label for Checkbox</label>
-					<label for="checkbox3"><input type="checkbox" disabled="DISABLED" checked="" id="checkbox3" style="display: none; "> Label for Checkbox</label>
-
-					<p>This is a paragraph with an inline select element.
-						<select disabled="DISABLED">
-							<option>Option 1</option>
-							<option>Option 2</option>
-							<option>Option 3</option>
-							<option>Option 4</option>
-							<option>Option 5</option>
-							<option>Option 6</option>
-						</select>
-					</p>
-				</form>
-
-			</div>
-
-			<div class="four columns">
-				<dl class="sub-nav">
-					<dt>Filter:</dt>
-					<dd class="active"><a href="#">All</a></dd>
-					<dd><a href="#">Active</a></dd>
-					<dd><a href="#">Pending</a></dd>
-				</dl>
-
-				<h4>Other <span class="has-tip" title="Dude is awesome" data-selector="bigBob">Resources</span></h4>
-				<p>Once you've exhausted the fun in this document, you should check out:</p>
-				<ul class="disc">
-					<li><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</li>
-					<li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
-					<li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
-				</ul>
-
-				<p><a href="#" class="tiny white button">Tiny White Button</a></p>
-			</div>
-		</div>
-
-	</div>
-	<!-- container -->
-
-	<div id="testModal" class="reveal-modal">
-	     <h2>Awesome. I have it.</h2>
-	     <p class="lead">Your couch.  It's mine.</p>
-	     <form class="nice custom">
-			<label>Custom Form Label</label>
-			<input type="text" class="input-text expand" placeholder="input.input-text.expand" />
-
-			<p>This is a paragraph with an inline select element.
-				<select>
-					<option>Option 1</option>
-					<option>Option 2</option>
-					<option>Option 3</option>
-					<option>Option 4</option>
-					<option>Option 5</option>
-					<option>Option 6</option>
-					<option>Option 7</option>
-				</select>
-			</p>
-
-			<input type="submit" class="nice blue button" value="Submit Input" />
-		</form>
-	     <a class="close-reveal-modal">&#215;</a>
-	</div>
-
-
+      
+  <div class="row">
+    <div class="eight columns">
+      <h4>Visibility Classes</h4>
+      <p>Foundation 3 allows you to easily turn elements on and off based on certain device criteria, like screen size, touch, or orientation.</p>
+      
+      <h5>Screen Size</h5>
+      <p>The following text should describe the device you're using:
+        <strong class="show-for-xlarge">You are on a very large screen.</strong>
+        <strong class="show-for-large">You are on a large screen.</strong>
+        <strong class="show-for-large-up">You are on a large or very large screen.</strong>
+        <strong class="show-for-medium">You are on a medium screen.</strong>
+        <strong class="show-for-medium-down">You are on a medium or small screen.</strong>
+        <strong class="show-for-small">You are on a small screen, like a smartphone.</strong>
+      </p>
+      
+      <p>This example uses the opposite rules, so the following text should inversely describe the device you're using:
+        <strong class="hide-for-xlarge">You are not on a very large screen.</strong>
+        <strong class="hide-for-large">You are not on a large screen.</strong>
+        <strong class="hide-for-large-up">You are not on a large or very large screen.</strong>
+        <strong class="hide-for-medium-down">You are not on a medium or small screen.</strong>
+        <strong class="hide-for-medium">You are not on a medium screen.</strong>
+        <strong class="hide-for-small">You are not on a small screen.</strong>
+      </p>
+      
+      <h5>Orientation Detection</h5>
+      <p>The following text should describe the device you're using:
+        <strong class="show-for-landscape">You are in landscape orientation.</strong>
+        <strong class="show-for-portrait">You are in portrait orientation.</strong>
+      </p>
+      
+      <h5>Touch Detection</h5>
+      <p>The following text should describe the device you're using:
+        <strong class="show-for-touch">You are on a touch-enabled device.</strong>
+        <strong class="hide-for-touch">You are not on a touch-enabled device.</strong>
+      </p>
+      
+      <ul class="radius button-group">
+        <li>
+          <input type="submit" value="Save" class="medium secondary button" />
+        </li>
+        <li>
+          <input type="submit" value="Publish" class="medium success button" />
+        </li>
+      </ul>
+      
+      <input type="submit" value="Publish" class="medium success button" />
+      <a href="" class="success button">Publish</a>
+      
+      <ul class="radius button-group">
+        <li>
+          <a href="" class="secondary button">Save</a>
+        </li>
+        <li>
+          <a href="" class="success button">Publish</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="four columns">
+      <div class="row">
+        <div class="six columns">
+          <img src="http://placehold.it/200x200" />
+        </div>
+        <div class="six columns">
+          <img src="http://placehold.it/200x200" />
+        </div>
+      </div>
+      
+      <ul class="block-grid two-up">
+        <li><img src="http://placehold.it/200x200" /></li>
+        <li><img src="http://placehold.it/200x200" /></li>
+      </ul>
+    </div>
+  </div>
+		
+		
 
 
 	<!-- Included JS Files -->
-	<script src="javascripts/jquery.min.js"></script>
-	<!-- Combine and Compress These JS Files -->
-	<script src="javascripts/jquery.reveal.js"></script>
-	<script src="javascripts/jquery.orbit-1.4.0.js"></script>
-	<script src="javascripts/jquery.customforms.js"></script>
-	<script src="javascripts/jquery.placeholder.min.js"></script>
-	<script src="javascripts/jquery.tooltips.js"></script>
-	<!-- End Combine and Compress These JS Files -->
-	<script src="javascripts/app.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.min.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.reveal.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.orbit-1.4.0.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.customforms.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.placeholder.min.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.tooltips.js"></script>
+  <script src="vendor/assets/javascripts/foundation/app.js"></script>
 
 	<script>
+	  $(window).load(function() {
+       $('#orbitTest').orbit({
+        fluid: '16x9'
+       });
+    });
+
 	  $('#testModal').bind('reveal:open reveal:opened reveal:close reveal:closed', function (event) {
 	    console.log(event);
 	  });
@@ -489,6 +146,5 @@
 	    $('#testModal').reveal({animation: 'none'});
 	  });
 	</script>
-
 </body>
 </html>
