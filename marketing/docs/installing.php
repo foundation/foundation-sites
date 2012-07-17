@@ -23,7 +23,7 @@
   				<hr />
   				
   				<h4>Upgrading from 2.x to 3.0</h4>
-  				<p>If you want to upgrade your Foundation 2 app or site to Foundation 2, you'll need to download a new version of Foundation (custom or the default). Swap out your foundation.css file for the one in 3.0. Replace all of your JS with the new versions. If you have your own JS in those files be sure to port it over, and other JS files you have should be fine.</p>
+  				<p>If you want to upgrade your Foundation 2 app or site to Foundation 3, you'll need to download a new version of Foundation (custom or the default). Swap out your foundation.css file for the one in 3.0. Replace all of your JS with the new versions. If you have your own JS in those files be sure to port it over, and other JS files you have should be fine.</p>
   				<p>Once you've made those changes consult this <a href="../migration.php">migration guide</a> to see what you'll need to change in your markup.</p>
   				
   				
