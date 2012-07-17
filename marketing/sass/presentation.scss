@@ -55,6 +55,21 @@ header#homepage .button { background: #137795; border: none; -webkit-box-shadow:
   }
 }
 
+@media only screen and (max-width: 767px) {
+  
+  #mainDownload { display: none; }
+  #deviceDownload { margin-bottom: 12px; }
+  #watch { float: none; width: 100%;
+    
+    section { float: left; width: 50%; 
+      .button { width: 80%; display: inline-block; float: right; }
+      &:first-child .button { width: 60%; float: none; }
+    }
+  }
+
+}
+
+
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { header#homepage { background-size: auto 357.5px; background-image: url('../images/device-bg-retina.png?1340846519'); } }
 #homepageFeatures { background: #ecf8ff; padding: 88px 0 44px 0; margin-bottom: 44px; }
 #homepageFeatures h3 { color: #2ba6cb; }
