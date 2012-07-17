@@ -956,8 +956,17 @@ header#homepage { background: url("../images/device-bg.png?1340846519") center b
 header#homepage h4 { margin-bottom: 44px; }
 
 header#homepage .button { background: #137795; border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
-
 header#homepage .button:hover { background: #006582; }
+header#homepage .button.secondary { background: #fff; background: rgba(0, 0, 0, 0.15); color: rgba(255, 255, 255, 0.55); }
+header#homepage .button.secondary.small { padding: 5px 8px 6px; }
+header#homepage .button.secondary:hover { background: rgba(0, 0, 0, 0.25); color: rgba(255, 255, 255, 0.75); }
+
+#mainDownload { float: left; margin-right: 12px; }
+
+#watch { margin-bottom: 3px; width: 147px; overflow: hidden; float: left; }
+#watch section { display: block; width: 300px; margin-bottom: 4px; }
+#watch span { background: white; background: rgba(0, 0, 0, 0.05); color: rgba(255, 255, 255, 0.35); font-size: 11px; font-weight: bold; padding: 5px 8px 6px; margin-left: 5px; position: relative; display: inline-block; }
+#watch span small { content: ""; display: block; width: 0; height: 0; border: solid 4px; border-color: transparent rgba(0, 0, 0, 0.05) transparent transparent; position: absolute; left: -8px; top: 7px; }
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { header#homepage { background-size: auto 357.5px; background-image: url("../images/device-bg-retina.png?1340846519"); } }
 #homepageFeatures { background: #ecf8ff; padding: 88px 0 44px 0; margin-bottom: 44px; }
