@@ -968,6 +968,12 @@ header#homepage .button.secondary:hover { background: rgba(0, 0, 0, 0.25); color
 #watch span { background: white; background: rgba(0, 0, 0, 0.05); color: rgba(255, 255, 255, 0.35); font-size: 11px; font-weight: bold; padding: 5px 8px 6px; margin-left: 5px; position: relative; display: inline-block; }
 #watch span small { content: ""; display: block; width: 0; height: 0; border: solid 4px; border-color: transparent rgba(0, 0, 0, 0.05) transparent transparent; position: absolute; left: -8px; top: 7px; }
 
+@media only screen and (max-width: 767px) { #mainDownload { display: none; }
+  #deviceDownload { margin-bottom: 12px; }
+  #watch { float: none; width: 100%; }
+  #watch section { float: left; width: 50%; }
+  #watch section .button { width: 80%; display: inline-block; float: right; }
+  #watch section:first-child .button { width: 60%; float: none; } }
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { header#homepage { background-size: auto 357.5px; background-image: url("../images/device-bg-retina.png?1340846519"); } }
 #homepageFeatures { background: #ecf8ff; padding: 88px 0 44px 0; margin-bottom: 44px; }
 
