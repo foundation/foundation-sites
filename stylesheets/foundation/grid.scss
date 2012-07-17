@@ -58,16 +58,16 @@
     .column:after, .columns:after { clear: both; }
 
     // Placeholder classes for mobile grid overrides
-    .no-left-margin { margin-left: 0 !important; }
-    .left-auto { left: auto; }
-    .right-auto { right: auto; }
+    %no-left-margin { margin-left: 0 !important; }
+    %left-auto { left: auto; }
+    %right-auto { right: auto; }
 
     @for $i from 1 through $totalColumns - 2 {
-      .offset-by-#{convert-number-to-word($i)} { @extend .no-left-margin; }
+      .offset-by-#{convert-number-to-word($i)} { @extend %no-left-margin; }
     }
     @for $i from 2 through $totalColumns - 2 {
-      .push-#{convert-number-to-word($i)} { @extend .left-auto; }
-      .pull-#{convert-number-to-word($i)} { @extend .right-auto; }
+      .push-#{convert-number-to-word($i)} { @extend %left-auto; }
+      .pull-#{convert-number-to-word($i)} { @extend %right-auto; }
     }
 
     /* Mobile 4-column Grid */
@@ -105,6 +105,9 @@ that IE7/8 do not support :nth-child.
     &>li { display: block; height: auto; float: left; }
   }
 
+  .block-grid.one-up { margin: 0; }
+  .block-grid.one-up>li { width: 100%; padding: 0 0 15px; }
+  
   .block-grid.two-up { margin: 0 -15px; }
   .block-grid.two-up>li { width: 50%; padding: 0 15px 15px; }
   /*  .block-grid.two-up>li:nth-child(2n+1) {clear: left;} */

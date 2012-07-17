@@ -39,7 +39,7 @@
   				<h5>Orientation Detection</h5>
   				<p>The following text should describe the device you're using:
             <strong class="show-for-landscape">You are in landscape orientation.</strong>
-            <strong class="show-for-portrait">You are in protrait orientation.</strong>
+            <strong class="show-for-portrait">You are in portrait orientation.</strong>
   				</p>
 
   				<script src="https://gist.github.com/2993845.js?file=f3-orientation.html"></script>

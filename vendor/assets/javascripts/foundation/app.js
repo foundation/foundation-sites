@@ -23,6 +23,7 @@ jQuery(document).ready(function ($) {
 
   $('dl.tabs dd a').on('click.fndtn', function (event) {
     activateTab($(this).parent('dd'));
+    return false;
   });
 
   if (window.location.hash) {
@@ -87,19 +88,19 @@ jQuery(document).ready(function ($) {
   /* SPLIT BUTTONS/DROPDOWNS */
   $('.button.dropdown > ul').addClass('no-hover');
 
-  $('.button.dropdown').on('click.fndtn touchstart.fndtn', function (e) {
+  $('.button.dropdown').on('click.fndtn', function (e) {
     e.stopPropagation();
   });
-  $('.button.dropdown.split span').on('click.fndtn touchstart.fndtn', function (e) {
+  $('.button.dropdown.split span').on('click.fndtn', function (e) {
     e.preventDefault();
     $('.button.dropdown').not($(this).parent()).children('ul').removeClass('show-dropdown');
     $(this).siblings('ul').toggleClass('show-dropdown');
   });
-  $('.button.dropdown').not('.split').on('click.fndtn touchstart.fndtn', function (e) {
+  $('.button.dropdown').not('.split').on('click.fndtn', function (e) {
     $('.button.dropdown').not(this).children('ul').removeClass('show-dropdown');
     $(this).children('ul').toggleClass('show-dropdown');
   });
-  $('body, html').on('click.fndtn touchstart.fndtn', function () {
+  $('body, html').on('click.fndtn', function () {
     $('.button.dropdown ul').removeClass('show-dropdown');
   });
 
