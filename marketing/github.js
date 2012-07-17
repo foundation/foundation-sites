@@ -12,6 +12,14 @@ $(document).ready(function() {
 		$('#github .commit').attr('href', "https://github.com/zurb/foundation/commit/" + latest.sha);
     } 
   });
+  $.ajax({
+  	dataType: 'jsonp',
+  	url: 'https://api.github.com/repos/zurb/foundation?callback=foundationGithub',
+  	success: function(response) {
+  		var watchers = (Math.round((response.data.watchers / 100), 10) / 10).toFixed(1);
+  		$('.watchers').html(watchers + 'k<small></small>');
+  	}
+  });
   // $.ajax({
   //   url: "http://github.com/api/v2/json/repos/show/zurb/foundation/tags",
   //   dataType: 'jsonp',

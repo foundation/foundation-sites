@@ -11,7 +11,7 @@
         <a href="download.php" class="large button" id="mainDownload">Download Foundation 3.0</a>
         <div id="watch">
           <section>
-            <a href="http://github.com/zurb/foundation" class="small secondary button">Watch on Github</a><span>5.1k<small></small></span>
+            <a href="http://github.com/zurb/foundation" class="small secondary button">Watch on Github</a><span class="watchers">&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;<small></small></span>
           </section>
           <section>
             <a href="http://twitter.com/foundationzurb" class="small secondary button">Follow @foundationzurb</a>
