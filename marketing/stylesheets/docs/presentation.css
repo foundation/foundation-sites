@@ -557,6 +557,7 @@ input[type=submit].button, button.button { -webkit-appearance: none; }
 .button.dropdown.split > span { background-color: #2ba6cb; position: absolute; right: 0; top: 0; height: 100%; width: 30px; border-left: 1px solid #1e728c; -webkit-box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5) inset; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; }
 .button.dropdown.split > span:hover { background-color: #2284a1; }
 .button.dropdown.split > span:after { content: ""; display: block; width: 0; height: 0; border: solid 6px; border-color: white transparent transparent transparent; position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
+.button.dropdown.split.secondary > span:after { content: ""; display: block; width: 0; height: 0; border: solid 6px; border-color: #1d1d1d transparent transparent transparent; }
 .button.dropdown.split.large span { width: 45px; }
 .button.dropdown.split.small span { width: 21px; }
 .button.dropdown.split.tiny span { width: 15px; }
@@ -566,6 +567,7 @@ input[type=submit].button, button.button { -webkit-appearance: none; }
 .button.dropdown.split.alert > span { background-color: #c60f13; border-left-color: #7f0a0c; }
 .button.dropdown.split.success > span { background-color: #5da423; border-left-color: #396516; }
 .button.dropdown.split.secondary > span { background-color: #e9e9e9; border-left-color: #c3c3c3; }
+.button.dropdown.split.secondary > a { color: #1d1d1d; }
 .button.dropdown.split.alert > a:hover, .button.dropdown.split.alert > span:hover { background-color: #970b0e; }
 .button.dropdown.split.success > a:hover, .button.dropdown.split.success > span:hover { background-color: #457a1a; }
 .button.dropdown.split.secondary > a:hover, .button.dropdown.split.secondary > span:hover { background-color: #d0d0d0; }

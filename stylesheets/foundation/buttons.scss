@@ -120,6 +120,8 @@
         &:hover { background-color: darken($mainColor, 10%); }
         &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
       }
+      &.secondary>span:after { @include cssTriangle(6px, darken(($secondaryColor), 80%), top); }
+      
       &.large span { width: $largeBtnBase * 3; }
       &.small span { width: $smallBtnBase * 3; }
       &.tiny span { width: $tinyBtnBase * 3; }
@@ -132,6 +134,7 @@
       &.alert>span { background-color: $alertColor; border-left-color: darken($alertColor, 15%); }
       &.success>span { background-color: $successColor; border-left-color: darken($successColor, 15%); }
       &.secondary>span { background-color: $secondaryColor; border-left-color: darken($secondaryColor, 15%); }
+      &.secondary>a { color: darken(($secondaryColor), 80%); }
 
       &.alert>a:hover, &.alert>span:hover { background-color: darken($alertColor, 10%); }
       &.success>a:hover, &.success>span:hover { background-color: darken($successColor, 10%); }
