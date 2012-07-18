@@ -75,7 +75,7 @@
         return (id) ? id : dataSelector;
       },
       create : function ($target) {
-        var $tip = $(settings.tipTemplate(methods.selector($target), $('<div/>').text($target.attr('title')).html()),
+        var $tip = $(settings.tipTemplate(methods.selector($target), $('<div/>').text($target.attr('title')).html())),
           classes = methods.inheritable_classes($target);
 
         $tip.addClass(classes).appendTo('body');
