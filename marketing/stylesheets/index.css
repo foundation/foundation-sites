@@ -513,6 +513,13 @@ p.vevent abbr { cursor: default; text-decoration: none; font-weight: bold; borde
 .button.full-width { width: 100%; text-align: center; padding-left: 0 !important; padding-right: !important; }
 .button.left-align { text-align: left; text-indent: 12px; }
 .button.disabled, .button[disabled] { opacity: 0.6; cursor: default; background: #2ba6cb; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+.button.disabled :hover, .button[disabled] :hover { background: #2ba6cb; }
+.button.disabled.success, .button[disabled].success { background-color: #5da423; }
+.button.disabled.success:hover, .button[disabled].success:hover { background-color: #5da423; }
+.button.disabled.alert, .button[disabled].alert { background-color: #c60f13; }
+.button.disabled.alert:hover, .button[disabled].alert:hover { background-color: #c60f13; }
+.button.disabled.secondary, .button[disabled].secondary { background-color: #e9e9e9; }
+.button.disabled.secondary:hover, .button[disabled].secondary:hover { background-color: #e9e9e9; }
 
 /* Don't use native buttons on iOS */
 input[type=submit].button, button.button { -webkit-appearance: none; }

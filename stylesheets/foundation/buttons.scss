@@ -44,7 +44,19 @@
     &.left-align { text-align: left; text-indent: 12px; }
 
 		/* Disabled ---------- */
-    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none); }
+    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none); 
+      :hover { background: $mainColor; }
+      
+      &.success { background-color: $successColor; 
+        &:hover { background-color: $successColor; }
+      }
+      &.alert { background-color: $alertColor; 
+        &:hover { background-color: $alertColor; }
+      }
+      &.secondary { background-color: $secondaryColor; 
+        &:hover { background-color: $secondaryColor; }
+      }
+    }
 	}
 
   /* Don't use native buttons on iOS */
