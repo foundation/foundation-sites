@@ -573,7 +573,9 @@ input[type=submit].button, button.button { -webkit-appearance: none; }
 .button.dropdown.split.secondary > a:hover, .button.dropdown.split.secondary > span:hover { background-color: #d0d0d0; }
 
 /* Button Groups ---------------------- */
-ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; overflow: hidden; }
+ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; *zoom: 1; }
+ul.button-group:before, ul.button-group:after { content: ""; display: table; }
+ul.button-group:after { clear: both; }
 ul.button-group li { padding: 0; margin: 0 0 0 -1px; float: left; }
 ul.button-group li:first-child { margin-left: 0; }
 ul.button-group.radius li:first-child .button, ul.button-group.radius li:first-child .button.radius, ul.button-group.radius li:first-child .button.rounded { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; border-top-left-radius: 3px; border-bottom-left-radius: 3px; }

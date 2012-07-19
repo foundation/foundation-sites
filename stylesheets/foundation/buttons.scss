@@ -144,7 +144,7 @@
 
   /* Button Groups ---------------------- */
 
-  ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; overflow: hidden;
+  ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; @include clearfix();
 
     li { padding: 0; margin: 0 0 0 -1px; float: left;
       &:first-child { margin-left: 0; }
