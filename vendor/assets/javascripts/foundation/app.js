@@ -77,6 +77,19 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  // Accordion
+  $('.accordion li').on('click.fndtn', function() {
+    var flyout = $(this).children('.content').first();
+    if (lockNavBar === false) {
+      $('.accordion .content').not(flyout).slideUp(500).parent('li').removeClass('active');
+      flyout.slideToggle(500, function() {
+        flyout.parent('li').addClass('active');
+        lockNavBar = false;
+      });
+    }
+    lockNavBar = true;
+  });
+
   /* DISABLED BUTTONS ------------- */
   /* Gives elements with a class of 'disabled' a return: false; */
   $('.button.disabled').on('click.fndtn', function (event) {
