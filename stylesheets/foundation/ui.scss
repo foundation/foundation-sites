@@ -8,6 +8,7 @@
 :: Labels
 :: Tooltips
 :: Panels
+:: Accordion
 :: Side Nav
 :: Sub Nav
 :: Pagination
@@ -222,6 +223,33 @@
     &.radius { @include border-radius($buttonRadius); }
 
   }
+  
+  /* Accordion ---------------------- */
+  
+  ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid $secondaryColor;
+    
+    li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
+      
+      .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
+        
+        h1, h2, h3, h4, h5 { margin: 0; }
+        &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), right); position: absolute; right: 15px; top: 21px; }
+      }
+      
+      .content { display: none; padding: 15px; }
+      
+      &.active { border-top: 3px solid $mainColor;
+      
+        .title { background: $white; padding-top: 13px;
+          
+          &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), top); }
+        }
+        .content { background: $white; display: block; border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; }
+      }
+    }
+  }
+  
+  
 
   /* Side Nav ---------------------- */
 
