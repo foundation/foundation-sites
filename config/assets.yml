@@ -7,6 +7,7 @@ javascripts:
     - vendor/assets/javascripts/foundation/modernizr.foundation.js
     - vendor/assets/javascripts/foundation/jquery.placeholder.js
     - vendor/assets/javascripts/foundation/jquery.foundation.alerts.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.accordion.js
     - vendor/assets/javascripts/foundation/jquery.foundation.buttons.js
     - vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js
     - vendor/assets/javascripts/foundation/jquery.foundation.forms.js
@@ -27,6 +28,7 @@ javascripts:
     - vendor/assets/javascripts/foundation/modernizr.foundation.js
     - vendor/assets/javascripts/foundation/jquery.placeholder.js
     - vendor/assets/javascripts/foundation/jquery.foundation.alerts.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.accordion.js
     - vendor/assets/javascripts/foundation/jquery.foundation.buttons.js
     - vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js
     - vendor/assets/javascripts/foundation/jquery.foundation.forms.js
