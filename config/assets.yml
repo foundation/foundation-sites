@@ -2,6 +2,22 @@ compress_assets: on
 gzip_assets: off
 
 javascripts:
+  jquery:
+    - vendor/assets/javascripts/foundation/jquery.js
+    
+  foundation:
+    - vendor/assets/javascripts/foundation/modernizr.foundation.js
+    - vendor/assets/javascripts/foundation/jquery.placeholder.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.alerts.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.accordion.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.buttons.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.forms.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.tabs.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.navigation.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.reveal.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.orbit.js
+    
   marketing:
     - vendor/assets/javascripts/foundation/jquery.js
     - vendor/assets/javascripts/foundation/modernizr.foundation.js

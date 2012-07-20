@@ -16,20 +16,32 @@ stylesheet 'sass/app.scss',                                       :to => 'app.sc
 
 # Relative asset paths
 js_path = "/../../vendor/assets/javascripts/foundation"
+compressed_js_path = "/../../public/assets"
 images_path = "/../../vendor/assets/images/foundation"
 
-# Javascripts
-javascript "#{js_path}/jquery.min.js",             :to => "jquery.min.js"
-javascript "#{js_path}/modernizr.foundation.js",   :to => "foundation/modernizr.foundation.js"
-javascript "#{js_path}/jquery.customforms.js",     :to => "foundation/jquery.customforms.js"
-javascript "#{js_path}/jquery.reveal.js",          :to => "foundation/jquery.reveal.js"
-javascript "#{js_path}/jquery.orbit-1.4.0.js",     :to => "foundation/jquery.orbit-1.4.0.js"
-javascript "#{js_path}/jquery.tooltips.js",        :to => "foundation/jquery.tooltips.js"
-javascript "#{js_path}/jquery.placeholder.min.js", :to => "foundation/jquery.placeholder.min.js"
-javascript "#{js_path}/app.js",                    :to => "app.js"
+# Compressed Javascripts
+javascript "#{compressed_js_path}/jquery.js",             :to => "jquery.min.js"
+javascript "#{compressed_js_path}/foundation.js",         :to => "foundation.min.js"
+
+# Uncompressed Javascripts
+javascript "#{js_path}/jquery.js",                        :to => "jquery.js"
+javascript "#{js_path}/modernizr.foundation.js",          :to => "foundation/modernizr.foundation.js"
+javascript "#{js_path}/jquery.placeholder.js",            :to => "foundation/jquery.placeholder.js"
+javascript "#{js_path}/jquery.foundation.alerts.js",      :to => "foundation/jquery.foundation.alerts.js"
+javascript "#{js_path}/jquery.foundation.accordion.js",   :to => "foundation/jquery.foundation.accordion.js" 
+javascript "#{js_path}/jquery.foundation.buttons.js",     :to => "foundation/jquery.foundation.buttons.js"
+javascript "#{js_path}/jquery.foundation.tooltips.js",    :to => "foundation/jquery.foundation.tooltips.js"
+javascript "#{js_path}/jquery.foundation.forms.js",       :to => "foundation/jquery.foundation.forms.js"
+javascript "#{js_path}/jquery.foundation.tabs.js",        :to => "foundation/jquery.foundation.tabs.js"
+javascript "#{js_path}/jquery.foundation.navigation.js",  :to => "foundation/jquery.foundation.navigation.js"
+javascript "#{js_path}/jquery.foundation.reveal.js",      :to => "foundation/jquery.foundation.reveal.js"
+javascript "#{js_path}/jquery.foundation.orbit.js",       :to => "foundation/jquery.foundation.orbit.js"
+
+# Customizable Javascript
+javascript "#{js_path}/app.js",                           :to => "app.js"
 
 # Make sure you list all the project template files here in the manifest.
-html 'index.html'
+html 'index.html', :erb => true
 file 'humans.txt'
 file 'robots.txt'
 file 'MIT-LICENSE.txt'
