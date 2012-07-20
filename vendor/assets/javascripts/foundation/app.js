@@ -80,14 +80,10 @@ jQuery(document).ready(function ($) {
   // Accordion
   $('.accordion li').on('click.fndtn', function() {
     var flyout = $(this).children('.content').first();
-    if (lockNavBar === false) {
-      $('.accordion .content').not(flyout).slideUp(500).parent('li').removeClass('active');
-      flyout.slideToggle(500, function() {
-        flyout.parent('li').addClass('active');
-        lockNavBar = false;
-      });
-    }
-    lockNavBar = true;
+    $('.accordion .content').not(flyout).hide().parent('li').removeClass('active');
+    flyout.show(0, function() {
+      flyout.parent('li').addClass('active');
+    });
   });
 
   /* DISABLED BUTTONS ------------- */
