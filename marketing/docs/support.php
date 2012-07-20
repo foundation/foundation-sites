@@ -119,8 +119,12 @@
   				<hr />
   				
   				<h4>Changelog</h4>
+  				<h5>3.0.6 &mdash; July 20, 2012</h5>
+  				<p>Numerous bugfixes including dropdown buttons on touch devices, Modernizr update with IE8Compat, split button colors, and more. Split out the functions in app.js to be part of the Gem and only initialized in app.js, so you can keep a clean distinction between your JS and Foundation's (if you want to). Added an <a href="elements.php">accordion</a> element.</p>
+  				
   				<h5>3.0.5 &mdash; July 10, 2012</h5>
   				<p>Fixed Compass performance issues by separating out each Foundation file and removing extraneous imports.</p>
+  				
   				<h5>3.0.4 &mdash; July 6, 2012</h5>
   				<p>Fixed a number of bugs around the Sass/Gem installs and documentation. Some smaller items:</p>
   				<ul class="disc">
