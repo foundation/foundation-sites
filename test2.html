@@ -31,7 +31,33 @@
   </style>
 </head>
 <body>
-
+  <div class="row">
+    <div class="twelve columns">
+      <h4>Reveal</h4>
+      <a href="#" data-reveal-id="myModal" class="button">Open Modal</a>
+      <div id="myModal" class="reveal-modal">
+        <h2>Awesome. I have it.</h2>
+        <p class="lead">Your couch.  It's mine.</p>
+        <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins</p>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="six columns">
+      <h5>Orbit Slider Demo</h5>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    </div>
+    <div class="six columns">
+      <div id="featured">
+        <img src="http://placehold.it/500x300&text=image1" />
+        <img src="http://placehold.it/500x300&text=image2" />
+        <img src="http://placehold.it/500x300&text=image3" />
+      </div>      
+    </div>
+  </div>
       
   <div class="row">
     <div class="eight columns">
@@ -235,9 +261,7 @@
       </div>
     </div>
   </div>
-		
-
-
+	
 	<!-- Included JS Files -->
   <script src="vendor/assets/javascripts/foundation/jquery.js"></script>
   <script src="vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
@@ -277,6 +301,12 @@
 	    event.preventDefault();
 	    $('#testModal').reveal({animation: 'none'});
 	  });
+	  
+
+     $(window).load(function() {
+        $('#featured').orbit();
+     });
+
 	</script>
 </body>
 </html>
