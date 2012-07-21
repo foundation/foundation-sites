@@ -44,7 +44,19 @@
     &.left-align { text-align: left; text-indent: 12px; }
 
 		/* Disabled ---------- */
-    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none); }
+    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none); 
+      :hover { background: $mainColor; }
+      
+      &.success { background-color: $successColor; 
+        &:hover { background-color: $successColor; }
+      }
+      &.alert { background-color: $alertColor; 
+        &:hover { background-color: $alertColor; }
+      }
+      &.secondary { background-color: $secondaryColor; 
+        &:hover { background-color: $secondaryColor; }
+      }
+    }
 	}
 
   /* Don't use native buttons on iOS */
@@ -120,6 +132,8 @@
         &:hover { background-color: darken($mainColor, 10%); }
         &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
       }
+      &.secondary>span:after { @include cssTriangle(6px, darken(($secondaryColor), 80%), top); }
+      
       &.large span { width: $largeBtnBase * 3; }
       &.small span { width: $smallBtnBase * 3; }
       &.tiny span { width: $tinyBtnBase * 3; }
@@ -132,6 +146,7 @@
       &.alert>span { background-color: $alertColor; border-left-color: darken($alertColor, 15%); }
       &.success>span { background-color: $successColor; border-left-color: darken($successColor, 15%); }
       &.secondary>span { background-color: $secondaryColor; border-left-color: darken($secondaryColor, 15%); }
+      &.secondary>a { color: darken(($secondaryColor), 80%); }
 
       &.alert>a:hover, &.alert>span:hover { background-color: darken($alertColor, 10%); }
       &.success>a:hover, &.success>span:hover { background-color: darken($successColor, 10%); }
@@ -141,7 +156,7 @@
 
   /* Button Groups ---------------------- */
 
-  ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; overflow: hidden;
+  ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; @include clearfix();
 
     li { padding: 0; margin: 0 0 0 -1px; float: left;
       &:first-child { margin-left: 0; }

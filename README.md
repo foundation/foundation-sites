@@ -54,6 +54,10 @@ MODX
 
 * [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Zurb_Foundation_MVC3) by Edward Charbeneau, @EdCharbeneau
 
+CodeIgniter
+
+* [Responsive CodeIgniter BoilerPlate](https://github.com/meridiansoftech/meridian_ci_codebase) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
+
 Other Implementations
 
 * [Mobile First](https://github.com/adamfairhead/mobile-first-foundation) by Adam Fairhead

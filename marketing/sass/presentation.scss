@@ -34,8 +34,43 @@ p.disclaimer { color: #999; }
 /* Homepage */
 header#homepage { background: url('../images/device-bg.png?1340846519') center bottom no-repeat #2ba6cb; padding: 22px 0 262px; }
 header#homepage h4 { margin-bottom: 44px; }
-header#homepage .button { background: #137795; border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
-header#homepage .button:hover { background: #006582; }
+header#homepage .button { background: #137795; border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; 
+  
+  &:hover { background: #006582; }
+  &.secondary { background: #248cac; background: rgba(0,0,0,0.15); color: #9ccbd9; color: rgba(255,255,255,0.55); 
+    
+    &.small { padding: 5px 8px 6px; }
+  }
+  &.secondary:hover { background: #207c98; background: rgba(0,0,0,0.25); color: rgba(255,255,255,0.75); }
+}
+
+#mainDownload { float: left; margin-right: 12px; }
+
+#watch { margin-bottom: 3px; width: 147px; overflow: hidden; float: left;
+  
+  section { display: block; width: 300px; margin-bottom: 4px; }
+  span { background: $white; background: #248cac; background: rgba(0,0,0,0.05); color: #9ccbd9; color: rgba(255,255,255,0.35); font-size: 11px; font-weight: bold; padding: 5px 8px 6px; margin-left: 5px; position: relative; display: inline-block;
+  
+    small { @include cssTriangle(4px, rgba(0,0,0,0.05), right); position: absolute; left: -8px; top: 7px; }
+  }
+}
+
+.lt-ie9 #watch span small { display: none; }
+
+@media only screen and (max-width: 767px) {
+  
+  #mainDownload { display: none; }
+  #deviceDownload { margin-bottom: 12px; }
+  #watch { float: none; width: 100%;
+  
+    section { float: left; width: 50%; 
+      .button { width: 80%; display: inline-block; float: right; }
+      &:first-child .button { width: 60%; float: none; }
+    }
+  }
+
+}
+
 
 @media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) { header#homepage { background-size: auto 357.5px; background-image: url('../images/device-bg-retina.png?1340846519'); } }
 #homepageFeatures { background: #ecf8ff; padding: 88px 0 44px 0; margin-bottom: 44px; }

@@ -14,7 +14,7 @@
       }
       &:hover { background: lighten($black, 20%); }
 
-      a { color: darken($white, 10%); }
+      &>a { color: darken($white, 10%); }
       ul { margin-bottom: 0; }
       .flyout { display: none; }
 

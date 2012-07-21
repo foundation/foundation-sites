@@ -8,7 +8,16 @@
         <h1>Foundation 3</h1>
         <h4>The most advanced responsive front-end framework in the world.</h4>
 
-        <a href="download.php" class="large button">Download Foundation 3.0</a>
+        <a href="download.php" class="large button" id="mainDownload">Download Foundation 3.0</a>
+        <a href="download.php" class="large button show-for-small" id="deviceDownload">View Download Options</a>
+        <div id="watch">
+          <section>
+            <a href="http://github.com/zurb/foundation" class="small secondary button">Watch on Github</a><span class="watchers">&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;&#124;<small></small></span>
+          </section>
+          <section>
+            <a href="http://twitter.com/foundationzurb" class="small secondary button">Follow @foundationzurb</a>
+          </section>
+        </div>
       </div>
     </div>
 
