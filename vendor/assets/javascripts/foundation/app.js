@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
     $(contentLocation).css('display', 'block').addClass('active');
   }
 
-  $('dl.tabs dd a').on('click.fndtn', function (event) {
+  $(document).on('click.fndtn', 'dl.tabs dd a', function (event) {
     activateTab($(this).parent('dd'));
   });
 
@@ -79,7 +79,7 @@ jQuery(document).ready(function ($) {
 
   /* DISABLED BUTTONS ------------- */
   /* Gives elements with a class of 'disabled' a return: false; */
-  $('.button.disabled').on('click.fndtn', function (event) {
+  $(document).on('click.fndtn', '.button.diabled', function (event) {
     event.preventDefault();
   });
   
@@ -87,10 +87,10 @@ jQuery(document).ready(function ($) {
   /* SPLIT BUTTONS/DROPDOWNS */
   $('.button.dropdown > ul').addClass('no-hover');
 
-  $('.button.dropdown').on('click.fndtn', function (e) {
+  $(document).on('click.fndtn', '.button.dropdown', function (e) {
     e.stopPropagation();
   });
-  $('.button.dropdown.split span').on('click.fndtn', function (e) {
+  $(document).on('click.fndtn', '.button.dropdown.split span', function (e) {
     e.preventDefault();
     $('.button.dropdown').not($(this).parent()).children('ul').removeClass('show-dropdown');
     $(this).siblings('ul').toggleClass('show-dropdown');
