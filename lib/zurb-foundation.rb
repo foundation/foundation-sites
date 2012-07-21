@@ -6,5 +6,3 @@ Compass::Frameworks.register('foundation', :path => extension_path)
 module Foundation
   require "foundation/engine" if defined?(Rails)
 end
-
-
