@@ -79,7 +79,7 @@ jQuery(document).ready(function ($) {
 
   /* DISABLED BUTTONS ------------- */
   /* Gives elements with a class of 'disabled' a return: false; */
-  $(document).on('click.fndtn', '.button.diabled', function (event) {
+  $(document).on('click.fndtn', '.button.disabled', function (event) {
     event.preventDefault();
   });
   
