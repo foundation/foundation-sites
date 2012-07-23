@@ -42,7 +42,7 @@
         <hr />
 
         <h3 id="customizeFoundation">Customize Foundation</h3>
-        <form id="customBuild" action="http://download.foundation.zurb.com/download" method="post">
+        <form id="customBuild" action="http://foundation-generator.dev/download" method="post">
 
           <div class="row">
             <div class="six columns">
@@ -53,37 +53,19 @@
                 <div class="six columns">
                   <ul class="no-bullet customizer css">
                     <li><label><input type="checkbox" id="toggleCss" checked="checked"> All</label> <em>Kitchen sink</em></li> <!-- Need to have this check everything -->
-                    <li><label><input type="checkbox" name="css[]" value="globals" checked="checked"> globals.css</label> <em>Global typography elements</em></li>
-                    <li><label><input type="checkbox" name="css[]" value="typography" checked="checked"> typography.css</label> <em>Global typography elements</em></li>
-                    <li><label><input type="checkbox" name="css[]" value="grid" checked="checked"> grid.css</label> <em>Responsive grid</em></li>
-                    <li><label><input type="checkbox" name="css[]" value="forms" checked="checked"> forms.css</label> <em>Normal and custom forms</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="globals" checked="checked"> globals.css</label> <em>Global typography elements</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="typography" checked="checked"> typography.css</label> <em>Global typography elements</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="grid" checked="checked"> grid.css</label> <em>Responsive grid</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="forms" checked="checked"> forms.css</label> <em>Normal and custom forms</em></li>
                   </ul>
                 </div>
                 <div class="six columns">
                   <ul class="no-bullet customizer css">
-                    <li><label><input type="checkbox" name="css[]" value="buttons" checked="checked"> button.css</label> <em>Entire button set</em></li>
-                    <li><label><input type="checkbox" name="css[]" value="ui" checked="checked"> ui.css</label> <em>Reusable UI elements</em></li>
-                    <li><label><input type="checkbox" name="css[]" value="navbar" checked="checked"> navbar.css</label> <em>Different navigation elements</em></li>
-                    <li><label><input type="checkbox" name="css[]" value="tabs" checked="checked"> tabs.css</label> <em>Tabbed elements</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="buttons" checked="checked"> button.css</label> <em>Entire button set</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="ui" checked="checked"> ui.css</label> <em>Reusable UI elements</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="navigation" checked="checked"> navbar.css</label> <em>Different navigation elements</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="tabs" checked="checked"> tabs.css</label> <em>Tabbed elements</em></li>
                     <!-- <li><label><input type="checkbox" name="css[]" value="mobile" checked="checked"> mobile.css</label> <em>Media Query responsiveness</em></li> -->
-                  </ul>
-                </div>
-              </div>
-
-              <h5>Included Javascripts:</h5>
-
-              <div class="row">
-                <div class="six columns">
-                  <ul class="no-bullet customizer">
-                    <li><label><input type="checkbox" id="toggleJs" checked="checked"> All</label> <em>Get it all</em></li>
-                    <li><label><input type="checkbox" name="js[]" value="customforms" checked="checked"> jquery.customforms.js</label> <em>Customizable form elements</em></li>
-                    <li><label><input type="checkbox" name="js[]" value="placeholder" checked="checked"> jquery.placeholder.min.js</label> <em>Input placeholders that toggle on click.</em></li>
-                    <li><label><input type="checkbox" name="js[]" value="tooltips" checked="checked"> jquery.tooltips.js</label> <em>Hoverable tooltips for elements</em></li>
-                  </ul>
-                </div>
-                <div class="six columns">
-                  <ul class="no-bullet">
-
                   </ul>
                 </div>
               </div>
@@ -94,8 +76,8 @@
                 <div class="six columns">
                   <ul class="no-bullet customizer">
                     <li><label><input type="checkbox" id="togglePlugins" checked="checked"> All</label> <em>Get both</em></li>
-                    <li><label><input type="checkbox" name="js[]" value="orbit" checked="checked"> Orbit</label> <em>Slider with JS/CSS</em></li>
-                    <li><label><input type="checkbox" name="js[]" value="reveal" checked="checked"> Reveal</label> <em>Modal with JS/CSS</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="orbit" checked="checked"> Orbit</label> <em>Slider with JS/CSS</em></li>
+                    <li><label><input type="checkbox" name="components[]" value="reveal" checked="checked"> Reveal</label> <em>Modal with JS/CSS</em></li>
                   </ul>
                 </div>
                 <div class="six columns">
