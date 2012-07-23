@@ -42,7 +42,7 @@
         <hr />
 
         <h3 id="customizeFoundation">Customize Foundation</h3>
-        <form id="customBuild" action="http://foundation-generator.dev/download" method="post">
+        <form id="customBuild" action="http://download.foundation.zurb.com/download" method="post">
 
           <div class="row">
             <div class="six columns">
