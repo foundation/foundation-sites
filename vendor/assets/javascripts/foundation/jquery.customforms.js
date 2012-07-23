@@ -31,16 +31,16 @@ jQuery(document).ready(function ($) {
        * @function hiddenFix
        */
       hiddenFix = function(){
-            //
-            // We'll use this to temporarily store style properties.
-            //
-        var tmp = [],
-            //
-            // We'll use this to set hidden parent elements.
-            //
-            hidden = null;
 
         return {
+          //
+          // We'll use this to temporarily store style properties.
+          //
+          tmp : [],
+          //
+          // We'll use this to set hidden parent elements.
+          //
+          hidden : null,
           /**
            * Sets all hidden parent elements and self to visibile.
            *
