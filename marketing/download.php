@@ -16,7 +16,7 @@
       <div class="four columns">
         <h4>Default CSS</h4>
         <p>This version of Foundation includes smart defaults and doesn't require Sass or any other tools. Everything in this is minified, so you would use this to build on top of Foundation.</p>
-        <p><a href="files/foundation-3.0.5.zip" title="Foundation 3.0.5" class="radius button">Download Foundation CSS</a></p>
+        <p><a href="files/foundation-3.0.6.zip" title="Foundation 3.0.6" class="radius button">Download Foundation CSS</a></p>
       </div>
       <div class="four columns">
         <h4>Custom CSS</h4>
@@ -53,7 +53,6 @@
                 <div class="six columns">
                   <ul class="no-bullet customizer css">
                     <li><label><input type="checkbox" id="toggleCss" checked="checked"> All</label> <em>Kitchen sink</em></li> <!-- Need to have this check everything -->
-                    <li><label><input type="checkbox" name="components[]" value="globals" checked="checked"> globals.css</label> <em>Global typography elements</em></li>
                     <li><label><input type="checkbox" name="components[]" value="typography" checked="checked"> typography.css</label> <em>Global typography elements</em></li>
                     <li><label><input type="checkbox" name="components[]" value="grid" checked="checked"> grid.css</label> <em>Responsive grid</em></li>
                     <li><label><input type="checkbox" name="components[]" value="forms" checked="checked"> forms.css</label> <em>Normal and custom forms</em></li>
