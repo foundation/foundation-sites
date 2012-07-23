@@ -157,7 +157,7 @@
           //
           $listItems
       ;
-
+      var $currentSelect = false;
       //
       // Should we not create a custom list?
       //
@@ -203,6 +203,7 @@
         // Insert the the currently selected list item before all other elements.
         // Then, find the element and assign it to $currentSelect.
         //
+        
         $currentSelect = $customSelect.prepend( '<a href="#" class="current">' + $selectedOption.html() + '</a>' ).find( ".current" );
         //
         // Add the custom select element after the <select> element.
@@ -252,7 +253,10 @@
           //
           // Update the current element with the option value.
           //
-          $currentSelect.html( this.value );
+          if ($currentSelect) {
+            $currentSelect.html( this.value );
+          }
+          
         }
 
       });
