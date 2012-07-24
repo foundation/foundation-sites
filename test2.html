@@ -31,7 +31,33 @@
   </style>
 </head>
 <body>
-
+  <div class="row">
+    <div class="twelve columns">
+      <h4>Reveal</h4>
+      <a href="#" data-reveal-id="myModal" class="button">Open Modal</a>
+      <div id="myModal" class="reveal-modal">
+        <h2>Awesome. I have it.</h2>
+        <p class="lead">Your couch.  It's mine.</p>
+        <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins</p>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="six columns">
+      <h5>Orbit Slider Demo</h5>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    </div>
+    <div class="six columns">
+      <div id="featured">
+        <img src="http://placehold.it/500x300&text=image1" />
+        <img src="http://placehold.it/500x300&text=image2" />
+        <img src="http://placehold.it/500x300&text=image3" />
+      </div>      
+    </div>
+  </div>
       
   <div class="row">
     <div class="eight columns">
@@ -68,40 +94,6 @@
         <strong class="show-for-touch">You are on a touch-enabled device.</strong>
         <strong class="hide-for-touch">You are not on a touch-enabled device.</strong>
       </p>
-      
-      
-      <h4>Accordion</h4>
-      
-      <ul class="accordion">
-        <li class="active">
-          <div class="title">
-            <h5>Accordion Panel 1</h5>
-          </div>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </li>
-        <li>
-          <div class="title">
-            <h5>Accordion Panel 2</h5>
-          </div>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </li>
-        <li>
-          <div class="title">
-            <h5>Accordion Panel 3</h5>
-          </div>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </li>
-      </ul>
-      
       
       <ul class="radius button-group">
         <li>
@@ -152,7 +144,7 @@
           </div>
         </li>
       </ul>
-      
+
       <p>
         <div href="#" class="large secondary button split dropdown">
           <a href="#">Split Button</a>
@@ -164,7 +156,7 @@
             <li><a href="#">Last Item</a></li>
           </ul>
         </div>
-      </p> 
+      </p>
       
     </div>
     
@@ -184,15 +176,105 @@
       </ul>
     </div>
   </div>
-		
-		
+  
+  <div class="row">
+    <div class="twelve columns">
+      <h4>Navigation</h4>
+      <ul class="nav-bar">
+        <li class="active"><a href="#">Nav Item 1</a></li>
+        <li class="has-flyout">
+          <a href="#">Nav Item 2</a>
+          <a href="#" class="flyout-toggle"><span> </span></a>
+          <ul class="flyout">
+            <li><a href="#">Sub Nav 1</a></li>
+            <li><a href="#">Sub Nav 2</a></li>
+            <li><a href="#">Sub Nav 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="twelve columns">
+      <h4>Tabs</h4>
+      <dl class="tabs">
+        <dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
+        <dd><a href="#simple2">Simple Tab 2</a></dd>
+        <dd><a href="#simple3">Simple Tab 3</a></dd>
+      </dl>
 
-
+      <ul class="tabs-content">
+        <li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
+        <li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
+        <li id="simple3Tab">This is simple tab 3's content. It's, you know...okay.</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="twelve columns">
+      <h4>Custom Forms</h4>
+      <form class="custom">
+        <label for="radio1">
+          <input name="customChoice" type="radio" id="radio1"> Radio Button 1
+        </label>
+        
+        <label for="radio2">
+          <input name="customChoice" type="radio" id="radio2"> Radio Button 1
+        </label>
+        
+        <label for="radio3">
+          <input name="customChoice" type="radio" id="radio3"> Radio Button 1
+        </label>
+        
+        <label for="radio4">
+          <input name="customChoice" type="radio" id="radio4" disabled> Radio Button 3
+        </label>
+        
+        <label for="myDropdown">Dropdown Label</label>
+        <select id="myDropdown">
+          <option>This is a dropdown</option>
+          <option SELECTED>This is another option</option>
+          <option>Look, a third option</option>
+        </select>
+        
+        <label for="customDropdown2">Dropdown Label</label>
+				<select id="customDropdown2">
+					<option>This is a dropdown</option>
+					<option SELECTED>This is another option</option>
+					<option>Look, a third option</option>
+				</select>
+      </form>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="twelve columns">
+      <h4>Alerts</h4>
+      <div class="alert-box success">
+        This is an alert box.
+        <a href="" class="close">&times;</a>
+      </div>
+      
+      <div class="alert-box secondary">
+        This is an alert box.
+        <a href="" class="close">&times;</a>
+      </div>
+      
+      <div class="alert-box alert">
+        This is an alert box.
+        <a href="" class="close">&times;</a>
+      </div>
+    </div>
+  </div>
+	
 	<!-- Included JS Files -->
   <script src="vendor/assets/javascripts/foundation/jquery.js"></script>
   <script src="vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
   
   <script src="vendor/assets/javascripts/foundation/jquery.foundation.alerts.js"></script>
+  <script src="vendor/assets/javascripts/foundation/jquery.foundation.accordion.js"></script>
   <script src="vendor/assets/javascripts/foundation/jquery.foundation.buttons.js"></script>
   <script src="vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js"></script>
   <script src="vendor/assets/javascripts/foundation/jquery.foundation.forms.js"></script>
@@ -227,6 +309,12 @@
 	    event.preventDefault();
 	    $('#testModal').reveal({animation: 'none'});
 	  });
+	  
+
+     $(window).load(function() {
+        $('#featured').orbit();
+     });
+
 	</script>
 </body>
 </html>

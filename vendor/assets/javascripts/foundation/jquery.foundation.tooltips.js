@@ -8,7 +8,7 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-(function ($) {
+;(function ($) {
   'use strict';
   var settings = {
       bodyHeight : 0,
@@ -174,7 +174,7 @@
   $.fn.tooltips = function (method) {
     if (methods[method]) {
       return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-    } else if (typeof method === 'object' || ! method) {
+    } else if (typeof method === 'object' || !method) {
       return methods.init.apply(this, arguments);
     } else {
       $.error('Method ' +  method + ' does not exist on jQuery.tooltips');

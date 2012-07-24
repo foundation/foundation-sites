@@ -7,7 +7,7 @@
 */
 /*globals jQuery */
 
-( function ( $ ) {
+(function ($) {
   'use strict';
   //
   // Global variable.

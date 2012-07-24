@@ -2,34 +2,46 @@ description 'Foundation Compass Gem'
 
 # Sass Files
 stylesheet 'sass/_settings.scss',                                 :to => '_settings.scss'
-stylesheet 'sass/foundation-style/globals.scss',                  :to => 'foundation-style/globals.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/typography.scss',               :to => 'foundation-style/typography.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/grid.scss',                     :to => 'foundation-style/grid.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/ui.scss',                       :to => 'foundation-style/ui.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/buttons.scss',                  :to => 'foundation-style/buttons.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/tabs.scss',                     :to => 'foundation-style/tabs.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/navbar.scss',                   :to => 'foundation-style/navbar.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/forms.scss',                    :to => 'foundation-style/forms.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/orbit.scss',                    :to => 'foundation-style/orbit.scss', :media => "screen, projector, print"
-stylesheet 'sass/foundation-style/reveal.scss',                   :to => 'foundation-style/reveal.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/globals.scss',                  :to => 'foundation-style/globals.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/typography.scss',               :to => 'foundation-style/typography.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/grid.scss',                     :to => 'foundation-style/grid.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/ui.scss',                       :to => 'foundation-style/ui.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/buttons.scss',                  :to => 'foundation-style/buttons.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/tabs.scss',                     :to => 'foundation-style/tabs.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/navbar.scss',                   :to => 'foundation-style/navbar.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/forms.scss',                    :to => 'foundation-style/forms.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/orbit.scss',                    :to => 'foundation-style/orbit.scss', :media => "screen, projector, print"
+stylesheet 'sass/foundation/reveal.scss',                   :to => 'foundation-style/reveal.scss', :media => "screen, projector, print"
 stylesheet 'sass/app.scss',                                       :to => 'app.scss', :media => "screen, projector, print"
 
 # Relative asset paths
 js_path = "/../../vendor/assets/javascripts/foundation"
+compressed_js_path = "/../../public/assets"
 images_path = "/../../vendor/assets/images/foundation"
 
-# Javascripts
-javascript "#{js_path}/jquery.min.js",             :to => "jquery.min.js"
-javascript "#{js_path}/modernizr.foundation.js",   :to => "foundation/modernizr.foundation.js"
-javascript "#{js_path}/jquery.customforms.js",     :to => "foundation/jquery.customforms.js"
-javascript "#{js_path}/jquery.reveal.js",          :to => "foundation/jquery.reveal.js"
-javascript "#{js_path}/jquery.orbit-1.4.0.js",     :to => "foundation/jquery.orbit-1.4.0.js"
-javascript "#{js_path}/jquery.tooltips.js",        :to => "foundation/jquery.tooltips.js"
-javascript "#{js_path}/jquery.placeholder.min.js", :to => "foundation/jquery.placeholder.min.js"
-javascript "#{js_path}/app.js",                    :to => "app.js"
+# Compressed Javascripts
+javascript "#{compressed_js_path}/jquery.js",             :to => "jquery.min.js"
+javascript "#{compressed_js_path}/foundation.js",         :to => "foundation.min.js"
+
+# Uncompressed Javascripts
+javascript "#{js_path}/jquery.js",                        :to => "jquery.js"
+javascript "#{js_path}/modernizr.foundation.js",          :to => "foundation/modernizr.foundation.js"
+javascript "#{js_path}/jquery.placeholder.js",            :to => "foundation/jquery.placeholder.js"
+javascript "#{js_path}/jquery.foundation.alerts.js",      :to => "foundation/jquery.foundation.alerts.js"
+javascript "#{js_path}/jquery.foundation.accordion.js",   :to => "foundation/jquery.foundation.accordion.js" 
+javascript "#{js_path}/jquery.foundation.buttons.js",     :to => "foundation/jquery.foundation.buttons.js"
+javascript "#{js_path}/jquery.foundation.tooltips.js",    :to => "foundation/jquery.foundation.tooltips.js"
+javascript "#{js_path}/jquery.foundation.forms.js",       :to => "foundation/jquery.foundation.forms.js"
+javascript "#{js_path}/jquery.foundation.tabs.js",        :to => "foundation/jquery.foundation.tabs.js"
+javascript "#{js_path}/jquery.foundation.navigation.js",  :to => "foundation/jquery.foundation.navigation.js"
+javascript "#{js_path}/jquery.foundation.reveal.js",      :to => "foundation/jquery.foundation.reveal.js"
+javascript "#{js_path}/jquery.foundation.orbit.js",       :to => "foundation/jquery.foundation.orbit.js"
+
+# Customizable Javascript
+javascript "#{js_path}/app.js",                           :to => "app.js"
 
 # Make sure you list all the project template files here in the manifest.
-html 'index.html'
+html 'index.html', :erb => true
 file 'humans.txt'
 file 'robots.txt'
 file 'MIT-LICENSE.txt'
