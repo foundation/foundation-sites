@@ -21,9 +21,6 @@
    * @function hiddenFix
    */
   var hiddenFix = function() {
-    // We'll use this to temporarily store style properties.
-    var tmp = [],
-        hidden = null; // We'll use this to set hidden parent elements.
 
     return {
       /**
@@ -32,6 +29,13 @@
        * @method adjust
        * @param {jQuery Object} $child
        */
+
+      // We'll use this to temporarily store style properties.
+      tmp : [],
+
+      // We'll use this to set hidden parent elements.
+      hidden : null,
+
       adjust : function( $child ) {
         // Internal reference.
         var _self = this;

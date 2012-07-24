@@ -1,4 +1,4 @@
-(function( $ ){
+(function ($) {
   
   $.fn.foundationButtons = function(options) {    
     // Prevent event propagation on disabled buttons
