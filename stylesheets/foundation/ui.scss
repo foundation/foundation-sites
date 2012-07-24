@@ -207,7 +207,7 @@
 
   /* Panels ---------------------- */
 
-  div.panel { background: darken($white, 5%); border: solid 1px darken($white, 10%); margin: 0 0 22px 0; padding: 20px;
+  .panel { background: darken($white, 5%); border: solid 1px darken($white, 10%); margin: 0 0 22px 0; padding: 20px;
 
     > :first-child { margin-top: 0; }
     > :last-child { margin-bottom: 0; }
