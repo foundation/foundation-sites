@@ -1,4 +1,8 @@
 require 'foundation/version'
+if defined?(Rails)
+  require "foundation/generators/layout_generator"
+  require "foundation/generators/install_generator"
+end
 require 'compass'
 extension_path = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 Compass::Frameworks.register('foundation', :path => extension_path)
