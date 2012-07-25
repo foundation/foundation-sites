@@ -209,7 +209,8 @@
               <dl class="sub-nav">
                 <dt>Go to:</dt>
                 <dd><a href="#gemfile">Gemfile</a></dd>
-                <dd><a href="#configuration">Configuration</a></dd>
+                <dd><a href="#install">Install</a></dd>
+                <dd><a href="#advancedInstall">Advanced</a></dd>
                 <dd><a href="#upgrading">Upgrading from 2.X</a></dd>
               </dl>
 
@@ -229,10 +230,22 @@
 
               <h5>Notes on SASS alpha dependency</h5>
               <p>Foundation is currently utilizing some of the new media query features available in SASS 3.2, such as those mentioned in <a href="http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32" rel="nofollow">this article.</a>  From what we've seen so far this is a stable enough release on which to build Foundation, especially since 3.2 is due to be released soon.</p>
-
+              
+              
+              <a name="install"></a>
+              <h4>Installation</h4>
+              <p>To use Foundation there's a few steps involved, nothing too complicated.  Don't worry we made some generators to automate most of this boring work.  Use the following generators to get things going:</p>
+              
+              <h5>rails g foundation:install</h5>
+              <p>This will create <strong>app/assets/stylesheets/foundation_and_overrides.scss</strong> in your project. This file will be imported in your <strong>app/assets/stylesheets/application.css</strong> sprockets manifest file.</p>
+              
+              <h5>rails g foundation:layout</h5>
+              <p>This will provide an application layout that sets the width for mobile devices.  The generated file will replace <strong>app/views/layouts/application.html.erb</strong>.</p>
+              
               <a name="configuration"></a>
-              <h4>Configuration</h4>
-
+              <h4>Advanced</h4>
+              <p>If you don't wish to use the generators (or are adding Foundation to an existing project) here's all the steps you'll need to follow to get it working.</p>
+              
               <h5>Layout</h5>
               <p>Add the following to the <strong>&lt;head&gt;</strong> tag of your page layouts (i.e. <strong>app/views/layouts/application.html.erb</strong>) to set the viewport width for mobile devices.</p>
 
