@@ -6,16 +6,13 @@
 
 // ----------------------------------------
 // Import specific parts of Foundation by commenting the import "foundation"
-// and uncommenting what you want below.
-
-// You must uncomment compass/css3 if customizing
+// and uncommenting what you want below. You must uncomment the following if customizing
 
 // @import "compass/css3";
-
-// You must uncomment functions/all if customizing
-
 // @import "foundation/settings";
 // @import "foundation/function/all";
+// @import "foundation/common/globals";
+// @import "foundation/mixins/clearfix";
 
 // Control which mixins you have access too
 
@@ -25,7 +22,7 @@
 // Must include next three for semantic grid to work
 
 // @import "foundation/mixins/respond-to";
-// @import "foundation/mixins/clearfix";
+
 // @import "foundation/mixins/semantic-grid";
 
 // Must include the grid for any responsiveness
@@ -34,7 +31,6 @@
 
 // Control which common styles get compiled
 
-// @import "foundation/common/globals";
 // @import "foundation/common/typography";
 // @import "foundation/common/forms";
 
