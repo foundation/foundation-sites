@@ -1,0 +1,11 @@
+// Mixin for Semantic Grid reponsiveness
+
+  @mixin respondTo($media) {
+    @if $media == smallScreen {
+      @media only screen and (max-width: $screenSmall - 1) { @content; }
+    } @else if $media == mediumScreen {
+      @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) { @content; }
+    } @else if $media == largeScreen {
+      @media only screen and (min-width: $screenXlarge) { @content; }
+    }
+  }
