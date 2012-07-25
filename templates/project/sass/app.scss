@@ -19,21 +19,24 @@
 
 // Control which mixins you have access too
 
-// @import "foundation/mixins/respond-to";
 // @import "foundation/mixins/css-triangle";
 // @import "foundation/mixins/font-size";
+
+// Must include next three for semantic grid to work
+
+// @import "foundation/mixins/respond-to";
 // @import "foundation/mixins/clearfix";
 // @import "foundation/mixins/semantic-grid";
+
+// Must include the grid for any responsiveness
+
+// @import "foundation/components/grid";
 
 // Control which common styles get compiled
 
 // @import "foundation/common/globals";
 // @import "foundation/common/typography";
 // @import "foundation/common/forms";
-
-// Must include the grid for any responsiveness
-
-// @import "foundation/components/grid";
 
 // Control which components you get if customizing
 
