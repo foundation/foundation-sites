@@ -1,30 +1,5 @@
 // Inspired by https://github.com/twigkit/semantic.gs/blob/master/stylesheets/scss/grid.scss
 
-// Mixin for Semantic Grid reponsiveness
-
-  @mixin respondTo($media) {
-    @if $media == smallScreen {
-      @media only screen and (max-width: $screenSmall - 1) { @content; }
-    } @else if $media == mediumScreen {
-      @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) { @content; }
-    } @else if $media == largeScreen {
-      @media only screen and (min-width: $screenXlarge) { @content; }
-    }
-  }
-
-// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
-
-  @mixin clearfix() { *zoom:1;
-    &:before, &:after { content: ""; display: table; }
-    &:after { clear: both; }
-  }
-  @mixin mobileClearfix() {
-    @include respondTo(smallScreen) { &:before, &:after { content: ""; display: table; }
-      &:after { clear: both; }
-      &:last-child { float: none; }
-    }
-  }
-
   // Outer row mixin for container rows
 
   @mixin outerRow() { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @include clearfix(); }
