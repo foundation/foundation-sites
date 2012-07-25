@@ -6,7 +6,7 @@
     font-size: ms(0);
   }
 
-  p { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
+  p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
     &.lead { font-size: ms(0) * 1.25; line-height: 1.6; margin-bottom: ms(1); }
     img.left, img { margin: ms(1); margin-left: 0; }
     img.right { margin: ms(1); margin-right: 0; }
@@ -14,11 +14,13 @@
   aside p { font-size: ms(0) - 1; line-height: 1.35; font-style: italic; }
 
   h1, h2, h3, h4, h5, h6 {
+    font-family: $headerFontFamily;
+    font-weight: $headerFontWeight;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
     margin-bottom: ms(0);
     margin-top: ms(0);
-    small { font-size: 60%; color: #888; line-height: 0; }
+    small { font-size: 60%; color: lighten($headerFontColor, 30%); line-height: 0; }
   }
 
   h1 { font-size: ms(5); }
@@ -30,7 +32,7 @@
 
   hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 22px 0 21px; height: 0; }
 
-  .subheader { line-height: 1.3; color: #777; font-weight: 300; margin-bottom: ms(1); }
+  .subheader { line-height: 1.3; color: lighten($headerFontColor, 30%); font-weight: 300; margin-bottom: ms(1); }
 
   em, i { font-style: italic; line-height: inherit; }
   strong, b { font-weight: bold; line-height: inherit; }
@@ -59,15 +61,15 @@
 
 
   /* Blockquotes ---------------------- */
-  blockquote, blockquote p { line-height: 1.5; color: #777; }
+  blockquote, blockquote p { line-height: 1.5; color: lighten($headerFontColor, 30%); }
   blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-left: 1px solid #ddd;
-    cite { display: block; font-size: ms(0) - 1; color: #555;
+    cite { display: block; font-size: ms(0) - 1; color: lighten($headerFontColor, 20%);
       &:before { content: "\2014 \0020"; }
-      a, a:visited { color: #555; }
+      a, a:visited { color: lighten($headerFontColor, 20%); }
     }
   }
 
-  abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222; border-bottom: 1px solid #ddd; cursor: help; }
+  abbr, acronym { text-transform: uppercase; font-size: 90%; color: $headerFontColor; border-bottom: 1px solid #ddd; cursor: help; }
   abbr { text-transform: none; }
 
   /*

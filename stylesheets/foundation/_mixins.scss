@@ -16,12 +16,6 @@
     @return percentage(($colNumber / $totalColumns));
   }
 
-  // Default Font Stack
-
-  @mixin defaultFontFamily {
-    font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  }
-
   // Create CSS Triangles in a Breeze
 
   @mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {

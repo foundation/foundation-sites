@@ -90,6 +90,13 @@
               </ul>
               <span class="btm-marg"><script src="https://gist.github.com/3008672.js?file=color-settings.scss"></script></span>
 
+              <h5>Typography Settings</h5>
+              <ul class="disc">
+                <li><strong>$headerFontFamily:</strong> Font family for headers.</li>
+                <li><strong>$bodyFontFamily:</strong> Font family for the body.</li>
+              </ul>
+<!--               <span class="btm-marg"><script src="https://gist.github.com/3008570.js?file=grid-settings"></script></span>
+ -->
               <h5>Button Settings</h5>
               <ul class="disc">
                 <li><strong>$buttonRadius:</strong> Adjust the rounded edges of elements with radii.</li>

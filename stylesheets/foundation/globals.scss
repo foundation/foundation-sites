@@ -4,7 +4,7 @@
 
   * { @include box-sizing(border-box); }
   html { font-size: 62.5%; }
-  body { background: $white; @include defaultFontFamily; @include font-size(14); line-height: 1; color: $txtColor; position: relative; -webkit-font-smoothing: antialiased; }
+  body { background: $white; font-family: $bodyFontFamily; @include font-size(14); line-height: 1; color: $bodyFontColor; position: relative; -webkit-font-smoothing: antialiased; }
 
 /* Links ---------------------- */
 
