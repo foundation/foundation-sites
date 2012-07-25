@@ -4,7 +4,7 @@
 
 html { font-size: 62.5%; }
 
-body { background: white; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 14px; font-size: 1.4rem; line-height: 1; color: #222222; position: relative; -webkit-font-smoothing: antialiased; }
+body { background: white; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1; color: #222222; position: relative; -webkit-font-smoothing: antialiased; }
 
 /* Links ---------------------- */
 a { color: #2ba6cb; text-decoration: none; line-height: inherit; }
