@@ -1,27 +1,38 @@
-@import "foundation/base";
-/* --------------------------------------------------
-   Table of Contents
------------------------------------------------------
-:: Shared Styles
-:: Page Name 1
-:: Page Name 2
-*/
+// You custom settings file to override Foundation defaults.
+@import "settings";
 
+// Comment out this import if you are customizing you imports below.
+@import "foundation";
 
-/* -----------------------------------------
-   Shared Styles
------------------------------------------ */
+// ----------------------------------------
+// Import specific parts of Foundation by commenting the import "foundation"
+// and uncommenting what you want below.
 
+// You must uncomment compass/css3 if customizing.
+// @import "compass/css3";
 
+// You must uncomment functions/all if customizing.
+// @import "foundation/function/all";
 
-/* -----------------------------------------
-   Page Name 1
------------------------------------------ */
+// Control which mixins you have access too
+// @import "foundation/mixins/css-triangle";
+// @import "foundation/mixins/font-size";
+// @import "foundation/mixins/semantic-grid";
 
+// Control which common styles get compiled. 
+// @import "foundation/common/globals";
+// @import "foundation/common/typography";
+// @import "foundation/common/forms";
 
+// Must include the grid for any responsiveness
+// @import "foundation/components/grid";
 
-
-/* -----------------------------------------
-   Page Name 2
------------------------------------------ */
+// Control which components you get if customizing.
+// @import "foundation/components/modules/buttons";
+// @import "foundation/components/modules/tabs";
+// @import "foundation/components/modules/ui";
+// @import "foundation/components/modules/navbar";
+// @import "foundation/components/modules/orbit";
+// @import "foundation/components/modules/reveal";
+// @import "foundation/components/modules/offcanvas";
 

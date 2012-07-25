@@ -1,21 +1,3 @@
-  // Font size mixin to include px and rem
-
-  @mixin font-size($size, $is-important: false) {
-    @if $is-important {
-      font-size: $size + px !important;
-      font-size: ($size / 10) + rem !important;
-    } @else {
-      font-size: $size + px;
-      font-size: ($size / 10) + rem;
-    }
-  }
-
-  // Grid Calculation for Percentages
-
-  @function gridCalc($colNumber, $totalColumns) {
-    @return percentage(($colNumber / $totalColumns));
-  }
-
   // Create CSS Triangles in a Breeze
 
   @mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
