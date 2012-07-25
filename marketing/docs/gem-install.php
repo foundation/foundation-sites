@@ -20,6 +20,7 @@
                 <dt>Go to:</dt>
                 <dd><a href="#installing">Installing</a></dd>
                 <dd><a href="#settings">Settings</a></dd>
+                <dd><a href="#imports">Custom Imports</a></dd>
                 <dd><a href="#mixins">Mixins &amp; Functions</a></dd>
               </dl>
 
@@ -121,6 +122,28 @@
               </ul>
               <span class="btm-marg"><script src="https://gist.github.com/3008766.js?file=ui-settings.scss"></script></span>
 
+              <hr>
+
+              <a name="imports"></a>
+              <h3>Custom Imports</h3>
+              <h4 class="subheader">You can customize which parts of Foundation are included in your compiled CSS.</h4>
+              <p>We've included a simple way for you to control which parts of Foundation you want. Beware that some of the files require certain mixins, but Compass will let you know.</p>
+
+              <h5>Basic Import (The Kitchen Sink)</h5>
+              <p>By default, these settings are uncommented which included all of Foundation. You will always want to keep your settings uncommented, but you can uncomment the second import when you are customizing.</p>
+              <script src="https://gist.github.com/3174606.js?file=app1.scss"></script>
+
+              <h5>Customizing Your Imports</h5>
+              <p>When you are customizing, you must always include this set of files to ensure proper behavior.</p>
+              <script src="https://gist.github.com/3174610.js?file=app2.scss"></script>
+
+              <p>The next bit of code controls which common elements get included. Certain elements will throw an error to let you know if they rely on a mixin you haven't included.</p>
+              <script src="https://gist.github.com/3174615.js?file=app3.scss"></script>
+
+              <p>Finally, you can control which components are compiled at the top of your app.css file by uncommenting what you desire.</p>
+              <script src="https://gist.github.com/3174617.js?file=app4.scss"></script>
+
+              <p><strong>Note: Watch for Compass to throw errors to let you know what you aren't including.</strong></p>
               <hr>
 
               <a name="mixins"></a>
