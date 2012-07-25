@@ -1,6 +1,6 @@
 <? $page_title = "Gem Versions, Sass, Compass, Rails, Etc." ?>
 <?php include("includes/_documentation_head.php"); ?>
-  <style type="text/css">.btm-marg{display: block; margin-bottom: 30px;}</style>
+  <style type="text/css">.btm-marg{display: block; margin-bottom: 30px;}ul{margin-bottom:20px!important;}</style>
   <div class="row">
     <section role="main">
       <div class="row">
