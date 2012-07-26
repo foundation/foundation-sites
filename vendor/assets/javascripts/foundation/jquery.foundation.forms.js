@@ -198,7 +198,7 @@
         //
         // Build our <li> elements.
         //
-        liHtml = $.map( $options, function( opt ) { return "<li>" + opt.value + "</li>"; } ).join( '' );
+        liHtml = $options.map( function() { return "<li>" + $( this ).html() + "</li>"; } ).get().join( '' );
         //
         // Append our <li> elements to the custom list (<ul>).
         //
@@ -222,7 +222,7 @@
         //
         // Create our list item <li> elements.
         //
-        liHtml = $.map( $options, function( opt ) { return "<li>" + opt.value + "</li>"; } ).join( '' );
+        liHtml = $options.map( function() { return "<li>" + $( this ).html() + "</li>"; } ).get().join( '' );
         //
         // Refresh the ul with options from the select in case the supplied markup doesn't match.
         // Clear what's currently in the <ul> element.
