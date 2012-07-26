@@ -369,7 +369,7 @@
   table tr td,
   table tfoot tr td { font-size: ms(0); line-height: 18px; text-align: left; }
   table thead tr th,
-  table tfoot tr td { padding: 8px 10px 9px; font-size: ms(0) + 2px; font-weight: bold; color: #222; }
+  table tfoot tr td { padding: 8px 10px 9px; font-size: ms(0) + 2; font-weight: bold; color: #222; }
   table thead tr th:first-child, table tfoot tr td:first-child { border-left: none; }
   table thead tr th:last-child, table tfoot tr td:last-child { border-right: none; }
 
