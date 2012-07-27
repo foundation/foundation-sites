@@ -1,4 +1,4 @@
-@import "foundation/modular-scale";
+@import "foundation/function/modular-scale";
 
 // Settings file containing Foundation defaults
 
@@ -21,6 +21,15 @@
 // $white: #fff;
 // $shinyEdge: rgba(#fff, .5);
 // $darkEdge: rgba(#000, .2);
+
+// Typography Settings
+
+// $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+// $headerFontWeight: bold;
+// $headerFontColor: #222;
+// $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-ser;
+// $bodyFontWeight: normal;
+// $bodyFontColor: #222;
 
 // Button Settings
 

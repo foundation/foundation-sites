@@ -1,0 +1,5 @@
+// Grid Calculation for Percentages
+
+@function gridCalc($colNumber, $totalColumns) {
+	@return percentage(($colNumber / $totalColumns));
+}

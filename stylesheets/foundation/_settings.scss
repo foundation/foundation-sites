@@ -20,6 +20,15 @@ $white: #fff !default;
 $shinyEdge: rgba(#fff, .5) !default;
 $darkEdge: rgba(#000, .2) !default;
 
+// Font Settings
+$headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$headerFontWeight: bold !default;
+$headerFontColor: #222 !default;
+$bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$bodyFontWeight: normal !default;
+$bodyFontColor: #222 !default;
+
+
 // Button Settings
 
 $buttonRadius: 3px !default;

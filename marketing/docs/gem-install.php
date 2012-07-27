@@ -1,6 +1,6 @@
 <? $page_title = "Gem Versions, Sass, Compass, Rails, Etc." ?>
 <?php include("includes/_documentation_head.php"); ?>
-  <style type="text/css">.btm-marg{display: block; margin-bottom: 30px;}</style>
+  <style type="text/css">.btm-marg{display: block; margin-bottom: 30px;}ul{margin-bottom:20px!important;}</style>
   <div class="row">
     <section role="main">
       <div class="row">
@@ -20,6 +20,7 @@
                 <dt>Go to:</dt>
                 <dd><a href="#installing">Installing</a></dd>
                 <dd><a href="#settings">Settings</a></dd>
+                <dd><a href="#imports">Custom Imports</a></dd>
                 <dd><a href="#mixins">Mixins &amp; Functions</a></dd>
               </dl>
 
@@ -90,6 +91,13 @@
               </ul>
               <span class="btm-marg"><script src="https://gist.github.com/3008672.js?file=color-settings.scss"></script></span>
 
+              <h5>Typography Settings</h5>
+              <ul class="disc">
+                <li><strong>$headerFontFamily:</strong> Font family for headers.</li>
+                <li><strong>$bodyFontFamily:</strong> Font family for the body.</li>
+              </ul>
+<!--               <span class="btm-marg"><script src="https://gist.github.com/3008570.js?file=grid-settings"></script></span>
+ -->
               <h5>Button Settings</h5>
               <ul class="disc">
                 <li><strong>$buttonRadius:</strong> Adjust the rounded edges of elements with radii.</li>
@@ -114,6 +122,28 @@
               </ul>
               <span class="btm-marg"><script src="https://gist.github.com/3008766.js?file=ui-settings.scss"></script></span>
 
+              <hr>
+
+              <a name="imports"></a>
+              <h3>Custom Imports</h3>
+              <h4 class="subheader">You can customize which parts of Foundation are included in your compiled CSS.</h4>
+              <p>We've included a simple way for you to control which parts of Foundation you want. Beware that some of the files require certain mixins, but Compass will let you know.</p>
+
+              <h5>Basic Import (The Kitchen Sink)</h5>
+              <p>By default, these settings are uncommented which included all of Foundation. You will always want to keep your settings uncommented, but you can uncomment the second import when you are customizing.</p>
+              <script src="https://gist.github.com/3174606.js?file=app1.scss"></script>
+
+              <h5>Customizing Your Imports</h5>
+              <p>When you are customizing, you must always include this set of files to ensure proper behavior.</p>
+              <script src="https://gist.github.com/3174610.js?file=app2.scss"></script>
+
+              <p>The next bit of code controls which common elements get included. Certain elements will throw an error to let you know if they rely on a mixin you haven't included.</p>
+              <script src="https://gist.github.com/3174615.js?file=app3.scss"></script>
+
+              <p>Finally, you can control which components are compiled at the top of your app.css file by uncommenting what you desire.</p>
+              <script src="https://gist.github.com/3174617.js?file=app4.scss"></script>
+
+              <p><strong>Note: Watch for Compass to throw errors to let you know what you aren't including.</strong></p>
               <hr>
 
               <a name="mixins"></a>
@@ -179,7 +209,8 @@
               <dl class="sub-nav">
                 <dt>Go to:</dt>
                 <dd><a href="#gemfile">Gemfile</a></dd>
-                <dd><a href="#configuration">Configuration</a></dd>
+                <dd><a href="#install">Install</a></dd>
+                <dd><a href="#advancedInstall">Advanced</a></dd>
                 <dd><a href="#upgrading">Upgrading from 2.X</a></dd>
               </dl>
 
@@ -199,10 +230,22 @@
 
               <h5>Notes on SASS alpha dependency</h5>
               <p>Foundation is currently utilizing some of the new media query features available in SASS 3.2, such as those mentioned in <a href="http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32" rel="nofollow">this article.</a>  From what we've seen so far this is a stable enough release on which to build Foundation, especially since 3.2 is due to be released soon.</p>
-
+              
+              
+              <a name="install"></a>
+              <h4>Installation</h4>
+              <p>To use Foundation there's a few steps involved, nothing too complicated.  Don't worry we made some generators to automate most of this boring work.  Use the following generators to get things going:</p>
+              
+              <h5>rails g foundation:install</h5>
+              <p>This will create <strong>app/assets/stylesheets/foundation_and_overrides.scss</strong> in your project. This file will be imported in your <strong>app/assets/stylesheets/application.css</strong> sprockets manifest file.</p>
+              
+              <h5>rails g foundation:layout</h5>
+              <p>This will provide an application layout that sets the width for mobile devices.  The generated file will replace <strong>app/views/layouts/application.html.erb</strong>.</p>
+              
               <a name="configuration"></a>
-              <h4>Configuration</h4>
-
+              <h4>Advanced</h4>
+              <p>If you don't wish to use the generators (or are adding Foundation to an existing project) here's all the steps you'll need to follow to get it working.</p>
+              
               <h5>Layout</h5>
               <p>Add the following to the <strong>&lt;head&gt;</strong> tag of your page layouts (i.e. <strong>app/views/layouts/application.html.erb</strong>) to set the viewport width for mobile devices.</p>
 
