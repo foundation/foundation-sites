@@ -42,6 +42,10 @@ Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
 
+PyroCMS
+
+* [PyroYeti - PyroCMS Theme](https://github.com/pyrosuit/PyroYeti) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
+
 Django
 
 * [A foundation theme for the Pinax](http://pypi.python.org/pypi/pinax-theme-foundation) by Christopher Clarke, Kwesi Aguillera & Lendl Smith
