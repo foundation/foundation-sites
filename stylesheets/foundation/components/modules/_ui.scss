@@ -313,15 +313,6 @@
 
   }
 
-  /* Lists ---------------------- */
-
-  ul.nice, ol.nice { list-style: none; margin: 0;
-
-    li { padding-left: 13px; position: relative;
-      span.bullet, span.number { position: absolute; left: 0; top: 0; color: #ccc; }
-    }
-  }
-
   /* Link List */
   ul.link-list { margin: 0 0 ms(1) -22px; padding: 0; list-style: none; overflow: hidden;
 
@@ -330,7 +321,6 @@
       a { display: block; }
     }
   }
-
 
   /* Keytroke Characters ---------------------- */
 
