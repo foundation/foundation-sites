@@ -90,7 +90,7 @@
   				<h4>Vertical Tabs</h4>
   				<p>You can also use tabs in a vertical configuration by adding a class of 'vertical' to the <code>dl</code> element. These are great for more scalable nav, and you can see how they work on this page on a tablet or desktop.</p>
 
-          <dl class="nice vertical tabs">
+          <dl class="vertical tabs">
           	<dd class="active"><a href="#vertical1">Vertical Tab 1</a></dd>
           	<dd><a href="#vertical2">Vertical Tab 2</a></dd>
           	<dd><a href="#vertical3">Vertical Tab 3</a></dd>
