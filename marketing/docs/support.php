@@ -120,7 +120,7 @@
   				
   				<h4>Changelog</h4>
   				<h5>3.0.7 &mdash; July 30, 2012</h5>
-          <p>Numerous JS bug fixes, added generators for dails and refactored SCSS directory for better maintainability and scalability over time. CSS files weren't effected by this refactoring.</p>
+          <p>Numerous JS bug fixes, added generators for Rails and refactored SCSS directory for better maintainability and scalability over time. CSS files weren't effected by this refactoring.</p>
 
           <h5>3.0.6 &mdash; July 20, 2012</h5>
   				<p>Numerous bugfixes including dropdown buttons on touch devices, Modernizr update with IE8Compat, split button colors, and more. Split out the functions in app.js to be part of the Gem and only initialized in app.js, so you can keep a clean distinction between your JS and Foundation's (if you want to). Added an <a href="elements.php">accordion</a> element.</p>
