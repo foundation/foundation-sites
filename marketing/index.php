@@ -34,7 +34,7 @@
             <a href="whats-new.php"><div class="pic" id="homepageImgSass"></div></a>
 
             <h5>Developed with Sass</h5>
-            <p>Foundation 3 is built with Sass, a powerful CSS preprocessor, which allows us to much more quickly develop Foundation itself &mdash; and gives you new tools to quickly customize and built on top of Foundation.</p>
+            <p>Foundation 3 is built with Sass, a powerful CSS preprocessor, which allows us to much more quickly develop Foundation itself &mdash; and gives you new tools to quickly customize and build on top of Foundation.</p>
           </div>
           <div class="four columns">
             <a href="whats-new.php"><div class="pic" id="homepageImgFeatures"></div></a>

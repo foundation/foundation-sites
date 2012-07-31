@@ -34,12 +34,12 @@
               $(this).fadeOut(150);
             });
           } else {
-            $body.on('mouseover.tooltip mouseout.tooltip', settings.targetClass, function (e) {
+            $body.on('mouseenter.tooltip mouseleave.tooltip', settings.targetClass, function (e) {
               var $this = $(this);
 
-              if (e.type === 'mouseover') {
+              if (e.type === 'mouseenter') {
                 methods.showOrCreateTip($this);
-              } else if (e.type === 'mouseout') {
+              } else if (e.type === 'mouseleave') {
                 methods.hide($this);
               }
             });
