@@ -16,7 +16,7 @@
 
   @mixin columnBase { position: relative; min-height: 1px; padding: 0 ($columnGutter/2); }
   @mixin column($columns:$columns, $behavior: false) {
-    @if $behavior == center           { @extend %fl-l; margin: 0 auto; @extend %c-base; width: gridCalc($columns, $totalColumns);
+    @if $behavior == center           { @extend %fl-l; margin: 0 auto !important; @extend %c-base; width: gridCalc($columns, $totalColumns);
     } @else if $behavior == collapse  { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $totalColumns);
     } @else                           { @extend %fl-l; @extend %c-base; width: gridCalc($columns, $totalColumns); }
   }
@@ -37,9 +37,9 @@
   // Mobile Columns, syntax is @include mobile-column(#);
 
   @mixin mobileColumn($columns:$columns, $behavior: false) {
-    @if $behavior == center          { @include respondTo(smallScreen) { @extend %fl-n; margin: 0 auto; @extend %c-base; width: gridCalc($columns, $mobileTotalColumns); }
-    } @else if $behavior == collapse { @include respondTo(smallScreen) { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $mobileTotalColumns); }
-    } @else                          { @include respondTo(smallScreen) { @extend %fl-l; width: gridCalc($columns, $mobileTotalColumns); padding: 0 ($columnGutter/2); } }
+    @if $behavior == center          { @include respondTo(smallScreen) { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $mobileTotalColumns); }
+    } @else if $behavior == collapse { @include respondTo(smallScreen) { float: left; position: relative; min-height: 1px; padding: 0; width: gridCalc($columns, $mobileTotalColumns); }
+    } @else                          { @include respondTo(smallScreen) { float: left; width: gridCalc($columns, $mobileTotalColumns); padding: 0 ($columnGutter/2); } }
   }
 
   // Mobile Push/Pull Mixin
