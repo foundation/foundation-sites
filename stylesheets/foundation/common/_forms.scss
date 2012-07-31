@@ -33,7 +33,7 @@
 
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
 
-    &.oversize { @include font-size(18, true); }
+    &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
     &:focus { background: darken($white, 2%); outline: none !important; border-color: darken($white, 30%); }
     &[disabled] { background-color: #ddd; }

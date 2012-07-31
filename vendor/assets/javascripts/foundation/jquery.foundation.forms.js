@@ -389,25 +389,25 @@
     }
   };
 
-  $('form.custom span.custom.checkbox').on('click', function (event) {
+  $(document).on('click', 'form.custom span.custom.checkbox', function (event) {
     event.preventDefault();
     event.stopPropagation();
 
     toggleCheckbox($(this));
   });
 
-  $('form.custom span.custom.radio').on('click', function (event) {
+  $(document).on('click', 'form.custom span.custom.radio', function (event) {
     event.preventDefault();
     event.stopPropagation();
 
     toggleRadio($(this));
   });
 
-  $('form.custom select').on('change', function (event) {
+  $(document).on('change', 'form.custom select', function (event) {
     refreshCustomSelect($(this));
   });
 
-  $('form.custom label').on('click', function (event) {
+  $(document).on('click', 'form.custom label', function (event) {
     var $associatedElement = $('#' + $(this).attr('for')),
         $customCheckbox,
         $customRadio;
