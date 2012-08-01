@@ -1,53 +1,38 @@
 description 'Foundation Compass Gem'
 
 # Sass Files
-stylesheet 'sass/_settings.scss',                         :to => '_settings.scss'
-stylesheet 'sass/app.scss',                               :to => 'app.scss', :media => "screen, projector, print"
-
-# Relative asset paths
-js_path = "/../../vendor/assets/javascripts/foundation"
-compressed_js_path = "/../../public/assets"
-images_path = "/../../vendor/assets/images/foundation"
-
-# Compressed Javascripts
-javascript "#{compressed_js_path}/jquery.js",             :to => "jquery.min.js"
-javascript "#{compressed_js_path}/foundation.js",         :to => "foundation.min.js"
-
-# Uncompressed Javascripts
-javascript "#{js_path}/jquery.js",                        :to => "jquery.js"
-javascript "#{js_path}/modernizr.foundation.js",          :to => "foundation/modernizr.foundation.js"
-javascript "#{js_path}/jquery.placeholder.js",            :to => "foundation/jquery.placeholder.js"
-javascript "#{js_path}/jquery.foundation.alerts.js",      :to => "foundation/jquery.foundation.alerts.js"
-javascript "#{js_path}/jquery.foundation.accordion.js",   :to => "foundation/jquery.foundation.accordion.js" 
-javascript "#{js_path}/jquery.foundation.buttons.js",     :to => "foundation/jquery.foundation.buttons.js"
-javascript "#{js_path}/jquery.foundation.tooltips.js",    :to => "foundation/jquery.foundation.tooltips.js"
-javascript "#{js_path}/jquery.foundation.forms.js",       :to => "foundation/jquery.foundation.forms.js"
-javascript "#{js_path}/jquery.foundation.tabs.js",        :to => "foundation/jquery.foundation.tabs.js"
-javascript "#{js_path}/jquery.foundation.navigation.js",  :to => "foundation/jquery.foundation.navigation.js"
-javascript "#{js_path}/jquery.foundation.reveal.js",      :to => "foundation/jquery.foundation.reveal.js"
-javascript "#{js_path}/jquery.foundation.orbit.js",       :to => "foundation/jquery.foundation.orbit.js"
-
-# Customizable Javascript
-javascript "#{js_path}/app.js",                           :to => "app.js"
+stylesheet 'scss/_settings.scss',                         :to => '_settings.scss'
+stylesheet 'scss/app.scss',                               :to => 'app.scss', :media => "screen, projector, print"
 
 # Make sure you list all the project template files here in the manifest.
-html 'index.html', :erb => true
+html 'index.html', :erb => true # use Foundation::VERSION
 file 'humans.txt'
 file 'robots.txt'
 file 'MIT-LICENSE.txt'
 
-# Image Files
-image "#{images_path}/orbit/bullets.jpg",                   :to => "foundation/orbit/bullets.jpg"
-image "#{images_path}/orbit/left-arrow.png",                :to => "foundation/orbit/left-arrow.png"
-image "#{images_path}/orbit/left-arrow-small.png",          :to => "foundation/orbit/left-arrow-small.png"
-image "#{images_path}/orbit/loading.gif",                   :to => "foundation/orbit/loading.gif"
-image "#{images_path}/orbit/mask-black.png",                :to => "foundation/orbit/mask-black.png"
-image "#{images_path}/orbit/pause-black.png",               :to => "foundation/orbit/pause-black.png"
-image "#{images_path}/orbit/right-arrow.png",               :to => "foundation/orbit/right-arrow.png"
-image "#{images_path}/orbit/right-arrow-small.png",         :to => "foundation/orbit/right-arrow-small.png"
-image "#{images_path}/orbit/rotator-black.png",             :to => "foundation/orbit/rotator-black.png"
-image "#{images_path}/orbit/timer-black.png",               :to => "foundation/orbit/timer-black.png"
+# Images exist in non-standard location so they will play nicely with
+# Rails asset-pipeline.  So this method allows us to copy images from
+# outside the compass template
+def copy_images_from(relative_path, prefix_path)
+  absolute_path = File.join(File.dirname(__FILE__), relative_path, prefix_path)
+  Dir.glob("#{absolute_path}/*.*") do |img|
+    image "#{relative_path}/#{prefix_path}/#{File.basename(img)}", 
+      :to => "#{prefix_path}/#{File.basename(img)}"
+  end
+end
 
+def copy_js_from(relative_path, prefix_path, excludes=[])
+  absolute_path = File.join(File.dirname(__FILE__), relative_path, prefix_path)
+  js_files = Dir.glob("#{absolute_path}/*.js")
+  js_files.reject! {|f| excludes.include? File.basename(f)}
+  js_files.each do |js|
+    javascript "#{relative_path}/#{prefix_path}/#{File.basename(js)}", 
+      :to => "#{prefix_path}/#{File.basename(js)}"
+  end
+end
+
+copy_images_from("../../vendor/assets/images", "foundation/orbit")
+copy_js_from("../../vendor/assets/javascripts", "foundation", ["index.js"])
 
 help %Q{
 
