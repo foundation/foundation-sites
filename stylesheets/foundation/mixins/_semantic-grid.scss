@@ -8,17 +8,17 @@
 
   @mixin innerRowBase { width: auto; max-width: none; min-width: 0; }
   @mixin innerRow($behavior: false) {
-    @if $behavior == collapse { @extend %row-i-base; margin: 0; @extend %clearfix;
-    } @else                   { @extend %row-i-base; margin: 0 (-($columnGutter/2)); @extend %clearfix; }
+      @if $behavior == collapse { @extend %row-i-base; margin: 0; @extend %clearfix;
+    } @else                     { @extend %row-i-base; margin: 0 (-($columnGutter/2)); @extend %clearfix; }
   }
 
   // Columns mixin, syntax is ($columns, $behavior). Behavior can be 'centered' which centers things or 'collapse' which collapses the gutters. ex @include row(4,[center | collapse])
 
   @mixin columnBase { position: relative; min-height: 1px; padding: 0 ($columnGutter/2); }
   @mixin column($columns:$columns, $behavior: false) {
-    @if $behavior == center           { @extend %fl-l; margin: 0 auto !important; @extend %c-base; width: gridCalc($columns, $totalColumns);
-    } @else if $behavior == collapse  { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $totalColumns);
-    } @else                           { @extend %fl-l; @extend %c-base; width: gridCalc($columns, $totalColumns); }
+      @if      $behavior == center   { @extend %fl-n; margin: 0 auto !important; @extend %c-base; width: gridCalc($columns, $totalColumns);
+    } @else if $behavior == collapse { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $totalColumns);
+    } @else                          { @extend %fl-l; @extend %c-base; width: gridCalc($columns, $totalColumns); }
   }
 
   // Offset Mixin, include after a column mixin to manipulate its grid offset.
@@ -37,7 +37,7 @@
   // Mobile Columns, syntax is @include mobile-column(#);
 
   @mixin mobileColumn($columns:$columns, $behavior: false) {
-    @if $behavior == center          { @include respondTo(smallScreen) { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $mobileTotalColumns); }
+      @if      $behavior == center   { @include respondTo(smallScreen) { float: none; margin: 0 auto; position: relative; min-height: 1px; padding: 0 ($columnGutter/2); width: gridCalc($columns, $mobileTotalColumns); }
     } @else if $behavior == collapse { @include respondTo(smallScreen) { float: left; position: relative; min-height: 1px; padding: 0; width: gridCalc($columns, $mobileTotalColumns); }
     } @else                          { @include respondTo(smallScreen) { float: left; width: gridCalc($columns, $mobileTotalColumns); padding: 0 ($columnGutter/2); } }
   }
