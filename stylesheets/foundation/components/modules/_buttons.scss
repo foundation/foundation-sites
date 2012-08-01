@@ -40,7 +40,7 @@
     &.round { @include border-radius(1000px); }
 
     /* Layout */
-    &.full-width { width: 100%; text-align: center; padding-left: 0 !important; padding-right: !important; }
+    &.full-width { width: 100%; text-align: center; padding-left: 0 !important; padding-right: 0 !important; }
     &.left-align { text-align: left; text-indent: 12px; }
 
 		/* Disabled ---------- */
