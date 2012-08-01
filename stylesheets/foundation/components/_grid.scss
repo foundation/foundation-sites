@@ -18,10 +18,15 @@
   [class*="column"] + [class*="column"]:last-child { float: right; }
   [class*="column"] + [class*="column"].end { float: left; }
 
+  // Creating column classes
+  @for $i from 1 through $totalColumns {
+    .#{convert-number-to-word($i)} { width: gridCalc($i, $totalColumns); }
+  }
+
   // Creating .row-# classes
   @for $i from 1 through $totalColumns {
     .row {
-      .#{convert-number-to-word($i)} { width: gridCalc($i, $totalColumns); }
+      .#{convert-number-to-word($i)} { @extend .#{convert-number-to-word($i)}; }
     }
   }
 
