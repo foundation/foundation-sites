@@ -9,7 +9,11 @@
     $('.button.dropdown > ul', this).addClass('no-hover');
 
     $('.button.dropdown', this).on('click.fndtn', function (e) {
-      e.stopPropagation();
+      // Stops further propagation of the event up the DOM tree when clicked on the button.
+      // Events fired by its descendants are not being blocked.
+      if (e.target === this) {
+        e.stopPropagation();
+      }
     });
     $('.button.dropdown.split span', this).on('click.fndtn', function (e) {
       e.preventDefault();
