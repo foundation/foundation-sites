@@ -5,6 +5,7 @@ PATH
       compass (>= 0.12.2)
       rake
       sass (>= 3.2.0.alpha.244)
+      modular-scale (>= 1.0.0)
 
 GEM
   remote: https://rubygems.org/
