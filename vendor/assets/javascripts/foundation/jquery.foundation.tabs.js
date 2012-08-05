@@ -24,6 +24,7 @@
     
     $('dl.tabs dd a', this).on('click.fndtn', function (event){
       activateTab($(this).parent('dd'));
+      $(this).attr("href", window.location.pathname + $(this).attr("href").replace(/^.+#/, '#'));
     });
     
     if (window.location.hash) {
