@@ -455,15 +455,6 @@
   					<li>Four-up element</li>
   				</ul>
 
-          <h5>Four-up (Mobile)</h5>
-          <ul class="block-grid mobile-five-up">
-            <li>Four-up element</li>
-            <li>Four-up element</li>
-            <li>Four-up element</li>
-            <li>Four-up element</li>
-            <li>Four-up element</li>
-          </ul>
-
   				<h5>Five-up</h5>
   				<ul class="block-grid five-up">
   					<li>Five-up element</li>
