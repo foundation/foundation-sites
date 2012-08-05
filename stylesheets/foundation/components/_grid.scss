@@ -134,7 +134,4 @@ that IE7/8 do not support :nth-child.
     .block-grid.mobile { margin-left: 0; }
     .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
     
-    @for $i from 2 through $mobileTotalColumns {
-      .block-grid.mobile-#{convert-number-to-word($i)}-up > li { float:left; width: 100%/$i;}
-    }
   }
