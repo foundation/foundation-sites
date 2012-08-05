@@ -40,10 +40,10 @@
   code { font-weight: bold; background: $highlightColor; }
 
   /* Lists ---------------------- */
-  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: outside; }
+  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
   ul {
     li {
-      ul { margin-left: 20px; margin-bottom: 0; list-style: outside; }
+      ul, ol { margin-left: 20px; margin-bottom: 0; }
     }
     &.square, &.circle, &.disc { margin-left: ms(1); }
     &.square { list-style-type: square;
@@ -58,7 +58,11 @@
     &.no-bullet { list-style: none; }
     &.large li { line-height: 21px; }
   }
-
+  ol {
+    li {
+      ul, ol { margin-left: 20px; margin-bottom: 0; }
+    }
+  }
 
   /* Blockquotes ---------------------- */
   blockquote, blockquote p { line-height: 1.5; color: lighten($headerFontColor, 30%); }
