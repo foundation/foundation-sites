@@ -28,6 +28,8 @@
 
 					<p>This will launch the modal with the ID "myModal2" without attaching a handler or calling the plugin (since the plugin is always listening for this). You can also pass any of the parameters simply by putting a data-nameOfParameter="value" (i.e. data-animation="fade")</p>
 
+				<h4>Sizes</h4>
+				<p>Out of the box, reveal supports a few different sizes, those are:<br> <kbd>small</kbd> <kbd>medium</kbd> <kbd>large</kbd> <kbd>xlarge</kbd> <kbd>expand</kbd></p>
   				<hr />
 
   				<h4>Options</h4>
