@@ -258,7 +258,7 @@
           // Update the current element with the option value.
           //
           if ($currentSelect) {
-            $currentSelect.html( this.value );
+            $currentSelect.html( $( this ).html() );
           }
           
         }
