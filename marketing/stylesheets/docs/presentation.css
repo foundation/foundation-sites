@@ -711,6 +711,7 @@ dl.tabs dt { color: #b3b3b3; cursor: default; display: block; float: left; font-
 dl.tabs dt:first-child { padding: 0 9px 0 0; }
 dl.tabs dd { display: block; float: left; padding: 0; margin: 0; }
 dl.tabs dd a { color: #6f6f6f; display: block; font-size: 14px; height: 40px; line-height: 40px; padding: 0px 23.8px; }
+dl.tabs dd a:focus { font-weight: bold; color: #2ba6cb; }
 dl.tabs dd.active { border-top: 3px solid #2ba6cb; margin-top: -3px; }
 dl.tabs dd.active a { cursor: default; color: #3c3c3c; background: #fff; border-left: 1px solid #e6e6e6; border-right: 1px solid #e6e6e6; font-weight: bold; }
 dl.tabs dd:first-child { margin-left: 0; }
