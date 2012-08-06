@@ -949,3 +949,6 @@ ul.vcard li.fn { font-weight: bold; font-size: 15px; font-size: 1.5rem; }
 
 p.vevent span.summary { font-weight: bold; }
 p.vevent abbr { cursor: default; text-decoration: none; font-weight: bold; border: none; padding: 0 1px; }
+
+/* Media Query Development Viewer - Toggle by pressing shift+m */
+#FoundationQueryViewer { position: fixed; top: 4px; left: 4px; background: rgba(0, 0, 0, 0.75); z-index: 999; -webkit-border-radius: 1000px; -moz-border-radius: 1000px; -ms-border-radius: 1000px; -o-border-radius: 1000px; border-radius: 1000px; padding: 3px 10px; color: white; }
