@@ -11,7 +11,7 @@
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width" />
 
-	<title>Welcome to Foundation</title>
+	<title>Welcome to the Foundation Test Bed</title>
 
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="stylesheets/styles.css">
@@ -25,34 +25,41 @@
 
 </head>
 <body>
-  
-  <div class="row">
-    <div class="twelve columns">
-      <p><img src="http://placehold.it/32x32" /><a href="#">Facebook</a></p>
-    </div>
-  </div>
 
 	<div class="row">
 		<div class="twelve columns">
-			<h2>Welcome to Foundation</h2>
-			<hr />
+			<h2>Welcome to the Foundation Test Bed</h2>
+      <h4 class="subheader">We've made it really easy to contribute to Foundation and test out the elements you want! Just pick the section that your want and dive right in.</h4>
+      <hr>
 		</div>
 	</div>
 	
 	<div class="row">
-    <div class="twelve columns">
-      <h4>Tabs</h4>
-      <dl class="tabs">
-        <dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
-        <dd><a href="#simple2">Simple Tab 2</a></dd>
-        <dd><a href="#simple3">Simple Tab 3</a></dd>
-      </dl>
 
-      <ul class="tabs-content">
-        <li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
-        <li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
-        <li id="simple3Tab">This is simple tab 3's content. It's, you know...okay.</li>
-      </ul>
+    <div class="four columns push-eight">
+      <div class="panel">
+        <h5>Available Testing Pages:</h5>
+        <ul class="disc">
+          <li><a href="grid.html">Grid</a></li>
+          <li><a href="grid.html">Typography</a></li>
+          <li><a href="grid.html">Buttons</a></li>
+          <li><a href="grid.html">Forms</a></li>
+          <li><a href="grid.html">Navigation</a></li>
+          <li><a href="grid.html">Tabs</a></li>
+          <li><a href="grid.html">Elements</a></li>
+          <li><a href="grid.html">Orbit</a></li>
+          <li><a href="grid.html">Reveal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="eight columns pull-four">
+      <h3>Testing</h3>
+      <p>Go into the <kbd>test/</kbd> directory. Run bundle exec compass compile or bundle exec compass watch if you're making changes and want to see them reflected on-the-fly.</p>
+      <p>Want to add a feature to Foundation? Either update one of the <strong>test/*.html</strong> files or copy <strong>test/template.html</strong> to a new file, add your markup to it and check it in.</p>
+
+      <h4>Compass Project</h4>
+      <p>If you have a compass project and would like updated assets you can run the following command at any given time from within your project directory:</p>
+      <kbd>compass create -r zurb-foundation --using foundation</kbd>
     </div>
   </div>
   
