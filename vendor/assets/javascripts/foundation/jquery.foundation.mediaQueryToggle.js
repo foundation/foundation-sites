@@ -5,13 +5,13 @@
     var settings  = $.extend(options,{toggleKey:77}); // Press 'M'
     
     $(document).keyup(function(e) {
-      var $mqViewer = $('#FoundationQueryViewer');
+      var $mqViewer = $('#fqv');
 
       if (e.keyCode == settings.toggleKey) { 
         if ($mqViewer.length > 0) {
           $mqViewer.remove();
         } else {
-          $('body').prepend('<div id="FoundationQueryViewer"><strong class="show-for-xlarge">Media: Extra Large</strong><strong class="show-for-large">Media: Large</strong><strong class="show-for-medium">Media: Medium</strong><strong class="show-for-small">Media: Small</strong><strong class="show-for-landscape">Media: Landscape</strong><strong class="show-for-portrait">Media: Portrait</strong><strong class="show-for-touch">Media: Touch</strong></div>');
+          $('body').prepend('<div id="fqv" style="position:fixed;top:4px;left:4px;z-index:999;color:#fff;"><p style="font-size:12px;background:rgba(0,0,0,0.75);padding:5px;margin-bottom:1px;line-height:1.2;"><span class="left">Media:</span> <span style="font-weight:bold;" class="show-for-xlarge">Extra Large</span><span style="font-weight:bold;" class="show-for-large">Large</span><span style="font-weight:bold;" class="show-for-medium">Medium</span><span style="font-weight:bold;" class="show-for-small">Small</span><span style="font-weight:bold;" class="show-for-landscape">Landscape</span><span style="font-weight:bold;" class="show-for-portrait">Portrait</span><span style="font-weight:bold;" class="show-for-touch">Touch</span></p></div>');
         }
       }
     });
