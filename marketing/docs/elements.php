@@ -54,6 +54,11 @@
 
   				<p><strong>Note:</strong> These classes have been listed in order of precendence. Touch classes will override orientation, which will override size.</p>
 
+          <h5>Media Query Viewer</h5>
+          <p>Easily add the ability to show which media query you are currently viewing. To activate the viewer, make sure you have <strong>jquery.foundation.mediaQueryToggle.js</strong> linked up on your page. From there, simply add the markup to your page or press <kbd>M</kbd>. The keyboard toggle won't work on mobile devices so make sure you add the markup in those cases.</p>
+
+          <script src="https://gist.github.com/3278421.js?file=foundation-mqViewer.html"></script>
+
   				<hr />
 
     			<h4>Alerts</h4>

@@ -17,6 +17,7 @@ javascripts:
     - vendor/assets/javascripts/foundation/jquery.foundation.navigation.js
     - vendor/assets/javascripts/foundation/jquery.foundation.reveal.js
     - vendor/assets/javascripts/foundation/jquery.foundation.orbit.js
+    - vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js
     
   marketing:
     - vendor/assets/javascripts/foundation/jquery.js
@@ -31,7 +32,8 @@ javascripts:
     - vendor/assets/javascripts/foundation/jquery.foundation.navigation.js
     - vendor/assets/javascripts/foundation/jquery.foundation.reveal.js
     - vendor/assets/javascripts/foundation/jquery.foundation.orbit.js
-    - vendor/assets/javascripts/foundation/jquery.offcanvas.js    
+    - vendor/assets/javascripts/foundation/jquery.offcanvas.js  
+    - vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js  
     - vendor/assets/javascripts/foundation/app.js
     - marketing/javascripts/foundation.top-bar.js
     - marketing/jswipe.js
@@ -52,7 +54,8 @@ javascripts:
     - vendor/assets/javascripts/foundation/jquery.foundation.navigation.js
     - vendor/assets/javascripts/foundation/jquery.foundation.reveal.js
     - vendor/assets/javascripts/foundation/jquery.foundation.orbit.js
-    - vendor/assets/javascripts/foundation/jquery.offcanvas.js    
+    - vendor/assets/javascripts/foundation/jquery.offcanvas.js  
+    - vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js 
     - vendor/assets/javascripts/foundation/app.js
     - marketing/javascripts/foundation.top-bar.js
     - marketing/docs/presentation.js

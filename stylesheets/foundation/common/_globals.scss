@@ -28,3 +28,26 @@
   #map_canvas embed { max-width: none; }
   #map_canvas img { max-width: none; }
   #map_canvas object { max-width: none; }
+  
+  // Uncomment this for a temporary fix for the Google +1 Bubble positioning problems
+  //
+  // .gc-bubbleDefault.pls-container { background: transparent; 
+  //   tbody {
+  //     tr {
+  //       &:first-child { background: transparent !important; margin-top: 1px !important; }
+  //       &:nth-child(even) { background: transparent !important; background-image: none !important; }
+  //       &:nth-child(2n), &:nth-child(3n) {
+  //         td:last-child { background: transparent !important; background-image: none !important; border-left: solid 1px #ddd !important; }
+  //       }
+  //       &:nth-child(3n) {
+  //         td:nth-child(2n) { border-bottom: solid 1px #ddd !important; }
+  //       }
+  //       &:last-child { display: none !important; }
+  //     }
+  //   }
+  // }
+  // img.pls-tailbottom.gc-reset { height: 8px !important; top: 1px !important; }
+  // .pls-dropTR { background-position: 0 -999px !important; border-left: solid 1px #ddd !important; }
+  // .pls-tailleft, .pls-tailright { height: 25px !important; }
+  // .pls-tailleft { left: -1px !important; }
+  // .pls-tailright { left: 1px !important; }

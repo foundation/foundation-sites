@@ -12,7 +12,9 @@
     }
 
     dd { display: block; float: left; padding: 0; margin: 0;
-      a { color: lighten($txtColor, 30%); display: block; font-size: ms(0); height: $tabHeight; line-height: $tabHeight; padding: 0px ms(1) * 1.4; }
+      a { color: lighten($txtColor, 30%); display: block; font-size: ms(0); height: $tabHeight; line-height: $tabHeight; padding: 0px ms(1) * 1.4;
+        &:focus { font-weight: bold; color: $mainColor; }
+      }
       &.active { border-top: 3px solid $mainColor; margin-top: -3px;
         a { cursor: default; color: lighten($txtColor, 10%); background: #fff; border-left: 1px solid darken($white, 10%); border-right: 1px solid darken($white, 10%); font-weight: bold; }
       }
