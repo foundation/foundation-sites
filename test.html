@@ -31,23 +31,33 @@
   </style>
 </head>
 <body>
+
+  <ul class="nav-bar">
+    <li class="active"><a href="#">Nav Item 1</a></li>
+    <li class="has-flyout">
+      <a href="#">Nav Item 2</a>
+      <a href="#" class="flyout-toggle"><span> </span></a>
+      <ul class="flyout">
+        <li>
+          <form>
+            <label>
+              Email Address:
+              <input type="email" name="usrnm">
+            </label>
+            <label>
+              Password:
+              <input type="password">
+            </label>
+            <input type="submit" />
+          </form>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
   <div class="row">
     <div class="eight columns">
-<label for="customDropdown">Dropdown Label</label>
-<select style="display:none;" id="customDropdown">
-  <option SELECTED>This is a dropdown</option>
-  <option>This is another option</option>
-  <option>Look, a third option</option>
-</select>
-<div class="custom dropdown">
-  <a href="#" class="current">This is a dropdown</a>
-  <a href="#" class="selector"></a>
-  <ul>
-    <li>This is a dropdown</li>
-    <li>This is another option</li>
-    <li>Look, a third option</li>
-  </ul>
-</div>
+
       <h4>Visibility Classes</h4>
       <p>Foundation 3 allows you to easily turn elements on and off based on certain device criteria, like screen size, touch, or orientation.</p>
       
