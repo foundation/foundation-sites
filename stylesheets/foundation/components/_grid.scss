@@ -44,6 +44,7 @@
   }
 
   img, object, embed { max-width: 100%; height: auto; }
+  object, embed { height: 100%; }
   img { -ms-interpolation-mode: bicubic; }
   #map_canvas img, .map_canvas img {max-width: none!important;}
 
