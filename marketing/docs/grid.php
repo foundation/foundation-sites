@@ -466,7 +466,10 @@
   					<li>Five-up element</li>
   				</ul>
 
+          <br>
+          <p><strong>Note:</strong> Sometimes there are clearing issues in IE8. If you are seeing these issues, simply uncomment the Block Grid section within your foundation app.js file. If you don't have those line in your app.js file, copy them below:</p>
 
+          <script src="https://gist.github.com/3286324.js?file=blockgrid.js"></script>
 
     		</div>
     		<div class="four columns">
