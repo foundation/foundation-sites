@@ -140,7 +140,7 @@
                   <input type="text" />
                 </div>
                 <div class="four mobile-one columns">
-                  <a class="button postfix">Search</a>
+                  <a class="button expand postfix">Search</a>
                 </div>
               </div>
             </div>
