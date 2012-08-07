@@ -436,7 +436,7 @@ that IE7/8 do not support :nth-child.
 .button.secondary:focus { -webkit-box-shadow: 0 0 5px #e9e9e9, 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 0 5px #e9e9e9, 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 0 5px #e9e9e9, 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
 .button.radius { -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
 .button.round { -webkit-border-radius: 1000px; -moz-border-radius: 1000px; -ms-border-radius: 1000px; -o-border-radius: 1000px; border-radius: 1000px; }
-.button.full-width { width: 100%; text-align: center; padding-left: 0 !important; padding-right: 0 !important; }
+.button.full-width { width: 100%; text-align: center; padding-left: 0px !important; padding-right: 0px !important; }
 .button.left-align { text-align: left; text-indent: 12px; }
 .button.disabled, .button[disabled] { opacity: 0.6; cursor: default; background: #2ba6cb; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
 .button.disabled :hover, .button[disabled] :hover { background: #2ba6cb; }
@@ -611,17 +611,17 @@ div.orbit div.orbit-slide { width: 100%; height: 100%; }
 /* Timer ---------------------- */
 div.orbit-wrapper div.timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; right: 10px; opacity: .6; cursor: pointer; z-index: 31; }
 
-div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('foundation/orbit/rotator-black.png?1340999421') no-repeat; z-index: 3; }
+div.orbit-wrapper span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: -20px; background: url('../../vendor/assets/images/foundation/orbit/rotator-black.png?1340999421') no-repeat; z-index: 3; }
 
 div.orbit-wrapper span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; right: 0; z-index: 2; overflow: hidden; }
 
 div.orbit-wrapper span.rotator.move { left: 0; }
 
-div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('foundation/orbit/timer-black.png?1340999421') repeat 0 0; }
+div.orbit-wrapper span.mask.move { width: 40px; left: 0; background: url('../../vendor/assets/images/foundation/orbit/timer-black.png?1340999421') repeat 0 0; }
 
-div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('foundation/orbit/pause-black.png?1340999421') no-repeat; z-index: 4; opacity: 0; }
+div.orbit-wrapper span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; left: 0; background: url('../../vendor/assets/images/foundation/orbit/pause-black.png?1340999421') no-repeat; z-index: 4; opacity: 0; }
 
-div.orbit-wrapper span.pause.active { background: url('foundation/orbit/pause-black.png?1340999421') no-repeat 0 -40px; }
+div.orbit-wrapper span.pause.active { background: url('../../vendor/assets/images/foundation/orbit/pause-black.png?1340999421') no-repeat 0 -40px; }
 
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper span.pause.active { opacity: 1; }
 
@@ -635,17 +635,17 @@ div.orbit-wrapper div.slider-nav { display: block; }
 
 div.orbit-wrapper div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
 
-div.orbit-wrapper div.slider-nav span.right { background: url('foundation/orbit/right-arrow.png?1340999421'); background-size: 100%; right: 0; }
+div.orbit-wrapper div.slider-nav span.right { background: url('../../vendor/assets/images/foundation/orbit/right-arrow.png?1340999421'); background-size: 100%; right: 0; }
 
-div.orbit-wrapper div.slider-nav span.left { background: url('foundation/orbit/left-arrow.png?1340999421'); background-size: 100%; left: 0; }
+div.orbit-wrapper div.slider-nav span.left { background: url('../../vendor/assets/images/foundation/orbit/left-arrow.png?1340999421'); background-size: 100%; left: 0; }
 
-.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('foundation/orbit/right-arrow-small.png?1340999421'); }
-.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('foundation/orbit/left-arrow-small.png?1340999421'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../../vendor/assets/images/foundation/orbit/right-arrow-small.png?1340999421'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../../vendor/assets/images/foundation/orbit/left-arrow-small.png?1340999421'); }
 
 /* Bullet Nav ---------------------- */
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../vendor/assets/images/foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.active { color: #222; background-position: -8px 0; }
 
@@ -660,7 +660,7 @@ div.orbit, div.orbit-wrapper { width: 100% !important; }
 
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -50px; left: 50%; margin-left: -50px; padding: 0; }
 
-ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
+ul.orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url('../../vendor/assets/images/foundation/orbit/bullets.jpg?1340999421') no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden; }
 
 ul.orbit-bullets li.has-thumb { background: none; width: 100px; height: 75px; }
 
