@@ -5,7 +5,6 @@ http_path = "/"
 sass_dir = "scss"
 css_dir = "stylesheets"
 images_dir = "../vendor/assets/images"
-# images_path = "../vendor/assets/images"
 line_comments = false
 preferred_syntax = :scss
 output_style = :compact
