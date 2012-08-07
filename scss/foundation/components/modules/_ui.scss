@@ -267,7 +267,7 @@
 
   dl.sub-nav { display: block; width: auto; overflow: hidden; margin: -4px 0 18px -9px; padding-top: 4px;
 
-    dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 4px; }
+    dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 10px; }
     dt { color: #999; font-weight: $bodyFontWeight; }
     dd a { text-decoration: none; @include border-radius(1000px); }
     dd.active a { font-weight: bold; background: $mainColor; color: #fff; padding: 3px 9px; cursor: default; }
