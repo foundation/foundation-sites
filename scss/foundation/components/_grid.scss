@@ -18,10 +18,15 @@
   [class*="column"] + [class*="column"]:last-child { float: right; }
   [class*="column"] + [class*="column"].end { float: left; }
 
+  // Creating column classes
+  @for $i from 1 through $totalColumns {
+    .#{convert-number-to-word($i)} { width: gridCalc($i, $totalColumns); }
+  }
+
   // Creating .row-# classes
   @for $i from 1 through $totalColumns {
     .row {
-      .#{convert-number-to-word($i)} { width: gridCalc($i, $totalColumns); }
+      .#{convert-number-to-word($i)} { @extend .#{convert-number-to-word($i)}; }
     }
   }
 
@@ -39,6 +44,7 @@
   }
 
   img, object, embed { max-width: 100%; height: auto; }
+  object, embed { height: 100%; }
   img { -ms-interpolation-mode: bicubic; }
   #map_canvas img, .map_canvas img {max-width: none!important;}
 
@@ -103,29 +109,38 @@ that IE7/8 do not support :nth-child.
   .block-grid { display: block; overflow: hidden; padding: 0;
 
     &>li { display: block; height: auto; float: left; }
+    &.one-up { margin: 0; 
+      &>li { width: 100%; padding: 0 0 15px; }
+    }
+
+    &.two-up { margin: 0 -15px; 
+      &>li { width: 50%; padding: 0 15px 15px; 
+        &:nth-child(2n+1) { clear: both; }
+      }
+    }
+
+    &.three-up { margin: 0 -12px; 
+      &>li { width: 33.33%; padding: 0 12px 12px; 
+        &:nth-child(3n+1) { clear: both; }
+      }
+    }
+
+    &.four-up { margin: 0 -10px; 
+      &>li { width: 25%; padding: 0 10px 10px; 
+        &:nth-child(4n+1) { clear: both; }
+      }
+    }
+
+    &.five-up { margin: 0 -8px; 
+      &>li { width: 20%; padding: 0 8px 8px; 
+        &:nth-child(5n+1) { clear: both; }
+      }
+    }
   }
-
-  .block-grid.one-up { margin: 0; }
-  .block-grid.one-up>li { width: 100%; padding: 0 0 15px; }
-  
-  .block-grid.two-up { margin: 0 -15px; }
-  .block-grid.two-up>li { width: 50%; padding: 0 15px 15px; }
-  /*  .block-grid.two-up>li:nth-child(2n+1) {clear: left;} */
-
-  .block-grid.three-up { margin: 0 -12px; }
-  .block-grid.three-up>li { width: 33.33%; padding: 0 12px 12px; }
-  /*  .block-grid.three-up>li:nth-child(3n+1) {clear: left;} */
-
-  .block-grid.four-up { margin: 0 -10px; }
-  .block-grid.four-up>li { width: 25%; padding: 0 10px 10px; }
-  /*  .block-grid.four-up>li:nth-child(4n+1) {clear: left;} */
-
-  .block-grid.five-up { margin: 0 -8px; }
-  .block-grid.five-up>li { width: 20%; padding: 0 8px 8px; }
-  /*  .block-grid.five-up>li:nth-child(5n+1) {clear: left;} */
 
   /* Mobile Block Grids */
   @media only screen and (max-width: $screenSmall - 1) {
-    .block-grid.mobile { margin-left: 0; }
-    .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
+    .block-grid.mobile { margin-left: 0;
+      &>li { float: none; width: 100%; margin-left: 0; }
+    }
   }
