@@ -196,7 +196,7 @@ fieldset legend { font-weight: bold; background: white; padding: 0 3px; margin: 
 
 .error small, small.error { display: block; padding: 6px 4px; margin-top: -13px; margin-bottom: 12px; background: #c60f13; color: #fff; font-size: 12px; font-size: 1.2rem; font-weight: bold; -moz-border-radius-bottomleft: 2px; -webkit-border-bottom-left-radius: 2px; border-bottom-left-radius: 2px; -moz-border-radius-bottomright: 2px; -webkit-border-bottom-right-radius: 2px; border-bottom-right-radius: 2px; }
 
-@media only screen and (max-width: 767px) { input[type="text"].one, .row input[type="text"].one, textarea.one, .row textarea.one { width: 100% !important; }
+@media only screen and (max-width: 767px) { input[type="text"].one, textarea.one, .row textarea.one { width: 100% !important; }
   input[type="text"].two, .row input[type="text"].two, textarea.two, .row textarea.two { width: 100% !important; }
   input[type="text"].three, .row input[type="text"].three, textarea.three, .row textarea.three { width: 100% !important; }
   input[type="text"].four, .row input[type="text"].four, textarea.four, .row textarea.four { width: 100% !important; }
