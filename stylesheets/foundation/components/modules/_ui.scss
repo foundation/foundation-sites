@@ -383,6 +383,6 @@
   }
 
   /* Media Query Development Viewer - Toggle by pressing shift+m */
-  #FoundationQueryViewer { position: fixed; top: 4px; left: 4px; background: rgba(0,0,0,0.75); z-index: 999; @include border-radius(1000px); padding: 3px 10px; color: $white; }
+  #FoundationQueryViewer { position: fixed; top: 4px; left: 4px; background: rgba(0,0,0,0.75); z-index: 999; padding: 5px; color: $white; }
 
 
