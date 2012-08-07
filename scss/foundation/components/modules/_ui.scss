@@ -228,7 +228,7 @@
   
   ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid $secondaryColor;
     
-    li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
+    &>li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
       
       .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
         

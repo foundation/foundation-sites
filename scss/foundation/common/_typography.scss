@@ -8,8 +8,6 @@
 
   p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
     &.lead { font-size: ms(0) * 1.25; line-height: 1.6; margin-bottom: ms(1); }
-    img.left, img { margin: ms(1); margin-left: 0; }
-    img.right { margin: ms(1); margin-right: 0; }
   }
   aside p { font-size: ms(0) - 1; line-height: 1.35; font-style: italic; }
 
