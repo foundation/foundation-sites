@@ -29,10 +29,6 @@
       <p><a href="index.html">&laquo; Back</a></p>
       <h2>Foundation Orbit Testing</h2>
       <hr />
-      <dl class="sub-nav">
-        <dt>Go to:</dt>
-        <dd><a href="#basic-grid">Basic Grid</a></dd>
-      </dl>
     </div>
   </div>
 	
@@ -70,40 +66,6 @@
           </div>
         </div>
       </div>
-      
-
-  		<h4>Getting Started</h4>
-  		<p>Implementing Orbit is easy, but there are a few things to keep in mind when it comes to using Orbit in its simplest form.</p>
-
-  		<h5>Included Files</h5>
-  		<p>First, ensure you're including the Orbit JS and CSS. If you're using the SCSS version of Foundation, these will be part of your environment already, and if you download Foundation as simple CSS the two files will be part of <strong>foundation.js</strong> and <strong>foundation.css</strong>, respectively. Also ensure you're including jQuery, also provided as part of any Foundation distribution.</p>
-
-  		<h5>Setting Up Your Slider</h5>
-  		<p>Your Orbit slider is simply a <code>div</code> with a unique ID. For our examples we'll use <code>&lt;div id="featured"&gt;</code>, an example of which you can see above. The markup looks like this:</p>
-
-
-  		<h5>Activating Orbit</h5>
-  		<p>With your <code>#featured</code> element in place, we just need to call Orbit. <strong>Remember:</strong> your call to Orbit needs to come <em>after</em> you've included jQuery and foundation.js. By default, those are at the end of your document, so this code snippet should come at the very end:</p>
-
-  		<p>That's all you need to trigger Orbit on a series of images. It includes the timer element, and the left and right hand paddles.</p>
-
-  		<hr />
-
-  		<h4>Options</h4>
-  		<p>Orbit has a number of options available, which you can specify when you call <code>.orbit()</code>. In the example above, we kept all of the default values, but you can optionally use any of these options:</p>
-
-
-  		<hr />
-
-  		<h4>Content Sliders</h4>
-  		<p>While Orbit was created as a simple image slider, it also supports <code>div</code> elements with arbitrary content. You could have a slider of text blocks, actions, or really anything. <strong>Remember:</strong> for a content slider to work without any images, you need to specify an aspect ratio when you call .orbit(). As shown in the options above, the option needed is <code>fluid: 16x9</code> or another ratio.</p>
-
-
-
-      <p><strong>Note:</strong> We put some simple styles on our content slider, notably a background and padding on the <code>div</code> elements. Orbit stacks your slides, so transparent slides will will be visible on top of each other.</p>
-
-
-
   	</div>
   </div>
 	
