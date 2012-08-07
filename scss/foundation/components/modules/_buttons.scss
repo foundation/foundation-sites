@@ -162,16 +162,18 @@
       &:first-child { margin-left: 0; }
     }
 
-    &.radius {
-      li:first-child .button, li:first-child .button.radius, li:first-child .button.rounded { @include border-radius(0px); border-top-left-radius: $buttonRadius; border-bottom-left-radius: $buttonRadius; }
-      li + li .button, li + li .button.radius, li + li .button.rounded { border-radius: 0; }
-      li:last-child .button, li:last-child .button.radius, li:last-child .button.rounded { @include border-radius(0px); border-top-right-radius: $buttonRadius; border-bottom-right-radius: $buttonRadius; }
-    }
-
-    &.rounded {
-      li:first-child .button, li:first-child .button.radius, li:first-child .button.rounded { @include border-radius(0px); border-top-left-radius: 1000px; border-bottom-left-radius: 1000px; }
-      li + li .button, li + li .button.radius, li + li .button.rounded { border-radius: 0; }
-      li:last-child .button, li:last-child .button.radius, li:last-child .button.rounded { @include border-radius(0px); border-top-right-radius: 1000px; border-bottom-right-radius: 1000px; }
+    &.radius li {
+      a {
+        &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
+      }
+      &:first-child a {
+        &.button, &.button.radius { @include border-left-radius($buttonRadius); }
+        &.button.rounded { @include border-left-radius(1000px); }
+      }
+      &:last-child a {
+        &.button, &.button.radius { @include border-right-radius($buttonRadius); }
+        &.button.rounded { @include border-right-radius(1000px); }
+      }
     }
 
     &.even {
