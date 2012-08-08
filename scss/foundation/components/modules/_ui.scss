@@ -1,0 +1,384 @@
+/* Requires:
+   globals.css */
+
+/* Table of Contents
+
+:: Visibility
+:: Alerts
+:: Labels
+:: Tooltips
+:: Panels
+:: Accordion
+:: Side Nav
+:: Sub Nav
+:: Pagination
+:: Breadcrumbs
+:: Lists
+:: Link Lists
+:: Keystroke Chars
+:: Video
+:: Tables
+:: Microformats
+
+*/
+
+  /* Visibility Classes ---------------------- */
+  
+  /* Standard (large) display targeting */
+  .show-for-small,
+  .show-for-medium,
+  .show-for-medium-down,
+  .hide-for-large,
+  .hide-for-large-up,
+  .show-for-xlarge { display: none !important; }
+
+  .hide-for-xlarge,
+  .show-for-large,
+  .show-for-large-up,
+  .hide-for-small,
+  .hide-for-medium,
+  .hide-for-medium-down { display: block !important; }
+
+  /* Very large display targeting */
+  @media only screen and (min-width: $screenXlarge) {
+    .hide-for-small,
+    .hide-for-medium,
+    .hide-for-medium-down,
+    .hide-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: block !important; }
+
+    .show-for-small,
+    .show-for-medium,
+    .show-for-medium-down,
+    .show-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: none !important; }
+  }
+
+  /* Medium display targeting */
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
+    .hide-for-small,
+    .show-for-medium,
+    .show-for-medium-down,
+    .hide-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: block !important; }
+
+    .show-for-small,
+    .hide-for-medium,
+    .hide-for-medium-down,
+    .show-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: none !important; }
+  }
+
+  /* Small display targeting */
+  @media only screen and (max-width: $screenSmall - 1) {
+    .show-for-small,
+    .hide-for-medium,
+    .show-for-medium-down,
+    .hide-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: block !important; }
+
+    .hide-for-small,
+    .show-for-medium,
+    .hide-for-medium-down,
+    .show-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: none !important; }
+  }
+
+  /* Orientation targeting */
+  .show-for-landscape,
+  .hide-for-portrait { display: block !important; }
+  .hide-for-landscape,
+  .show-for-portrait { display: none !important; }
+
+  @media screen and (orientation: landscape) {
+    .show-for-landscape,
+    .hide-for-portrait { display: block !important; }
+    .hide-for-landscape,
+    .show-for-portrait { display: none !important; }
+  }
+
+  @media screen and (orientation: portrait) {
+    .show-for-portrait,
+    .hide-for-landscape { display: block !important; }
+    .hide-for-portrait,
+    .show-for-landscape { display: none !important; }
+  }
+
+  /* Touch-enabled device targeting */
+  .show-for-touch { display: none !important; }
+  .hide-for-touch { display: block !important; }
+  .touch .show-for-touch { display: block !important; }
+  .touch .hide-for-touch { display: none !important; }
+
+  /* Specific overrides for elements that require something other than display: block */
+
+  table.show-for-xlarge,
+  table.show-for-large,
+  table.hide-for-small,
+  table.hide-for-medium { display: table !important; }
+
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
+    .touch table.hide-for-xlarge,
+    .touch table.hide-for-large,
+    .touch table.hide-for-small,
+    .touch table.show-for-medium { display: table !important; }
+  }
+
+  @media only screen and (max-width: $screenSmall - 1) {
+    table.hide-for-xlarge,
+    table.hide-for-large,
+    table.hide-for-medium,
+    table.show-for-small { display: table !important; }
+  }
+
+  /* Alerts ---------------------- */
+
+  div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius(3px); text-shadow: 0 -1px rgba(#000,.3); position: relative;
+
+    &.success { background-color: $successColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
+    &.alert { background-color: $alertColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
+    &.secondary { background-color: $secondaryColor; color: darken($secondaryColor, 60%); text-shadow: 0 1px rgba(#fff,.3); }
+
+    a.close { color: #333; position: absolute; right: 4px; top: -1px; font-size: ms(1); opacity: 0.2; padding: 4px; }
+    a.close:hover, a.close:focus { opacity: 0.4; }
+
+  }
+
+
+  /* Labels ---------------------- */
+
+  .label { padding: 1px 4px 2px; font-size: ms(0) - 2; font-weight: bold; text-align: center; text-decoration: none; line-height: 1; white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: $mainColor;
+
+    &.radius { @include border-radius($buttonRadius); }
+    &.round { padding: 1px 7px 2px; @include border-radius(1000px); }
+
+    &.alert     { background-color: $alertColor; }
+    &.success   { background-color: $successColor; }
+    &.secondary   { background-color: $secondaryColor; color: darken($secondaryColor, 60%); }
+
+  }
+
+  /* Tooltips ---------------------- */
+
+  .has-tip { border-bottom: $hasTipBorderBottom; cursor: help; font-weight: $hasTipFontWeight; color: $hasTipFontColor;
+
+    &:hover { border-bottom: $hasTipBorderBottomHover; color: $hasTipFontColorHover; }
+    &.tip-left, &.tip-right { float: none !important; }
+
+  }
+
+  .tooltip { display: none; background: $tooltipBackgroundColor; background: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); position: absolute; color: $tooltipFontColor; font-weight: $tooltipFontWeight; @include font-size($tooltipFontSize); padding: 5px; z-index: 999; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; line-height: normal;
+
+    &>.nub { display: block; width: 0; height: 0; border: solid 5px; border-color: transparent transparent $tooltipBackgroundColor transparent; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent; position: absolute; top: -10px; left: 10px; }
+    &.tip-override>.nub { border-color: transparent transparent $tooltipBackgroundColor transparent !important; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent !important; top: -10px !important; }
+    &.tip-top>.nub { border-color: $tooltipBackgroundColor transparent transparent transparent; border-color: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent transparent; top: auto; bottom: -10px; }
+
+    &.tip-left, &.tip-right { float: none !important; }
+
+    &.tip-left>.nub { border-color: transparent transparent transparent $tooltipBackgroundColor; border-color: transparent transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); right: -10px; left: auto; }
+    &.tip-right>.nub { border-color: transparent $tooltipBackgroundColor transparent transparent; border-color: transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent; right: auto; left: -10px; }
+
+    &.noradius { @include border-radius(0); }
+    &.opened { color: $hasTipFontColorHover !important; border-bottom: $hasTipBorderBottomHover !important; }
+
+  }
+
+  .tap-to-close { display: block; @include font-size($tapToCloseFontSize); color: $tapToCloseFontColor; font-weight: $tapToCloseFontWeight; }
+
+  @media only screen and (max-width: $screenSmall - 1) {
+    .tooltip {
+      @include font-size($tooltipFontSizeScreenSmall);
+      line-height: 1.4;
+      padding: 7px 10px 9px 10px;
+    }
+    .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
+      border-color: transparent transparent $tooltipBackgroundColor transparent;
+      border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacityScreenSmall) transparent;
+      top: -12px;
+      left: 10px;
+    }
+  }
+
+  /* Panels ---------------------- */
+
+  .panel { background: darken($white, 5%); border: solid 1px darken($white, 10%); margin: 0 0 22px 0; padding: 20px;
+
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
+
+    &.callout { background: $mainColor; color: #fff; border-color: darken($mainColor, 10%); @include box-shadow(inset 0px 1px 0px rgba(255,255,255,0.5));
+      a { color: #fff; }
+      .button { background: $white; border: none; color: $mainColor; @include text-shadow(none);
+
+        &:hover { background: rgba(255,255,255,0.8); }
+      }
+    }
+
+    &.radius { @include border-radius($buttonRadius); }
+
+  }
+  
+  /* Accordion ---------------------- */
+  
+  ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid $secondaryColor;
+    
+    &>li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
+      
+      .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
+        
+        h1, h2, h3, h4, h5 { margin: 0; }
+        &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), right); position: absolute; right: 15px; top: 21px; }
+      }
+      
+      .content { display: none; padding: 15px; }
+      
+      &.active { border-top: 3px solid $mainColor;
+      
+        .title { background: $white; padding-top: 13px;
+          
+          &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), top); }
+        }
+        .content { background: $white; display: block; border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; }
+      }
+    }
+  }
+  
+  
+
+  /* Side Nav ---------------------- */
+
+  ul.side-nav { display: block; list-style: none; margin: 0; padding: ms(1) 0;
+
+    li { display: block; list-style: none; margin: 0 0 (ms(0)/2) 0;
+
+      a { display: block; }
+      &.active a { color: lighten($black, 30%); font-weight: bold; }
+      &.divider { border-top: 1px solid darken($white, 10%); height: 0; padding: 0; }
+    }
+  }
+
+  /* Sub Navs http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na ---------------------- */
+
+  dl.sub-nav { display: block; width: auto; overflow: hidden; margin: -4px 0 18px -9px; padding-top: 4px;
+
+    dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 10px; }
+    dt { color: #999; font-weight: $bodyFontWeight; }
+    dd a { text-decoration: none; @include border-radius(1000px); }
+    dd.active a { font-weight: bold; background: $mainColor; color: #fff; padding: 3px 9px; cursor: default; }
+
+  }
+
+  /* Pagination ---------------------- */
+
+  ul.pagination { display: block; height: 24px; margin-left: -5px;
+
+    li { float: left; display: block; height: 24px; color: #999; font-size: ms(0); margin-left: 5px;
+
+      a { display: block; padding: 1px 7px 1px; color: #555; }
+      &:hover a, a:focus { background: darken($white, 10%); }
+      &.unavailable a { cursor: default; color: #999; }
+      &.unavailable:hover a, &.unavailable a:focus { background: transparent; }
+      &.current a { background: $mainColor; color: $white; font-weight: bold; cursor: default;
+        &:hover { background: $mainColor; }
+      }
+    }
+
+  }
+
+  /* Breadcrums ---------------------- */
+
+  ul.breadcrumbs { display: block; background: lighten($secondaryColor, 5%); padding: 6px 10px 7px; border: 1px solid $secondaryColor; @include border-radius(2px); overflow: hidden;
+
+    li { margin: 0; padding: 0 12px 0 0; float: left; list-style: none;
+
+      a, span { text-transform: uppercase; @include font-size(11); padding-left: 12px; }
+      &:first-child a, &:first-child span { padding-left: 0; }
+    }
+
+    li:before { content: "/"; color: #aaa; }
+    li:first-child:before { content: " "; }
+    li.current a { cursor: default; color: #333; }
+    li:hover a, li a:focus { text-decoration: underline; }
+    li.current:hover a, li.current a:focus { text-decoration: none; }
+    li.unavailable {
+      a { color: #999; }
+      &:hover a, a:focus { text-decoration: none; color: #999; cursor: default; }
+    }
+
+  }
+
+  /* Link List */
+  ul.link-list { margin: 0 0 ms(1) -22px; padding: 0; list-style: none; overflow: hidden;
+
+    li { list-style: none; float: left; margin-left: 22px; display: block;
+
+      a { display: block; }
+    }
+  }
+
+  /* Keytroke Characters ---------------------- */
+
+  .keystroke, kbd { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
+
+
+  /* Video - Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/ ---------------------- */
+
+  .flex-video {
+    position: relative;
+    padding-top: 25px;
+    padding-bottom: 67.5%;
+    height: 0;
+    margin-bottom: 16px;
+    overflow: hidden;
+
+    &.widescreen { padding-bottom: 57.25%; }
+    &.vimeo { padding-top: 0; }
+
+    iframe, object, embed, video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+  }
+
+  @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+    .flex-video { padding-top: 0; }
+  }
+
+  /* Tables ---------------------- */
+
+  table { background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin: 0 0 18px; border: 1px solid #ddd;  }
+
+  table thead, table tfoot { background: #f5f5f5; }
+  table thead tr th,
+  table tfoot tr th,
+  table tbody tr td,
+  table tr td,
+  table tfoot tr td { font-size: ms(0); line-height: 18px; text-align: left; }
+  table thead tr th,
+  table tfoot tr td { padding: 8px 10px 9px; font-size: ms(0) + 2; font-weight: bold; color: #222; }
+  table thead tr th:first-child, table tfoot tr td:first-child { border-left: none; }
+  table thead tr th:last-child, table tfoot tr td:last-child { border-right: none; }
+
+  table tbody tr.even,
+  table tbody tr.alt { background: #f9f9f9; }
+  table tbody tr:nth-child(even) { background: #f9f9f9; }
+  table tbody tr td { color: #333; padding: 9px 10px; vertical-align: top; border: none; }
+
+  /* Microformats ---------------------- */
+
+  ul.vcard { display: inline-block; margin: 0 0 12px 0; border: 1px solid #ddd; padding: 10px;
+
+    li { margin: 0; display: block; }
+    li.fn { font-weight: bold; @include font-size(15); }
+
+  }
+
+  p.vevent {
+    span.summary { font-weight: bold; }
+    abbr { cursor: default; text-decoration: none; font-weight: bold; border: none; padding: 0 1px; }
+  }
+

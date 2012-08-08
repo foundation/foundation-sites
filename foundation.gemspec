@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{ZURB Foundation on SASS/Compass}
   gem.homepage      = "http://foundation.zurb.com"
 
-  gem.files         = `git ls-files`.split($\).reject {|f| /marketing\/*/.match(f)}
+  gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "zurb-foundation"
@@ -18,6 +18,4 @@ Gem::Specification.new do |gem|
   gem.add_dependency "compass", [">= 0.12.2"]
   gem.add_dependency "sass", [">= 3.2.0.alpha.244"]
   gem.add_dependency "rake"
-  gem.add_development_dependency "capistrano"
-  gem.add_development_dependency "jammit"
 end
