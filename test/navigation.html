@@ -46,79 +46,78 @@
 			<h3>Navigation</h3>
 			<h4 class="subheader">Direct users around in style. There are navigation options for a number of situations, and everything is designed to work cross-device.</h4>
       
-      <a name="nav-bar"></a>
-			<h4>Nav Bar</h4>
-			<p>The default top nav bar for Foundation includes the main nav options as well as hover dropdowns that support either a list of anchors or arbitrary content (even Grid content).</p>
+      <br>
 
-      <ul class="nav-bar">
-        <li class="active"><a href="#">Nav Item 1</a></li>
-        <li class="has-flyout">
-          <a href="#">Nav Item 2</a>
-          <a href="#" class="flyout-toggle"><span> </span></a>
-          <ul class="flyout">
-            <li><a href="#">Sub Nav Item 1</a></li>
-            <li><a href="#">Sub Nav Item 2</a></li>
-            <li><a href="#">Sub Nav 3</a></li>
-            <li><a href="#">Sub Nav 4</a></li>
-            <li><a href="#">Sub Nav Item 5</a></li>
+      <div class="row">
+        <div class="four columns">
+          <a name="nav-bar"></a>
+          <h4>Nav Bar</h4>
+          <p>The default top nav bar for Foundation includes the main nav options as well as hover dropdowns that support either a list of anchors or arbitrary content (even Grid content).</p>
+        </div>
+        <div class="eight columns">
+          <ul class="nav-bar">
+            <li class="active"><a href="#">Nav Item 1</a></li>
+            <li class="has-flyout">
+              <a href="#">Nav Item 2</a>
+              <a href="#" class="flyout-toggle"><span> </span></a>
+              <ul class="flyout">
+                <li><a href="#">Sub Nav Item 1</a></li>
+                <li><a href="#">Sub Nav Item 2</a></li>
+                <li><a href="#">Sub Nav 3</a></li>
+                <li><a href="#">Sub Nav 4</a></li>
+                <li><a href="#">Sub Nav Item 5</a></li>
+              </ul>
+            </li>
+            <li class="has-flyout">
+              <a href="#">Nav Item 3</a>
+              <a href="#" class="flyout-toggle"><span> </span></a>
+              <div class="flyout">
+                <h5>Regular Dropdown</h5>
+                <div class="row">
+                  <div class="six columns">
+                    <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+                  </div>
+                  <div class="six columns">
+                    <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="has-flyout">
+              <a href="#">Nav Item 4</a>
+              <a href="#" class="flyout-toggle"><span> </span></a>
+              <div class="flyout large right">
+                <h5>Large Dropdown</h5>
+                <div class="row">
+                  <div class="four columns">
+                    <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+                    <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+                  </div>
+                  <div class="four columns">
+                    <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+                    <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
+                  </div>
+                  <div class="four columns">
+                    <img src="http://placehold.it/200x250" />
+                  </div>
+                </div>
+              </div>
+            </li>
           </ul>
-        </li>
-        <li class="has-flyout">
-          <a href="#">Nav Item 3</a>
-          <a href="#" class="flyout-toggle"><span> </span></a>
-          <div class="flyout">
-            <h5>Regular Dropdown</h5>
-            <div class="row">
-              <div class="six columns">
-                <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
-              </div>
-              <div class="six columns">
-                <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="has-flyout">
-          <a href="#">Nav Item 4</a>
-          <a href="#" class="flyout-toggle"><span> </span></a>
-          <div class="flyout large right">
-            <h5>Large Dropdown</h5>
-            <div class="row">
-              <div class="four columns">
-                <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
-                <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
-              </div>
-              <div class="four columns">
-                <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
-                <p>This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text. This is example text.</p>
-              </div>
-              <div class="four columns">
-                <img src="http://placehold.it/200x250" />
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+        </div>
+      </div>
+ 
+			<br><br>
 
-      <h5>Dropdown Lists</h5>
-      <p>In the nav bar you can use a dropdown to only contain a <code>ul</code> of anchors, which will act as a dropdown on hover. The individual entry includes a main link (which can lead to a top-level page) and the dropdown element. Note that dropdowns require the parent to have <code>.has-flyout</code>.
-
-      <h5>Arbitrary Content Dropdowns</h5>
-      <p>You can also have dropdowns with a specific size which can contain any kind of content, including rows and columns.</p>
-
-      <h5>Flyout Direction</h5>
-      <p>Flyouts are pinned left by default, but you can pin them right in instances where they may run off the page or over other content by adding <code>.right</code> to the <code>div.flyout</code> element.</p>
-      <p>Flyouts also go down by default, but if your nav bar is on the bottom you can have the flyouts expand up by adding a class of <code>.up</code> to the <code>.flyout</code> element.</p>
-
-			<hr />
-			
-      <a name="vertical-nav"></a>
-			<h4>Vertical Nav</h4>
-
-			<div class="row">
-			  <div class="four columns">
-
-			    <ul class="nav-bar vertical">
+      <div class="row">
+        <div class="four columns">
+          <a name="vertical-nav"></a>
+          <h4>Vertical Nav</h4>
+          <p>The same nav bar seen above, with the same structure, can be made a vertical nav bar that still supports flyout content by adding a class of <code>.vertical</code> to the element.</p>
+        </div>
+        <br>
+        <div class="five columns end">
+          <ul class="nav-bar vertical">
             <li class="active"><a href="#">Nav Item 1</a></li>
             <li class="has-flyout">
               <a href="#">Nav Item 2</a>
@@ -150,58 +149,72 @@
               <a href="#">Nav Item 4</a>
             </li>
           </ul>
-
-			  </div>
-			  <div class="eight columns">
-			    <p>The same nav bar seen above, with the same structure, can be made a vertical nav bar that still supports flyout content by adding a class of <code>.vertical</code> to the element. This is ideal for sidebar navigation, and is very similar to the vertical tabs seen on the Tabs documentation page.</p>
-			  </div>
-			</div>
-
-			<hr />
+        </div>
+      </div>
       
-      <a name="side-nav"></a>
-			<h4>Side Nav</h4>
-			<p>Side nav, like you'll see on the Foundation main site, is useful for sections either of a site or of the page.</p>
+      <br>
 
-      <ul class="side-nav">
-        <li class="active"><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Link 3</a></li>
-        <li><a href="#">Link 4</a></li>
-      </ul>
-
-			<hr />
+      <div class="row">
+        <div class="four columns">
+          <a name="side-nav"></a>
+          <h4>Side Nav</h4>
+          <p>Side nav, like you'll see on the Foundation main site, is useful for sections either of a site or of the page.</p>
+        </div>
+        <div class="four columns end">
+          <ul class="side-nav">
+            <li class="active"><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
       
-      <a name="sub-nav"></a>
-			<h4>Sub Nav</h4>
-			<p>This simple subnav is great for moving between different states of a page. We use these frequently to show iterations of something, typically by date, but they're also handy for these like filters.</p>
+      <br>
 
-      <dl class="sub-nav">
-      	<dt>Filter:</dt>
-      	<dd class="active"><a href="#">All</a></dd>
-      	<dd><a href="#">Active</a></dd>
-      	<dd><a href="#">Pending</a></dd>
-      	<dd><a href="#">Suspended</a></dd>
-      </dl>
-
-      <hr />
+      <div class="row">
+        <div class="four columns">
+          <a name="sub-nav"></a>
+          <h4>Sub Nav</h4>
+          <p>This simple subnav is great for moving between different states of a page.</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <dl class="sub-nav">
+            <dt>Filter:</dt>
+            <dd class="active"><a href="#">All</a></dd>
+            <dd><a href="#">Active</a></dd>
+            <dd><a href="#">Pending</a></dd>
+            <dd><a href="#">Suspended</a></dd>
+          </dl>
+        </div>
+      </div>
       
-      <a name="pagination"></a>
-      <h4>Pagination</h4>
-      <p>Moving between pages has become less common with the advent of longer pages and AJAX loading, but it can still be useful for long repetitive listings or content.</p>
+      <br>
 
-      <ul class="pagination">
-      	<li class="arrow unavailable"><a href="">&laquo;</a></li>
-      	<li class="current"><a href="">1</a></li>
-      	<li><a href="">2</a></li>
-      	<li><a href="">3</a></li>
-      	<li><a href="">4</a></li>
-      	<li class="unavailable"><a href="">&hellip;</a></li>
-      	<li><a href="">12</a></li>
-      	<li><a href="">13</a></li>
-      	<li class="arrow"><a href="">&raquo;</a></li>
-      </ul>
+      <div class="row">
+        <div class="four columns">
+          <a name="pagination"></a>
+          <h4>Pagination</h4>
+          <p>Moving between pages has become less common with the advent of longer pages and AJAX loading, but it can still be useful for long repetitive listings or content.</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <ul class="pagination">
+            <li class="arrow unavailable"><a href="">&laquo;</a></li>
+            <li class="current"><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li class="unavailable"><a href="">&hellip;</a></li>
+            <li><a href="">12</a></li>
+            <li><a href="">13</a></li>
+            <li class="arrow"><a href="">&raquo;</a></li>
+          </ul>
+        </div>
+      </div>
+
 		</div>
   </div>
 	
