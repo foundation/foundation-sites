@@ -404,6 +404,7 @@
   });
 
   $('form.custom select').on('change', function (event) {
+    if ($(this).hasClass('no-custom')) return;
     refreshCustomSelect($(this));
   });
 
