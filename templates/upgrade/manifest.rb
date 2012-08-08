@@ -22,7 +22,7 @@ def copy_js_from(relative_path, prefix_path, excludes=[])
 end
 
 copy_images_from("../../vendor/assets/images", "foundation/orbit")
-copy_js_from("../../vendor/assets/javascripts", "foundation", ["index.js"])
+copy_js_from("../../vendor/assets/javascripts", "foundation", ["app.js","index.js"])
 
 help %Q{
 
@@ -32,6 +32,8 @@ If you need help, email us at foundation@zurb.com or visit foundation.zurb.com"
 
 welcome_message %Q{
 
-w00t! You've upgraded the JavaScript and Image assets for your project.  Now go forth and rock 'n roll!
+bundle exec compass install -r zurb-foundation foundation/upgrade
+
+Your project assets have been upgraded, w00t!  It's possible there have been additional customizable settings added to Foundation so you should check out http://foundation.zurb.com/docs/gem-install.php#settings.
 
 }
