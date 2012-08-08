@@ -76,15 +76,15 @@
   /* Small display targeting */
   @media only screen and (max-width: $screenSmall - 1) {
     .show-for-small,
-    .show-for-medium-down,
     .hide-for-medium,
+    .show-for-medium-down,
     .hide-for-large,
     .hide-for-large-up,
     .hide-for-xlarge { display: block !important; }
 
     .hide-for-small,
     .show-for-medium,
-    .show-for-medium-down,
+    .hide-for-medium-down,
     .show-for-large,
     .show-for-large-up,
     .show-for-xlarge { display: none !important; }
