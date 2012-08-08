@@ -28,3 +28,6 @@
   #map_canvas embed { max-width: none; }
   #map_canvas img { max-width: none; }
   #map_canvas object { max-width: none; }
+
+  /* Reset for strange margins by default on <figure> elements */
+  figure { margin: 0; }
