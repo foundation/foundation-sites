@@ -1,0 +1,89 @@
+/* Requires
+   globals.css
+   app.js */
+
+/* Tabs ---------------------- */
+
+  dl.tabs { border-bottom: solid 1px darken($white, 10%); display: block; height: $tabHeight; padding: 0; margin-bottom: 20px;
+    &.contained { margin-bottom: 0; }
+
+    dt { color: darken($white, 30%); cursor: default; display: block; float: left; font-size: ms(0) - 2px; height: $tabHeight; line-height: $tabHeight; padding: 0 9px 0 20px; width: auto; text-transform: uppercase;
+      &:first-child { padding: 0 9px 0 0; }
+    }
+
+    dd { display: block; float: left; padding: 0; margin: 0;
+      a { color: lighten($txtColor, 30%); display: block; font-size: ms(0); height: $tabHeight; line-height: $tabHeight; padding: 0px ms(1) * 1.4;
+        &:focus { font-weight: bold; color: $mainColor; }
+      }
+      &.active { border-top: 3px solid $mainColor; margin-top: -3px;
+        a { cursor: default; color: lighten($txtColor, 10%); background: #fff; border-left: 1px solid darken($white, 10%); border-right: 1px solid darken($white, 10%); font-weight: bold; }
+      }
+      &:first-child { margin-left: 0; }
+    }
+
+    &.vertical { height: auto; border-bottom: 1px solid darken($white, 10%);
+      dt, dd { float: none; height: auto; }
+
+      dd { border-left: 3px solid darken($white, 20%);
+        a { background: darken($white, 5%); border: none; border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: 1; padding: 15px 20px; @include box-shadow(0 1px 0 $shinyEdge inset);
+        }
+        &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-left: 4px solid lighten($black, 10%);
+          a { background: lighten($black, 30%); border: none; color: #fff; height: auto; margin: 0; position: static; top: 0; @include box-shadow(0 0 0); }
+        }
+        &:first-child a.active { margin: 0; }
+      }
+    }
+
+    &.pill { border-bottom: none; margin-bottom: 10px;
+      dd { margin-right: 10px;
+        &:last-child { margin-right: 0; }
+        a { @include border-radius(1000px); background: darken($white, 10%); height: $tabHeight - 14; line-height: $tabHeight - 14; color: #666; }
+
+        &.active { border: none; margin-top: 0;
+          a { background-color: $mainColor; border: none; color: #fff; }
+        }
+      }
+      &.contained { border-bottom: solid 1px #eee; margin-bottom: 0; }
+    }
+
+    &.two-up, &.three-up, &.four-up, &.five-up {
+      dt a, dd a { padding: 0 ms(1); text-align: center; overflow: hidden; }
+    }
+    &.two-up dt, &.two-up dd      { width: 50%; }
+    &.three-up dt, &.three-up dd  { width: 33.33%; }
+    &.four-up dt, &.four-up dd    { width: 25%; }
+    &.five-up dt, &.five-up dd    { width: 20%; }
+  }
+
+  ul.tabs-content { display: block; margin: 0 0 20px; padding: 0;
+    &>li { display: none;
+      &.active { display: block; }
+    }
+    &.contained { padding: 0;
+      &>li { border: solid 0 darken($white, 10%); border-width: 0 1px 1px 1px; padding: 20px; }
+      &.vertical>li { border-width: 1px 1px 1px 1px; }
+    }
+  }
+
+  .no-js ul.tabs-content>li { display: block; }
+
+  @media only screen and (max-width: $screenSmall - 1) {
+    dl.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
+    dl.tabs.mobile dt, dl.tabs.mobile dd { float: none; height: auto; }
+
+    dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; @include font-size(15); }
+    dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
+
+
+    .tabs.mobile { border-bottom: solid 1px #ccc; height: auto;
+
+      dd a { padding: 18px 20px; border: none; border-left: none; border-right: none; border-top: 1px solid #ccc; background: #fff; }
+      dd a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
+      dd:first-child a.active { margin: 0; }
+    }
+
+    dl.contained.mobile { margin-bottom: 0; }
+    dl.contained.tabs.mobile dd a { padding: 18px 20px; }
+
+    dl.tabs.mobile + ul.contained { margin-left: -20px; margin-right: -20px; border-width: 0 0 1px 0; }
+  }

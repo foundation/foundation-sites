@@ -18,3 +18,5 @@ tmp
 *.DS_Store
 marketing/.sass-cache/*
 .sass-cache/*
+test/.sass-cache/*
+test/stylesheets/*
