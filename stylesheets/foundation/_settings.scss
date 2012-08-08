@@ -38,6 +38,23 @@ $tinyBtnBase: $btnBase - 5 !default;
 $smallBtnBase: $btnBase - 3 !default;
 $largeBtnBase: $btnBase + 5 !default;
 
+// Tooltip Settings
+$hasTipBorderBottom: dotted 1px #ccc !default;
+$hasTipFontWeight: bold !default;
+$hasTipFontColor: #333 !default;
+$hasTipBorderBottomHover: dotted 1px #0593dc !default;
+$hasTipFontColorHover: #0192dd !default;
+$tooltipBackgroundColor: #000 !default;
+$tooltipBackgroundOpacity: 0.8 !default;
+$tooltipFontSize: 12 !default;
+$tooltipFontWeight: bold !default;
+$tooltipFontColor: #fff !default;
+$tapToCloseFontSize: 10 !default;
+$tapToCloseFontWeight: normal !default;
+$tapToCloseFontColor: #888 !default;
+$tooltipFontSizeScreenSmall: 14 !default;
+$tooltipBackgroundOpacityScreenSmall: 0.85 !default;
+
 // Form Settings
 
 $formSpacing: 12px !default;

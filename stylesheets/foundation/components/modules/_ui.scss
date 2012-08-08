@@ -166,40 +166,40 @@
 
   /* Tooltips ---------------------- */
 
-  .has-tip { border-bottom: dotted 1px #ccc; cursor: help; font-weight: bold; color: #333;
+  .has-tip { border-bottom: $hasTipBorderBottom; cursor: help; font-weight: $hasTipFontWeight; color: $hasTipFontColor;
 
-    &:hover { border-bottom: dotted 1px #0593dc; color: #0192dd; }
+    &:hover { border-bottom: $hasTipBorderBottomHover; color: $hasTipFontColorHover; }
     &.tip-left, &.tip-right { float: none !important; }
 
   }
 
-  .tooltip { display: none; background: rgb(0,0,0); background: rgba(0,0,0,0.8); position: absolute; color: #fff; font-weight: bold; @include font-size(12); padding: 5px; z-index: 999; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; line-height: normal;
+  .tooltip { display: none; background: $tooltipBackgroundColor; background: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); position: absolute; color: $tooltipFontColor; font-weight: $tooltipFontWeight; @include font-size($tooltipFontSize); padding: 5px; z-index: 999; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; line-height: normal;
 
-    &>.nub { display: block; width: 0; height: 0; border: solid 5px; border-color: transparent transparent rgb(0,0,0) transparent; border-color: transparent transparent rgba(0,0,0,0.8) transparent; position: absolute; top: -10px; left: 10px; }
-    &.tip-override>.nub { border-color: transparent transparent rgb(0,0,0) transparent !important; border-color: transparent transparent rgba(0,0,0,0.8) transparent !important; top: -10px !important; }
-    &.tip-top>.nub { border-color: rgb(0,0,0) transparent transparent transparent; border-color: rgba(0,0,0,0.8) transparent transparent transparent; top: auto; bottom: -10px; }
+    &>.nub { display: block; width: 0; height: 0; border: solid 5px; border-color: transparent transparent $tooltipBackgroundColor transparent; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent; position: absolute; top: -10px; left: 10px; }
+    &.tip-override>.nub { border-color: transparent transparent $tooltipBackgroundColor transparent !important; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent !important; top: -10px !important; }
+    &.tip-top>.nub { border-color: $tooltipBackgroundColor transparent transparent transparent; border-color: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent transparent; top: auto; bottom: -10px; }
 
     &.tip-left, &.tip-right { float: none !important; }
 
-    &.tip-left>.nub { border-color: transparent transparent transparent rgb(0,0,0); border-color: transparent transparent transparent rgba(0,0,0,0.8); right: -10px; left: auto; }
-    &.tip-right>.nub { border-color: transparent rgb(0,0,0) transparent transparent; border-color: transparent rgba(0,0,0,0.8) transparent transparent; right: auto; left: -10px; }
+    &.tip-left>.nub { border-color: transparent transparent transparent $tooltipBackgroundColor; border-color: transparent transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); right: -10px; left: auto; }
+    &.tip-right>.nub { border-color: transparent $tooltipBackgroundColor transparent transparent; border-color: transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent; right: auto; left: -10px; }
 
     &.noradius { @include border-radius(0); }
-    &.opened { color: #0192DD !important; border-bottom: dotted 1px #0593DC !important; }
+    &.opened { color: $hasTipFontColorHover !important; border-bottom: $hasTipBorderBottomHover !important; }
 
   }
 
-  .tap-to-close { display: block; @include font-size(10); color: #888; font-weight: normal; }
+  .tap-to-close { display: block; @include font-size($tapToCloseFontSize); color: $tapToCloseFontColor; font-weight: $tapToCloseFontWeight; }
 
   @media only screen and (max-width: $screenSmall - 1) {
     .tooltip {
-      @include font-size(14);
+      @include font-size($tooltipFontSizeScreenSmall);
       line-height: 1.4;
       padding: 7px 10px 9px 10px;
     }
     .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
-      border-color: transparent transparent rgb(0,0,0) transparent;
-      border-color: transparent transparent rgba(0,0,0,0.85) transparent;
+      border-color: transparent transparent $tooltipBackgroundColor transparent;
+      border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacityScreenSmall) transparent;
       top: -12px;
       left: 10px;
     }
