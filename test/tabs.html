@@ -48,92 +48,113 @@
   		<h3>Tabs</h3>
   		<h4 class="subheader">Tabs are very versatile both as organization and navigational constructs. With the base Foundation package, tabs in the markup specified below are already hooked up &mdash; no extra work required.</h4>
 
-  		<hr />
+      <br>
+
+      <div class="row">
+        <div class="four columns">
+          <a name="simple-tabs"></a>
+          <h4>Simple Tabs</h4>
+          <p>Tabs are made of <strong>two objects:</strong> a <code>dl</code> object containing the tabs themselves, and a <code>ul</code> object containing the tab content.</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <dl class="tabs">
+            <dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
+            <dd><a href="#simple2">Simple Tab 2</a></dd>
+            <dd class="hide-for-small"><a href="#simple3">Simple Tab 3</a></dd>
+          </dl>
+          <ul class="tabs-content">
+            <li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
+            <li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
+            <li id="simple3Tab">This is simple tab 3's content. It's only okay.</li>
+          </ul>
+        </div>
+      </div>
       
-      <a name="simple-tabs"></a>
-  		<h4>Simple Tabs</h4>
+      <br><br>
 
-  		<p>Tabs are made of <strong>two objects:</strong> a <code>dl</code> object containing the tabs themselves, and a <code>ul</code> object containing the tab content. If you simply want visual tabs (as seen in this documentation) without the on-page hookup, you only need the DL. If you want functional tabs, just be sure that each tab is linked to an ID, and that the corresponding tab has an ID of <code>#tabnameTab</code>. Check out these examples.</p>
+      <div class="row">
+        <div class="four columns">
+          <a name="tab-sizing"></a>
+          <h4>Tab Sizing</h4>
+          <p>If you want your tabs to run the full width of their container evenly, you can add class of <code>.two-up</code>, <code>.three-up</code>, <code>.four-up</code>, and <code>.five-up</code> to them.</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <dl class="tabs three-up">
+            <dd class="active"><a href="#evenTab1">Even Tab 1</a></dd>
+            <dd><a href="#evenTab2">Even Tab 2</a></dd>
+            <dd><a href="#evenTab3">Even Tab 3</a></dd>
+          </dl>
 
-  		<p><em>Note: The third tab is using the <a href="elements.php">mobile visibility classes</a> to hide on small devices.</em></p>
-
-  		<dl class="tabs">
-  			<dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
-  			<dd><a href="#simple2">Simple Tab 2</a></dd>
-  			<dd class="hide-for-small"><a href="#simple3">Simple Tab 3</a></dd>
-  		</dl>
-  		<ul class="tabs-content">
-  			<li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
-  			<li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
-  			<li id="simple3Tab">This is simple tab 3's content. It's only okay.</li>
-  		</ul>
-
-  		<hr />
+          <dl class="tabs five-up">
+            <dd class="active"><a href="#evenTab4">Tab 4</a></dd>
+            <dd><a href="#evenTab5">Tab 5</a></dd>
+            <dd><a href="#evenTab6">Tab 6</a></dd>
+            <dd><a href="#evenTab7">Tab 7</a></dd>
+            <dd><a href="#evenTab8">Tab 8</a></dd>
+          </dl>
+        </div>
+      </div>
       
-      <a name="tab-sizing"></a>
-  		<h4>Tab Sizing</h4>
-  		<p>If you want your tabs to run the full width of their container evenly, you can add class of <code>.two-up</code>, <code>.three-up</code>, <code>.four-up</code>, and <code>.five-up</code> to them.</p>
+      <br><br>
 
-      <dl class="tabs three-up">
-      	<dd class="active"><a href="#evenTab1">Even Tab 1</a></dd>
-      	<dd><a href="#evenTab2">Even Tab 2</a></dd>
-      	<dd><a href="#evenTab3">Even Tab 3</a></dd>
-      </dl>
-
-  		<dl class="tabs five-up">
-  			<dd class="active"><a href="#evenTab4">Tab 4</a></dd>
-  			<dd><a href="#evenTab5">Tab 5</a></dd>
-  			<dd><a href="#evenTab6">Tab 6</a></dd>
-  			<dd><a href="#evenTab7">Tab 7</a></dd>
-  			<dd><a href="#evenTab8">Tab 8</a></dd>
-  		</dl>
-
-  		<hr />
+      <div class="row">
+        <div class="four columns">
+          <a name="contained-tabs"></a>
+          <h4>Contained Tabs</h4>
+          <p>Contained tabs have a simple added class of "contained" on the tabs-content element. What that means is the tab content has a border around it tying it to the tabs. You can still use standard column sizes inside a tab element.</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <dl class="tabs contained">
+            <dt>Title 1</dt>
+            <dd class="active"><a href="#simpleContained1">Simple Tab 1</a></dd>
+            <dd class="hide-for-small"><a href="#simpleContained2">Simple Tab 2</a></dd>
+            <dt class="hide-for-small">Title 1</dt>
+            <dd class="hide-for-small"><a href="#simpleContained3">Simple Tab 3</a></dd>
+          </dl>
+          <ul class="tabs-content contained">
+            <li class="active" id="simpleContained1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
+            <li id="simpleContained2Tab">This is simple tab 2's content. Now you see it!</li>
+            <li id="simpleContained3Tab">This is simple tab 3's content. It's only okay.</li>
+          </ul>
+        </div>
+      </div>
       
-      <a name="contained-tabs"></a>
-  		<h4>Contained Tabs</h4>
-  		<p>Contained tabs have a simple added class of "contained" on the tabs-content element. What that means is the tab content has a border around it tying it to the tabs. You can still use standard column sizes inside a tab element.</p>
+      <br><br>
 
-  		<p>You'll also notice in this example that a <code>dt</code> element can serve to label groups of tabs.</p>
-
-      <dl class="tabs contained">
-      	<dt>Title 1</dt>
-      	<dd class="active"><a href="#simpleContained1">Simple Tab 1</a></dd>
-      	<dd class="hide-for-small"><a href="#simpleContained2">Simple Tab 2</a></dd>
-      	<dt class="hide-for-small">Title 1</dt>
-      	<dd class="hide-for-small"><a href="#simpleContained3">Simple Tab 3</a></dd>
-      </dl>
-      <ul class="tabs-content contained">
-      	<li class="active" id="simpleContained1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
-      	<li id="simpleContained2Tab">This is simple tab 2's content. Now you see it!</li>
-      	<li id="simpleContained3Tab">This is simple tab 3's content. It's only okay.</li>
-      </ul>
-
-  		<hr />
+      <div class="row">
+        <div class="four columns">
+          <a name="pill-style-tabs"></a>
+          <h4>Pill-Style Tabs</h4>
+          <p>If you need an alternate view for tabs (especially for filters, or similar), you can use pill-style tabs. They look like this:</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <dl class="tabs pill">
+            <dd class="active"><a href="#pillTab1">Pill Tab 1</a></dd>
+            <dd><a href="#pillTab2">Pill Tab 2</a></dd>
+            <dd class="hide-for-small"><a href="#pillTab3">Pill Tab 3</a></dd>
+          </dl>
+        </div>
+      </div>
       
-      <a name="pill-style-tabs"></a>
-  		<h4>Pill-Style Tabs</h4>
-  		<p>If you need an alternate view for tabs (especially for filters, or similar), you can use pill-style tabs. They look like this:</p>
-
-      <dl class="tabs pill">
-      	<dd class="active"><a href="#pillTab1">Pill Tab 1</a></dd>
-      	<dd><a href="#pillTab2">Pill Tab 2</a></dd>
-      	<dd class="hide-for-small"><a href="#pillTab3">Pill Tab 3</a></dd>
-      </dl>
-
-  		<hr />
+      <div class="row">
+        <div class="four columns">
+          <a name="vertical-tabs"></a>
+          <h4>Vertical Tabs</h4>
+          <p>You can also use tabs in a vertical configuration by adding a class of 'vertical' to the <code>dl</code> element. These are great for more scalable nav, and you can see how they work on this page on a tablet or desktop.</p>
+        </div>
+        <div class="eight columns">
+          <dl class="vertical tabs">
+            <dd class="active"><a href="#vertical1">Vertical Tab 1</a></dd>
+            <dd><a href="#vertical2">Vertical Tab 2</a></dd>
+            <dd><a href="#vertical3">Vertical Tab 3</a></dd>
+          </dl>
+        </div>
+      </div>
       
-      <a name="vertical-tabs"></a>
-  		<h4>Vertical Tabs</h4>
-  		<p>You can also use tabs in a vertical configuration by adding a class of 'vertical' to the <code>dl</code> element. These are great for more scalable nav, and you can see how they work on this page on a tablet or desktop.</p>
-
-      <dl class="vertical tabs">
-      	<dd class="active"><a href="#vertical1">Vertical Tab 1</a></dd>
-      	<dd><a href="#vertical2">Vertical Tab 2</a></dd>
-      	<dd><a href="#vertical3">Vertical Tab 3</a></dd>
-      </dl>
-
-  		<hr />
       
       <a name="mobile-tabs"></a>
   		<h4>Mobile Tabs</h4>
