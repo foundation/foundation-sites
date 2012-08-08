@@ -403,7 +403,7 @@
     toggleRadio($(this));
   });
 
-  $('form.custom select').on('change', function (event) {
+  $('form.custom select[data-customforms!=disabled]').on('change', function (event) {
     refreshCustomSelect($(this));
   });
 
