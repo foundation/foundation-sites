@@ -7,7 +7,7 @@
 */
 
 (function( $ ){
-  
+
   /**
    * Helper object used to quickly adjust all hidden parent element's, display and visibility properties.
    * This is currently used for the custom drop downs. When the dropdowns are contained within a reveal modal
@@ -39,25 +39,25 @@
       adjust : function( $child ) {
         // Internal reference.
         var _self = this;
-        
+
         // Set all hidden parent elements, including this element.
         _self.hidden = $child.parents().andSelf().filter( ":hidden" );
-        
+
         // Loop through all hidden elements.
         _self.hidden.each( function() {
-          
+
           // Cache the element.
           var $elem = $( this );
-          
+
           // Store the style attribute.
           // Undefined if element doesn't have a style attribute.
           _self.tmp.push( $elem.attr( 'style' ) );
-          
+
           // Set the element's display property to block,
           // but ensure it's visibility is hidden.
           $elem.css( { 'visibility' : 'hidden', 'display' : 'block' } );
         });
-      
+
       }, // end adjust
 
       /**
@@ -96,7 +96,7 @@
 
   jQuery.foundation = jQuery.foundation || {};
   jQuery.foundation.customForms = jQuery.foundation.customForms || {};
-  
+
   $.foundation.customForms.appendCustomMarkup = function ( options ) {
 
     var defaults = {
@@ -207,7 +207,7 @@
         // Insert the the currently selected list item before all other elements.
         // Then, find the element and assign it to $currentSelect.
         //
-        
+
         $currentSelect = $customSelect.prepend( '<a href="#" class="current">' + $selectedOption.html() + '</a>' ).find( ".current" );
         //
         // Add the custom select element after the <select> element.
@@ -260,7 +260,7 @@
           if ($currentSelect) {
             $currentSelect.html( $( this ).html() );
           }
-          
+
         }
 
       });
@@ -389,25 +389,25 @@
     }
   };
 
-  $('form.custom span.custom.checkbox').on('click', function (event) {
+  $(document).on('click', 'form.custom span.custom.checkbox', function (event) {
     event.preventDefault();
     event.stopPropagation();
 
     toggleCheckbox($(this));
   });
 
-  $('form.custom span.custom.radio').on('click', function (event) {
+  $(document).on('click', 'form.custom span.custom.radio', function (event) {
     event.preventDefault();
     event.stopPropagation();
 
     toggleRadio($(this));
   });
 
-  $('form.custom select').on('change', function (event) {
+  $(document).on('change', 'form.custom select', function (event) {
     refreshCustomSelect($(this));
   });
 
-  $('form.custom label').on('click', function (event) {
+  $(document).on('click', 'form.custom label', function (event) {
     var $associatedElement = $('#' + $(this).attr('for')),
         $customCheckbox,
         $customRadio;
@@ -424,7 +424,7 @@
     }
   });
 
-  $('form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector').live('click', function (event) {
+  $(document).on('click', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (event) {
     var $this = $(this),
         $dropdown = $this.closest('div.custom.dropdown'),
         $select = $dropdown.prev();
@@ -447,7 +447,7 @@
     }
   });
 
-  $('form.custom div.custom.dropdown li').live('click', function (event) {
+  $(document).on('click', 'form.custom div.custom.dropdown li', function (event) {
     var $this = $(this),
         $customDropdown = $this.closest('div.custom.dropdown'),
         $select = $customDropdown.prev(),
@@ -477,9 +477,9 @@
     $select[0].selectedIndex = selectedIndex;
 
     $select.trigger('change');
-  });  
-  
-  
+  });
+
+
   $.fn.foundationCustomForms = $.foundation.customForms.appendCustomMarkup;
 
 })( jQuery );
