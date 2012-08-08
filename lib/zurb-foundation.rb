@@ -4,6 +4,7 @@ if defined?(Rails)
   require "foundation/generators/install_generator"
 end
 require 'compass'
+require 'modular-scale'
 extension_path = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 Compass::Frameworks.register('foundation', :path => extension_path)
 
