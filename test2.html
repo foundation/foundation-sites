@@ -55,7 +55,12 @@
         <img src="http://placehold.it/500x300&text=image1" />
         <img src="http://placehold.it/500x300&text=image2" />
         <img src="http://placehold.it/500x300&text=image3" />
-      </div>      
+      </div>
+      <ul id="featuredLi">
+        <li><img src="http://placehold.it/500x300&text=image1" /></li>
+        <li><img src="http://placehold.it/500x300&text=image2" /></li>
+        <li><img src="http://placehold.it/500x300&text=image3" /></li>
+      </ul>      
     </div>
   </div>
       
@@ -313,6 +318,7 @@
 
      $(window).load(function() {
         $('#featured').orbit();
+        $('#featuredLi').orbit();
      });
 
 	</script>

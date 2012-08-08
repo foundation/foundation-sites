@@ -599,15 +599,15 @@ ul.flyout li.active a, .nav-bar li ul li.active a { background: #4d4d4d; border:
 /* Container ---------------------- */
 div.orbit-wrapper { width: 1px; height: 1px; position: relative; }
 
-div.orbit { width: 1px; height: 1px; position: relative; overflow: hidden; margin-bottom: 17px; }
+.orbit { width: 1px; height: 1px; position: relative; overflow: hidden; margin-bottom: 17px; }
 
-div.orbit.with-bullets { margin-bottom: 40px; }
+.orbit.with-bullets { margin-bottom: 40px; }
 
-div.orbit .orbit-slide { max-width: 100%; position: absolute; top: 0; left: 0; }
+.orbit .orbit-slide { max-width: 100%; position: absolute; top: 0; left: 0; }
 
-div.orbit a.orbit-slide { border: none; line-height: 0; display: none; }
+.orbit a.orbit-slide { border: none; line-height: 0; display: none; }
 
-div.orbit div.orbit-slide { width: 100%; height: 100%; }
+.orbit .orbit-slide { width: 100%; height: 100%; }
 
 /* Note: If your slider only uses content or anchors, you're going to want to put the width and height declarations on the ".orbit>div" and "div.orbit>a" tags in addition to just the .orbit-wrapper */
 /* Timer ---------------------- */
@@ -656,9 +656,9 @@ ul.orbit-bullets li.has-thumb { background: none; width: 100px; height: 75px; }
 ul.orbit-bullets li.active.has-thumb { background-position: 0 0; border-top: 2px solid #000; }
 
 /* Fluid Layout ---------------------- */
-div.orbit img.fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }
+.orbit img.fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }
 
-div.orbit, div.orbit-wrapper { width: 100% !important; }
+.orbit, div.orbit-wrapper { width: 100% !important; }
 
 ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -50px; left: 50%; margin-left: -50px; padding: 0; }
 

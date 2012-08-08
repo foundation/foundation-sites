@@ -76,7 +76,7 @@
 
       this.$element = $(element);
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
-      this.$slides = this.$element.children('img, a, div');
+      this.$slides = this.$element.children('img, a, div, li');
 
       this.$element.bind('orbit.next', function () {
         self.shift('next');
