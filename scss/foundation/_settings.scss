@@ -28,7 +28,6 @@ $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !de
 $bodyFontWeight: normal !default;
 $bodyFontColor: #222 !default;
 
-
 // Button Settings
 
 $buttonRadius: 3px !default;
@@ -37,23 +36,6 @@ $btnBase: 10px !default;
 $tinyBtnBase: $btnBase - 5 !default;
 $smallBtnBase: $btnBase - 3 !default;
 $largeBtnBase: $btnBase + 5 !default;
-
-// Tooltip Settings
-$hasTipBorderBottom: dotted 1px #ccc !default;
-$hasTipFontWeight: bold !default;
-$hasTipFontColor: #333 !default;
-$hasTipBorderBottomHover: dotted 1px #0593dc !default;
-$hasTipFontColorHover: #0192dd !default;
-$tooltipBackgroundColor: #000 !default;
-$tooltipBackgroundOpacity: 0.8 !default;
-$tooltipFontSize: 12 !default;
-$tooltipFontWeight: bold !default;
-$tooltipFontColor: #fff !default;
-$tapToCloseFontSize: 10 !default;
-$tapToCloseFontWeight: normal !default;
-$tapToCloseFontColor: #888 !default;
-$tooltipFontSizeScreenSmall: 14 !default;
-$tooltipBackgroundOpacityScreenSmall: 0.85 !default;
 
 // Form Settings
 
@@ -81,12 +63,28 @@ $base-size: 14px 44px !default;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
 
+// Tooltip Settings
+$hasTipBorderBottom: dotted 1px #ccc !default;
+$hasTipFontWeight: bold !default;
+$hasTipFontColor: #333 !default;
+$hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
+$hasTipFontColorHover: $mainColor !default;
+$tooltipBackgroundColor: #000 !default;
+$tooltipBackgroundOpacity: 0.8 !default;
+$tooltipFontSize: 12 !default;
+$tooltipFontWeight: bold !default;
+$tooltipFontColor: #fff !default;
+$tapToCloseFontSize: 10 !default;
+$tapToCloseFontWeight: normal !default;
+$tapToCloseFontColor: #888 !default;
+$tooltipFontSizeScreenSmall: 14 !default;
+$tooltipBackgroundOpacityScreenSmall: 0.85 !default;
+
 // Media Queries
 
 $screenSmall: 768px !default;
 $screenMedium: 1279px !default;
 $screenXlarge: 1441px !default;
-
 
 // Saving for better em-based testing
 // $screenSmall: 44em !default;
