@@ -366,7 +366,7 @@
     var $input = $element.prev(),
         input = $input[0];
 
-    if (false == $input.is(':disabled')) {
+    if (false === $input.is(':disabled')) {
         input.checked = ((input.checked) ? false : true);
         $element.toggleClass('checked');
 
@@ -378,7 +378,7 @@
     var $input = $element.prev(),
         input = $input[0];
 
-    if (false == $input.is(':disabled')) {
+    if (false === $input.is(':disabled')) {
       $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
         $(this).next().removeClass('checked');
       });
@@ -432,7 +432,7 @@
     event.preventDefault();
     $('div.dropdown').removeClass('open');
 
-    if (false == $select.is(':disabled')) {
+    if (false === $select.is(':disabled')) {
         $dropdown.toggleClass('open');
 
         if ($dropdown.hasClass('open')) {
