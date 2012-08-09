@@ -1,4 +1,4 @@
-@import "foundation/functions/modular-scale";
+@import "foundation/common/ratios";
 
 // Settings file containing Foundation defaults
 
@@ -55,7 +55,8 @@
 
 // Modular Scale
 // $ratio: $golden;
-// $base-size: 14px 44px;
+// $baseFontSize: 14px;
+// $importantModNum: 44px;
 
 // Tooltip Settings
 // $hasTipBorderBottom: dotted 1px #ccc;

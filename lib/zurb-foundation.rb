@@ -1,7 +1,7 @@
 root = File.join(File.dirname(__FILE__), "..")
 require "foundation/version"
 require "compass"
-# require "modular-scale"
+require "modular-scale"
 
 Compass::Frameworks.register("foundation",
   :stylesheets_directory => File.join(root,"scss"),
