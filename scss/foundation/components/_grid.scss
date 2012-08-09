@@ -140,7 +140,26 @@ that IE7/8 do not support :nth-child.
 
   /* Mobile Block Grids */
   @media only screen and (max-width: $screenSmall - 1) {
-    .block-grid.mobile { margin-left: 0;
+    .block-grid.mobile {
       &>li { float: none; width: 100%; margin-left: 0; }
+    }
+
+    .block-grid {
+      &>li { clear: none !important; }
+      &.mobile-two-up>li { width: 50%; 
+        &:nth-child(2n+1) { clear: both; }
+      }
+
+      &.mobile-three-up>li { width: 33.33%; 
+        &:nth-child(3n+1) { clear: both !important; }
+      }
+
+      &.mobile-four-up>li { width: 25%;
+        &:nth-child(4n+1) { clear: both; }
+      }
+
+      &.mobile-five-up>li {
+        &:nth-child(5n+1) { clear: both; }
+      }
     }
   }
