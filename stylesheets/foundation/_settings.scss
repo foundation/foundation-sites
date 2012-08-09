@@ -58,8 +58,9 @@ $complementaryWidth: 20% !default;
 
 // Modular Scale Settings
 
-$ratio: $golden !default;
-$base-size: 14px 44px !default;
+// $ratio: $golden; // THIS IS ALREADY DEFAULT IN MODULAR-SCALE
+$base-sizes: 14px 44px !default;
+$base-size: $base-sizes;
 // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
