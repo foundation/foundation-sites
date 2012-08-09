@@ -24,7 +24,7 @@
       $('.button.dropdown', this).not(this).children('ul').removeClass('show-dropdown');
       $(this).children('ul').toggleClass('show-dropdown');
     });
-    $(document).on('click.fndtn', 'body,html', function () {
+    $(document).on('click.fndtn', 'body, html', function () {
       $('.button.dropdown ul').removeClass('show-dropdown');
     });
 
