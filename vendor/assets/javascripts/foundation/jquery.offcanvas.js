@@ -47,4 +47,4 @@
       $target = $(href);
     $('html, body').animate({scrollTop : $target.offset().top}, 300);
   });
-});
+})( jQuery );
