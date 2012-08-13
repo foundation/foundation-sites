@@ -33,6 +33,7 @@ WordPress
 
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
 * [Reverie](http://themefortress.com/reverie/) by Zhen
+* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press
 
 Joomla
 
