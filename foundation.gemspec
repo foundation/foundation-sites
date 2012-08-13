@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Foundation::VERSION
 
   gem.add_dependency "compass", [">= 0.12.2"]
-  gem.add_dependency "sass", [">= 3.2.0.alpha.244"]
+  gem.add_dependency "sass", [">= 3.2.0"]
   gem.add_dependency "modular-scale", [">= 1.0.0"]
   gem.add_dependency "rake"
 end
