@@ -86,6 +86,10 @@ Grid displayer
 * [Grid displayer bookmarklet](http://alefeuvre.github.com/foundation-grid-displayer/) by [Antoine Lefeuvre](http://twitter.com/jiraisurfer)
 * [Responsive Design Bookmarklet](http://responsive.victorcoulon.fr/) by [Victor Coulon](https://twitter.com/_victa)
 
+Modular Scale
+
+* [Modular Scale](https://github.com/scottkellum/modular-scale) by Mason Wendell and Scott Kellum
+
 MIT Open Source License
 =======================
 
