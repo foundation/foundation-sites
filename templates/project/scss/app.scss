@@ -13,16 +13,16 @@
 // @import "foundation/functions/all";
 // @import "foundation/common/globals";
 // @import "foundation/mixins/clearfix";
+// @import "modular-scale";
 
 // Control which mixins you have access too
 
 // @import "foundation/mixins/css-triangle";
 // @import "foundation/mixins/font-size";
 
-// Must include next three for semantic grid to work
+// Must include next two for semantic grid to work
 
 // @import "foundation/mixins/respond-to";
-
 // @import "foundation/mixins/semantic-grid";
 
 // Must include the grid for any responsiveness
