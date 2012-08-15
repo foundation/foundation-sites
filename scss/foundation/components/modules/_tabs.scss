@@ -44,6 +44,9 @@
         }
       }
       &.contained { border-bottom: solid 1px #eee; margin-bottom: 0; }
+      &.two-up, &.three-up, &.four-up, &.five-up { 
+        dd { margin-right: 0; }
+      }
     }
 
     &.two-up, &.three-up, &.four-up, &.five-up {
