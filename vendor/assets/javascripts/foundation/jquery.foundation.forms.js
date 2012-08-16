@@ -369,6 +369,8 @@
     if (false === $input.is(':disabled')) {
         input.checked = ((input.checked) ? false : true);
         $element.toggleClass('checked');
+        
+        $input.trigger('change');
     }
   };
 
