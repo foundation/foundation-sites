@@ -23,7 +23,7 @@
 	<![endif]-->
 </head>
 <body>
-  
+
 	<div class="row">
     <div class="twelve columns">
       <p><a href="index.html">&laquo; Back</a></p>
@@ -40,11 +40,11 @@
         <dd><a href="#panels">Panels</a></dd>
         <dd><a href="#link-list">Link List</a></dd>
         <dd><a href="#video">Video</a></dd>
-        
+
       </dl>
     </div>
   </div>
-	
+
 	<!-- Test Foundation Components Here -->
   <div class="row">
     <div class="twelve columns">
@@ -95,7 +95,7 @@
           <p>Easily add the ability to show which media query you are currently viewing. To activate the viewer, make sure you have <strong>jquery.foundation.mediaQueryToggle.js</strong> linked up on your page. From there, simply add the markup to your page or press <kbd>M</kbd>. The keyboard toggle won't work on mobile devices so make sure you add the markup in those cases.</p>
         </div>
       </div>
-   
+
       <br><br>
 
       <div class="row">
@@ -127,7 +127,7 @@
           </div>
         </div>
       </div>
-      
+
       <br><br>
 
       <div class="row">
@@ -157,7 +157,7 @@
           <p><span class="radius label">Example Label</span> This label could read a date for an update or it could include an author name or anything really. Inline labels are pretty handy when you need to draw attention or visually separate a short piece of content.</p>
         </div>
       </div>
-      
+
       <br><br>
 
       <div class="row">
@@ -171,11 +171,16 @@
         <br>
         <div class="eight columns">
           <p>The tooltips can be positioned on the <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span class="has-tip tip-right" data-width="120" title="I'm on the right!">"tip-right"</span> of the target element. On a small device, the tooltips are full width and bottom aligned.</p>
+
+          <h3>Custom Options</h3>
+          <p>
+            I have <span class="has-tip-custom" title="See? Custom class here.">custom attributes.</span>
+          </p>
         </div>
-      </div>      
-      
+      </div>
+
       <br><br>
-			
+
       <div class="row">
         <div class="four columns">
           <a name="accordion"></a>
@@ -215,7 +220,7 @@
           </ul>
         </div>
       </div>
-			
+
 			<br><br>
 
       <div class="row">
@@ -229,7 +234,7 @@
           <p>For example, to close your browser hit <kbd>Cmd</kbd> + <kbd>Q</kbd>. Don't actually do it. There's more docs to read.</p>
         </div>
       </div>
-      
+
 			<br><br>
 
       <div class="row">
@@ -256,7 +261,7 @@
           </div>
         </div>
       </div>
-      
+
       <br><br>
 
       <div class="row">
@@ -276,9 +281,9 @@
           </ul>
         </div>
       </div>
-      
+
       <br><br>
-			
+
       <div class="row">
         <div class="four columns">
           <a name="video"></a>
@@ -314,10 +319,10 @@
           </ul>
         </div>
       </div>
-			
+
 		</div>
 	</div>
-	
+
 	<!-- Included JS Files -->
 	<script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
@@ -333,7 +338,9 @@
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
 	<script src="../vendor/assets/javascripts/foundation/app.js"></script>
   <script type="text/javascript">
-    // Page-Specific JavaScript Goes Here
-  </script>	
+    $(document).tooltips({
+      target: '.has-tip-custom, .has-tip'
+    })
+  </script>
 </body>
 </html>
