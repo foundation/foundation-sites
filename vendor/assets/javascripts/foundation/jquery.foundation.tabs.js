@@ -8,18 +8,24 @@
 
     var activateTab = function ($tab) {
       var $activeTab = $tab.closest('dl').find('dd.active'),
-          contentLocation = $tab.children('a').attr("href") + 'Tab';
+          target = $tab.children('a').attr("href"),
+          hasHash = /^#/.test(target),
+          contentLocation = '';
 
-      // Strip off the current url that IE adds
-      contentLocation = contentLocation.replace(/^.+#/, '#');
+      if (hasHash) {
+        contentLocation = target + 'Tab';
+
+        // Strip off the current url that IE adds
+        contentLocation = contentLocation.replace(/^.+#/, '#');
+
+        //Show Tab Content
+        $(contentLocation).closest('.tabs-content').children('li').removeClass('active').hide();
+        $(contentLocation).css('display', 'block').addClass('active');
+      }
 
       //Make Tab Active
       $activeTab.removeClass('active');
       $tab.addClass('active');
-
-      //Show Tab Content
-      $(contentLocation).closest('.tabs-content').children('li').removeClass('active').hide();
-      $(contentLocation).css('display', 'block').addClass('active');
     };
 
     $(document).on('click.fndtn', 'dl.tabs dd a', function (event){
