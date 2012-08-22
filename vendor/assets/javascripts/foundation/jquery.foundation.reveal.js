@@ -126,7 +126,7 @@
     //
     // Apply the plugin functionality to each element in the jQuery collection.
     //
-    return this.each( function () {
+    return this.not('.reveal-modal.open').each( function () {
         //
         // Cache the modal element
         //
