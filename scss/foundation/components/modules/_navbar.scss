@@ -35,12 +35,14 @@
 
     &.vertical { height: auto; margin-top: 0;
 
-      &>li { float: none; border-bottom: none;
+      &>li { float: none; border-bottom: none; border-right: solid 1px lighten($black, 20%); @include box-shadow(none);
 
         &.has-flyout>a:first-child:after { @include cssTriangle(4px, darken($white, 10%), left); }
         .flyout { left: 100%; top: -1px;
           &.right { left: auto; right: 100%; }
         }
+        &.active { border-right: solid 1px darken($mainColor, 10%); }
+        &:last-child { border-bottom: solid 1px lighten($black, 20%);}
       }
     }
 
