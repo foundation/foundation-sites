@@ -19,10 +19,10 @@
       .flyout { display: none; }
 
       &.has-flyout {
-        &>a:first-child { padding-right: $navBarHeight - 4; position: relative;
+        &>a:first-child { padding-right: $navBarHeight; position: relative;
           &:after { @include cssTriangle(4px, darken($white, 10%), top); position: absolute; right: $navBarHeight / 2; top: ($navBarHeight / 2) - 3; }
         }
-        &>a.flyout-toggle { border-left: 0 !important; position: absolute; right: 0; top: 0; padding: ($navBarHeight / 2) + 2; z-index: 2; display: block; }
+        &>a.flyout-toggle { border-left: 0 !important; position: absolute; right: 0; top: 0; padding: ($navBarHeight / 2); z-index: 2; display: block; }
         &.is-touch {
           &>a:first-child { padding-right: 55px;}
           &>a.flyout-toggle { border-left: 1px dashed #666; }
