@@ -9,10 +9,10 @@
 
 (function ($) {
   'use strict';
-  $.fn.findFirstImage = function () {
+  $.fn.findFirstImage = function (selector) {
     return this.first()
-            .find('img')
-            .andSelf().filter('img')
+            .find(selector)
+            .andSelf().filter(selector)
             .first();
   };
 
@@ -39,7 +39,8 @@
       afterSlideChange: $.noop,   // empty function
       afterLoadComplete: $.noop, //callback to execute after everything has been loaded
       fluid: true,
-      centerBullets: true    // center bullet nav with js, turn this off if you want to position the bullet nav manually
+      centerBullets: true,    // center bullet nav with js, turn this off if you want to position the bullet nav manually
+      firstSelector: 'img'
     },
 
     activeSlide: 0,
@@ -157,13 +158,13 @@
       self.$element.add(self.$wrapper).height(this.$slides.first().height());
       self.orbitWidth = this.$slides.first().outerWidth();
       self.orbitHeight = this.$slides.first().height();
-      $fluidPlaceholder = this.$slides.first().findFirstImage().clone();
-
+      self.selector = this.options.firstSelector;
+      $fluidPlaceholder = this.$slides.first().findFirstImage(self.selector).clone();
 
       this.$slides.each(function () {
         var slide = $(this),
             slideWidth = slide.outerWidth(),
-            slideHeight = slide.height();
+            slideHeight = slide.find(self.selector).height();
 
         if (slideWidth > self.$element.outerWidth()) {
           self.$element.add(self.$wrapper).width(slideWidth);
@@ -172,7 +173,7 @@
         if (slideHeight > self.$element.height()) {
           self.$element.add(self.$wrapper).height(slideHeight);
           self.orbitHeight = self.$element.height();
-          $fluidPlaceholder = $(this).findFirstImage().clone();
+          $fluidPlaceholder = $(this).findFirstImage(self.selector).clone();
         }
         self.numberSlides += 1;
       });
