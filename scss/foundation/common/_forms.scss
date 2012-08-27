@@ -39,7 +39,7 @@
     &[disabled] { background-color: #ddd; }
   }
 
-  textarea { height: auto; }
+  textarea { height: auto; font-family: $bodyFontFamily; }
 
   select { width: 100%; }
 
