@@ -8,6 +8,7 @@
 =require foundation/jquery.foundation.forms
 =require foundation/jquery.foundation.tabs
 =require foundation/jquery.foundation.navigation
+=require foundation/jquery.foundation.topbar
 =require foundation/jquery.foundation.reveal
 =require foundation/jquery.foundation.orbit
 =require foundation/jquery.foundation.mediaQueryToggle

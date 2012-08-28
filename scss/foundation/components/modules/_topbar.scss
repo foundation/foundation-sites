@@ -1,0 +1,153 @@
+/* Foundation http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* 
+  Foundation Element:
+    Top-attached Nav Bar
+  Options: 
+    div.name is required for mobile device nav to collapse/expand.
+    Top level ul can be .left, .right, or both. Multiples of .left and .right not recommended.
+    Any level can have a dropdown, with li.has-dropdown and a nested ul.dropdown
+  Version:
+    0.1 February 2012
+  Markup:
+    
+*/
+
+  .top-bar { height: 45px; margin: 0 0 30px; padding: 0; line-height: 45px; }
+  .top-bar .attached { position: fixed; top: 0; left: 0; height: 45px; width: 100%; background: #333; border: 0 solid #000; border-width: 0 0 1px; color: #fff; font-family: "Helvetica", Arial, sans-serif; z-index: 39; }
+  .top-bar a, .top-bar a:hover { color: #fff; font-weight: bold; }
+  
+  /* Styles for the fixed position bar itself */
+  .top-bar .attached>ul { display: block; margin: 0; padding: 0; }
+  .top-bar .attached>ul>li { display: block; height: 45px; float: left; border-right: 1px solid #555; position: relative; }
+  .top-bar .attached>ul>li>a, .top-bar .attached>ul>li>span { display: block; height: 45px; padding: 0 20px; border-right: 1px solid #000; font-weight: bold; }
+  .top-bar .attached>ul>li>a small { font-size: 12px; color: #999; font-weight: normal; }
+  
+  .top-bar .attached>.name { background: #222; font-weight: bold; float: left; }
+  .top-bar .attached>.name span { padding: 0 20px; }
+  
+  /* Styles for embedded forms like search */
+  .top-bar .attached>ul>li form { padding: 0 12px; border-right: 1px solid #000; height: 45px; }
+  .top-bar .attached>ul>li form label, .top-bar .attached>ul>li form .input-text { display: inline; }
+  .top-bar .attached>ul>li form label { text-transform: uppercase; font-weight: bold; font-size: 10px; margin: 0 0 8px; color: #999; }
+  .top-bar .attached .input-text { border: 1px solid #292929; background: #555; color: #fff; border-radius: 2px; padding: 1px 3px 4px; width: 120px; }
+  .top-bar .attached .button { padding: 3px 11px 4px; }
+  
+  /* Move the UL with .right to the right-hand side and adjust border */
+  .top-bar .attached>ul.right>li { border-left: 1px solid #000; border-right: none; }
+  .top-bar .attached>ul.right>li>a { border-left: 1px solid #555; border-right: none; }
+  
+  /* Styles for the dropdown elements */
+  .top-bar .attached>ul .dropdown { position: absolute; left: 0; top: 45px; margin: 0; padding: 8px 0; z-index: 101; background: #222; width: auto; display: none; }
+  .top-bar .attached>ul>li>.dropdown { min-width: 100%; }
+  .top-bar .attached>ul.right .dropdown { left: auto; right: -1px; }
+  
+  .top-bar .attached>ul .dropdown>li { display: block; margin: 0; padding: 0 20px; white-space: nowrap; line-height: 1.4; position: relative; }
+  .top-bar .attached>ul .dropdown>li.divider { height: 0; padding: 0; border-top: 1px solid #111; border-bottom: 1px solid #333; margin: 6px 0; }
+  .top-bar .attached>ul .dropdown>li a { display: block; margin: 0 -20px; padding: 4px 20px; font-weight: normal; }
+  .top-bar .attached>ul .dropdown>li label { text-transform: uppercase; font-weight: bold; font-size: 10px; margin: 0 0 8px; color: #999; }
+  
+  /* Background image (chevron) for elements with a dropdown */
+  .top-bar .attached>ul .dropdown>li.has-dropdown>a, .top-bar .attached>ul .dropdown>li.has-dropdown>span { background-image: url(../images/top-bar/dropdown-sprite.png); background-repeat: no-repeat; }
+  .top-bar .attached>ul.left .dropdown>li>a, 
+  .top-bar .attached>ul.left .dropdown>li>span { padding-right: 28px; background-position: right -3px; }
+  .top-bar .attached>ul.right .dropdown>li>a, 
+  .top-bar .attached>ul.right .dropdown>li>span { padding-left: 28px; background-position: left -33px; }
+  
+  /* Positioning for the expanded sub dropdowns */
+  .attached>ul .dropdown li .dropdown { left: 100%; top: -8px; border-left: 1px solid #111; }
+  .attached>ul.right .dropdown li .dropdown { left: auto; right: 100%; border-left: none; border-right: 1px solid #111; }
+  
+  .top-bar .attached a.toggle-nav { display: none; }
+  
+  /* Media query ensures that hover effects don't conflict on touch devices */
+  @media only screen and (min-width: 768px) {
+    .top-bar .attached>ul>li:hover>a, .top-bar .attached>ul>li:hover>span { background: #222; }
+    .top-bar .attached>ul>li:hover>span { cursor: default; }
+    .top-bar .attached>ul .dropdown>li:hover>a { background-color: #333; }
+    .top-bar .attached>ul>li:hover>a+.dropdown, .top-bar .attached>ul>li:hover>span+.dropdown { display: block; }
+    .attached .dropdown li:hover>a+.dropdown, .attached .dropdown li:hover>span+.dropdown { display: block; }
+  }
+  
+  /* Including the desktop-only hover states for IE7/8 */
+  .lt-ie9 .top-bar .attached>ul>li:hover>a, .top-bar .attached>ul>li:hover>span { background: #222; }
+  .lt-ie9 .top-bar .attached>ul>li:hover>span { cursor: default; }
+  .lt-ie9 .top-bar .attached>ul>li:hover>span+.dropdown, .lt-ie9 .top-bar .attached>ul>li:hover>a+.dropdown { display: block; }
+  .lt-ie9 .top-bar .attached>ul .dropdown>li:hover>a { background-color: #333; }
+  .lt-ie9 .attached .dropdown li:hover>a+.dropdown, .lt-ie9 .attached .dropdown li:hover>span+.dropdown { display: block; }
+  
+  /* Styles for smaller screens like tablets */
+  @media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .top-bar { font-size: 10px; height: 36px; line-height: 36px; }
+    .top-bar .attached { height: 36px; }
+    .top-bar .attached>.name { height: 36px; }
+    .top-bar .attached>ul>li { height: 36px; }
+    .top-bar .attached>ul>li>a, .top-bar .attached>ul>li>span { padding: 0 9px; height: 36px; }
+    .top-bar .attached>ul.left .dropdown>li>a, 
+    .top-bar .attached>ul.left .dropdown>li>span { background-position: right -4px; }
+    .top-bar .attached>ul.right .dropdown>li>a, 
+    .top-bar .attached>ul.right .dropdown>li>span { background-position: left -34px; }
+    
+    .top-bar .attached>ul>li form { padding: 0 12px; height: 36px; }
+    
+    .top-bar .attached>ul .dropdown { top: 36px; }
+  }
+  
+  /* Styles for mobile devices like phones */
+  @media only screen and (max-width: 767px) {
+    .top-bar, 
+    .top-bar .attached { position: relative; background: #333; border-width: 0; }
+    .top-bar { overflow: hidden; height: 45px; }
+    .top-bar.expanded { height: auto !important; }
+    .top-bar .attached { left: 0; border-bottom: none; height: auto; background: none; }
+    .top-bar .attached>ul { float: none; width: 100%; position: static; }
+    .top-bar .attached>.name { display: block; width: 100%; float: none; position: relative; cursor: pointer; }
+    .top-bar .attached>ul>li { display: block; float: none; border-right: none; border-left: none; border-bottom: 1px solid #444; margin: 0; padding: 0; height: auto; position: relative; }
+    .top-bar .attached>ul:last-child>li:last-child { border-width: 0; }
+    .top-bar .attached>ul>li>a, 
+    .top-bar .attached>ul.right>li>a, 
+    .top-bar .attached>ul>li form, 
+    .top-bar .attached>ul>li>span { border-left: none; border-right: none; border-bottom: 1px solid #222; height: auto; }
+    .top-bar .attached > ul.right > li { border-left: none; }
+    
+    .top-bar .attached>ul>li.active>a { background: none; }
+    .top-bar .attached>ul>li.active .dropdown { display: block; visibility: hidden; }
+    
+    .top-bar .attached>ul>li>a small, 
+    .top-bar .attached li.title h5 small { text-transform: uppercase; font-weight: bold; float: right; position: relative; top: 2px; }
+    
+    .top-bar .attached .input-text { box-sizing: border-box; width: 100%; display: block; }
+    .top-bar .attached .button { padding: 6px 11px 8px; }
+    .top-bar .attached>ul>li form { margin-bottom: 0; padding-bottom: 12px; }
+    
+    .top-bar .attached a.toggle-nav { display: block; height: 0; width: 0; position: absolute; right: 20px; top: 0; border-left: 8px solid transparent;border-right: 8px solid transparent; border-top: 8px solid #fff; top: 20px; }
+    .top-bar.expanded .attached a.toggle-nav { border-top: none; border-bottom: 8px solid #fff; }
+    
+    .top-bar .attached>ul>li.has-dropdown>a, .top-bar .attached>ul>li.has-dropdown>span { background-image: url(../images/top-bar/dropdown-sprite.png); background-repeat: no-repeat; padding-right: 28px; background-position: right 8px; }
+    .top-bar .attached>ul.right .dropdown>li>a, .top-bar .attached>ul.right .dropdown>li>span { padding-left: 20px; }
+    .top-bar .attached>ul.right .dropdown>li.has-dropdown>a, .top-bar .attached>ul.right .dropdown>li.has-dropdown>span { background-image: url(../images/top-bar/dropdown-sprite.png); background-repeat: no-repeat; padding-right: 28px; background-position: right -3px; }
+    
+    .top-bar .attached>ul .dropdown>li.divider { border-top: 1px solid #222; border-bottom: 1px solid #444; }
+    .top-bar .attached>ul .dropdown>li.back { margin-top: 8px; }
+    .top-bar .attached>ul .dropdown>li.back a { color: #999; padding: 5px 20px; }
+    .top-bar .attached>ul .dropdown>li.title { border-bottom: 1px solid #444; margin-bottom: 12px; }
+    .top-bar .attached>ul .dropdown>li.title h5 { border-bottom: 1px solid #222; margin: 0 -20px; padding: 0 20px 12px; color: #fff; font-weight: bold; font-size: 18px; font-size: 1.8rem; }
+    .top-bar .attached>ul .dropdown>li.title h5 a { font-size: 18px; font-size: 1.8rem; margin: 0; padding: 0; }
+    .top-bar .attached>ul .dropdown>li a { padding: 5px 20px; font-weight: bold; font-size: 13px; }
+    
+    /******************** 
+      Slide Styles 
+    ********************/
+    .top-bar .attached, .top-bar .attached>.name { -webkit-transition: left 0.2s linear; transition: left 0.2s linear; }
+    
+    /* Override for the default states */
+    .top-bar .attached > ul .dropdown { padding-top: 0; padding-bottom: 0; }
+    
+    /* Base styles for the subsequent dropdown */
+    .top-bar .attached li.active { position: static !important; }
+    .top-bar .attached li.active>a+.dropdown { display: block; visibility: hidden; width: 100%; top: 0; position: absolute; background: #333; border-left: none; }
+    .top-bar .attached li.active { position: static !important; }
+    .top-bar .attached li.active>a+.dropdown { display: block; visibility: visible; left: 100%; }
+    .top-bar .attached>ul>li.active>a+.dropdown { top: 45px; }
+  }

@@ -6,6 +6,7 @@
     $(document).foundationAccordion();
     $(document).foundationNavigation();
     $(document).foundationCustomForms();
+    $(document).foundationTopBar();
     $(document).foundationMediaQueryViewer();
     $(document).foundationTabs({callback:$.foundation.customForms.appendCustomMarkup});
     
