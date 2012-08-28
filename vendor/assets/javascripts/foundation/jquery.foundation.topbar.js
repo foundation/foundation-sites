@@ -1,9 +1,6 @@
 (function ($) {
   
-  $.fn.foundationTopBar = function (options) {
-
-    var settings = $.extend(options),
-        currentIndex = 0;
+    var currentIndex = 0;
 
     function onMobile() {
       return $(window).width() < 768;
@@ -97,7 +94,5 @@
         $activeLi.removeClass('active');
       }, 200);
     });
-
-  };
 
 }(jQuery));

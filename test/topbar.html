@@ -24,6 +24,139 @@
 </head>
 <body>
   
+  <nav class="top-bar"> <!-- Could do .fixed to fix to top -->
+    <ul>
+      <!-- Title Area -->
+      <li class="name">
+        <h1>
+          <a href="#">
+            <!-- <img src="http://placehold.it/25x25"> -->
+            Top Bar Title
+          </a>
+        </h1>
+      </li>
+      <li class="border"></li>
+      <li class="toggle-nav"><a href="#">&#x25BC;</a></li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li class="has-dropdown">
+        <a class="active" href="#">Main Item 1</a>
+        <ul class="dropdown">
+          <li><label>Section Name</label></li>
+          <li class="has-dropdown">
+            <a href="#" class="">Dropdown Level 1</a>
+            <ul class="dropdown">
+              <li><a href="#">Subdropdown Option</a></li>
+              <li><a href="#">Subdropdown Option</a></li>
+              <li class="has-dropdown"><a href="#">Dropdown Level 3</a>
+                <ul class="dropdown">
+                  <li><a href="#">Subdropdown Option</a></li>
+                  <li><a href="#">Subdropdown Option</a></li>
+                  <li><a href="#">Subdropdown Option</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Subdropdown Option</a></li>
+              <li><a href="#">Subdropdown Option</a></li>
+              <li><a href="#">Subdropdown Option</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li class="divider"></li>
+          <li><label>Section Name</label></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li class="divider"></li>
+          <li><a href="#">See all &rarr;</a></li>
+        </ul>
+      </li>
+      <li class="border"></li>
+      <li><a href="#">Main Item 2</a></li>
+      <li class="border"></li>
+      <li class="has-dropdown">
+        <a href="#">Main Item 3</a>
+        <ul class="dropdown">
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li class="divider"></li>
+          <li><a href="#">See all &rarr;</a></li>
+        </ul>
+      </li>
+      <li class="border"></li>
+      <li class="search">
+        <form class="row collapse">
+          <div class="eight columns">
+            <input type="text">
+          </div>
+          <div class="four columns postfix">
+            <button type="submit" class="secondary radius button">Search</button>
+          </div>
+        </form>
+        <!-- <form>
+            <input type="search">
+        </form> -->
+      </li>
+      <li class="border"></li>
+    </ul>
+
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="border"></li>
+      <li class="has-dropdown">
+        <a class="active" href="#">Main Item 1</a>
+        <ul class="dropdown">
+          <li><label>Section Name</label></li>
+          <li class="has-dropdown">
+            <a href="#" class="">Dropdown Level 2</a>
+            <ul class="dropdown">
+              <li><a href="#">Subdropdown Option</a></li>
+              <li><a href="#">Subdropdown Option</a></li>
+              <li class="has-dropdown"><a href="#">Dropdown Level 3</a>
+                <ul class="dropdown test">
+                  <li><a href="#">Subdropdown Option</a></li>
+                  <li><a href="#">Subdropdown Option</a></li>
+                  <li><a href="#">Subdropdown Option</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Subdropdown Option</a></li>
+              <li><a href="#">Subdropdown Option</a></li>
+              <li><a href="#">Subdropdown Option</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li class="divider"></li>
+          <li><label>Section Name</label></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li class="divider"></li>
+          <li><a href="#">See all &rarr;</a></li>
+        </ul>
+      </li>
+      <li class="border"></li>
+      <li><a href="#">Main Item 2</a></li>
+      <li class="border"></li>
+      <li class="has-dropdown">
+        <a href="#">Main Item 3</a>
+        <ul class="dropdown">
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+          <li class="divider"></li>
+          <li><a href="#">See all &rarr;</a></li>
+        </ul>
+      </li>
+    </ul>
+
+  </nav>
+
+  <hr><br><br><br><br>
+
   <div class="top-bar">
     <div class="attached">
       <div class="name" onclick="void(0);">
@@ -125,7 +258,7 @@
       </ul>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="twelve columns">
       <p><a href="index.html">&laquo; Back</a></p>
@@ -146,6 +279,7 @@
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.forms.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.navigation.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.topbar.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.reveal.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
   <script src="../vendor/assets/javascripts/foundation/app.js"></script>
