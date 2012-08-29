@@ -1,8 +1,24 @@
 (function ($) {
     
-    
+    var currentIndex = 0,
+        breakPoint = 800;
 
     // var currentIndex = 0;
+
+    // define on() and off() for older jQuery
+    if (!$.isFunction($.fn.on)) {
+      $.fn.on = function(types, sel, fn) {
+        return this.delegate(sel, types, fn); 
+      };
+      
+      $.fn.off = function(types, sel, fn) {
+        return this.undelegate(sel, types, fn);
+      };
+    }
+
+    function atBreakpoint() {
+      return $(window).width() < breakPoint;
+    }
 
     // function onMobile() {
     //   return $(window).width() < 768;
@@ -29,6 +45,18 @@
     //   $attached.appendTo($topbar);
     // }
     
+    $('.top-bar .toggle-nav').on('click', function(e) {
+      var $this = $(this);
+
+      if (atBreakpoint()) {
+        e.preventDefault();
+
+        // Need Initializer Bit from below
+        //
+        $this.closest('.top-bar').toggleClass('expanded');
+      }
+    });
+
     // $('.top-bar .name').live('click', function (event) {
     //   var $this = $(this);
       
