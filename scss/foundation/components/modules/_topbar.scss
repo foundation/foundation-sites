@@ -109,16 +109,18 @@
   @media only screen and (max-width: $topBarBreakPoint) {
 
     .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0;
-      ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: inline-block; background: lighten($topBarBgColor, 5%);
+      ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: block; background: lighten($topBarBgColor, 5%);
         li { float: none; 
-          &.name { background: $topBarBgColor; 
-            a { display: inline; }
+          &.name { background: darken($topBarBgColor, 20%); 
+            h1 { line-height: 1;
+              a { display: inline; }
+            }
           }
           &.toggle-nav { cursor: pointer; display: block; width: $topBarHeight * 2; height: $topBarHeight; position: absolute; top: 0; right: $navBarHeight / 2;
             a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: 0; margin-top: -($topBarNavToggleSize / 2); }
           }
           a { padding: 0 $topBarHeight / 2;
-            &.active { background: darken($topBarBgColor, 15%); }
+            &.active { background: darken($topBarBgColor, 3%); }
           }
           &.divider { width: 100%; clear: both; height: 0px; border-top: solid 1px darken($topBarBgColor, 25%); border-bottom: solid 1px rgba(255,255,255,0.25); } 
           &.search { padding: 0 $topBarHeight / 2;
