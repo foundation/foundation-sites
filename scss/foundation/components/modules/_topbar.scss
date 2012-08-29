@@ -14,7 +14,7 @@
 */
   
   // Variables for Top Bar
-  $topBarBgColor: #333;
+  $topBarBgColor: #222;
   $topBarHeight: 45px;
   $topBarBtmMargin: 30px;
   $topBarTitleColor: $white;
@@ -50,24 +50,8 @@
         }
         &.toggle-nav { display: none; }
 
-        /* Dropdown Level 1 */
-        &.has-dropdown { position: relative;
-          .dropdown { /* display: none; */ position: absolute; z-index: 99; left: 0; background: $topBarBgColor; margin: 0; padding: $topBarHeight / 3 0;
-            li { background: $topBarBgColor; min-width: 100%; line-height: 1; padding-bottom: 10px;
-              a { white-space: nowrap; height: 100%; line-height: 1; }
-              label { margin: 0; padding-left: $topBarHeight / 3; }
-              &.divider { height: 2px; width: 100%; margin: 0 0 10px; background: darken($topBarBgColor, 10%); @include box-shadow(0 -1px 0 rgba(255,255,255,0.15) inset); padding: 0; }
-
-              /* Dropdown Level 2 */
-              &.has-dropdown { position: relative; 
-                &>.dropdown { display: none; position: absolute; left: 100%; top: 0; }
-                &:hover { 
-                  &>.dropdown { display: block; }
-                }
-              }
-
-            }
-          } 
+        /* Has Dropdown <li> */
+        &.has-dropdown {
           &:hover { 
             .dropdown { display: block; }
           }
@@ -75,6 +59,35 @@
             &:after { margin-right: $topBarHeight / 3; @include cssTriangle(5px, #fff, top); position: absolute; top: 47%; right: 0; }
           }
         }
+
+        /* Dropdown Level 1 */
+        &.has-dropdown { position: relative;
+          .dropdown { display: none; position: absolute; z-index: 99; left: 0; background: $topBarBgColor; margin: 0; padding: $topBarHeight / 3 0;
+            li { background: $topBarBgColor; min-width: 100%; line-height: 1; padding-bottom: 5px;
+              a { font-weight: normal; white-space: nowrap; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3; 
+                &:after { border: none; }
+                &:hover { background: lighten($topBarBgColor, 10%); }
+              }
+              label { margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; font-size: ms(0) - 4; font-weight: $topBarLinkWeight; color: lighten($topBarBgColor, 30%); }
+              &.divider { height: 12px; width: 100%; margin: 0; background: $topBarBgColor; border-top: solid 1px darken($topBarBgColor, 15%); @include box-shadow(0 1px 0 rgba(255,255,255,0.15) inset); padding: 0; }
+              &:last-child { padding-bottom: 10px; }
+            }
+          } 
+        }
+
+        /* Dropdown Level 2 */
+        &.has-dropdown .dropdown li {
+          &.has-dropdown { position: relative; 
+            &>a { padding-right: $navBarHeight * .75;
+              &:after { border: none; content:"\00bb"; top: 4px; right: 5px; }
+            }
+            &>.dropdown { padding-top: $topBarHeight / 5; display: none; position: absolute; left: 100%; top: 0; }
+            &:hover { 
+              &>.dropdown { display: block; }
+            }
+          }
+        }
+
       }
       &.left { float: left; width: auto; }
       &.right { float: right; width: auto; }
@@ -89,74 +102,14 @@
       ul {
         li {
           &.toggle-nav { display: block; float: right;
-            a { padding: 0 ($topBarHeight / 2); }
+            a { @include cssTriangle(8px, #fff, top); padding: 0; position: absolute; top: $navBarHeight / 2; right: $navBarHeight / 2; }
           } 
         }
       }
     }
   }
 
-
-  // .top-bar { height: 45px; margin: 0 0 30px; padding: 0; line-height: 45px;
-    
-  //   a, a:hover { color: #fff; font-weight: bold; }
-
-  //   .attached { /*position: fixed;*/ top: 0; left: 0; height: 45px; width: 100%; background: #333; border: 0 solid #000; border-width: 0 0 1px; color: #fff; font-family: "Helvetica", Arial, sans-serif; z-index: 39; 
-      
-  //     /* Styles for the fixed position bar itself */
-  //     &>ul { display: block; margin: 0; padding: 0; 
-  //       &>li { display: block; height: 45px; float: left; border-right: 1px solid #555; position: relative; }
-  //       &>a, &>span { display: block; height: 45px; padding: 0 20px; border-right: 1px solid #000; font-weight: bold; }
-  //       &>a small { font-size: 12px; color: #999; font-weight: normal; }
-  //     }
-  //     &>.name { background: #222; font-weight: bold; float: left;
-  //       span { padding: 0 20px; }
-  //     }
-
-  //     /* Styles for embedded forms like search */
-  //     &>ul>li>form { padding: 0 12px; border-right: 1px solid #000; height: 45px;
-  //       label, .input-text { display: inline; }
-  //       label { text-transform: uppercase; font-weight: bold; font-size: 10px; margin: 0 0 8px; color: #999; }
-  //     }
-  //     .input-text { border: 1px solid #292929; background: #555; color: #fff; border-radius: 2px; padding: 1px 3px 4px; width: 120px; }
-  //     .button { padding: 3px 11px 4px; }
-
-  //     /* Move the UL with .right to the right-hand side and adjust border */
-  //     &>ul.right>li { border-left: 1px solid #000; border-right: none;
-  //       &>a { border-left: 1px solid #555; border-right: none; }
-  //     }
-
-  //     /* Styles for the dropdown elements */
-  //     &>ul {
-  //       .dropdown { position: absolute; left: 0; top: 45px; margin: 0; padding: 8px 0; z-index: 101; background: #222; width: auto; display: none; }
-  //       &>li>.dropdown { min-width: 100%; }
-  //       &.right .dropdown { left: auto; right: -1px; }
-
-  //       .dropdown>li { display: block; margin: 0; padding: 0 20px; white-space: nowrap; line-height: 1.4; position: relative;
-  //         &.divider { height: 0; padding: 0; border-top: 1px solid #111; border-bottom: 1px solid #333; margin: 6px 0; }
-  //         a { display: block; margin: 0 -20px; padding: 4px 20px; font-weight: normal; }
-  //         label { text-transform: uppercase; font-weight: bold; font-size: 10px; margin: 0 0 8px; color: #999; }
-  //       }
-  //     }
-
-  //     /* Background image (chevron) for elements with a dropdown */
-  //     &>ul {
-  //       .dropdown>li.has-dropdown>a, .dropdown>li.has-dropdown>span { background-image: url(../images/top-bar/dropdown-sprite.png); background-repeat: no-repeat; }
-  //       &.left .dropdown>li>a, &.left .dropdown>li>span { padding-right: 28px; background-position: right -3px; }
-  //       &.right .dropdown>li>a, &.right .dropdown>li>span { padding-left: 28px; background-position: left -33px; }
-  //     }
-      
-  //     /* Positioning for the expanded sub dropdowns */
-  //     &>ul {
-  //       .dropdown li .dropdown { left: 100%; top: -8px; border-left: 1px solid #111; }
-  //       &.right .dropdown li .dropdown { left: auto; right: 100%; border-left: none; border-right: 1px solid #111; }
-  //     }
-
-  //     a.toggle-nav { display: none; }
-
-  //   }
-    
-  // }
+  
     
   // /* Media query ensures that hover effects don't conflict on touch devices */
   // @media only screen and (min-width: 768px) {

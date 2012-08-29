@@ -6,7 +6,7 @@
   }
   
   function initializeMarkup($topbar) {
-    var $attached = $topbar.find('.attached');
+    var $attached = $topbar.find('.top-bar');
     
     // Pull element out of the DOM for manipulation
     $attached.detach();
@@ -48,7 +48,7 @@
           $nextLevelUl = $selectedLi.find('>ul'),
           $titleLi = $('<li class="title show-on-phones js-generated"><h5></h5></li>'),
           $attached = $this.closest('.attached'),
-          $topbar = $this.closest('.top-bar'),
+          $topbar = $this,
           $largestUl;
 
       event.preventDefault();
@@ -75,7 +75,7 @@
     var $this = $(this),
         $activeLi = $this.closest('li.active'),
         $attached = $this.closest('.attached'),
-        $topbar = $this.closest('.top-bar'),
+        $topbar = $this,
         $previousLevelUl = $activeLi.closest('ul');
     
     event.preventDefault();
