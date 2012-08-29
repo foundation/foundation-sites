@@ -8,8 +8,7 @@
     - <nav class="top-bar"> can have .fixed added to make it stick to the top of viewport
     - <li class="name"> creates a branding area that can be linked to homepage
       - Can include text, image or both inside this <li>.
-    - <li class="divider"> creates a divider between nav items with margins on either side
-    - <li class="border"> creates a divider between nav items with no margins
+    - <li class="divider"> creates a divider between nav items, add margins for space
     - <li class="search"> Needs to hold a <form> which can use .row.collapse and pre/postfix buttons or default type="search"
 */
   
@@ -39,8 +38,7 @@
             a { padding: 0 $topBarHeight / 2; font-size: inherit; }
           }
         } 
-        &.border, &.divider { padding: 0; display: block; background: darken($topBarBgColor, 15%); width: 1px; height: 100%; @include box-shadow(1px 0 0 rgba(255,255,255,0.15)); margin-right: 1px; }
-        &.divider { margin: 0 ($topBarHeight / 6) + 1 0 $topBarHeight / 6; }
+        &.divider { padding: 0; display: block; background: darken($topBarBgColor, 15%); width: 1px; height: 100%; @include box-shadow(1px 0 0 rgba(255,255,255,0.15)); margin-right: 1px; }
         &.search { padding: 0 $topBarHeight / 3; height: $topBarHeight;
           form { display: inline-block; vertical-align: middle; margin-top: 1px; width: $topBarSearchWidth; min-width: $topBarSearchWidth;
             input { height: 28px; font-size: ms(0) - 1; margin-bottom: 0; }
@@ -99,11 +97,18 @@
 
   @media only screen and (max-width: $topBarBreakPoint) {
     .top-bar {
-      ul {
-        li {
+      ul { width: 100%; min-height: 100%;
+        li { 
           &.toggle-nav { display: block; float: right;
             a { @include cssTriangle(8px, #fff, top); padding: 0; position: absolute; top: $navBarHeight / 2; right: $navBarHeight / 2; }
-          } 
+          }
+          a {
+            &.active { background: darken($topBarBgColor, 10%); }
+          }
+          &.divider { width: 100%; clear: both; height: 0px; border-top: solid 1px darken($topBarBgColor, 25%); @include box-shadow(0 0 0 rgba(255,255,255,0)); } 
+        }
+        &.left { background: lighten($topBarBgColor, 10%); width: 100%; clear: both; display: block;
+          li { display: block; float: none; background: lighten($topBarBgColor, 10%); margin: 0; }
         }
       }
     }
