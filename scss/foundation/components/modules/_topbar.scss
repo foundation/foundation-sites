@@ -48,7 +48,7 @@
         }
         &.toggle-nav { display: none; }
 
-        /* Has Dropdown <li> */
+        /* Has Dropdown Hover <li> */
         &.has-dropdown {
           &:hover { 
             .dropdown { display: block; }
@@ -62,7 +62,7 @@
         &.has-dropdown { position: relative;
           .dropdown { display: none; position: absolute; z-index: 99; left: 0; background: $topBarBgColor; margin: 0; padding: $topBarHeight / 3 0;
             li { background: $topBarBgColor; min-width: 100%; line-height: 1; padding-bottom: 5px;
-              a { font-weight: normal; white-space: nowrap; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3; 
+              a { font-weight: normal; white-space: nowrap; height: 100%; line-height: 1; padding: 5px ($topBarHeight / 3) + 2 5px $topBarHeight / 3; 
                 &:after { border: none; }
                 &:hover { background: lighten($topBarBgColor, 10%); }
               }
@@ -88,27 +88,49 @@
 
       }
       &.left { float: left; width: auto; }
-      &.right { float: right; width: auto; }
+      &.right { float: right; width: auto; 
+
+        /* Dropdown Level 1 Right Side Alignment */
+        .has-dropdown .dropdown { left: auto; right: -1px; }
+
+        /* Dropdown Level 2 Right Side Alignment */
+        .has-dropdown .dropdown li {
+          &.has-dropdown > .dropdown { width: 100%; left: auto; right: 100%; }
+        }
+
+      }
     }
     &.fixed { position: fixed; top: 0; left: 0; }
     
   }
 
-
   @media only screen and (max-width: $topBarBreakPoint) {
-    .top-bar {
-      ul { width: 100%; min-height: 100%;
-        li { 
-          &.toggle-nav { display: block; float: right;
-            a { @include cssTriangle(8px, #fff, top); padding: 0; position: absolute; top: $navBarHeight / 2; right: $navBarHeight / 2; }
+
+    .top-bar { height: 100%; margin-bottom: 0;
+      ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: inline-block; background: lighten($topBarBgColor, 5%);
+        li { float: none; 
+          &.name { background: $topBarBgColor; }
+          &.toggle-nav { display: block;
+            a { @include cssTriangle(8px, #fff, top); padding: 0; position: absolute; top: $navBarHeight / 2; right: $navBarHeight / 2; line-height: 1; }
           }
-          a {
-            &.active { background: darken($topBarBgColor, 10%); }
+          a { padding: 0 $topBarHeight / 2;
+            &.active { background: darken($topBarBgColor, 15%); }
           }
-          &.divider { width: 100%; clear: both; height: 0px; border-top: solid 1px darken($topBarBgColor, 25%); @include box-shadow(0 0 0 rgba(255,255,255,0)); } 
+          &.divider { width: 100%; clear: both; height: 0px; border-top: solid 1px darken($topBarBgColor, 25%); border-bottom: solid 1px rgba(255,255,255,0.25); } 
+          &.search { padding: 0 $topBarHeight / 2;
+            form { width: 100%; 
+              .button { top: 0; }
+            }
+          }
+          &.has-dropdown {
+            .dropdown { position: relative; }
+            &:hover { 
+              // .dropdown { display: none; }
+            }
+          }
         }
-        &.left { background: lighten($topBarBgColor, 10%); width: 100%; clear: both; display: block;
-          li { display: block; float: none; background: lighten($topBarBgColor, 10%); margin: 0; }
+        &.left, &.right { width: 100%; float: none;
+          li { display: block; float: none; margin: 0; }
         }
       }
     }
