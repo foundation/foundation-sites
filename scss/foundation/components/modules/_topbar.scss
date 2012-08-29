@@ -109,6 +109,7 @@
   @media only screen and (max-width: $topBarBreakPoint) {
 
     .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0;
+      section { position: relative; left: 0; @include single-transition(left, 400ms); }
       ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: block; background: lighten($topBarBgColor, 5%);
         li { float: none; 
           &.name { background: darken($topBarBgColor, 20%); 
@@ -134,9 +135,9 @@
             a { padding-right: $topBarHeight * .75;
               &:after { margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
             }
-            .dropdown { position: relative; }
+            .dropdown { display: block; position: relative; }
             &:hover { 
-              .dropdown { display: none; }
+              // .dropdown { display: none; }
             }
           }
 
