@@ -125,7 +125,7 @@
           &.has-dropdown {
             .dropdown { position: relative; }
             &:hover { 
-              // .dropdown { display: none; }
+              .dropdown { display: none; }
             }
           }
         }
