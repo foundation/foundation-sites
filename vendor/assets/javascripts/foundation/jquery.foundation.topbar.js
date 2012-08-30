@@ -1,7 +1,7 @@
 (function ($) {
     
     var currentIndex = 0,
-        breakPoint = 800;
+        breakPoint = 1085;
 
     // Define Breakpoint for small layout
     function atBreakpoint() {
@@ -18,12 +18,11 @@
       $section.find('.has-dropdown>a').each(function () {
         var $link = $(this),
             $dropdown = $link.siblings('.dropdown'),
-            $titleLi = $('<li class="title js-generated"><h5></h5></li>');
+            $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
         
         // Copy link to subnav
-        $titleLi.find('h5').html($link.html());
+        $titleLi.find('h5>a').html($link.html());
         $dropdown.prepend($titleLi);
-        $dropdown.prepend('<li class="back js-generated"><a href="">&larr; Back</a></li>');
       });
       
       // Put element back in the DOM
@@ -41,7 +40,7 @@
           initializeMarkup($this.closest('.top-bar'));
           $this.addClass('top-bar-initialized');
         }
-        console.log($this);
+
         $this.closest('.top-bar').toggleClass('expanded');
       }
     });
@@ -51,45 +50,57 @@
       if (atBreakpoint()) {
         var $this = $(this),
             $selectedLi = $this.closest('li'),
-            $nextLevelUl = $selectedLi.find('>ul'),
+            $nextLevelUl = $selectedLi.children('ul'),
             $titleLi = $('<li class="title js-generated"><h5></h5></li>'),
             $section = $this.closest('section'),
             $topbar = $this.closest('.top-bar'),
-            $largestUl;
+            $currentUlPadding = parseInt($selectedLi.find('>ul.dropdown').css('padding-top')) + parseInt($selectedLi.find('>ul.dropdown').css('padding-bottom')),
+            $nextLevelUlHeight = 0;
 
         e.preventDefault();
 
         currentIndex += 1;
 
         $selectedLi.addClass('moved');
-        $section.css({'left': '-' + 100 * currentIndex + '%'});
-        $section.find('>.name').css({'left': 100 * currentIndex + '%'});
+        $section.css({'left': -(100 * currentIndex) + '%'});
+        $section.find('>.name').css({'left': 100 * currentIndex + '%'}); 
 
-        if (currentIndex === 1) {
-          $largestUl = $nextLevelUl;
-          $nextLevelUl.find('ul.dropdown').each(function () {
-            if ($(this).height() > $largestUl.height()) {
-              $largestUl = $(this);
-            }
-          });
-          $section.css({'height': $largestUl.height() + 45 + 'px'});
+        $selectedLi.find('>ul.dropdown>li').each(function () {
+          $nextLevelUlHeight += $(this).outerHeight();
+        });
+
+        console.log(currentIndex);
+
+        $section.css({'height': $nextLevelUlHeight + $topbar.find('>ul').outerHeight() + $currentUlPadding + 'px'});
+
+        if (currentIndex > 1) {
+          $section.css({'height': $nextLevelUlHeight + $topbar.find('>ul').outerHeight() + $currentUlPadding + 'px'});
         }
+        // if (currentIndex === 1) {
+        //   $largestUl = $nextLevelUl;
+        //   $nextLevelUl.find('ul.dropdown').each(function () {
+        //     if ($(this).height() > $largestUl.height()) {
+        //       $largestUl = $(this);
+        //     }
+        //   });
+        //   $section.css({'height': $largestUl.height() + 'px'});
+        // }
       }
     });
     
     // Go up a level on Click
     $('.top-bar .has-dropdown').on('click', '.back', function(e) {
       var $this = $(this),
-          $activeLi = $this.closest('li.active'),
+          $movedLi = $this.closest('li.moved'),
           $section = $this.closest('section'),
           $topbar = $this.closest('.top-bar'),
-          $previousLevelUl = $activeLi.closest('ul');
+          $previousLevelUl = $movedLi.closest('ul');
       
       e.preventDefault();
       
       currentIndex -= 1;
       
-      $section.css({'left': '-' + 100 * currentIndex + '%'});
+      $section.css({'left': -(100 * currentIndex) + '%'});
       $section.find('>.name').css({'left': 100 * currentIndex + '%'});
       
       if (currentIndex === 0) {
@@ -97,8 +108,8 @@
       }
       
       setTimeout(function () {
-        $activeLi.removeClass('active');
-      }, 400);
+        $movedLi.removeClass('moved');
+      }, 300);
     });
 
     // define on() and off() for older jQuery
