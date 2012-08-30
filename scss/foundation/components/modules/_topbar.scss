@@ -169,6 +169,9 @@
               &>a { padding-right: $topBarHeight * .75;
                 &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
               }
+              &.moved { position: static;
+                .dropdown { }
+              }
             }
           }
         }
