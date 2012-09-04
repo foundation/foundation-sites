@@ -20,6 +20,8 @@
     },
     methods = {
       init : function (options) {
+        settings = $.extend(settings, options);
+
         return this.each(function () {
           var $body = $('body');
 
