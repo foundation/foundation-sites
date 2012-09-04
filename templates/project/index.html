@@ -29,7 +29,7 @@
 	<div class="row">
 		<div class="twelve columns">
 			<h2>Welcome to Foundation</h2>
-			<p>This is version 3.0.6 released on July 20, 2012</p>
+			<p>This is version <%= Foundation::VERSION %>.</p>
 			<hr />
 		</div>
 	</div>
@@ -120,28 +120,12 @@
 	</div>
 	
 	<!-- Included JS Files (Uncompressed) -->
-	<!--
-	<script src="jquery.js"></script>
-  <script src="javascripts/foundation/modernizr.foundation.js"></script>
-  <script src="javascripts/foundation/jquery.placeholder.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.alerts.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.accordion.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.buttons.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.tooltips.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.forms.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.tabs.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.navigation.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.reveal.js"></script>
-  <script src="javascripts/foundation/jquery.foundation.orbit.js"></script>
-  -->
+	<script src="javascripts/foundation/jquery.js"></script>
+	<% @template[:options][:javascripts].each do |f| %>
+	<script src="javascripts/<%= f %>"></script>
+	<% end %>
 	
-	<!-- Included JS Files (Compressed) -->
-	<script src="javascripts/jquery.min.js"></script>
-	<script src="javascripts/foundation.min.js"></script>
-	
-	<!-- Application Javascript, safe to override -->
-	<script src="javascripts/app.js"></script>
-	
-
+  <!-- Application Javascript, safe to override -->
+  <script src="javascripts/foundation/app.js"></script>
 </body>
 </html>

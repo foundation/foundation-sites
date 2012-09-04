@@ -33,6 +33,7 @@ WordPress
 
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
 * [Reverie](http://themefortress.com/reverie/) by Zhen
+* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press
 
 Joomla
 
@@ -84,6 +85,10 @@ Grid displayer
 
 * [Grid displayer bookmarklet](http://alefeuvre.github.com/foundation-grid-displayer/) by [Antoine Lefeuvre](http://twitter.com/jiraisurfer)
 * [Responsive Design Bookmarklet](http://responsive.victorcoulon.fr/) by [Victor Coulon](https://twitter.com/_victa)
+
+Modular Scale
+
+* [Modular Scale](https://github.com/scottkellum/modular-scale) by Mason Wendell and Scott Kellum
 
 MIT Open Source License
 =======================

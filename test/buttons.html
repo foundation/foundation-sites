@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Foundation Button Testing</title>
+
+  <!-- Included CSS Files -->
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  
+  <script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
+
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  
+  <div class="row">
+    <div class="twelve columns">
+      <p><a href="index.html">&laquo; Back</a></p>
+      <h2>Foundation Button Testing</h2>
+      <hr />
+      <dl class="sub-nav">
+        <dt>Go to:</dt>
+        <dd><a href="#buttons">Buttons</a></dd>
+        <dd><a href="#button-groups">Button Groups</a></dd>
+        <dd><a href="#dropdown-buttons">Dropdown Buttons</a></dd>
+      </dl>
+    </div>
+  </div>
+  
+  <!-- Test Foundation Components Here -->
+  <div class="row">
+    <div class="twelve columns">
+      
+      <h3>Buttons</h3>
+      <h4 class="subheader">Buttons are a convenient tool when it comes to more traditional actions. To that end, Foundation includes a lot of easy to use button styles that you can customize or override.</h4>
+      <br>
+      <div class="row">
+        <div class="four columns">
+          <a name="buttons"></a>
+          <h4>Basic Buttons</h4>
+          <p>Foundation buttons have a number of parameters and styles &mdash; you can see a few examples below. The out of the box classes include size, type (color) and style (square, slightly rounded, and completely rounded).</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <div class="row">
+            <div class="six columns">
+              <a href="#" class="tiny button">Tiny Button &raquo;</a><br /><br />
+              <a href="#" class="small button">Small Button &raquo;</a><br /><br />
+              <a href="#" class="button">Regular Button &raquo;</a><br /><br />
+              <a href="#" class="large button">Large Button &raquo;</a><br /><br />
+              <br /><br />
+              <a href="#" class="tiny secondary button">Secondary Button &raquo;</a><br /><br />
+              <a href="#" class="small secondary button">Secondary Button &raquo;</a><br /><br />
+              <a href="#" class="secondary button">Secondary Button &raquo;</a><br /><br />
+              <a href="#" class="large secondary button">Secondary Button &raquo;</a><br /><br />
+              <br /><br />
+            </div>
+            <div class="six columns">
+              <a href="#" class="tiny success button">Success Button &raquo;</a><br /><br />
+              <a href="#" class="small success button">Success Button &raquo;</a><br /><br />
+              <a href="#" class="success button">Success Button &raquo;</a><br /><br />
+              <a href="#" class="large success button">Success Button &raquo;</a><br /><br />
+              <br /><br />
+              <a href="#" class="tiny alert button">Alert Button &raquo;</a><br /><br />
+              <a href="#" class="small alert button">Alert Button &raquo;</a><br /><br />
+              <a href="#" class="alert button">Alert Button &raquo;</a><br /><br />
+              <a href="#" class="large alert button">Alert Button &raquo;</a><br /><br />
+              <br /><br />
+            </div>
+          </div>
+          <p>Button classes can also be applied to <code>button</code> elements, as well as <code>input type="submit"</code> elements.</p>
+
+          <button class="button">Form Button</button>
+          <input type="submit" class="button" value="Input Submit Button" />
+          <a href="#" class="button">Regular Button &raquo;</a>
+        </div>
+      </div>
+      
+      <br><br><br>
+
+      <div class="row">
+        <div class="four columns">
+          <a name="button-groups"></a>
+          <h4>Button Groups</h4>
+          <p>When you need a group of actions, button groups give you some easy-to-use options. These can have a class of <code>.rounded</code> or <code>.even</code>. You can even create button bars by using <code>.button-bar</code>.</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <ul class="button-group radius">
+            <li><a href="#" class="button radius">Button 1</a></li>
+            <li><a href="#" class="button radius">Button 2</a></li>
+            <li><a href="#" class="button radius">Button 3</a></li>
+          </ul>
+          <ul class="button-group even three-up">
+            <li><a href="#" class="button">Button 1</a></li>
+            <li><a href="#" class="button">Button 2</a></li>
+            <li><a href="#" class="button">Button 3</a></li>
+          </ul>
+          <div class="button-bar">
+            <ul class="button-group">
+              <li><a href="#" class="button">Button 1</a></li>
+              <li><a href="#" class="button">Button 2</a></li>
+              <li><a href="#" class="button">Button 3</a></li>
+            </ul>
+
+            <ul class="button-group">
+              <li><a href="#" class="button">Button 1</a></li>
+              <li><a href="#" class="button">Button 2</a></li>
+              <li><a href="#" class="button">Button 3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <br><br>
+
+      <div class="row">
+        <div class="four columns">
+          <a name="dropdown-buttons"> </a>
+          <h4>Dropdown Buttons</h4>
+          <p>These are useful when an action has several possible outcomes to select from, or when there are secondary choices you can make in lieu of a primary action.</p>
+          <p>If you need your dropdown to go up, simple add a class of <code>.up</code> to <code>.button.dropdown</code>.</p>
+        </div>
+        <div class="eight columns">
+          <p>
+            <div href="#" class="large button dropdown">
+              Dropdown Button
+              <ul>
+                <li><a href="#">Dropdown Item</a></li>
+                <li><a href="#">Another Dropdown Item</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Last Item</a></li>
+              </ul>
+            </div>
+          </p>
+          <p>
+            <div href="#" class="large alert button split dropdown">
+              <a href="#">Split Button</a>
+              <span></span>
+              <ul>
+                <li><a href="#">Dropdown Item</a></li>
+                <li><a href="#">Another Dropdown Item</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Last Item</a></li>
+              </ul>
+            </div>
+          </p>
+          <p>Notice that in a split button, the <code>span</code> is the dropdown affordance and the main anchor is the primary button action.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <!-- Included JS Files -->
+  <script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.alerts.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.accordion.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.buttons.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.forms.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.navigation.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.reveal.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/app.js"></script>
+  <script type="text/javascript">
+    // Page-Specific JavaScript Goes Here
+  </script> 
+</body>
+</html>

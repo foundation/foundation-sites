@@ -1,0 +1,204 @@
+/* Requires
+   globals.css */
+
+/* Normal Buttons ---------------------- */
+
+  .button { width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: $bodyFontFamily; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; outline: none; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
+
+    /* Hovers */
+    &:hover { color: $white; background-color: darken(($mainColor), 10%); }
+    &:active  { @include box-shadow(0 1px 0 $darkEdge inset); }
+    &:focus { @include box-shadow(0 0 4px opacify($mainColor, 0.3), 0 1px 0 $shinyEdge inset); color: $white; }
+
+    /* Sizes */
+    &.large     { font-size: ms(1); padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
+    &.medium    { font-size: ms(0); }
+    &.small     { font-size: ms(0) - 3; padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
+    &.tiny      { font-size: ms(0) - 4; padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
+    &.expand    { width: 100%; text-align: center; }
+
+    /* Colors */
+    &.primary { background-color: $mainColor; border: 1px solid darken(($mainColor), 15%);
+      &:hover { background-color: darken(($mainColor), 10%); }
+      &:focus { @include box-shadow(0 0 4px opacify($mainColor, 0.3), 0 1px 0 $shinyEdge inset); }
+    }
+    &.success { background-color: $successColor; border: 1px solid darken(($successColor), 15%);
+      &:hover { background-color: darken(($successColor), 10%); }
+      &:focus { @include box-shadow(0 0 5px opacify($successColor, 0.4), 0 1px 0 $shinyEdge inset); }
+    }
+    &.alert { background-color: $alertColor; border: 1px solid darken(($alertColor), 15%);
+      &:hover { background-color: darken(($alertColor), 10%); }
+      &:focus { @include box-shadow(0 0 4px opacify($alertColor, 0.3), 0 1px 0 $shinyEdge inset); }
+    }
+    &.secondary { background-color: $secondaryColor; color: darken(($secondaryColor), 80%); border: 1px solid darken(($secondaryColor), 15%);
+      &:hover { background-color: darken(($secondaryColor), 10%); }
+      &:focus { @include box-shadow(0 0 5px opacify($secondaryColor, 0.5), 0 1px 0 $shinyEdge inset); }
+    }
+
+    /* Radii */
+    &.radius { @include border-radius($buttonRadius); }
+    &.round { @include border-radius(1000px); }
+
+    /* Layout */
+    &.full-width { width: 100%; text-align: center; padding-left: 0px !important; padding-right: 0px !important; }
+    &.left-align { text-align: left; text-indent: 12px; }
+
+		/* Disabled ---------- */
+    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none); 
+      :hover { background: $mainColor; }
+      
+      &.success { background-color: $successColor; 
+        &:hover { background-color: $successColor; }
+      }
+      &.alert { background-color: $alertColor; 
+        &:hover { background-color: $alertColor; }
+      }
+      &.secondary { background-color: $secondaryColor; 
+        &:hover { background-color: $secondaryColor; }
+      }
+    }
+	}
+
+  /* Don't use native buttons on iOS */
+	input[type=submit].button, button.button { -webkit-appearance: none; }
+
+	@media only screen and (max-width: $screenSmall - 1) {
+    .button { display: block; }
+    button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
+  }
+
+  /* Correct FF button padding */
+  @-moz-document url-prefix() {
+    button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner { border: none; padding: 0;  }
+    input[type="submit"].tiny.button		{ padding: ($tinyBtnBase - 2) ($tinyBtnBase * 2) ($tinyBtnBase - 1); }
+    input[type="submit"].small.button		{ padding: ($smallBtnBase - 2) ($smallBtnBase * 2) ($smallBtnBase - 1); }
+    input[type="submit"].button, input[type=submit].medium.button	{ padding: ($btnBase - 2) ($btnBase * 2) ($btnBase - 1) }
+    input[type="submit"].large.button		{ padding: ($largeBtnBase - 2) ($largeBtnBase * 2) ($largeBtnBase - 1); }
+  }
+
+/* Buttons with Dropdowns ---------------------- */
+
+  .button.dropdown { position: relative; padding-right: (($btnBase + 12) * 2);
+
+    /* Sizes */
+    &.large { padding-right: ($largeBtnBase * 2) * 2; }
+    &.small { padding-right: ($smallBtnBase * 2) * 2; }
+    &.tiny { padding-right: ($tinyBtnBase * 2) * 2; }
+
+    /* Triangles */
+    &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; right: $btnBase * 2; margin-top: -2px; }
+    &.large:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; right: $largeBtnBase * 2; }
+    &.small:after { @include cssTriangle(5px, #fff, top); margin-top: -2px; right: $smallBtnBase * 2; }
+    &.tiny:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; right: $tinyBtnBase * 2; }
+
+    /* Flyout List */
+    &>ul { @include box-sizing(content-box); display: none; position: absolute; left: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken($white, 20%); border-top: none; min-width: 100%; z-index: 40;
+
+      li { width: 100%; cursor: pointer; padding: 0; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none;
+        a { display: block; color: #555; font-size: ms(0) - 1; font-weight: $bodyFontWeight; padding: 6px 14px; text-align: left; }
+        &:hover { background-color: lighten($mainColor, 45%); color: #222; }
+        &.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: darken($white, 7%); }
+      }
+    }
+
+    &.up>ul { border-top: 1px solid darken($white, 20%); border-bottom: none; }
+
+    ul.no-hover.show-dropdown { display: block !important; }
+    &:hover {
+      &>ul.no-hover {
+        display: none;
+      }
+    }
+
+    /* Split Dropdown Buttons */
+    &.split { padding: 0; position: relative;
+
+      &:after { display: none; }
+      &:hover { background-color: $mainColor; }
+      &.alert:hover { background-color: $alertColor; }
+      &.success:hover { background-color: $successColor; }
+      &.secondary:hover { background-color: $secondaryColor; }
+
+      /* Sizes */
+      &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); @include single-transition(background-color, .15s, ease-in-out);
+        &:hover { background-color: darken($mainColor, 10%); }
+      }
+      &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); }
+      &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); }
+      &.tiny>a { padding: $tinyBtnBase (($tinyBtnBase * 2.5) * 2) ($tinyBtnBase + 1) ($tinyBtnBase * 2); }
+
+      /* Triangle Spans */
+      &>span { background-color: $mainColor; position: absolute; right: 0; top: 0; height: 100%; width: $btnBase * 3; border-left: 1px solid darken($mainColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
+        &:hover { background-color: darken($mainColor, 10%); }
+        &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
+      }
+      &.secondary>span:after { @include cssTriangle(6px, darken(($secondaryColor), 80%), top); }
+      
+      &.large span { width: $largeBtnBase * 3; }
+      &.small span { width: $smallBtnBase * 3; }
+      &.tiny span { width: $tinyBtnBase * 3; }
+
+      &.large span:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; margin-left: -7px; }
+      &.small span:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; margin-left: -4px; }
+      &.tiny span:after { @include cssTriangle(3px, #fff, top); margin-top: -1px; margin-left: -3px; }
+
+      /* Colors */
+      &.alert>span { background-color: $alertColor; border-left-color: darken($alertColor, 15%); }
+      &.success>span { background-color: $successColor; border-left-color: darken($successColor, 15%); }
+      &.secondary>span { background-color: $secondaryColor; border-left-color: darken($secondaryColor, 15%); }
+      &.secondary>a { color: darken(($secondaryColor), 80%); }
+
+      &.alert>a:hover, &.alert>span:hover { background-color: darken($alertColor, 10%); }
+      &.success>a:hover, &.success>span:hover { background-color: darken($successColor, 10%); }
+      &.secondary>a:hover, &.secondary>span:hover { background-color: darken($secondaryColor, 10%); }
+    }
+  }
+
+  /* Button Groups ---------------------- */
+
+  ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; @include clearfix();
+
+    li { padding: 0; margin: 0 0 0 -1px; float: left;
+      &:first-child { margin-left: 0; }
+    }
+
+    &.radius li {
+      a {
+        &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
+      }
+      &:first-child a {
+        &.button, &.button.radius { @include border-left-radius($buttonRadius); }
+        &.button.rounded { @include border-left-radius(1000px); }
+      }
+      &:last-child a {
+        &.button, &.button.radius { @include border-right-radius($buttonRadius); }
+        &.button.rounded { @include border-right-radius(1000px); }
+      }
+    }
+
+    &.even {
+      a.button { width: 100%; }
+      &.two-up li { width: 50%; }
+      &.three-up li { width: 33.3%; }
+      &.three-up li:first-child { width: 33.4%; }
+      &.four-up li { width: 25%; }
+      &.five-up li { width: 20%; }
+    }
+  }
+  
+  @media only screen and (max-width: $screenSmall - 1) {    
+    .button-group {
+      button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + 1);
+        &.large     { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
+        &.medium    { padding: $btnBase ($btnBase * 2) ($btnBase + 1); }
+        &.small     { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
+        &.tiny      { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
+      }
+      &.even button.button, &.even input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
+    }
+  }
+
+  div.button-bar { overflow: hidden;
+    ul.button-group { float: left; margin-right: 8px; }
+    ul.button-group:last-child { margin-left: 0; }
+  }

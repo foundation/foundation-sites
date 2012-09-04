@@ -10,5 +10,6 @@
 =require foundation/jquery.foundation.navigation
 =require foundation/jquery.foundation.reveal
 =require foundation/jquery.foundation.orbit
+=require foundation/jquery.foundation.mediaQueryToggle
 =require foundation/app
 */
