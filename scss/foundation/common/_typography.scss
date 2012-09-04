@@ -14,6 +14,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: $headerFontFamily;
     font-weight: $headerFontWeight;
+    color: $headerFontColor;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
     margin-bottom: ms(0);
