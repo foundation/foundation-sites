@@ -64,7 +64,7 @@
               <a name="settings"></a>
               <h3>Settings</h3>
               <h4 class="subheader">Work with your own colors, font sizes, radii, etc by adjusting the _settings.scss file in your new project!</h4>
-              <p>We include a _settings.scss file with every new compass project, this file contains the default variables used through foundation which you can uncomment and. changes to match your needs.</p>
+              <p>We include a _settings.scss file with every new compass project, this file contains the default variables used through Foundation, which you can uncomment and change to match your needs.</p>
 
               <h5>Grid Settings</h5>
               <ul class="disc">
