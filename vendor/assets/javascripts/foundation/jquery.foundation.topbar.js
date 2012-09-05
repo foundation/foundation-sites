@@ -62,7 +62,6 @@
         e.preventDefault();
 
         currentIndex += 1;
-        console.log('fire');
         $selectedLi.addClass('moved');
         $section.css({'left': -(100 * currentIndex) + '%'});
         $section.find('>.name').css({'left': 100 * currentIndex + '%'}); 
@@ -94,18 +93,27 @@
         $movedLi = $this.closest('li.moved'),
         $section = $this.closest('section'),
         $topbar = $this.closest('.top-bar'),
-        $previousLevelUl = $movedLi.parent();
+        $previousLevelUl = $movedLi.parent(),
+        $currentUlPadding = parseInt($movedLi.find('>ul.dropdown').css('padding-top')) + parseInt($movedLi.find('>ul.dropdown').css('padding-bottom'))
+        $previousLevelUlHeight = 0;
     
       e.preventDefault();
       
       currentIndex -= 1;
-      console.log(currentIndex, $movedLi.closest('ul'));
       $section.css({'left': -(100 * currentIndex) + '%'});
       $section.find('>.name').css({'left': 100 * currentIndex + '%'});
+
+      $previousLevelUl.siblings('li').each(function () {
+        $previousLevelUlHeight += $(this).outerHeight();
+      });
       
       if (currentIndex === 0) {
         $section.css({'height': ''});
       }
+
+      if (currentIndex > 0) {
+          $section.css({'height': $previousLevelUl.outerHeight() + $topbar.find('>ul').outerHeight() + $currentUlPadding + 'px'});
+        }
       
       setTimeout(function () {
         $movedLi.removeClass('moved');
