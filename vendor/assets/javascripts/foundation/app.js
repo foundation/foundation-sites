@@ -5,7 +5,7 @@
     $(document).foundationButtons();
     $(document).foundationAccordion();
     $(document).foundationNavigation();
-    // $(document).foundationTopBar();
+    $(document).foundationTopBar();
     $(document).foundationCustomForms();
     $(document).foundationMediaQueryViewer();
     $(document).foundationTabs({callback:$.foundation.customForms.appendCustomMarkup});

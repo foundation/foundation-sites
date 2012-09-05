@@ -1,4 +1,6 @@
 (function ($) {
+
+  $.fn.foundationTopBar = function(options) {
     
     var currentIndex = 0,
         breakPoint = 1085;
@@ -60,7 +62,7 @@
         e.preventDefault();
 
         currentIndex += 1;
-
+        console.log('fire');
         $selectedLi.addClass('moved');
         $section.css({'left': -(100 * currentIndex) + '%'});
         $section.find('>.name').css({'left': 100 * currentIndex + '%'}); 
@@ -68,8 +70,6 @@
         $selectedLi.find('>ul.dropdown>li').each(function () {
           $nextLevelUlHeight += $(this).outerHeight();
         });
-
-        console.log(currentIndex);
 
         $section.css({'height': $nextLevelUlHeight + $topbar.find('>ul').outerHeight() + $currentUlPadding + 'px'});
 
@@ -89,17 +89,17 @@
     });
     
     // Go up a level on Click
-    $('.top-bar .has-dropdown').on('click', '.back', function(e) {
+    $('.top-bar .has-dropdown .back').live('click', function (e) {
       var $this = $(this),
-          $movedLi = $this.closest('li.moved'),
-          $section = $this.closest('section'),
-          $topbar = $this.closest('.top-bar'),
-          $previousLevelUl = $movedLi.closest('ul');
-      
+        $movedLi = $this.closest('li.moved'),
+        $section = $this.closest('section'),
+        $topbar = $this.closest('.top-bar'),
+        $previousLevelUl = $movedLi.parent();
+    
       e.preventDefault();
       
       currentIndex -= 1;
-      
+      console.log(currentIndex, $movedLi.closest('ul'));
       $section.css({'left': -(100 * currentIndex) + '%'});
       $section.find('>.name').css({'left': 100 * currentIndex + '%'});
       
@@ -123,4 +123,6 @@
       };
     }
 
-}(jQuery));
+};
+
+})( jQuery );
