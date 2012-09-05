@@ -149,7 +149,7 @@
                     a { padding: 8px $topBarHeight / 2; font-size: ms(0); }
                   }
                   a, label { padding: 0 $topBarHeight / 2; }
-                  a:hover { background: transparent; }
+                  a:hover { background: transparent; display: block; }
                   &.divider { margin-top: 8px; margin-bottom: 8px; }
                 }
               }
@@ -170,8 +170,9 @@
                 &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
               }
               &.moved { position: static;
-                .dropdown { }
+                .dropdown { top: 0; display: block; visibility: visible; }
               }
+              &:hover { display: block; }
             }
           }
         }
