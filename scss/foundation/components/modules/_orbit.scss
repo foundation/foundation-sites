@@ -131,19 +131,19 @@
     margin-top: -25px;
     cursor: pointer; }
 
-  div.orbit-wrapper div.slider-nav span.right {
-    background: image-url("foundation/orbit/right-arrow.png");
+  div.orbit-wrapper div.slider-nav span.#{$defaultOpposite} {
+    background: image-url("foundation/orbit/#{$defaultOpposite}-arrow.png");
     background-size: 100%;
-    right: 0; }
+    #{$defaultOpposite}: 0; }
 
-  div.orbit-wrapper div.slider-nav span.left {
-    background: image-url("foundation/orbit/left-arrow.png");
+  div.orbit-wrapper div.slider-nav span.#{$defaultFloat} {
+    background: image-url("foundation/orbit/#{$defaultFloat}-arrow.png");
     background-size: 100%;
     #{$defaultFloat}: 0; }
 
   .lt-ie9 {
-    div.orbit-wrapper div.slider-nav span.right { background: image-url("foundation/orbit/right-arrow-small.png"); }
-    div.orbit-wrapper div.slider-nav span.left { background: image-url("foundation/orbit/left-arrow-small.png"); }
+    div.orbit-wrapper div.slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow-small.png"); }
+    div.orbit-wrapper div.slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow-small.png"); }
   }
 
   /* Bullet Nav ---------------------- */

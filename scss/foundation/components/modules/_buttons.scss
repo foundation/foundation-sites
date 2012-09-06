@@ -143,9 +143,9 @@
       &.tiny span:after { @include cssTriangle(3px, #fff, top); margin-top: -1px; margin-#{$defaultFloat}: -3px; }
 
       /* Colors */
-      &.alert>span { background-color: $alertColor; border-left-color: darken($alertColor, 15%); }
-      &.success>span { background-color: $successColor; border-left-color: darken($successColor, 15%); }
-      &.secondary>span { background-color: $secondaryColor; border-left-color: darken($secondaryColor, 15%); }
+      &.alert>span { background-color: $alertColor; border-#{$defaultFloat}-color: darken($alertColor, 15%); }
+      &.success>span { background-color: $successColor; border-#{$defaultFloat}-color: darken($successColor, 15%); }
+      &.secondary>span { background-color: $secondaryColor; border-#{$defaultFloat}-color: darken($secondaryColor, 15%); }
       &.secondary>a { color: darken(($secondaryColor), 80%); }
 
       &.alert>a:hover, &.alert>span:hover { background-color: darken($alertColor, 10%); }

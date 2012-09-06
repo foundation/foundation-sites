@@ -8,10 +8,13 @@
 // $mobileTotalColumns: 4 !default;
 
 // Text Direction Settings
-// $textDirection: rtl !default;
-// $defaultFloat: right !default;
 
+// Change this to rtl for right-to-left languages
+// $textDirection: rtl !default;
+// Change this to right for right-to-left languages
+// $defaultFloat: right !default;
 // This is the opposite of the default float direction, used for setting margins, padding, etc.
+// Change this to left for right-to-left languages
 // $defaultOpposite: left !default;
 
 // Colors Settings
