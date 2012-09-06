@@ -120,12 +120,12 @@
       &.secondary:hover { background-color: $secondaryColor; }
 
       /* Sizes */
-      &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); @include single-transition(background-color, .15s, ease-in-out);
+      &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); padding-#{$defaultFloat}: $btnBase * 2; padding-#{$defaultOpposite}: ($btnBase * 2.5) * 2; @include single-transition(background-color, .15s, ease-in-out);
         &:hover { background-color: darken($mainColor, 10%); }
       }
-      &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); }
-      &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); }
-      &.tiny>a { padding: $tinyBtnBase (($tinyBtnBase * 2.5) * 2) ($tinyBtnBase + 1) ($tinyBtnBase * 2); }
+      &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); padding-#{$defaultFloat}: $largeBtnBase * 2; padding-#{$defaultOpposite}: ($largeBtnBase * 2.5) * 2; }
+      &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); padding-#{$defaultFloat}: $smallBtnBase * 2; padding-#{$defaultOpposite}: ($smallBtnBase * 2.5) * 2; }
+      &.tiny>a { padding: $tinyBtnBase (($tinyBtnBase * 2.5) * 2) ($tinyBtnBase + 1) ($tinyBtnBase * 2); padding-#{$defaultFloat}: $tinyBtnBase * 2; padding-#{$defaultOpposite}: ($tinyBtnBase * 2.5) * 2; }
 
       /* Triangle Spans */
       &>span { background-color: $mainColor; position: absolute; #{$defaultOpposite}: 0; top: 0; height: 100%; width: $btnBase * 3; border-#{$defaultFloat}: 1px solid darken($mainColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
