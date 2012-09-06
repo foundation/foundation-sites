@@ -3,7 +3,8 @@
   $.fn.foundationTopBar = function(options) {
     
     var currentIndex = 0,
-        breakPoint = 1085;
+        options = options || {},
+        breakPoint = options.breakPoint || 1085;
 
     // Define Breakpoint for small layout
     function atBreakpoint() {
