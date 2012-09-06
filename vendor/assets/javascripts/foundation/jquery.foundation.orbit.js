@@ -38,6 +38,7 @@
       bulletThumbLocation: '',      // location from this file where thumbs will be
       afterSlideChange: $.noop,   // empty function
       afterLoadComplete: $.noop, //callback to execute after everything has been loaded
+      placeholderImageService: 'http://placehold.it/', //url to specify a replacement image provider
       fluid: true,
       centerBullets: true    // center bullet nav with js, turn this off if you want to position the bullet nav manually
     },
@@ -179,7 +180,7 @@
 
       if (this.options.fluid) {
         if (typeof this.options.fluid === "string") {
-          $fluidPlaceholder = $('<img src="http://placehold.it/' + this.options.fluid + '" />')
+          $fluidPlaceholder = $('<img src="' + this.options.placeholderImageService + this.options.fluid + '" />')
         }
 
         self.$element.prepend($fluidPlaceholder);
