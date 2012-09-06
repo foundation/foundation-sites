@@ -4,6 +4,7 @@
     margin:0;
     padding:0;
     font-size: ms(0);
+    direction: $textDirection;
   }
 
   p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
@@ -42,9 +43,9 @@
   ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
   ul {
     li {
-      ul, ol { margin-left: 20px; margin-bottom: 0; }
+      ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
     }
-    &.square, &.circle, &.disc { margin-left: ms(1); }
+    &.square, &.circle, &.disc { margin-#{$defaultFloat}: ms(1); }
     &.square { list-style-type: square;
       li ul { list-style: inherit; }
     }
@@ -59,13 +60,13 @@
   }
   ol {
     li {
-      ul, ol { margin-left: 20px; margin-bottom: 0; }
+      ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
     }
   }
 
   /* Blockquotes ---------------------- */
   blockquote, blockquote p { line-height: 1.5; color: lighten($headerFontColor, 30%); }
-  blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-left: 1px solid #ddd;
+  blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-#{$defaultFloat}: 1px solid #ddd;
     cite { display: block; font-size: ms(0) - 1; color: lighten($headerFontColor, 20%);
       &:before { content: "\2014 \0020"; }
       a, a:visited { color: lighten($headerFontColor, 20%); }

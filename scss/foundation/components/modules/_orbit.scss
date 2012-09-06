@@ -25,7 +25,7 @@
     max-width: 100%;
     position: absolute;
     top: 0;
-    left: 0; }
+    #{$defaultFloat}: 0; }
 
   div.orbit a.orbit-slide {
     border: none;
@@ -46,7 +46,7 @@
     overflow: hidden;
     position: absolute;
     top: 10px;
-    right: 10px;
+    #{$defaultOpposite}: 10px;
     opacity: .6;
     cursor: pointer;
     z-index: 31; }
@@ -57,7 +57,7 @@
     height: 40px;
     position: absolute;
     top: 0;
-    left: -20px;
+    #{$defaultFloat}: -20px;
     background: image-url("foundation/orbit/rotator-black.png") no-repeat;
     z-index: 3; }
 
@@ -67,16 +67,16 @@
     height: 40px;
     position: absolute;
     top: 0;
-    right: 0;
+    #{$defaultOpposite}: 0;
     z-index: 2;
     overflow: hidden; }
 
   div.orbit-wrapper span.rotator.move {
-    left: 0 }
+    #{$defaultFloat}: 0 }
 
   div.orbit-wrapper span.mask.move {
     width: 40px;
-    left: 0;
+    #{$defaultFloat}: 0;
     background: image-url("foundation/orbit/timer-black.png") repeat 0 0; }
 
   div.orbit-wrapper span.pause {
@@ -85,7 +85,7 @@
     height: 40px;
     position: absolute;
     top: 0;
-    left: 0;
+    #{$defaultFloat}: 0;
     background: image-url("foundation/orbit/pause-black.png") no-repeat;
     z-index: 4;
     opacity: 0; }
@@ -112,7 +112,7 @@
     padding: 7px 0;
     @include font-size(13);
     position: absolute;
-    right: 0;
+    #{$defaultOpposite}: 0;
     bottom: 0;
     width: 100%; }
 
@@ -139,7 +139,7 @@
   div.orbit-wrapper div.slider-nav span.left {
     background: image-url("foundation/orbit/left-arrow.png");
     background-size: 100%;
-    left: 0; }
+    #{$defaultFloat}: 0; }
 
   .lt-ie9 {
     div.orbit-wrapper div.slider-nav span.right { background: image-url("foundation/orbit/right-arrow-small.png"); }
@@ -153,13 +153,13 @@
     z-index: 30;
     list-style: none;
     bottom: -40px;
-    left: 50%;
-    margin-left: -50px;
+    #{$defaultFloat}: 50%;
+    margin-#{$defaultFloat}: -50px;
     padding: 0; }
 
   ul.orbit-bullets li {
-    float: left;
-    margin-left: 5px;
+    float: $defaultFloat;
+    margin-#{$defaultFloat}: 5px;
     cursor: pointer;
     color: #999;
     text-indent: -9999px;
@@ -197,13 +197,13 @@
     z-index: 30;
     list-style: none;
     bottom: -50px;
-    left: 50%;
-    margin-left: -50px;
+    #{$defaultFloat}: 50%;
+    margin-#{$defaultFloat}: -50px;
     padding: 0; }
 
   ul.orbit-bullets li {
-    float: left;
-    margin-left: 5px;
+    float: $defaultFloat;
+    margin-#{$defaultFloat}: 5px;
     cursor: pointer;
     color: #999;
     text-indent: -9999px;

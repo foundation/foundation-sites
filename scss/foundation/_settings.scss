@@ -7,6 +7,13 @@ $columnGutter: 30px !default;
 $totalColumns: 12 !default;
 $mobileTotalColumns: 4 !default;
 
+// Text Direction Settings
+$textDirection: rtl !default;
+$defaultFloat: right !default;
+
+// This is the opposite of the default float direction, used for setting margins, padding, etc.
+$defaultOpposite: left !default;
+
 // Colors Settings
 
 $mainColor: #2ba6cb !default;
