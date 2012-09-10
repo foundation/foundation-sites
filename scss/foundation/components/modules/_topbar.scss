@@ -24,7 +24,7 @@
   $topBarLinkSize: ms(0) - 1;
   $topBarDropToggleSize: 5px;
   $topBarSearchWidth: 200px;
-  $topBarBreakPoint: 9999px; // Change to 9999px for always mobile layout
+  $topBarBreakPoint: 900px; // Change to 9999px for always mobile layout
   $topBarNavToggleSize: 8px;
 
   .top-bar { width: 100%; background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0;
@@ -63,7 +63,7 @@
 
         /* Dropdown Level 1 */
         &.has-dropdown { position: relative;
-          .dropdown { display: none; position: absolute; z-index: 99; left: 0; background: $topBarBgColor; margin: 0; padding: $topBarHeight / 3 0;
+          .dropdown { /* display: none; */ visibility: hidden; position: absolute; z-index: 99; left: 0; background: $topBarBgColor; margin: 0; padding: $topBarHeight / 3 0;
             li { background: $topBarBgColor; min-width: 100%; line-height: 1; padding-bottom: 5px;
               a { font-weight: normal; white-space: nowrap; height: 100%; line-height: 1; padding: 5px ($topBarHeight / 3) + 2 5px $topBarHeight / 3;
                 &:after { border: none; }
@@ -124,7 +124,7 @@
           &.toggle-nav { cursor: pointer; display: block; width: 50%; height: $topBarHeight; position: absolute; top: 0; right: 0;
             a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeight / 2; margin-top: -($topBarNavToggleSize / 2); }
             @if $topBarBreakPoint == 9999px {
-              a { right: ($topBarHeight / 2) + ($columnGutter / 2); }
+              a { right: ($topBarHeight / 2) + ($columnGutter / 2);}
             }
           }
           a { padding: 0 $topBarHeight / 2;
@@ -143,9 +143,9 @@
             a { padding-right: $topBarHeight * .75;
               &:after { margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
             }
-            .dropdown { display: none; visibility: hidden; background: lighten($topBarBgColor, 5%); }
+            .dropdown { /* display: none; */ visibility: hidden; background: lighten($topBarBgColor, 5%); }
             &.moved { position: static;
-              .dropdown { top: 0; display: block; visibility: visible;
+              .dropdown { top: 0; /* display: block; */ visibility: visible;
                 li {
                   label { margin-bottom: 6px; padding-top: 6px !important; font-size: ms(0) - 3; }
                   &:not(.title) { padding-bottom: 0;
@@ -173,7 +173,7 @@
                 &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
               }
               &.moved { position: static;
-                .dropdown { top: 0; display: block; visibility: visible; }
+                .dropdown { top: 0; /* display: block; */ visibility: visible; }
               }
               &:hover { display: block; }
             }
