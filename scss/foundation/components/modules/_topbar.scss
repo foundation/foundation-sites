@@ -24,7 +24,7 @@
   $topBarLinkSize: ms(0) - 1;
   $topBarDropToggleSize: 5px;
   $topBarSearchWidth: 200px;
-  $topBarBreakPoint: 900px;
+  $topBarBreakPoint: 9999px; // Change to 9999px for always mobile layout
   $topBarNavToggleSize: 8px;
 
   .top-bar { width: 100%; background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0;
@@ -121,8 +121,11 @@
               a { display: inline; }
             }
           }
-          &.toggle-nav { cursor: pointer; display: block; width: 50%; height: $topBarHeight; position: absolute; top: 0; right: $navBarHeight / 2;
-            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: 0; margin-top: -($topBarNavToggleSize / 2); }
+          &.toggle-nav { cursor: pointer; display: block; width: 50%; height: $topBarHeight; position: absolute; top: 0; right: 0;
+            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeight / 2; margin-top: -($topBarNavToggleSize / 2); }
+            @if $topBarBreakPoint == 9999px {
+              a { right: ($topBarHeight / 2) + ($columnGutter / 2); }
+            }
           }
           a { padding: 0 $topBarHeight / 2;
             &.active { background: darken($topBarBgColor, 3%); }
