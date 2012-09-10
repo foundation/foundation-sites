@@ -1,4 +1,5 @@
-(function ($){
+;(function ($, window, undefined) {
+  'use strict';
 
   $.fn.foundationNavigation = function (options) {
 
@@ -27,4 +28,4 @@
 
   };
 
-})( jQuery );
+})( jQuery, this );
