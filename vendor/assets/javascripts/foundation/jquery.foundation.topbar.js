@@ -13,7 +13,7 @@
 
   var settings = {
       index : 0,
-      breakPoint : 1085,
+      breakPoint : 1085, // Set to to 'true' to force it into responsive always
       initialized : false
     },
     methods = {
