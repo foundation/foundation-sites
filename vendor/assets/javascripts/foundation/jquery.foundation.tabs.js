@@ -1,4 +1,5 @@
-(function ($) {
+;(function ($, window, undefined) {
+  'use strict';
 
   $.fn.foundationTabs = function (options) {
 
@@ -33,4 +34,4 @@
 
   };
 
-})(jQuery);
+})(jQuery, this);

@@ -1,4 +1,5 @@
-(function ($){
+;(function ($, window, undefined){
+  'use strict';
 
   $.fn.foundationAccordion = function (options) {
 
@@ -13,4 +14,4 @@
 
   };
 
-})( jQuery );
+})( jQuery, this );

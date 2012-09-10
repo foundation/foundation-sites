@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Tooltip Plugin 2.0.1
+ * jQuery Foundation Tooltips 2.0.1
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -8,8 +8,9 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-;(function ($) {
+;(function ($, window, undefined) {
   'use strict';
+
   var settings = {
       bodyHeight : 0,
       targetClass : '.has-tip',
@@ -44,6 +45,9 @@
               }
             });
           }
+
+          $(this).data('tooltips', true);
+
         });
       },
       showOrCreateTip : function ($target) {
@@ -158,7 +162,7 @@
       reload : function () {
         var $self = $(this);
 
-        return ($self.data('tooltips')) ? $self.tooltips('destroy').tooltips('init') : $self.tooltips('init');
+        return ($self.data('tooltips')) ? $self.foundationTooltips('destroy').foundationTooltips('init') : $self.foundationTooltips('init');
       },
       destroy : function () {
         return this.each(function () {
@@ -171,13 +175,13 @@
       }
     };
 
-  $.fn.tooltips = function (method) {
+  $.fn.foundationTooltips = function (method) {
     if (methods[method]) {
       return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
     } else if (typeof method === 'object' || !method) {
       return methods.init.apply(this, arguments);
     } else {
-      $.error('Method ' +  method + ' does not exist on jQuery.tooltips');
+      $.error('Method ' +  method + ' does not exist on jQuery.foundationTooltips');
     }
   };
-}(jQuery));
+}(jQuery, this));

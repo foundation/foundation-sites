@@ -1,14 +1,16 @@
-(function ($) {
+;(function ($, window, undefined) {
+  'use strict';
   
   $.fn.foundationMediaQueryViewer = function (options) {
-    
-    var settings  = $.extend(options,{toggleKey:77}); // // Press 'M'
-    $(document).on("keyup.mediaQueryViewer", ":input", function(e){
+    var settings = $.extend(options,{toggleKey:77}), // Press 'M'
+        $doc = $(document);
+
+    $doc.on("keyup.mediaQueryViewer", ":input", function (e){
       if (e.which === settings.toggleKey) {
         e.stopPropagation();
       }
     });
-    $(document).on("keyup.mediaQueryViewer", function(e) {
+    $doc.on("keyup.mediaQueryViewer", function (e) {
       var $mqViewer = $('#fqv');
 
       if (e.which === settings.toggleKey) { 
@@ -22,4 +24,4 @@
 
   };
 
-})(jQuery);
+})(jQuery, this);
