@@ -49,23 +49,18 @@
                   $nextLevelUl = $selectedLi.children('ul'),
                   $section = $this.closest('section'),
                   $topbar = $this.closest('.top-bar'),
-                  $currentUlPadding = parseInt($selectedLi.find('>ul.dropdown').css('padding-top')) + parseInt($selectedLi.find('>ul.dropdown').css('padding-bottom')),
-                  $nextLevelUlHeight = 0;
+                  $nextLevelUlHeight = 0,
+                  $largestUl;
 
               settings.index += 1;
               $selectedLi.addClass('moved');
               $section.css({'left': -(100 * settings.index) + '%'});
               $section.find('>.name').css({'left': 100 * settings.index + '%'});
 
-              $selectedLi.find('>ul.dropdown>li').each(function () {
-                $nextLevelUlHeight += $(this).outerHeight();
-              });
-
-              $section.css({'height': $nextLevelUlHeight + $topbar.find('>ul').outerHeight() + $currentUlPadding + 'px'});
-
-              if (settings.index > 1) {
-                $section.css({'height': $nextLevelUlHeight + $topbar.find('>ul').outerHeight() + $currentUlPadding + 'px'});
+              if (!settings.height) {
+                methods.largestUL($topbar);
               }
+              // $this.closest('ul').outerHeight(settings.height);
             }
           });
 
@@ -77,25 +72,11 @@
               $movedLi = $this.closest('li.moved'),
               $section = $this.closest('section'),
               $topbar = $this.closest('.top-bar'),
-              $previousLevelUl = $movedLi.parent(),
-              $currentUlPadding = parseInt($movedLi.find('>ul.dropdown').css('padding-top')) + parseInt($movedLi.find('>ul.dropdown').css('padding-bottom')),
-              $previousLevelUlHeight = 0;
+              $previousLevelUl = $movedLi.parent();
 
             settings.index -= 1;
             $section.css({'left': -(100 * settings.index) + '%'});
             $section.find('>.name').css({'left': 100 * settings.index + '%'});
-
-            $previousLevelUl.siblings('li').each(function () {
-              $previousLevelUlHeight += $(this).outerHeight();
-            });
-
-            if (settings.index === 0) {
-              $section.css({'height': ''});
-            }
-
-            if (settings.index > 0) {
-              $section.css({'height': $previousLevelUl.outerHeight() + $topbar.find('>ul').outerHeight() + $currentUlPadding + 'px'});
-            }
 
             setTimeout(function () {
               $movedLi.removeClass('moved');
@@ -124,6 +105,18 @@
 
         // Put element back in the DOM
         $section.appendTo($topbar);
+      },
+      largestUL : function ($topbar) {
+        var uls = $topbar.find('section ul'),
+            largest = uls.first();
+            console.log(uls);
+
+        uls.each(function () {
+          if ($(this).children('li').length > largest.children('li').length) {
+            largest = $(this);
+          }
+        });
+        settings.height = largest.height();
       }
     };
 
