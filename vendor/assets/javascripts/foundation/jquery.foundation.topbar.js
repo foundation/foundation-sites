@@ -61,7 +61,7 @@
                 methods.largestUL($topbar);
               }
               console.log($this.siblings('ul'));
-              $this.siblings('ul').height(settings.height);
+              $this.siblings('ul').height(settings.height + 30);
             }
           });
 
