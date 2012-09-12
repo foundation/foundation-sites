@@ -16,6 +16,7 @@
 :: Lists
 :: Link Lists
 :: Keystroke Chars
+:: Image Thumbnails
 :: Video
 :: Tables
 :: Microformats
@@ -23,7 +24,7 @@
 */
 
   /* Visibility Classes ---------------------- */
-  
+
   /* Standard (large) display targeting */
   .show-for-small,
   .show-for-medium,
@@ -223,33 +224,33 @@
     &.radius { @include border-radius($buttonRadius); }
 
   }
-  
+
   /* Accordion ---------------------- */
-  
+
   ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid $secondaryColor;
-    
+
     &>li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
-      
+
       .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
-        
+
         h1, h2, h3, h4, h5 { margin: 0; }
         &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), right); position: absolute; right: 15px; top: 21px; }
       }
-      
+
       .content { display: none; padding: 15px; }
-      
+
       &.active { border-top: 3px solid $mainColor;
-      
+
         .title { background: $white; padding-top: 13px;
-          
+
           &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), top); }
         }
         .content { background: $white; display: block; border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; }
       }
     }
   }
-  
-  
+
+
 
   /* Side Nav ---------------------- */
 
@@ -326,6 +327,13 @@
 
   .keystroke, kbd { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
 
+  /* Image Thumbnails ---------------------- */
+  .th { display: block;
+    img { display: block; border: solid 4px #fff; @include box-shadow(0 0 0 1px rgba(#000,.2)); @include border-radius($thumbRadius); @include transition-property(border, box-shadow); @include transition-duration(300ms); }
+    &:hover {
+      img { @include box-shadow(0 0 6px 1px rgba($mainColor,.5)); }
+    }
+  }
 
   /* Video - Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/ ---------------------- */
 

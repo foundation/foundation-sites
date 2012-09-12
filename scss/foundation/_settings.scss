@@ -21,6 +21,7 @@ $shinyEdge: rgba(#fff, .5) !default;
 $darkEdge: rgba(#000, .2) !default;
 
 // Font Settings
+
 $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
 $headerFontColor: #222 !default;
@@ -49,6 +50,9 @@ $tabHeight: 40px !default;
 
 $navBarHeight: 40px !default;
 $navFlyoutBaseWidth: 250px !default;
+
+// UI Settings
+$thumbRadius: 3px;
 
 // Off Canvas Width Settings
 
