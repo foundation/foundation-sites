@@ -54,7 +54,7 @@
         /* Has Dropdown Hover <li> */
         &.has-dropdown {
           &:hover {
-            .dropdown { display: block; }
+            &>.dropdown { display: block; visibility: visible; }
           }
           a { padding-right: $topBarHeight * .75;
             &:after { margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, #fff, top); position: absolute; top: 47%; right: 0; }
@@ -173,7 +173,7 @@
                 &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
               }
               &.moved { position: static;
-                .dropdown { top: 0; /* display: block; */ visibility: visible; }
+                .dropdown { top: 0; visibility: visible; }
               }
               &:hover { display: block; }
             }
