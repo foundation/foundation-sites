@@ -1,6 +1,6 @@
   /* Base Type Styles Using Modular Scale ---------------------- */
 
-  body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td {
+  body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
     margin:0;
     padding:0;
     font-size: ms(0);
@@ -14,6 +14,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: $headerFontFamily;
     font-weight: $headerFontWeight;
+    color: $headerFontColor;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
     margin-bottom: ms(0);
