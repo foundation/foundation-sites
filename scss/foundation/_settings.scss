@@ -13,6 +13,15 @@ $textDirection: ltr !default; // Controls default global text direction, 'rtl' o
 $defaultFloat: left !default; // Change this to 'right' for right-to-left languages
 $defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
 
+@if $textDirection == ltr {
+  $defaultFloat: left;
+  $defaultOpposite: right;
+} @else {
+  $defaultFloat: right;
+  $defaultOpposite: left;
+}
+
+
 // Colors Settings
 
 $mainColor: #2ba6cb !default;
