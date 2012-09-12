@@ -61,6 +61,11 @@ $navFlyoutBaseWidth: 250px !default;
 
 $thumbRadius: 3px !default;
 
+$progBarHeight: 25px !default;
+$progBarBorderColor: darken($white, 20%) !default;
+$progBarBorderSize: 1px !default;
+$progBarPad: 2px !default;
+
 // Off Canvas Width Settings
 
 $mainWidth: 80% !default;
@@ -92,12 +97,6 @@ $tapToCloseFontWeight: normal !default;
 $tapToCloseFontColor: #888 !default;
 $tooltipFontSizeScreenSmall: 14 !default;
 $tooltipBackgroundOpacityScreenSmall: 0.85 !default;
-
-// Progress Bar Settings
-$progBarHeight: 25px !default;
-$progBarBorderColor: darken($white, 20%) !default;
-$progBarBorderSize: 1px !default;
-$progBarPad: 2px !default;
 
 // Media Queries
 
