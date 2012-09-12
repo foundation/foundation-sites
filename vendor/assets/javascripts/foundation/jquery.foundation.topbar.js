@@ -108,7 +108,7 @@
         $section.appendTo($topbar);
       },
       largestUL : function ($topbar) {
-        var uls = $topbar.find('section > ul ul'),
+        var uls = $topbar.find('section ul ul'),
             largest = uls.first();
 
         uls.each(function () {

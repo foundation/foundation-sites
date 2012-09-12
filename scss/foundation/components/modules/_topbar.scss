@@ -110,7 +110,6 @@
   @media only screen and (max-width: $topBarBreakPoint) {
 
     .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0;
-
       .js-generated { display: block !important; }
       section { position: relative; left: 0; @include single-transition(left, 300ms); }
 
@@ -189,7 +188,7 @@
       }
 
       /* When the Small Nav is Showing */
-      &.expanded { height: 100%;
+      &.expanded { height: 100%; overflow: visible;
         ul {
           li {
             &.toggle-nav a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
