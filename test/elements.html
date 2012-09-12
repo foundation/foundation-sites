@@ -39,7 +39,8 @@
         <dd><a href="#keystrokes">Keystrokes</a></dd>
         <dd><a href="#panels">Panels</a></dd>
         <dd><a href="#link-list">Link List</a></dd>
-        <dd><a href="#link-list">Thumbs</a></dd>
+        <dd><a href="#progress-bars">Progress Bars</a></dd>
+         <dd><a href="#thumbs">Thumbs</a></dd>
         <dd><a href="#video">Video</a></dd>
 
       </dl>
@@ -286,7 +287,26 @@
       <br><br>
 
       <div class="row">
+	    	<div class="four columns">
+          <a name="progress-bars"></a>
+          <h4>Progress Bars</h4>
+          <p>A simple way to add a progress bar to your layout. You can edit the border radius by adding a class of <code>.radius</code> or <code>.round</code>. You can change the color by adding the classes <code>.secondary</code>, <code>.success</code>, or <code>.alert</code>. If you want to adjust the length, just use a number class. For example <code>class="progress four"</code> will make the progress bar 33% wide.</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <br>
+        	<div class="progress six"><span class="meter"></span></div>
+        	<div class="radius progress success eight"><span class="meter"></span></div>
+        	<div class="nice round progress alert ten"><span class="meter"></span></div>
+          <div class="nice secondary progress"><span class="meter"></span></div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="row">
         <div class="four columns">
+          <a name="thumbs"></a>
           <h4>Image Thumbnails</h4>
           <p>When you need an image thumbnail that is slightly more styled than just a plain old image.</p>
         </div>
@@ -357,6 +377,7 @@
     $(document).tooltips({
       targetClass: '.has-tip-custom, .has-tip'
     });
+
   </script>
 </body>
 </html>
