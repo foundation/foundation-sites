@@ -2,73 +2,112 @@
 
 // Grid Settings
 
-// $rowWidth: 1000px;
-// $columnGutter: 30px;
-// $totalColumns: 12;
-// $mobileTotalColumns: 4;
+// $rowWidth: 1000px !default;
+// $columnGutter: 30px !default;
+// $totalColumns: 12 !default;
+// $mobileTotalColumns: 4 !default;
+
+// Text Direction Settings
+
+// Change this to rtl for right-to-left languages
+// $textDirection: rtl !default;
+// Change this to right for right-to-left languages
+// $defaultFloat: right !default;
+// This is the opposite of the default float direction, used for setting margins, padding, etc.
+// Change this to left for right-to-left languages
+// $defaultOpposite: left !default;
 
 // Colors Settings
 
-// $mainColor: #2ba6cb;
-// $secondaryColor: #e9e9e9;
-// $alertColor: #c60f13;
-// $successColor: #5da423;
-// $txtColor: #222;
-// $highlightColor: #ffff99;
-// $black: #000;
-// $white: #fff;
-// $shinyEdge: rgba(#fff, .5);
-// $darkEdge: rgba(#000, .2);
+// $mainColor: #2ba6cb !default;
+// $secondaryColor: #e9e9e9 !default;
+// $alertColor: #c60f13 !default;
+// $successColor: #5da423 !default;
+// $txtColor: #222 !default;
+// $highlightColor: #ffff99 !default;
+// $black: #000 !default;
+// $white: #fff !default;
+// $shinyEdge: rgba(#fff, .5) !default;
+// $darkEdge: rgba(#000, .2) !default;
 
-// Typography Settings
-
-// $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $headerFontWeight: bold;
-// $headerFontColor: #222;
-// $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $bodyFontWeight: normal;
-// $bodyFontColor: $txtColor;
+// Font Settings
+// $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+// $headerFontWeight: bold !default;
+// $headerFontColor: #222 !default;
+// $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+// $bodyFontWeight: normal !default;
+// $bodyFontColor: $txtColor !default;
 
 // Button Settings
 
-// $buttonRadius: 3px;
-// $btnBase: 10px;
+// $buttonRadius: 3px !default;
+// $btnBase: 10px !default;
 
-// $tinyBtnBase: $btnBase - 5;
-// $smallBtnBase: $btnBase - 3;
-// $largeBtnBase: $btnBase + 5;
+// $tinyBtnBase: $btnBase - 5 !default;
+// $smallBtnBase: $btnBase - 3 !default;
+// $largeBtnBase: $btnBase + 5 !default;
 
 // Form Settings
 
-// $formSpacing: 12px;
+// $formSpacing: 12px !default;
 
 // Tab Settings
 
-// $tabHeight: 40px;
+// $tabHeight: 40px !default;
 
 // Nav Bar Settings
 
-// $navBarHeight: 40px;
-// $navFlyoutBaseWidth: 250px;
+// $navBarHeight: 40px !default;
+// $navFlyoutBaseWidth: 250px !default;
 
-// Modular Scale
-// $ratio: $golden;
-$baseFontSize: 14px;
-$importantModNum: 44px;
+// Off Canvas Width Settings
+
+// $mainWidth: 80% !default;
+// $complementaryWidth: 20% !default;
+
+// Modular Scale Settings
+
+// $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
+// $baseFontSize: 14px !default;
+// $importantModNum: 44px !default;
+// $base-size: $baseFontSize $importantModNum;
+// Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
+// http://www.modularscale.com by Tim Brown
+// https://github.com/scottkellum/modular-scale by scottkellum
 
 // Tooltip Settings
-// $hasTipBorderBottom: dotted 1px #ccc;
-// $hasTipFontWeight: bold;
-// $hasTipFontColor: #333;
-// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%);
-// $hasTipFontColorHover: $mainColor;
-// $tooltipBackgroundColor: #000;
-// $tooltipBackgroundOpacity: 0.85;
-// $tooltipFontSize: 12;
-// $tooltipFontWeight: bold;
-// $tooltipFontColor: #fff;
-// $tapToCloseFontSize: 10;
-// $tapToCloseFontWeight: normal;
-// $tapToCloseFontColor: #888;
-// $tooltipFontSizeScreenSmall: 14;
-// $tooltipBackgroundOpacityScreenSmall: 0.85;
+// $hasTipBorderBottom: dotted 1px #ccc !default;
+// $hasTipFontWeight: bold !default;
+// $hasTipFontColor: #333 !default;
+// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
+// $hasTipFontColorHover: $mainColor !default;
+// $tooltipBackgroundColor: #000 !default;
+// $tooltipBackgroundOpacity: 0.85 !default;
+// $tooltipFontSize: 12 !default;
+// $tooltipFontWeight: bold !default;
+// $tooltipFontColor: #fff !default;
+// $tapToCloseFontSize: 10 !default;
+// $tapToCloseFontWeight: normal !default;
+// $tapToCloseFontColor: #888 !default;
+// $tooltipFontSizeScreenSmall: 14 !default;
+// $tooltipBackgroundOpacityScreenSmall: 0.85 !default;
+
+// Media Queries
+
+// $screenSmall: 768px !default;
+// $screenMedium: 1279px !default;
+// $screenXlarge: 1441px !default;
+
+// Saving for better em-based testing
+// $screenSmall: 44em !default;
+// $screenMedium: 77em !default;
+// $screenXlarge: 104em !default;
+
+// Saving for Sass 3.2 stable release
+// $mediaSmall: "only screen and (max-width: 767px)" !default;
+// $mediaMedium: "only screen and (max-width: 1279px) and (min-width: 768px)" !default;
+// $mediaXlarge: "only screen and (min-width: 1441px)" !default;
+// $mediaLandscape: "screen and (orientation: landscape)" !default;
+// $mediaPortrait: "screen and (orientation: portrait)" !default;
+// $mediaAll: "only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)" !default;
+

@@ -40,7 +40,7 @@
     &.round { @include border-radius(1000px); }
 
     /* Layout */
-    &.full-width { width: 100%; text-align: center; padding-left: 0px !important; padding-right: 0px !important; }
+    &.full-width { width: 100%; text-align: center; padding-#{$defaultFloat}: 0px !important; padding-#{$defaultOpposite}: 0px !important; }
     &.left-align { text-align: left; text-indent: 12px; }
 
 		/* Disabled ---------- */
@@ -64,7 +64,7 @@
 
 	@media only screen and (max-width: $screenSmall - 1) {
     .button { display: block; }
-    button.button, input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
+    button.button, input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
   }
 
   /* Correct FF button padding */
@@ -78,24 +78,24 @@
 
 /* Buttons with Dropdowns ---------------------- */
 
-  .button.dropdown { position: relative; padding-right: (($btnBase + 12) * 2);
+  .button.dropdown { position: relative; padding-#{$defaultOpposite}: (($btnBase + 12) * 2);
 
     /* Sizes */
-    &.large { padding-right: ($largeBtnBase * 2) * 2; }
-    &.small { padding-right: ($smallBtnBase * 2) * 2; }
-    &.tiny { padding-right: ($tinyBtnBase * 2) * 2; }
+    &.large { padding-#{$defaultOpposite}: ($largeBtnBase * 2) * 2; }
+    &.small { padding-#{$defaultOpposite}: ($smallBtnBase * 2) * 2; }
+    &.tiny { padding-#{$defaultOpposite}: ($tinyBtnBase * 2) * 2; }
 
     /* Triangles */
-    &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; right: $btnBase * 2; margin-top: -2px; }
-    &.large:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; right: $largeBtnBase * 2; }
-    &.small:after { @include cssTriangle(5px, #fff, top); margin-top: -2px; right: $smallBtnBase * 2; }
-    &.tiny:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; right: $tinyBtnBase * 2; }
+    &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; #{$defaultOpposite}: $btnBase * 2; margin-top: -2px; }
+    &.large:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; #{$defaultOpposite}: $largeBtnBase * 2; }
+    &.small:after { @include cssTriangle(5px, #fff, top); margin-top: -2px; #{$defaultOpposite}: $smallBtnBase * 2; }
+    &.tiny:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; #{$defaultOpposite}: $tinyBtnBase * 2; }
 
     /* Flyout List */
-    &>ul { @include box-sizing(content-box); display: none; position: absolute; left: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken($white, 20%); border-top: none; min-width: 100%; z-index: 40;
+    &>ul { @include box-sizing(content-box); display: none; position: absolute; #{$defaultFloat}: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken($white, 20%); border-top: none; min-width: 100%; z-index: 40;
 
       li { width: 100%; cursor: pointer; padding: 0; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none;
-        a { display: block; color: #555; font-size: ms(0) - 1; font-weight: $bodyFontWeight; padding: 6px 14px; text-align: left; }
+        a { display: block; color: #555; font-size: ms(0) - 1; font-weight: $bodyFontWeight; padding: 6px 14px; text-align: $defaultFloat; }
         &:hover { background-color: lighten($mainColor, 45%); color: #222; }
         &.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: darken($white, 7%); }
       }
@@ -120,17 +120,17 @@
       &.secondary:hover { background-color: $secondaryColor; }
 
       /* Sizes */
-      &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); @include single-transition(background-color, .15s, ease-in-out);
+      &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); padding-#{$defaultFloat}: $btnBase * 2; padding-#{$defaultOpposite}: ($btnBase * 2.5) * 2; @include single-transition(background-color, .15s, ease-in-out);
         &:hover { background-color: darken($mainColor, 10%); }
       }
-      &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); }
-      &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); }
-      &.tiny>a { padding: $tinyBtnBase (($tinyBtnBase * 2.5) * 2) ($tinyBtnBase + 1) ($tinyBtnBase * 2); }
+      &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); padding-#{$defaultFloat}: $largeBtnBase * 2; padding-#{$defaultOpposite}: ($largeBtnBase * 2.5) * 2; }
+      &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); padding-#{$defaultFloat}: $smallBtnBase * 2; padding-#{$defaultOpposite}: ($smallBtnBase * 2.5) * 2; }
+      &.tiny>a { padding: $tinyBtnBase (($tinyBtnBase * 2.5) * 2) ($tinyBtnBase + 1) ($tinyBtnBase * 2); padding-#{$defaultFloat}: $tinyBtnBase * 2; padding-#{$defaultOpposite}: ($tinyBtnBase * 2.5) * 2; }
 
       /* Triangle Spans */
-      &>span { background-color: $mainColor; position: absolute; right: 0; top: 0; height: 100%; width: $btnBase * 3; border-left: 1px solid darken($mainColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
+      &>span { background-color: $mainColor; position: absolute; #{$defaultOpposite}: 0; top: 0; height: 100%; width: $btnBase * 3; border-#{$defaultFloat}: 1px solid darken($mainColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
         &:hover { background-color: darken($mainColor, 10%); }
-        &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; left: 50%; margin-left: -6px; margin-top: -2px; }
+        &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -6px; margin-top: -2px; }
       }
       &.secondary>span:after { @include cssTriangle(6px, darken(($secondaryColor), 80%), top); }
       
@@ -138,14 +138,14 @@
       &.small span { width: $smallBtnBase * 3; }
       &.tiny span { width: $tinyBtnBase * 3; }
 
-      &.large span:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; margin-left: -7px; }
-      &.small span:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; margin-left: -4px; }
-      &.tiny span:after { @include cssTriangle(3px, #fff, top); margin-top: -1px; margin-left: -3px; }
+      &.large span:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; margin-#{$defaultFloat}: -7px; }
+      &.small span:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; margin-#{$defaultFloat}: -4px; }
+      &.tiny span:after { @include cssTriangle(3px, #fff, top); margin-top: -1px; margin-#{$defaultFloat}: -3px; }
 
       /* Colors */
-      &.alert>span { background-color: $alertColor; border-left-color: darken($alertColor, 15%); }
-      &.success>span { background-color: $successColor; border-left-color: darken($successColor, 15%); }
-      &.secondary>span { background-color: $secondaryColor; border-left-color: darken($secondaryColor, 15%); }
+      &.alert>span { background-color: $alertColor; border-#{$defaultFloat}-color: darken($alertColor, 15%); }
+      &.success>span { background-color: $successColor; border-#{$defaultFloat}-color: darken($successColor, 15%); }
+      &.secondary>span { background-color: $secondaryColor; border-#{$defaultFloat}-color: darken($secondaryColor, 15%); }
       &.secondary>a { color: darken(($secondaryColor), 80%); }
 
       &.alert>a:hover, &.alert>span:hover { background-color: darken($alertColor, 10%); }
@@ -158,8 +158,8 @@
 
   ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; @include clearfix();
 
-    li { padding: 0; margin: 0 0 0 -1px; float: left;
-      &:first-child { margin-left: 0; }
+    li { padding: 0; margin: 0 0 0 -1px; float: $defaultFloat;
+      &:first-child { margin-#{$defaultFloat}: 0; }
     }
 
     &.radius li {
@@ -167,12 +167,12 @@
         &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
       }
       &:first-child a {
-        &.button, &.button.radius { @include border-left-radius($buttonRadius); }
-        &.button.rounded { @include border-left-radius(1000px); }
+        &.button, &.button.radius {  @include border-corner-radius($defaultFloat, $buttonRadius); }
+        &.button.rounded { @include border-corner-radius($defaultFloat, 1000px); }
       }
       &:last-child a {
-        &.button, &.button.radius { @include border-right-radius($buttonRadius); }
-        &.button.rounded { @include border-right-radius(1000px); }
+        &.button, &.button.radius {  @include border-corner-radius($defaultOpposite, $buttonRadius); }
+        &.button.rounded { @include border-corner-radius($defaultOpposite, 1000px); }
       }
     }
 
@@ -194,11 +194,11 @@
         &.small     { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
         &.tiny      { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
       }
-      &.even button.button, &.even input[type="submit"].button { width: 100%; padding-left: 0; padding-right: 0; }
+      &.even button.button, &.even input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
     }
   }
 
   div.button-bar { overflow: hidden;
-    ul.button-group { float: left; margin-right: 8px; }
-    ul.button-group:last-child { margin-left: 0; }
+    ul.button-group { float: $defaultFloat; margin-#{$defaultOpposite}: 8px; }
+    ul.button-group:last-child { margin-#{$defaultFloat}: 0; }
   }

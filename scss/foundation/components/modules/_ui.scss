@@ -146,7 +146,7 @@
     &.alert { background-color: $alertColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
     &.secondary { background-color: $secondaryColor; color: darken($secondaryColor, 60%); text-shadow: 0 1px rgba(#fff,.3); }
 
-    a.close { color: #333; position: absolute; right: 4px; top: -1px; font-size: ms(1); opacity: 0.2; padding: 4px; }
+    a.close { color: #333; position: absolute; #{$defaultOpposite}: 4px; top: -1px; font-size: ms(1); opacity: 0.2; padding: 4px; }
     a.close:hover, a.close:focus { opacity: 0.4; }
 
   }
@@ -176,7 +176,7 @@
 
   .tooltip { display: none; background: $tooltipBackgroundColor; background: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); position: absolute; color: $tooltipFontColor; font-weight: $tooltipFontWeight; @include font-size($tooltipFontSize); padding: 5px; z-index: 999; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; line-height: normal;
 
-    &>.nub { display: block; width: 0; height: 0; border: solid 5px; border-color: transparent transparent $tooltipBackgroundColor transparent; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent; position: absolute; top: -10px; left: 10px; }
+    &>.nub { display: block; width: 0; height: 0; border: solid 5px; border-color: transparent transparent $tooltipBackgroundColor transparent; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent; position: absolute; top: -10px; #{$defaultFloat}: 10px; }
     &.tip-override>.nub { border-color: transparent transparent $tooltipBackgroundColor transparent !important; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent !important; top: -10px !important; }
     &.tip-top>.nub { border-color: $tooltipBackgroundColor transparent transparent transparent; border-color: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent transparent; top: auto; bottom: -10px; }
 
@@ -231,10 +231,9 @@
 
     &>li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
 
-      .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
-
+      .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-#{$defaultOpposite}: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
         h1, h2, h3, h4, h5 { margin: 0; }
-        &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), right); position: absolute; right: 15px; top: 21px; }
+        &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), $defaultOpposite); position: absolute; #{$defaultOpposite}: 15px; top: 21px; }
       }
 
       .content { display: none; padding: 15px; }
@@ -245,7 +244,7 @@
 
           &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), top); }
         }
-        .content { background: $white; display: block; border-left: 1px solid $secondaryColor; border-right: 1px solid $secondaryColor; }
+        .content { background: $white; display: block; border-#{$defaultFloat}: 1px solid $secondaryColor; border-#{$defaultOpposite}: 1px solid $secondaryColor; }
       }
     }
   }
@@ -266,9 +265,9 @@
 
   /* Sub Navs http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na ---------------------- */
 
-  dl.sub-nav { display: block; width: auto; overflow: hidden; margin: -4px 0 18px -9px; padding-top: 4px;
+  dl.sub-nav { display: block; width: auto; overflow: hidden; margin: -4px 0 18px; margin-#{$defaultOpposite}: 0; margin-#{$defaultFloat}: -9px; padding-top: 4px;
 
-    dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 10px; }
+    dt, dd { float: $defaultFloat; display: inline; margin-#{$defaultFloat}: 9px; margin-bottom: 10px; }
     dt { color: #999; font-weight: $bodyFontWeight; }
     dd a { text-decoration: none; @include border-radius(1000px); }
     dd.active a { font-weight: bold; background: $mainColor; color: #fff; padding: 3px 9px; cursor: default; }
@@ -277,9 +276,9 @@
 
   /* Pagination ---------------------- */
 
-  ul.pagination { display: block; height: 24px; margin-left: -5px;
+  ul.pagination { display: block; height: 24px; margin-#{$defaultFloat}: -5px;
 
-    li { float: left; display: block; height: 24px; color: #999; font-size: ms(0); margin-left: 5px;
+    li { float: $defaultFloat; display: block; height: 24px; color: #999; font-size: ms(0); margin-#{$defaultFloat}: 5px;
 
       a { display: block; padding: 1px 7px 1px; color: #555; }
       &:hover a, a:focus { background: darken($white, 10%); }
@@ -296,10 +295,10 @@
 
   ul.breadcrumbs { display: block; background: lighten($secondaryColor, 5%); padding: 6px 10px 7px; border: 1px solid $secondaryColor; @include border-radius(2px); overflow: hidden;
 
-    li { margin: 0; padding: 0 12px 0 0; float: left; list-style: none;
+    li { margin: 0; padding: 0 12px 0 0; float: $defaultFloat; list-style: none;
 
-      a, span { text-transform: uppercase; @include font-size(11); padding-left: 12px; }
-      &:first-child a, &:first-child span { padding-left: 0; }
+      a, span { text-transform: uppercase; @include font-size(11); padding-#{$defaultFloat}: 12px; }
+      &:first-child a, &:first-child span { padding-#{$defaultFloat}: 0; }
     }
 
     li:before { content: "/"; color: #aaa; }
@@ -317,7 +316,7 @@
   /* Link List */
   ul.link-list { margin: 0 0 ms(1) -22px; padding: 0; list-style: none; overflow: hidden;
 
-    li { list-style: none; float: left; margin-left: 22px; display: block;
+    li { list-style: none; float: $defaultFloat; margin-#{$defaultFloat}: 22px; display: block;
 
       a { display: block; }
     }
@@ -348,7 +347,7 @@
     &.widescreen { padding-bottom: 57.25%; }
     &.vimeo { padding-top: 0; }
 
-    iframe, object, embed, video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    iframe, object, embed, video { position: absolute; top: 0; #{$defaultFloat}: 0; width: 100%; height: 100%; }
 
   }
 
@@ -365,11 +364,11 @@
   table tfoot tr th,
   table tbody tr td,
   table tr td,
-  table tfoot tr td { font-size: ms(0); line-height: 18px; text-align: left; }
+  table tfoot tr td { font-size: ms(0); line-height: 18px; text-align: #{$defaultFloat}; }
   table thead tr th,
   table tfoot tr td { padding: 8px 10px 9px; font-size: ms(0) + 2; font-weight: bold; color: #222; }
-  table thead tr th:first-child, table tfoot tr td:first-child { border-left: none; }
-  table thead tr th:last-child, table tfoot tr td:last-child { border-right: none; }
+  table thead tr th:first-child, table tfoot tr td:first-child { border-#{$defaultFloat}: none; }
+  table thead tr th:last-child, table tfoot tr td:last-child { border-#{$defaultOpposite}: none; }
 
   table tbody tr.even,
   table tbody tr.alt { background: #f9f9f9; }

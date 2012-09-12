@@ -7,6 +7,12 @@ $columnGutter: 30px !default;
 $totalColumns: 12 !default;
 $mobileTotalColumns: 4 !default;
 
+// Text Direction Settings
+
+$textDirection: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
+$defaultFloat: left !default; // Change this to 'right' for right-to-left languages
+$defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
+
 // Colors Settings
 
 $mainColor: #2ba6cb !default;
