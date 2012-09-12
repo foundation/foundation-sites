@@ -13,24 +13,24 @@
 */
 
   // Variables for Top Bar
-  $topBarBgColor: #222;
-  $topBarHeight: 45px;
-  $topBarBtmMargin: 30px;
-  $topBarTitleColor: $white;
-  $topBarTitleWeight: bold;
-  $topBarTitleSize: ms(1);
-  $topBarLinkColor: $white;
-  $topBarLinkWeight: bold;
-  $topBarLinkSize: ms(0) - 1;
-  $topBarDropToggleSize: 5px;
-  $topBarSearchWidth: 200px;
-  $topBarBreakPoint: 900px; // Change to 9999px for always mobile layout
-  $topBarNavToggleSize: 8px;
+  $topBarBgColor: #222 !default;
+  $topBarHeight: 45px !default;
+  $topBarBtmMargin: 30px !default;
+  $topBarTitleColor: $white !default;
+  $topBarTitleWeight: bold !default;
+  $topBarTitleSize: ms(1) !default;
+  $topBarLinkColor: $white !default;
+  $topBarLinkWeight: bold !default;
+  $topBarLinkSize: ms(0) - 1 !default;
+  $topBarDropToggleSize: 5px !default;
+  $topBarSearchWidth: 200px !default;
+  $topBarBreakPoint: 900px !default; // Change to 9999px for always mobile layout
+  $topBarNavToggleSize: 8px !default;
 
   .top-bar { width: 100%; background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0;
     ul { list-style: none; height: $topBarHeight; line-height: $topBarHeight; width: auto; display: inline;
       li { float: left;
-        a { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
+        a:not(.button) { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
           &:hover { color: darken($topBarLinkColor, 15%); }
           img { vertical-align: middle; margin-top: -5px; }
           &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
@@ -41,7 +41,7 @@
           }
         }
         &.title h5 { color: $topBarTitleColor; }
-        &.divider { padding: 0; display: block; background: darken($topBarBgColor, 15%); width: 1px; height: 100%; @include box-shadow(1px 0 0 rgba(255,255,255,0.15)); margin-right: 1px; }
+        &.divider { position: relative; padding: 0; display: block; background: darken($topBarBgColor, 15%); width: 1px; height: 100%; @include box-shadow(1px 0 0 rgba(255,255,255,0.15)); margin-right: 1px; }
         &.search { padding: 0 $topBarHeight / 3; height: $topBarHeight;
           form { display: inline-block; vertical-align: middle; margin-bottom: 0; margin-top: -1px; width: $topBarSearchWidth; min-width: $topBarSearchWidth;
             input[type=text] { width: 120px; @include border-right-radius(0); height: 28px; font-size: ms(0) - 1; margin-bottom: 0; float: left; }
@@ -63,7 +63,7 @@
 
         /* Dropdown Level 1 */
         &.has-dropdown { position: relative;
-          .dropdown { /* display: none; */ visibility: hidden; position: absolute; z-index: 99; left: 0; background: $topBarBgColor; margin: 0; padding: $topBarHeight / 3 0;
+          .dropdown { visibility: hidden; position: absolute; z-index: 99; left: 0; background: $topBarBgColor; margin: 0; padding: $topBarHeight / 3 0;
             li { background: $topBarBgColor; min-width: 100%; line-height: 1; padding-bottom: 5px;
               a { font-weight: normal; white-space: nowrap; height: 100%; line-height: 1; padding: 5px ($topBarHeight / 3) + 2 5px $topBarHeight / 3;
                 &:after { border: none; }
@@ -82,7 +82,7 @@
             &>a { padding-right: $navBarHeight * .75;
               &:after { border: none; content:"\00bb"; top: 4px; right: 5px; }
             }
-            &>.dropdown { padding-top: $topBarHeight / 5; display: none; position: absolute; left: 100%; top: 0; }
+            &>.dropdown { padding-top: $topBarHeight / 5; position: absolute; left: 100%; top: 0; }
             &:hover {
               &>.dropdown { display: block; }
             }
@@ -109,7 +109,7 @@
 
   @media only screen and (max-width: $topBarBreakPoint) {
 
-    .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0; background: transparent;
+    .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0;
 
       .js-generated { display: block !important; }
       section { position: relative; left: 0; @include single-transition(left, 300ms); }
@@ -130,7 +130,7 @@
           a { padding: 0 $topBarHeight / 2;
             &.active { background: darken($topBarBgColor, 3%); }
           }
-          &.divider { width: 100%; clear: both; height: 0px !important; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
+          &.divider { width: 100%; clear: both; height: 0px !important; margin: 8px 0; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
           &.search { padding: 0 $topBarHeight / 2;
             form { width: 100%;
               input[type=text] { width: 75%; }
