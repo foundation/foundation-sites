@@ -83,7 +83,10 @@ $tooltipFontSizeScreenSmall: 14 !default;
 $tooltipBackgroundOpacityScreenSmall: 0.85 !default;
 
 // Progress Bar Settings
-$progressBarHeight: 25px !default;
+$progBarHeight: 25px !default;
+$progBarBorderColor: darken($white, 20%) !default;
+$progBarBorderSize: 1px !default;
+$progBarPad: 2px !default;
 
 // Media Queries
 
