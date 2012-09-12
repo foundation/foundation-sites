@@ -60,7 +60,8 @@
               if (!settings.height) {
                 methods.largestUL($topbar);
               }
-              // $this.closest('ul').outerHeight(settings.height);
+              console.log($this.siblings('ul'));
+              $this.siblings('ul').height(settings.height);
             }
           });
 
@@ -107,16 +108,19 @@
         $section.appendTo($topbar);
       },
       largestUL : function ($topbar) {
-        var uls = $topbar.find('section ul'),
+        var uls = $topbar.find('section > ul ul'),
             largest = uls.first();
-            console.log(uls);
 
         uls.each(function () {
-          if ($(this).children('li').length > largest.children('li').length) {
+          var total = 0;
+          $(this).children('li').map(function () { total += $(this).outerHeight(true); });
+          console.log($(this).outerHeight(true), total);
+          if ($(this).outerHeight(true) > largest.outerHeight(true)) {
             largest = $(this);
           }
         });
-        settings.height = largest.height();
+
+        settings.height = largest.outerHeight(true);
       }
     };
 
@@ -129,4 +133,5 @@
       $.error('Method ' +  method + ' does not exist on jQuery.foundationTopBar');
     }
   };
+
 }(jQuery, this));
