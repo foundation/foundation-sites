@@ -145,7 +145,7 @@
             a { padding-right: $topBarHeight * .75;
               &:after { margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
             }
-            .dropdown { /* display: none; */ visibility: hidden; background: lighten($topBarBgColor, 5%); }
+            .dropdown { z-index: 0 !important; visibility: hidden; background: lighten($topBarBgColor, 5%); }
             &.moved { position: static;
               .dropdown { top: 0; /* display: block; */ visibility: visible;
                 li {

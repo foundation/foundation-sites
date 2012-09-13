@@ -32,6 +32,9 @@
           if (!settings.height) {
             methods.largestUL();
           }
+          $('*').on('click', function(e) {
+            console.log($(this).html());
+          });
 
           $('.top-bar .toggle-nav').live('click.fndtn', function (e) {
             e.preventDefault();
