@@ -13,8 +13,8 @@
 */
 
   .top-bar { width: 100%; background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0;
-    &.contain-to-grid { width: $rowWidth; margin: 0 auto;
-      &:before, &:after { content:""; height: $topBarHeight; width: 1000px; position: absolute; background: $topBarBgColor; }
+    &.contain-to-grid { width: $rowWidth; margin: 0 auto; position: relative;
+      &:before, &:after { display: block; content:""; height: $topBarHeight; width: 1000px; position: absolute; background: $topBarBgColor; }
       &:before { left: -100%; }
       &:after { right: -100%; }
       &.fixed { position: fixed; left: 50%; margin-left: -($rowWidth / 2); }
@@ -124,7 +124,7 @@
           }
           a { padding: 0 $topBarHeight / 2;
             &.active { background: darken($topBarBgColor, 3%); }
-            &.button { margin: $topBarHeight / 3 $topBarHeight / 3; }
+            &.button { width: auto; display: block; margin: $topBarHeight / 3 $topBarHeight / 3; }
           }
           &.divider { width: 100%; clear: both; height: 0px !important; margin: 8px 0; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
           &.search { padding: 0 $topBarHeight / 2;
