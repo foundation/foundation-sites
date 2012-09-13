@@ -21,7 +21,6 @@ $defaultOpposite: right !default; // Change this to 'left' for right-to-left lan
   $defaultOpposite: left;
 }
 
-
 // Colors Settings
 
 $mainColor: #2ba6cb !default;
@@ -74,6 +73,22 @@ $progBarHeight: 25px !default;
 $progBarBorderColor: darken($white, 20%) !default;
 $progBarBorderSize: 1px !default;
 $progBarPad: 2px !default;
+
+// Top Bar Settings
+
+$topBarBgColor: #222 !default;
+$topBarHeight: 45px !default;
+$topBarBtmMargin: 30px !default;
+$topBarTitleColor: $white !default;
+$topBarTitleWeight: bold !default;
+$topBarTitleSize: ms(1) !default;
+$topBarLinkColor: $white !default;
+$topBarLinkWeight: bold !default;
+$topBarLinkSize: ms(0) - 1 !default;
+$topBarDropToggleSize: 5px !default;
+$topBarSearchWidth: 200px !default;
+$topBarBreakPoint: 900px !default; // Change to 9999px for always mobile layout
+$topBarNavToggleSize: 8px !default;
 
 // Off Canvas Width Settings
 

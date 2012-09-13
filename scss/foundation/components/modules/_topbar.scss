@@ -12,21 +12,6 @@
     - <li class="search"> Needs to hold a <form> which can use .row.collapse and pre/postfix buttons or default type="search"
 */
 
-  // Variables for Top Bar
-  $topBarBgColor: #222 !default;
-  $topBarHeight: 45px !default;
-  $topBarBtmMargin: 30px !default;
-  $topBarTitleColor: $white !default;
-  $topBarTitleWeight: bold !default;
-  $topBarTitleSize: ms(1) !default;
-  $topBarLinkColor: $white !default;
-  $topBarLinkWeight: bold !default;
-  $topBarLinkSize: ms(0) - 1 !default;
-  $topBarDropToggleSize: 5px !default;
-  $topBarSearchWidth: 200px !default;
-  $topBarBreakPoint: 900px !default; // Change to 9999px for always mobile layout
-  $topBarNavToggleSize: 8px !default;
-
   .top-bar { width: 100%; background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0;
     ul { list-style: none; height: $topBarHeight; line-height: $topBarHeight; width: auto; display: inline;
       li { float: left;
@@ -103,7 +88,7 @@
 
       }
     }
-    &.fixed { position: fixed; top: 0; left: 0; }
+    &.fixed { position: fixed; top: 0; left: 0; z-index: 99; }
     .js-generated { display: none !important; }
   }
 
