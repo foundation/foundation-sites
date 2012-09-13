@@ -60,7 +60,7 @@
               $section.css({'left': -(100 * settings.index) + '%'});
               $section.find('>.name').css({'left': 100 * settings.index + '%'});
 
-              $this.siblings('ul').height(settings.height + 40);
+              $this.siblings('ul').height(settings.height);
             }
           });
 
