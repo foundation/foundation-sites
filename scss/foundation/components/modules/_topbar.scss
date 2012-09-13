@@ -20,6 +20,7 @@
           img { vertical-align: middle; margin-top: -5px; }
           &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
         }
+        a.button { margin: 0 $topBarHeight / 3;}
         &.name {
           h1 { font-size: $topBarTitleSize; line-height: $topBarHeight; margin: 0;
             a { font-weight: $topBarTitleWeight; padding: 0 $topBarHeight / 2; font-size: inherit; }
@@ -112,6 +113,7 @@
           }
           a { padding: 0 $topBarHeight / 2;
             &.active { background: darken($topBarBgColor, 3%); }
+            &.button { margin: $topBarHeight / 3 $topBarHeight / 3;}
           }
           &.divider { width: 100%; clear: both; height: 0px !important; margin: 8px 0; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
           &.search { padding: 0 $topBarHeight / 2;
