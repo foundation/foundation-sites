@@ -60,8 +60,8 @@
               if (!settings.height) {
                 methods.largestUL($topbar);
               }
-              console.log($this.siblings('ul'));
-              $this.siblings('ul').height(settings.height + 30);
+
+              $this.siblings('ul').height(settings.height + 40);
             }
           });
 
@@ -109,18 +109,18 @@
       },
       largestUL : function ($topbar) {
         var uls = $topbar.find('section ul ul'),
-            largest = uls.first();
+            largest = uls.first(),
+            total = 0;
 
         uls.each(function () {
-          var total = 0;
-          $(this).children('li').map(function () { total += $(this).outerHeight(true); });
-          console.log($(this).outerHeight(true), total);
-          if ($(this).outerHeight(true) > largest.outerHeight(true)) {
+          if ($(this).children('li').length > largest.children('li').length) {
             largest = $(this);
           }
         });
 
-        settings.height = largest.outerHeight(true);
+        largest.children('li').map(function () { total += $(this).outerHeight(true); })
+
+        settings.height = total;
       }
     };
 
