@@ -99,6 +99,11 @@
     .js-generated { display: none !important; }
   }
 
+  @-moz-document url-prefix() {
+    .top-bar ul li .button.small { padding-bottom: 6px; }
+    .top-bar ul li.search form input[type=search] { font-size: 14px; padding: 3px; height: 22px; }
+  }
+
   @media only screen and (max-width: $topBarBreakPoint) {
 
     .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0;
@@ -122,10 +127,11 @@
               a { right: ($topBarHeight / 2) + ($columnGutter / 2);}
             }
           }
-          a { padding: 0 $topBarHeight / 2;
+          a {
             &.active { background: darken($topBarBgColor, 3%); }
             &.button { width: auto; display: block; margin: $topBarHeight / 3 $topBarHeight / 3; }
           }
+          &.toggle-nav a { padding: 0 !important; }
           &.divider { width: 100%; clear: both; height: 0px !important; margin: 8px 0; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
           &.search { padding: 0 $topBarHeight / 2;
             form { width: 100%;
@@ -183,6 +189,7 @@
           }
         }
       }
+      section > ul li a:not(.button) { padding-left: $topBarHeight / 2 !important; }
 
       /* When the Small Nav is Showing */
       &.expanded { height: 100%; overflow: visible;
@@ -193,5 +200,6 @@
         }
       }
     }
-
+    .top-bar ul li.has-button { padding: 0 $navBarHeight / 2 5px; }
+    .top-bar ul li .button.small { margin: 0; display: inline-block; width: 100%; }
   }
