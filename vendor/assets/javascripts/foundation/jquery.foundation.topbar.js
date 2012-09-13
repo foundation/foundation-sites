@@ -20,25 +20,25 @@
       init : function (options) {
         return this.each(function () {
           settings = $.extend(settings, options);
-          settings.$w = $(window);
+          settings.$w = $(window),
+          settings.$topbar = $('nav.top-bar');
+          settings.$titlebar = settings.$topbar.children('ul:first');
+
+          if (!settings.initialized) {
+            methods.assemble();
+            settings.initialized = true;
+          }
+
+          if (!settings.height) {
+            methods.largestUL();
+          }
 
           $('.top-bar .toggle-nav').live('click.fndtn', function (e) {
             e.preventDefault();
 
-            var $this = $(this),
-                $topbar = $this.closest('.top-bar');
-
-            if (!settings.initialized) {
-              methods.assemble($topbar);
-              settings.initialized = true;
-            }
-
-            if (!settings.height) {
-              methods.largestUL($topbar);
-            }
-
             if (methods.breakpoint()) {
-              $topbar.toggleClass('expanded');
+              settings.$topbar.toggleClass('expanded');
+              settings.$topbar.css('min-height', '');
             }
           });
 
@@ -51,7 +51,6 @@
                   $selectedLi = $this.closest('li'),
                   $nextLevelUl = $selectedLi.children('ul'),
                   $section = $this.closest('section'),
-                  $topbar = $this.closest('.top-bar'),
                   $nextLevelUlHeight = 0,
                   $largestUl;
 
@@ -60,7 +59,8 @@
               $section.css({'left': -(100 * settings.index) + '%'});
               $section.find('>.name').css({'left': 100 * settings.index + '%'});
 
-              $this.siblings('ul').height(settings.height + 40);
+              $this.siblings('ul').height(settings.height + settings.$titlebar.outerHeight(true));
+              settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
             }
           });
 
@@ -71,12 +71,15 @@
             var $this = $(this),
               $movedLi = $this.closest('li.moved'),
               $section = $this.closest('section'),
-              $topbar = $this.closest('.top-bar'),
               $previousLevelUl = $movedLi.parent();
 
             settings.index -= 1;
             $section.css({'left': -(100 * settings.index) + '%'});
             $section.find('>.name').css({'left': 100 * settings.index + '%'});
+
+            if (settings.index === 0) {
+              settings.$topbar.css('min-height', 0);
+            }
 
             setTimeout(function () {
               $movedLi.removeClass('moved');
@@ -87,8 +90,8 @@
       breakpoint : function () {
         return settings.$w.width() < settings.breakPoint;
       },
-      assemble : function ($topbar) {
-        var $section = $topbar.children('section');
+      assemble : function () {
+        var $section = settings.$topbar.children('section');
 
         // Pull element out of the DOM for manipulation
         $section.detach();
@@ -104,10 +107,10 @@
         });
 
         // Put element back in the DOM
-        $section.appendTo($topbar);
+        $section.appendTo(settings.$topbar);
       },
-      largestUL : function ($topbar) {
-        var uls = $topbar.find('section ul ul'),
+      largestUL : function () {
+        var uls = settings.$topbar.find('section ul ul'),
             largest = uls.first(),
             total = 0;
 
@@ -117,7 +120,7 @@
           }
         });
 
-        largest.children('li').map(function () { total += $(this).outerHeight(true); })
+        largest.children('li').each(function () { total += $(this).outerHeight(true); });
 
         settings.height = total;
       }
