@@ -20,7 +20,7 @@
           img { vertical-align: middle; margin-top: -5px; }
           &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
         }
-        a.button { margin: 0 $topBarHeight / 3;}
+        a.button { margin: 0 $topBarHeight / 4;}
         &.name {
           h1 { font-size: $topBarTitleSize; line-height: $topBarHeight; margin: 0;
             a { font-weight: $topBarTitleWeight; padding: 0 $topBarHeight / 2; font-size: inherit; }
