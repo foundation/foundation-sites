@@ -62,7 +62,7 @@
                 &:hover { background: lighten($topBarBgColor, 10%); }
               }
               label { margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; font-size: ms(0) - 4; font-weight: $topBarLinkWeight; color: lighten($topBarBgColor, 30%); }
-              &.divider { height: 12px; width: 100%; margin: 0; background: $topBarBgColor; border-top: solid 1px darken($topBarBgColor, 15%); @include box-shadow(0 1px 0 rgba(255,255,255,0.15) inset); padding: 0; }
+              &.divider { width: 100%; background: $topBarBgColor; border-top: solid 1px darken($topBarBgColor, 15%); @include box-shadow(0 1px 0 rgba(255,255,255,0.15) inset); padding: 0; }
               &:last-child { padding-bottom: 10px; }
             }
           }
@@ -106,7 +106,7 @@
 
   @media only screen and (max-width: $topBarBreakPoint) {
 
-    .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0;
+    .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0; min-height: 0;
       .js-generated { display: block !important; }
       &.contain-to-grid { width: auto; margin: 0 auto;
         &:before, &:after { display: none; }
@@ -132,7 +132,7 @@
             &.button { width: auto; display: block; margin: $topBarHeight / 3 $topBarHeight / 3; }
           }
           &.toggle-nav a { padding: 0 !important; }
-          &.divider { width: 100%; clear: both; height: 0px !important; margin: 8px 0; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
+          &.divider { width: 100%; clear: both; height: 1px !important; margin: 8px 0 !important; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
           &.search { padding: 0 $topBarHeight / 2;
             form { width: 100%;
               input[type=text] { width: 75%; }
@@ -155,12 +155,12 @@
                   }
                   a, label { padding: 0 $topBarHeight / 2; }
                   a:hover { background: transparent; display: block; }
-                  &.divider { margin-top: 8px; margin-bottom: 8px; }
+                  &.divider { margin-top: 8px !important; margin-bottom: 8px !important; }
                 }
               }
               .back.title { padding-bottom: 0;
                 a:before { position: absolute; top: 50%; left: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, #fff, right); }
-                h5 {  margin: 0; padding-left: $topBarDropToggleSize * 3; margin-bottom: 5px; position: relative;
+                h5 {  margin: 0; padding-left: $topBarDropToggleSize * 3; position: relative;
                   a { padding-top: 8px; padding-bottom: 8px; font-size: ms(2); font-weight: $topBarTitleWeight; }
                 }
               }
@@ -182,7 +182,7 @@
           }
         }
         &.left, &.right { width: 100%; float: none;
-          li { display: block; float: none; margin: 0;
+          &>li { display: block; float: none; margin: 0 !important;
             &.has-dropdown {
               .dropdown { left: 100% !important; top: 0; right: auto !important; }
             }
@@ -192,7 +192,7 @@
       section > ul li a:not(.button) { padding-left: $topBarHeight / 2 !important; }
 
       /* When the Small Nav is Showing */
-      &.expanded { height: 100%; overflow: visible;
+      &.expanded { height: 100%;
         ul {
           li {
             &.toggle-nav a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
