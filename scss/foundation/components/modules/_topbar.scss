@@ -21,11 +21,10 @@
           &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
         }
         &.name {
-          h1 { font-weight: $topBarTitleWeight; font-size: $topBarTitleSize; line-height: $topBarHeight; margin: 0;
-            a { padding: 0 $topBarHeight / 2; font-size: inherit; }
+          h1 { font-size: $topBarTitleSize; line-height: $topBarHeight; margin: 0;
+            a { font-weight: $topBarTitleWeight; padding: 0 $topBarHeight / 2; font-size: inherit; }
           }
         }
-        &.title h5 { color: $topBarTitleColor; }
         &.divider { position: relative; padding: 0; display: block; background: darken($topBarBgColor, 15%); width: 1px; height: 100%; @include box-shadow(1px 0 0 rgba(255,255,255,0.15)); margin-right: 1px; }
         &.search { padding: 0 $topBarHeight / 3; height: $topBarHeight;
           form { display: inline-block; vertical-align: middle; margin-bottom: 0; margin-top: -1px; width: $topBarSearchWidth; min-width: $topBarSearchWidth;
