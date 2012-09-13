@@ -9,7 +9,7 @@
     $.fn.foundationButtons          ? $doc.foundationButtons() : null;
     $.fn.foundationAccordion        ? $doc.foundationAccordion() : null;
     $.fn.foundationNavigation       ? $doc.foundationNavigation() : null;
-    $.fn.foundationTopBar           ? $doc.foundationTopBar({breakPoint: 1085}) : null;
+    $.fn.foundationTopBar           ? $doc.foundationTopBar({breakPoint: 1000}) : null;
     $.fn.foundationCustomForms      ? $doc.foundationCustomForms() : null;
     $.fn.foundationMediaQueryViewer ? $doc.foundationMediaQueryViewer() : null;
     $.fn.foundationTabs             ? $doc.foundationTabs({callback : $.foundation.customForms.appendCustomMarkup}) : null;

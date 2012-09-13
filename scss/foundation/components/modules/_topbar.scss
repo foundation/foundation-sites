@@ -5,7 +5,7 @@
     -jquery.foundation.topbar.js
 
   Notes:
-    - <nav class="top-bar"> can have .fixed added to make it stick to the top of viewport
+    - <nav class="top-bar"> can have .fixed added to make it stick to the top of viewport. Can add .contain-to-grid to top-bar to make it full width but content on grid.
     - <li class="name"> creates a branding area that can be linked to homepage
       - Can include text, image or both inside this <li>.
     - <li class="divider"> creates a divider between nav items, add margins for space
@@ -13,6 +13,13 @@
 */
 
   .top-bar { width: 100%; background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0;
+    &.contain-to-grid { width: $rowWidth; margin: 0 auto;
+      &:before, &:after { content:""; height: $topBarHeight; width: 1000px; position: absolute; background: $topBarBgColor; }
+      &:before { left: -100%; }
+      &:after { right: -100%; }
+      &.fixed { position: fixed; left: 50%; margin-left: -($rowWidth / 2); }
+      ul li.name h1 a { padding-left: $columnGutter / 2; }
+    }
     ul { list-style: none; height: $topBarHeight; line-height: $topBarHeight; width: auto; display: inline;
       li { float: left;
         a:not(.button) { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
@@ -96,7 +103,11 @@
 
     .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0;
       .js-generated { display: block !important; }
-      section { position: relative; left: 0; @include single-transition(left, 300ms); }
+      &.contain-to-grid { width: auto; margin: 0 auto;
+        &:before, &:after { display: none; }
+        &.fixed { position: static; left: auto; margin-left: auto; }
+      }
+      section { position: relative; width: auto; left: 0; @include single-transition(left, 300ms); }
 
       ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: block; background: lighten($topBarBgColor, 5%);
         li { float: none;
@@ -113,7 +124,7 @@
           }
           a { padding: 0 $topBarHeight / 2;
             &.active { background: darken($topBarBgColor, 3%); }
-            &.button { margin: $topBarHeight / 3 $topBarHeight / 3;}
+            &.button { margin: $topBarHeight / 3 $topBarHeight / 3; }
           }
           &.divider { width: 100%; clear: both; height: 0px !important; margin: 8px 0; border-top: solid 1px darken($topBarBgColor, 15%); border-bottom: solid 1px rgba(255,255,255,0.2); }
           &.search { padding: 0 $topBarHeight / 2;
