@@ -28,13 +28,16 @@
             var $this = $(this),
                 $topbar = $this.closest('.top-bar');
 
+            if (!settings.initialized) {
+              methods.assemble($topbar);
+              settings.initialized = true;
+            }
+
+            if (!settings.height) {
+              methods.largestUL($topbar);
+            }
+
             if (methods.breakpoint()) {
-
-              if (!settings.initialized) {
-                methods.assemble($topbar);
-                settings.initialized = true;
-              }
-
               $topbar.toggleClass('expanded');
             }
           });
@@ -56,10 +59,6 @@
               $selectedLi.addClass('moved');
               $section.css({'left': -(100 * settings.index) + '%'});
               $section.find('>.name').css({'left': 100 * settings.index + '%'});
-
-              if (!settings.height) {
-                methods.largestUL($topbar);
-              }
 
               $this.siblings('ul').height(settings.height + 40);
             }
