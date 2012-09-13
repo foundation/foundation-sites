@@ -7,6 +7,20 @@ $columnGutter: 30px !default;
 $totalColumns: 12 !default;
 $mobileTotalColumns: 4 !default;
 
+// Text Direction Settings
+
+$textDirection: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
+$defaultFloat: left !default; // Change this to 'right' for right-to-left languages
+$defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
+
+@if $textDirection == ltr {
+  $defaultFloat: left;
+  $defaultOpposite: right;
+} @else {
+  $defaultFloat: right;
+  $defaultOpposite: left;
+}
+
 // Colors Settings
 
 $mainColor: #2ba6cb !default;
@@ -52,7 +66,13 @@ $navBarHeight: 40px !default;
 $navFlyoutBaseWidth: 250px !default;
 
 // UI Settings
-$thumbRadius: 3px;
+
+$thumbRadius: 3px !default;
+
+$progBarHeight: 25px !default;
+$progBarBorderColor: darken($white, 20%) !default;
+$progBarBorderSize: 1px !default;
+$progBarPad: 2px !default;
 
 // Off Canvas Width Settings
 
@@ -85,6 +105,21 @@ $tapToCloseFontWeight: normal !default;
 $tapToCloseFontColor: #888 !default;
 $tooltipFontSizeScreenSmall: 14 !default;
 $tooltipBackgroundOpacityScreenSmall: 0.85 !default;
+
+// Top Bar Settings
+
+$topBarBgColor: #222 !default;
+$topBarHeight: 45px !default;
+$topBarBtmMargin: 30px !default;
+$topBarTitleWeight: bold !default;
+$topBarTitleSize: ms(1) !default;
+$topBarLinkColor: $white !default;
+$topBarLinkWeight: bold !default;
+$topBarLinkSize: ms(0) - 1 !default;
+$topBarDropToggleSize: 5px !default;
+$topBarSearchWidth: 200px !default;
+$topBarBreakPoint: 1000px !default; // Change to 9999px for always mobile layout
+$topBarNavToggleSize: 8px !default;
 
 // Media Queries
 

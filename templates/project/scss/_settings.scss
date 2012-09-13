@@ -9,6 +9,10 @@
 // $totalColumns: 12;
 // $mobileTotalColumns: 4;
 
+// Text Direction Settings
+
+// $textDirection: ltr; // Controls default global text direction, 'rtl' or 'ltr'
+
 // Colors Settings
 
 // $mainColor: #2ba6cb;
@@ -53,12 +57,23 @@
 // $navBarHeight: 40px;
 // $navFlyoutBaseWidth: 250px;
 
+// UI Settings
+
+// $thumbRadius: 3px;
+
+// $progBarHeight: 25px;
+// $progBarBorderColor: darken($white, 20%);
+// $progBarBorderSize: 1px;
+// $progBarPad: 2px;
+
 // Modular Scale
+
 // $ratio: $golden;
 // $baseFontSize: 14px;
 // $importantModNum: 44px;
 
 // Tooltip Settings
+
 // $hasTipBorderBottom: dotted 1px #ccc;
 // $hasTipFontWeight: bold;
 // $hasTipFontColor: #333;
@@ -74,3 +89,18 @@
 // $tapToCloseFontColor: #888;
 // $tooltipFontSizeScreenSmall: 14;
 // $tooltipBackgroundOpacityScreenSmall: 0.85;
+
+// Top Bar Settings
+
+// $topBarBgColor: #222;
+// $topBarHeight: 45px;
+// $topBarBtmMargin: 30px;
+// $topBarTitleWeight: bold;
+// $topBarTitleSize: ms(1);
+// $topBarLinkColor: $white;
+// $topBarLinkWeight: bold;
+// $topBarLinkSize: ms(0) - 1;
+// $topBarDropToggleSize: 5px;
+// $topBarSearchWidth: 200px;
+// $topBarBreakPoint: 900px; // Change to 9999px for always mobile layout
+// $topBarNavToggleSize: 8px;
