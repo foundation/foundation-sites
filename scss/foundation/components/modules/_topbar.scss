@@ -86,7 +86,7 @@
                 &:hover { background: lighten($topBarBgColor, 10%); }
               }
               label { color: lighten($topBarBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
-              &.divider { border-top: solid 1px darken($topBarBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 5px; padding: 0; width: 100%; }
+              &.divider { border-top: solid 1px darken($topBarBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
               &:last-child { padding-bottom: 10px; }
             }
           }
@@ -158,6 +158,7 @@
 
       ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: block;
         li { float: none;
+          &.active, &:hover { background: darken($topBarBgColor, 5%); }
 
           /* Branding and name */
           &.name { background: darken($topBarBgColor, 20%);
@@ -169,9 +170,9 @@
             a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeight / 2; margin-top: -($topBarNavToggleSize / 2); }
             @if $topBarBreakPoint == 9999px { a { right: ($topBarHeight / 2) + ($columnGutter / 2);} }
           }
-          a.active { background: darken($topBarBgColor, 3%);
-            &.button { display: block; margin: $topBarHeight / 3 $topBarHeight / 3; width: auto; }
-          }
+          // a.active { background: darken($topBarBgColor, 3%);
+          //   &.button { display: block; margin: $topBarHeight / 3 $topBarHeight / 3; width: auto; }
+          // }
           &.toggle-topbar a { padding: 0 !important; }
 
           /* Divider for breakpoint */
@@ -201,7 +202,7 @@
                   }
                   a, label { padding: 0 $topBarHeight / 2; }
                   a:hover { background: transparent; display: block; }
-                  &.divider { margin-top: 8px !important; margin-bottom: 8px !important; }
+                  &.divider { border-bottom: solid 1px rgba(255,255,255,0.1); margin-top: 8px !important; margin-bottom: 8px !important; }
                 }
               }
               .back.title { padding-bottom: 0;
