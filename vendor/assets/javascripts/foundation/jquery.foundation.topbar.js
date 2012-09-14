@@ -13,7 +13,7 @@
 
   var settings = {
       index : 0,
-      breakPoint : 1085, // Set to to 'true' to force it into responsive always
+      breakPoint : 940, // Set to to 9999 to force it into responsive always
       initialized : false
     },
     methods = {
@@ -32,11 +32,8 @@
           if (!settings.height) {
             methods.largestUL();
           }
-          // $('*').on('click', function(e) {
-          //   console.log($(this).html());
-          // });
 
-          $('.top-bar .toggle-nav').live('click.fndtn', function (e) {
+          $('.top-bar .toggle-topbar').live('click.fndtn', function (e) {
             e.preventDefault();
 
             if (methods.breakpoint()) {
@@ -46,9 +43,6 @@
           });
 
           // Show the Dropdown Levels on Click
-          // $('.top-bar .has-dropdown>a').live('touchstart touchend', function (e) {
-          //   e.preventDefault();
-          // });
           $('.top-bar .has-dropdown>a').live('click.fndtn', function (e) {
             e.preventDefault();
 
