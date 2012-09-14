@@ -13,6 +13,7 @@
     $doc.on('click.fndtn', '.button.dropdown, .button.dropdown.split span', function (e) {
       // Stops further propagation of the event up the DOM tree when clicked on the button.
       // Events fired by its descendants are not being blocked.
+      $('.button.dropdown').children('ul').removeClass('show-dropdown');
       if (e.target === this) {
         e.stopPropagation();
       }
