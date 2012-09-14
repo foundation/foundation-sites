@@ -22,9 +22,11 @@
     }
     ul { list-style: none; height: $topBarHeight; line-height: $topBarHeight; width: auto; display: inline;
       li { float: left;
-        a:not(.button) { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor !important; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
-          &:hover { color: darken($topBarLinkColor, 20%); }
+        a:not(.button) { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
           img { vertical-align: middle; margin-top: -5px; }
+        }
+        &:hover { background: darken($topBarBgColor, 20%);
+          a { color: darken($topBarLinkColor, 15%); }
         }
         &.active { background: darken($topBarBgColor, 5%);
           a { color: darken($topBarLinkColor, 15%); }
