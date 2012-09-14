@@ -242,5 +242,5 @@
       }
     }
     .top-bar ul li.has-button { padding: 0 $navBarHeight / 2 5px; }
-    .top-bar ul li .button.small { margin: 0; display: inline-block; width: 100%; }
+    .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
   }
