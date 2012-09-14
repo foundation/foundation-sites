@@ -27,7 +27,7 @@
     &.large   { width: 60%; margin-#{$defaultFloat}: -30%; }
     &.xlarge  { width: 70%; margin-#{$defaultFloat}: -35%; }
     &.expand  { width: 90%; margin-#{$defaultFloat}: -45%; }
-    .row { min-width: 0; }
+    .row { min-width: 0; margin-bottom: 10px; }
   }
 
   /* Mobile */
