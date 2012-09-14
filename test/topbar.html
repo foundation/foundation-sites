@@ -27,7 +27,7 @@
 
   <!-- <div class="row">
     <div class="six columns"> -->
-      <nav class="top-bar"> <!-- Could do .fixed to fix to top or .contain-to-grid for grid width -->
+      <nav class="top-bar fixed contain-to-grid"> <!-- Could do .fixed to fix to top or .contain-to-grid for grid width -->
         <ul>
           <!-- Title Area -->
           <li class="name">
@@ -45,8 +45,8 @@
           <!-- Left Nav Section -->
           <ul class="left">
             <li class="divider"></li>
-            <li class="has-dropdown">
-              <a class="active" href="#">Main Item 1</a>
+            <li class="active has-dropdown">
+              <a href="#">Main Item 1</a>
               <ul class="dropdown">
                 <li><a href="#">Dropdown Option</a></li>
                 <li><a href="#">Dropdown Option</a></li>
@@ -56,10 +56,7 @@
               </ul>
             </li>
             <li class="divider"></li>
-            <li class="has-dropdown">
-              <a href="#">Main Item 2</a>
-
-            </li>
+            <li><a href="#">Main Item 2</a></li>
             <li class="divider"></li>
             <li class="has-dropdown">
               <a href="#">Main Item 3</a>

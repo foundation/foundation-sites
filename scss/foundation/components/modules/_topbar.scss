@@ -22,10 +22,12 @@
     }
     ul { list-style: none; height: $topBarHeight; line-height: $topBarHeight; width: auto; display: inline;
       li { float: left;
-        a:not(.button) { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
+        a:not(.button) { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor !important; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
           &:hover { color: darken($topBarLinkColor, 15%); }
           img { vertical-align: middle; margin-top: -5px; }
-          &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
+        }
+        &.active { background: darken($topBarBgColor, 5%);
+          a { color: darken($topBarLinkColor, 15%); }
         }
         a.button { margin: 0 $topBarHeight / 4;}
         &.name {
@@ -46,7 +48,7 @@
         /* Has Dropdown Hover <li> */
         &.has-dropdown {
           &:hover {
-            &>.dropdown { display: block; visibility: visible; }
+              &>.dropdown { display: block; visibility: visible; }
           }
           a { padding-right: $topBarHeight * .75;
             &:after { margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, #fff, top); position: absolute; top: 47%; right: 0; }
@@ -83,14 +85,14 @@
 
       }
       &.left { float: left; width: auto; }
-      &.right { float: right; width: auto;
+        &.right { float: right; width: auto;
 
-        /* Dropdown Level 1 Right Side Alignment */
-        .has-dropdown .dropdown { left: auto; right: -1px; }
+          /* Dropdown Level 1 Right Side Alignment */
+          .has-dropdown .dropdown { left: auto; right: -1px; }
 
-        /* Dropdown Level 2 Right Side Alignment */
-        .has-dropdown .dropdown li {
-          &.has-dropdown > .dropdown { width: 100%; left: auto; right: 100%; }
+          /* Dropdown Level 2 Right Side Alignment */
+          .has-dropdown .dropdown li {
+           &.has-dropdown > .dropdown { width: 100%; left: auto; right: 100%; }
         }
 
       }
@@ -104,6 +106,16 @@
     .top-bar ul li.search form input[type=search] { font-size: 14px; padding: 3px; height: 22px; }
   }
 
+  .lt-ie9 .top-bar ul li a { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
+    &.button { height: auto; line-height: 30px; margin-top: 7px; }
+    &:hover { color: darken($topBarLinkColor, 15%); }
+    img { vertical-align: middle; margin-top: -5px; }
+    &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
+  }
+  .lt-ie9 .top-bar ul li.has-dropdown { padding-right: $topBarHeight * .75;
+    &>ul li { padding-right: 0; }
+  }
+
   @media only screen and (max-width: $topBarBreakPoint) {
 
     .top-bar { height: $topBarHeight; overflow: hidden; margin-bottom: 0; min-height: 0;
@@ -112,6 +124,7 @@
         &:before, &:after { display: none; }
         &.fixed { position: static; left: auto; margin-left: auto; }
       }
+      &.fixed.expanded { height: auto; }
       section { position: relative; width: auto; left: 0; @include single-transition(left, 300ms); }
 
       ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: block; background: lighten($topBarBgColor, 5%);
@@ -145,9 +158,12 @@
             a { padding-right: $topBarHeight * .75;
               &:after { margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
             }
+            &:hover {
+                &>.dropdown { display: block; visibility: hidden; }
+            }
             .dropdown { z-index: 0 !important; visibility: hidden; background: lighten($topBarBgColor, 5%); }
             &.moved { position: static;
-              .dropdown { top: 0; /* display: block; */ visibility: visible;
+              .dropdown { top: 0; visibility: visible;
                 li {
                   label { margin-bottom: 6px; padding-top: 6px !important; font-size: ms(0) - 3; }
                   &:not(.title) { padding-bottom: 0;
