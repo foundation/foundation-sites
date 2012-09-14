@@ -23,7 +23,7 @@
     ul { list-style: none; height: $topBarHeight; line-height: $topBarHeight; width: auto; display: inline;
       li { float: left;
         a:not(.button) { font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; display: block; color: $topBarLinkColor !important; line-height: $topBarHeight; height: $topBarHeight; padding: 0 $topBarHeight / 3;
-          &:hover { color: darken($topBarLinkColor, 15%); }
+          &:hover { color: darken($topBarLinkColor, 20%); }
           img { vertical-align: middle; margin-top: -5px; }
         }
         &.active { background: darken($topBarBgColor, 5%);
