@@ -81,6 +81,7 @@
       .row {
         .mobile-#{convert-number-to-word($i)} { width: gridCalc($i, $mobileTotalColumns) !important; float: $defaultFloat; padding: 0 ($columnGutter/2);
           &:last-child { float: $defaultOpposite; }
+          &.end { float: $defaultFloat; }
         }
         &.collapse {
           .mobile-#{convert-number-to-word($i)} { padding: 0; }
