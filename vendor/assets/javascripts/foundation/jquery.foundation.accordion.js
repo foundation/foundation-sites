@@ -3,7 +3,7 @@
 
   $.fn.foundationAccordion = function (options) {
 
-    $('.accordion li', this).on('click.fndtn', function () {
+    $('.accordion li', this).live('click.fndtn', function () {
     var p = $(this).parent(); //changed this
       var flyout = $(this).children('.content').first();
       $('.content', p).not(flyout).hide().parent('li').removeClass('active'); //changed this
