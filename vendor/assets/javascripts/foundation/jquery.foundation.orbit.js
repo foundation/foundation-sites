@@ -40,7 +40,8 @@
       afterSlideChange: $.noop,   // empty function
       afterLoadComplete: $.noop, //callback to execute after everything has been loaded
       fluid: true,
-      centerBullets: true    // center bullet nav with js, turn this off if you want to position the bullet nav manually
+      centerBullets: true,   // center bullet nav with js, turn this off if you want to position the bullet nav manually
+      singleCycle: false     // cycles through orbit slides only once	  
     },
 
     activeSlide: 0,
@@ -578,6 +579,10 @@
         }
 
         this.setCaption();
+      }
+	  
+      if (this.$slides.last() && this.options.singleCycle) {
+        this.stopClock();
       }
     }
   };
