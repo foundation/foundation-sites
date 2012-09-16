@@ -11,12 +11,10 @@
 // @import "compass/css3";
 // @import "foundation/settings";
 // @import "foundation/functions/all";
-// @import "foundation/common/globals";
-// @import "foundation/mixins/clearfix";
-// @import "modular-scale";
 
 // Control which mixins you have access too
 
+// @import "foundation/mixins/clearfix";
 // @import "foundation/mixins/css-triangle";
 // @import "foundation/mixins/font-size";
 
@@ -24,6 +22,9 @@
 
 // @import "foundation/mixins/respond-to";
 // @import "foundation/mixins/semantic-grid";
+
+// @import "foundation/common/globals";
+// @import "modular-scale";
 
 // Must include the grid for any responsiveness
 
@@ -44,4 +45,3 @@
 // @import "foundation/components/modules/orbit";
 // @import "foundation/components/modules/reveal";
 // @import "foundation/components/modules/offcanvas";
-
