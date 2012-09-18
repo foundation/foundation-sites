@@ -62,5 +62,5 @@
   %c-base { @include columnBase(); }
 
   @for $i from 1 through $totalColumns {
-    .c-#{$i} { @include column($i); }
+    %c-#{$i} { @include column($i); }
   }
