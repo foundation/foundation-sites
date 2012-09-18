@@ -19,7 +19,7 @@
     &.contain-to-grid { margin: 0 auto; position: relative; width: $rowWidth;
 
       /* Get the black bar to extend all the way */
-      &:before, &:after { background: $topBarBgColor; content:""; display: block; height: $topBarHeight; position: absolute; width: 1000px; }
+      &:before, &:after { background: $topBarBgColor; content:""; display: block; height: $topBarHeight; position: absolute; width: 100%; }
       &:before { left: -100%; }
       &:after { right: -100%; }
 

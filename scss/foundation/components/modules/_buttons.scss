@@ -44,16 +44,16 @@
     &.left-align { text-align: left; text-indent: 12px; }
 
 		/* Disabled ---------- */
-    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none); 
+    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none);
       :hover { background: $mainColor; }
-      
-      &.success { background-color: $successColor; 
+
+      &.success { background-color: $successColor;
         &:hover { background-color: $successColor; }
       }
-      &.alert { background-color: $alertColor; 
+      &.alert { background-color: $alertColor;
         &:hover { background-color: $alertColor; }
       }
-      &.secondary { background-color: $secondaryColor; 
+      &.secondary { background-color: $secondaryColor;
         &:hover { background-color: $secondaryColor; }
       }
     }
@@ -133,7 +133,7 @@
         &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -6px; margin-top: -2px; }
       }
       &.secondary>span:after { @include cssTriangle(6px, darken(($secondaryColor), 80%), top); }
-      
+
       &.large span { width: $largeBtnBase * 3; }
       &.small span { width: $smallBtnBase * 3; }
       &.tiny span { width: $tinyBtnBase * 3; }
@@ -167,12 +167,12 @@
         &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
       }
       &:first-child a {
-        &.button, &.button.radius {  @include border-corner-radius($defaultFloat, $buttonRadius); }
-        &.button.rounded { @include border-corner-radius($defaultFloat, 1000px); }
+        &.button, &.button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
+        &.button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
       }
       &:last-child a {
-        &.button, &.button.radius {  @include border-corner-radius($defaultOpposite, $buttonRadius); }
-        &.button.rounded { @include border-corner-radius($defaultOpposite, 1000px); }
+        &.button, &.button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
+        &.button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
       }
     }
 
@@ -185,8 +185,8 @@
       &.five-up li { width: 20%; }
     }
   }
-  
-  @media only screen and (max-width: $screenSmall - 1) {    
+
+  @media only screen and (max-width: $screenSmall - 1) {
     .button-group {
       button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + 1);
         &.large     { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
