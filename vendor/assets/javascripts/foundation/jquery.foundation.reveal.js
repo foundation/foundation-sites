@@ -446,12 +446,23 @@
 
       }// end openAnimation
 
+
+      function openVideos() {
+        var video = modal.find('.flex-video'),
+            iframe = video.find('iframe');
+        if (iframe.length > 0) {
+          iframe.attr("src", iframe.data("src"));
+          video.fadeIn(100);
+        }
+      }
+
       //
       // Bind the reveal 'open' event.
       // When the event is triggered, openAnimation is called
       // along with any function set in the options.open property.
       //
       modal.bind( 'reveal:open.reveal', openAnimation );
+      modal.bind( 'reveal:open.reveal', openVideos);
 
       /**
        * Closes the modal element(s)
@@ -668,10 +679,21 @@
 
       }
 
+      function closeVideos() {
+        var video = modal.find('.flex-video'),
+            iframe = video.find('iframe');
+        if (iframe.length > 0) {
+          iframe.data("src", iframe.attr("src"));
+          iframe.attr("src", "");
+          video.fadeOut(100);  
+        }
+      }
+
       //
       // Bind the modal 'close' event
       //
       modal.bind( 'reveal:close.reveal', closeAnimation );
+      modal.bind( 'reveal:closed.reveal', closeVideos );
       //
       // Bind the modal 'opened' + 'closed' event
       // Calls the unlockModal method.
