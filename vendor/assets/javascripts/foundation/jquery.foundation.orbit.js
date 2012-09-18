@@ -9,7 +9,7 @@
 
 (function ($) {
   'use strict';
-  
+
   $.fn.findFirstImage = function () {
     return this.first()
             .find('img')
@@ -78,7 +78,7 @@
       this.$element = $(element);
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
       this.$slides = this.$element.children('img, a, div');
-      
+
       this.$element.bind('orbit.next', function () {
         self.shift('next');
       });
@@ -117,7 +117,7 @@
       this.$element
         .addClass('orbit')
         .css({width: '1px', height: '1px'});
-      
+
       this.$slides.addClass('orbit-slide');
 
       this.setDimentionsFromLargestSlide();
@@ -154,7 +154,7 @@
       //Collect all slides and set slider size of largest image
       var self = this,
           $fluidPlaceholder;
-      
+
       self.$element.add(self.$wrapper).width(this.$slides.first().outerWidth());
       self.$element.add(self.$wrapper).height(this.$slides.first().height());
       self.orbitWidth = this.$slides.first().outerWidth();
@@ -186,11 +186,11 @@
           //var inner = $("<div/>").css({"display":"inline-block", "width":"2px", "height":"2px"});
           //$fluidPlaceholder = $("<div/>").css({"float":"left"});
           //$fluidPlaceholder.wrapInner(inner);
-          
+
           //$fluidPlaceholder = $("<div/>").css({"height":"1px", "width":"2px"});
           //$fluidPlaceholder = $("<div style='display:inline-block;width:2px;height:1px;'></div>");
         }
-        
+
         self.$element.prepend($fluidPlaceholder);
         $fluidPlaceholder.addClass('fluid-placeholder');
         self.$element.add(self.$wrapper).css({width: 'inherit'});
@@ -654,7 +654,7 @@ Commercial use requires attribution.
 
 var Holder = Holder || {};
 (function (app, win) {
-	
+
 var preempted = false,
 fallback = false,
 canvas = document.createElement('canvas');
@@ -785,7 +785,7 @@ app.run = function (o) {
 	var options = extend(settings, o),
 		images = selector(options.images),
 		preempted = true;
-		
+
 	for (var l = images.length, i = 0; i < l; i++) {
 		var theme = settings.themes.gray;
 		var src = images[i].getAttribute("data-src") || images[i].getAttribute("src");
@@ -811,16 +811,16 @@ app.run = function (o) {
 				images[i].setAttribute("data-src", src);
 				var dimensions_caption = dimensions.width + "x" + dimensions.height;
 				images[i].setAttribute("alt", text ? text : theme.text ? theme.text + " [" + dimensions_caption + "]" : dimensions_caption);
-				
+
 				// Fallback
         // images[i].style.width = dimensions.width + "px";
         // images[i].style.height = dimensions.height + "px";
 				images[i].style.backgroundColor = theme.background;
-				
+
 				var theme = (text ? extend(theme, {
 						text: text
 					}) : theme);
-				
+
 				if (!fallback) {
 					images[i].setAttribute("src", draw(ctx, dimensions, theme));
 				}
