@@ -11,7 +11,7 @@
     - <li class="divider"> creates a divider between nav items, add margins for space
     - <li class="search"> Needs to hold a <form> which can use .row.collapse and pre/postfix buttons or default type="search"
 */
-
+.top-bar-js-breakpoint {width:$topBarBreakPoint !important; visibility:hidden;}
   /* <nav> */
   .top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%;
 

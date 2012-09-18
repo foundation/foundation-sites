@@ -13,7 +13,6 @@
 
   var settings = {
       index : 0,
-      breakPoint : 767,
       initialized : false
     },
     methods = {
@@ -23,7 +22,9 @@
           settings.$w = $(window),
           settings.$topbar = $('nav.top-bar');
           settings.$titlebar = settings.$topbar.children('ul:first');
-          settings.breakPoint = settings.$topbar.data('breakpoint') || settings.breakPoint;
+          var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
+          settings.breakPoint = breakpoint.width();
+          breakpoint.remove();
 
           if (!settings.initialized) {
             methods.assemble();
@@ -40,6 +41,7 @@
             if (methods.breakpoint()) {
               settings.$topbar.toggleClass('expanded');
               settings.$topbar.css('min-height', '');
+              
             }
           });
 
