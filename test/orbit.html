@@ -101,7 +101,10 @@
 	<script src="../vendor/assets/javascripts/foundation/app.js"></script>
   <script type="text/javascript">
     $(window).load(function(){
-      $("#featured").orbit();
+      $("#featured").orbit({
+        animation: 'fade',
+        resetTimerOnClick: true
+      });
       $('#featuredContent').orbit({ fluid: '2x1' });
     });
   </script>
