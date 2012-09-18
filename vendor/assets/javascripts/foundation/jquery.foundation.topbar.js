@@ -13,7 +13,7 @@
 
   var settings = {
       index : 0,
-      breakPoint : 940, // Set to to 9999 to force it into responsive always
+      breakPoint : 767,
       initialized : false
     },
     methods = {
@@ -23,6 +23,7 @@
           settings.$w = $(window),
           settings.$topbar = $('nav.top-bar');
           settings.$titlebar = settings.$topbar.children('ul:first');
+          settings.breakPoint = settings.$topbar.data('breakpoint') || settings.breakPoint;
 
           if (!settings.initialized) {
             methods.assemble();
@@ -36,9 +37,10 @@
           $('.top-bar .toggle-topbar').live('click.fndtn', function (e) {
             e.preventDefault();
 
-            settings.$topbar.toggleClass('expanded');
-            settings.$topbar.css('min-height', '');
-            
+            if (methods.breakpoint()) {
+              settings.$topbar.toggleClass('expanded');
+              settings.$topbar.css('min-height', '');
+            }
           });
 
           // Show the Dropdown Levels on Click
