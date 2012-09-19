@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Top Bar 2.0
+ * jQuery Foundation Top Bar 2.0.1
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -41,7 +41,7 @@
             if (methods.breakpoint()) {
               settings.$topbar.toggleClass('expanded');
               settings.$topbar.css('min-height', '');
-              
+
             }
           });
 
