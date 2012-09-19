@@ -11,22 +11,21 @@
     - <li class="divider"> creates a divider between nav items, add margins for space
     - <li class="search"> Needs to hold a <form> which can use .row.collapse and pre/postfix buttons or default type="search"
 */
-.top-bar-js-breakpoint {width:$topBarBreakPoint !important; visibility:hidden;}
+
+  /* Element that controls breakpoint, no need to change this ever */
+  .top-bar-js-breakpoint { width: $topBarBreakPoint !important; visibility: hidden; }
+
+  /* Wrapped around .top-bar to contain to grid width */
+  .contain-to-grid { width: 100%; background: $topBarBgColor; }
+
+  /* Wrapped around .top-bar to make it fixed at the top */
+  .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
+
   /* <nav> */
   .top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%;
 
     /* Contain width to .row width */
-    &.contain-to-grid { margin: 0 auto; position: relative; width: $rowWidth;
-
-      /* Get the black bar to extend all the way */
-      &:before, &:after { background: $topBarBgColor; content:""; display: block; height: $topBarHeight; position: absolute; width: 100%; }
-      &:before { left: -100%; }
-      &:after { right: -100%; }
-
-      /* Contained and fixed at the top */
-      &.fixed { left: 50%; margin-left: -($rowWidth / 2); position: fixed; }
-      ul li.name h1 a { padding-left: $columnGutter / 2; }
-    }
+    .contain-to-grid & { width: $rowWidth; margin: 0 auto; }
 
     /* First <ul> for branding, title, name, etc */
     &>ul {
@@ -105,19 +104,16 @@
       }
 
       /* Left Side <ul> */
-      &.left { float: left; width: auto; }
+      &.left { float: left; width: auto; margin-bottom: 0; }
 
       /* Right Side <ul> */
-      &.right { float: right; width: auto;
+      &.right { float: right; width: auto; margin-bottom: 0;
         /* Dropdown Right Side Alignment */
         .has-dropdown .dropdown { left: auto; right: -1px;
           li.has-dropdown > .dropdown { right: 100%; left: auto; width: 100%; }
         }
       }
     }
-
-    /* Style for when you add 'fixed' as a class to .top-bar */
-    &.fixed { left: 0; position: fixed; top: 0; z-index: 99; }
 
     .js-generated { display: none; }
   }
@@ -147,11 +143,7 @@
       .js-generated { display: block; }
 
       /* Override contain to grid stuff for breakpoint */
-      &.contain-to-grid { margin: 0 auto; width: auto;
-        &:before, &:after { display: none; }
-        &.fixed { left: auto; margin-left: auto; position: static; }
-      }
-      &.fixed.expanded { height: auto; }
+      .contain-to-grid & { width: auto; }
 
       /* Setting up the sliding area */
       section { left: 0; position: relative; width: auto; @include single-transition(left, 300ms); }
@@ -162,7 +154,9 @@
 
           /* Branding and name */
           &.name { background: darken($topBarBgColor, 20%);
-            h1 { line-height: 1; }
+            h1 { line-height: 1;
+              a { padding-left: $topBarHeight / 2; }
+            }
           }
 
           /* Dropdown Toggle */
