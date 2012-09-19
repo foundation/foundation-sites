@@ -20,3 +20,4 @@ marketing/.sass-cache/*
 .sass-cache/*
 test/.sass-cache/*
 test/stylesheets/*
+*.orig
