@@ -137,6 +137,41 @@ that IE7/8 do not support :nth-child.
         &:nth-child(5n+1) { clear: both; }
       }
     }
+    &.six-up { margin: 0 -15px;
+      &>li { width: 16.6%; padding: 0 8px 8px;
+        &:nth-child(6n+1) { clear: both; }
+      }
+    }
+    &.seven-up { margin: 0 -15px;
+      &>li { width: 14.28%; padding: 0 8px 8px;
+        &:nth-child(7n+1) { clear: both; }
+      }
+    }
+    &.eight-up { margin: 0 -15px;
+      &>li { width: 12.5%; padding: 0 8px 8px;
+        &:nth-child(8n+1) { clear: both; }
+      }
+    }
+    &.nine-up { margin: 0 -15px;
+      &>li { width: 11.11%; padding: 0 8px 8px;
+        &:nth-child(9n+1) { clear: both; }
+      }
+    }
+    &.ten-up { margin: 0 -15px;
+      &>li { width: 10%; padding: 0 8px 8px;
+        &:nth-child(10n+1) { clear: both; }
+      }
+    }
+    &.eleven-up { margin: 0 -15px;
+      &>li { width: 9.09%; padding: 0 8px 8px;
+        &:nth-child(11n+1) { clear: both; }
+      }
+    }
+    &.twelve-up { margin: 0 -15px;
+      &>li { width: 8.33%; padding: 0 8px 8px;
+        &:nth-child(12n+1) { clear: both; }
+      }
+    }
   }
 
   /* Mobile Block Grids */
@@ -152,15 +187,43 @@ that IE7/8 do not support :nth-child.
       }
 
       &.mobile-three-up>li { width: 33.33%; 
-        &:nth-child(3n+1) { clear: both !important; }
+        &:nth-child(3n+1) { clear: both; }
       }
 
       &.mobile-four-up>li { width: 25%;
         &:nth-child(4n+1) { clear: both; }
       }
 
-      &.mobile-five-up>li {
+      &.mobile-five-up>li { width: 20%;
         &:nth-child(5n+1) { clear: both; }
+      }
+
+      &.mobile-six-up>li { width: 16.6%;
+        &:nth-child(6n+1) { clear: both; }
+      }
+
+      &.mobile-seven-up>li { width: 14.28%;
+        &:nth-child(7n+1) { clear: both; }
+      }
+
+      &.mobile-eight-up>li { width: 12.5%;
+        &:nth-child(8n+1) { clear: both; }
+      }
+
+      &.mobile-nine-up>li { width: 11.11%;
+        &:nth-child(9n+1) { clear: both; }
+      }
+
+      &.mobile-ten-up>li { width: 10%;
+        &:nth-child(10n+1) { clear: both; }
+      }
+
+      &.mobile-eleven-up>li { width: 9.09%;
+        &:nth-child(11n+1) { clear: both; }
+      }
+
+      &.mobile-twelve-up>li { width: 8.33%;
+        &:nth-child(12n+1) { clear: both; }
       }
     }
   }
