@@ -1,34 +1,41 @@
   /* Base Type Styles Using Modular Scale ---------------------- */
 
+  @import "compass/typography/vertical_rhythm";
+
+  @include establish-baseline;
+
   body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
     margin:0;
     padding:0;
     font-size: ms(0);
     direction: $textDirection;
+    line-height: $baseLineHeight;
   }
 
-  p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
-    &.lead { font-size: ms(0) * 1.25; line-height: 1.6; margin-bottom: ms(1); }
+  p { 
+    font-family: $bodyFontFamily; font-weight: $bodyFontWeight; margin-bottom: $base-line-height / 2; margin-top: $base-line-height / 2;
+    &.lead { font-size: ms(0) * 1.25; }
   }
-  aside p { font-size: ms(0) - 1; line-height: 1.35; font-style: italic; }
+  aside p { font-size: ms(0) - 1; font-style: italic; }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: $headerFontFamily;
     font-weight: $headerFontWeight;
     color: $headerFontColor;
     text-rendering: optimizeLegibility;
-    line-height: 1.1;
-    margin-bottom: ms(0);
-    margin-top: ms(0);
+    margin-bottom: $base-line-height / 2;
+    margin-top: $base-line-height / 2;
     small { font-size: 60%; color: lighten($headerFontColor, 30%); line-height: 0; }
   }
 
-  h1 { font-size: ms(5); }
-  h2 { font-size: ms(4); }
-  h3 { font-size: ms(3); }
-  h4 { font-size: ms(2); }
-  h5 { font-size: ms(1); }
-  h6 { font-size: ms(0); }
+  h6, .xs   { @include adjust-font-size-to(ms(0)); }
+  h5, .s    { @include adjust-font-size-to(ms(1)); }
+  h4, .m    { @include adjust-font-size-to(ms(2)); }
+  h3, .l    { @include adjust-font-size-to(ms(3)); }
+  h2, .xl   { @include adjust-font-size-to(ms(4)); }
+  h1, .xxl  { @include adjust-font-size-to(ms(5)); }
+  .xxxl     { @include adjust-font-size-to(ms(6)); }
+  .huge     { @include adjust-font-size-to(ms(7)); }
 
   hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 22px 0 21px; height: 0; }
 
