@@ -13,7 +13,7 @@
   }
 
   p { 
-    font-family: $bodyFontFamily; font-weight: $bodyFontWeight; margin-bottom: $base-line-height / 2; margin-top: $base-line-height / 2;
+    font-family: $bodyFontFamily; font-weight: $bodyFontWeight; margin-bottom: $baseLineHeight / 2; margin-top: $baseLineHeight / 2;
     &.lead { font-size: ms(0) * 1.25; }
   }
   aside p { font-size: ms(0) - 1; font-style: italic; }
@@ -23,9 +23,9 @@
     font-weight: $headerFontWeight;
     color: $headerFontColor;
     text-rendering: optimizeLegibility;
-    margin-bottom: $base-line-height / 2;
-    margin-top: $base-line-height / 2;
-    small { font-size: 60%; color: lighten($headerFontColor, 30%); line-height: 0; }
+    margin-bottom: $baseLineHeight / 2;
+    margin-top: $baseLineHeight / 2;
+    small { font-size: 60%; color: lighten($headerFontColor, 30%); }
   }
 
   h6, .xs   { @include adjust-font-size-to(ms(0)); }
@@ -37,9 +37,9 @@
   .xxxl     { @include adjust-font-size-to(ms(6)); }
   .huge     { @include adjust-font-size-to(ms(7)); }
 
-  hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 22px 0 21px; height: 0; }
+  hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: $baseLineHeight 0 $baseLineHeight; height: 0; }
 
-  .subheader { line-height: 1.3; color: lighten($headerFontColor, 30%); font-weight: 300; margin-bottom: ms(1); }
+  .subheader { color: lighten($headerFontColor, 30%); font-weight: 300; }
 
   em, i { font-style: italic; line-height: inherit; }
   strong, b { font-weight: bold; line-height: inherit; }
@@ -47,12 +47,12 @@
   code { font-weight: bold; background: $highlightColor; }
 
   /* Lists ---------------------- */
-  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
+  ul, ol { font-size: ms(0); margin-bottom: $baseLineHeight; list-style-position: inside; }
   ul {
     li {
-      ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
+      ul, ol { margin-#{$defaultFloat}: $baseLineHeight; margin-bottom: 0; }
     }
-    &.square, &.circle, &.disc { margin-#{$defaultFloat}: ms(1); }
+    &.square, &.circle, &.disc { margin-#{$defaultFloat}: $baseLineHeight; }
     &.square { list-style-type: square;
       li ul { list-style: inherit; }
     }
@@ -63,17 +63,17 @@
       li ul { list-style: inherit; }
     }
     &.no-bullet { list-style: none; }
-    &.large li { line-height: 21px; }
   }
   ol {
     li {
-      ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
+      ul, ol { margin-#{$defaultFloat}: $baseLineHeight; margin-bottom: 0; }
     }
   }
 
   /* Blockquotes ---------------------- */
-  blockquote, blockquote p { line-height: 1.5; color: lighten($headerFontColor, 30%); }
-  blockquote { margin: 0 0 ms(1); padding: 9px 20px 0 19px; border-#{$defaultFloat}: 1px solid #ddd;
+  blockquote, blockquote p { color: lighten($headerFontColor, 30%); }
+
+  blockquote { margin: 0 0 $baseLineHeight / 2; padding: $baseLineHeight / 2 $baseLineHeight 0 $baseLineHeight; border-#{$defaultFloat}: 1px solid #ddd;
     cite { display: block; font-size: ms(0) - 1; color: lighten($headerFontColor, 20%);
       &:before { content: "\2014 \0020"; }
       a, a:visited { color: lighten($headerFontColor, 20%); }

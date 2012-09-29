@@ -92,6 +92,7 @@ $base-size: $baseFontSize $importantModNum;
 
 // Settings for Compass vertical rhythm
 $relative-font-sizing: false; 
+$round-to-nearest-half-line: true;
 $base-font-size: $baseFontSize;
 $base-line-height: $baseLineHeight;
 
