@@ -47,9 +47,8 @@
 
           // Show the Dropdown Levels on Click
           $('.top-bar .has-dropdown>a').live('click.fndtn', function (e) {
-            e.preventDefault();
-
             if (methods.breakpoint()) {
+              e.preventDefault();
               var $this = $(this),
                   $selectedLi = $this.closest('li'),
                   $nextLevelUl = $selectedLi.children('ul'),
