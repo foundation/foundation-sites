@@ -37,7 +37,7 @@
   .xxxl     { @include adjust-font-size-to(ms(6)); }
   .huge     { @include adjust-font-size-to(ms(7)); }
 
-  hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: $baseLineHeight 0 $baseLineHeight; height: 0; }
+  hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: $baseLineHeight - 1 0 $baseLineHeight; height: 0; }
 
   .subheader { color: lighten($headerFontColor, 30%); font-weight: 300; }
 
