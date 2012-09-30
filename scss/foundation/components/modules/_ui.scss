@@ -141,7 +141,7 @@
 
   /* Alerts ---------------------- */
 
-  div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius(3px); text-shadow: 0 -1px rgba(#000,.3); position: relative;
+  div.alert-box { display: block; padding: $baseLineHeight / 4 - 1 $baseLineHeight / 2 $baseLineHeight / 4 - 1; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: $baseLineHeight / 2; @include border-radius(3px); text-shadow: 0 -1px rgba(#000,.3); position: relative;
 
     &.success { background-color: $successColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
     &.alert { background-color: $alertColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
@@ -155,7 +155,7 @@
 
   /* Labels ---------------------- */
 
-  .label { padding: 1px 4px 2px; font-size: ms(0) - 2; font-weight: bold; text-align: center; text-decoration: none; line-height: 1; white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: $mainColor;
+  .label { padding: 1px 4px 2px; font-size: ms(0) - 2; font-weight: bold; text-align: center; text-decoration: none; line-height: $baseLineHeight - 3; white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: $mainColor;
 
     &.radius { @include border-radius($buttonRadius); }
     &.round { padding: 1px 7px 2px; @include border-radius(1000px); }
@@ -209,7 +209,7 @@
 
   /* Panels ---------------------- */
 
-  .panel { background: darken($white, 5%); border: solid 1px darken($white, 10%); margin: 0 0 22px 0; padding: 20px;
+  .panel { background: darken($white, 5%); border: solid 1px darken($white, 10%); margin: 0 0 $baseLineHeight 0; padding: $baseLineHeight - 1;
 
     > :first-child { margin-top: 0; }
     > :last-child { margin-bottom: 0; }
@@ -228,21 +228,20 @@
 
   /* Accordion ---------------------- */
 
-  ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid $secondaryColor;
+  ul.accordion { margin: 0 0 $baseLineHeight - 1 0; border-bottom: 1px solid $secondaryColor;
 
     &>li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
-      .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-#{$defaultOpposite}: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
+      .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: $baseLineHeight / 2 - 1 $baseLineHeight / 2 $baseLineHeight / 2; margin: 0; position: relative;  border-left: 1px solid $secondaryColor; border-#{$defaultOpposite}: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
 
         h1, h2, h3, h4, h5 { margin: 0; }
-        &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), $defaultOpposite); position: absolute; #{$defaultOpposite}: 15px; top: 21px; }
+        &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), $defaultOpposite); position: absolute; #{$defaultOpposite}: 15px; top: $baseLineHeight / 2 + 4; }
       }
 
-      .content { display: none; padding: 15px; }
+      .content { display: none; padding: $baseLineHeight / 2 - 1 $baseLineHeight / 2  $baseLineHeight / 2; }
 
       &.active { border-top: 3px solid $mainColor;
 
-        .title { background: $white; padding-top: 13px;
-
+        .title { background: $white; padding-top: $baseLineHeight / 2 - 3;
           &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), top); }
         }
         .content { background: $white; display: block; border-#{$defaultFloat}: 1px solid $secondaryColor; border-#{$defaultOpposite}: 1px solid $secondaryColor; }
@@ -315,9 +314,9 @@
   }
 
   /* Link List */
-  ul.link-list { margin: 0 0 ms(1) -22px; padding: 0; list-style: none; overflow: hidden;
+  ul.link-list { margin-bottom: $baseLineHeight / 2; margin-left: -$baseLineHeight; padding: 0; list-style: none; overflow: hidden;
 
-    li { list-style: none; float: $defaultFloat; margin-#{$defaultFloat}: 22px; display: block;
+    li { list-style: none; float: $defaultFloat; margin-#{$defaultFloat}: $baseLineHeight; display: block;
 
       a { display: block; }
     }
@@ -392,7 +391,7 @@
 
   /* Progress Bar ---------------------- */
 
-  div.progress { padding: $progBarPad; margin-bottom: 10px; border: $progBarBorderSize solid $progBarBorderColor; height: $progBarHeight;
+  div.progress { padding: $progBarPad; margin-bottom: $baseLineHeight / 2; border: $progBarBorderSize solid $progBarBorderColor; height: $progBarHeight;
 
   	/* meter */
   	.meter { background: $mainColor; height: 100%; display: block; width:50%; }
