@@ -59,6 +59,7 @@ $formSpacing: 12px !default;
 // Tab Settings
 
 $tabHeight: 40px !default;
+$tabTermFontSize: ms(0) -2px;
 
 // Nav Bar Settings
 
@@ -120,6 +121,9 @@ $topBarDropToggleSize: 5px !default;
 $topBarSearchWidth: 200px !default;
 $topBarBreakPoint: 940px !default; // Change to 9999px for always mobile layout
 $topBarNavToggleSize: 8px !default;
+
+// UI Link Lists
+$linkListBottomMargin: ms(1) -22px;
 
 // Media Queries
 

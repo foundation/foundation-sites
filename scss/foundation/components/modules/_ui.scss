@@ -315,7 +315,7 @@
   }
 
   /* Link List */
-  ul.link-list { margin: 0 0 ms(1) -22px; padding: 0; list-style: none; overflow: hidden;
+  ul.link-list { margin: 0 0 $linkListBottomMargin; padding: 0; list-style: none; overflow: hidden;
 
     li { list-style: none; float: $defaultFloat; margin-#{$defaultFloat}: 22px; display: block;
 

@@ -7,7 +7,7 @@
   dl.tabs { border-bottom: solid 1px darken($white, 10%); display: block; height: $tabHeight; padding: 0; margin-bottom: 20px;
     &.contained { margin-bottom: 0; }
 
-    dt { color: darken($white, 30%); cursor: default; display: block; float: $defaultFloat; font-size: ms(0) - 2px; height: $tabHeight; line-height: $tabHeight; padding: 0; padding-#{$defaultOpposite}: 9px; padding-#{$defaultFloat}: 20px; width: auto; text-transform: uppercase;
+    dt { color: darken($white, 30%); cursor: default; display: block; float: $defaultFloat; font-size: $tabTermFontSize; height: $tabHeight; line-height: $tabHeight; padding: 0; padding-#{$defaultOpposite}: 9px; padding-#{$defaultFloat}: 20px; width: auto; text-transform: uppercase;
       &:first-child { padding: 0; padding-#{$defaultOpposite}: 9px; }
     }
 
