@@ -47,8 +47,10 @@
 
           // Show the Dropdown Levels on Click
           $('.top-bar .has-dropdown>a').live('click.fndtn', function (e) {
-            if (methods.breakpoint()) {
+            if (Modernizr.touch || methods.breakpoint())
               e.preventDefault();
+
+            if (methods.breakpoint()) {
               var $this = $(this),
                   $selectedLi = $this.closest('li'),
                   $nextLevelUl = $selectedLi.children('ul'),
