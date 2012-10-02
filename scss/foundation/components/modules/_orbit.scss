@@ -58,7 +58,7 @@
     position: absolute;
     top: 0;
     #{$defaultFloat}: -20px;
-    background: image-url("foundation/orbit/rotator-black.png") no-repeat;
+    background: url("../images/foundation/orbit/rotator-black.png") no-repeat;
     z-index: 3; }
 
   div.orbit-wrapper span.mask {
@@ -77,7 +77,7 @@
   div.orbit-wrapper span.mask.move {
     width: 40px;
     #{$defaultFloat}: 0;
-    background: image-url("foundation/orbit/timer-black.png") repeat 0 0; }
+    background: url("../images/foundation/orbit/timer-black.png") repeat 0 0; }
 
   div.orbit-wrapper span.pause {
     display: block;
@@ -86,12 +86,12 @@
     position: absolute;
     top: 0;
     #{$defaultFloat}: 0;
-    background: image-url("foundation/orbit/pause-black.png") no-repeat;
+    background: url("../images/foundation/orbit/pause-black.png") no-repeat;
     z-index: 4;
     opacity: 0; }
 
   div.orbit-wrapper span.pause.active {
-    background: image-url("foundation/orbit/pause-black.png") no-repeat 0 -40px }
+    background: url("../images/foundation/orbit/pause-black.png") no-repeat 0 -40px }
 
   div.orbit-wrapper div.timer:hover span.pause,
   div.orbit-wrapper span.pause.active {
@@ -132,18 +132,18 @@
     cursor: pointer; }
 
   div.orbit-wrapper div.slider-nav span.#{$defaultOpposite} {
-    background: image-url("foundation/orbit/#{$defaultOpposite}-arrow.png");
+    background: url("../images/foundation/orbit/#{$defaultOpposite}-arrow.png");
     background-size: 100%;
     #{$defaultOpposite}: 0; }
 
   div.orbit-wrapper div.slider-nav span.#{$defaultFloat} {
-    background: image-url("foundation/orbit/#{$defaultFloat}-arrow.png");
+    background: url("../images/foundation/orbit/#{$defaultFloat}-arrow.png");
     background-size: 100%;
     #{$defaultFloat}: 0; }
 
   .lt-ie9 {
-    div.orbit-wrapper div.slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow-small.png"); }
-    div.orbit-wrapper div.slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow-small.png"); }
+    div.orbit-wrapper div.slider-nav span.#{$defaultOpposite} { background: url("../images/foundation/orbit/#{$defaultOpposite}-arrow-small.png"); }
+    div.orbit-wrapper div.slider-nav span.#{$defaultFloat} { background: url("../images/foundation/orbit/#{$defaultFloat}-arrow-small.png"); }
   }
 
   /* Bullet Nav ---------------------- */
@@ -163,7 +163,7 @@
     cursor: pointer;
     color: #999;
     text-indent: -9999px;
-    background: image-url("foundation/orbit/bullets.jpg") no-repeat 4px 0;
+    background: url("../images/foundation/orbit/bullets.jpg") no-repeat 4px 0;
     width: 13px;
     height: 12px;
     overflow: hidden; }
@@ -207,7 +207,7 @@
     cursor: pointer;
     color: #999;
     text-indent: -9999px;
-    background: image-url("foundation/orbit/bullets.jpg") no-repeat 4px 0;
+    background: url("../images/foundation/orbit/bullets.jpg") no-repeat 4px 0;
     width: 13px;
     height: 12px;
     overflow: hidden; }
