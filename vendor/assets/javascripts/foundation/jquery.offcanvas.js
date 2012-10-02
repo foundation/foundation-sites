@@ -1,4 +1,4 @@
-;(function (window, document, $) {
+$(function() {
   // Set the negative margin on the top menu for slide-menu pages
   var $selector1 = $('#topMenu'),
     events = 'click.fndtn';
@@ -7,7 +7,7 @@
   // Watch for clicks to show the sidebar
   var $selector2 = $('#sidebarButton');
   if ($selector2.length > 0) {
-    $('#sidebarButton').on(events, function (e) {
+    $('#sidebarButton').on(events, function(e) {
       e.preventDefault();
       $('body').toggleClass('active');
     });
@@ -16,7 +16,7 @@
   // Watch for clicks to show the menu for slide-menu pages
   var $selector3 = $('#menuButton');
   if ($selector3.length > 0)  {
-    $('#menuButton').on(events, function (e) {
+    $('#menuButton').on(events, function(e) {
       e.preventDefault();
       $('body').toggleClass('active-menu');
     });
@@ -32,7 +32,7 @@
   // Switch panels for the paneled nav on mobile
   var $selector5 = $('#switchPanels');
   if ($selector5.length > 0)  {
-    $('#switchPanels dd').on(events, function (e) {
+    $('#switchPanels dd').on(events, function(e) {
       e.preventDefault();
       var switchToPanel = $(this).children('a').attr('href'),
           switchToIndex = $(switchToPanel).index();
@@ -41,10 +41,10 @@
     });
   }
 
-  $('#nav li a').on(events, function (e) {
+  $('#nav li a').on(events, function(e) {
     e.preventDefault();
     var href = $(this).attr('href'),
       $target = $(href);
     $('html, body').animate({scrollTop : $target.offset().top}, 300);
   });
-}(this, document, jQuery));
+});

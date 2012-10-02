@@ -1,0 +1,12 @@
+/* This is for all IE specfific style less than IE9. We hate IE. */
+
+	div.panel { border: 1px solid #ccc; }
+	.lt-ie8 .nav-bar li.has-flyout a { padding-right: 20px; }
+	.lt-ie8 .nav-bar li.has-flyout a:after { border-top: none; }
+	
+	/* Correct IE7 button padding */
+	.lt-ie8 input[type=submit].nice.button { filter:chroma(color=#000000); position: relative; top: -2px; }
+	.lt-ie8 input[type=submit].tiny.button		{ padding: 5px 5px 7px; }
+	.lt-ie8 input[type=submit].small.button		{ padding: 8px 7px 9px; }
+	.lt-ie8 input[type=submit].medium.button	{ padding: 9px 13px 9px; }
+	.lt-ie8 input[type=submit].large.button		{ padding: 9px 18px 10px; }

@@ -3,9 +3,9 @@ Welcome to Foundation
 
 Foundation is the most advanced responsive front-end framework in the world. With Foundation you can quickly prototype and build sites or apps that work on any kind of device, with tons of included layout constructs (like a full responsive grid), elements and best practices.
 
-Homepage:      http://foundation.zurb.com
-Documentation: http://foundation.zurb.com/docs
-Download:      http://foundation.zurb.com/download.php
+Homepage:      http://foundation.zurb.com  
+Documentation: http://foundation.zurb.com/docs  
+Download:      http://foundation.zurb.com/download.php  
 
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
 
@@ -20,7 +20,7 @@ Repo Contents
 ZURB
 ====
 
-Foundation was made by [ZURB](http://www.zurb.com), a product design company in Campbell, CA.
+Foundation was made by [ZURB](http://www.zurb.com), an interaction design and design strategy firm in Campbell, CA.
 
 If Foundation knocks your socks off the way we hope it does and you want more, why not check out [our jobs](http://www.zurb.com/talent)?
 
@@ -33,20 +33,14 @@ WordPress
 
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
 * [Reverie](http://themefortress.com/reverie/) by Zhen
-* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press
 
 Joomla
 
 * [Joomla Template](https://github.com/meridiansoftech/joomla_foundation_template) by Arnold Mwumva Ford, Meridian Softech
-* [Joomla Template](https://github.com/antonydoyle/siegeengine) by Antony Doyle, Siege21
 
 Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
-
-PyroCMS
-
-* [PyroYeti - PyroCMS Theme](https://github.com/pyrosuit/PyroYeti) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
 
 Django
 
@@ -59,10 +53,6 @@ MODX
 .NET
 
 * [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Zurb_Foundation_MVC3) by Edward Charbeneau, @EdCharbeneau
-
-CodeIgniter
-
-* [Responsive CodeIgniter BoilerPlate](https://github.com/meridiansoftech/meridian_ci_codebase) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
 
 Other Implementations
 
@@ -86,10 +76,6 @@ Grid displayer
 
 * [Grid displayer bookmarklet](http://alefeuvre.github.com/foundation-grid-displayer/) by [Antoine Lefeuvre](http://twitter.com/jiraisurfer)
 * [Responsive Design Bookmarklet](http://responsive.victorcoulon.fr/) by [Victor Coulon](https://twitter.com/_victa)
-
-Modular Scale
-
-* [Modular Scale](https://github.com/scottkellum/modular-scale) by Mason Wendell and Scott Kellum
 
 MIT Open Source License
 =======================

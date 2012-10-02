@@ -14,6 +14,16 @@
 	<title>Welcome to Foundation</title>
 
 	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="stylesheets/foundation-style/globals.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/typography.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/grid.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/ui.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/buttons.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/tabs.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/navbar.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/forms.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/orbit.css">
+	<link rel="stylesheet" href="stylesheets/foundation-style/reveal.css">
 	<link rel="stylesheet" href="stylesheets/app.css">
 
 	<script src="javascripts/foundation/modernizr.foundation.js"></script>
@@ -29,7 +39,7 @@
 	<div class="row">
 		<div class="twelve columns">
 			<h2>Welcome to Foundation</h2>
-			<p>This is version <%= Foundation::VERSION %>.</p>
+			<p>This is version 3.0.5 released on July 10, 2012</p>
 			<hr />
 		</div>
 	</div>
@@ -118,14 +128,16 @@
 			</ul>
 		</div>
 	</div>
-	
-	<!-- Included JS Files (Uncompressed) -->
-	<script src="javascripts/foundation/jquery.js"></script>
-	<% @template[:options][:javascripts].each do |f| %>
-	<script src="javascripts/<%= f %>"></script>
-	<% end %>
-	
-  <!-- Application Javascript, safe to override -->
-  <script src="javascripts/foundation/app.js"></script>
+
+
+	<!-- Included JS Files -->
+	<script src="javascripts/jquery.min.js"></script>
+	<script src="javascripts/foundation/jquery.reveal.js"></script>
+	<script src="javascripts/foundation/jquery.orbit-1.4.0.js"></script>
+	<script src="javascripts/foundation/jquery.customforms.js"></script>
+	<script src="javascripts/foundation/jquery.placeholder.min.js"></script>
+	<script src="javascripts/foundation/jquery.tooltips.js"></script>
+	<script src="javascripts/app.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,46 @@
+  // Font size mixin to include px and rem
+
+  @mixin font-size($size, $is-important: false) {
+    @if $is-important {
+      font-size: $size + px !important;
+      font-size: ($size / 10) + rem !important;
+    } @else {
+      font-size: $size + px;
+      font-size: ($size / 10) + rem;
+    }
+  }
+
+  // Grid Calculation for Percentages
+
+  @function gridCalc($colNumber, $totalColumns) {
+    @return percentage(($colNumber / $totalColumns));
+  }
+
+  // Default Font Stack
+
+  @mixin defaultFontFamily {
+    font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+
+  // Create CSS Triangles in a Breeze
+
+  @mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid $triangleSize;
+    @if ($triangleDirection == top) {
+      border-color: $triangleColor transparent transparent transparent;
+    }
+    @if ($triangleDirection == bottom) {
+      border-color: transparent transparent $triangleColor transparent;
+    }
+    @if ($triangleDirection == left) {
+      border-color: transparent transparent transparent $triangleColor;
+    }
+    @if ($triangleDirection == right) {
+      border-color: transparent $triangleColor transparent transparent;
+    }
+    // .example { @include css-triangle(5px, #fff, bottom); }
+  }
