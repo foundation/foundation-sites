@@ -7,18 +7,18 @@
 */
 /*globals jQuery */
 
-( function ( $ ) {
+(function ($) {
   'use strict';
   //
   // Global variable.
   // Helps us determine if the current modal is being queued for display.
   //
   var modalQueued = false;
-  
+
   //
   // Bind the live 'click' event to all anchor elemnets with the data-reveal-id attribute.
   //
-  $( 'a[data-reveal-id]' ).live( 'click', function ( event ) {
+  $(document).on('click', 'a[data-reveal-id]', function ( event ) {
     //
     // Prevent default action of the event.
     //
@@ -126,7 +126,7 @@
     //
     // Apply the plugin functionality to each element in the jQuery collection.
     //
-    return this.each( function () {
+    return this.not('.reveal-modal.open').each( function () {
         //
         // Cache the modal element
         //
@@ -219,11 +219,11 @@
         //
         modalBg.fadeTo( 'fast', 0.8 );
       }
-      
+
       //
       // Helper Methods
       //
-      
+
       /**
        * Unlock the modal for animation.
        *
@@ -241,7 +241,7 @@
       function lockModal() {
         locked = true;
       }
-      
+
       /**
        * Closes all open modals.
        *
@@ -265,7 +265,7 @@
           //
           $openModals.trigger( "reveal:close" );
         }
-      
+
       }
       /**
        * Animates the modal opening.
@@ -316,7 +316,7 @@
             // So, faster than the modal element.
             //
             modalBg.fadeIn( options.animationSpeed / 2 );
-            
+
             //
             // Let's delay the next animation queue.
             // We'll wait until the background element is faded in.
@@ -349,7 +349,7 @@
               // This should trigger the functions set in the options.opened property.
               //
               modal.trigger( 'reveal:opened' );
-            
+
             }); // end of animate.
 
           } // end if 'fadeAndPop'
@@ -406,7 +406,7 @@
               // This should trigger the functions set in the options.opened property.
               //
               modal.trigger( 'reveal:opened' );
-            
+
             });
 
           } // end if 'fade'
@@ -439,12 +439,22 @@
             // Trigger the modal opened event.
             //
             modal.trigger( 'reveal:opened' );
-          
+
           } // end if animating 'none'
-      
+
         }// end if !locked
-      
+
       }// end openAnimation
+
+
+      function openVideos() {
+        var video = modal.find('.flex-video'),
+            iframe = video.find('iframe');
+        if (iframe.length > 0) {
+          iframe.attr("src", iframe.data("src"));
+          video.fadeIn(100);
+        }
+      }
 
       //
       // Bind the reveal 'open' event.
@@ -452,6 +462,7 @@
       // along with any function set in the options.open property.
       //
       modal.bind( 'reveal:open.reveal', openAnimation );
+      modal.bind( 'reveal:open.reveal', openVideos);
 
       /**
        * Closes the modal element(s)
@@ -489,7 +500,7 @@
               // Fade the modal out, by using the opacity property.
               //
               "opacity": 0
-            
+
             },
             /*
              * Fade speed.
@@ -503,7 +514,7 @@
               // Set the css hidden options.
               //
               modal.css( cssOpts.close );
-            
+
             });
             //
             // Is the modal animation queued?
@@ -541,13 +552,9 @@
               // This should trigger any method set in the options.closed propety.
               //
               modal.trigger( 'reveal:closed' );
-            
+
             } // end if !modalQueued
-            //
-            // Reset the modalQueued variable.
-            //
-            modalQueued = false;
-          
+
           } // end if animation 'fadeAndPop'
 
           //
@@ -609,9 +616,9 @@
               // This should trigger any method set in the options.closed propety.
               //
               modal.trigger( 'reveal:closed' );
-          
+
             } // end if !modalQueued
-          
+
           } // end if animation 'fade'
 
           //
@@ -637,11 +644,14 @@
             // This should trigger any method set in the options.closed propety.
             //
             modal.trigger( 'reveal:closed' );
-          
-          } // end if not animating
 
+          } // end if not animating
+          //
+          // Reset the modalQueued variable.
+          //
+          modalQueued = false;
         } // end if !locked
-      
+
       } // end closeAnimation
 
       /**
@@ -666,13 +676,24 @@
         // Unbind all .reveal events from the body.
         //
         $( 'body' ).unbind( '.reveal' );
-      
+
+      }
+
+      function closeVideos() {
+        var video = modal.find('.flex-video'),
+            iframe = video.find('iframe');
+        if (iframe.length > 0) {
+          iframe.data("src", iframe.attr("src"));
+          iframe.attr("src", "");
+          video.fadeOut(100);  
+        }
       }
 
       //
       // Bind the modal 'close' event
       //
       modal.bind( 'reveal:close.reveal', closeAnimation );
+      modal.bind( 'reveal:closed.reveal', closeVideos );
       //
       // Bind the modal 'opened' + 'closed' event
       // Calls the unlockModal method.
@@ -703,7 +724,7 @@
       // Handled by the options.closed property function.
       //
       modal.bind( 'reveal:closed.reveal', options.closed );
-      
+
       //
       // We're running this for the first time.
       // Trigger the modal 'open' event.
@@ -724,7 +745,7 @@
         modal.trigger( 'reveal:close' );
 
       });
-     
+
      //
      // Should we close the modal background on click?
      //
@@ -743,9 +764,9 @@
         // Trigger the modal 'close' event.
         //
         modal.trigger( 'reveal:close' );
-      
+
       });
-     
+
      }
 
      //
@@ -763,11 +784,11 @@
          //
          modal.trigger( 'reveal:close' );
        }
-      
+
       }); // end $(body)
 
     }); // end this.each
-  
+
   }; // end $.fn
 
 } ( jQuery ) );
