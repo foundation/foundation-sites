@@ -21,6 +21,7 @@
     } else {
       $('.nav-bar>li.has-flyout', this).on('mouseenter mouseleave', function (e) {
         if (e.type == 'mouseenter') {
+          $('.nav-bar').find('.flyout').hide();
           $(this).children('.flyout').show();
         }
 
@@ -45,6 +46,7 @@
             $(this).children('.flyout').hide();
           }
         }
+
       });
     }
 
