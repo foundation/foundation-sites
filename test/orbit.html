@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Foundation Orbit Testing</title>
+
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<style type="text/css">
+	 #featuredContent > div {background-color:#f8f8f8; padding:20px;}
+	</style>
+
+	<script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<div class="row">
+    <div class="twelve columns">
+      <p><a href="index.html">&laquo; Back</a></p>
+      <h2>Foundation Orbit Testing</h2>
+      <hr />
+    </div>
+  </div>
+
+	<!-- Test Foundation Components Here -->
+  <div class="row">
+    <div class="twelve columns">
+  		<h3>Orbit</h3>
+  		<h4 class="subheader">Orbit is an easy to use, powerful image slider built to be responsive, just like Foundation.</h4>
+
+
+      <div class="row">
+        <div class="four columns">
+          <h4>Image Slider</h4>
+          <p>This is an orbit slider that displays images.</p>
+        </div>
+        <div class="eight columns">
+          <div id="featured">
+            <img src="images/orbit-demo/demo1.jpeg" />
+            <img src="images/orbit-demo/demo2.jpeg" />
+            <img src="images/orbit-demo/demo3.jpeg" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="four columns">
+          <h4>Content Slider</h4>
+          <p>This is an orbit slider that displays content.</p>
+        </div>
+        <div class="eight columns">
+          <div id="featuredContent">
+            <div data-caption="#captionOne">
+              <h4>This is a content slider.</h4>
+              <p>Each slide holds arbitrary content, like text or actions.</p>
+            </div>
+            <div data-caption="#captionTwo">
+              <h4>We can include text and buttons, like this!</h4>
+              <p>We take no responsibility for what happens if you click this button.</p>
+              <p><a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button" target="_blank">Rock My World!</a></p>
+            </div>
+            <div data-caption="#captionThree">
+              <h4>What? You didn't click it?</h4>
+              <p>We'll give you the benefit of the doubt. Maybe you did, and now you're back!</p>
+            </div>
+          </div>
+          <span class="orbit-caption" id="captionOne">Here is a caption...</span>
+          <span class="orbit-caption" id="captionTwo">Here is a caption2...</span>
+          <span class="orbit-caption" id="captionThree">Here is a caption3...</span>
+        </div>
+      </div>
+  	</div>
+  </div>
+
+	<!-- Included JS Files -->
+	<script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.alerts.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.accordion.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.buttons.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.forms.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.navigation.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.reveal.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
+	<script src="../vendor/assets/javascripts/foundation/app.js"></script>
+  <script type="text/javascript">
+    $(window).load(function(){
+      $("#featured").orbit({
+        animation: 'fade',
+        resetTimerOnClick: true
+      });
+      $('#featuredContent').orbit({ fluid: '2x1' });
+    });
+  </script>
+</body>
+</html>

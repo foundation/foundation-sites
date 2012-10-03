@@ -1,0 +1,13 @@
+  // Font size mixin to include px and rem
+
+  @mixin font-size($size, $is-important: false) {
+    $size: if(unitless($size), $size, $size / 1px);
+    
+    @if $is-important {
+      font-size: $size + px !important;
+      font-size: ($size / 10) + rem !important;
+    } @else {
+      font-size: $size + px;
+      font-size: ($size / 10) + rem;
+    }
+  }
