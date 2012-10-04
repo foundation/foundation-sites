@@ -195,41 +195,14 @@
     .block-grid.mobile {
       &>li { float: none; width: 100%; margin-#{$defaultFloat}: 0; }
     }
+
     .block-grid {
       &>li { clear: none !important; }
-      &.mobile-one-up>li { width: 100%; }
-      &.mobile-two-up>li { width: 50%;
-        &:nth-child(2n+1) { clear: both; }
-      }
-      &.mobile-three-up>li { width: 33.33%;
-        &:nth-child(3n+1) { clear: both; }
-      }
-      &.mobile-four-up>li { width: 25%;
-        &:nth-child(4n+1) { clear: both; }
-      }
-      &.mobile-five-up>li { width: 20%;
-        &:nth-child(5n+1) { clear: both; }
-      }
-      &.mobile-six-up>li { width: 16.6%;
-        &:nth-child(6n+1) { clear: both; }
-      }
-      &.mobile-seven-up>li { width: 14.28%;
-        &:nth-child(7n+1) { clear: both; }
-      }
-      &.mobile-eight-up>li { width: 12.5%;
-        &:nth-child(8n+1) { clear: both; }
-      }
-      &.mobile-nine-up>li { width: 11.11%;
-        &:nth-child(9n+1) { clear: both; }
-      }
-      &.mobile-ten-up>li { width: 10%;
-        &:nth-child(10n+1) { clear: both; }
-      }
-      &.mobile-eleven-up>li { width: 9.09%;
-        &:nth-child(11n+1) { clear: both; }
-      }
-      &.mobile-twelve-up>li { width: 8.33%;
-        &:nth-child(12n+1) { clear: both; }
+      @for $i from 1 through $blockGridElements {
+        &.mobile-#{convert-number-to-word($i)}-up>li {
+          width: 100%/$i;
+          @if $i > 1 { &:nth-child(#{$i}n+1) { clear: both; } }
+        }
       }
     }
 
