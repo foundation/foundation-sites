@@ -18,11 +18,6 @@
 
 	<script src="javascripts/foundation/modernizr.foundation.js"></script>
 
-	<!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
 </head>
 <body>
 
@@ -118,13 +113,13 @@
 			</ul>
 		</div>
 	</div>
-	
+
 	<!-- Included JS Files (Uncompressed) -->
 	<script src="javascripts/foundation/jquery.js"></script>
 	<% @template[:options][:javascripts].each do |f| %>
 	<script src="javascripts/<%= f %>"></script>
 	<% end %>
-	
+
   <!-- Application Javascript, safe to override -->
   <script src="javascripts/foundation/app.js"></script>
 </body>
