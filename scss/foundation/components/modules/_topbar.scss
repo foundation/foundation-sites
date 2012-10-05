@@ -21,6 +21,8 @@
   /* Wrapped around .top-bar to make it fixed at the top */
   .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
 
+  body.has-fixed-topbar { padding-top: $topBarHeight; }
+
   /* <nav> */
   .top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%;
 
