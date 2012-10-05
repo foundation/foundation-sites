@@ -24,7 +24,7 @@
     label.right { text-align: left; }
   }
 
-  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: $formSpacing * 2; line-height: $formSpacing; }
+  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: $formSpacing * 1.5; line-height: $formSpacing * 1.5 - 2; }
   a.button.prefix, a.button.postfix { padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; text-align: center; }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
 
