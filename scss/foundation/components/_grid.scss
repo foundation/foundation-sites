@@ -111,29 +111,29 @@ that IE7/8 do not support :nth-child.
 
     &>li { display: block; height: auto; float: $defaultFloat; }
     &.one-up { margin: 0; 
-      &>li { width: 100%; padding: 0 0 15px; }
+      &>li { width: 100%; padding: $baseLineHeight / 2 0; }
     }
 
     &.two-up { margin: 0 -15px; 
-      &>li { width: 50%; padding: 0 15px 15px; 
+      &>li { width: 50%; padding: $baseLineHeight / 2 15px; 
         &:nth-child(2n+1) { clear: both; }
       }
     }
 
     &.three-up { margin: 0 -12px; 
-      &>li { width: 33.33%; padding: 0 12px 12px; 
+      &>li { width: 33.33%; padding: $baseLineHeight / 2 12px; 
         &:nth-child(3n+1) { clear: both; }
       }
     }
 
     &.four-up { margin: 0 -10px; 
-      &>li { width: 25%; padding: 0 10px 10px; 
+      &>li { width: 25%; padding: $baseLineHeight / 2 10px; 
         &:nth-child(4n+1) { clear: both; }
       }
     }
 
     &.five-up { margin: 0 -8px; 
-      &>li { width: 20%; padding: 0 8px 8px; 
+      &>li { width: 20%; padding: $baseLineHeight / 2 8px;
         &:nth-child(5n+1) { clear: both; }
       }
     }
