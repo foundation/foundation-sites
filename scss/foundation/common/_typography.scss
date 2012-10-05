@@ -17,7 +17,7 @@
   }
 
   p { 
-    font-family: $bodyFontFamily; font-weight: $bodyFontWeight; margin-bottom: $baseLineHeight / 2; margin-top: $baseLineHeight / 2;
+    font-family: $bodyFontFamily; font-weight: $bodyFontWeight; margin-bottom: $baseLineHeight;
     &.lead { font-size: ms(0) * 1.25; }
   }
   aside p { font-size: ms(0) - 1; font-style: italic; }
@@ -27,9 +27,8 @@
     font-weight: $headerFontWeight;
     color: $headerFontColor;
     text-rendering: optimizeLegibility;
-    margin-bottom: $baseLineHeight / 2;
-    margin-top: $baseLineHeight / 2;
-    small { font-size: 60%; color: lighten($headerFontColor, 30%); }
+    margin-bottom: $baseLineHeight;
+    small { font-size: 60%; line-height: 1; color: lighten($headerFontColor, 30%); }
   }
 
   h6, .xs   { @include adjust-font-size-to(ms(0)); }
@@ -41,7 +40,7 @@
   .xxxl     { @include adjust-font-size-to(ms(6)); }
   .huge     { @include adjust-font-size-to(ms(7)); }
 
-  hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: $baseLineHeight - 1 0 $baseLineHeight; height: 0; }
+  hr { border: solid #ddd; border-width: 1px 0 0; clear: both; height: $baseLineHeight; margin: $baseLineHeight 0 0 0; }
 
   .subheader { color: lighten($headerFontColor, 30%); font-weight: 300; }
 
@@ -77,7 +76,7 @@
   /* Blockquotes ---------------------- */
   blockquote, blockquote p { color: lighten($headerFontColor, 30%); }
 
-  blockquote { margin: 0 0 $baseLineHeight / 2; padding: $baseLineHeight / 2 $baseLineHeight 0 $baseLineHeight; border-#{$defaultFloat}: 1px solid #ddd;
+  blockquote { margin-bottom: $baseLineHeight; padding: $baseLineHeight / 2 $baseLineHeight; border-#{$defaultFloat}: 1px solid #ddd;
     cite { display: block; font-size: ms(0) - 1; color: lighten($headerFontColor, 20%);
       &:before { content: "\2014 \0020"; }
       a, a:visited { color: lighten($headerFontColor, 20%); }

@@ -324,7 +324,7 @@
 
   /* Keytroke Characters ---------------------- */
 
-  .keystroke, kbd { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
+  .keystroke, kbd { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; line-height: 1; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
 
   /* Image Thumbnails ---------------------- */
   .th { display: block;
