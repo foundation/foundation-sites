@@ -4,7 +4,7 @@
 
 /* Tabs ---------------------- */
 
-  dl.tabs { border-bottom: solid 1px darken($white, 10%); display: block; height: $tabHeight; padding: 0; margin-bottom: 20px;
+  dl.tabs { border-bottom: solid 1px darken($white, 10%); display: block; height: $tabHeight; padding: 0; margin-bottom: $baseLineHeight;
     &.contained { margin-bottom: 0; }
 
     dt { color: darken($white, 30%); cursor: default; display: block; float: $defaultFloat; font-size: ms(0) - 2px; height: $tabHeight; line-height: $tabHeight; padding: 0; padding-#{$defaultOpposite}: 9px; padding-#{$defaultFloat}: 20px; width: auto; text-transform: uppercase;
@@ -15,8 +15,8 @@
       a { color: lighten($txtColor, 30%); display: block; font-size: ms(0); height: $tabHeight; line-height: $tabHeight; padding: 0px ms(1) * 1.4;
         &:focus { font-weight: bold; color: $mainColor; }
       }
-      &.active { border-top: 3px solid $mainColor; margin-top: -3px;
-        a { cursor: default; color: lighten($txtColor, 10%); background: #fff; border-#{$defaultFloat}: 1px solid darken($white, 10%); border-#{$defaultOpposite}: 1px solid darken($white, 10%); font-weight: bold; }
+      &.active { border-top: 3px solid $mainColor;
+        a { height: $tabHeight - 3; line-height: $tabHeight - 6; cursor: default; color: lighten($txtColor, 10%); background: #fff; border-#{$defaultFloat}: 1px solid darken($white, 10%); border-#{$defaultOpposite}: 1px solid darken($white, 10%); font-weight: bold; }
       }
       &:first-child { margin-#{$defaultFloat}: 0; }
     }
@@ -24,8 +24,9 @@
     &.vertical { height: auto; border-bottom: 1px solid darken($white, 10%);
       dt, dd { float: none; height: auto; }
 
+      dd:last-child a { line-height: $tabHeight - 2; }
       dd { border-#{$defaultFloat}: 3px solid darken($white, 20%);
-        a { background: darken($white, 5%); border: none; border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: 1; padding: 15px 20px; @include box-shadow(0 1px 0 $shinyEdge inset);
+        a { background: darken($white, 5%); border: none; border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: $tabHeight - 1; padding: 0 20px; @include box-shadow(0 1px 0 $shinyEdge inset);
         }
         &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-#{$defaultFloat}: 4px solid lighten($black, 10%);
           a { background: lighten($black, 30%); border: none; color: #fff; height: auto; margin: 0; position: static; top: 0; @include box-shadow(0 0 0); }
@@ -34,10 +35,10 @@
       }
     }
 
-    &.pill { border-bottom: none; margin-bottom: 10px;
-      dd { margin-#{$defaultOpposite}: 10px;
+    &.pill { border-bottom: none; margin-bottom: $tabHeight / 8; margin-top: $tabHeight / 8; height: 3 * $tabHeight / 4;
+      dd { margin-#{$defaultOpposite}: 10px; padding: 0 4px;
         &:last-child { margin-#{$defaultOpposite}: 0; }
-        a { @include border-radius(1000px); background: darken($white, 10%); height: $tabHeight - 14; line-height: $tabHeight - 14; color: #666; }
+        a { @include border-radius(1000px); background: darken($white, 10%); height: 3 * $tabHeight / 4; line-height: 3 * $tabHeight / 4; color: #666; }
 
         &.active { border: none; margin-top: 0;
           a { background-color: $mainColor; border: none; color: #fff; }
