@@ -43,15 +43,6 @@ $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !de
 $bodyFontWeight: normal !default;
 $bodyFontColor: $txtColor !default;
 
-// Tab Settings
-
-$tabHeight: 40px !default;
-
-// Nav Bar Settings
-
-$navBarHeight: 40px !default;
-$navFlyoutBaseWidth: 250px !default;
-
 // Off Canvas Width Settings
 
 $mainWidth: 80% !default;
@@ -73,6 +64,15 @@ $relative-font-sizing: false;
 $round-to-nearest-half-line: true;
 $base-font-size: $baseFontSize;
 $base-line-height: $baseLineHeight;
+
+// Tab Settings
+
+$tabHeight: $baseLineHeight * 2 !default;
+
+// Nav Bar Settings
+
+$navBarHeight: $baseLineHeight * 2 !default;
+$navFlyoutBaseWidth: 250px !default;
 
 // Form Settings
 

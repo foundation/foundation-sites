@@ -265,9 +265,9 @@
 
   /* Sub Navs http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na ---------------------- */
 
-  dl.sub-nav { display: block; width: auto; overflow: hidden; margin: -4px 0 18px; margin-#{$defaultOpposite}: 0; margin-#{$defaultFloat}: -9px; padding-top: 4px;
+  dl.sub-nav { display: block; width: auto; overflow: hidden; margin: $baseLineHeight 0 $baseLineHeight / 2; margin-#{$defaultOpposite}: 0; margin-#{$defaultFloat}: -9px;
 
-    dt, dd { float: $defaultFloat; display: inline; margin-#{$defaultFloat}: 9px; margin-bottom: 10px; }
+    dt, dd { float: $defaultFloat; display: inline; margin-#{$defaultFloat}: 9px; margin-bottom: $baseLineHeight / 2; }
     dt { color: #999; font-weight: $bodyFontWeight; }
     dd a { text-decoration: none; @include border-radius(1000px); }
     dd.active a { font-weight: bold; background: $mainColor; color: #fff; padding: 3px 9px; cursor: default; }
@@ -276,11 +276,11 @@
 
   /* Pagination ---------------------- */
 
-  ul.pagination { display: block; height: 24px; margin-#{$defaultFloat}: -5px;
+  ul.pagination { display: block; height: $baseLineHeight; margin-#{$defaultFloat}: -5px;
 
-    li { float: $defaultFloat; display: block; height: 24px; color: #999; font-size: ms(0); margin-#{$defaultFloat}: 5px;
+    li { float: $defaultFloat; display: block; height: $baseLineHeight; color: #999; font-size: ms(0); margin-#{$defaultFloat}: 5px;
 
-      a { display: block; padding: 1px 7px 1px; color: #555; }
+      a { display: block; padding: 0 7px 0; color: #555; }
       &:hover a, a:focus { background: darken($white, 10%); }
       &.unavailable a { cursor: default; color: #999; }
       &.unavailable:hover a, &.unavailable a:focus { background: transparent; }

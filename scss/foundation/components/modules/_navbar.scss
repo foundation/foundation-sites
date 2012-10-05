@@ -35,7 +35,9 @@
 
     &.vertical { height: auto; margin-top: 0;
 
-      &>li { float: none; border-bottom: none; border-#{$defaultOpposite}: solid 1px lighten($black, 20%); @include box-shadow(none);
+      &>li:last-child { line-height: $navBarHeight - 2; }
+
+      &>li { float: none; border-bottom: none; border-#{$defaultOpposite}: solid 1px lighten($black, 20%); @include box-shadow(none); line-height: $navBarHeight - 1;
 
         &.has-flyout>a:first-child:after { @include cssTriangle(4px, darken($white, 10%), $defaultFloat); }
         .flyout { #{$defaultFloat}: 100%; top: -1px;
@@ -66,7 +68,7 @@
   ul.flyout, .nav-bar li ul { padding: 0; list-style: none;
 
     li { border-#{$defaultFloat}: solid 3px #CCC;
-      a { background: darken($white, 5%); border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: 1; padding: (($navBarHeight / 2) - 5) ($navBarHeight / 2); @include box-shadow(0 1px 0 $shinyEdge inset);
+      a { background: darken($white, 5%); border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: $navBarHeight - 1; padding: 0 ($navBarHeight / 2); @include box-shadow(0 1px 0 $shinyEdge inset);
         &:hover { background: darken($white, 8%); color: #333; }
       }
       &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-#{$defaultFloat}: 4px solid lighten($black, 10%);
