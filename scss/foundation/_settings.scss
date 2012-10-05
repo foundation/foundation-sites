@@ -116,7 +116,7 @@ $tooltipBackgroundOpacityScreenSmall: 0.85 !default;
 // Top Bar Settings
 
 $topBarBgColor: #222 !default;
-$topBarHeight: 45px !default;
+$topBarHeight: $baseLineHeight * 2 !default;
 $topBarBtmMargin: 30px !default;
 $topBarTitleWeight: bold !default;
 $topBarTitleSize: ms(1) !default;
