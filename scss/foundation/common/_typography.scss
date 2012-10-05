@@ -4,12 +4,13 @@
 
   @include establish-baseline;
 
+  body { line-height: $baseLineHeight; }
+
   body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
     margin:0;
     padding:0;
     font-size: ms(0);
     direction: $textDirection;
-    line-height: $baseLineHeight;
   }
 
   p { 
