@@ -61,11 +61,25 @@
               <a href="#">Nav Item 2</a>
               <a href="#" class="flyout-toggle"><span> </span></a>
               <ul class="flyout">
-                <li><a href="#">Sub Nav Item 1</a></li>
-                <li><a href="#">Sub Nav Item 2</a></li>
-                <li><a href="#">Sub Nav 3</a></li>
-                <li><a href="#">Sub Nav 4</a></li>
-                <li><a href="#">Sub Nav Item 5</a></li>
+                <li>
+                  <form action="#" method="post">
+                    <fieldset class="textbox">
+                      <label>
+                        <span>Username or email</span>
+                        <input type="text" name="username" autocomplete="on">
+                      </label>
+                      <label>
+                        <span>Password</span>
+                        <input class="js-password-field" type="password" value="" name="password">
+                      </label>
+                      <label>
+                        <input type="checkbox" value="1" name="remember_me">
+                        <span>Remember me</span>
+                      </label>
+                      <button type="submit" class="nice button" style="margin-bottom: 10px;">Sign in</button>
+                    </fieldset>
+                  </form>
+                </li>
               </ul>
             </li>
             <li class="has-flyout">

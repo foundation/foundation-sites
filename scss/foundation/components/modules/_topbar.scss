@@ -76,7 +76,7 @@
         &.has-dropdown { position: relative;
           &:hover { &>.dropdown { display: block; visibility: visible; } }
           a { padding-right: $topBarHeight * .75;
-            &:after { @include cssTriangle($topBarDropToggleSize, #fff, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
+            &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
           }
           .dropdown { background: $topBarBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
             li { background: $topBarBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
@@ -181,7 +181,7 @@
           /* Dropdown Level 1 */
           &.has-dropdown {
             a { padding-right: $topBarHeight * .75;
-              &:after { @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); margin-right: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
+              &:after { @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); margin-right: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
             }
             &:hover >.dropdown { display: block; visibility: hidden; }
             .dropdown { visibility: hidden; z-index: 0 !important; }
@@ -198,7 +198,7 @@
                 }
               }
               .back.title { padding-bottom: 0;
-                a:before { position: absolute; top: 50%; left: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, #fff, right); }
+                a:before { position: absolute; top: 50%; left: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, right); }
                 h5 { margin: 0; padding-left: $topBarDropToggleSize * 3; position: relative;
                   a { padding-top: 8px; padding-bottom: 8px; font-size: ms(2); font-weight: $topBarTitleWeight; }
                 }
@@ -211,7 +211,7 @@
             &.has-dropdown {
               .dropdown { left: 100% !important; top: 0; right: auto !important; }
               &>a { padding-right: $topBarHeight * .75;
-                &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba(255,255,255,0.5), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
+                &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
               }
               &.moved { position: static;
                 .dropdown { top: 0; visibility: visible; }
