@@ -3,7 +3,7 @@
 
 /* Standard Forms ---------------------- */
 
-  form { margin: 0 0 ($formSpacing * $ratio); }
+  form { margin: 0 0 $formSpacing / 2; }
 
   .row form .row { margin: 0 (-($formSpacing / 2));
 
@@ -14,24 +14,24 @@
     }
   }
 
-  label { font-size: ms(0); color: lighten($black, 30%); cursor: pointer; display: block; font-weight: 500; margin-bottom: 3px;
+  label { font-size: ms(0); color: lighten($black, 30%); cursor: pointer; display: block; font-weight: 500;
 
     &.right { float: none; text-align: right; }
-    &.inline { line-height: (ms(0) + ($formSpacing * 1.5)); margin: 0 0 $formSpacing 0; }
+    &.inline { margin: 0 0 $formSpacing 0; padding: $formSpacing / 2 0; }
   }
 
   @media only screen and (max-width: $screenSmall - 1) {
     label.right { text-align: left; }
   }
 
-  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: (ms(0) + ($formSpacing * 1.5)); line-height: (ms(0) + ($formSpacing * 1.5)) - 1; }
+  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: $formSpacing * 2; line-height: $formSpacing; }
   a.button.prefix, a.button.postfix { padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; text-align: center; }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
 
   .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultFloat, 2px); overflow:hidden; }
   .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
 
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { font-family: $bodyFontFamily; border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { font-family: $bodyFontFamily; border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing / 2 0; padding: ($formSpacing / 4) - 1; line-height: $formSpacing; width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
@@ -44,7 +44,7 @@
   select { width: 100%; }
 
   /* Fieldsets */
-  fieldset { border: solid 1px #ddd; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; padding: 12px 12px 0; margin: 18px 0;
+  fieldset { border: solid 1px #ddd; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; padding: $formSpacing / 2 - 2 $formSpacing / 2 - 1 0; margin: $formSpacing / 2 0;
 
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0; margin-#{$defaultFloat}: -3px; }
   }
@@ -52,7 +52,7 @@
   /* Errors */
   .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
   .error label, label.error { color: $alertColor; }
-  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
+  .error small, small.error { display: block; padding: $formSpacing / 4 $formSpacing / 2 - 1; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing / 2; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
 
   @media only screen and (max-width: $screenSmall - 1) {
     @for $i from 1 through $totalColumns {

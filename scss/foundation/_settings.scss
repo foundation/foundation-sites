@@ -43,19 +43,6 @@ $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !de
 $bodyFontWeight: normal !default;
 $bodyFontColor: $txtColor !default;
 
-// Button Settings
-
-$buttonRadius: 3px !default;
-$btnBase: 10px !default;
-
-$tinyBtnBase: $btnBase - 5 !default;
-$smallBtnBase: $btnBase - 3 !default;
-$largeBtnBase: $btnBase + 5 !default;
-
-// Form Settings
-
-$formSpacing: 12px !default;
-
 // Tab Settings
 
 $tabHeight: 40px !default;
@@ -64,15 +51,6 @@ $tabHeight: 40px !default;
 
 $navBarHeight: 40px !default;
 $navFlyoutBaseWidth: 250px !default;
-
-// UI Settings
-
-$thumbRadius: 3px !default;
-
-$progBarHeight: 25px !default;
-$progBarBorderColor: darken($white, 20%) !default;
-$progBarBorderSize: 1px !default;
-$progBarPad: 2px !default;
 
 // Off Canvas Width Settings
 
@@ -96,6 +74,27 @@ $round-to-nearest-half-line: true;
 $base-font-size: $baseFontSize;
 $base-line-height: $baseLineHeight;
 
+// Form Settings
+
+$formSpacing: $baseLineHeight !default;
+
+// UI Settings
+
+$thumbRadius: 3px !default;
+
+$progBarHeight: $baseLineHeight !default;
+$progBarBorderColor: darken($white, 20%) !default;
+$progBarBorderSize: 1px !default;
+$progBarPad: 2px !default;
+
+// Button Settings
+
+$buttonRadius: 3px !default;
+$btnBase: $baseLineHeight / 2 !default;
+
+$tinyBtnBase: $btnBase - 5 !default;
+$smallBtnBase: $btnBase - 3 !default;
+$largeBtnBase: $btnBase + 5 !default;
 
 // Tooltip Settings
 $hasTipBorderBottom: dotted 1px #ccc !default;
