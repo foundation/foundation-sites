@@ -391,7 +391,7 @@
 
   /* Progress Bar ---------------------- */
 
-  div.progress { padding: $progBarPad; margin-bottom: $baseLineHeight / 2; border: $progBarBorderSize solid $progBarBorderColor; height: $progBarHeight;
+  div.progress { padding: $progBarPad; margin-bottom: $baseLineHeight; border: $progBarBorderSize solid $progBarBorderColor; height: $progBarHeight;
 
   	/* meter */
   	.meter { background: $mainColor; height: 100%; display: block; width:50%; }
