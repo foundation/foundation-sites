@@ -5,7 +5,7 @@
   @include establish-baseline;
 
   /* Uncomment below to check vertical rhythm against a test background image */
-  body { @include debug-vertical-alignment; }
+  /*body { @include debug-vertical-alignment; }*/
 
   body { line-height: $baseLineHeight; }
 
