@@ -54,7 +54,9 @@
         &.has-button {
           a.button { margin: 0 $topBarHeight / 4; }
           &:hover { background: $topBarBgColor;
-            a { color: #fff; }
+            a { color: $white; 
+              &.secondary { color: darken(($secondaryColor), 80%); }
+            }
           }
         }
 
