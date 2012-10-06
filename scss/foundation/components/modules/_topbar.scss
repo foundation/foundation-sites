@@ -80,6 +80,12 @@
           }
           .dropdown { background: $topBarBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
             li { background: $topBarBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
+
+              /* Allow row where nav itself not nested in a row */
+              .row { width: auto; max-width: none; min-width: 0; margin: 0 (-($columnGutter/2));
+                &.collapse { margin: 0; }
+              }
+
               a { font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
                 &:after { border: none; }
                 &:hover { background: lighten($topBarBgColor, 10%); }
