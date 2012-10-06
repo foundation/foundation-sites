@@ -5,15 +5,15 @@
       Modernizr = window.Modernizr;
 
   $(document).ready(function() {
-    $.fn.foundationAlerts           ? $doc.foundationAlerts() : null;
-    $.fn.foundationButtons          ? $doc.foundationButtons() : null;
-    $.fn.foundationAccordion        ? $doc.foundationAccordion() : null;
-    $.fn.foundationNavigation       ? $doc.foundationNavigation() : null;
-    $.fn.foundationTopBar           ? $doc.foundationTopBar() : null;
-    $.fn.foundationCustomForms      ? $doc.foundationCustomForms() : null;
-    $.fn.foundationMediaQueryViewer ? $doc.foundationMediaQueryViewer() : null;
-    $.fn.foundationTabs             ? $doc.foundationTabs({callback : $.foundation.customForms.appendCustomMarkup}) : null;
-    $.fn.foundationTooltips         ? $doc.foundationTooltips() : null;
+    $.fn.foundationAlerts           && $doc.foundationAlerts();
+    $.fn.foundationButtons          && $doc.foundationButtons();
+    $.fn.foundationAccordion        && $doc.foundationAccordion();
+    $.fn.foundationNavigation       && $doc.foundationNavigation();
+    $.fn.foundationTopBar           && $doc.foundationTopBar();
+    $.fn.foundationCustomForms      && $doc.foundationCustomForms();
+    $.fn.foundationMediaQueryViewer && $doc.foundationMediaQueryViewer();
+    $.fn.foundationTabs             && $doc.foundationTabs({callback : $.foundation.customForms.appendCustomMarkup});
+    $.fn.foundationTooltips         && $doc.foundationTooltips();
 
     $('input, textarea').placeholder();
   });
