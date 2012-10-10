@@ -7,7 +7,7 @@
     direction: $textDirection;
   }
 
-  p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
+  p { font-family: inherit; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
     &.lead { font-size: ms(0) * 1.25; line-height: 1.6; margin-bottom: ms(1); }
   }
   aside p { font-size: ms(0) - 1; line-height: 1.35; font-style: italic; }
