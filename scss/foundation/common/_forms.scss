@@ -14,7 +14,7 @@
     }
   }
 
-  label { font-size: ms(0); color: $labelTxtColor; cursor: pointer; display: block; font-weight: $labelFontWeight; margin-bottom: $labelBtmMargin;
+  label { font-size: ms(0); color: $labelFontColor; cursor: pointer; display: block; font-weight: $labelFontWeight; margin-bottom: $labelBtmMargin;
 
     &.right { float: none; text-align: right; }
     &.inline { line-height: (ms(0) + ($formSpacing * 1.5)); margin: 0 0 $formSpacing 0; }
@@ -31,7 +31,7 @@
   .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultFloat, 2px); overflow:hidden; }
   .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
 
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { background-color: $inputBgColor; font-family: $bodyFontFamily; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputTxtColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { background-color: $inputBgColor; font-family: $bodyFontFamily; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
@@ -102,15 +102,15 @@
 
     div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; #{$defaultFloat}: 0; top: 27px; margin: 0; padding: 0; background: $custDropdownBgColor; background: rgba($custDropdownBgColor,0.95); border: solid 1px $custDropdownBorderColor;
 
-      li { color: $custDropdownTxtColor; font-size: ms(0) - 1; cursor: pointer; padding: 3px; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none; }
-      li.selected { background: $custDropdownSelectedBgColor; color: $custDropwonSelectedTxtColor;
+      li { color: $custDropdownFontColor; font-size: ms(0) - 1; cursor: pointer; padding: 3px; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none; }
+      li.selected { background: $custDropdownSelectedBgColor; color: $custDropdownSelectedFontColor;
         &:after { content: "\2013"; position: absolute; #{$defaultOpposite}: 10px; }
       }
-      li:hover { background-color: $custDropdownSelectedBgColor; color: $custDropwonSelectedTxtColor;
+      li:hover { background-color: $custDropdownSelectedBgColor; color: $custDropdownSelectedFontColor;
         &:after { content: "\2013"; position: absolute; #{$defaultOpposite}: 10px; color: darken($custDropdownSelectedBgColor, 10%); }
       }
-      li.selected:hover { background: $custDropdownSelectedBgColor; cursor: default; color: $custDropwonSelectedTxtColor;
-        &:after { color: $custDropwonSelectedTxtColor; }
+      li.selected:hover { background: $custDropdownSelectedBgColor; cursor: default; color: $custDropdownSelectedFontColor;
+        &:after { color: $custDropdownSelectedFontColor; }
       }
       &.show { display: block; }
     }
