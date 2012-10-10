@@ -107,6 +107,17 @@ $custDropdownSelectedBgColor: lighten(#2ba6cb, 40%) !default;
 $custDropdownSelectedFontColor: #000 !default;
 $custFormDisabledBgColor: #ddd !default;
 
+// Orbit Settings
+
+$orbitCaptionBgColorOldBrowser: #000 !default;
+$orbitCaptionBgColor: rgba(0,0,0,.6) !default;
+$orbitCaptionFontColor: #fff !default;
+$orbitBulletNavColor: #999 !default;
+$orbitBulletNavColorActive: #222 !default;
+$orbitHasThumbBorderColor: #000 !default;
+$orbitHasThumbBorderWidth: 2px !default;
+$orbitHasThumbBorderStyle: solid !default;
+
 // Off Canvas Width Settings
 
 $mainWidth: 80% !default;
