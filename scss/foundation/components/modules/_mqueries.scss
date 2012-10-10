@@ -1,0 +1,440 @@
+  /* Visibility Classes ---------------------- */
+  /*                                           */
+  /* Standard (large) display targeting */
+  .show-for-small,
+  .show-for-medium,
+  .show-for-medium-down,
+  .hide-for-large,
+  .hide-for-large-up,
+  .show-for-xlarge { display: none !important; }
+
+  .hide-for-small,
+  .hide-for-medium,
+  .hide-for-medium-down,
+  .show-for-large,
+  .show-for-large-up,
+  .hide-for-xlarge { display: inherit !important; }
+
+  /* Very large display targeting */
+  @media only screen and (min-width: $screenXlarge) {
+    .hide-for-small,
+    .hide-for-medium,
+    .hide-for-medium-down,
+    .hide-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: inherit !important; }
+
+    .show-for-small,
+    .show-for-medium,
+    .show-for-medium-down,
+    .show-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: none !important; }
+  }
+
+  /* Medium display targeting */
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
+    .hide-for-small,
+    .show-for-medium,
+    .show-for-medium-down,
+    .hide-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: inherit !important; }
+
+    .show-for-small,
+    .hide-for-medium,
+    .hide-for-medium-down,
+    .show-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: none !important; }
+  }
+
+  /* Small display targeting */
+  @media only screen and (max-width: $screenSmall - 1) {
+    .show-for-small,
+    .hide-for-medium,
+    .show-for-medium-down,
+    .hide-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: inherit !important; }
+
+    .hide-for-small,
+    .show-for-medium,
+    .hide-for-medium-down,
+    .show-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: none !important; }
+  }
+
+  /* Orientation targeting */
+  .show-for-landscape,
+  .hide-for-portrait { display: inherit !important; }
+  .hide-for-landscape,
+  .show-for-portrait { display: none !important; }
+
+  @media screen and (orientation: landscape) {
+    .show-for-landscape,
+    .hide-for-portrait { display: inherit !important; }
+    .hide-for-landscape,
+    .show-for-portrait { display: none !important; }
+  }
+
+  @media screen and (orientation: portrait) {
+    .show-for-portrait,
+    .hide-for-landscape { display: inherit !important; }
+    .hide-for-portrait,
+    .show-for-landscape { display: none !important; }
+  }
+
+  /* Touch-enabled device targeting */
+  .show-for-touch { display: none !important; }
+  .hide-for-touch { display: inherit !important; }
+  .touch .show-for-touch { display: inherit !important; }
+  .touch .hide-for-touch { display: none !important; }
+
+  /* Specific overrides for elements that require something other than display: block */
+
+  table.show-for-xlarge,
+  table.show-for-large,
+  table.hide-for-small,
+  table.hide-for-medium { display: table !important; }
+
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
+    .touch table.hide-for-xlarge,
+    .touch table.hide-for-large,
+    .touch table.hide-for-small,
+    .touch table.show-for-medium { display: table !important; }
+  }
+
+  @media only screen and (max-width: $screenSmall - 1) {
+    table.hide-for-xlarge,
+    table.hide-for-large,
+    table.hide-for-medium,
+    table.show-for-small { display: table !important; }
+  }
+
+
+  /* 1280 tablet ------------ */
+  @media only screen and (max-device-width: 1280px) {
+
+    /* NavBar --- */
+    /*            */
+    .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: 36px !important; }
+
+  }
+
+  /* Covering almost all ----- */
+  @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+    .flex-video { padding-top: 0; }
+  }
+
+  /* Between Medium and Small */
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
+
+    /* NavBar --- */
+    /*            */
+    .touch .nav-bar li {
+      a { font-size: ms(0) - 1; }
+      &.has-flyout {
+        &>a.flyout-toggle { padding: ($navBarHeight / 2) !important; }
+        &>a { padding-#{$defaultOpposite}: ($navBarHeight - 4) !important; }
+      }
+    }
+
+  }
+
+  /* Small Devices ------------ */
+  @media only screen and (max-width: $screenSmall - 1) {
+
+    /* Global Misc --- */
+    /*                 */
+    .left, .right { float: none; }
+    body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-#{$defaultFloat}: 0; margin-#{$defaultOpposite}: 0; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
+
+    /* The Grid --- */
+    /*              */
+    .row { width: auto; min-width: 0; margin-#{$defaultFloat}: 0; margin-#{$defaultOpposite}: 0; }
+    .column, .columns { width: auto !important; float: none;  }
+    .column:last-child, .columns:last-child { float: none; }
+    [class*="column"] + [class*="column"]:last-child { float: none; }
+    .column:before, .columns:before, .column:after, .columns:after { content:""; display:table; }
+    .column:after, .columns:after { clear: both; }
+
+    // Placeholder classes for mobile grid overrides
+    %no-default-margin { margin-#{$defaultFloat}: 0 !important; }
+    %default-auto { #{$defaultFloat}: auto; }
+    %opposite-auto { #{$defaultOpposite}: auto; }
+
+    @for $i from 1 through $totalColumns - 2 {
+      .offset-by-#{convert-number-to-word($i)} { @extend %no-default-margin; }
+    }
+    @for $i from 2 through $totalColumns - 2 {
+      .push-#{convert-number-to-word($i)} { @extend %default-auto; }
+      .pull-#{convert-number-to-word($i)} { @extend %opposite-auto; }
+    }
+
+    /* Mobile 4-column Grid */
+    @for $i from 1 through $mobileTotalColumns {
+      .row {
+        .mobile-#{convert-number-to-word($i)} { width: gridCalc($i, $mobileTotalColumns) !important; float: $defaultFloat; padding: 0 ($columnGutter/2);
+          &:last-child { float: $defaultOpposite; }
+          &.end { float: $defaultFloat; }
+        }
+        &.collapse {
+          .mobile-#{convert-number-to-word($i)} { padding: 0; }
+        }
+      }
+    }
+    @for $i from 1 through $mobileTotalColumns - 1 {
+      .push-#{convert-number-to-word($i)}-mobile { #{$defaultFloat}: gridCalc($i, $mobileTotalColumns); }
+      .pull-#{convert-number-to-word($i)}-mobile { #{$defaultOpposite}: gridCalc($i, $mobileTotalColumns); }
+    }
+
+    /* Block Grids --- */
+    /*                 */
+    .block-grid.mobile {
+      &>li { float: none; width: 100%; margin-#{$defaultFloat}: 0; }
+    }
+    .block-grid {
+      &>li { clear: none !important; }
+      &.mobile-one-up>li { width: 100%; }
+      &.mobile-two-up>li { width: 50%;
+        &:nth-child(2n+1) { clear: both; }
+      }
+      &.mobile-three-up>li { width: 33.33%;
+        &:nth-child(3n+1) { clear: both; }
+      }
+      &.mobile-four-up>li { width: 25%;
+        &:nth-child(4n+1) { clear: both; }
+      }
+      &.mobile-five-up>li { width: 20%;
+        &:nth-child(5n+1) { clear: both; }
+      }
+      &.mobile-six-up>li { width: 16.6%;
+        &:nth-child(6n+1) { clear: both; }
+      }
+      &.mobile-seven-up>li { width: 14.28%;
+        &:nth-child(7n+1) { clear: both; }
+      }
+      &.mobile-eight-up>li { width: 12.5%;
+        &:nth-child(8n+1) { clear: both; }
+      }
+      &.mobile-nine-up>li { width: 11.11%;
+        &:nth-child(9n+1) { clear: both; }
+      }
+      &.mobile-ten-up>li { width: 10%;
+        &:nth-child(10n+1) { clear: both; }
+      }
+      &.mobile-eleven-up>li { width: 9.09%;
+        &:nth-child(11n+1) { clear: both; }
+      }
+      &.mobile-twelve-up>li { width: 8.33%;
+        &:nth-child(12n+1) { clear: both; }
+      }
+    }
+
+    /* Forms --- */
+    /*           */
+
+    /* Label alignment */
+    label.right { text-align: left; }
+    /* Extend width of all inputs */
+    @for $i from 1 through $totalColumns {
+      input[type="text"].#{convert-number-to-word($i)},
+      input[type="password"].#{convert-number-to-word($i)},
+      input[type="date"].#{convert-number-to-word($i)},
+      input[type="datetime"].#{convert-number-to-word($i)},
+      input[type="email"].#{convert-number-to-word($i)},
+      input[type="number"].#{convert-number-to-word($i)},
+      input[type="search"].#{convert-number-to-word($i)},
+      input[type="tel"].#{convert-number-to-word($i)},
+      input[type="time"].#{convert-number-to-word($i)},
+      input[type="url"].#{convert-number-to-word($i)},
+      textarea.#{convert-number-to-word($i)} {
+        width: 100% !important;
+      }
+    }
+
+    // /* Typography --- */
+    // /*                */
+
+    // Coming Soon
+
+    /* Buttons --- */
+    /*             */
+
+    /* Basic overrides */
+    .button { display: block; }
+    button.button, input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
+    /* Button Groups */
+    .button-group {
+      button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + 1);
+        &.large  { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
+        &.medium { padding: $btnBase ($btnBase * 2) ($btnBase + 1); }
+        &.small  { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
+        &.tiny   { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
+      }
+      &.even button.button, &.even input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
+    }
+
+    /* Navbar --- */
+    /*            */
+    .nav-bar { height: auto;
+      &>li { float: none; display: block; border-right: none; }
+      &>li>a.main { text-align: $defaultFloat; border-top: 1px solid #ddd; border-#{$defaultOpposite}: none; }
+      &>li:first-child>a.main { border-top: none; }
+      &>li.has-flyout>a.flyout-toggle { position: absolute; #{$defaultOpposite}: 0; top: 0; padding: ($navBarHeight / 2)+2; z-index: 2; display: block; }
+      &>li.has-flyout.is-touch>a.flyout-toggle span { content: ""; width: 0; height: 0; display: block; }
+      &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
+      &.vertical>li.has-flyout>.flyout { left: 0; }
+    }
+    .flyout { position: relative; width: 100% !important; top: auto; margin-#{$defaultOpposite}: -2px; border-width: 1px 1px 0 1px;
+      &.right { float: none; right: auto; #{$defaultFloat}: -1px; }
+      &.small, &.large { width: 100% !important; }
+      p:last-child { margin-bottom: 18px; }
+    }
+
+    /* Reveal --- */
+    /*            */
+    .reveal-modal-bg { position: absolute; }
+    .reveal-modal,
+    .reveal-modal.small,
+    .reveal-modal.medium,
+    .reveal-modal.large,
+    .reveal-modal.xlarge { width: 80%; top: 15px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -40%; padding: 20px; height: auto; }
+
+    /* Tabs --- */
+    /*          */
+    dl.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
+    dl.tabs.mobile dt, dl.tabs.mobile dd { float: none; height: auto; }
+    dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; @include font-size(15); }
+    dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
+
+    .tabs.mobile { border-bottom: solid 1px #ccc; height: auto;
+      dd a { padding: 18px 20px; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
+      dd a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
+      dd:first-child a.active { margin: 0; }
+    }
+
+    dl.contained.mobile { margin-bottom: 0; }
+    dl.contained.tabs.mobile dd a { padding: 18px 20px; }
+    dl.tabs.mobile + ul.contained { margin-#{$defaultFloat}: -20px; margin-#{$defaultOpposite}: -20px; border-width: 0 0 1px 0; }
+
+    /* UI Elements --- */
+    /*                 */
+    /* Tooltips */
+    .tooltip {
+      font-size: $tooltipFontSizeScreenSmall;
+      line-height: 1.4;
+      padding: 7px 10px 9px 10px;
+    }
+    .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
+      border-color: transparent transparent $tooltipBackgroundColor transparent;
+      border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacityScreenSmall) transparent;
+      top: -12px;
+      left: 10px;
+    }
+  }
+
+  /* Topbar Specific Breakpoint that you can customize */
+  @media only screen and (max-width: $topBarBreakPoint) {
+
+    .top-bar { margin-bottom: 0; overflow: hidden;
+      .js-generated { display: block; }
+
+      /* Override contain to grid stuff for breakpoint */
+      .contain-to-grid & { width: auto; }
+
+      /* Setting up the sliding area */
+      section { left: 0; position: relative; width: auto; @include single-transition(left, 300ms); }
+
+      ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: block;
+        li { float: none;
+          &.active, &:hover { background: darken($topBarBgColor, 5%); }
+
+          /* Branding and name */
+          &.name { background: darken($topBarBgColor, 20%);
+            h1 { line-height: 1;
+              a { padding-left: $topBarHeight / 2; }
+            }
+          }
+
+          /* Dropdown Toggle */
+          &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeight; position: absolute; right: 0; top: 0; width: 50%;
+            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeight / 2; margin-top: -($topBarNavToggleSize / 2); }
+            @if $topBarBreakPoint == 9999px { a { right: ($topBarHeight / 2) + ($columnGutter / 2);} }
+            &:hover {background: darken($topBarBgColor, 20%); }
+          }
+          &.toggle-topbar a { padding: 0 !important; }
+
+          /* Divider for breakpoint */
+          &.divider { border-bottom: solid 1px rgba(255,255,255,0.2); border-top: solid 1px darken($topBarBgColor, 15%); clear: both; height: 1px !important; margin: 8px 0 !important; width: 100%; }
+
+          /* Search Overrides for breakpoint size */
+          &.search { padding: 0 $topBarHeight / 2;
+            form { width: 100%;
+              input[type=text] { width: 75%; }
+              .button { top: 0; width: 25%; }
+            }
+          }
+
+          /* Dropdown Level 1 */
+          &.has-dropdown {
+            a { padding-right: $topBarHeight * .75;
+              &:after { @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); margin-right: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
+            }
+            &:hover >.dropdown { display: block; visibility: hidden; }
+            .dropdown { visibility: hidden; z-index: 0 !important; }
+            &.moved { position: static;
+              .dropdown { top: 0; visibility: visible;
+                li {
+                  label { margin-bottom: 6px; padding-top: 6px !important; font-size: ms(0) - 3; }
+                  &:not(.title) { padding-bottom: 0;
+                    a { padding: 8px $topBarHeight / 2; font-size: ms(0); }
+                  }
+                  a, label { padding: 0 $topBarHeight / 2; }
+                  a:hover { background: transparent; display: block; }
+                  &.divider { border-bottom: solid 1px rgba(255,255,255,0.1); margin-top: 8px !important; margin-bottom: 8px !important; }
+                }
+              }
+              .back.title { padding-bottom: 0;
+                a:before { position: absolute; top: 50%; left: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, right); }
+                h5 { margin: 0; padding-left: $topBarDropToggleSize * 3; position: relative;
+                  a { padding-top: 8px; padding-bottom: 8px; font-size: ms(2); font-weight: $topBarTitleWeight; }
+                }
+              }
+            }
+          }
+
+          /* Dropdown Level 2 */
+          &.has-dropdown .dropdown li { background: transparent;
+            &.has-dropdown {
+              .dropdown { left: 100% !important; top: 0; right: auto !important; }
+              &>a { padding-right: $topBarHeight * .75;
+                &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
+              }
+              &.moved { position: static;
+                .dropdown { top: 0; visibility: visible; }
+              }
+              &:hover { display: block; }
+            }
+          }
+        }
+        &.left, &.right { float: none; width: 100%;
+          &>li { display: block; float: none; margin: 0 !important;
+            &.has-dropdown {
+              .dropdown { left: 100% !important; top: 0; right: auto !important; }
+            }
+          }
+        }
+      }
+      section > ul li a:not(.button) { padding-left: $topBarHeight / 2 !important; }
+
+      /* When the Small Nav is Showing */
+      &.expanded { height: 100%;
+        ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
+      }
+    }
+    .top-bar ul li.has-button { padding: 0 $navBarHeight / 2 5px; }
+    .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
+  }

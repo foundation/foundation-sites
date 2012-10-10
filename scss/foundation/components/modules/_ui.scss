@@ -1,6 +1,3 @@
-/* Requires:
-   globals.css */
-
 /* Table of Contents
 
 :: Visibility
@@ -23,121 +20,6 @@
 :: Progress Bars
 
 */
-
-  /* Visibility Classes ---------------------- */
-
-  /* Standard (large) display targeting */
-  .show-for-small,
-  .show-for-medium,
-  .show-for-medium-down,
-  .hide-for-large,
-  .hide-for-large-up,
-  .show-for-xlarge { display: none !important; }
-
-  .hide-for-small,
-  .hide-for-medium,
-  .hide-for-medium-down,
-  .show-for-large,
-  .show-for-large-up,
-  .hide-for-xlarge { display: inherit !important; }
-
-  /* Very large display targeting */
-  @media only screen and (min-width: $screenXlarge) {
-    .hide-for-small,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .hide-for-large,
-    .show-for-large-up,
-    .show-for-xlarge { display: inherit !important; }
-
-    .show-for-small,
-    .show-for-medium,
-    .show-for-medium-down,
-    .show-for-large,
-    .hide-for-large-up,
-    .hide-for-xlarge { display: none !important; }
-  }
-
-  /* Medium display targeting */
-  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-    .hide-for-small,
-    .show-for-medium,
-    .show-for-medium-down,
-    .hide-for-large,
-    .hide-for-large-up,
-    .hide-for-xlarge { display: inherit !important; }
-
-    .show-for-small,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .show-for-large,
-    .show-for-large-up,
-    .show-for-xlarge { display: none !important; }
-  }
-
-  /* Small display targeting */
-  @media only screen and (max-width: $screenSmall - 1) {
-    .show-for-small,
-    .hide-for-medium,
-    .show-for-medium-down,
-    .hide-for-large,
-    .hide-for-large-up,
-    .hide-for-xlarge { display: inherit !important; }
-
-    .hide-for-small,
-    .show-for-medium,
-    .hide-for-medium-down,
-    .show-for-large,
-    .show-for-large-up,
-    .show-for-xlarge { display: none !important; }
-  }
-
-  /* Orientation targeting */
-  .show-for-landscape,
-  .hide-for-portrait { display: inherit !important; }
-  .hide-for-landscape,
-  .show-for-portrait { display: none !important; }
-
-  @media screen and (orientation: landscape) {
-    .show-for-landscape,
-    .hide-for-portrait { display: inherit !important; }
-    .hide-for-landscape,
-    .show-for-portrait { display: none !important; }
-  }
-
-  @media screen and (orientation: portrait) {
-    .show-for-portrait,
-    .hide-for-landscape { display: inherit !important; }
-    .hide-for-portrait,
-    .show-for-landscape { display: none !important; }
-  }
-
-  /* Touch-enabled device targeting */
-  .show-for-touch { display: none !important; }
-  .hide-for-touch { display: inherit !important; }
-  .touch .show-for-touch { display: inherit !important; }
-  .touch .hide-for-touch { display: none !important; }
-
-  /* Specific overrides for elements that require something other than display: block */
-
-  table.show-for-xlarge,
-  table.show-for-large,
-  table.hide-for-small,
-  table.hide-for-medium { display: table !important; }
-
-  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-    .touch table.hide-for-xlarge,
-    .touch table.hide-for-large,
-    .touch table.hide-for-small,
-    .touch table.show-for-medium { display: table !important; }
-  }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    table.hide-for-xlarge,
-    table.hide-for-large,
-    table.hide-for-medium,
-    table.show-for-small { display: table !important; }
-  }
 
   /* Alerts ---------------------- */
 
@@ -192,20 +74,6 @@
   }
 
   .tap-to-close { display: block; @include font-size($tapToCloseFontSize); color: $tapToCloseFontColor; font-weight: $tapToCloseFontWeight; }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    .tooltip {
-      @include font-size($tooltipFontSizeScreenSmall);
-      line-height: 1.4;
-      padding: 7px 10px 9px 10px;
-    }
-    .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
-      border-color: transparent transparent $tooltipBackgroundColor transparent;
-      border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacityScreenSmall) transparent;
-      top: -12px;
-      left: 10px;
-    }
-  }
 
   /* Panels ---------------------- */
 
@@ -352,10 +220,6 @@
 
   }
 
-  @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
-    .flex-video { padding-top: 0; }
-  }
-
   /* Tables ---------------------- */
 
   table { background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin: 0 0 18px; border: 1px solid #ddd;  }
@@ -409,4 +273,3 @@
     }
 
   }
-

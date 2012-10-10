@@ -51,49 +51,6 @@
   /* Nicolas Gallagher's micro clearfix */
   .row { @include clearfix(); }
 
-  /* Mobile Grid and Overrides ---------------------- */
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-#{$defaultFloat}: 0; margin-#{$defaultOpposite}: 0; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
-
-    .row { width: auto; min-width: 0; margin-#{$defaultFloat}: 0; margin-#{$defaultOpposite}: 0; }
-    .column, .columns { width: auto !important; float: none;  }
-    .column:last-child, .columns:last-child { float: none; }
-    [class*="column"] + [class*="column"]:last-child { float: none; }
-    .column:before, .columns:before, .column:after, .columns:after { content:""; display:table; }
-    .column:after, .columns:after { clear: both; }
-
-    // Placeholder classes for mobile grid overrides
-    %no-default-margin { margin-#{$defaultFloat}: 0 !important; }
-    %default-auto { #{$defaultFloat}: auto; }
-    %opposite-auto { #{$defaultOpposite}: auto; }
-
-    @for $i from 1 through $totalColumns - 2 {
-      .offset-by-#{convert-number-to-word($i)} { @extend %no-default-margin; }
-    }
-    @for $i from 2 through $totalColumns - 2 {
-      .push-#{convert-number-to-word($i)} { @extend %default-auto; }
-      .pull-#{convert-number-to-word($i)} { @extend %opposite-auto; }
-    }
-
-    /* Mobile 4-column Grid */
-    @for $i from 1 through $mobileTotalColumns {
-      .row {
-        .mobile-#{convert-number-to-word($i)} { width: gridCalc($i, $mobileTotalColumns) !important; float: $defaultFloat; padding: 0 ($columnGutter/2);
-          &:last-child { float: $defaultOpposite; }
-          &.end { float: $defaultFloat; }
-        }
-        &.collapse {
-          .mobile-#{convert-number-to-word($i)} { padding: 0; }
-        }
-      }
-    }
-    @for $i from 1 through $mobileTotalColumns - 1 {
-      .push-#{convert-number-to-word($i)}-mobile { #{$defaultFloat}: gridCalc($i, $mobileTotalColumns); }
-      .pull-#{convert-number-to-word($i)}-mobile { #{$defaultOpposite}: gridCalc($i, $mobileTotalColumns); }
-    }
-  }
-
 /* Block Grids ---------------------- */
 
 /* These are 2-up, 3-up, 4-up and 5-up ULs, suited
@@ -110,30 +67,30 @@ that IE7/8 do not support :nth-child.
   .block-grid { display: block; overflow: hidden; padding: 0;
 
     &>li { display: block; height: auto; float: $defaultFloat; }
-    &.one-up { margin: 0; 
+    &.one-up { margin: 0;
       &>li { width: 100%; padding: 0 0 15px; }
     }
 
-    &.two-up { margin: 0 -15px; 
-      &>li { width: 50%; padding: 0 15px 15px; 
+    &.two-up { margin: 0 -15px;
+      &>li { width: 50%; padding: 0 15px 15px;
         &:nth-child(2n+1) { clear: both; }
       }
     }
 
-    &.three-up { margin: 0 -12px; 
-      &>li { width: 33.33%; padding: 0 12px 12px; 
+    &.three-up { margin: 0 -12px;
+      &>li { width: 33.33%; padding: 0 12px 12px;
         &:nth-child(3n+1) { clear: both; }
       }
     }
 
-    &.four-up { margin: 0 -10px; 
-      &>li { width: 25%; padding: 0 10px 10px; 
+    &.four-up { margin: 0 -10px;
+      &>li { width: 25%; padding: 0 10px 10px;
         &:nth-child(4n+1) { clear: both; }
       }
     }
 
-    &.five-up { margin: 0 -8px; 
-      &>li { width: 20%; padding: 0 8px 8px; 
+    &.five-up { margin: 0 -8px;
+      &>li { width: 20%; padding: 0 8px 8px;
         &:nth-child(5n+1) { clear: both; }
       }
     }
@@ -169,62 +126,6 @@ that IE7/8 do not support :nth-child.
     }
     &.twelve-up { margin: 0 -15px;
       &>li { width: 8.33%; padding: 0 8px 8px;
-        &:nth-child(12n+1) { clear: both; }
-      }
-    }
-  }
-
-  /* Mobile Block Grids */
-  @media only screen and (max-width: $screenSmall - 1) {
-    .block-grid.mobile {
-      &>li { float: none; width: 100%; margin-#{$defaultFloat}: 0; }
-    }
-
-    .block-grid {
-      &>li { clear: none !important; }
-      &.mobile-one-up>li { width: 100%; }
-
-      &.mobile-two-up>li { width: 50%; 
-        &:nth-child(2n+1) { clear: both; }
-      }
-
-      &.mobile-three-up>li { width: 33.33%; 
-        &:nth-child(3n+1) { clear: both; }
-      }
-
-      &.mobile-four-up>li { width: 25%;
-        &:nth-child(4n+1) { clear: both; }
-      }
-
-      &.mobile-five-up>li { width: 20%;
-        &:nth-child(5n+1) { clear: both; }
-      }
-
-      &.mobile-six-up>li { width: 16.6%;
-        &:nth-child(6n+1) { clear: both; }
-      }
-
-      &.mobile-seven-up>li { width: 14.28%;
-        &:nth-child(7n+1) { clear: both; }
-      }
-
-      &.mobile-eight-up>li { width: 12.5%;
-        &:nth-child(8n+1) { clear: both; }
-      }
-
-      &.mobile-nine-up>li { width: 11.11%;
-        &:nth-child(9n+1) { clear: both; }
-      }
-
-      &.mobile-ten-up>li { width: 10%;
-        &:nth-child(10n+1) { clear: both; }
-      }
-
-      &.mobile-eleven-up>li { width: 9.09%;
-        &:nth-child(11n+1) { clear: both; }
-      }
-
-      &.mobile-twelve-up>li { width: 8.33%;
         &:nth-child(12n+1) { clear: both; }
       }
     }

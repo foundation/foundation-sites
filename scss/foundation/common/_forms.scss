@@ -20,10 +20,6 @@
     &.inline { line-height: (ms(0) + ($formSpacing * 1.5)); margin: 0 0 $formSpacing 0; }
   }
 
-  @media only screen and (max-width: $screenSmall - 1) {
-    label.right { text-align: left; }
-  }
-
   .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: (ms(0) + ($formSpacing * 1.5)); line-height: (ms(0) + ($formSpacing * 1.5)) - 1; }
   a.button.prefix, a.button.postfix { padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; text-align: center; }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
@@ -53,12 +49,6 @@
   .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
   .error label, label.error { color: $alertColor; }
   .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; font-size: ms(0) - 2; font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    @for $i from 1 through $totalColumns {
-      input[type="text"].#{convert-number-to-word($i)}, input[type="password"].#{convert-number-to-word($i)}, input[type="date"].#{convert-number-to-word($i)}, input[type="datetime"].#{convert-number-to-word($i)}, input[type="email"].#{convert-number-to-word($i)}, input[type="number"].#{convert-number-to-word($i)}, input[type="search"].#{convert-number-to-word($i)}, input[type="tel"].#{convert-number-to-word($i)}, input[type="time"].#{convert-number-to-word($i)}, input[type="url"].#{convert-number-to-word($i)}, textarea.#{convert-number-to-word($i)} { width: 100% !important; }
-    }
-  }
 
   /* Custom Forms ---------------------- */
 
