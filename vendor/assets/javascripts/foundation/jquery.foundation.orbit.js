@@ -221,16 +221,32 @@
       }
     },
 
+
     setupFirstSlide: function () {
       //Set initial front photo z-index and fades it in
       var self = this;
-      this.$slides.first()
+      var startOn = self.$slides;
+
+      // If URL contains anchor
+      if (window.location.hash) {
+        // Check each slide's ID for a match with anchor
+        $.each(this.$slides, function(index, value) {
+          // Found a match so set start on anchored image
+          if (window.location.hash.substr(1) === value.id) {
+            startOn = startOn.eq(index);
+            self.activeSlide = index;
+          }
+        });
+      }
+
+      startOn.first()
         .css({"z-index" : 3})
         .fadeIn(function() {
           //brings in all other slides IF css declares a display: none
-          self.$slides.css({"display":"block"})
+          startOn.css({"display":"block"})
       });
     },
+
 
     startClock: function () {
       var self = this;
