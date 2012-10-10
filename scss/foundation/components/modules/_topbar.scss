@@ -43,12 +43,12 @@
       /* Main Navigation links style */
       &>li { float: left;
         a:not(.button) { color: $topBarLinkColor; display: block; font-size: $topBarLinkSize; font-weight: $topBarLinkWeight; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3; }
-        &:hover, &.active { background: darken($topBarBgColor, 20%);
+        &:hover, &.active { background: darken($topBarBgColor, 15%);
           a { color: darken($topBarLinkColor, 15%); }
         }
 
         /* Dividers between navigation */
-        &.divider { background: darken($topBarBgColor, 20%); @include box-shadow(1px 0 0 rgba(255,255,255,0.10)); height: 100%; margin-right: 1px; width: 1px; }
+        &.divider { background: darken($topBarBgColor, 15%); @include box-shadow(1px 0 0 rgba(255,255,255,0.10)); height: 100%; margin-right: 1px; width: 1px; }
 
         /* Put a button in an <li> but give is a class */
         &.has-button {
@@ -78,14 +78,14 @@
           a { padding-right: $topBarHeight * .75;
             &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
           }
-          .dropdown { background: $topBarBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
-            li { background: $topBarBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
-              a { font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
+          .dropdown { background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
+            li { background: $topBarDropBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
+              a { color: $topBarDropLinkColor; font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
                 &:after { border: none; }
-                &:hover { background: lighten($topBarBgColor, 10%); }
+                &:hover { background: lighten($topBarDropBgColor, 10%); }
               }
-              label { color: lighten($topBarBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
-              &.divider { border-top: solid 1px darken($topBarBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
+              label { color: lighten($topBarDropBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
+              &.divider { border-top: solid 1px darken($topBarDropBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
               &:last-child { padding-bottom: 10px; }
             }
           }

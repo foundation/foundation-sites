@@ -75,6 +75,8 @@ $progBarBorderColor: darken($white, 20%) !default;
 $progBarBorderSize: 1px !default;
 $progBarPad: 2px !default;
 
+$linkListBottomMargin: 17px -22px !default;
+
 // Forms Settings
 
 $labelFontWeight: 500 !default;
@@ -154,21 +156,21 @@ $tooltipBackgroundOpacityScreenSmall: 0.85 !default;
 
 $topBarBgColor: #222 !default;
 $topBarHeight: 45px !default;
+$topBarHeightMobile: 45px !default;
 $topBarBtmMargin: 30px !default;
 $topBarTitleWeight: bold !default;
-$topBarTitleSize: ms(1) !default;
+$topBarTitleSize: 17px !default;
 $topBarLinkColor: #fff !default;
 $topBarLinkWeight: bold !default;
-$topBarLinkSize: ms(0) - 1 !default;
+$topBarLinkSize: 13px !default;
+$topBarDropBgColor: #222 !default;
+$topBarDropLinkColor: #fff !default;
 $topBarDropToggleSize: 5px !default;
 $topBarDropToggleColor: #fff !default;
 $topBarDropToggleAlpha: 0.5 !default;
 $topBarSearchWidth: 200px !default;
 $topBarBreakPoint: 940px !default; // Change to 9999px for always mobile layout
 $topBarNavToggleSize: 8px !default;
-
-// UI Link Lists
-$linkListBottomMargin: ms(1) -22px;
 
 // Media Queries
 

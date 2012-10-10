@@ -339,7 +339,7 @@
   /* Topbar Specific Breakpoint that you can customize */
   @media only screen and (max-width: $topBarBreakPoint) {
 
-    .top-bar { margin-bottom: 0; overflow: hidden;
+    .top-bar { margin-bottom: 0; overflow: hidden; height: $topBarHeightMobile; background: $topBarDropBgColor;
       .js-generated { display: block; }
 
       /* Override contain to grid stuff for breakpoint */
@@ -349,26 +349,27 @@
       section { left: 0; position: relative; width: auto; @include single-transition(left, 300ms); }
 
       ul { width: 100%; min-height: 100%; height: 100%; margin-bottom: 0; display: block;
-        li { float: none;
-          &.active, &:hover { background: darken($topBarBgColor, 5%); }
-
+        &>li { float: none;
+          &.active, &:hover { background: darken($topBarDropBgColor, 5%); }
           /* Branding and name */
-          &.name { background: darken($topBarBgColor, 20%);
+          &.name { background: darken($topBarBgColor, 20%); height: $topBarHeightMobile;
             h1 { line-height: 1;
-              a { padding-left: $topBarHeight / 2; }
+              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-left: $topBarHeightMobile / 2; height: $topBarHeightMobile; }
             }
           }
+          &:hover, &.active { a { color: $topBarDropLinkColor; } }
+          a:not(.button) { color: $topBarDropLinkColor; }
 
           /* Dropdown Toggle */
-          &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeight; position: absolute; right: 0; top: 0; width: 50%;
-            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeight / 2; margin-top: -($topBarNavToggleSize / 2); }
+          &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeightMobile; position: absolute; right: 0; top: 0; width: 50%;
+            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
             @if $topBarBreakPoint == 9999px { a { right: ($topBarHeight / 2) + ($columnGutter / 2);} }
             &:hover {background: darken($topBarBgColor, 20%); }
           }
           &.toggle-topbar a { padding: 0 !important; }
 
           /* Divider for breakpoint */
-          &.divider { border-bottom: solid 1px rgba(255,255,255,0.2); border-top: solid 1px darken($topBarBgColor, 15%); clear: both; height: 1px !important; margin: 8px 0 !important; width: 100%; }
+          &.divider { border-bottom: solid 1px lighten($topBarDropBgColor, 10%); border-top: solid 1px darken($topBarDropBgColor, 15%); clear: both; height: 1px !important; margin: 8px 0 !important; width: 100%; }
 
           /* Search Overrides for breakpoint size */
           &.search { padding: 0 $topBarHeight / 2;
@@ -390,7 +391,7 @@
                 li {
                   label { margin-bottom: 6px; padding-top: 6px !important; font-size: ms(0) - 3; }
                   &:not(.title) { padding-bottom: 0;
-                    a { padding: 8px $topBarHeight / 2; font-size: ms(0); }
+                    a { padding: 8px $topBarHeightMobile / 2; font-size: ms(0); }
                   }
                   a, label { padding: 0 $topBarHeight / 2; }
                   a:hover { background: transparent; display: block; }
@@ -411,7 +412,7 @@
             &.has-dropdown {
               .dropdown { left: 100% !important; top: 0; right: auto !important; }
               &>a { padding-right: $topBarHeight * .75;
-                &:after { content: ""; margin-right: $topBarHeight / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
+                &:after { content: ""; margin-right: $topBarHeightMobile / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
               }
               &.moved { position: static;
                 .dropdown { top: 0; visibility: visible; }
@@ -428,13 +429,13 @@
           }
         }
       }
-      section > ul li a:not(.button) { padding-left: $topBarHeight / 2 !important; }
+      section > ul li a:not(.button) { padding-left: $topBarHeightMobile / 2 !important; }
 
       /* When the Small Nav is Showing */
       &.expanded { height: 100%;
         ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
-    .top-bar ul li.has-button { padding: 0 $navBarHeight / 2 5px; }
+    .top-bar ul li.has-button { padding: 0 $topBarHeightMobile / 2 5px; }
     .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
   }
