@@ -38,7 +38,7 @@
     }
 
     /* topbar global <ul> styles */
-    ul { display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none;
+    ul { display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none; position: relative;
 
       /* Main Navigation links style */
       &>li { float: left;
