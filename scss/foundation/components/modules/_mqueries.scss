@@ -327,6 +327,10 @@
       font-size: $tooltipFontSizeScreenSmall;
       line-height: 1.4;
       padding: 7px 10px 9px 10px;
+      left: 50% !important;
+      max-width: 80% !important;
+      margin-left: -40%;
+      font-size: 110%;
     }
     .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
       border-color: transparent transparent $tooltipBackgroundColor transparent;
