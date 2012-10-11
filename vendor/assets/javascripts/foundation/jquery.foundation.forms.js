@@ -411,7 +411,7 @@
   });
 
   $(document).on('click', 'form.custom label', function (event) {
-    var $associatedElement = $('#' + $(this).attr('for')),
+    var $associatedElement = $('#' + $(this).attr('for') + '[data-customforms!=disabled]'),
         $customCheckbox,
         $customRadio;
     if ($associatedElement.length !== 0) {
