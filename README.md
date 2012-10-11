@@ -91,6 +91,10 @@ Modular Scale
 
 * [Modular Scale](https://github.com/scottkellum/modular-scale) by Mason Wendell and Scott Kellum
 
+Ruby on Rails SASS Gems
+
+* [Foundation Icons 2](https://github.com/zaiste/foundation-icons-sass-rails) by J. P. Nowak
+
 MIT Open Source License
 =======================
 
