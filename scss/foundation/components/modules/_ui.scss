@@ -18,6 +18,7 @@
 :: Tables
 :: Microformats
 :: Progress Bars
+:: Pricing Tables
 
 */
 
@@ -272,4 +273,14 @@
       .meter { @include border-radius(1000px); }
     }
 
+  }
+
+  /* Pricing Tables ---------------------- */
+  .pricing-table { border: $priceTableBorder;
+    & * { list-style: none; line-height: 1; }
+    .title { background-color: $priceTitleBgColor; padding: $priceTitlePadding; text-align: $priceTitleAlign; color: $priceTitleColor; font-weight: $priceTitleWeight; font-size: $priceTitleSize; }
+    .price { background-color: $priceMoneyBgColor; padding: $priceMoneyPadding; text-align: $priceMoneyAlign; color: $priceMoneyColor; font-weight: $priceMoneyWeight; font-size: $priceMoneySize; }
+    .description { background-color: $priceBgColor; padding: $priceDescPadding; text-align: $priceDescAlign; color: $priceDescColor; font-size: $priceDescFontSize; font-weight: $priceDescWeight; line-height: $priceDescLineHeight; border-bottom: $priceDescBtmBorder; }
+    .bullet-item { background-color: $priceBgColor; padding: $priceItemPadding; text-align: $priceItemAlign; color: $priceItemColor; font-size: $priceItemFontSize; font-weight: $priceItemWeight; border-bottom: $priceItemBtmBorder; }
+    .cta-button { background-color: $priceCtaBgColor; text-align: $priceCtaAlign; padding: $priceCtaPadding; }
   }

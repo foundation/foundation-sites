@@ -77,6 +77,43 @@ $progBarPad: 2px !default;
 
 $linkListBottomMargin: 17px -22px !default;
 
+// Pricing Table Settings
+
+$priceTableBorder: solid 1px #ddd !default;
+$priceTitleBgColor: #ddd !default;
+$priceTitlePadding: 15px 20px !default;
+$priceTitleAlign: center !default;
+$priceTitleColor: #333 !default;
+$priceTitleWeight: bold !default;
+$priceTitleSize: 16px !default;
+
+$priceMoneyBgColor: #eee !default;
+$priceMoneyPadding: 15px 20px !default;
+$priceMoneyAlign: center !default;
+$priceMoneyColor: #333 !default;
+$priceMoneyWeight: normal !default;
+$priceMoneySize: 20px !default;
+
+$priceBgColor: #fff !default;
+$priceDescColor: #777 !default;
+$priceDescPadding: 15px !default;
+$priceDescAlign: center !default;
+$priceDescFontSize: 12px !default;
+$priceDescWeight: normal !default;
+$priceDescLineHeight: 1.4 !default;
+$priceDescBtmBorder: dotted 1px #ddd !default;
+
+$priceItemColor: #333 !default;
+$priceItemPadding: 15px !default;
+$priceItemAlign: center !default;
+$priceItemFontSize: 14px !default;
+$priceItemWeight: normal !default;
+$priceItemBtmBorder: dotted 1px #ddd !default;
+
+$priceCtaBgColor: #f5f5f5 !default;
+$priceCtaAlign: center !default;
+$priceCtaPadding: 20px !default;
+
 // Forms Settings
 
 $labelFontWeight: 500 !default;
