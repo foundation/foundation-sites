@@ -3,12 +3,12 @@ Description:
 
 Example:
   rails g foundation:install
-  
+
   This will replace the default application assets:
     /app/assets/javascripts/application.js
     /app/assets/stylesheets/application.css
 
-  rails generate foundation:layout
+  rails g foundation:layout
 
   This will create:
     /app/views/layouts/application.html.erb
