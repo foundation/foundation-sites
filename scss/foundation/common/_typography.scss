@@ -7,7 +7,7 @@
     direction: $textDirection;
   }
 
-  p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
+  p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-style: $bodyFontStyle; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
     &.lead { font-size: ms(0) * 1.25; line-height: 1.6; margin-bottom: ms(1); }
   }
   aside p { font-size: ms(0) - 1; line-height: 1.35; font-style: italic; }
@@ -15,6 +15,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: $headerFontFamily;
     font-weight: $headerFontWeight;
+    font-style: $headerFontStyle;
     color: $headerFontColor;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
