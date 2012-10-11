@@ -169,7 +169,7 @@
     }
 
     &.even {
-      a.button { width: 100%; }
+      .button { width: 100%; }
       &.two-up li { width: 50%; }
       &.three-up li { width: 33.3%; }
       &.three-up li:first-child { width: 33.4%; }
