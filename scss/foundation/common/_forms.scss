@@ -69,6 +69,7 @@
     }
     div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px;
 
+      ul { overflow-y: auto; max-height: $custSelectDropHeight; }
       a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; border: solid 1px $custSelectBorderColor; color: $custSelectCurrentFontColor; background-color: $custSelectBgColor; white-space: nowrap; }
       a.selector { position: absolute; width: 27px; height: 28px; display: block; #{$defaultOpposite}: 0; top: 0; border: solid 1px $custSelectBorderColor;
         &:after { content: ""; display: block; @include cssTriangle(5px, $custSelectTriangleColor, top); position: absolute; #{$defaultFloat}: 50%; top: 50%; margin-top: -2px; margin-#{$defaultFloat}: -5px;  }
