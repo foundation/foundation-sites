@@ -37,6 +37,7 @@
       bullets: false,           // true or false to activate the bullet navigation
       bulletThumbs: false,        // thumbnails for the bullets
       bulletThumbLocation: '',      // location from this file where thumbs will be
+      beforeSlideChange: $.noop,   // empty function
       afterSlideChange: $.noop,   // empty function
       afterLoadComplete: $.noop, //callback to execute after everything has been loaded
       fluid: true,
@@ -488,6 +489,9 @@
 
         //set to correct bullet
         this.setActiveBullet();
+
+        //process beforeSlideChange hook
+        this.options.beforeSlideChange.call(this);
 
         //set previous slide z-index to one below what new activeSlide will be
         this.$slides
