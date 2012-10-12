@@ -11,7 +11,7 @@ module Foundation
       def create_layout
         if options.haml?
           template 'application.html.haml', "app/views/layouts/#{file_name}.html.haml"
-        elsif
+        elsif options.slim?
           template 'application.html.slim', "app/views/layouts/#{file_name}.html.slim"
         else
           template 'application.html.erb', "app/views/layouts/#{file_name}.html.erb"
