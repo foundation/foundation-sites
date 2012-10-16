@@ -40,7 +40,7 @@
   code { font-weight: bold; background: $highlightColor; }
 
   /* Lists ---------------------- */
-  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
+  ul, ol, dl { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
   ul {
     li {
       ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
