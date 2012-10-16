@@ -58,7 +58,8 @@ MODX
 
 .NET
 
-* [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Zurb_Foundation_MVC3) by Edward Charbeneau, @EdCharbeneau
+* [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Foundation3_MVC4) by Edward Charbeneau, @EdCharbeneau
+
 
 CodeIgniter
 
