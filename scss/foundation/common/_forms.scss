@@ -50,7 +50,7 @@
   }
 
   /* Errors */
-  .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
+  .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: lighten($alertColor, 53%); }
   .error label, label.error { color: $alertColor; }
   .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
 
