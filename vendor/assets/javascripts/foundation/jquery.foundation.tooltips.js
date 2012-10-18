@@ -127,15 +127,15 @@
           tip.width(column.outerWidth() - 25).css('left', 15).addClass('tip-override');
           objPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
         } else {
-          if (classes.indexOf('tip-top') > -1) {
+          if (classes && classes.indexOf('tip-top') > -1) {
             objPos(tip, (target.offset().top - tip.outerHeight() - nubHeight), 'auto', 'auto', target.offset().left, width)
               .removeClass('tip-override');
             objPos(nub, 'auto', 'auto', -nubHeight, 'auto');
-          } else if (classes.indexOf('tip-left') > -1) {
+          } else if (classes && classes.indexOf('tip-left') > -1) {
             objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight), 'auto', 'auto', (target.offset().left - tip.outerWidth() - 10), width)
               .removeClass('tip-override');
             objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -nubHeight, 'auto', 'auto');
-          } else if (classes.indexOf('tip-right') > -1) {
+          } else if (classes && classes.indexOf('tip-right') > -1) {
             objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight), 'auto', 'auto', (target.offset().left + target.outerWidth() + 10), width)
               .removeClass('tip-override');
             objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -nubHeight);
@@ -145,11 +145,12 @@
       },
       inheritable_classes : function (target) {
         var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'noradius'],
-          filtered = $.map(target.attr('class').split(' '), function (el, i) {
-            if ($.inArray(el, inheritables) !== -1) {
-              return el;
-            }
-          }).join(' ');
+          classes = target.attr('class'),
+          filtered = classes ? $.map(classes.split(' '), function (el, i) {
+              if ($.inArray(el, inheritables) !== -1) {
+                return el;
+              }
+          }).join(' ') : '';
 
         return $.trim(filtered);
       },
