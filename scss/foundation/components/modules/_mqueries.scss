@@ -297,7 +297,7 @@
     /*                 */
     /* Tooltips */
     .tooltip {
-      font-size: $tooltipFontSizeScreenSmall;
+      font-size: $tooltipFontSizeScreenSm;
       line-height: 1.4;
       padding: 7px 10px 9px 10px;
       left: 50% !important;
@@ -307,7 +307,7 @@
     }
     .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
       border-color: transparent transparent $tooltipBackgroundColor transparent;
-      border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacityScreenSmall) transparent;
+      border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBgOpacityScreenSm) transparent;
       top: -12px;
       left: 10px;
     }
