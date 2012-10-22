@@ -40,7 +40,7 @@
   code { font-weight: bold; background: $highlightColor; }
 
   /* Lists ---------------------- */
-  ul, ol, dl { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
+  ul, ol, dl { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: outside; }
   ul {
     li {
       ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
@@ -58,7 +58,7 @@
     &.no-bullet { list-style: none; }
     &.large li { line-height: 21px; }
   }
-  ol {
+  ol { margin-#{$defaultFloat}: 20px;
     li {
       ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
     }
