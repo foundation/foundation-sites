@@ -42,7 +42,8 @@
       fluid: true,
       centerBullets: true,              // center bullet nav with js, turn this off if you want to position the bullet nav manually
       singleCycle: false,               // cycles through orbit slides only once
-      slideNumber: false                // display slide numbers?
+      slideNumber: false,               // display slide numbers?
+      stackOnSmall: false               // stack slides on small devices (i.e. phones)
     },
 
     activeSlide: 0,
@@ -81,7 +82,7 @@
       this.$element = $(element);
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
       this.$slides = this.$element.children('img, a, div, figure');
-      
+
       this.$element.on('movestart', function(e) {
         // If the movestart is heading off in an upwards or downwards
         // direction, prevent it so that the browser scrolls normally.
@@ -129,6 +130,10 @@
       this.$element
         .addClass('orbit')
         .css({width: '1px', height: '1px'});
+
+      if (this.options.stackOnSmall) {
+        this.$element.addClass('orbit-stack-on-small');
+      }
 
       this.$slides.addClass('orbit-slide');
 

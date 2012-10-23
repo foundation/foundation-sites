@@ -101,11 +101,9 @@
 	<script src="../vendor/assets/javascripts/foundation/app.js"></script>
   <script type="text/javascript">
     $(window).load(function(){
-      
-
-
       $("#featured").orbit({
-        slideNumber: true
+        slideNumber: true,
+        stackOnSmall: true
       });
       
       $('#featuredContent').orbit({ fluid: '2x1' });
