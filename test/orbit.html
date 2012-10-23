@@ -19,7 +19,6 @@
 	</style>
 
 	<script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
-
 </head>
 <body>
 
@@ -100,10 +99,14 @@
 	<script src="../vendor/assets/javascripts/foundation/app.js"></script>
   <script type="text/javascript">
     $(window).load(function(){
+      
+
+
       $("#featured").orbit({
         animation: 'fade',
-        resetTimerOnClick: true
+        slideNumber: true
       });
+      
       $('#featuredContent').orbit({ fluid: '2x1' });
     });
   </script>
