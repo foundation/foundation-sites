@@ -81,6 +81,15 @@
       this.$element = $(element);
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
       this.$slides = this.$element.children('img, a, div, figure');
+      
+      this.$element.on('movestart', function(e) {
+        // If the movestart is heading off in an upwards or downwards
+        // direction, prevent it so that the browser scrolls normally.
+        if ((e.distX > e.distY && e.distX < -e.distY) ||
+            (e.distX < e.distY && e.distX > -e.distY)) {
+          e.preventDefault();
+        }
+      });
 
       this.$element.bind('orbit.next swipeleft', function () {
         self.shift('next');
