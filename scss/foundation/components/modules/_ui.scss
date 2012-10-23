@@ -163,7 +163,7 @@
 
   /* Breadcrums ---------------------- */
 
-  ul.breadcrumbs { display: block; background: lighten($secondaryColor, 5%); padding: 6px 10px 7px; border: 1px solid $secondaryColor; @include border-radius(2px); overflow: hidden;
+  ul.breadcrumbs { display: block; background: lighten($secondaryColor, 5%); padding: 6px 10px 7px; border: 1px solid $secondaryColor; @include border-radius(2px); overflow: hidden; margin-#{$defaultFloat}: 0;
 
     li { margin: 0; padding: 0 12px 0 0; float: $defaultFloat; list-style: none;
 
@@ -276,7 +276,7 @@
   }
 
   /* Pricing Tables ---------------------- */
-  .pricing-table { border: $priceTableBorder;
+  .pricing-table { border: $priceTableBorder; margin-left: 0;
     & * { list-style: none; line-height: 1; }
     .title { background-color: $priceTitleBgColor; padding: $priceTitlePadding; text-align: $priceTitleAlign; color: $priceTitleColor; font-weight: $priceTitleWeight; font-size: $priceTitleSize; }
     .price { background-color: $priceMoneyBgColor; padding: $priceMoneyPadding; text-align: $priceMoneyAlign; color: $priceMoneyColor; font-weight: $priceMoneyWeight; font-size: $priceMoneySize; }
