@@ -29,3 +29,4 @@
     &.expand  { width: 90%; margin-#{$defaultFloat}: -45%; }
     .row { min-width: 0; margin-bottom: 10px; }
   }
+  @media print { .reveal-modal { border: solid 1px #000; background: rgba(255,255,255,1) !important; } }
