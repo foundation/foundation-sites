@@ -55,7 +55,7 @@
     wrapperHTML: '<div class="orbit-wrapper" />',
     timerHTML: '<div class="timer"><span class="mask"><span class="rotator"></span></span><span class="pause"></span></div>',
     captionHTML: '<div class="orbit-caption"></div>',
-    directionalNavHTML: '<div class="slider-nav"><span class="right"></span><span class="left"></span></div>',
+    directionalNavHTML: '<div class="slider-nav hide-for-small"><span class="right"></span><span class="left"></span></div>',
     bulletHTML: '<ul class="orbit-bullets"></ul>',
     slideNumberHTML: '<span class="orbit-slide-counter"></span>',
 
@@ -82,11 +82,11 @@
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
       this.$slides = this.$element.children('img, a, div, figure');
 
-      this.$element.bind('orbit.next', function () {
+      this.$element.bind('orbit.next swipeleft', function () {
         self.shift('next');
       });
 
-      this.$element.bind('orbit.prev', function () {
+      this.$element.bind('orbit.prev swiperight', function () {
         self.shift('prev');
       });
 
