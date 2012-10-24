@@ -35,9 +35,9 @@
             methods.largestUL();
           }
 
-          if (settings.$topbar.parent().hasClass('fixed')) {
-            $('body').css('margin-top',settings.$topbar.outerHeight())
-          }
+          // if (settings.$topbar.parent().hasClass('fixed')) {
+          //   $('body').css('margin-top',settings.$topbar.outerHeight())
+          // }
 
           $('.top-bar .toggle-topbar').die('click.fndtn').live('click.fndtn', function (e) {
             e.preventDefault();
@@ -71,11 +71,11 @@
             }
           });
 
-          // $(window).resize(function() {
-          //   if (!methods.breakpoint()) {
-          //     settings.$topbar.css('min-height', '');
-          //   }
-          // });
+          $(window).on('resize.fndtn.topbar',function() {
+            if (!methods.breakpoint()) {
+              settings.$topbar.css('min-height', '');
+            }
+          });
 
           // Go up a level on Click
           $('.top-bar .has-dropdown .back').die('click.fndtn').live('click.fndtn', function (e) {
