@@ -532,6 +532,9 @@
             .eq(this.activeSlide)
             .css({"opacity" : 0, "z-index" : 3})
             .animate({"opacity" : 1}, this.options.animationSpeed, this.resetAndUnlock);
+          this.$slides
+              .eq(this.prevActiveSlide)
+              .animate({"opacity":0}, this.options.animationSpeed);
         }
 
         //horizontal-slide
@@ -540,14 +543,19 @@
             this.$slides
               .eq(this.activeSlide)
               .css({"left": this.orbitWidth, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
           }
           if (slideDirection == "prev") {
             this.$slides
               .eq(this.activeSlide)
               .css({"left": -this.orbitWidth, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
           }
+          this.$slides
+              .eq(this.prevActiveSlide)
+              .css("opacity", 0);
         }
 
         //vertical-slide
@@ -556,14 +564,22 @@
             this.$slides
               .eq(this.activeSlide)
               .css({"top": this.orbitHeight, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"top" : 0}, this.options.animationSpeed, this.resetAndUnlock);
+            this.$slides
+              .eq(this.prevActiveSlide)
+              .css("opacity", 0);
           }
           if (slideDirection == "next") {
             this.$slides
               .eq(this.activeSlide)
               .css({"top": -this.orbitHeight, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"top" : 0}, this.options.animationSpeed, this.resetAndUnlock);
           }
+          this.$slides
+              .eq(this.prevActiveSlide)
+              .css("opacity", 0);
         }
 
         //horizontal-push
@@ -598,18 +614,22 @@
             this.$slides
               .eq(this.activeSlide)
               .css({top: -this.orbitHeight, "z-index" : 3})
-              .animate({top : 0}, this.options.animationSpeed, this.resetAndUnlock);
+              .css("opacity", 1)
+              .animate({top : 0, "opacity":1}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
-              .animate({top : this.orbitHeight}, this.options.animationSpeed);
+              .css("opacity", 0)
+              .animate({top : this.orbitHeight}, this.options.animationSpeed, "");
           }
           if (slideDirection == "prev") {
             this.$slides
               .eq(this.activeSlide)
               .css({top: this.orbitHeight, "z-index" : 3})
+              .css("opacity", 1)
               .animate({top : 0}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
+              .css("opacity", 0)
               .animate({top : -this.orbitHeight}, this.options.animationSpeed);
           }
         }
