@@ -58,7 +58,7 @@
 
   }
 
-  .tooltip { display: none; background: $tooltipBackgroundColor; background: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); position: absolute; color: $tooltipFontColor; font-weight: $tooltipFontWeight; @include font-size($tooltipFontSize); padding: 5px; z-index: 999; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; line-height: normal;
+  .tooltip { display: none; background: $tooltipBackgroundColor; background: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); position: absolute; color: $tooltipFontColor; font-weight: $tooltipFontWeight; font-size: $tooltipFontSize; padding: 5px; z-index: 999; @include border-radius($tooltipBorderRadius); line-height: normal;
 
     &>.nub { display: block; width: 0; height: 0; border: solid 5px; border-color: transparent transparent $tooltipBackgroundColor transparent; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent; position: absolute; top: -10px; #{$defaultFloat}: 10px; }
     &.tip-override>.nub { border-color: transparent transparent $tooltipBackgroundColor transparent !important; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent !important; top: -10px !important; }
@@ -224,7 +224,7 @@
 
   /* Tables ---------------------- */
 
-  table { background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin: 0 0 18px; border: 1px solid #ddd;  }
+  table { background: #fff; @include border-radius($tableBorderRadius); margin: 0 0 18px; border: 1px solid #ddd;  }
 
   table thead, table tfoot { background: #f5f5f5; }
   table thead tr th,
@@ -247,7 +247,7 @@
   ul.vcard { display: inline-block; margin: 0 0 12px 0; border: 1px solid #ddd; padding: 10px;
 
     li { margin: 0; display: block; }
-    li.fn { font-weight: bold; @include font-size(15); }
+    li.fn { font-weight: bold; font-size: ms(0) + 1; }
 
   }
 

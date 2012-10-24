@@ -40,7 +40,7 @@
   select { width: 100%; }
 
   /* Fieldsets */
-  fieldset { border: solid 1px #ddd; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; padding: 12px 12px 0; margin: 18px 0;
+  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: 12px 12px 0; margin: 18px 0;
 
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0; margin-#{$defaultFloat}: -3px; }
   }
