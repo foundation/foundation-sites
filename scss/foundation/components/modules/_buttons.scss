@@ -155,14 +155,14 @@
     }
 
     &.radius li {
-      a {
+      a, input[type="submit"] {
         &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
       }
-      &:first-child a {
+      &:first-child a, &:first-child input[type="submit"] {
         &.button, &.button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
         &.button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
       }
-      &:last-child a {
+      &:last-child a, &:last-child input[type="submit"] {
         &.button, &.button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
         &.button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
       }
