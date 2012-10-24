@@ -6,14 +6,16 @@
   .show-for-medium-down,
   .hide-for-large,
   .hide-for-large-up,
-  .show-for-xlarge { display: none !important; }
+  .show-for-xlarge,
+  .show-for-print { display: none !important; }
 
   .hide-for-small,
   .hide-for-medium,
   .hide-for-medium-down,
   .show-for-large,
   .show-for-large-up,
-  .hide-for-xlarge { display: inherit !important; }
+  .hide-for-xlarge,
+  .hide-for-print { display: inherit !important; }
 
   /* Very large display targeting */
   @media only screen and (min-width: $screenXlarge) {
