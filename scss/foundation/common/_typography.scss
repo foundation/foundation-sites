@@ -15,6 +15,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: $headerFontFamily;
     font-weight: $headerFontWeight;
+    font-style: $headerFontStyle;
     color: $headerFontColor;
     text-rendering: optimizeLegibility;
     line-height: 1.1;
@@ -98,4 +99,6 @@
     h2, h3 { page-break-after: avoid; }
     .hide-on-print { display: none !important; }
     .print-only { display: block !important; }
+    .hide-for-print { display: none !important; }
+    .show-for-print { display: inherit !important; }
   }

@@ -25,9 +25,11 @@ $darkEdge: rgba(#000, .2) !default;
 
 $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
+$headerFontStyle: normal !default;
 $headerFontColor: #222 !default;
 $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $bodyFontWeight: normal !default;
+$bodyFontStyle: normal !default;
 $bodyFontColor: $txtColor !default;
 
 // Text Direction Settings
@@ -68,6 +70,7 @@ $inputFocusBorderColor: darken(#fff, 30%) !default;
 $inputBorderStyle: solid !default;
 $inputBorderWidth: 1px !default;
 $inputBorderRadius: 2px !default;
+$fieldsetBorderRadius: 3px !default;
 
 // Custom Form Settings
 
@@ -125,6 +128,7 @@ $progBarBorderColor: darken(#fff, 20%) !default;
 $progBarBorderSize: 1px !default;
 $progBarPad: 2px !default;
 $linkListBottomMargin: 17px -22px !default;
+$tableBorderRadius: 3px !default;
 
 // Tooltip Settings
 
@@ -135,7 +139,7 @@ $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
 $hasTipFontColorHover: $mainColor !default;
 $tooltipBackgroundColor: #000 !default;
 $tooltipBackgroundOpacity: 0.85 !default;
-$tooltipFontSize: 12 !default;
+$tooltipFontSize: 12px !default;
 $tooltipFontWeight: bold !default;
 $tooltipFontColor: #fff !default;
 $tapToCloseFontSize: 10 !default;
@@ -143,6 +147,7 @@ $tapToCloseFontWeight: normal !default;
 $tapToCloseFontColor: #888 !default;
 $tooltipFontSizeScreenSm: 14 !default;
 $tooltipBgOpacityScreenSm: 0.85 !default;
+$tooltipBorderRadius: 4px !default;
 
 // Pricing Table Settings
 
