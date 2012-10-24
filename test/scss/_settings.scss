@@ -8,6 +8,7 @@
 // $columnGutter: 30px;
 // $totalColumns: 12;
 // $mobileTotalColumns: 4;
+// $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported
 
 // Colors Settings
 
@@ -22,13 +23,15 @@
 // $shinyEdge: rgba(#fff, .5);
 // $darkEdge: rgba(#000, .2);
 
-// Typography Settings
+// Font Settings
 
 // $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $headerFontWeight: bold;
+// $headerFontStyle: normal;
 // $headerFontColor: #222;
 // $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $bodyFontWeight: normal;
+// $bodyFontStyle: normal;
 // $bodyFontColor: $txtColor;
 
 // Text Direction Settings
@@ -48,17 +51,18 @@
 
 // $formSpacing: 12px;
 // $labelFontWeight: 500;
-// $labelTxtColor: lighten(#000, 30%);
+// $labelFontColor: lighten(#000, 30%);
 // $labelBtmMargin: 3px;
-// $inputTxtColor: rgba(0,0,0,0.75);
+// $inputFontColor: rgba(0,0,0,0.75);
 // $inputFontSize: 14px;
 // $inputBgColor: #fff;
 // $inputFocusBgColor: darken(#fff, 2%);
 // $inputBorderColor: darken(#fff, 20%);
+// $inputFocusBorderColor: darken(#fff, 30%);
 // $inputBorderStyle: solid;
 // $inputBorderWidth: 1px;
 // $inputBorderRadius: 2px;
-// $inputFocusBorderColor: darken(#fff, 30%);
+// $fieldsetBorderRadius: 3px;
 
 // Custom Form Settings
 
@@ -73,30 +77,69 @@
 // $custSelectDropHeight: 200px;
 // $custDropdownBgColor: #fff;
 // $custDropdownBorderColor: darken(#fff, 20%);
-// $custDropdownTxtColor: #555;
+// $custDropdownFontColor: #555;
 // $custDropdownSelectedBgColor: lighten(#2ba6cb, 40%);
-// $custDropwonSelectedTxtColor: #000;
+// $custDropdownSelectedFontColor: #000;
 // $custFormDisabledBgColor: #ddd;
 
 // Tab Settings
 
 // $tabHeight: 40px;
+// $tabTermFontSize: 12px;
 
 // Nav Bar Settings
 
 // $navBarHeight: 40px;
 // $navFlyoutBaseWidth: 250px;
 
+// Top Bar Settings
+
+// $topBarBgColor: #222;
+// $topBarHeight: 45px;
+// $topBarHeightMobile: 45px;
+// $topBarBtmMargin: 30px;
+// $topBarTitleWeight: bold;
+// $topBarTitleSize: 17px;
+// $topBarLinkColor: #fff;
+// $topBarLinkWeight: bold;
+// $topBarLinkSize: 13px;
+// $topBarDropBgColor: #222;
+// $topBarDropLinkColor: #fff;
+// $topBarDropToggleSize: 5px;
+// $topBarDropToggleColor: #fff;
+// $topBarDropToggleAlpha: 0.5;
+// $topBarSearchWidth: 200px;
+// $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
+// $topBarNavToggleSize: 8px;
+
 // UI Settings
 
 // $thumbRadius: 3px;
-
 // $progBarHeight: 25px;
-// $progBarBorderColor: darken($white, 20%);
+// $progBarBorderColor: darken(#fff, 20%);
 // $progBarBorderSize: 1px;
 // $progBarPad: 2px;
-
 // $linkListBottomMargin: 17px -22px;
+// $tableBorderRadius: 3px;
+
+// Tooltip Settings
+
+// $hasTipBorderBottom: dotted 1px #ccc;
+// $hasTipFontWeight: bold;
+// $hasTipFontColor: #333;
+// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%);
+// $hasTipFontColorHover: $mainColor;
+// $tooltipBackgroundColor: #000;
+// $tooltipBackgroundOpacity: 0.85;
+// $tooltipFontSize: 12px;
+// $tooltipFontWeight: bold;
+// $tooltipFontColor: #fff;
+// $tapToCloseFontSize: 10;
+// $tapToCloseFontWeight: normal;
+// $tapToCloseFontColor: #888;
+// $tooltipFontSizeScreenSm: 14;
+// $tooltipBgOpacityScreenSm: 0.85;
+// $tooltipBorderRadius: 4px;
 
 // Pricing Table Settings
 
@@ -146,46 +189,13 @@
 // $orbitHasThumbBorderWidth: 2px;
 // $orbitHasThumbBorderStyle: solid;
 
-// Modular Scale
+// Off Canvas Width Settings
 
-// $ratio: $golden;
+// $mainWidth: 80%;
+// $complementaryWidth: 20%;
+
+// Modular Scale Settings
+
+// $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
 // $baseFontSize: 14px;
 // $importantModNum: 44px;
-
-// Tooltip Settings
-
-// $hasTipBorderBottom: dotted 1px #ccc;
-// $hasTipFontWeight: bold;
-// $hasTipFontColor: #333;
-// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%);
-// $hasTipFontColorHover: $mainColor;
-// $tooltipBackgroundColor: #000;
-// $tooltipBackgroundOpacity: 0.85;
-// $tooltipFontSize: 12;
-// $tooltipFontWeight: bold;
-// $tooltipFontColor: #fff;
-// $tapToCloseFontSize: 10;
-// $tapToCloseFontWeight: normal;
-// $tapToCloseFontColor: #888;
-// $tooltipFontSizeScreenSmall: 14;
-// $tooltipBackgroundOpacityScreenSmall: 0.85;
-
-// Top Bar Settings
-
-// $topBarBgColor: #222;
-// $topBarHeight: 45px;
-// $topBarHeightMobile: 45px;
-// $topBarBtmMargin: 30px;
-// $topBarTitleWeight: bold;
-// $topBarTitleSize: 17px;
-// $topBarLinkColor: #fff;
-// $topBarLinkWeight: bold;
-// $topBarLinkSize: 13px;
-// $topBarDropBgColor: #222;
-// $topBarDropLinkColor: #fff;
-// $topBarDropToggleSize: 5px;
-// $topBarDropToggleColor: #fff;
-// $topBarDropToggleAlpha: 0.5;
-// $topBarSearchWidth: 200px;
-// $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
-// $topBarNavToggleSize: 8px;
