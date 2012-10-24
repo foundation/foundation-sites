@@ -256,7 +256,7 @@
       //Set initial front photo z-index and fades it in
       var self = this;
       this.$slides.first()
-        .css({"z-index" : 3})
+        .css({"z-index" : 3, "opacity" : 1})
         .fadeIn(function() {
           //brings in all other slides IF css declares a display: none
           self.$slides.css({"display":"block"})
@@ -572,19 +572,23 @@
             this.$slides
               .eq(this.activeSlide)
               .css({"left": this.orbitWidth, "z-index" : 3})
-              .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
+              .animate({"left" : 0, "opacity" : 1}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
-              .animate({"left" : -this.orbitWidth}, this.options.animationSpeed);
+              .animate({"left" : -this.orbitWidth}, this.options.animationSpeed, "", function(){
+                $(this).css({"opacity" : 0});
+              });
           }
           if (slideDirection == "prev") {
             this.$slides
               .eq(this.activeSlide)
               .css({"left": -this.orbitWidth, "z-index" : 3})
-              .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
+              .animate({"left" : 0, "opacity" : 1}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
-              .animate({"left" : this.orbitWidth}, this.options.animationSpeed);
+              .animate({"left" : this.orbitWidth}, this.options.animationSpeed, "", function(){
+                $(this).css({"opacity" : 0});
+              });
           }
         }
 

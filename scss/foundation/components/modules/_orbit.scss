@@ -14,7 +14,7 @@
 
     .orbit-slide { max-width: 100%; position: absolute; top: 0; #{$defaultFloat}: 0; }
     a.orbit-slide { border: none; line-height: 0; display: none; }
-    div.orbit-slide { width: 100%; height: 100%; }
+    div.orbit-slide { width: 100%; height: 100%; @include opacity(0); }
   }
 
   /* Note: If your slider only uses content or anchors, you're going to want to put the width and height declarations on the ".orbit>div" and "div.orbit>a" tags in addition to just the .orbit-wrapper */
