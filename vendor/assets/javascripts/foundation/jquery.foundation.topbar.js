@@ -39,7 +39,7 @@
             $('body').css('margin-top',settings.$topbar.outerHeight())
           }
 
-          $('.top-bar .toggle-topbar').live('click.fndtn', function (e) {
+          $('.top-bar .toggle-topbar').die('click.fndtn').live('click.fndtn', function (e) {
             e.preventDefault();
 
             if (methods.breakpoint()) {
@@ -50,7 +50,7 @@
           });
 
           // Show the Dropdown Levels on Click
-          $('.top-bar .has-dropdown>a').live('click.fndtn', function (e) {
+          $('.top-bar .has-dropdown>a').die('click.fndtn').live('click.fndtn', function (e) {
             if (Modernizr.touch || methods.breakpoint())
               e.preventDefault();
 
@@ -73,7 +73,7 @@
           });
 
           // Go up a level on Click
-          $('.top-bar .has-dropdown .back').live('click.fndtn', function (e) {
+          $('.top-bar .has-dropdown .back').die('click.fndtn').live('click.fndtn', function (e) {
             e.preventDefault();
 
             var $this = $(this),
