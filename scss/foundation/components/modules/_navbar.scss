@@ -72,37 +72,3 @@
     }
 
   }
-
-
-  /* Mobile Styles */
-  @media only screen and (max-device-width: 1280px) {
-    .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: 36px !important; }
-  }
-
-  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-    .touch .nav-bar li a { @include font-size(13); }
-    .touch .nav-bar li.has-flyout>a.flyout-toggle { padding: ($navBarHeight / 2) !important; }
-    .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: ($navBarHeight - 4) !important; }
-  }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    .nav-bar { height: auto;
-
-      &>li { float: none; display: block; border-#{$defaultOpposite}: none; }
-      &>li>a.main { text-align: $defaultFloat; border-top: 1px solid #ddd; border-#{$defaultOpposite}: none; }
-      &>li:first-child>a.main { border-top: none; }
-      &>li.has-flyout>a.flyout-toggle { position: absolute; #{$defaultOpposite}: 0; top: 0; padding: ($navBarHeight / 2)+2; z-index: 2; display: block; }
-      &>li.has-flyout.is-touch>a.flyout-toggle span { content: ""; width: 0; height: 0; display: block; }
-      &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
-      &.vertical>li.has-flyout>.flyout { #{$defaultFloat}: 0; }
-    }
-
-    .flyout { position: relative; width: 100% !important; top: auto; margin-#{$defaultOpposite}: -2px; border-width: 1px 1px 0 1px;
-
-      &.right { float: none; right: auto; left: -1px; }
-      &.small, &.large { width: 100% !important; }
-      p:last-child { margin-bottom: 18px; }
-    }
-
-  }
->>>>>>> 62e91b2f19b4690250bc26cd30a82b5dcddca640
