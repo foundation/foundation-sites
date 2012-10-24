@@ -11,7 +11,7 @@
 :: Pagination
 :: Breadcrumbs
 :: Lists
-:: Link Lists
+:: Inline/Link Lists
 :: Keystroke Chars
 :: Image Thumbnails
 :: Video
@@ -184,8 +184,8 @@
 
   }
 
-  /* Link List */
-  ul.inline-list { margin: 0 0 $linkListBottomMargin; padding: 0; list-style: none; overflow: hidden;
+  /* Inline Link List */
+  ul.inline-list, ul.link-list { margin: 0 0 $linkListBottomMargin; padding: 0; list-style: none; overflow: hidden;
 
     li { list-style: none; float: $defaultFloat; margin-#{$defaultFloat}: 22px; display: block;
 
