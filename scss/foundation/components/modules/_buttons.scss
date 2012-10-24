@@ -3,7 +3,7 @@
 
 /* Normal Buttons ---------------------- */
 
-  .button { width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: $bodyFontFamily; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; outline: none; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
+  .button { width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-style: $bodyFontStyle; font-size: ms(0); line-height: 1; margin: 0; outline: none; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
 
     /* Hovers */
     &:hover { color: $white; background-color: darken(($mainColor), 10%); }
