@@ -19,7 +19,6 @@
 	</style>
 
 	<script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
-
 </head>
 <body>
 
@@ -86,6 +85,8 @@
 
 	<!-- Included JS Files -->
 	<script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.event.move.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.event.swipe.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.alerts.js"></script>
@@ -101,9 +102,10 @@
   <script type="text/javascript">
     $(window).load(function(){
       $("#featured").orbit({
-        animation: 'fade',
-        resetTimerOnClick: true
+        slideNumber: true,
+        stackOnSmall: true
       });
+      
       $('#featuredContent').orbit({ fluid: '2x1' });
     });
   </script>
