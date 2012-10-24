@@ -370,14 +370,14 @@
                     a { padding: 8px $topBarHeightMobile / 2; font-size: ms(0); }
                   }
                   a, label { padding: 0 $topBarHeight / 2; }
-                  a:hover { background: transparent; display: block; }
+                  a:hover { background: lighten($topBarBgColor, 10%); display: block; }
                   &.divider { border-bottom: solid 1px rgba(255,255,255,0.1); margin-top: 8px !important; margin-bottom: 8px !important; }
                 }
               }
               .back.title { padding-bottom: 0;
                 a:before { position: absolute; top: 50%; left: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, right); }
                 h5 { margin: 0; padding-left: $topBarDropToggleSize * 3; position: relative;
-                  a { padding-top: 8px; padding-bottom: 8px; font-size: ms(2); font-weight: $topBarTitleWeight; }
+                  a { background: transparent; padding-top: 8px; padding-bottom: 8px; font-size: ms(2); font-weight: $topBarTitleWeight; }
                 }
               }
             }
@@ -389,6 +389,9 @@
               .dropdown { left: 100% !important; top: 0; right: auto !important; }
               &>a { padding-right: $topBarHeight * .75;
                 &:after { content: ""; margin-right: $topBarHeightMobile / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
+                li a {
+                  &:hover { background: lighten($topBarBgColor, 10%); }
+                }
               }
               &.moved { position: static;
                 .dropdown { top: 0; visibility: visible; }

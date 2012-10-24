@@ -45,7 +45,6 @@
             if (methods.breakpoint()) {
               settings.$topbar.toggleClass('expanded');
               settings.$topbar.css('min-height', '');
-
             }
           });
 
@@ -71,6 +70,12 @@
               settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
             }
           });
+
+          // $(window).resize(function() {
+          //   if (!methods.breakpoint()) {
+          //     settings.$topbar.css('min-height', '');
+          //   }
+          // });
 
           // Go up a level on Click
           $('.top-bar .has-dropdown .back').die('click.fndtn').live('click.fndtn', function (e) {

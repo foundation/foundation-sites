@@ -36,6 +36,7 @@
         img { margin-top: -5px; vertical-align: middle; }
       }
     }
+    &.expanded { height: inherit; }
 
     /* topbar global <ul> styles */
     ul { display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none; position: relative;
