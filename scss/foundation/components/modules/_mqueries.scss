@@ -278,20 +278,18 @@
 
     /* Tabs --- */
     /*          */
-    dl.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
-    dl.tabs.mobile dt, dl.tabs.mobile dd { float: none; height: auto; }
-    dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; @include font-size(15); }
-    dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
-
-    .tabs.mobile { border-bottom: solid 1px #ccc; height: auto;
-      dd a { padding: 18px 20px; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
-      dd a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
-      dd:first-child a.active { margin: 0; }
+    .tabs.mobile { width: auto; margin: 20px -20px 40px; border-bottom: solid 1px #ccc; height: auto; margin: 20px -15px 0px -15px;
+      dt, li, dd { float: none; height: auto; }
+      dd a, li a { font-size: ms(0) + 1; display: block; width: auto; height: auto; padding: 18px 20px; margin: 0; color: #555; line-height: 1; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
+      dd a.active, li a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
+      dd:first-child, li:first-child { padding-left: 20px !important; }
+      dd:first-child a.active, li:first-child a.active { margin: 0; }
+      &+.tabs-content.contained { margin-left:-15px; margin-right:-15px; }
     }
 
-    dl.contained.mobile { margin-bottom: 0; }
-    dl.contained.tabs.mobile dd a { padding: 18px 20px; }
-    dl.tabs.mobile + ul.contained { margin-#{$defaultFloat}: -20px; margin-#{$defaultOpposite}: -20px; border-width: 0 0 1px 0; }
+    .contained.mobile { margin-bottom: 0; }
+    .contained.tabs.mobile dd a, .contained.tabs.mobile li a { padding: 18px 20px; }
+    .tabs.mobile + ul.contained { margin-#{$defaultFloat}: -20px; margin-#{$defaultOpposite}: -20px; border-width: 0 0 1px 0; }
 
     /* UI Elements --- */
     /*                 */
