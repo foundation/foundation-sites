@@ -94,7 +94,7 @@
     height: 150px;
     margin-top: 5px;
   }
-  .visible-img { background: rgba(0,0,0,0.75); }
+  .visible-img { background: rgba(0,0,0,0.75); overflow: hidden; }
   ul[data-clearing] {
     width: 200%;
     margin-left: 0;
