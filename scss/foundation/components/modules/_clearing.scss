@@ -99,6 +99,11 @@
       background: #222;
       margin-right: 1px;
       position: relative;
+      &.fix-height {
+        img {
+          max-width: none;
+        }
+      }
       a {
         // display: block;
 

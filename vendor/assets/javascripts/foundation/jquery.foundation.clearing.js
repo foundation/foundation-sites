@@ -126,7 +126,7 @@
               settings = $el.data('fndtn.clearing.settings'),
               grid = $el.detach(),
               data = {
-                grid: this.outerHTML(grid[0]),
+                grid: '<div class="carousel">' + this.outerHTML(grid[0]) + '</div>',
                 viewing: settings.templates.viewing
               },
               wrapper = '<div class="clearing-assembled"><div>' + data.viewing + data.grid + '</div></div>';
@@ -139,6 +139,8 @@
               container = root.find('div:first'),
               visible_image = container.find('.visible-img'),
               image = visible_image.find('img').not($image);
+
+          this.fix_height(container);
 
           if (!methods.locked()) {
 
@@ -161,6 +163,20 @@
               });
             });
           }
+        },
+
+        fix_height : function (container) {
+          var lis = container.find('ul[data-clearing] li');
+
+          lis.each(function () {
+            var li = $(this),
+                image = li.find('img');
+
+            if (li.height() > image.height()) {
+              li.addClass('fix-height');
+              image.height(li.height());
+            }
+          });
         },
 
         load : function ($image) {
@@ -192,6 +208,7 @@
           }
         },
 
+
         shift : function (current, target, callback) {
           var clearing = target.parent(),
               container = clearing.closest('.clearing-container'),
@@ -212,9 +229,12 @@
             }
           } else if (/skip/.test(direction)) {
             skip_shift = target.index() - defaults.up_count;
+            methods.lock();
 
             if (skip_shift > 0) {
-              clearing.css({left : -(skip_shift * target.outerWidth())});
+              clearing.animate({left : -(skip_shift * target.outerWidth())}, 300, methods.unlock);
+            } else {
+              clearing.animate({left : 0}, 300, methods.unlock);
             }
           }
 
