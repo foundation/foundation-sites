@@ -1,8 +1,23 @@
 ;(function ($, window, undefined) {
   'use strict';
 
-  $.fn.foundationButtons = function(options) {
-    var $doc = $(document);
+  $.fn.foundationButtons = function (options) {
+    var $doc = $(document),
+      config = $.extend({
+        dropdownAsToggle:false,
+        activeClass:'active'
+      }, options),
+
+    // close all dropdowns except for the dropdown passed
+      closeDropdowns = function (dropdown) {
+        $('.button.dropdown').find('ul').not(dropdown).removeClass('show-dropdown');
+      },
+    // reset all toggle states except for the button passed
+      resetToggles = function (button) {
+        var buttons = $('.button.dropdown').not(button);
+        buttons.add($('> span.' + config.activeClass, buttons)).removeClass(config.activeClass);
+      };
+
     // Prevent event propagation on disabled buttons
     $doc.on('click.fndtn', '.button.disabled', function (e) {
       e.preventDefault();
@@ -10,28 +25,32 @@
 
     $('.button.dropdown > ul', this).addClass('no-hover');
 
-    $doc.on('click.fndtn', '.button.dropdown, .button.dropdown.split span', function (e) {
-      // Stops further propagation of the event up the DOM tree when clicked on the button.
-      // Events fired by its descendants are not being blocked.
-      $('.button.dropdown').children('ul').removeClass('show-dropdown');
-      if (e.target === this) {
-        e.stopPropagation();
+    // reset other active states
+    $doc.on('click.fndtn', '.button.dropdown:not(.split), .button.dropdown.split span', function (e) {
+      var $el = $(this),
+        button = $el.closest('.button.dropdown'),
+        dropdown = $('> ul', button);
+      e.preventDefault();
+
+      // close other dropdowns
+      closeDropdowns(config.dropdownAsToggle ? dropdown : '');
+      dropdown.toggleClass('show-dropdown');
+
+      if (config.dropdownAsToggle) {
+        resetToggles(button);
+        $el.toggleClass(config.activeClass);
       }
     });
 
-    $doc.on('click.fndtn', '.button.dropdown.split span', function (e) {
-      e.preventDefault();
-      $('.button.dropdown', this).not($(this).parent()).children('ul').removeClass('show-dropdown');
-      $(this).siblings('ul').toggleClass('show-dropdown');
-    });
-
-    $doc.on('click.fndtn', '.button.dropdown:not(.split)', function (e) {
-      $('.button.dropdown', this).not(this).children('ul').removeClass('show-dropdown');
-      $(this).children('ul').toggleClass('show-dropdown');
-    });
-
-    $doc.on('click.fndtn', 'body, html', function () {
-      $('.button.dropdown ul').removeClass('show-dropdown');
+    // close all dropdowns and deactivate all buttons
+    $doc.on('click.fndtn', 'body, html', function (e) {
+      // check original target instead of stopping event propagation to play nice with other events
+      if (!$(e.originalEvent.target).is('.button.dropdown:not(.split), .button.dropdown.split span')) {
+        closeDropdowns();
+        if (config.dropdownAsToggle) {
+          resetToggles();
+        }
+      }
     });
 
     // Positioning the Flyout List
