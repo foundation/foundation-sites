@@ -11,8 +11,8 @@ Launched new features, a new Add-ons section to the marketing site, Right to lef
 
 With this release of Foundation, we include:
 * Downloadable HTML template pages that can be copy/pasted into an existing project or added to your project upon downloading from the customizer.
-* The Add-on's section includes a round-up of all the playground pieces, etc that aren't officially included in Foundation, but built to work with it. This includes: (Templates)[http://foundation.zurb.com/add-ons.php], (Icon Fonts)[http://foundation.zurb.com/icon-fonts.php], (Off-Canvas Layouts)[http://foundation.zurb.com/off-canvas.php], (Responsive Tables)[http://foundation.zurb.com/responsive-tables.php], (SVG Social Icons)[http://foundation.zurb.com/social-icons.php], and (Omnigraffle Stencils)[http://foundation.zurb.com/stencils.php].
-* Foundation now includes a (responsive top navigation)[http://foundation.zurb.com/navigation.php] bar that lets you have control over when it responds and what you include in it. We've made it really easy to customize using Scss.
+* The Add-on's section includes a round-up of all the playground pieces, etc that aren't officially included in Foundation, but built to work with it. This includes: [Templates](http://foundation.zurb.com/add-ons.php), [Icon Fonts](http://foundation.zurb.com/icon-fonts.php), [Off-Canvas Layouts](http://foundation.zurb.com/off-canvas.php), [Responsive Tables](http://foundation.zurb.com/responsive-tables.php), [SVG Social Icons](http://foundation.zurb.com/social-icons.php), and [Omnigraffle Stencils](http://foundation.zurb.com/stencils.php).
+* Foundation now includes a [responsive top navigation](http://foundation.zurb.com/navigation.php) bar that lets you have control over when it responds and what you include in it. We've made it really easy to customize using Scss.
 * Right-to-left language support straight out of the box. You can adjust this in the settings.scss file or upon downloading with the customizer.
 * New UI Styles for Progress Bars and Image Thumbs.
 * Updated to include jQuery 1.8.1
@@ -31,7 +31,7 @@ New features: Media Query Toggler, block-grid mobile layouts, font-size customiz
 Numerous JS bug fixes, added generators for Rails and refactored SCSS directory for better maintainability and scalability over time. CSS files weren't affected by this refactoring.
 
 ### 3.0.6- July 20, 2012
-Numerous bugfixes including dropdown buttons on touch devices, Modernizr update with IE8Compat, split button colors, and more. Split out the functions in app.js to be part of the Gem and only initialized in app.js, so you can keep a clean distinction between your JS and Foundation's (if you want to). Added an (accordion)[http://foundation.zurb.com/elements.php] element.
+Numerous bugfixes including dropdown buttons on touch devices, Modernizr update with IE8Compat, split button colors, and more. Split out the functions in app.js to be part of the Gem and only initialized in app.js, so you can keep a clean distinction between your JS and Foundation's (if you want to). Added an [accordion](http://foundation.zurb.com/elements.php) element.
 
 ### 3.0.5- July 10, 2012
 Fixed Compass performance issues by separating out each Foundation file and removing extraneous imports.
