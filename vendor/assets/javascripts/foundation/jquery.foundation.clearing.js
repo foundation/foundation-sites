@@ -131,7 +131,8 @@
               },
               wrapper = '<div class="clearing-assembled"><div>' + data.viewing + data.grid + '</div></div>';
 
-          return settings.$parent.append(wrapper);
+          settings.$parent.append(wrapper);
+          settings.$parent.find('ul[data-clearing]').width($li.siblings().length * 100 + '%');
         },
 
         open : function ($image, current, target) {
@@ -168,15 +169,15 @@
         fix_height : function (container) {
           var lis = container.find('ul[data-clearing] li');
 
-          lis.each(function () {
-            var li = $(this),
-                image = li.find('img');
+          // lis.each(function () {
+          //   var li = $(this),
+          //       image = li.find('img');
 
-            if (li.height() > image.height()) {
-              li.addClass('fix-height');
-              image.height(li.height());
-            }
-          });
+          //   if (li.height() > image.height()) {
+          //     li.addClass('fix-height');
+          //     image.height(li.height());
+          //   }
+          // });
         },
 
         load : function ($image) {
@@ -217,22 +218,23 @@
               old_index = defaults.prev_index,
               direction = this.direction(clearing, current, target),
               left = parseInt(clearing.css('left'), 10),
+              width = target.outerWidth(),
               skip_shift;
 
           if (target.index() !== old_index && !/skip/.test(direction)){
             if (/left/.test(direction)) {
               methods.lock();
-              clearing.animate({left : left + target.outerWidth()}, 300, methods.unlock);
+              clearing.animate({left : left + width}, 300, methods.unlock);
             } else if (/right/.test(direction)) {
               methods.lock();
-              clearing.animate({left : left - target.outerWidth()}, 300, methods.unlock);
+              clearing.animate({left : left - width}, 300, methods.unlock);
             }
           } else if (/skip/.test(direction)) {
             skip_shift = target.index() - defaults.up_count;
             methods.lock();
 
             if (skip_shift > 0) {
-              clearing.animate({left : -(skip_shift * target.outerWidth())}, 300, methods.unlock);
+              clearing.animate({left : -(skip_shift * width)}, 300, methods.unlock);
             } else {
               clearing.animate({left : 0}, 300, methods.unlock);
             }
@@ -255,7 +257,7 @@
 
         direction : function ($el, current, target) {
           var lis = $el.find('li'),
-              li_width = lis.outerWidth(),
+              li_width = lis.outerWidth() + (lis.outerWidth() / 4),
               container = $('.clearing-container'),
               up_count = Math.floor(container.outerWidth() / li_width) - 1,
               shift_count = lis.length - up_count,
