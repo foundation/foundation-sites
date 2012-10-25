@@ -8,6 +8,7 @@
   height: 100%;
   top: 0;
   left: 0;
+  .clearing-close { display: block; }
 }
 
 .clearing-container {
@@ -45,6 +46,7 @@
   font-size: 30px;
   line-height: 1;
   color: #fff;
+  display: none;
   &:hover {
     color: #ccc;
   }
@@ -79,12 +81,14 @@
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
 .clearing-assembled .clearing-container {
-  .visible-img { background: rgba(0,0,0,0.75); }
-  ul[data-clearing] {
+  .carousel {
     background: rgba(0,0,0,0.75);
     height: 150px;
-    width: 200%;
     margin-top: 5px;
+  }
+  .visible-img { background: rgba(0,0,0,0.75); }
+  ul[data-clearing] {
+    width: 200%;
     margin-left: 0;
     position: relative;
     left: 0;
@@ -97,6 +101,11 @@
       background: #222;
       margin-right: 1px;
       position: relative;
+      &.fix-height {
+        img {
+          max-width: none;
+        }
+      }
       a {
         // display: block;
 
@@ -116,7 +125,7 @@
         // margin-top: -75px;
         vertical-align: middle;
       }
-      &.visible { border: 2px solid rgba(255, 255, 255, 0.4);
+      &.visible { border-top: 4px solid rgba(255, 255, 255, 0.9);
         img {
 
         }

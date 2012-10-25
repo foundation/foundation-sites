@@ -278,6 +278,17 @@
     .reveal-modal.large,
     .reveal-modal.xlarge { width: 80%; top: 15px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -40%; padding: 20px; height: auto; }
 
+    /* Clearing --- */
+    /*              */
+    .clearing-container { margin: 0; }
+    .clearing-close { z-index: 99; font-size: ms(4); top: 0px; right: 5px; }
+    .clearing-caption { position: fixed; bottom: 0; left: 0; padding: 10px !important; line-height: 1.3; }
+    .clearing-main-right, .clearing-main-left { display: none; }
+    .clearing-blackout.clearing-assembled {
+      .visible-img, .clearing-container { height: 100%; }
+      ul[data-clearing] { display: none; }
+    }
+
     /* Tabs --- */
     /*          */
     .tabs.mobile { width: auto; margin: 20px -20px 40px; border-bottom: solid 1px #ccc; height: auto; margin: 20px -15px 0px -15px;

@@ -12,14 +12,12 @@
   'use strict';
 
   var defaults = {
-        thumb_width : 200,
         templates : {
           viewing : '<a href="#" class="clearing-close">&times;</a>' +
             '<div class="visible-img" style="display: none"><img src="#">' +
             '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"></a>' +
             '<a href="#" class="clearing-main-right"></a></div>'
         },
-        prev_index : 0, // needs to be reset on close
         locked : false
       },
 
@@ -128,12 +126,13 @@
               settings = $el.data('fndtn.clearing.settings'),
               grid = $el.detach(),
               data = {
-                grid: this.outerHTML(grid[0]),
+                grid: '<div class="carousel">' + this.outerHTML(grid[0]) + '</div>',
                 viewing: settings.templates.viewing
               },
               wrapper = '<div class="clearing-assembled"><div>' + data.viewing + data.grid + '</div></div>';
 
-          return settings.$parent.append(wrapper);
+          settings.$parent.append(wrapper);
+          settings.$parent.find('ul[data-clearing]').width($li.siblings().length * 100 + '%');
         },
 
         open : function ($image, current, target) {
@@ -141,6 +140,8 @@
               container = root.find('div:first'),
               visible_image = container.find('.visible-img'),
               image = visible_image.find('img').not($image);
+
+          this.fix_height(container);
 
           if (!methods.locked()) {
 
@@ -163,6 +164,20 @@
               });
             });
           }
+        },
+
+        fix_height : function (container) {
+          var lis = container.find('ul[data-clearing] li');
+
+          // lis.each(function () {
+          //   var li = $(this),
+          //       image = li.find('img');
+
+          //   if (li.height() > image.height()) {
+          //     li.addClass('fix-height');
+          //     image.height(li.height());
+          //   }
+          // });
         },
 
         load : function ($image) {
@@ -194,26 +209,34 @@
           }
         },
 
+
         shift : function (current, target, callback) {
           var clearing = target.parent(),
               container = clearing.closest('.clearing-container'),
               target_offset = target.position().left,
               thumbs_offset = clearing.position().left,
+              old_index = defaults.prev_index,
               direction = this.direction(clearing, current, target),
               left = parseInt(clearing.css('left'), 10),
+              width = target.outerWidth(),
               skip_shift;
 
-          if (/left/.test(direction)) {
-            methods.lock();
-            clearing.animate({left : left + target.outerWidth()}, 300, methods.unlock);
-          } else if (/right/.test(direction)) {
-            methods.lock();
-            clearing.animate({left : left - target.outerWidth()}, 300, methods.unlock);
+          if (target.index() !== old_index && !/skip/.test(direction)){
+            if (/left/.test(direction)) {
+              methods.lock();
+              clearing.animate({left : left + width}, 300, methods.unlock);
+            } else if (/right/.test(direction)) {
+              methods.lock();
+              clearing.animate({left : left - width}, 300, methods.unlock);
+            }
           } else if (/skip/.test(direction)) {
             skip_shift = target.index() - defaults.up_count;
+            methods.lock();
 
             if (skip_shift > 0) {
-              clearing.css({left : -(skip_shift * target.outerWidth())});
+              clearing.animate({left : -(skip_shift * width)}, 300, methods.unlock);
+            } else {
+              clearing.animate({left : 0}, 300, methods.unlock);
             }
           }
 
@@ -234,7 +257,7 @@
 
         direction : function ($el, current, target) {
           var lis = $el.find('li'),
-              li_width = lis.outerWidth(),
+              li_width = lis.outerWidth() + (lis.outerWidth() / 4),
               container = $('.clearing-container'),
               up_count = Math.floor(container.outerWidth() / li_width) - 1,
               shift_count = lis.length - up_count,
