@@ -123,6 +123,27 @@
               methods.go(clearing, 'prev');
             }
           });
+
+          doc.on('movestart', function(e) {
+
+            // If the movestart is heading off in an upwards or downwards
+            // direction, prevent it so that the browser scrolls normally.
+
+            if ((e.distX > e.distY && e.distX < -e.distY) ||
+                (e.distX < e.distY && e.distX > -e.distY)) {
+              e.preventDefault();
+            }
+          });
+
+          doc.bind('swipeleft', 'ul[data-clearing] li', function () {
+            var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+            methods.go(clearing, 'next');
+          });
+
+          doc.bind('swiperight', 'ul[data-clearing] li', function () {
+            var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+            methods.go(clearing, 'prev');
+          });
         },
 
         assemble : function ($li, target) {
