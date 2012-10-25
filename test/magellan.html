@@ -26,7 +26,6 @@
   #magellanTopNav ul {list-style:none;}
   #magellanTopNav ul li {display:inline; padding-right:15px;}
   #magellanSideNav {list-style:none;}
-  .magellan-fixed {position:fixed; top:40px;}
   </style>
 
   <script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
@@ -48,25 +47,15 @@
       <h4 class="subheader">Magellan is an easy to use, powerful navigation slider built to be responsive, just like Foundation.</h4>
 
       <div class="row">
-        <div class="twelve columns">
-          <div id="magellanTopNav">
-            <ul data-magellan-expedition>
+        <div class="four columns">
+          <div data-magellan-expedition="fixed">
+            <h4>Navigation</h4>
+            <ul id="magellanSideNav">
               <li><a href="#" data-magellan-arrival="cape-virgenes">cape virgenes</a></li>
               <li><a href="#" data-magellan-arrival="tierra-del-fuego">tierra-del-fuego</a></li>
               <li><a href="#" data-magellan-arrival="limasawa">limasawa</a></li>
             </ul>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="four columns">
-          <h4>Magellan</h4>
-          <ul id="magellanSideNav" data-magellan-expedition="fixed">
-            <li><a href="#" data-magellan-arrival="cape-virgenes">cape virgenes</a></li>
-            <li><a href="#" data-magellan-arrival="tierra-del-fuego">tierra-del-fuego</a></li>
-            <li><a href="#" data-magellan-arrival="limasawa">limasawa</a></li>
-          </ul>
         </div>
         <div class="eight columns">
           <div id="magellanTour">

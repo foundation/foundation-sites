@@ -12,7 +12,7 @@
   'use strict';
 
   var options = {
-    threshold: 10,
+    threshold: 20,
     activeClass: 'active'
   };
 
@@ -31,19 +31,32 @@
     .find('[data-magellan-arrival]:first')
     .addClass('active');
 
-  // Keep items in a fixed position
-  // $(window).on('scroll.magellan', function(e) {
-  // });
+  // Update fixed position
+  $('[data-magellan-expedition=fixed]').on('magellan.update-position', function(){
+    var $el = $(this);
+    $el.data("magellan-fixed-position","");
+    $el.data("magellan-top-offset", $el.offset().top);
+  });
 
+  $('[data-magellan-expedition=fixed]').trigger('magellan.update-position');
+
+  $(window).on('resize.magellan', function() {
+    $('[data-magellan-expedition=fixed]').trigger('magellan.update-position');
+  });
   
   $(window).on('scroll.magellan', function() {
     var windowScrollTop = $(window).scrollTop();
     $('[data-magellan-expedition=fixed]').each(function() {
       var $expedition = $(this);
-      var theSwitch = windowScrollTop > $expedition.offset().top;
-      console.info(theSwitch);
-      $expedition.toggleClass("magellan-fixed", theSwitch);
-      //$expedition.addClass("magellan-fixed");
+      var fixed_position = (windowScrollTop + options.threshold) > $expedition.data("magellan-top-offset");
+      if ($expedition.data("magellan-fixed-position") != fixed_position) {
+        $expedition.data("magellan-fixed-position", fixed_position);
+        if (fixed_position) {
+          $expedition.css({position:"fixed", top:options.threshold});
+        } else {
+          $expedition.css({position:"", top:""});
+        }
+      }
     });
   });
 
