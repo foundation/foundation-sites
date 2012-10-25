@@ -12,14 +12,12 @@
   'use strict';
 
   var defaults = {
-        thumb_width : 200,
         templates : {
           viewing : '<a href="#" class="clearing-close">&times;</a>' +
             '<div class="visible-img" style="display: none"><img src="#">' +
             '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"></a>' +
             '<a href="#" class="clearing-main-right"></a></div>'
         },
-        prev_index : 0, // needs to be reset on close
         locked : false
       },
 
