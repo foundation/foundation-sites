@@ -137,8 +137,7 @@
         },
 
         open : function ($image, current, target) {
-          // needs to open the relative gallery
-          var root = $('.clearing-assembled'),
+          var root = target.closest('.clearing-assembled'),
               container = root.find('div:first'),
               visible_image = container.find('.visible-img'),
               image = visible_image.find('img').not($image);
