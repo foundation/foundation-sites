@@ -197,16 +197,19 @@
               container = clearing.closest('.clearing-container'),
               target_offset = target.position().left,
               thumbs_offset = clearing.position().left,
+              old_index = defaults.prev_index,
               direction = this.direction(clearing, current, target),
               left = parseInt(clearing.css('left'), 10),
               skip_shift;
 
-          if (/left/.test(direction)) {
-            methods.lock();
-            clearing.animate({left : left + target.outerWidth()}, 300, methods.unlock);
-          } else if (/right/.test(direction)) {
-            methods.lock();
-            clearing.animate({left : left - target.outerWidth()}, 300, methods.unlock);
+          if (target.index() !== old_index && !/skip/.test(direction)){
+            if (/left/.test(direction)) {
+              methods.lock();
+              clearing.animate({left : left + target.outerWidth()}, 300, methods.unlock);
+            } else if (/right/.test(direction)) {
+              methods.lock();
+              clearing.animate({left : left - target.outerWidth()}, 300, methods.unlock);
+            }
           } else if (/skip/.test(direction)) {
             skip_shift = target.index() - defaults.up_count;
 
