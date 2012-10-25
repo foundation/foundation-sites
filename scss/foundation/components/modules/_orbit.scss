@@ -66,6 +66,9 @@
     }
   }
 
+  /* Orbit Slide Counter */
+  .orbit-slide-counter { position: absolute; bottom: 0; z-index: 99; background: $orbitSlideNumBgColor; color: $orbitSlideNumFontColor; padding: $orbitSlideNumPadding; }
+
   /* Fluid Layout ---------------------- */
 
   div.orbit img.fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }

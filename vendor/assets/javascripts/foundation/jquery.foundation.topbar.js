@@ -35,9 +35,9 @@
             methods.largestUL();
           }
 
-          // if (settings.$topbar.parent().hasClass('fixed')) {
-          //   $('body').css('margin-top',settings.$topbar.outerHeight())
-          // }
+          if (settings.$topbar.parent().hasClass('fixed')) {
+            $('body').css('margin-top',settings.$topbar.outerHeight())
+          }
 
           $('.top-bar .toggle-topbar').die('click.fndtn').live('click.fndtn', function (e) {
             e.preventDefault();
