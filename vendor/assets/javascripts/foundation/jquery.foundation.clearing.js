@@ -26,7 +26,8 @@
       methods = {
         init : function (options, extendMethods) {
           return this.find('ul[data-clearing]').each(function () {
-            var $el = $(this),
+            var doc = $(document),
+                $el = $(this),
                 options = options || {},
                 extendMethods = extendMethods || {},
                 settings = $el.data('fndtn.clearing.settings');
@@ -43,6 +44,7 @@
               methods.assemble($el.find('li'));
 
               methods.events();
+
             }
           });
         },
@@ -58,6 +60,7 @@
 
             // set current and target to the clicked li if not otherwise defined.
             methods.open($(e.target), current, target);
+            methods.update_paddles(target);
           });
 
           $(window).on('resize.fndtn.clearing', function () {
@@ -141,8 +144,6 @@
               visible_image = container.find('.visible-img'),
               image = visible_image.find('img').not($image);
 
-          this.fix_height(container);
-
           if (!methods.locked()) {
 
             // set the image to the selected thumbnail
@@ -154,6 +155,7 @@
               container.addClass('clearing-container');
               methods.caption(visible_image.find('.clearing-caption'), $image);
               visible_image.show();
+              methods.fix_height(target);
 
               methods.center(image);
 
@@ -166,18 +168,33 @@
           }
         },
 
-        fix_height : function (container) {
-          var lis = container.find('ul[data-clearing] li');
+        fix_height : function (target) {
+          var lis = target.siblings();
 
-          // lis.each(function () {
-          //   var li = $(this),
-          //       image = li.find('img');
+          lis.each(function () {
+            var li = $(this),
+                image = li.find('img');
 
-          //   if (li.height() > image.height()) {
-          //     li.addClass('fix-height');
-          //     image.height(li.height());
-          //   }
-          // });
+            if (li.height() > image.height()) {
+              li.addClass('fix-height');
+            }
+          });
+        },
+
+        update_paddles : function (target) {
+          var visible_image = target.closest('.carousel').siblings('.visible-img');
+
+          if (target.next().length > 0) {
+            visible_image.find('.clearing-main-right').removeClass('disabled');
+          } else {
+            visible_image.find('.clearing-main-right').addClass('disabled');
+          }
+
+          if (target.prev().length > 0) {
+            visible_image.find('.clearing-main-left').removeClass('disabled');
+          } else {
+            visible_image.find('.clearing-main-left').addClass('disabled');
+          }
         },
 
         load : function ($image) {
@@ -209,7 +226,6 @@
           }
         },
 
-
         shift : function (current, target, callback) {
           var clearing = target.parent(),
               container = clearing.closest('.clearing-container'),
@@ -221,6 +237,9 @@
               width = target.outerWidth(),
               skip_shift;
 
+          // we use jQuery animate instead of CSS transitions because we
+          // need a callback to unlock the next animation
+
           if (target.index() !== old_index && !/skip/.test(direction)){
             if (/left/.test(direction)) {
               methods.lock();
@@ -230,6 +249,9 @@
               clearing.animate({left : left - width}, 300, methods.unlock);
             }
           } else if (/skip/.test(direction)) {
+
+            // the target image is not adjacent to the current image, so
+            // do we scroll right or not
             skip_shift = target.index() - defaults.up_count;
             methods.lock();
 

@@ -56,6 +56,14 @@
   top: 50%;
   margin-top: -16px;
 }
+.clearing-main-left.disabled, .clearing-main-right.disabled {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+.clearing-main-left:active, .clearing-main-right:active {
+  margin-top: -15px;
+}
 .clearing-main-left {
   left: 10px;
   @include cssTriangle(16px,#fff,right);
@@ -103,6 +111,7 @@
       position: relative;
       &.fix-height {
         img {
+          height: 100%;
           max-width: none;
         }
       }
