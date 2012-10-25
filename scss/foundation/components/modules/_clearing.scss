@@ -8,6 +8,7 @@
   height: 100%;
   top: 0;
   left: 0;
+  .clearing-close { display: block; }
 }
 
 .clearing-container {
@@ -45,6 +46,7 @@
   font-size: 30px;
   line-height: 1;
   color: #fff;
+  display: none;
   &:hover {
     color: #ccc;
   }
