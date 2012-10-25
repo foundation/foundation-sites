@@ -31,12 +31,12 @@
             var $el = $(this),
                 options = options || {},
                 extendMethods = extendMethods || {},
-                settings = $el.data('clearing.settings');
+                settings = $el.data('fndtn.clearing.settings');
 
             if (!settings) {
               options.$parent = $el.parent();
 
-              $el.data('clearing.settings', $.extend({}, defaults, options));
+              $el.data('fndtn.clearing.settings', $.extend({}, defaults, options));
 
               // developer goodness experiment
               methods.extend(methods, extendMethods);
@@ -125,7 +125,7 @@
 
         assemble : function ($li, target) {
           var $el = $li.parent(),
-              settings = $el.data('clearing.settings'),
+              settings = $el.data('fndtn.clearing.settings'),
               grid = $el.detach(),
               data = {
                 grid: this.outerHTML(grid[0]),
@@ -137,6 +137,7 @@
         },
 
         open : function ($image, current, target) {
+          // needs to open the relative gallery
           var root = $('.clearing-assembled'),
               container = root.find('div:first'),
               visible_image = container.find('.visible-img'),
@@ -146,11 +147,12 @@
 
             // set the image to the selected thumbnail
             image.attr('src', this.load($image));
+
             image.is_good(function () {
               // toggle the gallery if not visible
               root.addClass('clearing-blackout');
               container.addClass('clearing-container');
-              visible_image.find('.clearing-caption').text(methods.caption($image));
+              methods.caption(visible_image.find('.clearing-caption'), $image);
               visible_image.show();
 
               methods.center(image);
@@ -174,14 +176,14 @@
           return $image.attr('src');
         },
 
-        caption : function ($image) {
+        caption : function (container, $image) {
           var caption = $image.data('caption');
 
           if (caption) {
-            return caption;
+            container.text(caption).show();
+          } else {
+            container.text('').hide();
           }
-
-          return '';
         },
 
         go : function ($ul, direction) {
@@ -212,7 +214,7 @@
             skip_shift = target.index() - defaults.up_count;
 
             if (skip_shift > 0) {
-              clearing.css({left : -(skip_shift * 200)});
+              clearing.css({left : -(skip_shift * target.outerWidth())});
             }
           }
 
@@ -233,7 +235,7 @@
 
         direction : function ($el, current, target) {
           var lis = $el.find('li'),
-              li_width = 200,
+              li_width = lis.outerWidth(),
               container = $('.clearing-container'),
               up_count = Math.floor(container.outerWidth() / li_width) - 1,
               shift_count = lis.length - up_count,
@@ -286,6 +288,14 @@
 
         // experimental functionality for overwriting or extending
         // clearing methods during initialization.
+        //
+        // ex $doc.foundationClearing({}, {
+        //      shift : function (current, target, callback) {
+        //        // modify arguments, etc.
+        //        this._super('shift', [current, target, callback]);
+        //        // do something else here.
+        //      }
+        //    });
 
         extend : function (supers, extendMethods) {
           $.each(supers, function (name, method) {
@@ -296,6 +306,10 @@
 
           $.extend(methods, extendMethods);
         },
+
+        // you can call this._super('methodName', [args]) to call
+        // the original method and wrap it in your own code
+
         _super : function (method, args) {
           return superMethods[method].apply(this, args);
         }
