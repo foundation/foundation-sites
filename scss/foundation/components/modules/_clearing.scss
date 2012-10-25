@@ -81,12 +81,14 @@
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
 .clearing-assembled .clearing-container {
-  .visible-img { background: rgba(0,0,0,0.75); }
-  ul[data-clearing] {
+  .carousel {
     background: rgba(0,0,0,0.75);
     height: 150px;
-    width: 200%;
     margin-top: 5px;
+  }
+  .visible-img { background: rgba(0,0,0,0.75); }
+  ul[data-clearing] {
+    width: 200%;
     margin-left: 0;
     position: relative;
     left: 0;
