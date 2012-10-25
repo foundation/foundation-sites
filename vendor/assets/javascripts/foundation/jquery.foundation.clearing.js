@@ -100,6 +100,7 @@
 
               defaults.prev_index = 0;
 
+              root.find('ul[data-clearing]').attr('style', '')
               root.removeClass('clearing-blackout');
               container.removeClass('clearing-container');
               visible_image.hide();
@@ -135,7 +136,6 @@
               wrapper = '<div class="clearing-assembled"><div>' + data.viewing + data.grid + '</div></div>';
 
           settings.$parent.append(wrapper);
-          settings.$parent.find('ul[data-clearing]').width($li.siblings().length * 100 + '%');
         },
 
         open : function ($image, current, target) {
@@ -179,6 +179,7 @@
               li.addClass('fix-height');
             }
           });
+          lis.closest('ul').width(lis.length * 100 + '%');
         },
 
         update_paddles : function (target) {
