@@ -12,24 +12,26 @@
   'use strict';
 
   var options = {
-    threshold: 20,
+    threshold: 25,
     activeClass: 'active'
   };
 
   // Indicate we have arrived at a destination
   $(document).on('magellan.arrival', '[data-magellan-arrival]', function(e) {
+    var $expedition = $(this).closest('[data-magellan-expedition]'),
+        activeClass = $expedition.attr('data-magellan-active-class') || options.activeClass;
     $(this)
       .closest('[data-magellan-expedition]')
       .find('[data-magellan-arrival]')
       .not(this)
-      .removeClass(options.activeClass);
-    $(this).addClass(options.activeClass);
+      .removeClass(activeClass);
+    $(this).addClass(activeClass);
   });
 
   // Set starting point as the current destination
-  $('[data-magellan-expedition]')
-    .find('[data-magellan-arrival]:first')
-    .addClass('active');
+  var $expedition = $('[data-magellan-expedition]');
+  $expedition.find('[data-magellan-arrival]:first')
+    .addClass($expedition.attr('data-magellan-active-class') || options.activeClass);
 
   // Update fixed position
   $('[data-magellan-expedition=fixed]').on('magellan.update-position', function(){
