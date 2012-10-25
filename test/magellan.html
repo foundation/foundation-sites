@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Foundation Magellan Testing</title>
+
+  <!-- Included CSS Files -->
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <style type="text/css">
+  /*#magellanTour {height:200px; overflow:auto;}*/
+  #magellanTopNav .active, #magellanSideNav .active {color:orange; font-weight:700;}
+  #magellanTopNav {
+    position:fixed; top:0; background:white; padding:3px; width:100%; z-index:10;
+    border-bottom:1px solid #ccc;
+    margin:0;
+    padding:0;
+  }
+  #magellanTopNav ul {list-style:none;}
+  #magellanTopNav ul li {display:inline; padding-right:15px;}
+  #magellanSideNav {list-style:none;}
+  .magellan-fixed {position:fixed; top:40px;}
+  </style>
+
+  <script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
+</head>
+<body>
+
+  <div class="row">
+    <div class="twelve columns">
+      <p><a href="index.html">&laquo; Back</a></p>
+      <h2>Foundation Magellan Testing</h2>
+      <hr />
+    </div>
+  </div>
+
+  <!-- Test Foundation Components Here -->
+  <div class="row">
+    <div class="twelve columns">
+      <h3>Magellan</h3>
+      <h4 class="subheader">Magellan is an easy to use, powerful navigation slider built to be responsive, just like Foundation.</h4>
+
+      <div class="row">
+        <div class="twelve columns">
+          <div id="magellanTopNav">
+            <ul data-magellan-expedition>
+              <li><a href="#" data-magellan-arrival="cape-virgenes">cape virgenes</a></li>
+              <li><a href="#" data-magellan-arrival="tierra-del-fuego">tierra-del-fuego</a></li>
+              <li><a href="#" data-magellan-arrival="limasawa">limasawa</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="four columns">
+          <h4>Magellan</h4>
+          <ul id="magellanSideNav" data-magellan-expedition="fixed">
+            <li><a href="#" data-magellan-arrival="cape-virgenes">cape virgenes</a></li>
+            <li><a href="#" data-magellan-arrival="tierra-del-fuego">tierra-del-fuego</a></li>
+            <li><a href="#" data-magellan-arrival="limasawa">limasawa</a></li>
+          </ul>
+        </div>
+        <div class="eight columns">
+          <div id="magellanTour">
+            <div id="destination1" data-magellan-destination="cape-virgenes">
+              <h4>cape-virgenes</h4>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+            </div>
+            <div id="destination2" data-magellan-destination="tierra-del-fuego">
+              <h4>tierra-del-fuego</h4>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+            </div>
+            <div id="destination3" data-magellan-destination="limasawa">
+              <h4>limasawa</h4>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+              <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Included JS Files -->
+  <script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.alerts.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.accordion.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.buttons.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.forms.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.navigation.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.reveal.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.magellan.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/app.js"></script>
+  <script type="text/javascript">
+    $("[data-magellan-expedition]").first();
+    var d1 = $("#destination1");
+    var adjustedOffset = d1.offset().top - d1.parent().offset().top;
+    console.info(adjustedOffset);
+  </script>
+</body>
+</html>
