@@ -4,7 +4,7 @@
   $.fn.foundationButtons = function (options) {
     var $doc = $(document),
       config = $.extend({
-        dropdownAsToggle:false,
+        dropdownAsToggle:true,
         activeClass:'active'
       }, options),
 
