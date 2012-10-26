@@ -39,7 +39,7 @@
     &.expanded { height: inherit; }
 
     /* topbar global <ul> styles */
-    ul { display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none;
+    ul { margin-left: 0; display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none;
 
       /* Main Navigation links style */
       &>li { float: left;

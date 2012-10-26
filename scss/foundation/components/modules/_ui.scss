@@ -277,7 +277,7 @@
   }
 
   /* Pricing Tables ---------------------- */
-  .pricing-table { border: $priceTableBorder; margin-left: 0;
+  .pricing-table { border: $priceTableBorder; margin-left: 0; margin-bottom: 20px;
     & * { list-style: none; line-height: 1; }
     .title { background-color: $priceTitleBgColor; padding: $priceTitlePadding; text-align: $priceTitleAlign; color: $priceTitleColor; font-weight: $priceTitleWeight; font-size: $priceTitleSize; }
     .price { background-color: $priceMoneyBgColor; padding: $priceMoneyPadding; text-align: $priceMoneyAlign; color: $priceMoneyColor; font-weight: $priceMoneyWeight; font-size: $priceMoneySize; }
