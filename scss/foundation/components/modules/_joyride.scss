@@ -1,224 +1,33 @@
-body {
-  position: relative;
-}
-
 #joyRideTipContent { display: none; }
 
 /* Default styles for the container */
-.joyride-tip-guide {
-  position: absolute;
-  background: #000;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  color: #fff;
-  width: 300px;
-  z-index: 101;
-  top: 0; /* keeps the page from scrolling when calculating position */
-  left: 0;
-  font-family: "HelveticaNeue", "Helvetica Neue", "Helvetica", Helvetica, Arial, Lucida, sans-serif;
-  font-weight: normal;
-     -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
-}
-
-.joyride-content-wrapper {
-  padding: 10px 10px 15px 15px;
-}
-
-/* Mobile */
-@media only screen and (max-width: 767px) {
-  .joyride-tip-guide {
-    width: 95% !important;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-    left: 2.5% !important;
-  }
-  .joyride-tip-guide-wrapper {
-    width: 100%;
-  }
-}
-
+.joyride-tip-guide { display: none; position: absolute; background: $tipBgIE8; background: $tipBg; color: $tipFontColor; width: $tipDefaultWidth; z-index: 101; top: 0; left: 0; font-family: inherit; font-weight: normal; @include border-radius($tipBorderRadius); }
+.joyride-content-wrapper { padding: $tipPadding; }
 
 /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
-.joyride-tip-guide span.joyride-nub {
-  display: block;
-  position: absolute;
-  left: 22px;
-  width: 0;
-  height: 0;
-  border: solid 14px;
-  border: solid 14px;
-}
-
-.joyride-tip-guide span.joyride-nub.top {
-  /*
-  IE7/IE8 Don't support rgba so we set the fallback
-  border color here. However, IE7/IE8 are also buggy
-  in that the fallback color doesn't work for
-  border-bottom-color so here we set the border-color
-  and override the top,left,right colors below.
-  */
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8);
-  border-top-color: transparent !important;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  top: -28px;
-  bottom: none;
-}
-
-.joyride-tip-guide span.joyride-nub.bottom {
-  /*
-  IE7/IE8 Don't support rgba so we set the fallback
-  border color here. However, IE7/IE8 are also buggy
-  in that the fallback color doesn't work for
-  border-top-color so here we set the border-color
-  and override the bottom,left,right colors below.
-  */
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8) !important;
-  border-bottom-color: transparent !important;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  bottom: -28px;
-  bottom: none;
-}
-
-.joyride-tip-guide span.joyride-nub.right {
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8) !important;
-  border-top-color: transparent !important;
-  border-right-color: transparent !important;
-  border-bottom-color: transparent !important;
-  top: 22px;
-  bottom: none;
-  left: auto;
-  right: -28px;
-}
-
-.joyride-tip-guide span.joyride-nub.left {
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8) !important;
-  border-top-color: transparent !important;
-  border-left-color: transparent !important;
-  border-bottom-color: transparent !important;
-  top: 22px;
-  left: -28px;
-  right: auto;
-  bottom: none;
+.joyride-tip-guide {
+  span.joyride-nub { display: block; position: absolute; left: 22px; width: 0; height: 0; border: solid $tipNubSize;
+    &.top { border-color: $tipBgIE8; border-color: $tipBg; border-top-color: transparent !important; border-left-color: transparent !important; border-right-color: transparent !important; top: -($tipNubSize*2); bottom: none; }
+    &.bottom { border-color: $tipBgIE8; border-color: $tipBg !important; border-bottom-color: transparent !important; border-left-color: transparent !important; border-right-color: transparent !important; bottom: -($tipNubSize*2); bottom: none; }
+    &.right { border-color: $tipBgIE8; border-color: $tipBg !important; border-top-color: transparent !important; border-right-color: transparent !important; border-bottom-color: transparent !important; top: 22px; bottom: none; left: auto; right: -($tipNubSize*2); }
+    &.left { border-color: $tipBgIE8; border-color: $tipBg !important; border-top-color: transparent !important; border-left-color: transparent !important; border-bottom-color: transparent !important; top: 22px; left: -($tipNubSize*2); right: auto; bottom: none; }
+  }
 }
 
 /* Typography */
-.joyride-tip-guide h1,.joyride-tip-guide h2,.joyride-tip-guide h3,.joyride-tip-guide h4,.joyride-tip-guide h5,.joyride-tip-guide h6 {
-  line-height: 1.25;
-  margin: 0;
-  font-weight: bold;
-  color: #fff;
-}
-.joyride-tip-guide h1 { font-size: 30px; }
-.joyride-tip-guide h2 { font-size: 26px; }
-.joyride-tip-guide h3 { font-size: 22px; }
-.joyride-tip-guide h4 { font-size: 18px; }
-.joyride-tip-guide h5 { font-size: 16px; }
-.joyride-tip-guide h6 { font-size: 14px; }
-.joyride-tip-guide p {
-  margin: 0 0 18px 0;
-  font-size: 14px;
-  line-height: 18px;
-}
-.joyride-tip-guide a {
-  color: rgb(255,255,255);
-  text-decoration: none;
-  border-bottom: dotted 1px rgba(255,255,255,0.6);
-}
-.joyride-tip-guide a:hover {
-  color: rgba(255,255,255,0.8);
-  border-bottom: none;
+.joyride-tip-guide h1,
+.joyride-tip-guide h2,
+.joyride-tip-guide h3,
+.joyride-tip-guide h4,
+.joyride-tip-guide h5,
+.joyride-tip-guide h6 { line-height: 1.25; margin: 0; font-weight: $tipHeaderWeight; color: $tipFontColor }
+.joyride-tip-guide p { margin: 0 0 18px 0; font-size: $tipFontSize; line-height: 1.3; }
+
+.joyride-timer-indicator-wrap { width: $tipTimerWidth; height: $tipTimerHeight; border: $tipTimerBorder; position: absolute; right: 17px; bottom: 16px; }
+.joyride-timer-indicator { display: block; width: 0; height: inherit; background: $tipTimerColor; }
+
+.joyride-close-tip { position: absolute; right: 10px; top: 10px; color: $tipCloseColor !important; text-decoration: none; font-size: $tipCloseSize; font-weight: $tipCloseWeight; line-height: .5 !important;
+  &:hover { color: #eee !important; }
 }
 
-/* Button Style */
-.joyride-tip-guide .joyride-next-tip {
-  width: auto;
-  padding: 6px 18px 4px;
-  font-size: 13px;
-  text-decoration: none;
-  color: rgb(255,255,255);
-  border: solid 1px rgb(0,60,180);
-  background: rgb(0,99,255);
-  background: -moz-linear-gradient(top, rgb(0,99,255) 0%, rgb(0,85,214) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(0,99,255)), color-stop(100%,rgb(0,85,214)));
-  background: -webkit-linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  background: -o-linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  background: -ms-linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0063ff', endColorstr='#0055d6',GradientType=0 );
-  background: linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
-  -webkit-border-radius: 2px;
-     -moz-border-radius: 2px;
-          border-radius: 2px;
-  -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset;
-     -moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset;
-          box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset;
-}
-
-.joyride-next-tip:hover {
-  color: rgb(255,255,255) !important;
-  border: solid 1px rgb(0,60,180) !important;
-  background: rgb(43,128,255);
-  background: -moz-linear-gradient(top, rgb(43,128,255) 0%, rgb(29,102,211) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(43,128,255)), color-stop(100%,rgb(29,102,211)));
-  background: -webkit-linear-gradient(top, rgb(43,128,255) 0%,rgb(29,102,211) 100%);
-  background: -o-linear-gradient(top, rgb(43,128,255) 0%,rgb(29,102,211) 100%);
-  background: -ms-linear-gradient(top, rgb(43,128,255) 0%,rgb(29,102,211) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b80ff', endColorstr='#1d66d3',GradientType=0 );
-  background: linear-gradient(top, rgb(43,128,255) 0%,rgb(29,102,211) 100%);
-}
-
-.joyride-timer-indicator-wrap {
-  width: 50px;
-  height: 3px;
-  border: solid 1px rgba(255,255,255,0.1);
-  position: absolute;
-  right: 17px;
-  bottom: 16px;
-}
-.joyride-timer-indicator {
-  display: block;
-  width: 0;
-  height: inherit;
-  background: rgba(255,255,255,0.25);
-}
-
-.joyride-close-tip {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: rgba(255,255,255,0.4) !important;
-  text-decoration: none;
-  font-family: Verdana, sans-serif;
-  font-size: 10px;
-  font-weight: bold;
-  border-bottom: none !important;
-}
-
-.joyride-close-tip:hover {
-  color: rgba(255,255,255,0.9) !important;
-}
-
-.joyride-modal-bg {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background: rgb(0,0,0);
-  background: rgba(0,0,0, 0.5);
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-  filter: alpha(opacity=50);
-  opacity: 0.5;
-  z-index: 100;
-  display: none;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
+.joyride-modal-bg { position: fixed; height: 100%; width: 100%; background: $tipScreenFill; z-index: 100; display: none; top: 0; left: 0; cursor: pointer; }

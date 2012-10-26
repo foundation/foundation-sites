@@ -308,6 +308,11 @@
       ul[data-clearing] { display: none; }
     }
 
+    /* Joyride --- */
+    /*             */
+    .joyride-tip-guide { width: 95% !important; left: 2.5% !important; @include border-radius($tipBorderRadius); }
+    .joyride-tip-guide-wrapper { width: 100%; }
+
     /* Tabs --- */
     /*          */
     .tabs.mobile { width: auto; margin: 20px -20px 40px; border-bottom: solid 1px #ccc; height: auto; margin: 20px -15px 0px -15px;

@@ -30,11 +30,11 @@
       'postRideCallback'     : $.noop,    // A method to call once the tour closes (canceled or complete)
       'postStepCallback'     : $.noop,    // A method to call after each step
       'template' : { // HTML segments for tip layout
-        'link'    : '<a href="#close" class="joyride-close-tip">X</a>',
+        'link'    : '<a href="#close" class="joyride-close-tip">&times;</a>',
         'timer'   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
         'tip'     : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
         'wrapper' : '<div class="joyride-content-wrapper"></div>',
-        'button'  : '<a href="#" class="joyride-next-tip"></a>'
+        'button'  : '<a href="#" class="button joyride-next-tip"></a>'
       }
     },
 

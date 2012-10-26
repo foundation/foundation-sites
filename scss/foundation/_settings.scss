@@ -201,6 +201,7 @@ $orbitSlideNumFontColor: #fff !default;
 $orbitSlideNumPadding: 5px !default;
 
 // Clearing Settings
+
 $clearingBg: rgba(0,0,0,0.8) !default;
 $clearingOldBrowserBg: rgb(0,0,0) !default;
 $clearingCaptionBg: rgba(0,0,0,0.7) !default;
@@ -215,8 +216,28 @@ $clearingCarouselHeight: 150px !default;
 $clearingActiveImgHeight: 75% !default;
 $clearingCarouselThumbWidth: 175px;
 $clearingCarouselThumbActiveBorder: 4px solid rgb(255,255,255) !default;
-$clearingImgOldBrowserBg: rgb(0,0,0) !default;
 $clearingImgBg: rgba(0,0,0,0.75) !default;
+$clearingImgOldBrowserBg: rgb(0,0,0) !default;
+
+// Joyride Settings
+
+$tipBg: rgba(0,0,0,0.8);
+$tipBgIE8: #000;
+$tipFontColor: #fff;
+$tipHeaderWeight: bold;
+$tipDefaultWidth: 300px;
+$tipBorderRadius: 4px;
+$tipPadding: 18px 20px 24px;
+$tipNubSize: 14px;
+$tipFontSize: 14px;
+$tipTimerWidth: 50px;
+$tipTimerHeight: 3px;
+$tipTimerBorder: solid 1px #555;
+$tipTimerColor: #666;
+$tipCloseColor: #777;
+$tipCloseSize: 20px;
+$tipCloseWeight: normal;
+$tipScreenFill: rgba(0,0,0,0.5);
 
 // Off Canvas Width Settings
 
