@@ -30,11 +30,11 @@
       'postRideCallback'     : $.noop,    // A method to call once the tour closes (canceled or complete)
       'postStepCallback'     : $.noop,    // A method to call after each step
       'template' : { // HTML segments for tip layout
-        'link'    : '<a href="#close" class="joyride-close-tip">&times;</a>',
+        'link'    : '<a href="#close" class="joyride-close-tip">X</a>',
         'timer'   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
         'tip'     : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
         'wrapper' : '<div class="joyride-content-wrapper"></div>',
-        'button'  : '<a href="#" class="button joyride-next-tip"></a>'
+        'button'  : '<a href="#" class="small button joyride-next-tip"></a>'
       }
     },
 
@@ -47,79 +47,83 @@
       init : function (opts) {
         return this.each(function () {
 
-          settings = $.extend(defaults, opts);
+          if ($.isEmptyObject(settings)) {
+            settings = $.extend(defaults, opts);
 
-          // non configureable settings
-          settings.document = window.document;
-          settings.$document = $(settings.document);
-          settings.$window = $(window);
-          settings.$content_el = $(this);
-          settings.body_offset = $(settings.tipContainer).position();
-          settings.$tip_content = $('li', settings.$content_el);
-          settings.paused = false;
-          settings.attempts = 0;
+            // non configureable settings
+            settings.document = window.document;
+            settings.$document = $(settings.document);
+            settings.$window = $(window);
+            settings.$content_el = $(this);
+            settings.body_offset = $(settings.tipContainer).position();
+            settings.$tip_content = $('li', settings.$content_el);
+            settings.paused = false;
+            settings.attempts = 0;
 
-          settings.tipLocationPatterns = {
-            top: ['bottom'],
-            bottom: [], // bottom should not need to be repositioned
-            left: ['right', 'top', 'bottom'],
-            right: ['left', 'top', 'bottom']
-          };
+            settings.tipLocationPatterns = {
+              top: ['bottom'],
+              bottom: [], // bottom should not need to be repositioned
+              left: ['right', 'top', 'bottom'],
+              right: ['left', 'top', 'bottom']
+            };
 
-          // are we using jQuery 1.7+
-          methods.jquery_check();
+            // are we using jQuery 1.7+
+            methods.jquery_check();
 
-          // can we create cookies?
-          if (!$.isFunction($.cookie)) {
-            settings.cookieMonster = false;
-          }
+            // can we create cookies?
+            if (!$.isFunction($.cookie)) {
+              settings.cookieMonster = false;
+            }
 
-          // generate the tips and insert into dom.
-          if (!settings.cookieMonster || !$.cookie(settings.cookieName)) {
+            // generate the tips and insert into dom.
+            if (!settings.cookieMonster || !$.cookie(settings.cookieName)) {
 
-            settings.$tip_content.each(function (index) {
-              methods.create({$li : $(this), index : index});
+              settings.$tip_content.each(function (index) {
+                methods.create({$li : $(this), index : index});
+              });
+
+              // show first tip
+              if (!settings.startTimerOnClick && settings.timer > 0) {
+                methods.show('init');
+                methods.startTimer();
+              } else {
+                methods.show('init');
+              }
+
+            }
+
+            settings.$document.on('click.joyride', '.joyride-next-tip, .joyride-modal-bg', function (e) {
+              e.preventDefault();
+
+              if (settings.$li.next().length < 1) {
+                methods.end();
+              } else if (settings.timer > 0) {
+                clearTimeout(settings.automate);
+                methods.hide();
+                methods.show();
+                methods.startTimer();
+              } else {
+                methods.hide();
+                methods.show();
+              }
+
             });
 
-            // show first tip
-            if (!settings.startTimerOnClick && settings.timer > 0) {
-              methods.show('init');
-              methods.startTimer();
-            } else {
-              methods.show('init');
-            }
-
-          }
-
-          settings.$document.on('click.joyride', '.joyride-next-tip, .joyride-modal-bg', function (e) {
-            e.preventDefault();
-
-            if (settings.$li.next().length < 1) {
+            $('.joyride-close-tip').on('click.joyride', function (e) {
+              e.preventDefault();
               methods.end();
-            } else if (settings.timer > 0) {
-              clearTimeout(settings.automate);
-              methods.hide();
-              methods.show();
-              methods.startTimer();
-            } else {
-              methods.hide();
-              methods.show();
-            }
+            });
 
-          });
-
-          $('.joyride-close-tip').on('click.joyride', function (e) {
-            e.preventDefault();
-            methods.end();
-          });
-
-          settings.$window.on('resize.joyride', function (e) {
-            if (methods.is_phone()) {
-              methods.pos_phone();
-            } else {
-              methods.pos_default();
-            }
-          });
+            settings.$window.on('resize.joyride', function (e) {
+              if (methods.is_phone()) {
+                methods.pos_phone();
+              } else {
+                methods.pos_default();
+              }
+            });
+          } else {
+            methods.restart();
+          }
 
         });
       },
@@ -359,6 +363,7 @@
         $(window).off('.joyride');
         $('.joyride-close-tip, .joyride-next-tip, .joyride-modal-bg').off('.joyride');
         $('.joyride-tip-guide, .joyride-modal-bg').remove();
+        clearTimeout(settings.automate);
         settings = {};
       },
 
@@ -409,7 +414,7 @@
             } else if (methods.left()) {
 
               settings.$next_tip.css({
-                top: settings.$target.offset().top - settings.$target.outerHeight(),
+                top: settings.$target.offset().top,
                 left: (settings.$target.offset().left - settings.$next_tip.outerWidth() - nub_height)});
 
               methods.nub_position($nub, settings.tipSettings.nubPosition, 'right');
@@ -492,7 +497,6 @@
         methods.center();
         $nub.hide();
 
-        // bg issues on some mobile devices
         if ($('.joyride-modal-bg').length < 1) {
           $('body').append('<div class="joyride-modal-bg">').show();
         }
