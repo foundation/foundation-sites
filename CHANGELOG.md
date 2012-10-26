@@ -3,6 +3,31 @@ We'll keep you up to date with what we've released so you at least have a gist o
 
 ---
 
+### **3.2**- October 26, 2012
+With this update we've revamped our documentation to be more organized and explain details regarding Scss, Compass and Javascripts.
+
+The updates to Foundation itself are as follows:
+* Updated Reveal
+* Added Magellan, a plugin for building design agnostic sticky navs that know where you are on the page.
+* Added Joyride, our plugin for creating tours of your website or app.
+* Added Clearing, our new responsive image gallery lightbox plugin.
+* Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipable on mobile as well.
+* Updated index files to use defined header and footer structure
+* Cleaned up some Compass included
+* RTL for ui and navbar.
+* Tabs can now use unordered lists or definition lists, replacing the definition title with an li.section-title.
+* Added definition list styles.
+* Added mobile-#-up classes to use in conjunction with regular block-grid classes for a different mobile grid.
+* Updated block grids to be really flexible and customizable based on a variable.
+* Added better responsive styling for tooltips.
+* Separated all media queries into their own file for easy droppping.
+* Updated modular scale to use new functions, doesn't effect end-users.
+* Updated visibility classes to use inherit instead of block to accomodate for spans.
+* Removed HTML5 Shiv from header since its included in modernizr.
+* Added [pricing tables](http://foundation.zurb.com/docs/elements.php#pricing-tables) UI element
+* Added many new Scss variables to control styling for things like: topbar, clearing, joyride, pricint tables, etc.
+* Bug fixes for Topbar,
+
 ### 3.1.1- September 19, 2012
 Updating Top Bar navigation implementation pattern to wrap `.contain-to-grid` and/or `.fixed` around the `nav` element to prevent horizontal scroll bars when using `.contain-to-grid`. Updated the topBar breakpoint option so users only need to update the Scss variable.
 
