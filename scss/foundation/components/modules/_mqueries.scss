@@ -143,6 +143,25 @@
       }
     }
 
+    /* Clearing --- */
+    /*              */
+    .clearing-main-right, .clearing-main-left {
+      height: 100%;
+      width: 40px;
+      top: 0;
+      border: none;
+      &:before { position: absolute; top: 50%; }
+    }
+    .clearing-main-left {
+      left: 0;
+      &:before { left: 5px; @include cssTriangle(16px,#fff,right); }
+    }
+    .clearing-main-right {
+      height: 100%;
+      right: 0;
+      &:before { @include cssTriangle(16px,#fff,left); }
+    }
+
   }
 
   /* Small Devices ------------ */
