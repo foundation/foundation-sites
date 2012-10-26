@@ -154,12 +154,12 @@
     }
     .clearing-main-left {
       left: 0;
-      &:before { left: 5px; @include cssTriangle(16px,#fff,right); }
+      &:before { left: 5px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
     }
     .clearing-main-right {
       height: 100%;
       right: 0;
-      &:before { @include cssTriangle(16px,#fff,left); }
+      &:before { @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
     }
 
   }
