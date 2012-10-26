@@ -26,7 +26,7 @@ The updates to Foundation itself are as follows:
 * Removed HTML5 Shiv from header since its included in modernizr.
 * Added [pricing tables](http://foundation.zurb.com/docs/elements.php#pricing-tables) UI element
 * Added many new Scss variables to control styling for things like: topbar, clearing, joyride, pricint tables, etc.
-* Bug fixes for Topbar,
+* Bug fixes for Topbar.
 * Added 5 [HTML templates](http://foundation.zurb.com/templates.php) to the add-ons section.
 
 ### 3.1.1- September 19, 2012
