@@ -23,8 +23,9 @@
 
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
-ul li:not(.clearing-feature) { display: none; }
-.clearing-feature { display: block; }
+ul[data-clearing] li { display: block;
+  &.clearing-feature ~ li { display: none; }
+}
 
 .clearing-assembled .clearing-container {
   .carousel { background: $clearingCarouselOldBrowserBg; background: $clearingCarouselBg; height: $clearingCarouselHeight; margin-top: 5px; }
