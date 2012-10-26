@@ -156,7 +156,7 @@
               },
               wrapper = '<div class="clearing-assembled"><div>' + data.viewing + data.grid + '</div></div>';
 
-          settings.$parent.append(wrapper);
+          return settings.$parent.append(wrapper);
         },
 
         open : function ($image, current, target) {
@@ -222,11 +222,41 @@
         load : function ($image) {
           var href = $image.parent().attr('href');
 
+          // preload next and previous
+          this.preload($image);
+
           if (href) {
             return href;
           }
 
           return $image.attr('src');
+        },
+
+        preload : function ($image) {
+          var next = $image.closest('li').next(),
+              prev = $image.closest('li').prev(),
+              next_a, prev_a,
+              next_img, prev_img;
+
+          if (next.length > 0) {
+            next_img = new Image();
+            next_a = next.find('a');
+            if (next_a.length > 0) {
+              next_img.src = next_a.attr('href');
+            } else {
+              next_img.src = next.find('img').attr('src');
+            }
+          }
+
+          if (prev.length > 0) {
+            prev_img = new Image();
+            prev_a = prev.find('a');
+            if (prev_a.length > 0) {
+              prev_img.src = prev_a.attr('href');
+            } else {
+              prev_img.src = prev.find('img').attr('src');
+            }
+          }
         },
 
         caption : function (container, $image) {
