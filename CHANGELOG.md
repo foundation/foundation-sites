@@ -7,9 +7,9 @@ We'll keep you up to date with what we've released so you at least have a gist o
 With this update we've revamped our documentation to be more organized and explain details regarding Scss, Compass and Javascripts.
 
 The updates to Foundation itself are as follows:
-* Added Magellan, a plugin for building design agnostic sticky navs that know where you are on the page.
-* Added Joyride, our plugin for creating tours of your website or app.
-* Added Clearing, our new responsive image gallery lightbox plugin.
+* Added [Magellan](http://foundation.zurb.com/docs/magellan.php), a plugin for building design agnostic sticky navs that know where you are on the page.
+* Added [Joyride](http://foundation.zurb.com/docs/joyride.php), our plugin for creating tours of your website or app.
+* Added [Clearing](http://foundation.zurb.com/docs/clearing.php), our new responsive image gallery lightbox plugin.
 * Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipable on mobile as well.
 * Updated Reveal
 * Updated index files to use defined header and footer structure
@@ -27,6 +27,7 @@ The updates to Foundation itself are as follows:
 * Added [pricing tables](http://foundation.zurb.com/docs/elements.php#pricing-tables) UI element
 * Added many new Scss variables to control styling for things like: topbar, clearing, joyride, pricint tables, etc.
 * Bug fixes for Topbar,
+* Added 5 [HTML templates](http://foundation.zurb.com/templates.php) to the add-ons section.
 
 ### 3.1.1- September 19, 2012
 Updating Top Bar navigation implementation pattern to wrap `.contain-to-grid` and/or `.fixed` around the `nav` element to prevent horizontal scroll bars when using `.contain-to-grid`. Updated the topBar breakpoint option so users only need to update the Scss variable.
