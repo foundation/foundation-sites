@@ -320,7 +320,7 @@
       },
 
       set_next_tip : function () {
-        settings.$next_tip = $('.joyride-tip-guide[data-index=' + settings.$li.index() + ']').first();
+        settings.$next_tip = $('.joyride-tip-guide[data-index=' + settings.$li.index() + ']');
       },
 
       set_target : function () {
