@@ -200,6 +200,24 @@ $orbitSlideNumBgColor: rgba(0,0,0,0.7) !default;
 $orbitSlideNumFontColor: #fff !default;
 $orbitSlideNumPadding: 5px !default;
 
+// Clearing Settings
+$clearingBg: rgba(0,0,0,0.8) !default;
+$clearingOldBrowserBg: rgb(0,0,0) !default;
+$clearingCaptionBg: rgba(0,0,0,0.7) !default;
+$clearingCaptionOldBrowserBg: rgb(0,0,0) !default;
+$clearingCaptionFontColor: #fff !default;
+$clearingCloseColor: #fff !default;
+$clearingArrowColor: #fff !default;
+$clearingArrowSize: 16px !default;
+$clearingCarouselOldBrowserBg: rgb(0,0,0) !default;
+$clearingCarouselBg: rgba(0,0,0,0.75) !default;
+$clearingCarouselHeight: 150px !default;
+$clearingCarouselThumbHeight: 150px !default;
+$clearingCarouselThumbWidth: 175px !default;
+$clearingCarouselThumbActiveBorder: 4px solid rgb(255,255,255) !default;
+$clearingImgOldBrowserBg: rgb(0,0,0) !default;
+$clearingImgBg: rgba(0,0,0,0.75) !default;
+
 // Off Canvas Width Settings
 
 $mainWidth: 80% !default;

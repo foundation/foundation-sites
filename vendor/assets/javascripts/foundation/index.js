@@ -11,6 +11,9 @@
 =require foundation/jquery.foundation.topbar
 =require foundation/jquery.foundation.reveal
 =require foundation/jquery.foundation.orbit
+=require foundation/jquery.foundation.magellan
+=require foundation/jquery.foundation.joyride
+=require foundation/jquery.foundation.clearing
 =require foundation/jquery.foundation.mediaQueryToggle
 =require foundation/app
 */
