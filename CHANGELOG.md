@@ -7,11 +7,11 @@ We'll keep you up to date with what we've released so you at least have a gist o
 With this update we've revamped our documentation to be more organized and explain details regarding Scss, Compass and Javascripts.
 
 The updates to Foundation itself are as follows:
-* Updated Reveal
 * Added Magellan, a plugin for building design agnostic sticky navs that know where you are on the page.
 * Added Joyride, our plugin for creating tours of your website or app.
 * Added Clearing, our new responsive image gallery lightbox plugin.
 * Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipable on mobile as well.
+* Updated Reveal
 * Updated index files to use defined header and footer structure
 * Cleaned up some Compass included
 * RTL for ui and navbar.
