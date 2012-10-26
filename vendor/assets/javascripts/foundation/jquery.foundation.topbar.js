@@ -35,13 +35,16 @@
             methods.largestUL();
           }
 
+          if (settings.$topbar.parent().hasClass('fixed')) {
+            $('body').css('margin-top',settings.$topbar.outerHeight())
+          }
+
           $('.top-bar .toggle-topbar').die('click.fndtn').live('click.fndtn', function (e) {
             e.preventDefault();
 
             if (methods.breakpoint()) {
               settings.$topbar.toggleClass('expanded');
               settings.$topbar.css('min-height', '');
-
             }
           });
 
@@ -65,6 +68,12 @@
 
               $this.siblings('ul').height(settings.height + settings.$titlebar.outerHeight(true));
               settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
+            }
+          });
+
+          $(window).on('resize.fndtn.topbar',function() {
+            if (!methods.breakpoint()) {
+              settings.$topbar.css('min-height', '');
             }
           });
 

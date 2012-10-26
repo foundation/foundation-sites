@@ -8,7 +8,7 @@
     }, options);
 
     var activateTab = function ($tab) {
-      var $activeTab = $tab.closest('dl').find('dd.active'),
+      var $activeTab = $tab.closest('dl, ul').find('.active'),
           target = $tab.children('a').attr("href"),
           hasHash = /^#/.test(target),
           contentLocation = '';
@@ -29,12 +29,12 @@
       $tab.addClass('active');
     };
 
-    $(document).on('click.fndtn', 'dl.tabs dd a', function (event){
-      activateTab($(this).parent('dd'));
+    $(document).on('click.fndtn', '.tabs a', function (event){
+      activateTab($(this).parent('dd, li'));
     });
 
     if (window.location.hash) {
-      activateTab($('a[href="' + window.location.hash + '"]').parent('dd'));
+      activateTab($('a[href="' + window.location.hash + '"]').parent('dd, li'));
       settings.callback();
     }
 

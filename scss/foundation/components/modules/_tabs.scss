@@ -1,17 +1,13 @@
-/* Requires
-    -globals.css
-    -app.js */
-
 /* Tabs ---------------------- */
 
-  dl.tabs { border-bottom: solid 1px darken($white, 10%); display: block; height: $tabHeight; padding: 0; margin-bottom: 20px;
-    &.contained { margin-bottom: 0; }
+  .tabs { list-style: none; border-bottom: solid 1px darken($white, 10%); display: block; height: $tabHeight; padding: 0; margin-bottom: 20px;
+    &.contained { margin-bottom: 0; margin-left: 0; }
 
-    dt { color: darken($white, 30%); cursor: default; display: block; float: $defaultFloat; font-size: $tabTermFontSize; height: $tabHeight; line-height: $tabHeight; padding: 0; padding-#{$defaultOpposite}: 9px; padding-#{$defaultFloat}: 20px; width: auto; text-transform: uppercase;
+    dt, li.section-title { color: darken($white, 30%); cursor: default; display: block; float: $defaultFloat; font-size: $tabTermFontSize; height: $tabHeight; line-height: $tabHeight; padding: 0; padding-#{$defaultOpposite}: 9px; padding-#{$defaultFloat}: 20px; font-weight: normal; width: auto; text-transform: uppercase;
       &:first-child { padding: 0; padding-#{$defaultOpposite}: 9px; }
     }
 
-    dd { display: block; float: $defaultFloat; padding: 0; margin: 0;
+    dd, li { display: block; float: $defaultFloat; padding: 0; margin: 0;
       a { color: lighten($txtColor, 30%); display: block; font-size: ms(0); height: $tabHeight; line-height: $tabHeight; padding: 0px ms(1) * 1.4;
         &:focus { font-weight: bold; color: $mainColor; }
       }
@@ -22,9 +18,9 @@
     }
 
     &.vertical { height: auto; border-bottom: 1px solid darken($white, 10%);
-      dt, dd { float: none; height: auto; }
+      dt, dd, li { float: none; height: auto; }
 
-      dd { border-#{$defaultFloat}: 3px solid darken($white, 20%);
+      dd, li { border-#{$defaultFloat}: 3px solid darken($white, 20%);
         a { background: darken($white, 5%); border: none; border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: 1; padding: 15px 20px; @include box-shadow(0 1px 0 $shinyEdge inset);
         }
         &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-#{$defaultFloat}: 4px solid lighten($black, 10%);
@@ -35,7 +31,7 @@
     }
 
     &.pill { border-bottom: none; margin-bottom: 10px;
-      dd { margin-#{$defaultOpposite}: 10px;
+      dd, li { margin-#{$defaultOpposite}: 10px;
         &:last-child { margin-#{$defaultOpposite}: 0; }
         a { @include border-radius(1000px); background: darken($white, 10%); height: $tabHeight - 14; line-height: $tabHeight - 14; color: #666; }
 
@@ -44,18 +40,18 @@
         }
       }
       &.contained { border-bottom: solid 1px #eee; margin-bottom: 0; }
-      &.two-up, &.three-up, &.four-up, &.five-up { 
-        dd { margin-#{$defaultOpposite}: 0; }
+      &.two-up, &.three-up, &.four-up, &.five-up {
+        dd, li { margin-#{$defaultOpposite}: 0; }
       }
     }
 
     &.two-up, &.three-up, &.four-up, &.five-up {
-      dt a, dd a { padding: 0 ms(1); text-align: center; overflow: hidden; }
+      dt a, dd a, li a { padding: 0 ms(1); text-align: center; overflow: hidden; }
     }
-    &.two-up dt, &.two-up dd      { width: 50%; }
-    &.three-up dt, &.three-up dd  { width: 33.33%; }
-    &.four-up dt, &.four-up dd    { width: 25%; }
-    &.five-up dt, &.five-up dd    { width: 20%; }
+    &.two-up dt, &.two-up dd, &.two-up li      { width: 50%; }
+    &.three-up dt, &.three-up dd, &.two-up li  { width: 33.33%; }
+    &.four-up dt, &.four-up dd, &.two-up li    { width: 25%; }
+    &.five-up dt, &.five-up dd, &.two-up li    { width: 20%; }
   }
 
   ul.tabs-content { display: block; margin: 0 0 20px; padding: 0;
@@ -69,24 +65,3 @@
   }
 
   .no-js ul.tabs-content>li { display: block; }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    dl.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
-    dl.tabs.mobile dt, dl.tabs.mobile dd { float: none; height: auto; }
-
-    dl.tabs.mobile dd a { display: block; width: auto; height: auto; padding: 18px 20px; line-height: 1; border: solid 0 #ccc; border-width: 1px 0 0; margin: 0; color: #555; background: #eee; @include font-size(15); }
-    dl.tabs.mobile dd a.active { height: auto; margin: 0; border-width: 1px 0 0; }
-
-
-    .tabs.mobile { border-bottom: solid 1px #ccc; height: auto;
-
-      dd a { padding: 18px 20px; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
-      dd a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
-      dd:first-child a.active { margin: 0; }
-    }
-
-    dl.contained.mobile { margin-bottom: 0; }
-    dl.contained.tabs.mobile dd a { padding: 18px 20px; }
-
-    dl.tabs.mobile + ul.contained { margin-#{$defaultFloat}: -20px; margin-#{$defaultOpposite}: -20px; border-width: 0 0 1px 0; }
-  }

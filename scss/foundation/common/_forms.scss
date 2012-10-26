@@ -14,14 +14,10 @@
     }
   }
 
-  label { font-size: ms(0); color: lighten($black, 30%); cursor: pointer; display: block; font-weight: 500; margin-bottom: 3px;
+  label { font-size: ms(0); color: $labelFontColor; cursor: pointer; display: block; font-weight: $labelFontWeight; margin-bottom: $labelBtmMargin;
 
     &.right { float: none; text-align: right; }
     &.inline { line-height: (ms(0) + ($formSpacing * 1.5)); margin: 0 0 $formSpacing 0; }
-  }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    label.right { text-align: left; }
   }
 
   .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: (ms(0) + ($formSpacing * 1.5)); line-height: (ms(0) + ($formSpacing * 1.5)) - 1; }
@@ -31,11 +27,11 @@
   .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultFloat, 2px); overflow:hidden; }
   .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
 
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { font-family: $bodyFontFamily; border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
-    &:focus { background: darken($white, 2%); outline: none !important; border-color: darken($white, 30%); }
+    &:focus { background: $inputFocusBgColor; outline: none !important; border-color: $inputFocusBorderColor; }
     &[disabled] { background-color: #ddd; }
   }
 
@@ -44,7 +40,7 @@
   select { width: 100%; }
 
   /* Fieldsets */
-  fieldset { border: solid 1px #ddd; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; padding: 12px 12px 0; margin: 18px 0;
+  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: 12px 12px 0; margin: 18px 0;
 
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0; margin-#{$defaultFloat}: -3px; }
   }
@@ -52,39 +48,36 @@
   /* Errors */
   .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
   .error label, label.error { color: $alertColor; }
-  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    @for $i from 1 through $totalColumns {
-      input[type="text"].#{convert-number-to-word($i)}, input[type="password"].#{convert-number-to-word($i)}, input[type="date"].#{convert-number-to-word($i)}, input[type="datetime"].#{convert-number-to-word($i)}, input[type="email"].#{convert-number-to-word($i)}, input[type="number"].#{convert-number-to-word($i)}, input[type="search"].#{convert-number-to-word($i)}, input[type="tel"].#{convert-number-to-word($i)}, input[type="time"].#{convert-number-to-word($i)}, input[type="url"].#{convert-number-to-word($i)}, textarea.#{convert-number-to-word($i)}, .error small.#{convert-number-to-word($i)}, small.error.#{convert-number-to-word($i)} { width: 100% !important; }
-    }
+  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; font-size: ms(0) - 2; font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
+  .error textarea, textarea.error {
+    &:focus { background: darken($white, 2%); border-color: darken($white, 30%); }
   }
-
   /* Custom Forms ---------------------- */
 
   form.custom {
 
-    span.custom { display: inline-block; width: 16px; height: 16px; position: relative; top: 2px; border: solid 1px #ccc; background: #fff;
+    span.custom { display: inline-block; width: 16px; height: 16px; position: relative; top: 2px; border: solid 1px $custFormBorderColor; background: $custFormBgColor;
 
       &.radio { @include border-radius(100px); }
       &.checkbox {
         &:before { content: ""; display: block; line-height: 0.8; height: 14px; width: 14px; text-align: center; position: absolute; top: 0; #{$defaultFloat}: 0; font-size: 14px; color: #fff; }
       }
       &.radio.checked {
-        &:before { content: ""; display: block; width: 8px; height: 8px; @include border-radius(100px); background: #222; position: relative; top: 3px; #{$defaultFloat}: 3px; }
+        &:before { content: ""; display: block; width: 8px; height: 8px; @include border-radius(100px); background: $custCheckColor; position: relative; top: 3px; #{$defaultFloat}: 3px; }
       }
       &.checkbox.checked {
-        &:before { content: "\00d7"; color: #222; }
+        &:before { content: "\00d7"; color: $custCheckColor; }
       }
     }
     div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px;
 
-      a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; border: solid 1px #ddd; color: #141414; background-color: #fff; white-space: nowrap; }
-      a.selector { position: absolute; width: 27px; height: 28px; display: block; #{$defaultOpposite}: 0; top: 0; border: solid 1px #ddd;
-        &:after { @include cssTriangle(5px, #aaa, top); position: absolute; #{$defaultFloat}: 50%; top: 50%; margin-top: -2px; margin-#{$defaultFloat}: -5px;  }
+      ul { overflow-y: auto; max-height: $custSelectDropHeight; }
+      a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; border: solid 1px $custSelectBorderColor; color: $custSelectCurrentFontColor; background-color: $custSelectBgColor; white-space: nowrap; }
+      a.selector { position: absolute; width: 27px; height: 28px; display: block; #{$defaultOpposite}: 0; top: 0; border: solid 1px $custSelectBorderColor;
+        &:after { content: ""; display: block; @include cssTriangle(5px, $custSelectTriangleColor, top); position: absolute; #{$defaultFloat}: 50%; top: 50%; margin-top: -2px; margin-#{$defaultFloat}: -5px;  }
       }
       &:hover, &.open {
-        a.selector { &:after { @include cssTriangle(5px, #222, top); } }
+        a.selector { &:after { @include cssTriangle(5px, $custSelectTriangleColorOpen, top); } }
       }
 
       &.open ul { display: block; z-index: 10; }
@@ -100,23 +93,23 @@
       &.open.expand ul { width: 100% !important; }
     }
 
-    div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; #{$defaultFloat}: 0; top: 27px; margin: 0; padding: 0; background: #fff; background: rgba(#fff,0.95); border: solid 1px darken($white, 20%);
+    div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; #{$defaultFloat}: 0; top: 27px; margin: 0; padding: 0; background: $custDropdownBgColor; background: rgba($custDropdownBgColor,0.95); border: solid 1px $custDropdownBorderColor;
 
-      li { color: #555; font-size: ms(0) - 1; cursor: pointer; padding: 3px; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none; }
-      li.selected { background: lighten($mainColor, 40%); color: #000;
+      li { color: $custDropdownFontColor; font-size: ms(0) - 1; cursor: pointer; padding: 3px; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none; }
+      li.selected { background: $custDropdownSelectedBgColor; color: $custDropdownSelectedFontColor;
         &:after { content: "\2013"; position: absolute; #{$defaultOpposite}: 10px; }
       }
-      li:hover { background-color: lighten($mainColor, 45%); color: #222;
-        &:after { content: "\2013"; position: absolute; #{$defaultOpposite}: 10px; color: lighten($mainColor, 25%); }
+      li:hover { background-color: $custDropdownSelectedBgColor; color: $custDropdownSelectedFontColor;
+        &:after { content: "\2013"; position: absolute; #{$defaultOpposite}: 10px; color: darken($custDropdownSelectedBgColor, 10%); }
       }
-      li.selected:hover { background: lighten($mainColor, 40%); cursor: default; color: #000;
-        &:after { color: #000; }
+      li.selected:hover { background: $custDropdownSelectedBgColor; cursor: default; color: $custDropdownSelectedFontColor;
+        &:after { color: $custDropdownSelectedFontColor; }
       }
       &.show { display: block; }
     }
 
     /* Custom input, disabled */
-    .custom.disabled { background-color: #ddd; }
+    .custom.disabled { background-color: $custFormDisabledBgColor; }
   }
 
   /* Correct FF custom dropdown height */

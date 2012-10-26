@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -14,9 +12,6 @@
 
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="stylesheets/styles.css">
-	<style type="text/css">
-	 #featuredContent > div {background-color:#f8f8f8; padding:20px;}
-	</style>
 
 	<script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
 </head>
@@ -58,6 +53,12 @@
         </div>
         <div class="eight columns">
           <div id="featuredContent">
+            <!-- <img src="http://placekitten.com/2000/400"  data-caption="#captionOne" />
+            <img src="http://placekitten.com/2000/400"  data-caption="#captionTwo" />
+            <img src="http://placekitten.com/2000/400"  data-caption="#captionThree" /> -->
+            <div>
+              <img src="http://placekitten.com/g/400/300" />
+            </div>
             <div data-caption="#captionOne">
               <h4>This is a content slider.</h4>
               <p>Each slide holds arbitrary content, like text or actions.</p>
@@ -82,6 +83,8 @@
 
 	<!-- Included JS Files -->
 	<script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.event.move.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.event.swipe.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.alerts.js"></script>
@@ -97,8 +100,10 @@
   <script type="text/javascript">
     $(window).load(function(){
       $("#featured").orbit({
-        animation: 'fade'
+        slideNumber: true,
+        stackOnSmall: true
       });
+
       $('#featuredContent').orbit({ fluid: '2x1' });
     });
   </script>

@@ -15,16 +15,12 @@
 
 /* Misc ---------------------- */
 
-  .left        { float: left;
-    @include respondTo(smallScreen) { float: none; }
-  }
-  .right       { float: right;
-    @include respondTo(smallScreen) { float: none; }
-  }
+  .left        { float: left; }
+  .right       { float: right; }
   .text-left   { text-align: left; }
   .text-right  { text-align: right; }
   .text-center { text-align: center; }
-  .hide        { display: none; }
+  .hide        { display: none !important; }
   .highlight   { background: $highlightColor; }
 
   #googlemap img, object, embed { max-width: none; }

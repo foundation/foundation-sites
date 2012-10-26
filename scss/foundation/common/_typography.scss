@@ -7,7 +7,7 @@
     direction: $textDirection;
   }
 
-  p { font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-style: $bodyFontStyle; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
+  p { font-family: inherit; font-weight: $bodyFontWeight; font-size: ms(0); line-height: 1.6; margin-bottom: ms(1);
     &.lead { font-size: ms(0) * 1.25; line-height: 1.6; margin-bottom: ms(1); }
   }
   aside p { font-size: ms(0) - 1; line-height: 1.35; font-style: italic; }
@@ -41,7 +41,7 @@
   code { font-weight: bold; background: $highlightColor; }
 
   /* Lists ---------------------- */
-  ul, ol { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: inside; }
+  ul, ol, dl { font-size: ms(0); line-height: 1.6; margin-bottom: ms(1); list-style-position: outside; }
   ul {
     li {
       ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
@@ -59,7 +59,7 @@
     &.no-bullet { list-style: none; }
     &.large li { line-height: 21px; }
   }
-  ol {
+  ol { margin-#{$defaultFloat}: 20px;
     li {
       ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
     }
@@ -99,4 +99,6 @@
     h2, h3 { page-break-after: avoid; }
     .hide-on-print { display: none !important; }
     .print-only { display: block !important; }
+    .hide-for-print { display: none !important; }
+    .show-for-print { display: inherit !important; }
   }

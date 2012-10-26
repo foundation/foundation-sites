@@ -3,7 +3,7 @@ Description:
 
 Example:
   rails g foundation:install
-  
+
   This will replace the default application assets:
     /app/assets/javascripts/application.js
     /app/assets/stylesheets/application.css

@@ -29,25 +29,4 @@
     > :first-child { margin-top: 0; }
     > :last-child { margin-bottom: 0; }
   }
-
-  /* Mobile */
-  @media only screen and (max-width: $screenSmall - 1) {
-    .reveal-modal-bg { position: absolute; }
-
-    .reveal-modal,
-    .reveal-modal.small,
-    .reveal-modal.medium,
-    .reveal-modal.large,
-    .reveal-modal.xlarge { width: 80%; top: 15px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -40%; padding: 20px; height: auto; }
-  }
-
-  /* NOTES
-  Close button entity is &#215;
-
-  Example markup
-  <div id="myModal" class="reveal-modal">
-   <h2>Awesome. I have it.</h2>
-   <p class="lead">Your couch.  I it's mine.</p>
-   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
-   <a class="close-reveal-modal">&#215;</a>
-  </div> */
+  @media print { .reveal-modal { border: solid 1px #000; background: rgba(255,255,255,1) !important; } }

@@ -8,10 +8,7 @@
 // $columnGutter: 30px;
 // $totalColumns: 12;
 // $mobileTotalColumns: 4;
-
-// Text Direction Settings
-
-// $textDirection: ltr; // Controls default global text direction, 'rtl' or 'ltr'
+// $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported
 
 // Colors Settings
 
@@ -26,16 +23,20 @@
 // $shinyEdge: rgba(#fff, .5);
 // $darkEdge: rgba(#000, .2);
 
-// Typography Settings
+// Font Settings
 
 // $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $headerFontWeight: bold;
-// $headerFontStyle: normal !default;
+// $headerFontStyle: normal;
 // $headerFontColor: #222;
 // $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $bodyFontWeight: normal;
-// $bodyFontStyle: normal !default;
+// $bodyFontStyle: normal;
 // $bodyFontColor: $txtColor;
+
+// Text Direction Settings
+
+// $textDirection: ltr; // Controls default global text direction, 'rtl' or 'ltr'
 
 // Button Settings
 
@@ -49,30 +50,77 @@
 // Form Settings
 
 // $formSpacing: 12px;
+// $labelFontWeight: 500;
+// $labelFontColor: lighten(#000, 30%);
+// $labelBtmMargin: 3px;
+// $inputFontColor: rgba(0,0,0,0.75);
+// $inputFontSize: 14px;
+// $inputBgColor: #fff;
+// $inputFocusBgColor: darken(#fff, 2%);
+// $inputBorderColor: darken(#fff, 20%);
+// $inputFocusBorderColor: darken(#fff, 30%);
+// $inputBorderStyle: solid;
+// $inputBorderWidth: 1px;
+// $inputBorderRadius: 2px;
+// $fieldsetBorderRadius: 3px;
+
+// Custom Form Settings
+
+// $custFormBorderColor: #ccc;
+// $custFormBgColor: #fff;
+// $custCheckColor: #222;
+// $custSelectCurrentFontColor: #141414;
+// $custSelectBgColor: #fff;
+// $custSelectBorderColor: #ddd;
+// $custSelectTriangleColor: #aaa;
+// $custSelectTriangleColorOpen: #222;
+// $custSelectDropHeight: 200px;
+// $custDropdownBgColor: #fff;
+// $custDropdownBorderColor: darken(#fff, 20%);
+// $custDropdownFontColor: #555;
+// $custDropdownSelectedBgColor: lighten(#2ba6cb, 40%);
+// $custDropdownSelectedFontColor: #000;
+// $custFormDisabledBgColor: #ddd;
 
 // Tab Settings
 
 // $tabHeight: 40px;
+// $tabTermFontSize: 12px;
 
 // Nav Bar Settings
 
 // $navBarHeight: 40px;
 // $navFlyoutBaseWidth: 250px;
 
+// Top Bar Settings
+
+// $topBarBgColor: #222;
+// $topBarHeight: 45px;
+// $topBarHeightMobile: 45px;
+// $topBarBtmMargin: 30px;
+// $topBarTitleWeight: bold;
+// $topBarTitleSize: 17px;
+// $topBarLinkColor: #fff;
+// $topBarLinkWeight: bold;
+// $topBarLinkSize: 13px;
+// $topBarDropBgColor: #222;
+// $topBarDropLinkColor: #fff;
+// $topBarDropToggleSize: 5px;
+// $topBarDropToggleColor: #fff;
+// $topBarDropToggleAlpha: 0.5;
+// $topBarSearchWidth: 200px;
+// $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
+// $topBarNavToggleSize: 8px;
+
 // UI Settings
 
 // $thumbRadius: 3px;
-
 // $progBarHeight: 25px;
-// $progBarBorderColor: darken($white, 20%);
+// $progBarBorderColor: darken(#fff, 20%);
 // $progBarBorderSize: 1px;
 // $progBarPad: 2px;
-
-// Modular Scale
-
-// $ratio: $golden;
-// $baseFontSize: 14px;
-// $importantModNum: 44px;
+// $linkListBottomMargin: 17px -22px;
+// $tableBorderRadius: 3px;
 
 // Tooltip Settings
 
@@ -83,28 +131,74 @@
 // $hasTipFontColorHover: $mainColor;
 // $tooltipBackgroundColor: #000;
 // $tooltipBackgroundOpacity: 0.85;
-// $tooltipFontSize: 12;
+// $tooltipFontSize: 12px;
 // $tooltipFontWeight: bold;
 // $tooltipFontColor: #fff;
 // $tapToCloseFontSize: 10;
 // $tapToCloseFontWeight: normal;
 // $tapToCloseFontColor: #888;
-// $tooltipFontSizeScreenSmall: 14;
-// $tooltipBackgroundOpacityScreenSmall: 0.85;
+// $tooltipFontSizeScreenSm: 14;
+// $tooltipBgOpacityScreenSm: 0.85;
+// $tooltipBorderRadius: 4px;
 
-// Top Bar Settings
+// Pricing Table Settings
 
-// $topBarBgColor: #222;
-// $topBarHeight: 45px;
-// $topBarBtmMargin: 30px;
-// $topBarTitleWeight: bold;
-// $topBarTitleSize: ms(1);
-// $topBarLinkColor: $white;
-// $topBarLinkWeight: bold;
-// $topBarLinkSize: ms(0) - 1;
-// $topBarDropToggleSize: 5px;
-// $topBarDropToggleColor: #fff;
-// $topBarDropToggleAlpha: 0.5;
-// $topBarSearchWidth: 200px;
-// $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
-// $topBarNavToggleSize: 8px;
+// $priceTableBorder: solid 1px #ddd;
+// $priceTitleBgColor: #ddd;
+// $priceTitlePadding: 15px 20px;
+// $priceTitleAlign: center;
+// $priceTitleColor: #333;
+// $priceTitleWeight: bold;
+// $priceTitleSize: 16px;
+
+// $priceMoneyBgColor: #eee;
+// $priceMoneyPadding: 15px 20px;
+// $priceMoneyAlign: center;
+// $priceMoneyColor: #333;
+// $priceMoneyWeight: normal;
+// $priceMoneySize: 20px;
+
+// $priceBgColor: #fff;
+// $priceDescColor: #777;
+// $priceDescPadding: 15px;
+// $priceDescAlign: center;
+// $priceDescFontSize: 12px;
+// $priceDescWeight: normal;
+// $priceDescLineHeight: 1.4;
+// $priceDescBtmBorder: dotted 1px #ddd;
+
+// $priceItemColor: #333;
+// $priceItemPadding: 15px;
+// $priceItemAlign: center;
+// $priceItemFontSize: 14px;
+// $priceItemWeight: normal;
+// $priceItemBtmBorder: dotted 1px #ddd;
+
+// $priceCtaBgColor: #f5f5f5;
+// $priceCtaAlign: center;
+// $priceCtaPadding: 20px;
+
+// Orbit Settings
+
+// $orbitCaptionBgColorOldBrowser: #000;
+// $orbitCaptionBgColor: rgba(0,0,0,.6);
+// $orbitCaptionFontColor: #fff;
+// $orbitBulletNavColor: #999;
+// $orbitBulletNavColorActive: #222;
+// $orbitHasThumbBorderColor: #000;
+// $orbitHasThumbBorderWidth: 2px;
+// $orbitHasThumbBorderStyle: solid;
+// $orbitSlideNumBgColor: rgba(0,0,0,0.7);
+// $orbitSlideNumFontColor: #fff;
+// $orbitSlideNumPadding: 5px;
+
+// Off Canvas Width Settings
+
+// $mainWidth: 80%;
+// $complementaryWidth: 20%;
+
+// Modular Scale Settings
+
+// $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
+// $baseFontSize: 14px;
+// $importantModNum: 44px;

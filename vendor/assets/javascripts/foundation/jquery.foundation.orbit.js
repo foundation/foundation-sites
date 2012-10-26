@@ -41,7 +41,9 @@
       afterLoadComplete: $.noop,        // callback to execute after everything has been loaded
       fluid: true,
       centerBullets: true,              // center bullet nav with js, turn this off if you want to position the bullet nav manually
-      singleCycle: false                // cycles through orbit slides only once
+      singleCycle: false,               // cycles through orbit slides only once
+      slideNumber: false,               // display slide numbers?
+      stackOnSmall: false               // stack slides on small devices (i.e. phones)
     },
 
     activeSlide: 0,
@@ -54,8 +56,9 @@
     wrapperHTML: '<div class="orbit-wrapper" />',
     timerHTML: '<div class="timer"><span class="mask"><span class="rotator"></span></span><span class="pause"></span></div>',
     captionHTML: '<div class="orbit-caption"></div>',
-    directionalNavHTML: '<div class="slider-nav"><span class="right"></span><span class="left"></span></div>',
+    directionalNavHTML: '<div class="slider-nav hide-for-small"><span class="right"></span><span class="left"></span></div>',
     bulletHTML: '<ul class="orbit-bullets"></ul>',
+    slideNumberHTML: '<span class="orbit-slide-counter"></span>',
 
     init: function (element, options) {
       var $imageSlides,
@@ -80,11 +83,20 @@
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
       this.$slides = this.$element.children('img, a, div, figure');
 
-      this.$element.bind('orbit.next', function () {
+      this.$element.on('movestart', function(e) {
+        // If the movestart is heading off in an upwards or downwards
+        // direction, prevent it so that the browser scrolls normally.
+        if ((e.distX > e.distY && e.distX < -e.distY) ||
+            (e.distX < e.distY && e.distX > -e.distY)) {
+          e.preventDefault();
+        }
+      });
+
+      this.$element.bind('orbit.next swipeleft', function () {
         self.shift('next');
       });
 
-      this.$element.bind('orbit.prev', function () {
+      this.$element.bind('orbit.prev swiperight', function () {
         self.shift('prev');
       });
 
@@ -119,11 +131,16 @@
         .addClass('orbit')
         .css({width: '1px', height: '1px'});
 
+      if (this.options.stackOnSmall) {
+        this.$element.addClass('orbit-stack-on-small');
+      }
+
       this.$slides.addClass('orbit-slide');
 
       this.setDimentionsFromLargestSlide();
       this.updateOptionsIfOnlyOneSlide();
       this.setupFirstSlide();
+      this.notifySlideChange();
 
       if (this.options.timer) {
         this.setupTimer();
@@ -149,6 +166,20 @@
 
     currentSlide: function () {
       return this.$slides.eq(this.activeSlide);
+    },
+
+    notifySlideChange: function() {
+      if (this.options.slideNumber) {
+        var txt = (this.activeSlide+1) + ' of ' + this.$slides.length;
+        this.$element.trigger("orbit.change", {slideIndex: this.activeSlide, slideCount: this.$slides.length});
+        if (this.$counter === undefined) {
+          var $counter = $(this.slideNumberHTML).html(txt);
+          this.$counter = $counter;
+          this.$wrapper.append(this.$counter);
+        } else {
+          this.$counter.html(txt);
+        }
+      }
     },
 
     setDimentionsFromLargestSlide: function () {
@@ -225,7 +256,7 @@
       //Set initial front photo z-index and fades it in
       var self = this;
       this.$slides.first()
-        .css({"z-index" : 3})
+        .css({"z-index" : 3, "opacity" : 1})
         .fadeIn(function() {
           //brings in all other slides IF css declares a display: none
           self.$slides.css({"display":"block"})
@@ -488,6 +519,7 @@
 
         //set to correct bullet
         this.setActiveBullet();
+        this.notifySlideChange();
 
         //set previous slide z-index to one below what new activeSlide will be
         this.$slides
@@ -500,6 +532,9 @@
             .eq(this.activeSlide)
             .css({"opacity" : 0, "z-index" : 3})
             .animate({"opacity" : 1}, this.options.animationSpeed, this.resetAndUnlock);
+          this.$slides
+              .eq(this.prevActiveSlide)
+              .animate({"opacity":0}, this.options.animationSpeed);
         }
 
         //horizontal-slide
@@ -508,14 +543,19 @@
             this.$slides
               .eq(this.activeSlide)
               .css({"left": this.orbitWidth, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
           }
           if (slideDirection == "prev") {
             this.$slides
               .eq(this.activeSlide)
               .css({"left": -this.orbitWidth, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
           }
+          this.$slides
+              .eq(this.prevActiveSlide)
+              .css("opacity", 0);
         }
 
         //vertical-slide
@@ -524,14 +564,22 @@
             this.$slides
               .eq(this.activeSlide)
               .css({"top": this.orbitHeight, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"top" : 0}, this.options.animationSpeed, this.resetAndUnlock);
+            this.$slides
+              .eq(this.prevActiveSlide)
+              .css("opacity", 0);
           }
           if (slideDirection == "next") {
             this.$slides
               .eq(this.activeSlide)
               .css({"top": -this.orbitHeight, "z-index" : 3})
+              .css("opacity", 1)
               .animate({"top" : 0}, this.options.animationSpeed, this.resetAndUnlock);
           }
+          this.$slides
+              .eq(this.prevActiveSlide)
+              .css("opacity", 0);
         }
 
         //horizontal-push
@@ -540,19 +588,23 @@
             this.$slides
               .eq(this.activeSlide)
               .css({"left": this.orbitWidth, "z-index" : 3})
-              .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
+              .animate({"left" : 0, "opacity" : 1}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
-              .animate({"left" : -this.orbitWidth}, this.options.animationSpeed);
+              .animate({"left" : -this.orbitWidth}, this.options.animationSpeed, "", function(){
+                $(this).css({"opacity" : 0});
+              });
           }
           if (slideDirection == "prev") {
             this.$slides
               .eq(this.activeSlide)
               .css({"left": -this.orbitWidth, "z-index" : 3})
-              .animate({"left" : 0}, this.options.animationSpeed, this.resetAndUnlock);
+              .animate({"left" : 0, "opacity" : 1}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
-              .animate({"left" : this.orbitWidth}, this.options.animationSpeed);
+              .animate({"left" : this.orbitWidth}, this.options.animationSpeed, "", function(){
+                $(this).css({"opacity" : 0});
+              });
           }
         }
 
@@ -562,18 +614,22 @@
             this.$slides
               .eq(this.activeSlide)
               .css({top: -this.orbitHeight, "z-index" : 3})
-              .animate({top : 0}, this.options.animationSpeed, this.resetAndUnlock);
+              .css("opacity", 1)
+              .animate({top : 0, "opacity":1}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
-              .animate({top : this.orbitHeight}, this.options.animationSpeed);
+              .css("opacity", 0)
+              .animate({top : this.orbitHeight}, this.options.animationSpeed, "");
           }
           if (slideDirection == "prev") {
             this.$slides
               .eq(this.activeSlide)
               .css({top: this.orbitHeight, "z-index" : 3})
+              .css("opacity", 1)
               .animate({top : 0}, this.options.animationSpeed, this.resetAndUnlock);
             this.$slides
               .eq(this.prevActiveSlide)
+              .css("opacity", 0)
               .animate({top : -this.orbitHeight}, this.options.animationSpeed);
           }
         }

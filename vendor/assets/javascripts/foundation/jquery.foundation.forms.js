@@ -381,9 +381,7 @@
     if (false === $input.is(':disabled')) {
 
       $('input:radio[name="' + $input.attr('name') + '"]').next().not($element).removeClass('checked');
-      if ($element.hasClass('checked')) {
-        // Do Nothing
-      } else {
+      if ( !$element.hasClass('checked') ) {
         $element.toggleClass('checked');
       }
       input.checked = $element.hasClass('checked');
