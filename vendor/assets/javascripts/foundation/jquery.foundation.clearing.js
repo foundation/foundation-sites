@@ -191,6 +191,15 @@
 
         fix_height : function (target) {
           var lis = target.siblings();
+
+          lis.each(function () {
+            var li = $(this),
+                image = li.find('img');
+
+            if (li.height() > image.outerHeight()) {
+              li.addClass('fix-height');
+            }
+          });
           lis.closest('ul').width(lis.length * 100 + '%');
         },
 
