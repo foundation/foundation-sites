@@ -33,7 +33,7 @@
 
 .clearing-assembled .clearing-container {
   .carousel { background: rgba(0,0,0,0.75); height: 150px; margin-top: 5px; }
-  .visible-img { background: rgba(0,0,0,0.75); }
+  .visible-img { background: rgba(0,0,0,0.75); overflow: hidden; }
   ul[data-clearing] { width: 200%; margin-left: 0; position: relative; left: 0;
     li { width: 175px; height: 150px; padding: 0; float: left; overflow: hidden; background: #222; margin-right: 1px; position: relative;
       &.fix-height {
