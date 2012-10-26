@@ -34,7 +34,7 @@
         'timer'   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
         'tip'     : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
         'wrapper' : '<div class="joyride-content-wrapper"></div>',
-        'button'  : '<a href="#" class="joyride-next-tip"></a>'
+        'button'  : '<a href="#" class="small button joyride-next-tip"></a>'
       }
     },
 
@@ -320,7 +320,7 @@
       },
 
       set_next_tip : function () {
-        settings.$next_tip = $('.joyride-tip-guide[data-index=' + settings.$li.index() + ']');
+        settings.$next_tip = $('.joyride-tip-guide[data-index=' + settings.$li.index() + ']').first();
       },
 
       set_target : function () {
@@ -414,7 +414,7 @@
             } else if (methods.left()) {
 
               settings.$next_tip.css({
-                top: settings.$target.offset().top - settings.$target.outerHeight(),
+                top: settings.$target.offset().top,
                 left: (settings.$target.offset().left - settings.$next_tip.outerWidth() - nub_height)});
 
               methods.nub_position($nub, settings.tipSettings.nubPosition, 'right');
