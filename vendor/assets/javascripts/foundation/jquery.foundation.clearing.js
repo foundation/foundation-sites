@@ -68,7 +68,7 @@
 
             if (image.length > 0) {
               methods.center(image);
-            } 
+            }
           });
 
           doc.on('click.fndtn.clearing', '.clearing-main-right', function (e) {
@@ -191,15 +191,6 @@
 
         fix_height : function (target) {
           var lis = target.siblings();
-
-          lis.each(function () {
-            var li = $(this),
-                image = li.find('img');
-
-            if (li.height() > image.height()) {
-              li.addClass('fix-height');
-            }
-          });
           lis.closest('ul').width(lis.length * 100 + '%');
         },
 

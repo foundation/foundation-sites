@@ -32,14 +32,14 @@
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
 .clearing-assembled .clearing-container {
-  .carousel { background: $clearingCarouselOldBrowserBg; background: $clearingCarouselBg; height: $clearingCarouselHeight; margin-top: 5px; }
+  .carousel { background: $clearingCarouselOldBrowserBg; background: $clearingCarouselBg; height: 25%; margin-top: 5px; }
   .visible-img { background: $clearingImgOldBrowserBg; background: $clearingImgBg; overflow: hidden; }
   ul[data-clearing] { width: 200%; margin-left: 0; position: relative; left: 0;
-    li { width: $clearingCarouselThumbWidth; height: $clearingCarouselThumbHeight; padding: 0; float: left; overflow: hidden; background: #222; margin-right: 1px; position: relative;
+    li { width: $clearingCarouselThumbWidth; height: inherit; padding: 0; float: left; overflow: hidden; background: #222; margin-right: 1px; position: relative;
       &.fix-height {
         img { height: 100%; max-width: none; }
       }
-      img { cursor: pointer !important; min-width: 100% !important; vertical-align: middle; }
+      img { cursor: pointer !important; min-width: 100% !important; height: 100%; max-width: none; vertical-align: middle; }
       &.visible { border-top: $clearingCarouselThumbActiveBorder; }
     }
   }
