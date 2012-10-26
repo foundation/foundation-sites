@@ -221,23 +221,23 @@ $clearingImgOldBrowserBg: rgb(0,0,0) !default;
 
 // Joyride Settings
 
-$tipBg: rgba(0,0,0,0.8);
-$tipBgIE8: #000;
-$tipFontColor: #fff;
-$tipHeaderWeight: bold;
-$tipDefaultWidth: 300px;
-$tipBorderRadius: 4px;
-$tipPadding: 18px 20px 24px;
-$tipNubSize: 14px;
-$tipFontSize: 14px;
-$tipTimerWidth: 50px;
-$tipTimerHeight: 3px;
-$tipTimerBorder: solid 1px #555;
-$tipTimerColor: #666;
-$tipCloseColor: #777;
-$tipCloseSize: 20px;
-$tipCloseWeight: normal;
-$tipScreenFill: rgba(0,0,0,0.5);
+$tipBg: rgba(0,0,0,0.8) !default;
+$tipBgIE8: #000 !default;
+$tipFontColor: #fff !default;
+$tipHeaderWeight: bold !default;
+$tipDefaultWidth: 300px !default;
+$tipBorderRadius: 4px !default;
+$tipPadding: 18px 20px 24px !default;
+$tipNubSize: 14px !default;
+$tipFontSize: 14px !default;
+$tipTimerWidth: 50px !default;
+$tipTimerHeight: 3px !default;
+$tipTimerBorder: solid 1px #555 !default;
+$tipTimerColor: #666 !default;
+$tipCloseColor: #777 !default;
+$tipCloseSize: 20px !default;
+$tipCloseWeight: normal !default;
+$tipScreenFill: rgba(0,0,0,0.5) !default;
 
 // Off Canvas Width Settings
 
