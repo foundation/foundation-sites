@@ -23,7 +23,7 @@
 
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
-ul[data-clearing] li { display: block;
+ul[data-clearing] li { cursor: pointer; display: block;
   &.clearing-feature ~ li { display: none; }
 }
 
