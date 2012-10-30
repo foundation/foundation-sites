@@ -30,7 +30,11 @@
       var $el = $(this),
         button = $el.closest('.button.dropdown'),
         dropdown = $('> ul', button);
-      e.preventDefault();
+
+        // If the click is registered on an actual link then do not preventDefault which stops the browser from following the link
+        if (e.target.nodeName !== "A"){
+          e.preventDefault();
+        }
 
       // close other dropdowns
       closeDropdowns(config.dropdownAsToggle ? dropdown : '');
