@@ -12,8 +12,9 @@
   'use strict';
 
   $.fn.foundationMagellan = function(options) {
-    var defaults = {
-      threshold: 25,
+    var $fixedMagellan = $('[data-magellan-expedition=fixed]'),
+    	defaults = {
+      threshold: ($fixedMagellan.length) ? $fixedMagellan.outerHeight(true) : 25,
       activeClass: 'active'
     },
 
@@ -37,21 +38,21 @@
       .addClass($expedition.attr('data-magellan-active-class') || options.activeClass);
 
     // Update fixed position
-    $('[data-magellan-expedition=fixed]').on('magellan.update-position', function(){
+    $fixedMagellan.on('magellan.update-position', function(){
       var $el = $(this);
       $el.data("magellan-fixed-position","");
       $el.data("magellan-top-offset", "");
     });
 
-    $('[data-magellan-expedition=fixed]').trigger('magellan.update-position');
+    $fixedMagellan.trigger('magellan.update-position');
 
     $(window).on('resize.magellan', function() {
-      $('[data-magellan-expedition=fixed]').trigger('magellan.update-position');
+      $fixedMagellan.trigger('magellan.update-position');
     });
     
     $(window).on('scroll.magellan', function() {
       var windowScrollTop = $(window).scrollTop();
-      $('[data-magellan-expedition=fixed]').each(function() {
+      $fixedMagellan.each(function() {
         var $expedition = $(this);
         if ($expedition.data("magellan-top-offset") === "") {
           $expedition.data("magellan-top-offset", $expedition.offset().top);
