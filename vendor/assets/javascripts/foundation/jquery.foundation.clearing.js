@@ -85,7 +85,7 @@
             methods.go(clearing, 'prev');
           });
 
-          doc.on('click.fndtn.clearing', 'a.clearing-close, div.clearing-blackout', function (e) {
+          doc.on('click.fndtn.clearing', 'a.clearing-close, div.clearing-blackout, div.visible-img', function (e) {
             var root = (function (target) {
               if (/blackout/.test(target.selector)) {
                 return target;
@@ -121,6 +121,10 @@
             // left
             if (e.which === 37) {
               methods.go(clearing, 'prev');
+            }
+
+            if (e.which === 27) {
+              $('a.clearing-close').trigger('click');
             }
           });
 
