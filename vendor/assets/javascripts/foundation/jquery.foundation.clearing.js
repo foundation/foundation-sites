@@ -54,9 +54,14 @@
 
           doc.on('click.fndtn.clearing', 'ul[data-clearing] li', function (e, current, target) {
             var current = current || $(this),
-                target = target || current;
+                target = target || current,
+                settings = current.data('fndtn.clearing.settings');
 
             e.preventDefault();
+
+            if (!settings) {
+              current.parent().foundationClearing();
+            }
 
             // set current and target to the clicked li if not otherwise defined.
             methods.open($(e.target), current, target);
@@ -150,7 +155,7 @@
           });
         },
 
-        assemble : function ($li, target) {
+        assemble : function ($li) {
           var $el = $li.parent(),
               settings = $el.data('fndtn.clearing.settings'),
               grid = $el.detach(),
