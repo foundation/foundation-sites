@@ -55,7 +55,7 @@
           doc.on('click.fndtn.clearing', 'ul[data-clearing] li', function (e, current, target) {
             var current = current || $(this),
                 target = target || current,
-                settings = current.data('fndtn.clearing.settings');
+                settings = current.parent().data('fndtn.clearing.settings');
 
             e.preventDefault();
 
