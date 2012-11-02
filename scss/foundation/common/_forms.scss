@@ -69,7 +69,7 @@
         &:before { content: "\00d7"; color: $custCheckColor; }
       }
     }
-    div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px;
+    div.custom.dropdown { display: block; position: relative; width: 100% !important; height: 28px; margin-bottom: 9px; margin-top: 2px;
 
       ul { overflow-y: auto; max-height: $custSelectDropHeight; }
       a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; border: solid 1px $custSelectBorderColor; color: $custSelectCurrentFontColor; background-color: $custSelectBgColor; white-space: nowrap; }
@@ -93,7 +93,7 @@
       &.open.expand ul { width: 100% !important; }
     }
 
-    div.custom.dropdown ul { position: absolute; width: auto; display: none; margin: 0; #{$defaultFloat}: 0; top: 27px; margin: 0; padding: 0; background: $custDropdownBgColor; background: rgba($custDropdownBgColor,0.95); border: solid 1px $custDropdownBorderColor;
+    div.custom.dropdown ul { position: absolute; width: 100% !important; display: none; margin: 0; #{$defaultFloat}: 0; top: 27px; margin: 0; padding: 0; background: $custDropdownBgColor; background: rgba($custDropdownBgColor,0.95); border: solid 1px $custDropdownBorderColor;
 
       li { color: $custDropdownFontColor; font-size: ms(0) - 1; cursor: pointer; padding: 3px; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none; }
       li.selected { background: $custDropdownSelectedBgColor; color: $custDropdownSelectedFontColor;
