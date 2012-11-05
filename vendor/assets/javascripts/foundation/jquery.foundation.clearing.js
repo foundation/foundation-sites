@@ -13,10 +13,10 @@
 
   var defaults = {
         templates : {
-          viewing : '<a href="#" class="clearing-close">&times;</a>' +
+          viewing : '<button type="button" class="clearing-close">&times;</button>' +
             '<div class="visible-img" style="display: none"><img src="#">' +
-            '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"></a>' +
-            '<a href="#" class="clearing-main-right"></a></div>'
+            '<p class="clearing-caption"></p><button type="button" class="clearing-main-left"></button>' +
+            '<button type="button" class="clearing-main-right"></button></div>'
         },
         locked : false
       },
@@ -90,7 +90,7 @@
             methods.go(clearing, 'prev');
           });
 
-          doc.on('click.fndtn.clearing', 'a.clearing-close, div.clearing-blackout, div.visible-img', function (e) {
+          doc.on('click.fndtn.clearing', 'button.clearing-close, div.clearing-blackout, div.visible-img', function (e) {
             var root = (function (target) {
               if (/blackout/.test(target.selector)) {
                 return target;
