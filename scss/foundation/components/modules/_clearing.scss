@@ -12,7 +12,7 @@
   .clearing-caption { color: $clearingCaptionFontColor;  margin-bottom: 0; text-align: center; position: absolute; bottom: 0; background: $clearingCaptionOldBrowserBg; background: $clearingCaptionBg; width: 100%; padding: 10px 100px; }
 }
 
-.clearing-close { z-index: 999; position: absolute; top: 10px; right: 20px; font-size: 30px; line-height: 1; color: $clearingCloseColor; display: none;
+.clearing-close { z-index: 999; border: none; position: absolute; top: 10px; right: 20px; font-size: 30px; line-height: 1; color: $clearingCloseColor; display: none;
   &:hover { color: #ccc; }
 }
 .clearing-main-left, .clearing-main-right { position: absolute; top: 50%; margin-top: -16px; }
@@ -20,6 +20,8 @@
 .clearing-main-left:active, .clearing-main-right:active { margin-top: -15px; }
 .clearing-main-left { left: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
 .clearing-main-right { right: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
+
+.clearing-close, .clearing-main-left, .clearing-main-right { background-color: transparent; cursor: pointer; }
 
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
