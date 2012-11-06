@@ -19,75 +19,103 @@
       init : function (options) {
         return this.each(function () {
           settings = $.extend(settings, options);
-          settings.$w = $(window),
-          settings.$topbar = $('nav.top-bar');
-          settings.$titlebar = settings.$topbar.children('ul:first');
-          var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
-          settings.breakPoint = breakpoint.width();
-          breakpoint.remove();
+          methods.initializeSettings();
 
           if (!settings.initialized) {
             methods.assemble();
             settings.initialized = true;
           }
 
+          methods.attachEventListeners();
+
+          if (window.Turbolinks) {
+            $(window).on('page:change', function(e) {
+              console.log('change!');
+              methods.detachEventListeners();
+              settings.initialized = false;
+            });
+
+            $(window).on('page:load', function(e) {
+              console.log('restore!');
+              methods.initializeSettings();
+              methods.assemble();
+              settings.initialized = true;
+              methods.attachEventListeners();
+            });
+          }
+
           if (!settings.height) {
             methods.largestUL();
           }
+        });
+      },
+      initializeSettings : function () {
+        settings.$w = $(window),
+        settings.$topbar = $('nav.top-bar');
+        settings.$titlebar = settings.$topbar.children('ul:first');
+        var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
+        settings.breakPoint = breakpoint.width();
+        breakpoint.remove();
+      },
+      attachEventListeners : function () {
+        $(document).on('click', '.top-bar .toggle-topbar', function (e) {
+          e.preventDefault();
 
-          $('.top-bar .toggle-topbar').live('click.fndtn', function (e) {
+          if (methods.breakpoint()) {
+            settings.$topbar.toggleClass('expanded');
+            settings.$topbar.css('min-height', '');
+          }
+
+          return false;
+        });
+
+        // Show the Dropdown Levels on Click
+        $(document).on('click', '.top-bar .has-dropdown>a', function (e) {
+          if (methods.breakpoint()) {
             e.preventDefault();
-
-            if (methods.breakpoint()) {
-              settings.$topbar.toggleClass('expanded');
-              settings.$topbar.css('min-height', '');
-
-            }
-          });
-
-          // Show the Dropdown Levels on Click
-          $('.top-bar .has-dropdown>a').live('click.fndtn', function (e) {
-            if (methods.breakpoint()) {
-              e.preventDefault();
-              var $this = $(this),
-                  $selectedLi = $this.closest('li'),
-                  $nextLevelUl = $selectedLi.children('ul'),
-                  $section = $this.closest('section'),
-                  $nextLevelUlHeight = 0,
-                  $largestUl;
-
-              settings.index += 1;
-              $selectedLi.addClass('moved');
-              $section.css({'left': -(100 * settings.index) + '%'});
-              $section.find('>.name').css({'left': 100 * settings.index + '%'});
-
-              $this.siblings('ul').height(settings.height + settings.$titlebar.outerHeight(true));
-              settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
-            }
-          });
-
-          // Go up a level on Click
-          $('.top-bar .has-dropdown .back').live('click.fndtn', function (e) {
-            e.preventDefault();
-
             var $this = $(this),
-              $movedLi = $this.closest('li.moved'),
-              $section = $this.closest('section'),
-              $previousLevelUl = $movedLi.parent();
+                $selectedLi = $this.closest('li'),
+                $nextLevelUl = $selectedLi.children('ul'),
+                $section = $this.closest('section'),
+                $nextLevelUlHeight = 0,
+                $largestUl;
 
-            settings.index -= 1;
+            settings.index += 1;
+            $selectedLi.addClass('moved');
             $section.css({'left': -(100 * settings.index) + '%'});
             $section.find('>.name').css({'left': 100 * settings.index + '%'});
 
-            if (settings.index === 0) {
-              settings.$topbar.css('min-height', 0);
-            }
-
-            setTimeout(function () {
-              $movedLi.removeClass('moved');
-            }, 300);
-          });
+            $this.siblings('ul').height(settings.height + settings.$titlebar.outerHeight(true));
+            settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
+          }
         });
+
+        // Go up a level on Click
+        $(document).on('click', '.top-bar .has-dropdown .back', function (e) {
+          e.preventDefault();
+
+          var $this = $(this),
+            $movedLi = $this.closest('li.moved'),
+            $section = $this.closest('section'),
+            $previousLevelUl = $movedLi.parent();
+
+          settings.index -= 1;
+          $section.css({'left': -(100 * settings.index) + '%'});
+          $section.find('>.name').css({'left': 100 * settings.index + '%'});
+
+          if (settings.index === 0) {
+            settings.$topbar.css('min-height', 0);
+          }
+
+          setTimeout(function () {
+            $movedLi.removeClass('moved');
+          }, 300);
+        });
+      },
+      detachEventListeners : function () {
+        $(document).off('.top-bar .has-dropdown>a');
+        $(document).off('click', '.top-bar .toggle-topbar');
+        $(document).off('.top-bar .has-dropdown .back');
       },
       breakpoint : function () {
         return settings.$w.width() < settings.breakPoint;
