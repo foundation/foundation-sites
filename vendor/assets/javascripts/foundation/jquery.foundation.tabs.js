@@ -1,43 +1,53 @@
-;(function ($, window, undefined) {
+;(function ($, window, document, undefined) {
   'use strict';
 
-  $.fn.foundationTabs = function (options) {
+  var settings = {
+        callback: $.noop,
+        init: false
+      }, 
 
-    var settings = $.extend({
-      callback: $.noop
-    }, options);
+      methods = {
+        init : function (options) {
+          settings = $.extend({}, options, settings);
 
-    var activateTab = function ($tab) {
-      var $activeTab = $tab.closest('dl, ul').find('.active'),
-          target = $tab.children('a').attr("href"),
-          hasHash = /^#/.test(target),
-          contentLocation = '';
+          return this.each(function () {
+            if (!settings.init) methods.events();
+          });
+        },
 
-      if (hasHash) {
-        contentLocation = target + 'Tab';
+        events : function () {
+          $(document).on('click.fndtn', '.tabs a', function (e) {
+            e.preventDefault();
+            methods.set_tab($(this).parent('dd, li'));
+          });
+          
+          settings.init = true;
+        },
 
-        // Strip off the current url that IE adds
-        contentLocation = contentLocation.replace(/^.+#/, '#');
+        set_tab : function ($tab) {
+          var $activeTab = $tab.closest('dl, ul').find('.active'),
+              target = $tab.children('a').attr("href"),
+              $content = $(target + 'Tab');
 
-        //Show Tab Content
-        $(contentLocation).closest('.tabs-content').children('li').removeClass('active').hide();
-        $(contentLocation).css('display', 'block').addClass('active');
+          // Show tab content
+          $content.closest('.tabs-content').children('li').removeClass('active').hide();
+          $content.css('display', 'block').addClass('active');
+
+          // Make active tab
+          $activeTab.removeClass('active');
+          $tab.addClass('active');
+
+          settings.callback();
+        }
       }
 
-      //Make Tab Active
-      $activeTab.removeClass('active');
-      $tab.addClass('active');
-    };
-
-    $(document).on('click.fndtn', '.tabs a', function (event){
-      activateTab($(this).parent('dd, li'));
-    });
-
-    if (window.location.hash) {
-      activateTab($('a[href="' + window.location.hash + '"]').parent('dd, li'));
-      settings.callback();
+  $.fn.foundationTooltips = function (method) {
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
+    } else {
+      $.error('Method ' +  method + ' does not exist on jQuery.foundationTooltips');
     }
-
   };
-
-})(jQuery, this);
+}(jQuery, this, this.document));
