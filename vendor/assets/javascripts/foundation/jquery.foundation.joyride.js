@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Joyride Plugin 2.0.1
+ * jQuery Foundation Joyride Plugin 2.0.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -34,7 +34,7 @@
         'timer'   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
         'tip'     : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
         'wrapper' : '<div class="joyride-content-wrapper"></div>',
-        'button'  : '<a href="#" class="small button joyride-next-tip"></a>'
+        'button'  : '<a href="#" class="joyride-next-tip"></a>'
       }
     },
 
@@ -56,7 +56,7 @@
             settings.$window = $(window);
             settings.$content_el = $(this);
             settings.body_offset = $(settings.tipContainer).position();
-            settings.$tip_content = $('li', settings.$content_el);
+            settings.$tip_content = $('> li', settings.$content_el);
             settings.paused = false;
             settings.attempts = 0;
 
@@ -109,12 +109,12 @@
 
             });
 
-            $('.joyride-close-tip').on('click.joyride', function (e) {
+            settings.$document.on('click.joyride', '.joyride-close-tip', function (e) {
               e.preventDefault();
               methods.end();
             });
 
-            settings.$window.on('resize.joyride', function (e) {
+            settings.$window.bind('resize.joyride', function (e) {
               if (methods.is_phone()) {
                 methods.pos_phone();
               } else {
@@ -537,8 +537,8 @@
 
       corners : function (el) {
         var w = settings.$window,
-            right = w.outerWidth() + w.scrollLeft(),
-            bottom = w.outerWidth() + w.scrollTop();
+            right = w.width() + w.scrollLeft(),
+            bottom = w.width() + w.scrollTop();
 
         return [
           el.offset().top <= w.scrollTop(),
@@ -597,13 +597,13 @@
         // define on() and off() for older jQuery
         if (!$.isFunction($.fn.on)) {
 
-          $.fn.on = function(types, sel, fn) {
+          $.fn.on = function (types, sel, fn) {
 
             return this.delegate(sel, types, fn);
 
           };
 
-          $.fn.off = function(types, sel, fn) {
+          $.fn.off = function (types, sel, fn) {
 
             return this.undelegate(sel, types, fn);
 
