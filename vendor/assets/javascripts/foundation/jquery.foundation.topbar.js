@@ -28,15 +28,23 @@
 
           methods.attachEventListeners();
 
-          if (window.Turbolinks) {
-            $(window).on('page:change', function(e) {
-              console.log('change!');
+          var page_change = null;
+          var page_load   = null;
+          if (window.Turbolinks !== undefined) {
+            page_change = 'page:change';
+            page_load   = 'page:load';
+          } else if ($.fn.pjax !== undefined) {
+            page_change = 'pjax:begin';
+            page_load   = 'pjax:end';
+          }
+
+          if (page_change !== null) {
+            $(window).on(page_change, function(e) {
               methods.detachEventListeners();
               settings.initialized = false;
             });
 
-            $(window).on('page:load', function(e) {
-              console.log('restore!');
+            $(window).on(page_load, function(e) {
               methods.initializeSettings();
               methods.assemble();
               settings.initialized = true;
