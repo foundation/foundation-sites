@@ -31,8 +31,9 @@
         button = $el.closest('.button.dropdown'),
         dropdown = $('> ul', button);
 
-        // If the click is registered on an actual link then do not preventDefault which stops the browser from following the link
-        if (e.target.nodeName !== "A"){
+        // Make sure the click is for the button itself and not one of it's children
+        // before stopping event propagation.
+        if ($(e.originalEvent.target).is('.button.dropdown:not(.split), .button.dropdown.split span')) {
           e.preventDefault();
         }
 
