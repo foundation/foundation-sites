@@ -18,6 +18,7 @@
             '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"></a>' +
             '<a href="#" class="clearing-main-right"></a></div>'
         },
+        initialized : false,
         locked : false
       },
 
@@ -43,7 +44,7 @@
               // if the gallery hasn't been built yet...build it
               methods.assemble($el.find('li'));
 
-              methods.events();
+              if (!defaults.initialized) methods.events();
 
             }
           });
@@ -153,6 +154,8 @@
             var clearing = $('.clearing-blackout').find('ul[data-clearing]');
             methods.go(clearing, 'prev');
           });
+
+          defaults.initialized = true;
         },
 
         assemble : function ($li) {
