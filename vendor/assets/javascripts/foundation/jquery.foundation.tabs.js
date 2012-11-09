@@ -17,21 +17,24 @@
 
         events : function () {
           $(document).on('click.fndtn', '.tabs a', function (e) {
-            e.preventDefault();
-            methods.set_tab($(this).parent('dd, li'));
+            methods.set_tab($(this).parent('dd, li'), e);
           });
           
           settings.init = true;
         },
 
-        set_tab : function ($tab) {
+        set_tab : function ($tab, e) {
           var $activeTab = $tab.closest('dl, ul').find('.active'),
               target = $tab.children('a').attr("href"),
+              hasHash = /^#/.test(target),
               $content = $(target + 'Tab');
 
-          // Show tab content
-          $content.closest('.tabs-content').children('li').removeClass('active').hide();
-          $content.css('display', 'block').addClass('active');
+          if (hasHash && $content.length > 0) {
+            // Show tab content
+            e.preventDefault();
+            $content.closest('.tabs-content').children('li').removeClass('active').hide();
+            $content.css('display', 'block').addClass('active');
+          }
 
           // Make active tab
           $activeTab.removeClass('active');
