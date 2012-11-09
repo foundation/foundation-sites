@@ -443,7 +443,7 @@
           }
         }
       }
-      &>ul { height: $topBarHeight; }
+      // &>ul { height: $topBarHeight; }
       section > ul li a:not(.button) { padding-left: $topBarHeightMobile / 2 !important; }
 
       /* When the Small Nav is Showing */
