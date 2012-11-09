@@ -46,8 +46,5 @@
 // @import "foundation/components/modules/reveal";
 // @import "foundation/components/modules/offcanvas";
 
-article { @include outerRow(); @include mobileRow(); }
-article section p { background: #eee; padding: 10px; }
-#six1,#six2 { @include column(6); }
-#four1,#four2,#four3 { @include column(4); }
-
+// Media Queries Overrides
+// @import "foundation/components/modules/mqueries";
