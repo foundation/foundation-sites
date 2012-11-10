@@ -35,7 +35,6 @@
           if (!settings.height) {
             methods.largestUL();
           }
-          console.log(settings.$section.find('>.name'));
 
           if (settings.$topbar.parent().hasClass('fixed')) {
             $('body').css('padding-top',settings.$topbar.outerHeight())
