@@ -3,6 +3,18 @@ We'll keep you up to date with what we've released so you at least have a gist o
 
 ---
 
+### 3.1.1- November 9, 2012
+This patch include bug fixes for various elements, such as:
+* Adding a missing line for mqueries.scss into app.scss
+* Height of fixed magellan element
+* Update viewport tag with initial-scale
+* Dropdown button fixes
+* Clearing bug fixes
+* Added a font-smoothing variable
+* Added close support to accordions
+* Removed deep linking hashes from tabs
+* Topbar now resets on close for small layouts
+
 ### **3.2**- October 26, 2012
 With this update we've revamped our documentation to be more organized and explain details regarding Scss, Compass and Javascripts.
 
