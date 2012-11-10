@@ -3,7 +3,7 @@ We'll keep you up to date with what we've released so you at least have a gist o
 
 ---
 
-### 3.1.1- November 9, 2012
+### 3.2.1- November 9, 2012
 This patch include bug fixes for various elements, such as:
 * Adding a missing line for mqueries.scss into app.scss
 * Height of fixed magellan element
