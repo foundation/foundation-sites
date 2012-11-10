@@ -30,4 +30,4 @@
   &:hover { color: #eee !important; }
 }
 
-.joyride-modal-bg { position: fixed; height: 100%; width: 100%; background: $tipScreenFill; z-index: 100; display: none; top: 0; left: 0; cursor: pointer; }
+.joyride-modal-bg { position: fixed; height: 100%; width: 100%; background: transparent; background: $tipScreenFill; z-index: 100; display: none; top: 0; left: 0; cursor: pointer; }
