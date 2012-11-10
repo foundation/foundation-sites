@@ -376,11 +376,11 @@
 
   var toggleRadio = function($element) {
     var $input = $element.prev(),
+        $form = $input.closest('form.custom'),
         input = $input[0];
 
     if (false === $input.is(':disabled')) {
-
-      $('input:radio[name="' + $input.attr('name') + '"]').next().not($element).removeClass('checked');
+      $form.find('input:radio[name="' + $input.attr('name') + '"]').next().not($element).removeClass('checked');
       if ( !$element.hasClass('checked') ) {
         $element.toggleClass('checked');
       }
