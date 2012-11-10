@@ -101,7 +101,7 @@
 
     &>li {  list-style: none; margin: 0; padding: 0; border-top: 1px solid $secondaryColor;
 
-      .title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-#{$defaultFloat}: 1px solid $secondaryColor; border-#{$defaultOpposite}: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
+      & > div.title { cursor: pointer; background: lighten($secondaryColor, 5%); padding: 15px; margin: 0; position: relative;  border-#{$defaultFloat}: 1px solid $secondaryColor; border-#{$defaultOpposite}: 1px solid $secondaryColor; @include single-transition(0.15s, background, linear);
 
         h1, h2, h3, h4, h5 { margin: 0; }
         &:after { @include cssTriangle(6px, darken($secondaryColor, 30%), $defaultOpposite); position: absolute; #{$defaultOpposite}: 15px; top: 21px; }
@@ -187,9 +187,9 @@
   /* Inline Link List */
   ul.inline-list, ul.link-list { margin: 0 0 $linkListBottomMargin; padding: 0; list-style: none; overflow: hidden;
 
-    li { list-style: none; float: $defaultFloat; margin-#{$defaultFloat}: 22px; display: block;
+    & > li { list-style: none; float: $defaultFloat; margin-#{$defaultFloat}: 22px; display: block;
 
-      a { display: block; }
+      & > * { display: block; }
     }
   }
 

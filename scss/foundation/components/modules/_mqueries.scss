@@ -365,7 +365,7 @@
           /* Branding and name */
           &.name { background: darken($topBarBgColor, 20%); height: $topBarHeightMobile;
             h1 { line-height: 1;
-              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-left: $topBarHeightMobile / 2; height: $topBarHeightMobile; }
+              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-left: $topBarHeightMobile / 3; height: $topBarHeightMobile; }
             }
           }
           &:hover, &.active { a { color: $topBarDropLinkColor; } }
@@ -443,7 +443,6 @@
           }
         }
       }
-      &>ul { height: $topBarHeight; }
       section > ul li a:not(.button) { padding-left: $topBarHeightMobile / 2 !important; }
 
       /* When the Small Nav is Showing */
@@ -451,6 +450,9 @@
         ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
-    .top-bar ul li.has-button { padding: 0 $topBarHeightMobile / 2 5px; }
+    .top-bar ul li.has-button { padding: 5px $topBarHeightMobile / 3; }
     .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
+    .top-bar ul > li.has-button {
+      a.button { margin: 0; }
+    }
   }

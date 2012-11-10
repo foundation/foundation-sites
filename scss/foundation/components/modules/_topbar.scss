@@ -44,8 +44,10 @@
       /* Main Navigation links style */
       &>li { float: left;
         a:not(.button) { color: $topBarLinkColor; display: block; font-size: $topBarLinkSize; font-weight: $topBarLinkWeight; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3; }
-        &:hover, &.active { background: darken($topBarBgColor, 15%);
-          a { color: darken($topBarLinkColor, 15%); }
+        &:not(.name) {
+          &:hover, &.active { background: darken($topBarBgColor, 15%);
+            a { color: darken($topBarLinkColor, 15%); }
+          }
         }
 
         /* Dividers between navigation */
