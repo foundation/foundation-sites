@@ -134,7 +134,7 @@
             }
           });
 
-          doc.on('movestart', function(e) {
+          doc.on('movestart', 'ul[data-clearing] li', function (e) {
 
             // If the movestart is heading off in an upwards or downwards
             // direction, prevent it so that the browser scrolls normally.
