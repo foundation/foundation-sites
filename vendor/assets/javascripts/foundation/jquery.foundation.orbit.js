@@ -290,11 +290,14 @@
         "-o-transform": degreeCSS,
         "-ms-transform": degreeCSS
       });
+      if (reset) {
+        this.degrees = 0;
+      }
       if(this.degrees > 180) {
         this.$rotator.addClass('move');
         this.$mask.addClass('move');
       }
-      if(this.degrees > 360 || reset) {
+      if(this.degrees > 360) {
         this.$rotator.removeClass('move');
         this.$mask.removeClass('move');
         this.degrees = 0;
