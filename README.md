@@ -61,6 +61,8 @@ MODX
 
 * [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Foundation3_MVC4) by Edward Charbeneau, @EdCharbeneau
 
+Python
+* [Pyramid Scaffold](https://github.com/ppinette/pyramid_foundation) by Parker Pinette
 
 CodeIgniter
 
