@@ -59,10 +59,10 @@
     });
 
     // Positioning the Flyout List
-    var normalButtonHeight  = $('.button.dropdown:not(.large):not(.small):not(.tiny)', this).outerHeight() - 1,
-        largeButtonHeight   = $('.button.large.dropdown', this).outerHeight() - 1,
-        smallButtonHeight   = $('.button.small.dropdown', this).outerHeight() - 1,
-        tinyButtonHeight    = $('.button.tiny.dropdown', this).outerHeight() - 1;
+    var normalButtonHeight  = $('.button.dropdown:not(.large):not(.small):not(.tiny):visible', this).outerHeight() - 1,
+        largeButtonHeight   = $('.button.large.dropdown:visible', this).outerHeight() - 1,
+        smallButtonHeight   = $('.button.small.dropdown:visible', this).outerHeight() - 1,
+        tinyButtonHeight    = $('.button.tiny.dropdown:visible', this).outerHeight() - 1;
 
     $('.button.dropdown:not(.large):not(.small):not(.tiny) > ul', this).css('top', normalButtonHeight);
     $('.button.dropdown.large > ul', this).css('top', largeButtonHeight);

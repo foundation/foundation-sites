@@ -363,7 +363,7 @@
         &>li { float: none;
           &.active, &:hover { background: darken($topBarDropBgColor, 5%); }
           /* Branding and name */
-          &.name { background: darken($topBarBgColor, 20%); height: $topBarHeightMobile;
+          &.name { height: $topBarHeightMobile;
             h1 { line-height: 1;
               a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-left: $topBarHeightMobile / 3; height: $topBarHeightMobile; }
             }
