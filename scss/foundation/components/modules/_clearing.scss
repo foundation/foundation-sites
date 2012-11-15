@@ -40,3 +40,22 @@ ul[data-clearing] li { cursor: pointer; display: block;
     }
   }
 }
+
+/* Overrides clear:both; when using block-grid with Clearing. Also overrided .th styling when Clearing is open */
+ul.block-grid[data-clearing] { overflow: visible; }
+.clearing-blackout {
+  ul.block-grid[data-clearing] {
+    @for $i from 1 through $blockGridElements {
+      &.#{convert-number-to-word($i)}-up {
+        &>li {
+          @if $i > 1 { &:nth-child(#{$i}n+1) { clear: none; } }
+        }
+      }
+    }
+  }
+  .th img { border: none; @include box-shadow(0 0 0 0 rgba(#000,0)); @include border-radius(0); }
+    &:hover {
+      img { @include box-shadow(0 0 0 0 rgba(0,0,0,0)); }
+    }
+}
+
