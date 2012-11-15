@@ -292,6 +292,8 @@
       });
       if (reset) {
         this.degrees = 0;
+        this.$rotator.removeClass('move');
+        this.$mask.removeClass('move');
       }
       if(this.degrees > 180) {
         this.$rotator.addClass('move');
