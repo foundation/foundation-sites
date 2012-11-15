@@ -32,7 +32,7 @@
     span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: 0; background: image-url("foundation/orbit/pause-black.png") no-repeat; z-index: 4; opacity: 0;
       &.active { background: image-url("foundation/orbit/pause-black.png") no-repeat 0 -40px; }
     }
-    div.timer:hover span.pause, span.pause.active { opacity: 1 }
+    div.timer:hover span.pause, div.timer:focus span.pause, span.pause.active { opacity: 1 }
   }
 
   /* Captions ---------------------- */

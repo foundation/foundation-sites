@@ -45,7 +45,7 @@
       &>li { float: left;
         a:not(.button) { color: $topBarLinkColor; display: block; font-size: $topBarLinkSize; font-weight: $topBarLinkWeight; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3; }
         &:not(.name) {
-          &:hover, &.active { background: darken($topBarBgColor, 15%);
+          &:hover, &.active, &:focus { background: darken($topBarBgColor, 15%);
             a { color: darken($topBarLinkColor, 15%); }
           }
         }
@@ -56,7 +56,7 @@
         /* Put a button in an <li> but give is a class */
         &.has-button {
           a.button { margin: 0 $topBarHeight / 4; }
-          &:hover { background: $topBarBgColor;
+          &:hover, &:focus { background: $topBarBgColor;
             a { color: #fff; }
           }
         }
@@ -69,7 +69,7 @@
             }
             input[type=search] { font-size: 16px; margin-bottom: 0; }
           }
-          &:hover { background: $topBarBgColor; }
+          &:hover, &:focus { background: $topBarBgColor; }
         }
 
         /* Hide the triangle for breakpoint menu */
@@ -77,7 +77,7 @@
 
         /* li.has-dropdown */
         &.has-dropdown { position: relative;
-          &:hover { &>.dropdown { display: block; visibility: visible; } }
+          &:hover, &:focus { &>.dropdown { display: block; visibility: visible; } }
           a { padding-right: $topBarHeight * .75;
             &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
           }
@@ -85,7 +85,7 @@
             li { background: $topBarDropBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
               a { color: $topBarDropLinkColor; font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
                 &:after { border: none; }
-                &:hover { background: lighten($topBarDropBgColor, 10%); }
+                &:hover, &:focus { background: lighten($topBarDropBgColor, 10%); }
               }
               label { color: lighten($topBarDropBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
               &.divider { border-top: solid 1px darken($topBarDropBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
@@ -100,7 +100,7 @@
               &:after { border: none; content:"\00bb"; right: 5px; top: 6px; }
             }
             .dropdown { position: absolute; left: 100%; top: 0; }
-            &:hover {
+            &:hover, &:focus {
               &>.dropdown { display: block; }
             }
           }
@@ -131,7 +131,7 @@
   /* IE8 Fixes */
   .lt-ie9 .top-bar ul li a { color: $topBarLinkColor; display: block; font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3;
     &.button { height: auto; line-height: 30px; margin-top: 7px; }
-    &:hover { color: darken($topBarLinkColor, 20%); }
+    &:hover, &:focus { color: darken($topBarLinkColor, 20%); }
     img { margin-top: -5px; vertical-align: middle; }
     &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
   }

@@ -11,7 +11,7 @@
   a img { border:none; }
   a { color: $mainColor; text-decoration: none; line-height: inherit; }
   a:hover { color: darken($mainColor, 5%); }
-  a:focus { color: $mainColor; outline: none; }
+  a:focus { color: darken($mainColor, 5%); }
   p a, p a:visited { line-height: inherit; }
 
 /* Misc ---------------------- */
