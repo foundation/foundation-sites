@@ -642,7 +642,7 @@
         this.setCaption();
       }
 
-      if (this.$slides.last() && this.options.singleCycle) {
+      if (this.currentSlide().is(":last-child") && this.options.singleCycle) {
         this.stopClock();
       }
     }
