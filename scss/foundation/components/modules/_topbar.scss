@@ -42,7 +42,7 @@
     ul { margin-left: 0; display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none;
 
       /* Main Navigation links style */
-      &>li { float: left;
+      &>li { float: $defaultFloat;
         a:not(.button) { color: $topBarLinkColor; display: block; font-size: $topBarLinkSize; font-weight: $topBarLinkWeight; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3; }
         &:not(.name) {
           &:hover, &.active { background: darken($topBarBgColor, 15%);
@@ -78,8 +78,8 @@
         /* li.has-dropdown */
         &.has-dropdown { position: relative;
           &:hover { &>.dropdown { display: block; visibility: visible; } }
-          a { padding-right: $topBarHeight * .75;
-            &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
+          a { padding-#{$defaultOpposite}: $topBarHeight * .75;
+            &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-#{$defaultOpposite}: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; #{$defaultOpposite}: 0; top: 50%; }
           }
           .dropdown { background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
             li { background: $topBarDropBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
@@ -97,7 +97,7 @@
           /* Dropdown Level 2+ */
           .dropdown li.has-dropdown {
             &>a { padding-right: $navBarHeight * .75;
-              &:after { border: none; content:"\00bb"; right: 5px; top: 6px; }
+              &:after { border: none; content:"\00bb"; #{$defaultOpposite}: 5px; top: 6px; }
             }
             .dropdown { position: absolute; left: 100%; top: 0; }
             &:hover {
@@ -108,13 +108,15 @@
       }
 
       /* Left Side <ul> */
-      &.left { float: left; width: auto; margin-bottom: 0; }
-
+      &.left { float: $defaultFloat; width: auto; margin-bottom: 0; 
+        .has-dropdown .dropdown { #{$defaultOpposite}: auto; #{$defaultFloat}: -1px;
+          li.has-dropdown > .dropdown { #{$defaultFloat}: 100%; #{$defaultOpposite}: auto; }
+        }
+      }
       /* Right Side <ul> */
-      &.right { float: right; width: auto; margin-bottom: 0;
-        /* Dropdown Right Side Alignment */
-        .has-dropdown .dropdown { left: auto; right: -1px;
-          li.has-dropdown > .dropdown { right: 100%; left: auto; width: 100%; }
+      &.right { float: $defaultOpposite; width: auto; margin-bottom: 0; 
+        .has-dropdown .dropdown { #{$defaultFloat}: auto; #{$defaultOpposite}: -1px;
+          li.has-dropdown > .dropdown { #{$defaultOpposite}: 100%; #{$defaultFloat}: auto; }
         }
       }
     }
