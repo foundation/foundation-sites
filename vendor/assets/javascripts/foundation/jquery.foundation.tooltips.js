@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Tooltips 2.0.1
+ * jQuery Foundation Tooltips 2.0.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -14,6 +14,7 @@
   var settings = {
       bodyHeight : 0,
       selector : '.has-tip',
+      additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
       tipTemplate : function (selector, content) {
         return '<span data-selector="' + selector + '" class="' + settings.tooltipClass.substring(1) + '">' + content + '<span class="nub"></span></span>';
@@ -144,7 +145,7 @@
         tip.css('visibility', 'visible').hide();
       },
       inheritable_classes : function (target) {
-        var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'noradius'],
+        var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'noradius'].concat(settings.additionalInheritableClasses),
           classes = target.attr('class'),
           filtered = classes ? $.map(classes.split(' '), function (el, i) {
               if ($.inArray(el, inheritables) !== -1) {
