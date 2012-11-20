@@ -53,9 +53,10 @@
               // if the gallery hasn't been built yet...build it
               cl.assemble($el.find('li'));
 
-              if (!defaults.initialized) cl.events($el);
-              cl.swipe_events($el);
-
+              if (!defaults.initialized) {
+                cl.events($el);
+                cl.swipe_events();
+              }
 
             }
           });
@@ -157,23 +158,22 @@
           defaults.initialized = true;
         },
 
-        swipe_events : function (el) {
-          el.find('.visible-img')
-            .on('swipeleft', function (e) {
+        swipe_events : function () {
+          $(document)
+            .bind('swipeleft', 'ul[data-clearing]', function (e) {
               var clearing = $('.clearing-blackout').find('ul[data-clearing]');
               cl.go(clearing, 'next');
             })
 
-            .on('swiperight', function (e) {
+            .bind('swiperight', 'ul[data-clearing]', function (e) {
               var clearing = $('.clearing-blackout').find('ul[data-clearing]');
               cl.go(clearing, 'prev');
             })
 
-            .on('movestart', function (e) {
+            .bind('movestart', 'ul[data-clearing]', function (e) {
               if ((e.distX > e.distY && e.distX < -e.distY) ||
                   (e.distX < e.distY && e.distX > -e.distY)) {
                 e.preventDefault();
-                return;
               }
             });
         },
