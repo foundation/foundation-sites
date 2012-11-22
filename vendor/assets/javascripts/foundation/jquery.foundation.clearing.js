@@ -96,13 +96,6 @@
               cl.go(clearing, 'prev');
             })
 
-            .on('click.fndtn.clearing', '.clearing-main-left', function (e) {
-              var clearing = $('.clearing-blackout').find('ul[data-clearing]');
-
-              e.preventDefault();
-              cl.go(clearing, 'prev');
-            })
-
             .on('click.fndtn.clearing', settings.close_selectors, function (e) {
               e.preventDefault();
 
