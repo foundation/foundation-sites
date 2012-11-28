@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Clearing 1.1
+ * jQuery Foundation Clearing 1.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -8,7 +8,7 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-;(function ($, window, undefined) {
+;(function ($, window, document, undefined) {
   'use strict';
 
   var defaults = {
@@ -25,7 +25,6 @@
 
         // event initializers and locks
         initialized : false,
-        swipe_events : false,
         locked : false
       },
 
@@ -50,12 +49,11 @@
               // developer goodness experiment
               cl.extend(cl, extendMethods);
 
-              // if the gallery hasn't been built yet...build it
               cl.assemble($el.find('li'));
 
               if (!defaults.initialized) {
                 cl.events($el);
-                cl.swipe_events();
+                if (Modernizr.touch) cl.swipe_events();
               }
 
             }
@@ -82,94 +80,20 @@
               cl.update_paddles(target);
             })
 
-            .on('click.fndtn.clearing', '.clearing-main-right', function (e) {
-              var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+            .on('click.fndtn.clearing', '.clearing-main-right', function (e) { cl.nav(e, 'next') })
+            .on('click.fndtn.clearing', '.clearing-main-left', function (e) { cl.nav(e, 'prev') })
+            .on('click.fndtn.clearing', settings.close_selectors, this.close)
+            .on('keydown.fndtn.clearing', this.keydown);
 
-              e.preventDefault();
-              cl.go(clearing, 'next');
-            })
-
-            .on('click.fndtn.clearing', '.clearing-main-left', function (e) {
-              var clearing = $('.clearing-blackout').find('ul[data-clearing]');
-
-              e.preventDefault();
-              cl.go(clearing, 'prev');
-            })
-
-            .on('click.fndtn.clearing', '.clearing-main-left', function (e) {
-              var clearing = $('.clearing-blackout').find('ul[data-clearing]');
-
-              e.preventDefault();
-              cl.go(clearing, 'prev');
-            })
-
-            .on('click.fndtn.clearing', settings.close_selectors, function (e) {
-              e.preventDefault();
-
-              var root = (function (target) {
-                    if (/blackout/.test(target.selector)) {
-                      return target;
-                    } else {
-                      return target.closest('.clearing-blackout');
-                    }
-                  }($(this))), container, visible_image;
-
-              if (this === e.target && root) {
-                container = root.find('div:first'),
-                visible_image = container.find('.visible-img');
-
-                defaults.prev_index = 0;
-
-                root.find('ul[data-clearing]').attr('style', '')
-                root.removeClass('clearing-blackout');
-                container.removeClass('clearing-container');
-                visible_image.hide();
-              }
-
-              return false;
-            })
-
-            .on('keydown.fndtn.clearing', function (e) {
-              var clearing = $('.clearing-blackout').find('ul[data-clearing]');
-
-              // right
-              if (e.which === 39) {
-                cl.go(clearing, 'next');
-              }
-
-              // left
-              if (e.which === 37) {
-                cl.go(clearing, 'prev');
-              }
-
-              if (e.which === 27) {
-                $('a.clearing-close').trigger('click');
-              }
-            });
-
-          $(window).on('resize.fndtn.clearing', function () {
-            var image = $('.clearing-blackout .visible-img').find('img');
-
-            if (image.length > 0) {
-              cl.center(image);
-            }
-          });
+          $(window).on('resize.fndtn.clearing', this.resize);
 
           defaults.initialized = true;
         },
 
         swipe_events : function () {
           $(document)
-            .bind('swipeleft', 'ul[data-clearing]', function (e) {
-              var clearing = $('.clearing-blackout').find('ul[data-clearing]');
-              cl.go(clearing, 'next');
-            })
-
-            .bind('swiperight', 'ul[data-clearing]', function (e) {
-              var clearing = $('.clearing-blackout').find('ul[data-clearing]');
-              cl.go(clearing, 'prev');
-            })
-
+            .bind('swipeleft', 'ul[data-clearing]', function (e) { cl.nav(e, 'next') })
+            .bind('swiperight', 'ul[data-clearing]', function (e) { cl.nav(e, 'prev') })
             .bind('movestart', 'ul[data-clearing]', function (e) {
               if ((e.distX > e.distY && e.distX < -e.distY) ||
                   (e.distX < e.distY && e.distX > -e.distY)) {
@@ -202,14 +126,13 @@
             // set the image to the selected thumbnail
             image.attr('src', this.load($image));
 
-            image.is_good(function () {
+            image.loaded(function () {
               // toggle the gallery if not visible
               root.addClass('clearing-blackout');
               container.addClass('clearing-container');
               this.caption(visible_image.find('.clearing-caption'), $image);
               visible_image.show();
               this.fix_height(target);
-
               this.center(image);
 
               // shift the thumbnails if necessary
@@ -221,11 +144,59 @@
           }
         },
 
+        close : function (e) {
+          e.preventDefault();
+
+          var root = (function (target) {
+                if (/blackout/.test(target.selector)) {
+                  return target;
+                } else {
+                  return target.closest('.clearing-blackout');
+                }
+              }($(this))), container, visible_image;
+
+          if (this === e.target && root) {
+            container = root.find('div:first'),
+            visible_image = container.find('.visible-img');
+
+            defaults.prev_index = 0;
+
+            root.find('ul[data-clearing]').attr('style', '')
+            root.removeClass('clearing-blackout');
+            container.removeClass('clearing-container');
+            visible_image.hide();
+          }
+
+          return false;
+        },
+
+        keydown : function (e) {
+          var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+
+          if (e.which === 39) cl.go(clearing, 'next');
+          if (e.which === 37) cl.go(clearing, 'prev');
+          if (e.which === 27) $('a.clearing-close').trigger('click');
+        },
+
+        nav : function (e, direction) {
+          var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+
+          e.preventDefault();
+          this.go(clearing, direction);
+        },
+
+        resize : function () {
+          var image = $('.clearing-blackout .visible-img').find('img');
+
+          if (image.length > 0) {
+            cl.center(image);
+          }
+        },
+
         fix_height : function (target) {
           var lis = target.siblings();
 
-          target.siblings()
-            .each(function () {
+          lis.each(function () {
               var li = $(this),
                   image = li.find('img');
 
@@ -257,36 +228,24 @@
 
           this.preload($image);
 
-          if (href) {
-            return href;
-          }
-
+          if (href) return href;
           return $image.attr('src');
         },
 
         preload : function ($image) {
-          var next = $image.closest('li').next(),
-              prev = $image.closest('li').prev(),
-              next_a, prev_a,
-              next_img, prev_img;
+          this.img($image.closest('li').next());
+          this.img($image.closest('li').prev());
+        },
 
-          if (next.length > 0) {
-            next_img = new Image();
-            next_a = next.find('a');
-            if (next_a.length > 0) {
-              next_img.src = next_a.attr('href');
-            } else {
-              next_img.src = next.find('img').attr('src');
-            }
-          }
+        img : function (img) {
+          if (img.length > 0) {
+            var new_img = new Image(),
+                new_a = img.find('a');
 
-          if (prev.length > 0) {
-            prev_img = new Image();
-            prev_a = prev.find('a');
-            if (prev_a.length > 0) {
-              prev_img.src = prev_a.attr('href');
+            if (new_a.length > 0) {
+              new_img.src = new_a.attr('href');
             } else {
-              prev_img.src = prev.find('img').attr('src');
+              new_img.src = img.find('img').attr('src');
             }
           }
         },
@@ -320,7 +279,6 @@
 
           // we use jQuery animate instead of CSS transitions because we
           // need a callback to unlock the next animation
-
           if (target.index() !== old_index && !/skip/.test(direction)){
             if (/left/.test(direction)) {
               this.lock();
@@ -385,14 +343,9 @@
         },
 
         adjacent : function (current_index, target_index) {
-          if (target_index - 1 === current_index) {
-            return true;
-          } else if (target_index + 1 === current_index) {
-            return true;
-          } else if (target_index === current_index) {
-            return true;
+          for (var i = target_index + 1; i >= target_index - 1; i--) {
+            if (i === current_index) return true;
           }
-
           return false;
         },
 
@@ -451,9 +404,9 @@
   // @weblinc, @jsantell, (c) 2012
 
   (function( $ ) {
-    $.fn.is_good = function ( callback, userSettings ) {
+    $.fn.loaded = function ( callback, userSettings ) {
       var
-        options = $.extend( {}, $.fn.is_good.defaults, userSettings ),
+        options = $.extend( {}, $.fn.loaded.defaults, userSettings ),
         $images = this.find( 'img' ).add( this.filter( 'img' ) ),
         unloadedImages = $images.length;
 
@@ -485,10 +438,10 @@
       });
     };
 
-    $.fn.is_good.defaults = {
+    $.fn.loaded.defaults = {
       cachePrefix: 'random'
     };
 
   }(jQuery));
 
-}(jQuery, this));
+}(jQuery, this, this.document));
