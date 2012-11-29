@@ -92,12 +92,20 @@
         }
       });
 
-      this.$element.bind('orbit.next swipeleft', function () {
+      this.$element.bind('orbit.next', function () {
         self.shift('next');
       });
 
-      this.$element.bind('orbit.prev swiperight', function () {
+      this.$element.bind('orbit.prev', function () {
         self.shift('prev');
+      });
+
+      this.$element.bind('swipeleft', function () {
+        $(this).trigger('orbit.next');
+      });
+
+      this.$element.bind('swiperight', function () {
+        $(this).trigger('orbit.prev');
       });
 
       this.$element.bind('orbit.goto', function (event, index) {
