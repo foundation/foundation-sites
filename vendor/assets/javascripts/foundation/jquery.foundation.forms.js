@@ -100,7 +100,7 @@
   $.foundation.customForms.appendCustomMarkup = function ( options ) {
 
     var defaults = {
-      disable_class: "js-disable-custom"
+      disable_class: "no-custom"
     };
 
     options = $.extend( defaults, options );
@@ -165,7 +165,7 @@
       //
       // Should we not create a custom list?
       //
-      if ( $this.hasClass( 'no-custom' ) ) return;
+      if ( $this.hasClass( options.disable_class ) ) return;
 
       //
       // Did we not create a custom select element yet?
