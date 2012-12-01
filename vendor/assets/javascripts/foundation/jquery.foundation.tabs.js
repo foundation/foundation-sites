@@ -12,9 +12,13 @@
     },
 
     init : function (methods, options, response) {
-      this.settings = $.extend({}, options, this.settings);
+      if (typeof methods === 'object') {
+        $.extend(true, this.settings, methods);
+      }
 
-      return if (!this.settings.init) this.events();
+      if (!this.settings.init) this.events();
+
+      return true;
     },
 
     events : function () {
