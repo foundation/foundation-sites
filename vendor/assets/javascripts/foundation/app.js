@@ -3,9 +3,15 @@
 
   var Modernizr = window.Modernizr;
 
+  // init tabs
   $.foundation('tabs', {callback: function () { alert('bam'); }}, function (response) {
     console.log(response);
   });
+
+  // call the events method on tabs
+  // $.foundation('tabs', 'events', {}, function (response) {
+  //   console.log('end');
+  // });
 
   // $.foundation();
 

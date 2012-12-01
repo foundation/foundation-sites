@@ -11,15 +11,15 @@
       init: false
     },
 
-    init : function (methods, options, response) {
-      if (typeof methods === 'object') {
-        $.extend(true, this.settings, methods);
+    init : function (method, options) {
+      if (typeof method === 'object') {
+        $.extend(true, this.settings, method);
         if (!this.settings.init) this.events();
 
         return this.settings.init;
       } else {
         // fire method
-        return this[methods].apply(this, [options, response]);
+        return this[method].call(this, options);
       }
     },
 

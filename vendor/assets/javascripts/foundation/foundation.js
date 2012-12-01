@@ -2,9 +2,9 @@
   'use strict';
 
   window.Foundation = {
-    init : function (libraries, methods, options, response) {
+    init : function (libraries, method, options, response) {
       var library_arr,
-          args = [methods, options, response],
+          args = [method, options, response],
           responses = [];
 
       if (libraries && typeof libraries === 'string') {
@@ -26,11 +26,11 @@
     },
 
     response_obj : function (response_arr, args) {
-      for (var arg in args) {
-        if (typeof arg === 'function') {
+      for (var callback in args) {
+        if (typeof callback === 'function') {
           // i'm just jamming all the responses into a concatenated string for 
           // now and passing off to the callback
-          return arg(response_arr.join(' '));
+          return callback(response_arr.join(' '));
         }
       }
 
