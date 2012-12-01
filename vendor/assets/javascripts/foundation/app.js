@@ -3,9 +3,7 @@
 
   var Modernizr = window.Modernizr;
 
-  $.foundation('this taht the other');
-
-  $.foundation('tabs tooltips', {callback: function () { alert('bam'); }}, function (response) {
+  $.foundation('tabs', {callback: function () { alert('bam'); }}, function (response) {
     console.log(response);
   });
 

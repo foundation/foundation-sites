@@ -4,6 +4,8 @@
   Foundation.libs = Foundation.libs || {};
 
   Foundation.libs.tabs = {
+    version : '2.0',
+
     settings : {
       callback: $.noop,
       init: false
