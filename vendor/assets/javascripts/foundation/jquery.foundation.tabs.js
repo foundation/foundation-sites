@@ -14,6 +14,9 @@
     init : function (method, options) {
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
+      }
+
+      if (typeof method != 'string') {
         if (!this.settings.init) this.events();
 
         return this.settings.init;
