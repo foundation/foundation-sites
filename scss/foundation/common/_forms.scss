@@ -3,9 +3,9 @@
 
 /* Standard Forms ---------------------- */
 
-  form { margin: 0 0 $formSpacing / 2; }
+  form { margin: 0 0 $baseLineHeight; }
 
-  .row form .row { margin: 0 (-($formSpacing / 2)) (-($formSpacing / 2));
+  .row form .row { margin: 0 (-($formSpacing / 2)) 0;
 
     .column, .columns { padding: 0 ($formSpacing / 2); }
 
@@ -14,20 +14,20 @@
     }
   }
 
-  label { font-size: ms(0); color: $labelFontColor; cursor: pointer; display: block; font-weight: $labelFontWeight; margin-bottom: $labelBtmMargin;
+  label { font-size: ms(0); color: $labelFontColor; cursor: pointer; display: block; font-weight: $labelFontWeight; margin-bottom: $labelBtmMargin; line-height: $baseLineHeight - $labelBtmMargin;
 
     &.right { float: none; text-align: right; }
-    &.inline { line-height: $formSpacing * 1.5; margin-bottom: $formSpacing / 2; }
+    &.inline { line-height: $baseLineHeight; margin-bottom: 0px; }
   }
 
-  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: $formSpacing * 1.5; line-height: $formSpacing * 1.5 - 2; }
-  a.button.prefix, a.button.postfix { padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; text-align: center; }
+  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: $formSpacing * 3; line-height: $formSpacing * 3 - 2; }
+  a.button.prefix, a.button.postfix { padding: 0; line-height: $formSpacing * 3 - 2; text-align: center; }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
 
   .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultFloat, 2px); overflow:hidden; }
   .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
 
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2) - 1; height: $formSpacing * 3; width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
@@ -35,12 +35,12 @@
     &[disabled] { background-color: #ddd; }
   }
 
-  textarea { height: auto; }
+  textarea { height: auto; line-height: $baseLineHeight; }
 
   select { width: 100%; }
 
   /* Fieldsets */
-  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: $formSpacing / 4 $formSpacing / 2 $formSpacing / 4 - 1; margin-bottom: $formSpacing / 2;
+  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: $formSpacing / 2 $formSpacing $formSpacing * 1.5 - 1; margin-bottom: $baseLineHeight;
 
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0; margin-#{$defaultFloat}: -3px; }
   }
@@ -48,7 +48,7 @@
   /* Errors */
   .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
   .error label, label.error { color: $alertColor; }
-  .error small, small.error { display: block; padding: $formSpacing / 4 $formSpacing / 2 - 1; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing / 2; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
+  .error small, small.error { display: block; padding: $formSpacing / 4 $formSpacing / 2 - 1; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background-color: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
   .error textarea, textarea.error {
     &:focus { background: darken($white, 2%); border-color: darken($white, 30%); }
   }
@@ -56,20 +56,22 @@
 
   form.custom {
 
-    span.custom { display: inline-block; width: 16px; height: 16px; position: relative; top: 2px; border: solid 1px $custFormBorderColor; background: $custFormBgColor;
+    $radioRadius: $baseLineHeight - 6;
+
+    span.custom { display: inline-block; width: $radioRadius; height: $radioRadius; position: relative; top: 2px; border: solid 1px $custFormBorderColor; background: $custFormBgColor;
 
       &.radio { @include border-radius(100px); }
       &.checkbox {
-        &:before { content: ""; display: block; line-height: 0.8; height: 14px; width: 14px; text-align: center; position: absolute; top: 0; #{$defaultFloat}: 0; font-size: 14px; color: #fff; }
+        &:before { content: ""; display: block; line-height: 0.8; height: $radioRadius - 2; width: $radioRadius - 2; text-align: center; position: absolute; top: 0; #{$defaultFloat}: 0; font-size: $radioRadius - 2; color: #fff; }
       }
       &.radio.checked {
-        &:before { content: ""; display: block; width: 8px; height: 8px; @include border-radius(100px); background: $custCheckColor; position: relative; top: 3px; #{$defaultFloat}: 3px; }
+        &:before { content: ""; display: block; width: $radioRadius - 8; height: $radioRadius - 8; @include border-radius(100px); background: $custCheckColor; position: relative; top: 3px; #{$defaultFloat}: 3px; }
       }
       &.checkbox.checked {
         &:before { content: "\00d7"; color: $custCheckColor; }
       }
     }
-    div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: $formSpacing * 2 - 28;
+    div.custom.dropdown { display: block; position: relative; width: auto; height: $baseLineHeight * 1.5; margin-bottom: $formSpacing;
 
       ul { overflow-y: auto; max-height: $custSelectDropHeight; }
       a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0; padding-#{$defaultFloat}: 6px; padding-#{$defaultOpposite}: 38px; border: solid 1px $custSelectBorderColor; color: $custSelectCurrentFontColor; background-color: $custSelectBgColor; white-space: nowrap; }

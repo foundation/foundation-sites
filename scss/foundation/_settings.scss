@@ -1,5 +1,23 @@
 // Settings file containing Foundation defaults
 
+// Modular Scale Settings
+
+// $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
+$baseFontSize: 14px !default;
+$baseLineHeight: 20px !default;
+$importantModNum: 40px !default;
+$base-size: $baseFontSize $importantModNum;
+// Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
+// http://www.modularscale.com by Tim Brown
+// https://github.com/scottkellum/modular-scale by scottkellum
+
+// Compass Vertical Rhythm Settings
+
+$relative-font-sizing: false; 
+$round-to-nearest-half-line: false;
+$base-font-size: $baseFontSize;
+$base-line-height: $baseLineHeight;
+
 // Grid Settings
 
 $rowWidth: 1000px !default;
@@ -58,7 +76,7 @@ $largeBtnBase: $btnBase + 5 !default;
 
 // Form Settings
 
-$formSpacing: 12px !default;
+$formSpacing: $baseLineHeight / 2 !default;
 $labelFontWeight: 500 !default;
 $labelFontColor: lighten(#000, 30%) !default;
 $labelBtmMargin: 3px !default;
@@ -128,7 +146,7 @@ $progBarHeight: $baseLineHeight !default;
 $progBarBorderColor: darken(#fff, 20%) !default;
 $progBarBorderSize: 1px !default;
 $progBarPad: 2px !default;
-$linkListBottomMargin: 17px -22px !default;
+$linkListBottomMargin: $baseLineHeight -$baseLineHeight !default;
 $tableBorderRadius: 3px !default;
 
 // Tooltip Settings
@@ -244,24 +262,6 @@ $tipScreenFill: rgba(0,0,0,0.5) !default;
 
 $mainWidth: 80% !default;
 $complementaryWidth: 20% !default;
-
-// Modular Scale Settings
-
-// $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
-$baseFontSize: 14px !default;
-$baseLineHeight: 22px !default;
-$importantModNum: 44px !default;
-$base-size: $baseFontSize $importantModNum;
-// Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
-// http://www.modularscale.com by Tim Brown
-// https://github.com/scottkellum/modular-scale by scottkellum
-
-// Compass Vertical Rhythm Settings
-
-$relative-font-sizing: false; 
-$round-to-nearest-half-line: false;
-$base-font-size: $baseFontSize;
-$base-line-height: $baseLineHeight;
 
 // Media Queries
 
