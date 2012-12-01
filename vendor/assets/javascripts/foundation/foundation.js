@@ -1,50 +1,51 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
-  var Foundation = {
+  window.Foundation = {
     init : function (libraries, methods, options, response) {
-      var library_arr;
+      var library_arr,
+          args = [methods, options, response],
+          responses = [];
 
       if (libraries && typeof libraries === 'string') {
-        
         library_arr = libraries.split(' ');
 
-        if (library_arr.length > 1) {
+        if (library_arr.length > 0) {
           for (var i = library_arr.length; i >= 0; i--) {
-            var method = library_arr[i];
-
-            if (Foundation.hasOwnProperty(method)) {
-              Foundation[library_arr[i]].apply(null, [methods, options, response]);
-            } else {
-              // throw error
-            }
-          }
-        } else {
-          if (Foundation.hasOwnProperty(libraries)) {
-            return Foundation[libraries].apply(null, [methods, options, response]);
-          } else {
-            // throw error
+            responses.push(this.init_lib(library_arr[i], args));
           }
         }
-
       } else {
-        return Foundation.init.all.apply(null, arguments);
+        for (var i = Foundation.libs.length; i >= 0; i--) {
+          responses.push(this.init_lib(Foundation.libs[i], args));
+        }
       }
-    }
-  };
 
-  Foundation.init.all = function () {
-    for (var method in Foundation) {
-      if (typeof Foundation[method] == "function" && Foundation.hasOwnProperty(method)) {
-        Foundation[method].apply(null, arguments);
-      } else {
-        // throw error
+      return this.response_obj(responses, args);
+
+    },
+
+    response_obj : function (response_arr, args) {
+      for (var arg in args) {
+        if (typeof arg === 'function') {
+          // i'm just jamming all the responses into a concatenated string for 
+          // now and passing off to the callback
+          return arg(response_arr.join(' '));
+        }
+      }
+
+      return response_arr.join(' ');
+    },
+
+    init_lib : function(lib, args) {
+      if (Foundation.libs.hasOwnProperty(lib)) {
+        return Foundation.libs[lib].init.apply(Foundation.libs[lib], args);
       }
     }
   };
 
   $.foundation = function () {
-    return Foundation.init.apply(null, arguments);
+    return Foundation.init.apply(Foundation, arguments);
   };
 
 }(jQuery, this, this.document));

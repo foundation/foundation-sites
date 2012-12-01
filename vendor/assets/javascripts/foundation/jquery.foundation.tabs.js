@@ -1,56 +1,49 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
-  var settings = {
-        callback: $.noop,
-        init: false
-      }, 
+  Foundation.libs = Foundation.libs || {};
 
-      methods = {
-        init : function (options) {
-          settings = $.extend({}, options, settings);
+  Foundation.libs.tabs = {
+    settings : {
+      callback: $.noop,
+      init: false
+    },
 
-          return this.each(function () {
-            if (!settings.init) methods.events();
-          });
-        },
+    init : function (methods, options, response) {
+      this.settings = $.extend({}, options, this.settings);
 
-        events : function () {
-          $(document).on('click.fndtn', '.tabs a', function (e) {
-            methods.set_tab($(this).parent('dd, li'), e);
-          });
-          
-          settings.init = true;
-        },
+      return if (!this.settings.init) this.events();
+    },
 
-        set_tab : function ($tab, e) {
-          var $activeTab = $tab.closest('dl, ul').find('.active'),
-              target = $tab.children('a').attr("href"),
-              hasHash = /^#/.test(target),
-              $content = $(target + 'Tab');
+    events : function () {
+      var self = this;
 
-          if (hasHash && $content.length > 0) {
-            // Show tab content
-            e.preventDefault();
-            $content.closest('.tabs-content').children('li').removeClass('active').hide();
-            $content.css('display', 'block').addClass('active');
-          }
+      $(document).on('click.fndtn', '.tabs a', function (e) {
+        self.set_tab($(this).parent('dd, li'), e);
+      });
+      
+      this.settings.init = true;
+    },
 
-          // Make active tab
-          $activeTab.removeClass('active');
-          $tab.addClass('active');
+    set_tab : function ($tab, e) {
+      var $activeTab = $tab.closest('dl, ul').find('.active'),
+          target = $tab.children('a').attr("href"),
+          hasHash = /^#/.test(target),
+          $content = $(target + 'Tab');
 
-          settings.callback();
-        }
+      if (hasHash && $content.length > 0) {
+        // Show tab content
+        e.preventDefault();
+        $content.closest('.tabs-content').children('li').removeClass('active').hide();
+        $content.css('display', 'block').addClass('active');
       }
 
-  $.fn.foundationTabs = function (method) {
-    if (methods[method]) {
-      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-    } else if (typeof method === 'object' || !method) {
-      return methods.init.apply(this, arguments);
-    } else {
-      $.error('Method ' +  method + ' does not exist on jQuery.foundationTabs');
+      // Make active tab
+      $activeTab.removeClass('active');
+      $tab.addClass('active');
+
+      this.settings.callback();
     }
   };
+
 }(jQuery, this, this.document));
