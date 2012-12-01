@@ -1,9 +1,6 @@
-/* Requires
-   globals.css */
-
 /* Normal Buttons ---------------------- */
 
-  .button { width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: $bodyFontFamily; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; outline: none; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
+  .button { width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: inherit; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; outline: none; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
 
     /* Hovers */
     &:hover { color: $white; background-color: darken(($mainColor), 10%); }
@@ -61,11 +58,6 @@
 
   /* Don't use native buttons on iOS */
 	input[type=submit].button, button.button { -webkit-appearance: none; }
-
-	@media only screen and (max-width: $screenSmall - 1) {
-    .button { display: block; }
-    button.button, input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
-  }
 
   /* Correct FF button padding */
   @-moz-document url-prefix() {
@@ -163,38 +155,26 @@
     }
 
     &.radius li {
-      a {
+      a, input[type="submit"] {
         &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
       }
-      &:first-child a {
+      &:first-child a, &:first-child input[type="submit"] {
         &.button, &.button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
         &.button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
       }
-      &:last-child a {
+      &:last-child a, &:last-child input[type="submit"] {
         &.button, &.button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
         &.button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
       }
     }
 
     &.even {
-      a.button { width: 100%; }
+      .button { width: 100%; }
       &.two-up li { width: 50%; }
       &.three-up li { width: 33.3%; }
       &.three-up li:first-child { width: 33.4%; }
       &.four-up li { width: 25%; }
       &.five-up li { width: 20%; }
-    }
-  }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    .button-group {
-      button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + 1);
-        &.large     { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
-        &.medium    { padding: $btnBase ($btnBase * 2) ($btnBase + 1); }
-        &.small     { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
-        &.tiny      { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
-      }
-      &.even button.button, &.even input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
     }
   }
 

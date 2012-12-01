@@ -1,0 +1,42 @@
+//-------------------------
+// Clearing Styles
+//-------------------------
+.clearing-blackout { background: $clearingOldBrowserBg; background: $clearingBg; position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 999;
+  .clearing-close { display: block; }
+}
+
+.clearing-container { position: relative; z-index: 999; height: 100%; overflow: hidden; }
+
+.visible-img { height: $clearingActiveImgHeight; position: relative;
+  img { position: absolute; left: 50%; top: 50%; margin-left: -50%; max-height: 100%; max-width: 100%; }
+  .clearing-caption { color: $clearingCaptionFontColor;  margin-bottom: 0; text-align: center; position: absolute; bottom: 0; background: $clearingCaptionOldBrowserBg; background: $clearingCaptionBg; width: 100%; padding: 10px 100px; }
+}
+
+.clearing-close { z-index: 999; position: absolute; top: 10px; right: 20px; font-size: 30px; line-height: 1; color: $clearingCloseColor; display: none;
+  &:hover { color: #ccc; }
+}
+.clearing-main-left, .clearing-main-right { position: absolute; top: 50%; margin-top: -16px; }
+.clearing-main-left.disabled, .clearing-main-right.disabled { opacity: 0.5; }
+.clearing-main-left:active, .clearing-main-right:active { margin-top: -15px; }
+.clearing-main-left { left: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
+.clearing-main-right { right: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
+
+.block-grid.three-up > li:nth-child(3n+1) { clear: none; }
+
+ul[data-clearing] li { cursor: pointer; display: block;
+  &.clearing-feature ~ li { display: none; }
+}
+
+.clearing-assembled .clearing-container {
+  .carousel { background: $clearingCarouselOldBrowserBg; background: $clearingCarouselBg; height: $clearingCarouselHeight; margin-top: 5px; }
+  .visible-img { background: $clearingImgOldBrowserBg; background: $clearingImgBg; overflow: hidden; }
+  ul[data-clearing] { z-index: 999; width: 200%; height: 100%; margin-left: 0; position: relative; left: 0;
+    li { display: block; width: $clearingCarouselThumbWidth; height: inherit; padding: 0; float: left; overflow: hidden; background: #222; margin-right: 1px; position: relative;
+      &.fix-height {
+        img { min-height: 100%; height: 100%; max-width: none; }
+      }
+      img { cursor: pointer !important; min-width: 100% !important; }
+      &.visible { border-top: $clearingCarouselThumbActiveBorder; }
+    }
+  }
+}

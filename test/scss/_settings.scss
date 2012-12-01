@@ -1,144 +1,243 @@
 @import "foundation/common/ratios";
 
-// // Settings file containing Foundation defaults
+// Settings file containing Foundation defaults
 
-// // Grid Settings
+// Grid Settings
 
-// $rowWidth: 1000px !default;
-// $columnGutter: 30px !default;
-// $totalColumns: 12 !default;
-// $mobileTotalColumns: 4 !default;
+// $rowWidth: 1000px;
+// $columnGutter: 30px;
+// $totalColumns: 12;
+// $mobileTotalColumns: 4;
+// $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported
 
-// // Text Direction Settings
+// Colors Settings
 
-// $textDirection: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
-// $defaultFloat: left !default; // Change this to 'right' for right-to-left languages
-// $defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
+// $mainColor: #2ba6cb;
+// $secondaryColor: #e9e9e9;
+// $alertColor: #c60f13;
+// $successColor: #5da423;
+// $txtColor: #222;
+// $highlightColor: #ffff99;
+// $black: #000;
+// $white: #fff;
+// $shinyEdge: rgba(#fff, .5);
+// $darkEdge: rgba(#000, .2);
 
-// @if $textDirection == ltr {
-//   $defaultFloat: left;
-//   $defaultOpposite: right;
-// } @else {
-//   $defaultFloat: right;
-//   $defaultOpposite: left;
-// }
+// Font Settings
 
-// // Colors Settings
+// $fontSmoothing: antialiased;
+// $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+// $headerFontWeight: bold;
+// $headerFontStyle: normal;
+// $headerFontColor: #222;
+// $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+// $bodyFontWeight: normal;
+// $bodyFontStyle: normal;
+// $bodyFontColor: $txtColor;
 
-// $mainColor: #2ba6cb !default;
-// $secondaryColor: #e9e9e9 !default;
-// $alertColor: #c60f13 !default;
-// $successColor: #5da423 !default;
-// $txtColor: #222 !default;
-// $highlightColor: #ffff99 !default;
-// $black: #000 !default;
-// $white: #fff !default;
-// $shinyEdge: rgba(#fff, .5) !default;
-// $darkEdge: rgba(#000, .2) !default;
+// Text Direction Settings
 
-// // Font Settings
+// $textDirection: ltr; // Controls default global text direction, 'rtl' or 'ltr'
 
-// $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
-// $headerFontWeight: bold !default;
-// $headerFontColor: #222 !default;
-// $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
-// $bodyFontWeight: normal !default;
-// $bodyFontColor: $txtColor !default;
+// Button Settings
 
-// // Button Settings
+// $buttonRadius: 3px;
+// $btnBase: 10px;
 
-// $buttonRadius: 3px !default;
-// $btnBase: 10px !default;
+// $tinyBtnBase: $btnBase - 5;
+// $smallBtnBase: $btnBase - 3;
+// $largeBtnBase: $btnBase + 5;
 
-// $tinyBtnBase: $btnBase - 5 !default;
-// $smallBtnBase: $btnBase - 3 !default;
-// $largeBtnBase: $btnBase + 5 !default;
+// Form Settings
 
-// // Form Settings
+// $formSpacing: 12px;
+// $labelFontWeight: 500;
+// $labelFontColor: lighten(#000, 30%);
+// $labelBtmMargin: 3px;
+// $inputFontColor: rgba(0,0,0,0.75);
+// $inputFontSize: 14px;
+// $inputBgColor: #fff;
+// $inputFocusBgColor: darken(#fff, 2%);
+// $inputBorderColor: darken(#fff, 20%);
+// $inputFocusBorderColor: darken(#fff, 30%);
+// $inputBorderStyle: solid;
+// $inputBorderWidth: 1px;
+// $inputBorderRadius: 2px;
+// $fieldsetBorderRadius: 3px;
 
-// $formSpacing: 12px !default;
+// Custom Form Settings
 
-// // Tab Settings
+// $custFormBorderColor: #ccc;
+// $custFormBgColor: #fff;
+// $custCheckColor: #222;
+// $custSelectCurrentFontColor: #141414;
+// $custSelectBgColor: #fff;
+// $custSelectBorderColor: #ddd;
+// $custSelectTriangleColor: #aaa;
+// $custSelectTriangleColorOpen: #222;
+// $custSelectDropHeight: 200px;
+// $custDropdownBgColor: #fff;
+// $custDropdownBorderColor: darken(#fff, 20%);
+// $custDropdownFontColor: #555;
+// $custDropdownSelectedBgColor: lighten(#2ba6cb, 40%);
+// $custDropdownSelectedFontColor: #000;
+// $custFormDisabledBgColor: #ddd;
 
-// $tabHeight: 40px !default;
+// Tab Settings
 
-// // Nav Bar Settings
+// $tabHeight: 40px;
+// $tabTermFontSize: 12px;
 
-// $navBarHeight: 40px !default;
-// $navFlyoutBaseWidth: 250px !default;
+// Nav Bar Settings
 
-// // UI Settings
+// $navBarHeight: 40px;
+// $navFlyoutBaseWidth: 250px;
 
-// $thumbRadius: 3px !default;
+// Top Bar Settings
 
-// $progBarHeight: 25px !default;
-// $progBarBorderColor: darken($white, 20%) !default;
-// $progBarBorderSize: 1px !default;
-// $progBarPad: 2px !default;
+// $topBarBgColor: #222;
+// $topBarHeight: 45px;
+// $topBarHeightMobile: 45px;
+// $topBarBtmMargin: 30px;
+// $topBarTitleWeight: bold;
+// $topBarTitleSize: 17px;
+// $topBarLinkColor: #fff;
+// $topBarLinkWeight: bold;
+// $topBarLinkSize: 13px;
+// $topBarDropBgColor: #222;
+// $topBarDropLinkColor: #fff;
+// $topBarDropToggleSize: 5px;
+// $topBarDropToggleColor: #fff;
+// $topBarDropToggleAlpha: 0.5;
+// $topBarSearchWidth: 200px;
+// $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
+// $topBarNavToggleSize: 8px;
 
-// // Off Canvas Width Settings
+// UI Settings
 
-// $mainWidth: 80% !default;
-// $complementaryWidth: 20% !default;
+// $thumbRadius: 3px;
+// $progBarHeight: 25px;
+// $progBarBorderColor: darken(#fff, 20%);
+// $progBarBorderSize: 1px;
+// $progBarPad: 2px;
+// $linkListBottomMargin: 17px -22px;
+// $tableBorderRadius: 3px;
 
-// // Modular Scale Settings
+// Tooltip Settings
+
+// $hasTipBorderBottom: dotted 1px #ccc;
+// $hasTipFontWeight: bold;
+// $hasTipFontColor: #333;
+// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%);
+// $hasTipFontColorHover: $mainColor;
+// $tooltipBackgroundColor: #000;
+// $tooltipBackgroundOpacity: 0.85;
+// $tooltipFontSize: 12px;
+// $tooltipFontWeight: bold;
+// $tooltipFontColor: #fff;
+// $tapToCloseFontSize: 10;
+// $tapToCloseFontWeight: normal;
+// $tapToCloseFontColor: #888;
+// $tooltipFontSizeScreenSm: 14;
+// $tooltipBgOpacityScreenSm: 0.85;
+// $tooltipBorderRadius: 4px;
+
+// Pricing Table Settings
+
+// $priceTableBorder: solid 1px #ddd;
+// $priceTitleBgColor: #ddd;
+// $priceTitlePadding: 15px 20px;
+// $priceTitleAlign: center;
+// $priceTitleColor: #333;
+// $priceTitleWeight: bold;
+// $priceTitleSize: 16px;
+
+// $priceMoneyBgColor: #eee;
+// $priceMoneyPadding: 15px 20px;
+// $priceMoneyAlign: center;
+// $priceMoneyColor: #333;
+// $priceMoneyWeight: normal;
+// $priceMoneySize: 20px;
+
+// $priceBgColor: #fff;
+// $priceDescColor: #777;
+// $priceDescPadding: 15px;
+// $priceDescAlign: center;
+// $priceDescFontSize: 12px;
+// $priceDescWeight: normal;
+// $priceDescLineHeight: 1.4;
+// $priceDescBtmBorder: dotted 1px #ddd;
+
+// $priceItemColor: #333;
+// $priceItemPadding: 15px;
+// $priceItemAlign: center;
+// $priceItemFontSize: 14px;
+// $priceItemWeight: normal;
+// $priceItemBtmBorder: dotted 1px #ddd;
+
+// $priceCtaBgColor: #f5f5f5;
+// $priceCtaAlign: center;
+// $priceCtaPadding: 20px;
+
+// Orbit Settings
+
+// $orbitCaptionBgColorOldBrowser: #000;
+// $orbitCaptionBgColor: rgba(0,0,0,.6);
+// $orbitCaptionFontColor: #fff;
+// $orbitBulletNavColor: #999;
+// $orbitBulletNavColorActive: #222;
+// $orbitHasThumbBorderColor: #000;
+// $orbitHasThumbBorderWidth: 2px;
+// $orbitHasThumbBorderStyle: solid;
+// $orbitSlideNumBgColor: rgba(0,0,0,0.7);
+// $orbitSlideNumFontColor: #fff;
+// $orbitSlideNumPadding: 5px;
+
+// Clearing Settings
+
+// $clearingBg: rgba(0,0,0,0.8);
+// $clearingOldBrowserBg: rgb(0,0,0);
+// $clearingCaptionBg: rgba(0,0,0,0.7);
+// $clearingCaptionOldBrowserBg: rgb(0,0,0);
+// $clearingCaptionFontColor: #fff;
+// $clearingCloseColor: #fff;
+// $clearingArrowColor: #fff;
+// $clearingArrowSize: 16px;
+// $clearingCarouselBg: rgba(0,0,0,0.75);
+// $clearingCarouselOldBrowserBg: rgb(0,0,0);
+// $clearingCarouselHeight: 150px;
+// $clearingActiveImgHeight: 75%;
+// $clearingCarouselThumbWidth: 175px;
+// $clearingCarouselThumbActiveBorder: 4px solid rgb(255,255,255);
+// $clearingImgBg: rgba(0,0,0,0.75);
+// $clearingImgOldBrowserBg: rgb(0,0,0);
+
+// Joyride Settings
+
+// $tipBg: rgba(0,0,0,0.8);
+// $tipBgIE8: #000;
+// $tipFontColor: #fff;
+// $tipHeaderWeight: bold;
+// $tipDefaultWidth: 300px;
+// $tipBorderRadius: 4px;
+// $tipPadding: 18px 20px 24px;
+// $tipNubSize: 14px;
+// $tipFontSize: 14px;
+// $tipTimerWidth: 50px;
+// $tipTimerHeight: 3px;
+// $tipTimerBorder: solid 1px #555;
+// $tipTimerColor: #666;
+// $tipCloseColor: #777;
+// $tipCloseSize: 20px;
+// $tipCloseWeight: normal;
+// $tipScreenFill: rgba(0,0,0,0.5);
+
+// Modular Scale Settings
 
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
-// $baseFontSize: 14px !default;
-// $importantModNum: 44px !default;
+// $baseFontSize: 14px;
+// $importantModNum: 44px;
 // $base-size: $baseFontSize $importantModNum;
-// // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
-// // http://www.modularscale.com by Tim Brown
-// // https://github.com/scottkellum/modular-scale by scottkellum
-
-// // Tooltip Settings
-// $hasTipBorderBottom: dotted 1px #ccc !default;
-// $hasTipFontWeight: bold !default;
-// $hasTipFontColor: #333 !default;
-// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
-// $hasTipFontColorHover: $mainColor !default;
-// $tooltipBackgroundColor: #000 !default;
-// $tooltipBackgroundOpacity: 0.85 !default;
-// $tooltipFontSize: 12 !default;
-// $tooltipFontWeight: bold !default;
-// $tooltipFontColor: #fff !default;
-// $tapToCloseFontSize: 10 !default;
-// $tapToCloseFontWeight: normal !default;
-// $tapToCloseFontColor: #888 !default;
-// $tooltipFontSizeScreenSmall: 14 !default;
-// $tooltipBackgroundOpacityScreenSmall: 0.85 !default;
-
-// // Top Bar Settings
-
-// $topBarBgColor: #222 !default;
-// $topBarHeight: 45px !default;
-// $topBarBtmMargin: 30px !default;
-// $topBarTitleWeight: bold !default;
-// $topBarTitleSize: ms(1) !default;
-// $topBarLinkColor: #fff !default;
-// $topBarLinkWeight: bold !default;
-// $topBarLinkSize: ms(0) - 1 !default;
-// $topBarDropToggleSize: 5px !default;
-// $topBarSearchWidth: 200px !default;
-// $topBarBreakPoint: 940px !default; // Change to 9999px for always mobile layout
-// $topBarNavToggleSize: 8px !default;
-
-// // Media Queries
-
-// $screenSmall: 768px !default;
-// $screenMedium: 1279px !default;
-// $screenXlarge: 1441px !default;
-
-// // Saving for better em-based testing
-// // $screenSmall: 44em !default;
-// // $screenMedium: 77em !default;
-// // $screenXlarge: 104em !default;
-
-// // Saving for Sass 3.2 stable release
-// // $mediaSmall: "only screen and (max-width: 767px)" !default;
-// // $mediaMedium: "only screen and (max-width: 1279px) and (min-width: 768px)" !default;
-// // $mediaXlarge: "only screen and (min-width: 1441px)" !default;
-// // $mediaLandscape: "screen and (orientation: landscape)" !default;
-// // $mediaPortrait: "screen and (orientation: portrait)" !default;
-// // $mediaAll: "only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)" !default;
-
+// Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
+// http://www.modularscale.com by Tim Brown
+// https://github.com/scottkellum/modular-scale by scottkellum

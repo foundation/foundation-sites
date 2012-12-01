@@ -1,7 +1,4 @@
-/* Requires
-   globals.css */
-
-  .nav-bar { height: $navBarHeight; background: lighten($black, 30%); margin-top: $navBarHeight / 2; padding: 0;
+  .nav-bar { height: $navBarHeight; background: lighten($black, 30%); margin-left: 0; margin-top: $navBarHeight / 2; padding: 0;
 
     &>li { float: $defaultFloat; display: block; position: relative; padding: 0; margin: 0; border: 1px solid lighten($black, 20%); border-#{$defaultOpposite}: none; line-height: $navBarHeight - 2; @include box-shadow(1px 0 0 fade-out($shinyEdge, .3) inset);
 
@@ -74,39 +71,6 @@
       &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-#{$defaultFloat}: 4px solid lighten($black, 10%);
         a { background: lighten($black, 30%); border: none; color: #fff; height: auto; margin: 0; position: static; top: 0; @include box-shadow(0 0 0); }
       }
-    }
-
-  }
-
-
-  /* Mobile Styles */
-  @media only screen and (max-device-width: 1280px) {
-    .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: 36px !important; }
-  }
-
-  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-    .touch .nav-bar li a { @include font-size(13); }
-    .touch .nav-bar li.has-flyout>a.flyout-toggle { padding: ($navBarHeight / 2) !important; }
-    .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: ($navBarHeight - 4) !important; }
-  }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    .nav-bar { height: auto;
-
-      &>li { float: none; display: block; border-right: none; }
-      &>li>a.main { text-align: $defaultFloat; border-top: 1px solid #ddd; border-#{$defaultOpposite}: none; }
-      &>li:first-child>a.main { border-top: none; }
-      &>li.has-flyout>a.flyout-toggle { position: absolute; #{$defaultOpposite}: 0; top: 0; padding: ($navBarHeight / 2)+2; z-index: 2; display: block; }
-      &>li.has-flyout.is-touch>a.flyout-toggle span { content: ""; width: 0; height: 0; display: block; }
-      &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
-      &.vertical>li.has-flyout>.flyout { left: 0; }
-    }
-
-    .flyout { position: relative; width: 100% !important; top: auto; margin-#{$defaultOpposite}: -2px; border-width: 1px 1px 0 1px;
-
-      &.right { float: none; right: auto; #{$defaultFloat}: -1px; }
-      &.small, &.large { width: 100% !important; }
-      p:last-child { margin-bottom: 18px; }
     }
 
   }

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 // Foundation Features
 // =============
 
@@ -16,3 +15,6 @@
 @import "foundation/common/base";
 
 @import "foundation/components/grid", "foundation/components/modules/all";
+
+// Media Queries Overrides
+@import "foundation/components/modules/mqueries";

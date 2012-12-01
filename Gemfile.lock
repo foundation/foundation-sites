@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zurb-foundation (3.1.1)
+    zurb-foundation (3.2.2)
       compass (>= 0.12.2)
       modular-scale (>= 1.0.2)
       rake

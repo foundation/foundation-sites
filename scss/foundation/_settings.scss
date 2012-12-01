@@ -6,20 +6,7 @@ $rowWidth: 1000px !default;
 $columnGutter: 30px !default;
 $totalColumns: 12 !default;
 $mobileTotalColumns: 4 !default;
-
-// Text Direction Settings
-
-$textDirection: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
-$defaultFloat: left !default; // Change this to 'right' for right-to-left languages
-$defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
-
-@if $textDirection == ltr {
-  $defaultFloat: left;
-  $defaultOpposite: right;
-} @else {
-  $defaultFloat: right;
-  $defaultOpposite: left;
-}
+$blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
 
 // Colors Settings
 
@@ -36,12 +23,222 @@ $darkEdge: rgba(#000, .2) !default;
 
 // Font Settings
 
+$fontSmoothing: antialiased;
 $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
+$headerFontStyle: normal !default;
 $headerFontColor: #222 !default;
 $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $bodyFontWeight: normal !default;
+$bodyFontStyle: normal !default;
 $bodyFontColor: $txtColor !default;
+
+// Text Direction Settings
+
+$textDirection: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
+$defaultFloat: left !default; // Change this to 'right' for right-to-left languages
+$defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
+
+@if $textDirection == ltr {
+  $defaultFloat: left;
+  $defaultOpposite: right;
+} @else {
+  $defaultFloat: right;
+  $defaultOpposite: left;
+}
+
+// Button Settings
+
+$buttonRadius: 3px !default;
+$btnBase: $baseLineHeight / 2 !default;
+
+$tinyBtnBase: $btnBase - 5 !default;
+$smallBtnBase: $btnBase - 3 !default;
+$largeBtnBase: $btnBase + 5 !default;
+
+// Form Settings
+
+$formSpacing: 12px !default;
+$labelFontWeight: 500 !default;
+$labelFontColor: lighten(#000, 30%) !default;
+$labelBtmMargin: 3px !default;
+$inputFontColor: rgba(0,0,0,0.75) !default;
+$inputFontSize: 14px !default;
+$inputBgColor: #fff !default;
+$inputFocusBgColor: darken(#fff, 2%) !default;
+$inputBorderColor: darken(#fff, 20%) !default;
+$inputFocusBorderColor: darken(#fff, 30%) !default;
+$inputBorderStyle: solid !default;
+$inputBorderWidth: 1px !default;
+$inputBorderRadius: 2px !default;
+$fieldsetBorderRadius: 3px !default;
+
+// Custom Form Settings
+
+$custFormBorderColor: #ccc !default;
+$custFormBgColor: #fff !default;
+$custCheckColor: #222 !default;
+$custSelectCurrentFontColor: #141414 !default;
+$custSelectBgColor: #fff !default;
+$custSelectBorderColor: #ddd !default;
+$custSelectTriangleColor: #aaa !default;
+$custSelectTriangleColorOpen: #222 !default;
+$custSelectDropHeight: 200px !default;
+$custDropdownBgColor: #fff !default;
+$custDropdownBorderColor: darken(#fff, 20%) !default;
+$custDropdownFontColor: #555 !default;
+$custDropdownSelectedBgColor: lighten(#2ba6cb, 40%) !default;
+$custDropdownSelectedFontColor: #000 !default;
+$custFormDisabledBgColor: #ddd !default;
+
+// Tab Settings
+
+$tabHeight: $baseLineHeight * 2 !default;
+$tabTermFontSize: 12px;
+
+// Nav Bar Settings
+
+$navBarHeight: $baseLineHeight * 2 !default;
+$navFlyoutBaseWidth: 250px !default;
+
+// Top Bar Settings
+
+$topBarBgColor: #222 !default;
+$topBarHeight: $baseLineHeight * 2 !default;
+$topBarHeightMobile: $baseLineHeight * 2 !default;
+$topBarBtmMargin: 30px !default;
+$topBarTitleWeight: bold !default;
+$topBarTitleSize: 17px !default;
+$topBarLinkColor: #fff !default;
+$topBarLinkWeight: bold !default;
+$topBarLinkSize: 13px !default;
+$topBarDropBgColor: #222 !default;
+$topBarDropLinkColor: #fff !default;
+$topBarDropToggleSize: 5px !default;
+$topBarDropToggleColor: #fff !default;
+$topBarDropToggleAlpha: 0.5 !default;
+$topBarSearchWidth: 200px !default;
+$topBarBreakPoint: 940px !default; // Change to 9999px for always mobile layout
+$topBarNavToggleSize: 8px !default;
+
+// UI Settings
+
+$thumbRadius: 3px !default;
+$progBarHeight: $baseLineHeight !default;
+$progBarBorderColor: darken(#fff, 20%) !default;
+$progBarBorderSize: 1px !default;
+$progBarPad: 2px !default;
+$linkListBottomMargin: 17px -22px !default;
+$tableBorderRadius: 3px !default;
+
+// Tooltip Settings
+
+$hasTipBorderBottom: dotted 1px #ccc !default;
+$hasTipFontWeight: bold !default;
+$hasTipFontColor: #333 !default;
+$hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
+$hasTipFontColorHover: $mainColor !default;
+$tooltipBackgroundColor: #000 !default;
+$tooltipBackgroundOpacity: 0.85 !default;
+$tooltipFontSize: 12px !default;
+$tooltipFontWeight: bold !default;
+$tooltipFontColor: #fff !default;
+$tapToCloseFontSize: 10 !default;
+$tapToCloseFontWeight: normal !default;
+$tapToCloseFontColor: #888 !default;
+$tooltipFontSizeScreenSm: 14 !default;
+$tooltipBgOpacityScreenSm: 0.85 !default;
+$tooltipBorderRadius: 4px !default;
+
+// Pricing Table Settings
+
+$priceTableBorder: solid 1px #ddd !default;
+$priceTitleBgColor: #ddd !default;
+$priceTitlePadding: 15px 20px !default;
+$priceTitleAlign: center !default;
+$priceTitleColor: #333 !default;
+$priceTitleWeight: bold !default;
+$priceTitleSize: 16px !default;
+
+$priceMoneyBgColor: #eee !default;
+$priceMoneyPadding: 15px 20px !default;
+$priceMoneyAlign: center !default;
+$priceMoneyColor: #333 !default;
+$priceMoneyWeight: normal !default;
+$priceMoneySize: 20px !default;
+
+$priceBgColor: #fff !default;
+$priceDescColor: #777 !default;
+$priceDescPadding: 15px !default;
+$priceDescAlign: center !default;
+$priceDescFontSize: 12px !default;
+$priceDescWeight: normal !default;
+$priceDescLineHeight: 1.4 !default;
+$priceDescBtmBorder: dotted 1px #ddd !default;
+
+$priceItemColor: #333 !default;
+$priceItemPadding: 15px !default;
+$priceItemAlign: center !default;
+$priceItemFontSize: 14px !default;
+$priceItemWeight: normal !default;
+$priceItemBtmBorder: dotted 1px #ddd !default;
+
+$priceCtaBgColor: #f5f5f5 !default;
+$priceCtaAlign: center !default;
+$priceCtaPadding: 20px !default;
+
+// Orbit Settings
+
+$orbitCaptionBgColorOldBrowser: #000 !default;
+$orbitCaptionBgColor: rgba(0,0,0,.6) !default;
+$orbitCaptionFontColor: #fff !default;
+$orbitBulletNavColor: #999 !default;
+$orbitBulletNavColorActive: #222 !default;
+$orbitHasThumbBorderColor: #000 !default;
+$orbitHasThumbBorderWidth: 2px !default;
+$orbitHasThumbBorderStyle: solid !default;
+$orbitSlideNumBgColor: rgba(0,0,0,0.7) !default;
+$orbitSlideNumFontColor: #fff !default;
+$orbitSlideNumPadding: 5px !default;
+
+// Clearing Settings
+
+$clearingBg: rgba(0,0,0,0.8) !default;
+$clearingOldBrowserBg: rgb(0,0,0) !default;
+$clearingCaptionBg: rgba(0,0,0,0.7) !default;
+$clearingCaptionOldBrowserBg: rgb(0,0,0) !default;
+$clearingCaptionFontColor: #fff !default;
+$clearingCloseColor: #fff !default;
+$clearingArrowColor: #fff !default;
+$clearingArrowSize: 16px !default;
+$clearingCarouselBg: rgba(0,0,0,0.75) !default;
+$clearingCarouselOldBrowserBg: rgb(0,0,0) !default;
+$clearingCarouselHeight: 150px !default;
+$clearingActiveImgHeight: 75% !default;
+$clearingCarouselThumbWidth: 175px;
+$clearingCarouselThumbActiveBorder: 4px solid rgb(255,255,255) !default;
+$clearingImgBg: rgba(0,0,0,0.75) !default;
+$clearingImgOldBrowserBg: rgb(0,0,0) !default;
+
+// Joyride Settings
+
+$tipBg: rgba(0,0,0,0.8) !default;
+$tipBgIE8: #000 !default;
+$tipFontColor: #fff !default;
+$tipHeaderWeight: bold !default;
+$tipDefaultWidth: 300px !default;
+$tipBorderRadius: 4px !default;
+$tipPadding: 18px 20px 24px !default;
+$tipNubSize: 14px !default;
+$tipFontSize: 14px !default;
+$tipTimerWidth: 50px !default;
+$tipTimerHeight: 3px !default;
+$tipTimerBorder: solid 1px #555 !default;
+$tipTimerColor: #666 !default;
+$tipCloseColor: #777 !default;
+$tipCloseSize: 20px !default;
+$tipCloseWeight: normal !default;
+$tipScreenFill: rgba(0,0,0,0.5) !default;
 
 // Off Canvas Width Settings
 
@@ -53,80 +250,18 @@ $complementaryWidth: 20% !default;
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
 $baseFontSize: 14px !default;
 $baseLineHeight: 22px !default;
-$importantModNum: 40px !default;
+$importantModNum: 44px !default;
 $base-size: $baseFontSize $importantModNum;
 // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
 
-// Settings for Compass vertical rhythm
+// Compass Vertical Rhythm Settings
+
 $relative-font-sizing: false; 
 $round-to-nearest-half-line: false;
 $base-font-size: $baseFontSize;
 $base-line-height: $baseLineHeight;
-
-// Tab Settings
-
-$tabHeight: $baseLineHeight * 2 !default;
-
-// Nav Bar Settings
-
-$navBarHeight: $baseLineHeight * 2 !default;
-$navFlyoutBaseWidth: 250px !default;
-
-// Form Settings
-
-$formSpacing: $baseLineHeight !default;
-
-// UI Settings
-
-$thumbRadius: 3px !default;
-
-$progBarHeight: $baseLineHeight !default;
-$progBarBorderColor: darken($white, 20%) !default;
-$progBarBorderSize: 1px !default;
-$progBarPad: 2px !default;
-
-// Button Settings
-
-$buttonRadius: 3px !default;
-$btnBase: $baseLineHeight / 2 !default;
-
-$tinyBtnBase: $btnBase - 5 !default;
-$smallBtnBase: $btnBase - 3 !default;
-$largeBtnBase: $btnBase + 5 !default;
-
-// Tooltip Settings
-$hasTipBorderBottom: dotted 1px #ccc !default;
-$hasTipFontWeight: bold !default;
-$hasTipFontColor: #333 !default;
-$hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
-$hasTipFontColorHover: $mainColor !default;
-$tooltipBackgroundColor: #000 !default;
-$tooltipBackgroundOpacity: 0.85 !default;
-$tooltipFontSize: 12 !default;
-$tooltipFontWeight: bold !default;
-$tooltipFontColor: #fff !default;
-$tapToCloseFontSize: 10 !default;
-$tapToCloseFontWeight: normal !default;
-$tapToCloseFontColor: #888 !default;
-$tooltipFontSizeScreenSmall: 14 !default;
-$tooltipBackgroundOpacityScreenSmall: 0.85 !default;
-
-// Top Bar Settings
-
-$topBarBgColor: #222 !default;
-$topBarHeight: $baseLineHeight * 2 !default;
-$topBarBtmMargin: 30px !default;
-$topBarTitleWeight: bold !default;
-$topBarTitleSize: ms(1) !default;
-$topBarLinkColor: #fff !default;
-$topBarLinkWeight: bold !default;
-$topBarLinkSize: ms(0) - 1 !default;
-$topBarDropToggleSize: 5px !default;
-$topBarSearchWidth: 200px !default;
-$topBarBreakPoint: 940px !default; // Change to 9999px for always mobile layout
-$topBarNavToggleSize: 8px !default;
 
 // Media Queries
 

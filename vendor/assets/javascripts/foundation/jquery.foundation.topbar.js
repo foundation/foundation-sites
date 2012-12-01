@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Top Bar 2.0.1
+ * jQuery Foundation Top Bar 2.0.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -20,7 +20,8 @@
         return this.each(function () {
           settings = $.extend(settings, options);
           settings.$w = $(window),
-          settings.$topbar = $('nav.top-bar');
+          settings.$topbar = $('nav.top-bar'),
+          settings.$section = settings.$topbar.find('section'),
           settings.$titlebar = settings.$topbar.children('ul:first');
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
           settings.breakPoint = breakpoint.width();
@@ -35,50 +36,65 @@
             methods.largestUL();
           }
 
-          $('.top-bar .toggle-topbar').live('click.fndtn', function (e) {
+          if (settings.$topbar.parent().hasClass('fixed')) {
+            $('body').css('padding-top',settings.$topbar.outerHeight())
+          }
+
+          $('.top-bar .toggle-topbar').die('click.fndtn').live('click.fndtn', function (e) {
             e.preventDefault();
 
             if (methods.breakpoint()) {
               settings.$topbar.toggleClass('expanded');
               settings.$topbar.css('min-height', '');
+            }
 
+            if (!settings.$topbar.hasClass('expanded')) {
+              settings.$section.css({left: '0%'});
+              settings.$section.find('>.name').css({left: '100%'});
+              settings.$section.find('li.moved').removeClass('moved');
+              settings.index = 0;
             }
           });
 
           // Show the Dropdown Levels on Click
-          $('.top-bar .has-dropdown>a').live('click.fndtn', function (e) {
-            e.preventDefault();
+          $('.top-bar .has-dropdown>a').die('click.fndtn').live('click.fndtn', function (e) {
+            if (Modernizr.touch || methods.breakpoint())
+              e.preventDefault();
 
             if (methods.breakpoint()) {
               var $this = $(this),
                   $selectedLi = $this.closest('li'),
                   $nextLevelUl = $selectedLi.children('ul'),
-                  $section = $this.closest('section'),
                   $nextLevelUlHeight = 0,
                   $largestUl;
 
               settings.index += 1;
               $selectedLi.addClass('moved');
-              $section.css({'left': -(100 * settings.index) + '%'});
-              $section.find('>.name').css({'left': 100 * settings.index + '%'});
+              settings.$section.css({left: -(100 * settings.index) + '%'});
+              settings.$section.find('>.name').css({left: 100 * settings.index + '%'});
 
               $this.siblings('ul').height(settings.height + settings.$titlebar.outerHeight(true));
               settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
             }
           });
 
+          $(window).on('resize.fndtn.topbar',function() {
+            if (!methods.breakpoint()) {
+              settings.$topbar.css('min-height', '');
+            }
+          });
+
           // Go up a level on Click
-          $('.top-bar .has-dropdown .back').live('click.fndtn', function (e) {
+          $('.top-bar .has-dropdown .back').die('click.fndtn').live('click.fndtn', function (e) {
             e.preventDefault();
 
             var $this = $(this),
               $movedLi = $this.closest('li.moved'),
-              $section = $this.closest('section'),
               $previousLevelUl = $movedLi.parent();
 
             settings.index -= 1;
-            $section.css({'left': -(100 * settings.index) + '%'});
-            $section.find('>.name').css({'left': 100 * settings.index + '%'});
+            settings.$section.css({left: -(100 * settings.index) + '%'});
+            settings.$section.find('>.name').css({'left': 100 * settings.index + '%'});
 
             if (settings.index === 0) {
               settings.$topbar.css('min-height', 0);
@@ -94,12 +110,10 @@
         return settings.$w.width() < settings.breakPoint;
       },
       assemble : function () {
-        var $section = settings.$topbar.children('section');
-
         // Pull element out of the DOM for manipulation
-        $section.detach();
+        settings.$section.detach();
 
-        $section.find('.has-dropdown>a').each(function () {
+        settings.$section.find('.has-dropdown>a').each(function () {
           var $link = $(this),
               $dropdown = $link.siblings('.dropdown'),
               $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
@@ -110,7 +124,7 @@
         });
 
         // Put element back in the DOM
-        $section.appendTo(settings.$topbar);
+        settings.$section.appendTo(settings.$topbar);
       },
       largestUL : function () {
         var uls = settings.$topbar.find('section ul ul'),

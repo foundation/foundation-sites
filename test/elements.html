@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -17,10 +15,6 @@
 
 	<script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
 
-	<!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
 </head>
 <body>
 
@@ -38,9 +32,11 @@
         <dd><a href="#accordion">Accordion</a></dd>
         <dd><a href="#keystrokes">Keystrokes</a></dd>
         <dd><a href="#panels">Panels</a></dd>
-        <dd><a href="#link-list">Link List</a></dd>
+        <dd><a href="#inline-list">Inline List</a></dd>
+        <dd><a href="#tables">Tables</a></dd>
         <dd><a href="#progress-bars">Progress Bars</a></dd>
-         <dd><a href="#thumbs">Thumbs</a></dd>
+        <dd><a href="#pricing-tables">Pricing Tables</a></dd>
+        <dd><a href="#thumbs">Thumbs</a></dd>
         <dd><a href="#video">Video</a></dd>
 
       </dl>
@@ -187,11 +183,11 @@
         <div class="four columns">
           <a name="accordion"></a>
           <h4>Accordion</h4>
-          <p>Accordions are similar to tabs as a way to selectively show a single panel of content at a time.</p>
+          <p>Accordions are similar to tabs as a way to selectively show a single panel of content at a time. You can add a <code>.hover</code> class to the accordion <code>ul</code> to make it open on hover.</p>
         </div>
         <br>
         <div class="eight columns">
-          <ul class="accordion hover">
+          <ul class="accordion">
             <li class="active">
               <div class="title">
                 <h5>Accordion Panel 1</h5>
@@ -268,13 +264,13 @@
 
       <div class="row">
         <div class="four columns">
-          <a name="link-list"></a>
-          <h4>Link List</h4>
+          <a name="inline-list"></a>
+          <h4>Inline List</h4>
           <p>When you just need a horizontal list of links, like in a footer, and you want more control than just spaces between them you can use this simple construct.</p>
         </div>
         <br>
         <div class="eight columns">
-          <ul class="link-list">
+          <ul class="inline-list">
             <li><a href="#">Link 1</a></li>
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
@@ -283,6 +279,58 @@
           </ul>
         </div>
       </div>
+
+      <br><br>
+
+      <div class="row">
+        <div class="four columns">
+          <a name="tables"></a>
+          <h4>Tables</h4>
+          <p>Okay, they're not the sexiest things ever, but tables get the job done (for tabular data).</p>
+        </div>
+        <br>
+        <div class="eight columns">
+          <table>
+            <thead>
+              <tr>
+                <th>Table Header</th>
+                <th>Table Header</th>
+                <th>Table Header</th>
+                <th>Table Header</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Content</td>
+                <td>This is longer content</td>
+                <td>Content</td>
+                <td>Content</td>
+              </tr>
+              <tr>
+                <td>Content</td>
+                <td>This is longer content</td>
+                <td>Content</td>
+                <td>Content</td>
+              </tr>
+              <tr>
+                <td>Content</td>
+                <td>This is longer content</td>
+                <td>Content</td>
+                <td>Content</td>
+              </tr>
+              <tr>
+                <td>Content</td>
+                <td>This is longer content</td>
+                <td>Content</td>
+                <td>Content</td>
+              </tr>
+            </tbody>
+          </table>
+          </ul>
+        </div>
+      </div>
+
+
 
       <br><br>
 
@@ -299,6 +347,65 @@
         	<div class="radius progress success eight"><span class="meter"></span></div>
         	<div class="nice round progress alert ten"><span class="meter"></span></div>
           <div class="nice secondary progress"><span class="meter"></span></div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <div class="four columns">
+          <a name="pricing-tables"></a>
+          <h4>Pricing Tables</h4>
+          <p>We've created a simple structure that will help you quickly style a set of pricing tables using the grid.</p>
+        </div>
+        <div class="eight columns">
+          <div class="row">
+            <div class="four columns">
+              <ul class="pricing-table">
+                <li class="title">Standard</li>
+                <li class="price">$99.99</li>
+                <li class="description">
+                  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus sit amet.
+                </li>
+                <li class="bullet-item">1 Database</li>
+                <li class="bullet-item">5GB Storage</li>
+                <li class="bullet-item">20 Users</li>
+                <li class="cta-button">
+                  <a class="button" href="#">Buy it Now &raquo;</a>
+                </li>
+              </ul>
+            </div>
+            <div class="four columns">
+              <ul class="pricing-table">
+                <li class="title">Premium</li>
+                <li class="price">$199.99</li>
+                <li class="description">
+                  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius.
+                </li>
+                <li class="bullet-item">2 Database</li>
+                <li class="bullet-item">10GB Storage</li>
+                <li class="bullet-item">40 Users</li>
+                <li class="cta-button">
+                  <a class="button" href="#">Buy it Now &raquo;</a>
+                </li>
+              </ul>
+            </div>
+            <div class="four columns">
+              <div class="pricing-table">
+                <div class="title">Executive</div>
+                <div class="price">$999.99</div>
+                <div class="description">
+                  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit.
+                </div>
+                <div class="bullet-item">Unlimited Database</div>
+                <div class="bullet-item">Unlimited Storage</div>
+                <div class="bullet-item">Unlimited Users</div>
+                <div class="cta-button">
+                  <a class="button" href="#">Buy it Now &raquo;</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
