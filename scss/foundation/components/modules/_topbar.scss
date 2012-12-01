@@ -71,6 +71,18 @@
           }
           &:hover, &:focus { background: $topBarBgColor; }
         }
+        
+        /* Put login bar in the top bar */
+        &.login {padding: 0 $topBarHeight / 3;
+          form {display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarLoginWidth;
+            input{float: left; width: auto; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; margin-bottom: 0; }
+            input[type=text]{ @include border-right-radius(0); width: $topBarLoginInputWidth;}
+            input[type=password] { margin-bottom: 0; @include border-left-radius(0); width: $topBarLoginInputWidth;
+              &+.button {border-left: none; @include border-left-radius(0); @include border-right-radius(2px); float: left; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; width: $topBarLoginButtonWidth;}
+            }
+          }
+          &:hover, &:focus { background: $topBarBgColor; }
+        }
 
         /* Hide the triangle for breakpoint menu */
         &.toggle-topbar { display: none; }

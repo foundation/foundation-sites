@@ -118,6 +118,9 @@ $topBarDropToggleSize: 5px !default;
 $topBarDropToggleColor: #fff !default;
 $topBarDropToggleAlpha: 0.5 !default;
 $topBarSearchWidth: 200px !default;
+$topBarLoginWidth: 300px !default;
+$topBarLoginButtonWidth: 60px !default;
+$topBarLoginInputWidth: ($topBarLoginWidth - $topBarLoginButtonWidth) / 2 !default;
 $topBarBreakPoint: 940px !default; // Change to 9999px for always mobile layout
 $topBarNavToggleSize: 8px !default;
 
