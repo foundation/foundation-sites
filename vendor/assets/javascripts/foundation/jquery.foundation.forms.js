@@ -262,6 +262,9 @@
           }
 
         }
+		if ($(this).is(':disabled')) {
+            $listItems.eq( index ).addClass( 'disabled' );
+		}
 
       });
 
@@ -345,6 +348,9 @@
         $customSelect.find('li').eq(index).addClass('selected');
         $customSelect.find('.current').html($(this).html());
       }
+	  if ($(this).is(':disabled')) {
+          $customSelect.find('li').eq(index).addClass('disabled');
+	  }
     });
 
     // fix width
@@ -456,28 +462,30 @@
 
     event.preventDefault();
     event.stopPropagation();
-    $('div.dropdown').removeClass('open');
+	if ( ! $(this).hasClass('disabled')) {
+	    $('div.dropdown').removeClass('open');
 
-    $this
-      .closest('ul')
-      .find('li')
-      .removeClass('selected');
-    $this.addClass('selected');
+	    $this
+	      .closest('ul')
+	      .find('li')
+	      .removeClass('selected');
+	    $this.addClass('selected');
 
-    $customDropdown
-      .removeClass('open')
-      .find('a.current')
-      .html($this.html());
+	    $customDropdown
+	      .removeClass('open')
+	      .find('a.current')
+	      .html($this.html());
 
-    $this.closest('ul').find('li').each(function (index) {
-      if ($this[0] == this) {
-        selectedIndex = index;
-      }
+	    $this.closest('ul').find('li').each(function (index) {
+	      if ($this[0] == this) {
+	        selectedIndex = index;
+	      }
 
-    });
-    $select[0].selectedIndex = selectedIndex;
+	    });
+	    $select[0].selectedIndex = selectedIndex;
 
-    $select.trigger('change');
+	    $select.trigger('change');
+	}
   });
 
 
