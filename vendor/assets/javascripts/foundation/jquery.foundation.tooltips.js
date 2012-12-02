@@ -68,26 +68,28 @@
     },
     getTip : function ($target) {
       var selector = this.selector($target),
-        tip = null;
+          tip = null;
 
       if (selector) {
         tip = $('span[data-selector=' + selector + ']' + this.settings.tooltipClass);
       }
+
       return (tip.length > 0) ? tip : false;
     },
     selector : function ($target) {
       var id = $target.attr('id'),
-        dataSelector = $target.data('selector');
+          dataSelector = $target.data('selector');
 
       if (id === undefined && dataSelector === undefined) {
         dataSelector = 'tooltip' + Math.random().toString(36).substring(7);
         $target.attr('data-selector', dataSelector);
       }
+
       return (id) ? id : dataSelector;
     },
     create : function ($target) {
       var $tip = $(this.settings.tipTemplate(this.selector($target), $('<div>').html($target.attr('title')).html())),
-        classes = this.inheritable_classes($target);
+          classes = this.inheritable_classes($target);
 
       $tip.addClass(classes).appendTo('body');
       if (Modernizr.touch) {
@@ -147,12 +149,12 @@
     },
     inheritable_classes : function (target) {
       var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'noradius'].concat(this.settings.additionalInheritableClasses),
-        classes = target.attr('class'),
-        filtered = classes ? $.map(classes.split(' '), function (el, i) {
-            if ($.inArray(el, inheritables) !== -1) {
-              return el;
-            }
-        }).join(' ') : '';
+          classes = target.attr('class'),
+          filtered = classes ? $.map(classes.split(' '), function (el, i) {
+              if ($.inArray(el, inheritables) !== -1) {
+                return el;
+              }
+          }).join(' ') : '';
 
       return $.trim(filtered);
     },
@@ -174,6 +176,7 @@
     },
     destroy : function () {
       var settings = Foundation.libs.tooltips.settings;
+
       return this.each(function () {
         $(window).off('.tooltip');
         $(settings.selector).off('.tooltip');
