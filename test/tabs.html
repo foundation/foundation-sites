@@ -12,9 +12,9 @@
 
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/qunit.css">
 
-	<script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
-
+	<script src="../lib/assets/javascripts/foundation/modernizr.foundation.js"></script>
 </head>
 <body>
 
@@ -34,6 +34,13 @@
         <dd><a href="#mobile-tabs">Mobile Tabs</a></dd>
 
       </dl>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="twelve columns">
+      <div id="qunit"></div>
+      <div id="qunit-fixture"></div>
     </div>
   </div>
 
@@ -177,12 +184,13 @@
   </div>
 
 	<!-- Included JS Files -->
-	<script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/foundation.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
-	<script src="../vendor/assets/javascripts/foundation/app.js"></script>
-  <script type="text/javascript">
-    // Page-Specific JavaScript Goes Here
+	<script src="../lib/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../lib/assets/javascripts/foundation/foundation.js"></script>
+  <script src="../lib/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
+	<script src="javascripts/qunit.js"></script>
+  <script src="javascripts/tests/tabs.js"></script>
+  <script>
+    $.foundation('tabs');
   </script>
 </body>
 </html>
