@@ -22,15 +22,16 @@
       }
 
       return this.response_obj(responses, args);
-
     },
 
     response_obj : function (response_arr, args) {
       for (var callback in args) {
-        if (typeof callback === 'function') {
-          // i'm just jamming all the responses into a concatenated string for 
-          // now and passing off to the callback
-          return callback(response_arr.join(' '));
+        if (typeof args[callback] === 'function') {
+          return args[callback]({
+            error: response_arr.filter(function(s) {
+              if (typeof s === 'string') return s;
+            })
+          });
         }
       }
 
@@ -38,9 +39,17 @@
     },
 
     init_lib : function(lib, args) {
-      if (Foundation.libs.hasOwnProperty(lib)) {
-        return Foundation.libs[lib].init.apply(Foundation.libs[lib], args);
+      try {
+        if (Foundation.libs.hasOwnProperty(lib)) {
+          return Foundation.libs[lib].init.apply(Foundation.libs[lib], args);
+        }
+      } catch (e) {
+        return this.error({name: lib, message: 'could not be initialized', more: e.name + ' ' + e.message});
       }
+    },
+
+    error : function(error) {
+      return 'Foundation error: ' + error.name + ' ' + error.message + '; ' + error.more;
     }
   };
 
