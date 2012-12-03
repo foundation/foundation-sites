@@ -11,11 +11,10 @@
   <title>Foundation Tabs Testing</title>
 
   <!-- Included CSS Files -->
-  <link rel="stylesheet" href="stylesheets/styles.css">
-  <link rel="stylesheet" href="stylesheets/qunit.css">
-  <link rel="stylesheet" href="stylesheets/qunit-composite.css">
+  <link rel="stylesheet" href="../../../stylesheets/styles.css">
+  <link rel="stylesheet" href="../../../stylesheets/qunit.css">
 
-  <script src="../lib/assets/javascripts/foundation/modernizr.foundation.js"></script>
+  <script src="../../../../lib/assets/javascripts/foundation/modernizr.foundation.js"></script>
 </head>
 <body>
 
@@ -26,7 +25,7 @@
 
         <div class="row">
           <div class="twelve columns">
-            <ul class="tabs">
+            <ul id="tabs1" class="tabs">
               <li class="active"><a href="#simple1">Simple Tab 1</a></li>
               <li><a href="#simple2">Simple Tab 2</a></li>
               <li><a href="#simple3">Simple Tab 3</a></li>
@@ -49,14 +48,10 @@
 
 
   <!-- Included JS Files -->
-  <script src="../lib/assets/javascripts/foundation/jquery.js"></script>
-  <script src="javascripts/qunit.js"></script>
-  <script src="javascripts/qunit-composite.js"></script>
-  <script>
-    QUnit.testSuites([
-        'javascripts/tests/tabs/simple_tabs.html',
-        'javascripts/tests/tooltips/tooltips.html'
-    ]);
-  </script>
+  <script src="../../../../lib/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../../../../lib/assets/javascripts/foundation/foundation.js"></script>
+  <script src="../../../../lib/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
+  <script src="../../../javascripts/qunit.js"></script>
+  <script src="../../../javascripts/tests/tabs/simple_tabs.js"></script>
 </body>
 </html>
