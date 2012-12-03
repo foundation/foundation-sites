@@ -650,7 +650,9 @@
         this.setCaption();
       }
 
-      if (this.$slides.last() && this.options.singleCycle) {
+      // if on last slide and singleCycle is true, don't loop through slides again
+      // .length is zero based so must minus 1 to match activeSlide index
+      if (this.activeSlide === this.$slides.length-1 && this.options.singleCycle) {
         this.stopClock();
       }
     }
