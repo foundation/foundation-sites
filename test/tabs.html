@@ -40,7 +40,7 @@
   <div class="row">
     <div class="twelve columns">
   		<h3>Tabs</h3>
-  		<h4 class="subheader">Tabs are very versatile <span class="cool-tip" data-width="210" title="I'm on bottom and the default position.">"both"</span> as organization and navigational constructs. With the base Foundation package, tabs in the markup specified below are already hooked up &mdash; no extra work required.</h4>
+  		<h4 class="subheader">Tabs are very versatile <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"both"</span> as organization and navigational constructs. With the base Foundation package, tabs in the markup specified below are already hooked up &mdash; no extra work required.</h4>
 
       <br>
 
@@ -181,9 +181,7 @@
   <script src="../lib/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
   <script src="../lib/assets/javascripts/foundation/jquery.foundation.tooltips.js"></script>
   <script>
-    $(document).foundation('tabs tooltips', {selector : '.cool-tip', callback: function () {alert('bam!');}}, function (response) {
-      console.log(response);
-    });
+    $(document).foundation();
   </script>
 </body>
 </html>
