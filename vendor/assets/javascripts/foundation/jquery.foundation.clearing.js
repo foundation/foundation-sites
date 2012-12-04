@@ -42,9 +42,6 @@
 
               $el.data('fndtn.clearing.settings', $.extend({}, defaults, options));
 
-              // developer goodness experiment
-              cl.extend(cl, extendMethods);
-
               cl.assemble($el.find('li'));
 
               if (!defaults.initialized) {
