@@ -23,7 +23,7 @@ $darkEdge: rgba(#000, .2) !default;
 
 // Font Settings
 
-$fontSmoothing: antialiased;
+$fontSmoothing: antialiased !default;
 $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
 $headerFontStyle: normal !default;
