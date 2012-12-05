@@ -321,7 +321,7 @@
       dd a.active, li a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
       dd:first-child a.active, li:first-child a.active { margin: 0; }
       &+.tabs-content.contained { margin-#{$defaultFloat}:-15px; margin-#{$defaultOpposite}:-15px; }
-      .section-title { padding-#{$defaultFloat}: 20px; }
+      .section-title { padding-#{$defaultFloat}: 20px !important; }
     }
 
     .contained.mobile { margin-bottom: 0; }
