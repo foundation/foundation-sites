@@ -143,7 +143,7 @@
         this.$element.addClass('orbit-stack-on-small');
       }
 
-      this.$slides.addClass('orbit-slide');
+      this.$slides.addClass('orbit-slide').css({"opacity" : 0});
 
       this.setDimentionsFromLargestSlide();
       this.updateOptionsIfOnlyOneSlide();
