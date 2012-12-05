@@ -37,7 +37,7 @@
 
 		/* Disabled ---------- */
     &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none);
-      :hover { background: $mainColor; }
+      &:hover { background: $mainColor; }
 
       &.success { background-color: $successColor;
         &:hover, &:focus { background-color: $successColor; outline: none; }
