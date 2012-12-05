@@ -384,7 +384,7 @@
       if ( !$element.hasClass('checked') ) {
         $element.toggleClass('checked');
       }
-      input.checked = $element.hasClass('checked');
+      $input.checked = $element.hasClass('checked');
 
       $input.trigger('change');
     }
@@ -416,10 +416,26 @@
       if ($associatedElement.attr('type') === 'checkbox') {
         event.preventDefault();
         $customCheckbox = $(this).find('span.custom.checkbox');
+        //the checkbox might be outside after the label
+        if ($customCheckbox.length == 0) {
+            $customCheckbox = $(this).next('span.custom.checkbox');
+        }
+        //the checkbox might be outside before the label
+        if ($customCheckbox.length == 0) {
+            $customCheckbox = $(this).prev('span.custom.checkbox');
+        }
         toggleCheckbox($customCheckbox);
       } else if ($associatedElement.attr('type') === 'radio') {
         event.preventDefault();
         $customRadio = $(this).find('span.custom.radio');
+        //the radio might be outside after the label
+        if ($customRadio.length == 0) {
+            $customRadio = $(this).next('span.custom.radio');
+        }
+        //the radio might be outside before the label
+        if ($customRadio.length == 0) {
+            $customRadio = $(this).prev('span.custom.radio');
+        }
         toggleRadio($customRadio);
       }
     }
