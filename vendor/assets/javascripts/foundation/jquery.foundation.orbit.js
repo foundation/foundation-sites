@@ -81,7 +81,7 @@
 
       this.$element = $(element);
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
-      this.$slides = this.$element.children('img, a, div, figure');
+      this.$slides = this.$element.children('img, a, div, figure, li');
 
       this.$element.on('movestart', function(e) {
         // If the movestart is heading off in an upwards or downwards
