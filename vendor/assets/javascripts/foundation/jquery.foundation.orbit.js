@@ -92,12 +92,20 @@
         }
       });
 
-      this.$element.bind('orbit.next swipeleft', function () {
+      this.$element.bind('orbit.next', function () {
         self.shift('next');
       });
 
-      this.$element.bind('orbit.prev swiperight', function () {
+      this.$element.bind('orbit.prev', function () {
         self.shift('prev');
+      });
+
+      this.$element.bind('swipeleft', function () {
+        $(this).trigger('orbit.next');
+      });
+
+      this.$element.bind('swiperight', function () {
+        $(this).trigger('orbit.prev');
       });
 
       this.$element.bind('orbit.goto', function (event, index) {
@@ -378,6 +386,10 @@
         //if caption text is blank, don't show captions
         if ($.trim($(captionLocation).text()).length < 1){
           return false;
+        }
+        // if location selector starts with '#', remove it so we don't see id="#selector"
+        if (captionLocation.charAt(0) == '#') {
+            captionLocation = captionLocation.substring(1, captionLocation.length);
         }
         captionHTML = $(captionLocation).html(); //get HTML from the matching HTML entity
         this.$caption

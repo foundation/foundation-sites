@@ -7,7 +7,6 @@
     if ($accordion.hasClass('hover') && !Modernizr.touch) {
       $('.accordion li', this).on({
         mouseenter : function () {
-          console.log('due');
           var p = $(this).parent(),
             flyout = $(this).children('.content').first();
 
