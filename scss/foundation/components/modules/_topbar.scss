@@ -28,7 +28,7 @@
     .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; }
 
     /* First <ul> for branding, title, name, etc */
-    &>ul {
+    ul {
       .name {
         h1 { line-height: $topBarHeight; margin: 0;
           a { font-weight: $topBarTitleWeight; padding: 0 $topBarHeight / 2; font-size: $topBarTitleSize !important; }
