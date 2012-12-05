@@ -37,6 +37,7 @@
       bullets: false,                   // true or false to activate the bullet navigation
       bulletThumbs: false,              // thumbnails for the bullets
       bulletThumbLocation: '',          // relative path to thumbnails from this file
+      bulletThumbsHideOnSmall: true,	// hide thumbs on small devices
       afterSlideChange: $.noop,         // callback to execute after slide changes
       afterLoadComplete: $.noop,        // callback to execute after everything has been loaded
       fluid: true,
@@ -457,6 +458,7 @@
       this.$slides.each(this.addBullet);
       this.$element.addClass('with-bullets');
       if (this.options.centerBullets) this.$bullets.css('margin-left', -this.$bullets.outerWidth() / 2);
+      if (this.options.bulletThumbsHideOnSmall) this.$bullets.addClass('hide-for-small');
     },
 
     addBullet: function (index, slide) {
