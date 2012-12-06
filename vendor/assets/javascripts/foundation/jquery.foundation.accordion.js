@@ -3,6 +3,8 @@
 
   $.fn.foundationAccordion = function (options) {
     var $accordion = $('.accordion');
+    
+    $accordion.find('a').on('click', function(e){ e.stopPropagation(); });
 
     if ($accordion.hasClass('hover') && !Modernizr.touch) {
       $('.accordion li', this).on({
