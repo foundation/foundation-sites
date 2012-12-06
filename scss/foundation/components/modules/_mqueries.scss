@@ -319,9 +319,9 @@
       dt, li, dd { float: none; height: auto; }
       dd a, li a { font-size: ms(0) + 1; display: block; width: auto; height: auto; padding: 18px 20px; margin: 0; color: #555; line-height: 1; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
       dd a.active, li a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
-      dd:first-child, li:first-child { padding-left: 20px !important; }
       dd:first-child a.active, li:first-child a.active { margin: 0; }
-      &+.tabs-content.contained { margin-left:-15px; margin-right:-15px; }
+      &+.tabs-content.contained { margin-#{$defaultFloat}:-15px; margin-#{$defaultOpposite}:-15px; }
+      .section-title { padding-#{$defaultFloat}: 20px !important; }
     }
 
     .contained.mobile { margin-bottom: 0; }
