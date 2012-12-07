@@ -56,13 +56,13 @@
 
         });
       },
-      showOrCreateTip : function ($target) {
+      showOrCreateTip : function ($target, content) {
         var $tip = methods.getTip($target);
 
         if ($tip && $tip.length > 0) {
           methods.show($target);
         } else {
-          methods.create($target);
+          methods.create($target, content);
         }
       },
       getTip : function ($target) {
@@ -84,8 +84,9 @@
         }
         return (id) ? id : dataSelector;
       },
-      create : function ($target) {
-        var $tip = $(settings.tipTemplate(methods.selector($target), $('<div>').html($target.attr('title')).html())),
+      create : function ($target, content) {
+        var $tip = $(settings.tipTemplate(methods.selector($target),
+          $('<div>').html(content ? content : $target.attr('title')).html())),
           classes = methods.inheritable_classes($target);
 
         $tip.addClass(classes).appendTo('body');
