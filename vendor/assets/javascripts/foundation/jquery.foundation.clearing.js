@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Clearing 1.2.1
+ * jQuery Foundation Clearing 1.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -28,6 +28,10 @@
         locked : false
       },
 
+      // original clearing methods will be stored here if
+      // initialized with custom methods
+      superMethods = {},
+
       cl = {
         init : function (options, extendMethods) {
           return this.find('ul[data-clearing]').each(function () {
@@ -41,6 +45,9 @@
               options.$parent = $el.parent();
 
               $el.data('fndtn.clearing.settings', $.extend({}, defaults, options));
+
+              // developer goodness experiment
+              cl.extend(cl, extendMethods);
 
               cl.assemble($el.find('li'));
 
@@ -352,8 +359,35 @@
         outerHTML : function (el) {
           // support FireFox < 11
           return el.outerHTML || new XMLSerializer().serializeToString(el);
-        }
+        },
 
+        // experimental functionality for overwriting or extending
+        // clearing methods during initialization.
+        //
+        // ex $doc.foundationClearing({}, {
+        //      shift : function (current, target, callback) {
+        //        // modify arguments, etc.
+        //        this._super('shift', [current, target, callback]);
+        //        // do something else here.
+        //      }
+        //    });
+
+        extend : function (supers, extendMethods) {
+          $.each(supers, function (name, method) {
+            if (extendMethods.hasOwnProperty(name)) {
+              superMethods[name] = method;
+            }
+          });
+
+          $.extend(cl, extendMethods);
+        },
+
+        // you can call this._super('methodName', [args]) to call
+        // the original method and wrap it in your own code
+
+        _super : function (method, args) {
+          return superMethods[method].apply(this, args);
+        }
       };
 
   $.fn.foundationClearing = function (method) {

@@ -4,18 +4,16 @@
   $.fn.foundationButtons = function (options) {
     var $doc = $(document),
       config = $.extend({
-        dropdownAsToggle:false,
+        dropdownAsToggle:true,
         activeClass:'active'
       }, options),
 
     // close all dropdowns except for the dropdown passed
       closeDropdowns = function (dropdown) {
-        // alert(dropdown.html());
         $('.button.dropdown').find('ul').not(dropdown).removeClass('show-dropdown');
       },
     // reset all toggle states except for the button passed
       resetToggles = function (button) {
-        // alert(button.html());
         var buttons = $('.button.dropdown').not(button);
         buttons.add($('> span.' + config.activeClass, buttons)).removeClass(config.activeClass);
       };
@@ -39,15 +37,13 @@
         }
 
       // close other dropdowns
-      setTimeout(function () {
-        closeDropdowns(config.dropdownAsToggle ? dropdown : '');
-        dropdown.toggleClass('show-dropdown');
+      closeDropdowns(config.dropdownAsToggle ? dropdown : '');
+      dropdown.toggleClass('show-dropdown');
 
-        if (config.dropdownAsToggle) {
-          resetToggles(button);
-          $el.toggleClass(config.activeClass);
-        }
-      }, 0);
+      if (config.dropdownAsToggle) {
+        resetToggles(button);
+        $el.toggleClass(config.activeClass);
+      }
     });
 
     // close all dropdowns and deactivate all buttons

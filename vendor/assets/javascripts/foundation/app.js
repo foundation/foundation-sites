@@ -30,10 +30,7 @@
   if (Modernizr.touch && !window.location.hash) {
     $(window).load(function () {
       setTimeout(function () {
-        // At load, if user hasn't scrolled more than 20px or so...
-  			if( $(window).scrollTop() < 20 ) {
-          window.scrollTo(0, 1);
-        }
+        window.scrollTo(0, 1);
       }, 0);
     });
   }
