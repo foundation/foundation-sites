@@ -24,7 +24,7 @@
 
   /* Alerts ---------------------- */
 
-  div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius(3px); text-shadow: 0 -1px rgba(#000,.3); position: relative;
+  div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius($alertBorderRadius); text-shadow: 0 -1px rgba(#000,.3); position: relative;
 
     &.success { background-color: $successColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
     &.alert { background-color: $alertColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
