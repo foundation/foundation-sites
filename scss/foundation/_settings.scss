@@ -23,7 +23,7 @@ $darkEdge: rgba(#000, .2) !default;
 
 // Font Settings
 
-$fontSmoothing: antialiased !default;
+$fontSmoothing: antialiased;
 $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
 $headerFontStyle: normal !default;
@@ -49,6 +49,7 @@ $defaultOpposite: right !default; // Change this to 'left' for right-to-left lan
 
 // Button Settings
 
+$buttonBgColor: $main$Color !default;
 $buttonRadius: 3px !default;
 $btnBase: 10px !default;
 
@@ -130,7 +131,6 @@ $progBarBorderSize: 1px !default;
 $progBarPad: 2px !default;
 $linkListBottomMargin: 17px -22px !default;
 $tableBorderRadius: 3px !default;
-$alertBorderRadius: 3px !default;
 
 // Tooltip Settings
 

@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Top Bar 2.0.3
+ * jQuery Foundation Top Bar 2.0.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -15,7 +15,6 @@
       index : 0,
       initialized : false
     },
-
     methods = {
       init : function (options) {
         return this.each(function () {
@@ -24,7 +23,6 @@
           settings.$topbar = $('nav.top-bar'),
           settings.$section = settings.$topbar.find('section'),
           settings.$titlebar = settings.$topbar.children('ul:first');
-
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
           settings.breakPoint = breakpoint.width();
           breakpoint.remove();
@@ -65,7 +63,10 @@
 
             if (methods.breakpoint()) {
               var $this = $(this),
-                  $selectedLi = $this.closest('li');
+                  $selectedLi = $this.closest('li'),
+                  $nextLevelUl = $selectedLi.children('ul'),
+                  $nextLevelUlHeight = 0,
+                  $largestUl;
 
               settings.index += 1;
               $selectedLi.addClass('moved');
@@ -105,11 +106,9 @@
           });
         });
       },
-
       breakpoint : function () {
         return settings.$w.width() < settings.breakPoint;
       },
-
       assemble : function () {
         // Pull element out of the DOM for manipulation
         settings.$section.detach();
@@ -127,7 +126,6 @@
         // Put element back in the DOM
         settings.$section.appendTo(settings.$topbar);
       },
-      
       largestUL : function () {
         var uls = settings.$topbar.find('section ul ul'),
             largest = uls.first(),

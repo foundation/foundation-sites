@@ -100,7 +100,7 @@
   $.foundation.customForms.appendCustomMarkup = function ( options ) {
 
     var defaults = {
-      disable_class: "no-custom"
+      disable_class: "js-disable-custom"
     };
 
     options = $.extend( defaults, options );
@@ -165,7 +165,7 @@
       //
       // Should we not create a custom list?
       //
-      if ( $this.hasClass( options.disable_class ) ) return;
+      if ( $this.hasClass( 'no-custom' ) ) return;
 
       //
       // Did we not create a custom select element yet?
@@ -384,7 +384,7 @@
       if ( !$element.hasClass('checked') ) {
         $element.toggleClass('checked');
       }
-      $input.checked = $element.hasClass('checked');
+      input.checked = $element.hasClass('checked');
 
       $input.trigger('change');
     }
@@ -416,26 +416,10 @@
       if ($associatedElement.attr('type') === 'checkbox') {
         event.preventDefault();
         $customCheckbox = $(this).find('span.custom.checkbox');
-        //the checkbox might be outside after the label
-        if ($customCheckbox.length == 0) {
-            $customCheckbox = $(this).next('span.custom.checkbox');
-        }
-        //the checkbox might be outside before the label
-        if ($customCheckbox.length == 0) {
-            $customCheckbox = $(this).prev('span.custom.checkbox');
-        }
         toggleCheckbox($customCheckbox);
       } else if ($associatedElement.attr('type') === 'radio') {
         event.preventDefault();
         $customRadio = $(this).find('span.custom.radio');
-        //the radio might be outside after the label
-        if ($customRadio.length == 0) {
-            $customRadio = $(this).next('span.custom.radio');
-        }
-        //the radio might be outside before the label
-        if ($customRadio.length == 0) {
-            $customRadio = $(this).prev('span.custom.radio');
-        }
         toggleRadio($customRadio);
       }
     }

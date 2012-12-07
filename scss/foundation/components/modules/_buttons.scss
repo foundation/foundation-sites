@@ -1,9 +1,9 @@
 /* Normal Buttons ---------------------- */
 
-  .button { width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: inherit; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
+  .button { width: auto; background: $buttonBgColor; border: 1px solid darken(($buttonBgColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: inherit; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
 
     /* Hovers */
-    &:hover, &:focus { color: $white; background-color: darken(($mainColor), 10%); }
+    &:hover, &:focus { color: $white; background-color: darken(($buttonBgColor), 10%); }
     &:active  { @include box-shadow(0 1px 0 $darkEdge inset); }
 
     /* Sizes */
@@ -36,8 +36,8 @@
     &.left-align { text-align: left; text-indent: 12px; }
 
 		/* Disabled ---------- */
-    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none);
-      &:hover { background: $mainColor; }
+    &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $buttonBgColor; @include box-shadow(none);
+      :hover { background: $buttonBgColor; }
 
       &.success { background-color: $successColor;
         &:hover, &:focus { background-color: $successColor; outline: none; }
@@ -83,7 +83,7 @@
 
       li { width: 100%; cursor: pointer; padding: 0; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none;
         a { display: block; color: #555; font-size: ms(0) - 1; font-weight: $bodyFontWeight; padding: 6px 14px; text-align: $defaultFloat; }
-        &:hover, &:focus { background-color: lighten($mainColor, 45%); color: #222; }
+        &:hover, &:focus { background-color: lighten($buttonBgColor, 45%); color: #222; }
         &.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: darken($white, 7%); }
       }
     }
@@ -101,22 +101,22 @@
     &.split { padding: 0; position: relative;
 
       &:after { display: none; }
-      &:hover, &:focus { background-color: $mainColor; }
+      &:hover, &:focus { background-color: $buttonBgColor; }
       &.alert:hover, &.alert:focus { background-color: $alertColor; }
       &.success:hover, &.success:focus { background-color: $successColor; }
       &.secondary:hover, &.secondary:focus { background-color: $secondaryColor; }
 
       /* Sizes */
       &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); padding-#{$defaultFloat}: $btnBase * 2; padding-#{$defaultOpposite}: ($btnBase * 2.5) * 2; @include single-transition(background-color, .15s, ease-in-out);
-        &:hover, &:focus { background-color: darken($mainColor, 10%); }
+        &:hover, &:focus { background-color: darken($buttonBgColor, 10%); @include box-shadow(0 1px 0 $shinyEdge inset); }
       }
       &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); padding-#{$defaultFloat}: $largeBtnBase * 2; padding-#{$defaultOpposite}: ($largeBtnBase * 2.5) * 2; }
       &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); padding-#{$defaultFloat}: $smallBtnBase * 2; padding-#{$defaultOpposite}: ($smallBtnBase * 2.5) * 2; }
       &.tiny>a { padding: $tinyBtnBase (($tinyBtnBase * 2.5) * 2) ($tinyBtnBase + 1) ($tinyBtnBase * 2); padding-#{$defaultFloat}: $tinyBtnBase * 2; padding-#{$defaultOpposite}: ($tinyBtnBase * 2.5) * 2; }
 
       /* Triangle Spans */
-      &>span { background-color: $mainColor; position: absolute; #{$defaultOpposite}: 0; top: 0; height: 100%; width: $btnBase * 3; border-#{$defaultFloat}: 1px solid darken($mainColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
-        &:hover, &:focus { background-color: darken($mainColor, 10%); }
+      &>span { background-color: $buttonBgColor; position: absolute; #{$defaultOpposite}: 0; top: 0; height: 100%; width: $btnBase * 3; border-#{$defaultFloat}: 1px solid darken($buttonBgColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
+        &:hover, &:focus { background-color: darken($buttonBgColor, 10%); }
         &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -6px; margin-top: -2px; }
       }
       &.secondary>span:after { @include cssTriangle(6px, darken(($secondaryColor), 80%), top); }
@@ -150,14 +150,16 @@
     }
 
     &.radius li {
-      .button, .button.radius, .button-rounded { @include border-radius(0px); }
-      &:first-child {
-        .button, .button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
-        .button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
+      a, input[type="submit"] {
+        &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
       }
-      &:last-child {
-        .button, .button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
-        .button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
+      &:first-child a, &:first-child input[type="submit"] {
+        &.button, &.button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
+        &.button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
+      }
+      &:last-child a, &:last-child input[type="submit"] {
+        &.button, &.button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
+        &.button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
       }
     }
 
@@ -175,3 +177,4 @@
     ul.button-group { float: $defaultFloat; margin-#{$defaultOpposite}: 8px; }
     ul.button-group:last-child { margin-#{$defaultFloat}: 0; }
   }
+  
