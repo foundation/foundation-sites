@@ -384,7 +384,7 @@
       if ( !$element.hasClass('checked') ) {
         $element.toggleClass('checked');
       }
-      $input.checked = $element.hasClass('checked');
+      input.checked = $element.hasClass('checked');
 
       $input.trigger('change');
     }
