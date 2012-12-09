@@ -162,6 +162,11 @@
 
   }
 
+  div.pagination-centered { text-align: center; 
+
+    ul > li { float: none; display: inline-block; }
+  }
+
   /* Breadcrums ---------------------- */
 
   ul.breadcrumbs { display: block; background: lighten($secondaryColor, 5%); padding: 6px 10px 7px; border: 1px solid $secondaryColor; @include border-radius(2px); overflow: hidden; margin-#{$defaultFloat}: 0;
