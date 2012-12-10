@@ -23,6 +23,7 @@ $darkEdge: rgba(#000, .2) !default;
 
 // Font Settings
 
+$fontSmoothing: antialiased !default;
 $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
 $headerFontStyle: normal !default;
@@ -129,6 +130,7 @@ $progBarBorderSize: 1px !default;
 $progBarPad: 2px !default;
 $linkListBottomMargin: 17px -22px !default;
 $tableBorderRadius: 3px !default;
+$alertBorderRadius: 3px !default;
 
 // Tooltip Settings
 

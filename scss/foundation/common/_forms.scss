@@ -31,7 +31,7 @@
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
-    &:focus { background: $inputFocusBgColor; outline: none !important; border-color: $inputFocusBorderColor; }
+    &:focus { background: $inputFocusBgColor; border-color: $inputFocusBorderColor; }
     &[disabled] { background-color: #ddd; }
   }
 
@@ -114,6 +114,6 @@
 
   /* Correct FF custom dropdown height */
   @-moz-document url-prefix() {
-    form.custom div.custom.dropdown a.selector { height: 30px; }
+    form.custom div.custom.dropdown a.selector { height: 28px; }
   }
-  .lt-ie9 form.custom div.custom.dropdown a.selector { height: 30px; }
+  .lt-ie9 form.custom div.custom.dropdown a.selector { height: 28px; }

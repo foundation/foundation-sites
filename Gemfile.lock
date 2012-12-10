@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zurb-foundation (3.2.0)
+    zurb-foundation (3.2.3)
       compass (>= 0.12.2)
       modular-scale (>= 1.0.2)
       rake
@@ -20,12 +20,13 @@ GEM
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
     rake (0.9.2.2)
-    sass (3.2.1)
+    sass (3.2.2)
     sassy-math (1.2)
       compass (~> 0.11)
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   zurb-foundation!
