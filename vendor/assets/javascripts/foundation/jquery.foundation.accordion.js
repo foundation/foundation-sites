@@ -4,8 +4,6 @@
   $.fn.foundationAccordion = function (options) {
     var $accordion = $('.accordion');
     
-    $accordion.find('a').on('click', function(e){ e.stopPropagation(); });
-
     if ($accordion.hasClass('hover') && !Modernizr.touch) {
       $('.accordion li', this).on({
         mouseenter : function () {
@@ -19,10 +17,10 @@
         }
       });
     } else {
-      $('.accordion li', this).on('click.fndtn', function () {
-        var li = $(this),
-            p = $(this).parent(),
-            flyout = $(this).children('.content').first();
+      $('.accordion li .title', this).on('click.fndtn', function () {
+        var li = $(this).parent('li:first'),
+            p = li.parent(),
+            flyout = li.children('.content').first();
 
         if (li.hasClass('active')) {
           p.find('li').removeClass('active').end().find('.content').hide();
