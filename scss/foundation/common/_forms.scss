@@ -48,7 +48,7 @@
   /* Errors */
   .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
   .error label, label.error { color: $alertColor; }
-  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; font-size: ms(0) - 2; font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
+  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; font-size: ms(0) - 2; font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, $inputBorderRadius); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
   .error textarea, textarea.error {
     &:focus { background: darken($white, 2%); border-color: darken($white, 30%); }
   }
