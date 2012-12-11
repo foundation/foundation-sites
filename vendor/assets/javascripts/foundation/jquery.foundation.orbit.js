@@ -392,7 +392,7 @@
         if (captionLocation.charAt(0) == '#') {
             captionLocation = captionLocation.substring(1, captionLocation.length);
         }
-        captionHTML = $(captionLocation).html(); //get HTML from the matching HTML entity
+        captionHTML = $('#' + captionLocation).html(); //get HTML from the matching HTML entity
         this.$caption
           .attr('id', captionLocation) // Add ID caption TODO why is the id being set?
           .html(captionHTML); // Change HTML in Caption
