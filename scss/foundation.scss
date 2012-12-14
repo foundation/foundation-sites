@@ -3,18 +3,13 @@
 // =============
 
 @import "compass/css3";
-
 @import "modular-scale";
-
 @import "foundation/functions/all";
-
 @import "foundation/settings";
-
 @import "foundation/mixins/all";
+@import "foundation/small-screen/common/base";
+@import "foundation/small-screen/components/all";
 
-@import "foundation/common/base";
-
-@import "foundation/components/grid", "foundation/components/modules/all";
-
-// Media Queries Overrides
-@import "foundation/components/modules/mqueries";
+@import "foundation/large-screen/components/grid";
+// @import "foundation/large-screen/common/base";
+// @import "foundation/large-screen/components/all";

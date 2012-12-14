@@ -1,0 +1,86 @@
+// NOTE:
+// Check this grid out for how they use media queries to handle the semantic grid mixins
+// http://neat.bourbon.io/examples/
+
+/* The Grid */
+/* -------- */
+
+/* Row styles: default, nested, collapse, centered */
+// Default Rows
+.row {
+  width: 100%;
+  margin: 0 auto;
+  max-width: $rowWidth;
+
+  // Nested Rows
+  .row {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    margin: 0 (-($columnGutter/2));
+  }
+
+  // Collapsed row, remove margin
+  .row.collapse { margin: 0; }
+
+  // Clearfix for Rowss
+  @include clearfix();
+
+}
+
+/* Make sure images don't break the grid */
+img,
+object,
+embed { max-width: 100%; height: auto; }
+
+object,
+embed { height: 100%; }
+img { -ms-interpolation-mode: bicubic; }
+
+#map_canvas,
+.map_canvas {
+  img,
+  embed,
+  object { max-width: none !important;
+  }
+}
+
+/* Mobile Grid for small devices that can handle media queries */
+@media only screen and (max-width: emCalc(767px)) {
+
+  /* Shared column styles */
+  .row {
+    [class*="small-"] {
+      float: $defaultFloat;
+      padding: 0 $columnGutter / 2;
+      position: relative;
+    }
+    [class*="large-"] { padding: 0 $columnGutter / 2; }
+    &.collapse {
+      [class*="small-"] { padding: 0; }
+    }
+  }
+
+  /* Floating for default last columns and overriding with .end class */
+  [class*="small-"]:last-child { float: $defaultOpposite; }
+  [class~="end"] { float: $defaultFloat; }
+
+  /* Centered small columns */
+  .small-centered { float: none !important; margin: 0 auto; }
+
+  /* Small column widths */
+  @for $i from 1 through $totalColumns {
+    .row .small#{-$i} { width: gridCalc($i, $totalColumns); }
+  }
+
+  /* Offset columns */
+  @for $i from 1 through $totalColumns - 2 {
+    .row .small-offset-#{$i} { margin-#{$defaultFloat}: gridCalc($i, $totalColumns); }
+  }
+
+  /* Push/Pull columns */
+  @for $i from 2 through $totalColumns - 2 {
+    .small-push#{-$i} { #{$defaultFloat}: gridCalc($i, $totalColumns); }
+    .small-pull#{-$i} { #{$defaultOpposite}: gridCalc($i, $totalColumns); }
+  }
+}
