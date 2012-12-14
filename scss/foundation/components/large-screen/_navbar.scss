@@ -2,7 +2,6 @@
 @media only screen and (min-width: emCalc(768px)) {
   .nav-bar { 
     height: $navBarHeight; 
-    margin-top: $navBarHeight / 2; 
 
     &>li { 
       float: $defaultFloat; 
@@ -16,8 +15,7 @@
         }
       }
     }
-
-    &.vertical { height: auto;
+    &.vertical { 
       &>li { 
         float: none; 
         .flyout { #{$defaultFloat}: 100%; top: -1px;
@@ -37,27 +35,5 @@
 
     &.right { left: auto; right: -2px; }
 
-  }
-
-  ul.flyout, 
-  .nav-bar li ul { padding: 0;
-    li {
-      a { 
-        display: block; 
-        font-size: ms(0); 
-        height: auto; 
-        line-height: 1; 
-        padding: (($navBarHeight / 2) - 5) ($navBarHeight / 2); 
-      }
-      &.active { margin-top: 0;
-        a { 
-          border: none; 
-          height: auto; 
-          margin: 0; 
-          position: static; 
-          top: 0; 
-        }
-      }
-    }
   }
 }
