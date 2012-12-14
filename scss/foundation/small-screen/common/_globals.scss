@@ -3,8 +3,12 @@
 /* Global Reset & Standards ---------------------- */
 
   * { @include box-sizing(border-box); }
-  html { font-size: 62.5%; }
-  body { background: $white; font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-style: $bodyFontStyle; font-size: ms(0); line-height: 1; color: $bodyFontColor; position: relative; -webkit-font-smoothing: antialiased; }
+  html { font-size: 100%; }
+  body { margin: 0; padding: 0; background: $white; font-family: $bodyFontFamily; font-weight: $bodyFontWeight; font-style: $bodyFontStyle; font-size: ms(0) + .25em; line-height: 1; color: $bodyFontColor; position: relative; -webkit-font-smoothing: antialiased; }
+
+  @media only screen and (min-width: 48em) {
+    body { font-size: ms(0); }
+  }
 
 /* Links ---------------------- */
 
@@ -23,12 +27,6 @@
   .text-center { text-align: center; }
   .hide        { display: none !important; }
   .highlight   { background: $highlightColor; }
-
-  #googlemap img, object, embed { max-width: none; }
-
-  #map_canvas embed { max-width: none; }
-  #map_canvas img { max-width: none; }
-  #map_canvas object { max-width: none; }
 
   /* Reset for strange margins by default on <figure> elements */
   figure { margin: 0; }

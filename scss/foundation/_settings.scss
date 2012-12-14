@@ -2,11 +2,13 @@
 
 // Grid Settings
 
-$rowWidth: 1000px !default;
-$columnGutter: 30px !default;
+$emBase: 16px;
+$rowWidth: 62.5em !default; // 1000px / 16px = 62.5em
+$columnGutter: 1.875em !default; // 30px / 16px = 1.875em
 $totalColumns: 12 !default;
-$mobileTotalColumns: 4 !default;
-$blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
+// $blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
+
+
 
 // Colors Settings
 
@@ -57,7 +59,7 @@ $largeBtnBase: $btnBase + 5 !default;
 
 // Form Settings
 
-$formSpacing: 12px !default;
+$formSpacing: .75em !default;
 $labelFontWeight: 500 !default;
 $labelFontColor: lighten(#000, 30%) !default;
 $labelBtmMargin: 3px !default;

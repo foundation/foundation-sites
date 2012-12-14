@@ -1,0 +1,5 @@
+// Function for calculating em values
+
+@function emCalc($pxWidth) {
+  @return ($pxWidth / $emBase) + em;
+}
