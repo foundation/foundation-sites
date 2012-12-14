@@ -133,6 +133,48 @@ ul.flyout,
     }
   }
 }
+.nav-bar { 
+  height: auto;
+  &>li { 
+    float: none; 
+    display: block; 
+    border-#{$defaultOpposite}: none;
+  }
+  &>li>a.main { 
+    text-align: $defaultFloat; 
+    border-top: 1px solid #ddd; 
+    border-#{$defaultOpposite}: none;
+  }
+  &>li:first-child>a.main { border-top: none; }
+  &>li.has-flyout>a.flyout-toggle { 
+    position: absolute; 
+    #{$defaultOpposite}: 0; 
+    top: 0; 
+    padding: ($navBarHeight / 2)+2; 
+    z-index: 2; 
+    display: block;
+  }
+  &>li.has-flyout.is-touch>a.flyout-toggle span { 
+    content: ""; 
+    width: 0; 
+    height: 0; 
+    display: block;
+  }
+  &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
+  &.vertical>li.has-flyout>.flyout { #{$defaultFloat}: 0; }
+}
+.flyout { 
+  position: relative; 
+  width: 100% !important; 
+  top: auto; 
+  margin-#{$defaultOpposite}: -2px; 
+  border-width: 1px 1px 0 1px;
+  &.right { float: none; right: auto; left: -1px; }
+  &.small, &.large { width: 100% !important; }
+  p:last-child { margin-bottom: 18px; }
+}
+
+
 /* Between Medium and Small */
 @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
   .touch .nav-bar li {
