@@ -31,7 +31,7 @@
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
-    &:focus { background: $inputFocusBgColor; outline: none !important; border-color: $inputFocusBorderColor; }
+    &:focus { background: $inputFocusBgColor; border-color: $inputFocusBorderColor; }
     &[disabled] { background-color: #ddd; }
   }
 

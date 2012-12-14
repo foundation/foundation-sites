@@ -13,8 +13,7 @@
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="stylesheets/styles.css">
 
-	<script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
-
+	<script src="../lib/assets/javascripts/foundation/modernizr.foundation.js"></script>
 </head>
 <body>
 
@@ -41,7 +40,7 @@
   <div class="row">
     <div class="twelve columns">
   		<h3>Tabs</h3>
-  		<h4 class="subheader">Tabs are very versatile both as organization and navigational constructs. With the base Foundation package, tabs in the markup specified below are already hooked up &mdash; no extra work required.</h4>
+  		<h4 class="subheader">Tabs are very versatile <span class="has-tip" data-width="210" title="I'm on bottom and the default position.">"both"</span> as organization and navigational constructs. With the base Foundation package, tabs in the markup specified below are already hooked up &mdash; no extra work required.</h4>
 
       <br>
 
@@ -177,21 +176,12 @@
   </div>
 
 	<!-- Included JS Files -->
-	<script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.placeholder.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.alerts.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.accordion.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.buttons.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tooltips.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.forms.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.navigation.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.reveal.js"></script>
-  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
-	<script src="../vendor/assets/javascripts/foundation/app.js"></script>
-  <script type="text/javascript">
-    // Page-Specific JavaScript Goes Here
+	<script src="../lib/assets/javascripts/foundation/jquery.js"></script>
+  <script src="../lib/assets/javascripts/foundation/foundation.js"></script>
+  <script src="../lib/assets/javascripts/foundation/jquery.foundation.tabs.js"></script>
+  <script src="../lib/assets/javascripts/foundation/jquery.foundation.tooltips.js"></script>
+  <script>
+    $(document).foundation();
   </script>
 </body>
 </html>

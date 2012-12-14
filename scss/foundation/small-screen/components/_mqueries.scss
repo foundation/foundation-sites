@@ -363,9 +363,9 @@
         &>li { float: none;
           &.active, &:hover { background: darken($topBarDropBgColor, 5%); }
           /* Branding and name */
-          &.name { background: darken($topBarBgColor, 20%); height: $topBarHeightMobile;
+          &.name { height: $topBarHeightMobile;
             h1 { line-height: 1;
-              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-left: $topBarHeightMobile / 2; height: $topBarHeightMobile; }
+              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-left: $topBarHeightMobile / 3; height: $topBarHeightMobile; }
             }
           }
           &:hover, &.active { a { color: $topBarDropLinkColor; } }
@@ -398,7 +398,7 @@
             &:hover >.dropdown { display: block; visibility: hidden; }
             .dropdown { visibility: hidden; z-index: 0 !important; }
             &.moved { position: static;
-              .dropdown { top: 0; visibility: visible;
+              &>.dropdown { top: 0; visibility: visible;
                 li {
                   label { margin-bottom: 6px; padding-top: 6px !important; font-size: ms(0) - 3; }
                   &:not(.title) { padding-bottom: 0;
@@ -443,7 +443,6 @@
           }
         }
       }
-      &>ul { height: $topBarHeight; }
       section > ul li a:not(.button) { padding-left: $topBarHeightMobile / 2 !important; }
 
       /* When the Small Nav is Showing */
@@ -451,6 +450,9 @@
         ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
-    .top-bar ul li.has-button { padding: 0 $topBarHeightMobile / 2 5px; }
+    .top-bar ul li.has-button { padding: 5px $topBarHeightMobile / 3; }
     .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
+    .top-bar ul > li.has-button {
+      a.button { margin: 0; }
+    }
   }
