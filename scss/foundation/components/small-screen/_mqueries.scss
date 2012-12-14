@@ -274,16 +274,16 @@
     /* Navbar --- */
     /*            */
     .nav-bar { height: auto;
-      &>li { float: none; display: block; border-right: none; }
+      &>li { float: none; display: block; border-#{$defaultOpposite}: none; }
       &>li>a.main { text-align: $defaultFloat; border-top: 1px solid #ddd; border-#{$defaultOpposite}: none; }
       &>li:first-child>a.main { border-top: none; }
       &>li.has-flyout>a.flyout-toggle { position: absolute; #{$defaultOpposite}: 0; top: 0; padding: ($navBarHeight / 2)+2; z-index: 2; display: block; }
       &>li.has-flyout.is-touch>a.flyout-toggle span { content: ""; width: 0; height: 0; display: block; }
       &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
-      &.vertical>li.has-flyout>.flyout { left: 0; }
+      &.vertical>li.has-flyout>.flyout { #{$defaultFloat}: 0; }
     }
     .flyout { position: relative; width: 100% !important; top: auto; margin-#{$defaultOpposite}: -2px; border-width: 1px 1px 0 1px;
-      &.right { float: none; right: auto; #{$defaultFloat}: -1px; }
+      &.right { float: none; right: auto; left: -1px; }
       &.small, &.large { width: 100% !important; }
       p:last-child { margin-bottom: 18px; }
     }
@@ -300,8 +300,8 @@
     /* Clearing --- */
     /*              */
     .clearing-container { margin: 0; }
-    .clearing-close { z-index: 99; font-size: ms(4); top: 0px; right: 5px; }
-    .clearing-caption { position: fixed; bottom: 0; left: 0; padding: 10px !important; line-height: 1.3; }
+    .clearing-close { z-index: 99; font-size: ms(4); top: 0px; #{$defaultOpposite}: 5px; }
+    .clearing-caption { position: fixed; bottom: 0; #{$defaultFloat}: 0; padding: 10px !important; line-height: 1.3; }
     .clearing-main-right, .clearing-main-left { display: none; }
     .clearing-blackout.clearing-assembled {
       .visible-img, .clearing-container { height: 100%; }
@@ -310,7 +310,7 @@
 
     /* Joyride --- */
     /*             */
-    .joyride-tip-guide { width: 95% !important; left: 2.5% !important; @include border-radius($tipBorderRadius); }
+    .joyride-tip-guide { width: 95% !important; #{$defaultFloat}: 2.5% !important; @include border-radius($tipBorderRadius); }
     .joyride-tip-guide-wrapper { width: 100%; }
 
     /* Tabs --- */
@@ -319,9 +319,9 @@
       dt, li, dd { float: none; height: auto; }
       dd a, li a { font-size: ms(0) + 1; display: block; width: auto; height: auto; padding: 18px 20px; margin: 0; color: #555; line-height: 1; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
       dd a.active, li a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
-      dd:first-child, li:first-child { padding-left: 20px !important; }
       dd:first-child a.active, li:first-child a.active { margin: 0; }
-      &+.tabs-content.contained { margin-left:-15px; margin-right:-15px; }
+      &+.tabs-content.contained { margin-#{$defaultFloat}:-15px; margin-#{$defaultOpposite}:-15px; }
+      .section-title { padding-#{$defaultFloat}: 20px !important; }
     }
 
     .contained.mobile { margin-bottom: 0; }
@@ -335,16 +335,16 @@
       font-size: $tooltipFontSizeScreenSm;
       line-height: 1.4;
       padding: 7px 10px 9px 10px;
-      left: 50% !important;
+      #{$defaultFloat}: 50% !important;
       max-width: 80% !important;
-      margin-left: -40%;
+      margin-#{$defaultFloat}: -40%;
       font-size: 110%;
     }
     .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
       border-color: transparent transparent $tooltipBackgroundColor transparent;
       border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBgOpacityScreenSm) transparent;
       top: -12px;
-      left: 10px;
+      #{$defaultFloat}: 10px;
     }
   }
 
@@ -358,23 +358,23 @@
       .contain-to-grid & { width: auto; }
 
       /* Setting up the sliding area */
-      section { left: 0; position: relative; width: auto; @include single-transition(left, 300ms); }
+      section { #{$defaultFloat}: 0; position: relative; width: auto; @include single-transition($defaultFloat, 300ms); }
       ul { width: 100%; height: 100%; margin-bottom: 0; display: block;
         &>li { float: none;
           &.active, &:hover { background: darken($topBarDropBgColor, 5%); }
           /* Branding and name */
           &.name { height: $topBarHeightMobile;
             h1 { line-height: 1;
-              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-left: $topBarHeightMobile / 3; height: $topBarHeightMobile; }
+              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-#{$defaultFloat}: $topBarHeightMobile / 3; height: $topBarHeightMobile; }
             }
           }
           &:hover, &.active { a { color: $topBarDropLinkColor; } }
           a:not(.button) { color: $topBarDropLinkColor; }
 
           /* Dropdown Toggle */
-          &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeightMobile; position: absolute; right: 0; top: 0; width: 50%;
-            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
-            @if $topBarBreakPoint == 9999px { a { right: ($topBarHeight / 2) + ($columnGutter / 2);} }
+          &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeightMobile; position: absolute; #{$defaultOpposite}: 0; top: 0; width: 50%;
+            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; #{$defaultOpposite}: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
+            @if $topBarBreakPoint == 9999px { a { #{$defaultOpposite}: ($topBarHeight / 2) + ($columnGutter / 2);} }
             &:hover { background: inherit; }
           }
           &.toggle-topbar a { padding: 0 !important; }
@@ -392,8 +392,8 @@
 
           /* Dropdown Level 1 */
           &.has-dropdown {
-            a { padding-right: $topBarHeight * .75;
-              &:after { @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); margin-right: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
+            a { padding-#{$defaultOpposite}: $topBarHeight * .75;
+              &:after { @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); margin-#{$defaultOpposite}: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
             }
             &:hover >.dropdown { display: block; visibility: hidden; }
             .dropdown { visibility: hidden; z-index: 0 !important; }
@@ -410,8 +410,8 @@
                 }
               }
               .back.title { padding-bottom: 0;
-                a:before { position: absolute; top: 50%; left: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, right); }
-                h5 { margin: 0; padding-left: $topBarDropToggleSize * 3; position: relative;
+                a:before { position: absolute; top: 50%; #{$defaultFloat}: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, $defaultOpposite); }
+                h5 { margin: 0; padding-#{$defaultFloat}: $topBarDropToggleSize * 3; position: relative;
                   a { background: transparent; padding-top: 8px; padding-bottom: 8px; font-size: ms(2); font-weight: $topBarTitleWeight; }
                 }
               }
@@ -421,9 +421,9 @@
           /* Dropdown Level 2 */
           &.has-dropdown .dropdown li { background: transparent;
             &.has-dropdown {
-              .dropdown { left: 100% !important; top: 0; right: auto !important; }
-              &>a { padding-right: $topBarHeight * .75;
-                &:after { content: ""; margin-right: $topBarHeightMobile / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), left); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
+              .dropdown { #{$defaultFloat}: 100% !important; top: 0; #{$defaultOpposite}: auto !important; }
+              &>a { padding-#{$defaultOpposite}: $topBarHeight * .75;
+                &:after { content: ""; margin-#{$defaultOpposite}: $topBarHeightMobile / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
                 li a {
                   &:hover { background: lighten($topBarBgColor, 10%); }
                 }
@@ -438,12 +438,12 @@
         &.left, &.right { float: none; width: 100%;
           &>li { display: block; float: none; margin: 0 !important;
             &.has-dropdown {
-              .dropdown { left: 100% !important; top: 0; right: auto !important; }
+              .dropdown { #{$defaultFloat}: 100% !important; top: 0; #{$defaultOpposite}: auto !important; }
             }
           }
         }
       }
-      section > ul li a:not(.button) { padding-left: $topBarHeightMobile / 2 !important; }
+      section > ul li a:not(.button) { padding-#{$defaultFloat}: $topBarHeightMobile / 2 !important; }
 
       /* When the Small Nav is Showing */
       &.expanded { height: 100%;

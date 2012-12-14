@@ -9,10 +9,14 @@
     }
   }
 
-  .joyride-timer-indicator-wrap { width: $tipTimerWidth; #{$defaultOpposite}: 17px; }
-  .joyride-timer-indicator { display: block; width: 0; height: inherit; background: $tipTimerColor; }
+  .joyride-timer-indicator-wrap { width: $tipTimerWidth; #{$defaultOpposite}:17px; }
+  .joyride-timer-indicator { 
+    display: block; 
+    width: 0; 
+   }
 
-  .joyride-close-tip { position: absolute; #{$defaultOpposite}: 10px; top: 10px; color: $tipCloseColor !important; text-decoration: none; font-size: $tipCloseSize; font-weight: $tipCloseWeight; line-height: .5 !important;
-    &:hover, &:focus { color: #eee !important; }
+  .joyride-close-tip { 
+    #{$defaultOpposite}: 10px; 
+    font-size: $tipCloseSize; 
   }
 }
