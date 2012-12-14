@@ -13,19 +13,10 @@
   .joyride-timer-indicator { 
     display: block; 
     width: 0; 
-    height: inherit; 
-    background: $tipTimerColor;
    }
 
   .joyride-close-tip { 
-    position: absolute; #{$defaultOpposite}: 10px; 
-    top: 10px; 
-    color: $tipCloseColor !important; 
-    text-decoration: none; 
+    #{$defaultOpposite}: 10px; 
     font-size: $tipCloseSize; 
-    font-weight: $tipCloseWeight; 
-    line-height: .5 !important;
-
-    &:hover, &:focus { color: #eee !important; }
   }
 }
