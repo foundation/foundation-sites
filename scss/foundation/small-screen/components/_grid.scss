@@ -46,7 +46,6 @@ img { -ms-interpolation-mode: bicubic; }
 }
 
 /* Mobile Grid for small devices that can handle media queries */
-// VARIABLE TO HOLD EMCALC?
 @media only screen and (max-width: emCalc(767px)) {
 
   /* Shared column styles */
