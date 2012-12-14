@@ -20,8 +20,7 @@
     &:last-child { border-#{$defaultOpposite}: solid 1px lighten($black, 20%); @include box-shadow(1px 0 0 fade-out($shinyEdge, .3) inset, 1px 0 0 fade-out($shinyEdge, .3)); }
 
     &.active { background: $mainColor; border-color: darken($mainColor, 10%);
-      &>a { color
-        : $white; cursor: default; }
+      &>a { color: $white; cursor: default; }
       &:hover { background: $mainColor; cursor: default; }
     }
     &:hover { background: lighten($black, 20%); }
@@ -81,22 +80,21 @@
 }
 
 .flyout { 
+  position: relative; 
+  width: 100% !important; 
+  top: auto; 
+  margin-#{$defaultOpposite}: -2px; 
+  border-width: 1px 1px 0 1px;
+  &.right { float: none; right: auto; left: -1px; }
+  &.small, &.large { width: 100% !important; }
   background: darken($white, 5%); 
   padding: $navBarHeight / 2; 
-  margin: 0; border: 1px solid darken($white, 15%); 
-  position: absolute; 
-  top: $navBarHeight - 1; #{$defaultFloat}: -1px; 
-  width: $navFlyoutBaseWidth; 
   z-index: 40; @include box-shadow(0 1px 5px rgba(#000, .1));
 
   p { line-height: 1.2; font-size: ms(0) - 1; }
   *:first-child { margin-top: 0; } /* remove margin on any first-child element */
   *:last-child { margin-bottom: 0; } /* remove margin on last element */
-
-  &.small { width: $navFlyoutBaseWidth / 1.5; }
-  &.large { width: $navFlyoutBaseWidth * 1.75; }
-
-  &.right { left: auto; right: -2px; }
+  p:last-child { margin-bottom: 18px; }
   &.left { right: auto; left: -2px; }
   &.up { top: auto; bottom: $navBarHeight - 1; }
 
@@ -163,17 +161,6 @@ ul.flyout,
   &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
   &.vertical>li.has-flyout>.flyout { #{$defaultFloat}: 0; }
 }
-.flyout { 
-  position: relative; 
-  width: 100% !important; 
-  top: auto; 
-  margin-#{$defaultOpposite}: -2px; 
-  border-width: 1px 1px 0 1px;
-  &.right { float: none; right: auto; left: -1px; }
-  &.small, &.large { width: 100% !important; }
-  p:last-child { margin-bottom: 18px; }
-}
-
 
 /* Between Medium and Small */
 @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
