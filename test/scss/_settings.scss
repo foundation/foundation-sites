@@ -1,5 +1,3 @@
-@import "foundation/common/ratios";
-
 // Settings file containing Foundation defaults
 
 // Grid Settings
@@ -235,8 +233,9 @@
 // Modular Scale Settings
 
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
-// $baseFontSize: 14px;
-// $importantModNum: 44px;
+$baseFontSize: 1em; // 16px
+$importantModNum: 2.75em; // 44px
+
 // $base-size: $baseFontSize $importantModNum;
 // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
 // http://www.modularscale.com by Tim Brown
