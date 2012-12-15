@@ -20,18 +20,37 @@
       init : function (options) {
         return this.each(function () {
           settings = $.extend(settings, options);
-          settings.$w = $(window),
-          settings.$topbar = $('nav.top-bar'),
-          settings.$section = settings.$topbar.find('section'),
-          settings.$titlebar = settings.$topbar.children('ul:first');
-
-          var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
-          settings.breakPoint = breakpoint.width();
-          breakpoint.remove();
+          methods.initializeSettings();
 
           if (!settings.initialized) {
             methods.assemble();
             settings.initialized = true;
+          }
+
+          methods.attachEventListeners();
+
+          var page_change = null;
+          var page_load   = null;
+          if (window.Turbolinks !== undefined) {
+            page_change = 'page:change';
+            page_load   = 'page:load';
+          } else if ($.fn.pjax !== undefined) {
+            page_change = 'pjax:begin';
+            page_load   = 'pjax:end';
+          }
+
+          if (page_change !== null) {
+            $(window).on(page_change, function(e) {
+              methods.detachEventListeners();
+              settings.initialized = false;
+            });
+
+            $(window).on(page_load, function(e) {
+              methods.initializeSettings();
+              methods.assemble();
+              settings.initialized = true;
+              methods.attachEventListeners();
+            });
           }
 
           if (!settings.height) {
@@ -42,68 +61,89 @@
             $('body').css('padding-top',settings.$topbar.outerHeight())
           }
 
-          $('.top-bar .toggle-topbar').die('click.fndtn').live('click.fndtn', function (e) {
-            e.preventDefault();
-
-            if (methods.breakpoint()) {
-              settings.$topbar.toggleClass('expanded');
-              settings.$topbar.css('min-height', '');
-            }
-
-            if (!settings.$topbar.hasClass('expanded')) {
-              settings.$section.css({left: '0%'});
-              settings.$section.find('>.name').css({left: '100%'});
-              settings.$section.find('li.moved').removeClass('moved');
-              settings.index = 0;
-            }
-          });
-
-          // Show the Dropdown Levels on Click
-          $('.top-bar .has-dropdown>a').die('click.fndtn').live('click.fndtn', function (e) {
-            if (Modernizr.touch || methods.breakpoint())
-              e.preventDefault();
-
-            if (methods.breakpoint()) {
-              var $this = $(this),
-                  $selectedLi = $this.closest('li');
-
-              settings.index += 1;
-              $selectedLi.addClass('moved');
-              settings.$section.css({left: -(100 * settings.index) + '%'});
-              settings.$section.find('>.name').css({left: 100 * settings.index + '%'});
-
-              $this.siblings('ul').height(settings.height + settings.$titlebar.outerHeight(true));
-              settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
-            }
-          });
-
           $(window).on('resize.fndtn.topbar',function() {
             if (!methods.breakpoint()) {
               settings.$topbar.css('min-height', '');
             }
           });
 
-          // Go up a level on Click
-          $('.top-bar .has-dropdown .back').die('click.fndtn').live('click.fndtn', function (e) {
+        });
+      },
+
+      initializeSettings : function() {
+        settings.$w = $(window),
+        settings.$topbar = $('nav.top-bar'),
+        settings.$section = settings.$topbar.find('section'),
+        settings.$titlebar = settings.$topbar.children('ul:first');
+        var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
+        settings.breakPoint = breakpoint.width();
+        breakpoint.remove();
+      },
+
+      attachEventListeners : function() {
+        $(document).on('click', '.top-bar .toggle-topbar', function (e) {
+          e.preventDefault();
+
+          if (methods.breakpoint()) {
+            settings.$topbar.toggleClass('expanded');
+            settings.$topbar.css('min-height', '');
+          }
+
+          if (!settings.$topbar.hasClass('expanded')) {
+            settings.$section.css({left: '0%'});
+            settings.$section.find('>.name').css({left: '100%'});
+            settings.$section.find('li.moved').removeClass('moved');
+            settings.index = 0;
+          }
+
+          return false;
+        });
+
+        // Show the Dropdown Levels on Click
+        $(document).on('click', '.top-bar .has-dropdown>a', function (e) {
+          if (Modernizr.touch || methods.breakpoint())
             e.preventDefault();
 
+          if (methods.breakpoint()) {
             var $this = $(this),
-              $movedLi = $this.closest('li.moved'),
-              $previousLevelUl = $movedLi.parent();
+                $selectedLi = $this.closest('li');
 
-            settings.index -= 1;
+            settings.index += 1;
+            $selectedLi.addClass('moved');
             settings.$section.css({left: -(100 * settings.index) + '%'});
-            settings.$section.find('>.name').css({'left': 100 * settings.index + '%'});
+            settings.$section.find('>.name').css({left: 100 * settings.index + '%'});
 
-            if (settings.index === 0) {
-              settings.$topbar.css('min-height', 0);
-            }
-
-            setTimeout(function () {
-              $movedLi.removeClass('moved');
-            }, 300);
-          });
+            $this.siblings('ul').height(settings.height + settings.$titlebar.outerHeight(true));
+            settings.$topbar.css('min-height', settings.height + settings.$titlebar.outerHeight(true) * 2)
+          }
         });
+
+        // Go up a level on Click
+        $(document).on('click', '.top-bar .has-dropdown .back', function (e) {
+          e.preventDefault();
+
+          var $this = $(this),
+            $movedLi = $this.closest('li.moved'),
+            $previousLevelUl = $movedLi.parent();
+
+          settings.index -= 1;
+          settings.$section.css({left: -(100 * settings.index) + '%'});
+          settings.$section.find('>.name').css({'left': 100 * settings.index + '%'});
+
+          if (settings.index === 0) {
+            settings.$topbar.css('min-height', 0);
+          }
+
+          setTimeout(function () {
+            $movedLi.removeClass('moved');
+          }, 300);
+        });
+      },
+
+      detachEventListeners : function() {
+        $(document).off('.top-bar .has-dropdown>a');
+        $(document).off('click', '.top-bar .toggle-topbar');
+        $(document).off('.top-bar .has-dropdown .back');
       },
 
       breakpoint : function () {
@@ -127,7 +167,7 @@
         // Put element back in the DOM
         settings.$section.appendTo(settings.$topbar);
       },
-      
+
       largestUL : function () {
         var uls = settings.$topbar.find('section ul ul'),
             largest = uls.first(),
