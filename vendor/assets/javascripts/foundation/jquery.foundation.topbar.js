@@ -35,7 +35,7 @@
             page_change = 'page:change';
             page_load   = 'page:load';
           } else if ($.fn.pjax !== undefined) {
-            page_change = 'pjax:begin';
+            page_change = 'pjax:start';
             page_load   = 'pjax:end';
           }
 
