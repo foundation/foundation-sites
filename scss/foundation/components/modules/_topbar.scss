@@ -131,9 +131,17 @@
   /* IE8 Fixes */
   .lt-ie9 .top-bar ul li a { color: $topBarLinkColor; display: block; font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3;
     &.button { height: auto; line-height: 30px; margin-top: 7px; }
-    &:hover, &:focus { color: darken($topBarLinkColor, 20%); }
     img { margin-top: -5px; vertical-align: middle; }
-    &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
+  }
+  .lt-ie9 .top-bar section > ul > li
+  {
+   a
+    {
+  &:hover, &:focus {color: darken($topBarLinkColor, 20%); }
+	}
+    &:hover, &:focus { background: darken($topBarBgColor, 15%) }
+	&.search:hover,&.search:focus,&.has-button:hover,&.has-button:focus { background: none }
+    &.active { background: darken($topBarBgColor, 15%); color: darken($topBarLinkColor, 15%); }
   }
   .lt-ie9 .top-bar ul li.has-dropdown {
     padding-right: $topBarHeight * .75;
