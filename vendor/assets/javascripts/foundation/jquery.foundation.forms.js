@@ -268,11 +268,11 @@
       //
       // Update the custom <ul> list width property.
       //
-      $customList.css( 'width', 'inherit' );
+      $customList.css( 'width', 'auto' );
       //
       // Set the custom select width property.
       //
-      $customSelect.css( 'width', 'inherit' );
+      $customSelect.css( 'width', 'auto' );
 
       //
       // If we're not specifying a predetermined form size.
