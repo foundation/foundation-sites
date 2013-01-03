@@ -71,7 +71,7 @@ that IE7/8 do not support :nth-child.
     @for $i from 1 through $blockGridElements {
       &.#{convert-number-to-word($i)}-up {
         @if $i == 1 { margin: 0; }
-        @ele if $i == 2 { margin: 0 -15px; }
+        @else if $i == 2 { margin: 0 -15px; }
         @else if $i == 3 { margin: 0 -12px; }
         @else if $i == 4 { margin: 0 -10px; }
         @else { margin: 0 -8px; }
