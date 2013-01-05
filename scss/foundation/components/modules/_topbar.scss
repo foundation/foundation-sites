@@ -25,6 +25,7 @@
   
   .sticky {
   	float: left;
+  	overflow: hidden;
   
   .sticky.fixed {
   	float: none;
