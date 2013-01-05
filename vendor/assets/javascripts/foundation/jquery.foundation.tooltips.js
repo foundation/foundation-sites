@@ -10,6 +10,7 @@
 
 ;(function ($, window, undefined) {
   'use strict';
+  
   var settings = {
       bodyHeight : 0,
       selector : '.has-tip',
@@ -160,6 +161,7 @@
                 return el;
               }
           }).join(' ') : '';
+          
         return $.trim(filtered);
       },
       show : function ($target) {
