@@ -154,5 +154,18 @@
       $.error('Method ' +  method + ' does not exist on jQuery.foundationTopBar');
     }
   };
+  
+  var distance = $('.sticky').offset().top,
+      $window = $(window);
+  
+  $window.scroll(function() {
+      if ( $window.scrollTop() >= distance ) {
+         $(".sticky").addClass("fixed");
+      }
+      
+     else if ( $window.scrollTop() < distance ) {
+        $(".sticky").removeClass("fixed");
+     }
+  });
 
 }(jQuery, this));
