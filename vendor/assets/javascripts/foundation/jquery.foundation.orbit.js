@@ -7,6 +7,7 @@
 */
 
 
+
 (function ($) {
   'use strict';
 
@@ -37,7 +38,6 @@
       bullets: false,                   // true or false to activate the bullet navigation
       bulletThumbs: false,              // thumbnails for the bullets
       bulletThumbLocation: '',          // relative path to thumbnails from this file
-      bulletThumbsHideOnSmall: true,	// hide thumbs on small devices
       afterSlideChange: $.noop,         // callback to execute after slide changes
       afterLoadComplete: $.noop,        // callback to execute after everything has been loaded
       fluid: true,
@@ -82,7 +82,7 @@
 
       this.$element = $(element);
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
-      this.$slides = this.$element.children('img, a, div, figure, li');
+      this.$slides = this.$element.children('img, a, div, figure');
 
       this.$element.on('movestart', function(e) {
         // If the movestart is heading off in an upwards or downwards
@@ -144,7 +144,7 @@
         this.$element.addClass('orbit-stack-on-small');
       }
 
-      this.$slides.addClass('orbit-slide').css({"opacity" : 0});
+      this.$slides.addClass('orbit-slide');
 
       this.setDimentionsFromLargestSlide();
       this.updateOptionsIfOnlyOneSlide();
@@ -384,15 +384,17 @@
 
       //Set HTML for the caption if it exists
       if (captionLocation) {
+        
         //if caption text is blank, don't show captions
         if ($.trim($(captionLocation).text()).length < 1){
           return false;
         }
         // if location selector starts with '#', remove it so we don't see id="#selector"
-        if (captionLocation.charAt(0) == '#') {
+      
+        captionHTML = $(captionLocation).html(); //get HTML from the matching HTML entity
+          if (captionLocation.charAt(0) == '#') {
             captionLocation = captionLocation.substring(1, captionLocation.length);
         }
-        captionHTML = $('#' + captionLocation).html(); //get HTML from the matching HTML entity
         this.$caption
           .attr('id', captionLocation) // Add ID caption TODO why is the id being set?
           .html(captionHTML); // Change HTML in Caption
@@ -458,7 +460,6 @@
       this.$slides.each(this.addBullet);
       this.$element.addClass('with-bullets');
       if (this.options.centerBullets) this.$bullets.css('margin-left', -this.$bullets.outerWidth() / 2);
-      if (this.options.bulletThumbsHideOnSmall) this.$bullets.addClass('hide-for-small');
     },
 
     addBullet: function (index, slide) {
@@ -656,15 +657,14 @@
         this.setCaption();
       }
 
-      // if on last slide and singleCycle is true, don't loop through slides again
-      // .length is zero based so must minus 1 to match activeSlide index
-      if (this.activeSlide === this.$slides.length-1 && this.options.singleCycle) {
+      if (this.$slides.last() && this.options.singleCycle) {
         this.stopClock();
       }
     }
   };
 
   $.fn.orbit = function (options) {
+    
     return this.each(function () {
       var orbit = $.extend({}, ORBIT);
       orbit.init(this, options);
