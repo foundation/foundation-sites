@@ -1,0 +1,22 @@
+/* Styles for screens that are atleast 768px; */
+@media only screen and (min-width: emCalc(768px)) {
+  .joyride-tip-guide { width: $tipDefaultWidth; }
+  /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
+  .joyride-tip-guide {
+    span.joyride-nub { #{$defaultFloat}: 22px; width: 0;
+      &.right { right: -($tipNubSize*2); }
+      &.left { left: -($tipNubSize*2); }
+    }
+  }
+
+  .joyride-timer-indicator-wrap { width: $tipTimerWidth; #{$defaultOpposite}:17px; }
+  .joyride-timer-indicator { 
+    display: block; 
+    width: 0; 
+   }
+
+  .joyride-close-tip { 
+    #{$defaultOpposite}: 10px; 
+    font-size: $tipCloseSize; 
+  }
+}

@@ -1,0 +1,39 @@
+/* Styles for screens that are atleast 768px; */
+@media only screen and (min-width: emCalc(768px)) {
+  .nav-bar { 
+    height: $navBarHeight; 
+
+    &>li { 
+      float: $defaultFloat; 
+      display: block; 
+      &.has-flyout {
+        &>a:first-child { 
+          &:after { 
+            #{$defaultOpposite}: $navBarHeight / 2; 
+            top: ($navBarHeight / 2) - 3;
+          }
+        }
+      }
+    }
+    &.vertical { 
+      &>li { 
+        float: none; 
+        .flyout { #{$defaultFloat}: 100%; top: -1px;
+          &.right { #{$defaultFloat}: auto; #{$defaultOpposite}: 100%; }
+        }
+      }
+    }
+  }
+
+  .flyout { 
+    margin: 0; border: 1px solid darken($white, 15%); 
+    position: absolute; 
+    top: $navBarHeight - 1; #{$defaultFloat}: -1px; 
+    width: $navFlyoutBaseWidth; 
+    &.small { width: $navFlyoutBaseWidth / 1.5; }
+    &.large { width: $navFlyoutBaseWidth * 1.75; }
+
+    &.right { left: auto; right: -2px; }
+
+  }
+}
