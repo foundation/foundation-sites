@@ -1,59 +1,10 @@
-/* Since IE8 is lame and doesn't support media queries we're adding a custom grid for it. */
-@if $ie8gridSupport == yes {
-  /* Shared column styles */
-  .li-ie9 {
-    .row {
-      [class*="large-"] {
-        float: $defaultFloat;
-        padding: 0 $columnGutter / 2;
-        position: relative;
-      }
-      &.collapse {
-        [class*="large-"] { padding: 0; }
-      }
-    }
-
-    /* Floating for default last columns and overriding with .end class */
-    [class*="large-"]:last-child { float: $defaultOpposite; }
-    [class~="end"] { float: $defaultFloat; }
-
-    /* Centered large columns */
-    .large-centered { float: none !important; margin: 0 auto; }
-
-    /* Small column widths */
-    @for $i from 1 through $totalColumns {
-      .row .large#{-$i} { width: gridCalc($i, $totalColumns); }
-    }
-
-    /* Offset columns */
-    @for $i from 1 through $totalColumns - 2 {
-      .row {
-        .large-offset-#{$i} { margin-#{$defaultFloat}: gridCalc($i, $totalColumns); }
-      }
-    }
-
-    /* Push/Pull columns */
-    @for $i from 2 through $totalColumns - 2 {
-      .large-push#{-$i} { #{$defaultFloat}: gridCalc($i, $totalColumns); }
-      .large-pull#{-$i} { #{$defaultOpposite}: gridCalc($i, $totalColumns); }
-    }
-  }
-} @else {
-  .lt-ie9 {
-    .row .row { padding: 0 $columnGutter / 2; }
-  }
-}
-
-
 /* Styles for screens that are atleast 768px; */
-@media only screen and (min-width: emCalc(768px)) {
+@media #{$largeBreakPoint} {
 
   /* Shared column styles */
   .row {
     [class*="large-"] {
       float: $defaultFloat;
-      padding: 0 $columnGutter / 2;
-      position: relative;
     }
     &.collapse {
       [class*="large-"] { padding: 0; }
@@ -62,7 +13,7 @@
 
   /* Floating for default last columns and overriding with .end class */
   [class*="large-"]:last-child { float: $defaultOpposite; }
-  [class~="end"] { float: $defaultFloat; }
+  [class*="large-"] + [class~="end"] { float: $defaultFloat; }
 
   /* Centered large columns */
   .large-centered { float: none !important; margin: 0 auto; }
@@ -78,7 +29,7 @@
       .large-offset-#{$i} { margin-#{$defaultFloat}: gridCalc($i, $totalColumns); }
     }
   }
-  .row [class*="small-offset-"] { margin-#{$defaultFloat}: 0; }
+  // .row [class*="small-offset-"] { margin-#{$defaultFloat}: 0; }
 
   /* Push/Pull columns */
   @for $i from 2 through $totalColumns - 2 {

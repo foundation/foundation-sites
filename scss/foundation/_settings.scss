@@ -257,22 +257,15 @@ $base-size: $baseFontSize $importantModNum;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
 
+
+// OLD: CAN REMOVE
+  $screenSmall: 768px !default;
+  $screenMedium: 1279px !default;
+  $screenXlarge: 1441px !default;
+
 // Media Queries
+$largeScreen: emCalc(768px) !default;
+$smallScreen: emCalc(767px) !default;
 
-$screenSmall: 768px !default;
-$screenMedium: 1279px !default;
-$screenXlarge: 1441px !default;
-
-// Saving for better em-based testing
-// $screenSmall: 44em !default;
-// $screenMedium: 77em !default;
-// $screenXlarge: 104em !default;
-
-// Saving for Sass 3.2 stable release
-// $mediaSmall: "only screen and (max-width: 767px)" !default;
-// $mediaMedium: "only screen and (max-width: 1279px) and (min-width: 768px)" !default;
-// $mediaXlarge: "only screen and (min-width: 1441px)" !default;
-// $mediaLandscape: "screen and (orientation: landscape)" !default;
-// $mediaPortrait: "screen and (orientation: portrait)" !default;
-// $mediaAll: "only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)" !default;
-
+$smallBreakPoint: "only screen and (max-width:"#{$smallScreen}")" !default;
+$largeBreakPoint: "only screen and (min-width:"#{$largeScreen}")" !default;

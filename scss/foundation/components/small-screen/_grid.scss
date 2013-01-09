@@ -12,6 +12,15 @@
   margin: 0 auto;
   max-width: $rowWidth;
 
+  // Default column padding
+  [class*="large-"], [class*="small-"] {
+    width: 100%;
+    float: none;
+    padding-left: $columnGutter / 2;
+    padding-right: $columnGutter / 2;
+    position: relative;
+  }
+
   // Nested Rows
   .row {
     width: auto;
@@ -46,16 +55,13 @@ img { -ms-interpolation-mode: bicubic; }
 }
 
 /* Mobile Grid for small devices that can handle media queries */
-@media only screen and (max-width: emCalc(767px)) {
+@media #{$smallBreakPoint} {
 
   /* Shared column styles */
   .row {
     [class*="small-"] {
       float: $defaultFloat;
-      padding: 0 $columnGutter / 2;
-      position: relative;
     }
-    [class*="large-"] { padding: 0 $columnGutter / 2; }
     &.collapse {
       [class*="small-"] { padding: 0; }
     }
@@ -63,7 +69,7 @@ img { -ms-interpolation-mode: bicubic; }
 
   /* Floating for default last columns and overriding with .end class */
   [class*="small-"]:last-child { float: $defaultOpposite; }
-  [class~="end"] { float: $defaultFloat; }
+  [class*="small-"] + [class~="end"] { float: $defaultFloat; }
 
   /* Centered small columns */
   .small-centered { float: none !important; margin: 0 auto; }
