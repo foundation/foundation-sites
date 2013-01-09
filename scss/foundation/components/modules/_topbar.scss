@@ -123,7 +123,7 @@
       /* Right Side <ul> */
       &.right { float: right; width: auto; margin-bottom: 0;
         /* Dropdown Right Side Alignment */
-        .has-dropdown .dropdown { left: auto; right: -1px;
+        .has-dropdown .dropdown { left: auto; right: 0px;
           li.has-dropdown > .dropdown { right: 100%; left: auto; width: 100%; }
         }
       }
