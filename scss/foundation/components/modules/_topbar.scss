@@ -19,7 +19,7 @@
   .contain-to-grid { width: 100%; background: $topBarBgColor; }
 
   /* Wrapped around .top-bar to make it fixed at the top */
-  .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
+  .fixed { width: 100%; #{$defaultFloat}: 0; position: fixed; top: 0; z-index: 99; }
 
   /* <nav> */
   .top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%; position: relative;
@@ -39,10 +39,10 @@
     &.expanded { height: inherit; }
 
     /* topbar global <ul> styles */
-    ul { margin-left: 0; display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none;
+    ul { margin-#{$defaultFloat}: 0; display: inline; height: $topBarHeight; line-height: $topBarHeight; list-style: none;
 
       /* Main Navigation links style */
-      &>li { float: left;
+      &>li { float: $defaultFloat;
         a:not(.button) { color: $topBarLinkColor; display: block; font-size: $topBarLinkSize; font-weight: $topBarLinkWeight; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3; }
         &:not(.name) {
           &:hover, &.active, &:focus { background: darken($topBarBgColor, 15%);
@@ -51,7 +51,7 @@
         }
 
         /* Dividers between navigation */
-        &.divider { background: darken($topBarBgColor, 15%); @include box-shadow(1px 0 0 rgba(255,255,255,0.10)); height: 100%; margin-right: 1px; width: 1px; }
+        &.divider { background: darken($topBarBgColor, 15%); @include box-shadow(1px 0 0 rgba(255,255,255,0.10)); height: 100%; margin-#{$defaultOpposite}: 1px; width: 1px; }
 
         /* Put a button in an <li> but give is a class */
         &.has-button {
@@ -64,8 +64,19 @@
         /* Put a search bar or text input in the bar */
         &.search { padding: 0 $topBarHeight / 3;
           form { display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarSearchWidth;
-            input[type=text] { @include border-right-radius(0); float: left; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px margin-bottom: 0; width: $topBarSearchWidth - 70px;
-              &+.button { border-left: none; @include border-left-radius(0); float: left; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; }
+            input[type=text] { 
+              // SASS doesn't seem to support variable use in mixin names:
+              // @include border-right-radius(0);
+              -moz-border-radius-#{$defaultOpposite}: 0px
+              -webkit-border-#{$defaultOpposite}-radius: 0px
+              border-#{$defaultOpposite}-radius: 0px
+              float: $defaultFloat; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px margin-bottom: 0; width: $topBarSearchWidth - 70px;
+              &+.button { border-#{$defaultFloat}: none;
+              // @include border-left-radius(0);
+              -moz-border-radius-#{$defaultFloat}: 0px
+              -webkit-border-#{$defaultFloat}-radius: 0px
+              border-#{$defaultFloat}-radius: 0px
+              float: #{$defaultFloat}; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; }
             }
             input[type=search] { font-size: 16px; margin-bottom: 0; }
           }
@@ -78,16 +89,17 @@
         /* li.has-dropdown */
         &.has-dropdown { position: relative;
           &:hover, &:focus { &>.dropdown { display: block; visibility: visible; } }
-          a { padding-right: $topBarHeight * .75;
-            &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
+          a { padding-#{$defaultOpposite}: $topBarHeight * .75;
+            &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-#{$defaultOpposite}: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; #{$defaultOpposite}: 0; top: 50%; }
           }
-          .dropdown { background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
+          .dropdown { background: $topBarDropBgColor; #{$defaultFloat}: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
             li { background: $topBarDropBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
-              a { color: $topBarDropLinkColor; font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
+              a { color: $topBarDropLinkColor; font-weight: normal; height: 100%; line-height: 1; padding-top: 5px; padding-#{$defaultOpposite}: $topBarHeight / 3 + 2; padding-bottom: 5px; padding-#{$defaultFloat}: $topBarHeight / 3;
+              white-space: nowrap;
                 &:after { border: none; }
                 &:hover, &:focus { background: lighten($topBarDropBgColor, 10%); }
               }
-              label { color: lighten($topBarDropBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
+              label { color: lighten($topBarDropBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-#{$defaultFloat}: $topBarHeight / 3; text-transform: uppercase; }
               &.divider { border-top: solid 1px darken($topBarDropBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
               &:last-child { padding-bottom: 10px; }
               &.active a { background: darken($topBarBgColor, 15%); }
@@ -96,10 +108,10 @@
 
           /* Dropdown Level 2+ */
           .dropdown li.has-dropdown {
-            &>a { padding-right: $navBarHeight * .75;
-              &:after { border: none; content:"\00bb"; right: 5px; top: 6px; }
+            &>a { padding-#{$defaultOpposite}: $navBarHeight * .75;
+              &:after { border: none; content:"\00bb"; #{$defaultOpposite}: 5px; top: 6px; }
             }
-            .dropdown { position: absolute; left: 100%; top: 0; }
+            .dropdown { position: absolute; #{$defaultFloat}: 100%; top: 0; }
             &:hover, &:focus {
               &>.dropdown { display: block; }
             }
@@ -108,13 +120,13 @@
       }
 
       /* Left Side <ul> */
-      &.left { float: left; width: auto; margin-bottom: 0; }
+      &.left { float: $defaultFloat; width: auto; margin-bottom: 0; }
 
       /* Right Side <ul> */
-      &.right { float: right; width: auto; margin-bottom: 0;
-        /* Dropdown Right Side Alignment */
-        .has-dropdown .dropdown { left: auto; right: -1px;
-          li.has-dropdown > .dropdown { right: 100%; left: auto; width: 100%; }
+      &.right { float: $defaultOpposite; width: auto; margin-bottom: 0;
+        /* Dropdown Right (RTL: Left) Side Alignment */
+        .has-dropdown .dropdown { #{$defaultFloat}: auto; #{$defaultOpposite}: -1px;
+          li.has-dropdown > .dropdown { #{$defaultOpposite}: 100%; #{$defaultFloat}: auto; width: 100%; }
         }
       }
     }
@@ -136,6 +148,6 @@
     &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
   }
   .lt-ie9 .top-bar ul li.has-dropdown {
-    padding-right: $topBarHeight * .75;
-    &>ul li { padding-right: 0; }
+    padding-#{$defaultOpposite}: $topBarHeight * .75;
+    &>ul li { padding-#{$defaultOpposite}: 0; }
   }
