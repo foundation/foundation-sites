@@ -23,6 +23,15 @@
     margin: 0;
     max-width: none;
   }
+  
+  // use @include gridRow(pad); to apply gutter padding to match mobile columns
+  @else if $behavior == pad {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: $columnGutter / 2;
+    padding-right: $columnGutter / 2;
+    max-width: $rowWidth;
+  }
 
   // use @include gridRow(); to use a container row
   @else {
