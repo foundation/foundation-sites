@@ -64,7 +64,8 @@
         /* Put a search bar or text input in the bar */
         &.search { padding: 0 $topBarHeight / 3;
           form { display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarSearchWidth;
-            input[type=text] { @include border-right-radius(0); float: left; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px margin-bottom: 0; width: $topBarSearchWidth - 70px;
+            input[type=text] { @include border-right-radius(0); float: left; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px 
+                              margin-bottom: 0; width: $topBarSearchWidth - 70px;
               &+.button { border-left: none; @include border-left-radius(0); float: left; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; }
             }
             input[type=search] { font-size: 16px; margin-bottom: 0; }
