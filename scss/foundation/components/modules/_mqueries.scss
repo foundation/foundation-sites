@@ -386,7 +386,7 @@
           &.search { padding: 0 $topBarHeight / 2;
             form { width: 100%;
               input[type=text] { width: 75%; }
-              .button { top: 0; width: 25%; }
+              .button { top: -1px; width: 25%; }
             }
           }
 
