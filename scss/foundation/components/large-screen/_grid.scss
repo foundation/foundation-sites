@@ -1,12 +1,10 @@
 /* Styles for screens that are atleast 768px; */
-@media only screen and (min-width: emCalc(768px)) {
+@media #{$largeBreakPoint} {
 
   /* Shared column styles */
   .row {
     [class*="large-"] {
       float: $defaultFloat;
-      padding: 0 $columnGutter / 2;
-      position: relative;
     }
     &.collapse {
       [class*="large-"] { padding: 0; }
@@ -15,7 +13,7 @@
 
   /* Floating for default last columns and overriding with .end class */
   [class*="large-"]:last-child { float: $defaultOpposite; }
-  [class~="end"] { float: $defaultFloat; }
+  [class*="large-"] + [class~="end"] { float: $defaultFloat; }
 
   /* Centered large columns */
   .large-centered { float: none !important; margin: 0 auto; }
@@ -31,7 +29,7 @@
       .large-offset-#{$i} { margin-#{$defaultFloat}: gridCalc($i, $totalColumns); }
     }
   }
-  .row [class*="small-offset-"] { margin-#{$defaultFloat}: 0; }
+  // .row [class*="small-offset-"] { margin-#{$defaultFloat}: 0; }
 
   /* Push/Pull columns */
   @for $i from 2 through $totalColumns - 2 {
