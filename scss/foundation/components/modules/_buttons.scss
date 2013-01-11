@@ -108,7 +108,7 @@
 
       /* Sizes */
       &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); padding-#{$defaultFloat}: $btnBase * 2; padding-#{$defaultOpposite}: ($btnBase * 2.5) * 2; @include single-transition(background-color, .15s, ease-in-out);
-        &:hover, &:focus { background-color: darken($mainColor, 10%); }
+        &:hover, &:focus { background-color: darken($mainColor, 10%); @include box-shadow(0 1px 0 $shinyEdge inset); }
       }
       &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); padding-#{$defaultFloat}: $largeBtnBase * 2; padding-#{$defaultOpposite}: ($largeBtnBase * 2.5) * 2; }
       &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); padding-#{$defaultFloat}: $smallBtnBase * 2; padding-#{$defaultOpposite}: ($smallBtnBase * 2.5) * 2; }
