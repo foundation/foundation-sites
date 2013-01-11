@@ -155,7 +155,7 @@
     }
   };
   
-  var distance = $('.sticky').offset().top,
+  var distance = $('sticky').length ? $('.sticky').offset().top: 0,
       $window = $(window);
   
   $window.scroll(function() {
