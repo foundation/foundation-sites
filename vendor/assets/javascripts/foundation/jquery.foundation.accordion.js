@@ -23,11 +23,11 @@
     );
 
     $(document).on('click.fndtn', '.accordion li .title', function () {
-        var p = $(this).parent();
+        var li = $(this).closest('li'),
+            p = li.parent();
 
         if(!hasHover(p)) {
-          var li = $(this).closest('li'),
-              flyout = li.children('.content').first();
+          var flyout = li.children('.content').first();
 
           if (li.hasClass('active')) {
             p.find('li').removeClass('active').end().find('.content').hide();
