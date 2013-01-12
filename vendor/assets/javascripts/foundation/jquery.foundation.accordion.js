@@ -22,12 +22,12 @@
       }
     );
 
-    $(document).on('click.fndtn', '.accordion li', function () {
-        var p = $(this).parent();
+    $(document).on('click.fndtn', '.accordion li .title', function () {
+        var li = $(this).closest('li'),
+            p = li.parent();
 
         if(!hasHover(p)) {
-          var li = $(this),
-              flyout = $(this).children('.content').first();
+          var flyout = li.children('.content').first();
 
           if (li.hasClass('active')) {
             p.find('li').removeClass('active').end().find('.content').hide();
