@@ -33,8 +33,9 @@
         button = $el.closest('.button.dropdown'),
         dropdown = $('> ul', button);
 
-        // If the click is registered on an actual link or on button element then do not preventDefault which stops the browser from following the link
-        if (["A", "BUTTON"].indexOf(e.target.nodeName) == -1){
+        // Make sure the click is for the button itself and not one of it's children
+        // before stopping event propagation.
+        if ($(e.originalEvent.target).is('.button.dropdown:not(.split), .button.dropdown.split span')) {
           e.preventDefault();
         }
 
@@ -62,12 +63,18 @@
       }
     });
 
-    // Positioning the Flyout List
-    var normalButtonHeight  = $('.button.dropdown:not(.large):not(.small):not(.tiny):visible', this).outerHeight() - 1,
-        largeButtonHeight   = $('.button.large.dropdown:visible', this).outerHeight() - 1,
-        smallButtonHeight   = $('.button.small.dropdown:visible', this).outerHeight() - 1,
-        tinyButtonHeight    = $('.button.tiny.dropdown:visible', this).outerHeight() - 1;
+    // Make sure we calculate size of hidden elements properly.
+    var outerHeightHelper = $.foundation.utils.hiddenFix();
+    outerHeightHelper.adjust($('.button.dropdown'));
+    
+    var normalButtonHeight  = $('.button.dropdown:not(.large):not(.small):not(.tiny)', this).outerHeight() - 1,
+        largeButtonHeight   = $('.button.large.dropdown', this).outerHeight() - 1,
+        smallButtonHeight   = $('.button.small.dropdown', this).outerHeight() - 1,
+        tinyButtonHeight    = $('.button.tiny.dropdown', this).outerHeight() - 1;
 
+    outerHeightHelper.reset();
+    
+    // Position flyout lists appropriately
     $('.button.dropdown:not(.large):not(.small):not(.tiny) > ul', this).css('top', normalButtonHeight);
     $('.button.dropdown.large > ul', this).css('top', largeButtonHeight);
     $('.button.dropdown.small > ul', this).css('top', smallButtonHeight);
@@ -77,7 +84,6 @@
     $('.button.dropdown.up.large > ul', this).css('top', 'auto').css('bottom', largeButtonHeight - 2);
     $('.button.dropdown.up.small > ul', this).css('top', 'auto').css('bottom', smallButtonHeight - 2);
     $('.button.dropdown.up.tiny > ul', this).css('top', 'auto').css('bottom', tinyButtonHeight - 2);
-
   };
 
 })( jQuery, this );
