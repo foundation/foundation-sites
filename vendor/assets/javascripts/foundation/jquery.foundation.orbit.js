@@ -392,7 +392,7 @@
         if (captionLocation.charAt(0) == '#') {
             captionLocation = captionLocation.substring(1, captionLocation.length);
         }
-        captionHTML = $(captionLocation).html(); //get HTML from the matching HTML entity
+        captionHTML = $('#' + captionLocation).html(); //get HTML from the matching HTML entity
         this.$caption
           .attr('id', captionLocation) // Add ID caption TODO why is the id being set?
           .html(captionHTML); // Change HTML in Caption
@@ -656,7 +656,9 @@
         this.setCaption();
       }
 
-      if (this.$slides.last() && this.options.singleCycle) {
+      // if on last slide and singleCycle is true, don't loop through slides again
+      // .length is zero based so must minus 1 to match activeSlide index
+      if (this.activeSlide === this.$slides.length-1 && this.options.singleCycle) {
         this.stopClock();
       }
     }
@@ -869,7 +871,7 @@ app.run = function (o) {
 	for (var l = images.length, i = 0; i < l; i++) {
 		var theme = settings.themes.gray;
 		var src = images[i].getAttribute("data-src") || images[i].getAttribute("src");
-		if ( !! ~src.indexOf(options.domain)) {
+		if (src && !! ~src.indexOf(options.domain)) {
 			var render = false,
 				dimensions = null,
 				text = null;

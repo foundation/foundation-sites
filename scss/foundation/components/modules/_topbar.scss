@@ -20,12 +20,22 @@
 
   /* Wrapped around .top-bar to make it fixed at the top */
   .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
+  
+  /* Add .sticky class for using top bar as a sticky navigation when scrolling passed it. Add the class .sticky to a top bar using .contain-to-grid but leave off .fixed, javascript will take care of that */
+  
+  .sticky {
+  	float: left;
+  	overflow: hidden;
+  
+  .sticky.fixed {
+  	float: none;
+  }   
 
   /* <nav> */
   .top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%; position: relative;
 
     /* Contain width to .row width */
-    .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; }
+    .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; } 
 
     /* First <ul> for branding, title, name, etc */
     &>ul {
@@ -64,7 +74,8 @@
         /* Put a search bar or text input in the bar */
         &.search { padding: 0 $topBarHeight / 3;
           form { display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarSearchWidth;
-            input[type=text] { @include border-right-radius(0); float: left; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px margin-bottom: 0; width: $topBarSearchWidth - 70px;
+            input[type=text] { @include border-right-radius(0); float: left; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px 
+                              margin-bottom: 0; width: $topBarSearchWidth - 70px;
               &+.button { border-left: none; @include border-left-radius(0); float: left; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; }
             }
             input[type=search] { font-size: 16px; margin-bottom: 0; }
@@ -113,7 +124,7 @@
       /* Right Side <ul> */
       &.right { float: right; width: auto; margin-bottom: 0;
         /* Dropdown Right Side Alignment */
-        .has-dropdown .dropdown { left: auto; right: -1px;
+        .has-dropdown .dropdown { left: auto; right: 0px;
           li.has-dropdown > .dropdown { right: 100%; left: auto; width: 100%; }
         }
       }
@@ -131,9 +142,17 @@
   /* IE8 Fixes */
   .lt-ie9 .top-bar ul li a { color: $topBarLinkColor; display: block; font-weight: $topBarLinkWeight; font-size: $topBarLinkSize; height: $topBarHeight; line-height: $topBarHeight; padding: 0 $topBarHeight / 3;
     &.button { height: auto; line-height: 30px; margin-top: 7px; }
-    &:hover, &:focus { color: darken($topBarLinkColor, 20%); }
     img { margin-top: -5px; vertical-align: middle; }
-    &.active { background: darken($topBarBgColor, 5%); color: darken($topBarLinkColor, 15%); }
+  }
+  .lt-ie9 .top-bar section > ul > li
+  {
+   a
+    {
+  &:hover, &:focus {color: darken($topBarLinkColor, 20%); }
+	}
+    &:hover, &:focus { background: darken($topBarBgColor, 15%) }
+	&.search:hover,&.search:focus,&.has-button:hover,&.has-button:focus { background: none }
+    &.active { background: darken($topBarBgColor, 15%); color: darken($topBarLinkColor, 15%); }
   }
   .lt-ie9 .top-bar ul li.has-dropdown {
     padding-right: $topBarHeight * .75;

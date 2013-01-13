@@ -100,7 +100,7 @@
         //
         // Build our custom list.
         //
-        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>"');
+        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>');
         //
         // Grab the selector element
         //
@@ -182,11 +182,11 @@
       //
       // Update the custom <ul> list width property.
       //
-      $customList.css( 'width', 'inherit' );
+      $customList.css( 'width', 'auto' );
       //
       // Set the custom select width property.
       //
-      $customSelect.css( 'width', 'inherit' );
+      $customSelect.css( 'width', 'auto' );
 
       //
       // If we're not specifying a predetermined form size.
@@ -298,7 +298,7 @@
       if ( !$element.hasClass('checked') ) {
         $element.toggleClass('checked');
       }
-      $input.checked = $element.hasClass('checked');
+      input.checked = $element.hasClass('checked');
 
       $input.trigger('change');
     }

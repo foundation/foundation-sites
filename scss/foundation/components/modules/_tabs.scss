@@ -49,9 +49,9 @@
       dt a, dd a, li a { padding: 0 ms(1); text-align: center; overflow: hidden; }
     }
     &.two-up dt, &.two-up dd, &.two-up li      { width: 50%; }
-    &.three-up dt, &.three-up dd, &.two-up li  { width: 33.33%; }
-    &.four-up dt, &.four-up dd, &.two-up li    { width: 25%; }
-    &.five-up dt, &.five-up dd, &.two-up li    { width: 20%; }
+    &.three-up dt, &.three-up dd, &.three-up li  { width: 33.33%; }
+    &.four-up dt, &.four-up dd, &.four-up li    { width: 25%; }
+    &.five-up dt, &.five-up dd, &.five-up li    { width: 20%; }
   }
 
   ul.tabs-content { display: block; margin: 0 0 20px; padding: 0;

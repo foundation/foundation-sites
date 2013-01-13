@@ -9,7 +9,7 @@
 
       methods = {
         init : function (options) {
-          settings = $.extend({}, options, settings);
+          settings = $.extend({}, settings, options);
 
           return this.each(function () {
             if (!settings.init) methods.events();

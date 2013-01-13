@@ -2,39 +2,46 @@
   'use strict';
 
   $.fn.foundationAccordion = function (options) {
-    var $accordion = $('.accordion');
-    
-    $accordion.find('a').on('click', function(e){ e.stopPropagation(); });
 
-    if ($accordion.hasClass('hover') && !Modernizr.touch) {
-      $('.accordion li', this).on({
-        mouseenter : function () {
-          var p = $(this).parent(),
-            flyout = $(this).children('.content').first();
+    // DRY up the logic used to determine if the event logic should execute.
+    var hasHover = function(accordion) {
+      return accordion.hasClass('hover') && !Modernizr.touch
+    };
 
-          $('.content', p).not(flyout).hide().parent('li').removeClass('active'); //changed this
+    $(document).on('mouseenter', '.accordion li', function () {
+        var p = $(this).parent();
+
+        if (hasHover(p)) {
+          var flyout = $(this).children('.content').first();
+
+          $('.content', p).not(flyout).hide().parent('li').removeClass('active');
           flyout.show(0, function () {
             flyout.parent('li').addClass('active');
           });
         }
-      });
-    } else {
-      $('.accordion li', this).on('click.fndtn', function () {
-        var li = $(this),
-            p = $(this).parent(),
-            flyout = $(this).children('.content').first();
+      }
+    );
 
-        if (li.hasClass('active')) {
-          p.find('li').removeClass('active').end().find('.content').hide();
-        } else {
-          $('.content', p).not(flyout).hide().parent('li').removeClass('active'); //changed this
-          flyout.show(0, function () {
-            flyout.parent('li').addClass('active');
-          });
+    $(document).on('click.fndtn', '.accordion li', function () {
+        var p = $(this).parent();
+
+        if(!hasHover(p)) {
+          var li = $(this),
+              flyout = $(this).children('.content').first();
+
+          if (li.hasClass('active')) {
+            p.find('li').removeClass('active').end().find('.content').hide();
+          } else {
+            $('.content', p).not(flyout).hide().parent('li').removeClass('active');
+            flyout.show(0, function () {
+              flyout.parent('li').addClass('active');
+            });
+          }
         }
-      });
-    }
+      }
+     );
 
   };
 
 })( jQuery, this );
+
