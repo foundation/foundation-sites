@@ -20,7 +20,7 @@
 
   /* Wrapped around .top-bar to make it fixed at the top */
   .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
-  
+
   /* Add .sticky class for using top bar as a sticky navigation when scrolling passed it. Add the class .sticky to a top bar using .contain-to-grid but leave off .fixed, javascript will take care of that */
   .sticky { float: left; overflow: hidden;
     &.fixed { float: none; }
@@ -30,7 +30,7 @@
   .top-bar { background: $topBarBgColor; min-height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin 0; padding: 0; width: 100%; position: relative;
 
     /* Contain width to .row width */
-    .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; } 
+    .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; }
 
     /* First <ul> for branding, title, name, etc */
     &>ul {
@@ -69,7 +69,7 @@
         /* Put a search bar or text input in the bar */
         &.search { padding: 0 $topBarHeight / 3;
           form { display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarSearchWidth;
-            input[type=text] { @include border-right-radius(0); float: left; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px 
+            input[type=text] { @include border-right-radius(0); float: left; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; //28px
                               margin-bottom: 0; width: $topBarSearchWidth - 70px;
               &+.button { border-left: none; @include border-left-radius(0); float: left; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; }
             }
@@ -77,7 +77,7 @@
           }
           &:hover, &:focus { background: $topBarBgColor; }
         }
-        
+
         /* Put login bar in the top bar */
         &.login {padding: 0 $topBarHeight / 3;
           form {display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarLoginWidth;
