@@ -358,7 +358,7 @@
       .contain-to-grid & { width: auto; }
 
       /* Setting up the sliding area */
-      section { left: 0; position: relative; width: auto; @include single-transition(left, 300ms); }
+      section { left: 0; position: relative; width: auto; @include single-transition(left,300ms,0); }
       ul { width: 100%; height: 100%; margin-bottom: 0; display: block;
         &>li { float: none;
           &.active, &:hover { background: darken($topBarDropBgColor, 5%); }
