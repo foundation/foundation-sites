@@ -3,6 +3,9 @@ We'll keep you up to date with what we've released so you at least have a gist o
 
 ---
 
+### 3.2.3
+This patch fixed some quick bug fixes.
+
 ### 3.2.2- November 10, 2012
 This patch fixes a typo found in the tabs plugin.
 
