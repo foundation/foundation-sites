@@ -157,7 +157,7 @@
 
   // Monitor scroll position for sticky
   if ($('.sticky').length > 0) {
-    var distance = $('sticky').length ? $('.sticky').offset().top: 0,
+    var distance = $('.sticky').length ? $('.sticky').offset().top: 0,
         $window = $(window);
 
       $window.scroll(function() {
