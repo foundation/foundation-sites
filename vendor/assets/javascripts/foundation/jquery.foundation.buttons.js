@@ -40,7 +40,7 @@
 
       // close other dropdowns
       setTimeout(function () {
-        closeDropdowns(config.dropdownAsToggle ? dropdown : '');
+        closeDropdowns(config.dropdownAsToggle ? '' : dropdown);
         dropdown.toggleClass('show-dropdown');
 
         if (config.dropdownAsToggle) {
