@@ -112,7 +112,7 @@
             'bottom' : bottom,
             'left' : left,
             'right' : right,
-            'width' : (width) ? width : 'auto'
+            'max-width' : (width) ? width : 'auto'
           }).end();
         };
 
