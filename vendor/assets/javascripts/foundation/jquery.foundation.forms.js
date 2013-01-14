@@ -474,10 +474,11 @@
     event.stopPropagation();
     $('div.dropdown').removeClass('open');
 
-    $this
+    $oldThis= $this
       .closest('ul')
-      .find('li')
-      .removeClass('selected');
+      .find('li.selected');
+    $oldThis.removeClass('selected');
+
     $this.addClass('selected');
 
     $customDropdown
@@ -493,8 +494,12 @@
     });
     $select[0].selectedIndex = selectedIndex;
 
-    $select.trigger('change');
+	//store the old value in data
+	console.log($select);
+	$select.data('prevalue', $oldThis.html());
+  $select.trigger('change');
   });
+
 
 
   $.fn.foundationCustomForms = $.foundation.customForms.appendCustomMarkup;
