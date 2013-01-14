@@ -447,7 +447,7 @@
 
       /* When the Small Nav is Showing */
       &.expanded { height: 100%;
-        ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
+        ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, darken($topBarNavToggleColor, 20%), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
     .top-bar ul li.has-button { padding: 5px $topBarHeightMobile / 3; }
