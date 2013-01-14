@@ -22,7 +22,7 @@
   .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
 
   /* <nav> */
-  .top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%; position: relative;
+  .top-bar { background: $topBarBgColor; min-height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin 0; padding: 0; width: 100%; position: relative;
 
     /* Contain width to .row width */
     .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; }
