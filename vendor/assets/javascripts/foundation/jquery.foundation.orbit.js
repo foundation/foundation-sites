@@ -388,11 +388,12 @@
         if ($.trim($(captionLocation).text()).length < 1){
           return false;
         }
-        captionHTML = $('#' + captionLocation).html(); //get HTML from the matching HTML entity
+        
         // if location selector starts with '#', remove it so we don't see id="#selector"
         if (captionLocation.charAt(0) == '#') {
             captionLocation = captionLocation.substring(1, captionLocation.length);
         }
+        captionHTML = $('#' + captionLocation).html(); //get HTML from the matching HTML entity
         this.$caption
           .attr('id', captionLocation) // Add ID caption TODO why is the id being set?
           .html(captionHTML); // Change HTML in Caption
