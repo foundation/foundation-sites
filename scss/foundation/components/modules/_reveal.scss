@@ -30,6 +30,5 @@
     > :last-child { margin-bottom: 0; }
   }
   @media print {
-    div:not(.reveal-modal) { display: none; }
     .reveal-modal { border: solid 1px #000; background: #fff; }
   }
