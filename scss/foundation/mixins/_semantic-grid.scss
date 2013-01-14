@@ -6,7 +6,10 @@
   // use @include gridRow(nest); to include a nested row
   @if $behavior == nest {
     width: auto;
-    margin: 0 (-($columnGutter/2));
+    margin-left: (-($columnGutter/2));
+    margin-right: (-($columnGutter/2));
+    margin-top: 0;
+    margin-bottom: 0;
     max-width: none;
   }
 
@@ -27,7 +30,10 @@
   // use @include gridRow(); to use a container row
   @else {
     width: 100%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
     max-width: $rowWidth;
   }
 
@@ -57,7 +63,11 @@
     @if $lastCol { float: $defaultOpposite; }
 
     // If centered, get rid of float and add appropriate margins
-    @else if $center { float: none !important; margin: 0 auto; }
+    @else if $center {
+      float: none;
+      margin-left: auto;
+      margin-right :0;
+    }
 
     // If offset, calculate appropriate margins
     @else if $offset { margin-#{$defaultFloat}: gridCalc($offset, $totalColumns); }
