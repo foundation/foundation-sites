@@ -373,7 +373,7 @@
 
           /* Dropdown Toggle */
           &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeightMobile; position: absolute; right: 0; top: 0; width: 50%;
-            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
+            a { @include cssTriangle($topBarNavToggleSize, $topBarNavToggleColor, top); padding: 0; position: absolute; top: 50%; right: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
             @if $topBarBreakPoint == 9999px { a { right: ($topBarHeight / 2) + ($columnGutter / 2);} }
             &:hover { background: inherit; }
           }
