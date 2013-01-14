@@ -22,14 +22,9 @@
   .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
   
   /* Add .sticky class for using top bar as a sticky navigation when scrolling passed it. Add the class .sticky to a top bar using .contain-to-grid but leave off .fixed, javascript will take care of that */
-  
-  .sticky {
-  	float: left;
-  	overflow: hidden;
-  
-  .sticky.fixed {
-  	float: none;
-  }   
+  .sticky { float: left; overflow: hidden;
+    &.fixed { float: none; }
+  }
 
   /* <nav> */
   .top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%; position: relative;
