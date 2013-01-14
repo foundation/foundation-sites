@@ -21,8 +21,8 @@
 
   /* Timer ---------------------- */
 
-  div.orbit-wrapper  {
-    div.timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; #{$defaultOpposite}: 10px; opacity: .6; cursor: pointer; z-index: 31; }
+  .orbit-wrapper  {
+    .timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; #{$defaultOpposite}: 10px; opacity: .6; cursor: pointer; z-index: 31; }
     span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: -20px; background: image-url("foundation/orbit/rotator-black.png") no-repeat; z-index: 3;
       &.move { #{$defaultFloat}: 0 }
     }
@@ -32,7 +32,7 @@
     span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: 0; background: image-url("foundation/orbit/pause-black.png") no-repeat; z-index: 4; opacity: 0;
       &.active { background: image-url("foundation/orbit/pause-black.png") no-repeat 0 -40px; }
     }
-    div.timer:hover span.pause, div.timer:focus span.pause, span.pause.active { opacity: 1 }
+    .timer:hover span.pause, .timer:focus span.pause, span.pause.active { opacity: 1 }
   }
 
   /* Captions ---------------------- */
@@ -42,17 +42,17 @@
 
   /* Directional Nav ---------------------- */
 
-  div.orbit-wrapper {
-    div.slider-nav { display: block; }
-    div.slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
-    div.slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow.png"); background-size: 100%; #{$defaultOpposite}: 0; }
-    div.slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow.png"); background-size: 100%; #{$defaultFloat}: 0; }
+  .orbit-wrapper {
+    .slider-nav { display: block; }
+    .slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
+    .slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow.png"); background-size: 100%; #{$defaultOpposite}: 0; }
+    .slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow.png"); background-size: 100%; #{$defaultFloat}: 0; }
   }
 
   .lt-ie9 {
-    div.orbit-wrapper {
-      div.slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow-small.png"); }
-      div.slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow-small.png"); }
+    .orbit-wrapper {
+      .slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow-small.png"); }
+      .slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow-small.png"); }
     }
   }
 
@@ -71,19 +71,19 @@
 
   /* Fluid Layout ---------------------- */
 
-  div.orbit img.fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }
-  div.orbit, div.orbit-wrapper { width: 100% !important; }
+  .orbit img.fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }
+  .orbit, .orbit-wrapper { width: 100% !important; }
 
   /* Correct timer in IE */
   .lt-ie9 .timer { display: none !important; }
-  .lt-ie9 div.orbit-caption { background: $orbitCaptionBgColorOldBrowser; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
+  .lt-ie9 .orbit-caption { background: $orbitCaptionBgColorOldBrowser; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
 
 // Allow slides to be stacked on mobile devices
 @media only screen and (max-width: $screenSmall - 1) {
-  div.orbit.orbit-stack-on-small img.fluid-placeholder {
+  .orbit.orbit-stack-on-small img.fluid-placeholder {
     visibility:visible;
   }
-  div.orbit.orbit-stack-on-small .orbit-slide {
+  .orbit.orbit-stack-on-small .orbit-slide {
     position:static;
     margin-bottom:10px;
   }

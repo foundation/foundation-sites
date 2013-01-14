@@ -100,7 +100,7 @@
   $.foundation.customForms.appendCustomMarkup = function ( options ) {
 
     var defaults = {
-      disable_class: "js-disable-custom"
+      disable_class: "no-custom"
     };
 
     options = $.extend( defaults, options );
@@ -165,7 +165,7 @@
       //
       // Should we not create a custom list?
       //
-      if ( $this.hasClass( 'no-custom' ) ) return;
+      if ( $this.hasClass( options.disable_class ) ) return;
 
       //
       // Did we not create a custom select element yet?
@@ -186,7 +186,7 @@
         //
         // Build our custom list.
         //
-        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>"');
+        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>');
         //
         // Grab the selector element
         //
@@ -268,11 +268,11 @@
       //
       // Update the custom <ul> list width property.
       //
-      $customList.css( 'width', 'inherit' );
+      $customList.css( 'width', 'auto' );
       //
       // Set the custom select width property.
       //
-      $customSelect.css( 'width', 'inherit' );
+      $customSelect.css( 'width', 'auto' );
 
       //
       // If we're not specifying a predetermined form size.
@@ -416,10 +416,26 @@
       if ($associatedElement.attr('type') === 'checkbox') {
         event.preventDefault();
         $customCheckbox = $(this).find('span.custom.checkbox');
+        //the checkbox might be outside after the label
+        if ($customCheckbox.length == 0) {
+            $customCheckbox = $(this).next('span.custom.checkbox');
+        }
+        //the checkbox might be outside before the label
+        if ($customCheckbox.length == 0) {
+            $customCheckbox = $(this).prev('span.custom.checkbox');
+        }
         toggleCheckbox($customCheckbox);
       } else if ($associatedElement.attr('type') === 'radio') {
         event.preventDefault();
         $customRadio = $(this).find('span.custom.radio');
+        //the radio might be outside after the label
+        if ($customRadio.length == 0) {
+            $customRadio = $(this).next('span.custom.radio');
+        }
+        //the radio might be outside before the label
+        if ($customRadio.length == 0) {
+            $customRadio = $(this).prev('span.custom.radio');
+        }
         toggleRadio($customRadio);
       }
     }

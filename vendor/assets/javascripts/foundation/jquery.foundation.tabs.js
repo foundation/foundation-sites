@@ -3,15 +3,18 @@
 
   var settings = {
         callback: $.noop,
+        deep_linking: true,
         init: false
-      }, 
+      },
 
       methods = {
         init : function (options) {
-          settings = $.extend({}, options, settings);
+          settings = $.extend({}, settings, options);
 
           return this.each(function () {
             if (!settings.init) methods.events();
+
+            if (settings.deep_linking) methods.from_hash();
           });
         },
 
@@ -31,7 +34,7 @@
 
           if (hasHash && $content.length > 0) {
             // Show tab content
-            e.preventDefault();
+            if (e && !settings.deep_linking) e.preventDefault();
             $content.closest('.tabs-content').children('li').removeClass('active').hide();
             $content.css('display', 'block').addClass('active');
           }
@@ -41,6 +44,13 @@
           $tab.addClass('active');
 
           settings.callback();
+        },
+
+        from_hash : function () {
+          var hash = window.location.hash,
+              $tab = $('a[href="' + hash + '"]');
+
+          $tab.trigger('click.fndtn');
         }
       }
 

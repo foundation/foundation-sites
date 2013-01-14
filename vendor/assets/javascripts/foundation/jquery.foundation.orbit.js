@@ -37,6 +37,7 @@
       bullets: false,                   // true or false to activate the bullet navigation
       bulletThumbs: false,              // thumbnails for the bullets
       bulletThumbLocation: '',          // relative path to thumbnails from this file
+      bulletThumbsHideOnSmall: true,	// hide thumbs on small devices
       afterSlideChange: $.noop,         // callback to execute after slide changes
       afterLoadComplete: $.noop,        // callback to execute after everything has been loaded
       fluid: true,
@@ -81,7 +82,7 @@
 
       this.$element = $(element);
       this.$wrapper = this.$element.wrap(this.wrapperHTML).parent();
-      this.$slides = this.$element.children('img, a, div, figure');
+      this.$slides = this.$element.children('img, a, div, figure, li');
 
       this.$element.on('movestart', function(e) {
         // If the movestart is heading off in an upwards or downwards
@@ -143,7 +144,7 @@
         this.$element.addClass('orbit-stack-on-small');
       }
 
-      this.$slides.addClass('orbit-slide');
+      this.$slides.addClass('orbit-slide').css({"opacity" : 0});
 
       this.setDimentionsFromLargestSlide();
       this.updateOptionsIfOnlyOneSlide();
@@ -391,7 +392,7 @@
         if (captionLocation.charAt(0) == '#') {
             captionLocation = captionLocation.substring(1, captionLocation.length);
         }
-        captionHTML = $(captionLocation).html(); //get HTML from the matching HTML entity
+        captionHTML = $('#' + captionLocation).html(); //get HTML from the matching HTML entity
         this.$caption
           .attr('id', captionLocation) // Add ID caption TODO why is the id being set?
           .html(captionHTML); // Change HTML in Caption
@@ -457,6 +458,7 @@
       this.$slides.each(this.addBullet);
       this.$element.addClass('with-bullets');
       if (this.options.centerBullets) this.$bullets.css('margin-left', -this.$bullets.outerWidth() / 2);
+      if (this.options.bulletThumbsHideOnSmall) this.$bullets.addClass('hide-for-small');
     },
 
     addBullet: function (index, slide) {
@@ -654,7 +656,9 @@
         this.setCaption();
       }
 
-      if (this.$slides.last() && this.options.singleCycle) {
+      // if on last slide and singleCycle is true, don't loop through slides again
+      // .length is zero based so must minus 1 to match activeSlide index
+      if (this.activeSlide === this.$slides.length-1 && this.options.singleCycle) {
         this.stopClock();
       }
     }
@@ -867,7 +871,7 @@ app.run = function (o) {
 	for (var l = images.length, i = 0; i < l; i++) {
 		var theme = settings.themes.gray;
 		var src = images[i].getAttribute("data-src") || images[i].getAttribute("src");
-		if ( !! ~src.indexOf(options.domain)) {
+		if (src && !! ~src.indexOf(options.domain)) {
 			var render = false,
 				dimensions = null,
 				text = null;

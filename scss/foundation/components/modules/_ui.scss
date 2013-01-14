@@ -24,7 +24,7 @@
 
   /* Alerts ---------------------- */
 
-  div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius(3px); text-shadow: 0 -1px rgba(#000,.3); position: relative;
+  div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius($alertBorderRadius); text-shadow: 0 -1px rgba(#000,.3); position: relative;
 
     &.success { background-color: $successColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
     &.alert { background-color: $alertColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
@@ -62,7 +62,7 @@
 
     &>.nub { display: block; width: 0; height: 0; border: solid 5px; border-color: transparent transparent $tooltipBackgroundColor transparent; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent; position: absolute; top: -10px; #{$defaultFloat}: 10px; }
     &.tip-override>.nub { border-color: transparent transparent $tooltipBackgroundColor transparent !important; border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent !important; top: -10px !important; }
-    &.tip-top>.nub { border-color: $tooltipBackgroundColor transparent transparent transparent; border-color: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent transparent; top: auto; bottom: -10px; }
+    &.tip-top>.nub, &.tip-centered-top>.nub  { border-color: $tooltipBackgroundColor transparent transparent transparent; border-color: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent transparent; top: auto; bottom: -10px; }
 
     &.tip-left, &.tip-right { float: none !important; }
 
@@ -160,6 +160,11 @@
       }
     }
 
+  }
+
+  div.pagination-centered { text-align: center; 
+
+    ul > li { float: none; display: inline-block; }
   }
 
   /* Breadcrums ---------------------- */

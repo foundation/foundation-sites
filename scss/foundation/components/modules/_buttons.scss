@@ -37,7 +37,7 @@
 
 		/* Disabled ---------- */
     &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none);
-      :hover { background: $mainColor; }
+      &:hover { background: $mainColor; }
 
       &.success { background-color: $successColor;
         &:hover, &:focus { background-color: $successColor; outline: none; }
@@ -82,7 +82,8 @@
     &>ul { @include box-sizing(content-box); display: none; position: absolute; #{$defaultFloat}: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken($white, 20%); border-top: none; min-width: 100%; z-index: 40;
 
       li { width: 100%; cursor: pointer; padding: 0; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none;
-        a { display: block; color: #555; font-size: ms(0) - 1; font-weight: $bodyFontWeight; padding: 6px 14px; text-align: $defaultFloat; }
+        a, button { display: block; color: #555; font-size: ms(0) - 1; font-weight: $bodyFontWeight; padding: 6px 14px; text-align: $defaultFloat; }
+        button { width: 100%; border: inherit; background: inherit; font-family: inherit; margin: inherit; -webkit-font-smoothing: $fontSmoothing; }
         &:hover, &:focus { background-color: lighten($mainColor, 45%); color: #222; }
         &.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: darken($white, 7%); }
       }
@@ -108,7 +109,7 @@
 
       /* Sizes */
       &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); padding-#{$defaultFloat}: $btnBase * 2; padding-#{$defaultOpposite}: ($btnBase * 2.5) * 2; @include single-transition(background-color, .15s, ease-in-out);
-        &:hover, &:focus { background-color: darken($mainColor, 10%); }
+        &:hover, &:focus { background-color: darken($mainColor, 10%); @include box-shadow(0 1px 0 $shinyEdge inset); }
       }
       &.large>a { padding: $largeBtnBase (($largeBtnBase * 2.5) * 2) ($largeBtnBase + 1) ($largeBtnBase * 2); padding-#{$defaultFloat}: $largeBtnBase * 2; padding-#{$defaultOpposite}: ($largeBtnBase * 2.5) * 2; }
       &.small>a { padding: $smallBtnBase (($smallBtnBase * 2.5) * 2) ($smallBtnBase + 1) ($smallBtnBase * 2); padding-#{$defaultFloat}: $smallBtnBase * 2; padding-#{$defaultOpposite}: ($smallBtnBase * 2.5) * 2; }
@@ -150,16 +151,14 @@
     }
 
     &.radius li {
-      a, input[type="submit"] {
-        &.button, &.button.radius, &.button-rounded { @include border-radius(0px); }
+      .button, .button.radius, .button-rounded { @include border-radius(0px); }
+      &:first-child {
+        .button, .button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
+        .button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
       }
-      &:first-child a, &:first-child input[type="submit"] {
-        &.button, &.button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
-        &.button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
-      }
-      &:last-child a, &:last-child input[type="submit"] {
-        &.button, &.button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
-        &.button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
+      &:last-child {
+        .button, .button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
+        .button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
       }
     }
 
