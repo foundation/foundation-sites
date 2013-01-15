@@ -40,7 +40,7 @@
   select { width: 100%; }
 
   /* Fieldsets */
-  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: 12px 12px 0; margin: 18px 0;
+  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: 12px; margin: 18px 0;
 
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0; margin-#{$defaultFloat}: -3px; }
   }
@@ -50,9 +50,6 @@
   .error input:focus, input.error:focus, .error textarea:focus, textarea.error:focus { outline-color: lighten($alertColor, 30%); }
   .error label, label.error { color: $alertColor; }
   .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; font-size: ms(0) - 2; font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, $inputBorderRadius); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
-  .error textarea, textarea.error {
-    &:focus { background: darken($white, 2%); border-color: darken($white, 30%); }
-  }
   /* Custom Forms ---------------------- */
 
   form.custom {

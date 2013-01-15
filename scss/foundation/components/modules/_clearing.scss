@@ -21,7 +21,7 @@
 .clearing-main-left { left: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
 .clearing-main-right { right: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
 
-.block-grid.three-up > li:nth-child(3n+1) { clear: none; }
+ul[data-clearing].block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
 ul[data-clearing] li { cursor: pointer; display: block;
   &.clearing-feature ~ li { display: none; }
