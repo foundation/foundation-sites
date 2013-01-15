@@ -16,7 +16,7 @@ The Foundation JS libraries are tested with qUnit. You can run the tests in your
 
 For more convenient testing using the command line and watcher functionality, you can also run the tests through Grunt with PhantomJS.
 
-**Setting up Grunt for command line testing. **
+**Setting up Grunt for command line testing.**
 
 1. Install [PhantomJS](http://phantomjs.org/)
 2. Install [Node.js](http://nodejs.org/)
