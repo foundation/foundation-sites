@@ -21,3 +21,4 @@ marketing/.sass-cache/*
 test/.sass-cache/*
 test/stylesheets/styles.css
 *.orig
+node_modules
