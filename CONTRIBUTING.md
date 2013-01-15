@@ -4,9 +4,27 @@ This is the Foundation project.  We love making super awesome stuff, but even mo
 
 ## Testing
 
+### Styles
+
 Go into the test/ directory.  Run `bundle exec compass compile` or `bundle exec compass watch` if you're making changes and want to see them reflected on-the-fly.
 
 Want to add a feature to Foundation?  Either update one of the test/*.html files or copy `test/template.html` to a new file, add your markup to it and check it in.
+
+### JavaScript
+
+The Foundation JS libraries are tested with qUnit. You can run the tests in your browser by opening up the respective `.html` files in `test/javascripts/tests/`.
+
+For more convenient testing using the command line and watcher functionality, you can also run the tests through Grunt with PhantomJS.
+
+**Setting up Grunt for command line testing. **
+
+1. Install [PhantomJS](http://phantomjs.org/)
+2. Install [Node.js](http://nodejs.org/)
+3. You may need to reboot your machine to make sure your PATH is up to date.
+4. From the root of the project, `npm install`. This will install the grunt tasks locally.
+5. Install the grunt command line interface with `npm install -g grunt-cli`.
+
+Now you should have two new commands available. `grunt qunit` will execute all of the qUnit tests. `grunt watch` will watch for changes to the JS files and test files, and execute the tests when something changes.
 
 ## Compass Project
 
