@@ -1,5 +1,5 @@
 Description:
-    Setup Foundation assets on your website or generate new layouts preconfigured to use Foundation
+    Setup Foundation assets on your website or generate new layouts preconfigured to use Foundation.
 
 Example:
   rails g foundation:install
