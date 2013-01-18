@@ -3,6 +3,25 @@ We'll keep you up to date with what we've released so you at least have a gist o
 
 ---
 
+### 3.2.4- January 14, 2013
+This path includes bug fixes and a few style improvements for small UI elements. This patch includes:
+* Bumped Joyride to version 2.0.3
+* Added centered pagination style
+* Fixed bug with Orbit captions
+* Fixed bugs with clicking on accordion element
+* Added styling for buttons inside dropdowns
+* We're now using max-width instead of width on tooltips
+* Added class, .tip-centered-top and .tip-centered-bottom for positioning tooltips
+* Added functionality to create a stick top bar that enables it to be down the page in the markup and stick when it hits the browser edge.
+* Fixes to the semantic grid mixin
+* Added better :focus styles for error inputs
+* Added settings for Top Bar Toggle color
+* Updated Modular Scale to version 1.0.6
+* Fixed bug with printing styles
+
+### 3.2.3
+This patch fixed some quick bug fixes.
+
 ### 3.2.2- November 10, 2012
 This patch fixes a typo found in the tabs plugin.
 

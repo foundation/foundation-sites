@@ -33,14 +33,14 @@
         button = $el.closest('.button.dropdown'),
         dropdown = $('> ul', button);
 
-        // If the click is registered on an actual link then do not preventDefault which stops the browser from following the link
-        if (e.target.nodeName !== "A"){
+        // If the click is registered on an actual link or on button element then do not preventDefault which stops the browser from following the link
+        if (["A", "BUTTON"].indexOf(e.target.nodeName) == -1){
           e.preventDefault();
         }
 
       // close other dropdowns
       setTimeout(function () {
-        closeDropdowns(config.dropdownAsToggle ? dropdown : '');
+        closeDropdowns(config.dropdownAsToggle ? '' : dropdown);
         dropdown.toggleClass('show-dropdown');
 
         if (config.dropdownAsToggle) {

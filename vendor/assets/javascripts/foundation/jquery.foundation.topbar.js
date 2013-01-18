@@ -127,7 +127,7 @@
         // Put element back in the DOM
         settings.$section.appendTo(settings.$topbar);
       },
-      
+
       largestUL : function () {
         var uls = settings.$topbar.find('section ul ul'),
             largest = uls.first(),
@@ -154,5 +154,21 @@
       $.error('Method ' +  method + ' does not exist on jQuery.foundationTopBar');
     }
   };
+
+  // Monitor scroll position for sticky
+  if ($('.sticky').length > 0) {
+    var distance = $('.sticky').length ? $('.sticky').offset().top: 0,
+        $window = $(window);
+
+      $window.scroll(function() {
+        if ( $window.scrollTop() >= distance ) {
+           $(".sticky").addClass("fixed");
+        }
+
+       else if ( $window.scrollTop() < distance ) {
+          $(".sticky").removeClass("fixed");
+       }
+    });
+  }
 
 }(jQuery, this));

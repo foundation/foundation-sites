@@ -218,7 +218,7 @@
     }
 
     .block-grid {
-      &>li { clear: none !important; }
+      &>li { clear: none; }
       @for $i from 1 through $blockGridElements {
         &.mobile-#{convert-number-to-word($i)}-up>li {
           width: 100%/$i;
@@ -259,7 +259,7 @@
 
     /* Basic overrides */
     .button { display: block; }
-    button.button, input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
+    button.button, input[type="submit"].button, input[type="reset"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
     /* Button Groups */
     .button-group {
       button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + 1);
@@ -358,7 +358,7 @@
       .contain-to-grid & { width: auto; }
 
       /* Setting up the sliding area */
-      section { left: 0; position: relative; width: auto; @include single-transition(left, 300ms); }
+      section { left: 0; position: relative; width: auto; @include single-transition(left,300ms,0); }
       ul { width: 100%; height: 100%; margin-bottom: 0; display: block;
         &>li { float: none;
           &.active, &:hover { background: darken($topBarDropBgColor, 5%); }
@@ -373,7 +373,7 @@
 
           /* Dropdown Toggle */
           &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeightMobile; position: absolute; right: 0; top: 0; width: 50%;
-            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; right: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
+            a { @include cssTriangle($topBarNavToggleSize, $topBarNavToggleColor, top); padding: 0; position: absolute; top: 50%; right: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
             @if $topBarBreakPoint == 9999px { a { right: ($topBarHeight / 2) + ($columnGutter / 2);} }
             &:hover { background: inherit; }
           }
@@ -386,7 +386,7 @@
           &.search { padding: 0 $topBarHeight / 2;
             form { width: 100%;
               input[type=text] { width: 75%; }
-              .button { top: 0; width: 25%; }
+              .button { top: -1px; width: 25%; }
             }
           }
 
@@ -447,7 +447,7 @@
 
       /* When the Small Nav is Showing */
       &.expanded { height: 100%;
-        ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
+        ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, darken($topBarNavToggleColor, 20%), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
     .top-bar ul li.has-button { padding: 5px $topBarHeightMobile / 3; }

@@ -72,22 +72,25 @@
 
     // Determine when a destination has been reached, ah0y!
     var $lastDestination = $('[data-magellan-destination]:last');
-    $window.on('scroll.magellan', function(e){
-	  var windowScrollTop = $window.scrollTop(),
-		  scrolltopPlusHeight = windowScrollTop+$window.outerHeight(true),
-		  lastDestinationTop = Math.ceil($lastDestination.offset().top);
-      $('[data-magellan-destination]').each(function(){
-        var $destination = $(this),
-            destination_name = $destination.attr('data-magellan-destination'),
-            topOffset = $destination.offset().top - windowScrollTop;
-        if (topOffset <= options.threshold) {
-          $('[data-magellan-arrival=' + destination_name + ']').trigger('magellan.arrival');
-        }
-        // In large screens we may hit the bottom of the page and dont reach the top of the last magellan-destination, so lets force it
-        if (scrolltopPlusHeight >= $document.outerHeight(true) && lastDestinationTop > windowScrollTop && lastDestinationTop < scrolltopPlusHeight) {
-        	 $('[data-magellan-arrival]:last').trigger('magellan.arrival');
-        }
-      });
-    });
+      // Determine if a destination has been set
+    if ($lastDestination.length > 0) {
+        $window.on('scroll.magellan', function (e) {
+            var windowScrollTop = $window.scrollTop(),
+                scrolltopPlusHeight = windowScrollTop + $window.outerHeight(true),
+                lastDestinationTop = Math.ceil($lastDestination.offset().top);
+            $('[data-magellan-destination]').each(function () {
+                var $destination = $(this),
+                    destination_name = $destination.attr('data-magellan-destination'),
+                    topOffset = $destination.offset().top - windowScrollTop;
+                if (topOffset <= options.threshold) {
+                    $('[data-magellan-arrival=' + destination_name + ']').trigger('magellan.arrival');
+                }
+                // In large screens we may hit the bottom of the page and dont reach the top of the last magellan-destination, so lets force it
+                if (scrolltopPlusHeight >= $document.outerHeight(true) && lastDestinationTop > windowScrollTop && lastDestinationTop < scrolltopPlusHeight) {
+                    $('[data-magellan-arrival]:last').trigger('magellan.arrival');
+                }
+            });
+        });
+    }
   };
 }(jQuery, this));

@@ -17,9 +17,9 @@
   // Columns mixin, syntax is ($columns, $behavior). Behavior can be 'centered' which centers things or 'collapse' which collapses the gutters. ex @include row(4,[center | collapse])
 
   @mixin column($columns:$columns, $behavior: false) {
-      @if      $behavior == center   { @extend %fl-n; margin: 0 auto !important; @extend %c-base; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: left; width: 100%; }
-    } @else if $behavior == collapse { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: left; width: 100%; }
-    } @else                          { @extend %fl-l; @extend %c-base; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: left; width: 100%; } }
+      @if      $behavior == center   { @extend %fl-n; margin-left: auto; margin-right: auto; @extend %c-base; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: none; width: auto; }
+    } @else if $behavior == collapse { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: none; width: auto; }
+    } @else                          { @extend %fl-l; @extend %c-base; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: none; width: auto; } }
   }
 
   // Offset Mixin, include after a column mixin to manipulate its grid offset.

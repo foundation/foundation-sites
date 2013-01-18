@@ -388,6 +388,7 @@
         if ($.trim($(captionLocation).text()).length < 1){
           return false;
         }
+        
         // if location selector starts with '#', remove it so we don't see id="#selector"
         if (captionLocation.charAt(0) == '#') {
             captionLocation = captionLocation.substring(1, captionLocation.length);
@@ -871,7 +872,7 @@ app.run = function (o) {
 	for (var l = images.length, i = 0; i < l; i++) {
 		var theme = settings.themes.gray;
 		var src = images[i].getAttribute("data-src") || images[i].getAttribute("src");
-		if ( !! ~src.indexOf(options.domain)) {
+		if (src && !! ~src.indexOf(options.domain)) {
 			var render = false,
 				dimensions = null,
 				text = null;
