@@ -1,0 +1,30 @@
+// Page Layout
+
+/* Page Titles */
+#title,
+#page {
+  @include gridRow;
+}
+
+hgroup,
+#page > div,
+#page article {
+  @include gridCol;
+}
+
+#page nav {
+  @include panel;
+}
+
+@media #{$largeBreakPoint} {
+
+  #page {
+    &>div {
+      @include gridCol($columns:4, $push:8);
+    }
+    article {
+      @include gridCol($columns:8, $pull:4);
+    }
+  }
+
+}
