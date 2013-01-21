@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if IE 7]>    <html class="no-js lt-ie8 lt-ie9" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -15,32 +14,101 @@
   <link rel="stylesheet" href="stylesheets/styles.css">
   <style type="text/css">
     .row.display {
-      background: #eee;
-      margin-bottom: 5px;
+      background: #F4F4F4;
+      margin-bottom: 10px;
     }
-    .row.display > div, .row.display > div, .block-grid li {
-      background: #ddd;
-      padding-top: 10px;
-      padding-bottom: 12px;
+    .row.display .column, .row.display .columns, .block-grid li {
+      background: #E7E7E7;
+      border: 1px solid #DDD;
       font-size: 11px;
-      border: solid 1px #ccc;
+      text-indent: 3px;
+      padding-top: 6px;
+      padding-bottom: 6px;
     }
-    .row.display [class*="small-"] .row [class*="small-"], .row.display [class*="large-"] .row [class*="large-"] {
-      padding-top: 10px;
-      padding-bottom: 12px;
-      background: #ccc;
-      border: solid 1px #bbb;
-      /*margin-top: 12px;*/
-    }
-    .nopad { padding-top: 0 !important; padding-bottom: 0 !important; }
   </style>
   <script src="../vendor/assets/javascripts/foundation/modernizr.foundation.js"></script>
 
 </head>
 <body>
 
-  <div class="row">
-    <div class="large-12 columns">
+  <nav>
+    <img src="http://placehold.it/300x100">
+    <ul>
+      <li><a href="#">Links</a></li>
+      <li><a href="#">Links</a></li>
+      <li><a href="#">Links</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="news">
+      <img src="http://placehold.it/330x300">
+      <p>News</p>
+    </div>
+    <div class="latest">
+      <img src="http://placehold.it/330x300">
+      <p>Latest</p>
+    </div>
+    <div class="promo">
+      <img src="http://placehold.it/330x300">
+      <p>Promos</p>
+    </div>
+  </section>
+
+  <ul id="logos">
+    <li><img src="http://placehold.it/300x300"></li>
+    <li><img src="http://placehold.it/300x300"></li>
+    <li><img src="http://placehold.it/300x300"></li>
+    <li><img src="http://placehold.it/300x300"></li>
+    <li><img src="http://placehold.it/300x300"></li>
+    <li><img src="http://placehold.it/300x300"></li>
+  </ul>
+
+  <section id="callUs">
+    <a href="#">1.800.888.1243</a>
+  </section>
+
+<hr>
+
+<div class="row">
+  <img class="large-3" src="http://placehold.it/300x100">
+  <ul class="large-9">
+    <li><a href="#">Links</a></li>
+    <li><a href="#">Links</a></li>
+    <li><a href="#">Links</a></li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="small-4 large-4">
+    <img src="http://placehold.it/330x300">
+    <p>News</p>
+  </div>
+  <div class="small-4 large-4">
+    <img src="http://placehold.it/330x300">
+    <p>Latest</p>
+  </div>
+  <div class="large-4">
+    <img src="http://placehold.it/330x300">
+    <p>Promos</p>
+  </div>
+</div>
+
+<ul class="row">
+  <li class="small-2"><img src="http://placehold.it/300x300"></li>
+  <li class="small-2"><img src="http://placehold.it/300x300"></li>
+  <li class="small-2"><img src="http://placehold.it/300x300"></li>
+  <li class="small-2"><img src="http://placehold.it/300x300"></li>
+  <li class="small-2"><img src="http://placehold.it/300x300"></li>
+  <li class="small-2"><img src="http://placehold.it/300x300"></li>
+</ul>
+
+<section class="row" id="callUs">
+  <a href="#">1.800.888.1243</a>
+</section>
+
+<!--   <div class="row">
+    <div class="twelve columns">
       <p><a href="index.html">&laquo; Back</a></p>
       <h2>Foundation Grid Testing</h2>
       <hr />
@@ -54,361 +122,432 @@
         <dd><a href="#block">Block Grids</a></dd>
       </dl>
     </div>
-  </div>
-
+  </div> -->
 
   <!-- Test Foundation Components Here -->
-  <div class="row">
-    <div class="large-12 columns">
+  <!-- <div class="row">
+    <div class="twelve columns">
       <h3>The Grid</h3>
-      <h4 class="subheader">Create powerful multi-device layouts quickly and easily with the 12-column, mobile first, nestable Foundation 4 grid. If you're familiar with grid systems, you'll feel right at home.</h4>
-
-      <a name="base-ex"></a>
-      <h4>Basic Usage</h4>
-      <p>The grid can be used to create any number of simple or complex layouts that respond to our single large screen breakpoint. You can use the default stacking column grid that you are used to from previous version of Foundation, as well as, a full fleshed out small and large grid for creating responsive layouts across devices. We also removed the <code>.column/.columns</code> class as a class chain to simplify markup and styles.</p>
-
-      <p>Since the grid is built mobile first, it used media queries to serve the large layouts. This means that any browser that doesn't support media queries will default to the stacking columns, including IE8.</p>
-
-      <div class="row display">
-        <div class="large-4">
-          .large-4
-        </div>
-        <div class="large-4">
-          .large-4
-        </div>
-        <div class="large-4">
-          .large-4
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-3">
-          .large-3
-        </div>
-        <div class="large-3">
-          .large-3
-        </div>
-        <div class="large-3">
-          .large-3
-        </div>
-        <div class="large-3">
-          .large-3
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-2">
-          .large-2
-        </div>
-        <div class="large-10">
-          .large-10
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-4">
-          .large-4
-        </div>
-        <div class="large-8">
-          .large-8
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-6">
-          .large-6
-        </div>
-        <div class="large-6">
-          .large-6
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-7">
-          .large-7
-        </div>
-        <div class="large-5">
-          .large-5
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-9">
-          .large-9
-        </div>
-        <div class="large-3">
-          .large-3
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-11">
-          .large-11
-        </div>
-        <div class="large-1">
-          .large-1
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-12">
-          .large-12
-        </div>
-      </div>
+      <h4 class="subheader">Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation 3 grid. If you're familiar with grid systems, you'll feel right at home.</h4>
 
       <br>
 
-      <h5>Using the Small Grid</h5>
-      <p>We also include a small grid that can be used in conjunction with the large and stacking column grid to create very complex layouts that work for the viewport you need. To use this grid you simply include another class like, <code>.small-#</code>. If you only use a small column class, your large screen layout will inherit stacking columns, so make sure to include a large grid if you don't want this. You can even declare a different number of columns for small and large.</p>
+      <div class="row">
+        <div class="four columns">
+          <a name="base-ex"></a>
+          <h4>Examples</h4>
+          <p>These are examples of different ways to use the Foundation Grid. Foundation 3 uses <kbd>border-box</kbd> so that borders and padding do not effect the overall width.</p>
+          <h5>Nesting</h5>
+          <p>The grid allows for nesting down as far as you'd like, though at a certain point it will get absurd. You can use this nesting to create quite complex layouts, as well as some other tricks like form layouts or visual elements.</p>
+        </div>
 
-      <p><strong>Note:</strong> View this page on a small device or shrink your browser to see the small grid in action.</p>
-
-      <div class="row display">
-        <div class="small-8">
-          .small-8
-        </div>
-        <div class="small-4">
-          .small-4
-        </div>
-      </div>
-      <div class="row display">
-        <div class="small-8 large-8">
-          .small-8.large-8
-        </div>
-        <div class="small-4 large-4">
-          .small-4.large-4
-        </div>
-      </div>
-
-      <br>
-
-      <h5>Floating the Last Column</h5>
-      <p>In order to work around browsers' different rounding behaviours, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with class="end" in order to override that behaviour.</p>
-
-      <div class="row display">
-        <div class="small-4 large-4">
-          .large-4
-        </div>
-        <div class="small-4 large-4">
-          .large-4
-        </div>
-      </div>
-      <div class="row display">
-        <div class="small-4 large-4">
-          .small-4.large-4
-        </div>
-        <div class="small-4 large-4 end">
-          .small-4.large-4.end
-        </div>
-      </div>
-
-      <br>
-
-      <h4>Nesting Columns</h4>
-      <p>The grid allows for nesting down as far as you'd like, though at a certain point it will get absurd. You can use this nesting to create quite complex layouts, as well as some other tricks like form layouts or visual elements. In order to nest properly you you must have you markup structured with a row and a column, then a row inside of the column. You can't have a row followed by a row that isn't inside of a column.</p>
-
-      <div class="row display">
-        <div class="small-12 large-12">
-          .small-12.large-12
-        </div>
-      </div>
-      <div class="row display">
-        <div class="small-4 large-4">
-          .small-4.large-4
-        </div>
-        <div class="nopad small-4 large-4">
-          <div class="row">
-            <div class="small-4 large-4">
-              .small-4.large-4
+        <div class="eight columns">
+          <div class="row display">
+            <div class="four columns">
+              .four.columns
             </div>
-            <div class="small-4 large-4">
-              .small-4.large-4
+            <div class="four columns">
+              .four.columns
             </div>
-            <div class="small-4 large-4">
-              .small-4.large-4
+            <div class="four columns">
+              .four.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="three columns">
+              .three.columns
+            </div>
+            <div class="six columns">
+              .six.columns
+            </div>
+            <div class="three columns">
+              .three.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="two columns">
+              .two.columns
+            </div>
+            <div class="eight columns">
+              .eight.columns
+            </div>
+            <div class="two columns">
+              .two.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="one columns">
+              .one
+            </div>
+            <div class="eleven columns">
+              .eleven.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="two columns">
+              .two.columns
+            </div>
+            <div class="ten columns">
+              .ten.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="three columns">
+              .three.columns
+            </div>
+            <div class="nine columns">
+              .nine.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="four columns">
+              .four.columns
+            </div>
+            <div class="eight columns">
+              .eight.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="five columns">
+              .five.columns
+            </div>
+            <div class="seven columns">
+              .seven.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="six columns">
+              .six.columns
+            </div>
+            <div class="six columns">
+              .six.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="seven columns">
+              .seven.columns
+            </div>
+            <div class="five columns">
+              .five.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="eight columns">
+              .eight.columns
+            </div>
+            <div class="four columns">
+              .four.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="nine columns">
+              .nine.columns
+            </div>
+            <div class="three columns">
+              .three.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="ten columns">
+              .ten.columns
+            </div>
+            <div class="two columns">
+              .two.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="eleven columns">
+              .eleven.columns
+            </div>
+            <div class="one columns">
+              .one
+            </div>
+          </div>
+          <div class="row display">
+            <div class="twelve columns">
+              .twelve.columns
             </div>
           </div>
         </div>
-        <div class="small-4 large-4">
-          .small-4.large-4
-        </div>
       </div>
 
-      <br>
+      <br><br>
 
-      <h4>Offsetting Columns</h4>
-      <p>Offsets allow you to create additional space between columns in a row. The offsets run from <code>.large-offset-1</code> all the way up to <code>.large.offset-11</code>. Like the rest of the grid, they're nestable.</p>
-
-      <div class="row display">
-        <div class="large-2">
-          .large-2
+      <div class="row">
+        <div class="four columns">
+          <a name="offset"></a>
+          <h4>Offsets</h4>
+          <p>Offsets allow you to create additional space between columns in a row. Like the rest of the grid, they're nestable.</p>
         </div>
-        <div class="large-8 large-offset-2">
-          .large-8.large-offset-2
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-2">
-          .large-2
-        </div>
-        <div class="large-6 large-offset-4">
-          .large-6.large-offset-4
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-2">
-          .large-2
-        </div>
-        <div class="large-4 large-offset-6">
-          .large-4.large-offset-6
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-2">
-          .large-2
-        </div>
-        <div class="large-4 large-offset-4">
-          .large-4.large-offset-4
-        </div>
-        <div class="large-1">
-          .large-1
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-2">
-          .large-2
-        </div>
-        <div class="large-4 large-offset-2">
-          .large-4.large-offset-2
-        </div>
-        <div class="large-1">
-          .large-1
-        </div>
-      </div>
-
-      <br>
-
-      <h5>Offsetting the Small Grid</h5>
-      <p>We've even included separate offset classes for the small grid that can be used in conjunction with the large grid. This means you can even have different offsets for small and large.</p>
-
-      <p><strong>Note:</strong> View this page on a small device or shrink your browser to see the small grid in action.</p>
-
-      <div class="row display">
-        <div class="small-2 large-2">
-          .small-2.large-2
-        </div>
-        <div class="small-4 large-4 small-offset-2">
-          .small-4.large-4.small-offset-2
-        </div>
-        <div class="small-2 large-2">
-          .small-2.large-2
-        </div>
-      </div>
-      <div class="row display">
-        <div class="small-2 large-2">
-          .small-2.large-2
-        </div>
-        <div class="small-4 large-4 small-offset-1 large-offset-3">
-          .small-4.large-4.small-offset-1.large-offset-3
-        </div>
-        <div class="small-2 large-2">
-          .small-2.large-2
-        </div>
-      </div>
-
-      <br>
-
-      <h4>Centering Columns</h4>
-      <p>Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element itself. This is a convenient way to make sure a block is centered, even if you change the number of columns it contains. <strong>Note:</strong> There cannot be any other column blocks in the row for this to work.</p>
-
-      <div class="row display">
-        <div class="large-2 large-centered">
-          .large-2.large-centered
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-4 large-centered">
-          .large-4.large-centered
-        </div>
-      </div>
-      <div class="row display">
-        <div class="large-6 large-centered">
-          .large-6.large-centered
-        </div>
-      </div>
-
-      <br>
-
-      <h5>Centering Small Columns</h5>
-      <p>As with everything else, we've included the ability to center small columns as well. This can be used in conjunction with large centered columns and you can even combine different sized columns.</p>
-
-      <p><strong>Note:</strong> View this page on a small device or shrink your browser to see the small grid in action.</p>
-
-      <div class="row display">
-        <div class="small-8 large-4 small-centered large-centered">
-          .small-8.large-4.small-centered.large-centered
-        </div>
-      </div>
-      <div class="row display">
-        <div class="small-4 large-8 small-centered large-centered">
-          .small-4.large-8.small-centered.large-centered
-        </div>
-      </div>
-
-      <br>
-
-      <h4>Source Ordering Columns</h4>
-      <p>Sometimes within the grid you want the order of your markup to not necessarily be the same as the order items are flowed into the grid. Using our source ordering classes, <code>.large-push-#/.large-pull-#</code>, you can shift columns around on desktops and tablets. On phones, the grid will shift back to normal unless you also declare <code>.small-push-#/.small-pull-#</code> classes. You can create different source orders for each grid as well by combining them with the large and small grid like below.</p>
-
-      <div class="row display">
-        <div class="large-4 large-push-8">
-          .large-4.large-push-8
-        </div>
-        <div class="large-8 large-pull-4">
-          .large-8.large-pull-4
-        </div>
-      </div>
-      <div class="row display">
-        <div class="small-8 large-8 small-push-4">
-          .small-8.large-8.large-push-4
-        </div>
-        <div class="small-4 large-4 small-pull-8">
-          .small-4.large-4.large-pull-8
-        </div>
-      </div>
-
-      <br>
-
-      <h4>Advanced Layouts</h4>
-      <p>With the new grid you can combine different nesting combinations to make complex layouts that shift in new ways for small screens. The biggest use case here is complex column adjustments like, Taking a row of six columns followed by a stacking column and converting it to a row split into thirds. Take a look at the second example below.</p>
-
-      <div class="row display">
-        <div class="nopad small-8 large-4">
-          .small-8.large-4
-          <div class="row">
-            <div class="small-6 large-6">
-              .small-6.large-6
+        <div class="eight columns">
+          <div class="row display">
+            <div class="one columns">
+              .one
             </div>
-            <div class="small-6 large-6">
-              .small-6.large-6
+            <div class="eleven columns">
+              .eleven.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="one columns">
+              .one
+            </div>
+            <div class="ten columns offset-by-one">
+              .ten.columns.offset-by-one
+            </div>
+          </div>
+          <div class="row display">
+            <div class="one columns">
+              .one
+            </div>
+            <div class="nine columns offset-by-two">
+              .nine.columns.offset-by-two
+            </div>
+          </div>
+          <div class="row display">
+            <div class="one columns">
+              .one
+            </div>
+            <div class="eight columns offset-by-three">
+              .eight.columns.offset-by-three
+            </div>
+          </div>
+          <div class="row display">
+            <div class="seven columns offset-by-five">
+              .seven.columns.offset-by-five
+            </div>
+          </div>
+          <div class="row display">
+            <div class="six columns offset-by-six">
+              .six.columns.offset-by-six
+            </div>
+          </div>
+          <div class="row display">
+            <div class="five columns offset-by-seven">
+              .five.columns.offset-by-seven
+            </div>
+          </div>
+          <div class="row display">
+            <div class="four columns offset-by-eight">
+              .four.columns.offset-by-eight
             </div>
           </div>
         </div>
-        <div class="small-4 large-8">
-          .small-4.large-8
-        </div>
       </div>
-      <div class="row display">
-        <div class="nopad large-8">
-          .large-8
-          <div class="row">
-            <div class="small-6 large-6">
-              .small-6.large-6
+
+      <br><br>
+
+      <div class="row">
+        <div class="four columns">
+          <a name="center"></a>
+          <h4>Centered Columns</h4>
+          <p>Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element itself.</p>
+        </div>
+        <div class="eight columns">
+          <div class="row display">
+            <div class="one columns centered">
+              .one.columns.centered
             </div>
-            <div class="small-6 large-6">
-              .small-6.large-6
+          </div>
+          <div class="row display">
+            <div class="two columns centered">
+              .two.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="three columns centered">
+              .three.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="four columns centered">
+              .four.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="five columns centered">
+              .five.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="six columns centered">
+              .six.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="seven columns centered">
+              .seven.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="eight columns centered">
+              .eight.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="nine columns centered">
+              .nine.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="ten columns centered">
+              .ten.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="eleven columns centered">
+              .eleven.columns.centered
+            </div>
+          </div>
+          <div class="row display">
+            <div class="twelve columns centered">
+              .twelve.columns.centered
             </div>
           </div>
         </div>
-        <div class="large-4">
-          .large-4
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <div class="four columns">
+          <a name="order"></a>
+          <h4>Source Ordering</h4>
+          <p>Using these source ordering classes, you can shift columns around on desktops and tablets. On phones, the grid will still be linearized into the order of the markup.</p>
+        </div>
+        <div class="eight columns">
+          <div class="row display">
+            <div class="two columns push-ten">
+              .two.columns
+            </div>
+            <div class="ten columns pull-two">
+              .ten.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="three columns push-nine">
+              .three.columns
+            </div>
+            <div class="nine columns pull-three">
+              .nine.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="four columns push-eight">
+              .four.columns
+            </div>
+            <div class="eight columns pull-four">
+              .eight.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="five columns push-seven">
+              .five.columns
+            </div>
+            <div class="seven columns pull-five">
+              .seven.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="six columns push-six">
+              .six.columns
+            </div>
+            <div class="six columns pull-six">
+              .six.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="seven columns push-five">
+              .seven.columns
+            </div>
+            <div class="five columns pull-seven">
+              .five.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="eight columns push-four">
+              .eight.columns
+            </div>
+            <div class="four columns pull-eight">
+              .four.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="nine columns push-three">
+              .nine.columns
+            </div>
+            <div class="three columns pull-nine">
+              .three.columns (last)
+            </div>
+          </div>
+          <div class="row display">
+            <div class="ten columns push-two">
+              .ten.columns
+            </div>
+            <div class="two columns pull-ten">
+              .two (last)
+            </div>
+          </div>
         </div>
       </div>
 
+      <br><br>
 
-      <!-- <div class="row">
+      <div class="row">
+        <div class="four columns">
+          <a name="mobile"></a>
+          <h4>Mobile Grid</h4>
+          <p>When you're creating your layout you can optionally attach classes that take your existing grid elements and attach them to a phone grid.</p>
+          <h5>Mobile Source Ordering</h5>
+          <p>The syntax includes <code>.pull-one-mobile</code>, <code>.pull-two-mobile</code>, <code>.pull-three-mobile</code>, <code>.push-one-mobile</code>, <code>.push-two-mobile</code>, <code>.push-three-mobile</code>.</p>
+        </div>
+        <div class="eight columns">
+          <div class="row display">
+            <div class="three mobile-one columns">
+              .three.mobile-one.columns
+            </div>
+            <div class="nine mobile-three columns">
+              .nine.mobile-three.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="six mobile-two columns">
+              .six.mobile-two.columns
+            </div>
+            <div class="six mobile-two columns">
+              .six.mobile-two.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="nine mobile-three columns">
+              .nine.mobile-three.columns
+            </div>
+            <div class="three mobile-one columns">
+              .three.mobile-one.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="six mobile-two columns">
+              .six.mobile-two.columns
+            </div>
+            <div class="six mobile-two columns">
+              .six.mobile-two.columns
+            </div>
+          </div>
+          <div class="row display">
+            <div class="nine mobile-three columns">
+              .nine.mobile-three.columns
+            </div>
+            <div class="three mobile-one columns">
+              .three.mobile-one.columns
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="row">
         <div class="four columns">
           <a name="block"></a>
           <h4>Block Grids</h4>
@@ -454,11 +593,10 @@
             <li>Five-up element</li>
           </ul>
         </div>
-      </div> -->
+      </div>
 
     </div>
-  </div>
-
+  </div> -->
 
   <!-- Included JS Files -->
   <script src="../vendor/assets/javascripts/foundation/jquery.js"></script>

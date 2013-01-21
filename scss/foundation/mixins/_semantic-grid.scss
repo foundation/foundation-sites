@@ -58,6 +58,7 @@
   // If a column number is given, calculate width
   @if $columns {
     width: gridCalc($columns, $totalColumns);
+    float: left;
 
     // If last column, float naturally instead of to the right
     @if $lastCol { float: $defaultOpposite; }

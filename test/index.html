@@ -19,20 +19,19 @@
 </head>
 <body>
 
-	<div class="row">
-		<div class="twelve columns">
+  <header id="title">
+    <hgroup>
 			<h2>Welcome to the Foundation Test Bed</h2>
       <h4 class="subheader">We've made it really easy to contribute to Foundation and test out the elements you want! Just pick the section that your want and dive right in.</h4>
       <hr>
-		</div>
-	</div>
+    </hgroup>
+  </header> <!-- close #title -->
 
-	<div class="row">
-
-    <div class="four columns push-eight">
-      <div class="panel">
+  <section id="page">
+    <div>
+      <nav>
         <h5>Available Testing Pages:</h5>
-        <ul class="disc">
+        <ul>
           <li><a href="grid.html">Grid</a></li>
           <li><a href="type.html">Typography</a></li>
           <li><a href="buttons.html">Buttons</a></li>
@@ -47,16 +46,18 @@
           <li><a href="joyride.html">Joyride</a></li>
           <li><a href="clearing.html">Clearing</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
-    <div class="eight columns pull-four">
+    <article>
       <h3>How to Test</h3>
       <p>Within the <kbd>test/</kbd> directory you can run <kbd>bundle exec compass watch</kbd> while you're making changes to Foundation and want to see them reflected on-the-fly.</p>
 
       <p>If you're adding a new feature to Foundation you can either update one of the existing <kbd>test/*.html</kbd> files or copy <kbd>test/template.html</kbd> to a new file.  Then make sure you commit any changes to the test pages with your pull request.</p>
 
       <p><strong>NOTE:</strong> If you add a new page make sure to include it in the available testing pages list on this page.</p>
-  </div>
+    </article>
+  </section> <!-- close #page -->
+
 
 	<!-- Included JS Files -->
 	<script src="../vendor/assets/javascripts/foundation/jquery.js"></script>
