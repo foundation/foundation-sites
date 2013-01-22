@@ -2,9 +2,11 @@
 
   // Outer row mixin for container rows
 
-  @mixin outerRow() {
-    width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @extend %clearfix;
-    @include respondTo(smallScreen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; }
+  @mixin outerRow($small: $smallRowWidth, $medium: $mediumRowWidth, $large: $largeRowWidth, $xlarge: $xlargeRowWidth) {
+    width: $xlarge; max-width: $maxRowWidth; margin: 0 auto; @extend %clearfix;
+    @include respondTo(large) { width: $large; }
+    @include respondTo(medium) { width: $medium; }
+    @include respondTo(small) { width: $small; }
   }
 
   // Inner row mixin for nested rows, must be a child of an outer-row element. $behavior can be 'collapse' to get rid of margins

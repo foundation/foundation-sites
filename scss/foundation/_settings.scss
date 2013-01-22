@@ -2,7 +2,12 @@
 
 // Grid Settings
 
-$rowWidth: 1000px !default;
+$maxRowWidth: 1400px !default;
+$xlargeRowWidth: 80% !default;
+$largeRowWidth: 80% !default;
+$mediumRowWidth: 100% !default;
+$smallRowWidth: 100% !default;
+
 $columnGutter: 30px !default;
 $totalColumns: 12 !default;
 $mobileTotalColumns: 4 !default;
@@ -259,7 +264,7 @@ $base-size: $baseFontSize $importantModNum;
 
 $screenSmall: 768px !default;
 $screenMedium: 1279px !default;
-$screenXlarge: 1441px !default;
+$screenLarge: 1441px !default;
 
 // Saving for better em-based testing
 // $screenSmall: 44em !default;

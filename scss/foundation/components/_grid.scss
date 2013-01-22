@@ -1,6 +1,7 @@
   /* The Grid ---------------------- */
 
-  .row { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto;
+  .row { 
+    @include outerRow;
     .row { width: auto; max-width: none; min-width: 0; margin: 0 (-($columnGutter/2)); }
 
     &.collapse {

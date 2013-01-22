@@ -18,7 +18,7 @@
   .hide-for-print { display: inherit !important; }
 
   /* Very large display targeting */
-  @media only screen and (min-width: $screenXlarge) {
+  @media only screen and (min-width: $screenLarge) {
     .hide-for-small,
     .hide-for-medium,
     .hide-for-medium-down,
