@@ -1,69 +1,299 @@
 /* Normal Buttons ---------------------- */
 %btnBaseStyles {
+  border-width: $btnBorderWidth;
+  border-style: $btnBorderStyle;
   cursor: pointer;
-  display: block;
   font-family: inherit;
+  font-weight: bold;
   line-height: 1;
   margin: 0;
   position: relative;
-  text-align: center;
   text-decoration: none;
   width: auto;
+  @include box-shadow($btnShinyEdge);
+  @include single-transition(background-color, .15s, ease-in-out);
 
-  @media #{$largeBreakPoint} {
-    display: inline-block;
+  &:active {
+    @include box-shadow($btnDarkEdge);
   }
 }
 
-@mixin button($style, $size, $radius) {
-  background: $mainColor;
-  border-width: $btnBorderWidth;
-  border-style: $btnBorderStyle;
-  border-color: darken($mainColor, 15%);
-  color: $white;
-  font-size: ms(0);
-  font-weight: bold;
-  padding: $btnBasePadding;
+// Primary Button Mixin
+@mixin primary-button($size:medium, $radius:false, $align:center, $disabled:false, $display:inline-block) {
+
+  // Shared styles
   @extend %btnBaseStyles;
-  @include box-shadow($btnShinyEdge);
-  @include single-transition(background-color, .15s, ease-in-out);
+  background-color: $primaryColor;
+
+  // $size options, can do $size:false to not have any of these styles present.
+  // This is useful in cases when you only want to change @alignment, etc inside a media query;
+  @if $size {
+
+    // Default "$size:medium" styles
+    font-size:                   ms(0);
+    padding-top:                 $btnBasePadding;
+    padding-#{$defaultOpposite}: $btnBasePadding;
+    padding-bottom:              $btnBasePadding;
+    padding-#{$defaultFloat}:    $btnBasePadding;
+
+    // "$size:tiny" styles
+    @if $size == tiny {
+      font-size:                   ms(0) - 4;
+      padding-top:                 $tinyBtnBase;
+      padding-#{$defaultOpposite}: $tinyBtnBase * 2;
+      padding-bottom:              $tinyBtnBase + 1;
+      padding-#{$defaultFloat}:    $tinyBtnBase * 2;
+    }
+
+    // "$size:small" styles
+    @if $size == small {
+      font-size:                   ms(0) - 3;
+      padding-top:                 $smallBtnBase;
+      padding-#{$defaultOpposite}: $smallBtnBase * 2;
+      padding-bottom:              $smallBtnBase + 1;
+      padding-#{$defaultFloat}:    $smallBtnBase * 2;
+    }
+
+    // "$size:large" styles
+    @if $size == large {
+      font-size:                   ms(1);
+      padding-top:                 $largeBtnBase;
+      padding-#{$defaultOpposite}: $largeBtnBase * 2;
+      padding-bottom:              $largeBtnBase + 1;
+      padding-#{$defaultFloat}:    $largeBtnBase * 2;
+    }
+
+    // "$size:expand" styles
+    @if $size == expand {
+      font-size:                   ms(0);
+      width:                       100%;
+      padding-#{$defaultFloat}:    0px;
+      padding-#{$defaultOpposite}: 0px;
+    }
+
+  }
+
+  // $radii options. This is automatically set to false for default square corner buttons.
+  @if $radius == rounded {
+    @include border-radius($buttonRadius);
+  }
+  @if $radius == pill {
+    @include border-radius(1000px);
+  }
+
+  // $align options for text alignment in buttons, setting this to "false" omits the styles.
+  @if $align {
+
+    // Default text alignment
+    text-align: center;
+
+    // Left aligned text
+    @if $align == left {
+      text-align: left;
+      text-indent: 12px;
+    }
+
+    // Right aligned text
+    @if $align == right {
+      text-align: left;
+      padding-right: 12px;
+    }
+
+  }
+
+  // $disabled options, "false" by default
+  @if $disabled {
+    opacity: 0.6;
+    cursor: default;
+    background: $mainColor;
+    @include box-shadow(none);
+
+    &:hover { background: $primaryColor; }
+  }
+
+}
+
+a { @include primary-button(); }
+
+@mixin button($type:primary, $size:false, $radius:false, $alignment:false, $disabled:false) {
+
+  // Shared button styles
+
+
+  // primary, secondary, alert, success
+
+
+  // Secondary button type
+  // @if $type == secondary {
+  //   background-color: $secondaryColor;
+  //   border-color: darken($secondaryColor, 15%);
+  //   color: darken($secondaryColor, 80%);
+  //   text-align: center;
+
+  //   &:hover,
+  //   &:focus {
+  //     background-color: darken($secondaryColor, 10%);
+  //   }
+  // }
+
+  // Alert button type
+  // @else if $type == alert {
+  //   background-color: $alertColor;
+  //   border-color: darken($alertColor, 15%);
+  //   color: $white;
+  //   text-align: center;
+
+  //   &:hover,
+  //   &:focus {
+  //     background-color: darken($alertColor, 10%);
+  //   }
+  // }
+
+  // Success button type
+  // @else if $type == success {
+  //   background-color: $successColor;
+  //   border-color: darken($successColor, 15%);
+  //   color: $white;
+  //   text-align: center;
+
+  //   &:hover,
+  //   &:focus {
+  //     background-color: darken($successColor, 10%);
+  //   }
+  // }
+
+  // Disabled type
+  // @else if $disabled {
+  //   opacity: 0.6;
+  //   cursor: default;
+  //   @include box-shadow(none);
+  // }
+
+  // Tiny button size
+  // @else if $size == tiny {
+  //   font-size: ms(0) - 4;
+  //   padding-top: $tinyBtnBase;
+  //   padding-#{$defaultOpposite}: $tinyBtnBase * 2;
+  //   padding-bottom: $tinyBtnBase + 1;
+  //   padding-#{$defaultFloat}: $tinyBtnBase * 2;
+  // }
+
+  // Small button size
+  // @else if $size == small {
+  //   font-size: ms(0) - 3;
+  //   padding-top: $smallBtnBase;
+  //   padding-#{$defaultOpposite}: $smallBtnBase * 2;
+  //   padding-bottom: $smallBtnBase + 1;
+  //   padding-#{$defaultFloat}: $smallBtnBase * 2;
+  // }
+
+  // Medium button size
+  // @else if $size == medium {
+  //   font-size: ms(0);
+  //   padding-top: $btnBasePadding;
+  //   padding-#{$defaultOpposite}: $btnBasePadding;
+  //   padding-bottom: $btnBasePadding;
+  //   padding-#{$defaultFloat}: $btnBasePadding;
+  // }
+
+  // // Large button size
+  // @else if $size == large {
+  //   font-size: ms(1);
+  //   padding-top: $largeBtnBase;
+  //   padding-#{$defaultOpposite}: $largeBtnBase * 2;
+  //   padding-bottom: $largeBtnBase + 1;
+  //   padding-#{$defaultFloat}: $largeBtnBase * 2;
+  // }
+
+  // Full-width button size
+  // @else if $size == expand {
+  //   font-size: ms(0);
+  //   width: 100%;
+  //   padding-#{$defaultFloat}: 0px;
+  //   padding-#{$defaultOpposite}: 0px;
+  // }
+
+  // Left aligned button
+  // @else if $alignment == #{$defaultFloat} {
+  //   text-align: #{$defaultFloat};
+  //   text-indent: 12px;
+  // }
+
+  // Button with default border-radius
+  // @else if $radius == radius {
+  //   @include border-radius($buttonRadius);
+  // }
+
+  // Button with rounded radius for pill-style
+  // @else if $radius == round {
+  //   @include border-radius(1000px);
+  // }
+
+  // Default button type styles
+  // @else {
+  //   background-color: $mainColor;
+  //   border-color: darken($mainColor, 15%);
+  //   color: $white;
+  //   font-size: ms(0);
+  //   text-align: center;
+  //   cursor: default;
+
+  //   &:hover,
+  //   &:focus {
+  //     background-color: darken($mainColor, 10%);
+  //   }
+  // }
+
 }
 
 
-  .button { @include button(); // width: auto; background: $mainColor; border: 1px solid darken(($mainColor), 15%); @include box-shadow(0 1px 0 $shinyEdge inset); color: $white; cursor: pointer; display: inline-block; font-family: inherit; font-size: ms(0); font-weight: bold; line-height: 1; margin: 0; padding: $btnBase ($btnBase * 2) ($btnBase + 1); position: relative; text-align: center; text-decoration: none; @include single-transition(background-color, .15s, ease-in-out);
+  .button { //@include button();
+
+    // &.large { @include button($size:large); }
+    // &.medium { @include button($size:medium); }
+    // &.small { @include button($size:small); }
+    // &.tiny { @include button($size:tiny); }
+    // &.expand { @include button($size:expand); }
+
+    // &.success { @include button($type:success); }
+    // &.alert { @include button($type:alert); }
+    // &.secondary { @include button($type:secondary); }
+
+    // &.radius { @include button($radius:radius); }
+    // &.round { @include button($radius:round); }
 
     /* Hovers */
-    &:hover, &:focus { color: $white; background-color: darken(($mainColor), 10%); }
-    &:active  { @include box-shadow(0 1px 0 $darkEdge inset); }
+    // &:hover, &:focus { color: $white; background-color: darken(($mainColor), 10%); }
+    // &:active  { @include box-shadow(0 1px 0 $darkEdge inset); }
 
     /* Sizes */
-    &.large     { font-size: ms(1); padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
-    &.medium    { font-size: ms(0); }
-    &.small     { font-size: ms(0) - 3; padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
-    &.tiny      { font-size: ms(0) - 4; padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
-    &.expand    { width: 100%; text-align: center; }
+    // &.large     { font-size: ms(1); padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
+    // &.medium    { font-size: ms(0); }
+    // &.small     { font-size: ms(0) - 3; padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
+    // &.tiny      { font-size: ms(0) - 4; padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
+    // &.expand    { width: 100%; text-align: center; }
 
     /* Colors */
-    &.primary { background-color: $mainColor; border: 1px solid darken(($mainColor), 15%);
-      &:hover, &:focus { background-color: darken(($mainColor), 10%); }
-    }
-    &.success { background-color: $successColor; border: 1px solid darken(($successColor), 15%);
-      &:hover, &:focus { background-color: darken(($successColor), 10%); }
-    }
-    &.alert { background-color: $alertColor; border: 1px solid darken(($alertColor), 15%);
-      &:hover, &:focus { background-color: darken(($alertColor), 10%); }
-    }
-    &.secondary { background-color: $secondaryColor; color: darken(($secondaryColor), 80%); border: 1px solid darken(($secondaryColor), 15%);
-      &:hover, &:focus { background-color: darken(($secondaryColor), 10%); }
-    }
+    // &.primary { background-color: $mainColor; border: 1px solid darken(($mainColor), 15%);
+    //   &:hover, &:focus { background-color: darken(($mainColor), 10%); }
+    // }
+    // &.success { background-color: $successColor; border: 1px solid darken(($successColor), 15%);
+    //   &:hover, &:focus { background-color: darken(($successColor), 10%); }
+    // }
+    // &.alert { background-color: $alertColor; border: 1px solid darken(($alertColor), 15%);
+    //   &:hover, &:focus { background-color: darken(($alertColor), 10%); }
+    // }
+    // &.secondary { background-color: $secondaryColor; color: darken(($secondaryColor), 80%); border: 1px solid darken(($secondaryColor), 15%);
+    //   &:hover, &:focus { background-color: darken(($secondaryColor), 10%); }
+    // }
 
-    /* Radii */
-    &.radius { @include border-radius($buttonRadius); }
-    &.round { @include border-radius(1000px); }
+    // /* Radii */
+    // &.radius { @include border-radius($buttonRadius); }
+    // &.round { @include border-radius(1000px); }
 
     /* Layout */
-    &.full-width { width: 100%; text-align: center; padding-#{$defaultFloat}: 0px !important; padding-#{$defaultOpposite}: 0px !important; }
-    &.left-align { text-align: left; text-indent: 12px; }
+    // &.full-width { width: 100%; text-align: center; padding-#{$defaultFloat}: 0px !important; padding-#{$defaultOpposite}: 0px !important; }
+    // &.left-align { text-align: left; text-indent: 12px; }
 
     /* Disabled ---------- */
     &.disabled, &[disabled] { opacity: 0.6; cursor: default; background: $mainColor; @include box-shadow(none);

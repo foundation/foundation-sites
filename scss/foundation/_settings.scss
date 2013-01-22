@@ -8,11 +8,12 @@ $columnGutter: 1.875em !default; // 30px / 16px = 1.875em
 $totalColumns: 12 !default;
 $blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
 
-$ie8gridSupport: no;
+// $ie8gridSupport: no;
 
 // Colors Settings
 
 $mainColor: #2ba6cb !default;
+$primaryColor: $mainColor !default;
 $secondaryColor: #e9e9e9 !default;
 $alertColor: #c60f13 !default;
 $successColor: #5da423 !default;
@@ -60,6 +61,7 @@ $largeBtnBase: $btnBase + 5 !default;
 
 $btnBasePadding: $btnBase ($btnBase * 2) ($btnBase + 1);
 $btnShinyEdge: 0 1px 0 $shinyEdge inset;
+$btnDarkEdge: 0 1px 0 $darkEdge inset;
 $btnBorderWidth: 1px;
 $btnBorderStyle: solid;
 
