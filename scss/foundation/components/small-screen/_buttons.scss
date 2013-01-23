@@ -1,4 +1,5 @@
 // Button Variables
+
 $btnBase: 10px !default;
 $btnTinyBase: 5px !default;
 $btnSmallBase: 7px !default;
@@ -11,12 +12,12 @@ $btnLargeFontSize: ms(1, 14px) !default;
 $btnTransitionSpeed: .15s !default;
 $btnTransitionEase: ease-in-out !default;
 $btnRadius: 3px !default;
-$btnShinyEdge: 0 1px 0 $shinyEdge inset !default;
-$btnDarkEdge: 0 1px 0 $darkEdge inset !default;
 $btnBorderWidth: 1px !default;
 $btnBorderStyle: solid !default;
 $btnAlignIndention: 12px !default;
 $btnDisabledOpacity: 0.6 !default;
+$btnShinyEdge: 0 1px 0 $shinyEdge inset !default;
+$btnDarkEdge: 0 1px 0 $darkEdge inset !default;
 
 // Button Functions
 @function btnSidePad($btnSize) {
@@ -44,13 +45,14 @@ $btnDisabledOpacity: 0.6 !default;
   &:active { @include box-shadow($btnDarkEdge); }
 }
 
-// Primary Button Base Styles
+// Primary Button Base
 %btnPrimaryBase {
   background-color: $primaryColor;
   border-color: darken($primaryColor, 15%);
   &:hover,
   &:focus { color: $btnFontColor; background-color: darken($primaryColor, 10%); }
 }
+// Secondary Button Base
 %btnSecondaryBase {
   background-color: $secondaryColor;
   border-color: darken($secondaryColor, 15%);
@@ -58,17 +60,48 @@ $btnDisabledOpacity: 0.6 !default;
   &:hover,
   &:focus { background-color: darken($secondaryColor, 10%); }
 }
+// Alert Button Base
 %btnAlertBase {
   background-color: $alertColor;
   border-color: darken($alertColor, 15%);
   &:hover,
   &:focus { background-color: darken($alertColor, 10%); }
 }
+// Success Button Base
 %btnSuccessBase {
   background-color: $successColor;
   border-color: darken($successColor, 15%);
   &:hover,
   &:focus { background-color: darken($successColor, 10%); }
+}
+// Extend Button Width
+%btnExtendStyle {
+  width: 100%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+// Disabled Button Base
+%btnDisabledBase {
+  opacity: $btnDisabledOpacity;
+  cursor: default;
+  @include box-shadow(none);
+}
+// Disabled Background Colors
+%btnPrimaryDisabled { background-color: $primaryColor;
+  &:hover,
+  &:focus { background-color: $primaryColor; }
+}
+%btnSecondaryDisabled { background-color: $secondaryColor;
+  &:hover,
+  &:focus { background-color: $secondaryColor; }
+}
+%btnSuccessDisabled { background-color: $successColor;
+  &:hover,
+  &:focus { background-color: $successColor; }
+}
+%btnAlertDisabled { background-color: $alertColor;
+  &:hover,
+  &:focus { background-color: $alertColor; }
 }
 
 // Button Size Shared Styles
@@ -89,6 +122,20 @@ $btnDisabledOpacity: 0.6 !default;
   padding: $btnLargeBase btnSidePad($btnLargeBase) btnBtmPad($btnLargeBase);
 }
 
+// Button Radii
+%btnRadiusRound { @include border-radius($btnRadius); }
+%btnRadiusPill { @include border-radius(1000px); }
+
+// Button Text Alignment
+%btnTextCenter { text-align: center; }
+%btnTextLeft { text-align: left; text-indent: $btnAlignIndention; }
+%btnTextRight { text-align: right; padding-right: $btnAlignIndention; }
+
+// Button Display Property
+%inlineBlock { display: inline-block; }
+%block { display: block; }
+
+
 // Button Mixin
 @mixin button($color:primary, $size:medium, $expand:false, $radius:false, $align:center, $disabled:false, $display:inline-block) {
 
@@ -96,10 +143,10 @@ $btnDisabledOpacity: 0.6 !default;
   @extend %btnBaseStyles;
 
   // $color options, defaults to primary, false will omit.
-  @if $color == primary   { background-color: $primaryColor; @extend %btnPrimaryBase; }
-  @if $color == secondary { background-color: $secondaryColor; @extend %btnSecondaryBase; }
-  @if $color == success   { background-color: $successColor; @extend %btnSuccessBase; }
-  @if $color == alert     { background-color: $alertColor; @extend %btnAlertBase; }
+  @if $color == primary   { @extend %btnPrimaryBase; }
+  @if $color == secondary { @extend %btnSecondaryBase; }
+  @if $color == success   { @extend %btnSuccessBase; }
+  @if $color == alert     { @extend %btnAlertBase; }
 
   // $size options, can do $size:false to omit these styles.
   // Available option: "tiny, small, medium, large";
@@ -109,74 +156,60 @@ $btnDisabledOpacity: 0.6 !default;
   @else if $size == large  { @extend %btnLargeStyles; }
 
   // "$size:expand" styles for full-width buttons
-  @if $expand {
-    width: 100%;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
+  @if $expand { @extend %btnExtendStyle; }
 
   // $radii options. This is automatically set to false for default square corner buttons.
-  @if      $radius == round { @include border-radius($btnRadius); }
-  @else if $radius == pill    { @include border-radius(1000px); }
+  @if      $radius == round { @extend %btnRadiusRound; }
+  @else if $radius == pill  { @extend %btnRadiusPill; }
 
   // $align options for text alignment in buttons, setting this to "false" omits the styles.
   // Available options: "center, left, right";
-  @if      $align == center { text-align: center; }
-  @else if $align == left   { text-align: left; text-indent: $btnAlignIndention; }
-  @else if $align == right  { text-align: right; padding-right: $btnAlignIndention; }
+  @if      $align == center { @extend %btnTextCenter; }
+  @else if $align == left   { @extend %btnTextLeft; }
+  @else if $align == right  { @extend %btnTextRight; }
 
   // $disabled options, "false" by default
-  @if $disabled {
-    opacity: $btnDisabledOpacity;
-    cursor: default;
-    background-color: $primaryColor;
-    @include box-shadow(none);
-    &:hover,
-    &:focus { background-color: $primaryColor; }
-  }
+  @if $disabled { @extend %btnDisabledBase; }
 
   // $display options, set to "inline-block" by default. Can set to "false" to omit.
   // Available options: "inline-block, block";
-  @if $display == inline-block {
-    display: inline-block;
-  }
-  @else if $display == block {
-    display: block;
-  }
+  @if $display == inline-block { @extend %inlineBlock; }
+  @else if $display == block { @extend %block; }
+
 }
 
 
-  // Buttons
-  .button { @include button();
+/* Buttons */
+.button { @extend %btnBaseStyles; @extend %btnMediumStyles; @extend %btnPrimaryBase; @extend %inlineBlock; @extend %btnTextCenter;
 
-    // Button Sizes
-    &.large  { @include button($color:false, $size:large, $align:false, $display:false); }
-    &.medium { @include button($color:false, $align:false, $display:false); }
-    &.small  { @include button($color:false, $size:small, $align:false, $display:false); }
-    &.tiny   { @include button($color:false, $size:tiny, $align:false, $display:false); }
-    &.expand { @include button($color:false, $size:false, $expand:true, $align:false, $display:false); }
+  // Button Sizes
+  &.large  { @extend %btnLargeStyles; }
+  &.medium { @extend %btnMediumStyles; }
+  &.small  { @extend %btnSmallStyles; }
+  &.tiny   { @extend %btnTinyStyles; }
+  &.expand { @extend %btnExtendStyle; }
 
-    // Button Radii
-    &.radius { @include button($color:false, $size:false, $radius:round, $align:false, $display:false); }
-    &.round  { @include button($color:false, $size:false, $radius:pill, $align:false, $display:false); }
+  // Button Radii
+  &.radius { @extend %btnRadiusRound; }
+  &.round  { @extend %btnRadiusPill; }
 
-    // Button Layout
-    &.left-align  { @include button($size:false, $align:left, $display:false); }
-    &.right-align { @include button($size:false, $align:right, $display:false); }
+  // Button Layout
+  &.left-align  { @extend %btnTextLeft; }
+  &.right-align { @extend %btnTextRight; }
 
-    // Button Styles
-    &.secondary { @include button($color:secondary, $size:false, $align:false, $display:false); }
-    &.success   { @include button($color:success, $size:false, $align:false, $display:false); }
-    &.alert     { @include button($color:alert, $size:false, $align:false, $display:false); }
+  // Button Styles
+  &.secondary { @extend %btnSecondaryBase; }
+  &.success   { @extend %btnSuccessBase; }
+  &.alert     { @extend %btnAlertBase; }
 
-    // Disabled Buttons
-    &.disabled, &[disabled] { @include button($size:false, $align:false, $display:false, $disabled:true);
-      &.secondary { @include button($color:secondary, $size:false, $align:false, $display:false, $disabled:true); }
-      &.success { @include button($color:success, $size:false, $align:false, $display:false, $disabled:true); }
-      &.alert { @include button($color:alert, $size:false, $align:false, $display:false, $disabled:true); }
-    }
-
+  // Disabled Buttons
+  &.disabled, &[disabled] { @extend %btnDisabledBase; @extend %btnPrimaryDisabled;
+    &.secondary { @extend %btnSecondaryDisabled; }
+    &.success { @extend %btnSuccessDisabled; }
+    &.alert { @extend %btnAlertDisabled; }
   }
+
+}
 
   /* Don't use native buttons on iOS */
   input[type=submit].button, button.button { -webkit-appearance: none; }
