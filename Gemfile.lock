@@ -3,25 +3,25 @@ PATH
   specs:
     zurb-foundation (3.2.2)
       compass (>= 0.12.2)
-      modular-scale (>= 1.0.2)
+      modular-scale (= 1.0.4)
       rake
       sass (>= 3.2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    chunky_png (1.2.6)
+    chunky_png (1.2.7)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
     fssm (0.2.9)
-    modular-scale (1.0.2)
+    modular-scale (1.0.4)
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
-    rake (0.9.2.2)
-    sass (3.2.1)
-    sassy-math (1.2)
+    rake (10.0.3)
+    sass (3.2.5)
+    sassy-math (1.5)
       compass (~> 0.11)
 
 PLATFORMS

@@ -8,11 +8,12 @@ $columnGutter: 1.875em !default; // 30px / 16px = 1.875em
 $totalColumns: 12 !default;
 $blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
 
-$ie8gridSupport: no;
+// $ie8gridSupport: no;
 
 // Colors Settings
 
 $mainColor: #2ba6cb !default;
+$primaryColor: $mainColor !default;
 $secondaryColor: #e9e9e9 !default;
 $alertColor: #c60f13 !default;
 $successColor: #5da423 !default;
@@ -48,20 +49,6 @@ $defaultOpposite: right !default; // Change this to 'left' for right-to-left lan
   $defaultFloat: right;
   $defaultOpposite: left;
 }
-
-// Button Settings
-
-$buttonRadius: 3px !default;
-$btnBase: 10px !default;
-
-$tinyBtnBase: $btnBase - 5 !default;
-$smallBtnBase: $btnBase - 3 !default;
-$largeBtnBase: $btnBase + 5 !default;
-
-$btnBasePadding: $btnBase ($btnBase * 2) ($btnBase + 1);
-$btnShinyEdge: 0 1px 0 $shinyEdge inset;
-$btnBorderWidth: 1px;
-$btnBorderStyle: solid;
 
 // Form Settings
 
@@ -256,7 +243,7 @@ $complementaryWidth: 20% !default;
 
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
 $baseFontSize: 14px !default;
-$importantModNum: 44px !default;
+$importantModNum:44px !default;
 $base-size: $baseFontSize $importantModNum;
 // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
 // http://www.modularscale.com by Tim Brown

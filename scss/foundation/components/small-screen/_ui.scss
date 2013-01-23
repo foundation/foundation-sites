@@ -40,7 +40,7 @@
 
   .label { padding: 1px 4px 2px; font-size: ms(0) - 2; font-weight: bold; text-align: center; text-decoration: none; line-height: 1; white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: $mainColor;
 
-    &.radius { @include border-radius($buttonRadius); }
+    &.radius { @include border-radius($btnRadius); }
     &.round { padding: 1px 7px 2px; @include border-radius(1000px); }
 
     &.alert     { background-color: $alertColor; }
@@ -103,7 +103,7 @@
       }
     }
 
-    &.radius { @include border-radius($buttonRadius); }
+    &.radius { @include border-radius($btnRadius); }
 
   }
 
@@ -207,7 +207,7 @@
 
   /* Keytroke Characters ---------------------- */
 
-  .keystroke, kbd { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
+  .keystroke, kbd { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($btnRadius); }
 
   /* Image Thumbnails ---------------------- */
   .th { display: block;
@@ -279,7 +279,7 @@
   	&.alert .meter { background: $alertColor;}
 
   	/* border radii */
-  	&.radius { @include border-radius($buttonRadius);
+  	&.radius { @include border-radius($btnRadius);
       .meter { @include border-radius(2px); }
     }
   	&.round { @include border-radius(1000px);
