@@ -3,6 +3,12 @@ We'll keep you up to date with what we've released so you at least have a gist o
 
 ---
 
+### 3.2.5- January 26, 2013
+This patch fixes compatability with jQuery 1.9. This patch includes:
+* Bumped Topbar to 2.04 and removed deprecated jQuery die() and live() events.
+* Fixed magellan destination undefined error.
+* Add Clearing and Joyride to SCSS project templates.
+
 ### 3.2.4- January 14, 2013
 This path includes bug fixes and a few style improvements for small UI elements. This patch includes:
 * Bumped Joyride to version 2.0.3
