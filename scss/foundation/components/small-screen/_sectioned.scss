@@ -1,9 +1,11 @@
+$tabPadding: 15px !default;
+
 .sectioned {
   width: 100%;
   display: block;
   border: 1px solid #eee;
   section, .section {
-    padding-top: 45px;
+    padding-top: ($tabPadding * 3);
     border-top: 1px solid #ccc;
     position: relative;
     .title {
@@ -11,7 +13,7 @@
       top: 0;
       cursor: pointer;
       width: 100%;
-      padding: 15px;
+      padding: $tabPadding;
       margin: 0;
       background-color: #efefef;
       &:hover {
@@ -20,7 +22,7 @@
     }
     .content {
       display: none;
-      padding: 15px;
+      padding: $tabPadding;
     }
     &.active {
       .content {

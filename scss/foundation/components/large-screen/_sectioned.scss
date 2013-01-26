@@ -1,3 +1,5 @@
+$tabPadding: 15px !default;
+
 @media only screen and (min-width: emCalc(768px)) {
   .sectioned {
     border: 1px solid #eee;
@@ -11,7 +13,7 @@
         top: 1px;
         width: auto;
         border-right: 1px solid #ccc;
-        padding-bottom: 13px;
+        padding-bottom: ($tabPadding - 2);
         &:hover {
           background-color: #ddd;
         }
@@ -22,7 +24,7 @@
         position: absolute;
       }
       &.active {
-        padding-top: 45px;
+        padding-top: ($tabPadding * 3);
         border-top: 1px solid #ccc;
         .title {
           background-color: white;
