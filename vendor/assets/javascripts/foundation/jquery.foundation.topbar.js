@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Top Bar 2.0.3
+ * jQuery Foundation Top Bar 2.0.4
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
