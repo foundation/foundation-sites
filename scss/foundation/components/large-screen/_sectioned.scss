@@ -1,0 +1,37 @@
+@media only screen and (min-width: emCalc(768px)) {
+  .sectioned {
+    border: 1px solid #eee;
+    border-top: 0;
+    position: relative;
+    section, .section {
+      padding-top: 0;
+      border-top: 0;
+      position: static;
+      .title {
+        top: 1px;
+        width: auto;
+        border-right: 1px solid #ccc;
+        padding-bottom: 13px;
+        &:hover {
+          background-color: #ddd;
+        }
+      }
+      .content {
+        border-top: 1px solid #efefef;
+        background-color: white;
+        position: absolute;
+      }
+      &.active {
+        padding-top: 45px;
+        border-top: 1px solid #ccc;
+        .title {
+          background-color: white;
+          z-index: 1;
+        }
+        .content {
+          position: relative;
+        }
+      }
+    }
+  }
+}
