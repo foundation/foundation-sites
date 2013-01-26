@@ -11,7 +11,7 @@ This path includes bug fixes and a few style improvements for small UI elements.
 * Fixed bugs with clicking on accordion element
 * Added styling for buttons inside dropdowns
 * We're now using max-width instead of width on tooltips
-* Added class, .tip-centered-top and .top-centered-bottom for positioning tooltips
+* Added class, .tip-centered-top and .tip-centered-bottom for positioning tooltips
 * Added functionality to create a stick top bar that enables it to be down the page in the markup and stick when it hits the browser edge.
 * Fixes to the semantic grid mixin
 * Added better :focus styles for error inputs
