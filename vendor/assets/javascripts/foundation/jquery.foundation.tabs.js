@@ -28,13 +28,19 @@
 
         set_tab : function ($tab, e) {
           var $activeTab = $tab.closest('dl, ul').find('.active'),
-              target = $tab.children('a').attr("href"),
+              href = $tab.children('a').attr("href"),
+              base = $('base'),
+              target = href.substring(href.indexOf('#')),
               hasHash = /^#/.test(target),
               $content = $(target + 'Tab');
 
           if (hasHash && $content.length > 0) {
             // Show tab content
             if (e && !settings.deep_linking) e.preventDefault();
+            if (e && base.length > 0 && settings.deep_linking) {
+              window.location.hash = target;
+              e.preventDefault();
+            }
             $content.closest('.tabs-content').children('li').removeClass('active').hide();
             $content.css('display', 'block').addClass('active');
           }
