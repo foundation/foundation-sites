@@ -190,11 +190,17 @@
       },
       destroy : function () {
         return this.each(function () {
-          $(window).off('.tooltip');
-          $(settings.selector).off('.tooltip');
-          $(settings.tooltipClass).each(function (i) {
-            $($(settings.selector).get(i)).attr('title', $(this).text());
+          var $selector = $(settings.selector);
+          
+          $('body').off('.tooltip', settings.selector);
+          
+          $(settings.tooltipClass).each(function () {
+            var $this = $(this),
+              dataFilter = '[data-selector=' + $this.data('selector') + ']';
+              
+            $selector.filter(dataFilter).attr('title', $this.text());
           }).remove();
+          
         });
       }
     };
