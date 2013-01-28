@@ -107,7 +107,7 @@
               }
               label { color: lighten($topBarDropBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
               &.divider { border-top: solid 1px darken($topBarDropBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
-              &:last-child { padding-bottom: 10px; }
+              &:last-of-type { padding-bottom: 10px; }
               &.active a { background: darken($topBarBgColor, 15%); }
             }
           }

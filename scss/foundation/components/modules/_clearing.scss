@@ -21,7 +21,7 @@
 .clearing-main-left { left: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
 .clearing-main-right { right: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
 
-ul[data-clearing].block-grid.three-up > li:nth-child(3n+1) { clear: none; }
+ul[data-clearing].block-grid.three-up > li:nth-of-type(3n+1) { clear: none; }
 
 ul[data-clearing] li { cursor: pointer; display: block;
   &.clearing-feature ~ li { display: none; }
@@ -48,7 +48,7 @@ ul.block-grid[data-clearing] { overflow: visible; }
     @for $i from 1 through $blockGridElements {
       &.#{convert-number-to-word($i)}-up {
         &>li {
-          @if $i > 1 { &:nth-child(#{$i}n+1) { clear: none; } }
+          @if $i > 1 { &:nth-of-type(#{$i}n+1) { clear: none; } }
         }
       }
     }

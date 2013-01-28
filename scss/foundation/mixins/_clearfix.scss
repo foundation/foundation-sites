@@ -8,6 +8,6 @@
   @mixin mobileClearfix() {
     @include respondTo(smallScreen) { &:before, &:after { content: " "; display: table; }
       &:after { clear: both; }
-      &:last-child { float: none; }
+      &:last-of-type { float: none; }
     }
   }
