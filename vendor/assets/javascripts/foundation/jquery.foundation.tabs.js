@@ -27,7 +27,7 @@
         },
 
         set_tab : function ($tab, e) {
-          var $activeTab = $tab.closest('dl, ul').find('.active'),
+          var $activeTab = $tab.closest('dl, ul, ol').find('.active'),
               href = $tab.children('a').attr("href"),
               base = $('base'),
               target = href.substring(href.indexOf('#')),
