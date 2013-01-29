@@ -41,7 +41,7 @@
         var _self = this;
 
         // Set all hidden parent elements, including this element.
-        _self.hidden = $child.parents().andSelf().filter( ":hidden" );
+        _self.hidden = $child.parents().addBack().filter( ":hidden" );
 
         // Loop through all hidden elements.
         _self.hidden.each( function() {
