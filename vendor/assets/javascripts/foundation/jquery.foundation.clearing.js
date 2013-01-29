@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Clearing 1.2.1
+ * jQuery Foundation Clearing 1.2.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
