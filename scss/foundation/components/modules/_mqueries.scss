@@ -94,6 +94,17 @@
   .touch .show-for-touch { display: inherit !important; }
   .touch .hide-for-touch { display: none !important; }
 
+.show-on-hover {
+  display: none;
+  &:hover {
+    display: inline !important;
+  }
+}
+
+.touch .show-on-hover {
+  display: inline !important;
+}
+
   /* Specific overrides for elements that require something other than display: block */
 
   table.show-for-xlarge,
