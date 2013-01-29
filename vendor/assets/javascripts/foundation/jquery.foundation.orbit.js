@@ -13,7 +13,7 @@
   $.fn.findFirstImage = function () {
     return this.first()
             .find('img')
-            .andSelf().filter('img')
+            .addBack().filter('img')
             .first();
   };
 
