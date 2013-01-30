@@ -13,9 +13,12 @@ $tabPadding: 15px !default;
       top: 0;
       cursor: pointer;
       width: 100%;
-      padding: $tabPadding;
       margin: 0;
       background-color: #efefef;
+      a {
+        padding: ($tabPadding - 1) $tabPadding;
+        display: inline-block;
+      }
       &:hover {
         background-color: #ddd;
       }

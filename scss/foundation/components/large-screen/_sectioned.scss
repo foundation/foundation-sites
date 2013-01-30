@@ -13,7 +13,6 @@ $tabPadding: 15px !default;
         top: 1px;
         width: auto;
         border-right: 1px solid #ccc;
-        padding-bottom: ($tabPadding - 2);
         &:hover {
           background-color: #ddd;
         }
