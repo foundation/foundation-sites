@@ -20,14 +20,15 @@
 
 /* Misc ---------------------- */
 
-  .left        { float: left; }
-  .right       { float: right; }
-  .text-left   { text-align: left; }
-  .text-right  { text-align: right; }
-  .text-center { text-align: center; }
-  .hide        { display: none; }
+  .left          { float: left; }
+  .right         { float: right; }
+  .text-left     { text-align: left; }
+  .text-right    { text-align: right; }
+  .text-center   { text-align: center; }
+  .text-justify  { text-align: justify; }
+  .hide          { display: none; }
   .hide-override { display: none !important; }
-  .highlight   { background: $highlightColor; }
+  .highlight     { background: $highlightColor; }
 
   /* Reset for strange margins by default on <figure> elements */
   figure { margin: 0; }
