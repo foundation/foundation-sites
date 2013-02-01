@@ -78,6 +78,14 @@
         a.selector { &:after { @include cssTriangle(5px, $custSelectTriangleColorOpen, top); } }
       }
 
+      .disabled {
+        color: #888;
+        &:hover {
+          background: transparent;
+          color: #888;
+          &:after { display: none; }
+        }
+      }
       &.open ul { display: block; z-index: 10; }
 
       &.small { width: 134px !important; }
