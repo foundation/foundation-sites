@@ -11,19 +11,19 @@ This patch fixes compatability with jQuery 1.9. This patch includes:
 
 ### 3.2.4- January 14, 2013
 This path includes bug fixes and a few style improvements for small UI elements. This patch includes:
-* Bumped Joyride to version 2.0.3
-* Added centered pagination style
-* Fixed bug with Orbit captions
-* Fixed bugs with clicking on accordion element
-* Added styling for buttons inside dropdowns
-* We're now using max-width instead of width on tooltips
-* Added class, .tip-centered-top and .tip-centered-bottom for positioning tooltips
+* Bumped Joyride to version 2.0.3.
+* Added centered pagination style.
+* Fixed bug with Orbit captions.
+* Fixed bugs with clicking on accordion element.
+* Added styling for buttons inside dropdowns.
+* We're now using max-width instead of width on tooltips.
+* Added class, .tip-centered-top and .tip-centered-bottom for positioning tooltips.
 * Added functionality to create a stick top bar that enables it to be down the page in the markup and stick when it hits the browser edge.
-* Fixes to the semantic grid mixin
-* Added better :focus styles for error inputs
-* Added settings for Top Bar Toggle color
-* Updated Modular Scale to version 1.0.6
-* Fixed bug with printing styles
+* Fixes to the semantic grid mixin.
+* Added better :focus styles for error inputs.
+* Added settings for Top Bar Toggle color.
+* Updated Modular Scale to version 1.0.6.
+* Fixed bug with printing styles.
 
 ### 3.2.3
 This patch fixed some quick bug fixes.
@@ -33,15 +33,15 @@ This patch fixes a typo found in the tabs plugin.
 
 ### 3.2.1- November 9, 2012
 This patch include bug fixes for various elements, such as:
-* Adding a missing line for mqueries.scss into app.scss
-* Height of fixed magellan element
-* Update viewport tag with initial-scale
-* Dropdown button fixes
-* Clearing bug fixes
-* Added a font-smoothing variable
-* Added close support to accordions
-* Removed deep linking hashes from tabs
-* Topbar now resets on close for small layouts
+* Adding a missing line for mqueries.scss into app.scss.
+* Height of fixed magellan element.
+* Update viewport tag with initial-scale.
+* Dropdown button fixes.
+* Clearing bug fixes.
+* Added a font-smoothing variable.
+* Added close support to accordions.
+* Removed deep linking hashes from tabs.
+* Topbar now resets on close for small layouts.
 
 ### **3.2**- October 26, 2012
 With this update we've revamped our documentation to be more organized and explain details regarding Scss, Compass and Javascripts.
@@ -51,9 +51,9 @@ The updates to Foundation itself are as follows:
 * Added [Joyride](http://foundation.zurb.com/docs/joyride.php), our plugin for creating tours of your website or app.
 * Added [Clearing](http://foundation.zurb.com/docs/clearing.php), our new responsive image gallery lightbox plugin.
 * Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipable on mobile as well.
-* Updated Reveal
-* Updated index files to use defined header and footer structure
-* Cleaned up some Compass included
+* Updated Reveal.
+* Updated index files to use defined header and footer structure.
+* Cleaned up some Compass included.
 * RTL for ui and navbar.
 * Tabs can now use unordered lists or definition lists, replacing the definition title with an li.section-title.
 * Added definition list styles.

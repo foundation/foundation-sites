@@ -35,9 +35,9 @@ bundle exec compass create -r zurb-foundation --using foundation --force
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
+1. Fork it.
+2. Create your feature branch (`git checkout -b my-new-feature`).
 3. Test your changes to the best of your ability.  We've provided a test/ folder, feel free to add to it as necessary.
-4. Commit your changes (`git commit -am 'Added some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Create new Pull Request
+4. Commit your changes (`git commit -am 'Added some feature'`).
+5. Push to the branch (`git push origin my-new-feature`).
+6. Create new Pull Request.
