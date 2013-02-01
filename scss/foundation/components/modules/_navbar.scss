@@ -24,6 +24,7 @@
           &>a:first-child { padding-#{$defaultOpposite}: 55px;}
           &>a.flyout-toggle { border-#{$defaultFloat}: 1px dashed #666; }
         }
+        &:hover .dropdown { display: block; }
       }
     }
 
