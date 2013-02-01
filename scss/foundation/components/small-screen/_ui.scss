@@ -272,7 +272,7 @@
 
   div.progress { padding: $progBarPad; margin-bottom: 10px; border: $progBarBorderSize solid $progBarBorderColor; height: $progBarHeight;
 
-  	/* meter */
+    /* meter */
   	.meter { background: $mainColor; height: 100%; display: block; width:50%; }
    	&.secondary .meter { background: $secondaryColor;}
   	&.success .meter { background: $successColor;}
@@ -296,4 +296,7 @@
     .description { background-color: $priceBgColor; padding: $priceDescPadding; text-align: $priceDescAlign; color: $priceDescColor; font-size: $priceDescFontSize; font-weight: $priceDescWeight; line-height: $priceDescLineHeight; border-bottom: $priceDescBtmBorder; }
     .bullet-item { background-color: $priceBgColor; padding: $priceItemPadding; text-align: $priceItemAlign; color: $priceItemColor; font-size: $priceItemFontSize; font-weight: $priceItemWeight; border-bottom: $priceItemBtmBorder; }
     .cta-button { background-color: $priceCtaBgColor; text-align: $priceCtaAlign; padding: $priceCtaPadding; }
+
+    &.radius { @include border-radius($btnRadius); }
+    
   }
