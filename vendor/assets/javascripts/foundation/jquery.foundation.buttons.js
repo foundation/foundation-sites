@@ -2,6 +2,7 @@
   'use strict';
 
   $.fn.foundationButtons = function (options) {
+
     var config = $.extend({
         dropdownAsToggle:true,
         activeClass:'active'
@@ -13,11 +14,13 @@
     if(this.is(document)) {
       // close all dropdowns except for the dropdown passed
       closeDropdowns = function (dropdown) {
+        // alert(dropdown.html());
         $('.button.dropdown').find('ul').not(dropdown).removeClass('show-dropdown');
       };
 
       // reset all toggle states except for the button passed
       resetToggles = function (button) {
+        // alert(button.html());
         var buttons = $('.button.dropdown').not(button);
         buttons.add($('> span.' + config.activeClass, buttons)).removeClass(config.activeClass);
       };
@@ -63,12 +66,18 @@
 
     $('.button.dropdown > ul', this).addClass('no-hover');
 
-    // Positioning the Flyout List
+    // Make sure we calculate size of hidden elements properly.
+    var outerHeightHelper = $.foundation.utils.hiddenFix();
+    outerHeightHelper.adjust($('.button.dropdown'));
+
     var normalButtonHeight  = $('.button.dropdown:not(.large):not(.small):not(.tiny)', this).outerHeight() - 1,
         largeButtonHeight   = $('.button.large.dropdown', this).outerHeight() - 1,
         smallButtonHeight   = $('.button.small.dropdown', this).outerHeight() - 1,
         tinyButtonHeight    = $('.button.tiny.dropdown', this).outerHeight() - 1;
 
+    outerHeightHelper.reset();
+
+    // Position flyout lists appropriately
     $('.button.dropdown:not(.large):not(.small):not(.tiny) > ul', this).css('top', normalButtonHeight);
     $('.button.dropdown.large > ul', this).css('top', largeButtonHeight);
     $('.button.dropdown.small > ul', this).css('top', smallButtonHeight);

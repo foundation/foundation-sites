@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Joyride Plugin 2.0.1
+ * jQuery Foundation Joyride Plugin 2.0.3
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -12,7 +12,7 @@
   'use strict';
 
   var defaults = {
-      'version'              : '2.0.1',
+      'version'              : '2.0.3',
       'tipLocation'          : 'bottom',  // 'top' or 'bottom' in relation to parent
       'nubPosition'          : 'auto',    // override on a per tooltip bases
       'scrollSpeed'          : 300,       // Page scrolling speed in milliseconds
@@ -48,15 +48,15 @@
         return this.each(function () {
 
           if ($.isEmptyObject(settings)) {
-            settings = $.extend(defaults, opts);
+            settings = $.extend(true, defaults, opts);
 
-            // non configureable settings
+            // non configurable settings
             settings.document = window.document;
             settings.$document = $(settings.document);
             settings.$window = $(window);
             settings.$content_el = $(this);
             settings.body_offset = $(settings.tipContainer).position();
-            settings.$tip_content = $('li', settings.$content_el);
+            settings.$tip_content = $('> li', settings.$content_el);
             settings.paused = false;
             settings.attempts = 0;
 
@@ -109,12 +109,12 @@
 
             });
 
-            $('.joyride-close-tip').on('click.joyride', function (e) {
+            settings.$document.on('click.joyride', '.joyride-close-tip', function (e) {
               e.preventDefault();
               methods.end();
             });
 
-            settings.$window.on('resize.joyride', function (e) {
+            settings.$window.bind('resize.joyride', function (e) {
               if (methods.is_phone()) {
                 methods.pos_phone();
               } else {
@@ -174,7 +174,7 @@
       },
 
       create : function (opts) {
-        // backwards compatability with data-text attribute
+        // backwards compatibility with data-text attribute
         var buttonText = opts.$li.attr('data-button') || opts.$li.attr('data-text'),
           tipClass = opts.$li.attr('class'),
           $tip_content = $(methods.tip_template({
@@ -273,7 +273,7 @@
 
             settings.$current_tip = settings.$next_tip;
 
-          // skip non-existant targets
+          // skip non-existent targets
           } else if (settings.$li && settings.$target.length < 1) {
 
             methods.show();
@@ -537,8 +537,8 @@
 
       corners : function (el) {
         var w = settings.$window,
-            right = w.outerWidth() + w.scrollLeft(),
-            bottom = w.outerWidth() + w.scrollTop();
+            right = w.width() + w.scrollLeft(),
+            bottom = w.width() + w.scrollTop();
 
         return [
           el.offset().top <= w.scrollTop(),
@@ -597,13 +597,13 @@
         // define on() and off() for older jQuery
         if (!$.isFunction($.fn.on)) {
 
-          $.fn.on = function(types, sel, fn) {
+          $.fn.on = function (types, sel, fn) {
 
             return this.delegate(sel, types, fn);
 
           };
 
-          $.fn.off = function(types, sel, fn) {
+          $.fn.off = function (types, sel, fn) {
 
             return this.undelegate(sel, types, fn);
 

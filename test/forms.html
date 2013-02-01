@@ -51,11 +51,11 @@
         <br>
         <div class="eight columns">
           <form>
-            <label>This is a label.</label>
-            <input type="text" placeholder="Standard Input" />
+            <label for="standard_input">This is a label.</label>
+            <input type="text" placeholder="Standard Input" id="standard_input" />
 
-            <label>Address</label>
-            <input type="text" class="twelve" placeholder="Street" />
+            <label for="address_1">Address</label>
+            <input type="text" class="twelve" placeholder="Street" id="address_1" />
             <div class="row">
               <div class="six columns">
                 <input type="text" placeholder="City" />
@@ -76,26 +76,26 @@
           <form>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right inline">Address Name:</label>
+                <label class="right inline" for="address_name">Address Name:</label>
               </div>
               <div class="ten mobile-three columns">
-                <input type="text" placeholder="e.g. Home" class="eight" />
+                <input type="text" placeholder="e.g. Home" class="eight" id="address_name" />
               </div>
             </div>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right inline">City:</label>
+                <label class="right inline" for="city">City:</label>
               </div>
               <div class="ten mobile-three columns">
-                <input type="text" class="eight" />
+                <input type="text" class="eight" id="city" />
               </div>
             </div>
             <div class="row">
               <div class="two mobile-one columns">
-                <label class="right inline">ZIP:</label>
+                <label class="right inline" for="zip">ZIP:</label>
               </div>
               <div class="ten mobile-three columns">
-                <input type="text" class="three" />
+                <input type="text" class="three" id="zip" />
               </div>
             </div>
           </form>
@@ -116,11 +116,11 @@
 
               <legend>Fieldset Name</legend>
 
-              <label>This is a label.</label>
-              <input type="text" placeholder="Standard Input" />
+              <label for="standard_input_2">This is a label.</label>
+              <input type="text" placeholder="Standard Input" id="standard_input_2"/>
 
-              <label>Address</label>
-              <input type="text" />
+              <label for="address_2">Address</label>
+              <input type="text" id="address_2" />
               <input type="text" class="six" />
 
             </fieldset>
@@ -138,7 +138,7 @@
         </div>
         <br>
         <div class="eight columns">
-          <label>Input with a prefix character</label>
+          <label for="input_prefix">Input with a prefix character</label>
           <div class="row">
             <div class="eight columns">
               <div class="row collapse">
@@ -146,17 +146,17 @@
                   <span class="prefix">#</span>
                 </div>
                 <div class="ten mobile-three columns">
-                  <input type="text" />
+                  <input type="text" id="input_prefix" />
                 </div>
               </div>
             </div>
           </div>
-          <label>Input with a postfix label</label>
+          <label for="input_postfix">Input with a postfix label</label>
           <div class="row">
             <div class="eight columns">
               <div class="row collapse">
                 <div class="nine mobile-three columns">
-                  <input type="text" />
+                  <input type="text" id="input_postfix" />
                 </div>
                 <div class="three mobile-one columns">
                   <span class="postfix">.com</span>
@@ -164,12 +164,12 @@
               </div>
             </div>
           </div>
-          <label>Input with a postfix action (button)</label>
+          <label for="input_postfix_button">Input with a postfix action (button)</label>
           <div class="row">
             <div class="eight columns">
               <div class="row collapse">
                 <div class="eight mobile-three columns">
-                  <input type="text" />
+                  <input type="text" id="input_postfix_button" />
                 </div>
                 <div class="four mobile-one columns">
                   <a class="button expand postfix">Search</a>
@@ -192,14 +192,14 @@
         <div class="eight columns">
           <div class="row">
             <div class="six columns">
-              <label class="error">Field with Error</label>
-              <input type="text" class="error" />
+              <label class="error" for="error">Field with Error</label>
+              <input type="text" class="error" id="error" />
               <small class="error">Invalid entry</small>
             </div>
 
             <div class="six columns end error">
-              <label>Another Error</label>
-              <input type="text" />
+              <label for="error_2">Another Error</label>
+              <input type="text" id="error_2" />
               <small>Invalid entry</small>
             </div>
           </div>
@@ -219,26 +219,26 @@
               <div class="row">
                 <div class="five columns">
 
-                  <label>Name</label>
-                  <input type="text" />
+                  <label for="name">Name</label>
+                  <input type="text" id="name" />
 
-                  <label>Occupation</label>
-                  <input type="text" />
+                  <label for="occupation">Occupation</label>
+                  <input type="text" id="occupation" />
 
-                  <label>Twitter</label>
+                  <label for="twitter">Twitter</label>
                   <div class="row collapse">
                     <div class="two mobile-one columns">
                       <span class="prefix">@</span>
                     </div>
                     <div class="ten mobile-three columns">
-                      <input type="text" placeholder="foundationzurb" />
+                      <input type="text" placeholder="foundationzurb" id="twitter" />
                     </div>
                   </div>
 
-                  <label>URL</label>
+                  <label for="url">URL</label>
                   <div class="row collapse">
                     <div class="nine mobile-three columns">
-                      <input type="text" placeholder="foundation.zurb" />
+                      <input type="text" placeholder="foundation.zurb" id="url"/>
                     </div>
                     <div class="three mobile-one columns">
                       <span class="postfix">.com</span>
@@ -249,27 +249,27 @@
 
                 <div class="five columns">
 
-                  <label class="error">Field with Error</label>
-                  <input type="text" class="error" />
+                  <label class="error" for="error_3">Field with Error</label>
+                  <input type="text" class="error" id="error_3" />
                   <small class="error">Invalid entry</small>
 
                   <div class="error">
-                    <label>Another Error</label>
-                    <input type="text" />
+                    <label for="error_4">Another Error</label>
+                    <input type="text" id="error_4" />
                     <small>Invalid entry</small>
                   </div>
 
                 </div>
               </div>
 
-              <label>Address</label>
-              <input type="text" placeholder="Street (e.g. 123 Awesome St.)" />
+              <label for="address_3">Address</label>
+              <input type="text" placeholder="Street (e.g. 123 Awesome St.)" id="address_3" />
 
               <div class="row">
                 <div class="six columns">
                   <input type="text" placeholder="City" />
                 </div>
-                <div class="two columns" />
+                <div class="two columns">
                   <select>
                     <option>CA</option>
                   </select>
@@ -363,6 +363,7 @@
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.navigation.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.reveal.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.utils.js"></script>
   <script src="../vendor/assets/javascripts/foundation/app.js"></script>
   <script type="text/javascript">
     // Page-Specific JavaScript Goes Here

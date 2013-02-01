@@ -13,7 +13,7 @@
 }
 
 .clearing-close { z-index: 999; position: absolute; top: 10px; right: 20px; font-size: 30px; line-height: 1; color: $clearingCloseColor; display: none;
-  &:hover { color: #ccc; }
+  &:hover, &:focus { color: #ccc; }
 }
 .clearing-main-left, .clearing-main-right { position: absolute; top: 50%; margin-top: -16px; }
 .clearing-main-left.disabled, .clearing-main-right.disabled { opacity: 0.5; }
@@ -21,7 +21,7 @@
 .clearing-main-left { left: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
 .clearing-main-right { right: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
 
-.block-grid.three-up > li:nth-child(3n+1) { clear: none; }
+ul[data-clearing].block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
 ul[data-clearing] li { cursor: pointer; display: block;
   &.clearing-feature ~ li { display: none; }
@@ -40,3 +40,22 @@ ul[data-clearing] li { cursor: pointer; display: block;
     }
   }
 }
+
+/* Overrides clear:both; when using block-grid with Clearing. Also overrided .th styling when Clearing is open */
+ul.block-grid[data-clearing] { overflow: visible; }
+.clearing-blackout {
+  ul.block-grid[data-clearing] {
+    @for $i from 1 through $blockGridElements {
+      &.#{convert-number-to-word($i)}-up {
+        &>li {
+          @if $i > 1 { &:nth-child(#{$i}n+1) { clear: none; } }
+        }
+      }
+    }
+  }
+  .th img { border: none; @include box-shadow(0 0 0 0 rgba(#000,0)); @include border-radius(0); }
+    &:hover, &:focus {
+      img { @include box-shadow(0 0 0 0 rgba(0,0,0,0)); }
+    }
+}
+

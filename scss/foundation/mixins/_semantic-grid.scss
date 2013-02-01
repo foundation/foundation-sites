@@ -2,11 +2,13 @@
 
   // Outer row mixin for container rows
 
-  @mixin outerRow() { width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @extend %clearfix; }
+  @mixin outerRow() {
+    width: $rowWidth; max-width: 100%; min-width: $screenSmall; margin: 0 auto; @extend %clearfix;
+    @include respondTo(smallScreen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; }
+  }
 
   // Inner row mixin for nested rows, must be a child of an outer-row element. $behavior can be 'collapse' to get rid of margins
 
-  @mixin innerRowBase { width: auto; max-width: none; min-width: 0; }
   @mixin innerRow($behavior: false) {
       @if $behavior == collapse { @extend %row-i-base; margin: 0; @extend %clearfix;
     } @else                     { @extend %row-i-base; margin: 0 (-($columnGutter/2)); @extend %clearfix; }
@@ -14,11 +16,10 @@
 
   // Columns mixin, syntax is ($columns, $behavior). Behavior can be 'centered' which centers things or 'collapse' which collapses the gutters. ex @include row(4,[center | collapse])
 
-  @mixin columnBase { position: relative; min-height: 1px; padding: 0 ($columnGutter/2); }
   @mixin column($columns:$columns, $behavior: false) {
-      @if      $behavior == center   { @extend %fl-n; margin: 0 auto !important; @extend %c-base; width: gridCalc($columns, $totalColumns);
-    } @else if $behavior == collapse { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $totalColumns);
-    } @else                          { @extend %fl-l; @extend %c-base; width: gridCalc($columns, $totalColumns); }
+      @if      $behavior == center   { @extend %fl-n; margin-left: auto; margin-right: auto; @extend %c-base; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: none; width: auto; }
+    } @else if $behavior == collapse { @extend %fl-l; @extend %c-base; padding: 0; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: none; width: auto; }
+    } @else                          { @extend %fl-l; @extend %c-base; width: gridCalc($columns, $totalColumns); @include respondTo(smallScreen) { float: none; width: auto; } }
   }
 
   // Offset Mixin, include after a column mixin to manipulate its grid offset.
@@ -30,8 +31,7 @@
   @mixin push($push:1) { left: gridCalc($push, $totalColumns); }
   @mixin pull($push:1) { right: gridCalc($push, $totalColumns); }
 
-  // Mobile Row, synctax is @include mobile-row();
-
+  // Mobile Row, synctax is @include mobile-row(); (This mixin isn't really necessary, will be deprecated in 4)
   @mixin mobileRow() { @include respondTo(smallScreen) { width: auto; min-width: 0; margin-left: 0; margin-right: 0; @include clearfix(); } }
 
   // Mobile Columns, syntax is @include mobile-column(#);
@@ -56,10 +56,10 @@
   %clearfix-m { @include mobileClearfix(); }
 
   %row-o { @include outerRow(); }
-  %row-i-base { @include innerRowBase(); }
+  %row-i-base { width: auto; max-width: none; min-width: 0; }
   %row-i { @include innerRow(); }
 
-  %c-base { @include columnBase(); }
+  %c-base { position: relative; min-height: 1px; padding: 0 ($columnGutter/2); }
 
   @for $i from 1 through $totalColumns {
     %c-#{$i} { @include column($i); }

@@ -24,34 +24,32 @@
   a.button.prefix, a.button.postfix { padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; text-align: center; }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
 
-  .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultFloat, 2px); overflow:hidden; }
-  .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
+  .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, $inputBorderRadius); @include border-corner-radius(bottom, $defaultFloat, $inputBorderRadius); overflow:hidden; }
+  .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, $inputBorderRadius); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
 
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea, select { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
-    &:focus { background: $inputFocusBgColor; outline: none !important; border-color: $inputFocusBorderColor; }
+    &:focus { background: $inputFocusBgColor; border-color: $inputFocusBorderColor; }
     &[disabled] { background-color: #ddd; }
   }
 
   textarea { height: auto; }
 
-  select { width: 100%; }
+  select { width: 100%; line-height: 26px; }
 
   /* Fieldsets */
-  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: 12px 12px 0; margin: 18px 0;
+  fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: 12px; margin: 18px 0;
 
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0; margin-#{$defaultFloat}: -3px; }
   }
 
   /* Errors */
-  .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
+  .error input, input.error, .error textarea, textarea.error, .error input:focus, input.error:focus, .error textarea:focus, textarea.error:focus { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
+  .error input:focus, input.error:focus, .error textarea:focus, textarea.error:focus { outline-color: lighten($alertColor, 30%); }
   .error label, label.error { color: $alertColor; }
-  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; font-size: ms(0) - 2; font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
-  .error textarea, textarea.error {
-    &:focus { background: darken($white, 2%); border-color: darken($white, 30%); }
-  }
+  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; font-size: ms(0) - 2; font-weight: bold; @include border-corner-radius(bottom, $defaultFloat, $inputBorderRadius); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
   /* Custom Forms ---------------------- */
 
   form.custom {
@@ -114,6 +112,6 @@
 
   /* Correct FF custom dropdown height */
   @-moz-document url-prefix() {
-    form.custom div.custom.dropdown a.selector { height: 30px; }
+    form.custom div.custom.dropdown a.selector { height: 28px; }
   }
-  .lt-ie9 form.custom div.custom.dropdown a.selector { height: 30px; }
+  .lt-ie9 form.custom div.custom.dropdown a.selector { height: 28px; }

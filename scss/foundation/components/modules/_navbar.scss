@@ -24,6 +24,7 @@
           &>a:first-child { padding-#{$defaultOpposite}: 55px;}
           &>a.flyout-toggle { border-#{$defaultFloat}: 1px dashed #666; }
         }
+        &:hover .dropdown { display: block; }
       }
     }
 
@@ -64,7 +65,7 @@
 
     li { border-#{$defaultFloat}: solid 3px #CCC;
       a { background: darken($white, 5%); border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: 1; padding: (($navBarHeight / 2) - 5) ($navBarHeight / 2); @include box-shadow(0 1px 0 $shinyEdge inset);
-        &:hover { background: darken($white, 8%); color: #333; }
+        &:hover, &:focus { background: darken($white, 8%); color: #333; }
       }
       &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-#{$defaultFloat}: 4px solid lighten($black, 10%);
         a { background: lighten($black, 30%); border: none; color: #fff; height: auto; margin: 0; position: static; top: 0; @include box-shadow(0 0 0); }

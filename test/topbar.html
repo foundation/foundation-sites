@@ -18,127 +18,11 @@
 </head>
 <body>
 
-    <div class="fixed contain-to-grid"> <!-- Could do .fixed to fix to top or .contain-to-grid for grid width -->
-      <nav class="top-bar">
-        <ul>
-          <!-- Title Area -->
-          <li class="name">
-            <h1>
-              <a href="#">
-                <!-- <img src="http://placehold.it/25x25"> -->
-                Top Bar Title
-              </a>
-            </h1>
-          </li>
-          <li class="toggle-topbar"><a href="#"></a></li>
-        </ul>
+  <div class="row">
+    <div class="twelve columns">
 
-        <section>
-          <!-- Left Nav Section -->
-          <ul class="left">
-            <li class="divider"></li>
-            <li class="active has-dropdown">
-              <a href="#">Main Item 1</a>
-              <ul class="dropdown">
-                <li><a href="#">Dropdown Option</a></li>
-                <li class="active"><a href="#">Dropdown Option</a></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li class="divider"></li>
-                <li><a href="#">See all &rarr;</a></li>
-              </ul>
-            </li>
-            <li class="divider"></li>
-            <li><a href="#">Main Item 2</a></li>
-            <li class="divider"></li>
-            <li class="has-dropdown">
-              <a href="#">Main Item 3</a>
-              <ul class="dropdown">
-                <li><label>Section Name</label></li>
-                <li class="has-dropdown">
-                  <a href="#" class="">Dropdown Level 1</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li class="has-dropdown"><a href="#">Dropdown Level 3</a>
-                      <ul class="dropdown">
-                        <li><label>Section Name</label></li>
-                        <li><a href="#">Subdropdown Option</a></li>
-                        <li><a href="#">Subdropdown Option</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Subdropdown Option</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li class="divider"></li>
-                <li><label>Section Name</label></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li class="divider"></li>
-                <li><a href="#">See all &rarr;</a></li>
-              </ul>
-            </li>
-            <li class="divider"></li>
-          </ul>
-
-          <!-- Right Nav Section -->
-          <ul class="right">
-            <li class="show-for-large divider"></li>
-            <li class="has-dropdown">
-              <a href="#">Main Item 4</a>
-              <ul class="dropdown">
-                <li><label>Section Name</label></li>
-                <li class="has-dropdown">
-                  <a href="#" class="">Has Dropdown, Level 1</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Dropdown Options</a></li>
-                    <li><a href="#">Dropdown Options</a></li>
-                    <li class="has-dropdown">
-                      <a href="#">Has Dropdown, Level 2</a>
-                      <ul class="dropdown test">
-                        <li><a href="#">Subdropdown Option</a></li>
-                        <li><a href="#">Subdropdown Option</a></li>
-                        <li><a href="#">Subdropdown Option</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li class="divider"></li>
-                <li><label>Section Name</label></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li><a href="#">Dropdown Option</a></li>
-                <li class="divider"></li>
-                <li><a href="#">See all &rarr;</a></li>
-              </ul>
-            </li>
-            <li class="divider"></li>
-            <li class="search">
-              <!-- <form class="collapse">
-                <input type="text">
-                <button type="submit" class="secondary radius button">Search</button>
-              </form> -->
-              <form>
-                  <input type="search">
-              </form>
-            </li>
-            <li class="divider show-for-small"></li>
-            <li class="has-button"><a class="small button" href="#">Button!</a></li>
-          </ul>
-        </section>
-      </nav>
     </div>
+  </div>
 
   <div class="row">
     <div class="twelve columns">
@@ -151,6 +35,90 @@
   <div class="row">
     <div class="twelve columns">
       <h4 class="subheader">We designed our responsive navigation bar to be super flexible! You have control over almost every aspect of it, including: size, colors, static, fixed and/or contained to grid width, customizable breakpoint and more. Play around with it here and see what it can do.</h4>
+
+      <div class="contain-to-grid sticky">
+        <nav class="top-bar">
+          <ul>
+            <!-- Title Area -->
+            <li class="name">
+              <h1>
+                <a href="#">
+                  Top Bar Title
+                </a>
+              </h1>
+            </li>
+            <li class="toggle-topbar"><a href="#"></a></li>
+          </ul>
+
+          <section>
+            <!-- Left Nav Section -->
+            <ul class="left">
+              <li class="divider"></li>
+              <li class="has-dropdown">
+                <a class="active" href="#">Item 1</a>
+                <ul class="dropdown">
+                  <li><label>Section Name</label></li>
+                  <li class="has-dropdown">
+                    <a href="#" class="">Level 1, Has Dropdown</a>
+                    <ul class="dropdown">
+                      <li><a href="#">Level 2</a></li>
+                      <li><a href="#">Level 2</a></li>
+                      <li class="has-dropdown"><a href="#">Level 2, Has Dropdown</a>
+                        <ul class="dropdown">
+                          <li><label>Section</label></li>
+                          <li><a href="#">Level 3</a></li>
+                          <li><a href="#">Level 3</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Level 3</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Level 2</a></li>
+                      <li><a href="#">Level 2</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Level 1</a></li>
+                  <li><a href="#">Level 1</a></li>
+                  <li class="divider"></li>
+                  <li><label>Section Name</label></li>
+                  <li><a href="#">Level 1</a></li>
+                  <li><a href="#">Level 1</a></li>
+                  <li><a href="#">Level 1</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">See all &rarr;</a></li>
+                </ul>
+              </li>
+              <li class="divider hide-for-small"></li>
+            </ul>
+
+            <!-- Right Nav Section -->
+            <ul class="right">
+              <li class="divider show-for-medium-and-up"></li>
+              <li class="has-dropdown">
+                <a href="#">Item 2</a>
+                <ul class="dropdown">
+                  <li><label>Section Name</label></li>
+                  <li><a href="#" class="">Level 1</a></li>
+                  <li><a href="#">Dropdown Option</a></li>
+                  <li><a href="#">Dropdown Option</a></li>
+                  <li class="divider"></li>
+                  <li><label>Section Name</label></li>
+                  <li><a href="#">Dropdown Option</a></li>
+                  <li><a href="#">Dropdown Option</a></li>
+                  <li><a href="#">Dropdown Option</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">See all &rarr;</a></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </nav>
+      </div>
+
+      <br>
+      <h4 class="subheader">We designed our responsive navigation bar to be super flexible! You have control over almost every aspect of it, including: size, colors, static, fixed and/or contained to grid width, customizable breakpoint and more. Play around with it here and see what it can do.</h4>
+      <h4 class="subheader">We designed our responsive navigation bar to be super flexible! You have control over almost every aspect of it, including: size, colors, static, fixed and/or contained to grid width, customizable breakpoint and more. Play around with it here and see what it can do.</h4>
+      <h4 class="subheader">We designed our responsive navigation bar to be super flexible! You have control over almost every aspect of it, including: size, colors, static, fixed and/or contained to grid width, customizable breakpoint and more. Play around with it here and see what it can do.</h4>
+
     </div>
   </div>
 
@@ -168,6 +136,7 @@
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.topbar.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.reveal.js"></script>
   <script src="../vendor/assets/javascripts/foundation/jquery.foundation.orbit.js"></script>
+  <script src="../vendor/assets/javascripts/foundation/jquery.foundation.utils.js"></script>
   <script src="../vendor/assets/javascripts/foundation/app.js"></script>
   <script type="text/javascript">
     // Page-Specific JavaScript Goes Here
