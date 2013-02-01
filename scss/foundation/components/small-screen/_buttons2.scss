@@ -89,8 +89,16 @@ $btn-rad: 3px !default;
     &:hover,
     &:focus { background-color: darken($bg, $btn-function-factor); }
 
-    @if $bg == $secondary-color { color: $btn-txt-color-alt; }
-    @else                       { color: $btn-txt-color; }
+    @if $bg == $secondary-color {
+      color: $btn-txt-color-alt;
+      &:hover,
+      &:focus { color: $btn-txt-color-alt; }
+    }
+    @else {
+      color: $btn-txt-color;
+      &:hover,
+      &:focus { color: $btn-txt-color; }
+    }
   }
 
   @if $disabled {
@@ -116,4 +124,37 @@ $btn-rad: 3px !default;
   @include btn-base;
   @include btn-size($pad, $full-width);
   @include btn-style($bg, $radius, $disabled, $edge);
+}
+
+
+/* Buttons */
+.button { @include btn-base; @include btn-size; @include btn-style;
+
+  // Button Sizes
+  &.large  { @include btn-size($pad:$btn-lrg); }
+  &.medium { @include btn-size; }
+  &.small  { @include btn-size($pad:$btn-sml); }
+  &.tiny   { @include btn-size($pad:$btn-tny); }
+  &.expand { @include btn-size($pad:false, $full-width: true); }
+
+  // Button Radii
+  &.radius { @include btn-style($bg:false, $radius:true, $edge:false); }
+  &.round  { @include btn-style($bg:false, $radius:1000px, $edge:false); }
+
+  // Button Layout
+  &.left-align  { text-align: left; }
+  &.right-align { text-align: right; }
+
+  // Button Styles
+  &.secondary { @include btn-style($bg:$secondary-color, $edge:false); }
+  &.success   { @include btn-style($bg:$success-color, $edge:false); }
+  &.alert     { @include btn-style($bg:$alert-color, $edge:false); }
+
+  // Disabled Buttons
+  &.disabled, &[disabled] { @include btn-style($bg:$primary-color, $edge:false, $disabled:true);
+    &.secondary { @include btn-style($bg:$secondary-color, $edge:false, $disabled:true); }
+    &.success { @include btn-style($bg:$success-color, $edge:false, $disabled:true); }
+    &.alert { @include btn-style($bg:$alert-color, $edge:false, $disabled:true); }
+  }
+
 }
