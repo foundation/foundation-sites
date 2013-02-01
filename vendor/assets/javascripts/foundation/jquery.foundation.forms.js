@@ -32,6 +32,7 @@
       $span.toggleClass('disabled', $this.is(':disabled'));
     }
 
+
     function appendCustomSelect(idx, sel) {
       var hiddenFixObj = $.foundation.utils.hiddenFix();
           //
