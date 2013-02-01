@@ -10,7 +10,7 @@
 
   jQuery.foundation = jQuery.foundation || {};
   jQuery.foundation.customForms = jQuery.foundation.customForms || {};
- 
+
   $.foundation.customForms.appendCustomMarkup = function ( options ) {
 
     var defaults = {

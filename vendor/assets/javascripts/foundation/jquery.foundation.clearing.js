@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Clearing 1.2.1
+ * jQuery Foundation Clearing 1.2.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -29,19 +29,17 @@
       },
 
       cl = {
-        init : function (options, extendMethods) {
+        init : function (options) {
+          var obj_settings = $.extend(defaults, options);
           return this.find('ul[data-clearing]').each(function () {
             var doc = $(document),
                 $el = $(this),
-                options = options || {},
-                extendMethods = extendMethods || {},
                 settings = $el.data('fndtn.clearing.settings');
 
             if (!settings) {
-              options.$parent = $el.parent();
+              obj_settings.$parent = $el.parent();
 
-              $el.data('fndtn.clearing.settings', $.extend({}, defaults, options));
-
+              $el.data('fndtn.clearing.settings', $.extend({}, defaults, obj_settings));
               cl.assemble($el.find('li'));
 
               if (!defaults.initialized) {
@@ -383,7 +381,7 @@
 
       function bindLoad () {
         this.one( 'load', loaded );
-        if ( $.browser.msie ) {
+        if ( /MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
           var
             src   = this.attr( 'src' ),
             param = src.match( /\?/ ) ? '&' : '?';

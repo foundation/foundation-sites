@@ -12,41 +12,36 @@
     - <li class="search"> Needs to hold a <form> which can use .row.collapse and pre/postfix buttons or default type="search"
 */
 
-/* Element that controls breakpoint, no need to change this ever */
-.top-bar-js-breakpoint { width: $topBarBreakPoint !important; visibility: hidden; }
+  /* Element that controls breakpoint, no need to change this ever */
+  .top-bar-js-breakpoint { width: $topBarBreakPoint !important; visibility: hidden; }
 
-/* Wrapped around .top-bar to contain to grid width */
-.contain-to-grid { width: 100%; background: $topBarBgColor; }
+  /* Wrapped around .top-bar to contain to grid width */
+  .contain-to-grid { width: 100%; background: $topBarBgColor; }
 
-/* Wrapped around .top-bar to make it fixed at the top */
-.fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
+  /* Wrapped around .top-bar to make it fixed at the top */
+  .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
 
-/* Add .sticky class for using top bar as a sticky navigation when scrolling passed it. Add the class .sticky to a top bar using .contain-to-grid but leave off .fixed, javascript will take care of that */
+  /* Add .sticky class for using top bar as a sticky navigation when scrolling passed it. Add the class .sticky to a top bar using .contain-to-grid but leave off .fixed, javascript will take care of that */
+  .sticky { float: left; overflow: hidden;
+    &.fixed { float: none; }
+  }
 
-.sticky {
-	float: left;
-	overflow: hidden;
-}
+  /* <nav> */
+  .top-bar { background: $topBarBgColor; min-height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin 0; padding: 0; width: 100%; position: relative;
 
-.sticky.fixed {
-	float: none;
-}
+    /* Contain width to .row width */
+    .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; }
 
-/* <nav> */
-.top-bar { background: $topBarBgColor; height: $topBarHeight; line-height: $topBarHeight; margin: 0 0 $topBarBtmMargin; padding: 0; width: 100%; position: relative;
-
-  /* Contain width to .row width */
-  .contain-to-grid & { max-width: $rowWidth; margin: 0 auto; }
-
-  /* First <ul> for branding, title, name, etc */
-  &>ul {
-    .name {
-      h1 { line-height: $topBarHeight; margin: 0;
-        a { font-weight: $topBarTitleWeight; padding: 0 $topBarHeight / 2; font-size: $topBarTitleSize !important; }
+    /* First <ul> for branding, title, name, etc */
+    &>ul {
+      .name {
+        h1 { line-height: $topBarHeight; margin: 0;
+          a { font-weight: $topBarTitleWeight; padding: 0 $topBarHeight / 2; font-size: $topBarTitleSize !important; }
+        }
+        img { margin-top: -5px; vertical-align: middle; }
       }
       img { margin-top: -5px; vertical-align: middle; }
     }
-  }
   &.expanded { height: inherit; }
 
   /* topbar global <ul> styles */
@@ -72,6 +67,7 @@
         }
       }
 
+
       /* Put a search bar or text input in the bar */
       &.search { padding: 0 $topBarHeight / 3;
         form { display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarSearchWidth;
@@ -80,6 +76,19 @@
             &+.button { border-left: none; @include border-left-radius(0); float: left; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; }
           }
           input[type=search] { font-size: 16px; margin-bottom: 0; }
+        }
+        input[type=search] { font-size: 16px; margin-bottom: 0; }
+      }
+      &:hover, &:focus { background: $topBarBgColor; }
+
+      /* Put login bar in the top bar */
+      &.login {padding: 0 $topBarHeight / 3;
+        form {display: inline-block; margin-bottom: 0; vertical-align: middle; width: $topBarLoginWidth;
+          input{float: left; width: auto; font-size: ms(0) - 1; margin-top: -1px; height: $topBarHeight / 2; margin-bottom: 0; }
+          input[type=text]{ @include border-right-radius(0); width: $topBarLoginInputWidth;}
+          input[type=password] { margin-bottom: 0; @include border-left-radius(0); width: $topBarLoginInputWidth;
+            &+.button {border-left: none; @include border-left-radius(0); @include border-right-radius(2px); float: left; font-size: ms(0) - 2; margin-top: -1px; padding: 5px 12px 4px; width: $topBarLoginButtonWidth;}
+          }
         }
         &:hover, &:focus { background: $topBarBgColor; }
       }
