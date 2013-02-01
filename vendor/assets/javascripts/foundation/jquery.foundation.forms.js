@@ -393,31 +393,36 @@
 
     event.preventDefault();
     event.stopPropagation();
-	if ( ! $(this).hasClass('disabled')) {
-	    $('div.dropdown').removeClass('open');
 
-	    $this
-	      .closest('ul')
-	      .find('li')
-	      .removeClass('selected');
-	    $this.addClass('selected');
+  	if ( ! $(this).hasClass('disabled')) {
+  	    $('div.dropdown').removeClass('open');
 
-	    $customDropdown
-	      .removeClass('open')
-	      .find('a.current')
-	      .html($this.html());
+  	    $oldThis= $this
+          .closest('ul')
+          .find('li.selected');
+        $oldThis.removeClass('selected');
 
-	    $this.closest('ul').find('li').each(function (index) {
-	      if ($this[0] == this) {
-	        selectedIndex = index;
-	      }
+  	    $this.addClass('selected');
 
-	    });
-	    $select[0].selectedIndex = selectedIndex;
+  	    $customDropdown
+  	      .removeClass('open')
+  	      .find('a.current')
+  	      .html($this.html());
 
-	    $select.trigger('change');
-	}
+  	    $this.closest('ul').find('li').each(function (index) {
+  	      if ($this[0] == this) {
+  	        selectedIndex = index;
+  	      }
+
+  	    });
+  	    $select[0].selectedIndex = selectedIndex;
+
+  	    //store the old value in data
+        $select.data('prevalue', $oldThis.html());
+        $select.trigger('change');
+  	}
   });
+
 
 
   $.fn.foundationCustomForms = $.foundation.customForms.appendCustomMarkup;
