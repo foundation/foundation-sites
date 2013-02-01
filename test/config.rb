@@ -6,5 +6,5 @@ css_dir = "stylesheets"
 images_dir = "../lib/assets/images"
 line_comments = false
 preferred_syntax = :scss
-output_style = :compact
+output_style = :expanded
 relative_assets = true

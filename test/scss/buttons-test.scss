@@ -1,0 +1,58 @@
+
+@import "settings", "foundation";
+
+#hero, #features, #nextSteps {
+  @include gridRow();
+}
+
+.cta {
+  @include btn-base;
+  @include btn-size($pad:$btn-lrg, $full-width:true);
+  @include btn-style($bg:$primary-color, $edge: false);
+}
+
+#id {
+  @include btn($pad:$btn-lrg, $radius: 20px);
+}
+
+
+
+@media only screen and (min-width: 768px) {
+
+  .cta {
+    @include btn-base;
+    @include btn-size($pad:$btn-lrg);
+    @include btn-style($bg:$alert-color);
+  }
+
+  #id {
+    @include btn($pad:$btn-lrg, $radius: 20px);
+  }
+  #hero {
+    hgroup {
+      @include gridCol;
+    }
+  }
+
+  #features {
+    article {
+      @include gridCol($columns:4);
+    }
+  }
+
+  #nextSteps {
+    & > div {
+      @include gridCol;
+
+      & > article {
+        @include gridRow($behavior: nest-collapse);
+        background: #eee;
+
+        p {
+          @include gridCol($columns:8);
+        }
+        a { @include gridCol($columns:4); }
+      }
+    }
+  }
+}
