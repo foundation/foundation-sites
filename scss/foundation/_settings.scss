@@ -206,6 +206,16 @@ $orbitSlideNumBgColor: rgba(0,0,0,0.7) !default;
 $orbitSlideNumFontColor: #fff !default;
 $orbitSlideNumPadding: 5px !default;
 
+$orbitImageArrowLeft: image-url("foundation/orbit/left-arrow.png") !default;
+$orbitImageArrowRight: image-url("foundation/orbit/right-arrow.png") !default;
+$orbitImageArrowSmallLeft: image-url("foundation/orbit/left-arrow-small.png") !default;
+$orbitImageArrowSmallRight: image-url("foundation/orbit/right-arrow-small.png") !default;
+$orbitImageBullets: image-url("foundation/orbit/bullets.jpg") !default;
+$orbitImagePause: image-url("foundation/orbit/pause-black.png") !default;
+$orbitImagePauseActive: $orbitImagePause !default;
+$orbitImageRotator: image-url("foundation/orbit/rotator-black.png") !default;
+$orbitImageTimer: image-url("foundation/orbit/timer-black.png") !default;
+
 // Clearing Settings
 
 $clearingBg: rgba(0,0,0,0.8) !default;
