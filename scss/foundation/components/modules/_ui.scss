@@ -162,7 +162,7 @@
 
   }
 
-  div.pagination-centered { text-align: center; 
+  div.pagination-centered { text-align: center;
 
     ul > li { float: none; display: inline-block; }
   }
@@ -290,6 +290,6 @@
     .bullet-item { background-color: $priceBgColor; padding: $priceItemPadding; text-align: $priceItemAlign; color: $priceItemColor; font-size: $priceItemFontSize; font-weight: $priceItemWeight; border-bottom: $priceItemBtmBorder; }
     .cta-button { background-color: $priceCtaBgColor; text-align: $priceCtaAlign; padding: $priceCtaPadding; }
 
-    &.radius { @include border-radius($btnRadius); }
-    
+    &.radius { @include border-radius($buttonRadius); }
+
   }
