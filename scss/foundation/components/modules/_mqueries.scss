@@ -362,7 +362,7 @@
   /* Topbar Specific Breakpoint that you can customize */
   @media only screen and (max-width: $topBarBreakPoint) {
 
-    .top-bar { background: $topBarDropBgColor; margin-bottom: 0; min-height: $topBarHeightMobile; overflow: hidden;
+    .top-bar { background: $topBarDropBgColor; margin-bottom: 0; height: $topBarHeightMobile; min-height: $topBarHeightMobile; overflow: hidden;
       .js-generated { display: block; }
 
       /* Override contain to grid stuff for breakpoint */
