@@ -22,15 +22,16 @@
           $(document).on('click.fndtn', '.tabs a', function (e) {
             methods.set_tab($(this).parent('dd, li'), e);
           });
-          
+
           settings.init = true;
         },
 
         set_tab : function ($tab, e) {
-          var $activeTab = $tab.closest('dl, ul, ol').find('.active'),
+
+          var $activeTab = $tab.closest('dl, ul').find('.active'),
               href = $tab.children('a').attr("href"),
-              base = $('base'),
               target = href.substring(href.indexOf('#')),
+              base = $('base'),
               hasHash = /^#/.test(target),
               $content = $(target + 'Tab');
 
