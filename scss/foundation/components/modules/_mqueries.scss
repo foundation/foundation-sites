@@ -176,8 +176,8 @@
     /*              */
     .row { width: auto; min-width: 0; margin-#{$defaultFloat}: 0; margin-#{$defaultOpposite}: 0; }
     .column, .columns { width: auto !important; float: none;  }
-    .column:last-child, .columns:last-child { float: none; }
-    [class*="column"] + [class*="column"]:last-child { float: none; }
+    .column:last-of-type, .columns:last-of-type { float: none; }
+    [class*="column"] + [class*="column"]:last-of-type { float: none; }
     .column:before, .columns:before, .column:after, .columns:after { content:""; display:table; }
     .column:after, .columns:after { clear: both; }
 
@@ -198,7 +198,7 @@
     @for $i from 1 through $mobileTotalColumns {
       .row {
         .mobile-#{convert-number-to-word($i)} { width: gridCalc($i, $mobileTotalColumns) !important; float: $defaultFloat; padding: 0 ($columnGutter/2);
-          &:last-child { float: $defaultOpposite; }
+          &:last-of-type { float: $defaultOpposite; }
           &.end { float: $defaultFloat; }
         }
         &.collapse {
@@ -222,7 +222,7 @@
       @for $i from 1 through $blockGridElements {
         &.mobile-#{convert-number-to-word($i)}-up>li {
           width: 100%/$i;
-          @if $i > 1 { &:nth-child(#{$i}n+1) { clear: both; } }
+          @if $i > 1 { &:nth-of-type(#{$i}n+1) { clear: both; } }
         }
       }
     }
@@ -276,7 +276,7 @@
     .nav-bar { height: auto;
       &>li { float: none; display: block; border-right: none; }
       &>li>a.main { text-align: $defaultFloat; border-top: 1px solid #ddd; border-#{$defaultOpposite}: none; }
-      &>li:first-child>a.main { border-top: none; }
+      &>li:first-of-type>a.main { border-top: none; }
       &>li.has-flyout>a.flyout-toggle { position: absolute; #{$defaultOpposite}: 0; top: 0; padding: ($navBarHeight / 2)+2; z-index: 2; display: block; }
       &>li.has-flyout.is-touch>a.flyout-toggle span { content: ""; width: 0; height: 0; display: block; }
       &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
@@ -285,7 +285,7 @@
     .flyout { position: relative; width: 100% !important; top: auto; margin-#{$defaultOpposite}: -2px; border-width: 1px 1px 0 1px;
       &.right { float: none; right: auto; #{$defaultFloat}: -1px; }
       &.small, &.large { width: 100% !important; }
-      p:last-child { margin-bottom: 18px; }
+      p:last-of-type { margin-bottom: 18px; }
     }
 
     /* Reveal --- */
@@ -319,7 +319,7 @@
       dt, li, dd { float: none; height: auto; }
       dd a, li a { font-size: ms(0) + 1; display: block; width: auto; height: auto; padding: 18px 20px; margin: 0; color: #555; line-height: 1; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
       dd a.active, li a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
-      dd:first-child a.active, li:first-child a.active { margin: 0; }
+      dd:first-of-type a.active, li:first-of-type a.active { margin: 0; }
       &+.tabs-content.contained { margin-#{$defaultFloat}:-15px; margin-#{$defaultOpposite}:-15px; }
       .section-title { padding-#{$defaultFloat}: 20px !important; }
     }

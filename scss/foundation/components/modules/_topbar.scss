@@ -22,7 +22,7 @@
   .fixed { width: 100%; left: 0; position: fixed; top: 0; z-index: 99; }
 
   /* Add .sticky class for using top bar as a sticky navigation when scrolling passed it. Add the class .sticky to a top bar using .contain-to-grid but leave off .fixed, javascript will take care of that */
-  .sticky { float: left; overflow: hidden;
+  .sticky { float: left;
     &.fixed { float: none; }
   }
 
@@ -96,24 +96,24 @@
       /* Hide the triangle for breakpoint menu */
       &.toggle-topbar { display: none; }
 
-      /* li.has-dropdown */
-      &.has-dropdown { position: relative;
-        &:hover, &:focus { &>.dropdown { display: block; visibility: visible; } }
-        a { padding-right: $topBarHeight * .75;
-          &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
-        }
-        .dropdown { background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
-          li { background: $topBarDropBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
-            a { color: $topBarDropLinkColor; font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
-              &:after { border: none; }
-              &:hover, &:focus { background: lighten($topBarDropBgColor, 10%); }
-            }
-            label { color: lighten($topBarDropBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
-            &.divider { border-top: solid 1px darken($topBarDropBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
-            &:last-child { padding-bottom: 10px; }
-            &.active a { background: darken($topBarBgColor, 15%); }
+        /* li.has-dropdown */
+        &.has-dropdown { position: relative;
+          &:hover, &:focus { &>.dropdown { display: block; visibility: visible; } }
+          a { padding-right: $topBarHeight * .75;
+            &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
           }
-        }
+          .dropdown { background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
+            li { background: $topBarDropBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
+              a { color: $topBarDropLinkColor; font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
+                &:after { border: none; }
+                &:hover, &:focus { background: lighten($topBarDropBgColor, 10%); }
+              }
+              label { color: lighten($topBarDropBgColor, 30%); font-size: ms(0) - 4; font-weight: $topBarLinkWeight; margin: 0; padding-left: $topBarHeight / 3; text-transform: uppercase; }
+              &.divider { border-top: solid 1px darken($topBarDropBgColor, 20%); @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset); height: 10px; padding: 0; width: 100%; }
+              &:last-of-type { padding-bottom: 10px; }
+              &.active a { background: darken($topBarBgColor, 15%); }
+            }
+          }
 
         /* Dropdown Level 2+ */
         .dropdown li.has-dropdown {
