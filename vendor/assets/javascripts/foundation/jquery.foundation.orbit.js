@@ -342,7 +342,7 @@
       }
 
       if (this.options.pauseOnHover) {
-        this.$wrapper.mouseenter(this.stopClock);
+        this.$wrapper.mouseenter(this.stopClock).mouseleave(this.clickTimer);
       }
     },
 
@@ -388,7 +388,7 @@
         if ($.trim($(captionLocation).text()).length < 1){
           return false;
         }
-        
+
         // if location selector starts with '#', remove it so we don't see id="#selector"
         if (captionLocation.charAt(0) == '#') {
             captionLocation = captionLocation.substring(1, captionLocation.length);
