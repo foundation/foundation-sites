@@ -23,14 +23,14 @@
 
   .orbit-wrapper  {
     .timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; #{$defaultOpposite}: 10px; opacity: .6; cursor: pointer; z-index: 31; }
-    span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: -20px; background: image-url("foundation/orbit/rotator-black.png") no-repeat; z-index: 3;
+    span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: -20px; background: #{$orbitImageRotator} no-repeat; z-index: 3;
       &.move { #{$defaultFloat}: 0 }
     }
     span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; #{$defaultOpposite}: 0; z-index: 2; overflow: hidden;
-      &.move { width: 40px; #{$defaultFloat}: 0; background: image-url("foundation/orbit/timer-black.png") repeat 0 0; }
+      &.move { width: 40px; #{$defaultFloat}: 0; background: #{$orbitImageTimer} repeat 0 0; }
     }
-    span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: 0; background: image-url("foundation/orbit/pause-black.png") no-repeat; z-index: 4; opacity: 0;
-      &.active { background: image-url("foundation/orbit/pause-black.png") no-repeat 0 -40px; }
+    span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: 0; background: #{$orbitImagePause} no-repeat; z-index: 4; opacity: 0;
+      &.active { background: #{$orbitImagePauseActive} no-repeat 0 -40px; }
     }
     .timer:hover span.pause, .timer:focus span.pause, span.pause.active { opacity: 1 }
   }
@@ -45,21 +45,21 @@
   .orbit-wrapper {
     .slider-nav { display: block; }
     .slider-nav span { width: 39px; height: 50px; text-indent: -9999px; position: absolute; z-index: 30; top: 50%; margin-top: -25px; cursor: pointer; }
-    .slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow.png"); background-size: 100%; #{$defaultOpposite}: 0; }
-    .slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow.png"); background-size: 100%; #{$defaultFloat}: 0; }
+    .slider-nav span.left { background: #{$orbitImageArrowLeft}; background-size: 100%; left: 0; }
+    .slider-nav span.right{ background: #{$orbitImageArrowRight}; background-size: 100%; right: 0; }
   }
 
   .lt-ie9 {
     .orbit-wrapper {
-      .slider-nav span.#{$defaultOpposite} { background: image-url("foundation/orbit/#{$defaultOpposite}-arrow-small.png"); }
-      .slider-nav span.#{$defaultFloat} { background: image-url("foundation/orbit/#{$defaultFloat}-arrow-small.png"); }
+      .slider-nav span.left{ background: #{$orbitImageArrowSmallLeft}; }
+      .slider-nav span.right { background: #{$orbitImageArrowSmallRight}; }
     }
   }
 
   /* Bullet Nav ---------------------- */
 
   ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -50px; padding: 0;
-    li { float: $defaultFloat; margin-#{$defaultFloat}: 5px; cursor: pointer; color: $orbitBulletNavColor; text-indent: -9999px; background: image-url("foundation/orbit/bullets.jpg") no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden;
+    li { float: $defaultFloat; margin-#{$defaultFloat}: 5px; cursor: pointer; color: $orbitBulletNavColor; text-indent: -9999px; background: #{$orbitImageBullets} no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden;
       &.active { color: $orbitBulletNavColorActive; background-position: -8px 0; }
       &.has-thumb { background: none; width: 100px; height: 75px; }
       &.active.has-thumb { background-position: 0 0; border-top: $orbitHasThumbBorderWidth $orbitHasThumbBorderStyle $orbitHasThumbBorderColor; }
