@@ -40,7 +40,7 @@
 
   @media all and (min-width: 768px) {
 
-    menu-button, .sidebar-button { display: none; }
+    .menu-button, .sidebar-button { display: none; }
     [role="complementary"] { width: $complementaryWidth; margin-left: 0; float: left; padding: 0 15px; }
     [role="main"] { width: $mainWidth; padding: 0 15px; }
 
