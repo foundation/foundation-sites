@@ -156,19 +156,19 @@
   };
 
   // Monitor scroll position for sticky
-  if ($('.sticky').length > 0) {
-      var distance = $('.sticky').length ? $('.sticky').offset().top: 0,
+  if ($('.sticky-menu').length > 0) {
+      var distance = $('.sticky-menu').length ? $('.sticky-menu').offset().top: 0,
           $window = $(window);
           var offst = $('nav.top-bar').outerHeight()+20;
 
         $window.scroll(function() {
           if ( $window.scrollTop() >= ( distance ) ) {
-             $(".sticky").addClass("fixed");
+             $(".sticky-menu").addClass("fixed");
                $('body').css('padding-top',offst);
           }
 
          else if ( $window.scrollTop() < distance ) {
-            $(".sticky").removeClass("fixed");
+            $(".sticky-menu").removeClass("fixed");
             $('body').css('padding-top','0');
          }
       });
