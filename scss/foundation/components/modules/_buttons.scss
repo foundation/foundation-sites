@@ -77,6 +77,7 @@
     &.large:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; #{$defaultOpposite}: $largeBtnBase * 2; }
     &.small:after { @include cssTriangle(5px, #fff, top); margin-top: -2px; #{$defaultOpposite}: $smallBtnBase * 2; }
     &.tiny:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; #{$defaultOpposite}: $tinyBtnBase * 2; }
+    &.secondary:after { border-color: #000 transparent transparent transparent; }
 
     /* Flyout List */
     &>ul { @include box-sizing(content-box); display: none; position: absolute; #{$defaultFloat}: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken($white, 20%); border-top: none; min-width: 100%; z-index: 40;
