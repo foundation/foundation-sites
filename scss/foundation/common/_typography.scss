@@ -64,6 +64,7 @@
       ul, ol { margin-#{$defaultFloat}: 20px; margin-bottom: 0; }
     }
   }
+  dl dt { font-weigt: bold; }
 
   /* Blockquotes ---------------------- */
   blockquote, blockquote p { line-height: 1.5; color: lighten($headerFontColor, 30%); }
