@@ -1,0 +1,19 @@
+// Inspired by http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32
+
+@mixin mq($media) {
+  @if $media == large {
+    @media only screen and (min-width: 1441px) { @content; } 
+  }
+  @else if $media == medium {
+    @media only screen and (max-width: 1279px) and (min-width: 768px) { @content; } 
+  }
+  @else if $media == small {
+    @media only screen and (max-width: 767px) { @content; } 
+  }
+  @else if $media == landscape {
+    @media only screen and (orientation: landscape) { @content; } 
+  }
+  @else if $media == portrait {
+    @media only screen and (orientation: portrait) { @content; } 
+  }
+}
