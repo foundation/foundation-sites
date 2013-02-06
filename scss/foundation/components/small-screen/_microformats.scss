@@ -1,0 +1,29 @@
+// Microformats
+.vcard {
+  display: inline-block;
+  margin: 0 0 12px 0;
+  border: 1px solid #ddd;
+  padding: 10px;
+
+  li {
+    margin: 0;
+    display: block;
+  }
+  .fn {
+    font-weight: bold;
+    font-size: ms(0) + 1;
+  }
+
+}
+
+.vevent {
+  .summary { font-weight: bold; }
+
+  abbr {
+    cursor: default;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    padding: 0 1px;
+  }
+}

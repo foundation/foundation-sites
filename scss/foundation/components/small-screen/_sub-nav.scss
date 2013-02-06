@@ -1,0 +1,38 @@
+// Sub Navs (http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na)
+
+dl.sub-nav {
+  display: block;
+  width: auto;
+  overflow: hidden;
+  margin: -4px 0 18px;
+  margin-#{$defaultOpposite}: 0;
+  margin-#{$defaultFloat}: -9px;
+  padding-top: 4px;
+
+  dt,
+  dd {
+    float: $defaultFloat;
+    display: inline;
+    margin-#{$defaultFloat}: 9px;
+    margin-bottom: 10px;
+  }
+
+  dt {
+    color: #999;
+    font-weight: $bodyFontWeight;
+  }
+
+  dd a {
+    text-decoration: none;
+    @include border-radius(1000px);
+  }
+
+  dd.active a {
+    font-weight: bold;
+    background: $mainColor;
+    color: #fff;
+    padding: 3px 9px;
+    cursor: default;
+  }
+
+}

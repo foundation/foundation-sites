@@ -1,42 +1,34 @@
-/* Off canvas layout CSS/JS provided by or adapted from work by Jason Weaver and Luke Wroblewski
-   Requires
-   globals.css
-   grid.css */
-
-  body.off-canvas { padding: 0; margin: 0; }
-
-  .container { width: 100%; }
   .row { overflow: hidden; }
   .row .row { overflow: visible; }
 
   .paneled .container { overflow: hidden; }
   .paneled .row { width: 100%; }
 
-  [role="main"]:before { 
-    content: " "; 
-    position: absolute; 
-    z-index: -1; 
-    top: 0; 
-    #{$defaultFloat}: -100%; 
-    width: 100%; 
+  [role="main"]:before {
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    #{$defaultFloat}: -100%;
+    width: 100%;
     height: 100%;
   }
 
   [role="complementary"],
-  [role="main"] { 
-    width: 100%; 
-    padding: 0 15px; 
-    display: block; 
+  [role="main"] {
+    width: 100%;
+    padding: 0 15px;
+    display: block;
     position: relative;
     z-index: 1; @include transition(.25s all ease-in);
   }
 
   .paneled [role="main"] { padding: 0; }
-  .page-panel { 
-    width: 100%; 
-    padding: 0 15px; 
-    @include transition(.3s margin ease-in-out); 
-    background: #fff; 
+  .page-panel {
+    width: 100%;
+    padding: 0 15px;
+    @include transition(.3s margin ease-in-out);
+    background: #fff;
   }
   #switchPanels { margin: 0 -15px; }
 
@@ -45,32 +37,32 @@
   [role="navigation"]#topMenu { @include transition(.25s all ease-in); }
   [role="navigation"]#topMenu ul { margin-top: 0; }
 
-  [role="complementary"] { 
-    margin-#{$defaultFloat}: -100%; 
-    width: 80%; 
-    float: $defaultFloat; 
+  [role="complementary"] {
+    margin-#{$defaultFloat}: -100%;
+    width: 80%;
+    float: $defaultFloat;
     z-index: 2;
   }
-  [role="main"] { 
-    margin-#{$defaultFloat}: 0; 
-    float: $defaultOpposite; 
-    z-index: 1; 
+  [role="main"] {
+    margin-#{$defaultFloat}: 0;
+    float: $defaultOpposite;
+    z-index: 1;
     position: relative;
   }
 
-  .paneled [role="main"] { 
-    background: #fff; 
-    width: 500%; 
-    overflow: hidden; 
-    float: none; 
-    position: relative; 
-    #{$defaultFloat}: 0; 
+  .paneled [role="main"] {
+    background: #fff;
+    width: 500%;
+    overflow: hidden;
+    float: none;
+    position: relative;
+    #{$defaultFloat}: 0;
     @include transition(.15s all ease-in);
   }
-  .page-panel { 
-    min-height: 400px; 
-    float: $defaultFloat; 
-    margin: 0; 
+  .page-panel {
+    min-height: 400px;
+    float: $defaultFloat;
+    margin: 0;
     width: 20%;
   }
 
@@ -81,26 +73,26 @@
 
   @media all and (min-width: 768px) {
     menu-button, .sidebar-button { display: none; }
-    [role="complementary"] { 
-      width: $complementaryWidth; 
-      margin-#{$defaultFloat}: 0; 
-      float: $defaultFloat; 
+    [role="complementary"] {
+      width: $complementaryWidth;
+      margin-#{$defaultFloat}: 0;
+      float: $defaultFloat;
       padding: 0 15px;
     }
     [role="main"] { width: $mainWidth; padding: 0 15px; }
 
-    .paneled [role="main"] { 
-      width: 100%; 
-      padding: 0; 
-      background: #f4f4f4; 
+    .paneled [role="main"] {
+      width: 100%;
+      padding: 0;
+      background: #f4f4f4;
       #{$defaultFloat}: 0 !important;
     }
-    .page-panel { 
-      display: block; 
-      min-height: 800px; 
-      float: none; 
-      margin: 0; 
-      width: 100%; 
+    .page-panel {
+      display: block;
+      min-height: 800px;
+      float: none;
+      margin: 0;
+      width: 100%;
       background: #f4f4f4;
     }
     .hide-extras [role="main"] { width: 100%; }

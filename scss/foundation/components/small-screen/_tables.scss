@@ -1,0 +1,46 @@
+// Tables
+table {
+  background: #fff;
+  @include border-radius($tableBorderRadius);
+  margin: 0 0 18px;
+  border: 1px solid #ddd;
+
+  thead,
+  tfoot {
+    background: #f5f5f5;
+    tr {
+      th,
+      td {
+        padding: 8px 10px 9px;
+        font-size: ms(0);
+        font-weight: bold;
+        color: #222;
+
+        &:first-child { border-#{$defaultFloat}: none; }
+        &:last-child { border-#{$defaultOpposite}: none; }
+      }
+
+      &.even,
+      &.alt { background: #f9f9f9; }
+      &:nth-child(even) { background: #f9f9f9; }
+
+      td {
+        color: #333;
+        padding: 9px 10px;
+        vertical-align: top;
+        border: none;
+      }
+    }
+  }
+
+  thead tr th,
+  tfoot tr th,
+  tbody tr td,
+  tr td,
+  tfoot tr td {
+    display: table-cell;
+    font-size: ms(0);
+    line-height: 18px;
+    text-align: #{$defaultFloat};
+  }
+}

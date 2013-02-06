@@ -1,0 +1,38 @@
+
+/* Panels ---------------------- */
+@mixin panel() {
+  background: darken($white, 5%);
+  border: solid 1px darken($white, 10%);
+  margin: 0 0 22px 0;
+  padding: 20px;
+  &>:first-child { margin-top: 0; }
+  &>:last-child { margin-bottom: 0; }
+}
+
+.panel { @include panel;
+
+  &>:first-child { margin-top: 0; }
+  &>:last-child { margin-bottom: 0; }
+
+  &.callout {
+    background: $mainColor;
+    color: #fff;
+    border-color: darken($mainColor, 10%);
+    @include box-shadow(inset 0px 1px 0px rgba(255,255,255,0.5));
+
+    a { color: #fff; }
+
+    .button {
+      background: $white;
+      border: none;
+      color: $mainColor;
+      @include text-shadow(none);
+
+      &:hover,
+      &:focus { background: rgba(255,255,255,0.8); }
+    }
+  }
+
+  &.radius { @include border-radius($btnRadius); }
+
+}

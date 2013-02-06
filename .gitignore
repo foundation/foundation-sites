@@ -19,6 +19,6 @@ tmp
 marketing/.sass-cache/*
 .sass-cache/*
 test/.sass-cache/*
-test/stylesheets/styles.css
+test/css/styles.css
 *.orig
 node_modules

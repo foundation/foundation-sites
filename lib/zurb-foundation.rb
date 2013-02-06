@@ -6,7 +6,7 @@ require "modular-scale"
 Compass::Frameworks.register("foundation",
   :stylesheets_directory => File.join(root,"scss"),
   :templates_directory => File.join(root,"templates"),
-  :images_dir => File.join(root,"vendor","assets","images","foundation")
+  :images_dir => File.join(root,"vendor","assets","img","js")
 )
 
 if defined?(Rails)

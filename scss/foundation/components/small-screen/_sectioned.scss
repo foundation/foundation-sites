@@ -4,10 +4,12 @@ $tabPadding: 15px !default;
   width: 100%;
   display: block;
   border: 1px solid #eee;
+
   section, .section {
     padding-top: ($tabPadding * 3);
     border-top: 1px solid #ccc;
     position: relative;
+
     .title {
       position: absolute;
       top: 0;
@@ -15,18 +17,23 @@ $tabPadding: 15px !default;
       width: 100%;
       margin: 0;
       background-color: #efefef;
+
       a {
         padding: ($tabPadding - 1) $tabPadding;
         display: inline-block;
       }
+
       &:hover {
         background-color: #ddd;
       }
+
     }
+
     .content {
       display: none;
       padding: $tabPadding;
     }
+
     &.active {
       .content {
         display: block;

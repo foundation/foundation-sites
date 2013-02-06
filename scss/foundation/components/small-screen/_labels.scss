@@ -1,0 +1,23 @@
+// Labels
+.label {
+  padding: 1px 4px 2px;
+  font-size: ms(0) - 2;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline;
+  position: relative;
+  bottom: 1px;
+  color: #fff;
+  background: $mainColor;
+
+  &.radius { @include border-radius($btnRadius); }
+  &.round { padding: 1px 7px 2px; @include border-radius(1000px); }
+
+  &.alert     { background-color: $alertColor; }
+  &.success   { background-color: $successColor; }
+  &.secondary   { background-color: $secondaryColor; color: darken($secondaryColor, 60%); }
+
+}

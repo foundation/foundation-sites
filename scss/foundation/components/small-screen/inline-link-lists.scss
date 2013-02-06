@@ -1,0 +1,17 @@
+ // Inline Link List
+.inline-list,
+.link-list {
+  margin: 0 0 $linkListBottomMargin;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+
+  &>li {
+    list-style: none;
+    float: $defaultFloat;
+    margin-#{$defaultFloat}: 22px;
+    display: block;
+
+    &>* { display: block; }
+  }
+}

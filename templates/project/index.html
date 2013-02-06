@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
 	<meta charset="utf-8" />
-
-	<!-- Set the viewport width to device width for mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Welcome to Foundation</title>
+	<meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Included CSS Files -->
-	<link rel="stylesheet" href="stylesheets/app.css">
-
-	<script src="javascripts/foundation/modernizr.foundation.js"></script>
+  <link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/app.css">
+	<script src="js/foundation/modernizr.foundation.js"></script>
 
 </head>
 <body>
@@ -70,19 +66,6 @@
 				</div>
 			</div>
 
-			<h3>Tabs</h3>
-			<dl class="tabs">
-				<dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
-				<dd><a href="#simple2">Simple Tab 2</a></dd>
-				<dd><a href="#simple3">Simple Tab 3</a></dd>
-			</dl>
-
-			<ul class="tabs-content">
-				<li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
-				<li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
-				<li id="simple3Tab">This is simple tab 3's content. It's, you know...okay.</li>
-			</ul>
-
 			<h3>Buttons</h3>
 
       <div class="row">
@@ -113,13 +96,10 @@
 		</div>
 	</div>
 
-	<!-- Included JS Files (Uncompressed) -->
-	<script src="javascripts/foundation/jquery.js"></script>
+	<script src="js/foundation/jquery.js"></script>
 	<% @template[:options][:javascripts].each do |f| %>
-	<script src="javascripts/<%= f %>"></script>
+	<script src="js/<%= f %>"></script>
 	<% end %>
-
-  <!-- Application Javascript, safe to override -->
-  <script src="javascripts/foundation/app.js"></script>
+  <script src="js/foundation/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+// Breadcrumbs
+.breadcrumbs {
+  display: block;
+  background: lighten($secondaryColor, 5%);
+  padding: 6px 10px 7px;
+  border: 1px solid $secondaryColor;
+  @include border-radius(2px);
+  overflow: hidden;
+  margin-#{$defaultFloat}: 0;
+
+  li {
+    margin: 0;
+    padding: 0 12px 0 0;
+    float: $defaultFloat;
+    list-style: none;
+
+    a,
+    span {
+      text-transform: uppercase;
+      @include font-size(11);
+      padding-#{$defaultFloat}: 12px;
+    }
+
+    &:first-child a,
+    &:first-child span { padding-#{$defaultFloat}: 0; }
+
+    &:before { content: "/"; color: #aaa; }
+    &:first-child:before { content: " "; }
+
+    &.current a { cursor: default; color: #333; }
+
+    &:hover a,
+    li a:focus { text-decoration: underline; }
+
+    &.current:hover a,
+    li.current a:focus { text-decoration: none; }
+
+    &.unavailable {
+      a { color: #999; }
+      &:hover a,
+      a:focus { text-decoration: none; color: #999; cursor: default; }
+    }
+  }
+
+
+
+}

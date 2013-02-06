@@ -1,0 +1,26 @@
+// Side Nav
+ul.side-nav {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: ms(1) 0;
+
+  li {
+    display: block;
+    list-style: none;
+    margin: 0 0 (ms(0)/2) 0;
+
+    a { display: block; }
+
+    &.active a {
+      color: lighten($black, 30%);
+      font-weight: bold;
+    }
+
+    &.divider {
+      border-top: 1px solid darken($white, 10%);
+      height: 0;
+      padding: 0;
+    }
+  }
+}
