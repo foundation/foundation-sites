@@ -53,13 +53,13 @@ $btn-group-btm-marg: 12px;
   li { @include btn-group-style(); }
 
   &.radius li {
-    &:first-child a { @include btn-group-style($radius-left:$btn-rad, $float:null); }
-    &:last-child a { @include btn-group-style($radius-right:$btn-rad, $float:null); }
+    &:first-child .button { @include btn-group-style($radius-left:$btn-rad, $float:null); }
+    &:last-child .button { @include btn-group-style($radius-right:$btn-rad, $float:null); }
   }
 
   &.round li {
-    &:first-child a { @include btn-group-style($radius-left:1000px, $float:null); }
-    &:last-child a { @include btn-group-style($radius-right:1000px, $float:null); }
+    &:first-child .button { @include btn-group-style($radius-left:1000px, $float:null); }
+    &:last-child .button { @include btn-group-style($radius-right:1000px, $float:null); }
   }
 
   @for $i from 2 through 8 {
