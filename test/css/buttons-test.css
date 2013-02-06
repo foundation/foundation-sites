@@ -830,14 +830,14 @@ img {
   position: relative;
   text-decoration: none;
   text-align: center;
-  -webkit-transition: comma-list() prefixed-for-transition(-webkit, all) 0.15s ease-in-out;
-  -webkit-transition-delay: comma-list() 0;
-  -moz-transition: comma-list() prefixed-for-transition(-moz, all) 0.15s ease-in-out 0;
-  transition: all 0.15s ease-in-out 0;
-  padding-bottom: 10px;
+  -webkit-transition: comma-list() prefixed-for-transition(-webkit, background) prefixed-for-transition(-webkit, 0.15s) prefixed-for-transition(-webkit, ease-in-out) prefixed-for-transition(-webkit, 0);
+  -webkit-transition-delay: comma-list() 0s 0s 0s 0s;
+  -moz-transition: comma-list() prefixed-for-transition(-moz, background) prefixed-for-transition(-moz, 0.15s) prefixed-for-transition(-moz, ease-in-out) prefixed-for-transition(-moz, 0);
+  transition: background, 0.15s, ease-in-out, 0;
   padding-top: 10px;
-  padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 11px;
+  padding-left: 20px;
   width: auto;
   font-size: 14px;
   background-color: #2ba6cb;
@@ -859,42 +859,42 @@ img {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
 .button.large {
-  padding-bottom: 15px;
   padding-top: 15px;
-  padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 16px;
+  padding-left: 30px;
   width: auto;
-  font-size: 23px;
+  font-size: 21px;
 }
 .button.medium {
-  padding-bottom: 10px;
   padding-top: 10px;
-  padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 11px;
+  padding-left: 20px;
   width: auto;
   font-size: 14px;
 }
 .button.small {
-  padding-bottom: 7px;
   padding-top: 7px;
-  padding-left: 14px;
   padding-right: 14px;
+  padding-bottom: 8px;
+  padding-left: 14px;
   width: auto;
   font-size: 11px;
 }
 .button.tiny {
-  padding-bottom: 5px;
   padding-top: 5px;
-  padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 6px;
+  padding-left: 10px;
   width: auto;
   font-size: 10px;
 }
 .button.expand {
-  padding-bottom: false;
   padding-top: false;
-  padding-left: 0px;
   padding-right: 0px;
+  padding-bottom: false1;
+  padding-left: 0px;
   width: 100%;
 }
 .button.radius {
@@ -909,9 +909,11 @@ img {
 }
 .button.left-align {
   text-align: left;
+  text-indent: 12px;
 }
 .button.right-align {
   text-align: right;
+  padding-right: 12px;
 }
 .button.secondary {
   background-color: #e9e9e9;
@@ -1033,6 +1035,368 @@ img {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+
+/* Button Groups */
+.button-group {
+  list-style: none;
+  margin: 0 0 12px;
+  *zoom: 1;
+}
+.button-group:before, .button-group:after {
+  content: " ";
+  display: table;
+}
+.button-group:after {
+  clear: both;
+}
+.button-group li {
+  margin: 0 0 0 -1px;
+  float: left;
+}
+.button-group li:first-child {
+  margin-left: 0;
+}
+.button-group.radius li:first-child a {
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.button-group.radius li:last-child a {
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.button-group.round li:first-child a {
+  -moz-border-radius-topleft: 1000px;
+  -webkit-border-top-left-radius: 1000px;
+  border-top-left-radius: 1000px;
+  -moz-border-radius-bottomleft: 1000px;
+  -webkit-border-bottom-left-radius: 1000px;
+  border-bottom-left-radius: 1000px;
+}
+.button-group.round li:last-child a {
+  -moz-border-radius-topright: 1000px;
+  -webkit-border-top-right-radius: 1000px;
+  border-top-right-radius: 1000px;
+  -moz-border-radius-bottomright: 1000px;
+  -webkit-border-bottom-right-radius: 1000px;
+  border-bottom-right-radius: 1000px;
+}
+.button-group.even-2 li {
+  width: 33.33333%;
+}
+.button-group.even-2 li .button {
+  width: 100%;
+}
+.button-group.even-3 li {
+  width: 33.33333%;
+}
+.button-group.even-3 li .button {
+  width: 100%;
+}
+.button-group.even-4 li {
+  width: 33.33333%;
+}
+.button-group.even-4 li .button {
+  width: 100%;
+}
+.button-group.even-5 li {
+  width: 33.33333%;
+}
+.button-group.even-5 li .button {
+  width: 100%;
+}
+.button-group.even-6 li {
+  width: 33.33333%;
+}
+.button-group.even-6 li .button {
+  width: 100%;
+}
+.button-group.even-7 li {
+  width: 33.33333%;
+}
+.button-group.even-7 li .button {
+  width: 100%;
+}
+.button-group.even-8 li {
+  width: 33.33333%;
+}
+.button-group.even-8 li .button {
+  width: 100%;
+}
+
+.button.dropdown {
+  position: relative;
+  padding-right: 44px;
+}
+.button.dropdown.large {
+  padding-right: 60px;
+}
+.button.dropdown.small {
+  padding-right: 28px;
+}
+.button.dropdown.tiny {
+  padding-right: 20px;
+}
+.button.dropdown:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 6px;
+  border-color: white transparent transparent transparent;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -2px;
+}
+.button.dropdown.large:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 7px;
+  border-color: white transparent transparent transparent;
+  margin-top: -3px;
+  right: 30px;
+}
+.button.dropdown.small:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 5px;
+  border-color: white transparent transparent transparent;
+  margin-top: -2px;
+  right: 14px;
+}
+.button.dropdown.tiny:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 4px;
+  border-color: white transparent transparent transparent;
+  margin-top: -1px;
+  right: 10px;
+}
+.button.dropdown > ul {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  display: none;
+  position: absolute;
+  left: -1px;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #cccccc;
+  border-top: none;
+  min-width: 100%;
+  z-index: 40;
+}
+.button.dropdown > ul li {
+  width: 100%;
+  cursor: pointer;
+  padding: 0;
+  min-height: 18px;
+  line-height: 18px;
+  margin: 0;
+  white-space: nowrap;
+  list-style: none;
+}
+.button.dropdown > ul li a,
+.button.dropdown > ul li button {
+  display: block;
+  color: #555;
+  font-size: 0em;
+  font-weight: normal;
+  padding: 6px 14px;
+  text-align: left;
+}
+.button.dropdown > ul li button {
+  width: 100%;
+  border: inherit;
+  background: inherit;
+  font-family: inherit;
+  margin: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+.button.dropdown > ul li:hover, .button.dropdown > ul li:focus {
+  background-color: #e3f4f9;
+  color: #222;
+}
+.button.dropdown > ul li.divider {
+  min-height: 0;
+  padding: 0;
+  height: 1px;
+  margin: 4px 0;
+  background: #ededed;
+}
+.button.dropdown.up > ul {
+  border-top: 1px solid #cccccc;
+  border-bottom: none;
+}
+.button.dropdown ul.no-hover.show-dropdown {
+  display: block !important;
+}
+.button.dropdown:hover > ul.no-hover {
+  display: none;
+}
+.button.dropdown.split {
+  padding: 0;
+  position: relative;
+}
+.button.dropdown.split:after {
+  display: none;
+}
+.button.dropdown.split:hover, .button.dropdown.split:focus {
+  background-color: #2ba6cb;
+}
+.button.dropdown.split.alert:hover, .button.dropdown.split.alert:focus {
+  background-color: #c60f13;
+}
+.button.dropdown.split.success:hover, .button.dropdown.split.success:focus {
+  background-color: #5da423;
+}
+.button.dropdown.split.secondary:hover, .button.dropdown.split.secondary:focus {
+  background-color: #e9e9e9;
+}
+.button.dropdown.split > a {
+  color: white;
+  display: block;
+  padding: 10px 50px 11px 20px;
+  padding-left: 20px;
+  padding-right: 50px;
+}
+.button.dropdown.split > a:hover, .button.dropdown.split > a:focus {
+  background-color: #2284a1;
+  -webkit-box-shadow: 0 1px 0 0 1px 0 rgba(255, 255, 255, 0.5) inset inset;
+  -moz-box-shadow: 0 1px 0 0 1px 0 rgba(255, 255, 255, 0.5) inset inset;
+  box-shadow: 0 1px 0 0 1px 0 rgba(255, 255, 255, 0.5) inset inset;
+}
+.button.dropdown.split.large > a {
+  padding: 15px 75px 16px 30px;
+  padding-left: 30px;
+  padding-right: 75px;
+}
+.button.dropdown.split.small > a {
+  padding: 7px 35px 8px 14px;
+  padding-left: 14px;
+  padding-right: 35px;
+}
+.button.dropdown.split.tiny > a {
+  padding: 5px 25px 6px 10px;
+  padding-left: 10px;
+  padding-right: 25px;
+}
+.button.dropdown.split > span {
+  background-color: #2ba6cb;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 30px;
+  border-left: 1px solid #1e728c;
+  -webkit-box-shadow: 1px 1px 0 0 1px 0 rgba(255, 255, 255, 0.5) inset inset;
+  -moz-box-shadow: 1px 1px 0 0 1px 0 rgba(255, 255, 255, 0.5) inset inset;
+  box-shadow: 1px 1px 0 0 1px 0 rgba(255, 255, 255, 0.5) inset inset;
+}
+.button.dropdown.split > span:hover, .button.dropdown.split > span:focus {
+  background-color: #2284a1;
+}
+.button.dropdown.split > span:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 6px;
+  border-color: white transparent transparent transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -6px;
+  margin-top: -2px;
+}
+.button.dropdown.split.secondary > span:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 6px;
+  border-color: #1d1d1d transparent transparent transparent;
+}
+.button.dropdown.split.large span {
+  width: 45px;
+}
+.button.dropdown.split.large span:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 7px;
+  border-color: white transparent transparent transparent;
+  margin-top: -3px;
+  margin-left: -7px;
+}
+.button.dropdown.split.small span {
+  width: 21px;
+}
+.button.dropdown.split.small span:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 4px;
+  border-color: white transparent transparent transparent;
+  margin-top: -1px;
+  margin-left: -4px;
+}
+.button.dropdown.split.tiny span {
+  width: 15px;
+}
+.button.dropdown.split.tiny span:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 3px;
+  border-color: white transparent transparent transparent;
+  margin-top: -1px;
+  margin-left: -3px;
+}
+.button.dropdown.split.alert > span {
+  background-color: #c60f13;
+  border-left-color: #7f0a0c;
+}
+.button.dropdown.split.success > span {
+  background-color: #5da423;
+  border-left-color: #396516;
+}
+.button.dropdown.split.secondary > span {
+  background-color: #e9e9e9;
+  border-left-color: #c3c3c3;
+}
+.button.dropdown.split.secondary > a {
+  color: #1d1d1d;
+}
+.button.dropdown.split.alert > a:hover, .button.dropdown.split.alert > span:hover, .button.dropdown.split.alert > a:focus, .button.dropdown.split.alert > span:focus {
+  background-color: #970b0e;
+}
+.button.dropdown.split.success > a:hover, .button.dropdown.split.success > span:hover, .button.dropdown.split.success > a:focus, .button.dropdown.split.success > span:focus {
+  background-color: #457a1a;
+}
+.button.dropdown.split.secondary > a:hover, .button.dropdown.split.secondary > span:hover, .button.dropdown.split.secondary > a:focus, .button.dropdown.split.secondary > span:focus {
+  background-color: #d0d0d0;
 }
 
 form.custom span.custom {
@@ -2448,10 +2812,6 @@ ul[data-clearing] li.clearing-feature ~ li {
   position: relative;
   border-left: 1px solid #e9e9e9;
   border-right: 1px solid #e9e9e9;
-  -webkit-transition: comma-list() prefixed-for-transition(-webkit, 0.15s) background;
-  -webkit-transition-delay: comma-list() linear;
-  -moz-transition: comma-list() prefixed-for-transition(-moz, 0.15s) background linear;
-  transition: 0.15s background linear;
 }
 .accordion > li > .title h1,
 .accordion > li > .title h2,
@@ -3195,12 +3555,6 @@ table tfoot tr td {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-transition-property: prefixed-for-transition(-webkit, box-shadow);
-  -moz-transition-property: prefixed-for-transition(-moz, box-shadow);
-  transition-property: box-shadow;
-  -webkit-transition-duration: 300ms;
-  -moz-transition-duration: 300ms;
-  transition-duration: 300ms;
 }
 .th:hover img, .th:focus img {
   -webkit-box-shadow: 0 0 6px 1px rgba(43, 166, 203, 0.5);
@@ -3781,15 +4135,6 @@ ul.tabs-content.contained.vertical > li {
     width: 50%;
     height: 100%;
     padding: 0;
-    -webkit-transition-property: prefixed-for-transition(-webkit, all);
-    -moz-transition-property: prefixed-for-transition(-moz, all);
-    transition-property: all;
-    -webkit-transition-duration: 0.3s;
-    -moz-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    -moz-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
   }
   .switch input, .switch-3 input, .switch-4 input, .switch-5 input {
     position: absolute;
@@ -3973,20 +4318,20 @@ ul.tabs-content.contained.vertical > li {
   position: relative;
   text-decoration: none;
   text-align: center;
-  -webkit-transition: comma-list() prefixed-for-transition(-webkit, all) 0.15s ease-in-out;
-  -webkit-transition-delay: comma-list() 0;
-  -moz-transition: comma-list() prefixed-for-transition(-moz, all) 0.15s ease-in-out 0;
-  transition: all 0.15s ease-in-out 0;
-  padding-bottom: 15px;
+  -webkit-transition: comma-list() prefixed-for-transition(-webkit, background) prefixed-for-transition(-webkit, 0.15s) prefixed-for-transition(-webkit, ease-in-out) prefixed-for-transition(-webkit, 0);
+  -webkit-transition-delay: comma-list() 0s 0s 0s 0s;
+  -moz-transition: comma-list() prefixed-for-transition(-moz, background) prefixed-for-transition(-moz, 0.15s) prefixed-for-transition(-moz, ease-in-out) prefixed-for-transition(-moz, 0);
+  transition: background, 0.15s, ease-in-out, 0;
   padding-top: 15px;
-  padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 16px;
+  padding-left: 30px;
   width: auto;
-  font-size: 23px;
-  padding-bottom: 15px;
+  font-size: 21px;
   padding-top: 15px;
-  padding-left: 0px;
   padding-right: 0px;
+  padding-bottom: 16px;
+  padding-left: 0px;
   width: 100%;
   background-color: #2ba6cb;
   border-color: #2284a1;
@@ -4011,16 +4356,16 @@ ul.tabs-content.contained.vertical > li {
   position: relative;
   text-decoration: none;
   text-align: center;
-  -webkit-transition: comma-list() prefixed-for-transition(-webkit, all) 0.15s ease-in-out;
-  -webkit-transition-delay: comma-list() 0;
-  -moz-transition: comma-list() prefixed-for-transition(-moz, all) 0.15s ease-in-out 0;
-  transition: all 0.15s ease-in-out 0;
-  padding-bottom: 15px;
+  -webkit-transition: comma-list() prefixed-for-transition(-webkit, background) prefixed-for-transition(-webkit, 0.15s) prefixed-for-transition(-webkit, ease-in-out) prefixed-for-transition(-webkit, 0);
+  -webkit-transition-delay: comma-list() 0s 0s 0s 0s;
+  -moz-transition: comma-list() prefixed-for-transition(-moz, background) prefixed-for-transition(-moz, 0.15s) prefixed-for-transition(-moz, ease-in-out) prefixed-for-transition(-moz, 0);
+  transition: background, 0.15s, ease-in-out, 0;
   padding-top: 15px;
-  padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 16px;
+  padding-left: 30px;
   width: auto;
-  font-size: 23px;
+  font-size: 21px;
   background-color: #2ba6cb;
   border-color: #2284a1;
   color: white;
@@ -4056,16 +4401,16 @@ ul.tabs-content.contained.vertical > li {
     position: relative;
     text-decoration: none;
     text-align: center;
-    -webkit-transition: comma-list() prefixed-for-transition(-webkit, all) 0.15s ease-in-out;
-    -webkit-transition-delay: comma-list() 0;
-    -moz-transition: comma-list() prefixed-for-transition(-moz, all) 0.15s ease-in-out 0;
-    transition: all 0.15s ease-in-out 0;
-    padding-bottom: 15px;
+    -webkit-transition: comma-list() prefixed-for-transition(-webkit, background) prefixed-for-transition(-webkit, 0.15s) prefixed-for-transition(-webkit, ease-in-out) prefixed-for-transition(-webkit, 0);
+    -webkit-transition-delay: comma-list() 0s 0s 0s 0s;
+    -moz-transition: comma-list() prefixed-for-transition(-moz, background) prefixed-for-transition(-moz, 0.15s) prefixed-for-transition(-moz, ease-in-out) prefixed-for-transition(-moz, 0);
+    transition: background, 0.15s, ease-in-out, 0;
     padding-top: 15px;
-    padding-left: 30px;
     padding-right: 30px;
+    padding-bottom: 16px;
+    padding-left: 30px;
     width: auto;
-    font-size: 23px;
+    font-size: 21px;
     background-color: #c60f13;
     border-color: #970b0e;
     color: white;
@@ -4097,16 +4442,16 @@ ul.tabs-content.contained.vertical > li {
     position: relative;
     text-decoration: none;
     text-align: center;
-    -webkit-transition: comma-list() prefixed-for-transition(-webkit, all) 0.15s ease-in-out;
-    -webkit-transition-delay: comma-list() 0;
-    -moz-transition: comma-list() prefixed-for-transition(-moz, all) 0.15s ease-in-out 0;
-    transition: all 0.15s ease-in-out 0;
-    padding-bottom: 15px;
+    -webkit-transition: comma-list() prefixed-for-transition(-webkit, background) prefixed-for-transition(-webkit, 0.15s) prefixed-for-transition(-webkit, ease-in-out) prefixed-for-transition(-webkit, 0);
+    -webkit-transition-delay: comma-list() 0s 0s 0s 0s;
+    -moz-transition: comma-list() prefixed-for-transition(-moz, background) prefixed-for-transition(-moz, 0.15s) prefixed-for-transition(-moz, ease-in-out) prefixed-for-transition(-moz, 0);
+    transition: background, 0.15s, ease-in-out, 0;
     padding-top: 15px;
-    padding-left: 30px;
     padding-right: 30px;
+    padding-bottom: 16px;
+    padding-left: 30px;
     width: auto;
-    font-size: 23px;
+    font-size: 21px;
     background-color: #2ba6cb;
     border-color: #2284a1;
     color: white;

@@ -67,9 +67,7 @@
       height: 100%;
       padding: 0;
 
-      @include transition-property(all);
-      @include transition-duration(0.3s);
-      @include transition-timing-function(ease-out);
+      // @include single-transition(all, 0.3s, ease-out);
     }
 
     input {

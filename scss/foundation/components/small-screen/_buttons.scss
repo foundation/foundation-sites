@@ -1,326 +1,177 @@
+//
 // Button Variables
+//
 
-$btnBase: 10px !default;
-$btnTinyBase: 5px !default;
-$btnSmallBase: 7px !default;
-$btnLargeBase: 15px !default;
-$btnFontColor: #fff !default;
-$btnFontSize: ms(0, 14px) !default;
-$btnTinyFontSize: ms(0, 10px) !default;
-$btnSmallFontSize: ms(0, 11px) !default;
-$btnLargeFontSize: ms(1, 14px) !default;
-$btnTransitionSpeed: .15s !default;
-$btnTransitionEase: ease-in-out !default;
-$btnRadius: 3px !default;
-$btnBorderWidth: 1px !default;
-$btnBorderStyle: solid !default;
-$btnAlignIndention: 12px !default;
-$btnDisabledOpacity: 0.6 !default;
-$btnShinyEdge: 0 1px 0 $shinyEdge inset !default;
-$btnDarkEdge: 0 1px 0 $darkEdge inset !default;
+// We use these to build padding for buttons.
+$btn-med: 10px !default;
+$btn-tny: 5px !default;
+$btn-sml: 7px !default;
+$btn-lrg: 15px !default;
 
-// Button Functions
-@function btnSidePad($btnSize) {
-  @return $btnSize * 2;
-}
-@function btnBtmPad($btnSize) {
-  @return $btnSize + 1;
-}
+// We use this to control the display property.
+$btn-display: inline-block !default;
 
-// Placeholder Class for Shared Styles
-%btnBaseStyles {
-  border-width: $btnBorderWidth;
-  border-style: $btnBorderStyle;
+// We use these to control button text styles.
+$btn-txt-color: #fff !default;
+$btn-txt-color-alt: #333 !default;
+$btn-txt-med: ms(0, 14px) !default;
+$btn-txt-tny: ms(0, 10px) !default;
+$btn-txt-sml: ms(0, 11px) !default;
+$btn-txt-lrg: ms(1, 13px) !default;
+$btn-txt-weight: bold !default;
+$btn-txt-align: center !default;
+
+// We use these to control various hover effects.
+$btn-function-factor: 10% !default;
+$btn-trans-speed: .15s !default;
+$btn-trans-ease: ease-in-out !default;
+$btn-trans-delay: 0 !default;
+
+// We use these to control button border styles.
+$btn-brdr-width: 1px !default;
+$btn-brdr-style: solid !default;
+$btn-brdr-color: darken($primary-color, $btn-function-factor) !default;
+$btn-edge-shine: 0 1px 0 rgba(#fff, .5) inset !default;
+$btn-edge-shadow: 0 1px 0 rgba(#000, .2) inset !default;
+
+// We use this to set the default radius used throughout the core.
+$btn-rad: 3px !default;
+
+// We use this to set default opacity for disabled buttons.
+$btn-disabled-opacity: 0.6 !default;
+
+//
+// Button Mixins
+//
+
+// We use this mixin to create a default button.
+@mixin btn-base {
+  border-style: $btn-brdr-style;
+  border-width: $btn-brdr-width;
   cursor: pointer;
+  display: $btn-display;
   font-family: inherit;
-  font-weight: bold;
+  font-weight: $btn-txt-weight;
   line-height: 1;
   margin: 0;
   position: relative;
   text-decoration: none;
-  width: auto;
-  color: $btnFontColor;
-  @include box-shadow($btnShinyEdge);
-  @include single-transition(background-color, $btnTransitionSpeed, $btnTransitionEase);
-  &:active { @include box-shadow($btnDarkEdge); }
+  text-align: $btn-txt-align;
+  @include transition(background, $btn-trans-speed, $btn-trans-ease, $btn-trans-delay);
 }
 
-// Primary Button Base
-%btnPrimaryBase {
-  background-color: $primaryColor;
-  border-color: darken($primaryColor, 15%);
-  &:hover,
-  &:focus { color: $btnFontColor; background-color: darken($primaryColor, 10%); }
-}
-// Secondary Button Base
-%btnSecondaryBase {
-  background-color: $secondaryColor;
-  border-color: darken($secondaryColor, 15%);
-  color: #333;
-  &:hover,
-  &:focus { background-color: darken($secondaryColor, 10%); }
-}
-// Alert Button Base
-%btnAlertBase {
-  background-color: $alertColor;
-  border-color: darken($alertColor, 15%);
-  &:hover,
-  &:focus { background-color: darken($alertColor, 10%); }
-}
-// Success Button Base
-%btnSuccessBase {
-  background-color: $successColor;
-  border-color: darken($successColor, 15%);
-  &:hover,
-  &:focus { background-color: darken($successColor, 10%); }
-}
-// Extend Button Width
-%btnExtendStyle {
-  width: 100%;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-// Disabled Button Base
-%btnDisabledBase {
-  opacity: $btnDisabledOpacity;
-  cursor: default;
-  @include box-shadow(none);
-}
-// Disabled Background Colors
-%btnPrimaryDisabled { background-color: $primaryColor;
-  &:hover,
-  &:focus { background-color: $primaryColor; }
-}
-%btnSecondaryDisabled { background-color: $secondaryColor;
-  &:hover,
-  &:focus { background-color: $secondaryColor; }
-}
-%btnSuccessDisabled { background-color: $successColor;
-  &:hover,
-  &:focus { background-color: $successColor; }
-}
-%btnAlertDisabled { background-color: $alertColor;
-  &:hover,
-  &:focus { background-color: $alertColor; }
+// We use this mixin to add button size styles
+@mixin btn-size($pad:$btn-med, $full-width:false) {
+
+  // We control which padding styles come through,
+  // these can be turned off by setting $pad:false
+  @if $pad {
+    padding-top: $pad;
+    padding-right: $pad * 2;
+    padding-bottom: $pad + 1;
+    padding-left: $pad * 2;
+    width: auto;
+
+    // We control the font-size based on mixin input.
+    @if      $pad == $btn-med { font-size: $btn-txt-med; }
+    @else if $pad == $btn-tny { font-size: $btn-txt-tny; }
+    @else if $pad == $btn-sml { font-size: $btn-txt-sml; }
+    @else if $pad == $btn-lrg { font-size: $btn-txt-lrg; }
+    @else                     { font-size: $pad - 2; }
+  }
+
+  // We can set $full-width:true to remove side padding extend width.
+  @if $full-width {
+    padding-top: $pad;
+    padding-right: 0px;
+    padding-bottom: $pad + 1;
+    padding-left: 0px;
+    width: 100%;
+  }
 }
 
-// Button Size Shared Styles
-%btnTinyStyles {
-  font-size: $btnTinyFontSize;
-  padding: $btnTinyBase btnSidePad($btnTinyBase) btnBtmPad($btnTinyBase);
+// We use this mixin to add button color styles
+@mixin btn-style($bg:$primary-color, $radius:false, $disabled:false, $edge:true) {
+
+  // We control which background styles are used,
+  // these can be removed by setting $bg:false
+  @if $bg {
+    background-color: $bg;
+    border-color: darken($bg, $btn-function-factor);
+    &:hover,
+    &:focus { background-color: darken($bg, $btn-function-factor); }
+
+    // We control the text color based on variables passed to mixin.
+    @if $bg == $secondary-color {
+      color: $btn-txt-color-alt;
+      &:hover,
+      &:focus { color: $btn-txt-color-alt; }
+    }
+    @else {
+      color: $btn-txt-color;
+      &:hover,
+      &:focus { color: $btn-txt-color; }
+    }
+  }
+
+  // We can set $disabled:true to create a disabled transparent button.
+  @if $disabled {
+    cursor: default;
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+    &:hover,
+    &:focus {
+      background-color: $bg;
+      @include box-shadow(none); }
+  }
+
+  // We can control how much button radius us used.
+  @if $radius == true { @include border-radius($btn-rad); }
+  @else if $radius { @include border-radius($radius); }
+
+  // We can control whether or not we have inset button shadows.
+  @if $edge == true { @include box-shadow($btn-edge-shine);
+    &:active { @include box-shadow($btn-edge-shadow); }
+  }
+
 }
-%btnSmallStyles {
-  font-size: $btnSmallFontSize;
-  padding: $btnSmallBase btnSidePad($btnSmallBase) btnBtmPad($btnSmallBase);
-}
-%btnMediumStyles {
-  font-size: $btnFontSize;
-  padding: $btnBase btnSidePad($btnBase) btnBtmPad($btnBase);
-}
-%btnLargeStyles {
-  font-size: $btnLargeFontSize;
-  padding: $btnLargeBase btnSidePad($btnLargeBase) btnBtmPad($btnLargeBase);
-}
 
-// Button Radii
-%btnRadiusRound { @include border-radius($btnRadius); }
-%btnRadiusPill { @include border-radius(1000px); }
-
-// Button Text Alignment
-%btnTextCenter { text-align: center; }
-%btnTextLeft { text-align: left; text-indent: $btnAlignIndention; }
-%btnTextRight { text-align: right; padding-right: $btnAlignIndention; }
-
-// Button Display Property
-%inlineBlock { display: inline-block; }
-%block { display: block; }
-
-
-// Button Mixin
-@mixin button($color:primary, $size:medium, $expand:false, $radius:false, $align:center, $disabled:false, $display:inline-block) {
-
-  // Shared styles
-  @extend %btnBaseStyles;
-
-  // $color options, defaults to primary, false will omit.
-  @if $color == primary   { @extend %btnPrimaryBase; }
-  @if $color == secondary { @extend %btnSecondaryBase; }
-  @if $color == success   { @extend %btnSuccessBase; }
-  @if $color == alert     { @extend %btnAlertBase; }
-
-  // $size options, can do $size:false to omit these styles.
-  // Available option: "tiny, small, medium, large";
-  @if      $size == tiny   { @extend %btnTinyStyles; }
-  @else if $size == small  { @extend %btnSmallStyles; }
-  @else if $size == medium { @extend %btnMediumStyles; }
-  @else if $size == large  { @extend %btnLargeStyles; }
-
-  // "$size:expand" styles for full-width buttons
-  @if $expand { @extend %btnExtendStyle; }
-
-  // $radii options. This is automatically set to false for default square corner buttons.
-  @if      $radius == round { @extend %btnRadiusRound; }
-  @else if $radius == pill  { @extend %btnRadiusPill; }
-
-  // $align options for text alignment in buttons, setting this to "false" omits the styles.
-  // Available options: "center, left, right";
-  @if      $align == center { @extend %btnTextCenter; }
-  @else if $align == left   { @extend %btnTextLeft; }
-  @else if $align == right  { @extend %btnTextRight; }
-
-  // $disabled options, "false" by default
-  @if $disabled { @extend %btnDisabledBase; }
-
-  // $display options, set to "inline-block" by default. Can set to "false" to omit.
-  // Available options: "inline-block, block";
-  @if $display == inline-block { @extend %inlineBlock; }
-  @else if $display == block { @extend %block; }
-
+// We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
+@mixin btn($pad:$btn-med, $bg:$primary-color, $radius:false, $edge:true, $full-width:false, $disabled:false) {
+  @include btn-base;
+  @include btn-size($pad, $full-width);
+  @include btn-style($bg, $radius, $disabled, $edge);
 }
 
 
 /* Buttons */
-.button { @extend %btnBaseStyles; @extend %btnMediumStyles; @extend %btnPrimaryBase; @extend %inlineBlock; @extend %btnTextCenter;
+.button { @include btn-base; @include btn-size; @include btn-style;
 
   // Button Sizes
-  &.large  { @extend %btnLargeStyles; }
-  &.medium { @extend %btnMediumStyles; }
-  &.small  { @extend %btnSmallStyles; }
-  &.tiny   { @extend %btnTinyStyles; }
-  &.expand { @extend %btnExtendStyle; }
+  &.large  { @include btn-size($pad:$btn-lrg); }
+  &.medium { @include btn-size; }
+  &.small  { @include btn-size($pad:$btn-sml); }
+  &.tiny   { @include btn-size($pad:$btn-tny); }
+  &.expand { @include btn-size($pad:false, $full-width: true); }
 
   // Button Radii
-  &.radius { @extend %btnRadiusRound; }
-  &.round  { @extend %btnRadiusPill; }
+  &.radius { @include btn-style($bg:false, $radius:true, $edge:false); }
+  &.round  { @include btn-style($bg:false, $radius:1000px, $edge:false); }
 
   // Button Layout
-  &.left-align  { @extend %btnTextLeft; }
-  &.right-align { @extend %btnTextRight; }
+  &.left-align  { text-align: left; text-indent: 12px; }
+  &.right-align { text-align: right; padding-right: 12px; }
 
   // Button Styles
-  &.secondary { @extend %btnSecondaryBase; }
-  &.success   { @extend %btnSuccessBase; }
-  &.alert     { @extend %btnAlertBase; }
+  &.secondary { @include btn-style($bg:$secondary-color, $edge:false); }
+  &.success   { @include btn-style($bg:$success-color, $edge:false); }
+  &.alert     { @include btn-style($bg:$alert-color, $edge:false); }
 
   // Disabled Buttons
-  &.disabled, &[disabled] { @extend %btnDisabledBase; @extend %btnPrimaryDisabled;
-    &.secondary { @extend %btnSecondaryDisabled; }
-    &.success { @extend %btnSuccessDisabled; }
-    &.alert { @extend %btnAlertDisabled; }
+  &.disabled, &[disabled] { @include btn-style($bg:$primary-color, $edge:false, $disabled:true);
+    &.secondary { @include btn-style($bg:$secondary-color, $edge:false, $disabled:true); }
+    &.success { @include btn-style($bg:$success-color, $edge:false, $disabled:true); }
+    &.alert { @include btn-style($bg:$alert-color, $edge:false, $disabled:true); }
   }
 
 }
-
-/* Buttons with Dropdowns ---------------------- */
-
-  .button.dropdown { position: relative; padding-#{$defaultOpposite}: (($btnBase + 12) * 2);
-
-    /* Sizes */
-    &.large { padding-#{$defaultOpposite}: ($btnLargeBase * 2) * 2; }
-    &.small { padding-#{$defaultOpposite}: ($btnSmallBase * 2) * 2; }
-    &.tiny { padding-#{$defaultOpposite}: ($btnTinyBase * 2) * 2; }
-
-    /* Triangles */
-    &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; #{$defaultOpposite}: $btnBase * 2; margin-top: -2px; }
-    &.large:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; #{$defaultOpposite}: $btnLargeBase * 2; }
-    &.small:after { @include cssTriangle(5px, #fff, top); margin-top: -2px; #{$defaultOpposite}: $btnSmallBase * 2; }
-    &.tiny:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; #{$defaultOpposite}: $btnTinyBase * 2; }
-
-    /* Flyout List */
-    &>ul { @include box-sizing(content-box); display: none; position: absolute; #{$defaultFloat}: -1px; background: #fff; background: rgba(#fff,0.95); list-style: none; margin: 0; padding: 0; border: 1px solid darken($white, 20%); border-top: none; min-width: 100%; z-index: 40;
-
-      li { width: 100%; cursor: pointer; padding: 0; min-height: 18px; line-height: 18px; margin: 0; white-space: nowrap; list-style: none;
-        a, button { display: block; color: #555; font-size: ms(0) - 1; font-weight: $bodyFontWeight; padding: 6px 14px; text-align: $defaultFloat; }
-        button { width: 100%; border: inherit; background: inherit; font-family: inherit; margin: inherit; -webkit-font-smoothing: $fontSmoothing; }
-        &:hover, &:focus { background-color: lighten($mainColor, 45%); color: #222; }
-        &.divider { min-height: 0; padding: 0; height: 1px; margin: 4px 0; background: darken($white, 7%); }
-      }
-    }
-
-    &.up>ul { border-top: 1px solid darken($white, 20%); border-bottom: none; }
-
-    ul.no-hover.show-dropdown { display: block !important; }
-    &:hover {
-      &>ul.no-hover {
-        display: none;
-      }
-    }
-
-    /* Split Dropdown Buttons */
-    &.split { padding: 0; position: relative;
-
-      &:after { display: none; }
-      &:hover, &:focus { background-color: $mainColor; }
-      &.alert:hover, &.alert:focus { background-color: $alertColor; }
-      &.success:hover, &.success:focus { background-color: $successColor; }
-      &.secondary:hover, &.secondary:focus { background-color: $secondaryColor; }
-
-      /* Sizes */
-      &>a { color: $white; display: block; padding: $btnBase (($btnBase * 2.5) * 2) ($btnBase + 1) ($btnBase * 2); padding-#{$defaultFloat}: $btnBase * 2; padding-#{$defaultOpposite}: ($btnBase * 2.5) * 2; @include single-transition(background-color, .15s, ease-in-out);
-        &:hover, &:focus { background-color: darken($mainColor, 10%); @include box-shadow(0 1px 0 $shinyEdge inset); }
-      }
-      &.large>a { padding: $btnLargeBase (($btnLargeBase * 2.5) * 2) ($btnLargeBase + 1) ($btnLargeBase * 2); padding-#{$defaultFloat}: $btnLargeBase * 2; padding-#{$defaultOpposite}: ($btnLargeBase * 2.5) * 2; }
-      &.small>a { padding: $btnSmallBase (($btnSmallBase * 2.5) * 2) ($btnSmallBase + 1) ($btnSmallBase * 2); padding-#{$defaultFloat}: $btnSmallBase * 2; padding-#{$defaultOpposite}: ($btnSmallBase * 2.5) * 2; }
-      &.tiny>a { padding: $btnTinyBase (($btnTinyBase * 2.5) * 2) ($btnTinyBase + 1) ($btnTinyBase * 2); padding-#{$defaultFloat}: $btnTinyBase * 2; padding-#{$defaultOpposite}: ($btnTinyBase * 2.5) * 2; }
-
-      /* Triangle Spans */
-      &>span { background-color: $mainColor; position: absolute; #{$defaultOpposite}: 0; top: 0; height: 100%; width: $btnBase * 3; border-#{$defaultFloat}: 1px solid darken($mainColor, 15%); @include box-shadow(1px 1px 0 $shinyEdge inset); @include single-transition(background-color, .15s, ease-in-out);
-        &:hover, &:focus { background-color: darken($mainColor, 10%); }
-        &:after { @include cssTriangle(6px, #fff, top); position: absolute; top: 50%; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -6px; margin-top: -2px; }
-      }
-      &.secondary>span:after { @include cssTriangle(6px, darken(($secondaryColor), 80%), top); }
-
-      &.large span { width: $btnLargeBase * 3; }
-      &.small span { width: $btnSmallBase * 3; }
-      &.tiny span { width: $btnTinyBase * 3; }
-
-      &.large span:after { @include cssTriangle(7px, #fff, top); margin-top: -3px; margin-#{$defaultFloat}: -7px; }
-      &.small span:after { @include cssTriangle(4px, #fff, top); margin-top: -1px; margin-#{$defaultFloat}: -4px; }
-      &.tiny span:after { @include cssTriangle(3px, #fff, top); margin-top: -1px; margin-#{$defaultFloat}: -3px; }
-
-      /* Colors */
-      &.alert>span { background-color: $alertColor; border-#{$defaultFloat}-color: darken($alertColor, 15%); }
-      &.success>span { background-color: $successColor; border-#{$defaultFloat}-color: darken($successColor, 15%); }
-      &.secondary>span { background-color: $secondaryColor; border-#{$defaultFloat}-color: darken($secondaryColor, 15%); }
-      &.secondary>a { color: darken(($secondaryColor), 80%); }
-
-      &.alert>a:hover, &.alert>span:hover, &.alert>a:focus, &.alert>span:focus { background-color: darken($alertColor, 10%); }
-      &.success>a:hover, &.success>span:hover, &.success>a:focus, &.success>span:focus { background-color: darken($successColor, 10%); }
-      &.secondary>a:hover, &.secondary>span:hover, &.secondary>a:focus, &.secondary>span:focus { background-color: darken($secondaryColor, 10%); }
-    }
-  }
-
-  /* Button Groups ---------------------- */
-
-  ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; @include clearfix();
-
-    li { padding: 0; margin: 0 0 0 -1px; float: $defaultFloat;
-      &:first-child { margin-#{$defaultFloat}: 0; }
-    }
-
-    &.radius li {
-      .button, .button.radius, .button-rounded { @include border-radius(0px); }
-      &:first-child {
-        .button, .button.radius { @include border-corner-radius(top, $defaultFloat, $btnRadius); @include border-corner-radius(bottom, $defaultFloat, $btnRadius); }
-        .button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
-      }
-      &:last-child {
-        .button, .button.radius { @include border-corner-radius(top, $defaultOpposite, $btnRadius); @include border-corner-radius(bottom, $defaultOpposite, $btnRadius); }
-        .button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
-      }
-    }
-
-    &.even {
-      .button { width: 100%; }
-      &.two-up li { width: 50%; }
-      &.three-up li { width: 33.3%; }
-      &.three-up li:first-child { width: 33.4%; }
-      &.four-up li { width: 25%; }
-      &.five-up li { width: 20%; }
-    }
-  }
-
-  div.button-bar { overflow: hidden;
-    ul.button-group { float: $defaultFloat; margin-#{$defaultOpposite}: 8px; }
-    ul.button-group:last-child { margin-#{$defaultFloat}: 0; }
-  }

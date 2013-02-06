@@ -17,7 +17,6 @@
       position: relative;
       border-#{$defaultFloat}: 1px solid $secondaryColor;
       border-#{$defaultOpposite}: 1px solid $secondaryColor;
-      @include single-transition(0.15s, background, linear);
 
       h1,
       h2,

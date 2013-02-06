@@ -33,45 +33,6 @@ $default-border-radius: 5px;
   }
 }
 
-// Transition Property
-@mixin transition-property($property-1: $default-transition-property, $property-2: false, $property-3: false, $property-4: false, $property-5: false, $property-6: false, $property-7: false, $property-8: false, $property-9: false, $property-10: false) {
-  @if type-of($property-1) == string {
-    $property-1: unquote($property-1);
-  }
-  $properties: compact($property-1, $property-2, $property-3, $property-4, $property-5, $property-6, $property-7, $property-8, $property-9, $property-10);
-  @if $experimental-support-for-webkit {
-    -webkit-transition-property: prefixed-for-transition(-webkit, $properties);
-  }
-  @if $experimental-support-for-mozilla {
-    -moz-transition-property: prefixed-for-transition(-moz, $properties);
-  }
-  @if $experimental-support-for-opera {
-    -o-transition-property: prefixed-for-transition(-o, $properties);
-  }
-  transition-property: $properties;
-}
-
-// Transition Duration
-@mixin transition-duration($duration-1: $default-transition-duration, $duration-2: false, $duration-3: false, $duration-4: false, $duration-5: false, $duration-6: false, $duration-7: false, $duration-8: false, $duration-9: false, $duration-10: false) {
-  @if type-of($duration-1) == string {
-    $duration-1: unquote($duration-1);
-  }
-  $durations: compact($duration-1, $duration-2, $duration-3, $duration-4, $duration-5, $duration-6, $duration-7, $duration-8, $duration-9, $duration-10);
-  @include experimental(transition-duration, $durations, -moz, -webkit, -o, not -ms, not -khtml, official);
-}
-
-// Transition Timing Function
-@mixin transition-timing-function($function-1: $default-transition-function, $function-2: false, $function-3: false, $function-4: false, $function-5: false, $function-6: false, $function-7: false, $function-8: false, $function-9: false, $function-10: false) {
-  $function-1: unquote($function-1);
-  $functions: compact($function-1, $function-2, $function-3, $function-4, $function-5, $function-6, $function-7, $function-8, $function-9, $function-10);
-  @include experimental(transition-timing-function, $functions, -moz, -webkit, -o, not -ms, not -khtml, official);
-}
-
-// Single Transition
-@mixin single-transition($property: $default-transition-property, $duration: $default-transition-duration, $function: $default-transition-function, $delay: $default-transition-delay) {
-  @include transition(compact($property $duration $function $delay));
-}
-
 // Box Sizing
 @mixin box-sizing($bs) {
   $bs: unquote($bs);

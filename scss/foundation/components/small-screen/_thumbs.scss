@@ -5,8 +5,6 @@
     border: solid 4px #fff;
     @include box-shadow(0 0 0 1px rgba(#000,.2));
     @include border-radius($thumbRadius);
-    @include transition-property(box-shadow);
-    @include transition-duration(300ms);
   }
 
   &:hover,
