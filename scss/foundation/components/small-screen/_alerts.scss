@@ -1,45 +1,106 @@
-// Alerts
-.alert-box {
+//
+// Alert Variables
+//
+
+// We use this to control alert padding.
+$alert-padding: 6px 7px 7px !default;
+
+// We use these to control text style.
+$alert-txt-weight: bold !default;
+$alert-txt-size: ms(0) !default;
+$alert-txt-color: #fff !default;
+$alert-txt-color-alt: darken($secondary-color, 60%) !default;
+
+// We use this for close hover effect.
+$alert-function-factor: 10% !default;
+
+// We use these to control border styles.
+$alert-brdr-style: solid !default;
+$alert-brdr-width: 1px !default;
+$alert-brdr-color: darken($primary-color, $alert-function-factor) !default;
+$alert-btm-marg: 12px !default;
+
+// We use these to style the close buttons
+$alert-close-color: #333 !default;
+$alert-close-pos-side: 4px !default;
+$alert-close-pos-top: -1px !default;
+$alert-close-txt-size: ms(1) !default;
+$alert-close-opacity: 0.2 !default;
+$alert-close-opacity-hover: 0.4 !default;
+$alert-close-padding: 4px !default;
+
+// We use this to control border-radius, it defaults to $btn-rad (3px)
+$alert-rad: $btn-rad !default;
+
+//
+// Alert Mixins
+//
+
+// We use this mixin to create a default alert base.
+@mixin alert-base {
+  border-style: $alert-brdr-style;
+  border-width: $alert-brdr-width;
   display: block;
-  padding: 6px 7px 7px;
-  font-weight: bold;
-  font-size: ms(0);
-  color: $white;
-  background-color: $mainColor;
-  border: 1px solid rgba(#000,.1);
-  margin-bottom: 12px;
-  @include border-radius(3px);
-  text-shadow: 0 -1px rgba(#000,.3);
+  font-weight: $alert-txt-weight;
+  margin-bottom: $alert-btm-marg;
   position: relative;
+}
 
-  &.success {
-    background-color: $successColor;
-    color: #fff;
-    text-shadow: 0 -1px rgba(#000,.3);
+// We use this mixin to add alert size styles
+@mixin alert-size($pad:$alert-padding, $txt-size:$alert-txt-size) {
+  @if $pad { padding: $pad; }
+  @if $txt-size { font-size: $txt-size; }
+}
+
+// We use this mixin to add alert styles
+@mixin alert-style($bg:$primary-color, $radius:false, $txt-color:$alert-txt-color) {
+
+  // We control which background color and border come through.
+  @if $bg {
+    background-color: $bg;
+    border-color: darken($bg, $alert-function-factor);
   }
 
-  &.alert {
-    background-color: $alertColor;
-    color: #fff;
-    text-shadow: 0 -1px rgba(#000,.3);
-  }
+  // We use this alert text color for secondary alerts.
+  @if $bg == $secondary-color { color: $alert-txt-color-alt; }
+  @else { color: $alert-txt-color; }
 
-  &.secondary {
-    background-color: $secondaryColor;
-    color: darken($secondaryColor, 60%);
-    text-shadow: 0 1px rgba(#fff,.3);
-  }
+  // We use this to control the radius on alerts.
+  @if $radius == true { @include border-radius($alert-rad); }
+  @else if $radius { @include border-radius($radius); }
+}
 
-  .close {
-    color: #333;
-    position: absolute;
-    #{$defaultOpposite}: 4px;
-    top: -1px;
-    font-size: ms(1);
-    opacity: 0.2;
-    padding: 4px;
+// We use this to quickly create alerts with a single mixin.
+@mixin alert($pad:$alert-padding, $txt-size:$alert-txt-size, $bg:$primary-color, $radius:false, $txt-color:$alert-txt-color) {
+  @include alert-base;
+  @include alert-size($pad, $txt-size);
+  @include alert-style($bg, $radius, $txt-color);
+}
 
-    &:hover,
-    &:focus { opacity: 0.4; }
-  }
+// We use this to add close buttons to alerts
+@mixin alert-close {
+  color: $alert-close-color;
+  position: absolute;
+  #{$defaultOpposite}: $alert-close-pos-side;
+  top: $alert-close-pos-top;
+  font-size: $alert-close-txt-size;
+  opacity: $alert-close-opacity;
+  padding: $alert-close-padding;
+
+  &:hover,
+  &:focus { opacity: $alert-close-opacity-hover; }
+}
+
+/* Alerts */
+.alert-box {
+  @include alert;
+  @include inset-shadow($active:false);
+
+  &.success { @include alert-style($bg:$success-color); }
+
+  &.alert { @include alert-style($bg:$alert-color); }
+
+  &.secondary { @include alert-style($bg:$secondary-color); }
+
+  .close { @include alert-close; }
 }

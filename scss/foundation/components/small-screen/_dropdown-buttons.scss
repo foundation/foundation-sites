@@ -128,7 +128,7 @@
       &:hover,
       &:focus {
         background-color: darken($primary-color, 10%);
-        @include box-shadow(0 1px 0 $btn-edge-shine inset);
+        // @include box-shadow(0 1px 0 $btn-edge-shine inset);
       }
     }
 
@@ -157,7 +157,7 @@
       height: 100%;
       width: $btn-med * 3;
       border-#{$defaultFloat}: 1px solid darken($primary-color, 15%);
-      @include box-shadow(1px 1px 0 $btn-edge-shine inset);
+      // @include box-shadow(1px 1px 0 $btn-edge-shine inset);
 
       &:hover,
       &:focus { background-color: darken($primary-color, 10%); }

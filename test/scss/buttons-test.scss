@@ -8,7 +8,7 @@
 .cta {
   @include btn-base;
   @include btn-size($pad:$btn-lrg, $full-width:true);
-  @include btn-style($bg:$primary-color, $edge: false);
+  @include btn-style($bg:$primary-color);
 }
 
 #id {

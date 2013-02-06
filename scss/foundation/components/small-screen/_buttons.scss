@@ -31,8 +31,6 @@ $btn-trans-delay: 0 !default;
 $btn-brdr-width: 1px !default;
 $btn-brdr-style: solid !default;
 $btn-brdr-color: darken($primary-color, $btn-function-factor) !default;
-$btn-edge-shine: 0 1px 0 rgba(#fff, .5) inset !default;
-$btn-edge-shadow: 0 1px 0 rgba(#000, .2) inset !default;
 
 // We use this to set the default radius used throughout the core.
 $btn-rad: 3px !default;
@@ -44,7 +42,7 @@ $btn-disabled-opacity: 0.6 !default;
 // Button Mixins
 //
 
-// We use this mixin to create a default button.
+// We use this mixin to create a default button base.
 @mixin btn-base {
   border-style: $btn-brdr-style;
   border-width: $btn-brdr-width;
@@ -91,7 +89,7 @@ $btn-disabled-opacity: 0.6 !default;
 }
 
 // We use this mixin to add button color styles
-@mixin btn-style($bg:$primary-color, $radius:false, $disabled:false, $edge:true) {
+@mixin btn-style($bg:$primary-color, $radius:false, $disabled:false) {
 
   // We control which background styles are used,
   // these can be removed by setting $bg:false
@@ -129,23 +127,22 @@ $btn-disabled-opacity: 0.6 !default;
   @if $radius == true { @include border-radius($btn-rad); }
   @else if $radius { @include border-radius($radius); }
 
-  // We can control whether or not we have inset button shadows.
-  @if $edge == true { @include box-shadow($btn-edge-shine);
-    &:active { @include box-shadow($btn-edge-shadow); }
-  }
-
 }
 
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
-@mixin btn($pad:$btn-med, $bg:$primary-color, $radius:false, $edge:true, $full-width:false, $disabled:false) {
+@mixin btn($pad:$btn-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false) {
   @include btn-base;
   @include btn-size($pad, $full-width);
-  @include btn-style($bg, $radius, $disabled, $edge);
+  @include btn-style($bg, $radius, $disabled);
 }
 
 
 /* Buttons */
-.button { @include btn-base; @include btn-size; @include btn-style;
+.button {
+  @include btn-base;
+  @include btn-size;
+  @include btn-style;
+  @include inset-shadow();
 
   // Button Sizes
   &.large  { @include btn-size($pad:$btn-lrg); }
@@ -155,23 +152,23 @@ $btn-disabled-opacity: 0.6 !default;
   &.expand { @include btn-size($pad:false, $full-width: true); }
 
   // Button Radii
-  &.radius { @include btn-style($bg:false, $radius:true, $edge:false); }
-  &.round  { @include btn-style($bg:false, $radius:1000px, $edge:false); }
+  &.radius { @include btn-style($bg:false, $radius:true); }
+  &.round  { @include btn-style($bg:false, $radius:1000px); }
 
   // Button Layout
   &.left-align  { text-align: left; text-indent: 12px; }
   &.right-align { text-align: right; padding-right: 12px; }
 
   // Button Styles
-  &.secondary { @include btn-style($bg:$secondary-color, $edge:false); }
-  &.success   { @include btn-style($bg:$success-color, $edge:false); }
-  &.alert     { @include btn-style($bg:$alert-color, $edge:false); }
+  &.secondary { @include btn-style($bg:$secondary-color); }
+  &.success   { @include btn-style($bg:$success-color); }
+  &.alert     { @include btn-style($bg:$alert-color); }
 
   // Disabled Buttons
-  &.disabled, &[disabled] { @include btn-style($bg:$primary-color, $edge:false, $disabled:true);
-    &.secondary { @include btn-style($bg:$secondary-color, $edge:false, $disabled:true); }
-    &.success { @include btn-style($bg:$success-color, $edge:false, $disabled:true); }
-    &.alert { @include btn-style($bg:$alert-color, $edge:false, $disabled:true); }
+  &.disabled, &[disabled] { @include btn-style($bg:$primary-color, $disabled:true);
+    &.secondary { @include btn-style($bg:$secondary-color, $disabled:true); }
+    &.success { @include btn-style($bg:$success-color, $disabled:true); }
+    &.alert { @include btn-style($bg:$alert-color, $disabled:true); }
   }
 
 }
