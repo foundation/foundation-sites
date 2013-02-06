@@ -15,9 +15,9 @@
   &>:last-child { margin-bottom: 0; }
 
   &.callout {
-    background: $mainColor;
+    background: $primary-color;
     color: #fff;
-    border-color: darken($mainColor, 10%);
+    border-color: darken($primary-color, 10%);
     @include box-shadow(inset 0px 1px 0px rgba(255,255,255,0.5));
 
     a { color: #fff; }
@@ -25,14 +25,14 @@
     .button {
       background: $white;
       border: none;
-      color: $mainColor;
-      @include text-shadow(none);
+      color: $primary-color;
+      text-shadow: none;
 
       &:hover,
       &:focus { background: rgba(255,255,255,0.8); }
     }
   }
 
-  &.radius { @include border-radius($btnRadius); }
+  &.radius { @include border-radius($btn-rad); }
 
 }

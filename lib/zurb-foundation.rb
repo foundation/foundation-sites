@@ -1,6 +1,6 @@
 root = File.join(File.dirname(__FILE__), "..")
 require "foundation/version"
-require "compass"
+# require "compass"
 require "modular-scale"
 
 Compass::Frameworks.register("foundation",

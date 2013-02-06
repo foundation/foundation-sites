@@ -13,11 +13,11 @@
   color: #fff;
   background: $mainColor;
 
-  &.radius { @include border-radius($btnRadius); }
+  &.radius { @include border-radius($btn-rad); }
   &.round { padding: 1px 7px 2px; @include border-radius(1000px); }
 
-  &.alert     { background-color: $alertColor; }
-  &.success   { background-color: $successColor; }
-  &.secondary   { background-color: $secondaryColor; color: darken($secondaryColor, 60%); }
+  &.alert     { background-color: $alert-color; }
+  &.success   { background-color: $success-color; }
+  &.secondary   { background-color: $secondary-color; color: darken($secondary-color, 60%); }
 
 }
