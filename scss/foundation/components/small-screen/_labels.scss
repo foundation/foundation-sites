@@ -1,23 +1,66 @@
-// Labels
-.label {
-  padding: 1px 4px 2px;
-  font-size: ms(0) - 2;
-  font-weight: bold;
+//
+// Label Variables
+//
+$lbl-pad: 1px 4px 2px !default;
+$lbl-txt-size: ms(0, 14px) !default;
+$lbl-txt-weight: bold !default;
+$lbl-txt-color: #fff !default;
+$lbl-txt-color-alt: darken($secondary-color, 60%) !default;
+
+//
+// Label Mixins
+//
+
+// We use this mixin to create a default label base.
+@mixin label-base {
+  font-weight: $lbl-txt-weight;
   text-align: center;
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
   display: inline;
   position: relative;
-  bottom: 1px;
-  color: #fff;
-  background: $mainColor;
+}
 
-  &.radius { @include border-radius($btn-rad); }
-  &.round { padding: 1px 7px 2px; @include border-radius(1000px); }
+// We use this mixin to add label size styles.
+@mixin label-size($pad:$lbl-pad, $txt-size:$lbl-txt-size) {
+  @if $pad { padding: $lbl-pad; }
+  @if $txt-size { font-size: $lbl-txt-size; }
+}
 
-  &.alert     { background-color: $alert-color; }
-  &.success   { background-color: $success-color; }
-  &.secondary   { background-color: $secondary-color; color: darken($secondary-color, 60%); }
+// We use this mixin to add label styles.
+@mixin label-style($bg:$primary-color, $radius:false, $txt-color:$lbl-txt-color) {
+
+  // We control which background color comes through
+  @if $bg { background: $bg;
+
+    // We use this alert text color for secondary labels.
+    @if $bg == $secondary-color { color: $lbl-txt-color-alt; }
+    @else { color: $lbl-txt-color; }
+  }
+
+  // We use this to control the radius on labels.
+  @if $radius == true { @include border-radius($alert-rad); }
+  @else if $radius { @include border-radius($radius); }
+
+}
+
+// We use this to add close buttons to alerts
+@mixin label($pad:$lbl-pad, $txt-size:$lbl-txt-size, $bg:$primary-color, $radius:false, $txt-color:$lbl-txt-color) {
+  @include label-base;
+  @include label-size($pad, $txt-size);
+  @include label-style($bg, $radius, $txt-color);
+}
+
+/* Labels */
+.label {
+  @include label;
+
+  &.radius { @include label-style($bg:false, $radius:true); }
+  &.round { @include label-style($radius:1000px); }
+
+  &.alert     { @include label-style($bg:$alert-color); }
+  &.success   { @include label-style($bg:$success-color); }
+  &.secondary { @include label-style($bg:$secondary-color); }
 
 }

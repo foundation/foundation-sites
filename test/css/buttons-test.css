@@ -2805,6 +2805,18 @@ ul[data-clearing] li.clearing-feature ~ li {
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 }
+.alert-box.radius {
+  color: white;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.alert-box.round {
+  color: white;
+  -webkit-border-radius: 1000px;
+  -moz-border-radius: 1000px;
+  border-radius: 1000px;
+}
 .alert-box.success {
   background-color: #5da423;
   border-color: #457a1a;
@@ -3101,9 +3113,8 @@ kbd {
   border-radius: 3px;
 }
 
+/* Labels */
 .label {
-  padding: 1px 4px 2px;
-  font-size: -1em;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
@@ -3111,9 +3122,10 @@ kbd {
   white-space: nowrap;
   display: inline;
   position: relative;
-  bottom: 1px;
-  color: #fff;
+  padding: 1px 4px 2px;
+  font-size: 14px;
   background: #2ba6cb;
+  color: white;
 }
 .label.radius {
   -webkit-border-radius: 3px;
@@ -3121,19 +3133,22 @@ kbd {
   border-radius: 3px;
 }
 .label.round {
-  padding: 1px 7px 2px;
+  background: #2ba6cb;
+  color: white;
   -webkit-border-radius: 1000px;
   -moz-border-radius: 1000px;
   border-radius: 1000px;
 }
 .label.alert {
-  background-color: #c60f13;
+  background: #c60f13;
+  color: white;
 }
 .label.success {
-  background-color: #5da423;
+  background: #5da423;
+  color: white;
 }
 .label.secondary {
-  background-color: #e9e9e9;
+  background: #e9e9e9;
   color: #505050;
 }
 
