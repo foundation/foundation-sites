@@ -2,23 +2,23 @@
 .breadcrumbs {
   display: block;
   background: lighten($secondaryColor, 5%);
-  padding: 6px 10px 7px;
+  padding: emCalc(6px) emCalc(10px) emCalc(7px);
   border: 1px solid $secondaryColor;
-  @include border-radius(2px);
+  @include border-radius($btn-rad);
   overflow: hidden;
   margin-#{$defaultFloat}: 0;
 
   li {
     margin: 0;
-    padding: 0 12px 0 0;
+    padding: 0 emCalc(12px) 0 0;
     float: $defaultFloat;
     list-style: none;
 
     a,
     span {
       text-transform: uppercase;
-      @include font-size(11);
-      padding-#{$defaultFloat}: 12px;
+      font-size: emCalc(11px);
+      padding-#{$defaultFloat}: emCalc(12px);
     }
 
     &:first-child a,

@@ -136,10 +136,10 @@
     /* NavBar --- */
     /*            */
     .touch .nav-bar li {
-      a { font-size: ms(0) - 1; }
+      a { font-size: emCalc(13px); }
       &.has-flyout {
         &>a.flyout-toggle { padding: ($navBarHeight / 2) !important; }
-        &>a { padding-#{$defaultOpposite}: ($navBarHeight - 4) !important; }
+        &>a { padding-#{$defaultOpposite}: ($navBarHeight - emCalc(4px)) !important; }
       }
     }
 
@@ -262,11 +262,11 @@
     button.button, input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
     /* Button Groups */
     .button-group {
-      button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + 1);
-        &.large  { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + 1); }
-        &.medium { padding: $btnBase ($btnBase * 2) ($btnBase + 1); }
-        &.small  { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + 1); }
-        &.tiny   { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + 1); }
+      button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px));
+        &.large  { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + emCalc(1px)); }
+        &.medium { padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px)); }
+        &.small  { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + emCalc(1px)); }
+        &.tiny   { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + emCalc(1px)); }
       }
       &.even button.button, &.even input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
     }
@@ -285,7 +285,7 @@
     .flyout { position: relative; width: 100% !important; top: auto; margin-#{$defaultOpposite}: -2px; border-width: 1px 1px 0 1px;
       &.right { float: none; right: auto; left: -1px; }
       &.small, &.large { width: 100% !important; }
-      p:last-child { margin-bottom: 18px; }
+      p:last-child { margin-bottom: emCalc(18px); }
     }
 
     /* Reveal --- */
@@ -295,13 +295,13 @@
     .reveal-modal.small,
     .reveal-modal.medium,
     .reveal-modal.large,
-    .reveal-modal.xlarge { width: 80%; top: 15px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -40%; padding: 20px; height: auto; }
+    .reveal-modal.xlarge { width: 80%; top: 15px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -40%; padding: emCalc(20px); height: auto; }
 
     /* Clearing --- */
     /*              */
     .clearing-container { margin: 0; }
-    .clearing-close { z-index: 99; font-size: ms(4); top: 0px; #{$defaultOpposite}: 5px; }
-    .clearing-caption { position: fixed; bottom: 0; #{$defaultFloat}: 0; padding: 10px !important; line-height: 1.3; }
+    .clearing-close { z-index: 99; font-size: emCalc(21px); top: 0px; #{$defaultOpposite}: 5px; }
+    .clearing-caption { position: fixed; bottom: 0; #{$defaultFloat}: 0; padding: emCalc(10px) !important; line-height: 1.3; }
     .clearing-main-right, .clearing-main-left { display: none; }
     .clearing-blackout.clearing-assembled {
       .visible-img, .clearing-container { height: 100%; }
@@ -315,18 +315,18 @@
 
     /* Tabs --- */
     /*          */
-    .tabs.mobile { width: auto; margin: 20px -20px 40px; border-bottom: solid 1px #ccc; height: auto; margin: 20px -15px 0px -15px;
+    .tabs.mobile { width: auto; border-bottom: solid 1px #ccc; height: auto; margin: emCalc(20px) emCalc(-15px) emCalc(0px) emCalc(-15px);
       dt, li, dd { float: none; height: auto; }
-      dd a, li a { font-size: ms(0) + 1; display: block; width: auto; height: auto; padding: 18px 20px; margin: 0; color: #555; line-height: 1; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
+      dd a, li a { font-size: emCalc(15px); display: block; width: auto; height: auto; padding: emCalc(18px) emCalc(20px); margin: 0; color: #555; line-height: 1; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
       dd a.active, li a.active { border: none; background: $mainColor; color: #fff; margin: 0; position: static; top: 0; height: auto; }
       dd:first-child a.active, li:first-child a.active { margin: 0; }
-      &+.tabs-content.contained { margin-#{$defaultFloat}:-15px; margin-#{$defaultOpposite}:-15px; }
-      .section-title { padding-#{$defaultFloat}: 20px !important; }
+      &+.tabs-content.contained { margin-#{$defaultFloat}:emCalc(-15px); margin-#{$defaultOpposite}:emCalc(-15px); }
+      .section-title { padding-#{$defaultFloat}: emCalc(20px) !important; }
     }
 
     .contained.mobile { margin-bottom: 0; }
-    .contained.tabs.mobile dd a, .contained.tabs.mobile li a { padding: 18px 20px; }
-    .tabs.mobile + ul.contained { margin-#{$defaultFloat}: -20px; margin-#{$defaultOpposite}: -20px; border-width: 0 0 1px 0; }
+    .contained.tabs.mobile dd a, .contained.tabs.mobile li a { padding: emCalc(18px) emCalc(20px); }
+    .tabs.mobile + ul.contained { margin-#{$defaultFloat}: emCalc(-20px); margin-#{$defaultOpposite}: emCalc(-20px); border-width: 0 0 1px 0; }
 
     /* UI Elements --- */
     /*                 */
@@ -334,7 +334,7 @@
     .tooltip {
       font-size: $tooltipFontSizeScreenSm;
       line-height: 1.4;
-      padding: 7px 10px 9px 10px;
+      padding: emCalc(7px) emCalc(10px) emCalc(9px) emCalc(10px);
       #{$defaultFloat}: 50% !important;
       max-width: 80% !important;
       margin-#{$defaultFloat}: -40%;
@@ -400,19 +400,19 @@
             &.moved { position: static;
               &>.dropdown { top: 0; visibility: visible;
                 li {
-                  label { margin-bottom: 6px; padding-top: 6px !important; font-size: ms(0) - 3; }
+                  label { margin-bottom: emCalc(6px); padding-top: emCalc(6px) !important; font-size: emCalc(11px); }
                   &:not(.title) { padding-bottom: 0;
-                    a { padding: 8px $topBarHeightMobile / 2; font-size: ms(0); }
+                    a { padding: emCalc(8px) $topBarHeightMobile / 2; font-size: emCalc(14px); }
                   }
                   a, label { padding: 0 $topBarHeight / 2; }
                   a:hover { background: lighten($topBarBgColor, 10%); display: block; }
-                  &.divider { border-bottom: solid 1px rgba(255,255,255,0.1); margin-top: 8px !important; margin-bottom: 8px !important; }
+                  &.divider { border-bottom: solid 1px rgba(255,255,255,0.1); margin-top: emCalc(8px) !important; margin-bottom: emCalc(8px) !important; }
                 }
               }
               .back.title { padding-bottom: 0;
                 a:before { position: absolute; top: 50%; #{$defaultFloat}: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, $defaultOpposite); }
                 h5 { margin: 0; padding-#{$defaultFloat}: $topBarDropToggleSize * 3; position: relative;
-                  a { background: transparent; padding-top: 8px; padding-bottom: 8px; font-size: ms(2); font-weight: $topBarTitleWeight; }
+                  a { background: transparent; padding-top: emCalc(8px); padding-bottom: emCalc(8px); font-size: emCalc(23px); font-weight: $topBarTitleWeight; }
                 }
               }
             }
@@ -450,7 +450,7 @@
         ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
-    .top-bar ul li.has-button { padding: 5px $topBarHeightMobile / 3; }
+    .top-bar ul li.has-button { padding: emCalc(5px) $topBarHeightMobile / 3; }
     .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
     .top-bar ul > li.has-button {
       a.button { margin: 0; }

@@ -60,9 +60,9 @@ $defaultOpposite: right !default; // Change this to 'left' for right-to-left lan
 $formSpacing: .75em !default;
 $labelFontWeight: 500 !default;
 $labelFontColor: lighten(#000, 30%) !default;
-$labelBtmMargin: 3px !default;
+$labelBtmMargin: emCalc(3px) !default;
 $inputFontColor: rgba(0,0,0,0.75) !default;
-$inputFontSize: 14px !default;
+$inputFontSize: emCalc(14px) !default;
 $inputBgColor: #fff !default;
 $inputFocusBgColor: darken(#fff, 2%) !default;
 $inputBorderColor: darken(#fff, 20%) !default;
@@ -82,7 +82,7 @@ $custSelectBgColor: #fff !default;
 $custSelectBorderColor: #ddd !default;
 $custSelectTriangleColor: #aaa !default;
 $custSelectTriangleColorOpen: #222 !default;
-$custSelectDropHeight: 200px !default;
+$custSelectDropHeight: emCalc(200px) !default;
 $custDropdownBgColor: #fff !default;
 $custDropdownBorderColor: darken(#fff, 20%) !default;
 $custDropdownFontColor: #555 !default;
@@ -92,42 +92,42 @@ $custFormDisabledBgColor: #ddd !default;
 
 // Tab Settings
 
-$tabHeight: 40px !default;
-$tabTermFontSize: 12px;
+$tabHeight: emCalc(40px) !default;
+$tabTermFontSize: emCalc(12px) !default;
 
 // Nav Bar Settings
 
-$navBarHeight: 40px !default;
-$navFlyoutBaseWidth: 250px !default;
+$navBarHeight: emCalc(40px) !default;
+$navFlyoutBaseWidth: emCalc(250px) !default;
 
 // Top Bar Settings
 
 $topBarBgColor: #222 !default;
-$topBarHeight: 45px !default;
-$topBarHeightMobile: 45px !default;
-$topBarBtmMargin: 30px !default;
+$topBarHeight: emCalc(45px) !default;
+$topBarHeightMobile: emCalc(45px) !default;
+$topBarBtmMargin: emCalc(30px) !default;
 $topBarTitleWeight: bold !default;
-$topBarTitleSize: 17px !default;
+$topBarTitleSize: emCalc(17px) !default;
 $topBarLinkColor: #fff !default;
 $topBarLinkWeight: bold !default;
-$topBarLinkSize: 13px !default;
+$topBarLinkSize: emCalc(13px) !default;
 $topBarDropBgColor: #222 !default;
 $topBarDropLinkColor: #fff !default;
 $topBarDropToggleSize: 5px !default;
 $topBarDropToggleColor: #fff !default;
 $topBarDropToggleAlpha: 0.5 !default;
 $topBarSearchWidth: 200px !default;
-$topBarBreakPoint: 940px !default; // Change to 9999px for always mobile layout
-$topBarNavToggleSize: 8px !default;
+$topBarBreakPoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
+$topBarNavToggleSize:emCalc(8px) !default;
 
 // UI Settings
 
 $thumbRadius: 3px !default;
-$progBarHeight: 25px !default;
+$progBarHeight: emCalc(25px) !default;
 $progBarBorderColor: darken(#fff, 20%) !default;
 $progBarBorderSize: 1px !default;
-$progBarPad: 2px !default;
-$linkListBottomMargin: 17px -22px !default;
+$progBarPad: emCalc(2px) !default;
+$linkListBottomMargin: emCalc(17px) emCalc(-22px )!default;
 $tableBorderRadius: 3px !default;
 
 // Tooltip Settings
@@ -139,13 +139,13 @@ $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
 $hasTipFontColorHover: $mainColor !default;
 $tooltipBackgroundColor: #000 !default;
 $tooltipBackgroundOpacity: 0.85 !default;
-$tooltipFontSize: 12px !default;
+$tooltipFontSize: emCalc(12px) !default;
 $tooltipFontWeight: bold !default;
 $tooltipFontColor: #fff !default;
-$tapToCloseFontSize: 10 !default;
+$tapToCloseFontSize: emCalc(10px) !default;
 $tapToCloseFontWeight: normal !default;
 $tapToCloseFontColor: #888 !default;
-$tooltipFontSizeScreenSm: 14 !default;
+$tooltipFontSizeScreenSm: emCalc(14px) !default;
 $tooltipBgOpacityScreenSm: 0.85 !default;
 $tooltipBorderRadius: 4px !default;
 
@@ -153,38 +153,38 @@ $tooltipBorderRadius: 4px !default;
 
 $priceTableBorder: solid 1px #ddd !default;
 $priceTitleBgColor: #ddd !default;
-$priceTitlePadding: 15px 20px !default;
+$priceTitlePadding: emCalc(15px) emCalc(20px) !default;
 $priceTitleAlign: center !default;
 $priceTitleColor: #333 !default;
 $priceTitleWeight: bold !default;
-$priceTitleSize: 16px !default;
+$priceTitleSize: emCalc(16px) !default;
 
 $priceMoneyBgColor: #eee !default;
-$priceMoneyPadding: 15px 20px !default;
+$priceMoneyPadding: emCalc(15px) emCalc(20px) !default;
 $priceMoneyAlign: center !default;
 $priceMoneyColor: #333 !default;
 $priceMoneyWeight: normal !default;
-$priceMoneySize: 20px !default;
+$priceMoneySize: emCalc(20px) !default;
 
 $priceBgColor: #fff !default;
 $priceDescColor: #777 !default;
-$priceDescPadding: 15px !default;
+$priceDescPadding: emCalc(15px) !default;
 $priceDescAlign: center !default;
-$priceDescFontSize: 12px !default;
+$priceDescFontSize: emCalc(12px) !default;
 $priceDescWeight: normal !default;
 $priceDescLineHeight: 1.4 !default;
 $priceDescBtmBorder: dotted 1px #ddd !default;
 
 $priceItemColor: #333 !default;
-$priceItemPadding: 15px !default;
+$priceItemPadding: emCalc(15px) !default;
 $priceItemAlign: center !default;
-$priceItemFontSize: 14px !default;
+$priceItemFontSize: emCalc(14px) !default;
 $priceItemWeight: normal !default;
 $priceItemBtmBorder: dotted 1px #ddd !default;
 
 $priceCtaBgColor: #f5f5f5 !default;
 $priceCtaAlign: center !default;
-$priceCtaPadding: 20px !default;
+$priceCtaPadding: emCalc(20px) !default;
 
 // Orbit Settings
 
@@ -198,7 +198,7 @@ $orbitHasThumbBorderWidth: 2px !default;
 $orbitHasThumbBorderStyle: solid !default;
 $orbitSlideNumBgColor: rgba(0,0,0,0.7) !default;
 $orbitSlideNumFontColor: #fff !default;
-$orbitSlideNumPadding: 5px !default;
+$orbitSlideNumPadding: emCalc(5px) !default;
 
 // Clearing Settings
 
@@ -227,9 +227,9 @@ $tipFontColor: #fff !default;
 $tipHeaderWeight: bold !default;
 $tipDefaultWidth: 300px !default;
 $tipBorderRadius: 4px !default;
-$tipPadding: 18px 20px 24px !default;
+$tipPadding: emCalc(18px) emCalc(20px) emCalc(24px) !default;
 $tipNubSize: 14px !default;
-$tipFontSize: 14px !default;
+$tipFontSize: emCalc(14px) !default;
 $tipTimerWidth: 50px !default;
 $tipTimerHeight: 3px !default;
 $tipTimerBorder: solid 1px #555 !default;
@@ -247,9 +247,9 @@ $complementaryWidth: 20% !default;
 // Modular Scale Settings
 
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
-$baseFontSize: 14px !default;
-$importantModNum:44px !default;
-$base-size: $baseFontSize $importantModNum;
+// $baseFontSize: 14px !default;
+// $importantModNum:44px !default;
+// $base-size: $baseFontSize $importantModNum;
 // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum

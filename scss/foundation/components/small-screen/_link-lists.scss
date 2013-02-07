@@ -9,7 +9,7 @@
   &>li {
     list-style: none;
     float: $defaultFloat;
-    margin-#{$defaultFloat}: 22px;
+    margin-#{$defaultFloat}: emCalc(22px);
     display: block;
 
     &>* { display: block; }

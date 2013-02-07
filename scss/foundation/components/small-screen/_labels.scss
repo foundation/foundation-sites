@@ -1,8 +1,8 @@
 //
 // Label Variables
 //
-$lbl-pad: 1px 4px 2px !default;
-$lbl-txt-size: ms(0, 14px) !default;
+$lbl-pad: emCalc(1px) emCalc(4px) emCalc(2px) !default;
+$lbl-txt-size: emCalc(14px) !default;
 $lbl-txt-weight: bold !default;
 $lbl-txt-color: #fff !default;
 $lbl-txt-color-alt: darken($secondary-color, 60%) !default;

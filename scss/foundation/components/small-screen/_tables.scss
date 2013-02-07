@@ -2,7 +2,7 @@
 table {
   background: #fff;
   @include border-radius($tableBorderRadius);
-  margin: 0 0 18px;
+  margin: 0 0 emCalc(18px);
   border: 1px solid #ddd;
 
   thead,
@@ -11,8 +11,8 @@ table {
     tr {
       th,
       td {
-        padding: 8px 10px 9px;
-        font-size: ms(0);
+        padding: emCalc(8px) emCalc(10px) emCalc(9px);
+        font-size: emCalc(14px);
         font-weight: bold;
         color: #222;
 
@@ -26,7 +26,7 @@ table {
 
       td {
         color: #333;
-        padding: 9px 10px;
+        padding: emCalc(9px) emCalc(10px);
         vertical-align: top;
         border: none;
       }
@@ -39,8 +39,8 @@ table {
   tr td,
   tfoot tr td {
     display: table-cell;
-    font-size: ms(0);
-    line-height: 18px;
+    font-size: emCalc(14px);
+    line-height: emCalc(18px);
     text-align: #{$defaultFloat};
   }
 }

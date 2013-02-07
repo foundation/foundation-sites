@@ -1,9 +1,9 @@
 // Standard Forms
 
-form { margin: 0 0 ($formSpacing * $ratio); }
+form { margin: 0 0 $formSpacing; }
 
 // Using forms within rows, we need to set some defaults
-.row form .row { margin: 0 (-($formSpacing / 2));
+.row form .row { margin: 0 -($formSpacing / 2);
 
   .column,
   .columns { padding: 0 ($formSpacing / 2); }
@@ -18,7 +18,7 @@ form { margin: 0 0 ($formSpacing * $ratio); }
 
 // Label Styles
 label {
-  font-size: ms(0);
+  font-size: .875em;
   color: $labelFontColor;
   cursor: pointer;
   display: block;
@@ -30,7 +30,7 @@ label {
     text-align: right;
   }
   &.inline {
-    line-height: (ms(0) + ($formSpacing * 1.5));
+    line-height: (emCalc(14px) + ($formSpacing * 1.5));
     margin: 0 0 $formSpacing 0;
   }
 }
@@ -45,8 +45,8 @@ label {
   width: 100%;
   padding-top: 0;
   padding-bottom: 0;
-  height: (ms(0) + ($formSpacing * 1.5));
-  line-height: (ms(0) + ($formSpacing * 1.5)) - 1;
+  height: (emCalc(14px) + ($formSpacing * 1.5));
+  line-height: (emCalc(14px) + ($formSpacing * 1.5)) - 1;
 
   // Adjust padding and alignment if pre/post element is a button
   &.button {
@@ -95,13 +95,13 @@ textarea {
   font-size: $inputFontSize;
   margin: 0 0 $formSpacing 0;
   padding: ($formSpacing / 2);
-  height: (ms(0) + ($formSpacing * 1.5));
+  height: (emCalc(14px) + ($formSpacing * 1.5));
   width: 100%;
   @include transition(all 0.15s linear);
 
   // Large size input fields
   &.oversize {
-    font-size: ms(1);
+    font-size: emCalc(17px);
     padding: (($formSpacing - 4) / 2) ($formSpacing / 2);
   }
 
@@ -125,16 +125,16 @@ select { width: 100%; }
 fieldset {
   border: solid 1px #ddd;
   @include border-radius($fieldsetBorderRadius);
-  padding: 12px 12px 0;
-  margin: 18px 0;
+  padding: emCalc(12px) emCalc(12px) 0;
+  margin: emCalc(18px) 0;
 
   // and legend styles
   legend {
     font-weight: bold;
     background: $white;
-    padding: 0 3px;
+    padding: 0 emCalc(3px);
     margin: 0;
-    margin-#{$defaultFloat}: -3px;
+    margin-#{$defaultFloat}: emCalc(-3px);
   }
 }
 
@@ -153,12 +153,12 @@ label.error { color: $alertColor; }
 .error small,
 small.error {
   display: block;
-  padding: 6px 4px;
+  padding: emCalc(6px) emCalc(4px);
   margin-top: -($formSpacing) - 1;
   margin-bottom: $formSpacing;
   background: $alertColor;
   color: #fff;
-  font-size: ms(0) - 2;
+  font-size: emCalc(12px);
   font-weight: bold;
   @include border-corner-radius(bottom, $defaultFloat, 2px);
   @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius);

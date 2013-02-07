@@ -3,11 +3,11 @@
 //
 
 // We use this to control alert padding.
-$alert-pad: 6px 7px 7px !default;
+$alert-pad: emCalc(6px) emCalc(7px) emCalc(7px) !default;
 
 // We use these to control text style.
 $alert-txt-weight: bold !default;
-$alert-txt-size: ms(0) !default;
+$alert-txt-size: 1em !default;
 $alert-txt-color: #fff !default;
 $alert-txt-color-alt: darken($secondary-color, 60%) !default;
 
@@ -18,7 +18,7 @@ $alert-function-factor: 10% !default;
 $alert-brdr-style: solid !default;
 $alert-brdr-width: 1px !default;
 $alert-brdr-color: darken($primary-color, $alert-function-factor) !default;
-$alert-btm-marg: 12px !default;
+$alert-btm-marg: emCalc(12px) !default;
 
 // We use these to style the close buttons
 $alert-close-color: #333 !default;

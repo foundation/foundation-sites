@@ -12,7 +12,7 @@
   overflow: hidden;
   margin-bottom: ms(1);
 
-  &.with-bullets { margin-bottom: 40px; }
+  &.with-bullets { margin-bottom: emCalc(40px); }
 
   .orbit-slide {
     max-width: 100%;
@@ -103,8 +103,8 @@
   z-index: 30;
   color: $orbitCaptionFontColor;
   text-align: center;
-  padding: 7px 0;
-  font-size: ms(0) - 1;
+  padding: emCalc(7px) 0;
+  font-size: emCalc(13px);
   position: absolute;
   #{$defaultOpposite}: 0;
   bottom: 0;
@@ -152,14 +152,14 @@
   position: absolute;
   z-index: 30;
   list-style: none;
-  bottom: -40px;
+  bottom: emCalc(-40px);
   #{$defaultFloat}: 50%;
-  margin-#{$defaultFloat}: -50px;
+  margin-#{$defaultFloat}: emCalc(-50px);
   padding: 0;
 
   li {
     float: $defaultFloat;
-    margin-#{$defaultFloat}: 5px;
+    margin-#{$defaultFloat}: emCalc(5px);
     cursor: pointer;
     color: $orbitBulletNavColor;
     text-indent: -9999px;
@@ -218,7 +218,7 @@
 
     .orbit-slide {
       position: static;
-      margin-bottom: 10px;
+      margin-bottom: emCalc(10px);
     }
   }
 }

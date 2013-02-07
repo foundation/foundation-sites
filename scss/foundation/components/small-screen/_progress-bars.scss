@@ -1,7 +1,7 @@
 // Progress Bar
 .progress {
   padding: $progBarPad;
-  margin-bottom: 10px;
+  margin-bottom: emCalc(10px);
   border: $progBarBorderSize solid $progBarBorderColor;
   height: $progBarHeight;
 
@@ -10,7 +10,7 @@
     background: $primary-color;
     height: 100%;
     display: block;
-    width:50%;
+    width: 50%;
   }
   &.secondary .meter { background: $secondary-color;}
   &.success .meter { background: $success-color;}

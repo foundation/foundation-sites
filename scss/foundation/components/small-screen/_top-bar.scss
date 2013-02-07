@@ -55,7 +55,7 @@
         }
       }
       img {
-        margin-top: -5px;
+        margin-top: emCalc(-5px);
         vertical-align: middle;
       }
     }
@@ -129,11 +129,11 @@
               float: $defaultFloat;
               font-size: ms(0) - 2;
               margin-top: -1px;
-              padding: 5px 12px 4px;
+              padding: emCalc(5px) emCalc(12px) emCalc(4px);
             }
           }
           input[type=search] {
-            font-size: 16px;
+            font-size: emCalc(16px);
             margin-bottom: 0;
           }
         }
@@ -176,13 +176,13 @@
             background: $topBarDropBgColor;
             line-height: 1;
             min-width: 100%;
-            padding-bottom: 5px;
+            padding-bottom: emCalc(5px);
             a {
               color: $topBarDropLinkColor;
               font-weight: normal;
               height: 100%;
               line-height: 1;
-              padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3;
+              padding: emCalc(5px) $topBarHeight / 3 + emCalc(2px) emCalc(5px) $topBarHeight / 3;
               white-space: nowrap;
               &:after { border: none; }
               &:hover, &:focus { background: lighten($topBarDropBgColor, 10%); }
@@ -190,7 +190,7 @@
 
             label {
               color: lighten($topBarDropBgColor, 30%);
-              font-size: ms(0) - 4;
+              font-size: emCalc(10px);
               font-weight: $topBarLinkWeight;
               margin: 0;
               padding-#{$defaultFloat}: $topBarHeight / 3;
@@ -199,12 +199,12 @@
             &.divider {
               border-top: solid 1px darken($topBarDropBgColor, 20%);
               @include box-shadow(0 1px 0 rgba(255,255,255,.10) inset);
-              height: 10px;
+              height: emCalc(10px);
               padding: 0;
               width: 100%;
             }
 
-            &:last-child { padding-bottom: 10px; }
+            &:last-child { padding-bottom: emCalc(10px); }
             &.active a { background: darken($topBarBgColor, 15%); }
           }
         }
@@ -215,8 +215,8 @@
             &:after {
               border: none;
               content:"\00bb";
-              #{$defaultOpposite}: 5px;
-              top: 6px;
+              #{$defaultOpposite}: emCalc(5px);
+              top: emCalc(6px);
             }
           }
           .dropdown {
@@ -263,8 +263,8 @@
 
 /* Firefox Fixes */
 @-moz-document url-prefix() {
-  .top-bar ul li .button.small { padding-bottom: 6px; }
-  .top-bar ul li.search form input[type=search] { font-size: 14px; height: 22px; padding: 3px; }
+  .top-bar ul li .button.small { padding-bottom: emCalc(6px); }
+  .top-bar ul li.search form input[type=search] { font-size: emCalc(14px); height: emCalc(22px); padding: emCalc(3px); }
 }
 
 /* IE8 Fixes */
@@ -279,14 +279,14 @@
 
   &.button {
     height: auto;
-    line-height: 30px;
-    margin-top: 7px;
+    line-height: emCalc(30px);
+    margin-top: emCalc(7px);
   }
   &:hover,
   &:focus { color: darken($topBarLinkColor, 20%); }
 
   img {
-    margin-top: -5px;
+    margin-top: emCalc(-5px);
     vertical-align: middle;
   }
   &.active {

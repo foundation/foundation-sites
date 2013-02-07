@@ -17,7 +17,7 @@
   [role="complementary"],
   [role="main"] {
     width: 100%;
-    padding: 0 15px;
+    padding: 0 emCalc(15px);
     display: block;
     position: relative;
     z-index: 1; @include transition(.25s all ease-in);
@@ -26,11 +26,11 @@
   .paneled [role="main"] { padding: 0; }
   .page-panel {
     width: 100%;
-    padding: 0 15px;
+    padding: 0 emCalc(15px);
     @include transition(.3s margin ease-in-out);
     background: #fff;
   }
-  #switchPanels { margin: 0 -15px; }
+  #switchPanels { margin: 0 emCalc(-15px); }
 
   .hide-extras [role="complementary"] { display: block; }
 
@@ -77,9 +77,9 @@
       width: $complementaryWidth;
       margin-#{$defaultFloat}: 0;
       float: $defaultFloat;
-      padding: 0 15px;
+      padding: 0 emCalc(15px);
     }
-    [role="main"] { width: $mainWidth; padding: 0 15px; }
+    [role="main"] { width: $mainWidth; padding: 0 emCalc(15px); }
 
     .paneled [role="main"] {
       width: 100%;

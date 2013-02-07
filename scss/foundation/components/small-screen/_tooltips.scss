@@ -22,7 +22,7 @@
   color: $tooltipFontColor;
   font-weight: $tooltipFontWeight;
   font-size: $tooltipFontSize;
-  padding: 5px;
+  padding: emCalc(5px);
   z-index: 999;
   @include border-radius($tooltipBorderRadius);
   line-height: normal;
@@ -35,19 +35,19 @@
     border-color: transparent transparent $tooltipBackgroundColor transparent;
     border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent;
     position: absolute;
-    top: -10px;
-    #{$defaultFloat}: 10px;
+    top: emCalc(-10px);
+    #{$defaultFloat}: emCalc(10px);
   }
   &.tip-override>.nub {
     border-color: transparent transparent $tooltipBackgroundColor transparent !important;
     border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent !important;
-    top: -10px !important;
+    top: emCalc(-10px) !important;
   }
   &.tip-top>.nub {
     border-color: $tooltipBackgroundColor transparent transparent transparent;
     border-color: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent transparent;
     top: auto;
-    bottom: -10px;
+    bottom: emCalc(-10px);
   }
 
   &.tip-left,
@@ -56,14 +56,14 @@
   &.tip-left>.nub {
     border-color: transparent transparent transparent $tooltipBackgroundColor;
     border-color: transparent transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity);
-    right: -10px;
+    right: emCalc(-10px);
     left: auto;
   }
   &.tip-right>.nub {
     border-color: transparent $tooltipBackgroundColor transparent transparent;
     border-color: transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent;
     right: auto;
-    left: -10px;
+    left: emCalc(-10px);
   }
 
   &.noradius { @include border-radius(0); }
@@ -76,7 +76,7 @@
 
 .tap-to-close {
   display: block;
-  @include font-size($tapToCloseFontSize);
+  font-size: $tapToCloseFontSize;
   color: $tapToCloseFontColor;
   font-weight: $tapToCloseFontWeight;
 }

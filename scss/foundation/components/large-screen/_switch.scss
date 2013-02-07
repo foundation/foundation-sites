@@ -1,12 +1,6 @@
 /* Styles for modern browsers */
 @media only screen {
 
-  /* Multiple State Switch
-	 */
-
-  /* Up-Down padding for the regular switch */
-  $regularBase: 10px;
-
   /* Class names for the multiple states */
   $switchStates: 3, 4, 5;
 
@@ -30,14 +24,14 @@
     /* Sizes */
     &.large label {
       padding: $btn-lrg 0;
-      font-size: ms(1);
+      font-size: emCalc(17px);
     }
     &.small label {
-    	font-size: ms(0) - 3;
+    	font-size: emCalc(12px);
       padding: $btn-sml 0;
     }
     &.tiny label {
-    	font-size: ms(0) - 4;
+    	font-size: emCalc(11px);
       padding: $btn-tny 0;
     }
 
@@ -51,7 +45,7 @@
       margin: 0;
       padding: $btn-med 0;
 
-      font-size: ms(0);
+      font-size: emCalc(14px);
       font-weight: bold;
       text-align: center;
     }

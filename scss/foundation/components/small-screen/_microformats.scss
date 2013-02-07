@@ -1,9 +1,9 @@
 // Microformats
 .vcard {
   display: inline-block;
-  margin: 0 0 12px 0;
+  margin: 0 0 emCalc(12px) 0;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: emCalc(10px);
 
   li {
     margin: 0;
@@ -11,7 +11,7 @@
   }
   .fn {
     font-weight: bold;
-    font-size: ms(0) + 1;
+    font-size: emCalc(15px);
   }
 
 }
@@ -24,6 +24,6 @@
     text-decoration: none;
     font-weight: bold;
     border: none;
-    padding: 0 1px;
+    padding: 0 emCalc(1px);
   }
 }

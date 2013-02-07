@@ -4,17 +4,17 @@ dl.sub-nav {
   display: block;
   width: auto;
   overflow: hidden;
-  margin: -4px 0 18px;
+  margin: emCalc(-4px) 0 emCalc(18px);
   margin-#{$defaultOpposite}: 0;
-  margin-#{$defaultFloat}: -9px;
-  padding-top: 4px;
+  margin-#{$defaultFloat}: emCalc(-9px);
+  padding-top: emCalc(4px);
 
   dt,
   dd {
     float: $defaultFloat;
     display: inline;
-    margin-#{$defaultFloat}: 9px;
-    margin-bottom: 10px;
+    margin-#{$defaultFloat}: emCalc(9px);
+    margin-bottom: emCalc(10px);
   }
 
   dt {
@@ -31,7 +31,7 @@ dl.sub-nav {
     font-weight: bold;
     background: $mainColor;
     color: #fff;
-    padding: 3px 9px;
+    padding: emCalc(3px) emCalc(9px);
     cursor: default;
   }
 

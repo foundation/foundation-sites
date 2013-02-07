@@ -20,7 +20,6 @@ th,
 td {
   margin:0;
   padding:0;
-  font-size: ms(0);
   direction: $textDirection;
 }
 
@@ -43,17 +42,17 @@ a {
 p {
   font-family: inherit;
   font-weight: $bodyFontWeight;
-  font-size: ms(0);
+  font-size: emCalc(14px);
   line-height: 1.6;
-  margin-bottom: ms(1);
+  margin-bottom: emCalc(17px);
   &.lead {
-    font-size: ms(0) * 1.25;
+    font-size: emCalc(17.5px);
     line-height: 1.6;
-    margin-bottom: ms(1);
+    margin-bottom: emCalc(17px);
   }
 }
 aside p {
-  font-size: ms(0) - 1;
+  font-size: emCalc(13px);
   line-height: 1.35;
   font-style: italic;
 }
@@ -65,8 +64,8 @@ h1, h2, h3, h4, h5, h6 {
   color: $headerFontColor;
   text-rendering: optimizeLegibility;
   line-height: 1.1;
-  margin-bottom: ms(0);
-  margin-top: ms(0);
+  margin-bottom: emCalc(17px);
+  margin-top: emCalc(17px);
 
   small {
     font-size: 60%;
@@ -75,18 +74,18 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1 { font-size: ms(5); }
-h2 { font-size: ms(4); }
-h3 { font-size: ms(3); }
-h4 { font-size: ms(2); }
-h5 { font-size: ms(1); }
-h6 { font-size: ms(0); }
+h1 { font-size: emCalc(44px); }
+h2 { font-size: emCalc(37px); }
+h3 { font-size: emCalc(27px); }
+h4 { font-size: emCalc(23px); }
+h5 { font-size: emCalc(17px); }
+h6 { font-size: emCalc(14px); }
 
 hr {
   border: solid #ddd;
   border-width: 1px 0 0;
   clear: both;
-  margin: 22px 0 21px;
+  margin: emCalc(22px) 0 emCalc(21px);
   height: 0;
 }
 
@@ -94,7 +93,7 @@ hr {
   line-height: 1.3;
   color: lighten($headerFontColor, 30%);
   font-weight: 300;
-  margin-bottom: ms(1);
+  margin-bottom: emCalc(17px);
 }
 
 em,
@@ -123,9 +122,9 @@ code {
 ul,
 ol,
 dl {
-  font-size: ms(0);
+  font-size: emCalc(14px);
   line-height: 1.6;
-  margin-bottom: ms(1);
+  margin-bottom: emCalc(17px);
   list-style-position: inside;
 }
 ul {
@@ -139,7 +138,7 @@ ul {
   &.square,
   &.circle,
   &.disc {
-    margin-#{$defaultFloat}: ms(1);
+    margin-#{$defaultFloat}: emCalc(17px);
 
     li ul { list-style: inherit; }
   }
@@ -148,14 +147,14 @@ ul {
   &.circle { list-style-type: circle; }
   &.disc { list-style-type: disc; }
   &.no-bullet { list-style: none; }
-  &.large li { line-height: 21px; }
+  &.large li { line-height: emCalc(21px); }
 }
 
-ol { margin-#{$defaultFloat}: 20px;
+ol { margin-#{$defaultFloat}: emCalc(20px);
   li {
     ul,
     ol {
-      margin-#{$defaultFloat}: 20px;
+      margin-#{$defaultFloat}: emCalc(20px);
       margin-bottom: 0;
     }
   }
@@ -163,12 +162,12 @@ ol { margin-#{$defaultFloat}: 20px;
 
 // Blockquotes
 blockquote {
-  margin: 0 0 ms(1);
-  padding: 9px 20px 0 19px;
+  margin: 0 0 emCalc(17px);
+  padding: emCalc(9px) emCalc(20px) 0 emCalc(19px);
   border-#{$defaultFloat}: 1px solid #ddd;
   cite {
     display: block;
-    font-size: ms(0) - 1;
+    font-size: emCalc(13px);
     color: lighten($headerFontColor, 20%);
     &:before {
       content: "\2014 \0020";
@@ -180,7 +179,7 @@ blockquote {
 }
 blockquote,
 blockquote p {
-  line-height: 1.5;
+  line-height: 1.6;
   color: lighten($headerFontColor, 30%);
 }
 
@@ -189,7 +188,7 @@ acronym {
   text-transform: uppercase;
   font-size: 90%;
   color: $headerFontColor;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px dotted #ddd;
   cursor: help;
 }
 abbr {

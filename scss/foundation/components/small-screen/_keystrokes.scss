@@ -2,8 +2,8 @@
 .keystroke,
 kbd {
   font-family: "Consolas", "Menlo", "Courier", monospace;
-  font-size: ms(0) - 1;
-  padding: 2px 4px 0px;
+  font-size: emCalc(13px);
+  padding: emCalc(2px) emCalc(4px) emCalc(0px);
   margin: 0;
   background: darken($white, 7%);
   border: solid 1px darken($white, 14%);

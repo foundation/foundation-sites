@@ -5,6 +5,9 @@
   @include box-sizing(border-box);
 }
 
+html,
+body { font-size: $emBase; }
+
 // Default body styles
 body {
   background: $white;
@@ -12,7 +15,6 @@ body {
   padding: 0;
   font-family: $bodyFontFamily;
   font-weight: $bodyFontWeight;
-  font-size: ms(0);
   font-style: $bodyFontStyle;
   line-height: 1;
   -webkit-font-smoothing: $fontSmoothing;

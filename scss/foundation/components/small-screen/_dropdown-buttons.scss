@@ -1,32 +1,32 @@
 // Buttons with Dropdowns
 .button.dropdown {
   position: relative;
-  padding-#{$defaultOpposite}: (($btn-med + 12) * 2);
+  padding-#{$defaultOpposite}: double($btn-med + emCalc(12px));
 
   // Sizes
-  &.large { padding-#{$defaultOpposite}: ($btn-lrg * 2) * 2; }
-  &.small { padding-#{$defaultOpposite}: ($btn-sml * 2) * 2; }
-  &.tiny { padding-#{$defaultOpposite}: ($btn-tny * 2) * 2; }
+  &.large { padding-#{$defaultOpposite}: double($btn-lrg) + double($btn-lrg); }
+  &.small { padding-#{$defaultOpposite}: double($btn-sml) + double($btn-sml); }
+  &.tiny { padding-#{$defaultOpposite}: double($btn-tny) + double($btn-tny); }
 
   // Triangles
   &:after {
     @include cssTriangle(6px, #fff, top);
     position: absolute;
     top: 50%;
-    #{$defaultOpposite}: $btn-med * 2;
+    #{$defaultOpposite}: double($btn-med);
     margin-top: -2px;
   }
   &.large:after {
     @include cssTriangle(7px, #fff, top);
-    margin-top: -3px; #{$defaultOpposite}: $btn-lrg * 2;
+    margin-top: -3px; #{$defaultOpposite}: double($btn-lrg);
   }
   &.small:after {
     @include cssTriangle(5px, #fff, top);
-    margin-top: -2px; #{$defaultOpposite}: $btn-sml * 2;
+    margin-top: -2px; #{$defaultOpposite}: double($btn-sml);
   }
   &.tiny:after {
     @include cssTriangle(4px, #fff, top);
-    margin-top: -1px; #{$defaultOpposite}: $btn-tny * 2;
+    margin-top: -1px; #{$defaultOpposite}: double($btn-tny);
   }
 
   // Flyout List
@@ -49,8 +49,8 @@
       width: 100%;
       cursor: pointer;
       padding: 0;
-      min-height: 18px;
-      line-height: 18px;
+      min-height: emCalc(18px);
+      line-height: emCalc(18px);
       margin: 0;
       white-space: nowrap;
       list-style: none;
@@ -59,9 +59,9 @@
       button {
         display: block;
         color: #555;
-        font-size: ms(0) - 1;
+        font-size: emCalc(13px);
         font-weight: $bodyFontWeight;
-        padding: 6px 14px;
+        padding: emCalc(6px) emCalc(14px);
         text-align: $defaultFloat;
       }
 
@@ -84,7 +84,7 @@
         min-height: 0;
         padding: 0;
         height: 1px;
-        margin: 4px 0;
+        margin: emCalc(4px) 0;
         background: darken($white, 7%);
       }
     }

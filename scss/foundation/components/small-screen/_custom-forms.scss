@@ -52,9 +52,9 @@ form.custom {
     display: block;
     position: relative;
     width: auto;
-    height: 28px;
-    margin-bottom: 9px;
-    margin-top: 2px;
+    height: emCalc(28px);
+    margin-bottom: emCalc(9px);
+    margin-top: emCalc(2px);
 
     ul {
       overflow-y: auto;
@@ -63,11 +63,11 @@ form.custom {
     a.current {
       display: block;
       width: auto;
-      line-height: 26px;
-      min-height: 28px;
+      line-height: emCalc(26px);
+      min-height: emCalc(28px);
       padding: 0;
-      padding-#{$defaultFloat}: 6px;
-      padding-#{$defaultOpposite}: 38px;
+      padding-#{$defaultFloat}: emCalc(6px);
+      padding-#{$defaultOpposite}: emCalc(38px);
       border: solid 1px $custSelectBorderColor;
       color: $custSelectCurrentFontColor;
       background-color: $custSelectBgColor;
@@ -75,8 +75,8 @@ form.custom {
     }
     a.selector {
       position: absolute;
-      width: 27px;
-      height: 28px;
+      width: emCalc(27px);
+      height: emCalc(28px);
       display: block;
       #{$defaultOpposite}: 0;
       top: 0;
@@ -88,8 +88,8 @@ form.custom {
         position: absolute;
         #{$defaultFloat}: 50%;
         top: 50%;
-        margin-top: -2px;
-        margin-#{$defaultFloat}: -5px;
+        margin-top: emCalc(-2px);
+        margin-#{$defaultFloat}: emCalc(-5px);
       }
     }
     &:hover, &.open {
@@ -100,14 +100,14 @@ form.custom {
 
     &.open ul { display: block; z-index: 10; }
 
-    &.small { width: 134px !important; }
-    &.medium { width: 254px !important; }
-    &.large { width: 434px !important; }
+    &.small { width: emCalc(134px) !important; }
+    &.medium { width: emCalc(254px) !important; }
+    &.large { width: emCalc(434px) !important; }
     &.expand { width: 100% !important; }
 
-    &.open.small ul { width: 134px !important; }
-    &.open.medium ul { width: 254px !important; }
-    &.open.large ul { width: 434px !important; }
+    &.open.small ul { width: emCalc(134px) !important; }
+    &.open.medium ul { width: emCalc(254px) !important; }
+    &.open.large ul { width: emCalc(434px) !important; }
     &.open.expand ul { width: 100% !important; }
   }
 
@@ -118,7 +118,7 @@ form.custom {
     display: none;
     margin: 0;
     #{$defaultFloat}: 0;
-    top: 27px;
+    top: emCalc(27px);
     margin: 0;
     padding: 0;
     background: $custDropdownBgColor;
@@ -129,11 +129,11 @@ form.custom {
       color: $custDropdownFontColor;
       font-size: ms(0) - 1;
       cursor: pointer;
-      padding: 3px;
-      padding-#{$defaultFloat}: 6px;
-      padding-#{$defaultOpposite}: 38px;
-      min-height: 18px;
-      line-height: 18px;
+      padding: emCalc(3px);
+      padding-#{$defaultFloat}: emCalc(6px);
+      padding-#{$defaultOpposite}: emCalc(38px);
+      min-height: emCalc(18px);
+      line-height: emCalc(18px);
       margin: 0;
       white-space: nowrap;
       list-style: none;
@@ -144,7 +144,7 @@ form.custom {
       &:after {
         content: "\2013";
         position: absolute;
-        #{$defaultOpposite}: 10px;
+        #{$defaultOpposite}: emCalc(10px);
       }
     }
     li:hover {
@@ -153,7 +153,7 @@ form.custom {
       &:after {
         content: "\2013";
         position: absolute;
-        #{$defaultOpposite}: 10px;
+        #{$defaultOpposite}: emCalc(10px);
         color: darken($custDropdownSelectedBgColor, 10%);
       }
     }
@@ -172,7 +172,7 @@ form.custom {
 
 // Correct FF custom dropdown height
 @-moz-document url-prefix() {
-  form.custom div.custom.dropdown a.selector { height: 30px; }
+  form.custom div.custom.dropdown a.selector { height: emCalc(30px); }
 }
 
-.lt-ie9 form.custom div.custom.dropdown a.selector { height: 30px; }
+.lt-ie9 form.custom div.custom.dropdown a.selector { height: emCalc(30px); }

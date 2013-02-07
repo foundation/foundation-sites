@@ -17,19 +17,19 @@
   display: none;
   top: 100px;
   #{$defaultFloat}: 50%;
-  margin-#{$defaultFloat}: -260px;
-  width: 520px;
+  margin-#{$defaultFloat}: emCalc(-260px);
+  width: emCalc(520px);
   position: absolute;
   z-index: 41;
-  padding: 30px;
+  padding: emCalc(30px);
   @include box-shadow(0 0 10px rgba(#000,.4));
 
   .close-reveal-modal {
-    @include font-size(22);
+    font-size: emCalc(22px);
     line-height: .5;
     position: absolute;
     top: 8px;
-    #{$defaultOpposite}: 11px;
+    #{$defaultOpposite}: emCalc(11px);
     color: #aaa;
     text-shadow: 0 -1px 1px rgba(0,0,0,.6);
     font-weight: bold;
@@ -59,7 +59,7 @@
 
   .row {
     min-width: 0;
-    margin-bottom: 10px;
+    margin-bottom: emCalc(10px);
   }
 
   & > :first-child { margin-top: 0; }

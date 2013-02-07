@@ -17,11 +17,23 @@
     @include box-shadow(1px 0 0 fade-out($shinyEdge, .3) inset);
 
     &:first-child { @include box-shadow(0 0 0); }
-    &:last-child { border-#{$defaultOpposite}: solid 1px lighten($black, 20%); @include box-shadow(1px 0 0 fade-out($shinyEdge, .3) inset, 1px 0 0 fade-out($shinyEdge, .3)); }
+    &:last-child {
+      border-#{$defaultOpposite}: solid 1px lighten($black, 20%);
+      @include box-shadow(1px 0 0 fade-out($shinyEdge, .3) inset, 1px 0 0 fade-out($shinyEdge, .3));
+    }
 
-    &.active { background: $mainColor; border-color: darken($mainColor, 10%);
-      &>a { color: $white; cursor: default; }
-      &:hover { background: $mainColor; cursor: default; }
+    &.active {
+      background: $mainColor;
+      border-color: darken($mainColor, 10%);
+
+      &>a {
+        color: $white;
+        cursor: default;
+      }
+      &:hover {
+        background: $mainColor;
+        cursor: default;
+      }
     }
     &:hover { background: lighten($black, 20%); }
 
@@ -30,12 +42,15 @@
     .flyout { display: none; }
 
     &.has-flyout {
-      &>a:first-child { padding-#{$defaultOpposite}: $navBarHeight; position: relative;
+      &>a:first-child {
+        padding-#{$defaultOpposite}: $navBarHeight;
+        position: relative;
+
         &:after {
           @include cssTriangle(4px, darken($white, 10%), top);
           position: absolute;
           #{$defaultOpposite}: $navBarHeight / 2;
-          top: ($navBarHeight / 2) - 3;
+          top: ($navBarHeight / 2) - emCalc(3px);
         }
       }
       &>a.flyout-toggle {
@@ -43,10 +58,11 @@
         position: absolute; #{$defaultOpposite}: 0;
         top: 0;
         padding: ($navBarHeight / 2);
-        z-index: 2; display: block;
+        z-index: 2;
+        display: block;
       }
       &.is-touch {
-        &>a:first-child { padding-#{$defaultOpposite}: 55px;}
+        &>a:first-child { padding-#{$defaultOpposite}: emCalc(55px);}
         &>a.flyout-toggle { border-#{$defaultFloat}: 1px dashed #666; }
       }
     }
@@ -57,11 +73,13 @@
     padding: 0 ($navBarHeight / 2);
     display: block;
     text-decoration: none;
-    font-size: ms(0);
+    font-size: emCalc(14px);
   }
-  &>li>input { margin: 0 10px; }
+  &>li>input { margin: 0 emCalc(10px); }
 
-  &.vertical { height: auto; margin-top: 0;
+  &.vertical {
+    height: auto;
+    margin-top: 0;
 
     &>li {
       float: none;
@@ -69,9 +87,17 @@
       border-#{$defaultOpposite}: solid 1px lighten($black, 20%);
       @include box-shadow(none);
 
-      &.has-flyout>a:first-child:after { @include cssTriangle(4px, darken($white, 10%), $defaultFloat); }
-      .flyout { #{$defaultFloat}: 100%; top: -1px;
-        &.right { #{$defaultFloat}: auto; #{$defaultOpposite}: 100%; }
+      &.has-flyout>a:first-child:after {
+        @include cssTriangle(4px, darken($white, 10%), $defaultFloat);
+      }
+      .flyout {
+        #{$defaultFloat}: 100%;
+        top: -1px;
+
+        &.right {
+          #{$defaultFloat}: auto;
+          #{$defaultOpposite}: 100%;
+        }
       }
       &.active { border-#{$defaultOpposite}: solid 1px darken($mainColor, 10%); }
       &:last-child { border-bottom: solid 1px lighten($black, 20%);}
@@ -83,21 +109,30 @@
   position: relative;
   width: 100% !important;
   top: auto;
-  margin-#{$defaultOpposite}: -2px;
+  margin-#{$defaultOpposite}: emCalc(-2px);
   border-width: 1px 1px 0 1px;
   background: darken($white, 5%);
   padding: $navBarHeight / 2;
-  z-index: 40; @include box-shadow(0 1px 5px rgba(#000, .1));
+  z-index: 40;
+  @include box-shadow(0 1px 5px rgba(#000, .1));
 
-  &.right { float: none; right: auto; left: -1px; }
+  &.right {
+    float: none;
+    right: auto;
+    left: -1px;
+  }
   &.small, &.large { width: 100% !important; }
 
-  p { line-height: 1.2; font-size: ms(0) - 1; }
+  p {
+    line-height: 1.2;
+    font-size: emCalc(13px);
+  }
+
   *:first-child { margin-top: 0; } /* remove margin on any first-child element */
   *:last-child { margin-bottom: 0; } /* remove margin on last element */
-  p:last-child { margin-bottom: 18px; }
+  p:last-child { margin-bottom: emCalc(18px); }
   &.left { right: auto; left: -2px; }
-  &.up { top: auto; bottom: $navBarHeight - 1; }
+  &.up { top: auto; bottom: $navBarHeight - emCalc(1px); }
 
 }
 
@@ -110,10 +145,10 @@ ul.flyout,
       border-width: 1px 1px 0 0;
       color: #555;
       display: block;
-      font-size: ms(0);
+      font-size: emCalc(14px);
       height: auto;
       line-height: 1;
-      padding: (($navBarHeight / 2) - 5) ($navBarHeight / 2);
+      padding: (($navBarHeight / 2) - emCalc(5px)) ($navBarHeight / 2);
       @include box-shadow(0 1px 0 $shinyEdge inset);
       &:hover,
       &:focus { background: darken($white, 8%); color: #333; }
@@ -149,7 +184,7 @@ ul.flyout,
     position: absolute;
     #{$defaultOpposite}: 0;
     top: 0;
-    padding: ($navBarHeight / 2)+2;
+    padding: ($navBarHeight / 2) + emCalc(2px);
     z-index: 2;
     display: block;
   }
@@ -166,14 +201,14 @@ ul.flyout,
 /* Between Medium and Small */
 @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
   .touch .nav-bar li {
-    a { font-size: ms(0) - 1; }
+    a { font-size: emCalc(13px); }
     &.has-flyout {
       &>a.flyout-toggle { padding: ($navBarHeight / 2) !important; }
-      &>a { padding-#{$defaultOpposite}: ($navBarHeight - 4) !important; }
+      &>a { padding-#{$defaultOpposite}: ($navBarHeight - emCalc(4px)) !important; }
     }
   }
 }
 /* 1280 tablet ------------ */
 @media only screen and (max-device-width: 1280px) {
-  .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: 36px !important; }
+  .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: emCalc(36px) !important; }
 }

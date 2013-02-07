@@ -2,10 +2,10 @@
 
 .flex-video {
   position: relative;
-  padding-top: 25px;
+  padding-top: emCalc(25px);
   padding-bottom: 67.5%;
   height: 0;
-  margin-bottom: 16px;
+  margin-bottom: emCalc(16px);
   overflow: hidden;
 
   &.widescreen { padding-bottom: 57.25%; }

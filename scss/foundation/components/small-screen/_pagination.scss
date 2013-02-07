@@ -1,20 +1,20 @@
 // Pagination
 ul.pagination {
   display: block;
-  height: 24px;
-  margin-#{$defaultFloat}: -5px;
+  height: emCalc(24px);
+  margin-#{$defaultFloat}: emCalc(-5px);
 
   li {
     float: $defaultFloat;
     display: block;
-    height: 24px;
+    height: emCalc(24px);
     color: #999;
-    font-size: ms(0);
-    margin-#{$defaultFloat}: 5px;
+    font-size: emCalc(14px);
+    margin-#{$defaultFloat}: emCalc(5px);
 
     a {
       display: block;
-      padding: 1px 7px 1px;
+      padding: emCalc(1px) emCalc(7px) emCalc(1px);
       color: #555;
     }
 
