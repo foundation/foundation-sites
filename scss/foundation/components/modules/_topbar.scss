@@ -134,6 +134,11 @@
 
     .js-generated { display: none; }
   }
+  
+  // Specifies the height of the sticky padding to prevent any page flow jump when sticky is enabled
+  .top-bar-sticky-padding {
+	  height: $topBarHeight;	
+}
 
   /* Firefox Fixes */
   @-moz-document url-prefix() {
