@@ -8,7 +8,7 @@
 
   .reveal-modal-bg { position: fixed; height: 100%; width: 100%; background: #000; background: rgba(#000, .45); z-index: 100; display: none; top: 0; #{$defaultFloat}: 0; }
 
-  .reveal-modal { background: #fff; visibility: hidden; display: none; top: 100px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -260px; width: 520px; position: absolute; z-index: 41; padding: 30px; @include box-shadow(0 0 10px rgba(#000,.4));
+  .reveal-modal { background: #fff; visibility: hidden; display: none; top: 100px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -260px; width: 520px; position: absolute; z-index: 101; padding: 30px; @include box-shadow(0 0 10px rgba(#000,.4));
     .close-reveal-modal:not(.button) {
       @include font-size(22);
       line-height: .5;
