@@ -1,17 +1,13 @@
 // Settings file containing Foundation defaults
 
 // We use this to control whether or not CSS classes come through in the files.
-$include-html-classes: true;
-
-// Grid Settings
-
 $emBase: 16px;
-$rowWidth: 62.5em !default; // 1000px / 16px = 62.5em
-$columnGutter: 1.875em !default; // 30px / 16px = 1.875em
-$totalColumns: 12 !default;
+$include-html-classes: true;
+// $ie8gridSupport: no;
+
+
 $blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
 
-// $ie8gridSupport: no;
 
 // Colors Settings
 
