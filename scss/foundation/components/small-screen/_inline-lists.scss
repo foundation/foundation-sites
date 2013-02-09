@@ -21,7 +21,7 @@ $inline-list-children-display: block !default;
 //
 
 // We use this mixin to create a container for the list items
-@mixin inline-list {
+@mixin inline-list-container {
   margin: $inline-list-margin $inline-list-margin-bottom;
   padding: $inline-list-padding;
   list-style: none;
@@ -29,18 +29,18 @@ $inline-list-children-display: block !default;
 }
 
 // We use this mixin to control the list items
-@mixin inline-list-items {
+@mixin inline-list {
   list-style: none;
   float: $defaultFloat;
   margin-#{$defaultFloat}: emCalc(22px);
   display: $inline-list-display;
+  &>* { display: $inline-list-children-display; }
 }
 
 /* Inline Lists */
 .inline-list {
-  @include inline-list;
+  @include inline-list-container();
   &>li {
-    @include inline-list-items;
-    &>* { display: $inline-list-children-display; }
+    @include inline-list();
   }
 }
