@@ -1,47 +1,103 @@
-// Breadcrumbs
-.breadcrumbs {
+//
+// Breadcrumb Variables
+//
+
+// We use this to set the background color for the breadcrumb container.
+$crumb-bg: lighten($secondaryColor, 5%) !default;
+
+// We use these to set the padding around the breadcrumbs.
+$crumb-padding: emCalc(6px) emCalc(10px) emCalc(8px)!default;
+$crumb-side-padding: emCalc(12px) !default;
+
+// We use these to control border styles.
+$crumb-border-size: 1px !default;
+$crumb-border-style: solid !default;
+$crumb-border-color: $secondary-color !default;
+$crumb-radius: $button-radius !default;
+
+// We use these to set various text styles for breadcrumbs.
+$crumb-text-size: emCalc(11px) !default;
+$crumb-text-color: $primary-color !default;
+$crumb-text-color-current: #333 !default;
+$crumb-text-color-unavailable: #999 !default;
+$crumb-text-transform: uppercase !default;
+$crumb-link-decor: underline !default;
+
+// We use these to control the slash between breadcrumbs
+$crumb-slash-color: #aaa !default;
+$crumb-slash: "/";
+
+//
+// Breakcrumb Mixins
+//
+
+// We use this mixin to create a container around our breadcrumbs
+@mixin crumb-container {
   display: block;
-  background: lighten($secondaryColor, 5%);
-  padding: emCalc(6px) emCalc(10px) emCalc(7px);
-  border: 1px solid $secondaryColor;
-  @include border-radius($btn-rad);
+  background: $crumb-bg;
+  padding: $crumb-padding;
+  border: $crumb-border-size $crumb-border-style $crumb-border-color;
+  @include border-radius($crumb-radius);
   overflow: hidden;
   margin-#{$defaultFloat}: 0;
+  list-style: none;
+}
 
-  li {
-    margin: 0;
-    padding: 0 emCalc(12px) 0 0;
-    float: $defaultFloat;
-    list-style: none;
+// We use this mixin to create breadcrumb styles from list items.
+@mixin crumbs {
 
-    a,
-    span {
-      text-transform: uppercase;
-      font-size: emCalc(11px);
-      padding-#{$defaultFloat}: emCalc(12px);
-    }
+  // A normal state will make the links look and act like clickable breadcrumbs.
+  margin: 0;
+  padding: 0 $crumb-side-padding 0 0;
+  float: $defaultFloat;
 
-    &:first-child a,
-    &:first-child span { padding-#{$defaultFloat}: 0; }
+  &:hover a,
+  &:focus a { text-decoration: $crumb-link-decor; }
 
-    &:before { content: "/"; color: #aaa; }
-    &:first-child:before { content: " "; }
-
-    &.current a { cursor: default; color: #333; }
-
-    &:hover a,
-    li a:focus { text-decoration: underline; }
-
-    &.current:hover a,
-    li.current a:focus { text-decoration: none; }
-
-    &.unavailable {
-      a { color: #999; }
-      &:hover a,
-      a:focus { text-decoration: none; color: #999; cursor: default; }
-    }
+  &:before {
+    content: "#{$crumb-slash}";
+    color: $crumb-slash-color;
+    position: relative;
+    top: 1px;
   }
 
+  a,
+  span {
+    text-transform: $crumb-text-transform;
+    font-size: $crumb-text-size;
+    color: $crumb-text-color;
+    padding-#{$defaultFloat}: $crumb-side-padding;
+  }
 
+  &:first-child a,
+  &:first-child span { padding-#{$defaultFloat}: 0; }
+  &:first-child:before { content: ""; }
 
+  // Current is for the link of the current page
+  &.current {
+    a {
+      cursor: default;
+      color: $crumb-text-color-current;
+    }
+
+    &:hover a,
+    &:focus a { text-decoration: none; }
+  }
+
+  // Unavailable removed color and link styles so it looks inactive.
+  &.unavailable {
+    a { color: $crumb-text-color-unavailable; }
+
+    &:hover a,
+    a:focus {
+      text-decoration: none;
+      color: $crumb-text-color-unavailable;
+      cursor: default;
+    }
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumbs { @include crumb-container;
+  li { @include crumbs; }
 }

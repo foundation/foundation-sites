@@ -1,10 +1,9 @@
-/* Styles for modern browsers */
 @media only screen {
 
-  /* Class names for the multiple states */
+  // Class names for the multiple states
   $switchStates: 3, 4, 5;
 
-  /* Generate the class names for the multiple states */
+  // Generate the class names for the multiple states
   $switchClasses: ();
   @each $switch in $switchStates {
     $switchClasses: join($switchClasses, unquote(".switch-#{$switch}"), comma);
@@ -12,7 +11,7 @@
 
   $switchClasses: join(unquote(".switch"), $switchClasses, comma);
 
-  /* Two-state switch and shared styles between all states */
+  // Two-state switch and shared styles between all states
   #{$switchClasses} {
     position: relative;
     padding: 0;
@@ -21,18 +20,18 @@
     width: 100%;
     overflow: hidden;
 
-    /* Sizes */
+    // Sizes
     &.large label {
-      padding: $btn-lrg 0;
+      padding: $button-lrg 0;
       font-size: emCalc(17px);
     }
     &.small label {
     	font-size: emCalc(12px);
-      padding: $btn-sml 0;
+      padding: $button-sml 0;
     }
     &.tiny label {
     	font-size: emCalc(11px);
-      padding: $btn-tny 0;
+      padding: $button-tny 0;
     }
 
     label {
@@ -43,7 +42,7 @@
       width: 50%;
       height: 100%;
       margin: 0;
-      padding: $btn-med 0;
+      padding: $button-med 0;
 
       font-size: emCalc(14px);
       font-weight: bold;
@@ -61,7 +60,9 @@
       height: 100%;
       padding: 0;
 
-      // @include single-transition(all, 0.3s, ease-out);
+      -webkit-transition: all .1s ease-out;
+      -moz-transition: all .1s ease-out;
+      transition: all .1s ease-out;
     }
 
     input {
@@ -69,7 +70,7 @@
       opacity: 0;
     }
 
-    /* Outline the toggles when the inputs are focused */
+    // Outline the toggles when the inputs are focused
     input:focus + label {
       outline: 1px dotted #888;
     }
@@ -78,16 +79,15 @@
       left: 50%;
     }
 
-    /* Bugfix for older Webkit, including mobile Webkit. Adapted from:
-     * http://css-tricks.com/webkit-sibling-bug/
-     */
+    // Bugfix for older Webkit, including mobile Webkit. Adapted from:
+    // http://css-tricks.com/webkit-sibling-bug/
     -webkit-animation: webkitSiblingBugfix infinite 1s;
 
   }
 
   @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
 
-  /* Generate styles for the multiple states */
+  // Generate styles for the multiple states
   @for $i from 1 through length($switchStates) {
     $state: nth($switchStates, $i);
     $width: 100 / ($i + 2);

@@ -1,32 +1,32 @@
 // Buttons with Dropdowns
 .button.dropdown {
   position: relative;
-  padding-#{$defaultOpposite}: double($btn-med + emCalc(12px));
+  padding-#{$defaultOpposite}: double($button-med + emCalc(12px));
 
   // Sizes
-  &.large { padding-#{$defaultOpposite}: double($btn-lrg) + double($btn-lrg); }
-  &.small { padding-#{$defaultOpposite}: double($btn-sml) + double($btn-sml); }
-  &.tiny { padding-#{$defaultOpposite}: double($btn-tny) + double($btn-tny); }
+  &.large { padding-#{$defaultOpposite}: double($button-lrg) + double($button-lrg); }
+  &.small { padding-#{$defaultOpposite}: double($button-sml) + double($button-sml); }
+  &.tiny { padding-#{$defaultOpposite}: double($button-tny) + double($button-tny); }
 
   // Triangles
   &:after {
     @include cssTriangle(6px, #fff, top);
     position: absolute;
     top: 50%;
-    #{$defaultOpposite}: double($btn-med);
+    #{$defaultOpposite}: double($button-med);
     margin-top: -2px;
   }
   &.large:after {
     @include cssTriangle(7px, #fff, top);
-    margin-top: -3px; #{$defaultOpposite}: double($btn-lrg);
+    margin-top: -3px; #{$defaultOpposite}: double($button-lrg);
   }
   &.small:after {
     @include cssTriangle(5px, #fff, top);
-    margin-top: -2px; #{$defaultOpposite}: double($btn-sml);
+    margin-top: -2px; #{$defaultOpposite}: double($button-sml);
   }
   &.tiny:after {
     @include cssTriangle(4px, #fff, top);
-    margin-top: -1px; #{$defaultOpposite}: double($btn-tny);
+    margin-top: -1px; #{$defaultOpposite}: double($button-tny);
   }
 
   // Flyout List
@@ -121,31 +121,31 @@
     &>a {
       color: $white;
       display: block;
-      padding: $btn-med (($btn-med * 2.5) * 2) ($btn-med + 1) ($btn-med * 2);
-      padding-#{$defaultFloat}: $btn-med * 2;
-      padding-#{$defaultOpposite}: ($btn-med * 2.5) * 2;
+      padding: $button-med (($button-med * 2.5) * 2) ($button-med + 1) ($button-med * 2);
+      padding-#{$defaultFloat}: $button-med * 2;
+      padding-#{$defaultOpposite}: ($button-med * 2.5) * 2;
 
       &:hover,
       &:focus {
         background-color: darken($primary-color, 10%);
-        // @include box-shadow(0 1px 0 $btn-edge-shine inset);
+        // @include box-shadow(0 1px 0 $button-edge-shine inset);
       }
     }
 
     &.large>a {
-      padding: $btn-lrg (($btn-lrg * 2.5) * 2) ($btn-lrg + 1) ($btn-lrg * 2);
-      padding-#{$defaultFloat}: $btn-lrg * 2;
-      padding-#{$defaultOpposite}: ($btn-lrg * 2.5) * 2;
+      padding: $button-lrg (($button-lrg * 2.5) * 2) ($button-lrg + 1) ($button-lrg * 2);
+      padding-#{$defaultFloat}: $button-lrg * 2;
+      padding-#{$defaultOpposite}: ($button-lrg * 2.5) * 2;
     }
     &.small>a {
-      padding: $btn-sml (($btn-sml * 2.5) * 2) ($btn-sml + 1) ($btn-sml * 2);
-      padding-#{$defaultFloat}: $btn-sml * 2;
-      padding-#{$defaultOpposite}: ($btn-sml * 2.5) * 2;
+      padding: $button-sml (($button-sml * 2.5) * 2) ($button-sml + 1) ($button-sml * 2);
+      padding-#{$defaultFloat}: $button-sml * 2;
+      padding-#{$defaultOpposite}: ($button-sml * 2.5) * 2;
     }
     &.tiny>a {
-      padding: $btn-tny (($btn-tny * 2.5) * 2) ($btn-tny + 1) ($btn-tny * 2);
-      padding-#{$defaultFloat}: $btn-tny * 2;
-      padding-#{$defaultOpposite}: ($btn-tny * 2.5) * 2;
+      padding: $button-tny (($button-tny * 2.5) * 2) ($button-tny + 1) ($button-tny * 2);
+      padding-#{$defaultFloat}: $button-tny * 2;
+      padding-#{$defaultOpposite}: ($button-tny * 2.5) * 2;
     }
 
     // Triangle Spans
@@ -155,9 +155,9 @@
       #{$defaultOpposite}: 0;
       top: 0;
       height: 100%;
-      width: $btn-med * 3;
+      width: $button-med * 3;
       border-#{$defaultFloat}: 1px solid darken($primary-color, 15%);
-      // @include box-shadow(1px 1px 0 $btn-edge-shine inset);
+      // @include box-shadow(1px 1px 0 $button-edge-shine inset);
 
       &:hover,
       &:focus { background-color: darken($primary-color, 10%); }
@@ -174,7 +174,7 @@
     &.secondary>span:after { @include cssTriangle(6px, darken($secondary-color, 80%), top); }
 
     &.large span {
-      width: $btn-lrg * 3;
+      width: $button-lrg * 3;
 
       &:after {
         @include cssTriangle(7px, #fff, top);
@@ -184,7 +184,7 @@
     }
 
     &.small span {
-      width: $btn-sml * 3;
+      width: $button-sml * 3;
 
       &:after {
         @include cssTriangle(4px, #fff, top);
@@ -194,7 +194,7 @@
     }
 
     &.tiny span {
-      width: $btn-tny * 3;
+      width: $button-tny * 3;
 
       &:after {
         @include cssTriangle(3px, #fff, top);
