@@ -261,15 +261,15 @@
     .button { display: block; }
     button.button, input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
     /* Button Groups */
-    .button-group {
-      button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px));
-        &.large  { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + emCalc(1px)); }
-        &.medium { padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px)); }
-        &.small  { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + emCalc(1px)); }
-        &.tiny   { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + emCalc(1px)); }
-      }
-      &.even button.button, &.even input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
-    }
+    // .button-group {
+    //   button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px));
+    //     &.large  { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + emCalc(1px)); }
+    //     &.medium { padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px)); }
+    //     &.small  { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + emCalc(1px)); }
+    //     &.tiny   { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + emCalc(1px)); }
+    //   }
+    //   &.even button.button, &.even input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
+    // }
 
     /* Navbar --- */
     /*            */

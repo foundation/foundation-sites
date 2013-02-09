@@ -55,7 +55,7 @@ img { -ms-interpolation-mode: bicubic; }
 }
 
 /* Mobile Grid for small devices that can handle media queries */
-@media #{$smallBreakPoint} {
+@media #{$small} {
 
   /* Shared column styles */
   .row {
@@ -92,7 +92,7 @@ img { -ms-interpolation-mode: bicubic; }
 }
 
 /* Styles for screens that are atleast 768px; */
-@media #{$largeBreakPoint} {
+@media #{$large} {
 
   /* Shared column styles */
   .row {

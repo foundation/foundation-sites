@@ -16,7 +16,7 @@ hgroup,
   @include panel;
 }
 
-@media #{$largeBreakPoint} {
+@media #{$large} {
 
   #page {
     &>div {
