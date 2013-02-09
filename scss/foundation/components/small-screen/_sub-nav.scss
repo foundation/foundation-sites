@@ -11,8 +11,8 @@ dl.sub-nav {
 
   dt,
   dd {
-    float: $defaultFloat;
-    display: inline;
+    // float: $defaultFloat;
+    display: block;
     margin-#{$defaultFloat}: emCalc(9px);
     margin-bottom: emCalc(10px);
   }
