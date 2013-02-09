@@ -1,0 +1,33 @@
+//
+// Inline List Variables
+//
+
+// We use this to control the margins and padding of the inline list.
+$link-list-margin-bottom: emCalc(17px) emCalc(-22px ) !default;
+$inline-list-margin:  0 0 !default;
+$inline-list-padding: 0 !default;
+
+$inline-list-overflow: hidden !default;
+
+
+//
+// Inline List Mixin
+//
+
+
+// Inline Link List
+.inline-list {
+  margin: 0 0 $link-list-margin-bottom;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+
+  &>li {
+    list-style: none;
+    float: $defaultFloat;
+    margin-#{$defaultFloat}: emCalc(22px);
+    display: block;
+
+    &>* { display: block; }
+  }
+}
