@@ -38,7 +38,7 @@
 
   // Contain width to .row width
   .contain-to-grid & {
-    max-width: $rowWidth;
+    max-width: $row-width;
     margin: 0 auto;
   }
 
