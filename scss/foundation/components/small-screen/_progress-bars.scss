@@ -1,10 +1,37 @@
+//
+// Progress Bar Variables
+//
+
+// We use this to se the prog bar height
+$prog-bar-height: emCalc(25px) !default;
+
+// We use these to control the border styles
+$prog-bar-border-color: darken(#fff, 20%) !default;
+$prog-bar-border-size: 1px !default;
+$prog-bar-border-style: solid !default;
+
+// We use these to control the margin & padding 
+$prog-bar-pad: emCalc(2px) !default;
+$prog-bar-margin-bottom: emCalc(10px) !default;
+
+
+//
+// Progress Bar Mixins
+//
+
+// We use this to set up the progress bar container 
+@mixin prog-container {
+   height: $prog-bar-height;
+   border: $prog-bar-border-size $prog-bar-border-style $prog-bar-border-color;
+   padding: $prog-bar-pad;
+   margin-bottom: $prog-bar-margin-bottom;
+}
+
+
 // Progress Bar
 .progress {
-  padding: $progBarPad;
-  margin-bottom: emCalc(10px);
-  border: $progBarBorderSize solid $progBarBorderColor;
-  height: $progBarHeight;
-
+  @include prog-container;
+  
   // Meter
   .meter {
     background: $primary-color;
