@@ -1266,7 +1266,7 @@ button.button.large {
 .button-group li:first-child {
   margin-left: 0;
 }
-.button-group.radius li:first-child .button {
+.button-group.radius li:first-child > a {
   -moz-border-radius-topleft: 3px;
   -webkit-border-top-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -1274,7 +1274,7 @@ button.button.large {
   -webkit-border-bottom-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.button-group.radius li:last-child .button {
+.button-group.radius li:last-child > a {
   -moz-border-radius-topright: 3px;
   -webkit-border-top-right-radius: 3px;
   border-top-right-radius: 3px;
@@ -1282,7 +1282,7 @@ button.button.large {
   -webkit-border-bottom-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-.button-group.round li:first-child .button {
+.button-group.round li:first-child > a {
   -moz-border-radius-topleft: 1000px;
   -webkit-border-top-left-radius: 1000px;
   border-top-left-radius: 1000px;
@@ -1290,7 +1290,7 @@ button.button.large {
   -webkit-border-bottom-left-radius: 1000px;
   border-bottom-left-radius: 1000px;
 }
-.button-group.round li:last-child .button {
+.button-group.round li:last-child > a {
   -moz-border-radius-topright: 1000px;
   -webkit-border-top-right-radius: 1000px;
   border-top-right-radius: 1000px;
@@ -2465,7 +2465,7 @@ ul.flyout li.active a,
   position: absolute;
   top: 0;
   left: -20px;
-  background: url('../../lib/assets/img/foundation/orbit/rotator-black.png?1360427718') no-repeat;
+  background: url('../../lib/assets/img/foundation/orbit/rotator-black.png?1360019124') no-repeat;
   z-index: 3;
 }
 .orbit-wrapper .rotator.move {
@@ -2484,7 +2484,7 @@ ul.flyout li.active a,
 .orbit-wrapper .mask.move {
   width: 40px;
   left: 0;
-  background: url('../../lib/assets/img/foundation/orbit/timer-black.png?1360427718') repeat 0 0;
+  background: url('../../lib/assets/img/foundation/orbit/timer-black.png?1360019124') repeat 0 0;
 }
 .orbit-wrapper .pause {
   display: block;
@@ -2493,12 +2493,12 @@ ul.flyout li.active a,
   position: absolute;
   top: 0;
   left: 0;
-  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360427718') no-repeat;
+  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360019124') no-repeat;
   z-index: 4;
   opacity: 0;
 }
 .orbit-wrapper .pause.active {
-  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360427718') no-repeat 0 -40px;
+  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360019124') no-repeat 0 -40px;
 }
 .orbit-wrapper .timer:hover .pause,
 .orbit-wrapper .timer:focus .pause,
@@ -2539,21 +2539,21 @@ ul.flyout li.active a,
   cursor: pointer;
 }
 .orbit-wrapper .slider-nav span.right {
-  background: url('../../lib/assets/img/foundation/orbit/right-arrow.png?1360427718');
+  background: url('../../lib/assets/img/foundation/orbit/right-arrow.png?1360019124');
   background-size: 100%;
   right: 0;
 }
 .orbit-wrapper .slider-nav span.left {
-  background: url('../../lib/assets/img/foundation/orbit/left-arrow.png?1360427718');
+  background: url('../../lib/assets/img/foundation/orbit/left-arrow.png?1360019124');
   background-size: 100%;
   left: 0;
 }
 
 .lt-ie9 .orbit-wrapper .slider-nav span.right {
-  background: url('../../lib/assets/img/foundation/orbit/right-arrow-small.png?1360427718');
+  background: url('../../lib/assets/img/foundation/orbit/right-arrow-small.png?1360019124');
 }
 .lt-ie9 .orbit-wrapper .slider-nav span.left {
-  background: url('../../lib/assets/img/foundation/orbit/left-arrow-small.png?1360427718');
+  background: url('../../lib/assets/img/foundation/orbit/left-arrow-small.png?1360019124');
 }
 
 .orbit-bullets {
@@ -2571,7 +2571,7 @@ ul.flyout li.active a,
   cursor: pointer;
   color: #999999;
   text-indent: -9999px;
-  background: url('../../lib/assets/img/foundation/orbit/bullets.jpg?1360427718') no-repeat 4px 0;
+  background: url('../../lib/assets/img/foundation/orbit/bullets.jpg?1360019124') no-repeat 4px 0;
   width: 13px;
   height: 12px;
   overflow: hidden;

@@ -19,7 +19,7 @@ $button-group-bottom-margin: emCalc(12px);
 }
 
 // We use this to control styles for button groups
-@mixin button-group-style($radius-left:null, $radius-right:null, $even:null, $float:$defaultFloat) {
+@mixin button-group-style($radius:null, $even:null, $float:$defaultFloat) {
 
   // We use this to control the flow, or remove those styles completely.
   @if $float {
@@ -30,13 +30,25 @@ $button-group-bottom-margin: emCalc(12px);
   }
 
   // We use these to control left and right radius on first/last buttons in the group.
-  @if $radius-left {
-    @include border-corner-radius(top, $defaultFloat, $radius-left);
-    @include border-corner-radius(bottom, $defaultFloat, $radius-left);
+  @if $radius == true {
+    &:first-child > a {
+      @include border-corner-radius(top, $defaultFloat, $button-radius);
+      @include border-corner-radius(bottom, $defaultFloat, $button-radius);
+    }
+    &:last-child > a {
+      @include border-corner-radius(top, $defaultOpposite, $button-radius);
+      @include border-corner-radius(bottom, $defaultOpposite, $button-radius);
+    }
   }
-  @if $radius-right {
-    @include border-corner-radius(top, $defaultOpposite, $radius-right);
-    @include border-corner-radius(bottom, $defaultOpposite, $radius-right);
+  @else if $radius {
+    &:first-child > a {
+      @include border-corner-radius(top, $defaultFloat, $radius);
+      @include border-corner-radius(bottom, $defaultFloat, $radius);
+    }
+    &:last-child > a {
+      @include border-corner-radius(top, $defaultOpposite, $radius);
+      @include border-corner-radius(bottom, $defaultOpposite, $radius);
+    }
   }
 
   // We use this to make the buttons even width across their container
@@ -52,15 +64,8 @@ $button-group-bottom-margin: emCalc(12px);
 
   li { @include button-group-style(); }
 
-  &.radius li {
-    &:first-child .button { @include button-group-style($radius-left:$button-radius, $float:null); }
-    &:last-child .button { @include button-group-style($radius-right:$button-radius, $float:null); }
-  }
-
-  &.round li {
-    &:first-child .button { @include button-group-style($radius-left:1000px, $float:null); }
-    &:last-child .button { @include button-group-style($radius-right:1000px, $float:null); }
-  }
+  &.radius li { @include button-group-style($radius:$button-radius, $float:null); }
+  &.round li { @include button-group-style($radius:1000px, $float:null); }
 
   @for $i from 2 through 8 {
     &.even#{-$i} li { @include button-group-style($even:3, $float:null); }
