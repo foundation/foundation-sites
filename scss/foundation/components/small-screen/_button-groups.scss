@@ -3,23 +3,23 @@
 //
 
 // We use this to control margin below button groups.
-$btn-group-btm-marg: emCalc(12px);
+$button-group-bottom-margin: emCalc(12px);
 
 //
 // Button Group Mixins
 //
 
 // We use this to add styles for a button group container
-@mixin btn-group-container($btm-marg:$btn-group-btm-marg) {
-  @if $btm-marg {
+@mixin button-group-container($bottom-margin:$button-group-bottom-margin) {
+  @if $bottom-margin {
     list-style: none;
-    margin: 0 0 $btm-marg;
+    margin: 0 0 $bottom-margin;
     @include clearfix();
   }
 }
 
 // We use this to control styles for button groups
-@mixin btn-group-style($radius-left:null, $radius-right:null, $even:null, $float:$defaultFloat) {
+@mixin button-group-style($radius-left:null, $radius-right:null, $even:null, $float:$defaultFloat) {
 
   // We use this to control the flow, or remove those styles completely.
   @if $float {
@@ -48,21 +48,21 @@ $btn-group-btm-marg: emCalc(12px);
 }
 
 /* Button Groups */
-.button-group { @include btn-group-container;
+.button-group { @include button-group-container;
 
-  li { @include btn-group-style(); }
+  li { @include button-group-style(); }
 
   &.radius li {
-    &:first-child .button { @include btn-group-style($radius-left:$btn-rad, $float:null); }
-    &:last-child .button { @include btn-group-style($radius-right:$btn-rad, $float:null); }
+    &:first-child .button { @include button-group-style($radius-left:$button-radius, $float:null); }
+    &:last-child .button { @include button-group-style($radius-right:$button-radius, $float:null); }
   }
 
   &.round li {
-    &:first-child .button { @include btn-group-style($radius-left:1000px, $float:null); }
-    &:last-child .button { @include btn-group-style($radius-right:1000px, $float:null); }
+    &:first-child .button { @include button-group-style($radius-left:1000px, $float:null); }
+    &:last-child .button { @include button-group-style($radius-right:1000px, $float:null); }
   }
 
   @for $i from 2 through 8 {
-    &.even#{-$i} li { @include btn-group-style($even:3, $float:null); }
+    &.even#{-$i} li { @include button-group-style($even:3, $float:null); }
   }
 }

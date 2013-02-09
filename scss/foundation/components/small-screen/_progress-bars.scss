@@ -17,7 +17,7 @@
   &.alert .meter { background: $alert-color;}
 
   // Border radii
-  &.radius { @include border-radius($btn-rad);
+  &.radius { @include border-radius($button-radius);
     .meter { @include border-radius(2px); }
   }
   &.round { @include border-radius(1000px);

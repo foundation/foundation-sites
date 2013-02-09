@@ -7,5 +7,5 @@ kbd {
   margin: 0;
   background: darken($white, 7%);
   border: solid 1px darken($white, 14%);
-  @include border-radius($btn-rad);
+  @include border-radius($button-radius);
 }

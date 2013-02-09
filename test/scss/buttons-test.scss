@@ -6,13 +6,13 @@
 }
 
 .cta {
-  @include btn-base;
-  @include btn-size($pad:$btn-lrg, $full-width:true);
-  @include btn-style($bg:$primary-color);
+  @include button-base;
+  @include button-size($padding:$button-lrg, $full-width:true);
+  @include button-style($bg:$primary-color);
 }
 
 #id {
-  @include btn($pad:$btn-lrg, $radius: 20px);
+  @include button($padding:$button-lrg, $radius: 20px);
 }
 
 
@@ -20,13 +20,13 @@
 @media only screen and (min-width: 768px) {
 
   .cta {
-    @include btn-base;
-    @include btn-size($pad:$btn-lrg);
-    @include btn-style($bg:$alert-color);
+    @include button-base;
+    @include button-size($padding:$button-lrg);
+    @include button-style($bg:$alert-color);
   }
 
   #id {
-    @include btn($pad:$btn-lrg, $radius: 20px);
+    @include button($padding:$button-lrg, $radius: 20px);
   }
   #hero {
     hgroup {

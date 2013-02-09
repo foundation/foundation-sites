@@ -1,11 +1,12 @@
 //
 // Label Variables
 //
-$lbl-pad: emCalc(1px) emCalc(4px) emCalc(2px) !default;
-$lbl-txt-size: emCalc(14px) !default;
-$lbl-txt-weight: bold !default;
-$lbl-txt-color: #fff !default;
-$lbl-txt-color-alt: darken($secondary-color, 60%) !default;
+$label-padding: emCalc(1px) emCalc(4px) emCalc(2px) !default;
+$label-text-size: emCalc(14px) !default;
+$label-text-weight: bold !default;
+$label-text-color: #fff !default;
+$label-text-color-alt: darken($secondary-color, 60%) !default;
+$label-radius: $button-radius !default;
 
 //
 // Label Mixins
@@ -13,7 +14,7 @@ $lbl-txt-color-alt: darken($secondary-color, 60%) !default;
 
 // We use this mixin to create a default label base.
 @mixin label-base {
-  font-weight: $lbl-txt-weight;
+  font-weight: $label-text-weight;
   text-align: center;
   text-decoration: none;
   line-height: 1;
@@ -23,33 +24,33 @@ $lbl-txt-color-alt: darken($secondary-color, 60%) !default;
 }
 
 // We use this mixin to add label size styles.
-@mixin label-size($pad:$lbl-pad, $txt-size:$lbl-txt-size) {
-  @if $pad { padding: $lbl-pad; }
-  @if $txt-size { font-size: $lbl-txt-size; }
+@mixin label-size($padding:$label-padding, $text-size:$label-text-size) {
+  @if $padding { padding: $label-padding; }
+  @if $text-size { font-size: $label-text-size; }
 }
 
 // We use this mixin to add label styles.
-@mixin label-style($bg:$primary-color, $radius:false, $txt-color:$lbl-txt-color) {
+@mixin label-style($bg:$primary-color, $radius:false, $text-color:$label-text-color) {
 
   // We control which background color comes through
   @if $bg { background: $bg;
 
     // We use this alert text color for secondary labels.
-    @if $bg == $secondary-color { color: $lbl-txt-color-alt; }
-    @else { color: $lbl-txt-color; }
+    @if $bg == $secondary-color { color: $label-text-color-alt; }
+    @else { color: $label-text-color; }
   }
 
   // We use this to control the radius on labels.
-  @if $radius == true { @include border-radius($alert-rad); }
+  @if $radius == true { @include border-radius($label-radius); }
   @else if $radius { @include border-radius($radius); }
 
 }
 
 // We use this to add close buttons to alerts
-@mixin label($pad:$lbl-pad, $txt-size:$lbl-txt-size, $bg:$primary-color, $radius:false, $txt-color:$lbl-txt-color) {
+@mixin label($padding:$label-padding, $text-size:$label-text-size, $bg:$primary-color, $radius:false, $text-color:$label-text-color) {
   @include label-base;
-  @include label-size($pad, $txt-size);
-  @include label-style($bg, $radius, $txt-color);
+  @include label-size($padding, $text-size);
+  @include label-style($bg, $radius, $text-color);
 }
 
 /* Labels */
