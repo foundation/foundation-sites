@@ -1,40 +1,30 @@
-/* Styles for modern browsers */
-@media only screen {
+//
+// Switches
+//
 
-  /* Class names for the multiple states */
-  $switchStates: 3, 4, 5;
+// Variables
+// Maximum possible number of options
+$switchOptions: 5;
 
-  /* Generate the class names for the multiple states */
-  $switchClasses: ();
-  @each $switch in $switchStates {
-    $switchClasses: join($switchClasses, unquote(".switch-#{$switch}"), comma);
+// Create the default switch
+@mixin switch-base {
+  
+  // hide the switch button by default, for old browsers
+  .slide-button {
+    display: none;
   }
-
-  $switchClasses: join(unquote(".switch"), $switchClasses, comma);
-
-  /* Two-state switch and shared styles between all states */
-  #{$switchClasses} {
+  
+  // old browsers get standard form elements
+  // enhance the switch only on browsers with support for media queries
+  @media only screen {
+    
     position: relative;
     padding: 0;
 
     display: block;
     width: 100%;
     overflow: hidden;
-
-    /* Sizes */
-    &.large label {
-      padding: $btn-lrg 0;
-      font-size: emCalc(17px);
-    }
-    &.small label {
-    	font-size: emCalc(12px);
-      padding: $btn-sml 0;
-    }
-    &.tiny label {
-    	font-size: emCalc(11px);
-      padding: $btn-tny 0;
-    }
-
+    
     label {
       position: relative;
       z-index: 2;
@@ -43,9 +33,7 @@
       width: 50%;
       height: 100%;
       margin: 0;
-      padding: $btn-med 0;
-
-      font-size: emCalc(14px);
+      
       font-weight: bold;
       text-align: center;
     }
@@ -57,6 +45,7 @@
       z-index: 1;
 
       display: block;
+      
       width: 50%;
       height: 100%;
       padding: 0;
@@ -69,7 +58,7 @@
       opacity: 0;
     }
 
-    /* Outline the toggles when the inputs are focused */
+    // Outline the toggles when the inputs are focused
     input:focus + label {
       outline: 1px dotted #888;
     }
@@ -78,39 +67,95 @@
       left: 50%;
     }
 
-    /* Bugfix for older Webkit, including mobile Webkit. Adapted from:
-     * http://css-tricks.com/webkit-sibling-bug/
-     */
+    // Bugfix for older Webkit, including mobile Webkit. Adapted from:
+    // http://css-tricks.com/webkit-sibling-bug/
     -webkit-animation: webkitSiblingBugfix infinite 1s;
-
+    
   }
+  
+}
 
-  @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
+// old-webkit sibling bugfix, see above
+@-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
 
-  /* Generate styles for the multiple states */
-  @for $i from 1 through length($switchStates) {
-    $state: nth($switchStates, $i);
-    $width: 100 / ($i + 2);
+// Add switch sizes, using the button variables
+@mixin switch-size($pad: $btn-med) {
+  
+  label {
+    padding: $pad 0;
+    
+    // We control the font-size based on mixin input.
+    @if      $pad == $btn-med { font-size: $btn-txt-med; }
+    @else if $pad == $btn-tny { font-size: $btn-txt-tny; }
+    @else if $pad == $btn-sml { font-size: $btn-txt-sml; }
+    @else if $pad == $btn-lrg { font-size: $btn-txt-lrg; }
+    @else                     { font-size: $pad - 2; }
+  }
+  
+}
 
-    .switch-#{$state} {
-      label,
-      .slide-button {
-        width: $width * 1%;
-      }
+// Multiple options
+@mixin switch-options($count: 2) {
+  
+  // only add styles if there are more than 2 options
+  // two options are set by default by the @switch-base mixin
+  @if $count > 2 {
+    
+    // calculate the label and button width, depending on the number of options
+    $width: 100 / $count;
+    
+    label,
+    .slide-button {
+      width: $width * 1%;
     }
+    
+    // set the position of the switch, when selected
+    @for $j from 2 through ($count + 1) {
 
-    @for $j from 2 through ($i + 1) {
-
-      .switch-#{$state} input:checked:nth-of-type(#{$j}) ~ .slide-button {
+      input:checked:nth-of-type(#{$j}) ~ .slide-button {
         left: $width * ($j - 1) * 1%;
       }
 
     }
 
-    .switch-#{$state} input:checked:last-of-type ~ .slide-button {
+    // position of the switch, when the last element is selected
+    input:checked:last-of-type ~ .slide-button {
       left: 100 - $width * 1%;
     }
+    
+  }
+  
+}
 
+
+// Quickly create a switch with a single mixin
+@mixin switch($pad: $btn-med, $count: 2) {
+  @include switch-base;
+  @include switch-size($pad);
+  @include switch-options($count);
+}
+
+// Default two-option switch
+.switch {
+  
+  @include switch-base;
+  @include switch-size;
+  
+  // Switch Sizes
+  &.large { @include switch-size($pad:$btn-lrg); }
+  &.medium { @include switch-size; }
+  &.small { @include switch-size($pad:$btn-sml); }
+  &.tiny { @include switch-size($pad:$btn-tny); }
+
+}
+
+// Support for multiple options, up to the maximum set in the $switchOptions variable
+@for $i from 3 through $switchOptions {
+  
+  .switch-#{$i} {
+    @extend .switch;
+    
+    @include switch-options($i);
   }
 
 }

@@ -2259,7 +2259,7 @@ ul.flyout li.active a,
   position: absolute;
   top: 0;
   left: -20px;
-  background: url('../../lib/assets/img/foundation/orbit/rotator-black.png?1360019124') no-repeat;
+  background: url('../../lib/assets/img/foundation/orbit/rotator-black.png?1360420414') no-repeat;
   z-index: 3;
 }
 .orbit-wrapper .rotator.move {
@@ -2278,7 +2278,7 @@ ul.flyout li.active a,
 .orbit-wrapper .mask.move {
   width: 40px;
   left: 0;
-  background: url('../../lib/assets/img/foundation/orbit/timer-black.png?1360019124') repeat 0 0;
+  background: url('../../lib/assets/img/foundation/orbit/timer-black.png?1360420414') repeat 0 0;
 }
 .orbit-wrapper .pause {
   display: block;
@@ -2287,12 +2287,12 @@ ul.flyout li.active a,
   position: absolute;
   top: 0;
   left: 0;
-  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360019124') no-repeat;
+  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360420414') no-repeat;
   z-index: 4;
   opacity: 0;
 }
 .orbit-wrapper .pause.active {
-  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360019124') no-repeat 0 -40px;
+  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360420414') no-repeat 0 -40px;
 }
 .orbit-wrapper .timer:hover .pause,
 .orbit-wrapper .timer:focus .pause,
@@ -2333,21 +2333,21 @@ ul.flyout li.active a,
   cursor: pointer;
 }
 .orbit-wrapper .slider-nav span.right {
-  background: url('../../lib/assets/img/foundation/orbit/right-arrow.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/right-arrow.png?1360420414');
   background-size: 100%;
   right: 0;
 }
 .orbit-wrapper .slider-nav span.left {
-  background: url('../../lib/assets/img/foundation/orbit/left-arrow.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/left-arrow.png?1360420414');
   background-size: 100%;
   left: 0;
 }
 
 .lt-ie9 .orbit-wrapper .slider-nav span.right {
-  background: url('../../lib/assets/img/foundation/orbit/right-arrow-small.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/right-arrow-small.png?1360420414');
 }
 .lt-ie9 .orbit-wrapper .slider-nav span.left {
-  background: url('../../lib/assets/img/foundation/orbit/left-arrow-small.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/left-arrow-small.png?1360420414');
 }
 
 .orbit-bullets {
@@ -2365,7 +2365,7 @@ ul.flyout li.active a,
   cursor: pointer;
   color: #999999;
   text-indent: -9999px;
-  background: url('../../lib/assets/img/foundation/orbit/bullets.jpg?1360019124') no-repeat 4px 0;
+  background: url('../../lib/assets/img/foundation/orbit/bullets.jpg?1360420414') no-repeat 4px 0;
   width: 13px;
   height: 12px;
   overflow: hidden;
@@ -3807,35 +3807,27 @@ table tfoot tr td {
     right: 83.33333%;
   }
 }
-/* Styles for modern browsers */
+@-webkit-keyframes webkitSiblingBugfix {
+  from {
+    position: relative;
+  }
+
+  to {
+    position: relative;
+  }
+}
+
+.switch .slide-button, .switch-3 .slide-button, .switch-4 .slide-button, .switch-5 .slide-button {
+  display: none;
+}
 @media only screen {
-  /* Class names for the multiple states */
-  /* Generate the class names for the multiple states */
-  /* Two-state switch and shared styles between all states */
   .switch, .switch-3, .switch-4, .switch-5 {
     position: relative;
     padding: 0;
     display: block;
     width: 100%;
     overflow: hidden;
-    /* Sizes */
-    /* Outline the toggles when the inputs are focused */
-    /* Bugfix for older Webkit, including mobile Webkit. Adapted from:
-     * http://css-tricks.com/webkit-sibling-bug/
-     */
     -webkit-animation: webkitSiblingBugfix infinite 1s;
-  }
-  .switch.large label, .switch-3.large label, .switch-4.large label, .switch-5.large label {
-    padding: 0.9375em 0;
-    font-size: 1.0625em;
-  }
-  .switch.small label, .switch-3.small label, .switch-4.small label, .switch-5.small label {
-    font-size: 0.75em;
-    padding: 0.4375em 0;
-  }
-  .switch.tiny label, .switch-3.tiny label, .switch-4.tiny label, .switch-5.tiny label {
-    font-size: 0.6875em;
-    padding: 0.3125em 0;
   }
   .switch label, .switch-3 label, .switch-4 label, .switch-5 label {
     position: relative;
@@ -3844,8 +3836,6 @@ table tfoot tr td {
     width: 50%;
     height: 100%;
     margin: 0;
-    padding: 0.625em 0;
-    font-size: 0.875em;
     font-weight: bold;
     text-align: center;
   }
@@ -3869,69 +3859,88 @@ table tfoot tr td {
   .switch input:last-of-type:checked ~ .slide-button, .switch-3 input:last-of-type:checked ~ .slide-button, .switch-4 input:last-of-type:checked ~ .slide-button, .switch-5 input:last-of-type:checked ~ .slide-button {
     left: 50%;
   }
-
-  @-webkit-keyframes webkitSiblingBugfix {
-    from {
-      position: relative;
-    }
-
-    to {
-      position: relative;
-    }
+}
+.switch label, .switch-3 label, .switch-4 label, .switch-5 label {
+  padding: 0.625em 0;
+  font-size: 0.875em;
+}
+.switch.large label, .large.switch-3 label, .large.switch-4 label, .large.switch-5 label {
+  padding: 0.9375em 0;
+  font-size: 1.0625em;
+}
+.switch.medium label, .medium.switch-3 label, .medium.switch-4 label, .medium.switch-5 label {
+  padding: 0.625em 0;
+  font-size: 0.875em;
+}
+.switch.small label, .small.switch-3 label, .small.switch-4 label, .small.switch-5 label {
+  padding: 0.4375em 0;
+  font-size: 0.6875em;
+}
+.switch.tiny label, .tiny.switch-3 label, .tiny.switch-4 label, .tiny.switch-5 label {
+  padding: 0.3125em 0;
+  font-size: 0.625em;
 }
 
-  /* Generate styles for the multiple states */
-  .switch-3 label,
-  .switch-3 .slide-button {
-    width: 33.33333%;
-  }
-
-  .switch-3 input:checked:nth-of-type(2) ~ .slide-button {
-    left: 33.33333%;
-  }
-
-  .switch-3 input:checked:last-of-type ~ .slide-button {
-    left: 66.66667%;
-  }
-
-  .switch-4 label,
-  .switch-4 .slide-button {
-    width: 25%;
-  }
-
-  .switch-4 input:checked:nth-of-type(2) ~ .slide-button {
-    left: 25%;
-  }
-
-  .switch-4 input:checked:nth-of-type(3) ~ .slide-button {
-    left: 50%;
-  }
-
-  .switch-4 input:checked:last-of-type ~ .slide-button {
-    left: 75%;
-  }
-
-  .switch-5 label,
-  .switch-5 .slide-button {
-    width: 20%;
-  }
-
-  .switch-5 input:checked:nth-of-type(2) ~ .slide-button {
-    left: 20%;
-  }
-
-  .switch-5 input:checked:nth-of-type(3) ~ .slide-button {
-    left: 40%;
-  }
-
-  .switch-5 input:checked:nth-of-type(4) ~ .slide-button {
-    left: 60%;
-  }
-
-  .switch-5 input:checked:last-of-type ~ .slide-button {
-    left: 80%;
-  }
+.switch-3 label,
+.switch-3 .slide-button {
+  width: 33.33333%;
 }
+.switch-3 input:checked:nth-of-type(2) ~ .slide-button {
+  left: 33.33333%;
+}
+.switch-3 input:checked:nth-of-type(3) ~ .slide-button {
+  left: 66.66667%;
+}
+.switch-3 input:checked:nth-of-type(4) ~ .slide-button {
+  left: 100%;
+}
+.switch-3 input:checked:last-of-type ~ .slide-button {
+  left: 66.66667%;
+}
+
+.switch-4 label,
+.switch-4 .slide-button {
+  width: 25%;
+}
+.switch-4 input:checked:nth-of-type(2) ~ .slide-button {
+  left: 25%;
+}
+.switch-4 input:checked:nth-of-type(3) ~ .slide-button {
+  left: 50%;
+}
+.switch-4 input:checked:nth-of-type(4) ~ .slide-button {
+  left: 75%;
+}
+.switch-4 input:checked:nth-of-type(5) ~ .slide-button {
+  left: 100%;
+}
+.switch-4 input:checked:last-of-type ~ .slide-button {
+  left: 75%;
+}
+
+.switch-5 label,
+.switch-5 .slide-button {
+  width: 20%;
+}
+.switch-5 input:checked:nth-of-type(2) ~ .slide-button {
+  left: 20%;
+}
+.switch-5 input:checked:nth-of-type(3) ~ .slide-button {
+  left: 40%;
+}
+.switch-5 input:checked:nth-of-type(4) ~ .slide-button {
+  left: 60%;
+}
+.switch-5 input:checked:nth-of-type(5) ~ .slide-button {
+  left: 80%;
+}
+.switch-5 input:checked:nth-of-type(6) ~ .slide-button {
+  left: 100%;
+}
+.switch-5 input:checked:last-of-type ~ .slide-button {
+  left: 80%;
+}
+
 /* Styles for screens that are atleast 768px; */
 @media only screen and (min-width: 48em) {
   .nav-bar {
