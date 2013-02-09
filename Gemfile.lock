@@ -2,10 +2,8 @@ PATH
   remote: .
   specs:
     zurb-foundation (3.2.2)
-      compass (>= 0.12.2)
       modular-scale (= 1.0.4)
       rake
-      sass (>= 3.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -15,7 +13,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    fssm (0.2.9)
+    fssm (0.2.10)
     modular-scale (1.0.4)
       compass (>= 0.11.5)
       sassy-math (>= 1.2)

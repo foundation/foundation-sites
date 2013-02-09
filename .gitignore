@@ -14,6 +14,7 @@ rdoc
 spec/reports
 test/tmp
 test/version_tmp
+test/stylesheets
 tmp
 *.DS_Store
 marketing/.sass-cache/*

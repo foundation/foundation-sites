@@ -1,21 +1,25 @@
 $tabPadding: 15px !default;
 
 @media only screen and (min-width: emCalc(768px)) {
-  .sectioned {
+  [data-sections] {
     border: 1px solid #eee;
     border-top: 0;
     position: relative;
+
     section, .section {
       padding-top: 0;
       border-top: 0;
       position: static;
+
       .title {
         top: 1px;
         width: auto;
         border-right: 1px solid #ccc;
+
         &:hover {
           background-color: #ddd;
         }
+        
       }
       .content {
         border-top: 1px solid #efefef;
