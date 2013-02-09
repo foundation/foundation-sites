@@ -9,46 +9,65 @@ $prog-bar-height: emCalc(25px) !default;
 $prog-bar-border-color: darken(#fff, 20%) !default;
 $prog-bar-border-size: 1px !default;
 $prog-bar-border-style: solid !default;
+$prog-bar-border-radius: $button-radius !default;
 
 // We use these to control the margin & padding 
 $prog-bar-pad: emCalc(2px) !default;
 $prog-bar-margin-bottom: emCalc(10px) !default;
 
+// We use these to control the meter properties
+$prog-meter-width: 50% !default;
+
+// We use these to set the meter colors
+$prog-meter-color: $primary-color !default;
+$prog-meter-secondary-color: $secondary-color !default;
+$prog-meter-success-color: $success-color !default;
+$prog-meter-alert-color: $alert-color !default;
 
 //
 // Progress Bar Mixins
 //
 
+// We use this to control the prog bar border radii 
+
+
 // We use this to set up the progress bar container 
-@mixin prog-container {
-   height: $prog-bar-height;
-   border: $prog-bar-border-size $prog-bar-border-style $prog-bar-border-color;
-   padding: $prog-bar-pad;
-   margin-bottom: $prog-bar-margin-bottom;
+@mixin prog-container($radius:false) {
+  height: $prog-bar-height;
+  border: $prog-bar-border-size $prog-bar-border-style $prog-bar-border-color;
+  padding: $prog-bar-pad;
+  margin-bottom: $prog-bar-margin-bottom;
+  
+  @if $radius == true {
+    border-radius: $prog-bar-border-radius;
+    span { border-radius: $prog-bar-border-radius - 2px; }
+  }
+  @else if $radius {
+    border-radius: $radius;
+    span { border-radius: $radius - 2px; }
+  }
+
 }
 
+@mixin prog-meter($bg:$primary-color, $width:$prog-meter-width) {
+  @if $bg { background: $bg; }
+  @if $width { 
+    width: $width; 
+    height: 100%;
+    display: block;
+  }
+}
 
-// Progress Bar
+/* Progress Bar */
 .progress {
   @include prog-container;
   
   // Meter
   .meter {
-    background: $primary-color;
-    height: 100%;
-    display: block;
-    width: 50%;
+    @include prog-meter;
   }
-  &.secondary .meter { background: $secondary-color;}
-  &.success .meter { background: $success-color;}
-  &.alert .meter { background: $alert-color;}
-
-  // Border radii
-  &.radius { @include border-radius($button-radius);
-    .meter { @include border-radius(2px); }
-  }
-  &.round { @include border-radius(1000px);
-    .meter { @include border-radius(1000px); }
-  }
+  &.secondary .meter { @include prog-meter($bg:$secondary-color,$width:false); }
+  &.success .meter { @include prog-meter($bg:$success-color,$width:false); }
+  &.alert .meter { @include prog-meter($bg:$alert-color,$width:false); }
 
 }
