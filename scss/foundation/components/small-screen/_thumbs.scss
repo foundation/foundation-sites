@@ -1,14 +1,32 @@
-// Image Thumbnails
-.th { display: block;
-  img {
-    display: block;
-    border: solid 4px #fff;
-    @include box-shadow(0 0 0 1px rgba(#000,.2));
-    @include border-radius($thumbRadius);
-  }
+//
+// Image Thumbnail Variables
+//
 
+// We use these to control border styles
+$thumb-border-style: solid !default;
+$thumb-border-width: 4px !default;
+$thumb-border-color: #fff !default;
+
+
+// Image Thumbnail Mixins
+@mixin thumb-container() {
+  display: block;
   &:hover,
   &:focus {
     img { @include box-shadow(0 0 6px 1px rgba($mainColor,.5)); }
   }
 }
+@mixin thumb {
+  display: block;
+  border: $thumb-border-style $thumb-border-width $thumb-border-color;
+  @include box-shadow(0 0 0 1px rgba(#000,.2));
+  @include border-radius($thumbRadius);
+}
+@if $include-html-classes {
+  // Image Thumbnails
+  .th { @include thumb-container;
+    img { @include thumb; }
+  }
+}
+
+
