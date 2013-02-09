@@ -1,0 +1,16 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>foundation docs</title>
+    <link rel="stylesheet" href="<%= asset_path %>/foundation.css" />
+    <script src="<%= asset_path %>/foundation/modernizr.foundation.js"></script>
+  </head>
+  <body>
+    <%= yield %>
+    <script src="<%= asset_path %>/foundation.js"></script>
+    <script>$.foundation();</script>
+  </body>
+</html>
