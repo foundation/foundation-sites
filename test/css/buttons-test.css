@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *:before,
 *:after {
@@ -2465,7 +2466,7 @@ ul.flyout li.active a,
   position: absolute;
   top: 0;
   left: -20px;
-  background: url('../../lib/assets/img/foundation/orbit/rotator-black.png?1360019124') no-repeat;
+  background: url('../../lib/assets/img/foundation/orbit/rotator-black.png?1360432316') no-repeat;
   z-index: 3;
 }
 .orbit-wrapper .rotator.move {
@@ -2484,7 +2485,7 @@ ul.flyout li.active a,
 .orbit-wrapper .mask.move {
   width: 40px;
   left: 0;
-  background: url('../../lib/assets/img/foundation/orbit/timer-black.png?1360019124') repeat 0 0;
+  background: url('../../lib/assets/img/foundation/orbit/timer-black.png?1360432316') repeat 0 0;
 }
 .orbit-wrapper .pause {
   display: block;
@@ -2493,12 +2494,12 @@ ul.flyout li.active a,
   position: absolute;
   top: 0;
   left: 0;
-  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360019124') no-repeat;
+  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360432316') no-repeat;
   z-index: 4;
   opacity: 0;
 }
 .orbit-wrapper .pause.active {
-  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360019124') no-repeat 0 -40px;
+  background: url('../../lib/assets/img/foundation/orbit/pause-black.png?1360432316') no-repeat 0 -40px;
 }
 .orbit-wrapper .timer:hover .pause,
 .orbit-wrapper .timer:focus .pause,
@@ -2539,21 +2540,21 @@ ul.flyout li.active a,
   cursor: pointer;
 }
 .orbit-wrapper .slider-nav span.right {
-  background: url('../../lib/assets/img/foundation/orbit/right-arrow.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/right-arrow.png?1360432316');
   background-size: 100%;
   right: 0;
 }
 .orbit-wrapper .slider-nav span.left {
-  background: url('../../lib/assets/img/foundation/orbit/left-arrow.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/left-arrow.png?1360432316');
   background-size: 100%;
   left: 0;
 }
 
 .lt-ie9 .orbit-wrapper .slider-nav span.right {
-  background: url('../../lib/assets/img/foundation/orbit/right-arrow-small.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/right-arrow-small.png?1360432316');
 }
 .lt-ie9 .orbit-wrapper .slider-nav span.left {
-  background: url('../../lib/assets/img/foundation/orbit/left-arrow-small.png?1360019124');
+  background: url('../../lib/assets/img/foundation/orbit/left-arrow-small.png?1360432316');
 }
 
 .orbit-bullets {
@@ -2571,7 +2572,7 @@ ul.flyout li.active a,
   cursor: pointer;
   color: #999999;
   text-indent: -9999px;
-  background: url('../../lib/assets/img/foundation/orbit/bullets.jpg?1360019124') no-repeat 4px 0;
+  background: url('../../lib/assets/img/foundation/orbit/bullets.jpg?1360432316') no-repeat 4px 0;
   width: 13px;
   height: 12px;
   overflow: hidden;
@@ -3364,22 +3365,20 @@ kbd {
   color: #505050;
 }
 
-.inline-list,
-.link-list {
+/* Inline Lists */
+.inline-list {
   margin: 0 0 1.0625em -1.375em;
   padding: 0;
   list-style: none;
   overflow: hidden;
 }
-.inline-list > li,
-.link-list > li {
+.inline-list > li {
   list-style: none;
   float: left;
   margin-left: 1.375em;
   display: block;
 }
-.inline-list > li > *,
-.link-list > li > * {
+.inline-list > li > * {
   display: block;
 }
 
@@ -3549,10 +3548,10 @@ ul.pagination li.current a:hover, ul.pagination li.current a:focus {
 }
 
 .progress {
+  height: 1.5625em;
+  border: 1px solid #cccccc;
   padding: 0.125em;
   margin-bottom: 0.625em;
-  border: 1px solid #cccccc;
-  height: 1.5625em;
 }
 .progress .meter {
   background: #2ba6cb;

@@ -1,7 +1,34 @@
+//
+// Clearing Variables
+//
+$clearing-bg: rgba(0,0,0,0.8) !default;
+$clearing-old-browser-bg: rgb(0,0,0) !default;
+$clearing-active-img-height: 75% !default;
+$clearing-caption-text-color: #fff !default;
+$clearing-caption-bg: $clearing-bg !default;
+$clearing-caption-old-browser-bg: $clearing-old-browser-bg !default;
+$clearing-close-color: #fff !default;
+$clearing-arrow-size: 16px !default;
+$clearing-arrow-color: $clearing-close-color !default;
+$clearing-carousel-bg: rgba(0,0,0,0.75) !default;
+$clearing-carousel-old-browser-bg: $clearing-old-browser-bg !default;
+$clearing-carousel-height: 150px !default;
+$clearing-img-old-browser-bg: $clearing-old-browser-bg !default;
+$clearing-img-bg: $clearing-bg !default;
+$clearing-carousel-thumb-width: 175px !default;
+$clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
+
+//
+// Clearing Mixins
+//
+
+
+
+
 // Clearing Styles
 .clearing-blackout {
-  background: $clearingOldBrowserBg;
-  background: $clearingBg;
+  background: $clearing-old-browser-bg;
+  background: $clearing-bg;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -19,7 +46,7 @@
 }
 
 .visible-img {
-  height: $clearingActiveImgHeight;
+  height: $clearing-active-img-height;
   position: relative;
 
   img {
@@ -32,13 +59,13 @@
   }
 
   .clearing-caption {
-    color: $clearingCaptionFontColor;
+    color: $clearing-caption-text-color;
     margin-bottom: 0;
     text-align: center;
     position: absolute;
     bottom: 0;
-    background: $clearingCaptionOldBrowserBg;
-    background: $clearingCaptionBg;
+    background: $clearing-caption-old-browser-bg;
+    background: $clearing-caption-bg;
     width: 100%;
     padding: 10px 100px;
   }
@@ -51,7 +78,7 @@
   #{$defaultOpposite}: 20px;
   font-size: 30px;
   line-height: 1;
-  color: $clearingCloseColor;
+  color: $clearing-close-color;
   display: none;
 
   &:hover,
@@ -71,8 +98,8 @@
 .clearing-main-left:active,
 .clearing-main-right:active { margin-top: -15px; }
 
-.clearing-main-left { left: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
-.clearing-main-right { right: 10px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
+.clearing-main-left { left: 10px; @include cssTriangle($clearing-arrow-size, $clearing-arrow-color, right); }
+.clearing-main-right { right: 10px; @include cssTriangle($clearing-arrow-size, $clearing-arrow-color, left); }
 
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 
@@ -86,15 +113,15 @@ ul[data-clearing] li {
 .clearing-assembled .clearing-container {
 
   .carousel {
-    background: $clearingCarouselOldBrowserBg;
-    background: $clearingCarouselBg;
-    height: $clearingCarouselHeight;
+    background: $clearing-carousel-old-browser-bg;
+    background: $clearing-carousel-bg;
+    height: $clearing-carousel-height;
     margin-top: 5px;
   }
 
   .visible-img {
-    background: $clearingImgOldBrowserBg;
-    background: $clearingImgBg;
+    background: $clearing-img-old-browser-bg;
+    background: $clearing-img-bg;
     overflow: hidden;
   }
 
@@ -108,7 +135,7 @@ ul[data-clearing] li {
 
     li {
       display: block;
-      width: $clearingCarouselThumbWidth;
+      width: $clearing-carousel-thumb-width;
       height: inherit;
       padding: 0;
       float: $defaultFloat;
@@ -130,7 +157,7 @@ ul[data-clearing] li {
         min-width: 100% !important;
       }
 
-      &.visible { border-top: $clearingCarouselThumbActiveBorder; }
+      &.visible { border-top: $clearing-carousel-thumb-active-border; }
     }
   }
 }

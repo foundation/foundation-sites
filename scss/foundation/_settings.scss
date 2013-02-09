@@ -1,5 +1,8 @@
 // Settings file containing Foundation defaults
 
+// We use this to control whether or not CSS classes come through in the files.
+$include-html-classes: true;
+
 // Grid Settings
 
 $emBase: 16px;
@@ -123,10 +126,6 @@ $topBarNavToggleSize:emCalc(8px) !default;
 // UI Settings
 
 $thumbRadius: 3px !default;
-$progBarHeight: emCalc(25px) !default;
-$progBarBorderColor: darken(#fff, 20%) !default;
-$progBarBorderSize: 1px !default;
-$progBarPad: emCalc(2px) !default;
 $tableBorderRadius: 3px !default;
 
 // Tooltip Settings
@@ -199,25 +198,6 @@ $orbitSlideNumBgColor: rgba(0,0,0,0.7) !default;
 $orbitSlideNumFontColor: #fff !default;
 $orbitSlideNumPadding: emCalc(5px) !default;
 
-// Clearing Settings
-
-$clearingBg: rgba(0,0,0,0.8) !default;
-$clearingOldBrowserBg: rgb(0,0,0) !default;
-$clearingCaptionBg: rgba(0,0,0,0.7) !default;
-$clearingCaptionOldBrowserBg: rgb(0,0,0) !default;
-$clearingCaptionFontColor: #fff !default;
-$clearingCloseColor: #fff !default;
-$clearingArrowColor: #fff !default;
-$clearingArrowSize: 16px !default;
-$clearingCarouselBg: rgba(0,0,0,0.75) !default;
-$clearingCarouselOldBrowserBg: rgb(0,0,0) !default;
-$clearingCarouselHeight: 150px !default;
-$clearingActiveImgHeight: 75% !default;
-$clearingCarouselThumbWidth: 175px;
-$clearingCarouselThumbActiveBorder: 4px solid rgb(255,255,255) !default;
-$clearingImgBg: rgba(0,0,0,0.75) !default;
-$clearingImgOldBrowserBg: rgb(0,0,0) !default;
-
 // Joyride Settings
 
 $tipBg: rgba(0,0,0,0.8) !default;
@@ -263,5 +243,5 @@ $complementaryWidth: 20% !default;
 $largeScreen: emCalc(768px) !default;
 $smallScreen: emCalc(1px) !default;
 
-$smallBreakPoint: "only screen and (min-width:"#{$smallScreen}")" !default;
-$largeBreakPoint: "only screen and (min-width:"#{$largeScreen}")" !default;
+$small: "only screen and (min-width:"#{$smallScreen}")" !default;
+$large: "only screen and (min-width:"#{$largeScreen}")" !default;
