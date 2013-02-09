@@ -6,6 +6,8 @@
 $thumb-border-style: solid !default;
 $thumb-border-width: 4px !default;
 $thumb-border-color: #fff !default;
+$thumb-box-shadow: 0 0 0 1px rgba(#000,.2) !default;
+$thumb-radius: 3px !default;
 
 
 // Image Thumbnail Mixins
@@ -13,14 +15,14 @@ $thumb-border-color: #fff !default;
   display: block;
   &:hover,
   &:focus {
-    img { @include box-shadow(0 0 6px 1px rgba($mainColor,.5)); }
+    img { @include box-shadow($thumb-box-shadow); }
   }
 }
 @mixin thumb {
   display: block;
   border: $thumb-border-style $thumb-border-width $thumb-border-color;
-  @include box-shadow(0 0 0 1px rgba(#000,.2));
-  @include border-radius($thumbRadius);
+  @include box-shadow($thumb-box-shadow);
+  @include border-radius($thumb-radius);
 }
 @if $include-html-classes {
   // Image Thumbnails
