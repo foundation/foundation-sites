@@ -6,7 +6,7 @@ $tabPadding: emCalc(15px) !default;
   border: 1px solid #eee;
 
   section, .section {
-    padding-top: ($tabPadding * 3);
+    padding-top: $tabPadding * 3;
     border-top: 1px solid #ccc;
     position: relative;
 
@@ -19,7 +19,7 @@ $tabPadding: emCalc(15px) !default;
       background-color: #efefef;
 
       a {
-        padding: ($tabPadding - 1) $tabPadding;
+        padding: ($tabPadding - emCalc(1px)) $tabPadding;
         display: inline-block;
       }
 
