@@ -1,11 +1,40 @@
-// Keytroke Characters
+//
+// Keystroke Variables
+//
+
+// We use these to control text styles.
+$keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
+$keystroke-text-size: emCalc(15px) !default;
+
+// We use this to control keystroke padding.
+$keystroke-padding: emCalc(2px) emCalc(4px) emCalc(0px) !default;
+
+// We use these to control background and border styles.
+$keystroke-bg: darken(#fff, 7%) !default;
+$keystroke-border-style: solid !default;
+$keystroke-border-width: 1px !default;
+$keystroke-border-color: darken(#fff, 14%) !default;
+$keystroke-radius: $button-radius;
+
+//
+// Keystroke Mixins
+//
+
+// We use this mixin to create keystroke styles.
+@mixin keystroke($bg:$keystroke-bg) {
+  margin: 0;
+  font-family: $keystroke-font;
+  font-size: $keystroke-text-size;
+  padding: $keystroke-padding;
+  background: $keystroke-bg;
+  border-style: $keystroke-border-style;
+  border-width: $keystroke-border-width;
+  border-color: $keystroke-border-color;
+  @include border-radius($keystroke-radius);
+}
+
+/* Keytroke Characters */
 .keystroke,
 kbd {
-  font-family: "Consolas", "Menlo", "Courier", monospace;
-  font-size: emCalc(13px);
-  padding: emCalc(2px) emCalc(4px) emCalc(0px);
-  margin: 0;
-  background: darken($white, 7%);
-  border: solid 1px darken($white, 14%);
-  @include border-radius($button-radius);
+  @include keystroke;
 }

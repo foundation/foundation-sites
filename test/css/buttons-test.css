@@ -3309,14 +3309,17 @@ form.custom .custom.disabled {
   height: 1.875em;
 }
 
+/* Keytroke Characters */
 .keystroke,
 kbd {
-  font-family: "Consolas", "Menlo", "Courier", monospace;
-  font-size: 0.8125em;
-  padding: 0.125em 0.25em 0em;
   margin: 0;
+  font-family: "Consolas", "Menlo", "Courier", monospace;
+  font-size: 0.9375em;
+  padding: 0.125em 0.25em 0em;
   background: #ededed;
-  border: solid 1px #dbdbdb;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dbdbdb;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
