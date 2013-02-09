@@ -1,7 +1,7 @@
 $tabPadding: 15px !default;
 
 @media only screen and (min-width: emCalc(768px)) {
-  [data-sections] {
+  [data-section] {
     border: 1px solid #eee;
     border-top: 0;
     position: relative;
@@ -19,7 +19,7 @@ $tabPadding: 15px !default;
         &:hover {
           background-color: #ddd;
         }
-        
+
       }
       .content {
         border-top: 1px solid #efefef;
