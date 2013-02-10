@@ -76,7 +76,7 @@
     <br><br><br><br>
 
   </div>
-    <ol data-joyride data-options="">
+    <ol data-joyride data-options="cookieMonster: true">
       <li data-class="so-awesome" data-text="Next" class="custom">
         <h4>Stop #1</h4>
         <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
@@ -106,8 +106,9 @@
     <script src="../lib/assets/js/foundation/foundation.joyride.js"></script>
     <script>
       // Joyride does not start on its own
-      $(document).foundation();
-      $(document).foundation('joyride', 'start', {cookeMonster: true});
+      $(document)
+        .foundation()
+        .foundation('joyride', 'start');
     </script>
 
   </body>
