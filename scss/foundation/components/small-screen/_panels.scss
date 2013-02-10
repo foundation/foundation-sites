@@ -1,39 +1,60 @@
+//
+// Panel Variables
+//
+$panel-bg: darken(#fff, 5%) !default;
+$panel-border-style: solid !default;
+$panel-border-size: 1px !default;
+$panel-border-color: darken($panel-bg, 10%) !default;
+$panel-margin: 0 0 emCalc(22px) 0 !default;
+$panel-padding: emCalc(20px) !default;
+$panel-radius: $button-radius !default;
 
-/* Panels ---------------------- */
-@mixin panel() {
-  background: darken($white, 5%);
-  border: solid 1px darken($white, 10%);
-  margin: 0 0 emCalc(22px) 0;
-  padding: emCalc(20px);
-  &>:first-child { margin-top: 0; }
-  &>:last-child { margin-bottom: 0; }
-}
+//
+// Panel Mixins
+//
 
-.panel { @include panel;
+@mixin panel($bg:$panel-bg, $radius:false) {
+  @if $bg {
+    border-style: $panel-border-style;
+    border-width: $panel-border-size;
+    margin: $panel-margin;
+    padding: $panel-padding;
+    background: $bg;
+    border-color: darken($bg, 10%);
 
-  &>:first-child { margin-top: 0; }
-  &>:last-child { margin-bottom: 0; }
-
-  &.callout {
-    background: $primary-color;
-    color: #fff;
-    border-color: darken($primary-color, 10%);
-    @include box-shadow(inset 0px 1px 0px rgba(255,255,255,0.5));
-
-    a { color: #fff; }
-
-    .button {
-      background: $white;
-      border: none;
-      color: $primary-color;
-      text-shadow: none;
-
-      &:hover,
-      &:focus { background: rgba(255,255,255,0.8); }
-    }
+    &>:first-child { margin-top: 0; }
+    &>:last-child { margin-bottom: 0; }
   }
 
-  &.radius { @include border-radius($button-radius); }
-  &.round { @include border-radius(1000px); }
+  @if $radius {
+    @include border-radius($radius);
+  }
+}
+
+@if $include-html-classes {
+
+  /* Panels ---------------------- */
+  .panel { @include panel;
+
+    &.callout {
+      @include panel($bg:$primary-color);
+      color: #fff;
+      @include inset-shadow($active:false);
+      a { color: #fff; }
+
+      .button {
+        background: $white;
+        border: none;
+        color: $primary-color;
+        text-shadow: none;
+
+        &:hover,
+        &:focus { background: rgba(255,255,255,0.8); }
+      }
+    }
+
+    &.radius { @include panel($bg:false, $radius:$panel-radius); }
+
+  }
 
 }
