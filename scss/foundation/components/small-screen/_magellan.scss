@@ -1,0 +1,59 @@
+// Magellan
+
+//
+// Magellan Variables
+//
+// We use this to control default padding value
+$magellan-padding: emCalc(15px);
+
+$magellan-background: rgba(255,255,255,.9);
+
+// We use these to control border styles
+$magellan-border-width: 1px;
+$magellan-border-style: solid;
+$magellan-border-color: #ccc;
+
+@mixin magellan {
+  background: $magellan-background;
+  z-index:10;
+  padding: 0 $magellan-padding;
+  ul { list-style: none; }
+  a {
+    display: block;
+    text-transform: uppercase;
+    padding: $magellan-padding; 
+    font-size: emCalc(12px);
+  }
+  .active {
+    color: lighten(#000,30%);
+    font-weight: bold;
+  }
+
+}
+@mixin magellan-sidenav {
+  float: $defaultFloat;
+  margin-#{$defaultOpposite}: emCalc(25px);
+  border-#{$defaultOpposite}:$magellan-border-width $magellan-border-style $magellan-border-color;
+  ul li {
+    display: block;
+  }
+}
+
+@mixin magellan-topnav {
+  @include clearfix();
+  width: 100%;
+  max-width: $row-width;
+  border-bottom:$magellan-border-width $magellan-border-style $magellan-border-color;
+
+  ul li {
+    display: inline; 
+    float: $defaultFloat;
+    padding-right: $magellan-padding;
+  }
+}
+@if $include-html-classes {
+  /* Magellan */
+  [data-magellan-expedition]#magellanSideNav { @include magellan; @include magellan-sidenav; }
+  [data-magellan-expedition]#magellanTopNav { @include magellan; @include magellan-topnav; }
+}
+
