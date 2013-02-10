@@ -59,9 +59,9 @@ $pagination-link-current-active-bg: $primary-color !default;
   &:hover a,
   a:focus { background: $pagination-link-active-bg; }
 
-  &.unavailable a { 
-    cursor: $pagination-link-unavailable-cursor; 
-    color: $pagination-link-unavailable-text-color; 
+  &.unavailable a {
+    cursor: $pagination-link-unavailable-cursor;
+    color: $pagination-link-unavailable-text-color;
   }
 
   &.unavailable:hover a, &.unavailable a:focus { background: $pagination-link-unavailable-bg-active; }
@@ -79,7 +79,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 
 
 /* Pagination */
-ul.pagination {
+.pagination {
   @include pagination-container;
   li { @include paginaton-list-items; }
 }
