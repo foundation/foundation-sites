@@ -1,0 +1,6 @@
+source :rubygems
+
+gem 'foreman'
+gem 'stasis'
+gem 'sprockets'
+gem 'sass'
