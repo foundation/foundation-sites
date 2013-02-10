@@ -14,21 +14,8 @@
 
   <!-- Included CSS Files -->
   <link rel="stylesheet" href="css/styles.css">
-  <style type="text/css">
-  /*#magellanTour {height:200px; overflow:auto;}*/
-  #magellanTopNav .active, #magellanSideNav .active {color:orange; font-weight:700;}
-  #magellanTopNav {
-    position:fixed; top:0; background:white; padding:3px; width:100%; z-index:10;
-    border-bottom:1px solid #ccc;
-    margin:0;
-    padding:0;
-  }
-  #magellanTopNav ul {list-style:none;}
-  #magellanTopNav ul li {display:inline; padding-right:15px;}
-  #magellanSideNav {list-style:none;}
-  </style>
 
-  <script src="../vendor/assets/js/foundation/modernizr.foundation.js"></script>
+  <script src="../lib/assets/js/foundation/modernizr.foundation.js"></script>
 </head>
 <body>
 
@@ -48,9 +35,9 @@
 
       <div class="row">
         <div class="four columns">
-          <div data-magellan-expedition="fixed">
+          <div data-magellan-expedition="fixed" id="magellanTopNav">
             <h4>Navigation</h4>
-            <ul id="magellanSideNav">
+            <ul>
               <li><a href="#" data-magellan-arrival="cape-virgenes">cape virgenes</a></li>
               <li><a href="#" data-magellan-arrival="tierra-del-fuego">tierra-del-fuego</a></li>
               <li><a href="#" data-magellan-arrival="limasawa">limasawa</a></li>
@@ -60,7 +47,7 @@
         <div class="eight columns">
           <div id="magellanTour">
             <div id="destination1" data-magellan-destination="cape-virgenes">
-              <h4>cape-virgenes</h4>
+              <h4>cape virgenes</h4>
               <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
               <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
               <p>Bacon ipsum dolor sit amet ut prosciutto pork loin deserunt capicola in. Ex anim beef ribs, cupidatat ullamco et shoulder leberkas turkey aliqua minim jerky shank tempor ribeye. Beef ribs nisi brisket sirloin. Salami quis fugiat culpa sunt tongue. Nisi sunt ribeye in. Pork belly pastrami aliqua occaecat. Flank exercitation ribeye sausage tail beef ribs magna aliqua bacon pig boudin. Officia ad ut rump aliquip meatball. Flank laborum drumstick ut short loin. Filet mignon pig capicola tongue shankle. T-bone beef ribs swine esse shoulder pig salami dolore in turkey veniam aliquip cow voluptate. Ball tip tri-tip consequat pig officia pork chop tongue pork loin jerky, rump flank. Flank consectetur id ut. Boudin chicken meatball leberkas filet mignon id.</p>
@@ -88,25 +75,13 @@
   </div>
 
   <!-- Included JS Files -->
-  <script src="../vendor/assets/js/foundation/jquery.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.placeholder.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.alerts.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.accordion.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.buttons.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.tooltips.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.forms.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.tabs.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.navigation.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.reveal.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.magellan.js"></script>
-  <script src="../vendor/assets/js/foundation/jquery.foundation.orbit.js"></script>
-  <script src="../vendor/assets/js/foundation/app.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="../lib/assets/js/foundation/foundation.magellan.js"></script>
   <script type="text/javascript">
+    $(document).foundationMagellan();
     $("[data-magellan-expedition]").first();
     var d1 = $("#destination1");
     var adjustedOffset = d1.offset().top - d1.parent().offset().top;
-    console.info(adjustedOffset);
   </script>
 </body>
 </html>
