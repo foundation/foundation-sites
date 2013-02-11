@@ -58,6 +58,9 @@ MODX
 
 * [MODX Version](http://designfromwithin.com/blog/2012/02/07/foundation-modx/) by Menno Pietersen
 
+DOCPAD
+* [DOCPAD Skeleton] (https://github.com/axyz/zurb-foundation.docpad) by [Andrea Moretti] (https://github.com/axyz)
+
 .NET
 
 * [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Foundation3_MVC4) by Edward Charbeneau, @EdCharbeneau
