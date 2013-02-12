@@ -1,0 +1,23 @@
+/*
+Errno::ENOENT: No such file or directory - 
+
+Backtrace:
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:339:in `read'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:201:in `each'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:235:in `watch'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin.rb:107:in `method_missing'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/exec.rb:444:in `watch_or_update'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/exec.rb:307:in `process_result'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/exec.rb:41:in `parse'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/exec.rb:21:in `parse!'
+/Users/chris/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.2.5/bin/sass:8:in `<top (required)>'
+/Users/chris/.rbenv/versions/1.9.3-p194/bin/sass:23:in `load'
+/Users/chris/.rbenv/versions/1.9.3-p194/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::ENOENT: No such file or directory - "; }

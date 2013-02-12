@@ -14,7 +14,8 @@ rdoc
 spec/reports
 test/tmp
 test/version_tmp
-test/stylesheets
+test/css
+test/scss/output-test
 tmp
 *.DS_Store
 marketing/.sass-cache/*
@@ -24,4 +25,4 @@ test/css/styles.css
 *.orig
 node_modules
 docs/public/*
-*.sass-cache
+

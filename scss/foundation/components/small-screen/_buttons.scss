@@ -30,7 +30,7 @@ $button-border-style: solid !default;
 $button-border-color: darken($primary-color, $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
-$button-radius: 3px !default;
+$button-radius: $global-radius !default;
 
 // We use this to set default opacity for disabled buttons.
 $button-disabled-opacity: 0.6 !default;
