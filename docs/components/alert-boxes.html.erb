@@ -164,12 +164,13 @@ $alert-radius:              $global-radius;</code></pre>
     <h3>Using the Javascript</h3>
     <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zeptos.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
 
-<pre><code data-language="javascript"><script src="path/to/zeptos.js">
+  <%= code_example '
+<script src="path/to/zeptos.js">
 <script src="path/to/foundation.js">
 <script src="path/to/foundation.alerts.js"></script>
 <script type="text/javascript">
 $(document).foundation();
-</script></code></pre>
+</script>', :html %>
 
     <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
 
