@@ -82,7 +82,7 @@ $alert-radius:              $global-radius                                 !defa
 
 // We use this to quickly create alerts with a single mixin.
 @mixin alert($bg:$primary-color, $radius:false) {
-  @include alert-style;
+  @include alert-base;
   @include alert-style($bg);
   @include radius($radius);
 }

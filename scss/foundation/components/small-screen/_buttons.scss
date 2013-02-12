@@ -3,37 +3,37 @@
 //
 
 // We use these to build padding for buttons.
-$button-med: emCalc(10px) !default;
-$button-tny: emCalc(5px) !default;
-$button-sml: emCalc(7px) !default;
-$button-lrg: emCalc(15px) !default;
+$button-med: emCalc(10px)                                             !default;
+$button-tny: emCalc(5px)                                              !default;
+$button-sml: emCalc(7px)                                              !default;
+$button-lrg: emCalc(14px)                                             !default;
 
 // We use this to control the display property.
-$button-display: inline-block !default;
+$button-display: inline-block                                         !default;
 
 // We use these to control button text styles.
-$button-text-color: #fff !default;
-$button-text-color-alt: #333 !default;
-$button-text-med: emCalc(14px) !default;
-$button-text-tny: emCalc(10px) !default;
-$button-text-sml: emCalc(11px) !default;
-$button-text-lrg: emCalc(17px) !default;
-$button-text-weight: bold !default;
-$button-text-align: center !default;
+$button-text-color: #fff                                              !default;
+$button-text-color-alt: #333                                          !default;
+$button-text-med: emCalc(14px)                                        !default;
+$button-text-tny: emCalc(10px)                                        !default;
+$button-text-sml: emCalc(11px)                                        !default;
+$button-text-lrg: emCalc(18px)                                        !default;
+$button-text-weight: bold                                             !default;
+$button-text-align: center                                            !default;
 
 // We use these to control various hover effects.
-$button-function-factor: 10% !default;
+$button-function-factor: 10%                                          !default;
 
 // We use these to control button border styles.
-$button-border-width: 1px !default;
-$button-border-style: solid !default;
+$button-border-width: 1px                                             !default;
+$button-border-style: solid                                           !default;
 $button-border-color: darken($primary-color, $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
-$button-radius: $global-radius !default;
+$button-radius: $global-radius                                        !default;
 
 // We use this to set default opacity for disabled buttons.
-$button-disabled-opacity: 0.6 !default;
+$button-disabled-opacity: 0.6                                         !default;
 
 
 //
@@ -73,7 +73,7 @@ $button-disabled-opacity: 0.6 !default;
     @else if $padding == $button-tny { font-size: $button-text-tny; }
     @else if $padding == $button-sml { font-size: $button-text-sml; }
     @else if $padding == $button-lrg { font-size: $button-text-lrg; }
-    @else                     { font-size: $padding - 2; }
+    @else                     { font-size: $padding - emCalc(2px); }
   }
 
   // We can set $full-width:true to remove side padding extend width.
@@ -102,13 +102,16 @@ $button-disabled-opacity: 0.6 !default;
   // We control which background styles are used,
   // these can be removed by setting $bg:false
   @if $bg {
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
     background-color: $bg;
     border-color: darken($bg, $button-function-factor);
     &:hover,
     &:focus { background-color: darken($bg, $button-function-factor); }
 
-    // We control the text color based on variables passed to mixin.
-    @if $bg == $secondary-color {
+    // We control the text color for you based on the background color.
+    @if $bg-lightness > 70% {
       color: $button-text-color-alt;
       &:hover,
       &:focus { color: $button-text-color-alt; }
@@ -130,13 +133,13 @@ $button-disabled-opacity: 0.6 !default;
   }
 
   // We can control how much button radius us used.
-  @if $radius == true { @include border-radius($button-radius); }
-  @else if $radius { @include border-radius($radius); }
+  @if $radius == true { @include radius($button-radius); }
+  @else if $radius { @include radius($radius); }
 
 }
 
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
-@mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false) {
+@mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false, $is-input:false) {
   @include button-base;
   @include button-size($padding, $full-width);
   @include button-style($bg, $radius, $disabled);

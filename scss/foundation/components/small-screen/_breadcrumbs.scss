@@ -3,30 +3,30 @@
 //
 
 // We use this to set the background color for the breadcrumb container.
-$crumb-bg: lighten($secondaryColor, 5%) !default;
+$crumb-bg: lighten($secondaryColor, 5%)                        !default;
 
 // We use these to set the padding around the breadcrumbs.
-$crumb-padding: emCalc(6px) emCalc(10px) emCalc(8px)!default;
-$crumb-side-padding: emCalc(12px) !default;
+$crumb-padding: emCalc(6px) emCalc(14px) emCalc(9px)           !default;
+$crumb-side-padding: emCalc(12px)                              !default;
 
 // We use these to control border styles.
-$crumb-border-size: 1px !default;
-$crumb-border-style: solid !default;
-$crumb-border-color: $secondary-color !default;
-$crumb-radius: $button-radius !default;
-$crumb-function-factor: 10% !default;
+$crumb-function-factor: 10%                                    !default;
+$crumb-border-size: 1px                                        !default;
+$crumb-border-style: solid                                     !default;
+$crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
+$crumb-radius: $button-radius                                  !default;
 
 // We use these to set various text styles for breadcrumbs.
-$crumb-text-size: emCalc(11px) !default;
-$crumb-text-color: $primary-color !default;
-$crumb-text-color-current: #333 !default;
-$crumb-text-color-unavailable: #999 !default;
-$crumb-text-transform: uppercase !default;
-$crumb-link-decor: underline !default;
+$crumb-text-size: emCalc(11px)                                 !default;
+$crumb-text-color: $primary-color                              !default;
+$crumb-text-color-current: #333                                !default;
+$crumb-text-color-unavailable: #999                            !default;
+$crumb-text-transform: uppercase                               !default;
+$crumb-link-decor: underline                                   !default;
 
 // We use these to control the slash between breadcrumbs
-$crumb-slash-color: #aaa !default;
-$crumb-slash: "/";
+$crumb-slash-color: #aaa                                       !default;
+$crumb-slash: "/"                                              !default;
 
 //
 // Breakcrumb Mixins
@@ -41,10 +41,14 @@ $crumb-slash: "/";
   list-style: none;
   border-style: $crumb-border-style;
   border-width: $crumb-border-size;
+
+  // We control which background color and border come through.
+  background-color: $crumb-bg;
+  border-color: $crumb-border-color;
 }
 
 // We use this mixin to create breadcrumb styles from list items.
-@mixin crumb-base {
+@mixin crumbs {
 
   // A normal state will make the links look and act like clickable breadcrumbs.
   margin: 0;
@@ -58,6 +62,8 @@ $crumb-slash: "/";
   span {
     font-size: $crumb-text-size;
     padding-#{$defaultFloat}: $crumb-side-padding;
+    text-transform: $crumb-text-transform;
+    color: $crumb-text-color;
   }
 
   // Current is for the link of the current page
@@ -82,23 +88,6 @@ $crumb-slash: "/";
       cursor: default;
     }
   }
-}
-
-@mixin crumb-style() {
-
-  // This find the lightness percentage of the background color.
-  $bg-lightness: lightness($bg);
-
-  // We control which background color and border come through.
-  background-color: $bg;
-  border-color: darken($bg, $crumb-function-factor);
-
-  // We control the text color for you based on the background color.
-  @if $bg-lightness > 70% { color: $alert-text-color-alt; }
-  @else                   { color: $alert-text-color; }
-
-  background: $crumb-bg;
-  border-color: $crumb-border-color;
 
   &:before {
     content: "#{$crumb-slash}";
@@ -110,17 +99,15 @@ $crumb-slash: "/";
   &:first-child span { padding-#{$defaultFloat}: 0; }
   &:first-child:before { content: ""; }
 
-  a,
-  span {
-    text-transform: $crumb-text-transform;
-    color: $crumb-text-color;
-  }
 }
+
 
 /* Breadcrumbs */
 .breadcrumbs {
   @include crumb-container;
   @include radius($crumb-radius);
 
-  li { @include crumb-base; }
+  li {
+    @include crumbs;
+  }
 }
