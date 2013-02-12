@@ -24,3 +24,4 @@ test/css/styles.css
 *.orig
 node_modules
 docs/public/*
+*.sass-cache
