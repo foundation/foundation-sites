@@ -9,6 +9,6 @@ helpers do
   end
 
   def code_example(code, lang=:ruby)
-    CodeRay.scan(code, lang).div(:css => :class)
+    "<div class='#{lang}'>" + CodeRay.scan(code, lang).div(:css => :class) + "</div>"
   end
 end
