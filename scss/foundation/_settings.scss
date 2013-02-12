@@ -1,9 +1,26 @@
 // Settings file containing Foundation defaults
 
+// Function for calculating em values
+@function emCalc($pxWidth) {
+  @return $pxWidth / $emBase * 1em;
+}
+
 // We use this to control whether or not CSS classes come through in the files.
 $emBase: 16px;
-$include-html-classes: true;
+$include-html-classes: true !default;
+$global-radius: 3px !default;
+$global-rounded: 1000px !default;
 // $ie8gridSupport: no;
+
+@mixin radius($radius:$global-radius) {
+
+  // We use this to control border radius.
+  @if $radius {
+    -webkit-border-radius: $radius;
+            border-radius: $radius;
+  }
+
+}
 
 
 $blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported

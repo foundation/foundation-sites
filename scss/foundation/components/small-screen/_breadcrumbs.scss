@@ -37,7 +37,6 @@ $crumb-slash: "/";
   background: $crumb-bg;
   padding: $crumb-padding;
   border: $crumb-border-size $crumb-border-style $crumb-border-color;
-  @include border-radius($crumb-radius);
   overflow: hidden;
   margin-#{$defaultFloat}: 0;
   list-style: none;
@@ -98,6 +97,9 @@ $crumb-slash: "/";
 }
 
 /* Breadcrumbs */
-.breadcrumbs { @include crumb-container;
+.breadcrumbs {
+  @include crumb-container;
+  @include radius($crumb-radius);
+
   li { @include crumbs; }
 }

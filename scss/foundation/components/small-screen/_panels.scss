@@ -26,9 +26,7 @@ $panel-radius: $button-radius !default;
     &>:last-child { margin-bottom: 0; }
   }
 
-  @if $radius {
-    @include border-radius($radius);
-  }
+  @if $radius { @include border-radius($radius); }
 }
 
 @if $include-html-classes {

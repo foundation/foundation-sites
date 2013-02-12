@@ -1,10 +1,10 @@
 $shiny-edge-size: 0 1px 0 !default;
-$shiny-edge-hilite-color: rgba(#fff, .5) !default;
-$shiny-edge-shadow-color: rgba(#000, .2) !default;
+$shiny-edge-color: rgba(#fff, .5) !default;
+$shiny-edge-active-color: rgba(#000, .2) !default;
 
 
 @mixin inset-shadow($active:true) {
   // We can control whether or not we have inset shadows edges.
-  @include box-shadow($shiny-edge-size $shiny-edge-hilite-color inset);
-    @if $active { &:active { @include box-shadow($shiny-edge-size $shiny-edge-shadow-color inset); } }
+  @include box-shadow($shiny-edge-size $shiny-edge-color inset);
+    @if $active { &:active { @include box-shadow($shiny-edge-size $shiny-edge-active-color inset); } }
 }

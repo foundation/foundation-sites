@@ -1,3 +1,9 @@
+//
+// Typography Variables
+//
+$code-color: darken($alert-color, 15%) !default;
+$code-font-family: Consolas, 'Liberation Mono', Courier, monospace !default;
+
 // Typography resets
 div,
 dl,
@@ -64,8 +70,8 @@ h1, h2, h3, h4, h5, h6 {
   color: $headerFontColor;
   text-rendering: optimizeLegibility;
   line-height: 1.1;
-  margin-bottom: emCalc(17px);
-  margin-top: emCalc(17px);
+  margin-bottom: emCalc(12px);
+  margin-top: emCalc(12px);
 
   small {
     font-size: 60%;
@@ -114,8 +120,9 @@ small {
 }
 
 code {
+  font-family: $code-font-family;
   font-weight: bold;
-  background: $highlightColor;
+  color: $code-color;
 }
 
 // Lists

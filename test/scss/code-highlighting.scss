@@ -1,0 +1,12 @@
+@import "github-highlighting";
+
+pre {
+  background: #eee;
+  padding: 14px;
+  overflow: scroll;
+
+  code {
+    background: none;
+    display: none;
+  }
+}
