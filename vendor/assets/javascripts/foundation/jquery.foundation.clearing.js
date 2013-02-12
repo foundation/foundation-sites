@@ -19,7 +19,7 @@
             '<a href="#" class="clearing-main-right"></a></div>'
         },
 
-        // comma delimited list of selectors that, on click, will close clearing, 
+        // comma delimited list of selectors that, on click, will close clearing,
         // add 'div.clearing-blackout, div.visible-img' to close on background click
         close_selectors : 'a.clearing-close',
 
@@ -215,7 +215,7 @@
         },
 
         load : function ($image) {
-          var href = $image.parent().attr('href');
+          var href = $image.closest('a').attr('href');
 
           this.preload($image);
 

@@ -160,13 +160,13 @@
       var distance = $('.sticky').length ? $('.sticky').offset().top: 0,
           $window = $(window);
           var offst = $('nav.top-bar').outerHeight()+20;
-  
+
         $window.scroll(function() {
           if ( $window.scrollTop() >= ( distance ) ) {
              $(".sticky").addClass("fixed");
                $('body').css('padding-top',offst);
           }
-  
+
          else if ( $window.scrollTop() < distance ) {
             $(".sticky").removeClass("fixed");
             $('body').css('padding-top','0');
