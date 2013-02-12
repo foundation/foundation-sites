@@ -25,8 +25,8 @@ pre { position: relative;
 .alert-base {
   @include alert-base;
 
-  &.bg { @include alert-bg; }
-  &.custom-bg { @include alert-bg(#ff6c3c); }
+  &.bg { @include alert-style; }
+  &.custom-bg { @include alert-style(#ff6c3c); }
   &.radius { @include border-radius; }
   .close { @include alert-close; }
 }

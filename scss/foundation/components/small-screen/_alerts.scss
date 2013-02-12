@@ -50,28 +50,8 @@ $alert-radius:              $global-radius                                 !defa
   font-size: $alert-text-size;
 }
 
-// We use this to create the close button.
-@mixin alert-close {
-  font-size: $alert-close-text-size;
-  padding: $alert-close-padding;
-  line-height: 0;
-  position: absolute;
-  top: $alert-close-position + emCalc(2px);
-  #{$defaultOpposite}: $alert-close-position;
-  color: $alert-close-color;
-  opacity: $alert-close-opacity;
-  &:hover,
-  &:focus { opacity: $alert-close-opacity-hover; }
-}
-
-// We use this mixin to add alert size styles
-// @mixin alert-size($padding:$alert-padding-top, $text-size:$alert-text-size) {
-//   @if $padding   {  }
-//   @if $text-size {  }
-// }
-
 // We use this mixin to add alert styles
-@mixin alert-bg($bg:$primary-color) {
+@mixin alert-style($bg:$primary-color) {
 
   // This find the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
@@ -86,11 +66,24 @@ $alert-radius:              $global-radius                                 !defa
 
 }
 
+// We use this to create the close button.
+@mixin alert-close {
+  font-size: $alert-close-text-size;
+  padding: $alert-close-padding;
+  line-height: 0;
+  position: absolute;
+  top: $alert-close-position + emCalc(2px);
+  #{$defaultOpposite}: $alert-close-position;
+  color: $alert-close-color;
+  opacity: $alert-close-opacity;
+  &:hover,
+  &:focus { opacity: $alert-close-opacity-hover; }
+}
+
 // We use this to quickly create alerts with a single mixin.
 @mixin alert($bg:$primary-color, $radius:false) {
-  @include alert-base;
-  // @include alert-size($padding);
-  @include alert-bg($bg);
+  @include alert-style;
+  @include alert-style($bg);
   @include radius($radius);
 }
 
@@ -103,7 +96,7 @@ $alert-radius:              $global-radius                                 !defa
   &.radius { @include radius($alert-radius); }
   &.round { @include radius($global-rounded); }
 
-  &.success { @include alert-bg($success-color); }
-  &.alert { @include alert-bg($alert-color); }
-  &.secondary { @include alert-bg($secondary-color); }
+  &.success { @include alert-style($success-color); }
+  &.alert { @include alert-style($alert-color); }
+  &.secondary { @include alert-style($secondary-color); }
 }

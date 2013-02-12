@@ -89,7 +89,7 @@ This is an alert with a custom background set.
 
 <pre><code data-language="css">.your-class-name {
 @include alert-base;
-@include alert-bg($bg);
+@include alert-style($bg);
 }</code></pre>
 
 <div class="alert-base bg">This is base and bg mixins.</div>
@@ -101,7 +101,7 @@ This is an alert with a custom background set.
 
 <pre><code data-language="css">.your-class-name {
 @include alert-base;
-@include alert-bg;
+@include alert-style;
 .close { @include alert-close; }
 }</code></pre>
 
@@ -115,7 +115,7 @@ This is an alert with a custom background set.
 
 <pre><code data-language="css">.your-class-name {
 @include alert-base;
-@include alert-bg($success-color);
+@include alert-style($success-color);
 @include radius($radius);
 }</code></pre>
 
