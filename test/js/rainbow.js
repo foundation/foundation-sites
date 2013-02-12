@@ -19,15 +19,6 @@ pattern:/\s*(module)\s+((?:(?:::)?[A-Z]\w*)+)/g},{name:"variable.global",pattern
 pattern:/\.[\w\-_]+/g},{name:"entity.name.id",pattern:/\#[\w\-_]+/g},{name:"entity.name.pseudo",pattern:/:[\w\-_]+/g},{name:"entity.name.tag",pattern:/\w+/g}]},pattern:/([\w\ ,:\.\#\&\;\-_]+)(?=.*\{)/g},{matches:{2:"support.vendor-prefix",3:"support.css-value"},pattern:/(:|,)\s?(-o-|-moz-|-webkit-|-ms-)?([a-zA-Z-]*)(?=\b)(?!.*\{)/g},{matches:{1:"support.tag.style",2:[{name:"string",pattern:/('|")(.*?)(\1)/g},{name:"entity.tag.style",pattern:/(\w+)/g}],3:"support.tag.style"},pattern:/(&lt;\/?)(style.*?)(&gt;)/g}],
 !0);
 
-/* Fix HTML Characters */
-function fixHtmlChars($code, $lang) {
-  document.write('<pre><code data-language="' + $lang + '">' + $code + '</code></pre>');
-}
-
-// function code_example($code, $lang) {
-//     echo "<pre><code data-language='" . $lang . "'>" . htmlentities($code) . "</code></pre>";
-//   }
-
 /* Custom Additions for Fading In */
 function showHiddenParagraphs() {
     $("code[data-language]").css('display', 'inline-block');
