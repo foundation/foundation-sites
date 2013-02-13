@@ -22,7 +22,8 @@
     defaults: {
       animation: 'horizontal-push',     // fade, horizontal-slide, vertical-slide, horizontal-push, vertical-push
       animationSpeed: 600,              // how fast animations are
-      timer: true,                      // display timer?
+      timer: true,                      // enable timer?
+      showTimer: true,                  // show timer
       advanceSpeed: 4000,               // if timer is enabled, time between transitions
       pauseOnHover: false,              // if you hover pauses the slider
       startClockOnMouseOut: false,      // if clock should start on MouseOut
@@ -151,8 +152,11 @@
       this.setupFirstSlide();
       this.notifySlideChange();
 
-      if (this.options.timer) {
+      if (this.options.showTimer) {
         this.setupTimer();
+      }
+
+      if (this.options.timer) {
         this.startClock();
       }
 
@@ -279,7 +283,7 @@
         return false;
       }
 
-      if (this.$timer.is(':hidden')) {
+      if (!this.$timer || this.$timer.is(':hidden')) {
         this.clock = setInterval(function () {
           self.$element.trigger('orbit.next');
         }, this.options.advanceSpeed);
