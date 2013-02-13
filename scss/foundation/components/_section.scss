@@ -1,14 +1,55 @@
+//
+// Section Variables
+//
+
 $section-padding: emCalc(15px) !default;
+$section-function-factor: 10% !default;
+$section-border-size: 1px !default;
+$section-title-bg: #efefef !default;
+$section-title-bg-active: darken($section-title-bg, $section-function-factor) !default;
+$section-title-bg-active-tabs: #fff !default;
+$section-border-style: solid !default;
+$section-border-color: #ccc !default;
+$section-content-bg: #fff !default;
 
-.section-container {
-  width: 100%;
-  display: block;
-  border: 1px solid #ccc;
-  border-top: none;
 
-  section,
-  .section {
-    border-top: 1px solid #ccc;
+//
+// Section Mixins
+//
+
+// We use this mixin to create the basic container styles for sections when they act like accordions
+@mixin section-container($base-style:true, $section-type:accordion) {
+
+  // We can set this to false to not include these styles to avoid repeated CSS on classes.
+  @if $base-style {
+    width: 100%;
+    display: block;
+  }
+
+  // Accordion container border styles
+  @if $section-type == accordion {
+    border: $section-border-size $section-border-style $section-border-color;
+    border-top: none;
+  }
+
+  // Tabs container border styles
+  @else if $section-type == tabs {
+    border: 0;
+    position: relative;
+  }
+
+  // Vertical Nav container border styles
+  @else if $section-type == vertical-nav {
+
+  }
+}
+
+// We use this mixin to create the styles for sections as accordions.
+@mixin section($section-type:accordion) {
+
+  @if $section-type == accordion {
+
+    border-top: $section-border-size $section-border-style $section-border-color;
     position: relative;
 
     .title {
@@ -16,74 +57,79 @@ $section-padding: emCalc(15px) !default;
       cursor: pointer;
       width: 100%;
       margin: 0;
-      background-color: #efefef;
+      background-color: $section-title-bg;
 
       a {
         padding: $section-padding;
         display: inline-block;
       }
-
-      &:hover {
-        background-color: #ddd;
-      }
+      &:hover { background-color: darken($section-title-bg, $section-function-factor/2); }
     }
+
     .content {
       display: none;
       padding: $section-padding;
+      background-color: $section-content-bg;
 
       *:last-child { margin-bottom: 0; }
     }
 
     &.active {
-      .content {
-        display: block;
-      }
+      .content { display: block; }
+      .title { background: $section-title-bg-active; }
     }
   }
+
+  @else if $section-type == tabs {
+    padding-top: 0;
+    border: 0;
+    position: static;
+
+    .title {
+      top: 1px;
+      width: auto;
+      border: $section-border-size $section-border-style $section-border-color;
+      border-right: 0;
+      position: absolute;
+      z-index: 1;
+    }
+    &:last-child .title { border-right: $section-border-size $section-border-style $section-border-color; }
+
+    .content {
+      border: $section-border-size $section-border-style $section-border-color;;
+      position: absolute;
+      z-index: 10;
+    }
+
+    &.active { padding-top: ($section-padding * 3) + emCalc(5px);
+
+      .title {
+        background-color: $section-title-bg-active-tabs;
+        z-index: 11;
+        border-bottom: 0;
+      }
+      .content { position: relative; }
+    }
+  }
+
+  @else if $section-type == vertical-nav { }
+}
+
+
+/* Sections */
+.section-container {
+  @include section-container;
+
+  section,
+  .section { @include section; }
+
 }
 
 @media #{$large} {
-  .section-container {
-    border: 0;
-    position: relative;
+  .section-container.tabs {
+    @include section-container(false, tabs);
 
     section,
-    .section {
-      padding-top: 0;
-      border: 0;
-      position: static;
-
-      .title {
-        top: 1px;
-        width: auto;
-        border: 1px solid #ccc;
-        border-right: 0;
-        position: absolute;
-        z-index: 1;
-
-        &:hover {
-          background-color: #ddd;
-        }
-      }
-      &:last-child .title { border-right: solid 1px #ccc; }
-
-      .content {
-        border: 1px solid #ccc;
-        background-color: white;
-        position: absolute;
-        z-index: 10;
-      }
-      &.active {
-        padding-top: ($section-padding * 3) + emCalc(5px);
-        .title {
-          background-color: white;
-          z-index: 11;
-          border-bottom: 0;
-        }
-        .content {
-          position: relative;
-        }
-      }
-    }
+    .section { @include section(tabs); }
   }
 }
