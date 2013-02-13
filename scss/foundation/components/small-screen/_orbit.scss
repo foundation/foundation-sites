@@ -1,15 +1,13 @@
 .orbit-container {
-  position: relative;
-  .orbit-slides > * {
+  overflow: hidden;
+  width: 100%;
+  .orbit-slides {
+    // apply margin-left here
     list-style: none;
-    position: absolute;
-  }
-  .orbit-prev {
-    position: absolute;
-    left: 0;
-  }
-  .orbit-next {
-    position: absolute;
-    right: 0;
+    margin: 0;
+    padding: 0;
+    &>* {
+      float: left;
+    }
   }
 }

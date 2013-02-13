@@ -1,6 +1,5 @@
 /*
 =require zepto
-=require foundation/foundation
-=require foundation/foundation.orbit
+=require foundation
 =require foundation/foundation.alerts
 */
