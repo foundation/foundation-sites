@@ -153,7 +153,7 @@ img { -ms-interpolation-mode: bicubic; }
     }
 
     [class*="small-"]:last-child { float: right; }
-    [class*="small-"] + [class~="end"] { float: left; }
+    [class*="small-"].end { float: left; }
 
     [class*="small-"].small-centered { @include grid-column($center:true, $collapse:null, $float:none); }
   }
@@ -177,7 +177,7 @@ img { -ms-interpolation-mode: bicubic; }
     }
 
     [class*="large-"]:last-child { float: right; }
-    [class*="large-"] + [class~="end"] { float: left; }
+    [class*="large-"].end { float: left; }
 
     [class*="large-"].large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
 
