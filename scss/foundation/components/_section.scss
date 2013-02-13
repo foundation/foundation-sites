@@ -1,17 +1,17 @@
-$tabPadding: emCalc(15px) !default;
+$section-padding: emCalc(15px) !default;
 
-[data-section] {
+.section-container {
   width: 100%;
   display: block;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
+  border-top: none;
 
-  section, .section {
-    padding-top: $tabPadding * 3;
+  section,
+  .section {
     border-top: 1px solid #ccc;
     position: relative;
 
     .title {
-      position: absolute;
       top: 0;
       cursor: pointer;
       width: 100%;
@@ -19,19 +19,19 @@ $tabPadding: emCalc(15px) !default;
       background-color: #efefef;
 
       a {
-        padding: ($tabPadding - emCalc(1px)) $tabPadding;
+        padding: $section-padding;
         display: inline-block;
       }
 
       &:hover {
         background-color: #ddd;
       }
-
     }
-
     .content {
       display: none;
-      padding: $tabPadding;
+      padding: $section-padding;
+
+      *:last-child { margin-bottom: 0; }
     }
 
     &.active {
@@ -42,38 +42,43 @@ $tabPadding: emCalc(15px) !default;
   }
 }
 
-@media only screen and (min-width: emCalc(768px)) {
-  [data-section] {
-    border: 1px solid #eee;
-    border-top: 0;
+@media #{$large} {
+  .section-container {
+    border: 0;
     position: relative;
 
-    section, .section {
+    section,
+    .section {
       padding-top: 0;
-      border-top: 0;
+      border: 0;
       position: static;
 
       .title {
         top: 1px;
         width: auto;
-        border-right: 1px solid #ccc;
+        border: 1px solid #ccc;
+        border-right: 0;
+        position: absolute;
+        z-index: 1;
 
         &:hover {
           background-color: #ddd;
         }
-
       }
+      &:last-child .title { border-right: solid 1px #ccc; }
+
       .content {
-        border-top: 1px solid #efefef;
+        border: 1px solid #ccc;
         background-color: white;
         position: absolute;
+        z-index: 10;
       }
       &.active {
-        padding-top: ($tabPadding * 3);
-        border-top: 1px solid #ccc;
+        padding-top: ($section-padding * 3) + emCalc(5px);
         .title {
           background-color: white;
-          z-index: 1;
+          z-index: 11;
+          border-bottom: 0;
         }
         .content {
           position: relative;
