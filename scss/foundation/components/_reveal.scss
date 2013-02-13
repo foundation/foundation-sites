@@ -1,76 +1,106 @@
-// Reveal Modals
-.reveal-modal-bg {
-  position: fixed;
+// NEED TO FINISH THE LOGIC HERE
+
+//
+// Reveal Variables
+//
+
+// We use these to control the style of the reveal overlay.
+$reveal-overlay-bg: rgba(#000, .45) !default;
+$reveal-overlay-bg-old: #000 !default;
+
+// We use these to control the style of the modal itself.
+$reveal-modal-bg: #fff !default;
+$reveal-position-top: emCalc(15px) !default;
+$reveal-default-width: 80% !default;
+$reveal-modal-padding: emCalc(20px) !default;
+$reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
+$reveal-close-font-size: emCalc(22px) !default;
+$reveal-close-top: emCalc(8px) !default;
+$reveal-close-side: emCalc(11px) !default;
+$reveal-close-color: #aaa !default;
+$reveal-close-weight: bold !default;
+$reveal-border-style: solid !default;
+$reveal-border-width: 1px !default;
+$reveal-border-color: #666 !default;
+
+//
+// Reveal Mixins
+//
+
+// We use this to create the reveal background overlay styles
+@mixin reveal-bg {
+  position: absolute;
   height: 100%;
   width: 100%;
-  background: #000;
-  background: rgba(#000, .45);
-  z-index: 40;
+  background: $reveal-overlay-bg-old;
+  background: $reveal-overlay-bg;
+  z-index: 98;
   display: none;
   top: 0;
-  #{$defaultFloat}: 0;
+  left: 0;
 }
 
-.reveal-modal {
-  background: #fff;
+// We use this mixin to create the styles for a reveal modal
+@mixin reveal-modal() {
   visibility: hidden;
   display: none;
-  top: 100px;
-  #{$defaultFloat}: 50%;
-  margin-#{$defaultFloat}: emCalc(-260px);
-  width: emCalc(520px);
   position: absolute;
-  z-index: 41;
-  padding: emCalc(30px);
-  -webkit-box-shadow: 0 0 10px rgba(#000,.4);
-  box-shadow: 0 0 10px rgba(#000,.4);
+  top: $reveal-position-top;
+  #{$defaultFloat}: 50%;
+  z-index: 99;
+  background: $reveal-modal-bg;
+  margin-#{$defaultFloat}: -($reveal-default-width / 2);
+  width: $reveal-default-width;
+  height: auto;
+  padding: $reveal-modal-padding;
+  border: $reveal-border-style $reveal-border-width $reveal-border-color;
+  -webkit-box-shadow: $reveal-box-shadow;
+  box-shadow: $reveal-box-shadow;
 
-  .close-reveal-modal {
-    font-size: emCalc(22px);
-    line-height: .5;
-    position: absolute;
-    top: 8px;
-    #{$defaultOpposite}: emCalc(11px);
-    color: #aaa;
-    text-shadow: 0 -1px 1px rgba(0,0,0,.6);
-    font-weight: bold;
-    cursor: pointer;
-  }
+  // Make sure rows don't have a min-width on them
+  [class*="small-"], [class*="large-"] { min-width: 0; }
 
-  &.small {
-    width: 30%;
-    margin-#{$defaultFloat}: -15%;
-  }
-  &.medium {
-    width: 40%;
-    margin-#{$defaultFloat}: -20%;
-  }
-  &.large {
-    width: 60%;
-    margin-#{$defaultFloat}: -30%;
-  }
-  &.xlarge {
-    width: 70%;
-    margin-#{$defaultFloat}: -35%;
-  }
-  &.expand {
-    width: 90%;
-    margin-#{$defaultFloat}: -45%;
-  }
-
-  .row {
-    min-width: 0;
-    margin-bottom: emCalc(10px);
-  }
-
+  // Get rid of margin from first and last element inside modal
   & > :first-child { margin-top: 0; }
   & > :last-child { margin-bottom: 0; }
 }
 
+// We use this to create a close button for the reveal modal
+@mixin reveal-close() {
+  font-size: $reveal-close-font-size;
+  line-height: 1;
+  position: absolute;
+  top: $reveal-close-top;
+  #{$defaultOpposite}: $reveal-close-side;
+  color: $reveal-close-color;
+  font-weight: $reveal-close-weight;
+  cursor: pointer;
+}
+
+// Reveal Modals
+.reveal-modal-bg { @include reveal-bg; }
+
+.reveal-modal { @include reveal-modal;
+  .close-reveal-modal { @include reveal-close; }
+}
+
+
+// Large Screen Styles
+@media #{$large} {
+  .reveal-modal-bg { position: fixed; }
+  .reveal-modal {
+    padding: emCalc(30px);
+    top: 100px;
+
+    &.small  { width: 30%; margin-#{$defaultFloat}: -15%; }
+    &.medium { width: 40%; margin-#{$defaultFloat}: -20%; }
+    &.large  { width: 60%; margin-#{$defaultFloat}: -30%; }
+    &.xlarge { width: 70%; margin-#{$defaultFloat}: -35%; }
+    &.expand { width: 90%; margin-#{$defaultFloat}: -45%; }
+  }
+}
+
+
 @media print {
   div:not(.reveal-modal) { display: none; }
-  .reveal-modal {
-    border: solid 1px #000;
-    background: #fff;
-  }
 }

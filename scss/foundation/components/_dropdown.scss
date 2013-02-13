@@ -89,12 +89,17 @@ $f-dropdown-content-padding: emCalc(20px) !default;
   }
 }
 
-/* Foundation Dropdowns */
-.f-dropdown {
-  @include dropdown-container;
 
-  li { @include dropdown-style; }
+@if $include-html-classes {
 
-  // You can also put custom content in these dropdowns
-  &.content { @include dropdown-container(content, $triangle:false); }
+  /* Foundation Dropdowns */
+  .f-dropdown {
+    @include dropdown-container;
+
+    li { @include dropdown-style; }
+
+    // You can also put custom content in these dropdowns
+    &.content { @include dropdown-container(content, $triangle:false); }
+  }
+
 }

@@ -1,8 +1,8 @@
-// Sub Navs (http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na)
-
 //
 // Sub Nav Variables
 //
+
+// We use these to control margin and padding
 $sub-nav-list-margin: emCalc(-4px) 0 emCalc(18px);
 $sub-nav-list-padding-top: emCalc(4px);
 
@@ -17,6 +17,10 @@ $sub-nav-active-background: $mainColor;
 $sub-nav-active-color: #fff;
 $sub-nav-active-padding: emCalc(3px) emCalc(9px);
 $sub-nav-active-cursor: default;
+
+//
+// Sub Nav Mixins
+//
 
 @mixin sub-nav-container {
   display: block;
@@ -59,9 +63,12 @@ $sub-nav-active-cursor: default;
   }
 }
 
+
 @if $include-html-classes {
+
   /* Side Nav */
   .sub-nav { @include sub-nav-container;
     dt, dd { @include sub-nav-items(); }
   }
+
 }

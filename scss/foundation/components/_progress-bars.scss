@@ -58,6 +58,7 @@ $prog-meter-alert-color: $alert-color !default;
 
 
 @if $include-html-classes {
+
   /* Progress Bar */
   .progress {
     @include prog-container;
@@ -71,4 +72,5 @@ $prog-meter-alert-color: $alert-color !default;
     &.alert .meter { @include prog-meter($bg:$alert-color,$width:false); }
 
   }
+
 }

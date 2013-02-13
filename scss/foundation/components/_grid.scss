@@ -124,6 +124,7 @@ img { -ms-interpolation-mode: bicubic; }
 }
 
 @if $include-html-classes {
+
   .row {
     @include grid-row;
 
@@ -181,4 +182,5 @@ img { -ms-interpolation-mode: bicubic; }
     [class*="large-"].large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
 
   }
+
 }

@@ -102,12 +102,16 @@ $crumb-slash: "/"                                              !default;
 }
 
 
-/* Breadcrumbs */
-.breadcrumbs {
-  @include crumb-container;
-  @include radius($crumb-radius);
+@if $include-html-classes {
 
-  li {
-    @include crumbs;
+  /* Breadcrumbs */
+  .breadcrumbs {
+    @include crumb-container;
+    @include radius($crumb-radius);
+
+    li {
+      @include crumbs;
+    }
   }
+
 }

@@ -31,7 +31,7 @@ $panel-radius: $button-radius !default;
 
 @if $include-html-classes {
 
-  /* Panels ---------------------- */
+  /* Panels */
   .panel { @include panel;
 
     &.callout {

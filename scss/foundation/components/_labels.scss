@@ -1,12 +1,16 @@
 //
 // Label Variables
 //
+
+// We use these to style the labels
 $label-padding: emCalc(1px) emCalc(4px) emCalc(2px) !default;
+$label-radius: $button-radius !default;
+
+// We use these to style the label text
 $label-text-size: emCalc(14px) !default;
 $label-text-weight: bold !default;
 $label-text-color: #fff !default;
 $label-text-color-alt: darken($secondary-color, 60%) !default;
-$label-radius: $button-radius !default;
 
 //
 // Label Mixins
@@ -33,11 +37,16 @@ $label-radius: $button-radius !default;
 @mixin label-style($bg:$primary-color, $radius:false, $text-color:$label-text-color) {
 
   // We control which background color comes through
-  @if $bg { background: $bg;
+  @if $bg {
 
-    // We use this alert text color for secondary labels.
-    @if $bg == $secondary-color { color: $label-text-color-alt; }
-    @else { color: $label-text-color; }
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
+    background-color: $bg;
+
+    // We control the text color for you based on the background color.
+    @if $bg-lightness > 70% { color: $label-text-color; }
+    @else { color: $label-text-color-alt; }
   }
 
   // We use this to control the radius on labels.
@@ -53,15 +62,19 @@ $label-radius: $button-radius !default;
   @include label-style($bg, $radius, $text-color);
 }
 
-/* Labels */
-.label {
-  @include label;
 
-  &.radius { @include label-style($bg:false, $radius:true); }
-  &.round { @include label-style($radius:1000px); }
+@if $include-html-classes {
 
-  &.alert     { @include label-style($bg:$alert-color); }
-  &.success   { @include label-style($bg:$success-color); }
-  &.secondary { @include label-style($bg:$secondary-color); }
+  /* Labels */
+  .label {
+    @include label;
+
+    &.radius { @include label-style($bg:false, $radius:true); }
+    &.round { @include label-style($radius:1000px); }
+
+    &.alert     { @include label-style($bg:$alert-color); }
+    &.success   { @include label-style($bg:$success-color); }
+    &.secondary { @include label-style($bg:$secondary-color); }
+  }
 
 }

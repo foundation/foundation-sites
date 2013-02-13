@@ -37,10 +37,15 @@ $inline-list-children-display: block !default;
   &>* { display: $inline-list-children-display; }
 }
 
-/* Inline Lists */
-.inline-list {
-  @include inline-list-container();
-  &>li {
-    @include inline-list();
+
+@if $include-html-classes {
+
+  /* Inline Lists */
+  .inline-list {
+    @include inline-list-container();
+    &>li {
+      @include inline-list();
+    }
   }
+
 }

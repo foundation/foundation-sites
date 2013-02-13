@@ -1,121 +1,3 @@
-  /* Visibility Classes ---------------------- */
-  /*                                           */
-  /* Standard (large) display targeting */
-  .show-for-small,
-  .show-for-medium,
-  .show-for-medium-down,
-  .hide-for-large,
-  .hide-for-large-up,
-  .show-for-xlarge,
-  .show-for-print { display: none !important; }
-
-  .hide-for-small,
-  .hide-for-medium,
-  .hide-for-medium-down,
-  .show-for-large,
-  .show-for-large-up,
-  .hide-for-xlarge,
-  .hide-for-print { display: inherit !important; }
-
-  /* Very large display targeting */
-  @media only screen and (min-width: $screenXlarge) {
-    .hide-for-small,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .hide-for-large,
-    .show-for-large-up,
-    .show-for-xlarge { display: inherit !important; }
-
-    .show-for-small,
-    .show-for-medium,
-    .show-for-medium-down,
-    .show-for-large,
-    .hide-for-large-up,
-    .hide-for-xlarge { display: none !important; }
-  }
-
-  /* Medium display targeting */
-  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-    .hide-for-small,
-    .show-for-medium,
-    .show-for-medium-down,
-    .hide-for-large,
-    .hide-for-large-up,
-    .hide-for-xlarge { display: inherit !important; }
-
-    .show-for-small,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .show-for-large,
-    .show-for-large-up,
-    .show-for-xlarge { display: none !important; }
-  }
-
-  /* Small display targeting */
-  @media only screen and (max-width: $screenSmall - 1) {
-    .show-for-small,
-    .hide-for-medium,
-    .show-for-medium-down,
-    .hide-for-large,
-    .hide-for-large-up,
-    .hide-for-xlarge { display: inherit !important; }
-
-    .hide-for-small,
-    .show-for-medium,
-    .hide-for-medium-down,
-    .show-for-large,
-    .show-for-large-up,
-    .show-for-xlarge { display: none !important; }
-  }
-
-  /* Orientation targeting */
-  .show-for-landscape,
-  .hide-for-portrait { display: inherit !important; }
-  .hide-for-landscape,
-  .show-for-portrait { display: none !important; }
-
-  @media screen and (orientation: landscape) {
-    .show-for-landscape,
-    .hide-for-portrait { display: inherit !important; }
-    .hide-for-landscape,
-    .show-for-portrait { display: none !important; }
-  }
-
-  @media screen and (orientation: portrait) {
-    .show-for-portrait,
-    .hide-for-landscape { display: inherit !important; }
-    .hide-for-portrait,
-    .show-for-landscape { display: none !important; }
-  }
-
-  /* Touch-enabled device targeting */
-  .show-for-touch { display: none !important; }
-  .hide-for-touch { display: inherit !important; }
-  .touch .show-for-touch { display: inherit !important; }
-  .touch .hide-for-touch { display: none !important; }
-
-  /* Specific overrides for elements that require something other than display: block */
-
-  table.show-for-xlarge,
-  table.show-for-large,
-  table.hide-for-small,
-  table.hide-for-medium { display: table !important; }
-
-  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-    .touch table.hide-for-xlarge,
-    .touch table.hide-for-large,
-    .touch table.hide-for-small,
-    .touch table.show-for-medium { display: table !important; }
-  }
-
-  @media only screen and (max-width: $screenSmall - 1) {
-    table.hide-for-xlarge,
-    table.hide-for-large,
-    table.hide-for-medium,
-    table.show-for-small { display: table !important; }
-  }
-
-
   /* 1280 tablet ------------ */
   @media only screen and (max-device-width: 1280px) {
 
@@ -123,11 +5,6 @@
     /*            */
     .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: 36px !important; }
 
-  }
-
-  /* Covering almost all ----- */
-  @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
-    .flex-video { padding-top: 0; }
   }
 
   /* Between Medium and Small */
@@ -168,51 +45,10 @@
   @media only screen and (max-width: $screenSmall - 1) {
 
     /* Global Misc --- */
-    /*                 */
     .left, .right { float: none; }
     body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-#{$defaultFloat}: 0; margin-#{$defaultOpposite}: 0; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
 
-    /* The Grid --- */
-    /*              */
-    .row { width: auto; min-width: 0; margin-#{$defaultFloat}: 0; margin-#{$defaultOpposite}: 0; }
-    .column, .columns { width: auto !important; float: none;  }
-    .column:last-child, .columns:last-child { float: none; }
-    [class*="column"] + [class*="column"]:last-child { float: none; }
-    .column:before, .columns:before, .column:after, .columns:after { content:""; display:table; }
-    .column:after, .columns:after { clear: both; }
-
-    // Placeholder classes for mobile grid overrides
-    %no-default-margin { margin-#{$defaultFloat}: 0 !important; }
-    %default-auto { #{$defaultFloat}: auto; }
-    %opposite-auto { #{$defaultOpposite}: auto; }
-
-    @for $i from 1 through $totalColumns - 2 {
-      .offset-by-#{convert-number-to-word($i)} { @extend %no-default-margin; }
-    }
-    @for $i from 2 through $totalColumns - 2 {
-      .push-#{convert-number-to-word($i)} { @extend %default-auto; }
-      .pull-#{convert-number-to-word($i)} { @extend %opposite-auto; }
-    }
-
-    /* Mobile 4-column Grid */
-    @for $i from 1 through $mobileTotalColumns {
-      .row {
-        .mobile-#{convert-number-to-word($i)} { width: gridCalc($i, $mobileTotalColumns) !important; float: $defaultFloat; padding: 0 ($columnGutter/2);
-          &:last-child { float: $defaultOpposite; }
-          &.end { float: $defaultFloat; }
-        }
-        &.collapse {
-          .mobile-#{convert-number-to-word($i)} { padding: 0; }
-        }
-      }
-    }
-    @for $i from 1 through $mobileTotalColumns - 1 {
-      .push-#{convert-number-to-word($i)}-mobile { #{$defaultFloat}: gridCalc($i, $mobileTotalColumns); }
-      .pull-#{convert-number-to-word($i)}-mobile { #{$defaultOpposite}: gridCalc($i, $mobileTotalColumns); }
-    }
-
     /* Block Grids --- */
-    /*                 */
     .block-grid.mobile {
       &>li { float: none; width: 100%; margin-#{$defaultFloat}: 0; }
     }
@@ -228,7 +64,6 @@
     }
 
     /* Forms --- */
-    /*           */
 
     /* Label alignment */
     label.right { text-align: left; }
@@ -249,30 +84,7 @@
       }
     }
 
-    // /* Typography --- */
-    // /*                */
-
-    // Coming Soon
-
-    /* Buttons --- */
-    /*             */
-
-    /* Basic overrides */
-    .button { display: block; }
-    button.button, input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
-    /* Button Groups */
-    // .button-group {
-    //   button.button, input[type="submit"].button { width: auto; padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px));
-    //     &.large  { padding: ($largeBtnBase) ($largeBtnBase * 2) ($largeBtnBase + emCalc(1px)); }
-    //     &.medium { padding: $btnBase ($btnBase * 2) ($btnBase + emCalc(1px)); }
-    //     &.small  { padding: ($smallBtnBase) ($smallBtnBase * 2) ($smallBtnBase + emCalc(1px)); }
-    //     &.tiny   { padding: ($tinyBtnBase) ($tinyBtnBase * 2) ($tinyBtnBase + emCalc(1px)); }
-    //   }
-    //   &.even button.button, &.even input[type="submit"].button { width: 100%; padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; }
-    // }
-
     /* Navbar --- */
-    /*            */
     .nav-bar { height: auto;
       &>li { float: none; display: block; border-#{$defaultOpposite}: none; }
       &>li>a.main { text-align: $defaultFloat; border-top: 1px solid #ddd; border-#{$defaultOpposite}: none; }
@@ -288,17 +100,7 @@
       p:last-child { margin-bottom: emCalc(18px); }
     }
 
-    /* Reveal --- */
-    /*            */
-    .reveal-modal-bg { position: absolute; }
-    .reveal-modal,
-    .reveal-modal.small,
-    .reveal-modal.medium,
-    .reveal-modal.large,
-    .reveal-modal.xlarge { width: 80%; top: 15px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -40%; padding: emCalc(20px); height: auto; }
-
     /* Clearing --- */
-    /*              */
     .clearing-container { margin: 0; }
     .clearing-close { z-index: 99; font-size: emCalc(21px); top: 0px; #{$defaultOpposite}: 5px; }
     .clearing-caption { position: fixed; bottom: 0; #{$defaultFloat}: 0; padding: emCalc(10px) !important; line-height: 1.3; }
@@ -309,12 +111,10 @@
     }
 
     /* Joyride --- */
-    /*             */
     .joyride-tip-guide { width: 95% !important; #{$defaultFloat}: 2.5% !important; @include radius($tipBorderRadius); }
     .joyride-tip-guide-wrapper { width: 100%; }
 
     /* Tabs --- */
-    /*          */
     .tabs.mobile { width: auto; border-bottom: solid 1px #ccc; height: auto; margin: emCalc(20px) emCalc(-15px) emCalc(0px) emCalc(-15px);
       dt, li, dd { float: none; height: auto; }
       dd a, li a { font-size: emCalc(15px); display: block; width: auto; height: auto; padding: emCalc(18px) emCalc(20px); margin: 0; color: #555; line-height: 1; border: none; border-#{$defaultFloat}: none; border-#{$defaultOpposite}: none; border-top: 1px solid #ccc; background: #fff; }
@@ -328,8 +128,6 @@
     .contained.tabs.mobile dd a, .contained.tabs.mobile li a { padding: emCalc(18px) emCalc(20px); }
     .tabs.mobile + ul.contained { margin-#{$defaultFloat}: emCalc(-20px); margin-#{$defaultOpposite}: emCalc(-20px); border-width: 0 0 1px 0; }
 
-    /* UI Elements --- */
-    /*                 */
     /* Tooltips */
     .tooltip {
       font-size: $tooltipFontSizeScreenSm;
@@ -345,114 +143,5 @@
       border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBgOpacityScreenSm) transparent;
       top: -12px;
       #{$defaultFloat}: 10px;
-    }
-  }
-
-  /* Topbar Specific Breakpoint that you can customize */
-  @media only screen and (max-width: $topBarBreakPoint) {
-
-    .top-bar { margin-bottom: 0; overflow: hidden; height: $topBarHeightMobile; background: $topBarDropBgColor;
-      .js-generated { display: block; }
-
-      /* Override contain to grid stuff for breakpoint */
-      .contain-to-grid & { width: auto; }
-
-      /* Setting up the sliding area */
-      section { #{$defaultFloat}: 0; position: relative; width: auto; @include single-transition($defaultFloat, 300ms); }
-      ul { width: 100%; height: 100%; margin-bottom: 0; display: block;
-        &>li { float: none;
-          &.active, &:hover { background: darken($topBarDropBgColor, 5%); }
-          /* Branding and name */
-          &.name { height: $topBarHeightMobile;
-            h1 { line-height: 1;
-              a { color: $topBarLinkColor; display: block; line-height: $topBarHeightMobile !important; padding-#{$defaultFloat}: $topBarHeightMobile / 3; height: $topBarHeightMobile; }
-            }
-          }
-          &:hover, &.active { a { color: $topBarDropLinkColor; } }
-          a:not(.button) { color: $topBarDropLinkColor; }
-
-          /* Dropdown Toggle */
-          &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeightMobile; position: absolute; #{$defaultOpposite}: 0; top: 0; width: 50%;
-            a { @include css-triangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; #{$defaultOpposite}: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
-            @if $topBarBreakPoint == 9999px { a { #{$defaultOpposite}: ($topBarHeight / 2) + ($columnGutter / 2);} }
-            &:hover { background: inherit; }
-          }
-          &.toggle-topbar a { padding: 0 !important; }
-
-          /* Divider for breakpoint */
-          &.divider { border-bottom: solid 1px lighten($topBarDropBgColor, 10%); border-top: solid 1px darken($topBarDropBgColor, 15%); clear: both; height: 1px !important; margin: 8px 0 !important; width: 100%; }
-
-          /* Search Overrides for breakpoint size */
-          &.search { padding: 0 $topBarHeight / 2;
-            form { width: 100%;
-              input[type=text] { width: 75%; }
-              .button { top: 0; width: 25%; }
-            }
-          }
-
-          /* Dropdown Level 1 */
-          &.has-dropdown {
-            a { padding-#{$defaultOpposite}: $topBarHeight * .75;
-              &:after { @include css-triangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); margin-#{$defaultOpposite}: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
-            }
-            &:hover >.dropdown { display: block; visibility: hidden; }
-            .dropdown { visibility: hidden; z-index: 0 !important; }
-            &.moved { position: static;
-              &>.dropdown { top: 0; visibility: visible;
-                li {
-                  label { margin-bottom: emCalc(6px); padding-top: emCalc(6px) !important; font-size: emCalc(11px); }
-                  &:not(.title) { padding-bottom: 0;
-                    a { padding: emCalc(8px) $topBarHeightMobile / 2; font-size: emCalc(14px); }
-                  }
-                  a, label { padding: 0 $topBarHeight / 2; }
-                  a:hover { background: lighten($topBarBgColor, 10%); display: block; }
-                  &.divider { border-bottom: solid 1px rgba(255,255,255,0.1); margin-top: emCalc(8px) !important; margin-bottom: emCalc(8px) !important; }
-                }
-              }
-              .back.title { padding-bottom: 0;
-                a:before { position: absolute; top: 50%; #{$defaultFloat}: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include css-triangle($topBarDropToggleSize, $topBarDropToggleColor, $defaultOpposite); }
-                h5 { margin: 0; padding-#{$defaultFloat}: $topBarDropToggleSize * 3; position: relative;
-                  a { background: transparent; padding-top: emCalc(8px); padding-bottom: emCalc(8px); font-size: emCalc(23px); font-weight: $topBarTitleWeight; }
-                }
-              }
-            }
-          }
-
-          /* Dropdown Level 2 */
-          &.has-dropdown .dropdown li { background: transparent;
-            &.has-dropdown {
-              .dropdown { #{$defaultFloat}: 100% !important; top: 0; #{$defaultOpposite}: auto !important; }
-              &>a { padding-#{$defaultOpposite}: $topBarHeight * .75;
-                &:after { content: ""; margin-#{$defaultOpposite}: $topBarHeightMobile / 3; @include css-triangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
-                li a {
-                  &:hover { background: lighten($topBarBgColor, 10%); }
-                }
-              }
-              &.moved { position: static;
-                .dropdown { top: 0; visibility: visible; }
-              }
-              &:hover { display: block; }
-            }
-          }
-        }
-        &.left, &.right { float: none; width: 100%;
-          &>li { display: block; float: none; margin: 0 !important;
-            &.has-dropdown {
-              .dropdown { #{$defaultFloat}: 100% !important; top: 0; #{$defaultOpposite}: auto !important; }
-            }
-          }
-        }
-      }
-      section > ul li a:not(.button) { padding-#{$defaultFloat}: $topBarHeightMobile / 2 !important; }
-
-      /* When the Small Nav is Showing */
-      &.expanded { height: 100%;
-        ul li.toggle-topbar a { @include css-triangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
-      }
-    }
-    .top-bar ul li.has-button { padding: emCalc(5px) $topBarHeightMobile / 3; }
-    .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
-    .top-bar ul > li.has-button {
-      a.button { margin: 0; }
     }
   }

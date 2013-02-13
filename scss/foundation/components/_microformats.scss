@@ -1,10 +1,9 @@
-// Microformats
 //
-// Microformat variables
+// Microformat Variables
 //
 
 // We use these to control padding and margin
-$microformat-padding: emCalc(10px); 
+$microformat-padding: emCalc(10px);
 $microformat-margin: 0 0 emCalc(12px) 0;
 
 // We use these to control the border styles
@@ -25,6 +24,10 @@ $microformat-abbr-padding: 0 emCalc(1px);
 // We use this to control abbr font styles
 $microformat-abbr-font-weight: bold;
 $microformat-abbr-text-decoration: none;
+
+//
+// Microformat Mixins
+//
 
 @mixin vcard {
   display: inline-block;
@@ -54,7 +57,9 @@ $microformat-abbr-text-decoration: none;
 }
 
 @if $include-html-classes {
+
   /* Microformats */
   .vcard { @include vcard; }
   .vevent { @include vevent; }
+
 }

@@ -78,8 +78,12 @@ $pagination-link-current-active-bg: $primary-color !default;
 }
 
 
-/* Pagination */
-.pagination {
-  @include pagination-container;
-  li { @include paginaton-list-items; }
+@if $include-html-classes {
+
+  /* Pagination */
+  .pagination {
+    @include pagination-container;
+    li { @include paginaton-list-items; }
+  }
+
 }

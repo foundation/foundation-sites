@@ -1,15 +1,18 @@
-// Video - Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
-
 //
 // Flex Video Variables
 //
-// We use these to control video contianer padding and margins
+
+// We use these to control video container padding and margins
 $flex-video-padding-top: emCalc(25px);
 $flex-video-padding-bottom: 67.5%;
 $flex-video-margin-bottom: emCalc(16px);
 
-// We use this to control widescreem bottom padding
+// We use this to control widescreen bottom padding
 $flex-video-widescreen-padding-bottom: 57.25%;
+
+//
+// Flex Video Mixins
+//
 
 @mixin flex-video-container {
   position: relative;
@@ -18,7 +21,7 @@ $flex-video-widescreen-padding-bottom: 57.25%;
   height: 0;
   margin-bottom: $flex-video-margin-bottom;
   overflow: hidden;
-  
+
   &.widescreen { padding-bottom: $flex-video-widescreen-padding-bottom; }
   &.vimeo { padding-top: 0; }
 
@@ -33,7 +36,10 @@ $flex-video-widescreen-padding-bottom: 57.25%;
     height: 100%;
   }
 }
+
 @if $include-html-classes {
+
   /* Flex Video */
   .flex-video { @include flex-video-container; }
+
 }

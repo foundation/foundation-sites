@@ -87,16 +87,20 @@ $alert-radius:              $global-radius                                 !defa
   @include radius($radius);
 }
 
-/* Foundation Alerts */
-.alert-box {
-  @include alert;
+@if $include-html-classes {
 
-  .close { @include alert-close; }
+  /* Foundation Alerts */
+  .alert-box {
+    @include alert;
 
-  &.radius { @include radius($alert-radius); }
-  &.round { @include radius($global-rounded); }
+    .close { @include alert-close; }
 
-  &.success { @include alert-style($success-color); }
-  &.alert { @include alert-style($alert-color); }
-  &.secondary { @include alert-style($secondary-color); }
+    &.radius { @include radius($alert-radius); }
+    &.round { @include radius($global-rounded); }
+
+    &.success { @include alert-style($success-color); }
+    &.alert { @include alert-style($alert-color); }
+    &.secondary { @include alert-style($secondary-color); }
+  }
+
 }

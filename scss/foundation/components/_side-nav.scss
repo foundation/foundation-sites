@@ -24,6 +24,8 @@ $side-nav-divider-color: darken($white, 10%) !default;
 //
 // Side Nav Mixins
 //
+
+// We use this mixin to style the side-nav container element
 @mixin side-nav-container {
   display: block;
   margin: 0;
@@ -32,6 +34,7 @@ $side-nav-divider-color: darken($white, 10%) !default;
   list-style-position: $side-nav-list-position;
 }
 
+// We use this to style the links inside the side-nav
 @mixin side-nav($divider-color:$side-nav-divider-color) {
   margin: $side-nav-list-margin;
 
@@ -54,9 +57,12 @@ $side-nav-divider-color: darken($white, 10%) !default;
   }
 }
 
+
 @if $include-html-classes {
-  // Side Nav
+
+  /* Side Nav */
   .side-nav { @include side-nav-container;
     li { @include side-nav; }
   }
+
 }

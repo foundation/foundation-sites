@@ -26,10 +26,13 @@ $thumb-radius: $global-radius !default;
   &:focus { -webkit-box-shadow: $thumb-box-shadow-hover; box-shadow: $thumb-box-shadow-hover; }
 }
 
+
 // If html classes are turned on we'll include these classes.
 @if $include-html-classes {
+
   /* Image Thumbnails */
   .th { @include thumb; }
+
 }
 
 

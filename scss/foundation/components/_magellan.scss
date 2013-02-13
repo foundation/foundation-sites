@@ -1,17 +1,21 @@
-// Magellan
-
 //
 // Magellan Variables
 //
+
 // We use this to control default padding value
 $magellan-padding: emCalc(15px);
 
+// We use this to control the background color
 $magellan-background: rgba(255,255,255,.9);
 
 // We use these to control border styles
 $magellan-border-width: 1px;
 $magellan-border-style: solid;
 $magellan-border-color: #ccc;
+
+//
+// Magellan Mixins
+//
 
 @mixin magellan {
   background: $magellan-background;
@@ -21,7 +25,7 @@ $magellan-border-color: #ccc;
   a {
     display: block;
     text-transform: uppercase;
-    padding: $magellan-padding; 
+    padding: $magellan-padding;
     font-size: emCalc(12px);
   }
   .active {
@@ -30,6 +34,7 @@ $magellan-border-color: #ccc;
   }
 
 }
+
 @mixin magellan-sidenav {
   float: $defaultFloat;
   margin-#{$defaultOpposite}: emCalc(25px);
@@ -46,14 +51,17 @@ $magellan-border-color: #ccc;
   border-bottom:$magellan-border-width $magellan-border-style $magellan-border-color;
 
   ul li {
-    display: inline; 
+    display: inline;
     float: $defaultFloat;
     padding-right: $magellan-padding;
   }
 }
+
+
 @if $include-html-classes {
+
   /* Magellan */
   [data-magellan-expedition]#magellanSideNav { @include magellan; @include magellan-sidenav; }
   [data-magellan-expedition]#magellanTopNav { @include magellan; @include magellan-topnav; }
-}
 
+}

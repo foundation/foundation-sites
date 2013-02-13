@@ -5,6 +5,45 @@
 //
 // RENAME THIS TO _foundation-global.scss ONCE ALL THE OLD VARIABLES ARE OUT OF THE FILE.
 @import "foundation/settings";
-@import "foundation/components/all";
+
+// Foundation Components
+@import
+  "foundation/components/grid",
+  "foundation/components/visibility",
+  "foundation/components/block-grid",
+  "foundation/components/type",
+  "foundation/components/forms",
+  "foundation/components/buttons",
+  "foundation/components/button-groups",
+  "foundation/components/custom-forms",
+  "foundation/components/dropdown-buttons",
+  "foundation/components/flex-video",
+  "foundation/components/section",
+  "foundation/components/nav-bar",
+  "foundation/components/top-bar",
+  "foundation/components/orbit",
+  "foundation/components/reveal",
+  "foundation/components/joyride",
+  "foundation/components/clearing",
+  "foundation/components/alerts",
+  "foundation/components/breadcrumbs",
+  "foundation/components/custom-forms",
+  "foundation/components/keystrokes",
+  "foundation/components/labels",
+  "foundation/components/inline-lists",
+  "foundation/components/microformats",
+  "foundation/components/pagination",
+  "foundation/components/panels",
+  "foundation/components/pricing-tables",
+  "foundation/components/progress-bars",
+  "foundation/components/side-nav",
+  "foundation/components/sub-nav",
+  "foundation/components/switch",
+  "foundation/components/magellan",
+  "foundation/components/tables",
+  "foundation/components/thumbs",
+  "foundation/components/tooltips",
+  "foundation/components/dropdown";
+
 
 
