@@ -1,0 +1,171 @@
+// Standard Forms
+
+form { margin: 0 0 $formSpacing; }
+
+// Using forms within rows, we need to set some defaults
+.row form .row { margin: 0 -($formSpacing / 2);
+
+  .column,
+  .columns { padding: 0 ($formSpacing / 2); }
+
+  // Use this to collapse the margins of a form row
+  &.collapse { margin: 0;
+
+    .column,
+    .columns { padding: 0; }
+  }
+}
+
+// Label Styles
+label {
+  font-size: .875em;
+  color: $labelFontColor;
+  cursor: pointer;
+  display: block;
+  font-weight: $labelFontWeight;
+  margin-bottom: $labelBtmMargin;
+
+  &.right {
+    float: none;
+    text-align: right;
+  }
+  &.inline {
+    line-height: (emCalc(14px) + ($formSpacing * 1.5));
+    margin: 0 0 $formSpacing 0;
+  }
+}
+
+// Attach elements to the beginning or end of an input
+.prefix,
+.postfix {
+  display: block;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: (emCalc(14px) + ($formSpacing * 1.5));
+  line-height: (emCalc(14px) + ($formSpacing * 1.5)) - 1;
+
+  // Adjust padding and alignment if pre/post element is a button
+  &.button {
+    padding-#{$defaultFloat}: 0;
+    padding-#{$defaultOpposite}: 0;
+    text-align: center;
+  }
+}
+
+span.prefix, span.postfix {
+  background: darken($white, 5%);
+  border: 1px solid darken($white, 20%);
+}
+
+.prefix {
+  #{$defaultFloat}: 2px;
+  @include side-radius($defaultFloat, 2px);
+  overflow:hidden;
+}
+.postfix {
+  #{$defaultOpposite}: 2px;
+  @include side-radius($defaultOpposite, 2px);
+}
+
+// We use this to get basic styling on all basic form elements
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+  background-color: $inputBgColor;
+  font-family: inherit;
+  border: $inputBorderWidth $inputBorderStyle $inputBorderColor;
+  @include radius($inputBorderRadius);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  color: $inputFontColor;
+  display: block;
+  font-size: $inputFontSize;
+  margin: 0 0 $formSpacing 0;
+  padding: ($formSpacing / 2);
+  height: (emCalc(14px) + ($formSpacing * 1.5));
+  width: 100%;
+  @include single-transition(all, 0.15s, linear);
+
+  // Large size input fields
+  &.oversize {
+    font-size: emCalc(17px);
+    padding: (($formSpacing - 4) / 2) ($formSpacing / 2);
+  }
+
+  // Basic focus styles
+  &:focus {
+    background: $inputFocusBgColor;
+    border-color: $inputFocusBorderColor;
+  }
+
+  // Disabled background input background color
+  &[disabled] { background-color: #ddd; }
+}
+
+// Make sure textarea takes on height automatically
+textarea { height: auto; }
+
+// Make select elements 100% width by default
+select { width: 100%; }
+
+// We add basic fieldset styling
+fieldset {
+  border: solid 1px #ddd;
+  @include radius($fieldsetBorderRadius);
+  padding: emCalc(12px) emCalc(12px) 0;
+  margin: emCalc(18px) 0;
+
+  // and legend styles
+  legend {
+    font-weight: bold;
+    background: $white;
+    padding: 0 emCalc(3px);
+    margin: 0;
+    margin-#{$defaultFloat}: emCalc(-3px);
+  }
+}
+
+// Error Handling
+.error input,
+input.error,
+.error textarea,
+textarea.error {
+  border-color: $alertColor;
+  background-color: rgba($alertColor, 0.1);
+}
+
+.error label,
+label.error { color: $alertColor; }
+
+.error small,
+small.error {
+  display: block;
+  padding: emCalc(6px) emCalc(4px);
+  margin-top: -($formSpacing) - 1;
+  margin-bottom: $formSpacing;
+  background: $alertColor;
+  color: #fff;
+  font-size: emCalc(12px);
+  font-weight: bold;
+  @include side-radius($defaultFloat, 2px);
+}
+
+.error textarea,
+textarea.error {
+  &:focus {
+    background: darken($white, 2%);
+    border-color: darken($white, 30%);
+  }
+}

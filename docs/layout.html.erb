@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Foundation Docs: <%= @page_title %></title>
+    <link rel="stylesheet" href="<%= asset_path %>/normalize.css" />
     <link rel="stylesheet" href="<%= asset_path %>/docs.css" />
     <script src="<%= asset_path %>/foundation/modernizr.foundation.js"></script>
   </head>
   <body>
     <%= yield %>
-    <script src="<%= asset_path %>/foundation.js"></script>
-    <script>$(document).foundation(null,null, null, null, true);</script>
+    <script src="<%= asset_path %>/docs.js"></script>
+    <script>$(document).foundation();</script>
   </body>
 </html>

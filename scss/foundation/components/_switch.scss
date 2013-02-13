@@ -1,0 +1,114 @@
+@media only screen {
+
+  // Class names for the multiple states
+  $switchStates: 3, 4, 5;
+
+  // Generate the class names for the multiple states
+  $switchClasses: ();
+  @each $switch in $switchStates {
+    $switchClasses: join($switchClasses, unquote(".switch-#{$switch}"), comma);
+  }
+
+  $switchClasses: join(unquote(".switch"), $switchClasses, comma);
+
+  // Two-state switch and shared styles between all states
+  #{$switchClasses} {
+    position: relative;
+    padding: 0;
+
+    display: block;
+    width: 100%;
+    overflow: hidden;
+
+    // Sizes
+    &.large label {
+      padding: $button-lrg 0;
+      font-size: emCalc(17px);
+    }
+    &.small label {
+    	font-size: emCalc(12px);
+      padding: $button-sml 0;
+    }
+    &.tiny label {
+    	font-size: emCalc(11px);
+      padding: $button-tny 0;
+    }
+
+    label {
+      position: relative;
+      z-index: 2;
+
+      float: left;
+      width: 50%;
+      height: 100%;
+      margin: 0;
+      padding: $button-med 0;
+
+      font-size: emCalc(14px);
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .slide-button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+
+      display: block;
+      width: 50%;
+      height: 100%;
+      padding: 0;
+
+      // @include single-transition(all, .1s, ease-out);
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    // Outline the toggles when the inputs are focused
+    input:focus + label {
+      outline: 1px dotted #888;
+    }
+
+    input:last-of-type:checked ~ .slide-button {
+      left: 50%;
+    }
+
+    // Bugfix for older Webkit, including mobile Webkit. Adapted from:
+    // http://css-tricks.com/webkit-sibling-bug/
+    -webkit-animation: webkitSiblingBugfix infinite 1s;
+
+  }
+
+  @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
+
+  // Generate styles for the multiple states
+  @for $i from 1 through length($switchStates) {
+    $state: nth($switchStates, $i);
+    $width: 100 / ($i + 2);
+
+    .switch-#{$state} {
+      label,
+      .slide-button {
+        width: $width * 1%;
+      }
+    }
+
+    @for $j from 2 through ($i + 1) {
+
+      .switch-#{$state} input:checked:nth-of-type(#{$j}) ~ .slide-button {
+        left: $width * ($j - 1) * 1%;
+      }
+
+    }
+
+    .switch-#{$state} input:checked:last-of-type ~ .slide-button {
+      left: 100 - $width * 1%;
+    }
+
+  }
+
+}

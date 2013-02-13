@@ -26,7 +26,7 @@ h5 { margin-top: 1.5em; }
 
   &.bg { @include alert-style; }
   &.custom-bg { @include alert-style(#ff6c3c); }
-  &.radius { @include border-radius; }
+  &.radius { @include radius; }
   .close { @include alert-close; }
 }
 
@@ -38,7 +38,7 @@ h5 { margin-top: 1.5em; }
 }
 
 /* Button Doc Classes */
-.button.custom {
+.buttony.custom {
   @include button(1.1em, #FF94CB, 20px);
 }
 
@@ -46,8 +46,22 @@ h5 { margin-top: 1.5em; }
   @include button-base;
   &.size { @include button-size; }
   &.style { @include button-style; }
+  &.shine { @include single-transition(background-color); @include radius; @include inset-shadow(); }
 }
 
+/* Button Group Doc Classes */
+.button-group-docs {
+  @include button-group-container;
+  .button-class { @include button; }
+  &.list li { @include button-group-style; }
+  &.extras {
+    li { @include button-group-style(true); }
+    .button-class { @include inset-shadow; @include single-transition(background-color); }
+  }
+}
+
+/* Large Screen Styles */
 @media only screen and (min-width: 48em) {
   .button { margin-bottom: 15px; }
+  .button-group .button { margin-bottom: 0; }
 }

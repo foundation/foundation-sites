@@ -1,30 +1,194 @@
-// Settings file containing Foundation defaults
+// Foundation Global Function, Variables and Mixins
+//
+// Variables
+//
 
-// Function for calculating em values
-@function emCalc($pxWidth) {
-  @return $pxWidth / $emBase * 1em;
-}
+// This is the default html and body font-size for the base em value.
+$em-base: 16px !default;
 
-// We use this to control whether or not CSS classes come through in the files.
-$emBase: 16px;
-$include-html-classes: true !default;
+// We use these to control various global styles
+$body-bg: #fff !default;
+$body-font-color: #222 !default;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+
+// Highlight color, like a yellow Sharpie
+$highlight-color: #ffff99 !default;
+
+// We use this to control font-smoothing
+$font-smoothing: antialiased !default;
+
+// We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;
 $global-rounded: 1000px !default;
+
+// We use these to control inset shadow shiny edges and depressions.
+$shiny-edge-size: 0 1px 0 !default;
+$shiny-edge-color: rgba(#fff, .5) !default;
+$shiny-edge-active-color: rgba(#000, .2) !default;
+
+// We use this to control whether or not CSS classes come through in the gem files.
+$include-html-classes: true !default;
+
+// We use this to let you add a grid for IE8 if you'd like.
 // $ie8gridSupport: no;
 
-@mixin radius($radius:$global-radius) {
 
-  // We use this to control border radius.
-  @if $radius {
-    -webkit-border-radius: $radius;
-            border-radius: $radius;
-  }
+//
+// Functions
+//
 
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+// Grid Calculation for Percentages
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
 }
 
 
-$blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
+//
+// Mixins
+//
 
+// We use this to control border radius.
+@mixin radius($radius:$global-radius) {
+  @if $radius {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+  }
+}
+
+// We use this to create equal side border radius on elements.
+@mixin side-radius($side, $radius) {
+  @if $side == left {
+    -webkit-border-radius: $radius 0 0 $radius;
+    border-radius: $radius 0 0 $radius;
+  }
+  @else if $side == right {
+    -webkit-border-radius: 0 $radius $radius 0;
+    border-radius: 0 $radius $radius 0;
+  }
+  @else if $side == top {
+    -webkit-border-radius: $radius $radius 0 0;
+    border-radius: $radius $radius 0 0;
+  }
+  @else if $side == bottom {
+    -webkit-border-radius: 0 0 $radius $radius;
+    border-radius: 0 0 $radius $radius;
+  }
+}
+
+// We can control whether or not we have inset shadows edges.
+@mixin inset-shadow($active:true) {
+  -webkit-box-shadow: $shiny-edge-size $shiny-edge-color inset;
+  box-shadow: $shiny-edge-size $shiny-edge-color inset;
+
+  @if $active { &:active {
+    -webkit-box-shadow: $shiny-edge-size $shiny-edge-active-color inset;
+    box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
+}
+
+// We use this to add transitions to elements
+@mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
+  -webkit-transition: $property $speed $ease;
+  -moz-transition: $property $speed $ease;
+  transition: $property $speed $ease;
+}
+
+// We use this to add box-sizing across browser prefixes
+@mixin box-sizing($type:border-box) {
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+  box-sizing: $type;
+}
+
+// We use this to create equalateral triangles
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $triangle-size;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+  }
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+  }
+}
+
+// We use this to do clear floats
+@mixin clearfix() {
+  *zoom:1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+// REVISIT THIS
+    // We use this to inject media queries for quick fixes based on a breakpoint
+    // @mixin respondTo($media) {
+    //   @if $media == smallScreen {
+    //     @media only screen and (max-width: $smallScreen) { @content; }
+    //   } @else if $media == mediumScreen {
+    //     @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) { @content; }
+    //   } @else if $media == largeScreen {
+    //     @media only screen and (min-width: $largeScreen) { @content; }
+    //   }
+    // }
+
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html,
+body { font-size: $em-base; }
+
+// Default body styles
+body {
+  background: $body-bg;
+  color: $body-font-color;
+  padding: 0;
+  font-family: $body-font-family;
+  font-weight: $body-font-weight;
+  font-style: $body-font-style;
+  line-height: 1;
+  -webkit-font-smoothing: $font-smoothing;
+}
+
+// Miscellaneous useful HTML classes
+.left         { float: left; }
+.right        { float: right; }
+.text-left    { text-align: left; }
+.text-right   { text-align: right; }
+.text-center  { text-align: center; }
+.text-justify { text-align: justify; }
+.hide         { display: none; }
+.highlight    { background: $highlight-color; }
+
+
+
+
+
+
+
+
+// OLD VARIABLES, PRUNE OUT AS WE GO
+
+$blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
 
 // Colors Settings
 
@@ -129,7 +293,7 @@ $topBarLinkWeight: bold !default;
 $topBarLinkSize: emCalc(13px) !default;
 $topBarDropBgColor: #222 !default;
 $topBarDropLinkColor: #fff !default;
-$topBarDropToggleSize: 5px !default;
+$topBarDropToggleSize: emCalc(5px) !default;
 $topBarDropToggleColor: #fff !default;
 $topBarDropToggleAlpha: 0.5 !default;
 $topBarSearchWidth: 200px !default;
@@ -158,43 +322,6 @@ $tapToCloseFontColor: #888 !default;
 $tooltipFontSizeScreenSm: emCalc(14px) !default;
 $tooltipBgOpacityScreenSm: 0.85 !default;
 $tooltipBorderRadius: 4px !default;
-
-// Pricing Table Settings
-
-$priceTableBorder: solid 1px #ddd !default;
-$priceTitleBgColor: #ddd !default;
-$priceTitlePadding: emCalc(15px) emCalc(20px) !default;
-$priceTitleAlign: center !default;
-$priceTitleColor: #333 !default;
-$priceTitleWeight: bold !default;
-$priceTitleSize: emCalc(16px) !default;
-
-$priceMoneyBgColor: #eee !default;
-$priceMoneyPadding: emCalc(15px) emCalc(20px) !default;
-$priceMoneyAlign: center !default;
-$priceMoneyColor: #333 !default;
-$priceMoneyWeight: normal !default;
-$priceMoneySize: emCalc(20px) !default;
-
-$priceBgColor: #fff !default;
-$priceDescColor: #777 !default;
-$priceDescPadding: emCalc(15px) !default;
-$priceDescAlign: center !default;
-$priceDescFontSize: emCalc(12px) !default;
-$priceDescWeight: normal !default;
-$priceDescLineHeight: 1.4 !default;
-$priceDescBtmBorder: dotted 1px #ddd !default;
-
-$priceItemColor: #333 !default;
-$priceItemPadding: emCalc(15px) !default;
-$priceItemAlign: center !default;
-$priceItemFontSize: emCalc(14px) !default;
-$priceItemWeight: normal !default;
-$priceItemBtmBorder: dotted 1px #ddd !default;
-
-$priceCtaBgColor: #f5f5f5 !default;
-$priceCtaAlign: center !default;
-$priceCtaPadding: emCalc(20px) !default;
 
 // Orbit Settings
 
@@ -229,22 +356,6 @@ $tipCloseColor: #777 !default;
 $tipCloseSize: 20px !default;
 $tipCloseWeight: normal !default;
 $tipScreenFill: rgba(0,0,0,0.5) !default;
-
-// Off Canvas Width Settings
-
-$mainWidth: 80% !default;
-$complementaryWidth: 20% !default;
-
-// Modular Scale Settings
-
-// $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
-// $baseFontSize: 14px !default;
-// $importantModNum:44px !default;
-// $base-size: $baseFontSize $importantModNum;
-// Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
-// http://www.modularscale.com by Tim Brown
-// https://github.com/scottkellum/modular-scale by scottkellum
-
 
 // OLD: CAN REMOVE
   $screenSmall: 768px !default;

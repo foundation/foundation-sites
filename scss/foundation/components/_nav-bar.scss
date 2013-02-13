@@ -1,0 +1,260 @@
+.nav-bar {
+  height: $navBarHeight;
+  background: lighten($black, 30%);
+  margin-left: 0;
+  margin-top: $navBarHeight / 2;
+  padding: 0;
+
+  &>li {
+    float: $defaultFloat;
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    border: 1px solid lighten($black, 20%);
+    border-#{$defaultOpposite}: none;
+    line-height: $navBarHeight - 2;
+    -webkit-box-shadow: inset 1px 0 0 fade-out($shinyEdge, .3);
+    box-shadow: inset 1px 0 0 fade-out($shinyEdge, .3);
+
+    &:first-child { -webkit-box-shadow:0 0 0; box-shadow:0 0 0; }
+    &:last-child {
+      border-#{$defaultOpposite}: solid 1px lighten($black, 20%);
+      -webkit-box-shadow: inset 1px 0 0 fade-out($shinyEdge, .3), 1px 0 0 fade-out($shinyEdge, .3);
+      box-shadow: inset 1px 0 0 fade-out($shinyEdge, .3), 1px 0 0 fade-out($shinyEdge, .3);
+    }
+
+    &.active {
+      background: $mainColor;
+      border-color: darken($mainColor, 10%);
+
+      &>a {
+        color: $white;
+        cursor: default;
+      }
+      &:hover {
+        background: $mainColor;
+        cursor: default;
+      }
+    }
+    &:hover { background: lighten($black, 20%); }
+
+    &>a { color: darken($white, 10%); }
+    ul { margin-bottom: 0; }
+    .flyout { display: none; }
+
+    &.has-flyout {
+      &>a:first-child {
+        padding-#{$defaultOpposite}: $navBarHeight;
+        position: relative;
+
+        &:after {
+          @include css-triangle(4px, darken($white, 10%), top);
+          position: absolute;
+          #{$defaultOpposite}: $navBarHeight / 2;
+          top: ($navBarHeight / 2) - emCalc(3px);
+        }
+      }
+      &>a.flyout-toggle {
+        border-#{$defaultFloat}: 0 !important;
+        position: absolute; #{$defaultOpposite}: 0;
+        top: 0;
+        padding: ($navBarHeight / 2);
+        z-index: 2;
+        display: block;
+      }
+      &.is-touch {
+        &>a:first-child { padding-#{$defaultOpposite}: emCalc(55px);}
+        &>a.flyout-toggle { border-#{$defaultFloat}: 1px dashed #666; }
+      }
+    }
+  }
+
+  &>li>a:first-child {
+    position: relative;
+    padding: 0 ($navBarHeight / 2);
+    display: block;
+    text-decoration: none;
+    font-size: emCalc(14px);
+  }
+  &>li>input { margin: 0 emCalc(10px); }
+
+  &.vertical {
+    height: auto;
+    margin-top: 0;
+
+    &>li {
+      float: none;
+      border-bottom: none;
+      border-#{$defaultOpposite}: solid 1px lighten($black, 20%);
+      -webkit-box-shadow: none;
+      box-shadow: none;
+
+      &.has-flyout>a:first-child:after {
+        @include css-triangle(4px, darken($white, 10%), $defaultFloat);
+      }
+      .flyout {
+        #{$defaultFloat}: 100%;
+        top: -1px;
+
+        &.right {
+          #{$defaultFloat}: auto;
+          #{$defaultOpposite}: 100%;
+        }
+      }
+      &.active { border-#{$defaultOpposite}: solid 1px darken($mainColor, 10%); }
+      &:last-child { border-bottom: solid 1px lighten($black, 20%);}
+    }
+  }
+}
+
+.flyout {
+  position: relative;
+  width: 100% !important;
+  top: auto;
+  margin-#{$defaultOpposite}: emCalc(-2px);
+  border-width: 1px 1px 0 1px;
+  background: darken($white, 5%);
+  padding: $navBarHeight / 2;
+  z-index: 40;
+  -webkit-box-shadow: 0 1px 5px rgba(#000, .1);
+  box-shadow: 0 1px 5px rgba(#000, .1);
+
+  &.right {
+    float: none;
+    right: auto;
+    left: -1px;
+  }
+  &.small, &.large { width: 100% !important; }
+
+  p {
+    line-height: 1.2;
+    font-size: emCalc(13px);
+  }
+
+  *:first-child { margin-top: 0; } /* remove margin on any first-child element */
+  *:last-child { margin-bottom: 0; } /* remove margin on last element */
+  p:last-child { margin-bottom: emCalc(18px); }
+  &.left { right: auto; left: -2px; }
+  &.up { top: auto; bottom: $navBarHeight - emCalc(1px); }
+
+}
+
+ul.flyout,
+.nav-bar li ul { padding: 0; list-style: none;
+  li { border-#{$defaultFloat}: solid 3px #CCC;
+    a {
+      background: darken($white, 5%);
+      border: 1px solid darken($white, 10%);
+      border-width: 1px 1px 0 0;
+      color: #555;
+      display: block;
+      font-size: emCalc(14px);
+      height: auto;
+      line-height: 1;
+      padding: (($navBarHeight / 2) - emCalc(5px)) ($navBarHeight / 2);
+      -webkit-box-shadow: inset 0 1px 0 $shinyEdge;
+      box-shadow: inset 0 1px 0 $shinyEdge;
+      &:hover,
+      &:focus { background: darken($white, 8%); color: #333; }
+    }
+    &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-#{$defaultFloat}: 4px solid lighten($black, 10%);
+      a {
+        background: lighten($black, 30%);
+        border: none;
+        color: #fff;
+        height: auto;
+        margin: 0;
+        position: static;
+        top: 0;
+        -webkit-box-shadow: 0 0 0;
+        box-shadow: 0 0 0;
+      }
+    }
+  }
+}
+.nav-bar {
+  height: auto;
+  &>li {
+    float: none;
+    display: block;
+    border-#{$defaultOpposite}: none;
+  }
+  &>li>a.main {
+    text-align: $defaultFloat;
+    border-top: 1px solid #ddd;
+    border-#{$defaultOpposite}: none;
+  }
+  &>li:first-child>a.main { border-top: none; }
+  &>li.has-flyout>a.flyout-toggle {
+    position: absolute;
+    #{$defaultOpposite}: 0;
+    top: 0;
+    padding: ($navBarHeight / 2) + emCalc(2px);
+    z-index: 2;
+    display: block;
+  }
+  &>li.has-flyout.is-touch>a.flyout-toggle span {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+  }
+  &>li.has-flyout>a.flyout-toggle:hover span { border-top-color: #141414; }
+  &.vertical>li.has-flyout>.flyout { #{$defaultFloat}: 0; }
+}
+
+/* Between Medium and Small */
+@media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
+  .touch .nav-bar li {
+    a { font-size: emCalc(13px); }
+    &.has-flyout {
+      &>a.flyout-toggle { padding: ($navBarHeight / 2) !important; }
+      &>a { padding-#{$defaultOpposite}: ($navBarHeight - emCalc(4px)) !important; }
+    }
+  }
+}
+/* 1280 tablet ------------ */
+@media only screen and (max-device-width: 1280px) {
+  .touch .nav-bar li.has-flyout>a { padding-#{$defaultOpposite}: emCalc(36px) !important; }
+}
+
+/* Styles for screens that are atleast 768px; */
+@media only screen and (min-width: emCalc(768px)) {
+  .nav-bar {
+    height: $navBarHeight;
+
+    &>li {
+      float: $defaultFloat;
+      display: block;
+      &.has-flyout {
+        &>a:first-child {
+          &:after {
+            #{$defaultOpposite}: $navBarHeight / 2;
+            top: ($navBarHeight / 2) - 3;
+          }
+        }
+      }
+    }
+    &.vertical {
+      &>li {
+        float: none;
+        .flyout { #{$defaultFloat}: 100%; top: -1px;
+          &.right { #{$defaultFloat}: auto; #{$defaultOpposite}: 100%; }
+        }
+      }
+    }
+  }
+
+  .flyout {
+    margin: 0; border: 1px solid darken($white, 15%);
+    position: absolute;
+    top: $navBarHeight - 1; #{$defaultFloat}: -1px;
+    width: $navFlyoutBaseWidth;
+    &.small { width: $navFlyoutBaseWidth / 1.5; }
+    &.large { width: $navFlyoutBaseWidth * 1.75; }
+
+    &.right { left: auto; right: -2px; }
+
+  }
+}

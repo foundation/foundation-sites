@@ -111,7 +111,7 @@ $disabled: false
 $is-input: false
 ', :css %>
 
-<a href="#" class="custom button">Custom Button</a>
+<a href="#" class="custom buttony">Custom Button</a>
 
     <h5>Base Mixin</h5>
     <p>You also have access to a few internal mixins that can create parts of the button as needed. The base mixin will create a button base that only include structural styles.</p>
@@ -147,40 +147,60 @@ $is-input: false
 
 <a href="#" class="button-base size style">Button Base, Size &amp; Style</a>
 
+      <h5>Inset Shadow, Border Radius &amp; Transition Mixin</h5>
+      <p>Sometimes you want to add a nice fancy shine to the edge of your button. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the button a nice zero-fade.</p>
+
+<%= code_example '
+.your-class-name {
+  @include button-base;
+  @include button-size;
+  @include button-style;
+  @include radius;
+  @include single-transition;
+  @include inset-shadow($active);
+}
+
+/* This controls whether or not you get the depressed look on tap/click. */
+/* Set to true or false, defaults to true. */
+$active: true
+', :css %>
+
+<a href="#" class="button-base size style radius shine">Button Base, Size, Style &amp; Shine</a>
+
     <h5>Default SCSS Variables</h5>
 <%= code_example '
 /* We use these to build padding for buttons. */
-$button-med:              emCalc(10px)
-$button-tny:              emCalc(5px)
-$button-sml:              emCalc(7px)
-$button-lrg:              emCalc(14px)
+$button-med:              emCalc(10px);
+$button-tny:              emCalc(5px);
+$button-sml:              emCalc(7px);
+$button-lrg:              emCalc(14px);
 
 /* We use this to control the display property. */
-$button-display:          inline-block
+$button-display:          inline-block;
 
 /* We use these to control button text styles. */
-$button-text-color:       #fff
-$button-text-color-alt:   #333
-$button-text-med:         emCalc(14px)
-$button-text-tny:         emCalc(10px)
-$button-text-sml:         emCalc(11px)
-$button-text-lrg:         emCalc(18px)
-$button-text-weight:      bold
-$button-text-align:       center
-
+$button-text-color:       #fff;
+$button-text-color-alt:   #333;
+$button-text-med:         emCalc(14px);
+$button-text-tny:         emCalc(10px);
+$button-text-sml:         emCalc(11px);
+$button-text-lrg:         emCalc(18px);
+$button-text-weight:      bold;
+$button-text-align:       center;
+`
 /* We use these to control various hover effects. */
-$button-function-factor:  10%
+$button-function-factor:  10%;
 
 /* We use these to control button border styles. */
-$button-border-width:     1px
-$button-border-style:     solid
-$button-border-color:     darken($primary-color, $button-function-factor)
+$button-border-width:     1px;
+$button-border-style:     solid;
+$button-border-color:     darken($primary-color, $button-function-factor);
 
 /* We use this to set the default radius used throughout the core. */
-$button-radius:           $global-radius
+$button-radius:           $global-radius;
 
 /* We use this to set default opacity for disabled buttons. */
-$button-disabled-opacity: 0.6
+$button-disabled-opacity: 0.6;
 ', :css %>
 
     <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
