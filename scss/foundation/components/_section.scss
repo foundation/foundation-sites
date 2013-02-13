@@ -11,6 +11,7 @@ $section-title-bg-active-tabs: #fff !default;
 $section-border-style: solid !default;
 $section-border-color: #ccc !default;
 $section-content-bg: #fff !default;
+$section-vertical-nav-min-width: emCalc(200px) !default;
 
 
 //
@@ -96,7 +97,7 @@ $section-content-bg: #fff !default;
     &:last-child .title { border-right: $section-border-size $section-border-style $section-border-color; }
 
     .content {
-      border: $section-border-size $section-border-style $section-border-color;;
+      border: $section-border-size $section-border-style $section-border-color;
       position: absolute;
       z-index: 10;
     }
@@ -146,8 +147,8 @@ $section-content-bg: #fff !default;
           position: absolute;
           left: 100%;
           top: -1px;
-          min-width: 200px;
-          border: solid 1px #ccc;
+          min-width: $section-vertical-nav-min-width;
+          border: $section-border-size $section-border-style $section-border-color;;
         }
       }
     }
