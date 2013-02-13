@@ -24,10 +24,10 @@
   a.button.prefix, a.button.postfix { padding-#{$defaultFloat}: 0; padding-#{$defaultOpposite}: 0; text-align: center; }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
 
-  .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, 2px); @include border-corner-radius(bottom, $defaultFloat, 2px); overflow:hidden; }
-  .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, 2px); @include border-corner-radius(bottom, $defaultOpposite, 2px); }
+  .prefix { #{$defaultFloat}: 2px; @include border-corner-radius(top, $defaultFloat, $inputBorderRadius); @include border-corner-radius(bottom, $defaultFloat, $inputBorderRadius); overflow:hidden; }
+  .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, $inputBorderRadius); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
 
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea, select { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
@@ -37,7 +37,7 @@
 
   textarea { height: auto; }
 
-  select { width: 100%; }
+  select { width: 100%; line-height: 26px; }
 
   /* Fieldsets */
   fieldset { border: solid 1px #ddd; @include border-radius($fieldsetBorderRadius); padding: 12px; margin: 18px 0;
@@ -78,6 +78,14 @@
         a.selector { &:after { @include cssTriangle(5px, $custSelectTriangleColorOpen, top); } }
       }
 
+      .disabled {
+        color: #888;
+        &:hover {
+          background: transparent;
+          color: #888;
+          &:after { display: none; }
+        }
+      }
       &.open ul { display: block; z-index: 10; }
 
       &.small { width: 134px !important; }

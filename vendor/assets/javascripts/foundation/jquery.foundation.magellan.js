@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Magellan 0.0.1
+ * jQuery Foundation Magellan 0.1.0
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -59,12 +59,16 @@
           $expedition.data("magellan-top-offset", $expedition.offset().top);
         }
         var fixed_position = (windowScrollTop + options.threshold) > $expedition.data("magellan-top-offset");
+        var attr = $expedition.attr('data-magellan-top-offset');
         if ($expedition.data("magellan-fixed-position") != fixed_position) {
           $expedition.data("magellan-fixed-position", fixed_position);
           if (fixed_position) {
             $expedition.css({position:"fixed", top:0});
           } else {
             $expedition.css({position:"", top:""});
+          }
+          if (fixed_position && typeof attr != 'undefined' && attr != false) {
+            $expedition.css({position:"fixed", top:attr + "px"});
           }
         }
       });

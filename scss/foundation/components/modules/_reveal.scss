@@ -6,7 +6,7 @@
 
 /* Reveal Modals ---------------------- */
 
-  .reveal-modal-bg { position: fixed; height: 100%; width: 100%; background: #000; background: rgba(#000, .45); z-index: 40; display: none; top: 0; #{$defaultFloat}: 0; }
+  .reveal-modal-bg { position: fixed; height: 100%; width: 100%; background: #000; background: rgba(#000, .45); z-index: 100; display: none; top: 0; #{$defaultFloat}: 0; }
 
   .reveal-modal { background: #fff; visibility: hidden; display: none; top: 100px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -260px; width: 520px; position: absolute; z-index: 41; padding: 30px; @include box-shadow(0 0 10px rgba(#000,.4));
     .close-reveal-modal:not(.button) {
@@ -25,9 +25,9 @@
     &.large   { width: 60%; margin-#{$defaultFloat}: -30%; }
     &.xlarge  { width: 70%; margin-#{$defaultFloat}: -35%; }
     &.expand  { width: 90%; margin-#{$defaultFloat}: -45%; }
-    .row { min-width: 0; margin-bottom: 10px; }
-    > :first-child { margin-top: 0; }
-    > :last-child { margin-bottom: 0; }
+    .row { min-width: 0; margin-bottom: 10px; width: 100%; }
+    > :first-of-type { margin-top: 0; }
+    > :last-of-type { margin-bottom: 0; }
   }
   @media print {
     .reveal-modal { border: solid 1px #000; background: #fff; }

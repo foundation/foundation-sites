@@ -20,3 +20,42 @@
     }
     // .example { @include cssTriangle(5px, #fff, bottom); }
   }
+  
+    // Create CSS Triangles in a Breeze
+
+  @mixin cssTriangleAdvanced($color, $a, $b, $c, $direction : bottom, $rotatation : 0deg) {
+    content: "";
+    display: block;
+    line-height: 0px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 $a $b $c;
+    @if ($direction == top) {
+      border-color: $color transparent transparent transparent;
+      _border-color: #ffffff $color $color $color;
+    }
+    @if ($direction == bottom) {
+      border-color: transparent transparent $color transparent;
+      _border-color: $color $color #ffffff $color;
+    }
+    @if ($direction == left) {
+      border-color: transparent transparent transparent $color;
+      _border-color: $color $color $color #ffffff;
+    }
+    @if ($direction == right) {
+      border-color: transparent $color transparent transparent;
+      _border-color: $color #ffffff $color $color;
+    }
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='$color');
+    
+    //Rotation !
+    -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    -ms-filter:rotate($deg);
+    -ms-transform:rotate($deg);
+    position: relative;
+    
+    // .example { @include myTriangle($white, 60px, 32px, 30px, 227deg); }
+  }

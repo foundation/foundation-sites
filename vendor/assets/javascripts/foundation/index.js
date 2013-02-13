@@ -1,6 +1,7 @@
 /*
 =require foundation/modernizr.foundation
 =require foundation/jquery.placeholder
+=require foundation/jquery.foundation.utils
 =require foundation/jquery.foundation.alerts
 =require foundation/jquery.foundation.accordion
 =require foundation/jquery.foundation.buttons

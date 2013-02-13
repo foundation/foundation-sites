@@ -1,5 +1,4 @@
 @import "foundation/common/ratios";
-
 // Settings file containing Foundation defaults
 
 // Grid Settings
@@ -110,6 +109,9 @@
 // $topBarDropToggleColor: #fff;
 // $topBarDropToggleAlpha: 0.5;
 // $topBarSearchWidth: 200px;
+// $topBarLoginWidth: 300px;
+// $topBarLoginButtonWidth: 60px;
+// $topBarLoginInputWidth: ($topBarLoginWidth - $topBarLoginButtonWidth) / 2;
 // $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
 // $topBarNavToggleSize: 8px;
 // $topBarNavToggleColor: #fff;
@@ -137,10 +139,10 @@
 // $tooltipFontSize: 12px;
 // $tooltipFontWeight: bold;
 // $tooltipFontColor: #fff;
-// $tapToCloseFontSize: 10;
+// $tapToCloseFontSize: 10px;
 // $tapToCloseFontWeight: normal;
 // $tapToCloseFontColor: #888;
-// $tooltipFontSizeScreenSm: 14;
+// $tooltipFontSizeScreenSm: 14px;
 // $tooltipBgOpacityScreenSm: 0.85;
 // $tooltipBorderRadius: 4px;
 
@@ -194,6 +196,16 @@
 // $orbitSlideNumBgColor: rgba(0,0,0,0.7);
 // $orbitSlideNumFontColor: #fff;
 // $orbitSlideNumPadding: 5px;
+
+// $orbitImageArrowLeft: image-url("foundation/orbit/left-arrow.png");
+// $orbitImageArrowRight: image-url("foundation/orbit/right-arrow.png");
+// $orbitImageArrowSmallLeft: image-url("foundation/orbit/left-arrow-small.png");
+// $orbitImageArrowSmallRight: image-url("foundation/orbit/right-arrow-small.png");
+// $orbitImageBullets: image-url("foundation/orbit/bullets.jpg");
+// $orbitImagePause: image-url("foundation/orbit/pause-black.png");
+// $orbitImagePauseActive: $orbitImagePause;
+// $orbitImageRotator: image-url("foundation/orbit/rotator-black.png");
+// $orbitImageTimer: image-url("foundation/orbit/timer-black.png");
 
 // Clearing Settings
 

@@ -1,5 +1,3 @@
-/* Requires: normalize.css */
-
 /* Global Reset & Standards ---------------------- */
 
   *, *:before, *:after { @include box-sizing(border-box); }
@@ -16,14 +14,15 @@
 
 /* Misc ---------------------- */
 
-  .left        { float: left; }
-  .right       { float: right; }
-  .text-left   { text-align: left; }
-  .text-right  { text-align: right; }
-  .text-center { text-align: center; }
-  .hide        { display: none; }
+  .left          { float: left; }
+  .right         { float: right; }
+  .text-left     { text-align: left; }
+  .text-right    { text-align: right; }
+  .text-center   { text-align: center; }
+  .text-justify  { text-align: justify; }
+  .hide          { display: none; }
   .hide-override { display: none !important; }
-  .highlight   { background: $highlightColor; }
+  .highlight     { background: $highlightColor; }
 
   #googlemap img, object, embed { max-width: none; }
 

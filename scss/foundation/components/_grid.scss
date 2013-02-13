@@ -15,7 +15,7 @@
     &.centered { float: none; margin: 0 auto; }
   }
 
-  [class*="column"] + [class*="column"]:last-child { float: $defaultOpposite; }
+  [class*="column"] + [class*="column"]:last-of-type { float: $defaultOpposite; }
   [class*="column"] + [class*="column"].end { float: $defaultFloat; }
 
   // Creating column classes
@@ -61,7 +61,7 @@ them to switch them just like the layout grid
 For IE7/8 compatibility block-grid items need to be
 the same height. You can optionally uncomment the
 lines below to support arbitrary height, but know
-that IE7/8 do not support :nth-child.
+that IE7/8 do not support :nth-of-type.
 -------------------------------------------------- */
 
   .block-grid { display: block; overflow: hidden; padding: 0;
@@ -82,7 +82,7 @@ that IE7/8 do not support :nth-child.
           @else if $i == 3 { padding: 0 12px 12px; }
           @else if $i == 4 { padding: 0 10px 10px; }
           @else { padding: 0 8px 8px; }
-          @if $i > 1 { &:nth-child(#{$i}n+1) { clear: both; } }
+          @if $i > 1 { &:nth-of-type(#{$i}n+1) { clear: both; } }
         }
       }
     }

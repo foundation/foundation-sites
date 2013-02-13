@@ -1,5 +1,5 @@
 /*
- * jQuery Foundation Clearing 1.2.1
+ * jQuery Foundation Clearing 1.2.2
  * http://foundation.zurb.com
  * Copyright 2012, ZURB
  * Free to use under the MIT license.
@@ -19,7 +19,7 @@
             '<a href="#" class="clearing-main-right"></a></div>'
         },
 
-        // comma delimited list of selectors that, on click, will close clearing, 
+        // comma delimited list of selectors that, on click, will close clearing,
         // add 'div.clearing-blackout, div.visible-img' to close on background click
         close_selectors : 'a.clearing-close',
 
@@ -29,19 +29,17 @@
       },
 
       cl = {
-        init : function (options, extendMethods) {
+        init : function (options) {
+          var obj_settings = $.extend(defaults, options);
           return this.find('ul[data-clearing]').each(function () {
             var doc = $(document),
                 $el = $(this),
-                options = options || {},
-                extendMethods = extendMethods || {},
                 settings = $el.data('fndtn.clearing.settings');
 
             if (!settings) {
-              options.$parent = $el.parent();
+              obj_settings.$parent = $el.parent();
 
-              $el.data('fndtn.clearing.settings', $.extend({}, defaults, options));
-
+              $el.data('fndtn.clearing.settings', $.extend({}, defaults, obj_settings));
               cl.assemble($el.find('li'));
 
               if (!defaults.initialized) {
@@ -217,7 +215,7 @@
         },
 
         load : function ($image) {
-          var href = $image.parent().attr('href');
+          var href = $image.closest('a').attr('href');
 
           this.preload($image);
 
@@ -383,7 +381,7 @@
 
       function bindLoad () {
         this.one( 'load', loaded );
-        if ( $.browser.msie ) {
+        if ( /MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
           var
             src   = this.attr( 'src' ),
             param = src.match( /\?/ ) ? '&' : '?';
