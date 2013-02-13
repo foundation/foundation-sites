@@ -84,5 +84,5 @@ $f-dropdown-list-style: none !default;
   li { @include dropdown-style; }
 
   // You can also put custom content in these dropdowns
-  &.content { @include dropdown-container(content); }
+  &.content { @include dropdown-container(content, $triangle:false); }
 }
