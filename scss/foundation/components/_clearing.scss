@@ -98,8 +98,8 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 .clearing-main-left:active,
 .clearing-main-right:active { margin-top: -15px; }
 
-.clearing-main-left { left: 10px; @include cssTriangle($clearing-arrow-size, $clearing-arrow-color, right); }
-.clearing-main-right { right: 10px; @include cssTriangle($clearing-arrow-size, $clearing-arrow-color, left); }
+.clearing-main-left { left: 10px; @include css-triangle($clearing-arrow-size, $clearing-arrow-color, right); }
+.clearing-main-right { right: 10px; @include css-triangle($clearing-arrow-size, $clearing-arrow-color, left); }
 
 .block-grid.three-up > li:nth-child(3n+1) { clear: none; }
 

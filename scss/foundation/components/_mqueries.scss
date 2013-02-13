@@ -154,12 +154,12 @@
     }
     .clearing-main-left {
       left: 0;
-      &:before { left: 5px; @include cssTriangle($clearingArrowSize,$clearingArrowColor,right); }
+      &:before { left: 5px; @include css-triangle($clearingArrowSize,$clearingArrowColor,right); }
     }
     .clearing-main-right {
       height: 100%;
       right: 0;
-      &:before { @include cssTriangle($clearingArrowSize,$clearingArrowColor,left); }
+      &:before { @include css-triangle($clearingArrowSize,$clearingArrowColor,left); }
     }
 
   }
@@ -373,7 +373,7 @@
 
           /* Dropdown Toggle */
           &.toggle-topbar { cursor: pointer; display: block; height: $topBarHeightMobile; position: absolute; #{$defaultOpposite}: 0; top: 0; width: 50%;
-            a { @include cssTriangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; #{$defaultOpposite}: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
+            a { @include css-triangle($topBarNavToggleSize, #fff, top); padding: 0; position: absolute; top: 50%; #{$defaultOpposite}: $topBarHeightMobile / 2; margin-top: -($topBarNavToggleSize / 2); }
             @if $topBarBreakPoint == 9999px { a { #{$defaultOpposite}: ($topBarHeight / 2) + ($columnGutter / 2);} }
             &:hover { background: inherit; }
           }
@@ -393,7 +393,7 @@
           /* Dropdown Level 1 */
           &.has-dropdown {
             a { padding-#{$defaultOpposite}: $topBarHeight * .75;
-              &:after { @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); margin-#{$defaultOpposite}: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
+              &:after { @include css-triangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); margin-#{$defaultOpposite}: $topBarHeight / 3; margin-top: -($topBarDropToggleSize / 2) - 2; position: absolute; top: 50%; }
             }
             &:hover >.dropdown { display: block; visibility: hidden; }
             .dropdown { visibility: hidden; z-index: 0 !important; }
@@ -410,7 +410,7 @@
                 }
               }
               .back.title { padding-bottom: 0;
-                a:before { position: absolute; top: 50%; #{$defaultFloat}: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, $defaultOpposite); }
+                a:before { position: absolute; top: 50%; #{$defaultFloat}: ($topBarHeight / 2) - $topBarDropToggleSize; margin-top: -$topBarDropToggleSize; width: 0; height: 0; @include css-triangle($topBarDropToggleSize, $topBarDropToggleColor, $defaultOpposite); }
                 h5 { margin: 0; padding-#{$defaultFloat}: $topBarDropToggleSize * 3; position: relative;
                   a { background: transparent; padding-top: emCalc(8px); padding-bottom: emCalc(8px); font-size: emCalc(23px); font-weight: $topBarTitleWeight; }
                 }
@@ -423,7 +423,7 @@
             &.has-dropdown {
               .dropdown { #{$defaultFloat}: 100% !important; top: 0; #{$defaultOpposite}: auto !important; }
               &>a { padding-#{$defaultOpposite}: $topBarHeight * .75;
-                &:after { content: ""; margin-#{$defaultOpposite}: $topBarHeightMobile / 3; @include cssTriangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
+                &:after { content: ""; margin-#{$defaultOpposite}: $topBarHeightMobile / 3; @include css-triangle($topBarDropToggleSize, rgba($topBarDropToggleColor, $topBarDropToggleAlpha), $defaultFloat); position: absolute; top: 50%; margin-top: -($topBarDropToggleSize / 2) - 2; }
                 li a {
                   &:hover { background: lighten($topBarBgColor, 10%); }
                 }
@@ -447,7 +447,7 @@
 
       /* When the Small Nav is Showing */
       &.expanded { height: 100%;
-        ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
+        ul li.toggle-topbar a { @include css-triangle($topBarNavToggleSize, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
     .top-bar ul li.has-button { padding: emCalc(5px) $topBarHeightMobile / 3; }

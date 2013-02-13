@@ -10,22 +10,22 @@
 
   // Triangles
   &:after {
-    @include cssTriangle(6px, #fff, top);
+    @include css-triangle(6px, #fff, top);
     position: absolute;
     top: 50%;
     #{$defaultOpposite}: double($button-med);
     margin-top: -2px;
   }
   &.large:after {
-    @include cssTriangle(7px, #fff, top);
+    @include css-triangle(7px, #fff, top);
     margin-top: -3px; #{$defaultOpposite}: double($button-lrg);
   }
   &.small:after {
-    @include cssTriangle(5px, #fff, top);
+    @include css-triangle(5px, #fff, top);
     margin-top: -2px; #{$defaultOpposite}: double($button-sml);
   }
   &.tiny:after {
-    @include cssTriangle(4px, #fff, top);
+    @include css-triangle(4px, #fff, top);
     margin-top: -1px; #{$defaultOpposite}: double($button-tny);
   }
 
@@ -163,7 +163,7 @@
       &:focus { background-color: darken($primary-color, 10%); }
 
       &:after {
-        @include cssTriangle(6px, #fff, top);
+        @include css-triangle(6px, #fff, top);
         position: absolute;
         top: 50%;
         #{$defaultFloat}: 50%;
@@ -171,13 +171,13 @@
         margin-top: -2px;
       }
     }
-    &.secondary>span:after { @include cssTriangle(6px, darken($secondary-color, 80%), top); }
+    &.secondary>span:after { @include css-triangle(6px, darken($secondary-color, 80%), top); }
 
     &.large span {
       width: $button-lrg * 3;
 
       &:after {
-        @include cssTriangle(7px, #fff, top);
+        @include css-triangle(7px, #fff, top);
         margin-top: -3px;
         margin-#{$defaultFloat}: -7px;
       }
@@ -187,7 +187,7 @@
       width: $button-sml * 3;
 
       &:after {
-        @include cssTriangle(4px, #fff, top);
+        @include css-triangle(4px, #fff, top);
         margin-top: -1px;
         margin-#{$defaultFloat}: -4px;
       }
@@ -197,7 +197,7 @@
       width: $button-tny * 3;
 
       &:after {
-        @include cssTriangle(3px, #fff, top);
+        @include css-triangle(3px, #fff, top);
         margin-top: -1px;
         margin-#{$defaultFloat}: -3px;
       }

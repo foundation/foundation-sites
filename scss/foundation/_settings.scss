@@ -1,26 +1,10 @@
 // Foundation Global Function, Variables and Mixins
-
-//
-// Functions
-//
-
-// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
-@function emCalc($pxWidth) {
-  @return $pxWidth / $emBase * 1em;
-}
-
-// Grid Calculation for Percentages
-@function gridCalc($colNumber, $totalColumns) {
-  @return percentage(($colNumber / $totalColumns));
-}
-
-
 //
 // Variables
 //
 
 // This is the default html and body font-size for the base em value.
-$emBase: 16px !default;
+$em-base: 16px !default;
 
 // We use these to control various global styles
 $body-bg: #fff !default;
@@ -49,6 +33,21 @@ $include-html-classes: true !default;
 
 // We use this to let you add a grid for IE8 if you'd like.
 // $ie8gridSupport: no;
+
+
+//
+// Functions
+//
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+// Grid Calculation for Percentages
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
+}
 
 
 //
@@ -108,23 +107,23 @@ $include-html-classes: true !default;
 }
 
 // We use this to create equalateral triangles
-@mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
   content: "";
   display: block;
   width: 0;
   height: 0;
-  border: solid $triangleSize;
-  @if ($triangleDirection == top) {
-    border-color: $triangleColor transparent transparent transparent;
+  border: solid $triangle-size;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
   }
-  @if ($triangleDirection == bottom) {
-    border-color: transparent transparent $triangleColor transparent;
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
   }
-  @if ($triangleDirection == left) {
-    border-color: transparent transparent transparent $triangleColor;
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
   }
-  @if ($triangleDirection == right) {
-    border-color: transparent $triangleColor transparent transparent;
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
   }
 }
 
@@ -156,7 +155,7 @@ $include-html-classes: true !default;
 }
 
 html,
-body { font-size: $emBase; }
+body { font-size: $em-base; }
 
 // Default body styles
 body {

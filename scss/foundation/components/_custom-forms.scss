@@ -84,7 +84,7 @@ form.custom {
       &:after {
         content: "";
         display: block;
-        @include cssTriangle(5px, $custSelectTriangleColor, top);
+        @include css-triangle(5px, $custSelectTriangleColor, top);
         position: absolute;
         #{$defaultFloat}: 50%;
         top: 50%;
@@ -94,7 +94,7 @@ form.custom {
     }
     &:hover, &.open {
       a.selector {
-        &:after { @include cssTriangle(5px, $custSelectTriangleColorOpen, top); }
+        &:after { @include css-triangle(5px, $custSelectTriangleColorOpen, top); }
       }
     }
 

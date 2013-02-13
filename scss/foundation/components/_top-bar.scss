@@ -156,7 +156,7 @@
 
         a { padding-#{$defaultOpposite}: $topBarHeight * .75;
           &:after {
-            @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top);
+            @include css-triangle($topBarDropToggleSize, $topBarDropToggleColor, top);
             margin-#{$defaultOpposite}: $topBarHeight / 3;
             margin-top: -$topBarDropToggleSize / 2;
             position: absolute; #{$defaultOpposite}: 0;

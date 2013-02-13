@@ -4,30 +4,3 @@
 
 // Comment out this import if you are customizing you imports below
 @import "../scss/foundation";
-
-h5 { margin-top: 1.5em; }
-
-pre { position: relative;
-  [data-language]:before {
-    position: absolute;
-    top: 3px;
-    right: 5px;
-    display: block;
-    color: #ccc;
-  }
-  [data-language="html"]:before { content: "HTML"; }
-  [data-language="css"]:before { content: "SCSS"; }
-  // [data-language="css"].scss:before { content: "Scss"; }
-  [data-language="javascript"]:before { content: "JS"; }
-}
-
-/* Alert Doc Classes */
-.alert-base {
-  @include alert-base;
-
-  &.bg { @include alert-style; }
-  &.custom-bg { @include alert-style(#ff6c3c); }
-  &.radius { @include border-radius; }
-  .close { @include alert-close; }
-}
-
