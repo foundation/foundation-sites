@@ -1,19 +1,16 @@
-// NOT SURE WHERE THESE CAME FROM
-// .orbit-container {
-//   position: relative;
-//   .orbit-slides > * {
-//     list-style: none;
-//     position: absolute;
-//   }
-//   .orbit-prev {
-//     position: absolute;
-//     left: 0;
-//   }
-//   .orbit-next {
-//     position: absolute;
-//     right: 0;
-//   }
-// }
+.orbit-container {
+  overflow: hidden;
+  width: 100%;
+  .orbit-slides {
+    // apply margin-left here
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &>* {
+      float: left;
+    }
+  }
+}
 
 /* CSS for jQuery Orbit Plugin 1.4.0
  * Maintained for Foundation. foundation.zurb.com
