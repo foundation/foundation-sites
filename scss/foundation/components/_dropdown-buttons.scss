@@ -1,0 +1,232 @@
+// Buttons with Dropdowns
+.button.dropdown {
+  position: relative;
+  padding-#{$defaultOpposite}: double($button-med + emCalc(12px));
+
+  // Sizes
+  &.large { padding-#{$defaultOpposite}: double($button-lrg) + double($button-lrg); }
+  &.small { padding-#{$defaultOpposite}: double($button-sml) + double($button-sml); }
+  &.tiny { padding-#{$defaultOpposite}: double($button-tny) + double($button-tny); }
+
+  // Triangles
+  &:after {
+    @include cssTriangle(6px, #fff, top);
+    position: absolute;
+    top: 50%;
+    #{$defaultOpposite}: double($button-med);
+    margin-top: -2px;
+  }
+  &.large:after {
+    @include cssTriangle(7px, #fff, top);
+    margin-top: -3px; #{$defaultOpposite}: double($button-lrg);
+  }
+  &.small:after {
+    @include cssTriangle(5px, #fff, top);
+    margin-top: -2px; #{$defaultOpposite}: double($button-sml);
+  }
+  &.tiny:after {
+    @include cssTriangle(4px, #fff, top);
+    margin-top: -1px; #{$defaultOpposite}: double($button-tny);
+  }
+
+  // Flyout List
+  &>ul {
+    @include box-sizing(content-box);
+    display: none;
+    position: absolute;
+    #{$defaultFloat}: -1px;
+    background: #fff;
+    background: rgba(#fff,0.95);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid darken($white, 20%);
+    border-top: none;
+    min-width: 100%;
+    z-index: 40;
+
+    li {
+      width: 100%;
+      cursor: pointer;
+      padding: 0;
+      min-height: emCalc(18px);
+      line-height: emCalc(18px);
+      margin: 0;
+      white-space: nowrap;
+      list-style: none;
+
+      a,
+      button {
+        display: block;
+        color: #555;
+        font-size: emCalc(13px);
+        font-weight: $bodyFontWeight;
+        padding: emCalc(6px) emCalc(14px);
+        text-align: $defaultFloat;
+      }
+
+      button {
+        width: 100%;
+        border: inherit;
+        background: inherit;
+        font-family: inherit;
+        margin: inherit;
+        -webkit-font-smoothing: $fontSmoothing;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: lighten($primary-color, 45%);
+        color: #222;
+      }
+
+      &.divider {
+        min-height: 0;
+        padding: 0;
+        height: 1px;
+        margin: emCalc(4px) 0;
+        background: darken($white, 7%);
+      }
+    }
+  }
+
+  &.up>ul {
+    border-top: 1px solid darken($white, 20%);
+    border-bottom: none;
+  }
+
+  ul.no-hover.show-dropdown { display: block !important; }
+  &:hover > ul.no-hover { display: none; }
+
+  // Split Dropdown Buttons
+  &.split {
+    padding: 0;
+    position: relative;
+
+    &:after { display: none; }
+
+    &:hover,
+    &:focus { background-color: $primary-color; }
+
+    &.alert:hover,
+    &.alert:focus { background-color: $alert-color; }
+
+    &.success:hover,
+    &.success:focus { background-color: $success-color; }
+
+    &.secondary:hover,
+    &.secondary:focus { background-color: $secondary-color; }
+
+    // Sizes
+    &>a {
+      color: $white;
+      display: block;
+      padding: $button-med (($button-med * 2.5) * 2) ($button-med + 1) ($button-med * 2);
+      padding-#{$defaultFloat}: $button-med * 2;
+      padding-#{$defaultOpposite}: ($button-med * 2.5) * 2;
+
+      &:hover,
+      &:focus {
+        background-color: darken($primary-color, 10%);
+        @include inset-shadow();
+      }
+    }
+
+    &.large>a {
+      padding: $button-lrg (($button-lrg * 2.5) * 2) ($button-lrg + 1) ($button-lrg * 2);
+      padding-#{$defaultFloat}: $button-lrg * 2;
+      padding-#{$defaultOpposite}: ($button-lrg * 2.5) * 2;
+    }
+    &.small>a {
+      padding: $button-sml (($button-sml * 2.5) * 2) ($button-sml + 1) ($button-sml * 2);
+      padding-#{$defaultFloat}: $button-sml * 2;
+      padding-#{$defaultOpposite}: ($button-sml * 2.5) * 2;
+    }
+    &.tiny>a {
+      padding: $button-tny (($button-tny * 2.5) * 2) ($button-tny + 1) ($button-tny * 2);
+      padding-#{$defaultFloat}: $button-tny * 2;
+      padding-#{$defaultOpposite}: ($button-tny * 2.5) * 2;
+    }
+
+    // Triangle Spans
+    &>span {
+      background-color: $primary-color;
+      position: absolute;
+      #{$defaultOpposite}: 0;
+      top: 0;
+      height: 100%;
+      width: $button-med * 3;
+      border-#{$defaultFloat}: 1px solid darken($primary-color, 15%);
+      @include inset-shadow();
+
+      &:hover,
+      &:focus { background-color: darken($primary-color, 10%); }
+
+      &:after {
+        @include cssTriangle(6px, #fff, top);
+        position: absolute;
+        top: 50%;
+        #{$defaultFloat}: 50%;
+        margin-#{$defaultFloat}: -6px;
+        margin-top: -2px;
+      }
+    }
+    &.secondary>span:after { @include cssTriangle(6px, darken($secondary-color, 80%), top); }
+
+    &.large span {
+      width: $button-lrg * 3;
+
+      &:after {
+        @include cssTriangle(7px, #fff, top);
+        margin-top: -3px;
+        margin-#{$defaultFloat}: -7px;
+      }
+    }
+
+    &.small span {
+      width: $button-sml * 3;
+
+      &:after {
+        @include cssTriangle(4px, #fff, top);
+        margin-top: -1px;
+        margin-#{$defaultFloat}: -4px;
+      }
+    }
+
+    &.tiny span {
+      width: $button-tny * 3;
+
+      &:after {
+        @include cssTriangle(3px, #fff, top);
+        margin-top: -1px;
+        margin-#{$defaultFloat}: -3px;
+      }
+    }
+
+
+    // Colors
+    &.alert>span { background-color: $alert-color; border-#{$defaultFloat}-color: darken($alert-color, 15%); }
+    &.success>span { background-color: $success-color; border-#{$defaultFloat}-color: darken($success-color, 15%); }
+    &.secondary>span { background-color: $secondary-color; border-#{$defaultFloat}-color: darken($secondary-color, 15%); }
+    &.secondary>a { color: darken($secondary-color, 80%); }
+
+    &.alert {
+      &>a:hover,
+      &>span:hover,
+      &>a:focus,
+      &>span:focus { background-color: darken($alert-color, 10%); }
+    }
+    &.success {
+      &>a:hover,
+      &>span:hover,
+      &>a:focus,
+      &>span:focus { background-color: darken($success-color, 10%); }
+    }
+    &.secondary {
+      &>a:hover,
+      &>span:hover,
+      &>a:focus,
+      &>span:focus { background-color: darken($secondary-color, 10%); }
+    }
+  }
+}

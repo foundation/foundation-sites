@@ -1,0 +1,61 @@
+//
+// Button Group Variables
+//
+
+// We use this to control margin below button groups.
+$button-group-bottom-margin: emCalc(20px) !default;
+
+//
+// Button Group Mixins
+//
+
+// We use this to add styles for a button group container
+@mixin button-group-container($styles:true) {
+  @if $styles {
+    list-style: none;
+    margin: 0 0 $button-group-bottom-margin;
+    @include clearfix();
+  }
+}
+
+// We use this to control styles for button groups
+@mixin button-group-style($radius:false, $even:false, $float:$defaultFloat) {
+
+  // We use this to control the flow, or remove those styles completely.
+  @if $float {
+    margin: 0 0 0 -1px;
+    float: $float;
+    // Make sure the first child doesn't get the negative margin.
+    &:first-child { margin-#{$defaultFloat}: 0; }
+  }
+
+  // We use these to control left and right radius on first/last buttons in the group.
+  @if $radius == true {
+    &:first-child > a { @include side-radius($defaultFloat, $button-radius); }
+    &:last-child > a { @include side-radius($defaultOpposite, $button-radius); }
+  }
+  @else if $radius {
+    &:first-child > a { @include side-radius($defaultFloat, $radius); }
+    &:last-child > a { @include side-radius($defaultOpposite, $radius); }
+  }
+
+  // We use this to make the buttons even width across their container
+  @if $even {
+    width: percentage((100/$even) / 100);
+    .button { width: 100%; }
+  }
+
+}
+
+/* Button Groups */
+.button-group { @include button-group-container;
+
+  li { @include button-group-style(); }
+
+  &.radius li { @include button-group-style($radius:$button-radius, $float:null); }
+  &.round li { @include button-group-style($radius:1000px, $float:null); }
+
+  @for $i from 2 through 8 {
+    &.even#{-$i} li { @include button-group-style($even:3, $float:null); }
+  }
+}

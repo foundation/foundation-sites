@@ -1,16 +1,10 @@
 // Make sure the charset is set appropriately
 @charset "UTF-8";
 
-// Dependancies
-// @import "compass/css3";
-// @import "modular-scale";
-
-@import "foundation/functions/all";
+// This includes all of the foundation global elements that are needed to work with any of the other files.
+//
+// RENAME THIS TO _foundation-global.scss ONCE ALL THE OLD VARIABLES ARE OUT OF THE FILE.
 @import "foundation/settings";
-@import "foundation/mixins/all";
-@import "foundation/common/small-screen/base";
-@import "foundation/components/small-screen/all";
+@import "foundation/components/all";
 
-// @import "foundation/components/large-screen/grid";
-// @import "foundation/large-screen/common/base";
-@import "foundation/components/large-screen/all";
+

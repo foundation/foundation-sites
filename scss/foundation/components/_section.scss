@@ -1,0 +1,84 @@
+$tabPadding: emCalc(15px) !default;
+
+[data-section] {
+  width: 100%;
+  display: block;
+  border: 1px solid #eee;
+
+  section, .section {
+    padding-top: $tabPadding * 3;
+    border-top: 1px solid #ccc;
+    position: relative;
+
+    .title {
+      position: absolute;
+      top: 0;
+      cursor: pointer;
+      width: 100%;
+      margin: 0;
+      background-color: #efefef;
+
+      a {
+        padding: ($tabPadding - emCalc(1px)) $tabPadding;
+        display: inline-block;
+      }
+
+      &:hover {
+        background-color: #ddd;
+      }
+
+    }
+
+    .content {
+      display: none;
+      padding: $tabPadding;
+    }
+
+    &.active {
+      .content {
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: emCalc(768px)) {
+  [data-section] {
+    border: 1px solid #eee;
+    border-top: 0;
+    position: relative;
+
+    section, .section {
+      padding-top: 0;
+      border-top: 0;
+      position: static;
+
+      .title {
+        top: 1px;
+        width: auto;
+        border-right: 1px solid #ccc;
+
+        &:hover {
+          background-color: #ddd;
+        }
+
+      }
+      .content {
+        border-top: 1px solid #efefef;
+        background-color: white;
+        position: absolute;
+      }
+      &.active {
+        padding-top: ($tabPadding * 3);
+        border-top: 1px solid #ccc;
+        .title {
+          background-color: white;
+          z-index: 1;
+        }
+        .content {
+          position: relative;
+        }
+      }
+    }
+  }
+}
