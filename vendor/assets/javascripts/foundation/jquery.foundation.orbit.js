@@ -78,6 +78,7 @@
 
       this.options = $.extend({}, this.defaults, options);
       if (this.options.timer === 'false') this.options.timer = false;
+      if (this.options.showTimer === 'false') this.options.showTimer = false;
       if (this.options.captions === 'false') this.options.captions = false;
       if (this.options.directionalNav === 'false') this.options.directionalNav = false;
 
