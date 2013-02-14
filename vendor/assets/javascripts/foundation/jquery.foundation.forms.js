@@ -186,11 +186,11 @@
       //
       // Update the custom <ul> list width property.
       //
-      $customList.css( 'width', 'auto' );
+      //$customList.css( 'width', 'auto' );
       //
       // Set the custom select width property.
       //
-      $customSelect.css( 'width', 'auto' );
+      //$customSelect.css( 'width', 'auto' );
 
       //
       // If we're not specifying a predetermined form size.
@@ -231,11 +231,11 @@
         //
         // Set the custom list width.
         //
-        $customSelect.width( maxWidth + 18);
+        //$customSelect.width( maxWidth + 18);
         //
         // Set the custom list element (<ul />) width.
         //
-        $customList.width(  maxWidth + 16 );
+        //$customList.css('width', maxWidth + 16 );
 
       } // endif
 
@@ -278,8 +278,8 @@
       }
       $customSelect.removeClass('open');
     });
-    $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
+    //$customSelect.css('width', maxWidth + 18 + 'px');
+    //$customSelect.find('ul').css('width', maxWidth + 16 + 'px');
 
   };
 
@@ -367,9 +367,12 @@
         $dropdown = $this.closest('div.custom.dropdown'),
         $select = $dropdown.prev();
 
-    event.preventDefault();
-    $('div.dropdown').removeClass('open');
+    // make sure other dropdowns close
+    if(!$dropdown.hasClass('open'))
+      $(document).trigger('click.customdropdown')
 
+    event.preventDefault();
+    //$('div.dropdown').removeClass('open');
     if (false === $select.is(':disabled')) {
         $dropdown.toggleClass('open');
 

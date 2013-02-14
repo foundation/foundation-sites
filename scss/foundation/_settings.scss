@@ -87,9 +87,10 @@ $custSelectDropHeight: 200px !default;
 $custDropdownBgColor: #fff !default;
 $custDropdownBorderColor: darken(#fff, 20%) !default;
 $custDropdownFontColor: #555 !default;
-$custDropdownSelectedBgColor: lighten(#2ba6cb, 40%) !default;
+$custDropdownSelectedBgColor: #eeeeee !default;
 $custDropdownSelectedFontColor: #000 !default;
 $custFormDisabledBgColor: #ddd !default;
+$custDropdownFadeToColor:#f3f3f3 !default;
 
 // Tab Settings
 

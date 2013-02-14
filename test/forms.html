@@ -318,30 +318,118 @@
             <br />
             <h5>Dropdown / Select Elements</h5>
 
-            <label for="customDropdown">Dropdown Label</label>
-            <select style="display:none;" id="customDropdown">
+            <label for="customDropdownN">Small Example</label>
+            <select id="customDropdownN" class="small">
               <option DISABLED>This is a dropdown</option>
               <option>This is another option</option>
+              <option>This is another option too</option>
               <option>Look, a third option</option>
             </select>
-            <div class="custom dropdown">
-              <a href="#" class="current">
-                This is a dropdown
-              </a>
-              <a href="#" class="selector"></a>
-              <ul>
-                <li>This is a dropdown</li>
-                <li>This is another option</li>
-                <li>Look, a third option</li>
-              </ul>
-            </div>
 
-            <label for="customDropdown2">Dropdown Label</label>
-            <select id="customDropdown2">
-              <option>This is a dropdown</option>
-              <option SELECTED>This is another option</option>
+            <label for="customDropdownN">Medium Example</label>
+            <select id="customDropdownN" class="medium">
+              <option DISABLED>This is a dropdown</option>
+              <option>This is another option</option>
+              <option>This is another option too</option>
               <option>Look, a third option</option>
             </select>
+
+            <label for="customDropdownN">Large Example</label>
+            <select id="customDropdownN" class="large">
+              <option DISABLED>This is a dropdown</option>
+              <option>This is another option</option>
+              <option>This is another option too</option>
+              <option>Look, a third option</option>
+            </select>
+
+            <label for="customDropdownN">Natural Example</label>
+            <select id="customDropdownN">
+              <option DISABLED>This is a dropdown</option>
+              <option>This is another option</option>
+              <option>This is another option too</option>
+              <option>Look, a third option</option>
+              <option DISABLED>This is a dropdown</option>
+              <option>This is another option</option>
+              <option>This is another option too</option>
+              <option>Look, a third option</option>
+              <option DISABLED>This is a dropdown</option>
+              <option>This is another option</option>
+              <option>This is another option too</option>
+              <option>Look, a third option</option>
+              <option DISABLED>This is a dropdown</option>
+              <option>This is another option</option>
+              <option>This is another option too</option>
+              <option>Look, a third option</option>
+            </select>
+
+          <div class="row">
+            <div class="six columns">
+            <label>Prefix Example</label>
+              <div class="row collapse">
+                <div class="nine mobile-three columns">
+                  <span class="prefix">mysubdomain</span>
+                </div>
+                <div class="three mobile-one columns">
+                <select>
+                  <option>.com</option>
+                  <option>.co</option>
+                  <option>.ca</option>
+                </select>
+                </div>
+              </div>
+            </div>
+            <div class="six columns">
+            <label>Postfix Example</label>
+              <div class="row collapse">
+                <div class="ten mobile-three columns">
+                <select>
+                  <option>google</option>
+                  <option>yahoo</option>
+                  <option>bing</option>
+                </select>
+                </div>
+                <div class="two mobile-one columns">
+                  <span class="postfix">.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+            <label>Postfix Button Example</label>
+              <div class="row collapse">
+                <div class="ten mobile-three columns">
+                <select>
+                  <option>Find a Monkey</option>
+                  <option>Find an Elephant</option>
+                  <option>Find a Squirrel</option>
+                </select>
+                </div>
+                <div class="two mobile-one columns">
+                  <a class="button expand postfix">Go</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+              <label for="address_3">Inline With Regular Inputs</label>
+
+              <div class="row">
+                <div class="six columns">
+                  <select>
+                    <option>Choose Your Product:</option>
+                    <option>DOG - Stuffed Dog</option>
+                    <option>SQB - Black Squirrel (Angry Face)</option>
+                    <option>SQH - Brown Squirrel (Happy Face)</option>
+                  </select>
+                </div>
+                <div class="two columns">
+                  <input type="text" placeholder="Qty" />
+                </div>
+                <div class="four columns">
+                  <input type="submit" class="button inline-button radius" value="Add To Cart" />
+                </div>
+              </div>
 
           </form>
           <fieldset>
