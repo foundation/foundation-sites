@@ -48,6 +48,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
 // We use this mixin to create the styles for sections as accordions.
 @mixin section($section-type:accordion) {
 
+  // Accordion styles
   @if $section-type == accordion {
 
     border-top: $section-border-size $section-border-style $section-border-color;
@@ -81,6 +82,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     }
   }
 
+  // Tab Styles
   @else if $section-type == tabs {
     padding-top: 0;
     border: 0;
@@ -113,46 +115,52 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     }
   }
 
+  // Vertical Nav Styles
   @else if $section-type == vertical-nav { }
 }
 
 
-/* Sections */
-.section-container {
-  @include section-container;
 
-  section,
-  .section { @include section; }
+@if $include-html-classes {
 
-}
-
-@media #{$large} {
-  .section-container.tabs {
-    @include section-container(false, tabs);
+  /* Sections */
+  .section-container {
+    @include section-container;
 
     section,
-    .section { @include section(tabs); }
+    .section { @include section; }
+
   }
 
-  .section-container.vertical-nav {
+  @media #{$large} {
+    .section-container.tabs {
+      @include section-container(false, tabs);
 
-    section,
-    .section {
+      section,
+      .section { @include section(tabs); }
+    }
 
-      .title a { width: 100%; }
+    .section-container.vertical-nav {
 
-      .content { display: none; }
+      section,
+      .section {
 
-      &.active {
-        .content {
-          display: block;
-          position: absolute;
-          left: 100%;
-          top: -1px;
-          min-width: $section-vertical-nav-min-width;
-          border: $section-border-size $section-border-style $section-border-color;;
+        .title a { width: 100%; }
+
+        .content { display: none; }
+
+        &.active {
+          .content {
+            display: block;
+            position: absolute;
+            left: 100%;
+            top: -1px;
+            min-width: $section-vertical-nav-min-width;
+            border: $section-border-size $section-border-style $section-border-color;;
+          }
         }
       }
     }
   }
+
 }

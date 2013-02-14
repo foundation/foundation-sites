@@ -63,10 +63,6 @@
       }
     }
 
-    /* Forms --- */
-
-    /* Label alignment */
-    label.right { text-align: left; }
     /* Extend width of all inputs */
     @for $i from 1 through $totalColumns {
       input[type="text"].#{convert-number-to-word($i)},
