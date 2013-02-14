@@ -9,23 +9,23 @@ $pagination-margin: emCalc(-5px) !default;
 // We use these to set the list-item properties
 $pagination-li-float: $defaultFloat;
 $pagination-li-height: emCalc(24px) !default;
-$pagination-li-text-color: $txtColor !default;
-$pagination-li-text-size: emCalc(14px) !default;
+$pagination-li-font-color: $txtColor !default;
+$pagination-li-font-size: emCalc(14px) !default;
 $pagination-li-margin: emCalc(5px) !default;
 
 // We use these for the pagination anchor links
 $pagination-link-pad: emCalc(1px) emCalc(7px) emCalc(1px) !default;
-$pagination-link-text-color: #999 !default;
+$pagination-link-font-color: #999 !default;
 $pagination-link-active-bg: darken($white, 10%) !default;
 
 // We use these for disabled anchor links
 $pagination-link-unavailable-cursor: default !default;
-$pagination-link-unavailable-text-color: #999 !default;
+$pagination-link-unavailable-font-color: #999 !default;
 $pagination-link-unavailable-bg-active: transparent !default;
 
 // We use these for currently selected anchor links
 $pagination-link-current-background: $primary-color !default;
-$pagination-link-current-text-color: $white !default;
+$pagination-link-current-font-color: $white !default;
 $pagination-link-current-font-weight: bold !default;
 $pagination-link-current-cursor: default !default;
 $pagination-link-current-active-bg: $primary-color !default;
@@ -46,14 +46,14 @@ $pagination-link-current-active-bg: $primary-color !default;
   display: block;
   float: $pagination-li-float;
   height: $pagination-li-height;
-  color: $pagination-li-text-color;
-  font-size: $pagination-li-text-size;
+  color: $pagination-li-font-color;
+  font-size: $pagination-li-font-size;
   margin-#{$defaultFloat}: $pagination-li-margin;
 
   a {
     display: block;
     padding: $pagination-link-pad;
-    color: $pagination-link-text-color;
+    color: $pagination-link-font-color;
   }
 
   &:hover a,
@@ -61,14 +61,14 @@ $pagination-link-current-active-bg: $primary-color !default;
 
   &.unavailable a {
     cursor: $pagination-link-unavailable-cursor;
-    color: $pagination-link-unavailable-text-color;
+    color: $pagination-link-unavailable-font-color;
   }
 
   &.unavailable:hover a, &.unavailable a:focus { background: $pagination-link-unavailable-bg-active; }
 
   &.current a {
     background: $pagination-link-current-background;
-    color: $pagination-link-current-text-color;
+    color: $pagination-link-current-font-color;
     font-weight: $pagination-link-current-font-weight;
     cursor: $pagination-link-current-cursor;
 

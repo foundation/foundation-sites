@@ -23,7 +23,7 @@ $microformat-abbr-padding: 0 emCalc(1px);
 
 // We use this to control abbr font styles
 $microformat-abbr-font-weight: bold;
-$microformat-abbr-text-decoration: none;
+$microformat-abbr-font-decoration: none;
 
 //
 // Microformat Mixins
@@ -49,7 +49,7 @@ $microformat-abbr-text-decoration: none;
 
   abbr {
     cursor: default;
-    text-decoration: $microformat-abbr-text-decoration;
+    text-decoration: $microformat-abbr-font-decoration;
     font-weight: $microformat-abbr-font-weight;
     border: none;
     padding: $microformat-abbr-padding;

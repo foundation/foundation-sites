@@ -4,7 +4,7 @@
 
 // We use these to control text styles.
 $keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
-$keystroke-text-size: emCalc(15px) !default;
+$keystroke-font-size: emCalc(15px) !default;
 $keystroke-font-color: #222 !default;
 $keystroke-font-color-alt: #fff !default;
 $keystroke-function-factor: 7% !default;
@@ -39,7 +39,7 @@ $keystroke-radius: $button-radius;
   border-width: $keystroke-border-width;
   margin: 0;
   font-family: $keystroke-font;
-  font-size: $keystroke-text-size;
+  font-size: $keystroke-font-size;
   padding: $keystroke-padding;
 }
 

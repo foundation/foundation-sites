@@ -7,6 +7,8 @@ $table-border-style: solid !default;
 $table-border-size: 1px !default;
 $table-border-color: #ddd !default;
 $table-head-bg: #f5f5f5 !default;
+$table-row-padding: emCalc(8px) emCalc(10px) emCalc(9px) !default;
+$table-row-font-size: emCalc(14px) !default;
 
 //
 // Table Mixin
@@ -29,8 +31,8 @@ table {
   tr {
     th,
     td {
-      padding: emCalc(8px) emCalc(10px) emCalc(9px);
-      font-size: emCalc(14px);
+      padding: $table-row-padding;
+      font-size: $table-row-font-size;
       color: #222;
 
       &:first-child { border-#{$defaultFloat}: none; }
