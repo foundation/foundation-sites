@@ -139,6 +139,8 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     section,
     .section {
 
+      .title a { width: 100%; }
+
       .content { display: none; }
 
       &.active {
