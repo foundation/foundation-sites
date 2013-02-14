@@ -2,6 +2,7 @@
 
 
 /* TODO:
+  - Allow sections with no .content to have active links
   - Add event listeners.
 */
 

@@ -9,10 +9,10 @@ $alert-padding-right:       $alert-padding-top + emCalc(10px)              !defa
 $alert-padding-bottom:      $alert-padding-top + emCalc(1px)               !default;
 
 // We use these to control text style.
-$alert-text-weight:         bold                                           !default;
-$alert-text-size:           emCalc(14px)                                   !default;
-$alert-text-color:          #fff                                           !default;
-$alert-text-color-alt:      darken($secondary-color, 60%)                  !default;
+$alert-font-weight:         bold                                           !default;
+$alert-font-size:           emCalc(14px)                                   !default;
+$alert-font-color:          #fff                                           !default;
+$alert-font-color-alt:      darken($secondary-color, 60%)                  !default;
 
 // We use this for close hover effect.
 $alert-function-factor:     10%                                            !default;
@@ -26,7 +26,7 @@ $alert-bottom-margin:       emCalc(20px)                                   !defa
 // We use these to style the close buttons
 $alert-close-color:         #333                                           !default;
 $alert-close-position:      emCalc(5px)                                    !default;
-$alert-close-text-size:     emCalc(22px)                                   !default;
+$alert-close-font-size:     emCalc(22px)                                   !default;
 $alert-close-opacity:       0.3                                            !default;
 $alert-close-opacity-hover: 0.5                                            !default;
 $alert-close-padding:       5px 4px 4px                                    !default;
@@ -43,11 +43,11 @@ $alert-radius:              $global-radius                                 !defa
   border-style: $alert-border-style;
   border-width: $alert-border-width;
   display: block;
-  font-weight: $alert-text-weight;
+  font-weight: $alert-font-weight;
   margin-bottom: $alert-bottom-margin;
   position: relative;
   padding: $alert-padding-top $alert-padding-right $alert-padding-bottom $alert-padding-left;
-  font-size: $alert-text-size;
+  font-size: $alert-font-size;
 }
 
 // We use this mixin to add alert styles
@@ -61,14 +61,14 @@ $alert-radius:              $global-radius                                 !defa
   border-color: darken($bg, $alert-function-factor);
 
   // We control the text color for you based on the background color.
-  @if $bg-lightness > 70% { color: $alert-text-color-alt; }
-  @else                   { color: $alert-text-color; }
+  @if $bg-lightness > 70% { color: $alert-font-color-alt; }
+  @else                   { color: $alert-font-color; }
 
 }
 
 // We use this to create the close button.
 @mixin alert-close {
-  font-size: $alert-close-text-size;
+  font-size: $alert-close-font-size;
   padding: $alert-close-padding;
   line-height: 0;
   position: absolute;

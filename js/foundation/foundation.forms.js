@@ -1,98 +1,4 @@
-/*
- * jQuery Custom Forms Plugin 1.0
- * www.ZURB.com
- * Copyright 2010, ZURB
- * Free to use under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
-*/
-
 (function( $ ){
-
-  /**
-   * Helper object used to quickly adjust all hidden parent element's, display and visibility properties.
-   * This is currently used for the custom drop downs. When the dropdowns are contained within a reveal modal
-   * we cannot accurately determine the list-item elements width property, since the modal's display property is set
-   * to 'none'.
-   *
-   * This object will help us work around that problem.
-   *
-   * NOTE: This could also be plugin.
-   *
-   * @function hiddenFix
-   */
-  var hiddenFix = function() {
-
-    return {
-      /**
-       * Sets all hidden parent elements and self to visibile.
-       *
-       * @method adjust
-       * @param {jQuery Object} $child
-       */
-
-      // We'll use this to temporarily store style properties.
-      tmp : [],
-
-      // We'll use this to set hidden parent elements.
-      hidden : null,
-
-      adjust : function( $child ) {
-        // Internal reference.
-        var _self = this;
-
-        // Set all hidden parent elements, including this element.
-        _self.hidden = $child.parents().andSelf().filter( ":hidden" );
-
-        // Loop through all hidden elements.
-        _self.hidden.each( function() {
-
-          // Cache the element.
-          var $elem = $( this );
-
-          // Store the style attribute.
-          // Undefined if element doesn't have a style attribute.
-          _self.tmp.push( $elem.attr( 'style' ) );
-
-          // Set the element's display property to block,
-          // but ensure it's visibility is hidden.
-          $elem.css( { 'visibility' : 'hidden', 'display' : 'block' } );
-        });
-
-      }, // end adjust
-
-      /**
-       * Resets the elements previous state.
-       *
-       * @method reset
-       */
-      reset : function() {
-        // Internal reference.
-        var _self = this;
-        // Loop through our hidden element collection.
-        _self.hidden.each( function( i ) {
-          // Cache this element.
-          var $elem = $( this ),
-              _tmp = _self.tmp[ i ]; // Get the stored 'style' value for this element.
-
-          // If the stored value is undefined.
-          if( _tmp === undefined )
-            // Remove the style attribute.
-            $elem.removeAttr( 'style' );
-          else
-            // Otherwise, reset the element style attribute.
-            $elem.attr( 'style', _tmp );
-
-        });
-        // Reset the tmp array.
-        _self.tmp = [];
-        // Reset the hidden elements variable.
-        _self.hidden = null;
-
-      } // end reset
-
-    }; // end return
-
-  };
 
   jQuery.foundation = jQuery.foundation || {};
   jQuery.foundation.customForms = jQuery.foundation.customForms || {};
@@ -100,7 +6,7 @@
   $.foundation.customForms.appendCustomMarkup = function ( options ) {
 
     var defaults = {
-      disable_class: "js-disable-custom"
+      disable_class: "no-custom"
     };
 
     options = $.extend( defaults, options );
@@ -118,161 +24,87 @@
       $span.toggleClass('disabled', $this.is(':disabled'));
     }
 
+
     function appendCustomSelect(idx, sel) {
-      var hiddenFixObj = hiddenFix();
-          //
-          // jQueryify the <select> element and cache it.
-          //
+      var hiddenFixObj = $.foundation.utils.hiddenFix();
+
       var $this = $( sel ),
-          //
-          // Find the custom drop down element.
-          //
+
           $customSelect = $this.next( 'div.custom.dropdown' ),
-          //
-          // Find the custom select element within the custom drop down.
-          //
+
           $customList = $customSelect.find( 'ul' ),
-          //
-          // Find the custom a.current element.
-          //
+
           $selectCurrent = $customSelect.find( ".current" ),
-          //
-          // Find the custom a.selector element (the drop-down icon).
-          //
+
           $selector = $customSelect.find( ".selector" ),
-          //
-          // Get the <options> from the <select> element.
-          //
+
           $options = $this.find( 'option' ),
-          //
-          // Filter down the selected options
-          //
+
           $selectedOption = $options.filter( ':selected' ),
-          //
-          // Initial max width.
-          //
+
           maxWidth = 0,
-          //
-          // We'll use this variable to create the <li> elements for our custom select.
-          //
+
           liHtml = '',
-          //
-          // We'll use this to cache the created <li> elements within our custom select.
-          //
-          $listItems
-      ;
+
+          $listItems;
+
       var $currentSelect = false;
-      //
-      // Should we not create a custom list?
-      //
-      if ( $this.hasClass( 'no-custom' ) ) return;
 
-      //
-      // Did we not create a custom select element yet?
-      //
+      if ( $this.hasClass( options.disable_class ) ) return;
+
       if ( $customSelect.length === 0 ) {
-        //
-        // Let's create our custom select element!
-        //
 
-            //
-            // Determine what select size to use.
-            //
         var customSelectSize = $this.hasClass( 'small' )   ? 'small'   :
                                $this.hasClass( 'medium' )  ? 'medium'  :
                                $this.hasClass( 'large' )   ? 'large'   :
-                               $this.hasClass( 'expand' )  ? 'expand'  : ''
-        ;
-        //
-        // Build our custom list.
-        //
-        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>"');
-        //
-        // Grab the selector element
-        //
+                               $this.hasClass( 'expand' )  ? 'expand'  : '';
+
+        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>');
+
         $selector = $customSelect.find( ".selector" );
-        //
-        // Grab the unordered list element from the custom list.
-        //
+
         $customList = $customSelect.find( "ul" );
-        //
-        // Build our <li> elements.
-        //
+
         liHtml = $options.map( function() { return "<li>" + $( this ).html() + "</li>"; } ).get().join( '' );
-        //
-        // Append our <li> elements to the custom list (<ul>).
-        //
+
         $customList.append( liHtml );
-        //
-        // Insert the the currently selected list item before all other elements.
-        // Then, find the element and assign it to $currentSelect.
-        //
 
         $currentSelect = $customSelect.prepend( '<a href="#" class="current">' + $selectedOption.html() + '</a>' ).find( ".current" );
-        //
-        // Add the custom select element after the <select> element.
-        //
+
         $this.after( $customSelect )
-        //
-        //then hide the <select> element.
-        //
+
         .hide();
 
       } else {
-        //
-        // Create our list item <li> elements.
-        //
+
         liHtml = $options.map( function() { return "<li>" + $( this ).html() + "</li>"; } ).get().join( '' );
-        //
-        // Refresh the ul with options from the select in case the supplied markup doesn't match.
-        // Clear what's currently in the <ul> element.
-        //
+
         $customList.html( '' )
-        //
-        // Populate the list item <li> elements.
-        //
+
         .append( liHtml );
 
       } // endif $customSelect.length === 0
 
-      //
-      // Determine whether or not the custom select element should be disabled.
-      //
       $customSelect.toggleClass( 'disabled', $this.is( ':disabled' ) );
-      //
-      // Cache our List item elements.
-      //
+
       $listItems = $customList.find( 'li' );
 
-      //
-      // Determine which elements to select in our custom list.
-      //
       $options.each( function ( index ) {
 
         if ( this.selected ) {
-          //
-          // Add the selected class to the current li element
-          //
+
           $listItems.eq( index ).addClass( 'selected' );
-          //
-          // Update the current element with the option value.
-          //
+
           if ($currentSelect) {
             $currentSelect.html( $( this ).html() );
           }
 
         }
+    if ($(this).is(':disabled')) {
+            $listItems.eq( index ).addClass( 'disabled' );
+    }
 
       });
-
-      //
-      // Update the custom <ul> list width property.
-      //
-      $customList.css( 'width', 'inherit' );
-      //
-      // Set the custom select width property.
-      //
-      $customSelect.css( 'width', 'inherit' );
 
       //
       // If we're not specifying a predetermined form size.
@@ -287,37 +119,18 @@
         // in order to properly calculate the list item element's width property.
         // -------------------------------------------------------------------------------------
 
-        //
-        // Show the drop down.
-        // This should ensure that the list item's width values are properly calculated.
-        //
         $customSelect.addClass( 'open' );
         //
         // Quickly, display all parent elements.
         // This should help us calcualate the width of the list item's within the drop down.
         //
         hiddenFixObj.adjust( $customList );
-        //
-        // Grab the largest list item width.
-        //
+
         maxWidth = ( $listItems.outerWidth() > maxWidth ) ? $listItems.outerWidth() : maxWidth;
-        //
-        // Okay, now reset the parent elements.
-        // This will hide them again.
-        //
+
         hiddenFixObj.reset();
-        //
-        // Finally, hide the drop down.
-        //
+
         $customSelect.removeClass( 'open' );
-        //
-        // Set the custom list width.
-        //
-        $customSelect.width( maxWidth + 18);
-        //
-        // Set the custom list element (<ul />) width.
-        //
-        $customList.width(  maxWidth + 16 );
 
       } // endif
 
@@ -345,6 +158,9 @@
         $customSelect.find('li').eq(index).addClass('selected');
         $customSelect.find('.current').html($(this).html());
       }
+    if ($(this).is(':disabled')) {
+          $customSelect.find('li').eq(index).addClass('disabled');
+    }
     });
 
     // fix width
@@ -357,8 +173,6 @@
       }
       $customSelect.removeClass('open');
     });
-    $customSelect.css('width', maxWidth + 18 + 'px');
-    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
 
   };
 
@@ -416,10 +230,26 @@
       if ($associatedElement.attr('type') === 'checkbox') {
         event.preventDefault();
         $customCheckbox = $(this).find('span.custom.checkbox');
+        //the checkbox might be outside after the label
+        if ($customCheckbox.length == 0) {
+            $customCheckbox = $(this).next('span.custom.checkbox');
+        }
+        //the checkbox might be outside before the label
+        if ($customCheckbox.length == 0) {
+            $customCheckbox = $(this).prev('span.custom.checkbox');
+        }
         toggleCheckbox($customCheckbox);
       } else if ($associatedElement.attr('type') === 'radio') {
         event.preventDefault();
         $customRadio = $(this).find('span.custom.radio');
+        //the radio might be outside after the label
+        if ($customRadio.length == 0) {
+            $customRadio = $(this).next('span.custom.radio');
+        }
+        //the radio might be outside before the label
+        if ($customRadio.length == 0) {
+            $customRadio = $(this).prev('span.custom.radio');
+        }
         toggleRadio($customRadio);
       }
     }
@@ -430,9 +260,12 @@
         $dropdown = $this.closest('div.custom.dropdown'),
         $select = $dropdown.prev();
 
-    event.preventDefault();
-    $('div.dropdown').removeClass('open');
+    // make sure other dropdowns close
+    if(!$dropdown.hasClass('open'))
+      $(document).trigger('click.customdropdown')
 
+    event.preventDefault();
+    //$('div.dropdown').removeClass('open');
     if (false === $select.is(':disabled')) {
         $dropdown.toggleClass('open');
 
@@ -456,30 +289,35 @@
 
     event.preventDefault();
     event.stopPropagation();
-    $('div.dropdown').removeClass('open');
 
-    $this
-      .closest('ul')
-      .find('li')
-      .removeClass('selected');
-    $this.addClass('selected');
+    if ( ! $(this).hasClass('disabled')) {
+        $('div.dropdown').removeClass('open');
 
-    $customDropdown
-      .removeClass('open')
-      .find('a.current')
-      .html($this.html());
+        $oldThis= $this
+          .closest('ul')
+          .find('li.selected');
+        $oldThis.removeClass('selected');
 
-    $this.closest('ul').find('li').each(function (index) {
-      if ($this[0] == this) {
-        selectedIndex = index;
-      }
+        $this.addClass('selected');
 
-    });
-    $select[0].selectedIndex = selectedIndex;
+        $customDropdown
+          .removeClass('open')
+          .find('a.current')
+          .html($this.html());
 
-    $select.trigger('change');
+        $this.closest('ul').find('li').each(function (index) {
+          if ($this[0] == this) {
+            selectedIndex = index;
+          }
+
+        });
+        $select[0].selectedIndex = selectedIndex;
+
+        //store the old value in data
+        $select.data('prevalue', $oldThis.html());
+        $select.trigger('change');
+    }
   });
-
 
   $.fn.foundationCustomForms = $.foundation.customForms.appendCustomMarkup;
 

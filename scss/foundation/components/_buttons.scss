@@ -12,14 +12,14 @@ $button-lrg: emCalc(14px)                                             !default;
 $button-display: inline-block                                         !default;
 
 // We use these to control button text styles.
-$button-text-color: #fff                                              !default;
-$button-text-color-alt: #333                                          !default;
-$button-text-med: emCalc(14px)                                        !default;
-$button-text-tny: emCalc(10px)                                        !default;
-$button-text-sml: emCalc(11px)                                        !default;
-$button-text-lrg: emCalc(18px)                                        !default;
-$button-text-weight: bold                                             !default;
-$button-text-align: center                                            !default;
+$button-font-color: #fff                                              !default;
+$button-font-color-alt: #333                                          !default;
+$button-font-med: emCalc(14px)                                        !default;
+$button-font-tny: emCalc(10px)                                        !default;
+$button-font-sml: emCalc(11px)                                        !default;
+$button-font-lrg: emCalc(18px)                                        !default;
+$button-font-weight: bold                                             !default;
+$button-font-align: center                                            !default;
 
 // We use these to control various hover effects.
 $button-function-factor: 10%                                          !default;
@@ -47,12 +47,12 @@ $button-disabled-opacity: 0.6                                         !default;
     border-width: $button-border-width;
     cursor: pointer;
     font-family: inherit;
-    font-weight: $button-text-weight;
+    font-weight: $button-font-weight;
     line-height: 1;
     margin: 0;
     position: relative;
     text-decoration: none;
-    text-align: $button-text-align;
+    text-align: $button-font-align;
   }
   @if $display { display: $display; }
 }
@@ -69,10 +69,10 @@ $button-disabled-opacity: 0.6                                         !default;
     padding-left: $padding * 2;
 
     // We control the font-size based on mixin input.
-    @if      $padding == $button-med { font-size: $button-text-med; }
-    @else if $padding == $button-tny { font-size: $button-text-tny; }
-    @else if $padding == $button-sml { font-size: $button-text-sml; }
-    @else if $padding == $button-lrg { font-size: $button-text-lrg; }
+    @if      $padding == $button-med { font-size: $button-font-med; }
+    @else if $padding == $button-tny { font-size: $button-font-tny; }
+    @else if $padding == $button-sml { font-size: $button-font-sml; }
+    @else if $padding == $button-lrg { font-size: $button-font-lrg; }
     @else                     { font-size: $padding - emCalc(2px); }
   }
 
@@ -112,14 +112,14 @@ $button-disabled-opacity: 0.6                                         !default;
 
     // We control the text color for you based on the background color.
     @if $bg-lightness > 70% {
-      color: $button-text-color-alt;
+      color: $button-font-color-alt;
       &:hover,
-      &:focus { color: $button-text-color-alt; }
+      &:focus { color: $button-font-color-alt; }
     }
     @else {
-      color: $button-text-color;
+      color: $button-font-color;
       &:hover,
-      &:focus { color: $button-text-color; }
+      &:focus { color: $button-font-color; }
     }
   }
 
