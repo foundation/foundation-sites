@@ -6,6 +6,8 @@
  * Dual licensed under the MIT or GPL Version 2 licenses.
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.opensource.org/licenses/GPL-2.0
+ *
+ * Modified to work with Zepto.js by ZURB
  */
 (function ($, document, undefined) {
 

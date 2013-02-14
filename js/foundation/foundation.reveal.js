@@ -1,5 +1,10 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
+/* TODO:
+    - Background flashes with chained modals.
+    - Some issues with event bindings.
+*/
+
 ;(function ($, window, document, undefined) {
   'use strict';
 

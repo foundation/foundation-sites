@@ -1,5 +1,11 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
+
+/* TODO:
+  - Allow sections with no .content to have active links
+  - Add event listeners.
+*/
+
 ;(function ($, window, document, undefined) {
   'use strict';
 
@@ -119,6 +125,7 @@
     off : function () {
       $(this.scope).off('.fndtn.section');
       $(window).off('.fndtn.section');
+      this.settings.init = false;
     }
   };
 }(Foundation.zj, this, this.document));
