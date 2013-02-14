@@ -17,11 +17,11 @@ $crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
 $crumb-radius: $button-radius                                  !default;
 
 // We use these to set various text styles for breadcrumbs.
-$crumb-text-size: emCalc(11px)                                 !default;
-$crumb-text-color: $primary-color                              !default;
-$crumb-text-color-current: #333                                !default;
-$crumb-text-color-unavailable: #999                            !default;
-$crumb-text-transform: uppercase                               !default;
+$crumb-font-size: emCalc(11px)                                 !default;
+$crumb-font-color: $primary-color                              !default;
+$crumb-font-color-current: #333                                !default;
+$crumb-font-color-unavailable: #999                            !default;
+$crumb-font-transform: uppercase                               !default;
 $crumb-link-decor: underline                                   !default;
 
 // We use these to control the slash between breadcrumbs
@@ -60,17 +60,17 @@ $crumb-slash: "/"                                              !default;
 
   a,
   span {
-    font-size: $crumb-text-size;
+    font-size: $crumb-font-size;
     padding-#{$defaultFloat}: $crumb-side-padding;
-    text-transform: $crumb-text-transform;
-    color: $crumb-text-color;
+    text-transform: $crumb-font-transform;
+    color: $crumb-font-color;
   }
 
   // Current is for the link of the current page
   &.current {
     a {
       cursor: default;
-      color: $crumb-text-color-current;
+      color: $crumb-font-color-current;
     }
 
     &:hover a,
@@ -79,12 +79,12 @@ $crumb-slash: "/"                                              !default;
 
   // Unavailable removed color and link styles so it looks inactive.
   &.unavailable {
-    a { color: $crumb-text-color-unavailable; }
+    a { color: $crumb-font-color-unavailable; }
 
     &:hover a,
     a:focus {
       text-decoration: none;
-      color: $crumb-text-color-unavailable;
+      color: $crumb-font-color-unavailable;
       cursor: default;
     }
   }

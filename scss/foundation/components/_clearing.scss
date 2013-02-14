@@ -4,7 +4,7 @@
 $clearing-bg: rgba(0,0,0,0.8) !default;
 $clearing-old-browser-bg: rgb(0,0,0) !default;
 $clearing-active-img-height: 75% !default;
-$clearing-caption-text-color: #fff !default;
+$clearing-caption-font-color: #fff !default;
 $clearing-caption-bg: $clearing-bg !default;
 $clearing-caption-old-browser-bg: $clearing-old-browser-bg !default;
 $clearing-close-color: #fff !default;
@@ -59,7 +59,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   }
 
   .clearing-caption {
-    color: $clearing-caption-text-color;
+    color: $clearing-caption-font-color;
     margin-bottom: 0;
     text-align: center;
     position: absolute;

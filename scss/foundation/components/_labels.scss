@@ -7,10 +7,10 @@ $label-padding: emCalc(1px) emCalc(4px) emCalc(2px) !default;
 $label-radius: $button-radius !default;
 
 // We use these to style the label text
-$label-text-size: emCalc(14px) !default;
-$label-text-weight: bold !default;
-$label-text-color: #fff !default;
-$label-text-color-alt: darken($secondary-color, 60%) !default;
+$label-font-size: emCalc(14px) !default;
+$label-font-weight: bold !default;
+$label-font-color: #fff !default;
+$label-font-color-alt: darken($secondary-color, 60%) !default;
 
 //
 // Label Mixins
@@ -18,7 +18,7 @@ $label-text-color-alt: darken($secondary-color, 60%) !default;
 
 // We use this mixin to create a default label base.
 @mixin label-base {
-  font-weight: $label-text-weight;
+  font-weight: $label-font-weight;
   text-align: center;
   text-decoration: none;
   line-height: 1;
@@ -28,7 +28,7 @@ $label-text-color-alt: darken($secondary-color, 60%) !default;
 }
 
 // We use this mixin to add label size styles.
-@mixin label-size($padding:$label-padding, $text-size:$label-text-size) {
+@mixin label-size($padding:$label-padding, $text-size:$label-font-size) {
   @if $padding { padding: $padding; }
   @if $text-size { font-size: $text-size; }
 }
@@ -45,8 +45,8 @@ $label-text-color-alt: darken($secondary-color, 60%) !default;
     background-color: $bg;
 
     // We control the text color for you based on the background color.
-    @if $bg-lightness > 70% { color: $label-text-color-alt; }
-    @else { color: $label-text-color; }
+    @if $bg-lightness > 70% { color: $label-font-color-alt; }
+    @else { color: $label-font-color; }
   }
 
   // We use this to control the radius on labels.
@@ -56,7 +56,7 @@ $label-text-color-alt: darken($secondary-color, 60%) !default;
 }
 
 // We use this to add close buttons to alerts
-@mixin label($padding:$label-padding, $text-size:$label-text-size, $bg:$primary-color, $radius:false) {
+@mixin label($padding:$label-padding, $text-size:$label-font-size, $bg:$primary-color, $radius:false) {
   @include label-base;
   @include label-size($padding, $text-size);
   @include label-style($bg, $radius);
