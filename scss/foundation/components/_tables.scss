@@ -1,37 +1,54 @@
-// Tables
+//
+// Table Variables
+//
+$table-bg: #fff !default;
+$table-margin-bottom: emCalc(20px) !default;
+$table-border-style: solid !default;
+$table-border-size: 1px !default;
+$table-border-color: #ddd !default;
+$table-head-bg: #f5f5f5 !default;
+
+//
+// Table Mixin
+//
+
+
+
+/* Tables */
 table {
-  background: #fff;
-  @include radius($tableBorderRadius);
-  margin: 0 0 emCalc(18px);
-  border: 1px solid #ddd;
+  background: $table-bg;
+  margin-bottom: $table-margin-bottom;
+  border: $table-border-style $table-border-size $table-border-color;
 
   thead,
   tfoot {
-    background: #f5f5f5;
-    tr {
-      th,
-      td {
-        padding: emCalc(8px) emCalc(10px) emCalc(9px);
-        font-size: emCalc(14px);
-        font-weight: bold;
-        color: #222;
+    background: $table-head-bg;
+    font-weight: bold;
+  }
 
-        &:first-child { border-#{$defaultFloat}: none; }
-        &:last-child { border-#{$defaultOpposite}: none; }
-      }
+  tr {
+    th,
+    td {
+      padding: emCalc(8px) emCalc(10px) emCalc(9px);
+      font-size: emCalc(14px);
+      color: #222;
 
-      &.even,
-      &.alt { background: #f9f9f9; }
-      &:nth-child(even) { background: #f9f9f9; }
+      &:first-child { border-#{$defaultFloat}: none; }
+      &:last-child { border-#{$defaultOpposite}: none; }
+    }
 
-      td {
-        color: #333;
-        padding: emCalc(9px) emCalc(10px);
-        vertical-align: top;
-        border: none;
-      }
+    &.even,
+    &.alt { background: #f9f9f9; }
+    &:nth-child(even) { background: #f9f9f9; }
+
+    td {
+      color: #333;
+      padding: emCalc(9px) emCalc(10px);
+      vertical-align: top;
+      border: none;
     }
   }
+
 
   thead tr th,
   tfoot tr th,
