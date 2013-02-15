@@ -90,3 +90,21 @@
   color: $tapToCloseFontColor;
   font-weight: $tapToCloseFontWeight;
 }
+
+@media only screen and (max-width: $screenSmall - 1) {
+  .tooltip {
+    font-size: $tooltipFontSizeScreenSm;
+    line-height: 1.4;
+    padding: emCalc(7px) emCalc(10px) emCalc(9px) emCalc(10px);
+    #{$defaultFloat}: 50% !important;
+    max-width: 80% !important;
+    margin-#{$defaultFloat}: -40%;
+    font-size: 110%;
+  }
+  .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
+    border-color: transparent transparent $tooltipBackgroundColor transparent;
+    border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBgOpacityScreenSm) transparent;
+    top: -12px;
+    #{$defaultFloat}: 10px;
+  }
+}

@@ -147,3 +147,8 @@
     font-size: $tipCloseSize;
   }
 }
+
+@media only screen and (max-width: $screenSmall - 1) {
+  .joyride-tip-guide { width: 95% !important; #{$defaultFloat}: 2.5% !important; @include radius($tipBorderRadius); }
+  .joyride-tip-guide-wrapper { width: 100%; }
+}

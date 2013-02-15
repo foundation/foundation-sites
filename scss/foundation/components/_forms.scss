@@ -169,3 +169,24 @@ textarea.error {
     border-color: darken($white, 30%);
   }
 }
+
+
+@media only screen and (max-width: $screenSmall - 1) {
+
+  /* Extend width of all inputs */
+  @for $i from 1 through $totalColumns {
+    input[type="text"].#{convert-number-to-word($i)},
+    input[type="password"].#{convert-number-to-word($i)},
+    input[type="date"].#{convert-number-to-word($i)},
+    input[type="datetime"].#{convert-number-to-word($i)},
+    input[type="email"].#{convert-number-to-word($i)},
+    input[type="number"].#{convert-number-to-word($i)},
+    input[type="search"].#{convert-number-to-word($i)},
+    input[type="tel"].#{convert-number-to-word($i)},
+    input[type="time"].#{convert-number-to-word($i)},
+    input[type="url"].#{convert-number-to-word($i)},
+    textarea.#{convert-number-to-word($i)} {
+      width: 100% !important;
+    }
+  }
+}

@@ -161,3 +161,36 @@ ul[data-clearing] li {
     }
   }
 }
+
+
+/* Between Medium and Small */
+@media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
+  .clearing-main-right, .clearing-main-left {
+    height: 100%;
+    width: 40px;
+    top: 0;
+    border: none;
+    &:before { position: absolute; top: 50%; }
+  }
+  .clearing-main-left {
+    left: 0;
+    &:before { left: 5px; @include css-triangle($clearingArrowSize,$clearingArrowColor,right); }
+  }
+  .clearing-main-right {
+    height: 100%;
+    right: 0;
+    &:before { @include css-triangle($clearingArrowSize,$clearingArrowColor,left); }
+  }
+}
+
+/* Small Devices ------------ */
+@media only screen and (max-width: $screenSmall - 1) {
+  .clearing-container { margin: 0; }
+  .clearing-close { z-index: 99; font-size: emCalc(21px); top: 0px; #{$defaultOpposite}: 5px; }
+  .clearing-caption { position: fixed; bottom: 0; #{$defaultFloat}: 0; padding: emCalc(10px) !important; line-height: 1.3; }
+  .clearing-main-right, .clearing-main-left { display: none; }
+  .clearing-blackout.clearing-assembled {
+    .visible-img, .clearing-container { height: 100%; }
+    ul[data-clearing] { display: none; }
+  }
+}
