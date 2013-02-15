@@ -183,11 +183,10 @@
           liHtml = '',
           $listItems,
           $currentSelect = false;
-          console.log($this)
+
       if ($this.hasClass(self.settings.disable_class)) return;
 
       if ($customSelect.length === 0) {
-        console.log('no custom select')
         var customSelectSize = $this.hasClass( 'small' )   ? 'small'   :
                                $this.hasClass( 'medium' )  ? 'medium'  :
                                $this.hasClass( 'large' )   ? 'large'   :
