@@ -174,12 +174,12 @@ ul[data-clearing] li {
   }
   .clearing-main-left {
     left: 0;
-    &:before { left: 5px; @include css-triangle($clearingArrowSize,$clearingArrowColor,right); }
+    &:before { left: 5px; @include css-triangle($clearing-arrow-size,$clearing-arrow-color,right); }
   }
   .clearing-main-right {
     height: 100%;
     right: 0;
-    &:before { @include css-triangle($clearingArrowSize,$clearingArrowColor,left); }
+    &:before { @include css-triangle($clearing-arrow-size,$clearing-arrow-color,left); }
   }
 }
 

@@ -1,14 +1,14 @@
 /* Block Grids --- */
-.block-grid.mobile {
-  &>li { float: none; width: 100%; margin-#{$defaultFloat}: 0; }
-}
+// .block-grid.mobile {
+//   &>li { float: none; width: 100%; margin-#{$defaultFloat}: 0; }
+// }
 
-.block-grid {
-  &>li { clear: none !important; }
-  @for $i from 1 through $blockGridElements {
-    &.mobile-#{convert-number-to-word($i)}-up>li {
-      width: 100%/$i;
-      @if $i > 1 { &:nth-child(#{$i}n+1) { clear: both; } }
-    }
-  }
-}
+// .block-grid {
+//   &>li { clear: none !important; }
+//   @for $i from 1 through $blockGridElements {
+//     &.mobile-#{convert-number-to-word($i)}-up>li {
+//       width: 100%/$i;
+//       @if $i > 1 { &:nth-child(#{$i}n+1) { clear: both; } }
+//     }
+//   }
+// }

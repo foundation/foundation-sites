@@ -137,16 +137,20 @@ $split-button-pip-left-lrg: emCalc(-8px) !default;
 }
 
 
-/* Split Buttons */
-.split.button { @include split-button;
+@if $include-html-classes {
 
-  &.secondary { @include split-button(false, $split-button-pip-color, $secondary-color, false); }
-  &.alert { @include split-button(false, false, $alert-color, false); }
-  &.success { @include split-button(false, false, $success-color, false); }
+  /* Split Buttons */
+  .split.button { @include split-button;
 
-  &.tiny { @include split-button(tiny, false, false, false); }
-  &.small { @include split-button(small, false, false, false); }
-  &.large { @include split-button(large, false, false, false); }
+    &.secondary { @include split-button(false, $split-button-pip-color, $secondary-color, false); }
+    &.alert { @include split-button(false, false, $alert-color, false); }
+    &.success { @include split-button(false, false, $success-color, false); }
 
-  &.secondary { @include split-button(false, $split-button-pip-color-alt, false, false); }
+    &.tiny { @include split-button(tiny, false, false, false); }
+    &.small { @include split-button(small, false, false, false); }
+    &.large { @include split-button(large, false, false, false); }
+
+    &.secondary { @include split-button(false, $split-button-pip-color-alt, false, false); }
+  }
+
 }

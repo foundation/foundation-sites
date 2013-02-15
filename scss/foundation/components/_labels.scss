@@ -63,21 +63,21 @@ $label-font-color-alt: darken($secondary-color, 60%) !default;
 }
 
 
-// @if $include-html-classes {
+@if $include-html-classes {
 
   /* Labels */
-  // .label {
-  //   @include label-base;
-  //   @include label-size;
-  //   @include label-style;
+  .label {
+    @include label-base;
+    @include label-size;
+    @include label-style;
 
 
-  //   &.radius { @include label-style(false, true); }
-  //   &.round { @include label-style($radius:1000px); }
+    &.radius { @include label-style(false, true); }
+    &.round { @include label-style($radius:1000px); }
 
-  //   &.alert     { @include label-style($alert-color); }
-  //   &.success   { @include label-style($success-color); }
-  //   &.secondary { @include label-style($secondary-color); }
-  // }
+    &.alert     { @include label-style($alert-color); }
+    &.success   { @include label-style($success-color); }
+    &.secondary { @include label-style($secondary-color); }
+  }
 
-// }
+}
