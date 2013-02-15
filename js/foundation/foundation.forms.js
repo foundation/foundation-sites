@@ -22,13 +22,9 @@
       if (typeof method != 'string') {
         if (!this.settings.init) {
           this.events();
-          $('form.custom input:radio[data-customforms!=disabled]')
-            .each(this.append_custom_markup);
-          $('form.custom input:checkbox[data-customforms!=disabled]')
-            .each(this.append_custom_markup);
-          $('form.custom select[data-customforms!=disabled]')
-            .each(this.append_custom_select);
         }
+
+        this.assemble();
 
         return this.settings.init;
       } else {
@@ -36,9 +32,126 @@
       }
     },
 
+    assemble : function () {
+      $('form.custom input[type="radio"]').not('[data-customforms="disabled"]')
+        .each(this.append_custom_markup);
+      $('form.custom input[type="checkbox"]').not('[data-customforms="disabled"]')
+        .each(this.append_custom_markup);
+      $('form.custom select').not('[data-customforms="disabled"]')
+        .each(this.append_custom_select);
+    },
+
     events : function () {
       var self = this;
 
+      $(this.scope)
+        .on('click', 'form.custom span.custom.checkbox', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.toggle_checkbox($(this));
+        })
+        .on('click', 'form.custom span.custom.radio', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.toggle_radio($(this));
+        })
+        .on('change', 'form.custom select:not([data-customforms="disabled"])', function (e) {
+          self.refresh_custom_select($(this));
+        })
+        .on('click', 'form.custom label', function (e) {
+          var $associatedElement = $('#' + $(this).attr('for') + ':not([data-customforms="disabled"])'),
+              $customCheckbox,
+              $customRadio;
+          if ($associatedElement.length !== 0) {
+            if ($associatedElement.attr('type') === 'checkbox') {
+              e.preventDefault();
+              $customCheckbox = $(this).find('span.custom.checkbox');
+              //the checkbox might be outside after the label
+              if ($customCheckbox.length == 0) {
+                  $customCheckbox = $(this).next('span.custom.checkbox');
+              }
+              //the checkbox might be outside before the label
+              if ($customCheckbox.length == 0) {
+                  $customCheckbox = $(this).prev('span.custom.checkbox');
+              }
+              self.toggle_checkbox($customCheckbox);
+            } else if ($associatedElement.attr('type') === 'radio') {
+              e.preventDefault();
+              $customRadio = $(this).find('span.custom.radio');
+              //the radio might be outside after the label
+              if ($customRadio.length == 0) {
+                  $customRadio = $(this).next('span.custom.radio');
+              }
+              //the radio might be outside before the label
+              if ($customRadio.length == 0) {
+                  $customRadio = $(this).prev('span.custom.radio');
+              }
+              self.toggle_radio($customRadio);
+            }
+          }
+        })
+        .on('click', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
+          var $this = $(this),
+              $dropdown = $this.closest('div.custom.dropdown'),
+              $select = $dropdown.prev();
+
+          // make sure other dropdowns close
+          if(!$dropdown.hasClass('open'))
+            $(self.scope).trigger('click.customdropdown')
+
+          e.preventDefault();
+          //$('div.dropdown').removeClass('open');
+          if (false === $select.is(':disabled')) {
+              $dropdown.toggleClass('open');
+
+              if ($dropdown.hasClass('open')) {
+                $(self.scope).on('click.customdropdown', function () {
+                  $dropdown.removeClass('open');
+                  $(self.scope).off('.customdropdown');
+                });
+              } else {
+                $(self.scope).on('.customdropdown');
+              }
+              return false;
+          }
+        })
+        .on('click', 'form.custom div.custom.dropdown li', function (e) {
+          var $this = $(this),
+              $customDropdown = $this.closest('div.custom.dropdown'),
+              $select = $customDropdown.prev(),
+              selectedIndex = 0;
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          if ( ! $(this).hasClass('disabled')) {
+              $('div.dropdown').removeClass('open');
+
+              var $oldThis= $this
+                .closest('ul')
+                .find('li.selected');
+              $oldThis.removeClass('selected');
+
+              $this.addClass('selected');
+
+              $customDropdown
+                .removeClass('open')
+                .find('a.current')
+                .html($this.html());
+
+              $this.closest('ul').find('li').each(function (index) {
+                if ($this[0] == this) {
+                  selectedIndex = index;
+                }
+
+              });
+              $select[0].selectedIndex = selectedIndex;
+
+              //store the old value in data
+              $select.data('prevalue', $oldThis.html());
+              $select.trigger('change');
+          }
+        });
 
 
       this.settings.init = true;
@@ -58,7 +171,7 @@
     },
 
     append_custom_select : function (idx, sel) {
-      var hiddenFixObj = $.foundation.utils.hiddenFix(),
+      var self = Foundation.libs.forms,
           $this = $( sel ),
           $customSelect = $this.next( 'div.custom.dropdown' ),
           $customList = $customSelect.find( 'ul' ),
@@ -71,7 +184,7 @@
           $listItems,
           $currentSelect = false;
 
-      if ($this.hasClass(this.settings.disable_class)) return;
+      if ($this.hasClass(self.settings.disable_class)) return;
 
       if ($customSelect.length === 0) {
         var customSelectSize = $this.hasClass( 'small' )   ? 'small'   :
@@ -92,14 +205,13 @@
       } else {
         liHtml = $options.map(function() { 
             return "<li>" + $( this ).html() + "</li>";
-          });
+          })
           .get().join('');
         $customList
           .html('')
           .append(liHtml);
 
       } // endif $customSelect.length === 0
-
       $customSelect.toggleClass('disabled', $this.is( ':disabled' ) );
       $listItems = $customList.find( 'li' );
 
@@ -135,11 +247,11 @@
         // Quickly, display all parent elements.
         // This should help us calcualate the width of the list item's within the drop down.
         //
-        hiddenFixObj.adjust( $customList );
+        Foundation.libs.forms.hidden_fix.adjust( $customList );
 
         maxWidth = ( $listItems.outerWidth() > maxWidth ) ? $listItems.outerWidth() : maxWidth;
 
-        hiddenFixObj.reset();
+        Foundation.libs.forms.hidden_fix.reset();
 
         $customSelect.removeClass( 'open' );
 
@@ -149,13 +261,13 @@
 
     refresh_custom_select : function ($select) {
       var maxWidth = 0,
-        $customSelect = $select.next();
+        $customSelect = $select.next(),
+        $options = $select.find('option');
 
-      $options = $select.find('option');
       $customSelect.find('ul').html('');
 
       $options.each(function () {
-        $li = $('<li>' + $(this).html() + '</li>');
+        var $li = $('<li>' + $(this).html() + '</li>');
         $customSelect.find('ul').append($li);
       });
 
@@ -165,9 +277,9 @@
           $customSelect.find('li').eq(index).addClass('selected');
           $customSelect.find('.current').html($(this).html());
         }
-      if ($(this).is(':disabled')) {
-            $customSelect.find('li').eq(index).addClass('disabled');
-      }
+        if ($(this).is(':disabled')) {
+          $customSelect.find('li').eq(index).addClass('disabled');
+        }
       });
 
       // fix width
@@ -200,7 +312,7 @@
           input = $input[0];
 
       if (false === $input.is(':disabled')) {
-        $form.find('input:radio[name="' + $input.attr('name') + '"]').next().not($element).removeClass('checked');
+        $form.find('input[type="radio"][name="' + $input.attr('name') + '"]').next().not($element).removeClass('checked');
         if ( !$element.hasClass('checked') ) {
           $element.toggleClass('checked');
         }
@@ -208,6 +320,76 @@
 
         $input.trigger('change');
       }
+    },
+
+    hidden_fix : {
+      /**
+       * Sets all hidden parent elements and self to visibile.
+       *
+       * @method adjust
+       * @param {jQuery Object} $child
+       */
+
+      // We'll use this to temporarily store style properties.
+      tmp : [],
+
+      // We'll use this to set hidden parent elements.
+      hidden : null,
+
+      adjust : function( $child ) {
+        // Internal reference.
+        var _self = this;
+
+        // Set all hidden parent elements, including this element.
+        _self.hidden = $child.parents().andSelf().filter( ":hidden" );
+
+        // Loop through all hidden elements.
+        _self.hidden.each( function() {
+
+          // Cache the element.
+          var $elem = $( this );
+
+          // Store the style attribute.
+          // Undefined if element doesn't have a style attribute.
+          _self.tmp.push( $elem.attr( 'style' ) );
+
+          // Set the element's display property to block,
+          // but ensure it's visibility is hidden.
+          $elem.css( { 'visibility' : 'hidden', 'display' : 'block' } );
+        });
+
+      }, // end adjust
+
+      /**
+       * Resets the elements previous state.
+       *
+       * @method reset
+       */
+      reset : function() {
+        // Internal reference.
+        var _self = this;
+        // Loop through our hidden element collection.
+        _self.hidden.each( function( i ) {
+          // Cache this element.
+          var $elem = $( this ),
+              _tmp = _self.tmp[ i ]; // Get the stored 'style' value for this element.
+
+          // If the stored value is undefined.
+          if( _tmp === undefined )
+            // Remove the style attribute.
+            $elem.removeAttr( 'style' );
+          else
+            // Otherwise, reset the element style attribute.
+            $elem.attr( 'style', _tmp );
+
+        });
+        // Reset the tmp array.
+        _self.tmp = [];
+        // Reset the hidden elements variable.
+        _self.hidden = null;
+
+      } // end reset
+
     },
 
     off : function () {
