@@ -5,7 +5,7 @@
 
   Foundation.libs.tooltips = {
     name: 'tooltips',
-    
+
     version : '4.0.0.alpha',
 
     settings : {
@@ -105,7 +105,7 @@
       $target.removeAttr('title');
       this.show($target);
     },
-    
+
     reposition : function (target, tip, classes) {
       var width, nub, nubHeight, nubWidth, column, objPos;
 

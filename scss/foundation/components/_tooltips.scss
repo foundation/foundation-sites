@@ -1,6 +1,21 @@
 //
 // Tooltip Variables
 //
+$has-tip-border-bottom: dotted 1px #ccc !default;
+$has-tipp-font-weight: bold !default;
+$has-tip-font-color: #333 !default;
+$has-tip-border-bottom-hover: dotted 1px darken($mainColor, 20%) !default;
+$has-tip-font-color-hover: $mainColor !default;
+$tooltip-bg: #000 !default;
+$tooltip-opacity: 0.85 !default;
+$tooltip-font-size: emCalc(12px) !default;
+$tooltip-font-weight: bold !default;
+$tooltip-font-color: #fff !default;
+$tooltip-close-font-size: emCalc(10px) !default;
+$tooltip-close-font-weight: normal !default;
+$tooltip-close-font-color: #888 !default;
+$tooltip-font-size-sml: emCalc(14px) !default;
+$tooltip-radius: $global-radius !default;
 
 
 //
@@ -10,15 +25,15 @@
 
 /* Tooltips */
 .has-tip {
-  border-bottom: $hasTipBorderBottom;
+  border-bottom: $has-tip-border-bottom;
   cursor: help;
-  font-weight: $hasTipFontWeight;
-  color: $hasTipFontColor;
+  font-weight: $has-tipp-font-weight;
+  color: $has-tip-font-color;
 
   &:hover,
   &:focus {
-    border-bottom: $hasTipBorderBottomHover;
-    color: $hasTipFontColorHover;
+    border-bottom: $has-tip-border-bottom-hover;
+    color: $has-tip-font-color-hover;
   }
   &.tip-left,
   &.tip-right { float: none !important; }
@@ -26,36 +41,36 @@
 
 .tooltip {
   display: none;
-  background: $tooltipBackgroundColor;
-  background: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity);
+  background: $tooltip-bg;
+  background: rgba($tooltip-bg,$tooltip-opacity);
   position: absolute;
-  color: $tooltipFontColor;
-  font-weight: $tooltipFontWeight;
-  font-size: $tooltipFontSize;
+  color: $tooltip-font-color;
+  font-weight: $tooltip-font-weight;
+  font-size: $tooltip-font-size;
   padding: emCalc(5px);
   z-index: 999;
-  @include radius($tooltipBorderRadius);
-  line-height: normal;
+  @include radius($tooltip-radius);
+$global-radius-height: normal;
 
   &>.nub {
     display: block;
     width: 0;
     height: 0;
     border: solid 5px;
-    border-color: transparent transparent $tooltipBackgroundColor transparent;
-    border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent;
+    border-color: transparent transparent $tooltip-bg transparent;
+    border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent;
     position: absolute;
     top: emCalc(-10px);
     #{$defaultFloat}: emCalc(10px);
   }
   &.tip-override>.nub {
-    border-color: transparent transparent $tooltipBackgroundColor transparent !important;
-    border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent !important;
+    border-color: transparent transparent $tooltip-bg transparent !important;
+    border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent !important;
     top: emCalc(-10px) !important;
   }
   &.tip-top>.nub {
-    border-color: $tooltipBackgroundColor transparent transparent transparent;
-    border-color: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent transparent;
+    border-color: $tooltip-bg transparent transparent transparent;
+    border-color: rgba($tooltip-bg,$tooltip-opacity) transparent transparent transparent;
     top: auto;
     bottom: emCalc(-10px);
   }
@@ -64,14 +79,14 @@
   &.tip-right { float: none !important; }
 
   &.tip-left>.nub {
-    border-color: transparent transparent transparent $tooltipBackgroundColor;
-    border-color: transparent transparent transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity);
+    border-color: transparent transparent transparent $tooltip-bg;
+    border-color: transparent transparent transparent rgba($tooltip-bg,$tooltip-opacity);
     right: emCalc(-10px);
     left: auto;
   }
   &.tip-right>.nub {
-    border-color: transparent $tooltipBackgroundColor transparent transparent;
-    border-color: transparent rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity) transparent transparent;
+    border-color: transparent $tooltip-bg transparent transparent;
+    border-color: transparent rgba($tooltip-bg,$tooltip-opacity) transparent transparent;
     right: auto;
     left: emCalc(-10px);
   }
@@ -79,21 +94,21 @@
   &.noradius { @include radius(0); }
 
   &.opened {
-    color: $hasTipFontColorHover !important;
-    border-bottom: $hasTipBorderBottomHover !important;
+    color: $has-tip-font-color-hover !important;
+    border-bottom: $has-tip-border-bottom-hover !important;
   }
 }
 
 .tap-to-close {
   display: block;
-  font-size: $tapToCloseFontSize;
-  color: $tapToCloseFontColor;
-  font-weight: $tapToCloseFontWeight;
+  font-size: $tooltip-close-font-size;
+  color: $tooltip-close-font-color;
+  font-weight: $tooltip-close-font-weight;
 }
 
 @media only screen and (max-width: $screenSmall - 1) {
   .tooltip {
-    font-size: $tooltipFontSizeScreenSm;
+    font-size: $tooltip-font-size-sml;
     line-height: 1.4;
     padding: emCalc(7px) emCalc(10px) emCalc(9px) emCalc(10px);
     #{$defaultFloat}: 50% !important;
@@ -102,8 +117,8 @@
     font-size: 110%;
   }
   .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
-    border-color: transparent transparent $tooltipBackgroundColor transparent;
-    border-color: transparent transparent rgba($tooltipBackgroundColor,$tooltipBgOpacityScreenSm) transparent;
+    border-color: transparent transparent $tooltip-bg transparent;
+    border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent;
     top: -12px;
     #{$defaultFloat}: 10px;
   }

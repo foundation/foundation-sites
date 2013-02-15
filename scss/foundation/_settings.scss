@@ -296,24 +296,6 @@ $topBarSearchWidth: 200px !default;
 $topBarBreakPoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
 $topBarNavToggleSize:emCalc(8px) !default;
 
-// Tooltip Settings
-
-$hasTipBorderBottom: dotted 1px #ccc !default;
-$hasTipFontWeight: bold !default;
-$hasTipFontColor: #333 !default;
-$hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%) !default;
-$hasTipFontColorHover: $mainColor !default;
-$tooltipBackgroundColor: #000 !default;
-$tooltipBackgroundOpacity: 0.85 !default;
-$tooltipFontSize: emCalc(12px) !default;
-$tooltipFontWeight: bold !default;
-$tooltipFontColor: #fff !default;
-$tapToCloseFontSize: emCalc(10px) !default;
-$tapToCloseFontWeight: normal !default;
-$tapToCloseFontColor: #888 !default;
-$tooltipFontSizeScreenSm: emCalc(14px) !default;
-$tooltipBgOpacityScreenSm: 0.85 !default;
-$tooltipBorderRadius: 4px !default;
 
 // Orbit Settings
 
