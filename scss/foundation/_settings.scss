@@ -270,10 +270,6 @@ $custDropdownSelectedBgColor: lighten(#2ba6cb, 40%) !default;
 $custDropdownSelectedFontColor: #000 !default;
 $custFormDisabledBgColor: #ddd !default;
 
-// Tab Settings
-
-$tabHeight: emCalc(40px) !default;
-$tabTermFontSize: emCalc(12px) !default;
 
 // Nav Bar Settings
 
@@ -299,10 +295,6 @@ $topBarDropToggleAlpha: 0.5 !default;
 $topBarSearchWidth: 200px !default;
 $topBarBreakPoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
 $topBarNavToggleSize:emCalc(8px) !default;
-
-// UI Settings
-
-$tableBorderRadius: 3px !default;
 
 // Tooltip Settings
 
