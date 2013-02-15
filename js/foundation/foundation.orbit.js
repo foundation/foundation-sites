@@ -12,7 +12,6 @@
     },
 
     init: function(scope, method, options) {
-      console.info('init orbit!');
       var self = this;
       $('.orbit-container').each($.proxy(self._init, self));
     },
