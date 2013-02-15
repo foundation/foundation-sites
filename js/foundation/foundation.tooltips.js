@@ -192,7 +192,7 @@
       $(this.scope).off('.fndtn.tooltip');
       $(this.scope).data('fndtn-tooltips', false);
       $(this.settings.tooltipClass).each(function (i) {
-        $('[data-tooltip]').get(i)).attr('title', $(this).text());
+        $('[data-tooltip]').get(i).attr('title', $(this).text());
       }).remove();
     }
   };
