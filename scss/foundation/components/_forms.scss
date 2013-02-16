@@ -1,37 +1,63 @@
-// Standard Forms
+//
+// Form Variables
+//
 
-form { margin: 0 0 $formSpacing; }
+$form-spacing: emCalc(18px) !default;
+$labe-font-weight: 500 !default;
+$label-font-color: lighten(#000, 30%) !default;
+$label-bottom-margin: emCalc(3px) !default;
+$input-font-color: rgba(0,0,0,0.75) !default;
+$input-font-size: emCalc(14px) !default;
+$input-bg-color: #fff !default;
+$input-focus-bg-color: darken(#fff, 2%) !default;
+$input-border-color: darken(#fff, 20%) !default;
+$input-focus-border-color: darken(#fff, 40%) !default;
+$input-border-style: solid !default;
+$input-border-width: 1px !default;
+$input-border-radius: 2px !default;
+$fieldset-border-radius: 3px !default;
+
+
+//
+// Form Mixins
+//
+
+
+/* Standard Forms */
+
+form { margin: 0 0 $form-spacing; }
 
 // Using forms within rows, we need to set some defaults
-.row form .row { margin: 0 -($formSpacing / 2);
+.row form .row { margin: 0 -($form-spacing / 2);
 
-  .column,
-  .columns { padding: 0 ($formSpacing / 2); }
+  [class*="large-"],
+  [class*="small-"] { padding: 0 ($form-spacing / 2); }
 
   // Use this to collapse the margins of a form row
   &.collapse { margin: 0;
 
-    .column,
-    .columns { padding: 0; }
+    [class*="large-"],
+    [class*="small-"] { padding: 0; }
+
   }
 }
 
 // Label Styles
 label {
-  font-size: .875em;
-  color: $labelFontColor;
+  font-size: emCalc(14px);
+  color: $label-font-color;
   cursor: pointer;
   display: block;
-  font-weight: $labelFontWeight;
-  margin-bottom: $labelBtmMargin;
+  font-weight: $labe-font-weight;
+  margin-bottom: $label-bottom-margin;
 
   &.right {
     float: none;
     text-align: right;
   }
   &.inline {
-    line-height: (emCalc(14px) + ($formSpacing * 1.5));
-    margin: 0 0 $formSpacing 0;
+    line-height: (emCalc(14px) + ($form-spacing * 1.5));
+    margin: 0 0 $form-spacing 0;
   }
 }
 
@@ -45,14 +71,16 @@ label {
   width: 100%;
   padding-top: 0;
   padding-bottom: 0;
-  height: (emCalc(14px) + ($formSpacing * 1.5));
-  line-height: (emCalc(14px) + ($formSpacing * 1.5)) - 1;
+  font-size: emCalc(14px);
+  height: (emCalc(14px) + ($form-spacing * 1.5));
+  line-height: (emCalc(14px) + ($form-spacing * 1.5) - emCalc(1px));
 
   // Adjust padding and alignment if pre/post element is a button
   &.button {
     padding-#{$defaultFloat}: 0;
     padding-#{$defaultOpposite}: 0;
     text-align: center;
+    line-height: $form-spacing;
   }
 }
 
@@ -76,6 +104,9 @@ input[type="text"],
 input[type="password"],
 input[type="date"],
 input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
 input[type="email"],
 input[type="number"],
 input[type="search"],
@@ -83,31 +114,26 @@ input[type="tel"],
 input[type="time"],
 input[type="url"],
 textarea {
-  background-color: $inputBgColor;
+  background-color: $input-bg-color;
   font-family: inherit;
-  border: $inputBorderWidth $inputBorderStyle $inputBorderColor;
-  @include radius($inputBorderRadius);
+  border: $input-border-width $input-border-style $input-border-color;
+  @include radius($input-border-radius);
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  color: $inputFontColor;
+  color: $input-font-color;
   display: block;
-  font-size: $inputFontSize;
-  margin: 0 0 $formSpacing 0;
-  padding: ($formSpacing / 2);
-  height: (emCalc(14px) + ($formSpacing * 1.5));
+  font-size: $input-font-size;
+  margin: 0 0 $form-spacing 0;
+  padding: ($form-spacing / 2);
+  height: (emCalc(14px) + ($form-spacing * 1.5));
   width: 100%;
   @include single-transition(all, 0.15s, linear);
 
-  // Large size input fields
-  &.oversize {
-    font-size: emCalc(17px);
-    padding: (($formSpacing - 4) / 2) ($formSpacing / 2);
-  }
-
   // Basic focus styles
   &:focus {
-    background: $inputFocusBgColor;
-    border-color: $inputFocusBorderColor;
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    outline: none;
   }
 
   // Disabled background input background color
@@ -123,7 +149,7 @@ select { width: 100%; }
 // We add basic fieldset styling
 fieldset {
   border: solid 1px #ddd;
-  @include radius($fieldsetBorderRadius);
+  @include radius($fieldset-border-radius);
   padding: emCalc(12px) emCalc(12px) 0;
   margin: emCalc(18px) 0;
 
@@ -142,20 +168,20 @@ fieldset {
 input.error,
 .error textarea,
 textarea.error {
-  border-color: $alertColor;
-  background-color: rgba($alertColor, 0.1);
+  border-color: $alert-color;
+  background-color: rgba($alert-color, 0.1);
 }
 
 .error label,
-label.error { color: $alertColor; }
+label.error { color: $alert-color; }
 
 .error small,
 small.error {
   display: block;
   padding: emCalc(6px) emCalc(4px);
-  margin-top: -($formSpacing) - 1;
-  margin-bottom: $formSpacing;
-  background: $alertColor;
+  margin-top: -($form-spacing) - emCalc(5px);
+  margin-bottom: $form-spacing;
+  background: $alert-color;
   color: #fff;
   font-size: emCalc(12px);
   font-weight: bold;

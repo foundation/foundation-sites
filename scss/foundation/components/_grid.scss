@@ -82,6 +82,8 @@ $total-columns: 12 !default;
 
   }
 
+  @if $collapse { padding-left: 0; padding-right: 0; }
+
   // If offset, calculate appropriate margins
   @if $offset { margin-#{$defaultFloat}: gridCalc($offset, $total-columns); }
 
@@ -126,7 +128,13 @@ img { -ms-interpolation-mode: bicubic; }
   .row {
     @include grid-row;
 
-    [class*="large-"], [class*="small-"] { @include grid-column($columns:$total-columns); }
+    [class*="large-"],
+    [class*="small-"] { @include grid-column($columns:$total-columns); }
+
+    &.collapse {
+      [class*="large-"],
+      [class*="small-"] { @include grid-column($collapse:true); }
+    }
 
     .row { @include grid-row($behavior:nest);
       &.collapse { @include grid-row($behavior:nest-collapse); }

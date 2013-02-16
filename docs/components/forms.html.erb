@@ -1,438 +1,262 @@
-  <div class="row">
-    <div class="large-12">
-      <p><a href="index.html">&laquo; Back</a></p>
-      <h2>Foundation Forms Testing</h2>
-      <hr />
-      <dl class="sub-nav">
-        <dt>Go to:</dt>
-        <dd><a href="#row-layout">Row Layout</a></dd>
-        <dd><a href="#fieldsets">Fieldsets</a></dd>
-        <dd><a href="#collapsed">Collapsed Columns</a></dd>
-        <dd><a href="#errors">Errors</a></dd>
-        <dd><a href="#custom">Custom Inputs</a></dd>
-      </dl>
-    </div>
+<% @page_title = "Forms" %>
+<div class="row">
+  <div class="large-12">
+    <p><a href="index.html">&laquo; Back</a></p>
+    <h1>Foundation <%= @page_title %> </h1>
+    <hr>
   </div>
+</div>
 
-  <!-- Test Foundation Components Here -->
-  <div class="row">
-    <div class="large-12">
-      <a name="general"></a>
-      <h3>Forms</h3>
-      <h4 class="subheader">We set out in Foundation 3 to create an easy to handle, powerful, and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
+<!-- Test Foundation Components Here -->
+<div class="row">
+  <div class="large-12">
+    <a name="general"></a>
+    <h3>Forms</h3>
+    <h4 class="subheader">We set out in Foundation 3 to create an easy to handle, powerful, and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
+    <br>
+
+    <div class="row">
+      <div class="large-4">
+        <a name="row-layout"></a>
+        <h4>Row Layouts</h4>
+        <p>Here's an example of a form layout controlled with rows and columns.</p>
+      </div>
       <br>
+      <div class="large-8">
+        <form>
+          <label for="standard_input">This is a label.</label>
+          <input type="text" placeholder="Standard Input" id="standard_input" />
 
-      <div class="row">
-        <div class="large-4">
-          <a name="row-layout"></a>
-          <h4>Row Layouts</h4>
-          <p>Here's an example of a form layout controlled with rows and columns.</p>
-        </div>
+          <label for="address_1">Address</label>
+          <input type="text" class="large-12" placeholder="Street" id="address_1" />
+          <div class="row">
+            <div class="large-6">
+              <input type="text" placeholder="City" />
+            </div>
+            <div class="large-3">
+              <input type="text" placeholder="State" />
+            </div>
+            <div class="large-3">
+              <input type="text" placeholder="ZIP" />
+            </div>
+          </div>
+          <textarea placeholder="Message"></textarea>
+        </form>
+        <p>Sometimes you want a form with labels to the left of your inputs. Piece of cake. You can add a class of <code>.right</code> to a label to have it align to the right, and if your label is next to an input (in another column) adding a class of <code>.inline</code> will have it vertically center against an input.</p>
+
         <br>
-        <div class="large-8">
-          <form>
-            <label for="standard_input">This is a label.</label>
-            <input type="text" placeholder="Standard Input" id="standard_input" />
 
-            <label for="address_1">Address</label>
-            <input type="text" class="twelve" placeholder="Street" id="address_1" />
+        <form>
+          <div class="row">
+            <div class="large-2 small-2">
+              <label class="right inline" for="address_name">Address:</label>
+            </div>
+            <div class="large-10 small-10">
+              <input type="text" placeholder="e.g. Home" id="address_name" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-2 small-2">
+              <label class="right inline" for="city">City:</label>
+            </div>
+            <div class="large-10 small-10">
+              <input type="text" id="city" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-2 small-2">
+              <label class="right inline" for="zip">ZIP:</label>
+            </div>
+            <div class="large-10 small-10">
+              <input type="text" id="zip" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="large-4">
+        <a name="fieldsets"></a>
+        <h4>Fieldsets</h4>
+        <p>Simple elements that can contain all or part of a form to create better division.</p>
+      </div>
+      <div class="large-8">
+        <form class="custom">
+          <fieldset>
+
+            <legend>Fieldset Name</legend>
+
+            <label for="standard_input_2">This is a label.</label>
+            <input type="text" placeholder="Standard Input" id="standard_input_2"/>
+
+            <label for="address_2">Address</label>
+            <input type="text" id="address_2" />
+            <input type="text" />
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="large-4">
+        <a name="collapsed"></a>
+        <h4>Labels and Actions with Collapsed Columns</h4>
+        <p>Foundation forms support actions tied to buttons, and prefix / postfix labels. Essentially you can use a 'collapsed' row to create label / action / input combinations. Here are a few examples.</p>
+      </div>
+      <br>
+      <div class="large-8">
+
+        <div class="row">
+          <div class="large-6">
+            <label for="input_prefix">Input with a prefix character</label>
+            <div class="row collapse">
+              <div class="large-2 small-2">
+                <span class="prefix">#</span>
+              </div>
+              <div class="large-10 small-10">
+                <input type="text" id="input_prefix" />
+              </div>
+            </div>
+          </div>
+          <div class="large-6">
+            <label for="input_prefix">Input with a prefix character</label>
+            <div class="row collapse">
+              <div class="large-9 small-9">
+                <input type="text" id="input_postfix" />
+              </div>
+              <div class="large-3 small-3">
+                <span class="postfix">.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-12">
+            <label for="input_postfix_button">Input with a postfix action (button)</label>
+            <div class="row collapse">
+              <div class="large-8 small-8">
+                <input type="text" id="input_postfix_button" />
+              </div>
+              <div class="large-4 small-4">
+                <a class="button expand postfix">Search</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+      <div class="large-4">
+        <a name="errors"></a>
+        <h4>Error States</h4>
+        <p>Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically.
+      </div>
+      <br>
+      <div class="large-8">
+        <div class="row">
+          <div class="large-6">
+            <label class="error" for="error">Field with Error</label>
+            <input type="text" class="error" id="error" />
+            <small class="error">Invalid entry</small>
+          </div>
+
+          <div class="large-6 end error">
+            <label for="error_2">Another Error</label>
+            <input type="text" id="error_2" />
+            <small>Invalid entry</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-4">
+        <h4>Large Form Example</h4>
+        <p>Here's an example of a really extensive form.</p>
+      </div>
+      <div class="large-8">
+        <form>
+          <fieldset>
+            <legend>Large Form Example</legend>
+
             <div class="row">
-              <div class="six columns">
+              <div class="large-5">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" />
+
+                <label for="occupation">Occupation</label>
+                <input type="text" id="occupation" />
+
+                <label for="twitter">Twitter</label>
+                <div class="row collapse">
+                  <div class="large-2 small-2">
+                    <span class="prefix">@</span>
+                  </div>
+                  <div class="large-10 small-10">
+                    <input type="text" placeholder="foundationzurb" id="twitter" />
+                  </div>
+                </div>
+
+                <label for="url">URL</label>
+                <div class="row collapse">
+                  <div class="large-9 small-9">
+                    <input type="text" placeholder="foundation.zurb" id="url"/>
+                  </div>
+                  <div class="large-3 small-3">
+                    <span class="postfix">.com</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="large-5">
+
+                <label class="error" for="error_3">Field with Error</label>
+                <input type="text" class="error" id="error_3" />
+                <small class="error">Invalid entry</small>
+
+                <div class="error">
+                  <label for="error_4">Another Error</label>
+                  <input type="text" id="error_4" />
+                  <small>Invalid entry</small>
+                </div>
+
+              </div>
+            </div>
+            <br>
+            <label for="address_3">Address</label>
+            <input type="text" placeholder="Street (e.g. 123 Awesome St.)" id="address_3" />
+
+            <div class="row">
+              <div class="large-6">
                 <input type="text" placeholder="City" />
               </div>
-              <div class="three columns">
-                <input type="text" placeholder="State" />
+              <div class="large-2">
+                <select>
+                  <option>CA</option>
+                </select>
               </div>
-              <div class="three columns">
+              <div class="large-4">
                 <input type="text" placeholder="ZIP" />
               </div>
             </div>
-            <textarea placeholder="Message"></textarea>
-          </form>
-          <p>Sometimes you want a form with labels to the left of your inputs. Piece of cake. You can add a class of <code>.right</code> to a label to have it align to the right, and if your label is next to an input (in another column) adding a class of <code>.inline</code> will have it vertically center against an input.</p>
 
-          <br>
-
-          <form>
-            <div class="row">
-              <div class="large-2 small-1">
-                <label class="right inline" for="address_name">Address Name:</label>
-              </div>
-              <div class="large-10 small-3">
-                <input type="text" placeholder="e.g. Home" class="eight" id="address_name" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="large-2 small-1">
-                <label class="right inline" for="city">City:</label>
-              </div>
-              <div class="large-10 small-3">
-                <input type="text" class="eight" id="city" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="large-2 small-1">
-                <label class="right inline" for="zip">ZIP:</label>
-              </div>
-              <div class="large-10 small-3">
-                <input type="text" class="three" id="zip" />
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row">
-        <div class="large-4">
-          <a name="fieldsets"></a>
-          <h4>Fieldsets</h4>
-          <p>Simple elements that can contain all or part of a form to create better division.</p>
-        </div>
-        <div class="large-8">
-          <form class="custom">
-            <fieldset>
-
-              <legend>Fieldset Name</legend>
-
-              <label for="standard_input_2">This is a label.</label>
-              <input type="text" placeholder="Standard Input" id="standard_input_2"/>
-
-              <label for="address_2">Address</label>
-              <input type="text" id="address_2" />
-              <input type="text" class="six" />
-
-            </fieldset>
-          </form>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row">
-        <div class="large-4">
-          <a name="collapsed"></a>
-          <h4>Labels and Actions with Collapsed Columns</h4>
-          <p>Foundation forms support actions tied to buttons, and prefix / postfix labels. Essentially you can use a 'collapsed' row to create label / action / input combinations. Here are a few examples.</p>
-        </div>
-        <br>
-        <div class="large-8">
-          <label for="input_prefix">Input with a prefix character</label>
-          <div class="row">
-            <div class="large-8">
-              <div class="row collapse">
-                <div class="large-2 small-1">
-                  <span class="prefix">#</span>
-                </div>
-                <div class="large-10 small-3">
-                  <input type="text" id="input_prefix" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <label for="input_postfix">Input with a postfix label</label>
-          <div class="row">
-            <div class="large-8">
-              <div class="row collapse">
-                <div class="large-9 small-3">
-                  <input type="text" id="input_postfix" />
-                </div>
-                <div class="large-3 small-1">
-                  <span class="postfix">.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <label for="input_postfix_button">Input with a postfix action (button)</label>
-          <div class="row">
-            <div class="large-8">
-              <div class="row collapse">
-                <div class="large-8 small-3">
-                  <input type="text" id="input_postfix_button" />
-                </div>
-                <div class="large-4 small-1">
-                  <a class="button expand postfix">Search</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br><br>
-
-      <div class="row">
-        <div class="large-4">
-          <a name="errors"></a>
-          <h4>Error States</h4>
-          <p>Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically.
-        </div>
-        <br>
-        <div class="large-8">
-          <div class="row">
-            <div class="large-6">
-              <label class="error" for="error">Field with Error</label>
-              <input type="text" class="error" id="error" />
-              <small class="error">Invalid entry</small>
-            </div>
-
-            <div class="large-6 end error">
-              <label for="error_2">Another Error</label>
-              <input type="text" id="error_2" />
-              <small>Invalid entry</small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-4">
-          <h4>Large Form Example</h4>
-          <p>Here's an example of a really extensive form.</p>
-        </div>
-        <div class="large-8">
-          <form>
-            <fieldset>
-              <legend>Large Form Example</legend>
-
-              <div class="row">
-                <div class="large-5">
-
-                  <label for="name">Name</label>
-                  <input type="text" id="name" />
-
-                  <label for="occupation">Occupation</label>
-                  <input type="text" id="occupation" />
-
-                  <label for="twitter">Twitter</label>
-                  <div class="row collapse">
-                    <div class="large-2 small-1">
-                      <span class="prefix">@</span>
-                    </div>
-                    <div class="large-10 small-3">
-                      <input type="text" placeholder="foundationzurb" id="twitter" />
-                    </div>
-                  </div>
-
-                  <label for="url">URL</label>
-                  <div class="row collapse">
-                    <div class="large-9 small-3">
-                      <input type="text" placeholder="foundation.zurb" id="url"/>
-                    </div>
-                    <div class="large-3 small-1">
-                      <span class="postfix">.com</span>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="large-5">
-
-                  <label class="error" for="error_3">Field with Error</label>
-                  <input type="text" class="error" id="error_3" />
-                  <small class="error">Invalid entry</small>
-
-                  <div class="error">
-                    <label for="error_4">Another Error</label>
-                    <input type="text" id="error_4" />
-                    <small>Invalid entry</small>
-                  </div>
-
-                </div>
-              </div>
-
-              <label for="address_3">Address</label>
-              <input type="text" placeholder="Street (e.g. 123 Awesome St.)" id="address_3" />
-
-              <div class="row">
-                <div class="large-6">
-                  <input type="text" placeholder="City" />
-                </div>
-                <div class="large-2">
-                  <select>
-                    <option>CA</option>
-                  </select>
-                </div>
-                <div class="large-4">
-                  <input type="text" placeholder="ZIP" />
-                </div>
-              </div>
-
-              <textarea placeholder="Type something here..."></textarea>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-
-      <br><br>
-
-      <div class="row">
-        <div class="large-4">
-          <a name="custom"></a>
-          <h4>Custom Inputs</h4>
-          <p>Custom form input types that are included with Foundation.</p>
-        </div>
-        <div class="large-8">
-          <form class="custom">
-
-            <h5>Radio Buttons and Checkboxes</h5>
-            <div class="row">
-              <div class="large-4">
-                <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 1</label>
-                <label for="radio2"><input name="radio1" type="radio" id="radio2" style="display:none;"><span class="custom radio checked"></span> Radio Button 2</label>
-                <label for="radio3"><input name="radio1" type="radio" id="radio3" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
-              </div>
-              <div class="large-4">
-                <label for="radio4"><input name="radio2" type="radio" id="radio4"> Radio Button 1</label>
-                <label for="radio5"><input name="radio2" CHECKED type="radio" id="radio5"> Radio Button 2</label>
-                <label for="radio6"><input name="radio2" type="radio" id="radio6"> Radio Button 3</label>
-              </div>
-              <div class="large-4">
-                <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
-                <label for="checkbox2"><input type="checkbox" id="checkbox2" checked style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
-                <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3"> Label for Checkbox</label>
-              </div>
-            </div>
-
-            <br />
-            <h5>Dropdown / Select Elements</h5>
-
-            <label for="customDropdownN">Small Example</label>
-            <select id="customDropdownN" class="small">
-              <option DISABLED>This is a dropdown</option>
-              <option>This is another option</option>
-              <option>This is another option too</option>
-              <option>Look, a third option</option>
-            </select>
-
-            <label for="customDropdownN">Medium Example</label>
-            <select id="customDropdownN" class="medium">
-              <option DISABLED>This is a dropdown</option>
-              <option>This is another option</option>
-              <option>This is another option too</option>
-              <option>Look, a third option</option>
-            </select>
-
-            <label for="customDropdownN">Large Example</label>
-            <select id="customDropdownN" class="large">
-              <option DISABLED>This is a dropdown</option>
-              <option>This is another option</option>
-              <option>This is another option too</option>
-              <option>Look, a third option</option>
-            </select>
-
-            <label for="customDropdownN">Natural Example</label>
-            <select id="customDropdownN">
-              <option DISABLED>This is a dropdown</option>
-              <option>This is another option</option>
-              <option>This is another option too</option>
-              <option>Look, a third option</option>
-              <option DISABLED>This is a dropdown</option>
-              <option>This is another option</option>
-              <option>This is another option too</option>
-              <option>Look, a third option</option>
-              <option DISABLED>This is a dropdown</option>
-              <option>This is another option</option>
-              <option>This is another option too</option>
-              <option>Look, a third option</option>
-              <option DISABLED>This is a dropdown</option>
-              <option>This is another option</option>
-              <option>This is another option too</option>
-              <option>Look, a third option</option>
-            </select>
-
-          <div class="row">
-            <div class="large-6">
-            <label>Prefix Example</label>
-              <div class="row collapse">
-                <div class="large-9 small-3">
-                  <span class="prefix">mysubdomain</span>
-                </div>
-                <div class="large-3 small-1">
-                <select>
-                  <option>.com</option>
-                  <option>.co</option>
-                  <option>.ca</option>
-                </select>
-                </div>
-              </div>
-            </div>
-            <div class="large-6">
-            <label>Postfix Example</label>
-              <div class="row collapse">
-                <div class="large-10 small-3">
-                <select>
-                  <option>google</option>
-                  <option>yahoo</option>
-                  <option>bing</option>
-                </select>
-                </div>
-                <div class="large-2 small-1">
-                  <span class="postfix">.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-6">
-            <label>Postfix Button Example</label>
-              <div class="row collapse">
-                <div class="large-10 small-3">
-                <select>
-                  <option>Find a Monkey</option>
-                  <option>Find an Elephant</option>
-                  <option>Find a Squirrel</option>
-                </select>
-                </div>
-                <div class="large-2 small-1">
-                  <a class="button expand postfix">Go</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-              <label for="address_3">Inline With Regular Inputs</label>
-
-              <div class="row">
-                <div class="large-6">
-                  <select>
-                    <option>Choose Your Product:</option>
-                    <option>DOG - Stuffed Dog</option>
-                    <option>SQB - Black Squirrel (Angry Face)</option>
-                    <option>SQH - Brown Squirrel (Happy Face)</option>
-                  </select>
-                </div>
-                <div class="large-2">
-                  <input type="text" placeholder="Qty" />
-                </div>
-                <div class="large-4">
-                  <input type="submit" class="button inline-button radius" value="Add To Cart" />
-                </div>
-              </div>
-
-          </form>
-          <fieldset>
-            <div class="row">
-              <div class="large-12">
-                <form class="custom" name="add">
-                  <div class="row">
-                    <div class="large-3">
-                      <label for="year">Year</label>
-                      <select name="year">
-                        <option value="2000">2012</option>
-                        <option value="2000">Another really long option.</option>
-                        <option value="2000">2010</option>
-                        <option value="2000">2009</option>
-                      </select>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+            <textarea placeholder="Type something here..."></textarea>
           </fieldset>
-        </div>
+        </form>
       </div>
-
     </div>
+
   </div>
+</div>

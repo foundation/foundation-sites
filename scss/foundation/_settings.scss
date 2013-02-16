@@ -235,23 +235,6 @@ $defaultOpposite: right !default; // Change this to 'left' for right-to-left lan
   $defaultOpposite: left;
 }
 
-// Form Settings
-
-$formSpacing: .75em !default;
-$labelFontWeight: 500 !default;
-$labelFontColor: lighten(#000, 30%) !default;
-$labelBtmMargin: emCalc(3px) !default;
-$inputFontColor: rgba(0,0,0,0.75) !default;
-$inputFontSize: emCalc(14px) !default;
-$inputBgColor: #fff !default;
-$inputFocusBgColor: darken(#fff, 2%) !default;
-$inputBorderColor: darken(#fff, 20%) !default;
-$inputFocusBorderColor: darken(#fff, 30%) !default;
-$inputBorderStyle: solid !default;
-$inputBorderWidth: 1px !default;
-$inputBorderRadius: 2px !default;
-$fieldsetBorderRadius: 3px !default;
-
 // Custom Form Settings
 
 $custFormBorderColor: #ccc !default;
