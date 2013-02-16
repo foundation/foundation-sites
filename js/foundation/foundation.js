@@ -232,9 +232,8 @@
   },
 
   $.fn.foundation = function () {
-    var args = [this].concat(Array.prototype.slice.call(arguments, 0));
-
     return this.each(function () {
+      var args = [this].concat(Array.prototype.slice.call(arguments, 0));
       Foundation.init.apply(Foundation, args);
 
       return this;
