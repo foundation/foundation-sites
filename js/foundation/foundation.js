@@ -9,7 +9,6 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
 /* TODO & NOTES:
-  - Since we are not redefining undefined, we might get by without using typeof obj === 'undefined' syntax
   - Test error return, since some of this code has changed slightly.
   - scrollTo is not working
 */
@@ -231,10 +230,10 @@
   },
 
   $.fn.foundation = function () {
-    return this.each(function () {
-      var args = [this].concat(Array.prototype.slice.call(arguments, 0));
-      Foundation.init.apply(Foundation, args);
+    var args = Array.prototype.slice.call(arguments, 0);
 
+    return this.each(function () {
+      Foundation.init.apply(Foundation, [this].concat(args));
       return this;
     });
   };

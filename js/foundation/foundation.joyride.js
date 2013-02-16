@@ -100,6 +100,7 @@
     },
 
     start : function () {
+      console.log('init')
       var self = this,
           $this = $(this.scope).find('[data-joyride]');
       
@@ -596,7 +597,7 @@
       $(window).off('.joyride');
       $('.joyride-close-tip, .joyride-next-tip, .joyride-modal-bg').off('.joyride');
       $('.joyride-tip-guide, .joyride-modal-bg').remove();
-      clearTimeout(settings.automate);
+      clearTimeout(this.settings.automate);
       this.settings = {};
     }
   };
