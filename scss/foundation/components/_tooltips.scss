@@ -2,10 +2,12 @@
 // Tooltip Variables
 //
 $has-tip-border-bottom: dotted 1px #ccc !default;
-$has-tipp-font-weight: bold !default;
+$has-tip-font-weight: bold !default;
 $has-tip-font-color: #333 !default;
 $has-tip-border-bottom-hover: dotted 1px darken($mainColor, 20%) !default;
 $has-tip-font-color-hover: $mainColor !default;
+
+$tooltip-padding: emCalc(5px) !default;
 $tooltip-bg: #000 !default;
 $tooltip-opacity: 0.85 !default;
 $tooltip-font-size: emCalc(12px) !default;
@@ -16,18 +18,16 @@ $tooltip-close-font-weight: normal !default;
 $tooltip-close-font-color: #888 !default;
 $tooltip-font-size-sml: emCalc(14px) !default;
 $tooltip-radius: $global-radius !default;
+$tooltip-pip-size: 5px !default;
 
 
 //
 // Tooltip Mixins
 //
-
-
-/* Tooltips */
-.has-tip {
+@mixin has-tip {
   border-bottom: $has-tip-border-bottom;
   cursor: help;
-  font-weight: $has-tipp-font-weight;
+  font-weight: $has-tip-font-weight;
   color: $has-tip-font-color;
 
   &:hover,
@@ -35,9 +35,14 @@ $tooltip-radius: $global-radius !default;
     border-bottom: $has-tip-border-bottom-hover;
     color: $has-tip-font-color-hover;
   }
+
   &.tip-left,
   &.tip-right { float: none !important; }
 }
+
+
+/* Tooltips */
+.has-tip { @include has-tip; }
 
 .tooltip {
   display: none;
@@ -47,32 +52,31 @@ $tooltip-radius: $global-radius !default;
   color: $tooltip-font-color;
   font-weight: $tooltip-font-weight;
   font-size: $tooltip-font-size;
-  padding: emCalc(5px);
+  padding: $tooltip-padding;
   z-index: 999;
   @include radius($tooltip-radius);
-$global-radius-height: normal;
 
   &>.nub {
     display: block;
     width: 0;
     height: 0;
-    border: solid 5px;
+    border: solid $tooltip-pip-size;
     border-color: transparent transparent $tooltip-bg transparent;
     border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent;
     position: absolute;
-    top: emCalc(-10px);
-    #{$defaultFloat}: emCalc(10px);
+    top: -($tooltip-pip-size * 2);
+    #{$defaultFloat}: $tooltip-pip-size * 2;
   }
   &.tip-override>.nub {
     border-color: transparent transparent $tooltip-bg transparent !important;
     border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent !important;
-    top: emCalc(-10px) !important;
+    top: -($tooltip-pip-size * 2) !important;
   }
   &.tip-top>.nub {
     border-color: $tooltip-bg transparent transparent transparent;
     border-color: rgba($tooltip-bg,$tooltip-opacity) transparent transparent transparent;
     top: auto;
-    bottom: emCalc(-10px);
+    bottom: -($tooltip-pip-size * 2);
   }
 
   &.tip-left,
@@ -81,14 +85,14 @@ $global-radius-height: normal;
   &.tip-left>.nub {
     border-color: transparent transparent transparent $tooltip-bg;
     border-color: transparent transparent transparent rgba($tooltip-bg,$tooltip-opacity);
-    right: emCalc(-10px);
+    right: -($tooltip-pip-size * 2);
     left: auto;
   }
   &.tip-right>.nub {
     border-color: transparent $tooltip-bg transparent transparent;
     border-color: transparent rgba($tooltip-bg,$tooltip-opacity) transparent transparent;
     right: auto;
-    left: emCalc(-10px);
+    left: -($tooltip-pip-size * 2);
   }
 
   &.noradius { @include radius(0); }
@@ -106,20 +110,20 @@ $global-radius-height: normal;
   font-weight: $tooltip-close-font-weight;
 }
 
-@media only screen and (max-width: $screenSmall - 1) {
-  .tooltip {
-    font-size: $tooltip-font-size-sml;
-    line-height: 1.4;
-    padding: emCalc(7px) emCalc(10px) emCalc(9px) emCalc(10px);
-    #{$defaultFloat}: 50% !important;
-    max-width: 80% !important;
-    margin-#{$defaultFloat}: -40%;
-    font-size: 110%;
-  }
-  .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
-    border-color: transparent transparent $tooltip-bg transparent;
-    border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent;
-    top: -12px;
-    #{$defaultFloat}: 10px;
-  }
-}
+// @media only screen and (max-width: $screenSmall - 1) {
+//   .tooltip {
+//     font-size: $tooltip-font-size-sml;
+//     line-height: 1.4;
+//     padding: emCalc(7px) emCalc(10px) emCalc(9px) emCalc(10px);
+//     #{$defaultFloat}: 50% !important;
+//     max-width: 80% !important;
+//     margin-#{$defaultFloat}: -40%;
+//     font-size: 110%;
+//   }
+//   .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
+//     border-color: transparent transparent $tooltip-bg transparent;
+//     border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent;
+//     top: -12px;
+//     #{$defaultFloat}: 10px;
+//   }
+// }
