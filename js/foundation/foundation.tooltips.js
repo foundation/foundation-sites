@@ -160,9 +160,9 @@
       var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'noradius'].concat(this.settings.additionalInheritableClasses),
           classes = target.attr('class'),
           filtered = classes ? $.map(classes.split(' '), function (el, i) {
-              if ($.inArray(el, inheritables) !== -1) {
-                return el;
-              }
+            if ($.inArray(el, inheritables) !== -1) {
+              return el;
+            }
           }).join(' ') : '';
 
       return $.trim(filtered);

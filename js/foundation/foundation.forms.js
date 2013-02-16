@@ -68,11 +68,11 @@
               $customCheckbox = $(this).find('span.custom.checkbox');
               //the checkbox might be outside after the label
               if ($customCheckbox.length == 0) {
-                  $customCheckbox = $(this).next('span.custom.checkbox');
+                $customCheckbox = $(this).next('span.custom.checkbox');
               }
               //the checkbox might be outside before the label
               if ($customCheckbox.length == 0) {
-                  $customCheckbox = $(this).prev('span.custom.checkbox');
+                $customCheckbox = $(this).prev('span.custom.checkbox');
               }
               self.toggle_checkbox($customCheckbox);
             } else if ($associatedElement.attr('type') === 'radio') {
@@ -80,11 +80,11 @@
               $customRadio = $(this).find('span.custom.radio');
               //the radio might be outside after the label
               if ($customRadio.length == 0) {
-                  $customRadio = $(this).next('span.custom.radio');
+                $customRadio = $(this).next('span.custom.radio');
               }
               //the radio might be outside before the label
               if ($customRadio.length == 0) {
-                  $customRadio = $(this).prev('span.custom.radio');
+                $customRadio = $(this).prev('span.custom.radio');
               }
               self.toggle_radio($customRadio);
             }
@@ -102,17 +102,17 @@
           e.preventDefault();
           //$('div.dropdown').removeClass('open');
           if (false === $select.is(':disabled')) {
-              $dropdown.toggleClass('open');
+            $dropdown.toggleClass('open');
 
-              if ($dropdown.hasClass('open')) {
-                $(self.scope).on('click.customdropdown', function () {
-                  $dropdown.removeClass('open');
-                  $(self.scope).off('.customdropdown');
-                });
-              } else {
-                $(self.scope).on('.customdropdown');
-              }
-              return false;
+            if ($dropdown.hasClass('open')) {
+              $(self.scope).on('click.customdropdown', function () {
+                $dropdown.removeClass('open');
+                $(self.scope).off('.customdropdown');
+              });
+            } else {
+              $(self.scope).on('.customdropdown');
+            }
+            return false;
           }
         })
         .on('click', 'form.custom div.custom.dropdown li', function (e) {
@@ -125,34 +125,33 @@
           e.stopPropagation();
 
           if ( ! $(this).hasClass('disabled')) {
-              $('div.dropdown').removeClass('open');
+            $('div.dropdown').removeClass('open');
 
-              var $oldThis= $this
-                .closest('ul')
-                .find('li.selected');
-              $oldThis.removeClass('selected');
+            var $oldThis= $this
+              .closest('ul')
+              .find('li.selected');
+            $oldThis.removeClass('selected');
 
-              $this.addClass('selected');
+            $this.addClass('selected');
 
-              $customDropdown
-                .removeClass('open')
-                .find('a.current')
-                .html($this.html());
+            $customDropdown
+              .removeClass('open')
+              .find('a.current')
+              .html($this.html());
 
-              $this.closest('ul').find('li').each(function (index) {
-                if ($this[0] == this) {
-                  selectedIndex = index;
-                }
+            $this.closest('ul').find('li').each(function (index) {
+              if ($this[0] == this) {
+                selectedIndex = index;
+              }
 
-              });
-              $select[0].selectedIndex = selectedIndex;
+            });
+            $select[0].selectedIndex = selectedIndex;
 
-              //store the old value in data
-              $select.data('prevalue', $oldThis.html());
-              $select.trigger('change');
+            //store the old value in data
+            $select.data('prevalue', $oldThis.html());
+            $select.trigger('change');
           }
         });
-
 
       this.settings.init = true;
     },
