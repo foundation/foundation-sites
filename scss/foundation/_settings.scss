@@ -179,7 +179,15 @@ body {
 .hide         { display: none; }
 .highlight    { background: $highlight-color; }
 
+//
+// Global resets for forms
+//
 
+// Make sure textarea takes on height automatically
+textarea { height: auto; }
+
+// Make select elements 100% width by default
+select { width: 100%; }
 
 
 
