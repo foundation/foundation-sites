@@ -9,8 +9,7 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
 /* TODO & NOTES:
-  - Since we are not redefining undefined, we might get buy without using typeof obj === 'undefined' syntax
-  - Test undefined.
+  - Since we are not redefining undefined, we might get by without using typeof obj === 'undefined' syntax
   - Test error return, since some of this code has changed slightly.
   - scrollTo is not working
 */
@@ -65,7 +64,7 @@
 
       // disable library error catching,
       // used for development only
-      if (typeof nc !== 'undefined') this.nc = nc;
+      if (nc) this.nc = nc;
 
       if (libraries && typeof libraries === 'string') {
         library_arr = libraries.split(' ');
@@ -104,15 +103,15 @@
         if (this.libs.hasOwnProperty(lib)) {
           return this.libs[lib].init.apply(this.libs[lib], args);
         }
-      }.bind(this));
+      }.bind(this), lib);
     },
 
-    catch : function (fun) {
+    catch : function (fun, lib) {
       if (!this.nc) {
         try {
           return fun();
         } catch (e) {
-          return this.error({name: 'error', message: 'could not be initialized', more: e.name + ' ' + e.message});
+          return this.error({name: lib, message: 'could not be initialized', more: e.name + ' ' + e.message});
         }
       }
 
@@ -232,9 +231,8 @@
   },
 
   $.fn.foundation = function () {
-    var args = [this].concat(Array.prototype.slice.call(arguments, 0));
-
     return this.each(function () {
+      var args = [this].concat(Array.prototype.slice.call(arguments, 0));
       Foundation.init.apply(Foundation, args);
 
       return this;
