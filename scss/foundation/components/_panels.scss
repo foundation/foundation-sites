@@ -1,34 +1,59 @@
 //
 // Panel Variables
 //
+
+// We use these to control the background and border styles
 $panel-bg: darken(#fff, 5%) !default;
 $panel-border-style: solid !default;
 $panel-border-size: 1px !default;
-$panel-border-color: darken($panel-bg, 10%) !default;
-$panel-margin: 0 0 emCalc(22px) 0 !default;
+
+// We use this % to control how much we darken things on hover
+$panel-function-factor: 10% !default;
+$panel-border-color: darken($panel-bg, $panel-function-factor) !default;
+
+// We use these to set default inner padding and bottom margin
+$panel-margin-bottom: emCalc(20px) !default;
 $panel-padding: emCalc(20px) !default;
-$panel-radius: $button-radius !default;
+
+// We use these to set default font colors
+$panel-font-color: #333;
+$panel-font-color-alt: #fff;
+
 
 //
 // Panel Mixins
 //
 
-@mixin panel($bg:$panel-bg, $radius:false) {
+// We use this mixin to create panels.
+@mixin panel($bg:$panel-bg, $padding:$panel-padding) {
+
   @if $bg {
+    $bg-lightness: lightness($bg);
+
     border-style: $panel-border-style;
     border-width: $panel-border-size;
-    margin: $panel-margin;
-    padding: $panel-padding;
+    border-color: darken($bg, $panel-function-factor);
+    margin: $panel-margin-bottom;
+    padding: $padding;
+
     background: $bg;
-    border-color: darken($bg, 10%);
+
+    @if $bg-lightness >= 50% and $bg == blue {
+      *, * * { color: $panel-font-color-alt; }
+    }
+    @else if $bg-lightness >= 50% {
+      *, * * { color: $panel-font-color; }
+    }
+    @else {
+      *, * * { color: $panel-font-color-alt; }
+    }
 
     &>:first-child { margin-top: 0; }
     &>:last-child { margin-bottom: 0; }
   }
-
-  @if $radius { @include radius($radius); }
 }
 
+// Only include these classes if the option exists
 @if $include-html-classes {
 
   /* Panels */
@@ -36,22 +61,10 @@ $panel-radius: $button-radius !default;
 
     &.callout {
       @include panel($bg:$primary-color);
-      color: #fff;
       @include inset-shadow($active:false);
-      a { color: #fff; }
-
-      .button {
-        background: $white;
-        border: none;
-        color: $primary-color;
-        text-shadow: none;
-
-        &:hover,
-        &:focus { background: rgba(255,255,255,0.8); }
-      }
     }
 
-    &.radius { @include panel($bg:false, $radius:$panel-radius); }
+    &.radius { @include panel($bg:false); @include radius; }
 
   }
 
