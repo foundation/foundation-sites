@@ -38,6 +38,7 @@ $panel-font-color-alt: #fff;
 
     background: $bg;
 
+    // We set the font color based on the darkness of the bg.
     @if $bg-lightness >= 50% and $bg == blue {
       *, * * { color: $panel-font-color-alt; }
     }
@@ -48,6 +49,7 @@ $panel-font-color-alt: #fff;
       *, * * { color: $panel-font-color-alt; }
     }
 
+    // Respect the padding, fool.
     &>:first-child { margin-top: 0; }
     &>:last-child { margin-bottom: 0; }
   }
@@ -60,11 +62,14 @@ $panel-font-color-alt: #fff;
   .panel { @include panel;
 
     &.callout {
-      @include panel($bg:$primary-color);
+      @include panel($primary-color);
       @include inset-shadow($active:false);
     }
 
-    &.radius { @include panel($bg:false); @include radius; }
+    &.radius {
+      @include panel($bg:false);
+      @include radius;
+    }
 
   }
 
