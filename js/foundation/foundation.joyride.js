@@ -4,6 +4,7 @@
 /*
   TODO:
     - Fix timer display
+    - auto scroll not working
 */
 
 ;(function ($, window, document, undefined) {
@@ -100,7 +101,6 @@
     },
 
     start : function () {
-      console.log('init')
       var self = this,
           $this = $(this.scope).find('[data-joyride]');
       

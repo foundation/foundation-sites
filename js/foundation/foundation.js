@@ -206,7 +206,7 @@
         this.scrollToTimerCache = setTimeout(function() {
             el.scrollTop = el.scrollTop + perTick;
             this.scrollTo(el, to, duration - 10);
-        }.bind(this), 10);
+        }, 10);
       },
 
       // not supported in core Zepto
