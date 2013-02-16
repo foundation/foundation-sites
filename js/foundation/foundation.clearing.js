@@ -195,7 +195,6 @@
     },
 
     // visual adjustments
-
     fix_height : function (target) {
       var lis = target.parent().children();
 
@@ -207,23 +206,35 @@
             li.addClass('fix-height');
           }
         })
-        .closest('ul').width(lis.length * 100 + '%');
+        .closest('ul')
+        .width(lis.length * 100 + '%');
+
       return this;
     },
 
     update_paddles : function (target) {
-      var visible_image = target.closest('.carousel').siblings('.visible-img');
+      var visible_image = target
+        .closest('.carousel')
+        .siblings('.visible-img');
 
       if (target.next().length) {
-        visible_image.find('.clearing-main-right').removeClass('disabled');
+        visible_image
+          .find('.clearing-main-right')
+          .removeClass('disabled');
       } else {
-        visible_image.find('.clearing-main-right').addClass('disabled');
+        visible_image
+          .find('.clearing-main-right')
+          .addClass('disabled');
       }
 
       if (target.prev().length) {
-        visible_image.find('.clearing-main-left').removeClass('disabled');
+        visible_image
+          .find('.clearing-main-left')
+          .removeClass('disabled');
       } else {
-        visible_image.find('.clearing-main-left').addClass('disabled');
+        visible_image
+          .find('.clearing-main-left')
+          .addClass('disabled');
       }
     },
 
@@ -247,7 +258,8 @@
     },
 
     preload : function ($image) {
-      this.img($image.closest('li').next())
+      this
+        .img($image.closest('li').next())
         .img($image.closest('li').prev());
     },
 
@@ -303,9 +315,13 @@
       var caption = $image.data('caption');
 
       if (caption) {
-        container.text(caption).show();
+        container
+          .text(caption)
+          .show();
       } else {
-        container.text('').hide();
+        container
+          .text('')
+          .hide();
       }
       return this;
     },
@@ -317,7 +333,9 @@
           target = current[direction]();
 
       if (target.length) {
-        target.find('img').trigger('click', [current, target]);
+        target
+          .find('img')
+          .trigger('click', [current, target]);
       }
     },
 
@@ -416,6 +434,7 @@
       $(this.scope).off('.fndtn.clearing');
       $(window).off('.fndtn.clearing');
       this.remove_data(); // empty settings cache
+      this.settings.init = false;
     }
   };
 

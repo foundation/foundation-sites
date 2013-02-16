@@ -36,10 +36,10 @@
       var self = this;
 
       $(this.scope).on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          self.toggle($(this));
-        });
+        e.preventDefault();
+        e.stopPropagation();
+        self.toggle($(this));
+      });
 
       $('body').on('click.fndtn.dropdown', function (e) {
         if (!$(e.target).data('dropdown')) {
@@ -111,6 +111,7 @@
       $('body').off('.fndtn.dropdown');
       $(window).off('.fndtn.dropdown');
       $('[data-dropdown-content]').off('.fndtn.dropdown');
+      this.settings.init = false;
     }
   };
 }(Foundation.zj, this, this.document));

@@ -271,7 +271,8 @@
       this.active.modal.off('.reveal');
       this.active.bg.off('.reveal');
       this.active.close_button.off('.reveal');
-      $(this.scope).off('.reveal')
+      $(this.scope).off('.reveal');
+      this.settings.init = false;
     }
   };
 }(Foundation.zj, this, this.document));

@@ -68,11 +68,11 @@
               $customCheckbox = $(this).find('span.custom.checkbox');
               //the checkbox might be outside after the label
               if ($customCheckbox.length == 0) {
-                  $customCheckbox = $(this).next('span.custom.checkbox');
+                $customCheckbox = $(this).next('span.custom.checkbox');
               }
               //the checkbox might be outside before the label
               if ($customCheckbox.length == 0) {
-                  $customCheckbox = $(this).prev('span.custom.checkbox');
+                $customCheckbox = $(this).prev('span.custom.checkbox');
               }
               self.toggle_checkbox($customCheckbox);
             } else if ($associatedElement.attr('type') === 'radio') {
@@ -80,11 +80,11 @@
               $customRadio = $(this).find('span.custom.radio');
               //the radio might be outside after the label
               if ($customRadio.length == 0) {
-                  $customRadio = $(this).next('span.custom.radio');
+                $customRadio = $(this).next('span.custom.radio');
               }
               //the radio might be outside before the label
               if ($customRadio.length == 0) {
-                  $customRadio = $(this).prev('span.custom.radio');
+                $customRadio = $(this).prev('span.custom.radio');
               }
               self.toggle_radio($customRadio);
             }
