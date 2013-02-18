@@ -72,6 +72,13 @@
            */
           closeOnBackgroundClick: true,
           /**
+           * Should the modal close when ESC-key is pressed?
+           * @property closeOnEsc
+           * @type {Boolean}
+           * @default true
+           */
+          closeOnEsc: true,
+          /**
            * Specify a class name for the 'close modal' element.
            * This element will close an open modal.
            *
@@ -770,22 +777,27 @@
      }
 
      //
-     // Bind keyup functions on the body element.
-     // We'll want to close the modal when the 'escape' key is hit.
+     // Should we close the modal when ESC-key is pressed?
      //
-     $( 'body' ).bind( 'keyup.reveal', function ( event ) {
-      //
-      // Did the escape key get triggered?
-      //
-       if ( event.which === 27 ) { // 27 is the keycode for the Escape key
-         //
-         // Escape key was triggered.
-         // Trigger the modal 'close' event.
-         //
-         modal.trigger( 'reveal:close' );
-       }
+     if ( options.closeOnEsc ) {
+       //
+       // Bind keyup functions on the body element.
+       // We'll want to close the modal when the 'escape' key is hit.
+       //
+       $( 'body' ).bind( 'keyup.reveal', function ( event ) {
+        //
+        // Did the escape key get triggered?
+        //
+         if ( event.which === 27 ) { // 27 is the keycode for the Escape key
+           //
+           // Escape key was triggered.
+           // Trigger the modal 'close' event.
+           //
+           modal.trigger( 'reveal:close' );
+         }
 
-      }); // end $(body)
+        }); // end $(body)
+     }
 
     }); // end this.each
 
