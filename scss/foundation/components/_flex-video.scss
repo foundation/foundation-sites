@@ -31,7 +31,7 @@ $flex-video-widescreen-padding-bottom: 57.25%;
   video {
     position: absolute;
     top: 0;
-    #{$defaultFloat}: 0;
+    #{$default-float}: 0;
     width: 100%;
     height: 100%;
   }

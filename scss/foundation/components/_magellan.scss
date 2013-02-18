@@ -36,9 +36,9 @@ $magellan-border-color: #ccc;
 }
 
 @mixin magellan-sidenav {
-  float: $defaultFloat;
-  margin-#{$defaultOpposite}: emCalc(25px);
-  border-#{$defaultOpposite}:$magellan-border-width $magellan-border-style $magellan-border-color;
+  float: $default-float;
+  margin-#{$default-opposite}: emCalc(25px);
+  border-#{$default-opposite}:$magellan-border-width $magellan-border-style $magellan-border-color;
   ul li {
     display: block;
   }
@@ -52,7 +52,7 @@ $magellan-border-color: #ccc;
 
   ul li {
     display: inline;
-    float: $defaultFloat;
+    float: $default-float;
     padding-right: $magellan-padding;
   }
 }

@@ -7,16 +7,16 @@ $pagination-height: emCalc(24px) !default;
 $pagination-margin: emCalc(-5px) !default;
 
 // We use these to set the list-item properties
-$pagination-li-float: $defaultFloat;
+$pagination-li-float: $default-float;
 $pagination-li-height: emCalc(24px) !default;
-$pagination-li-font-color: $txtColor !default;
+$pagination-li-font-color: #222 !default;
 $pagination-li-font-size: emCalc(14px) !default;
 $pagination-li-margin: emCalc(5px) !default;
 
 // We use these for the pagination anchor links
 $pagination-link-pad: emCalc(1px) emCalc(7px) emCalc(1px) !default;
 $pagination-link-font-color: #999 !default;
-$pagination-link-active-bg: darken($white, 10%) !default;
+$pagination-link-active-bg: darken(#fff, 10%) !default;
 
 // We use these for disabled anchor links
 $pagination-link-unavailable-cursor: default !default;
@@ -25,7 +25,7 @@ $pagination-link-unavailable-bg-active: transparent !default;
 
 // We use these for currently selected anchor links
 $pagination-link-current-background: $primary-color !default;
-$pagination-link-current-font-color: $white !default;
+$pagination-link-current-font-color: #fff !default;
 $pagination-link-current-font-weight: bold !default;
 $pagination-link-current-cursor: default !default;
 $pagination-link-current-active-bg: $primary-color !default;
@@ -38,7 +38,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 @mixin pagination-container {
   display: block;
   height: $pagination-height;
-  margin-#{$defaultFloat}: $pagination-margin;
+  margin-#{$default-float}: $pagination-margin;
 }
 
 // We use this to style the list items and ther anchor links
@@ -48,7 +48,7 @@ $pagination-link-current-active-bg: $primary-color !default;
   height: $pagination-li-height;
   color: $pagination-li-font-color;
   font-size: $pagination-li-font-size;
-  margin-#{$defaultFloat}: $pagination-li-margin;
+  margin-#{$default-float}: $pagination-li-margin;
 
   a {
     display: block;

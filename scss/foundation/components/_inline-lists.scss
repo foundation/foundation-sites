@@ -31,8 +31,8 @@ $inline-list-children-display: block !default;
 // We use this mixin to control the list items
 @mixin inline-list {
   list-style: none;
-  float: $defaultFloat;
-  margin-#{$defaultFloat}: emCalc(22px);
+  float: $default-float;
+  margin-#{$default-float}: emCalc(22px);
   display: $inline-list-display;
   &>* { display: $inline-list-children-display; }
 }

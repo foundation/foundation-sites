@@ -97,8 +97,8 @@ $button-disabled-opacity: 0.6                                         !default;
 
   // We control line-height and padding for when a button is used as prefix/postfix form label
   @if $is-prefix {
-    padding-#{$defaultFloat}: 0;
-    padding-#{$defaultOpposite}: 0;
+    padding-#{$default-float}: 0;
+    padding-#{$default-opposite}: 0;
     text-align: center;
     line-height: $form-spacing;
   }

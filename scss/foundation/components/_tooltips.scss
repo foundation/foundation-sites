@@ -4,8 +4,8 @@
 $has-tip-border-bottom: dotted 1px #ccc !default;
 $has-tip-font-weight: bold !default;
 $has-tip-font-color: #333 !default;
-$has-tip-border-bottom-hover: dotted 1px darken($mainColor, 20%) !default;
-$has-tip-font-color-hover: $mainColor !default;
+$has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%) !default;
+$has-tip-font-color-hover: $primary-color !default;
 $has-tip-cursor-type: help !default;
 
 $tooltip-padding: emCalc(8px) !default;
@@ -74,7 +74,7 @@ $tooltip-pip-size: 5px !default;
     border-color: transparent transparent $bg transparent;
     position: absolute;
     top: -($pip-size * 2);
-    // #{$defaultFloat}: $pip-size * 2;
+    // #{$default-float}: $pip-size * 2;
   }
   &.tip-override>.nub {
     border-color: transparent transparent $bg transparent !important;
@@ -134,15 +134,15 @@ $tooltip-pip-size: 5px !default;
   //   font-size: $tooltip-font-size-sml;
   //   line-height: 1.4;
   //   padding: emCalc(7px) emCalc(10px) emCalc(9px) emCalc(10px);
-  //   #{$defaultFloat}: 50% !important;
+  //   #{$default-float}: 50% !important;
   //   max-width: 80% !important;
-  //   margin-#{$defaultFloat}: -40%;
+  //   margin-#{$default-float}: -40%;
   //   font-size: 110%;
   // }
   // .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
   //   border-color: transparent transparent $tooltip-bg transparent;
   //   border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent;
   //   top: -12px;
-  //   #{$defaultFloat}: 10px;
+  //   #{$default-float}: 10px;
   // }
 

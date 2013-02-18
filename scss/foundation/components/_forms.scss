@@ -37,8 +37,8 @@ $legend-font-weight: bold !default;
 $legend-padding: 0 emCalc(3px) !default;
 
 // We use these to style the prefix and postfix input elements
-$input-prefix-bg: darken($white, 5%) !default;
-$input-prefix-border-color: darken($white, 20%) !default;
+$input-prefix-bg: darken(#fff, 5%) !default;
+$input-prefix-border-color: darken(#fff, 20%) !default;
 $input-prefix-border-size: 1px !default;
 $input-prefix-border-type: solid !default;
 $input-prefix-overflow: hidden !default;
@@ -155,7 +155,7 @@ $input-error-message-font-color-alt: #333 !default;
     @else { color: $input-prefix-font-color-alt; }
   }
 
-  #{$defaultFloat}: 2px;
+  #{$default-float}: 2px;
 }
 
 // We use this mixin to create postfix label styles
@@ -171,7 +171,7 @@ $input-error-message-font-color-alt: #333 !default;
     @else { color: $input-prefix-font-color-alt; }
   }
 
-  #{$defaultOpposite}: 2px;
+  #{$default-opposite}: 2px;
 }
 
 // We use this mixin to style fieldsets
@@ -186,7 +186,7 @@ $input-error-message-font-color-alt: #333 !default;
     background: $legend-bg;
     padding: $legend-padding;
     margin: 0;
-    margin-#{$defaultFloat}: emCalc(-3px);
+    margin-#{$default-float}: emCalc(-3px);
   }
 }
 
@@ -239,8 +239,8 @@ label { @include form-label;
 .postfix { @include prefix-postfix-base; }
 
 /* Adjust padding, alignment and radius if pre/post element is a button */
-.postfix.button { #{$defaultOpposite}: 2px; @include button-size(false,false,false,true); }
-.prefix.button { #{$defaultFloat}: 2px; @include button-size(false,false,false,true); }
+.postfix.button { #{$default-opposite}: 2px; @include button-size(false,false,false,true); }
+.prefix.button { #{$default-float}: 2px; @include button-size(false,false,false,true); }
 .prefix.button.radius { @include side-radius(left, $input-border-radius); }
 .postfix.button.radius { @include side-radius(right, $input-border-radius); }
 

@@ -12,13 +12,13 @@ $side-nav-list-margin: 0 0 emCalc(7px) 0 !default;
 
 // We use these to control link styles.
 $side-nav-link-color: $primary-color !default;
-$side-nav-link-color-active: lighten($black, 30%) !default;
+$side-nav-link-color-active: lighten(#000, 30%) !default;
 $side-nav-font-weight: bold !default;
 
 // We use these to control border styles
 $side-nav-divider-size: 1px !default;
 $side-nav-divider-style: solid !default;
-$side-nav-divider-color: darken($white, 10%) !default;
+$side-nav-divider-color: darken(#fff, 10%) !default;
 
 
 //

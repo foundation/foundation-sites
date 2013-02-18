@@ -73,7 +73,7 @@ $alert-radius:              $global-radius                                 !defa
   line-height: 0;
   position: absolute;
   top: $alert-close-position + emCalc(2px);
-  #{$defaultOpposite}: $alert-close-position;
+  #{$default-opposite}: $alert-close-position;
   color: $alert-close-color;
   opacity: $alert-close-opacity;
   &:hover,
