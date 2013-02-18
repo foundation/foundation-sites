@@ -164,7 +164,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
   }
 }
 
-@media only screen and (max-width: $screenSmall - 1) {
+@media only screen and (max-width: emCalc(767px)) {
   .joyride-tip-guide { width: 95% !important; #{$default-float}: 2.5% !important; @include radius($joyride-tip-radius); }
   .joyride-tip-guide-wrapper { width: 100%; }
 }
