@@ -128,12 +128,16 @@ img { -ms-interpolation-mode: bicubic; }
   .row {
     @include grid-row;
 
-    [class*="large-"],
-    [class*="small-"] { @include grid-column($columns:$total-columns); }
+    // [class*="large-"],
+    // [class*="small-"],
+    .column,
+    .columns { @include grid-column($columns:$total-columns); }
 
     &.collapse {
-      [class*="large-"],
-      [class*="small-"] { @include grid-column($collapse:true); }
+      // [class*="large-"],
+      // [class*="small-"],
+      .column,
+      .columns { @include grid-column($collapse:true); }
     }
 
     .row { @include grid-row($behavior:nest);
@@ -158,16 +162,25 @@ img { -ms-interpolation-mode: bicubic; }
       .small-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
     }
 
-    [class*="small-"]:last-child { float: right; }
-    [class*="small-"].end { float: left; }
+    // [class*="small-"]:last-child,
+    .column:last-child,
+    .columns:last-child { float: right; }
 
-    [class*="small-"].small-centered { @include grid-column($center:true, $collapse:null, $float:none); }
+    // [class*="small-"].end,
+    .column.end,
+    .columns.end { float: left; }
+
+    // [class*="small-"].small-centered,
+    .column.small-centered,
+    .columns.small-centered { @include grid-column($center:true, $collapse:null, $float:none); }
   }
 
   /* Styles for screens that are atleast 768px; */
-  @media #{$large} {
+  @media #{$small} {
 
-    .row [class*="large-"] { @include grid-column($columns:false, $float:left); }
+    // .row [class*="large-"],
+    .row .column,
+    .row .columns { @include grid-column($columns:false, $float:left); }
 
     @for $i from 1 through $total-columns {
       .row .large#{-$i} { @include grid-column($columns:$i,$collapse:null); }
@@ -182,10 +195,12 @@ img { -ms-interpolation-mode: bicubic; }
       .large-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
     }
 
-    [class*="large-"]:last-child { float: right; }
-    [class*="large-"].end { float: left; }
+    // [class*="large-"]:last-child { float: right; }
+    // [class*="large-"].end { float: left; }
 
-    [class*="large-"].large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
+    [class*="large-"].large-centered,
+    .column.large-centered,
+    .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
 
   }
 

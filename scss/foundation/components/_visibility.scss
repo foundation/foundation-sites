@@ -1,116 +1,128 @@
-/* Visibility Classes ---------------------- */
-/*                                           */
-/* Standard (large) display targeting */
-.show-for-small,
-.show-for-medium,
-.show-for-medium-down,
-.hide-for-large,
-.hide-for-large-up,
-.show-for-xlarge,
-.show-for-print { display: none !important; }
+//
+// Foundation Visibility Placeholder //
+//
 
-.hide-for-small,
-.hide-for-medium,
-.hide-for-medium-down,
-.show-for-large,
-.show-for-large-up,
-.hide-for-xlarge,
-.hide-for-print { display: inherit !important; }
+@if $include-html-classes {
 
-/* Very large display targeting */
-@media only screen and (min-width: $screenXlarge) {
-  .hide-for-small,
-  .hide-for-medium,
-  .hide-for-medium-down,
-  .hide-for-large,
-  .show-for-large-up,
-  .show-for-xlarge { display: inherit !important; }
+  /* Foundation Visibility HTML Classes */
+  @media only screen {
+    .show-for-small,
+    .show-for-medium-down,
+    .show-for-large-down { display: inherit !important; }
 
-  .show-for-small,
-  .show-for-medium,
-  .show-for-medium-down,
-  .show-for-large,
-  .hide-for-large-up,
-  .hide-for-xlarge { display: none !important; }
-}
+    .show-for-medium,
+    .show-for-medium-up,
+    .show-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: none !important; }
 
-/* Medium display targeting */
-@media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-  .hide-for-small,
-  .show-for-medium,
-  .show-for-medium-down,
-  .hide-for-large,
-  .hide-for-large-up,
-  .hide-for-xlarge { display: inherit !important; }
+    .hide-for-medium,
+    .hide-for-medium-up,
+    .hide-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: inherit !important; }
 
-  .show-for-small,
-  .hide-for-medium,
-  .hide-for-medium-down,
-  .show-for-large,
-  .show-for-large-up,
-  .show-for-xlarge { display: none !important; }
-}
+    .hide-for-small,
+    .hide-for-medium-down,
+    .hide-for-large-down { display: none !important; }
+  }
 
-/* Small display targeting */
-@media only screen and (max-width: $screenSmall - 1) {
-  .show-for-small,
-  .hide-for-medium,
-  .show-for-medium-down,
-  .hide-for-large,
-  .hide-for-large-up,
-  .hide-for-xlarge { display: inherit !important; }
+  /* Medium Displays: 768px - 1279px */
+  @media #{$small} {
+    .show-for-medium,
+    .show-for-medium-down,
+    .show-for-medium-up,
+    .show-for-large-down { display: inherit !important; }
 
-  .hide-for-small,
-  .show-for-medium,
-  .hide-for-medium-down,
-  .show-for-large,
-  .show-for-large-up,
-  .show-for-xlarge { display: none !important; }
-}
+    .show-for-small,
+    .show-for-large,
+    .show-for-large-up,
+    .show-for-xlarge { display: none !important; }
 
-/* Orientation targeting */
-.show-for-landscape,
-.hide-for-portrait { display: inherit !important; }
-.hide-for-landscape,
-.show-for-portrait { display: none !important; }
+    .hide-for-small,
+    .hide-for-large,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: inherit !important; }
 
-@media screen and (orientation: landscape) {
+    .hide-for-medium,
+    .hide-for-medium-down,
+    .hide-for-medium-up,
+    .hide-for-large-down { display: none !important; }
+  }
+
+  /* Large Displays: 1280px - 1440px */
+  @media #{$medium} {
+    .show-for-medium-down,
+    .show-for-medium-up,
+    .show-for-large,
+    .show-for-large-down,
+    .show-for-large-up { display: inherit !important; }
+
+    .show-for-small,
+    .show-for-medium,
+    .show-for-xlarge { display: none !important; }
+
+    .hide-for-small,
+    .hide-for-medium,
+    .hide-for-xlarge { display: inherit !important; }
+
+    .hide-for-medium-down,
+    .hide-for-medium-up,
+    .hide-for-large,
+    .hide-for-large-down,
+    .hide-for-large-up { display: none !important; }
+
+  }
+
+  /* X-Large Displays: 1400px and up */
+  @media #{$large} {
+    .show-for-medium-down,
+    .show-for-medium-up,
+    .show-for-large-down,
+    .show-for-large-up,
+    .show-for-xlarge { display: inherit !important; }
+
+    .show-for-small,
+    .show-for-medium,
+    .show-for-large { display: none !important; }
+
+    .hide-for-small,
+    .hide-for-medium,
+    .hide-for-large { display: inherit !important; }
+
+    .hide-for-medium-down,
+    .hide-for-medium-up,
+    .hide-for-large-down,
+    .hide-for-large-up,
+    .hide-for-xlarge { display: none !important; }
+  }
+
+
+  /* Orientation targeting */
   .show-for-landscape,
   .hide-for-portrait { display: inherit !important; }
   .hide-for-landscape,
   .show-for-portrait { display: none !important; }
-}
 
-@media screen and (orientation: portrait) {
-  .show-for-portrait,
-  .hide-for-landscape { display: inherit !important; }
-  .hide-for-portrait,
-  .show-for-landscape { display: none !important; }
-}
+  @media screen and (orientation: landscape) {
+    .show-for-landscape,
+    .hide-for-portrait { display: inherit !important; }
+    .hide-for-landscape,
+    .show-for-portrait { display: none !important; }
+  }
 
-/* Touch-enabled device targeting */
-.show-for-touch { display: none !important; }
-.hide-for-touch { display: inherit !important; }
-.touch .show-for-touch { display: inherit !important; }
-.touch .hide-for-touch { display: none !important; }
+  @media screen and (orientation: portrait) {
+    .show-for-portrait,
+    .hide-for-landscape { display: inherit !important; }
+    .hide-for-portrait,
+    .show-for-landscape { display: none !important; }
+  }
 
-/* Specific overrides for elements that require something other than display: block */
+  /* Touch-enabled device targeting */
+  .show-for-touch { display: none !important; }
+  .hide-for-touch { display: inherit !important; }
+  .touch .show-for-touch { display: inherit !important; }
+  .touch .hide-for-touch { display: none !important; }
 
-table.show-for-xlarge,
-table.show-for-large,
-table.hide-for-small,
-table.hide-for-medium { display: table !important; }
 
-@media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
-  .touch table.hide-for-xlarge,
-  .touch table.hide-for-large,
-  .touch table.hide-for-small,
-  .touch table.show-for-medium { display: table !important; }
-}
-
-@media only screen and (max-width: $screenSmall - 1) {
-  table.hide-for-xlarge,
-  table.hide-for-large,
-  table.hide-for-medium,
-  table.show-for-small { display: table !important; }
 }

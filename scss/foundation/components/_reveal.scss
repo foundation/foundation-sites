@@ -105,7 +105,7 @@ $reveal-border-color: #666 !default;
 }
 
 // Large Screen Styles
-@media #{$large} {
+@media #{$small} {
 
   .reveal-modal-bg { position: fixed; }
   .reveal-modal {

@@ -1,28 +1,41 @@
 <% @page_title = "Visibility Classes" %>
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <p><a href="index.html">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Blah</h4>
+    <h4 class="subheader">Foundation allows you to easily turn elements on and off based on certain device criteria, like screen size, touch, or orientation.</h4>
   </div>
 </div>
+
 <div class="row">
-  <div class="large-4">
-    <a name="visibility-classes"></a>
-    <h4>Visibility Classes</h4>
-    <p>Foundation 3 allows you to easily turn elements on and off based on certain device criteria, like screen size, touch, or orientation.</p>
-  </div>
-  <div class="large-8">
-    <h5>Screen Size</h5>
-    <p>The following text should describe the device you're using:
-      <strong class="show-for-xlarge">You are on a very large screen.</strong>
-      <strong class="show-for-large">You are on a large screen.</strong>
-      <strong class="show-for-large-up">You are on a large or very large screen.</strong>
+  <div class="large-12 columns">
+    <h4>Screen Size Visibility Control (Show)</h4>
+    <p>The following text should describe the device you're using:</p>
+    <p class="panel">
+      <strong class="show-for-small">You are on a small screen.</strong>
       <strong class="show-for-medium">You are on a medium screen.</strong>
-      <strong class="show-for-medium-down">You are on a medium or small screen.</strong>
-      <strong class="show-for-small">You are on a small screen, like a smartphone.</strong>
+      <strong class="show-for-medium-up">You are on a medium or larger screen.</strong>
+      <strong class="show-for-medium-down">You are on a medium or smaller screen.</strong>
+      <strong class="show-for-large">You are on a large screen.</strong>
+      <strong class="show-for-large-up">You are on a large or bigger screen.</strong>
+      <strong class="show-for-large-down">You are on a large or smaller screen.</strong>
+      <strong class="show-for-xlarge">You are on a xlarge screen.</strong>
     </p>
 
+    <h4>Screen Size Visibility Control (Hide)</h4>
+    <p>The following text should describe the device you're using:</p>
+    <p class="panel">
+      <strong class="hide-for-small">You are not on a small screen.</strong>
+      <strong class="hide-for-medium">You are not on a medium screen.</strong>
+      <strong class="hide-for-medium-up">You are not on a medium or larger screen.</strong>
+      <strong class="hide-for-medium-down">You are not on a medium or smaller screen.</strong>
+      <strong class="hide-for-large">You are not on a large screen.</strong>
+      <strong class="hide-for-large-up">You are not on a large or bigger screen.</strong>
+      <strong class="hide-for-large-down">You are not on a large or smaller screen.</strong>
+      <strong class="hide-for-xlarge">You are not on a xlarge screen.</strong>
+    </p>
+
+   <!--  <br>
     <p>This example uses the opposite rules, so the following text should inversely describe the device you're using:
       <strong class="hide-for-xlarge">You are not on a very large screen.</strong>
       <strong class="hide-for-large">You are not on a large screen.</strong>
@@ -45,6 +58,6 @@
     </p>
 
     <h5>Media Query Viewer</h5>
-    <p>Easily add the ability to show which media query you are currently viewing. To activate the viewer, make sure you have <strong>jquery.foundation.mediaQueryToggle.js</strong> linked up on your page. From there, simply add the markup to your page or press <kbd>M</kbd>. The keyboard toggle won't work on mobile devices so make sure you add the markup in those cases.</p>
+    <p>Easily add the ability to show which media query you are currently viewing. To activate the viewer, make sure you have <strong>jquery.foundation.mediaQueryToggle.js</strong> linked up on your page. From there, simply add the markup to your page or press <kbd>M</kbd>. The keyboard toggle won't work on mobile devices so make sure you add the markup in those cases.</p> -->
   </div>
 </div>

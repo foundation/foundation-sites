@@ -33,7 +33,7 @@ $panel-font-color-alt: #fff;
     border-style: $panel-border-style;
     border-width: $panel-border-size;
     border-color: darken($bg, $panel-function-factor);
-    margin: $panel-margin-bottom;
+    margin-bottom: $panel-margin-bottom;
     padding: $padding;
 
     background: $bg;
