@@ -46,7 +46,7 @@ $reveal-border-color: #666 !default;
     visibility: hidden;
     display: none;
     position: absolute;
-    #{$defaultFloat}: 50%;
+    #{$default-float}: 50%;
     z-index: 99;
     height: auto;
     background-color: #fff;
@@ -60,7 +60,7 @@ $reveal-border-color: #666 !default;
   }
 
   @if $width {
-    margin-#{$defaultFloat}: -($width / 2);
+    margin-#{$default-float}: -($width / 2);
     width: $width;
   }
 }
@@ -88,7 +88,7 @@ $reveal-border-color: #666 !default;
   line-height: 1;
   position: absolute;
   top: $reveal-close-top;
-  #{$defaultOpposite}: $reveal-close-side;
+  #{$default-opposite}: $reveal-close-side;
   color: $color;
   font-weight: $reveal-close-weight;
   cursor: pointer;
@@ -105,7 +105,7 @@ $reveal-border-color: #666 !default;
 }
 
 // Large Screen Styles
-@media #{$large} {
+@media #{$small} {
 
   .reveal-modal-bg { position: fixed; }
   .reveal-modal {

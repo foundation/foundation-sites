@@ -1,0 +1,36 @@
+<% @page_title = "Dropdown" %>
+<div class="row">
+  <div class="large-12">
+    <p><a href="index.html">&laquo; Back</a></p>
+    <h1>Foundation <%= @page_title %></h1>
+    <h4 class="subheader">Blah</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12">
+
+    <a href="#" class="tiny button" data-dropdown="tinyDrop">Tiny Button &raquo;</a><br /><br />
+    <a href="#" class="small button" data-dropdown="smallDrop">Small Button &raquo;</a><br /><br />
+    <a href="#" class="button" data-dropdown="contentDrop">Regular Button &raquo;</a><br /><br />
+
+  </div>
+</div>
+
+<ul id="tinyDrop" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="smallDrop" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<div id="contentDrop" class="f-dropdown content" data-dropdown-content>
+  <h4>Title</h4>
+  <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
+  <img src="http://placekitten.com/300/300">
+  <p>More test.</p>
+  <a href="#" class="button">Button</a>
+</div>

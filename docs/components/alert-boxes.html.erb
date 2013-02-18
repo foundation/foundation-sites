@@ -35,7 +35,7 @@
     <p>There are two ways to build alerts in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building an alert using our predefined class is super-easy, you only need a block-level element with a class of <code>.alert-box</code> (we usually use a <code>&lt;div&gt;</code>). You may also include an anchor with a class of <code>.close</code> to create a close button. Here is the markup you'll need:</p>
 
 <%= code_example '
-<div class="alert-box">
+<div data-alert class="alert-box">
   <!-- Your content goes here -->
   <a href="#" class="close">&times;</a>
 </div>', :html %>
@@ -54,7 +54,7 @@
     <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
 
 <%= code_example '
-<div class="your-class-name">
+<div data-alert class="your-class-name">
   <!-- Your content goes here -->
   <a href="#" class="close">&times;</a>
 </div>', :html %>
@@ -71,12 +71,12 @@
 .your-class-name { @include alert(#ff6c3c); }
 ', :css %>
 
-<div class="alert-base">
+<div data-alert class="alert-base">
 This is a default alert.
 <a href="#" class="close">&times;</a>
 </div>
 
-<div class="alert-base custom-bg">
+<div data-alert class="alert-base custom-bg">
 This is an alert with a custom background set.
 <a href="#" class="close">&times;</a>
 </div>
@@ -100,7 +100,7 @@ This is an alert with a custom background set.
   @include alert-style($bg);
 }', :css %>
 
-<div class="alert-base bg">This is base and bg mixins.</div>
+<div data-alert class="alert-base bg">This is base and bg mixins.</div>
 
     <p>You can set <code>$bg</code> color to any of our predefined color variables or any hexadecimal color of your choosing. To set this value to something other than our default, use <code>@include alert-bg(#hexcolor);</code></p>
 
@@ -114,7 +114,7 @@ This is an alert with a custom background set.
   .close { @include alert-close; }
 }', :css %>
 
-    <div class="alert-base bg">
+    <div data-alert class="alert-base bg">
       This is base, bg and close mixins.
       <a href="" class="close">&times;</a>
     </div>
@@ -129,7 +129,7 @@ This is an alert with a custom background set.
   @include radius($radius);
 }', :css %>
 
-<div class="alert-base bg radius success">
+<div data-alert class="alert-base bg radius success">
 This is base, bg and radius mixins.
 <a href="" class="close">&times;</a>
 </div>
@@ -187,7 +187,7 @@ $alert-radius:              $global-radius;
     <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
 
 <%= code_example '
-<div class="alert-box" data-alert>
+<div data-alert class="alert-box" data-alert>
   <!-- Your content goes here -->
   <a href="#" class="close">&times;</a>
 </div>

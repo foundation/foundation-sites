@@ -4,6 +4,8 @@
 /*
   TODO:
     - Fix timer display
+    - auto scroll not animating
+    - scrollLeft not accurate
 */
 
 ;(function ($, window, document, undefined) {
@@ -596,7 +598,7 @@
       $(window).off('.joyride');
       $('.joyride-close-tip, .joyride-next-tip, .joyride-modal-bg').off('.joyride');
       $('.joyride-tip-guide, .joyride-modal-bg').remove();
-      clearTimeout(settings.automate);
+      clearTimeout(this.settings.automate);
       this.settings = {};
     }
   };

@@ -58,7 +58,7 @@ $button-disabled-opacity: 0.6                                         !default;
 }
 
 // We use this mixin to add button size styles
-@mixin button-size($padding:$button-med, $full-width:false, $is-input:false) {
+@mixin button-size($padding:$button-med, $full-width:false, $is-input:false, $is-prefix:false) {
 
   // We control which padding styles come through,
   // these can be turned off by setting $padding:false
@@ -93,6 +93,14 @@ $button-disabled-opacity: 0.6                                         !default;
   @else if $is-input {
     padding-top: $is-input + emCalc(1px);
     padding-bottom: $is-input;
+  }
+
+  // We control line-height and padding for when a button is used as prefix/postfix form label
+  @if $is-prefix {
+    padding-#{$default-float}: 0;
+    padding-#{$default-opposite}: 0;
+    text-align: center;
+    line-height: $form-spacing;
   }
 }
 
@@ -140,9 +148,9 @@ $button-disabled-opacity: 0.6                                         !default;
 }
 
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
-@mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false, $is-input:false) {
+@mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
   @include button-base;
-  @include button-size($padding, $full-width);
+  @include button-size($padding, $full-width, $is-input, $is-prefix);
   @include button-style($bg, $radius, $disabled);
 }
 
@@ -166,7 +174,7 @@ $button-disabled-opacity: 0.6                                         !default;
     &.large  { @include button-size($padding:$button-lrg); }
     &.small  { @include button-size($padding:$button-sml); }
     &.tiny   { @include button-size($padding:$button-tny); }
-    &.expand { @include button-size($padding:false, $full-width:true); }
+    &.expand { @include button-size($padding:$button-med, $full-width:true); }
 
     &.left-align  { text-align: left; text-indent: emCalc(12px); }
     &.right-align { text-align: right; padding-right: emCalc(12px); }
@@ -202,7 +210,7 @@ $button-disabled-opacity: 0.6                                         !default;
 
   }
 
-  @media #{$large} {
+  @media #{$small} {
     .button {
       @include button-base($style:false, $display:inline-block);
       @include button-size($padding:false, $full-width:false);

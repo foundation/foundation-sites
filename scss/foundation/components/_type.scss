@@ -1,10 +1,82 @@
 //
 // Typography Variables
 //
+$header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$header-font-weight: bold !default;
+$header-font-style: normal !default;
+$header-font-color: #222 !default;
+$header-line-height: 1.6 !default;
+// $header-spacing-margin: emCalc(12px) !default;
+$header-text-rendering: optimizeLegibility !default;
+$h1-font-size: emCalc(44px) !default;
+$h2-font-size: emCalc(37px) !default;
+$h3-font-size: emCalc(27px) !default;
+$h4-font-size: emCalc(23px) !default;
+$h5-font-size: emCalc(17px) !default;
+$h6-font-size: emCalc(14px) !default;
+
+$subheader-line-height: 1.3 !default;
+$subheader-font-color: lighten($header-font-color, 30%) !default;
+$subheader-font-weight: 300 !default;
+
+$small-font-size: 60% !default;
+$small-font-color: lighten($header-font-color, 30%) !default;
+
+$paragraph-font-family: inherit !default;
+$paragraph-font-weight: normal !default;
+$paragraph-font-size: emCalc(14px) !default;
+$paragraph-line-height: 1.6 !default;
+$paragraph-margin-bottom: emCalc(17px) !default;
+$paragraph-aside-font-size: emCalc(13px) !default;
+$paragraph-aside-line-height: 1.35 !default;
+$paragraph-aside-font-style: italic !default;
+
 $code-color: darken($alert-color, 15%) !default;
 $code-font-family: Consolas, 'Liberation Mono', Courier, monospace !default;
+$code-font-weight: bold !default;
 
-// Typography resets
+$anchor-text-decoration: none !default;
+$anchor-font-color: $primary-color !default;
+$anchor-font-color-hover: darken($primary-color, 5%) !default;
+
+$hr-border-width: 1px !default;
+$hr-border-style: solid !default;
+$hr-border-color: #ddd !default;
+$hr-margin: emCalc(20px) !default;
+
+$list-style-position: inside !default;
+$definition-list-header-weight: bold !default;
+$definition-list-margin-bottom: 10px !default;
+
+$blockquote-font-color: lighten($header-font-color, 30%) !default;
+$blockquote-padding: emCalc(9px) emCalc(20px) 0 emCalc(19px) !default;
+$blockquote-border: 1px solid #ddd !default;
+$blockquote-cite-font-size: emCalc(13px) !default;
+$blockquote-cite-font-color: lighten($header-font-color, 20%) !default;
+$blockquote-cite-link-color: $blockquote-cite-font-color !default;
+
+
+//
+// Typography Mixins
+//
+
+
+//
+// Typography Placeholders
+//
+%lead {
+  font-size: $paragraph-font-size + emCalc(3.5px);
+  line-height: 1.6;
+}
+
+%subheader {
+  line-height: $subheader-line-height;
+  color: $subheader-font-color;
+  font-weight: $subheader-font-weight;
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+/* Typography resets */
 div,
 dl,
 dt,
@@ -26,82 +98,74 @@ th,
 td {
   margin:0;
   padding:0;
-  direction: $textDirection;
+  direction: $text-direction;
 }
 
-// Default Link Styles
+/* Default Link Styles */
 a {
-  color: $mainColor;
-  text-decoration: none;
+  color: $anchor-font-color;
+  text-decoration: $anchor-text-decoration;
   line-height: inherit;
 
   &:hover,
-  &:focus {
-    color: darken($mainColor, 5%);
-  }
+  &:focus { color: $anchor-font-color-hover; }
 
-  img {
-    border:none;
-  }
+  img { border:none; }
 }
 
+/* Default paragraph styles */
 p {
-  font-family: inherit;
-  font-weight: $bodyFontWeight;
-  font-size: emCalc(14px);
-  line-height: 1.6;
-  margin-bottom: emCalc(17px);
-  &.lead {
-    font-size: emCalc(17.5px);
-    line-height: 1.6;
-    margin-bottom: emCalc(17px);
+  font-family: $paragraph-font-family;
+  font-weight: $paragraph-font-weight;
+  font-size: $paragraph-font-size;
+  line-height: $paragraph-line-height;
+  margin-bottom: $paragraph-margin-bottom;
+
+  &.lead { @extend %lead; }
+
+  & aside {
+    font-size: $paragraph-aside-font-size;
+    line-height: $paragraph-aside-line-height;
+    font-style: $paragraph-aside-font-style;
   }
 }
-aside p {
-  font-size: emCalc(13px);
-  line-height: 1.35;
-  font-style: italic;
-}
 
+/* Default header styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: $headerFontFamily;
-  font-weight: $headerFontWeight;
-  font-style: $headerFontStyle;
-  color: $headerFontColor;
-  text-rendering: optimizeLegibility;
-  line-height: 1.1;
-  margin-bottom: emCalc(12px);
-  margin-top: emCalc(12px);
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
+  font-style: $header-font-style;
+  color: $header-font-color;
+  text-rendering: $header-text-rendering;
+  line-height: $header-line-height;
+  // margin-bottom: $header-spacing-margin;
+  // margin-top: $header-spacing-margin;
 
   small {
-    font-size: 60%;
-    color: lighten($headerFontColor, 30%);
+    font-size: $small-font-size;
+    color: $small-font-color;
     line-height: 0;
   }
 }
 
-h1 { font-size: emCalc(44px); }
-h2 { font-size: emCalc(37px); }
-h3 { font-size: emCalc(27px); }
-h4 { font-size: emCalc(23px); }
-h5 { font-size: emCalc(17px); }
-h6 { font-size: emCalc(14px); }
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+.subheader { @extend %subheader; }
 
 hr {
-  border: solid #ddd;
-  border-width: 1px 0 0;
+  border: $hr-border-style $hr-border-color;
+  border-width: $hr-border-width 0 0;
   clear: both;
-  margin: emCalc(22px) 0 emCalc(21px);
+  margin: $hr-margin 0 ($hr-margin - emCalc(1px));
   height: 0;
 }
 
-.subheader {
-  line-height: 1.3;
-  color: lighten($headerFontColor, 30%);
-  font-weight: 300;
-  margin-bottom: emCalc(17px);
-}
-
+/* Helpful Typography Defaults */
 em,
 i {
   font-style: italic;
@@ -115,38 +179,39 @@ b {
 }
 
 small {
-  font-size: 60%;
+  font-size: $small-font-size;
   line-height: inherit;
 }
 
 code {
   font-family: $code-font-family;
-  font-weight: bold;
+  font-weight: $code-font-weight;
   color: $code-color;
 }
 
-// Lists
+/* Lists */
 ul,
 ol,
 dl {
-  font-size: emCalc(14px);
-  line-height: 1.6;
-  margin-bottom: emCalc(17px);
-  list-style-position: inside;
+  font-size: $paragraph-font-size;
+  line-height: $paragraph-line-height;
+  margin-bottom: $paragraph-margin-bottom;
+  list-style-position: $list-style-position;
 }
+
+/* Unordered Lists */
 ul {
   li {
     ul,
     ol {
-      margin-#{$defaultFloat}: 20px;
+      margin-#{$default-float}: emCalc(20px);
       margin-bottom: 0;
+      font-size: emCalc(16px); /* Override nested font-size change */
     }
   }
   &.square,
   &.circle,
-  &.disc {
-    margin-#{$defaultFloat}: emCalc(17px);
-
+  &.disc { margin-#{$default-float}: emCalc(20px);
     li ul { list-style: inherit; }
   }
 
@@ -154,47 +219,31 @@ ul {
   &.circle { list-style-type: circle; }
   &.disc { list-style-type: disc; }
   &.no-bullet { list-style: none; }
-  &.large li { line-height: emCalc(21px); }
 }
 
-ol { margin-#{$defaultFloat}: emCalc(20px);
+/* Ordered Lists */
+ol { margin-#{$default-float}: emCalc(20px);
   li {
     ul,
     ol {
-      margin-#{$defaultFloat}: emCalc(20px);
+      margin-#{$default-float}: emCalc(20px);
       margin-bottom: 0;
     }
   }
 }
 
-// Blockquotes
-blockquote {
-  margin: 0 0 emCalc(17px);
-  padding: emCalc(9px) emCalc(20px) 0 emCalc(19px);
-  border-#{$defaultFloat}: 1px solid #ddd;
-  cite {
-    display: block;
-    font-size: emCalc(13px);
-    color: lighten($headerFontColor, 20%);
-    &:before {
-      content: "\2014 \0020";
-    }
-    a, a:visited {
-      color: lighten($headerFontColor, 20%);
-    }
-  }
-}
-blockquote,
-blockquote p {
-  line-height: 1.6;
-  color: lighten($headerFontColor, 30%);
+/* Definition Lists */
+dl {
+  dt { font-weight: $definition-list-header-weight; }
+  dd { margin-bottom: $definition-list-margin-bottom; }
 }
 
+/* Abbreviations */
 abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: $headerFontColor;
+  color: $header-font-color;
   border-bottom: 1px dotted #ddd;
   cursor: help;
 }
@@ -202,78 +251,90 @@ abbr {
   text-transform: none;
 }
 
-/*
- * Print styles.
- *
- * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
- * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
-*/
-.print-only { display: none !important; }
-@media print {
-  * {
-    background: transparent !important;
-    color: #000 !important; /* Black prints faster: h5bp.com/s */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
+/* Blockquotes */
+blockquote {
+  margin: 0 0 $paragraph-margin-bottom;
+  padding: $blockquote-padding;
+  border-#{$default-float}: $blockquote-border;
 
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
+  cite {
+    display: block;
+    font-size: $blockquote-cite-font-size;
+    color: $blockquote-cite-font-color;
+    &:before {
+      content: "\2014 \0020";
+    }
 
-  a[href]:after {
-    content: " (" attr(href) ")";
+    a,
+    a:visited {
+      color: $blockquote-cite-link-color;
+    }
   }
+}
+blockquote,
+blockquote p {
+  line-height: $paragraph-line-height;
+  color: $blockquote-font-color;
+}
 
-  abbr[title]:after {
-    content: " (" attr(title) ")";
+
+
+// Only include these styles if you want them.
+@if $include-print-styles {
+  /*
+   * Print styles.
+   *
+   * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+   * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+  */
+  .print-only { display: none !important; }
+  @media print {
+    * {
+      background: transparent !important;
+      color: #000 !important; /* Black prints faster: h5bp.com/s */
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    a,
+    a:visited { text-decoration: underline;}
+    a[href]:after { content: " (" attr(href) ")"; }
+
+    abbr[title]:after { content: " (" attr(title) ")"; }
+
+    // Don't show links for images, or javascript/internal links
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after { content: ""; }
+
+    pre,
+    blockquote {
+      border: 1px solid #999;
+      page-break-inside: avoid;
+    }
+
+    thead { display: table-header-group; /* h5bp.com/t */ }
+
+    tr,
+    img { page-break-inside: avoid; }
+
+    img { max-width: 100% !important; }
+
+    @page { margin: 0.5cm; }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 { page-break-after: avoid; }
+
+    .hide-on-print { display: none !important; }
+    .print-only { display: block !important; }
+    .hide-for-print { display: none !important; }
+    .show-for-print { display: inherit !important; }
   }
-
-  // Don't show links for images, or javascript/internal links
-
-  .ir a:after,
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
-    content: "";
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  thead {
-    display: table-header-group; /* h5bp.com/t */
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  img {
-    max-width: 100% !important;
-  }
-
-  @page {
-    margin: 0.5cm;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-  .hide-on-print { display: none !important; }
-  .print-only { display: block !important; }
-  .hide-for-print { display: none !important; }
-  .show-for-print { display: inherit !important; }
 }

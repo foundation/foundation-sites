@@ -1,67 +1,83 @@
+// Joyride Settings
+
+$joyride-tip-bg: rgb(0,0,0) !default;
+$joyride-tip-font-color: #fff !default;
+$joyride-tip-header-weight: bold !default;
+$joyride-tip-default-weight: 300px !default;
+$joyride-tip-radius: 4px !default;
+$joyride-tip-padding: emCalc(18px) emCalc(20px) emCalc(24px) !default;
+$joyride-tip-nub-size: 14px !default;
+$joyride-tip-font-size: emCalc(14px) !default;
+$joyride-tip-timer-width: 50px !default;
+$joyride-tip-timer-height: 3px !default;
+$joyride-tip-border: solid 1px #555 !default;
+$joyride-tip-timer-color: #666 !default;
+$joyride-tip-close-color: #777 !default;
+$joyride-tip-close-size: 20px !default;
+$joyride-tip-close-weight: normal !default;
+$joyride-screenfill: rgba(0,0,0,0.5) !default;
+
+
+
 [data-joyride] { display: none; }
 
 /* Default styles for the container */
 .joyride-tip-guide {
   display: none;
   position: absolute;
-  background: $tipBgIE8;
-  background: $tipBg;
-  color: $tipFontColor;
-  width: $tipDefaultWidth;
+  background: $joyride-tip-bg;
+  color: $joyride-tip-font-color;
+  width: $joyride-tip-default-weight;
   z-index: 101;
   top: 0;
-  #{$defaultFloat}: 0;
+  #{$default-float}: 0;
   font-family: inherit;
   font-weight: normal;
-  @include radius($tipBorderRadius);
+  @include radius($joyride-tip-radius);
 }
-.joyride-content-wrapper { padding: $tipPadding; }
+.joyride-content-wrapper { padding: $joyride-tip-padding; }
 
 /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
 .joyride-tip-guide {
   span.joyride-nub {
     display: block;
     position: absolute;
-    #{$defaultFloat}: 22px;
+    #{$default-float}: 22px;
     width: 0;
     height: 0;
-    border: solid $tipNubSize;
+    border: solid $joyride-tip-nub-size;
     &.top {
-      border-color: $tipBgIE8;
-      border-color: $tipBg;
+      border-color: $joyride-tip-bg;
       border-top-color: transparent !important;
-      border-#{$defaultFloat}-color: transparent !important;
-      border-#{$defaultOpposite}-color: transparent !important;
-      top: -($tipNubSize*2);
+      border-#{$default-float}-color: transparent !important;
+      border-#{$default-opposite}-color: transparent !important;
+      top: -($joyride-tip-nub-size*2);
       bottom: none;
     }
     &.bottom {
-      border-color: $tipBgIE8;
-      border-color: $tipBg !important;
+      border-color: $joyride-tip-bg !important;
       border-bottom-color: transparent !important;
-      border-#{$defaultFloat}-color: transparent !important;
-      border-#{$defaultOpposite}-color: transparent !important;
-      bottom: -($tipNubSize*2);
+      border-#{$default-float}-color: transparent !important;
+      border-#{$default-opposite}-color: transparent !important;
+      bottom: -($joyride-tip-nub-size*2);
       bottom: none;
     }
     &.right {
-      border-color: $tipBgIE8;
-      border-color: $tipBg !important;
+      border-color: $joyride-tip-bg !important;
       border-top-color: transparent !important;
       border-right-color: transparent !important; border-bottom-color: transparent !important;
       top: 22px;
       bottom: none;
       left: auto;
-      right: -($tipNubSize*2);
+      right: -($joyride-tip-nub-size*2);
     }
     &.left {
-      border-color: $tipBgIE8;
-      border-color: $tipBg !important;
+      border-color: $joyride-tip-bg !important;
       border-top-color: transparent !important;
       border-left-color: transparent !important;
       border-bottom-color: transparent !important;
       top: 22px;
-      left: -($tipNubSize*2);
+      left: -($joyride-tip-nub-size*2);
       right: auto; bottom: none;
     }
   }
@@ -76,38 +92,38 @@
 .joyride-tip-guide h6 {
   line-height: 1.25;
   margin: 0;
-  font-weight: $tipHeaderWeight;
-  color: $tipFontColor;
+  font-weight: $joyride-tip-header-weight;
+  color: $joyride-tip-font-color;
 }
 .joyride-tip-guide p {
   margin: 0 0 emCalc(18px) 0;
-  font-size: $tipFontSize;
+  font-size: $joyride-tip-font-size;
   line-height: 1.3;
 }
 
 .joyride-timer-indicator-wrap {
-  width: $tipTimerWidth;
-  height: $tipTimerHeight;
-  border: $tipTimerBorder;
+  width: $joyride-tip-timer-width;
+  height: $joyride-tip-timer-height;
+  border: $joyride-tip-border;
   position: absolute;
-  #{$defaultOpposite}: emCalc(17px);
+  #{$default-opposite}: emCalc(17px);
   bottom: emCalc(16px);
 }
 .joyride-timer-indicator {
   display: block;
   width: 0;
   height: inherit;
-  background: $tipTimerColor;
+  background: $joyride-tip-timer-color;
 }
 
 .joyride-close-tip {
   position: absolute;
-  #{$defaultOpposite}: emCalc(10px);
+  #{$default-opposite}: emCalc(10px);
   top: emCalc(10px);
-  color: $tipCloseColor !important;
+  color: $joyride-tip-close-color !important;
   text-decoration: none;
-  font-size: $tipCloseSize;
-  font-weight: $tipCloseWeight;
+  font-size: $joyride-tip-close-size;
+  font-weight: $joyride-tip-close-weight;
   line-height: .5 !important;
   &:hover, &:focus { color: #eee !important; }
 }
@@ -117,38 +133,38 @@
   height: 100%;
   width: 100%;
   background: transparent;
-  background: $tipScreenFill;
+  background: $joyride-screenfill;
   z-index: 100;
   display: none;
   top: 0;
-  #{$defaultFloat}: 0;
+  #{$default-float}: 0;
   cursor: pointer;
 }
 
 /* Styles for screens that are atleast 768px; */
 @media only screen and (min-width: emCalc(768px)) {
-  .joyride-tip-guide { width: $tipDefaultWidth; }
+  .joyride-tip-guide { width: $joyride-tip-default-weight; }
   /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
   .joyride-tip-guide {
-    span.joyride-nub { #{$defaultFloat}: emCalc(22px); width: 0;
-      &.right { right: -($tipNubSize*2); }
-      &.left { left: -($tipNubSize*2); }
+    span.joyride-nub { #{$default-float}: emCalc(22px); width: 0;
+      &.right { right: -($joyride-tip-nub-size*2); }
+      &.left { left: -($joyride-tip-nub-size*2); }
     }
   }
 
-  .joyride-timer-indicator-wrap { width: $tipTimerWidth; #{$defaultOpposite}: emCalc(17px); }
+  .joyride-timer-indicator-wrap { width: $joyride-tip-timer-width; #{$default-opposite}: emCalc(17px); }
   .joyride-timer-indicator {
     display: block;
     width: 0;
    }
 
   .joyride-close-tip {
-    #{$defaultOpposite}: emCalc(10px);
-    font-size: $tipCloseSize;
+    #{$default-opposite}: emCalc(10px);
+    font-size: $joyride-tip-close-size;
   }
 }
 
 @media only screen and (max-width: $screenSmall - 1) {
-  .joyride-tip-guide { width: 95% !important; #{$defaultFloat}: 2.5% !important; @include radius($tipBorderRadius); }
+  .joyride-tip-guide { width: 95% !important; #{$default-float}: 2.5% !important; @include radius($joyride-tip-radius); }
   .joyride-tip-guide-wrapper { width: 100%; }
 }

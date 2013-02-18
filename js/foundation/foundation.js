@@ -9,8 +9,6 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
 /* TODO & NOTES:
-  - Since we are not redefining undefined, we might get buy without using typeof obj === 'undefined' syntax
-  - Test undefined.
   - Test error return, since some of this code has changed slightly.
   - scrollTo is not working
 */
@@ -65,7 +63,7 @@
 
       // disable library error catching,
       // used for development only
-      if (typeof nc !== 'undefined') this.nc = nc;
+      if (nc) this.nc = nc;
 
       if (libraries && typeof libraries === 'string') {
         library_arr = libraries.split(' ');
@@ -104,15 +102,15 @@
         if (this.libs.hasOwnProperty(lib)) {
           return this.libs[lib].init.apply(this.libs[lib], args);
         }
-      }.bind(this));
+      }.bind(this), lib);
     },
 
-    catch : function (fun) {
+    catch : function (fun, lib) {
       if (!this.nc) {
         try {
           return fun();
         } catch (e) {
-          return this.error({name: 'error', message: 'could not be initialized', more: e.name + ' ' + e.message});
+          return this.error({name: lib, message: 'could not be initialized', more: e.name + ' ' + e.message});
         }
       }
 
@@ -208,7 +206,7 @@
         this.scrollToTimerCache = setTimeout(function() {
             el.scrollTop = el.scrollTop + perTick;
             this.scrollTo(el, to, duration - 10);
-        }.bind(this), 10);
+        }, 10);
       },
 
       // not supported in core Zepto
@@ -232,11 +230,10 @@
   },
 
   $.fn.foundation = function () {
-    var args = [this].concat(Array.prototype.slice.call(arguments, 0));
+    var args = Array.prototype.slice.call(arguments, 0);
 
     return this.each(function () {
-      Foundation.init.apply(Foundation, args);
-
+      Foundation.init.apply(Foundation, [this].concat(args));
       return this;
     });
   };

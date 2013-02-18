@@ -118,16 +118,16 @@
 
       objPos = function (obj, top, right, bottom, left, width) {
         return obj.css({
-          'top' : top,
-          'bottom' : bottom,
-          'left' : left,
-          'right' : right,
+          'top' : (top) ? top : 'auto',
+          'bottom' : (bottom) ? bottom : 'auto',
+          'left' : (left) ? left : 'auto',
+          'right' : (right) ? right : 'auto',
           'width' : (width) ? width : 'auto'
         }).end();
       };
 
       objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', target.offset().left, width);
-      objPos(nub, -nubHeight, 'auto', 'auto', 10);
+      // objPos(nub, -nubHeight, 'auto', 'auto', 10);
 
       if ($(window).width() < 767) {
         column = target.closest('.columns');
@@ -135,21 +135,21 @@
         if (column.length < 0) {
           column = $(this.scope);
         }
-        tip.width(column.outerWidth() - 25).css('left', 15).addClass('tip-override');
+        tip.width(column.outerWidth() - 25).addClass('tip-override');
         objPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
         if (classes && classes.indexOf('tip-top') > -1) {
           objPos(tip, (target.offset().top - tip.outerHeight() - nubHeight), 'auto', 'auto', target.offset().left, width)
             .removeClass('tip-override');
-          objPos(nub, 'auto', 'auto', -nubHeight, 'auto');
+          // objPos(nub, 'auto', 'auto', -nubHeight, 'auto');
         } else if (classes && classes.indexOf('tip-left') > -1) {
           objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight), 'auto', 'auto', (target.offset().left - tip.outerWidth() - 10), width)
             .removeClass('tip-override');
-          objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -nubHeight, 'auto', 'auto');
+          objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -(nubHeight / 2));
         } else if (classes && classes.indexOf('tip-right') > -1) {
           objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight), 'auto', 'auto', (target.offset().left + target.outerWidth() + 10), width)
             .removeClass('tip-override');
-          objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -nubHeight);
+          objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -(nubHeight / 2));
         }
       }
 
@@ -160,9 +160,9 @@
       var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'noradius'].concat(this.settings.additionalInheritableClasses),
           classes = target.attr('class'),
           filtered = classes ? $.map(classes.split(' '), function (el, i) {
-              if ($.inArray(el, inheritables) !== -1) {
-                return el;
-              }
+            if ($.inArray(el, inheritables) !== -1) {
+              return el;
+            }
           }).join(' ') : '';
 
       return $.trim(filtered);

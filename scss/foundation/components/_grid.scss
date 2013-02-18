@@ -75,19 +75,21 @@ $total-columns: 12 !default;
     width: gridCalc($columns, $total-columns);
 
     // If last column, float naturally instead of to the right
-    @if $last-column { float: $defaultOpposite; }
+    @if $last-column { float: $default-opposite; }
 
     // if collapsed, get rid of gutter padding
     @else if $collapse { padding-left: 0; padding-right: 0; }
 
   }
 
+  @if $collapse { padding-left: 0; padding-right: 0; }
+
   // If offset, calculate appropriate margins
-  @if $offset { margin-#{$defaultFloat}: gridCalc($offset, $total-columns); }
+  @if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
 
   // Source Ordering, adds left/right depending on which you use.
-  @if $push { #{$defaultFloat}: gridCalc($push, $total-columns); #{$defaultOpposite}: auto; }
-  @if $pull { #{$defaultOpposite}: gridCalc($pull, $total-columns); #{$defaultFloat}: auto; }
+  @if $push { #{$default-float}: gridCalc($push, $total-columns); #{$default-opposite}: auto; }
+  @if $pull { #{$default-opposite}: gridCalc($pull, $total-columns); #{$default-float}: auto; }
 
   // If centered, get rid of float and add appropriate margins
   @if $center {
@@ -96,8 +98,8 @@ $total-columns: 12 !default;
   }
 
   @if $float {
-    @if $float == left { float: $defaultFloat; }
-    @else if $float == right { float: $defaultOpposite; }
+    @if $float == left { float: $default-float; }
+    @else if $float == right { float: $default-opposite; }
     @else { float: none; }
   }
 
@@ -126,7 +128,17 @@ img { -ms-interpolation-mode: bicubic; }
   .row {
     @include grid-row;
 
-    [class*="large-"], [class*="small-"] { @include grid-column($columns:$total-columns); }
+    // [class*="large-"],
+    // [class*="small-"],
+    .column,
+    .columns { @include grid-column($columns:$total-columns); }
+
+    &.collapse {
+      // [class*="large-"],
+      // [class*="small-"],
+      .column,
+      .columns { @include grid-column($collapse:true); }
+    }
 
     .row { @include grid-row($behavior:nest);
       &.collapse { @include grid-row($behavior:nest-collapse); }
@@ -150,16 +162,25 @@ img { -ms-interpolation-mode: bicubic; }
       .small-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
     }
 
-    [class*="small-"]:last-child { float: right; }
-    [class*="small-"].end { float: left; }
+    // [class*="small-"]:last-child,
+    .column:last-child,
+    .columns:last-child { float: right; }
 
-    [class*="small-"].small-centered { @include grid-column($center:true, $collapse:null, $float:none); }
+    // [class*="small-"].end,
+    .column.end,
+    .columns.end { float: left; }
+
+    // [class*="small-"].small-centered,
+    .column.small-centered,
+    .columns.small-centered { @include grid-column($center:true, $collapse:null, $float:none); }
   }
 
   /* Styles for screens that are atleast 768px; */
-  @media #{$large} {
+  @media #{$small} {
 
-    .row [class*="large-"] { @include grid-column($columns:false, $float:left); }
+    // .row [class*="large-"],
+    .row .column,
+    .row .columns { @include grid-column($columns:false, $float:left); }
 
     @for $i from 1 through $total-columns {
       .row .large#{-$i} { @include grid-column($columns:$i,$collapse:null); }
@@ -174,10 +195,12 @@ img { -ms-interpolation-mode: bicubic; }
       .large-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
     }
 
-    [class*="large-"]:last-child { float: right; }
-    [class*="large-"].end { float: left; }
+    // [class*="large-"]:last-child { float: right; }
+    // [class*="large-"].end { float: left; }
 
-    [class*="large-"].large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
+    [class*="large-"].large-centered,
+    .column.large-centered,
+    .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
 
   }
 

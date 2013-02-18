@@ -1,0 +1,175 @@
+<% @page_title = "Custom Forms" %>
+<div class="row">
+  <div class="large-12">
+    <p><a href="index.html">&laquo; Back</a></p>
+    <h1>Foundation <%= @page_title %> </h1>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4">
+    <a name="custom"></a>
+    <h4>Custom Inputs</h4>
+    <p>Custom form input types that are included with Foundation.</p>
+  </div>
+  <div class="large-8">
+    <form class="custom">
+
+      <h5>Radio Buttons and Checkboxes</h5>
+      <div class="row">
+        <div class="large-4">
+          <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 1</label>
+          <label for="radio2"><input name="radio1" type="radio" id="radio2" style="display:none;"><span class="custom radio checked"></span> Radio Button 2</label>
+          <label for="radio3"><input name="radio1" type="radio" id="radio3" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
+        </div>
+        <div class="large-4">
+          <label for="radio4"><input name="radio2" type="radio" id="radio4"> Radio Button 1</label>
+          <label for="radio5"><input name="radio2" CHECKED type="radio" id="radio5"> Radio Button 2</label>
+          <label for="radio6"><input name="radio2" type="radio" id="radio6"> Radio Button 3</label>
+        </div>
+        <div class="large-4">
+          <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
+          <label for="checkbox2"><input type="checkbox" id="checkbox2" checked style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
+          <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3"> Label for Checkbox</label>
+        </div>
+      </div>
+
+      <br />
+      <h5>Dropdown / Select Elements</h5>
+
+      <label for="customDropdownN">Small Example</label>
+      <select id="customDropdownN" class="small">
+        <option DISABLED>This is a dropdown</option>
+        <option>This is another option</option>
+        <option>This is another option too</option>
+        <option>Look, a third option</option>
+      </select>
+
+      <label for="customDropdownN">Medium Example</label>
+      <select id="customDropdownN" class="medium">
+        <option DISABLED>This is a dropdown</option>
+        <option>This is another option</option>
+        <option>This is another option too</option>
+        <option>Look, a third option</option>
+      </select>
+
+      <label for="customDropdownN">Large Example</label>
+      <select id="customDropdownN" class="large">
+        <option DISABLED>This is a dropdown</option>
+        <option>This is another option</option>
+        <option>This is another option too</option>
+        <option>Look, a third option</option>
+      </select>
+
+      <label for="customDropdownN">Natural Example</label>
+      <select id="customDropdownN">
+        <option DISABLED>This is a dropdown</option>
+        <option>This is another option</option>
+        <option>This is another option too</option>
+        <option>Look, a third option</option>
+        <option DISABLED>This is a dropdown</option>
+        <option>This is another option</option>
+        <option>This is another option too</option>
+        <option>Look, a third option</option>
+        <option DISABLED>This is a dropdown</option>
+        <option>This is another option</option>
+        <option>This is another option too</option>
+        <option>Look, a third option</option>
+        <option DISABLED>This is a dropdown</option>
+        <option>This is another option</option>
+        <option>This is another option too</option>
+        <option>Look, a third option</option>
+      </select>
+
+    <div class="row">
+      <div class="large-6">
+      <label>Prefix Example</label>
+        <div class="row collapse">
+          <div class="large-9 small-9">
+            <span class="prefix">mysubdomain</span>
+          </div>
+          <div class="large-3 small-3">
+          <select>
+            <option>.com</option>
+            <option>.co</option>
+            <option>.ca</option>
+          </select>
+          </div>
+        </div>
+      </div>
+      <div class="large-6">
+      <label>Postfix Example</label>
+        <div class="row collapse">
+          <div class="large-10 small-10">
+          <select>
+            <option>google</option>
+            <option>yahoo</option>
+            <option>bing</option>
+          </select>
+          </div>
+          <div class="large-2 small-2">
+            <span class="postfix">.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6">
+      <label>Postfix Button Example</label>
+        <div class="row collapse">
+          <div class="large-10 small-10">
+          <select>
+            <option>Find a Monkey</option>
+            <option>Find an Elephant</option>
+            <option>Find a Squirrel</option>
+          </select>
+          </div>
+          <div class="large-2 small-2">
+            <a class="button expand postfix">Go</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <label for="address_3">Inline With Regular Inputs</label>
+
+        <div class="row">
+          <div class="large-6">
+            <select>
+              <option>Choose Your Product:</option>
+              <option>DOG - Stuffed Dog</option>
+              <option>SQB - Black Squirrel (Angry Face)</option>
+              <option>SQH - Brown Squirrel (Happy Face)</option>
+            </select>
+          </div>
+          <div class="large-2">
+            <input type="text" placeholder="Qty" />
+          </div>
+          <div class="large-4">
+            <input type="submit" class="button inline-button radius" value="Add To Cart" />
+          </div>
+        </div>
+
+    </form>
+    <fieldset>
+      <div class="row">
+        <div class="large-12">
+          <form class="custom" name="add">
+            <div class="row">
+              <div class="large-3">
+                <label for="year">Year</label>
+                <select name="year">
+                  <option value="2000">2012</option>
+                  <option value="2000">Another really long option.</option>
+                  <option value="2000">2010</option>
+                  <option value="2000">2009</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>

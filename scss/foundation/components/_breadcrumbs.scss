@@ -3,7 +3,7 @@
 //
 
 // We use this to set the background color for the breadcrumb container.
-$crumb-bg: lighten($secondaryColor, 5%)                        !default;
+$crumb-bg: lighten($secondary-color, 5%)                       !default;
 
 // We use these to set the padding around the breadcrumbs.
 $crumb-padding: emCalc(6px) emCalc(14px) emCalc(9px)           !default;
@@ -37,7 +37,7 @@ $crumb-slash: "/"                                              !default;
   display: block;
   padding: $crumb-padding;
   overflow: hidden;
-  margin-#{$defaultFloat}: 0;
+  margin-#{$default-float}: 0;
   list-style: none;
   border-style: $crumb-border-style;
   border-width: $crumb-border-size;
@@ -53,7 +53,7 @@ $crumb-slash: "/"                                              !default;
   // A normal state will make the links look and act like clickable breadcrumbs.
   margin: 0;
   padding: 0 $crumb-side-padding 0 0;
-  float: $defaultFloat;
+  float: $default-float;
 
   &:hover a,
   &:focus a { text-decoration: $crumb-link-decor; }
@@ -61,7 +61,7 @@ $crumb-slash: "/"                                              !default;
   a,
   span {
     font-size: $crumb-font-size;
-    padding-#{$defaultFloat}: $crumb-side-padding;
+    padding-#{$default-float}: $crumb-side-padding;
     text-transform: $crumb-font-transform;
     color: $crumb-font-color;
   }
@@ -96,7 +96,7 @@ $crumb-slash: "/"                                              !default;
     top: 1px;
   }
   &:first-child a,
-  &:first-child span { padding-#{$defaultFloat}: 0; }
+  &:first-child span { padding-#{$default-float}: 0; }
   &:first-child:before { content: ""; }
 
 }

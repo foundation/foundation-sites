@@ -1,3 +1,20 @@
+// Orbit Settings
+
+$orbit-caption-bg-old-browser: #000 !default;
+$orbit-caption-bg: rgba(0,0,0,.6) !default;
+$orbit-caption-font-color: #fff !default;
+$orbit-bullet-nav-color: #999 !default;
+$orbit-bullet-nav-color-active: #222 !default;
+$orbit-thumb-border-color: #000 !default;
+$orbit-thumb-border-width: 2px !default;
+$orbit-thumb-border-style: solid !default;
+$orbit-slide-number-bg: rgba(0,0,0,0.7) !default;
+$orbit-slide-number-font-color: #fff !default;
+$orbit-slide-number-padding: emCalc(5px) !default;
+
+
+
+
 .orbit-container {
   overflow: hidden;
   width: 100%;
@@ -25,7 +42,7 @@
 
 //   &.with-bullets { margin-bottom: 40px; }
 
-//   .orbit-slide { max-width: 100%; position: absolute; top: 0; #{$defaultFloat}: 0; }
+//   .orbit-slide { max-width: 100%; position: absolute; top: 0; #{$default-float}: 0; }
 //   a.orbit-slide { border: none; line-height: 0; display: none; }
 //   div.orbit-slide { width: 100%; height: 100%; opacity:0; }
 // }
@@ -34,14 +51,14 @@
 
 // /* Timer ---------------------- */
 // .orbit-wrapper  {
-//   .timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; #{$defaultOpposite}: 10px; opacity: .6; cursor: pointer; z-index: 31; }
-//   span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: -20px; background: #{$orbitImageRotator} no-repeat; z-index: 3;
-//     &.move { #{$defaultFloat}: 0 }
+//   .timer { width: 40px; height: 40px; overflow: hidden; position: absolute; top: 10px; #{$default-opposite}: 10px; opacity: .6; cursor: pointer; z-index: 31; }
+//   span.rotator { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$default-float}: -20px; background: #{$orbitImageRotator} no-repeat; z-index: 3;
+//     &.move { #{$default-float}: 0 }
 //   }
-//   span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; #{$defaultOpposite}: 0; z-index: 2; overflow: hidden;
-//     &.move { width: 40px; #{$defaultFloat}: 0; background: #{$orbitImageTimer} repeat 0 0; }
+//   span.mask { display: block; width: 20px; height: 40px; position: absolute; top: 0; #{$default-opposite}: 0; z-index: 2; overflow: hidden;
+//     &.move { width: 40px; #{$default-float}: 0; background: #{$orbitImageTimer} repeat 0 0; }
 //   }
-//   span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$defaultFloat}: 0; background: #{$orbitImagePause} no-repeat; z-index: 4; opacity: 0;
+//   span.pause { display: block; width: 40px; height: 40px; position: absolute; top: 0; #{$default-float}: 0; background: #{$orbitImagePause} no-repeat; z-index: 4; opacity: 0;
 //     &.active { background: #{$orbitImagePauseActive} no-repeat 0 -40px; }
 //   }
 //   .timer:hover span.pause, .timer:focus span.pause, span.pause.active { opacity: 1 }
@@ -49,7 +66,7 @@
 
 // /* Captions ---------------------- */
 // .orbit-caption { display: none; font-family: inherit; }
-// .orbit-wrapper .orbit-caption { background: $orbitCaptionBgColorOldBrowser; background: $orbitCaptionBgColor; z-index: 30; color: $orbitCaptionFontColor; text-align: center; padding: 7px 0; font-size: ms(0) - 1; position: absolute; #{$defaultOpposite}: 0; bottom: 0; width: 100%; }
+// .orbit-wrapper .orbit-caption { background: $orbit-caption-bg-old-browser; background: $orbit-caption-bg; z-index: 30; color: $orbit-caption-font-color; text-align: center; padding: 7px 0; font-size: ms(0) - 1; position: absolute; #{$default-opposite}: 0; bottom: 0; width: 100%; }
 
 // /* Directional Nav ---------------------- */
 // .orbit-wrapper {
@@ -67,16 +84,16 @@
 // }
 
 // /* Bullet Nav ---------------------- */
-// ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; #{$defaultFloat}: 50%; margin-#{$defaultFloat}: -50px; padding: 0;
-//   li { float: $defaultFloat; margin-#{$defaultFloat}: 5px; cursor: pointer; color: $orbitBulletNavColor; text-indent: -9999px; background: #{$orbitImageBullets} no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden;
-//     &.active { color: $orbitBulletNavColorActive; background-position: -8px 0; }
+// ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -40px; #{$default-float}: 50%; margin-#{$default-float}: -50px; padding: 0;
+//   li { float: $default-float; margin-#{$default-float}: 5px; cursor: pointer; color: $orbit-bullet-nav-color; text-indent: -9999px; background: #{$orbitImageBullets} no-repeat 4px 0; width: 13px; height: 12px; overflow: hidden;
+//     &.active { color: $orbit-bullet-nav-color-active; background-position: -8px 0; }
 //     &.has-thumb { background: none; width: 100px; height: 75px; }
-//     &.active.has-thumb { background-position: 0 0; border-top: $orbitHasThumbBorderWidth $orbitHasThumbBorderStyle $orbitHasThumbBorderColor; }
+//     &.active.has-thumb { background-position: 0 0; border-top: $orbit-thumb-border-width $orbit-thumb-border-style $orbit-thumb-border-color; }
 //   }
 // }
 
 // /* Orbit Slide Counter */
-// .orbit-slide-counter { position: absolute; bottom: 0; z-index: 99; background: $orbitSlideNumBgColor; color: $orbitSlideNumFontColor; padding: $orbitSlideNumPadding; }
+// .orbit-slide-counter { position: absolute; bottom: 0; z-index: 99; background: $orbit-slide-number-bg; color: $orbit-slide-number-font-color; padding: $orbit-slide-number-padding; }
 
 // /* Fluid Layout ---------------------- */
 // .orbit img.fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }
@@ -84,7 +101,7 @@
 
 // /* Correct timer in IE */
 // .lt-ie9 .timer { display: none !important; }
-// .lt-ie9 .orbit-caption { background: $orbitCaptionBgColorOldBrowser; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
+// .lt-ie9 .orbit-caption { background: $orbit-caption-bg-old-browser; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
 
 // // Allow slides to be stacked on mobile devices
 // @media only screen and (max-width: $screenSmall - 1) {

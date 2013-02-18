@@ -13,11 +13,27 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !
 $body-font-weight: normal !default;
 $body-font-style: normal !default;
 
-// Highlight color, like a yellow Sharpie
-$highlight-color: #ffff99 !default;
-
 // We use this to control font-smoothing
 $font-smoothing: antialiased !default;
+
+// We use these to control text direction settings
+$text-direction: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
+$default-float: left !default;
+$default-opposite: right !default;
+// No need to change this conditional statement, $text-direction variable controls it all.
+@if $text-direction == ltr {
+  $default-float: left;
+  $default-opposite: right;
+} @else {
+  $default-float: right;
+  $default-opposite: left;
+}
+
+// We use these as default colors throughout
+$primary-color: #2ba6cb !default;
+$secondary-color: #e9e9e9 !default;
+$alert-color: #c60f13 !default;
+$success-color: #5da423 !default;
 
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;
@@ -30,6 +46,8 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 $include-html-classes: true !default;
+$include-print-styles: true !default;
+
 
 // We use this to let you add a grid for IE8 if you'd like.
 // $ie8gridSupport: no;
@@ -177,159 +195,23 @@ body {
 .text-center  { text-align: center; }
 .text-justify { text-align: justify; }
 .hide         { display: none; }
-.highlight    { background: $highlight-color; }
 
+//
+// Global resets for forms
+//
 
+// Make sure textarea takes on height automatically
+textarea { height: auto; }
 
-
-
-
+// Make select elements 100% width by default
+select { width: 100%; }
 
 
 // OLD VARIABLES, PRUNE OUT AS WE GO
 
 $blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported
 
-// Colors Settings
 
-$mainColor: #2ba6cb !default;
-$primaryColor: $mainColor !default;
-$secondaryColor: #e9e9e9 !default;
-$alertColor: #c60f13 !default;
-$successColor: #5da423 !default;
-$txtColor: #222 !default;
-$highlightColor: #ffff99 !default;
-$black: #000 !default;
-$white: #fff !default;
-$shinyEdge: rgba(#fff, .5) !default;
-$darkEdge: rgba(#000, .2) !default;
-
-$primary-color: #2ba6cb !default;
-$secondary-color: #e9e9e9 !default;
-$alert-color: #c60f13 !default;
-$success-color: #5da423 !default;
-
-// Font Settings
-
-$fontSmoothing: antialiased !default;
-$headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
-$headerFontWeight: bold !default;
-$headerFontStyle: normal !default;
-$headerFontColor: #222 !default;
-$bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
-$bodyFontWeight: normal !default;
-$bodyFontStyle: normal !default;
-$bodyFontColor: $txtColor !default;
-
-// Text Direction Settings
-
-$textDirection: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
-$defaultFloat: left !default; // Change this to 'right' for right-to-left languages
-$defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
-
-@if $textDirection == ltr {
-  $defaultFloat: left;
-  $defaultOpposite: right;
-} @else {
-  $defaultFloat: right;
-  $defaultOpposite: left;
-}
-
-// Form Settings
-
-$formSpacing: .75em !default;
-$labelFontWeight: 500 !default;
-$labelFontColor: lighten(#000, 30%) !default;
-$labelBtmMargin: emCalc(3px) !default;
-$inputFontColor: rgba(0,0,0,0.75) !default;
-$inputFontSize: emCalc(14px) !default;
-$inputBgColor: #fff !default;
-$inputFocusBgColor: darken(#fff, 2%) !default;
-$inputBorderColor: darken(#fff, 20%) !default;
-$inputFocusBorderColor: darken(#fff, 30%) !default;
-$inputBorderStyle: solid !default;
-$inputBorderWidth: 1px !default;
-$inputBorderRadius: 2px !default;
-$fieldsetBorderRadius: 3px !default;
-
-// Custom Form Settings
-
-$custFormBorderColor: #ccc !default;
-$custFormBgColor: #fff !default;
-$custCheckColor: #222 !default;
-$custSelectCurrentFontColor: #141414 !default;
-$custSelectBgColor: #fff !default;
-$custSelectBorderColor: #ddd !default;
-$custSelectTriangleColor: #aaa !default;
-$custSelectTriangleColorOpen: #222 !default;
-$custSelectDropHeight: emCalc(200px) !default;
-$custDropdownBgColor: #fff !default;
-$custDropdownBorderColor: darken(#fff, 20%) !default;
-$custDropdownFontColor: #555 !default;
-$custDropdownSelectedBgColor: lighten(#2ba6cb, 40%) !default;
-$custDropdownSelectedFontColor: #000 !default;
-$custFormDisabledBgColor: #ddd !default;
-
-
-// Nav Bar Settings
-
-$navBarHeight: emCalc(40px) !default;
-$navFlyoutBaseWidth: emCalc(250px) !default;
-
-// Top Bar Settings
-
-$topBarBgColor: #222 !default;
-$topBarHeight: emCalc(45px) !default;
-$topBarHeightMobile: emCalc(45px) !default;
-$topBarBtmMargin: emCalc(30px) !default;
-$topBarTitleWeight: bold !default;
-$topBarTitleSize: emCalc(17px) !default;
-$topBarLinkColor: #fff !default;
-$topBarLinkWeight: bold !default;
-$topBarLinkSize: emCalc(13px) !default;
-$topBarDropBgColor: #222 !default;
-$topBarDropLinkColor: #fff !default;
-$topBarDropToggleSize: emCalc(5px) !default;
-$topBarDropToggleColor: #fff !default;
-$topBarDropToggleAlpha: 0.5 !default;
-$topBarSearchWidth: 200px !default;
-$topBarBreakPoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
-$topBarNavToggleSize:emCalc(8px) !default;
-
-
-// Orbit Settings
-
-$orbitCaptionBgColorOldBrowser: #000 !default;
-$orbitCaptionBgColor: rgba(0,0,0,.6) !default;
-$orbitCaptionFontColor: #fff !default;
-$orbitBulletNavColor: #999 !default;
-$orbitBulletNavColorActive: #222 !default;
-$orbitHasThumbBorderColor: #000 !default;
-$orbitHasThumbBorderWidth: 2px !default;
-$orbitHasThumbBorderStyle: solid !default;
-$orbitSlideNumBgColor: rgba(0,0,0,0.7) !default;
-$orbitSlideNumFontColor: #fff !default;
-$orbitSlideNumPadding: emCalc(5px) !default;
-
-// Joyride Settings
-
-$tipBg: rgba(0,0,0,0.8) !default;
-$tipBgIE8: #000 !default;
-$tipFontColor: #fff !default;
-$tipHeaderWeight: bold !default;
-$tipDefaultWidth: 300px !default;
-$tipBorderRadius: 4px !default;
-$tipPadding: emCalc(18px) emCalc(20px) emCalc(24px) !default;
-$tipNubSize: 14px !default;
-$tipFontSize: emCalc(14px) !default;
-$tipTimerWidth: 50px !default;
-$tipTimerHeight: 3px !default;
-$tipTimerBorder: solid 1px #555 !default;
-$tipTimerColor: #666 !default;
-$tipCloseColor: #777 !default;
-$tipCloseSize: 20px !default;
-$tipCloseWeight: normal !default;
-$tipScreenFill: rgba(0,0,0,0.5) !default;
 
 // OLD: CAN REMOVE
   $screenSmall: 768px !default;
@@ -337,8 +219,10 @@ $tipScreenFill: rgba(0,0,0,0.5) !default;
   $screenXlarge: 1441px !default;
 
 // Media Queries
-$largeScreen: emCalc(768px) !default;
-$smallScreen: emCalc(1px) !default;
+$small-screen: emCalc(768px) !default;
+$medium-screen: emCalc(1280px) !default;
+$large-screen: emCalc(1440px) !default;
 
-$small: "only screen and (min-width:"#{$smallScreen}")" !default;
-$large: "only screen and (min-width:"#{$largeScreen}")" !default;
+$small: "only screen and (min-width:"#{$small-screen}")" !default;
+$medium: "only screen and (min-width:"#{$medium-screen}")" !default;
+$large: "only screen and (min-width:"#{$large-screen}")" !default;

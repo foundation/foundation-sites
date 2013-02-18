@@ -1,3 +1,24 @@
+// Custom Form Settings
+
+$custom-form-border-color: #ccc !default;
+$custom-form-bg: #fff !default;
+$custom-form-check-color: #222 !default;
+$custom-select-current-selected-color: #141414 !default;
+$custom-select-bg: #fff !default;
+$custom-select-border-color: #ddd !default;
+$custom-select-triangle-color: #aaa !default;
+$custom-select-triangle-color-open: #222 !default;
+$custom-select-dropdown-height: emCalc(200px) !default;
+$custom-dropdown-bg: #fff !default;
+$custom-dropdown-border-color: darken(#fff, 20%) !default;
+$custom-dropdown-font-color: #555 !default;
+$custom-dropdown-bg-selected: lighten(#2ba6cb, 40%) !default;
+$custom-dropdown-font-color-selected: #000 !default;
+$custom-form-disabled-bg: #ddd !default;
+
+
+
+
 // Custom Forms
 form.custom {
 
@@ -7,8 +28,8 @@ form.custom {
     height: 16px;
     position: relative;
     top: 2px;
-    border: solid 1px $custFormBorderColor;
-    background: $custFormBgColor;
+    border: solid 1px $custom-form-border-color;
+    background: $custom-form-bg;
 
     &.radio { @include radius(100px); }
 
@@ -22,7 +43,7 @@ form.custom {
         text-align: center;
         position: absolute;
         top: 0;
-        #{$defaultFloat}: 0;
+        #{$default-float}: 0;
         font-size: 14px;
         color: #fff;
       }
@@ -34,16 +55,16 @@ form.custom {
         width: 8px;
         height: 8px;
         @include radius(100px);
-        background: $custCheckColor;
+        background: $custom-form-check-color;
         position: relative;
         top: 3px;
-        #{$defaultFloat}: 3px;
+        #{$default-float}: 3px;
       }
     }
     &.checkbox.checked {
       &:before {
         content: "\00d7";
-        color: $custCheckColor;
+        color: $custom-form-check-color;
       }
     }
   }
@@ -58,7 +79,7 @@ form.custom {
 
     ul {
       overflow-y: auto;
-      max-height: $custSelectDropHeight;
+      max-height: $custom-select-dropdown-height;
     }
     a.current {
       display: block;
@@ -66,11 +87,11 @@ form.custom {
       line-height: emCalc(26px);
       min-height: emCalc(28px);
       padding: 0;
-      padding-#{$defaultFloat}: emCalc(6px);
-      padding-#{$defaultOpposite}: emCalc(38px);
-      border: solid 1px $custSelectBorderColor;
-      color: $custSelectCurrentFontColor;
-      background-color: $custSelectBgColor;
+      padding-#{$default-float}: emCalc(6px);
+      padding-#{$default-opposite}: emCalc(38px);
+      border: solid 1px $custom-select-border-color;
+      color: $custom-select-current-selected-color;
+      background-color: $custom-select-bg;
       white-space: nowrap;
     }
     a.selector {
@@ -78,23 +99,23 @@ form.custom {
       width: emCalc(27px);
       height: emCalc(28px);
       display: block;
-      #{$defaultOpposite}: 0;
+      #{$default-opposite}: 0;
       top: 0;
-      border: solid 1px $custSelectBorderColor;
+      border: solid 1px $custom-select-border-color;
       &:after {
         content: "";
         display: block;
-        @include css-triangle(5px, $custSelectTriangleColor, top);
+        @include css-triangle(5px, $custom-select-triangle-color, top);
         position: absolute;
-        #{$defaultFloat}: 50%;
+        #{$default-float}: 50%;
         top: 50%;
         margin-top: emCalc(-2px);
-        margin-#{$defaultFloat}: emCalc(-5px);
+        margin-#{$default-float}: emCalc(-5px);
       }
     }
     &:hover, &.open {
       a.selector {
-        &:after { @include css-triangle(5px, $custSelectTriangleColorOpen, top); }
+        &:after { @include css-triangle(5px, $custom-select-triangle-color-open, top); }
       }
     }
 
@@ -117,21 +138,21 @@ form.custom {
     width: auto;
     display: none;
     margin: 0;
-    #{$defaultFloat}: 0;
+    #{$default-float}: 0;
     top: emCalc(27px);
     margin: 0;
     padding: 0;
-    background: $custDropdownBgColor;
-    background: rgba($custDropdownBgColor,0.95);
-    border: solid 1px $custDropdownBorderColor;
+    background: $custom-dropdown-bg;
+    background: rgba($custom-dropdown-bg,0.95);
+    border: solid 1px $custom-dropdown-border-color;
 
     li {
-      color: $custDropdownFontColor;
+      color: $custom-dropdown-font-color;
       font-size: ms(0) - 1;
       cursor: pointer;
       padding: emCalc(3px);
-      padding-#{$defaultFloat}: emCalc(6px);
-      padding-#{$defaultOpposite}: emCalc(38px);
+      padding-#{$default-float}: emCalc(6px);
+      padding-#{$default-opposite}: emCalc(38px);
       min-height: emCalc(18px);
       line-height: emCalc(18px);
       margin: 0;
@@ -139,35 +160,35 @@ form.custom {
       list-style: none;
     }
     li.selected {
-      background: $custDropdownSelectedBgColor;
-      color: $custDropdownSelectedFontColor;
+      background: $custom-dropdown-bg-selected;
+      color: $custom-dropdown-font-color-selected;
       &:after {
         content: "\2013";
         position: absolute;
-        #{$defaultOpposite}: emCalc(10px);
+        #{$default-opposite}: emCalc(10px);
       }
     }
     li:hover {
-      background-color: $custDropdownSelectedBgColor;
-      color: $custDropdownSelectedFontColor;
+      background-color: $custom-dropdown-bg-selected;
+      color: $custom-dropdown-font-color-selected;
       &:after {
         content: "\2013";
         position: absolute;
-        #{$defaultOpposite}: emCalc(10px);
-        color: darken($custDropdownSelectedBgColor, 10%);
+        #{$default-opposite}: emCalc(10px);
+        color: darken($custom-dropdown-bg-selected, 10%);
       }
     }
     li.selected:hover {
-      background: $custDropdownSelectedBgColor;
+      background: $custom-dropdown-bg-selected;
       cursor: default;
-      color: $custDropdownSelectedFontColor;
-      &:after { color: $custDropdownSelectedFontColor; }
+      color: $custom-dropdown-font-color-selected;
+      &:after { color: $custom-dropdown-font-color-selected; }
     }
     &.show { display: block; }
   }
 
   // Custom Input, Disabled
-  .custom.disabled { background-color: $custFormDisabledBgColor; }
+  .custom.disabled { background-color: $custom-form-disabled-bg; }
 }
 
 // Correct FF custom dropdown height

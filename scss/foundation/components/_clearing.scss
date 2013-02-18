@@ -21,22 +21,22 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 //
 // Clearing Mixins
 //
-
-
-
-
-// Clearing Styles
-.clearing-blackout {
+@mixin clearing-blackout {
   background: $clearing-old-browser-bg;
   background: $clearing-bg;
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0; #{$defaultFloat}: 0;
+  top: 0; #{$default-float}: 0;
   z-index: 999;
 
   .clearing-close { display: block; }
 }
+
+
+
+// Clearing Styles
+.clearing-blackout { @include clearing-blackout; }
 
 .clearing-container {
   position: relative;
@@ -51,9 +51,9 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 
   img {
     position: absolute;
-    #{$defaultFloat}: 50%;
+    #{$default-float}: 50%;
     top: 50%;
-    margin-#{$defaultFloat}: -50%;
+    margin-#{$default-float}: -50%;
     max-height: 100%;
     max-width: 100%;
   }
@@ -75,7 +75,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   z-index: 999;
   position: absolute;
   top: 10px;
-  #{$defaultOpposite}: 20px;
+  #{$default-opposite}: 20px;
   font-size: 30px;
   line-height: 1;
   color: $clearing-close-color;
@@ -131,17 +131,17 @@ ul[data-clearing] li {
     height: 100%;
     margin-left: 0;
     position: relative;
-    #{$defaultFloat}: 0;
+    #{$default-float}: 0;
 
     li {
       display: block;
       width: $clearing-carousel-thumb-width;
       height: inherit;
       padding: 0;
-      float: $defaultFloat;
+      float: $default-float;
       overflow: hidden;
       background: #222;
-      margin-#{$defaultOpposite}: 1px;
+      margin-#{$default-opposite}: 1px;
       position: relative;
 
       &.fix-height {
@@ -186,8 +186,8 @@ ul[data-clearing] li {
 /* Small Devices ------------ */
 @media only screen and (max-width: $screenSmall - 1) {
   .clearing-container { margin: 0; }
-  .clearing-close { z-index: 99; font-size: emCalc(21px); top: 0px; #{$defaultOpposite}: 5px; }
-  .clearing-caption { position: fixed; bottom: 0; #{$defaultFloat}: 0; padding: emCalc(10px) !important; line-height: 1.3; }
+  .clearing-close { z-index: 99; font-size: emCalc(21px); top: 0px; #{$default-opposite}: 5px; }
+  .clearing-caption { position: fixed; bottom: 0; #{$default-float}: 0; padding: emCalc(10px) !important; line-height: 1.3; }
   .clearing-main-right, .clearing-main-left { display: none; }
   .clearing-blackout.clearing-assembled {
     .visible-img, .clearing-container { height: 100%; }

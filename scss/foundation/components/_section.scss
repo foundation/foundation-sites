@@ -132,7 +132,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
 
   }
 
-  @media #{$large} {
+  @media #{$small} {
     .section-container.tabs {
       @include section-container(false, tabs);
 
