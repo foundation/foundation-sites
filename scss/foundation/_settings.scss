@@ -46,6 +46,8 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 $include-html-classes: true !default;
+$include-print-styles: true !default;
+
 
 // We use this to let you add a grid for IE8 if you'd like.
 // $ie8gridSupport: no;
@@ -217,8 +219,6 @@ $blockGridElements: 12 !default; // Highest number of block grid elements, Maxim
   $screenXlarge: 1441px !default;
 
 // Media Queries
-$largeScreen: emCalc(768px) !default;
-$smallScreen: emCalc(1px) !default;
+$large-screen: emCalc(768px) !default;
 
-$small: "only screen and (min-width:"#{$smallScreen}")" !default;
-$large: "only screen and (min-width:"#{$largeScreen}")" !default;
+$large: "only screen and (min-width:"#{$large-screen}")" !default;
