@@ -25,6 +25,7 @@
     &.large   { width: 60%; margin-#{$defaultFloat}: -30%; }
     &.xlarge  { width: 70%; margin-#{$defaultFloat}: -35%; }
     &.expand  { width: 90%; margin-#{$defaultFloat}: -45%; }
+    &.radius { @include border-radius($buttonRadius); }
     .row { min-width: 0; margin-bottom: 10px; }
     > :first-child { margin-top: 0; }
     > :last-child { margin-bottom: 0; }
