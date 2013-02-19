@@ -35,7 +35,7 @@
       postRideCallback     : function (){},    // A method to call once the tour closes (canceled or complete)
       postStepCallback     : function () {},    // A method to call after each step
       template : { // HTML segments for tip layout
-        link    : '<a href="#close" class="joyride-close-tip">X</a>',
+        link    : '<a href="#close" class="joyride-close-tip">&times;</a>',
         timer   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
         tip     : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
         wrapper : '<div class="joyride-content-wrapper"></div>',
@@ -97,14 +97,14 @@
           self.pos_default();
         }
       }, 100));
-      
+
       this.settings.init = true;
     },
 
     start : function () {
       var self = this,
           $this = $(this.scope).find('[data-joyride]');
-      
+
       if (!this.settings.init) this.init();
       $.extend(true, this.settings, this.data_options($this));
 
@@ -207,7 +207,7 @@
       var $timer = null;
 
       // are we paused?
-      if (this.settings.$li === undefined 
+      if (this.settings.$li === undefined
         || ($.inArray(this.settings.$li.index(), this.settings.pauseAfter) === -1)) {
 
         // don't go to the next li if the tour was paused
@@ -221,7 +221,7 @@
 
         if (this.settings.$li.length && this.settings.$target.length > 0) {
 
-          this.settings.tipSettings = $.extend(true, 
+          this.settings.tipSettings = $.extend(true,
             this.settings, this.data_options(this.settings.$li));
 
           this.settings.tipSettings.tipLocationPattern = this.settings.tipLocationPatterns[this.settings.tipSettings.tipLocation];
@@ -306,7 +306,7 @@
     },
 
     hide : function () {
-      this.settings.postStepCallback(this.settings.$li.index(), 
+      this.settings.postStepCallback(this.settings.$li.index(),
         this.settings.$current_tip);
       $('.joyride-modal-bg').hide();
       this.settings.$current_tip.hide();
