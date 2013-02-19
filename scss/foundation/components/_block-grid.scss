@@ -1,14 +1,62 @@
-/* Block Grids --- */
-// .block-grid.mobile {
-//   &>li { float: none; width: 100%; margin-#{$default-float}: 0; }
-// }
+//
+// Block Grid Variables
+//
 
-// .block-grid {
-//   &>li { clear: none !important; }
-//   @for $i from 1 through $blockGridElements {
-//     &.mobile-#{convert-number-to-word($i)}-up>li {
-//       width: 100%/$i;
-//       @if $i > 1 { &:nth-child(#{$i}n+1) { clear: both; } }
-//     }
-//   }
-// }
+// We use this to control the maximum number of block grid elements per row
+$block-grid-elements: 12 !default;
+
+
+//
+// Block Grid Mixins
+//
+
+// We use this mixin to create different block-grids. You can apply per-row and spacing options.
+// Setting $base-style to false will ommit default styles.
+@mixin block-grid($per-row:false, $spacing:10px, $base-style:true) {
+
+  @if $base-style {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    margin: 0 (-$spacing);
+
+    &>li {
+      display: block;
+      height: auto;
+      float: $default-float;
+      padding: 0 $spacing $spacing;
+    }
+  }
+
+  @if $per-row {
+    &>li {
+      width: 100%/$per-row;
+      padding: 0 $spacing $spacing;
+    }
+    &:nth-of-type(#{$per-row}n+1) { clear: both; }
+  }
+
+}
+
+
+/* Foundation Block Grids for below small breakpoint */
+@media only screen {
+  [class*="block-grid-"] { @include block-grid; }
+
+  @for $i from 2 through $block-grid-elements {
+    .small-block-grid-#{($i)} {
+      @include block-grid($i,10px,false);
+    }
+  }
+}
+
+/* Foundation Block Grids for above small breakpoint */
+@media #{$small} {
+  @for $i from 2 through $block-grid-elements {
+    .large-block-grid-#{($i)} {
+      @if      $i == 2 { @include block-grid(2,15px,false); }
+      @else if $i == 3 { @include block-grid(3,12px,false); }
+      @else { @include block-grid($i,10px,false); }
+    }
+  }
+}
