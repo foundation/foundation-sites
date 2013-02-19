@@ -202,7 +202,7 @@
           .hide();
 
       } else {
-        liHtml = $options.map(function() { 
+        liHtml = $options.map(function() {
             return "<li>" + $( this ).html() + "</li>";
           })
           .get().join('');
