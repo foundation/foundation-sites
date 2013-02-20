@@ -19,12 +19,10 @@ $input-border-color: darken(#fff, 20%) !default;
 $input-focus-border-color: darken(#fff, 40%) !default;
 $input-border-style: solid !default;
 $input-border-width: 1px !default;
-$input-border-radius: 2px !default;
 $input-disabled-bg: #ddd !default;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 
 // We use these to style the fieldset border and spacing.
-$fieldset-border-radius: 3px !default;
 $fieldset-border-style: solid !default;
 $fieldset-border-width: 1px !default;
 $fieldset-border-color: #ddd !default;
@@ -241,12 +239,12 @@ label { @include form-label;
 /* Adjust padding, alignment and radius if pre/post element is a button */
 .postfix.button { #{$default-opposite}: 2px; @include button-size(false,false,false,true); }
 .prefix.button { #{$default-float}: 2px; @include button-size(false,false,false,true); }
-.prefix.button.radius { @include side-radius(left, $input-border-radius); }
-.postfix.button.radius { @include side-radius(right, $input-border-radius); }
+.prefix.button.radius { @include side-radius(left, $global-radius); }
+.postfix.button.radius { @include side-radius(right, $global-radius); }
 
 /* Separate prefix and postfix styles when on span so buttons keep their own */
-span.prefix { @include prefix(); @include side-radius(left, $input-border-radius); }
-span.postfix { @include postfix(); @include side-radius(right, $input-border-radius); }
+span.prefix { @include prefix(); @include side-radius(left, $global-radius); }
+span.postfix { @include postfix(); @include side-radius(right, $global-radius); }
 
 /* We use this to get basic styling on all basic form elements */
 input[type="text"],
@@ -264,14 +262,12 @@ input[type="time"],
 input[type="url"],
 textarea {
   @include form-elements;
-  @include radius($input-border-radius);
   @include single-transition(all, 0.15s, linear);
 }
 
 /* We add basic fieldset styling */
 fieldset {
   @include fieldset;
-  @include radius($fieldset-border-radius);
 }
 
 /* Error Handling */
@@ -288,5 +284,4 @@ label.error { @include form-label-error-color; }
 .error small,
 small.error {
   @include form-error-message;
-  @include side-radius(bottom, 2px);
 }
