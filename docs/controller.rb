@@ -1,3 +1,4 @@
+require 'socket'
 layout 'layout.html.erb'
 
 ignore /css\//
@@ -5,7 +6,7 @@ ignore /js\//
 
 helpers do
   def asset_path
-    'http://comedian.local:4001/assets'
+    "http://#{Socket.gethostname}:4001/assets"
   end
 
   def code_example(code, lang=:ruby)
