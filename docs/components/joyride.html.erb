@@ -1,14 +1,14 @@
 <% @page_title = "Joyride" %>
 <div class="row">
-  <div class="large-12">
-    <p><a href="index.html">&laquo; Back</a></p>
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
     <h4 class="subheader">Joyride is great for getting new users acquainted with your site or application.</h4>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-6">
+  <div class="large-12 columns">
     <h2 id="numero1" class="so-awesome">Basic Installation</h2>
     <p>At the bottom of your page but inside of the body, place either an <code>ol</code> or <code>ul</code> with the <code>data-joyride</code> attribute. This list will contain all of the stops on your tour.</p>
 <%= code_example '
@@ -35,64 +35,21 @@
   </li>
 </ol>
 ', :html %>
-  </div>
-  <div class="large-6">
-    <img id="numero5" src="img/orbit-demo/demo1.jpeg">
-  </div>
 
-<div class="row">
-  <div class="large-12">
+    <h3 id="numero3">Get the Most Out of Your App!</h3>
+    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 
-    <div class="row">
-      <div class="six columns">
-        <h2 id="numero1" class="so-awesome">Point Out Those New Features!</h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum.</p>
-      </div>
-      <div class="six columns">
-        <img id="numero5" src="img/orbit-demo/demo1.jpeg">
-      </div>
-    </div>
+    <h3 id="numero2">Customize Each Stop Along the Way</h3>
+    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum.</p>
 
-    <br><br><br><br>
-
-    <div class="row">
-      <div class="twelve columns">
-        <h3 id="numero3">Get the Most Out of Your App!</h3>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-      </div>
-    </div>
-
-   <br><br><br><br>
-
-   <div class="row">
-     <div class="four columns">
-        <img src="img/orbit-demo/demo2.jpeg">
-      </div>
-      <div class="eight columns">
-        <h3 id="numero2">Customize Each Stop Along the Way</h3>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum.</p>
-      </div>
-    </div>
-
-    <br><br><br><br>
-
-    <div class="row">
-      <div class="six columns">
-        <h4>Make Every Click Count</h4>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum.</p>
-      </div>
-      <div class="six columns">
-        <img src="img/orbit-demo/demo3.jpeg">
-      </div>
-    </div>
-
-    <br><br><br><br>
+    <h4>Make Every Click Count</h4>
+    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis
 
   </div>
 </div>
 
-<ol data-joyride data-options="timer: 3000">
-  <li data-class="so-awesome" data-text="Next" class="custom">
+<ol class="joyride-list" data-joyride data-options="timer: 3000">
+  <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
     <h4>Stop #1</h4>
     <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
   </li>

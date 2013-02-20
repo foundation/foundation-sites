@@ -5,18 +5,18 @@
 
   Foundation.libs.clearing = {
     name : 'clearing',
-    
+
     version : '4.0.0.alpha',
 
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
           '<div class="visible-img" style="display: none"><img src="#">' +
-          '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"></a>' +
-          '<a href="#" class="clearing-main-right"></a></div>'
+          '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"><span></span></a>' +
+          '<a href="#" class="clearing-main-right"><span></span></a></div>'
       },
 
-      // comma delimited list of selectors that, on click, will close clearing, 
+      // comma delimited list of selectors that, on click, will close clearing,
       // add 'div.clearing-blackout, div.visible-img' to close on background click
       close_selectors : 'a.clearing-close',
 
@@ -64,7 +64,7 @@
 
     events : function (el) {
       $(this.scope)
-        .on('click.fndtn.clearing', 'ul[data-clearing] li', 
+        .on('click.fndtn.clearing', 'ul[data-clearing] li',
           function (e, current, target) {
             var self = Foundation.libs.clearing,
                 current = current || $(this),
@@ -83,12 +83,12 @@
           function (e) { this.nav(e, 'next') }.bind(this))
         .on('click.fndtn.clearing', '.clearing-main-left',
           function (e) { this.nav(e, 'prev') }.bind(this))
-        .on('click.fndtn.clearing', this.settings.close_selectors, 
+        .on('click.fndtn.clearing', this.settings.close_selectors,
           function (e) { Foundation.libs.clearing.close(e, this) })
-        .on('keydown.fndtn.clearing', 
+        .on('keydown.fndtn.clearing',
           function (e) { this.keydown(e) }.bind(this));
 
-      $(window).on('resize.fndtn.clearing', 
+      $(window).on('resize.fndtn.clearing',
         function (e) { this.resize() }.bind(this));
 
       this.settings.init = true;
@@ -97,9 +97,9 @@
 
     swipe_events : function () {
       $(this.scope)
-        .on('swipeLeft', '.clearing-container .visible-img', 
+        .on('swipeLeft', '.clearing-container .visible-img',
           function (e) { this.nav(e, 'next') }.bind(this))
-        .on('swipeRight', '.clearing-container .visible-img', 
+        .on('swipeRight', '.clearing-container .visible-img',
           function (e) { this.nav(e, 'prev') }.bind(this));
       return this;
     },
@@ -112,7 +112,7 @@
             grid: '<div class="carousel">' + this.outerHTML(grid[0]) + '</div>',
             viewing: settings.templates.viewing
           },
-          wrapper = '<div class="clearing-assembled"><div>' + data.viewing + 
+          wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
             data.grid + '</div></div>';
 
       return settings.$parent.append(wrapper);
@@ -277,7 +277,7 @@
         if ($.browser.msie) {
           var src = this.attr( 'src' ),
               param = src.match( /\?/ ) ? '&' : '?';
-          
+
           param += 'random=' + (new Date()).getTime();
           this.attr('src', src + param);
         }
@@ -384,7 +384,7 @@
       this.settings.up_count = up_count;
 
       if (this.adjacent(this.settings.prev_index, target_index)) {
-        if ((target_index > up_count) 
+        if ((target_index > up_count)
           && target_index > this.settings.prev_index) {
           response = 'right';
         } else if ((target_index > up_count - 1)

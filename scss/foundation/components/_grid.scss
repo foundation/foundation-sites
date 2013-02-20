@@ -128,14 +128,10 @@ img { -ms-interpolation-mode: bicubic; }
   .row {
     @include grid-row;
 
-    // [class*="large-"],
-    // [class*="small-"],
     .column,
     .columns { @include grid-column($columns:$total-columns); }
 
     &.collapse {
-      // [class*="large-"],
-      // [class*="small-"],
       .column,
       .columns { @include grid-column($collapse:true); }
     }
@@ -147,7 +143,8 @@ img { -ms-interpolation-mode: bicubic; }
 
   @media only screen {
 
-    .row [class*="small-"] { @include grid-column($columns:false, $float:left); }
+    .row .column,
+    .row .columns { @include grid-column($columns:false, $float:left); }
 
     @for $i from 1 through $total-columns {
       .row .small#{-$i} { @include grid-column($columns:$i,$collapse:null); }
@@ -162,25 +159,15 @@ img { -ms-interpolation-mode: bicubic; }
       .small-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
     }
 
-    // [class*="small-"]:last-child,
-    .column:last-child,
-    .columns:last-child { float: right; }
+    [class*="column"] + [class*="column"]:last-of-type { float: $default-opposite; }
+    [class*="column"] + [class*="column"].end { float: $default-float; }
 
-    // [class*="small-"].end,
-    .column.end,
-    .columns.end { float: left; }
-
-    // [class*="small-"].small-centered,
     .column.small-centered,
     .columns.small-centered { @include grid-column($center:true, $collapse:null, $float:none); }
   }
 
   /* Styles for screens that are atleast 768px; */
   @media #{$small} {
-
-    // .row [class*="large-"],
-    .row .column,
-    .row .columns { @include grid-column($columns:false, $float:left); }
 
     @for $i from 1 through $total-columns {
       .row .large#{-$i} { @include grid-column($columns:$i,$collapse:null); }
@@ -195,10 +182,6 @@ img { -ms-interpolation-mode: bicubic; }
       .large-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
     }
 
-    // [class*="large-"]:last-child { float: right; }
-    // [class*="large-"].end { float: left; }
-
-    [class*="large-"].large-centered,
     .column.large-centered,
     .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
 

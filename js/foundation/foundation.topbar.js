@@ -1,7 +1,7 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
 /* TODO:
-    - Height calculation is currently based on the number of LIs, 
+    - Height calculation is currently based on the number of LIs,
       needs to be based on visible height
 */
 
@@ -51,7 +51,7 @@
       } else {
         // fire method
         return this[method].call(this, options);
-      } 
+      }
     },
 
     events : function () {
@@ -134,10 +134,8 @@
       this.settings.$section.find('.has-dropdown>a').each(function () {
         var $link = $(this),
             $dropdown = $link.siblings('.dropdown'),
-            $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
-
+            $titleLi = $('<li class="title back js-generated"><h5><a href="#">&laquo; Back</a></h5></li>');
         // Copy link to subnav
-        $titleLi.find('h5>a').html($link.html());
         $dropdown.prepend($titleLi);
       });
 
@@ -147,7 +145,7 @@
       // check for sticky
       this.sticky();
     },
-      
+
     largestUL : function () {
       var uls = this.settings.$topbar.find('section ul ul'),
           largest = uls.first(),
