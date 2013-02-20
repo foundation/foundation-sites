@@ -12,6 +12,7 @@
   'use strict';
   
   var settings = {
+      openTooltipDelay : 0,
       bodyHeight : 0,
       selector : '.has-tip',
       additionalInheritableClasses : [],
@@ -45,8 +46,10 @@
               var $this = $(this);
 
               if (e.type === 'mouseenter') {
+		$this.addClass("tipOver");
                 methods.showOrCreateTip($this);
               } else if (e.type === 'mouseleave') {
+                $this.removeClass("tipOver");
                 methods.hide($this);
               }
             });
@@ -56,14 +59,27 @@
 
         });
       },
-      showOrCreateTip : function ($target, content) {
-        var $tip = methods.getTip($target);
+      delayedShowOrCreateTip : function ($target, content) {
+        if($target.hasClass("tipOver")){
+          var $tip = methods.getTip($target);
 
-        if ($tip && $tip.length > 0) {
-          methods.show($target);
-        } else {
+          if ($tip && $tip.length > 0) {
+            methods.show($target);
+          } else {
+            methods.create($target, content);
+            methods.show($target);
+          }
+        }
+      },
+      showOrCreateTip : function ($target, content) {
+        var that = this;
+        var $tip = methods.getTip($target);
+        if (false == ($tip && $tip.length > 0)) {
           methods.create($target, content);
         }
+        window.setTimeout(function(){
+          that.delayedShowOrCreateTip($target, content);
+        },settings.openTooltipDelay);
       },
       getTip : function ($target) {
         var selector = methods.selector($target),
@@ -94,7 +110,6 @@
           $tip.append('<span class="tap-to-close">tap to close </span>');
         }
         $target.removeAttr('title');
-        methods.show($target);
       },
       reposition : function (target, tip, classes) {
         var width, nub, nubHeight, nubWidth, column, objPos;
