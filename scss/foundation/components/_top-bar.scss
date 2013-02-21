@@ -1,6 +1,6 @@
 // Top Bar Settings
 
-$topbar-bg: #222 !default;
+$topbar-bg: #111 !default;
 $topbar-height: 45px !default;
 $topbar-height-mobile: 45px !default;
 $topbar-margin-bottom: emCalc(30px) !default;
@@ -15,35 +15,307 @@ $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.5 !default;
 $topbar-search-width: 200px !default;
+$topbar-input-height: 2.45em !default;
+$topbar-menu-link-transform: uppercase !default;
+$topbar-menu-link-font-size: emCalc(13px) !default;
+$topbar-menu-link-weight: bold !default;
+$topbar-menu-link-color: #fff !default;
+$topbar-menu-icon-color: #fff !default;
+$topbar-menu-link-color-toggled: #888 !default;
+$topbar-menu-icon-color-toggled: #888 !default;
+$topbar-transition-speed: 300ms !default;
+
 $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
 
 
-/*
-  Notes:
-    - <nav class="top-bar"> can have .fixed added to make it stick to the top of viewport. Can add .contain-to-grid to top-bar to make it full width but content on grid.
-    - <li class="name"> creates a branding area that can be linked to homepage
-      - Can include text, image or both inside this <li>.
-    - <li class="divider"> creates a divider between nav items, add margins for space
-    - <li class="search"> Needs to hold a <form> which can use .row.collapse and pre/postfix buttons or default type="search"
-*/
+@media only screen {
 
+  // Wrapped around .top-bar to contain to grid width
+  .contain-to-grid {
+    width: 100%;
+    background: $topbar-bg;
+  }
 
-// Element that controls breakpoint, no need to change this ever
-.top-bar-js-breakpoint { width: $topbar-breakpoint !important; visibility: hidden; }
+  // Wrapped around .top-bar to make it fixed at the top
+  .fixed {
+    width: 100%;
+    #{$default-float}: 0;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+  }
 
-// Wrapped around .top-bar to contain to grid width
-.contain-to-grid {
-  width: 100%;
-  background: $topbar-bg;
+  .top-bar {
+    overflow: hidden;
+    height: $topbar-height;
+    line-height: $topbar-height;
+    position: relative;
+
+    // Topbar Global list Styles
+    ul {
+      margin-bottom: 0;
+      list-style: none;
+    }
+
+    .row { max-width: none; }
+
+    form,
+    input { margin-bottom: 0; }
+
+    input { height: $topbar-input-height; }
+
+    // Title Area
+    .title-area { position: relative; }
+
+    .name {
+      height: $topbar-height-mobile;
+      margin: 0;
+      font-size: $em-base;
+
+      h1 {
+        line-height: $topbar-height;
+        font-size: $topbar-title-font-size;
+        a {
+          font-weight: $topbar-title-weight;
+          color: $topbar-link-color;
+          width: 50%;
+          display: block;
+          padding: 0 $topbar-height / 3;
+        }
+      }
+    }
+
+    // Menu toggle button on small devices
+    .toggle-topbar {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      a {
+        color: $topbar-link-color;
+        text-transform: $topbar-menu-link-transform;
+        font-size: $topbar-menu-link-font-size;
+        font-weight: $topbar-menu-link-weight;
+        position: relative;
+        display: block;
+        padding: 0 $topbar-height / 3;
+        height: $topbar-height;
+        line-height: $topbar-height;
+      }
+
+      // Adding the class "menu-icon" will add the 3-line icon people love and adore.
+      &.menu-icon {
+        right: $topbar-height / 3;
+        top: 50%;
+        margin-top: -17px;
+        padding-left: 40px;
+
+        a {
+          text-indent: -46px;
+          width: 34px;
+          height: 34px;
+          line-height: 34px;
+          padding: 0;
+          color: $topbar-menu-link-color;
+
+          span {
+            position: absolute;
+            right: 0;
+            display: block;
+            width: 16px;
+            height: 0;
+            // Shh, don't tell, but box-shadows create the menu icon :)
+            -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color,
+                                0 16px 0 1px $topbar-menu-icon-color,
+                                0 22px 0 1px $topbar-menu-icon-color;
+
+            box-shadow:         0 10px 0 1px $topbar-menu-icon-color,
+                                0 16px 0 1px $topbar-menu-icon-color,
+                                0 22px 0 1px $topbar-menu-icon-color;
+          }
+        }
+      }
+    }
+
+    // Change things up when the top-bar is expanded
+    &.expanded {
+      height: 100%;
+
+      .toggle-topbar {
+        a { color: $topbar-menu-link-color-toggled;
+          span {
+            // Shh, don't tell, but box-shadows create the menu icon :)
+            -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
+                                0 16px 0 1px $topbar-menu-icon-color-toggled,
+                                0 22px 0 1px $topbar-menu-icon-color-toggled;
+
+            box-shadow:         0 10px 0 1px $topbar-menu-icon-color-toggled,
+                                0 16px 0 1px $topbar-menu-icon-color-toggled,
+                                0 22px 0 1px $topbar-menu-icon-color-toggled;
+          }
+        }
+      }
+    }
+
+  }
+
+  // Right and Left Navigation that stacked by default
+  .top-bar-section {
+    #{$default-float}: 0;
+    position: relative;
+    width: auto;
+    @include single-transition($default-float, $topbar-transition-speed);
+
+    ul {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: $topbar-dropdown-bg;
+      font-size: $em-base;
+      margin: 0;
+    }
+
+    .divider {
+      border-bottom: solid 1px lighten($topbar-dropdown-bg, 10%);
+      border-top: solid 1px darken($topbar-dropdown-bg, 10%);
+      clear: both;
+      height: 1px;
+      width: 100%;
+    }
+
+    li {
+      a:not(.button) {
+        display: block;
+        width: 100%;
+        padding: 12px 0 12px $topbar-height / 3;
+        color: #fff;
+        font-size: emCalc(13px);
+        font-weight: bold;
+        background: $topbar-dropdown-bg;
+
+        &:hover { background: darken($topbar-dropdown-bg, 3%); }
+      }
+
+      // Apply the active link color when it has that class
+      &.active a { background: darken($topbar-dropdown-bg, 3%); }
+    }
+
+    // Add some extra padding for list items contains buttons
+    .has-form { padding: $topbar-height / 3; }
+
+    // Styling for list items that have a dropdown within them.
+    .has-dropdown {
+      position: relative;
+
+      & > a {
+        &:after {
+          @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
+          margin-#{$default-opposite}: $topbar-height / 3;
+          margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
+          position: absolute;
+          top: 50%;
+          right: 0;
+        }
+      }
+
+      &.moved { position: static;
+        .dropdown {
+          visibility: visible;
+        }
+      }
+    }
+
+    // Styling elements inside of dropdowns
+    .dropdown {
+      position: absolute;
+      #{$default-float}: 100%;
+      top: 0;
+      visibility: hidden;
+      z-index: 0;
+
+      li { width: 100%;
+        a {
+          font-weight: normal;
+          padding: 8px $topbar-height / 3;
+        }
+      }
+
+      label {
+        padding: 8px $topbar-height / 3 2px;
+        margin-bottom: 0;
+        text-transform: uppercase;
+        color: #555;
+        font-weight: bold;
+        font-size: emCalc(12px);
+      }
+    }
+  }
+
+  // Element that controls breakpoint, no need to change this ever
+  .top-bar-js-breakpoint {
+    width: $topbar-breakpoint !important;
+    visibility: hidden;
+  }
+  .js-generated { display: block; }
 }
 
-// Wrapped around .top-bar to make it fixed at the top
-.fixed {
-  width: 100%;
-  #{$default-float}: 0;
-  position: fixed;
-  top: 0;
-  z-index: 99;
+// Top Bar styles intended for screen sizes above the breakpoint.
+@media #{$small} {
+  .top-bar { overflow: visible;
+    .toggle-topbar { display: none; }
+
+    .title-area { float: left; }
+    .name h1 a { width: auto; }
+  }
+
+  .top-bar-section {
+    @include single-transition(none,0,0);
+
+    ul {
+      width: auto;
+      height: auto;
+      display: inline;
+
+      li {
+        float: left;
+        .js-generated { display: none; }
+      }
+    }
+
+    li {
+      a:not(.button) {
+        padding: 0 $topbar-height / 3;
+        line-height: $topbar-height;
+        background: $topbar-bg;
+      }
+    }
+
+    .dropdown {
+      // display: inline;
+      visibility: visible;
+      left: 0;
+
+      li {
+        min-width: 100%;
+
+        a { line-height: 1; }
+
+        // Second Level Dropdowns
+        .dropdown { display: none; }
+      }
+    }
+
+    .divider {
+      border-bottom: none;
+      border-top: none;
+      border-right: solid 1px lighten($topbar-bg, 10%);
+      border-left: solid 1px darken($topbar-bg, 10%);
+      clear: none;
+      height: $topbar-height;
+      width: 0px;
+    }
+  }
+
 }
 
 // The topbar itself
@@ -327,194 +599,12 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 // @media only screen and (max-width: $topbar-breakpoint) {
 
   // .top-bar { margin-bottom: 0; overflow: hidden; height: $topbar-height-mobile; background: $topbar-dropdown-bg;
-.js-generated { display: block; }
 
   //   /* Override contain to grid stuff for breakpoint */
   //   .contain-to-grid & { width: auto; }
 
   //   /* Setting up the sliding area */
-.top-bar {
-  overflow: hidden;
-  height: $topbar-height;
 
-  // Topbar Global list Styles
-  ul {
-    margin-bottom: 0;
-    list-style: none;
-  }
-
-  .row { max-width: none; }
-
-  form,
-  input { margin-bottom: 0; }
-
-  input { height: 2.45em; }
-
-  // Title Area
-  .title-area { position: relative; }
-
-  .name {
-    height: $topbar-height-mobile;
-    margin: 0;
-    font-size: $em-base;
-
-    h1 {
-      line-height: $topbar-height;
-      font-size: $topbar-title-font-size;
-      a {
-        font-weight: $topbar-title-weight;
-        color: $topbar-link-color;
-        width: 50%;
-        display: block;
-        padding: 0 ($topbar-height / 3);
-      }
-    }
-  }
-
-  // Menu toggle button on small devices
-  .toggle-topbar {
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    a {
-      color: $topbar-link-color;
-      text-transform: uppercase;
-      font-size: emCalc(13px);
-      font-weight: bold;
-      position: relative;
-      display: block;
-      padding: 0 $topbar-height / 3;
-      height: $topbar-height;
-      line-height: $topbar-height;
-    }
-
-    // Adding the class "menu-icon" will add the 3-line icon people love and adore.
-    &.menu-icon {
-      right: $topbar-height / 3;
-      top: 50%;
-      margin-top: -17px;
-      padding-left: 40px;
-
-      a {
-        text-indent: -46px;
-        width: 34px;
-        height: 34px;
-        line-height: 34px;
-        padding: 0;
-
-        span {
-          position: absolute;
-          right: 0;
-          display: block;
-          width: 16px;
-          height: 0;
-          // Shh, don't tell, but box-shadows create the menu icon :)
-          -webkit-box-shadow: 0 10px 0 1px #fff,
-                              0 16px 0 1px #fff,
-                              0 22px 0 1px #fff;
-
-          box-shadow:         0 10px 0 1px #fff,
-                              0 16px 0 1px #fff,
-                              0 22px 0 1px #fff;
-        }
-      }
-    }
-  }
-
-  // Change things up when the top-bar is expanded
-  &.expanded {
-    height: 100%;
-
-    .toggle-topbar {
-      a { color: #888;
-        span {
-          // Shh, don't tell, but box-shadows create the menu icon :)
-          -webkit-box-shadow: 0 10px 0 1px #888,
-                              0 16px 0 1px #888,
-                              0 22px 0 1px #888;
-
-          box-shadow:         0 10px 0 1px #888,
-                              0 16px 0 1px #888,
-                              0 22px 0 1px #888;
-        }
-      }
-    }
-  }
-
-}
-
-// Right and Left Navigation that stacked by default
-.top-bar-section {
-  #{$default-float}: 0;
-  position: relative;
-  width: auto;
-  @include single-transition($default-float, 300ms);
-
-  ul {
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: $topbar-dropdown-bg;
-    font-size: $em-base;
-    margin: 0;
-  }
-
-  .divider {
-    border-bottom: solid 1px lighten($topbar-dropdown-bg, 10%);
-    border-top: solid 1px darken($topbar-dropdown-bg, 15%);
-    clear: both;
-    height: 1px;
-    width: 100%;
-  }
-
-  li a:not(.button) {
-    display: block;
-    width: 100%;
-    padding: 12px 0 12px $topbar-height / 3;
-    color: #fff;
-    font-size: emCalc(13px);
-    font-weight: bold;
-    background: $topbar-dropdown-bg;
-
-    &:hover {
-      background: darken($topbar-dropdown-bg, 2%);
-    }
-  }
-
-  // Add some extra padding for list items contains buttons
-  .has-button { padding: $topbar-height / 3; }
-
-
-  .has-dropdown {
-    position: relative;
-
-    a {
-      &:after {
-        @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
-        margin-#{$default-opposite}: $topbar-height / 3;
-        margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
-        position: absolute;
-        top: 50%;
-        right: 0;
-      }
-    }
-
-    .dropdown {
-      position: absolute;
-      #{$default-float}: 100%;
-      top: 0;
-
-      li {
-        width: 100%;
-      }
-    }
-
-    &.moved { position: static; }
-  }
-
-
-}
 
   //   ul { width: 100%; height: 100%; margin-bottom: 0; display: block;
   //     &>li { float: none;

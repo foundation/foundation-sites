@@ -58,10 +58,10 @@ $input-error-message-font-color-alt: #333 !default;
 
 // We use this mixin to give us form styles for rows inside of forms
 @mixin form-row-base {
-  .row { margin: 0 -($form-spacing / 2);
+  .row { margin: 0 -$form-spacing / 2;
 
     .column,
-    .columns { padding: 0 ($form-spacing / 2); }
+    .columns { padding: 0 $form-spacing / 2; }
 
     // Use this to collapse the margins of a form row
     &.collapse { margin: 0;
@@ -71,6 +71,8 @@ $input-error-message-font-color-alt: #333 !default;
 
     }
   }
+  input.column,
+  input.columns { padding-left: $form-spacing / 2; }
 }
 
 // We use this mixin to give all basic form elements their style
@@ -87,6 +89,7 @@ $input-error-message-font-color-alt: #333 !default;
   padding: $form-spacing / 2;
   height: (emCalc(14px) + ($form-spacing * 1.5));
   width: 100%;
+  @include box-sizing(border-box);
 
   // Basic focus styles
   &:focus {
