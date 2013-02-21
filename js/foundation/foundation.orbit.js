@@ -153,9 +153,13 @@
         data.$slides_container.css('marginLeft', '-' + (data.$slides.length - 1)*100 + '%');
         data.activeIndex = data.$slides.length - 2;
       }
+      data.$container.addClass('orbit-transitioning');
       data.$slides_container.animate({
         'marginLeft' : '-' + (data.activeIndex*100) + '%'
-      }, 'linear', data.self.settings.slide_delay, callback);        
+      }, 'linear', data.self.settings.slide_delay, function() {
+        data.$container.removeClass('orbit-transitioning');
+        callback();
+      });        
 
     }
   }
