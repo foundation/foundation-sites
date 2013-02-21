@@ -6,27 +6,38 @@
         time = time_in_ms,
         timer,
         start,
+        stopped = false,
         $el = this;
 
     this.stop = function() {
       clearInterval(timer);
+      stopped = true;
+      $el.trigger('timer:stopped');
       time = time - (new Date().getTime() - start);
     };
 
     this.start = function() {
       clearInterval(timer);
-      start = new Date().getTime();
+      start = new Date().getTime();      
+      if (stopped) {
+        $el.trigger('timer:resumed');
+      } else {
+        $el.trigger('timer:started');
+      }
       timer = setInterval(function() {
         var now = time - (new Date().getTime() - start);
         if (now <= 0) {
           clearInterval(timer);
+          stopped = false;
           $el.trigger('timer:complete');
           $el.unbind('timer:progress');
           $el.unbind('timer:complete');
           $el.unbind('timer:start');
           $el.unbind('timer:stop');
         } else {
-          $el.trigger('timer:progress', [(time-now)/time]);
+          var progress_percent = (time-now)/time;
+          progress_percent = Math.ceil(progress_percent*100) + '%';
+          $el.trigger('timer:progress', [progress_percent])
         }
       }, INTERVAL_TIME);
     };
@@ -44,7 +55,7 @@
 
     settings: {
       timer: 1500,
-      slide_delay: 500
+      slide_delay: 1500
     },
 
     init: function(scope, method, options) {
@@ -87,6 +98,9 @@
         data.$container.trigger('timer:stop');
         data.self.goto(data, 'next');
       });
+      data.$container.on('timer:started', function(e) {
+        data.$timer.css('width', '0%');
+      });
     },
 
     _init_dimensions: function(data) {
@@ -106,12 +120,16 @@
         });
       });
       data.$container.on('timer:progress', function(e) {
-        data.$timer.css('width', e.data[0] * 100 + '%');
+        data.$timer.css('width', e.data[0]);
       });
       data.$container.trigger('timer:start');
     },
 
     goto: function(data, index_or_direction, callback) {
+      if (data.$container.hasClass("orbit-transitioning")) {
+        console.info('is transitioning');
+        return false;
+      }
       if (index_or_direction === 'prev') {
         if (data.activeIndex === 0) {
           data.activeIndex = data.$slides.length - 1;
