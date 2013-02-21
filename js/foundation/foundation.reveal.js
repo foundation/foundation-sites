@@ -14,6 +14,8 @@
     version : '4.0.0.alpha',
 
     settings : {
+      locked: false,
+      modal_queued: false,
       animation: 'fadeAndPop',
       animationSpeed: 300,
       closeOnBackgroundClick: true,
@@ -52,16 +54,18 @@
           self.open.call(self, 
             $('#' + modalLocation), self.data_options($(this)));
         })
-        .on('reveal:open.reveal', '.reveal-modal', 
+        .on('reveal:open.reveal', '.reveal-modal',
           this.open_animation.bind(this))
-        .on('reveal:open.reveal', '.reveal-modal', 
+        .on('reveal:open.reveal', '.reveal-modal',
           this.open_videos.bind(this))
-        .on('reveal:close.reveal', '.reveal-modal', 
+        .on('reveal:close.reveal', '.reveal-modal',
           this.close_animation.bind(this))
-        .on('reveal:closed.reveal', '.reveal-modal', 
+        .on('reveal:closed.reveal', '.reveal-modal',
           this.close_videos.bind(this))
-        .on('reveal:opened.reveal reveal:closed.reveal', '.reveal-modal', 
+        .on('reveal:opened.reveal reveal:closed.reveal', '.reveal-modal',
           this.unlock.bind(this))
+
+        // bind callbacks
         .on('reveal:open.reveal', '.reveal-modal', 
           this.settings.open)
         .on('reveal:opened.reveal', '.reveal-modal', 
@@ -70,7 +74,8 @@
           this.settings.close)
         .on('reveal:closed.reveal', '.reveal-modal', 
           this.settings.closed)
-        .on( 'keyup.reveal', function (e) {
+
+        .on('keyup.reveal', function (e) {
           if (e.which === 27) { // on escape
             self.active.modal.trigger('reveal:close');
           }
@@ -84,10 +89,8 @@
 
       return {
         modal : modal,
-        modal_queued : false,
         top_measure : top_measure,
         top_offset : modal.height() + top_measure,
-        locked : false,
         bg : $('.reveal-modal-bg'),
         css : {
           open : {
@@ -109,7 +112,7 @@
     open : function (modal, options) {
       $.extend(true, this.settings, options);
 
-      if (this.active && !this.active.locked) {
+      if (this.active && !this.settings.locked) {
         this.lock();
         this.close_modals();
       }
@@ -139,15 +142,15 @@
         this.active.bg = $('<div />', {'class': 'reveal-modal-bg'})
           .insertAfter(this.active.modal);
 
-        this.active.bg.show().fadeTo('fast', 0.8);
+        this.active.bg.fadeIn(this.settings.animationSpeed);
       }
     },
 
     close_modals : function () {
       var open_modals = $('.reveal-modal.open');
 
-      if (open_modals.length === 1) {
-        this.active.modal_queued = true;
+      if (open_modals.length > 0) {
+        this.settings.modal_queued = true;
         open_modals.trigger('reveal:close');
       }
 
@@ -155,40 +158,40 @@
     },
 
     open_animation : function () {
-      if (!this.active.locked) {
-        this.active.modal.addClass('open');
+      this.settings.modal_queued = true;
+      this.active.modal.addClass('open');
 
-        this.active.css.open.top = $(this.scope).scrollTop() - this.active.top_offset;
-        this.active.css.open.opacity = 0;
-        this.active.modal.css(this.active.css.open);
+      this.active.css.open.top = $(this.scope).scrollTop() - this.active.top_offset;
+      this.active.css.open.opacity = 0;
+      this.active.modal.css(this.active.css.open);
 
-        this.active.animate_obj = {'opacity': 1}
+      this.active.animate_obj = {'opacity': 1}
 
-        if (this.settings.animation === 'fadeAndPop') {
-          this.active.animate_obj.top = $(this.scope).scrollTop() + this.active.top_measure;
-        }
-
-        if (this.settings.animation === 'none') {
-          this.active.modal.css(this.active.css.open)
-          this.active.bg.css('display', 'block');
-          this.active.modal.trigger('reveal:opened');
-        } else {
-          this.animate_in();
-        }
+      if (this.settings.animation === 'fadeAndPop') {
+        this.active.animate_obj.top = $(this.scope).scrollTop() + this.active.top_measure;
       }
 
+      if (this.settings.animation === 'none') {
+        this.active.modal.css(this.active.css.open)
+        this.active.bg.css('display', 'block');
+        this.active.modal.trigger('reveal:opened');
+      } else {
+        this.animate_in();
+      }
     },
 
     animate_in : function () {
-      this.active.bg.fadeIn(this.settings.animationSpeed / 2);
-        this.delay(function () {
-          this.active.modal
-            .animate(this.active.animate_obj,
-            this.settings.animationSpeed,
-            function () {
-              this.active.modal.trigger('reveal:opened');
-            });
-        }.bind(this), this.settings.animationSpeed / 2);
+      if (!this.settings.modal_queued) {
+        this.active.bg.fadeIn(this.settings.animationSpeed / 2);
+      }
+      this.delay(function () {
+        this.active.modal
+          .animate(this.active.animate_obj,
+          this.settings.animationSpeed,
+          function () {
+            this.active.modal.trigger('reveal:opened');
+          });
+      }.bind(this), this.settings.animationSpeed / 2);
     },
 
     open_videos : function () {
@@ -208,13 +211,13 @@
       };
 
       if (this.settings.animation === 'fadeAndPop') {
-        this.active.animate_obj.top = $(this.scope).scrollTop() - this.active.top_offset + 'px';
+        this.active.animate_obj.top = $(window).scrollTop() - this.active.top_offset + 'px';
       }
 
       if (this.settings.animation === 'none') {
         this.active.modal.css(this.active.css.close);
 
-        if (!this.active.modal_queued) {
+        if (!this.settings.modal_queued) {
           this.active.bg.css('display', 'none');
         }
 
@@ -222,8 +225,6 @@
       } else { 
         this.animate_out();
       }
-
-      this.active.modal_queued = false;
     },
 
     animate_out : function () {
@@ -236,7 +237,7 @@
     },
 
     hide_and_trigger_close : function () {
-      if (!this.active.modal_queued) {
+      if (!this.settings.modal_queued) {
         this.delay(function () {
           this.active.bg
             .fadeOut(this.settings.animationSpeed, function () {
@@ -260,11 +261,12 @@
     },
 
     unlock : function () {
-      return this.active.locked = false;
+      this.settings.modal_queued = false;
+      return this.settings.locked = false;
     },
 
     lock : function () {
-      return this.active.locked = true;
+      return this.settings.locked = true;
     },
 
     off : function () {
