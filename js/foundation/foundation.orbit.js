@@ -57,6 +57,8 @@
       data.$container = $(slider).wrap('<div class="orbit-container"></div>').parent();
       data.$container.append('<a data-orbit-prev href="#">Prev</a>');
       data.$container.append('<a data-orbit-next href="#">Next</a>');
+      data.$container.append('<div class="orbit-timer"><span></span></div>');
+      data.$timer = data.$container.find('.orbit-timer > *');
       data.$slides_container = $(slider).addClass('orbit-slides');
       data.$slides = data.$slides_container.children();
       data.$slides_container.append(data.$slides.first().clone());
@@ -67,7 +69,6 @@
       data.self = this;
       this._init_events(data);
       this._init_dimensions(data);
-
       this._start_timer(data);
     },
 
@@ -99,9 +100,13 @@
       data.$container.timer(data.self.settings.timer);
       data.$container.on('timer:complete', function() {
         data.$container.unbind('timer:complete');
+        data.$timer.css('width', '100%');
         data.self.goto(data, 'next', function() {
           data.self._start_timer(data);
         });
+      });
+      data.$container.on('timer:progress', function(e) {
+        data.$timer.css('width', e.data[0] * 100 + '%');
       });
       data.$container.trigger('timer:start');
     },
