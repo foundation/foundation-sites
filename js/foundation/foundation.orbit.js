@@ -30,10 +30,10 @@
           clearInterval(timer);
           stopped = false;
           $el.trigger('timer:complete');
-          $el.unbind('timer:progress');
-          $el.unbind('timer:complete');
-          $el.unbind('timer:start');
-          $el.unbind('timer:stop');
+          $el.off('timer:progress');
+          $el.off('timer:complete');
+          $el.off('timer:start');
+          $el.off('timer:stop');
         } else {
           var progress_percent = (time-now)/time;
           progress_percent = Math.ceil(progress_percent*100) + '%';
@@ -42,8 +42,8 @@
       }, INTERVAL_TIME);
     };
 
-    $el.bind('timer:start', this.start);
-    $el.bind('timer:stop', this.stop);
+    $el.on('timer:start', this.start);
+    $el.on('timer:stop', this.stop);
 
     return this;
   };
@@ -114,7 +114,7 @@
     _start_timer: function(data) {
       data.$container.timer(data.self.settings.timer);
       data.$container.on('timer:complete', function() {
-        data.$container.unbind('timer:complete');
+        data.$container.off('timer:complete');
         data.$timer.css('width', '100%');
         data.self.goto(data, 'next', function() {
           data.self._start_timer(data);
