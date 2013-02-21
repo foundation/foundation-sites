@@ -36,6 +36,16 @@ $orbit-slide-number-padding: emCalc(5px) !default;
       }
     }
   }
+  .orbit-timer {
+    height: 20px;
+    width: 100%;
+    &>* {
+      height: 100%;
+      background-color: #ccc;
+      display: block;
+      width: 0%;
+    }
+  }
 }
 
 /* CSS for jQuery Orbit Plugin 1.4.0
