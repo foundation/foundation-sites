@@ -6,33 +6,44 @@
         time = time_in_ms,
         timer,
         start,
+        stopped = false,
         $el = this;
 
     this.stop = function() {
       clearInterval(timer);
+      stopped = true;
+      $el.trigger('timer:stopped');
       time = time - (new Date().getTime() - start);
     };
 
     this.start = function() {
       clearInterval(timer);
-      start = new Date().getTime();
+      start = new Date().getTime();      
+      if (stopped) {
+        $el.trigger('timer:resumed');
+      } else {
+        $el.trigger('timer:started');
+      }
       timer = setInterval(function() {
         var now = time - (new Date().getTime() - start);
         if (now <= 0) {
           clearInterval(timer);
+          stopped = false;
           $el.trigger('timer:complete');
-          $el.unbind('timer:progress');
-          $el.unbind('timer:complete');
-          $el.unbind('timer:start');
-          $el.unbind('timer:stop');
+          $el.off('timer:progress');
+          $el.off('timer:complete');
+          $el.off('timer:start');
+          $el.off('timer:stop');
         } else {
-          $el.trigger('timer:progress', [(time-now)/time]);
+          var progress_percent = (time-now)/time;
+          progress_percent = Math.ceil(progress_percent*100) + '%';
+          $el.trigger('timer:progress', [progress_percent])
         }
       }, INTERVAL_TIME);
     };
 
-    $el.bind('timer:start', this.start);
-    $el.bind('timer:stop', this.stop);
+    $el.on('timer:start', this.start);
+    $el.on('timer:stop', this.stop);
 
     return this;
   };
@@ -44,7 +55,7 @@
 
     settings: {
       timer: 1500,
-      slide_delay: 500
+      slide_delay: 1500
     },
 
     init: function(scope, method, options) {
@@ -58,6 +69,7 @@
       data.$container.append('<a data-orbit-prev href="#">Prev</a>');
       data.$container.append('<a data-orbit-next href="#">Next</a>');
       data.$container.append('<div class="orbit-timer"><span></span></div>');
+      data.$container.find('[data-orbit-caption]').addClass('orbit-caption');
       data.$timer = data.$container.find('.orbit-timer > *');
       data.$slides_container = $(slider).addClass('orbit-slides');
       data.$slides = data.$slides_container.children();
@@ -87,6 +99,9 @@
         data.$container.trigger('timer:stop');
         data.self.goto(data, 'next');
       });
+      data.$container.on('timer:started', function(e) {
+        data.$timer.css('width', '0%');
+      });
     },
 
     _init_dimensions: function(data) {
@@ -99,19 +114,23 @@
     _start_timer: function(data) {
       data.$container.timer(data.self.settings.timer);
       data.$container.on('timer:complete', function() {
-        data.$container.unbind('timer:complete');
+        data.$container.off('timer:complete');
         data.$timer.css('width', '100%');
         data.self.goto(data, 'next', function() {
           data.self._start_timer(data);
         });
       });
       data.$container.on('timer:progress', function(e) {
-        data.$timer.css('width', e.data[0] * 100 + '%');
+        data.$timer.css('width', e.data[0]);
       });
       data.$container.trigger('timer:start');
     },
 
     goto: function(data, index_or_direction, callback) {
+      if (data.$container.hasClass("orbit-transitioning")) {
+        console.info('is transitioning');
+        return false;
+      }
       if (index_or_direction === 'prev') {
         if (data.activeIndex === 0) {
           data.activeIndex = data.$slides.length - 1;
@@ -134,9 +153,13 @@
         data.$slides_container.css('marginLeft', '-' + (data.$slides.length - 1)*100 + '%');
         data.activeIndex = data.$slides.length - 2;
       }
+      data.$container.addClass('orbit-transitioning');
       data.$slides_container.animate({
         'marginLeft' : '-' + (data.activeIndex*100) + '%'
-      }, 'linear', data.self.settings.slide_delay, callback);        
+      }, 'linear', data.self.settings.slide_delay, function() {
+        data.$container.removeClass('orbit-transitioning');
+        callback();
+      });        
 
     }
   }
