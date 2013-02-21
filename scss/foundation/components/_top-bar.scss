@@ -1,8 +1,9 @@
-// Top Bar Settings
+//
+// Top Bar Variables
+//
 
 $topbar-bg: #111 !default;
 $topbar-height: 45px !default;
-$topbar-height-mobile: 45px !default;
 $topbar-margin-bottom: emCalc(30px) !default;
 $topbar-title-weight: bold !default;
 $topbar-title-font-size: emCalc(17px) !default;
@@ -14,7 +15,6 @@ $topbar-dropdown-link-color: #fff !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.5 !default;
-$topbar-search-width: 200px !default;
 $topbar-input-height: 2.45em !default;
 $topbar-menu-link-transform: uppercase !default;
 $topbar-menu-link-font-size: emCalc(13px) !default;
@@ -24,7 +24,6 @@ $topbar-menu-icon-color: #fff !default;
 $topbar-menu-link-color-toggled: #888 !default;
 $topbar-menu-icon-color-toggled: #888 !default;
 $topbar-transition-speed: 300ms !default;
-
 $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
 
 
@@ -246,7 +245,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
         text-transform: uppercase;
         color: #555;
         font-weight: bold;
-        font-size: emCalc(12px);
+        font-size: emCalc(10px);
       }
     }
   }
@@ -259,6 +258,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
   .js-generated { display: block; }
 }
 
+
 // Top Bar styles intended for screen sizes above the breakpoint.
 @media #{$small} {
   .top-bar { overflow: visible;
@@ -266,6 +266,15 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
     .title-area { float: left; }
     .name h1 a { width: auto; }
+
+    input,
+    .button {
+      line-height: 2em;
+      height: 2em;
+      padding: 0;
+      position: relative;
+      top: 8px;
+    }
   }
 
   .top-bar-section {
@@ -290,22 +299,61 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
       }
     }
 
-    .dropdown {
-      // display: inline;
-      visibility: visible;
-      left: 0;
+    .has-dropdown {
+      & > a {
+        padding-#{$default-opposite}: $topbar-dropdown-toggle-size * 7 !important;
 
-      li {
-        min-width: 100%;
+        &:after {
+          @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
+          margin-top: -($topbar-dropdown-toggle-size / 2);
+        }
+      }
+      &:hover,
+      &:active {
+        & > .dropdown {
+          visibility: visible;
+        }
+      }
 
-        a { line-height: 1; }
-
-        // Second Level Dropdowns
-        .dropdown { display: none; }
+      .dropdown li.has-dropdown {
+        & > a {
+          &:after {
+            border: none;
+            content: "\00bb";
+            margin-top: -7px;
+            right: 5px;
+          }
+        }
       }
     }
 
-    .divider {
+    .dropdown {
+      left: 0;
+      top: auto;
+      background: transparent;
+
+      li {
+        a {
+          line-height: 1;
+          white-space: nowrap;
+          padding: 7px $topbar-height / 3;
+          background: lighten($topbar-bg, 5%);
+        }
+
+        label {
+          white-space: nowrap;
+          background: lighten($topbar-bg, 5%);
+        }
+
+        // Second Level Dropdowns
+        .dropdown {
+          left: 100%;
+          top: 0;
+        }
+      }
+    }
+
+    & > ul > .divider {
       border-bottom: none;
       border-top: none;
       border-right: solid 1px lighten($topbar-bg, 10%);
@@ -314,392 +362,23 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
       height: $topbar-height;
       width: 0px;
     }
+
+    .has-form {
+      background: $topbar-bg;
+      padding: 0 $topbar-height / 3;
+      height: $topbar-height;
+    }
+
+    // Position overrides for ul.right
+    ul.right {
+      li .dropdown {
+        left: auto;
+        right: 0;
+
+        li .dropdown { right: 100%; }
+      }
+    }
+
   }
 
 }
-
-// The topbar itself
-// .top-bar {
-//   background: $topbar-bg;
-//   height: $topbar-height;
-//   line-height: $topbar-height;
-//   margin: 0 0 $topbar-margin-bottom;
-//   padding: 0;
-//   width: 100%;
-//   position: relative;
-
-//   // Contain width to .row width
-//   .contain-to-grid & {
-//     max-width: $row-width;
-//     margin: 0 auto;
-//   }
-
-//   /* First <ul> for branding, title, name, etc */
-//   &>ul {
-//     .name {
-//       h1 {
-//         line-height: $topbar-height;
-//         margin: 0;
-//         a {
-//           font-weight: $topbar-title-weight;
-//           padding: 0 $topbar-height / 2;
-//           font-size: $topbar-title-font-size !important;
-//         }
-//       }
-//       img {
-//         margin-top: emCalc(-5px);
-//         vertical-align: middle;
-//       }
-//     }
-//   }
-//   &.expanded { height: inherit; }
-
-//   // topbar global <ul> styles
-//   ul {
-//     margin-#{$default-float}: 0;
-//     display: inline;
-//     height: $topbar-height;
-//     line-height: $topbar-height;
-//     list-style: none;
-
-//     // Main Navigation links style
-//     &>li {
-//       float: $default-float;
-
-//       a:not(.button) {
-//         color: $topbar-link-color;
-//         display: block;
-//         font-size: $topbar-link-font-size;
-//         font-weight: $topbar-link-weight;
-//         height: $topbar-height;
-//         line-height: $topbar-height;
-//         padding: 0 $topbar-height / 3;
-//       }
-//       &:not(.name) {
-//         &:hover,
-//         &.active,
-//         &:focus { background: darken($topbar-bg, 15%);
-//           a { color: darken($topbar-link-color, 15%); }
-//         }
-//       }
-
-//       // Dividers between navigation
-//       &.divider {
-//         background: darken($topbar-bg, 15%);
-//         -webkit-box-shadow: 1px 0 0 rgba(255,255,255,0.10);
-//         box-shadow: 1px 0 0 rgba(255,255,255,0.10);
-//         height: 100%;
-//         margin-#{$default-opposite}: 1px;
-//         width: 1px;
-//       }
-
-//       // Put a button in an <li> but give is a class
-//       &.has-button {
-//         a.button { margin: 0 $topbar-height / 4; }
-
-//         &:hover,
-//         &:focus { background: $topbar-bg;
-//           a { color: #fff; }
-//         }
-//       }
-
-//       // Put a search bar or text input in the bar
-//       &.search { padding: 0 $topbar-height / 3;
-//         form {
-//           display: inline-block;
-//           margin-bottom: 0;
-//           vertical-align: middle;
-//           width: $topbar-search-width;
-//           input[type=text] {
-//             @include side-radius($default-opposite, 0);
-//             float: $default-float;
-//             font-size: ms(0) - 1;
-//             margin-top: -1px;
-//             height: $topbar-height / 2; //28px margin-bottom: 0; width: $topbar-search-width - 70px;
-//             &+.button {
-//               border-#{$default-float}: none;
-//               @include side-radius($default-float, 0);
-//               float: $default-float;
-//               font-size: emCalc(12px);
-//               margin-top: -1px;
-//               padding: emCalc(5px) emCalc(12px) emCalc(4px);
-//             }
-//           }
-//           input[type=search] {
-//             font-size: emCalc(16px);
-//             margin-bottom: 0;
-//           }
-//         }
-//         &:hover, &:focus { background: $topbar-bg; }
-//       }
-
-//       // Hide the triangle for breakpoint menu
-//       &.toggle-topbar { display: none; }
-
-//       // li.has-dropdown
-//       &.has-dropdown { position: relative;
-//         &:hover,
-//         &:focus {
-//           &>.dropdown {
-//             display: block;
-//             visibility: visible;
-//           }
-//         }
-
-//         a { padding-#{$default-opposite}: $topbar-height * .75;
-//           &:after {
-//             @include css-triangle($topbar-dropdown-toggle-size, $topbar-dropdown-toggle-color, top);
-//             margin-#{$default-opposite}: $topbar-height / 3;
-//             margin-top: -$topbar-dropdown-toggle-size / 2;
-//             position: absolute; #{$default-opposite}: 0;
-//             top: 50%;
-//           }
-//         }
-
-//         .dropdown {
-//           background: $topbar-dropdown-bg;
-//           #{$default-float}: 0;
-//           margin: 0;
-//           padding: $topbar-height / 5 0 0 0;
-//           position: absolute;
-//           visibility: hidden;
-//           z-index: 99;
-
-//           li {
-//             background: $topbar-dropdown-bg;
-//             line-height: 1;
-//             min-width: 100%;
-//             padding-bottom: emCalc(5px);
-//             a {
-//               color: $topbar-dropdown-link-color;
-//               font-weight: normal;
-//               height: 100%;
-//               line-height: 1;
-//               padding: emCalc(5px) $topbar-height / 3 + emCalc(2px) emCalc(5px) $topbar-height / 3;
-//               white-space: nowrap;
-//               &:after { border: none; }
-//               &:hover, &:focus { background: lighten($topbar-dropdown-bg, 10%); }
-//             }
-
-//             label {
-//               color: lighten($topbar-dropdown-bg, 30%);
-//               font-size: emCalc(10px);
-//               font-weight: $topbar-link-weight;
-//               margin: 0;
-//               padding-#{$default-float}: $topbar-height / 3;
-//               text-transform: uppercase;
-//             }
-//             &.divider {
-//               border-top: solid 1px darken($topbar-dropdown-bg, 20%);
-//               -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
-//               box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
-//               height: emCalc(10px);
-//               padding: 0;
-//               width: 100%;
-//             }
-
-//             &:last-child { padding-bottom: emCalc(10px); }
-//             &.active a { background: darken($topbar-bg, 15%); }
-//           }
-//         }
-
-//         // Dropdown Level 2+
-//         .dropdown li.has-dropdown {
-//           &>a { padding-#{$default-opposite}: $topbar-height * .75;
-//             &:after {
-//               border: none;
-//               content:"\00bb";
-//               #{$default-opposite}: emCalc(5px);
-//               top: emCalc(6px);
-//             }
-//           }
-//           .dropdown {
-//             position: absolute;
-//             #{$default-float}: 100%;
-//             top: 0;
-//           }
-//           &:hover, &:focus {
-//             &>.dropdown { display: block; }
-//           }
-//         }
-//       }
-//     }
-
-//     // Left Side <ul>
-//     &.left {
-//       float: left;
-//       width: auto;
-//       margin-bottom: 0;
-//     }
-
-//     // Right Side <ul>
-//     &.right {
-//       float: right;
-//       width: auto;
-//       margin-bottom: 0;
-
-//       // Dropdown Right Side Alignment
-//       .has-dropdown .dropdown {
-//         left: auto;
-//         right: -1px;
-
-//         li.has-dropdown > .dropdown {
-//           right: 100%;
-//           left: auto;
-//           width: 100%;
-//         }
-//       }
-//     }
-//   }
-
-//   .js-generated { display: none; }
-// }
-
-/* Firefox Fixes */
-// @-moz-document url-prefix() {
-//   .top-bar ul li .button.small { padding-bottom: emCalc(6px); }
-//   .top-bar ul li.search form input[type=search] { font-size: emCalc(14px); height: emCalc(22px); padding: emCalc(3px); }
-// }
-
-/* IE8 Fixes */
-// .lt-ie9 .top-bar ul li a {
-//   color: $topbar-link-color;
-//   display: block;
-//   font-weight: $topbar-link-weight;
-//   font-size: $topbar-link-font-size;
-//   height: $topbar-height;
-//   line-height: $topbar-height;
-//   padding: 0 $topbar-height / 3;
-
-//   &.button {
-//     height: auto;
-//     line-height: emCalc(30px);
-//     margin-top: emCalc(7px);
-//   }
-//   &:hover,
-//   &:focus { color: darken($topbar-link-color, 20%); }
-
-//   img {
-//     margin-top: emCalc(-5px);
-//     vertical-align: middle;
-//   }
-//   &.active {
-//     background: darken($topbar-bg, 5%);
-//     color: darken($topbar-link-color, 15%);
-//   }
-// }
-
-// .lt-ie9 .top-bar ul li.has-dropdown {
-//   padding-#{$default-opposite}: $topbar-height * .75;
-//   &>ul li { padding-#{$default-opposite}: 0; }
-// }
-
-
-/* Topbar Specific Breakpoint that you can customize */
-// @media only screen and (max-width: $topbar-breakpoint) {
-
-  // .top-bar { margin-bottom: 0; overflow: hidden; height: $topbar-height-mobile; background: $topbar-dropdown-bg;
-
-  //   /* Override contain to grid stuff for breakpoint */
-  //   .contain-to-grid & { width: auto; }
-
-  //   /* Setting up the sliding area */
-
-
-  //   ul { width: 100%; height: 100%; margin-bottom: 0; display: block;
-  //     &>li { float: none;
-  //       &.active, &:hover { background: darken($topbar-dropdown-bg, 5%); }
-  //       /* Branding and name */
-  //       &.name { height: $topbar-height-mobile;
-  //         h1 { line-height: 1;
-  //           a { color: $topbar-link-color; display: block; line-height: $topbar-height-mobile !important; padding-#{$default-float}: $topbar-height-mobile / 3; height: $topbar-height-mobile; }
-  //         }
-  //       }
-  //       &:hover, &.active { a { color: $topbar-dropdown-link-color; } }
-  //       a:not(.button) { color: $topbar-dropdown-link-color; }
-
-  //       /* Dropdown Toggle */
-  //       &.toggle-topbar { cursor: pointer; display: block; height: $topbar-height-mobile; position: absolute; #{$default-opposite}: 0; top: 0; width: 50%;
-  //         a { @include css-triangle($topbar-nav-toggle-size, #fff, top); padding: 0; position: absolute; top: 50%; #{$default-opposite}: $topbar-height-mobile / 2; margin-top: -($topbar-nav-toggle-size / 2); }
-  //         @if $topbar-breakpoint == 9999px { a { #{$default-opposite}: ($topbar-height / 2) + ($columnGutter / 2);} }
-  //         &:hover { background: inherit; }
-  //       }
-  //       &.toggle-topbar a { padding: 0 !important; }
-
-  //       /* Divider for breakpoint */
-  //       &.divider { border-bottom: solid 1px lighten($topbar-dropdown-bg, 10%); border-top: solid 1px darken($topbar-dropdown-bg, 15%); clear: both; height: 1px !important; margin: 8px 0 !important; width: 100%; }
-
-  //       /* Search Overrides for breakpoint size */
-  //       &.search { padding: 0 $topbar-height / 2;
-  //         form { width: 100%;
-  //           input[type=text] { width: 75%; }
-  //           .button { top: 0; width: 25%; }
-  //         }
-  //       }
-
-  //       /* Dropdown Level 1 */
-  //       &.has-dropdown {
-  //         a { padding-#{$default-opposite}: $topbar-height * .75;
-  //           &:after { @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float); margin-#{$default-opposite}: $topbar-height / 3; margin-top: -($topbar-dropdown-toggle-size / 2) - 2; position: absolute; top: 50%; }
-  //         }
-  //         &:hover >.dropdown { display: block; visibility: hidden; }
-  //         .dropdown { visibility: hidden; z-index: 0 !important; }
-  //         &.moved { position: static;
-  //           &>.dropdown { top: 0; visibility: visible;
-  //             li {
-  //               label { margin-bottom: emCalc(6px); padding-top: emCalc(6px) !important; font-size: emCalc(11px); }
-  //               &:not(.title) { padding-bottom: 0;
-  //                 a { padding: emCalc(8px) $topbar-height-mobile / 2; font-size: emCalc(14px); }
-  //               }
-  //               a, label { padding: 0 $topbar-height / 2; }
-  //               a:hover { background: lighten($topbar-bg, 10%); display: block; }
-  //               &.divider { border-bottom: solid 1px rgba(255,255,255,0.1); margin-top: emCalc(8px) !important; margin-bottom: emCalc(8px) !important; }
-  //             }
-  //           }
-  //           .back.title { padding-bottom: 0;
-  //             a:before { position: absolute; top: 50%; #{$default-float}: ($topbar-height / 2) - $topbar-dropdown-toggle-size; margin-top: -$topbar-dropdown-toggle-size; width: 0; height: 0; @include css-triangle($topbar-dropdown-toggle-size, $topbar-dropdown-toggle-color, $default-opposite); }
-  //             h5 { margin: 0; padding-#{$default-float}: $topbar-dropdown-toggle-size * 3; position: relative;
-  //               a { background: transparent; padding-top: emCalc(8px); padding-bottom: emCalc(8px); font-size: emCalc(23px); font-weight: $topbar-title-weight; }
-  //             }
-  //           }
-  //         }
-  //       }
-
-  //       /* Dropdown Level 2 */
-  //       &.has-dropdown .dropdown li { background: transparent;
-  //         &.has-dropdown {
-  //           .dropdown { #{$default-float}: 100% !important; top: 0; #{$default-opposite}: auto !important; }
-  //           &>a { padding-#{$default-opposite}: $topbar-height * .75;
-  //             &:after { content: ""; margin-#{$default-opposite}: $topbar-height-mobile / 3; @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float); position: absolute; top: 50%; margin-top: -($topbar-dropdown-toggle-size / 2) - 2; }
-  //             li a {
-  //               &:hover { background: lighten($topbar-bg, 10%); }
-  //             }
-  //           }
-  //           &.moved { position: static;
-  //             .dropdown { top: 0; visibility: visible; }
-  //           }
-  //           &:hover { display: block; }
-  //         }
-  //       }
-  //     }
-  //     &.left, &.right { float: none; width: 100%;
-  //       &>li { display: block; float: none; margin: 0 !important;
-  //         &.has-dropdown {
-  //           .dropdown { #{$default-float}: 100% !important; top: 0; #{$default-opposite}: auto !important; }
-  //         }
-  //       }
-  //     }
-  //   }
-  //   section > ul li a:not(.button) { padding-#{$default-float}: $topbar-height-mobile / 2 !important; }
-
-  //   /* When the Small Nav is Showing */
-  //   &.expanded { height: 100%;
-  //     ul li.toggle-topbar a { @include css-triangle($topbar-nav-toggle-size, rgba(255,255,255,0.5), bottom); top: auto; bottom: 50%; margin-bottom: -($topbar-nav-toggle-size / 2); }
-  //   }
-  // }
-  // .top-bar ul li.has-button { padding: emCalc(5px) $topbar-height-mobile / 3; }
-  // .top-bar ul li .button.small { margin: 0 !important; display: inline-block; width: 100%; }
-  // .top-bar ul > li.has-button {
-  //   a.button { margin: 0; }
-  // }
-// }
