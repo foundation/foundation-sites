@@ -33,7 +33,7 @@
       cookieExpires        : 365,       // set when you would like the cookie to expire.
       tipContainer         : 'body',    // Where will the tip be attached
       postRideCallback     : function (){},    // A method to call once the tour closes (canceled or complete)
-      postStepCallback     : function () {},    // A method to call after each step
+      postStepCallback     : function (){},    // A method to call after each step
       template : { // HTML segments for tip layout
         link    : '<a href="#close" class="joyride-close-tip">&times;</a>',
         timer   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
