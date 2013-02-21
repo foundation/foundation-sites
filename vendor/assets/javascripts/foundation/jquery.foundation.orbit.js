@@ -290,7 +290,7 @@
         }, this.options.advanceSpeed);
       } else {
         this.timerRunning = true;
-        this.$pause.removeClass('active');
+        if (this.$pause) this.$pause.removeClass('active');
         this.clock = setInterval(this.rotateTimer, this.options.advanceSpeed / 180, false);
       }
     },
@@ -327,7 +327,7 @@
       } else {
         this.timerRunning = false;
         clearInterval(this.clock);
-        this.$pause.addClass('active');
+         if (this.$pause) this.$pause.addClass('active');
       }
     },
 
