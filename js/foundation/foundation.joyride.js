@@ -505,7 +505,7 @@
 
     center : function () {
       var $w = $(window);
-
+      console.log(this.scrollLeft($w));
       this.settings.$next_tip.css({
         top : ((($w.height() - this.settings.$next_tip.outerHeight()) / 2) + $w.scrollTop()),
         left : ((($w.width() - this.settings.$next_tip.outerWidth()) / 2) + this.scrollLeft($w))
