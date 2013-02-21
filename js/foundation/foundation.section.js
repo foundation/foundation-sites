@@ -54,10 +54,12 @@
 
     toggle_active : function (e, self) {
       var $this = $(this),
-          section = $this.closest('section, .section');
+          section = $this.closest('section, .section'),
+          content = section.find('.content');
 
-      if (!self.settings.deep_linking
-        || section.find('.content').length < 1) e.preventDefault();
+      if (!self.settings.deep_linking && content.length > 0) {
+          e.preventDefault();
+      }
 
       if (section.hasClass('active')) {
         if ($(this.scope).width() < 769) {

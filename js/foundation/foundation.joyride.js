@@ -5,7 +5,6 @@
   TODO:
     - Fix timer display
     - auto scroll not animating
-    - scrollLeft not accurate
 */
 
 ;(function ($, window, document, undefined) {
