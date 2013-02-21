@@ -67,7 +67,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     .title-area { position: relative; }
 
     .name {
-      height: $topbar-height-mobile;
+      height: $topbar-height;
       margin: 0;
       font-size: $em-base;
 
