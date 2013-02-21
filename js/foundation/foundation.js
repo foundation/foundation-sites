@@ -210,9 +210,9 @@
       },
 
       // not supported in core Zepto
-      scrollLeft : function() {
-        if (!window.length) return;
-        return ('scrollLeft' in window[0]) ? window[0].scrollLeft : window[0].scrollX;
+      scrollLeft : function(el) {
+        if (!el.length) return;
+        return ('scrollLeft' in el[0]) ? el[0].scrollLeft : el[0].scrollX;
       }
     },
 
