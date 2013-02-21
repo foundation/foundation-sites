@@ -218,7 +218,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
       }
 
       &.moved { position: static;
-        .dropdown {
+        & > .dropdown {
           visibility: visible;
         }
       }
@@ -279,6 +279,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
   .top-bar-section {
     @include single-transition(none,0,0);
+    #{$default-float}: 0 !important;
 
     ul {
       width: auto;
@@ -308,6 +309,11 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
           margin-top: -($topbar-dropdown-toggle-size / 2);
         }
       }
+
+      &.moved { position: relative;
+        & > .dropdown { visibility: hidden; }
+      }
+
       &:hover,
       &:active {
         & > .dropdown {
@@ -325,6 +331,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
           }
         }
       }
+
     }
 
     .dropdown {
