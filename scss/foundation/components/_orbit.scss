@@ -24,7 +24,26 @@ $orbit-slide-number-padding: emCalc(5px) !default;
     margin: 0;
     padding: 0;
     &>* {
+      position: relative;
       float: left;
+      height: 100%;
+      .orbit-caption {
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        width: 100%;
+      }
+    }
+  }
+  .orbit-timer {
+    height: 20px;
+    width: 100%;
+    &>* {
+      height: 100%;
+      background-color: #ccc;
+      display: block;
+      width: 0%;
     }
   }
 }
