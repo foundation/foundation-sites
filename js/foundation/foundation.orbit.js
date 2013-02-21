@@ -69,6 +69,7 @@
       data.$container.append('<a data-orbit-prev href="#">Prev</a>');
       data.$container.append('<a data-orbit-next href="#">Next</a>');
       data.$container.append('<div class="orbit-timer"><span></span></div>');
+      data.$container.find('[data-orbit-caption]').addClass('orbit-caption');
       data.$timer = data.$container.find('.orbit-timer > *');
       data.$slides_container = $(slider).addClass('orbit-slides');
       data.$slides = data.$slides_container.children();
