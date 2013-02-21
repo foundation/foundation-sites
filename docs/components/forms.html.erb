@@ -1,6 +1,6 @@
 <% @page_title = "Forms" %>
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %> </h1>
     <hr>
@@ -9,34 +9,34 @@
 
 <!-- Test Foundation Components Here -->
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <a name="general"></a>
     <h3>Forms</h3>
     <h4 class="subheader">We set out in Foundation 3 to create an easy to handle, powerful, and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
     <br>
 
     <div class="row">
-      <div class="large-4">
+      <div class="large-4 columns">
         <a name="row-layout"></a>
         <h4>Row Layouts</h4>
         <p>Here's an example of a form layout controlled with rows and columns.</p>
       </div>
       <br>
-      <div class="large-8">
+      <div class="large-8 columns">
         <form>
           <label for="standard_input">This is a label.</label>
           <input type="text" placeholder="Standard Input" id="standard_input" />
 
           <label for="address_1">Address</label>
-          <input type="text" class="large-12" placeholder="Street" id="address_1" />
+          <input type="text" class="large-12 columns" placeholder="Street" id="address_1" />
           <div class="row">
-            <div class="large-6">
+            <div class="large-6 columns">
               <input type="text" placeholder="City" />
             </div>
-            <div class="large-3">
+            <div class="large-3 columns">
               <input type="text" placeholder="State" />
             </div>
-            <div class="large-3">
+            <div class="large-3 columns">
               <input type="text" placeholder="ZIP" />
             </div>
           </div>
@@ -48,26 +48,26 @@
 
         <form>
           <div class="row">
-            <div class="large-2 small-2">
+            <div class="large-2 small-2 columns">
               <label class="right inline" for="address_name">Address:</label>
             </div>
-            <div class="large-10 small-10">
+            <div class="large-10 small-10 columns">
               <input type="text" placeholder="e.g. Home" id="address_name" />
             </div>
           </div>
           <div class="row">
-            <div class="large-2 small-2">
+            <div class="large-2 small-2 columns">
               <label class="right inline" for="city">City:</label>
             </div>
-            <div class="large-10 small-10">
+            <div class="large-10 small-10 columns">
               <input type="text" id="city" />
             </div>
           </div>
           <div class="row">
-            <div class="large-2 small-2">
+            <div class="large-2 small-2 columns">
               <label class="right inline" for="zip">ZIP:</label>
             </div>
-            <div class="large-10 small-10">
+            <div class="large-10 small-10 columns">
               <input type="text" id="zip" />
             </div>
           </div>
@@ -78,12 +78,12 @@
     <br>
 
     <div class="row">
-      <div class="large-4">
+      <div class="large-4 columns">
         <a name="fieldsets"></a>
         <h4>Fieldsets</h4>
         <p>Simple elements that can contain all or part of a form to create better division.</p>
       </div>
-      <div class="large-8">
+      <div class="large-8 columns">
         <form class="custom">
           <fieldset>
 
@@ -104,33 +104,33 @@
     <br>
 
     <div class="row">
-      <div class="large-4">
+      <div class="large-4 columns">
         <a name="collapsed"></a>
         <h4>Labels and Actions with Collapsed Columns</h4>
         <p>Foundation forms support actions tied to buttons, and prefix / postfix labels. Essentially you can use a 'collapsed' row to create label / action / input combinations. Here are a few examples.</p>
       </div>
       <br>
-      <div class="large-8">
+      <div class="large-8 columns">
 
         <div class="row">
-          <div class="large-6">
+          <div class="large-6 columns">
             <label for="input_prefix">Input with a prefix character</label>
             <div class="row collapse">
-              <div class="large-2 small-2">
+              <div class="large-2 small-2 columns">
                 <span class="prefix">#</span>
               </div>
-              <div class="large-10 small-10">
+              <div class="large-10 small-10 columns">
                 <input type="text" id="input_prefix" />
               </div>
             </div>
           </div>
-          <div class="large-6">
+          <div class="large-6 columns">
             <label for="input_prefix">Input with a prefix character</label>
             <div class="row collapse">
-              <div class="large-9 small-9">
+              <div class="large-9 small-9 columns">
                 <input type="text" id="input_postfix" />
               </div>
-              <div class="large-3 small-3">
+              <div class="large-3 small-3 columns">
                 <span class="postfix">.com</span>
               </div>
             </div>
@@ -138,13 +138,13 @@
         </div>
 
         <div class="row">
-          <div class="large-12">
+          <div class="large-12 columns">
             <label for="input_postfix_button">Input with a postfix action (button)</label>
             <div class="row collapse">
-              <div class="large-8 small-8">
+              <div class="large-8 small-8 columns">
                 <input type="text" id="input_postfix_button" />
               </div>
-              <div class="large-4 small-4">
+              <div class="large-4 small-4 columns">
                 <a class="button expand radius postfix">Search</a>
               </div>
             </div>
@@ -156,21 +156,21 @@
     <br><br>
 
     <div class="row">
-      <div class="large-4">
+      <div class="large-4 columns">
         <a name="errors"></a>
         <h4>Error States</h4>
         <p>Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically.
       </div>
       <br>
-      <div class="large-8">
+      <div class="large-8 columns">
         <div class="row">
-          <div class="large-6">
+          <div class="large-6 columns">
             <label class="error" for="error">Field with Error</label>
             <input type="text" class="error" id="error" />
             <small class="error">Invalid entry</small>
           </div>
 
-          <div class="large-6 end error">
+          <div class="large-6 end error columns">
             <label for="error_2">Another Error</label>
             <input type="text" id="error_2" />
             <small>Invalid entry</small>
@@ -180,17 +180,17 @@
     </div>
 
     <div class="row">
-      <div class="large-4">
+      <div class="large-4 columns">
         <h4>Large Form Example</h4>
         <p>Here's an example of a really extensive form.</p>
       </div>
-      <div class="large-8">
+      <div class="large-8 columns">
         <form>
           <fieldset>
             <legend>Large Form Example</legend>
 
             <div class="row">
-              <div class="large-5">
+              <div class="large-5 columns">
 
                 <label for="name">Name</label>
                 <input type="text" id="name" />
@@ -200,27 +200,27 @@
 
                 <label for="twitter">Twitter</label>
                 <div class="row collapse">
-                  <div class="large-2 small-2">
+                  <div class="large-2 small-2 columns">
                     <span class="prefix">@</span>
                   </div>
-                  <div class="large-10 small-10">
+                  <div class="large-10 small-10 columns">
                     <input type="text" placeholder="foundationzurb" id="twitter" />
                   </div>
                 </div>
 
                 <label for="url">URL</label>
                 <div class="row collapse">
-                  <div class="large-9 small-9">
+                  <div class="large-9 small-9 columns">
                     <input type="text" placeholder="foundation.zurb" id="url"/>
                   </div>
-                  <div class="large-3 small-3">
+                  <div class="large-3 small-3 columns">
                     <span class="postfix">.com</span>
                   </div>
                 </div>
 
               </div>
 
-              <div class="large-5">
+              <div class="large-5 columns">
 
                 <label class="error" for="error_3">Field with Error</label>
                 <input type="text" class="error" id="error_3" />
@@ -239,15 +239,15 @@
             <input type="text" placeholder="Street (e.g. 123 Awesome St.)" id="address_3" />
 
             <div class="row">
-              <div class="large-6">
+              <div class="large-6 columns">
                 <input type="text" placeholder="City" />
               </div>
-              <div class="large-2">
+              <div class="large-2 columns">
                 <select>
                   <option>CA</option>
                 </select>
               </div>
-              <div class="large-4">
+              <div class="large-4 columns">
                 <input type="text" placeholder="ZIP" />
               </div>
             </div>

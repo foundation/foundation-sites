@@ -92,7 +92,6 @@
 
       return dropdown.css({
         position : 'absolute',
-        width: target.width(),
         top: offset.top + target.height(),
         left: offset.left
       });
