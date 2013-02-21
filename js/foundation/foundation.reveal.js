@@ -52,16 +52,18 @@
           self.open.call(self, 
             $('#' + modalLocation), self.data_options($(this)));
         })
-        .on('reveal:open.reveal', '.reveal-modal', 
+        .on('reveal:open.reveal', '.reveal-modal',
           this.open_animation.bind(this))
-        .on('reveal:open.reveal', '.reveal-modal', 
+        .on('reveal:open.reveal', '.reveal-modal',
           this.open_videos.bind(this))
-        .on('reveal:close.reveal', '.reveal-modal', 
+        .on('reveal:close.reveal', '.reveal-modal',
           this.close_animation.bind(this))
-        .on('reveal:closed.reveal', '.reveal-modal', 
+        .on('reveal:closed.reveal', '.reveal-modal',
           this.close_videos.bind(this))
-        .on('reveal:opened.reveal reveal:closed.reveal', '.reveal-modal', 
+        .on('reveal:opened.reveal reveal:closed.reveal', '.reveal-modal',
           this.unlock.bind(this))
+
+        // bind callbacks
         .on('reveal:open.reveal', '.reveal-modal', 
           this.settings.open)
         .on('reveal:opened.reveal', '.reveal-modal', 
@@ -70,7 +72,8 @@
           this.settings.close)
         .on('reveal:closed.reveal', '.reveal-modal', 
           this.settings.closed)
-        .on( 'keyup.reveal', function (e) {
+
+        .on('keyup.reveal', function (e) {
           if (e.which === 27) { // on escape
             self.active.modal.trigger('reveal:close');
           }
@@ -139,7 +142,7 @@
         this.active.bg = $('<div />', {'class': 'reveal-modal-bg'})
           .insertAfter(this.active.modal);
 
-        this.active.bg.show().fadeTo('fast', 0.8);
+        this.active.bg.fadeIn(this.settings.animationSpeed);
       }
     },
 
@@ -181,14 +184,14 @@
 
     animate_in : function () {
       this.active.bg.fadeIn(this.settings.animationSpeed / 2);
-        this.delay(function () {
-          this.active.modal
-            .animate(this.active.animate_obj,
-            this.settings.animationSpeed,
-            function () {
-              this.active.modal.trigger('reveal:opened');
-            });
-        }.bind(this), this.settings.animationSpeed / 2);
+      this.delay(function () {
+        this.active.modal
+          .animate(this.active.animate_obj,
+          this.settings.animationSpeed,
+          function () {
+            this.active.modal.trigger('reveal:opened');
+          });
+      }.bind(this), this.settings.animationSpeed / 2);
     },
 
     open_videos : function () {
@@ -208,7 +211,7 @@
       };
 
       if (this.settings.animation === 'fadeAndPop') {
-        this.active.animate_obj.top = $(this.scope).scrollTop() - this.active.top_offset + 'px';
+        this.active.animate_obj.top = $(window).scrollTop() - this.active.top_offset + 'px';
       }
 
       if (this.settings.animation === 'none') {
