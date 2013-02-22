@@ -81,7 +81,6 @@
     resize : function () {
       var sections = $('[data-section]');
 
-      if ($(this).width() > 768) {
         sections.each(function() {
           var active_section = $(this).find('section.active, .section.active');
           if (active_section.length > 1) {
@@ -91,11 +90,6 @@
           }
           Foundation.libs.section.position_titles($(this));
         });
-      } else {
-        sections.each(function() {
-          Foundation.libs.section.position_titles($(this), false);
-        });
-      }
     },
 
     set_active_from_hash : function () {

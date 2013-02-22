@@ -18,7 +18,7 @@
 
     this.start = function() {
       clearInterval(timer);
-      start = new Date().getTime();      
+      start = new Date().getTime();
       if (stopped) {
         $el.trigger('timer:resumed');
       } else {
@@ -159,7 +159,7 @@
       }, 'linear', data.self.settings.slide_delay, function() {
         data.$container.removeClass('orbit-transitioning');
         callback();
-      });        
+      });
 
     }
   }
