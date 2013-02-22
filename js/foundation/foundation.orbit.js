@@ -64,149 +64,142 @@
     },
 
     _init: function(idx, slider) {
-      var data = {};
-      data.$container = $(slider).wrap('<div class="orbit-container"></div>').parent();
-      data.$container.append('<a data-orbit-prev href="#">Prev</a>');
-      data.$container.append('<a data-orbit-next href="#">Next</a>');
-      data.$container.append('<a data-orbit-pause href="#">Pause</a>');
-      data.$container.append('<a data-orbit-resume href="#">Resume</a>');
-      data.$container.append('<div class="orbit-timer"><span></span></div>');
-      data.$container.find('[data-orbit-caption]').addClass('orbit-caption');
-      data.$timer = data.$container.find('.orbit-timer > *');
-      data.$slides_container = $(slider).addClass('orbit-slides');
-      data.$slides = data.$slides_container.children();
-      data.$slides_container.append(data.$slides.first().clone());
-      data.$slides_container.prepend(data.$slides.last().clone());
-      data.$slides = data.$slides_container.children();
-      data.$slides_container.css('marginLeft', '-100%');
-      data.activeIndex = 1;
-      data.self = this;
-      this._init_events(data);
-      this._init_dimensions(data);
-      this._start_timer(data);
+      // var data = {};
+      this.$container = $(slider).wrap('<div class="orbit-container"></div>').parent();
+      this.$container.append('<a data-orbit-prev href="#">Prev</a>');
+      this.$container.append('<a data-orbit-next href="#">Next</a>');
+      this.$container.append('<a data-orbit-pause href="#">Pause</a>');
+      this.$container.append('<a data-orbit-resume href="#">Resume</a>');
+      this.$container.append('<div class="orbit-timer"><span></span></div>');
+      this.$container.find('[data-orbit-caption]').addClass('orbit-caption');
+      this.$timer = this.$container.find('.orbit-timer > *');
+      this.$slides_container = $(slider).addClass('orbit-slides');
+      this.$slides = this.$slides_container.children();
+      this.$slides_container.append(this.$slides.first().clone());
+      this.$slides_container.prepend(this.$slides.last().clone());
+      this.$slides = this.$slides_container.children();
+      this.$slides_container.css('marginLeft', '-100%');
+      this.activeIndex = 1;
+      // data.self = this;
+      // this.data = data;
+      this._init_events();
+      this._init_dimensions();
+      this._start_timer();
     },
 
-    _init_events: function(data) {
+    _init_events: function() {
       $(window).on('resize', function() {
-        data.$slides_container.height('');
-        data.$slides_container.height(data.$slides_container.height(data.$container.height()));
-      });
-      data.$container.on('click', '[data-orbit-prev]', function(e) {
+        this.$slides_container.height('');
+        this.$slides_container.height(this.$slides_container.height(this.$container.height()));
+      }.bind(this));
+      this.$container.on('click', '[data-orbit-prev]', function(e) {
         e.preventDefault();
-        data.$container.trigger('timer:stop');
-        data.self.goto(data, 'prev');
-      });
-      data.$container.on('click', '[data-orbit-next]', function(e) {
+        this.$container.trigger('timer:stop');
+        this.goto('prev');
+      }.bind(this));
+      this.$container.on('click', '[data-orbit-next]', function(e) {
         e.preventDefault();
-        data.$container.trigger('timer:stop');
-        data.self.goto(data, 'next');
-      });
-      data.$container.on('click', '[data-orbit-pause]', function(e) {
+        this.$container.trigger('timer:stop');
+        this.goto('next');
+      }.bind(this));
+      this.$container.on('click', '[data-orbit-pause]', function(e) {
         e.preventDefault();
-        data.self._stop_timer(data);
-      });
-      data.$container.on('click', '[data-orbit-resume]', function(e) {
+        this._stop_timer();
+      }.bind(this));
+      this.$container.on('click', '[data-orbit-resume]', function(e) {
         e.preventDefault();
         // data.$container.trigger('timer:start');
-        data.self._start_timer(data);
-      });
-      data.$container.on('swipeLeft', function(e) {
+        this._start_timer();
+      }.bind(this));
+      this.$container.on('swipeLeft', function(e) {
         // alert('left');
         e.preventDefault();
-        data.$container.trigger('timer:stop');
-        data.self.goto(data, 'prev');
-      });
-      data.$container.on('swipeRight', function(e) {
+        this.$container.trigger('timer:stop');
+        this.goto('prev');
+      }.bind(this));
+      this.$container.on('swipeRight', function(e) {
         // alert('right');
         e.preventDefault();
-        data.$container.trigger('timer:stop');
-        data.self.goto(data, 'right');
-      });
+        this.$container.trigger('timer:stop');
+        this.goto('right');
+      }.bind(this));
     },
 
-    _init_dimensions: function(data) {
-      data.$slides_container.css('width', data.$slides.length * 100 + '%');
-      data.$slides.css('width', 100 / data.$slides.length + '%');
-      data.$slides_container.height(data.$container.height());
-      data.$slides_container.css('width', data.$slides.length * 100 + '%');
+    _init_dimensions: function() {
+      this.$slides_container.css('width', this.$slides.length * 100 + '%');
+      this.$slides.css('width', 100 / this.$slides.length + '%');
+      this.$slides_container.height(this.$container.height());
+      this.$slides_container.css('width', this.$slides.length * 100 + '%');
     },
 
-    _start_timer: function(data) {
+    _start_timer: function() {
       var callback = function() {
         console.info('start timer callback invoked');
-        data.self._rebuild_timer(data, '0%');
-        data.self.goto(data, 'next', function() {
-          data.timer_stopped_at = undefined;
-          data.timer_time_left = undefined;
-          data.self._start_timer(data);
-        });
-      };
-      if (typeof data.timer_time_left === 'undefined') {
-        console.info('timer left: ');
-        data.timer_time_left = data.self.settings.timer;
+        this._rebuild_timer('0%');
+        this.goto('next', function() {
+          this.timer_progress = 0;
+          this._start_timer();
+        }.bind(this));
+      }.bind(this);
+      
+      if (typeof this.timer_progress === 'undefined') {
+        this.timer_progress = 0;
       }
-      console.info(data.timer_time_left);
-      data.timer_started_again = true;
-      data.timer_started_at = new Date().getTime();
-      data.$timer.animate({'width': '100%'}, data.timer_time_left, 'linear', callback);
+      var timer_delay = this.settings.timer - (this.timer_progress * this.settings.timer);
+      this.$timer.animate({'width': '100%'}, timer_delay, 'linear', callback);
     },
 
-    _stop_timer: function(data) {
-      if (!data.timer_started_again) return;
-      var timer_stopped_at = new Date().getTime();
-      data.timer_started_again = false;
-      data.timer_time_left = timer_stopped_at - data.timer_started_at;
-      var width = ((data.self.settings.timer - data.timer_time_left) / data.self.settings.timer) * 100;
-      width += '%';
-      console.info(width);
-      data.self._rebuild_timer(data, width);
+    _stop_timer: function() {
+      this.timer_progress = this.$timer.width() / this.$timer.parent().width();
+      this._rebuild_timer(this.timer_progress * 100 + '%');
+      
     },
 
-    _rebuild_timer: function(data, width) {
+    _rebuild_timer: function(width) {
       // there is no way to stop Zepto animations,
       // so re-construct timer to get around this
       // limitation
       var $timer = $('<div class="orbit-timer"><span></span></div>');
-      data.$timer.parent().remove();
-      data.$container.append($timer);
-      data.$timer = $timer.find('span');
-      data.$timer.css('width', width);
+      this.$timer.parent().remove();
+      this.$container.append($timer);
+      this.$timer = $timer.find('span');
+      this.$timer.css('width', width);
     },
 
-    goto: function(data, index_or_direction, callback) {
-      if (data.$container.hasClass("orbit-transitioning")) {
+    goto: function(index_or_direction, callback) {
+      if (this.$container.hasClass("orbit-transitioning")) {
         console.info('is transitioning');
         return false;
       }
       if (index_or_direction === 'prev') {
-        if (data.activeIndex === 0) {
-          data.activeIndex = data.$slides.length - 1;
+        if (this.activeIndex === 0) {
+          this.activeIndex = this.$slides.length - 1;
         }
         else {
-          data.activeIndex--;
+          this.activeIndex--;
         }
       }
       else if (index_or_direction === 'next') {
-        data.activeIndex = (data.activeIndex+1)%data.$slides.length;
+        this.activeIndex = (this.activeIndex+1)%this.$slides.length;
       }
       else if (typeof index_or_direction === 'number') {
-        data.activeIndex = (index%data.$slides.length);
+        this.activeIndex = (index%this.$slides.length);
       }
-      if (data.activeIndex === (data.$slides.length - 1) && index_or_direction === 'next') {
-        data.$slides_container.css('marginLeft', '0%');
-        data.activeIndex = 1;
+      if (this.activeIndex === (this.$slides.length - 1) && index_or_direction === 'next') {
+        this.$slides_container.css('marginLeft', '0%');
+        this.activeIndex = 1;
       }
-      else if (data.activeIndex === 0 && index_or_direction === 'prev') {
-        data.$slides_container.css('marginLeft', '-' + (data.$slides.length - 1)*100 + '%');
-        data.activeIndex = data.$slides.length - 2;
+      else if (this.activeIndex === 0 && index_or_direction === 'prev') {
+        this.$slides_container.css('marginLeft', '-' + (this.$slides.length - 1)*100 + '%');
+        this.activeIndex = this.$slides.length - 2;
       }
-      data.$container.addClass('orbit-transitioning');
-      data.$slides_container.animate({
-        'marginLeft' : '-' + (data.activeIndex*100) + '%'
-      }, 'linear', data.self.settings.slide_delay, function() {
-        data.$container.removeClass('orbit-transitioning');
+      this.$container.addClass('orbit-transitioning');
+      this.$slides_container.animate({
+        'marginLeft' : '-' + (this.activeIndex*100) + '%'
+      }, 'linear', this.settings.slide_delay, function() {
+        this.$container.removeClass('orbit-transitioning');
         callback();
-      });        
+      }.bind(this));        
 
     }
   }
