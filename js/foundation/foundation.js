@@ -11,6 +11,7 @@
 /* TODO & NOTES:
   - Test error return, since some of this code has changed slightly.
   - scrollTo is not working
+  - move each libs init function into here
 */
 
 (function () {
