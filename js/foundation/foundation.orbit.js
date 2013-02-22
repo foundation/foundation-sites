@@ -1,60 +1,13 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
-  $.fn.timer = function(time_in_ms) {
-    var INTERVAL_TIME = 250,
-        time = time_in_ms,
-        timer,
-        start,
-        stopped = false,
-        $el = this;
-
-    this.stop = function() {
-      clearInterval(timer);
-      stopped = true;
-      $el.trigger('timer:stopped');
-      time = time - (new Date().getTime() - start);
-    };
-
-    this.start = function() {
-      clearInterval(timer);
-      start = new Date().getTime();      
-      if (stopped) {
-        $el.trigger('timer:resumed');
-      } else {
-        $el.trigger('timer:started');
-      }
-      timer = setInterval(function() {
-        var now = time - (new Date().getTime() - start);
-        if (now <= 0) {
-          clearInterval(timer);
-          stopped = false;
-          $el.trigger('timer:complete');
-          $el.off('timer:progress');
-          $el.off('timer:complete');
-          $el.off('timer:start');
-          $el.off('timer:stop');
-        } else {
-          var progress_percent = (time-now)/time;
-          progress_percent = Math.ceil(progress_percent*100) + '%';
-          $el.trigger('timer:progress', [progress_percent])
-        }
-      }, INTERVAL_TIME);
-    };
-
-    $el.on('timer:start', this.start);
-    $el.on('timer:stop', this.stop);
-
-    return this;
-  };
-
   Foundation.libs = Foundation.libs || {};
 
   Foundation.libs.orbit = {
     version: '4.0.0.alpha',
 
     settings: {
-      timer: 1500,
+      timer: 5000,
       slide_delay: 1500
     },
 
