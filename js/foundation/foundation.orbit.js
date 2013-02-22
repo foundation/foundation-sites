@@ -68,6 +68,8 @@
       data.$container = $(slider).wrap('<div class="orbit-container"></div>').parent();
       data.$container.append('<a data-orbit-prev href="#">Prev</a>');
       data.$container.append('<a data-orbit-next href="#">Next</a>');
+      data.$container.append('<a data-orbit-pause href="#">Pause</a>');
+      data.$container.append('<a data-orbit-resume href="#">Resume</a>');
       data.$container.append('<div class="orbit-timer"><span></span></div>');
       data.$container.find('[data-orbit-caption]').addClass('orbit-caption');
       data.$timer = data.$container.find('.orbit-timer > *');
@@ -99,8 +101,26 @@
         data.$container.trigger('timer:stop');
         data.self.goto(data, 'next');
       });
-      data.$container.on('timer:started', function(e) {
-        data.$timer.css('width', '0%');
+      data.$container.on('click', '[data-orbit-pause]', function(e) {
+        e.preventDefault();
+        data.self._stop_timer(data);
+      });
+      data.$container.on('click', '[data-orbit-resume]', function(e) {
+        e.preventDefault();
+        // data.$container.trigger('timer:start');
+        data.self._start_timer(data);
+      });
+      data.$container.on('swipeLeft', function(e) {
+        // alert('left');
+        e.preventDefault();
+        data.$container.trigger('timer:stop');
+        data.self.goto(data, 'prev');
+      });
+      data.$container.on('swipeRight', function(e) {
+        // alert('right');
+        e.preventDefault();
+        data.$container.trigger('timer:stop');
+        data.self.goto(data, 'right');
       });
     },
 
@@ -112,18 +132,45 @@
     },
 
     _start_timer: function(data) {
-      data.$container.timer(data.self.settings.timer);
-      data.$container.on('timer:complete', function() {
-        data.$container.off('timer:complete');
-        data.$timer.css('width', '100%');
+      var callback = function() {
+        console.info('start timer callback invoked');
+        data.self._rebuild_timer(data, '0%');
         data.self.goto(data, 'next', function() {
+          data.timer_stopped_at = undefined;
+          data.timer_time_left = undefined;
           data.self._start_timer(data);
         });
-      });
-      data.$container.on('timer:progress', function(e) {
-        data.$timer.css('width', e.data[0]);
-      });
-      data.$container.trigger('timer:start');
+      };
+      if (typeof data.timer_time_left === 'undefined') {
+        console.info('timer left: ');
+        data.timer_time_left = data.self.settings.timer;
+      }
+      console.info(data.timer_time_left);
+      data.timer_started_again = true;
+      data.timer_started_at = new Date().getTime();
+      data.$timer.animate({'width': '100%'}, data.timer_time_left, 'linear', callback);
+    },
+
+    _stop_timer: function(data) {
+      if (!data.timer_started_again) return;
+      var timer_stopped_at = new Date().getTime();
+      data.timer_started_again = false;
+      data.timer_time_left = timer_stopped_at - data.timer_started_at;
+      var width = ((data.self.settings.timer - data.timer_time_left) / data.self.settings.timer) * 100;
+      width += '%';
+      console.info(width);
+      data.self._rebuild_timer(data, width);
+    },
+
+    _rebuild_timer: function(data, width) {
+      // there is no way to stop Zepto animations,
+      // so re-construct timer to get around this
+      // limitation
+      var $timer = $('<div class="orbit-timer"><span></span></div>');
+      data.$timer.parent().remove();
+      data.$container.append($timer);
+      data.$timer = $timer.find('span');
+      data.$timer.css('width', width);
     },
 
     goto: function(data, index_or_direction, callback) {
