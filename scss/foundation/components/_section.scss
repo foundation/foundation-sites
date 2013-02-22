@@ -5,6 +5,7 @@
 $section-padding: emCalc(15px) !default;
 $section-function-factor: 10% !default;
 $section-border-size: 1px !default;
+$section-title-color: #333 !default;
 $section-title-bg: #efefef !default;
 $section-title-bg-active: darken($section-title-bg, $section-function-factor) !default;
 $section-title-bg-active-tabs: #fff !default;
@@ -64,6 +65,8 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
       a {
         padding: $section-padding;
         display: inline-block;
+        color: $section-title-color;
+        font-size: emCalc(14px);
       }
       &:hover { background-color: darken($section-title-bg, $section-function-factor/2); }
     }
@@ -104,7 +107,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
       z-index: 10;
     }
 
-    &.active { padding-top: ($section-padding * 3) + emCalc(5px);
+    &.active { padding-top: ($section-padding * 3) + emCalc(7px);
 
       .title {
         background-color: $section-title-bg-active-tabs;
@@ -130,15 +133,16 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     section,
     .section { @include section; }
 
-  }
-
-  @media #{$small} {
-    .section-container.tabs {
+    &.tabs {
       @include section-container(false, tabs);
 
       section,
       .section { @include section(tabs); }
     }
+  }
+
+
+  @media #{$small} {
 
     .section-container.vertical-nav {
 
