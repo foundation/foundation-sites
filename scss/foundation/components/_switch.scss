@@ -15,67 +15,139 @@
   #{$switchClasses} {
     position: relative;
     padding: 0;
-
+    background: #fff;
+    border: solid 1px #ccc;
     display: block;
     width: 100%;
+    height: 36px;
     overflow: hidden;
 
     // Sizes
-    &.large label {
-      padding: $button-lrg 0;
-      font-size: emCalc(17px);
+    &.large {
+      height: 44px;
+      label {
+        font-size: emCalc(17px);
+        line-height: 42px;
+      }
+      .switch-paddle {
+        height: 46px;
+        width: 46px;
+
+        &:before { right: 45px; }
+        &:after { left: 45px; }
+      }
+      input:first-of-type:checked ~ .switch-paddle { left: 100%; margin-left: -45px; }
+
     }
-    &.small label {
-    	font-size: emCalc(12px);
-      padding: $button-sml 0;
+    &.small {
+      height: 28px;
+      label {
+      	font-size: emCalc(12px);
+        line-height: 26px;
+      }
+      .switch-paddle {
+        height: 30px;
+        width: 30px;
+
+        &:before { right: 29px; }
+        &:after { left: 29px; }
+      }
+      input:first-of-type:checked ~ .switch-paddle { left: 100%; margin-left: -29px; }
     }
-    &.tiny label {
-    	font-size: emCalc(11px);
-      padding: $button-tny 0;
+    &.tiny {
+      height: 22px;
+      label {
+      	font-size: emCalc(11px);
+        line-height: 20px;
+      }
+      .switch-paddle {
+        height: 24px;
+        width: 24px;
+
+        &:before { right: 23px; }
+        &:after { left: 23px; }
+      }
+      input:first-of-type:checked ~ .switch-paddle { left: 100%; margin-left: -23px; }
     }
 
     label {
       position: relative;
+      left: 0;
       z-index: 2;
-
+      text-align: right;
       float: left;
       width: 50%;
       height: 100%;
       margin: 0;
-      padding: $button-med 0;
-
+      line-height: 34px;
       font-size: emCalc(14px);
       font-weight: bold;
-      text-align: center;
+      text-align: left;
+      padding: 0 6px;
+      @include single-transition(all, .1s, ease-out);
     }
 
-    .slide-button {
+    .switch-paddle {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: -2px;
+      left: -2px;
       z-index: 1;
 
       display: block;
-      width: 50%;
-      height: 100%;
+      width: 38px;
+      height: 38px;
       padding: 0;
 
-      // @include single-transition(all, .1s, ease-out);
+      background: #fff;
+      border: solid 1px darken(#fff, 25%);
+
+      @include single-transition(all, .1s, ease-out);
+
+      &:after {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 1000px;
+        background: lighten($success-color, 50%);
+        position: absolute;
+        left: 37px;
+        -webkit-box-shadow: inset 0px 0px 8px 0px lighten($success-color, 20%);
+        box-shadow: inset 0px 0px 8px 0px lighten($success-color, 20%);
+      }
+      &:before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 1000px;
+        background: #f5f5f5;
+        position: absolute;
+        right: 37px;
+        -webkit-box-shadow: inset 0px 0px 8px 0px darken(#f5f5f5, 20%);
+        box-shadow: inset 0px 0px 8px 0px darken(#f5f5f5, 20%);
+      }
     }
 
     input {
       position: absolute;
+      z-index: 3;
       opacity: 0;
+      width: 50%;
     }
+
+    &.radius { @include radius(4px); }
+    &.radius .switch-paddle { @include radius(3px); }
 
     // Outline the toggles when the inputs are focused
-    input:focus + label {
-      outline: 1px dotted #888;
-    }
+    input:focus + label { outline: 1px dotted #888; }
 
-    input:last-of-type:checked ~ .slide-button {
-      left: 50%;
-    }
+    // Move the paddle to the right position
+    input:first-of-type:checked ~ .switch-paddle { left: 100%; margin-left: -36px; }
+    input:last-of-type + label { text-align: right; }
+    input:not(:checked) + label { opacity: 0; }
+    input:first-of-type + label { left: -50%; }
+    input:first-of-type:checked + label { left: 0%; }
+    input:last-of-type + label { right: -50%; left: auto; }
+    input:last-of-type:checked + label { right: 0%; left: auto; }
 
     // Bugfix for older Webkit, including mobile Webkit. Adapted from:
     // http://css-tricks.com/webkit-sibling-bug/
@@ -92,23 +164,13 @@
 
     .switch-#{$state} {
       label,
-      .slide-button {
-        width: $width * 1%;
-      }
+      .slide-button { width: $width * 1%; }
     }
 
     @for $j from 2 through ($i + 1) {
-
-      .switch-#{$state} input:checked:nth-of-type(#{$j}) ~ .slide-button {
-        left: $width * ($j - 1) * 1%;
-      }
-
+      .switch-#{$state} input:checked:nth-of-type(#{$j}) ~ .slide-button { left: $width * ($j - 1) * 1%; }
     }
-
-    .switch-#{$state} input:checked:last-of-type ~ .slide-button {
-      left: 100 - $width * 1%;
-    }
-
+    .switch-#{$state} input:checked:last-of-type ~ .slide-button { left: 100 - $width * 1%; }
   }
 
 }
