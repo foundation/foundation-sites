@@ -10,8 +10,7 @@
 
 /* TODO & NOTES:
   - Test error return, since some of this code has changed slightly.
-  - scrollTo is not working
-  - move each libs init function into here
+  - scrollTo is not animating
 */
 
 (function () {
@@ -131,7 +130,7 @@
     libs : {},
 
     // methods that can be inherited in libraries
-    lib_methods: {
+    lib_methods : {
       set_data : function (node, data) {
         // this.name references the name of the library calling this method
         var id = this.name + (+new Date());
@@ -211,9 +210,21 @@
       },
 
       // not supported in core Zepto
-      scrollLeft : function(el) {
+      scrollLeft : function (el) {
         if (!el.length) return;
         return ('scrollLeft' in el[0]) ? el[0].scrollLeft : el[0].scrollX;
+      },
+
+      // test for empty object or array
+      empty : function (obj) {
+        if (obj.length && obj.length > 0)    return false;
+        if (obj.length && obj.length === 0)  return true;
+
+        for (var key in obj) {
+            if (hasOwnProperty.call(obj, key))    return false;
+        }
+
+        return true;
       }
     },
 
