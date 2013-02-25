@@ -7,7 +7,7 @@
     version: '4.0.0.alpha',
 
     settings: {
-      timer_speed: 50000,
+      timer_speed: 10000,
       animation_speed: 500,
       bullets: true,
       container_class: 'orbit-container',

@@ -27,6 +27,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
   overflow: hidden;
   width: 100%;
   position: relative;
+  background: #f5f5f5;
 
   .orbit-slides-container {
     list-style: none;
@@ -48,6 +49,8 @@ $orbit-slide-number-padding: emCalc(5px) !default;
         background-color: $orbit-caption-bg;
         color: #fff;
         width: 100%;
+        padding: 10px 14px;
+        font-size: emCalc(14px);
 
         * { color: #fff; }
       }
@@ -60,7 +63,6 @@ $orbit-slide-number-padding: emCalc(5px) !default;
     right: 10px;
     height: 6px;
     width: 100px;
-
     .orbit-progress {
       height: 100%;
       background-color: $orbit-timer-bg-old;
@@ -70,9 +72,30 @@ $orbit-slide-number-padding: emCalc(5px) !default;
     }
 
     & > span {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 0px;
+      width: 11px;
+      height: 14px;
+      border: solid 4px #000;
+      border-top: none;
+      border-bottom: none;
+    }
 
+    &.paused {
+      & > span {
+        right: -6px;
+        top: 9px;
+        width: 11px;
+        height: 14px;
+        border: solid 8px;
+        border-color: transparent transparent transparent #000;
+      }
     }
   }
+
+  &:hover .orbit-timer > span { display: block; }
 
   // Let's get those controls to be right in the center on each side
   .orbit-prev,
@@ -109,5 +132,29 @@ $orbit-slide-number-padding: emCalc(5px) !default;
       margin-left: -8px;
     }
     &:hover > span { border-color: transparent transparent transparent #ccc; }
+  }
+}
+
+.orbit-bullets {
+  margin: 0 auto 30px auto;
+  overflow: hidden;
+  position: relative;
+  top: 10px;
+
+  li {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    float: left;
+    margin-right: 6px;
+    border: solid 2px #000;
+    @include radius(1000px);
+
+    &.active {
+      background: #000;
+    }
+
+    &:last-child { margin-right: 0; }
   }
 }
