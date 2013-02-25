@@ -7,154 +7,240 @@
     version: '4.0.0.alpha',
 
     settings: {
-      timer: 5000,
-      slide_delay: 1500
+      timer_speed: 3000,
+      animation_speed: 500,
+      container_class: 'orbit-container',
+      next_class: 'orbit-next',
+      prev_class: 'orbit-prev',
+      timer_class: 'orbit-timer',
+      timer_paused_class: 'paused',
+      timer_progress_class: 'orbit-progress',
+      slides_container_class: 'orbit-slides-container',
+      caption_class: 'orbit-caption',
+      active_class: 'active',
+      orbit_transition_class: 'orbit-transitioning'
     },
 
-    init: function(scope, method, options) {
+    init: function (scope, method, options) {
       var self = this;
       $('[data-orbit]', scope).each($.proxy(self._init, self));
     },
 
-    _init: function(idx, slider) {
-      // var data = {};
-      this.$container = $(slider).wrap('<div class="orbit-container"></div>').parent();
-      this.$container.append('<a data-orbit-prev href="#">Prev</a>');
-      this.$container.append('<a data-orbit-next href="#">Next</a>');
-      this.$container.append('<a data-orbit-pause href="#">Pause</a>');
-      this.$container.append('<a data-orbit-resume href="#">Resume</a>');
-      this.$container.append('<div class="orbit-timer"><span></span></div>');
-      this.$container.find('[data-orbit-caption]').addClass('orbit-caption');
-      this.$timer = this.$container.find('.orbit-timer > *');
-      this.$slides_container = $(slider).addClass('orbit-slides');
-      this.$slides = this.$slides_container.children();
-      this.$slides_container.append(this.$slides.first().clone());
-      this.$slides_container.prepend(this.$slides.last().clone());
-      this.$slides = this.$slides_container.children();
-      this.$slides_container.css('marginLeft', '-100%');
-      this.activeIndex = 1;
-      // data.self = this;
-      // this.data = data;
-      this._init_events();
-      this._init_dimensions();
-      this._start_timer();
+    _container_html: function() {
+      var self = this;
+      return '<div class="' + self.settings.container_class + '"></div>';
     },
 
-    _init_events: function() {
+    _timer_html: function() {
+      var self = this;
+      return '<div class="' + self.settings.timer_class 
+        + '"><div class="' + self.settings.timer_progress_class 
+        + '"></div></div>';
+    },
+
+    _next_html: function() {
+      var self = this;
+      return '<a href="#" class="' + self.settings.next_class + '">Next</a>';
+    },
+
+    _prev_html: function() {
+      var self = this;
+      return '<a href="#" class="' + self.settings.prev_class + '">Prev</a>';
+    },
+
+    _init: function (idx, slider) {
+
+      var self = this,
+          $slides_container = $(slider),
+          $container = $slides_container.wrap(self._container_html()).parent(),
+          $slides = $slides_container.children();
+      $container.append(self._prev_html());
+      $container.append(self._next_html());
+      
+      $slides_container.addClass(self.settings.slides_container_class);
+
+      $container.append(self._timer_html());
+
+      // duplicate first and last slides
+      $slides_container.append($slides.first().clone());
+      $slides_container.prepend($slides.last().clone());
+
+      // make first "real" slide active
+      $slides.first().addClass(self.settings.active_class);
+
+      // deal with offset due to new slides that are technically duplicates
+      $slides_container.css('marginLeft', '-100%');
+      // this.activeIndex = 1;
+
+      self._init_events($slides_container);
+      self._init_dimensions($slides_container);
+      self._start_timer($slides_container);
+    },
+
+    _init_events: function ($slides_container) {
+      var self = this,
+          $container = $slides_container.parent();
       $(window).on('resize', function() {
-        this.$slides_container.height('');
-        this.$slides_container.height(this.$slides_container.height(this.$container.height()));
-      }.bind(this));
-      this.$container.on('click', '[data-orbit-prev]', function(e) {
-        e.preventDefault();
-        this.$container.trigger('timer:stop');
-        this.goto('prev');
-      }.bind(this));
-      this.$container.on('click', '[data-orbit-next]', function(e) {
-        e.preventDefault();
-        this.$container.trigger('timer:stop');
-        this.goto('next');
-      }.bind(this));
-      this.$container.on('click', '[data-orbit-pause]', function(e) {
-        e.preventDefault();
-        this._stop_timer();
-      }.bind(this));
-      this.$container.on('click', '[data-orbit-resume]', function(e) {
-        e.preventDefault();
-        // data.$container.trigger('timer:start');
-        this._start_timer();
-      }.bind(this));
-      this.$container.on('swipeLeft', function(e) {
-        // alert('left');
-        e.preventDefault();
-        this.$container.trigger('timer:stop');
-        this.goto('prev');
-      }.bind(this));
-      this.$container.on('swipeRight', function(e) {
-        // alert('right');
-        e.preventDefault();
-        this.$container.trigger('timer:stop');
-        this.goto('right');
-      }.bind(this));
+        $slides_container.height('');
+        $slides_container.height($slides_container.height($container.height()));
+      });
+
+      $container
+        .on('click', '.' + self.settings.next_class, function(e) {
+          e.preventDefault();
+          self._rebuild_timer($container, '0%');
+          self.goto($slides_container, 'next', function() {});
+        })
+        .on('click', '.' + self.settings.prev_class, function(e) {
+          e.preventDefault();
+          self._rebuild_timer($container, '0%');
+          self.goto($slides_container, 'prev', function() {});
+        })
+        .on('click', '.' + self.settings.timer_class, function(e) {
+          e.preventDefault();
+          var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
+              $slides_container = $timer.closest('.' + self.settings.container_class)
+                .find('.' + self.settings.slides_container_class);
+          
+          if ($timer.hasClass(self.settings.timer_paused_class)) {
+            self._stop_timer($slides_container);
+          } else {
+            self._start_timer($slides_container);
+          }
+        })
+        ;
+
+
+
+      // this.$container.on('click', '[data-orbit-prev]', function(e) {
+      //   e.preventDefault();
+      //   this.goto('prev');
+      // }.bind(this));
+      // this.$container.on('click', '[data-orbit-next]', function(e) {
+      //   e.preventDefault();
+      //   this.goto('next');
+      // }.bind(this));
+      // this.$container.on('click', '[data-orbit-pause]', function(e) {
+      //   e.preventDefault();
+      //   this._stop_timer();
+      // }.bind(this));
+      // this.$container.on('click', '[data-orbit-resume]', function(e) {
+      //   e.preventDefault();
+      //   // data.$container.trigger('timer:start');
+      //   this._start_timer();
+      // }.bind(this));
+      // this.$container.on('swipeLeft', function(e) {
+      //   // alert('left');
+      //   e.preventDefault();
+      //   this.$container.trigger('timer:stop');
+      //   this.goto('prev');
+      // }.bind(this));
+      // this.$container.on('swipeRight', function(e) {
+      //   // alert('right');
+      //   e.preventDefault();
+      //   this.$container.trigger('timer:stop');
+      //   this.goto('right');
+      // }.bind(this));
     },
 
-    _init_dimensions: function() {
-      this.$slides_container.css('width', this.$slides.length * 100 + '%');
-      this.$slides.css('width', 100 / this.$slides.length + '%');
-      this.$slides_container.height(this.$container.height());
-      this.$slides_container.css('width', this.$slides.length * 100 + '%');
+    _init_dimensions: function ($slides_container) {
+      var $container = $slides_container.parent(),
+          $slides = $slides_container.children();
+
+      $slides_container.css('width', $slides.length * 100 + '%');
+      $slides.css('width', 100 / $slides.length + '%');
+      $slides_container.height($container.height());
+      $slides_container.css('width', $slides.length * 100 + '%');
     },
 
-    _start_timer: function() {
+    _start_timer: function ($slides_container) {
+      var self = this,
+          $container = $slides_container.parent();
       var callback = function() {
-        console.info('start timer callback invoked');
-        this._rebuild_timer('0%');
-        this.goto('next', function() {
-          this.timer_progress = 0;
-          this._start_timer();
-        }.bind(this));
-      }.bind(this);
-      
-      if (typeof this.timer_progress === 'undefined') {
-        this.timer_progress = 0;
-      }
-      var timer_delay = this.settings.timer - (this.timer_progress * this.settings.timer);
-      this.$timer.animate({'width': '100%'}, timer_delay, 'linear', callback);
+        self._rebuild_timer($container, '0%');
+        self.goto($slides_container, 'next', function() {
+          self._start_timer($slides_container);
+        });
+      };
+
+      var $timer = $container.find('.' + self.settings.timer_class),
+          $progress = $timer.find('.' + self.settings.timer_progress_class),
+          progress_pct = ($progress.width() / $timer.width()),
+          delay = self.settings.timer_speed - (progress_pct * self.settings.timer_speed);
+
+      $progress.animate({'width': '100%'}, delay, 'linear', callback);
     },
 
-    _stop_timer: function() {
-      this.timer_progress = this.$timer.width() / this.$timer.parent().width();
-      this._rebuild_timer(this.timer_progress * 100 + '%');
-      
+    _stop_timer: function ($slides_container) {
+      var self = this,
+          $container = $slides_container.parent(),
+          $timer = $container.find('.' + self.settings.timer_class),
+          $progress = $timer.find('.' + self.settings.timer_progress_class),
+          progress_pct = $progress.width() / $timer.width()
+      self._rebuild_timer($container, progress_pct * 100 + '%');
     },
 
-    _rebuild_timer: function(width) {
-      // there is no way to stop Zepto animations,
-      // so re-construct timer to get around this
-      // limitation
-      var $timer = $('<div class="orbit-timer"><span></span></div>');
-      this.$timer.parent().remove();
-      this.$container.append($timer);
-      this.$timer = $timer.find('span');
-      this.$timer.css('width', width);
+    _rebuild_timer: function ($container, width_pct) {
+      // Zepto is unable to stop animations since they
+      // are css-based. This is a workaround for that
+      // limitation, which rebuilds the dom element
+      // thus stopping the animation
+      var self = this,
+          $timer = $container.find('.' + self.settings.timer_class),
+          $new_timer = $(self._timer_html()),
+          $new_timer_progress = $new_timer.find('.' + self.settings.timer_progress_class);
+
+      $timer.remove();
+      $container.append($new_timer);
+      $new_timer_progress.css('width', width_pct);
+      $new_timer.addClass(self.settings.timer_paused_class);
     },
 
-    goto: function(index_or_direction, callback) {
-      if (this.$container.hasClass("orbit-transitioning")) {
-        console.info('is transitioning');
+    goto: function($slides_container, index_or_direction, callback) {
+      var self = this,
+          $container = $slides_container.parent(),
+          $slides = $slides_container.children(),
+          $active_slide = $slides_container.find('.' + self.settings.active_class),
+          active_index = $active_slide.index();
+
+      if ($container.hasClass(self.settings.orbit_transition_class)) {
         return false;
       }
+
       if (index_or_direction === 'prev') {
-        if (this.activeIndex === 0) {
-          this.activeIndex = this.$slides.length - 1;
+        if (active_index === 0) {
+          active_index = $slides.length - 1;
         }
         else {
-          this.activeIndex--;
+          active_index--;
         }
       }
       else if (index_or_direction === 'next') {
-        this.activeIndex = (this.activeIndex+1)%this.$slides.length;
+        active_index = (active_index+1) % $slides.length;
       }
       else if (typeof index_or_direction === 'number') {
-        this.activeIndex = (index%this.$slides.length);
+        active_index = (index_or_direction % this.$slides.length);
       }
-      if (this.activeIndex === (this.$slides.length - 1) && index_or_direction === 'next') {
-        this.$slides_container.css('marginLeft', '0%');
-        this.activeIndex = 1;
+      if (active_index === ($slides.length - 1) && index_or_direction === 'next') {
+        $slides_container.css('marginLeft', '0%');
+        active_index = 1;
       }
-      else if (this.activeIndex === 0 && index_or_direction === 'prev') {
-        this.$slides_container.css('marginLeft', '-' + (this.$slides.length - 1)*100 + '%');
-        this.activeIndex = this.$slides.length - 2;
+      else if (active_index === 0 && index_or_direction === 'prev') {
+        $slides_container.css('marginLeft', '-' + ($slides.length - 1) * 100 + '%');
+        active_index = $slides.length - 2;
       }
-      this.$container.addClass('orbit-transitioning');
-      this.$slides_container.animate({
-        'marginLeft' : '-' + (this.activeIndex*100) + '%'
-      }, 'linear', this.settings.slide_delay, function() {
-        this.$container.removeClass('orbit-transitioning');
+
+      $container.addClass(self.settings.orbit_transition_class);
+      $active_slide.removeClass(self.settings.active_class);
+      $($slides[active_index]).addClass(self.settings.active_class);
+      $slides_container.animate({
+        'marginLeft' : '-' + (active_index * 100) + '%'
+      }, self.settings.animation_speed, 'ease', function() {
+        $container.removeClass(self.settings.orbit_transition_class);
+        // remove existing active class and append to new item
         callback();
-      }.bind(this));        
+      });
 
     }
-  }
-
+  };
 }(Foundation.zj, this, this.document));
