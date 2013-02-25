@@ -112,8 +112,7 @@
           } else {
             self._start_timer($slides_container);
           }
-        })
-        ;
+        });
     },
 
     _init_dimensions: function ($slides_container) {
@@ -207,14 +206,20 @@
       $container.addClass(self.settings.orbit_transition_class);
       $active_slide.removeClass(self.settings.active_class);
       $($slides[active_index]).addClass(self.settings.active_class);
-      $slides_container.animate({
-        'marginLeft' : '-' + (active_index * 100) + '%'
-      }, self.settings.animation_speed, 'ease', function() {
+      var new_margin_left = '-' + (active_index * 100) + '%';
+      // Check to see if animation will occur, otherwise perform
+      // callbacks manually
+      if ($slides_container.css('marginLeft') === new_margin_left) {
         $container.removeClass(self.settings.orbit_transition_class);
-        // remove existing active class and append to new item
         callback();
-      });
-
+      } else {
+        $slides_container.animate({
+          'marginLeft' : new_margin_left
+        }, self.settings.animation_speed, 'ease', function() {
+          $container.removeClass(self.settings.orbit_transition_class);
+          callback();
+        });
+      }
     }
   };
 }(Foundation.zj, this, this.document));
