@@ -133,3 +133,28 @@ $orbit-slide-number-padding: emCalc(5px) !default;
     &:hover > span { border-color: transparent transparent transparent #ccc; }
   }
 }
+
+.orbit-bullets {
+  margin: 0 auto 30px auto;
+  overflow: hidden;
+  position: relative;
+  top: 10px;
+  width: 68px;
+
+  li {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    float: left;
+    margin-right: 6px;
+    border: solid 2px #000;
+    @include radius(1000px);
+
+    &.active {
+      background: #000;
+    }
+
+    &:last-child { margin-right: 0; }
+  }
+}
