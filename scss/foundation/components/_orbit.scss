@@ -1,39 +1,44 @@
 // Orbit Settings
 
 $orbit-caption-bg-old-browser: #000 !default;
-$orbit-caption-bg: rgba(0,0,0,.6) !default;
+$orbit-caption-bg: rgb(0,0,0) !default;
 $orbit-caption-font-color: #fff !default;
 $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #222 !default;
 $orbit-thumb-border-color: #000 !default;
 $orbit-thumb-border-width: 2px !default;
 $orbit-thumb-border-style: solid !default;
-$orbit-slide-number-bg: rgba(0,0,0,0.7) !default;
+$orbit-slide-number-bg: rgb(0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: emCalc(5px) !default;
-
-
 
 
 .orbit-container {
   overflow: hidden;
   width: 100%;
   position: relative;
+
   .orbit-slides-container {
-    // apply margin-left here
     list-style: none;
     margin: 0;
     padding: 0;
+    position: relative;
+
+    img { display: block; }
+
     &>* {
       position: relative;
       float: left;
       height: 100%;
+
       .orbit-caption {
         position: absolute;
         bottom: 0;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgb(0,0,0);
         color: #fff;
         width: 100%;
+
+        * { color: #fff; }
       }
     }
   }
@@ -44,9 +49,10 @@ $orbit-slide-number-padding: emCalc(5px) !default;
     height: 20px;
     width: 60px;
     background-color: #eee;
+
     .orbit-progress {
       height: 100%;
-      background-color: #ccc;
+      background-color: #333;
       display: block;
       width: 0%;
     }

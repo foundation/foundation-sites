@@ -61,6 +61,11 @@ $include-print-styles: true !default;
   @return $pxWidth / $em-base * 1em;
 }
 
+// Creating rems and pixels
+@function remCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1rem;
+}
+
 // Grid Calculation for Percentages
 @function gridCalc($colNumber, $totalColumns) {
   @return percentage(($colNumber / $totalColumns));
