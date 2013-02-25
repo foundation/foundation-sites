@@ -2,11 +2,14 @@
 
 $orbit-caption-bg-old-browser: #000 !default;
 $orbit-caption-bg-old: rgb(0,0,0) !default;
-$orbit-caption-bg: rgba(0,0,0,0.7) !default;
+$orbit-caption-bg: rgba(0,0,0,0.6) !default;
 $orbit-caption-font-color: #fff !default;
 
 $orbit-nav-bg-old: rgb(0,0,0) !default;
-$orbit-nav-bg: rgba(0,0,0,0.7) !default;
+$orbit-nav-bg: rgba(0,0,0,0.6) !default;
+
+$orbit-timer-bg-old: rgb(0,0,0) !default;
+$orbit-timer-bg: rgba(0,0,0,0.6) !default;
 
 $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #222 !default;
@@ -53,22 +56,27 @@ $orbit-slide-number-padding: emCalc(5px) !default;
 
   .orbit-timer {
     position: absolute;
-    top: 0;
-    right: 0;
-    height: 20px;
-    width: 60px;
-    background-color: #eee;
+    top: 10px;
+    right: 10px;
+    height: 6px;
+    width: 100px;
 
     .orbit-progress {
       height: 100%;
-      background-color: #333;
+      background-color: $orbit-timer-bg-old;
+      background-color: $orbit-timer-bg;
       display: block;
       width: 0%;
+    }
+
+    & > span {
+
     }
   }
 
   // Let's get those controls to be right in the center on each side
-  .orbit-prev, .orbit-next {
+  .orbit-prev,
+  .orbit-next {
     position: absolute;
     top: 50%;
     margin-top: -25px;
@@ -90,20 +98,16 @@ $orbit-slide-number-padding: emCalc(5px) !default;
       border: solid 16px;
     }
   }
-  .orbit-prev {
-    left: 0;
-
-    & > span {
-      border-color: transparent #fff transparent transparent;
-    }
+  .orbit-prev { left: 0;
+    & > span { border-color: transparent #fff transparent transparent; }
+    &:hover > span { border-color: transparent #ccc transparent transparent; }
   }
-  .orbit-next {
-    right: 0;
-
+  .orbit-next { right: 0;
     & > span {
       border-color: transparent transparent transparent #fff;
       left: 50%;
       margin-left: -8px;
     }
+    &:hover > span { border-color: transparent transparent transparent #ccc; }
   }
 }

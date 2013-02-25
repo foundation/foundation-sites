@@ -59,7 +59,7 @@
     _timer_html: function() {
       var self = this;
       return '<div class="' + self.settings.timer_class
-        + '"><div class="' + self.settings.timer_progress_class
+        + '"><span></span><div class="' + self.settings.timer_progress_class
         + '"></div></div>';
     },
 
@@ -286,7 +286,7 @@
       var $bullets = $container.find('.' + self.settings.bullets_container_class);
       if ($bullets.length === 1) {
         $bullets.children().removeClass(self.settings.bullets_active_class);
-        $($bullets.children()[active_index-1]).addClass(self.settings.bullets_active_class);  
+        $($bullets.children()[active_index-1]).addClass(self.settings.bullets_active_class);
       }
       var new_margin_left = '-' + (active_index * 100) + '%';
       // Check to see if animation will occur, otherwise perform
