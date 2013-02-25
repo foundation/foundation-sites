@@ -109,38 +109,6 @@
           }
         })
         ;
-
-
-
-      // this.$container.on('click', '[data-orbit-prev]', function(e) {
-      //   e.preventDefault();
-      //   this.goto('prev');
-      // }.bind(this));
-      // this.$container.on('click', '[data-orbit-next]', function(e) {
-      //   e.preventDefault();
-      //   this.goto('next');
-      // }.bind(this));
-      // this.$container.on('click', '[data-orbit-pause]', function(e) {
-      //   e.preventDefault();
-      //   this._stop_timer();
-      // }.bind(this));
-      // this.$container.on('click', '[data-orbit-resume]', function(e) {
-      //   e.preventDefault();
-      //   // data.$container.trigger('timer:start');
-      //   this._start_timer();
-      // }.bind(this));
-      // this.$container.on('swipeLeft', function(e) {
-      //   // alert('left');
-      //   e.preventDefault();
-      //   this.$container.trigger('timer:stop');
-      //   this.goto('prev');
-      // }.bind(this));
-      // this.$container.on('swipeRight', function(e) {
-      //   // alert('right');
-      //   e.preventDefault();
-      //   this.$container.trigger('timer:stop');
-      //   this.goto('right');
-      // }.bind(this));
     },
 
     _init_dimensions: function ($slides_container) {
