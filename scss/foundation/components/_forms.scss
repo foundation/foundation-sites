@@ -26,7 +26,7 @@ $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $fieldset-border-style: solid !default;
 $fieldset-border-width: 1px !default;
 $fieldset-border-color: #ddd !default;
-$fieldset-padding: emCalc(12px) emCalc(12px) 0 !default;
+$fieldset-padding: emCalc(20px) emCalc(12px) !default;
 $fieldset-margin: emCalc(18px) 0 !default;
 
 // We use these to style the legends when you use them
@@ -150,13 +150,13 @@ $input-error-message-font-color-alt: #333 !default;
     $bg-lightness: lightness($bg);
     background: $bg;
     border-color: darken($bg, 10%);
+    border-right: none;
 
     // Control the font color based on background brightness
     @if $bg-lightness > 70% or $bg == yellow { color: $input-prefix-font-color; }
     @else { color: $input-prefix-font-color-alt; }
   }
 
-  #{$default-float}: 2px;
 }
 
 // We use this mixin to create postfix label styles
@@ -166,13 +166,13 @@ $input-error-message-font-color-alt: #333 !default;
     $bg-lightness: lightness($bg);
     background: $bg;
     border-color: darken($bg, 15%);
+    border-left: none;
 
     // Control the font color based on background brightness
     @if $bg-lightness > 70%  or $bg == yellow { color: $input-prefix-font-color; }
     @else { color: $input-prefix-font-color-alt; }
   }
 
-  #{$default-opposite}: 2px;
 }
 
 // We use this mixin to style fieldsets
@@ -246,8 +246,12 @@ label { @include form-label;
 .postfix.button.radius { @include side-radius(right, $global-radius); }
 
 /* Separate prefix and postfix styles when on span so buttons keep their own */
-span.prefix { @include prefix(); @include side-radius(left, $global-radius); }
-span.postfix { @include postfix(); @include side-radius(right, $global-radius); }
+span.prefix { @include prefix();
+  &.radius { @include side-radius(left, $global-radius); }
+}
+span.postfix { @include postfix();
+  &.radius { @include side-radius(right, $global-radius); }
+}
 
 /* We use this to get basic styling on all basic form elements */
 input[type="text"],

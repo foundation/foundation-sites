@@ -45,12 +45,12 @@
 
     _next_html: function() {
       var self = this;
-      return '<a href="#" class="' + self.settings.next_class + '">Next</a>';
+      return '<a href="#" class="' + self.settings.next_class + '">Next <span></span></a>';
     },
 
     _prev_html: function() {
       var self = this;
-      return '<a href="#" class="' + self.settings.prev_class + '">Prev</a>';
+      return '<a href="#" class="' + self.settings.prev_class + '">Prev <span></span></a>';
     },
 
     _init: function (idx, slider) {
@@ -80,7 +80,7 @@
     _init_events: function ($slides_container) {
       var self = this,
           $container = $slides_container.parent();
-      
+
       $(window).on('load', function() {
         $slides_container.height('');
         $slides_container.height($slides_container.height($container.height()));
@@ -143,7 +143,7 @@
           if (typeof data === 'undefined') {
             data = {};
           }
-          
+
           data.delta_x = e.touches[0].pageX - data.start_page_x;
 
           if ( typeof data.is_scrolling === 'undefined') {
