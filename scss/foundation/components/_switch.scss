@@ -81,6 +81,12 @@ $switch-label-outline:            1px dotted #888 !default;
     opacity: 0;
     width: 50%;
     height: 100%;
+
+    // Hover and focus styles for the paddle
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
   }
 
   // The toggle area for radio switches. We call is a paddle.
@@ -168,6 +174,16 @@ $switch-label-outline:            1px dotted #888 !default;
                           1000px 0 0 980px $positive-color,
                           -2px 0 10px 0 rgba(0,0,0,0.07),
                           -1000px 0 0 1000px $negative-color;
+    }
+
+    &:hover,
+    &:focus {
+      & + #{$switch-class}-paddle {
+        background: $paddle-bg;
+        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 25%) 100%);
+        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 25%) 100%);
+        background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 25%) 100%);
+      }
     }
   }
 
