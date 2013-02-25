@@ -7,7 +7,7 @@
     version: '4.0.0.alpha',
 
     settings: {
-      timer_speed: 3000,
+      timer_speed: 50000,
       animation_speed: 500,
       container_class: 'orbit-container',
       next_class: 'orbit-next',
@@ -33,8 +33,8 @@
 
     _timer_html: function() {
       var self = this;
-      return '<div class="' + self.settings.timer_class 
-        + '"><div class="' + self.settings.timer_progress_class 
+      return '<div class="' + self.settings.timer_class
+        + '"><div class="' + self.settings.timer_progress_class
         + '"></div></div>';
     },
 
@@ -83,7 +83,7 @@
       $(document).on('click', '[data-orbit-link]', function(e) {
         var id = $(e.currentTarget).attr('data-orbit-link'),
             $slide = $slides_container.find('[data-orbit-slide=' + id + ']').first();
-        
+
         if ($slide.length === 1) {
           self._rebuild_timer($container, '0%');
           self.goto($slides_container, $slide.index(), function() {});
@@ -106,7 +106,7 @@
           var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
               $slides_container = $timer.closest('.' + self.settings.container_class)
                 .find('.' + self.settings.slides_container_class);
-          
+
           if ($timer.hasClass(self.settings.timer_paused_class)) {
             self._stop_timer($slides_container);
           } else {
@@ -129,7 +129,7 @@
     _start_timer: function ($slides_container) {
       var self = this,
           $container = $slides_container.parent();
-      
+
       var callback = function() {
         self._rebuild_timer($container, '0%');
         self.goto($slides_container, 'next', function() {

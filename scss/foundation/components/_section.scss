@@ -149,13 +149,6 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
 
     section,
     .section { @include section; }
-
-    &.tabs {
-      @include section-container(false, tabs);
-
-      section,
-      .section { @include section(tabs); }
-    }
   }
 
 
@@ -166,6 +159,13 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
 
       section,
       .section { @include section(vertical-nav); }
+    }
+
+    .section-container.tabs {
+      @include section-container(false, tabs);
+
+      section,
+      .section { @include section(tabs); }
     }
   }
 
