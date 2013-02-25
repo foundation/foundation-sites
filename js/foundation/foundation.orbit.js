@@ -9,6 +9,7 @@
     settings: {
       timer_speed: 50000,
       animation_speed: 500,
+      bullets: true,
       container_class: 'orbit-container',
       next_class: 'orbit-next',
       prev_class: 'orbit-prev',
@@ -16,6 +17,8 @@
       timer_paused_class: 'paused',
       timer_progress_class: 'orbit-progress',
       slides_container_class: 'orbit-slides-container',
+      bullets_container_class: 'orbit-bullets',
+      bullets_active_class: 'active',
       caption_class: 'orbit-caption',
       active_class: 'active',
       orbit_transition_class: 'orbit-transitioning'
@@ -36,6 +39,23 @@
       return '<div class="' + self.settings.container_class + '"></div>';
     },
 
+    _bullets_container_html: function($slides) {
+      var self = this,
+          $list = $('<ol class="' + self.settings.bullets_container_class + '"></ol>');
+      $slides.each(function(idx, slide) {
+        var $item = $('<li data-orbit-slide-number="' + (idx+1) + '" class=""></li>');
+        if (idx === 0) {
+          $item.addClass(self.settings.bullets_active_class);
+        }
+        $list.append($item);
+      });
+      return $list;
+    },
+
+    _bullet_html: function() {
+      var self = this;
+    },
+
     _timer_html: function() {
       var self = this;
       return '<div class="' + self.settings.timer_class
@@ -54,7 +74,6 @@
     },
 
     _init: function (idx, slider) {
-
       var self = this,
           $slides_container = $(slider),
           $container = $slides_container.wrap(self._container_html()).parent(),
@@ -64,6 +83,9 @@
       $container.append(self._next_html());
       $slides_container.addClass(self.settings.slides_container_class);
       $container.append(self._timer_html());
+      if (self.settings.bullets) {
+        $container.append(self._bullets_container_html($slides));
+      }
       // To better support the "sliding" effect it's easier
       // if we just clone the first and last slides
       $slides_container.append($slides.first().clone());
@@ -123,6 +145,11 @@
           } else {
             self._start_timer($slides_container);
           }
+        })
+        .on('click', '[data-orbit-slide-number]', function(e) {
+          e.preventDefault();
+          self._rebuild_timer($container, '0%');
+          self.goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
         })
         .on('touchstart', function(e) {
           var data = {
@@ -251,10 +278,16 @@
         $slides_container.css('marginLeft', '-' + ($slides.length - 1) * 100 + '%');
         active_index = $slides.length - 2;
       }
-
+      // Start transition, make next slide active
       $container.addClass(self.settings.orbit_transition_class);
       $active_slide.removeClass(self.settings.active_class);
       $($slides[active_index]).addClass(self.settings.active_class);
+      // Make next bullet active
+      var $bullets = $container.find('.' + self.settings.bullets_container_class);
+      if ($bullets.length === 1) {
+        $bullets.children().removeClass(self.settings.bullets_active_class);
+        $($bullets.children()[active_index-1]).addClass(self.settings.bullets_active_class);  
+      }
       var new_margin_left = '-' + (active_index * 100) + '%';
       // Check to see if animation will occur, otherwise perform
       // callbacks manually
