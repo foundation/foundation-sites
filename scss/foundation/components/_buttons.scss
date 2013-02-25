@@ -3,37 +3,37 @@
 //
 
 // We use these to build padding for buttons.
-$button-med: emCalc(10px)                                             !default;
-$button-tny: emCalc(5px)                                              !default;
-$button-sml: emCalc(7px)                                              !default;
-$button-lrg: emCalc(14px)                                             !default;
+$button-med:              emCalc(12px) !default;
+$button-tny:              emCalc(7px) !default;
+$button-sml:              emCalc(9px) !default;
+$button-lrg:              emCalc(16px) !default;
 
 // We use this to control the display property.
-$button-display: inline-block                                         !default;
+$button-display:          inline-block !default;
 
 // We use these to control button text styles.
-$button-font-color: #fff                                              !default;
-$button-font-color-alt: #333                                          !default;
-$button-font-med: emCalc(14px)                                        !default;
-$button-font-tny: emCalc(10px)                                        !default;
-$button-font-sml: emCalc(11px)                                        !default;
-$button-font-lrg: emCalc(18px)                                        !default;
-$button-font-weight: bold                                             !default;
-$button-font-align: center                                            !default;
+$button-font-color:       #fff !default;
+$button-font-color-alt:   #333 !default;
+$button-font-med:         emCalc(16px) !default;
+$button-font-tny:         emCalc(11px) !default;
+$button-font-sml:         emCalc(13px) !default;
+$button-font-lrg:         emCalc(20px) !default;
+$button-font-weight:      bold !default;
+$button-font-align:       center !default;
 
 // We use these to control various hover effects.
-$button-function-factor: 10%                                          !default;
+$button-function-factor:  10% !default;
 
 // We use these to control button border styles.
-$button-border-width: 1px                                             !default;
-$button-border-style: solid                                           !default;
-$button-border-color: darken($primary-color, $button-function-factor) !default;
+$button-border-width:     1px !default;
+$button-border-style:     solid !default;
+$button-border-color:     darken($primary-color, $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
-$button-radius: $global-radius                                        !default;
+$button-radius:           $global-radius !default;
 
 // We use this to set default opacity for disabled buttons.
-$button-disabled-opacity: 0.6                                         !default;
+$button-disabled-opacity: 0.6 !default;
 
 
 //
@@ -49,7 +49,7 @@ $button-disabled-opacity: 0.6                                         !default;
     font-family: inherit;
     font-weight: $button-font-weight;
     line-height: 1;
-    margin: 0;
+    margin: 0 0 emCalc(20px) 0;
     position: relative;
     text-decoration: none;
     text-align: $button-font-align;
@@ -162,6 +162,7 @@ $button-disabled-opacity: 0.6                                         !default;
 // Only include these classes if the variable is true, otherwise they'll be left out.
 @if $include-html-classes {
 
+  // Default styles applied outside of media query
   .button {
     @include button-base($display:block);
     @include button-size;
@@ -174,7 +175,7 @@ $button-disabled-opacity: 0.6                                         !default;
     &.large  { @include button-size($padding:$button-lrg); }
     &.small  { @include button-size($padding:$button-sml); }
     &.tiny   { @include button-size($padding:$button-tny); }
-    &.expand { @include button-size($padding:$button-med, $full-width:true); }
+    &.expand { @include button-size($padding:false, $full-width:true); }
 
     &.left-align  { text-align: left; text-indent: emCalc(12px); }
     &.right-align { text-align: right; padding-right: emCalc(12px); }
@@ -195,8 +196,7 @@ $button-disabled-opacity: 0.6                                         !default;
     &.large { @include button-size($padding:false, $is-input:$button-lrg); }
   }
 
-  * .button { font-size: 1em; }
-
+  // Styles for any browser or device that support media queries
   @media only screen {
 
     .button {
@@ -213,6 +213,7 @@ $button-disabled-opacity: 0.6                                         !default;
 
   }
 
+  // Additional styles for screens larger than 768px
   @media #{$small} {
     .button {
       @include button-base($style:false, $display:inline-block);

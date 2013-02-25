@@ -1,11 +1,4 @@
 //
-// Button Group Variables
-//
-
-// We use this to control margin below button groups.
-$button-group-bottom-margin: emCalc(20px) !default;
-
-//
 // Button Group Mixins
 //
 
@@ -13,7 +6,7 @@ $button-group-bottom-margin: emCalc(20px) !default;
 @mixin button-group-container($styles:true) {
   @if $styles {
     list-style: none;
-    margin: 0 0 $button-group-bottom-margin;
+    margin: 0;
     @include clearfix();
   }
 }
@@ -47,7 +40,7 @@ $button-group-bottom-margin: emCalc(20px) !default;
 
 }
 
-
+// Only include these CSS classes if $include-html-classes: true
 @if $include-html-classes {
 
   /* Button Groups */
