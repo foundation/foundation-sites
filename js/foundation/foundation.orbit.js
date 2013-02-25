@@ -23,6 +23,11 @@
 
     init: function (scope, method, options) {
       var self = this;
+
+      if (typeof method === 'object') {
+        $.extend(true, self.settings, method);
+      }
+
       $('[data-orbit]', scope).each($.proxy(self._init, self));
     },
 
