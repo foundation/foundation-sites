@@ -80,6 +80,12 @@
     _init_events: function ($slides_container) {
       var self = this,
           $container = $slides_container.parent();
+      
+      $(window).on('load', function() {
+        $slides_container.height('');
+        $slides_container.height($slides_container.height($container.height()));
+      });
+
       $(window).on('resize', function() {
         $slides_container.height('');
         $slides_container.height($slides_container.height($container.height()));
