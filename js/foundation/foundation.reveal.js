@@ -76,8 +76,10 @@
         })
         .on('open.fndtn.reveal', '.reveal-modal', this.settings.open)
         .on('opened.fndtn.reveal', '.reveal-modal', this.settings.opened)
+        .on('opened.fndtn.reveal', '.reveal-modal', this.open_video)
         .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
-        .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed);
+        .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
+        .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
     },
 
     open : function (target) {
@@ -141,7 +143,6 @@
     show : function (el, css) {
       // is modal
       if (css) {
-        console.log(this.locked)
         if (/pop/i.test(this.settings.animation)) {
           css.top = $(window).scrollTop() - this.offset + 'px';
           var end_css = {
@@ -153,7 +154,6 @@
             return el
               .css(css)
               .animate(end_css, this.settings.animationSpeed, 'linear', function () {
-                console.log(this.locked)
                 this.locked = false;
                 el.trigger('opened');
               }.bind(this))
@@ -175,8 +175,6 @@
           }.bind(this), this.settings.animationSpeed / 2);
         }
 
-        // this.locked = false;
-
         return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened');
       }
 
@@ -192,7 +190,6 @@
       // is modal
       if (css) {
         if (/pop/i.test(this.settings.animation)) {
-          console.log('pop');
           var end_css = {
             // need to figure out why this doesn't work.
             // top: $(window).scrollTop() - this.offset + 'px',
@@ -230,9 +227,31 @@
         return el.fadeOut(this.settings.animationSpeed / 2);
       }
 
-      // this.locked = false;
-
       return el.hide();
+    },
+
+    close_video : function (e) {
+      var video = $(this).find('.flex-video'),
+          iframe = video.find('iframe');
+
+      if (iframe.length > 0) {
+        iframe.attr('data-src', iframe[0].src);
+        iframe.attr('src', 'about:blank');
+        video.fadeOut(100);  
+      }
+    },
+
+    open_video : function (e) {
+      var video = $(this).find('.flex-video'),
+          iframe = video.find('iframe');
+
+      if (iframe.length > 0) {
+        var data_src = iframe.attr('data-src');
+        if (typeof data_src === 'string') {
+          iframe[0].src = iframe.attr('data-src');
+        }
+        video.fadeIn(100);
+      }
     },
 
     cache_offset : function (modal) {
