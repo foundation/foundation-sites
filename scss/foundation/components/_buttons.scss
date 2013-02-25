@@ -184,6 +184,7 @@ $button-disabled-opacity: 0.6                                         !default;
       &.success { @include button-style($bg:$success-color, $disabled:true); }
       &.alert { @include button-style($bg:$alert-color, $disabled:true); }
     }
+
   }
 
   input.button,
@@ -193,6 +194,8 @@ $button-disabled-opacity: 0.6                                         !default;
     &.small { @include button-size($padding:false, $is-input:$button-sml); }
     &.large { @include button-size($padding:false, $is-input:$button-lrg); }
   }
+
+  * .button { font-size: 1em; }
 
   @media only screen {
 
