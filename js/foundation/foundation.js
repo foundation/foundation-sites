@@ -97,12 +97,11 @@
     },
 
     init_lib : function (lib, args) {
-      return this.catch(function () {
-        // hasOwnProperty needs a polyfill
+      // return this.catch(function () {
         if (this.libs.hasOwnProperty(lib)) {
           return this.libs[lib].init.apply(this.libs[lib], args);
         }
-      }.bind(this), lib);
+      // }.bind(this), lib);
     },
 
     catch : function (fun, lib) {
@@ -204,8 +203,8 @@
         clearTimeout(this.scrollToTimerCache);
 
         this.scrollToTimerCache = setTimeout(function() {
-            el.scrollTop = el.scrollTop + perTick;
-            this.scrollTo(el, to, duration - 10);
+          el.scrollTop = el.scrollTop + perTick;
+          this.scrollTo(el, to, duration - 10);
         }, 10);
       },
 
@@ -221,7 +220,7 @@
         if (obj.length && obj.length === 0)  return true;
 
         for (var key in obj) {
-            if (hasOwnProperty.call(obj, key))    return false;
+          if (hasOwnProperty.call(obj, key))    return false;
         }
 
         return true;
