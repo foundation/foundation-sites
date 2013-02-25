@@ -18,7 +18,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
 .orbit-container {
   overflow: hidden;
   width: 100%;
-  .orbit-slides {
+  .orbit-slides-container {
     // apply margin-left here
     list-style: none;
     margin: 0;
@@ -39,7 +39,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
   .orbit-timer {
     height: 20px;
     width: 100%;
-    &>* {
+    .orbit-progress {
       height: 100%;
       background-color: #ccc;
       display: block;

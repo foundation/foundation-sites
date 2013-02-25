@@ -54,23 +54,18 @@
           $slides_container = $(slider),
           $container = $slides_container.wrap(self._container_html()).parent(),
           $slides = $slides_container.children();
+
       $container.append(self._prev_html());
       $container.append(self._next_html());
-      
       $slides_container.addClass(self.settings.slides_container_class);
-
       $container.append(self._timer_html());
-
-      // duplicate first and last slides
+      // To better support the "sliding" effect it's easier
+      // if we just clone the first and last slides
       $slides_container.append($slides.first().clone());
       $slides_container.prepend($slides.last().clone());
-
-      // make first "real" slide active
-      $slides.first().addClass(self.settings.active_class);
-
-      // deal with offset due to new slides that are technically duplicates
+      // Make the first "real" slide active
       $slides_container.css('marginLeft', '-100%');
-      // this.activeIndex = 1;
+      $slides.first().addClass(self.settings.active_class);
 
       self._init_events($slides_container);
       self._init_dimensions($slides_container);
@@ -83,6 +78,16 @@
       $(window).on('resize', function() {
         $slides_container.height('');
         $slides_container.height($slides_container.height($container.height()));
+      });
+
+      $(document).on('click', '[data-orbit-link]', function(e) {
+        var id = $(e.currentTarget).attr('data-orbit-link'),
+            $slide = $slides_container.find('[data-orbit-slide=' + id + ']').first();
+        
+        if ($slide.length === 1) {
+          self._rebuild_timer($container, '0%');
+          self.goto($slides_container, $slide.index(), function() {});
+        }
       });
 
       $container
@@ -124,6 +129,7 @@
     _start_timer: function ($slides_container) {
       var self = this,
           $container = $slides_container.parent();
+      
       var callback = function() {
         self._rebuild_timer($container, '0%');
         self.goto($slides_container, 'next', function() {
@@ -187,7 +193,7 @@
         active_index = (active_index+1) % $slides.length;
       }
       else if (typeof index_or_direction === 'number') {
-        active_index = (index_or_direction % this.$slides.length);
+        active_index = (index_or_direction % $slides.length);
       }
       if (active_index === ($slides.length - 1) && index_or_direction === 'next') {
         $slides_container.css('marginLeft', '0%');
