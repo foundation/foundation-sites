@@ -84,7 +84,7 @@
       $slides_container.addClass(self.settings.slides_container_class);
       $container.append(self._timer_html());
       if (self.settings.bullets) {
-        $container.append(self._bullets_container_html($slides));
+        $container.after(self._bullets_container_html($slides));
       }
       // To better support the "sliding" effect it's easier
       // if we just clone the first and last slides
@@ -123,6 +123,13 @@
         }
       });
 
+      $container.siblings('.' + self.settings.bullets_container_class)
+        .on('click', '[data-orbit-slide-number]', function(e) {
+          e.preventDefault();
+          self._rebuild_timer($container, '0%');
+          self.goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
+        });
+
       $container
         .on('click', '.' + self.settings.next_class, function(e) {
           e.preventDefault();
@@ -145,11 +152,6 @@
           } else {
             self._start_timer($slides_container);
           }
-        })
-        .on('click', '[data-orbit-slide-number]', function(e) {
-          e.preventDefault();
-          self._rebuild_timer($container, '0%');
-          self.goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
         })
         .on('touchstart', function(e) {
           var data = {
