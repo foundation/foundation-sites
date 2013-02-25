@@ -1,8 +1,8 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
 /* TODO
-    - make responsive
-    - add animation support
+    - add off/unbinding of events
+    - fix animate out.
 */
 
 ;(function ($, window, document, undefined) {
@@ -13,9 +13,11 @@
 
     version : '4.0.0.alpha',
 
+    locked : false,
+
     settings : {
       animation: 'fadeAndPop',
-      animationSpeed: 300,
+      animationSpeed: 250,
       closeOnBackgroundClick: true,
       dismissModalClass: 'close-reveal-modal',
       bgClass: 'reveal-modal-bg',
@@ -24,18 +26,14 @@
       close: function(){},
       closed: function(){},
       bg : $('.reveal-modal-bg'),
-      // top_measure : parseInt(modal.css('top'), 10),
-      // top_offset : $('[data-modal].open').height() + this.settings.top_measure,
       css : {
         open : {
-          // 'top': 0,
-          'opacity': 1,
+          'opacity': 0,
           'visibility': 'visible',
           'display' : 'block'
         },
         close : {
-          // 'top': this.settings.top_measure,
-          'opacity': 0,
+          'opacity': 1,
           'visibility': 'hidden',
           'display': 'none'
         }
@@ -61,19 +59,34 @@
 
     events : function () {
       var self = this;
+
       $(this.scope)
         .on('click.fndtn.reveal', '[data-reveal-id]', function (e) {
           e.preventDefault();
-          self.open($(this));
+          if (!self.locked) {
+            self.locked = true;
+            self.open.call(self, $(this));
+          }
         })
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
-          self.close($(this).closest('.reveal-modal'));
-        });
+          if (!self.locked) {
+            self.locked = true;
+            self.close.call(self, $(this).closest('.reveal-modal'));
+          }
+        })
+        .on('open.fndtn.reveal', '.reveal-modal', this.settings.open)
+        .on('opened.fndtn.reveal', '.reveal-modal', this.settings.opened)
+        .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
+        .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed);
     },
 
     open : function (target) {
       var modal = $('#' + target.data('reveal-id')),
           open_modal = $('.reveal-modal.open');
+
+      this.offset = this.cache_offset(modal);
+
+      modal.trigger('open');
 
       if (open_modal.length < 1) {
         this.toggle_bg(modal);
@@ -83,7 +96,9 @@
     },
 
     close : function (modal) {
+      this.locked = true;
       var open_modal = $('.reveal-modal.open').not(modal);
+      modal.trigger('close');
       this.toggle_bg(modal);
       this.toggle_modals(open_modal, modal);
     },
@@ -124,26 +139,108 @@
     },
 
     show : function (el, css) {
-      // do animation here, use this.animate(el, css, callback)
+      // is modal
       if (css) {
-        return el.show().css(css).addClass('open');
+        console.log(this.locked)
+        if (/pop/i.test(this.settings.animation)) {
+          css.top = $(window).scrollTop() - this.offset + 'px';
+          var end_css = {
+            top: $(window).scrollTop() + parseInt(el.css('top'), 10) + 'px',
+            opacity: 1
+          }
+
+          return this.delay(function () {
+            return el
+              .css(css)
+              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+                console.log(this.locked)
+                this.locked = false;
+                el.trigger('opened');
+              }.bind(this))
+              .addClass('open');
+          }.bind(this), this.settings.animationSpeed / 2);
+        }
+
+        if (/fade/i.test(this.settings.animation)) {
+          var end_css = {opacity: 1};
+
+          return this.delay(function () {
+            return el
+              .css(css)
+              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+                this.locked = false;
+                el.trigger('opened');
+              }.bind(this))
+              .addClass('open');
+          }.bind(this), this.settings.animationSpeed / 2);
+        }
+
+        // this.locked = false;
+
+        return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened');
+      }
+
+      // should we animate the background?
+      if (/fade/i.test(this.settings.animation)) {
+        return el.fadeIn(this.settings.animationSpeed / 2);
       }
 
       return el.show();
     },
 
     hide : function (el, css) {
-      // do animation here, use this.animate(el, css, callback)
+      // is modal
       if (css) {
-        return el.hide().css(css).removeClass('open');
+        if (/pop/i.test(this.settings.animation)) {
+          console.log('pop');
+          var end_css = {
+            // need to figure out why this doesn't work.
+            // top: $(window).scrollTop() - this.offset + 'px',
+            opacity: 0
+          };
+
+          return this.delay(function () {
+            return el
+              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+                this.locked = false;
+                el.css(css).trigger('closed');
+              }.bind(this))
+              .removeClass('open');
+          }.bind(this), this.settings.animationSpeed / 2);
+        }
+
+        if (/fade/i.test(this.settings.animation)) {
+          var end_css = {opacity: 0};
+
+          return this.delay(function () {
+            return el
+              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+                this.locked = false;
+                el.css(css).trigger('closed');
+              }.bind(this))
+              .removeClass('open');
+          }.bind(this), this.settings.animationSpeed / 2);
+        }
+
+        return el.hide().css(css).removeClass('open').trigger('closed');
       }
+
+      // should we animate the background?
+      if (/fade/i.test(this.settings.animation)) {
+        return el.fadeOut(this.settings.animationSpeed / 2);
+      }
+
+      // this.locked = false;
 
       return el.hide();
     },
 
-    animate : function (el, css, callback) {
-      // handle fadeAndPop, fade, and no animation here
+    cache_offset : function (modal) {
+      var offset = modal.show().height() + parseInt(modal.css('top'), 10);
 
+      modal.hide();
+
+      return offset;
     },
 
     off : function () {
