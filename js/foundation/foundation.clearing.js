@@ -11,7 +11,7 @@
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
-          '<div class="visible-img" style="display: none"><img src="#">' +
+          '<div class="visible-img" style="display: none"><img src="//:0">' +
           '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"><span></span></a>' +
           '<a href="#" class="clearing-main-right"><span></span></a></div>'
       },
@@ -27,7 +27,7 @@
 
     init : function (scope, method, options) {
       this.scope = this.scope || scope;
-      Foundation.inherit(this, 'set_data get_data remove_data');
+      Foundation.inherit(this, 'set_data get_data remove_data throttle');
 
       if (typeof method === 'object') {
         options = $.extend(true, this.settings, method);
@@ -62,12 +62,13 @@
 
     // event binding and initial setup
 
-    events : function (el) {
+    events : function () {
+      var self = this;
+
       $(this.scope)
         .on('click.fndtn.clearing', 'ul[data-clearing] li',
           function (e, current, target) {
-            var self = Foundation.libs.clearing,
-                current = current || $(this),
+            var current = current || $(this),
                 target = target || current,
                 settings = self.get_data(current.parent());
 
@@ -274,7 +275,7 @@
       function bindLoad () {
         this.one('load', loaded);
 
-        if ($.browser.msie) {
+        if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
           var src = this.attr( 'src' ),
               param = src.match( /\?/ ) ? '&' : '?';
 
