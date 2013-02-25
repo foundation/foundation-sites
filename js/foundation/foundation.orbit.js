@@ -150,14 +150,16 @@
             data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
           }
 
-          if (!data.is_scrolling) {
+          if (!data.is_scrolling && !data.active) {
             e.preventDefault();
             self._stop_timer($slides_container);
             var direction = (data.delta_x < 0) ? 'next' : 'prev';
+            data.active = true;
             self.goto($slides_container, direction, function() {});
           }
         })
         .on('touchend', function(e) {
+          $container.data('swipe-transition', {});
           e.stopPropagation();
         });
     },
