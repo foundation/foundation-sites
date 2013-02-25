@@ -18,6 +18,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
 .orbit-container {
   overflow: hidden;
   width: 100%;
+  position: relative;
   .orbit-slides-container {
     // apply margin-left here
     list-style: none;
@@ -37,14 +38,33 @@ $orbit-slide-number-padding: emCalc(5px) !default;
     }
   }
   .orbit-timer {
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 20px;
-    width: 100%;
+    width: 60px;
+    background-color: #eee;
     .orbit-progress {
       height: 100%;
       background-color: #ccc;
       display: block;
       width: 0%;
     }
+  }
+  .orbit-prev, .orbit-next {
+    position: absolute;
+    top: 50%;
+    background: rgba(0,0,0,0.5);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+  }
+  .orbit-prev {
+    left: 0;
+  }
+  .orbit-next {
+    right: 0;
   }
 }
 
