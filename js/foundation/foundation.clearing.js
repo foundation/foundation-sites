@@ -71,7 +71,7 @@
             var current = current || $(this),
                 target = target || current,
                 settings = self.get_data(current.parent());
-            console.log(current, target, settings)
+
             e.preventDefault();
             if (!settings) self.init();
 
@@ -181,7 +181,6 @@
     },
 
     nav : function (e, direction) {
-      console.log('nav', direction)
       var clearing = $('.clearing-blackout').find('ul[data-clearing]');
 
       e.preventDefault();
