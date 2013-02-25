@@ -78,7 +78,7 @@ $switch-label-outline:            1px dotted #888 !default;
   input {
     position: absolute;
     z-index: 3;
-    opacity: 0;
+    // opacity: 0;
     width: 50%;
     height: 100%;
 
@@ -87,6 +87,8 @@ $switch-label-outline:            1px dotted #888 !default;
     &:focus {
       cursor: pointer;
     }
+
+
   }
 
   // The toggle area for radio switches. We call is a paddle.
@@ -114,6 +116,7 @@ $switch-label-outline:            1px dotted #888 !default;
   input:not(:checked) + label { opacity: 0; }
 
   // Controlling the position of the labels as they are toggled.
+  input:checked { display: none; }
   input:first-of-type + label { left: -50%; }
   input:first-of-type:checked + label { left: 0%; }
   input:last-of-type + label { right: -50%; left: auto; }
@@ -178,11 +181,11 @@ $switch-label-outline:            1px dotted #888 !default;
 
     &:hover,
     &:focus {
-      & + #{$switch-class}-paddle {
+      #{$switch-class}-paddle {
         background: $paddle-bg;
-        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 25%) 100%);
-        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 25%) 100%);
-        background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 25%) 100%);
+        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
       }
     }
   }
