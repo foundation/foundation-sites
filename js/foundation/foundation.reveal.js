@@ -1,7 +1,6 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
 /* TODO
-    - add off/unbinding of events
     - fix animate out.
 */
 
@@ -237,7 +236,7 @@
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
         iframe.attr('src', 'about:blank');
-        video.fadeOut(100);  
+        video.fadeOut(100).hide();  
       }
     },
 
@@ -250,7 +249,7 @@
         if (typeof data_src === 'string') {
           iframe[0].src = iframe.attr('data-src');
         }
-        video.fadeIn(100);
+        video.show().fadeIn(100);
       }
     },
 
@@ -263,7 +262,10 @@
     },
 
     off : function () {
-
+      $(this.scope)
+        .off('.fndtn.reveal')
+        .find('.' + this.settings.bgClass)
+        .remove();
     }
   };
 }(Foundation.zj, this, this.document));
