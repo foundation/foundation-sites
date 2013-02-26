@@ -54,7 +54,8 @@ $hr-border-color: #ddd !default;
 $hr-margin: emCalc(20px) !default;
 
 // We use these to style lists
-$list-style-position: inside !default;
+$list-style-position: outside !default;
+$list-side-margin: emCalc(18px) !default;
 $definition-list-header-weight: bold !default;
 $definition-list-margin-bottom: 10px !default;
 
@@ -66,6 +67,7 @@ $blockquote-cite-font-size: emCalc(13px) !default;
 $blockquote-cite-font-color: lighten($header-font-color, 20%) !default;
 $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
+$acronym-underline: 1px dotted #ddd !default;
 
 //
 // Typography Placeholders
@@ -209,14 +211,14 @@ ul {
   li {
     ul,
     ol {
-      margin-#{$default-float}: emCalc(20px);
+      margin-#{$default-float}: $list-side-margin;
       margin-bottom: 0;
-      font-size: emCalc(16px); /* Override nested font-size change */
+      font-size: 1em; /* Override nested font-size change */
     }
   }
   &.square,
   &.circle,
-  &.disc { margin-#{$default-float}: emCalc(20px);
+  &.disc { margin-#{$default-float}: $list-side-margin;
     li ul { list-style: inherit; }
   }
 
@@ -227,11 +229,11 @@ ul {
 }
 
 /* Ordered Lists */
-ol { margin-#{$default-float}: emCalc(20px);
+ol { margin-#{$default-float}: $list-side-margin;
   li {
     ul,
     ol {
-      margin-#{$default-float}: emCalc(20px);
+      margin-#{$default-float}: $list-side-margin;
       margin-bottom: 0;
     }
   }
@@ -248,8 +250,8 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: $header-font-color;
-  border-bottom: 1px dotted #ddd;
+  color: $body-font-color;
+  border-bottom: $acronym-underline;
   cursor: help;
 }
 abbr {

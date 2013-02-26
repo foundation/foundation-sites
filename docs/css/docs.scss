@@ -37,9 +37,7 @@
 }
 
 /* Button Docs */
-.buttony.custom {
-  @include button(1.1em, #FF94CB, 20px);
-}
+.buttony.custom { @include button(1.1em, #FF94CB, 20px); }
 
 .button-base {
   @include button-base;
@@ -63,6 +61,38 @@
 .clearing-thumbs { list-style: none;
   li { float: left; margin-right: 10px; }
 }
+
+/* Forms Docs */
+.attached-label {
+  @include prefix-postfix-base;
+  @include grid-column($columns:3,$float:left);
+  &.style { @include prefix; }
+  &.custom { @include prefix(orange); }
+}
+
+input[type="text"].attached-input {
+  @include grid-column($columns:9);
+}
+
+/* Dropdown Buttons Docs */
+.customized-dropdown-docs {
+  @include button;
+  @include dropdown-button;
+  @include radius;
+  @include single-transition;
+  @include inset-shadow;
+}
+
+/* Keystroke Docs */
+.custom-keystroke kbd { @include keystroke(orange);}
+
+/* Label Docs */
+.label-custom {
+  @include label(0 10px,11px,pink,6px);
+}
+
+/* Panels Docs */
+.panel-custom { @include panel(pink,40px); }
 
 /* Large Screen Styles */
 @media #{$small} {
