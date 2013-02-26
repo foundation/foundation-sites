@@ -57,16 +57,21 @@
 
       if (section.hasClass('active')) {
         if ($(this.scope).width() < 769) {
-          section.removeClass('active');
+          section
+            .removeClass('active')
+            .attr('style', '');
         }
       } else {
         if ($(this.scope).width() > 768 || self.settings.one_up) {
           $this
             .closest('[data-section]')
             .find('section, .section')
-            .removeClass('active');
+            .removeClass('active')
+            .attr('style', '');
         }
-        section.addClass('active');
+        section
+          .css('padding-top', section.find('.title').height())
+          .addClass('active');
       }
 
       self.settings.callback();
@@ -78,9 +83,15 @@
         sections.each(function() {
           var active_section = $(this).find('section.active, .section.active');
           if (active_section.length > 1) {
-            active_section.not(':first').removeClass('active');
+            active_section
+              .not(':first')
+              .removeClass('active')
+              .attr('style', '');
           } else if (active_section.length < 1) {
-            $(this).find('section, .section').first().addClass('active');
+            var first = $(this).find('section, .section').first();
+            first
+              .addClass('active')
+              .css('padding-top', first.find('.title').height());
           }
           Foundation.libs.section.position_titles($(this));
         });

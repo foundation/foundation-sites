@@ -109,7 +109,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
       z-index: 10;
     }
 
-    &.active { padding-top: ($section-padding * 3) + emCalc(7px);
+    &.active {
 
       .title {
         background-color: $section-title-bg-active-tabs;

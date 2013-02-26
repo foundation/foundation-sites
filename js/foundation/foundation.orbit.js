@@ -10,10 +10,12 @@
       timer_speed: 10000,
       animation_speed: 500,
       bullets: true,
+      stack_on_small: true,
       container_class: 'orbit-container',
+      stack_on_small_class: 'orbit-stack-on-small',
       next_class: 'orbit-next',
       prev_class: 'orbit-prev',
-      timer_class: 'orbit-timer',
+      timer_container_class: 'orbit-timer',
       timer_paused_class: 'paused',
       timer_progress_class: 'orbit-progress',
       slides_container_class: 'orbit-slides-container',
@@ -62,7 +64,7 @@
 
     _timer_html: function() {
       var self = this;
-      return '<div class="' + self.settings.timer_class
+      return '<div class="' + self.settings.timer_container_class
         + '"><span></span><div class="' + self.settings.timer_progress_class
         + '"></div></div>';
     },
@@ -86,6 +88,9 @@
       $container.append(self._prev_html());
       $container.append(self._next_html());
       $slides_container.addClass(self.settings.slides_container_class);
+      if (self.settings.stack_on_small) {
+        $container.addClass(self.settings.stack_on_small_class);
+      }
       $container.append(self._slide_number_html(1, $slides.length));
       $container.append(self._timer_html());
       if (self.settings.bullets) {
@@ -153,7 +158,7 @@
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'prev', function() {});
         })
-        .on('orbit:toggle-play-pause click', '.' + self.settings.timer_class, function(e) {
+        .on('orbit:toggle-play-pause click', '.' + self.settings.timer_container_class, function(e) {
           e.preventDefault();
           var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
               $slides_container = $timer.closest('.' + self.settings.container_class)
@@ -226,7 +231,7 @@
         });
       };
 
-      var $timer = $container.find('.' + self.settings.timer_class),
+      var $timer = $container.find('.' + self.settings.timer_container_class),
           $progress = $timer.find('.' + self.settings.timer_progress_class),
           progress_pct = ($progress.width() / $timer.width()),
           delay = self.settings.timer_speed - (progress_pct * self.settings.timer_speed);
@@ -238,12 +243,12 @@
     _stop_timer: function ($slides_container) {
       var self = this,
           $container = $slides_container.parent(),
-          $timer = $container.find('.' + self.settings.timer_class),
+          $timer = $container.find('.' + self.settings.timer_container_class),
           $progress = $timer.find('.' + self.settings.timer_progress_class),
           progress_pct = $progress.width() / $timer.width()
       self._rebuild_timer($container, progress_pct * 100 + '%');
       $slides_container.trigger('orbit:timer-stopped');
-      $timer = $container.find('.' + self.settings.timer_class);
+      $timer = $container.find('.' + self.settings.timer_container_class);
       $timer.addClass(self.settings.timer_paused_class);
     },
 
@@ -253,7 +258,7 @@
           $container = $slides_container.parent();
       self._rebuild_timer($container, '0%');
       if (typeof is_paused === 'boolean' && is_paused) {
-        var $timer = $container.find('.' + self.settings.timer_class);
+        var $timer = $container.find('.' + self.settings.timer_container_class);
         $timer.addClass(self.settings.timer_paused_class);
       }
     },
@@ -264,7 +269,7 @@
       // limitation, which rebuilds the dom element
       // thus stopping the animation
       var self = this,
-          $timer = $container.find('.' + self.settings.timer_class),
+          $timer = $container.find('.' + self.settings.timer_container_class),
           $new_timer = $(self._timer_html()),
           $new_timer_progress = $new_timer.find('.' + self.settings.timer_progress_class);
 
