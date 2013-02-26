@@ -46,7 +46,6 @@
 
       $(this.scope)
         .on('click', 'form.custom span.custom.checkbox', function (e) {
-          console.log('clicked checkbox')
           e.preventDefault();
           e.stopPropagation();
           self.toggle_checkbox($(this));
