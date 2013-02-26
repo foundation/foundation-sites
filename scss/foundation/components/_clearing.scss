@@ -33,6 +33,8 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 
 @media only screen {
   /* Clearing Styles */
+  [data-clearing] { @include clearfix; }
+
   .clearing-blackout {
     background: $clearing-bg;
     position: fixed;
@@ -169,6 +171,12 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
               height: 100%;
               max-width: none;
             }
+          }
+
+          a.th {
+            border: none;
+            -webkit-box-shadow: none;
+                    box-shadow: none;
           }
 
           img {
