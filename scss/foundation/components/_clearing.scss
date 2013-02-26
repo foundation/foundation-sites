@@ -33,7 +33,10 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 
 @media only screen {
   /* Clearing Styles */
-  [data-clearing] { @include clearfix; }
+  [data-clearing] {
+    @include clearfix;
+    margin-bottom: 0;
+  }
 
   .clearing-blackout {
     background: $clearing-bg;
@@ -136,6 +139,9 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   .clearing-main-left.disabled,
   .clearing-main-right.disabled { opacity: 0.5; }
 
+  // If you want to show a lightbox, but only have a single image come through as the thumbnail
+  .clearing-feature ~ li { display: none; }
+
   .clearing-assembled .clearing-container {
 
     .carousel {
@@ -162,8 +168,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
           margin-#{$default-opposite}: 1px;
           position: relative;
           cursor: pointer;
-
-          &.clearing-feature ~ li { display: none; }
+          opacity: 0.4;
 
           &.fix-height {
             img {
@@ -184,7 +189,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
             min-width: 100% !important;
           }
 
-          &.visible { border-top: $clearing-carousel-thumb-active-border; }
+          &.visible { opacity: 1; }
         }
       }
     }
