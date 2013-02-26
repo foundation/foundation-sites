@@ -273,7 +273,7 @@
             $timer.width(0);
 
             if (this.settings.timer > 0) {
-              console.log(this.settings.tipAnimationFadeSpeed, this.settings.timer)
+
               this.settings.$next_tip
                 .fadeIn(this.settings.tipAnimationFadeSpeed)
                 .show();
