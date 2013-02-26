@@ -80,8 +80,8 @@
 
   .panel { background: darken($white, 5%); border: solid 1px darken($white, 10%); margin: 0 0 22px 0; padding: 20px;
 
-    > :first-of-type { margin-top: 0; }
-    > :last-of-type { margin-bottom: 0; }
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
 
     &.callout { background: $mainColor; color: #fff; border-color: darken($mainColor, 10%); @include box-shadow(inset 0px 1px 0px rgba(255,255,255,0.5));
       a { color: #fff; }
@@ -174,11 +174,11 @@
     li { margin: 0; padding: 0 12px 0 0; float: $defaultFloat; list-style: none;
 
       a, span { text-transform: uppercase; @include font-size(11); padding-#{$defaultFloat}: 12px; }
-      &:first-of-type a, &:first-of-type span { padding-#{$defaultFloat}: 0; }
+      &:first-child a, &:first-child span { padding-#{$defaultFloat}: 0; }
     }
 
     li:before { content: "/"; color: #aaa; }
-    li:first-of-type:before { content: " "; }
+    li:first-child:before { content: " "; }
     li.current a { cursor: default; color: #333; }
     li:hover a, li a:focus { text-decoration: underline; }
     li.current:hover a, li.current a:focus { text-decoration: none; }
@@ -239,8 +239,8 @@
   table tfoot tr td { display: table-cell; font-size: ms(0); line-height: 18px; text-align: #{$defaultFloat}; }
   table thead tr th,
   table tfoot tr td { padding: 8px 10px 9px; font-size: ms(0); font-weight: bold; color: #222; }
-  table thead tr th:first-of-type, table tfoot tr td:first-of-type { border-#{$defaultFloat}: none; }
-  table thead tr th:last-of-type, table tfoot tr td:last-of-type { border-#{$defaultOpposite}: none; }
+  table thead tr th:first-child, table tfoot tr td:first-child { border-#{$defaultFloat}: none; }
+  table thead tr th:last-child, table tfoot tr td:last-child { border-#{$defaultOpposite}: none; }
 
   table tbody tr.even,
   table tbody tr.alt { background: #f9f9f9; }
