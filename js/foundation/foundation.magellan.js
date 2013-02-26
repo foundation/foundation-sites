@@ -99,7 +99,7 @@
             var $destination = $(this),
                 destination_name = $destination.attr('data-magellan-destination'),
                 topOffset = $destination.offset().top - windowScrollTop;
-            console.log(topOffset, self.settings.threshold, destination_name)
+
             if (topOffset <= self.settings.threshold) {
               $("[data-magellan-arrival='" + destination_name + "']").trigger('arrival');
             }
