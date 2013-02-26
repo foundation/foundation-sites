@@ -52,10 +52,6 @@
       return $list;
     },
 
-    _bullet_html: function() {
-      var self = this;
-    },
-
     _timer_html: function() {
       var self = this;
       return '<div class="' + self.settings.timer_class
@@ -118,7 +114,7 @@
             $slide = $slides_container.find('[data-orbit-slide=' + id + ']').first();
 
         if ($slide.length === 1) {
-          self._rebuild_timer($container, '0%');
+          self._reset_timer($slides_container, true);
           self.goto($slides_container, $slide.index(), function() {});
         }
       });
@@ -126,19 +122,19 @@
       $container.siblings('.' + self.settings.bullets_container_class)
         .on('click', '[data-orbit-slide-number]', function(e) {
           e.preventDefault();
-          self._rebuild_timer($container, '0%');
+          self._reset_timer($slides_container, true);
           self.goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
         });
 
       $container
         .on('click', '.' + self.settings.next_class, function(e) {
           e.preventDefault();
-          self._rebuild_timer($container, '0%');
+          self._reset_timer($slides_container, true);
           self.goto($slides_container, 'next', function() {});
         })
         .on('click', '.' + self.settings.prev_class, function(e) {
           e.preventDefault();
-          self._rebuild_timer($container, '0%');
+          self._reset_timer($slides_container, true);
           self.goto($slides_container, 'prev', function() {});
         })
         .on('click', '.' + self.settings.timer_class, function(e) {
@@ -208,7 +204,7 @@
           $container = $slides_container.parent();
 
       var callback = function() {
-        self._rebuild_timer($container, '0%');
+        self._reset_timer($slides_container, false);
         self.goto($slides_container, 'next', function() {
           self._start_timer($slides_container);
         });
@@ -229,6 +225,19 @@
           $progress = $timer.find('.' + self.settings.timer_progress_class),
           progress_pct = $progress.width() / $timer.width()
       self._rebuild_timer($container, progress_pct * 100 + '%');
+      $timer = $container.find('.' + self.settings.timer_class);
+      $timer.addClass(self.settings.timer_paused_class);
+    },
+
+    _reset_timer: function($slides_container, is_paused) {
+      console.info('reset timer...');
+      var self = this,
+          $container = $slides_container.parent();
+      self._rebuild_timer($container, '0%');
+      if (typeof is_paused === 'boolean' && is_paused) {
+        var $timer = $container.find('.' + self.settings.timer_class);
+        $timer.addClass(self.settings.timer_paused_class);
+      }
     },
 
     _rebuild_timer: function ($container, width_pct) {
@@ -244,7 +253,6 @@
       $timer.remove();
       $container.append($new_timer);
       $new_timer_progress.css('width', width_pct);
-      $new_timer.addClass(self.settings.timer_paused_class);
     },
 
     goto: function($slides_container, index_or_direction, callback) {
@@ -285,7 +293,7 @@
       $active_slide.removeClass(self.settings.active_class);
       $($slides[active_index]).addClass(self.settings.active_class);
       // Make next bullet active
-      var $bullets = $container.find('.' + self.settings.bullets_container_class);
+      var $bullets = $container.siblings('.' + self.settings.bullets_container_class);
       if ($bullets.length === 1) {
         $bullets.children().removeClass(self.settings.bullets_active_class);
         $($bullets.children()[active_index-1]).addClass(self.settings.bullets_active_class);
