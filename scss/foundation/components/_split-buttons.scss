@@ -12,29 +12,29 @@ $split-button-active-bg-tint: rgba(0,0,0,0.1) !default;
 $split-button-padding-tny: $button-tny * 9 !default;
 $split-button-span-width-tny: $button-tny * 6.5 !default;
 $split-button-pip-size-tny: $button-tny !default;
-$split-button-pip-top-tny: $button-tny * 2 + emCalc(2px) !default;
+$split-button-pip-top-tny: $button-tny * 2 !default;
 $split-button-pip-left-tny: emCalc(-5px) !default;
 
 // We use these to control small split buttons
 $split-button-padding-sml: $button-sml * 7 !default;
 $split-button-span-width-sml: $button-sml * 5 !default;
 $split-button-pip-size-sml: $button-sml !default;
-$split-button-pip-top-sml: $button-sml * 2 !default;
-$split-button-pip-left-sml: emCalc(-6px) !default;
+$split-button-pip-top-sml: $button-sml * 1.5 !default;
+$split-button-pip-left-sml: emCalc(-9px) !default;
 
 // We use these to control medium split buttons
 $split-button-padding-med: $button-med * 6.4 !default;
 $split-button-span-width-med: $button-med * 4 !default;
 $split-button-pip-size-med: $button-med - emCalc(3px) !default;
-$split-button-pip-top-med: $button-med * 2 - emCalc(4px) !default;
-$split-button-pip-left-med: emCalc(-8px) !default;
+$split-button-pip-top-med: $button-med * 1.5 !default;
+$split-button-pip-left-med: emCalc(-9px) !default;
 
 // We use these to control large split buttons
 $split-button-padding-lrg: $button-lrg * 6 !default;
 $split-button-span-width-lrg: $button-lrg * 3.75 !default;
 $split-button-pip-size-lrg: $button-lrg - emCalc(6px) !default;
 $split-button-pip-top-lrg: $button-lrg + emCalc(5px) !default;
-$split-button-pip-left-lrg: emCalc(-8px) !default;
+$split-button-pip-left-lrg: emCalc(-9px) !default;
 
 
 //
@@ -151,6 +151,9 @@ $split-button-pip-left-lrg: emCalc(-8px) !default;
     &.large { @include split-button(large, false, false, false); }
 
     &.secondary { @include split-button(false, $split-button-pip-color-alt, false, false); }
+
+    &.radius span { @include side-radius(right, $global-radius); }
+    &.round span { @include side-radius(right, 1000px); }
   }
 
 }

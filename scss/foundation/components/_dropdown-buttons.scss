@@ -16,7 +16,7 @@ $dropdown-button-pip-top-tny:   -$button-tny / 2 + emCalc(1px) !default;
 $dropdown-button-padding-sml:   $button-sml * 5 !default;
 $dropdown-button-pip-size-sml:  $button-sml !default;
 $dropdown-button-pip-right-sml: $button-sml * 2 !default;
-$dropdown-button-pip-top-sml:   -$button-sml / 2 + emCalc(2px) !default;
+$dropdown-button-pip-top-sml:   -$button-sml / 2 + emCalc(1px) !default;
 
 // We use these to style medium dropdown buttons
 $dropdown-button-padding-med:   $button-med * 4 + emCalc(3px) !default;
