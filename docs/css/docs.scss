@@ -1,11 +1,10 @@
 @import "settings";
 @import "foundation";
 @import "coderay";
-// additional styles go here
 
 /* Documentation Overrides */
-// h5 { margin-top: 1.5em; }
 
+/* Coderay styles */
 .html, .css, .scss, .js { position: relative; }
 
 .CodeRay:before {
@@ -20,7 +19,7 @@
 .css > .CodeRay:before { content: "SCSS"; }
 .js > .CodeRay:before { content: "JS"; }
 
-/* Alert Doc Classes */
+/* Alert Docs */
 .alert-base {
   @include alert-base;
 
@@ -30,14 +29,14 @@
   .close { @include alert-close; }
 }
 
-/* Breadcrumb Doc Classes */
+/* Breadcrumb Docs */
 .crumb-container {
   @include crumb-container;
   &.radius { @include radius; }
   &.crumbs li { @include crumbs; }
 }
 
-/* Button Doc Classes */
+/* Button Docs */
 .buttony.custom {
   @include button(1.1em, #FF94CB, 20px);
 }
@@ -49,7 +48,7 @@
   &.shine { @include single-transition(background-color); @include radius; @include inset-shadow(); }
 }
 
-/* Button Group Doc Classes */
+/* Button Group Docs */
 .button-group-docs {
   @include button-group-container;
   .button-class { @include button; }
@@ -60,8 +59,13 @@
   }
 }
 
+/* Clearing Docs */
+.clearing-thumbs { list-style: none;
+  li { float: left; margin-right: 10px; }
+}
+
 /* Large Screen Styles */
-@media only screen and (min-width: 48em) {
+@media #{$small} {
   // .button { margin-bottom: 15px; }
   .button-group .button { margin-bottom: 0; }
 }
