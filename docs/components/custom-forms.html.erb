@@ -3,20 +3,14 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %> </h1>
-    <hr>
+    <h4 class="subheader">Creating easy to style custom form elements is so crazy easy, it's practically a crime. You'll be creating awesome forms like a smooth criminal in no time at all. These include custom selects, checkboxes and radios.</h4>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-4 columns">
-    <a name="custom"></a>
-    <h4>Custom Inputs</h4>
-    <p>Custom form input types that are included with Foundation.</p>
-  </div>
-  <div class="large-8 columns">
-    <form class="custom">
+  <div class="large-12 columns">
 
-      <h5>Radio Buttons and Checkboxes</h5>
+    <form class="custom">
       <div class="row">
         <div class="large-4 columns">
           <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 1</label>
@@ -24,83 +18,234 @@
           <label for="radio3"><input name="radio1" type="radio" id="radio3" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
         </div>
         <div class="large-4 columns">
-          <label for="radio4"><input name="radio2" type="radio" id="radio4"> Radio Button 1</label>
-          <label for="radio5"><input name="radio2" CHECKED type="radio" id="radio5"> Radio Button 2</label>
-          <label for="radio6"><input name="radio2" type="radio" id="radio6"> Radio Button 3</label>
-        </div>
-        <div class="large-4 columns">
           <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
           <label for="checkbox2"><input type="checkbox" id="checkbox2" checked style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
           <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3"> Label for Checkbox</label>
         </div>
+        <div class="large-4 columns">
+          <label for="customDropdown">Medium Example</label>
+          <select id="customDropdown" class="medium">
+            <option DISABLED>This is a dropdown</option>
+            <option>This is another option</option>
+            <option>This is another option too</option>
+            <option>Look, a third option</option>
+          </select>
+        </div>
       </div>
+    </form>
 
-      <br>
+    <hr>
 
-      <h5>Dropdown / Select Elements</h5>
+    <p>We've learned a lot from our previous iteration of custom forms. Thanks for awesome community contributions, we have even better custom forms. The new implementation is cleaner and more succint, with less duplication of code. You just need to make sure to have the right JS hooked up for things to work properly, <a href="#js">learn more about that below</a>. The example above looks like this:</p>
 
-      <label for="customDropdownN">Small Example</label>
-      <select id="customDropdownN" class="small">
+<%= code_example '
+<form class="custom">
+  <div class="row">
+    <div class="large-4 columns">
+      <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 1</label>
+      <label for="radio2"><input name="radio1" type="radio" id="radio2" style="display:none;"><span class="custom radio checked"></span> Radio Button 2</label>
+      <label for="radio3"><input name="radio1" type="radio" id="radio3" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
+    </div>
+    <div class="large-4 columns">
+      <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
+      <label for="checkbox2"><input type="checkbox" id="checkbox2" checked style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
+      <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3"> Label for Checkbox</label>
+    </div>
+    <div class="large-4 columns">
+      <label for="customDropdown">Medium Example</label>
+      <select id="customDropdown" class="medium">
         <option DISABLED>This is a dropdown</option>
         <option>This is another option</option>
         <option>This is another option too</option>
         <option>Look, a third option</option>
       </select>
+    </div>
+  </div>
+</form>', :html %>
 
-      <label for="customDropdownN">Medium Example</label>
-      <select id="customDropdownN" class="medium">
+    <hr>
+
+    <h3>Building Custom Radio Inputs</h3>
+    <p>A common form element that can look pretty ugly by default is a radio input. We've simplified the look and feel with a custom <code>&lt;span&gt;</code> that you can customize if you need to. You can even use <code>&lt;input disabled&gt;</code> to make the radio inactive.</p>
+
+<%= code_example '
+<form class="custom">
+  <label for="radio1">
+    <input name="radio1" type="radio" id="radio1" style="display:none;">
+    <span class="custom radio"></span> Radio Button 1
+  </label>
+</form>', :html %>
+
+    <form class="custom">
+      <label for="radio1">
+        <input name="radio1" type="radio" id="radio1" style="display:none;">
+        <span class="custom radio"></span> Radio Button 1
+      </label>
+    </form>
+
+    <hr>
+
+    <h3>Building Custom Checkboxes</h3>
+    <p>Another very commom form element is the checkbox input. These are handy for lists of options that can be selected in multples, things like finding out which ke$ha song should be used for a room name. You can build these using the same <code>&lt;span&gt;</code> technique. You can even use <code>&lt;input disabled&gt;</code> to make the radio inactive.</p>
+
+<%= code_example '
+<form class="custom">
+  <label for="checkbox1">
+    <input type="checkbox" id="checkbox1" style="display: none;">
+    <span class="custom checkbox"></span> Label for Checkbox
+  </label>
+</form>', :html %>
+
+    <form class="custom">
+      <label for="checkbox1">
+        <input type="checkbox" id="checkbox1" style="display: none;">
+        <span class="custom checkbox"></span> Label for Checkbox
+      </label>
+    </form>
+
+    <hr>
+
+    <h3>Building Custom Selects</h3>
+    <p>Sometimes you need to let people select a single item from a long list of options. This is what <code>&lt;select&gt;</code> elements are for. We've taken these a step further by including our own custom style that looks a lot better than inconsistent browser defaults. You can set any of the <code>&lt;option&gt;</code> elements to <code>&lt;option disabled&gt;</code> to make them unable to select. Custom selects are built like you'd expect:</p>
+
+<%= code_example '
+<form class="custom">
+  <label for="customDropdown">Medium Example</label>
+  <select id="customDropdown">
+    <option DISABLED>This is a dropdown</option>
+    <option>This is another option</option>
+    <option>This is another option too</option>
+    <option>Look, a third option</option>
+  </select>
+</form>', :html %>
+
+    <form class="custom">
+      <label for="customDropdown">Medium Example</label>
+      <select id="customDropdown">
         <option DISABLED>This is a dropdown</option>
         <option>This is another option</option>
         <option>This is another option too</option>
         <option>Look, a third option</option>
       </select>
+    </form>
 
-      <label for="customDropdownN">Large Example</label>
-      <select id="customDropdownN" class="large">
-        <option DISABLED>This is a dropdown</option>
-        <option>This is another option</option>
-        <option>This is another option too</option>
-        <option>Look, a third option</option>
+    <h5>Various Sizes</h5>
+    <p>You have access to classes that will control the size of the select element. They'll span 100% of their container by default.</p>
+
+<%= code_example '
+<select id="customDropdown" class="small"></select>
+<select id="customDropdown" class="medium"></select>
+<select id="customDropdown" class="large"></select>
+', :html %>
+
+    <div class="row">
+      <div class="large-3 columns">
+        <form class="custom">
+          <label for="customDropdown">Small Example</label>
+          <select id="customDropdown" class="small">
+            <option DISABLED>This is a dropdown</option>
+            <option>This is another option</option>
+            <option>This is another option too</option>
+            <option>Look, a third option</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-9 columns">
+        <form class="custom">
+          <label for="customDropdown">Medium Example</label>
+          <select id="customDropdown" class="medium">
+            <option DISABLED>This is a dropdown</option>
+            <option>This is another option</option>
+            <option>This is another option too</option>
+            <option>Look, a third option</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <form class="custom">
+          <label for="customDropdown">Large Example</label>
+          <select id="customDropdown" class="large">
+            <option DISABLED>This is a dropdown</option>
+            <option>This is another option</option>
+            <option>This is another option too</option>
+            <option>Look, a third option</option>
+          </select>
+        </form>
+      </div>
+    </div>
+
+    <hr>
+
+    <h3>Using the Pre/postfix Concept With Custom Forms</h3>
+    <p>We showed you how to use the prefix and postfix elements on our <a href="#">forms documentation page</a>. You can employ that same techniue here and make custom forms act as your slave to create some very complex forms.</p>
+
+<%= code_example '
+<form class="custom">
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse">
+        <div class="large-9 small-9 columns">
+          <span class="prefix">mysubdomain</span>
+        </div>
+        <div class="large-3 small-3 columns">
+          <select>
+            <option>.com</option>
+            <option>.co</option>
+            <option>.ca</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="row collapse">
+        <div class="large-10 small-10 columns">
+        <select>
+          <option>google</option>
+          <option>yahoo</option>
+          <option>bing</option>
+        </select>
+        </div>
+        <div class="large-2 small-2 columns">
+          <span class="postfix">.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-8 columns">
+      <select>
+        <option>google</option>
+        <option>yahoo</option>
+        <option>bing</option>
       </select>
+    </div>
+    <div class="small-4 columns">
+      <a href="#" class="button postfix expand">Button</a>
+    </div>
+  </div>
+</form>', :html %>
 
-      <label for="customDropdownN">Natural Example</label>
-      <select id="customDropdownN">
-        <option DISABLED>This is a dropdown</option>
-        <option>This is another option</option>
-        <option>This is another option too</option>
-        <option>Look, a third option</option>
-        <option DISABLED>This is a dropdown</option>
-        <option>This is another option</option>
-        <option>This is another option too</option>
-        <option>Look, a third option</option>
-        <option DISABLED>This is a dropdown</option>
-        <option>This is another option</option>
-        <option>This is another option too</option>
-        <option>Look, a third option</option>
-        <option DISABLED>This is a dropdown</option>
-        <option>This is another option</option>
-        <option>This is another option too</option>
-        <option>Look, a third option</option>
-      </select>
-
+    <form class="custom">
       <div class="row">
         <div class="large-6 columns">
-        <label>Prefix Example</label>
           <div class="row collapse">
             <div class="large-9 small-9 columns">
               <span class="prefix">mysubdomain</span>
             </div>
             <div class="large-3 small-3 columns">
-            <select>
-              <option>.com</option>
-              <option>.co</option>
-              <option>.ca</option>
-            </select>
+              <select>
+                <option>.com</option>
+                <option>.co</option>
+                <option>.ca</option>
+              </select>
             </div>
           </div>
         </div>
         <div class="large-6 columns">
-        <label>Postfix Example</label>
           <div class="row collapse">
             <div class="large-10 small-10 columns">
             <select>
@@ -115,63 +260,33 @@
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="row collapse">
-            <label>Postfix Button Example</label>
-            <div class="large-10 small-10 columns">
-              <select>
-                <option>Find a Monkey</option>
-                <option>Find an Elephant</option>
-                <option>Find a Squirrel</option>
-              </select>
-            </div>
-            <div class="large-2 small-2 columns">
-              <a class="button expand postfix">Go</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-
-    <form class="custom">
-      <div class="row">
-        <div class="large-6 columns">
+      <div class="row collapse">
+        <div class="small-8 columns">
           <select>
-            <option>Choose Your Product:</option>
-            <option>DOG - Stuffed Dog</option>
-            <option>SQB - Black Squirrel (Angry Face)</option>
-            <option>SQH - Brown Squirrel (Happy Face)</option>
+            <option>google</option>
+            <option>yahoo</option>
+            <option>bing</option>
           </select>
         </div>
-        <div class="large-2 columns">
-          <input type="text" placeholder="Qty" />
-        </div>
-        <div class="large-4 columns">
-          <input type="submit" class="button inline-button radius" value="Add To Cart" />
+        <div class="small-4 columns">
+          <a href="#" class="button postfix expand">Button</a>
         </div>
       </div>
-
     </form>
-    <fieldset>
-      <div class="row">
-        <div class="large-12 columns">
-          <form class="custom" name="add">
-            <div class="row">
-              <div class="large-3 columns">
-                <label for="year">Year</label>
-                <select name="year">
-                  <option value="2000">2012</option>
-                  <option value="2000">Another really long option.</option>
-                  <option value="2000">2010</option>
-                  <option value="2000">2009</option>
-                </select>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </fieldset>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>In for to get the custom forms to function you'll need to include <code>foundation.forms.js</code>. You'll also need to make sure to include <code>zeptos.js</code> and <code>foundation.js</code> above the forms plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+<%= code_example '
+<script src="path/to/zeptos.js"></script>
+<script src="path/to/foundation.js"></script>
+<script src="path/to/foundation.forms.js"></script>
+<script type="text/javascript">
+  $(document).foundation();
+</script>
+', :html %>
+
   </div>
 </div>

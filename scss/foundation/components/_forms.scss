@@ -87,7 +87,7 @@ $input-error-message-font-color-alt: #333 !default;
   font-size: $input-font-size;
   margin: 0 0 $form-spacing 0;
   padding: $form-spacing / 2;
-  height: (1em + ($form-spacing * 1.5));
+  height: emCalc(13px) + ($form-spacing * 1.5);
   width: 100%;
   @include box-sizing(border-box);
 
@@ -139,8 +139,8 @@ $input-error-message-font-color-alt: #333 !default;
   border-width: $input-prefix-border-size;
   overflow: $input-prefix-overflow;
   font-size: $label-font-size;
-  height: ($label-font-size + ($form-spacing * 1.5) + emCalc(2px));
-  line-height: ($label-font-size + ($form-spacing * 1.5) + emCalc(2px));
+  height: ($label-font-size + ($form-spacing * 1.5) - emCalc(1px));
+  line-height: ($label-font-size + ($form-spacing * 1.5) - emCalc(1px));
 }
 
 // We use this mixin to create prefix label styles
@@ -161,7 +161,7 @@ $input-error-message-font-color-alt: #333 !default;
     padding-#{$default-float}: 0;
     padding-#{$default-opposite}: 0;
     text-align: center;
-    line-height: $form-spacing * 2.25;
+    line-height: emCalc(34px);
   }
 
 }
@@ -184,7 +184,7 @@ $input-error-message-font-color-alt: #333 !default;
     padding-#{$default-float}: 0;
     padding-#{$default-opposite}: 0;
     text-align: center;
-    line-height: $form-spacing;
+    line-height: emCalc(34px);
   }
 
 }
