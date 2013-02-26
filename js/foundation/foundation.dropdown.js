@@ -62,7 +62,7 @@
 
     toggle : function (target, resize) {
       var dropdown = $('#' + target.data('dropdown')),
-          offset = this.offset(dropdown, target);
+          offset = target.offset();
 
       $('[data-dropdown-content]').not(dropdown).hide();
 
