@@ -46,6 +46,7 @@
 
       $(this.scope)
         .on('click', 'form.custom span.custom.checkbox', function (e) {
+          console.log('clicked checkbox')
           e.preventDefault();
           e.stopPropagation();
           self.toggle_checkbox($(this));
@@ -58,7 +59,7 @@
         .on('change', 'form.custom select:not([data-customforms="disabled"])', function (e) {
           self.refresh_custom_select($(this));
         })
-        .on('click', 'form.custom label', function (e) {
+        .on('click', 'form.custom label, form.custom span.custom.checkbox', function (e) {
           var $associatedElement = $('#' + $(this).attr('for') + ':not([data-customforms="disabled"])'),
               $customCheckbox,
               $customRadio;
@@ -95,13 +96,15 @@
               $dropdown = $this.closest('div.custom.dropdown'),
               $select = $dropdown.prev();
 
+          // $('div.dropdown.open').removeClass('open');
+
           // make sure other dropdowns close
           if(!$dropdown.hasClass('open'))
-            $(self.scope).trigger('click.customdropdown')
+            $(self.scope).trigger('click.customdropdown');
 
           e.preventDefault();
-          //$('div.dropdown').removeClass('open');
           if (false === $select.is(':disabled')) {
+            $('div.dropdown.open').removeClass('open');
             $dropdown.toggleClass('open');
 
             if ($dropdown.hasClass('open')) {
