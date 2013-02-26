@@ -62,7 +62,7 @@
 
     toggle : function (target, resize) {
       var dropdown = $('#' + target.data('dropdown')),
-          offset = this.offset(dropdown, target);
+          offset = target.offset();
 
       $('[data-dropdown-content]').not(dropdown).hide();
 
@@ -88,21 +88,13 @@
     },
 
     css : function (dropdown, target) {
-      var offset = this.offset(dropdown, target);
+      var offset = target.offset();
 
       return dropdown.css({
         position : 'absolute',
         top: offset.top + target.height(),
         left: offset.left
       });
-    },
-
-    offset : function (dropdown, target) {
-      if (/body/i.test(dropdown.parent().selector)) {
-        return target.offset();
-      }
-
-      return target.position();
     },
 
     off: function () {
