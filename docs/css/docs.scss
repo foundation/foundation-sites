@@ -94,6 +94,16 @@ input[type="text"].attached-input {
 /* Panels Docs */
 .panel-custom { @include panel(pink,40px); }
 
+/* Progress Bar Docs */
+.progress-custom {
+  @include progress-container;
+  @include radius(6px);
+  & > span {
+    @include progress-meter(pink);
+    @include radius(5px);
+  }
+}
+
 /* Large Screen Styles */
 @media #{$small} {
   // .button { margin-bottom: 15px; }

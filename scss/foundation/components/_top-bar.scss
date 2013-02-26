@@ -49,6 +49,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     height: $topbar-height;
     line-height: $topbar-height;
     position: relative;
+    background: $topbar-bg;
 
     // Topbar Global list Styles
     ul {
@@ -138,7 +139,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
     // Change things up when the top-bar is expanded
     &.expanded {
-      height: 100%;
+      height: auto;
 
       .toggle-topbar {
         a { color: $topbar-menu-link-color-toggled;
@@ -167,7 +168,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
     ul {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
       background: $topbar-dropdown-bg;
       font-size: $em-base;
@@ -261,7 +262,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
 // Top Bar styles intended for screen sizes above the breakpoint.
 @media #{$small} {
-  .top-bar { overflow: visible;
+  .top-bar { background: $topbar-bg; @include clearfix; overflow: visible;
     .toggle-topbar { display: none; }
 
     .title-area { float: left; }
@@ -283,7 +284,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
     ul {
       width: auto;
-      height: auto;
+      height: auto !important;
       display: inline;
 
       li {
