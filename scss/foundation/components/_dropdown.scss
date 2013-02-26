@@ -3,7 +3,7 @@
 //
 
 // We use these to controls height and width styles.
-$f-dropdown-min-width: 200px !default;
+$f-dropdown-max-width: 200px !default;
 $f-dropdown-height: auto !default;
 $f-dropdown-max-height: none !default;
 $f-dropdown-margin-top: 2px !default;
@@ -36,6 +36,8 @@ $f-dropdown-content-padding: emCalc(20px) !default;
 // Dropdown Mixins
 //
 
+// NOTE: Make default max-width change between list and content types. Can add more width with classes, maybe .small, .medium, .large, etc.;
+
 // We use this to style the dropdown container element.
 @mixin dropdown-container($content:list, $triangle:true) {
   display: none;
@@ -43,7 +45,8 @@ $f-dropdown-content-padding: emCalc(20px) !default;
   list-style: $f-dropdown-list-style;
 
   @if $content == list {
-    min-width: $f-dropdown-min-width;
+    max-width: $f-dropdown-max-width;
+    width: 100%;
     height: $f-dropdown-height;
     max-height: $f-dropdown-max-height;
     background: $f-dropdown-bg;
@@ -53,6 +56,14 @@ $f-dropdown-content-padding: emCalc(20px) !default;
   }
   @else if $content == content {
     padding: $f-dropdown-content-padding;
+    max-width: $f-dropdown-max-width;
+    width: 100%;
+    height: $f-dropdown-height;
+    max-height: $f-dropdown-max-height;
+    background: $f-dropdown-bg;
+    border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
+    font-size: $em-base;
+    z-index: 99;
   }
 
   @if $triangle {

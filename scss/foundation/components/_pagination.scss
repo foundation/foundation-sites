@@ -3,87 +3,97 @@
 //
 
 // We use these to control the pagination container
-$pagination-height: emCalc(24px) !default;
-$pagination-margin: emCalc(-5px) !default;
+$pagination-height:                      emCalc(24px) !default;
+$pagination-margin:                      emCalc(-5px) !default;
 
 // We use these to set the list-item properties
-$pagination-li-float: $default-float;
-$pagination-li-height: emCalc(24px) !default;
-$pagination-li-font-color: #222 !default;
-$pagination-li-font-size: emCalc(14px) !default;
-$pagination-li-margin: emCalc(5px) !default;
+$pagination-li-float:                    $default-float;
+$pagination-li-height:                   emCalc(24px) !default;
+$pagination-li-font-color:               #222 !default;
+$pagination-li-font-size:                emCalc(14px) !default;
+$pagination-li-margin:                   emCalc(5px) !default;
 
 // We use these for the pagination anchor links
-$pagination-link-pad: emCalc(1px) emCalc(7px) emCalc(1px) !default;
-$pagination-link-font-color: #999 !default;
-$pagination-link-active-bg: darken(#fff, 10%) !default;
+$pagination-link-pad:                    emCalc(1px) emCalc(7px) emCalc(1px) !default;
+$pagination-link-font-color:             #999 !default;
+$pagination-link-active-bg:              darken(#fff, 10%) !default;
 
 // We use these for disabled anchor links
-$pagination-link-unavailable-cursor: default !default;
+$pagination-link-unavailable-cursor:     default !default;
 $pagination-link-unavailable-font-color: #999 !default;
-$pagination-link-unavailable-bg-active: transparent !default;
+$pagination-link-unavailable-bg-active:  transparent !default;
 
 // We use these for currently selected anchor links
-$pagination-link-current-background: $primary-color !default;
-$pagination-link-current-font-color: #fff !default;
-$pagination-link-current-font-weight: bold !default;
-$pagination-link-current-cursor: default !default;
-$pagination-link-current-active-bg: $primary-color !default;
+$pagination-link-current-background:     $primary-color !default;
+$pagination-link-current-font-color:     #fff !default;
+$pagination-link-current-font-weight:    bold !default;
+$pagination-link-current-cursor:         default !default;
+$pagination-link-current-active-bg:      $primary-color !default;
 
 //
-// Pagination Mixins
+// Pagination Mixin
 //
 
-// We use this to set the properties for the container
-@mixin pagination-container {
-  display: block;
-  height: $pagination-height;
-  margin-#{$default-float}: $pagination-margin;
-}
+// We use this mixin to set the properties for the creating Foundation pagination
+@mixin pagination($center:false, $base-style:true) {
 
-// We use this to style the list items and ther anchor links
-@mixin paginaton-list-items {
-  display: block;
-  float: $pagination-li-float;
-  height: $pagination-li-height;
-  color: $pagination-li-font-color;
-  font-size: $pagination-li-font-size;
-  margin-#{$default-float}: $pagination-li-margin;
-
-  a {
+  @if $base-style {
     display: block;
-    padding: $pagination-link-pad;
-    color: $pagination-link-font-color;
+    height: $pagination-height;
+    margin-#{$default-float}: $pagination-margin;
+
+    li {
+      display: block;
+      float: $pagination-li-float;
+      height: $pagination-li-height;
+      color: $pagination-li-font-color;
+      font-size: $pagination-li-font-size;
+      margin-#{$default-float}: $pagination-li-margin;
+
+      a {
+        display: block;
+        padding: $pagination-link-pad;
+        color: $pagination-link-font-color;
+      }
+
+      &:hover a,
+      a:focus { background: $pagination-link-active-bg; }
+
+      &.unavailable a {
+        cursor: $pagination-link-unavailable-cursor;
+        color: $pagination-link-unavailable-font-color;
+      }
+
+      &.unavailable:hover a, &.unavailable a:focus { background: $pagination-link-unavailable-bg-active; }
+
+      &.current a {
+        background: $pagination-link-current-background;
+        color: $pagination-link-current-font-color;
+        font-weight: $pagination-link-current-font-weight;
+        cursor: $pagination-link-current-cursor;
+
+        &:hover,
+        &:focus { background: $pagination-link-current-active-bg; }
+      }
+    }
   }
 
-  &:hover a,
-  a:focus { background: $pagination-link-active-bg; }
-
-  &.unavailable a {
-    cursor: $pagination-link-unavailable-cursor;
-    color: $pagination-link-unavailable-font-color;
-  }
-
-  &.unavailable:hover a, &.unavailable a:focus { background: $pagination-link-unavailable-bg-active; }
-
-  &.current a {
-    background: $pagination-link-current-background;
-    color: $pagination-link-current-font-color;
-    font-weight: $pagination-link-current-font-weight;
-    cursor: $pagination-link-current-cursor;
-
-    &:hover,
-    &:focus { background: $pagination-link-current-active-bg; }
+  @if $center {
+    & { text-align: center;
+      ul > li {
+        float: none;
+        display: inline-block;
+      }
+    }
   }
 }
+
+
 
 
 @if $include-html-classes {
 
   /* Pagination */
-  .pagination {
-    @include pagination-container;
-    li { @include paginaton-list-items; }
-  }
-
+  .pagination { @include pagination; }
+  .pagination-centered { @include pagination(true,false); }
 }
