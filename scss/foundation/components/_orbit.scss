@@ -57,6 +57,12 @@ $orbit-slide-number-padding: emCalc(5px) !default;
     }
   }
 
+  .orbit-slide-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
   .orbit-timer {
     position: absolute;
     top: 10px;

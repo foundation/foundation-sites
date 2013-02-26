@@ -19,6 +19,7 @@
       slides_container_class: 'orbit-slides-container',
       bullets_container_class: 'orbit-bullets',
       bullets_active_class: 'active',
+      slide_number_class: 'orbit-slide-number',
       caption_class: 'orbit-caption',
       active_class: 'active',
       orbit_transition_class: 'orbit-transitioning'
@@ -52,6 +53,13 @@
       return $list;
     },
 
+    _slide_number_html: function(slide_number, total_slides) {
+      var self = this,
+          $container = $('<div class="' + self.settings.slide_number_class + '"></div>');
+      $container.append(slide_number + ' of ' + total_slides);
+      return $container;
+    },
+
     _timer_html: function() {
       var self = this;
       return '<div class="' + self.settings.timer_class
@@ -78,6 +86,7 @@
       $container.append(self._prev_html());
       $container.append(self._next_html());
       $slides_container.addClass(self.settings.slides_container_class);
+      $container.append(self._slide_number_html(1, $slides.length));
       $container.append(self._timer_html());
       if (self.settings.bullets) {
         $container.after(self._bullets_container_html($slides));
@@ -99,15 +108,16 @@
       var self = this,
           $container = $slides_container.parent();
 
-      $(window).on('load', function() {
-        $slides_container.height('');
-        $slides_container.height($slides_container.height($container.height()));
-      });
-
-      $(window).on('resize', function() {
-        $slides_container.height('');
-        $slides_container.height($slides_container.height($container.height()));
-      });
+      $(window)
+        .on('load', function() {
+          $slides_container.height('');
+          $slides_container.height($slides_container.height($container.height()));
+          $slides_container.trigger('orbit:ready');
+        })
+        .on('resize', function() {
+          $slides_container.height('');
+          $slides_container.height($slides_container.height($container.height()));
+        });
 
       $(document).on('click', '[data-orbit-link]', function(e) {
         var id = $(e.currentTarget).attr('data-orbit-link'),
@@ -127,17 +137,23 @@
         });
 
       $container
-        .on('click', '.' + self.settings.next_class, function(e) {
+        .on('orbit:after-slide-change', function(e, orbit) {
+          var $slide_number = $container.find('.' + self.settings.slide_number_class);
+          if ($slide_number.length === 1) {
+            $slide_number.replaceWith(self._slide_number_html(orbit.slide_number, orbit.total_slides));
+          }
+        })
+        .on('orbit:next-slide click', '.' + self.settings.next_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'next', function() {});
         })
-        .on('click', '.' + self.settings.prev_class, function(e) {
+        .on('orbit:prev-slide click', '.' + self.settings.prev_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'prev', function() {});
         })
-        .on('click', '.' + self.settings.timer_class, function(e) {
+        .on('orbit:toggle-play-pause click', '.' + self.settings.timer_class, function(e) {
           e.preventDefault();
           var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
               $slides_container = $timer.closest('.' + self.settings.container_class)
@@ -216,6 +232,7 @@
           delay = self.settings.timer_speed - (progress_pct * self.settings.timer_speed);
 
       $progress.animate({'width': '100%'}, delay, 'linear', callback);
+      $slides_container.trigger('orbit:timer-started');
     },
 
     _stop_timer: function ($slides_container) {
@@ -225,6 +242,7 @@
           $progress = $timer.find('.' + self.settings.timer_progress_class),
           progress_pct = $progress.width() / $timer.width()
       self._rebuild_timer($container, progress_pct * 100 + '%');
+      $slides_container.trigger('orbit:timer-stopped');
       $timer = $container.find('.' + self.settings.timer_class);
       $timer.addClass(self.settings.timer_paused_class);
     },
@@ -301,14 +319,17 @@
       var new_margin_left = '-' + (active_index * 100) + '%';
       // Check to see if animation will occur, otherwise perform
       // callbacks manually
+      $slides_container.trigger('orbit:before-slide-change');
       if ($slides_container.css('marginLeft') === new_margin_left) {
         $container.removeClass(self.settings.orbit_transition_class);
+        $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length}]);
         callback();
       } else {
         $slides_container.animate({
           'marginLeft' : new_margin_left
         }, self.settings.animation_speed, 'ease', function() {
           $container.removeClass(self.settings.orbit_transition_class);
+          $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
           callback();
         });
       }
