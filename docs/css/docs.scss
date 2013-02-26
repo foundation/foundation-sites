@@ -104,6 +104,9 @@ input[type="text"].attached-input {
   }
 }
 
+/* Side Nav Docs */
+.side-nav-custom { @include side-nav(darken(orange, 20%),16px,orange); }
+
 /* Large Screen Styles */
 @media #{$small} {
   // .button { margin-bottom: 15px; }
