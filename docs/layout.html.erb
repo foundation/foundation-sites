@@ -12,9 +12,9 @@
   <body>
     <%= yield %>
     <script>
-      document.write('<script src=<%= asset_path %>/vendor/'
+      document.write('<script src="<%= asset_path %>/vendor/'
         + ('__proto__' in {} ? 'zepto' : 'jquery')
-        + '.js><\/script>');
+        + '.js"><\/script>');
     </script>
     <script src="<%= asset_path %>/docs.js"></script>
     <script>

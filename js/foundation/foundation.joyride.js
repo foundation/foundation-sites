@@ -3,7 +3,6 @@
 
 /*
   TODO:
-    - Fix timer display
     - auto scroll not animating
 */
 
@@ -18,7 +17,7 @@
     defaults : {
       tipLocation          : 'bottom',  // 'top' or 'bottom' in relation to parent
       nubPosition          : 'auto',    // override on a per tooltip bases
-      scrollSpeed          : 300,       // Page scrolling speed in milliseconds
+      scrollSpeed          : 3000,       // Page scrolling speed in milliseconds
       timer                : 0,         // 0 = no timer , all other numbers = timer in milliseconds
       startTimerOnClick    : true,      // true or false - true requires clicking the first button start the timer
       startOffset          : 0,         // the index of the tooltip you want to start on (index of the li)
@@ -46,7 +45,7 @@
 
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
-      Foundation.inherit(this, 'throttle data_options scrollTo scrollLeft');
+      Foundation.inherit(this, 'throttle data_options scrollTo scrollLeft delay');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, this.defaults, method);
@@ -104,7 +103,9 @@
 
     start : function () {
       var self = this,
-          $this = $(this.scope).find('[data-joyride]');
+          $this = $(this.scope).find('[data-joyride]'),
+          integer_settings = ['timer', 'scrollSpeed', 'startOffset', 'tipAnimationFadeSpeed', 'cookieExpires'],
+          int_settings_count = integer_settings.length;
 
       if (!this.settings.init) this.init();
       $.extend(true, this.settings, this.data_options($this));
@@ -115,6 +116,11 @@
       this.settings.$tip_content = this.settings.$content_el.find('> li');
       this.settings.paused = false;
       this.settings.attempts = 0;
+
+      // Make sure that settings parsed from data_options are integers where necessary
+      for (var i = int_settings_count - 1; i >= 0; i--) {
+        this.settings[integer_settings[i]] = parseInt(this.settings[integer_settings[i]], 10);
+      }
 
       this.settings.tipLocationPatterns = {
         top: ['bottom'],
@@ -225,6 +231,8 @@
           this.settings.tipSettings = $.extend(true,
             this.settings, this.data_options(this.settings.$li));
 
+          this.settings.timer = parseInt(this.settings.timer, 10);
+
           this.settings.tipSettings.tipLocationPattern = this.settings.tipLocationPatterns[this.settings.tipSettings.tipLocation];
 
           // scroll if not modal
@@ -242,15 +250,17 @@
 
           if (/pop/i.test(this.settings.tipAnimation)) {
 
-            $timer.outerWidth(0);
+            $timer.width(0);
 
             if (thsi.settings.timer > 0) {
 
               this.settings.$next_tip.show();
 
-              $timer.animate({
-                width: $timer.parent().outerWidth()
-              }, this.settings.timer);
+              this.delay(function () {
+                $timer.animate({
+                  width: $timer.parent().width()
+                }, this.settings.timer, 'linear');
+              }.bind(this), this.settings.tipAnimationFadeSpeed);
 
             } else {
               this.settings.$next_tip.show();
@@ -260,7 +270,7 @@
 
           } else if (/fade/i.test(this.settings.tipAnimation)) {
 
-            $timer.outerWidth(0);
+            $timer.width(0);
 
             if (this.settings.timer > 0) {
 
@@ -268,9 +278,11 @@
                 .fadeIn(this.settings.tipAnimationFadeSpeed)
                 .show();
 
-              $timer.animate({
-                width: $timer.parent().outerWidth()
-              }, this.settings.timer);
+              this.delay(function () {
+                $timer.animate({
+                  width: $timer.parent().width()
+                }, this.settings.timer, 'linear');
+              }.bind(this), this.settings.tipAnimationFadeSpeed);
 
             } else {
               this.settings.$next_tip.fadeIn(this.settings.tipAnimationFadeSpeed);

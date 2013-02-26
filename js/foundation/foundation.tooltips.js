@@ -21,6 +21,7 @@
     cache : {},
 
     init : function (scope, method, options) {
+      var self = this;
       this.scope = scope || this.scope;
 
       if (typeof method === 'object') {
@@ -32,9 +33,8 @@
           $(this.scope)
             .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', '[data-tooltip]', function (e) {
               e.preventDefault();
-              var methods = Foundation.libs.tooltips;
-              $(methods.settings.tooltipClass).hide();
-              methods.showOrCreateTip($(this));
+              $(self.settings.tooltipClass).hide();
+              self.showOrCreateTip($(this));
             })
             .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', this.settings.tooltipClass, function (e) {
               e.preventDefault();
@@ -43,13 +43,12 @@
         } else {
           $(this.scope)
             .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', '[data-tooltip]', function (e) {
-              var $this = $(this),
-                  methods = Foundation.libs.tooltips;
+              var $this = $(this);
 
-              if (e.type === 'mouseover') {
-                methods.showOrCreateTip($this);
-              } else if (e.type === 'mouseout') {
-                methods.hide($this);
+              if (e.type === 'mouseover' || e.type === 'mouseenter') {
+                self.showOrCreateTip($this);
+              } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
+                self.hide($this);
               }
             });
         }
@@ -64,7 +63,7 @@
     showOrCreateTip : function ($target) {
       var $tip = this.getTip($target);
 
-      if ($tip.length > 0) {
+      if ($tip && $tip.length > 0) {
         return this.show($target);
       }
 
@@ -84,14 +83,14 @@
 
     selector : function ($target) {
       var id = $target.attr('id'),
-          dataSelector = $target.attr('data-selector');
+          dataSelector = $target.attr('data-tooltip') || $target.attr('data-selector');
 
-      if (id.length < 1 && typeof dataSelector != 'string') {
+      if ((id && id.length < 1 || !id) && typeof dataSelector != 'string') {
         dataSelector = 'tooltip' + Math.random().toString(36).substring(7);
         $target.attr('data-selector', dataSelector);
       }
 
-      return (id.length > 0) ? id : dataSelector;
+      return (id && id.length > 0) ? id : dataSelector;
     },
 
     create : function ($target) {
@@ -142,11 +141,11 @@
         } else if (classes && classes.indexOf('tip-left') > -1) {
           objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight*1.5), 'auto', 'auto', (target.offset().left - tip.outerWidth()), width)
             .removeClass('tip-override');
-          objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -(nubHeight / 2));
+          // objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), -(nubHeight / 2));
         } else if (classes && classes.indexOf('tip-right') > -1) {
           objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight*1.5), 'auto', 'auto', (target.offset().left + target.outerWidth() + 10), width)
             .removeClass('tip-override');
-          objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -(nubHeight / 2));
+          // objPos(nub, (tip.outerHeight() / 2) - (nubHeight / 2), 'auto', 'auto', -(nubHeight / 2));
         }
       }
 

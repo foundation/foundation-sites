@@ -6,7 +6,7 @@ ignore /js\//
 
 helpers do
   def asset_path
-    "http://#{Socket.gethostname}:4001/assets"
+    "http://#{Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.getnameinfo[0]}:4001/assets"
   end
 
   def code_example(code, lang=:ruby)
