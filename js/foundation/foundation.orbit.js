@@ -56,7 +56,7 @@
     _slide_number_html: function(slide_number, total_slides) {
       var self = this,
           $container = $('<div class="' + self.settings.slide_number_class + '"></div>');
-      $container.append(slide_number + ' of ' + total_slides);
+      $container.append('<span>' + slide_number + '</span> of <span>' + total_slides + '</span>');
       return $container;
     },
 
