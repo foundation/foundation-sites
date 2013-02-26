@@ -165,6 +165,8 @@
         };
       },
 
+      // parses dat-options attribute on page nodes and turns
+      // them into an object
       data_options : function (el) {
         var opts = {}, ii, p,
             opts_arr = (el.attr('data-options') || ':').split(';'),

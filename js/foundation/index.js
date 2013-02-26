@@ -5,4 +5,5 @@
 =require foundation/foundation.forms
 =require foundation/foundation.clearing
 =require foundation/foundation.reveal
+=require foundation/foundation.magellan
 */
