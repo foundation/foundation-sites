@@ -12,9 +12,9 @@ $f-dropdown-margin-top: 2px !default;
 $f-dropdown-bg: #fff !default;
 
 // We use this to set the border styles for dropdowns.
-$f-dropdown-border-style: solid!default;
-$f-dropdown-border-width: 1px!default;
-$f-dropdown-border-color: #ccc!default;
+$f-dropdown-border-style: solid !default;
+$f-dropdown-border-width: 1px !default;
+$f-dropdown-border-color: darken(#fff, 20%) !default;
 
 // We use these to style the triangle pip.
 $f-dropdown-triangle-size: 6px !default;
@@ -23,10 +23,11 @@ $f-dropdown-triangle-side-offset: 10px !default;
 
 // We use these to control styles for the list elements.
 $f-dropdown-list-style: none !default;
+$f-dropdown-font-color: #555 !default;
 $f-dropdown-font-size: emCalc(14px) !default;
 $f-dropdown-list-padding: emCalc(5px) emCalc(10px) !default;
 $f-dropdown-line-height: emCalc(18px) !default;
-$f-dropdown-list-hover-bg: lighten($primary-color, 45%) !default;
+$f-dropdown-list-hover-bg: #eeeeee !default;
 
 // We use this to control the styles for when the dropdown has custom content.
 $f-dropdown-content-padding: emCalc(20px) !default;
@@ -76,7 +77,6 @@ $f-dropdown-content-padding: emCalc(20px) !default;
 
 // We use this to style the list elements or content inside the dropdown.
 @mixin dropdown-style {
-  color: $primary-color;
   font-size: $f-dropdown-font-size;
   cursor: pointer;
   padding: $f-dropdown-list-padding;
@@ -87,6 +87,8 @@ $f-dropdown-content-padding: emCalc(20px) !default;
   &:focus {
     background: $f-dropdown-list-hover-bg;
   }
+
+  a { color: $f-dropdown-font-color; }
 }
 
 

@@ -37,9 +37,7 @@
 }
 
 /* Button Docs */
-.buttony.custom {
-  @include button(1.1em, #FF94CB, 20px);
-}
+.buttony.custom { @include button(1.1em, #FF94CB, 20px); }
 
 .button-base {
   @include button-base;
@@ -74,6 +72,15 @@
 
 input[type="text"].attached-input {
   @include grid-column($columns:9);
+}
+
+/* Dropdown Buttons Docs */
+.customized-dropdown-docs {
+  @include button;
+  @include dropdown-button;
+  @include radius;
+  @include single-transition;
+  @include inset-shadow;
 }
 
 
