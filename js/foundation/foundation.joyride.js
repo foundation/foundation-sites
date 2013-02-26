@@ -90,10 +90,12 @@
         }.bind(this));
 
       $(window).on('resize.fndtn.joyride', self.throttle(function () {
-        if (self.is_phone()) {
-          self.pos_phone();
-        } else {
-          self.pos_default();
+        if ($('[data-joyride]').length > 0) {
+          if (self.is_phone()) {
+            self.pos_phone();
+          } else {
+            self.pos_default();
+          }
         }
       }, 100));
 
