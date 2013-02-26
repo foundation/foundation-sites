@@ -88,21 +88,13 @@
     },
 
     css : function (dropdown, target) {
-      var offset = this.offset(dropdown, target);
+      var offset = target.offset();
 
       return dropdown.css({
         position : 'absolute',
         top: offset.top + target.height(),
         left: offset.left
       });
-    },
-
-    offset : function (dropdown, target) {
-      if (/body/i.test(dropdown.parent().selector)) {
-        return target.offset();
-      }
-
-      return target.position();
     },
 
     off: function () {
