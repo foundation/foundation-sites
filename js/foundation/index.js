@@ -6,4 +6,5 @@
 =require foundation/foundation.clearing
 =require foundation/foundation.reveal
 =require foundation/foundation.magellan
+=require foundation/foundation.tooltips
 */
