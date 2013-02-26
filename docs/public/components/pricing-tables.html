@@ -1,0 +1,184 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Pricing Tables</title>
+    <link rel="stylesheet" href="http://comedian.local:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://comedian.local:4001/assets/docs.css" />
+    <script src="http://comedian.local:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Pricing Tables</h1>
+    <h4 class="subheader">If you're making a rockin' marketing site for a subscription-based product you are likely in need of a pricing table. These fill 100% of the their container and are made from a simple unorderd list.</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <div class="row">
+      <div class="large-4 columns large-centered">
+        <ul class="pricing-table">
+          <li class="title">Standard</li>
+          <li class="price">$99.99</li>
+          <li class="description">An awesome description</li>
+          <li class="bullet-item">1 Database</li>
+          <li class="bullet-item">5GB Storage</li>
+          <li class="bullet-item">20 Users</li>
+          <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build pricing tables in Foundation 4, with our predefined HTML or with our mixins. Building pricing tables with our predefined classes is quite easy. You'll start with an <code>&lt;ul&gt;</code> and add a class of <code>.pricing-table</code> to it. From there you just need to add list items inside that represent each piece of the table.</p>
+
+    <p>Available HTML class options for the list items:</p>
+    <ul class="disc">
+      <li><code>&lt;li class="title"&gt;</code>: Creates the styles for a title.</li>
+      <li><code>&lt;li class="price"&gt;</code>: Add a price that stands out.</li>
+      <li><code>&lt;li class="description"&gt;</code>: If you need to descript the plan, add this.</li>
+      <li><code>&lt;li class="bullet-item"&gt;</code>: To call out features, use this list item.</li>
+      <li><code>&lt;li class="cta-button"&gt;</code>: To add a button inside a list item, use this.</li>
+    </ul>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pricing-table</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Standard<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">price</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>$99.99<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>An awesome description<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bullet-item</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1 Database<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bullet-item</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>5GB Storage<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bullet-item</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>20 Users<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cta-button</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Buy Now<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre></div>
+</div>
+</div>
+
+    <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected pricing-tables from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
+
+    <hr>
+
+    <h3>Build with a Mixin</h3>
+    <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_pricing-tables.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/foundation-global</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/pricing-tables</span><span class="delimiter">&quot;</span></span>;
+</pre></div>
+</div>
+</div>
+
+    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like to the <code>&lt;ul&gt;</code> and the list items inside it.</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-pricing-class</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-title-class</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Title<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-price-class</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>$$$<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-desc-class</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-bullet-class</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Bullet<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-cta-class</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-button-class</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Button<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre></div>
+</div>
+</div>
+
+    <h5>The Container Mixin</h5>
+    <p>Pricing tables are built up from an unordered list. We give this container some necessary styles by using our container mixin. There are no customizable options within the mixin, but everything can be changed using the Scss variables below.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-pricing-class</span>  { <span class="directive">@include</span> <span class="key">pricing-table-container</span>;
+  .<span class="key">your-title-class</span>  { <span class="directive">@include</span> <span class="key">pricing-table-title</span>; }
+  .<span class="key">your-price-class</span>  { <span class="directive">@include</span> <span class="key">pricing-table-price</span>; }
+  .<span class="key">your-desc-class</span>   { <span class="directive">@include</span> <span class="key">pricing-description-title</span>; }
+  .<span class="key">your-bullet-class</span> { <span class="directive">@include</span> <span class="key">pricing-table-bullet</span>; }
+  .<span class="key">your-cta-class</span>    { <span class="directive">@include</span> <span class="key">pricing-table-cta</span>; }
+}</pre></div>
+</div>
+</div>
+
+    <ul class="pricing-table">
+      <li class="title">Standard</li>
+      <li class="price">$99.99</li>
+      <li class="description">An awesome description</li>
+      <li class="bullet-item">1 Database</li>
+      <li class="bullet-item">5GB Storage</li>
+      <li class="bullet-item">20 Users</li>
+      <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+    </ul>
+
+    <h5>Default SCSS Variables</h5>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* We use this to control the border color */</span>
+<span class="error">$</span><span class="type">price-table-border</span>:        <span class="type">solid</span> <span class="float">1px</span> <span class="constant">#ddd</span>;
+
+<span class="comment">/* We use this to control the bottom margin of the pricing table */</span>
+<span class="error">$</span><span class="type">price-table-margin-bottom</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>);
+
+<span class="comment">/* We use these to control the title styles */</span>
+<span class="error">$</span><span class="type">price-title-bg</span>:            <span class="constant">#ddd</span>;
+<span class="error">$</span><span class="type">price-title-padding</span>:       <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">15px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>);
+<span class="error">$</span><span class="type">price-title-align</span>:         <span class="type">center</span>;
+<span class="error">$</span><span class="type">price-title-color</span>:         <span class="constant">#333</span>;
+<span class="error">$</span><span class="type">price-title-weight</span>:        <span class="type">bold</span>;
+<span class="error">$</span><span class="type">price-title-size</span>:          <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">16px</span>);
+
+<span class="comment">/* We use these to control the price styles */</span>
+<span class="error">$</span><span class="type">price-money-bg</span>:            <span class="constant">#eee</span>;
+<span class="error">$</span><span class="type">price-money-padding</span>:       <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">15px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>);
+<span class="error">$</span><span class="type">price-money-align</span>:         <span class="type">center</span>;
+<span class="error">$</span><span class="type">price-money-color</span>:         <span class="constant">#333</span>;
+<span class="error">$</span><span class="type">price-money-weight</span>:        <span class="type">normal</span>;
+<span class="error">$</span><span class="type">price-money-size</span>:          <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>);
+
+<span class="comment">/* We use these to control the description styles */</span>
+<span class="error">$</span><span class="type">price-bg</span>:                  <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">price-desc-color</span>:          <span class="constant">#777</span>;
+<span class="error">$</span><span class="type">price-desc-padding</span>:        <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">15px</span>);
+<span class="error">$</span><span class="type">price-desc-align</span>:          <span class="type">center</span>;
+<span class="error">$</span><span class="type">price-desc-font-size</span>:      <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">12px</span>);
+<span class="error">$</span><span class="type">price-desc-weight</span>:         <span class="type">normal</span>;
+<span class="error">$</span><span class="type">price-desc-line-height</span>:    <span class="float">1</span><span class="class">.4</span>;
+<span class="error">$</span><span class="type">price-desc-bottom-border</span>:  <span class="type">dotted</span> <span class="float">1px</span> <span class="constant">#ddd</span>;
+
+<span class="comment">/* We use these to control the list item styles */</span>
+<span class="error">$</span><span class="type">price-item-color</span>:          <span class="constant">#333</span>;
+<span class="error">$</span><span class="type">price-item-padding</span>:        <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">15px</span>);
+<span class="error">$</span><span class="type">price-item-align</span>:          <span class="type">center</span>;
+<span class="error">$</span><span class="type">price-item-font-size</span>:      <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">14px</span>);
+<span class="error">$</span><span class="type">price-item-weight</span>:         <span class="type">normal</span>;
+<span class="error">$</span><span class="type">price-item-bottom-border</span>:  <span class="type">dotted</span> <span class="float">1px</span> <span class="constant">#ddd</span>;
+
+<span class="comment">/* We use these to control the CTA area styles */</span>
+<span class="error">$</span><span class="type">price-cta-bg</span>:              <span class="constant">#f5f5f5</span>;
+<span class="error">$</span><span class="type">price-cta-align</span>:           <span class="type">center</span>;
+<span class="error">$</span><span class="type">price-cta-padding</span>:         <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>) <span class="float">0</span>;</pre></div>
+</div>
+</div>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+  </div>
+</div>
+    <script>
+      document.write('<script src=http://comedian.local:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+    <script src="http://comedian.local:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

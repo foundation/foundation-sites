@@ -1,0 +1,262 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Buttons</title>
+    <link rel="stylesheet" href="http://comedian.local:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://comedian.local:4001/assets/docs.css" />
+    <script src="http://comedian.local:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Buttons</h1>
+    <h4 class="subheader">Buttons are a convenient tool when it comes to more traditional actions. To that end, Foundation includes a lot of easy to use button styles that you can customize or override to fit your needs.</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <div class="row">
+      <div class="small-6 large-6 columns">
+        <a href="#" class="tiny button">.tiny.button</a><br>
+        <a href="#" class="small button">.small.button</a><br>
+        <a href="#" class="button">.button</a><br>
+      </div>
+      <div class="small-6 large-6 columns">
+        <a href="#" class="tiny button secondary">.tiny.secondary</a><br>
+        <a href="#" class="small button success radius">.small.success.radius</a><br>
+        <a href="#" class="button alert round disabled">.round.disabled</a><br>
+      </div>
+    </div>
+    <a href="#" class="large button expand">.large.button.expand</a>
+
+    <hr>
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build buttons in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building buttons using our predefined classes is simple, you'll need an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> with a class of <code>.button</code>. This will create a default medium button. You can also use size, color and radius classes to control more of the style.</p>
+
+    <p>The class options:</p>
+    <ul class="disc">
+      <li>The size classes include: <code>.tiny, .small, .medium</code> or <code>.large</code></li>
+      <li>The color classes include: <code>.secondary, .alert</code> or <code>.success</code></li>
+      <li>The radius classes include: <code>.radius</code> or <code>.round</code>.</li>
+      <li>You can also add <code>.disabled</code> to any button and it will look and act disabled.</li>
+    </ul>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">&lt;!-- Size Classes --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Default Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">tiny button</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Tiny Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">small button</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Small Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">large button</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Large Button<span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Color Classes --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button secondary</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Secondary Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button success</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Success Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button alert</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Alert Button<span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Radius Classes --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Radius Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button round</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Round Button<span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Disabled Class --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button disabled</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Disabled Button<span class="tag">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <p>You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>button from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+
+    <hr>
+
+    <h3>Build with Mixins</h3>
+    <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_buttons.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/foundation-global</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/buttons</span><span class="delimiter">&quot;</span></span>;
+</pre></div>
+</div>
+</div>
+
+    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-class-name</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Button Text<span class="tag">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <h5>Quick Mixin</h5>
+    <p>You can quickly build an entire button using our global mixin by including it on your custom class or ID in your stylesheet. The global mixin will create the necessary style for the button. The global mixin looks like this:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Using the default styles */</span>
+<span class="class">.your-class-name</span> { <span class="directive">@include</span> <span class="key">button</span>; }
+</pre></div>
+</div>
+</div>
+
+    <a href="#" class="button">Default Button</a>
+
+    <p>There are also <strong>six options</strong> you can customize on the fly when writing this mixin. These controls things like: background color, border color, text color, size and state. Setting any of these options to <strong>false</strong> will negate those styles.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Using the available options */</span>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="error">b</span><span class="error">u</span><span class="error">t</span><span class="error">t</span><span class="error">o</span><span class="error">n</span>(<span class="error">$</span><span class="key">padding</span>, <span class="error">$</span><span class="key">bg</span>, <span class="error">$</span><span class="key">radius</span>, <span class="error">$</span><span class="key">full-width</span>, <span class="error">$</span><span class="key">disabled</span>, <span class="error">$</span><span class="key">is-input</span>);
+}
+
+<span class="comment">/* This controls padding around the buttons. Use a variable or em value */</span>
+<span class="error">$</span><span class="type">padding</span>: <span class="error">$</span><span class="type">button-med</span>
+
+<span class="comment">/* This controls button color. Set to one of our variables or a custom hex value */</span>
+<span class="error">$</span><span class="type">bg</span>: <span class="error">$</span><span class="type">primary-color</span>
+
+<span class="comment">/* This controls button radius. Set to a variable, true/false, or custom px value */</span>
+<span class="error">$</span><span class="type">radius</span>: <span class="type">false</span>
+
+<span class="comment">/* This whether button is full-width. Set to true or false */</span>
+<span class="error">$</span><span class="type">full-width</span>: <span class="type">false</span>
+
+<span class="comment">/* This controls whether disabled styles are used. Set to true or false */</span>
+<span class="error">$</span><span class="type">disabled</span>: <span class="type">false</span>
+
+<span class="comment">/* This controls padding for inputs, they are a little different */</span>
+<span class="error">$</span><span class="type">is-input</span>: <span class="type">false</span>
+</pre></div>
+</div>
+</div>
+
+<a href="#" class="custom buttony">Custom Button</a>
+
+    <h5>Base Mixin</h5>
+    <p>You also have access to a few internal mixins that can create parts of the button as needed. The base mixin will create a button base that only include structural styles.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> { <span class="directive">@include</span> <span class="key">button-base</span>; }
+</pre></div>
+</div>
+</div>
+
+<a href="#" class="button-base">Button Base</a>
+
+    <h5>Size Mixin</h5>
+    <p>The size mixin will let you control the padding, which adjusts text size. You can also choose whether the button is full-width or an input button.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">button-base</span>;
+  <span class="directive">@include</span> <span class="error">b</span><span class="error">u</span><span class="error">t</span><span class="error">t</span><span class="error">o</span><span class="error">n</span><span class="error">-</span><span class="error">s</span><span class="error">i</span><span class="error">z</span><span class="error">e</span>(<span class="error">$</span><span class="key">padding</span>, <span class="error">$</span><span class="key">full-width</span>, <span class="error">$</span><span class="key">is-input</span>);
+}
+</pre></div>
+</div>
+</div>
+
+<a href="#" class="button-base size">Button Base &amp; Size</a>
+
+    <h5>Style Mixin</h5>
+    <p>The last internal mixin you have access to for buttons is the style mixin. This will help you style background color, text, border and radius.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">button-base</span>;
+  <span class="directive">@include</span> <span class="key">button-size</span>;
+  <span class="directive">@include</span> <span class="error">b</span><span class="error">u</span><span class="error">t</span><span class="error">t</span><span class="error">o</span><span class="error">n</span><span class="error">-</span><span class="error">s</span><span class="error">t</span><span class="error">y</span><span class="error">l</span><span class="error">e</span>(<span class="error">$</span><span class="key">bg</span>, <span class="error">$</span><span class="key">radius</span>, <span class="error">$</span><span class="key">disabled</span>);
+}
+</pre></div>
+</div>
+</div>
+
+<a href="#" class="button-base size style">Button Base, Size &amp; Style</a>
+
+      <h5>Inset Shadow, Border Radius &amp; Transition Mixin</h5>
+      <p>Sometimes you want to add a nice fancy shine to the edge of your button. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the button a nice zero-fade.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">button-base</span>;
+  <span class="directive">@include</span> <span class="key">button-size</span>;
+  <span class="directive">@include</span> <span class="key">button-style</span>;
+  <span class="directive">@include</span> <span class="key">radius</span>;
+  <span class="directive">@include</span> <span class="key">single-transition</span>;
+  <span class="directive">@include</span> <span class="error">i</span><span class="error">n</span><span class="error">s</span><span class="error">e</span><span class="error">t</span><span class="error">-</span><span class="error">s</span><span class="error">h</span><span class="error">a</span><span class="error">d</span><span class="error">o</span><span class="error">w</span>(<span class="error">$</span><span class="key">active</span>);
+}
+
+<span class="comment">/* This controls whether or not you get the depressed look on tap/click. */</span>
+<span class="comment">/* Set to true or false, defaults to true. */</span>
+<span class="error">$</span><span class="type">active</span>: <span class="type">true</span>
+</pre></div>
+</div>
+</div>
+
+<a href="#" class="button-base size style radius shine">Button Base, Size, Style &amp; Shine</a>
+
+    <h5>Default SCSS Variables</h5>
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* We use these to build padding for buttons. */</span>
+<span class="error">$</span><span class="type">button-med</span>:              <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">12px</span>);
+<span class="error">$</span><span class="type">button-tny</span>:              <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">7px</span>);
+<span class="error">$</span><span class="type">button-sml</span>:              <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">9px</span>);
+<span class="error">$</span><span class="type">button-lrg</span>:              <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">16px</span>);
+
+<span class="comment">/* We use this to control the display property. */</span>
+<span class="error">$</span><span class="type">button-display</span>:          <span class="type">inline-block</span>;
+
+<span class="comment">/* We use these to control button text styles. */</span>
+<span class="error">$</span><span class="type">button-font-color</span>:       <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">button-font-color-alt</span>:   <span class="constant">#333</span>;
+<span class="error">$</span><span class="type">button-font-med</span>:         <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">16px</span>);
+<span class="error">$</span><span class="type">button-font-tny</span>:         <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">11px</span>);
+<span class="error">$</span><span class="type">button-font-sml</span>:         <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">13px</span>);
+<span class="error">$</span><span class="type">button-font-lrg</span>:         <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>);
+<span class="error">$</span><span class="type">button-font-weight</span>:      <span class="type">bold</span>;
+<span class="error">$</span><span class="type">button-font-align</span>:       <span class="type">center</span>;
+
+<span class="comment">/* We use these to control various hover effects. */</span>
+<span class="error">$</span><span class="type">button-function-factor</span>:  <span class="float">10%</span>;
+
+<span class="comment">/* We use these to control button border styles. */</span>
+<span class="error">$</span><span class="type">button-border-width</span>:     <span class="float">1px</span>;
+<span class="error">$</span><span class="type">button-border-style</span>:     <span class="type">solid</span>;
+<span class="error">$</span><span class="type">button-border-color</span>:     <span class="error">d</span><span class="error">a</span><span class="error">r</span><span class="error">k</span><span class="error">e</span><span class="error">n</span>(<span class="error">$</span><span class="type">primary-color</span>, <span class="error">$</span><span class="type">button-function-factor</span>);
+
+<span class="comment">/* We use this to set the default radius used throughout the core. */</span>
+<span class="error">$</span><span class="type">button-radius</span>:           <span class="error">$</span><span class="type">global-radius</span>;
+
+<span class="comment">/* We use this to set default opacity for disabled buttons. */</span>
+<span class="error">$</span><span class="type">button-disabled-opacity</span>: <span class="float">0</span><span class="class">.6</span>;
+</pre></div>
+</div>
+</div>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+  </div>
+</div>
+
+    <script>
+      document.write('<script src=http://comedian.local:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+    <script src="http://comedian.local:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

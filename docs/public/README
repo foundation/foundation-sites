@@ -1,0 +1,25 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: </title>
+    <link rel="stylesheet" href="http://comedian.local:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://comedian.local:4001/assets/docs.css" />
+    <script src="http://comedian.local:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <p>From within the docs/ directory run <code>bundle install</code>. To get the docs to compile during development you&#39;ll want to run <code>bundle exec foreman start</code>. At that point you can access the docs by going to <code>http://localhost:4000</code>.</p>
+
+    <script>
+      document.write('<script src=http://comedian.local:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+    <script src="http://comedian.local:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
