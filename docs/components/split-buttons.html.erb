@@ -105,33 +105,39 @@ $base-style: true
 
     <h5>Default SCSS Variables</h5>
 <%= code_example '
-/* We use these to set the color of the pip in dropdown buttons */
-$dropdown-button-pip-color:     #fff;
-$dropdown-button-pip-color-alt: #333;
+/* We use these to control different shared styles for Split Buttons */
+$split-button-function-factor: 15%;
+$split-button-pip-color:       #fff;
+$split-button-pip-color-alt:   #333;
+$split-button-active-bg-tint:  rgba(0,0,0,0.1);
 
-/* We use these to style tiny dropdown buttons */
-$dropdown-button-padding-tny:   $button-tny * 5;
-$dropdown-button-pip-size-tny:  $button-tny;
-$dropdown-button-pip-right-tny: $button-tny * 2;
-$dropdown-button-pip-top-tny:   -$button-tny / 2 + emCalc(1px);
+/* We use these to control tiny split buttons */
+$split-button-padding-tny:     $button-tny * 9;
+$split-button-span-width-tny:  $button-tny * 6.5;
+$split-button-pip-size-tny:    $button-tny;
+$split-button-pip-top-tny:     $button-tny * 2;
+$split-button-pip-left-tny:    emCalc(-5px);
 
-/* We use these to style small dropdown buttons */
-$dropdown-button-padding-sml:   $button-sml * 5;
-$dropdown-button-pip-size-sml:  $button-sml;
-$dropdown-button-pip-right-sml: $button-sml * 2;
-$dropdown-button-pip-top-sml:   -$button-sml / 2 + emCalc(2px);
+/* We use these to control small split buttons */
+$split-button-padding-sml:     $button-sml * 7;
+$split-button-span-width-sml:  $button-sml * 5;
+$split-button-pip-size-sml:    $button-sml;
+$split-button-pip-top-sml:     $button-sml * 1.5;
+$split-button-pip-left-sml:    emCalc(-9px);
 
-/* We use these to style medium dropdown buttons */
-$dropdown-button-padding-med:   $button-med * 4 + emCalc(3px);
-$dropdown-button-pip-size-med:  $button-med - emCalc(3px);
-$dropdown-button-pip-right-med: $button-med * 2;
-$dropdown-button-pip-top-med:   -$button-med / 2 + emCalc(2px);
+/* We use these to control medium split buttons */
+$split-button-padding-med:     $button-med * 6.4;
+$split-button-span-width-med:  $button-med * 4;
+$split-button-pip-size-med:    $button-med - emCalc(3px);
+$split-button-pip-top-med:     $button-med * 1.5;
+$split-button-pip-left-med:    emCalc(-9px);
 
-/* We use these to style large dropdown buttons */
-$dropdown-button-padding-lrg:   $button-lrg * 4;
-$dropdown-button-pip-size-lrg:  $button-lrg - emCalc(6px);
-$dropdown-button-pip-right-lrg: $button-lrg + emCalc(12px);
-$dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
+/* We use these to control large split buttons */
+$split-button-padding-lrg:     $button-lrg * 6;
+$split-button-span-width-lrg:  $button-lrg * 3.75;
+$split-button-pip-size-lrg:    $button-lrg - emCalc(6px);
+$split-button-pip-top-lrg:     $button-lrg + emCalc(5px);
+$split-button-pip-left-lrg:    emCalc(-9px);
 ', :css %>
 
     <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>

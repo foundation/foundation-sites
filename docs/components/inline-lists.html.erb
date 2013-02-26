@@ -1,20 +1,10 @@
 <% @page_title = "Inline Lists" %>
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Blah</h4>
-  </div>
-</div>
+    <h4 class="subheader">When you just need a horizontal list of links, like in a footer, and you want more control than just spaces between them you can use this simple construct.</h4>
 
-<div class="row">
-  <div class="large-4">
-    <a name="inline-list"></a>
-    <h4>Inline List</h4>
-    <p>When you just need a horizontal list of links, like in a footer, and you want more control than just spaces between them you can use this simple construct.</p>
-  </div>
-  <br>
-  <div class="large-8">
     <ul class="inline-list">
       <li><a href="#">Link 1</a></li>
       <li><a href="#">Link 2</a></li>
@@ -22,5 +12,69 @@
       <li><a href="#">Link 4</a></li>
       <li><a href="#">Link 5</a></li>
     </ul>
+
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build inline lists in Foundation 4, with our predefined HTML or with our mixins. Building inline lists using our predefined classes is easy. You'll start with an unordered list and add a class of <code>.inline-list</code> to it. From there you just need to add list items with links in them.</p>
+
+<%= code_example '
+<ul class="inline-list">
+  <li><a href="#">Link 1</a></li>
+  <li><a href="#">Link 2</a></li>
+  <li><a href="#">Link 3</a></li>
+  <li><a href="#">Link 4</a></li>
+  <li><a href="#">Link 5</a></li>
+</ul>', :html %>
+
+    <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected inline-lists from a custom package. These should be linked up following our default HTML page structure.</p>
+
+    <hr>
+
+    <h3>Build with a Mixin</h3>
+    <p>We've included SCSS mixins used to style inline lists. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_inline-lists.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<%= code_example '
+@import "foundation/foundation-global", "foundation/inline-lists";
+', :css %>
+
+    <h5>Quick Mixin</h5>
+    <p>You can build your inline lists using our global mixin by including it on your own custom class. The mixin contains all the necessary styles for positioning and styling the unordered list full of list items, the code looks like this:</p>
+
+<%= code_example '
+.your-class-name { @include inline-list; }', :css %>
+
+    <ul class="inline-list">
+      <li><a href="#">Link 1</a></li>
+      <li><a href="#">Link 2</a></li>
+      <li><a href="#">Link 3</a></li>
+      <li><a href="#">Link 4</a></li>
+      <li><a href="#">Link 5</a></li>
+    </ul>
+
+    <h5>Default SCSS Variables</h5>
+
+<%= code_example '
+/* We use this to control the margins and padding of the inline list. */
+$inline-list-margin-bottom:    emCalc(17px) emCalc(-22px );
+$inline-list-margin:           0 0;
+$inline-list-padding:          0;
+
+/* We use this to control the overflow of the inline list. */
+$inline-list-overflow:         hidden;
+
+/* We use this to control the list items */
+$inline-list-display:          block;
+
+/* We use this to control any elments within list items */
+$inline-list-children-display: block;', :css %>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
   </div>
 </div>

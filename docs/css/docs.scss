@@ -83,6 +83,13 @@ input[type="text"].attached-input {
   @include inset-shadow;
 }
 
+/* Keystroke Docs */
+.custom-keystroke kbd { @include keystroke(orange);}
+
+/* Label Docs */
+.label-custom {
+  @include label(0 10px,11px,pink,6px);
+}
 
 /* Large Screen Styles */
 @media #{$small} {

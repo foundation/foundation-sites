@@ -3,21 +3,21 @@
 //
 
 // We use these to control text styles.
-$keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
-$keystroke-font-size: emCalc(15px) !default;
-$keystroke-font-color: #222 !default;
-$keystroke-font-color-alt: #fff !default;
+$keystroke-font:            "Consolas", "Menlo", "Courier", monospace !default;
+$keystroke-font-size:       emCalc(15px) !default;
+$keystroke-font-color:      #222 !default;
+$keystroke-font-color-alt:  #fff !default;
 $keystroke-function-factor: 7% !default;
 
 // We use this to control keystroke padding.
-$keystroke-padding: emCalc(2px) emCalc(4px) emCalc(0px) !default;
+$keystroke-padding:         emCalc(2px) emCalc(4px) emCalc(0px) !default;
 
 // We use these to control background and border styles.
-$keystroke-bg: darken(#fff, $keystroke-function-factor) !default;
-$keystroke-border-style: solid !default;
-$keystroke-border-width: 1px !default;
-$keystroke-border-color: darken($keystroke-bg, $keystroke-function-factor) !default;
-$keystroke-radius: $button-radius;
+$keystroke-bg:              darken(#fff, $keystroke-function-factor) !default;
+$keystroke-border-style:    solid !default;
+$keystroke-border-width:    1px !default;
+$keystroke-border-color:    darken($keystroke-bg, $keystroke-function-factor) !default;
+$keystroke-radius:          $button-radius !default;
 
 //
 // Keystroke Mixins

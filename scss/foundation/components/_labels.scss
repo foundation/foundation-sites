@@ -3,14 +3,12 @@
 //
 
 // We use these to style the labels
-$label-padding: emCalc(1px) emCalc(4px) emCalc(2px) !default;
-$label-radius: $button-radius !default;
+$label-padding:     emCalc(3px) emCalc(6px) emCalc(4px) !default;
+$label-radius:      $button-radius !default;
 
 // We use these to style the label text
-$label-font-size: emCalc(14px) !default;
+$label-font-size:   emCalc(14px) !default;
 $label-font-weight: bold !default;
-$label-font-color: #fff !default;
-$label-font-color-alt: darken($secondary-color, 60%) !default;
 
 //
 // Label Mixins
@@ -45,8 +43,8 @@ $label-font-color-alt: darken($secondary-color, 60%) !default;
     background-color: $bg;
 
     // We control the text color for you based on the background color.
-    @if $bg-lightness > 70% { color: $label-font-color-alt; }
-    @else { color: $label-font-color; }
+    @if $bg-lightness < 70% { color: #fff; }
+    @else { color: #333; }
   }
 
   // We use this to control the radius on labels.
@@ -73,7 +71,7 @@ $label-font-color-alt: darken($secondary-color, 60%) !default;
 
 
     &.radius { @include label-style(false, true); }
-    &.round { @include label-style($radius:1000px); }
+    &.round { @include label-style(false, $radius:1000px); }
 
     &.alert     { @include label-style($alert-color); }
     &.success   { @include label-style($success-color); }
