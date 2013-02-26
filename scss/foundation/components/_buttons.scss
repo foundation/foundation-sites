@@ -58,7 +58,7 @@ $button-disabled-opacity: 0.6 !default;
 }
 
 // We use this mixin to add button size styles
-@mixin button-size($padding:$button-med, $full-width:false, $is-input:false, $is-prefix:false) {
+@mixin button-size($padding:$button-med, $full-width:false, $is-input:false) {
 
   // We control which padding styles come through,
   // these can be turned off by setting $padding:false
@@ -93,14 +93,6 @@ $button-disabled-opacity: 0.6 !default;
   @else if $is-input {
     padding-top: $is-input + emCalc(1px);
     padding-bottom: $is-input;
-  }
-
-  // We control line-height and padding for when a button is used as prefix/postfix form label
-  @if $is-prefix {
-    padding-#{$default-float}: 0;
-    padding-#{$default-opposite}: 0;
-    text-align: center;
-    line-height: $form-spacing;
   }
 }
 
@@ -150,7 +142,7 @@ $button-disabled-opacity: 0.6 !default;
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
 @mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
   @include button-base;
-  @include button-size($padding, $full-width, $is-input, $is-prefix);
+  @include button-size($padding, $full-width, $is-input);
   @include button-style($bg, $radius, $disabled);
 }
 

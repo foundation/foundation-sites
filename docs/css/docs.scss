@@ -64,6 +64,19 @@
   li { float: left; margin-right: 10px; }
 }
 
+/* Forms Docs */
+.attached-label {
+  @include prefix-postfix-base;
+  @include grid-column($columns:3,$float:left);
+  &.style { @include prefix; }
+  &.custom { @include prefix(orange); }
+}
+
+input[type="text"].attached-input {
+  @include grid-column($columns:9);
+}
+
+
 /* Large Screen Styles */
 @media #{$small} {
   // .button { margin-bottom: 15px; }
