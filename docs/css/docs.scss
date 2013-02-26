@@ -107,6 +107,9 @@ input[type="text"].attached-input {
 /* Side Nav Docs */
 .side-nav-custom { @include side-nav(darken(orange, 20%),16px,orange); }
 
+/* Sub Nav Docs */
+.sub-nav-custom { @include sub-nav(orange,11px,orange); }
+
 /* Large Screen Styles */
 @media #{$small} {
   // .button { margin-bottom: 15px; }
