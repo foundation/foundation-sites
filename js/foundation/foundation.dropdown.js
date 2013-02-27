@@ -89,10 +89,10 @@
 
     css : function (dropdown, target) {
       var offset = target.offset();
-
+      console.log(this.outerHeight, this.outerWidth)
       return dropdown.css({
         position : 'absolute',
-        top: offset.top + target.outerHeight(),
+        top: offset.top + this.outerHeight(target),
         left: offset.left
       });
     },
