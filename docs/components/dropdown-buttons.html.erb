@@ -73,7 +73,7 @@
 }
 ', :css %>
 
-    <a href="" class="dropdown button">Default Dropdown Button</a>
+    <a href="" data-dropdown="drop7 "class="dropdown button">Default Dropdown Button</a>
 
     <p>There are also <strong>three options</strong> you can customize on the fly when writing this mixin. These control things like: background color, pip color, and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
 
@@ -108,7 +108,7 @@ $base-style: true
 }
 ', :css %>
 
-<a href="#" class="customized-dropdown-docs">Button Base, Size, Style &amp; Shine</a>
+<a href="#" data-dropdown="drop6" class="customized-dropdown-docs">Button Base, Size, Style &amp; Shine</a>
 
     <h5>Default SCSS Variables</h5>
 <%= code_example '
@@ -172,17 +172,16 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
 
     <a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button</a><br>
 
-    <ul id="drop1" data-dropdown-content class="f-dropdown">
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-
     <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have similar values. This is what tells the dropdown plugin where to look to find the position to attach the dropdown element to.</p>
   </div>
 </div>
 
 <ul id="drop" data-dropdown-content class="f-dropdown">
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop1" data-dropdown-content class="f-dropdown">
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
   <li><a href="#">Yet another</a></li>
@@ -203,6 +202,16 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
   <li><a href="#">Yet another</a></li>
 </ul>
 <ul id="drop5" data-dropdown-content class="f-dropdown">
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop6" data-dropdown-content class="f-dropdown">
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop7" data-dropdown-content class="f-dropdown">
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
   <li><a href="#">Yet another</a></li>
