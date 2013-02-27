@@ -130,7 +130,7 @@
 
         if ($slide.length === 1) {
           self._reset_timer($slides_container, true);
-          self.goto($slides_container, $slide.index(), function() {console.log('cool stuff')});
+          self.goto($slides_container, $slide.index(), function() {});
         }
       });
 
@@ -225,7 +225,6 @@
           $container = $slides_container.parent();
 
       var callback = function() {
-        console.log($(this).data('is-original'));
         self._reset_timer($slides_container, false);
         self.goto($slides_container, 'next', function() {
           self._start_timer($slides_container);
@@ -255,7 +254,6 @@
     },
 
     _reset_timer: function($slides_container, is_paused) {
-      console.info('reset timer...');
       var self = this,
           $container = $slides_container.parent();
       self._rebuild_timer($container, '0%');
