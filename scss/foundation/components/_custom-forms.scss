@@ -54,6 +54,7 @@ form.custom {
     &.radio { @include radius(1000px); }
 
     &.checkbox {
+      z-index: -1;
       &:before {
         content: "";
         display: block;
