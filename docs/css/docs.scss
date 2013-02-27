@@ -123,6 +123,12 @@ input[type="text"].attached-input {
   & > section { @include grid-column(8, $float:left); }
 }
 
+/* Switch Docs */
+.switch-custom { @include switch(700ms, ease-in-out, 50px, 18px, 2.6em, #888, lighten(yellow, 30%), lighten(red, 40%)); }
+.switch-custom-base { @include switch-base;
+  &.size { @include switch-size; }
+  &.style { @include switch-style; }
+}
 
 /* Large Screen Styles */
 @media #{$small} {
