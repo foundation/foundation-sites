@@ -98,8 +98,8 @@
       }
       // To better support the "sliding" effect it's easier
       // if we just clone the first and last slides
-      $slides_container.append($slides.first().clone());
-      $slides_container.prepend($slides.last().clone());
+      $slides_container.append($slides.first().clone().attr('data-orbit-slide',''));
+      $slides_container.prepend($slides.last().clone().attr('data-orbit-slide',''));
       // Make the first "real" slide active
       $slides_container.css('marginLeft', '-100%');
       $slides.first().addClass(self.settings.active_slide_class);
