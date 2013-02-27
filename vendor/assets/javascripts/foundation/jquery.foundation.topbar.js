@@ -107,7 +107,7 @@
       },
 
       breakpoint : function () {
-        return settings.$w.width() < settings.breakPoint;
+        return settings.$w.width() <= settings.breakPoint;
       },
 
       assemble : function () {
