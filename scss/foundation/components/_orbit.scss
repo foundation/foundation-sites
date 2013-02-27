@@ -171,8 +171,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
 .touch {
   .orbit-container {
     .orbit-prev,
-    .orbit-next,
-    .orbit-timer { display: none; }
+    .orbit-next { display: none; }
   }
 
   .orbit-bullets { display: none; }
@@ -183,8 +182,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
   .touch {
     .orbit-container {
       .orbit-prev,
-      .orbit-next,
-      .orbit-timer { display: inherit; }
+      .orbit-next { display: inherit; }
     }
 
     .orbit-bullets { display: block; }
