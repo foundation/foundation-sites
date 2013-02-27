@@ -15,27 +15,6 @@
     <a href="#" class="button alert round split">Split Button <span data-dropdown="drop3"></span></a><br>
     <a href="#" class="large success button split">Split Button <span data-dropdown="drop4"></span></a><br>
 
-    <ul id="drop" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop2" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop3" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop4" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-
     <hr>
 
     <h3>Build With Predefined HTML Classes</h3>
@@ -93,7 +72,7 @@
 }
 ', :css %>
 
-    <a href="" class="split button">Default Split Button <span></span></a>
+    <a href="" class="split button">Default Split Button<span data-dropdown="drop5"></span></a>
 
     <p>There are also <strong>four options</strong> you can customize on the fly when writing this mixin. These control things like: padding size, pip color, border color and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
 
@@ -186,13 +165,38 @@ $split-button-pip-left-lrg:    emCalc(-9px);
 
     <a href="#" class="button split">Dropdown Button <span data-dropdown="drop1"></span></a><br>
 
-    <ul id="drop1" class="f-dropdown">
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-
     <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have similar values. This is what tells the dropdown plugin where to look to find the position to attach the dropdown element to.</p>
 
   </div>
 </div>
+
+<ul id="drop" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop1" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop2" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop3" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop4" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop5" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
