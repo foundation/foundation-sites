@@ -64,6 +64,8 @@ $total-columns: 12 !default;
 // For creating columns - @include these inside a media query to control small vs. large grid layouts
 @mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:false) {
 
+  position: relative;
+
   // Gutter padding whenever a column isn't set to collapse
   @if $collapse == false {
     padding-left: $column-gutter / 2;
@@ -159,7 +161,7 @@ img { -ms-interpolation-mode: bicubic; }
       .small-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
     }
 
-    [class*="column"] + [class*="column"]:last-of-type { float: $default-opposite; }
+    [class*="column"] + [class*="column"]:last-child { float: $default-opposite; }
     [class*="column"] + [class*="column"].end { float: $default-float; }
 
     .column.small-centered,

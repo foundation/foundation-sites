@@ -117,6 +117,13 @@ input[type="text"].attached-input {
   @include single-transition(all,400ms,ease-in);
 }
 
+/* Grid Docs */
+#masthead { @include grid-row;
+  & > hgroup { @include grid-column(4); }
+  & > section { @include grid-column(8); }
+}
+
+
 /* Large Screen Styles */
 @media #{$small} {
   // .button { margin-bottom: 15px; }
