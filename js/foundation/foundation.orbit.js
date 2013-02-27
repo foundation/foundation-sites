@@ -23,7 +23,7 @@
       bullets_active_class: 'active',
       slide_number_class: 'orbit-slide-number',
       caption_class: 'orbit-caption',
-      active_class: 'active',
+      active_slide_class: 'active',
       orbit_transition_class: 'orbit-transitioning'
     },
 
@@ -64,9 +64,13 @@
 
     _timer_html: function() {
       var self = this;
-      return '<div class="' + self.settings.timer_container_class
-        + '"><span></span><div class="' + self.settings.timer_progress_class
-        + '"></div></div>';
+      if (typeof self.settings.timer_speed === 'number' && self.settings.timer_speed > 0) {
+        return '<div class="' + self.settings.timer_container_class
+          + '"><span></span><div class="' + self.settings.timer_progress_class
+          + '"></div></div>';
+      } else {
+        return '';
+      }
     },
 
     _next_html: function() {
@@ -98,11 +102,11 @@
       }
       // To better support the "sliding" effect it's easier
       // if we just clone the first and last slides
-      $slides_container.append($slides.first().clone());
-      $slides_container.prepend($slides.last().clone());
+      $slides_container.append($slides.first().clone().attr('data-orbit-slide',''));
+      $slides_container.prepend($slides.last().clone().attr('data-orbit-slide',''));
       // Make the first "real" slide active
       $slides_container.css('marginLeft', '-100%');
-      $slides.first().addClass(self.settings.active_class);
+      $slides.first().addClass(self.settings.active_slide_class);
 
       self._init_events($slides_container);
       self._init_dimensions($slides_container);
@@ -114,51 +118,53 @@
           $container = $slides_container.parent();
 
       $(window)
-        .on('load', function() {
+        .on('load.fndtn.orbit', function() {
           $slides_container.height('');
           $slides_container.height($slides_container.height($container.height()));
           $slides_container.trigger('orbit:ready');
         })
-        .on('resize', function() {
+        .on('resize.fndtn.orbit', function() {
           $slides_container.height('');
           $slides_container.height($slides_container.height($container.height()));
         });
 
-      $(document).on('click', '[data-orbit-link]', function(e) {
+      $(document).on('click.fndtn.orbit', '[data-orbit-link]', function(e) {
+        e.preventDefault();
         var id = $(e.currentTarget).attr('data-orbit-link'),
             $slide = $slides_container.find('[data-orbit-slide=' + id + ']').first();
 
         if ($slide.length === 1) {
           self._reset_timer($slides_container, true);
-          self.goto($slides_container, $slide.index(), function() {console.log('cool stuff')});
+          self.goto($slides_container, $slide.index(), function() {});
         }
       });
 
       $container.siblings('.' + self.settings.bullets_container_class)
-        .on('click', '[data-orbit-slide-number]', function(e) {
+        .on('click.fndtn.orbit', '[data-orbit-slide-number]', function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
         });
 
       $container
-        .on('orbit:after-slide-change', function(e, orbit) {
+        .on('orbit:after-slide-change.fndtn.orbit', function(e, orbit) {
           var $slide_number = $container.find('.' + self.settings.slide_number_class);
+
           if ($slide_number.length === 1) {
             $slide_number.replaceWith(self._slide_number_html(orbit.slide_number, orbit.total_slides));
           }
         })
-        .on('orbit:next-slide click', '.' + self.settings.next_class, function(e) {
+        .on('orbit:next-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.next_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'next', function() {});
         })
-        .on('orbit:prev-slide click', '.' + self.settings.prev_class, function(e) {
+        .on('orbit:prev-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.prev_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'prev', function() {});
         })
-        .on('orbit:toggle-play-pause click', '.' + self.settings.timer_container_class, function(e) {
+        .on('orbit:toggle-play-pause.fndtn.orbit click.fndtn.orbit touchstart.fndtn.orbit', '.' + self.settings.timer_container_class, function(e) {
           e.preventDefault();
           var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
               $slides_container = $timer.closest('.' + self.settings.container_class)
@@ -170,7 +176,7 @@
             self._start_timer($slides_container);
           }
         })
-        .on('touchstart', function(e) {
+        .on('touchstart.fndtn.orbit', function(e) {
           var data = {
             start_page_x: e.touches[0].pageX,
             start_page_y: e.touches[0].pageY,
@@ -181,7 +187,7 @@
           $container.data('swipe-transition', data);
           e.stopPropagation();
         })
-        .on('touchmove', function(e) {
+        .on('touchmove.fndtn.orbit', function(e) {
           // Ignore pinch/zoom events
           if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
@@ -204,7 +210,7 @@
             self.goto($slides_container, direction, function() {});
           }
         })
-        .on('touchend', function(e) {
+        .on('touchend.fndtn.orbit', function(e) {
           $container.data('swipe-transition', {});
           e.stopPropagation();
         });
@@ -225,7 +231,6 @@
           $container = $slides_container.parent();
 
       var callback = function() {
-        console.log($(this).data('is-original'));
         self._reset_timer($slides_container, false);
         self.goto($slides_container, 'next', function() {
           self._start_timer($slides_container);
@@ -255,7 +260,6 @@
     },
 
     _reset_timer: function($slides_container, is_paused) {
-      console.info('reset timer...');
       var self = this,
           $container = $slides_container.parent();
       self._rebuild_timer($container, '0%');
@@ -290,7 +294,7 @@
       var self = this,
           $container = $slides_container.parent(),
           $slides = $slides_container.children(),
-          $active_slide = $slides_container.find('.' + self.settings.active_class),
+          $active_slide = $slides_container.find('.' + self.settings.active_slide_class),
           active_index = $active_slide.index();
 
       if ($container.hasClass(self.settings.orbit_transition_class)) {
@@ -321,8 +325,8 @@
       }
       // Start transition, make next slide active
       $container.addClass(self.settings.orbit_transition_class);
-      $active_slide.removeClass(self.settings.active_class);
-      $($slides[active_index]).addClass(self.settings.active_class);
+      $active_slide.removeClass(self.settings.active_slide_class);
+      $($slides[active_index]).addClass(self.settings.active_slide_class);
       // Make next bullet active
       var $bullets = $container.siblings('.' + self.settings.bullets_container_class);
       if ($bullets.length === 1) {
@@ -335,10 +339,10 @@
       $slides_container.trigger('orbit:before-slide-change');
       if ($slides_container.css('marginLeft') === new_margin_left) {
         $container.removeClass(self.settings.orbit_transition_class);
-        $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length}]);
+        $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
         callback();
       } else {
-        $slides_container.stop().animate({
+        $slides_container.animate({
           'marginLeft' : new_margin_left
         }, self.settings.animation_speed, 'linear', function() {
           $container.removeClass(self.settings.orbit_transition_class);

@@ -29,7 +29,7 @@ $reveal-border-color: #666 !default;
 
 // We use this to create the reveal background overlay styles
 @mixin reveal-bg {
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   background: $reveal-overlay-bg-old;
@@ -107,7 +107,6 @@ $reveal-border-color: #666 !default;
 // Large Screen Styles
 @media #{$small} {
 
-  .reveal-modal-bg { position: fixed; }
   .reveal-modal {
     @include reveal-modal-style(false, emCalc(30px), false, $box-shadow: false, $top-offset: emCalc(100px));
 

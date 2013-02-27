@@ -91,6 +91,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     h1 {
       line-height: $topbar-height;
       font-size: $topbar-title-font-size;
+      margin: 0;
       a {
         font-weight: $topbar-title-weight;
         color: $topbar-link-color;
