@@ -152,11 +152,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     @include section-container;
 
     section,
-    .section {
-      @include section;
-
-      &.active { padding-top: 0 !important; }
-    }
+    .section { @include section; }
   }
 
   @media #{$small} {
