@@ -47,8 +47,8 @@ $f-dropdown-content-padding: emCalc(20px) !default;
   @if $content == list {
     max-width: $f-dropdown-max-width;
     width: 100%;
-    height: $f-dropdown-height;
     max-height: $f-dropdown-max-height;
+    height: $f-dropdown-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
     font-size: $em-base;
@@ -95,9 +95,7 @@ $f-dropdown-content-padding: emCalc(20px) !default;
   margin: 0;
 
   &:hover,
-  &:focus {
-    background: $f-dropdown-list-hover-bg;
-  }
+  &:focus { background: $f-dropdown-list-hover-bg; }
 
   a { color: $f-dropdown-font-color; }
 }
