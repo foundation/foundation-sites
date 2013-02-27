@@ -272,10 +272,15 @@
     },
 
     fix_outer : function (lib) {
-      lib.outerHeight = function (el) {
+      lib.outerHeight = function (el, bool) {
         if (typeof Zepto === 'function') {
           return el.height();
         }
+
+        if (typeof bool !== 'undefined') {
+          return el.outerHeight(bool);
+        }
+
         return el.outerHeight();
       };
 
@@ -283,6 +288,11 @@
         if (typeof Zepto === 'function') {
           return el.width();
         }
+
+        if (typeof bool !== 'undefined') {
+          return el.outerWidth(bool);
+        }
+
         return el.outerWidth();
       };
     },

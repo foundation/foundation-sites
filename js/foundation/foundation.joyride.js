@@ -312,7 +312,7 @@
 
     is_phone : function () {
       if (Modernizr) {
-        return Modernizr.mq('only screen and (max-width: 767px)');
+        return Modernizr.mq('only screen and (max-width: 767px)') || $('.lt-ie9').length > 0;
       }
 
       return (this.settings.$window.width() < 767) ? true : false;
@@ -362,7 +362,7 @@
       var window_half, tipOffset;
 
       window_half = $(window).height() / 2;
-      tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight());
+      tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.outerHeight(this.settings.$next_tip));
       if (tipOffset > 0) {
         this.scrollTo($('html, body'), tipOffset, this.settings.scrollSpeed);
       }
@@ -386,7 +386,7 @@
       var half_fold = Math.ceil($(window).height() / 2),
           tip_position = this.settings.$next_tip.offset(),
           $nub = this.settings.$next_tip.find('.joyride-nub'),
-          nub_height = Math.ceil($nub.outerHeight() / 2),
+          nub_height = Math.ceil(this.outerHeight($nub) / 2),
           toggle = init || false;
 
       // tip must not be "display: none" to calculate position
@@ -399,7 +399,7 @@
 
           if (this.bottom()) {
             this.settings.$next_tip.css({
-              top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
+              top: (this.settings.$target.offset().top + nub_height + this.outerHeight(this.settings.$target)),
               left: this.settings.$target.offset().left});
 
             this.nub_position($nub, this.settings.tipSettings.nubPosition, 'top');
@@ -407,7 +407,7 @@
           } else if (this.top()) {
 
             this.settings.$next_tip.css({
-              top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
+              top: (this.settings.$target.offset().top - this.outerHeight(this.settings.$next_tip) - nub_height),
               left: this.settings.$target.offset().left});
 
             this.nub_position($nub, this.settings.tipSettings.nubPosition, 'bottom');
@@ -416,7 +416,7 @@
 
             this.settings.$next_tip.css({
               top: this.settings.$target.offset().top,
-              left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left)});
+              left: (this.outerWidth(this.settings.$target) + this.settings.$target.offset().left)});
 
             this.nub_position($nub, this.settings.tipSettings.nubPosition, 'left');
 
@@ -424,7 +424,7 @@
 
             this.settings.$next_tip.css({
               top: this.settings.$target.offset().top,
-              left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_height)});
+              left: (this.settings.$target.offset().left - this.outerWidth(this.settings.$next_tip) - nub_height)});
 
             this.nub_position($nub, this.settings.tipSettings.nubPosition, 'right');
 
@@ -459,11 +459,11 @@
     },
 
     pos_phone : function (init) {
-      var tip_height = this.settings.$next_tip.outerHeight(),
+      var tip_height = this.outerHeight(this.settings.$next_tip),
           tip_offset = this.settings.$next_tip.offset(),
-          target_height = this.settings.$target.outerHeight(),
+          target_height = this.outerHeight(this.settings.$target),
           $nub = $('.joyride-nub', this.settings.$next_tip),
-          nub_height = Math.ceil($nub.outerHeight() / 2),
+          nub_height = Math.ceil(this.outerHeight($nub) / 2),
           toggle = init || false;
 
       $nub.removeClass('bottom')
@@ -521,8 +521,8 @@
       var $w = $(window);
 
       this.settings.$next_tip.css({
-        top : ((($w.height() - this.settings.$next_tip.outerHeight()) / 2) + $w.scrollTop()),
-        left : ((($w.width() - this.settings.$next_tip.outerWidth()) / 2) + this.scrollLeft($w))
+        top : ((($w.height() - this.outerHeight(this.settings.$next_tip)) / 2) + $w.scrollTop()),
+        left : ((($w.width() - this.outerWidth(this.settings.$next_tip)) / 2) + this.scrollLeft($w))
       });
 
       return true;
@@ -551,8 +551,8 @@
 
       return [
         el.offset().top <= w.scrollTop(),
-        right <= el.offset().left + el.outerWidth(),
-        bottom <= el.offset().top + el.outerHeight(),
+        right <= el.offset().left + this.outerWidth(el),
+        bottom <= el.offset().top + this.outerHeight(el),
         this.scrollLeft(w) >= el.offset().left
       ];
     },

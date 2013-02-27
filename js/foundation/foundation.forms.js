@@ -46,11 +46,13 @@
 
       $(this.scope)
         .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
+          console.log('check')
           e.preventDefault();
           e.stopPropagation();
           self.toggle_checkbox($(this));
         })
         .on('click.fndtn.forms', 'form.custom span.custom.radio', function (e) {
+          console.log('radio')
           e.preventDefault();
           e.stopPropagation();
           self.toggle_radio($(this));
@@ -58,12 +60,14 @@
         .on('change.fndtn.forms', 'form.custom select:not([data-customforms="disabled"])', function (e) {
           self.refresh_custom_select($(this));
         })
-        .on('click.fndtn.forms', 'form.custom label, form.custom span.custom.checkbox', function (e) {
-          var $associatedElement = $('#' + $(this).attr('for') + ':not([data-customforms="disabled"])'),
+        .on('click.fndtn.forms', 'form.custom label', function (e) {
+          console.log('label')
+          var $associatedElement = $('#' + self.escape($(this).attr('for')) + ':not([data-customforms="disabled"])'),
               $customCheckbox,
               $customRadio;
           if ($associatedElement.length !== 0) {
             if ($associatedElement.attr('type') === 'checkbox') {
+              console.log('checkbox')
               e.preventDefault();
               $customCheckbox = $(this).find('span.custom.checkbox');
               //the checkbox might be outside after the label
@@ -76,6 +80,7 @@
               }
               self.toggle_checkbox($customCheckbox);
             } else if ($associatedElement.attr('type') === 'radio') {
+              console.log('radio box')
               e.preventDefault();
               $customRadio = $(this).find('span.custom.radio');
               //the radio might be outside after the label
@@ -313,7 +318,7 @@
           input = $input[0];
 
       if (false === $input.is(':disabled')) {
-        $form.find('input[type="radio"][name="' + $input.attr('name') + '"]').next().not($element).removeClass('checked');
+        $form.find('input[type="radio"][name="' + this.escape($input.attr('name')) + '"]').next().not($element).removeClass('checked');
         if ( !$element.hasClass('checked') ) {
           $element.toggleClass('checked');
         }
@@ -321,6 +326,10 @@
 
         $input.trigger('change');
       }
+    },
+
+    escape : function (text) {
+      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     },
 
     hidden_fix : {

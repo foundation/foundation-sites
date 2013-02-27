@@ -97,12 +97,48 @@
     },
 
     swipe_events : function () {
+      var self = this;
+
       $(this.scope)
-        .on('swipeLeft', '.clearing-container .visible-img',
-          function (e) { this.nav(e, 'next') }.bind(this))
-        .on('swipeRight', '.clearing-container .visible-img',
-          function (e) { this.nav(e, 'prev') }.bind(this));
-      return this;
+        .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
+          var data = {
+                start_page_x: e.touches[0].pageX,
+                start_page_y: e.touches[0].pageY,
+                start_time: (new Date()).getTime(),
+                delta_x: 0,
+                is_scrolling: undefined
+              };
+
+          $(this).data('swipe-transition', data);
+          e.stopPropagation();
+        })
+        .on('touchmove.fndtn.clearing', '.visible-img', function(e) {
+          // Ignore pinch/zoom events
+          if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+
+          var data = $(this).data('swipe-transition');
+
+          if (typeof data === 'undefined') {
+            data = {};
+          }
+
+          data.delta_x = e.touches[0].pageX - data.start_page_x;
+
+          if ( typeof data.is_scrolling === 'undefined') {
+            data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
+          }
+
+          if (!data.is_scrolling && !data.active) {
+            e.preventDefault();
+            var direction = (data.delta_x < 0) ? 'next' : 'prev';
+            data.active = true;
+            self.nav(e, direction);
+          }
+        })
+        .on('touchend.fndtn.clearing', '.visible-img', function(e) {
+          $(this).data('swipe-transition', {});
+          e.stopPropagation();
+        });
     },
 
     assemble : function ($li) {
@@ -197,13 +233,14 @@
 
     // visual adjustments
     fix_height : function (target) {
-      var lis = target.parent().children();
+      var lis = target.parent().children(),
+          self = this;
 
       lis.each(function () {
           var li = $(this),
               image = li.find('img');
 
-          if (li.height() > image.outerHeight()) {
+          if (li.height() > self.outerHeight(image)) {
             li.addClass('fix-height');
           }
         })
@@ -241,8 +278,8 @@
 
     center : function (target) {
       target.css({
-        marginLeft : -(target.outerWidth() / 2),
-        marginTop : -(target.outerHeight() / 2)
+        marginLeft : -(this.outerWidth(target) / 2),
+        marginTop : -(this.outerHeight(target) / 2)
       });
       return this;
     },
@@ -345,7 +382,7 @@
           old_index = this.settings.prev_index || target.index(),
           direction = this.direction(clearing, current, target),
           left = parseInt(clearing.css('left'), 10),
-          width = target.outerWidth(),
+          width = this.outerWidth(target),
           skip_shift;
 
       // we use jQuery animate instead of CSS transitions because we
@@ -376,9 +413,8 @@
 
     direction : function ($el, current, target) {
       var lis = $el.find('li'),
-          li_width = lis.outerWidth() + (lis.outerWidth() / 4),
-          up_count = Math.floor($('.clearing-container')
-            .outerWidth() / li_width) - 1,
+          li_width = this.outerWidth(lis) + (this.outerWidth(lis) / 4),
+          up_count = Math.floor(this.outerWidth($('.clearing-container')) / li_width) - 1,
           target_index = lis.index(target),
           response;
 

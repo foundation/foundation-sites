@@ -22,11 +22,10 @@
 
       if (typeof method != 'string') {
         if (!this.settings.init) {
-          this.fixed_magellan = $("[data-magellan-expedition='fixed']");
+          this.fixed_magellan = $("[data-magellan-expedition]");
           this.set_threshold();
           this.last_destination = $('[data-magellan-destination]').last();
           this.events();
-          this.init_state();
         }
 
         return this.settings.init;
@@ -117,15 +116,8 @@
     set_threshold : function () {
       if (!this.settings.threshold) {
         this.settings.threshold = (this.fixed_magellan.length > 0) ? 
-          this.fixed_magellan.outerHeight(true) : 0;
+          this.outerHeight(this.fixed_magellan, true) : 0;
       }
-    },
-
-    init_state : function () {
-      var $expedition = $('[data-magellan-expedition]');
-
-      $expedition.find('[data-magellan-arrival]').first()
-        .addClass($expedition.attr('data-magellan-active-class') || this.settings.activeClass);
     },
 
     off : function () {
