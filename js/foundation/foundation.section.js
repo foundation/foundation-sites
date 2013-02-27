@@ -41,7 +41,7 @@
 
       $(window).on('resize.fndtn.section', self.throttle(function () {
         self.resize.call(this);
-      }, 40)).trigger('resize');
+      }, 30)).trigger('resize');
 
       this.settings.init = true;
     },

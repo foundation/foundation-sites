@@ -69,6 +69,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
         display: inline-block;
         color: $section-title-color;
         font-size: emCalc(14px);
+        white-space: nowrap;
       }
       &:hover { background-color: darken($section-title-bg, $section-function-factor/2); }
     }
