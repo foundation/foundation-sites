@@ -3,270 +3,251 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Blah</h4>
+    <h4 class="subheader">Switches can be used instead of regular radio buttons, to switch between two options. They are very customizable and use styles that won't come through on phones that don't support media queries, they'll just be normal radios.</h4>
+
+    <div class="small-2 switch tiny">
+      <input id="a" name="switch-a" type="radio" checked>
+      <label for="a" onclick="">Off</label>
+
+      <input id="a1" name="switch-a" type="radio">
+      <label for="a1" onclick="">On</label>
+
+      <span></span>
+    </div>
+
+    <div class="small-3 switch small">
+      <input id="b" name="switch-b" type="radio" checked>
+      <label for="b" onclick="">Off</label>
+
+      <input id="b1" name="switch-b" type="radio">
+      <label for="b1" onclick="">On</label>
+
+      <span></span>
+    </div>
+
+    <div class="small-4 switch radius">
+      <input id="c" name="switch-c" type="radio" checked>
+      <label for="c" onclick="">Off</label>
+
+      <input id="c1" name="switch-c" type="radio">
+      <label for="c1" onclick="">On</label>
+
+      <span></span>
+    </div>
+
+    <div class="small-6 switch large round">
+      <input id="d" name="switch-d" type="radio" checked>
+      <label for="d" onclick="">Off</label>
+
+      <input id="d1" name="switch-d" type="radio">
+      <label for="d1" onclick="">On</label>
+
+      <span></span>
+    </div>
+
+    <hr>
+
   </div>
 </div>
 
 <div class="row">
   <div class="large-12 columns">
 
-    <h3>Switches</h3>
-      <h4 class="subheader">Switches can be used instead of regular radio buttons, to switch between two or more options. They are very customizable and use styles from other components such as buttons or panels. </h4>
-      <br>
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build switches in Foundation 4, with our predefined HTML classes or with our mixins. Building switches using our predefined classes is simple, you'll just need a <code>div.switch</code> wrapped around a specific input/label markup. From there, you can update the styles as you need to. The switches width is 100% of the container you put it in or you can use the grid classes, like <code>.small-#</code> or <code>.large-#</code> directly on the switch.</p>
 
-      <div class="row">
-        <div class="large-4 columns">
-          <a name="sizes"></a>
-          <h4>Sizes</h4>
-          <p>The switches include the same size styles as buttons, so you can add the additional <code>.tiny</code>, <code>.small</code> or <code>.large</code> classes to change the regular size of the switch. </p>
+<%= code_example '
+<!-- Default switch -->
+<div class="switch">
+  <input id="x" name="switch-x" type="radio" checked>
+  <label for="x" onclick="">Off</label>
 
-          <label>Tiny switch: </label>
+  <input id="x1" name="switch-x" type="radio">
+  <label for="x1" onclick="">On</label>
 
-          <div class="small-4 switch tiny">
+  <span></span>
+</div>
 
-            <input id="o11" name="switch-tiny" type="radio" checked>
-            <label for="o11" onclick="">Off</label>
+<!-- Using class options -->
+<div class="switch large round">
+  <input id="z" name="switch-z" type="radio" checked>
+  <label for="z" onclick="">Off</label>
 
-            <input id="o12" name="switch-tiny" type="radio">
-            <label for="o12" onclick="">On</label>
+  <input id="z1" name="switch-z" type="radio">
+  <label for="z1" onclick="">On</label>
 
-            <span class="switch-paddle"></span>
-          </div>
+  <span></span>
+</div>', :html %>
 
+    <p>The class options:</p>
+    <ul class="disc">
+      <li><code>radius</code>: Add this to the the switch container to get a 3px radius paddle and edges.</li>
+      <li><code>round</code>: Add this to the the switch container to get a round paddle and edges.</li>
+      <li><code>tiny</code>: Set the height and text of the switch to tiny.</li>
+      <li><code>small</code>: Set the height and text of the switch to small.</li>
+      <li><code>large</code>: Set the height and text of the switch to large.</li>
+    </ul>
 
-          <label>Small switch: </label>
+    <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected switches from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
-          <div class="switch small">
-            <input id="o21" name="switch-small" type="radio" checked>
-            <label for="o21" onclick="">Option 1</label>
+    <hr>
 
-            <input id="o22" name="switch-small" type="radio">
-            <label for="o22" onclick="">Option 2</label>
+    <h3>Build with our Mixins</h3>
+    <p>We've included SCSS mixins used to style switches. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_switch.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
-            <span class="switch-paddle"></span>
-          </div>
+<%= code_example '
+@import "foundation/foundation-global", "foundation/switch";
+', :css %>
 
-          <label>Regular switch: </label>
+    <p>The markup is pretty simple, you'll only need a single class or ID on the container to apply the mixin.</p>
 
-          <div class="switch">
-            <input id="o31" name="switch" type="radio" checked>
-            <label for="o31" onclick="">Option 1</label>
+<%= code_example '
+<div class="your-class-name">
+  <input id="z" name="switch-z" type="radio" checked>
+  <label for="z" onclick="">Off</label>
 
-            <input id="o32" name="switch" type="radio">
-            <label for="o32" onclick="">Option 2</label>
+  <input id="z1" name="switch-z" type="radio">
+  <label for="z1" onclick="">On</label>
 
-            <span class="switch-paddle"></span>
-          </div>
+  <span></span>
+</div>
+', :html %>
 
-          <label>Large switch: </label>
+    <h5>Quick Mixin</h5>
+    <p>You can build your labels using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options for changing the key styles, the rest of the defaults can be modified using the available variables. The global mixin looks like this:</p>
 
-          <div class="switch large">
-            <input id="o41" name="switch-large" type="radio" checked>
-            <label for="o41" onclick="">On</label>
+<%= code_example '
+/* Using the default styles */
+.your-class-name { @include switch; }', :css %>
 
-            <input id="o42" name="switch-large" type="radio">
-            <label for="o42" onclick="">Off</label>
+    <div class="switch">
+      <input id="y" name="switch-y" type="radio" checked>
+      <label for="y" onclick="">Off</label>
 
-            <span class="switch-paddle"></span>
-          </div>
+      <input id="y1" name="switch-y" type="radio">
+      <label for="y1" onclick="">On</label>
 
+      <span></span>
+    </div>
 
-          <!-- <a name="styles"></a>
-          <h4>Styles</h4>
-          <p>Switches use styles from other components, so you can use the classes from buttons, alerts or panels, among others. </p>
+    <p>There are <strong>ten options</strong> you can customize on the fly when writing this mixin. These controls things like: padding, text size, color, and radius. Setting any of these options to false will negate those styles.</p>
 
-          <label>Secondary switch: </label>
+<%= code_example '
+/* Using the available options */
+.your-class-name {
+  @include switch($transition-speed, $transition-ease, $height, $font-size, $line-height, $paddle-bg, $positive-color, $negative-color, $radius, $base-style);
+}
 
-          <div class="switch">
-            <input id="o51" name="switch-secondary" type="radio" checked>
-            <label for="o51" onclick="">Option 1</label>
+/* This sets the speed at which the switch toggles */
+$transition-speed: $switch-paddle-transition-speed
 
-            <input id="o52" name="switch-secondary" type="radio">
-            <label for="o52" onclick="">Option 2</label>
+/* This sets the ease of the switch transition */
+$transition-ease: $switch-paddle-transition-ease
 
-            <span class="switch-paddle"></span>
-          </div>
+/* This controls the overall height of the switch */
+$height: $switch-height-med
 
-          <label>Success switch: </label>
+/* You can set a different font-size for you switch */
+$font-size: $switch-font-size-med
 
-          <div class="switch">
-            <input id="o61" name="switch-success" type="radio" checked>
-            <label for="o61" onclick="">Option 1</label>
+/* You can set a different line-height too */
+$line-height: 2.3em
 
-            <input id="o62" name="switch-success" type="radio">
-            <label for="o62" onclick="">Option 2</label>
+/* This controls the background of the paddle */
+$paddle-bg: $switch-paddle-bg
 
-            <span class="switch-paddle"></span>
-          </div>
+/* Set the box-shadow color for the right side of the switch */
+$positive-color: $switch-positive-color
 
-          <label>Alert switch: </label>
+/* Set the box-shadow color for the left side of the switch */
+$negative-color: $switch-negative-color
 
-          <div class="switch panel">
-            <input id="o71" name="switch-alert" type="radio" checked>
-            <label for="o71" onclick="">Option 1</label>
+/* Set this to true for default radius or any number for complete control */
+$radius: false
 
-            <input id="o72" name="switch-alert" type="radio">
-            <label for="o72" onclick="">Option 2</label>
+/* If you set this to false, base styles are left out */
+$base-style: true
+', :css %>
 
-            <span class="slide-button button alert"></span>
-          </div> -->
+    <div class="switch-custom">
+      <input id="w" name="switch-w" type="radio" checked>
+      <label for="w" onclick="">Off</label>
 
-          <label>Radius switch: </label>
+      <input id="w1" name="switch-w" type="radio">
+      <label for="w1" onclick="">On</label>
 
-          <div class="small-4 switch tiny radius">
-            <input id="o91" name="switch-radius-tiny" type="radio" checked>
-            <label for="o91" onclick="">On</label>
+      <span></span>
+    </div>
 
-            <input id="o92" name="switch-radius-tiny" type="radio">
-            <label for="o92" onclick="">Off</label>
+    <h5>Base Mixin</h5>
+    <p>You also have access to a few internal mixins that can create parts of the button as needed. The base mixin will create a switch base that only include structural styles.</p>
 
-            <span class="switch-paddle"></span>
-          </div>
+<%= code_example '
+.your-class-name { @include switch-base($transition-speed, $transition-ease); }
+', :css %>
 
-          <div class="small-4 switch small radius">
-            <input id="o101" name="switch-radius-small" type="radio" checked>
-            <label for="o101" onclick="">On</label>
+    <div class="switch-custom-base">
+      <input id="o" name="switch-o" type="radio" checked>
+      <label for="o" onclick="">Off</label>
 
-            <input id="o102" name="switch-radius-small" type="radio">
-            <label for="o102" onclick="">Off</label>
+      <input id="o1" name="switch-o" type="radio">
+      <label for="o1" onclick="">On</label>
 
-            <span class="switch-paddle"></span>
-          </div>
+      <span></span>
+    </div>
 
-          <div class="small-4 switch medium radius">
-            <input id="o111" name="switch-radius-medium" type="radio" checked>
-            <label for="o111" onclick="">On</label>
+    <h5>Size Mixin</h5>
+    <p>The size mixin will let you control the size of the switch, font-size and line-height.</p>
 
-            <input id="o112" name="switch-radius-medium" type="radio">
-            <label for="o112" onclick="">Off</label>
+<%= code_example '
+.your-class-name {
+  @include switch-base($transition-speed, $transition-ease);
+  @include switch-size($height, $font-size, $line-height)
+}
+', :css %>
 
-            <span class="switch-paddle"></span>
-          </div>
+    <div class="switch-custom-base size">
+      <input id="o2" name="switch-o2" type="radio" checked>
+      <label for="o2" onclick="">Off</label>
 
-          <div class="small-4 switch large radius">
-            <input id="o121" name="switch-radius-large" type="radio" checked>
-            <label for="o121" onclick="">On</label>
+      <input id="o3" name="switch-o2" type="radio">
+      <label for="o3" onclick="">On</label>
 
-            <input id="o122" name="switch-radius-large" type="radio">
-            <label for="o122" onclick="">Off</label>
+      <span></span>
+    </div>
 
-            <span class="switch-paddle"></span>
-          </div>
+    <h5>Style Mixin</h5>
+    <p>The last internal mixin you have access to for buttons is the style mixin. This will help you style background color, text color, positive/negative color, etc.</p>
 
-         <!--  <label>Invert switch: </label>
+<%= code_example '
+.your-class-name {
+  @include switch-base($transition-speed, $transition-ease);
+  @include switch-size($height, $font-size, $line-height)
+}
+', :css %>
 
-          <div class="switch panel callout radius">
-            <input id="o141" name="switch-invert" type="radio" checked>
-            <label for="o141" onclick="">Option 1</label>
+    <div class="switch-custom-base size">
+      <input id="o2" name="switch-o2" type="radio" checked>
+      <label for="o2" onclick="">Off</label>
 
-            <input id="o142" name="switch-invert" type="radio">
-            <label for="o142" onclick="">Option 2</label>
+      <input id="o3" name="switch-o2" type="radio">
+      <label for="o3" onclick="">On</label>
 
-            <span class="slide-button button radius"></span>
-          </div> -->
+      <span></span>
+    </div>
 
-          <label>Round switch: </label>
+    <h5>Default SCSS Variables</h5>
 
-          <div class="small-4 switch tiny round">
-            <input id="o131" name="switch-round-tiny" type="radio" checked>
-            <label for="o131" onclick="">On</label>
+<%= code_example '
+/* We use these to style the labels */
+$label-padding:     emCalc(3px) emCalc(6px) emCalc(4px);
+$label-radius:      $button-radius;
 
-            <input id="o132" name="switch-round-tiny" type="radio">
-            <label for="o132" onclick="">Off</label>
+/* We use these to style the label text */
+$label-font-size:   emCalc(14px);
+$label-font-weight: bold;', :css %>
 
-            <span class="switch-paddle"></span>
-          </div>
-
-          <div class="small-4 switch small round">
-            <input id="o141" name="switch-round-small" type="radio" checked>
-            <label for="o141" onclick="">On</label>
-
-            <input id="o142" name="switch-round-small" type="radio">
-            <label for="o142" onclick="">Off</label>
-
-            <span class="switch-paddle"></span>
-          </div>
-
-          <div class="small-4 switch medium round">
-            <input id="o151" name="switch-round-medium" type="radio" checked>
-            <label for="o151" onclick="">On</label>
-
-            <input id="o152" name="switch-round-medium" type="radio">
-            <label for="o152" onclick="">Off</label>
-
-            <span class="switch-paddle"></span>
-          </div>
-
-          <div class="small-4 switch large round">
-            <input id="o161" name="switch-round-large" type="radio" checked>
-            <label for="o161" onclick="">On</label>
-
-            <input id="o162" name="switch-round-large" type="radio">
-            <label for="o162" onclick="">Off</label>
-
-            <span class="switch-paddle"></span>
-          </div>
-
-         <!--  <a name="multiple-states"></a>
-          <h4>Multiple States</h4>
-          <p>You can add up to five options in a switch, using the <code>.switch-3</code>, <code>.switch-4</code> or <code>.switch-5</code> classes. If you've got more than five options, it's probably best to use other forms of interaction. </p>
-
-          <label>Three-state switch: </label>
-
-          <div class="switch-3 panel">
-            <input id="o111" name="switch-three" type="radio" checked>
-            <label for="o111" onclick="">Option 1</label>
-
-            <input id="o112" name="switch-three" type="radio">
-            <label for="o112" onclick="">Option 2</label>
-
-            <input id="o113" name="switch-three" type="radio">
-            <label for="o113" onclick="">Option 3</label>
-
-            <span class="slide-button button"></span>
-          </div>
-
-          <label>Four-state switch: </label>
-
-          <div class="switch-4 panel">
-            <input id="o121" name="switch-four" type="radio" checked>
-            <label for="o121" onclick="">Option 1</label>
-
-            <input id="o122" name="switch-four" type="radio">
-            <label for="o122" onclick="">Option 2</label>
-
-            <input id="o123" name="switch-four" type="radio">
-            <label for="o123" onclick="">Option 3</label>
-
-            <input id="o124" name="switch-four" type="radio">
-            <label for="o124" onclick="">Option 4</label>
-
-            <span class="slide-button button"></span>
-          </div>
-
-          <label>Five-state switch: </label>
-
-          <div class="switch-5 panel">
-            <input id="o131" name="switch-five" type="radio" checked>
-            <label for="o131" onclick="">Option 1</label>
-
-            <input id="o132" name="switch-five" type="radio">
-            <label for="o132" onclick="">Option 2</label>
-
-            <input id="o133" name="switch-five" type="radio">
-            <label for="o133" onclick="">Option 3</label>
-
-            <input id="o134" name="switch-five" type="radio">
-            <label for="o134" onclick="">Option 4</label>
-
-            <input id="o135" name="switch-five" type="radio">
-            <label for="o135" onclick="">Option 5</label>
-
-            <span class="slide-button button"></span>
-          </div> -->
-
-        </div>
-      </div>
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 
   </div>
 </div>
