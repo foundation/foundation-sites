@@ -29,7 +29,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
 @media only screen {
 
-  // Wrapped around .top-bar to contain to grid width
+  /* Wrapped around .top-bar to contain to grid width */
   .contain-to-grid {
     width: 100%;
     background: $topbar-bg;
@@ -63,6 +63,8 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     input { margin-bottom: 0; }
 
     input { height: $topbar-input-height; }
+
+    .button { padding-top: .5em; padding-bottom: .5em; margin-bottom: 0; }
 
     // Title Area
     .title-area { position: relative; }
@@ -107,14 +109,14 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
       &.menu-icon {
         right: $topbar-height / 3;
         top: 50%;
-        margin-top: -17px;
+        margin-top: -16px;
         padding-left: 40px;
 
         a {
-          text-indent: -46px;
+          text-indent: -48px;
           width: 34px;
           height: 34px;
-          line-height: 34px;
+          line-height: 33px;
           padding: 0;
           color: $topbar-menu-link-color;
 
@@ -140,6 +142,9 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     // Change things up when the top-bar is expanded
     &.expanded {
       height: auto;
+      background: transparent;
+
+      .title-area { background: $topbar-bg; }
 
       .toggle-topbar {
         a { color: $topbar-menu-link-color-toggled;
@@ -271,11 +276,14 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     input,
     .button {
       line-height: 2em;
+      font-size: emCalc(14px);
       height: 2em;
-      padding: 0;
+      padding: 0 10px;
       position: relative;
       top: 8px;
     }
+
+    &.expanded { background: $topbar-bg; }
   }
 
   .top-bar-section {
