@@ -120,7 +120,7 @@
       if (hash.length > 0 && this.settings.deep_linking) {
         $(this.scope)
           .find('[data-section]')
-          .find('.content[data-slug=' + hash + ']')
+          .find('.content[data-slug="' + hash + '"]')
           .closest('section, .section')
           .addClass('active');
       }
