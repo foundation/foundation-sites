@@ -275,11 +275,15 @@
           $new_timer = $(self._timer_html()),
           $new_timer_progress = $new_timer.find('.' + self.settings.timer_progress_class);
 
-      $timer.remove();
-      $new_timer.data('is-original', 'ths is the clone');
-      $container.append($new_timer);
-
-      $new_timer_progress.css('width', width_pct);
+      if (typeof Zepto === 'function') {
+        $timer.remove();
+        $container.append($new_timer);
+        $new_timer_progress.css('width', width_pct);
+      } else if (typeof jQuery === 'function') {
+        var $progress = $timer.find('.' + self.settings.timer_progress_class);
+        $progress.css('width', width_pct);
+        $progress.stop();
+      }
     },
 
     goto: function($slides_container, index_or_direction, callback) {

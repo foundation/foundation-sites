@@ -12,7 +12,7 @@ $total-columns: 12 !default;
 // For creating container, nested, and collapsed rows.
 @mixin grid-row($behavior: false) {
 
-  // use @include gridRow(nest); to include a nested row
+  // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
     width: auto;
     margin-left: -($column-gutter/2);
@@ -22,30 +22,21 @@ $total-columns: 12 !default;
     max-width: none;
   }
 
-  // use @include gridRow(collapse); to collapsed a container row margins
+  // use @include grid-row(collapse); to collapsed a container row margins
   @else if $behavior == collapse {
     width: 100%;
     margin: 0;
     max-width: $row-width;
   }
 
-  // use @include gridRow(nest-collapse); to collapse outer margins on a nested row
+  // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
   @else if $behavior == nest-collapse {
     width: auto;
     margin: 0;
     max-width: none;
   }
 
-  // use @include gridRow(pad); to apply gutter padding to match mobile columns
-  @else if $behavior == pad {
-    width: 100%;
-    margin: 0 auto;
-    padding-left: $column-gutter / 2;
-    padding-right: $column-gutter / 2;
-    max-width: $row-width;
-  }
-
-  // use @include gridRow(); to use a container row
+  // use @include grid-row; to use a container row
   @else {
     width: 100%;
     margin-left: auto;
@@ -109,22 +100,6 @@ $total-columns: 12 !default;
 
 
 /* Grid HTML Classes */
-img,
-object,
-embed { max-width: 100%; height: auto; }
-
-object,
-embed { height: 100%; }
-img { -ms-interpolation-mode: bicubic; }
-
-#map_canvas,
-.map_canvas {
-  img,
-  embed,
-  object { max-width: none !important;
-  }
-}
-
 @if $include-html-classes {
 
   .row {
