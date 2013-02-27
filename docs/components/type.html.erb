@@ -1,110 +1,216 @@
 <% @page_title = "Typography" %>
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
     <h4 class="subheader">Foundation 4 typography is built with ems, making it easier to fine-tune your type across different breakpoints. By default, we include a single breakpoint in typography sizes and styles, but you can add more if you'd like.</h4>
+
+    <p>We're no longer depending on modular scale in the core of Foundation. We made an effort with this release to be dependancy free other than Sass. This way people can use whatever framework and gems they want on top of Foundation. We'll still use <a href="#">Compass</a>.</p>
+
+    <hr>
+
   </div>
 </div>
 
 
 <div class="row">
-  <div class="large-12">
-    <a name="headers"></a>
-    <h4>General Typography</h4>
-    <p>These are the basic elements of typography and rhythm in Foundation 3.</p>
+  <div class="large-12 columns">
+
     <h1>h1. This is a very large header.</h1>
     <h2>h2. This is a large header.</h2>
     <h3>h3. This is a medium header.</h3>
     <h4>h4. This is a moderate header.</h4>
-    <h5>h5. This is a small header.</h5>
-    <h6>h6. This is a tiny header.</h6>
+    <h5>h5. This is a small header. h1.</h5>
+    <h6>h6. This is a tiny header. h1.</h6>
 
-    <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, let's see&#8230; did you know that there are storms occurring on Jupiter that are larger than the Earth? That's pretty cool.</p>
+<%= code_example '
+<h1>h1. This is a very large header.</h1>
+<h2>h2. This is a large header.</h2>
+<h3>h3. This is a medium header.</h3>
+<h4>h4. This is a moderate header.</h4>
+<h5>h5. This is a small header. h1.</h5>
+<h6>h6. This is a tiny header. h1.</h6>
+', :html %>
 
-    <h4>Header Styles</h4>
-    <p>Optional Subheader Styles</p>
+    <hr>
 
-    <h2>This is a very large main header.</h2>
-    <h4 class="subheader">This is a smaller subheader.</h4>
+    <h1 class="subheader">h1.subheader</h1>
+    <h2 class="subheader">h2.subheader</h2>
+    <h3 class="subheader">h3.subheader</h3>
+    <h4 class="subheader">h4.subheader</h4>
+    <h5 class="subheader">h5.subheader</h5>
+    <h6 class="subheader">h6.subheader</h6>
 
-    <h3>This is a large header. <small>This is a small segment of that header.</small></h3>
+<%= code_example '
+<h1 class="subheader">h1.subheader</h1>
+<h2 class="subheader">h2.subheader</h2>
+<h3 class="subheader">h3.subheader</h3>
+<h4 class="subheader">h4.subheader</h4>
+<h5 class="subheader">h5.subheader</h5>
+<h6 class="subheader">h6.subheader</h6>
+', :html %>
+
+    <hr>
+
+    <h1>h1. <small>Small segment header.</small></h1>
+    <h2>h2. <small>Small segment header.</small></h2>
+    <h3>h3. <small>Small segment header.</small></h3>
+    <h4>h4. <small>Small segment header.</small></h4>
+    <h5>h5. <small>Small segment header.</small></h5>
+    <h6>h6. <small>Small segment header.</small></h6>
+
+<%= code_example '
+<h1>h1. <small>Small segment header.</small></h1>
+<h2>h2. <small>Small segment header.</small></h2>
+<h3>h3. <small>Small segment header.</small></h3>
+<h4>h4. <small>Small segment header.</small></h4>
+<h5>h5. <small>Small segment header.</small></h5>
+<h6>h6. <small>Small segment header.</small></h6>
+', :html %>
 
 
-    <a name="links"></a>
-    <h4>Links</h4>
-    <p>Links are very standard, and the color is preset.</p>
+    <hr>
 
-    <h2><a href="#">This is a header link.</a></h2>
-    <h3><a href="#">This is a header link.</a></h3>
-    <h4><a href="#">This is a header link.</a></h4>
-    <h5><a href="#">This is a header link.</a></h5>
-    <p><a href="#">This is a standard inline paragraph link.</a></p>
+    <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap <code>&lt;strong&gt;</code> around type to <strong>make it bold!</strong>. You can also you <code>&lt;em&gt;</code> to <em>italicize your words</em>.</p>
 
+<%= code_example '
+<p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap <strong> around type to <strong>make it bold!</strong>. You can also you <em> to <em>italicize your words</em>.</p>
+', :html %>
 
-    <a name="lists"></a>
-    <h4>Lists</h4>
+    <hr>
+
+    <h3>Links</h3>
+    <p>Links are very standard, and the <a href="http://www.youtube.com/watch?v=oHg5SJYRHA0">color is preset</a> to the Foundation primary color.</p>
+
+<%= code_example '
+<p>Links are very standard, and the <a href="#">color is preset</a> to the Foundation primary color.</p>
+', :html %>
+
+    <hr>
+
+    <h3>Lists</h3>
     <p>Lists are helpful for, well, lists of things.</p>
 
-    <h6>ul.disc</h6>
-    <ul class="disc">
-      <li>List item with a much longer description or more content.</li>
-      <li>List item</li>
-      <li>List item
-        <ul>
-          <li>Nested List Item</li>
-          <li>Nested List Item</li>
-          <li>Nested List Item</li>
+    <div class="row">
+      <div class="large-4 columns">
+        <h6>ul.disc</h6>
+        <ul class="disc">
+          <li>List item with a much longer description or more content.</li>
+          <li>List item</li>
+          <li>List item
+            <ul>
+              <li>Nested List Item</li>
+              <li>Nested List Item</li>
+              <li>Nested List Item</li>
+            </ul>
+          </li>
+          <li>List item</li>
+          <li>List item</li>
+          <li>List item</li>
         </ul>
-      </li>
-      <li>List item</li>
-      <li>List item</li>
-      <li>List item</li>
-    </ul>
-    <br>
+      </div>
 
-    <h6>ul.circle</h6>
-    <ul class="circle">
-      <li>List item with a much longer description or more content.</li>
-      <li>List item</li>
-      <li>List item
-        <ul>
-          <li>Nested List Item</li>
-          <li>Nested List Item</li>
-          <li>Nested List Item</li>
+      <div class="large-4 columns">
+        <h6>ul.circle</h6>
+        <ul class="circle">
+          <li>List item with a much longer description or more content.</li>
+          <li>List item</li>
+          <li>List item
+            <ul>
+              <li>Nested List Item</li>
+              <li>Nested List Item</li>
+              <li>Nested List Item</li>
+            </ul>
+          </li>
+          <li>List item</li>
+          <li>List item</li>
+          <li>List item</li>
         </ul>
-      </li>
-      <li>List item</li>
-      <li>List item</li>
-      <li>List item</li>
-    </ul>
-    <br>
+      </div>
 
-    <h6>ul.square</h6>
-    <ul class="square">
-      <li>List item with a much longer description or more content.</li>
-      <li>List item</li>
-      <li>List item
-        <ul>
-          <li>Nested List Item</li>
-          <li>Nested List Item</li>
-          <li>Nested List Item</li>
+      <div class="large-4 columns">
+        <h6>ul.square</h6>
+        <ul class="square">
+          <li>List item with a much longer description or more content.</li>
+          <li>List item</li>
+          <li>List item
+            <ul>
+              <li>Nested List Item</li>
+              <li>Nested List Item</li>
+              <li>Nested List Item</li>
+            </ul>
+          </li>
+          <li>List item</li>
+          <li>List item</li>
+          <li>List item</li>
         </ul>
-      </li>
-      <li>List item</li>
-      <li>List item</li>
-      <li>List item</li>
-    </ul>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="large-4 columns">
+        <h6>Ordered Lists</h6>
+        <ol>
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>List Item 3</li>
+        </ol>
+      </div>
+      <div class="large-8 columns">
+        <h6>Defition Lists</h6>
+        <dl>
+          <dt>Definition Title</dt>
+          <dd>Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+        </dl>
+      </div>
+    </div>
+
+<%= code_example '
+<!-- Use .circle or .square to change the style of the bullets -->
+<ul class="disc">
+  <li>List item with a much longer description or more content.</li>
+  <li>List item</li>
+  <li>List item
+    <ul>
+      <li>Nested List Item</li>
+      <li>Nested List Item</li>
+      <li>Nested List Item</li>
+    </ul>
+  </li>
+  <li>List item</li>
+  <li>List item</li>
+  <li>List item</li>
+</ul>
+
+<!-- Ordered lists are great for lists that need order, duh -->
+<ol>
+  <li>List Item 1</li>
+  <li>List Item 2</li>
+  <li>List Item 3</li>
+</ol>
+
+<!-- Definition lists are great for small block of copy that describe the header -->
+<dl>
+  <dt>Definition List</dt>
+  <dd>Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+</dl>
+', :html %>
+
+    <hr>
 
     <a name="blockquotes"></a>
-    <h4>Blockquotes</h4>
+    <h3>Blockquotes</h3>
     <p>Sometimes other people say smart things, and you may want to mention that through a blockquote callout. We've got you covered.</p>
 
     <blockquote>I do not fear computers. I fear the lack of them. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur.<cite>Isaac Asimov</cite></blockquote>
 
+<%= code_example '
+<blockquote>I do not fear computers. I fear the lack of them. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur.<cite>Isaac Asimov</cite></blockquote>
+', :html %>
 
-    <h4>V-Cards</h4>
+    <hr>
+
+    <h3>V-Cards</h3>
     <p>Here's a handy microformat-friendly list to <em>address</em> all your needs.</p>
 
     <ul class="vcard">
@@ -114,6 +220,133 @@
       <li><span class="state">Caprica</span>, <span class="zip">12345</span></li>
       <li class="email"><a href="#">g.baltar@cmail.com</a></li>
     </ul>
+
+<%= code_example '
+<ul class="vcard">
+  <li class="fn">Gaius Baltar</li>
+  <li class="street-address">123 Colonial Ave.</li>
+  <li class="locality">Caprica City</li>
+  <li><span class="state">Caprica</span>, <span class="zip">12345</span></li>
+  <li class="email"><a href="#">g.baltar@cmail.com</a></li>
+</ul>
+', :html %>
+
+    <hr>
+
+    <h3>Print Styles</h3>
+    <p>Foundation includes print styles developed by HTML5 Boilerplate to give you some basic print-specific styles. These are activated when you print through a media query. It includes:</p>
+
+    <ul class="disc">
+      <li>Clearing out backgrounds, box shadows, and text shadows</li>
+      <li>Appending link URLs after the anchor text</li>
+      <li>Bordering blockquotes and pre elements</li>
+      <li>Page cleanup and window minimization</li>
+    </ul>
+
+    <p>On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attached <code>.print-only</code> on an element to only show when printing, and <code>.hide-on-print</code> to hide something when printing.</p>
+
+    <hr>
+
+    <h3>Available SCSS Variables</h3>
+    <p>We've got a ton of variables for you to use to customize your typography.</p>
+
+<%= code_example '
+/* We use these to control header font styles */
+$header-font-family:                   "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight:                   bold;
+$header-font-style:                    normal;
+$header-font-color:                    #222;
+$header-line-height:                   1.4;
+$header-top-margin:                    .2em;
+$header-bottom-margin:                 .5em;
+$header-text-rendering:                optimizeLegibility;
+
+/* We use these to control header font sizes */
+$h1-font-size:                         emCalc(44px);
+$h2-font-size:                         emCalc(37px);
+$h3-font-size:                         emCalc(27px);
+$h4-font-size:                         emCalc(23px);
+$h5-font-size:                         emCalc(18px);
+$h6-font-size:                         1em;
+
+/* These control how subheaders are styled. */
+$subheader-line-height:                1.4;
+$subheader-font-color:                 lighten($header-font-color, 30%);
+$subheader-font-weight:                300;
+$subheader-top-margin:                 .2em;
+$subheader-bottom-margin:              .5em;
+
+/* A general <small> styling */
+$small-font-size:                      60%;
+$small-font-color:                     lighten($header-font-color, 30%);
+
+/* We use these to style paragraphs */
+$paragraph-font-family:                inherit;
+$paragraph-font-weight:                normal;
+$paragraph-font-size:                  1em;
+$paragraph-line-height:                1.6;
+$paragraph-margin-bottom:              emCalc(20px);
+$paragraph-aside-font-size:            emCalc(14px);
+$paragraph-aside-line-height:          1.35;
+$paragraph-aside-font-style:           italic;
+
+/* We use these to style <code> tags */
+$code-color:                           darken($alert-color, 15%);
+$code-font-family:                     Consolas, "Liberation Mono", Courier, monospace;
+$code-font-weight:                     bold;
+
+/* We use these to style anchors */
+$anchor-text-decoration:               none;
+$anchor-font-color:                    $primary-color;
+$anchor-font-color-hover:              darken($primary-color, 5%);
+
+/* We use these to style the <hr> element */
+$hr-border-width:                      1px;
+$hr-border-style:                      solid;
+$hr-border-color:                      #ddd;
+$hr-margin:                            emCalc(20px);
+
+/* We use these to style lists */
+$list-style-position:                  outside;
+$list-side-margin:                     emCalc(18px);
+$definition-list-header-weight:        bold;
+$definition-list-header-margin-bottom: .3em;
+$definition-list-margin-bottom:        emCalc(12px);
+
+/* We use these to style blockquotes */
+$blockquote-font-color:                lighten($header-font-color, 30%);
+$blockquote-padding:                   emCalc(9px) emCalc(20px) 0 emCalc(19px);
+$blockquote-border:                    1px solid #ddd;
+$blockquote-cite-font-size:            emCalc(13px);
+$blockquote-cite-font-color:           lighten($header-font-color, 20%);
+$blockquote-cite-link-color:           $blockquote-cite-font-color;
+
+/* Acronym styles */
+$acronym-underline:                    1px dotted #ddd;
+
+/* We use these to control padding and margin */
+$microformat-padding:                  emCalc(10px) emCalc(12px);
+$microformat-margin:                    0 0 emCalc(20px) 0;
+
+/* We use these to control the border styles */
+$microformat-border-width:             1px;
+$microformat-border-style:             solid;
+$microformat-border-color:             #ddd;
+
+/* We use these to control full name font styles */
+$microformat-fullname-font-weight:     bold;
+$microformat-fullname-font-size:       emCalc(15px);
+
+/* We use this to control the summary font styles */
+$microformat-summary-font-weight:      bold;
+
+/* We use this to control abbr padding */
+$microformat-abbr-padding:             0 emCalc(1px);
+
+/* We use this to control abbr font styles */
+$microformat-abbr-font-weight:         bold;
+$microformat-abbr-font-decoration:     none;
+', :css %>
 
   </div>
 </div>

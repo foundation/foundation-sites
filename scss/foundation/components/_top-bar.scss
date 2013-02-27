@@ -2,20 +2,33 @@
 // Top Bar Variables
 //
 
+// Background color for the top bar
 $topbar-bg: #111 !default;
+
+// Height and margin
 $topbar-height: 45px !default;
 $topbar-margin-bottom: emCalc(30px) !default;
+
+// Control Input height for top bar
+$topbar-input-height: 2.45em !default;
+
+// Controlling the styles for the title in the top bar
 $topbar-title-weight: bold !default;
 $topbar-title-font-size: emCalc(17px) !default;
+
+// Set the link colors and styles for top-level nav
 $topbar-link-color: #fff !default;
 $topbar-link-weight: bold !default;
 $topbar-link-font-size: emCalc(13px) !default;
+
+// Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
 $topbar-dropdown-link-color: #fff !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.5 !default;
-$topbar-input-height: 2.45em !default;
+
+// Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
 $topbar-menu-link-font-size: emCalc(13px) !default;
 $topbar-menu-link-weight: bold !default;
@@ -23,13 +36,16 @@ $topbar-menu-link-color: #fff !default;
 $topbar-menu-icon-color: #fff !default;
 $topbar-menu-link-color-toggled: #888 !default;
 $topbar-menu-icon-color-toggled: #888 !default;
+
+// Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
 $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
+$topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !default;
 
 
 @media only screen {
 
-  // Wrapped around .top-bar to contain to grid width
+  /* Wrapped around .top-bar to contain to grid width */
   .contain-to-grid {
     width: 100%;
     background: $topbar-bg;
@@ -63,6 +79,8 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     input { margin-bottom: 0; }
 
     input { height: $topbar-input-height; }
+
+    .button { padding-top: .5em; padding-bottom: .5em; margin-bottom: 0; }
 
     // Title Area
     .title-area { position: relative; }
@@ -107,14 +125,14 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
       &.menu-icon {
         right: $topbar-height / 3;
         top: 50%;
-        margin-top: -17px;
+        margin-top: -16px;
         padding-left: 40px;
 
         a {
-          text-indent: -46px;
+          text-indent: -48px;
           width: 34px;
           height: 34px;
-          line-height: 34px;
+          line-height: 33px;
           padding: 0;
           color: $topbar-menu-link-color;
 
@@ -140,6 +158,9 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     // Change things up when the top-bar is expanded
     &.expanded {
       height: auto;
+      background: transparent;
+
+      .title-area { background: $topbar-bg; }
 
       .toggle-topbar {
         a { color: $topbar-menu-link-color-toggled;
@@ -261,7 +282,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
 
 // Top Bar styles intended for screen sizes above the breakpoint.
-@media #{$small} {
+@media #{$topbar-media-query} {
   .top-bar { background: $topbar-bg; @include clearfix; overflow: visible;
     .toggle-topbar { display: none; }
 
@@ -271,11 +292,14 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
     input,
     .button {
       line-height: 2em;
+      font-size: emCalc(14px);
       height: 2em;
-      padding: 0;
+      padding: 0 10px;
       position: relative;
       top: 8px;
     }
+
+    &.expanded { background: $topbar-bg; }
   }
 
   .top-bar-section {
