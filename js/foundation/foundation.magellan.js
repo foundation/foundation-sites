@@ -37,7 +37,7 @@
 
     events : function () {
       var self = this;
-      $(this.scope).on('arrival.magellan', '[data-magellan-arrival]', function (e) {
+      $(this.scope).on('arrival.fndtn.magellan', '[data-magellan-arrival]', function (e) {
         var $destination = $(this),
             $expedition = $destination.closest('[data-magellan-expedition]'),
             activeClass = $expedition.attr('data-magellan-active-class') 
@@ -52,7 +52,7 @@
       });
 
       this.fixed_magellan
-        .on('update-position.magellan', function(){
+        .on('update-position.fndtn.magellan', function(){
           var $el = $(this);
           $el.data("magellan-fixed-position","");
           $el.data("magellan-top-offset", "");
@@ -60,11 +60,11 @@
         .trigger('update-position');
 
       $(window)
-        .on('resize.magellan', function() {
+        .on('resize.fndtn.magellan', function() {
           this.fixed_magellan.trigger('update-position');
         }.bind(this))
 
-        .on('scroll.magellan', function() {
+        .on('scroll.fndtn.magellan', function() {
           var windowScrollTop = $(window).scrollTop();
           self.fixed_magellan.each(function() {
             var $expedition = $(this);
@@ -90,7 +90,7 @@
 
 
       if (this.last_destination.length > 0) {
-        $(window).on('scroll.magellan', function (e) {
+        $(window).on('scroll.fndtn.magellan', function (e) {
           var windowScrollTop = $(window).scrollTop(),
               scrolltopPlusHeight = windowScrollTop + $(window).height(),
               lastDestinationTop = Math.ceil(self.last_destination.offset().top);
@@ -129,7 +129,7 @@
     },
 
     off : function () {
-      $(this.scope).off('.fndtn.alerts');
+      $(this.scope).off('.fndtn.magellan');
     }
   };
 }(Foundation.zj, this, this.document));
