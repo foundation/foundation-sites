@@ -64,9 +64,13 @@
 
     _timer_html: function() {
       var self = this;
-      return '<div class="' + self.settings.timer_container_class
-        + '"><span></span><div class="' + self.settings.timer_progress_class
-        + '"></div></div>';
+      if (typeof self.settings.timer_speed === 'number' && self.settings.timer_speed > 0) {
+        return '<div class="' + self.settings.timer_container_class
+          + '"><span></span><div class="' + self.settings.timer_progress_class
+          + '"></div></div>';
+      } else {
+        return '';
+      }
     },
 
     _next_html: function() {
@@ -160,7 +164,7 @@
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'prev', function() {});
         })
-        .on('orbit:toggle-play-pause.fndtn.orbit click.fndtn.orbit', '.' + self.settings.timer_container_class, function(e) {
+        .on('orbit:toggle-play-pause.fndtn.orbit click.fndtn.orbit touchstart.fndtn.orbit', '.' + self.settings.timer_container_class, function(e) {
           e.preventDefault();
           var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
               $slides_container = $timer.closest('.' + self.settings.container_class)
@@ -338,7 +342,7 @@
         $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
         callback();
       } else {
-        $slides_container.stop().animate({
+        $slides_container.animate({
           'marginLeft' : new_margin_left
         }, self.settings.animation_speed, 'linear', function() {
           $container.removeClass(self.settings.orbit_transition_class);
