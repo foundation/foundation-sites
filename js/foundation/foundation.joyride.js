@@ -5,7 +5,6 @@
   TODO:
     - auto scroll not animating
     - styles not working in ie8
-    - scrollLeft not working in ie (any)
 */
 
 ;(function ($, window, document, undefined) {

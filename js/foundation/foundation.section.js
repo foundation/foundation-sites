@@ -9,8 +9,8 @@
     version : '4.0.0.alpha',
 
     settings : {
-      deep_linking: true,
-      one_up: false,
+      deep_linking: false,
+      one_up: true,
       callback: function (){}
     },
 
@@ -41,7 +41,7 @@
 
       $(window).on('resize.fndtn.section', self.throttle(function () {
         self.resize.call(this);
-      }, 75)).trigger('resize');
+      }, 40)).trigger('resize');
 
       this.settings.init = true;
     },
@@ -49,36 +49,43 @@
     toggle_active : function (e, self) {
       var $this = $(this),
           section = $this.closest('section, .section'),
-          content = section.find('.content');
+          content = section.find('.content'),
+          self = Foundation.libs.section;
 
       if (!self.settings.deep_linking && content.length > 0) {
           e.preventDefault();
       }
 
       if (section.hasClass('active')) {
-        if ($(this.scope).width() < 769) {
+        if (self.small()) {
           section
             .removeClass('active')
             .attr('style', '');
         }
       } else {
-        if ($(this.scope).width() > 768 || self.settings.one_up) {
+        if (self.small() || self.settings.one_up) {
           $this
             .closest('[data-section]')
             .find('section, .section')
             .removeClass('active')
             .attr('style', '');
+
+          section.css('padding-top', section.find('.title').outerHeight() - 3);
         }
-        section
-          .css('padding-top', section.find('.title').height())
-          .addClass('active');
+
+        if (self.small()) {
+          section.attr('style', '');
+        }
+
+        section.addClass('active');
       }
 
       self.settings.callback();
     },
 
     resize : function () {
-      var sections = $('[data-section]');
+      var sections = $('[data-section]'),
+          self = Foundation.libs.section;
 
         sections.each(function() {
           var active_section = $(this).find('section.active, .section.active');
@@ -89,11 +96,21 @@
               .attr('style', '');
           } else if (active_section.length < 1) {
             var first = $(this).find('section, .section').first();
-            first
-              .addClass('active')
-              .css('padding-top', first.find('.title').height());
+            first.addClass('active');
+
+            if (self.small()) {
+              first.attr('style', '');
+            } else {
+              first.css('padding-top', first.find('.title').outerHeight() - 3);
+            }
           }
-          Foundation.libs.section.position_titles($(this));
+
+          if (self.small()) {
+            active_section.attr('style', '');
+          } else {
+            active_section.css('padding-top', active_section.find('.title').outerHeight() - 3);
+          }
+          self.position_titles($(this));
         });
     },
 
@@ -118,9 +135,14 @@
       } else {
         titles.each(function () {
           $(this).css('left', previous_width);
-          previous_width += $(this).width();
+          previous_width += $(this).outerWidth();
         });
       }
+    },
+
+    small : function () {
+      alert($(this.scope).width() < 769)
+      return $(this.scope).width() < 769;
     },
 
     off : function () {
