@@ -40,6 +40,7 @@ $topbar-menu-icon-color-toggled: #888 !default;
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
 $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
+$topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !default;
 
 
 @media only screen {
@@ -281,7 +282,7 @@ $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobil
 
 
 // Top Bar styles intended for screen sizes above the breakpoint.
-@media #{$small} {
+@media #{$topbar-media-query} {
   .top-bar { background: $topbar-bg; @include clearfix; overflow: visible;
     .toggle-topbar { display: none; }
 
