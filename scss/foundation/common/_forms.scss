@@ -75,7 +75,7 @@
 
     @include box-shadow(none);
       ul { overflow-y: auto; max-height: $custSelectDropHeight;  }
-      a.current { cursor:default; white-space: nowrap; line-height: (ms(0) + ($formSpacing * 1.5)) - ($inputBorderWidth * 2);  color: $inputFontColor;text-decoration: none; overflow: hidden;display: block;margin-left:($formSpacing / 2);margin-right:((ms(0) + ($formSpacing * 1.5))/2)+5;}
+      a.current { cursor:default; white-space: nowrap; height: 100%; line-height: (ms(0) + ($formSpacing * 1.5)) - ($inputBorderWidth * 2);  color: $inputFontColor;text-decoration: none; overflow: hidden;display: block;margin-left:($formSpacing / 2);margin-right:((ms(0) + ($formSpacing * 1.5))/2)+5;}
       a.selector { cursor:default;position: absolute;width: ((ms(0) + ($formSpacing * 1.5))/2)+5; height: (ms(0) + ($formSpacing * 1.5)) - ($inputBorderWidth * 2); display: block; #{$defaultOpposite}: 0; top: 0;
         &:after { content: ""; display: block; @include cssTriangle(5px, $custSelectTriangleColor, top); position: absolute; left: 3px; top: 50%; margin-top: -2px;  }
       }
