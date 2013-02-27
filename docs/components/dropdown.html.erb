@@ -13,6 +13,29 @@
     <a href="#" class="tiny button" data-dropdown="tinyDrop">Tiny Button &raquo;</a><br /><br />
     <a href="#" class="button" data-dropdown="contentDrop">Regular Button &raquo;</a><br /><br />
 
+    <h5>Creating the Dropdown</h5>
+    <p>To create the dropdown you'll need to attach a data-attribute to whatever element you want the dropdown attached to (in this case a button). From there you'll create a list that holds the links or content and add another data-attribute that associates with the element it belongs to. here's an example of that markup:</p>
+
+<%= code_example '
+<a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button</a><br>
+
+<ul id="drop1" class="f-dropdown">
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+', :html %>
+
+    <a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button</a><br>
+
+    <ul id="drop1" data-dropdown-content class="f-dropdown">
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
+
+    <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have similar values. This is what tells the dropdown plugin where to look to find the position to attach the dropdown element to.</p>
+
   </div>
 </div>
 
