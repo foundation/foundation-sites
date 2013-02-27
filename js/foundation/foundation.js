@@ -10,7 +10,6 @@
 
 /* TODO & NOTES:
   - Test error return, since some of this code has changed slightly.
-  - scrollTo is not animating
 */
 
 (function () {
@@ -232,15 +231,15 @@
       // animated scrolling
       scrollTo : function (el, to, duration) {
         if (duration < 0) return;
-        var difference = to - el.scrollTop;
+        var difference = to - $(window).scrollTop();
         var perTick = difference / duration * 10;
 
-        clearTimeout(this.scrollToTimerCache);
-
         this.scrollToTimerCache = setTimeout(function() {
-          el.scrollTop = el.scrollTop + perTick;
-          this.scrollTo(el, to, duration - 10);
-        }, 10);
+          if (!isNaN(parseInt(perTick, 10))) {
+            window.scrollTo(0, $(window).scrollTop() + perTick);
+            this.scrollTo(el, to, duration - 10);
+          }
+        }.bind(this), 10);
       },
 
       // not supported in core Zepto
