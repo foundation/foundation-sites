@@ -130,7 +130,7 @@
 
         if ($slide.length === 1) {
           self._reset_timer($slides_container, true);
-          self.goto($slides_container, $slide.index(), function() {});
+          self.goto($slides_container, $slide.index(), function() {console.log('cool stuff')});
         }
       });
 
@@ -332,7 +332,7 @@
       } else {
         $slides_container.animate({
           'marginLeft' : new_margin_left
-        }, self.settings.animation_speed, 'ease', function() {
+        }, self.settings.animation_speed, 'linear', function() {
           $container.removeClass(self.settings.orbit_transition_class);
           $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
           callback();

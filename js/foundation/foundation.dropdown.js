@@ -44,7 +44,7 @@
       $('html, body').on('click.fndtn.dropdown', function (e) {
         if (!$(e.target).data('dropdown')) {
           $('[data-dropdown-content]')
-            .hide()
+            .css('left', '-99999px')
             .removeClass(self.settings.activeClass);
         }
       });
@@ -68,12 +68,12 @@
 
       if (dropdown.hasClass(this.settings.activeClass)) {
         dropdown
-          .hide()
+          .css('left', '-99999px')
           .removeClass(this.settings.activeClass);
       } else {
         this
           .css(dropdown
-            .show()
+            .css('left', '0px')
             .addClass(this.settings.activeClass), target);
       }
     },
