@@ -4,7 +4,7 @@
   var $doc = $(document),
       Modernizr = window.Modernizr;
 
-  $(document).ready(function() {
+  $doc.ready(function() {
     $.fn.foundationAlerts           ? $doc.foundationAlerts() : null;
     $.fn.foundationButtons          ? $doc.foundationButtons() : null;
     $.fn.foundationAccordion        ? $doc.foundationAccordion() : null;
