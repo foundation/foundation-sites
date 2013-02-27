@@ -164,7 +164,7 @@
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'prev', function() {});
         })
-        .on('orbit:toggle-play-pause.fndtn.orbit click.fndtn.orbit', '.' + self.settings.timer_container_class, function(e) {
+        .on('orbit:toggle-play-pause.fndtn.orbit click.fndtn.orbit touchstart.fndtn.orbit', '.' + self.settings.timer_container_class, function(e) {
           e.preventDefault();
           var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
               $slides_container = $timer.closest('.' + self.settings.container_class)
