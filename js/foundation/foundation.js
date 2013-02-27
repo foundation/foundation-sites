@@ -97,7 +97,12 @@
       // used for development only
       if (nc) this.nc = nc;
 
+      // set foundation global scope
+      this.scope = scope || this.scope;
+
       if (libraries && typeof libraries === 'string') {
+        if (/off/i.test(libraries)) return this.off();
+
         library_arr = libraries.split(' ');
 
         if (library_arr.length > 0) {
@@ -263,6 +268,13 @@
 
     error : function (error) {
       return 'Foundation error: ' + error.name + ' ' + error.message + '; ' + error.more;
+    },
+
+    // remove all foundation events.
+    off: function () {
+      $(this.scope).off('.fndtn');
+      $(window).off('.fndtn');
+      return true;
     },
 
     zj : function () {

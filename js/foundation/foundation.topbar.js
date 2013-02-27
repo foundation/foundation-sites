@@ -1,10 +1,5 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
-/* TODO:
-    - Height calculation is currently based on the number of LIs,
-      needs to be based on visible height
-*/
-
 ;(function ($, window, document, undefined) {
   'use strict';
 

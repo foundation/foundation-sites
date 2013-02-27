@@ -2,9 +2,6 @@
 // Switch Variables
 //
 
-// Defining the name of the switch class
-$switch-class:                    ".switch" !default;
-
 // Controlling border styles and background colors for the switch container
 $switch-border-color:             darken(#fff, 20%) !default;
 $switch-border-style:             solid !default;
@@ -16,6 +13,7 @@ $switch-height-tny:               22px !default;
 $switch-height-sml:               28px !default;
 $switch-height-med:               36px !default;
 $switch-height-lrg:               44px !default;
+$switch-bottom-margin:            emCalc(20px) !default;
 
 // We use these to control default font sizes for our classes.
 $switch-font-size-tny:            11px !default;
@@ -30,13 +28,12 @@ $switch-paddle-fade-to-color:     darken($switch-paddle-bg, 10%) !default;
 $switch-paddle-border-color:      darken($switch-paddle-bg, 35%) !default;
 $switch-paddle-border-width:      1px !default;
 $switch-paddle-border-style:      solid !default;
-
 $switch-paddle-transition-speed:  .1s !default;
 $switch-paddle-transition-ease:   ease-out !default;
-
 $switch-positive-color:           lighten($success-color, 50%) !default;
 $switch-negative-color:           #f5f5f5 !default;
 
+// Outline Style for tabbing through switches
 $switch-label-outline:            1px dotted #888 !default;
 
 
@@ -55,6 +52,7 @@ $switch-label-outline:            1px dotted #888 !default;
   overflow: hidden;
   border-style: $switch-border-style;
   border-width: $switch-border-width;
+  margin-bottom: $switch-bottom-margin;
 
   // Default label styles for type and transition
   label {
@@ -90,7 +88,7 @@ $switch-label-outline:            1px dotted #888 !default;
   }
 
   // The toggle area for radio switches. We call is a paddle.
-  #{$switch-class}-paddle {
+  & > span {
     position: absolute;
     top: -1px;
     left: -1px;
@@ -140,13 +138,13 @@ $switch-label-outline:            1px dotted #888 !default;
 
   input {
     // Move the paddle to the right position
-    &:first-of-type:checked ~ #{$switch-class}-paddle {
+    &:first-of-type:checked ~ span {
       left: 100%;
       margin-left: emCalc(-$height + 1px);
     }
   }
 
-  #{$switch-class}-paddle {
+  & > span {
     width: emCalc($height);
     height: emCalc($height);
   }
@@ -160,7 +158,7 @@ $switch-label-outline:            1px dotted #888 !default;
     background: $switch-bg;
     border-color: $switch-border-color;
 
-    #{$switch-class}-paddle {
+    & > span {
       border-color: darken($paddle-bg, 30%);
       background: $paddle-bg;
       background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
@@ -180,25 +178,34 @@ $switch-label-outline:            1px dotted #888 !default;
 
     &:hover,
     &:focus {
-      #{$switch-class}-paddle {
+      & > span {
         background: $paddle-bg;
         background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
         background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
         background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
       }
     }
+
+    &:active { background: transparent; }
   }
 
   // Setting up the radius for switches
   @if $radius == true {
     @include radius(4px);
-    #{$switch-class}-paddle { @include radius(3px); }
+    & > span { @include radius(3px); }
   }
   @else if $radius {
     @include radius($radius);
-    #{$switch-class}-paddle { @include radius($radius - 1px); }
+    & > span { @include radius($radius - 1px); }
   }
 
+}
+
+// We use this to quickly create switches with a single mixin
+@mixin switch($transition-speed:$switch-paddle-transition-speed, $transition-ease:$switch-paddle-transition-ease, $height:$switch-height-med, $font-size:$switch-font-size-med, $line-height:2.3em, $paddle-bg:$switch-paddle-bg, $positive-color:$switch-positive-color, $negative-color:$switch-negative-color, $radius:false, $base-style:true) {
+  @include switch-base($transition-speed, $transition-ease);
+  @include switch-size($height, $font-size, $line-height);
+  @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
 
@@ -206,10 +213,8 @@ $switch-label-outline:            1px dotted #888 !default;
 @media only screen {
 
   // Containing element for the radio switch
-  #{$switch-class} {
-    @include switch-base;
-    @include switch-size;
-    @include switch-style;
+  .switch {
+    @include switch;
 
     // Large radio switches
     &.large { @include switch-size($switch-height-lrg, $switch-font-size-lrg); }
@@ -222,12 +227,12 @@ $switch-label-outline:            1px dotted #888 !default;
 
     // Add a radius to the switch
     &.radius { @include radius(4px);
-      #{$switch-class}-paddle { @include radius(3px); }
+      & > span { @include radius(3px); }
     }
 
     // Make the switch completely round, like a pill
     &.round { @include radius(1000px);
-      #{$switch-class}-paddle { @include radius(999px); }
+      & > span { @include radius(999px); }
       label { padding: 0 emCalc($switch-label-side-padding + 3px); }
     }
 

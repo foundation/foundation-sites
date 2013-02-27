@@ -1,23 +1,24 @@
 // Orbit Settings
 
+// We use these to control the caption styles
 $orbit-caption-bg-old-browser: #000 !default;
 $orbit-caption-bg-old: rgb(0,0,0) !default;
 $orbit-caption-bg: rgba(0,0,0,0.6) !default;
 $orbit-caption-font-color: #fff !default;
 
+// We use these to control the left/right nav styles
 $orbit-nav-bg-old: rgb(0,0,0) !default;
 $orbit-nav-bg: rgba(0,0,0,0.6) !default;
 
+// We use these to control the timer styles
 $orbit-timer-bg-old: rgb(0,0,0) !default;
 $orbit-timer-bg: rgba(0,0,0,0.6) !default;
 
+// We use these to control the bullet nav styles
 $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #222 !default;
 
-$orbit-thumb-border-color: #000 !default;
-$orbit-thumb-border-width: 2px !default;
-$orbit-thumb-border-style: solid !default;
-
+// We use thes to controls the style of slide numbers
 $orbit-slide-number-bg: rgb(0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: emCalc(5px) !default;
@@ -165,4 +166,30 @@ $orbit-slide-number-padding: emCalc(5px) !default;
 
     &:last-child { margin-right: 0; }
   }
+}
+
+.touch {
+  .orbit-container {
+    .orbit-prev,
+    .orbit-next,
+    .orbit-timer { display: none; }
+  }
+
+  .orbit-bullets { display: none; }
+}
+
+@media #{$small} {
+
+  .touch {
+    .orbit-container {
+      .orbit-prev,
+      .orbit-next,
+      .orbit-timer { display: inherit; }
+    }
+
+    .orbit-bullets { display: block; }
+  }
+
+
+
 }

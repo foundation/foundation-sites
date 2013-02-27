@@ -26,7 +26,7 @@
 
         this.assemble();
 
-        return this.settings.init;
+        return this.name;
       } else {
         return this[method].call(this, options);
       }
@@ -45,20 +45,20 @@
       var self = this;
 
       $(this.scope)
-        .on('click', 'form.custom span.custom.checkbox', function (e) {
+        .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
           e.preventDefault();
           e.stopPropagation();
           self.toggle_checkbox($(this));
         })
-        .on('click', 'form.custom span.custom.radio', function (e) {
+        .on('click.fndtn.forms', 'form.custom span.custom.radio', function (e) {
           e.preventDefault();
           e.stopPropagation();
           self.toggle_radio($(this));
         })
-        .on('change', 'form.custom select:not([data-customforms="disabled"])', function (e) {
+        .on('change.fndtn.forms', 'form.custom select:not([data-customforms="disabled"])', function (e) {
           self.refresh_custom_select($(this));
         })
-        .on('click', 'form.custom label, form.custom span.custom.checkbox', function (e) {
+        .on('click.fndtn.forms', 'form.custom label, form.custom span.custom.checkbox', function (e) {
           var $associatedElement = $('#' + $(this).attr('for') + ':not([data-customforms="disabled"])'),
               $customCheckbox,
               $customRadio;
@@ -90,7 +90,7 @@
             }
           }
         })
-        .on('click', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
+        .on('click.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
           var $this = $(this),
               $dropdown = $this.closest('div.custom.dropdown'),
               $select = $dropdown.prev();
@@ -117,7 +117,7 @@
             return false;
           }
         })
-        .on('click', 'form.custom div.custom.dropdown li', function (e) {
+        .on('click.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
               $customDropdown = $this.closest('div.custom.dropdown'),
               $select = $customDropdown.prev(),
@@ -394,7 +394,7 @@
     },
 
     off : function () {
-      $(this.scope).off('.fndtn.alerts');
+      $(this.scope).off('.fndtn.forms');
     }
   };
 }(Foundation.zj, this, this.document));
