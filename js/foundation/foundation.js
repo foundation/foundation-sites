@@ -272,21 +272,19 @@
     },
 
     fix_outer : function (lib) {
-      var dims = ['width', 'height'], size = dims.length;
+      lib.outerHeight = function (el) {
+        if (typeof Zepto === 'function') {
+          return el.height();
+        }
+        return el.outerHeight();
+      };
 
-      for (var i = size - 1; i >= 0; i--) {
-        var name = 'outer' + dims[i][0].toUpperCase() + dims[i].substr(1),
-            ix = i, dim = dims[ix];
-
-        lib[name] = function (el) {
-          if (typeof Zepto === 'function') {
-            console.log(dim)
-            return el[dim]();
-          }
-
-          return el[name]();
-        };
-      }
+      lib.outerWidth = function (el) {
+        if (typeof Zepto === 'function') {
+          return el.width();
+        }
+        return el.outerWidth();
+      };
     },
 
     error : function (error) {
