@@ -125,6 +125,7 @@
         });
 
       $(document).on('click.fndtn.orbit', '[data-orbit-link]', function(e) {
+        e.preventDefault();
         var id = $(e.currentTarget).attr('data-orbit-link'),
             $slide = $slides_container.find('[data-orbit-slide=' + id + ']').first();
 
@@ -144,6 +145,7 @@
       $container
         .on('orbit:after-slide-change.fndtn.orbit', function(e, orbit) {
           var $slide_number = $container.find('.' + self.settings.slide_number_class);
+
           if ($slide_number.length === 1) {
             $slide_number.replaceWith(self._slide_number_html(orbit.slide_number, orbit.total_slides));
           }
@@ -333,7 +335,7 @@
       $slides_container.trigger('orbit:before-slide-change');
       if ($slides_container.css('marginLeft') === new_margin_left) {
         $container.removeClass(self.settings.orbit_transition_class);
-        $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length}]);
+        $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
         callback();
       } else {
         $slides_container.stop().animate({
