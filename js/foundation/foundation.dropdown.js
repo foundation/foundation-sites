@@ -41,7 +41,7 @@
         self.toggle($(this));
       });
 
-      $('body').on('click.fndtn.dropdown', function (e) {
+      $('html, body').on('click.fndtn.dropdown', function (e) {
         if (!$(e.target).data('dropdown')) {
           $('[data-dropdown-content]')
             .hide()
@@ -92,7 +92,7 @@
 
       return dropdown.css({
         position : 'absolute',
-        top: offset.top + target.height(),
+        top: offset.top + target.outerHeight(),
         left: offset.left
       });
     },
