@@ -202,7 +202,7 @@ $base-style: true
 <%= code_example '
 .your-class-name {
   @include switch-base($transition-speed, $transition-ease);
-  @include switch-size($height, $font-size, $line-height)
+  @include switch-size($height, $font-size, $line-height);
 }
 ', :css %>
 
@@ -222,16 +222,17 @@ $base-style: true
 <%= code_example '
 .your-class-name {
   @include switch-base($transition-speed, $transition-ease);
-  @include switch-size($height, $font-size, $line-height)
+  @include switch-size($height, $font-size, $line-height);
+  @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 ', :css %>
 
-    <div class="switch-custom-base size">
-      <input id="o2" name="switch-o2" type="radio" checked>
-      <label for="o2" onclick="">Off</label>
+    <div class="switch-custom-base size style">
+      <input id="o4" name="switch-o3" type="radio" checked>
+      <label for="o4" onclick="">Off</label>
 
-      <input id="o3" name="switch-o2" type="radio">
-      <label for="o3" onclick="">On</label>
+      <input id="o5" name="switch-o3" type="radio">
+      <label for="o5" onclick="">On</label>
 
       <span></span>
     </div>
@@ -239,13 +240,39 @@ $base-style: true
     <h5>Default SCSS Variables</h5>
 
 <%= code_example '
-/* We use these to style the labels */
-$label-padding:     emCalc(3px) emCalc(6px) emCalc(4px);
-$label-radius:      $button-radius;
+/* Controlling border styles and background colors for the switch container */
+$switch-border-color:             darken(#fff, 20%);
+$switch-border-style:             solid;
+$switch-border-width:             1px;
+$switch-bg:                       #fff;
 
-/* We use these to style the label text */
-$label-font-size:   emCalc(14px);
-$label-font-weight: bold;', :css %>
+/* We use these to control the switch heights for our default classes */
+$switch-height-tny:               22px;
+$switch-height-sml:               28px;
+$switch-height-med:               36px;
+$switch-height-lrg:               44px;
+$switch-bottom-margin:            emCalc(20px);
+
+/* We use these to control default font sizes for our classes. */
+$switch-font-size-tny:            11px;
+$switch-font-size-sml:            12px;
+$switch-font-size-med:            14px;
+$switch-font-size-lrg:            17px;
+$switch-label-side-padding:       6px;
+
+/* We use these to style the switch-paddle */
+$switch-paddle-bg:                #fff;
+$switch-paddle-fade-to-color:     darken($switch-paddle-bg, 10%);
+$switch-paddle-border-color:      darken($switch-paddle-bg, 35%);
+$switch-paddle-border-width:      1px;
+$switch-paddle-border-style:      solid;
+$switch-paddle-transition-speed:  .1s;
+$switch-paddle-transition-ease:   ease-out;
+$switch-positive-color:           lighten($success-color, 50%);
+$switch-negative-color:           #f5f5f5;
+
+/* Outline Style for tabbing through switches */
+$switch-label-outline:            1px dotted #888;', :css %>
 
     <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 

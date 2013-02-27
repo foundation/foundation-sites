@@ -28,13 +28,12 @@ $switch-paddle-fade-to-color:     darken($switch-paddle-bg, 10%) !default;
 $switch-paddle-border-color:      darken($switch-paddle-bg, 35%) !default;
 $switch-paddle-border-width:      1px !default;
 $switch-paddle-border-style:      solid !default;
-
 $switch-paddle-transition-speed:  .1s !default;
 $switch-paddle-transition-ease:   ease-out !default;
-
 $switch-positive-color:           lighten($success-color, 50%) !default;
 $switch-negative-color:           #f5f5f5 !default;
 
+// Outline Style for tabbing through switches
 $switch-label-outline:            1px dotted #888 !default;
 
 
