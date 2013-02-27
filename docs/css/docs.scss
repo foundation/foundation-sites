@@ -110,6 +110,13 @@ input[type="text"].attached-input {
 /* Sub Nav Docs */
 .sub-nav-custom { @include sub-nav(orange,11px,orange); }
 
+/* Thumbs Docs */
+.th-custom {
+  @include thumb(10px,0 0 0 2px black, 0 0 10px 2px rgba(orange,0.5));
+  @include radius(6);
+  @include single-transition(all,400ms,ease-in);
+}
+
 /* Large Screen Styles */
 @media #{$small} {
   // .button { margin-bottom: 15px; }
