@@ -117,7 +117,7 @@
     set_threshold : function () {
       if (!this.settings.threshold) {
         this.settings.threshold = (this.fixed_magellan.length > 0) ? 
-          this.fixed_magellan.outerHeight(true) : 0;
+          this.outerHeight(this.fixed_magellan, true) : 0;
       }
     },
 

@@ -272,18 +272,18 @@
     },
 
     fix_outer : function (lib) {
-      lib.outerHeight = function (el) {
+      lib.outerHeight = function (el, bool) {
         if (typeof Zepto === 'function') {
           return el.height();
         }
-        return el.outerHeight();
+        return el.outerHeight(bool);
       };
 
       lib.outerWidth = function (el) {
         if (typeof Zepto === 'function') {
           return el.width();
         }
-        return el.outerWidth();
+        return el.outerWidth(bool);
       };
     },
 

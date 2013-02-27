@@ -39,7 +39,7 @@
         if (!this.settings.height) this.largestUL();
 
         if (this.settings.$topbar.parent().hasClass('fixed')) {
-          $('body').css('padding-top', this.settings.$topbar.outerHeight());
+          $('body').css('padding-top', this.outerHeight(this.settings.$topbar));
         }
 
         return this.settings.init;
@@ -83,9 +83,9 @@
             self.settings.$section.find('>.name').css({left: 100 * self.settings.index + '%'});
 
             $this.siblings('ul')
-              .height(self.settings.height + self.settings.$titlebar.outerHeight(true));
+              .height(self.settings.height + self.outerHeight(self.settings.$titlebar, true));
             self.settings.$topbar
-              .css('min-height', self.settings.height + self.settings.$titlebar.outerHeight(true) * 2)
+              .css('min-height', self.settings.height + self.outerHeight(self.settings.$titlebar, true) * 2)
           }
       });
 
@@ -144,7 +144,8 @@
     largestUL : function () {
       var uls = this.settings.$topbar.find('section ul ul'),
           largest = uls.first(),
-          total = 0;
+          total = 0,
+          self = this;
 
       uls.each(function () {
         if ($(this).children('li').length > largest.children('li').length) {
@@ -152,7 +153,7 @@
         }
       });
 
-      largest.children('li').each(function () { total += $(this).outerHeight(true); });
+      largest.children('li').each(function () { total += self.outerHeight($(this), true); });
 
       this.settings.height = total;
     },
@@ -162,7 +163,7 @@
       if ($(klass).length > 0) {
         var distance = $(klass).length ? $(klass).offset().top: 0,
             $window = $(window);
-            var offst = $('nav.top-bar').outerHeight()+20;
+            var offst = this.outerHeight($('nav.top-bar'))+20;
 
           $window.scroll(function() {
             if ($window.scrollTop() >= (distance)) {
