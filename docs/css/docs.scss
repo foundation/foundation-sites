@@ -118,9 +118,9 @@ input[type="text"].attached-input {
 }
 
 /* Grid Docs */
-#masthead { @include grid-row;
-  & > hgroup { @include grid-column(4); }
-  & > section { @include grid-column(8); }
+#masthead { @include grid-row; @include panel;
+  & > hgroup { @include grid-column(4, $float:left); }
+  & > section { @include grid-column(8, $float:left); }
 }
 
 

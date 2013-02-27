@@ -267,26 +267,80 @@
     <hr>
 
     <h3>Building With Mixins</h3>
-    <p>If you are keen on SCSS and use it for your Foundation projects, you have access to a grid mixins that will let you layout the page without using presentational classes that you don't want. You can create your own set of classes or even create your own grid. Here's an example structure you might use with the grid mixin:</p>
+    <p>If you are keen on SCSS and use it for your Foundation projects, you have access to a grid mixins that will let you layout the page without using presentational classes that you don't want. You can create your own set of classes or even create your own grid. Setting any of the options to 'false' will leave off those styles, giving you lots of control over your CSS output. Here's an example structure you might use with the grid mixin:</p>
+
+    <h5>Basic Mixin Usage</h5>
+<%= code_example '
+/* Mixin options creating rows */
+@include grid-row($behavior);
+
+/* The default value is false, which will bring in the default row styles */
+$behavior: false
+
+/* If the element you are creating as a row is nested within another element */
+/* that is also a row, you need to add the proper nesting styles */
+$behavior: nest
+
+/* You can use this option to collapse the container row margins */
+/* This comes in handy when working with forms inside the grid */
+$behavior: collapse
+
+/* If you have a nested row and want it to be collapsed, you need to add this option */
+$behavior: nest-collapse
+', :css %>
 
 <%= code_example '
-<header id="masthead">
-  <hgroup>
-    <h2>Title</h2>
-    <p>Some text...</p>
-  </hgroup>
-  <section>...</section>
-</header>', :html %>
+/* Mixin options creating columns, these must be nested inside or a row */
+@include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float);
+
+/* The most commonly used option with a column */
+/* This sets the width properties for the column, use a number to represent columns */
+$columns: #
+
+/* Use this option if your columns do not add up to 12. */
+/* We make the last column default to float:right to keep things aligned */
+/* If you do not want this, set $last-column to true */
+$last-column: false
+
+/* If you have a single column inside a row and want it centered, set this to true */
+$center: false
+
+/* Control how many columns you offset by switching this into a number. */
+$offset: false
+
+/* You can use source ordering with this mixin too, just set this to a number. */
+$push: false
+
+/* You can use source ordering with this mixin too, just set this to a number. */
+$pull: false
+
+/* If you have a collapsed row, you need to set the columns to collapse as well. */
+$collapse: false
+
+/* By default, we do not include floats in the styles because it will be duplicated a lot. */
+/* To help control this, we made it an option. Set this to true to get columns to float. */
+$float: false
+', :css %>
+
+<%= code_example '
+#masthead { @include grid-row; @include panel;
+  & > hgroup { @include grid-column(4, $float:left); }
+  & > section { @include grid-column(8, $float:left); }
+}', :css %>
 
     <header id="masthead">
       <hgroup>
         <h2>Title</h2>
-        <p>Some text...</p>
       </hgroup>
       <section>
         <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </section>
     </header>
+
+    <hr>
+
+    <h4>Get Advanced With Media Query Changes</h4>
+    <p>We kept media queries out of the code for our grid mixins. This will enable you to include the mixins inside of whatever breakpoint you'd like, putting you in complete control. If you want to create 10 breakpoints and shift the layout around between each one, by all means. If you want to use only the default breakpoints, <a href="#mediaqueries">we've got variables for that</a></p>
 
   </div>
 </div>
