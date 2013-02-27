@@ -84,8 +84,6 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     &.active {
       .content { display: block; }
       .title { background: $section-title-bg-active; }
-
-      & .lt-ie9 { padding-top: 0 !important; }
     }
 
 
