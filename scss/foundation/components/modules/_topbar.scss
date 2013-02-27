@@ -94,7 +94,7 @@
         /* li.has-dropdown */
         &.has-dropdown { position: relative;
           &:hover, &:focus { &>.dropdown { display: block; visibility: visible; } }
-          a { padding-right: $topBarHeight * .75;
+          >a { padding-right: $topBarHeight * .75;
             &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
           }
           .dropdown { background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
