@@ -141,6 +141,9 @@
     },
 
     small : function () {
+      if ($('html').hasClass('lt-ie9')) {
+        return true;
+      }
       return $(this.scope).width() < 769;
     },
 
