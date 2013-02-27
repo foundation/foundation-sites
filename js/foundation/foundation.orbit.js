@@ -330,7 +330,7 @@
         $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length}]);
         callback();
       } else {
-        $slides_container.animate({
+        $slides_container.stop().animate({
           'marginLeft' : new_margin_left
         }, self.settings.animation_speed, 'linear', function() {
           $container.removeClass(self.settings.orbit_transition_class);

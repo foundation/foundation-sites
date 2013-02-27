@@ -59,9 +59,9 @@
             fNOP = function () {},
             fBound = function () {
               return fToBind.apply(this instanceof fNOP && oThis
-                                     ? this
-                                     : oThis,
-                                   aArgs.concat(Array.prototype.slice.call(arguments)));
+                 ? this
+                 : oThis,
+               aArgs.concat(Array.prototype.slice.call(arguments)));
             };
      
         fNOP.prototype = this.prototype;
@@ -71,6 +71,11 @@
       };
     }
   }
+
+  // fake stop() for zepto.
+  $.fn.stop = $.fn.stop || function() {
+    return this;
+  };
 }());
 
 ;(function (window, document, undefined) {
