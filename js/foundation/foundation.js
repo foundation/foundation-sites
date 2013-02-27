@@ -106,7 +106,7 @@
         library_arr = libraries.split(' ');
 
         if (library_arr.length > 0) {
-          for (var i = library_arr.length; i >= 0; i--) {
+          for (var i = library_arr.length - 1; i >= 0; i--) {
             responses.push(this.init_lib(library_arr[i], args));
           }
         }
@@ -134,11 +134,12 @@
     },
 
     init_lib : function (lib, args) {
-      return this.trap(function () {
+      // return this.trap(function () {
         if (this.libs.hasOwnProperty(lib)) {
+          this.patch(this.libs[lib]);
           return this.libs[lib].init.apply(this.libs[lib], args);
         }
-      }.bind(this), lib);
+      // }.bind(this), lib);
     },
 
     trap : function (fun, lib) {
@@ -153,10 +154,14 @@
       return fun();
     },
 
+    patch : function (lib) {
+      this.fix_outer(lib);
+    },
+
     inherit : function (scope, methods) {
       var methods_arr = methods.split(' ');
 
-      for (var i = methods_arr.length; i >= 0; i--) {
+      for (var i = methods_arr.length - 1; i >= 0; i--) {
         if (this.lib_methods.hasOwnProperty(methods_arr[i])) {
           this.libs[scope.name][methods_arr[i]] = this.lib_methods[methods_arr[i]];
         }
@@ -264,6 +269,22 @@
 
         return true;
       }
+    },
+
+    fix_outer : function (lib) {
+      lib.outerHeight = function (el) {
+        if (typeof Zepto === 'function') {
+          return el.height();
+        }
+        return el.outerHeight();
+      };
+
+      lib.outerWidth = function (el) {
+        if (typeof Zepto === 'function') {
+          return el.width();
+        }
+        return el.outerWidth();
+      };
     },
 
     error : function (error) {
