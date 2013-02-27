@@ -3,15 +3,21 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Joyride is great for getting new users acquainted with your site or application.</h4>
+    <h4 class="subheader">Joyride is an extremely flexible plugin that will give users a tour of your site or app when they visit.</h4>
+
+    <div id="firstStop" class="panel">Some awesome part of your site!</div>
+
+    <hr>
   </div>
 </div>
 
 <div class="row">
   <div class="large-12 columns">
-    <h2 id="numero1" class="so-awesome">Basic Installation</h2>
-    <p>At the bottom of your page but inside of the body, place either an <code>ol</code> or <code>ul</code> with the <code>data-joyride</code> attribute. This list will contain all of the stops on your tour.</p>
+    <h2 id="numero1" class="so-awesome">Build Joyride with HTML</h2>
+    <p>At the bottom of your page but inside of the body, place either an <code>ol</code> or <code>ul</code> with the <code>data-joyride</code> attribute. This list will contain all of the stops on your tour. To associate the tour stops with an item on your page, make sure the ID and data-id match between the two. If you do not associate an if, the tour stop will take on a modal style, positioning itself in the middle of the screen.</p>
+
 <%= code_example '
+<!-- At the bottom of your page but inside of the body tag -->
 <ol data-joyride data-options="timer:3000">
   <li data-class="so-awesome" data-text="Next" class="custom">
     <h4>Stop #1</h4>
@@ -36,19 +42,87 @@
 </ol>
 ', :html %>
 
-    <h3 id="numero3">Get the Most Out of Your App!</h3>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    <h5>We Add Some HTML with JS</h5>
+    <p>To make Joyride really easy to use, we build its container and tour element inside the JS. This can make it hard to know what to target for styling purposes in some cases. To help this process go smoothly, here's what the output looks like with the appropriate classes to target for styling:</p>
 
-    <h3 id="numero2">Customize Each Stop Along the Way</h3>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum.</p>
+<%= code_example '
+<!-- Here is the markup our JS creates for you -->
+<div class="joyride-tip-guide">
+  <span class="joyride-nub top"></span>
+  <div class="joyride-content-wrapper">
+    <p>Hello and welcome to the Joyride documentation page.</p>
+    <a href="#" class="small button joyride-next-tip">Next</a>
+    <a href="#close" class="joyride-close-tip">×</a>
+  </div>
+</div>
+', :html %>
 
-    <h4>Make Every Click Count</h4>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras mattis
+    <hr>
+
+    <h3>Available SCSS Variables</h3>
+    <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things. Here's a list of the variables:</p>
+
+<%= code_example '
+/* Controlling default Joyride styles */
+$joyride-tip-bg:              rgb(0,0,0);
+$joyride-tip-default-width:   300px;
+$joyride-tip-padding:         emCalc(18px) emCalc(20px) emCalc(24px);
+$joyride-tip-border:          solid 1px #555;
+$joyride-tip-radius:          4px;
+$joyride-tip-position-offset: 22px;
+
+/* Here, we are setting the tip dont styles */
+$joyride-tip-font-color:      #fff;
+$joyride-tip-font-size:       emCalc(14px);
+$joyride-tip-header-weight:   bold;
+
+/* This changes the nub size */
+$joyride-tip-nub-size:        14px;
+
+/* This adjusts the styles for the timer when its enabled */
+$joyride-tip-timer-width:     50px;
+$joyride-tip-timer-height:    3px;
+$joyride-tip-timer-color:     #666;
+
+/* This changes up the styles for the close button */
+$joyride-tip-close-color:     #777;
+$joyride-tip-close-size:      30px;
+$joyride-tip-close-weight:    normal;
+
+/* When Joyride is filling the screen, we use this style for the bg */
+$joyride-screenfill:          rgba(0,0,0,0.5);
+', :css %>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>You'll need to include <code>foundation.joyride.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+<%= code_example '
+<script src="path/to/zepto.js"></script>
+<script src="path/to/foundation.js"></script>
+<script src="path/to/foundation.joyride.js"></script>
+<script type="text/javascript">
+  $(document).foundation();
+</script>
+', :html %>
+
+    <p>Then, you'll need to add a data-orbit to make the JS work properly on that element. That looks like:</p>
+
+<%= code_example '
+<ol data-joyride>
+  ...
+</ol>
+', :html %>
 
   </div>
 </div>
 
+<!-- TOUR STOPS -->
 <ol class="joyride-list" data-joyride>
+  <li data-id="firstStop" data-text="Next">
+    <p>Hello and welcome to the Joyride documentation page.</p>
+  </li>
   <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
     <h4>Stop #1</h4>
     <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
