@@ -1,8 +1,6 @@
 source :rubygems
-
+gem 'sprockets'
 gem 'foreman'
 gem 'stasis'
-gem 'sprockets'
 gem 'sass', :require => false
-gem 'redcarpet'
 gem 'coderay'

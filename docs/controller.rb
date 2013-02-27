@@ -3,6 +3,7 @@ layout 'layout.html.erb'
 
 ignore /css\//
 ignore /js\//
+ignore /.+.md/
 
 helpers do
   def asset_path
