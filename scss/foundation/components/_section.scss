@@ -84,7 +84,11 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     &.active {
       .content { display: block; }
       .title { background: $section-title-bg-active; }
+
+      & .lt-ie9 { padding-top: 0 !important; }
     }
+
+
   }
 
   // Tab Styles
@@ -148,9 +152,12 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
     @include section-container;
 
     section,
-    .section { @include section; }
-  }
+    .section {
+      @include section;
 
+      &.active { padding-top: 0 !important; }
+    }
+  }
 
   @media #{$small} {
 

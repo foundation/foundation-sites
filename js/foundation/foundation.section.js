@@ -141,7 +141,6 @@
     },
 
     small : function () {
-      alert($(this.scope).width() < 769)
       return $(this.scope).width() < 769;
     },
 
