@@ -262,10 +262,7 @@
     },
 
     off : function () {
-      $(this.scope)
-        .off('.fndtn.reveal')
-        .find('.' + this.settings.bgClass)
-        .remove();
+      $(this.scope).off('.fndtn.reveal');
     }
   };
 }(Foundation.zj, this, this.document));
