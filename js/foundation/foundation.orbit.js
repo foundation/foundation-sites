@@ -64,9 +64,13 @@
 
     _timer_html: function() {
       var self = this;
-      return '<div class="' + self.settings.timer_container_class
-        + '"><span></span><div class="' + self.settings.timer_progress_class
-        + '"></div></div>';
+      if (typeof self.settings.timer_speed === 'number' && self.settings.timer_speed > 0) {
+        return '<div class="' + self.settings.timer_container_class
+          + '"><span></span><div class="' + self.settings.timer_progress_class
+          + '"></div></div>';
+      } else {
+        return '';
+      }
     },
 
     _next_html: function() {
