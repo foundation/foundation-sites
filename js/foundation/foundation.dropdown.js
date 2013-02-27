@@ -64,7 +64,7 @@
       var dropdown = $('#' + target.data('dropdown')),
           offset = target.offset();
 
-      $('[data-dropdown-content]').not(dropdown).hide();
+      $('[data-dropdown-content]').not(dropdown).css('left', '-99999px');
 
       if (dropdown.hasClass(this.settings.activeClass)) {
         dropdown
