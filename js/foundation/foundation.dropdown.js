@@ -61,8 +61,7 @@
     },
 
     toggle : function (target, resize) {
-      var dropdown = $('#' + target.data('dropdown')),
-          offset = target.offset();
+      var dropdown = $('#' + target.data('dropdown'));
 
       $('[data-dropdown-content]').not(dropdown).css('left', '-99999px');
 
@@ -73,7 +72,6 @@
       } else {
         this
           .css(dropdown
-            .css('left', '0px')
             .addClass(this.settings.activeClass), target);
       }
     },

@@ -276,14 +276,24 @@
         if (typeof Zepto === 'function') {
           return el.height();
         }
-        return el.outerHeight(bool);
+
+        if (typeof bool !== 'undefined') {
+          return el.outerHeight(bool);
+        }
+
+        return el.outerHeight();
       };
 
       lib.outerWidth = function (el) {
         if (typeof Zepto === 'function') {
           return el.width();
         }
-        return el.outerWidth(bool);
+
+        if (typeof bool !== 'undefined') {
+          return el.outerWidth(bool);
+        }
+
+        return el.outerWidth();
       };
     },
 
