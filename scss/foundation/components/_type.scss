@@ -7,7 +7,9 @@ $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif
 $header-font-weight: bold !default;
 $header-font-style: normal !default;
 $header-font-color: #222 !default;
-$header-line-height: 2 !default;
+$header-line-height: 1.4 !default;
+$header-top-margin: .2em !default;
+$header-bottom-margin: .5em !default;
 $header-text-rendering: optimizeLegibility !default;
 
 // We use these to control header font sizes
@@ -22,6 +24,8 @@ $h6-font-size: 1em !default;
 $subheader-line-height: 1.4 !default;
 $subheader-font-color: lighten($header-font-color, 30%) !default;
 $subheader-font-weight: 300 !default;
+$subheader-top-margin: .2em !default;
+$subheader-bottom-margin: .5em !default;
 
 // A general <small> styling
 $small-font-size: 60% !default;
@@ -57,7 +61,8 @@ $hr-margin: emCalc(20px) !default;
 $list-style-position: outside !default;
 $list-side-margin: emCalc(18px) !default;
 $definition-list-header-weight: bold !default;
-$definition-list-margin-bottom: 10px !default;
+$definition-list-header-margin-bottom: .3em !default;
+$definition-list-margin-bottom: emCalc(12px) !default;
 
 // We use these to style blockquotes
 $blockquote-font-color: lighten($header-font-color, 30%) !default;
@@ -69,9 +74,34 @@ $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
 $acronym-underline: 1px dotted #ddd !default;
 
+// We use these to control padding and margin
+$microformat-padding: emCalc(10px) emCalc(12px) !default;
+$microformat-margin: 0 0 emCalc(20px) 0 !default;
+
+// We use these to control the border styles
+$microformat-border-width: 1px !default;
+$microformat-border-style: solid !default;
+$microformat-border-color: #ddd !default;
+
+// We use these to control full name font styles
+$microformat-fullname-font-weight: bold !default;
+$microformat-fullname-font-size: emCalc(15px) !default;
+
+// We use this to control the summary font styles
+$microformat-summary-font-weight: bold !default;
+
+// We use this to control abbr padding
+$microformat-abbr-padding: 0 emCalc(1px) !default;
+
+// We use this to control abbr font styles
+$microformat-abbr-font-weight: bold !default;
+$microformat-abbr-font-decoration: none !default;
+
+
 //
 // Typography Placeholders
 //
+
 %lead {
   font-size: $paragraph-font-size + emCalc(3.5px);
   line-height: 1.6;
@@ -81,7 +111,8 @@ $acronym-underline: 1px dotted #ddd !default;
   line-height: $subheader-line-height;
   color: $subheader-font-color;
   font-weight: $subheader-font-weight;
-  margin-bottom: $paragraph-margin-bottom;
+  margin-top: $header-top-margin;
+  margin-bottom: $header-bottom-margin;
 }
 
 
@@ -147,6 +178,8 @@ h1, h2, h3, h4, h5, h6 {
   color: $header-font-color;
   text-rendering: $header-text-rendering;
   line-height: $header-line-height;
+  margin-top: $header-top-margin;
+  margin-bottom: $header-bottom-margin;
 
   small {
     font-size: $small-font-size;
@@ -241,7 +274,10 @@ ol { margin-#{$default-float}: $list-side-margin;
 
 /* Definition Lists */
 dl {
-  dt { font-weight: $definition-list-header-weight; }
+  dt {
+    margin-bottom: $definition-list-header-margin-bottom;
+    font-weight: $definition-list-header-weight;
+  }
   dd { margin-bottom: $definition-list-margin-bottom; }
 }
 
@@ -284,6 +320,34 @@ blockquote p {
   color: $blockquote-font-color;
 }
 
+/* Microformats */
+.vcard {
+  display: inline-block;
+  margin: $microformat-margin;
+  border: $microformat-border-width $microformat-border-style $microformat-border-color;
+  padding: $microformat-padding;
+
+  li {
+    margin: 0;
+    display: block;
+  }
+  .fn {
+    font-weight: $microformat-fullname-font-weight;
+    font-size: $microformat-fullname-font-size;
+  }
+}
+
+.vevent {
+  .summary { font-weight: $microformat-summary-font-weight; }
+
+  abbr {
+    cursor: default;
+    text-decoration: $microformat-abbr-font-decoration;
+    font-weight: $microformat-abbr-font-weight;
+    border: none;
+    padding: $microformat-abbr-padding;
+  }
+}
 
 // Only include these styles if you want them.
 @if $include-print-styles {
