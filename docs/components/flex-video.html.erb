@@ -1,44 +1,86 @@
 <% @page_title = "Flex Video" %>
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Blah</h4>
+    <h4 class="subheader">If you're embedding video from YouTube, Vimeo, or another site that uses iframe, embed or object elements you can wrap your video in <code>div.flex-video</code> to create an intrinsic ratio that will properly scale your video on any device.</h4>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-4">
-    <a name="video"></a>
-    <h4>Video</h4>
-    <p>If you're embedding video from YouTube, Vimeo, or another site that uses iframe, embed or object elements you can wrap your video in <code>div.flex-video</code> to create an intrinsic ratio that will properly scale your video on any device.</p>
-  </div>
-  <br>
-  <div class="large-8">
-    <dl class="tabs contained">
-      <dd class="active"><a href="#video1">4:3</a></dd>
-      <dd><a href="#video2">Widescreen</a></dd>
-      <dd><a href="#video3">Vimeo</a></dd>
-    </dl>
-    <ul class="tabs-content contained">
-      <li class="active" id="video1Tab">
+  <div class="large-12 columns">
+
+    <div class="row">
+      <div class="large-6 columns">
         <div class="flex-video">
           <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
         </div>
-        4:3 is the default size for the .flex-video element, and the assumption for .flex-video for chrome (controls) height is based on YouTube.
-      </li>
-      <li id="video2Tab">
-        <div class="flex-video widescreen">
-          <iframe width="560" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
-        </div>
-        By adding a class of .widescreen we change the ratio to 16:9, ideal for more recent video and most popular YouTube or Vimeo embeds.
-      </li>
-      <li id="video3Tab">
+
+        <p>4:3 is the default size for the .flex-video element, and the assumption for .flex-video for chrome (controls) height is based on YouTube.</p>
+      </div>
+      <div class="large-6 columns">
         <div class="flex-video widescreen vimeo">
           <iframe src="http://player.vimeo.com/video/21762736" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
-        Because Vimeo places their chrome on the player itself, adding a class of .vimeo creates a container that is sized for the video only - no extra padding for the controls.
-      </li>
+
+        <p>Because Vimeo places their chrome on the player itself, adding a class of .vimeo creates a container that is sized for the video only - no extra padding for the controls.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build flex-video containers in Foundation 4, with our predefined HTML classes or with our mixins. Building flex-video containers using our classes is simple, you'll just need to create a <code>&lt;div class="flex-video"&gt;</code> and apply the classes you want to style it appropriately.</p>
+
+    <p>The available class options:</p>
+    <ul class="disc">
+      <li><code>widescreen</code>: Will give the player a widescreen aspect ratio.</li>
+      <li><code>vimeo</code>: This will ensure that we don't add extra padding since vimeo has controls within the player itself.</li>
     </ul>
+
+<%= code_example '
+<div class="flex-video">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+</div>', :html %>
+
+    <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected flex-video from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
+
+    <hr>
+
+    <h3>Build with our Mixins</h3>
+    <p>We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_flex-video.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<%= code_example '
+@import "foundation/foundation-global", "foundation/flex-video";
+', :css %>
+
+    <p>The markup is just like we showed you above, but you can applyt the mixin to your own custom class or ID.</p>
+<%= code_example '
+<div class="your-class-name">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+</div>
+', :html %>
+
+    <h5>Quick Mixin</h5>
+    <p>You can build your flex-video containers using our global mixin by including it on your custom class or ID in your own stylesheet. The defaults can be modified using the available variables. The global mixin looks like this:</p>
+
+<%= code_example '
+/* Using the default styles */
+.your-class-name { @include flex-video; }', :css %>
+
+    <h5>Default SCSS Variables</h5>
+
+<%= code_example '
+/* We use these to control video container padding and margins */
+$flex-video-padding-top:               emCalc(25px);
+$flex-video-padding-bottom:            67.5%;
+$flex-video-margin-bottom:             emCalc(16px);
+
+/* We use this to control widescreen bottom padding */
+$flex-video-widescreen-padding-bottom: 57.25%;
+', :css %>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
   </div>
 </div>
