@@ -4,6 +4,8 @@
 /*
   TODO:
     - auto scroll not animating
+    - styles not working in ie8
+    - scrollLeft not working in ie (any)
 */
 
 ;(function ($, window, document, undefined) {
@@ -89,7 +91,7 @@
         }.bind(this));
 
       $(window).on('resize.fndtn.joyride', self.throttle(function () {
-        if ($('[data-joyride]').length > 0) {
+        if ($('[data-joyride]').length > 0 && self.settings.$next_tip) {
           if (self.is_phone()) {
             self.pos_phone();
           } else {

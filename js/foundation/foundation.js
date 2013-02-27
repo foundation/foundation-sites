@@ -241,7 +241,7 @@
       // not supported in core Zepto
       scrollLeft : function (el) {
         if (!el.length) return;
-        return ('scrollLeft' in el[0]) ? el[0].scrollLeft : el[0].scrollX;
+        return ('scrollLeft' in el[0]) ? el[0].scrollLeft : el[0].pageXOffset;
       },
 
       // test for empty object or array
