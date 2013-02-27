@@ -114,17 +114,17 @@
           $container = $slides_container.parent();
 
       $(window)
-        .on('load', function() {
+        .on('load.fndtn.orbit', function() {
           $slides_container.height('');
           $slides_container.height($slides_container.height($container.height()));
           $slides_container.trigger('orbit:ready');
         })
-        .on('resize', function() {
+        .on('resize.fndtn.orbit', function() {
           $slides_container.height('');
           $slides_container.height($slides_container.height($container.height()));
         });
 
-      $(document).on('click', '[data-orbit-link]', function(e) {
+      $(document).on('click.fndtn.orbit', '[data-orbit-link]', function(e) {
         var id = $(e.currentTarget).attr('data-orbit-link'),
             $slide = $slides_container.find('[data-orbit-slide=' + id + ']').first();
 
@@ -135,30 +135,30 @@
       });
 
       $container.siblings('.' + self.settings.bullets_container_class)
-        .on('click', '[data-orbit-slide-number]', function(e) {
+        .on('click.fndtn.orbit', '[data-orbit-slide-number]', function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
         });
 
       $container
-        .on('orbit:after-slide-change', function(e, orbit) {
+        .on('orbit:after-slide-change.fndtn.orbit', function(e, orbit) {
           var $slide_number = $container.find('.' + self.settings.slide_number_class);
           if ($slide_number.length === 1) {
             $slide_number.replaceWith(self._slide_number_html(orbit.slide_number, orbit.total_slides));
           }
         })
-        .on('orbit:next-slide click', '.' + self.settings.next_class, function(e) {
+        .on('orbit:next-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.next_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'next', function() {});
         })
-        .on('orbit:prev-slide click', '.' + self.settings.prev_class, function(e) {
+        .on('orbit:prev-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.prev_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self.goto($slides_container, 'prev', function() {});
         })
-        .on('orbit:toggle-play-pause click', '.' + self.settings.timer_container_class, function(e) {
+        .on('orbit:toggle-play-pause.fndtn.orbit click.fndtn.orbit', '.' + self.settings.timer_container_class, function(e) {
           e.preventDefault();
           var $timer = $(e.currentTarget).toggleClass(self.settings.timer_paused_class),
               $slides_container = $timer.closest('.' + self.settings.container_class)
@@ -170,7 +170,7 @@
             self._start_timer($slides_container);
           }
         })
-        .on('touchstart', function(e) {
+        .on('touchstart.fndtn.orbit', function(e) {
           var data = {
             start_page_x: e.touches[0].pageX,
             start_page_y: e.touches[0].pageY,
@@ -181,7 +181,7 @@
           $container.data('swipe-transition', data);
           e.stopPropagation();
         })
-        .on('touchmove', function(e) {
+        .on('touchmove.fndtn.orbit', function(e) {
           // Ignore pinch/zoom events
           if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
@@ -204,7 +204,7 @@
             self.goto($slides_container, direction, function() {});
           }
         })
-        .on('touchend', function(e) {
+        .on('touchend.fndtn.orbit', function(e) {
           $container.data('swipe-transition', {});
           e.stopPropagation();
         });
