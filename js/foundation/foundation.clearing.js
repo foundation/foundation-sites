@@ -97,12 +97,48 @@
     },
 
     swipe_events : function () {
+      var self = this;
+
       $(this.scope)
-        .on('swipeLeft', '.clearing-container .visible-img',
-          function (e) { this.nav(e, 'next') }.bind(this))
-        .on('swipeRight', '.clearing-container .visible-img',
-          function (e) { this.nav(e, 'prev') }.bind(this));
-      return this;
+        .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
+          var data = {
+                start_page_x: e.touches[0].pageX,
+                start_page_y: e.touches[0].pageY,
+                start_time: (new Date()).getTime(),
+                delta_x: 0,
+                is_scrolling: undefined
+              };
+
+          $(this).data('swipe-transition', data);
+          e.stopPropagation();
+        })
+        .on('touchmove.fndtn.clearing', '.visible-img', function(e) {
+          // Ignore pinch/zoom events
+          if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+
+          var data = $(this).data('swipe-transition');
+
+          if (typeof data === 'undefined') {
+            data = {};
+          }
+
+          data.delta_x = e.touches[0].pageX - data.start_page_x;
+
+          if ( typeof data.is_scrolling === 'undefined') {
+            data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
+          }
+
+          if (!data.is_scrolling && !data.active) {
+            e.preventDefault();
+            var direction = (data.delta_x < 0) ? 'next' : 'prev';
+            data.active = true;
+            self.nav(e, direction);
+          }
+        })
+        .on('touchend.fndtn.clearing', '.visible-img', function(e) {
+          $(this).data('swipe-transition', {});
+          e.stopPropagation();
+        });
     },
 
     assemble : function ($li) {
