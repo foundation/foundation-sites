@@ -3,7 +3,6 @@
 
 /*
   TODO:
-    - auto scroll not animating
     - styles not working in ie8
 */
 
@@ -18,7 +17,7 @@
     defaults : {
       tipLocation          : 'bottom',  // 'top' or 'bottom' in relation to parent
       nubPosition          : 'auto',    // override on a per tooltip bases
-      scrollSpeed          : 3000,       // Page scrolling speed in milliseconds
+      scrollSpeed          : 300,       // Page scrolling speed in milliseconds
       timer                : 0,         // 0 = no timer , all other numbers = timer in milliseconds
       startTimerOnClick    : true,      // true or false - true requires clicking the first button start the timer
       startOffset          : 0,         // the index of the tooltip you want to start on (index of the li)
@@ -364,8 +363,9 @@
 
       window_half = $(window).height() / 2;
       tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight());
-
-      this.scrollTo($('html, body'), tipOffset, this.settings.scrollSpeed);
+      if (tipOffset > 0) {
+        this.scrollTo($('html, body'), tipOffset, this.settings.scrollSpeed);
+      }
     },
 
     paused : function () {

@@ -225,6 +225,7 @@
           $container = $slides_container.parent();
 
       var callback = function() {
+        console.log($(this).data('is-original'));
         self._reset_timer($slides_container, false);
         self.goto($slides_container, 'next', function() {
           self._start_timer($slides_container);
@@ -236,7 +237,7 @@
           progress_pct = ($progress.width() / $timer.width()),
           delay = self.settings.timer_speed - (progress_pct * self.settings.timer_speed);
 
-      $progress.animate({'width': '100%'}, delay, 'linear', callback);
+      $progress.animate({'width': '100%'}, delay, 'linear', callback).data('is-original', 'beans?');
       $slides_container.trigger('orbit:timer-started');
     },
 
@@ -247,6 +248,7 @@
           $progress = $timer.find('.' + self.settings.timer_progress_class),
           progress_pct = $progress.width() / $timer.width()
       self._rebuild_timer($container, progress_pct * 100 + '%');
+      // $progress.stop();
       $slides_container.trigger('orbit:timer-stopped');
       $timer = $container.find('.' + self.settings.timer_container_class);
       $timer.addClass(self.settings.timer_paused_class);
@@ -274,7 +276,9 @@
           $new_timer_progress = $new_timer.find('.' + self.settings.timer_progress_class);
 
       $timer.remove();
+      $new_timer.data('is-original', 'ths is the clone');
       $container.append($new_timer);
+
       $new_timer_progress.css('width', width_pct);
     },
 
