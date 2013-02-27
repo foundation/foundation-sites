@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">We set out in Foundation 3 to create an easy to handle, powerful, and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
+    <h4 class="subheader">Orbit is an easy to use, powerful image slider built to be responsive and swippable on touch-enabled devices!</h4>
 
     <ul id="featured1" data-orbit>
       <li data-orbit-slide="headline-1">
@@ -27,11 +27,87 @@
     </ul>
 
     <hr>
+
   </div>
 </div>
 
 <div class="row">
   <div class="large-12 columns">
+
+    <h3>Build Orbit With HTML</h3>
+    <p>With our HTML classes and structure, building Orbit is pretty simple, you'll just need to write the markup, find some images or text, fire up the Javascript and you'll be ready to go. On touch-enabled devices, Orbit has swipe functionality that makes it easy to advance slides. Once you go to a screen without touch, you'll see bullet navigation and arrow navigation if you have the options setup in your JS. Here's markup structure for Orbit:</p>
+
+<%= code_example '
+<!-- Basic orbit markup -->
+<ul data-orbit>
+  <li>
+    <img src="../img/demos/demo1.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo2.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo3.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+</ul>', :html %>
+
+    <h5>We'll Automatically Add HTML</h5>
+    <p>To keep the markup you write really clean, we've let JS add what's needed for the navigation, bullets and other parts of the plugin. Once the page has been loaded, your markup will look different. Below is an example of that markup so you know what classes to target for styling.</p>
+
+<%= code_example '
+<!-- Orbit Container -->
+<div class="orbit-container">
+  <ul data-orbit="" class="orbit-slides-container">
+    <li>
+      <img src="../img/demos/demo3.png">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li class="active">
+      <img src="../img/demos/demo1.png">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li>
+      <img src="../img/demos/demo2.png">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li>
+      <img src="../img/demos/demo3.png">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li>
+      <img src="../img/demos/demo1.png">
+      <div class="orbit-caption">...</div>
+    </li>
+  </ul>
+
+  <!-- Prev/Next Arrows -->
+  <a href="#" class="orbit-prev">Prev <span></span></a>
+  <a href="#" class="orbit-next">Next <span></span></a>
+
+  <!-- Slide Numbers -->
+  <div class="orbit-slide-number">
+    <span>1</span> of <span>3</span>
+  </div>
+
+  <!-- Timer and Play/Pause Button -->
+  <div class="orbit-timer">
+    <span></span>
+    <div class="orbit-progress" style="width: 100%; -webkit-transition: width 10s linear;"></div>
+  </div>
+</div>
+
+<!-- Orbit Bullet Slide Indicator -->
+<ol class="orbit-bullets">
+  <li data-orbit-slide-number="1"></li>
+  <li data-orbit-slide-number="2" class="active"></li>
+  <li data-orbit-slide-number="3"></li>
+</ol>
+', :html %>
+
+    <hr>
 
     <h3>Deep Linking Support</h3>
     <p>Click on the links below to automatically advance the slider.</p>
@@ -62,7 +138,55 @@
 
     <hr>
 
-    <h2>More text</h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+    <h3>Available SCSS Variables</h3>
+    <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things. Here's a list of the variables:</p>
+
+<%= code_example '
+/* We use these to control the caption styles */
+$orbit-caption-bg-old-browser: #000;
+$orbit-caption-bg-old: rgb(0,0,0);
+$orbit-caption-bg: rgba(0,0,0,0.6);
+$orbit-caption-font-color: #fff;
+
+/* We use these to control the left/right nav styles */
+$orbit-nav-bg-old: rgb(0,0,0);
+$orbit-nav-bg: rgba(0,0,0,0.6);
+
+/* We use these to control the timer styles */
+$orbit-timer-bg-old: rgb(0,0,0);
+$orbit-timer-bg: rgba(0,0,0,0.6);
+
+/* We use these to control the bullet nav styles */
+$orbit-bullet-nav-color: #999;
+$orbit-bullet-nav-color-active: #222;
+
+/* We use thes to controls the style of slide numbers */
+$orbit-slide-number-bg: rgb(0,0,0);
+$orbit-slide-number-font-color: #fff;
+$orbit-slide-number-padding: emCalc(5px);
+', :html %>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>You'll need to include <code>foundation.orbit.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+<%= code_example '
+<script src="path/to/zepto.js"></script>
+<script src="path/to/foundation.js"></script>
+<script src="path/to/foundation.orbit.js"></script>
+<script type="text/javascript">
+  $(document).foundation();
+</script>
+', :html %>
+
+    <p>Then, you'll need to add a data-orbit to make the JS work properly on that element. That looks like:</p>
+
+<%= code_example '
+<ul data-orbit>
+  ...
+</ul>
+', :html %>
+
   </div>
 </div>
