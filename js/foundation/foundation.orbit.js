@@ -23,7 +23,7 @@
       bullets_active_class: 'active',
       slide_number_class: 'orbit-slide-number',
       caption_class: 'orbit-caption',
-      active_class: 'active',
+      active_slide_class: 'active',
       orbit_transition_class: 'orbit-transitioning'
     },
 
@@ -102,7 +102,7 @@
       $slides_container.prepend($slides.last().clone());
       // Make the first "real" slide active
       $slides_container.css('marginLeft', '-100%');
-      $slides.first().addClass(self.settings.active_class);
+      $slides.first().addClass(self.settings.active_slide_class);
 
       self._init_events($slides_container);
       self._init_dimensions($slides_container);
@@ -290,7 +290,7 @@
       var self = this,
           $container = $slides_container.parent(),
           $slides = $slides_container.children(),
-          $active_slide = $slides_container.find('.' + self.settings.active_class),
+          $active_slide = $slides_container.find('.' + self.settings.active_slide_class),
           active_index = $active_slide.index();
 
       if ($container.hasClass(self.settings.orbit_transition_class)) {
@@ -321,8 +321,8 @@
       }
       // Start transition, make next slide active
       $container.addClass(self.settings.orbit_transition_class);
-      $active_slide.removeClass(self.settings.active_class);
-      $($slides[active_index]).addClass(self.settings.active_class);
+      $active_slide.removeClass(self.settings.active_slide_class);
+      $($slides[active_index]).addClass(self.settings.active_slide_class);
       // Make next bullet active
       var $bullets = $container.siblings('.' + self.settings.bullets_container_class);
       if ($bullets.length === 1) {
