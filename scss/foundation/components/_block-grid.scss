@@ -4,6 +4,7 @@
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12 !default;
+$block-grid-default-spacing: 10px !default;
 
 
 //
@@ -12,7 +13,7 @@ $block-grid-elements: 12 !default;
 
 // We use this mixin to create different block-grids. You can apply per-row and spacing options.
 // Setting $base-style to false will ommit default styles.
-@mixin block-grid($per-row:false, $spacing:10px, $base-style:true) {
+@mixin block-grid($per-row:false, $spacing:$block-grid-default-spacing, $base-style:true) {
 
   @if $base-style {
     display: block;
@@ -45,7 +46,7 @@ $block-grid-elements: 12 !default;
 
   @for $i from 2 through $block-grid-elements {
     .small-block-grid-#{($i)} {
-      @include block-grid($i,10px,false);
+      @include block-grid($i,$block-grid-default-spacing,false);
     }
   }
 }
@@ -56,7 +57,7 @@ $block-grid-elements: 12 !default;
     .large-block-grid-#{($i)} {
       @if      $i == 2 { @include block-grid(2,15px,false); }
       @else if $i == 3 { @include block-grid(3,12px,false); }
-      @else { @include block-grid($i,10px,false); }
+      @else { @include block-grid($i,$block-grid-default-spacing,false); }
     }
   }
 }
