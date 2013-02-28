@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">We set out in Foundation, to create an easy to handle, powerful, and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
+    <h4 class="subheader">With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
 
     <form>
       <fieldset>
@@ -56,16 +56,16 @@
   <div class="large-12 columns">
 
     <h3>Building Forms with HTML</h3>
-    <p>Okay, so you have a client that needs a form with an unhuman layout. "You can't back down because of some legal reason", he says. What are you to do? Foundation has you covered with versitile forms that looks great out of the box and are easily customizable as you need.</p>
+    <p>OK, so you have a client that needs a form with an unhuman layout. "You can't back down because of some legal reason," he says. What are you to do? Foundation has you covered with versatile forms that looks great out of the box and are easily customizable as you need.</p>
 
-    <p>Form elements in Foundation are styled based on their type attribute rather than a classes. Inputs in Foundation have another major advantage, they are full width by default. That means that inputs will run as wide as the column that contains them. However, you have two options which make these forms extremely versatile:</p>
+    <p>Form elements in Foundation are styled based on their type attribute rather than a class. Inputs in Foundation have another major advantage &mdash; they are full width by default. That means that inputs will run as wide as the column that contains them. However, you have two options which make these forms extremely versatile:</p>
 
     <ul class="disc">
       <li>You can size inputs using column sizes, like <code>.large-6</code>, <code>.small-6</code>.</li>
       <li>You can create row elements inside your form and use columns for the form, including inputs, labels and more. Rows inside a form inherit some special padding to even up input spacing.</li>
     </ul>
 
-    <p>This ultimately adds a bit of code to your forms, but its worth the trade off! Here's what the example above looks like in HTML:</p>
+    <p>This ultimately adds a bit of code to your forms, but it's worth the trade off! Here's what the example above looks like in HTML:</p>
 
 <%= code_example '
 <form>
@@ -185,7 +185,7 @@
     <hr>
 
     <h4>Defining a Fieldset</h4>
-    <p>We don't see them too much, but one of the useful form elements included with Foundation is <code>&lt;fieldset&gt;</code>. This used as a wrapper right inside the form element. Right after you define a fieldset, you can include a legend title by using <code>&lt;legend&gt;</code>. Here's some HTML to help make copy pasta.</p>
+    <p>We don't see them too much, but one of the useful form elements included with Foundation is <code>&lt;fieldset&gt;</code>. This is used as a wrapper right inside the form element. Right after you define a fieldset, you can include a legend title by using <code>&lt;legend&gt;</code>. Here's some HTML to help make copy paste.</p>
 
 <%= code_example '
 <form>
@@ -278,7 +278,7 @@
       </div>
     </form>
 
-    <p>You'll notice that on the last postfix element, we've included the class of <code>radius</code>. This adds the border radius on the appropriate edge depending on whehter its a prefix or a postfix element. You can even include buttons with these styles, just apply the <code>.button</code> as well as the pre/postfix class.</p>
+    <p>You'll notice that on the last postfix element, we've included the class of <code>radius</code>. This adds the border radius on the appropriate edge depending on whether it's a prefix or a postfix element. You can even include buttons with these styles, just apply the <code>.button</code> as well as the pre/postfix class.</p>
 
     <hr>
 
@@ -325,7 +325,7 @@
     <hr>
 
     <h3>Build with Mixins</h3>
-    <p>A lot of elements in Foundation be created using Scss mixins so that you can include your own classes and just enough style as needed for the job at hand. To use these mixins, you'll need to have the extention installed or grab <a href="#">_foundation-global.scss</a> and <a href="#">_forms.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>A lot of elements in Foundation can be created using SCSS mixins so that you can include your own classes and just enough style as needed for the job at hand. To use these mixins, you'll need to have the extension installed or grab <a href="#">_foundation-global.scss</a> and <a href="#">_forms.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/forms";', :css %>
@@ -404,7 +404,7 @@ $is-button: false
       </div>
     </form>
 
-    <h5>Default Scss Variables</h5>
+    <h5>Default SCSS Variables</h5>
 <%= code_example '
 /* We use this to set the base for lots of form spacing and positioning styles */
 $form-spacing:                       emCalc(16px);

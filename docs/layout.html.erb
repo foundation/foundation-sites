@@ -10,6 +10,36 @@
     <script src="<%= asset_path %>/vendor/custom.modernizr.js"></script>
   </head>
   <body>
+
+    <nav class="top-bar">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="#">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="#">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Docs</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="#" class="button">Get Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
     <%= yield %>
     <script>
       document.write('<script src="<%= asset_path %>/vendor/'

@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Side nav, like you'll see on the Foundation main site, is useful for sections either of a site or of the page.</h4>
+    <h4 class="subheader">Side name, like you'll see on Foundation's main site, is useful for sections of either a site or a page.</h4>
   </div>
 </div>
 
@@ -25,7 +25,7 @@
     <hr>
 
     <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build side nav in Foundation 4, with our predefined HTML classes or with our mixins. Building side nav using our predefined classes is simple, you'll just need to write a <code>&lt;ul class="side-nav"&gt;</code> and fill it full of list items. The width of the side nav is controlled by the columns you put it inside.</p>
+    <p>There are two ways to build a side nav in Foundation 4: either with our predefined HTML classes or our mixins. Building side nav using our predefined classes is simple, you'll just need to write a <code>&lt;ul class="side-nav"&gt;</code> and fill it full of list items. The width of the side nav is controlled by the columns you put it inside.</p>
 
     <p>The list item options:</p>
     <ul class="disc">
@@ -49,7 +49,7 @@
     <hr>
 
     <h3>Build with our Mixins</h3>
-    <p>We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_side-nav.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_side-nav.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/side-nav";
@@ -62,7 +62,7 @@
 /* Using the default styles */
 .your-class-name { @include side-nav; }', :css %>
 
-<p>There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size, and font color.</p>
+<p>There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color.</p>
 
 <%= code_example '
 /* Using the available options */
