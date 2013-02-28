@@ -4,7 +4,7 @@
     <% @page_title = "Tooltips" %>
     <div class="row">
       <div class="large-12 columns">
-        <h1><%= @page_title %></h1>
+        <h2><%= @page_title %></h2>
         <h4 class="subheader">Tooltips are a quick way to provide <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.</h4>
 
         <hr>
@@ -21,9 +21,9 @@
 
         <p>The tooltips can be positioned on the <span data-tooltip class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span data-tooltip class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span data-tooltip="left" class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span data-tooltip="right" class="has-tip tip-right" data-width="120" title="I'm on the right!">"tip-right"</span> of the target element by adding the appropriate class to them. You can even add your own custom class to style each tip differently. On a small device, the tooltips are full width and bottom aligned.</p>
 
-    <%= code_example '
-    <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span>
-    ', :html %>
+<%= code_example '
+<span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span>
+', :html %>
 
         <p>Available class options:</p>
         <ul class="disc">
@@ -38,20 +38,29 @@
         <h3>Using the Javascript</h3>
         <p>You'll need to include <code>foundation.tooltips.js</code> to make sure everything works properly. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
 
-    <%= code_example '
-    <script src="path/to/zepto.js"></script>
-    <script src="path/to/foundation.js"></script>
-    <script src="path/to/foundation.tooltips.js"></script>
-    <script type="text/javascript">
-      $(document).foundation();
-    </script>
-    ', :html %>
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
 
-    <%= code_example '
-    <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
-    ', :html %>
+<%= code_example '
+<span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
+', :html %>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Tooltip options can only be passed in during initialization at this time.</p>
+
+    <%= code_example "
+{
+  selector : '.has-tip',
+  additionalInheritableClasses : [],
+  tooltipClass : '.tooltip',
+  tipTemplate : function (selector, content) {
+    return '<span data-selector=\"' + selector + '\" class=\"'
+      + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
+      + '\">' + content + '<span class=\"nub\"></span></span>';
+  }
+}", :json %>
 
       </div>
     </div>
