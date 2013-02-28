@@ -53,8 +53,8 @@
       this.fixed_magellan
         .on('update-position.fndtn.magellan', function(){
           var $el = $(this);
-          $el.data("magellan-fixed-position","");
-          $el.data("magellan-top-offset", "");
+          // $el.data("magellan-fixed-position","");
+          //$el.data("magellan-top-offset", "");
         })
         .trigger('update-position');
 
@@ -67,8 +67,11 @@
           var windowScrollTop = $(window).scrollTop();
           self.fixed_magellan.each(function() {
             var $expedition = $(this);
-            if ($expedition.data("magellan-top-offset") === "") {
-              $expedition.data("magellan-top-offset", $expedition.offset().top);
+            if (typeof $expedition.data('magellan-top-offset') === 'undefined') {
+              $expedition.data('magellan-top-offset', $expedition.offset().top);
+            }
+            if (typeof $expedition.data('magellan-fixed-position') === 'undefined') {
+              $expedition.data('magellan-fixed-position', false)
             }
             var fixed_position = (windowScrollTop + self.settings.threshold) > $expedition.data("magellan-top-offset");
             var attr = $expedition.attr('data-magellan-top-offset');
