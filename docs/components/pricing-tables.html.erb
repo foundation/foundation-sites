@@ -40,16 +40,16 @@
           <li><code>&lt;li class="cta-button"&gt;</code>: To add a button inside a list item, use this.</li>
         </ul>
 
-    <%= code_example '
-    <ul class="pricing-table">
-      <li class="title">Standard</li>
-      <li class="price">$99.99</li>
-      <li class="description">An awesome description</li>
-      <li class="bullet-item">1 Database</li>
-      <li class="bullet-item">5GB Storage</li>
-      <li class="bullet-item">20 Users</li>
-      <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
-    </ul>', :html %>
+<%= code_example '
+<ul class="pricing-table">
+  <li class="title">Standard</li>
+  <li class="price">$99.99</li>
+  <li class="description">An awesome description</li>
+  <li class="bullet-item">1 Database</li>
+  <li class="bullet-item">5GB Storage</li>
+  <li class="bullet-item">20 Users</li>
+  <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+</ul>', :html %>
 
         <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected pricing-tables from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
@@ -58,32 +58,32 @@
         <h3>Build with a Mixin</h3>
         <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_pricing-tables.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
-    <%= code_example '
-    @import "foundation/foundation-global", "foundation/pricing-tables";
-    ', :css %>
+<%= code_example '
+@import "foundation/foundation-global", "foundation/pricing-tables";
+', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like with the <code>&lt;ul&gt;</code> and the list items inside it.</p>
 
-    <%= code_example '
-    <ul class="your-pricing-class">
-      <li class="your-title-class">Title</li>
-      <li class="your-price-class">$$$</li>
-      <li class="your-desc-class">...</li>
-      <li class="your-bullet-class">Bullet</li>
-      <li class="your-cta-class"><a class="your-button-class" href="#">Button</a></li>
-    </ul>', :html %>
+<%= code_example '
+<ul class="your-pricing-class">
+  <li class="your-title-class">Title</li>
+  <li class="your-price-class">$$$</li>
+  <li class="your-desc-class">...</li>
+  <li class="your-bullet-class">Bullet</li>
+  <li class="your-cta-class"><a class="your-button-class" href="#">Button</a></li>
+</ul>', :html %>
 
         <h5>The Container Mixin</h5>
         <p>Pricing tables are built up from an unordered list. We give this container some necessary styles by using our container mixin. There are no customizable options within the mixin, but everything can be changed using the SCSS variables below.</p>
 
-    <%= code_example '
-    .your-pricing-class  { @include pricing-table-container;
-      .your-title-class  { @include pricing-table-title; }
-      .your-price-class  { @include pricing-table-price; }
-      .your-desc-class   { @include pricing-description-title; }
-      .your-bullet-class { @include pricing-table-bullet; }
-      .your-cta-class    { @include pricing-table-cta; }
-    }', :css %>
+<%= code_example '
+.your-pricing-class  { @include pricing-table-container;
+  .your-title-class  { @include pricing-table-title; }
+  .your-price-class  { @include pricing-table-price; }
+  .your-desc-class   { @include pricing-description-title; }
+  .your-bullet-class { @include pricing-table-bullet; }
+  .your-cta-class    { @include pricing-table-cta; }
+}', :css %>
 
         <ul class="pricing-table">
           <li class="title">Standard</li>
@@ -97,51 +97,51 @@
 
         <h5>Default SCSS Variables</h5>
 
-    <%= code_example '
-    /* We use this to control the border color */
-    $price-table-border:        solid 1px #ddd;
+<%= code_example '
+/* We use this to control the border color */
+$price-table-border:        solid 1px #ddd;
 
-    /* We use this to control the bottom margin of the pricing table */
-    $price-table-margin-bottom: emCalc(20px);
+/* We use this to control the bottom margin of the pricing table */
+$price-table-margin-bottom: emCalc(20px);
 
-    /* We use these to control the title styles */
-    $price-title-bg:            #ddd;
-    $price-title-padding:       emCalc(15px) emCalc(20px);
-    $price-title-align:         center;
-    $price-title-color:         #333;
-    $price-title-weight:        bold;
-    $price-title-size:          emCalc(16px);
+/* We use these to control the title styles */
+$price-title-bg:            #ddd;
+$price-title-padding:       emCalc(15px) emCalc(20px);
+$price-title-align:         center;
+$price-title-color:         #333;
+$price-title-weight:        bold;
+$price-title-size:          emCalc(16px);
 
-    /* We use these to control the price styles */
-    $price-money-bg:            #eee;
-    $price-money-padding:       emCalc(15px) emCalc(20px);
-    $price-money-align:         center;
-    $price-money-color:         #333;
-    $price-money-weight:        normal;
-    $price-money-size:          emCalc(20px);
+/* We use these to control the price styles */
+$price-money-bg:            #eee;
+$price-money-padding:       emCalc(15px) emCalc(20px);
+$price-money-align:         center;
+$price-money-color:         #333;
+$price-money-weight:        normal;
+$price-money-size:          emCalc(20px);
 
-    /* We use these to control the description styles */
-    $price-bg:                  #fff;
-    $price-desc-color:          #777;
-    $price-desc-padding:        emCalc(15px);
-    $price-desc-align:          center;
-    $price-desc-font-size:      emCalc(12px);
-    $price-desc-weight:         normal;
-    $price-desc-line-height:    1.4;
-    $price-desc-bottom-border:  dotted 1px #ddd;
+/* We use these to control the description styles */
+$price-bg:                  #fff;
+$price-desc-color:          #777;
+$price-desc-padding:        emCalc(15px);
+$price-desc-align:          center;
+$price-desc-font-size:      emCalc(12px);
+$price-desc-weight:         normal;
+$price-desc-line-height:    1.4;
+$price-desc-bottom-border:  dotted 1px #ddd;
 
-    /* We use these to control the list item styles */
-    $price-item-color:          #333;
-    $price-item-padding:        emCalc(15px);
-    $price-item-align:          center;
-    $price-item-font-size:      emCalc(14px);
-    $price-item-weight:         normal;
-    $price-item-bottom-border:  dotted 1px #ddd;
+/* We use these to control the list item styles */
+$price-item-color:          #333;
+$price-item-padding:        emCalc(15px);
+$price-item-align:          center;
+$price-item-font-size:      emCalc(14px);
+$price-item-weight:         normal;
+$price-item-bottom-border:  dotted 1px #ddd;
 
-    /* We use these to control the CTA area styles */
-    $price-cta-bg:              #f5f5f5;
-    $price-cta-align:           center;
-    $price-cta-padding:         emCalc(20px) emCalc(20px) 0;', :css %>
+/* We use these to control the CTA area styles */
+$price-cta-bg:              #f5f5f5;
+$price-cta-align:           center;
+$price-cta-padding:         emCalc(20px) emCalc(20px) 0;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 

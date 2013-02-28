@@ -35,14 +35,14 @@
           <li><code>divider</code> Creates a divider between list items.</li>
         </ul>
 
-    <%= code_example '
-    <ul class="side-nav">
-      <li class="active"><a href="#">Link 1</a></li>
-      <li><a href="#">Link 2</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Link 3</a></li>
-      <li><a href="#">Link 4</a></li>
-    </ul>', :html %>
+<%= code_example '
+<ul class="side-nav">
+  <li class="active"><a href="#">Link 1</a></li>
+  <li><a href="#">Link 2</a></li>
+  <li class="divider"></li>
+  <li><a href="#">Link 3</a></li>
+  <li><a href="#">Link 4</a></li>
+</ul>', :html %>
 
 
 
@@ -53,32 +53,32 @@
         <h3>Build with our Mixins</h3>
         <p>We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_side-nav.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
-    <%= code_example '
-    @import "foundation/foundation-global", "foundation/side-nav";
-    ', :css %>
+<%= code_example '
+@import "foundation/foundation-global", "foundation/side-nav";
+', :css %>
 
         <h5>Quick Mixin</h5>
         <p>You can build your side nav using our global mixin by including it on a custom class or ID in your own stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. You'll also have the ability to change the font-size and padding. The rest of the defaults can be modified using the available variables. The global mixin looks like this:</p>
 
-    <%= code_example '
-    /* Using the default styles */
-    .your-class-name { @include side-nav; }', :css %>
+<%= code_example '
+/* Using the default styles */
+.your-class-name { @include side-nav; }', :css %>
 
     <p>There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color.</p>
 
-    <%= code_example '
-    /* Using the available options */
-    .your-class-name { @include side-nav($divider-color, $font-size, $link-color); }
+<%= code_example '
+/* Using the available options */
+.your-class-name { @include side-nav($divider-color, $font-size, $link-color); }
 
-    /* Control the color of the divider between links */
-    $divider-color: $side-nav-divider-color
+/* Control the color of the divider between links */
+$divider-color: $side-nav-divider-color
 
-    /* Control your font-size per label */
-    $font-size: $side-nav-font-size
+/* Control your font-size per label */
+$font-size: $side-nav-font-size
 
-    /* Change the background color for your labels */
-    $link-color: $side-nav-link-color
-    ', :css %>
+/* Change the background color for your labels */
+$link-color: $side-nav-link-color
+', :css %>
 
         <ul class="side-nav-custom large-3">
           <li class="active"><a href="#">Link 1</a></li>
@@ -91,25 +91,25 @@
 
         <h5>Default SCSS Variables</h5>
 
-    <%= code_example '
-    /* We use this to control padding. */
-    $side-nav-padding:           emCalc(14px) 0;
+<%= code_example '
+/* We use this to control padding. */
+$side-nav-padding:           emCalc(14px) 0;
 
-    /* We use these to control list styles. */
-    $side-nav-list-type:         none;
-    $side-nav-list-position:     inside;
-    $side-nav-list-margin:       0 0 emCalc(7px) 0;
+/* We use these to control list styles. */
+$side-nav-list-type:         none;
+$side-nav-list-position:     inside;
+$side-nav-list-margin:       0 0 emCalc(7px) 0;
 
-    /* We use these to control link styles. */
-    $side-nav-link-color: $primary-color;
-    $side-nav-link-color-active: lighten(#000, 30%);
-    $side-nav-font-size:         emCalc(14px);
-    $side-nav-font-weight:       bold;
+/* We use these to control link styles. */
+$side-nav-link-color: $primary-color;
+$side-nav-link-color-active: lighten(#000, 30%);
+$side-nav-font-size:         emCalc(14px);
+$side-nav-font-weight:       bold;
 
-    /* We use these to control border styles */
-    $side-nav-divider-size:      1px;
-    $side-nav-divider-style:     solid;
-    $side-nav-divider-color:     darken(#fff, 10%);', :css %>
+/* We use these to control border styles */
+$side-nav-divider-size:      1px;
+$side-nav-divider-style:     solid;
+$side-nav-divider-color:     darken(#fff, 10%);', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 

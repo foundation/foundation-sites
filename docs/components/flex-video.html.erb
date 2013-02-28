@@ -40,10 +40,10 @@
           <li><code>vimeo</code>: This will ensure that we don't add extra padding since Vimeo has controls within the player, itself.</li>
         </ul>
 
-    <%= code_example '
-    <div class="flex-video">
-      <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
-    </div>', :html %>
+<%= code_example '
+<div class="flex-video">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+</div>', :html %>
 
         <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected flex-video from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
@@ -52,35 +52,35 @@
         <h3>Build with our Mixins</h3>
         <p>We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_flex-video.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
-    <%= code_example '
-    @import "foundation/foundation-global", "foundation/flex-video";
-    ', :css %>
+<%= code_example '
+@import "foundation/foundation-global", "foundation/flex-video";
+', :css %>
 
         <p>The markup is just like we showed you above, but you can apply the mixin to your own custom class or ID.</p>
-    <%= code_example '
-    <div class="your-class-name">
-      <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
-    </div>
-    ', :html %>
+<%= code_example '
+<div class="your-class-name">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+</div>
+', :html %>
 
         <h5>Quick Mixin</h5>
         <p>You can build your flex-video containers using our global mixin by including it on your custom class or ID in your own stylesheet. The defaults can be modified using the available variables. The global mixin looks like this:</p>
 
-    <%= code_example '
-    /* Using the default styles */
-    .your-class-name { @include flex-video; }', :css %>
+<%= code_example '
+/* Using the default styles */
+.your-class-name { @include flex-video; }', :css %>
 
         <h5>Default SCSS Variables</h5>
 
-    <%= code_example '
-    /* We use these to control video container padding and margins */
-    $flex-video-padding-top:               emCalc(25px);
-    $flex-video-padding-bottom:            67.5%;
-    $flex-video-margin-bottom:             emCalc(16px);
+<%= code_example '
+/* We use these to control video container padding and margins */
+$flex-video-padding-top:               emCalc(25px);
+$flex-video-padding-bottom:            67.5%;
+$flex-video-margin-bottom:             emCalc(16px);
 
-    /* We use this to control widescreen bottom padding */
-    $flex-video-widescreen-padding-bottom: 57.25%;
-    ', :css %>
+/* We use this to control widescreen bottom padding */
+$flex-video-widescreen-padding-bottom: 57.25%;
+', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 

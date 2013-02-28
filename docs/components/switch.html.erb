@@ -58,28 +58,28 @@
         <h3>Build With Predefined HTML Classes</h3>
         <p>There are two ways to build switches in Foundation 4: with our predefined HTML classes or with our mixins. Building switches using our predefined classes is simple, you'll just need a <code>div.switch</code> wrapped around a specific input/label markup. From there, you can update the styles as you need to. The switches width is 100% of the container you put it in or you can use our grid classes, <code>.small-#</code> or <code>.large-#</code>, directly on the switch.</p>
 
-    <%= code_example '
-    <!-- Default switch -->
-    <div class="switch">
-      <input id="x" name="switch-x" type="radio" checked>
-      <label for="x" onclick="">Off</label>
+<%= code_example '
+<!-- Default switch -->
+<div class="switch">
+  <input id="x" name="switch-x" type="radio" checked>
+  <label for="x" onclick="">Off</label>
 
-      <input id="x1" name="switch-x" type="radio">
-      <label for="x1" onclick="">On</label>
+  <input id="x1" name="switch-x" type="radio">
+  <label for="x1" onclick="">On</label>
 
-      <span></span>
-    </div>
+  <span></span>
+</div>
 
-    <!-- Using class options -->
-    <div class="switch large round">
-      <input id="z" name="switch-z" type="radio" checked>
-      <label for="z" onclick="">Off</label>
+<!-- Using class options -->
+<div class="switch large round">
+  <input id="z" name="switch-z" type="radio" checked>
+  <label for="z" onclick="">Off</label>
 
-      <input id="z1" name="switch-z" type="radio">
-      <label for="z1" onclick="">On</label>
+  <input id="z1" name="switch-z" type="radio">
+  <label for="z1" onclick="">On</label>
 
-      <span></span>
-    </div>', :html %>
+  <span></span>
+</div>', :html %>
 
         <p>The class options:</p>
         <ul class="disc">
@@ -97,30 +97,30 @@
         <h3>Build with our Mixins</h3>
         <p>We've included SCSS mixins used to style switches. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_switch.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
-    <%= code_example '
-    @import "foundation/foundation-global", "foundation/switch";
-    ', :css %>
+<%= code_example '
+@import "foundation/foundation-global", "foundation/switch";
+', :css %>
 
         <p>The markup is pretty simple, you'll only need a single class or ID on the container to apply the mixin.</p>
 
-    <%= code_example '
-    <div class="your-class-name">
-      <input id="z" name="switch-z" type="radio" checked>
-      <label for="z" onclick="">Off</label>
+<%= code_example '
+<div class="your-class-name">
+  <input id="z" name="switch-z" type="radio" checked>
+  <label for="z" onclick="">Off</label>
 
-      <input id="z1" name="switch-z" type="radio">
-      <label for="z1" onclick="">On</label>
+  <input id="z1" name="switch-z" type="radio">
+  <label for="z1" onclick="">On</label>
 
-      <span></span>
-    </div>
-    ', :html %>
+  <span></span>
+</div>
+', :html %>
 
         <h5>Quick Mixin</h5>
         <p>You can build your labels using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options for changing the key styles, the rest of the defaults can be modified using the available variables. The global mixin looks like this:</p>
 
-    <%= code_example '
-    /* Using the default styles */
-    .your-class-name { @include switch; }', :css %>
+<%= code_example '
+/* Using the default styles */
+.your-class-name { @include switch; }', :css %>
 
         <div class="switch">
           <input id="y" name="switch-y" type="radio" checked>
@@ -134,42 +134,42 @@
 
         <p>There are <strong>ten options</strong> you can customize on the fly when writing this mixin. These controls things like: padding, text size, color and radius. Setting any of these options to false will negate those styles.</p>
 
-    <%= code_example '
-    /* Using the available options */
-    .your-class-name {
-      @include switch($transition-speed, $transition-ease, $height, $font-size, $line-height, $paddle-bg, $positive-color, $negative-color, $radius, $base-style);
-    }
+<%= code_example '
+/* Using the available options */
+.your-class-name {
+  @include switch($transition-speed, $transition-ease, $height, $font-size, $line-height, $paddle-bg, $positive-color, $negative-color, $radius, $base-style);
+}
 
-    /* This sets the speed at which the switch toggles */
-    $transition-speed: $switch-paddle-transition-speed
+/* This sets the speed at which the switch toggles */
+$transition-speed: $switch-paddle-transition-speed
 
-    /* This sets the ease of the switch transition */
-    $transition-ease: $switch-paddle-transition-ease
+/* This sets the ease of the switch transition */
+$transition-ease: $switch-paddle-transition-ease
 
-    /* This controls the overall height of the switch */
-    $height: $switch-height-med
+/* This controls the overall height of the switch */
+$height: $switch-height-med
 
-    /* You can set a different font-size for you switch */
-    $font-size: $switch-font-size-med
+/* You can set a different font-size for you switch */
+$font-size: $switch-font-size-med
 
-    /* You can set a different line-height too */
-    $line-height: 2.3em
+/* You can set a different line-height too */
+$line-height: 2.3em
 
-    /* This controls the background of the paddle */
-    $paddle-bg: $switch-paddle-bg
+/* This controls the background of the paddle */
+$paddle-bg: $switch-paddle-bg
 
-    /* Set the box-shadow color for the right side of the switch */
-    $positive-color: $switch-positive-color
+/* Set the box-shadow color for the right side of the switch */
+$positive-color: $switch-positive-color
 
-    /* Set the box-shadow color for the left side of the switch */
-    $negative-color: $switch-negative-color
+/* Set the box-shadow color for the left side of the switch */
+$negative-color: $switch-negative-color
 
-    /* Set this to true for default radius or any number for complete control */
-    $radius: false
+/* Set this to true for default radius or any number for complete control */
+$radius: false
 
-    /* If you set this to false, base styles are left out */
-    $base-style: true
-    ', :css %>
+/* If you set this to false, base styles are left out */
+$base-style: true
+', :css %>
 
         <div class="switch-custom">
           <input id="w" name="switch-w" type="radio" checked>
@@ -184,9 +184,9 @@
         <h5>Base Mixin</h5>
         <p>You also have access to a few internal mixins that can create parts of the button as needed. The base mixin will create a switch base that only include structural styles.</p>
 
-    <%= code_example '
-    .your-class-name { @include switch-base($transition-speed, $transition-ease); }
-    ', :css %>
+<%= code_example '
+.your-class-name { @include switch-base($transition-speed, $transition-ease); }
+', :css %>
 
         <div class="switch-custom-base">
           <input id="o" name="switch-o" type="radio" checked>
@@ -201,12 +201,12 @@
         <h5>Size Mixin</h5>
         <p>The size mixin will let you control the size of the switch, font-size and line-height.</p>
 
-    <%= code_example '
-    .your-class-name {
-      @include switch-base($transition-speed, $transition-ease);
-      @include switch-size($height, $font-size, $line-height);
-    }
-    ', :css %>
+<%= code_example '
+.your-class-name {
+  @include switch-base($transition-speed, $transition-ease);
+  @include switch-size($height, $font-size, $line-height);
+}
+', :css %>
 
         <div class="switch-custom-base size">
           <input id="o2" name="switch-o2" type="radio" checked>
@@ -221,13 +221,13 @@
         <h5>Style Mixin</h5>
         <p>The last internal mixin you have access to for buttons is the style mixin. This will help you style background color, text color, positive/negative color, etc.</p>
 
-    <%= code_example '
-    .your-class-name {
-      @include switch-base($transition-speed, $transition-ease);
-      @include switch-size($height, $font-size, $line-height);
-      @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
-    }
-    ', :css %>
+<%= code_example '
+.your-class-name {
+  @include switch-base($transition-speed, $transition-ease);
+  @include switch-size($height, $font-size, $line-height);
+  @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
+}
+', :css %>
 
         <div class="switch-custom-base size style">
           <input id="o4" name="switch-o3" type="radio" checked>
@@ -241,40 +241,40 @@
 
         <h5>Default SCSS Variables</h5>
 
-    <%= code_example '
-    /* Controlling border styles and background colors for the switch container */
-    $switch-border-color:             darken(#fff, 20%);
-    $switch-border-style:             solid;
-    $switch-border-width:             1px;
-    $switch-bg:                       #fff;
+<%= code_example '
+/* Controlling border styles and background colors for the switch container */
+$switch-border-color:             darken(#fff, 20%);
+$switch-border-style:             solid;
+$switch-border-width:             1px;
+$switch-bg:                       #fff;
 
-    /* We use these to control the switch heights for our default classes */
-    $switch-height-tny:               22px;
-    $switch-height-sml:               28px;
-    $switch-height-med:               36px;
-    $switch-height-lrg:               44px;
-    $switch-bottom-margin:            emCalc(20px);
+/* We use these to control the switch heights for our default classes */
+$switch-height-tny:               22px;
+$switch-height-sml:               28px;
+$switch-height-med:               36px;
+$switch-height-lrg:               44px;
+$switch-bottom-margin:            emCalc(20px);
 
-    /* We use these to control default font sizes for our classes. */
-    $switch-font-size-tny:            11px;
-    $switch-font-size-sml:            12px;
-    $switch-font-size-med:            14px;
-    $switch-font-size-lrg:            17px;
-    $switch-label-side-padding:       6px;
+/* We use these to control default font sizes for our classes. */
+$switch-font-size-tny:            11px;
+$switch-font-size-sml:            12px;
+$switch-font-size-med:            14px;
+$switch-font-size-lrg:            17px;
+$switch-label-side-padding:       6px;
 
-    /* We use these to style the switch-paddle */
-    $switch-paddle-bg:                #fff;
-    $switch-paddle-fade-to-color:     darken($switch-paddle-bg, 10%);
-    $switch-paddle-border-color:      darken($switch-paddle-bg, 35%);
-    $switch-paddle-border-width:      1px;
-    $switch-paddle-border-style:      solid;
-    $switch-paddle-transition-speed:  .1s;
-    $switch-paddle-transition-ease:   ease-out;
-    $switch-positive-color:           lighten($success-color, 50%);
-    $switch-negative-color:           #f5f5f5;
+/* We use these to style the switch-paddle */
+$switch-paddle-bg:                #fff;
+$switch-paddle-fade-to-color:     darken($switch-paddle-bg, 10%);
+$switch-paddle-border-color:      darken($switch-paddle-bg, 35%);
+$switch-paddle-border-width:      1px;
+$switch-paddle-border-style:      solid;
+$switch-paddle-transition-speed:  .1s;
+$switch-paddle-transition-ease:   ease-out;
+$switch-positive-color:           lighten($success-color, 50%);
+$switch-negative-color:           #f5f5f5;
 
-    /* Outline Style for tabbing through switches */
-    $switch-label-outline:            1px dotted #888;', :css %>
+/* Outline Style for tabbing through switches */
+$switch-label-outline:            1px dotted #888;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 

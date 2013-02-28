@@ -54,44 +54,44 @@
         <h3>Using our HTML Classes With CSS</h3>
         <p>The standard way of working with the Foundation visibility control is to use the predefined HTML classes. Yes, this adds classes to your markup, but they are semantic to the function they provide rather than from a presentational point of view.</p>
 
-    <%= code_example '
-    /* The show classes */
-    .show-for-small       /* Visible up to 768px */
-    .show-for-medium-down /* Visible from 1280px down */
-    .show-for-medium      /* Visible between 768px and 1280px */
-    .show-for-medium-up   /* Visible from 1280px up */
-    .show-for-large-down  /* Visible from 1440px down */
-    .show-for-large       /* Visible between 1280px and 1440px */
-    .show-for-large-up    /* Visible from 1440px up */
+<%= code_example '
+/* The show classes */
+.show-for-small       /* Visible up to 768px */
+.show-for-medium-down /* Visible from 1280px down */
+.show-for-medium      /* Visible between 768px and 1280px */
+.show-for-medium-up   /* Visible from 1280px up */
+.show-for-large-down  /* Visible from 1440px down */
+.show-for-large       /* Visible between 1280px and 1440px */
+.show-for-large-up    /* Visible from 1440px up */
 
-    /* The hide classes */
-    .hide-for-small       /* Hidden up to 768px */
-    .hide-for-medium-down /* Hidden from 1280px down */
-    .hide-for-medium      /* Hidden between 768px and 1280px */
-    .hide-for-medium-up   /* Hidden from 1280px up */
-    .hide-for-large-down  /* Hidden from 1440px down */
-    .hide-for-large       /* Hidden between 1280px and 1440px */
-    .hide-for-large-up    /* Hidden from 1440px up */
+/* The hide classes */
+.hide-for-small       /* Hidden up to 768px */
+.hide-for-medium-down /* Hidden from 1280px down */
+.hide-for-medium      /* Hidden between 768px and 1280px */
+.hide-for-medium-up   /* Hidden from 1280px up */
+.hide-for-large-down  /* Hidden from 1440px down */
+.hide-for-large       /* Hidden between 1280px and 1440px */
+.hide-for-large-up    /* Hidden from 1440px up */
 
-    /* The orientation classes */
-    .show-for-landscape   /* Visible for landscape orientation */
-    .show-for-portrait    /* Visible for portrait orientation */
-    .hide-for-landscape   /* Hidden for landscape orientation */
-    .hide-for-portrait    /* Hidden for portrait orientation */
+/* The orientation classes */
+.show-for-landscape   /* Visible for landscape orientation */
+.show-for-portrait    /* Visible for portrait orientation */
+.hide-for-landscape   /* Hidden for landscape orientation */
+.hide-for-portrait    /* Hidden for portrait orientation */
 
-    /* The touch detection classes */
-    .show-for-touch       /* Visible for touch enabled devices */
-    .hide-for-touch       /* Hidden for touch enabled devices */
-    ', :css %>
+/* The touch detection classes */
+.show-for-touch       /* Visible for touch enabled devices */
+.hide-for-touch       /* Hidden for touch enabled devices */
+', :css %>
 
         <hr>
 
         <h3>Using SCSS?</h3>
         <p>So, you hate the idea of including these classes in your markup? Well, we thought of that too! You can easily <code>@extend</code> these classes to whatever element you want. Extending a visibility class looks like this:</p>
 
-    <%= code_example '
-    .your-class-name { @extend .hide-for-small; }
-    ', :css %>
+<%= code_example '
+.your-class-name { @extend .hide-for-small; }
+', :css %>
 
       </div>
     </div>
