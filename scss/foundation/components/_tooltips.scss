@@ -56,36 +56,12 @@ $tooltip-pip-size:            5px !default;
 
   &>.nub {
     display: block;
+    position: absolute;
     width: 0;
     height: 0;
     border: solid $tooltip-pip-size;
     border-color: transparent transparent $tooltip-bg transparent;
-    position: absolute;
     top: -($tooltip-pip-size * 2);
-  }
-
-  &.tip-top>.nub {
-    border-color: $tooltip-bg transparent transparent transparent;
-    top: auto;
-    bottom: -($tooltip-pip-size * 2);
-  }
-
-  &.tip-left,
-  &.tip-right { float: none !important; }
-
-  &.tip-left>.nub {
-    border-color: transparent transparent transparent $tooltip-bg;
-    right: -($tooltip-pip-size * 2);
-    left: auto;
-    top: 50%;
-    margin-top: -$tooltip-pip-size;
-  }
-  &.tip-right>.nub {
-    border-color: transparent $tooltip-bg transparent transparent;
-    right: auto;
-    left: -($tooltip-pip-size * 2);
-    top: 50%;
-    margin-top: -$tooltip-pip-size;
   }
 
   &.opened {
@@ -101,4 +77,37 @@ $tooltip-pip-size:            5px !default;
   font-size: $tooltip-close-font-size;
   color: $tooltip-close-font-color;
   font-weight: $tooltip-close-font-weight;
+}
+
+@media #{$small} {
+  .tooltip {
+    &>.nub {
+      border-color: transparent transparent $tooltip-bg transparent;
+      top: -($tooltip-pip-size * 2);
+    }
+    &.tip-top>.nub {
+      border-color: $tooltip-bg transparent transparent transparent;
+      top: auto;
+      bottom: -($tooltip-pip-size * 2);
+    }
+
+    &.tip-left,
+    &.tip-right { float: none !important; }
+
+    &.tip-left>.nub {
+      border-color: transparent transparent transparent $tooltip-bg;
+      right: -($tooltip-pip-size * 2);
+      left: auto;
+      top: 50%;
+      margin-top: -$tooltip-pip-size;
+    }
+    &.tip-right>.nub {
+      border-color: transparent $tooltip-bg transparent transparent;
+      right: auto;
+      left: -($tooltip-pip-size * 2);
+      top: 50%;
+      margin-top: -$tooltip-pip-size;
+    }
+
+  }
 }
