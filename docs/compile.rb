@@ -27,7 +27,8 @@ class FoundationDocs
     end
 end
 
-s = Stasis.new(File.expand_path('.',__FILE__))
-s.render
+#s = Stasis.new(File.expand_path('.',__FILE__), File.expand_path('./public', __FILE__))
+#s.render
+`bundle exec stasis`
 f=FoundationDocs.new
 f.compile

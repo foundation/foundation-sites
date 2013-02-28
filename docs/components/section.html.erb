@@ -70,19 +70,19 @@
         <h3>Build With Predefined HTML Classes</h3>
         <p>There are two ways to build sections in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building a sections using our predefined classes is super-easy, you just need to create a <code>&lt;div class="section-container" data-section&gt;</code> as a wrapper for the sections themselves. Inside of this wrapper, you'll create either a <code>&lt;section class="section"&gt;</code> or <code>&lt;div class="section"&gt;</code>. Within that you'll include some sort of <code>.title</code> (this can be headers or a paragragh) and a <code>&lt;div class="content"&gt;</code>. Here is the markup you'll need:</p>
 
-    <%= code_example '
-    <section class="section">
-      <p class="title"><a href="#panel1">Section 1</a></p>
-      <div class="content" data-slug="panel1">
-        <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
-    </section>
-    <section class="section">
-      <p class="title"><a href="#panel2">Section 2 Section 2</a></p>
-      <div class="content" data-slug="panel2">
-        <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
-    </section>', :html %>
+<%= code_example '
+<section class="section">
+  <p class="title"><a href="#panel1">Section 1</a></p>
+  <div class="content" data-slug="panel1">
+    <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</section>
+<section class="section">
+  <p class="title"><a href="#panel2">Section 2 Section 2</a></p>
+  <div class="content" data-slug="panel2">
+    <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</section>', :html %>
 
         <p>The class options:</p>
         <ul class="disc">
@@ -94,52 +94,56 @@
         <hr>
 
         <h5>Default SCSS Variables</h5>
-    <%= code_example '
-    /* We use these to set padding and hover factor */
-    $section-padding:                emCalc(15px);
-    $section-function-factor:        10%;
+<%= code_example '
+/* We use these to set padding and hover factor */
+$section-padding:                emCalc(15px);
+$section-function-factor:        10%;
 
-    /* These style the titles */
-    $section-title-color:            #333;
-    $section-title-bg:               #efefef;
-    $section-title-bg-active:        darken($section-title-bg, $section-function-factor);
-    $section-title-bg-active-tabs:   #fff;
+/* These style the titles */
+$section-title-color:            #333;
+$section-title-bg:               #efefef;
+$section-title-bg-active:        darken($section-title-bg, $section-function-factor);
+$section-title-bg-active-tabs:   #fff;
 
-    /* Want to control border size, here ya go! */
-    $section-border-size:            1px;
-    $section-border-style:           solid;
-    $section-border-color:           #ccc;
+/* Want to control border size, here ya go! */
+$section-border-size:            1px;
+$section-border-style:           solid;
+$section-border-color:           #ccc;
 
-    /* Control the color of the background and some size options */
-    $section-content-bg:             #fff;
-    $section-vertical-nav-min-width: emCalc(200px);
-    $section-bottom-margin:          emCalc(20px);
-    ', :css %>
+/* Control the color of the background and some size options */
+$section-content-bg:             #fff;
+$section-vertical-nav-min-width: emCalc(200px);
+$section-bottom-margin:          emCalc(20px);
+', :css %>
 
     <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
 
         <hr>
 
-        <h3>Using the Javascript</h3>
-        <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+        <h3>Using the JavaScript</h3>
+        <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
-    <%= code_example '
-    <script src="path/to/zepto.js"></script>
-    <script src="path/to/foundation.js"></script>
-    <script src="path/to/foundation.alerts.js"></script>
-    <script type="text/javascript">
-      $(document).foundation();
-    </script>
-    ', :html %>
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
 
-    <%= code_example '
-    <div data-alert class="alert-box">
-      <!-- Your content goes here -->
-      <a href="#" class="close">&times;</a>
-    </div>
-    ', :html %>
+<%= code_example '
+<div data-alert class="alert-box">
+  <!-- Your content goes here -->
+  <a href="#" class="close">&times;</a>
+</div>
+', :html %>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>You can either set these options in a <code>data-options</code> attribute in the markup, <code>data-options="option: value; option2: value syntax"</code>, or pass in on initialization.</p>
+
+    <%= code_example "
+{
+  deep_linking: false,
+  one_up: true,
+  callback: function (){}
+}", :json %>
 
       </div>
     </div>
