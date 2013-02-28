@@ -1,27 +1,28 @@
 <% @page_title = "Tooltips" %>
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Blah</h4>
+    <h4 class="subheader">Tooltips are a quick way to provide <span data-tooltip class="has-tip" data-width="210" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.</h4>
+
+    <hr>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-4">
+  <div class="large-12 columns">
     <a name="tooltips"></a>
-    <h4>Tooltips</h4>
-    <p>Tooltips are a quick way to provide extended information on a term or action on a page. They work cross browser and cross platform and are easily added to a page by including the jquery.tooltip.js plugin. You can apply the <strong>has-tip</strong> class to any element.</p>
+    <h4>Building With HTML Classes</h4>
+    <p>Tooltips work cross browser and cross platform and are easily added to a page with a simple markup and class structure. You can apply the <strong>has-tip</strong> class to any element.</p>
 
     <p>By default, the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
-  </div>
-  <br>
-  <div class="large-8">
+
     <p>The tooltips can be positioned on the <span data-tooltip class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span data-tooltip class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span data-tooltip="left" class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span data-tooltip="right" class="has-tip tip-right" data-width="120" title="I'm on the right!">"tip-right"</span> of the target element. On a small device, the tooltips are full width and bottom aligned.</p>
 
     <h3>Custom Options</h3>
     <p>
-      I have <span data-tooltip="custom" class="has-tip-custom" title="See? Custom class here.">custom attributes.</span>
+      I have <span data-tooltip="custom" title="See? Custom class here.">custom attributes.</span>
     </p>
+
   </div>
 </div>
