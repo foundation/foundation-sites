@@ -158,8 +158,17 @@ input[type="text"].attached-input {
   &.style { @include switch-style; }
 }
 
-/* Large Screen Styles */
-@media #{$small} {
-  // .button { margin-bottom: 15px; }
-  .button-group .button { margin-bottom: 0; }
+/* ZURBjobs */
+.jobs {
+  border: 1px solid #eee;
+  padding: 10px 20px 20px;
+  font-size: 14px;
+  line-height: 1.1;
+  ul { list-style: none;
+    li { margin-bottom: 10px; }
+  }
+  .location {
+    display: block;
+    color: #555;
+  }
 }
