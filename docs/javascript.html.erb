@@ -7,3 +7,31 @@
     <hr>
   </div>
 </div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h2 id="numero1" class="so-awesome">Installation</h2>
+    <p>Foundation JavaScript was designed to work with <a href="http://zeptojs.com/" title="Zepto Docs">Zepto</a> and <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> out of the gate. Zepto is not supported by all browsers, so as suggested in the Zepto documentation, you should test for compatability and load Zepto or jQuery as necessary.</p>
+
+<%= code_example "
+<!-- Check for Zepto support, load jQuery if necessary -->
+<script>
+  document.write('<script src=/js/vendor/'
+    + ('__proto__' in {} ? 'zepto' : 'jquery')
+    + '.js><\/script>');
+</script>
+", :html %>
+
+    <p>Then include either <code>foundation.min.js</code>, which includes Foundation Core and all JavaScript plugins, or you can load them invidually as necessary.</p>
+
+<%= code_example '
+<script src="/js/foundation.min.js"></script>
+
+<!-- or individualy -->
+
+<script src="/js/foundation.js"></script>
+<script src="/js/foundation.alerts.js"></script>
+<!-- ... -->
+<script src="/js/foundation.dropdown.js"></script>
+<script src="/js/foundation.section.js"></script>
+', :html %>
