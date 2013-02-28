@@ -46,13 +46,11 @@
 
       $(this.scope)
         .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
-          console.log('check')
           e.preventDefault();
           e.stopPropagation();
           self.toggle_checkbox($(this));
         })
         .on('click.fndtn.forms', 'form.custom span.custom.radio', function (e) {
-          console.log('radio')
           e.preventDefault();
           e.stopPropagation();
           self.toggle_radio($(this));
@@ -66,7 +64,6 @@
               $customRadio;
           if ($associatedElement.length !== 0) {
             if ($associatedElement.attr('type') === 'checkbox') {
-              console.log('checkbox')
               e.preventDefault();
               $customCheckbox = $(this).find('span.custom.checkbox');
               //the checkbox might be outside after the label
@@ -79,7 +76,6 @@
               }
               self.toggle_checkbox($customCheckbox);
             } else if ($associatedElement.attr('type') === 'radio') {
-              console.log('radio box')
               e.preventDefault();
               $customRadio = $(this).find('span.custom.radio');
               //the radio might be outside after the label
@@ -121,8 +117,7 @@
             return false;
           }
         })
-        .on('click.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
-          alert('click')
+        .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
               $customDropdown = $this.closest('div.custom.dropdown'),
               $select = $customDropdown.prev(),
