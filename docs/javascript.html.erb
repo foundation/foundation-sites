@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="index.html">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Foundation 4 streamlines the implementation of the Foundation plugins by combining them all into essentialy one plugin under the <code>$.fn.foundation()</code> Zepto/jQuery namespace.</h4>
+    <h4 class="subheader">Foundation 4 streamlines the implementation of the Foundations plugins by combining them all into a single plugin under the <code>$.fn.foundation()</code> Zepto/jQuery namespace.</h4>
     <hr>
   </div>
 </div>
@@ -11,10 +11,10 @@
 <div class="row">
   <div class="large-12 columns">
     <h2>Installation</h2>
-    <p>Foundation JavaScript was designed to work with <a href="http://zeptojs.com/" title="Zepto Docs">Zepto</a> and <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> out of the gate. Zepto is not supported by all browsers, so as suggested in the Zepto documentation, you should test for compatability and load Zepto or jQuery as necessary.</p>
+    <p>Foundation JavaScript was designed to work with <a href="http://zeptojs.com/" title="Zepto Docs">Zepto</a> and <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. Zepto is not supported by all browsers, so as suggested in the Zepto documentation, you should test for compatability and load Zepto or jQuery as necessary.</p>
 
     <h5>Include Libraries</h5>
-    <p>In the <code>head</code> section of your page, add Modernizr. Modernizr acts as a shim for HTML5 elements for older browsers as well as detection for mobile devices.</p>
+    <p>In the <code>head</code> section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements for older browsers as well as detection for mobile devices.</p>
 
 <%= code_example '
 <script src="/js/custom.modernizr.js></script>
@@ -31,7 +31,7 @@
 </script>
 ", :html %>
 
-    <p>Then include either <code>foundation.min.js</code>, which includes Foundation Core and all JavaScript plugins, or you can load them invidually as necessary.</p>
+    <p>Then include either <code>foundation.min.js</code>, which includes Foundation Core and all JavaScript plugins or you can load them invidually.</p>
 
 <%= code_example '
 <script src="/js/foundation.min.js"></script>
@@ -46,7 +46,7 @@
 ', :html %>
 
     <h5>Initialize Foundation</h5>
-    <p>After you have included the foundation, all you need is one simple call to intialize all plugins on your page.</p>
+    <p>After you have included the Foundation JavaScript, just add a simple call to initialize all plugins on your page.</p>
 
 <%= code_example '
 <script>
@@ -54,15 +54,13 @@
 </script>
 ', :html %>
 
-    <p>That's all you need to call!</p>
-
-    <p class="panel"><strong>Note:</strong> We include tested versions of jQuery and Zepto in the Foundation repo to get you started quickly. If you want to build your own version of Zepto, Foundation employs the <i>event</i>, <i>fx</i>, <i>fx_methods</i>, <i>ajax</i>, <i>form</i>, <i>assets</i>, <i>data</i>, <i>selector</i>, and <i>stack</i> modules.</p>
+    <p><strong>Note:</strong> We include tested versions of jQuery and Zepto in the Foundation repo to get you started quickly. If you want to build your own version of Zepto, Foundation employs the <i>event</i>, <i>fx</i>, <i>fx_methods</i>, <i>ajax</i>, <i>form</i>, <i>assets</i>, <i>data</i>, <i>selector</i>, and <i>stack</i> modules.</p>
 
     <hr>
 
     <h2>Configuration</h2>
 
-    <p>Foundation accepts a myriad of options on initialization. By default, calling <code>$('#scope').foundation();</code> will intialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback; allowing you to start only certain plugins on your page, even if their source is included.</p>
+    <p>Foundation accepts a myriad of options for initialization. By default, calling <code>$('#scope').foundation();</code> will intialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback. This will allow you to select specific plugins to start on your page, even if their source is included. You can take a look at the call here:</p>
 
 <%= code_example "
 $(document).foundation('section', {deep_linking: true}, function (response) {
@@ -70,9 +68,9 @@ $(document).foundation('section', {deep_linking: true}, function (response) {
 });
 ", :js %>
 
-  <p>The above example will initialize the Section plugin on the page with deep linking enabled, and pass back a response object with any errors that may have occured.</p>
+  <p>The call will initialize the Section plugin on the page with deep linking enabled and pass back a response object with any errors that may have occured.</p>
 
-  <p>You can initialize multiple libraries within the same call as well. Here are a few ways this can be done.</p>
+  <p>You can initialize multiple libraries within the same call as well. Here are a few ways this can be done:</p>
 
 <%= code_example "
 $(document).foundation('section dropdown alerts', {callback: myCallbackFunction}, function (response) {
@@ -96,7 +94,7 @@ $(document).foundation(function (response) {
 $(document).foundation('section');
 ", :js %>
 
-    <p>Keep in mind, if you initialize multiple plugins at one time and pass a configuration object, that object will get passed to all plugins that were initialized. So in the first example; section, dropdown, and alerts will all get passed the <code>myCallbackFunction</code> on initialization.</p>
+    <p>Keep in mind, if you initialize multiple plugins at one time and pass a configuration object that object will get passed to all plugins that were initialized. So in the first example: section, dropdown, and alerts will all get passed the <code>myCallbackFunction</code> on initialization.</p>
 
     <p>What if you wanted to pass the <code>myCallbackFunction</code> only to Section and still initialize the other plugins as well? You could do the following.</p>
 
@@ -112,11 +110,11 @@ $(document)
 
     <p>Foundation 4 JavaScript allows you call call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not intialized on page load by default.</p>
 
+    <p>This will fire the <code>start</code> method on Joyride:</p>
+
 <%= code_example "
 $(document).foundation('joyride', 'start');
 ", :js %>
-
-  <p>This will fire the <code>start</code> method on Joyride.</p>
 
   <h5>Unbind Events</h5>
 
