@@ -19,7 +19,7 @@
     <hr>
 
     <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build buttons in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building buttons using our predefined classes is simple, you'll need an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> with a class of <code>.button.dropdown</code>. This will create a default medium button. You can also use size, color and radius classes to control more of the style.</p>
+    <p>There are two ways to build buttons in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building buttons using our predefined classes is simple, you'll need an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> with a class of <code>.button.dropdown</code>. This will create a default medium button. You can also use size, color and radius classes to control more of the style.</p>
 
     <p>The classes options:</p>
     <ul class="disc">
@@ -50,7 +50,7 @@
     <hr>
 
     <h3>Build with Mixins</h3>
-    <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a>, <a href="#">_buttons.scss</a> and <a href="#">_dropdown-buttons.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a>, <a href="#">_buttons.scss</a> and <a href="#">_dropdown-buttons.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/buttons", "foundation/dropdown-buttons";
@@ -63,7 +63,7 @@
 ', :html %>
 
     <h5>Quick Mixin</h5>
-    <p>You can quickly build an entire dropdown buttons using our global mixin by including it on your custom class or ID in your stylesheet. The global mixin will create the necessary style for the button. The global mixin looks like this:</p>
+    <p>You can quickly build entire dropdown buttons using our global mixin by including it on your custom class or ID in your stylesheet. The global mixin will create the necessary style for the button. The global mixin looks like this:</p>
 
 <%= code_example '
 /* Using the default styles */
@@ -75,7 +75,7 @@
 
     <a href="" data-dropdown="drop7 "class="dropdown button">Default Dropdown Button</a>
 
-    <p>There are also <strong>three options</strong> you can customize on the fly when writing this mixin. These control things like: background color, pip color, and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
+    <p>There are also <strong>three options</strong> you can customize on the fly when writing this mixin. These control things like: background color, pip color and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
 
 <%= code_example '
 /* Using the available options */
@@ -158,7 +158,7 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
 ', :html %>
 
     <h5>Creating the Dropdown</h5>
-    <p>To create the dropdown you'll need to attach a data-attribute to whatever element you want the dropdown attached to (in this case a button). From there you'll create a list that holds the links or content and add another data-attribute that associates with the element it belongs to. here's an example of that markup:</p>
+    <p>To create the dropdown, you'll need to attach a data-attribute to whatever element you want the dropdown attached to (in this case a button). From there you'll create a list that holds the links or content and add another data-attribute that associates with the element it belongs to. Here's an example of that markup:</p>
 
 <%= code_example '
 <a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button</a><br>

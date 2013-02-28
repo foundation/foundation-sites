@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">This simple subnav is great for moving between different states of a page. We use these frequently to show iterations of something, typically by date, but they're also handy for these like filters.</h4>
+    <h4 class="subheader">This simple sub nav is great for moving between different states of a page. We use these frequently to show iterations of something, typically by date, but they're also handy for filters like these.</h4>
   </div>
 </div>
 
@@ -21,7 +21,7 @@
     <hr>
 
     <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build sub-nav in Foundation 4, with our predefined HTML classes or with our mixins. Building sub-nav using our predefined classes is simple, you'll just need to write a <code>&lt;dl class="sub-nav"&gt;</code> and fill it full of definitions. You can use the definition title as a label at the beginning (useful for building filters on a page).</p>
+    <p>There are two ways to build sub nav in Foundation 4: you can use our predefined HTML classes or our mixins. Building sub nav using our predefined classes is simple, you'll just need to write a <code>&lt;dl class="sub-nav"&gt;</code> and fill it full of definitions. You can use the definition title as a label at the beginning (useful for building filters on a page).</p>
 
     <p>The list options:</p>
     <ul class="disc">
@@ -38,12 +38,12 @@
   <dd><a href="#">Suspended</a></dd>
 </dl>', :html %>
 
-    <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected sub-nav from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
+    <p>To use these styles, make sure you have the default Foundation CSS package or that you've selected sub-nav from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
     <hr>
 
     <h3>Build with our Mixins</h3>
-    <p>We've included SCSS mixins used to style sub-nav. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_sub-nav.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style sub-nav. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_sub-nav.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/sub-nav";
@@ -56,7 +56,7 @@
 /* Using the default styles */
 .your-class-name { @include sub-nav; }', :css %>
 
-<p>There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size, and font color.</p>
+<p>There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color.</p>
 
 <%= code_example '
 /* Using the available options */

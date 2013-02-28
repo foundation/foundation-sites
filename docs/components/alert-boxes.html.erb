@@ -32,7 +32,7 @@
     <hr>
 
     <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build alerts in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building an alert using our predefined class is super-easy, you only need a block-level element with a class of <code>.alert-box</code> (we usually use a <code>&lt;div&gt;</code>). You may also include an anchor with a class of <code>.close</code> to create a close button. Here is the markup you'll need:</p>
+    <p>There are two ways to build alerts in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building an alert using our predefined class is super-easy, you only need a block-level element with a class of <code>.alert-box</code> (we usually use a <code>&lt;div&gt;</code>). You may also include an anchor with a class of <code>.close</code> to create a close box. Here is the markup you'll need:</p>
 
 <%= code_example '
 <div data-alert class="alert-box">
@@ -45,7 +45,7 @@
     <hr>
 
     <h3>Build with Mixins</h3>
-    <p>We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_alerts.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_alerts.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/alerts";
@@ -104,8 +104,8 @@ This is an alert with a custom background set.
 
     <p>You can set <code>$bg</code> color to any of our predefined color variables or any hexadecimal color of your choosing. To set this value to something other than our default, use <code>@include alert-bg(#hexcolor);</code></p>
 
-    <h5>Close Button Mixin</h5>
-    <p>You can include a close button with each of the alert boxes by adding an anchor right before the closing <code>&lt;/div&gt;</code>. This anchor should have a class of <code>.close</code> in order to work with <strong>foundation.alerts.js</strong>, which contains the interaction for closing.</p>
+    <h5>Close Box Mixin</h5>
+    <p>You can include a close box with each of the alert boxes by adding an anchor right before the closing <code>&lt;/div&gt;</code>. This anchor should have a class of <code>.close</code> in order to work with <strong>foundation.alerts.js</strong>, which contains the interaction for closing.</p>
 
 <%= code_example '
 .your-class-name {

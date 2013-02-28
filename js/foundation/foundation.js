@@ -8,10 +8,6 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-/* TODO & NOTES:
-  - Test error return, since some of this code has changed slightly.
-*/
-
 (function () {
   // add dusty browser stuff
   if (!Array.prototype.filter) {

@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">If you are going to use an image as an anchor, we've got you covered. All you've gotta do is wrap an <code>a.th</code> around your image and viola!</h4>
+    <h4 class="subheader">If you are going to use an image as an anchor, we got you covered. All you gotta do is wrap an <code>a.th</code> around your image and voilà!</h4>
   </div>
 </div>
 
@@ -15,7 +15,7 @@
     <hr>
 
     <h3>Building With Predefined HTML Class</h3>
-    <p>We make it really easy to create thumbnails links out of images. Simply wrap your <code>&lt;img&gt;</code> inside a <code>&lt;a class="th"&gt;</code> and you'r good to go! You may alternately choose to add a class of <code>.radius</code> to give it a neat little border-radius.</p>
+    <p>We make it really easy to create thumbnails links out of images. Simply wrap your <code>&lt;img&gt;</code> inside a <code>&lt;a class="th"&gt;</code> and you're good to go! You may alternately choose to add a class of <code>.radius</code> to give it a neat little border-radius.</p>
 
 <%= code_example '
 <a class="th radius" href="../img/demos/demo2.png">
@@ -27,7 +27,7 @@
     <hr>
 
     <h3>Build with our Mixins</h3>
-    <p>We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_thumbs.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_thumbs.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
     <%= code_example '
 @import "foundation/foundation-global", "foundation/labels";
@@ -42,7 +42,7 @@
 
     <p><a class="th" href="../img/demos/demo3.png"><img src="../img/demos/demo3-th.png"></a></p>
 
-    <p>There are also three options you can customize on the fly when writing this mixin. These controls things like: border width and hover styles for the box shadow.</p>
+    <p>There are also three options you can customize on the fly when writing this mixin. These controls things like: border-width and hover styles for the box-shadow.</p>
 
 <%= code_example '
 /* Using the available options */
@@ -58,7 +58,7 @@ $box-shadow: $thumb-box-shadow
 $box-shadow-hover: $thumb-box-shadow-hover
 ', :css %>
 
-    <p>You can even add the radius and single-transition mixin on top of this to add even more versatility!</p>
+    <p>You can also add the radius and single-transition mixin on top of this to create even more versatility!</p>
 
     <p><a class="th-custom" href="../img/demos/demo4.png"><img src="../img/demos/demo4-th.png"></a></p>
 
