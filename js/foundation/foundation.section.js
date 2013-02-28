@@ -9,7 +9,7 @@
     version : '4.0.0',
 
     settings : {
-      deep_linking: true,
+      deep_linking: false,
       one_up: true,
       callback: function (){}
     },
@@ -114,7 +114,7 @@
           if (self.small($this)) {
             active_section.attr('style', '');
           } else {
-            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 2);
+            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
           }
           self.position_titles($this);
         });
