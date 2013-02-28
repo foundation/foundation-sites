@@ -1,0 +1,129 @@
+<style type="text/css">
+
+  .row.support { padding: 9px 0; }
+  .row.support:nth-child(2n) { background: #f4f4f4; }
+  
+  .support .win { color: #4ea600; font-weight: bold; }
+  .support .fail { color: #cc0000; font-weight: bold; }
+
+</style>
+
+<div class="row">
+  <div class="large-3 columns">
+    <%= render "_sidebar.html.erb" %>
+  </div>
+
+  <div class="large-9 columns">
+
+    <% @page_title = "Support" %>
+    <h2><%= @page_title %></h2>
+    
+    <h4 class="subheader">Foundation was designed for and tested on numerous browsers and devices. Here's the rundown on what's tested, and what to do if something misbehaves.</h4>
+    
+    <h5>Browser and Device Support</h5>
+    <p>We go to great lengths to ensure that Foundation works as expected on a variety of common browsers and devices. Given how forward-facing Foundation is there are some aesthetic properties which are not supported in older browsers (border radii, box shadows, etc), but the core elements are reliable across the board.</p>
+
+		<div class="row support">
+		  <div class="large-3 small-3 columns"><h5>Browser/OS</h5></div>
+		  <div class="large-3 small-3 columns"><h5>The Grid</h5></div>
+		  <div class="large-3 small-3 columns"><h5>Layout/UI</h5></div>
+		  <div class="large-3 small-3 columns"><h5>JS</h5></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">Chrome</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">Firefox</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">Safari</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">IE10</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">IE9</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">IE8</div>
+		  <div class="large-3 small-3 columns"><span class="fail">&#x2717;</span></div>
+		  <div class="large-3 small-3 columns"><span class="fail">&#x2717;</span></div>
+		  <div class="large-3 small-3 columns"><span class="fail">&#x2717;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">IE7</div>
+		  <div class="large-3 small-3 columns"><span class="fail">&#x2717;</span></div>
+		  <div class="large-3 small-3 columns"><span class="fail">&#x2717;</span></div>
+		  <div class="large-3 small-3 columns"><span class="fail">&#x2717;</span></div>
+		</div>
+
+		<div class="row support">
+		  <div class="large-3 small-3 columns">iOS (iPhone)</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">iOS (iPad)</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">Android 2, 4 (Phone)</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">Android 2, 4 (Tablet)</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">Windows Phone 7+</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="large-3 small-3 columns">Surface</div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="large-3 small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+
+    <hr>
+
+    <div class="panel">
+      <h4>Get Answers</h4>
+      <h5 class="subheader">We've outlined some of the most common frequently asked questions so that you can easily find the answer, as well as given you a way to contact us directly with questions, feedback or concerns.</h5>
+      <a class="button" href="faq.php">Read the FAQ or Ask a Question &raquo;</a> <a class="secondary button" href="changelog.php">See the Version Changelog &raquo;</a>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+

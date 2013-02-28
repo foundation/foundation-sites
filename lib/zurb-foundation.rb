@@ -8,3 +8,11 @@ end
 module Foundation
   require "foundation/engine" if defined?(Rails)
 end
+
+if defined?(Compass)
+  Compass::Frameworks.register("foundation",
+    :stylesheets_directory => File.join(root,"scss"),
+    :templates_directory => File.join(root,"templates"),
+    :css_dir => 'css'
+  )
+end

@@ -5,14 +5,14 @@
     <div class="row">
       <div class="large-12 columns">
         <h1><%= @page_title %></h1>
-        <h4 class="subheader">Sections are similar to tabs as a way to selectively show a single panel of content at a time. You can add a <code>.hover</code> class to the accordion <code>ul</code> to make it open on hover.</h4>
+        <h4 class="subheader">Sections are similar to tabs as a way to selectively show a single panel of content at a time.</h4>
 
         <div class="row">
           <div class="large-3 columns">
-            <div class="section-container vertical-nav" data-section>
+            <div class="section-container vertical-nav" data-section data-options="deep_linking: false">
               <section class="section">
                 <p class="title"><a href="#panel1">Section 1</a></p>
-                <div class="content" data-slug="panel1">
+                <div class="content">
                   <ul class="side-nav">
                     <li><a href="#">Link 1</a></li>
                     <li><a href="#">Link 2</a></li>
@@ -24,7 +24,7 @@
               </section>
               <section class="section">
                 <p class="title"><a href="#panel2">Section 2</a></p>
-                <div class="content" data-slug="panel2">
+                <div class="content">
                   <ul class="side-nav">
                     <li><a href="#">Link 1</a></li>
                     <li><a href="#">Link 2</a></li>
@@ -145,6 +145,6 @@
     </div>
   </div>
   <div class="large-3 pull-9 columns">
-    <%= render "_sidebar.html.erb" %>
+    <%= render "_sidebar-components.html.erb" %>
   </div>
 </div>

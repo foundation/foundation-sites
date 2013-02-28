@@ -39,9 +39,9 @@ $panel-font-color-alt:  #fff !default;
     background: $bg;
 
     // We set the font color based on the darkness of the bg.
-    @if $bg-lightness >= 50% and $bg == blue { *, * * { color: $panel-font-color-alt; } }
-    @else if $bg-lightness >= 50%            { *, * * { color: $panel-font-color; } }
-    @else                                    { *, * * { color: $panel-font-color-alt; } }
+    @if $bg-lightness >= 50% and $bg == blue { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
+    @else if $bg-lightness >= 50%            { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color; } }
+    @else                                    { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
 
     // Respect the padding, fool.
     &>:first-child { margin-top: 0; }

@@ -1,23 +1,24 @@
+<% @template = template if defined?(template) %>
 <!DOCTYPE html>
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Welcome to Foundation</title>
-	<meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Foundation 4</title>
 
-  <link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/app.css">
-	<script src="js/foundation/modernizr.foundation.js"></script>
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/app.css" />
+
+  <script src="js/vendor/custom.modernizr.js"></script>
 
 </head>
 <body>
 
 	<div class="row">
-		<div class="twelve columns">
+		<div class="large-12 columns">
 			<h2>Welcome to Foundation</h2>
 			<p>This is version <%= Foundation::VERSION %>.</p>
 			<hr />
@@ -25,41 +26,41 @@
 	</div>
 
 	<div class="row">
-		<div class="eight columns">
+		<div class="large-8 columns">
 			<h3>The Grid</h3>
 
 			<!-- Grid Example -->
 			<div class="row">
-				<div class="twelve columns">
+				<div class="large-12 columns">
 					<div class="panel">
 						<p>This is a twelve column section in a row. Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="six columns">
+				<div class="large-6 columns">
 					<div class="panel">
 						<p>Six columns</p>
 					</div>
 				</div>
-				<div class="six columns">
+				<div class="large-6 columns">
 					<div class="panel">
 						<p>Six columns</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="four columns">
+				<div class="large-4 columns">
 					<div class="panel">
 						<p>Four columns</p>
 					</div>
 				</div>
-				<div class="four columns">
+				<div class="large-4 columns">
 					<div class="panel">
 						<p>Four columns</p>
 					</div>
 				</div>
-				<div class="four columns">
+				<div class="large-4 columns">
 					<div class="panel">
 						<p>Four columns</p>
 					</div>
@@ -69,12 +70,12 @@
 			<h3>Buttons</h3>
 
       <div class="row">
-        <div class="six columns">
+        <div class="large-6 columns">
           <p><a href="#" class="small button">Small Button</a></p>
           <p><a href="#" class="button">Medium Button</a></p>
           <p><a href="#" class="large button">Large Button</a></p>
         </div>
-        <div class="six columns">
+        <div class="large-6 columns">
           <p><a href="#" class="small alert button">Small Alert Button</a></p>
           <p><a href="#" class="success button">Medium Success Button</a></p>
           <p><a href="#" class="large secondary button">Large Secondary Button</a></p>
@@ -82,7 +83,7 @@
       </div>
 		</div>
 
-		<div class="four columns">
+		<div class="large-4 columns">
 			<h4>Getting Started</h4>
 			<p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
 
@@ -96,7 +97,11 @@
 		</div>
 	</div>
 
-	<script src="js/foundation/jquery.js"></script>
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
 	<% @template[:options][:javascripts].each do |f| %>
 	<script src="js/<%= f %>"></script>
 	<% end %>
