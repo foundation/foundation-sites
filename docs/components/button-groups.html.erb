@@ -39,7 +39,7 @@
         <hr>
 
         <h3>Build With Predefined HTML Classes</h3>
-        <p>There are two ways to build button groups in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building button groups using our predefined classes is a breeze, you'll just wrap a <a href="button.html">button</a> inside an <code>&lt;ul&gt;</code>.</p>
+        <p>There are two ways to build button groups in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building button groups using our predefined classes is a breeze, you'll just wrap a <a href="buttons.html">button</a> inside an <code>&lt;ul&gt;</code>.</p>
 
         <p>The button styles will work the same as they do when building a single button, but they'll float next to each other to create a group. You also have access to the same radius classes as buttons, only they'll go on the unordered list instead of the button. You can even make sure the buttons take up even space within the container you put them in.</p>
 
@@ -65,12 +65,12 @@
 </ul>
 ', :html %>
 
-        <p>For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>buttons and button-groups from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+        <p>For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>buttons and button-groups from a custom package</strong>. These should be linked up following our default <a href="../index.html">HTML page structure</a>.</p>
 
         <hr>
 
         <h3>Build with Mixins</h3>
-        <p>We've included SCSS mixins used to style button groups. To use these mixins, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a>, <a href="#">_buttons.scss</a> and <a href="#">_button-groups.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+        <p>We've included SCSS mixins used to style button groups. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_button-groups.scss">_button-groups.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/buttons", "foundation/button-groups";
