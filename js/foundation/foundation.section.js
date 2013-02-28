@@ -128,14 +128,15 @@
 
     position_titles : function (section, off) {
       var titles = section.find('.title'),
-          previous_width = 0;
+          previous_width = 0,
+          self = this;
 
       if (typeof off === 'boolean') {
         titles.attr('style', '');
       } else {
         titles.each(function () {
           $(this).css('left', previous_width);
-          previous_width += $(this).outerWidth();
+          previous_width += self.outerWidth($(this));
         });
       }
     },
