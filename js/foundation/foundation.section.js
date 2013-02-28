@@ -73,7 +73,7 @@
             .removeClass('active')
             .attr('style', '');
 
-          section.css('padding-top', self.outerHeight(section.find('.title')) - 2);
+          section.css('padding-top', self.outerHeight(section.find('.title')) - 1);
         }
 
         if (self.small(parent)) {
@@ -107,7 +107,7 @@
             if (self.small($this)) {
               first.attr('style', '');
             } else {
-              first.css('padding-top', self.outerHeight(first.find('.title')) - 2);
+              first.css('padding-top', self.outerHeight(first.find('.title')) - 1);
             }
           }
 
