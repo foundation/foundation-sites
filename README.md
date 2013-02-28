@@ -3,8 +3,8 @@ Welcome to Foundation
 
 Foundation is the most advanced responsive front-end framework in the world. With Foundation you can quickly prototype and build sites or apps that work on any kind of device, with tons of included layout constructs (like a full responsive grid), elements and best practices.
 
-Homepage:      http://foundation.zurb.com
-Documentation: http://foundation.zurb.com/docs
+Homepage:      http://foundation.zurb.com<br />
+Documentation: http://foundation.zurb.com/docs<br />
 Download:      http://foundation.zurb.com/download.php
 
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
@@ -13,7 +13,6 @@ Repo Contents
 =============
 
 * Base Source and Compilation Files for SCSS
-* Marketing Site
 * Docs
 * README
 
