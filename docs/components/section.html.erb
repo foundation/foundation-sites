@@ -4,35 +4,46 @@
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
     <h4 class="subheader">Sections are similar to tabs as a way to selectively show a single panel of content at a time. You can add a <code>.hover</code> class to the accordion <code>ul</code> to make it open on hover.</h4>
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-12 columns">
-
-    <div class="section-container tabs" data-section>
-      <section class="section">
-        <p class="title"><a href="#panel1">Section 1</a></p>
-        <div class="content" data-slug="panel1">
-          <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </section>
-      <section class="section">
-        <p class="title"><a href="#panel2">Section 2</a></p>
-        <div class="content" data-slug="panel2">
-          <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </section>
-    </div>
 
     <div class="row">
       <div class="large-3 columns">
         <div class="section-container vertical-nav" data-section>
           <section class="section">
-            <p class="title"><a href="http://zurb.com">Top Level Link</a></p>
+            <p class="title"><a href="#panel1">Section 1</a></p>
+            <div class="content" data-slug="panel1">
+              <ul class="side-nav">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link 1</a></li>
+              </ul>
+            </div>
           </section>
           <section class="section">
             <p class="title"><a href="#panel2">Section 2</a></p>
+            <div class="content" data-slug="panel2">
+              <ul class="side-nav">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link 1</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="large-9 columns">
+        <div class="section-container tabs" data-section data-options="deep_linking: true">
+          <section class="section">
+            <p class="title"><a href="#panel1">Section 1</a></p>
+            <div class="content" data-slug="panel1">
+              <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+          </section>
+          <section class="section">
+            <p class="title"><a href="#panel2">Section 2 Section 2</a></p>
             <div class="content" data-slug="panel2">
               <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
@@ -40,60 +51,93 @@
         </div>
       </div>
     </div>
+
+    <hr>
+
+    <h3>Sections Replace Accordion, Tabs &amp; Vertical Nav</h3>
+    <p>Sections replace a few things that you are used to from Foundation 3. We've taken the accordion, the tabs and the vertical nav and combined them into this really flexible plugin that can handle all of those. The single JS file handles all the interactionss, but the classes you add to the element control how it gets rendered and styled across our breakpoint.</p>
+
+    <hr>
+
   </div>
 </div>
-<!--
-    <div class="row">
-      <div class="small-3 columns">
-        <div class="section-container" data-section data-options="deep_linking: false; one_up: true">
-          <section class="section">
-            <h5 class="title"><a href="http://zurb.com">Section 1</a></h5>
-            <div class="content" data-slug="panel1">
-              <ul class="side-nav">
-                <li><a href="#">Link Item 1</a></li>
-                <li><a href="#">Link Item 2</a></li>
-                <li><a href="#">Link Item 3</a></li>
-                <li><a href="#">Link Item 4</a></li>
-                <li><a href="#">Link Item 5</a></li>
-                <li><a href="#">Link Item 6</a></li>
-                <li class="divider"></li>
-                <li><a href="#">All &raquo;</a></li>
-              </ul>
-            </div>
-          </section>
-          <section class="section">
-            <h5 class="title"><a href="#panel2">Section 2</a></h5>
-            <div class="content" data-slug="panel2">
-              <ul class="side-nav">
-                <li><a href="#">Link Item 1</a></li>
-                <li><a href="#">Link Item 2</a></li>
-                <li><a href="#">Link Item 3</a></li>
-                <li><a href="#">Link Item 4</a></li>
-                <li><a href="#">Link Item 5</a></li>
-                <li><a href="#">Link Item 6</a></li>
-                <li class="divider"></li>
-                <li><a href="#">All &raquo;</a></li>
-              </ul>
-            </div>
-          </section>
-          <section class="section">
-            <h5 class="title"><a href="#panel3">Section 3</a></h5>
-            <div class="content" data-slug="panel3">
-              <ul class="side-nav">
-                <li><a href="#">Link Item 1</a></li>
-                <li><a href="#">Link Item 2</a></li>
-                <li><a href="#">Link Item 3</a></li>
-                <li><a href="#">Link Item 4</a></li>
-                <li><a href="#">Link Item 5</a></li>
-                <li><a href="#">Link Item 6</a></li>
-                <li class="divider"></li>
-                <li><a href="#">All &raquo;</a></li>
-              </ul>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div> -->
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build sections in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building a sections using our predefined classes is super-easy, you just need to create a <code>&lt;div class="section-container" data-section&gt;</code> as a wrapper for the sections themselves. Inside of this wrapper, you'll create either a <code>&lt;section class="section"&gt;</code> or <code>&lt;div class="section"&gt;</code>. Within that you'll include some sort of <code>.title</code> (this can be headers or a paragragh) and a <code>&lt;div class="content"&gt;</code>. Here is the markup you'll need:</p>
+
+<%= code_example '
+<section class="section">
+  <p class="title"><a href="#panel1">Section 1</a></p>
+  <div class="content" data-slug="panel1">
+    <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</section>
+<section class="section">
+  <p class="title"><a href="#panel2">Section 2 Section 2</a></p>
+  <div class="content" data-slug="panel2">
+    <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</section>', :html %>
+
+    <p>The class options:</p>
+    <ul class="disc">
+
+    </ul>
+
+    <p>For these styles to come across, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>section from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+
+    <hr>
+
+    <h5>Default SCSS Variables</h5>
+<%= code_example '
+/* We use these to set padding and hover factor */
+$section-padding:                emCalc(15px);
+$section-function-factor:        10%;
+
+/* These style the titles */
+$section-title-color:            #333;
+$section-title-bg:               #efefef;
+$section-title-bg-active:        darken($section-title-bg, $section-function-factor);
+$section-title-bg-active-tabs:   #fff;
+
+/* Want to control border size, here ya go! */
+$section-border-size:            1px;
+$section-border-style:           solid;
+$section-border-color:           #ccc;
+
+/* Control the color of the background and some size options */
+$section-content-bg:             #fff;
+$section-vertical-nav-min-width: emCalc(200px);
+$section-bottom-margin:          emCalc(20px);
+', :css %>
+
+<p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+<%= code_example '
+<script src="path/to/zepto.js"></script>
+<script src="path/to/foundation.js"></script>
+<script src="path/to/foundation.alerts.js"></script>
+<script type="text/javascript">
+  $(document).foundation();
+</script>
+', :html %>
+
+    <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
+
+<%= code_example '
+<div data-alert class="alert-box">
+  <!-- Your content goes here -->
+  <a href="#" class="close">&times;</a>
+</div>
+', :html %>
 
   </div>
 </div>

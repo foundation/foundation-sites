@@ -18,7 +18,7 @@
 
       // comma delimited list of selectors that, on click, will close clearing,
       // add 'div.clearing-blackout, div.visible-img' to close on background click
-      close_selectors : 'a.clearing-close',
+      close_selectors : '.clearing-close',
 
       // event initializers and locks
       init : false,

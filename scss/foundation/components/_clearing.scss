@@ -44,21 +44,21 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   height: 100%;
   top: 0;
   #{$default-float}: 0;
-  z-index: 999;
+  z-index: 998;
 
   .clearing-close { display: block; }
 }
 
 .clearing-container {
   position: relative;
-  z-index: 999;
+  z-index: 998;
   height: 100%;
   overflow: hidden;
   margin: 0;
 }
 
 .visible-img {
-  height: 100%;
+  height: 95%;
   position: relative;
 
   img {
@@ -80,15 +80,14 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   background: $clearing-caption-bg;
   width: 100%;
   padding: $clearing-caption-padding;
-  position: fixed;
+  position: absolute;
   #{$default-float}: 0;
 }
 
 .clearing-close {
   z-index: 999;
-  position: absolute;
-  top: 10px;
-  #{$default-opposite}: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
   font-size: $clearing-close-size;
   line-height: 1;
   color: $clearing-close-color;
@@ -180,6 +179,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
             border: none;
             -webkit-box-shadow: none;
                     box-shadow: none;
+            display: block;
           }
 
           img {
@@ -197,5 +197,13 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
       overflow: hidden;
       height: $clearing-active-img-height;
     }
+  }
+
+  .clearing-close {
+    position: absolute;
+    top: 10px;
+    #{$default-opposite}: 20px;
+    padding-left: 0;
+    padding-top: 0;
   }
 }

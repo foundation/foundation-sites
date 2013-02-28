@@ -10,6 +10,7 @@ $button-lrg:              emCalc(16px) !default;
 
 // We use this to control the display property.
 $button-display:          inline-block !default;
+$button-margin-bottom:    emCalc(20px) !default;
 
 // We use these to control button text styles.
 $button-font-color:       #fff !default;
@@ -49,7 +50,7 @@ $button-disabled-opacity: 0.6 !default;
     font-family: inherit;
     font-weight: $button-font-weight;
     line-height: 1;
-    margin: 0 0 emCalc(20px) 0;
+    margin: 0 0 $button-margin-bottom;
     position: relative;
     text-decoration: none;
     text-align: $button-font-align;

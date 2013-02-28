@@ -50,8 +50,16 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
   font-weight: normal;
   width: 95%;
 }
+
+.lt-ie9 .joyride-tip-guide {
+  max-width:800px;
+  left: 50%;
+  margin-left:-400px;
+}
+
 .joyride-content-wrapper {
   width: 100%;
+
   padding: $joyride-tip-padding;
 
   .button { margin-bottom: 0 !important; }
