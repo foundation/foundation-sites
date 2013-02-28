@@ -9,7 +9,6 @@
     version : '4.0.0',
 
     settings : {
-      bodyHeight : 0,
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
