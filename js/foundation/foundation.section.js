@@ -58,7 +58,7 @@
       }
 
       if (section.hasClass('active')) {
-        if (self.small(parent) 
+        if (self.small(parent)
           || self.is_vertical(parent)
           || self.is_accordion(parent)) {
           section
@@ -98,8 +98,8 @@
               .not(':first')
               .removeClass('active')
               .attr('style', '');
-          } else if (active_section.length < 1 
-            && !self.is_vertical($this) 
+          } else if (active_section.length < 1
+            && !self.is_vertical($this)
             && !self.is_accordion($this)) {
             var first = $this.find('section, .section').first();
             first.addClass('active');
@@ -124,7 +124,7 @@
       return el.hasClass('vertical-nav');
     },
 
-    is_accordion : fucntion (el) {
+    is_accordion : function (el) {
       return el.hasClass('accordion');
     },
 
