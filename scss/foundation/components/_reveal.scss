@@ -5,23 +5,27 @@
 //
 
 // We use these to control the style of the reveal overlay.
-$reveal-overlay-bg: rgba(#000, .45) !default;
-$reveal-overlay-bg-old: #000 !default;
+$reveal-overlay-bg:      rgba(#000, .45) !default;
+$reveal-overlay-bg-old:  #000 !default;
 
 // We use these to control the style of the modal itself.
-$reveal-modal-bg: #fff !default;
-$reveal-position-top: emCalc(15px) !default;
-$reveal-default-width: 80% !default;
-$reveal-modal-padding: emCalc(20px) !default;
-$reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
+$reveal-modal-bg:        #fff !default;
+$reveal-position-top:    emCalc(15px) !default;
+$reveal-default-width:   80% !default;
+$reveal-modal-padding:   emCalc(20px) !default;
+$reveal-box-shadow:      0 0 10px rgba(#000,.4) !default;
+
+// We use these to style the reveal close button
 $reveal-close-font-size: emCalc(22px) !default;
-$reveal-close-top: emCalc(8px) !default;
-$reveal-close-side: emCalc(11px) !default;
-$reveal-close-color: #aaa !default;
-$reveal-close-weight: bold !default;
-$reveal-border-style: solid !default;
-$reveal-border-width: 1px !default;
-$reveal-border-color: #666 !default;
+$reveal-close-top:       emCalc(8px) !default;
+$reveal-close-side:      emCalc(11px) !default;
+$reveal-close-color:     #aaa !default;
+$reveal-close-weight:    bold !default;
+
+// We use these to control the modal border
+$reveal-border-style:    solid !default;
+$reveal-border-width:    1px !default;
+$reveal-border-color:    #666 !default;
 
 //
 // Reveal Mixins
@@ -52,7 +56,8 @@ $reveal-border-color: #666 !default;
     background-color: #fff;
 
     // Make sure rows don't have a min-width on them
-    [class*="small-"], [class*="large-"] { min-width: 0; }
+    .column,
+    .columns { min-width: 0; }
 
     // Get rid of margin from first and last element inside modal
     & > :first-child { margin-top: 0; }

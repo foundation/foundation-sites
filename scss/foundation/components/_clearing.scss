@@ -58,7 +58,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 }
 
 .visible-img {
-  height: 100%;
+  height: 95%;
   position: relative;
 
   img {
@@ -80,7 +80,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   background: $clearing-caption-bg;
   width: 100%;
   padding: $clearing-caption-padding;
-  position: fixed;
+  position: absolute;
   #{$default-float}: 0;
 }
 
