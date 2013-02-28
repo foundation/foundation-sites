@@ -1,4 +1,4 @@
-<% @template = template if defined?(template) %>
+<% template = @template if defined?(@template) %>
 <!DOCTYPE html>
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -20,7 +20,7 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<h2>Welcome to Foundation</h2>
-			<p>This is version <%= Foundation::VERSION %>.</p>
+			<p>This is version <%= template[:options][:version] %>.</p>
 			<hr />
 		</div>
 	</div>
@@ -102,7 +102,7 @@
   ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
   '.js><\/script>')
   </script>
-	<% @template[:options][:javascripts].each do |f| %>
+	<% template[:options][:javascripts].each do |f| %>
 	<script src="js/<%= f %>"></script>
 	<% end %>
   <script src="js/foundation/app.js"></script>
