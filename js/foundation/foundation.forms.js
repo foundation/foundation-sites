@@ -61,7 +61,6 @@
           self.refresh_custom_select($(this));
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
-          console.log('label')
           var $associatedElement = $('#' + self.escape($(this).attr('for')) + ':not([data-customforms="disabled"])'),
               $customCheckbox,
               $customRadio;
@@ -123,6 +122,7 @@
           }
         })
         .on('click.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
+          alert('click')
           var $this = $(this),
               $customDropdown = $this.closest('div.custom.dropdown'),
               $select = $customDropdown.prev(),

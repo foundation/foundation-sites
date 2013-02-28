@@ -117,8 +117,8 @@
 
       width = target.data('width');
       nub = tip.children('.nub');
-      nubHeight = nub.outerHeight();
-      nubWidth = nub.outerWidth();
+      nubHeight = this.outerHeight(nub);
+      nubWidth = this.outerHeight(nub);
 
       objPos = function (obj, top, right, bottom, left, width) {
         return obj.css({

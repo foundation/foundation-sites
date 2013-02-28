@@ -34,7 +34,7 @@ $custom-dropdown-offset-top:            none !default;
 $custom-dropdown-list-padding:          emCalc(4px) !default;
 $custom-dropdown-left-padding:          emCalc(6px) !default;
 $custom-dropdown-right-padding:         emCalc(38px) !default;
-$custom-dropdown-list-item-min-height:  emCalc(18px) !default;
+$custom-dropdown-list-item-min-height:  emCalc(24px) !default;
 
 // We decided not to make a mixin for the custom forms because
 // they rely on a very specific class naming structure.
