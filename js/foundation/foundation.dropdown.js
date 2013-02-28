@@ -41,7 +41,7 @@
         self.toggle($(this));
       });
 
-      $('html, body').on('click.fndtn.dropdown', function (e) {
+      $('*, html, body').on('click.fndtn.dropdown', function (e) {
         if (!$(e.target).data('dropdown')) {
           $('[data-dropdown-content]')
             .css('left', '-99999px')
