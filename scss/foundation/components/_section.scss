@@ -1,18 +1,26 @@
 //
 // Section Variables
 //
-$section-padding: emCalc(15px) !default;
-$section-function-factor: 10% !default;
-$section-border-size: 1px !default;
-$section-title-color: #333 !default;
-$section-title-bg: #efefef !default;
-$section-title-bg-active: darken($section-title-bg, $section-function-factor) !default;
-$section-title-bg-active-tabs: #fff !default;
-$section-border-style: solid !default;
-$section-border-color: #ccc !default;
-$section-content-bg: #fff !default;
+
+// We use these to set padding and hover factor
+$section-padding:                emCalc(15px) !default;
+$section-function-factor:        10% !default;
+
+// These style the titles
+$section-title-color:            #333 !default;
+$section-title-bg:               #efefef !default;
+$section-title-bg-active:        darken($section-title-bg, $section-function-factor) !default;
+$section-title-bg-active-tabs:   #fff !default;
+
+// Want to control border size, here ya go!
+$section-border-size:            1px !default;
+$section-border-style:           solid !default;
+$section-border-color:           #ccc !default;
+
+// Control the color of the background and some size options
+$section-content-bg:             #fff !default;
 $section-vertical-nav-min-width: emCalc(200px) !default;
-$section-bottom-margin: emCalc(20px) !default;
+$section-bottom-margin:          emCalc(20px) !default;
 
 
 //
@@ -140,6 +148,7 @@ $section-bottom-margin: emCalc(20px) !default;
         position: absolute;
         left: 100%;
         top: -1px;
+        z-index: 999;
         min-width: $section-vertical-nav-min-width;
         border: $section-border-size $section-border-style $section-border-color;;
       }
@@ -159,6 +168,10 @@ $section-bottom-margin: emCalc(20px) !default;
   }
 
   @media #{$small} {
+
+    .section-container.accordion .section {
+      padding-top: 0 !important;
+    }
 
     .section-container.vertical-nav {
       @include section-container(false);

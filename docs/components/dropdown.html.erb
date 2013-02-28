@@ -1,6 +1,6 @@
 <% @page_title = "Dropdown" %>
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
     <h4 class="subheader">In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a univeral dropdown plugin that will attach dropdowns or popovers next to anything!</h4>
@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-  <div class="large-12">
+  <div class="large-12 columns">
 
     <h5>Build With Predefined HTML Classes</h5>
     <p>To create the dropdown you'll need to attach a <code>data-dropdown="your-id"</code> to whatever element you want the dropdown attached to. From there you'll create a list that holds the links or content and add an <code>id="your-id"</code> that associates with the element it belongs to. To style the dropdown, we've included a class of <code>.f-dropdown</code> that you can target and style to your hearts desire. If you want the dropdown to be content, simply chain the class <code>.content</code> to the dropdown. Here's an example of that markup:</p>
@@ -53,7 +53,7 @@
     <hr>
 
     <h3>Build With Our Mixins</h3>
-    <p>We've included SCSS mixins used to style dropdowns. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_dropdown.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style dropdowns. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_dropdown.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/dropdown";

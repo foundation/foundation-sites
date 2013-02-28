@@ -10,7 +10,80 @@
     <script src="<%= asset_path %>/vendor/custom.modernizr.js"></script>
   </head>
   <body>
+
+    <nav class="top-bar">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="#">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="#">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Docs</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="#" class="button">Get Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
+    <% @page_title = "4 Documentation" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>Foundation <%= @page_title %></h1>
+        <hr>
+      </div>
+    </div>
+
     <%= yield %>
+
+    <footer class="row full-width">
+      <div class="large-5 columns">
+        <h6><strong>Made by ZURB</strong></h6>
+        <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 14 years of experience building web products, services and websites into this framework. <a href="../about.php">Foundation Info and Goodies &rarr;</a></p>
+      </div>
+
+      <div class="large-3 columns">
+        <h6><strong>Using Foundation?</strong></h6>
+        <p>Let us know how you're using Foundation and we might feature you as an example! <a href="mailto:foundation@zurb.com?subject=I'm%20using%20Foundation">Get in touch &rarr;</a></p>
+      </div>
+
+      <div class="large-4 columns">
+        <h6><strong>Need some help?</strong></h6>
+        <p>For answers or help visit the <a href="support.php">Support page</a>.</p>
+      </div>
+    </footer>
+
+    <div id="copyright">
+      <div class="row full-width">
+        <div class="large-4 columns">
+          <p>Site content &copy; 2013 ZURB, inc.</p>
+        </div>
+        <div class="large-8 columns">
+          <ul class="inline-list right">
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="../download.php">Download</a></li>
+            <li><a href="index.php">Documentation</a></li>
+            <li><a href="../about.php">About</a></li>
+            <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <script>
       document.write('<script src="<%= asset_path %>/vendor/'
         + ('__proto__' in {} ? 'zepto' : 'jquery')
@@ -18,7 +91,9 @@
     </script>
     <script src="<%= asset_path %>/docs.js"></script>
     <script>
-      $(document).foundation().foundation('joyride', 'start');
+      $(document).foundation(function (response) {
+        console.log(response.errors);
+      });
     </script>
   </body>
 </html>

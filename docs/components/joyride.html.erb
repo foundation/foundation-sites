@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Joyride is an extremely flexible plugin that will give users a tour of your site or app when they visit.</h4>
+    <h4 class="subheader">Joyride is an extremely flexible plugin that gives users a tour of your site or app when they visit.</h4>
 
     <div id="firstStop" class="panel">Some awesome part of your site!</div>
 
@@ -38,7 +38,7 @@
 ', :html %>
 
     <h5>We Add Some HTML with JS</h5>
-    <p>To make Joyride really easy to use, we build its container and tour element inside the JS. This can make it hard to know what to target for styling purposes in some cases. To help this process go smoothly, here's what the output looks like with the appropriate classes to target for styling:</p>
+    <p>To make Joyride really easy to use, we built its container and tour element inside the JS. This can make it hard to know what to target for styling purposes in some cases. To help this process go smoothly, here's what the output looks like with the appropriate classes to target for styling:</p>
 
 <%= code_example '
 <!-- Here is the markup our JS creates for you -->
@@ -55,7 +55,7 @@
     <hr>
 
     <h3 id="numero2">Available SCSS Variables</h3>
-    <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things. Here's a list of the variables:</p>
+    <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
 
 <%= code_example '
 /* Controlling default Joyride styles */
@@ -102,7 +102,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5);
 </script>
 ', :html %>
 
-    <p>Then, you'll need to add a data-orbit to make the JS work properly on that element. That looks like:</p>
+    <p>Then, you'll need to add a data-joyride to make the JS work properly on that element. It looks something like this:</p>
 
 <%= code_example '
 <ol data-joyride>

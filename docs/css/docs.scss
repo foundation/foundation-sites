@@ -19,6 +19,34 @@
 .css > .CodeRay:before { content: "SCSS"; }
 .js > .CodeRay:before { content: "JS"; }
 
+
+/* Docs Footer Styles */
+.row.full-width {
+  max-width: 100%;
+}
+footer.row.full-width {
+  padding-top: 30px;
+  border-top: solid 1px #ddd;
+  font-size: 14px;
+}
+
+#copyright {
+  background: #3f3f3f;
+  color: #fff;
+  padding: 11px 0;
+  margin-top: 30px;
+
+  a {
+    color: #fff;
+    font-size: 14px;
+  }
+
+  p,
+  ul { margin-bottom: 0; }
+}
+
+
+
 /* Alert Docs */
 .alert-base {
   @include alert-base;

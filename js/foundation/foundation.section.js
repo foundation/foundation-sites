@@ -50,6 +50,7 @@
       var $this = $(this),
           section = $this.closest('section, .section'),
           content = section.find('.content'),
+          parent = section.closest('[data-section]'),
           self = Foundation.libs.section;
 
       if (!self.settings.deep_linking && content.length > 0) {
@@ -57,23 +58,25 @@
       }
 
       if (section.hasClass('active')) {
-        if (self.small() || self.is_vertical(section.closest('[data-section]'))) {
+        if (self.small(parent)
+          || self.is_vertical(parent)
+          || self.is_accordion(parent)) {
           section
             .removeClass('active')
             .attr('style', '');
         }
       } else {
-        if (self.small() || self.settings.one_up) {
+        if (self.small(parent) || self.settings.one_up) {
           $this
             .closest('[data-section]')
             .find('section, .section')
             .removeClass('active')
             .attr('style', '');
 
-          section.css('padding-top', self.outerHeight(section.find('.title')) - 3);
+          section.css('padding-top', self.outerHeight(section.find('.title')) - 2);
         }
 
-        if (self.small()) {
+        if (self.small(parent)) {
           section.attr('style', '');
         }
 
@@ -88,34 +91,41 @@
           self = Foundation.libs.section;
 
         sections.each(function() {
-          var active_section = $(this).find('section.active, .section.active');
+          var $this = $(this),
+              active_section = $this.find('section.active, .section.active');
           if (active_section.length > 1) {
             active_section
               .not(':first')
               .removeClass('active')
               .attr('style', '');
-          } else if (active_section.length < 1 && !self.is_vertical($(this))) {
-            var first = $(this).find('section, .section').first();
+          } else if (active_section.length < 1
+            && !self.is_vertical($this)
+            && !self.is_accordion($this)) {
+            var first = $this.find('section, .section').first();
             first.addClass('active');
 
-            if (self.small()) {
+            if (self.small($this)) {
               first.attr('style', '');
             } else {
-              first.css('padding-top', self.outerHeight(first.find('.title')) - 3);
+              first.css('padding-top', self.outerHeight(first.find('.title')) - 2);
             }
           }
 
-          if (self.small()) {
+          if (self.small($this)) {
             active_section.attr('style', '');
           } else {
-            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 3);
+            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 2);
           }
-          self.position_titles($(this));
+          self.position_titles($this);
         });
     },
 
     is_vertical : function (el) {
       return el.hasClass('vertical-nav');
+    },
+
+    is_accordion : function (el) {
+      return el.hasClass('accordion');
     },
 
     set_active_from_hash : function () {
@@ -145,11 +155,14 @@
       }
     },
 
-    small : function () {
+    small : function (el) {
+      if (el && this.is_accordion(el)) {
+        return true;
+      }
       if ($('html').hasClass('lt-ie9')) {
         return true;
       }
-      return $(this.scope).width() < 769;
+      return $(this.scope).width() < 768;
     },
 
     off : function () {

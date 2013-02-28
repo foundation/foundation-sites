@@ -8,10 +8,6 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-/* TODO & NOTES:
-  - Test error return, since some of this code has changed slightly.
-*/
-
 (function () {
   // add dusty browser stuff
   if (!Array.prototype.filter) {
@@ -116,6 +112,11 @@
         }
       }
 
+      // if first argument is callback, add to args
+      if (typeof libraries === 'function') {
+        args.unshift(libraries);
+      }
+
       return this.response_obj(responses, args);
     },
 
@@ -123,7 +124,7 @@
       for (var callback in args) {
         if (typeof args[callback] === 'function') {
           return args[callback]({
-            error: response_arr.filter(function (s) {
+            errors: response_arr.filter(function (s) {
               if (typeof s === 'string') return s;
             })
           });
@@ -134,12 +135,12 @@
     },
 
     init_lib : function (lib, args) {
-      // return this.trap(function () {
+      return this.trap(function () {
         if (this.libs.hasOwnProperty(lib)) {
           this.patch(this.libs[lib]);
           return this.libs[lib].init.apply(this.libs[lib], args);
         }
-      // }.bind(this), lib);
+      }.bind(this), lib);
     },
 
     trap : function (fun, lib) {
@@ -298,7 +299,7 @@
     },
 
     error : function (error) {
-      return 'Foundation error: ' + error.name + ' ' + error.message + '; ' + error.more;
+      return error.name + ' ' + error.message + '; ' + error.more;
     },
 
     // remove all foundation events.
