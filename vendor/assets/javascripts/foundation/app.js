@@ -7,7 +7,7 @@
         tabs: {callback : $.foundation.customForms.appendCustomMarkup}
       };
 
-  $(document).ready(function() {
+  $doc.ready(function() {
     // Allow for setting per-plugin default options
     var userDefaults = $.extend({}, defaults, $.foundationDefaults);
     
@@ -22,7 +22,6 @@
     $.fn.foundationTooltips         ? $doc.foundationTooltips(userDefaults.tooltips) : null;
     $.fn.foundationMagellan         ? $doc.foundationMagellan(userDefaults.magellan) : null;
     $.fn.foundationClearing         ? $doc.foundationClearing(userDefaults.clearing) : null;
-
     $.fn.placeholder                ? $('input, textarea').placeholder() : null;
   });
 
