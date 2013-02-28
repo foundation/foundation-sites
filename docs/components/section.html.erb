@@ -9,12 +9,27 @@
       <div class="large-3 columns">
         <div class="section-container vertical-nav" data-section>
           <section class="section">
-            <p class="title"><a href="http://zurb.com">Top Level Link</a></p>
+            <p class="title"><a href="#panel1">Section 1</a></p>
+            <div class="content" data-slug="panel1">
+              <ul class="side-nav">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link 1</a></li>
+              </ul>
+            </div>
           </section>
           <section class="section">
             <p class="title"><a href="#panel2">Section 2</a></p>
             <div class="content" data-slug="panel2">
-              <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <ul class="side-nav">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link 1</a></li>
+              </ul>
             </div>
           </section>
         </div>
@@ -67,141 +82,36 @@
   </div>
 </section>', :html %>
 
+    <p>The class options:</p>
+    <ul class="disc">
+
+    </ul>
+
     <p>For these styles to come across, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>section from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
 
     <hr>
 
-    <h3>Build with Mixins</h3>
-    <p>We've included SCSS mixins used to style section elements. To use these mixins, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_section.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
-
-<%= code_example '
-@import "foundation/foundation-global", "foundation/section";
-', :css %>
-
-    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
-
-<%= code_example '
-<section class="section">
-  <p class="title"><a href="#panel1">Section 1</a></p>
-  <div class="content" data-slug="panel1">
-    <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-</section>
-<section class="section">
-  <p class="title"><a href="#panel2">Section 2 Section 2</a></p>
-  <div class="content" data-slug="panel2">
-    <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-</section>', :html %>
-
-
-    <h5>Quick Mixin</h5>
-    <p>You can build your alert using our global mixin by including it on your custom class or ID in your stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. The rest of the defaults can be modified using the available variables. The global mixin looks like this:</p>
-
-<%= code_example '
-/* Using the default styles */
-.your-class-name { @include alert; }
-
-/* Using the available options */
-.your-class-name { @include alert(#ff6c3c); }
-', :css %>
-
-<div data-alert class="alert-box">
-This is a default alert.
-<a href="#" class="close">&times;</a>
-</div>
-
-<div data-alert class="alert-base custom-bg">
-This is an alert with a custom background set.
-<a href="#" class="close">&times;</a>
-</div>
-
-    <h5>Base Mixin</h5>
-    <p>Use this mixin to create the base styles for alert boxes. This will include styles that create the basic structure of an alert box.</p>
-
-
-<%= code_example '
-.your-class-name { @include alert-base; }
-', :css %>
-
-<div class="alert-base">This is the base mixin.</div>
-
-    <h5>Background Mixin</h5>
-    <p>You can control the background, border and text styles for the alert using this mixin. We base the border and text style on the background color you choose using some sweet Sass logic.</p>
-
-<%= code_example '
-.your-class-name {
-  @include alert-base;
-  @include alert-style($bg);
-}', :css %>
-
-    <div data-alert class="alert-base bg">This is base and bg mixins.</div>
-
-    <p>You can set <code>$bg</code> color to any of our predefined color variables or any hexadecimal color of your choosing. To set this value to something other than our default, use <code>@include alert-bg(#hexcolor);</code></p>
-
-    <h5>Close Button Mixin</h5>
-    <p>You can include a close button with each of the alert boxes by adding an anchor right before the closing <code>&lt;/div&gt;</code>. This anchor should have a class of <code>.close</code> in order to work with <strong>foundation.alerts.js</strong>, which contains the interaction for closing.</p>
-
-<%= code_example '
-.your-class-name {
-  @include alert-base;
-  @include alert-style;
-  .close { @include alert-close; }
-}', :css %>
-
-    <div data-alert class="alert-base bg">
-      This is base, bg and close mixins.
-      <a href="" class="close">&times;</a>
-    </div>
-
-    <h5>Radius Mixin</h5>
-    <p>We've also created a global radius mixin that you can use to add border-radius to any element you'd like.</p>
-
-<%= code_example '
-.your-class-name {
-  @include alert-base;
-  @include alert-style($success-color);
-  @include radius($radius);
-}', :css %>
-
-<div data-alert class="alert-base bg radius success">
-This is base, bg and radius mixins.
-<a href="" class="close">&times;</a>
-</div>
-
     <h5>Default SCSS Variables</h5>
 <%= code_example '
-/* We use this to control alert padding. */
-$alert-padding-top:         emCalc(11px);
-$alert-padding-left:        $alert-padding-top;
-$alert-padding-right:       $alert-padding-top + emCalc(10px);
-$alert-padding-bottom:      $alert-padding-top + emCalc(1px);
+/* We use these to set padding and hover factor */
+$section-padding:                emCalc(15px);
+$section-function-factor:        10%;
 
-/* We use these to control text style. */
-$alert-font-weight:         bold;
-$alert-font-size:           emCalc(14px);
-$alert-font-color:          #fff;
-$alert-font-color-alt:      darken($secondary-color, 60%);
+/* These style the titles */
+$section-title-color:            #333;
+$section-title-bg:               #efefef;
+$section-title-bg-active:        darken($section-title-bg, $section-function-factor);
+$section-title-bg-active-tabs:   #fff;
 
-/* We use this for close hover effect. */
-$alert-function-factor:     10%;
+/* Want to control border size, here ya go! */
+$section-border-size:            1px;
+$section-border-style:           solid;
+$section-border-color:           #ccc;
 
-/* We use these to control border styles. */
-$alert-border-style:        solid;
-$alert-border-width:        1px;
-$alert-border-color:        darken($primary-color, $alert-function-factor);
-$alert-bottom-margin:       emCalc(20px);
-
-/* We use these to style the close buttons */
-$alert-close-color:         #333;
-$alert-close-position:      emCalc(5px);
-$alert-close-font-size:     emCalc(22px);
-$alert-close-opacity:       0.3;
-$alert-close-opacity-hover: 0.5;
-$alert-close-padding:       5px 4px 4px;
-
-/* We use this to control border radius */
-$alert-radius:              $global-radius;
+/* Control the color of the background and some size options */
+$section-content-bg:             #fff;
+$section-vertical-nav-min-width: emCalc(200px);
+$section-bottom-margin:          emCalc(20px);
 ', :css %>
 
 <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
