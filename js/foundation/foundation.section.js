@@ -129,15 +129,21 @@
     },
 
     set_active_from_hash : function () {
-      var hash = window.location.hash.substring(1);
+      var hash = window.location.hash.substring(1),
+          sections = $('[data-section]')
+          self = this;
 
-      if (hash.length > 0 && this.settings.deep_linking) {
-        $(this.scope)
-          .find('[data-section]')
-          .find('.content[data-slug="' + hash + '"]')
-          .closest('section, .section')
-          .addClass('active');
-      }
+      sections.each(function () {
+        var section = $(this);
+        $.extend(true, self.settings, self.data_options(section));
+
+        if (hash.length > 0 && self.settings.deep_linking) {
+          section
+            .find('.content[data-slug="' + hash + '"]')
+            .closest('section, .section')
+            .addClass('active');
+        }
+      });
     },
 
     position_titles : function (section, off) {
