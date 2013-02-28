@@ -14,6 +14,12 @@
     <p>Foundation JavaScript was designed to work with <a href="http://zeptojs.com/" title="Zepto Docs">Zepto</a> and <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> out of the gate. Zepto is not supported by all browsers, so as suggested in the Zepto documentation, you should test for compatability and load Zepto or jQuery as necessary.</p>
 
     <h5>Include Libraries</h5>
+    <p>In the <code>head</code> section of your page, add Modernizr. Modernizr acts as a shim for HTML5 elements for older browsers as well as detection for mobile devices.</p>
+
+<%= code_example '
+<script src="/js/custom.modernizr.js></script>
+', :html %>
+
     <p>Before the closing <code>body</code> tag, insert the following JavaScript.</p>
 
 <%= code_example "
@@ -47,6 +53,10 @@
   $(document).foundation();
 </script>
 ', :html %>
+
+    <p>That's all you need to call!</p>
+
+    <p class="panel"><strong>Note:</strong> We include tested versions of jQuery and Zepto in the Foundation repo to get you started quickly. If you want to build your own version of Zepto, Foundation employs the <i>event</i>, <i>fx</i>, <i>fx_methods</i>, <i>ajax</i>, <i>form</i>, <i>assets</i>, <i>data</i>, <i>selector</i>, and <i>stack</i> modules.</p>
 
     <hr>
 
