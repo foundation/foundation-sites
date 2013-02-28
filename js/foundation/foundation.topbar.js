@@ -119,7 +119,7 @@
     },
 
     breakpoint : function () {
-      return this.settings.$w.width() <= this.settings.breakPoint;
+      return this.settings.$w.width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
     },
 
     assemble : function () {
