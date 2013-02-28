@@ -70,7 +70,7 @@
             .removeClass('active')
             .attr('style', '');
 
-          section.css('padding-top', self.outerHeight(section.find('.title')) - 3);
+          section.css('padding-top', self.outerHeight(section.find('.title')) - 2);
         }
 
         if (self.small()) {
@@ -101,14 +101,14 @@
             if (self.small()) {
               first.attr('style', '');
             } else {
-              first.css('padding-top', self.outerHeight(first.find('.title')) - 3);
+              first.css('padding-top', self.outerHeight(first.find('.title')) - 2);
             }
           }
 
           if (self.small()) {
             active_section.attr('style', '');
           } else {
-            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 3);
+            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 2);
           }
           self.position_titles($(this));
         });
