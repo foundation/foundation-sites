@@ -114,7 +114,7 @@
           if (self.small($this)) {
             active_section.attr('style', '');
           } else {
-            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 2);
+            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
           }
           self.position_titles($this);
         });
