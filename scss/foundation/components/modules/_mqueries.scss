@@ -457,7 +457,7 @@
       section > ul li a:not(.button) { height: $topBarHeightMobile; line-height: $topBarHeightMobile; padding-left: $topBarHeightMobile / 2 !important; }
 
       /* When the Small Nav is Showing */
-      &.expanded { height: 100%;
+      &.expanded { height: 100% !important;
         ul li.toggle-topbar a { @include cssTriangle($topBarNavToggleSize, darken($topBarNavToggleColor, 20%), bottom); top: auto; bottom: 50%; margin-bottom: -($topBarNavToggleSize / 2); }
       }
     }
