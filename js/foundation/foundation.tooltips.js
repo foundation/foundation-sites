@@ -143,10 +143,10 @@
           objPos(tip, (target.offset().top - this.outerHeight(tip)), 'auto', 'auto', target.offset().left, width)
             .removeClass('tip-override');
         } else if (classes && classes.indexOf('tip-left') > -1) {
-          objPos(tip, (target.offset().top + (this.outerHeight(target) / 2) - nubHeight*1.5), 'auto', 'auto', (target.offset().left - this.outerWidth(tip)), width)
+          objPos(tip, (target.offset().top + (this.outerHeight(target) / 2) - nubHeight*2.5), 'auto', 'auto', (target.offset().left - this.outerWidth(tip) - nubHeight), width)
             .removeClass('tip-override');
         } else if (classes && classes.indexOf('tip-right') > -1) {
-          objPos(tip, (target.offset().top + (this.outerHeight(target) / 2) - nubHeight*1.5), 'auto', 'auto', (target.offset().left + this.outerWidth(target) + 10), width)
+          objPos(tip, (target.offset().top + (this.outerHeight(target) / 2) - nubHeight*2.5), 'auto', 'auto', (target.offset().left + this.outerWidth(target) + nubHeight), width)
             .removeClass('tip-override');
         }
       }

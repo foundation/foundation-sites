@@ -55,7 +55,7 @@
 
       $(window).on('resize.fndtn.dropdown', self.throttle(function () {
         self.resize.call(self);
-      }, 75));
+      }, 50)).trigger('resize');
 
       this.settings.init = true;
     },
@@ -88,11 +88,27 @@
     css : function (dropdown, target) {
       var offset = target.offset();
 
-      return dropdown.css({
-        position : 'absolute',
-        top: offset.top + this.outerHeight(target),
-        left: offset.left
-      });
+      if (this.small()) {
+        dropdown.css({
+          position : 'absolute',
+          width: '95%',
+          left: '2.5%',
+          'max-width': 'none',
+          top: offset.top + this.outerHeight(target),
+        });
+      } else {
+        dropdown.attr('style', '').css({
+          position : 'absolute',
+          top: offset.top + this.outerHeight(target),
+          left: offset.left
+        });
+      }
+
+      return dropdown;
+    },
+
+    small : function () {
+      return $(window).width() < 768 || $('html').hasClass('lt-ie9');
     },
 
     off: function () {

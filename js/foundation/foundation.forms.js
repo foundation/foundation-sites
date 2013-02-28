@@ -26,7 +26,7 @@
 
         this.assemble();
 
-        return this.name;
+        return this.settings.init;
       } else {
         return this[method].call(this, options);
       }
