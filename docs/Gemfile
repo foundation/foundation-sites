@@ -4,3 +4,4 @@ gem 'foreman'
 gem 'stasis'
 gem 'sass', :require => false
 gem 'coderay'
+gem 'uglifier'
