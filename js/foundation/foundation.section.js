@@ -149,7 +149,7 @@
       if ($('html').hasClass('lt-ie9')) {
         return true;
       }
-      return $(this.scope).width() < 769;
+      return $(this.scope).width() < 768;
     },
 
     off : function () {
