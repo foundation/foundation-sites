@@ -48,7 +48,10 @@ $panel-font-color-alt:  #fff !default;
     &>:last-child { margin-bottom: 0; }
 
     // reset header line-heights for panels
-    h1,h2,h3,h4,h5,h6 { line-height: 1; margin-bottom: emCalc(20px) / 2; }
+    h1,h2,h3,h4,h5,h6 {
+      line-height: 1; margin-bottom: emCalc(20px) / 2;
+      &.subheader { line-height: 1.4; }
+    }
   }
 }
 
