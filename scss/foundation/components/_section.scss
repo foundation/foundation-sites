@@ -80,6 +80,7 @@ $section-bottom-margin:          emCalc(20px) !default;
         color: $section-title-color;
         font-size: emCalc(14px);
         white-space: nowrap;
+        width: 100%;
       }
       &:hover { background-color: darken($section-title-bg, $section-function-factor/2); }
     }
@@ -113,6 +114,8 @@ $section-bottom-margin:          emCalc(20px) !default;
       border-right: 0;
       position: absolute;
       z-index: 1;
+
+      a { width: 100%; }
     }
     &:last-child .title { border-right: $section-border-size $section-border-style $section-border-color; }
 
@@ -138,7 +141,7 @@ $section-bottom-margin:          emCalc(20px) !default;
 
     padding-top: 0 !important;
 
-    .title a { width: 100%; }
+    .title a { display: block; width: 100%; }
 
     .content { display: none; }
 
