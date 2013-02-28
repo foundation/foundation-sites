@@ -21,31 +21,31 @@
 
         <p>These have a bit of flexibility since you have access to two separate grids between our built in 768px breakpoint. If you use the <code>small-block-grid</code> only, the grid will keep its spacing and configuration no matter the screen size. If you use <code>large-block-grid</code> only, the list items will stack on top of eachother for small devices. If you use both of those classes combined, you can control the configuration and layout separately for each breakpoint.</p>
 
-    <%= code_example '
-    <!-- Using only the small-block-grid -->
-    <ul class="small-block-grid-2">
-      <li><img src="../img/demos/demo1.png"></li>
-      <li><img src="../img/demos/demo2.png"></li>
-      <li><img src="../img/demos/demo3.png"></li>
-      <li><img src="../img/demos/demo4.png"></li>
-    </ul>
+<%= code_example '
+<!-- Using only the small-block-grid -->
+<ul class="small-block-grid-2">
+  <li><img src="../img/demos/demo1.png"></li>
+  <li><img src="../img/demos/demo2.png"></li>
+  <li><img src="../img/demos/demo3.png"></li>
+  <li><img src="../img/demos/demo4.png"></li>
+</ul>
 
-    <!-- Using only the large-block-grid -->
-    <ul class="large-block-grid-4">
-      <li><img src="../img/demos/demo1.png"></li>
-      <li><img src="../img/demos/demo2.png"></li>
-      <li><img src="../img/demos/demo3.png"></li>
-      <li><img src="../img/demos/demo4.png"></li>
-    </ul>
+<!-- Using only the large-block-grid -->
+<ul class="large-block-grid-4">
+  <li><img src="../img/demos/demo1.png"></li>
+  <li><img src="../img/demos/demo2.png"></li>
+  <li><img src="../img/demos/demo3.png"></li>
+  <li><img src="../img/demos/demo4.png"></li>
+</ul>
 
-    <!-- Using both block grids together for different layouts -->
-    <ul class="small-block-grid-2 large-block-grid-4">
-      <li><img src="../img/demos/demo1.png"></li>
-      <li><img src="../img/demos/demo2.png"></li>
-      <li><img src="../img/demos/demo3.png"></li>
-      <li><img src="../img/demos/demo4.png"></li>
-    </ul>
-    ', :html %>
+<!-- Using both block grids together for different layouts -->
+<ul class="small-block-grid-2 large-block-grid-4">
+  <li><img src="../img/demos/demo1.png"></li>
+  <li><img src="../img/demos/demo2.png"></li>
+  <li><img src="../img/demos/demo3.png"></li>
+  <li><img src="../img/demos/demo4.png"></li>
+</ul>
+', :html %>
 
         <p>For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've <strong>selected block grid from a custom package</strong>. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
@@ -54,38 +54,38 @@
         <h3>Using The Mixin</h3>
         <p>We've included SCSS mixins used to style block-grids. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_block-grid.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
-    <%= code_example '
-    @import "foundation/foundation-global", "foundation/block-grid";
-    ', :css %>
+<%= code_example '
+@import "foundation/foundation-global", "foundation/block-grid";
+', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure. Since we don't have any media queries baked into the mixin itself, you can apply the styles at whatever breakpoint you want! Just change the configuration within each.</p>
 
-    <%= code_example '
-    <ul class="your-class-name">
-      <li><img src="../img/demos/demo1.png"></li>
-      <li><img src="../img/demos/demo2.png"></li>
-      <li><img src="../img/demos/demo3.png"></li>
-      <li><img src="../img/demos/demo4.png"></li>
-    </ul>', :html %>
+<%= code_example '
+<ul class="your-class-name">
+  <li><img src="../img/demos/demo1.png"></li>
+  <li><img src="../img/demos/demo2.png"></li>
+  <li><img src="../img/demos/demo3.png"></li>
+  <li><img src="../img/demos/demo4.png"></li>
+</ul>', :html %>
 
         <h5>Quick Mixin</h5>
         <p>You can build your block-grid using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options configuring the block grid layout and margin on the fly. The global mixin looks like this:</p>
 
-    <%= code_example '
-    /* Mixin and configurable options */
-    .your-class-name { @import block-grid($per-row, $spacing, $base-styles); }
+<%= code_example '
+/* Mixin and configurable options */
+.your-class-name { @import block-grid($per-row, $spacing, $base-styles); }
 
-    /* This controls how many elements will be on each row of the block grid. */
-    /* Set this to whatever number you need, up to the max allowed in the variable */
-    $per-row: false
+/* This controls how many elements will be on each row of the block grid. */
+/* Set this to whatever number you need, up to the max allowed in the variable */
+$per-row: false
 
-    /* This controls how much space is between each item in the block grid */
-    $spacing: $block-grid-default-spacing
+/* This controls how much space is between each item in the block grid */
+$spacing: $block-grid-default-spacing
 
-    /* This controls whether or not base styles come through, set to false to leave out */
-    /* This is handy for when you create multiple block-grids and want less CSS output repetition */
-    $base-style: true
-    ', :css %>
+/* This controls whether or not base styles come through, set to false to leave out */
+/* This is handy for when you create multiple block-grids and want less CSS output repetition */
+$base-style: true
+', :css %>
 
         <ul class="small-block-grid-5">
           <li><img src="../img/demos/demo1.png"></li>
@@ -97,11 +97,11 @@
 
         <h5>Available SCSS Variables</h5>
 
-    <%= code_example '
-    /* We use this to control the maximum blocks and spacing */
-    $block-grid-elements: 12;
-    $block-grid-default-spacing: 10px;
-    ', :css %>
+<%= code_example '
+/* We use this to control the maximum blocks and spacing */
+$block-grid-elements: 12;
+$block-grid-default-spacing: 10px;
+', :css %>
 
       </div>
     </div>
