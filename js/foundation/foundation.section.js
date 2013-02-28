@@ -90,34 +90,34 @@
       var sections = $('[data-section]'),
           self = Foundation.libs.section;
 
-        sections.each(function() {
-          var $this = $(this),
-              active_section = $this.find('section.active, .section.active');
-          if (active_section.length > 1) {
-            active_section
-              .not(':first')
-              .removeClass('active')
-              .attr('style', '');
-          } else if (active_section.length < 1
-            && !self.is_vertical($this)
-            && !self.is_accordion($this)) {
-            var first = $this.find('section, .section').first();
-            first.addClass('active');
-
-            if (self.small($this)) {
-              first.attr('style', '');
-            } else {
-              first.css('padding-top', self.outerHeight(first.find('.title')) - 1);
-            }
-          }
+      sections.each(function() {
+        var $this = $(this),
+            active_section = $this.find('section.active, .section.active');
+        if (active_section.length > 1) {
+          active_section
+            .not(':first')
+            .removeClass('active')
+            .attr('style', '');
+        } else if (active_section.length < 1
+          && !self.is_vertical($this)
+          && !self.is_accordion($this)) {
+          var first = $this.find('section, .section').first();
+          first.addClass('active');
 
           if (self.small($this)) {
-            active_section.attr('style', '');
+            first.attr('style', '');
           } else {
-            active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
+            first.css('padding-top', self.outerHeight(first.find('.title')) - 1);
           }
-          self.position_titles($this);
-        });
+        }
+
+        if (self.small($this)) {
+          active_section.attr('style', '');
+        } else {
+          active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
+        }
+        self.position_titles($this);
+      });
     },
 
     is_vertical : function (el) {
@@ -129,15 +129,21 @@
     },
 
     set_active_from_hash : function () {
-      var hash = window.location.hash.substring(1);
+      var hash = window.location.hash.substring(1),
+          sections = $('[data-section]')
+          self = this;
 
-      if (hash.length > 0 && this.settings.deep_linking) {
-        $(this.scope)
-          .find('[data-section]')
-          .find('.content[data-slug="' + hash + '"]')
-          .closest('section, .section')
-          .addClass('active');
-      }
+      sections.each(function () {
+        var section = $(this);
+        $.extend(true, self.settings, self.data_options(section));
+
+        if (hash.length > 0 && self.settings.deep_linking) {
+          section
+            .find('.content[data-slug="' + hash + '"]')
+            .closest('section, .section')
+            .addClass('active');
+        }
+      });
     },
 
     position_titles : function (section, off) {
