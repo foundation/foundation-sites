@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.0.alpha',
+    version : '4.0.0',
 
     settings : {
       deep_linking: true,
@@ -54,7 +54,7 @@
           self = Foundation.libs.section;
 
       if (!self.settings.deep_linking && content.length > 0) {
-          e.preventDefault();
+        e.preventDefault();
       }
 
       if (section.hasClass('active')) {
@@ -73,7 +73,7 @@
             .removeClass('active')
             .attr('style', '');
 
-          section.css('padding-top', self.outerHeight(section.find('.title')) - 2);
+          section.css('padding-top', self.outerHeight(section.find('.title')) - 1);
         }
 
         if (self.small(parent)) {
@@ -107,7 +107,7 @@
             if (self.small($this)) {
               first.attr('style', '');
             } else {
-              first.css('padding-top', self.outerHeight(first.find('.title')) - 2);
+              first.css('padding-top', self.outerHeight(first.find('.title')) - 1);
             }
           }
 
