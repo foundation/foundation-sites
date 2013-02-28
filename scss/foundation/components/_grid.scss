@@ -150,24 +150,18 @@ $total-columns: 12 !default;
     }
 
     @for $i from 2 through $total-columns - 2 {
-      .large-push#{-$i} { @include grid-column($push:$i, $collapse:null); }
-      .large-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
+      .push#{-$i} { @include grid-column($push:$i, $collapse:null); }
+      .pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
+    }
+
+    @for $i from 2 through $total-columns - 2 {
+      .small-push#{-$i} { left: inherit; }
+      .small-pull#{-$i} { right: inherit; }
     }
 
     .column.large-centered,
     .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:none); }
 
   }
-
-
-  @media only screen and (max-width: #{$small-screen}) {
-
-    @for $i from 2 through $total-columns - 2 {
-      .small-push#{-$i} { @include grid-column($push:$i, $collapse:null); }
-      .small-pull#{-$i} { @include grid-column($pull:$i, $collapse:null); }
-    }
-
-  }
-
 
 }
