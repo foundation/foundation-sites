@@ -102,9 +102,6 @@ $switch-label-outline:            1px dotted #888 !default;
     @include single-transition(all, $transition-speed, $transition-ease);
   }
 
-  // Outline the toggles when the inputs are focused
-  input:focus + label { outline: $switch-label-outline; }
-
   // Change text alignment for the second label
   input:last-of-type + label { text-align: right; }
 
