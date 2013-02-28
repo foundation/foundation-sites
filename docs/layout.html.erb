@@ -18,7 +18,9 @@
     </script>
     <script src="<%= asset_path %>/docs.js"></script>
     <script>
-      $(document).foundation().foundation('joyride', 'start');
+      $(document).foundation(function (response) {
+        console.log(response.errors);
+      });
     </script>
   </body>
 </html>
