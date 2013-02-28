@@ -6,7 +6,7 @@
   Foundation.libs.forms = {
     name : 'forms',
 
-    version : '4.0.0.alpha',
+    version : '4.0.0',
 
     settings : {
       disable_class: 'no-custom'

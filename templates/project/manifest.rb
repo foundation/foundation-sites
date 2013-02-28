@@ -21,16 +21,19 @@ def copy_js_from(relative_path, prefix_path, excludes=[])
   return js_files.map {|f| "#{prefix_path}/#{File.basename(f)}"}
 end
 
-javascripts = copy_js_from("../../js/", "foundation", "vendor") #, ["index.js"]
+javascripts = copy_js_from("../../js", "foundation", ["index.js"])
+vendor_javascripts = copy_js_from("../../js", "vendor")
 
-javascripts.reject! do |f|
-  [
-    "zepto.js",
-    "modernizr.foundation.js",
-  ].include?(File.basename(f))
-end
+# javascripts.reject! do |f|   
+#   [
+#     "jquery.js",
+#     "modernizr.foundation.js",
+#     "app.js",
+#     "jquery.offcanvas.js"
+#   ].include?(File.basename(f))
+# end
 
-html 'index.html', :erb => true, :javascripts => javascripts
+html 'index.html', :erb => true, :javascripts => javascripts, :version => Foundation::VERSION
 
 help %Q{
 

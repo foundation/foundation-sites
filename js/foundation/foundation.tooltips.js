@@ -6,7 +6,7 @@
   Foundation.libs.tooltips = {
     name: 'tooltips',
 
-    version : '4.0.0.alpha',
+    version : '4.0.0',
 
     settings : {
       bodyHeight : 0,

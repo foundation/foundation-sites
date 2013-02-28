@@ -6,7 +6,7 @@
   Foundation.libs.joyride = {
     name: 'joyride',
 
-    version : '4.0.0.alpha',
+    version : '4.0.0',
 
     defaults : {
       tipLocation          : 'bottom',  // 'top' or 'bottom' in relation to parent

@@ -1,16 +1,12 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
-/* TODO
-    - fix animate out.
-*/
-
 ;(function ($, window, document, undefined) {
   'use strict';
 
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.0.0.alpha',
+    version : '4.0.0',
 
     locked : false,
 
