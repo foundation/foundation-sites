@@ -15,7 +15,7 @@
       <ul class="title-area">
         <!-- Title Area -->
         <li class="name">
-          <h1><a href="#">Foundation</a></h1>
+          <h1><a href="/">Foundation</a></h1>
         </li>
         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -25,16 +25,16 @@
         <!-- Right Nav Section -->
         <ul class="right">
           <li class="divider"></li>
-          <li><a href="grid.php">Features</a></li>
+          <li><a href="<%= features_path %>">Features</a></li>
           <li class="divider"></li>
-          <li><a href="templates.php">Add-ons</a></li>
+          <li><a href="<%= add_ons_path %>">Add-ons</a></li>
           <li class="divider"></li>
-          <li><a href="case-jacquelinewest.php">Case Studies</a></li>
+          <li><a href="<%= case_studies_path %>">Case Studies</a></li>
           <li class="divider"></li>
-          <li><a href="docs/">Docs</a></li>
+          <li><a href="<%= docs_path %>">Docs</a></li>
           <li class="divider"></li>
           <li class="has-form">
-            <a href="docs/" class="button">Get Started</a>
+            <a href="<%= docs_path %>" class="button">Get Started</a>
           </li>
         </ul>
       </section>
@@ -63,7 +63,7 @@
 
       <div class="large-4 columns">
         <h6><strong>Need some help?</strong></h6>
-        <p>For answers or help visit the <a href="support.php">Support page</a>.</p>
+        <p>For answers or help visit the <a href="../support.html">Support page</a>.</p>
       </div>
     </footer>
 
@@ -76,7 +76,8 @@
           <ul class="inline-list right">
             <li><a href="../index.php">Home</a></li>
             <li><a href="../download.php">Download</a></li>
-            <li><a href="index.php">Documentation</a></li>
+            <li><a href="index.html">Docs</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
             <li><a href="../about.php">About</a></li>
             <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
           </ul>
