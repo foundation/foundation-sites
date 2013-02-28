@@ -1,9 +1,9 @@
 description 'Foundation Compass Gem'
 
 # Sass Files
-stylesheet 'scss/_settings.scss',                         :to => '_settings.scss'
-stylesheet 'scss/normalize.scss',                         :to => 'normalize.scss', :media => "screen, projector, print"
-stylesheet 'scss/app.scss',                               :to => 'app.scss', :media => "screen, projector, print"
+file 'scss/_settings.scss',                         :to => 'scss/_settings.scss'
+file 'scss/normalize.scss',                         :to => 'scss/normalize.scss', :media => "screen, projector, print"
+file 'scss/app.scss',                               :to => 'scss/app.scss', :media => "screen, projector, print"
 
 # Make sure you list all the project template files here in the manifest.
 file 'humans.txt'
@@ -15,8 +15,8 @@ def copy_js_from(relative_path, prefix_path, excludes=[])
   js_files = Dir.glob("#{absolute_path}/*.js")
   js_files.reject! {|f| excludes.include? File.basename(f)}
   js_files.each do |js|
-    javascript "#{relative_path}/#{prefix_path}/#{File.basename(js)}",
-      :to => "#{prefix_path}/#{File.basename(js)}"
+    file "#{relative_path}/#{prefix_path}/#{File.basename(js)}",
+      :to => "js/#{prefix_path}/#{File.basename(js)}"
   end
   return js_files.map {|f| "#{prefix_path}/#{File.basename(f)}"}
 end
@@ -46,3 +46,7 @@ welcome_message %Q{
 w00t! You're using ZURB Foundation, now go forth and rock 'n roll!
 
 }
+
+file 'config.rb'
+
+# no_configuration_file!
