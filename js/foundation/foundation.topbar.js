@@ -172,7 +172,7 @@
 
       largest.children('li').each(function () { total += self.outerHeight($(this), true); });
 
-      this.settings.height = total;
+      this.settings.$topbar.data('height', total);
     },
 
     sticky : function () {
