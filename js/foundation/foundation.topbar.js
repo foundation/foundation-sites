@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.0.0',
+    version : '4.1.0',
 
     settings : {
       index : 0,
@@ -15,6 +15,7 @@
     },
 
     init : function (scope, method, options) {
+      var self = this;
       this.scope = scope || this.scope;
 
       if (typeof method === 'object') {
@@ -22,24 +23,31 @@
       }
 
       if (typeof method != 'string') {
-        this.settings.$w = $(window);
-        this.settings.$topbar = $('nav.top-bar');
-        this.settings.$section = this.settings.$topbar.find('section');
-        this.settings.$titlebar = this.settings.$topbar.children('ul').first();
 
-        var breakpoint = $("<div class='top-bar-js-breakpoint'/>").appendTo("body");
-        this.settings.breakPoint = breakpoint.width();
-        breakpoint.remove();
+        $('nav.top-bar').each(function () {
+          self.settings.$w = $(window);
+          self.settings.$topbar = $(this);
+          self.settings.$section = self.settings.$topbar.find('section');
+          self.settings.$titlebar = self.settings.$topbar.children('ul').first();
 
-        if (!this.settings.init) {
+
+          self.settings.$topbar.data('index', 0);
+
+          var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
+          self.settings.breakPoint = breakpoint.width();
+          breakpoint.remove();
+
+          self.assemble();
+
+          if (!self.settings.$topbar.data('height')) self.largestUL();
+
+          if (self.settings.$topbar.parent().hasClass('fixed')) {
+            $('body').css('padding-top', this.outerHeight(this.settings.$topbar));
+          }
+        });
+
+        if (!self.settings.init) {
           this.events();
-          this.assemble();
-        }
-
-        if (!this.settings.height) this.largestUL();
-
-        if (this.settings.$topbar.parent().hasClass('fixed')) {
-          $('body').css('padding-top', this.outerHeight(this.settings.$topbar));
         }
 
         return this.settings.init;
@@ -50,25 +58,33 @@
     },
 
     events : function () {
+      var self = this;
+
       $(this.scope)
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar', function (e) {
+          var topbar = $(this).closest('.top-bar'),
+              section = topbar.find('section, .section'),
+              titlebar = topbar.children('ul').first();
+
           e.preventDefault();
 
-          if (this.breakpoint()) {
-            this.settings.$topbar.toggleClass('expanded');
-            this.settings.$topbar.css('min-height', '');
+          if (self.breakpoint()) {
+            topbar.toggleClass('expanded');
+            topbar.css('min-height', '');
           }
 
-          if (!this.settings.$topbar.hasClass('expanded')) {
-            this.settings.$section.css({left: '0%'});
-            this.settings.$section.find('>.name').css({left: '100%'});
-            this.settings.$section.find('li.moved').removeClass('moved');
-            this.settings.index = 0;
+          if (!topbar.hasClass('expanded')) {
+            section.css({left: '0%'});
+            section.find('>.name').css({left: '100%'});
+            section.find('li.moved').removeClass('moved');
+            topbar.data('index', 0);
           }
-        }.bind(this))
+        })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
-          var self = Foundation.libs.topbar;
+          var topbar = $(this).closest('.top-bar'),
+              section = topbar.find('section, .section'),
+              titlebar = topbar.children('ul').first();
 
           if (Modernizr.touch || self.breakpoint())
             e.preventDefault();
@@ -77,21 +93,21 @@
             var $this = $(this),
                 $selectedLi = $this.closest('li');
 
-            self.settings.index += 1;
+            topbar.data('index', topbar.data('index') + 1);
             $selectedLi.addClass('moved');
-            self.settings.$section.css({left: -(100 * self.settings.index) + '%'});
-            self.settings.$section.find('>.name').css({left: 100 * self.settings.index + '%'});
+            section.css({left: -(100 * topbar.data('index')) + '%'});
+            section.find('>.name').css({left: 100 * topbar.data('index') + '%'});
 
             $this.siblings('ul')
-              .height(self.settings.height + self.outerHeight(self.settings.$titlebar, true));
-            self.settings.$topbar
-              .css('min-height', self.settings.height + self.outerHeight(self.settings.$titlebar, true) * 2)
+              .height(topbar.data('height') + self.outerHeight(titlebar, true));
+            topbar
+              .css('min-height', topbar.data('height') + self.outerHeight(titlebar, true) * 2)
           }
       });
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!this.breakpoint()) {
-          this.settings.$topbar.css('min-height', '');
+          $('.top-bar').css('min-height', '');
         }
       }.bind(this));
 
@@ -100,16 +116,17 @@
         e.preventDefault();
 
         var $this = $(this),
-            self = Foundation.libs.topbar,
+            topbar = $this.closest('.top-bar'),
+            section = topbar.find('section, .section'),
             $movedLi = $this.closest('li.moved'),
             $previousLevelUl = $movedLi.parent();
 
-        self.settings.index -= 1;
-        self.settings.$section.css({left: -(100 * self.settings.index) + '%'});
-        self.settings.$section.find('>.name').css({'left': 100 * self.settings.index + '%'});
+        topbar.data('index', topbar.data('index') - 1);
+        section.css({left: -(100 * topbar.data('index')) + '%'});
+        section.find('>.name').css({'left': 100 * topbar.data('index') + '%'});
 
-        if (self.settings.index === 0) {
-          self.settings.$topbar.css('min-height', 0);
+        if (topbar.data('index') === 0) {
+          topbar.css('min-height', 0);
         }
 
         setTimeout(function () {
@@ -119,7 +136,7 @@
     },
 
     breakpoint : function () {
-      return this.settings.$w.width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
+      return $(window).width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
     },
 
     assemble : function () {
