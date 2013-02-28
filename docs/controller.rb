@@ -20,4 +20,24 @@ helpers do
   def code_example(code, lang=:ruby)
     "<div class='#{lang}'>" + CodeRay.scan(code, lang).div(:css => :class) + "</div>"
   end
+  
+  def foundation_home_path
+    '/'
+  end
+  
+  def features_path
+    '/grid.php'
+  end
+  
+  def add_ons_path
+    '/templates.php'
+  end
+  
+  def case_studies_path
+    '/case-jacquelinewest.php'
+  end
+  
+  def docs_path
+    '/docs/'
+  end
 end
