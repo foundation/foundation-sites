@@ -112,6 +112,7 @@
         }
       }
 
+      // if first argument is callback, add to args
       if (typeof libraries === 'function') {
         args.unshift(libraries);
       }
