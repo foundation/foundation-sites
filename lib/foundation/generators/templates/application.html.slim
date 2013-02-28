@@ -17,14 +17,11 @@ head
 
   title= content_for?(:title) ? yield(:title) : "Untitled"
 
-  / Included CSS Files
   = stylesheet_link_tag "application"
-
-  / Included JS Files
-  = javascript_include_tag "application"
 
   = csrf_meta_tag
 
 body
   .container
     == yield
+    = javascript_include_tag "application"

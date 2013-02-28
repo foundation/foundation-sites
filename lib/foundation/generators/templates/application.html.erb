@@ -14,16 +14,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<title><%%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-  
-	<!-- Included CSS Files -->
+
 	<%%= stylesheet_link_tag    "application" %>
-	
-	<!-- Included JS Files  -->
-	<%%= javascript_include_tag "application" %>
-  
+	<%%= javascript_include_tag "vendor/custom.modernizr" %>
   <%%= csrf_meta_tags %>
 </head>
 <body>
   <%%= yield %>
+  <% if false %>
+	<script>
+	document.write('<script src=' +
+	('__proto__' in {} ? '<%%= asset_path("vendor/zepto") %>' : '<%%= asset_path("jquery") %>') +
+	'><\/script>');
+  </script>
+
+  <script>
+  // Ensure rails_ujs works with Zepto
+	$.fn.ajaxSend = function(callback) {
+	  return this.each(function(){
+	    $(this).on('ajaxBeforeSend', callback);
+	  });
+	};
+	var jQuery = $;
+	</script>
+	<% end %>
+  <%%= javascript_include_tag "application" %>
 </body>
 </html>
