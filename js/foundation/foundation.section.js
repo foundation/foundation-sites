@@ -57,7 +57,7 @@
       }
 
       if (section.hasClass('active')) {
-        if (self.small()) {
+        if (self.small() || self.is_vertical(section.closest('[data-section]'))) {
           section
             .removeClass('active')
             .attr('style', '');
@@ -94,7 +94,7 @@
               .not(':first')
               .removeClass('active')
               .attr('style', '');
-          } else if (active_section.length < 1) {
+          } else if (active_section.length < 1 && !self.is_vertical($(this))) {
             var first = $(this).find('section, .section').first();
             first.addClass('active');
 
@@ -112,6 +112,10 @@
           }
           self.position_titles($(this));
         });
+    },
+
+    is_vertical : function (el) {
+      return el.hasClass('vertical-nav');
     },
 
     set_active_from_hash : function () {
