@@ -97,7 +97,7 @@
 
     off: function () {
       $(this.scope).off('.fndtn.dropdown');
-      $('body').off('.fndtn.dropdown');
+      $('html, body').off('.fndtn.dropdown');
       $(window).off('.fndtn.dropdown');
       $('[data-dropdown-content]').off('.fndtn.dropdown');
       this.settings.init = false;

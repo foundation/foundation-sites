@@ -41,7 +41,6 @@ $table-margin-bottom:    emCalc(20px) !default;
   tfoot {
     background: $table-head-bg;
     font-weight: $table-head-font-weight;
-    text-align: left;
 
     tr {
       th,
@@ -49,6 +48,7 @@ $table-margin-bottom:    emCalc(20px) !default;
         padding: $table-head-padding;
         font-size: $table-head-font-size;
         color: $table-head-font-color;
+        text-align: left;
       }
     }
   }
