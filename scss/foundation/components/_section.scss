@@ -169,6 +169,10 @@ $section-bottom-margin:          emCalc(20px) !default;
 
   @media #{$small} {
 
+    .section-container.accordion .section {
+      padding-top: 0 !important;
+    }
+
     .section-container.vertical-nav {
       @include section-container(false);
 
