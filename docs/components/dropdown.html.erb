@@ -1,138 +1,147 @@
-<% @page_title = "Dropdown" %>
 <div class="row">
-  <div class="large-12 columns">
-    <p><a href="/">&laquo; Back</a></p>
-    <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a univeral dropdown plugin that will attach dropdowns or popovers next to anything!</h4>
+  <div class="large-9 push-3 columns">
 
-    <a href="#" class="button" data-dropdown="tinyDrop">Link Dropdown &raquo;</a>
-    <a href="#" class="button" data-dropdown="contentDrop">Content Dropdown &raquo;</a>
+    <% @page_title = "Dropdown" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a univeral dropdown plugin that will attach dropdowns or popovers next to anything!</h4>
 
-    <hr>
-  </div>
-</div>
+        <a href="#" class="button" data-dropdown="tinyDrop">Link Dropdown &raquo;</a>
+        <a href="#" class="button" data-dropdown="contentDrop">Content Dropdown &raquo;</a>
 
-<div class="row">
-  <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
 
-    <h5>Build With Predefined HTML Classes</h5>
-    <p>To create the dropdown you'll need to attach a <code>data-dropdown="your-id"</code> to whatever element you want the dropdown attached to. From there you'll create a list that holds the links or content and add an <code>id="your-id"</code> that associates with the element it belongs to. To style the dropdown, we've included a class of <code>.f-dropdown</code> that you can target and style to your hearts desire. If you want the dropdown to be content, simply chain the class <code>.content</code> to the dropdown. Here's an example of that markup:</p>
+    <div class="row">
+      <div class="large-12 columns">
 
-<%= code_example '
-<a href="#" data-dropdown="drop1">Has Dropdown</a>
-<a href="#" data-dropdown="drop2">Has Content Dropdown</a>
+        <h5>Build With Predefined HTML Classes</h5>
+        <p>To create the dropdown you'll need to attach a <code>data-dropdown="your-id"</code> to whatever element you want the dropdown attached to. From there you'll create a list that holds the links or content and add an <code>id="your-id"</code> that associates with the element it belongs to. To style the dropdown, we've included a class of <code>.f-dropdown</code> that you can target and style to your hearts desire. If you want the dropdown to be content, simply chain the class <code>.content</code> to the dropdown. Here's an example of that markup:</p>
 
-<ul id="drop1" class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
+    <%= code_example '
+    <a href="#" data-dropdown="drop1">Has Dropdown</a>
+    <a href="#" data-dropdown="drop2">Has Content Dropdown</a>
 
-<ul id="drop2" class="f-dropdown content">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-', :html %>
-
-    <p><a href="#" data-dropdown="drop1">Has Dropdown</a> | <a href="#" data-dropdown="drop2">Has Content Dropdown</a></p>
-
-    <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have the same value. This is what tells the dropdown plugin where to look to find the position to attach the dropdown.</p>
-
-    <p>Available class options:</p>
-    <ul class="disc">
-      <li><code>tiny</code>: Make the dropdown have a max-width of 200px</li>
-      <li><code>small</code>: Make the dropdown have a max-width of 300px</li>
-      <li><code>medium</code>: Make the dropdown have a max-width of 500px</li>
-      <li><code>large</code>: Make the dropdown have a max-width of 800px</li>
-      <li><code>content</code>: Add padding inside the dropdown for better looking content.</li>
+    <ul id="drop1" class="f-dropdown">
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
     </ul>
 
-    <p>You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>dropdowns from a custom package</strong>. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
+    <ul id="drop2" class="f-dropdown content">
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
+    ', :html %>
 
-    <hr>
+        <p><a href="#" data-dropdown="drop1">Has Dropdown</a> | <a href="#" data-dropdown="drop2">Has Content Dropdown</a></p>
 
-    <h3>Build With Our Mixins</h3>
-    <p>We've included SCSS mixins used to style dropdowns. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_dropdown.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+        <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have the same value. This is what tells the dropdown plugin where to look to find the position to attach the dropdown.</p>
 
-<%= code_example '
-@import "foundation/foundation-global", "foundation/dropdown";
-', :css %>
+        <p>Available class options:</p>
+        <ul class="disc">
+          <li><code>tiny</code>: Make the dropdown have a max-width of 200px</li>
+          <li><code>small</code>: Make the dropdown have a max-width of 300px</li>
+          <li><code>medium</code>: Make the dropdown have a max-width of 500px</li>
+          <li><code>large</code>: Make the dropdown have a max-width of 800px</li>
+          <li><code>content</code>: Add padding inside the dropdown for better looking content.</li>
+        </ul>
 
-    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+        <p>You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>dropdowns from a custom package</strong>. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
-<%= code_example '
-<a href="#" data-dropdown="drop1">Has Dropdown</a>
+        <hr>
 
-<ul id="drop1" class="your-class-name">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-', :html %>
+        <h3>Build With Our Mixins</h3>
+        <p>We've included SCSS mixins used to style dropdowns. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_dropdown.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
-    <h5>The Container Mixin</h5>
-    <p>There are two mixin you can use when building your dropdowns, the container and the list style. The container mixin will give you all the styles needed for the base styles of the dropdown, not including styles for the default link list style. The container mixin looks like this:</p>
+    <%= code_example '
+    @import "foundation/foundation-global", "foundation/dropdown";
+    ', :css %>
 
-<%= code_example '
-/* Container mixin and its options */
-.your-class-name { @include dropdown-container($content, $triangle, $max-width); }
+        <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
 
-/* This can be set to "list" or "content" depending on what you want inside. */
-$content: list
+    <%= code_example '
+    <a href="#" data-dropdown="drop1">Has Dropdown</a>
 
-/* If you do not want to attach the triangle pop, set this to false. */
-$triangle: true
+    <ul id="drop1" class="your-class-name">
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
+    ', :html %>
 
-/* By default, the dropdown is 200px max-width, taking on 100% when gets smaller than that. */
-/* You can set this to any number you want or change it globally with the variable. */
-$max-width: $f-dropdown-max-width
-', :css %>
+        <h5>The Container Mixin</h5>
+        <p>There are two mixin you can use when building your dropdowns, the container and the list style. The container mixin will give you all the styles needed for the base styles of the dropdown, not including styles for the default link list style. The container mixin looks like this:</p>
 
-    <h5>The List Style Mixin</h5>
-    <p>For content dropdowns, we don't add any extra style to the inside of the dropdown other than padding around the edges. For link lists, we wanted to predefined style that would look good out of the box and match the style of our custom select dropdowns. The style mixin looks like this:</p>
+    <%= code_example '
+    /* Container mixin and its options */
+    .your-class-name { @include dropdown-container($content, $triangle, $max-width); }
 
-<%= code_example '
-/* The style mixin - It has no options other than variables to make global changes */
-.your-class-name {
-  @include dropdown-container($content, $triangle, $max-width);
+    /* This can be set to "list" or "content" depending on what you want inside. */
+    $content: list
 
-  li { @include dropdown-style; }
-}
-', :css %>
+    /* If you do not want to attach the triangle pop, set this to false. */
+    $triangle: true
 
-    <h5>Default SCSS Variables</h5>
+    /* By default, the dropdown is 200px max-width, taking on 100% when gets smaller than that. */
+    /* You can set this to any number you want or change it globally with the variable. */
+    $max-width: $f-dropdown-max-width
+    ', :css %>
 
-<%= code_example '
-/* We use these to controls height and width styles. */
-$f-dropdown-max-width:            200px;
-$f-dropdown-height:               auto;
-$f-dropdown-max-height:           none;
-$f-dropdown-margin-top:           2px;
+        <h5>The List Style Mixin</h5>
+        <p>For content dropdowns, we don't add any extra style to the inside of the dropdown other than padding around the edges. For link lists, we wanted to predefined style that would look good out of the box and match the style of our custom select dropdowns. The style mixin looks like this:</p>
 
-/* We use this to control the background color */
-$f-dropdown-bg:                   #fff;
+    <%= code_example '
+    /* The style mixin - It has no options other than variables to make global changes */
+    .your-class-name {
+      @include dropdown-container($content, $triangle, $max-width);
 
-/* We use this to set the border styles for dropdowns. */
-$f-dropdown-border-style:         solid;
-$f-dropdown-border-width:         1px;
-$f-dropdown-border-color:         darken(#fff, 20%);
+      li { @include dropdown-style; }
+    }
+    ', :css %>
 
-/* We use these to style the triangle pip. */
-$f-dropdown-triangle-size:        6px;
-$f-dropdown-triangle-color:       #fff;
-$f-dropdown-triangle-side-offset: 10px;
+        <h5>Default SCSS Variables</h5>
 
-/* We use these to control styles for the list elements. */
-$f-dropdown-list-style:           none;
-$f-dropdown-font-color:           #555;
-$f-dropdown-font-size:            emCalc(14px);
-$f-dropdown-list-padding:         emCalc(5px) emCalc(10px);
-$f-dropdown-line-height:          emCalc(18px);
-$f-dropdown-list-hover-bg:        #eeeeee;', :css %>
+    <%= code_example '
+    /* We use these to controls height and width styles. */
+    $f-dropdown-max-width:            200px;
+    $f-dropdown-height:               auto;
+    $f-dropdown-max-height:           none;
+    $f-dropdown-margin-top:           2px;
 
-  <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+    /* We use this to control the background color */
+    $f-dropdown-bg:                   #fff;
 
+    /* We use this to set the border styles for dropdowns. */
+    $f-dropdown-border-style:         solid;
+    $f-dropdown-border-width:         1px;
+    $f-dropdown-border-color:         darken(#fff, 20%);
+
+    /* We use these to style the triangle pip. */
+    $f-dropdown-triangle-size:        6px;
+    $f-dropdown-triangle-color:       #fff;
+    $f-dropdown-triangle-side-offset: 10px;
+
+    /* We use these to control styles for the list elements. */
+    $f-dropdown-list-style:           none;
+    $f-dropdown-font-color:           #555;
+    $f-dropdown-font-size:            emCalc(14px);
+    $f-dropdown-list-padding:         emCalc(5px) emCalc(10px);
+    $f-dropdown-line-height:          emCalc(18px);
+    $f-dropdown-list-hover-bg:        #eeeeee;', :css %>
+
+      <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
   </div>
 </div>
 

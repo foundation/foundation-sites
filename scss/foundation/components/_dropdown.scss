@@ -31,7 +31,7 @@ $f-dropdown-list-hover-bg:        #eeeeee !default;
 $dropdown-mobile-left:            0 !default;
 
 // We use this to control the styles for when the dropdown has custom content.
-$f-dropdown-content-padding: emCalc(20px) !default;
+$f-dropdown-content-padding:      emCalc(20px) !default;
 
 //
 // Dropdown Mixins
@@ -42,8 +42,8 @@ $f-dropdown-content-padding: emCalc(20px) !default;
 // We use this to style the dropdown container element.
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
   position: absolute;
-  left: -99999px;
-  top: -99999px;
+  left: -9999px;
+  top: -9999px;
   list-style: $f-dropdown-list-style;
 
   *:first-child { margin-top: 0; }
@@ -110,17 +110,17 @@ $f-dropdown-content-padding: emCalc(20px) !default;
 
 @if $include-html-classes {
 
-  @media only screen {
+  @media only screen and (max-width: 767px) {
     .f-dropdown {
       max-width: 100%;
-      left: $dropdown-mobile-left !important;
+      left: $dropdown-mobile-left;
     }
   }
 
   /* Foundation Dropdowns */
   .f-dropdown {
     @include dropdown-container;
-    max-width: none;
+    // max-width: none;
 
     li { @include dropdown-style; }
 

@@ -1,165 +1,174 @@
-<% @page_title = "Button Groups" %>
 <div class="row">
-  <div class="large-12 columns">
-    <p><a href="/">&laquo; Back</a></p>
-    <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Button groups are great when you need to display a group of actions in a bar. These build off the button styles and work perfectly with the grid.</h4>
-  </div>
-</div>
+  <div class="large-9 push-3 columns">
 
-<div class="row">
-  <div class="large-12 columns">
+    <% @page_title = "Button Groups" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Button groups are great when you need to display a group of actions in a bar. These build off the button styles and work perfectly with the grid.</h4>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="large-12 columns">
+
+        <ul class="button-group">
+          <li><a href="#" class="small button">Button 1</a></li>
+          <li><a href="#" class="small button">Button 2</a></li>
+          <li><a href="#" class="small button">Button 3</a></li>
+        </ul>
+        <ul class="button-group radius">
+          <li><a href="#" class="button secondary">Button 1</a></li>
+          <li><a href="#" class="button secondary">Button 2</a></li>
+          <li><a href="#" class="button secondary">Button 3</a></li>
+          <li><a href="#" class="button secondary">Button 4</a></li>
+        </ul>
+        <ul class="button-group round even-3">
+          <li><a href="#" class="button alert">Button 1</a></li>
+          <li><a href="#" class="button alert">Button 2</a></li>
+          <li><a href="#" class="button alert">Button 3</a></li>
+        </ul>
+        <ul class="button-group round even-3">
+          <li><input type="submit" class="button success" value="Button 1"></li>
+          <li><input type="submit" class="button success" value="Button 2"></li>
+          <li><input type="submit" class="button success" value="Button 3"></li>
+        </ul>
+
+        <hr>
+
+        <h3>Build With Predefined HTML Classes</h3>
+        <p>There are two ways to build button groups in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building button groups using our predefined classes is a breeze, you'll just wrap a <a href="button.html">button</a> inside an <code>&lt;ul&gt;</code>.</p>
+
+        <p>The button styles will work the same as they do when building a single button, but they'll float next to each other to create a group. You also have access to the same radius classes as buttons, only they'll go on the unordered list instead of the button. You can even make sure the buttons take up even space within the container you put them in.</p>
+
+        <ul class="disc">
+          <li>The radius classes: <code>.radius</code> or <code>.round</code>.</li>
+          <li>The even classes: <code>.even-2</code> through <code>.even-8</code> to control the even widths.</li>
+        </ul>
+
+    <%= code_example '
+    <!-- A default button-group with small buttons inside -->
     <ul class="button-group">
       <li><a href="#" class="small button">Button 1</a></li>
       <li><a href="#" class="small button">Button 2</a></li>
       <li><a href="#" class="small button">Button 3</a></li>
     </ul>
-    <ul class="button-group radius">
-      <li><a href="#" class="button secondary">Button 1</a></li>
-      <li><a href="#" class="button secondary">Button 2</a></li>
-      <li><a href="#" class="button secondary">Button 3</a></li>
-      <li><a href="#" class="button secondary">Button 4</a></li>
-    </ul>
+
+    <!-- A round, even-3 button-group with default alert buttons inside. -->
+    <!-- Do not put the radius classes on the buttons themselves. -->
     <ul class="button-group round even-3">
       <li><a href="#" class="button alert">Button 1</a></li>
       <li><a href="#" class="button alert">Button 2</a></li>
       <li><a href="#" class="button alert">Button 3</a></li>
     </ul>
-    <ul class="button-group round even-3">
-      <li><input type="submit" class="button success" value="Button 1"></li>
-      <li><input type="submit" class="button success" value="Button 2"></li>
-      <li><input type="submit" class="button success" value="Button 3"></li>
+    ', :html %>
+
+        <p>For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>buttons and button-groups from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+
+        <hr>
+
+        <h3>Build with Mixins</h3>
+        <p>We've included SCSS mixins used to style button groups. To use these mixins, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a>, <a href="#">_buttons.scss</a> and <a href="#">_button-groups.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+    <%= code_example '
+    @import "foundation/foundation-global", "foundation/buttons", "foundation/button-groups";
+    ', :css %>
+
+        <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+
+    <%= code_example '
+    <ul class="your-class-name">
+      <li><a href="#" class="your-button-class">Button 1</a></li>
+      <li><a href="#" class="your-button-class">Button 2</a></li>
+      <li><a href="#" class="your-button-class">Button 3</a></li>
     </ul>
+    ', :html %>
 
-    <hr>
+        <h5>Container Mixin</h5>
+        <p>Since button groups need to be within a list to work properly, you'll need to create some styles for the list container that you use.</p>
 
-    <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build button groups in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building button groups using our predefined classes is a breeze, you'll just wrap a <a href="button.html">button</a> inside an <code>&lt;ul&gt;</code>.</p>
+    <%= code_example '
+    .your-class-name { @include button-group-container; }
+    ', :css %>
 
-    <p>The button styles will work the same as they do when building a single button, but they'll float next to each other to create a group. You also have access to the same radius classes as buttons, only they'll go on the unordered list instead of the button. You can even make sure the buttons take up even space within the container you put them in.</p>
+        <p>You'll also need to make sure to include some styles for your buttons inside the group. Either use a class you've already styled, or apply it specifically here.</p>
 
-    <ul class="disc">
-      <li>The radius classes: <code>.radius</code> or <code>.round</code>.</li>
-      <li>The even classes: <code>.even-2</code> through <code>.even-8</code> to control the even widths.</li>
-    </ul>
+    <%= code_example '
+    .your-class-name { @include button-group-container;
+      .your-button-class { @include button; }
+    }
+    ', :css %>
 
-<%= code_example '
-<!-- A default button-group with small buttons inside -->
-<ul class="button-group">
-  <li><a href="#" class="small button">Button 1</a></li>
-  <li><a href="#" class="small button">Button 2</a></li>
-  <li><a href="#" class="small button">Button 3</a></li>
-</ul>
+        <ul class="button-group-docs">
+          <li><a href="#" class="button-class">Button 1</a></li>
+          <li><a href="#" class="button-class">Button 2</a></li>
+          <li><a href="#" class="button-class">Button 3</a></li>
+        </ul>
 
-<!-- A round, even-3 button-group with default alert buttons inside. -->
-<!-- Do not put the radius classes on the buttons themselves. -->
-<ul class="button-group round even-3">
-  <li><a href="#" class="button alert">Button 1</a></li>
-  <li><a href="#" class="button alert">Button 2</a></li>
-  <li><a href="#" class="button alert">Button 3</a></li>
-</ul>
-', :html %>
+        <h5>Style Mixin</h5>
+        <p>With this mixin, you'll be able to make the rest of the button-group, including: radius, even with styles and floats. You'll apply this mixin to the <code>&lt;li&gt;</code> elements of the button group list.</p>
 
-    <p>For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>buttons and button-groups from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+    <%= code_example '
+    .your-class-name { @include button-group-container;
+      .your-button-class { @include button; }
 
-    <hr>
+      & > li { @include button-group-style($radius, $even, $float); }
+    }
 
-    <h3>Build with Mixins</h3>
-    <p>We've included SCSS mixins used to style button groups. To use these mixins, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a>, <a href="#">_buttons.scss</a> and <a href="#">_button-groups.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    /* This controls the radius of the left and right edges. */
+    /* Set to true or px value */
+    $radius: false
 
-<%= code_example '
-@import "foundation/foundation-global", "foundation/buttons", "foundation/button-groups";
-', :css %>
+    /* This makes the buttons take up even space in their container */
+    /* Set to the number of buttons in the group */
+    $even: false
 
-    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+    /* Controls how the buttons in the group floatm set to left or right */
+    $float: left
+    ', :css %>
 
-<%= code_example '
-<ul class="your-class-name">
-  <li><a href="#" class="your-button-class">Button 1</a></li>
-  <li><a href="#" class="your-button-class">Button 2</a></li>
-  <li><a href="#" class="your-button-class">Button 3</a></li>
-</ul>
-', :html %>
-
-    <h5>Container Mixin</h5>
-    <p>Since button groups need to be within a list to work properly, you'll need to create some styles for the list container that you use.</p>
-
-<%= code_example '
-.your-class-name { @include button-group-container; }
-', :css %>
-
-    <p>You'll also need to make sure to include some styles for your buttons inside the group. Either use a class you've already styled, or apply it specifically here.</p>
-
-<%= code_example '
-.your-class-name { @include button-group-container;
-  .your-button-class { @include button; }
-}
-', :css %>
-
-    <ul class="button-group-docs">
+    <ul class="button-group-docs list">
       <li><a href="#" class="button-class">Button 1</a></li>
       <li><a href="#" class="button-class">Button 2</a></li>
       <li><a href="#" class="button-class">Button 3</a></li>
     </ul>
 
-    <h5>Style Mixin</h5>
-    <p>With this mixin, you'll be able to make the rest of the button-group, including: radius, even with styles and floats. You'll apply this mixin to the <code>&lt;li&gt;</code> elements of the button group list.</p>
+          <h5>Inset Shadow, Border Radius &amp; Transition Mixin</h5>
+          <p>Sometimes you want to add a nice fancy shine to the edge of your buttons. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the buttons a fade effect.</p>
 
-<%= code_example '
-.your-class-name { @include button-group-container;
-  .your-button-class { @include button; }
+    <%= code_example '
+    .your-class-name { @include button-group-container;
+      .your-button-class {
+        @include button;
+        @include inset-shadow;
+        @include single-transition;
+      }
 
-  & > li { @include button-group-style($radius, $even, $float); }
-}
+      & > li { @include button-group-style(true); }
+    }
+    ', :css %>
 
-/* This controls the radius of the left and right edges. */
-/* Set to true or px value */
-$radius: false
+    <ul class="button-group-docs list extras">
+      <li><a href="#" class="button-class">Button 1</a></li>
+      <li><a href="#" class="button-class">Button 2</a></li>
+      <li><a href="#" class="button-class">Button 3</a></li>
+    </ul>
 
-/* This makes the buttons take up even space in their container */
-/* Set to the number of buttons in the group */
-$even: false
+        <h5>Default SCSS Variables</h5>
+    <%= code_example '
+    /* We use this to set the margin below button groups. */
+    $button-group-bottom-margin: emCalc(20px);
+    ', :css %>
 
-/* Controls how the buttons in the group floatm set to left or right */
-$float: left
-', :css %>
+        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
 
-<ul class="button-group-docs list">
-  <li><a href="#" class="button-class">Button 1</a></li>
-  <li><a href="#" class="button-class">Button 2</a></li>
-  <li><a href="#" class="button-class">Button 3</a></li>
-</ul>
+      </div>
+    </div>
 
-      <h5>Inset Shadow, Border Radius &amp; Transition Mixin</h5>
-      <p>Sometimes you want to add a nice fancy shine to the edge of your buttons. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the buttons a fade effect.</p>
+  </div>
 
-<%= code_example '
-.your-class-name { @include button-group-container;
-  .your-button-class {
-    @include button;
-    @include inset-shadow;
-    @include single-transition;
-  }
-
-  & > li { @include button-group-style(true); }
-}
-', :css %>
-
-<ul class="button-group-docs list extras">
-  <li><a href="#" class="button-class">Button 1</a></li>
-  <li><a href="#" class="button-class">Button 2</a></li>
-  <li><a href="#" class="button-class">Button 3</a></li>
-</ul>
-
-    <h5>Default SCSS Variables</h5>
-<%= code_example '
-/* We use this to set the margin below button groups. */
-$button-group-bottom-margin: emCalc(20px);
-', :css %>
-
-    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
-
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
   </div>
 </div>
 
