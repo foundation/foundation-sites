@@ -10,8 +10,11 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <h2 id="numero1" class="so-awesome">Installation</h2>
+    <h2>Installation</h2>
     <p>Foundation JavaScript was designed to work with <a href="http://zeptojs.com/" title="Zepto Docs">Zepto</a> and <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> out of the gate. Zepto is not supported by all browsers, so as suggested in the Zepto documentation, you should test for compatability and load Zepto or jQuery as necessary.</p>
+
+    <h5>Include Libraries</h5>
+    <p>Before the closing <code>body</code> tag, insert the following JavaScript.</p>
 
 <%= code_example "
 <!-- Check for Zepto support, load jQuery if necessary -->
@@ -35,3 +38,46 @@
 <script src="/js/foundation.dropdown.js"></script>
 <script src="/js/foundation.section.js"></script>
 ', :html %>
+
+    <h5>Initialize Foundation</h5>
+    <p>After you have included the foundation, all you need is one simple call to intialize all plugins on your page.</p>
+
+<%= code_example '
+<script>
+  $(document).foundation();
+</script>
+', :html %>
+
+    <hr>
+
+    <h2>Configuration</h2>
+
+    <p>Foundation accepts a myriad of options on initialization. By default, calling <code>$('#scope').foundation();</code> will intialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback; allowing you to start only certain plugins on your page, even if their source is included.</p>
+
+<%= code_example "
+$(document).foundation('section', {deep_linking: true}, function (response) {
+  console.log(response.errors);
+});
+", :js %>
+
+  <p>The above example will initialize the Section plugin on the page with deep linking enabled, and pass back a response object with any errors that may have occured.</p>
+
+  <p>You can initialize multiple libraries within the same call as well. Here are a few ways this can be done.</p>
+
+<%= code_example "
+$(document).foundation('section dropdown alerts', {callback: myCallbackFunction}, function (response) {
+  console.log(response.errors);
+});
+
+// alternative, no configuration
+
+$(document).foundation('section dropdown alerts', function (response) {
+  console.log(response.errors);
+});
+
+// alternative, all plugins, only callback
+
+$(document).foundation(function (response) {
+  console.log(response.errors);
+});
+", :js %>
