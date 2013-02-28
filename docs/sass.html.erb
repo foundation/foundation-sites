@@ -96,6 +96,159 @@
       <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
     </ol>
 
+    <hr>
+
+    <h3>Foundation Global Settings and Mixins</h3>
+    <p>We've inlcluded a global settings file that holds veriables and mixins that are used throughout the entirety of Foundation. Here's a look at that file:</p>
+
+<%= code_example '
+// Foundation Global Function, Variables and Mixins
+//
+// Variables
+//
+
+// This is the default html and body font-size for the base em value.
+$em-base: 16px;
+
+// We use these to control various global styles
+$body-bg: #fff;
+$body-font-color: #222;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-weight: normal;
+$body-font-style: normal;
+
+// We use this to control font-smoothing
+$font-smoothing: antialiased;
+
+// We use these to control text direction settings
+$text-direction: ltr;
+
+// We use these as default colors throughout
+$primary-color: #2ba6cb;
+$secondary-color: #e9e9e9;
+$alert-color: #c60f13;
+$success-color: #5da423;
+
+// We use these to make sure border radius matches unless we want it different.
+$global-radius: 3px;
+$global-rounded: 1000px;
+
+// We use these to control inset shadow shiny edges and depressions.
+$shiny-edge-size: 0 1px 0;
+$shiny-edge-color: rgba(#fff, .5);
+$shiny-edge-active-color: rgba(#000, .2);
+
+// We use this to control whether or not CSS classes come through in the gem files.
+$include-html-classes: true;
+$include-print-styles: true;
+
+
+//
+// Functions
+//
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+// Creating rems and pixels
+@function remCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1rem;
+}
+
+// Grid Calculation for Percentages
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
+}
+
+
+//
+// Mixins
+//
+
+// We use this to control border radius.
+@mixin radius($radius:$global-radius) {
+  @if $radius {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+  }
+}
+
+// We use this to create equal side border radius on elements.
+@mixin side-radius($side, $radius) {
+  @if $side == left {
+    -webkit-border-radius: $radius 0 0 $radius;
+    border-radius: $radius 0 0 $radius;
+  }
+  @else if $side == right {
+    -webkit-border-radius: 0 $radius $radius 0;
+    border-radius: 0 $radius $radius 0;
+  }
+  @else if $side == top {
+    -webkit-border-radius: $radius $radius 0 0;
+    border-radius: $radius $radius 0 0;
+  }
+  @else if $side == bottom {
+    -webkit-border-radius: 0 0 $radius $radius;
+    border-radius: 0 0 $radius $radius;
+  }
+}
+
+// We can control whether or not we have inset shadows edges.
+@mixin inset-shadow($active:true) {
+  -webkit-box-shadow: $shiny-edge-size $shiny-edge-color inset;
+  box-shadow: $shiny-edge-size $shiny-edge-color inset;
+
+  @if $active { &:active {
+    -webkit-box-shadow: $shiny-edge-size $shiny-edge-active-color inset;
+    box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
+}
+
+// We use this to add transitions to elements
+@mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
+  -webkit-transition: $property $speed $ease;
+  -moz-transition: $property $speed $ease;
+  transition: $property $speed $ease;
+}
+
+// We use this to add box-sizing across browser prefixes
+@mixin box-sizing($type:border-box) {
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+  box-sizing: $type;
+}
+
+// We use this to create equalateral triangles
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $triangle-size;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+  }
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+  }
+}
+
+// We use this to do clear floats
+@mixin clearfix() {
+  *zoom:1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+', :css %>
+
 
     <!-- <a name="gui-apps"></a>
     <h3>Working with GUI applications</h3>

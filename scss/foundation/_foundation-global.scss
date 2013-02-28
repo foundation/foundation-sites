@@ -48,9 +48,6 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 $include-html-classes: true !default;
 $include-print-styles: true !default;
 
-// We use this to let you add a grid for IE8 if you'd like.
-// $ie8gridSupport: no;
-
 
 //
 // Functions
@@ -155,18 +152,6 @@ $include-print-styles: true !default;
   &:before, &:after { content: " "; display: table; }
   &:after { clear: both; }
 }
-
-// REVISIT THIS
-    // We use this to inject media queries for quick fixes based on a breakpoint
-    // @mixin respondTo($media) {
-    //   @if $media == smallScreen {
-    //     @media only screen and (max-width: $smallScreen) { @content; }
-    //   } @else if $media == mediumScreen {
-    //     @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) { @content; }
-    //   } @else if $media == largeScreen {
-    //     @media only screen and (min-width: $largeScreen) { @content; }
-    //   }
-    // }
 
 
 // Set box-sizing globally to handle padding and border widths
