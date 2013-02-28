@@ -12,6 +12,7 @@ $section-border-style: solid !default;
 $section-border-color: #ccc !default;
 $section-content-bg: #fff !default;
 $section-vertical-nav-min-width: emCalc(200px) !default;
+$section-bottom-margin: emCalc(20px) !default;
 
 
 //
@@ -25,6 +26,7 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
   @if $base-style {
     width: 100%;
     display: block;
+    margin-bottom: $section-bottom-margin;
   }
 
   // Accordion container border styles
@@ -125,6 +127,8 @@ $section-vertical-nav-min-width: emCalc(200px) !default;
 
   // Vertical Nav Styles
   @else if $section-type == vertical-nav {
+
+    padding-top: 0 !important;
 
     .title a { width: 100%; }
 

@@ -1,25 +1,25 @@
 //
 // Tooltip Variables
 //
-$has-tip-border-bottom: dotted 1px #ccc !default;
-$has-tip-font-weight: bold !default;
-$has-tip-font-color: #333 !default;
+$has-tip-border-bottom:       dotted 1px #ccc !default;
+$has-tip-font-weight:         bold !default;
+$has-tip-font-color:          #333 !default;
 $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%) !default;
-$has-tip-font-color-hover: $primary-color !default;
-$has-tip-cursor-type: help !default;
+$has-tip-font-color-hover:    $primary-color !default;
+$has-tip-cursor-type:         help !default;
 
-$tooltip-padding: emCalc(8px) !default;
-$tooltip-bg: #000 !default;
-$tooltip-font-size: emCalc(15px) !default;
-$tooltip-font-weight: bold !default;
-$tooltip-font-color: #fff !default;
-$tooltip-line-height: 1.3 !default;
-$tooltip-close-font-size: emCalc(10px) !default;
-$tooltip-close-font-weight: normal !default;
-$tooltip-close-font-color: #888 !default;
-$tooltip-font-size-sml: emCalc(14px) !default;
-$tooltip-radius: $global-radius !default;
-$tooltip-pip-size: 5px !default;
+$tooltip-padding:             emCalc(8px) !default;
+$tooltip-bg:                  #000 !default;
+$tooltip-font-size:           emCalc(15px) !default;
+$tooltip-font-weight:         bold !default;
+$tooltip-font-color:          #fff !default;
+$tooltip-line-height:         1.3 !default;
+$tooltip-close-font-size:     emCalc(10px) !default;
+$tooltip-close-font-weight:   normal !default;
+$tooltip-close-font-color:    #888 !default;
+$tooltip-font-size-sml:       emCalc(14px) !default;
+$tooltip-radius:              $global-radius !default;
+$tooltip-pip-size:            5px !default;
 
 
 /* Tooltips */
@@ -54,7 +54,6 @@ $tooltip-pip-size: 5px !default;
   color: $tooltip-font-color;
   background: $tooltip-bg;
 
-  // Creating all the HTML classes for the nub positions.
   &>.nub {
     display: block;
     width: 0;
@@ -63,7 +62,6 @@ $tooltip-pip-size: 5px !default;
     border-color: transparent transparent $tooltip-bg transparent;
     position: absolute;
     top: -($tooltip-pip-size * 2);
-    // #{$default-float}: $tooltip-pip-size * 2;
   }
 
   &.tip-top>.nub {
@@ -104,21 +102,3 @@ $tooltip-pip-size: 5px !default;
   color: $tooltip-close-font-color;
   font-weight: $tooltip-close-font-weight;
 }
-
-
-  // .tooltip {
-  //   font-size: $tooltip-font-size-sml;
-  //   line-height: 1.4;
-  //   padding: emCalc(7px) emCalc(10px) emCalc(9px) emCalc(10px);
-  //   #{$default-float}: 50% !important;
-  //   max-width: 80% !important;
-  //   margin-#{$default-float}: -40%;
-  //   font-size: 110%;
-  // }
-  // .tooltip > .nub, .tooltip.top > .nub, .tooltip.left > .nub, .tooltip.right > .nub {
-  //   border-color: transparent transparent $tooltip-bg transparent;
-  //   border-color: transparent transparent rgba($tooltip-bg,$tooltip-opacity) transparent;
-  //   top: -12px;
-  //   #{$default-float}: 10px;
-  // }
-
