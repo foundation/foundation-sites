@@ -80,4 +80,42 @@ $(document).foundation('section dropdown alerts', function (response) {
 $(document).foundation(function (response) {
   console.log(response.errors);
 });
+
+// alternative, only plugin, no config or callback
+
+$(document).foundation('section');
+", :js %>
+
+    <p>Keep in mind, if you initialize multiple plugins at one time and pass a configuration object, that object will get pass to all plugins that were initialized. So in the first example; section, dropdown, and alerts will all get passed the <code>myCallbackFunction</code> on initialization.</p>
+
+    <p>What if you wanted to pass the <code>myCallbackFunction</code> only to Section and still initialize the other plugins as well? You could do the following.</p>
+
+<%= code_example "
+$(document)
+  .foundation('dropdown alerts')
+  .foundation('section', {callback: myCallbackFunction});
+", :js %>
+
+    <hr>
+
+    <h2>Calling Internal Methods</h2>
+
+    <p>Foundation 4 JavaScript allows you call call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not intialized on page load by default.</p>
+
+<%= code_example "
+$(document).foundation('joyride', 'start');
+", :js %>
+
+  <p>This will fire the <code>start</code> method on Joyride.</p>
+
+  <h5>Unbind Events</h5>
+
+  <p>All plugins can be unbound from the DOM by firing the <code>off</code> event either on that plugin or globally to unbind all Foundation events.</p>
+
+<%= code_example "
+$(document).foundation('tooltips', 'off');
+
+// or globally
+
+$(document).foundation('off');
 ", :js %>
