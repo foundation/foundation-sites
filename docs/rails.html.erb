@@ -1,17 +1,14 @@
-<% @page_title = "Installing with Rails" %>
 <div class="row">
-  <div class="large-12 columns">
-    <p><a href="index.html">&laquo; Back</a></p>
-    <h1><%= @page_title %></h1>
-    <h4 class="subheader">We use Rails to develop our <a href="http://zurb.com/apps">apps</a> and Foundation makes things so much quicker. Start using Foundation in your Rails projects by following these instructions.</h4>
-    <hr>
-  </div>
-</div>
+  <div class="large-9 push-3 columns"
+    <% @page_title = "Installing with Rails" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">We use Rails to develop our <a href="http://zurb.com/apps">apps</a> and Foundation makes things so much quicker. Start using Foundation in your Rails projects by following these instructions.</h4>
+        <hr>
 
-<div class="row">
-  <div class="large-12 columns">
-    <h4>Adding Foundation to the Asset Pipeline</h4>
-    <p>First you'll want to add the following gems to the assets group in your <code>Gemfile</code> like so:</p>
+        <h4>Adding Foundation to the Asset Pipeline</h4>
+        <p>First you'll want to add the following gems to the assets group in your <code>Gemfile</code> like so:</p>
 
 <%= code_example "
 group :assets do
@@ -23,42 +20,47 @@ group :assets do
 end
 ", :ruby %>
 
-  <p>Then run <code>bundle install</code> to finish installing Foundation.</p>
+      <p>Then run <code>bundle install</code> to finish installing Foundation.</p>
 
-  <div class="alert-box">
-    <p><strong>NOTE:</strong> Make sure that your restart your server after running <code>bundle install</code>. Otherwise the asset pipeline may not recognize the new Foundation files.</p>
-  </div>
+      <div class="alert-box">
+        <p><strong>NOTE:</strong> Make sure that your restart your server after running <code>bundle install</code>. Otherwise the asset pipeline may not recognize the new Foundation files.</p>
+      </div>
 
-  <h4>Easy Install</h4>
-  <p>Simply run <code>rails g foundation:install</code> to configure your application to use Foundation. That's it!</p>
+      <h4>Easy Install</h4>
+      <p>Simply run <code>rails g foundation:install</code> to configure your application to use Foundation. That's it!</p>
 
-  <h4>Manual Installation</h4>
-  <h5 class="subheader">Add Foundation to your CSS</h5>
-  <p>Append the following line to your <code>app/assets/stylesheets/application.css</code> file:</p>
+      <h4>Manual Installation</h4>
+      <h5 class="subheader">Add Foundation to your CSS</h5>
+      <p>Append the following line to your <code>app/assets/stylesheets/application.css</code> file:</p>
 
 <%= code_example '
 /*= require foundation */
 ', :css %>
 
-  <p>If you're planning on using <a href="http://sass-lang.com/" rel="nofollow">Sass</a> then you'll want to rename <code>application.css</code> to <code>application.scss</code>. That file should then look like:</p>
+      <p>If you're planning on using <a href="http://sass-lang.com/" rel="nofollow">Sass</a> then you'll want to rename <code>application.css</code> to <code>application.scss</code>. That file should then look like:</p>
 
 <%= code_example '
 @import "foundation";
 ', :css %>
 
-  <h5 class="subheader">Add Foundation to your JS</h5>
-  <p>Append the following line to your <code>app/assets/javascripts/application.js</code> file:</p>
+      <h5 class="subheader">Add Foundation to your JS</h5>
+      <p>Append the following line to your <code>app/assets/javascripts/application.js</code> file:</p>
 
 <%= code_example '
 //= require foundation
 ', :js %>
 
-  <h5 class="subheader">Set Viewport Width</h5>
-  <p>Add the following line to the <kbd>&lt;head&gt;</kbd> of your page layout:</p>
+      <h5 class="subheader">Set Viewport Width</h5>
+      <p>Add the following line to the <kbd>&lt;head&gt;</kbd> of your page layout:</p>
 
 <%= code_example '
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ', :html %>
 
+      </div>
+    </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
+  </div>
   </div>
 </div>
