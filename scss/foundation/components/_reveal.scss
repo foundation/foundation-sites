@@ -99,31 +99,33 @@ $reveal-border-color:    #666 !default;
   cursor: pointer;
 }
 
-// Reveal Modals
-.reveal-modal-bg { @include reveal-bg; }
-
-.reveal-modal {
-  @include reveal-modal-base;
-  @include reveal-modal-style;
-
-  .close-reveal-modal { @include reveal-close; }
-}
-
-// Large Screen Styles
-@media #{$small} {
+@if $include-html-classes {
+  // Reveal Modals
+  .reveal-modal-bg { @include reveal-bg; }
 
   .reveal-modal {
-    @include reveal-modal-style(false, emCalc(30px), false, $box-shadow: false, $top-offset: emCalc(100px));
+    @include reveal-modal-base;
+    @include reveal-modal-style;
 
-    &.small  { @include reveal-modal-base(false, 30%); }
-    &.medium { @include reveal-modal-base(false, 40%); }
-    &.large  { @include reveal-modal-base(false, 60%); }
-    &.xlarge { @include reveal-modal-base(false, 70%); }
-    &.expand { @include reveal-modal-base(false, 95%); }
+    .close-reveal-modal { @include reveal-close; }
   }
-}
 
-// Reveal Print Styles
-@media print {
-  div:not(.reveal-modal) { display: none; }
+  // Large Screen Styles
+  @media #{$small} {
+
+    .reveal-modal {
+      @include reveal-modal-style(false, emCalc(30px), false, $box-shadow: false, $top-offset: emCalc(100px));
+
+      &.small  { @include reveal-modal-base(false, 30%); }
+      &.medium { @include reveal-modal-base(false, 40%); }
+      &.large  { @include reveal-modal-base(false, 60%); }
+      &.xlarge { @include reveal-modal-base(false, 70%); }
+      &.expand { @include reveal-modal-base(false, 95%); }
+    }
+  }
+
+  // Reveal Print Styles
+  @media print {
+    div:not(.reveal-modal) { display: none; }
+  }
 }

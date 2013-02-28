@@ -205,36 +205,38 @@ $switch-label-outline:            1px dotted #888 !default;
   @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
+@if $include-html-classes {
 
-/* Foundation Switches */
-@media only screen {
+  /* Foundation Switches */
+  @media only screen {
 
-  // Containing element for the radio switch
-  .switch {
-    @include switch;
+    // Containing element for the radio switch
+    .switch {
+      @include switch;
 
-    // Large radio switches
-    &.large { @include switch-size($switch-height-lrg, $switch-font-size-lrg); }
+      // Large radio switches
+      &.large { @include switch-size($switch-height-lrg, $switch-font-size-lrg); }
 
-    // Small radio switches
-    &.small { @include switch-size($switch-height-sml, $switch-font-size-sml, 2.1em); }
+      // Small radio switches
+      &.small { @include switch-size($switch-height-sml, $switch-font-size-sml, 2.1em); }
 
-    // Tiny radio switches
-    &.tiny { @include switch-size($switch-height-tny, $switch-font-size-tny, 1.9em); }
+      // Tiny radio switches
+      &.tiny { @include switch-size($switch-height-tny, $switch-font-size-tny, 1.9em); }
 
-    // Add a radius to the switch
-    &.radius { @include radius(4px);
-      & > span { @include radius(3px); }
+      // Add a radius to the switch
+      &.radius { @include radius(4px);
+        & > span { @include radius(3px); }
+      }
+
+      // Make the switch completely round, like a pill
+      &.round { @include radius(1000px);
+        & > span { @include radius(999px); }
+        label { padding: 0 emCalc($switch-label-side-padding + 3px); }
+      }
+
     }
 
-    // Make the switch completely round, like a pill
-    &.round { @include radius(1000px);
-      & > span { @include radius(999px); }
-      label { padding: 0 emCalc($switch-label-side-padding + 3px); }
-    }
+    @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
 
   }
-
-  @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
-
 }
