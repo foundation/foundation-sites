@@ -1,11 +1,5 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
-
-/*
-  TODO:
-    - styles not working in ie8
-*/
-
 ;(function ($, window, document, undefined) {
   'use strict';
 
