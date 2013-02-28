@@ -190,6 +190,26 @@ $topbar-transition-speed: 300ms;
 $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+        <hr>
+
+        <h3>Using the JavaScript</h3>
+        <p>You don't need ths JS to create reveal modals with Foundation. The only reason you'll need to include <code>foundation.reveal.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.topbar.js</code></p>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Top bar options can only be passed in during initialization at this time.</p>
+
+    <%= code_example "
+{
+  index : 0,
+  stickyClass : 'sticky',
+  init : false
+}", :json %>
       </div>
     </div>
   </div>
