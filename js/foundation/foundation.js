@@ -1,5 +1,5 @@
 /*
- * Foundation Responsive Library 4.0.0alpha
+ * Foundation Responsive Library 4.0.0
  * http://foundation.zurb.com
  * Copyright 2013, ZURB
  * Free to use under the MIT license.
@@ -79,8 +79,9 @@
   window.Foundation = {
     name : 'Foundation',
 
-    // global Foundation cache object,
-    // used for data store on nodes
+    version : '4.0.0',
+
+    // global Foundation cache object
     cache : {},
 
     init : function (scope, libraries, method, options, response, /* internal */ nc) {

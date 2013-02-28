@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.0.alpha',
+    version : '4.0.0',
 
     settings : {
       deep_linking: true,
@@ -54,7 +54,7 @@
           self = Foundation.libs.section;
 
       if (!self.settings.deep_linking && content.length > 0) {
-          e.preventDefault();
+        e.preventDefault();
       }
 
       if (section.hasClass('active')) {
