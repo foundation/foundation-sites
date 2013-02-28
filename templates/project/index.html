@@ -1,3 +1,4 @@
+<% @template = template if template.present? %>
 <!DOCTYPE html>
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -96,7 +97,11 @@
 		</div>
 	</div>
 
-	<script src="js/foundation/jquery.js"></script>
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
 	<% @template[:options][:javascripts].each do |f| %>
 	<script src="js/<%= f %>"></script>
 	<% end %>
