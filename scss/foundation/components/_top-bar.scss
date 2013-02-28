@@ -240,7 +240,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
           background: darken($alert-color, 10%);
         }
       }
-      
+
     }
 
     // Apply the active link color when it has that class
@@ -278,7 +278,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     #{$default-float}: 100%;
     top: 0;
     visibility: hidden;
-    z-index: 0;
+    z-index: 99;
 
     li { width: 100%;
       a {
