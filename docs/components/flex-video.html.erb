@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">If you're embedding video from YouTube, Vimeo, or another site that uses iframe, embed or object elements you can wrap your video in <code>div.flex-video</code> to create an intrinsic ratio that will properly scale your video on any device.</h4>
+    <h4 class="subheader">If you're embedding a video from YouTube, Vimeo, or another site that uses iframe, embed or object elements, you can wrap your video in <code>div.flex-video</code> to create an intrinsic ratio that will properly scale your video on any device.</h4>
   </div>
 </div>
 
@@ -23,19 +23,19 @@
           <iframe src="http://player.vimeo.com/video/21762736" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
 
-        <p>Because Vimeo places their chrome on the player itself, adding a class of .vimeo creates a container that is sized for the video only - no extra padding for the controls.</p>
+        <p>Because Vimeo places their chrome on the player itself, adding a class of .vimeo creates a container that is sized for the video only &mdash; no extra padding for the controls.</p>
       </div>
     </div>
 
     <hr>
 
     <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build flex-video containers in Foundation 4, with our predefined HTML classes or with our mixins. Building flex-video containers using our classes is simple, you'll just need to create a <code>&lt;div class="flex-video"&gt;</code> and apply the classes you want to style it appropriately.</p>
+    <p>There are two ways to build flex-video containers in Foundation 4: with our predefined HTML classes or with our mixins. Building flex-video containers using our classes is simple, you'll just need to create a <code>&lt;div class="flex-video"&gt;</code> and apply the classes you want to style it appropriately.</p>
 
     <p>The available class options:</p>
     <ul class="disc">
       <li><code>widescreen</code>: Will give the player a widescreen aspect ratio.</li>
-      <li><code>vimeo</code>: This will ensure that we don't add extra padding since vimeo has controls within the player itself.</li>
+      <li><code>vimeo</code>: This will ensure that we don't add extra padding since Vimeo has controls within the player, itself.</li>
     </ul>
 
 <%= code_example '
@@ -48,13 +48,13 @@
     <hr>
 
     <h3>Build with our Mixins</h3>
-    <p>We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_flex-video.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_flex-video.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/flex-video";
 ', :css %>
 
-    <p>The markup is just like we showed you above, but you can applyt the mixin to your own custom class or ID.</p>
+    <p>The markup is just like we showed you above, but you can apply the mixin to your own custom class or ID.</p>
 <%= code_example '
 <div class="your-class-name">
   <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>

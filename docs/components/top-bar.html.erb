@@ -134,22 +134,22 @@
     <hr>
 
     <h3>Build With HTML Classes</h3>
-    <p>The top-bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on may presentational classes to accomplish the styles and the JS has a lot happening</p>
+    <p>The top bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on many presentational classes to accomplish the styles and there's a lot happening in the JS.</p>
 
     <h5>Basic Needs</h5>
     <p>The top bar has four main elements, three of which are needed for proper functionality: <code>ul.title-area</code>, one of the section <code>ul class="right/left</code> elements and the <code>li.toggle-topbar</code> element that will expand the menu in the mobile layout. You can leave out the li class="name" as long as you include the .toggle-topbar element.</p>
 
     <h5>Positioning the Bar</h5>
-    <p>The top bar is built with a single <code>nav</code> element with a class of <code>top-bar</code>. It will take on full browser width by default. To make the top bar stay fixed as you scroll, wrap it in <code>div class="fixed"</code>. If you want your navigation to be set to your grid width, wrap it in <code>div class="contain-to-grid"</code>. You may use <code>fixed</code> and <code>contain-to-grid</code> together.</p>
+    <p>The top bar is built with a single <code>nav</code> element with a class of <code>top-bar</code>. It will take on full-browser width by default. To make the top bar stay fixed as you scroll, wrap it in <code>div class="fixed"</code>. If you want your navigation to be set to your grid width, wrap it in <code>div class="contain-to-grid"</code>. You may use <code>fixed</code> and <code>contain-to-grid</code> together.</p>
 
     <h5>Building the Nav</h5>
-    <p>When building your bar it is good to be aware of how many links your are going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items simply include <code>li</code> elements with and anchor inside them for your top-level. To build a dropdown menu you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> right after that anchor. Add a class of <code>active</code> to mark the current page.</p>
+    <p>When building your bar it is good to be aware of how many links your're going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items, simply include <code>li</code> elements with and anchor inside them for your top-level. To build a dropdown menu, you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> after that anchor. Add a class of <code>active</code> to mark the current page.</p>
 
     <h5>Other Elements</h5>
     <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-button</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
 
     <h5>Sticky Top Bar</h5>
-    <p>You may also wrap your topbar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll.</p>
+    <p>You may also wrap your top bar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll.</p>
 
 <%= code_example '
 <nav class="top-bar">
@@ -275,7 +275,7 @@
 </nav>', :html %>
 
   <h4>Available SCSS Variables</h4>
-  <p>We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile-first, so they are much easier to override than the previous iteration of the top bar.</p>
+  <p>We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile first, so they are much easier to override than the previous iteration of the top bar.</p>
 
 <%= code_example '
 /* Background color for the top bar */

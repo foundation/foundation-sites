@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Switches can be used instead of regular radio buttons, to switch between two options. They are very customizable and use styles that won't come through on phones that don't support media queries, they'll just be normal radios.</h4>
+    <h4 class="subheader">Switches can be used instead of regular radio buttons to switch between two options. They are customizable and use styles that won't show on phones that don't support media queries. On these devices, they will appear as regular radio buttons.</h4>
 
     <div class="small-2 switch tiny">
       <input id="a" name="switch-a" type="radio" checked>
@@ -54,7 +54,7 @@
   <div class="large-12 columns">
 
     <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build switches in Foundation 4, with our predefined HTML classes or with our mixins. Building switches using our predefined classes is simple, you'll just need a <code>div.switch</code> wrapped around a specific input/label markup. From there, you can update the styles as you need to. The switches width is 100% of the container you put it in or you can use the grid classes, like <code>.small-#</code> or <code>.large-#</code> directly on the switch.</p>
+    <p>There are two ways to build switches in Foundation 4: with our predefined HTML classes or with our mixins. Building switches using our predefined classes is simple, you'll just need a <code>div.switch</code> wrapped around a specific input/label markup. From there, you can update the styles as you need to. The switches width is 100% of the container you put it in or you can use our grid classes, <code>.small-#</code> or <code>.large-#</code>, directly on the switch.</p>
 
 <%= code_example '
 <!-- Default switch -->
@@ -81,19 +81,19 @@
 
     <p>The class options:</p>
     <ul class="disc">
-      <li><code>radius</code>: Add this to the the switch container to get a 3px radius paddle and edges.</li>
-      <li><code>round</code>: Add this to the the switch container to get a round paddle and edges.</li>
-      <li><code>tiny</code>: Set the height and text of the switch to tiny.</li>
-      <li><code>small</code>: Set the height and text of the switch to small.</li>
-      <li><code>large</code>: Set the height and text of the switch to large.</li>
+      <li><code>radius</code>: Add this to the the switch container to get a 3px radius paddle and edges</li>
+      <li><code>round</code>: Add this to the the switch container to get a round paddle and edges</li>
+      <li><code>tiny</code>: Set the height and text of the switch to tiny</li>
+      <li><code>small</code>: Set the height and text of the switch to small</li>
+      <li><code>large</code>: Set the height and text of the switch to large</li>
     </ul>
 
-    <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected switches from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
+    <p>To use these styles, make sure you have the default Foundation CSS package or that you've selected switches from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
     <hr>
 
     <h3>Build with our Mixins</h3>
-    <p>We've included SCSS mixins used to style switches. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_switch.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style switches. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_switch.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/switch";
@@ -130,7 +130,7 @@
       <span></span>
     </div>
 
-    <p>There are <strong>ten options</strong> you can customize on the fly when writing this mixin. These controls things like: padding, text size, color, and radius. Setting any of these options to false will negate those styles.</p>
+    <p>There are <strong>ten options</strong> you can customize on the fly when writing this mixin. These controls things like: padding, text size, color and radius. Setting any of these options to false will negate those styles.</p>
 
 <%= code_example '
 /* Using the available options */

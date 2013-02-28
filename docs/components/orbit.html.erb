@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">Orbit is an easy to use, powerful image slider built to be responsive and swippable on touch-enabled devices!</h4>
+    <h4 class="subheader">Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.</h4>
 
     <ul id="featured1" data-orbit>
       <li data-orbit-slide="headline-1">
@@ -35,7 +35,7 @@
   <div class="large-12 columns">
 
     <h3>Build Orbit With HTML</h3>
-    <p>With our HTML classes and structure, building Orbit is pretty simple, you'll just need to write the markup, find some images or text, fire up the Javascript and you'll be ready to go. On touch-enabled devices, Orbit has swipe functionality that makes it easy to advance slides. Once you go to a screen without touch, you'll see bullet navigation and arrow navigation if you have the options setup in your JS. Here's markup structure for Orbit:</p>
+    <p>Building Orbit is pretty simple using our HTML classes and structure; you'll just need to write the markup, find some images or text, fire up the Javascript and you'll be ready to go. On touch-enabled devices, Orbit has swipe functionality that makes it easy to switch slides. On screens without touch interfaces, you'll see bullet and arrow navigation if you have the options setup in your JS. Here's markup structure for Orbit:</p>
 
 <%= code_example '
 <!-- Basic orbit markup -->
@@ -55,7 +55,7 @@
 </ul>', :html %>
 
     <h5>We'll Automatically Add HTML</h5>
-    <p>To keep the markup you write really clean, we've let JS add what's needed for the navigation, bullets and other parts of the plugin. Once the page has been loaded, your markup will look different. Below is an example of that markup so you know what classes to target for styling.</p>
+    <p>To keep your markup really clean, we've let JS add what's needed for the navigation, bullets and other parts of the plugin. Once the page has been loaded, your markup will look different. Below is an example of the markup so you know what to target.</p>
 
 <%= code_example '
 <!-- Orbit Container -->
@@ -139,7 +139,7 @@
     <hr>
 
     <h3>Available SCSS Variables</h3>
-    <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things. Here's a list of the variables:</p>
+    <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
 
 <%= code_example '
 /* We use these to control the caption styles */
@@ -169,7 +169,7 @@ $orbit-slide-number-padding: emCalc(5px);
     <hr>
 
     <h3>Using the Javascript</h3>
-    <p>You'll need to include <code>foundation.orbit.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+    <p>You'll need to include <code>foundation.orbit.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS file in your directory:</p>
 
 <%= code_example '
 <script src="path/to/zepto.js"></script>

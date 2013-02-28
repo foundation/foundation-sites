@@ -3,7 +3,7 @@
   <div class="large-12 columns">
     <p><a href="/">&laquo; Back</a></p>
     <h1>Foundation <%= @page_title %></h1>
-    <h4 class="subheader">If you're making a rockin' marketing site for a subscription-based product you are likely in need of a pricing table. These fill 100% of the their container and are made from a simple unorderd list.</h4>
+    <h4 class="subheader">If you're making a rockin' marketing site for a subscription-based product, you are likely in need of a pricing table. These fill 100% of the their container and are made from a simple unorderd list.</h4>
   </div>
 </div>
 
@@ -27,7 +27,7 @@
     <hr>
 
     <h3>Build With Predefined HTML Classes</h3>
-    <p>There are two ways to build pricing tables in Foundation 4, with our predefined HTML or with our mixins. Building pricing tables with our predefined classes is quite easy. You'll start with an <code>&lt;ul&gt;</code> and add a class of <code>.pricing-table</code> to it. From there you just need to add list items inside that represent each piece of the table.</p>
+    <p>There are two ways to build pricing tables in Foundation 4: with our predefined HTML or with our mixins. Building pricing tables with our predefined classes is quite easy. You'll start with an <code>&lt;ul&gt;</code> and add a class of <code>.pricing-table</code> to it. From there, you just need to add list items inside that represent each piece of the table.</p>
 
     <p>Available HTML class options for the list items:</p>
     <ul class="disc">
@@ -54,13 +54,13 @@
     <hr>
 
     <h3>Build with a Mixin</h3>
-    <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_pricing-tables.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+    <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_pricing-tables.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
 @import "foundation/foundation-global", "foundation/pricing-tables";
 ', :css %>
 
-    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like to the <code>&lt;ul&gt;</code> and the list items inside it.</p>
+    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like with the <code>&lt;ul&gt;</code> and the list items inside it.</p>
 
 <%= code_example '
 <ul class="your-pricing-class">
@@ -72,7 +72,7 @@
 </ul>', :html %>
 
     <h5>The Container Mixin</h5>
-    <p>Pricing tables are built up from an unordered list. We give this container some necessary styles by using our container mixin. There are no customizable options within the mixin, but everything can be changed using the Scss variables below.</p>
+    <p>Pricing tables are built up from an unordered list. We give this container some necessary styles by using our container mixin. There are no customizable options within the mixin, but everything can be changed using the SCSS variables below.</p>
 
 <%= code_example '
 .your-pricing-class  { @include pricing-table-container;
