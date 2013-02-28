@@ -15,7 +15,7 @@
     },
 
     init : function (scope, method, options) {
-      this.scope = this.scope || scope;
+      this.scope = scope || this.scope;
       Foundation.inherit(this, 'throttle data_options');
 
       if (typeof method === 'object') {

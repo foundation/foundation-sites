@@ -204,7 +204,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   }
 
   li {
-    a:not(.button) {
+    & > a {
       display: block;
       width: 100%;
       padding: 12px 0 12px $topbar-height / 3;
@@ -214,6 +214,33 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       background: $topbar-dropdown-bg;
 
       &:hover { background: darken($topbar-dropdown-bg, 3%); }
+      
+
+      &.button {
+        background: $primary-color;
+        &:hover {
+          background: darken($primary-color, 10%);
+        }
+      }
+      &.button.secondary {
+        background: $secondary-color;
+        &:hover {
+          background: darken($secondary-color, 10%);
+        }
+      }
+      &.button.success {
+        background: $success-color;
+        &:hover {
+          background: darken($success-color, 10%);
+        }
+      }
+      &.button.alert {
+        background: $alert-color;
+        &:hover {
+          background: darken($alert-color, 10%);
+        }
+      }
+
     }
 
     // Apply the active link color when it has that class
@@ -251,7 +278,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     #{$default-float}: 100%;
     top: 0;
     visibility: hidden;
-    z-index: 0;
+    z-index: 99;
 
     li { width: 100%;
       a {
@@ -320,6 +347,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         padding: 0 $topbar-height / 3;
         line-height: $topbar-height;
         background: $topbar-bg;
+        &:hover { background: darken($topbar-dropdown-bg, 3%); }
       }
     }
 
