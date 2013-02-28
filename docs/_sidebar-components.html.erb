@@ -11,7 +11,7 @@
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section <%= @side_nav == 'grid' ? 'active': '' %>">
     <p class="title"><a href="#">Grid</a></p>
     <div class="content">
       <ul class="side-nav">
@@ -20,7 +20,7 @@
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section <%= @side_nav == 'nav' ? 'active': '' %>">
     <p class="title"><a href="#">Navigation</a></p>
     <div class="content">
       <ul class="side-nav">
@@ -32,7 +32,7 @@
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section <%= @side_nav == 'buttons' ? 'active': '' %>">
     <p class="title"><a href="#">Buttons</a></p>
     <div class="content">
       <ul class="side-nav">
@@ -43,7 +43,7 @@
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section <%= @side_nav == 'forms' ? 'active': '' %>">
     <p class="title"><a href="#">Forms</a></p>
     <div class="content">
       <ul class="side-nav">
@@ -53,7 +53,7 @@
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section <%= @side_nav == 'type' ? 'active': '' %>">
     <p class="title"><a href="#">Typography</a></p>
     <div class="content">
       <ul class="side-nav">
@@ -64,7 +64,7 @@
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section <%= @side_nav == 'css' ? 'active': '' %>">
     <p class="title"><a href="#">CSS Components</a></p>
     <div class="content">
       <ul class="side-nav">
@@ -77,7 +77,7 @@
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section <%= @side_nav == 'js' ? 'active': '' %>">
     <p class="title"><a href="#">Javascript</a></p>
     <div class="content">
       <ul class="side-nav">
@@ -93,14 +93,14 @@
     </div>
   </section>
   <section class="section">
-    <p class="title"><a href="faq.html">FAQ</a></p>
+    <p class="title"><a href="../faq.html">FAQ</a></p>
   </section>
   <section class="section">
-    <p class="title"><a href="support.html">Support</a></p>
+    <p class="title"><a href="../support.html">Support</a></p>
   </section>
 </div>
 
-<p><a href="../download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
+<p><a href="http://foundation.zurb.com/download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
 
 <div class="jobs hide-for-small">
   <h5>Awesome product jobs:</h5>
