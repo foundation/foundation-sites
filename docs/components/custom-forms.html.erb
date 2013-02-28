@@ -281,7 +281,18 @@
         <h3>Using the JavaScript</h3>
         <p>In order to get the custom forms to function, you'll need to include <code>foundation.forms.js</code>. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the forms plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
-      <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.forms.js</code></p>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Custom Form options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>change</i>, and <i>click</i> events depending on the form elements.</p>
+
+<%= code_example "
+{
+  disable_class: 'no-custom'
+}", :json %>
 
       </div>
     </div>
