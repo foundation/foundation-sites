@@ -95,24 +95,21 @@
               $dropdown = $this.closest('div.custom.dropdown'),
               $select = $dropdown.prev();
 
-          // $('div.dropdown.open').removeClass('open');
-
           // make sure other dropdowns close
           if(!$dropdown.hasClass('open'))
-            $(self.scope).trigger('click.customdropdown');
+            $(self.scope).trigger('click');
 
           e.preventDefault();
           if (false === $select.is(':disabled')) {
-            $('div.dropdown.open').removeClass('open');
             $dropdown.toggleClass('open');
 
             if ($dropdown.hasClass('open')) {
-              $(self.scope).on('click.customdropdown', function () {
+              $(self.scope).on('click.fndtn.forms.customdropdown', function () {
                 $dropdown.removeClass('open');
-                $(self.scope).off('.customdropdown');
+                $(self.scope).off('.fndtn.forms.customdropdown');
               });
             } else {
-              $(self.scope).on('.customdropdown');
+              $(self.scope).on('.fndtn.forms.customdropdown');
             }
             return false;
           }
@@ -127,7 +124,7 @@
           e.stopPropagation();
 
           if ( ! $(this).hasClass('disabled')) {
-            $('div.dropdown').removeClass('open');
+            $('div.dropdown').not($customDropdown).removeClass('open');
 
             var $oldThis= $this
               .closest('ul')
@@ -248,9 +245,10 @@
         // Quickly, display all parent elements.
         // This should help us calcualate the width of the list item's within the drop down.
         //
-        Foundation.libs.forms.hidden_fix.adjust( $customList );
+        var self = Foundation.libs.forms;
+        self.hidden_fix.adjust( $customList );
 
-        maxWidth = ( $listItems.outerWidth() > maxWidth ) ? $listItems.outerWidth() : maxWidth;
+        maxWidth = ( self.outerWidth($listItems) > maxWidth ) ? self.outerWidth($listItems) : maxWidth;
 
         Foundation.libs.forms.hidden_fix.reset();
 
@@ -261,6 +259,7 @@
     },
 
     refresh_custom_select : function ($select) {
+      var self = this;
       var maxWidth = 0,
         $customSelect = $select.next(),
         $options = $select.find('option');
@@ -288,8 +287,8 @@
         .find('ul').removeAttr('style');
       $customSelect.find('li').each(function () {
         $customSelect.addClass('open');
-        if ($(this).outerWidth() > maxWidth) {
-          maxWidth = $(this).outerWidth();
+        if (self.outerWidth($(this)) > maxWidth) {
+          maxWidth = self.outerWidth($(this));
         }
         $customSelect.removeClass('open');
       });

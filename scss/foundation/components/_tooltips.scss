@@ -13,7 +13,6 @@ $tooltip-bg: #000 !default;
 $tooltip-font-size: emCalc(15px) !default;
 $tooltip-font-weight: bold !default;
 $tooltip-font-color: #fff !default;
-$tooltip-font-color-alt: #333 !default;
 $tooltip-line-height: 1.3 !default;
 $tooltip-close-font-size: emCalc(10px) !default;
 $tooltip-close-font-weight: normal !default;
@@ -23,12 +22,9 @@ $tooltip-radius: $global-radius !default;
 $tooltip-pip-size: 5px !default;
 
 
-//
-// Tooltip Mixins
-//
+/* Tooltips */
 
-// We use this mixin to create the style for elements that have a tip associated with them.
-@mixin has-tip($hover-color:$has-tip-font-color-hover) {
+.has-tip {
   border-bottom: $has-tip-border-bottom;
   cursor: $has-tip-cursor-type;
   font-weight: $has-tip-font-weight;
@@ -37,67 +33,61 @@ $tooltip-pip-size: 5px !default;
   &:hover,
   &:focus {
     border-bottom: $has-tip-border-bottom-hover;
-    color: $hover-color;
+    color: $has-tip-font-color-hover;
   }
 
   &.tip-left,
   &.tip-right { float: none !important; }
 }
 
-// We use this mixin to create the tooltips themselves.
-@mixin tooltip($bg:$tooltip-bg, $padding:$tooltip-padding, $pip-size:$tooltip-pip-size, $font-size:$tooltip-font-size) {
-
+.tooltip {
   display: none;
   position: absolute;
   z-index: 999;
   font-weight: $tooltip-font-weight;
-  font-size: $font-size;
+  font-size: $tooltip-font-size;
   line-height: $tooltip-line-height;
-  padding: $padding;
+  padding: $tooltip-padding;
   max-width: 85%;
   left: 50%;
   width: 100%;
-
-  // We use this to control the background color and set the font color depending on its lightness
-  $bg-lightness: lightness($bg);
-
-  background: $bg;
-  @if $bg-lightness < 60% { color: $tooltip-font-color; }
-  @else {                   color: $tooltip-font-color-alt; }
+  color: $tooltip-font-color;
+  background: $tooltip-bg;
 
   // Creating all the HTML classes for the nub positions.
   &>.nub {
     display: block;
     width: 0;
     height: 0;
-    border: solid $pip-size;
-    border-color: transparent transparent $bg transparent;
+    border: solid $tooltip-pip-size;
+    border-color: transparent transparent $tooltip-bg transparent;
     position: absolute;
-    top: -($pip-size * 2);
-    // #{$default-float}: $pip-size * 2;
+    top: -($tooltip-pip-size * 2);
+    // #{$default-float}: $tooltip-pip-size * 2;
   }
-  &.tip-override>.nub {
-    border-color: transparent transparent $bg transparent !important;
-    top: -($pip-size * 2) !important;
-  }
+
   &.tip-top>.nub {
-    border-color: $bg transparent transparent transparent;
+    border-color: $tooltip-bg transparent transparent transparent;
     top: auto;
-    bottom: -($pip-size * 2);
+    bottom: -($tooltip-pip-size * 2);
   }
 
   &.tip-left,
   &.tip-right { float: none !important; }
 
   &.tip-left>.nub {
-    border-color: transparent transparent transparent $bg;
-    // right: -($pip-size * 2);
-    // left: auto;
+    border-color: transparent transparent transparent $tooltip-bg;
+    right: -($tooltip-pip-size * 2);
+    left: auto;
+    top: 50%;
+    margin-top: -$tooltip-pip-size;
   }
   &.tip-right>.nub {
-    border-color: transparent $bg transparent transparent;
-    // right: auto;
-    // left: -($pip-size * 2);
+    border-color: transparent $tooltip-bg transparent transparent;
+    right: auto;
+    left: -($tooltip-pip-size * 2);
+    top: 50%;
+    margin-top: -$tooltip-pip-size;
   }
 
   &.opened {
@@ -105,10 +95,10 @@ $tooltip-pip-size: 5px !default;
     border-bottom: $has-tip-border-bottom-hover !important;
   }
 
+  &.radius{ @include radius($tooltip-radius); }
 }
 
-// We use this to create the tap-to-close button for mobile
-@mixin tap-to-close() {
+.tap-to-close {
   display: block;
   font-size: $tooltip-close-font-size;
   color: $tooltip-close-font-color;
@@ -116,20 +106,6 @@ $tooltip-pip-size: 5px !default;
 }
 
 
-/* Tooltips */
-@media screen {
-
-  .has-tip { @include has-tip; }
-
-  .tooltip {
-    @include tooltip;
-
-    &.radius{ @include radius($tooltip-radius); }
-  }
-
-  .tap-to-close { @include tap-to-close; }
-
-}
   // .tooltip {
   //   font-size: $tooltip-font-size-sml;
   //   line-height: 1.4;
