@@ -24,7 +24,7 @@ end
 javascripts = copy_js_from("../../js", "foundation", ["index.js"])
 vendor_javascripts = copy_js_from("../../js", "vendor")
 
-# javascripts.reject! do |f|   
+# javascripts.reject! do |f|
 #   [
 #     "jquery.js",
 #     "modernizr.foundation.js",
@@ -49,4 +49,4 @@ w00t! You're using ZURB Foundation, now go forth and rock 'n roll!
 
 file 'config.rb'
 
-# no_configuration_file!
+no_configuration_file!
