@@ -9,7 +9,7 @@
     version : '4.0.0',
 
     settings : {
-      deep_linking: true,
+      deep_linking: false,
       one_up: true,
       callback: function (){}
     },
