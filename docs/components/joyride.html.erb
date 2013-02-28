@@ -18,8 +18,11 @@
 
 <%= code_example '
 <!-- At the bottom of your page but inside of the body tag -->
-<ol data-joyride data-options="timer:3000">
-  <li data-class="so-awesome" data-text="Next" class="custom">
+<ol class="joyride-list" data-joyride>
+  <li data-id="firstStop" data-text="Next">
+    <p>Hello and welcome to the Joyride documentation page.</p>
+  </li>
+  <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
     <h4>Stop #1</h4>
     <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
   </li>
@@ -27,17 +30,9 @@
     <h4>Stop #2</h4>
     <p>Get the details right by styling Joyride with a custom stylesheet!</p>
   </li>
-  <li data-id="numero3" data-button="Next" data-options="tipLocation:right">
-    <h4>Stop #3</h4>
-    <p>It works right aligned.</p>
-  </li>
   <li data-button="Next">
     <h4>Stop #4</h4>
     <p>It works as a modal too!</p>
-  </li>
-  <li data-id="numero5" data-button="Close">
-    <h4>Stop #5</h4>
-    <p>Now what are you waiting for? Add this to your projects and get the most out of your apps!</p>
   </li>
 </ol>
 ', :html %>
@@ -59,7 +54,7 @@
 
     <hr>
 
-    <h3>Available SCSS Variables</h3>
+    <h3 id="numero2">Available SCSS Variables</h3>
     <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things. Here's a list of the variables:</p>
 
 <%= code_example '
@@ -131,16 +126,8 @@ $joyride-screenfill:          rgba(0,0,0,0.5);
     <h4>Stop #2</h4>
     <p>Get the details right by styling Joyride with a custom stylesheet!</p>
   </li>
-  <li data-id="numero3" data-button="Next" data-options="tipLocation:right">
-    <h4>Stop #3</h4>
-    <p>It works right aligned.</p>
-  </li>
   <li data-button="Next">
     <h4>Stop #4</h4>
     <p>It works as a modal too!</p>
-  </li>
-  <li data-id="numero5" data-button="Close">
-    <h4>Stop #5</h4>
-    <p>Now what are you waiting for? Add this to your projects and get the most out of your apps!</p>
   </li>
 </ol>
