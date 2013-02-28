@@ -2,21 +2,26 @@
   'use strict';
 
   var $doc = $(document),
-      Modernizr = window.Modernizr;
+      Modernizr = window.Modernizr,
+      defaults = {
+        tabs: {callback : $.foundation.customForms.appendCustomMarkup}
+      };
 
   $doc.ready(function() {
-    $.fn.foundationAlerts           ? $doc.foundationAlerts() : null;
-    $.fn.foundationButtons          ? $doc.foundationButtons() : null;
-    $.fn.foundationAccordion        ? $doc.foundationAccordion() : null;
-    $.fn.foundationNavigation       ? $doc.foundationNavigation() : null;
-    $.fn.foundationTopBar           ? $doc.foundationTopBar() : null;
-    $.fn.foundationCustomForms      ? $doc.foundationCustomForms() : null;
-    $.fn.foundationMediaQueryViewer ? $doc.foundationMediaQueryViewer() : null;
-    $.fn.foundationTabs             ? $doc.foundationTabs({callback : $.foundation.customForms.appendCustomMarkup}) : null;
-    $.fn.foundationTooltips         ? $doc.foundationTooltips() : null;
-    $.fn.foundationMagellan         ? $doc.foundationMagellan() : null;
-    $.fn.foundationClearing         ? $doc.foundationClearing() : null;
-
+    // Allow for setting per-plugin default options
+    var userDefaults = $.extend({}, defaults, $.foundationDefaults);
+    
+    $.fn.foundationAlerts           ? $doc.foundationAlerts(userDefaults.alerts) : null;
+    $.fn.foundationButtons          ? $doc.foundationButtons(userDefaults.buttons) : null;
+    $.fn.foundationAccordion        ? $doc.foundationAccordion(userDefaults.accordion) : null;
+    $.fn.foundationNavigation       ? $doc.foundationNavigation(userDefaults.navigation) : null;
+    $.fn.foundationTopBar           ? $doc.foundationTopBar(userDefaults.topBar) : null;
+    $.fn.foundationCustomForms      ? $doc.foundationCustomForms(userDefaults.customFonts) : null;
+    $.fn.foundationMediaQueryViewer ? $doc.foundationMediaQueryViewer(userDefaults.mediaQueryViewer) : null;
+    $.fn.foundationTabs             ? $doc.foundationTabs(userDefaults.tabs) : null;
+    $.fn.foundationTooltips         ? $doc.foundationTooltips(userDefaults.tooltips) : null;
+    $.fn.foundationMagellan         ? $doc.foundationMagellan(userDefaults.magellan) : null;
+    $.fn.foundationClearing         ? $doc.foundationClearing(userDefaults.clearing) : null;
     $.fn.placeholder                ? $('input, textarea').placeholder() : null;
   });
 
