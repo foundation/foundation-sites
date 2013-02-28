@@ -31,77 +31,75 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 // on predefined classes and structure to work properly.
 // The variables above should give enough control.
 
-@media only screen {
-  /* Clearing Styles */
-  [data-clearing] {
-    @include clearfix;
-    margin-bottom: 0;
-  }
+/* Clearing Styles */
+[data-clearing] {
+  @include clearfix;
+  margin-bottom: 0;
+}
 
-  .clearing-blackout {
-    background: $clearing-bg;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    #{$default-float}: 0;
-    z-index: 999;
+.clearing-blackout {
+  background: $clearing-bg;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  #{$default-float}: 0;
+  z-index: 999;
 
-    .clearing-close { display: block; }
-  }
+  .clearing-close { display: block; }
+}
 
-  .clearing-container {
-    position: relative;
-    z-index: 999;
-    height: 100%;
-    overflow: hidden;
-    margin: 0;
-  }
+.clearing-container {
+  position: relative;
+  z-index: 999;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
 
-  .visible-img {
-    height: 100%;
-    position: relative;
+.visible-img {
+  height: 100%;
+  position: relative;
 
-    img {
-      position: absolute;
-      #{$default-float}: 50%;
-      top: 50%;
-      margin-#{$default-float}: -50%;
-      max-height: 100%;
-      max-width: 100%;
-    }
-  }
-
-  .clearing-caption {
-    color: $clearing-caption-font-color;
-    line-height: 1.3;
-    margin-bottom: 0;
-    text-align: center;
-    bottom: 0;
-    background: $clearing-caption-bg;
-    width: 100%;
-    padding: $clearing-caption-padding;
-    position: fixed;
-    #{$default-float}: 0;
-  }
-
-  .clearing-close {
-    z-index: 999;
+  img {
     position: absolute;
-    top: 10px;
-    #{$default-opposite}: 20px;
-    font-size: $clearing-close-size;
-    line-height: 1;
-    color: $clearing-close-color;
-    display: none;
-
-    &:hover,
-    &:focus { color: #ccc; }
+    #{$default-float}: 50%;
+    top: 50%;
+    margin-#{$default-float}: -50%;
+    max-height: 100%;
+    max-width: 100%;
   }
+}
 
-  .clearing-assembled .clearing-container { height: 100%;
-    .carousel > ul { display: none; }
-  }
+.clearing-caption {
+  color: $clearing-caption-font-color;
+  line-height: 1.3;
+  margin-bottom: 0;
+  text-align: center;
+  bottom: 0;
+  background: $clearing-caption-bg;
+  width: 100%;
+  padding: $clearing-caption-padding;
+  position: fixed;
+  #{$default-float}: 0;
+}
+
+.clearing-close {
+  z-index: 999;
+  position: absolute;
+  top: 10px;
+  #{$default-opposite}: 20px;
+  font-size: $clearing-close-size;
+  line-height: 1;
+  color: $clearing-close-color;
+  display: none;
+
+  &:hover,
+  &:focus { color: #ccc; }
+}
+
+.clearing-assembled .clearing-container { height: 100%;
+  .carousel > ul { display: none; }
 }
 
 
