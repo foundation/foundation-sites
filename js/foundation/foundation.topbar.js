@@ -178,7 +178,7 @@
     },
 
     sticky : function () {
-      var klass = '.' + this.stickyClass;
+      var klass = '.' + this.settings.stickyClass;
       if ($(klass).length > 0) {
         var distance = $(klass).length ? $(klass).offset().top: 0,
             $window = $(window);
