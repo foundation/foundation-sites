@@ -73,18 +73,32 @@
         <p>There are two ways to build sections in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building a sections using our predefined classes is super-easy, you just need to create a <code>&lt;div class="section-container" data-section&gt;</code> as a wrapper for the sections themselves. Inside of this wrapper, you'll create either a <code>&lt;section class="section"&gt;</code> or <code>&lt;div class="section"&gt;</code>. Within that you'll include some sort of <code>.title</code> (this can be headers or a paragragh) and a <code>&lt;div class="content"&gt;</code>. Here is the markup you'll need:</p>
 
 <%= code_example '
-<section class="section">
-  <p class="title"><a href="#panel1">Section 1</a></p>
-  <div class="content" data-slug="panel1">
-    <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-</section>
-<section class="section">
-  <p class="title"><a href="#panel2">Section 2 Section 2</a></p>
-  <div class="content" data-slug="panel2">
-    <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-</section>', :html %>
+<div class="section-container" data-section>
+  <section class="section">
+    <p class="title"><a href="#panel1">Section 1</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#panel2">Section 2</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+</div>', :html %>
 
         <p>The class options:</p>
         <ul class="disc">
@@ -123,7 +137,7 @@ $section-bottom-margin:          emCalc(20px);
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <p>You don't need ths JS to create sections with Foundation. The only reason you'll need to include <code>foundation.section.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the sections plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
         <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
@@ -132,9 +146,31 @@ $section-bottom-margin:          emCalc(20px);
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
 
 <%= code_example '
-<div data-alert class="alert-box">
-  <!-- Your content goes here -->
-  <a href="#" class="close">&times;</a>
+<div class="section-container" data-section>
+  <section class="section">
+    <p class="title"><a href="#panel1">Section 1</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#panel2">Section 2</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
 </div>
 ', :html %>
 
