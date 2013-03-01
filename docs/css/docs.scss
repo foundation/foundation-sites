@@ -45,6 +45,10 @@ footer.row.full-width {
   ul { margin-bottom: 0; }
 }
 
+.docs.header { margin-bottom: 10px; }
+.docs.subheader {
+  float: left;
+}
 
 
 /* Alert Docs */
@@ -170,5 +174,14 @@ input[type="text"].attached-input {
   .location {
     display: block;
     color: #555;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .docs.header { float: left; }
+
+  .docs.subheader {
+    margin-top: 38px;
+    float: right;
   }
 }

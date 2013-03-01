@@ -6,7 +6,7 @@
   Foundation.libs.tooltips = {
     name: 'tooltips',
 
-    version : '4.0.0',
+    version : '4.0.2',
 
     settings : {
       selector : '.has-tip',
@@ -105,7 +105,7 @@
       if (Modernizr.touch) {
         $tip.append('<span class="tap-to-close">tap to close </span>');
       }
-      $target.attr('title', '');
+      $target.removeAttr('title').attr('title','');
       this.show($target);
     },
 
