@@ -46,7 +46,7 @@ $keystroke-radius:          $button-radius !default;
 
 @if $include-html-classes {
 
-  /* Keytroke Characters */
+  /* Keystroke Characters */
   .keystroke,
   kbd {
     @include keystroke;

@@ -203,7 +203,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     width: 100%;
   }
 
-  li {
+  ul li {
     & > a {
       display: block;
       width: 100%;

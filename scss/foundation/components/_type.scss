@@ -102,7 +102,6 @@ $microformat-abbr-font-decoration:     none !default;
 //
 // Typography Placeholders
 //
-
 %lead {
   font-size: $paragraph-font-size + emCalc(3.5px);
   line-height: 1.6;
@@ -178,9 +177,9 @@ h1, h2, h3, h4, h5, h6 {
   font-style: $header-font-style;
   color: $header-font-color;
   text-rendering: $header-text-rendering;
-  line-height: $header-line-height;
   margin-top: $header-top-margin;
   margin-bottom: $header-bottom-margin;
+  line-height: $header-line-height - emCalc(3px);
 
   small {
     font-size: $small-font-size;
@@ -189,10 +188,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1 { font-size: $h1-font-size; }
-h2 { font-size: $h2-font-size; }
-h3 { font-size: $h3-font-size; }
-h4 { font-size: $h4-font-size; }
+h1 { font-size: $h1-font-size - emCalc(10px); }
+h2 { font-size: $h2-font-size - emCalc(10px); }
+h3 { font-size: $h3-font-size - emCalc(5px); }
+h4 { font-size: $h4-font-size - emCalc(5px); }
 h5 { font-size: $h5-font-size; }
 h6 { font-size: $h6-font-size; }
 
@@ -348,6 +347,15 @@ blockquote p {
     border: none;
     padding: $microformat-abbr-padding;
   }
+}
+
+
+@media #{$small} {
+  h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
+  h1 { font-size: $h1-font-size; }
+  h2 { font-size: $h2-font-size; }
+  h3 { font-size: $h3-font-size; }
+  h4 { font-size: $h4-font-size; }
 }
 
 // Only include these styles if you want them.
