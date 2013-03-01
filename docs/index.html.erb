@@ -7,6 +7,23 @@
     <h5 class="subheader">Whether you are using Scss or CSS, we've made it easy to start a project so that you can help take over the world one responsive site at a time.</h5>
     <p>Foundation is developed in <a href="http://www.sass-lang.com">Sass</a>, which is powerful CSS pre-processor that helps you write cleaner, more organized, CSS that you can more easily maintain over time without the typical headaches of vanilla CSS. On top of our minimal styling, we've written powerful Javascript plugins that will make useful interactions easier to implement across screen sizes.</p>
 
+    <div class="" style="font-size: 14px;">
+      <p><strong>Looking for Foundation 3?</strong><br>
+      We're still supporting Foundation 3 for those who don't want to take the leap into the future with us. You can view the docs, download a package or visit the Github page.</p>
+      <ul class="button-group">
+        <li><a class="small button secondary" style="margin-bottom: 0;" href="../download-f3.php">Download</a></li>
+        <li><a class="small button secondary" style="margin-bottom: 0;" href="../old-docs/f3">Docs</a></li>
+        <li><a class="small button secondary" style="margin-bottom: 0;" href="https://github.com/zurb/foundation/tree/3-2-stable">Github</a></li>
+      </ul>
+
+      <hr>
+
+      <p><strong>Ready to Move to 4?</strong><br>
+      We've got you covered with a migration guide that explains the differences.</p>
+
+      <a class="small button secondary" href="../migration.php">Migration Guide</a>
+    </div>
+
     <hr>
 
     <h3>What comes with Foundation?</h3>
@@ -189,7 +206,6 @@
   <title>Foundation 4</title>
 
   <link rel="stylesheet" href="css/normalize.css" />
-  <link rel="stylesheet" href="css/foundation.css" />
   <link rel="stylesheet" href="css/app.css" />
 
   <script src="js/vendor/custom.modernizr.js"></script>
@@ -204,36 +220,23 @@
   (\'__proto__\' in {} ? \'js/vendor/zepto\' : \'js/vendor/jquery\') +
   \'.js><\/script>\')
   </script>
-
-  <script src="js/foundation/foundation.alerts.js"></script>
-
-  <script src="js/foundation/foundation.clearing.js"></script>
-
-  <script src="js/foundation/foundation.cookie.js"></script>
-
-  <script src="js/foundation/foundation.dropdown.js"></script>
-
-  <script src="js/foundation/foundation.forms.js"></script>
-
-  <script src="js/foundation/foundation.joyride.js"></script>
-
   <script src="js/foundation/foundation.js"></script>
-
+  <script src="js/foundation/foundation.alerts.js"></script>
+  <script src="js/foundation/foundation.clearing.js"></script>
+  <script src="js/foundation/foundation.cookie.js"></script>
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  <script src="js/foundation/foundation.forms.js"></script>
+  <script src="js/foundation/foundation.joyride.js"></script>
   <script src="js/foundation/foundation.magellan.js"></script>
-
   <script src="js/foundation/foundation.orbit.js"></script>
-
   <script src="js/foundation/foundation.placeholder.js"></script>
-
   <script src="js/foundation/foundation.reveal.js"></script>
-
   <script src="js/foundation/foundation.section.js"></script>
-
   <script src="js/foundation/foundation.tooltips.js"></script>
-
   <script src="js/foundation/foundation.topbar.js"></script>
-
-  <script src="js/foundation/app.js"></script>
+  <script>
+  $(document).foundation();
+  </script>
 </body>
 </html>
 
