@@ -69,8 +69,9 @@
           e.preventDefault();
 
           if (self.breakpoint()) {
-            topbar.toggleClass('expanded');
-            topbar.css('min-height', '');
+            topbar
+              .toggleClass('expanded')
+              .css('min-height', '');
           }
 
           if (!topbar.hasClass('expanded')) {
@@ -86,8 +87,9 @@
               section = topbar.find('section, .section'),
               titlebar = topbar.children('ul').first();
 
-          if (Modernizr.touch || self.breakpoint())
+          if (Modernizr.touch || self.breakpoint()) {
             e.preventDefault();
+          }
 
           if (self.breakpoint()) {
             var $this = $(this),
