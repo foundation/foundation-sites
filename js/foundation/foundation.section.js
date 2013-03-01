@@ -66,7 +66,7 @@
             .attr('style', '');
         }
       } else {
-        if (!self.small(parent) || self.settings.one_up) {
+        if (self.small(parent) || self.settings.one_up) {
           $this
             .closest('[data-section]')
             .find('section, .section')
