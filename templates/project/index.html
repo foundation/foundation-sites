@@ -10,7 +10,9 @@
 
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" href="css/foundation.css" />
+  <% if !template[:options][:customizer_used] %>
   <link rel="stylesheet" href="css/app.css" />
+  <% end %>
 
   <script src="js/vendor/custom.modernizr.js"></script>
 
@@ -84,7 +86,7 @@
 		</div>
 
 		<div class="large-4 columns">
-			<h4>Getting Started</h4>
+			<h4>Getting Starte`d</h4>
 			<p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
 
 			<h4>Other Resources</h4>
@@ -102,9 +104,19 @@
   ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
   '.js><\/script>')
   </script>
+  <% if template[:options][:customizer_used] %>
+  <script src="js/foundation.min.js"></script>
+  <!--
+  <% template[:options][:javascripts].each do |f| %>
+  <script src="js/foundation/<%= f %>"></script>
+  <% end %>
+  -->
+  <% else %>
+  <script src="js/foundation/foundation.js"></script>
 	<% template[:options][:javascripts].each do |f| %>
 	<script src="js/<%= f %>"></script>
 	<% end %>
+  <% end %>
   <script>
     $(document).foundation();
   </script>

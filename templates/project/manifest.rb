@@ -21,8 +21,10 @@ def copy_js_from(relative_path, prefix_path, excludes=[])
   return js_files.map {|f| "#{prefix_path}/#{File.basename(f)}"}
 end
 
-javascripts = copy_js_from("../../js", "foundation", ["index.js"])
+javascripts = copy_js_from("../../js", "foundation", ["foundation.js", "index.js"])
 vendor_javascripts = copy_js_from("../../js", "vendor")
+
+file "../../js/foundation/foundation.js", :to => "js/foundation/foundation.js"
 
 # javascripts.reject! do |f|
 #   [
