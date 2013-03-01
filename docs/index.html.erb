@@ -137,7 +137,7 @@
       <div class="large-4 columns">
         <dl>
           <dt><h5>css</h5></dt>
-          <dd>Includes <code>foundation.css</code> and <code>foundation.min.css</code> so you can choose which to use. We've also included <code>app.css</code> that you can use for custom styles that will sit on top of the Foundation core as overrides.</dd>
+          <dd>Includes <code>foundation.css</code> and <code>foundation.min.css</code> so you can choose which to use. You can add <code>app.css</code> or any other stylesheet to use for custom styles that will sit on top of the Foundation core as overrides.</dd>
         </dl>
       </div>
       <div class="large-4 columns">
@@ -195,7 +195,6 @@
     <h5 class="subheader">Our markup structure is straight forward and gives you the flexibility you need to create to your hearts desires. Here's an example page that includes the basics:</h5>
 
 <%= code_example '
-
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -258,19 +257,15 @@
           <dt><h5>CSS &amp; Modernizr</h5></dt>
           <dd>The default CSS download includes everything you need to get going, including necessary styles and our custom Modernizr script.</dd>
           <dt>CSS</dt>
-          <dd>We include <code>foundation.min.css</code> and <code>foundation.css</code>. The difference here is whether or not you want minified code or not (link whichever you want, but not both). You'll also notice <code>app.css</code>, which can be used for your own Foundation overrides.</dd>
-          <dt>Modernizr</dt>
-          <dd>We use this to give us the HTML5 Shiv, touch classes and JS media queries that help us control Foundation.</dd>
+          <dd>We include <code>foundation.min.css</code> and <code>foundation.css</code>. The difference here is whether or not you want minified code or not (link whichever you want, but not both).</dd>
         </dl>
       </div>
       <div class="large-4 columns">
         <dl>
+          <dt>Modernizr</dt>
+          <dd>We use this to give us the HTML5 Shiv, touch classes and JS media queries that help us control Foundation.</dd>
           <dt><h5>Javascripts</h5></dt>
           <dd>Our JS is linked up right before the closing body tag and includes all necessary plugins and initializers to hit the ground running.</dd>
-          <dt>jQuery</dt>
-          <dd>We stay as close as possible to the latest version of jQuery at all times. jQuery needs to be included before any Foundation JS.</dd>
-          <dt>Foundation JS</dt>
-          <dd>We include <code>foundation.min.js</code> by default, which includes all the available plugins. If you want to customize, we have every individual plugin commented for you to quickly pick and choose.</dd>
         </dl>
       </div>
     </div>
@@ -280,7 +275,7 @@
     <div class="panel">
       <h3>Get going!</h3>
       <h5 class="subheader">Now that you understand the gist of what Foundation is and how it works, it's time to start a project! We've got two different ways for you to build projects with Foundation, a Compass Gem using Scss or a with plain CSS.</h5>
-      <a href="sass.html" class="button">Using the Gem</a></li>
+      <a href="./sass.html" class="button">Using the Gem</a></li>
       <a href="http://foundation.zurb.com/migration.php" class="button secondary">Quickstart with CSS</a></li>
     </div>
 

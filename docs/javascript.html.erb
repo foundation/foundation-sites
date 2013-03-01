@@ -59,7 +59,7 @@
 
         <h2>Configuration</h2>
 
-        <p>Foundation accepts a myriad of options for initialization. By default, calling <code>$('#scope').foundation();</code> will intialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback. This will allow you to select specific plugins to start on your page, even if their source is included. You can take a look at the call here:</p>
+        <p>Foundation accepts a myriad of options for initialization. By default, calling <code>$('#scope').foundation();</code> will initialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback. This will allow you to select specific plugins to start on your page, even if their source is included. You can take a look at the call here:</p>
 
 <%= code_example "
 $(document).foundation('section', {deep_linking: true}, function (response) {
@@ -107,7 +107,7 @@ $(document)
 
         <h2>Calling Internal Methods</h2>
 
-        <p>Foundation 4 JavaScript allows you call call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not intialized on page load by default.</p>
+        <p>Foundation 4 JavaScript allows you call call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not initialized on page load by default.</p>
 
         <p>This will fire the <code>start</code> method on Joyride:</p>
 
