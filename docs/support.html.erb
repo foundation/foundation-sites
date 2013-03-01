@@ -2,24 +2,22 @@
 
   .row.support { padding: 9px 0; }
   .row.support:nth-child(2n) { background: #f4f4f4; }
-  
+
   .support .win { color: #4ea600; font-weight: bold; }
   .support .fail { color: #cc0000; font-weight: bold; }
 
 </style>
 
 <div class="row">
-  <div class="large-3 columns">
-    <%= render "_sidebar.html.erb" %>
-  </div>
 
-  <div class="large-9 columns">
+
+  <div class="large-9 push-3 columns">
 
     <% @page_title = "Support" %>
     <h2><%= @page_title %></h2>
-    
+
     <h4 class="subheader">Foundation was designed for and tested on numerous browsers and devices. Here's the rundown on what's tested, and what to do if something misbehaves.</h4>
-    
+
     <h5>Browser and Device Support</h5>
     <p>We go to great lengths to ensure that Foundation works as expected on a variety of common browsers and devices. Given how forward-facing Foundation is there are some aesthetic properties which are not supported in older browsers (border radii, box shadows, etc), but the core elements are reliable across the board.</p>
 
@@ -110,10 +108,10 @@
 		</div>
 
     <hr>
-    
+
     <h5>Upgrading from Foundation 3.x?</h5>
     <p>We've written a comprehensive <a href="http://foundation.zurb.com/migration.php">Migration Guide</a> to help you update your code for an existing or work in progress project.</p>
-    
+
     <hr />
 
     <div class="panel">
@@ -122,6 +120,9 @@
       <a class="button" href="faq.html">Read the FAQ or Ask a Question &raquo;</a> <a class="secondary button" href="changelog.html">See the Version Changelog &raquo;</a>
     </div>
 
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
   </div>
 </div>
 
