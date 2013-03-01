@@ -6,6 +6,8 @@
 $block-grid-elements: 12 !default;
 $block-grid-default-spacing: 10px !default;
 
+// Enables media queries for block-grid classes. Set to false if writing semantic HTML.
+$block-grid-media-queries: true !default;
 
 //
 // Block Grid Mixins
@@ -39,25 +41,26 @@ $block-grid-default-spacing: 10px !default;
 
 }
 
+@if $block-grid-media-queries {
+  /* Foundation Block Grids for below small breakpoint */
+  @media only screen {
+    [class*="block-grid-"] { @include block-grid; }
 
-/* Foundation Block Grids for below small breakpoint */
-@media only screen {
-  [class*="block-grid-"] { @include block-grid; }
-
-  @for $i from 2 through $block-grid-elements {
-    .small-block-grid-#{($i)} {
-      @include block-grid($i,$block-grid-default-spacing,false);
+    @for $i from 2 through $block-grid-elements {
+      .small-block-grid-#{($i)} {
+        @include block-grid($i,$block-grid-default-spacing,false);
+      }
     }
   }
-}
 
-/* Foundation Block Grids for above small breakpoint */
-@media #{$small} {
-  @for $i from 2 through $block-grid-elements {
-    .large-block-grid-#{($i)} {
-      @if      $i == 2 { @include block-grid(2,15px,false); }
-      @else if $i == 3 { @include block-grid(3,12px,false); }
-      @else { @include block-grid($i,$block-grid-default-spacing,false); }
+  /* Foundation Block Grids for above small breakpoint */
+  @media #{$small} {
+    @for $i from 2 through $block-grid-elements {
+      .large-block-grid-#{($i)} {
+        @if      $i == 2 { @include block-grid(2,15px,false); }
+        @else if $i == 3 { @include block-grid(3,12px,false); }
+        @else { @include block-grid($i,$block-grid-default-spacing,false); }
+      }
     }
   }
 }
