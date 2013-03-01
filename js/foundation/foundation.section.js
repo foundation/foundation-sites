@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.0',
+    version : '4.0.3',
 
     settings : {
       deep_linking: false,
