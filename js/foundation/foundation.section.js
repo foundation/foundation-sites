@@ -168,6 +168,9 @@
       if ($('html').hasClass('lt-ie9')) {
         return true;
       }
+      if ($('html').hasClass('ie8compat')) {
+        return true;
+      }
       return $(this.scope).width() < 768;
     },
 
