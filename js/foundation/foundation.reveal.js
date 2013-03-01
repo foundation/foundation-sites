@@ -81,7 +81,10 @@
       var modal = $('#' + target.data('reveal-id')),
           open_modal = $('.reveal-modal.open');
 
-      this.offset = this.cache_offset(modal);
+      if (!modal.data('css-top')) {
+        modal.data('css-top', parseInt(modal.css('top'), 10))
+          .data('offset', this.cache_offset(modal));
+      }
 
       modal.trigger('open');
 
@@ -139,9 +142,9 @@
       // is modal
       if (css) {
         if (/pop/i.test(this.settings.animation)) {
-          css.top = $(window).scrollTop() - this.offset + 'px';
+          css.top = $(window).scrollTop() - el.data('offset') + 'px';
           var end_css = {
-            top: $(window).scrollTop() + parseInt(el.css('top'), 10) + 'px',
+            top: $(window).scrollTop() + el.data('css-top') + 'px',
             opacity: 1
           }
 
@@ -185,9 +188,9 @@
       // is modal
       if (css) {
         if (/pop/i.test(this.settings.animation)) {
+          console.log(el.data('offset'))
           var end_css = {
-            // need to figure out why this doesn't work.
-            // top: $(window).scrollTop() - this.offset + 'px',
+            top: - $(window).scrollTop() - el.data('offset') + 'px',
             opacity: 0
           };
 
