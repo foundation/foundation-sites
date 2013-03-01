@@ -77,25 +77,13 @@
   <section class="section">
     <p class="title"><a href="#panel1">Section 1</a></p>
     <div class="content">
-      <ul class="side-nav">
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Link 1</a></li>
-      </ul>
+      <p>Content of section 1.</p>
     </div>
   </section>
   <section class="section">
     <p class="title"><a href="#panel2">Section 2</a></p>
     <div class="content">
-      <ul class="side-nav">
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Link 1</a></li>
-      </ul>
+      <p>Content of section 2.</p>
     </div>
   </section>
 </div>', :html %>
@@ -106,6 +94,91 @@
         </ul>
 
         <p>For these styles to come across, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>section from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+
+        <hr>
+
+        <h3>Variations</h3>
+        <h6>Tabs/Accordion</h6>
+        <p>Adding a <code>tabs</code> class to the section container will enable tabs on large screens and show an accordion on small screens.</p>
+<%= code_example '
+<div class="section-container tabs" data-section>
+  <section class="section">
+    <p class="title"><a href="#">Section 1</a></p>
+    <div class="content">
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Section 2</a></p>
+    <div class="content">
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+        <h6>Vertical Nav/Accordion</h6>
+        <p>Adding a <code>vertical-nav</code> class to the section container will enable vertical navigation elements on large screens and show an accordion on small screens.</p>
+
+        <p>Vertical navigation elements usually appear within the grid so the width can be controlled on desktop.</p>
+
+        <p>Use the <code>side-nav</code> class on the list to apply the Foundation navigation styles</p>
+
+<%= code_example '
+<div class="row">
+  <div class="large-3 columns">
+    <div class="section-container vertical-nav" data-section>
+      <section class="section">
+        <p class="title"><a href="#">Section 1</a></p>
+        <div class="content">
+          <ul class="side-nav">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link 1</a></li>
+          </ul>
+        </div>
+      </section>
+      <section class="section">
+        <p class="title"><a href="#">Section 2</a></p>
+        <div class="content">
+          <ul class="side-nav">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link 1</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="large-9 columns">
+    <p>Content to the right of the navigation.</p>
+  </div>
+</div>', :html %>
+
+
+        <h6>Deep Linking</h6>
+        <p>Set <code>deep-linking</code> to true to enable deep linking to sections of content. Deep linking allows visitors to visit a predefined URL with a hash that points to a particular section of the content. Deep linking also requires a matching <code>data-slug</code> on the content section that the hash shoudl point to, without the pound (&#35;) sign.</p>
+
+        <%= code_example '
+<div class="section-container" data-section data-options="deep_linking: true">
+  <section class="section">
+    <p class="title"><a href="#section1">Section 1</a></p>
+    <div class="content" data-slug="section1">
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#section2">Section 2</a></p>
+    <div class="content" data-slug="section2">
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+        <p class="panel"><strong>Note:</strong> The <code>section</code> element can be replaced with a <code>div.section</code> element if you do not want to use HTML5 elements.</p>
 
         <hr>
 
