@@ -6,7 +6,7 @@
   Foundation.libs.tooltips = {
     name: 'tooltips',
 
-    version : '4.0.1',
+    version : '4.0.2',
 
     settings : {
       selector : '.has-tip',
