@@ -17,7 +17,7 @@
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
       Foundation.inherit(this, 'throttle data_options');
-
+      console.log(this)
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
       }
@@ -130,7 +130,7 @@
 
     set_active_from_hash : function () {
       var hash = window.location.hash.substring(1),
-          sections = $('[data-section]')
+          sections = $('[data-section]'),
           self = this;
 
       sections.each(function () {
