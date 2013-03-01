@@ -91,7 +91,7 @@
       if (open_modal.length < 1) {
         this.toggle_bg(modal);
       }
-      
+
       this.toggle_modals(open_modal, modal);
     },
 
@@ -188,7 +188,6 @@
       // is modal
       if (css) {
         if (/pop/i.test(this.settings.animation)) {
-          console.log(el.data('offset'))
           var end_css = {
             top: - $(window).scrollTop() - el.data('offset') + 'px',
             opacity: 0
@@ -235,7 +234,7 @@
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
         iframe.attr('src', 'about:blank');
-        video.fadeOut(100).hide();  
+        video.fadeOut(100).hide();
       }
     },
 
