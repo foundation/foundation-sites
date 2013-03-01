@@ -10,7 +10,9 @@ ignore /compile.rb/
 
 helpers do
   def asset_path
-    if Socket.gethostname == "foundation"
+    if @_stasis.options[:asset_path]
+      @_stasis.options[:asset_path]
+    elsif Socket.gethostname == "foundation"
       "http://foundation.zurb.com/docs/assets"
     else
       "http://#{Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.getnameinfo[0]}:4001/assets"
