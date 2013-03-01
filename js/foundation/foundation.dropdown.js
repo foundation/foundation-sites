@@ -94,7 +94,7 @@
           width: '95%',
           left: '2.5%',
           'max-width': 'none',
-          top: offset.top + this.outerHeight(target),
+          top: offset.top + this.outerHeight(target)
         });
       } else {
         dropdown.attr('style', '').css({
