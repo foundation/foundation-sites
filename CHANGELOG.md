@@ -3,6 +3,18 @@ We'll keep you up to date with what we've released so you at least have a gist o
 
 ---
 
+### **4.0**- February 28, 2013
+Initial launch of Foundation 4, a rewritten, mobile-first implementation of the framework. Major enhancements include a mobile-first approach across the board, Scss tools to allow for all-semantic coding, and rewritten JS plugins for speed and ease of use. Marketing site updates, new docs, refined and simplified styles and more. Review the [migration guide](http://foundation.zurb.com/migration.php) for more information.
+
+### 3.2.5
+Bug fixes
+
+### 3.2.4
+Bug fixes
+
+### 3.2.3
+Bug fixes
+
 ### 3.2.2- November 10, 2012
 This patch fixes a typo found in the tabs plugin.
 
