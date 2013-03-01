@@ -52,7 +52,7 @@
     &.round li { @include button-group-style($radius:1000px, $float:null); }
 
     @for $i from 2 through 8 {
-      &.even#{-$i} li { @include button-group-style($even:3, $float:null); }
+      &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
     }
   }
 
