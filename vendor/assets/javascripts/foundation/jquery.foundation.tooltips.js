@@ -93,7 +93,7 @@
         if (Modernizr.touch) {
           $tip.append('<span class="tap-to-close">tap to close </span>');
         }
-        $target.removeAttr('title');
+        $target.removeAttr('title').attr('title','');
         methods.show($target);
       },
       reposition : function (target, tip, classes) {
