@@ -105,6 +105,8 @@
 	<% template[:options][:javascripts].each do |f| %>
 	<script src="js/<%= f %>"></script>
 	<% end %>
-  <script src="js/foundation/app.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
 </body>
 </html>
