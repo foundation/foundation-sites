@@ -1,5 +1,5 @@
 /*
- * Foundation Responsive Library 4.0.0
+ * Foundation Responsive Library
  * http://foundation.zurb.com
  * Copyright 2013, ZURB
  * Free to use under the MIT license.
