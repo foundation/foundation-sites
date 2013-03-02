@@ -41,7 +41,7 @@
           self.assemble();
 
           if (self.settings.$topbar.parent().hasClass('fixed')) {
-            $('body').css('padding-top', this.outerHeight(this.settings.$topbar));
+            $('body').css('padding-top', self.outerHeight(self.settings.$topbar));
           }
         });
 

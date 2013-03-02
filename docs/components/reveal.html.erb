@@ -48,6 +48,16 @@
     <%= code_example '
 <a href="#" data-reveal-id="myModal">Click Me For A Modal</a>', :html %>
 
+        <p>You can also open and close Reveal via JavaScript:</p>
+
+<%= code_example "
+// open
+$('a.reveal-link').trigger('click');
+
+// close
+$('a.close-reveal-modal').trigger('click');
+", :js %>
+
         <hr>
 
         <h5>Default SCSS Variables</h5>
