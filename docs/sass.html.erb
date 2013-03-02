@@ -28,16 +28,6 @@
     </div>
 
     <br>
-
-    <div class="row">
-      <div class="large-12 columns">
-        <h5>Compiling Your Scss</h5>
-        <p>To compile your Scss into CSS you run a simple command that will watch for saves and compile each time you save an Scss file. The command is:</p>
-        <p class="btm-marg keystroke">compass watch</p>
-      </div>
-    </div>
-
-    <br>
     <hr>
 
     <a name="create-compass"></a>
@@ -48,6 +38,19 @@
       <li><span class="keystroke">cd path/to/where-you-want-your-project</span></li>
       <li>run <span class="keystroke">compass create &lt;project-name&gt; -r zurb-foundation --using foundation</span></li>
     </ol>
+
+    <br>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h5>Compiling Your Scss</h5>
+        <p>To compile your Scss into CSS you run a simple command that will watch for saves and compile each time you save an Scss file. From the directory of your <kbd>config.rb</kbd> file, the command is:</p>
+        <p class="btm-marg keystroke">compass watch</p>
+        <p>If you are in a different directory you can use the same command, but navigate to where your <kbd>config.rb</kbd> file is. The command looks like:</p>
+        <p class="btm-marg keystroke">compass watch path/to/project</p>
+      </div>
+    </div>
+
 
     <hr>
 
@@ -97,7 +100,7 @@ gem "compass"
       <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
 <%= code_example '
 bundle exec compass create . -r zurb-foundation --using foundation
-', :bash %>      
+', :bash %>
       <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
     </ol>
 
@@ -121,7 +124,7 @@ gem "compass"
       <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
 <%= code_example '
 bundle exec compass create . -r zurb-foundation --using foundation
-', :bash %>      
+', :bash %>
       <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
     </ol>
 
