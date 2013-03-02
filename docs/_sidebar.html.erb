@@ -3,10 +3,10 @@
     <p class="title"><a href="#">Using Foundation</a></p>
     <div class="content">
       <ul class="side-nav">
-        <li><a href="http://foundation.zurb.com/docs/">Get Started</a></li>
-        <li><a href="javascript.html">Javascript</a></li>
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="rails.html">Rails</a></li>
+        <li><a class="<%= @page_title == 'Getting Started' ? 'active': '' %>" href="/">Get Started</a></li>
+        <li><a class="<%= @page_title == 'Javascript' ? 'active': '' %>" href="javascript.html">Javascript</a></li>
+        <li><a class="<%= @page_title == 'Sass' ? 'active': '' %>" href="sass.html">Sass</a></li>
+        <li><a class="<%= @page_title == 'Rails' ? 'active': '' %>" href="rails.html">Rails</a></li>
         <li><a href="components/visibility.html">Visibility Classes</a></li>
       </ul>
     </div>
@@ -92,11 +92,11 @@
       </ul>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="faq.html">FAQ</a></p>
+  <section class="section <%= @page_title == 'FAQ' ? 'active': '' %>">
+    <p class="title"><a href="../faq.html">FAQ</a></p>
   </section>
-  <section class="section">
-    <p class="title"><a href="support.html">Support</a></p>
+  <section class="section <%= @page_title == 'Support' ? 'active': '' %>">
+    <p class="title"><a href="../support.html">Support</a></p>
   </section>
 </div>
 
