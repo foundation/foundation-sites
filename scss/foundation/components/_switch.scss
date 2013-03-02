@@ -102,19 +102,27 @@ $switch-label-outline:            1px dotted #888 !default;
     @include single-transition(all, $transition-speed, $transition-ease);
   }
 
-  // Change text alignment for the second label
-  input:last-of-type + label { text-align: right; }
-
   // When a label isn't :checked, we hide it as it slides away.
   input:not(:checked) + label { opacity: 0; }
 
   // Controlling the position of the labels as they are toggled.
-  input:checked { display: none; }
-  input { left: 0; }
-  input:first-of-type + label { left: -50%; }
-  input:first-of-type:checked + label { left: 0%; }
-  input:last-of-type + label { right: -50%; left: auto; }
-  input:last-of-type:checked + label { right: 0%; left: auto; }
+  input:checked { display: none !important; }
+  input { left: 0; display: block !important; }
+
+  // Left Label alignment and position changes, including fixes for while inside a custom form
+  input:first-of-type + label,
+  input:first-of-type + span + label { left: -50%; }
+  input:first-of-type:checked + label,
+  input:first-of-type:checked + span + label { left: 0%; }
+
+  // Right Label alignment and position changes, including fixes for while inside a custom form
+  input:last-of-type + label,
+  input:last-of-type + span + label { right: -50%; left: auto; text-align: right; }
+  input:last-of-type:checked + label,
+  input:last-of-type:checked + span + label { right: 0%; left: auto; }
+
+  // Hiding custom form spans since we auto-create them
+  span.custom { display: none !important; }
 
   // Bugfix for older Webkit, including mobile Webkit. Adapted from:
   // http://css-tricks.com/webkit-sibling-bug/
