@@ -70,13 +70,13 @@
 //
 
 // We use these to control header font styles
-// $header-font-family "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $header-font-weight: bold;
 // $header-font-style: normal;
-// $header-font-color #222;
+// $header-font-color: #222;
 // $header-line-height: 1.4;
-// $header-top-margin .2em;
-// $header-bottom-margin .5em;
+// $header-top-margin: .2em;
+// $header-bottom-margin: .5em;
 // $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
@@ -91,8 +91,8 @@
 // $subheader-line-height: 1.4;
 // $subheader-font-color: lighten($header-font-color, 30%);
 // $subheader-font-weight: 300;
-// $subheader-top-margin .2em;
-// $subheader-bottom-margin .5em;
+// $subheader-top-margin: .2em;
+// $subheader-bottom-margin: .5em;
 
 // A general <small> styling
 // $small-font-size: 60%;
@@ -115,7 +115,7 @@
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
-// $anchor-font-color $primary-color;
+// $anchor-font-color: $primary-color;
 // $anchor-font-color-hover: darken($primary-color, 5%);
 
 // We use these to style the <hr> element
@@ -137,7 +137,7 @@
 // $blockquote-border: 1px solid #ddd;
 // $blockquote-cite-font-size: emCalc(13px);
 // $blockquote-cite-font-color: lighten($header-font-color, 20%);
-// $blockquote-cite-link-color $blockquote-cite-font-color;
+// $blockquote-cite-link-color: $blockquote-cite-font-color;
 
 // Acronym styles
 // $acronym-underline: 1px dotted #ddd;
@@ -149,7 +149,7 @@
 // We use these to control the border styles
 // $microformat-border-width: 1px;
 // $microformat-border-style: solid;
-// $microformat-border-color #ddd;
+// $microformat-border-color: #ddd;
 
 // We use these to control full name font styles
 // $microformat-fullname-font-weight: bold;
@@ -180,7 +180,7 @@
 // $label-bottom-margin: emCalc(3px);
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14px);
-// $input-bg-color #fff;
+// $input-bg-color: #fff;
 // $input-focus-bg-color: darken(#fff, 2%);
 // $input-border-color: darken(#fff, 20%);
 // $input-focus-border-color: darken(#fff, 40%);
