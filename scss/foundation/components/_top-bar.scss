@@ -27,6 +27,7 @@ $topbar-dropdown-link-color: #fff !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.5 !default;
+$dropdown-label-color: #555 !default;
 
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
@@ -300,7 +301,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       padding: 8px $topbar-height / 3 2px;
       margin-bottom: 0;
       text-transform: uppercase;
-      color: #555;
+      color: $dropdown-label-color;
       font-weight: bold;
       font-size: emCalc(10px);
     }
