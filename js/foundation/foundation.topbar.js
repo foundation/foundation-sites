@@ -11,6 +11,7 @@
     settings : {
       index : 0,
       stickyClass : 'sticky',
+      back_text: '&laquo; Back',
       init : false
     },
 
@@ -142,13 +143,14 @@
     },
 
     assemble : function () {
+      var self = this;
       // Pull element out of the DOM for manipulation
       this.settings.$section.detach();
 
       this.settings.$section.find('.has-dropdown>a').each(function () {
         var $link = $(this),
             $dropdown = $link.siblings('.dropdown'),
-            $titleLi = $('<li class="title back js-generated"><h5><a href="#">&laquo; Back</a></h5></li>');
+            $titleLi = $('<li class="title back js-generated"><h5><a href="#">' + self.settings.back_text + '</a></h5></li>');
         // Copy link to subnav
         $dropdown.prepend($titleLi);
       });
