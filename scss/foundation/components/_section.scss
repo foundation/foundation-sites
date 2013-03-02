@@ -87,7 +87,7 @@ $section-bottom-margin:          emCalc(20px) !default;
       padding: $section-padding;
       background-color: $section-content-bg;
 
-      &:last-child { margin-bottom: 0; }
+      &>*:last-child { margin-bottom: 0; }
       &>*:first-child { padding-top: 0; }
       &>*:last-child { padding-bottom: 0; }
     }
