@@ -1,4 +1,5 @@
-source :rubygems
+source 'https://rubygems.org'
+
 gem 'sprockets'
 gem 'foreman'
 gem 'stasis'
