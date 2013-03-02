@@ -46,10 +46,11 @@ end
 ', :css %>
 
       <h5 class="subheader">Add Foundation to your JS</h5>
-      <p>Append the following line to your <code>app/assets/javascripts/application.js</code> file:</p>
+      <p>Append the following lines to your <code>app/assets/javascripts/application.js</code> file:</p>
 
 <%= code_example '
 //= require foundation
+$(document).foundation();
 ', :js %>
 
       <h5 class="subheader">Set Viewport Width</h5>
