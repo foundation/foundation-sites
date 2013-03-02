@@ -177,20 +177,20 @@
           }
 
         }
-		if ($(this).is(':disabled')) {
+    if ($(this).is(':disabled')) {
             $listItems.eq( index ).addClass( 'disabled' );
-		}
+    }
 
       });
 
       //
       // Update the custom <ul> list width property.
       //
-      //$customList.css( 'width', 'auto' );
+      $customList.css( 'width', 'auto' );
       //
       // Set the custom select width property.
       //
-      //$customSelect.css( 'width', 'auto' );
+      $customSelect.css( 'width', 'auto' );
 
       //
       // If we're not specifying a predetermined form size.
@@ -231,11 +231,11 @@
         //
         // Set the custom list width.
         //
-        //$customSelect.width( maxWidth + 18);
+        $customSelect.width( maxWidth + 18);
         //
         // Set the custom list element (<ul />) width.
         //
-        //$customList.css('width', maxWidth + 16 );
+        $customList.width(  maxWidth + 16 );
 
       } // endif
 
@@ -263,9 +263,9 @@
         $customSelect.find('li').eq(index).addClass('selected');
         $customSelect.find('.current').html($(this).html());
       }
-	  if ($(this).is(':disabled')) {
+    if ($(this).is(':disabled')) {
           $customSelect.find('li').eq(index).addClass('disabled');
-	  }
+    }
     });
 
     // fix width
@@ -278,9 +278,13 @@
       }
       $customSelect.removeClass('open');
     });
-    //$customSelect.css('width', maxWidth + 18 + 'px');
-    //$customSelect.find('ul').css('width', maxWidth + 16 + 'px');
+    $customSelect.css('width', maxWidth + 18 + 'px');
+    $customSelect.find('ul').css('width', maxWidth + 16 + 'px');
 
+  };
+
+  var escapeIdentifier = function(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
   };
 
   var toggleCheckbox = function($element) {
@@ -301,7 +305,7 @@
         input = $input[0];
 
     if (false === $input.is(':disabled')) {
-      $form.find('input:radio[name="' + $input.attr('name') + '"]').next().not($element).removeClass('checked');
+      $form.find('input:radio[name="' + escapeIdentifier($input.attr('name')) + '"]').next().not($element).removeClass('checked');
       if ( !$element.hasClass('checked') ) {
         $element.toggleClass('checked');
       }
@@ -330,7 +334,7 @@
   });
 
   $(document).on('click', 'form.custom label', function (event) {
-    var $associatedElement = $('#' + $(this).attr('for') + '[data-customforms!=disabled]'),
+    var $associatedElement = $('#' + escapeIdentifier($(this).attr('for')) + '[data-customforms!=disabled]'),
         $customCheckbox,
         $customRadio;
     if ($associatedElement.length !== 0) {
@@ -367,12 +371,9 @@
         $dropdown = $this.closest('div.custom.dropdown'),
         $select = $dropdown.prev();
 
-    // make sure other dropdowns close
-    if(!$dropdown.hasClass('open'))
-      $(document).trigger('click.customdropdown')
-
     event.preventDefault();
-    //$('div.dropdown').removeClass('open');
+    $('div.dropdown').removeClass('open');
+
     if (false === $select.is(':disabled')) {
         $dropdown.toggleClass('open');
 
@@ -397,36 +398,34 @@
     event.preventDefault();
     event.stopPropagation();
 
-  	if ( ! $(this).hasClass('disabled')) {
-  	    $('div.dropdown').removeClass('open');
+    if ( ! $(this).hasClass('disabled')) {
+        $('div.dropdown').removeClass('open');
 
-  	    $oldThis= $this
+        $oldThis= $this
           .closest('ul')
           .find('li.selected');
         $oldThis.removeClass('selected');
 
-  	    $this.addClass('selected');
+        $this.addClass('selected');
 
-  	    $customDropdown
-  	      .removeClass('open')
-  	      .find('a.current')
-  	      .html($this.html());
+        $customDropdown
+          .removeClass('open')
+          .find('a.current')
+          .html($this.html());
 
-  	    $this.closest('ul').find('li').each(function (index) {
-  	      if ($this[0] == this) {
-  	        selectedIndex = index;
-  	      }
+        $this.closest('ul').find('li').each(function (index) {
+          if ($this[0] == this) {
+            selectedIndex = index;
+          }
 
-  	    });
-  	    $select[0].selectedIndex = selectedIndex;
+        });
+        $select[0].selectedIndex = selectedIndex;
 
-  	    //store the old value in data
+        //store the old value in data
         $select.data('prevalue', $oldThis.html());
         $select.trigger('change');
-  	}
+    }
   });
-
-
 
   $.fn.foundationCustomForms = $.foundation.customForms.appendCustomMarkup;
 
