@@ -86,15 +86,42 @@
 
     <p>There are a few different ways to do this, but here's what we recommend:</p>
     <ol style="margin-left: 20px;">
-      <li>Setup a Foundation project folder: <kbd>mkdir ~/awesomeapp</kbd></li>
-      <li>Create a Gemfile with this content: <br>
-          <kbd style="margin-left: 15px;">source :rubygems</kbd> <br>
-          <kbd style="margin-left: 15px;">gem "zurb-foundation", :git => "git@github.com:zurb/foundation.git"</kbd> <br>
-          <kbd style="margin-left: 15px;">gem "compass"</kbd>
+      <li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+      <li>Create a file called <code>Gemfile</code> in the folder you just created with this content: <br>
+<%= code_example '
+source "https://rubygems.org"
+gem "zurb-foundation", :git => "git@github.com:zurb/foundation.git"
+gem "compass"
+', :ruby %>
       </li>
-      <li>Then run: <kbd>touch ~/awesomeapp/Gemfile</kbd></li>
-      <li>Change into your application directory: <kbd>cd ~/awesomeapp</kbd></li>
-      <li>Create a project using Bundler: <kbd>bundle exec compass create . -r zurb-foundation --using foundation</kbd></li>
+      <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+<%= code_example '
+bundle exec compass create . -r zurb-foundation --using foundation
+', :bash %>      
+      <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
+    </ol>
+
+    <hr>
+
+    <a name="multiple-versions"></a>
+    <h3>Running multiple versions</h3>
+    <h5 class="subheader">If you're planning on running multiple, potentially incompatible versions of Foundation you can isolate them using Bundler as well.</h5>
+
+    <p>There are a few different ways to do this, but here's what we recommend:</p>
+    <ol style="margin-left: 20px;">
+      <li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+      <li>Create a file called <code>Gemfile</code> in the folder you just created with this content: <br>
+<%= code_example '
+source "https://rubygems.org"
+# Replace 4.0.3 with the version of Foundation you want to use
+gem "zurb-foundation", "4.0.3"
+gem "compass"
+', :ruby %>
+      </li>
+      <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+<%= code_example '
+bundle exec compass create . -r zurb-foundation --using foundation
+', :bash %>      
       <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
     </ol>
 
