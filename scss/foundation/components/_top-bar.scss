@@ -286,6 +286,14 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         font-weight: normal;
         padding: 8px $topbar-height / 3;
       }
+
+      &.title h5 { margin-bottom: 0;
+        a {
+          color: $topbar-link-color;
+          line-height: $topbar-height / 2;
+          display: block;
+        }
+      }
     }
 
     label {
