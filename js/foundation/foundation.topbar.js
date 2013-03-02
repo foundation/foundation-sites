@@ -39,8 +39,6 @@
 
           self.assemble();
 
-          if (!self.settings.$topbar.data('height')) self.largestUL();
-
           if (self.settings.$topbar.parent().hasClass('fixed')) {
             $('body').css('padding-top', this.outerHeight(this.settings.$topbar));
           }
@@ -65,6 +63,8 @@
           var topbar = $(this).closest('.top-bar'),
               section = topbar.find('section, .section'),
               titlebar = topbar.children('ul').first();
+
+          if (!self.settings.$topbar.data('height')) self.largestUL();
 
           e.preventDefault();
 
@@ -173,7 +173,7 @@
       });
 
       largest.children('li').each(function () { total += self.outerHeight($(this), true); });
-
+      console.log(total)
       this.settings.$topbar.data('height', total);
     },
 
