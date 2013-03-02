@@ -173,7 +173,7 @@
       });
 
       largest.children('li').each(function () { total += self.outerHeight($(this), true); });
-      console.log(total)
+
       this.settings.$topbar.data('height', total);
     },
 
