@@ -53,6 +53,7 @@ $tooltip-pip-size:            5px !default;
   width: 100%;
   color: $tooltip-font-color;
   background: $tooltip-bg;
+  @include radius($tooltip-radius);
 
   &>.nub {
     display: block;
@@ -68,8 +69,6 @@ $tooltip-pip-size:            5px !default;
     color: $has-tip-font-color-hover !important;
     border-bottom: $has-tip-border-bottom-hover !important;
   }
-
-  &.radius{ @include radius($tooltip-radius); }
 }
 
 .tap-to-close {
