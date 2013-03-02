@@ -183,6 +183,8 @@ $input-error-message-font-color-alt: #333 !default;
   @if $is-button {
     padding-#{$default-float}: 0;
     padding-#{$default-opposite}: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     text-align: center;
     line-height: emCalc(34px);
   }
