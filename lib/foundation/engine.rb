@@ -1,7 +1,7 @@
 module Foundation
   class Engine < Rails::Engine
     # auto wire assets
-    initializer 'foundation.update_asset_paths' do |app|
+    initializer 'foundation.update_asset_paths', :group => :assets do |app|
       app.config.assets.paths << File.expand_path("../../../scss", __FILE__)
       app.config.assets.paths << File.expand_path("../../../js", __FILE__)
 
