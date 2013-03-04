@@ -84,20 +84,36 @@ $include-print-styles: true !default;
 // We use this to create equal side border radius on elements.
 @mixin side-radius($side, $radius) {
   @if $side == left {
-    -webkit-border-radius: $radius 0 0 $radius;
-    border-radius: $radius 0 0 $radius;
+    -moz-border-radius-bottomleft: $radius;
+    -moz-border-radius-topleft: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
   }
   @else if $side == right {
-    -webkit-border-radius: 0 $radius $radius 0;
-    border-radius: 0 $radius $radius 0;
+    -moz-border-radius-topright: $radius;
+    -moz-border-radius-bottomright: $radius;
+    -webkit-border-top-right-radius: $radius;
+    -webkit-border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
   }
   @else if $side == top {
-    -webkit-border-radius: $radius $radius 0 0;
-    border-radius: $radius $radius 0 0;
+    -moz-border-radius-topright: $radius;
+    -moz-border-radius-topleft: $radius;
+    -webkit-border-top-right-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
   }
   @else if $side == bottom {
-    -webkit-border-radius: 0 0 $radius $radius;
-    border-radius: 0 0 $radius $radius;
+    -moz-border-radius-bottomright: $radius;
+    -moz-border-radius-bottomleft: $radius;
+    -webkit-border-bottom-right-radius: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
   }
 }
 

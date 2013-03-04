@@ -157,7 +157,7 @@ $button-disabled-opacity: 0.6 !default;
 
   // Default styles applied outside of media query
   .button {
-    @include button-base($display:block);
+    @include button-base;
     @include button-size;
     @include button-style;
 
