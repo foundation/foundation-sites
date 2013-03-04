@@ -55,7 +55,7 @@
       // close all dropdowns and deactivate all buttons
       this.on('click.fndtn', 'body, html', function (e) {
         // check original target instead of stopping event propagation to play nice with other events
-        if (typeof(e.originalEvent) === 'undefined' || !$(e.originalEvent.target).is('.button.dropdown:not(.split), .button.dropdown.split span')) {
+        if (!$(e.target).is('.button.dropdown:not(.split), .button.dropdown.split span')) {
           closeDropdowns();
           if (config.dropdownAsToggle) {
             resetToggles();
