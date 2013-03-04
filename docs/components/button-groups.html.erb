@@ -65,7 +65,38 @@
 </ul>
 ', :html %>
 
-        <p>For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>buttons and button-groups from a custom package</strong>. These should be linked up following our default <a href="../index.html">HTML page structure</a>.</p>
+        <h5>Button Bars</h5>
+        <p>A button bar is a group of button groups (I N C E P T I O N), perfect for situations where you want groups of actions that are all related to a similar element or page. Simply wrap two or more button groups in a <code>.button-bar</code> and Foundation takes care of the rest.</p>
+
+<%= code_example '
+<div class="button-bar">
+  <ul class="button-group">
+    <li><a href="#" class="small button">Button 1</a></li>
+    <li><a href="#" class="small button">Button 2</a></li>
+    <li><a href="#" class="small button">Button 3</a></li>
+  </ul>
+  <ul class="button-group">
+    <li><a href="#" class="small button">Button 1</a></li>
+    <li><a href="#" class="small button">Button 2</a></li>
+    <li><a href="#" class="small button">Button 3</a></li>
+  </ul>
+</div>
+', :html %>
+<div class="button-bar">
+  <ul class="button-group">
+    <li><a href="#" class="small button">Button 1</a></li>
+    <li><a href="#" class="small button">Button 2</a></li>
+    <li><a href="#" class="small button">Button 3</a></li>
+  </ul>
+  <ul class="button-group secondary">
+    <li><a href="#" class="small button">Button 1</a></li>
+    <li><a href="#" class="small button">Button 2</a></li>
+    <li><a href="#" class="small button">Button 3</a></li>
+  </ul>
+</div>
+
+
+        <p>For any of these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>buttons and button-groups from a custom package</strong>. These should be linked up following our default <a href="../index.html">HTML page structure</a>.</p>
 
         <hr>
 
@@ -156,10 +187,33 @@ $float: left
       <li><a href="#" class="button-class">Button 3</a></li>
     </ul>
 
+        <h5>Building Button Bars</h5>
+        <p>You can also build button bars with mixin options.</p>
+<%= code_example '
+<div class="your-bar-class-name">
+  <ul class="your-class-name">
+    <li><a href="#" class="your-button-class">Button 1</a></li>
+    <li><a href="#" class="your-button-class">Button 2</a></li>
+    <li><a href="#" class="your-button-class">Button 3</a></li>
+  </ul>
+  <ul class="your-class-name">
+    <li><a href="#" class="your-button-class">Button 1</a></li>
+    <li><a href="#" class="your-button-class">Button 2</a></li>
+    <li><a href="#" class="your-button-class">Button 3</a></li>
+  </ul>
+</div>
+', :html %>
+
+<%= code_example '
+.your-bar-class-name { @include clearfix;
+  .your-button-class { @include button-group-container(false,true); }
+}
+', :css %>
+
         <h5>Default SCSS Variables</h5>
 <%= code_example '
 /* We use this to set the margin below button groups. */
-$button-group-bottom-margin: emCalc(20px);
+$button-bar-margin-right: emCalc(10px);
 ', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
