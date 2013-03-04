@@ -6,7 +6,7 @@
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.0.3',
+    version : '4.0.4',
 
     locked : false,
 
@@ -78,8 +78,13 @@
     },
 
     open : function (target) {
-      var modal = $('#' + target.data('reveal-id')),
-          open_modal = $('.reveal-modal.open');
+      if (target) {
+        var modal = $('#' + target.data('reveal-id'));
+      } else {
+        var modal = $(this.scope);
+      }
+
+      var open_modal = $('.reveal-modal.open');
 
       if (!modal.data('css-top')) {
         modal.data('css-top', parseInt(modal.css('top'), 10))
@@ -96,6 +101,7 @@
     },
 
     close : function (modal) {
+      var modal = modal || $(this.scope);
       this.locked = true;
       var open_modal = $('.reveal-modal.open').not(modal);
       modal.trigger('close');
