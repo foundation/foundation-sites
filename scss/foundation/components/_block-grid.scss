@@ -46,7 +46,7 @@ $block-grid-media-queries: true !default;
   @media only screen {
     [class*="block-grid-"] { @include block-grid; }
 
-    @for $i from 2 through $block-grid-elements {
+    @for $i from 1 through $block-grid-elements {
       .small-block-grid-#{($i)} {
         @include block-grid($i,$block-grid-default-spacing,false);
       }
@@ -55,7 +55,7 @@ $block-grid-media-queries: true !default;
 
   /* Foundation Block Grids for above small breakpoint */
   @media #{$small} {
-    @for $i from 2 through $block-grid-elements {
+    @for $i from 1 through $block-grid-elements {
       .large-block-grid-#{($i)} {
         @if      $i == 2 { @include block-grid(2,15px,false); }
         @else if $i == 3 { @include block-grid(3,12px,false); }
