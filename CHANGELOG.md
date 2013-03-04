@@ -2,6 +2,17 @@
 We'll keep you up to date with what we've released so you at least have a gist of what goes into each update. For the most part, we'll try to list things out as detailed as we see necessary.
 
 ---
+### 4.0.4
+This patch fixes various bugs that have been submitted since release. We'll be more specific with changelog updates going forward.
+
+### 4.0.3
+Bug fixes
+
+### 4.0.2
+Bug fixes
+
+### 4.0.1
+Bug fixes
 
 ### **4.0**- February 28, 2013
 Initial launch of Foundation 4, a rewritten, mobile-first implementation of the framework. Major enhancements include a mobile-first approach across the board, Scss tools to allow for all-semantic coding, and rewritten JS plugins for speed and ease of use. Marketing site updates, new docs, refined and simplified styles and more. Review the [migration guide](http://foundation.zurb.com/migration.php) for more information.
