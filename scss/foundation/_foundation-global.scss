@@ -223,6 +223,6 @@ $small-screen: emCalc(768px) !default;
 $medium-screen: emCalc(1280px) !default;
 $large-screen: emCalc(1440px) !default;
 
-$small: "only screen and (min-width:"#{$small-screen}")" !default;
-$medium: "only screen and (min-width:"#{$medium-screen}")" !default;
-$large: "only screen and (min-width:"#{$large-screen}")" !default;
+$medium: "only screen and (min-width:"#{$small-screen}")" !default;
+$large: "only screen and (min-width:"#{$medium-screen}")" !default;
+$xLarge: "only screen and (min-width:"#{$large-screen}")" !default;
