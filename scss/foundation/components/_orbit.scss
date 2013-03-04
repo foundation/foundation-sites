@@ -53,7 +53,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
         padding: 10px 14px;
         font-size: emCalc(14px);
 
-        * { color: #fff; }
+        * { color: $orbit-caption-font-color; }
       }
     }
   }

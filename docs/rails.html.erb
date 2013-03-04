@@ -53,6 +53,13 @@ end
 $(document).foundation();
 ', :js %>
 
+      <h5 class="subheader">Add Modernizr</h5>
+      <p>Make sure that <a href="http://modernizr.com/" rel="nofollow">Modernizr</a> is included in the <code>&lt;head&gt;</code> of your page:</p>
+
+<%= code_example '
+javascript_include_tag "vendor/custom.modernizr"
+', :ruby %>
+
       <h5 class="subheader">Set Viewport Width</h5>
       <p>Add the following line to the <kbd>&lt;head&gt;</kbd> of your page layout:</p>
 
