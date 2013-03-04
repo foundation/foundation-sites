@@ -15,8 +15,8 @@ $total-columns: 12 !default;
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
     width: auto;
-    margin-left: -($column-gutter/2);
-    margin-right: -($column-gutter/2);
+    margin-left: $column-gutter/2;
+    margin-right: $column-gutter/2;
     margin-top: 0;
     margin-bottom: 0;
     max-width: none;
