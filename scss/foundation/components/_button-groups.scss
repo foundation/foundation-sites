@@ -6,7 +6,7 @@
 @mixin button-group-container($styles:true) {
   @if $styles {
     list-style: none;
-    margin: 0 0 $button-margin-bottom;
+    margin: 0;
     @include clearfix();
   }
 }

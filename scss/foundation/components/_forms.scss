@@ -263,6 +263,10 @@ label { @include form-label;
 .prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
 .prefix.button.radius { @include side-radius(left, $global-radius); }
 .postfix.button.radius { @include side-radius(right, $global-radius); }
+.prefix.button.round { @include side-radius(left, 1000px); }
+.postfix.button.round { @include side-radius(right, 1000px); }
+.prefix.button.round { @include side-radius(left, 1000px); }
+.postfix.button.round { @include side-radius(right, 1000px); }
 
 /* Separate prefix and postfix styles when on span so buttons keep their own */
 span.prefix { @include prefix();
@@ -270,6 +274,26 @@ span.prefix { @include prefix();
 }
 span.postfix { @include postfix();
   &.radius { @include side-radius(right, $global-radius); }
+}
+
+/* Input groups will automatically style first and last elements of the group */
+.input-group {
+  &.radius {
+    &>*:first-child,  &>*:first-child * {
+    	@include side-radius(left, $global-radius);
+    }
+    &>*:last-child, &>*:last-child * {
+    	@include side-radius(right, $global-radius);
+    }
+  }
+  &.round {
+  	&>*:first-child,  &>*:first-child * {
+  		@include side-radius(left, 1000px);
+  	}
+  	&>*:last-child, &>*:last-child * {
+  		@include side-radius(right, 1000px);
+  	}
+  }
 }
 
 /* We use this to get basic styling on all basic form elements */
