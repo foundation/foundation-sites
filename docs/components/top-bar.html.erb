@@ -92,7 +92,7 @@
         <p>When building your bar it is good to be aware of how many links your're going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items, simply include <code>li</code> elements with and anchor inside them for your top-level. To build a dropdown menu, you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> after that anchor. Add a class of <code>active</code> to mark the current page.</p>
 
         <h5>Other Elements</h5>
-        <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-button</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
+        <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-form</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
 
         <h5>Sticky Top Bar</h5>
         <p>You may also wrap your top bar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll.</p>
@@ -259,7 +259,7 @@ $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout'
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You don't need ths JS to create reveal modals with Foundation. The only reason you'll need to include <code>foundation.reveal.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <p>You'll need to include <code>foundation.topbar.js</code> to get the topbar to play nice. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the topbar plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
         <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
