@@ -51,11 +51,13 @@
         <p>You can also open and close Reveal via JavaScript:</p>
 
 <%= code_example "
-// open
+// trigger by event
 $('a.reveal-link').trigger('click');
-
-// close
 $('a.close-reveal-modal').trigger('click');
+
+// or directly on the modal
+$('#modal').foundation('reveal', 'open');
+$('#modal').foundation('reveal', 'close');
 ", :js %>
 
         <hr>
