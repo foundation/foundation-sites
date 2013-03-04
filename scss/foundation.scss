@@ -2,12 +2,11 @@
 @charset "UTF-8";
 
 // This includes all of the foundation global elements that are needed to work with any of the other files.
-//
-// RENAME THIS TO _foundation-global.scss ONCE ALL THE OLD VARIABLES ARE OUT OF THE FILE.
 @import "foundation/foundation-global";
 
 // Foundation Components
 @import
+  "foundation/components/global",
   "foundation/components/grid",
   "foundation/components/visibility",
   "foundation/components/block-grid",
