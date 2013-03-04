@@ -70,13 +70,13 @@
 
 /* X-Large Displays: 1400px and up */
 @media #{$large} {
-  .show-for-medium-down,
   .show-for-medium-up,
-  .show-for-large-down,
   .show-for-large-up { display: inherit !important; }
 
   .show-for-small,
   .show-for-medium,
+  .show-for-medium-down,
+  .show-for-large-down,
   .show-for-large { display: none !important; }
 
   .hide-for-small,
