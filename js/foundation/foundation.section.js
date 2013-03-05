@@ -49,7 +49,6 @@
     toggle_active : function (e, self) {
       var $this = $(this),
           section = $this.closest('section, .section'),
-          title = section.find('.title'),
           content = section.find('.content'),
           parent = section.closest('[data-section]'),
           self = Foundation.libs.section;
@@ -83,9 +82,6 @@
         }
 
         section.addClass('active');
-
-        if (self.is_horizontal(parent))
-          content.css({left: title.position().left, top: title.outerHeight()});
       }
 
       self.settings.callback();
@@ -123,6 +119,10 @@
           active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
         }
         self.position_titles($this);
+
+        if (self.is_horizontal($this)) {
+          self.position_content($this);
+        }
       });
     },
 
@@ -169,6 +169,17 @@
           previous_width += self.outerWidth($(this));
         });
       }
+    },
+
+    position_content : function (section, off) {
+        var title = section.find('.title'),
+            content = section.find('.content');
+        
+        if (typeof off === 'boolean') {
+          content.attr('style', '');
+        } else {
+          content.css({left: title.position().left, top: title.outerHeight()});
+        }
     },
 
     small : function (el) {
