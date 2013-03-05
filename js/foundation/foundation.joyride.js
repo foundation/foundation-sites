@@ -334,6 +334,7 @@
 
     set_next_tip : function () {
       this.settings.$next_tip = $(".joyride-tip-guide[data-index='" + this.settings.$li.index() + "']");
+      this.settings.$next_tip.data('closed', '');
     },
 
     set_target : function () {
@@ -345,6 +346,7 @@
             } else if (cl) {
               return $('.' + cl).first();
             } else {
+              alert('body')
               return $('body');
             }
           };
@@ -485,9 +487,7 @@
         }
 
       } else if (this.settings.$li.length) {
-
         this.pos_modal($nub);
-
       }
 
       if (toggle) {
@@ -499,15 +499,16 @@
     pos_modal : function ($nub) {
       this.center();
       $nub.hide();
+      if (!this.settings.$next_tip.data('closed')) {
+        if ($('.joyride-modal-bg').length < 1) {
+          $('body').append('<div class="joyride-modal-bg">').show();
+        }
 
-      if ($('.joyride-modal-bg').length < 1) {
-        $('body').append('<div class="joyride-modal-bg">').show();
-      }
-
-      if (/pop/i.test(this.settings.tipAnimation)) {
-        $('.joyride-modal-bg').show();
-      } else {
-        $('.joyride-modal-bg').fadeIn(this.settings.tipAnimationFadeSpeed);
+        if (/pop/i.test(this.settings.tipAnimation)) {
+          $('.joyride-modal-bg').show();
+        } else {
+          $('.joyride-modal-bg').fadeIn(this.settings.tipAnimationFadeSpeed);
+        }
       }
     },
 
@@ -589,6 +590,8 @@
       if (this.settings.timer > 0) {
         clearTimeout(this.settings.automate);
       }
+
+      this.settings.$next_tip.data('closed', true);
 
       $('.joyride-modal-bg').hide();
       this.settings.$current_tip.hide();
