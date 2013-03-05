@@ -218,39 +218,33 @@
         <p>Use the <code>side-nav</code> class on the list to apply the Foundation navigation styles</p>
 
 <%= code_example '
-<div class="row">
-  <div class="large-3 columns">
-    <div class="section-container horizontal-nav" data-section>
-      <section class="section">
-        <p class="title"><a href="#">Section 1</a></p>
-        <div class="content">
-          <ul class="side-nav">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Link 1</a></li>
-          </ul>
-        </div>
-      </section>
-      <section class="section">
-        <p class="title"><a href="#">Section 2</a></p>
-        <div class="content">
-          <ul class="side-nav">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Link 1</a></li>
-          </ul>
-        </div>
-      </section>
+<div class="section-container horizontal-nav" data-section>
+  <section class="section">
+    <p class="title"><a href="#">Section 1</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
     </div>
-  </div>
-  <div class="large-9 columns">
-    <p>Content to the right of the navigation.</p>
-  </div>
-</div>', :html %>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Section 2</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+', :html %>
 
 
         <h6>Deep Linking</h6>
