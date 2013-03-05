@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zurb-foundation (4.0.3)
+    zurb-foundation (4.0.4)
       rake
       sass (>= 3.2.0)
 
