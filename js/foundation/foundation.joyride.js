@@ -346,7 +346,6 @@
             } else if (cl) {
               return $('.' + cl).first();
             } else {
-              alert('body')
               return $('body');
             }
           };
