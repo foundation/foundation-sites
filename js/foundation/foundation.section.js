@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.3',
+    version : '4.0.4',
 
     settings : {
       deep_linking: false,
@@ -49,6 +49,7 @@
     toggle_active : function (e, self) {
       var $this = $(this),
           section = $this.closest('section, .section'),
+          title = section.find('.title'),
           content = section.find('.content'),
           parent = section.closest('[data-section]'),
           self = Foundation.libs.section;
@@ -60,6 +61,7 @@
       if (section.hasClass('active')) {
         if (self.small(parent)
           || self.is_vertical(parent)
+          || self.is_horizontal(parent)
           || self.is_accordion(parent)) {
           section
             .removeClass('active')
@@ -81,6 +83,9 @@
         }
 
         section.addClass('active');
+
+        if (self.is_horizontal(parent))
+          content.css({left: title.position().left, top: title.outerHeight()});
       }
 
       self.settings.callback();
@@ -100,6 +105,7 @@
             .attr('style', '');
         } else if (active_section.length < 1
           && !self.is_vertical($this)
+          && !self.is_horizontal($this)
           && !self.is_accordion($this)) {
           var first = $this.find('section, .section').first();
           first.addClass('active');
@@ -122,6 +128,10 @@
 
     is_vertical : function (el) {
       return el.hasClass('vertical-nav');
+    },
+
+    is_horizontal : function (el) {
+      return el.hasClass('horizontal-nav');
     },
 
     is_accordion : function (el) {

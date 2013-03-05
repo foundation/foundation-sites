@@ -53,6 +53,12 @@ $section-bottom-margin:          emCalc(20px) !default;
   @else if $section-type == vertical-nav {
 
   }
+
+  // Horizontal Nav container border styles
+  @else if $section-type == horizontal-nav {
+    border: 0;
+    position: relative;
+  }
 }
 
 // We use this mixin to create the styles for sections as accordions.
@@ -157,6 +163,37 @@ $section-bottom-margin:          emCalc(20px) !default;
       }
     }
   }
+
+  // Horizontal Nav Styles
+  @else if $section-type == horizontal-nav {
+    padding-top: 0;
+    border: 0;
+    position: static;
+    
+    .title {
+      top: 1px;
+      width: auto;
+      border: $section-border-size $section-border-style $section-border-color;
+      border-right: 0;
+      position: absolute;
+      z-index: 1;
+
+      a { width: 100%; }
+    }
+    &:last-child .title { border-right: $section-border-size $section-border-style $section-border-color; }
+
+    .content { display: none; }
+
+    &.active {
+      .content {
+        display: block;
+        position: absolute;
+        z-index: 999;
+        min-width: $section-vertical-nav-min-width;
+        border: $section-border-size $section-border-style $section-border-color;
+      }
+    }
+  }
 }
 
 
@@ -181,6 +218,13 @@ $section-bottom-margin:          emCalc(20px) !default;
 
       section,
       .section { @include section(vertical-nav); }
+    }
+
+    .section-container.horizontal-nav {
+      @include section-container(false, horizontal-nav);
+
+      section,
+      .section { @include section(horizontal-nav); }
     }
 
     .section-container.tabs {
