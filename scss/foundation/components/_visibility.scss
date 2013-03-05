@@ -28,65 +28,43 @@
 /* Medium Displays: 768px - 1279px */
 @media #{$small} {
   .show-for-medium,
-  .show-for-medium-down,
-  .show-for-medium-up,
-  .show-for-large-down { display: inherit !important; }
+  .show-for-medium-up { display: inherit !important; }
 
-  .show-for-small,
-  .show-for-large,
-  .show-for-large-up { display: none !important; }
+  .show-for-small { display: none !important; }
 
-  .hide-for-small,
-  .hide-for-large,
-  .hide-for-large-up { display: inherit !important; }
+  .hide-for-small { display: inherit !important; }
 
   .hide-for-medium,
-  .hide-for-medium-down,
-  .hide-for-medium-up,
-  .hide-for-large-down { display: none !important; }
+  .hide-for-medium-up { display: none !important; }
 }
 
 /* Large Displays: 1280px - 1440px */
 @media #{$medium} {
-  .show-for-medium-down,
-  .show-for-medium-up,
   .show-for-large,
-  .show-for-large-down,
   .show-for-large-up { display: inherit !important; }
 
-  .show-for-small,
-  .show-for-medium { display: none !important; }
+  .show-for-medium,
+  .show-for-medium-down { display: none !important; }
 
-  .hide-for-small,
-  .hide-for-medium { display: inherit !important; }
+  .hide-for-medium,
+  .hide-for-medium-down, { display: inherit !important; }
 
-  .hide-for-medium-down,
-  .hide-for-medium-up,
   .hide-for-large,
-  .hide-for-large-down,
   .hide-for-large-up { display: none !important; }
 
 }
 
 /* X-Large Displays: 1400px and up */
 @media #{$large} {
-  .show-for-medium-down,
-  .show-for-medium-up,
-  .show-for-large-down,
-  .show-for-large-up { display: inherit !important; }
+  .show-for-xLarge { display: inherit !important; }
 
-  .show-for-small,
-  .show-for-medium,
-  .show-for-large { display: none !important; }
+  .show-for-large,
+  .show-for-large-down { display: none !important; }
 
-  .hide-for-small,
-  .hide-for-medium,
-  .hide-for-large { display: inherit !important; }
-
-  .hide-for-medium-down,
-  .hide-for-medium-up,
-  .hide-for-large-down,
-  .hide-for-large-up { display: none !important; }
+  .hide-for-large,
+  .hide-for-large-down { display: inherit !important; }
+	
+  .hide-for-xlarge { display: none !important; }
 }
 
 
