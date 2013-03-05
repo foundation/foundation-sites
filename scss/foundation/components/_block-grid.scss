@@ -4,7 +4,7 @@
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12 !default;
-$block-grid-default-spacing: 10px !default;
+$block-grid-default-spacing: 40px !default;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 $block-grid-media-queries: true !default;
@@ -57,9 +57,7 @@ $block-grid-media-queries: true !default;
   @media #{$small} {
     @for $i from 1 through $block-grid-elements {
       .large-block-grid-#{($i)} {
-        @if      $i == 2 { @include block-grid(2,15px,false); }
-        @else if $i == 3 { @include block-grid(3,12px,false); }
-        @else { @include block-grid($i,$block-grid-default-spacing,false); }
+        @include block-grid($i,$block-grid-default-spacing,false);
       }
     }
   }
