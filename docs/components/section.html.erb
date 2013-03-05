@@ -39,6 +39,32 @@
             </div>
           </div>
           <div class="large-9 columns">
+            <div class="section-container horizontal-nav" data-section data-options="deep_linking: false">
+              <section class="section">
+                <p class="title"><a href="#">Section 1</a></p>
+                <div class="content">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+              <section class="section">
+                <p class="title"><a href="#">Section 2</a></p>
+                <div class="content">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+            </div>            
             <div class="section-container tabs" data-section data-options="deep_linking: true">
               <section class="section">
                 <p class="title"><a href="#panel1">Section 1</a></p>
@@ -84,7 +110,7 @@
 
         <hr>
 
-        <h3>Sections Replace Accordion, Tabs &amp; Vertical Nav</h3>
+        <h3>Sections Replace Accordion, Tabs, Vertical Nav &amp; Nav Bar</h3>
         <p>Sections replace a few things that you are used to from Foundation 3. We've taken the accordion, the tabs and the vertical nav and combined them into this really flexible plugin that can handle all of those. The single JS file handles all the interactions, but the classes you add to the element control how it gets rendered and styled across our breakpoint.</p>
 
         <hr>
@@ -183,6 +209,42 @@
     <p>Content to the right of the navigation.</p>
   </div>
 </div>', :html %>
+
+        <h6>Horizontal Nav/Nav Bar</h6>
+        <p>Adding a <code>horizontal-nav</code> class to the section container will enable horizontal navigation elements on large screens and show an accordion on small screens.</p>
+
+        <p>Horizontal navigation is a combination of the tab setting with vertical navigation drop downs.</p>
+
+        <p>Use the <code>side-nav</code> class on the list to apply the Foundation navigation styles</p>
+
+<%= code_example '
+<div class="section-container horizontal-nav" data-section>
+  <section class="section">
+    <p class="title"><a href="#">Section 1</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Section 2</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+', :html %>
 
 
         <h6>Deep Linking</h6>
