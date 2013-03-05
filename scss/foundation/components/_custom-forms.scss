@@ -30,11 +30,14 @@ $custom-dropdown-font-size:             emCalc(14px) !default;
 $custom-dropdown-color-selected:        #eeeeee !default;
 $custom-dropdown-font-color-selected:   #000 !default;
 $custom-dropdown-shadow:                0 2px 2px 0px rgba(0,0,0,0.1) !default;
-$custom-dropdown-offset-top:            none !default;
+$custom-dropdown-offset-top:            auto !default;
 $custom-dropdown-list-padding:          emCalc(4px) !default;
 $custom-dropdown-left-padding:          emCalc(6px) !default;
 $custom-dropdown-right-padding:         emCalc(38px) !default;
 $custom-dropdown-list-item-min-height:  emCalc(24px) !default;
+$custom-dropdown-width-small:           134px !default;
+$custom-dropdown-width-medium:          254px !default;
+$custom-dropdown-width-large:           434px !default;
 
 // We decided not to make a mixin for the custom forms because
 // they rely on a very specific class naming structure.
@@ -171,14 +174,14 @@ form.custom {
       @include box-sizing(content-box);
     }
 
-    &.small { max-width: 134px !important; }
-    &.medium { max-width: 254px !important; }
-    &.large { max-width: 434px !important; }
+    &.small { max-width: $custom-dropdown-width-small; }
+    &.medium { max-width: $custom-dropdown-width-medium; }
+    &.large { max-width: $custom-dropdown-width-large; }
     &.expand { width: 100% !important; }
 
-    &.open.small ul { max-width: 134px !important; @include box-sizing(border-box); }
-    &.open.medium ul { max-width: 254px !important; @include box-sizing(border-box); }
-    &.open.large ul { max-width: 634px !important; @include box-sizing(border-box); }
+    &.open.small ul { min-width: $custom-dropdown-width-small; @include box-sizing(border-box); }
+    &.open.medium ul { min-width: $custom-dropdown-width-medium; @include box-sizing(border-box); }
+    &.open.large ul { min-width: $custom-dropdown-width-large; @include box-sizing(border-box); }
   }
 
   .custom.dropdown ul {
