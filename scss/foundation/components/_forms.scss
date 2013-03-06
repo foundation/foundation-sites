@@ -266,8 +266,6 @@ label { @include form-label;
 .postfix.button.radius { @include side-radius(right, $global-radius); }
 .prefix.button.round { @include side-radius(left, 1000px); }
 .postfix.button.round { @include side-radius(right, 1000px); }
-.prefix.button.round { @include side-radius(left, 1000px); }
-.postfix.button.round { @include side-radius(right, 1000px); }
 
 /* Separate prefix and postfix styles when on span so buttons keep their own */
 span.prefix { @include prefix();
