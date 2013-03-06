@@ -207,7 +207,13 @@
 
           content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
         });
-        section.height(this.outerHeight(titles.first()));
+
+        // temporary work around for Zepto outerheight calculation issues.
+        if (typeof Zepto === 'function') {
+          section.height(this.outerHeight(titles.first()));
+        } else {
+          section.height(this.outerHeight(titles.first()) - 2);
+        }
       }
 
     },
