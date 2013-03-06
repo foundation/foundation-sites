@@ -97,6 +97,15 @@ $base-style: true
           <li><img src="../img/demos/demo5.jpg"></li>
         </ul>
 
+        <h5>Clearing Block Grid Rows</h5>
+        <p>We have this built into the CSS, but you'll need to add a bit of code if you want your block grid to change layout between breakpoints. If you don't use this, it will inherit whatever you put in the smallest media query. This code looks for the <code>n+1</code> of the grid so that it clears properly. That code looks like this:</p>
+
+<%= code_example '
+.your-small-class-name > li { clear: none !important; }
+', :css %>
+
+        <p><strong>Note:</strong> If you are using the same class across breakpoints, your mixin should override this and you won't need it. If you want to control the layout using different classes, use the above snippet.</p>
+
         <h5>Available SCSS Variables</h5>
 
 <%= code_example '
