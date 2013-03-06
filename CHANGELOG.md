@@ -1,7 +1,17 @@
 # Changelog
-We'll keep you up to date with what we've released so you at least have a gist of what goes into each update. For the most part, we'll try to list things out as detailed as we see necessary.
-
 ---
+
+### 4.0.5 (In Progress)
+We're currently working on patch fixes for various parts of Foundation. We'll add to this list as we go up until release.
+* Custom classes added to custom forms now carry through to JS
+* Added `.horizontal-nav` to `foundation.section.js`
+* Fixed variables that weren't being inherited properly
+* Fixed a joyride mobile background issue
+* Updated Reveal docs to match 4.0.4 functionality
+* Updated to Zepto 1.0
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
+
 ### 4.0.4
 This patch fixes various bugs that have been submitted since release. We'll be more specific with changelog updates going forward.
 
