@@ -56,8 +56,9 @@ $section-bottom-margin:          emCalc(20px) !default;
 
   // Horizontal Nav container border styles
   @else if $section-type == horizontal-nav {
-    border: 0;
     position: relative;
+    background: $section-title-bg;
+    border: $section-border-size $section-border-style $section-border-color;
   }
 }
 
@@ -169,18 +170,18 @@ $section-bottom-margin:          emCalc(20px) !default;
     padding-top: 0;
     border: 0;
     position: static;
-    
+
     .title {
-      top: 1px;
       width: auto;
       border: $section-border-size $section-border-style $section-border-color;
-      border-right: 0;
+      border-left: 0;
+      border-top: 0;
+      border-bottom: 0;
       position: absolute;
       z-index: 1;
 
       a { width: 100%; }
     }
-    &:last-child .title { border-right: $section-border-size $section-border-style $section-border-color; }
 
     .content { display: none; }
 
@@ -189,6 +190,7 @@ $section-bottom-margin:          emCalc(20px) !default;
         display: block;
         position: absolute;
         z-index: 999;
+        left: 0;
         min-width: $section-vertical-nav-min-width;
         border: $section-border-size $section-border-style $section-border-color;
       }
