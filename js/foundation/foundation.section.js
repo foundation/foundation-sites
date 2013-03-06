@@ -178,8 +178,10 @@
         if (typeof off === 'boolean') {
           content.attr('style', '');
         } else {
-          content.css({left: title.position().left, top: title.outerHeight()});
+          content.css({left: title.position().left, top: this.outerHeight(title)});
         }
+
+        section.height(this.outerHeight(title));
     },
 
     small : function (el) {
