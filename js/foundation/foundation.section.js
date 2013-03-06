@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.4',
+    version : '4.0.5',
 
     settings : {
       deep_linking: false,
@@ -204,7 +204,7 @@
         section.find('section, .section').each(function () {
           var title = $(this).find('.title'),
               content = $(this).find('.content');
-              
+
           content.css({left: title.position().left, top: self.outerHeight(title)});
         });
         section.height(this.outerHeight(titles.first()));
