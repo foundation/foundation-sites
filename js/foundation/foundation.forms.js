@@ -195,8 +195,9 @@
       // interrupt invalid event so as to avoid the unfocusable field error
       if(self.settings.override_html5_errors) {
         $this.on('invalid',function(e){
-          $this.siblings('label').addClass('error')
-          $customSelect.addClass('error').data('html5-error',true).after('<small class="error">This Field is Required</small>')
+          if($(this).next('div.custom.dropdown').data('html5-error')) return false; // block re-erroring
+          $(this).siblings('label').addClass('error')
+          $(this).next('div.custom.dropdown').addClass('error').data('html5-error',true).after('<small class="error">This Field is Required</small>')
           e.preventDefault();
           return false;
         })
