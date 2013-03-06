@@ -9,6 +9,9 @@ We're currently working on patch fixes for various parts of Foundation. We'll ad
 * Fixed a joyride mobile background issue
 * Updated Reveal docs to match 4.0.4 functionality
 * Updated to Zepto 1.0
+* Fixed bugs with visibility classes
+* Updated block-grid nth-of-type clear fix so that it actually works
+*
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
 
