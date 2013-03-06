@@ -49,7 +49,7 @@ img { -ms-interpolation-mode: bicubic; }
 .hide         { display: none; }
 
 // Get rid of gap under images by making them display: block; by default
-img { display: block; }
+img { display: inline-block; }
 
 //
 // Global resets for forms
