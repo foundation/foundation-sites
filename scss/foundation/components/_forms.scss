@@ -11,6 +11,7 @@ $label-font-size:                    emCalc(14px) !default;
 $label-font-weight:                  500 !default;
 $label-font-color:                   lighten(#000, 30%) !default;
 $label-bottom-margin:                emCalc(3px) !default;
+$input-font-family:                  inherit !default;
 $input-font-color:                   rgba(0,0,0,0.75) !default;
 $input-font-size:                    emCalc(14px) !default;
 $input-bg-color:                     #fff !default;
@@ -78,7 +79,7 @@ $input-error-message-font-color-alt: #333 !default;
 // We use this mixin to give all basic form elements their style
 @mixin form-element() {
   background-color: $input-bg-color;
-  font-family: inherit;
+  font-family: $input-font-family;
   border: $input-border-width $input-border-style $input-border-color;
   -webkit-box-shadow: $input-box-shadow;
   box-shadow: $input-box-shadow;

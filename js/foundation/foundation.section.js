@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.3',
+    version : '4.0.4',
 
     settings : {
       deep_linking: false,
@@ -60,6 +60,7 @@
       if (section.hasClass('active')) {
         if (self.small(parent)
           || self.is_vertical(parent)
+          || self.is_horizontal(parent)
           || self.is_accordion(parent)) {
           section
             .removeClass('active')
@@ -100,6 +101,7 @@
             .attr('style', '');
         } else if (active_section.length < 1
           && !self.is_vertical($this)
+          && !self.is_horizontal($this)
           && !self.is_accordion($this)) {
           var first = $this.find('section, .section').first();
           first.addClass('active');
@@ -117,11 +119,19 @@
           active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
         }
         self.position_titles($this);
+
+        if (self.is_horizontal($this)) {
+          self.position_content($this);
+        }
       });
     },
 
     is_vertical : function (el) {
       return el.hasClass('vertical-nav');
+    },
+
+    is_horizontal : function (el) {
+      return el.hasClass('horizontal-nav');
     },
 
     is_accordion : function (el) {
@@ -159,6 +169,17 @@
           previous_width += self.outerWidth($(this));
         });
       }
+    },
+
+    position_content : function (section, off) {
+        var title = section.find('.title'),
+            content = section.find('.content');
+        
+        if (typeof off === 'boolean') {
+          content.attr('style', '');
+        } else {
+          content.css({left: title.position().left, top: title.outerHeight()});
+        }
     },
 
     small : function (el) {

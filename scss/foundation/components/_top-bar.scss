@@ -209,7 +209,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       display: block;
       width: 100%;
       padding: 12px 0 12px $topbar-height / 3;
-      color: $topbar-link-color;
+      color: $topbar-dropdown-link-color;
       font-size: $topbar-link-font-size;
       font-weight: $topbar-link-weight;
       background: $topbar-dropdown-bg;

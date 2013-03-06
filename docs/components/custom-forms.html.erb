@@ -111,6 +111,7 @@
 
         <h3>Building Custom Selects</h3>
         <p>Sometimes you need to let people select a single item from a long list of options. This is what <code>&lt;select&gt;</code> elements are for. We've taken these a step further by including our own custom style that looks a lot better than inconsistent browser defaults. You can set any of the <code>&lt;option&gt;</code> elements to <code>&lt;option disabled&gt;</code> to make them unable to select. Custom selects are built like you'd expect:</p>
+        <p>For those who may want to apply custom styles to a specific dropdown, any classes on the <code>&lt;select&gt;</code> element will be appended to the generated <code>&lt;div class=&quot;custom dropdown&quot;&gt;</code> element.</p>
 
 <%= code_example '
 <form class="custom">
@@ -124,7 +125,7 @@
 </form>', :html %>
 
         <form class="custom">
-          <label for="customDropdown2">Medium Example</label>
+          <label for="customDropdown2">Default Example</label>
           <select id="customDropdown2">
             <option DISABLED>This is a dropdown</option>
             <option>This is another option</option>
@@ -228,7 +229,7 @@
       </select>
     </div>
     <div class="small-4 columns">
-      <a href="#" class="button postfix expand">Button</a>
+      <a href="#" class="button postfix">Button</a>
     </div>
   </div>
 </form>', :html %>
@@ -273,7 +274,7 @@
               </select>
             </div>
             <div class="small-4 columns">
-              <a href="#" class="button postfix expand">Button</a>
+              <a href="#" class="button postfix">Button</a>
             </div>
           </div>
         </form>
