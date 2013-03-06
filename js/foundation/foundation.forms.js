@@ -33,11 +33,11 @@
     },
 
     assemble : function () {
-      $('form.custom input[type="radio"]').not('[data-customforms="disabled"]')
+      $('form.custom input[type="radio"]', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_markup);
-      $('form.custom input[type="checkbox"]').not('[data-customforms="disabled"]')
+      $('form.custom input[type="checkbox"]', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_markup);
-      $('form.custom select').not('[data-customforms="disabled"]')
+      $('form.custom select', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_select);
     },
 
