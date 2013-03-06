@@ -10,7 +10,7 @@
 
     settings : {
       disable_class: 'no-custom',
-      override_html5_errors: false
+      override_html5_errors: true
     },
 
     init : function (scope, method, options) {
