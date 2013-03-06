@@ -4,6 +4,7 @@
 
 // We use this to se the prog bar height
 $progress-bar-height: emCalc(25px) !default;
+$progress-bar-color: transparent !default;
 
 // We use these to control the border styles
 $progress-bar-border-color: darken(#fff, 20%) !default;
@@ -28,6 +29,7 @@ $progress-meter-alert-color: $alert-color !default;
 
 // We use this to set up the progress bar container
 @mixin progress-container {
+  background-color: $progress-bar-color;
   height: $progress-bar-height;
   border: $progress-bar-border-size $progress-bar-border-style $progress-bar-border-color;
   padding: $progress-bar-pad;
