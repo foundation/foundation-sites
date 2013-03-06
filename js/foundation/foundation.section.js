@@ -43,6 +43,19 @@
         self.resize.call(this);
       }, 30)).trigger('resize');
 
+      $('[data-section] .content').on('click.fndtn.section', function (e) {
+        e.stopPropagation();
+      });
+
+      $('*, html, body').on('click.fndtn.section', function (e) {
+        if ($(e.target).closest('.title').length < 1) {
+          $('[data-section].vertical-nav, [data-section].horizontal-nav')
+            .find('section, .section')
+            .removeClass('active')
+            .attr('style', '');
+        }
+      });
+
       this.settings.init = true;
     },
 
@@ -76,6 +89,11 @@
 
           section.css('padding-top', self.outerHeight(section.find('.title')));
         }
+
+        $('[data-section].vertical-nav, [data-section].horizontal-nav')
+            .find('section, .section')
+            .removeClass('active')
+            .attr('style', '');
 
         if (self.small(parent)) {
           section.attr('style', '');
@@ -120,8 +138,10 @@
         }
         self.position_titles($this);
 
-        if (self.is_horizontal($this)) {
+        if (self.is_horizontal($this) && !self.small($this)) {
           self.position_content($this);
+        } else {
+          self.position_content($this, false);
         }
       });
     },
@@ -163,6 +183,7 @@
 
       if (typeof off === 'boolean') {
         titles.attr('style', '');
+
       } else {
         titles.each(function () {
           $(this).css('left', previous_width);
@@ -172,16 +193,23 @@
     },
 
     position_content : function (section, off) {
-        var title = section.find('.title'),
-            content = section.find('.content');
+      var titles = section.find('.title'),
+          content = section.find('.content'),
+          self = this;
 
-        if (typeof off === 'boolean') {
-          content.attr('style', '');
-        } else {
-          content.css({left: title.position().left, top: this.outerHeight(title)});
-        }
+      if (typeof off === 'boolean') {
+        content.attr('style', '');
+        section.attr('style', '');
+      } else {
+        section.find('section, .section').each(function () {
+          var title = $(this).find('.title'),
+              content = $(this).find('.content');
+              
+          content.css({left: title.position().left, top: self.outerHeight(title)});
+        });
+        section.height(this.outerHeight(titles.first()));
+      }
 
-        section.height(this.outerHeight(title));
     },
 
     small : function (el) {
