@@ -177,6 +177,7 @@
           $selector = $customSelect.find( ".selector" ),
           $options = $this.find( 'option' ),
           $selectedOption = $options.filter( ':selected' ),
+          copyClasses = $this.attr('class') ? $this.attr('class').split(' ') : [],
           maxWidth = 0,
           liHtml = '',
           $listItems,
@@ -190,7 +191,7 @@
                                $this.hasClass( 'large' )   ? 'large'   :
                                $this.hasClass( 'expand' )  ? 'expand'  : '';
 
-        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>');
+        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].concat(copyClasses).filter(function(item, idx,arr){ if(item == '') return false; return arr.indexOf(item) == idx; }).join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>');
         $selector = $customSelect.find(".selector");
         $customList = $customSelect.find("ul");
         liHtml = $options.map(function() { return "<li>" + $( this ).html() + "</li>"; } ).get().join( '' );
