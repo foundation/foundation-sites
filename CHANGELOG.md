@@ -11,6 +11,8 @@ We're currently working on patch fixes for various parts of Foundation. We'll ad
 * Updated to Zepto 1.0
 * Fixed bugs with visibility classes
 * Updated block-grid nth-of-type clear fix so that it actually works
+* All size block grids now have the same spacing
+* Made images `display: inline-block` by default to remove gap and not screw up layouts
 *
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
