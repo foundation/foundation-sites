@@ -205,7 +205,7 @@
           var title = $(this).find('.title'),
               content = $(this).find('.content');
 
-          content.css({left: title.position().left, top: self.outerHeight(title)});
+          content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
         });
         section.height(this.outerHeight(titles.first()));
       }
