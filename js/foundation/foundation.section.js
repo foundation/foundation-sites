@@ -74,7 +74,7 @@
             .removeClass('active')
             .attr('style', '');
 
-          section.css('padding-top', self.outerHeight(section.find('.title')) - 1);
+          section.css('padding-top', self.outerHeight(section.find('.title')));
         }
 
         if (self.small(parent)) {
@@ -109,14 +109,14 @@
           if (self.small($this)) {
             first.attr('style', '');
           } else {
-            first.css('padding-top', self.outerHeight(first.find('.title')) - 1);
+            first.css('padding-top', self.outerHeight(first.find('.title')));
           }
         }
 
         if (self.small($this)) {
           active_section.attr('style', '');
         } else {
-          active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
+          active_section.css('padding-top', self.outerHeight(active_section.find('.title')));
         }
         self.position_titles($this);
 
@@ -174,7 +174,7 @@
     position_content : function (section, off) {
         var title = section.find('.title'),
             content = section.find('.content');
-        
+
         if (typeof off === 'boolean') {
           content.attr('style', '');
         } else {
