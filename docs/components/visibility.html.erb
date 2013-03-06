@@ -18,23 +18,25 @@
         <p class="panel">
           <strong class="show-for-small">You are on a small screen.</strong>
           <strong class="show-for-medium">You are on a medium screen.</strong>
-          <strong class="show-for-medium-up">You are on a medium or larger screen.</strong>
-          <strong class="show-for-medium-down">You are on a medium or smaller screen.</strong>
+          <strong class="show-for-medium-up">You are on a medium, large or xlarge screen.</strong>
+          <strong class="show-for-medium-down">You are on a medium or small screen.</strong>
           <strong class="show-for-large">You are on a large screen.</strong>
-          <strong class="show-for-large-up">You are on a large or bigger screen.</strong>
-          <strong class="show-for-large-down">You are on a large or smaller screen.</strong>
+          <strong class="show-for-large-up">You are on a large or xlarge screen.</strong>
+          <strong class="show-for-large-down">You are on a large, medium or small screen.</strong>
+          <strong class="show-for-xlarge">You are on a xlarge screen.</strong>
         </p>
 
         <h5>Screen Size Visibility Control (Hide)</h5>
         <p>The following text should describe the screen size you aren't using:</p>
         <p class="panel">
-          <strong class="hide-for-small">You are not on a small screen.</strong>
-          <strong class="hide-for-medium">You are not on a medium screen.</strong>
-          <strong class="hide-for-medium-up">You are not on a medium or larger screen.</strong>
-          <strong class="hide-for-medium-down">You are not on a medium or smaller screen.</strong>
-          <strong class="hide-for-large">You are not on a large screen.</strong>
-          <strong class="hide-for-large-up">You are not on a large or bigger screen.</strong>
-          <strong class="hide-for-large-down">You are not on a large or smaller screen.</strong>
+          <strong class="hide-for-small">You are <em>not</em> on a small screen.</strong>
+          <strong class="hide-for-medium">You are <em>not</em> on a medium screen.</strong>
+          <strong class="hide-for-medium-up">You are <em>not</em> on a medium, large or xlarge screen.</strong>
+          <strong class="hide-for-medium-down">You are <em>not</em> on a medium or small screen.</strong>
+          <strong class="hide-for-large">You are <em>not</em> on a large screen.</strong>
+          <strong class="hide-for-large-up">You are <em>not</em> on a large or xlarge screen.</strong>
+          <strong class="hide-for-large-down">You are <em>not</em> on a large, medium or small screen.</strong>
+          <strong class="hide-for-xlarge">You are <em>not</em> on a xlarge screen.</strong>
         </p>
 
         <h5>Orientation Detection</h5>
@@ -65,6 +67,7 @@
 .show-for-large-down  /* Visible from 1440px down */
 .show-for-large       /* Visible between 1280px and 1440px */
 .show-for-large-up    /* Visible from 1440px up */
+.show-for-xlarge      /* Visible above 1440px only */
 
 /* The hide classes */
 .hide-for-small       /* Hidden up to 768px */
@@ -74,6 +77,7 @@
 .hide-for-large-down  /* Hidden from 1440px down */
 .hide-for-large       /* Hidden between 1280px and 1440px */
 .hide-for-large-up    /* Hidden from 1440px up */
+.hide-for-xlarge      /* Hidden above 1440px only */
 
 /* The orientation classes */
 .show-for-landscape   /* Visible for landscape orientation */
