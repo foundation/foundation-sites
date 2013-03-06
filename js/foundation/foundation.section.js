@@ -178,7 +178,6 @@
         if (typeof off === 'boolean') {
           content.attr('style', '');
         } else {
-          console.log(this.outerHeight(title))
           content.css({left: title.position().left, top: this.outerHeight(title)});
         }
 
