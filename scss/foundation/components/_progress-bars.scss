@@ -34,7 +34,7 @@ $progress-meter-alert-color: $alert-color !default;
   margin-bottom: $progress-bar-margin-bottom;
 }
 
-@mixin progress-meter($bg:$primary-color) {
+@mixin progress-meter($bg:$progress-meter-color) {
   background: $bg;
   height: 100%;
   display: block;
@@ -51,9 +51,9 @@ $progress-meter-alert-color: $alert-color !default;
     .meter {
       @include progress-meter;
     }
-    &.secondary .meter { @include progress-meter($bg:$secondary-color); }
-    &.success .meter { @include progress-meter($bg:$success-color); }
-    &.alert .meter { @include progress-meter($bg:$alert-color); }
+    &.secondary .meter { @include progress-meter($bg:$progress-meter-secondary-color); }
+    &.success .meter { @include progress-meter($bg:$progress-meter-success-color); }
+    &.alert .meter { @include progress-meter($bg:$progress-meter-alert-color); }
 
     &.radius { @include radius($global-radius);
       .meter { @include radius($global-radius - 1); }
