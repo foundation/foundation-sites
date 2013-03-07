@@ -26,10 +26,12 @@
 
   div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius($alertBorderRadius); text-shadow: 0 -1px rgba(#000,.3); position: relative;
 
+    a { color: #fff; }
     &.success { background-color: $successColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
     &.alert { background-color: $alertColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
-    &.secondary { background-color: $secondaryColor; color: darken($secondaryColor, 60%); text-shadow: 0 1px rgba(#fff,.3); }
-
+    &.secondary { background-color: $secondaryColor; color: darken($secondaryColor, 60%); text-shadow: 0 1px rgba(#fff,.3);
+      a { color: #333; }
+    }
     a.close { color: #333; position: absolute; #{$defaultOpposite}: 4px; top: -1px; font-size: ms(1); opacity: 0.2; padding: 4px; }
     a.close:hover, a.close:focus { opacity: 0.4; }
 
