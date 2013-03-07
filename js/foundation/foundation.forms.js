@@ -9,7 +9,8 @@
     version : '4.0.4',
 
     settings : {
-      disable_class: 'no-custom'
+      disable_class: 'no-custom',
+      override_html5_errors: true
     },
 
     init : function (scope, method, options) {
@@ -94,6 +95,13 @@
           var $this = $(this),
               $dropdown = $this.closest('div.custom.dropdown'),
               $select = $dropdown.prev();
+
+          // remove automatically added error classes from html5 `invalid` event
+          if(self.settings.override_html5_errors && $dropdown.data('html5-error')) {
+            $dropdown.removeClass('error').next('small.error').remove();
+            $dropdown.siblings('label.error').removeClass('error');
+            $dropdown.data('html5-error',false)
+          }
 
           // make sure other dropdowns close
           if(!$dropdown.hasClass('open'))
@@ -184,6 +192,17 @@
           $currentSelect = false;
 
       if ($this.hasClass(self.settings.disable_class)) return;
+
+      // interrupt invalid event so as to avoid the unfocusable field error
+      if(self.settings.override_html5_errors) {
+        $this.on('invalid',function(e){
+          if($(this).next('div.custom.dropdown').data('html5-error')) return false; // block re-erroring
+          $(this).siblings('label').addClass('error')
+          $(this).next('div.custom.dropdown').addClass('error').data('html5-error',true).after('<small class="error">This Field is Required</small>')
+          e.preventDefault();
+          return false;
+        })
+      }
 
       if ($customSelect.length === 0) {
         var customSelectSize = $this.hasClass( 'small' )   ? 'small'   :

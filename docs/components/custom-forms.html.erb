@@ -280,6 +280,56 @@
         </form>
 
         <hr>
+        <h3><a name="errors"></a>Errors</h3>
+        <p>Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically. You can attach a class of .error either to the individual elements (label, input, small) or to a column/div.</p>
+
+          <div class="row">
+            <div class="large-6 columns">
+<%= code_example '
+<label for="customDropdownError1">HTML5 Required Example</label>
+<select id="customDropdownError1" required>
+  <option value="">Invalid</option>
+  <option value="1">Valid</option>
+</select>', :html %>
+            </div>
+            <div class="large-6 columns">
+<%= code_example '
+<div class="large-6 columns error">
+  <label for="customDropdownError2">Custom Error Example</label>
+  <select id="customDropdownError2" required>
+    <option>Pineapples</option>
+    <option>Oranges</option>
+    <option>Kiwis</option>
+    <option>Guava</option>
+  </select>
+  <small>Pineapple is out of season.</small>
+</div>', :html %>
+            </div>
+          </div>
+        <form class="custom">
+          <div class="row">
+            <div class="large-6 columns">
+                <label for="customDropdownError1">HTML5 Required Example</label>
+                <select id="customDropdownError1" required>
+                  <option value="">Invalid</option>
+                  <option value="1">Valid</option>
+                </select>
+            </div>
+            <div class="large-6 columns error">
+              <label for="customDropdownError2">Custom Error Example</label>
+              <select id="customDropdownError2" required>
+                <option>Pineapples</option>
+                <option>Oranges</option>
+                <option>Kiwis</option>
+                <option>Guava</option>
+              </select>
+              <small>Pineapple is out of season.</small>
+            </div>
+          </div>
+          <input type="submit" value="Submit" class="button" />
+        </form>
+
+        <hr>
 
         <h3><a name="js"></a>Using the JavaScript</h3>
         <p>In order to get the custom forms to function, you'll need to include <code>foundation.forms.js</code>. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the forms plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
@@ -294,7 +344,8 @@
 
 <%= code_example "
 {
-  disable_class: 'no-custom'
+  disable_class: 'no-custom',
+  override_html5_errors: true
 }", :json %>
 
       </div>

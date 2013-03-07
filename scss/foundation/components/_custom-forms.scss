@@ -15,7 +15,7 @@ $custom-select-border-color:            #ddd !default;
 $custom-select-triangle-color:          #aaa !default;
 $custom-select-triangle-color-open:     #222 !default;
 $custom-select-height:                  emCalc(13px) + ($form-spacing * 1.5) !default;
-$custom-select-margin-bottom:           emCalc(20px) !default;
+$custom-select-margin-bottom:           $form-spacing !default;
 $custom-select-font-color-selected:     #141414 !default;
 $custom-select-disabled-color:          #888 !default;
 
@@ -229,6 +229,15 @@ form.custom {
     }
 
     &.show { display: block; }
+
+  }
+  // error formatting with custom dropdowns
+  .error .custom.dropdown, .custom.dropdown.error {
+    border-color: $alert-color;
+    background: $custom-dropdown-bg;
+    background: -moz-linear-gradient(top, $custom-dropdown-bg 0%, lighten($alert-color,55%) 100%);
+    background: -webkit-linear-gradient(top, $custom-dropdown-bg 0%,lighten($alert-color,55%) 100%);
+    background: linear-gradient(to bottom, $custom-dropdown-bg 0%,lighten($alert-color,55%) 100%);
   }
 
   /* Custom input, disabled */
