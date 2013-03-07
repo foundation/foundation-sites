@@ -238,6 +238,8 @@
       }
     }
 
+    .block-grid[class$='-up'][class*='mobile-'] li { clear: none; }
+
     /* Forms --- */
     /*           */
 
