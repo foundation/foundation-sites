@@ -45,6 +45,7 @@ $custom-dropdown-width-large:           434px !default;
 
 /* Custom Checkbox and Radio Inputs */
 form.custom {
+
   .custom {
     display: inline-block;
     width: 16px;
@@ -57,7 +58,6 @@ form.custom {
     &.radio { @include radius(1000px); }
 
     &.checkbox {
-      z-index: -1;
       &:before {
         content: "";
         display: block;
