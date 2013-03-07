@@ -16,6 +16,7 @@ We're currently working on patch fixes for various parts of Foundation. We'll ad
 * Progress bars respect their color variables instead of global
 * Added variable for progress bar background color
 * Fixed inconsistency between side margins on unordered and ordered lists
+* Made it so you can set `custom_back_text` variable in top-bar to control if the back link is generic or specific
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
 
