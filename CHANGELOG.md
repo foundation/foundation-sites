@@ -15,6 +15,7 @@ We're currently working on patch fixes for various parts of Foundation. We'll ad
 * Made images `display: inline-block` by default to remove gap and not screw up layouts
 * Progress bars respect their color variables instead of global
 * Added variable for progress bar background color
+* Fixed inconsistency between side margins on unordered and ordered lists
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
 

@@ -592,6 +592,7 @@
 //
 
 // We use these to control the caption styles
+// $orbit-container-bg: #f5f5f5;
 // $orbit-caption-bg-old-browser: #000;
 // $orbit-caption-bg-old: rgb(0,0,0);
 // $orbit-caption-bg: rgba(0,0,0,0.6);
@@ -613,6 +614,9 @@
 // $orbit-slide-number-bg: rgb(0,0,0);
 // $orbit-slide-number-font-color: #fff;
 // $orbit-slide-number-padding: emCalc(5px);
+
+// Margin for when Orbit is stacked on small screens
+// $stack-on-small-margin-bottom: emCalc(20px); // Doesn't quite work yet
 
 //
 // Pagination Variables
