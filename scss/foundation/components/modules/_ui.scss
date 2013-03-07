@@ -53,11 +53,12 @@
 
   /* Tooltips ---------------------- */
 
-  .has-tip { border-bottom: $hasTipBorderBottom; cursor: help; font-weight: $hasTipFontWeight; color: $hasTipFontColor;
-
-    &:hover, &:focus { border-bottom: $hasTipBorderBottomHover; color: $hasTipFontColorHover; }
+  .has-tip { cursor: help; font-weight: $hasTipFontWeight; color: $hasTipFontColor;
+    &:hover, &:focus { color: $hasTipFontColorHover; }
     &.tip-left, &.tip-right { float: none !important; }
-
+  }
+  span.has-tip, p.has-tip, em.has-tip, strong.has-tip { border-bottom: $hasTipBorderBottom;
+    &:hover, &:focus { border-bottom: $hasTipBorderBottomHover; }
   }
 
   .tooltip { display: none; background: $tooltipBackgroundColor; background: rgba($tooltipBackgroundColor,$tooltipBackgroundOpacity); position: absolute; color: $tooltipFontColor; font-weight: $tooltipFontWeight; font-size: $tooltipFontSize; padding: 5px; z-index: 999; @include border-radius($tooltipBorderRadius); line-height: normal;
