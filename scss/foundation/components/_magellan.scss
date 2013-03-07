@@ -1,8 +1,13 @@
+//
+// Magellan Variables
+//
+$magellan-bg: #fff !default;
+
 @if $include-html-classes {
 
   [data-magellan-expedition] {
-    background: #fff;
-    z-index: 999;
+    background: $magellan-bg;
+    z-index: 997;
     min-width: 100%;
     padding: 10px;
 
