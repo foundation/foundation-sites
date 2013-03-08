@@ -17,9 +17,6 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !
 $body-font-weight: normal !default;
 $body-font-style: normal !default;
 
-// We use this to control font-smoothing
-$font-smoothing: antialiased !default;
-
 // We use these to control text direction settings
 $text-direction: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
 $default-float: left !default;
