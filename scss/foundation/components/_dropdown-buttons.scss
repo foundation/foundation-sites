@@ -101,7 +101,7 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px) !default;
 }
 
 
-@if $include-html-classes {
+@if $include-html-button-classes {
 
   /* Dropdown Button */
   .dropdown.button { @include dropdown-button;

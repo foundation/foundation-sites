@@ -108,7 +108,7 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 }
 
 
-@if $include-html-classes {
+@if $include-html-button-classes {
 
   @media only screen and (max-width: 767px) {
     .f-dropdown {

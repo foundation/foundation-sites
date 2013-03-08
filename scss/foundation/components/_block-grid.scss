@@ -6,9 +6,6 @@
 $block-grid-elements: 12 !default;
 $block-grid-default-spacing: 10px !default;
 
-// Enables media queries for block-grid classes. Set to false if writing semantic HTML.
-$block-grid-media-queries: true !default;
-
 //
 // Block Grid Mixins
 //
@@ -42,7 +39,7 @@ $block-grid-media-queries: true !default;
 
 }
 
-@if $block-grid-media-queries {
+@if $include-html-grid-classes {
   /* Foundation Block Grids for below small breakpoint */
   @media only screen {
     [class*="block-grid-"] { @include block-grid; }

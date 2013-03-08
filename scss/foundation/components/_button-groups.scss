@@ -51,7 +51,7 @@ $button-bar-margin-right: emCalc(10px) !default;
 }
 
 // Only include these CSS classes if $include-html-classes: true
-@if $include-html-classes {
+@if $include-html-button-classes {
 
   /* Button Groups */
   .button-group { @include button-group-container;
