@@ -240,7 +240,7 @@ th {
   &.show-for-portrait { display: table-cell !important; }
 }
 
-@media screen and (orientation: landscape) {
+@media #{$landscape} {
   .show-for-landscape,
   .hide-for-portrait { display: inherit !important; }
   .hide-for-landscape,
@@ -270,7 +270,7 @@ th {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media #{$portrait} {
   .show-for-portrait,
   .hide-for-landscape { display: inherit !important; }
   .hide-for-portrait,
