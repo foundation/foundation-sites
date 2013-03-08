@@ -2,14 +2,6 @@
 
 This is the Foundation project.  We love making super awesome stuff, but even more we like to empower people to make changes on their own.  Feel free to fork and improve Foundation.
 
-## Testing
-
-### Styles
-
-Go into the test/ directory.  Run `bundle exec compass compile` or `bundle exec compass watch` if you're making changes and want to see them reflected on-the-fly.
-
-Want to add a feature to Foundation?  Either update one of the test/*.html files or copy `test/template.html` to a new file, add your markup to it and check it in.
-
 ### JavaScript
 
 The Foundation JS libraries are tested with qUnit. You can run the tests in your browser by opening up the respective `.html` files in `test/javascripts/tests/`.
