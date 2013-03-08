@@ -34,12 +34,12 @@ $button-bar-margin-right: emCalc(10px) !default;
 
   // We use these to control left and right radius on first/last buttons in the group.
   @if $radius == true {
-    &:first-child > a { @include side-radius($default-float, $button-radius); }
-    &:last-child > a { @include side-radius($default-opposite, $button-radius); }
+    &:first-child > a, &:first-child > button { @include side-radius($default-float, $button-radius); }
+    &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $button-radius); }
   }
   @else if $radius {
-    &:first-child > a { @include side-radius($default-float, $radius); }
-    &:last-child > a { @include side-radius($default-opposite, $radius); }
+    &:first-child > a, &:first-child > button { @include side-radius($default-float, $radius); }
+    &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $radius); }
   }
 
   // We use this to make the buttons even width across their container
