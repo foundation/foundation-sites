@@ -22,6 +22,7 @@ We're currently working on patch fixes for various parts of Foundation. We'll ad
 * Added a page to the docs that explains our use of [media queries](http://foundation.zurb.com/docs/media-queries.html)
 * Removed default outline on a:focus elements that normalize adds
 * Fixed bug with custom checkboxes not clickable from the `<span>`
+* Added docs about using Sass standalone with Foundation
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
 

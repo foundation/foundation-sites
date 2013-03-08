@@ -39,18 +39,89 @@
       <li>run <span class="keystroke">compass create &lt;project-name&gt; -r zurb-foundation --using foundation</span></li>
     </ol>
 
-    <br>
+    <hr>
+
+    <h3>Using Sass Standalone</h3>
+    <p>With Foundation 4, we've removed all dependencies from the framework. This means you can use Foundaiton with Sass alone and add Compass, Bourbon, or whatever on top of it. To help get going using only Sass, you'll just need to download the <a href="https://github.com/zurb/foundation">files from Github</a> (grab the scss/ and js/ directories) and put them into your project directory. From there you just need to <code>@import</code> the parts of Foundation you need.</p>
+
+    <p>To import all of Foundation:</p>
+<%= code_example '
+@import "/path/to/foundation";
+', :css %>
+
+    <p>If you want to override the built in variables, you can find them on each component page or grab that <a href="https://github.com/zurb/foundation/blob/master/templates/project/scss/_settings.scss">entire list from Github</a>. From there, you'll need to link your settings file above your Foundation import, like so:</p>
+
+<%= code_example '
+@import "/path/to/settings";
+@import "/path/to/foundation";
+', :css %>
+
+    <p>If you want to pick and choose which pieces of Foundation you want, the pieces you need are:</p>
+
+<%= code_example '
+@import "foundation/foundation-global";
+@import "foundation/components/global";
+
+/* Each individual part that can be added in */
+@import "foundation/components/grid";
+@import "foundation/components/visibility";
+@import "foundation/components/block-grid";
+@import "foundation/components/type";
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+@import "foundation/components/custom-forms";
+@import "foundation/components/button-groups";
+@import "foundation/components/dropdown-buttons";
+@import "foundation/components/split-buttons";
+@import "foundation/components/flex-video";
+@import "foundation/components/section";
+@import "foundation/components/top-bar";
+@import "foundation/components/orbit";
+@import "foundation/components/reveal";
+@import "foundation/components/joyride";
+@import "foundation/components/clearing";
+@import "foundation/components/alert-boxes";
+@import "foundation/components/breadcrumbs";
+@import "foundation/components/keystrokes";
+@import "foundation/components/labels";
+@import "foundation/components/inline-lists";
+@import "foundation/components/pagination";
+@import "foundation/components/panels";
+@import "foundation/components/pricing-tables";
+@import "foundation/components/progress-bars";
+@import "foundation/components/side-nav";
+@import "foundation/components/sub-nav";
+@import "foundation/components/switch";
+@import "foundation/components/magellan";
+@import "foundation/components/tables";
+@import "foundation/components/thumbs";
+@import "foundation/components/tooltips";
+@import "foundation/components/dropdown";
+', :css %>
+
+    <hr>
 
     <div class="row">
       <div class="large-12 columns">
-        <h5>Compiling Your Scss</h5>
+        <h3>Compiling Your Scss with Compass</h3>
         <p>To compile your Scss into CSS you run a simple command that will watch for saves and compile each time you save an Scss file. From the directory of your <kbd>config.rb</kbd> file, the command is:</p>
         <p class="btm-marg keystroke">compass watch</p>
+        <br>
         <p>If you are in a different directory you can use the same command, but navigate to where your <kbd>config.rb</kbd> file is. The command looks like:</p>
         <p class="btm-marg keystroke">compass watch path/to/project</p>
       </div>
     </div>
 
+    <hr>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Compiling Your Scss with Sass</h3>
+        <p class="btm-marg keystroke">sass --watch your/scss/directory:your/css/directory</p>
+        <br>
+        <p>You can watch individual files or the entire directory, we usually watch the entire directory when using Sass standalone.</p>
+      </div>
+    </div>
 
     <hr>
 
