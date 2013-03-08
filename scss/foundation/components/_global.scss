@@ -6,7 +6,7 @@
 }
 
 html,
-body { font-size: $em-base; }
+body { font-size: $base-font-size; }
 
 // Default body styles
 body {
@@ -50,6 +50,12 @@ img { -ms-interpolation-mode: bicubic; }
 .text-center  { text-align: center !important; }
 .text-justify { text-align: justify !important; }
 .hide         { display: none; }
+
+// Font smoothing
+// Antialiased font smoothing works best for light text on a dark background.
+// Apply to single elements instead of globally to body. 
+// Note this only applies to webkit-based desktop browsers on the Mac.
+.antialiased { -webkit-font-smoothing: antialiased; }
 
 // Get rid of gap under images by making them display: inline-block; by default
 img { display: inline-block; }
