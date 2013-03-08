@@ -22,6 +22,9 @@ body {
   -webkit-font-smoothing: $font-smoothing;
 }
 
+// Override outline from normalize, we don't like it
+a:focus { outline: none; }
+
 // Grid Defaults to get images and embeds to work properly
 img,
 object,
