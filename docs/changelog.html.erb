@@ -10,7 +10,35 @@
 
     <h4 class="subheader">We'll keep you up to date with what we've released so you at least have a gist of what goes into each update. For the most part, we'll try to list things out as detailed as we see necessary.</h4>
 
-    <hr />
+    <hr>
+
+    <h5>4.0.5&mdash; March 8, 2013</h5>
+    <p>We're currently working on patch fixes for various parts of Foundation. We'll add to this list as we go up until release.</p>
+    <ul class="disc">
+      <li>Custom classes added to custom forms now carry through to JS.</li>
+      <li>Added <kbd>.horizontal-nav</kbd> to <kbd>foundation.section.js</kbd>.</li>
+      <li>Fixed variables that weren't being inherited properly.</li>
+      <li>Fixed a joyride mobile background issue.</li>
+      <li>Updated Reveal docs to match 4.0.4 functionality.</li>
+      <li>Updated to Zepto 1.0.</li>
+      <li>Fixed bugs with visibility classes.</li>
+      <li>Updated block-grid nth-of-type clear fix so that it actually works.</li>
+      <li>All size block grids now have the same spacing.</li>
+      <li>Made images <kbd>display: inline-block</kbd> by default to remove gap and not screw up layouts.</li>
+      <li>Progress bars respect their color variables instead of global.</li>
+      <li>Added variable for progress bar background color.</li>
+      <li>Fixed inconsistency between side margins on unordered and ordered lists.</li>
+      <li>Made it so you can set <kbd>custom_back_text</kbd> variable in top-bar to control if the back link is generic or specific.</li>
+      <li>Updated visibility classes to work properly with table display properties.</li>
+      <li>Helper classes like <kbd>.right, .left</kbd> now have <kbd>!important</kbd> so they don't get overriden on accident.</li>
+      <li>Added a page to the docs that explains our use of <a href="http://foundation.zurb.com/docs/media-queries.html">media queries</a>.</li>
+      <li>Removed default outline on a:focus elements that normalize adds.</li>
+      <li>Fixed bug with custom checkboxes not clickable from the <kbd>&lt;span&gt;</kbd>.</li>
+      <li>Added docs about using Sass standalone with Foundation.</li>
+    </ul>
+    <p>You can compare the commits <a href="https://github.com/zurb/foundation/compare/v4.0.4...master">here</a>.</p>
+
+    <hr>
 
     <h5>4.0.4</h5>
     <p>This patch fixes various bugs that have been submitted since release. We'll be more specific with changelog updates going forward.</p>
