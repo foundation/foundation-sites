@@ -1,7 +1,7 @@
 # Changelog
 ---
 
-### 4.0.5 (In Progress)
+### 4.0.5- March 8, 2013
 We're currently working on patch fixes for various parts of Foundation. We'll add to this list as we go up until release.
 * Custom classes added to custom forms now carry through to JS
 * Added `.horizontal-nav` to `foundation.section.js`
