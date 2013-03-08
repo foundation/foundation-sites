@@ -1,0 +1,209 @@
+//
+// Clearing Variables
+//
+
+// We use these to set the background colors for parts of Clearing.
+$clearing-bg:                           #111 !default;
+$clearing-caption-bg:                   $clearing-bg !default;
+$clearing-carousel-bg:                  #111 !default;
+$clearing-img-bg:                       $clearing-bg !default;
+
+// We use these to style the close button
+$clearing-close-color:                  #fff !default;
+$clearing-close-size:                   40px !default;
+
+// We use these to style the arrows
+$clearing-arrow-size:                   16px !default;
+$clearing-arrow-color:                  $clearing-close-color !default;
+
+// We use these to style captions
+$clearing-caption-font-color:           #fff !default;
+$clearing-caption-padding:              10px 30px !default;
+
+// We use these to make the image and carousel height and style
+$clearing-active-img-height:            75% !default;
+$clearing-carousel-height:              150px !default;
+$clearing-carousel-thumb-width:         175px !default;
+$clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
+
+
+// We decided to not create a mixin for Clearing because it relies
+// on predefined classes and structure to work properly.
+// The variables above should give enough control.
+
+/* Clearing Styles */
+[data-clearing] {
+  @include clearfix;
+  margin-bottom: 0;
+}
+
+.clearing-blackout {
+  background: $clearing-bg;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  #{$default-float}: 0;
+  z-index: 998;
+
+  .clearing-close { display: block; }
+}
+
+.clearing-container {
+  position: relative;
+  z-index: 998;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.visible-img {
+  height: 95%;
+  position: relative;
+
+  img {
+    position: absolute;
+    #{$default-float}: 50%;
+    top: 50%;
+    margin-#{$default-float}: -50%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.clearing-caption {
+  color: $clearing-caption-font-color;
+  line-height: 1.3;
+  margin-bottom: 0;
+  text-align: center;
+  bottom: 0;
+  background: $clearing-caption-bg;
+  width: 100%;
+  padding: $clearing-caption-padding;
+  position: absolute;
+  #{$default-float}: 0;
+}
+
+.clearing-close {
+  z-index: 999;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: $clearing-close-size;
+  line-height: 1;
+  color: $clearing-close-color;
+  display: none;
+
+  &:hover,
+  &:focus { color: #ccc; }
+}
+
+.clearing-assembled .clearing-container { height: 100%;
+  .carousel > ul { display: none; }
+}
+
+
+// Large screen overrides
+@media #{$small} {
+  .clearing-main-left,
+  .clearing-main-right {
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    top: 0;
+    & > span {
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: 0;
+      height: 0;
+      border: solid $clearing-arrow-size;
+    }
+  }
+  .clearing-main-left {
+    left: 0;
+    & > span {
+      left: 5px;
+      border-color: transparent $clearing-arrow-color transparent transparent;
+    }
+  }
+  .clearing-main-right {
+    right: 0;
+    & > span {
+      border-color: transparent transparent transparent $clearing-arrow-color;
+    }
+  }
+
+  .clearing-main-left.disabled,
+  .clearing-main-right.disabled { opacity: 0.5; }
+
+  // If you want to show a lightbox, but only have a single image come through as the thumbnail
+  .clearing-feature ~ li { display: none; }
+
+  .clearing-assembled .clearing-container {
+
+    .carousel {
+      background: $clearing-carousel-bg;
+      height: $clearing-carousel-height;
+      margin-top: 5px;
+
+      & > ul {
+        display: block;
+        z-index: 999;
+        width: 200%;
+        height: 100%;
+        margin-left: 0;
+        position: relative;
+        #{$default-float}: 0;
+
+        li {
+          display: block;
+          width: $clearing-carousel-thumb-width;
+          height: inherit;
+          padding: 0;
+          float: $default-float;
+          overflow: hidden;
+          margin-#{$default-opposite}: 1px;
+          position: relative;
+          cursor: pointer;
+          opacity: 0.4;
+
+          &.fix-height {
+            img {
+              min-height: 100%;
+              height: 100%;
+              max-width: none;
+            }
+          }
+
+          a.th {
+            border: none;
+            -webkit-box-shadow: none;
+                    box-shadow: none;
+            display: block;
+          }
+
+          img {
+            cursor: pointer !important;
+            min-width: 100% !important;
+          }
+
+          &.visible { opacity: 1; }
+        }
+      }
+    }
+
+    .visible-img {
+      background: $clearing-img-bg;
+      overflow: hidden;
+      height: $clearing-active-img-height;
+    }
+  }
+
+  .clearing-close {
+    position: absolute;
+    top: 10px;
+    #{$default-opposite}: 20px;
+    padding-left: 0;
+    padding-top: 0;
+  }
+}

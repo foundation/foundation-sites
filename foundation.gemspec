@@ -4,8 +4,8 @@ require File.expand_path('../lib/foundation/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["ZURB"]
   gem.email         = ["foundation@zurb.com"]
-  gem.description   = %q{ZURB Foundation on SASS/Compass}
-  gem.summary       = %q{ZURB Foundation on SASS/Compass}
+  gem.description   = %q{ZURB Foundation on Sass/Compass}
+  gem.summary       = %q{ZURB Foundation on Sass/Compass}
   gem.homepage      = "http://foundation.zurb.com"
 
   gem.files         = `git ls-files`.split($\)
@@ -15,8 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Foundation::VERSION
 
-  gem.add_dependency "compass", [">= 0.12.2"]
   gem.add_dependency "sass", [">= 3.2.0"]
-  gem.add_dependency "modular-scale", [">= 1.0.2"]
-  gem.add_dependency "rake"
+  gem.add_development_dependency "rake"
 end

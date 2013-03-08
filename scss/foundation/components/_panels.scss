@@ -1,0 +1,76 @@
+//
+// Panel Variables
+//
+
+// We use these to control the background and border styles
+$panel-bg:              darken(#fff, 5%) !default;
+$panel-border-style:    solid !default;
+$panel-border-size:     1px !default;
+
+// We use this % to control how much we darken things on hover
+$panel-function-factor: 10% !default;
+$panel-border-color:    darken($panel-bg, $panel-function-factor) !default;
+
+// We use these to set default inner padding and bottom margin
+$panel-margin-bottom:   emCalc(20px) !default;
+$panel-padding:         emCalc(20px) !default;
+
+// We use these to set default font colors
+$panel-font-color:      #333 !default;
+$panel-font-color-alt:  #fff !default;
+
+
+//
+// Panel Mixins
+//
+
+// We use this mixin to create panels.
+@mixin panel($bg:$panel-bg, $padding:$panel-padding) {
+
+  @if $bg {
+    $bg-lightness: lightness($bg);
+
+    border-style: $panel-border-style;
+    border-width: $panel-border-size;
+    border-color: darken($bg, $panel-function-factor);
+    margin-bottom: $panel-margin-bottom;
+    padding: $padding;
+
+    background: $bg;
+
+    // We set the font color based on the darkness of the bg.
+    @if $bg-lightness >= 50% and $bg == blue { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
+    @else if $bg-lightness >= 50%            { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color; } }
+    @else                                    { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
+
+    // Respect the padding, fool.
+    &>:first-child { margin-top: 0; }
+    &>:last-child { margin-bottom: 0; }
+
+    // reset header line-heights for panels
+    h1,h2,h3,h4,h5,h6 {
+      line-height: 1; margin-bottom: emCalc(20px) / 2;
+      &.subheader { line-height: 1.4; }
+    }
+  }
+}
+
+// Only include these classes if the option exists
+@if $include-html-classes {
+
+  /* Panels */
+  .panel { @include panel;
+
+    &.callout {
+      @include panel($primary-color);
+      @include inset-shadow($active:false);
+    }
+
+    &.radius {
+      @include panel($bg:false);
+      @include radius;
+    }
+
+  }
+
+}

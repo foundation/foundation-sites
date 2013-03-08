@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+gem 'sprockets'
+gem 'foreman'
+gem 'stasis'
+gem 'sass', :require => false
+gem 'coderay'
+gem 'uglifier'
+gem 'therubyracer'

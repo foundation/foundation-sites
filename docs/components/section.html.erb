@@ -1,0 +1,355 @@
+<% @side_nav = "js" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Sections" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Sections are similar to tabs as a way to selectively show a single panel of content at a time.</h4>
+
+        <div class="row">
+          <div class="large-3 columns">
+            <div class="section-container vertical-nav" data-section data-options="deep_linking: false">
+              <section class="section">
+                <p class="title"><a href="#">Section 1</a></p>
+                <div class="content">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+              <section class="section">
+                <p class="title"><a href="#">Section 2</a></p>
+                <div class="content">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="large-9 columns">
+            <div class="section-container horizontal-nav" data-section data-options="deep_linking: false">
+              <section class="section">
+                <p class="title"><a href="#">Section 1</a></p>
+                <div class="content">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+              <section class="section">
+                <p class="title"><a href="#">Section 2</a></p>
+                <div class="content">
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+            <div class="section-container tabs" data-section data-options="deep_linking: true">
+              <section class="section">
+                <p class="title"><a href="#panel1">Section 1</a></p>
+                <div class="content" data-slug="panel1">
+                  <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+              </section>
+              <section class="section">
+                <p class="title"><a href="#panel2">Section 2</a></p>
+                <div class="content" data-slug="panel2">
+                  <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+              </section>
+              <div class="section">
+                <p class="title"><a href="#panel3">Section 3</a></p>
+                <div class="content" data-slug="panel3">
+                  <form>
+                    <div class="row collapse">
+                      <div class="large-2 columns">
+                        <label class="inline">Your Name</label>
+                      </div>
+                      <div class="large-10 columns">
+                        <input type="text" id="yourName" placeholder="Jane Smith">
+                      </div>
+                    </div>
+                    <div class="row collapse">
+                      <div class="large-2 columns">
+                        <label class="inline"> Your Email</label>
+                      </div>
+                      <div class="large-10 columns">
+                        <input type="text" id="yourEmail" placeholder="jane@smithco.com">
+                      </div>
+                    </div>
+                    <label>What's up?</label>
+                    <textarea rows="4"></textarea>
+                    <button type="submit" class="radius button">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <h3>Sections Replace Accordion, Tabs, Vertical Nav &amp; Nav Bar</h3>
+        <p>Sections replace a few things that you are used to from Foundation 3. We've taken the accordion, the tabs and the vertical nav and combined them into this really flexible plugin that can handle all of those. The single JS file handles all the interactions, but the classes you add to the element control how it gets rendered and styled across our breakpoint.</p>
+
+        <hr>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <h3>Build With Predefined HTML Classes</h3>
+        <p>There are two ways to build sections in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building a sections using our predefined classes is super-easy, you just need to create a <code>&lt;div class="section-container" data-section&gt;</code> as a wrapper for the sections themselves. Inside of this wrapper, you'll create either a <code>&lt;section class="section"&gt;</code> or <code>&lt;div class="section"&gt;</code>. Within that you'll include some sort of <code>.title</code> (this can be headers or a paragragh) and a <code>&lt;div class="content"&gt;</code>. Here is the markup you'll need:</p>
+
+<%= code_example '
+<div class="section-container" data-section>
+  <section class="section">
+    <p class="title"><a href="#panel1">Section 1</a></p>
+    <div class="content">
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#panel2">Section 2</a></p>
+    <div class="content">
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+        <p>The class options:</p>
+        <ul class="disc">
+
+        </ul>
+
+        <p>For these styles to come across, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>section from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+
+        <hr>
+
+        <h3>Variations</h3>
+        <h6>Tabs/Accordion</h6>
+        <p>Adding a <code>tabs</code> class to the section container will enable tabs on large screens and show an accordion on small screens.</p>
+<%= code_example '
+<div class="section-container tabs" data-section>
+  <section class="section">
+    <p class="title"><a href="#">Section 1</a></p>
+    <div class="content">
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Section 2</a></p>
+    <div class="content">
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+        <h6>Vertical Nav/Accordion</h6>
+        <p>Adding a <code>vertical-nav</code> class to the section container will enable vertical navigation elements on large screens and show an accordion on small screens.</p>
+
+        <p>Vertical navigation elements usually appear within the grid so the width can be controlled on desktop.</p>
+
+        <p>Use the <code>side-nav</code> class on the list to apply the Foundation navigation styles</p>
+
+<%= code_example '
+<div class="row">
+  <div class="large-3 columns">
+    <div class="section-container vertical-nav" data-section>
+      <section class="section">
+        <p class="title"><a href="#">Section 1</a></p>
+        <div class="content">
+          <ul class="side-nav">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link 1</a></li>
+          </ul>
+        </div>
+      </section>
+      <section class="section">
+        <p class="title"><a href="#">Section 2</a></p>
+        <div class="content">
+          <ul class="side-nav">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link 1</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="large-9 columns">
+    <p>Content to the right of the navigation.</p>
+  </div>
+</div>', :html %>
+
+        <h6>Horizontal Nav/Nav Bar</h6>
+        <p>Adding a <code>horizontal-nav</code> class to the section container will enable horizontal navigation elements on large screens and show an accordion on small screens.</p>
+
+        <p>Horizontal navigation is a combination of the tab setting with vertical navigation drop downs.</p>
+
+        <p>Use the <code>side-nav</code> class on the list to apply the Foundation navigation styles</p>
+
+<%= code_example '
+<div class="section-container horizontal-nav" data-section>
+  <section class="section">
+    <p class="title"><a href="#">Section 1</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Section 2</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+', :html %>
+
+
+        <h6>Deep Linking</h6>
+        <p>Set <code>deep-linking</code> to true to enable deep linking to sections of content. Deep linking allows visitors to visit a predefined URL with a hash that points to a particular section of the content. Deep linking also requires a matching <code>data-slug</code> on the content section that the hash should point to, without the pound (&#35;) sign.</p>
+
+        <%= code_example '
+<div class="section-container" data-section data-options="deep_linking: true">
+  <section class="section">
+    <p class="title"><a href="#section1">Section 1</a></p>
+    <div class="content" data-slug="section1">
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#section2">Section 2</a></p>
+    <div class="content" data-slug="section2">
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+        <p class="panel"><strong>Note:</strong> The <code>section</code> element can be replaced with a <code>div.section</code> element if you do not want to use HTML5 elements.</p>
+
+        <hr>
+
+        <h5>Default SCSS Variables</h5>
+<%= code_example '
+/* We use these to set padding and hover factor */
+$section-padding:                emCalc(15px);
+$section-function-factor:        10%;
+
+/* These style the titles */
+$section-title-color:            #333;
+$section-title-bg:               #efefef;
+$section-title-bg-active:        darken($section-title-bg, $section-function-factor);
+$section-title-bg-active-tabs:   #fff;
+
+/* Want to control border size, here ya go! */
+$section-border-size:            1px;
+$section-border-style:           solid;
+$section-border-color:           #ccc;
+
+/* Control the color of the background and some size options */
+$section-content-bg:             #fff;
+$section-vertical-nav-min-width: emCalc(200px);
+$section-bottom-margin:          emCalc(20px);
+', :css %>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+
+        <hr>
+
+        <h3>Using the JavaScript</h3>
+        <p>You don't need ths JS to create sections with Foundation. The only reason you'll need to include <code>foundation.section.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the sections plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.section.js</code></p>
+
+        <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
+
+<%= code_example '
+<div class="section-container" data-section>
+  <section class="section">
+    <p class="title"><a href="#panel1">Section 1</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#panel2">Section 2</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+', :html %>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>You can either set these options in a <code>data-options</code> attribute in the markup, <code>data-options="option: value; option2: value syntax"</code>, or pass in on initialization.</p>
+
+    <%= code_example "
+{
+  deep_linking: false,
+  one_up: true,
+  callback: function (){}
+}", :js %>
+
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

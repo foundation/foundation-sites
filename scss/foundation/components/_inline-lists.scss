@@ -1,0 +1,47 @@
+//
+// Inline List Variables
+//
+
+// We use this to control the margins and padding of the inline list.
+$inline-list-margin-bottom:    emCalc(17px) emCalc(-22px ) !default;
+$inline-list-margin:           0 0 !default;
+$inline-list-padding:          0 !default;
+
+// We use this to control the overflow of the inline list.
+$inline-list-overflow:         hidden !default;
+
+// We use this to control the list items
+$inline-list-display:          block !default;
+
+// We use this to control any elments within list items
+$inline-list-children-display: block !default;
+
+//
+// Inline List Mixins
+//
+
+// We use this mixin to create inline lists
+@mixin inline-list {
+  margin: $inline-list-margin $inline-list-margin-bottom;
+  padding: $inline-list-padding;
+  list-style: none;
+  overflow: $inline-list-overflow;
+
+  & > li {
+    list-style: none;
+    float: $default-float;
+    margin-#{$default-float}: emCalc(22px);
+    display: $inline-list-display;
+    &>* { display: $inline-list-children-display; }
+  }
+}
+
+
+@if $include-html-classes {
+
+  /* Inline Lists */
+  .inline-list {
+    @include inline-list();
+  }
+
+}

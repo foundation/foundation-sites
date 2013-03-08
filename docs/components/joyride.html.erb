@@ -1,0 +1,180 @@
+
+<% @side_nav = "js" %>
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Joyride" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Joyride is an extremely flexible plugin that gives users a tour of your site or app when they visit.</h4>
+
+        <div id="firstStop" class="panel">Some awesome part of your site!</div>
+
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h2 id="numero1" class="so-awesome">Build Joyride with HTML</h2>
+        <p>At the bottom of your page but inside of the body, place either an <code>ol</code> or <code>ul</code> with the <code>data-joyride</code> attribute. This list will contain all of the stops on your tour. To associate the tour stops with an item on your page, make sure the ID and data-id match between the two. If you do not associate an if, the tour stop will take on a modal style, positioning itself in the middle of the screen.</p>
+
+<%= code_example '
+<!-- At the bottom of your page but inside of the body tag -->
+<ol class="joyride-list" data-joyride>
+  <li data-id="firstStop" data-text="Next">
+    <p>Hello and welcome to the Joyride documentation page.</p>
+  </li>
+  <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
+    <h4>Stop #1</h4>
+    <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
+  </li>
+  <li data-id="numero2" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
+    <h4>Stop #2</h4>
+    <p>Get the details right by styling Joyride with a custom stylesheet!</p>
+  </li>
+  <li data-button="Next">
+    <h4>Stop #4</h4>
+    <p>It works as a modal too!</p>
+  </li>
+</ol>
+', :html %>
+
+        <h5>We Add Some HTML with JS</h5>
+        <p>To make Joyride really easy to use, we built its container and tour element inside the JS. This can make it hard to know what to target for styling purposes in some cases. To help this process go smoothly, here's what the output looks like with the appropriate classes to target for styling:</p>
+
+<%= code_example '
+<!-- Here is the markup our JS creates for you -->
+<div class="joyride-tip-guide">
+  <span class="joyride-nub top"></span>
+  <div class="joyride-content-wrapper">
+    <p>Hello and welcome to the Joyride documentation page.</p>
+    <a href="#" class="small button joyride-next-tip">Next</a>
+    <a href="#close" class="joyride-close-tip">&times;</a>
+  </div>
+</div>
+', :html %>
+
+        <hr>
+
+        <h3 id="numero2">Available SCSS Variables</h3>
+        <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
+
+<%= code_example '
+/* Controlling default Joyride styles */
+$joyride-tip-bg:              rgb(0,0,0);
+$joyride-tip-default-width:   300px;
+$joyride-tip-padding:         emCalc(18px) emCalc(20px) emCalc(24px);
+$joyride-tip-border:          solid 1px #555;
+$joyride-tip-radius:          4px;
+$joyride-tip-position-offset: 22px;
+
+/* Here, we are setting the tip dont styles */
+$joyride-tip-font-color:      #fff;
+$joyride-tip-font-size:       emCalc(14px);
+$joyride-tip-header-weight:   bold;
+
+/* This changes the nub size */
+$joyride-tip-nub-size:        14px;
+
+/* This adjusts the styles for the timer when its enabled */
+$joyride-tip-timer-width:     50px;
+$joyride-tip-timer-height:    3px;
+$joyride-tip-timer-color:     #666;
+
+/* This changes up the styles for the close button */
+$joyride-tip-close-color:     #777;
+$joyride-tip-close-size:      30px;
+$joyride-tip-close-weight:    normal;
+
+/* When Joyride is filling the screen, we use this style for the bg */
+$joyride-screenfill:          rgba(0,0,0,0.5);
+', :css %>
+
+        <hr>
+
+        <h3>Using the JavaScript</h3>
+        <p>You'll need to include <code>foundation.joyride.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.joyride.js</code>, Optional JS Library: <code>foundation.cookie.js</code></p>
+
+        <p>Joyride does not initialize on page load like the rest of the plugins. You need to call <code>start</code> to get it to load.</p>
+
+<%= code_example '
+<script type="text/javascript">
+  $(document).foundation(\'joyride\', \'start\');
+</script>
+', :html %>
+
+        <p>Then, you'll need to add a data-joyride to make the JS work properly on that element. It looks something like this:</p>
+
+<%= code_example '
+<ol data-joyride>
+  ...
+</ol>
+', :html %>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>You can either set these options in a <code>data-options</code> attribute in the markup, <code>data-options="option: value; option2: value syntax"</code>, or pass in on initialization. Configurations that are <i>objects</i>, <i>functions</i>, or <i>arrays</i> can only be passed in during intitialization.</p>
+
+    <%= code_example "
+{
+  tipLocation          : 'bottom',  // 'top' or 'bottom' in relation to parent
+  nubPosition          : 'auto',    // override on a per tooltip bases
+  scrollSpeed          : 300,       // Page scrolling speed in milliseconds
+  timer                : 0,         // 0 = no timer , all other numbers = timer in milliseconds
+  startTimerOnClick    : true,      // true or false - true requires clicking the first button start the timer
+  startOffset          : 0,         // the index of the tooltip you want to start on (index of the li)
+  nextButton           : true,      // true or false to control whether a next button is used
+  tipAnimation         : 'fade',    // 'pop' or 'fade' in each tip
+  pauseAfter           : [],        // array of indexes where to pause the tour after
+  tipAnimationFadeSpeed: 300,       // when tipAnimation = 'fade' this is speed in milliseconds for the transition
+  cookieMonster        : false,     // true or false to control whether cookies are used
+  cookieName           : 'joyride', // Name the cookie you'll use
+  cookieDomain         : false,     // Will this cookie be attached to a domain, ie. '.notableapp.com'
+  cookieExpires        : 365,       // set when you would like the cookie to expire.
+  tipContainer         : 'body',    // Where will the tip be attached
+  postRideCallback     : function (){},    // A method to call once the tour closes (canceled or complete)
+  postStepCallback     : function (){},    // A method to call after each step
+  template : { // HTML segments for tip layout
+    link    : '<a href=\"#close\" class=\"joyride-close-tip\">&times;</a>',
+    timer   : '<div class=\"joyride-timer-indicator-wrap\"><span class=\"joyride-timer-indicator\"></span></div>',
+    tip     : '<div class=\"joyride-tip-guide\"><span class=\"joyride-nub\"></span></div>',
+    wrapper : '<div class=\"joyride-content-wrapper\"></div>',
+    button  : '<a href=\"#\" class=\"small button joyride-next-tip\"></a>'
+  }
+}", :js %>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+
+</div>
+
+<!-- TOUR STOPS -->
+<ol class="joyride-list" data-joyride>
+  <li data-id="firstStop" data-text="Next">
+    <p>Hello and welcome to the Joyride documentation page.</p>
+  </li>
+  <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
+    <h4>Stop #1</h4>
+    <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
+  </li>
+  <li data-id="numero2" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
+    <h4>Stop #2</h4>
+    <p>Get the details right by styling Joyride with a custom stylesheet!</p>
+  </li>
+  <li data-button="Next">
+    <h4>Stop #4</h4>
+    <p>It works as a modal too!</p>
+  </li>
+</ol>

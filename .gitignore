@@ -3,7 +3,6 @@
 .bundle
 .config
 .yardoc
-Gemfile.lock
 InstalledFiles
 _yardoc
 coverage
@@ -14,10 +13,15 @@ rdoc
 spec/reports
 test/tmp
 test/version_tmp
+test/css
+test/scss/output-test
 tmp
 *.DS_Store
 marketing/.sass-cache/*
 .sass-cache/*
 test/.sass-cache/*
-test/stylesheets/*
+test/css/styles.css
 *.orig
+node_modules
+docs/public/*
+*.scssc

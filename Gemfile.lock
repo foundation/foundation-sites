@@ -1,15 +1,20 @@
 PATH
   remote: .
   specs:
+<<<<<<< HEAD
     zurb-foundation (3.2.3)
       compass (>= 0.12.2)
       modular-scale (>= 1.0.2)
       rake
+=======
+    zurb-foundation (4.0.4)
+>>>>>>> upstream/master
       sass (>= 3.2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     chunky_png (1.2.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
@@ -23,10 +28,15 @@ GEM
     sass (3.2.2)
     sassy-math (1.2)
       compass (~> 0.11)
+=======
+    rake (10.0.3)
+    sass (3.2.6)
+>>>>>>> upstream/master
 
 PLATFORMS
   ruby
   x86-mingw32
 
 DEPENDENCIES
+  rake
   zurb-foundation!

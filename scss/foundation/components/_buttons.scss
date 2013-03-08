@@ -1,0 +1,218 @@
+//
+// Button Variables
+//
+
+// We use these to build padding for buttons.
+$button-med:              emCalc(12px) !default;
+$button-tny:              emCalc(7px) !default;
+$button-sml:              emCalc(9px) !default;
+$button-lrg:              emCalc(16px) !default;
+
+// We use this to control the display property.
+$button-display:          inline-block !default;
+$button-margin-bottom:    emCalc(20px) !default;
+
+// We use these to control button text styles.
+$button-font-family:      inherit !default;
+$button-font-color:       #fff !default;
+$button-font-color-alt:   #333 !default;
+$button-font-med:         emCalc(16px) !default;
+$button-font-tny:         emCalc(11px) !default;
+$button-font-sml:         emCalc(13px) !default;
+$button-font-lrg:         emCalc(20px) !default;
+$button-font-weight:      bold !default;
+$button-font-align:       center !default;
+
+// We use these to control various hover effects.
+$button-function-factor:  10% !default;
+
+// We use these to control button border styles.
+$button-border-width:     1px !default;
+$button-border-style:     solid !default;
+$button-border-color:     darken($primary-color, $button-function-factor) !default;
+
+// We use this to set the default radius used throughout the core.
+$button-radius:           $global-radius !default;
+
+// We use this to set default opacity for disabled buttons.
+$button-disabled-opacity: 0.6 !default;
+
+
+//
+// Button Mixins
+//
+
+// We use this mixin to create a default button base.
+@mixin button-base($style:true, $display:$button-display) {
+  @if $style {
+    border-style: $button-border-style;
+    border-width: $button-border-width;
+    cursor: pointer;
+    font-family: $button-font-family;
+    font-weight: $button-font-weight;
+    line-height: 1;
+    margin: 0 0 $button-margin-bottom;
+    position: relative;
+    text-decoration: none;
+    text-align: $button-font-align;
+  }
+  @if $display { display: $display; }
+}
+
+// We use this mixin to add button size styles
+@mixin button-size($padding:$button-med, $full-width:false, $is-input:false) {
+
+  // We control which padding styles come through,
+  // these can be turned off by setting $padding:false
+  @if $padding {
+    padding-top: $padding;
+    padding-right: $padding * 2;
+    padding-bottom: $padding + emCalc(1px);
+    padding-left: $padding * 2;
+
+    // We control the font-size based on mixin input.
+    @if      $padding == $button-med { font-size: $button-font-med; }
+    @else if $padding == $button-tny { font-size: $button-font-tny; }
+    @else if $padding == $button-sml { font-size: $button-font-sml; }
+    @else if $padding == $button-lrg { font-size: $button-font-lrg; }
+    @else                     { font-size: $padding - emCalc(2px); }
+  }
+
+  // We can set $full-width:true to remove side padding extend width.
+  @if $full-width {
+    padding-top: $padding;
+    padding-right: 0px;
+    padding-bottom: $padding + emCalc(1px);
+    padding-left: 0px;
+    width: 100%;
+  }
+
+  // <input>'s and <button>'s take on strange padding. We added this to help fix that.
+  @if $is-input == $button-lrg {
+    padding-top: $is-input + emCalc(.5px);
+    padding-bottom: $is-input + emCalc(.5px);
+  }
+  @else if $is-input {
+    padding-top: $is-input + emCalc(1px);
+    padding-bottom: $is-input;
+  }
+}
+
+// We use this mixin to add button color styles
+@mixin button-style($bg:$primary-color, $radius:false, $disabled:false) {
+
+  // We control which background styles are used,
+  // these can be removed by setting $bg:false
+  @if $bg {
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
+    background-color: $bg;
+    border-color: darken($bg, $button-function-factor);
+    &:hover,
+    &:focus { background-color: darken($bg, $button-function-factor); }
+
+    // We control the text color for you based on the background color.
+    @if $bg-lightness > 70% {
+      color: $button-font-color-alt;
+      &:hover,
+      &:focus { color: $button-font-color-alt; }
+    }
+    @else {
+      color: $button-font-color;
+      &:hover,
+      &:focus { color: $button-font-color; }
+    }
+  }
+
+  // We can set $disabled:true to create a disabled transparent button.
+  @if $disabled {
+    cursor: default;
+    opacity: $button-disabled-opacity;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    &:hover,
+    &:focus { background-color: $bg; }
+  }
+
+  // We can control how much button radius us used.
+  @if $radius == true { @include radius($button-radius); }
+  @else if $radius { @include radius($radius); }
+
+}
+
+// We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
+@mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
+  @include button-base;
+  @include button-size($padding, $full-width, $is-input);
+  @include button-style($bg, $radius, $disabled);
+}
+
+
+//
+// Button Classes
+//
+
+// Only include these classes if the variable is true, otherwise they'll be left out.
+@if $include-html-classes {
+
+  // Default styles applied outside of media query
+  .button {
+    @include button-base;
+    @include button-size;
+    @include button-style;
+
+    &.secondary { @include button-style($bg:$secondary-color); }
+    &.success   { @include button-style($bg:$success-color); }
+    &.alert     { @include button-style($bg:$alert-color); }
+
+    &.large  { @include button-size($padding:$button-lrg); }
+    &.small  { @include button-size($padding:$button-sml); }
+    &.tiny   { @include button-size($padding:$button-tny); }
+    &.expand { @include button-size($full-width:true); }
+
+    &.left-align  { text-align: left; text-indent: emCalc(12px); }
+    &.right-align { text-align: right; padding-right: emCalc(12px); }
+
+    &.disabled, &[disabled] { @include button-style($bg:$primary-color, $disabled:true);
+      &.secondary { @include button-style($bg:$secondary-color, $disabled:true); }
+      &.success { @include button-style($bg:$success-color, $disabled:true); }
+      &.alert { @include button-style($bg:$alert-color, $disabled:true); }
+    }
+
+  }
+
+  input.button,
+  button.button {
+    @include button-size($padding:false, $is-input:$button-med);
+    &.tiny { @include button-size($padding:false, $is-input:$button-tny); }
+    &.small { @include button-size($padding:false, $is-input:$button-sml); }
+    &.large { @include button-size($padding:false, $is-input:$button-lrg); }
+  }
+
+  // Styles for any browser or device that support media queries
+  @media only screen {
+
+    .button {
+      @include inset-shadow();
+      @include single-transition(background-color);
+
+      &.large  { @include button-size($padding:false, $full-width:false); }
+      &.small  { @include button-size($padding:false, $full-width:false); }
+      &.tiny   { @include button-size($padding:false, $full-width:false); }
+
+      &.radius { @include button-style($bg:false, $radius:true); }
+      &.round  { @include button-style($bg:false, $radius:1000px); }
+    }
+
+  }
+
+  // Additional styles for screens larger than 768px
+  @media #{$small} {
+    .button {
+      @include button-base($style:false, $display:inline-block);
+      @include button-size($padding:false, $full-width:false);
+    }
+  }
+
+}

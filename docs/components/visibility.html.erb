@@ -1,0 +1,110 @@
+<% @side_nav = "using" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Visibility Classes" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Foundation allows you to easily turn elements on and off based on certain device criteria, like screen size, touch or orientation.</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h5>Screen Size Visibility Control (Show)</h5>
+        <p>The following text should describe the screen size you're using:</p>
+        <p class="panel">
+          <strong class="show-for-small">You are on a small screen.</strong>
+          <strong class="show-for-medium">You are on a medium screen.</strong>
+          <strong class="show-for-medium-up">You are on a medium, large or xlarge screen.</strong>
+          <strong class="show-for-medium-down">You are on a medium or small screen.</strong>
+          <strong class="show-for-large">You are on a large screen.</strong>
+          <strong class="show-for-large-up">You are on a large or xlarge screen.</strong>
+          <strong class="show-for-large-down">You are on a large, medium or small screen.</strong>
+          <strong class="show-for-xlarge">You are on a xlarge screen.</strong>
+        </p>
+
+        <h5>Screen Size Visibility Control (Hide)</h5>
+        <p>The following text should describe the screen size you aren't using:</p>
+        <p class="panel">
+          <strong class="hide-for-small">You are <em>not</em> on a small screen.</strong>
+          <strong class="hide-for-medium">You are <em>not</em> on a medium screen.</strong>
+          <strong class="hide-for-medium-up">You are <em>not</em> on a medium, large or xlarge screen.</strong>
+          <strong class="hide-for-medium-down">You are <em>not</em> on a medium or small screen.</strong>
+          <strong class="hide-for-large">You are <em>not</em> on a large screen.</strong>
+          <strong class="hide-for-large-up">You are <em>not</em> on a large or xlarge screen.</strong>
+          <strong class="hide-for-large-down">You are <em>not</em> on a large, medium or small screen.</strong>
+          <strong class="hide-for-xlarge">You are <em>not</em> on a xlarge screen.</strong>
+        </p>
+
+        <h5>Orientation Detection</h5>
+        <p>The following text should describe the device orientation you're using:</p>
+        <p class="panel">
+          <strong class="show-for-landscape">You are in landscape orientation.</strong>
+          <strong class="show-for-portrait">You are in portrait orientation.</strong>
+        </p>
+
+        <h5>Touch Detection</h5>
+        <p>The following text should describe if you're using a touch device:</p>
+        <p class="panel">
+          <strong class="show-for-touch">You are on a touch-enabled device.</strong>
+          <strong class="hide-for-touch">You are not on a touch-enabled device.</strong>
+        </p>
+
+        <hr>
+
+        <h3>Using our HTML Classes With CSS</h3>
+        <p>The standard way of working with the Foundation visibility control is to use the predefined HTML classes. Yes, this adds classes to your markup, but they are semantic to the function they provide rather than from a presentational point of view.</p>
+
+<%= code_example '
+/* The show classes */
+.show-for-small       /* Visible up to 768px */
+.show-for-medium-down /* Visible from 1280px down */
+.show-for-medium      /* Visible between 768px and 1280px */
+.show-for-medium-up   /* Visible from 1280px up */
+.show-for-large-down  /* Visible from 1440px down */
+.show-for-large       /* Visible between 1280px and 1440px */
+.show-for-large-up    /* Visible from 1440px up */
+.show-for-xlarge      /* Visible above 1440px only */
+
+/* The hide classes */
+.hide-for-small       /* Hidden up to 768px */
+.hide-for-medium-down /* Hidden from 1280px down */
+.hide-for-medium      /* Hidden between 768px and 1280px */
+.hide-for-medium-up   /* Hidden from 1280px up */
+.hide-for-large-down  /* Hidden from 1440px down */
+.hide-for-large       /* Hidden between 1280px and 1440px */
+.hide-for-large-up    /* Hidden from 1440px up */
+.hide-for-xlarge      /* Hidden above 1440px only */
+
+/* The orientation classes */
+.show-for-landscape   /* Visible for landscape orientation */
+.show-for-portrait    /* Visible for portrait orientation */
+.hide-for-landscape   /* Hidden for landscape orientation */
+.hide-for-portrait    /* Hidden for portrait orientation */
+
+/* The touch detection classes */
+.show-for-touch       /* Visible for touch enabled devices */
+.hide-for-touch       /* Hidden for touch enabled devices */
+', :css %>
+
+        <p><strong>Note:</strong> We've also included specific table hide/show visilibity classes that follow the same structure, just prepended with table, thead, th, tbody, tr or td. The display property will go from 'none' to whatever its default display should be.</p>
+
+        <hr>
+
+        <h3>Using SCSS?</h3>
+        <p>So, you hate the idea of including these classes in your markup? Well, we thought of that too! You can easily <code>@extend</code> these classes to whatever element you want. Extending a visibility class looks like this:</p>
+
+<%= code_example '
+.your-class-name { @extend .hide-for-small; }
+', :css %>
+
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

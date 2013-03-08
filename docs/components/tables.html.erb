@@ -1,0 +1,125 @@
+<% @side_nav = "css" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Tables" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course).</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <table>
+          <thead>
+            <tr>
+              <th width="200">Table Header</th>
+              <th>Table Header</th>
+              <th width="150">Table Header</th>
+              <th width="150">Table Header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Content Goes Here</td>
+              <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+              <td>Content Goes Here</td>
+              <td>Content Goes Here</td>
+            </tr>
+            <tr>
+              <td>Content Goes Here</td>
+              <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+              <td>Content Goes Here</td>
+              <td>Content Goes Here</td>
+            </tr>
+            <tr>
+              <td>Content Goes Here</td>
+              <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+              <td>Content Goes Here</td>
+              <td>Content Goes Here</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <hr>
+
+        <h3>Build With Predefined HTML Classes</h3>
+        <p>Tables are built from a mixin, but since tables don't rely on any classes to build, you can use the table element and customize with your CSS. If you are using SCSS, the variables will help you customize the look and feel.</p>
+
+<%= code_example '
+<table>
+  <thead>
+    <tr>
+      <th width="200">Table Header</th>
+      <th>Table Header</th>
+      <th width="150">Table Header</th>
+      <th width="150">Table Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+  </tbody>
+</table>', :html %>
+
+        <hr>
+
+        <h5>Default SCSS Variables</h5>
+
+<%= code_example '
+/* These control the background color for the table and even rows */
+$table-bg:               #fff;
+$table-even-row-bg:      #f9f9f9;
+
+/* These control the table cell border style */
+$table-border-style:     solid;
+$table-border-size:      1px;
+$table-border-color:     #ddd;
+
+/* These control the table head styles */
+$table-head-bg:          #f5f5f5;
+$table-head-font-size:   emCalc(14px);
+$table-head-font-color:  #222;
+$table-head-font-weight: bold;
+$table-head-padding:     emCalc(8px) emCalc(10px) emCalc(10px);
+
+/* These control the row padding and font styles */
+$table-row-padding:      emCalc(9px) emCalc(10px);
+$table-row-font-size:    emCalc(14px);
+$table-row-font-color:   #222;
+$table-line-height:      emCalc(18px);
+
+/* These are for controlling the display and margin of tables */
+$table-display:          table-cell;
+$table-margin-bottom:    emCalc(20px);', :css %>
+
+        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<% @side_nav = "using" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns"
+    <% @page_title = "Rails" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">We use Rails to develop our <a href="http://zurb.com/apps">apps</a> and Foundation makes things so much quicker. Start using Foundation in your Rails projects by following these instructions.</h4>
+        <hr>
+
+        <h4>Adding Foundation to the Asset Pipeline</h4>
+        <p>First you'll want to add the following gems to the assets group in your <code>Gemfile</code> like so:</p>
+
+<%= code_example "
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+  # Add Foundation Here
+  gem 'zurb-foundation', '~> 4.0.0'
+end
+", :ruby %>
+
+      <p>Then run <code>bundle install</code> to finish installing Foundation.</p>
+
+      <div class="panel">
+        <p><strong>NOTE:</strong> Make sure that your restart your server after running <code>bundle install</code>. Otherwise the asset pipeline may not recognize the new Foundation files.</p>
+      </div>
+
+      <h4>Easy Install</h4>
+      <p>Simply run <code>rails g foundation:install</code> to configure your application to use Foundation. That's it!</p>
+
+      <h4>Manual Installation</h4>
+      <h5 class="subheader">Add Foundation to your CSS</h5>
+      <p>Append the following line to your <code>app/assets/stylesheets/application.css</code> file:</p>
+
+<%= code_example '
+/*= require foundation */
+', :css %>
+
+      <p>If you're planning on using <a href="http://sass-lang.com/" rel="nofollow">Sass</a> then you'll want to rename <code>application.css</code> to <code>application.scss</code>. That file should then look like:</p>
+
+<%= code_example '
+@import "foundation";
+', :css %>
+
+      <h5 class="subheader">Add Foundation to your JS</h5>
+      <p>Append the following lines to your <code>app/assets/javascripts/application.js</code> file:</p>
+
+<%= code_example '
+//= require foundation
+$(document).foundation();
+', :js %>
+
+      <h5 class="subheader">Add Modernizr</h5>
+      <p>Make sure that <a href="http://modernizr.com/" rel="nofollow">Modernizr</a> is included in the <code>&lt;head&gt;</code> of your page:</p>
+
+<%= code_example '
+javascript_include_tag "vendor/custom.modernizr"
+', :ruby %>
+
+      <h5 class="subheader">Set Viewport Width</h5>
+      <p>Add the following line to the <kbd>&lt;head&gt;</kbd> of your page layout:</p>
+
+<%= code_example '
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+', :html %>
+
+      </div>
+    </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
+  </div>
+  </div>
+</div>

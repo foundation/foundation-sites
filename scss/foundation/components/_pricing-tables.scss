@@ -1,0 +1,130 @@
+//
+// Pricing Table Variables
+//
+
+// We use this to control the border color
+$price-table-border:        solid 1px #ddd !default;
+
+// We use this to control the bottom margin of the pricing table
+$price-table-margin-bottom: emCalc(20px) !default;
+
+// We use these to control the title styles
+$price-title-bg:            #ddd !default;
+$price-title-padding:       emCalc(15px) emCalc(20px) !default;
+$price-title-align:         center !default;
+$price-title-color:         #333 !default;
+$price-title-weight:        bold !default;
+$price-title-size:          emCalc(16px) !default;
+
+// We use these to control the price styles
+$price-money-bg:            #eee !default;
+$price-money-padding:       emCalc(15px) emCalc(20px) !default;
+$price-money-align:         center !default;
+$price-money-color:         #333 !default;
+$price-money-weight:        normal !default;
+$price-money-size:          emCalc(20px) !default;
+
+// We use these to control the description styles
+$price-bg:                  #fff !default;
+$price-desc-color:          #777 !default;
+$price-desc-padding:        emCalc(15px) !default;
+$price-desc-align:          center !default;
+$price-desc-font-size:      emCalc(12px) !default;
+$price-desc-weight:         normal !default;
+$price-desc-line-height:    1.4 !default;
+$price-desc-bottom-border:  dotted 1px #ddd !default;
+
+// We use these to control the list item styles
+$price-item-color:          #333 !default;
+$price-item-padding:        emCalc(15px) !default;
+$price-item-align:          center !default;
+$price-item-font-size:      emCalc(14px) !default;
+$price-item-weight:         normal !default;
+$price-item-bottom-border:  dotted 1px #ddd !default;
+
+// We use these to control the CTA area styles
+$price-cta-bg:              #f5f5f5 !default;
+$price-cta-align:           center !default;
+$price-cta-padding:         emCalc(20px) emCalc(20px) 0 !default;
+
+//
+// Pricing Table Mixins
+//
+
+// We use this to create the container element for the pricing tables
+@mixin pricing-table-container {
+  border: $price-table-border;
+  margin-left: 0;
+  margin-bottom: $price-table-margin-bottom;
+
+  & * {
+    list-style: none;
+    line-height: 1;
+  }
+}
+
+// We use this mixin to create the pricing table title styles
+@mixin pricing-table-title {
+  background-color: $price-title-bg;
+  padding: $price-title-padding;
+  text-align: $price-title-align;
+  color: $price-title-color;
+  font-weight: $price-title-weight;
+  font-size: $price-title-size;
+}
+
+// We use this mixin to control the pricing table price styles
+@mixin pricing-table-price {
+  background-color: $price-money-bg;
+  padding: $price-money-padding;
+  text-align: $price-money-align;
+  color: $price-money-color;
+  font-weight: $price-money-weight;
+  font-size: $price-money-size;
+}
+
+// We use this mixin to create the description styles for the pricing table
+@mixin pricing-table-description {
+  background-color: $price-bg;
+  padding: $price-desc-padding;
+  text-align: $price-desc-align;
+  color: $price-desc-color;
+  font-size: $price-desc-font-size;
+  font-weight: $price-desc-weight;
+  line-height: $price-desc-line-height;
+  border-bottom: $price-desc-bottom-border;
+}
+
+// We use this mixin to style the bullet items in the pricing table
+@mixin pricing-table-bullet {
+  background-color: $price-bg;
+  padding: $price-item-padding;
+  text-align: $price-item-align;
+  color: $price-item-color;
+  font-size: $price-item-font-size;
+  font-weight: $price-item-weight;
+  border-bottom: $price-item-bottom-border;
+}
+
+// We use this mixin to style the CTA area of the pricing tables
+@mixin pricing-table-cta {
+  background-color: $price-cta-bg;
+  text-align: $price-cta-align;
+  padding: $price-cta-padding;
+}
+
+
+@if $include-html-classes {
+
+  /* Pricing Tables */
+  .pricing-table {
+    @include pricing-table-container;
+
+    .title { @include pricing-table-title; }
+    .price { @include pricing-table-price; }
+    .description { @include pricing-table-description; }
+    .bullet-item { @include pricing-table-bullet; }
+    .cta-button { @include pricing-table-cta; }
+  }
+
+}

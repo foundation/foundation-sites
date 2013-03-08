@@ -1,0 +1,152 @@
+<% @side_nav = "js" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Clearing" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Since Orbit isn't intended for variable-height content, we decided it would be a great idea to create a plugin that would help in that regard. Clearing makes it easy to create responsive lightboxes with any size image.</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <ul class="clearing-thumbs" data-clearing>
+          <li><a class="th" href="../img/demos/demo1.jpg"><img data-caption="Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum." src="../img/demos/demo1-th.jpg"></a></li>
+          <li><a class="th" href="../img/demos/demo2.jpg"><img src="../img/demos/demo2-th.jpg"></a></li>
+          <li><a class="th" href="../img/demos/demo3.jpg"><img data-caption="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus." src="../img/demos/demo3-th.jpg"></a></li>
+          <li><a class="th" href="../img/demos/demo4.jpg"><img src="../img/demos/demo4-th.jpg"></a></li>
+          <li><a class="th" href="../img/demos/demo5.jpg"><img data-caption="Integer posuere erat a ante venenatis dapibus posuere velit aliquet." src="../img/demos/demo5-th.jpg"></a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <h3>Build Your Clearing Lightbox</h3>
+        <p>There is only one way to build a Clearing lightbox, using our predefined class and data-attribute structure. We've made it really easy: gather some images, decide on their order, and put them into a <code>&lt;ul class="clearing-thumbs"&gt;</code> of your choice. In order to get Clearing to build itself properly, you'll need to have Javascript properly included. We outline <a href="#js">Clearing JS</a> a bit further down the page.</p>
+
+        <p>Once you get your JS hooked up, you'll need to add <code>data-clearing</code> to your list container. Here's an example of the most basic markup needed:</p>
+
+<%= code_example '
+<ul class="clearing-thumbs" data-clearing>
+  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+</ul>', :html %>
+
+        <h5>Styling the List</h5>
+        <p>We're using the <code>.th</code> class from Foundation to style the thumbnails in the Clearing example at the top of the page. You can also use <code>@include thumb;</code> in SCSS to use those same styles.</p></aside>
+
+        <hr>
+
+        <h4>Start From a Featured Image</h4>
+        <p>Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in the list and using <code>.clearing-feature</code> on the <code>&lt;li&gt;</code> of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than once, try using our <code>.hide</code> class to set the ones you don't want to <code>display: none;</code>.</p>
+
+<%= code_example '
+<ul class="clearing-thumbs" data-clearing>
+  <li class="clearing-feature"><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+</ul>', :html %>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <ul class="clearing-thumbs" data-clearing>
+              <li class="clearing-feature"><a class="th" href="../img/demos/demo1.jpg"><img src="../img/demos/demo1-th.jpg"></a></li>
+              <li><a class="th" href="../img/demos/demo2.jpg"><img src="../img/demos/demo2-th.jpg"></a></li>
+              <li><a class="th" href="../img/demos/demo3.jpg"><img src="../img/demos/demo3-th.jpg"></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr>
+
+        <h4>Including Captions</h4>
+        <p>Another common use-case for Lightboxes is to include a caption per image. We've made this quick and easy by using data-attributes to hold the content. You'll just attach this attribute to the image it belongs to and voila!</code> Here's the code example:</p>
+
+<%= code_example '
+<ul class="clearing-thumbs" data-clearing>
+  <li><a href="path/to/your/img"><img data-caption="caption here..." src="path/to/your/img-th"></a></li>
+  <li><a href="path/to/your/img"><img data-caption="caption 2 here..." src="path/to/your/img-th"></a></li>
+  <li><a href="path/to/your/img"><img data-caption="caption 3 here..." src="path/to/your/img-th"></a></li>
+</ul>', :html %>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <ul class="clearing-thumbs" data-clearing>
+              <li><a class="th" href="../img/demos/demo1.jpg"><img data-caption="caption here..." src="../img/demos/demo1-th.jpg"></a></li>
+              <li><a class="th" href="../img/demos/demo2.jpg"><img data-caption="caption 2 here..." src="../img/demos/demo2-th.jpg"></a></li>
+              <li><a class="th" href="../img/demos/demo3.jpg"><img data-caption="caption 3 here..." src="../img/demos/demo3-th.jpg"></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr>
+
+        <h3>Available SCSS Variables</h3>
+        <p>We opted not to create mixins for this plugin because it relies on classes in the JS to work. These variables should give you the control you need to change styles as you see fit:</p>
+<%= code_example '
+/* We use these to set the background colors for parts of Clearing. */
+$clearing-bg:                           #111;
+$clearing-caption-bg:                   $clearing-bg;
+$clearing-carousel-bg:                  #111;
+$clearing-img-bg:                       $clearing-bg;
+
+/* We use these to style the close button */
+$clearing-close-color:                  #fff;
+$clearing-close-size:                   40px;
+
+/* We use these to style the arrows */
+$clearing-arrow-size:                   16px;
+$clearing-arrow-color:                  $clearing-close-color;
+
+/* We use these to style captions */
+$clearing-caption-font-color:           #fff;
+$clearing-caption-padding:              10px 30px;
+
+/* We use these to make the image and carousel height and style */
+$clearing-active-img-height:            75%;
+$clearing-carousel-height:              150px;
+$clearing-carousel-thumb-width:         175px;
+$clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
+', :css %>
+
+        <hr>
+
+        <h3>Using the JavaScript</h3>
+        <p>To make sure Clearing works properly, you'll need to include <code>foundation.clearing.js</code> if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the Clearing plugin. Above your closing </body> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Clearing options can only be passed in during initialization at this time.</p>
+
+<%= code_example "
+{
+  // specify the classes or IDs will close clearing when clicked.
+  close_selectors : '.clearing-close'
+}", :js %>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+
+</div>

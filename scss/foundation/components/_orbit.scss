@@ -1,0 +1,196 @@
+// Orbit Settings
+
+// We use these to control the caption styles
+$orbit-container-bg: #f5f5f5 !default;
+$orbit-caption-bg-old-browser: #000 !default;
+$orbit-caption-bg-old: rgb(0,0,0) !default;
+$orbit-caption-bg: rgba(0,0,0,0.6) !default;
+$orbit-caption-font-color: #fff !default;
+
+// We use these to control the left/right nav styles
+$orbit-nav-bg-old: rgb(0,0,0) !default;
+$orbit-nav-bg: rgba(0,0,0,0.6) !default;
+
+// We use these to control the timer styles
+$orbit-timer-bg-old: rgb(0,0,0) !default;
+$orbit-timer-bg: rgba(0,0,0,0.6) !default;
+
+// We use these to control the bullet nav styles
+$orbit-bullet-nav-color: #999 !default;
+$orbit-bullet-nav-color-active: #222 !default;
+
+// We use thes to controls the style of slide numbers
+$orbit-slide-number-bg: rgb(0,0,0) !default;
+$orbit-slide-number-font-color: #fff !default;
+$orbit-slide-number-padding: emCalc(5px) !default;
+
+// Margin for when Orbit is stacked on small screens
+$stack-on-small-margin-bottom: emCalc(20px) !default;
+
+
+.orbit-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  background: $orbit-container-bg;
+
+  .orbit-slides-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    img { display: block; }
+
+    &>* {
+      position: relative;
+      float: left;
+      height: 100%;
+
+      .orbit-caption {
+        position: absolute;
+        bottom: 0;
+        background-color: $orbit-caption-bg-old;
+        background-color: $orbit-caption-bg;
+        color: #fff;
+        width: 100%;
+        padding: 10px 14px;
+        font-size: emCalc(14px);
+
+        * { color: $orbit-caption-font-color; }
+      }
+    }
+  }
+
+  .orbit-slide-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    span { font-weight: 700; }
+  }
+
+  .orbit-timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 6px;
+    width: 100px;
+    .orbit-progress {
+      height: 100%;
+      background-color: $orbit-timer-bg-old;
+      background-color: $orbit-timer-bg;
+      display: block;
+      width: 0%;
+    }
+
+    & > span {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 0px;
+      width: 11px;
+      height: 14px;
+      border: solid 4px #000;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    &.paused {
+      & > span {
+        right: -6px;
+        top: 9px;
+        width: 11px;
+        height: 14px;
+        border: solid 8px;
+        border-color: transparent transparent transparent #000;
+      }
+    }
+  }
+
+  &:hover .orbit-timer > span { display: block; }
+
+  // Let's get those controls to be right in the center on each side
+  .orbit-prev,
+  .orbit-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    background-color: $orbit-nav-bg-old;
+    background-color: $orbit-nav-bg;
+    width: 50px;
+    height: 60px;
+    line-height: 50px;
+    color: white;
+    text-indent: -9999px !important;
+
+    & > span {
+      position: absolute;
+      top: 50%;
+      margin-top: -16px;
+      display: block;
+      width: 0;
+      height: 0;
+      border: solid 16px;
+    }
+  }
+  .orbit-prev { left: 0;
+    & > span { border-color: transparent #fff transparent transparent; }
+    &:hover > span { border-color: transparent #ccc transparent transparent; }
+  }
+  .orbit-next { right: 0;
+    & > span {
+      border-color: transparent transparent transparent #fff;
+      left: 50%;
+      margin-left: -8px;
+    }
+    &:hover > span { border-color: transparent transparent transparent #ccc; }
+  }
+}
+
+.orbit-bullets {
+  margin: 0 auto 30px auto;
+  overflow: hidden;
+  position: relative;
+  top: 10px;
+
+  li {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    float: left;
+    margin-right: 6px;
+    border: solid 2px #000;
+    @include radius(1000px);
+
+    &.active {
+      background: #000;
+    }
+
+    &:last-child { margin-right: 0; }
+  }
+}
+
+.touch {
+  .orbit-container {
+    .orbit-prev,
+    .orbit-next { display: none; }
+  }
+
+  .orbit-bullets { display: none; }
+}
+
+
+@media #{$small} {
+
+  .touch {
+    .orbit-container {
+      .orbit-prev,
+      .orbit-next { display: inherit; }
+    }
+
+    .orbit-bullets { display: block; }
+  }
+
+}

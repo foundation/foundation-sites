@@ -1,0 +1,81 @@
+//
+// Label Variables
+//
+
+// We use these to style the labels
+$label-padding:     emCalc(3px) emCalc(10px) emCalc(4px) !default;
+$label-radius:      $button-radius !default;
+
+// We use these to style the label text
+$label-font-size:   emCalc(14px) !default;
+$label-font-weight: bold !default;
+
+//
+// Label Mixins
+//
+
+// We use this mixin to create a default label base.
+@mixin label-base {
+  font-weight: $label-font-weight;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline;
+  position: relative;
+}
+
+// We use this mixin to add label size styles.
+@mixin label-size($padding:$label-padding, $text-size:$label-font-size) {
+  @if $padding { padding: $padding; }
+  @if $text-size { font-size: $text-size; }
+}
+
+// We use this mixin to add label styles.
+@mixin label-style($bg:$primary-color, $radius:false) {
+
+  // We control which background color comes through
+  @if $bg {
+
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
+    background-color: $bg;
+
+    // We control the text color for you based on the background color.
+    @if $bg-lightness < 70% { color: #fff; }
+    @else { color: #333; }
+  }
+
+  // We use this to control the radius on labels.
+  @if $radius == true { @include radius($label-radius); }
+  @else if $radius { @include radius($radius); }
+
+}
+
+// We use this to add close buttons to alerts
+@mixin label($padding:$label-padding, $text-size:$label-font-size, $bg:$primary-color, $radius:false) {
+  @include label-base;
+  @include label-size($padding, $text-size);
+  @include label-style($bg, $radius);
+}
+
+
+@if $include-html-classes {
+
+  /* Labels */
+  .label {
+    @include label-base;
+    @include label-size;
+    @include label-style;
+
+
+    &.radius { @include label-style(false, true); }
+    &.round { @include label-style(false, $radius:1000px); }
+
+    &.alert     { @include label-style($alert-color); }
+    &.success   { @include label-style($success-color); }
+    &.secondary { @include label-style($secondary-color); }
+  }
+
+}

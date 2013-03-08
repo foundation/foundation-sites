@@ -1,0 +1,114 @@
+//
+// Dropdown Button Variables
+//
+
+// We use these to set the color of the pip in dropdown buttons
+$dropdown-button-pip-color:     #fff !default;
+$dropdown-button-pip-color-alt: #333 !default;
+
+// We use these to style tiny dropdown buttons
+$dropdown-button-padding-tny:   $button-tny * 5 !default;
+$dropdown-button-pip-size-tny:  $button-tny !default;
+$dropdown-button-pip-right-tny: $button-tny * 2 !default;
+$dropdown-button-pip-top-tny:   -$button-tny / 2 + emCalc(1px) !default;
+
+// We use these to style small dropdown buttons
+$dropdown-button-padding-sml:   $button-sml * 5 !default;
+$dropdown-button-pip-size-sml:  $button-sml !default;
+$dropdown-button-pip-right-sml: $button-sml * 2 !default;
+$dropdown-button-pip-top-sml:   -$button-sml / 2 + emCalc(1px) !default;
+
+// We use these to style medium dropdown buttons
+$dropdown-button-padding-med:   $button-med * 4 + emCalc(3px) !default;
+$dropdown-button-pip-size-med:  $button-med - emCalc(3px) !default;
+$dropdown-button-pip-right-med: $button-med * 2 !default;
+$dropdown-button-pip-top-med:   -$button-med / 2 + emCalc(2px) !default;
+
+// We use these to style large dropdown buttons
+$dropdown-button-padding-lrg:   $button-lrg * 4 !default;
+$dropdown-button-pip-size-lrg:  $button-lrg - emCalc(6px) !default;
+$dropdown-button-pip-right-lrg: $button-lrg + emCalc(12px) !default;
+$dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px) !default;
+
+//
+// Dropdown Button Mixin
+//
+
+// We use this mixin to build off of the button mixin and add dropdown button styles
+@mixin dropdown-button($padding:medium, $pip-color:#fff, $base-style:true) {
+
+  // We add in base styles, but they can be negated by setting to 'false'.
+  @if $base-style {
+    position: relative;
+
+    // This creates the base styles for the triangle pip
+    &:before {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      display: block;
+      border-style: solid;
+      border-color: $dropdown-button-pip-color transparent transparent transparent;
+      top: 50%;
+    }
+  }
+
+  // If we're dealing with tiny buttons, use these styles
+  @if $padding == tiny {
+    padding-#{$default-opposite}: $dropdown-button-padding-tny;
+    &:before {
+      border-width: $dropdown-button-pip-size-tny;
+      right: $dropdown-button-pip-right-tny;
+      margin-top: $dropdown-button-pip-top-tny;
+    }
+  }
+
+  // If we're dealing with small buttons, use these styles
+  @if $padding == small {
+    padding-#{$default-opposite}: $dropdown-button-padding-sml;
+    &:before {
+      border-width: $dropdown-button-pip-size-sml;
+      right: $dropdown-button-pip-right-sml;
+      margin-top: $dropdown-button-pip-top-sml;
+    }
+  }
+
+  // If we're dealing with default (medium) buttons, use these styles
+  @if $padding == medium {
+    padding-#{$default-opposite}: $dropdown-button-padding-med;
+    &:before {
+      border-width: $dropdown-button-pip-size-med;
+      right: $dropdown-button-pip-right-med;
+      margin-top: $dropdown-button-pip-top-med;
+    }
+  }
+
+  // If we're dealing with large buttons, use these styles
+  @if $padding == large {
+    padding-#{$default-opposite}: $dropdown-button-padding-lrg;
+    &:before {
+      border-width: $dropdown-button-pip-size-lrg;
+      right: $dropdown-button-pip-right-lrg;
+      margin-top: $dropdown-button-pip-top-lrg;
+    }
+  }
+
+  // We can control the pip color. We didn't use logic in this case, just set it and forget it.
+  @if $pip-color {
+    &:before { border-color: $pip-color transparent transparent transparent; }
+  }
+}
+
+
+@if $include-html-classes {
+
+  /* Dropdown Button */
+  .dropdown.button { @include dropdown-button;
+    &.tiny { @include dropdown-button(tiny,$base-style:false); }
+    &.small { @include dropdown-button(small,$base-style:false); }
+    &.large { @include dropdown-button(large,$base-style:false); }
+    &.secondary:before { border-color: $dropdown-button-pip-color-alt transparent transparent transparent; }
+  }
+
+}

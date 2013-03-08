@@ -1,0 +1,143 @@
+<style type="text/css">
+
+  .row.support { padding: 9px 0; }
+  .row.support:nth-child(2n) { background: #f4f4f4; }
+
+  .support .win { color: #4ea600; font-weight: bold; }
+  .support .meh { color: #888; font-weight: bold; }
+  .support .fail { color: #cc0000; font-weight: bold; }
+
+  .tooltip { font-size: 14px; }
+</style>
+
+<div class="row">
+
+
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Support" %>
+    <h2><%= @page_title %></h2>
+
+    <h4 class="subheader">Foundation was designed for and tested on numerous browsers and devices. Here's the rundown on what's tested, and what to do if something misbehaves.</h4>
+
+    <h5>Browser and Device Support</h5>
+    <p>We go to great lengths to ensure that Foundation works as expected on a variety of common browsers and devices. Given how forward-facing Foundation is there are some aesthetic properties which are not supported in older browsers (border radii, box shadows, etc), but the core elements are reliable across the board.</p>
+
+		<div class="row support">
+		  <div class="small-3 columns"><h5>Browser/OS</h5></div>
+		  <div class="small-3 columns"><h5>The Grid</h5></div>
+		  <div class="small-3 columns"><h5>Layout/UI</h5></div>
+		  <div class="small-3 columns"><h5>JS</h5></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">Chrome</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">Firefox</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">Safari</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">IE10</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">IE9</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">IE8</div>
+		  <div class="small-3 columns"><span data-tooltip class="meh has-tip tip-top" data-width="200" title="The grid is within a media query so IE8 gets the mobile layouts. If you need a full grid for IE8, see below for a link to a gist that will help out immensely.">&#9679;</span></div>
+		  <div class="small-3 columns"><span data-tooltip class="meh has-tip tip-top" title="90% of our UI elements will work perfectly in IE8. There are a few cases, like radio switches, where we make sure IE8 just gets normal UI elements instead of custom ones." data-width="200">&#9679;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">IE7</div>
+		  <div class="small-3 columns"><span class="fail">&#x2717;</span></div>
+		  <div class="small-3 columns"><span data-tooltip title="While we don't officially support IE7, but our UI styles should work for the most part" class="meh has-tip tip-top" data-width="200">&#9679;</span></div>
+		  <div class="small-3 columns"><span data-tooltip title="While we don't officially IE7, but our JS works for the most part. Clearing and tooltips have some issues with style and position." class="meh has-tip tip-top" data-width="200">&#9679;</span></div>
+		</div>
+
+		<div class="row support">
+		  <div class="small-3 columns">iOS (iPhone)</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">iOS (iPad)</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">Android 2, 4 (Phone)</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">Android 2, 4 (Tablet)</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">Windows Phone 7+</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+		<div class="row support">
+		  <div class="small-3 columns">Surface</div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		  <div class="small-3 columns"><span class="win">&#x2713;</span></div>
+		</div>
+
+    <hr>
+
+    <h5>Want IE8 Grid Support?</h5>
+    <p>We know it can be hard to get clients to ditch support for IE8. We're hoping with the auto-update to IE10 release from Microsoft, we won't need to worry about it anymore. Until then, here's a gist with a grid grid that will work in IE8, just like it did in Foundation 3.</p>
+    <a class="small button" href="https://gist.github.com/zurbchris/5068210">Foundation IE8 Grid</a>
+
+    <hr>
+
+    <h5>Upgrading from Foundation 3.x?</h5>
+    <p>We've written a comprehensive <a href="http://foundation.zurb.com/migration.php">Migration Guide</a> to help you update your code for an existing or work in progress project.</p>
+
+    <hr />
+
+    <div class="panel">
+      <h4>Get Answers</h4>
+      <h5 class="subheader">We've outlined some of the most common frequently asked questions so that you can easily find the answer, as well as given you a way to contact us directly with questions, feedback or concerns.</h5>
+      <a class="button" href="faq.html">Read the FAQ or Ask a Question &raquo;</a> <a class="secondary button" href="changelog.html">See the Version Changelog &raquo;</a>
+    </div>
+
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
+  </div>
+</div>
+
+
+
+
+
+
+
+

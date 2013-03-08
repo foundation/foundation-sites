@@ -1,0 +1,1 @@
+From within the docs/ directory run `bundle install`. To get the docs to compile during development you'll want to run `bundle exec foreman start`. At that point you can access the docs by going to `http://localhost:4000`.

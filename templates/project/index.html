@@ -1,97 +1,84 @@
+<% template = @template if defined?(@template) %>
 <!DOCTYPE html>
-
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
 	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Foundation 4</title>
 
-	<!-- Set the viewport width to device width for mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="<%= css_dir %>/normalize.css" />
+  <% if template[:options][:customizer_used] %>
+  <link rel="stylesheet" href="<%= css_dir %>/foundation.css" />
+  <% else %>
+  <link rel="stylesheet" href="<%= css_dir %>/app.css" />
+  <% end %>
 
-	<title>Welcome to Foundation</title>
-
-	<!-- Included CSS Files -->
-	<link rel="stylesheet" href="stylesheets/app.css">
-
-	<script src="javascripts/foundation/modernizr.foundation.js"></script>
+  <script src="<%= javascripts_dir %>/vendor/custom.modernizr.js"></script>
 
 </head>
 <body>
 
 	<div class="row">
-		<div class="twelve columns">
+		<div class="large-12 columns">
 			<h2>Welcome to Foundation</h2>
-			<p>This is version <%= Foundation::VERSION %>.</p>
+			<p>This is version <%= template[:options][:version] %>.</p>
 			<hr />
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="eight columns">
+		<div class="large-8 columns">
 			<h3>The Grid</h3>
 
 			<!-- Grid Example -->
 			<div class="row">
-				<div class="twelve columns">
+				<div class="large-12 columns">
 					<div class="panel">
 						<p>This is a twelve column section in a row. Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="six columns">
+				<div class="large-6 columns">
 					<div class="panel">
 						<p>Six columns</p>
 					</div>
 				</div>
-				<div class="six columns">
+				<div class="large-6 columns">
 					<div class="panel">
 						<p>Six columns</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="four columns">
+				<div class="large-4 columns">
 					<div class="panel">
 						<p>Four columns</p>
 					</div>
 				</div>
-				<div class="four columns">
+				<div class="large-4 columns">
 					<div class="panel">
 						<p>Four columns</p>
 					</div>
 				</div>
-				<div class="four columns">
+				<div class="large-4 columns">
 					<div class="panel">
 						<p>Four columns</p>
 					</div>
 				</div>
 			</div>
 
-			<h3>Tabs</h3>
-			<dl class="tabs">
-				<dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
-				<dd><a href="#simple2">Simple Tab 2</a></dd>
-				<dd><a href="#simple3">Simple Tab 3</a></dd>
-			</dl>
-
-			<ul class="tabs-content">
-				<li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
-				<li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
-				<li id="simple3Tab">This is simple tab 3's content. It's, you know...okay.</li>
-			</ul>
-
 			<h3>Buttons</h3>
 
       <div class="row">
-        <div class="six columns">
+        <div class="large-6 columns">
           <p><a href="#" class="small button">Small Button</a></p>
           <p><a href="#" class="button">Medium Button</a></p>
           <p><a href="#" class="large button">Large Button</a></p>
         </div>
-        <div class="six columns">
+        <div class="large-6 columns">
           <p><a href="#" class="small alert button">Small Alert Button</a></p>
           <p><a href="#" class="success button">Medium Success Button</a></p>
           <p><a href="#" class="large secondary button">Large Secondary Button</a></p>
@@ -99,7 +86,7 @@
       </div>
 		</div>
 
-		<div class="four columns">
+		<div class="large-4 columns">
 			<h4>Getting Started</h4>
 			<p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
 
@@ -113,13 +100,26 @@
 		</div>
 	</div>
 
-	<!-- Included JS Files (Uncompressed) -->
-	<script src="javascripts/foundation/jquery.js"></script>
-	<% @template[:options][:javascripts].each do |f| %>
-	<script src="javascripts/<%= f %>"></script>
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? '<%= javascripts_dir %>/vendor/zepto' : '<%= javascripts_dir %>/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  <% if template[:options][:customizer_used] %>
+  <script src="<%= javascripts_dir %>/foundation.min.js"></script>
+  <!--
+  <% template[:options][:javascripts].each do |f| %>
+  <script src="<%= javascripts_dir %>/foundation/<%= f %>"></script>
+  <% end %>
+  -->
+  <% else %>
+  <script src="<%= javascripts_dir %>/foundation/foundation.js"></script>
+	<% template[:options][:javascripts].each do |f| %>
+	<script src="<%= javascripts_dir %>/<%= f %>"></script>
 	<% end %>
-
-  <!-- Application Javascript, safe to override -->
-  <script src="javascripts/foundation/app.js"></script>
+  <% end %>
+  <script>
+    $(document).foundation();
+  </script>
 </body>
 </html>

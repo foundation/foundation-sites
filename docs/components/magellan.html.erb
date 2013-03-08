@@ -1,0 +1,86 @@
+<% @side_nav = "js" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Magellan" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Magellan is a style agnostic plugin that lets you style a sticky navigation that denotes where you are on the page.</h4>
+
+        <div data-magellan-expedition="fixed">
+          <dl class="sub-nav">
+            <dd data-magellan-arrival="build"><a href="#build">Build with HTML</a></dd>
+            <dd data-magellan-arrival="js"><a href="#js">Using Javascript</a></dd>
+          </dl>
+        </div>
+
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <a name="build"></a>
+        <h3 data-magellan-destination="build">Build With Predefined HTML Structure</h3>
+        <p>When we set out to build Magellan, we wanted it to be really lightweight and stay out of your way. With that in mind, we kept custom styles out of the game. Magellan is style agnostic, meaning you can attach it to anything. There are a few built-in lists in Foundation that will work, including the sub-nav. If you look at the top of this page you'll see our sub-nav. As you scroll, you'll see Magellan in action!</p>
+
+<%= code_example '
+<div data-magellan-expedition="fixed">
+  <dl class="sub-nav">
+    <dd data-magellan-arrival="build"><a href="#build">Build with HTML</a></dd>
+    <dd data-magellan-arrival="js"><a href="#js">Arrival 2</a></dd>
+  </dl>
+</div>
+
+<div data-magellan-expedition="fixed">
+  <ul class="sub-nav">
+    <li data-magellan-arrival="build"><a href="#build">Build with HTML</a></li>
+    <li data-magellan-arrival="js"><a href="#js">Arrival 2</a></li>
+  </ul>
+</div>
+', :html %>
+
+        <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected <strong>magellan from a custom package</strong>. These should be linked up following our default <a href="../index.html#basicHTMLMarkup">HTML page structure</a>.</p>
+
+        <hr>
+
+        <a name="js"></a>
+        <h3 data-magellan-destination="js">Using Our JavaScript</h3>
+        <p>You'll need to include <code>foundation.magellan.js</code> to get everything to work properly. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.magellan.js</code></p>
+
+        <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
+
+<%= code_example '
+<h3 data-magellan-destination="js">Using Our Javascript</h3>
+
+<div data-magellan-expedition="fixed">
+  <ul class="sub-nav">
+    <li data-magellan-arrival="build"><a href="#build">Build with HTML</a></li>
+    <li data-magellan-arrival="js"><a href="#js">Arrival 2</a></li>
+  </ul>
+</div>
+', :html %>
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Magellan options can only be passed in during initialization at this time.</p>
+
+    <%= code_example "
+{
+  // specify the class used for active sections
+  activeClass: 'active'
+}", :js %>
+
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

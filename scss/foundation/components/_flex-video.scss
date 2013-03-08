@@ -1,0 +1,45 @@
+//
+// Flex Video Variables
+//
+
+// We use these to control video container padding and margins
+$flex-video-padding-top:               emCalc(25px) !default;
+$flex-video-padding-bottom:            67.5% !default;
+$flex-video-margin-bottom:             emCalc(16px) !default;
+
+// We use this to control widescreen bottom padding
+$flex-video-widescreen-padding-bottom: 57.25% !default;
+
+//
+// Flex Video Mixins
+//
+
+@mixin flex-video-container {
+  position: relative;
+  padding-top: $flex-video-padding-top;
+  padding-bottom: $flex-video-padding-bottom;
+  height: 0;
+  margin-bottom: $flex-video-margin-bottom;
+  overflow: hidden;
+
+  &.widescreen { padding-bottom: $flex-video-widescreen-padding-bottom; }
+  &.vimeo { padding-top: 0; }
+
+  iframe,
+  object,
+  embed,
+  video {
+    position: absolute;
+    top: 0;
+    #{$default-float}: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@if $include-html-classes {
+
+  /* Flex Video */
+  .flex-video { @include flex-video-container; }
+
+}

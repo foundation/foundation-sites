@@ -1,0 +1,159 @@
+//
+// Split Button Variables
+//
+
+// We use these to control different shared styles for Split Buttons
+$split-button-function-factor: 15% !default;
+$split-button-pip-color:       #fff !default;
+$split-button-pip-color-alt:   #333 !default;
+$split-button-active-bg-tint:  rgba(0,0,0,0.1) !default;
+
+// We use these to control tiny split buttons
+$split-button-padding-tny:     $button-tny * 9 !default;
+$split-button-span-width-tny:  $button-tny * 6.5 !default;
+$split-button-pip-size-tny:    $button-tny !default;
+$split-button-pip-top-tny:     $button-tny * 2 !default;
+$split-button-pip-left-tny:    emCalc(-5px) !default;
+
+// We use these to control small split buttons
+$split-button-padding-sml:     $button-sml * 7 !default;
+$split-button-span-width-sml:  $button-sml * 5 !default;
+$split-button-pip-size-sml:    $button-sml !default;
+$split-button-pip-top-sml:     $button-sml * 1.5 !default;
+$split-button-pip-left-sml:    emCalc(-9px) !default;
+
+// We use these to control medium split buttons
+$split-button-padding-med:     $button-med * 6.4 !default;
+$split-button-span-width-med:  $button-med * 4 !default;
+$split-button-pip-size-med:    $button-med - emCalc(3px) !default;
+$split-button-pip-top-med:     $button-med * 1.5 !default;
+$split-button-pip-left-med:    emCalc(-9px) !default;
+
+// We use these to control large split buttons
+$split-button-padding-lrg:     $button-lrg * 6 !default;
+$split-button-span-width-lrg:  $button-lrg * 3.75 !default;
+$split-button-pip-size-lrg:    $button-lrg - emCalc(6px) !default;
+$split-button-pip-top-lrg:     $button-lrg + emCalc(5px) !default;
+$split-button-pip-left-lrg:    emCalc(-9px) !default;
+
+
+//
+// Split Button Mixin
+//
+
+// We use this mixin to create split buttons that build upon the button mixins
+@mixin split-button($padding:medium, $pip-color:$split-button-pip-color, $span-border:$primary-color, $base-style:true) {
+
+  // With this, we can control whether or not the base styles come through.
+  @if $base-style {
+    position: relative;
+
+    // Styling for the split arrow clickable area
+    span {
+      display: block;
+      height: 100%;
+      position: absolute;
+      #{$default-opposite}: 0;
+      top: 0;
+      border-left: solid 1px;
+
+      // Building the triangle pip indicator
+      &:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        display: block;
+        border-style: solid;
+
+        left: 50%;
+      }
+
+      &:active { background-color: $split-button-active-bg-tint; }
+    }
+  }
+
+  // Control the border color for the span area of the split button
+  @if $span-border {
+    span { border-left-color: darken($span-border, $split-button-function-factor); }
+  }
+
+  // Style of the button and clickable area for tiny sizes
+  @if $padding == tiny {
+    padding-#{$default-opposite}: $split-button-padding-tny;
+
+    span { width: $split-button-span-width-tny;
+      &:before {
+        border-width: $split-button-pip-size-tny;
+        top: $split-button-pip-top-tny;
+        margin-left: $split-button-pip-left-tny;
+      }
+    }
+  }
+
+  // Style of the button and clickable area for small sizes
+  @else if $padding == small {
+    padding-#{$default-opposite}: $split-button-padding-sml;
+
+    span { width: $split-button-span-width-sml;
+      &:before {
+        border-width: $split-button-pip-size-sml;
+        top: $split-button-pip-top-sml;
+        margin-left: $split-button-pip-left-sml;
+      }
+    }
+  }
+
+  // Style of the button and clickable area for default (medium) sizes
+  @else if $padding == medium {
+    padding-#{$default-opposite}: $split-button-padding-med;
+
+    span { width: $split-button-span-width-med;
+      &:before {
+        border-width: $split-button-pip-size-med;
+        top: $split-button-pip-top-med;
+        margin-left: $split-button-pip-left-med;
+      }
+    }
+  }
+
+  // Style of the button and clickable area for large sizes
+  @else if $padding == large {
+    padding-#{$default-opposite}: $split-button-padding-lrg;
+
+    span { width: $split-button-span-width-lrg;
+      &:before {
+        border-width: $split-button-pip-size-lrg;
+        top: $split-button-pip-top-lrg;
+        margin-left: $split-button-pip-left-lrg;
+      }
+    }
+  }
+
+  // Control the color of the triangle pip
+  @if $pip-color {
+    span:before { border-color: $pip-color transparent transparent transparent; }
+  }
+}
+
+
+@if $include-html-classes {
+
+  /* Split Buttons */
+  .split.button { @include split-button;
+
+    &.secondary { @include split-button(false, $split-button-pip-color, $secondary-color, false); }
+    &.alert { @include split-button(false, false, $alert-color, false); }
+    &.success { @include split-button(false, false, $success-color, false); }
+
+    &.tiny { @include split-button(tiny, false, false, false); }
+    &.small { @include split-button(small, false, false, false); }
+    &.large { @include split-button(large, false, false, false); }
+
+    &.secondary { @include split-button(false, $split-button-pip-color-alt, false, false); }
+
+    &.radius span { @include side-radius(right, $global-radius); }
+    &.round span { @include side-radius(right, 1000px); }
+  }
+
+}

@@ -1,0 +1,162 @@
+<% @side_nav = "js" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Reveal" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal our jQuery modal plugin, to make this easy for you.</h4>
+
+        <a href="#" data-reveal-id="firstModal" class="radius button">Example Modal&hellip;</a>
+        <a href="#" data-reveal-id="videoModal" class="radius button">Example Modal w/Video&hellip;</a>
+
+        <hr>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <h3>Build With HTML Classes</h3>
+        <p>Reveal modals are easy to build, just make sure they live right above your closing <code>body</code> tag or they won't work properly. Follow the markup below to get started:</p>
+
+<%= code_example '
+<div id="myModal" class="reveal-modal">
+  <h2>Awesome. I have it.</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>', :html %>
+
+        <p>The class options:</p>
+        <ul class="disc">
+          <li><code>tiny</code>: Set the width to 30%.</li>
+          <li><code>small</code>: Set the width to 40%.</li>
+          <li><code>medium</code>: Set the width to 60%.</li>
+          <li><code>large</code>: Set the width to 70%.</li>
+          <li><code>xlarge</code>: Set the width to 95%.</li>
+        </ul>
+
+        <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected reveal from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
+
+        <h5>Firing a Reveal Modal</h5>
+        <p>To launch a modal, just add a <code>data-reveal-id</code> to the object which you want to fire the modal when clicked. The <code>data-reveal-id</code> needs to match the <code>id</code> of your reveal.</p>
+
+    <%= code_example '
+<a href="#" data-reveal-id="myModal">Click Me For A Modal</a>', :html %>
+
+        <p>You can also open and close Reveal via JavaScript:</p>
+
+<%= code_example "
+// trigger by event
+$('a.reveal-link').trigger('click');
+$('a.close-reveal-modal').trigger('click');
+
+// or directly on the modal
+$('#myModal').foundation('reveal', 'open');
+$('#myModal').foundation('reveal', 'close');
+", :js %>
+
+        <hr>
+
+        <h5>Default SCSS Variables</h5>
+
+    <%= code_example '
+/* We use these to control the style of the reveal overlay. */
+$reveal-overlay-bg:      rgba(#000, .45);
+$reveal-overlay-bg-old:  #000;
+
+/* We use these to control the style of the modal itself. */
+$reveal-modal-bg:        #fff;
+$reveal-position-top:    emCalc(15px);
+$reveal-default-width:   80%;
+$reveal-modal-padding:   emCalc(20px);
+$reveal-box-shadow:      0 0 10px rgba(#000,.4);
+
+/* We use these to style the reveal close button */
+$reveal-close-font-size: emCalc(22px);
+$reveal-close-top:       emCalc(8px);
+$reveal-close-side:      emCalc(11px);
+$reveal-close-color:     #aaa;
+$reveal-close-weight:    bold;
+
+/* We use these to control the modal border */
+$reveal-border-style:    solid;
+$reveal-border-width:    1px;
+$reveal-border-color:    #666;', :css %>
+
+        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+        <hr>
+
+        <h3>Using the JavaScript</h3>
+        <p>You don't need ths JS to create reveal modals with Foundation. The only reason you'll need to include <code>foundation.reveal.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.reveal.js</code></p>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Reveal options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>opened</i>, <i>close</i>, and <i>closed</i> events.</p>
+
+    <%= code_example "
+{
+  animation: 'fadeAndPop',
+  animationSpeed: 250,
+  closeOnBackgroundClick: true,
+  dismissModalClass: 'close-reveal-modal',
+  bgClass: 'reveal-modal-bg',
+  open: function(){},
+  opened: function(){},
+  close: function(){},
+  closed: function(){},
+  bg : $('.reveal-modal-bg'),
+  css : {
+    open : {
+      'opacity': 0,
+      'visibility': 'visible',
+      'display' : 'block'
+    },
+    close : {
+      'opacity': 1,
+      'visibility': 'hidden',
+      'display': 'none'
+    }
+  }
+}", :js %>
+
+      </div>
+    </div>
+</div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>
+
+<div id="firstModal" class="reveal-modal">
+  <h2>This is a modal.</h2>
+  <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+  <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+  <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal…</a></p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="secondModal" class="reveal-modal">
+  <h2>This is a second modal.</h2>
+  <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="videoModal" class="reveal-modal large">
+  <h2>This modal has video</h2>
+  <div class="flex-video">
+    <iframe width="800" height="315" src="http://www.youtube.com/embed/IkOQw96cfyE" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+

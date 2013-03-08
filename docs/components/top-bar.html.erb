@@ -1,0 +1,286 @@
+<% @side_nav = "nav" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Top Bar" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1><%= @page_title %></h1>
+        <h4 class="subheader">The Foundation Top Bar gives you a great way to display a complex navigation bar on small or large screens.</h4>
+
+        <nav class="top-bar">
+          <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+              <h1><a href="/">Top Bar</a></h1>
+            </li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+          </ul>
+
+          <section class="top-bar-section">
+            <ul class="left">
+              <li class="divider"></li>
+              <li class="has-dropdown"><a href="<%= features_path %>">Item 1</a>
+
+                <ul class="dropdown">
+                  <li><label>Level One</label></li>
+                  <li><a href="#">Sub-item 1</a></li>
+                  <li><a href="#">Sub-item 2</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Sub-item 3</a></li>
+                  <li class="has-dropdown"><a href="#">Sub-item 4</a>
+
+                    <ul class="dropdown">
+                      <li><label>Level Two</label></li>
+                      <li class="has-dropdown"><a href="#">Sub-item 1</a>
+
+                        <ul class="dropdown">
+                          <li><label>Level Three</label></li>
+                          <li class="has-dropdown"><a href="#">Sub-item 1</a>
+
+                            <ul class="dropdown">
+                              <li><label>Level Four</label></li>
+                              <li><a href="#">Sub-item 1</a></li>
+                            </ul>
+                          </li>
+                          <li><a href="#">Sub-item 2</a></li>
+                          <li><a href="#">Sub-item 3</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Sub-item 4</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Sub-item 2</a></li>
+                      <li><a href="#">Sub-item 3</a></li>
+                      <li><a href="#">Sub-item 4</a>
+                    </ul>
+                  </li>
+                  <li><a href="#">Sub-item 5</a></li>
+                </ul>
+              </li>
+              <li class="divider"></li>
+            </ul>
+            <!-- Right Nav Section -->
+            <ul class="right">
+              <li class="divider hide-for-small"></li>
+              <li><a href="#">Item 2</a></li>
+            </ul>
+          </section>
+        </nav>
+
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <p>The topbar is only designed to have one per page, so we can't include a demo on this page due to the fact that we have one on the page already. Take a look at the code we have below and checkout our topbar to get a feel for how it works. The only thing about the one on this page is it doesn't have a dropdown.</p>
+        <hr>
+
+        <h3>Build With HTML Classes</h3>
+        <p>The top bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on many presentational classes to accomplish the styles and there's a lot happening in the JS.</p>
+
+        <h5>Basic Needs</h5>
+        <p>The top bar has four main elements, three of which are needed for proper functionality: <code>ul.title-area</code>, one of the section <code>ul class="right/left</code> elements and the <code>li.toggle-topbar</code> element that will expand the menu in the mobile layout. You can leave out the li class="name" as long as you include the .toggle-topbar element.</p>
+
+        <h5>Positioning the Bar</h5>
+        <p>The top bar is built with a single <code>nav</code> element with a class of <code>top-bar</code>. It will take on full-browser width by default. To make the top bar stay fixed as you scroll, wrap it in <code>div class="fixed"</code>. If you want your navigation to be set to your grid width, wrap it in <code>div class="contain-to-grid"</code>. You may use <code>fixed</code> and <code>contain-to-grid</code> together.</p>
+
+        <h5>Building the Nav</h5>
+        <p>When building your bar it is good to be aware of how many links your're going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items, simply include <code>li</code> elements with and anchor inside them for your top-level. To build a dropdown menu, you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> after that anchor. Add a class of <code>active</code> to mark the current page.</p>
+
+        <h5>Other Elements</h5>
+        <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-form</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
+
+        <h5>Sticky Top Bar</h5>
+        <p>You may also wrap your top bar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll.</p>
+
+<%= code_example '
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><a href="#">Top Bar Title </a></h1>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li class="divider"></li>
+      <li class="active"><a href="#">Main Item 1</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Main Item 2</a></li>
+      <li class="divider"></li>
+      <li class="has-dropdown"><a href="#">Main Item 3</a>
+
+        <ul class="dropdown">
+          <li class="has-dropdown"><a href="#">Dropdown Level 1a</a>
+
+            <ul class="dropdown">
+              <li><label>Dropdown Level 2 Label</label></li>
+              <li><a href="#">Dropdown Level 2a</a></li>
+              <li><a href="#">Dropdown Level 2b</a></li>
+              <li class="has-dropdown"><a href="#">Dropdown Level 2c</a>
+
+                <ul class="dropdown">
+                  <li><label>Dropdown Level 3 Label</label></li>
+                  <li><a href="#">Dropdown Level 3a</a></li>
+                  <li><a href="#">Dropdown Level 3b</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Dropdown Level 3c</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown Level 2d</a></li>
+              <li><a href="#">Dropdown Level 2e</a></li>
+              <li><a href="#">Dropdown Level 2f</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Dropdown Level 1b</a></li>
+          <li><a href="#">Dropdown Level 1c</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Dropdown Level 1d</a></li>
+          <li><a href="#">Dropdown Level 1e</a></li>
+          <li><a href="#">Dropdown Level 1f</a></li>
+          <li class="divider"></li>
+          <li><a href="#">See all &rarr;</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+    </ul>
+
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider hide-for-small"></li>
+      <li class="has-dropdown"><a href="#">Main Item 4</a>
+
+        <ul class="dropdown">
+          <li><label>Dropdown Level 1 Label</label></li>
+          <li class="has-dropdown"><a href="#" class="">Dropdown Level 1a</a>
+
+            <ul class="dropdown">
+              <li><a href="#">Dropdown Level 2a</a></li>
+              <li><a href="#">Dropdown Level 2b</a></li>
+              <li class="has-dropdown"><a href="#">Dropdown Level 2c</a>
+
+                <ul class="dropdown">
+                  <li><a href="#">Dropdown Level 3a</a></li>
+                  <li><a href="#">Dropdown Level 3b</a></li>
+                  <li><a href="#">Dropdown Level 3c</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown Level 2d</a></li>
+              <li><a href="#">Dropdown Level 2e</a></li>
+              <li><a href="#">Dropdown Level 2f</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Dropdown Level 1b</a></li>
+          <li><a href="#">Dropdown Level 1c</a></li>
+          <li class="divider"></li>
+          <li><label>Dropdown Level 1 Label</label></li>
+          <li><a href="#">Dropdown Level 1d</a></li>
+          <li><a href="#">Dropdown Level 1e</a></li>
+          <li><a href="#">Dropdown Level 1f</a></li>
+          <li class="divider"></li>
+          <li><a href="#">See all &rarr;</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <form>
+          <div class="row collapse">
+            <div class="small-8 columns">
+              <input type="text">
+            </div>
+            <div class="small-4 columns">
+              <a href="#" class="alert button">Search</a>
+            </div>
+          </div>
+        </form>
+      </li>
+      <li class="divider show-for-small"></li>
+      <li class="has-form">
+        <a class="button" href="#">Button!</a>
+      </li>
+    </ul>
+  </section>
+</nav>', :html %>
+
+      <h4>Available SCSS Variables</h4>
+      <p>We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile first, so they are much easier to override than the previous iteration of the top bar.</p>
+
+<%= code_example '
+/* Background color for the top bar */
+$topbar-bg: #111;
+
+/* Height and margin */
+$topbar-height: 45px;
+$topbar-margin-bottom: emCalc(30px);
+
+/* Control Input height for top bar */
+$topbar-input-height: 2.45em;
+
+/* Controlling the styles for the title in the top bar */
+$topbar-title-weight: bold;
+$topbar-title-font-size: emCalc(17px);
+
+/* Set the link colors and styles for top-level nav */
+$topbar-link-color: #fff;
+$topbar-link-weight: bold;
+$topbar-link-font-size: emCalc(13px);
+
+/* Style the top bar dropdown elements */
+$topbar-dropdown-bg: #333;
+$topbar-dropdown-link-color: #fff;
+$topbar-dropdown-toggle-size: 5px;
+$topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-alpha: 0.5;
+$dropdown-label-color: #555;
+
+/* Top menu icon styles */
+$topbar-menu-link-transform: uppercase;
+$topbar-menu-link-font-size: emCalc(13px);
+$topbar-menu-link-weight: bold;
+$topbar-menu-link-color: #fff;
+$topbar-menu-icon-color: #fff;
+$topbar-menu-link-color-toggled: #888;
+$topbar-menu-icon-color-toggled: #888;
+
+/* Transitions and breakpoint styles */
+$topbar-transition-speed: 300ms;
+$topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout', :css %>
+
+        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+        <hr>
+
+        <h3>Using the JavaScript</h3>
+        <p>You'll need to include <code>foundation.topbar.js</code> to get the topbar to play nice. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the topbar plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.topbar.js</code></p>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Top bar options can only be passed in during initialization at this time.</p>
+
+    <%= code_example "
+{
+  index : 0,
+  stickyClass : 'sticky',
+  custom_back_text: true, // Set this to false and it will pull the top level link name as the back text
+  back_text: 'Back', // Define what you want your custom back text to be if custom_back_text: true
+  init : false
+}", :js %>
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

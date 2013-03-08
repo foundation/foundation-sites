@@ -1,7 +1,51 @@
 # Changelog
-We'll keep you up to date with what we've released so you at least have a gist of what goes into each update. For the most part, we'll try to list things out as detailed as we see necessary.
-
 ---
+
+### 4.0.5 (In Progress)
+We're currently working on patch fixes for various parts of Foundation. We'll add to this list as we go up until release.
+* Custom classes added to custom forms now carry through to JS
+* Added `.horizontal-nav` to `foundation.section.js`
+* Fixed variables that weren't being inherited properly
+* Fixed a joyride mobile background issue
+* Updated Reveal docs to match 4.0.4 functionality
+* Updated to Zepto 1.0
+* Fixed bugs with visibility classes
+* Updated block-grid nth-of-type clear fix so that it actually works
+* All size block grids now have the same spacing
+* Made images `display: inline-block` by default to remove gap and not screw up layouts
+* Progress bars respect their color variables instead of global
+* Added variable for progress bar background color
+* Fixed inconsistency between side margins on unordered and ordered lists
+* Made it so you can set `custom_back_text` variable in top-bar to control if the back link is generic or specific
+* Updated visibility classes to work properly with table display properties
+* Helper classes like `.right, .left` now have `!important` so they don't get overriden on accident
+* Added a page to the docs that explains our use of [media queries](http://foundation.zurb.com/docs/media-queries.html)
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
+
+### 4.0.4
+This patch fixes various bugs that have been submitted since release. We'll be more specific with changelog updates going forward.
+
+### 4.0.3
+Bug fixes
+
+### 4.0.2
+Bug fixes
+
+### 4.0.1
+Bug fixes
+
+### **4.0**- February 28, 2013
+Initial launch of Foundation 4, a rewritten, mobile-first implementation of the framework. Major enhancements include a mobile-first approach across the board, Scss tools to allow for all-semantic coding, and rewritten JS plugins for speed and ease of use. Marketing site updates, new docs, refined and simplified styles and more. Review the [migration guide](http://foundation.zurb.com/migration.php) for more information.
+
+### 3.2.5
+Bug fixes
+
+### 3.2.4
+Bug fixes
+
+### 3.2.3
+Bug fixes
 
 ### 3.2.2- November 10, 2012
 This patch fixes a typo found in the tabs plugin.

@@ -1,0 +1,67 @@
+//
+// Sub Nav Variables
+//
+
+// We use these to control margin and padding
+$sub-nav-list-margin:        emCalc(-4px) 0 emCalc(18px) !default;
+$sub-nav-list-padding-top:   emCalc(4px) !default;
+
+// We use this to control the definition
+$sub-nav-font-size:          emCalc(14px) !default;
+$sub-nav-font-color:         #999 !default;
+$sub-nav-font-weight:        normal !default;
+$sub-nav-text-decoration:    none !default;
+$sub-nav-border-radius:      1000px !default;
+
+// We use these to control the active item styles
+$sub-nav-active-font-weight: bold !default;
+$sub-nav-active-bg:          $primary-color !default;
+$sub-nav-active-color:       #fff !default;
+$sub-nav-active-padding:     emCalc(3px) emCalc(9px) !default;
+$sub-nav-active-cursor:      default !default;
+
+//
+// Sub Nav Mixins
+//
+
+@mixin sub-nav($font-color:$sub-nav-font-color, $font-size:$sub-nav-font-size, $active-bg:$sub-nav-active-bg) {
+  display: block;
+  width: auto;
+  overflow: hidden;
+  margin: $sub-nav-list-margin;
+  padding-top: $sub-nav-list-padding-top;
+  margin-#{$default-opposite}: 0;
+  margin-#{$default-float}: emCalc(-9px);
+
+  dt,
+  dd {
+    float: $default-float;
+    display: inline;
+    margin-#{$default-float}: emCalc(9px);
+    margin-bottom: emCalc(10px);
+    font-weight: $sub-nav-font-weight;
+    font-size: $font-size;
+
+    a {
+      color: $font-color;
+      text-decoration: $sub-nav-text-decoration; }
+
+    &.active a {
+      @include radius($sub-nav-border-radius);
+      font-weight: $sub-nav-active-font-weight;
+      background: $active-bg;
+      padding: $sub-nav-active-padding;
+      cursor: $sub-nav-active-cursor;
+      color: $sub-nav-active-color;
+    }
+  }
+
+}
+
+
+@if $include-html-classes {
+
+  /* Side Nav */
+  .sub-nav { @include sub-nav; }
+
+}

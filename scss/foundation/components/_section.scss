@@ -1,0 +1,241 @@
+//
+// Section Variables
+//
+
+// We use these to set padding and hover factor
+$section-padding:                emCalc(15px) !default;
+$section-function-factor:        10% !default;
+
+// These style the titles
+$section-title-color:            #333 !default;
+$section-title-bg:               #efefef !default;
+$section-title-bg-active:        darken($section-title-bg, $section-function-factor) !default;
+$section-title-bg-active-tabs:   #fff !default;
+
+// Want to control border size, here ya go!
+$section-border-size:            1px !default;
+$section-border-style:           solid !default;
+$section-border-color:           #ccc !default;
+
+// Control the color of the background and some size options
+$section-content-bg:             #fff !default;
+$section-vertical-nav-min-width: emCalc(200px) !default;
+$section-bottom-margin:          emCalc(20px) !default;
+
+
+//
+// Section Mixins
+//
+
+// We use this mixin to create the basic container styles for sections when they act like accordions
+@mixin section-container($base-style:true, $section-type:accordion) {
+
+  // We can set this to false to not include these styles to avoid repeated CSS on classes.
+  @if $base-style {
+    width: 100%;
+    display: block;
+    margin-bottom: $section-bottom-margin;
+  }
+
+  // Accordion container border styles
+  @if $section-type == accordion {
+    border: $section-border-size $section-border-style $section-border-color;
+    border-top: none;
+  }
+
+  // Tabs container border styles
+  @else if $section-type == tabs {
+    border: 0;
+    position: relative;
+  }
+
+  // Vertical Nav container border styles
+  @else if $section-type == vertical-nav {
+
+  }
+
+  // Horizontal Nav container border styles
+  @else if $section-type == horizontal-nav {
+    position: relative;
+    background: $section-title-bg;
+    border: $section-border-size $section-border-style $section-border-color;
+  }
+}
+
+// We use this mixin to create the styles for sections as accordions.
+@mixin section($section-type:accordion) {
+
+  // Accordion styles
+  @if $section-type == accordion {
+
+    border-top: $section-border-size $section-border-style $section-border-color;
+    position: relative;
+
+    .title {
+      top: 0;
+      cursor: pointer;
+      width: 100%;
+      margin: 0;
+      background-color: $section-title-bg;
+
+      a {
+        padding: $section-padding;
+        display: inline-block;
+        color: $section-title-color;
+        font-size: emCalc(14px);
+        white-space: nowrap;
+        width: 100%;
+      }
+      &:hover { background-color: darken($section-title-bg, $section-function-factor/2); }
+    }
+
+    .content {
+      display: none;
+      padding: $section-padding;
+      background-color: $section-content-bg;
+
+      &>*:last-child { margin-bottom: 0; }
+      &>*:first-child { padding-top: 0; }
+      &>*:last-child { padding-bottom: 0; }
+    }
+
+
+    &.active {
+      .content { display: block; }
+      .title { background: $section-title-bg-active; }
+    }
+
+
+  }
+
+  // Tab Styles
+  @else if $section-type == tabs {
+    padding-top: 0;
+    border: 0;
+    position: static;
+
+    .title {
+      width: auto;
+      border: $section-border-size $section-border-style $section-border-color;
+      border-right: 0;
+      border-bottom: 0;
+      position: absolute;
+      z-index: 1;
+
+      a { width: 100%; }
+    }
+    &:last-child .title { border-right: $section-border-size $section-border-style $section-border-color; }
+
+    .content {
+      border: $section-border-size $section-border-style $section-border-color;
+      position: absolute;
+      z-index: 10;
+      top: -1px;
+    }
+
+    &.active {
+
+      .title {
+        background-color: $section-title-bg-active-tabs;
+        z-index: 11;
+        border-bottom: 0;
+      }
+      .content { position: relative; }
+    }
+  }
+
+  // Vertical Nav Styles
+  @else if $section-type == vertical-nav {
+
+    padding-top: 0 !important;
+
+    .title a { display: block; width: 100%; }
+
+    .content { display: none; }
+
+    &.active {
+      .content {
+        display: block;
+        position: absolute;
+        left: 100%;
+        top: -1px;
+        z-index: 999;
+        min-width: $section-vertical-nav-min-width;
+        border: $section-border-size $section-border-style $section-border-color;
+      }
+    }
+  }
+
+  // Horizontal Nav Styles
+  @else if $section-type == horizontal-nav {
+    padding-top: 0;
+    border: 0;
+    position: static;
+
+    .title {
+      width: auto;
+      border: $section-border-size $section-border-style $section-border-color;
+      border-left: 0;
+      top: -1px;
+      position: absolute;
+      z-index: 1;
+
+      a { width: 100%; }
+    }
+
+    .content { display: none; }
+
+    &.active {
+      .content {
+        display: block;
+        position: absolute;
+        z-index: 999;
+        left: 0;
+        top: -2px;
+        min-width: $section-vertical-nav-min-width;
+        border: $section-border-size $section-border-style $section-border-color;
+      }
+    }
+  }
+}
+
+
+@if $include-html-classes {
+
+  /* Sections */
+  .section-container {
+    @include section-container;
+
+    section,
+    .section { @include section; }
+  }
+
+  @media #{$small} {
+
+    .section-container.accordion .section {
+      padding-top: 0 !important;
+    }
+
+    .section-container.vertical-nav {
+      @include section-container(false);
+
+      section,
+      .section { @include section(vertical-nav); }
+    }
+
+    .section-container.horizontal-nav {
+      @include section-container(false, horizontal-nav);
+
+      section,
+      .section { @include section(horizontal-nav); }
+    }
+
+    .section-container.tabs {
+      @include section-container(false, tabs);
+
+      section,
+      .section { @include section(tabs); }
+    }
+  }
+
+}

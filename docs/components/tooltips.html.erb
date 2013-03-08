@@ -1,0 +1,75 @@
+<% @side_nav = "js" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Tooltips" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Tooltips are a quick way to provide <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.</h4>
+
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <a name="tooltips"></a>
+        <h4>Building With HTML Classes</h4>
+        <p>Tooltips work cross browser and cross platform and are easily added to a page with a simple markup and class structure. You can apply the <strong>has-tip</strong> class to any element.</p>
+
+        <p>By default, the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
+
+        <p>The tooltips can be positioned on the <span data-tooltip class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span data-tooltip class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span data-tooltip="left" class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span data-tooltip="right" class="has-tip tip-right" data-width="120" title="I'm on the right!">"tip-right"</span> of the target element by adding the appropriate class to them. You can even add your own custom class to style each tip differently. On a small device, the tooltips are full width and bottom aligned.</p>
+
+<%= code_example '
+<span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span>
+', :html %>
+
+        <p>Available class options:</p>
+        <ul class="disc">
+          <li><code>tip-top</code>: Align the tip above the element you attach it to.</li>
+          <li><code>tip-bottom</code>: Align the tip below the element you attach it to.</li>
+          <li><code>tip-left</code>: Align the tip to the left the element you attach it to.</li>
+          <li><code>tip-right</code>: Align the tip to the right the element you attach it to.</li>
+        </ul>
+
+        <hr>
+
+        <h3>Using the Javascript</h3>
+        <p>You'll need to include <code>foundation.tooltips.js</code> to make sure everything works properly. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.tooltips.js</code></p>
+
+        <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
+
+<%= code_example '
+<span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
+', :html %>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+        <p>Tooltip options can only be passed in during initialization at this time.</p>
+
+    <%= code_example "
+{
+  selector : '.has-tip',
+  additionalInheritableClasses : [],
+  tooltipClass : '.tooltip',
+  tipTemplate : function (selector, content) {
+    return '<span data-selector=\"' + selector + '\" class=\"'
+      + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
+      + '\">' + content + '<span class=\"nub\"></span></span>';
+  }
+}", :js %>
+
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

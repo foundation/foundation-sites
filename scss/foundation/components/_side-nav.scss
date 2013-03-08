@@ -1,0 +1,68 @@
+//
+// Side Nav Variables
+//
+
+// We use this to control padding.
+$side-nav-padding:           emCalc(14px) 0 !default;
+
+// We use these to control list styles.
+$side-nav-list-type:         none !default;
+$side-nav-list-position:     inside !default;
+$side-nav-list-margin:       0 0 emCalc(7px) 0 !default;
+
+// We use these to control link styles.
+$side-nav-link-color: $primary-color !default;
+$side-nav-link-color-active: lighten(#000, 30%) !default;
+$side-nav-font-size:         emCalc(14px) !default;
+$side-nav-font-weight:       bold !default;
+
+// We use these to control border styles
+$side-nav-divider-size:      1px !default;
+$side-nav-divider-style:     solid !default;
+$side-nav-divider-color:     darken(#fff, 10%) !default;
+
+
+//
+// Side Nav Mixins
+//
+
+
+// We use this to style the side-nav
+@mixin side-nav($divider-color:$side-nav-divider-color, $font-size:$side-nav-font-size, $link-color:$side-nav-link-color) {
+  display: block;
+  margin: 0;
+  padding: $side-nav-padding;
+  list-style-type: $side-nav-list-type;
+  list-style-position: $side-nav-list-position;
+
+  li {
+    margin: $side-nav-list-margin;
+    font-size: $font-size;
+
+    a {
+      display: block;
+      color: $link-color;
+    }
+
+    &.active a {
+      color: $side-nav-link-color-active;
+      font-weight: $side-nav-font-weight;
+    }
+
+    &.divider {
+      border-top: $side-nav-divider-size $side-nav-divider-style;
+      height: 0;
+      padding: 0;
+      list-style: none;
+      border-top-color: $divider-color;
+    }
+  }
+}
+
+
+@if $include-html-classes {
+
+  /* Side Nav */
+  .side-nav { @include side-nav; }
+
+}

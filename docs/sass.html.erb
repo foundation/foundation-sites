@@ -1,0 +1,340 @@
+<% @side_nav = "using" %>
+<% @page_title = "Sass" %>
+<div class="row">
+    <div class="large-9 push-3 columns">
+
+    <h2>Using the Sass Version of Foundation</h2>
+    <h4 class="subheader">Start using Foundation the way you want, with more control than ever before. We've made it really easy to install using Compass so you'll need a little bit of knowledge before you get going. Visit the <a href="http://compass-style.org">Compass</a> and <a href="http://sass-lang.com">Sass</a> sites to learn the basics if you don't already know them.</h4>
+
+    <h4>Recommended Installation</h4>
+    <p>To create your first project using our Compass extension, you'll need to have the <kbd>zurb-foundation</kbd> gem installed. This will install Foundation and all necessary dependencies. Here's the command that will do this for you:</p>
+    <p class="btm-marg keystroke">[sudo] gem install zurb-foundation</p>
+    <br>
+    <em style="font-size: 12px;">Note: Make sure ZURB isn't all caps.</em>
+
+    <br><br>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <h5>Upgrading Your Gem</h5>
+        <p>To upgrade your gem to the latest public release, just paste this snippet into your command line:</p>
+        <p class="keystroke">[sudo] gem update zurb-foundation</p>
+      </div>
+      <div class="large-6 columns">
+        <h5>Release Candidates</h5>
+        <p>Stay on top of the latest before official releases by installing release candidates with this command:</p>
+        <p class="btm-marg keystroke">[sudo] gem install zurb-foundation --pre</p>
+      </div>
+    </div>
+
+    <br>
+    <hr>
+
+    <a name="create-compass"></a>
+    <h2>Creating your first project</h2>
+    <h5 class="subheader">Compass makes it really easy to start a new project. Since you've installed the Foundation gem by now, you now have Compass, Sass and a few other necessary dependencies available at your fingertips.</h5>
+    <p>Follow these two steps to get going:</p>
+    <ol style="margin-left: 20px;">
+      <li><span class="keystroke">cd path/to/where-you-want-your-project</span></li>
+      <li>run <span class="keystroke">compass create &lt;project-name&gt; -r zurb-foundation --using foundation</span></li>
+    </ol>
+
+    <br>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h5>Compiling Your Scss</h5>
+        <p>To compile your Scss into CSS you run a simple command that will watch for saves and compile each time you save an Scss file. From the directory of your <kbd>config.rb</kbd> file, the command is:</p>
+        <p class="btm-marg keystroke">compass watch</p>
+        <p>If you are in a different directory you can use the same command, but navigate to where your <kbd>config.rb</kbd> file is. The command looks like:</p>
+        <p class="btm-marg keystroke">compass watch path/to/project</p>
+      </div>
+    </div>
+
+
+    <hr>
+
+    <a name="compass-existing"></a>
+    <h3>Working with Existing projects</h3>
+    <h5 class="subheader">There are a couple situations to cover here. You might be adding Foundation to an existing project that wasn't build with Foundation or you might be upgrading Foundation for an already created Foundation Compass project.</h5>
+
+    <h5>Adding Foundation to existing Compass projects</h5>
+    <p>If you've created a project using Compass, but didn't require the Foundation gem, you'll need to install it separately. When you do this you'll get all the necessary files on top of the ones you already have. If something is a duplicate, Compass will ignore it. The steps you'll take to properly install Foundation are:</p>
+    <ol style="margin-left: 20px;">
+      <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
+      <li><span class="keystroke">cd path/to/your-project</span></li>
+      <li>run <span class="keystroke">compass install foundation</span></li>
+    </ol>
+
+    <!-- <h5>Upgrading Foundation Compass projects</h5>
+    <p><strong>Javascript and Image Updates:</strong> If you already added Foundation to your Compass project or created the project using Foundation in the first place and just want to copy over any updated javascripts/image assets to your project, use the provided <kbd>foundation/upgrade</kbd> pattern below:</p>
+    <ol style="margin-left: 20px;">
+      <li><span class="keystroke">cd /path/to/your-project</span></li>
+      <li>run <span class="keystroke">compass install -r zurb-foundation foundation/upgrade force</span></li>
+    </ol>
+
+    <p><strong>Settings file updates:</strong> You can also upgrade Foundation as a whole, which will override the existing Foundation styles and your settings file. So if you've made changes to your settings file and want to make sure your project is on the latest version of Foundation, make sure you backup your settings file before you begin. Alternatively, you can copy/paste the settings from our file and <strong>@import</strong> your own so they don't get erased.</p>
+    <p>We also recommend creating a <code>foundation-overrides.scss</code> file that you can use for your own specific styles. This will ensure that your styles don't get obliterated upon updating. <strong>We do not recommend directly editing the Foundation files if you plan to upgrade.</strong> To update you project, use the following steps:</p>
+    <ol style="margin-left: 20px;">
+      <li>Make sure you've updated your system version of the gem or upgrading won't work.</li>
+      <li><span class="keystroke">cd /path/to/your-project</span></li>
+      <li>run <span class="keystroke">compass install -r zurb-foundation foundation</span></li>
+    </ol> -->
+
+    <hr>
+
+    <a name="project-git"></a>
+    <h3>Creating a project from Git</h3>
+    <h5 class="subheader">Sometimes you want to checkout what we've got even before we decide to deploy a release candidate. For these situations, you can install using Bundler.</h5>
+
+    <p>There are a few different ways to do this, but here's what we recommend:</p>
+    <ol style="margin-left: 20px;">
+      <li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+      <li>Create a file called <code>Gemfile</code> in the folder you just created with this content: <br>
+<%= code_example '
+source "https://rubygems.org"
+gem "zurb-foundation", :git => "git@github.com:zurb/foundation.git"
+gem "compass"
+', :ruby %>
+      </li>
+      <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+<%= code_example '
+bundle exec compass create . -r zurb-foundation --using foundation
+', :bash %>
+      <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
+    </ol>
+
+    <hr>
+
+    <a name="multiple-versions"></a>
+    <h3>Running multiple versions</h3>
+    <h5 class="subheader">If you're planning on running multiple, potentially incompatible versions of Foundation you can isolate them using Bundler as well.</h5>
+
+    <p>There are a few different ways to do this, but here's what we recommend:</p>
+    <ol style="margin-left: 20px;">
+      <li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+      <li>Create a file called <code>Gemfile</code> in the folder you just created with this content: <br>
+<%= code_example '
+source "https://rubygems.org"
+# Replace 4.0.3 with the version of Foundation you want to use
+gem "zurb-foundation", "4.0.3"
+gem "compass"
+', :ruby %>
+      </li>
+      <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+<%= code_example '
+bundle exec compass create . -r zurb-foundation --using foundation
+', :bash %>
+      <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
+    </ol>
+
+    <hr>
+
+    <h3>Foundation Global Settings and Mixins</h3>
+    <p>We've inlcluded a global settings file that holds veriables and mixins that are used throughout the entirety of Foundation. Here's a look at that file:</p>
+
+<%= code_example '
+// Foundation Global Function, Variables and Mixins
+//
+// Variables
+//
+
+// This is the default html and body font-size for the base em value.
+$em-base: 16px;
+
+// We use these to control various global styles
+$body-bg: #fff;
+$body-font-color: #222;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-weight: normal;
+$body-font-style: normal;
+
+// We use this to control font-smoothing
+$font-smoothing: antialiased;
+
+// We use these to control text direction settings
+$text-direction: ltr;
+
+// We use these as default colors throughout
+$primary-color: #2ba6cb;
+$secondary-color: #e9e9e9;
+$alert-color: #c60f13;
+$success-color: #5da423;
+
+// We use these to make sure border radius matches unless we want it different.
+$global-radius: 3px;
+$global-rounded: 1000px;
+
+// We use these to control inset shadow shiny edges and depressions.
+$shiny-edge-size: 0 1px 0;
+$shiny-edge-color: rgba(#fff, .5);
+$shiny-edge-active-color: rgba(#000, .2);
+
+// We use this to control whether or not CSS classes come through in the gem files.
+$include-html-classes: true;
+$include-print-styles: true;
+
+
+//
+// Functions
+//
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+// Creating rems and pixels
+@function remCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1rem;
+}
+
+// Grid Calculation for Percentages
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
+}
+
+
+//
+// Mixins
+//
+
+// We use this to control border radius.
+@mixin radius($radius:$global-radius) {
+  @if $radius {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+  }
+}
+
+// We use this to create equal side border radius on elements.
+@mixin side-radius($side, $radius) {
+  @if $side == left {
+    -webkit-border-radius: $radius 0 0 $radius;
+    border-radius: $radius 0 0 $radius;
+  }
+  @else if $side == right {
+    -webkit-border-radius: 0 $radius $radius 0;
+    border-radius: 0 $radius $radius 0;
+  }
+  @else if $side == top {
+    -webkit-border-radius: $radius $radius 0 0;
+    border-radius: $radius $radius 0 0;
+  }
+  @else if $side == bottom {
+    -webkit-border-radius: 0 0 $radius $radius;
+    border-radius: 0 0 $radius $radius;
+  }
+}
+
+// We can control whether or not we have inset shadows edges.
+@mixin inset-shadow($active:true) {
+  -webkit-box-shadow: $shiny-edge-size $shiny-edge-color inset;
+  box-shadow: $shiny-edge-size $shiny-edge-color inset;
+
+  @if $active { &:active {
+    -webkit-box-shadow: $shiny-edge-size $shiny-edge-active-color inset;
+    box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
+}
+
+// We use this to add transitions to elements
+@mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
+  -webkit-transition: $property $speed $ease;
+  -moz-transition: $property $speed $ease;
+  transition: $property $speed $ease;
+}
+
+// We use this to add box-sizing across browser prefixes
+@mixin box-sizing($type:border-box) {
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+  box-sizing: $type;
+}
+
+// We use this to create equalateral triangles
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $triangle-size;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+  }
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+  }
+}
+
+// We use this to do clear floats
+@mixin clearfix() {
+  *zoom:1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+// Media Queries
+$small-screen: emCalc(768px);
+$medium-screen: emCalc(1280px);
+$large-screen: emCalc(1440px);
+
+$small: "only screen and (min-width:"#{$small-screen}")" !default;
+$medium: "only screen and (min-width:"#{$medium-screen}")" !default;
+$large: "only screen and (min-width:"#{$large-screen}")" !default;
+
+', :css %>
+
+
+    <!-- <a name="gui-apps"></a>
+    <h3>Working with GUI applications</h3>
+    <h5 class="subheader">We want you to be able to work with Foundation in whatever way you are comfortable and we realize that not all of us are Terminal ninjas. Here's a rundown of some of the popular GUI applications and how to utilize Foundation with them.</h5>
+
+    <h5>CodeKit Project</h5>
+    <p>We're using a version of Sass and Compass that doesn't come with CodeKit. This means that you'll need to do a couple steps in order to get everything to compile correctly:</p>
+    <ol style="margin-left: 20px;">
+      <li>First things first, make sure you have the gem installed.</li>
+      <li>Run <kbd>[sudo] gem environment</kbd> in the command line, note your gem executables path.</li>
+      <li>Go into <strong>Codekit prefs</strong>, click on <strong>Sass/Scss</strong></li>
+      <li>Click on <strong>"Use the Sass executable at this path:"</strong></li>
+      <li>Navigate to the <strong>bin</strong> folder at the gem path you found earlier.</li>
+      <li>Select sass.bin</li>
+      <li>Click on <strong>Compass</strong> in the preferences menu.</li>
+      <li>Click on <strong>"Use the Compass executable at this path:"</strong></li>
+      <li>Navigate to the <strong>bin</strong> folder at the gem path you found earlier.</li>
+      <li>Select compass.bin</li>
+      <li>Compile to your hearts content.</li>
+    </ol>
+
+    <p><strong>Note:</strong> CodeKit does not support adding Foundation as a "framework" through the GUI. You'll need to use the steps above to accomplish this.</p>
+
+    <h5>LiveReload</h5>
+    <p>While LiveReload works great within CodeKit, it doesn't work well on its own because you can't update it to use your system Sass and Compass directories. Do not use this application to compile Foundation.</p>
+
+    <h5>Compass.app</h5>
+    <p>Foundation is included with Compass.app.</p>
+
+    <h5>Scout</h5>
+    <p>This app doesn't have support for updating the version of Sass and Compass that you use so we're not supporting it at this point.</p>
+
+    <hr> -->
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
+  </div>
+</div>
+
+
+
+
+
+
+
+

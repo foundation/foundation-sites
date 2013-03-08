@@ -1,0 +1,45 @@
+//
+// Image Thumbnail Variables
+//
+
+// We use these to control border styles
+$thumb-border-style:     solid !default;
+$thumb-border-width:     4px !default;
+$thumb-border-color:     #fff !default;
+$thumb-box-shadow:       0 0 0 1px rgba(#000,.2) !default;
+$thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5) !default;
+
+// Radius and transition speed for thumbs
+$thumb-radius:           $global-radius !default;
+$thumb-transition-speed: 200ms !default;
+
+//
+// Image Thumbnail Mixins
+//
+
+// We use this to create image thumbnail styles.
+@mixin thumb($border-width:$thumb-border-width, $box-shadow:$thumb-box-shadow, $box-shadow-hover:$thumb-box-shadow-hover) {
+  display: inline-block;
+  border: $thumb-border-style $border-width $thumb-border-color;
+  -webkit-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+
+  &:hover,
+  &:focus { -webkit-box-shadow: $box-shadow-hover; box-shadow: $box-shadow-hover; }
+}
+
+
+// If html classes are turned on we'll include these classes.
+@if $include-html-classes {
+
+  /* Image Thumbnails */
+  .th {
+    @include thumb;
+    @include single-transition(all,$thumb-transition-speed,ease-out);
+
+    &.radius { @include radius($thumb-radius); }
+  }
+
+}
+
+
