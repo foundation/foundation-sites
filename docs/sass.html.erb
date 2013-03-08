@@ -279,6 +279,15 @@ $include-print-styles: true;
   &:after { clear: both; }
 }
 
+// Media Queries
+$small-screen: emCalc(768px);
+$medium-screen: emCalc(1280px);
+$large-screen: emCalc(1440px);
+
+$small: "only screen and (min-width:"#{$small-screen}")" !default;
+$medium: "only screen and (min-width:"#{$medium-screen}")" !default;
+$large: "only screen and (min-width:"#{$large-screen}")" !default;
+
 ', :css %>
 
 
