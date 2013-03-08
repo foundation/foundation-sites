@@ -19,6 +19,7 @@ We're currently working on patch fixes for various parts of Foundation. We'll ad
 * Made it so you can set `custom_back_text` variable in top-bar to control if the back link is generic or specific
 * Updated visibility classes to work properly with table display properties
 * Helper classes like `.right, .left` now have `!important` so they don't get overriden on accident
+* Added a page to the docs that explains our use of [media queries](http://foundation.zurb.com/docs/media-queries.html)
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
 
