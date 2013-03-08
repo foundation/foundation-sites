@@ -45,16 +45,6 @@
       var self = this;
 
       $(this.scope)
-        .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          self.toggle_checkbox($(this));
-        })
-        .on('click.fndtn.forms', 'form.custom span.custom.radio', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          self.toggle_radio($(this));
-        })
         .on('change.fndtn.forms', 'form.custom select:not([data-customforms="disabled"])', function (e) {
           self.refresh_custom_select($(this));
         })
@@ -66,6 +56,7 @@
             if ($associatedElement.attr('type') === 'checkbox') {
               e.preventDefault();
               $customCheckbox = $(this).find('span.custom.checkbox');
+
               //the checkbox might be outside after the label
               if ($customCheckbox.length == 0) {
                 $customCheckbox = $(this).next('span.custom.checkbox');
