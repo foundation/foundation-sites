@@ -114,7 +114,7 @@ $price-cta-padding:         emCalc(20px) emCalc(20px) 0 !default;
 }
 
 
-@if $include-html-classes {
+@if $include-html-pricing-classes {
 
   /* Pricing Tables */
   .pricing-table {

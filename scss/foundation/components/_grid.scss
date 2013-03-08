@@ -100,7 +100,7 @@ $total-columns: 12 !default;
 
 
 /* Grid HTML Classes */
-@if $include-html-classes {
+@if $include-html-grid-classes {
 
   .row {
     @include grid-row;

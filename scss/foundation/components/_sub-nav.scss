@@ -59,7 +59,7 @@ $sub-nav-active-cursor:      default !default;
 }
 
 
-@if $include-html-classes {
+@if $include-html-nav-classes {
 
   /* Side Nav */
   .sub-nav { @include sub-nav; }

@@ -3,7 +3,7 @@
 //
 $magellan-bg: #fff !default;
 
-@if $include-html-classes {
+@if $include-html-magellan-classes {
 
   [data-magellan-expedition] {
     background: $magellan-bg;
