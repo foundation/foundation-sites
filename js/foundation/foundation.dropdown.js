@@ -86,7 +86,7 @@
     },
 
     css : function (dropdown, target) {
-      var position = target.position();
+      var offset = target.offset();
 
       if (this.small()) {
         dropdown.css({
@@ -94,13 +94,13 @@
           width: '95%',
           left: '2.5%',
           'max-width': 'none',
-          top: position.top + this.outerHeight(target)
+          top: offset.top + this.outerHeight(target)
         });
       } else {
         dropdown.attr('style', '').css({
           position : 'absolute',
-          top: position.top + this.outerHeight(target),
-          left: position.left
+          top: offset.top + this.outerHeight(target),
+          left: offset.left
         });
       }
 
