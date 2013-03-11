@@ -8,6 +8,15 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
+// Accommodate running jQuery in noConflict() mode by
+// using an anonymous function to redefine the jQuery $
+// shorthand name. See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
+if (jQuery == null) {
+    var jQuery = $;
+}
+
+(function ($) {
+
 (function () {
   // add dusty browser stuff
   if (!Array.prototype.filter) {
@@ -329,3 +338,5 @@
   };
 
 }(this, this.document));
+
+})(jQuery);
