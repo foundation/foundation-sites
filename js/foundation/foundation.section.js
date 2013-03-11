@@ -41,7 +41,13 @@
 
       $(window).on('resize.fndtn.section', self.throttle(function () {
         self.resize.call(this);
-      }, 30)).trigger('resize');
+      }, 30))
+      .on('hashchange', function () {
+        if (!self.settings.toggled){
+          self.set_active_from_hash();
+          $(this).trigger('resize');
+        }
+      }).trigger('resize');
 
       $('[data-section] .content').on('click.fndtn.section', function (e) {
         e.stopPropagation();
@@ -65,6 +71,7 @@
           content = section.find('.content'),
           parent = section.closest('[data-section]'),
           self = Foundation.libs.section;
+      self.settings.toggled = true;
 
       if (!self.settings.deep_linking && content.length > 0) {
         e.preventDefault();
@@ -101,7 +108,9 @@
 
         section.addClass('active');
       }
-
+      setTimeout(function () {
+        self.settings.toggled = false;
+      }, 300);
       self.settings.callback();
     },
 
@@ -168,6 +177,10 @@
         $.extend(true, self.settings, self.data_options(section));
 
         if (hash.length > 0 && self.settings.deep_linking) {
+          section
+            .find('section, .section')
+            .attr('style', '')
+            .removeClass('active');
           section
             .find('.content[data-slug="' + hash + '"]')
             .closest('section, .section')
