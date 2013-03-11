@@ -41,7 +41,7 @@
         <p>We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_breadcrumbs.scss">_breadcrumbs.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/breadcrumbs";
+@import "foundation/foundation-global", "foundation/components/global", "foundation/components/breadcrumbs";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
