@@ -64,6 +64,7 @@
           }
         })
         .on('click.fndtn.reveal touchend.click.fndtn.reveal', this.close_targets(), function (e) {
+          e.preventDefault();
           if (!self.locked) {
             self.locked = true;
             self.close.call(self, $(this).closest('.reveal-modal'));
