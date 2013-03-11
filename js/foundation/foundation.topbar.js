@@ -66,7 +66,7 @@
               section = topbar.find('section, .section'),
               titlebar = topbar.children('ul').first();
 
-          if (!self.settings.$topbar.data('height')) self.largestUL();
+          if (!topbar.data('height')) self.largestUL();
 
           e.preventDefault();
 
