@@ -49,10 +49,6 @@
         }
       });
 
-      $('[data-dropdown-content]').on('click.fndtn.dropdown', function (e) {
-        e.stopPropagation();
-      });
-
       $(window).on('resize.fndtn.dropdown', self.throttle(function () {
         self.resize.call(self);
       }, 50)).trigger('resize');
@@ -86,7 +82,7 @@
     },
 
     css : function (dropdown, target) {
-      if (/body/i.test(dropdown.parent().selector)) {
+      if (dropdown.parent()[0] === $('body')[0]) {
         var position = target.offset();
       } else {
         var position = target.position();
