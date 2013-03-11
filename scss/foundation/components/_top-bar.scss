@@ -208,7 +208,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > a {
       display: block;
       width: 100%;
-      color: $topbar-dropdown-link-color;
+      color: $topbar-link-color;
       padding: 12px 0 12px 0;
       padding-#{$default-float}: $topbar-height / 3;
       font-size: $topbar-link-font-size;
@@ -405,6 +405,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
       li {
         a {
+          color: $topbar-dropdown-link-color;
           line-height: 1;
           white-space: nowrap;
           padding: 7px $topbar-height / 3;
