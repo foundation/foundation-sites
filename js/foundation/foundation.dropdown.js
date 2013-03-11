@@ -86,7 +86,11 @@
     },
 
     css : function (dropdown, target) {
-      var position = target.position();
+      if (/body/i.test(dropdown.parent().selector)) {
+        var position = target.offset();
+      } else {
+        var position = target.position();
+      }
 
       if (this.small()) {
         dropdown.css({
