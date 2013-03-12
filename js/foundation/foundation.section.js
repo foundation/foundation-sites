@@ -53,7 +53,7 @@
         e.stopPropagation();
       });
 
-      $('*, html, body').on('click.fndtn.section', function (e) {
+      $(document).on('click.fndtn.section', function (e) {
         if ($(e.target).closest('.title').length < 1) {
           $('[data-section].vertical-nav, [data-section].horizontal-nav')
             .find('section, .section')
