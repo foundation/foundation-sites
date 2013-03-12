@@ -91,7 +91,7 @@ $pagination-link-current-active-bg:      $primary-color !default;
 
 
 
-@if $include-html-classes {
+@if $include-html-nav-classes {
 
   /* Pagination */
   .pagination { @include pagination; }

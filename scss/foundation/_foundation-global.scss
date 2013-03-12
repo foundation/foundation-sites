@@ -48,6 +48,19 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 $include-html-classes: true !default;
 $include-print-styles: true !default;
 
+$include-html-grid-classes: $include-html-classes !default;
+$include-html-visibility-classes: $include-html-classes !default;
+$include-html-button-classes: $include-html-classes !default;
+$include-html-form-classes: $include-html-classes !default;
+$include-html-media-classes: $include-html-classes !default;
+$include-html-section-classes: $include-html-classes !default;
+$include-html-reveal-classes: $include-html-classes !default;
+$include-html-alert-classes: $include-html-classes !default;
+$include-html-nav-classes: $include-html-classes !default;
+$include-html-label-classes: $include-html-classes !default;
+$include-html-panel-classes: $include-html-classes !default;
+$include-html-pricing-classes: $include-html-classes !default;
+$include-html-progress-classes: $include-html-classes !default;
 
 //
 // Functions
