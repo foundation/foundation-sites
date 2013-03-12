@@ -6,7 +6,7 @@
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.0.4',
+    version : '4.0.6',
 
     locked : false,
 
@@ -44,7 +44,7 @@
       }
 
       if (typeof method != 'string') {
-        if (!this.settings.init) this.events();
+        this.events();
 
         return this.settings.init;
       } else {
@@ -56,6 +56,7 @@
       var self = this;
 
       $(this.scope)
+        .off('.fndtn.reveal')
         .on('click.fndtn.reveal', '[data-reveal-id]', function (e) {
           e.preventDefault();
           if (!self.locked) {
@@ -76,6 +77,8 @@
         .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
         .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
         .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
+
+      return true;
     },
 
     open : function (target) {
