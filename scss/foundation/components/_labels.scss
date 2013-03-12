@@ -61,7 +61,7 @@ $label-font-weight: bold !default;
 }
 
 
-@if $include-html-classes {
+@if $include-html-label-classes {
 
   /* Labels */
   .label {

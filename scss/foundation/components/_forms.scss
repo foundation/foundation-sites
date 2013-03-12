@@ -241,96 +241,98 @@ $input-error-message-font-color-alt: #333 !default;
   @else { color: $input-error-message-font-color-alt; }
 }
 
-
-/* Standard Forms */
-form { margin: 0 0 $form-spacing; }
-
-/* Using forms within rows, we need to set some defaults */
-form .row { @include form-row-base; }
-form .row .row { margin: 0; }
-
-/* Label Styles */
-label { @include form-label;
-  &.right { @include form-label(right,false); }
-  &.inline { @include form-label(inline,false); }
-}
-
-/* Attach elements to the beginning or end of an input */
-.prefix,
-.postfix { @include prefix-postfix-base; }
-
-/* Adjust padding, alignment and radius if pre/post element is a button */
-.postfix.button { @include button-size(false,false,false); @include postfix(false,true); }
-.prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
-.prefix.button.radius { @include side-radius(left, $global-radius); }
-.postfix.button.radius { @include side-radius(right, $global-radius); }
-.prefix.button.round { @include side-radius(left, 1000px); }
-.postfix.button.round { @include side-radius(right, 1000px); }
-
-/* Separate prefix and postfix styles when on span so buttons keep their own */
-span.prefix { @include prefix();
-  &.radius { @include side-radius(left, $global-radius); }
-}
-span.postfix { @include postfix();
-  &.radius { @include side-radius(right, $global-radius); }
-}
-
-/* Input groups will automatically style first and last elements of the group */
-.input-group {
-  &.radius {
-    &>*:first-child,  &>*:first-child * {
-    	@include side-radius(left, $global-radius);
+// Only include these classes if the variable is true, otherwise they'll be left out.
+@if $include-html-form-classes {
+	/* Standard Forms */
+  form { margin: 0 0 $form-spacing; }
+  
+  /* Using forms within rows, we need to set some defaults */
+  form .row { @include form-row-base; }
+  form .row .row { margin: 0; }
+  
+  /* Label Styles */
+  label { @include form-label;
+    &.right { @include form-label(right,false); }
+    &.inline { @include form-label(inline,false); }
+  }
+  
+  /* Attach elements to the beginning or end of an input */
+  .prefix,
+  .postfix { @include prefix-postfix-base; }
+  
+  /* Adjust padding, alignment and radius if pre/post element is a button */
+  .postfix.button { @include button-size(false,false,false); @include postfix(false,true); }
+  .prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
+  .prefix.button.radius { @include side-radius(left, $global-radius); }
+  .postfix.button.radius { @include side-radius(right, $global-radius); }
+  .prefix.button.round { @include side-radius(left, 1000px); }
+  .postfix.button.round { @include side-radius(right, 1000px); }
+  
+  /* Separate prefix and postfix styles when on span so buttons keep their own */
+  span.prefix { @include prefix();
+    &.radius { @include side-radius(left, $global-radius); }
+  }
+  span.postfix { @include postfix();
+    &.radius { @include side-radius(right, $global-radius); }
+  }
+  
+  /* Input groups will automatically style first and last elements of the group */
+  .input-group {
+    &.radius {
+      &>*:first-child,  &>*:first-child * {
+        @include side-radius(left, $global-radius);
+      }
+      &>*:last-child, &>*:last-child * {
+        @include side-radius(right, $global-radius);
+      }
     }
-    &>*:last-child, &>*:last-child * {
-    	@include side-radius(right, $global-radius);
+    &.round {
+      &>*:first-child,  &>*:first-child * {
+        @include side-radius(left, 1000px);
+      }
+      &>*:last-child, &>*:last-child * {
+        @include side-radius(right, 1000px);
+      }
     }
   }
-  &.round {
-  	&>*:first-child,  &>*:first-child * {
-  		@include side-radius(left, 1000px);
-  	}
-  	&>*:last-child, &>*:last-child * {
-  		@include side-radius(right, 1000px);
-  	}
+  
+  /* We use this to get basic styling on all basic form elements */
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="week"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  textarea {
+    @include form-element;
+    @include single-transition(all, 0.15s, linear);
   }
-}
-
-/* We use this to get basic styling on all basic form elements */
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="week"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
-textarea {
-  @include form-element;
-  @include single-transition(all, 0.15s, linear);
-}
-
-/* We add basic fieldset styling */
-fieldset {
-  @include fieldset;
-}
-
-/* Error Handling */
-.error input,
-input.error,
-.error textarea,
-textarea.error {
-  @include form-error-color;
-}
-
-.error label,
-label.error { @include form-label-error-color; }
-
-.error small,
-small.error {
-  @include form-error-message;
+  
+  /* We add basic fieldset styling */
+  fieldset {
+    @include fieldset;
+  }
+  
+  /* Error Handling */
+  .error input,
+  input.error,
+  .error textarea,
+  textarea.error {
+    @include form-error-color;
+  }
+  
+  .error label,
+  label.error { @include form-label-error-color; }
+  
+  .error small,
+  small.error {
+    @include form-error-message;
+  }
 }

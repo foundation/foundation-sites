@@ -56,7 +56,7 @@ $panel-font-color-alt:  #fff !default;
 }
 
 // Only include these classes if the option exists
-@if $include-html-classes {
+@if $include-html-panel-classes {
 
   /* Panels */
   .panel { @include panel;

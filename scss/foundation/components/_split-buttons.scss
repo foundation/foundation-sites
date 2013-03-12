@@ -137,7 +137,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
 }
 
 
-@if $include-html-classes {
+@if $include-html-button-classes {
 
   /* Split Buttons */
   .split.button { @include split-button;
