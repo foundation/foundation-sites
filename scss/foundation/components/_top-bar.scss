@@ -65,6 +65,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   line-height: $topbar-height;
   position: relative;
   background: $topbar-bg;
+  margin-bottom: $topbar-margin-bottom;
 
   // Topbar Global list Styles
   ul {
