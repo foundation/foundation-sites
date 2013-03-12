@@ -17,7 +17,7 @@ module Foundation
         settings_file = File.join(File.dirname(__FILE__),"..","..","..","templates","project","scss","_settings.scss")
         create_file "app/assets/stylesheets/foundation_and_overrides.scss", File.read(settings_file)
         append_to_file "app/assets/stylesheets/foundation_and_overrides.scss", "\n@import 'foundation';\n"
-        insert_into_file "app/assets/stylesheets/application#{detect_css_format[0]}", "#{detect_css_format[1]} require foundation_and_overrides\n", :after => "require_self\n"
+        append_to_file "app/assets/stylesheets/application#{detect_css_format[0]}", "#{detect_css_format[1]} require foundation_and_overrides\n"
       end
 
       def detect_js_format
