@@ -6,7 +6,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.0.0',
+    version : '4.0.6',
 
     settings : {
       activeClass: 'open'
