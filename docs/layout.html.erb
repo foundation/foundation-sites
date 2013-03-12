@@ -109,8 +109,11 @@
     </script>
     <script src="<%= asset_path %>/docs.js"></script>
     <script>
-      $(document).foundation()
-                 .foundation('joyride', 'start');
+    $(document).ready(function() {
+      $(document).foundation().foundation('reveal', {
+        closeOnBackgroundClick: false
+      });
+    });
     </script>
   </body>
 </html>
