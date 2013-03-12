@@ -1,14 +1,15 @@
 Description:
-    Setup Foundation assets on your website or generate new layouts preconfigured to use Foundation
+    Setup Foundation assets in your app and generate new layouts preconfigured to use Foundation
 
 Example:
   rails g foundation:install
 
-  This will replace the default application assets:
+  This will insert foundation require lines into default application assets:
     /app/assets/javascripts/application.js
     /app/assets/stylesheets/application.css
 
-  rails generate foundation:layout
-
-  This will create:
+  And create sample layout (depending of your template engine):
     /app/views/layouts/application.html.erb
+
+  And foundation variables override file:
+    /app/assets/stylesheets/foundation_and_overrides.scss
