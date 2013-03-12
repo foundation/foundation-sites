@@ -3,8 +3,8 @@
 // Variables
 //
 
-// The default font-size is set to 100% of the browser style sheet (usually 16px) 
-// for compatibility with brower-based text zoom or user-set defaults. 
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with brower-based text zoom or user-set defaults.
 $base-font-size: 100% !default;
 
 // Set your base font-size in pixels so emCalc can do its magic below
@@ -62,6 +62,7 @@ $include-html-label-classes: $include-html-classes !default;
 $include-html-panel-classes: $include-html-classes !default;
 $include-html-pricing-classes: $include-html-classes !default;
 $include-html-progress-classes: $include-html-classes !default;
+$include-html-magellan-classes: $include-html-classes !default;
 
 //
 // Functions

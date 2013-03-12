@@ -210,7 +210,11 @@ bundle exec compass create . -r zurb-foundation --using foundation
 // Variables
 //
 
-// This is the default html and body font-size for the base em value.
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with brower-based text zoom or user-set defaults.
+$base-font-size: 100%;
+
+// Set your base font-size in pixels so emCalc can do its magic below
 $em-base: 16px;
 
 // We use these to control various global styles
@@ -219,9 +223,6 @@ $body-font-color: #222;
 $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $body-font-weight: normal;
 $body-font-style: normal;
-
-// We use this to control font-smoothing
-$font-smoothing: antialiased;
 
 // We use these to control text direction settings
 $text-direction: ltr;
@@ -364,15 +365,6 @@ $include-html-progress-classes: $include-html-classes;
   &:before, &:after { content: " "; display: table; }
   &:after { clear: both; }
 }
-
-// Media Queries
-$small-screen: emCalc(768px);
-$medium-screen: emCalc(1280px);
-$large-screen: emCalc(1440px);
-
-$small: "only screen and (min-width:"#{$small-screen}")" !default;
-$medium: "only screen and (min-width:"#{$medium-screen}")" !default;
-$large: "only screen and (min-width:"#{$large-screen}")" !default;
 
 ', :css %>
 

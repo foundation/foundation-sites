@@ -52,7 +52,7 @@ img { -ms-interpolation-mode: bicubic; }
 
 // Font smoothing
 // Antialiased font smoothing works best for light text on a dark background.
-// Apply to single elements instead of globally to body. 
+// Apply to single elements instead of globally to body.
 // Note this only applies to webkit-based desktop browsers on the Mac.
 .antialiased { -webkit-font-smoothing: antialiased; }
 
