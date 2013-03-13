@@ -10,7 +10,7 @@ $progress-bar-color: transparent !default;
 $progress-bar-border-color: darken(#fff, 20%) !default;
 $progress-bar-border-size: 1px !default;
 $progress-bar-border-style: solid !default;
-$progress-bar-border-radius: $button-radius !default;
+$progress-bar-border-radius: $global-radius !default;
 
 // We use these to control the margin & padding
 $progress-bar-pad: emCalc(2px) !default;

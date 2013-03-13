@@ -376,7 +376,7 @@
 // $crumb-border-size: 1px;
 // $crumb-border-style: solid;
 // $crumb-border-color: darken($crumb-bg, $crumb-function-factor);
-// $crumb-radius: $button-radius;
+// $crumb-radius: $global-radius;
 
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: emCalc(11px);
@@ -573,7 +573,7 @@
 // $keystroke-border-style: solid;
 // $keystroke-border-width: 1px;
 // $keystroke-border-color: darken($keystroke-bg, $keystroke-function-factor);
-// $keystroke-radius: $button-radius;
+// $keystroke-radius: $global-radius;
 
 //
 // Label Variables
@@ -581,7 +581,7 @@
 
 // We use these to style the labels
 // $label-padding: emCalc(3px) emCalc(10px) emCalc(4px);
-// $label-radius: $button-radius;
+// $label-radius: $global-radius;
 
 // We use these to style the label text
 // $label-font-size: emCalc(14px);
@@ -732,7 +732,7 @@
 // $progress-bar-border-color: darken(#fff, 20%);
 // $progress-bar-border-size: 1px;
 // $progress-bar-border-style: solid;
-// $progress-bar-border-radius: $button-radius;
+// $progress-bar-border-radius: $global-radius;
 
 // We use these to control the margin & padding
 // $progress-bar-pad: emCalc(2px);

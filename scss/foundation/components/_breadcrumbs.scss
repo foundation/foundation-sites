@@ -14,7 +14,7 @@ $crumb-function-factor: 10%                                    !default;
 $crumb-border-size: 1px                                        !default;
 $crumb-border-style: solid                                     !default;
 $crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
-$crumb-radius: $button-radius                                  !default;
+$crumb-radius: $global-radius                                  !default;
 
 // We use these to set various text styles for breadcrumbs.
 $crumb-font-size: emCalc(11px)                                 !default;
