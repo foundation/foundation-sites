@@ -1,8 +1,19 @@
 # Changelog
 ---
 
+### 4.0.6- March 13, 2013
+* Added modular HTML class variables to control whether or no those classes come through into your CSS.
+* Changed global font size defaults to 100% to let browsers use their default zooming.
+* Fixed bugs with top-bar bottom margin variables.
+* Bug fixes for Reveal click event propigation.
+* Bug fixes in the Dropdown plugins for positioning.
+* Removed duplicate binding in sections.
+* Changes all references to `$button-radius` to `$global-radius` to fix customizer blank css files.
+* Updated customizer with better groupings in the checkbox section.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.5...master).
+
 ### 4.0.5- March 8, 2013
-We're currently working on patch fixes for various parts of Foundation. We'll add to this list as we go up until release.
 * Custom classes added to custom forms now carry through to JS.
 * Added `.horizontal-nav` to `foundation.section.js`.
 * Fixed variables that weren't being inherited properly.
