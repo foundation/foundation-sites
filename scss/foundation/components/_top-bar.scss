@@ -65,7 +65,6 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   line-height: $topbar-height;
   position: relative;
   background: $topbar-bg;
-  margin-bottom: $topbar-margin-bottom;
 
   // Topbar Global list Styles
   ul {
@@ -159,7 +158,6 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   // Change things up when the top-bar is expanded
   &.expanded {
     height: auto;
-    background: transparent;
 
     .title-area { background: $topbar-bg; }
 
@@ -209,47 +207,24 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > a {
       display: block;
       width: 100%;
-      color: $topbar-link-color;
+      color: $topbar-dropdown-link-color;
       padding: 12px 0 12px 0;
       padding-#{$default-float}: $topbar-height / 3;
       font-size: $topbar-link-font-size;
       font-weight: $topbar-link-weight;
-      background: $topbar-dropdown-bg;
 
       &:hover { background: darken($topbar-dropdown-bg, 3%); }
 
 
       &.button {
-        background: $primary-color;
         font-size: $topbar-link-font-size;
-        &:hover {
-          background: darken($primary-color, 10%);
-        }
-      }
-      &.button.secondary {
-        background: $secondary-color;
-        &:hover {
-          background: darken($secondary-color, 10%);
-        }
-      }
-      &.button.success {
-        background: $success-color;
-        &:hover {
-          background: darken($success-color, 10%);
-        }
-      }
-      &.button.alert {
-        background: $alert-color;
-        &:hover {
-          background: darken($alert-color, 10%);
-        }
       }
 
     }
 
-    // Apply the active link color when it has that class
-    &.active a { background: darken($topbar-dropdown-bg, 3%); }
   }
+
+  .active { background: darken($topbar-dropdown-bg, 3%); }
 
   // Add some extra padding for list items contains buttons
   .has-form { padding: $topbar-height / 3; }
@@ -320,7 +295,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
 // Top Bar styles intended for screen sizes above the breakpoint.
 @media #{$topbar-media-query} {
-  .top-bar { background: $topbar-bg; @include clearfix; overflow: visible;
+  .top-bar { /*background: $topbar-bg;*/ @include clearfix; overflow: visible;
     .toggle-topbar { display: none; }
 
     .title-area { float: $default-float; }
@@ -336,7 +311,6 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       top: 8px;
     }
 
-    &.expanded { background: $topbar-bg; }
   }
 
   .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; }
@@ -360,8 +334,6 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       a:not(.button) {
         padding: 0 $topbar-height / 3;
         line-height: $topbar-height;
-        background: $topbar-bg;
-        &:hover { background: darken($topbar-dropdown-bg, 30%); }
       }
     }
 
@@ -402,20 +374,16 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     .dropdown {
       #{$default-float}: 0;
       top: auto;
-      background: transparent;
 
       li {
         a {
-          color: $topbar-dropdown-link-color;
           line-height: 1;
           white-space: nowrap;
           padding: 7px $topbar-height / 3;
-          background: lighten($topbar-bg, 5%);
         }
 
         label {
           white-space: nowrap;
-          background: lighten($topbar-bg, 5%);
         }
 
         // Second Level Dropdowns
@@ -437,7 +405,6 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     }
 
     .has-form {
-      background: $topbar-bg;
       padding: 0 $topbar-height / 3;
       height: $topbar-height;
     }
