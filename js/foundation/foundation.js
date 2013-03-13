@@ -8,11 +8,21 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-// Accommodate running jQuery in noConflict() mode by
-// using an anonymous function to redefine the jQuery $
-// shorthand name. See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
-if (jQuery == null) {
-    var jQuery = $;
+// Accommodate running jQuery or Zepto in noConflict() mode by
+// using an anonymous function to redefine the $ shorthand name.
+// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
+// and http://zeptojs.com/
+var libFuncName = null;
+if (typeof jQuery === "undefined" &&
+    typeof Zepto === "undefined" &&
+    typeof $ === "function") {
+    libFuncName = $;
+} else if (typeof jQuery === "function") {
+    libFuncName = jQuery;
+} else if (typeof Zepto === "function") {
+    libFuncName = Zepto;
+} else {
+    throw new TypeError();
 }
 
 (function ($) {
@@ -339,4 +349,4 @@ if (jQuery == null) {
 
 }(this, this.document));
 
-})(jQuery);
+})(libFuncName);
