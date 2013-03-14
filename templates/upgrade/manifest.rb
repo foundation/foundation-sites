@@ -1,6 +1,7 @@
 description 'Foundation Compass Gem'
 
 stylesheet '../project/scss/_settings.scss', :to => '_settings.scss'
+stylesheet '../project/scss/app.scss', :to => 'app.scss'
 stylesheet '../../scss/normalize.scss', :to => 'normalize.scss', :media => "screen, projector, print"
 
 def copy_js_from(relative_path, prefix_path, excludes=[])
