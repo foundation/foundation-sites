@@ -236,7 +236,7 @@ $stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function
 
         <p>Orbit options can only be passed in during initialization at this time.</p>
 
-    <%= code_example "
+<%= code_example "
 {
   timer_speed: 10000,
   animation_speed: 500,
@@ -257,6 +257,14 @@ $stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function
   active_slide_class: 'active',
   orbit_transition_class: 'orbit-transitioning'
 }", :js %>
+
+    <p>You can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>style</code> property:</p>
+
+<%= code_example '
+<ul data-orbit data-options="timer_speed:2500; bullets:false;">
+  ...
+</ul>
+', :html %>
 
       </div>
     </div>
