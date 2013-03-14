@@ -97,7 +97,7 @@ $crumb-slash: "/"                                              !default;
   }
   &:first-child a,
   &:first-child span { padding-#{$default-float}: 0; }
-  &:first-child:before { content: ""; }
+  &:first-child:before { content: " "; }
 
 }
 
