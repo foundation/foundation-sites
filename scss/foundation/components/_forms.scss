@@ -288,10 +288,10 @@ $input-error-message-font-color-alt: #333 !default;
     }
     &.round {
       &>*:first-child,  &>*:first-child * {
-        @include side-radius(left, 1000px);
+        @include side-radius(left, $button-round);
       }
       &>*:last-child, &>*:last-child * {
-        @include side-radius(right, 1000px);
+        @include side-radius(right, $button-round);
       }
     }
   }
