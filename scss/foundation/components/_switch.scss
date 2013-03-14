@@ -219,7 +219,7 @@ $switch-label-outline:            1px dotted #888 !default;
   @media only screen {
 
     // Containing element for the radio switch
-    .switch {
+    div.switch {
       @include switch;
 
       // Large radio switches
