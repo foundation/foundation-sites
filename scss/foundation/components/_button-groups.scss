@@ -34,12 +34,12 @@ $button-bar-margin-right: emCalc(10px) !default;
 
   // We use these to control left and right radius on first/last buttons in the group.
   @if $radius == true {
-    &:first-child > a, &:first-child > button { @include side-radius($default-float, $button-radius); }
-    &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $button-radius); }
+    &:first-child, &:first-child > a, &:first-child > button { @include side-radius($default-float, $button-radius); }
+    &:last-child, &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $button-radius); }
   }
   @else if $radius {
-    &:first-child > a, &:first-child > button { @include side-radius($default-float, $radius); }
-    &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $radius); }
+    &:first-child, &:first-child > a, &:first-child > button { @include side-radius($default-float, $radius); }
+    &:last-child, &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $radius); }
   }
 
   // We use this to make the buttons even width across their container
@@ -56,10 +56,10 @@ $button-bar-margin-right: emCalc(10px) !default;
   /* Button Groups */
   .button-group { @include button-group-container;
 
-    li { @include button-group-style(); }
+    &> * { @include button-group-style(); }
 
-    &.radius li { @include button-group-style($radius:$button-radius, $float:null); }
-    &.round li { @include button-group-style($radius:1000px, $float:null); }
+    &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
+    &.round > * { @include button-group-style($radius:$button-round, $float:null); }
 
     @for $i from 2 through 8 {
       &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
