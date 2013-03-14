@@ -88,12 +88,9 @@
             $('body').css('padding-top','0');
             window.scrollTo(0);
           } else {
-            topbar.parent().toggleClass('fixed');
+            topbar.parent().addClass('fixed');
             $('body').css('padding-top',offst);
           }
-
-          // check for sticky
-          this.sticky();
 
         })
 
@@ -178,6 +175,8 @@
       // Put element back in the DOM
       this.settings.$section.appendTo(this.settings.$topbar);
 
+      // check for sticky
+      this.sticky();
     },
 
     largestUL : function () {
