@@ -1,7 +1,4 @@
-# Changelog
----
-
-### 4.0.6- March 13, 2013
+### 4.0.6- March 14, 2013
 * Added modular HTML class variables to control whether or no those classes come through into your CSS.
 * Changed global font size defaults to 100% to let browsers use their default zooming.
 * Fixed bugs with top-bar bottom margin variables.
@@ -10,8 +7,9 @@
 * Removed duplicate binding in sections.
 * Changes all references to `$button-radius` to `$global-radius` to fix customizer blank css files.
 * Updated customizer with better groupings in the checkbox section.
+* Added data-options support to Orbit.
 
-You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.5...master).
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.5...v4.0.6).
 
 ### 4.0.5- March 8, 2013
 * Custom classes added to custom forms now carry through to JS.
@@ -35,7 +33,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Fixed bug with custom checkboxes not clickable from the `<span>`.
 * Added docs about using Sass standalone with Foundation.
 
-You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...master).
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.4...v4.0.5).
 
 ### 4.0.4
 This patch fixes various bugs that have been submitted since release. We'll be more specific with changelog updates going forward.
