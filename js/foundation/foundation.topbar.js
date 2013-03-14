@@ -82,11 +82,6 @@
             section.find('li.moved').removeClass('moved');
             topbar.data('index', 0);
           }
-
-          if (topbar.parent().hasClass('fixed')) {
-            topbar.parent().toggleClass('fixed');
-            $('body').css('padding-top', 0);
-          }
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
@@ -172,6 +167,9 @@
 
       // check for sticky
       this.sticky();
+
+      // check for fixed
+      this.fixed();
     },
 
     largestUL : function () {
@@ -213,7 +211,16 @@
     },
 
     fixed : function() {
-
+      if (topbar.parent().hasClass('fixed')) {
+        var offst = this.outerHeight($('nav.top-bar'))+20;
+        topbar.parent().toggleClass('fixed');
+        $('body').css('padding-top', 0);
+        window.scrollTo(0);
+      }
+      else {
+        topbar.parent().toggleClass('fixed');
+        $('body').css('padding-top',offst);
+      }
     },
 
     off : function () {
