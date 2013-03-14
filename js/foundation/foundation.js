@@ -228,12 +228,16 @@ if (typeof jQuery === "undefined" &&
         };
       },
 
-      // parses dat-options attribute on page nodes and turns
+      // parses data-options attribute on page nodes and turns
       // them into an object
       data_options : function (el) {
         var opts = {}, ii, p,
             opts_arr = (el.attr('data-options') || ':').split(';'),
             opts_len = opts_arr.length;
+
+        function isNumber (o) {
+          return ! isNaN (o-0) && o !== null && o !== "" && o !== false;
+        }
 
         function trim(str) {
           if (typeof str === 'string') return $.trim(str);
@@ -246,6 +250,7 @@ if (typeof jQuery === "undefined" &&
 
           if (/true/i.test(p[1])) p[1] = true;
           if (/false/i.test(p[1])) p[1] = false;
+          if (isNumber(p[1])) p[1] = parseInt(p[1], 10);
 
           if (p.length === 2) {
             opts[trim(p[0])] = trim(p[1]);
