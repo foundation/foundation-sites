@@ -4,6 +4,8 @@
   Foundation.libs = Foundation.libs || {};
 
   Foundation.libs.orbit = {
+    name: 'orbit',
+
     version: '4.0.0',
 
     settings: {
@@ -29,12 +31,16 @@
 
     init: function (scope, method, options) {
       var self = this;
+      Foundation.inherit(self, 'data_options');
 
       if (typeof method === 'object') {
         $.extend(true, self.settings, method);
       }
 
-      $('[data-orbit]', scope).each($.proxy(self._init, self));
+      $('[data-orbit]', scope).each(function(idx, el) {
+        var scoped_self = $.extend(true, {}, self);
+        scoped_self._init(idx, el);
+      });
     },
 
     _container_html: function() {
@@ -88,6 +94,8 @@
           $slides_container = $(slider),
           $container = $slides_container.wrap(self._container_html()).parent(),
           $slides = $slides_container.children();
+      
+      $.extend(true, self.settings, self.data_options($slides_container));
 
       $container.append(self._prev_html());
       $container.append(self._next_html());
@@ -244,7 +252,7 @@
           progress_pct = ($progress.width() / $timer.width()),
           delay = self.settings.timer_speed - (progress_pct * self.settings.timer_speed);
 
-      $progress.animate({'width': '100%'}, delay, 'linear', callback).data('is-original', 'beans?');
+      $progress.animate({'width': '100%'}, delay, 'linear', callback);
       $slides_container.trigger('orbit:timer-started');
     },
 
