@@ -403,6 +403,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       #{$default-float}: 0;
       top: auto;
       background: transparent;
+      width: 100%;
 
       li {
         a {
