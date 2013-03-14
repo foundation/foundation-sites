@@ -82,6 +82,11 @@
             section.find('li.moved').removeClass('moved');
             topbar.data('index', 0);
           }
+
+          if (topbar.parent().hasClass('fixed')) {
+            topbar.parent().toggleClass('fixed');
+            $('body').css('padding-top', 0);
+          }
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
@@ -205,6 +210,10 @@
            }
         });
       }
+    },
+
+    fixed : function() {
+
     },
 
     off : function () {
