@@ -56,6 +56,19 @@
               settings.$section.find('li.moved').removeClass('moved');
               settings.index = 0;
             }
+
+            if ($('.fixed').length > 0) {
+              var offst = $('.top-bar').outerHeight();
+
+              if ($('.top-bar').parent().hasClass('fixed')) {
+                $('.top-bar').parent().removeClass('fixed');
+                $('body').css('padding-top','0');
+                window.scrollTo(0);
+              } else {
+                $('.top-bar').parent().addClass('fixed');
+                $('body').css('padding-top',offst);
+              }
+            }
           });
 
           // Show the Dropdown Levels on Click
@@ -157,21 +170,21 @@
 
   // Monitor scroll position for sticky
   if ($('.sticky').length > 0) {
-      var distance = $('.sticky').length ? $('.sticky').offset().top: 0,
-          $window = $(window);
-          var offst = $('nav.top-bar').outerHeight()+20;
+    var distance = $('.sticky').length ? $('.sticky').offset().top: 0,
+        $window = $(window);
+        var offst = $('nav.top-bar').outerHeight()+20;
 
-        $window.scroll(function() {
-          if ( $window.scrollTop() >= ( distance ) ) {
-             $(".sticky").addClass("fixed");
-               $('body').css('padding-top',offst);
-          }
+      $window.scroll(function() {
+        if ( $window.scrollTop() >= ( distance ) ) {
+           $(".sticky").addClass("fixed");
+             $('body').css('padding-top',offst);
+        }
 
-         else if ( $window.scrollTop() < distance ) {
-            $(".sticky").removeClass("fixed");
-            $('body').css('padding-top','0');
-         }
-      });
-    }
+       else if ( $window.scrollTop() < distance ) {
+          $(".sticky").removeClass("fixed");
+          $('body').css('padding-top','0');
+       }
+    });
+  }
 
 }(jQuery, this));
