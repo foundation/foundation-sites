@@ -101,6 +101,7 @@
 
       $(this.scope)
         .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
+          if (!e.touches) { e = e.originalEvent; }
           var data = {
                 start_page_x: e.touches[0].pageX,
                 start_page_y: e.touches[0].pageY,
@@ -113,6 +114,7 @@
           e.stopPropagation();
         })
         .on('touchmove.fndtn.clearing', '.visible-img', function(e) {
+          if (!e.touches) { e = e.originalEvent; }
           // Ignore pinch/zoom events
           if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
