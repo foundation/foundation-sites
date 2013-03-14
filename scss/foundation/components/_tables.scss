@@ -75,6 +75,6 @@ $table-margin-bottom:    emCalc(20px) !default;
 
 
 /* Tables */
-table {
+table.table {
   @include table;
 }
