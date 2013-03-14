@@ -97,7 +97,7 @@
           a { padding-right: $topBarHeight * .75;
             &:after { @include cssTriangle($topBarDropToggleSize, $topBarDropToggleColor, top); margin-right: $topBarHeight / 3; margin-top: -$topBarDropToggleSize / 2; position: absolute; right: 0; top: 50%; }
           }
-          .dropdown { width: 100%; background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
+          .dropdown { min-width: 100%; background: $topBarDropBgColor; left: 0; margin: 0; padding: $topBarHeight / 5 0 0 0; position: absolute; visibility: hidden; z-index: 99;
             li { background: $topBarDropBgColor; line-height: 1; min-width: 100%; padding-bottom: 5px;
               a { color: $topBarDropLinkColor; font-weight: normal; height: 100%; line-height: 1; padding: 5px $topBarHeight / 3 + 2 5px $topBarHeight / 3; white-space: nowrap;
                 &:after { border: none; }
