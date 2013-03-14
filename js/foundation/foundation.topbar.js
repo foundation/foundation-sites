@@ -26,7 +26,7 @@
 
       if (typeof method != 'string') {
 
-        $('nav.top-bar').each(function () {
+        $('.top-bar').each(function () {
           self.settings.$w = $(window);
           self.settings.$topbar = $(this);
           self.settings.$section = self.settings.$topbar.find('section');
@@ -59,7 +59,7 @@
 
     events : function () {
       var self = this;
-
+      var offst = this.outerHeight($('.top-bar'));
       $(this.scope)
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar', function (e) {
           var topbar = $(this).closest('.top-bar'),
@@ -82,6 +82,19 @@
             section.find('li.moved').removeClass('moved');
             topbar.data('index', 0);
           }
+
+          if (topbar.parent().hasClass('fixed')) {
+            topbar.parent().removeClass('fixed');
+            $('body').css('padding-top','0');
+            window.scrollTo(0);
+          } else {
+            topbar.parent().toggleClass('fixed');
+            $('body').css('padding-top',offst);
+          }
+
+          // check for sticky
+          this.sticky();
+
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
@@ -165,11 +178,6 @@
       // Put element back in the DOM
       this.settings.$section.appendTo(this.settings.$topbar);
 
-      // check for sticky
-      this.sticky();
-
-      // check for fixed
-      this.fixed();
     },
 
     largestUL : function () {
@@ -194,32 +202,19 @@
       if ($(klass).length > 0) {
         var distance = $(klass).length ? $(klass).offset().top: 0,
             $window = $(window);
-            var offst = this.outerHeight($('nav.top-bar'))+20;
+            var offst = this.outerHeight($('.top-bar'));
 
           $window.scroll(function() {
             if ($window.scrollTop() >= (distance)) {
-               $(klass).addClass("fixed");
-                 $('body').css('padding-top',offst);
+              $(klass).addClass("fixed");
+              $('body').css('padding-top',offst);
             }
 
-           else if ($window.scrollTop() < distance) {
+            else if ($window.scrollTop() < distance) {
               $(klass).removeClass("fixed");
               $('body').css('padding-top','0');
-           }
+            }
         });
-      }
-    },
-
-    fixed : function() {
-      if (topbar.parent().hasClass('fixed')) {
-        var offst = this.outerHeight($('nav.top-bar'))+20;
-        topbar.parent().toggleClass('fixed');
-        $('body').css('padding-top', 0);
-        window.scrollTo(0);
-      }
-      else {
-        topbar.parent().toggleClass('fixed');
-        $('body').css('padding-top',offst);
       }
     },
 
