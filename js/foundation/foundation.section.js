@@ -11,7 +11,6 @@
     settings : {
       deep_linking: false,
       one_up: true,
-      force_tabs: false,
       callback: function (){}
     },
 
@@ -245,8 +244,7 @@
 
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
-
-      if (settings.force_tabs) {
+      if (el && el.hasClass('tabs')) {
         return false;
       }
       if (el && this.is_accordion(el)) {
