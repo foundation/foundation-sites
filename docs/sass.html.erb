@@ -59,9 +59,6 @@
     <p>If you want to pick and choose which pieces of Foundation you want, the pieces you need are:</p>
 
 <%= code_example '
-@import "foundation/foundation-global";
-@import "foundation/components/global";
-
 /* Each individual part that can be added in */
 @import "foundation/components/grid";
 @import "foundation/components/visibility";
@@ -206,6 +203,8 @@ bundle exec compass create . -r zurb-foundation --using foundation
 
 <%= code_example '
 // Foundation Global Function, Variables and Mixins
+@import "foundation/components/global";
+
 //
 // Variables
 //
