@@ -88,6 +88,7 @@ $total-columns: 12 !default;
   @if $center {
     margin-left: auto;
     margin-right: auto;
+    float: none !important;
   }
 
   @if $float {

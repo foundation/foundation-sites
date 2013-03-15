@@ -330,8 +330,8 @@ $float: false
 
 <%= code_example '
 #masthead { @include grid-row; @include panel;
-  & > hgroup { @include grid-column(4, $float:left); }
-  & > section { @include grid-column(8, $float:left); }
+  & > hgroup { @include grid-column(4); }
+  & > section { @include grid-column(8); }
 }', :css %>
 
         <header id="masthead">
