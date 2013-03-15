@@ -8,6 +8,25 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
+// Accommodate running jQuery or Zepto in noConflict() mode by
+// using an anonymous function to redefine the $ shorthand name.
+// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
+// and http://zeptojs.com/
+var libFuncName = null;
+if (typeof jQuery === "undefined" &&
+    typeof Zepto === "undefined" &&
+    typeof $ === "function") {
+    libFuncName = $;
+} else if (typeof jQuery === "function") {
+    libFuncName = jQuery;
+} else if (typeof Zepto === "function") {
+    libFuncName = Zepto;
+} else {
+    throw new TypeError();
+}
+
+(function ($) {
+
 (function () {
   // add dusty browser stuff
   if (!Array.prototype.filter) {
@@ -209,12 +228,16 @@
         };
       },
 
-      // parses dat-options attribute on page nodes and turns
+      // parses data-options attribute on page nodes and turns
       // them into an object
       data_options : function (el) {
         var opts = {}, ii, p,
             opts_arr = (el.attr('data-options') || ':').split(';'),
             opts_len = opts_arr.length;
+
+        function isNumber (o) {
+          return ! isNaN (o-0) && o !== null && o !== "" && o !== false;
+        }
 
         function trim(str) {
           if (typeof str === 'string') return $.trim(str);
@@ -227,6 +250,7 @@
 
           if (/true/i.test(p[1])) p[1] = true;
           if (/false/i.test(p[1])) p[1] = false;
+          if (isNumber(p[1])) p[1] = parseInt(p[1], 10);
 
           if (p.length === 2) {
             opts[trim(p[0])] = trim(p[1]);
@@ -329,3 +353,5 @@
   };
 
 }(this, this.document));
+
+})(libFuncName);

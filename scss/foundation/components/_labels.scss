@@ -4,7 +4,7 @@
 
 // We use these to style the labels
 $label-padding:     emCalc(3px) emCalc(10px) emCalc(4px) !default;
-$label-radius:      $button-radius !default;
+$label-radius:      $global-radius !default;
 
 // We use these to style the label text
 $label-font-size:   emCalc(14px) !default;
@@ -21,7 +21,7 @@ $label-font-weight: bold !default;
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
-  display: inline;
+  display: inline-block;
   position: relative;
 }
 
@@ -61,7 +61,7 @@ $label-font-weight: bold !default;
 }
 
 
-@if $include-html-classes {
+@if $include-html-label-classes {
 
   /* Labels */
   .label {

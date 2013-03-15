@@ -33,6 +33,7 @@ $button-border-color:     darken($primary-color, $button-function-factor) !defau
 
 // We use this to set the default radius used throughout the core.
 $button-radius:           $global-radius !default;
+$button-round:            $global-rounded !default;
 
 // We use this to set default opacity for disabled buttons.
 $button-disabled-opacity: 0.6 !default;
@@ -154,10 +155,10 @@ $button-disabled-opacity: 0.6 !default;
 //
 
 // Only include these classes if the variable is true, otherwise they'll be left out.
-@if $include-html-classes {
+@if $include-html-button-classes {
 
   // Default styles applied outside of media query
-  .button {
+  button, .button {
     @include button-base;
     @include button-size;
     @include button-style;
@@ -202,7 +203,7 @@ $button-disabled-opacity: 0.6 !default;
       &.tiny   { @include button-size($padding:false, $full-width:false); }
 
       &.radius { @include button-style($bg:false, $radius:true); }
-      &.round  { @include button-style($bg:false, $radius:1000px); }
+      &.round  { @include button-style($bg:false, $radius:$button-round); }
     }
 
   }

@@ -65,6 +65,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   line-height: $topbar-height;
   position: relative;
   background: $topbar-bg;
+  margin-bottom: $topbar-margin-bottom;
 
   // Topbar Global list Styles
   ul {
@@ -208,7 +209,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > a {
       display: block;
       width: 100%;
-      color: $topbar-dropdown-link-color;
+      color: $topbar-link-color;
       padding: 12px 0 12px 0;
       padding-#{$default-float}: $topbar-height / 3;
       font-size: $topbar-link-font-size;
@@ -402,9 +403,11 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       #{$default-float}: 0;
       top: auto;
       background: transparent;
+      min-width: 100%;
 
       li {
         a {
+          color: $topbar-dropdown-link-color;
           line-height: 1;
           white-space: nowrap;
           padding: 7px $topbar-height / 3;

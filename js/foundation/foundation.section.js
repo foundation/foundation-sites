@@ -83,26 +83,29 @@
             .attr('style', '');
         }
       } else {
+        var prev_active_section = null,
+            title_height = self.outerHeight(section.find('.title'));
+
         if (self.small(parent) || self.settings.one_up) {
-          $this
-            .closest('[data-section]')
-            .find('section, .section')
-            .removeClass('active')
-            .attr('style', '');
+          prev_active_section = $this.closest('[data-section]').find('section.active, .section.active');
 
-          section.css('padding-top', self.outerHeight(section.find('.title')));
+          if (self.small(parent)) {
+            prev_active_section.attr('style', '');
+          } else {
+            prev_active_section.attr('style', 'visibility: hidden; padding-top: '+title_height+'px;');
+          }
         }
-
-        $('[data-section].vertical-nav, [data-section].horizontal-nav')
-            .find('section, .section')
-            .removeClass('active')
-            .attr('style', '');
 
         if (self.small(parent)) {
           section.attr('style', '');
+        } else {
+          section.css('padding-top', title_height);
         }
 
         section.addClass('active');
+        if (prev_active_section !== null) {
+          prev_active_section.removeClass('active').attr('style', '');
+        }
       }
       setTimeout(function () {
         self.settings.toggled = false;
