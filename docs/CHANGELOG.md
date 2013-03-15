@@ -1,3 +1,10 @@
+<!--
+### 4.0.8 (In Progress)
+* Added paragraph `text-rendering` variable: `$paragraph-text-rendering`.
+
+-->
+
+
 ### 4.0.7- March 14, 2013
 * Fixed problem with buggy pull request that made radius buttons look like ovals, sorry.
 
