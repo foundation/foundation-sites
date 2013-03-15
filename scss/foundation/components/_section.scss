@@ -210,6 +210,13 @@ $section-bottom-margin:          emCalc(20px) !default;
     .section { @include section; }
   }
 
+  .section-container.tabs {
+    @include section-container(false, tabs);
+
+    section,
+    .section { @include section(tabs); }
+  }
+
   @media #{$small} {
 
     .section-container.accordion .section {
@@ -228,13 +235,6 @@ $section-bottom-margin:          emCalc(20px) !default;
 
       section,
       .section { @include section(horizontal-nav); }
-    }
-
-    .section-container.tabs {
-      @include section-container(false, tabs);
-
-      section,
-      .section { @include section(tabs); }
     }
   }
 
