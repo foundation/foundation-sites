@@ -15,7 +15,7 @@
     &.centered { float: none; margin: 0 auto; }
   }
 
-  [class*="column"] + [class*="column"]:last-of-type { float: $defaultOpposite; }
+  [class*="column"] + [class*="column"]:last-child { float: $defaultOpposite; }
   [class*="column"] + [class*="column"].end { float: $defaultFloat; }
 
   // Creating column classes

@@ -26,8 +26,8 @@
     &.xlarge  { width: 70%; margin-#{$defaultFloat}: -35%; }
     &.expand  { width: 90%; margin-#{$defaultFloat}: -45%; }
     .row { min-width: 0; margin-bottom: 10px; width: 100%; }
-    > :first-of-type { margin-top: 0; }
-    > :last-of-type { margin-bottom: 0; }
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
   }
   @media print {
     .reveal-modal { border: solid 1px #000; background: #fff; }

@@ -148,16 +148,16 @@
   ul.button-group { list-style: none; padding: 0; margin: 0 0 12px; @include clearfix();
 
     li { padding: 0; margin: 0 0 0 -1px; float: $defaultFloat;
-      &:first-of-type { margin-#{$defaultFloat}: 0; }
+      &:first-child { margin-#{$defaultFloat}: 0; }
     }
 
     &.radius li {
       .button, .button.radius, .button-rounded { @include border-radius(0px); }
-      &:first-of-type {
+      &:first-child {
         .button, .button.radius { @include border-corner-radius(top, $defaultFloat, $buttonRadius); @include border-corner-radius(bottom, $defaultFloat, $buttonRadius); }
         .button.rounded { @include border-corner-radius(top, $defaultFloat, 1000px); @include border-corner-radius(bottom, $defaultFloat, 1000px); }
       }
-      &:last-of-type {
+      &:last-child {
         .button, .button.radius { @include border-corner-radius(top, $defaultOpposite, $buttonRadius); @include border-corner-radius(bottom, $defaultOpposite, $buttonRadius); }
         .button.rounded { @include border-corner-radius(top, $defaultOpposite, 1000px); @include border-corner-radius(bottom, $defaultOpposite, 1000px); }
       }
@@ -167,7 +167,7 @@
       .button { width: 100%; }
       &.two-up li { width: 50%; }
       &.three-up li { width: 33.3%; }
-      &.three-up li:first-of-type { width: 33.4%; }
+      &.three-up li:first-child { width: 33.4%; }
       &.four-up li { width: 25%; }
       &.five-up li { width: 20%; }
     }
@@ -175,5 +175,5 @@
 
   div.button-bar { overflow: hidden;
     ul.button-group { float: $defaultFloat; margin-#{$defaultOpposite}: 8px; }
-    ul.button-group:last-of-type { margin-#{$defaultFloat}: 0; }
+    ul.button-group:last-child { margin-#{$defaultFloat}: 0; }
   }
