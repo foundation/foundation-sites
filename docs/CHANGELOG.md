@@ -1,10 +1,13 @@
-<!--
-### 4.0.8 (In Progress)
+### 4.0.8- March 15, 2013
 * Added paragraph `text-rendering` variable: `$paragraph-text-rendering`.
 * Changed blockgrid to use clearfix instead of overflow.
 * Fixed nested row margin inside forms.
+* Fixed data_options function that caused booleans to be interpreted as numbers.
+* Tabs no longer automatically convert to accordion on desktop. 
+* Sections with accordion class always remain accordions and sections with tab class always remain tabs. 
+* Vertical and horizontal navigation elements still become accordions on mobile
 
--->
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.7...v4.0.8).
 
 
 ### 4.0.7- March 14, 2013
