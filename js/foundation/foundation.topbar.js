@@ -87,7 +87,7 @@
             topbar.parent().removeClass('fixed');
             $('body').css('padding-top','0');
             window.scrollTo(0);
-          } else {
+          } else if (topbar.hasClass('fixed expanded')) {
             topbar.parent().addClass('fixed');
             $('body').css('padding-top',offst);
           }
