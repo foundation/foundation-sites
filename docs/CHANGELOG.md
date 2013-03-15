@@ -1,4 +1,11 @@
-### 4.0.6- March 14, 2013
+### 4.0.7- March 14, 2013
+* Fixed problem with buggy pull request that made radius buttons look like ovals, sorry.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.6...v4.0.7).
+
+---
+
+### 4.0.6- March 14, 2013 (Yanked)
 * Added modular HTML class variables to control whether or no those classes come through into your CSS.
 * Changed global font size defaults to 100% to let browsers use their default zooming.
 * Fixed bugs with top-bar bottom margin variables.
