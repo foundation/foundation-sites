@@ -45,6 +45,7 @@ Joomla
 Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
+* [Zurb Foundation] Supporting F3.2, F4 and Drupal 8 (http://drupal.org/project/zurb-foundation) by [Ishmael Sanchez](http://ishmaelsanchez.com), [Chris Lee](http://hire.chrisjlee.net)
 * [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
 
 PyroCMS
