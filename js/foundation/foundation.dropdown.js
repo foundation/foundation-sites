@@ -82,6 +82,10 @@
     },
 
     css : function (dropdown, target) {
+      if (target.parent().hasClass('button', 'split')) {
+        var target = target.parent();
+      }
+
       if (dropdown.parent()[0] === $('body')[0]) {
         var position = target.offset();
       } else {
