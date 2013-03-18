@@ -130,7 +130,7 @@
     },
 
     toggle_bg : function (modal) {
-      if (this.settings.bg.length === 0) {
+      if ($('.reveal-modal-bg').length === 0) {
         this.settings.bg = $('<div />', {'class': this.settings.bgClass})
           .insertAfter(modal);
       }
