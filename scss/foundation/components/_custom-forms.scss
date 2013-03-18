@@ -15,7 +15,7 @@ $custom-select-border-color:            #ddd !default;
 $custom-select-triangle-color:          #aaa !default;
 $custom-select-triangle-color-open:     #222 !default;
 $custom-select-height:                  emCalc(13px) + ($form-spacing * 1.5) !default;
-$custom-select-margin-bottom:           emCalc(20px) !default;
+$custom-select-margin-bottom:           $form-spacing !default;
 $custom-select-font-color-selected:     #141414 !default;
 $custom-select-disabled-color:          #888 !default;
 
@@ -45,10 +45,10 @@ $custom-dropdown-width-large:           434px !default;
 
 // Only include these classes if the variable is true, otherwise they'll be left out.
 @if $include-html-button-classes {
-  
+
   /* Custom Checkbox and Radio Inputs */
   form.custom {
-  
+
     .custom {
       display: inline-block;
       width: 16px;
@@ -57,9 +57,9 @@ $custom-dropdown-width-large:           434px !default;
       top: 2px;
       border: solid 1px $custom-form-border-color;
       background: $custom-form-bg;
-  
+
       &.radio { @include radius(1000px); }
-  
+
       &.checkbox {
         &:before {
           content: "";
@@ -75,7 +75,7 @@ $custom-dropdown-width-large:           434px !default;
           color: #fff;
         }
       }
-  
+
       &.radio.checked {
         &:before {
           content: "";
@@ -89,7 +89,7 @@ $custom-dropdown-width-large:           434px !default;
           #{$default-float}: 3px;
         }
       }
-  
+
       &.checkbox.checked {
         &:before {
           content: "\00d7";
@@ -98,7 +98,7 @@ $custom-dropdown-width-large:           434px !default;
       }
     }
   }
-  
+
   /* Custom Select Options and Dropdowns */
   form.custom {
     .custom.dropdown {
@@ -118,12 +118,12 @@ $custom-dropdown-width-large:           434px !default;
       box-shadow: none;
       font-size: emCalc(14px);
       vertical-align: top;
-  
+
       ul {
         overflow-y: auto;
         max-height: $custom-dropdown-height;
       }
-  
+
       .current {
         cursor:default;
         white-space: nowrap;
@@ -135,7 +135,7 @@ $custom-dropdown-width-large:           434px !default;
         margin-left: $form-spacing / 2;
         margin-right: $custom-select-height;
       }
-  
+
       .selector {
         cursor:default;
         position: absolute;
@@ -154,13 +154,13 @@ $custom-dropdown-width-large:           434px !default;
           margin-top: -3px;
         }
       }
-  
+
       &:hover, &.open {
         a.selector {
           &:after { @include css-triangle(5px, $custom-select-triangle-color-open, top); }
         }
       }
-  
+
       .disabled {
         color: $custom-select-disabled-color;
         &:hover {
@@ -169,24 +169,24 @@ $custom-dropdown-width-large:           434px !default;
           &:after { display: none; }
         }
       }
-  
+
       &.open ul {
         display: block;
         z-index: 10;
         min-width:100%;
         @include box-sizing(content-box);
       }
-  
+
       &.small { max-width: $custom-dropdown-width-small; }
       &.medium { max-width: $custom-dropdown-width-medium; }
       &.large { max-width: $custom-dropdown-width-large; }
       &.expand { width: 100% !important; }
-  
+
       &.open.small ul { min-width: $custom-dropdown-width-small; @include box-sizing(border-box); }
       &.open.medium ul { min-width: $custom-dropdown-width-medium; @include box-sizing(border-box); }
       &.open.large ul { min-width: $custom-dropdown-width-large; @include box-sizing(border-box); }
     }
-  
+
     .custom.dropdown ul {
       position: absolute;
       width: auto;
@@ -201,7 +201,7 @@ $custom-dropdown-width-large:           434px !default;
       background: $custom-dropdown-bg;
       border: $custom-dropdown-border-style $custom-dropdown-border-width $custom-dropdown-border-color;
       font-size: $em-base;
-  
+
       li {
         color: $custom-dropdown-font-color;
         font-size: $custom-dropdown-font-size;
@@ -215,7 +215,7 @@ $custom-dropdown-width-large:           434px !default;
         margin: 0;
         white-space: nowrap;
         list-style: none;
-  
+
         &.selected {
           background: $custom-dropdown-color-selected;
           color: $custom-dropdown-font-color-selected;
@@ -230,11 +230,20 @@ $custom-dropdown-width-large:           434px !default;
           color: $custom-dropdown-font-color-selected;
         }
       }
-  
+
       &.show { display: block; }
     }
-  
+
     /* Custom input, disabled */
     .custom.disabled { background-color: $custom-form-bg-disabled; }
+
+    // styling for dropdowns with native error style
+    .error .custom.dropdown, .custom.dropdown.error {
+      border-color: $alert-color;
+      background: $custom-dropdown-bg;
+      background: -moz-linear-gradient(top, $custom-dropdown-bg 0%, lighten($alert-color,55%) 100%);
+      background: -webkit-linear-gradient(top, $custom-dropdown-bg 0%,lighten($alert-color,55%) 100%);
+      background: linear-gradient(to bottom, $custom-dropdown-bg 0%,lighten($alert-color,55%) 100%);
+    }
   }
 }
