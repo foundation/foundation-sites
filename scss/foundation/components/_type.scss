@@ -51,6 +51,7 @@ $code-font-weight:                     bold !default;
 $anchor-text-decoration:               none !default;
 $anchor-font-color:                    $primary-color !default;
 $anchor-font-color-hover:              darken($primary-color, 5%) !default;
+$anchor-text-decoration-hover:         none !default;
 
 // We use these to style the <hr> element
 $hr-border-width:                      1px !default;
@@ -149,7 +150,10 @@ a {
   line-height: inherit;
 
   &:hover,
-  &:focus { color: $anchor-font-color-hover; }
+  &:focus {
+    color: $anchor-font-color-hover;
+    text-decoration: $anchor-text-decoration-hover;
+  }
 
   img { border:none; }
 }

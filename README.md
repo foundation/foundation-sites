@@ -36,6 +36,7 @@ WordPress
 * [Yeti](https://github.com/modlearning/Yeti) by Modular Learning
 * [Foundation](https://github.com/drewsymo/Foundation) by Drewsymo
 * [required+ Themes](http://themes.required.ch/) by required+
+* [WPF](https://github.com/MekZii/WPF/) by MekZii
 
 Joomla
 
