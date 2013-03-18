@@ -1,10 +1,9 @@
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
+/* Zepto v1.0-1-ga3cab6c - polyfill zepto detect event ajax form fx - zeptojs.com/license */
+
 
 ;(function(undefined){
   if (String.prototype.trim === undefined) // fix for iOS 3.2
-    String.prototype.trim = function(){ return this.replace(/^\s+/, '').replace(/\s+$/, '') }
+    String.prototype.trim = function(){ return this.replace(/^\s+|\s+$/g, '') }
 
   // For iOS 3.x
   // from https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce
@@ -33,7 +32,7 @@
       return accumulator
     }
 
-})();
+})()
 
 var Zepto = (function() {
   var undefined, key, $, classList, emptyArray = [], slice = emptyArray.slice, filter = emptyArray.filter,
@@ -61,7 +60,8 @@ var Zepto = (function() {
     classSelectorRE = /^\.([\w-]+)$/,
     idSelectorRE = /^#([\w-]*)$/,
     tagSelectorRE = /^[\w-]+$/,
-    toString = {}.toString,
+    class2type = {},
+    toString = class2type.toString,
     zepto = {},
     camelize, uniq,
     tempParent = document.createElement('div')
@@ -79,10 +79,17 @@ var Zepto = (function() {
     return match
   }
 
-  function isFunction(value) { return toString.call(value) == "[object Function]" }
-  function isObject(value) { return value instanceof Object }
-  function isPlainObject(value) {
-    return isObject(value) && value != window && value.__proto__ == Object.prototype
+  function type(obj) {
+    return obj == null ? String(obj) :
+      class2type[toString.call(obj)] || "object"
+  }
+
+  function isFunction(value) { return type(value) == "function" }
+  function isWindow(obj)     { return obj != null && obj == obj.window }
+  function isDocument(obj)   { return obj != null && obj.nodeType == obj.DOCUMENT_NODE }
+  function isObject(obj)     { return type(obj) == "object" }
+  function isPlainObject(obj) {
+    return isObject(obj) && !isWindow(obj) && obj.__proto__ == Object.prototype
   }
   function isArray(value) { return value instanceof Array }
   function likeArray(obj) { return typeof obj.length == 'number' }
@@ -158,7 +165,7 @@ var Zepto = (function() {
   // Explorer. This method can be overriden in plugins.
   zepto.Z = function(dom, selector) {
     dom = dom || []
-    dom.__proto__ = arguments.callee.prototype
+    dom.__proto__ = $.fn
     dom.selector = selector || ''
     return dom
   }
@@ -210,8 +217,11 @@ var Zepto = (function() {
 
   function extend(target, source, deep) {
     for (key in source)
-      if (deep && isPlainObject(source[key])) {
-        if (!isPlainObject(target[key])) target[key] = {}
+      if (deep && (isPlainObject(source[key]) || isArray(source[key]))) {
+        if (isPlainObject(source[key]) && !isPlainObject(target[key]))
+          target[key] = {}
+        if (isArray(source[key]) && !isArray(target[key]))
+          target[key] = []
         extend(target[key], source[key], deep)
       }
       else if (source[key] !== undefined) target[key] = source[key]
@@ -234,7 +244,7 @@ var Zepto = (function() {
   // This method can be overriden in plugins.
   zepto.qsa = function(element, selector){
     var found
-    return (element === document && idSelectorRE.test(selector)) ?
+    return (isDocument(element) && idSelectorRE.test(selector)) ?
       ( (found = element.getElementById(RegExp.$1)) ? [found] : [] ) :
       (element.nodeType !== 1 && element.nodeType !== 9) ? [] :
       slice.call(
@@ -292,10 +302,17 @@ var Zepto = (function() {
     }
   }
 
+  $.type = type
   $.isFunction = isFunction
-  $.isObject = isObject
+  $.isWindow = isWindow
   $.isArray = isArray
   $.isPlainObject = isPlainObject
+
+  $.isEmptyObject = function(obj) {
+    var name
+    for (name in obj) return false
+    return true
+  }
 
   $.inArray = function(elem, array, i){
     return emptyArray.indexOf.call(array, elem, i)
@@ -342,6 +359,11 @@ var Zepto = (function() {
   }
 
   if (window.JSON) $.parseJSON = JSON.parse
+
+  // Populate the class2type map
+  $.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
+    class2type[ "[object " + name + "]" ] = name.toLowerCase()
+  })
 
   // Define methods that will be available on all
   // Zepto collections
@@ -434,22 +456,30 @@ var Zepto = (function() {
       return el && !isObject(el) ? el : $(el)
     },
     find: function(selector){
-      var result
-      if (this.length == 1) result = $(zepto.qsa(this[0], selector))
+      var result, $this = this
+      if (typeof selector == 'object')
+        result = $(selector).filter(function(){
+          var node = this
+          return emptyArray.some.call($this, function(parent){
+            return $.contains(parent, node)
+          })
+        })
+      else if (this.length == 1) result = $(zepto.qsa(this[0], selector))
       else result = this.map(function(){ return zepto.qsa(this, selector) })
       return result
     },
     closest: function(selector, context){
-      var node = this[0]
-      while (node && !zepto.matches(node, selector))
-        node = node !== context && node !== document && node.parentNode
+      var node = this[0], collection = false
+      if (typeof selector == 'object') collection = $(selector)
+      while (node && !(collection ? collection.indexOf(node) >= 0 : zepto.matches(node, selector)))
+        node = node !== context && !isDocument(node) && node.parentNode
       return $(node)
     },
     parents: function(selector){
       var ancestors = [], nodes = this
       while (nodes.length > 0)
         nodes = $.map(nodes, function(node){
-          if ((node = node.parentNode) && node !== document && ancestors.indexOf(node) < 0) {
+          if ((node = node.parentNode) && !isDocument(node) && ancestors.indexOf(node) < 0) {
             ancestors.push(node)
             return node
           }
@@ -606,8 +636,8 @@ var Zepto = (function() {
       return {
         left: obj.left + window.pageXOffset,
         top: obj.top + window.pageYOffset,
-        width: obj.width,
-        height: obj.height
+        width: Math.round(obj.width),
+        height: Math.round(obj.height)
       }
     },
     css: function(property, value){
@@ -615,17 +645,18 @@ var Zepto = (function() {
         return this[0] && (this[0].style[camelize(property)] || getComputedStyle(this[0], '').getPropertyValue(property))
 
       var css = ''
-      for (key in property)
-        if (!property[key] && property[key] !== 0)
-          this.each(function(){ this.style.removeProperty(dasherize(key)) })
-        else
-          css += dasherize(key) + ':' + maybeAddPx(key, property[key]) + ';'
-
-      if (typeof property == 'string')
+      if (type(property) == 'string') {
         if (!value && value !== 0)
           this.each(function(){ this.style.removeProperty(dasherize(property)) })
         else
           css = dasherize(property) + ":" + maybeAddPx(property, value)
+      } else {
+        for (key in property)
+          if (!property[key] && property[key] !== 0)
+            this.each(function(){ this.style.removeProperty(dasherize(key)) })
+          else
+            css += dasherize(key) + ':' + maybeAddPx(key, property[key]) + ';'
+      }
 
       return this.each(function(){ this.style.cssText += ';' + css })
     },
@@ -712,12 +743,13 @@ var Zepto = (function() {
   // Generate the `width` and `height` functions
   ;['width', 'height'].forEach(function(dimension){
     $.fn[dimension] = function(value){
-      var offset, Dimension = dimension.replace(/./, function(m){ return m[0].toUpperCase() })
-      if (value === undefined) return this[0] == window ? window['inner' + Dimension] :
-        this[0] == document ? document.documentElement['offset' + Dimension] :
+      var offset, el = this[0],
+        Dimension = dimension.replace(/./, function(m){ return m[0].toUpperCase() })
+      if (value === undefined) return isWindow(el) ? el['inner' + Dimension] :
+        isDocument(el) ? el.documentElement['offset' + Dimension] :
         (offset = this.offset()) && offset[dimension]
       else return this.each(function(idx){
-        var el = $(this)
+        el = $(this)
         el.css(dimension, funcArg(this, value, idx, el[dimension]()))
       })
     }
@@ -735,7 +767,11 @@ var Zepto = (function() {
 
     $.fn[operator] = function(){
       // arguments can be nodes, arrays of nodes, Zepto objects and HTML strings
-      var nodes = $.map(arguments, function(n){ return isObject(n) ? n : zepto.fragment(n) }),
+      var argType, nodes = $.map(arguments, function(arg) {
+            argType = type(arg)
+            return argType == "object" || argType == "array" || arg == null ?
+              arg : zepto.fragment(arg)
+          }),
           parent, copyByClone = this.length > 1
       if (nodes.length < 1) return this
 
@@ -781,13 +817,60 @@ var Zepto = (function() {
   return $
 })()
 
-// If `$` is not yet defined, point it to `Zepto`
 window.Zepto = Zepto
-'$' in window || (window.$ = Zepto);
+'$' in window || (window.$ = Zepto)
 
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
+;(function($){
+  function detect(ua){
+    var os = this.os = {}, browser = this.browser = {},
+      webkit = ua.match(/WebKit\/([\d.]+)/),
+      android = ua.match(/(Android)\s+([\d.]+)/),
+      ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+      iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+      webos = ua.match(/(webOS|hpwOS)[\s\/]([\d.]+)/),
+      touchpad = webos && ua.match(/TouchPad/),
+      kindle = ua.match(/Kindle\/([\d.]+)/),
+      silk = ua.match(/Silk\/([\d._]+)/),
+      blackberry = ua.match(/(BlackBerry).*Version\/([\d.]+)/),
+      bb10 = ua.match(/(BB10).*Version\/([\d.]+)/),
+      rimtabletos = ua.match(/(RIM\sTablet\sOS)\s([\d.]+)/),
+      playbook = ua.match(/PlayBook/),
+      chrome = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/),
+      firefox = ua.match(/Firefox\/([\d.]+)/)
+
+    // Todo: clean this up with a better OS/browser seperation:
+    // - discern (more) between multiple browsers on android
+    // - decide if kindle fire in silk mode is android or not
+    // - Firefox on Android doesn't specify the Android version
+    // - possibly devide in os, device and browser hashes
+
+    if (browser.webkit = !!webkit) browser.version = webkit[1]
+
+    if (android) os.android = true, os.version = android[2]
+    if (iphone) os.ios = os.iphone = true, os.version = iphone[2].replace(/_/g, '.')
+    if (ipad) os.ios = os.ipad = true, os.version = ipad[2].replace(/_/g, '.')
+    if (webos) os.webos = true, os.version = webos[2]
+    if (touchpad) os.touchpad = true
+    if (blackberry) os.blackberry = true, os.version = blackberry[2]
+    if (bb10) os.bb10 = true, os.version = bb10[2]
+    if (rimtabletos) os.rimtabletos = true, os.version = rimtabletos[2]
+    if (playbook) browser.playbook = true
+    if (kindle) os.kindle = true, os.version = kindle[1]
+    if (silk) browser.silk = true, browser.version = silk[1]
+    if (!silk && os.android && ua.match(/Kindle Fire/)) browser.silk = true
+    if (chrome) browser.chrome = true, browser.version = chrome[1]
+    if (firefox) browser.firefox = true, browser.version = firefox[1]
+
+    os.tablet = !!(ipad || playbook || (android && !ua.match(/Mobile/)) || (firefox && ua.match(/Tablet/)))
+    os.phone  = !!(!os.tablet && (android || iphone || webos || blackberry || bb10 ||
+      (chrome && ua.match(/Android/)) || (chrome && ua.match(/CriOS\/([\d.]+)/)) || (firefox && ua.match(/Mobile/))))
+  }
+
+  detect.call($, navigator.userAgent)
+  // make available to unit tests
+  $.__detect = detect
+
+})(Zepto)
 
 ;(function($){
   var $$ = $.zepto.qsa, handlers = {}, _zid = 1, specialEvents={},
@@ -818,7 +901,7 @@ window.Zepto = Zepto
   }
 
   function eachEvent(events, fn, iterator){
-    if ($.isObject(events)) $.each(events, iterator)
+    if ($.type(events) != "string") $.each(events, iterator)
     else events.split(/\s/).forEach(function(type){ iterator(type, fn) })
   }
 
@@ -1032,163 +1115,10 @@ window.Zepto = Zepto
     return event
   }
 
-})(Zepto);
-
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
-
-;(function($){
-  function detect(ua){
-    var os = this.os = {}, browser = this.browser = {},
-      webkit = ua.match(/WebKit\/([\d.]+)/),
-      android = ua.match(/(Android)\s+([\d.]+)/),
-      ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
-      iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
-      webos = ua.match(/(webOS|hpwOS)[\s\/]([\d.]+)/),
-      touchpad = webos && ua.match(/TouchPad/),
-      kindle = ua.match(/Kindle\/([\d.]+)/),
-      silk = ua.match(/Silk\/([\d._]+)/),
-      blackberry = ua.match(/(BlackBerry).*Version\/([\d.]+)/),
-      chrome  = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/)
-
-    // todo clean this up with a better OS/browser
-    // separation. we need to discern between multiple
-    // browsers on android, and decide if kindle fire in
-    // silk mode is android or not
-
-    if (browser.webkit = !!webkit) browser.version = webkit[1]
-
-    if (android) os.android = true, os.version = android[2]
-    if (iphone) os.ios = os.iphone = true, os.version = iphone[2].replace(/_/g, '.')
-    if (ipad) os.ios = os.ipad = true, os.version = ipad[2].replace(/_/g, '.')
-    if (webos) os.webos = true, os.version = webos[2]
-    if (touchpad) os.touchpad = true
-    if (blackberry) os.blackberry = true, os.version = blackberry[2]
-    if (kindle) os.kindle = true, os.version = kindle[1]
-    if (silk) browser.silk = true, browser.version = silk[1]
-    if (!silk && os.android && ua.match(/Kindle Fire/)) browser.silk = true
-    if (chrome) browser.chrome = true, browser.version = chrome[1]
-  }
-
-  detect.call($, navigator.userAgent)
-  // make available to unit tests
-  $.__detect = detect
-
-})(Zepto);
-
-
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
-
-;(function($, undefined){
-  var prefix = '', eventPrefix, endEventName, endAnimationName,
-    vendors = { Webkit: 'webkit', Moz: '', O: 'o', ms: 'MS' },
-    document = window.document, testEl = document.createElement('div'),
-    supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i,
-    transform,
-    transitionProperty, transitionDuration, transitionTiming,
-    animationName, animationDuration, animationTiming,
-    cssReset = {}
-
-  function dasherize(str) { return downcase(str.replace(/([a-z])([A-Z])/, '$1-$2')) }
-  function downcase(str) { return str.toLowerCase() }
-  function normalizeEvent(name) { return eventPrefix ? eventPrefix + name : downcase(name) }
-
-  $.each(vendors, function(vendor, event){
-    if (testEl.style[vendor + 'TransitionProperty'] !== undefined) {
-      prefix = '-' + downcase(vendor) + '-'
-      eventPrefix = event
-      return false
-    }
-  })
-
-  transform = prefix + 'transform'
-  cssReset[transitionProperty = prefix + 'transition-property'] =
-  cssReset[transitionDuration = prefix + 'transition-duration'] =
-  cssReset[transitionTiming   = prefix + 'transition-timing-function'] =
-  cssReset[animationName      = prefix + 'animation-name'] =
-  cssReset[animationDuration  = prefix + 'animation-duration'] =
-  cssReset[animationTiming    = prefix + 'animation-timing-function'] = ''
-
-  $.fx = {
-    off: (eventPrefix === undefined && testEl.style.transitionProperty === undefined),
-    speeds: { _default: 400, fast: 200, slow: 600 },
-    cssPrefix: prefix,
-    transitionEnd: normalizeEvent('TransitionEnd'),
-    animationEnd: normalizeEvent('AnimationEnd')
-  }
-
-  $.fn.animate = function(properties, duration, ease, callback){
-    if ($.isObject(duration))
-      ease = duration.easing, callback = duration.complete, duration = duration.duration
-    if (duration) duration = (typeof duration == 'number' ? duration :
-                    ($.fx.speeds[duration] || $.fx.speeds._default)) / 1000
-    return this.anim(properties, duration, ease, callback)
-  }
-
-  $.fn.anim = function(properties, duration, ease, callback){
-    var key, cssValues = {}, cssProperties, transforms = '',
-        that = this, wrappedCallback, endEvent = $.fx.transitionEnd
-
-    if (duration === undefined) duration = 0.4
-    if ($.fx.off) duration = 0
-
-    if (typeof properties == 'string') {
-      // keyframe animation
-      cssValues[animationName] = properties
-      cssValues[animationDuration] = duration + 's'
-      cssValues[animationTiming] = (ease || 'linear')
-      endEvent = $.fx.animationEnd
-    } else {
-      cssProperties = []
-      // CSS transitions
-      for (key in properties)
-        if (supportedTransforms.test(key)) transforms += key + '(' + properties[key] + ') '
-        else cssValues[key] = properties[key], cssProperties.push(dasherize(key))
-
-      if (transforms) cssValues[transform] = transforms, cssProperties.push(transform)
-      if (duration > 0 && typeof properties === 'object') {
-        cssValues[transitionProperty] = cssProperties.join(', ')
-        cssValues[transitionDuration] = duration + 's'
-        cssValues[transitionTiming] = (ease || 'linear')
-      }
-    }
-
-    wrappedCallback = function(event){
-      if (typeof event !== 'undefined') {
-        if (event.target !== event.currentTarget) return // makes sure the event didn't bubble from "below"
-        $(event.target).unbind(endEvent, arguments.callee)
-      }
-      $(this).css(cssReset)
-      callback && callback.call(this)
-    }
-    if (duration > 0) this.bind(endEvent, wrappedCallback)
-
-    // trigger page reflow so new elements can animate
-    this.size() && this.get(0).clientLeft
-
-    this.css(cssValues)
-
-    if (duration <= 0) setTimeout(function() {
-      that.each(function(){ wrappedCallback.call(this) })
-    }, 0)
-
-    return this
-  }
-
-  testEl = null
-})(Zepto);
-
-
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
+})(Zepto)
 
 ;(function($){
   var jsonpID = 0,
-      isObject = $.isObject,
       document = window.document,
       key,
       name,
@@ -1259,33 +1189,38 @@ window.Zepto = Zepto
 
     var callbackName = 'jsonp' + (++jsonpID),
       script = document.createElement('script'),
-      abort = function(){
+      cleanup = function() {
+        clearTimeout(abortTimeout)
         $(script).remove()
-        if (callbackName in window) window[callbackName] = empty
-        ajaxComplete('abort', xhr, options)
+        delete window[callbackName]
+      },
+      abort = function(type){
+        cleanup()
+        // In case of manual abort or timeout, keep an empty function as callback
+        // so that the SCRIPT tag that eventually loads won't result in an error.
+        if (!type || type == 'timeout') window[callbackName] = empty
+        ajaxError(null, type || 'abort', xhr, options)
       },
       xhr = { abort: abort }, abortTimeout
 
-    if (options.error) script.onerror = function() {
-      xhr.abort()
-      options.error()
+    if (ajaxBeforeSend(xhr, options) === false) {
+      abort('abort')
+      return false
     }
 
     window[callbackName] = function(data){
-      clearTimeout(abortTimeout)
-      $(script).remove()
-      delete window[callbackName]
+      cleanup()
       ajaxSuccess(data, xhr, options)
     }
 
-    serializeData(options)
+    script.onerror = function() { abort('error') }
+
     script.src = options.url.replace(/=\?/, '=' + callbackName)
     $('head').append(script)
 
     if (options.timeout > 0) abortTimeout = setTimeout(function(){
-        xhr.abort()
-        ajaxComplete('timeout', xhr, options)
-      }, options.timeout)
+      abort('timeout')
+    }, options.timeout)
 
     return xhr
   }
@@ -1322,10 +1257,13 @@ window.Zepto = Zepto
     // Default timeout
     timeout: 0,
     // Whether data should be serialized to string
-    processData: true
+    processData: true,
+    // Whether the browser should be allowed to cache GET responses
+    cache: true,
   }
 
   function mimeToDataType(mime) {
+    if (mime) mime = mime.split(';', 2)[0]
     return mime && ( mime == htmlType ? 'html' :
       mime == jsonType ? 'json' :
       scriptTypeRE.test(mime) ? 'script' :
@@ -1338,7 +1276,7 @@ window.Zepto = Zepto
 
   // serialize payload and append it to the URL for GET requests
   function serializeData(options) {
-    if (options.processData && isObject(options.data))
+    if (options.processData && options.data && $.type(options.data) != "string")
       options.data = $.param(options.data, options.traditional)
     if (options.data && (!options.type || options.type.toUpperCase() == 'GET'))
       options.url = appendQuery(options.url, options.data)
@@ -1353,14 +1291,15 @@ window.Zepto = Zepto
     if (!settings.crossDomain) settings.crossDomain = /^([\w-]+:)?\/\/([^\/]+)/.test(settings.url) &&
       RegExp.$2 != window.location.host
 
+    if (!settings.url) settings.url = window.location.toString()
+    serializeData(settings)
+    if (settings.cache === false) settings.url = appendQuery(settings.url, '_=' + Date.now())
+
     var dataType = settings.dataType, hasPlaceholder = /=\?/.test(settings.url)
     if (dataType == 'jsonp' || hasPlaceholder) {
       if (!hasPlaceholder) settings.url = appendQuery(settings.url, 'callback=?')
       return $.ajaxJSONP(settings)
     }
-
-    if (!settings.url) settings.url = window.location.toString()
-    serializeData(settings)
 
     var mime = settings.accepts[dataType],
         baseHeaders = { },
@@ -1387,6 +1326,7 @@ window.Zepto = Zepto
           result = xhr.responseText
 
           try {
+            // http://perfectionkills.com/global-eval-what-are-the-options/
             if (dataType == 'script')    (1,eval)(result)
             else if (dataType == 'xml')  result = xhr.responseXML
             else if (dataType == 'json') result = blankRE.test(result) ? null : $.parseJSON(result)
@@ -1421,40 +1361,60 @@ window.Zepto = Zepto
     return xhr
   }
 
-  $.get = function(url, success){ return $.ajax({ url: url, success: success }) }
+  // handle optional data/success arguments
+  function parseArguments(url, data, success, dataType) {
+    var hasData = !$.isFunction(data)
+    return {
+      url:      url,
+      data:     hasData  ? data : undefined,
+      success:  !hasData ? data : $.isFunction(success) ? success : undefined,
+      dataType: hasData  ? dataType || success : success
+    }
+  }
+
+  $.get = function(url, data, success, dataType){
+    return $.ajax(parseArguments.apply(null, arguments))
+  }
 
   $.post = function(url, data, success, dataType){
-    if ($.isFunction(data)) dataType = dataType || success, success = data, data = null
-    return $.ajax({ type: 'POST', url: url, data: data, success: success, dataType: dataType })
+    var options = parseArguments.apply(null, arguments)
+    options.type = 'POST'
+    return $.ajax(options)
   }
 
-  $.getJSON = function(url, success){
-    return $.ajax({ url: url, success: success, dataType: 'json' })
+  $.getJSON = function(url, data, success){
+    var options = parseArguments.apply(null, arguments)
+    options.dataType = 'json'
+    return $.ajax(options)
   }
 
-  $.fn.load = function(url, success){
+  $.fn.load = function(url, data, success){
     if (!this.length) return this
-    var self = this, parts = url.split(/\s/), selector
-    if (parts.length > 1) url = parts[0], selector = parts[1]
-    $.get(url, function(response){
+    var self = this, parts = url.split(/\s/), selector,
+        options = parseArguments(url, data, success),
+        callback = options.success
+    if (parts.length > 1) options.url = parts[0], selector = parts[1]
+    options.success = function(response){
       self.html(selector ?
         $('<div>').html(response.replace(rscript, "")).find(selector)
         : response)
-      success && success.apply(self, arguments)
-    })
+      callback && callback.apply(self, arguments)
+    }
+    $.ajax(options)
     return this
   }
 
   var escape = encodeURIComponent
 
   function serialize(params, obj, traditional, scope){
-    var array = $.isArray(obj)
+    var type, array = $.isArray(obj)
     $.each(obj, function(key, value) {
+      type = $.type(value)
       if (scope) key = traditional ? scope : scope + '[' + (array ? '' : key) + ']'
       // handle data in serializeArray() format
       if (!scope && array) params.add(value.name, value.value)
       // recurse into nested objects
-      else if (traditional ? $.isArray(value) : isObject(value))
+      else if (type == "array" || (!traditional && type == "object"))
         serialize(params, value, traditional, key)
       else params.add(key, value)
     })
@@ -1466,12 +1426,7 @@ window.Zepto = Zepto
     serialize(params, obj, traditional)
     return params.join('&').replace(/%20/g, '+')
   }
-})(Zepto);
-
-
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
+})(Zepto)
 
 ;(function ($) {
   $.fn.serializeArray = function () {
@@ -1508,206 +1463,106 @@ window.Zepto = Zepto
     return this
   }
 
-})(Zepto);
+})(Zepto)
 
+;(function($, undefined){
+  var prefix = '', eventPrefix, endEventName, endAnimationName,
+    vendors = { Webkit: 'webkit', Moz: '', O: 'o', ms: 'MS' },
+    document = window.document, testEl = document.createElement('div'),
+    supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i,
+    transform,
+    transitionProperty, transitionDuration, transitionTiming,
+    animationName, animationDuration, animationTiming,
+    cssReset = {}
 
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
+  function dasherize(str) { return downcase(str.replace(/([a-z])([A-Z])/, '$1-$2')) }
+  function downcase(str) { return str.toLowerCase() }
+  function normalizeEvent(name) { return eventPrefix ? eventPrefix + name : downcase(name) }
 
-;(function($){
-  var cache = [], timeout
-
-  $.fn.remove = function(){
-    return this.each(function(){
-      if(this.parentNode){
-        if(this.tagName === 'IMG'){
-          cache.push(this)
-          this.src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
-          if (timeout) clearTimeout(timeout)
-          timeout = setTimeout(function(){ cache = [] }, 60000)
-        }
-        this.parentNode.removeChild(this)
-      }
-    })
-  }
-})(Zepto);
-
-
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
-
-// The following code is heavily inspired by jQuery's $.fn.data()
-
-;(function($) {
-  var data = {}, dataAttr = $.fn.data, camelize = $.camelCase,
-    exp = $.expando = 'Zepto' + (+new Date())
-
-  // Get value from node:
-  // 1. first try key as given,
-  // 2. then try camelized key,
-  // 3. fall back to reading "data-*" attribute.
-  function getData(node, name) {
-    var id = node[exp], store = id && data[id]
-    if (name === undefined) return store || setData(node)
-    else {
-      if (store) {
-        if (name in store) return store[name]
-        var camelName = camelize(name)
-        if (camelName in store) return store[camelName]
-      }
-      return dataAttr.call($(node), name)
-    }
-  }
-
-  // Store value under camelized key on node
-  function setData(node, name, value) {
-    var id = node[exp] || (node[exp] = ++$.uuid),
-      store = data[id] || (data[id] = attributeData(node))
-    if (name !== undefined) store[camelize(name)] = value
-    return store
-  }
-
-  // Read all "data-*" attributes from a node
-  function attributeData(node) {
-    var store = {}
-    $.each(node.attributes, function(i, attr){
-      if (attr.name.indexOf('data-') == 0)
-        store[camelize(attr.name.replace('data-', ''))] =
-          $.zepto.deserializeValue(attr.value)
-    })
-    return store
-  }
-
-  $.fn.data = function(name, value) {
-    return value === undefined ?
-      // set multiple values via object
-      $.isPlainObject(name) ?
-        this.each(function(i, node){
-          $.each(name, function(key, value){ setData(node, key, value) })
-        }) :
-        // get value from first element
-        this.length == 0 ? undefined : getData(this[0], name) :
-      // set value on all elements
-      this.each(function(){ setData(this, name, value) })
-  }
-
-  $.fn.removeData = function(names) {
-    if (typeof names == 'string') names = names.split(/\s+/)
-    return this.each(function(){
-      var id = this[exp], store = id && data[id]
-      if (store) $.each(names, function(){ delete store[camelize(this)] })
-    })
-  }
-})(Zepto);
-
-
-;(function($){
-  var zepto = $.zepto, oldQsa = zepto.qsa, oldMatches = zepto.matches
-
-  function visible(elem){
-    elem = $(elem)
-    return !!(elem.width() || elem.height()) && elem.css("display") !== "none"
-  }
-
-  // Implements a subset from:
-  // http://api.jquery.com/category/selectors/jquery-selector-extensions/
-  //
-  // Each filter function receives the current index, all nodes in the
-  // considered set, and a value if there were parentheses. The value
-  // of `this` is the node currently being considered. The function returns the
-  // resulting node(s), null, or undefined.
-  //
-  // Complex selectors are not supported:
-  //   li:has(label:contains("foo")) + li:has(label:contains("bar"))
-  //   ul.inner:first > li
-  var filters = $.expr[':'] = {
-    visible:  function(){ if (visible(this)) return this },
-    hidden:   function(){ if (!visible(this)) return this },
-    selected: function(){ if (this.selected) return this },
-    checked:  function(){ if (this.checked) return this },
-    parent:   function(){ return this.parentNode },
-    first:    function(idx){ if (idx === 0) return this },
-    last:     function(idx, nodes){ if (idx === nodes.length - 1) return this },
-    eq:       function(idx, _, value){ if (idx === value) return this },
-    contains: function(idx, _, text){ if ($(this).text().indexOf(text) > -1) return this },
-    has:      function(idx, _, sel){ if (zepto.qsa(this, sel).length) return this }
-  }
-
-  var filterRe = new RegExp('(.*):(\\w+)(?:\\(([^)]+)\\))?$\\s*'),
-      childRe  = /^\s*>/,
-      classTag = 'Zepto' + (+new Date())
-
-  function process(sel, fn) {
-    // quote the hash in `a[href^=#]` expression
-    sel = sel.replace(/=#\]/g, '="#"]')
-    var filter, arg, match = filterRe.exec(sel)
-    if (match && match[2] in filters) {
-      var filter = filters[match[2]], arg = match[3]
-      sel = match[1]
-      if (arg) {
-        var num = Number(arg)
-        if (isNaN(num)) arg = arg.replace(/^["']|["']$/g, '')
-        else arg = num
-      }
-    }
-    return fn(sel, filter, arg)
-  }
-
-  zepto.qsa = function(node, selector) {
-    return process(selector, function(sel, filter, arg){
-      try {
-        var taggedParent
-        if (!sel && filter) sel = '*'
-        else if (childRe.test(sel))
-          // support "> *" child queries by tagging the parent node with a
-          // unique class and prepending that classname onto the selector
-          taggedParent = $(node).addClass(classTag), sel = '.'+classTag+' '+sel
-
-        var nodes = oldQsa(node, sel)
-      } catch(e) {
-        console.error('error performing selector: %o', selector)
-        throw e
-      } finally {
-        if (taggedParent) taggedParent.removeClass(classTag)
-      }
-      return !filter ? nodes :
-        zepto.uniq($.map(nodes, function(n, i){ return filter.call(n, i, nodes, arg) }))
-    })
-  }
-
-  zepto.matches = function(node, selector){
-    return process(selector, function(sel, filter, arg){
-      return (!sel || oldMatches(node, sel)) &&
-        (!filter || filter.call(node, null, arg) === node)
-    })
-  }
-})(Zepto);
-
-
-//     Zepto.js
-//     (c) 2010-2012 Thomas Fuchs
-//     Zepto.js may be freely distributed under the MIT license.
-
-;(function($){
-  $.fn.end = function(){
-    return this.prevObject || $()
-  }
-
-  $.fn.andSelf = function(){
-    return this.add(this.prevObject || $())
-  }
-
-  'filter,add,not,eq,first,last,find,closest,parents,parent,children,siblings'.split(',').forEach(function(property){
-    var fn = $.fn[property]
-    $.fn[property] = function(){
-      var ret = fn.apply(this, arguments)
-      ret.prevObject = this
-      return ret
+  $.each(vendors, function(vendor, event){
+    if (testEl.style[vendor + 'TransitionProperty'] !== undefined) {
+      prefix = '-' + downcase(vendor) + '-'
+      eventPrefix = event
+      return false
     }
   })
-})(Zepto);
+
+  transform = prefix + 'transform'
+  cssReset[transitionProperty = prefix + 'transition-property'] =
+  cssReset[transitionDuration = prefix + 'transition-duration'] =
+  cssReset[transitionTiming   = prefix + 'transition-timing-function'] =
+  cssReset[animationName      = prefix + 'animation-name'] =
+  cssReset[animationDuration  = prefix + 'animation-duration'] =
+  cssReset[animationTiming    = prefix + 'animation-timing-function'] = ''
+
+  $.fx = {
+    off: (eventPrefix === undefined && testEl.style.transitionProperty === undefined),
+    speeds: { _default: 400, fast: 200, slow: 600 },
+    cssPrefix: prefix,
+    transitionEnd: normalizeEvent('TransitionEnd'),
+    animationEnd: normalizeEvent('AnimationEnd')
+  }
+
+  $.fn.animate = function(properties, duration, ease, callback){
+    if ($.isPlainObject(duration))
+      ease = duration.easing, callback = duration.complete, duration = duration.duration
+    if (duration) duration = (typeof duration == 'number' ? duration :
+                    ($.fx.speeds[duration] || $.fx.speeds._default)) / 1000
+    return this.anim(properties, duration, ease, callback)
+  }
+
+  $.fn.anim = function(properties, duration, ease, callback){
+    var key, cssValues = {}, cssProperties, transforms = '',
+        that = this, wrappedCallback, endEvent = $.fx.transitionEnd
+
+    if (duration === undefined) duration = 0.4
+    if ($.fx.off) duration = 0
+
+    if (typeof properties == 'string') {
+      // keyframe animation
+      cssValues[animationName] = properties
+      cssValues[animationDuration] = duration + 's'
+      cssValues[animationTiming] = (ease || 'linear')
+      endEvent = $.fx.animationEnd
+    } else {
+      cssProperties = []
+      // CSS transitions
+      for (key in properties)
+        if (supportedTransforms.test(key)) transforms += key + '(' + properties[key] + ') '
+        else cssValues[key] = properties[key], cssProperties.push(dasherize(key))
+
+      if (transforms) cssValues[transform] = transforms, cssProperties.push(transform)
+      if (duration > 0 && typeof properties === 'object') {
+        cssValues[transitionProperty] = cssProperties.join(', ')
+        cssValues[transitionDuration] = duration + 's'
+        cssValues[transitionTiming] = (ease || 'linear')
+      }
+    }
+
+    wrappedCallback = function(event){
+      if (typeof event !== 'undefined') {
+        if (event.target !== event.currentTarget) return // makes sure the event didn't bubble from "below"
+        $(event.target).unbind(endEvent, wrappedCallback)
+      }
+      $(this).css(cssReset)
+      callback && callback.call(this)
+    }
+    if (duration > 0) this.bind(endEvent, wrappedCallback)
+
+    // trigger page reflow so new elements can animate
+    this.size() && this.get(0).clientLeft
+
+    this.css(cssValues)
+
+    if (duration <= 0) setTimeout(function() {
+      that.each(function(){ wrappedCallback.call(this) })
+    }, 0)
+
+    return this
+  }
+
+  testEl = null
+})(Zepto)
 
 //     Zepto.js
 //     (c) 2010-2012 Thomas Fuchs
@@ -1780,3 +1635,250 @@ window.Zepto = Zepto
   }
 
 })(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2012 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;(function($){
+  var cache = [], timeout
+
+  $.fn.remove = function(){
+    return this.each(function(){
+      if(this.parentNode){
+        if(this.tagName === 'IMG'){
+          cache.push(this)
+          this.src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
+          if (timeout) clearTimeout(timeout)
+          timeout = setTimeout(function(){ cache = [] }, 60000)
+        }
+        this.parentNode.removeChild(this)
+      }
+    })
+  }
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2012 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+// The following code is heavily inspired by jQuery's $.fn.data()
+
+;(function($) {
+  var data = {}, dataAttr = $.fn.data, camelize = $.camelCase,
+    exp = $.expando = 'Zepto' + (+new Date())
+
+  // Get value from node:
+  // 1. first try key as given,
+  // 2. then try camelized key,
+  // 3. fall back to reading "data-*" attribute.
+  function getData(node, name) {
+    var id = node[exp], store = id && data[id]
+    if (name === undefined) return store || setData(node)
+    else {
+      if (store) {
+        if (name in store) return store[name]
+        var camelName = camelize(name)
+        if (camelName in store) return store[camelName]
+      }
+      return dataAttr.call($(node), name)
+    }
+  }
+
+  // Store value under camelized key on node
+  function setData(node, name, value) {
+    var id = node[exp] || (node[exp] = ++$.uuid),
+      store = data[id] || (data[id] = attributeData(node))
+    if (name !== undefined) store[camelize(name)] = value
+    return store
+  }
+
+  // Read all "data-*" attributes from a node
+  function attributeData(node) {
+    var store = {}
+    $.each(node.attributes, function(i, attr){
+      if (attr.name.indexOf('data-') == 0)
+        store[camelize(attr.name.replace('data-', ''))] =
+          $.zepto.deserializeValue(attr.value)
+    })
+    return store
+  }
+
+  $.fn.data = function(name, value) {
+    return value === undefined ?
+      // set multiple values via object
+      $.isPlainObject(name) ?
+        this.each(function(i, node){
+          $.each(name, function(key, value){ setData(node, key, value) })
+        }) :
+        // get value from first element
+        this.length == 0 ? undefined : getData(this[0], name) :
+      // set value on all elements
+      this.each(function(){ setData(this, name, value) })
+  }
+
+  $.fn.removeData = function(names) {
+    if (typeof names == 'string') names = names.split(/\s+/)
+    return this.each(function(){
+      var id = this[exp], store = id && data[id]
+      if (store) $.each(names, function(){ delete store[camelize(this)] })
+    })
+  }
+})(Zepto)
+
+;(function($){
+  var zepto = $.zepto, oldQsa = zepto.qsa, oldMatches = zepto.matches
+
+  function visible(elem){
+    elem = $(elem)
+    return !!(elem.width() || elem.height()) && elem.css("display") !== "none"
+  }
+
+  // Implements a subset from:
+  // http://api.jquery.com/category/selectors/jquery-selector-extensions/
+  //
+  // Each filter function receives the current index, all nodes in the
+  // considered set, and a value if there were parentheses. The value
+  // of `this` is the node currently being considered. The function returns the
+  // resulting node(s), null, or undefined.
+  //
+  // Complex selectors are not supported:
+  //   li:has(label:contains("foo")) + li:has(label:contains("bar"))
+  //   ul.inner:first > li
+  var filters = $.expr[':'] = {
+    visible:  function(){ if (visible(this)) return this },
+    hidden:   function(){ if (!visible(this)) return this },
+    selected: function(){ if (this.selected) return this },
+    checked:  function(){ if (this.checked) return this },
+    parent:   function(){ return this.parentNode },
+    first:    function(idx){ if (idx === 0) return this },
+    last:     function(idx, nodes){ if (idx === nodes.length - 1) return this },
+    eq:       function(idx, _, value){ if (idx === value) return this },
+    contains: function(idx, _, text){ if ($(this).text().indexOf(text) > -1) return this },
+    has:      function(idx, _, sel){ if (zepto.qsa(this, sel).length) return this }
+  }
+
+  var filterRe = new RegExp('(.*):(\\w+)(?:\\(([^)]+)\\))?$\\s*'),
+      childRe  = /^\s*>/,
+      classTag = 'Zepto' + (+new Date())
+
+  function process(sel, fn) {
+    // quote the hash in `a[href^=#]` expression
+    sel = sel.replace(/=#\]/g, '="#"]')
+    var filter, arg, match = filterRe.exec(sel)
+    if (match && match[2] in filters) {
+      filter = filters[match[2]], arg = match[3]
+      sel = match[1]
+      if (arg) {
+        var num = Number(arg)
+        if (isNaN(num)) arg = arg.replace(/^["']|["']$/g, '')
+        else arg = num
+      }
+    }
+    return fn(sel, filter, arg)
+  }
+
+  zepto.qsa = function(node, selector) {
+    return process(selector, function(sel, filter, arg){
+      try {
+        var taggedParent
+        if (!sel && filter) sel = '*'
+        else if (childRe.test(sel))
+          // support "> *" child queries by tagging the parent node with a
+          // unique class and prepending that classname onto the selector
+          taggedParent = $(node).addClass(classTag), sel = '.'+classTag+' '+sel
+
+        var nodes = oldQsa(node, sel)
+      } catch(e) {
+        console.error('error performing selector: %o', selector)
+        throw e
+      } finally {
+        if (taggedParent) taggedParent.removeClass(classTag)
+      }
+      return !filter ? nodes :
+        zepto.uniq($.map(nodes, function(n, i){ return filter.call(n, i, nodes, arg) }))
+    })
+  }
+
+  zepto.matches = function(node, selector){
+    return process(selector, function(sel, filter, arg){
+      return (!sel || oldMatches(node, sel)) &&
+        (!filter || filter.call(node, null, arg) === node)
+    })
+  }
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2012 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;(function($){
+  $.fn.end = function(){
+    return this.prevObject || $()
+  }
+
+  $.fn.andSelf = function(){
+    return this.add(this.prevObject || $())
+  }
+
+  'filter,add,not,eq,first,last,find,closest,parents,parent,children,siblings'.split(',').forEach(function(property){
+    var fn = $.fn[property]
+    $.fn[property] = function(){
+      var ret = fn.apply(this, arguments)
+      ret.prevObject = this
+      return ret
+    }
+  })
+})(Zepto)
+
+
+// outer and inner height/width support
+if (this.Zepto) {
+  (function($) {
+    var ioDim, _base;
+    ioDim = function(elem, Dimension, dimension, includeBorder, includeMargin) {
+      var sides, size;
+      if (elem) {
+        size = elem[dimension]();
+        sides = {
+          width: ["left", "right"],
+          height: ["top", "bottom"]
+        };
+        sides[dimension].forEach(function(side) {
+          size += parseInt(elem.css("padding-" + side), 10);
+          if (includeBorder) {
+            size += parseInt(elem.css("border-" + side + "-width"), 10);
+          }
+          if (includeMargin) {
+            return size += parseInt(elem.css("margin-" + side), 10);
+          }
+        });
+        return size;
+      } else {
+        return null;
+      }
+    };
+    ["width", "height"].forEach(function(dimension) {
+      var Dimension, _base, _base1, _name, _name1;
+      Dimension = dimension.replace(/./, function(m) {
+        return m[0].toUpperCase();
+      });
+      (_base = $.fn)[_name = "inner" + Dimension] || (_base[_name] = function(includeMargin) {
+        return ioDim(this, Dimension, dimension, false, includeMargin);
+      });
+      return (_base1 = $.fn)[_name1 = "outer" + Dimension] || (_base1[_name1] = function(includeMargin) {
+        return ioDim(this, Dimension, dimension, true, includeMargin);
+      });
+    });
+    return (_base = $.fn).detach || (_base.detach = function(selector) {
+      var cloned, set;
+      set = this;
+      if (selector != null) {
+        set = set.filter(selector);
+      }
+      cloned = set.clone(true);
+      set.remove();
+      return cloned;
+    });
+  })(Zepto);
+}

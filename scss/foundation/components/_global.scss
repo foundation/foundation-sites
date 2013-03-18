@@ -6,7 +6,7 @@
 }
 
 html,
-body { font-size: $em-base; }
+body { font-size: $base-font-size; }
 
 // Default body styles
 body {
@@ -19,8 +19,10 @@ body {
   font-style: $body-font-style;
   line-height: 1;
   position: relative;
-  -webkit-font-smoothing: $font-smoothing;
 }
+
+// Override outline from normalize, we don't like it
+a:focus { outline: none; }
 
 // Grid Defaults to get images and embeds to work properly
 img,
@@ -40,16 +42,22 @@ img { -ms-interpolation-mode: bicubic; }
 }
 
 // Miscellaneous useful HTML classes
-.left         { float: left; }
-.right        { float: right; }
-.text-left    { text-align: left; }
-.text-right   { text-align: right; }
-.text-center  { text-align: center; }
-.text-justify { text-align: justify; }
+.left         { float: left !important; }
+.right        { float: right !important; }
+.text-left    { text-align: left !important; }
+.text-right   { text-align: right !important; }
+.text-center  { text-align: center !important; }
+.text-justify { text-align: justify !important; }
 .hide         { display: none; }
 
-// Get rid of gap under images by making them display: block; by default
-img { display: block; }
+// Font smoothing
+// Antialiased font smoothing works best for light text on a dark background.
+// Apply to single elements instead of globally to body.
+// Note this only applies to webkit-based desktop browsers on the Mac.
+.antialiased { -webkit-font-smoothing: antialiased; }
+
+// Get rid of gap under images by making them display: inline-block; by default
+img { display: inline-block; }
 
 //
 // Global resets for forms

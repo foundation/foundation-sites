@@ -17,14 +17,14 @@
         <form class="custom">
           <div class="row">
             <div class="large-4 columns">
-              <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 1</label>
-              <label for="radio2"><input name="radio1" type="radio" id="radio2" style="display:none;"><span class="custom radio checked"></span> Radio Button 2</label>
-              <label for="radio3"><input name="radio1" type="radio" id="radio3" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
+              <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" CHECKED><span class="custom radio checked"></span> Radio Button 1</label>
+              <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 2</label>
+              <label for="radio1"><input name="radio1" type="radio" id="radio1" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
             </div>
             <div class="large-4 columns">
               <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
-              <label for="checkbox2"><input type="checkbox" id="checkbox2" checked style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
-              <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3"> Label for Checkbox</label>
+              <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
+              <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
             </div>
             <div class="large-4 columns">
               <label for="customDropdown1">Medium Example</label>
@@ -46,18 +46,18 @@
 <form class="custom">
   <div class="row">
     <div class="large-4 columns">
-      <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 1</label>
-      <label for="radio2"><input name="radio1" type="radio" id="radio2" style="display:none;"><span class="custom radio checked"></span> Radio Button 2</label>
-      <label for="radio3"><input name="radio1" type="radio" id="radio3" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
+      <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" CHECKED><span class="custom radio checked"></span> Radio Button 1</label>
+      <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 2</label>
+      <label for="radio1"><input name="radio1" type="radio" id="radio1" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
     </div>
     <div class="large-4 columns">
       <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
-      <label for="checkbox2"><input type="checkbox" id="checkbox2" checked style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
-      <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3"> Label for Checkbox</label>
+      <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
+      <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
     </div>
     <div class="large-4 columns">
-      <label for="customDropdown">Medium Example</label>
-      <select id="customDropdown" class="medium">
+      <label for="customDropdown1">Medium Example</label>
+      <select id="customDropdown1" class="medium">
         <option DISABLED>This is a dropdown</option>
         <option>This is another option</option>
         <option>This is another option too</option>
@@ -111,6 +111,7 @@
 
         <h3>Building Custom Selects</h3>
         <p>Sometimes you need to let people select a single item from a long list of options. This is what <code>&lt;select&gt;</code> elements are for. We've taken these a step further by including our own custom style that looks a lot better than inconsistent browser defaults. You can set any of the <code>&lt;option&gt;</code> elements to <code>&lt;option disabled&gt;</code> to make them unable to select. Custom selects are built like you'd expect:</p>
+        <p>For those who may want to apply custom styles to a specific dropdown, any classes on the <code>&lt;select&gt;</code> element will be appended to the generated <code>&lt;div class=&quot;custom dropdown&quot;&gt;</code> element.</p>
 
 <%= code_example '
 <form class="custom">
@@ -294,7 +295,7 @@
 <%= code_example "
 {
   disable_class: 'no-custom'
-}", :json %>
+}", :js %>
 
       </div>
     </div>

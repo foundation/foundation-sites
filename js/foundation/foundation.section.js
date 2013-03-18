@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.3',
+    version : '4.0.8',
 
     settings : {
       deep_linking: false,
@@ -15,18 +15,16 @@
     },
 
     init : function (scope, method, options) {
+      var self = this;
+
       this.scope = scope || this.scope;
       Foundation.inherit(this, 'throttle data_options');
 
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, method);
-      }
-
       if (typeof method != 'string') {
         this.set_active_from_hash();
-        if (!this.settings.init) this.events();
+        this.events();
 
-        return this.settings.init;
+        return true;
       } else {
         return this[method].call(this, options);
       }
@@ -34,16 +32,36 @@
 
     events : function () {
       var self = this;
-      $(this.scope).on('click.fndtn.section', '[data-section] .title', function (e) {
-        $.extend(true, self.settings, self.data_options($(this).closest('[data-section]')));
-        self.toggle_active.call(this, e, self);
-      });
 
-      $(window).on('resize.fndtn.section', self.throttle(function () {
-        self.resize.call(this);
-      }, 30)).trigger('resize');
+      $(this.scope)
+        .on('click.fndtn.section', '[data-section] .title', function (e) {
+          var $this = $(this),
+              section = $this.closest('[data-section]');
 
-      this.settings.init = true;
+          self.toggle_active.call(this, e, self);
+        });
+
+      $(window)
+        .on('resize.fndtn.section', self.throttle(function () {
+          self.resize.call(this);
+        }, 30))
+        .on('hashchange', function () {
+          if (!self.settings.toggled){
+            self.set_active_from_hash();
+            $(this).trigger('resize');
+          }
+        }).trigger('resize');
+
+      $(document)
+        .on('click.fndtn.section', function (e) {
+          if ($(e.target).closest('.title').length < 1) {
+            $('[data-section].vertical-nav, [data-section].horizontal-nav')
+              .find('section, .section')
+              .removeClass('active')
+              .attr('style', '');
+          }
+        });
+
     },
 
     toggle_active : function (e, self) {
@@ -51,39 +69,56 @@
           section = $this.closest('section, .section'),
           content = section.find('.content'),
           parent = section.closest('[data-section]'),
-          self = Foundation.libs.section;
+          self = Foundation.libs.section,
+          settings = $.extend({}, self.settings, self.data_options(parent));
 
-      if (!self.settings.deep_linking && content.length > 0) {
+      self.settings.toggled = true;
+
+      if (!settings.deep_linking && content.length > 0) {
         e.preventDefault();
       }
 
       if (section.hasClass('active')) {
         if (self.small(parent)
           || self.is_vertical(parent)
+          || self.is_horizontal(parent)
           || self.is_accordion(parent)) {
           section
             .removeClass('active')
             .attr('style', '');
         }
       } else {
-        if (self.small(parent) || self.settings.one_up) {
-          $this
-            .closest('[data-section]')
-            .find('section, .section')
-            .removeClass('active')
-            .attr('style', '');
+        var prev_active_section = null,
+            title_height = self.outerHeight(section.find('.title'));
 
-          section.css('padding-top', self.outerHeight(section.find('.title')) - 1);
+        if (self.small(parent) || settings.one_up) {
+          prev_active_section = $this.closest('[data-section]').find('section.active, .section.active');
+
+          if (self.small(parent)) {
+            prev_active_section.attr('style', '');
+          } else {
+            prev_active_section.attr('style', 'visibility: hidden; padding-top: '+title_height+'px;');
+          }
         }
 
         if (self.small(parent)) {
           section.attr('style', '');
+        } else {
+          section.css('padding-top', title_height);
         }
 
         section.addClass('active');
+
+        if (prev_active_section !== null) {
+          prev_active_section.removeClass('active').attr('style', '');
+        }
       }
 
-      self.settings.callback();
+      setTimeout(function () {
+        self.settings.toggled = false;
+      }, 300);
+
+      settings.callback();
     },
 
     resize : function () {
@@ -92,7 +127,9 @@
 
       sections.each(function() {
         var $this = $(this),
-            active_section = $this.find('section.active, .section.active');
+            active_section = $this.find('section.active, .section.active'),
+            settings = $.extend({}, self.settings, self.data_options($this));
+
         if (active_section.length > 1) {
           active_section
             .not(':first')
@@ -100,28 +137,41 @@
             .attr('style', '');
         } else if (active_section.length < 1
           && !self.is_vertical($this)
+          && !self.is_horizontal($this)
           && !self.is_accordion($this)) {
+
           var first = $this.find('section, .section').first();
           first.addClass('active');
 
           if (self.small($this)) {
             first.attr('style', '');
           } else {
-            first.css('padding-top', self.outerHeight(first.find('.title')) - 1);
+            first.css('padding-top', self.outerHeight(first.find('.title')));
           }
         }
 
         if (self.small($this)) {
           active_section.attr('style', '');
         } else {
-          active_section.css('padding-top', self.outerHeight(active_section.find('.title')) - 1);
+          active_section.css('padding-top', self.outerHeight(active_section.find('.title')));
         }
+
         self.position_titles($this);
+
+        if (self.is_horizontal($this) && !self.small($this)) {
+          self.position_content($this);
+        } else {
+          self.position_content($this, false);
+        }
       });
     },
 
     is_vertical : function (el) {
       return el.hasClass('vertical-nav');
+    },
+
+    is_horizontal : function (el) {
+      return el.hasClass('horizontal-nav');
     },
 
     is_accordion : function (el) {
@@ -134,10 +184,14 @@
           self = this;
 
       sections.each(function () {
-        var section = $(this);
-        $.extend(true, self.settings, self.data_options(section));
+        var section = $(this),
+            settings = $.extend({}, self.settings, self.data_options(section));
 
-        if (hash.length > 0 && self.settings.deep_linking) {
+        if (hash.length > 0 && settings.deep_linking) {
+          section
+            .find('section, .section')
+            .attr('style', '')
+            .removeClass('active');
           section
             .find('.content[data-slug="' + hash + '"]')
             .closest('section, .section')
@@ -153,6 +207,7 @@
 
       if (typeof off === 'boolean') {
         titles.attr('style', '');
+
       } else {
         titles.each(function () {
           $(this).css('left', previous_width);
@@ -161,7 +216,37 @@
       }
     },
 
+    position_content : function (section, off) {
+      var titles = section.find('.title'),
+          content = section.find('.content'),
+          self = this;
+
+      if (typeof off === 'boolean') {
+        content.attr('style', '');
+        section.attr('style', '');
+      } else {
+        section.find('section, .section').each(function () {
+          var title = $(this).find('.title'),
+              content = $(this).find('.content');
+
+          content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
+        });
+
+        // temporary work around for Zepto outerheight calculation issues.
+        if (typeof Zepto === 'function') {
+          section.height(this.outerHeight(titles.first()));
+        } else {
+          section.height(this.outerHeight(titles.first()) - 2);
+        }
+      }
+
+    },
+
     small : function (el) {
+      var settings = $.extend({}, this.settings, this.data_options(el));
+      if (el && el.hasClass('tabs')) {
+        return false;
+      }
       if (el && this.is_accordion(el)) {
         return true;
       }
@@ -177,7 +262,7 @@
     off : function () {
       $(this.scope).off('.fndtn.section');
       $(window).off('.fndtn.section');
-      this.settings.init = false;
+      $(document).off('.fndtn.section')
     }
   };
 }(Foundation.zj, this, this.document));

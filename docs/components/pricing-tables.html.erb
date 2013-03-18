@@ -7,7 +7,7 @@
     <div class="row">
       <div class="large-12 columns">
         <h2><%= @page_title %></h2>
-        <h4 class="subheader">If you're making a rockin' marketing site for a subscription-based product, you are likely in need of a pricing table. These fill 100% of the their container and are made from a simple unorderd list.</h4>
+        <h4 class="subheader">If you're making a rockin' marketing site for a subscription-based product, you are likely in need of a pricing table. These fill 100% of their container and are made from a simple unordered list.</h4>
       </div>
     </div>
 
@@ -61,7 +61,7 @@
         <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_pricing-tables.scss">_pricing-tables.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/pricing-tables";
+@import "foundation/foundation-global", "foundation/components/global", "foundation/components/pricing-tables";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like with the <code>&lt;ul&gt;</code> and the list items inside it.</p>
@@ -82,7 +82,7 @@
 .your-pricing-class  { @include pricing-table-container;
   .your-title-class  { @include pricing-table-title; }
   .your-price-class  { @include pricing-table-price; }
-  .your-desc-class   { @include pricing-description-title; }
+  .your-desc-class   { @include pricing-table-description; }
   .your-bullet-class { @include pricing-table-bullet; }
   .your-cta-class    { @include pricing-table-cta; }
 }', :css %>

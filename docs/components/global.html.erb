@@ -1,0 +1,92 @@
+<% @side_nav = "css" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <% @page_title = "Global" %>
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Every Foundation project needs gto include these global styles in order to work properly. These include things like basic formatting and global utility classes.</h4>
+
+        <hr>
+
+<%= code_example "
+/* Set box-sizing globally to handle padding and border widths */
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html,
+body { font-size: $base-font-size; }
+
+/* Default body styles */
+body {
+  background: $body-bg;
+  color: $body-font-color;
+  padding: 0;
+  margin: 0;
+  font-family: $body-font-family;
+  font-weight: $body-font-weight;
+  font-style: $body-font-style;
+  line-height: 1;
+  position: relative;
+}
+
+/* Override outline from normalize, we don't like it */
+a:focus { outline: none; }
+
+/* Grid Defaults to get images and embeds to work properly */
+img,
+object,
+embed { max-width: 100%; height: auto; }
+
+object,
+embed { height: 100%; }
+img { -ms-interpolation-mode: bicubic; }
+
+#map_canvas,
+.map_canvas {
+  img,
+  embed,
+  object { max-width: none !important;
+  }
+}
+
+/* Miscellaneous useful HTML classes */
+.left         { float: left !important; }
+.right        { float: right !important; }
+.text-left    { text-align: left !important; }
+.text-right   { text-align: right !important; }
+.text-center  { text-align: center !important; }
+.text-justify { text-align: justify !important; }
+.hide         { display: none; }
+
+/* Font smoothing */
+/* Antialiased font smoothing works best for light text on a dark background. */
+/* Apply to single elements instead of globally to body. */
+/* Note this only applies to webkit-based desktop browsers on the Mac. */
+.antialiased { -webkit-font-smoothing: antialiased; }
+
+/* Get rid of gap under images by making them display: inline-block; by default */
+img { display: inline-block; }
+
+/* Make sure textarea takes on height automatically */
+textarea { height: auto; min-height: 50px; }
+
+/* Make select elements 100% width by default */
+select { width: 100%; }
+", :css %>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+
+</div>
+

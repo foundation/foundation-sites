@@ -6,12 +6,13 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.0.4',
+    version : '4.0.0',
 
     settings : {
       index : 0,
       stickyClass : 'sticky',
-      back_text: '&laquo; Back',
+      custom_back_text: true,
+      back_text: 'Back',
       init : false
     },
 
@@ -25,7 +26,7 @@
 
       if (typeof method != 'string') {
 
-        $('nav.top-bar').each(function () {
+        $('.top-bar').each(function () {
           self.settings.$w = $(window);
           self.settings.$topbar = $(this);
           self.settings.$section = self.settings.$topbar.find('section');
@@ -58,14 +59,14 @@
 
     events : function () {
       var self = this;
-
+      var offst = this.outerHeight($('.top-bar'));
       $(this.scope)
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar', function (e) {
           var topbar = $(this).closest('.top-bar'),
               section = topbar.find('section, .section'),
               titlebar = topbar.children('ul').first();
 
-          if (!self.settings.$topbar.data('height')) self.largestUL();
+          if (!topbar.data('height')) self.largestUL();
 
           e.preventDefault();
 
@@ -81,6 +82,16 @@
             section.find('li.moved').removeClass('moved');
             topbar.data('index', 0);
           }
+
+          if (topbar.parent().hasClass('fixed')) {
+            topbar.parent().removeClass('fixed');
+            $('body').css('padding-top','0');
+            window.scrollTo(0);
+          } else if (topbar.hasClass('fixed expanded')) {
+            topbar.parent().addClass('fixed');
+            $('body').css('padding-top',offst);
+          }
+
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
@@ -150,8 +161,14 @@
       this.settings.$section.find('.has-dropdown>a').each(function () {
         var $link = $(this),
             $dropdown = $link.siblings('.dropdown'),
-            $titleLi = $('<li class="title back js-generated"><h5><a href="#">' + self.settings.back_text + '</a></h5></li>');
+            $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
+
         // Copy link to subnav
+        if (self.settings.custom_back_text == true) {
+          $titleLi.find('h5>a').html('&laquo; ' + self.settings.back_text);
+        } else {
+          $titleLi.find('h5>a').html('&laquo; ' + $link.html());
+        }
         $dropdown.prepend($titleLi);
       });
 
@@ -184,18 +201,18 @@
       if ($(klass).length > 0) {
         var distance = $(klass).length ? $(klass).offset().top: 0,
             $window = $(window);
-            var offst = this.outerHeight($('nav.top-bar'))+20;
+            var offst = this.outerHeight($('.top-bar'));
 
           $window.scroll(function() {
             if ($window.scrollTop() >= (distance)) {
-               $(klass).addClass("fixed");
-                 $('body').css('padding-top',offst);
+              $(klass).addClass("fixed");
+              $('body').css('padding-top',offst);
             }
 
-           else if ($window.scrollTop() < distance) {
+            else if ($window.scrollTop() < distance) {
               $(klass).removeClass("fixed");
               $('body').css('padding-top','0');
-           }
+            }
         });
       }
     },

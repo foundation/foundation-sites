@@ -9,7 +9,7 @@
         <h2><%= @page_title %></h2>
         <h4 class="subheader">Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.</h4>
 
-        <ul id="featured1" data-orbit>
+        <ul id="featured1" data-orbit data-options="timer_speed:5000;">
           <li>
             <img src="../img/demos/demo1.jpg" />
             <div class="orbit-caption">
@@ -188,6 +188,7 @@
 
 <%= code_example '
 /* We use these to control the caption styles */
+$orbit-container-bg: #f5f5f5;
 $orbit-caption-bg-old-browser: #000;
 $orbit-caption-bg-old: rgb(0,0,0);
 $orbit-caption-bg: rgba(0,0,0,0.6);
@@ -209,12 +210,15 @@ $orbit-bullet-nav-color-active: #222;
 $orbit-slide-number-bg: rgb(0,0,0);
 $orbit-slide-number-font-color: #fff;
 $orbit-slide-number-padding: emCalc(5px);
+
+// Margin for when Orbit is stacked on small screens
+$stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function right now
 ', :css %>
 
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.orbit.js</code> if you want to use Orbit. You'll also need to make sure to include <code>zepto.js</code> and/or <code>jquery.js</code> along with <code>foundation.js</code> above the Orbit plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <p>You'll need to include <code>foundation.orbit.js</code> if you want to use Orbit. You'll also need to make sure to include <code>zepto.js</code> and/or <code>jquery.js</code> along with <code>foundation.js</code> above the Orbit plugin. Above your closing <code>&lt;/body&gt;</code> tag include the Foundation library and either Zepto or jQuery.</p>
 
         <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
@@ -232,7 +236,7 @@ $orbit-slide-number-padding: emCalc(5px);
 
         <p>Orbit options can only be passed in during initialization at this time.</p>
 
-    <%= code_example "
+<%= code_example "
 {
   timer_speed: 10000,
   animation_speed: 500,
@@ -252,7 +256,15 @@ $orbit-slide-number-padding: emCalc(5px);
   caption_class: 'orbit-caption',
   active_slide_class: 'active',
   orbit_transition_class: 'orbit-transitioning'
-}", :json %>
+}", :js %>
+
+    <p>You can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>style</code> property:</p>
+
+<%= code_example '
+<ul data-orbit data-options="timer_speed:2500; bullets:false;">
+  ...
+</ul>
+', :html %>
 
       </div>
     </div>

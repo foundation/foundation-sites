@@ -155,7 +155,13 @@
             <h6>Ordered Lists</h6>
             <ol>
               <li>List Item 1</li>
-              <li>List Item 2</li>
+              <li>List Item 2
+                <ol>
+                  <li>Nested List Item</li>
+                  <li>Nested List Item</li>
+                  <li>Nested List Item</li>
+                </ol>
+              </li>
               <li>List Item 3</li>
             </ol>
           </div>
@@ -292,6 +298,7 @@ $paragraph-margin-bottom:              emCalc(20px);
 $paragraph-aside-font-size:            emCalc(14px);
 $paragraph-aside-line-height:          1.35;
 $paragraph-aside-font-style:           italic;
+$paragraph-text-rendering:             optimizeLegibility;
 
 /* We use these to style <code> tags */
 $code-color:                           darken($alert-color, 15%);

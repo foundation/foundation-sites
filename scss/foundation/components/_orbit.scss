@@ -1,6 +1,7 @@
 // Orbit Settings
 
 // We use these to control the caption styles
+$orbit-container-bg: #f5f5f5 !default;
 $orbit-caption-bg-old-browser: #000 !default;
 $orbit-caption-bg-old: rgb(0,0,0) !default;
 $orbit-caption-bg: rgba(0,0,0,0.6) !default;
@@ -23,12 +24,15 @@ $orbit-slide-number-bg: rgb(0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: emCalc(5px) !default;
 
+// Margin for when Orbit is stacked on small screens
+$stack-on-small-margin-bottom: emCalc(20px) !default;
+
 
 .orbit-container {
   overflow: hidden;
   width: 100%;
   position: relative;
-  background: #f5f5f5;
+  background: $orbit-container-bg;
 
   .orbit-slides-container {
     list-style: none;
@@ -177,6 +181,7 @@ $orbit-slide-number-padding: emCalc(5px) !default;
   .orbit-bullets { display: none; }
 }
 
+
 @media #{$small} {
 
   .touch {
@@ -187,7 +192,5 @@ $orbit-slide-number-padding: emCalc(5px) !default;
 
     .orbit-bullets { display: block; }
   }
-
-
 
 }

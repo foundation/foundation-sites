@@ -3,13 +3,13 @@
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foundation Docs: <%= @page_title %></title>
     <link rel="stylesheet" href="<%= asset_path %>/normalize.css" />
     <link rel="stylesheet" href="<%= asset_path %>/docs.css" />
     <script src="<%= asset_path %>/vendor/custom.modernizr.js"></script>
   </head>
-  <body>
+  <body class="antialiased">
 
     <nav class="top-bar">
       <ul class="title-area">
@@ -34,7 +34,7 @@
           <li><a href="<%= docs_path %>">Docs</a></li>
           <li class="divider"></li>
           <li class="has-form">
-            <a href="http://foundation.zurb.com/docs" class="button">Get Started</a>
+            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
           </li>
         </ul>
       </section>
@@ -64,7 +64,7 @@
 
       <div class="large-4 columns">
         <h6><strong>Need some help?</strong></h6>
-        <p>For answers or help visit the <a href="support.html">Support page</a>.</p>
+        <p>For answers or help visit the <a href="http://foundation.zurb.com/docs/support.html">Support page</a>.</p>
       </div>
     </footer>
 
@@ -109,8 +109,7 @@
     </script>
     <script src="<%= asset_path %>/docs.js"></script>
     <script>
-      $(document).foundation()
-                 .foundation('joyride', 'start');
+      $(document).foundation();
     </script>
   </body>
 </html>

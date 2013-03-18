@@ -127,7 +127,7 @@
         <hr>
 
         <h4>Offsets</h4>
-        <p>Offsets allow you to create additional space between columns in a row. Like the rest of the grid, they're nestable. You can use classes like <code>.large-offset-1</code> and <code>.small-offset-3</code> to manipulate your column positions in different ways. You can offset up to 11 since you wouldn't even offset a full-width column.</p>
+        <p>Offsets allow you to create additional space between columns in a row. Like the rest of the grid, they're nestable. You can use classes like <code>.large-offset-1</code> and <code>.small-offset-3</code> to manipulate your column positions in different ways. You can offset up to 11 since you wouldn't ever offset a full-width column.</p>
 
 <%= code_example '
 <div class="row">
@@ -330,8 +330,8 @@ $float: false
 
 <%= code_example '
 #masthead { @include grid-row; @include panel;
-  & > hgroup { @include grid-column(4, $float:left); }
-  & > section { @include grid-column(8, $float:left); }
+  & > hgroup { @include grid-column(4); }
+  & > section { @include grid-column(8); }
 }', :css %>
 
         <header id="masthead">

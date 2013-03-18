@@ -8,6 +8,25 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
+// Accommodate running jQuery or Zepto in noConflict() mode by
+// using an anonymous function to redefine the $ shorthand name.
+// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
+// and http://zeptojs.com/
+var libFuncName = null;
+if (typeof jQuery === "undefined" &&
+    typeof Zepto === "undefined" &&
+    typeof $ === "function") {
+    libFuncName = $;
+} else if (typeof jQuery === "function") {
+    libFuncName = jQuery;
+} else if (typeof Zepto === "function") {
+    libFuncName = Zepto;
+} else {
+    throw new TypeError();
+}
+
+(function ($) {
+
 (function () {
   // add dusty browser stuff
   if (!Array.prototype.filter) {
@@ -79,7 +98,7 @@
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.0.0',
+    version : '4.0.8',
 
     // global Foundation cache object
     cache : {},
@@ -89,7 +108,7 @@
           args = [scope, method, options, response],
           responses = [],
           nc = nc || false;
-
+          
       // disable library error catching,
       // used for development only
       if (nc) this.nc = nc;
@@ -170,16 +189,31 @@
       }
     },
 
+    random_str : function (length) {
+      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
+      
+      if (!length) {
+          length = Math.floor(Math.random() * chars.length);
+      }
+      
+      var str = '';
+      for (var i = 0; i < length; i++) {
+          str += chars[Math.floor(Math.random() * chars.length)];
+      }
+      return str;
+    },
+
     libs : {},
 
     // methods that can be inherited in libraries
     lib_methods : {
       set_data : function (node, data) {
         // this.name references the name of the library calling this method
-        var id = this.name + (+new Date());
+        var id = [this.name,+new Date(),Foundation.random_str(5)].join('-');
 
         Foundation.cache[id] = data;
         node.attr('data-' + this.name + '-id', id);
+        return data;
       },
 
       get_data : function (node) {
@@ -209,12 +243,16 @@
         };
       },
 
-      // parses dat-options attribute on page nodes and turns
+      // parses data-options attribute on nodes and turns
       // them into an object
       data_options : function (el) {
         var opts = {}, ii, p,
             opts_arr = (el.attr('data-options') || ':').split(';'),
             opts_len = opts_arr.length;
+
+        function isNumber (o) {
+          return ! isNaN (o-0) && o !== null && o !== "" && o !== false && o !== true;
+        }
 
         function trim(str) {
           if (typeof str === 'string') return $.trim(str);
@@ -227,8 +265,9 @@
 
           if (/true/i.test(p[1])) p[1] = true;
           if (/false/i.test(p[1])) p[1] = false;
+          if (isNumber(p[1])) p[1] = parseInt(p[1], 10);
 
-          if (p.length === 2) {
+          if (p.length === 2 && p[0].length > 0) {
             opts[trim(p[0])] = trim(p[1]);
           }
         }
@@ -329,3 +368,5 @@
   };
 
 }(this, this.document));
+
+})(libFuncName);

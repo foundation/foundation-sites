@@ -65,6 +65,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   line-height: $topbar-height;
   position: relative;
   background: $topbar-bg;
+  margin-bottom: $topbar-margin-bottom;
 
   // Topbar Global list Styles
   ul {
@@ -106,7 +107,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   // Menu toggle button on small devices
   .toggle-topbar {
     position: absolute;
-    right: 0;
+    #{$default-opposite}: 0;
     top: 0;
 
     a {
@@ -123,10 +124,10 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
     // Adding the class "menu-icon" will add the 3-line icon people love and adore.
     &.menu-icon {
-      right: $topbar-height / 3;
+      #{$default-opposite}: $topbar-height / 3;
       top: 50%;
       margin-top: -16px;
-      padding-left: 40px;
+      padding-#{$default-float}: 40px;
 
       a {
         text-indent: -48px;
@@ -138,7 +139,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
         span {
           position: absolute;
-          right: 0;
+          #{$default-opposite}: 0;
           display: block;
           width: 16px;
           height: 0;
@@ -208,8 +209,9 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > a {
       display: block;
       width: 100%;
-      padding: 12px 0 12px $topbar-height / 3;
       color: $topbar-link-color;
+      padding: 12px 0 12px 0;
+      padding-#{$default-float}: $topbar-height / 3;
       font-size: $topbar-link-font-size;
       font-weight: $topbar-link-weight;
       background: $topbar-dropdown-bg;
@@ -263,7 +265,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
         position: absolute;
         top: 50%;
-        right: 0;
+        #{$default-opposite}: 0;
       }
     }
 
@@ -321,7 +323,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   .top-bar { background: $topbar-bg; @include clearfix; overflow: visible;
     .toggle-topbar { display: none; }
 
-    .title-area { float: left; }
+    .title-area { float: $default-float; }
     .name h1 a { width: auto; }
 
     input,
@@ -349,7 +351,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       display: inline;
 
       li {
-        float: left;
+        float: $default-float;
         .js-generated { display: none; }
       }
     }
@@ -390,7 +392,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
             border: none;
             content: "\00bb";
             margin-top: -7px;
-            right: 5px;
+            #{$default-opposite}: 5px;
           }
         }
       }
@@ -398,12 +400,14 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     }
 
     .dropdown {
-      left: 0;
+      #{$default-float}: 0;
       top: auto;
       background: transparent;
+      min-width: 100%;
 
       li {
         a {
+          color: $topbar-dropdown-link-color;
           line-height: 1;
           white-space: nowrap;
           padding: 7px $topbar-height / 3;
@@ -417,7 +421,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
         // Second Level Dropdowns
         .dropdown {
-          left: 100%;
+          #{$default-float}: 100%;
           top: 0;
         }
       }
@@ -426,8 +430,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > ul > .divider {
       border-bottom: none;
       border-top: none;
-      border-right: solid 1px lighten($topbar-bg, 10%);
-      border-left: solid 1px darken($topbar-bg, 10%);
+      border-#{$default-opposite}: solid 1px lighten($topbar-bg, 10%);
+      border-#{$default-float}: solid 1px darken($topbar-bg, 10%);
       clear: none;
       height: $topbar-height;
       width: 0px;

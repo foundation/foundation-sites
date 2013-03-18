@@ -102,19 +102,13 @@
           int_settings_count = integer_settings.length;
 
       if (!this.settings.init) this.init();
-      $.extend(true, this.settings, this.data_options($this));
-
+      
       // non configureable settings
       this.settings.$content_el = $this;
       this.settings.body_offset = $(this.settings.tipContainer).position();
       this.settings.$tip_content = this.settings.$content_el.find('> li');
       this.settings.paused = false;
       this.settings.attempts = 0;
-
-      // Make sure that settings parsed from data_options are integers where necessary
-      for (var i = int_settings_count - 1; i >= 0; i--) {
-        this.settings[integer_settings[i]] = parseInt(this.settings[integer_settings[i]], 10);
-      }
 
       this.settings.tipLocationPatterns = {
         top: ['bottom'],
@@ -130,9 +124,14 @@
 
       // generate the tips and insert into dom.
       if (!this.settings.cookieMonster || this.settings.cookieMonster && $.cookie(this.settings.cookieName) === null) {
-
         this.settings.$tip_content.each(function (index) {
-          self.create({$li : $(this), index : index});
+          var $this = $(this);
+          $.extend(true, self.settings, self.data_options($this));
+          // Make sure that settings parsed from data_options are integers where necessary
+          for (var i = int_settings_count - 1; i >= 0; i--) {
+            self.settings[integer_settings[i]] = parseInt(self.settings[integer_settings[i]], 10);
+          }
+          self.create({$li : $this, index : index});
         });
 
         // show first tip
@@ -191,7 +190,6 @@
     },
 
     create : function (opts) {
-      // backwards compatability with data-text attribute
       var buttonText = opts.$li.attr('data-button') || opts.$li.attr('data-text'),
         tipClass = opts.$li.attr('class'),
         $tip_content = $(this.tip_template({
@@ -222,8 +220,7 @@
 
         if (this.settings.$li.length && this.settings.$target.length > 0) {
 
-          this.settings.tipSettings = $.extend(true,
-            this.settings, this.data_options(this.settings.$li));
+          this.settings.tipSettings = $.extend(this.settings, this.data_options(this.settings.$li));
 
           this.settings.timer = parseInt(this.settings.timer, 10);
 
@@ -334,6 +331,7 @@
 
     set_next_tip : function () {
       this.settings.$next_tip = $(".joyride-tip-guide[data-index='" + this.settings.$li.index() + "']");
+      this.settings.$next_tip.data('closed', '');
     },
 
     set_target : function () {
@@ -485,9 +483,7 @@
         }
 
       } else if (this.settings.$li.length) {
-
         this.pos_modal($nub);
-
       }
 
       if (toggle) {
@@ -499,15 +495,16 @@
     pos_modal : function ($nub) {
       this.center();
       $nub.hide();
+      if (!this.settings.$next_tip.data('closed')) {
+        if ($('.joyride-modal-bg').length < 1) {
+          $('body').append('<div class="joyride-modal-bg">').show();
+        }
 
-      if ($('.joyride-modal-bg').length < 1) {
-        $('body').append('<div class="joyride-modal-bg">').show();
-      }
-
-      if (/pop/i.test(this.settings.tipAnimation)) {
-        $('.joyride-modal-bg').show();
-      } else {
-        $('.joyride-modal-bg').fadeIn(this.settings.tipAnimationFadeSpeed);
+        if (/pop/i.test(this.settings.tipAnimation)) {
+          $('.joyride-modal-bg').show();
+        } else {
+          $('.joyride-modal-bg').fadeIn(this.settings.tipAnimationFadeSpeed);
+        }
       }
     },
 
@@ -589,6 +586,8 @@
       if (this.settings.timer > 0) {
         clearTimeout(this.settings.automate);
       }
+
+      this.settings.$next_tip.data('closed', true);
 
       $('.joyride-modal-bg').hide();
       this.settings.$current_tip.hide();

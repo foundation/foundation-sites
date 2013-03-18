@@ -19,9 +19,9 @@ $block-grid-media-queries: true !default;
 
   @if $base-style {
     display: block;
-    overflow: hidden;
     padding: 0;
     margin: 0 (-$spacing);
+    @include clearfix;
 
     &>li {
       display: block;
@@ -35,8 +35,9 @@ $block-grid-media-queries: true !default;
     &>li {
       width: 100%/$per-row;
       padding: 0 $spacing $spacing;
+
+      &:nth-of-type(#{$per-row}n+1) { clear: both; }
     }
-    &:nth-of-type(#{$per-row}n+1) { clear: both; }
   }
 
 }
@@ -57,10 +58,9 @@ $block-grid-media-queries: true !default;
   @media #{$small} {
     @for $i from 1 through $block-grid-elements {
       .large-block-grid-#{($i)} {
-        @if      $i == 2 { @include block-grid(2,15px,false); }
-        @else if $i == 3 { @include block-grid(3,12px,false); }
-        @else { @include block-grid($i,$block-grid-default-spacing,false); }
+        @include block-grid($i,$block-grid-default-spacing,false);
       }
     }
+    [class*="small-block-grid-"] > li { clear: none !important; }
   }
 }

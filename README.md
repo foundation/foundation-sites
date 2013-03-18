@@ -35,6 +35,7 @@ WordPress
 * [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press
 * [Yeti](https://github.com/modlearning/Yeti) by Modular Learning
 * [Foundation](https://github.com/drewsymo/Foundation) by Drewsymo
+* [required+ Themes](http://themes.required.ch/) by required+
 
 Joomla
 
@@ -44,6 +45,7 @@ Joomla
 Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
+* [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
 
 PyroCMS
 

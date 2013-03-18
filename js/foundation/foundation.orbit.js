@@ -4,6 +4,8 @@
   Foundation.libs = Foundation.libs || {};
 
   Foundation.libs.orbit = {
+    name: 'orbit',
+
     version: '4.0.0',
 
     settings: {
@@ -29,12 +31,16 @@
 
     init: function (scope, method, options) {
       var self = this;
+      Foundation.inherit(self, 'data_options');
 
       if (typeof method === 'object') {
         $.extend(true, self.settings, method);
       }
 
-      $('[data-orbit]', scope).each($.proxy(self._init, self));
+      $('[data-orbit]', scope).each(function(idx, el) {
+        var scoped_self = $.extend(true, {}, self);
+        scoped_self._init(idx, el);
+      });
     },
 
     _container_html: function() {
@@ -88,6 +94,8 @@
           $slides_container = $(slider),
           $container = $slides_container.wrap(self._container_html()).parent(),
           $slides = $slides_container.children();
+      
+      $.extend(true, self.settings, self.data_options($slides_container));
 
       $container.append(self._prev_html());
       $container.append(self._next_html());
@@ -135,7 +143,7 @@
 
         if ($slide.length === 1) {
           self._reset_timer($slides_container, true);
-          self.goto($slides_container, $slide.index(), function() {});
+          self._goto($slides_container, $slide.index(), function() {});
         }
       });
 
@@ -143,7 +151,7 @@
         .on('click.fndtn.orbit', '[data-orbit-slide-number]', function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
-          self.goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
+          self._goto($slides_container, $(e.currentTarget).data('orbit-slide-number'),function() {});
         });
 
       $container
@@ -157,12 +165,12 @@
         .on('orbit:next-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.next_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
-          self.goto($slides_container, 'next', function() {});
+          self._goto($slides_container, 'next', function() {});
         })
         .on('orbit:prev-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.prev_class, function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
-          self.goto($slides_container, 'prev', function() {});
+          self._goto($slides_container, 'prev', function() {});
         })
         .on('orbit:toggle-play-pause.fndtn.orbit click.fndtn.orbit touchstart.fndtn.orbit', '.' + self.settings.timer_container_class, function(e) {
           e.preventDefault();
@@ -177,6 +185,7 @@
           }
         })
         .on('touchstart.fndtn.orbit', function(e) {
+          if (!e.touches) { e = e.originalEvent; }
           var data = {
             start_page_x: e.touches[0].pageX,
             start_page_y: e.touches[0].pageY,
@@ -188,6 +197,7 @@
           e.stopPropagation();
         })
         .on('touchmove.fndtn.orbit', function(e) {
+          if (!e.touches) { e = e.originalEvent; }
           // Ignore pinch/zoom events
           if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
@@ -207,7 +217,7 @@
             self._stop_timer($slides_container);
             var direction = (data.delta_x < 0) ? 'next' : 'prev';
             data.active = true;
-            self.goto($slides_container, direction, function() {});
+            self._goto($slides_container, direction, function() {});
           }
         })
         .on('touchend.fndtn.orbit', function(e) {
@@ -232,7 +242,7 @@
 
       var callback = function() {
         self._reset_timer($slides_container, false);
-        self.goto($slides_container, 'next', function() {
+        self._goto($slides_container, 'next', function() {
           self._start_timer($slides_container);
         });
       };
@@ -242,7 +252,7 @@
           progress_pct = ($progress.width() / $timer.width()),
           delay = self.settings.timer_speed - (progress_pct * self.settings.timer_speed);
 
-      $progress.animate({'width': '100%'}, delay, 'linear', callback).data('is-original', 'beans?');
+      $progress.animate({'width': '100%'}, delay, 'linear', callback);
       $slides_container.trigger('orbit:timer-started');
     },
 
@@ -290,7 +300,7 @@
       }
     },
 
-    goto: function($slides_container, index_or_direction, callback) {
+    _goto: function($slides_container, index_or_direction, callback) {
       var self = this,
           $container = $slides_container.parent(),
           $slides = $slides_container.children(),

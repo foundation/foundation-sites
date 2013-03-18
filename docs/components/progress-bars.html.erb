@@ -49,7 +49,7 @@
         <p>We've included SCSS mixins used to style progress bars. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_progress-bars.scss">_progress-bars.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/labels";
+@import "foundation/foundation-global", "foundation/components/global", "foundation/components/progress-bars";
 ', :css %>
 
         <h5>Container Mixin</h5>
@@ -99,13 +99,14 @@ $progress-bar-height: emCalc(25px);
 $progress-bar-border-color: darken(#fff, 20%);
 $progress-bar-border-size: 1px;
 $progress-bar-border-style: solid;
-$progress-bar-border-radius: $button-radius;
+$progress-bar-border-radius: $global-radius;
 
 /* We use these to control the margin & padding */
 $progress-bar-pad: emCalc(2px);
 $progress-bar-margin-bottom: emCalc(10px);
 
 /* We use these to set the meter colors */
+$progress-bar-color: transparent;
 $progress-meter-color: $primary-color;
 $progress-meter-secondary-color: $secondary-color;
 $progress-meter-success-color: $success-color;

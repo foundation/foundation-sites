@@ -1,0 +1,96 @@
+<% @side_nav = "using" %>
+<% @page_title = "Media Queries" %>
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">We keep media queries fairly simple in Foundation and let the percentage-based grid do the heavy lifting across various screen sizes.</h4>
+
+        <hr>
+
+        <h4>Working with Media Queries and CSS</h4>
+        <p>In CSS, media queries are easily written with a specific syntax. We only use one major breakpoint for the grid in Foundation to shift layouts for screens above 768px wide. The rest of the media queries are used for visibility classes. The following snippet shows you each of the media queries used in Foundation:</p>
+
+<%= code_example '
+/* We use this media query to add styles to any device that supports media queries */
+@media only screen { }
+
+/* Used to alter styles for screens at least 768px wide. This is where the grid changes. */
+@media only screen and (min-width: 768px) {}
+
+/* Used to alter styles for screens at least 1280px wide. */
+@media only screen and (min-width: 1280px) {}
+
+/* Used to alter styles for screens at least 1440px wide. */
+@media only screen and (min-width: 1440px) {}
+
+/* Apply styles to screens in landscape orientation */
+@media only screen and (orientation: landscape) {}
+
+/* Apply styles to screens in portrait orientation */
+@media only screen and (orientation: portrait) {}
+
+/* We also use Modernizr to add a .touch class to the body when applicable */
+/* You can prepend this class to anything and it will style only for touch devices */
+.touch .your-element {}
+', :css %>
+
+        <h4>Working with Media Queries and SCSS</h4>
+        <p>You can go ahead and use any of the CSS media queries in your SCSS files, but we've also made it easier with some handy variables you can use instead! Those variables are:</p>
+
+<%= code_example '
+/* Available Variables */
+$small-screen: emCalc(768px);
+$medium-screen: emCalc(1280px);
+$large-screen: emCalc(1440px);
+
+$screen: "only screen";
+$small: "only screen and (min-width:"#{$small-screen}")";
+$medium: "only screen and (min-width:"#{$medium-screen}")";
+$large: "only screen and (min-width:"#{$large-screen}")";
+$landscape: "only screen and (orientation: landscape)";
+$portrait: "only screen and (orientation: portrait)";
+
+/* We use this media query to add styles to any device that supports media queries */
+@media #{$screen} { }
+
+/* Used to alter styles for screens at least 768px wide. This is where the grid changes. */
+@media #{$small} { }
+
+/* Used to alter styles for screens at least 1280px wide. */
+@media #{$medium} { }
+
+/* Used to alter styles for screens at least 1440px wide. */
+@media #{$large} { }
+
+/* Apply styles to screens in landscape orientation */
+@media #{$landscape} { }
+
+/* Apply styles to screens in portrait orientation */
+@media #{$portrait} { }
+
+/* We also use Modernizr to add a .touch class to the body when applicable */
+/* You can prepend this class to anything and it will style only for touch devices */
+.touch .your-element {}
+', :css %>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
+  </div>
+</div>
+
+
+
+
+
+
+
+

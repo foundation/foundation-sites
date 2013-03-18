@@ -63,7 +63,7 @@
             </ul>
             <!-- Right Nav Section -->
             <ul class="right">
-              <li class="divider"></li>
+              <li class="divider hide-for-small"></li>
               <li><a href="#">Item 2</a></li>
             </ul>
           </section>
@@ -273,8 +273,10 @@ $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout'
 {
   index : 0,
   stickyClass : 'sticky',
+  custom_back_text: true, // Set this to false and it will pull the top level link name as the back text
+  back_text: 'Back', // Define what you want your custom back text to be if custom_back_text: true
   init : false
-}", :json %>
+}", :js %>
       </div>
     </div>
   </div>

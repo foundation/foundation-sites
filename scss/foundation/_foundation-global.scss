@@ -3,7 +3,11 @@
 // Variables
 //
 
-// This is the default html and body font-size for the base em value.
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with brower-based text zoom or user-set defaults.
+$base-font-size: 100% !default;
+
+// Set your base font-size in pixels so emCalc can do its magic below
 $em-base: 16px !default;
 
 // We use these to control various global styles
@@ -12,9 +16,6 @@ $body-font-color: #222 !default;
 $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $body-font-weight: normal !default;
 $body-font-style: normal !default;
-
-// We use this to control font-smoothing
-$font-smoothing: antialiased !default;
 
 // We use these to control text direction settings
 $text-direction: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
@@ -48,6 +49,20 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 $include-html-classes: true !default;
 $include-print-styles: true !default;
 
+$include-html-grid-classes: $include-html-classes !default;
+$include-html-visibility-classes: $include-html-classes !default;
+$include-html-button-classes: $include-html-classes !default;
+$include-html-form-classes: $include-html-classes !default;
+$include-html-media-classes: $include-html-classes !default;
+$include-html-section-classes: $include-html-classes !default;
+$include-html-reveal-classes: $include-html-classes !default;
+$include-html-alert-classes: $include-html-classes !default;
+$include-html-nav-classes: $include-html-classes !default;
+$include-html-label-classes: $include-html-classes !default;
+$include-html-panel-classes: $include-html-classes !default;
+$include-html-pricing-classes: $include-html-classes !default;
+$include-html-progress-classes: $include-html-classes !default;
+$include-html-magellan-classes: $include-html-classes !default;
 
 //
 // Functions
@@ -83,6 +98,7 @@ $include-print-styles: true !default;
 
 // We use this to create equal side border radius on elements.
 @mixin side-radius($side, $radius) {
+  @include radius(0);
   @if $side == left {
     -moz-border-radius-bottomleft: $radius;
     -moz-border-radius-topleft: $radius;
@@ -174,6 +190,9 @@ $small-screen: emCalc(768px) !default;
 $medium-screen: emCalc(1280px) !default;
 $large-screen: emCalc(1440px) !default;
 
+$screen: "only screen" !default;
 $small: "only screen and (min-width:"#{$small-screen}")" !default;
 $medium: "only screen and (min-width:"#{$medium-screen}")" !default;
 $large: "only screen and (min-width:"#{$large-screen}")" !default;
+$landscape: "only screen and (orientation: landscape)" !default;
+$portrait: "only screen and (orientation: portrait)" !default;

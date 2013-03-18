@@ -6,7 +6,7 @@
   Foundation.libs.forms = {
     name : 'forms',
 
-    version : '4.0.0',
+    version : '4.0.4',
 
     settings : {
       disable_class: 'no-custom'
@@ -33,11 +33,11 @@
     },
 
     assemble : function () {
-      $('form.custom input[type="radio"]').not('[data-customforms="disabled"]')
+      $('form.custom input[type="radio"]', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_markup);
-      $('form.custom input[type="checkbox"]').not('[data-customforms="disabled"]')
+      $('form.custom input[type="checkbox"]', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_markup);
-      $('form.custom select').not('[data-customforms="disabled"]')
+      $('form.custom select', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_select);
     },
 
@@ -45,16 +45,6 @@
       var self = this;
 
       $(this.scope)
-        .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          self.toggle_checkbox($(this));
-        })
-        .on('click.fndtn.forms', 'form.custom span.custom.radio', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          self.toggle_radio($(this));
-        })
         .on('change.fndtn.forms', 'form.custom select:not([data-customforms="disabled"])', function (e) {
           self.refresh_custom_select($(this));
         })
@@ -66,6 +56,7 @@
             if ($associatedElement.attr('type') === 'checkbox') {
               e.preventDefault();
               $customCheckbox = $(this).find('span.custom.checkbox');
+
               //the checkbox might be outside after the label
               if ($customCheckbox.length == 0) {
                 $customCheckbox = $(this).next('span.custom.checkbox');
@@ -177,6 +168,7 @@
           $selector = $customSelect.find( ".selector" ),
           $options = $this.find( 'option' ),
           $selectedOption = $options.filter( ':selected' ),
+          copyClasses = $this.attr('class') ? $this.attr('class').split(' ') : [],
           maxWidth = 0,
           liHtml = '',
           $listItems,
@@ -190,7 +182,7 @@
                                $this.hasClass( 'large' )   ? 'large'   :
                                $this.hasClass( 'expand' )  ? 'expand'  : '';
 
-        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>');
+        $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize ].concat(copyClasses).filter(function(item, idx,arr){ if(item == '') return false; return arr.indexOf(item) == idx; }).join( ' ' ) + '"><a href="#" class="selector"></a><ul /></div>');
         $selector = $customSelect.find(".selector");
         $customList = $customSelect.find("ul");
         liHtml = $options.map(function() { return "<li>" + $( this ).html() + "</li>"; } ).get().join( '' );

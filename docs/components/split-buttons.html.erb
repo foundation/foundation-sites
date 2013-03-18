@@ -33,19 +33,19 @@
 
 <%= code_example '
 <!-- Size Classes -->
-<a href="#" class="button split">Default Button</a>
-<a href="#" class="tiny button split">Tiny Button</a>
-<a href="#" class="small button split">Small Button</a>
-<a href="#" class="large button split">Large Button</a>
+<a href="#" class="button split">Default Button <span></span></a>
+<a href="#" class="tiny button split">Tiny Button <span></span></a>
+<a href="#" class="small button split">Small Button <span></span></a>
+<a href="#" class="large button split">Large Button <span></span></a>
 
 <!-- Color Classes -->
-<a href="#" class="button split secondary">Secondary Button</a>
-<a href="#" class="button split success">Success Button</a>
-<a href="#" class="button split alert">Alert Button</a>
+<a href="#" class="button split secondary">Secondary Button <span></span></a>
+<a href="#" class="button split success">Success Button <span></span></a>
+<a href="#" class="button split alert">Alert Button <span></span></a>
 
 <!-- Radius Classes -->
-<a href="#" class="button split radius">Radius Button</a>
-<a href="#" class="button split round">Round Button</a>
+<a href="#" class="button split radius">Radius Button <span></span></a>
+<a href="#" class="button split round">Round Button <span></span></a>
 ', :html %>
 
         <p>You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>split buttons from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
@@ -56,13 +56,13 @@
         <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="#https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_split-buttons.scss">_split-buttons.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/buttons", "foundation/split-buttons";
+@import "foundation/foundation-global", "foundation/components/global", "foundation/components/buttons", "foundation/components/split-buttons";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
 
 <%= code_example '
-<a href="#" class="your-class-name">Split Button Text</a>
+<a href="#" class="your-class-name">Split Button Text <span></span></a>
 ', :html %>
 
         <h5>Quick Mixin</h5>
@@ -154,7 +154,7 @@ $split-button-pip-left-lrg:    emCalc(-9px);
         <p>To create a dropdown, you'll need to attach a data-attribute to whatever element you want the dropdown attached to (in this case a button). From there, you'll create a list that holds the links or content and add another data-attribute that associates with the element it belongs to. Here's an example of that markup:</p>
 
 <%= code_example '
-<a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button</a><br>
+<a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button <span data-dropdown="drop1"></span></a><br>
 
 <ul id="drop1" class="f-dropdown">
   <li><a href="#">This is a link</a></li>

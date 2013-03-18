@@ -332,7 +332,7 @@
        <p>A lot of elements in Foundation can be created using SCSS mixins so that you can include your own classes and just enough style as needed for the job at hand. To use these mixins, you'll need to have the extension installed or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_forms.scss">_forms.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/buttons", "foundation/forms";', :css %>
+@import "foundation/foundation-global", "foundation/components/global", "foundation/components/buttons", "foundation/components/forms";', :css %>
 
 
         <p>We include most of the form styles by default, but the ones that are attached to HTML classes can be accessed via the mixins below. The error states have mixins, but we suggest using the classes since they are usually only visible temporarily.</p>
