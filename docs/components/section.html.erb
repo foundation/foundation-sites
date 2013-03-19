@@ -275,7 +275,7 @@
         <h6>Deep Linking</h6>
         <p>Set <code>deep-linking</code> to true to enable deep linking to sections of content. Deep linking allows visitors to visit a predefined URL with a hash that points to a particular section of the content. Deep linking also requires a matching <code>data-slug</code> on the content section that the hash should point to, without the pound (&#35;) sign.</p>
 
-        <%= code_example '
+<%= code_example '
 <div class="section-container auto" data-section data-options="deep_linking: true">
   <section class="section">
     <p class="title"><a href="#section1">Section 1</a></p>
@@ -294,6 +294,32 @@
         <p class="panel"><strong>Note:</strong> The <code>section</code> element can be replaced with a <code>div.section</code> element if you do not want to use HTML5 elements.</p>
 
         <hr>
+
+      <!--   <h3>Building with Mixins</h3>
+        <p>If you are keen on SCSS and use it for your Foundation projects, you have access to mixins that will let you create any type of section you want and change it within a media query too! Building a section with our mixins requires a bit of predefined structure, but you can choose the classes or ID's to style them with. Start with some sort of block-level container, we use a <code>&lt;div&gt;</code>. This container needs to have <code>data-section="type-of-section"</code>. The section types are explained above. Inside this you create "sections", which can be an HTML5 <code>section</code> element or a <code>&lt;div class="section"&gt;</code>, that will hold content.<p>
+
+        <h5>Title and Content Elements</h5>
+        <p>Inside of these "sections" you created you'll need to add a title and content. To create the title element, use something like a <code>&lt;p&gt;</code>, <code>&lt;h5&gt;</code>, etc and give it an attribute of <code>data-section-title</code>. After this, you add <code>&lt;div data-section-content&gt;</code> and fill it with your content.</p>
+
+        <p>Here's an example structure you might use with the section mixin:</p>
+
+<%= code_example '
+<div class="your-class-name" data-section="auto"> <!-- Can use "auto", "accordion", "tabs", "vertical-nav", or "horizontal-nav" -->
+  <section class="your-section-class" data-section>
+    <p class="title"><a href="#section1">Section 1</a></p>
+    <div class="content" data-slug="section1">
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#section2">Section 2</a></p>
+    <div class="content" data-slug="section2">
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+        <hr> -->
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
