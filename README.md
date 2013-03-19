@@ -1,7 +1,7 @@
 Welcome to Foundation
 =====================
 
-Foundation is the most advanced responsive front-end framework in the world. With Foundation you can quickly prototype and build sites or apps that work on any kind of device, with tons of included layout constructs (like a full responsive grid), elements and best practices.
+Foundation is the most advanced responsive front-end framework in the world. You can quickly prototype and build sites or apps that work on any kind of device with Foundation, which includes layout constructs (like a fully responsive grid), elements and best practices.
 
 Homepage:      http://foundation.zurb.com<br />
 Documentation: http://foundation.zurb.com/docs<br />
@@ -45,6 +45,7 @@ Joomla
 Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
+* [Zurb Foundation](http://drupal.org/project/zurb-foundation) Supporting F3.2, F4 & Drupal 8  by [Ishmael Sanchez](http://ishmaelsanchez.com), [Chris Lee](http://hire.chrisjlee.net)
 * [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
 
 PyroCMS
