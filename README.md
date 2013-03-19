@@ -107,6 +107,11 @@ Ruby on Rails Sass Gems
 
 * [Foundation Icons 2](https://github.com/zaiste/foundation-icons-sass-rails) by J. P. Nowak
 
+Yeoman Generator
+
+* [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
+
+
 MIT Open Source License
 =======================
 
