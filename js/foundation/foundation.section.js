@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.8',
+    version : '4.0.9',
 
     settings : {
       deep_linking: false,
@@ -55,7 +55,7 @@
       $(document)
         .on('click.fndtn.section', function (e) {
           if ($(e.target).closest('.title').length < 1) {
-            $('[data-section].vertical-nav, [data-section].horizontal-nav')
+            $('[data-section="vertical-nav"], [data-section="horizontal-nav"]')
               .find('section, .section')
               .removeClass('active')
               .attr('style', '');
@@ -167,15 +167,19 @@
     },
 
     is_vertical : function (el) {
-      return el.hasClass('vertical-nav');
+      return /vertical-nav/i.test(el.data('section'));
     },
 
     is_horizontal : function (el) {
-      return el.hasClass('horizontal-nav');
+      return /horizontal-nav/i.test(el.data('section'));
     },
 
     is_accordion : function (el) {
-      return el.hasClass('accordion');
+      return /accordion/i.test(el.data('section'));
+    },
+
+    is_tabs : function (el) {
+      return /tabs/i.test(el.data('section'));
     },
 
     set_active_from_hash : function () {
@@ -244,7 +248,7 @@
 
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
-      if (el && el.hasClass('tabs')) {
+      if (this.is_tabs(el)) {
         return false;
       }
       if (el && this.is_accordion(el)) {
