@@ -6,7 +6,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.0.6',
+    version : '4.0.9',
 
     settings : {
       activeClass: 'open'
@@ -82,10 +82,6 @@
     },
 
     css : function (dropdown, target) {
-      if (target.parent().hasClass('button', 'split')) {
-        var target = target.parent();
-      }
-
       if (dropdown.parent()[0] === $('body')[0]) {
         var position = target.offset();
       } else {
@@ -101,13 +97,11 @@
           top: position.top + this.outerHeight(target)
         });
       } else {
-        var window_width = $(document).width();
-
-        if (window_width > this.outerWidth(dropdown) + target.offset().left) {
+        if ($(window).width() > this.outerWidth(dropdown) + target.offset().left) {
           var left = position.left;
         } else {
           if (!dropdown.hasClass('right')) {
-            dropdown.addClass('right')
+            dropdown.addClass('right');
           }
           var left = position.left - (this.outerWidth(dropdown) - this.outerWidth(target));
         }
