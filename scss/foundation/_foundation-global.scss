@@ -7,6 +7,10 @@
 // for compatibility with brower-based text zoom or user-set defaults.
 $base-font-size: 100% !default;
 
+// This maintains compatibility with compass framework since default compass
+// $base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 150% !default;
+
 // Set your base font-size in pixels so emCalc can do its magic below
 $em-base: 16px !default;
 
