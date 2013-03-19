@@ -1,3 +1,9 @@
+### 4.0.9- March 19, 2013
+* Added `auto` option to `Foundation.section.js.
+* Fixes dropdown positioning for split buttons.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.8...v4.0.9).
+
 ### 4.0.8- March 15, 2013
 * Added paragraph `text-rendering` variable: `$paragraph-text-rendering`.
 * Changed blockgrid to use clearfix instead of overflow.
