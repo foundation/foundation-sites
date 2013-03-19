@@ -11,7 +11,7 @@
 
         <div class="row">
           <div class="large-3 columns">
-            <div class="section-container vertical-nav" data-section>
+            <div class="section-container vertical-nav" data-section="vertical-nav">
               <section class="section">
                 <p class="title"><a href="#">Section 1</a></p>
                 <div class="content">
@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="large-9 columns">
-            <div class="section-container horizontal-nav" data-section>
+            <div class="section-container horizontal-nav" data-section="horizontal-nav">
               <section class="section">
                 <p class="title"><a href="#">Section 1</a></p>
                 <div class="content">
@@ -124,8 +124,10 @@
         <h3>Build With Predefined HTML Classes</h3>
         <p>There are two ways to build sections in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building a sections using our predefined classes is super-easy, you just need to create a <code>&lt;div class="section-container" data-section&gt;</code> as a wrapper for the sections themselves. Inside of this wrapper, you'll create either a <code>&lt;section class="section"&gt;</code> or <code>&lt;div class="section"&gt;</code>. Within that you'll include some sort of <code>.title</code> (this can be headers or a paragragh) and a <code>&lt;div class="content"&gt;</code>. Here is the markup you'll need:</p>
 
+        <p>If you want to use ZURB's default styles for section elements you can apply the <code>auto</code>, <code>tabs</code>, <code>accordion</code>, <code>vertical-nav</code>, or <code>horizontal-nav</code> classes. By default, section elements will be an accordion on mobile and tabs on desktops and tablets. If you want to adjust this behavior and force a particular format for your section, you will need to set <code>data-section</code> equal to the format you want to force as shown in the variations below.</p>
+
 <%= code_example '
-<div class="section-container" data-section>
+<div class="section-container auto" data-section>
   <section class="section">
     <p class="title"><a href="#panel1">Section 1</a></p>
     <div class="content">
@@ -139,6 +141,7 @@
     </div>
   </section>
 </div>', :html %>
+        <p>This example will automatically switch between tabs and accordion based on the resolution of the device.</p>
 
         <p>The class options:</p>
         <ul class="disc">
@@ -153,7 +156,7 @@
         <h6>Accordion</h6>
         <p>Adding an <code>accordion</code> class to the section container will show an accordion on both small and large screens.</p>
 <%= code_example '
-<div class="section-container accordion" data-section>
+<div class="section-container accordion" data-section="accordion">
   <section class="section">
     <p class="title"><a href="#">Section 1</a></p>
     <div class="content">
@@ -168,10 +171,10 @@
   </section>
 </div>', :html %>
 
-        <h6>Tabs/Accordion</h6>
-        <p>Adding a <code>tabs</code> class to the section container will enable tabs on large screens and show an accordion on small screens.</p>
+        <h6>Tabs</h6>
+        <p>Adding a <code>tabs</code> class to the section container will enable tabs on both small and large screens.</p>
 <%= code_example '
-<div class="section-container tabs" data-section>
+<div class="section-container tabs" data-section="tabs">
   <section class="section">
     <p class="title"><a href="#">Section 1</a></p>
     <div class="content">
@@ -196,7 +199,7 @@
 <%= code_example '
 <div class="row">
   <div class="large-3 columns">
-    <div class="section-container vertical-nav" data-section>
+    <div class="section-container vertical-nav" data-section="vertical-nav">
       <section class="section">
         <p class="title"><a href="#">Section 1</a></p>
         <div class="content">
@@ -236,7 +239,7 @@
         <p>Use the <code>side-nav</code> class on the list to apply the Foundation navigation styles</p>
 
 <%= code_example '
-<div class="section-container horizontal-nav" data-section>
+<div class="section-container horizontal-nav" data-section="horizontal-nav">
   <section class="section">
     <p class="title"><a href="#">Section 1</a></p>
     <div class="content">
@@ -269,7 +272,7 @@
         <p>Set <code>deep-linking</code> to true to enable deep linking to sections of content. Deep linking allows visitors to visit a predefined URL with a hash that points to a particular section of the content. Deep linking also requires a matching <code>data-slug</code> on the content section that the hash should point to, without the pound (&#35;) sign.</p>
 
         <%= code_example '
-<div class="section-container" data-section data-options="deep_linking: true">
+<div class="section-container auto" data-section data-options="deep_linking: true">
   <section class="section">
     <p class="title"><a href="#section1">Section 1</a></p>
     <div class="content" data-slug="section1">
@@ -325,7 +328,7 @@ $section-bottom-margin:          emCalc(20px);
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
 
 <%= code_example '
-<div class="section-container" data-section>
+<div class="section-container auto" data-section>
   <section class="section">
     <p class="title"><a href="#panel1">Section 1</a></p>
     <div class="content">
