@@ -210,7 +210,7 @@ $section-bottom-margin:          emCalc(20px) !default;
     .section { @include section; }
   }
 
-  .section-container.tabs {
+  .section-container.tabs, .section-container.auto {
     @include section-container(false, tabs);
 
     section,
