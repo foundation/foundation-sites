@@ -314,6 +314,13 @@ $input-error-message-font-color-alt: #333 !default;
     @include single-transition(all, 0.15s, linear);
   }
 
+  /* Adjust margin for form elements below */
+  input[type="file"],
+  input[type="checkbox"],
+  select {
+    margin: 0 0 $form-spacing 0;
+  }
+
   /* We add basic fieldset styling */
   fieldset {
     @include fieldset;
