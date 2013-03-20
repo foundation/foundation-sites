@@ -30,12 +30,12 @@ Many thanks to all the people working on Foundation either to improve the base c
 
 WordPress
 
-* [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
-* [Reverie](http://themefortress.com/reverie/) by Zhen
-* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press
-* [Yeti](https://github.com/modlearning/Yeti) by Modular Learning
-* [Foundation](https://github.com/drewsymo/Foundation) by Drewsymo
-* [required+ Themes](http://themes.required.ch/) by required+
+* [Corner Stone](https://github.com/thewirelessguy/cornerstone) by [Stephen Mullen](https://twitter.com/wirelessguyuk) using Foundation version 4
+* [Reverie](http://themefortress.com/reverie/) by Zhen using Foundation version 4
+* [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris using Foundation version 3
+* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press using Foundation version 3
+* [Yeti](https://github.com/modlearning/Yeti) by Modular Learning using Foundation version 3.2
+* [required+ Themes](http://themes.required.ch/) by required+ using Foundation version 3.25
 
 Joomla
 
