@@ -317,6 +317,7 @@ $input-error-message-font-color-alt: #333 !default;
   /* Adjust margin for form elements below */
   input[type="file"],
   input[type="checkbox"],
+  input[type="radio"],
   select {
     margin: 0 0 $form-spacing 0;
   }
