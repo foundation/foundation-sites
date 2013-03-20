@@ -11,6 +11,7 @@
     settings : {
       deep_linking: false,
       one_up: true,
+      rtl: false,
       callback: function (){}
     },
 
@@ -207,15 +208,24 @@
     position_titles : function (section, off) {
       var titles = section.find('.title'),
           previous_width = 0,
-          self = this;
+          self = this,
+          settings = $.extend({}, self.settings, self.data_options(section));
 
       if (typeof off === 'boolean') {
         titles.attr('style', '');
 
       } else {
+        var attr = 'left';
+        if (settings.rtl === true)
+          attr = 'right';
+
         titles.each(function () {
-          $(this).css('left', previous_width);
+          $(this).css(attr, previous_width);
           previous_width += self.outerWidth($(this));
+
+          // Strangely, in RTL mode there is
+          if (settings.rtl === true)
+            previous_width++;
         });
       }
     },
@@ -223,7 +233,8 @@
     position_content : function (section, off) {
       var titles = section.find('.title'),
           content = section.find('.content'),
-          self = this;
+          self = this,
+          settings = $.extend({}, self.settings, self.data_options(section));
 
       if (typeof off === 'boolean') {
         content.attr('style', '');
@@ -233,10 +244,17 @@
           var title = $(this).find('.title'),
               content = $(this).find('.content');
 
-          content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
+          if (settings.rtl === true)
+            if (typeof Zepto === 'function')
+              content.css({right: section.width() - title.position().left - self.outerWidth(title) - 4, 'top': self.outerHeight(title) - 2});
+            else
+              content.css({right: section.width() - title.position().left - self.outerWidth(title) - 2, 'top': self.outerHeight(title) - 2});
+          else
+            content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
         });
 
         // temporary work around for Zepto outerheight calculation issues.
+        console.log(this.outerHeight(titles.first()));
         if (typeof Zepto === 'function') {
           section.height(this.outerHeight(titles.first()));
         } else {
