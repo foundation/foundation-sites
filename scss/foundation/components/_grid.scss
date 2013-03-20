@@ -150,12 +150,12 @@ $total-columns: 12 !default;
       .row .large-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
-    @for $i from 2 through $total-columns - 2 {
+    @for $i from 1 through $total-columns - 1 {
       .push#{-$i} { @include grid-column($push:$i, $collapse:null, $float:false); }
       .pull#{-$i} { @include grid-column($pull:$i, $collapse:null, $float:false); }
     }
 
-    @for $i from 2 through $total-columns - 2 {
+    @for $i from 1 through $total-columns - 1 {
       .small-push#{-$i} { left: inherit; }
       .small-pull#{-$i} { right: inherit; }
     }
