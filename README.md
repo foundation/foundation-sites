@@ -85,9 +85,10 @@ Editors
 
 * [Textmate/Sublime Text2 Bundle](https://github.com/liamr/Zurb-Foundation-Textmate-Bundle) by Liam R, @liamr
 
-PSD Templates
+Templates
 
-* [Desktop, Tablet and Phone Grid Templates](http://foundation.zurb.com/files/foundation-psd-templates.zip ) by Bruce Abel at Portfolio Creative Services Group
+* [Desktop, Tablet and Phone Grid PSD Templates](http://foundation.zurb.com/files/foundation-psd-templates.zip ) by Bruce Abel at Portfolio Creative Services Group
+* [HAML Web Templates](https://github.com/pbonnell/foundation_templates_haml) by Peter Bonnell
 
 Grid Generator
 
