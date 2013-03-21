@@ -68,7 +68,7 @@ $total-columns: 12 !default;
     width: gridCalc($columns, $total-columns);
 
     // If last column, float naturally instead of to the right
-    @if $last-column { float: $default-opposite; }
+    @if $last-column { float: $opposite-direction; }
 
     // if collapsed, get rid of gutter padding
     @else if $collapse { padding-left: 0; padding-right: 0; }
@@ -81,8 +81,8 @@ $total-columns: 12 !default;
   @if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
 
   // Source Ordering, adds left/right depending on which you use.
-  @if $push { #{$default-float}: gridCalc($push, $total-columns); #{$default-opposite}: auto; }
-  @if $pull { #{$default-opposite}: gridCalc($pull, $total-columns); #{$default-float}: auto; }
+  @if $push { #{$default-float}: gridCalc($push, $total-columns); #{$opposite-direction}: auto; }
+  @if $pull { #{$opposite-direction}: gridCalc($pull, $total-columns); #{$default-float}: auto; }
 
   // If centered, get rid of float and add appropriate margins
   @if $center {
@@ -93,7 +93,7 @@ $total-columns: 12 !default;
 
   @if $float {
     @if $float == left or true { float: $default-float; }
-    @else if $float == right { float: $default-opposite; }
+    @else if $float == right { float: $opposite-direction; }
     @else { float: none; }
   }
 
@@ -132,7 +132,7 @@ $total-columns: 12 !default;
       .row .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
-    [class*="column"] + [class*="column"]:last-child { float: $default-opposite; }
+    [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
     [class*="column"] + [class*="column"].end { float: $default-float; }
 
     .column.small-centered,

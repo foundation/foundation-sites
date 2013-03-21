@@ -162,7 +162,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
           padding: 0;
           float: $default-float;
           overflow: hidden;
-          margin-#{$default-opposite}: 1px;
+          margin-#{$opposite-direction}: 1px;
           position: relative;
           cursor: pointer;
           opacity: 0.4;
@@ -202,7 +202,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   .clearing-close {
     position: absolute;
     top: 10px;
-    #{$default-opposite}: 20px;
+    #{$opposite-direction}: 20px;
     padding-left: 0;
     padding-top: 0;
   }

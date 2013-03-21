@@ -142,7 +142,7 @@ $custom-dropdown-width-large:           434px !default;
         width: $form-spacing * 2.5;
         height: $custom-select-height;
         display: block;
-        #{$default-opposite}: 0;
+        #{$opposite-direction}: 0;
         top: 0;
         &:after {
           content: "";
@@ -209,7 +209,7 @@ $custom-dropdown-width-large:           434px !default;
         padding-top: $custom-dropdown-list-padding;
         padding-bottom: $custom-dropdown-list-padding;
         padding-#{$default-float}: $custom-dropdown-left-padding;
-        padding-#{$default-opposite}: $custom-dropdown-right-padding;
+        padding-#{$opposite-direction}: $custom-dropdown-right-padding;
         min-height: $custom-dropdown-list-item-min-height;
         line-height: $custom-dropdown-list-item-min-height;
         margin: 0;

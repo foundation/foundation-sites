@@ -79,7 +79,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
       border-color: $joyride-tip-bg;
       border-top-color: transparent !important;
       border-#{$default-float}-color: transparent !important;
-      border-#{$default-opposite}-color: transparent !important;
+      border-#{$opposite-direction}-color: transparent !important;
       top: -($joyride-tip-nub-size*2);
       bottom: none;
     }
@@ -87,7 +87,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
       border-color: $joyride-tip-bg !important;
       border-bottom-color: transparent !important;
       border-#{$default-float}-color: transparent !important;
-      border-#{$default-opposite}-color: transparent !important;
+      border-#{$opposite-direction}-color: transparent !important;
       bottom: -($joyride-tip-nub-size*2);
       bottom: none;
     }
@@ -120,7 +120,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
   height: $joyride-tip-timer-height;
   border: $joyride-tip-border;
   position: absolute;
-  #{$default-opposite}: emCalc(17px);
+  #{$opposite-direction}: emCalc(17px);
   bottom: emCalc(16px);
 }
 .joyride-timer-indicator {
@@ -132,7 +132,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
 
 .joyride-close-tip {
   position: absolute;
-  #{$default-opposite}: 12px;
+  #{$opposite-direction}: 12px;
   top: 10px;
   color: $joyride-tip-close-color !important;
   text-decoration: none;
@@ -166,7 +166,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
         border-color: $joyride-tip-bg !important;
         border-bottom-color: transparent !important;
         border-#{$default-float}-color: transparent !important;
-        border-#{$default-opposite}-color: transparent !important;
+        border-#{$opposite-direction}-color: transparent !important;
         bottom: -($joyride-tip-nub-size*2);
         bottom: none;
       }

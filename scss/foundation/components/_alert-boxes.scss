@@ -4,8 +4,8 @@
 
 // We use this to control alert padding.
 $alert-padding-top:         emCalc(11px)                                   !default;
-$alert-padding-left:        $alert-padding-top                             !default;
-$alert-padding-right:       $alert-padding-top + emCalc(10px)              !default;
+$alert-padding-default-float:        $alert-padding-top                             !default;
+$alert-padding-opposite-direction:       $alert-padding-top + emCalc(10px)              !default;
 $alert-padding-bottom:      $alert-padding-top + emCalc(1px)               !default;
 
 // We use these to control text style.
@@ -46,7 +46,7 @@ $alert-radius:              $global-radius                                 !defa
   font-weight: $alert-font-weight;
   margin-bottom: $alert-bottom-margin;
   position: relative;
-  padding: $alert-padding-top $alert-padding-right $alert-padding-bottom $alert-padding-left;
+  padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
   font-size: $alert-font-size;
 }
 
@@ -73,7 +73,7 @@ $alert-radius:              $global-radius                                 !defa
   line-height: 0;
   position: absolute;
   top: $alert-close-position + emCalc(2px);
-  #{$default-opposite}: $alert-close-position;
+  #{$opposite-direction}: $alert-close-position;
   color: $alert-close-color;
   opacity: $alert-close-opacity;
   &:hover,

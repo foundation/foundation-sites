@@ -107,7 +107,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   // Menu toggle button on small devices
   .toggle-topbar {
     position: absolute;
-    #{$default-opposite}: 0;
+    #{$opposite-direction}: 0;
     top: 0;
 
     a {
@@ -124,7 +124,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
     // Adding the class "menu-icon" will add the 3-line icon people love and adore.
     &.menu-icon {
-      #{$default-opposite}: $topbar-height / 3;
+      #{$opposite-direction}: $topbar-height / 3;
       top: 50%;
       margin-top: -16px;
       padding-#{$default-float}: 40px;
@@ -139,7 +139,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
         span {
           position: absolute;
-          #{$default-opposite}: 0;
+          #{$opposite-direction}: 0;
           display: block;
           width: 16px;
           height: 0;
@@ -261,11 +261,11 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > a {
       &:after {
         @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
-        margin-#{$default-opposite}: $topbar-height / 3;
+        margin-#{$opposite-direction}: $topbar-height / 3;
         margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
         position: absolute;
         top: 50%;
-        #{$default-opposite}: 0;
+        #{$opposite-direction}: 0;
       }
     }
 
@@ -367,7 +367,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
     .has-dropdown {
       & > a {
-        padding-#{$default-opposite}: $topbar-dropdown-toggle-size * 7 !important;
+        padding-#{$opposite-direction}: $topbar-dropdown-toggle-size * 7 !important;
 
         &:after {
           @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
@@ -392,7 +392,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
             border: none;
             content: "\00bb";
             margin-top: -7px;
-            #{$default-opposite}: 5px;
+            #{$opposite-direction}: 5px;
           }
         }
       }
@@ -430,7 +430,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > ul > .divider {
       border-bottom: none;
       border-top: none;
-      border-#{$default-opposite}: solid 1px lighten($topbar-bg, 10%);
+      border-#{$opposite-direction}: solid 1px lighten($topbar-bg, 10%);
       border-#{$default-float}: solid 1px darken($topbar-bg, 10%);
       clear: none;
       height: $topbar-height;

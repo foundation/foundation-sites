@@ -56,7 +56,7 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px) !default;
 
   // If we're dealing with tiny buttons, use these styles
   @if $padding == tiny {
-    padding-#{$default-opposite}: $dropdown-button-padding-tny;
+    padding-#{$opposite-direction}: $dropdown-button-padding-tny;
     &:before {
       border-width: $dropdown-button-pip-size-tny;
       right: $dropdown-button-pip-right-tny;
@@ -66,7 +66,7 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px) !default;
 
   // If we're dealing with small buttons, use these styles
   @if $padding == small {
-    padding-#{$default-opposite}: $dropdown-button-padding-sml;
+    padding-#{$opposite-direction}: $dropdown-button-padding-sml;
     &:before {
       border-width: $dropdown-button-pip-size-sml;
       right: $dropdown-button-pip-right-sml;
@@ -76,7 +76,7 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px) !default;
 
   // If we're dealing with default (medium) buttons, use these styles
   @if $padding == medium {
-    padding-#{$default-opposite}: $dropdown-button-padding-med;
+    padding-#{$opposite-direction}: $dropdown-button-padding-med;
     &:before {
       border-width: $dropdown-button-pip-size-med;
       right: $dropdown-button-pip-right-med;
@@ -86,7 +86,7 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px) !default;
 
   // If we're dealing with large buttons, use these styles
   @if $padding == large {
-    padding-#{$default-opposite}: $dropdown-button-padding-lrg;
+    padding-#{$opposite-direction}: $dropdown-button-padding-lrg;
     &:before {
       border-width: $dropdown-button-pip-size-lrg;
       right: $dropdown-button-pip-right-lrg;

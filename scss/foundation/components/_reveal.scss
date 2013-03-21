@@ -93,7 +93,7 @@ $reveal-border-color:    #666 !default;
   line-height: 1;
   position: absolute;
   top: $reveal-close-top;
-  #{$default-opposite}: $reveal-close-side;
+  #{$opposite-direction}: $reveal-close-side;
   color: $color;
   font-weight: $reveal-close-weight;
   cursor: pointer;

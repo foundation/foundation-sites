@@ -67,7 +67,7 @@ $button-disabled-opacity: 0.6 !default;
   // these can be turned off by setting $padding:false
   @if $padding {
     padding-top: $padding;
-    padding-right: $padding * 2;
+    padding-#{$opposite-direction}: $padding * 2;
     padding-bottom: $padding + emCalc(1px);
     padding-left: $padding * 2;
 
