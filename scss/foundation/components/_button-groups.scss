@@ -34,18 +34,27 @@ $button-bar-margin-right: emCalc(10px) !default;
 
   // We use these to control left and right radius on first/last buttons in the group.
   @if $radius == true {
-    &:first-child, &:first-child > a, &:first-child > button { @include side-radius($default-float, $button-radius); }
-    &:last-child, &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $button-radius); }
+    &:first-child,
+    &:first-child > button,
+    &:first-child > .button { @include side-radius($default-float, $button-radius); }
+    &:last-child,
+    &:last-child > a,
+    &:last-child > button
+    &:last-child > .button { @include side-radius($default-opposite, $button-radius); }
   }
   @else if $radius {
-    &:first-child, &:first-child > a, &:first-child > button { @include side-radius($default-float, $radius); }
-    &:last-child, &:last-child > a, &:last-child > button { @include side-radius($default-opposite, $radius); }
+    &:first-child,
+    &:first-child > button,
+    &:first-child > .button { @include side-radius($default-float, $radius); }
+    &:last-child,
+    &:last-child > button,
+    &:last-child > .button { @include side-radius($default-opposite, $radius); }
   }
 
   // We use this to make the buttons even width across their container
   @if $even {
     width: percentage((100/$even) / 100);
-    .button { width: 100%; }
+    button, .button { width: 100%; }
   }
 
 }
