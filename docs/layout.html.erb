@@ -109,7 +109,9 @@
     </script>
     <script src="<%= asset_path %>/docs.js"></script>
     <script>
-      $(document).foundation();
+      $(document)
+        .foundation()
+        .foundation('joyride', 'start');
 
       // For Kitchen Sink Page
       $('#start-jr').on('click', function() {
