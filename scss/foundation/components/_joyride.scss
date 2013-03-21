@@ -53,8 +53,8 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
 
 .lt-ie9 .joyride-tip-guide {
   max-width:800px;
-  left: 50%;
-  margin-left:-400px;
+  #{$default-float}: 50%;
+  margin-#{$default-float}:-400px;
 }
 
 .joyride-content-wrapper {

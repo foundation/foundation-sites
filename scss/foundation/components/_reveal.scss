@@ -41,7 +41,7 @@ $reveal-border-color:    #666 !default;
   z-index: 98;
   display: none;
   top: 0;
-  left: 0;
+  #{$default-float}: 0;
 }
 
 // We use this mixin to create the structure of a reveal modal

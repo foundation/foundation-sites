@@ -86,7 +86,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 
 .clearing-close {
   z-index: 999;
-  padding-left: 20px;
+  padding-#{$default-float}: 20px;
   padding-top: 10px;
   font-size: $clearing-close-size;
   line-height: 1;
@@ -104,8 +104,8 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 
 // Large screen overrides
 @media #{$small} {
-  .clearing-main-left,
-  .clearing-main-right {
+  .clearing-main-prev,
+  .clearing-main-next {
     position: absolute;
     height: 100%;
     width: 40px;
@@ -119,22 +119,22 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
       border: solid $clearing-arrow-size;
     }
   }
-  .clearing-main-left {
-    left: 0;
+  .clearing-main-prev {
+    #{$default-float}: 0;
     & > span {
-      left: 5px;
+      #{$default-float}: 5px;
       border-color: transparent $clearing-arrow-color transparent transparent;
     }
   }
-  .clearing-main-right {
-    right: 0;
+  .clearing-main-next {
+    #{$opposite-direction}: 0;
     & > span {
       border-color: transparent transparent transparent $clearing-arrow-color;
     }
   }
 
-  .clearing-main-left.disabled,
-  .clearing-main-right.disabled { opacity: 0.5; }
+  .clearing-main-prev.disabled,
+  .clearing-main-next.disabled { opacity: 0.5; }
 
   // If you want to show a lightbox, but only have a single image come through as the thumbnail
   .clearing-feature ~ li { display: none; }
@@ -151,7 +151,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
         z-index: 999;
         width: 200%;
         height: 100%;
-        margin-left: 0;
+        margin-#{$default-float}: 0;
         position: relative;
         #{$default-float}: 0;
 
@@ -203,7 +203,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
     position: absolute;
     top: 10px;
     #{$opposite-direction}: 20px;
-    padding-left: 0;
+    padding-#{$default-float}: 0;
     padding-top: 0;
   }
 }

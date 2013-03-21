@@ -12,8 +12,8 @@
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
           '<div class="visible-img" style="display: none"><img src="//:0">' +
-          '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"><span></span></a>' +
-          '<a href="#" class="clearing-main-right"><span></span></a></div>'
+          '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
+          '<a href="#" class="clearing-main-next"><span></span></a></div>'
       },
 
       // comma delimited list of selectors that, on click, will close clearing,
@@ -80,9 +80,9 @@
             self.update_paddles(target);
           })
 
-        .on('click.fndtn.clearing', '.clearing-main-right',
+        .on('click.fndtn.clearing', '.clearing-main-next',
           function (e) { this.nav(e, 'next') }.bind(this))
-        .on('click.fndtn.clearing', '.clearing-main-left',
+        .on('click.fndtn.clearing', '.clearing-main-prev',
           function (e) { this.nav(e, 'prev') }.bind(this))
         .on('click.fndtn.clearing', this.settings.close_selectors,
           function (e) { Foundation.libs.clearing.close(e, this) })
@@ -269,11 +269,11 @@
 
       if (target.prev().length) {
         visible_image
-          .find('.clearing-main-left')
+          .find('.clearing-main-prev')
           .removeClass('disabled');
       } else {
         visible_image
-          .find('.clearing-main-left')
+          .find('.clearing-main-prev')
           .addClass('disabled');
       }
     },

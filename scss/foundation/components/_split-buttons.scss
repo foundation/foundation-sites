@@ -13,28 +13,28 @@ $split-button-padding-tny:     $button-tny * 9 !default;
 $split-button-span-width-tny:  $button-tny * 6.5 !default;
 $split-button-pip-size-tny:    $button-tny !default;
 $split-button-pip-top-tny:     $button-tny * 2 !default;
-$split-button-pip-left-tny:    emCalc(-5px) !default;
+$split-button-pip-default-float-tny:    emCalc(-5px) !default;
 
 // We use these to control small split buttons
 $split-button-padding-sml:     $button-sml * 7 !default;
 $split-button-span-width-sml:  $button-sml * 5 !default;
 $split-button-pip-size-sml:    $button-sml !default;
 $split-button-pip-top-sml:     $button-sml * 1.5 !default;
-$split-button-pip-left-sml:    emCalc(-9px) !default;
+$split-button-pip-default-float-sml:    emCalc(-9px) !default;
 
 // We use these to control medium split buttons
 $split-button-padding-med:     $button-med * 6.4 !default;
 $split-button-span-width-med:  $button-med * 4 !default;
 $split-button-pip-size-med:    $button-med - emCalc(3px) !default;
 $split-button-pip-top-med:     $button-med * 1.5 !default;
-$split-button-pip-left-med:    emCalc(-9px) !default;
+$split-button-pip-default-float-med:    emCalc(-9px) !default;
 
 // We use these to control large split buttons
 $split-button-padding-lrg:     $button-lrg * 6 !default;
 $split-button-span-width-lrg:  $button-lrg * 3.75 !default;
 $split-button-pip-size-lrg:    $button-lrg - emCalc(6px) !default;
 $split-button-pip-top-lrg:     $button-lrg + emCalc(5px) !default;
-$split-button-pip-left-lrg:    emCalc(-9px) !default;
+$split-button-pip-default-float-lrg:    emCalc(-9px) !default;
 
 
 //
@@ -55,7 +55,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
       position: absolute;
       #{$opposite-direction}: 0;
       top: 0;
-      border-left: solid 1px;
+      border-#{$default-float}: solid 1px;
 
       // Building the triangle pip indicator
       &:before {
@@ -66,7 +66,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
         display: block;
         border-style: solid;
 
-        left: 50%;
+        #{$default-float}: 50%;
       }
 
       &:active { background-color: $split-button-active-bg-tint; }
@@ -75,7 +75,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
 
   // Control the border color for the span area of the split button
   @if $span-border {
-    span { border-left-color: darken($span-border, $split-button-function-factor); }
+    span { border-#{$default-float}-color: darken($span-border, $split-button-function-factor); }
   }
 
   // Style of the button and clickable area for tiny sizes
@@ -86,7 +86,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
       &:before {
         border-width: $split-button-pip-size-tny;
         top: $split-button-pip-top-tny;
-        margin-left: $split-button-pip-left-tny;
+        margin-#{$default-float}: $split-button-pip-default-float-tny;
       }
     }
   }
@@ -99,7 +99,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
       &:before {
         border-width: $split-button-pip-size-sml;
         top: $split-button-pip-top-sml;
-        margin-left: $split-button-pip-left-sml;
+        margin-#{$default-float}: $split-button-pip-default-float-sml;
       }
     }
   }
@@ -112,7 +112,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
       &:before {
         border-width: $split-button-pip-size-med;
         top: $split-button-pip-top-med;
-        margin-left: $split-button-pip-left-med;
+        margin-#{$default-float}: $split-button-pip-default-float-med;
       }
     }
   }
@@ -125,7 +125,7 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
       &:before {
         border-width: $split-button-pip-size-lrg;
         top: $split-button-pip-top-lrg;
-        margin-left: $split-button-pip-left-lrg;
+        margin-#{$default-float}: $split-button-pip-default-float-lrg;
       }
     }
   }
@@ -152,8 +152,8 @@ $split-button-pip-left-lrg:    emCalc(-9px) !default;
 
     &.secondary { @include split-button(false, $split-button-pip-color-alt, false, false); }
 
-    &.radius span { @include side-radius(right, $global-radius); }
-    &.round span { @include side-radius(right, 1000px); }
+    &.radius span { @include side-radius($opposite-direction, $global-radius); }
+    &.round span { @include side-radius($opposite-direction, 1000px); }
   }
 
 }

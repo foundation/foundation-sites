@@ -32,8 +32,8 @@ $custom-dropdown-font-color-selected:   #000 !default;
 $custom-dropdown-shadow:                0 2px 2px 0px rgba(0,0,0,0.1) !default;
 $custom-dropdown-offset-top:            auto !default;
 $custom-dropdown-list-padding:          emCalc(4px) !default;
-$custom-dropdown-left-padding:          emCalc(6px) !default;
-$custom-dropdown-right-padding:         emCalc(38px) !default;
+$custom-dropdown-default-float-padding:          emCalc(6px) !default;
+$custom-dropdown-opposite-padding:         emCalc(38px) !default;
 $custom-dropdown-list-item-min-height:  emCalc(24px) !default;
 $custom-dropdown-width-small:           134px !default;
 $custom-dropdown-width-medium:          254px !default;
@@ -132,8 +132,8 @@ $custom-dropdown-width-large:           434px !default;
         text-decoration: none;
         overflow: hidden;
         display: block;
-        margin-left: $form-spacing / 2;
-        margin-right: $custom-select-height;
+        margin-#{$default-float}: $form-spacing / 2;
+        margin-#{$opposite-direction}: $custom-select-height;
       }
   
       .selector {
@@ -149,7 +149,7 @@ $custom-dropdown-width-large:           434px !default;
           display: block;
           @include css-triangle(5px, $custom-select-triangle-color, top);
           position: absolute;
-          left: ($form-spacing * 2.5) / 2 - emCalc(5px);
+          #{$default-float}: ($form-spacing * 2.5) / 2 - emCalc(5px);
           top: 50%;
           margin-top: -3px;
         }
@@ -208,8 +208,8 @@ $custom-dropdown-width-large:           434px !default;
         cursor: default;
         padding-top: $custom-dropdown-list-padding;
         padding-bottom: $custom-dropdown-list-padding;
-        padding-#{$default-float}: $custom-dropdown-left-padding;
-        padding-#{$opposite-direction}: $custom-dropdown-right-padding;
+        padding-#{$default-float}: $custom-dropdown-default-float-padding;
+        padding-#{$opposite-direction}: $custom-dropdown-opposite-padding;
         min-height: $custom-dropdown-list-item-min-height;
         line-height: $custom-dropdown-list-item-min-height;
         margin: 0;

@@ -15,8 +15,8 @@ $total-columns: 12 !default;
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
     width: auto;
-    margin-left: -($column-gutter/2);
-    margin-right: -($column-gutter/2);
+    margin-#{$default-float}: -($column-gutter/2);
+    margin-#{$opposite-direction}: -($column-gutter/2);
     margin-top: 0;
     margin-bottom: 0;
     max-width: none;
@@ -39,8 +39,8 @@ $total-columns: 12 !default;
   // use @include grid-row; to use a container row
   @else {
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-#{$default-float}: auto;
+    margin-#{$opposite-direction}: auto;
     margin-top: 0;
     margin-bottom: 0;
     max-width: $row-width;
@@ -53,14 +53,14 @@ $total-columns: 12 !default;
 
 
 // For creating columns - @include these inside a media query to control small vs. large grid layouts
-@mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:left) {
+@mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:$default-float) {
 
   position: relative;
 
   // Gutter padding whenever a column isn't set to collapse
   @if $collapse == false {
-    padding-left: $column-gutter / 2;
-    padding-right: $column-gutter / 2;
+    padding-#{$default-float}: $column-gutter / 2;
+    padding-#{$opposite-direction}: $column-gutter / 2;
   }
 
   // If a column number is given, calculate width
@@ -71,11 +71,11 @@ $total-columns: 12 !default;
     @if $last-column { float: $opposite-direction; }
 
     // if collapsed, get rid of gutter padding
-    @else if $collapse { padding-left: 0; padding-right: 0; }
+    @else if $collapse { padding-#{$default-float}: 0; padding-#{$opposite-direction}: 0; }
 
   }
 
-  @if $collapse { padding-left: 0; padding-right: 0; }
+  @if $collapse { padding-#{$default-float}: 0; padding-#{$opposite-direction}: 0; }
 
   // If offset, calculate appropriate margins
   @if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
@@ -86,8 +86,8 @@ $total-columns: 12 !default;
 
   // If centered, get rid of float and add appropriate margins
   @if $center {
-    margin-left: auto;
-    margin-right: auto;
+    margin-#{$default-float}: auto;
+    margin-#{$opposite-direction}: auto;
     float: none !important;
   }
 
@@ -156,8 +156,8 @@ $total-columns: 12 !default;
     }
 
     @for $i from 2 through $total-columns - 2 {
-      .small-push#{-$i} { left: inherit; }
-      .small-pull#{-$i} { right: inherit; }
+      .small-push#{-$i} { #{$default-float}: inherit; }
+      .small-pull#{-$i} { #{$opposite-direction}: inherit; }
     }
 
     .column.large-centered,

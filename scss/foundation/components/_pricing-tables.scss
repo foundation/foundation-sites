@@ -54,7 +54,7 @@ $price-cta-padding:         emCalc(20px) emCalc(20px) 0 !default;
 // We use this to create the container element for the pricing tables
 @mixin pricing-table-container {
   border: $price-table-border;
-  margin-left: 0;
+  margin-#{$default-float}: 0;
   margin-bottom: $price-table-margin-bottom;
 
   & * {

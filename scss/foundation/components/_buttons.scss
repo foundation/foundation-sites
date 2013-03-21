@@ -69,7 +69,7 @@ $button-disabled-opacity: 0.6 !default;
     padding-top: $padding;
     padding-#{$opposite-direction}: $padding * 2;
     padding-bottom: $padding + emCalc(1px);
-    padding-left: $padding * 2;
+    padding-#{$default-float}: $padding * 2;
 
     // We control the font-size based on mixin input.
     @if      $padding == $button-med { font-size: $button-font-med; }
@@ -82,9 +82,9 @@ $button-disabled-opacity: 0.6 !default;
   // We can set $full-width:true to remove side padding extend width.
   @if $full-width {
     padding-top: $padding;
-    padding-right: 0px;
+    padding-#{$opposite-direction}: 0px;
     padding-bottom: $padding + emCalc(1px);
-    padding-left: 0px;
+    padding-#{$default-float}: 0px;
     width: 100%;
   }
 

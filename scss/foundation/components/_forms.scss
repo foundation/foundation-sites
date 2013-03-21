@@ -73,7 +73,7 @@ $input-error-message-font-color-alt: #333 !default;
     }
   }
   input.column,
-  input.columns { padding-left: $form-spacing / 2; }
+  input.columns { padding-#{$default-float}: $form-spacing / 2; }
 }
 
 // We use this mixin to give all basic form elements their style
@@ -151,7 +151,7 @@ $input-error-message-font-color-alt: #333 !default;
     $bg-lightness: lightness($bg);
     background: $bg;
     border-color: darken($bg, 10%);
-    border-right: none;
+    border-#{$opposite-direction}: none;
 
     // Control the font color based on background brightness
     @if $bg-lightness > 70% or $bg == yellow { color: $input-prefix-font-color; }
@@ -176,7 +176,7 @@ $input-error-message-font-color-alt: #333 !default;
     $bg-lightness: lightness($bg);
     background: $bg;
     border-color: darken($bg, 15%);
-    border-left: none;
+    border-#{$default-float}: none;
 
     // Control the font color based on background brightness
     @if $bg-lightness > 70%  or $bg == yellow { color: $input-prefix-font-color; }
@@ -262,35 +262,35 @@ $input-error-message-font-color-alt: #333 !default;
   /* Adjust padding, alignment and radius if pre/post element is a button */
   .postfix.button { @include button-size(false,false,false); @include postfix(false,true); }
   .prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
-  .prefix.button.radius { @include side-radius(left, $global-radius); }
-  .postfix.button.radius { @include side-radius(right, $global-radius); }
-  .prefix.button.round { @include side-radius(left, 1000px); }
-  .postfix.button.round { @include side-radius(right, 1000px); }
+  .prefix.button.radius { @include side-radius($default-float, $global-radius); }
+  .postfix.button.radius { @include side-radius($opposite-direction, $global-radius); }
+  .prefix.button.round { @include side-radius($default-float, 1000px); }
+  .postfix.button.round { @include side-radius($opposite-direction, 1000px); }
 
   /* Separate prefix and postfix styles when on span so buttons keep their own */
   span.prefix { @include prefix();
-    &.radius { @include side-radius(left, $global-radius); }
+    &.radius { @include side-radius($default-float, $global-radius); }
   }
   span.postfix { @include postfix();
-    &.radius { @include side-radius(right, $global-radius); }
+    &.radius { @include side-radius($opposite-direction, $global-radius); }
   }
 
   /* Input groups will automatically style first and last elements of the group */
   .input-group {
     &.radius {
       &>*:first-child,  &>*:first-child * {
-        @include side-radius(left, $global-radius);
+        @include side-radius($default-float, $global-radius);
       }
       &>*:last-child, &>*:last-child * {
-        @include side-radius(right, $global-radius);
+        @include side-radius($opposite-direction, $global-radius);
       }
     }
     &.round {
       &>*:first-child,  &>*:first-child * {
-        @include side-radius(left, $button-round);
+        @include side-radius($default-float, $button-round);
       }
       &>*:last-child, &>*:last-child * {
-        @include side-radius(right, $button-round);
+        @include side-radius($opposite-direction, $button-round);
       }
     }
   }
