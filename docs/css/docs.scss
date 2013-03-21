@@ -46,7 +46,7 @@ footer.row.full-width {
 
 .docs.header { margin-bottom: 10px; }
 .docs.subheader {
-  float: left;
+  float: $default-float;
 }
 
 .docs.section-container a.active { font-weight: bold; }
