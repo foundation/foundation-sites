@@ -56,11 +56,14 @@ $block-grid-media-queries: true !default;
 
   /* Foundation Block Grids for above small breakpoint */
   @media #{$small} {
+    /* Remove small grid clearing */
+    @for $i from 1 through $block-grid-elements {
+      .small-block-grid-#{($i)} > li:nth-of-type(#{$i}n+1) { clear: none; }
+    }
     @for $i from 1 through $block-grid-elements {
       .large-block-grid-#{($i)} {
         @include block-grid($i,$block-grid-default-spacing,false);
       }
     }
-    [class*="small-block-grid-"] > li { clear: none !important; }
   }
 }
