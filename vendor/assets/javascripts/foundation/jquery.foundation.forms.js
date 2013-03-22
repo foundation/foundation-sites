@@ -288,7 +288,7 @@
   };
 
   var toggleCheckbox = function($element) {
-    var $input = $("#" + $element.attr('for')),
+    var $input = $element.prev(),
         input = $input[0];
 
     if (false === $input.is(':disabled')) {
@@ -348,6 +348,9 @@
         //the checkbox might be outside before the label
         if ($customCheckbox.length == 0) {
             $customCheckbox = $(this).prev('span.custom.checkbox');
+        }
+        if ($customCheckbox.length == 0) {
+          $customCheckbox = $("#" + $(event.currentTarget).attr('for')).next()
         }
         toggleCheckbox($customCheckbox);
       } else if ($associatedElement.attr('type') === 'radio') {
