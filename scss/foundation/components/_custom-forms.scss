@@ -235,6 +235,9 @@ $custom-dropdown-width-large:           434px !default;
     }
   
     /* Custom input, disabled */
-    .custom.disabled { background-color: $custom-form-bg-disabled; }
+    .custom.disabled {
+      background-color: $custom-form-bg-disabled;
+      background-image: none;
+    }
   }
 }
