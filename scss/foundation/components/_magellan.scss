@@ -2,14 +2,15 @@
 // Magellan Variables
 //
 $magellan-bg: #fff !default;
+$magellan-padding: 10px !default;
 
 @if $include-html-magellan-classes {
 
   [data-magellan-expedition] {
     background: $magellan-bg;
-    z-index: 997;
+    z-index: 50;
     min-width: 100%;
-    padding: 10px;
+    padding: $magellan-padding;
 
     .sub-nav {
       margin-bottom: 0;

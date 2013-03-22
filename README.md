@@ -1,7 +1,7 @@
 Welcome to Foundation
 =====================
 
-Foundation is the most advanced responsive front-end framework in the world. With Foundation you can quickly prototype and build sites or apps that work on any kind of device, with tons of included layout constructs (like a full responsive grid), elements and best practices.
+Foundation is the most advanced responsive front-end framework in the world. You can quickly prototype and build sites or apps that work on any kind of device with Foundation, which includes layout constructs (like a fully responsive grid), elements and best practices.
 
 Homepage:      http://foundation.zurb.com<br />
 Documentation: http://foundation.zurb.com/docs<br />
@@ -45,6 +45,8 @@ Joomla
 Drupal
 
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
+* [Zurb Foundation](http://drupal.org/project/zurb-foundation) Supporting F3.2, F4 & Drupal 8  by [Ishmael Sanchez](http://ishmaelsanchez.com), [Chris Lee](http://hire.chrisjlee.net)
+* [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
 
 PyroCMS
 
@@ -83,9 +85,10 @@ Editors
 
 * [Textmate/Sublime Text2 Bundle](https://github.com/liamr/Zurb-Foundation-Textmate-Bundle) by Liam R, @liamr
 
-PSD Templates
+Templates
 
-* [Desktop, Tablet and Phone Grid Templates](http://foundation.zurb.com/files/foundation-psd-templates.zip ) by Bruce Abel at Portfolio Creative Services Group
+* [Desktop, Tablet and Phone Grid PSD Templates](http://foundation.zurb.com/files/foundation-psd-templates.zip ) by Bruce Abel at Portfolio Creative Services Group
+* [HAML Web Templates](https://github.com/pbonnell/foundation_templates_haml) by Peter Bonnell
 
 Grid Generator
 
@@ -104,6 +107,11 @@ Modular Scale
 Ruby on Rails Sass Gems
 
 * [Foundation Icons 2](https://github.com/zaiste/foundation-icons-sass-rails) by J. P. Nowak
+
+Yeoman Generator
+
+* [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
+
 
 MIT Open Source License
 =======================

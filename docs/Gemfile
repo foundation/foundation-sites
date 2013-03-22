@@ -7,4 +7,7 @@ gem 'stasis'
 gem 'sass', :require => false
 gem 'coderay'
 gem 'uglifier'
-gem 'therubyracer'
+
+group :production do
+  gem 'therubyracer'
+end

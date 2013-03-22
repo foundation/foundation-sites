@@ -1,4 +1,29 @@
-### 4.0.6- March 14, 2013
+### 4.0.9- March 19, 2013
+* Added `auto` option to `Foundation.section.js.
+* Fixes dropdown positioning for split buttons.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.8...v4.0.9).
+
+### 4.0.8- March 15, 2013
+* Added paragraph `text-rendering` variable: `$paragraph-text-rendering`.
+* Changed blockgrid to use clearfix instead of overflow.
+* Fixed nested row margin inside forms.
+* Fixed data_options function that caused booleans to be interpreted as numbers.
+* Tabs no longer automatically convert to accordion on desktop. 
+* Sections with accordion class always remain accordions and sections with tab class always remain tabs. 
+* Vertical and horizontal navigation elements still become accordions on mobile
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.7...v4.0.8).
+
+
+### 4.0.7- March 14, 2013
+* Fixed problem with buggy pull request that made radius buttons look like ovals, sorry.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.6...v4.0.7).
+
+---
+
+### 4.0.6- March 14, 2013 (Yanked)
 * Added modular HTML class variables to control whether or no those classes come through into your CSS.
 * Changed global font size defaults to 100% to let browsers use their default zooming.
 * Fixed bugs with top-bar bottom margin variables.

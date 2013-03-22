@@ -40,6 +40,7 @@ $paragraph-margin-bottom:              emCalc(20px) !default;
 $paragraph-aside-font-size:            emCalc(14px) !default;
 $paragraph-aside-line-height:          1.35 !default;
 $paragraph-aside-font-style:           italic !default;
+$paragraph-text-rendering:             optimizeLegibility !default;
 
 // We use these to style <code> tags
 $code-color:                           darken($alert-color, 15%) !default;
@@ -160,6 +161,7 @@ p {
   font-size: $paragraph-font-size;
   line-height: $paragraph-line-height;
   margin-bottom: $paragraph-margin-bottom;
+  text-rendering: $paragraph-text-rendering;
 
   &.lead { @extend %lead; }
 

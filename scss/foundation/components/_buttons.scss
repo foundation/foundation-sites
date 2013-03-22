@@ -33,7 +33,7 @@ $button-border-color:     darken($primary-color, $button-function-factor) !defau
 
 // We use this to set the default radius used throughout the core.
 $button-radius:           $global-radius !default;
-$button-round:            100% !default;
+$button-round:            $global-rounded !default;
 
 // We use this to set default opacity for disabled buttons.
 $button-disabled-opacity: 0.6 !default;
@@ -170,7 +170,7 @@ $button-disabled-opacity: 0.6 !default;
     &.large  { @include button-size($padding:$button-lrg); }
     &.small  { @include button-size($padding:$button-sml); }
     &.tiny   { @include button-size($padding:$button-tny); }
-    &.expand { @include button-size($full-width:true); }
+    &.expand { @include button-size(false,$full-width:true); }
 
     &.left-align  { text-align: left; text-indent: emCalc(12px); }
     &.right-align { text-align: right; padding-right: emCalc(12px); }

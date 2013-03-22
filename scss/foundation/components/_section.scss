@@ -203,15 +203,30 @@ $section-bottom-margin:          emCalc(20px) !default;
 @if $include-html-section-classes {
 
   /* Sections */
-  .section-container {
+  .section-container, .section-container.auto {
     @include section-container;
 
     section,
-    .section { @include section; }
+    .section {
+      @include section;
+    }
+  }
+
+  .section-container.tabs {
+    @include section-container(false, tabs);
+
+    section,
+    .section { @include section(tabs); }
   }
 
   @media #{$small} {
 
+    .section-container.auto {
+      @include section-container(false, tabs);
+
+      section,
+      .section { @include section(tabs); }
+    }
     .section-container.accordion .section {
       padding-top: 0 !important;
     }
@@ -228,13 +243,6 @@ $section-bottom-margin:          emCalc(20px) !default;
 
       section,
       .section { @include section(horizontal-nav); }
-    }
-
-    .section-container.tabs {
-      @include section-container(false, tabs);
-
-      section,
-      .section { @include section(tabs); }
     }
   }
 
