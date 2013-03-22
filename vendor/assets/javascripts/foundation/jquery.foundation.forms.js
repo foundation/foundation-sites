@@ -288,7 +288,7 @@
   };
 
   var toggleCheckbox = function($element) {
-    var $input = $element.prev(),
+    var $input = $("#" + $element.attr('for')),
         input = $input[0];
 
     if (false === $input.is(':disabled')) {
