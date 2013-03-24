@@ -41,14 +41,6 @@
         self.toggle($(this));
       });
 
-      $('*, html, body').on('mouseover.fndtn.dropdown', function (e) {
-        if (!$(e.target).data('dropdown')) {
-          $('[data-dropdown-content]')
-            .css('left', '-99999px')
-            .removeClass(self.settings.activeClass);
-        }
-      });
-
       $(this.scope).on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
         e.preventDefault();
         e.stopPropagation();
