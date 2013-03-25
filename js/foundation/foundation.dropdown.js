@@ -82,11 +82,7 @@
     },
 
     css : function (dropdown, target) {
-      if (dropdown.parent()[0] === $('body')[0]) {
-        var position = target.offset();
-      } else {
-        var position = target.position();
-      }
+      var position = target.position();
 
       if (this.small()) {
         dropdown.css({
