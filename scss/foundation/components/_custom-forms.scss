@@ -116,7 +116,7 @@ $custom-dropdown-width-large:           434px !default;
       background: linear-gradient(to bottom, $custom-dropdown-bg 0%,$custom-select-fade-to-color 100%);
       -webkit-box-shadow: none;
       box-shadow: none;
-      font-size: emCalc(14px);
+      font-size: $custom-dropdown-font-size;
       vertical-align: top;
   
       ul {
