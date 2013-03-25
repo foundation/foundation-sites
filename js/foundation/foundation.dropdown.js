@@ -35,6 +35,12 @@
     events : function () {
       var self = this;
 
+      $(this.scope).on('mouseover.fndtn.dropdown', '[data-dropdown]', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        self.toggle($(this));
+      });
+
       $(this.scope).on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
         e.preventDefault();
         e.stopPropagation();
