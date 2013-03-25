@@ -83,6 +83,8 @@
 
     css : function (dropdown, target) {
       var position = target.position();
+      position.top += target.offsetParent().scrollTop();
+      position.left += target.offsetParent().scrollLeft();
 
       if (this.small()) {
         dropdown.css({
