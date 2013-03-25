@@ -1,0 +1,259 @@
+//
+// Switch Variables
+//
+
+// Controlling border styles and background colors for the switch container
+$switch-border-color ?= darken(#fff, 20%);
+$switch-border-style ?= solid;
+$switch-border-width ?= 1px;
+$switch-bg ?= #fff;
+
+// We use these to control the switch heights for our default classes
+$switch-height-tny ?= 22px;
+$switch-height-sml ?= 28px;
+$switch-height-med ?= 36px;
+$switch-height-lrg ?= 44px;
+$switch-bottom-margin ?= emCalc(20px);
+
+// We use these to control default font sizes for our classes.
+$switch-font-size-tny ?= 11px;
+$switch-font-size-sml ?= 12px;
+$switch-font-size-med ?= 14px;
+$switch-font-size-lrg ?= 17px;
+$switch-label-side-padding ?= 6px;
+
+// We use these to style the switch-paddle
+$switch-paddle-bg ?= #fff;
+$switch-paddle-fade-to-color ?= darken($switch-paddle-bg, 10%);
+$switch-paddle-border-color ?= darken($switch-paddle-bg, 35%);
+$switch-paddle-border-width ?= 1px;
+$switch-paddle-border-style ?= solid;
+$switch-paddle-transition-speed ?= .1s;
+$switch-paddle-transition-ease ?= ease-out;
+$switch-positive-color ?= lighten($success-color, 50%);
+$switch-negative-color ?= #f5f5f5;
+
+// Outline Style for tabbing through switches
+$switch-label-outline ?= 1px dotted #888;
+
+
+//
+// Switch Mixins
+//
+
+// We use this mixin to create the base styles for our switch element.
+switch-base($transition-speed=$switch-paddle-transition-speed, $transition-ease=$switch-paddle-transition-ease) {
+
+  // Default position and structure for switch container.
+  position: relative;
+  width: 100%;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  border-style: $switch-border-style;
+  border-width: $switch-border-width;
+  margin-bottom: $switch-bottom-margin;
+
+  // Default label styles for type and transition
+  label {
+    position: relative;
+    left: 0;
+    z-index: 2;
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    text-align: right;
+    font-weight: bold;
+    text-align: left;
+
+    // Transition for the switch label to follow paddle
+    single-transition(all, $transition-speed, $transition-ease);
+  }
+
+  // So that we don't need to recreate the form with any JS, we use the
+  // existing radio button, but we cleverly position and hide it.
+  input {
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+
+    // Hover and focus styles for the paddle
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  // The toggle area for radio switches. We call is a paddle.
+  & > span {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    z-index: 1;
+    display: block;
+    padding: 0;
+    border-width: $switch-paddle-border-width;
+    border-style: $switch-paddle-border-style;
+
+    // Transition for the switch paddle
+    single-transition(all, $transition-speed, $transition-ease);
+  }
+
+  // When a label isn't :checked, we hide it as it slides away.
+  input:not(:checked) + label { opacity: 0; }
+
+  // Controlling the position of the labels as they are toggled.
+  input:checked { display: none !important; }
+  input { left: 0; display: block !important; }
+
+  // Left Label alignment and position changes, including fixes for while inside a custom form
+  input:first-of-type + label,
+  input:first-of-type + span + label { left: -50%; }
+  input:first-of-type:checked + label,
+  input:first-of-type:checked + span + label { left: 0%; }
+
+  // Right Label alignment and position changes, including fixes for while inside a custom form
+  input:last-of-type + label,
+  input:last-of-type + span + label { right: -50%; left: auto; text-align: right; }
+  input:last-of-type:checked + label,
+  input:last-of-type:checked + span + label { right: 0%; left: auto; }
+
+  // Hiding custom form spans since we auto-create them
+  span.custom { display: none !important; }
+
+  // Bugfix for older Webkit, including mobile Webkit. Adapted from:
+  // http://css-tricks.com/webkit-sibling-bug/
+  -webkit-animation: webkitSiblingBugfix infinite 1s;
+
+}
+
+// We use this mixin to create the size styles for switches.
+switch-size($height=$switch-height-med, $font-size=$switch-font-size-med, $line-height=2.3em) {
+
+  height: $height;
+
+  label {
+    padding: 0 emCalc($switch-label-side-padding);
+    line-height: $line-height;
+    font-size: emCalc($font-size);
+  }
+
+  input {
+    // Move the paddle to the right position
+    &:first-of-type:checked ~ span {
+      left: 100%;
+      margin-left: emCalc(-($height) + 1px);
+    }
+  }
+
+  & > span {
+    width: emCalc($height);
+    height: emCalc($height);
+  }
+
+}
+
+// We use this mixin to add color and other fanciness to the switches.
+switch-style($paddle-bg=$switch-paddle-bg, $positive-color=$switch-positive-color, $negative-color=$switch-negative-color, $radius=false, $base-style=true) {
+
+  if $base-style {
+    background: $switch-bg;
+    border-color: $switch-border-color;
+
+    & > span {
+      border-color: darken($paddle-bg, 30%);
+      background: $paddle-bg;
+      background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+      background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+      background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+
+      // Building the alternating colored sides of the switch
+      -webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07), 1000px 0 0 1000px $positive-color, -2px 0 10px 0 rgba(0,0,0,0.07), -1000px 0 0 1000px $negative-color;
+      box-shadow:         2px 0 10px 0 rgba(0,0,0,0.07), 1000px 0 0 980px $positive-color, -2px 0 10px 0 rgba(0,0,0,0.07), -1000px 0 0 1000px $negative-color;
+    }
+
+    &:hover,
+    &:focus {
+      & > span {
+        background: $paddle-bg;
+        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+      }
+    }
+
+    &:active { background: transparent; }
+  }
+
+  // Setting up the radius for switches
+  if $radius == true {
+    radius(4px);
+    & > span {
+    	radius(3px); 
+    }
+  } else if $radius {
+    radius($radius);
+    & > span {
+    	radius($radius - 1px); 
+    }
+  }
+
+}
+
+// We use this to quickly create switches with a single mixin
+switch($transition-speed=$switch-paddle-transition-speed, $transition-ease=$switch-paddle-transition-ease, $height=$switch-height-med, $font-size=$switch-font-size-med, $line-height=2.3em, $paddle-bg=$switch-paddle-bg, $positive-color=$switch-positive-color, $negative-color=$switch-negative-color, $radius=false, $base-style=true) {
+  switch-base($transition-speed, $transition-ease);
+  switch-size($height, $font-size, $line-height);
+  switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
+}
+
+if $include-html-button-classes {
+
+  /* Foundation Switches */
+  @media only screen {
+
+    // Containing element for the radio switch
+    div.switch {
+      switch();
+
+      // Large radio switches
+      &.large {
+      	switch-size($switch-height-lrg, $switch-font-size-lrg); 
+      }
+
+      // Small radio switches
+      &.small {
+      	switch-size($switch-height-sml, $switch-font-size-sml, 2.1em); 
+      }
+
+      // Tiny radio switches
+      &.tiny {
+      	switch-size($switch-height-tny, $switch-font-size-tny, 1.9em); 
+      }
+
+      // Add a radius to the switch
+      &.radius {
+        radius(4px);
+        & > span {
+        	radius(3px); 
+        }
+      }
+
+      // Make the switch completely round, like a pill
+      &.round {
+        radius(1000px);
+        & > span {
+        	radius(999px); 
+        }
+        label { padding: 0 emCalc($switch-label-side-padding + 3px); }
+      }
+
+    }
+
+    @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
+
+  }
+}

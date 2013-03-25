@@ -1,0 +1,103 @@
+//
+// Pagination Variables
+//
+
+// We use these to control the pagination container
+$pagination-height ?= emCalc(24px);
+$pagination-margin ?= emCalc(-5px);
+
+// We use these to set the list-item properties
+$pagination-li-float = $default-float;
+$pagination-li-height ?= emCalc(24px);
+$pagination-li-font-color ?= #222;
+$pagination-li-font-size ?= emCalc(14px);
+$pagination-li-margin ?= emCalc(5px);
+
+// We use these for the pagination anchor links
+$pagination-link-pad ?= emCalc(1px) emCalc(7px) emCalc(1px);
+$pagination-link-font-color ?= #999;
+$pagination-link-active-bg ?= darken(#fff, 10%);
+
+// We use these for disabled anchor links
+$pagination-link-unavailable-cursor ?= default;
+$pagination-link-unavailable-font-color ?= #999;
+$pagination-link-unavailable-bg-active ?= transparent;
+
+// We use these for currently selected anchor links
+$pagination-link-current-background ?= $primary-color;
+$pagination-link-current-font-color ?= #fff;
+$pagination-link-current-font-weight ?= bold;
+$pagination-link-current-cursor ?= default;
+$pagination-link-current-active-bg ?= $primary-color;
+
+//
+// Pagination Mixin
+//
+
+// We use this mixin to set the properties for the creating Foundation pagination
+pagination($center=false, $base-style=true) {
+
+  if $base-style {
+    display: block;
+    height: $pagination-height;
+    margin-{$default-float}: $pagination-margin;
+
+    li {
+      display: block;
+      float: $pagination-li-float;
+      height: $pagination-li-height;
+      color: $pagination-li-font-color;
+      font-size: $pagination-li-font-size;
+      margin-{$default-float}: $pagination-li-margin;
+
+      a {
+        display: block;
+        padding: $pagination-link-pad;
+        color: $pagination-link-font-color;
+      }
+
+      &:hover a,
+      a:focus { background: $pagination-link-active-bg; }
+
+      &.unavailable a {
+        cursor: $pagination-link-unavailable-cursor;
+        color: $pagination-link-unavailable-font-color;
+      }
+
+      &.unavailable:hover a, &.unavailable a:focus { background: $pagination-link-unavailable-bg-active; }
+
+      &.current a {
+        background: $pagination-link-current-background;
+        color: $pagination-link-current-font-color;
+        font-weight: $pagination-link-current-font-weight;
+        cursor: $pagination-link-current-cursor;
+
+        &:hover,
+        &:focus { background: $pagination-link-current-active-bg; }
+      }
+    }
+  }
+
+  if $center {
+    & { text-align: center;
+      ul > li {
+        float: none;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+
+
+if $include-html-nav-classes {
+
+  /* Pagination */
+  .pagination {
+  	pagination(); 
+  }
+  .pagination-centered {
+  	pagination(true,false); 
+  }
+}

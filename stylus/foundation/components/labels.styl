@@ -1,0 +1,98 @@
+//
+// Label Variables
+//
+
+// We use these to style the labels
+$label-padding ?= emCalc(3px) emCalc(10px) emCalc(4px);
+$label-radius ?= $global-radius;
+
+// We use these to style the label text
+$label-font-sizing ?= emCalc(14px);
+$label-font-weight ?= bold;
+
+//
+// Label Mixins
+//
+
+// We use this mixin to create a default label base.
+label-base() {
+  font-weight: $label-font-weight;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  position: relative;
+}
+
+// We use this mixin to add label size styles.
+label-size($padding=$label-padding, $text-size=$label-font-sizing) {
+  if $padding { padding: $padding; }
+  if $text-size { font-size: $text-size; }
+}
+
+// We use this mixin to add label styles.
+label-style($bg=$primary-color, $radius=false) {
+
+  // We control which background color comes through
+  if $bg {
+
+    // This find the lightness percentage of the background color.
+    $bg-lightness = lightness($bg);
+
+    background-color: $bg;
+
+    // We control the text color for you based on the background color.
+    if $bg-lightness < 70% {
+      color: #fff;
+    } else {
+      color: #333;
+    }
+  }
+
+  // We use this to control the radius on labels.
+  if $radius == true {
+  	radius($label-radius); 
+  } else if $radius {
+  	radius($radius); 
+  }
+
+}
+
+// We use this to add close buttons to alerts
+label($padding=$label-padding, $text-size=$label-font-sizing, $bg=$primary-color, $radius=false) {
+
+  label-base();
+  label-size($padding, $text-size);
+  label-style($bg, $radius);
+}
+
+
+if $include-html-label-classes {
+
+  /* Labels */
+  .label {
+    label-base();
+    label-size();
+    label-style();
+
+
+    &.radius {
+    	label-style(false, true); 
+    }
+    &.round {
+    	label-style(false, $radius:1000px); 
+    }
+
+    &.alert     {
+    	label-style($alert-color); 
+    }
+    &.success   {
+    	label-style($success-color); 
+    }
+    &.secondary {
+    	label-style($secondary-color); 
+    }
+  }
+
+}
