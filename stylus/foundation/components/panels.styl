@@ -1,0 +1,81 @@
+//
+// Panel Variables
+//
+
+// We use these to control the background and border styles
+$panel-bg ?= darken(#fff, 5%);
+$panel-border-style ?= solid;
+$panel-border-size ?= 1px;
+
+// We use this % to control how much we darken things on hover
+$panel-function-factor ?= 10%;
+$panel-border-color ?= darken($panel-bg, $panel-function-factor);
+
+// We use these to set default inner padding and bottom margin
+$panel-margin-bottom ?= emCalc(20px);
+$panel-padding ?= emCalc(20px);
+
+// We use these to set default font colors
+$panel-font-color ?= #333;
+$panel-font-color-alt ?= #fff;
+
+
+//
+// Panel Mixins
+//
+
+// We use this mixin to create panels.
+panel($bg=$panel-bg, $padding=$panel-padding) {
+
+  if $bg {
+    $bg-lightness = lightness($bg);
+
+    border-style: $panel-border-style;
+    border-width: $panel-border-size;
+    border-color: darken($bg, $panel-function-factor);
+    margin-bottom: $panel-margin-bottom;
+    padding: $padding;
+
+    background: $bg;
+
+    // We set the font color based on the darkness of the bg.
+    if $bg-lightness >= 50% and $bg == blue {
+      h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; }
+    } else if $bg-lightness >= 50% {
+      h1,h2,h3,h4,h5,h6,p { color: $panel-font-color; }
+    } else {
+      h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; }
+    }
+
+    // Respect the padding, fool.
+    &>:first-child { margin-top: 0; }
+    &>:last-child { margin-bottom: 0; }
+
+    // reset header line-heights for panels
+    h1,h2,h3,h4,h5,h6 {
+      line-height: 1; margin-bottom: (emCalc(20px) / 2);
+      &.subheader { line-height: 1.4; }
+    }
+  }
+}
+
+// Only include these classes if the option exists
+if $include-html-panel-classes {
+
+  /* Panels */
+  .panel {
+    panel();
+
+    &.callout {
+      panel($primary-color);
+      inset-shadow($active:false);
+    }
+
+    &.radius {
+      panel($bg:false);
+      radius();
+    }
+
+  }
+
+}

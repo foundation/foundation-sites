@@ -1,9 +1,14 @@
 {
   "name": "zurb-foundation",
   "version": "4.0.0-wip",
+  "main": "stylus/foundation",
   "devDependencies": {
     "grunt": "~0.4.0",
     "grunt-contrib-watch": "~0.1.0",
     "grunt-contrib-qunit": "~0.1.1"
+  },
+  "dependencies": {
+    "stylus": "~0.32.1",
+    "stylus-type-utils": "~0.0.3"
   }
 }

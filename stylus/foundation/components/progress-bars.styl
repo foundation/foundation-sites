@@ -1,0 +1,81 @@
+//
+// Progress Bar Variables
+//
+
+// We use this to se the prog bar height
+$progress-bar-height ?= emCalc(25px);
+$progress-bar-color ?= transparent;
+
+// We use these to control the border styles
+$progress-bar-border-color ?= darken(#fff, 20%);
+$progress-bar-border-size ?= 1px;
+$progress-bar-border-style ?= solid;
+$progress-bar-border-radius ?= $global-radius;
+
+// We use these to control the margin & padding
+$progress-bar-pad ?= emCalc(2px);
+$progress-bar-margin-bottom ?= emCalc(10px);
+
+// We use these to set the meter colors
+$progress-meter-color ?= $primary-color;
+$progress-meter-secondary-color ?= $secondary-color;
+$progress-meter-success-color ?= $success-color;
+$progress-meter-alert-color ?= $alert-color;
+
+
+//
+// Progress Bar Mixins
+//
+
+// We use this to set up the progress bar container
+progress-container() {
+  background-color: $progress-bar-color;
+  height: $progress-bar-height;
+  border: $progress-bar-border-size $progress-bar-border-style $progress-bar-border-color;
+  padding: $progress-bar-pad;
+  margin-bottom: $progress-bar-margin-bottom;
+}
+
+progress-meter($bg=$progress-meter-color) {
+  background: $bg;
+  height: 100%;
+  display: block;
+}
+
+
+if $include-html-media-classes {
+
+  /* Progress Bar */
+  .progress {
+    progress-container();
+
+    // Meter
+    .meter {
+      progress-meter();
+    }
+    &.secondary .meter {
+    	progress-meter($bg:$progress-meter-secondary-color); 
+    }
+    &.success .meter {
+    	progress-meter($bg:$progress-meter-success-color); 
+    }
+    &.alert .meter {
+    	progress-meter($bg:$progress-meter-alert-color); 
+    }
+
+    &.radius { radius($global-radius);
+      .meter {
+      	radius($global-radius - 1); 
+      }
+    }
+
+    &.round {
+      radius(1000px);
+      .meter {
+      	radius(999px); 
+      }
+    }
+
+  }
+
+}

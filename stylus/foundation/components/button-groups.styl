@@ -1,0 +1,94 @@
+//
+// Button Group Variables
+//
+$button-bar-margin-right ?= emCalc(10px);
+
+//
+// Button Group Mixins
+//
+
+// We use this to add styles for a button group container
+button-group-container($styles=true, $float=false) {
+  if $styles {
+    list-style: none;
+    margin: 0;
+    clearfix();
+  }
+  if $float {
+    float: $default-float;
+    margin-{$default-opposite}: $button-bar-margin-right;
+    & div { overflow: hidden; }
+  }
+}
+
+// We use this to control styles for button groups
+button-group-style($radius=false, $even=false, $float=$default-float) {
+
+  // We use this to control the flow, or remove those styles completely.
+  if $float {
+    margin: 0 0 0 -1px;
+    float: $float;
+    // Make sure the first child doesn't get the negative margin.
+    &:first-child {
+      margin-{$default-float}: 0;
+    }
+  }
+
+  // We use these to control left and right radius on first/last buttons in the group.
+  if $radius == true {
+    &:first-child, &:first-child > a, &:first-child > button {
+      side-radius($default-float, $button-radius);
+    }
+    &:last-child, &:last-child > a, &:last-child > button {
+      side-radius($default-opposite, $button-radius);
+    }
+  } else if $radius {
+    &:first-child, &:first-child > a, &:first-child > button {
+      side-radius($default-float, $radius);
+    }
+    &:last-child, &:last-child > a, &:last-child > button {
+      side-radius($default-opposite, $radius);
+    }
+  }
+
+  // We use this to make the buttons even width across their container
+  if $even {
+    width: percent((100/$even));
+    .button { width: 100%; }
+  }
+
+}
+
+// Only include these CSS classes if $include-html-classes: true
+if $include-html-button-classes {
+
+  /* Button Groups */
+  .button-group {
+    button-group-container();
+
+    &> * {
+      button-group-style();
+    }
+
+    &.radius > * {
+      button-group-style($radius:$button-radius, $float:null);
+    }
+    &.round > * {
+      button-group-style($radius:$button-round, $float:null);
+    }
+
+    for $i in (2..8) {
+      &.even-{$i} li {
+        button-group-style($even:$i, $float:null);
+      }
+    }
+  }
+
+  .button-bar {
+    clearfix();
+    .button-group {
+      button-group-container($styles:false,$float:true);
+    }
+  }
+
+}
