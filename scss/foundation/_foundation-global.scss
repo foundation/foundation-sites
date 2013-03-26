@@ -98,7 +98,6 @@ $include-html-magellan-classes: $include-html-classes !default;
 
 // We use this to create equal side border radius on elements.
 @mixin side-radius($side, $radius) {
-  @include radius(0);
   @if $side == left {
     -moz-border-radius-bottomleft: $radius;
     -moz-border-radius-topleft: $radius;
