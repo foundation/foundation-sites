@@ -121,7 +121,9 @@
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!this.breakpoint()) {
-          $('.top-bar').css('min-height', '');
+          $('.top-bar')
+            .css('min-height', '')
+            .removeClass('expanded');
         }
       }.bind(this));
 
