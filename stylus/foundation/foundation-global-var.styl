@@ -1,0 +1,68 @@
+//
+// Foundation Global Variables
+//
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with brower-based text zoom or user-set defaults.
+$base-font-size ?= 100%;
+
+// Set your base font-size in pixels so emCalc can do its magic below
+$em-base ?= 16px;
+
+// We use these to control various global styles
+$body-bg ?= #fff;
+$body-font-color ?= #222;
+$body-font-family ?= "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-weight ?= normal;
+$body-font-style ?= normal;
+
+// We use these to control text direction settings
+$text-direction ?= ltr; // controls default global text direction, 'rtl' or 'ltr'
+$default-float ?= left;
+$default-opposite ?= right;
+// No need to change this conditional statement, $text-direction variable controls it all.
+if $text-direction == ltr {
+  $default-float = left;
+  $default-opposite = right;
+} else {
+  $default-float = right;
+  $default-opposite = left;
+}
+
+// We use these as default colors throughout
+$primary-color ?= #2ba6cb;
+$secondary-color ?= #e9e9e9;
+$alert-color ?= #c60f13;
+$success-color ?= #5da423;
+
+// We use these to make sure border radius matches unless we want it different.
+$global-radius ?= 3px;
+$global-rounded ?= 1000px;
+
+// We use these to control inset shadow shiny edges and depressions.
+$shiny-edge-size ?= 0 1px 0;
+$shiny-edge-color ?= rgba(#fff, .5);
+$shiny-edge-active-color ?= rgba(#000, .2);
+
+// We use this to control whether or not CSS classes come through in the gem files.
+$include-html-classes ?= true;
+$include-print-styles ?= true;
+
+$include-html-grid-classes ?= $include-html-classes;
+$include-html-visibility-classes ?= $include-html-classes;
+$include-html-button-classes ?= $include-html-classes;
+$include-html-form-classes ?= $include-html-classes;
+$include-html-media-classes ?= $include-html-classes;
+$include-html-section-classes ?= $include-html-classes;
+$include-html-reveal-classes ?= $include-html-classes;
+$include-html-alert-classes ?= $include-html-classes;
+$include-html-nav-classes ?= $include-html-classes;
+$include-html-label-classes ?= $include-html-classes;
+$include-html-panel-classes ?= $include-html-classes;
+$include-html-pricing-classes ?= $include-html-classes;
+$include-html-progress-classes ?= $include-html-classes;
+$include-html-magellan-classes ?= $include-html-classes;
+
+$small-screen-size ?= 768px;
+$medium-screen-size ?= 1280px;
+$large-screen-size ?= 1440px;

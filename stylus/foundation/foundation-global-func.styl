@@ -1,0 +1,127 @@
+
+//
+// Foundation Global Function
+//
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+emCalc($pxWidth)
+  base-font-size = $base-font-size;
+  return em($pxWidth);
+
+// Creating rems and pixels
+remCalc($pxWidth)
+  return $pxWidth / $em-base * 1rem;
+
+// Grid Calculation for Percentages
+gridCalc($colNumber, $totalColumns)
+  return percent($colNumber / $totalColumns * 100);
+
+
+//
+// Mixins
+//
+
+// We use this to control border radius.
+radius($radius=$global-radius)
+  if $radius is a 'unit' {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+  }
+
+// We use this to create equal side border radius on elements.
+side-radius($side, $radius)
+  radius(0);
+  if $side == left {
+    -moz-border-radius-bottomleft: $radius;
+    -moz-border-radius-topleft: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
+  } else if $side == right {
+    -moz-border-radius-topright: $radius;
+    -moz-border-radius-bottomright: $radius;
+    -webkit-border-top-right-radius: $radius;
+    -webkit-border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+  } else if $side == top {
+    -moz-border-radius-topright: $radius;
+    -moz-border-radius-topleft: $radius;
+    -webkit-border-top-right-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+  } else if $side == bottom {
+    -moz-border-radius-bottomright: $radius;
+    -moz-border-radius-bottomleft: $radius;
+    -webkit-border-bottom-right-radius: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+
+// We can control whether or not we have inset shadows edges.
+inset-shadow($active=true)
+  -webkit-box-shadow: $shiny-edge-size $shiny-edge-color inset;
+  box-shadow: $shiny-edge-size $shiny-edge-color inset;
+
+  if $active {
+    &:active {
+      -webkit-box-shadow: $shiny-edge-size $shiny-edge-active-color inset;
+      box-shadow: $shiny-edge-size $shiny-edge-active-color inset;
+    }
+  }
+
+// We use this to add transitions to elements
+single-transition($property=all, $speed=300ms, $ease=ease-out)
+  -webkit-transition: $property $speed $ease;
+  -moz-transition: $property $speed $ease;
+  transition: $property $speed $ease;
+
+// We use this to add box-sizing across browser prefixes
+box-sizing($type=border-box)
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+  box-sizing: $type;
+
+// We use this to create equalateral triangles
+css-triangle($triangle-size, $triangle-color, $triangle-direction)
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $triangle-size;
+  if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+  }
+  if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+  }
+  if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+  }
+  if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+  }
+
+// We use this to do clear floats
+clearfix()
+  *zoom:1;
+  &:before, &:after
+    content: " ";
+    display: table;
+  &:after
+    clear: both;
+
+// Media Queries
+$small-screen ?= emCalc($small-screen-size);
+$medium-screen ?= emCalc($medium-screen-size);
+$large-screen ?= emCalc($large-screen-size);
+
+$screen ?= "only screen";
+$small ?= "only screen and (min-width:" + $small-screen + ")";
+$medium ?= "only screen and (min-width:"+$medium-screen+")";
+$large ?= "only screen and (min-width:"+$large-screen+")";
+$landscape ?= "only screen and (orientation: landscape)";
+$portrait ?= "only screen and (orientation: portrait)";

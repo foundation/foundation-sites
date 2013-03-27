@@ -1,5 +1,5 @@
 {
-  "name": "zurb-foundation",
+  "name": "foundation",
   "version": "4.0.0-wip",
   "main": "stylus/foundation",
   "devDependencies": {
