@@ -188,11 +188,11 @@
 // $form-spacing: emCalc(16px);
 
 // We use these to style the labels in different ways
-// $label-pointer: pointer;
-// $label-font-size: emCalc(14px);
-// $label-font-weight: 500;
-// $label-font-color: lighten(#000, 30%);
-// $label-bottom-margin: emCalc(3px);
+// $form-label-pointer: pointer;
+// $form-label-font-size: emCalc(14px);
+// $form-label-font-weight: 500;
+// $form-label-font-color: lighten(#000, 30%);
+// $form-label-bottom-margin: emCalc(3px);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14px);
@@ -601,6 +601,8 @@
 // We use these to style the label text
 // $label-font-sizing: emCalc(14px);
 // $label-font-weight: bold;
+// $label-font-color: #333;
+// $label-font-color-alt: #fff;
 
 //
 // Magellan Variables
