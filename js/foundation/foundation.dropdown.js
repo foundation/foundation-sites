@@ -14,7 +14,7 @@
 
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
-      Foundation.inherit(this, 'throttle');
+      Foundation.inherit(this, 'throttle scrollLeft');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
@@ -83,8 +83,8 @@
 
     css : function (dropdown, target) {
       var position = target.position();
-      position.top += target.offsetParent().scrollTop();
-      position.left += target.offsetParent().scrollLeft();
+      position.top += target.offsetParent().offset().top;
+      position.left += target.offsetParent().offset().left;
 
       if (this.small()) {
         dropdown.css({
