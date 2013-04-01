@@ -6,7 +6,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version : '4.0.0',
+    version : '4.1.0',
 
     settings : {
       templates : {
@@ -25,8 +25,7 @@
       locked : false
     },
 
-    init : function (scope, method, options) {
-      this.scope = this.scope || scope;
+    init : function (method, options) {
       Foundation.inherit(this, 'set_data get_data remove_data throttle');
 
       if (typeof method === 'object') {
@@ -279,10 +278,18 @@
     },
 
     center : function (target) {
-      target.css({
-        marginLeft : -(this.outerWidth(target) / 2),
-        marginTop : -(this.outerHeight(target) / 2)
-      });
+      console.log(this.rtl)
+      if (!this.rtl) {
+        target.css({
+          marginLeft : -(this.outerWidth(target) / 2),
+          marginTop : -(this.outerHeight(target) / 2)
+        });
+      } else {
+        target.css({
+          marginRight : -(this.outerWidth(target) / 2),
+          marginTop : -(this.outerHeight(target) / 2)
+        });
+      }
       return this;
     },
 

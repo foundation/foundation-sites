@@ -181,7 +181,8 @@ if (typeof jQuery === "undefined" &&
 
     patch : function (lib) {
       this.fix_outer(lib);
-      lib.rtl = this.rlt;
+      lib.scope = this.scope;
+      lib.rtl = this.rtl;
     },
 
     inherit : function (scope, methods) {
