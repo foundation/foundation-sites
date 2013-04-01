@@ -334,7 +334,7 @@
         return;
       }
 
-      if (this.complete || this.readyState === 4) {
+      if (image[0].complete || image.readyState === 4) {
         loaded();
       } else {
         bindLoad.call(image);
@@ -395,7 +395,7 @@
 
       // we use jQuery animate instead of CSS transitions because we
       // need a callback to unlock the next animation
-      if (target.index() !== old_index && !/skip/.test(direction)){
+      if (!/skip/.test(direction)){
         if (/left/.test(direction)) {
           this.lock();
           clearing.animate({left : left + width}, 300, this.unlock());
