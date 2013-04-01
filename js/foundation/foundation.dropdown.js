@@ -6,7 +6,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.0.9',
+    version : '4.1.0',
 
     settings : {
       activeClass: 'open'
@@ -14,7 +14,7 @@
 
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
-      Foundation.inherit(this, 'throttle');
+      Foundation.inherit(this, 'throttle scrollLeft');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
@@ -82,11 +82,9 @@
     },
 
     css : function (dropdown, target) {
-      if (dropdown.parent()[0] === $('body')[0]) {
-        var position = target.offset();
-      } else {
-        var position = target.position();
-      }
+      var position = target.position();
+      position.top += target.offsetParent().offset().top;
+      position.left += target.offsetParent().offset().left;
 
       if (this.small()) {
         dropdown.css({

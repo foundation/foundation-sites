@@ -45,6 +45,16 @@
       var self = this;
 
       $(this.scope)
+        .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.toggle_checkbox($(this));
+        })
+        .on('click.fndtn.forms', 'form.custom span.custom.radio', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.toggle_radio($(this));
+        })
         .on('change.fndtn.forms', 'form.custom select:not([data-customforms="disabled"])', function (e) {
           self.refresh_custom_select($(this));
         })
@@ -56,17 +66,17 @@
             if ($associatedElement.attr('type') === 'checkbox') {
               e.preventDefault();
               $customCheckbox = $(this).find('span.custom.checkbox');
-              //the checkbox might be outside after the label
+              //the checkbox might be outside after the label or inside of another element
               if ($customCheckbox.length == 0) {
-                $customCheckbox = $(this).siblings('span.custom.checkbox').first();
+                $customCheckbox = $associatedElement.add(this).siblings('span.custom.checkbox').first();
               }
               self.toggle_checkbox($customCheckbox);
             } else if ($associatedElement.attr('type') === 'radio') {
               e.preventDefault();
               $customRadio = $(this).find('span.custom.radio');
-              //the radio might be outside after the label
+              //the radio might be outside after the label or inside of another element
               if ($customRadio.length == 0) {
-                $customRadio = $(this).siblings('span.custom.radio').first();
+                $customRadio = $associatedElement.add(this).siblings('span.custom.radio').first();
               }
               self.toggle_radio($customRadio);
             }
