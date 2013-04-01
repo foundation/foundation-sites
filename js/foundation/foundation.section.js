@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.0.9',
+    version : '4.1.0',
 
     settings : {
       deep_linking: false,
@@ -16,9 +16,8 @@
 
     init : function (scope, method, options) {
       var self = this;
-
-      this.scope = scope || this.scope;
-      Foundation.inherit(this, 'throttle data_options');
+      Foundation.inherit(this, 'throttle data_options position_right offset_right');
+      console.log(this)
 
       if (typeof method != 'string') {
         this.set_active_from_hash();
@@ -214,7 +213,11 @@
 
       } else {
         titles.each(function () {
-          $(this).css('left', previous_width);
+          if (!self.rtl) {
+            $(this).css('left', previous_width);
+          } else {
+            $(this).css('right', previous_width);
+          }
           previous_width += self.outerWidth($(this));
         });
       }
@@ -232,8 +235,11 @@
         section.find('section, .section').each(function () {
           var title = $(this).find('.title'),
               content = $(this).find('.content');
-
-          content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
+          if (!self.rtl) {
+            content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
+          } else {
+            content.css({right: self.position_right(title) + 1, top: self.outerHeight(title) - 2});
+          }
         });
 
         // temporary work around for Zepto outerheight calculation issues.
@@ -244,6 +250,13 @@
         }
       }
 
+    },
+
+    position_right : function (el) {
+      var section = el.closest('[data-section]'),
+          section_width = el.closest('[data-section]').width(),
+          offset = section.find('.title').length;
+      return (section_width - el.position().left - el.width() * (el.index() + 1) - offset);
     },
 
     small : function (el) {

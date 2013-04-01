@@ -278,7 +278,6 @@
     },
 
     center : function (target) {
-      console.log(this.rtl)
       if (!this.rtl) {
         target.css({
           marginLeft : -(this.outerWidth(target) / 2),
