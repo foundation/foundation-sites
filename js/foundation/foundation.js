@@ -113,6 +113,10 @@ if (typeof jQuery === "undefined" &&
       // used for development only
       if (nc) this.nc = nc;
 
+
+      // check RTL
+      this.rtl = /rtl/i.test($('html').attr('dir'));
+
       // set foundation global scope
       this.scope = scope || this.scope;
 
@@ -177,6 +181,7 @@ if (typeof jQuery === "undefined" &&
 
     patch : function (lib) {
       this.fix_outer(lib);
+      lib.rtl = this.rlt;
     },
 
     inherit : function (scope, methods) {
