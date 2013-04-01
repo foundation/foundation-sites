@@ -395,7 +395,7 @@
 
       // we use jQuery animate instead of CSS transitions because we
       // need a callback to unlock the next animation
-      if (!/skip/.test(direction)){
+      if (target.index() !== old_index && !/skip/.test(direction)){
         if (/left/.test(direction)) {
           this.lock();
           clearing.animate({left : left + width}, 300, this.unlock());
