@@ -98,7 +98,7 @@ if (typeof jQuery === "undefined" &&
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.0.8',
+    version : '4.1.0',
 
     // global Foundation cache object
     cache : {},
