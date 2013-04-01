@@ -323,9 +323,9 @@ $pull: false
 /* If you have a collapsed row, you need to set the columns to collapse as well. */
 $collapse: false
 
-/* By default, we do not include floats in the styles because it will be duplicated a lot. */
-/* To help control this, we made it an option. Set this to true to get columns to float. */
-$float: false
+/* By default, we include float: left. */
+/* To help control this, we made it an option. Set this to false to not include those styles. */
+$float: left
 ', :css %>
 
 <%= code_example '

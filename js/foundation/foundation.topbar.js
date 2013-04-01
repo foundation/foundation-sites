@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.0.0',
+    version : '4.1.0',
 
     settings : {
       index : 0,
@@ -121,7 +121,9 @@
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!this.breakpoint()) {
-          $('.top-bar').css('min-height', '');
+          $('.top-bar')
+            .css('min-height', '')
+            .removeClass('expanded');
         }
       }.bind(this));
 
