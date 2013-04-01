@@ -259,6 +259,10 @@
       return (section_width - el.position().left - el.width() * (el.index() + 1) - offset);
     },
 
+    reflow : function () {
+      $('[data-section]').trigger('resize');
+    },
+
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
       if (this.is_tabs(el)) {
