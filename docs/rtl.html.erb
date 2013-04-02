@@ -1,0 +1,53 @@
+<% @side_nav = "using" %>
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Right-to-Left Support" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Right-to-left text direction support in Foundation allows you to easily switch text direction for all components.<h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Setup</h3>
+        <p>Foundation 4 was built to support right-to-left text direction out of the box, but you'll need to make a couple of adjustments to your markup and SCSS to get everything up and running.</p>
+
+        <h4>Markup Changes for Right-to-Left Layouts</h4>
+        <p>You'll need to make a few changes to your markup to get the javascript components working nice and smooth. In the <code>html</code> tag, you'll need to add a <code>dir</code> attribute with a value of <code>rtl</code>. Here's what your <code>html</code> tag should look like:</p>
+<%= code_example '
+<!-- This example is for a right-to-left Arabic layout -->
+<html class="no-js" lang="ar" dir="rtl">
+', :html %>
+        <h5>Change the Language Too</h5>
+        <p>You'll need to change your <code>lang</code> attribute value to match your language. Here's a handy list of common right-to-left languages and their html codes:</p>
+        <ul>
+          <li><strong>Arabic:</strong> ar</li>
+          <li><strong>Chinese:</strong> zh</li>
+          <li><strong>Farsi:</strong> fa</li>
+          <li><strong>Hebrew:</strong> he, iw</li>
+          <li><strong>Japanese:</strong> ja</li>
+          <li><strong>Urdu:</strong> ur</li>
+          <li><strong>Yiddish:</strong> yi, ji</li>
+        </ul>
+        <hr>
+        <h4>A Single SCSS Adjustment</h4>
+        <p>We made it really easy to switch the entire Foundation grid to right-to-left by changing the <code>$text-direction</code> SCSS variable. Here's what the variable should look like:</p>
+<%= code_example '
+$text-direction: rtl;
+', :css %>
+        <p>By changing this single variable, the entire grid and all the Foundation components will be switched to right-to-left orientation.</p>
+        <div class="panel">
+          <h6>Using CSS</h6>
+          <p>If you downloaded a static version of Foundation using the customizer to get a right-to-left support, your download should be ready to use without any of the steps mentioned above.</p>
+          <a href="http://foundation.zurb.com/download.php#customizeFoundation">Download Right-to-Left Foundation 4 &raquo;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar.html.erb" %>
+  </div>
+</div>

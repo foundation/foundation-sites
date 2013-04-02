@@ -306,7 +306,7 @@
           $slides = $slides_container.children(),
           $active_slide = $slides_container.find('.' + self.settings.active_slide_class),
           active_index = $active_slide.index(),
-          margin_position = Foundation.rtl ? 'marginRight' : 'marginRight';
+          margin_position = Foundation.rtl ? 'marginRight' : 'marginLeft';
 
       if ($container.hasClass(self.settings.orbit_transition_class)) {
         return false;
