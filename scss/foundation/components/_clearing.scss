@@ -123,13 +123,15 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
     #{$default-float}: 0;
     & > span {
       #{$default-float}: 5px;
-      border-color: transparent $clearing-arrow-color transparent transparent;
+      border-color: transparent;
+      border-#{$opposite-direction}-color: $clearing-arrow-color;
     }
   }
   .clearing-main-next {
     #{$opposite-direction}: 0;
     & > span {
-      border-color: transparent transparent transparent $clearing-arrow-color;
+      border-color: transparent;
+      border-#{$default-float}-color: $clearing-arrow-color;
     }
   }
 
