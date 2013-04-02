@@ -160,7 +160,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
 
 /* Styles for screens that are atleast 768px; */
 @media #{$small} {
-  .joyride-tip-guide { width: $joyride-tip-default-width; #{$default-float}: 0;
+  .joyride-tip-guide { width: $joyride-tip-default-width; #{$default-float}: inherit;
     .joyride-nub {
       &.bottom {
         border-color: $joyride-tip-bg !important;

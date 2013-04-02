@@ -135,16 +135,24 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
     }
   }
   .orbit-prev { #{$default-float}: 0;
-    & > span { border-color: transparent #fff transparent transparent; }
-    &:hover > span { border-color: transparent #ccc transparent transparent; }
+    & > span { 
+      border-color: transparent;
+      border-#{$opposite-direction}-color: #fff;
+    }
+    &:hover > span {
+      border-#{$opposite-direction}-color: #ccc;
+    }
   }
   .orbit-next { #{$opposite-direction}: 0;
     & > span {
-      border-color: transparent transparent transparent #fff;
+      border-color: transparent;
+      border-#{$default-float}-color: #fff;
       #{$default-float}: 50%;
       margin-#{$default-float}: -8px;
     }
-    &:hover > span { border-color: transparent transparent transparent #ccc; }
+    &:hover > span {
+      border-#{$default-float}-color: #ccc;
+    }
   }
 }
 
