@@ -95,7 +95,7 @@
           top: position.top + this.outerHeight(target)
         });
       } else {
-        if ($(window).width() > this.outerWidth(dropdown) + target.offset().left) {
+        if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left) {
           var left = position.left;
         } else {
           if (!dropdown.hasClass('right')) {
@@ -103,6 +103,7 @@
           }
           var left = position.left - (this.outerWidth(dropdown) - this.outerWidth(target));
         }
+
         dropdown.attr('style', '').css({
           position : 'absolute',
           top: position.top + this.outerHeight(target),
