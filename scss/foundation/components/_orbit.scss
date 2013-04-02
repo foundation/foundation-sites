@@ -161,11 +161,12 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
     background: #fff;
     float: left;
     margin-right: 6px;
-    border: solid 2px #000;
+    border: solid 2px $orbit-bullet-nav-color;
     @include radius(1000px);
 
     &.active {
-      background: #000;
+      background: $orbit-bullet-nav-color-active;
+      border-color: $orbit-bullet-nav-color-active;
     }
 
     &:last-child { margin-right: 0; }
