@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.1.0',
+    version : '4.1.1',
 
     settings : {
       deep_linking: false,
@@ -17,7 +17,6 @@
     init : function (scope, method, options) {
       var self = this;
       Foundation.inherit(this, 'throttle data_options position_right offset_right');
-      console.log(this)
 
       if (typeof method != 'string') {
         this.set_active_from_hash();
