@@ -139,7 +139,10 @@
           && !self.is_accordion($this)) {
 
           var first = $this.find('section, .section').first();
-          first.addClass('active');
+
+          if (settings.one_up) {
+            first.addClass('active');
+          }
 
           if (self.small($this)) {
             first.attr('style', '');
