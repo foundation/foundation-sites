@@ -278,7 +278,6 @@
     },
 
     center : function (target) {
-      console.log(this.rtl)
       if (!this.rtl) {
         target.css({
           marginLeft : -(this.outerWidth(target) / 2),
@@ -335,7 +334,7 @@
         return;
       }
 
-      if (this.complete || this.readyState === 4) {
+      if (image[0].complete || image[0].readyState === 4) {
         loaded();
       } else {
         bindLoad.call(image);
