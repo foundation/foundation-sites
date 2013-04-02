@@ -57,6 +57,7 @@ $tooltip-pip-size:            5px !default;
 
   &>.nub {
     display: block;
+    left: $tooltip-pip-size;
     position: absolute;
     width: 0;
     height: 0;
