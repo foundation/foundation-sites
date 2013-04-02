@@ -18,7 +18,7 @@ $body-font-weight: normal !default;
 $body-font-style: normal !default;
 
 // We use these to control text direction settings
-$text-direction: rtl !default; // Controls default global text direction, 'rtl' or 'ltr'
+$text-direction: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
 $default-float: left !default;
 $opposite-direction: right !default;
 // No need to change this conditional statement, $text-direction variable controls it all.
