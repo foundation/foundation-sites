@@ -334,7 +334,7 @@
         return;
       }
 
-      if (image[0].complete || image.readyState === 4) {
+      if (image[0].complete || image[0].readyState === 4) {
         loaded();
       } else {
         bindLoad.call(image);
