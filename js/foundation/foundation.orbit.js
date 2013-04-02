@@ -6,7 +6,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.0.7',
+    version: '4.1.0',
 
     settings: {
       timer_speed: 10000,
@@ -305,7 +305,8 @@
           $container = $slides_container.parent(),
           $slides = $slides_container.children(),
           $active_slide = $slides_container.find('.' + self.settings.active_slide_class),
-          active_index = $active_slide.index();
+          active_index = $active_slide.index(),
+          margin_position = Foundation.rtl ? 'marginRight' : 'marginRight';
 
       if ($container.hasClass(self.settings.orbit_transition_class)) {
         return false;
@@ -326,11 +327,11 @@
         active_index = (index_or_direction % $slides.length);
       }
       if (active_index === ($slides.length - 1) && index_or_direction === 'next') {
-        $slides_container.css('marginLeft', '0%');
+        $slides_container.css(margin_position, '0%');
         active_index = 1;
       }
       else if (active_index === 0 && index_or_direction === 'prev') {
-        $slides_container.css('marginLeft', '-' + ($slides.length - 1) * 100 + '%');
+        $slides_container.css(margin_position, '-' + ($slides.length - 1) * 100 + '%');
         active_index = $slides.length - 2;
       }
       // Start transition, make next slide active
@@ -347,14 +348,15 @@
       // Check to see if animation will occur, otherwise perform
       // callbacks manually
       $slides_container.trigger('orbit:before-slide-change');
-      if ($slides_container.css('marginLeft') === new_margin_left) {
+      if ($slides_container.css(margin_position) === new_margin_left) {
         $container.removeClass(self.settings.orbit_transition_class);
         $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
         callback();
       } else {
-        $slides_container.animate({
-          'marginLeft' : new_margin_left
-        }, self.settings.animation_speed, 'linear', function() {
+        var properties = {};
+        properties[margin_position] = new_margin_left;
+
+        $slides_container.animate(properties, self.settings.animation_speed, 'linear', function() {
           $container.removeClass(self.settings.orbit_transition_class);
           $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
           callback();
