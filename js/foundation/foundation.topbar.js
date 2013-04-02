@@ -129,7 +129,7 @@
       });
 
       $(window).on('resize.fndtn.topbar', function () {
-        if (!this.breakpoint()) {
+        if (!self.breakpoint()) {
           $('.top-bar')
             .css('min-height', '')
             .removeClass('expanded');
