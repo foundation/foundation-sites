@@ -603,14 +603,6 @@
 // $label-font-weight: bold;
 
 //
-// Magellan Variables
-//
-
-// We use these to control basic visual styles
-// $magellan-bg: #fff;
-// $magellan-padding: 10px;
-
-//
 // Orbit Settings
 //
 
@@ -818,6 +810,7 @@
 // Control the color of the background and some size options
 // $section-content-bg: #fff;
 // $section-vertical-nav-min-width: emCalc(200px);
+// $section-vertical-tabs-title-width: emCalc(200px);
 // $section-bottom-margin: emCalc(20px);
 
 //
@@ -993,6 +986,7 @@
 // $topbar-link-color: #fff;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: emCalc(13px);
+// $topbar-link-hover-lightness: -30%;  // Darken by 30%
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: #333;
