@@ -215,6 +215,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       font-size: $topbar-link-font-size;
       font-weight: $topbar-link-weight;
       background: $topbar-dropdown-bg;
+      height: $topbar-height;
 
       &:hover { background: darken($topbar-dropdown-bg, 3%); }
 
@@ -264,7 +265,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         margin-#{$opposite-direction}: $topbar-height / 3;
         margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
         position: absolute;
-        top: 50%;
+        top: 22px;
         #{$opposite-direction}: 0;
       }
     }
