@@ -1,0 +1,22 @@
+
+// Set your base font-size in pixels so emCalc can do its magic below
+$em-base: 16px !default;
+
+//
+// Functions
+//
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+// Creating rems and pixels
+@function remCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1rem;
+}
+
+// Grid Calculation for Percentages
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
+}
