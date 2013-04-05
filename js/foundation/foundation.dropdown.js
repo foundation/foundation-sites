@@ -37,16 +37,23 @@
 
       $(this.scope).on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
         e.preventDefault();
-        e.stopPropagation();
         self.toggle($(this));
       });
 
-      $('*, html, body').on('click.fndtn.dropdown', function (e) {
-        if (!$(e.target).data('dropdown')) {
-          $('[data-dropdown-content]')
-            .css(Foundation.rtl ? 'right':'left', '-99999px')
-            .removeClass(self.settings.activeClass);
+      $('body').on('click.fndtn.dropdown', function (e) {
+        var parent = $(e.target).closest('[data-dropdown-content]');
+
+        if ($(e.target).data('dropdown')) {
+          return;
         }
+        if (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || $.contains(parent.first()[0], e.target))) {
+          e.stopPropagation();
+          return;
+        }
+
+        $('[data-dropdown-content]')
+          .css(Foundation.rtl ? 'right':'left', '-99999px')
+          .removeClass(self.settings.activeClass);
       });
 
       $(window).on('resize.fndtn.dropdown', self.throttle(function () {
@@ -59,7 +66,10 @@
     toggle : function (target, resize) {
       var dropdown = $('#' + target.data('dropdown'));
 
-      $('[data-dropdown-content]').not(dropdown).css(Foundation.rtl ? 'right':'left', '-99999px').removeClass(this.settings.activeClass);
+      $('[data-dropdown-content]')
+        .not(dropdown)
+        .css(Foundation.rtl ? 'right':'left', '-99999px')
+        .removeClass(this.settings.activeClass);
 
       if (dropdown.hasClass(this.settings.activeClass)) {
         dropdown
