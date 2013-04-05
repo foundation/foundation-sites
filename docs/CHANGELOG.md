@@ -1,3 +1,13 @@
+### 4.1.1- April 2, 2013
+* Changed all references to the variable `$default-opposite` to `$opposite-direction`
+* Added `dir` attribute to `html` tag
+* Added direction variables to `foundation.dropdown.js`, `foundation.clearing.js`, `foundation.joyride.js`, `foundation.orbit.js`, `foundation.section.js`, `foundation.topbar.js` and `foundation.tooltips.js`.
+* Updated customizer with text direction setting
+* Added right-to-left text direction documentation
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.9...v4.1.1).
+
+
 ### 4.0.9- March 19, 2013
 * Added `auto` option to `Foundation.section.js.
 * Fixes dropdown positioning for split buttons.
