@@ -25,7 +25,7 @@
       locked : false
     },
 
-    init : function (method, options) {
+    init : function (scope, method, options) {
       Foundation.inherit(this, 'set_data get_data remove_data throttle');
 
       if (typeof method === 'object') {
