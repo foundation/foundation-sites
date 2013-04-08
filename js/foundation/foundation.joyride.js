@@ -9,8 +9,8 @@
     version : '4.1.2',
 
     defaults : {
-      expose               : true,      // turn on or off the expose feature
-      modal                : true,      // Whether to cover page with modal during the tour
+      expose               : false,      // turn on or off the expose feature
+      modal                : false,      // Whether to cover page with modal during the tour
       tipLocation          : 'bottom',  // 'top' or 'bottom' in relation to parent
       nubPosition          : 'auto',    // override on a per tooltip bases
       scrollSpeed          : 300,       // Page scrolling speed in milliseconds, 0 = no scroll animation
