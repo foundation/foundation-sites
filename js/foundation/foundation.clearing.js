@@ -6,7 +6,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version : '4.1.0',
+    version : '4.1.2',
 
     settings : {
       templates : {
@@ -256,17 +256,17 @@
         .closest('.carousel')
         .siblings('.visible-img');
 
-      if (target.next().length) {
+      if (target.next().length > 0) {
         visible_image
-          .find('.clearing-main-right')
+          .find('.clearing-main-next')
           .removeClass('disabled');
       } else {
         visible_image
-          .find('.clearing-main-right')
+          .find('.clearing-main-next')
           .addClass('disabled');
       }
 
-      if (target.prev().length) {
+      if (target.prev().length > 0) {
         visible_image
           .find('.clearing-main-prev')
           .removeClass('disabled');
