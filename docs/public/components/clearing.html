@@ -1,0 +1,173 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Clearing</title>
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/docs.css" />
+    <script src="http://192.168.100.125:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Clearing</h1>
+    <h4 class="subheader">Since Orbit isn't intended for variable-height content, we decided it would be a great idea to create a plugin that would help in that regard. Clearing makes it easy to create responsive lightboxes with any size image.</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <ul class="clearing-thumbs" data-clearing>
+      <li><a class="th" href="../img/demos/demo1.png"><img data-caption="Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum." src="../img/demos/demo1-th.png"></a></li>
+      <li><a class="th" href="../img/demos/demo2.png"><img src="../img/demos/demo2-th.png"></a></li>
+      <li><a class="th" href="../img/demos/demo3.png"><img data-caption="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus." src="../img/demos/demo3-th.png"></a></li>
+      <li><a class="th" href="../img/demos/demo4.png"><img src="../img/demos/demo4-th.png"></a></li>
+      <li><a class="th" href="../img/demos/demo5.png"><img data-caption="Integer posuere erat a ante venenatis dapibus posuere velit aliquet." src="../img/demos/demo5-th.png"></a></li>
+    </ul>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <h3>Build Your Clearing Lightbox</h3>
+    <p>There is only one way to build a Clearing lightbox, using our predefined class and data-attribute structure. We've made it really easy: gather some images, decide on their order, and put them into a <code>&lt;ul class="clearing-thumbs"&gt;</code> of your choice. In order to get Clearing to build itself properly, you'll need to have Javascript included properly. We outline <a href="#js">Clearing JS</a> a bit further down the page.</p>
+
+    <p>Once you get your JS hooked up, you'll need to add <code>data-clearing</code> to your list container. Here's an example of the most basic markup needed:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">clearing-thumbs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-clearing</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre></div>
+</div>
+</div>
+
+    <h5>Styling the List</h5>
+    <p>We're using the <code>.th</code> class from Foundation to style the thumbnails in the Clearing example at the top of the page. You can also use <code>@include thumb;</code> in Scss to use those same styles.</p></aside>
+
+    <hr>
+
+    <h4>Start From a Featured Image</h4>
+    <p>Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in the list and using <code>.clearing-feature</code> on the <code>&lt;li&gt;</code> of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than once, try using our <code>.hide</code> class to set the ones you don't want to <code>display: none;</code>.</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">clearing-thumbs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-clearing</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">clearing-feature</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre></div>
+</div>
+</div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="clearing-thumbs" data-clearing>
+          <li class="clearing-feature"><a class="th" href="../img/demos/demo1.png"><img src="../img/demos/demo1-th.png"></a></li>
+          <li><a class="th" href="../img/demos/demo2.png"><img src="../img/demos/demo2-th.png"></a></li>
+          <li><a class="th" href="../img/demos/demo3.png"><img src="../img/demos/demo3-th.png"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <h4>Including Captions</h4>
+    <p>Another common use-case for Lightboxes is to include a caption per image. We've made this quick and easy by using data-attributes to hold the content. You'll just attach this attribute to your the image it belongs to and voila!</code> Here's the code example:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">clearing-thumbs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-clearing</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">data-caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">caption here...</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">data-caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">caption 2 here...</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">data-caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">caption 3 here...</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/your/img-th</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre></div>
+</div>
+</div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="clearing-thumbs" data-clearing>
+          <li><a class="th" href="../img/demos/demo1.png"><img data-caption="caption here..." src="../img/demos/demo1-th.png"></a></li>
+          <li><a class="th" href="../img/demos/demo2.png"><img data-caption="caption 2 here..." src="../img/demos/demo2-th.png"></a></li>
+          <li><a class="th" href="../img/demos/demo3.png"><img data-caption="caption 3 here..." src="../img/demos/demo3-th.png"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <h3>Available SCSS Variables</h3>
+    <p>We opted to not create mixins for this plugin because it relies on classes in the JS to work. These variables should give you the control you need to change styles as you see fit:</p>
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* We use these to set the background colors for parts of Clearing. */</span>
+<span class="error">$</span><span class="type">clearing-bg</span>:                           <span class="constant">#111</span>;
+<span class="error">$</span><span class="type">clearing-caption-bg</span>:                   <span class="error">$</span><span class="type">clearing-bg</span>;
+<span class="error">$</span><span class="type">clearing-carousel-bg</span>:                  <span class="constant">#111</span>;
+<span class="error">$</span><span class="type">clearing-img-bg</span>:                       <span class="error">$</span><span class="type">clearing-bg</span>;
+
+<span class="comment">/* We use these to style the close button */</span>
+<span class="error">$</span><span class="type">clearing-close-color</span>:                  <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">clearing-close-size</span>:                   <span class="float">40px</span>;
+
+<span class="comment">/* We use these to style the arrows */</span>
+<span class="error">$</span><span class="type">clearing-arrow-size</span>:                   <span class="float">16px</span>;
+<span class="error">$</span><span class="type">clearing-arrow-color</span>:                  <span class="error">$</span><span class="type">clearing-close-color</span>;
+
+<span class="comment">/* We use these to style captions */</span>
+<span class="error">$</span><span class="type">clearing-caption-font-color</span>:           <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">clearing-caption-padding</span>:              <span class="float">10px</span> <span class="float">30px</span>;
+
+<span class="comment">/* We use these to make the image and carousel height and style */</span>
+<span class="error">$</span><span class="type">clearing-active-img-height</span>:            <span class="float">75%</span>;
+<span class="error">$</span><span class="type">clearing-carousel-height</span>:              <span class="float">150px</span>;
+<span class="error">$</span><span class="type">clearing-carousel-thumb-width</span>:         <span class="float">175px</span>;
+<span class="error">$</span><span class="type">clearing-carousel-thumb-active-border</span>: <span class="float">4px</span> <span class="type">solid</span> <span class="color">rgb(255,255,255)</span>;
+</pre></div>
+</div>
+</div>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>To make sure Clearing works properly, you'll need to include <code>foundation.clearing.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the Clearing plugin. Above your closing </body> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+    <div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/zepto.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.clearing.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">  <span class="predefined">$</span>(document).foundation();</span>
+<span class="tag">&lt;/script&gt;</span></pre></div>
+</div>
+</div>
+
+  </div>
+</div>
+    <script>
+      document.write('<script src="http://192.168.100.125:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.125:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

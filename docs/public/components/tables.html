@@ -1,0 +1,144 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Tables</title>
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/docs.css" />
+    <script src="http://192.168.100.125:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Tables</h1>
+    <h4 class="subheader">Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course).</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12">
+
+    <table>
+      <thead>
+        <tr>
+          <th width="200">Table Header</th>
+          <th>Table Header</th>
+          <th width="150">Table Header</th>
+          <th width="150">Table Header</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Content Goes Here</td>
+          <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+          <td>Content Goes Here</td>
+          <td>Content Goes Here</td>
+        </tr>
+        <tr>
+          <td>Content Goes Here</td>
+          <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+          <td>Content Goes Here</td>
+          <td>Content Goes Here</td>
+        </tr>
+        <tr>
+          <td>Content Goes Here</td>
+          <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+          <td>Content Goes Here</td>
+          <td>Content Goes Here</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>Tables are built from a mixin, but since tables don't rely on any classes to build. You can use the table element and customize with you CSS. If you are using Scss, the variables will help you customize the look and feel.</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;table&gt;</span>
+  <span class="tag">&lt;thead&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Table Header<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th&gt;</span>Table Header<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">150</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Table Header<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">150</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Table Header<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/thead&gt;</span>
+  <span class="tag">&lt;tbody&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>This is longer content Donec id elit non mi porta gravida at eget metus.<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Content Goes Here<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span></pre></div>
+</div>
+</div>
+
+    <hr>
+
+    <h5>Default SCSS Variables</h5>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* These control the background color for the table and even rows */</span>
+<span class="error">$</span><span class="type">table-bg</span>:               <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">table-even-row-bg</span>:      <span class="constant">#f9f9f9</span>;
+
+<span class="comment">/* These control the table cell border style */</span>
+<span class="error">$</span><span class="type">table-border-style</span>:     <span class="type">solid</span>;
+<span class="error">$</span><span class="type">table-border-size</span>:      <span class="float">1px</span>;
+<span class="error">$</span><span class="type">table-border-color</span>:     <span class="constant">#ddd</span>;
+
+<span class="comment">/* These control the table head styles */</span>
+<span class="error">$</span><span class="type">table-head-bg</span>:          <span class="constant">#f5f5f5</span>;
+<span class="error">$</span><span class="type">table-head-font-size</span>:   <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">14px</span>);
+<span class="error">$</span><span class="type">table-head-font-color</span>:  <span class="constant">#222</span>;
+<span class="error">$</span><span class="type">table-head-font-weight</span>: <span class="type">bold</span>;
+<span class="error">$</span><span class="type">table-head-padding</span>:     <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">8px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">10px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">10px</span>);
+
+<span class="comment">/* These control the row padding and font styles */</span>
+<span class="error">$</span><span class="type">table-row-padding</span>:      <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">9px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">10px</span>);
+<span class="error">$</span><span class="type">table-row-font-size</span>:    <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">14px</span>);
+<span class="error">$</span><span class="type">table-row-font-color</span>:   <span class="constant">#222</span>;
+<span class="error">$</span><span class="type">table-line-height</span>:      <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">18px</span>);
+
+<span class="comment">/* These are for controlling the display and margin of tables */</span>
+<span class="error">$</span><span class="type">table-display</span>:          <span class="type">table-cell</span>;
+<span class="error">$</span><span class="type">table-margin-bottom</span>:    <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>);</pre></div>
+</div>
+</div>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+
+  </div>
+</div>
+    <script>
+      document.write('<script src="http://192.168.100.125:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.125:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

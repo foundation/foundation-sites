@@ -1,0 +1,254 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Alert Boxes</title>
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/docs.css" />
+    <script src="http://192.168.100.125:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Alert Boxes</h1>
+    <h4 class="subheader">Alerts are a handy element you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div data-alert class="alert-box radius">
+      This is a standard alert (div.alert-box).
+      <a href="" class="close">&times;</a>
+    </div>
+
+    <div data-alert class="alert-box success">
+      This is a success alert (div.alert-box.success).
+      <a href="" class="close">&times;</a>
+    </div>
+
+    <div data-alert class="alert-box alert round">
+      This is an alert (div.alert-box.alert.round).
+      <a href="" class="close">&times;</a>
+    </div>
+
+    <div data-alert class="alert-box secondary">
+      This is a secondary alert (div.alert-box.secondary).
+      <a href="" class="close">&times;</a>
+    </div>
+
+    <hr>
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build alerts in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building an alert using our predefined class is super-easy, you only need a block-level element with a class of <code>.alert-box</code> (we usually use a <code>&lt;div&gt;</code>). You may also include an anchor with a class of <code>.close</code> to create a close button. Here is the markup you'll need:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;div</span> <span class="attribute-name">data-alert</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">alert-box</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="comment">&lt;!-- Your content goes here --&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">close</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="entity">&amp;times;</span><span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre></div>
+</div>
+</div>
+
+    <p>For these styles to come across, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>alerts from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+
+    <hr>
+
+    <h3>Build with Mixins</h3>
+    <p>We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a> and <a href="#">_alerts.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/foundation-global</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/alerts</span><span class="delimiter">&quot;</span></span>;
+</pre></div>
+</div>
+</div>
+
+    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;div</span> <span class="attribute-name">data-alert</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-class-name</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="comment">&lt;!-- Your content goes here --&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">close</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="entity">&amp;times;</span><span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre></div>
+</div>
+</div>
+
+
+    <h5>Quick Mixin</h5>
+    <p>You can build your alert using our global mixin by including it on your custom class or ID in your stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. The rest of the defaults can be modified using the available variables. The global mixin looks like this:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Using the default styles */</span>
+<span class="class">.your-class-name</span> { <span class="directive">@include</span> <span class="key">alert</span>; }
+
+<span class="comment">/* Using the available options */</span>
+<span class="class">.your-class-name</span> { <span class="directive">@include</span> <span class="error">a</span><span class="error">l</span><span class="error">e</span><span class="error">r</span><span class="error">t</span>(<span class="color">#ff6c3c</span>); }
+</pre></div>
+</div>
+</div>
+
+<div data-alert class="alert-box">
+This is a default alert.
+<a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-base custom-bg">
+This is an alert with a custom background set.
+<a href="#" class="close">&times;</a>
+</div>
+
+    <h5>Base Mixin</h5>
+    <p>Use this mixin to create the base styles for alert boxes. This will include styles that create the basic structure of an alert box.</p>
+
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> { <span class="directive">@include</span> <span class="key">alert-base</span>; }
+</pre></div>
+</div>
+</div>
+
+<div class="alert-base">This is the base mixin.</div>
+
+    <h5>Background Mixin</h5>
+    <p>You can control the background, border and text styles for the alert using this mixin. We base the border and text style on the background color you choose using some sweet Sass logic.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">alert-base</span>;
+  <span class="directive">@include</span> <span class="error">a</span><span class="error">l</span><span class="error">e</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">s</span><span class="error">t</span><span class="error">y</span><span class="error">l</span><span class="error">e</span>(<span class="error">$</span><span class="key">bg</span>);
+}</pre></div>
+</div>
+</div>
+
+<div data-alert class="alert-base bg">This is base and bg mixins.</div>
+
+    <p>You can set <code>$bg</code> color to any of our predefined color variables or any hexadecimal color of your choosing. To set this value to something other than our default, use <code>@include alert-bg(#hexcolor);</code></p>
+
+    <h5>Close Button Mixin</h5>
+    <p>You can include a close button with each of the alert boxes by adding an anchor right before the closing <code>&lt;/div&gt;</code>. This anchor should have a class of <code>.close</code> in order to work with <strong>foundation.alerts.js</strong>, which contains the interaction for closing.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">alert-base</span>;
+  <span class="directive">@include</span> <span class="key">alert-style</span>;
+  .<span class="key">close</span> { <span class="directive">@include</span> <span class="key">alert-close</span>; }
+}</pre></div>
+</div>
+</div>
+
+    <div data-alert class="alert-base bg">
+      This is base, bg and close mixins.
+      <a href="" class="close">&times;</a>
+    </div>
+
+    <h5>Radius Mixin</h5>
+    <p>We've also created a global radius mixin that you can use to add border-radius to any element you'd like.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">alert-base</span>;
+  <span class="directive">@include</span> <span class="error">a</span><span class="error">l</span><span class="error">e</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">s</span><span class="error">t</span><span class="error">y</span><span class="error">l</span><span class="error">e</span>(<span class="error">$</span><span class="key">success-color</span>);
+  <span class="directive">@include</span> <span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">u</span><span class="error">s</span>(<span class="error">$</span><span class="key">radius</span>);
+}</pre></div>
+</div>
+</div>
+
+<div data-alert class="alert-base bg radius success">
+This is base, bg and radius mixins.
+<a href="" class="close">&times;</a>
+</div>
+
+    <h5>Default SCSS Variables</h5>
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* We use this to control alert padding. */</span>
+<span class="error">$</span><span class="type">alert-padding-top</span>:         <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">11px</span>);
+<span class="error">$</span><span class="type">alert-padding-left</span>:        <span class="error">$</span><span class="type">alert-padding-top</span>;
+<span class="error">$</span><span class="type">alert-padding-right</span>:       <span class="error">$</span><span class="type">alert-padding-top</span> + <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">10px</span>);
+<span class="error">$</span><span class="type">alert-padding-bottom</span>:      <span class="error">$</span><span class="type">alert-padding-top</span> + <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">1px</span>);
+
+<span class="comment">/* We use these to control text style. */</span>
+<span class="error">$</span><span class="type">alert-font-weight</span>:         <span class="type">bold</span>;
+<span class="error">$</span><span class="type">alert-font-size</span>:           <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">14px</span>);
+<span class="error">$</span><span class="type">alert-font-color</span>:          <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">alert-font-color-alt</span>:      <span class="error">d</span><span class="error">a</span><span class="error">r</span><span class="error">k</span><span class="error">e</span><span class="error">n</span>(<span class="error">$</span><span class="type">secondary-color</span>, <span class="float">60%</span>);
+
+<span class="comment">/* We use this for close hover effect. */</span>
+<span class="error">$</span><span class="type">alert-function-factor</span>:     <span class="float">10%</span>;
+
+<span class="comment">/* We use these to control border styles. */</span>
+<span class="error">$</span><span class="type">alert-border-style</span>:        <span class="type">solid</span>;
+<span class="error">$</span><span class="type">alert-border-width</span>:        <span class="float">1px</span>;
+<span class="error">$</span><span class="type">alert-border-color</span>:        <span class="error">d</span><span class="error">a</span><span class="error">r</span><span class="error">k</span><span class="error">e</span><span class="error">n</span>(<span class="error">$</span><span class="type">primary-color</span>, <span class="error">$</span><span class="type">alert-function-factor</span>);
+<span class="error">$</span><span class="type">alert-bottom-margin</span>:       <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>);
+
+<span class="comment">/* We use these to style the close buttons */</span>
+<span class="error">$</span><span class="type">alert-close-color</span>:         <span class="constant">#333</span>;
+<span class="error">$</span><span class="type">alert-close-position</span>:      <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">5px</span>);
+<span class="error">$</span><span class="type">alert-close-font-size</span>:     <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">22px</span>);
+<span class="error">$</span><span class="type">alert-close-opacity</span>:       <span class="float">0</span><span class="class">.3</span>;
+<span class="error">$</span><span class="type">alert-close-opacity-hover</span>: <span class="float">0</span><span class="class">.5</span>;
+<span class="error">$</span><span class="type">alert-close-padding</span>:       <span class="float">5px</span> <span class="float">4px</span> <span class="float">4px</span>;
+
+<span class="comment">/* We use this to control border radius */</span>
+<span class="error">$</span><span class="type">alert-radius</span>:              <span class="error">$</span><span class="type">global-radius</span>;
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/zepto.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.alerts.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">  <span class="predefined">$</span>(document).foundation();</span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;div</span> <span class="attribute-name">data-alert</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">alert-box</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="comment">&lt;!-- Your content goes here --&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">close</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="entity">&amp;times;</span><span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+  </div>
+</div>
+
+
+    <script>
+      document.write('<script src="http://192.168.100.125:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.125:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Split Buttons</title>
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/docs.css" />
+    <script src="http://192.168.100.125:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Split Buttons</h1>
+    <h4 class="subheader">We've simplified our split buttons by getting rid of the dedicated dropdown associated with them. Instead, you'll use our <a href="#">new dropdown plugin</a> to attach a dropdown to the button style of your choice.</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <a href="#" class="tiny button split">Split Button <span data-dropdown="drop"></span></a><br>
+    <a href="#" class="small secondary radius button split">Split Button <span data-dropdown="drop2"></span></a><br>
+    <a href="#" class="button alert round split">Split Button <span data-dropdown="drop3"></span></a><br>
+    <a href="#" class="large success button split">Split Button <span data-dropdown="drop4"></span></a><br>
+
+    <hr>
+
+    <h3>Build With Predefined HTML Classes</h3>
+    <p>There are two ways to build buttons in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building buttons using our predefined classes is simple, you'll need an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> with a class of <code>.button.split</code>. This will create a default medium button. You can also use size, color and radius classes to control more of the style.</p>
+
+    <p>The classes options:</p>
+    <ul class="disc">
+      <li>The size classes include: <code>.tiny, .small, .medium</code> or <code>.large</code></li>
+      <li>The color classes include: <code>.secondary, .alert</code> or <code>.success</code></li>
+      <li>The radius classes include: <code>.radius</code> or <code>.round</code>.</li>
+    </ul>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">&lt;!-- Size Classes --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Default Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">tiny button split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Tiny Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">small button split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Small Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">large button split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Large Button<span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Color Classes --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button split secondary</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Secondary Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button split success</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Success Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button split alert</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Alert Button<span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Radius Classes --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button split radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Radius Button<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button split round</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Round Button<span class="tag">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <p>You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>split buttons from a custom package</strong>. These should be linked up following our default <a href="#getting-started">HTML page structure</a>.</p>
+
+    <hr>
+
+    <h3>Build with Mixins</h3>
+    <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="#extention-install">extention installed</a> or grab <a href="#">_foundation-global.scss</a>, <a href="#">_buttons.scss</a> and <a href="#">_split-buttons.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/foundation-global</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/buttons</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foundation/split-buttons</span><span class="delimiter">&quot;</span></span>;
+</pre></div>
+</div>
+</div>
+
+    <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">your-class-name</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Split Button Text<span class="tag">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <h5>Quick Mixin</h5>
+    <p>You can quickly build an entire split buttons using our global mixin by including it on your custom class or ID in your stylesheet. The global mixin will create the necessary style for the button. The global mixin looks like this:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Using the default styles */</span>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">button</span>;
+  <span class="directive">@include</span> <span class="key">split-button</span>;
+}
+</pre></div>
+</div>
+</div>
+
+    <a href="" class="split button">Default Split Button<span data-dropdown="drop5"></span></a>
+
+    <p>There are also <strong>four options</strong> you can customize on the fly when writing this mixin. These control things like: padding size, pip color, border color and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Using the available options */</span>
+<span class="class">.your-class-name</span> {
+  <span class="directive">@include</span> <span class="key">button</span>;
+  <span class="directive">@include</span> <span class="error">s</span><span class="error">p</span><span class="error">l</span><span class="error">i</span><span class="error">t</span><span class="error">-</span><span class="error">b</span><span class="error">u</span><span class="error">t</span><span class="error">t</span><span class="error">o</span><span class="error">n</span>(<span class="error">$</span><span class="key">padding</span>, <span class="error">$</span><span class="key">pip-color</span>, <span class="error">$</span><span class="key">span-border</span>, <span class="error">$</span><span class="key">base-style</span>);
+}
+
+<span class="comment">/* This controls padding around the dropdown buttons. Use tiny, small, medium, or large */</span>
+<span class="error">$</span><span class="type">padding</span>: <span class="error">$</span><span class="type">button-med</span>
+
+<span class="comment">/* This controls the dropdown pip color. Set to one of our variables or a custom hex value */</span>
+<span class="error">$</span><span class="type">pip-color</span>: <span class="error">$</span><span class="type">split-button-pip-color</span>
+
+<span class="comment">/* This controls the border color of the triangle span area. This can be a variable or color value. */</span>
+<span class="error">$</span><span class="type">span-border</span>: <span class="error">$</span><span class="type">primary-color</span>
+
+<span class="comment">/* This controls whether or not base styles come through. Set to false to negate */</span>
+<span class="comment">/* Handy when you want to have many different styles */</span>
+<span class="error">$</span><span class="type">base-style</span>: <span class="type">true</span>
+</pre></div>
+</div>
+</div>
+
+    <h5>Default SCSS Variables</h5>
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* We use these to control different shared styles for Split Buttons */</span>
+<span class="error">$</span><span class="type">split-button-function-factor</span>: <span class="float">15%</span>;
+<span class="error">$</span><span class="type">split-button-pip-color</span>:       <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">split-button-pip-color-alt</span>:   <span class="constant">#333</span>;
+<span class="error">$</span><span class="type">split-button-active-bg-tint</span>:  <span class="color">rgba(0,0,0,0.1)</span>;
+
+<span class="comment">/* We use these to control tiny split buttons */</span>
+<span class="error">$</span><span class="type">split-button-padding-tny</span>:     <span class="error">$</span><span class="type">button-tny</span> <span class="type">*</span> <span class="float">9</span>;
+<span class="error">$</span><span class="type">split-button-span-width-tny</span>:  <span class="error">$</span><span class="type">button-tny</span> <span class="type">*</span> <span class="float">6</span><span class="class">.5</span>;
+<span class="error">$</span><span class="type">split-button-pip-size-tny</span>:    <span class="error">$</span><span class="type">button-tny</span>;
+<span class="error">$</span><span class="type">split-button-pip-top-tny</span>:     <span class="error">$</span><span class="type">button-tny</span> <span class="type">*</span> <span class="float">2</span>;
+<span class="error">$</span><span class="type">split-button-pip-left-tny</span>:    <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">-5px</span>);
+
+<span class="comment">/* We use these to control small split buttons */</span>
+<span class="error">$</span><span class="type">split-button-padding-sml</span>:     <span class="error">$</span><span class="type">button-sml</span> <span class="type">*</span> <span class="float">7</span>;
+<span class="error">$</span><span class="type">split-button-span-width-sml</span>:  <span class="error">$</span><span class="type">button-sml</span> <span class="type">*</span> <span class="float">5</span>;
+<span class="error">$</span><span class="type">split-button-pip-size-sml</span>:    <span class="error">$</span><span class="type">button-sml</span>;
+<span class="error">$</span><span class="type">split-button-pip-top-sml</span>:     <span class="error">$</span><span class="type">button-sml</span> <span class="type">*</span> <span class="float">1</span><span class="class">.5</span>;
+<span class="error">$</span><span class="type">split-button-pip-left-sml</span>:    <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">-9px</span>);
+
+<span class="comment">/* We use these to control medium split buttons */</span>
+<span class="error">$</span><span class="type">split-button-padding-med</span>:     <span class="error">$</span><span class="type">button-med</span> <span class="type">*</span> <span class="float">6</span><span class="class">.4</span>;
+<span class="error">$</span><span class="type">split-button-span-width-med</span>:  <span class="error">$</span><span class="type">button-med</span> <span class="type">*</span> <span class="float">4</span>;
+<span class="error">$</span><span class="type">split-button-pip-size-med</span>:    <span class="error">$</span><span class="type">button-med</span> <span class="error">-</span> <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">3px</span>);
+<span class="error">$</span><span class="type">split-button-pip-top-med</span>:     <span class="error">$</span><span class="type">button-med</span> <span class="type">*</span> <span class="float">1</span><span class="class">.5</span>;
+<span class="error">$</span><span class="type">split-button-pip-left-med</span>:    <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">-9px</span>);
+
+<span class="comment">/* We use these to control large split buttons */</span>
+<span class="error">$</span><span class="type">split-button-padding-lrg</span>:     <span class="error">$</span><span class="type">button-lrg</span> <span class="type">*</span> <span class="float">6</span>;
+<span class="error">$</span><span class="type">split-button-span-width-lrg</span>:  <span class="error">$</span><span class="type">button-lrg</span> <span class="type">*</span> <span class="float">3</span><span class="class">.75</span>;
+<span class="error">$</span><span class="type">split-button-pip-size-lrg</span>:    <span class="error">$</span><span class="type">button-lrg</span> <span class="error">-</span> <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">6px</span>);
+<span class="error">$</span><span class="type">split-button-pip-top-lrg</span>:     <span class="error">$</span><span class="type">button-lrg</span> + <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">5px</span>);
+<span class="error">$</span><span class="type">split-button-pip-left-lrg</span>:    <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">-9px</span>);
+</pre></div>
+</div>
+</div>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>You don't need ths JS to create dropdown button styles with Foundation. The only reason you'll need to include <code>foundation.dropdown.js</code> is if you want to add one of our dropdown to the button. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the dropdown plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/zepto.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.dropdown.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">  <span class="predefined">$</span>(document).foundation();</span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <h5>Creating the Dropdown</h5>
+    <p>To create the dropdown you'll need to attach a data-attribute to whatever element you want the dropdown attached to (in this case a button). From there you'll create a list that holds the links or content and add another data-attribute that associates with the element it belongs to. here's an example of that markup:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-dropdown</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">drop1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Button<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;br&gt;</span>
+
+<span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">drop1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">f-dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>This is a link<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>This is another<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Yet another<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <a href="#" class="button split">Dropdown Button <span data-dropdown="drop1"></span></a><br>
+
+    <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have similar values. This is what tells the dropdown plugin where to look to find the position to attach the dropdown element to.</p>
+
+  </div>
+</div>
+
+<ul id="drop" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop1" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop2" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop3" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop4" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<ul id="drop5" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+
+    <script>
+      document.write('<script src="http://192.168.100.125:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.125:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

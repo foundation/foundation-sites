@@ -1,0 +1,50 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Tooltips</title>
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/docs.css" />
+    <script src="http://192.168.100.125:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Tooltips</h1>
+    <h4 class="subheader">Blah</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4">
+    <a name="tooltips"></a>
+    <h4>Tooltips</h4>
+    <p>Tooltips are a quick way to provide extended information on a term or action on a page. They work cross browser and cross platform and are easily added to a page by including the jquery.tooltip.js plugin. You can apply the <strong>has-tip</strong> class to any element.</p>
+
+    <p>By default, the tooltip takes the width of the element that it is applied to, but you can override this behavior by applying a <strong>data-width</strong> attribute to the target element. The tooltip takes on the content of the targets <strong>title</strong> attribute.</p>
+  </div>
+  <br>
+  <div class="large-8">
+    <p>The tooltips can be positioned on the <span data-tooltip class="has-tip" data-width="210" title="I'm on bottom and the default position.">"tip-bottom"</span>, which is the default position, <span data-tooltip class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">"tip-top" (hehe)</span>, <span data-tooltip="left" class="has-tip tip-left" data-width="90" title="I'm on the left!">"tip-left"</span>, or <span data-tooltip="right" class="has-tip tip-right" data-width="120" title="I'm on the right!">"tip-right"</span> of the target element. On a small device, the tooltips are full width and bottom aligned.</p>
+
+    <h3>Custom Options</h3>
+    <p>
+      I have <span data-tooltip="custom" class="has-tip-custom" title="See? Custom class here.">custom attributes.</span>
+    </p>
+  </div>
+</div>
+
+    <script>
+      document.write('<script src="http://192.168.100.125:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.125:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

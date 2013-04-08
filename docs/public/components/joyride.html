@@ -1,0 +1,183 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Joyride</title>
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/docs.css" />
+    <script src="http://192.168.100.125:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Joyride</h1>
+    <h4 class="subheader">Joyride is an extremely flexible plugin that will give users a tour of your site or app when they visit.</h4>
+
+    <div id="firstStop" class="panel">Some awesome part of your site!</div>
+
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h2 id="numero1" class="so-awesome">Build Joyride with HTML</h2>
+    <p>At the bottom of your page but inside of the body, place either an <code>ol</code> or <code>ul</code> with the <code>data-joyride</code> attribute. This list will contain all of the stops on your tour. To associate the tour stops with an item on your page, make sure the ID and data-id match between the two. If you do not associate an if, the tour stop will take on a modal style, positioning itself in the middle of the screen.</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">&lt;!-- At the bottom of your page but inside of the body tag --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attribute-name">data-joyride</span> <span class="attribute-name">data-options</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">timer:3000</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">data-class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">so-awesome</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-text</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Next</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">custom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h4&gt;</span>Stop #1<span class="tag">&lt;/h4&gt;</span>
+    <span class="tag">&lt;p&gt;</span>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">data-id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">numero2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-button</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Next</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-options</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">tipLocation:top;tipAnimation:fade</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h4&gt;</span>Stop #2<span class="tag">&lt;/h4&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Get the details right by styling Joyride with a custom stylesheet!<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">data-id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">numero3</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-button</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Next</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-options</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">tipLocation:right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h4&gt;</span>Stop #3<span class="tag">&lt;/h4&gt;</span>
+    <span class="tag">&lt;p&gt;</span>It works right aligned.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">data-button</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Next</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h4&gt;</span>Stop #4<span class="tag">&lt;/h4&gt;</span>
+    <span class="tag">&lt;p&gt;</span>It works as a modal too!<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">data-id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">numero5</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-button</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Close</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h4&gt;</span>Stop #5<span class="tag">&lt;/h4&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Now what are you waiting for? Add this to your projects and get the most out of your apps!<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <h5>We Add Some HTML with JS</h5>
+    <p>To make Joyride really easy to use, we build its container and tour element inside the JS. This can make it hard to know what to target for styling purposes in some cases. To help this process go smoothly, here's what the output looks like with the appropriate classes to target for styling:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">&lt;!-- Here is the markup our JS creates for you --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">joyride-tip-guide</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">joyride-nub top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">joyride-content-wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Hello and welcome to the Joyride documentation page.<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">small button joyride-next-tip</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Next<span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#close</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">joyride-close-tip</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>��<span class="tag">&lt;/a&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <hr>
+
+    <h3>Available SCSS Variables</h3>
+    <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things. Here's a list of the variables:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Controlling default Joyride styles */</span>
+<span class="error">$</span><span class="type">joyride-tip-bg</span>:              <span class="color">rgb(0,0,0)</span>;
+<span class="error">$</span><span class="type">joyride-tip-default-width</span>:   <span class="float">300px</span>;
+<span class="error">$</span><span class="type">joyride-tip-padding</span>:         <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">18px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">20px</span>) <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">24px</span>);
+<span class="error">$</span><span class="type">joyride-tip-border</span>:          <span class="type">solid</span> <span class="float">1px</span> <span class="constant">#555</span>;
+<span class="error">$</span><span class="type">joyride-tip-radius</span>:          <span class="float">4px</span>;
+<span class="error">$</span><span class="type">joyride-tip-position-offset</span>: <span class="float">22px</span>;
+
+<span class="comment">/* Here, we are setting the tip dont styles */</span>
+<span class="error">$</span><span class="type">joyride-tip-font-color</span>:      <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">joyride-tip-font-size</span>:       <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">14px</span>);
+<span class="error">$</span><span class="type">joyride-tip-header-weight</span>:   <span class="type">bold</span>;
+
+<span class="comment">/* This changes the nub size */</span>
+<span class="error">$</span><span class="type">joyride-tip-nub-size</span>:        <span class="float">14px</span>;
+
+<span class="comment">/* This adjusts the styles for the timer when its enabled */</span>
+<span class="error">$</span><span class="type">joyride-tip-timer-width</span>:     <span class="float">50px</span>;
+<span class="error">$</span><span class="type">joyride-tip-timer-height</span>:    <span class="float">3px</span>;
+<span class="error">$</span><span class="type">joyride-tip-timer-color</span>:     <span class="constant">#666</span>;
+
+<span class="comment">/* This changes up the styles for the close button */</span>
+<span class="error">$</span><span class="type">joyride-tip-close-color</span>:     <span class="constant">#777</span>;
+<span class="error">$</span><span class="type">joyride-tip-close-size</span>:      <span class="float">30px</span>;
+<span class="error">$</span><span class="type">joyride-tip-close-weight</span>:    <span class="type">normal</span>;
+
+<span class="comment">/* When Joyride is filling the screen, we use this style for the bg */</span>
+<span class="error">$</span><span class="type">joyride-screenfill</span>:          <span class="color">rgba(0,0,0,0.5)</span>;
+</pre></div>
+</div>
+</div>
+
+    <hr>
+
+    <h3>Using the Javascript</h3>
+    <p>You'll need to include <code>foundation.joyride.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/zepto.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/foundation.joyride.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">  <span class="predefined">$</span>(document).foundation();</span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+    <p>Then, you'll need to add a data-orbit to make the JS work properly on that element. That looks like:</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;ol</span> <span class="attribute-name">data-joyride</span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/ol&gt;</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</div>
+
+<!-- TOUR STOPS -->
+<ol class="joyride-list" data-joyride>
+  <li data-id="firstStop" data-text="Next">
+    <p>Hello and welcome to the Joyride documentation page.</p>
+  </li>
+  <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
+    <h4>Stop #1</h4>
+    <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
+  </li>
+  <li data-id="numero2" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
+    <h4>Stop #2</h4>
+    <p>Get the details right by styling Joyride with a custom stylesheet!</p>
+  </li>
+  <li data-id="numero3" data-button="Next" data-options="tipLocation:right">
+    <h4>Stop #3</h4>
+    <p>It works right aligned.</p>
+  </li>
+  <li data-button="Next">
+    <h4>Stop #4</h4>
+    <p>It works as a modal too!</p>
+  </li>
+  <li data-id="numero5" data-button="Close">
+    <h4>Stop #5</h4>
+    <p>Now what are you waiting for? Add this to your projects and get the most out of your apps!</p>
+  </li>
+</ol>
+    <script>
+      document.write('<script src="http://192.168.100.125:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.125:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

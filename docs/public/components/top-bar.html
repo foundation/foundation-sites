@@ -1,0 +1,350 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foundation Docs: Top Bar</title>
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.125:4001/assets/docs.css" />
+    <script src="http://192.168.100.125:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+  <div class="large-12 columns">
+    <p><a href="/">&laquo; Back</a></p>
+    <h1>Foundation Top Bar</h1>
+    <h4 class="subheader">The Foundation Top Bar gives you a great way to display a complex navigation bar on small or large screens.</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="#">Top Bar Title </a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="divider"></li>
+          <li class="active"><a href="#">Main Item 1</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Main Item 2</a></li>
+          <li class="divider"></li>
+          <li class="has-dropdown"><a href="#">Main Item 3</a>
+
+            <ul class="dropdown">
+              <li class="has-dropdown"><a href="#">Dropdown Level 1a</a>
+
+                <ul class="dropdown">
+                  <li><label>Dropdown Level 2 Label</label></li>
+                  <li><a href="#">Dropdown Level 2a</a></li>
+                  <li><a href="#">Dropdown Level 2b</a></li>
+                  <li class="has-dropdown"><a href="#">Dropdown Level 2c</a>
+
+                    <ul class="dropdown">
+                      <li><label>Dropdown Level 3 Label</label></li>
+                      <li><a href="#">Dropdown Level 3a</a></li>
+                      <li><a href="#">Dropdown Level 3b</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Dropdown Level 3c</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Dropdown Level 2d</a></li>
+                  <li><a href="#">Dropdown Level 2e</a></li>
+                  <li><a href="#">Dropdown Level 2f</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown Level 1b</a></li>
+              <li><a href="#">Dropdown Level 1c</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Dropdown Level 1d</a></li>
+              <li><a href="#">Dropdown Level 1e</a></li>
+              <li><a href="#">Dropdown Level 1f</a></li>
+              <li class="divider"></li>
+              <li><a href="#">See all &rarr;</a></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+        </ul>
+
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider hide-for-small"></li>
+          <li class="has-dropdown"><a href="#">Main Item 4</a>
+
+            <ul class="dropdown">
+              <li><label>Dropdown Level 1 Label</label></li>
+              <li class="has-dropdown"><a href="#" class="">Dropdown Level 1a</a>
+
+                <ul class="dropdown">
+                  <li><a href="#">Dropdown Level 2a</a></li>
+                  <li><a href="#">Dropdown Level 2b</a></li>
+                  <li class="has-dropdown"><a href="#">Dropdown Level 2c</a>
+
+                    <ul class="dropdown">
+                      <li><a href="#">Dropdown Level 3a</a></li>
+                      <li><a href="#">Dropdown Level 3b</a></li>
+                      <li><a href="#">Dropdown Level 3c</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Dropdown Level 2d</a></li>
+                  <li><a href="#">Dropdown Level 2e</a></li>
+                  <li><a href="#">Dropdown Level 2f</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown Level 1b</a></li>
+              <li><a href="#">Dropdown Level 1c</a></li>
+              <li class="divider"></li>
+              <li><label>Dropdown Level 1 Label</label></li>
+              <li><a href="#">Dropdown Level 1d</a></li>
+              <li><a href="#">Dropdown Level 1e</a></li>
+              <li><a href="#">Dropdown Level 1f</a></li>
+              <li class="divider"></li>
+              <li><a href="#">See all &rarr;</a></li>
+            </ul>
+          </li>
+          <!-- <li class="divider"></li>
+          <li class="has-form">
+            <form>
+              <div class="row collapse">
+                <div class="small-8 columns">
+                  <input type="text">
+                </div>
+                <div class="small-4 columns">
+                  <a href="#" class="alert button">Search</a>
+                </div>
+              </div>
+            </form>
+          </li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <form>
+              <div class="row collapse">
+                <div class="large-12 columns">
+                  <input type="search">
+                </div>
+              </div>
+            </form>
+          </li>
+          <li class="divider show-for-small"></li>
+          <li class="has-form">
+            <a class="button" href="#">Button!</a>
+          </li> -->
+        </ul>
+      </section>
+    </nav>
+
+    <hr>
+
+    <h3>Build With HTML Classes</h3>
+    <p>The top-bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on may presentational classes to accomplish the styles and the JS has a lot happening</p>
+
+    <h5>Basic Needs</h5>
+    <p>The top bar has four main elements, three of which are needed for proper functionality: <code>ul.title-area</code>, one of the section <code>ul class="right/left</code> elements and the <code>li.toggle-topbar</code> element that will expand the menu in the mobile layout. You can leave out the li class="name" as long as you include the .toggle-topbar element.</p>
+
+    <h5>Positioning the Bar</h5>
+    <p>The top bar is built with a single <code>nav</code> element with a class of <code>top-bar</code>. It will take on full browser width by default. To make the top bar stay fixed as you scroll, wrap it in <code>div class="fixed"</code>. If you want your navigation to be set to your grid width, wrap it in <code>div class="contain-to-grid"</code>. You may use <code>fixed</code> and <code>contain-to-grid</code> together.</p>
+
+    <h5>Building the Nav</h5>
+    <p>When building your bar it is good to be aware of how many links your are going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items simply include <code>li</code> elements with and anchor inside them for your top-level. To build a dropdown menu you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> right after that anchor. Add a class of <code>active</code> to mark the current page.</p>
+
+    <h5>Other Elements</h5>
+    <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-button</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
+
+    <h5>Sticky Top Bar</h5>
+    <p>You may also wrap your topbar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll.</p>
+
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="tag">&lt;nav</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">top-bar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title-area</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Title Area --&gt;</span>
+    <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h1&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Top Bar Title <span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;/li&gt;</span>
+    <span class="comment">&lt;!-- Remove the class &quot;menu-icon&quot; to get rid of menu icon. Take out &quot;Menu&quot; to just have icon alone --&gt;</span>
+    <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle-topbar menu-icon</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;span&gt;</span>Menu<span class="tag">&lt;/span&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;/ul&gt;</span>
+
+  <span class="tag">&lt;section</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">top-bar-section</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Left Nav Section --&gt;</span>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">active</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Main Item 1<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Main Item 2<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Main Item 3<span class="tag">&lt;/a&gt;</span>
+
+        <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1a<span class="tag">&lt;/a&gt;</span>
+
+            <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;label&gt;</span>Dropdown Level 2 Label<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2a<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2b<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2c<span class="tag">&lt;/a&gt;</span>
+
+                <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;label&gt;</span>Dropdown Level 3 Label<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;/li&gt;</span>
+                  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 3a<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+                  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 3b<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+                  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+                  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 3c<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;/ul&gt;</span>
+              <span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2d<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2e<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2f<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;/ul&gt;</span>
+          <span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1b<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1c<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1d<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1e<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1f<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>See all <span class="entity">&amp;rarr;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+      <span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+
+    <span class="comment">&lt;!-- Right Nav Section --&gt;</span>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider hide-for-small</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Main Item 4<span class="tag">&lt;/a&gt;</span>
+
+        <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;label&gt;</span>Dropdown Level 1 Label<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1a<span class="tag">&lt;/a&gt;</span>
+
+            <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2a<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2b<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2c<span class="tag">&lt;/a&gt;</span>
+
+                <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 3a<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+                  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 3b<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+                  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 3c<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;/ul&gt;</span>
+              <span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2d<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2e<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+              <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 2f<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;/ul&gt;</span>
+          <span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1b<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1c<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;label&gt;</span>Dropdown Level 1 Label<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1d<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1e<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Dropdown Level 1f<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>See all <span class="entity">&amp;rarr;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+      <span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-form</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;form&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">row collapse</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">small-8 columns</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">small-4 columns</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">alert button</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Search<span class="tag">&lt;/a&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/form&gt;</span>
+      <span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-form</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;form&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">row collapse</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">large-12 columns</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">search</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/form&gt;</span>
+      <span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">divider show-for-small</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">has-form</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;a</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Button!<span class="tag">&lt;/a&gt;</span>
+      <span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;/section&gt;</span>
+<span class="tag">&lt;/nav&gt;</span></pre></div>
+</div>
+</div>
+
+  <h4>Available SCSS Variables</h4>
+  <p>We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile-first, so they are much easier to override than the previous iteration of the top bar.</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Background color for the top bar */</span>
+<span class="error">$</span><span class="type">topbar-bg</span>: <span class="constant">#111</span>;
+
+<span class="comment">/* Height and margin */</span>
+<span class="error">$</span><span class="type">topbar-height</span>: <span class="float">45px</span>;
+<span class="error">$</span><span class="type">topbar-margin-bottom</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">30px</span>);
+
+<span class="comment">/* Control Input height for top bar */</span>
+<span class="error">$</span><span class="type">topbar-input-height</span>: <span class="float">2.45em</span>;
+
+<span class="comment">/* Controlling the styles for the title in the top bar */</span>
+<span class="error">$</span><span class="type">topbar-title-weight</span>: <span class="type">bold</span>;
+<span class="error">$</span><span class="type">topbar-title-font-size</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">17px</span>);
+
+<span class="comment">/* Set the link colors and styles for top-level nav */</span>
+<span class="error">$</span><span class="type">topbar-link-color</span>: <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">topbar-link-weight</span>: <span class="type">bold</span>;
+<span class="error">$</span><span class="type">topbar-link-font-size</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">13px</span>);
+
+<span class="comment">/* Style the top bar dropdown elements */</span>
+<span class="error">$</span><span class="type">topbar-dropdown-bg</span>: <span class="constant">#333</span>;
+<span class="error">$</span><span class="type">topbar-dropdown-link-color</span>: <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">topbar-dropdown-toggle-size</span>: <span class="float">5px</span>;
+<span class="error">$</span><span class="type">topbar-dropdown-toggle-color</span>: <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">topbar-dropdown-toggle-alpha</span>: <span class="float">0</span><span class="class">.5</span>;
+
+<span class="comment">/* Top menu icon styles */</span>
+<span class="error">$</span><span class="type">topbar-menu-link-transform</span>: <span class="type">uppercase</span>;
+<span class="error">$</span><span class="type">topbar-menu-link-font-size</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">13px</span>);
+<span class="error">$</span><span class="type">topbar-menu-link-weight</span>: <span class="type">bold</span>;
+<span class="error">$</span><span class="type">topbar-menu-link-color</span>: <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">topbar-menu-icon-color</span>: <span class="constant">#fff</span>;
+<span class="error">$</span><span class="type">topbar-menu-link-color-toggled</span>: <span class="constant">#888</span>;
+<span class="error">$</span><span class="type">topbar-menu-icon-color-toggled</span>: <span class="constant">#888</span>;
+
+<span class="comment">/* Transitions and breakpoint styles */</span>
+<span class="error">$</span><span class="type">topbar-transition-speed</span>: <span class="float">300</span><span class="type">ms</span>;
+<span class="error">$</span><span class="type">topbar-breakpoint</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">940px</span>); // <span class="type">Change</span> <span class="type">to</span> <span class="float">9999px</span> <span class="type">for</span> <span class="type">always</span> <span class="type">mobile</span> <span class="type">layout</span></pre></div>
+</div>
+</div>
+
+    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+  </div>
+</div>
+    <script>
+      document.write('<script src="http://192.168.100.125:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.125:4001/assets/docs.js"></script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>
