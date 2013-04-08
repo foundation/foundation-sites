@@ -143,7 +143,10 @@
     },
 
     assemble : function ($li) {
-      var $el = $li.parent(),
+      var $el = $li.parent();
+      $el.after('<div id="foundationClearingHolder"></div>');
+
+      var holder = $('#foundationClearingHolder'),
           settings = this.get_data($el),
           grid = $el.detach(),
           data = {
@@ -153,7 +156,7 @@
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
             data.grid + '</div></div>';
 
-      return settings.$parent.append(wrapper);
+      return holder.after(wrapper).remove();
     },
 
     // event callbacks
