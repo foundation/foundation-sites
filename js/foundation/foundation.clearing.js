@@ -37,9 +37,10 @@
         $(this.scope).find('ul[data-clearing]').each(function () {
           var $el = $(this),
               options = options || {},
+              lis = $el.find('li'),
               settings = self.get_data($el);
 
-          if (!settings) {
+          if (!settings && lis.length > 0) {
             options.$parent = $el.parent();
 
             self.set_data($el, $.extend({}, self.settings, options, self.data_options($el)));
