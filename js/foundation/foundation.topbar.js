@@ -97,7 +97,7 @@
               $('body').css('padding-top','0');
               window.scrollTo(0,0);
           }
-        });
+        })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
           var topbar = $(this).closest('.top-bar'),
@@ -127,7 +127,7 @@
             topbar
               .css('min-height', topbar.data('height') + self.outerHeight(titlebar, true) * 2)
           }
-      });
+        });
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!self.breakpoint()) {
