@@ -145,9 +145,9 @@ if (typeof jQuery === "undefined" &&
     },
 
     response_obj : function (response_arr, args) {
-      for (var callback in args) {
-        if (typeof args[callback] === 'function') {
-          return args[callback]({
+      for (var i = 0, len = args.length; i < len; i++) {
+        if (typeof args[i] === 'function') {
+          return args[i]({
             errors: response_arr.filter(function (s) {
               if (typeof s === 'string') return s;
             })
