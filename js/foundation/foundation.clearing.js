@@ -70,13 +70,24 @@
           function (e, current, target) {
             var current = current || $(this),
                 target = target || current,
-                settings = self.get_data(current.parent());
+                next = current.next('li'),
+                settings = self.get_data(current.parent()),
+                image = $(e.target);
 
             e.preventDefault();
             if (!settings) self.init();
 
+            // if clearing is open and the current image is
+            // clicked, go to the next image in sequence
+            if (target.hasClass('visible') 
+              && current[0] === target[0] 
+              && next.length > 0 && self.is_open(current)) {
+              target = next;
+              image = target.find('img');
+            }
+
             // set current and target to the clicked li if not otherwise defined.
-            self.open($(e.target), current, target);
+            self.open(image, current, target);
             self.update_paddles(target);
           })
 
@@ -214,6 +225,10 @@
       }
 
       return false;
+    },
+
+    is_open : function (current) {
+      return current.parent().attr('style').length > 0;
     },
 
     keydown : function (e) {
