@@ -43,7 +43,6 @@
             options.$parent = $el.parent();
 
             self.set_data($el, $.extend({}, self.settings, options, self.data_options($el)));
-            console.log(self.get_data($el))
 
             self.assemble($el.find('li'));
 
