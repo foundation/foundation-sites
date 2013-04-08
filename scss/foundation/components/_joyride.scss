@@ -157,6 +157,25 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
   cursor: pointer;
 }
 
+.joyride-expose-wrapper {
+  background-color: #ffffff;
+  position: absolute;
+  border-radius: 3px;
+  z-index: 102;
+  -moz-box-shadow: 0px 0px 30px #ffffff;
+  -webkit-box-shadow: 0px 0px 15px #ffffff;
+  box-shadow: 0px 0px 15px #ffffff;
+}
+
+.joyride-expose-cover {
+  background: transparent;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
+}
+
 
 /* Styles for screens that are atleast 768px; */
 @media #{$small} {
