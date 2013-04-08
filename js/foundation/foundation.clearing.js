@@ -26,7 +26,8 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'set_data get_data remove_data throttle');
+      var self = this;
+      Foundation.inherit(this, 'set_data get_data remove_data throttle data_options');
 
       if (typeof method === 'object') {
         options = $.extend(true, this.settings, method);
@@ -34,15 +35,15 @@
 
       if (typeof method != 'string') {
         $(this.scope).find('ul[data-clearing]').each(function () {
-          var self = Foundation.libs.clearing,
-              $el = $(this),
+          var $el = $(this),
               options = options || {},
               settings = self.get_data($el);
 
           if (!settings) {
             options.$parent = $el.parent();
 
-            self.set_data($el, $.extend(true, self.settings, options));
+            self.set_data($el, $.extend({}, self.settings, options, self.data_options($el)));
+            console.log(self.get_data($el))
 
             self.assemble($el.find('li'));
 
@@ -169,9 +170,12 @@
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
-        image.attr('src', this.load($image));
+        image
+          .attr('src', this.load($image))
+          .css('visibility', 'hidden');
 
         this.loaded(image, function () {
+          image.css('visibility', 'visible');
           // toggle the gallery
           root.addClass('clearing-blackout');
           container.addClass('clearing-container');
@@ -483,6 +487,10 @@
       $(window).off('.fndtn.clearing');
       this.remove_data(); // empty settings cache
       this.settings.init = false;
+    },
+
+    reflow : function () {
+      this.init();
     }
   };
 
