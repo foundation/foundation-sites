@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.1.1',
+    version : '4.1.2',
 
     settings : {
       deep_linking: false,
@@ -32,7 +32,7 @@
       var self = this;
 
       $(this.scope)
-        .on('click.fndtn.section', '[data-section] .title', function (e) {
+        .on('click.fndtn.section', '[data-section] .title, [data-section] [data-section-title]', function (e) {
           var $this = $(this),
               section = $this.closest('[data-section]');
 
@@ -52,7 +52,7 @@
 
       $(document)
         .on('click.fndtn.section', function (e) {
-          if ($(e.target).closest('.title').length < 1) {
+          if ($(e.target).closest('.title, [data-section-title]').length < 1) {
             $('[data-section="vertical-nav"], [data-section="horizontal-nav"]')
               .find('section, .section')
               .removeClass('active')
@@ -65,7 +65,7 @@
     toggle_active : function (e, self) {
       var $this = $(this),
           section = $this.closest('section, .section'),
-          content = section.find('.content'),
+          content = section.find('.content, [data-section-content]'),
           parent = section.closest('[data-section]'),
           self = Foundation.libs.section,
           settings = $.extend({}, self.settings, self.data_options(parent));
@@ -87,7 +87,7 @@
         }
       } else {
         var prev_active_section = null,
-            title_height = self.outerHeight(section.find('.title'));
+            title_height = self.outerHeight(section.find('.title, [data-section-title]'));
 
         if (self.small(parent) || settings.one_up) {
           prev_active_section = $this.closest('[data-section]').find('section.active, .section.active');
@@ -147,14 +147,14 @@
           if (self.small($this)) {
             first.attr('style', '');
           } else {
-            first.css('padding-top', self.outerHeight(first.find('.title')));
+            first.css('padding-top', self.outerHeight(first.find('.title, [data-section-title]')));
           }
         }
 
         if (self.small($this)) {
           active_section.attr('style', '');
         } else {
-          active_section.css('padding-top', self.outerHeight(active_section.find('.title')));
+          active_section.css('padding-top', self.outerHeight(active_section.find('.title, [data-section-title]')));
         }
 
         self.position_titles($this);
@@ -198,7 +198,7 @@
             .attr('style', '')
             .removeClass('active');
           section
-            .find('.content[data-slug="' + hash + '"]')
+            .find('.content[data-slug="' + hash + '"], [data-section-content][data-slug="' + hash + '"]')
             .closest('section, .section')
             .addClass('active');
         }
@@ -206,7 +206,7 @@
     },
 
     position_titles : function (section, off) {
-      var titles = section.find('.title'),
+      var titles = section.find('.title, [data-section-title]'),
           previous_width = 0,
           self = this;
 
@@ -226,8 +226,8 @@
     },
 
     position_content : function (section, off) {
-      var titles = section.find('.title'),
-          content = section.find('.content'),
+      var titles = section.find('.title, [data-section-title]'),
+          content = section.find('.content, [data-section-content]'),
           self = this;
 
       if (typeof off === 'boolean') {
@@ -235,8 +235,8 @@
         section.attr('style', '');
       } else {
         section.find('section, .section').each(function () {
-          var title = $(this).find('.title'),
-              content = $(this).find('.content');
+          var title = $(this).find('.title, [data-section-title]'),
+              content = $(this).find('.content, [data-section-content]');
           if (!self.rtl) {
             content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
           } else {
@@ -257,7 +257,7 @@
     position_right : function (el) {
       var section = el.closest('[data-section]'),
           section_width = el.closest('[data-section]').width(),
-          offset = section.find('.title').length;
+          offset = section.find('.title, [data-section-title]').length;
       return (section_width - el.position().left - el.width() * (el.index() + 1) - offset);
     },
 
