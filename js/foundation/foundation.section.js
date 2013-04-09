@@ -54,7 +54,7 @@
         .on('click.fndtn.section', function (e) {
           if ($(e.target).closest('.title, [data-section-title]').length < 1) {
             $('[data-section="vertical-nav"], [data-section="horizontal-nav"]')
-              .find('section, .section')
+              .find('section, .section, [data-section-region]')
               .removeClass('active')
               .attr('style', '');
           }
@@ -64,7 +64,7 @@
 
     toggle_active : function (e, self) {
       var $this = $(this),
-          section = $this.closest('section, .section'),
+          section = $this.closest('section, .section, [data-section-region]'),
           content = section.find('.content, [data-section-content]'),
           parent = section.closest('[data-section]'),
           self = Foundation.libs.section,
@@ -90,7 +90,7 @@
             title_height = self.outerHeight(section.find('.title, [data-section-title]'));
 
         if (self.small(parent) || settings.one_up) {
-          prev_active_section = $this.closest('[data-section]').find('section.active, .section.active');
+          prev_active_section = $this.closest('[data-section]').find('section.active, .section.active, .active[data-section-region]');
 
           if (self.small(parent)) {
             prev_active_section.attr('style', '');
@@ -125,7 +125,7 @@
 
       sections.each(function() {
         var $this = $(this),
-            active_section = $this.find('section.active, .section.active'),
+            active_section = $this.find('section.active, .section.active, .active[data-section-region]'),
             settings = $.extend({}, self.settings, self.data_options($this));
 
         if (active_section.length > 1) {
@@ -138,7 +138,7 @@
           && !self.is_horizontal($this)
           && !self.is_accordion($this)) {
 
-          var first = $this.find('section, .section').first();
+          var first = $this.find('section, .section, [data-section-region]').first();
 
           if (settings.one_up) {
             first.addClass('active');
@@ -194,12 +194,12 @@
 
         if (hash.length > 0 && settings.deep_linking) {
           section
-            .find('section, .section')
+            .find('section, .section, [data-section-region]')
             .attr('style', '')
             .removeClass('active');
           section
             .find('.content[data-slug="' + hash + '"], [data-section-content][data-slug="' + hash + '"]')
-            .closest('section, .section')
+            .closest('section, .section, [data-section-region]')
             .addClass('active');
         }
       });
@@ -234,7 +234,7 @@
         content.attr('style', '');
         section.attr('style', '');
       } else {
-        section.find('section, .section').each(function () {
+        section.find('section, .section, [data-section-region]').each(function () {
           var title = $(this).find('.title, [data-section-title]'),
               content = $(this).find('.content, [data-section-content]');
           if (!self.rtl) {
