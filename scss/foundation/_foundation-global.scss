@@ -7,9 +7,6 @@
 // for compatibility with brower-based text zoom or user-set defaults.
 $base-font-size: 100% !default;
 
-// Set your base font-size in pixels so emCalc can do its magic below
-$em-base: 16px !default;
-
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
@@ -63,25 +60,6 @@ $include-html-panel-classes: $include-html-classes !default;
 $include-html-pricing-classes: $include-html-classes !default;
 $include-html-progress-classes: $include-html-classes !default;
 $include-html-magellan-classes: $include-html-classes !default;
-
-//
-// Functions
-//
-
-// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
-@function emCalc($pxWidth) {
-  @return $pxWidth / $em-base * 1em;
-}
-
-// Creating rems and pixels
-@function remCalc($pxWidth) {
-  @return $pxWidth / $em-base * 1rem;
-}
-
-// Grid Calculation for Percentages
-@function gridCalc($colNumber, $totalColumns) {
-  @return percentage(($colNumber / $totalColumns));
-}
 
 
 //
