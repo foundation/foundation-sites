@@ -16,7 +16,7 @@
       init : false
     },
 
-    init : function (method, options) {
+    init : function (section, method, options) {
       var self = this;
 
       if (typeof method === 'object') {
