@@ -42,7 +42,7 @@
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
       } else if (typeof options !== 'undefined') {
-        $.extend(true, this.settings, this.defaults, options);
+        $.extend(true, this.settings, options);
       }
 
       if (typeof method != 'string') {
