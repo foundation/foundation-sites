@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zurb-foundation (4.1.1)
+    zurb-foundation (4.1.2)
       sass (>= 3.2.0)
 
 GEM
