@@ -73,7 +73,9 @@ $input-error-message-font-color-alt: #333 !default;
     }
   }
   input.column,
-  input.columns { padding-#{$default-float}: $form-spacing / 2; }
+  input.columns,
+  textarea.column,
+  textarea.columns { padding-#{$default-float}: $form-spacing / 2; }
 }
 
 // We use this mixin to give all basic form elements their style
