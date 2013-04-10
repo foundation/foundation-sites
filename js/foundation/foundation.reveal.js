@@ -41,6 +41,8 @@
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
+      } else if (typeof options !== 'undefined') {
+        $.extend(true, this.settings, this.defaults, options);
       }
 
       if (typeof method != 'string') {
