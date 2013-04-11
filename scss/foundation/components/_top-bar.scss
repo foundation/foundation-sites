@@ -211,14 +211,16 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       width: 100%;
       color: $topbar-link-color;
       padding-#{$default-float}: $topbar-height / 3;
-      font-size: $topbar-link-font-size;
       font-weight: $topbar-link-weight;
       background: $topbar-dropdown-bg;
       height: $topbar-height;
       line-height: $topbar-height;
 
       &:hover { background: darken($topbar-dropdown-bg, 3%); }
+    }
 
+    & > a {
+      font-size: $topbar-link-font-size;
 
       &.button {
         background: $primary-color;
@@ -245,7 +247,6 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
           background: darken($alert-color, 10%);
         }
       }
-
     }
 
     // Apply the active link color when it has that class
@@ -267,10 +268,6 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         position: absolute;
         top: 22px;
         #{$opposite-direction}: 0;
-      }
-
-      .dropdown &:after {
-        top: 0;
       }
     }
 
