@@ -206,16 +206,16 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   }
 
   ul li {
-    & > a {
+    & > a, & h5 a {
       display: block;
       width: 100%;
       color: $topbar-link-color;
-      padding: 12px 0 12px 0;
       padding-#{$default-float}: $topbar-height / 3;
       font-size: $topbar-link-font-size;
       font-weight: $topbar-link-weight;
       background: $topbar-dropdown-bg;
       height: $topbar-height;
+      line-height: $topbar-height;
 
       &:hover { background: darken($topbar-dropdown-bg, 3%); }
 
@@ -268,6 +268,10 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         top: 22px;
         #{$opposite-direction}: 0;
       }
+
+      .dropdown &:after {
+        top: 0;
+      }
     }
 
     &.moved { position: static;
@@ -288,13 +292,12 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     li { width: 100%;
       a {
         font-weight: normal;
-        padding: 8px $topbar-height / 3;
+        // padding: 8px $topbar-height / 3;
       }
 
-      &.title h5 { margin-bottom: 0;
+      &.title h5 { margin: 0;
         a {
           color: $topbar-link-color;
-          line-height: $topbar-height / 2;
           display: block;
         }
       }
@@ -392,8 +395,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
           &:after {
             border: none;
             content: "\00bb";
-            margin-top: -7px;
             #{$opposite-direction}: 5px;
+            top: 0;
           }
         }
       }
@@ -409,9 +412,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       li {
         a {
           color: $topbar-dropdown-link-color;
-          line-height: 1;
           white-space: nowrap;
-          padding: 7px $topbar-height / 3;
+          padding: 0 $topbar-height / 3;
           background: lighten($topbar-bg, 5%);
         }
 
