@@ -101,6 +101,22 @@ $tabTermFontSize: 12px;
 
 $navBarHeight: 40px !default;
 $navFlyoutBaseWidth: 250px !default;
+$navBarActiveColor: $mainColor !default;
+$navBarActiveBorderColor: darken($mainColor, 10%) !default;
+$navBarDarkBaseColor: $black !default;
+$navBarBorderColor: lighten($navBarDarkBaseColor, 20%) !default;
+$navBarBackgroundColor: lighten($navBarDarkBaseColor, 30%) !default;
+$navBarLightBaseColor: $white !default;
+$navBarFlyoutBackground: darken($navBarLightBaseColor, 5%) !default;
+$navBarFlyoutHover: darken($navBarLightBaseColor, 8%) !default;
+$navBarTextColor: darken($navBarLightBaseColor, 10%) !default;
+$navBarFlyoutBorder: darken($navBarLightBaseColor, 15%) !default;
+$navBarFlyoutActiveBorder: lighten($black, 10%) !default;
+$navBarFlyoutSideBorder: #CCC !default;
+$navBarFlyoutTextColor: #555 !default;
+$navBarFlyoutTextHover: #333 !default;
+$navBarFlyoutTextActive: $white !default;
+$navBarTouchFlyoutBorderColor: #666 !default;
 
 // Top Bar Settings
 
