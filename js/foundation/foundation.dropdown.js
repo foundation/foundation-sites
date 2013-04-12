@@ -9,7 +9,9 @@
     version : '4.1.0',
 
     settings : {
-      activeClass: 'open'
+      activeClass: 'open',
+      opened: function(){},
+      closed: function(){}
     },
 
     init : function (scope, method, options) {
@@ -35,10 +37,13 @@
     events : function () {
       var self = this;
 
-      $(this.scope).on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
-        e.preventDefault();
-        self.toggle($(this));
-      });
+      $(this.scope)
+        .on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
+            e.preventDefault();
+            self.toggle($(this));
+        })
+        .on('opened.fndtn.dropdown', '.f-dropdown', this.settings.opened)
+        .on('closed.fndtn.dropdown', '.f-dropdown', this.settings.closed);
 
       $('body').on('click.fndtn.dropdown', function (e) {
         var parent = $(e.target).closest('[data-dropdown-content]');
@@ -75,10 +80,12 @@
         dropdown
           .css(Foundation.rtl ? 'right':'left', '-99999px')
           .removeClass(this.settings.activeClass);
+        dropdown.trigger('closed');
       } else {
         this
           .css(dropdown
             .addClass(this.settings.activeClass), target);
+        dropdown.trigger('opened');
       }
     },
 
