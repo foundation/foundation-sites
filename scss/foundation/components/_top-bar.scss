@@ -340,7 +340,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     &.expanded { background: $topbar-bg; }
   }
 
-  .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; }
+  .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; margin-bottom: $topbar-margin-bottom; }
 
   .top-bar-section {
     @include single-transition(none,0,0);
