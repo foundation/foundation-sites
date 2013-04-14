@@ -155,7 +155,7 @@ $button-disabled-opacity: 0.6 !default;
 //
 
 // Only include these classes if the variable is true, otherwise they'll be left out.
-@if $include-html-button-classes {
+@if $include-html-button-classes != false {
 
   // Default styles applied outside of media query
   button, .button {

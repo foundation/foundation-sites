@@ -87,7 +87,7 @@ $alert-radius:              $global-radius                                 !defa
   @include radius($radius);
 }
 
-@if $include-html-alert-classes {
+@if $include-html-alert-classes != false {
 
   /* Foundation Alerts */
   .alert-box {

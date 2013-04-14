@@ -99,7 +99,7 @@ $reveal-border-color:    #666 !default;
   cursor: pointer;
 }
 
-@if $include-html-reveal-classes {
+@if $include-html-reveal-classes != false {
   // Reveal Modals
   .reveal-modal-bg { @include reveal-bg; }
 
