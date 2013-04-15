@@ -42,8 +42,8 @@
             e.preventDefault();
             self.toggle($(this));
         })
-        .on('opened.fndtn.dropdown', '.f-dropdown', this.settings.opened)
-        .on('closed.fndtn.dropdown', '.f-dropdown', this.settings.closed);
+        .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
+        .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
 
       $('body').on('click.fndtn.dropdown', function (e) {
         var parent = $(e.target).closest('[data-dropdown-content]');
