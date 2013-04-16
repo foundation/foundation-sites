@@ -6,6 +6,14 @@ $column-gutter: emCalc(30px) !default;
 $total-columns: 12 !default;
 
 //
+// Grid Function
+//
+
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
+}
+
+//
 // Grid Mixins
 //
 

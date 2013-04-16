@@ -1,3 +1,10 @@
+<!--
+### 4.1.3 (In Progress)
+
+* Added _variables.scss, which holds default variables and creates the settings file for the gem.
+* Rearranged a few mixins in order to remove the confusing _foundation-globals.scss file.
+ -->
+
 ### 4.1.2- April 10, 2013
 
 * Added Joyride expose functionality
@@ -33,8 +40,8 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Changed blockgrid to use clearfix instead of overflow.
 * Fixed nested row margin inside forms.
 * Fixed data_options function that caused booleans to be interpreted as numbers.
-* Tabs no longer automatically convert to accordion on desktop. 
-* Sections with accordion class always remain accordions and sections with tab class always remain tabs. 
+* Tabs no longer automatically convert to accordion on desktop.
+* Sections with accordion class always remain accordions and sections with tab class always remain tabs.
 * Vertical and horizontal navigation elements still become accordions on mobile
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.7...v4.0.8).
