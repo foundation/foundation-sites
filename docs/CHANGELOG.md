@@ -1,3 +1,16 @@
+<!--
+### 4.1.3 (In Progress)
+
+* Added _variables.scss, which holds default variables and creates the settings file for the gem
+* Rearranged a few mixins in order to remove the confusing _foundation-globals.scss file
+  * If you are getting errors after upgrade, just remove any reference to this file...
+* Added reference to $base-line-height variables for those using Compass vertical rhythm
+* Fixed issue with invalid css coming through into buttons
+* Various bug fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.2...v4.1.3).
+ -->
+
 ### 4.1.2- April 10, 2013
 
 * Added Joyride expose functionality
@@ -8,7 +21,6 @@
 * Addressed Foundation loader incompatiblities with non-jQuery and non-Zepto JS libraries
 * Fixed Rails generator bug when using CoffeeScript files
 * Added `reflow` to Section js plugin to support dynamic content
-
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.1...v4.1.2).
 
@@ -33,8 +45,8 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Changed blockgrid to use clearfix instead of overflow.
 * Fixed nested row margin inside forms.
 * Fixed data_options function that caused booleans to be interpreted as numbers.
-* Tabs no longer automatically convert to accordion on desktop. 
-* Sections with accordion class always remain accordions and sections with tab class always remain tabs. 
+* Tabs no longer automatically convert to accordion on desktop.
+* Sections with accordion class always remain accordions and sections with tab class always remain tabs.
 * Vertical and horizontal navigation elements still become accordions on mobile
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.0.7...v4.0.8).

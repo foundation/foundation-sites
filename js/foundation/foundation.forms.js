@@ -37,7 +37,9 @@
         .each(this.append_custom_markup);
       $('form.custom input[type="checkbox"]', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_markup);
-      $('form.custom select', $(this.scope)).not('[data-customforms="disabled"]')
+      $('form.custom select', $(this.scope))
+          .not('[data-customforms="disabled"]')
+          .not('[multiple=multiple]')
         .each(this.append_custom_select);
     },
 

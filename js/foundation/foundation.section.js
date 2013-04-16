@@ -78,8 +78,8 @@
 
       if (section.hasClass('active')) {
         if (self.small(parent)
-          || self.is_vertical(parent)
-          || self.is_horizontal(parent)
+          || self.is_vertical_nav(parent)
+          || self.is_horizontal_nav(parent)
           || self.is_accordion(parent)) {
           section
             .removeClass('active')
@@ -110,6 +110,19 @@
         if (prev_active_section !== null) {
           prev_active_section.removeClass('active').attr('style', '');
         }
+
+        // Toggle the content display attribute. This is done to
+        // ensure accurate outerWidth measurements that account for
+        // the scrollbar.
+        if (self.is_vertical_tabs(parent)) {
+          content.css('display', 'block');
+
+          if (prev_active_section !== null) {
+            prev_active_section
+              .find('.content')
+              .css('display', 'none');
+          }
+        }
       }
 
       setTimeout(function () {
@@ -134,8 +147,8 @@
             .removeClass('active')
             .attr('style', '');
         } else if (active_section.length < 1
-          && !self.is_vertical($this)
-          && !self.is_horizontal($this)
+          && !self.is_vertical_nav($this)
+          && !self.is_horizontal_nav($this)
           && !self.is_accordion($this)) {
 
           var first = $this.find('section, .section, [data-section-region]').first();
@@ -159,7 +172,8 @@
 
         self.position_titles($this);
 
-        if (self.is_horizontal($this) && !self.small($this)) {
+        if ( (self.is_horizontal_nav($this) && !self.small($this))
+          || self.is_vertical_tabs($this)) {
           self.position_content($this);
         } else {
           self.position_content($this, false);
@@ -167,11 +181,11 @@
       });
     },
 
-    is_vertical : function (el) {
+    is_vertical_nav : function (el) {
       return /vertical-nav/i.test(el.data('section'));
     },
 
-    is_horizontal : function (el) {
+    is_horizontal_nav : function (el) {
       return /horizontal-nav/i.test(el.data('section'));
     },
 
@@ -179,8 +193,12 @@
       return /accordion/i.test(el.data('section'));
     },
 
-    is_tabs : function (el) {
-      return /tabs/i.test(el.data('section'));
+    is_horizontal_tabs : function (el) {
+      return /^tabs$/i.test(el.data('section'));
+    },
+
+    is_vertical_tabs : function (el) {
+      return /vertical-tabs/i.test(el.data('section'));
     },
 
     set_active_from_hash : function () {
@@ -208,6 +226,7 @@
     position_titles : function (section, off) {
       var titles = section.find('.title, [data-section-title]'),
           previous_width = 0,
+          previous_height = 0,
           self = this;
 
       if (typeof off === 'boolean') {
@@ -215,12 +234,17 @@
 
       } else {
         titles.each(function () {
-          if (!self.rtl) {
-            $(this).css('left', previous_width);
+          if (self.is_vertical_tabs(section)) {
+            $(this).css('top', previous_height);
+            previous_height += self.outerHeight($(this));
           } else {
-            $(this).css('right', previous_width);
+            if (!self.rtl) {
+              $(this).css('left', previous_width);
+            } else {
+              $(this).css('right', previous_width);
+            }
+            previous_width += self.outerWidth($(this));
           }
-          previous_width += self.outerWidth($(this));
         });
       }
     },
@@ -234,24 +258,66 @@
         content.attr('style', '');
         section.attr('style', '');
       } else {
-        section.find('section, .section, [data-section-region]').each(function () {
-          var title = $(this).find('.title, [data-section-title]'),
-              content = $(this).find('.content, [data-section-content]');
-          if (!self.rtl) {
-            content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
-          } else {
-            content.css({right: self.position_right(title) + 1, top: self.outerHeight(title) - 2});
-          }
-        });
+        if (self.is_vertical_tabs(section)
+            && !self.small(section)) {
+          var content_min_height = 0,
+              content_min_width = Number.MAX_VALUE,
+              title_width = null;
 
-        // temporary work around for Zepto outerheight calculation issues.
-        if (typeof Zepto === 'function') {
-          section.height(this.outerHeight(titles.first()));
+          section.find('section, .section, [data-section-region]').each(function () {
+            var title = $(this).find('.title, [data-section-title]'),
+                content = $(this).find('.content, [data-section-content]'),
+                content_width = 0;
+
+            title_width = self.outerWidth(title);
+            content_width = self.outerWidth(section) - title_width;
+            if (content_width < content_min_width) {
+              content_min_width = content_width;
+            }
+
+            // Increment the minimum height of the content region
+            // to align with the height of the titles.
+            content_min_height += self.outerHeight(title);
+
+            // Set all of the inactive tabs to 'display: none'
+            // The CSS sets all of the tabs as 'display: block'
+            // in order to account for scrollbars when measuring the width
+            // of the content regions.
+            if (!$(this).hasClass('active')) {
+              content.css('display', 'none');
+            }
+          });
+
+          section.find('section, .section, [data-section-region]').each(function () {
+            var content = $(this).find('.content, [data-section-content]');
+            content.css('minHeight', content_min_height);
+
+            // Remove 2 pixels to account for the right-shift in the CSS
+            content.css('maxWidth', content_min_width - 2);
+          });
+
+          // Adjust the outer section container width to match
+          // the width of the title and content
+          section.css('maxWidth', title_width + content_min_width);
         } else {
-          section.height(this.outerHeight(titles.first()) - 2);
+          section.find('section, .section, [data-section-region]').each(function () {
+            var title = $(this).find('.title, [data-section-title]'),
+                content = $(this).find('.content, [data-section-content]');
+            if (!self.rtl) {
+              content.css({left: title.position().left - 1, top: self.outerHeight(title) - 2});
+            } else {
+              content.css({right: self.position_right(title) + 1, top: self.outerHeight(title) - 2});
+            }
+          });
+
+          // temporary work around for Zepto outerheight calculation issues.
+          if (typeof Zepto === 'function') {
+            section.height(this.outerHeight(titles.first()));
+          } else {
+            section.height(this.outerHeight(titles.first()) - 2);
+          }
         }
       }
-
     },
 
     position_right : function (el) {
@@ -267,7 +333,7 @@
 
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
-      if (this.is_tabs(el)) {
+      if (this.is_horizontal_tabs(el)) {
         return false;
       }
       if (el && this.is_accordion(el)) {

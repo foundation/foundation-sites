@@ -6,6 +6,14 @@ $column-gutter: emCalc(30px) !default;
 $total-columns: 12 !default;
 
 //
+// Grid Function
+//
+
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
+}
+
+//
 // Grid Mixins
 //
 
@@ -57,10 +65,17 @@ $total-columns: 12 !default;
 
   position: relative;
 
+  // If collapsed, get rid of gutter padding
+  @if $collapse {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   // Gutter padding whenever a column isn't set to collapse
-  @if $collapse == false {
-    padding-#{$default-float}: $column-gutter / 2;
-    padding-#{$opposite-direction}: $column-gutter / 2;
+  // (use $collapse:null to do nothing)
+  @else if $collapse == false {
+    padding-left: $column-gutter / 2;
+    padding-right: $column-gutter / 2;
   }
 
   // If a column number is given, calculate width
@@ -69,13 +84,7 @@ $total-columns: 12 !default;
 
     // If last column, float naturally instead of to the right
     @if $last-column { float: $opposite-direction; }
-
-    // if collapsed, get rid of gutter padding
-    @else if $collapse { padding-#{$default-float}: 0; padding-#{$opposite-direction}: 0; }
-
   }
-
-  @if $collapse { padding-#{$default-float}: 0; padding-#{$opposite-direction}: 0; }
 
   // If offset, calculate appropriate margins
   @if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
@@ -92,7 +101,7 @@ $total-columns: 12 !default;
   }
 
   @if $float {
-    @if $float == left or true { float: $default-float; }
+    @if $float == left or $float == true { float: $default-float; }
     @else if $float == right { float: $opposite-direction; }
     @else { float: none; }
   }
@@ -101,13 +110,10 @@ $total-columns: 12 !default;
 
 
 /* Grid HTML Classes */
-@if $include-html-grid-classes {
+@if $include-html-grid-classes != false {
 
   .row {
     @include grid-row;
-
-    .column,
-    .columns { @include grid-column($columns:$total-columns); }
 
     &.collapse {
       .column,
@@ -119,17 +125,20 @@ $total-columns: 12 !default;
     }
   }
 
+  .column,
+  .columns { @include grid-column($columns:$total-columns); }
+
   @media only screen {
 
-    .row .column,
-    .row .columns { @include grid-column($columns:false); }
+    .column,
+    .columns { @include grid-column($columns:false); }
 
     @for $i from 1 through $total-columns {
-      .row .small#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+      .small#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
     @for $i from 1 through $total-columns - 2 {
-      .row .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
+      .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
     [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
@@ -143,21 +152,28 @@ $total-columns: 12 !default;
   @media #{$small} {
 
     @for $i from 1 through $total-columns {
-      .row .large#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+      .large#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
-    @for $i from 1 through $total-columns - 2 {
+    @for $i from 1 through $total-columns - 1 {
       .row .large-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
-    @for $i from 2 through $total-columns - 2 {
+    @for $i from 1 through $total-columns - 1 {
       .push#{-$i} { @include grid-column($push:$i, $collapse:null, $float:false); }
       .pull#{-$i} { @include grid-column($pull:$i, $collapse:null, $float:false); }
     }
 
-    @for $i from 2 through $total-columns - 2 {
+    @for $i from 1 through $total-columns - 1 {
       .small-push#{-$i} { #{$default-float}: inherit; }
       .small-pull#{-$i} { #{$opposite-direction}: inherit; }
+    }
+
+    .column.small-centered,
+    .columns.small-centered {
+      margin-#{$default-float}: 0;
+      margin-#{$opposite-direction}: 0;
+      float: $default-float;
     }
 
     .column.large-centered,
