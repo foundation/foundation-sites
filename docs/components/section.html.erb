@@ -66,21 +66,21 @@
               </section>
             </div>
             <div class="section-container auto" data-section>
-              <section class="section">
-                <p class="title"><a href="#panel1">Section 1</a></p>
-                <div class="content" data-slug="panel1">
+              <section>
+                <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
+                <div class="content" data-slug="panel1" data-section-content>
                   <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
               </section>
-              <section class="section">
-                <p class="title"><a href="#panel2">Section 2</a></p>
-                <div class="content" data-slug="panel2">
+              <section>
+                <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
+                <div class="content" data-slug="panel2" data-section-content>
                   <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
               </section>
-              <div class="section">
-                <p class="title"><a href="#panel3">Section 3</a></p>
-                <div class="content" data-slug="panel3">
+              <div data-section-region class="section">
+                <p class="title" data-section-title><a href="#panel3">Section 3</a></p>
+                <div class="content" data-slug="panel3" data-section-content>
                   <form>
                     <div class="row collapse">
                       <div class="large-2 columns">
@@ -128,15 +128,15 @@
 
 <%= code_example '
 <div class="section-container auto" data-section>
-  <section class="section">
-    <p class="title"><a href="#panel1">Section 1</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
+    <div class="content" data-section-content>
       <p>Content of section 1.</p>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="#panel2">Section 2</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
+    <div class="content" data-section-content>
       <p>Content of section 2.</p>
     </div>
   </section>
@@ -161,15 +161,15 @@
         <p>Adding an <code>accordion</code> class to the section container will show an accordion on both small and large screens.</p>
 <%= code_example '
 <div class="section-container accordion" data-section="accordion">
-  <section class="section">
-    <p class="title"><a href="#">Section 1</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 1</a></p>
+    <div class="content" data-section-content>
       <p>Content of section 1.</p>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="#">Section 2</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 2</a></p>
+    <div class="content" data-section-content>
       <p>Content of section 2.</p>
     </div>
   </section>
@@ -179,15 +179,15 @@
         <p>Adding a <code>tabs</code> class to the section container will enable tabs on both small and large screens.</p>
 <%= code_example '
 <div class="section-container tabs" data-section="tabs">
-  <section class="section">
-    <p class="title"><a href="#">Section 1</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 1</a></p>
+    <div class="content" data-section-content>
       <p>Content of section 1.</p>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="#">Section 2</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 2</a></p>
+    <div class="content" data-section-content>
       <p>Content of section 2.</p>
     </div>
   </section>
@@ -204,9 +204,9 @@
 <div class="row">
   <div class="large-3 columns">
     <div class="section-container vertical-nav" data-section="vertical-nav">
-      <section class="section">
-        <p class="title"><a href="#">Section 1</a></p>
-        <div class="content">
+      <section>
+        <p class="title" data-section-title><a href="#">Section 1</a></p>
+        <div class="content" data-section-content>
           <ul class="side-nav">
             <li><a href="#">Link 1</a></li>
             <li><a href="#">Link 2</a></li>
@@ -216,9 +216,9 @@
           </ul>
         </div>
       </section>
-      <section class="section">
-        <p class="title"><a href="#">Section 2</a></p>
-        <div class="content">
+      <section>
+        <p class="title" data-section-title><a href="#">Section 2</a></p>
+        <div class="content" data-section-content>
           <ul class="side-nav">
             <li><a href="#">Link 1</a></li>
             <li><a href="#">Link 2</a></li>
@@ -244,9 +244,9 @@
 
 <%= code_example '
 <div class="section-container horizontal-nav" data-section="horizontal-nav">
-  <section class="section">
-    <p class="title"><a href="#">Section 1</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 1</a></p>
+    <div class="content" data-section-content>
       <ul class="side-nav">
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
@@ -256,9 +256,9 @@
       </ul>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="#">Section 2</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 2</a></p>
+    <div class="content" data-section-content>
       <ul class="side-nav">
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
@@ -277,15 +277,15 @@
 
 <%= code_example '
 <div class="section-container auto" data-section data-options="deep_linking: true">
-  <section class="section">
-    <p class="title"><a href="#section1">Section 1</a></p>
-    <div class="content" data-slug="section1">
+  <section>
+    <p class="title" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="content" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="#section2">Section 2</a></p>
-    <div class="content" data-slug="section2">
+  <section>
+    <p class="title" data-section-title><a href="#section2">Section 2</a></p>
+    <div class="content" data-slug="section2" data-section-content>
       <p>Content of section 2.</p>
     </div>
   </section>
@@ -305,18 +305,18 @@
 
 <%= code_example '
 <div class="your-class-name" data-section="auto"> <!-- Can use "auto", "accordion", "tabs", "vertical-nav", or "horizontal-nav" -->
-  <section class="your-section-class" data-section>
-    <p class="title"><a href="#section1">Section 1</a></p>
-    <div class="content" data-slug="section1">
+  <section class="your-section-class">
+    <p class="your-title-class" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="your-content-class" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="#section2">Section 2</a></p>
-    <div class="content" data-slug="section2">
+  <div data-section-region>
+    <p class="your-title-class" data-section-title><a href="#section2">Section 2</a></p>
+    <div class="your-content-class" data-slug="section2" data-section-content>
       <p>Content of section 2.</p>
     </div>
-  </section>
+  </div>
 </div>', :html %>
 
         <hr> -->
@@ -359,9 +359,9 @@ $section-bottom-margin:          emCalc(20px);
 
 <%= code_example '
 <div class="section-container auto" data-section>
-  <section class="section">
-    <p class="title"><a href="#panel1">Section 1</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
+    <div class="content" data-section-content>
       <ul class="side-nav">
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
@@ -371,9 +371,9 @@ $section-bottom-margin:          emCalc(20px);
       </ul>
     </div>
   </section>
-  <section class="section">
-    <p class="title"><a href="#panel2">Section 2</a></p>
-    <div class="content">
+  <section>
+    <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
+    <div class="content" data-section-content>
       <ul class="side-nav">
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>

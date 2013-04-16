@@ -30,6 +30,10 @@ helpers do
   def features_path
     '/grid.php'
   end
+  
+  def training_path
+    '/training.php'
+  end
 
   def add_ons_path
     '/templates.php'

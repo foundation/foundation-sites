@@ -21,6 +21,7 @@ module Foundation
       end
 
       def detect_js_format
+        return ['.coffee', '#='] if File.exist?('app/assets/javascripts/application.coffee')
         return ['.js.coffee', '#='] if File.exist?('app/assets/javascripts/application.js.coffee')
         return ['.js', '//='] if File.exist?('app/assets/javascripts/application.js')
       end
