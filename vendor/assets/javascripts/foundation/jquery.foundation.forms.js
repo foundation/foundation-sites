@@ -349,6 +349,9 @@
         if ($customCheckbox.length == 0) {
             $customCheckbox = $(this).prev('span.custom.checkbox');
         }
+        if ($customCheckbox.length == 0) {
+          $customCheckbox = $("#" + $(event.currentTarget).attr('for')).next()
+        }
         toggleCheckbox($customCheckbox);
       } else if ($associatedElement.attr('type') === 'radio') {
         event.preventDefault();
