@@ -65,10 +65,17 @@ $total-columns: 12 !default;
 
   position: relative;
 
+  // If collapsed, get rid of gutter padding
+  @if $collapse {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   // Gutter padding whenever a column isn't set to collapse
-  @if $collapse == false {
-    padding-#{$default-float}: $column-gutter / 2;
-    padding-#{$opposite-direction}: $column-gutter / 2;
+  // (use $collapse:null to do nothing)
+  @else if $collapse == false {
+    padding-left: $column-gutter / 2;
+    padding-right: $column-gutter / 2;
   }
 
   // If a column number is given, calculate width
@@ -77,13 +84,7 @@ $total-columns: 12 !default;
 
     // If last column, float naturally instead of to the right
     @if $last-column { float: $opposite-direction; }
-
-    // if collapsed, get rid of gutter padding
-    @else if $collapse { padding-#{$default-float}: 0; padding-#{$opposite-direction}: 0; }
-
   }
-
-  @if $collapse { padding-#{$default-float}: 0; padding-#{$opposite-direction}: 0; }
 
   // If offset, calculate appropriate margins
   @if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
