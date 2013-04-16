@@ -20,6 +20,7 @@ $topbar-title-font-size: emCalc(17px) !default;
 $topbar-link-color: #fff !default;
 $topbar-link-weight: bold !default;
 $topbar-link-font-size: emCalc(13px) !default;
+$topbar-link-hover-lightness: -30% !default; // Darken by 30%
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
@@ -362,7 +363,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         padding: 0 $topbar-height / 3;
         line-height: $topbar-height;
         background: $topbar-bg;
-        &:hover { background: darken($topbar-dropdown-bg, 30%); }
+        &:hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
       }
     }
 
