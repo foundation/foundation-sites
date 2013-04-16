@@ -135,7 +135,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
     }
   }
   .orbit-prev { #{$default-float}: 0;
-    & > span { 
+    & > span {
       border-color: transparent;
       border-#{$opposite-direction}-color: #fff;
     }
@@ -167,13 +167,14 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
     width: 18px;
     height: 18px;
     background: #fff;
-    float: $default-float;
+    float: left;
     margin-#{$opposite-direction}: 6px;
-    border: solid 2px #000;
+    border: solid 2px $orbit-bullet-nav-color;
     @include radius(1000px);
 
     &.active {
-      background: #000;
+      background: $orbit-bullet-nav-color-active;
+      border-color: $orbit-bullet-nav-color-active;
     }
 
     &:last-child { margin-#{$opposite-direction}: 0; }
