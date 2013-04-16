@@ -103,7 +103,7 @@
         if (open_modal.length < 1) {
           this.toggle_bg(modal);
         }
-        this.hide(open_modal, this.settings.css.open);
+        this.hide(open_modal, this.settings.css.close);
         this.show(modal, this.settings.css.open);
       }
     },
