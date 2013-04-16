@@ -1,10 +1,11 @@
 <!--
 ### 4.1.3 (In Progress)
 
-* Added _variables.scss, which holds default variables and creates the settings file for the gem.
-* Rearranged a few mixins in order to remove the confusing _foundation-globals.scss file.
+* Added _variables.scss, which holds default variables and creates the settings file for the gem
+* Rearranged a few mixins in order to remove the confusing _foundation-globals.scss file
   * If you are getting errors after upgrade, just remove any reference to this file...
 * Added reference to $base-line-height variables for those using Compass vertical rhythm
+* Fixed issue with invalid css coming through into buttons
 * Various bug fixes
  -->
 
