@@ -101,7 +101,7 @@ $total-columns: 12 !default;
   }
 
   @if $float {
-    @if $float == left or true { float: $default-float; }
+    @if $float == left or $float == true { float: $default-float; }
     @else if $float == right { float: $opposite-direction; }
     @else { float: none; }
   }
