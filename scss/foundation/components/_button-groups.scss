@@ -43,7 +43,7 @@ $button-bar-margin-opposite: emCalc(10px) !default;
     &:last-child,
     &:last-child > a,
     &:last-child > button,
-    &:last-child > .button { @include side-radius($default-opposite, $button-radius); }
+    &:last-child > .button { @include side-radius($opposite-direction, $button-radius); }
   }
   @else if $radius {
     &:first-child,
@@ -53,7 +53,7 @@ $button-bar-margin-opposite: emCalc(10px) !default;
     &:last-child,
     &:last-child > a,
     &:last-child > button,
-    &:last-child > .button { @include side-radius($default-opposite, $radius); }
+    &:last-child > .button { @include side-radius($opposite-direction, $radius); }
   }
 
   // We use this to make the buttons even width across their container
