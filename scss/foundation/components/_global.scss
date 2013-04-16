@@ -105,6 +105,10 @@
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with brower-based text zoom or user-set defaults.
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be different and not have it effect the grid breakpoints,
+// set $em-base to $base-font-size and make sure $base-font-size is a px value.
 $base-font-size: 100% !default;
 
 // This is the default html and body font-size for the base em value.
@@ -182,7 +186,7 @@ $small-screen: emCalc(768px) !default;
 $medium-screen: emCalc(1280px) !default;
 $large-screen: emCalc(1440px) !default;
 
-$screen: "only screen";
+$screen: "only screen" !default;
 $small: "only screen and (min-width:"#{$small-screen}")" !default;
 $medium: "only screen and (min-width:"#{$medium-screen}")" !default;
 $large: "only screen and (min-width:"#{$large-screen}")" !default;

@@ -4,15 +4,19 @@
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with brower-based text zoom or user-set defaults.
-// $base-font-size: 100%;
+$base-font-size: 100% !default;
 
 // This is the default html and body font-size for the base em value.
-// $em-base: 16px;
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be a different size and not have it effect grid size too,
+// set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
+$em-base: 16px !default;
 
 // Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
-// @function emCalc($pxWidth) {
-//   @return $pxWidth / $em-base * 1em;
-// }
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
 
 // We use these to control various global styles
 // $body-bg: #fff;
