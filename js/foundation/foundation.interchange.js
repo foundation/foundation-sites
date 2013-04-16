@@ -8,7 +8,10 @@
 
     version : '4.2.0',
 
+    cache : {},
+
     settings : {
+      load_attr : 'foundation-load'
     },
 
     init : function (scope, method, options) {
@@ -29,6 +32,14 @@
     //   return window.devicePixelRatio > 1;
     // },
 
+    loadables : function (reset) {
+      if (reset) {
+        return this.cache.loadables = $('[data-' + this.settings.load_attr +']');
+      }
+      
+      return this.cache.loadables || $('[data-' + this.settings.load_attr +']');
+    },
+
     nodes : function () {
       if (typeof this.cached_nodes === 'undefined') {
         this.update_nodes();
@@ -38,7 +49,7 @@
     },
 
     update_nodes : function () {
-      this.cached_nodes = $('[data-foundation-load]').filter(function () {
+      this.cached_nodes = this.loadables.filter(function () {
         if (!/IMG/.test(this.nodeName) && this.nodeType === 1) {
           return true;
         }
