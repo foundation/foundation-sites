@@ -6,7 +6,7 @@
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.0.9',
+    version : '4.1.2',
 
     locked : false,
 
@@ -41,6 +41,8 @@
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
+      } else if (typeof options !== 'undefined') {
+        $.extend(true, this.settings, options);
       }
 
       if (typeof method != 'string') {

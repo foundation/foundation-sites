@@ -20,7 +20,7 @@ $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #222 !default;
 
 // We use thes to controls the style of slide numbers
-$orbit-slide-number-bg: rgb(0,0,0) !default;
+$orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: emCalc(5px) !default;
 
@@ -44,7 +44,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
 
     &>* {
       position: relative;
-      float: left;
+      float: $default-float;
       height: 100%;
 
       .orbit-caption {
@@ -65,15 +65,17 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
   .orbit-slide-number {
     position: absolute;
     top: 10px;
-    left: 10px;
+    #{$default-float}: 10px;
     font-size: 12px;
-    span { font-weight: 700; }
+    span { font-weight: 700; padding: $orbit-slide-number-padding;}
+    color: $orbit-slide-number-font-color;
+    background: $orbit-slide-number-bg;
   }
 
   .orbit-timer {
     position: absolute;
     top: 10px;
-    right: 10px;
+    #{$opposite-direction}: 10px;
     height: 6px;
     width: 100px;
     .orbit-progress {
@@ -88,7 +90,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
       display: none;
       position: absolute;
       top: 10px;
-      right: 0px;
+      #{$opposite-direction}: 0px;
       width: 11px;
       height: 14px;
       border: solid 4px #000;
@@ -98,7 +100,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
 
     &.paused {
       & > span {
-        right: -6px;
+        #{$opposite-direction}: -6px;
         top: 9px;
         width: 11px;
         height: 14px;
@@ -134,17 +136,25 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
       border: solid 16px;
     }
   }
-  .orbit-prev { left: 0;
-    & > span { border-color: transparent #fff transparent transparent; }
-    &:hover > span { border-color: transparent #ccc transparent transparent; }
-  }
-  .orbit-next { right: 0;
+  .orbit-prev { #{$default-float}: 0;
     & > span {
-      border-color: transparent transparent transparent #fff;
-      left: 50%;
-      margin-left: -8px;
+      border-color: transparent;
+      border-#{$opposite-direction}-color: #fff;
     }
-    &:hover > span { border-color: transparent transparent transparent #ccc; }
+    &:hover > span {
+      border-#{$opposite-direction}-color: #ccc;
+    }
+  }
+  .orbit-next { #{$opposite-direction}: 0;
+    & > span {
+      border-color: transparent;
+      border-#{$default-float}-color: #fff;
+      #{$default-float}: 50%;
+      margin-#{$default-float}: -8px;
+    }
+    &:hover > span {
+      border-#{$default-float}-color: #ccc;
+    }
   }
 }
 
@@ -158,17 +168,18 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
     display: block;
     width: 18px;
     height: 18px;
-    background: #fff;
-    float: left;
-    margin-right: 6px;
-    border: solid 2px #000;
+    background: $orbit-bullet-nav-color;
+    float: $default-float;
+    margin-#{$opposite-direction}: 6px;
+    border: solid 2px $orbit-bullet-nav-color;
     @include radius(1000px);
 
     &.active {
-      background: #000;
+      background: $orbit-bullet-nav-color-active;
+      border: solid 2px $orbit-bullet-nav-color-active;
     }
 
-    &:last-child { margin-right: 0; }
+    &:last-child { margin-#{$opposite-direction}: 0; }
   }
 }
 

@@ -48,7 +48,7 @@ $table-margin-bottom:    emCalc(20px) !default;
         padding: $table-head-padding;
         font-size: $table-head-font-size;
         color: $table-head-font-color;
-        text-align: left;
+        text-align: $default-float;
       }
     }
   }

@@ -57,15 +57,14 @@ $switch-label-outline:            1px dotted #888 !default;
   // Default label styles for type and transition
   label {
     position: relative;
-    left: 0;
+    #{$default-float}: 0;
     z-index: 2;
-    float: left;
+    float: $default-float;
     width: 50%;
     height: 100%;
     margin: 0;
-    text-align: right;
     font-weight: bold;
-    text-align: left;
+    text-align: $default-float;
 
     // Transition for the switch label to follow paddle
     @include single-transition(all, $transition-speed, $transition-ease);
@@ -91,7 +90,7 @@ $switch-label-outline:            1px dotted #888 !default;
   & > span {
     position: absolute;
     top: -1px;
-    left: -1px;
+    #{$default-float}: -1px;
     z-index: 1;
     display: block;
     padding: 0;
@@ -107,19 +106,19 @@ $switch-label-outline:            1px dotted #888 !default;
 
   // Controlling the position of the labels as they are toggled.
   input:checked { display: none !important; }
-  input { left: 0; display: block !important; }
+  input { #{$default-float}: 0; display: block !important; }
 
   // Left Label alignment and position changes, including fixes for while inside a custom form
   input:first-of-type + label,
-  input:first-of-type + span + label { left: -50%; }
+  input:first-of-type + span + label { #{$default-float}: -50%; }
   input:first-of-type:checked + label,
-  input:first-of-type:checked + span + label { left: 0%; }
+  input:first-of-type:checked + span + label { #{$default-float}: 0%; }
 
   // Right Label alignment and position changes, including fixes for while inside a custom form
   input:last-of-type + label,
-  input:last-of-type + span + label { right: -50%; left: auto; text-align: right; }
+  input:last-of-type + span + label {#{$opposite-direction}: -50%; #{$default-float}: auto; text-align: $opposite-direction; }
   input:last-of-type:checked + label,
-  input:last-of-type:checked + span + label { right: 0%; left: auto; }
+  input:last-of-type:checked + span + label { #{$opposite-direction}: 0%; #{$default-float}: auto; }
 
   // Hiding custom form spans since we auto-create them
   span.custom { display: none !important; }
@@ -144,8 +143,8 @@ $switch-label-outline:            1px dotted #888 !default;
   input {
     // Move the paddle to the right position
     &:first-of-type:checked ~ span {
-      left: 100%;
-      margin-left: emCalc(-$height + 1px);
+      #{$default-float}: 100%;
+      margin-#{$default-float}: emCalc(-$height + 1px);
     }
   }
 
@@ -213,7 +212,7 @@ $switch-label-outline:            1px dotted #888 !default;
   @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
-@if $include-html-button-classes {
+@if $include-html-button-classes != false {
 
   /* Foundation Switches */
   @media only screen {

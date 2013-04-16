@@ -6,12 +6,13 @@
   Foundation.libs.tooltips = {
     name: 'tooltips',
 
-    version : '4.0.2',
+    version : '4.1.0',
 
     settings : {
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
+      appendTo: 'body',
       tipTemplate : function (selector, content) {
         return '<span data-selector="' + selector + '" class="' 
           + Foundation.libs.tooltips.settings.tooltipClass.substring(1) 
@@ -101,7 +102,7 @@
       var $tip = $(this.settings.tipTemplate(this.selector($target), $('<div>').html($target.attr('title')).html())),
           classes = this.inheritable_classes($target);
 
-      $tip.addClass(classes).appendTo('body');
+      $tip.addClass(classes).appendTo(this.settings.appendTo);
       if (Modernizr.touch) {
         $tip.append('<span class="tap-to-close">tap to close </span>');
       }
@@ -136,10 +137,14 @@
         tip.addClass('tip-override');
         objPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
-        objPos(tip, (target.offset().top + this.outerHeight(target) + 10), 'auto', 'auto', target.offset().left, width);
+        var left = target.offset().left;
+        if (Foundation.rtl) {
+          left = target.offset().left + target.offset().width - this.outerWidth(tip);
+        }
+        objPos(tip, (target.offset().top + this.outerHeight(target) + 10), 'auto', 'auto', left, width);
         tip.removeClass('tip-override');
         if (classes && classes.indexOf('tip-top') > -1) {
-          objPos(tip, (target.offset().top - this.outerHeight(tip)), 'auto', 'auto', target.offset().left, width)
+          objPos(tip, (target.offset().top - this.outerHeight(tip)), 'auto', 'auto', left, width)
             .removeClass('tip-override');
         } else if (classes && classes.indexOf('tip-left') > -1) {
           objPos(tip, (target.offset().top + (this.outerHeight(target) / 2) - nubHeight*2.5), 'auto', 'auto', (target.offset().left - this.outerWidth(tip) - nubHeight), width)

@@ -49,7 +49,7 @@ $tooltip-pip-size:            5px !default;
   line-height: $tooltip-line-height;
   padding: $tooltip-padding;
   max-width: 85%;
-  left: 50%;
+  #{$default-float}: 50%;
   width: 100%;
   color: $tooltip-font-color;
   background: $tooltip-bg;
@@ -57,6 +57,7 @@ $tooltip-pip-size:            5px !default;
 
   &>.nub {
     display: block;
+    #{$default-float}: $tooltip-pip-size;
     position: absolute;
     width: 0;
     height: 0;

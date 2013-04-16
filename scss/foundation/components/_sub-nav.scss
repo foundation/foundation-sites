@@ -30,7 +30,7 @@ $sub-nav-active-cursor:      default !default;
   overflow: hidden;
   margin: $sub-nav-list-margin;
   padding-top: $sub-nav-list-padding-top;
-  margin-#{$default-opposite}: 0;
+  margin-#{$opposite-direction}: 0;
   margin-#{$default-float}: emCalc(-9px);
 
   dt,
@@ -59,7 +59,7 @@ $sub-nav-active-cursor:      default !default;
 }
 
 
-@if $include-html-nav-classes {
+@if $include-html-nav-classes != false {
 
   /* Side Nav */
   .sub-nav { @include sub-nav; }

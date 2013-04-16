@@ -19,6 +19,7 @@ $thumb-transition-speed: 200ms !default;
 
 // We use this to create image thumbnail styles.
 @mixin thumb($border-width:$thumb-border-width, $box-shadow:$thumb-box-shadow, $box-shadow-hover:$thumb-box-shadow-hover) {
+  line-height: 0;
   display: inline-block;
   border: $thumb-border-style $border-width $thumb-border-color;
   -webkit-box-shadow: $box-shadow;
@@ -30,7 +31,7 @@ $thumb-transition-speed: 200ms !default;
 
 
 // If html classes are turned on we'll include these classes.
-@if $include-html-media-classes {
+@if $include-html-media-classes != false {
 
   /* Image Thumbnails */
   .th {

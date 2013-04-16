@@ -6,14 +6,14 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version : '4.0.0',
+    version : '4.1.2',
 
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
           '<div class="visible-img" style="display: none"><img src="//:0">' +
-          '<p class="clearing-caption"></p><a href="#" class="clearing-main-left"><span></span></a>' +
-          '<a href="#" class="clearing-main-right"><span></span></a></div>'
+          '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
+          '<a href="#" class="clearing-main-next"><span></span></a></div>'
       },
 
       // comma delimited list of selectors that, on click, will close clearing,
@@ -26,8 +26,8 @@
     },
 
     init : function (scope, method, options) {
-      this.scope = this.scope || scope;
-      Foundation.inherit(this, 'set_data get_data remove_data throttle');
+      var self = this;
+      Foundation.inherit(this, 'set_data get_data remove_data throttle data_options');
 
       if (typeof method === 'object') {
         options = $.extend(true, this.settings, method);
@@ -35,15 +35,15 @@
 
       if (typeof method != 'string') {
         $(this.scope).find('ul[data-clearing]').each(function () {
-          var self = Foundation.libs.clearing,
-              $el = $(this),
+          var $el = $(this),
               options = options || {},
+              lis = $el.find('li'),
               settings = self.get_data($el);
 
-          if (!settings) {
+          if (!settings && lis.length > 0) {
             options.$parent = $el.parent();
 
-            self.set_data($el, $.extend(true, self.settings, options));
+            self.set_data($el, $.extend({}, self.settings, options, self.data_options($el)));
 
             self.assemble($el.find('li'));
 
@@ -70,19 +70,30 @@
           function (e, current, target) {
             var current = current || $(this),
                 target = target || current,
-                settings = self.get_data(current.parent());
+                next = current.next('li'),
+                settings = self.get_data(current.parent()),
+                image = $(e.target);
 
             e.preventDefault();
             if (!settings) self.init();
 
+            // if clearing is open and the current image is
+            // clicked, go to the next image in sequence
+            if (target.hasClass('visible') 
+              && current[0] === target[0] 
+              && next.length > 0 && self.is_open(current)) {
+              target = next;
+              image = target.find('img');
+            }
+
             // set current and target to the clicked li if not otherwise defined.
-            self.open($(e.target), current, target);
+            self.open(image, current, target);
             self.update_paddles(target);
           })
 
-        .on('click.fndtn.clearing', '.clearing-main-right',
+        .on('click.fndtn.clearing', '.clearing-main-next',
           function (e) { this.nav(e, 'next') }.bind(this))
-        .on('click.fndtn.clearing', '.clearing-main-left',
+        .on('click.fndtn.clearing', '.clearing-main-prev',
           function (e) { this.nav(e, 'prev') }.bind(this))
         .on('click.fndtn.clearing', this.settings.close_selectors,
           function (e) { Foundation.libs.clearing.close(e, this) })
@@ -144,7 +155,10 @@
     },
 
     assemble : function ($li) {
-      var $el = $li.parent(),
+      var $el = $li.parent();
+      $el.after('<div id="foundationClearingHolder"></div>');
+
+      var holder = $('#foundationClearingHolder'),
           settings = this.get_data($el),
           grid = $el.detach(),
           data = {
@@ -154,7 +168,7 @@
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
             data.grid + '</div></div>';
 
-      return settings.$parent.append(wrapper);
+      return holder.after(wrapper).remove();
     },
 
     // event callbacks
@@ -167,9 +181,12 @@
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
-        image.attr('src', this.load($image));
+        image
+          .attr('src', this.load($image))
+          .css('visibility', 'hidden');
 
         this.loaded(image, function () {
+          image.css('visibility', 'visible');
           // toggle the gallery
           root.addClass('clearing-blackout');
           container.addClass('clearing-container');
@@ -208,6 +225,10 @@
       }
 
       return false;
+    },
+
+    is_open : function (current) {
+      return current.parent().attr('style').length > 0;
     },
 
     keydown : function (e) {
@@ -257,32 +278,39 @@
         .closest('.carousel')
         .siblings('.visible-img');
 
-      if (target.next().length) {
+      if (target.next().length > 0) {
         visible_image
-          .find('.clearing-main-right')
+          .find('.clearing-main-next')
           .removeClass('disabled');
       } else {
         visible_image
-          .find('.clearing-main-right')
+          .find('.clearing-main-next')
           .addClass('disabled');
       }
 
-      if (target.prev().length) {
+      if (target.prev().length > 0) {
         visible_image
-          .find('.clearing-main-left')
+          .find('.clearing-main-prev')
           .removeClass('disabled');
       } else {
         visible_image
-          .find('.clearing-main-left')
+          .find('.clearing-main-prev')
           .addClass('disabled');
       }
     },
 
     center : function (target) {
-      target.css({
-        marginLeft : -(this.outerWidth(target) / 2),
-        marginTop : -(this.outerHeight(target) / 2)
-      });
+      if (!this.rtl) {
+        target.css({
+          marginLeft : -(this.outerWidth(target) / 2),
+          marginTop : -(this.outerHeight(target) / 2)
+        });
+      } else {
+        target.css({
+          marginRight : -(this.outerWidth(target) / 2),
+          marginTop : -(this.outerHeight(target) / 2)
+        });
+      }
       return this;
     },
 
@@ -328,7 +356,7 @@
         return;
       }
 
-      if (this.complete || this.readyState === 4) {
+      if (image[0].complete || image[0].readyState === 4) {
         loaded();
       } else {
         bindLoad.call(image);
@@ -474,6 +502,10 @@
       $(window).off('.fndtn.clearing');
       this.remove_data(); // empty settings cache
       this.settings.init = false;
+    },
+
+    reflow : function () {
+      this.init();
     }
   };
 

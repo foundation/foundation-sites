@@ -124,14 +124,14 @@ $section-bottom-margin:             emCalc(20px) !default;
     .title {
       width: auto;
       border: $section-border-size $section-border-style $section-border-color;
-      border-right: 0;
+      border-#{$opposite-direction}: 0;
       border-bottom: 0;
       position: absolute;
       z-index: 1;
 
       a { width: 100%; }
     }
-    &:last-child .title { border-right: $section-border-size $section-border-style $section-border-color; }
+    &:last-child .title { border-#{$opposite-direction}: $section-border-size $section-border-style $section-border-color; }
 
     .content {
       border: $section-border-size $section-border-style $section-border-color;
@@ -204,7 +204,7 @@ $section-bottom-margin:             emCalc(20px) !default;
       .content {
         display: block;
         position: absolute;
-        left: 100%;
+        #{$default-float}: 100%;
         top: -1px;
         z-index: 999;
         min-width: $section-vertical-nav-min-width;
@@ -222,7 +222,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     .title {
       width: auto;
       border: $section-border-size $section-border-style $section-border-color;
-      border-left: 0;
+      border-#{$default-float}: 0;
       top: -1px;
       position: absolute;
       z-index: 1;
@@ -237,7 +237,7 @@ $section-bottom-margin:             emCalc(20px) !default;
         display: block;
         position: absolute;
         z-index: 999;
-        left: 0;
+        #{$default-float}: 0;
         top: -2px;
         min-width: $section-vertical-nav-min-width;
         border: $section-border-size $section-border-style $section-border-color;
@@ -247,14 +247,14 @@ $section-bottom-margin:             emCalc(20px) !default;
 }
 
 
-@if $include-html-section-classes {
+@if $include-html-section-classes != false {
 
   /* Sections */
   .section-container, .section-container.auto {
     @include section-container;
 
-    section,
-    .section {
+    &>section,
+    &>.section {
       @include section;
     }
   }
@@ -262,8 +262,8 @@ $section-bottom-margin:             emCalc(20px) !default;
   .section-container.tabs {
     @include section-container(false, tabs);
 
-    section,
-    .section { @include section(tabs); }
+    &>section,
+    &>.section { @include section(tabs); }
   }
 
   @media #{$small} {
@@ -271,8 +271,8 @@ $section-bottom-margin:             emCalc(20px) !default;
     .section-container.auto {
       @include section-container(false, tabs);
 
-      section,
-      .section { @include section(tabs); }
+      &>section,
+      &>.section { @include section(tabs); }
     }
     .section-container.accordion .section {
       padding-top: 0 !important;
@@ -288,15 +288,15 @@ $section-bottom-margin:             emCalc(20px) !default;
     .section-container.vertical-nav {
       @include section-container(false);
 
-      section,
-      .section { @include section(vertical-nav); }
+      &>section,
+      &>.section { @include section(vertical-nav); }
     }
 
     .section-container.horizontal-nav {
       @include section-container(false, horizontal-nav);
 
-      section,
-      .section { @include section(horizontal-nav); }
+      &>section,
+      &>.section { @include section(horizontal-nav); }
     }
   }
 

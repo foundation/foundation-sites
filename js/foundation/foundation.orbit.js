@@ -6,13 +6,15 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.0.7',
+    version: '4.1.0',
 
     settings: {
       timer_speed: 10000,
       animation_speed: 500,
       bullets: true,
       stack_on_small: true,
+      navigation_arrows: true,
+      slide_number: true,
       container_class: 'orbit-container',
       stack_on_small_class: 'orbit-stack-on-small',
       next_class: 'orbit-next',
@@ -97,13 +99,17 @@
       
       $.extend(true, self.settings, self.data_options($slides_container));
 
-      $container.append(self._prev_html());
-      $container.append(self._next_html());
+      if (self.settings.navigation_arrows) {
+          $container.append(self._prev_html());
+          $container.append(self._next_html());
+      }
       $slides_container.addClass(self.settings.slides_container_class);
       if (self.settings.stack_on_small) {
         $container.addClass(self.settings.stack_on_small_class);
       }
-      $container.append(self._slide_number_html(1, $slides.length));
+      if (self.settings.slide_number) {
+        $container.append(self._slide_number_html(1, $slides.length));
+      }
       $container.append(self._timer_html());
       if (self.settings.bullets) {
         $container.after(self._bullets_container_html($slides));
@@ -305,7 +311,8 @@
           $container = $slides_container.parent(),
           $slides = $slides_container.children(),
           $active_slide = $slides_container.find('.' + self.settings.active_slide_class),
-          active_index = $active_slide.index();
+          active_index = $active_slide.index(),
+          margin_position = Foundation.rtl ? 'marginRight' : 'marginLeft';
 
       if ($container.hasClass(self.settings.orbit_transition_class)) {
         return false;
@@ -326,11 +333,11 @@
         active_index = (index_or_direction % $slides.length);
       }
       if (active_index === ($slides.length - 1) && index_or_direction === 'next') {
-        $slides_container.css('marginLeft', '0%');
+        $slides_container.css(margin_position, '0%');
         active_index = 1;
       }
       else if (active_index === 0 && index_or_direction === 'prev') {
-        $slides_container.css('marginLeft', '-' + ($slides.length - 1) * 100 + '%');
+        $slides_container.css(margin_position, '-' + ($slides.length - 1) * 100 + '%');
         active_index = $slides.length - 2;
       }
       // Start transition, make next slide active
@@ -347,14 +354,15 @@
       // Check to see if animation will occur, otherwise perform
       // callbacks manually
       $slides_container.trigger('orbit:before-slide-change');
-      if ($slides_container.css('marginLeft') === new_margin_left) {
+      if ($slides_container.css(margin_position) === new_margin_left) {
         $container.removeClass(self.settings.orbit_transition_class);
         $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
         callback();
       } else {
-        $slides_container.animate({
-          'marginLeft' : new_margin_left
-        }, self.settings.animation_speed, 'linear', function() {
+        var properties = {};
+        properties[margin_position] = new_margin_left;
+
+        $slides_container.animate(properties, self.settings.animation_speed, 'linear', function() {
           $container.removeClass(self.settings.orbit_transition_class);
           $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
           callback();

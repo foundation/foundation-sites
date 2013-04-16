@@ -37,7 +37,9 @@
         .each(this.append_custom_markup);
       $('form.custom input[type="checkbox"]', $(this.scope)).not('[data-customforms="disabled"]')
         .each(this.append_custom_markup);
-      $('form.custom select', $(this.scope)).not('[data-customforms="disabled"]')
+      $('form.custom select', $(this.scope))
+          .not('[data-customforms="disabled"]')
+          .not('[multiple=multiple]')
         .each(this.append_custom_select);
     },
 
@@ -143,6 +145,37 @@
             $select.trigger('change');
           }
         });
+
+      $(window).on('keydown', function (e) {
+        var focus = document.activeElement,
+            dropdown = $('.custom.dropdown.open');
+
+        if (dropdown.length > 0) {
+          e.preventDefault();
+
+          if (e.which === 13) {
+            dropdown.find('li.selected').trigger('click');
+          }
+
+          if (e.which === 38) {
+            var current = dropdown.find('li.selected'),
+                prev = current.prev(':not(.disabled)');
+
+            if (prev.length > 0) {
+              current.removeClass('selected');
+              prev.addClass('selected');
+            }
+          } else if (e.which === 40) {
+            var current = dropdown.find('li.selected'),
+                next = current.next(':not(.disabled)');
+
+            if (next.length > 0) {
+              current.removeClass('selected');
+              next.addClass('selected');
+            }
+          }
+        }
+      });
 
       this.settings.init = true;
     },

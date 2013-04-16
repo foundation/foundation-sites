@@ -41,7 +41,7 @@ $reveal-border-color:    #666 !default;
   z-index: 98;
   display: none;
   top: 0;
-  left: 0;
+  #{$default-float}: 0;
 }
 
 // We use this mixin to create the structure of a reveal modal
@@ -93,13 +93,13 @@ $reveal-border-color:    #666 !default;
   line-height: 1;
   position: absolute;
   top: $reveal-close-top;
-  #{$default-opposite}: $reveal-close-side;
+  #{$opposite-direction}: $reveal-close-side;
   color: $color;
   font-weight: $reveal-close-weight;
   cursor: pointer;
 }
 
-@if $include-html-reveal-classes {
+@if $include-html-reveal-classes != false {
   // Reveal Modals
   .reveal-modal-bg { @include reveal-bg; }
 

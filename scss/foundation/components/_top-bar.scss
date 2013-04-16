@@ -20,6 +20,7 @@ $topbar-title-font-size: emCalc(17px) !default;
 $topbar-link-color: #fff !default;
 $topbar-link-weight: bold !default;
 $topbar-link-font-size: emCalc(13px) !default;
+$topbar-link-hover-lightness: -30% !default; // Darken by 30%
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
@@ -107,7 +108,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   // Menu toggle button on small devices
   .toggle-topbar {
     position: absolute;
-    #{$default-opposite}: 0;
+    #{$opposite-direction}: 0;
     top: 0;
 
     a {
@@ -124,7 +125,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
     // Adding the class "menu-icon" will add the 3-line icon people love and adore.
     &.menu-icon {
-      #{$default-opposite}: $topbar-height / 3;
+      #{$opposite-direction}: $topbar-height / 3;
       top: 50%;
       margin-top: -16px;
       padding-#{$default-float}: 40px;
@@ -139,7 +140,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
         span {
           position: absolute;
-          #{$default-opposite}: 0;
+          #{$opposite-direction}: 0;
           display: block;
           width: 16px;
           height: 0;
@@ -197,7 +198,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     margin: 0;
   }
 
-  .divider {
+  .divider,
+  [role="separator"] {
     border-bottom: solid 1px lighten($topbar-dropdown-bg, 10%);
     border-top: solid 1px darken($topbar-dropdown-bg, 10%);
     clear: both;
@@ -215,6 +217,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       font-size: $topbar-link-font-size;
       font-weight: $topbar-link-weight;
       background: $topbar-dropdown-bg;
+      height: $topbar-height;
 
       &:hover { background: darken($topbar-dropdown-bg, 3%); }
 
@@ -248,7 +251,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     }
 
     // Apply the active link color when it has that class
-    &.active a { background: darken($topbar-dropdown-bg, 3%); }
+    &.active > a { background: darken($topbar-dropdown-bg, 3%); }
   }
 
   // Add some extra padding for list items contains buttons
@@ -261,11 +264,11 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     & > a {
       &:after {
         @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
-        margin-#{$default-opposite}: $topbar-height / 3;
+        margin-#{$opposite-direction}: $topbar-height / 3;
         margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
         position: absolute;
-        top: 50%;
-        #{$default-opposite}: 0;
+        top: 22px;
+        #{$opposite-direction}: 0;
       }
     }
 
@@ -339,7 +342,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     &.expanded { background: $topbar-bg; }
   }
 
-  .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; }
+  .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; margin-bottom: $topbar-margin-bottom; }
 
   .top-bar-section {
     @include single-transition(none,0,0);
@@ -361,13 +364,13 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         padding: 0 $topbar-height / 3;
         line-height: $topbar-height;
         background: $topbar-bg;
-        &:hover { background: darken($topbar-dropdown-bg, 30%); }
+        &:hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
       }
     }
 
     .has-dropdown {
       & > a {
-        padding-#{$default-opposite}: $topbar-dropdown-toggle-size * 7 !important;
+        padding-#{$opposite-direction}: $topbar-dropdown-toggle-size * 7 !important;
 
         &:after {
           @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
@@ -392,7 +395,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
             border: none;
             content: "\00bb";
             margin-top: -7px;
-            #{$default-opposite}: 5px;
+            #{$opposite-direction}: 5px;
           }
         }
       }
@@ -427,10 +430,11 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       }
     }
 
-    & > ul > .divider {
+    & > ul > .divider,
+    & > ul > [role="separator"] {
       border-bottom: none;
       border-top: none;
-      border-#{$default-opposite}: solid 1px lighten($topbar-bg, 10%);
+      border-#{$opposite-direction}: solid 1px lighten($topbar-bg, 10%);
       border-#{$default-float}: solid 1px darken($topbar-bg, 10%);
       clear: none;
       height: $topbar-height;

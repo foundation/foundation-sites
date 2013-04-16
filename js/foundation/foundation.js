@@ -98,7 +98,7 @@ if (typeof jQuery === "undefined" &&
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.0.8',
+    version : '4.1.3',
 
     // global Foundation cache object
     cache : {},
@@ -112,6 +112,10 @@ if (typeof jQuery === "undefined" &&
       // disable library error catching,
       // used for development only
       if (nc) this.nc = nc;
+
+
+      // check RTL
+      this.rtl = /rtl/i.test($('html').attr('dir'));
 
       // set foundation global scope
       this.scope = scope || this.scope;
@@ -141,9 +145,9 @@ if (typeof jQuery === "undefined" &&
     },
 
     response_obj : function (response_arr, args) {
-      for (var callback in args) {
-        if (typeof args[callback] === 'function') {
-          return args[callback]({
+      for (var i = 0, len = args.length; i < len; i++) {
+        if (typeof args[i] === 'function') {
+          return args[i]({
             errors: response_arr.filter(function (s) {
               if (typeof s === 'string') return s;
             })
@@ -177,6 +181,8 @@ if (typeof jQuery === "undefined" &&
 
     patch : function (lib) {
       this.fix_outer(lib);
+      lib.scope = this.scope;
+      lib.rtl = this.rtl;
     },
 
     inherit : function (scope, methods) {
