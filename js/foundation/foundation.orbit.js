@@ -13,6 +13,8 @@
       animation_speed: 500,
       bullets: true,
       stack_on_small: true,
+      navigation_arrows: true,
+      slide_number: true,
       container_class: 'orbit-container',
       stack_on_small_class: 'orbit-stack-on-small',
       next_class: 'orbit-next',
@@ -97,13 +99,17 @@
       
       $.extend(true, self.settings, self.data_options($slides_container));
 
-      $container.append(self._prev_html());
-      $container.append(self._next_html());
+      if (self.settings.navigation_arrows) {
+          $container.append(self._prev_html());
+          $container.append(self._next_html());
+      }
       $slides_container.addClass(self.settings.slides_container_class);
       if (self.settings.stack_on_small) {
         $container.addClass(self.settings.stack_on_small_class);
       }
-      $container.append(self._slide_number_html(1, $slides.length));
+      if (self.settings.slide_number) {
+        $container.append(self._slide_number_html(1, $slides.length));
+      }
       $container.append(self._timer_html());
       if (self.settings.bullets) {
         $container.after(self._bullets_container_html($slides));
