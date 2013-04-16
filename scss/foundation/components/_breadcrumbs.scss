@@ -6,7 +6,7 @@
 $crumb-bg: lighten($secondary-color, 5%)                       !default;
 
 // We use these to set the padding around the breadcrumbs.
-$crumb-padding: emCalc(6px) emCalc(14px) emCalc(9px)           !default;
+$crumb-padding: emCalc(9px) emCalc(14px) emCalc(9px)           !default;
 $crumb-side-padding: emCalc(12px)                              !default;
 
 // We use these to control border styles.
@@ -100,7 +100,7 @@ $crumb-slash: "/"                                              !default;
     position: relative;
     top: 1px;
   }
-  
+
   &:first-child:before {
 	  content: " ";
 	  margin: 0;
