@@ -72,7 +72,7 @@
   /* Fluid Layout ---------------------- */
 
   .orbit img.fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }
-  .orbit, .orbit-wrapper { width: 100% !important; }
+  .orbit, .orbit-wrapper { width: 100%; }
 
   /* Correct timer in IE */
   .lt-ie9 .timer { display: none !important; }
