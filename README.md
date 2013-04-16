@@ -68,6 +68,9 @@ Middleman
 
 * [Middleman Skeleton](https://github.com/axyz/middleman-zurb-foundation) by [Andrea Moretti](https://twitter.com/axyz)
 
+Magento
+* [Magento & Foundation](https://github.com/nandroid/MagentoFoundation) by Nandroid
+
 Python
 * [Pyramid Scaffold](https://github.com/ppinette/pyramid_foundation) by Parker Pinette
 
