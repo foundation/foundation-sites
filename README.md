@@ -28,14 +28,14 @@ Community
 
 Many thanks to all the people working on Foundation either to improve the base code or to support specific frameworks. If you want to get on this readme send an email to foundation@zurb.com, and if you have questions you can join the Unofficial Foundation Google Group here: http://groups.google.com/group/foundation-framework-
 
-WordPress
+WordPress (Versions marked 3/20/13)
 
-* [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
-* [Reverie](http://themefortress.com/reverie/) by Zhen
-* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press
-* [Yeti](https://github.com/modlearning/Yeti) by Modular Learning
-* [Foundation](https://github.com/drewsymo/Foundation) by Drewsymo
-* [required+ Themes](http://themes.required.ch/) by required+
+* [Reverie](http://themefortress.com/reverie/) by Zhen using Foundation version 4
+* [Corner Stone](https://github.com/thewirelessguy/cornerstone) by [Stephen Mullen](https://twitter.com/wirelessguyuk) using Foundation version v4.09
+* [required+ Themes](http://themes.required.ch/) by required+ using Foundation version 3.25
+* [Yeti](https://github.com/modlearning/Yeti) by Modular Learning using Foundation version 3.2
+* [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris using Foundation version 3
+* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press using Foundation version 3
 
 Joomla
 
@@ -113,6 +113,7 @@ Ruby on Rails Sass Gems
 
 Yeoman Generator
 
+* [Yeoman 1.0-Foundation 4](https://github.com/lkbgift/foundation4-yeoman) by [Leonard Bogdonoff](http://twitter.com/lkbcc)
 * [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
 
 
