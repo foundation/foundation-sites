@@ -212,7 +212,7 @@ $switch-label-outline:            1px dotted #888 !default;
   @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
-@if $include-html-button-classes {
+@if $include-html-button-classes != false {
 
   /* Foundation Switches */
   @media only screen {

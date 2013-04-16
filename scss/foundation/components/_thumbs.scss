@@ -31,7 +31,7 @@ $thumb-transition-speed: 200ms !default;
 
 
 // If html classes are turned on we'll include these classes.
-@if $include-html-media-classes {
+@if $include-html-media-classes != false {
 
   /* Image Thumbnails */
   .th {

@@ -244,7 +244,7 @@ $input-error-message-font-color-alt: #333 !default;
 }
 
 // Only include these classes if the variable is true, otherwise they'll be left out.
-@if $include-html-form-classes {
+@if $include-html-form-classes != false {
 	/* Standard Forms */
   form { margin: 0 0 $form-spacing; }
 
