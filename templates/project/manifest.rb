@@ -26,15 +26,6 @@ vendor_javascripts = copy_js_from("../../js", "vendor")
 
 javascript "../../js/foundation/foundation.js", :to => "foundation/foundation.js"
 
-# javascripts.reject! do |f|
-#   [
-#     "jquery.js",
-#     "modernizr.foundation.js",
-#     "app.js",
-#     "jquery.offcanvas.js"
-#   ].include?(File.basename(f))
-# end
-
 html 'index.html', :erb => true, :javascripts => javascripts, :version => Foundation::VERSION
 
 help %Q{
