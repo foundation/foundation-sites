@@ -101,7 +101,7 @@ $total-columns: 12 !default;
   }
 
   @if $float {
-    @if $float == left or true { float: $default-float; }
+    @if $float == left or $float == true { float: $default-float; }
     @else if $float == right { float: $opposite-direction; }
     @else { float: none; }
   }
@@ -167,6 +167,13 @@ $total-columns: 12 !default;
     @for $i from 1 through $total-columns - 1 {
       .small-push#{-$i} { #{$default-float}: inherit; }
       .small-pull#{-$i} { #{$opposite-direction}: inherit; }
+    }
+
+    .column.small-centered,
+    .columns.small-centered {
+      margin-#{$default-float}: 0;
+      margin-#{$opposite-direction}: 0;
+      float: $default-float;
     }
 
     .column.large-centered,
