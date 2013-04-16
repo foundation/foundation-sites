@@ -20,7 +20,7 @@ $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #222 !default;
 
 // We use thes to controls the style of slide numbers
-$orbit-slide-number-bg: rgb(0,0,0) !default;
+$orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: emCalc(5px) !default;
 
@@ -67,7 +67,9 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
     top: 10px;
     #{$default-float}: 10px;
     font-size: 12px;
-    span { font-weight: 700; }
+    span { font-weight: 700; padding: $orbit-slide-number-padding;}
+    color: $orbit-slide-number-font-color;
+    background: $orbit-slide-number-bg;
   }
 
   .orbit-timer {
