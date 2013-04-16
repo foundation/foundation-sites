@@ -115,9 +115,6 @@ $total-columns: 12 !default;
   .row {
     @include grid-row;
 
-    .column,
-    .columns { @include grid-column($columns:$total-columns); }
-
     &.collapse {
       .column,
       .columns { @include grid-column($collapse:true); }
@@ -128,17 +125,20 @@ $total-columns: 12 !default;
     }
   }
 
+  .column,
+  .columns { @include grid-column($columns:$total-columns); }
+
   @media only screen {
 
-    .row .column,
-    .row .columns { @include grid-column($columns:false); }
+    .column,
+    .columns { @include grid-column($columns:false); }
 
     @for $i from 1 through $total-columns {
-      .row .small#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+      .small#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
     @for $i from 1 through $total-columns - 2 {
-      .row .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
+      .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
     [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
@@ -152,7 +152,7 @@ $total-columns: 12 !default;
   @media #{$small} {
 
     @for $i from 1 through $total-columns {
-      .row .large#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+      .large#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
     @for $i from 1 through $total-columns - 1 {

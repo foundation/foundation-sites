@@ -347,8 +347,8 @@ $float: left
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
-$row-width:     62.5em !default;
-$column-gutter: 1.875em !default;
+$row-width:     emCalc(1000px) !default;
+$column-gutter: emCalc(30px) !default;
 $total-columns: 12 !default;
 ', :css %>
 
