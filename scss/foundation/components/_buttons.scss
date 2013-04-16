@@ -85,7 +85,7 @@ $button-disabled-opacity: 0.6 !default;
     @if $padding {
 	  padding-top: $padding;
 	  padding-bottom: $padding + emCalc(1px);
-    } @else {
+    } @else if $padding == false {
       padding-top:0;
       padding-bottom:0;
     }
@@ -176,7 +176,7 @@ $button-disabled-opacity: 0.6 !default;
     &.large  { @include button-size($padding:$button-lrg); }
     &.small  { @include button-size($padding:$button-sml); }
     &.tiny   { @include button-size($padding:$button-tny); }
-    &.expand { @include button-size($padding:false,$full-width:true); }
+    &.expand { @include button-size($padding:null,$full-width:true); }
 
     &.left-align  { text-align: left; text-indent: emCalc(12px); }
     &.right-align { text-align: right; padding-right: emCalc(12px); }
