@@ -111,6 +111,9 @@
 // set $em-base to $base-font-size and make sure $base-font-size is a px value.
 $base-font-size: 100% !default;
 
+// $base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 150% !default;
+
 // This is the default html and body font-size for the base em value.
 $em-base: 16px !default;
 
@@ -212,7 +215,7 @@ body {
   font-family: $body-font-family;
   font-weight: $body-font-weight;
   font-style: $body-font-style;
-  line-height: 1;
+  line-height: 1; // Set to $base-line-height to take on browser default of 150%
   position: relative;
 }
 
