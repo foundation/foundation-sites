@@ -18,9 +18,10 @@ $section-border-style:           solid !default;
 $section-border-color:           #ccc !default;
 
 // Control the color of the background and some size options
-$section-content-bg:             #fff !default;
-$section-vertical-nav-min-width: emCalc(200px) !default;
-$section-bottom-margin:          emCalc(20px) !default;
+$section-content-bg:                #fff !default;
+$section-vertical-nav-min-width:    emCalc(200px) !default;
+$section-vertical-tabs-title-width: emCalc(200px) !default;
+$section-bottom-margin:             emCalc(20px) !default;
 
 
 //
@@ -46,6 +47,12 @@ $section-bottom-margin:          emCalc(20px) !default;
   // Tabs container border styles
   @else if $section-type == tabs {
     border: 0;
+    position: relative;
+  }
+
+  // Vertical Tabs container border styles
+  @else if $section-type == vertical-tabs {
+    border: $section-border-size $section-border-style $section-border-color;
     position: relative;
   }
 
@@ -144,6 +151,46 @@ $section-bottom-margin:          emCalc(20px) !default;
     }
   }
 
+  @else if $section-type == vertical-tabs {
+    padding-top: 0 !important;
+    border: 0;
+    position: static;
+    background-color: $section-title-bg;
+
+    .title {
+      position: absolute;
+      border-top: $section-border-size $section-border-style $section-border-color;
+      width: $section-vertical-tabs-title-width;
+    }
+
+    &:first-child .title { border-top: 0; }
+
+    .content {
+      // Display all content blocks to account for the scrollbar
+      // in the outerWidth measurements. JavaScript will toggle the active tabs.
+      display: block;
+
+      position: relative;
+      left: $section-vertical-tabs-title-width;
+      border-left: $section-border-size $section-border-style $section-border-color;
+      z-index: 10;
+    }
+
+    &.active {
+
+      .title {
+        background-color: $section-title-bg-active-tabs;
+        width: $section-vertical-tabs-title-width + emCalc(2px); // Cover the content's left border
+        border-right: 0;
+        z-index: 11; // Put active title on top of the content
+      }
+
+      &:last-child .title {
+        border-bottom: $section-border-size $section-border-style $section-border-color;
+      }
+    }
+  }
+
   // Vertical Nav Styles
   @else if $section-type == vertical-nav {
 
@@ -229,6 +276,13 @@ $section-bottom-margin:          emCalc(20px) !default;
     }
     .section-container.accordion .section {
       padding-top: 0 !important;
+    }
+
+    .section-container.vertical-tabs {
+      @include section-container(false, vertical-tabs);
+
+      section,
+      .section { @include section(vertical-tabs); }
     }
 
     .section-container.vertical-nav {
