@@ -81,7 +81,6 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
       border-#{$default-float}-color: transparent !important;
       border-#{$opposite-direction}-color: transparent !important;
       top: -($joyride-tip-nub-size*2);
-      bottom: none;
     }
     &.bottom {
       border-color: $joyride-tip-bg !important;
@@ -89,7 +88,6 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
       border-#{$default-float}-color: transparent !important;
       border-#{$opposite-direction}-color: transparent !important;
       bottom: -($joyride-tip-nub-size*2);
-      bottom: none;
     }
 
     &.right { right: -($joyride-tip-nub-size*2); }
@@ -187,14 +185,12 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
         border-#{$default-float}-color: transparent !important;
         border-#{$opposite-direction}-color: transparent !important;
         bottom: -($joyride-tip-nub-size*2);
-        bottom: none;
       }
       &.right {
         border-color: $joyride-tip-bg !important;
         border-top-color: transparent !important;
         border-right-color: transparent !important; border-bottom-color: transparent !important;
         top: $joyride-tip-position-offset;
-        bottom: none;
         left: auto;
         right: -($joyride-tip-nub-size*2);
       }
@@ -205,7 +201,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
         border-bottom-color: transparent !important;
         top: $joyride-tip-position-offset;
         left: -($joyride-tip-nub-size*2);
-        right: auto; bottom: none;
+        right: auto;
       }
     }
   }

@@ -81,10 +81,16 @@ $button-disabled-opacity: 0.6 !default;
 
   // We can set $full-width:true to remove side padding extend width.
   @if $full-width {
-    padding-top: $padding;
-    padding-#{$opposite-direction}: 0px;
-    padding-bottom: $padding + emCalc(1px);
-    padding-#{$default-float}: 0px;
+    // We still need to check if $padding is set.
+    @if $padding {
+	  padding-top: $padding;
+	  padding-bottom: $padding + emCalc(1px);
+    } @else {
+      padding-top:0;
+      padding-bottom:0;
+    }
+    padding-right: 0px;
+    padding-left: 0px;
     width: 100%;
   }
 
@@ -170,7 +176,7 @@ $button-disabled-opacity: 0.6 !default;
     &.large  { @include button-size($padding:$button-lrg); }
     &.small  { @include button-size($padding:$button-sml); }
     &.tiny   { @include button-size($padding:$button-tny); }
-    &.expand { @include button-size(false,$full-width:true); }
+    &.expand { @include button-size($padding:false,$full-width:true); }
 
     &.left-align  { text-align: left; text-indent: emCalc(12px); }
     &.right-align { text-align: right; padding-right: emCalc(12px); }
@@ -209,12 +215,12 @@ $button-disabled-opacity: 0.6 !default;
 
   // Additional styles for screens larger than 768px
   @media #{$small} {
-  
+
     button, .button {
       @include button-base($style:false, $display:inline-block);
       @include button-size($padding:false, $full-width:false);
     }
-    
+
   }
 
 }
