@@ -7,6 +7,8 @@
 * Added reference to $base-line-height variables for those using Compass vertical rhythm
 * Fixed issue with invalid css coming through into buttons
 * Various bug fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.2...v4.1.3).
  -->
 
 ### 4.1.2- April 10, 2013
@@ -19,7 +21,6 @@
 * Addressed Foundation loader incompatiblities with non-jQuery and non-Zepto JS libraries
 * Fixed Rails generator bug when using CoffeeScript files
 * Added `reflow` to Section js plugin to support dynamic content
-
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.1...v4.1.2).
 
