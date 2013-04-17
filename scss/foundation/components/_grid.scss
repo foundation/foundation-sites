@@ -173,7 +173,7 @@ $total-columns: 12 !default;
     .columns.small-centered {
       margin-#{$default-float}: 0;
       margin-#{$opposite-direction}: 0;
-      float: $default-float;
+      float: $default-float !important;
     }
 
     .column.large-centered,
