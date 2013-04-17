@@ -35,6 +35,12 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 [data-clearing] {
   @include clearfix;
   margin-bottom: 0;
+  list-style: none;
+
+  li {
+    float: left;
+    margin-right: 10px;
+  }
 }
 
 .clearing-blackout {
