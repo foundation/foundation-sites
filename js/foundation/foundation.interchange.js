@@ -36,8 +36,9 @@
       if (reset) {
         return this.cache.loadables = $('[data-' + this.settings.load_attr +']');
       }
-      
-      return this.cache.loadables || $('[data-' + this.settings.load_attr +']');
+
+      return this.cache.loadables 
+        || (this.cache.loadables = $('[data-' + this.settings.load_attr +']'));
     },
 
     nodes : function () {
@@ -49,7 +50,7 @@
     },
 
     update_nodes : function () {
-      this.cached_nodes = this.loadables.filter(function () {
+      this.cached_nodes = this.loadables().filter(function () {
         if (!/IMG/.test(this.nodeName) && this.nodeType === 1) {
           return true;
         }
@@ -75,11 +76,13 @@
 
       for (var i = count - 1; i >= 0; i--) {
         this.valid(images[i], (i === 0), function (image, last) {
-          if (image && image.hasAttribute('data-foundation-load')) {
+          if (image && image.hasAttribute('data-' + this.settings.load_attr)) {
             this.cached_images.push(image);
           }
 
           if (last) {
+            // all images have been updated, we
+            // can now begin parsing queries
             this.enhance();
           }
         }.bind(this));
@@ -100,21 +103,53 @@
       };
 
       img.src = image.src;
+
+      return img;
     },
 
+    // temporary callback
     enhance : function () {
       console.log(this.images())
     },
 
-    parse_logic : function (el) {
-      var raw = el.data('foundation-load').split(/\[(.*?)\]/);
-          count = raw.length;
+    build_config_object : function(el) {
+      var raw_settings_arr = this.parse_data_attr(el),
+          scenarios = [], count = raw_settings_arr.length;
 
-      for (var i = count - 1; i >= 0; i--) {
-        if (raw[i].replace(/[\W\d]+/, '').length < 1) {
-          delete raw[i];
+      if (count > 0) {
+        for (var i = count - 1; i >= 0; i--) {
+          var split = raw_settings_arr[i].split(',');
+
+          if (split.length > 1) {
+            if (/(/.split[1])
+            scenarios.push({path: split[0], action: split})
+          }
         }
       }
+
+    },
+
+    trim : function(str) {
+      if (typeof str === 'string') {
+        return $.trim(str);
+      }
+
+      return str;
+    },
+
+    parse_data_attr : function (el) {
+      var raw = el.data(this.settings.load_attr).split(/\[(.*?)\]/),
+          count = raw.length, output = [];
+
+      for (var i = count - 1; i >= 0; i--) {
+        // assume that settings are properly configured
+        // if length is longer than typical extension
+        if (raw[i].replace(/[\W\d]+/, '').length > 4) {
+          output.push(raw[i]);
+        }
+      }
+
+      return output;
     }
     
   };
