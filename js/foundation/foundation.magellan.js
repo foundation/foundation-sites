@@ -54,7 +54,7 @@
         .on('update-position.fndtn.magellan', function(){
           var $el = $(this);
           // $el.data("magellan-fixed-position","");
-          //$el.data("magellan-top-offset", "");
+          // $el.data("magellan-top-offset", "");
         })
         .trigger('update-position');
 
