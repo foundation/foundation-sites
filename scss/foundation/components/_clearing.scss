@@ -38,8 +38,8 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   list-style: none;
 
   li {
-    float: left;
-    margin-right: 10px;
+    float: $default-float;
+    margin-#{$opposite-direction}: 10px;
   }
 }
 
