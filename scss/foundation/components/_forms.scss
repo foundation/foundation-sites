@@ -22,6 +22,7 @@ $input-border-style:                 solid !default;
 $input-border-width:                 1px !default;
 $input-disabled-bg:                  #ddd !default;
 $input-box-shadow:                   inset 0 1px 2px rgba(0,0,0,0.1) !default;
+$input-include-glowing-effect:       false !default;
 
 // We use these to style the fieldset border and spacing.
 $fieldset-border-style:              solid !default;
@@ -52,6 +53,9 @@ $input-error-message-font-weight:    bold !default;
 $input-error-message-font-color:     #fff !default;
 $input-error-message-font-color-alt: #333 !default;
 
+//We use this to style the glowing effect of inputs when focused
+$glowing-effect-fade-time:           0.45s !default;
+$glowing-effect-color:               $input-focus-border-color !default;
 
 //
 // Form Mixins
@@ -91,7 +95,9 @@ $input-error-message-font-color-alt: #333 !default;
   height: emCalc(13px) + ($form-spacing * 1.5);
   width: 100%;
   @include box-sizing(border-box);
-
+  @if $input-include-glowing-effect {
+      @include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
+  }
   // Basic focus styles
   &:focus {
     background: $input-focus-bg-color;
@@ -311,7 +317,9 @@ $input-error-message-font-color-alt: #333 !default;
   input[type="url"],
   textarea {
     @include form-element;
-    @include single-transition(all, 0.15s, linear);
+    @if not $input-include-glowing-effect {
+        @include single-transition(all, 0.15s, linear);
+    }
   }
 
   /* We add basic fieldset styling */
