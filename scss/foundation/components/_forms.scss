@@ -22,7 +22,7 @@ $input-border-style:                 solid !default;
 $input-border-width:                 1px !default;
 $input-disabled-bg:                  #ddd !default;
 $input-box-shadow:                   inset 0 1px 2px rgba(0,0,0,0.1) !default;
-$input-include-glowing-effect:       false !default;
+$input-include-glowing-effect:       true !default;
 
 // We use these to style the fieldset border and spacing.
 $fieldset-border-style:              solid !default;

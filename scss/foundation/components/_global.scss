@@ -98,6 +98,21 @@
   &:after { clear: both; }
 }
 
+
+// We use this to add a glowing effect to block elements
+@mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($primary-color, .25)) {
+  -webkit-transition: box-shadow, $fade-time, -moz-box-shadow, $fade-time, -webkit-box-shadow, $fade-time, border-color, $fade-time, ease-in-out;
+  -moz-transition: box-shadow, $fade-time, -moz-box-shadow, $fade-time, -webkit-box-shadow, $fade-time, border-color, $fade-time, ease-in-out;
+  transition: box-shadow, $fade-time, -moz-box-shadow, $fade-time, -webkit-box-shadow, $fade-time, border-color, $fade-time, ease-in-out;
+
+  &:#{$selector} {
+    -webkit-box-shadow: 0 0 5px $glowing-effect-color;
+    -moz-box-shadow: 0 0 5px $glowing-effect-color;
+    box-shadow: 0 0 5px $glowing-effect-color;
+    border-color: $glowing-effect-color;
+  }
+}
+
 //
 // Foundation Variables
 //
