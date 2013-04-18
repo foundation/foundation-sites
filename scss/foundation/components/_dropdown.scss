@@ -105,18 +105,22 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 @mixin dropdown-style {
   font-size: $f-dropdown-font-size;
   cursor: pointer;
-  padding: $f-dropdown-list-padding;
+  
   line-height: $f-dropdown-line-height;
   margin: 0;
 
   &:hover,
   &:focus { background: $f-dropdown-list-hover-bg; }
 
-  a { color: $f-dropdown-font-color; }
+  a {
+    display: block;
+    padding: $f-dropdown-list-padding;
+    color: $f-dropdown-font-color;
+  }
 }
 
 
-@if $include-html-nav-classes {
+@if $include-html-nav-classes != false {
 
   @media only screen and (max-width: 767px) {
     .f-dropdown {

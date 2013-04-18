@@ -81,10 +81,16 @@ $button-disabled-opacity: 0.6 !default;
 
   // We can set $full-width:true to remove side padding extend width.
   @if $full-width {
-    padding-top: $padding;
-    padding-#{$opposite-direction}: 0px;
-    padding-bottom: $padding + emCalc(1px);
-    padding-#{$default-float}: 0px;
+    // We still need to check if $padding is set.
+    @if $padding {
+	  padding-top: $padding;
+	  padding-bottom: $padding + emCalc(1px);
+    } @else if $padding == false {
+      padding-top:0;
+      padding-bottom:0;
+    }
+    padding-right: 0px;
+    padding-left: 0px;
     width: 100%;
   }
 
@@ -155,7 +161,7 @@ $button-disabled-opacity: 0.6 !default;
 //
 
 // Only include these classes if the variable is true, otherwise they'll be left out.
-@if $include-html-button-classes {
+@if $include-html-button-classes != false {
 
   // Default styles applied outside of media query
   button, .button {
@@ -170,7 +176,7 @@ $button-disabled-opacity: 0.6 !default;
     &.large  { @include button-size($padding:$button-lrg); }
     &.small  { @include button-size($padding:$button-sml); }
     &.tiny   { @include button-size($padding:$button-tny); }
-    &.expand { @include button-size(false,$full-width:true); }
+    &.expand { @include button-size($padding:null,$full-width:true); }
 
     &.left-align  { text-align: left; text-indent: emCalc(12px); }
     &.right-align { text-align: right; padding-right: emCalc(12px); }
@@ -183,8 +189,7 @@ $button-disabled-opacity: 0.6 !default;
 
   }
 
-  input.button,
-  button.button {
+  button, .button {
     @include button-size($padding:false, $is-input:$button-med);
     &.tiny { @include button-size($padding:false, $is-input:$button-tny); }
     &.small { @include button-size($padding:false, $is-input:$button-sml); }
@@ -194,7 +199,7 @@ $button-disabled-opacity: 0.6 !default;
   // Styles for any browser or device that support media queries
   @media only screen {
 
-    .button {
+    button, .button {
       @include inset-shadow();
       @include single-transition(background-color);
 
@@ -210,10 +215,12 @@ $button-disabled-opacity: 0.6 !default;
 
   // Additional styles for screens larger than 768px
   @media #{$small} {
-    .button {
+
+    button, .button {
       @include button-base($style:false, $display:inline-block);
       @include button-size($padding:false, $full-width:false);
     }
+
   }
 
 }

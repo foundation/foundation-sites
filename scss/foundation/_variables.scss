@@ -1,18 +1,25 @@
-// Required global settings and mixins for Foundation
-@import "foundation/foundation-global";
-
-// Settings file to override Foundation variables
-
-// You can find the variables for each component at the bottom of their
-// doc page. We tried to name them to where they'd make sense just by reading them.
-// Go to http://foundation.zurb.com/docs/ to find what you need.
-
 //
-// Foundation Global Variables
+// Foundation Variables
 //
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with brower-based text zoom or user-set defaults.
+$base-font-size: 100% !default;
+
+// $base-line-height is 24px while $base-font-size is 16px
+// $base-line-height: 150%;
 
 // This is the default html and body font-size for the base em value.
-// $em-base: 16px;
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be a different size and not have it effect grid size too,
+// set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
+$em-base: 16px !default;
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
 
 // We use these to control various global styles
 // $body-bg: #fff;
@@ -45,8 +52,6 @@
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
 // $include-print-styles: true;
-
-// Modular html classes
 // $include-html-grid-classes: $include-html-classes;
 // $include-html-visibility-classes: $include-html-classes;
 // $include-html-button-classes: $include-html-classes;
@@ -60,13 +65,26 @@
 // $include-html-panel-classes: $include-html-classes;
 // $include-html-pricing-classes: $include-html-classes;
 // $include-html-progress-classes: $include-html-classes;
+// $include-html-magellan-classes: $include-html-classes;
+
+// Media Queries
+// $small-screen: emCalc(768px);
+// $medium-screen: emCalc(1280px);
+// $large-screen: emCalc(1440px);
+
+// $screen: "only screen";
+// $small: "only screen and (min-width:"#{$small-screen}")";
+// $medium: "only screen and (min-width:"#{$medium-screen}")";
+// $large: "only screen and (min-width:"#{$large-screen}")";
+// $landscape: "only screen and (orientation: landscape)";
+// $portrait: "only screen and (orientation: portrait)";
 
 //
 // Grid Variables
 //
 
-// $row-width: 62.5em;
-// $column-gutter: 1.875em;
+// $row-width: emCalc(1000px);
+// $column-gutter: emCalc(30px);
 // $total-columns: 12;
 
 //
@@ -102,7 +120,7 @@
 // $h5-font-size: emCalc(18px);
 // $h6-font-size: 1em;
 
-// These control how subheaders are styled.
+// These control how subheaders are styled
 // $subheader-line-height: 1.4;
 // $subheader-font-color: lighten($header-font-color, 30%);
 // $subheader-font-weight: 300;
@@ -161,7 +179,7 @@
 // $microformat-padding: emCalc(10px) emCalc(12px);
 // $microformat-margin: 0 0 emCalc(20px) 0;
 
-// We use these to control the border styles
+// We use these to control border styles
 // $microformat-border-width: 1px;
 // $microformat-border-style: solid;
 // $microformat-border-color: #ddd;
@@ -188,11 +206,11 @@
 // $form-spacing: emCalc(16px);
 
 // We use these to style the labels in different ways
-// $label-pointer: pointer;
-// $label-font-size: emCalc(14px);
-// $label-font-weight: 500;
-// $label-font-color: lighten(#000, 30%);
-// $label-bottom-margin: emCalc(3px);
+// $form-label-pointer: pointer;
+// $form-label-font-size: emCalc(14px);
+// $form-label-font-weight: 500;
+// $form-label-font-color: lighten(#000, 30%);
+// $form-label-bottom-margin: emCalc(3px);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14px);
@@ -305,7 +323,7 @@
 // Split Button Variables
 //
 
-// We use these to control different shared styles for Split Buttons
+// We use these to control different shared styles for split buttons
 // $split-button-function-factor: 15%;
 // $split-button-pip-color: #fff;
 // $split-button-pip-color-alt: #333;
@@ -343,22 +361,22 @@
 // Alert Variables
 //
 
-// We use this to control alert padding.
+// We use this to control alert padding
 // $alert-padding-top: emCalc(11px);
 // $alert-padding-left: $alert-padding-top;
 // $alert-padding-right: $alert-padding-top + emCalc(10px);
 // $alert-padding-bottom: $alert-padding-top + emCalc(1px);
 
-// We use these to control text style.
+// We use these to control text style
 // $alert-font-weight: bold;
 // $alert-font-size: emCalc(14px);
 // $alert-font-color: #fff;
 // $alert-font-color-alt: darken($secondary-color, 60%);
 
-// We use this for close hover effect.
+// We use this for close hover effect
 // $alert-function-factor: 10%;
 
-// We use these to control border styles.
+// We use these to control border styles
 // $alert-border-style: solid;
 // $alert-border-width: 1px;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
@@ -379,21 +397,21 @@
 // Breadcrumb Variables
 //
 
-// We use this to set the background color for the breadcrumb container.
+// We use this to set the background color for the breadcrumb container
 // $crumb-bg: lighten($secondary-color, 5%);
 
-// We use these to set the padding around the breadcrumbs.
+// We use these to set the padding around the breadcrumbs
 // $crumb-padding: emCalc(6px) emCalc(14px) emCalc(9px);
 // $crumb-side-padding: emCalc(12px);
 
-// We use these to control border styles.
+// We use these to control border styles
 // $crumb-function-factor: 10%;
 // $crumb-border-size: 1px;
 // $crumb-border-style: solid;
 // $crumb-border-color: darken($crumb-bg, $crumb-function-factor);
 // $crumb-radius: $global-radius;
 
-// We use these to set various text styles for breadcrumbs.
+// We use these to set various text styles for breadcrumbs
 // $crumb-font-size: emCalc(11px);
 // $crumb-font-color: $primary-color;
 // $crumb-font-color-current: #333;
@@ -409,7 +427,7 @@
 // Clearing Variables
 //
 
-// We use these to set the background colors for parts of Clearing.
+// We use these to set the background colors for parts of Clearing
 // $clearing-bg: #111;
 // $clearing-caption-bg: $clearing-bg;
 // $clearing-carousel-bg: #111;
@@ -443,7 +461,7 @@
 // $custom-form-bg-disabled: #ddd;
 // $custom-form-check-color: #222;
 
-// We use these to style the custom select form element.
+// We use these to style the custom select form element
 // $custom-select-bg: #fff;
 // $custom-select-fade-to-color: #f3f3f3;
 // $custom-select-border-color: #ddd;
@@ -454,7 +472,7 @@
 // $custom-select-font-color-selected: #141414;
 // $custom-select-disabled-color: #888;
 
-// We use these to control the style of the custom select dropdown element.
+// We use these to control the style of the custom select dropdown element
 // $custom-dropdown-height: 200px;
 // $custom-dropdown-bg: #fff;
 // $custom-dropdown-border-color: darken(#fff, 20%);
@@ -475,7 +493,7 @@
 // Dropdown Variables
 //
 
-// We use these to controls height and width styles.
+// We use these to controls height and width styles
 // $f-dropdown-max-width: 200px;
 // $f-dropdown-height: auto;
 // $f-dropdown-max-height: none;
@@ -484,17 +502,17 @@
 // We use this to control the background color
 // $f-dropdown-bg: #fff;
 
-// We use this to set the border styles for dropdowns.
+// We use this to set the border styles for dropdowns
 // $f-dropdown-border-style: solid;
 // $f-dropdown-border-width: 1px;
 // $f-dropdown-border-color: darken(#fff, 20%);
 
-// We use these to style the triangle pip.
+// We use these to style the triangle pip
 // $f-dropdown-triangle-size: 6px;
 // $f-dropdown-triangle-color: #fff;
 // $f-dropdown-triangle-side-offset: 10px;
 
-// We use these to control styles for the list elements.
+// We use these to control styles for the list elements
 // $f-dropdown-list-style: none;
 // $f-dropdown-font-color: #555;
 // $f-dropdown-font-size: emCalc(14px);
@@ -503,7 +521,7 @@
 // $f-dropdown-list-hover-bg: #eeeeee;
 // $dropdown-mobile-left: 0;
 
-// We use this to control the styles for when the dropdown has custom content.
+// We use this to control the styles for when the dropdown has custom content
 // $f-dropdown-content-padding: emCalc(20px);
 
 //
@@ -522,12 +540,12 @@
 // Inline List Variables
 //
 
-// We use this to control the margins and padding of the inline list.
+// We use this to control the margins and padding of the inline list
 // $inline-list-margin-bottom: emCalc(17px) emCalc(-22px );
 // $inline-list-margin: 0 0;
 // $inline-list-padding: 0;
 
-// We use this to control the overflow of the inline list.
+// We use this to control the overflow of the inline list
 // $inline-list-overflow: hidden;
 
 // We use this to control the list items
@@ -580,10 +598,10 @@
 // $keystroke-font-color-alt: #fff;
 // $keystroke-function-factor: 7%;
 
-// We use this to control keystroke padding.
+// We use this to control keystroke padding
 // $keystroke-padding: emCalc(2px) emCalc(4px) emCalc(0px);
 
-// We use these to control background and border styles.
+// We use these to control background and border styles
 // $keystroke-bg: darken(#fff, $keystroke-function-factor);
 // $keystroke-border-style: solid;
 // $keystroke-border-width: 1px;
@@ -601,6 +619,8 @@
 // We use these to style the label text
 // $label-font-sizing: emCalc(14px);
 // $label-font-weight: bold;
+// $label-font-color: #333;
+// $label-font-color-alt: #fff;
 
 //
 // Magellan Variables
@@ -767,17 +787,15 @@
 // $progress-meter-success-color: $success-color;
 // $progress-meter-alert-color: $alert-color;
 
-// NEED TO FINISH THE LOGIC HERE
-
 //
 // Reveal Variables
 //
 
-// We use these to control the style of the reveal overlay.
+// We use these to control the style of the reveal overlay
 // $reveal-overlay-bg: rgba(#000, .45);
 // $reveal-overlay-bg-old: #000;
 
-// We use these to control the style of the modal itself.
+// We use these to control the style of the modal itself
 // $reveal-modal-bg: #fff;
 // $reveal-position-top: 50px;
 // $reveal-default-width: 80%;
@@ -818,21 +836,22 @@
 // Control the color of the background and some size options
 // $section-content-bg: #fff;
 // $section-vertical-nav-min-width: emCalc(200px);
+// $section-vertical-tabs-title-width: emCalc(200px);
 // $section-bottom-margin: emCalc(20px);
 
 //
 // Side Nav Variables
 //
 
-// We use this to control padding.
+// We use this to control padding
 // $side-nav-padding: emCalc(14px) 0;
 
-// We use these to control list styles.
+// We use these to control list styles
 // $side-nav-list-type: none;
 // $side-nav-list-position: inside;
 // $side-nav-list-margin: 0 0 emCalc(7px) 0;
 
-// We use these to control link styles.
+// We use these to control link styles
 // $side-nav-link-color: $primary-color;
 // $side-nav-link-color-active: lighten(#000, 30%);
 // $side-nav-font-size: emCalc(14px);
@@ -882,7 +901,7 @@
 // $switch-height-lrg: 44px;
 // $switch-bottom-margin: emCalc(20px);
 
-// We use these to control default font sizes for our classes.
+// We use these to control default font sizes for our classes
 // $switch-font-size-tny: 11px;
 // $switch-font-size-sml: 12px;
 // $switch-font-size-med: 14px;
@@ -993,6 +1012,7 @@
 // $topbar-link-color: #fff;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: emCalc(13px);
+// $topbar-link-hover-lightness: -30% !default; // Darken by 30%
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: #333;
@@ -1015,4 +1035,3 @@
 // $topbar-transition-speed: 300ms;
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width: "#{$topbar-breakpoint}")";
-

@@ -9,6 +9,8 @@ $label-radius:      $global-radius !default;
 // We use these to style the label text
 $label-font-sizing:   emCalc(14px) !default;
 $label-font-weight: bold !default;
+$label-font-color: #333 !default;
+$label-font-color-alt: #fff !default;
 
 //
 // Label Mixins
@@ -43,8 +45,8 @@ $label-font-weight: bold !default;
     background-color: $bg;
 
     // We control the text color for you based on the background color.
-    @if $bg-lightness < 70% { color: #fff; }
-    @else { color: #333; }
+    @if $bg-lightness < 70% { color: $label-font-color-alt; }
+    @else { color: $label-font-color; }
   }
 
   // We use this to control the radius on labels.
@@ -62,7 +64,7 @@ $label-font-weight: bold !default;
 }
 
 
-@if $include-html-label-classes {
+@if $include-html-label-classes != false {
 
   /* Labels */
   .label {

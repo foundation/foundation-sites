@@ -1,7 +1,7 @@
 //
 // Foundation Visibility Classes
 //
-@if $include-html-visibility-classes {
+@if $include-html-visibility-classes != false {
 
   /* Foundation Visibility HTML Classes */
   .show-for-small,

@@ -20,6 +20,7 @@ $topbar-title-font-size: emCalc(17px) !default;
 $topbar-link-color: #fff !default;
 $topbar-link-weight: bold !default;
 $topbar-link-font-size: emCalc(13px) !default;
+$topbar-link-hover-lightness: -30% !default; // Darken by 30%
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
@@ -197,7 +198,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     margin: 0;
   }
 
-  .divider {
+  .divider,
+  [role="separator"] {
     border-bottom: solid 1px lighten($topbar-dropdown-bg, 10%);
     border-top: solid 1px darken($topbar-dropdown-bg, 10%);
     clear: both;
@@ -340,7 +342,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     &.expanded { background: $topbar-bg; }
   }
 
-  .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; }
+  .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; margin-bottom: $topbar-margin-bottom; }
 
   .top-bar-section {
     @include single-transition(none,0,0);
@@ -362,7 +364,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         padding: 0 $topbar-height / 3;
         line-height: $topbar-height;
         background: $topbar-bg;
-        &:hover { background: darken($topbar-dropdown-bg, 30%); }
+        &:hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
       }
     }
 
@@ -428,7 +430,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       }
     }
 
-    & > ul > .divider {
+    & > ul > .divider,
+    & > ul > [role="separator"] {
       border-bottom: none;
       border-top: none;
       border-#{$opposite-direction}: solid 1px lighten($topbar-bg, 10%);

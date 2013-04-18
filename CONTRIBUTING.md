@@ -2,7 +2,7 @@
 
 This is the Foundation project.  We love making super awesome stuff, but even more we like to empower people to make changes on their own.  Feel free to fork and improve Foundation.
 
-### JavaScript
+<!-- ### JavaScript
 
 The Foundation JS libraries are tested with qUnit. You can run the tests in your browser by opening up the respective `.html` files in `test/javascripts/tests/`.
 
@@ -16,7 +16,7 @@ For more convenient testing using the command line and watcher functionality, yo
 4. From the root of the project, `npm install`. This will install the grunt tasks locally.
 5. Install the grunt command line interface with `npm install -g grunt-cli`.
 
-Now you should have two new commands available. `grunt qunit` will execute all of the qUnit tests. `grunt watch` will watch for changes to the JS files and test files, and execute the tests when something changes.
+Now you should have two new commands available. `grunt qunit` will execute all of the qUnit tests. `grunt watch` will watch for changes to the JS files and test files, and execute the tests when something changes. -->
 
 ## Compass Project
 

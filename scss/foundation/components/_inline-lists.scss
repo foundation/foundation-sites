@@ -42,7 +42,7 @@ $inline-list-children-display: block !default;
 }
 
 
-@if $include-html-grid-classes {
+@if $include-html-grid-classes != false {
 
   /* Inline Lists */
   .inline-list {
