@@ -338,7 +338,7 @@
         return Modernizr.mq('only screen and (max-width: 767px)') || $('.lt-ie9').length > 0;
       }
 
-      return (this.settings.$window.width() < 767) ? true : false;
+      return (this.settings.$window.width() < 767);
     },
 
     hide : function () {
@@ -399,11 +399,7 @@
     },
 
     paused : function () {
-      if (($.inArray((this.settings.$li.index() + 1), this.settings.pauseAfter) === -1)) {
-        return true;
-      }
-
-      return false;
+      return ($.inArray((this.settings.$li.index() + 1), this.settings.pauseAfter) === -1);
     },
 
     restart : function () {

@@ -267,7 +267,7 @@
           $container = $slides_container.parent(),
           $timer = $container.find('.' + self.settings.timer_container_class),
           $progress = $timer.find('.' + self.settings.timer_progress_class),
-          progress_pct = $progress.width() / $timer.width()
+          progress_pct = $progress.width() / $timer.width();
       self._rebuild_timer($container, progress_pct * 100 + '%');
       // $progress.stop();
       $slides_container.trigger('orbit:timer-stopped');
