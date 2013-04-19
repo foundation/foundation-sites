@@ -101,7 +101,7 @@
           function (e) { this.keydown(e) }.bind(this));
 
       $(window).on('resize.fndtn.clearing',
-        function (e) { this.resize() }.bind(this));
+        function () { this.resize() }.bind(this));
 
       this.settings.init = true;
       return this;
@@ -214,7 +214,7 @@
           }($(el))), container, visible_image;
 
       if (el === e.target && root) {
-        container = root.find('div').first(),
+        container = root.find('div').first();
         visible_image = container.find('.visible-img');
         this.settings.prev_index = 0;
         root.find('ul[data-clearing]')
