@@ -40,11 +40,7 @@ if (typeof jQuery === "undefined" &&
       var t = Object(this),
           len = t.length >>> 0;
       if (typeof fun != "function") {
-        try {
-          throw new TypeError();
-        } catch (e) {
           return;
-        }
       }
    
       var res = [],
@@ -92,7 +88,7 @@ if (typeof jQuery === "undefined" &&
   };
 }());
 
-;(function (window, document, undefined) {
+(function (window, document, undefined) {
   'use strict';
 
   window.Foundation = {

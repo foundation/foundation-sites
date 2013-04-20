@@ -152,7 +152,7 @@
           var end_css = {
             top: $(window).scrollTop() + el.data('css-top') + 'px',
             opacity: 1
-          }
+          };
 
           return this.delay(function () {
             return el
