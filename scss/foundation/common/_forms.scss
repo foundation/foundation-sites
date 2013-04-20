@@ -32,7 +32,7 @@
   .postfix { #{$defaultOpposite}: 2px; @include border-corner-radius(top, $defaultOpposite, $inputBorderRadius); @include border-corner-radius(bottom, $defaultOpposite, $inputBorderRadius); }
 
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea, select, div.custom.dropdown { background-color: $inputBgColor; font-family: inherit; border: $inputBorderWidth $inputBorderStyle $inputBorderColor; @include border-radius($inputBorderRadius); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: $inputFontColor; display: block; font-size: $inputFontSize; margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
-
+    &[multiple] { min-height: 2 * (ms(0) + ($formSpacing * 1.5)); }
     &.oversize { font-size: ms(1); padding: (($formSpacing - 4) / 2) ($formSpacing / 2); }
 
     &:focus { background: $inputFocusBgColor; border-color: $inputFocusBorderColor; }
