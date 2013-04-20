@@ -85,7 +85,7 @@
         dropdown.trigger('opened');
     },
 
-    toggle : function (target, resize) {
+    toggle : function (target) {
       var dropdown = $('#' + target.data('dropdown'));
 
       this.close.call(this, $('[data-dropdown-content]').not(dropdown));
