@@ -10,7 +10,7 @@
         <hr>
 
         <h2>Installation</h2>
-        <p>Foundation JavaScript was designed to work with <a href="http://zeptojs.com/" title="Zepto Docs">Zepto</a> and <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. Zepto is not supported by all browsers, so as suggested in the Zepto documentation, you should test for compatability and load Zepto or jQuery as necessary.</p>
+        <p>Foundation JavaScript was designed to work with <a href="http://zeptojs.com/" title="Zepto Docs">Zepto</a> and <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. Zepto is not supported by all browsers, so as suggested in the Zepto documentation, you should test for compatibility and load Zepto or jQuery as necessary.</p>
 
         <h5>Include Libraries</h5>
         <p>In the <code>head</code> section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements for older browsers as well as detection for mobile devices.</p>
@@ -30,12 +30,12 @@
 </script>
 ", :html %>
 
-        <p>Then include either <code>foundation.min.js</code>, which includes Foundation Core and all JavaScript plugins or you can load them invidually. The minified version is not available in the Compass version.</p>
+        <p>Then include either <code>foundation.min.js</code>, which includes Foundation Core and all JavaScript plugins or you can load them individually. The minified version is not available in the Compass version.</p>
 
 <%= code_example '
 <script src="/js/foundation.min.js"></script>
 
-<!-- or individualy -->
+<!-- or individually -->
 
 <script src="/js/foundation.js"></script>
 <script src="/js/foundation.alerts.js"></script>
@@ -67,7 +67,7 @@ $(document).foundation('section', {deep_linking: true}, function (response) {
 });
 ", :js %>
 
-        <p>The call will initialize the Section plugin on the page with deep linking enabled and pass back a response object with any errors that may have occured.</p>
+        <p>The call will initialize the Section plugin on the page with deep linking enabled and pass back a response object with any errors that may have occurred.</p>
 
         <p>You can initialize multiple libraries within the same call as well. Here are a few ways this can be done:</p>
 
