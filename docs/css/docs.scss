@@ -92,11 +92,6 @@ footer.row.full-width {
   }
 }
 
-/* Clearing Docs */
-.clearing-thumbs { list-style: none;
-  li { float: $default-float; margin-#{$opposite-direction}: 10px; }
-}
-
 /* Forms Docs */
 .attached-label {
   @include prefix-postfix-base;
