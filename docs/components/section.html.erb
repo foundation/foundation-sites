@@ -193,6 +193,24 @@
   </section>
 </div>', :html %>
 
+        <h6>Vertical Tabs</h6>
+        <p>Adding a <code>vertical-tabs</code> class to the section container and setting <code>data-section="vertical-tabs"</code> will enable tabs on both small and large screens.</p>
+<%= code_example '
+<div class="section-container vertical-tabs" data-section="vertical-tabs">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 1</a></p>
+    <div class="content" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title" data-section-title><a href="#">Section 2</a></p>
+    <div class="content" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
         <h6>Vertical Nav/Accordion</h6>
         <p>Adding a <code>vertical-nav</code> class to the section container will enable vertical navigation elements on large screens and show an accordion on small screens.</p>
 
