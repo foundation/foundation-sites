@@ -385,6 +385,14 @@ $section-bottom-margin:          emCalc(20px);
   </section>
 </div>
 ', :html %>
+        
+        <p><strong>Note:</strong> If you are using Sections in a Modal, or they are being loaded via AJAX, or they are hidden when Foundation is initialized, you will need to reflow the sections to get tabs to display properly:</p>
+
+<%= code_example "
+$('#myModal').on('opened', function () {
+  $(this).foundation('section', 'reflow');
+});
+", :json %>
 
         <h5>Optional JavaScript Configuration</h5>
 
