@@ -74,8 +74,10 @@
           self = Foundation.libs.section,
           region = $this.closest(self.settings.region_selector),
           content = $this.siblings(self.settings.content_selector),
-          parent = region.closest(self.settings.section_selector),
-          settings = $.extend({}, self.settings, self.data_options(parent));
+          parent = region.parent(),
+          settings = $.extend({}, self.settings, self.data_options(parent)),
+          prev_active_section = parent
+            .children(self.settings.active_region_selector);
 
       self.settings.toggled = true;
 
@@ -84,22 +86,25 @@
       }
 
       if (region.hasClass('active')) {
+        // this is causing the style flash.
         if (self.small(parent)
           || self.is_vertical_nav(parent)
           || self.is_horizontal_nav(parent)
           || self.is_accordion(parent)) {
-          region
-            .removeClass('active')
-            .attr('style', '');
+            if (prev_active_section[0] !== region[0] 
+              || (prev_active_section[0] === region[0] && !settings.one_up)) {
+              region
+                .removeClass('active')
+                .attr('style', '');
+            }
         }
       } else {
-        var prev_active_section = null,
+        var prev_active_section = parent
+              .children(self.settings.active_region_selector),
             title_height = self.outerHeight(region
               .children(self.settings.title_selector));
 
         if (self.small(parent) || settings.one_up) {
-          prev_active_section = parent
-            .children(self.settings.active_region_selector);
 
           if (self.small(parent)) {
             prev_active_section.attr('style', '');
@@ -117,7 +122,7 @@
 
         region.addClass('active');
 
-        if (prev_active_section !== null) {
+        if (prev_active_section.length > 0) {
           prev_active_section
             .removeClass('active')
             .attr('style', '');
@@ -145,8 +150,8 @@
     },
 
     resize : function () {
-      var sections = $('[data-section]'),
-          self = Foundation.libs.section;
+      var self = Foundation.libs.section,
+          sections = $(self.settings.section_selector);
 
       sections.each(function() {
         var $this = $(this),
@@ -166,7 +171,7 @@
 
           var first = $this.children(self.settings.region_selector).first();
 
-          if (settings.one_up) {
+          if (settings.one_up || !self.small($this)) {
             first.addClass('active');
           }
 
@@ -226,15 +231,15 @@
             settings = $.extend({}, self.settings, self.data_options(section));
 
         if (hash.length > 0 && settings.deep_linking) {
-
-          // not working
           var regions = section
             .children(self.settings.region_selector)
             .attr('style', '')
             .removeClass('active');
           regions
-            .children('.content[data-slug="' + hash + '"], [data-section-content][data-slug="' + hash + '"]')
-            .closest(self.settings.region_selector)
+            .map(function () {
+              return $(this).children('.content[data-slug="' + hash + '"], [data-section-content][data-slug="' + hash + '"]');
+            })
+            .parent()
             .addClass('active');
         }
       });
