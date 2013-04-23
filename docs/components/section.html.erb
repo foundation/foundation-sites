@@ -388,6 +388,35 @@ $section-bottom-margin:          emCalc(20px);
         
         <p><strong>Note:</strong> If you are using Sections in a Modal, or they are being loaded via AJAX, or they are hidden when Foundation is initialized, you will need to reflow the sections to get tabs to display properly:</p>
 
+        <div class="section-container auto" data-section>
+          <section>
+            <p class="title"><a href="#section1">ROOT: Section 1</a></p>
+            <div class="content" data-slug="section1">
+              <p>Content 1 Summary Paragraphs</p>
+              <div class="section-container auto" data-section>
+                <section>
+                  <p class="title"><a href="#section1-1">DETAIL: #1</a></p>
+                  <div class="content">
+                    <p>Detail awesome stuff!</p>
+                  </div>
+                </section>
+                <section>
+                  <p class="title"><a href="#section1-2">DETAIL: #2</a></p>
+                  <div class="content">
+                    <p>Detail awesome stuff numeroe duo.</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+          <section>
+            <p class="title"><a href="#section2">ROOT: Section 2</a></p>
+            <div class="content" data-slug="section2">
+              <p>Content 2</p>
+            </div>
+          </section>
+        </div>
+
 <%= code_example "
 $('#myModal').on('opened', function () {
   $(this).foundation('section', 'reflow');
