@@ -6,7 +6,7 @@
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.1.2',
+    version : '4.1.3',
 
     locked : false,
 
@@ -69,6 +69,11 @@
         .on('click.fndtn.reveal touchend.click.fndtn.reveal', this.close_targets(), function (e) {
           e.preventDefault();
           if (!self.locked) {
+            var settings = $.extend({}, self.settings, self.data_options($('.reveal-modal.open')));
+            if ($(e.target)[0] === $('.' + settings.bgClass)[0] && !settings.closeOnBackgroundClick) {
+              return;
+            }
+
             self.locked = true;
             self.close.call(self, $(this).closest('.reveal-modal'));
           }
