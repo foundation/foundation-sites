@@ -102,7 +102,8 @@
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
           var topbar = $(this).closest('.top-bar'),
               section = topbar.find('section, .section'),
-              titlebar = topbar.children('ul').first();
+              titlebar = topbar.children('ul').first(),
+              dropdownHeight = $(this).next('.dropdown').outerHeight();
 
           if (Modernizr.touch || self.breakpoint()) {
             e.preventDefault();
@@ -121,6 +122,8 @@
               section.css({right: -(100 * topbar.data('index')) + '%'});
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
+
+            $('.top-bar').css('min-height', dropdownHeight);
 
             $this.siblings('ul')
               .height(topbar.data('height') + self.outerHeight(titlebar, true));
