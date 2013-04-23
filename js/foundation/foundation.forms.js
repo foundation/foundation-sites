@@ -181,7 +181,7 @@
     },
 
     append_custom_markup : function (idx, sel) {
-      var $this = $(sel).hide(),
+      var $this = $(sel).addClass('hidden-field'),
           type  = $this.attr('type'),
           $span = $this.next('span.custom.' + type);
 
@@ -224,7 +224,7 @@
         $currentSelect = $customSelect.prepend('<a href="#" class="current">' + $selectedOption.html() + '</a>' ).find( ".current" );
         $this
           .after( $customSelect )
-          .hide();
+          .addClass('hidden-field');
 
       } else {
         liHtml = $options.map(function() {
