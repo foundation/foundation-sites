@@ -24,6 +24,10 @@
       var self = this;
       Foundation.inherit(this, 'throttle data_options position_right offset_right');
 
+      if (typeof method === 'object') {
+        $.extend(true, self.settings, method);
+      }
+
       if (typeof method != 'string') {
         this.set_active_from_hash();
         this.events();
