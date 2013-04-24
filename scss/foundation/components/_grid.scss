@@ -61,7 +61,7 @@ $total-columns: 12 !default;
 
 
 // For creating columns - @include these inside a media query to control small vs. large grid layouts
-@mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:$default-float) {
+@mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:true) {
 
   position: relative;
 
