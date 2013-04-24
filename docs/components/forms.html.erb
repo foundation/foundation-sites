@@ -430,6 +430,7 @@ $input-border-style:                 solid;
 $input-border-width:                 1px;
 $input-disabled-bg:                  #ddd;
 $input-box-shadow:                   inset 0 1px 2px rgba(0,0,0,0.1);
+$input-include-glowing-effect:       true;
 
 /* We use these to style the fieldset border and spacing. */
 $fieldset-border-style:              solid;
@@ -459,6 +460,11 @@ $input-error-message-font-size:      emCalc(12px);
 $input-error-message-font-weight:    bold;
 $input-error-message-font-color:     #fff;
 $input-error-message-font-color-alt: #333;
+
++/* We use this to style the glowing effect of inputs when focused */
++$glowing-effect-fade-time:           0.45s !default;
++$glowing-effect-color:               $input-focus-border-color !default; 
+
 ', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
