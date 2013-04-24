@@ -59,7 +59,7 @@ $input-error-message-font-color-alt: #333 !default;
 
 // We use this mixin to give us form styles for rows inside of forms
 @mixin form-row-base {
-  .row { margin: 0 -$form-spacing / 2;
+  .row { margin: 0 ((-$form-spacing) / 2);
 
     .column,
     .columns { padding: 0 $form-spacing / 2; }
