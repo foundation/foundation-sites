@@ -70,7 +70,7 @@
   box-sizing: $type;
 }
 
-// We use this to create equalateral triangles
+// We use this to create equilateral triangles
 @mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
   content: "";
   display: block;

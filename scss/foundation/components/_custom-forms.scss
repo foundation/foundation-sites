@@ -48,6 +48,12 @@ $custom-dropdown-width-large:           434px !default;
   
   /* Custom Checkbox and Radio Inputs */
   form.custom {
+
+    .hidden-field {
+      margin-#{$default-float}: -99999px;
+      position: absolute;
+      visibility: hidden;
+    }
   
     .custom {
       display: inline-block;

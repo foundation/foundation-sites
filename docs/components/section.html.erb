@@ -11,8 +11,8 @@
 
         <div class="row">
           <div class="large-3 columns">
-            <div class="section-container vertical-nav" data-section="vertical-nav">
-              <section class="section">
+            <div class="section-container vertical-nav" data-section="vertical-nav" data-options="one_up: false;">
+              <section>
                 <p class="title"><a href="#">Section 1</a></p>
                 <div class="content">
                   <ul class="side-nav">
@@ -24,7 +24,7 @@
                   </ul>
                 </div>
               </section>
-              <section class="section">
+              <section>
                 <p class="title"><a href="#">Section 2</a></p>
                 <div class="content">
                   <ul class="side-nav">
@@ -39,8 +39,8 @@
             </div>
           </div>
           <div class="large-9 columns">
-            <div class="section-container horizontal-nav" data-section="horizontal-nav" >
-              <section class="section">
+            <div class="section-container horizontal-nav" data-section="horizontal-nav" data-options="one_up: false;">
+              <section>
                 <p class="title"><a href="#">Section 1</a></p>
                 <div class="content">
                   <ul class="side-nav">
@@ -52,7 +52,7 @@
                   </ul>
                 </div>
               </section>
-              <section class="section">
+              <section>
                 <p class="title"><a href="#">Section 2</a></p>
                 <div class="content">
                   <ul class="side-nav">
@@ -65,7 +65,7 @@
                 </div>
               </section>
             </div>
-            <div class="section-container auto" data-section>
+            <div class="section-container auto" data-section data-options="deep_linking: true; one_up: false">
               <section>
                 <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
                 <div class="content" data-slug="panel1" data-section-content>
@@ -193,6 +193,25 @@
   </section>
 </div>', :html %>
 
+        <h6>Vertical Tabs</h6>
+        <p>Adding a <code>vertical-tabs</code> class to the section container and setting <code>data-section="vertical-tabs"</code> will enable tabs on both small and large screens.</p>
+
+<%= code_example '
+<div class="section-container vertical-tabs" data-section="vertical-tabs">
+  <section>
+    <p class="title" data-section-title><a href="#">Section 1</a></p>
+    <div class="content" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title" data-section-title><a href="#">Section 2</a></p>
+    <div class="content" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
         <h6>Vertical Nav/Accordion</h6>
         <p>Adding a <code>vertical-nav</code> class to the section container will enable vertical navigation elements on large screens and show an accordion on small screens.</p>
 
@@ -203,7 +222,7 @@
 <%= code_example '
 <div class="row">
   <div class="large-3 columns">
-    <div class="section-container vertical-nav" data-section="vertical-nav">
+    <div class="section-container vertical-nav" data-section="vertical-nav" data-options="one_up: false;">
       <section>
         <p class="title" data-section-title><a href="#">Section 1</a></p>
         <div class="content" data-section-content>
@@ -243,7 +262,7 @@
         <p>Use the <code>side-nav</code> class on the list to apply the Foundation navigation styles</p>
 
 <%= code_example '
-<div class="section-container horizontal-nav" data-section="horizontal-nav">
+<div class="section-container horizontal-nav" data-section="horizontal-nav" data-options="one_up: false;">
   <section>
     <p class="title" data-section-title><a href="#">Section 1</a></p>
     <div class="content" data-section-content>
@@ -291,7 +310,69 @@
   </section>
 </div>', :html %>
 
-        <p class="panel"><strong>Note:</strong> The <code>section</code> element can be replaced with a <code>div.section</code> element if you do not want to use HTML5 elements.</p>
+        <h6>Nested Sections</h6>
+        <p>You can infinitely nest Section elements to create more complicated Section layouts.</p>
+
+        <div class="section-container auto" data-section>
+          <section>
+            <p class="title"><a href="#section1">ROOT: Section 1</a></p>
+            <div class="content" data-slug="section1">
+              <p>Content 1 Summary Paragraphs</p>
+              <div class="section-container auto" data-section>
+                <section>
+                  <p class="title"><a href="#section1-1">DETAIL: #1</a></p>
+                  <div class="content">
+                    <p>Detail awesome stuff!</p>
+                  </div>
+                </section>
+                <section>
+                  <p class="title"><a href="#section1-2">DETAIL: #2</a></p>
+                  <div class="content">
+                    <p>Detail awesome stuff numeroe duo.</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+          <section>
+            <p class="title"><a href="#section2">ROOT: Section 2</a></p>
+            <div class="content" data-slug="section2">
+              <p>Content 2</p>
+            </div>
+          </section>
+        </div>
+<%= code_example '
+<div class="section-container auto" data-section>
+  <section>
+    <p class="title"><a href="#section1">ROOT: Section 1</a></p>
+    <div class="content" data-slug="section1">
+      <p>Content 1 Summary Paragraphs</p>
+      <div class="section-container auto" data-section>
+        <section>
+          <p class="title"><a href="#section1-1">DETAIL: #1</a></p>
+          <div class="content">
+            <p>Detail awesome stuff!</p>
+          </div>
+        </section>
+        <section>
+          <p class="title"><a href="#section1-2">DETAIL: #2</a></p>
+          <div class="content">
+            <p>Detail awesome stuff numeroe duo.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+  <section>
+    <p class="title"><a href="#section2">ROOT: Section 2</a></p>
+    <div class="content" data-slug="section2">
+      <p>Content 2</p>
+    </div>
+  </section>
+</div>
+', :html %>
+
+        <p><strong>Note:</strong> The <code>section</code> element can be replaced with a <code>div.section</code> element if you do not want to use HTML5 elements.</p>
 
         <hr>
 
@@ -385,6 +466,14 @@ $section-bottom-margin:          emCalc(20px);
   </section>
 </div>
 ', :html %>
+        
+        <p><strong>Note:</strong> If you are using Sections in a Modal, or they are being loaded via AJAX, or they are hidden when Foundation is initialized, you will need to reflow the sections to get tabs to display properly:</p>
+
+<%= code_example "
+$('#myModal').on('opened', function () {
+  $(this).foundation('section', 'reflow');
+});
+", :json %>
 
         <h5>Optional JavaScript Configuration</h5>
 

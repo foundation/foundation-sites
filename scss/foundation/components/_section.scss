@@ -108,8 +108,8 @@ $section-bottom-margin:             emCalc(20px) !default;
 
 
     &.active {
-      .content { display: block; }
-      .title { background: $section-title-bg-active; }
+      & > .content { display: block; }
+      & > .title { background: $section-title-bg-active; }
     }
 
 
@@ -142,12 +142,12 @@ $section-bottom-margin:             emCalc(20px) !default;
 
     &.active {
 
-      .title {
+      & > .title {
         background-color: $section-title-bg-active-tabs;
         z-index: 11;
         border-bottom: 0;
       }
-      .content { position: relative; }
+      & > .content { position: relative; }
     }
   }
 
@@ -178,7 +178,7 @@ $section-bottom-margin:             emCalc(20px) !default;
 
     &.active {
 
-      .title {
+      & > .title {
         background-color: $section-title-bg-active-tabs;
         width: $section-vertical-tabs-title-width + emCalc(2px); // Cover the content's left border
         border-right: 0;
@@ -201,7 +201,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     .content { display: none; }
 
     &.active {
-      .content {
+      & > .content {
         display: block;
         position: absolute;
         #{$default-float}: 100%;
@@ -233,7 +233,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     .content { display: none; }
 
     &.active {
-      .content {
+      & > .content {
         display: block;
         position: absolute;
         z-index: 999;

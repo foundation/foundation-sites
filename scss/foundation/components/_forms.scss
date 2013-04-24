@@ -332,6 +332,11 @@ $glowing-effect-color:               $input-focus-border-color !default;
   select {
     margin: 0 0 $form-spacing 0;
   }
+  
+  /* Normalize file input width */
+  input[type="file"] {
+    width:100%;
+  }
 
   /* We add basic fieldset styling */
   fieldset {
