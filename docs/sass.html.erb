@@ -134,6 +134,13 @@
       <li><span class="keystroke">cd path/to/your-project</span></li>
       <li>run <span class="keystroke">compass install foundation</span></li>
     </ol>
+    
+    <h5>Adding Foundation to existing Rails projects</h5>
+    <ol>
+        <li>Add <span class="keystroke">gem 'zurb-foundation'</span> to your Gemfile <b>under the <span class="keystroke">assets</span> group</b></li>
+        <li>run <span class="keystroke">bundle install</span></li>
+        <li>run <span class="keystroke">rails g foundation:install</span></li>
+    </ol>
 
     <!-- <h5>Upgrading Foundation Compass projects</h5>
     <p><strong>Javascript and Image Updates:</strong> If you already added Foundation to your Compass project or created the project using Foundation in the first place and just want to copy over any updated javascripts/image assets to your project, use the provided <kbd>foundation/upgrade</kbd> pattern below:</p>
