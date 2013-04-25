@@ -73,9 +73,10 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
     #{$default-float}: $joyride-tip-position-offset;
     width: 0;
     height: 0;
-    border: solid $joyride-tip-nub-size;
+    border: inset $joyride-tip-nub-size;
 
     &.top {
+      border-top-style: solid;
       border-color: $joyride-tip-bg;
       border-top-color: transparent !important;
       border-#{$default-float}-color: transparent !important;
@@ -83,6 +84,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
       top: -($joyride-tip-nub-size*2);
     }
     &.bottom {
+      border-bottom-style: solid;
       border-color: $joyride-tip-bg !important;
       border-bottom-color: transparent !important;
       border-#{$default-float}-color: transparent !important;
