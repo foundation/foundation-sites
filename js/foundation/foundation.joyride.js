@@ -1,6 +1,6 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
   'use strict';
 
   Foundation.libs.joyride = {
@@ -121,7 +121,7 @@
           int_settings_count = integer_settings.length;
 
       if (!this.settings.init) this.init();
-      
+
       // non configureable settings
       this.settings.$content_el = $this;
       this.settings.$body = $(this.settings.tipContainer);
@@ -547,14 +547,15 @@
 
     show_modal : function () {
       if (!this.settings.$next_tip.data('closed')) {
-        if ($('.joyride-modal-bg').length < 1) {
+        var joyridemodalbg =  $('.joyride-modal-bg');
+        if (joyridemodalbg.length < 1) {
           $('body').append(this.settings.template.modal).show();
         }
 
         if (/pop/i.test(this.settings.tipAnimation)) {
-          $('.joyride-modal-bg').show();
+            joyridemodalbg.show();
         } else {
-          $('.joyride-modal-bg').fadeIn(this.settings.tipAnimationFadeSpeed);
+            joyridemodalbg.fadeIn(this.settings.tipAnimationFadeSpeed);
         }
       }
     },
@@ -589,7 +590,7 @@
         width: this.outerWidth(el, true),
         height: this.outerHeight(el, true)
       });
-      
+
       exposeCover = $(this.settings.template.exposeCover);
 
       origCSS = {
@@ -597,7 +598,7 @@
         position: el.css('position')
       };
 
-      el.css('z-index',expose.css('z-index')*1+1);
+      el.css('z-index',parseInt(expose.css('z-index'))+1);
 
       if (origCSS.position == 'static') {
         el.css('position','relative');

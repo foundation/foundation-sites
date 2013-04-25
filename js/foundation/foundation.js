@@ -358,7 +358,7 @@ if (typeof jQuery === "undefined" &&
         return jQuery;
       }
     }()
-  },
+  };
 
   $.fn.foundation = function () {
     var args = Array.prototype.slice.call(arguments, 0);
