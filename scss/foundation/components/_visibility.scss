@@ -6,7 +6,7 @@
   /* Foundation Visibility HTML Classes */
   .show-for-small,
   .show-for-medium-down,
-  .show-for-large-down { display: inherit !important; }
+  .show-for-large-down { display: initial !important; }
   
   .show-for-medium,
   .show-for-medium-up,
@@ -18,7 +18,7 @@
   .hide-for-medium-up,
   .hide-for-large,
   .hide-for-large-up,
-  .hide-for-xlarge { display: inherit !important; }
+  .hide-for-xlarge { display: initial !important; }
   
   .hide-for-small,
   .hide-for-medium-down,
@@ -80,11 +80,11 @@
   /* Medium Displays: 768px - 1279px */
   @media #{$small} {
     .show-for-medium,
-    .show-for-medium-up { display: inherit !important; }
+    .show-for-medium-up { display: initial !important; }
   
     .show-for-small { display: none !important; }
   
-    .hide-for-small { display: inherit !important; }
+    .hide-for-small { display: initial !important; }
   
     .hide-for-medium,
     .hide-for-medium-up { display: none !important; }
@@ -121,13 +121,13 @@
   /* Large Displays: 1280px - 1440px */
   @media #{$medium} {
     .show-for-large,
-    .show-for-large-up { display: inherit !important; }
+    .show-for-large-up { display: initial !important; }
   
     .show-for-medium,
     .show-for-medium-down { display: none !important; }
   
     .hide-for-medium,
-    .hide-for-medium-down { display: inherit !important; }
+    .hide-for-medium-down { display: initial !important; }
   
     .hide-for-large,
     .hide-for-large-up { display: none !important; }
@@ -168,13 +168,13 @@
   
   /* X-Large Displays: 1400px and up */
   @media #{$large} {
-    .show-for-xlarge { display: inherit !important; }
+    .show-for-xlarge { display: initial !important; }
   
     .show-for-large,
     .show-for-large-down { display: none !important; }
   
     .hide-for-large,
-    .hide-for-large-down { display: inherit !important; }
+    .hide-for-large-down { display: initial !important; }
   
     .hide-for-xlarge { display: none !important; }
   
@@ -210,7 +210,7 @@
   
   /* Orientation targeting */
   .show-for-landscape,
-  .hide-for-portrait { display: inherit !important; }
+  .hide-for-portrait { display: initial !important; }
   .hide-for-landscape,
   .show-for-portrait { display: none !important; }
   
@@ -239,7 +239,7 @@
   
   @media #{$landscape} {
     .show-for-landscape,
-    .hide-for-portrait { display: inherit !important; }
+    .hide-for-portrait { display: initial !important; }
     .hide-for-landscape,
     .show-for-portrait { display: none !important; }
   
@@ -269,7 +269,7 @@
   
   @media #{$portrait} {
     .show-for-portrait,
-    .hide-for-landscape { display: inherit !important; }
+    .hide-for-landscape { display: initial !important; }
     .hide-for-portrait,
     .show-for-landscape { display: none !important; }
   
@@ -299,8 +299,8 @@
   
   /* Touch-enabled device targeting */
   .show-for-touch { display: none !important; }
-  .hide-for-touch { display: inherit !important; }
-  .touch .show-for-touch { display: inherit !important; }
+  .hide-for-touch { display: initial !important; }
+  .touch .show-for-touch { display: initial !important; }
   .touch .hide-for-touch { display: none !important; }
   
   /* Specific visilbity for tables */
