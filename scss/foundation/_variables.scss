@@ -2,54 +2,61 @@
 // Foundation Variables
 //
 
-// The default font-size is set to 100% of the browser style sheet (usually 16px)
-// for compatibility with brower-based text zoom or user-set defaults.
+//// The default font-size is set to 100% of the browser style sheet (usually 16px)
+//// for compatibility with brower-based text zoom or user-set defaults.
 $base-font-size: 100% !default;
 
-// $base-line-height is 24px while $base-font-size is 16px
-// $base-line-height: 150%;
+//// $base-line-height is 24px while $base-font-size is 16px
+//// $base-line-height: 150%;
 
-// This is the default html and body font-size for the base em value.
+//// This is the default html and body font-size for the base em value.
 
-// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
-// If you want your base font-size to be a different size and not have it effect grid size too,
-// set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
+//// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+//// If you want your base font-size to be a different size and not have it effect grid size too,
+//// set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
 $em-base: 16px !default;
 
-// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+//// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
 @function emCalc($pxWidth) {
   @return $pxWidth / $em-base * 1em;
 }
 
-// We use these to control various global styles
+//// Various global styles
+
 // $body-bg: #fff;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
-// We use this to control font-smoothing
+//// Font-smoothing
+
 // $font-smoothing: antialiased;
 
-// We use these to control text direction settings
+//// Text direction settings
+
 // $text-direction: ltr;
 
-// We use these as default colors throughout
+//// Colors
+
 // $primary-color: #2ba6cb;
 // $secondary-color: #e9e9e9;
 // $alert-color: #c60f13;
 // $success-color: #5da423;
 
-// We use these to make sure border radius matches unless we want it different.
+//// Make sure border radius matches unless we want it different.
+
 // $global-radius: 3px;
 // $global-rounded: 1000px;
 
-// We use these to control inset shadow shiny edges and depressions.
+//// Inset shadow shiny edges and depressions.
+
 // $shiny-edge-size: 0 1px 0;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
-// We use this to control whether or not CSS classes come through in the gem files.
+//// Control whether or not CSS classes come through in the CSS files.
+
 // $include-html-classes: true;
 // $include-print-styles: true;
 // $include-html-grid-classes: $include-html-classes;
@@ -67,7 +74,8 @@ $em-base: 16px !default;
 // $include-html-progress-classes: $include-html-classes;
 // $include-html-magellan-classes: $include-html-classes;
 
-// Media Queries
+//// Media Queries
+
 // $small-screen: emCalc(768px);
 // $medium-screen: emCalc(1280px);
 // $large-screen: emCalc(1440px);
@@ -91,18 +99,21 @@ $em-base: 16px !default;
 // Block Grid Variables
 //
 
-// We use this to control the maximum number of block grid elements per row
+//// Maximum number of block grid elements per row
+
 // $block-grid-elements: 12;
 // $block-grid-default-spacing: 10px;
 
-// Enables media queries for block-grid classes. Set to false if writing semantic HTML.
+//// Enables media queries for block-grid classes. Set to false if writing semantic HTML.
+
 // $block-grid-media-queries: true;
 
 //
 // Typography Variables
 //
 
-// We use these to control header font styles
+//// Heading font styles
+
 // $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $header-font-weight: bold;
 // $header-font-style: normal;
@@ -112,7 +123,8 @@ $em-base: 16px !default;
 // $header-bottom-margin: .5em;
 // $header-text-rendering: optimizeLegibility;
 
-// We use these to control header font sizes
+//// Heading font sizes
+
 // $h1-font-size: emCalc(44px);
 // $h2-font-size: emCalc(37px);
 // $h3-font-size: emCalc(27px);
@@ -120,18 +132,21 @@ $em-base: 16px !default;
 // $h5-font-size: emCalc(18px);
 // $h6-font-size: 1em;
 
-// These control how subheaders are styled
+//// Subheaders
+
 // $subheader-line-height: 1.4;
 // $subheader-font-color: lighten($header-font-color, 30%);
 // $subheader-font-weight: 300;
 // $subheader-top-margin: .2em;
 // $subheader-bottom-margin: .5em;
 
-// A general <small> styling
+//// <small> styling
+
 // $small-font-size: 60%;
 // $small-font-color: lighten($header-font-color, 30%);
 
-// We use these to style paragraphs
+//// Paragraphs
+
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
 // $paragraph-font-size: 1em;
@@ -141,30 +156,35 @@ $em-base: 16px !default;
 // $paragraph-aside-line-height: 1.35;
 // $paragraph-aside-font-style: italic;
 
-// We use these to style <code> tags
+//// <code> tags
+
 // $code-color: darken($alert-color, 15%);
 // $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
 // $code-font-weight: bold;
 
-// We use these to style anchors
+//// Anchors
+
 // $anchor-text-decoration: none;
 // $anchor-font-color: $primary-color;
 // $anchor-font-color-hover: darken($primary-color, 5%);
 
-// We use these to style the <hr> element
+//// <hr> element
+
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #ddd;
 // $hr-margin: emCalc(20px);
 
-// We use these to style lists
+//// Lists
+
 // $list-style-position: outside;
 // $list-side-margin: emCalc(18px);
 // $definition-list-header-weight: bold;
 // $definition-list-header-margin-bottom: .3em;
 // $definition-list-margin-bottom: emCalc(12px);
 
-// We use these to style blockquotes
+//// Blockquotes
+
 // $blockquote-font-color: lighten($header-font-color, 30%);
 // $blockquote-padding: emCalc(9px) emCalc(20px) 0 emCalc(19px);
 // $blockquote-border: 1px solid #ddd;
@@ -172,29 +192,36 @@ $em-base: 16px !default;
 // $blockquote-cite-font-color: lighten($header-font-color, 20%);
 // $blockquote-cite-link-color: $blockquote-cite-font-color;
 
-// Acronym styles
+//// Acronym
+
 // $acronym-underline: 1px dotted #ddd;
 
-// We use these to control padding and margin
+//// Padding and margin
+
 // $microformat-padding: emCalc(10px) emCalc(12px);
 // $microformat-margin: 0 0 emCalc(20px) 0;
 
-// We use these to control border styles
+//// Border styles
+
 // $microformat-border-width: 1px;
 // $microformat-border-style: solid;
 // $microformat-border-color: #ddd;
 
-// We use these to control full name font styles
+//// Full name font styles
+
 // $microformat-fullname-font-weight: bold;
 // $microformat-fullname-font-size: emCalc(15px);
 
-// We use this to control the summary font styles
+//// Summary font styles
+
 // $microformat-summary-font-weight: bold;
 
-// We use this to control abbr padding
+//// <abbr> padding
+
 // $microformat-abbr-padding: 0 emCalc(1px);
 
-// We use this to control abbr font styles
+//// <abbr> font styles
+
 // $microformat-abbr-font-weight: bold;
 // $microformat-abbr-font-decoration: none;
 
@@ -202,15 +229,17 @@ $em-base: 16px !default;
 // Form Variables
 //
 
-// We use this to set the base for lots of form spacing and positioning styles
+//// Base for lots of form spacing and positioning styles
+
 // $form-spacing: emCalc(16px);
 
-// We use these to style the labels in different ways
-// $form-label-pointer: pointer;
-// $form-label-font-size: emCalc(14px);
-// $form-label-font-weight: 500;
-// $form-label-font-color: lighten(#000, 30%);
-// $form-label-bottom-margin: emCalc(3px);
+//// Labels
+
+// $label-pointer: pointer;
+// $label-font-size: emCalc(14px);
+// $label-font-weight: 500;
+// $label-font-color: lighten(#000, 30%);
+// $label-bottom-margin: emCalc(3px);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14px);
@@ -223,19 +252,22 @@ $em-base: 16px !default;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 
-// We use these to style the fieldset border and spacing.
+//// Fieldset border and spacing.
+
 // $fieldset-border-style: solid;
 // $fieldset-border-width: 1px;
 // $fieldset-border-color: #ddd;
 // $fieldset-padding: emCalc(20px);
 // $fieldset-margin: emCalc(18px) 0;
 
-// We use these to style the legends when you use them
+//// Legends
+
 // $legend-bg: #fff;
 // $legend-font-weight: bold;
 // $legend-padding: 0 emCalc(3px);
 
-// We use these to style the prefix and postfix input elements
+//// Prefix and postfix input elements
+
 // $input-prefix-bg: darken(#fff, 5%);
 // $input-prefix-border-color: darken(#fff, 20%);
 // $input-prefix-border-size: 1px;
@@ -244,7 +276,8 @@ $em-base: 16px !default;
 // $input-prefix-font-color: #333;
 // $input-prefix-font-color-alt: #fff;
 
-// We use these to style the error states for inputs and labels
+//// Error states for inputs and labels
+
 // $input-error-message-padding: emCalc(6px) emCalc(4px);
 // $input-error-message-top: -($form-spacing) - emCalc(5px);
 // $input-error-message-font-size: emCalc(12px);
@@ -252,17 +285,20 @@ $em-base: 16px !default;
 // $input-error-message-font-color: #fff;
 // $input-error-message-font-color-alt: #333;
 
-// We use these to build padding for buttons.
-// $button-med: emCalc(12px);
+//// Padding for buttons.
+
 // $button-tny: emCalc(7px);
 // $button-sml: emCalc(9px);
+// $button-med: emCalc(12px);
 // $button-lrg: emCalc(16px);
 
-// We use this to control the display property.
+//// Display property.
+
 // $button-display: inline-block;
 // $button-margin-bottom: emCalc(20px);
 
-// We use these to control button text styles.
+//// Button text styles.
+
 // $button-font-family: inherit;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
@@ -273,47 +309,56 @@ $em-base: 16px !default;
 // $button-font-weight: bold;
 // $button-font-align: center;
 
-// We use these to control various hover effects.
+//// Various hover effects.
+
 // $button-function-factor: 10%;
 
-// We use these to control button border styles.
+//// Button border styles.
+
 // $button-border-width: 1px;
 // $button-border-style: solid;
 // $button-border-color: darken($primary-color, $button-function-factor);
 
-// We use this to set the default radius used throughout the core.
+//// Radius used throughout the core.
+
 // $button-radius: $global-radius;
 
-// We use this to set default opacity for disabled buttons.
+//// Opacity for disabled buttons.
+
 // $button-disabled-opacity: 0.6;
 
 //
 // Dropdown Button Variables
 //
 
-// We use these to set the color of the pip in dropdown buttons
+// Color of the pip in dropdown buttons
+
 // $dropdown-button-pip-color: #fff;
 // $dropdown-button-pip-color-alt: #333;
 
-// We use these to style tiny dropdown buttons
+//// Tiny dropdown buttons
+
 // $dropdown-button-padding-tny: $button-tny * 5;
 // $dropdown-button-pip-size-tny: $button-tny;
 // $dropdown-button-pip-right-tny: $button-tny * 2;
 // $dropdown-button-pip-top-tny: -$button-tny / 2 + emCalc(1px);
 
-// We use these to style small dropdown buttons
+//// Small dropdown buttons
+
 // $dropdown-button-padding-sml: $button-sml * 5;
 // $dropdown-button-pip-size-sml: $button-sml;
 // $dropdown-button-pip-right-sml: $button-sml * 2;
 // $dropdown-button-pip-top-sml: -$button-sml / 2 + emCalc(1px);
 
-// We use these to style medium dropdown buttons
+//// Medium dropdown buttons
+
 // $dropdown-button-padding-med: $button-med * 4 + emCalc(3px);
 // $dropdown-button-pip-size-med: $button-med - emCalc(3px);
 // $dropdown-button-pip-right-med: $button-med * 2;
 // $dropdown-button-pip-top-med: -$button-med / 2 + emCalc(2px);
 
-// We use these to style large dropdown buttons
+//// Large dropdown buttons
+
 // $dropdown-button-padding-lrg: $button-lrg * 4;
 // $dropdown-button-pip-size-lrg: $button-lrg - emCalc(6px);
 // $dropdown-button-pip-right-lrg: $button-lrg + emCalc(12px);
@@ -323,34 +368,39 @@ $em-base: 16px !default;
 // Split Button Variables
 //
 
-// We use these to control different shared styles for split buttons
+//// Shared styles for Split Buttons
+
 // $split-button-function-factor: 15%;
 // $split-button-pip-color: #fff;
 // $split-button-pip-color-alt: #333;
 // $split-button-active-bg-tint: rgba(0,0,0,0.1);
 
-// We use these to control tiny split buttons
+//// Tiny split buttons
+
 // $split-button-padding-tny: $button-tny * 9;
 // $split-button-span-width-tny: $button-tny * 6.5;
 // $split-button-pip-size-tny: $button-tny;
 // $split-button-pip-top-tny: $button-tny * 2;
 // $split-button-pip-left-tny: emCalc(-5px);
 
-// We use these to control small split buttons
+//// Small split buttons
+
 // $split-button-padding-sml: $button-sml * 7;
 // $split-button-span-width-sml: $button-sml * 5;
 // $split-button-pip-size-sml: $button-sml;
 // $split-button-pip-top-sml: $button-sml * 1.5;
 // $split-button-pip-left-sml: emCalc(-9px);
 
-// We use these to control medium split buttons
+//// Medium split buttons
+
 // $split-button-padding-med: $button-med * 6.4;
 // $split-button-span-width-med: $button-med * 4;
 // $split-button-pip-size-med: $button-med - emCalc(3px);
 // $split-button-pip-top-med: $button-med * 1.5;
 // $split-button-pip-left-med: emCalc(-9px);
 
-// We use these to control large split buttons
+//// Large split buttons
+
 // $split-button-padding-lrg: $button-lrg * 6;
 // $split-button-span-width-lrg: $button-lrg * 3.75;
 // $split-button-pip-size-lrg: $button-lrg - emCalc(6px);
@@ -361,28 +411,33 @@ $em-base: 16px !default;
 // Alert Variables
 //
 
-// We use this to control alert padding
+//// Alert padding.
+
 // $alert-padding-top: emCalc(11px);
 // $alert-padding-left: $alert-padding-top;
 // $alert-padding-right: $alert-padding-top + emCalc(10px);
 // $alert-padding-bottom: $alert-padding-top + emCalc(1px);
 
-// We use these to control text style
+//// Text style.
+
 // $alert-font-weight: bold;
 // $alert-font-size: emCalc(14px);
 // $alert-font-color: #fff;
 // $alert-font-color-alt: darken($secondary-color, 60%);
 
-// We use this for close hover effect
+//// Close hover effect.
+
 // $alert-function-factor: 10%;
 
-// We use these to control border styles
+//// Border styles.
+
 // $alert-border-style: solid;
 // $alert-border-width: 1px;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
 // $alert-bottom-margin: emCalc(20px);
 
-// We use these to style the close buttons
+//// Close buttons
+
 // $alert-close-color: #333;
 // $alert-close-position: emCalc(5px);
 // $alert-close-font-size: emCalc(22px);
@@ -390,28 +445,33 @@ $em-base: 16px !default;
 // $alert-close-opacity-hover: 0.5;
 // $alert-close-padding: 5px 4px 4px;
 
-// We use this to control border radius
+//// Border radius
+
 // $alert-radius: $global-radius;
 
 //
 // Breadcrumb Variables
 //
 
-// We use this to set the background color for the breadcrumb container
+//// Background color for the breadcrumb container.
+
 // $crumb-bg: lighten($secondary-color, 5%);
 
-// We use these to set the padding around the breadcrumbs
+//// Padding around the breadcrumbs.
+
 // $crumb-padding: emCalc(6px) emCalc(14px) emCalc(9px);
 // $crumb-side-padding: emCalc(12px);
 
-// We use these to control border styles
+//// Border styles.
+
 // $crumb-function-factor: 10%;
 // $crumb-border-size: 1px;
 // $crumb-border-style: solid;
 // $crumb-border-color: darken($crumb-bg, $crumb-function-factor);
 // $crumb-radius: $global-radius;
 
-// We use these to set various text styles for breadcrumbs
+//// Various text styles for breadcrumbs.
+
 // $crumb-font-size: emCalc(11px);
 // $crumb-font-color: $primary-color;
 // $crumb-font-color-current: #333;
@@ -419,7 +479,8 @@ $em-base: 16px !default;
 // $crumb-font-transform: uppercase;
 // $crumb-link-decor: underline;
 
-// We use these to control the slash between breadcrumbs
+//// Slash between breadcrumbs
+
 // $crumb-slash-color: #aaa;
 // $crumb-slash: "/";
 
@@ -427,25 +488,30 @@ $em-base: 16px !default;
 // Clearing Variables
 //
 
-// We use these to set the background colors for parts of Clearing
+//// Background colors for parts of Clearing.
+
 // $clearing-bg: #111;
 // $clearing-caption-bg: $clearing-bg;
 // $clearing-carousel-bg: #111;
 // $clearing-img-bg: $clearing-bg;
 
-// We use these to style the close button
+//// Close button
+
 // $clearing-close-color: #fff;
 // $clearing-close-size: 40px;
 
-// We use these to style the arrows
+//// Style the arrows
+
 // $clearing-arrow-size: 16px;
 // $clearing-arrow-color: $clearing-close-color;
 
-// We use these to style captions
+//// Style captions
+
 // $clearing-caption-font-color: #fff;
 // $clearing-caption-padding: 10px 30px;
 
-// We use these to make the image and carousel height and style
+//// Make the image and carousel height and style
+
 // $clearing-active-img-height: 75%;
 // $clearing-carousel-height: 150px;
 // $clearing-carousel-thumb-width: 175px;
@@ -455,13 +521,15 @@ $em-base: 16px !default;
 // Custom Form Variables
 //
 
-// We use these to control the basic form styles input styles
+//// Basic form styles input styles
+
 // $custom-form-border-color: #ccc;
 // $custom-form-bg: #fff;
 // $custom-form-bg-disabled: #ddd;
 // $custom-form-check-color: #222;
 
-// We use these to style the custom select form element
+//// Custom select form element.
+
 // $custom-select-bg: #fff;
 // $custom-select-fade-to-color: #f3f3f3;
 // $custom-select-border-color: #ddd;
@@ -472,7 +540,8 @@ $em-base: 16px !default;
 // $custom-select-font-color-selected: #141414;
 // $custom-select-disabled-color: #888;
 
-// We use these to control the style of the custom select dropdown element
+//// Custom select dropdown element.
+
 // $custom-dropdown-height: 200px;
 // $custom-dropdown-bg: #fff;
 // $custom-dropdown-border-color: darken(#fff, 20%);
@@ -493,26 +562,31 @@ $em-base: 16px !default;
 // Dropdown Variables
 //
 
-// We use these to controls height and width styles
+//// Height and width styles.
+
 // $f-dropdown-max-width: 200px;
 // $f-dropdown-height: auto;
 // $f-dropdown-max-height: none;
 // $f-dropdown-margin-top: 2px;
 
-// We use this to control the background color
+//// Background color
+
 // $f-dropdown-bg: #fff;
 
-// We use this to set the border styles for dropdowns
+//// Border styles for dropdowns.
+
 // $f-dropdown-border-style: solid;
 // $f-dropdown-border-width: 1px;
 // $f-dropdown-border-color: darken(#fff, 20%);
 
-// We use these to style the triangle pip
+//// Triangle pip.
+
 // $f-dropdown-triangle-size: 6px;
 // $f-dropdown-triangle-color: #fff;
 // $f-dropdown-triangle-side-offset: 10px;
 
-// We use these to control styles for the list elements
+//// List elements.
+
 // $f-dropdown-list-style: none;
 // $f-dropdown-font-color: #555;
 // $f-dropdown-font-size: emCalc(14px);
@@ -521,44 +595,52 @@ $em-base: 16px !default;
 // $f-dropdown-list-hover-bg: #eeeeee;
 // $dropdown-mobile-left: 0;
 
-// We use this to control the styles for when the dropdown has custom content
+//// When the dropdown has custom content.
+
 // $f-dropdown-content-padding: emCalc(20px);
 
 //
 // Flex Video Variables
 //
 
-// We use these to control video container padding and margins
+//// Video container padding and margins
+
 // $flex-video-padding-top: emCalc(25px);
 // $flex-video-padding-bottom: 67.5%;
 // $flex-video-margin-bottom: emCalc(16px);
 
-// We use this to control widescreen bottom padding
+//// Widescreen bottom padding
+
 // $flex-video-widescreen-padding-bottom: 57.25%;
 
 //
 // Inline List Variables
 //
 
-// We use this to control the margins and padding of the inline list
+//// Margins and padding of the inline list.
+
 // $inline-list-margin-bottom: emCalc(17px) emCalc(-22px );
 // $inline-list-margin: 0 0;
 // $inline-list-padding: 0;
 
-// We use this to control the overflow of the inline list
+//// Overflow of the inline list.
+
 // $inline-list-overflow: hidden;
 
-// We use this to control the list items
+//// List items
+
 // $inline-list-display: block;
 
-// We use this to control any elments within list items
+//// Elments within list items
+
 // $inline-list-children-display: block;
 
 //
 // Joyride Variables
 //
 
-// Controlling default Joyride styles
+//// Joyride styles
+
 // $joyride-tip-bg: rgb(0,0,0);
 // $joyride-tip-default-width: 300px;
 // $joyride-tip-padding: emCalc(18px) emCalc(20px) emCalc(24px);
@@ -566,42 +648,50 @@ $em-base: 16px !default;
 // $joyride-tip-radius: 4px;
 // $joyride-tip-position-offset: 22px;
 
-// Here, we're setting the tip dont styles
+//// Tip font styles
+
 // $joyride-tip-font-color: #fff;
 // $joyride-tip-font-size: emCalc(14px);
 // $joyride-tip-header-weight: bold;
 
-// This changes the nub size
+//// Changes the nub size
+
 // $joyride-tip-nub-size: 14px;
 
-// This adjusts the styles for the timer when its enabled
+//// Adjusts the styles for the timer when its enabled
+
 // $joyride-tip-timer-width: 50px;
 // $joyride-tip-timer-height: 3px;
 // $joyride-tip-timer-color: #666;
 
-// This changes up the styles for the close button
+//// Changes up the styles for the close button
+
 // $joyride-tip-close-color: #777;
 // $joyride-tip-close-size: 30px;
 // $joyride-tip-close-weight: normal;
 
-// When Joyride is filling the screen, we use this style for the bg
+//// When Joyride is filling the screen, style for the bg
+
 // $joyride-screenfill: rgba(0,0,0,0.5);
 
 //
 // Keystroke Variables
 //
 
-// We use these to control text styles.
+//// Text styles.
+
 // $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
 // $keystroke-font-size: emCalc(15px);
 // $keystroke-font-color: #222;
 // $keystroke-font-color-alt: #fff;
 // $keystroke-function-factor: 7%;
 
-// We use this to control keystroke padding
+//// Keystroke padding.
+
 // $keystroke-padding: emCalc(2px) emCalc(4px) emCalc(0px);
 
-// We use these to control background and border styles
+//// Background and border styles.
+
 // $keystroke-bg: darken(#fff, $keystroke-function-factor);
 // $keystroke-border-style: solid;
 // $keystroke-border-width: 1px;
@@ -612,11 +702,13 @@ $em-base: 16px !default;
 // Label Variables
 //
 
-// We use these to style the labels
+//// Style the labels
+
 // $label-padding: emCalc(3px) emCalc(10px) emCalc(4px);
 // $label-radius: $global-radius;
 
-// We use these to style the label text
+//// We use these to style the label text
+
 // $label-font-sizing: emCalc(14px);
 // $label-font-weight: bold;
 // $label-font-color: #333;
@@ -626,7 +718,8 @@ $em-base: 16px !default;
 // Magellan Variables
 //
 
-// We use these to control basic visual styles
+//// Basic visual styles
+
 // $magellan-bg: #fff;
 // $magellan-padding: 10px;
 
@@ -634,59 +727,70 @@ $em-base: 16px !default;
 // Orbit Settings
 //
 
-// We use these to control the caption styles
+//// Caption styles
+
 // $orbit-container-bg: #f5f5f5;
 // $orbit-caption-bg-old-browser: #000;
 // $orbit-caption-bg-old: rgb(0,0,0);
 // $orbit-caption-bg: rgba(0,0,0,0.6);
 // $orbit-caption-font-color: #fff;
 
-// We use these to control the left/right nav styles
+//// Left/right nav styles
+
 // $orbit-nav-bg-old: rgb(0,0,0);
 // $orbit-nav-bg: rgba(0,0,0,0.6);
 
-// We use these to control the timer styles
+//// Timer styles
+
 // $orbit-timer-bg-old: rgb(0,0,0);
 // $orbit-timer-bg: rgba(0,0,0,0.6);
 
-// We use these to control the bullet nav styles
+//// Bullet nav styles
+
 // $orbit-bullet-nav-color: #999;
 // $orbit-bullet-nav-color-active: #222;
 
-// We use thes to controls the style of slide numbers
+//// Slide numbers
+
 // $orbit-slide-number-bg: rgb(0,0,0);
 // $orbit-slide-number-font-color: #fff;
 // $orbit-slide-number-padding: emCalc(5px);
 
-// Margin for when Orbit is stacked on small screens
+//// Margin for when Orbit is stacked on small screens
+
 // $stack-on-small-margin-bottom: emCalc(20px); // Doesn't quite work yet
 
 //
 // Pagination Variables
 //
 
-// We use these to control the pagination container
+//// Pagination container
+
 // $pagination-height: emCalc(24px);
 // $pagination-margin: emCalc(-5px);
 
-// We use these to set the list-item properties
+//// List-item properties
+
 // $pagination-li-float: $default-float;
 // $pagination-li-height: emCalc(24px);
 // $pagination-li-font-color: #222;
 // $pagination-li-font-size: emCalc(14px);
 // $pagination-li-margin: emCalc(5px);
 
-// We use these for the pagination anchor links
+//// Pagination anchor links
+
 // $pagination-link-pad: emCalc(1px) emCalc(7px) emCalc(1px);
 // $pagination-link-font-color: #999;
 // $pagination-link-active-bg: darken(#fff, 10%);
 
-// We use these for disabled anchor links
+//// Disabled anchor links
+
 // $pagination-link-unavailable-cursor: default;
 // $pagination-link-unavailable-font-color: #999;
 // $pagination-link-unavailable-bg-active: transparent;
 
-// We use these for currently selected anchor links
+//// Currently selected anchor links
+
 // $pagination-link-current-background: $primary-color;
 // $pagination-link-current-font-color: #fff;
 // $pagination-link-current-font-weight: bold;
@@ -697,20 +801,24 @@ $em-base: 16px !default;
 // Panel Variables
 //
 
-// We use these to control the background and border styles
+//// Background and border styles
+
 // $panel-bg: darken(#fff, 5%);
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
 
-// We use this % to control how much we darken things on hover
+//// Control how much we darken things on hover
+
 // $panel-function-factor: 10%;
 // $panel-border-color: darken($panel-bg, $panel-function-factor);
 
-// We use these to set default inner padding and bottom margin
+//// Inner padding and bottom margin
+
 // $panel-margin-bottom: emCalc(20px);
 // $panel-padding: emCalc(20px);
 
-// We use these to set default font colors
+//// Font colors
+
 // $panel-font-color: #333;
 // $panel-font-color-alt: #fff;
 
@@ -718,13 +826,16 @@ $em-base: 16px !default;
 // Pricing Table Variables
 //
 
-// We use this to control the border color
+//// Border color
+
 // $price-table-border: solid 1px #ddd;
 
-// We use this to control the bottom margin of the pricing table
+//// Bottom margin of the pricing table
+
 // $price-table-margin-bottom: emCalc(20px);
 
-// We use these to control the title styles
+//// Control the title styles
+
 // $price-title-bg: #ddd;
 // $price-title-padding: emCalc(15px) emCalc(20px);
 // $price-title-align: center;
@@ -732,7 +843,8 @@ $em-base: 16px !default;
 // $price-title-weight: bold;
 // $price-title-size: emCalc(16px);
 
-// We use these to control the price styles
+//// Control the price styles
+
 // $price-money-bg: #eee;
 // $price-money-padding: emCalc(15px) emCalc(20px);
 // $price-money-align: center;
@@ -740,7 +852,8 @@ $em-base: 16px !default;
 // $price-money-weight: normal;
 // $price-money-size: emCalc(20px);
 
-// We use these to control the description styles
+//// Description styles
+
 // $price-bg: #fff;
 // $price-desc-color: #777;
 // $price-desc-padding: emCalc(15px);
@@ -750,7 +863,8 @@ $em-base: 16px !default;
 // $price-desc-line-height: 1.4;
 // $price-desc-bottom-border: dotted 1px #ddd;
 
-// We use these to control the list item styles
+//// List item styles
+
 // $price-item-color: #333;
 // $price-item-padding: emCalc(15px);
 // $price-item-align: center;
@@ -758,7 +872,8 @@ $em-base: 16px !default;
 // $price-item-weight: normal;
 // $price-item-bottom-border: dotted 1px #ddd;
 
-// We use these to control the CTA area styles
+//// CTA area styles
+
 // $price-cta-bg: #f5f5f5;
 // $price-cta-align: center;
 // $price-cta-padding: emCalc(20px) emCalc(20px) 0;
@@ -767,21 +882,25 @@ $em-base: 16px !default;
 // Progress Bar Variables
 //
 
-// We use this to se the prog bar height
+//// Progress bar height
+
 // $progress-bar-height: emCalc(25px);
 // $progress-bar-color: transparent;
 
-// We use these to control the border styles
+//// Border styles
+
 // $progress-bar-border-color: darken(#fff, 20%);
 // $progress-bar-border-size: 1px;
 // $progress-bar-border-style: solid;
 // $progress-bar-border-radius: $global-radius;
 
-// We use these to control the margin & padding
+//// Margin & padding
+
 // $progress-bar-pad: emCalc(2px);
 // $progress-bar-margin-bottom: emCalc(10px);
 
-// We use these to set the meter colors
+//// Meter colors
+
 // $progress-meter-color: $primary-color;
 // $progress-meter-secondary-color: $secondary-color;
 // $progress-meter-success-color: $success-color;
@@ -791,25 +910,29 @@ $em-base: 16px !default;
 // Reveal Variables
 //
 
-// We use these to control the style of the reveal overlay
+//// Reveal overlay.
+
 // $reveal-overlay-bg: rgba(#000, .45);
 // $reveal-overlay-bg-old: #000;
 
-// We use these to control the style of the modal itself
+//// Modal itself.
+
 // $reveal-modal-bg: #fff;
 // $reveal-position-top: 50px;
 // $reveal-default-width: 80%;
 // $reveal-modal-padding: emCalc(20px);
 // $reveal-box-shadow: 0 0 10px rgba(#000,.4);
 
-// We use these to style the reveal close button
+//// Reveal close button
+
 // $reveal-close-font-size: emCalc(22px);
 // $reveal-close-top: emCalc(8px);
 // $reveal-close-side: emCalc(11px);
 // $reveal-close-color: #aaa;
 // $reveal-close-weight: bold;
 
-// We use these to control the modal border
+//// Modal border
+
 // $reveal-border-style: solid;
 // $reveal-border-width: 1px;
 // $reveal-border-color: #666;
@@ -818,22 +941,26 @@ $em-base: 16px !default;
 // Section Variables
 //
 
-// We use these to set padding and hover factor
+//// Padding and hover factor
+
 // $section-padding: emCalc(15px);
 // $section-function-factor: 10%;
 
-// These style the titles
+//// Titles
+
 // $section-title-color: #333;
 // $section-title-bg: #efefef;
 // $section-title-bg-active: darken($section-title-bg, $section-function-factor);
 // $section-title-bg-active-tabs: #fff;
 
-// Want to control border size, here ya go!
+//// Border size
+
 // $section-border-size: 1px;
 // $section-border-style: solid;
 // $section-border-color: #ccc;
 
-// Control the color of the background and some size options
+//// Color of the background and some size options
+
 // $section-content-bg: #fff;
 // $section-vertical-nav-min-width: emCalc(200px);
 // $section-vertical-tabs-title-width: emCalc(200px);
@@ -843,21 +970,25 @@ $em-base: 16px !default;
 // Side Nav Variables
 //
 
-// We use this to control padding
+//// Padding
+
 // $side-nav-padding: emCalc(14px) 0;
 
-// We use these to control list styles
+//// List styles
+
 // $side-nav-list-type: none;
 // $side-nav-list-position: inside;
 // $side-nav-list-margin: 0 0 emCalc(7px) 0;
 
-// We use these to control link styles
+//// Link styles
+
 // $side-nav-link-color: $primary-color;
 // $side-nav-link-color-active: lighten(#000, 30%);
 // $side-nav-font-size: emCalc(14px);
 // $side-nav-font-weight: bold;
 
-// We use these to control border styles
+//// Border styles
+
 // $side-nav-divider-size: 1px;
 // $side-nav-divider-style: solid;
 // $side-nav-divider-color: darken(#fff, 10%);
@@ -866,18 +997,21 @@ $em-base: 16px !default;
 // Sub Nav Variables
 //
 
-// We use these to control margin and padding
+//// Margin and padding
+
 // $sub-nav-list-margin: emCalc(-4px) 0 emCalc(18px);
 // $sub-nav-list-padding-top: emCalc(4px);
 
-// We use this to control the definition
+//// Definition
+
 // $sub-nav-font-size: emCalc(14px);
 // $sub-nav-font-color: #999;
 // $sub-nav-font-weight: normal;
 // $sub-nav-text-decoration: none;
 // $sub-nav-border-radius: 1000px;
 
-// We use these to control the active item styles
+//// Active item styles
+
 // $sub-nav-active-font-weight: bold;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-color: #fff;
@@ -888,27 +1022,31 @@ $em-base: 16px !default;
 // Switch Variables
 //
 
-// Controlling border styles and background colors for the switch container
+//// Border styles and background colors for the switch container
+
 // $switch-border-color: darken(#fff, 20%);
 // $switch-border-style: solid;
 // $switch-border-width: 1px;
 // $switch-bg: #fff;
 
-// We use these to control the switch heights for our default classes
+//// Switch heights for our default classes
+
 // $switch-height-tny: 22px;
 // $switch-height-sml: 28px;
 // $switch-height-med: 36px;
 // $switch-height-lrg: 44px;
 // $switch-bottom-margin: emCalc(20px);
 
-// We use these to control default font sizes for our classes
+//// Font sizes for our classes.
+
 // $switch-font-size-tny: 11px;
 // $switch-font-size-sml: 12px;
 // $switch-font-size-med: 14px;
 // $switch-font-size-lrg: 17px;
 // $switch-label-side-padding: 6px;
 
-// We use these to style the switch-paddle
+//// Switch-paddle
+
 // $switch-paddle-bg: #fff;
 // $switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%);
 // $switch-paddle-border-color: darken($switch-paddle-bg, 35%);
@@ -919,36 +1057,42 @@ $em-base: 16px !default;
 // $switch-positive-color: lighten($success-color, 50%);
 // $switch-negative-color: #f5f5f5;
 
-// Outline Style for tabbing through switches
+//// Outline Style for tabbing through switches
+
 // $switch-label-outline: 1px dotted #888;
 
 //
 // Table Variables
 //
 
-// These control the background color for the table and even rows
+//// Background color for the table and even rows
+
 // $table-bg: #fff;
 // $table-even-row-bg: #f9f9f9;
 
-// These control the table cell border style
+//// Table cell border style
+
 // $table-border-style: solid;
 // $table-border-size: 1px;
 // $table-border-color: #ddd;
 
-// These control the table head styles
+//// Table head styles
+
 // $table-head-bg: #f5f5f5;
 // $table-head-font-size: emCalc(14px);
 // $table-head-font-color: #222;
 // $table-head-font-weight: bold;
 // $table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px);
 
-// These control the row padding and font styles
+//// Row padding and font styles
+
 // $table-row-padding: emCalc(9px) emCalc(10px);
 // $table-row-font-size: emCalc(14px);
 // $table-row-font-color: #222;
 // $table-line-height: emCalc(18px);
 
-// These are for controlling the display and margin of tables
+//// Display and margin of tables
+
 // $table-display: table-cell;
 // $table-margin-bottom: emCalc(20px);
 
@@ -956,20 +1100,23 @@ $em-base: 16px !default;
 // Image Thumbnail Variables
 //
 
-// We use these to control border styles
+//// Border styles
+
 // $thumb-border-style: solid;
 // $thumb-border-width: 4px;
 // $thumb-border-color: #fff;
 // $thumb-box-shadow: 0 0 0 1px rgba(#000,.2);
 // $thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5);
 
-// Radius and transition speed for thumbs
+//// Radius and transition speed for thumbs
+
 // $thumb-radius: $global-radius;
 // $thumb-transition-speed: 200ms;
 
 //
 // Tooltip Variables
 //
+
 // $has-tip-border-bottom: dotted 1px #ccc;
 // $has-tip-font-weight: bold;
 // $has-tip-font-color: #333;
@@ -994,27 +1141,33 @@ $em-base: 16px !default;
 // Top Bar Variables
 //
 
-// Background color for the top bar
+//// Background color for the top bar
+
 // $topbar-bg: #111;
 
-// Height and margin
+//// Height and margin
+
 // $topbar-height: 45px;
 // $topbar-margin-bottom: emCalc(30px);
 
-// Control Input height for top bar
+//// Input height for top bar
+
 // $topbar-input-height: 2.45em;
 
-// Controlling the styles for the title in the top bar
+//// Title in the top bar
+
 // $topbar-title-weight: bold;
 // $topbar-title-font-size: emCalc(17px);
 
-// Set the link colors and styles for top-level nav
+//// Link colors and styles for top-level nav
+
 // $topbar-link-color: #fff;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: emCalc(13px);
 // $topbar-link-hover-lightness: -30% !default; // Darken by 30%
 
-// Style the top bar dropdown elements
+//// Top bar dropdown elements
+
 // $topbar-dropdown-bg: #333;
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-toggle-size: 5px;
@@ -1022,7 +1175,8 @@ $em-base: 16px !default;
 // $topbar-dropdown-toggle-alpha: 0.5;
 // $dropdown-label-color: #555;
 
-// Top menu icon styles
+//// Top menu icon styles
+
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: emCalc(13px);
 // $topbar-menu-link-weight: bold;
@@ -1031,7 +1185,8 @@ $em-base: 16px !default;
 // $topbar-menu-link-color-toggled: #888;
 // $topbar-menu-icon-color-toggled: #888;
 
-// Transitions and breakpoint styles
+//// Transitions and breakpoint styles
+
 // $topbar-transition-speed: 300ms;
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
-// $topbar-media-query: "only screen and (min-width: "#{$topbar-breakpoint}")";
+// $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
