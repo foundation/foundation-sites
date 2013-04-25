@@ -61,7 +61,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 }
 
 .top-bar {
-  overflow: hidden;
+  overflow: visible;
   height: $topbar-height;
   line-height: $topbar-height;
   position: relative;
@@ -190,7 +190,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   @include single-transition($default-float, $topbar-transition-speed);
 
   ul {
-    width: 100%;
+    width: auto;
     height: auto;
     display: block;
     background: $topbar-dropdown-bg;
@@ -281,8 +281,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   // Styling elements inside of dropdowns
   .dropdown {
     position: absolute;
-    #{$default-float}: 100%;
-    top: 0;
+    #{$default-float}: 0;
+    top: 100%;
     visibility: hidden;
     z-index: 99;
 
