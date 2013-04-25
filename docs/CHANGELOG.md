@@ -1,4 +1,4 @@
-### 4.1.3 (In Progress)
+### 4.1.3- April 25, 2013
 
 * Added _variables.scss, which holds default variables and creates the settings file for the gem
 * Rearranged a few mixins in order to remove the confusing _foundation-globals.scss file
