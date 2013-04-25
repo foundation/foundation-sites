@@ -6,6 +6,9 @@
 * Added reference to $base-line-height variables for those using Compass vertical rhythm
 * Fixed issue with invalid css coming through into buttons
 * Various bug fixes
+* Adds support for infinite section nesting
+* Updated top bar styles
+* Support for data-options in Reveal
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.2...v4.1.3).
 
