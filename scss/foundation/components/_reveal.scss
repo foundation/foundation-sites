@@ -116,11 +116,11 @@ $reveal-border-color:    #666 !default;
     .reveal-modal {
       @include reveal-modal-style(false, emCalc(30px), false, $box-shadow: false, $top-offset: emCalc(100px));
 
-      &.small  { @include reveal-modal-base(false, 30%); }
-      &.medium { @include reveal-modal-base(false, 40%); }
-      &.large  { @include reveal-modal-base(false, 60%); }
-      &.xlarge { @include reveal-modal-base(false, 70%); }
-      &.expand { @include reveal-modal-base(false, 95%); }
+      &.tiny  { @include reveal-modal-base(false, 30%); }
+      &.small { @include reveal-modal-base(false, 40%); }
+      &.medium  { @include reveal-modal-base(false, 60%); }
+      &.large { @include reveal-modal-base(false, 70%); }
+      &.xlarge { @include reveal-modal-base(false, 95%); }
     }
   }
 
