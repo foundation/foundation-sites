@@ -104,7 +104,8 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
         top: 9px;
         width: 11px;
         height: 14px;
-        border: solid 8px;
+        border: inset 8px;
+        border-right-style: solid;
         border-color: transparent transparent transparent #000;
       }
     }
@@ -133,11 +134,12 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
       display: block;
       width: 0;
       height: 0;
-      border: solid 16px;
+      border: inset 16px;
     }
   }
   .orbit-prev { #{$default-float}: 0;
     & > span {
+      border-#{$opposite-direction}-style: solid;
       border-color: transparent;
       border-#{$opposite-direction}-color: #fff;
     }
@@ -148,6 +150,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
   .orbit-next { #{$opposite-direction}: 0;
     & > span {
       border-color: transparent;
+      border-#{$default-float}-style: solid;
       border-#{$default-float}-color: #fff;
       #{$default-float}: 50%;
       margin-#{$default-float}: -8px;

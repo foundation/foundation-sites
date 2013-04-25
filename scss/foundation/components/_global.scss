@@ -76,18 +76,22 @@
   display: block;
   width: 0;
   height: 0;
-  border: solid $triangle-size;
+  border: inset $triangle-size;
   @if ($triangle-direction == top) {
     border-color: $triangle-color transparent transparent transparent;
+    border-top-style: solid;
   }
   @if ($triangle-direction == bottom) {
     border-color: transparent transparent $triangle-color transparent;
+    border-bottom-style: solid;
   }
   @if ($triangle-direction == left) {
     border-color: transparent transparent transparent $triangle-color;
+    border-left-style: solid;
   }
   @if ($triangle-direction == right) {
     border-color: transparent $triangle-color transparent transparent;
+    border-right-style: solid;
   }
 }
 
