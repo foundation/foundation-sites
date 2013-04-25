@@ -1,4 +1,3 @@
-<!--
 ### 4.1.3 (In Progress)
 
 * Added _variables.scss, which holds default variables and creates the settings file for the gem
@@ -9,7 +8,6 @@
 * Various bug fixes
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.2...v4.1.3).
- -->
 
 ### 4.1.2- April 10, 2013
 
