@@ -369,11 +369,12 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
     .has-dropdown {
       & > a {
-        padding-#{$opposite-direction}: $topbar-dropdown-toggle-size * 7 !important;
+        padding-#{$opposite-direction}: $topbar-height / 3 + 20 !important;
 
         &:after {
           @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
           margin-top: -($topbar-dropdown-toggle-size / 2);
+          top: $topbar-height / 2;
         }
       }
 
