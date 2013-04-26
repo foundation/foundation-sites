@@ -178,6 +178,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
     .title-area { background: $topbar-bg; }
 
+
     .toggle-topbar {
       a { color: $topbar-menu-link-color-toggled;
         span {
@@ -192,6 +193,18 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         }
       }
     }
+  }
+
+
+
+    // Change things up when the top-bar is expanded
+
+  &.coloured.expanded {
+    height: auto;
+    background: transparent;
+
+	 .title-area { background: $colouredbar-bg; }
+
   }
 
 }
