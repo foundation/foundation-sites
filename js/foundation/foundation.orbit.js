@@ -99,17 +99,13 @@
       
       $.extend(true, self.settings, self.data_options($slides_container));
 
-      if (self.settings.navigation_arrows) {
-          $container.append(self._prev_html());
-          $container.append(self._next_html());
-      }
+      $container.append(self._prev_html());
+      $container.append(self._next_html());
       $slides_container.addClass(self.settings.slides_container_class);
       if (self.settings.stack_on_small) {
         $container.addClass(self.settings.stack_on_small_class);
       }
-      if (self.settings.slide_number) {
-        $container.append(self._slide_number_html(1, $slides.length));
-      }
+      $container.append(self._slide_number_html(1, $slides.length));
       $container.append(self._timer_html());
       if (self.settings.bullets) {
         $container.after(self._bullets_container_html($slides));
@@ -267,7 +263,7 @@
           $container = $slides_container.parent(),
           $timer = $container.find('.' + self.settings.timer_container_class),
           $progress = $timer.find('.' + self.settings.timer_progress_class),
-          progress_pct = $progress.width() / $timer.width();
+          progress_pct = $progress.width() / $timer.width()
       self._rebuild_timer($container, progress_pct * 100 + '%');
       // $progress.stop();
       $slides_container.trigger('orbit:timer-stopped');

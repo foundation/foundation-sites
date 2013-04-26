@@ -211,6 +211,12 @@ $button-disabled-opacity: 0.6 !default;
       &.round  { @include button-style($bg:false, $radius:$button-round); }
     }
 
+	.button.search{
+	
+	background-color:#288cf0;
+	padding:3px!important;
+	}
+
   }
 
   // Additional styles for screens larger than 768px

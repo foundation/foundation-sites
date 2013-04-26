@@ -3,10 +3,11 @@
 //
 
 // Background color for the top bar
-$topbar-bg: #111 !default;
+$topbar-bg: #010101 !default;
+$colouredbar-bg: #2291ff !default;
 
 // Height and margin
-$topbar-height: 45px !default;
+$topbar-height: 43px !default;
 $topbar-margin-bottom: emCalc(30px) !default;
 
 // Control Input height for top bar
@@ -18,18 +19,21 @@ $topbar-title-font-size: emCalc(17px) !default;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: #fff !default;
-$topbar-link-weight: bold !default;
-$topbar-link-font-size: emCalc(13px) !default;
+$topbar-link-weight: normal !default;
+$topbar-link-font-size: emCalc(18px) !default;
 $topbar-link-hover-lightness: -30% !default; // Darken by 30%
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: #333 !default;
+$topbar-dropdown-bg:  lighten($topbar-bg, 10%)!default;
+$colouredbar-dropdown-bg:  lighten($colouredbar-bg, 0%)!default;
+
 $topbar-dropdown-link-color: #fff !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.5 !default;
 $dropdown-label-color: #555 !default;
-
+$coloured-dropdown-label-color:lighten($colouredbar-bg, 20%)!default;
+$coloured-dropdown-label-color-bg:darken($colouredbar-bg, 5%)!default;
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
 $topbar-menu-link-font-size: emCalc(13px) !default;
@@ -51,6 +55,10 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   background: $topbar-bg;
 }
 
+.coloured.contain-to-grid {
+  background: $colouredbar-bg;
+}
+
 // Wrapped around .top-bar to make it fixed at the top
 .fixed {
   width: 100%;
@@ -61,9 +69,9 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 }
 
 .top-bar {
-  overflow: hidden;
+	overflow:hidden;
   height: $topbar-height;
-  line-height: $topbar-height;
+  line-height: $topbar-height - 3;
   position: relative;
   background: $topbar-bg;
   margin-bottom: $topbar-margin-bottom;
@@ -73,6 +81,12 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     margin-bottom: 0;
     list-style: none;
   }
+
+	.left{ 
+		line-height:20px;
+	}
+
+  .baricon{height:36px;margin-top:2px;}
 
   .row { max-width: none; }
 
@@ -181,6 +195,12 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   }
 
 }
+
+.coloured.top-bar{
+  background-color: $colouredbar-bg;
+}
+
+
 
 // Right and Left Navigation that stacked by default
 .top-bar-section {
@@ -313,6 +333,72 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   }
 }
 
+
+
+
+.coloured .top-bar-section {
+
+  ul {
+    background-color: $colouredbar-dropdown-bg!important;
+  }
+
+  .divider,
+  [role="separator"] {
+    border-bottom: solid 1px lighten($colouredbar-dropdown-bg, 10%);
+    border-top: solid 1px darken($colouredbar-dropdown-bg, 10%);
+  }
+
+
+
+
+  ul li {
+    & > a {
+      background-color: $colouredbar-dropdown-bg;
+
+      &:hover { background-color: darken($colouredbar-dropdown-bg, 3%); }
+
+    }
+
+    // Apply the active link color when it has that class
+    &.active > a { background: darken($colouredbar-dropdown-bg, 3%); }
+  }
+
+  // Add some extra padding for list items contains buttons
+  .has-form { padding: $topbar-height / 3;   background-color: $colouredbar-dropdown-bg!important;}
+
+  // Styling for list items that have a dropdown within them.
+  .has-dropdown {
+    position: relative;
+
+    & > a {
+      &:after {
+        @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
+      }
+    }
+  }
+
+  // Styling elements inside of dropdowns
+  .dropdown {
+
+
+    label {
+      color: #FFF;
+	  background-color: $coloured-dropdown-label-color-bg;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // Element that controls breakpoint, no need to change this ever
 .top-bar-js-breakpoint {
   width: $topbar-breakpoint !important;
@@ -333,16 +419,27 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     .button {
       line-height: 2em;
       font-size: emCalc(14px);
-      height: 2em;
+      height: 2.5em;
       padding: 0 10px;
       position: relative;
-      top: 8px;
+      top: 5px;
     }
 
     &.expanded { background: $topbar-bg; }
   }
 
   .contain-to-grid .top-bar { max-width: $row-width; margin: 0 auto; margin-bottom: $topbar-margin-bottom; }
+
+
+  .coloured  .top-bar-section {
+		& > ul > .divider,
+		& > ul > [role="separator"] {
+		  border-#{$opposite-direction}: solid 1px lighten($colouredbar-bg, 10%);
+		  border-#{$default-float}: solid 1px darken($colouredbar-bg, 10%);
+		}
+	  
+  }
+
 
   .top-bar-section {
     @include single-transition(none,0,0);
@@ -441,10 +538,19 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
       width: 0px;
     }
 
+
+
+
+
+
     .has-form {
       background: $topbar-bg;
       padding: 0 $topbar-height / 3;
       height: $topbar-height;
+    }
+
+	.coloured .has-form {
+      background-color: $colouredbar-bg!important;
     }
 
     // Position overrides for ul.right
@@ -456,6 +562,9 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
         li .dropdown { right: 100%; }
       }
     }
+
+
+
 
   }
 
