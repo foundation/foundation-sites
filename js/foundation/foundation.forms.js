@@ -87,7 +87,7 @@
         .on('click.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
           var $this = $(this),
               $dropdown = $this.closest('div.custom.dropdown'),
-              $select = $dropdown.prev();
+              $select = $dropdown.prevAll('select').first();
 
           // make sure other dropdowns close
           if(!$dropdown.hasClass('open'))
@@ -111,7 +111,7 @@
         .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
               $customDropdown = $this.closest('div.custom.dropdown'),
-              $select = $customDropdown.prev(),
+              $select = $customDropdown.prevAll('select').first(),
               selectedIndex = 0;
 
           e.preventDefault();
