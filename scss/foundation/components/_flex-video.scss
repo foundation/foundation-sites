@@ -1,6 +1,7 @@
 //
 // Flex Video Variables
 //
+$include-html-media-classes: $include-html-classes !default;
 
 // We use these to control video container padding and margins
 $flex-video-padding-top:               emCalc(25px) !default;

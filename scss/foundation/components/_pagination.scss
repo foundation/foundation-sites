@@ -1,6 +1,7 @@
 //
 // Pagination Variables
 //
+$include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control the pagination container
 $pagination-height:                      emCalc(24px) !default;

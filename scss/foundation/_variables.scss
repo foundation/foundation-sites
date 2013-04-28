@@ -23,6 +23,8 @@ $em-base: 16px !default;
 
 //// Various global styles
 
+// $default-float: left;
+
 // $body-bg: #fff;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -59,13 +61,18 @@ $em-base: 16px !default;
 
 // $include-html-classes: true;
 // $include-print-styles: true;
+// $include-html-global-classes: $include-html-classes;
+// $include-html-type-classes: $include-html-classes;
 // $include-html-grid-classes: $include-html-classes;
 // $include-html-visibility-classes: $include-html-classes;
 // $include-html-button-classes: $include-html-classes;
 // $include-html-form-classes: $include-html-classes;
 // $include-html-media-classes: $include-html-classes;
 // $include-html-section-classes: $include-html-classes;
+// $include-html-orbit-classes: $include-html-classes;
 // $include-html-reveal-classes: $include-html-classes;
+// $include-html-joyride-classes: $include-html-classes;
+// $include-html-clearing-classes: $include-html-classes;
 // $include-html-alert-classes: $include-html-classes;
 // $include-html-nav-classes: $include-html-classes;
 // $include-html-label-classes: $include-html-classes;
@@ -73,6 +80,7 @@ $em-base: 16px !default;
 // $include-html-pricing-classes: $include-html-classes;
 // $include-html-progress-classes: $include-html-classes;
 // $include-html-magellan-classes: $include-html-classes;
+// $include-html-tooltip-classes: $include-html-classes;
 
 //// Media Queries
 

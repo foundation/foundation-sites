@@ -1,6 +1,7 @@
 //
 // Dropdown Variables
 //
+$include-html-button-classes: $include-html-classes !default;
 
 // We use these to controls height and width styles.
 $f-dropdown-max-width:            200px !default;
@@ -120,7 +121,7 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 }
 
 
-@if $include-html-nav-classes != false {
+@if $include-html-button-classes != false {
 
   @media only screen and (max-width: 767px) {
     .f-dropdown {

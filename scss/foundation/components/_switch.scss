@@ -1,6 +1,7 @@
 //
 // Switch Variables
 //
+$include-html-form-classes: $include-html-classes !default;
 
 // Controlling border styles and background colors for the switch container
 $switch-border-color:             darken(#fff, 20%) !default;
@@ -212,7 +213,7 @@ $switch-label-outline:            1px dotted #888 !default;
   @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
-@if $include-html-button-classes != false {
+@if $include-html-form-classes != false {
 
   /* Foundation Switches */
   @media only screen {
