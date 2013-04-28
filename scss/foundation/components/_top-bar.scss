@@ -5,6 +5,10 @@
 // Background color for the top bar
 $topbar-bg: #111 !default;
 
+// background gradient
+$topbar-bg-is-gradient: false !default;
+$topbar-bg-gradient: #222 !default;
+
 // Height and margin
 $topbar-height: 45px !default;
 $topbar-margin-bottom: emCalc(30px) !default;
@@ -65,8 +69,13 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   height: $topbar-height;
   line-height: $topbar-height;
   position: relative;
-  background: $topbar-bg;
   margin-bottom: $topbar-margin-bottom;
+  
+  @if $topbar-bg-is-gradient
+    background: +gradient($topbar-bg, $topbar-bg-gradient);  
+  @else
+    background: $topbar-bg;
+  
 
   // Topbar Global list Styles
   ul {
