@@ -122,7 +122,7 @@
       <div class="large-12 columns">
 
         <h3>Build With Predefined HTML Classes</h3>
-        <p>There are two ways to build sections in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building a sections using our predefined classes is super-easy, you just need to create a <code>&lt;div class="section-container" data-section&gt;</code> as a wrapper for the sections themselves. Inside of this wrapper, you'll create either a <code>&lt;section class="section"&gt;</code> or <code>&lt;div class="section"&gt;</code>. Within that you'll include some sort of <code>.title</code> (this can be headers or a paragragh) and a <code>&lt;div class="content"&gt;</code>. Here is the markup you'll need:</p>
+        <p>There are two ways to build sections in Foundation 4, with our predefined HTML classes or with our structure and mixins. Building a sections using our predefined classes is super-easy, you just need to create a <code>&lt;div class="section-container" data-section&gt;</code> as a wrapper for the sections themselves. Inside of this wrapper, you'll create either a <code>&lt;section class="section"&gt;</code> or <code>&lt;div class="section"&gt;</code>. Within that you'll include some sort of <code>.title</code> (this can be headers or a paragraph) and a <code>&lt;div class="content"&gt;</code>. Here is the markup you'll need:</p>
 
         <p>If you want to use ZURB's default styles for section elements you can apply the <code>auto</code>, <code>tabs</code>, <code>accordion</code>, <code>vertical-nav</code>, or <code>horizontal-nav</code> classes. By default, section elements will be an accordion on mobile and tabs on desktops and tablets. If you want to adjust this behavior and force a particular format for your section, you will need to set <code>data-section</code> equal to the format you want to force as shown in the variations below.</p>
 
@@ -466,7 +466,7 @@ $section-bottom-margin:          emCalc(20px);
   </section>
 </div>
 ', :html %>
-        
+
         <p><strong>Note:</strong> If you are using Sections in a Modal, or they are being loaded via AJAX, or they are hidden when Foundation is initialized, you will need to reflow the sections to get tabs to display properly:</p>
 
 <%= code_example "
