@@ -44,7 +44,7 @@ $side-nav-divider-color:     darken(#fff, 10%) !default;
       color: $link-color;
     }
 
-    &.active a {
+    &.active > a:first-child {
       color: $side-nav-link-color-active;
       font-weight: $side-nav-font-weight;
     }
