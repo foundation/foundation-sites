@@ -321,19 +321,16 @@
     },
 
     toggle_checkbox : function ($element) {
-      var $input = $element.prev(),
-          input = $input[0];
+      var $input = $element.prevAll('input[type="checkbox"]').first();
 
       if (false === $input.is(':disabled')) {
-        input.checked = ((input.checked) ? false : true);
         $element.toggleClass('checked');
-
-        $input.trigger('change');
+        $input.trigger('click');
       }
     },
 
     toggle_radio : function ($element) {
-      var $input = $element.prev(),
+      var $input = $element.prevAll('input[type="radio"]').first(),
           $form = $input.closest('form.custom'),
           input = $input[0];
 
