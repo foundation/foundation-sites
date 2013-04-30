@@ -142,7 +142,7 @@
 
             //store the old value in data
             $select.data('prevalue', $oldThis.html());
-            $select.trigger('change');
+            $select.trigger('change').trigger('focusout');
           }
         });
 
