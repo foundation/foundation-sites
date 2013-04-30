@@ -2,7 +2,6 @@ description 'Foundation Compass Gem'
 
 # Sass Files
 stylesheet '../../scss/foundation/_variables.scss',       :to => '_settings.scss'
-stylesheet '../../scss/normalize.scss',                   :to => 'normalize.scss', :media => "screen, projector, print"
 stylesheet 'scss/app.scss',                               :to => 'app.scss', :media => "screen, projector, print"
 
 # Make sure you list all the project template files here in the manifest.
