@@ -126,6 +126,6 @@ $reveal-border-color:    #666 !default;
 
   // Reveal Print Styles
   @media print {
-    div:not(.reveal-modal) { display: none; }
+    .reveal-modal {background: #fff !important;}
   }
 }
