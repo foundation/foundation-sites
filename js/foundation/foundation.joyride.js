@@ -41,7 +41,8 @@
         modal   : '<div class="joyride-modal-bg"></div>',
         expose  : '<div class="joyride-expose-wrapper"></div>',
         exposeCover: '<div class="joyride-expose-cover"></div>'
-      }
+      },
+      exposeAddClass  	: ''		// One or more space-separated class names to be added to exposed element
     },
 
     settings : {},
@@ -564,6 +565,7 @@
           exposeCover,
           el,
           origCSS,
+          origClasses,
           randId = 'expose-'+Math.floor(Math.random()*10000);
 
       if (arguments.length > 0 && arguments[0] instanceof $) {
@@ -596,6 +598,8 @@
         zIndex: el.css('z-index'),
         position: el.css('position')
       };
+      
+      origClasses = el.attr('class');
 
       el.css('z-index',expose.css('z-index')*1+1);
 
@@ -604,6 +608,8 @@
       }
 
       el.data('expose-css',origCSS);
+      el.data('orig-class', origClasses);
+      el.attr('class', origClasses + ' ' + this.settings.exposeAddClass);
 
       exposeCover.css({
         top: el.offset().top,
@@ -625,6 +631,7 @@
           el,
           expose ,
           origCSS,
+          origClasses,
           clearAll = false;
 
       if (arguments.length > 0 && arguments[0] instanceof $) {
@@ -670,6 +677,10 @@
           el.css('position', origCSS.position);
         }
       }
+      
+      origClasses = el.data('orig-class');
+      el.attr('class', origClasses);
+      el.removeData('orig-classes');
 
       el.removeData('expose');
       el.removeData('expose-z-index');
