@@ -599,7 +599,7 @@
         position: el.css('position')
       };
       
-      origClasses = el.attr('class');
+      origClasses = el.attr('class') == null ? '' : el.attr('class');
 
       el.css('z-index',expose.css('z-index')*1+1);
 
