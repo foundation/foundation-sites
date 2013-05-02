@@ -305,6 +305,7 @@ blockquote {
 
   cite {
     display: block;
+    text-align: right;
     font-size: $blockquote-cite-font-size;
     color: $blockquote-cite-font-color;
     &:before {
