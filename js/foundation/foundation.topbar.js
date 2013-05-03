@@ -39,9 +39,13 @@
           breakpoint.remove();
 
           self.assemble();
+          var topbarcount = $('.top-bar').length;
+          var offst = self.outerHeight(self.settings.$topbar) * topbarcount;
 
           if (self.settings.$topbar.parent().hasClass('fixed')) {
-            $('body').css('padding-top', self.outerHeight(self.settings.$topbar));
+              
+
+              $('body').css('padding-top', offst);
           }
         });
 
@@ -57,8 +61,9 @@
     },
 
     events : function () {
-      var self = this;
-      var offst = this.outerHeight($('.top-bar'));
+        var self = this;
+        var topbarcount = $('.top-bar').length;
+        var offst = this.outerHeight($('.top-bar')) * topbarcount;
       $(this.scope)
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar', function (e) {
           var topbar = $(this).closest('.top-bar'),
