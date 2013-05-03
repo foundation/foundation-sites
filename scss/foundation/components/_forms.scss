@@ -1,6 +1,7 @@
 //
 // Form Variables
 //
+$include-html-form-classes: $include-html-classes !default;
 
 // We use this to set the base for lots of form spacing and positioning styles
 $form-spacing:                       emCalc(16px) !default;

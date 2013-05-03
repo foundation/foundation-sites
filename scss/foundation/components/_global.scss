@@ -187,20 +187,7 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 // We use this to control whether or not CSS classes come through in the gem files.
 $include-html-classes: true !default;
 $include-print-styles: true !default;
-$include-html-grid-classes: $include-html-classes !default;
-$include-html-visibility-classes: $include-html-classes !default;
-$include-html-button-classes: $include-html-classes !default;
-$include-html-form-classes: $include-html-classes !default;
-$include-html-media-classes: $include-html-classes !default;
-$include-html-section-classes: $include-html-classes !default;
-$include-html-reveal-classes: $include-html-classes !default;
-$include-html-alert-classes: $include-html-classes !default;
-$include-html-nav-classes: $include-html-classes !default;
-$include-html-label-classes: $include-html-classes !default;
-$include-html-panel-classes: $include-html-classes !default;
-$include-html-pricing-classes: $include-html-classes !default;
-$include-html-progress-classes: $include-html-classes !default;
-$include-html-magellan-classes: $include-html-classes !default;
+$include-html-global-classes: $include-html-classes !default;
 
 // Media Queries
 $small-screen: emCalc(768px) !default;
@@ -214,76 +201,80 @@ $large: "only screen and (min-width:"#{$large-screen}")" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
-// Set box-sizing globally to handle padding and border widths
-*,
-*:before,
-*:after {
-  @include box-sizing(border-box);
-}
-
-html,
-body { font-size: $base-font-size; }
-
-// Default body styles
-body {
-  background: $body-bg;
-  color: $body-font-color;
-  padding: 0;
-  margin: 0;
-  font-family: $body-font-family;
-  font-weight: $body-font-weight;
-  font-style: $body-font-style;
-  line-height: 1; // Set to $base-line-height to take on browser default of 150%
-  position: relative;
-}
-
-// Override outline from normalize, we don't like it
-a:focus { outline: none; }
-
-// Grid Defaults to get images and embeds to work properly
-img,
-object,
-embed { max-width: 100%; height: auto; }
-
-object,
-embed { height: 100%; }
-img { -ms-interpolation-mode: bicubic; }
-
-#map_canvas,
-.map_canvas {
-  img,
-  embed,
-  object { max-width: none !important;
+@if $include-html-global-classes {
+  
+  // Set box-sizing globally to handle padding and border widths
+  *,
+  *:before,
+  *:after {
+    @include box-sizing(border-box);
   }
+  
+  html,
+  body { font-size: $base-font-size; }
+  
+  // Default body styles
+  body {
+    background: $body-bg;
+    color: $body-font-color;
+    padding: 0;
+    margin: 0;
+    font-family: $body-font-family;
+    font-weight: $body-font-weight;
+    font-style: $body-font-style;
+    line-height: 1; // Set to $base-line-height to take on browser default of 150%
+    position: relative;
+  }
+  
+  // Override outline from normalize, we don't like it
+  a:focus { outline: none; }
+  
+  // Grid Defaults to get images and embeds to work properly
+  img,
+  object,
+  embed { max-width: 100%; height: auto; }
+  
+  object,
+  embed { height: 100%; }
+  img { -ms-interpolation-mode: bicubic; }
+  
+  #map_canvas,
+  .map_canvas {
+    img,
+    embed,
+    object { max-width: none !important;
+    }
+  }
+  
+  // Miscellaneous useful HTML classes
+  .left         { float: left !important; }
+  .right        { float: right !important; }
+  .text-left    { text-align: left !important; }
+  .text-right   { text-align: right !important; }
+  .text-center  { text-align: center !important; }
+  .text-justify { text-align: justify !important; }
+  .hide         { display: none; }
+  
+  // Font smoothing
+  // Antialiased font smoothing works best for light text on a dark background.
+  // Apply to single elements instead of globally to body.
+  // Note this only applies to webkit-based desktop browsers on the Mac.
+  .antialiased { -webkit-font-smoothing: antialiased; }
+  
+  // Get rid of gap under images by making them display: inline-block; by default
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  //
+  // Global resets for forms
+  //
+  
+  // Make sure textarea takes on height automatically
+  textarea { height: auto; min-height: 50px; }
+  
+  // Make select elements 100% width by default
+  select { width: 100%; }
+
 }
-
-// Miscellaneous useful HTML classes
-.left         { float: left !important; }
-.right        { float: right !important; }
-.text-left    { text-align: left !important; }
-.text-right   { text-align: right !important; }
-.text-center  { text-align: center !important; }
-.text-justify { text-align: justify !important; }
-.hide         { display: none; }
-
-// Font smoothing
-// Antialiased font smoothing works best for light text on a dark background.
-// Apply to single elements instead of globally to body.
-// Note this only applies to webkit-based desktop browsers on the Mac.
-.antialiased { -webkit-font-smoothing: antialiased; }
-
-// Get rid of gap under images by making them display: inline-block; by default
-img {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-//
-// Global resets for forms
-//
-
-// Make sure textarea takes on height automatically
-textarea { height: auto; min-height: 50px; }
-
-// Make select elements 100% width by default
-select { width: 100%; }
