@@ -87,7 +87,7 @@
         .on('click.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
           var $this = $(this),
               $dropdown = $this.closest('div.custom.dropdown'),
-              $select = $dropdown.prevAll('select').first();
+              $select = getFirstPrevSibling($dropdown, 'select');
 
           // make sure other dropdowns close
           if(!$dropdown.hasClass('open'))
@@ -111,7 +111,7 @@
         .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
               $customDropdown = $this.closest('div.custom.dropdown'),
-              $select = $customDropdown.prevAll('select').first(),
+              $select = getFirstPrevSibling($customDropdown, 'select'),
               selectedIndex = 0;
 
           e.preventDefault();
@@ -426,4 +426,14 @@
       $(this.scope).off('.fndtn.forms');
     }
   };
+
+  var getFirstPrevSibling = function($el, selector) {
+      var $el = $el.prev();
+      while ($el.length) {
+          if ($el.is(selector)) return $el;
+          $el = $el.prev();
+      }
+      return $();
+  }
+
 }(Foundation.zj, this, this.document));
