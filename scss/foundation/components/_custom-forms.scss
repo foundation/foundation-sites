@@ -1,7 +1,12 @@
 //
+// FIX THE "X" ON CUSTOM FORMS
+//
+
+
+//
 // Custom Form Variables
 //
-$include-html-form-classes: $include-html-classes !default;
+$include-html-custom-form-classes: $include-html-classes !default;
 
 // We use these to control the basic form styles input styles
 $custom-form-border-color:              #ccc !default;
@@ -10,7 +15,7 @@ $custom-form-bg:                        #fff !default;
 $custom-form-bg-disabled:               #ddd !default;
 $custom-form-input-size:                16px !default;
 $custom-form-check-color:               #222 !default;
-$custom-form-check-size:                14px !default;
+$custom-form-check-size:                20px !default;
 $custom-form-radio-size:                8px !default;
 $custom-form-checkbox-radius:           0px !default;
 
@@ -107,6 +112,8 @@ $custom-dropdown-width-large:           434px !default;
         &:before {
           content: "\2A2F";
           color: $custom-form-check-color;
+          margin-top: -8px;
+          margin-left: 2px;
         }
       }
     }
