@@ -44,7 +44,8 @@ $custom-dropdown-width-large:           434px !default;
 // they rely on a very specific class naming structure.
 // We may look at updating this in the future.
 
-@if $include-html-form-classes {
+// Only include these classes if the variable is true, otherwise they'll be left out.
+@if $include-html-custom-form-classes != false {
 
   /* Custom Checkbox and Radio Inputs */
   form.custom {
