@@ -78,6 +78,10 @@ CodeIgniter
 
 * [Responsive CodeIgniter BoilerPlate](https://github.com/meridiansoftech/meridian_ci_codebase) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
 
+Shopify
+
+* [Foundationify Shopify Theme](https://github.com/lukebussey/foundationify) by Luke Bussey
+
 Other Implementations
 
 * [Mobile First](https://github.com/adamfairhead/mobile-first-foundation) by Adam Fairhead
