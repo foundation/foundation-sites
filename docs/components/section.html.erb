@@ -141,6 +141,20 @@
     </div>
   </section>
 </div>', :html %>
+<div class="section-container auto" data-section>
+  <section>
+    <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
+    <div class="content" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
+    <div class="content" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>
         <p>This example will automatically switch between tabs and accordion based on the resolution of the device.</p>
 
         <p>The class options:</p>
@@ -174,6 +188,20 @@
     </div>
   </section>
 </div>', :html %>
+        <div class="section-container accordion" data-section="accordion">
+          <section>
+            <p class="title" data-section-title><a href="#">Section 1</a></p>
+            <div class="content" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title" data-section-title><a href="#">Section 2</a></p>
+            <div class="content" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
 
         <h6>Tabs</h6>
         <p>Adding a <code>tabs</code> class to the section container will enable tabs on both small and large screens.</p>
@@ -193,6 +221,21 @@
   </section>
 </div>', :html %>
 
+        <div class="section-container tabs" data-section="tabs">
+          <section>
+            <p class="title" data-section-title><a href="#">Section 1</a></p>
+            <div class="content" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title" data-section-title><a href="#">Section 2</a></p>
+            <div class="content" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
+
         <h6>Vertical Tabs</h6>
         <p>Adding a <code>vertical-tabs</code> class to the section container and setting <code>data-section="vertical-tabs"</code> will enable tabs on both small and large screens.</p>
 
@@ -210,7 +253,34 @@
       <p>Content of section 2.</p>
     </div>
   </section>
+  <section>
+    <p class="title" data-section-title><a href="#">Section 3</a></p>
+    <div class="content" data-section-content>
+      <p>Content of section 3.</p>
+    </div>
+  </section>
 </div>', :html %>
+
+        <div class="section-container vertical-tabs" data-section="vertical-tabs">
+          <section>
+            <p class="title" data-section-title><a href="#">Section 1</a></p>
+            <div class="content" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title" data-section-title><a href="#">Section 2</a></p>
+            <div class="content" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title" data-section-title><a href="#">Section 3</a></p>
+            <div class="content" data-section-content>
+              <p>Content of section 3.</p>
+            </div>
+          </section>
+        </div>
 
         <h6>Vertical Nav/Accordion</h6>
         <p>Adding a <code>vertical-nav</code> class to the section container will enable vertical navigation elements on large screens and show an accordion on small screens.</p>
@@ -254,6 +324,40 @@
   </div>
 </div>', :html %>
 
+        <div class="row">
+          <div class="large-3 columns">
+            <div class="section-container vertical-nav" data-section="vertical-nav" data-options="one_up: false;">
+              <section>
+                <p class="title" data-section-title><a href="#">Section 1</a></p>
+                <div class="content" data-section-content>
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+              <section>
+                <p class="title" data-section-title><a href="#">Section 2</a></p>
+                <div class="content" data-section-content>
+                  <ul class="side-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link 1</a></li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="large-9 columns">
+            <p>Content to the right of the navigation.</p>
+          </div>
+        </div>
+
         <h6>Horizontal Nav/Nav Bar</h6>
         <p>Adding a <code>horizontal-nav</code> class to the section container will enable horizontal navigation elements on large screens and show an accordion on small screens.</p>
 
@@ -290,6 +394,32 @@
 </div>
 ', :html %>
 
+        <div class="section-container horizontal-nav" data-section="horizontal-nav" data-options="one_up: false;">
+          <section>
+            <p class="title" data-section-title><a href="#">Section 1</a></p>
+            <div class="content" data-section-content>
+              <ul class="side-nav">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link 1</a></li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <p class="title" data-section-title><a href="#">Section 2</a></p>
+            <div class="content" data-section-content>
+              <ul class="side-nav">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link 1</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
 
         <h6>Deep Linking</h6>
         <p>Set <code>deep-linking</code> to true to enable deep linking to sections of content. Deep linking allows visitors to visit a predefined URL with a hash that points to a particular section of the content. Deep linking also requires a matching <code>data-slug</code> on the content section that the hash should point to, without the pound (&#35;) sign.</p>
