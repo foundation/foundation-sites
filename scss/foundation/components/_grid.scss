@@ -169,15 +169,15 @@ $total-columns: 12 !default;
       .small-pull#{-$i} { #{$opposite-direction}: inherit; }
     }
 
-    .column.small-centered,
-    .columns.small-centered {
-      margin-#{$default-float}: 0;
-      margin-#{$opposite-direction}: 0;
-      float: none !important;
-    }
-
     .column.large-centered,
     .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:false); }
+
+    .column.large-uncentered,
+    .columns.large-uncentered, {
+      margin-#{$default-float}: 0;
+      margin-#{$opposite-direction}: 0;
+      float: none;
+    }
 
   }
 
