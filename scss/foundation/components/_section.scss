@@ -1,6 +1,7 @@
 //
 // Section Variables
 //
+$include-html-section-classes: $include-html-classes !default;
 
 // We use these to set padding and hover factor
 $section-padding:                emCalc(15px) !default;
