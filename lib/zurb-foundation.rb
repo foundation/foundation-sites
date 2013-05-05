@@ -6,7 +6,11 @@ if defined?(Rails)
 end
 
 module Foundation
-  require "foundation/engine" if defined?(Rails)
+  if defined?(Rails)
+    require "foundation/engine"
+  elsif defined?(Sprockets)
+    require "foundation/sprockets"
+  end
 end
 
 if defined?(Compass)
