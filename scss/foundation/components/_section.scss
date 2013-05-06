@@ -81,7 +81,7 @@ $section-bottom-margin:             emCalc(20px) !default;
 @mixin section($section-type:accordion, $title-selector:".title", $content-selector:".content", $title-padding:$section-title-padding, $title-color:$section-title-color, $title-font-size:$section-font-size, $title-bg:$section-title-bg, $title-bg-hover:$section-title-bg-hover, $title-bg-active:$section-title-bg-active, $title-color-active:$section-title-color, $content-bg:$section-content-bg, $content-padding:$section-content-padding, $section-border-size:$section-border-size, $section-border-style:$section-border-style, $section-border-color: $section-border-color) {
 
   // Default Styles
-  #{$title-selector} {
+  > #{$title-selector} {
     background-color: $title-bg;
     cursor: pointer;
     margin-bottom: 0;
@@ -118,7 +118,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     // border-top: $section-border-size $section-border-style $section-border-color;
     position: relative;
 
-    #{$title-selector} {
+    > #{$title-selector} {
       top: 0;
       width: 100%;
       margin: 0;
@@ -133,7 +133,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     border: 0;
     position: static;
 
-    #{$title-selector} {
+    > #{$title-selector} {
       width: auto;
       border: $section-border-style $section-border-size $section-border-color;
       border-#{$opposite-direction}: 0;
@@ -170,7 +170,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     border: 0;
     position: static;
 
-    #{$title-selector} {
+    > #{$title-selector} {
       position: absolute;
       border-top: $section-border-style $section-border-size $section-border-color;
       width: $section-vertical-tabs-title-width;
@@ -203,7 +203,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     padding-top: 0 !important;
     position: relative;
 
-    #{$title-selector} {
+    > #{$title-selector} {
       border-top: none;
       border: $section-border-style $section-border-size $section-border-color;
 
@@ -234,7 +234,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     border: 0;
     position: static;
 
-    #{$title-selector} {
+    > #{$title-selector} {
       width: auto;
       border: $section-border-style $section-border-size $section-border-color;
       border-#{$default-float}: 0;
