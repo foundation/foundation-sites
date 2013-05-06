@@ -166,8 +166,8 @@ $total-columns: 12 !default;
     }
 
     @for $i from 1 through $total-columns - 1 {
-      .small-push#{-$i} { #{$default-float}: inherit; }
-      .small-pull#{-$i} { #{$opposite-direction}: inherit; }
+      .push#{-$i} { #{$default-float}: inherit; }
+      .pull#{-$i} { #{$opposite-direction}: inherit; }
     }
 
     .column.large-centered,
