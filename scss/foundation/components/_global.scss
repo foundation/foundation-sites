@@ -195,9 +195,9 @@ $medium-screen: emCalc(1280px) !default;
 $large-screen: emCalc(1440px) !default;
 
 $screen: "only screen" !default;
-$small: "only screen and (min-width:"#{$small-screen}")" !default;
-$medium: "only screen and (min-width:"#{$medium-screen}")" !default;
-$large: "only screen and (min-width:"#{$large-screen}")" !default;
+$small: "only screen and (min-width: #{$small-screen})" !default;
+$medium: "only screen and (min-width:#{$medium-screen})" !default;
+$large: "only screen and (min-width:#{$large-screen})" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 

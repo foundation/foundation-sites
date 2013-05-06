@@ -90,9 +90,9 @@ $em-base: 16px !default;
 // $large-screen: emCalc(1440px);
 
 // $screen: "only screen";
-// $small: "only screen and (min-width:"#{$small-screen}")";
-// $medium: "only screen and (min-width:"#{$medium-screen}")";
-// $large: "only screen and (min-width:"#{$large-screen}")";
+// $small: "only screen and (min-width: #{$small-screen})";
+// $medium: "only screen and (min-width: #{$medium-screen})";
+// $large: "only screen and (min-width: #{$large-screen})";
 // $landscape: "only screen and (orientation: landscape)";
 // $portrait: "only screen and (orientation: portrait)";
 
