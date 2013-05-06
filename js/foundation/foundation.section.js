@@ -95,7 +95,7 @@
           || self.is_vertical_nav(parent)
           || self.is_horizontal_nav(parent)
           || self.is_accordion(parent)) {
-            if (prev_active_section[0] !== region[0] 
+            if (prev_active_section[0] !== region[0]
               || (prev_active_section[0] === region[0] && !settings.one_up)) {
               region
                 .removeClass('active')
@@ -113,7 +113,7 @@
           if (self.small(parent)) {
             prev_active_section.attr('style', '');
           } else {
-            prev_active_section.attr('style', 
+            prev_active_section.attr('style',
               'visibility: hidden; padding-top: '+title_height+'px;');
           }
         }
@@ -345,11 +345,11 @@
                 content = region.children(self.settings.content_selector);
             if (!self.rtl) {
               content
-                .css({left: title.position().left - 1, 
+                .css({left: title.position().left - 1,
                   top: self.outerHeight(title) - 2});
             } else {
               content
-                .css({right: self.position_right(title) + 1, 
+                .css({right: self.position_right(title) + 1,
                   top: self.outerHeight(title) - 2});
             }
           });

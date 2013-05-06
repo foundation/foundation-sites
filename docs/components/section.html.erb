@@ -506,7 +506,7 @@
 
         <hr>
 
-      <!--   <h3>Building with Mixins</h3>
+        <h3>Building with Mixins</h3>
         <p>If you are keen on SCSS and use it for your Foundation projects, you have access to mixins that will let you create any type of section you want and change it within a media query too! Building a section with our mixins requires a bit of predefined structure, but you can choose the classes or ID's to style them with. Start with some sort of block-level container, we use a <code>&lt;div&gt;</code>. This container needs to have <code>data-section="type-of-section"</code>. The section types are explained above. Inside this you create "sections", which can be an HTML5 <code>section</code> element or a <code>&lt;div class="section"&gt;</code>, that will hold content.<p>
 
         <h5>Title and Content Elements</h5>
@@ -522,37 +522,435 @@
       <p>Content of section 1.</p>
     </div>
   </section>
-  <div data-section-region>
+  <section class="your-section-class">
     <p class="your-title-class" data-section-title><a href="#section2">Section 2</a></p>
     <div class="your-content-class" data-slug="section2" data-section-content>
       <p>Content of section 2.</p>
-    </div>
+    </section>
   </div>
 </div>', :html %>
 
-        <hr> -->
+        <p>Here's a look at the available options for the mixins you need to create sections:</p>
+
+<%= code_example '
+@include section-container($base-style, $section-type) { ... }
+
+/* Container Options */
+
+/* This controls whether or not you include default styles when chaining classes, set to true or false */
+$base-style: true
+
+/* This controls the style for the section you are using: accordion, tabs, vertical-tabs, vertical-nav, horizontal-nav */
+$section-type: accordion
+
+@include section($section-type, $title-selector, $content-selector, $title-padding, $title-color, $title-font-size, $title-bg, $title-bg-hover, $title-bg-active, $title-color-active, $content-bg, $content-padding, $section-border-size, $section-border-style, $section-border-color) { ... }
+
+/* Section Options */
+
+/* Control which section type styles come across: accordion, tabs, vertical-tabs, vertical-nav, horizontal-nav */
+$section-type: accordion
+
+/* You can set the class that is used for the title elements */
+$title-selector: ".title"
+
+/* You can set the class that is used for the content elements */
+$content-selector: ".content"
+
+/* Give the titles some padding, can be any px or emCalc() value */
+$title-padding: $section-padding
+
+/* give the titles a color, any color value */
+$title-color: $section-title-color
+
+/* Set the font size for titles */
+$title-font-size: $section-font-size
+
+/* Set the background color for titles */
+$title-bg: $section-title-bg
+
+/* Change title background for hover */
+$title-bg-hover: $section-title-bg-hover
+
+/* Change title background for .active */
+$title-bg-active: $section-title-bg-active
+
+/* Change title color for .active */
+$title-color-active: $section-title-color
+
+/* Content area background color */
+$content-bg: $section-content-bg
+
+/* Content area padding */
+$content-padding: $section-content-padding
+
+/* Border size in pixels */
+$section-border-size: $section-border-size
+
+/* Border style */
+$section-border-style: $section-border-style
+
+/* Border color */
+$section-border-color: $section-border-color', :css %>
+
+
+        <hr>
+
+        <h5>Auto Configuration</h5>
+        <p>The default use case for our section plugin is to create accordions on small screens and tabs on large screens.</p>
+<%= code_example '
+<div class="section-auto-sample" data-section="auto">
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="content-sample" data-slug="section1" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+    <div class="content-sample" data-slug="section2" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+<%= code_example '
+.section-auto-sample {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+
+  @media #{$small} {
+    @include section-container(false,$section-type:tabs);
+    & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+}', :css %>
+
+        <div class="section-auto-sample" data-section="auto">
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+            <div class="content-sample" data-slug="section1" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+            <div class="content-sample" data-slug="section2" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
+
+        <hr>
+
+        <h5>Accordion Configuration</h5>
+        <p>You can have your section act like an accordion the entire time, like so:</p>
+<%= code_example '
+<div class="section-auto-sample-accordion" data-section="accordion">
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="content-sample" data-slug="section1" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+    <div class="content-sample" data-slug="section2" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+<%= code_example '
+.section-auto-sample-accordion {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}', :css %>
+
+        <div class="section-auto-sample-accordion" data-section="accordion">
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+            <div class="content-sample" data-slug="section1" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+            <div class="content-sample" data-slug="section2" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
+
+        <hr>
+
+        <h5>Tabs Configuration</h5>
+        <p>You can have your section act like tabs the entire time, like so:</p>
+<%= code_example '
+<div class="section-auto-sample-tabs" data-section="tabs">
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="content-sample" data-slug="section1" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+    <div class="content-sample" data-slug="section2" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+<%= code_example '
+.section-auto-sample-tabs {
+  @include section-container($section-type:tabs);
+  & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}', :css %>
+
+        <div class="section-auto-sample-tabs" data-section="tabs">
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+            <div class="content-sample" data-slug="section1" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+            <div class="content-sample" data-slug="section2" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
+
+        <hr>
+
+        <h5>Vertical Tabs Configuration</h5>
+        <p>You can have your section act like vertical tabs on large screen and go back to accordion on small screens, like so:</p>
+<%= code_example '
+<div class="section-auto-sample-vtabs" data-section="vertical-tabs">
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="content-sample" data-slug="section1" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+    <div class="content-sample" data-slug="section2" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+<%= code_example '
+.section-auto-sample-vtabs {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}
+@media #{$small} {
+  .section-auto-sample-vtabs {
+    @include section-container($section-type:vertical-tabs);
+    & > section { @include section($section-type:vertical-tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+}', :css %>
+
+        <div class="section-auto-sample-vtabs" data-section="vertical-tabs">
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+            <div class="content-sample" data-slug="section1" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+            <div class="content-sample" data-slug="section2" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
+
+        <hr>
+
+        <h5>Vertical Nav Configuration</h5>
+        <p>You can have your section act like vertical navigation the entire time, like so:</p>
+<%= code_example '
+<div class="nav-container">
+  <nav>
+    <div class="section-auto-sample-vnav" data-section="vertical-nav">
+      <section>
+        <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+        <div class="content-sample" data-slug="section1" data-section-content>
+          <p>Content of section 1.</p>
+        </div>
+      </section>
+      <section>
+        <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+        <div class="content-sample" data-slug="section2" data-section-content>
+          <p>Content of section 2.</p>
+        </div>
+      </section>
+    </div>
+  </nav>
+  <section class="page-content">
+    <p>Content...</p>
+  </section>
+</div>', :html %>
+
+<%= code_example '
+.nav-container { @include grid-row($behavior:nest);
+  > nav { @include grid-column($columns:4); }
+}
+
+.section-auto-sample-vnav {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}
+@media #{$small} {
+  .section-auto-sample-vnav {
+    @include section-container($section-type:vertical-nav);
+    & > section { @include section($section-type:vertical-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+}', :css %>
+
+        <div class="nav-container">
+          <nav>
+            <div class="section-auto-sample-vnav" data-section="vertical-nav">
+              <section>
+                <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+                <div class="content-sample" data-slug="section1" data-section-content>
+                  <p>Content of section 1.</p>
+                </div>
+              </section>
+              <section>
+                <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+                <div class="content-sample" data-slug="section2" data-section-content>
+                  <p>Content of section 2.</p>
+                </div>
+              </section>
+            </div>
+          </nav>
+          <section class="page-content">
+            <p>Content...</p>
+          </section>
+        </div>
+        <hr>
+
+        <h5>Horizontal Nav Configuration</h5>
+        <p>You can have your section act like horizontal navigation the entire time, like so:</p>
+<%= code_example '
+<div class="section-auto-sample-hnav" data-section="horizontal-nav">
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="content-sample" data-slug="section1" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+    <div class="content-sample" data-slug="section2" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+<%= code_example '
+.section-auto-sample-hnav {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}
+@media #{$small} {
+  .section-auto-sample-hnav {
+    @include section-container($section-type:horizontal-nav);
+    & > section { @include section($section-type:horizontal-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+}', :css %>
+
+        <div class="section-auto-sample-hnav" data-section="horizontal-nav">
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+            <div class="content-sample" data-slug="section1" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+            <div class="content-sample" data-slug="section2" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
+
+        <hr>
+
+        <h5>Custom Styles Using the Mixin</h5>
+        <p>You have access to a few options that will make styling the sections really easy and you can add onto it as you want. You'll still need the data-section attribute to match the style you give the mixin.</p>
+<%= code_example '
+<div class="section-auto-sample-custom" data-section="tabs">
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+    <div class="content-sample" data-slug="section1" data-section-content>
+      <p>Content of section 1.</p>
+    </div>
+  </section>
+  <section>
+    <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+    <div class="content-sample" data-slug="section2" data-section-content>
+      <p>Content of section 2.</p>
+    </div>
+  </section>
+</div>', :html %>
+
+<%= code_example '
+.section-auto-sample-custom {
+  @include section-container($section-type:tabs);
+  & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample", $title-padding: 10px 50px, $title-color:#000, $title-bg:pink, $title-bg-hover:darken(pink,5%), $title-bg-active: #fff, $title-color-active: darken(pink,10%)); }
+}', :css %>
+
+        <div class="section-auto-sample-custom" data-section="tabs">
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
+            <div class="content-sample" data-slug="section1" data-section-content>
+              <p>Content of section 1.</p>
+            </div>
+          </section>
+          <section>
+            <p class="title-sample" data-section-title><a href="#section1">Section 2</a></p>
+            <div class="content-sample" data-slug="section2" data-section-content>
+              <p>Content of section 2.</p>
+            </div>
+          </section>
+        </div>
+
+        <hr>
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-section-classes: $include-html-classes !default;
+
 /* We use these to set padding and hover factor */
-$section-padding:                emCalc(15px);
-$section-function-factor:        10%;
+$section-title-padding:             emCalc(15px);
+$section-content-padding:           emCalc(15px);
+$section-function-factor:           10%;
 
 /* These style the titles */
-$section-title-color:            #333;
-$section-title-bg:               #efefef;
-$section-title-bg-active:        darken($section-title-bg, $section-function-factor);
-$section-title-bg-active-tabs:   #fff;
+$section-title-color:               #333;
+$section-title-bg:                  #efefef;
+$section-title-bg-active:           darken($section-title-bg, $section-function-factor);
+$section-title-bg-active-tabs:      #fff;
+$section-title-bg-hover:            darken($section-title-bg, $section-function-factor/2);
 
 /* Want to control border size, here ya go! */
-$section-border-size:            1px;
-$section-border-style:           solid;
-$section-border-color:           #ccc;
+$section-border-size:               1px;
+$section-border-style:              solid;
+$section-border-color:              #ccc;
+
+/* Font controls */
+$section-font-size:                 emCalc(14px);
 
 /* Control the color of the background and some size options */
-$section-content-bg:             #fff;
-$section-vertical-nav-min-width: emCalc(200px);
-$section-bottom-margin:          emCalc(20px);
+$section-content-bg:                #fff;
+$section-vertical-nav-min-width:    emCalc(200px);
+$section-vertical-tabs-title-width: emCalc(200px);
+$section-bottom-margin:             emCalc(20px);
 ', :css %>
 
     <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>

@@ -175,6 +175,60 @@ input[type="text"].attached-input {
   }
 }
 
+/* Section Docs */
+.section-auto-sample {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+
+  @media #{$small} {
+    @include section-container(false,$section-type:tabs);
+    & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+}
+
+.section-auto-sample-accordion {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}
+
+.section-auto-sample-tabs {
+  @include section-container($section-type:tabs);
+  & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}
+
+.section-auto-sample-vtabs,
+.section-auto-sample-vnav,
+.section-auto-sample-hnav {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}
+
+@media #{$small} {
+  .section-auto-sample-vtabs {
+    @include section-container($section-type:vertical-tabs);
+    & > section { @include section($section-type:vertical-tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+
+  .nav-container { @include grid-row($behavior:nest);
+    > nav { @include grid-column($columns:4); }
+  }
+
+  .section-auto-sample-vnav {
+    @include section-container($section-type:vertical-nav);
+    & > section { @include section($section-type:vertical-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+
+  .section-auto-sample-hnav {
+    @include section-container($section-type:horizontal-nav);
+    & > section { @include section($section-type:horizontal-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
+  }
+
+}
+.section-auto-sample-custom {
+  @include section-container($section-type:tabs);
+  & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample", $title-padding: 10px 50px, $title-color:#000, $title-bg:pink, $title-bg-hover:darken(pink,5%), $title-bg-active: #fff, $title-color-active: darken(pink,10%)); }
+}
+
 @media only screen and (min-width: 800px) {
   .docs.header { float: $default-float; }
 
