@@ -811,6 +811,7 @@
       this.settings.$current_tip.hide();
       this.settings.postStepCallback(this.settings.$li.index(), this.settings.$current_tip);
       this.settings.postRideCallback(this.settings.$li.index(), this.settings.$current_tip);
+      $('.joyride-tip-guide').remove();
     },
 
     outerHTML : function (el) {
