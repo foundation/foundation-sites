@@ -48,6 +48,9 @@ Drupal
 * [Zurb Foundation](http://drupal.org/project/zurb-foundation) Supporting F3.2, F4 & Drupal 8  by [Ishmael Sanchez](http://ishmaelsanchez.com), [Chris Lee](http://hire.chrisjlee.net)
 * [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
 
+Alfred
+* [Foundation Alfred](https://github.com/joshmedeski/foundation-alfred) by Josh Medeski (@joshmedeski)
+
 PyroCMS
 
 * [PyroYeti - PyroCMS Theme](https://github.com/pyrosuit/PyroYeti) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
