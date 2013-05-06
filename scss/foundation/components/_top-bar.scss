@@ -53,8 +53,8 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
     background: $topbar-bg;
   }
 
-  // Wrapped around .top-bar to make it fixed at the top
-  .fixed {
+  // Wrapped around .top-bar to make it stick to the top
+  .sticky {
     width: 100%;
     #{$default-float}: 0;
     position: fixed;
