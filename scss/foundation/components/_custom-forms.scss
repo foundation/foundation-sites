@@ -15,7 +15,7 @@ $custom-form-bg:                        #fff !default;
 $custom-form-bg-disabled:               #ddd !default;
 $custom-form-input-size:                16px !default;
 $custom-form-check-color:               #222 !default;
-$custom-form-check-size:                20px !default;
+$custom-form-check-size:                16px !default;
 $custom-form-radio-size:                8px !default;
 $custom-form-checkbox-radius:           0px !default;
 
@@ -110,10 +110,13 @@ $custom-dropdown-width-large:           434px !default;
 
       &.checkbox.checked {
         &:before {
-          content: "\2A2F";
+          content: "\00d7";
           color: $custom-form-check-color;
-          margin-top: -8px;
-          margin-left: 2px;
+          position: absolute;
+          top: -50%;
+          left: 50%;
+          margin-top: 4px;
+          margin-left: -5px;
         }
       }
     }
