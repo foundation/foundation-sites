@@ -189,7 +189,7 @@ if (typeof jQuery === "undefined" &&
           this.patch(this.libs[lib]);
           return this.libs[lib].init.apply(this.libs[lib], args);
         }
-      }.bind(this), lib);
+      }.apply(this), lib);
     },
 
     trap : function (fun, lib) {
