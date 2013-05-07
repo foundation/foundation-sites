@@ -91,7 +91,7 @@
         <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-form</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
 
         <h5>Sticky Top Bar</h5>
-        <p>You may also wrap your top bar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll.</p>
+        <p>You may also wrap your top bar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. <strong>Note:</strong> If you are using Scss, you can control the default <code>sticky</code> class by adjusting the <code>$topbar-sticky-class</code> variable. <strong>Make sure the JS variable for <code>stickyClass</code> matches whatever class you use in the variable.</strong></p>
 
 <%= code_example '
 <nav class="top-bar">
@@ -263,7 +263,10 @@ $topbar-media-query:                   "only screen and (min-width:"#{$topbar-br
 
 /* Divider Styles */
 $topbar-divider-border-bottom:         solid 1px lighten($topbar-bg, 10%);
-$topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%);', :css %>
+$topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%);
+
+// Sticky Class
+$topbar-sticky-class:                  ".sticky";', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 

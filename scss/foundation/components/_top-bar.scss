@@ -58,6 +58,9 @@ $topbar-media-query:                   "only screen and (min-width:"#{$topbar-br
 $topbar-divider-border-bottom:         solid 1px lighten($topbar-bg, 10%) !default;
 $topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%) !default;
 
+// Sticky Class
+$topbar-sticky-class:                  ".sticky" !default;
+
 @if $include-html-nav-classes {
 
   /* Wrapped around .top-bar to contain to grid width */
@@ -67,7 +70,7 @@ $topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%) !defaul
   }
 
   // Wrapped around .top-bar to make it stick to the top
-  .sticky {
+  #{$topbar-sticky-class} {
     width: 100%;
     #{$default-float}: 0;
     position: fixed;
