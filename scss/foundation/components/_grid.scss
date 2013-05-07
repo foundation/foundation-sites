@@ -165,11 +165,6 @@ $total-columns: 12 !default;
       .pull#{-$i} { @include grid-column($pull:$i, $collapse:null, $float:false); }
     }
 
-    @for $i from 1 through $total-columns - 1 {
-      .small-push#{-$i} { #{$default-float}: inherit; }
-      .small-pull#{-$i} { #{$opposite-direction}: inherit; }
-    }
-
     .column.large-centered,
     .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:false); }
 
