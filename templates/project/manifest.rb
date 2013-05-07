@@ -1,6 +1,7 @@
 description 'Foundation Compass Gem'
 
 # Sass Files
+stylesheet '../../scss/normalize.scss',                   :to => '_normalize.scss'
 stylesheet '../../scss/foundation/_variables.scss',       :to => '_settings.scss'
 stylesheet 'scss/app.scss',                               :to => 'app.scss', :media => "screen, projector, print"
 
