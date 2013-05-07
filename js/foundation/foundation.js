@@ -189,6 +189,9 @@ if (typeof jQuery === "undefined" &&
           this.patch(this.libs[lib]);
           return this.libs[lib].init.apply(this.libs[lib], args);
         }
+        else {
+          return function () {};
+        }
       }.bind(this), lib);
     },
 
