@@ -196,14 +196,14 @@
       this.settings.init = true;
     },
 
-    go_to: function (dropdown, char) {
+    go_to: function (dropdown, character) {
       var lis = dropdown.find('li'),
           count = lis.length;
 
       if (count > 0) {
         for (var i = 0; i < count; i++) {
           var first_letter = lis.eq(i).text().charAt(0).toLowerCase();
-          if (first_letter === String.fromCharCode(char).toLowerCase()) return lis.eq(i);
+          if (first_letter === String.fromCharCode(character).toLowerCase()) return lis.eq(i);
         }
       }
     },
