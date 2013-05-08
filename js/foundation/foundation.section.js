@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.1.3',
+    version : '4.1.7',
 
     settings : {
       deep_linking: false,
@@ -356,9 +356,9 @@
 
           // temporary work around for Zepto outerheight calculation issues.
           if (typeof Zepto === 'function') {
-            section.height(this.outerHeight(titles.first()));
+            section.height(this.outerHeight($(titles[0])));
           } else {
-            section.height(this.outerHeight(titles.first()) - 2);
+            section.height(this.outerHeight($(titles[0])) - 2);
           }
         }
       }
