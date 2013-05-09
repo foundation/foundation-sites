@@ -69,6 +69,7 @@ $custom-dropdown-width-large:           434px !default;
       height: $custom-form-input-size;
 
       & + label > span {
+        speak: none;
         display:inline-block;
         box-sizing: border-box;
         width: $custom-form-input-size;
