@@ -52,13 +52,14 @@
 
         <h5>Optional JavaScript Configuration</h5>
 
-        <p>Tooltip options can only be passed in during initialization at this time.</p>
+        <p>Tooltips now support <code>data-options</code> configuration. You can use this functionality to disable tooltips selectively by defining <code>data-options="disable-for-touch: true"</code> on your tip target.</p>
 
     <%= code_example "
 {
   selector : '.has-tip',
   additionalInheritableClasses : [],
   tooltipClass : '.tooltip',
+  disable-for-touch: false,
   tipTemplate : function (selector, content) {
     return '<span data-selector=\"' + selector + '\" class=\"'
       + Foundation.libs.tooltips.settings.tooltipClass.substring(1)

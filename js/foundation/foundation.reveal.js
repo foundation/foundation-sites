@@ -36,7 +36,6 @@
     },
 
     init : function (scope, method, options) {
-      this.scope = scope || this.scope;
       Foundation.inherit(this, 'data_options delay');
 
       if (typeof method === 'object') {
