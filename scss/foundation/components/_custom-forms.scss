@@ -17,6 +17,8 @@ $custom-form-check-color:               #222 !default;
 $custom-form-check-size:                32px !default;
 $custom-form-radio-size:                8px !default;
 $custom-form-checkbox-radius:           $global-radius !default;
+$custom-form-checkbox-glyph-font:       $body-font-family !default;
+$custom-form-checkbox-glyph-symbol:     '\000D7' !default;
 
 // We use these to style the custom select form element.
 $custom-select-bg:                      #fff !default;
@@ -104,7 +106,8 @@ $custom-dropdown-width-large:           434px !default;
     }
 
     input[type="checkbox"]:checked + label > span:after {
-      content: "\000D7";
+      content: $custom-form-checkbox-glyph-symbol;
+      font-family: $custom-form-checkbox-glyph-font;
       font-size: $custom-form-check-size;
       margin: 0 (($custom-form-input-size - $custom-form-check-size) / 2) - $custom-form-border-size;
     }
