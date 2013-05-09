@@ -532,15 +532,19 @@ $em-base: 16px !default;
 
 // Basic form styles input styles
 
-// $custom-form-border-color: #ccc;
 // $custom-form-border-size: 1px;
+// $custom-form-border-color: #ccc;
+// $custom-form-border-focus-color: $primary-color;
+// $custom-form-border-disabled-color: #ccc;
 // $custom-form-bg: #fff;
+// $custom-form-bg-focus: $custom-form-bg;
 // $custom-form-bg-disabled: #ddd;
 // $custom-form-input-size: 16px;
+// $custom-form-input-gap: 4px;
 // $custom-form-check-color: #222;
-// $custom-form-check-size: 14px;
+// $custom-form-check-size: 32px;
 // $custom-form-radio-size: 8px;
-// $custom-form-checkbox-radius: 0px;
+// $custom-form-checkbox-radius: $global-radius;
 
 // Custom select form element.
 
