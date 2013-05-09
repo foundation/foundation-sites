@@ -108,6 +108,13 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
     .carousel > ul { display: none; }
   }
 
+  // If you want to show a lightbox, but only have a single image come through as the thumbnail
+  .clearing-feature li { 
+    display: none;
+    &.clearing-featured-img {
+      display: block;
+    } 
+  }
 
   // Large screen overrides
   @media #{$small} {
@@ -144,9 +151,6 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 
     .clearing-main-prev.disabled,
     .clearing-main-next.disabled { opacity: 0.5; }
-
-    // If you want to show a lightbox, but only have a single image come through as the thumbnail
-    .clearing-feature ~ li { display: none; }
 
     .clearing-assembled .clearing-container {
 
