@@ -1,3 +1,8 @@
+<!-- 
+### 4.1.7- May 9, 2013
+* Added .clearing-featured-img class to designate the featured image in a .clearing-feature list 
+-->
+
 ### 4.1.6- May 6, 2013
 * Improved performance for custom select boxes.
 * Bug fix for switches contained within custom forms.
