@@ -30,6 +30,7 @@ Many thanks to all the people working on Foundation either to improve the base c
 
 WordPress (Versions marked 3/20/13)
 
+* [Reactor](https://github.com/awtheme/reactor) by Anthony Wilhelm using Foundation version 4
 * [Reverie](http://themefortress.com/reverie/) by Zhen using Foundation version 4
 * [Corner Stone](https://github.com/thewirelessguy/cornerstone) by [Stephen Mullen](https://twitter.com/wirelessguyuk) using Foundation version v4.09
 * [required+ Themes](http://themes.required.ch/) by required+ using Foundation version 3.25
