@@ -177,7 +177,7 @@ $total-columns: 12 !default;
 
     .column.large-uncentered.opposite,
     .columns.large-uncentered.opposite {
-      float: $opposite-direction;
+      float: $opposite-direction !important;
     }
 
 
