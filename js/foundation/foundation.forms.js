@@ -87,6 +87,9 @@
             }
           }
         })
+        .on('mousedown.fndtn.forms', 'form.custom div.custom.dropdown', function () {
+          return false;
+        })
         .on('click.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
           var $this = $(this),
               $dropdown = $this.closest('div.custom.dropdown'),
