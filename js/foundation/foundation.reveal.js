@@ -245,7 +245,7 @@
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
         iframe.attr('src', 'about:blank');
-        video.fadeOut(100).hide();
+        video.hide();
       }
     },
 
@@ -258,7 +258,7 @@
         if (typeof data_src === 'string') {
           iframe[0].src = iframe.attr('data-src');
         }
-        video.show().fadeIn(100);
+        video.show();
       }
     },
 

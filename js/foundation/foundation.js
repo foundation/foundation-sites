@@ -126,7 +126,6 @@ if (typeof jQuery === "undefined" &&
 
     version : '4.1.5',
 
-    // global Foundation cache object
     cache : {},
 
     init : function (scope, libraries, method, options, response, /* internal */ nc) {
