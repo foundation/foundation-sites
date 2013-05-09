@@ -13,6 +13,7 @@
       stickyClass : 'sticky',
       custom_back_text: true,
       back_text: 'Back',
+      scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
 
@@ -99,7 +100,9 @@
             topbar.parent().removeClass('fixed');
             topbar.addClass('fixed');
             $('body').css('padding-top','0');
-            window.scrollTo(0,0);
+            if (self.settings.scrolltop) {
+              window.scrollTo(0,0);
+            }
           }
         })
 
