@@ -35,15 +35,15 @@
     assemble: function () {
       $('form.custom input[type="radio"]', $(this.scope))
         .not('[data-customforms="disabled"]')
-        .not('[class="' + this.settings.disable_class + '"]')
+        .not('.' + this.settings.disable_class)
         .each(this.append_custom_markup);
       $('form.custom input[type="checkbox"]', $(this.scope))
         .not('[data-customforms="disabled"]')
-        .not('[class="' + this.settings.disable_class + '"]')
+        .not('.' + this.settings.disable_class)
         .each(this.append_custom_markup);
       $('form.custom select', $(this.scope))
         .not('[data-customforms="disabled"]')
-        .not('[class="' + this.settings.disable_class + '"]')
+        .not('.' + this.settings.disable_class)
         .not('[multiple=multiple]')
         .each(this.append_custom_select);
     },
