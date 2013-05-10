@@ -169,11 +169,17 @@ $total-columns: 12 !default;
     .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:false); }
 
     .column.large-uncentered,
-    .columns.large-uncentered, {
+    .columns.large-uncentered {
       margin-#{$default-float}: 0;
       margin-#{$opposite-direction}: 0;
-      float: none;
+      float: $default-float !important;
     }
+
+    .column.large-uncentered.opposite,
+    .columns.large-uncentered.opposite {
+      float: $opposite-direction !important;
+    }
+
 
   }
 
