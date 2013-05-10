@@ -5,7 +5,7 @@ $include-html-grid-classes: $include-html-classes !default;
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12 !default;
-$block-grid-default-spacing: 10px !default;
+$block-grid-default-spacing: emCalc(20px) !default;
 
 //
 // Block Grid Mixins
@@ -18,21 +18,21 @@ $block-grid-default-spacing: 10px !default;
   @if $base-style {
     display: block;
     padding: 0;
-    margin: 0 (-$spacing);
+    margin: 0 -($spacing/2);
     @include clearfix;
 
     &>li {
       display: inline;
       height: auto;
       float: $default-float;
-      padding: 0 $spacing $spacing;
+      padding: 0 ($spacing/2) $spacing;
     }
   }
 
   @if $per-row {
     &>li {
       width: 100%/$per-row;
-      padding: 0 $spacing $spacing;
+      padding: 0 ($spacing/2) $spacing;
 
       &:nth-of-type(n) { clear: none; }
       &:nth-of-type(#{$per-row}n+1) { clear: both; }
