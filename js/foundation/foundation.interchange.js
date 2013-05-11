@@ -82,11 +82,11 @@
         for (var i = count - 1; i >= 0; i--) {
           var rule = scenarios[i][2];
           if (this.settings.named_rules.hasOwnProperty(rule)) {
-            var mq = Modernizr.mq('(' + this.settings.named_rules[rule] + ')')
+            var mq = matchMedia('(' + this.settings.named_rules[rule] + ')');
           } else {
-            var mq = Modernizr.mq('(' + scenarios[i][2] + ')');
+            var mq = matchMedia('(' + scenarios[i][2] + ')');
           }
-          if (mq) {
+          if (mq.matches) {
             return {el: el, scenario: scenarios[i]};
           }
         }
@@ -111,7 +111,7 @@
       this.cached_images = [];
 
       for (var i = count - 1; i >= 0; i--) {
-        this.valid(images[i], (i === 0), function (image, last) {
+        this.loaded($(images[i]), (i === 0), function (image, last) {
           if (image) {
             var str = image.getAttribute(data_attr) || '';
 
@@ -126,15 +126,6 @@
       }
 
       return 'deferred';
-    },
-
-    valid : function (image, last, callback) {
-      var img = new Image();
-
-      img.src = image.src;
-      this.loaded($(image), last, callback);
-
-      return img;
     },
 
     loaded : function (image, last, callback) {
@@ -177,15 +168,7 @@
     },
 
     parse_params : function (path, directive, mq) {
-      return [this.convert_path(path), this.convert_directive(directive), this.convert_mq(mq)];
-    },
-
-    convert_mq : function (mq) {
-      return this.trim(mq);
-    },
-
-    convert_path : function (path) {
-      return this.trim(path);
+      return [this.trim(path), this.convert_directive(directive), this.trim(mq)];
     },
 
     convert_directive : function (directive) {
@@ -199,19 +182,17 @@
     },
 
     _object : function(el) {
-      var raw_settings_arr = this.parse_data_attr(el),
-          scenarios = [], count = raw_settings_arr.length;
+      var raw_arr = this.parse_data_attr(el),
+          scenarios = [], count = raw_arr.length;
 
       if (count > 0) {
         for (var i = count - 1; i >= 0; i--) {
-          var split = raw_settings_arr[i].split(/\((.*?)\)/);
+          var split = raw_arr[i].split(/\((.*?)\)/);
 
           if (split.length > 1) {
-            var mq = split[1],
-                cached_split = split[0].split(','),
-                path = cached_split[0],
-                directive = cached_split[1],
-                params = this.parse_params(path, directive, mq);
+            var cached_split = split[0].split(','),
+                params = this.parse_params(cached_split[0], 
+                  cached_split[1], split[1]);
 
             scenarios.push(params)
           }
@@ -228,7 +209,8 @@
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
       }
 
-      return (S4() + S4() + delim + S4() + delim + S4() + delim + S4() + delim + S4() + S4() + S4());
+      return (S4() + S4() + delim + S4() + delim + S4() 
+        + delim + S4() + delim + S4() + S4() + S4());
     },
 
     store : function (el, scenarios) {
