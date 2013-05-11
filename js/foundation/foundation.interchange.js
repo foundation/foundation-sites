@@ -105,35 +105,6 @@
       return results_arr;
     },
 
-    // Foundation 5 functionality
-    // loadables : function (reset) {
-    //   if (reset) {
-    //     return this.cache.loadables = $('[data-' + this.settings.load_attr +']');
-    //   }
-
-    //   return this.cache.loadables 
-    //     || (this.cache.loadables = $('[data-' + this.settings.load_attr +']'));
-    // },
-
-    // nodes : function () {
-    //   if (typeof this.cached_nodes === 'undefined') {
-    //     this.update_nodes();
-    //   }
-
-    //   return this.cached_nodes;
-    // },
-
-    // update_nodes : function () {
-    //   this.cached_nodes = this.loadables().filter(function () {
-    //     if (!/IMG/.test(this.nodeName) && this.nodeType === 1) {
-    //       return true;
-    //     }
-    //     return false;
-    //   });
-
-    //   return this.cached_nodes;
-    // },
-
     images : function () {
       if (typeof this.cached_images === 'undefined') {
         return this.update_images();
@@ -163,8 +134,7 @@
             var loaded = setTimeout(function () {
 
             }.bind(this), 10);
-            // all images have been updated, we
-            // can now begin parsing queries
+
             this.enhance();
           }
         }.bind(this));
@@ -215,9 +185,13 @@
       }
     },
 
-    // temporary callback
     enhance : function () {
-      this._object($(this.images()[0]));
+      var count = this.images().length;
+
+      for (var i = count - 1; i >= 0; i--) {
+        this._object($(this.images()[i]));
+      }
+
       return this.events();
     },
 
