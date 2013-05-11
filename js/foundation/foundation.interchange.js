@@ -31,9 +31,9 @@
 
             return el.trigger('replace', el);
           }
-        },
-        before : function (el, path, revert) {},
-        after : function (el, path, revert) {}
+        }
+        // before : function (el, path, revert) {},
+        // after : function (el, path, revert) {}
       }
     },
 
@@ -105,33 +105,34 @@
       return results_arr;
     },
 
-    loadables : function (reset) {
-      if (reset) {
-        return this.cache.loadables = $('[data-' + this.settings.load_attr +']');
-      }
+    // Foundation 5 functionality
+    // loadables : function (reset) {
+    //   if (reset) {
+    //     return this.cache.loadables = $('[data-' + this.settings.load_attr +']');
+    //   }
 
-      return this.cache.loadables 
-        || (this.cache.loadables = $('[data-' + this.settings.load_attr +']'));
-    },
+    //   return this.cache.loadables 
+    //     || (this.cache.loadables = $('[data-' + this.settings.load_attr +']'));
+    // },
 
-    nodes : function () {
-      if (typeof this.cached_nodes === 'undefined') {
-        this.update_nodes();
-      }
+    // nodes : function () {
+    //   if (typeof this.cached_nodes === 'undefined') {
+    //     this.update_nodes();
+    //   }
 
-      return this.cached_nodes;
-    },
+    //   return this.cached_nodes;
+    // },
 
-    update_nodes : function () {
-      this.cached_nodes = this.loadables().filter(function () {
-        if (!/IMG/.test(this.nodeName) && this.nodeType === 1) {
-          return true;
-        }
-        return false;
-      });
+    // update_nodes : function () {
+    //   this.cached_nodes = this.loadables().filter(function () {
+    //     if (!/IMG/.test(this.nodeName) && this.nodeType === 1) {
+    //       return true;
+    //     }
+    //     return false;
+    //   });
 
-      return this.cached_nodes;
-    },
+    //   return this.cached_nodes;
+    // },
 
     images : function () {
       if (typeof this.cached_images === 'undefined') {
