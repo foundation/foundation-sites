@@ -74,10 +74,11 @@
 
     results : function (uuid, scenarios) {
       var count = scenarios.length,
-          el = $('[data-uuid="' + uuid + '"]'),
           results_arr = [];
 
-      if (scenarios.length > 0) {
+      if (count > 0) {
+        var el = $('[data-uuid="' + uuid + '"]');
+
         for (var i = count - 1; i >= 0; i--) {
           var rule = scenarios[i][2];
           if (this.settings.named_rules.hasOwnProperty(rule)) {
@@ -119,13 +120,8 @@
             }
           }
 
-          if (last) {
-            var loaded = setTimeout(function () {
+          if (last) this.enhance();
 
-            }.bind(this), 10);
-
-            this.enhance();
-          }
         }.bind(this));
       }
 
@@ -136,7 +132,6 @@
       var img = new Image();
 
       img.src = image.src;
-
       this.loaded($(image), last, callback);
 
       return img;
@@ -186,15 +181,15 @@
     },
 
     convert_mq : function (mq) {
-      return $.trim(mq);
+      return this.trim(mq);
     },
 
     convert_path : function (path) {
-      return $.trim(path);
+      return this.trim(path);
     },
 
     convert_directive : function (directive) {
-      var trimmed = $.trim(directive);
+      var trimmed = this.trim(directive);
 
       if (trimmed.length > 0) {
         return trimmed;
@@ -213,8 +208,9 @@
 
           if (split.length > 1) {
             var mq = split[1],
-                path = split[0].split(',')[0],
-                directive = split[0].split(',')[1],
+                cached_split = split[0].split(','),
+                path = cached_split[0],
+                directive = cached_split[1],
                 params = this.parse_params(path, directive, mq);
 
             scenarios.push(params)
