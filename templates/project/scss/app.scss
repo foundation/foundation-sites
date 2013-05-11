@@ -1,13 +1,15 @@
 // Global Foundation Settings
 @import "settings";
 
+// Comment out this import if you don't want to use normalize
+@import "normalize";
+
 // Comment out this import if you are customizing you imports below
 @import "foundation";
 
 // Import specific parts of Foundation by commenting the import "foundation"
 // and uncommenting what you want below. You must uncomment the following if customizing
 
-// @import "foundation/foundation-global"; // *always required
 // @import "foundation/components/global"; // *always required
 // @import "foundation/components/grid";
 // @import "foundation/components/visibility";

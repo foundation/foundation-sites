@@ -1,6 +1,7 @@
 //
 // Switch Variables
 //
+$include-html-form-classes: $include-html-classes !default;
 
 // Controlling border styles and background colors for the switch container
 $switch-border-color:             darken(#fff, 20%) !default;
@@ -78,7 +79,8 @@ $switch-label-outline:            1px dotted #888 !default;
     opacity: 0;
     width: 100%;
     height: 100%;
-
+    -moz-appearance: none;
+    
     // Hover and focus styles for the paddle
     &:hover,
     &:focus {
@@ -212,7 +214,7 @@ $switch-label-outline:            1px dotted #888 !default;
   @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
-@if $include-html-button-classes {
+@if $include-html-form-classes != false {
 
   /* Foundation Switches */
   @media only screen {

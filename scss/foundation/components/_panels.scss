@@ -1,6 +1,7 @@
 //
 // Panel Variables
 //
+$include-html-panel-classes: $include-html-classes !default;
 
 // We use these to control the background and border styles
 $panel-bg:              darken(#fff, 5%) !default;
@@ -56,7 +57,7 @@ $panel-font-color-alt:  #fff !default;
 }
 
 // Only include these classes if the option exists
-@if $include-html-panel-classes {
+@if $include-html-panel-classes != false {
 
   /* Panels */
   .panel { @include panel;

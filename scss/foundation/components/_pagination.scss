@@ -1,6 +1,7 @@
 //
 // Pagination Variables
 //
+$include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control the pagination container
 $pagination-height:                      emCalc(24px) !default;
@@ -91,7 +92,7 @@ $pagination-link-current-active-bg:      $primary-color !default;
 
 
 
-@if $include-html-nav-classes {
+@if $include-html-nav-classes != false {
 
   /* Pagination */
   .pagination { @include pagination; }

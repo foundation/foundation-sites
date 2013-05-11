@@ -1,6 +1,7 @@
 //
 // Split Button Variables
 //
+$include-html-button-classes: $include-html-classes !default;
 
 // We use these to control different shared styles for Split Buttons
 $split-button-function-factor: 15% !default;
@@ -64,7 +65,7 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
         width: 0;
         height: 0;
         display: block;
-        border-style: solid;
+        border-style: inset;
 
         #{$default-float}: 50%;
       }
@@ -75,7 +76,9 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
 
   // Control the border color for the span area of the split button
   @if $span-border {
-    span { border-#{$default-float}-color: darken($span-border, $split-button-function-factor); }
+    span {
+      border-#{$default-float}-color: darken($span-border, $split-button-function-factor);
+    }
   }
 
   // Style of the button and clickable area for tiny sizes
@@ -84,6 +87,7 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
 
     span { width: $split-button-span-width-tny;
       &:before {
+        border-top-style: solid;
         border-width: $split-button-pip-size-tny;
         top: $split-button-pip-top-tny;
         margin-#{$default-float}: $split-button-pip-default-float-tny;
@@ -97,6 +101,7 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
 
     span { width: $split-button-span-width-sml;
       &:before {
+        border-top-style: solid;
         border-width: $split-button-pip-size-sml;
         top: $split-button-pip-top-sml;
         margin-#{$default-float}: $split-button-pip-default-float-sml;
@@ -110,6 +115,7 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
 
     span { width: $split-button-span-width-med;
       &:before {
+        border-top-style: solid;
         border-width: $split-button-pip-size-med;
         top: $split-button-pip-top-med;
         margin-#{$default-float}: $split-button-pip-default-float-med;
@@ -123,6 +129,7 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
 
     span { width: $split-button-span-width-lrg;
       &:before {
+        border-top-style: solid;
         border-width: $split-button-pip-size-lrg;
         top: $split-button-pip-top-lrg;
         margin-#{$default-float}: $split-button-pip-default-float-lrg;
@@ -137,7 +144,7 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
 }
 
 
-@if $include-html-button-classes {
+@if $include-html-button-classes != false {
 
   /* Split Buttons */
   .split.button { @include split-button;
@@ -149,6 +156,7 @@ $split-button-pip-default-float-lrg:    emCalc(-9px) !default;
     &.tiny { @include split-button(tiny, false, false, false); }
     &.small { @include split-button(small, false, false, false); }
     &.large { @include split-button(large, false, false, false); }
+    &.expand { padding-left: 2em; }
 
     &.secondary { @include split-button(false, $split-button-pip-color-alt, false, false); }
 

@@ -28,14 +28,16 @@ Community
 
 Many thanks to all the people working on Foundation either to improve the base code or to support specific frameworks. If you want to get on this readme send an email to foundation@zurb.com, and if you have questions you can join the Unofficial Foundation Google Group here: http://groups.google.com/group/foundation-framework-
 
-WordPress
+WordPress (Versions marked 3/20/13)
 
-* [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris
-* [Reverie](http://themefortress.com/reverie/) by Zhen
-* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press
-* [Yeti](https://github.com/modlearning/Yeti) by Modular Learning
-* [Foundation](https://github.com/drewsymo/Foundation) by Drewsymo
-* [required+ Themes](http://themes.required.ch/) by required+
+* [Reactor](https://github.com/awtheme/reactor) by Anthony Wilhelm using Foundation version 4
+* [Reverie](http://themefortress.com/reverie/) by Zhen using Foundation version 4
+* [Corner Stone](https://github.com/thewirelessguy/cornerstone) by [Stephen Mullen](https://twitter.com/wirelessguyuk) using Foundation version v4.09
+* [required+ Themes](http://themes.required.ch/) by required+ using Foundation version 3.25
+* [Yeti](https://github.com/modlearning/Yeti) by Modular Learning using Foundation version 3.2
+* [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris using Foundation version 3
+* [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press using Foundation version 3
+* [f415](https://github.com/javorszky/f415) by Gabor Javorszky
 
 Joomla
 
@@ -47,6 +49,9 @@ Drupal
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
 * [Zurb Foundation](http://drupal.org/project/zurb-foundation) Supporting F3.2, F4 & Drupal 8  by [Ishmael Sanchez](http://ishmaelsanchez.com), [Chris Lee](http://hire.chrisjlee.net)
 * [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
+
+Alfred
+* [Foundation Alfred](https://github.com/joshmedeski/foundation-alfred) by Josh Medeski (@joshmedeski)
 
 PyroCMS
 
@@ -68,12 +73,19 @@ Middleman
 
 * [Middleman Skeleton](https://github.com/axyz/middleman-zurb-foundation) by [Andrea Moretti](https://twitter.com/axyz)
 
+Magento
+* [Magento & Foundation](https://github.com/nandroid/MagentoFoundation) by Nandroid
+
 Python
 * [Pyramid Scaffold](https://github.com/ppinette/pyramid_foundation) by Parker Pinette
 
 CodeIgniter
 
 * [Responsive CodeIgniter BoilerPlate](https://github.com/meridiansoftech/meridian_ci_codebase) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
+
+Shopify
+
+* [Foundationify Shopify Theme](https://github.com/lukebussey/foundationify) by Luke Bussey
 
 Other Implementations
 
@@ -110,6 +122,7 @@ Ruby on Rails Sass Gems
 
 Yeoman Generator
 
+* [Yeoman 1.0-Foundation 4](https://github.com/lkbgift/foundation4-yeoman) by [Leonard Bogdonoff](http://twitter.com/lkbcc)
 * [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
 
 

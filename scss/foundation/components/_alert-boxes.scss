@@ -1,6 +1,7 @@
 //
 // Alert Variables
 //
+$include-html-alert-classes: $include-html-classes !default;
 
 // We use this to control alert padding.
 $alert-padding-top:         emCalc(11px)                                   !default;
@@ -87,7 +88,7 @@ $alert-radius:              $global-radius                                 !defa
   @include radius($radius);
 }
 
-@if $include-html-alert-classes {
+@if $include-html-alert-classes != false {
 
   /* Foundation Alerts */
   .alert-box {

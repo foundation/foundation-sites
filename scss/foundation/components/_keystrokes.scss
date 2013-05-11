@@ -1,6 +1,7 @@
 //
 // Keystroke Variables
 //
+$include-html-type-classes: $include-html-classes !default;
 
 // We use these to control text styles.
 $keystroke-font:            "Consolas", "Menlo", "Courier", monospace !default;
@@ -44,7 +45,7 @@ $keystroke-radius:          $global-radius !default;
 }
 
 
-@if $include-html-media-classes {
+@if $include-html-type-classes != false {
 
   /* Keystroke Characters */
   .keystroke,

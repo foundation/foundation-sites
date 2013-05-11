@@ -1,6 +1,7 @@
 //
 // Pricing Table Variables
 //
+$include-html-pricing-classes: $include-html-classes !default;
 
 // We use this to control the border color
 $price-table-border:        solid 1px #ddd !default;
@@ -114,7 +115,7 @@ $price-cta-padding:         emCalc(20px) emCalc(20px) 0 !default;
 }
 
 
-@if $include-html-pricing-classes {
+@if $include-html-pricing-classes != false {
 
   /* Pricing Tables */
   .pricing-table {

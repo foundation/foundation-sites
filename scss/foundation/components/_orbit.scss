@@ -1,4 +1,5 @@
 // Orbit Settings
+$include-html-orbit-classes: $include-html-classes !default;
 
 // We use these to control the caption styles
 $orbit-container-bg: #f5f5f5 !default;
@@ -20,185 +21,193 @@ $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #222 !default;
 
 // We use thes to controls the style of slide numbers
-$orbit-slide-number-bg: rgb(0,0,0) !default;
+$orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: emCalc(5px) !default;
 
 // Margin for when Orbit is stacked on small screens
 $stack-on-small-margin-bottom: emCalc(20px) !default;
 
-
-.orbit-container {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-  background: $orbit-container-bg;
-
-  .orbit-slides-container {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+@if $include-html-orbit-classes != false {
+  
+  .orbit-container {
+    overflow: hidden;
+    width: 100%;
     position: relative;
-
-    img { display: block; }
-
-    &>* {
+    background: $orbit-container-bg;
+  
+    .orbit-slides-container {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       position: relative;
-      float: $default-float;
-      height: 100%;
-
-      .orbit-caption {
-        position: absolute;
-        bottom: 0;
-        background-color: $orbit-caption-bg-old;
-        background-color: $orbit-caption-bg;
-        color: #fff;
-        width: 100%;
-        padding: 10px 14px;
-        font-size: emCalc(14px);
-
-        * { color: $orbit-caption-font-color; }
+  
+      img { display: block; }
+  
+      &>* {
+        position: relative;
+        float: $default-float;
+        height: 100%;
+  
+        .orbit-caption {
+          position: absolute;
+          bottom: 0;
+          background-color: $orbit-caption-bg-old;
+          background-color: $orbit-caption-bg;
+          color: #fff;
+          width: 100%;
+          padding: 10px 14px;
+          font-size: emCalc(14px);
+  
+          * { color: $orbit-caption-font-color; }
+        }
       }
     }
-  }
-
-  .orbit-slide-number {
-    position: absolute;
-    top: 10px;
-    #{$default-float}: 10px;
-    font-size: 12px;
-    span { font-weight: 700; }
-  }
-
-  .orbit-timer {
-    position: absolute;
-    top: 10px;
-    #{$opposite-direction}: 10px;
-    height: 6px;
-    width: 100px;
-    .orbit-progress {
-      height: 100%;
-      background-color: $orbit-timer-bg-old;
-      background-color: $orbit-timer-bg;
-      display: block;
-      width: 0%;
-    }
-
-    & > span {
-      display: none;
+  
+    .orbit-slide-number {
       position: absolute;
       top: 10px;
-      #{$opposite-direction}: 0px;
-      width: 11px;
-      height: 14px;
-      border: solid 4px #000;
-      border-top: none;
-      border-bottom: none;
+      #{$default-float}: 10px;
+      font-size: 12px;
+      span { font-weight: 700; padding: $orbit-slide-number-padding;}
+      color: $orbit-slide-number-font-color;
+      background: $orbit-slide-number-bg;
     }
-
-    &.paused {
+  
+    .orbit-timer {
+      position: absolute;
+      top: 10px;
+      #{$opposite-direction}: 10px;
+      height: 6px;
+      width: 100px;
+      .orbit-progress {
+        height: 100%;
+        background-color: $orbit-timer-bg-old;
+        background-color: $orbit-timer-bg;
+        display: block;
+        width: 0%;
+      }
+  
       & > span {
-        #{$opposite-direction}: -6px;
-        top: 9px;
+        display: none;
+        position: absolute;
+        top: 10px;
+        #{$opposite-direction}: 0px;
         width: 11px;
         height: 14px;
-        border: solid 8px;
-        border-color: transparent transparent transparent #000;
+        border: solid 4px #000;
+        border-top: none;
+        border-bottom: none;
+      }
+  
+      &.paused {
+        & > span {
+          #{$opposite-direction}: -6px;
+          top: 9px;
+          width: 11px;
+          height: 14px;
+          border: inset 8px;
+          border-right-style: solid;
+          border-color: transparent transparent transparent #000;
+        }
+      }
+    }
+  
+    &:hover .orbit-timer > span { display: block; }
+  
+    // Let's get those controls to be right in the center on each side
+    .orbit-prev,
+    .orbit-next {
+      position: absolute;
+      top: 50%;
+      margin-top: -25px;
+      background-color: $orbit-nav-bg-old;
+      background-color: $orbit-nav-bg;
+      width: 50px;
+      height: 60px;
+      line-height: 50px;
+      color: white;
+      text-indent: -9999px !important;
+  
+      & > span {
+        position: absolute;
+        top: 50%;
+        margin-top: -16px;
+        display: block;
+        width: 0;
+        height: 0;
+        border: inset 16px;
+      }
+    }
+    .orbit-prev { #{$default-float}: 0;
+      & > span {
+        border-#{$opposite-direction}-style: solid;
+        border-color: transparent;
+        border-#{$opposite-direction}-color: #fff;
+      }
+      &:hover > span {
+        border-#{$opposite-direction}-color: #ccc;
+      }
+    }
+    .orbit-next { #{$opposite-direction}: 0;
+      & > span {
+        border-color: transparent;
+        border-#{$default-float}-style: solid;
+        border-#{$default-float}-color: #fff;
+        #{$default-float}: 50%;
+        margin-#{$default-float}: -8px;
+      }
+      &:hover > span {
+        border-#{$default-float}-color: #ccc;
       }
     }
   }
-
-  &:hover .orbit-timer > span { display: block; }
-
-  // Let's get those controls to be right in the center on each side
-  .orbit-prev,
-  .orbit-next {
-    position: absolute;
-    top: 50%;
-    margin-top: -25px;
-    background-color: $orbit-nav-bg-old;
-    background-color: $orbit-nav-bg;
-    width: 50px;
-    height: 60px;
-    line-height: 50px;
-    color: white;
-    text-indent: -9999px !important;
-
-    & > span {
-      position: absolute;
-      top: 50%;
-      margin-top: -16px;
+  
+  .orbit-bullets {
+    margin: 0 auto 30px auto;
+    overflow: hidden;
+    position: relative;
+    top: 10px;
+  
+    li {
       display: block;
-      width: 0;
-      height: 0;
-      border: solid 16px;
+      width: 18px;
+      height: 18px;
+      background: $orbit-bullet-nav-color;
+      float: $default-float;
+      margin-#{$opposite-direction}: 6px;
+      border: solid 2px $orbit-bullet-nav-color-active;
+      @include radius(1000px);
+  
+      &.active {
+        background: $orbit-bullet-nav-color-active;
+      }
+  
+      &:last-child { margin-#{$opposite-direction}: 0; }
     }
   }
-  .orbit-prev { #{$default-float}: 0;
-    & > span { 
-      border-color: transparent;
-      border-#{$opposite-direction}-color: #fff;
-    }
-    &:hover > span {
-      border-#{$opposite-direction}-color: #ccc;
-    }
-  }
-  .orbit-next { #{$opposite-direction}: 0;
-    & > span {
-      border-color: transparent;
-      border-#{$default-float}-color: #fff;
-      #{$default-float}: 50%;
-      margin-#{$default-float}: -8px;
-    }
-    &:hover > span {
-      border-#{$default-float}-color: #ccc;
-    }
-  }
-}
-
-.orbit-bullets {
-  margin: 0 auto 30px auto;
-  overflow: hidden;
-  position: relative;
-  top: 10px;
-
-  li {
-    display: block;
-    width: 18px;
-    height: 18px;
-    background: #fff;
-    float: $default-float;
-    margin-#{$opposite-direction}: 6px;
-    border: solid 2px #000;
-    @include radius(1000px);
-
-    &.active {
-      background: #000;
-    }
-
-    &:last-child { margin-#{$opposite-direction}: 0; }
-  }
-}
-
-.touch {
-  .orbit-container {
-    .orbit-prev,
-    .orbit-next { display: none; }
-  }
-
-  .orbit-bullets { display: none; }
-}
-
-
-@media #{$small} {
-
+  
   .touch {
     .orbit-container {
       .orbit-prev,
-      .orbit-next { display: inherit; }
+      .orbit-next { display: none; }
     }
-
-    .orbit-bullets { display: block; }
+  
+    .orbit-bullets { display: none; }
+  }
+  
+  
+  @media #{$small} {
+  
+    .touch {
+      .orbit-container {
+        .orbit-prev,
+        .orbit-next { display: inherit; }
+      }
+  
+      .orbit-bullets { display: block; }
+    }
+  
   }
 
 }

@@ -13,8 +13,8 @@ module Foundation
         # rails_ujs breaks, need to incorporate rails-behavior plugin for this to work seamlessly
         # gsub_file "app/assets/javascripts/application#{detect_js_format[0]}", /\/\/= require jquery\n/, ""
         insert_into_file "app/assets/javascripts/application#{detect_js_format[0]}", "#{detect_js_format[1]} require foundation\n", :after => "jquery_ujs\n"
-        append_to_file "app/assets/javascripts/application#{detect_js_format[0]}", "\n$(document).foundation();\n"
-        settings_file = File.join(File.dirname(__FILE__),"..","..","..","templates","project","scss","_settings.scss")
+        append_to_file "app/assets/javascripts/application#{detect_js_format[0]}", "\n$(function(){ $(document).foundation(); });\n"
+        settings_file = File.join(File.dirname(__FILE__),"..","..","..","scss","foundation","_variables.scss")
         create_file "app/assets/stylesheets/foundation_and_overrides.scss", File.read(settings_file)
         append_to_file "app/assets/stylesheets/foundation_and_overrides.scss", "\n@import 'foundation';\n"
         insert_into_file "app/assets/stylesheets/application#{detect_css_format[0]}", "#{detect_css_format[1]} require foundation_and_overrides\n", :after => "require_self\n"

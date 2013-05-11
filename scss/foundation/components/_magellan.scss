@@ -1,10 +1,12 @@
 //
 // Magellan Variables
 //
+$include-html-magellan-classes: $include-html-classes !default;
+
 $magellan-bg: #fff !default;
 $magellan-padding: 10px !default;
 
-@if $include-html-magellan-classes {
+@if $include-html-magellan-classes != false {
 
   [data-magellan-expedition] {
     background: $magellan-bg;

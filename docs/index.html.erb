@@ -181,7 +181,7 @@
           <h6 class="subheader"><strong>Using the Gem?</strong> You'll see a couple extra pieces in your project upon creation. These are:</h6>
           <dl>
             <dt>scss/</dt>
-            <dd>Your main style folder is named <strong>scss/</strong> and contains <code>app.scss</code> (which has the foundation gem import and commented portions you can pick and choose.) and <code>normalize.scss</code>. Override the Foundation styles within your app.scss file. You can see the compiled CSS in your stylesheets directory after you manually <span class="has-tip top" title="$ compass compile <filename>">compile</span> or <span class="has-tip top" title="$ compass watch <directory>">watch</span>. This directory also includes <code>_settings.scss</code>, which is used to control variables that help easily style Foundation.</dd>
+            <dd>Your main style folder is named <strong>scss/</strong> and contains <code>app.scss</code> (which has the foundation gem import and commented portions you can pick and choose). Override the Foundation styles within your <code>app.scss</code> file. You can see the compiled CSS in your stylesheets directory after you manually <span class="has-tip top" title="$ compass compile <filename>">compile</span> or <span class="has-tip top" title="$ compass watch <directory>">watch</span>. This directory also includes <code>_settings.scss</code>, which is used to control variables that help easily style Foundation.</dd>
             <dt></i>config.rb</dt>
             <dd>This file is used by <a href="http://compass-style.org">Compass</a> to compile your project. Here you can control the output style of your CSS, the structure of your directories and other useful settings.</dd>
           </dl>
@@ -205,6 +205,8 @@
   <title>Foundation 4</title>
 
   <link rel="stylesheet" href="css/normalize.css" />
+  <!-- If you are using CSS version, add this -->
+  <link rel="stylesheet" href="css/foundation.css" />
   <link rel="stylesheet" href="css/app.css" />
 
   <script src="js/vendor/custom.modernizr.js"></script>

@@ -1,8 +1,8 @@
 description 'Foundation Compass Gem'
 
 # Sass Files
-stylesheet 'scss/_settings.scss',                         :to => '_settings.scss'
-stylesheet 'scss/normalize.scss',                         :to => 'normalize.scss', :media => "screen, projector, print"
+stylesheet '../../scss/normalize.scss',                   :to => '_normalize.scss'
+stylesheet '../../scss/foundation/_variables.scss',       :to => '_settings.scss'
 stylesheet 'scss/app.scss',                               :to => 'app.scss', :media => "screen, projector, print"
 
 # Make sure you list all the project template files here in the manifest.
@@ -25,15 +25,6 @@ javascripts = copy_js_from("../../js", "foundation", ["foundation.js", "index.js
 vendor_javascripts = copy_js_from("../../js", "vendor")
 
 javascript "../../js/foundation/foundation.js", :to => "foundation/foundation.js"
-
-# javascripts.reject! do |f|
-#   [
-#     "jquery.js",
-#     "modernizr.foundation.js",
-#     "app.js",
-#     "jquery.offcanvas.js"
-#   ].include?(File.basename(f))
-# end
 
 html 'index.html', :erb => true, :javascripts => javascripts, :version => Foundation::VERSION
 
