@@ -91,7 +91,7 @@
         }
       }
 
-      return results_arr;
+      return false;
     },
 
     images : function () {
@@ -238,6 +238,7 @@
     store : function (el, scenarios) {
       var uuid = this.uuid();
 
+      // need to check and see if a uuid already exists
       el.attr('data-uuid', uuid);
 
       return this.cache[uuid] = scenarios;
