@@ -123,6 +123,10 @@
       $('#start-jr').on('click', function() {
         $(document).foundation('joyride','start');
       });
+
+      $('img').on('replace', function (e, el) {
+        console.log(el, 'the image has been replaced');
+      });
     </script>
   </body>
 </html>
