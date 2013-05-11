@@ -1,7 +1,5 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
-// requires Modernizr
-
 ;(function ($, window, document, undefined) {
   'use strict';
 
@@ -32,8 +30,6 @@
             return el.trigger('replace', el);
           }
         }
-        // before : function (el, path, revert) {},
-        // after : function (el, path, revert) {}
       }
     },
 
@@ -44,7 +40,6 @@
         $.extend(true, this.settings, method);
       }
 
-      // load images;
       this.images();
 
       if (typeof method != 'string') {
@@ -73,12 +68,6 @@
             return this.settings.directives[passed
               .scenario[1]](passed.el, passed.scenario[0]);
           }
-
-          // need to be able to revert the change 
-          // if the window is scaled back to original
-
-          // return this.settings.directives[passed
-          //     .scenarios[1](passed.el, pass.scenarios[0], true)];
         }
       }
     },
@@ -154,9 +143,6 @@
     },
 
     loaded : function (image, last, callback) {
-      // based on jquery.imageready.js
-      // @weblinc, @jsantell, (c) 2012
-
       function loaded () {
         callback(image[0], last);
       }
@@ -270,8 +256,6 @@
           count = raw.length, output = [];
 
       for (var i = count - 1; i >= 0; i--) {
-        // assume that settings are properly configured
-        // if length is longer than typical extension
         if (raw[i].replace(/[\W\d]+/, '').length > 4) {
           output.push(raw[i]);
         }
