@@ -61,7 +61,7 @@ $topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%) !defaul
 // Sticky Class
 $topbar-sticky-class:                  ".sticky" !default;
 
-@if $include-html-nav-classes {
+@if $include-html-top-bar-classes != false {
 
   /* Wrapped around .top-bar to contain to grid width */
   .contain-to-grid {
