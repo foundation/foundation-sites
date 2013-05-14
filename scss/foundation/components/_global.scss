@@ -215,10 +215,11 @@ $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
 //We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
-$cursor-crosshair-value: "crosshair" !default;
-$cursor-default-value: "default" !default;
-$cursor-pointer-value: "pointer" !default;
-$cursor-help-value: "help" !default;
+$cursor-crosshair-value: crosshair !default;
+$cursor-default-value: default !default;
+$cursor-pointer-value: pointer !default;
+$cursor-help-value: help !default;
+$cursor-text-value: text !default;
 
 // Set box-sizing globally to handle padding and border widths
 *,
