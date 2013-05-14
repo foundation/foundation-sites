@@ -1,0 +1,298 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation Docs: Right-to-Left Support</title>
+    <link rel="stylesheet" href="http://192.168.100.107:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.107:4001/assets/docs.css" />
+    <script src="http://192.168.100.107:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body class="antialiased">
+
+    <nav class="top-bar">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="/">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="/grid.php">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="/templates.php">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="/case-jacquelinewest.php">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="/docs/">Docs</a></li>
+          <li class="divider"></li>
+          <li><a href="/training.php">Training</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation 4 Documentation</a></h1>
+        <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+  <div class="large-9 push-3 columns">
+
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>Right-to-Left Support</h2>
+        <h4 class="subheader">Right-to-left text direction support in Foundation allows you to easily switch text direction for all components.<h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Setup</h3>
+        <p>Foundation 4 was built to support right-to-left text direction out of the box, but you'll need to make a couple of adjustments to your markup and SCSS to get everything up and running.</p>
+
+        <h4>Markup Changes for Right-to-Left Layouts</h4>
+        <p>You'll need to make a few changes to your markup to get the javascript components working nice and smooth. In the <code>html</code> tag, you'll need to add a <code>dir</code> attribute with a value of <code>rtl</code>. Here's what your <code>html</code> tag should look like:</p>
+<div class='html'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">&lt;!-- This example is for a right-to-left Arabic layout --&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">no-js</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ar</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">dir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rtl</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+</pre></div>
+</div>
+</div>
+        <h5>Change the Language Too</h5>
+        <p>You'll need to change your <code>lang</code> attribute value to match your language. Here's a handy list of common right-to-left languages and their html codes:</p>
+        <ul>
+          <li><strong>Arabic:</strong> ar</li>
+          <li><strong>Chinese:</strong> zh</li>
+          <li><strong>Farsi:</strong> fa</li>
+          <li><strong>Hebrew:</strong> he, iw</li>
+          <li><strong>Japanese:</strong> ja</li>
+          <li><strong>Urdu:</strong> ur</li>
+          <li><strong>Yiddish:</strong> yi, ji</li>
+        </ul>
+        <hr>
+        <h4>A Single SCSS Adjustment</h4>
+        <p>We made it really easy to switch the entire Foundation grid to right-to-left by changing the <code>$text-direction</code> SCSS variable. Here's what the variable should look like:</p>
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="error">$</span><span class="type">text-direction</span>: <span class="type">rtl</span>;
+</pre></div>
+</div>
+</div>
+        <p>By changing this single variable, the entire grid and all the Foundation components will be switched to right-to-left orientation.</p>
+        <div class="panel">
+          <h6>Using CSS</h6>
+          <p>If you downloaded a static version of Foundation using the customizer to get a right-to-left support, your download should be ready to use without any of the steps mentioned above.</p>
+          <a href="http://foundation.zurb.com/download.php#customizeFoundation">Download Right-to-Left Foundation 4 &raquo;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <div class="docs section-container accordion" data-section data-options="one_up: false">
+  <section class="section active">
+    <p class="title"><a href="#">Using Foundation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="index.html">Get Started</a></li>
+        <li><a class="" href="javascript.html">Javascript</a></li>
+        <li><a class="" href="sass.html">Sass</a></li>
+        <li><a class="" href="rails.html">Rails</a></li>
+        <li><a class="" href="media-queries.html">Media Queries</a></li>
+        <li><a href="components/visibility.html">Visibility Classes</a></li>
+        <li><a class="active" href="rtl.html">Right-to-Left Support</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Grid</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/grid.html">Grid</a></li>
+        <li><a href="components/block-grid.html">Block Grid</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Navigation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/pagination.html">Pagination</a></li>
+        <li><a href="components/side-nav.html">Side Nav</a></li>
+        <li><a href="components/sub-nav.html">Sub Nav</a></li>
+        <li><a href="components/top-bar.html">Top Bar</a></li>
+        <li><a href="components/breadcrumbs.html">Breadcrumbs</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Buttons</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/buttons.html">Buttons</a></li>
+        <li><a href="components/button-groups.html">Button Groups</a></li>
+        <li><a href="components/dropdown-buttons.html">Dropdown Buttons</a></li>
+        <li><a href="components/split-buttons.html">Split Buttons</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Forms</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/forms.html">Forms</a></li>
+        <li><a href="components/custom-forms.html">Custom Forms</a></li>
+        <li><a href="components/switch.html">Switch</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Typography</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/type.html">Type</a></li>
+        <li><a href="components/inline-lists.html">Inline Lists</a></li>
+        <li><a href="components/labels.html">Labels</a></li>
+        <li><a href="components/keystrokes.html">Keystrokes</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">CSS Components</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/global.html">Global Styles</a></li>
+        <li><a href="components/alert-boxes.html">Alert Boxes</a></li>
+        <li><a href="components/panels.html">Panels</a></li>
+        <li><a href="components/pricing-tables.html">Pricing Tables</a></li>
+        <li><a href="components/progress-bars.html">Progress Bars</a></li>
+        <li><a href="components/tables.html">Tables</a></li>
+        <li><a href="components/thumbnails.html">Thumbnails</a></li>
+        <li><a href="components/flex-video.html">Flex Video</a></li>
+        <li class="divider"></li>
+        <li><a target="_blank" style="font-style: italic" href="components/kitchen-sink.html">Kitchen Sink</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Javascript</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/clearing.html">Clearing</a></li>
+        <li><a href="components/dropdown.html">Dropdown</a></li>
+        <li><a href="components/joyride.html">Joyride</a></li>
+        <li><a href="components/magellan.html">Magellan</a></li>
+        <li><a href="components/orbit.html">Orbit</a></li>
+        <li><a href="components/reveal.html">Reveal</a></li>
+        <li><a href="components/section.html">Section</a></li>
+        <li><a href="components/tooltips.html">Tooltips</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="faq.html">FAQ</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="support.html">Support</a></p>
+  </section>
+</div>
+
+<p><a href="http://foundation.zurb.com/download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
+
+<div class="jobs hide-for-small">
+  <h5>Awesome product jobs:</h5>
+  <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3&variation=foundation-sidebar"></script>
+  <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">ZURBjobs</span></a>
+</div>
+
+  </div>
+</div>
+
+
+    <footer class="row full-width">
+      <div class="large-5 columns">
+        <h6><strong>Made by ZURB</strong></h6>
+        <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 14 years of experience building web products, services and websites into this framework. <a href="http://foundation.zurb.com/about.php">Foundation Info and Goodies &rarr;</a></p>
+      </div>
+
+      <div class="large-3 columns">
+        <h6><strong>Using Foundation?</strong></h6>
+        <p>Let us know how you're using Foundation and we might feature you as an example! <a href="mailto:foundation@zurb.com?subject=I'm%20using%20Foundation">Get in touch &rarr;</a></p>
+      </div>
+
+      <div class="large-4 columns">
+        <h6><strong>Need some help?</strong></h6>
+        <p>For answers or help visit the <a href="http://foundation.zurb.com/docs/support.html">Support page</a>.</p>
+      </div>
+    </footer>
+
+    <div id="copyright">
+      <div class="row full-width">
+        <div class="large-4 columns">
+          <p>Site content &copy; 2013 ZURB, inc.</p>
+        </div>
+        <div class="large-8 columns">
+          <ul class="inline-list right">
+            <li><a href="http://foundation.zurb.com">Home</a></li>
+            <li><a href="http://foundation.zurb.com/download.php">Download</a></li>
+            <li><a href="http://foundation.zurb.com/docs">Docs</a></li>
+            <li><a href="http://foundation.zurb.com/docs/changelog.html">Changelog</a></li>
+            <li><a href="http://foundation.zurb.com/about.php">About</a></li>
+            <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      // Google Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+      document.write('<script src="http://192.168.100.107:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.107:4001/assets/docs.js"></script>
+    <script>
+      $(document)
+      
+        .foundation();
+      
+
+      // For Kitchen Sink Page
+      $('#start-jr').on('click', function() {
+        $(document).foundation('joyride','start');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation Docs: Media Queries</title>
+    <link rel="stylesheet" href="http://192.168.100.107:4001/assets/normalize.css" />
+    <link rel="stylesheet" href="http://192.168.100.107:4001/assets/docs.css" />
+    <script src="http://192.168.100.107:4001/assets/vendor/custom.modernizr.js"></script>
+  </head>
+  <body class="antialiased">
+
+    <nav class="top-bar">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="/">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="/grid.php">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="/templates.php">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="/case-jacquelinewest.php">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="/docs/">Docs</a></li>
+          <li class="divider"></li>
+          <li><a href="/training.php">Training</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation 4 Documentation</a></h1>
+        <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+  <div class="large-9 push-3 columns">
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>Media Queries</h2>
+        <h4 class="subheader">We keep media queries fairly simple in Foundation and let the percentage-based grid do the heavy lifting across various screen sizes.</h4>
+
+        <hr>
+
+        <h4>Working with Media Queries and CSS</h4>
+        <p>In CSS, media queries are easily written with a specific syntax. We only use one major breakpoint for the grid in Foundation to shift layouts for screens above 768px wide. The rest of the media queries are used for visibility classes. The following snippet shows you each of the media queries used in Foundation:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* We use this media query to add styles to any device that supports media queries */</span>
+<span class="directive">@media</span> <span class="type">only</span> <span class="error">s</span><span class="error">c</span><span class="error">r</span><span class="error">e</span><span class="error">e</span><span class="error">n</span> { }
+
+<span class="comment">/* Used to alter styles for screens at least 768px wide. This is where the grid changes. */</span>
+<span class="directive">@media</span> <span class="type">only</span> <span class="error">s</span><span class="error">c</span><span class="error">r</span><span class="error">e</span><span class="error">e</span><span class="error">n</span> <span class="error">a</span><span class="error">n</span><span class="error">d</span> (<span class="error">m</span><span class="error">i</span><span class="error">n</span><span class="error">-</span><span class="error">w</span><span class="error">i</span><span class="error">d</span><span class="error">t</span><span class="error">h</span>: <span class="float">768px</span>) {}
+
+<span class="comment">/* Used to alter styles for screens at least 1280px wide. */</span>
+<span class="directive">@media</span> <span class="type">only</span> <span class="error">s</span><span class="error">c</span><span class="error">r</span><span class="error">e</span><span class="error">e</span><span class="error">n</span> <span class="error">a</span><span class="error">n</span><span class="error">d</span> (<span class="error">m</span><span class="error">i</span><span class="error">n</span><span class="error">-</span><span class="error">w</span><span class="error">i</span><span class="error">d</span><span class="error">t</span><span class="error">h</span>: <span class="float">1280px</span>) {}
+
+<span class="comment">/* Used to alter styles for screens at least 1440px wide. */</span>
+<span class="directive">@media</span> <span class="type">only</span> <span class="error">s</span><span class="error">c</span><span class="error">r</span><span class="error">e</span><span class="error">e</span><span class="error">n</span> <span class="error">a</span><span class="error">n</span><span class="error">d</span> (<span class="error">m</span><span class="error">i</span><span class="error">n</span><span class="error">-</span><span class="error">w</span><span class="error">i</span><span class="error">d</span><span class="error">t</span><span class="error">h</span>: <span class="float">1440px</span>) {}
+
+<span class="comment">/* Apply styles to screens in landscape orientation */</span>
+<span class="directive">@media</span> <span class="type">only</span> <span class="error">s</span><span class="error">c</span><span class="error">r</span><span class="error">e</span><span class="error">e</span><span class="error">n</span> <span class="error">a</span><span class="error">n</span><span class="error">d</span> (<span class="error">o</span><span class="error">r</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span><span class="error">a</span><span class="error">t</span><span class="error">i</span><span class="error">o</span><span class="error">n</span>: <span class="error">l</span><span class="error">a</span><span class="error">n</span><span class="error">d</span><span class="error">s</span><span class="error">c</span><span class="error">a</span><span class="error">p</span><span class="error">e</span>) {}
+
+<span class="comment">/* Apply styles to screens in portrait orientation */</span>
+<span class="directive">@media</span> <span class="type">only</span> <span class="error">s</span><span class="error">c</span><span class="error">r</span><span class="error">e</span><span class="error">e</span><span class="error">n</span> <span class="error">a</span><span class="error">n</span><span class="error">d</span> (<span class="error">o</span><span class="error">r</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span><span class="error">a</span><span class="error">t</span><span class="error">i</span><span class="error">o</span><span class="error">n</span>: <span class="error">p</span><span class="error">o</span><span class="error">r</span><span class="error">t</span><span class="error">r</span><span class="error">a</span><span class="error">i</span><span class="error">t</span>) {}
+
+<span class="comment">/* We also use Modernizr to add a .touch class to the body when applicable */</span>
+<span class="comment">/* You can prepend this class to anything and it will style only for touch devices */</span>
+<span class="class">.touch</span> <span class="class">.your-element</span> {}
+</pre></div>
+</div>
+</div>
+
+        <h4>Working with Media Queries and SCSS</h4>
+        <p>You can go ahead and use any of the CSS media queries in your SCSS files, but we've also made it easier with some handy variables you can use instead! Those variables are:</p>
+
+<div class='css'><div class="CodeRay">
+  <div class="code"><pre>
+<span class="comment">/* Available Variables */</span>
+<span class="error">$</span><span class="type">small-screen</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">768px</span>);
+<span class="error">$</span><span class="type">medium-screen</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">1280px</span>);
+<span class="error">$</span><span class="type">large-screen</span>: <span class="error">e</span><span class="error">m</span><span class="error">C</span><span class="error">a</span><span class="error">l</span><span class="error">c</span>(<span class="float">1440px</span>);
+
+<span class="error">$</span><span class="type">screen</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">only screen</span><span class="delimiter">&quot;</span></span>;
+<span class="error">$</span><span class="type">small</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">only screen and (min-width:</span><span class="delimiter">&quot;</span></span><span class="error">#</span>{<span class="error">$</span><span class="key">small-screen</span>}<span class="string"><span class="delimiter">&quot;</span><span class="content">)</span><span class="delimiter">&quot;</span></span>;
+<span class="error">$</span><span class="type">medium</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">only screen and (min-width:</span><span class="delimiter">&quot;</span></span><span class="error">#</span>{<span class="error">$</span><span class="key">medium-screen</span>}<span class="string"><span class="delimiter">&quot;</span><span class="content">)</span><span class="delimiter">&quot;</span></span>;
+<span class="error">$</span><span class="type">large</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">only screen and (min-width:</span><span class="delimiter">&quot;</span></span><span class="error">#</span>{<span class="error">$</span><span class="key">large-screen</span>}<span class="string"><span class="delimiter">&quot;</span><span class="content">)</span><span class="delimiter">&quot;</span></span>;
+<span class="error">$</span><span class="type">landscape</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">only screen and (orientation: landscape)</span><span class="delimiter">&quot;</span></span>;
+<span class="error">$</span><span class="type">portrait</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">only screen and (orientation: portrait)</span><span class="delimiter">&quot;</span></span>;
+
+<span class="comment">/* We use this media query to add styles to any device that supports media queries */</span>
+<span class="directive">@media</span> <span class="error">#</span>{<span class="error">$</span><span class="key">screen</span>} { }
+
+<span class="comment">/* Used to alter styles for screens at least 768px wide. This is where the grid changes. */</span>
+<span class="directive">@media</span> <span class="error">#</span>{<span class="error">$</span><span class="key">small</span>} { }
+
+<span class="comment">/* Used to alter styles for screens at least 1280px wide. */</span>
+<span class="directive">@media</span> <span class="error">#</span>{<span class="error">$</span><span class="key">medium</span>} { }
+
+<span class="comment">/* Used to alter styles for screens at least 1440px wide. */</span>
+<span class="directive">@media</span> <span class="error">#</span>{<span class="error">$</span><span class="key">large</span>} { }
+
+<span class="comment">/* Apply styles to screens in landscape orientation */</span>
+<span class="directive">@media</span> <span class="error">#</span>{<span class="error">$</span><span class="key">landscape</span>} { }
+
+<span class="comment">/* Apply styles to screens in portrait orientation */</span>
+<span class="directive">@media</span> <span class="error">#</span>{<span class="error">$</span><span class="key">portrait</span>} { }
+
+<span class="comment">/* We also use Modernizr to add a .touch class to the body when applicable */</span>
+<span class="comment">/* You can prepend this class to anything and it will style only for touch devices */</span>
+.<span class="type">touch</span> .<span class="error">y</span><span class="error">o</span><span class="error">u</span><span class="error">r</span><span class="error">-</span><span class="error">e</span><span class="error">l</span><span class="error">e</span><span class="error">m</span><span class="error">e</span><span class="error">n</span><span class="error">t</span> {}
+</pre></div>
+</div>
+</div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <div class="docs section-container accordion" data-section data-options="one_up: false">
+  <section class="section active">
+    <p class="title"><a href="#">Using Foundation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="index.html">Get Started</a></li>
+        <li><a class="" href="javascript.html">Javascript</a></li>
+        <li><a class="" href="sass.html">Sass</a></li>
+        <li><a class="" href="rails.html">Rails</a></li>
+        <li><a class="active" href="media-queries.html">Media Queries</a></li>
+        <li><a href="components/visibility.html">Visibility Classes</a></li>
+        <li><a class="" href="rtl.html">Right-to-Left Support</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Grid</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/grid.html">Grid</a></li>
+        <li><a href="components/block-grid.html">Block Grid</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Navigation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/pagination.html">Pagination</a></li>
+        <li><a href="components/side-nav.html">Side Nav</a></li>
+        <li><a href="components/sub-nav.html">Sub Nav</a></li>
+        <li><a href="components/top-bar.html">Top Bar</a></li>
+        <li><a href="components/breadcrumbs.html">Breadcrumbs</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Buttons</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/buttons.html">Buttons</a></li>
+        <li><a href="components/button-groups.html">Button Groups</a></li>
+        <li><a href="components/dropdown-buttons.html">Dropdown Buttons</a></li>
+        <li><a href="components/split-buttons.html">Split Buttons</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Forms</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/forms.html">Forms</a></li>
+        <li><a href="components/custom-forms.html">Custom Forms</a></li>
+        <li><a href="components/switch.html">Switch</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Typography</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/type.html">Type</a></li>
+        <li><a href="components/inline-lists.html">Inline Lists</a></li>
+        <li><a href="components/labels.html">Labels</a></li>
+        <li><a href="components/keystrokes.html">Keystrokes</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">CSS Components</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/global.html">Global Styles</a></li>
+        <li><a href="components/alert-boxes.html">Alert Boxes</a></li>
+        <li><a href="components/panels.html">Panels</a></li>
+        <li><a href="components/pricing-tables.html">Pricing Tables</a></li>
+        <li><a href="components/progress-bars.html">Progress Bars</a></li>
+        <li><a href="components/tables.html">Tables</a></li>
+        <li><a href="components/thumbnails.html">Thumbnails</a></li>
+        <li><a href="components/flex-video.html">Flex Video</a></li>
+        <li class="divider"></li>
+        <li><a target="_blank" style="font-style: italic" href="components/kitchen-sink.html">Kitchen Sink</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Javascript</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/clearing.html">Clearing</a></li>
+        <li><a href="components/dropdown.html">Dropdown</a></li>
+        <li><a href="components/joyride.html">Joyride</a></li>
+        <li><a href="components/magellan.html">Magellan</a></li>
+        <li><a href="components/orbit.html">Orbit</a></li>
+        <li><a href="components/reveal.html">Reveal</a></li>
+        <li><a href="components/section.html">Section</a></li>
+        <li><a href="components/tooltips.html">Tooltips</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="faq.html">FAQ</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="support.html">Support</a></p>
+  </section>
+</div>
+
+<p><a href="http://foundation.zurb.com/download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
+
+<div class="jobs hide-for-small">
+  <h5>Awesome product jobs:</h5>
+  <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3&variation=foundation-sidebar"></script>
+  <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">ZURBjobs</span></a>
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    <footer class="row full-width">
+      <div class="large-5 columns">
+        <h6><strong>Made by ZURB</strong></h6>
+        <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 14 years of experience building web products, services and websites into this framework. <a href="http://foundation.zurb.com/about.php">Foundation Info and Goodies &rarr;</a></p>
+      </div>
+
+      <div class="large-3 columns">
+        <h6><strong>Using Foundation?</strong></h6>
+        <p>Let us know how you're using Foundation and we might feature you as an example! <a href="mailto:foundation@zurb.com?subject=I'm%20using%20Foundation">Get in touch &rarr;</a></p>
+      </div>
+
+      <div class="large-4 columns">
+        <h6><strong>Need some help?</strong></h6>
+        <p>For answers or help visit the <a href="http://foundation.zurb.com/docs/support.html">Support page</a>.</p>
+      </div>
+    </footer>
+
+    <div id="copyright">
+      <div class="row full-width">
+        <div class="large-4 columns">
+          <p>Site content &copy; 2013 ZURB, inc.</p>
+        </div>
+        <div class="large-8 columns">
+          <ul class="inline-list right">
+            <li><a href="http://foundation.zurb.com">Home</a></li>
+            <li><a href="http://foundation.zurb.com/download.php">Download</a></li>
+            <li><a href="http://foundation.zurb.com/docs">Docs</a></li>
+            <li><a href="http://foundation.zurb.com/docs/changelog.html">Changelog</a></li>
+            <li><a href="http://foundation.zurb.com/about.php">About</a></li>
+            <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      // Google Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+      document.write('<script src="http://192.168.100.107:4001/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+    </script>
+    <script src="http://192.168.100.107:4001/assets/docs.js"></script>
+    <script>
+      $(document)
+      
+        .foundation();
+      
+
+      // For Kitchen Sink Page
+      $('#start-jr').on('click', function() {
+        $(document).foundation('joyride','start');
+      });
+    </script>
+  </body>
+</html>
