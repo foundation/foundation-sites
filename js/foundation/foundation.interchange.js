@@ -63,7 +63,7 @@
       for (var uuid in cache) {
         if (cache.hasOwnProperty(uuid)) {
           var passed = this.results(uuid, cache[uuid]);
-          
+
           if (passed) {
             return this.settings.directives[passed
               .scenario[1]](passed.el, passed.scenario[0]);
@@ -191,7 +191,7 @@
 
           if (split.length > 1) {
             var cached_split = split[0].split(','),
-                params = this.parse_params(cached_split[0], 
+                params = this.parse_params(cached_split[0],
                   cached_split[1], split[1]);
 
             scenarios.push(params)
@@ -209,7 +209,7 @@
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
       }
 
-      return (S4() + S4() + delim + S4() + delim + S4() 
+      return (S4() + S4() + delim + S4() + delim + S4()
         + delim + S4() + delim + S4() + S4() + S4());
     },
 
@@ -242,7 +242,7 @@
 
       return output;
     }
-    
+
   };
 
 }(Foundation.zj, this, this.document));
