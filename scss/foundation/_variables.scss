@@ -87,6 +87,15 @@ $em-base: 16px !default;
 // $landscape: "only screen and (orientation: landscape)";
 // $portrait: "only screen and (orientation: portrait)";
 
+//// Cursors
+
+//Custom use example -> $cursor-default-value: url(http://cursors-site.net/path/to/custom/cursor/default.cur),progress;
+
+// $cursor-crosshair-value: "crosshair";
+// $cursor-default-value: "default";
+// $cursor-pointer-value: "pointer";
+// $cursor-help-value: "help";
+
 //
 // Grid Variables
 //
@@ -785,7 +794,7 @@ $em-base: 16px !default;
 
 //// Disabled anchor links
 
-// $pagination-link-unavailable-cursor: default;
+// $pagination-link-unavailable-cursor: $cursor-default-value;
 // $pagination-link-unavailable-font-color: #999;
 // $pagination-link-unavailable-bg-active: transparent;
 
@@ -794,7 +803,7 @@ $em-base: 16px !default;
 // $pagination-link-current-background: $primary-color;
 // $pagination-link-current-font-color: #fff;
 // $pagination-link-current-font-weight: bold;
-// $pagination-link-current-cursor: default;
+// $pagination-link-current-cursor: $cursor-default-value;
 // $pagination-link-current-active-bg: $primary-color;
 
 //
@@ -1016,7 +1025,7 @@ $em-base: 16px !default;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-color: #fff;
 // $sub-nav-active-padding: emCalc(3px) emCalc(9px);
-// $sub-nav-active-cursor: default;
+// $sub-nav-active-cursor: $cursor-default-value;
 
 //
 // Switch Variables

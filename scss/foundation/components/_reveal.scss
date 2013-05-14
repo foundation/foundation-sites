@@ -96,7 +96,7 @@ $reveal-border-color:    #666 !default;
   #{$opposite-direction}: $reveal-close-side;
   color: $color;
   font-weight: $reveal-close-weight;
-  cursor: pointer;
+  cursor: $cursor-pointer-value;
 }
 
 @if $include-html-reveal-classes != false {

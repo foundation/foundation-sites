@@ -98,7 +98,7 @@
 }
 
 #qunit-tests li strong {
-	cursor: pointer;
+	cursor: $cursor-pointer-value;
 }
 
 #qunit-tests li a {

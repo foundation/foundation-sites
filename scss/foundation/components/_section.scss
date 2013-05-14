@@ -80,7 +80,7 @@ $section-bottom-margin:             emCalc(20px) !default;
 
     .title {
       top: 0;
-      cursor: pointer;
+      cursor: $cursor-pointer-value;
       width: 100%;
       margin: 0;
       background-color: $section-title-bg;

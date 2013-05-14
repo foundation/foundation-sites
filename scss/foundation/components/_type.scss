@@ -291,7 +291,7 @@ acronym {
   font-size: 90%;
   color: $body-font-color;
   border-bottom: $acronym-underline;
-  cursor: help;
+  cursor: $cursor-help-value;
 }
 abbr {
   text-transform: none;
@@ -344,7 +344,7 @@ blockquote p {
   .summary { font-weight: $microformat-summary-font-weight; }
 
   abbr {
-    cursor: default;
+    cursor: $cursor-default-value;
     text-decoration: $microformat-abbr-font-decoration;
     font-weight: $microformat-abbr-font-weight;
     border: none;

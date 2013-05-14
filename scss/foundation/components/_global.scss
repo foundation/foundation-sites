@@ -214,6 +214,12 @@ $large: "only screen and (min-width:"#{$large-screen}")" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
+//We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
+$cursor-crosshair-value: "crosshair" !default;
+$cursor-default-value: "default" !default;
+$cursor-pointer-value: "pointer" !default;
+$cursor-help-value: "help" !default;
+
 // Set box-sizing globally to handle padding and border widths
 *,
 *:before,
@@ -235,7 +241,10 @@ body {
   font-style: $body-font-style;
   line-height: 1; // Set to $base-line-height to take on browser default of 150%
   position: relative;
+  cursor: $cursor-default-value;
 }
+
+a:hover { cursor: $cursor-pointer-value; }
 
 // Override outline from normalize, we don't like it
 a:focus { outline: none; }
