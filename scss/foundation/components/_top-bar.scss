@@ -67,10 +67,12 @@ $topbar-sticky-class:                  ".sticky" !default;
   .contain-to-grid {
     width: 100%;
     background: $topbar-bg;
+
+    .top-bar { margin-bottom: 0; }
   }
 
   // Wrapped around .top-bar to make it stick to the top
-  #{$topbar-sticky-class} {
+  .fixed {
     width: 100%;
     #{$default-float}: 0;
     position: fixed;
@@ -372,7 +374,7 @@ $topbar-sticky-class:                  ".sticky" !default;
     .contain-to-grid .top-bar {
       max-width: $row-width;
       margin: 0 auto;
-      margin-bottom: $topbar-margin-bottom; }
+    }
 
     .top-bar-section {
       @include single-transition(none,0,0);
