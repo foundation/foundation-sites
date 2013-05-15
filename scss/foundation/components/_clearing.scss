@@ -177,7 +177,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
             overflow: hidden;
             margin-#{$opposite-direction}: 1px;
             position: relative;
-            cursor: pointer;
+          cursor: $cursor-pointer-value;
             opacity: 0.4;
 
             &.fix-height {
@@ -196,7 +196,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
             }
 
             img {
-              cursor: pointer !important;
+            cursor: $cursor-pointer-value !important;
               min-width: 100% !important;
             }
 

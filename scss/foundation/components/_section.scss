@@ -83,7 +83,7 @@ $section-bottom-margin:             emCalc(20px) !default;
   // Default Styles
   > #{$title-selector} {
     background-color: $title-bg;
-    cursor: pointer;
+    cursor: $cursor-pointer-value;
     margin-bottom: 0;
 
     a {
