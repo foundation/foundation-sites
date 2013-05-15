@@ -1,6 +1,7 @@
 //
 // Table Variables
 //
+$include-html-table-classes: $include-html-classes !default;
 
 // These control the background color for the table and even rows
 $table-bg:               #fff !default;
@@ -73,8 +74,11 @@ $table-margin-bottom:    emCalc(20px) !default;
   tfoot tr td { display: $table-display; line-height: $table-line-height; }
 }
 
+@if $include-html-table-classes {
 
-/* Tables */
-table {
-  @include table;
+  /* Tables */
+  table {
+    @include table;
+  }
+
 }

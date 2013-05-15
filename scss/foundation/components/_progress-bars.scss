@@ -1,6 +1,7 @@
 //
 // Progress Bar Variables
 //
+$include-html-media-classes: $include-html-classes !default;
 
 // We use this to se the prog bar height
 $progress-bar-height: emCalc(25px) !default;

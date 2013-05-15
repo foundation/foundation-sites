@@ -1,6 +1,7 @@
 //
 // Button Variables
 //
+$include-html-button-classes: $include-html-classes !default;
 
 // We use these to build padding for buttons.
 $button-med:              emCalc(12px) !default;

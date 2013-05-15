@@ -126,7 +126,6 @@ if (typeof jQuery === "undefined" &&
 
     version : '4.1.5',
 
-    // global Foundation cache object
     cache : {},
 
     init : function (scope, libraries, method, options, response, /* internal */ nc) {
@@ -188,6 +187,9 @@ if (typeof jQuery === "undefined" &&
         if (this.libs.hasOwnProperty(lib)) {
           this.patch(this.libs[lib]);
           return this.libs[lib].init.apply(this.libs[lib], args);
+        }
+        else {
+          return function () {};
         }
       }.bind(this), lib);
     },

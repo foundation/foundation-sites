@@ -1,4 +1,5 @@
 // NEED TO FINISH THE LOGIC HERE
+$include-html-reveal-classes: $include-html-classes !default;
 
 //
 // Reveal Variables
@@ -126,6 +127,6 @@ $reveal-border-color:    #666 !default;
 
   // Reveal Print Styles
   @media print {
-    div:not(.reveal-modal) { display: none; }
+    .reveal-modal {background: #fff !important;}
   }
 }
