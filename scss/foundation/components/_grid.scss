@@ -138,7 +138,7 @@ $total-columns: 12 !default;
       .small#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
-    @for $i from 1 through $total-columns - 2 {
+    @for $i from 0 through $total-columns - 2 {
       .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
@@ -156,7 +156,7 @@ $total-columns: 12 !default;
       .large#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
-    @for $i from 1 through $total-columns - 1 {
+    @for $i from 0 through $total-columns - 1 {
       .row .large-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
