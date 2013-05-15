@@ -84,7 +84,7 @@ $switch-label-outline:            1px dotted #888 !default;
     // Hover and focus styles for the paddle
     &:hover,
     &:focus {
-      cursor: pointer;
+      cursor: $cursor-pointer-value;
     }
   }
 

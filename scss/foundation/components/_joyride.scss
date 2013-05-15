@@ -157,7 +157,7 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
     display: none;
     top: 0;
     #{$default-float}: 0;
-    cursor: pointer;
+  cursor: $cursor-pointer-value;
   }
   
   .joyride-expose-wrapper {

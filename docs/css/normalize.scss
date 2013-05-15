@@ -316,7 +316,7 @@ html input[type="button"], /* 1 */
 input[type="reset"],
 input[type="submit"] {
     -webkit-appearance: button; /* 2 */
-    cursor: pointer; /* 3 */
+    cursor: $cursor-pointer-value; /* 3 */
 }
 
 /**
@@ -325,7 +325,7 @@ input[type="submit"] {
 
 button[disabled],
 html input[disabled] {
-    cursor: default;
+    cursor: $cursor-default-value;
 }
 
 /**
