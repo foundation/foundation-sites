@@ -166,6 +166,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
           height: 100%;
           margin-#{$default-float}: 0;
           position: relative;
+          #{$default-float}: 0;
 
           li {
             display: block;
