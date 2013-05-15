@@ -118,7 +118,7 @@ $microformat-abbr-font-decoration:     none !default;
 }
 
 @if $include-html-type-classes != false {
-  
+
   /* Typography resets */
   div,
   dl,
@@ -143,19 +143,19 @@ $microformat-abbr-font-decoration:     none !default;
     padding:0;
     direction: $text-direction;
   }
-  
+
   /* Default Link Styles */
   a {
     color: $anchor-font-color;
     text-decoration: $anchor-text-decoration;
     line-height: inherit;
-  
+
     &:hover,
     &:focus { color: $anchor-font-color-hover; }
-  
+
     img { border:none; }
   }
-  
+
   /* Default paragraph styles */
   p {
     font-family: $paragraph-font-family;
@@ -164,16 +164,16 @@ $microformat-abbr-font-decoration:     none !default;
     line-height: $paragraph-line-height;
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
-  
+
     &.lead { @extend %lead; }
-  
+
     & aside {
       font-size: $paragraph-aside-font-size;
       line-height: $paragraph-aside-line-height;
       font-style: $paragraph-aside-font-style;
     }
   }
-  
+
   /* Default header styles */
   h1, h2, h3, h4, h5, h6 {
     font-family: $header-font-family;
@@ -184,23 +184,23 @@ $microformat-abbr-font-decoration:     none !default;
     margin-top: $header-top-margin;
     margin-bottom: $header-bottom-margin;
     line-height: $header-line-height - emCalc(3px);
-  
+
     small {
       font-size: $small-font-size;
       color: $small-font-color;
       line-height: 0;
     }
   }
-  
+
   h1 { font-size: $h1-font-size - emCalc(10px); }
   h2 { font-size: $h2-font-size - emCalc(10px); }
   h3 { font-size: $h3-font-size - emCalc(5px); }
   h4 { font-size: $h4-font-size - emCalc(5px); }
   h5 { font-size: $h5-font-size; }
   h6 { font-size: $h6-font-size; }
-  
+
   .subheader { @extend %subheader; }
-  
+
   hr {
     border: $hr-border-style $hr-border-color;
     border-width: $hr-border-width 0 0;
@@ -208,31 +208,31 @@ $microformat-abbr-font-decoration:     none !default;
     margin: $hr-margin 0 ($hr-margin - emCalc(1px));
     height: 0;
   }
-  
+
   /* Helpful Typography Defaults */
   em,
   i {
     font-style: italic;
     line-height: inherit;
   }
-  
+
   strong,
   b {
     font-weight: bold;
     line-height: inherit;
   }
-  
+
   small {
     font-size: $small-font-size;
     line-height: inherit;
   }
-  
+
   code {
     font-family: $code-font-family;
     font-weight: $code-font-weight;
     color: $code-color;
   }
-  
+
   /* Lists */
   ul,
   ol,
@@ -243,7 +243,7 @@ $microformat-abbr-font-decoration:     none !default;
     list-style-position: $list-style-position;
     font-family: $paragraph-font-family;
   }
-  
+
   /* Unordered Lists */
   ul {
     li {
@@ -259,13 +259,13 @@ $microformat-abbr-font-decoration:     none !default;
     &.disc {
       li ul { list-style: inherit; }
     }
-  
+
     &.square { list-style-type: square; }
     &.circle { list-style-type: circle; }
     &.disc { list-style-type: disc; }
     &.no-bullet { list-style: none; }
   }
-  
+
   /* Ordered Lists */
   ol {
     li {
@@ -276,7 +276,7 @@ $microformat-abbr-font-decoration:     none !default;
       }
     }
   }
-  
+
   /* Definition Lists */
   dl {
     dt {
@@ -285,7 +285,7 @@ $microformat-abbr-font-decoration:     none !default;
     }
     dd { margin-bottom: $definition-list-margin-bottom; }
   }
-  
+
   /* Abbreviations */
   abbr,
   acronym {
@@ -293,18 +293,18 @@ $microformat-abbr-font-decoration:     none !default;
     font-size: 90%;
     color: $body-font-color;
     border-bottom: $acronym-underline;
-  cursor: $cursor-help-value;
+    cursor: $cursor-help-value;
   }
   abbr {
     text-transform: none;
   }
-  
+
   /* Blockquotes */
   blockquote {
     margin: 0 0 $paragraph-margin-bottom;
     padding: $blockquote-padding;
     border-#{$default-float}: $blockquote-border;
-  
+
     cite {
       display: block;
       font-size: $blockquote-cite-font-size;
@@ -312,7 +312,7 @@ $microformat-abbr-font-decoration:     none !default;
       &:before {
         content: "\2014 \0020";
       }
-  
+
       a,
       a:visited {
         color: $blockquote-cite-link-color;
@@ -324,14 +324,14 @@ $microformat-abbr-font-decoration:     none !default;
     line-height: $paragraph-line-height;
     color: $blockquote-font-color;
   }
-  
+
   /* Microformats */
   .vcard {
     display: inline-block;
     margin: $microformat-margin;
     border: $microformat-border-width $microformat-border-style $microformat-border-color;
     padding: $microformat-padding;
-  
+
     li {
       margin: 0;
       display: block;
@@ -341,20 +341,20 @@ $microformat-abbr-font-decoration:     none !default;
       font-size: $microformat-fullname-font-size;
     }
   }
-  
+
   .vevent {
     .summary { font-weight: $microformat-summary-font-weight; }
-  
+
     abbr {
-    cursor: $cursor-default-value;
+      cursor: $cursor-default-value;
       text-decoration: $microformat-abbr-font-decoration;
       font-weight: $microformat-abbr-font-weight;
       border: none;
       padding: $microformat-abbr-padding;
     }
   }
-  
-  
+
+
   @media #{$small} {
     h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
     h1 { font-size: $h1-font-size; }
@@ -362,7 +362,7 @@ $microformat-abbr-font-decoration:     none !default;
     h3 { font-size: $h3-font-size; }
     h4 { font-size: $h4-font-size; }
   }
-  
+
   // Only include these styles if you want them.
   @if $include-print-styles {
     /*
@@ -379,43 +379,43 @@ $microformat-abbr-font-decoration:     none !default;
         box-shadow: none !important;
         text-shadow: none !important;
       }
-  
+
       a,
       a:visited { text-decoration: underline;}
       a[href]:after { content: " (" attr(href) ")"; }
-  
+
       abbr[title]:after { content: " (" attr(title) ")"; }
-  
+
       // Don't show links for images, or javascript/internal links
       .ir a:after,
       a[href^="javascript:"]:after,
       a[href^="#"]:after { content: ""; }
-  
+
       pre,
       blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
       }
-  
+
       thead { display: table-header-group; /* h5bp.com/t */ }
-  
+
       tr,
       img { page-break-inside: avoid; }
-  
+
       img { max-width: 100% !important; }
-  
+
       @page { margin: 0.5cm; }
-  
+
       p,
       h2,
       h3 {
         orphans: 3;
         widows: 3;
       }
-  
+
       h2,
       h3 { page-break-after: avoid; }
-  
+
       .hide-on-print { display: none !important; }
       .print-only { display: block !important; }
       .hide-for-print { display: none !important; }

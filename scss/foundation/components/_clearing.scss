@@ -109,11 +109,11 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
   }
 
   // If you want to show a lightbox, but only have a single image come through as the thumbnail
-  .clearing-feature li { 
+  .clearing-feature li {
     display: none;
     &.clearing-featured-img {
       display: block;
-    } 
+    }
   }
 
   // Large screen overrides
@@ -177,7 +177,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
             overflow: hidden;
             margin-#{$opposite-direction}: 1px;
             position: relative;
-          cursor: $cursor-pointer-value;
+            cursor: $cursor-pointer-value;
             opacity: 0.4;
 
             &.fix-height {
