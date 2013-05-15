@@ -1,5 +1,4 @@
 <% @side_nav = "nav" %>
-
 <div class="row">
   <div class="large-9 push-3 columns">
 
@@ -92,7 +91,7 @@
         <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-form</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
 
         <h5>Sticky Top Bar</h5>
-        <p>You may also wrap your top bar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll.</p>
+        <p>You may also wrap your top bar in <code>div class="contain-to-grid sticky"</code> and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. <strong>Note:</strong> If you are using Scss, you can control the default <code>sticky</code> class by adjusting the <code>$topbar-sticky-class</code> variable. <strong>Make sure the JS variable for <code>stickyClass</code> matches whatever class you use in the variable.</strong></p>
 
 <%= code_example '
 <nav class="top-bar">
@@ -212,44 +211,62 @@
 
 <%= code_example '
 /* Background color for the top bar */
-$topbar-bg: #111;
+$topbar-bg:                            #111;
 
 /* Height and margin */
-$topbar-height: 45px;
-$topbar-margin-bottom: emCalc(30px);
+$topbar-height:                        45px;
+$topbar-margin-bottom:                 emCalc(30px);
 
 /* Control Input height for top bar */
-$topbar-input-height: 2.45em;
+$topbar-input-height:                  2.45em;
 
 /* Controlling the styles for the title in the top bar */
-$topbar-title-weight: bold;
-$topbar-title-font-size: emCalc(17px);
-
-/* Set the link colors and styles for top-level nav */
-$topbar-link-color: #fff;
-$topbar-link-weight: bold;
-$topbar-link-font-size: emCalc(13px);
+$topbar-title-weight:                  bold;
+$topbar-title-font-size:               emCalc(17px);
 
 /* Style the top bar dropdown elements */
-$topbar-dropdown-bg: #333;
-$topbar-dropdown-link-color: #fff;
-$topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: #fff;
-$topbar-dropdown-toggle-alpha: 0.5;
-$dropdown-label-color: #555;
+$topbar-dropdown-bg:                   #222;
+$topbar-dropdown-link-color:           #fff;
+$topbar-dropdown-link-bg:              lighten($topbar-bg, 5%);
+$topbar-dropdown-toggle-size:          5px;
+$topbar-dropdown-toggle-color:         #fff;
+$topbar-dropdown-toggle-alpha:         0.5;
+
+/* Set the link colors and styles for top-level nav */
+$topbar-link-color:                    #fff;
+$topbar-link-color-hover:              #fff;
+$topbar-link-color-active:             #fff;
+$topbar-link-weight:                   bold;
+$topbar-link-font-size:                emCalc(13px);
+$topbar-link-hover-lightness:          -30%; /* Darken by 30% */
+$topbar-link-bg-hover:                 darken($topbar-bg, 3%);
+$topbar-link-bg-active:                darken($topbar-bg, 3%);
+
+$topbar-dropdown-label-color:          #555;
+$topbar-dropdown-label-text-transform: uppercase;
+$topbar-dropdown-label-font-weight:    bold;
+$topbar-dropdown-label-font-size:      emCalc(10px);
 
 /* Top menu icon styles */
-$topbar-menu-link-transform: uppercase;
-$topbar-menu-link-font-size: emCalc(13px);
-$topbar-menu-link-weight: bold;
-$topbar-menu-link-color: #fff;
-$topbar-menu-icon-color: #fff;
-$topbar-menu-link-color-toggled: #888;
-$topbar-menu-icon-color-toggled: #888;
+$topbar-menu-link-transform:           uppercase;
+$topbar-menu-link-font-size:           emCalc(13px);
+$topbar-menu-link-weight:              bold;
+$topbar-menu-link-color:               #fff;
+$topbar-menu-icon-color:               #fff;
+$topbar-menu-link-color-toggled:       #888;
+$topbar-menu-icon-color-toggled:       #888;
 
 /* Transitions and breakpoint styles */
-$topbar-transition-speed: 300ms;
-$topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout', :css %>
+$topbar-transition-speed:              300ms;
+$topbar-breakpoint:                    emCalc(940px); /* Change to 9999px for always mobile layout */
+$topbar-media-query:                   "only screen and (min-width:"#{$topbar-breakpoint}")";
+
+/* Divider Styles */
+$topbar-divider-border-bottom:         solid 1px lighten($topbar-bg, 10%);
+$topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%);
+
+// Sticky Class
+$topbar-sticky-class:                  ".sticky";', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
 
@@ -264,7 +281,7 @@ $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout'
 
         <h5>Optional JavaScript Configuration</h5>
 
-        <p>Top bar options can only be passed in during initialization at this time.</p>
+        <p>Top bar now supports <code>data-options</code> configuration.</p>
 
     <%= code_example "
 {

@@ -30,12 +30,14 @@ Many thanks to all the people working on Foundation either to improve the base c
 
 WordPress (Versions marked 3/20/13)
 
+* [Reactor](https://github.com/awtheme/reactor) by Anthony Wilhelm using Foundation version 4
 * [Reverie](http://themefortress.com/reverie/) by Zhen using Foundation version 4
 * [Corner Stone](https://github.com/thewirelessguy/cornerstone) by [Stephen Mullen](https://twitter.com/wirelessguyuk) using Foundation version v4.09
 * [required+ Themes](http://themes.required.ch/) by required+ using Foundation version 3.25
 * [Yeti](https://github.com/modlearning/Yeti) by Modular Learning using Foundation version 3.2
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris using Foundation version 3
 * [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press using Foundation version 3
+* [f415](https://github.com/javorszky/f415) by Gabor Javorszky
 
 Joomla
 
@@ -47,6 +49,9 @@ Drupal
 * [Drupal Theme](https://github.com/drewkennelly/foundation7) by Drew Kennelly
 * [Zurb Foundation](http://drupal.org/project/zurb-foundation) Supporting F3.2, F4 & Drupal 8  by [Ishmael Sanchez](http://ishmaelsanchez.com), [Chris Lee](http://hire.chrisjlee.net)
 * [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
+
+Alfred
+* [Foundation Alfred](https://github.com/joshmedeski/foundation-alfred) by Josh Medeski (@joshmedeski)
 
 PyroCMS
 
@@ -77,6 +82,10 @@ Python
 CodeIgniter
 
 * [Responsive CodeIgniter BoilerPlate](https://github.com/meridiansoftech/meridian_ci_codebase) by [Arnold Mwumva Ford](https://twitter.com/fordarnold) , Meridian Softech
+
+Shopify
+
+* [Foundationify Shopify Theme](https://github.com/lukebussey/foundationify) by Luke Bussey
 
 Other Implementations
 

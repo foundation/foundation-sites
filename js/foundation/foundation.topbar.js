@@ -6,26 +6,31 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.1.2',
+    version : '4.1.7',
 
     settings : {
       index : 0,
       stickyClass : 'sticky',
       custom_back_text: true,
       back_text: 'Back',
+      scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
 
     init : function (section, method, options) {
+      Foundation.inherit(this, 'data_options');
       var self = this;
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
+      } else if (typeof options !== 'undefined') {
+        $.extend(true, this.settings, options);
       }
 
       if (typeof method != 'string') {
 
-        $('.top-bar').each(function () {
+        $('.top-bar, [data-topbar]').each(function () {
+          $.extend(true, self.settings, self.data_options($(this)));
           self.settings.$w = $(window);
           self.settings.$topbar = $(this);
           self.settings.$section = self.settings.$topbar.find('section');
@@ -58,10 +63,10 @@
 
     events : function () {
       var self = this;
-      var offst = this.outerHeight($('.top-bar'));
+      var offst = this.outerHeight($('.top-bar, [data-topbar]'));
       $(this.scope)
-        .on('click.fndtn.topbar', '.top-bar .toggle-topbar', function (e) {
-          var topbar = $(this).closest('.top-bar'),
+        .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
+          var topbar = $(this).closest('.top-bar, [data-topbar]'),
               section = topbar.find('section, .section'),
               titlebar = topbar.children('ul').first();
 
@@ -95,12 +100,14 @@
             topbar.parent().removeClass('fixed');
             topbar.addClass('fixed');
             $('body').css('padding-top','0');
-            window.scrollTo(0,0);
+            if (self.settings.scrolltop) {
+              window.scrollTo(0,0);
+            }
           }
         })
 
-        .on('click.fndtn.topbar', '.top-bar .has-dropdown>a', function (e) {
-          var topbar = $(this).closest('.top-bar'),
+        .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
+          var topbar = $(this).closest('.top-bar, [data-topbar]'),
               section = topbar.find('section, .section'),
               titlebar = topbar.children('ul').first(),
               dropdownHeight = $(this).next('.dropdown').outerHeight();
@@ -123,7 +130,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            $('.top-bar').css('min-height', dropdownHeight);
+            $('.top-bar, [data-topbar]').css('min-height', dropdownHeight);
 
             $this.siblings('ul')
               .height(topbar.data('height') + self.outerHeight(titlebar, true));
@@ -134,18 +141,18 @@
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!self.breakpoint()) {
-          $('.top-bar')
+          $('.top-bar, [data-topbar]')
             .css('min-height', '')
             .removeClass('expanded');
         }
       }.bind(this));
 
       // Go up a level on Click
-      $(this.scope).on('click.fndtn', '.top-bar .has-dropdown .back', function (e) {
+      $(this.scope).on('click.fndtn', '.top-bar .has-dropdown .back, [data-topbar] .has-dropdown .back', function (e) {
         e.preventDefault();
 
         var $this = $(this),
-            topbar = $this.closest('.top-bar'),
+            topbar = $this.closest('.top-bar, [data-topbar]'),
             section = topbar.find('section, .section'),
             $movedLi = $this.closest('li.moved'),
             $previousLevelUl = $movedLi.parent();

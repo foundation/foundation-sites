@@ -52,20 +52,20 @@
         <hr>
 
         <h4>Start From a Featured Image</h4>
-        <p>Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in the list and using <code>.clearing-feature</code> on the <code>&lt;li&gt;</code> of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than once, try using our <code>.hide</code> class to set the ones you don't want to <code>display: none;</code>.</p>
+        <p>Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in a <code>.clearing-feature</code> list and using <code>.clearing-featured-img</code> on the <code>&lt;li&gt;</code> of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than once, try using our <code>.hide</code> class to set the ones you don't want to <code>display: none;</code>.</p>
 
 <%= code_example '
-<ul class="clearing-thumbs" data-clearing>
-  <li class="clearing-feature"><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+<ul class="clearing-thumbs clearing-feature" data-clearing>
   <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+  <li class="clearing-featured-img"><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
   <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
 </ul>', :html %>
 
         <div class="row">
           <div class="large-12 columns">
-            <ul class="clearing-thumbs" data-clearing>
-              <li class="clearing-feature"><a class="th" href="../img/demos/demo1.jpg"><img src="../img/demos/demo1-th.jpg"></a></li>
-              <li><a class="th" href="../img/demos/demo2.jpg"><img src="../img/demos/demo2-th.jpg"></a></li>
+            <ul class="clearing-thumbs clearing-feature" data-clearing>
+              <li><a class="th" href="../img/demos/demo1.jpg"><img src="../img/demos/demo1-th.jpg"></a></li>
+              <li class="clearing-featured-img"><a class="th" href="../img/demos/demo2.jpg"><img src="../img/demos/demo2-th.jpg"></a></li>
               <li><a class="th" href="../img/demos/demo3.jpg"><img src="../img/demos/demo3-th.jpg"></a></li>
             </ul>
           </div>

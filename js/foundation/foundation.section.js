@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.1.3',
+    version : '4.1.7',
 
     settings : {
       deep_linking: false,
@@ -95,7 +95,7 @@
           || self.is_vertical_nav(parent)
           || self.is_horizontal_nav(parent)
           || self.is_accordion(parent)) {
-            if (prev_active_section[0] !== region[0] 
+            if (prev_active_section[0] !== region[0]
               || (prev_active_section[0] === region[0] && !settings.one_up)) {
               region
                 .removeClass('active')
@@ -113,7 +113,7 @@
           if (self.small(parent)) {
             prev_active_section.attr('style', '');
           } else {
-            prev_active_section.attr('style', 
+            prev_active_section.attr('style',
               'visibility: hidden; padding-top: '+title_height+'px;');
           }
         }
@@ -229,7 +229,6 @@
       var hash = window.location.hash.substring(1),
           sections = $('[data-section]'),
           self = this;
-
       sections.each(function () {
         var section = $(this),
             settings = $.extend({}, self.settings, self.data_options(section));
@@ -239,12 +238,15 @@
             .children(self.settings.region_selector)
             .attr('style', '')
             .removeClass('active');
-          regions
-            .map(function () {
-              return $(this).children('.content[data-slug="' + hash + '"], [data-section-content][data-slug="' + hash + '"]');
-            })
-            .parent()
-            .addClass('active');
+
+          var hash_regions = regions.map(function () {
+              var content = $(self.settings.content_selector, this),
+                  content_slug = content.data('slug');
+              if (content_slug === hash) 
+                return content;
+            });
+
+          $(hash_regions[0]).parent().addClass('active');
         }
       });
     },
@@ -345,20 +347,20 @@
                 content = region.children(self.settings.content_selector);
             if (!self.rtl) {
               content
-                .css({left: title.position().left - 1, 
+                .css({left: title.position().left - 1,
                   top: self.outerHeight(title) - 2});
             } else {
               content
-                .css({right: self.position_right(title) + 1, 
+                .css({right: self.position_right(title) + 1,
                   top: self.outerHeight(title) - 2});
             }
           });
 
           // temporary work around for Zepto outerheight calculation issues.
           if (typeof Zepto === 'function') {
-            section.height(this.outerHeight(titles.first()));
+            section.height(this.outerHeight($(titles[0])));
           } else {
-            section.height(this.outerHeight(titles.first()) - 2);
+            section.height(this.outerHeight($(titles[0])) - 2);
           }
         }
       }

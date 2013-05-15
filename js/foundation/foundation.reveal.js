@@ -36,7 +36,6 @@
     },
 
     init : function (scope, method, options) {
-      this.scope = scope || this.scope;
       Foundation.inherit(this, 'data_options delay');
 
       if (typeof method === 'object') {
@@ -245,7 +244,7 @@
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
         iframe.attr('src', 'about:blank');
-        video.fadeOut(100).hide();
+        video.hide();
       }
     },
 
@@ -258,7 +257,7 @@
         if (typeof data_src === 'string') {
           iframe[0].src = iframe.attr('data-src');
         }
-        video.show().fadeIn(100);
+        video.show();
       }
     },
 

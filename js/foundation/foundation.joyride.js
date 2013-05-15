@@ -1,6 +1,6 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
   'use strict';
 
   Foundation.libs.joyride = {
@@ -41,7 +41,8 @@
         modal   : '<div class="joyride-modal-bg"></div>',
         expose  : '<div class="joyride-expose-wrapper"></div>',
         exposeCover: '<div class="joyride-expose-cover"></div>'
-      }
+      },
+      exposeAddClass  	: ''		// One or more space-separated class names to be added to exposed element
     },
 
     settings : {},
@@ -121,7 +122,7 @@
           int_settings_count = integer_settings.length;
 
       if (!this.settings.init) this.init();
-      
+
       // non configureable settings
       this.settings.$content_el = $this;
       this.settings.$body = $(this.settings.tipContainer);
@@ -547,14 +548,15 @@
 
     show_modal : function () {
       if (!this.settings.$next_tip.data('closed')) {
-        if ($('.joyride-modal-bg').length < 1) {
+        var joyridemodalbg =  $('.joyride-modal-bg');
+        if (joyridemodalbg.length < 1) {
           $('body').append(this.settings.template.modal).show();
         }
 
         if (/pop/i.test(this.settings.tipAnimation)) {
-          $('.joyride-modal-bg').show();
+            joyridemodalbg.show();
         } else {
-          $('.joyride-modal-bg').fadeIn(this.settings.tipAnimationFadeSpeed);
+            joyridemodalbg.fadeIn(this.settings.tipAnimationFadeSpeed);
         }
       }
     },
@@ -564,6 +566,7 @@
           exposeCover,
           el,
           origCSS,
+          origClasses,
           randId = 'expose-'+Math.floor(Math.random()*10000);
 
       if (arguments.length > 0 && arguments[0] instanceof $) {
@@ -589,21 +592,25 @@
         width: this.outerWidth(el, true),
         height: this.outerHeight(el, true)
       });
-      
+
       exposeCover = $(this.settings.template.exposeCover);
 
       origCSS = {
         zIndex: el.css('z-index'),
         position: el.css('position')
       };
+      
+      origClasses = el.attr('class') == null ? '' : el.attr('class');
 
-      el.css('z-index',expose.css('z-index')*1+1);
+      el.css('z-index',parseInt(expose.css('z-index'))+1);
 
       if (origCSS.position == 'static') {
         el.css('position','relative');
       }
 
       el.data('expose-css',origCSS);
+      el.data('orig-class', origClasses);
+      el.attr('class', origClasses + ' ' + this.settings.exposeAddClass);
 
       exposeCover.css({
         top: el.offset().top,
@@ -625,6 +632,7 @@
           el,
           expose ,
           origCSS,
+          origClasses,
           clearAll = false;
 
       if (arguments.length > 0 && arguments[0] instanceof $) {
@@ -670,6 +678,10 @@
           el.css('position', origCSS.position);
         }
       }
+      
+      origClasses = el.data('orig-class');
+      el.attr('class', origClasses);
+      el.removeData('orig-classes');
 
       el.removeData('expose');
       el.removeData('expose-z-index');
@@ -810,6 +822,7 @@
       this.settings.$current_tip.hide();
       this.settings.postStepCallback(this.settings.$li.index(), this.settings.$current_tip);
       this.settings.postRideCallback(this.settings.$li.index(), this.settings.$current_tip);
+      $('.joyride-tip-guide').remove();
     },
 
     outerHTML : function (el) {

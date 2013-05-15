@@ -1,5 +1,20 @@
+<!-- 
+### 4.1.7- May 9, 2013
+* Added .clearing-featured-img class to designate the featured image in a .clearing-feature list 
+-->
+
+### 4.1.6- May 6, 2013
+* Improved performance for custom select boxes.
+* Bug fix for switches contained within custom forms.
+* Bug fix for directly clicking on checkbox to toggle it
+* Sections are now semantic.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.5...v4.1.6).
+
 ### 4.1.5- April 26, 2013
 * Add support for `indexOf` in legacy browsers
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.4...v4.1.5).
 
 ### 4.1.4- April 26, 2013
 * Fixes invalid Rails generator path
