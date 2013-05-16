@@ -159,7 +159,7 @@
           if (e.which === 13) {
             dropdown.find('li.selected').trigger('click');
           }
-          
+
           if (e.which === 27) {
             dropdown.removeClass('open');
           }
@@ -230,10 +230,6 @@
       var $this = $(sel),
           type = $this.attr('type'),
           $span = $this.next('span.custom.' + type);
-
-      if (!$this.parent().hasClass('switch')) {
-        $this.addClass('hidden-field');
-      }
 
       if ($span.length === 0) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
