@@ -49,7 +49,7 @@ $button-disabled-opacity: 0.6 !default;
   @if $style {
     border-style: $button-border-style;
     border-width: $button-border-width;
-    cursor: pointer;
+    cursor: $cursor-pointer-value;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
     line-height: 1;
@@ -135,7 +135,7 @@ $button-disabled-opacity: 0.6 !default;
 
   // We can set $disabled:true to create a disabled transparent button.
   @if $disabled {
-    cursor: default;
+    cursor: $cursor-default-value;
     opacity: $button-disabled-opacity;
     -webkit-box-shadow: none;
     box-shadow: none;

@@ -1,7 +1,7 @@
 //
 // Top Bar Variables
 //
-$include-html-nav-classes: $include-html-classes !default;
+$include-html-top-bar-classes: $include-html-classes !default;
 
 // Background color for the top bar
 $topbar-bg:                            #111 !default;
@@ -61,16 +61,18 @@ $topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%) !defaul
 // Sticky Class
 $topbar-sticky-class:                  ".sticky" !default;
 
-@if $include-html-nav-classes {
+@if $include-html-top-bar-classes != false {
 
   /* Wrapped around .top-bar to contain to grid width */
   .contain-to-grid {
     width: 100%;
     background: $topbar-bg;
+
+    .top-bar { margin-bottom: 0; }
   }
 
   // Wrapped around .top-bar to make it stick to the top
-  #{$topbar-sticky-class} {
+  .fixed {
     width: 100%;
     #{$default-float}: 0;
     position: fixed;
@@ -372,7 +374,7 @@ $topbar-sticky-class:                  ".sticky" !default;
     .contain-to-grid .top-bar {
       max-width: $row-width;
       margin: 0 auto;
-      margin-bottom: $topbar-margin-bottom; }
+    }
 
     .top-bar-section {
       @include single-transition(none,0,0);

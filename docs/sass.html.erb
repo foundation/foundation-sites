@@ -209,6 +209,20 @@ bundle exec compass create . -r zurb-foundation --using foundation
 
     <hr>
 
+    <a name="codekit"></a>
+    <h3>Compiling with CodeKit</h3>
+    <p>Previous version of Foundation were a bit harder to compile with codekit because of the structure of the Foundation files. We just went through a round of testing with a default project directory, created with the gem. Here are the instructions to follow to get CodeKit working properly:</p>
+
+    <ul>
+      <li>Create a project: <kbd>compass create <em>project-name</em> -r zurb-foundation --using foundation</kbd></li>
+      <li>Open CodeKit and drag that project folder into the side panel or add it with the "+" button.</li>
+      <li>Compile away!</li>
+    </ul>
+
+    <p><em>This works with the default version of Sass and Compass that CodeKit comes with. Since Compass isn't a dependency for Foundation any longer, if you want to use it, make sure you have it installed and @imported at the top of your main .scss file.</em></p>
+
+    <hr>
+
     <h3>Foundation Global Settings and Mixins</h3>
     <p>We've included a global settings file that holds variables and mixins that are used throughout the entirety of Foundation. Here's a look at that file:</p>
 
@@ -893,7 +907,7 @@ $em-base: 16px !default;
 // $pagination-link-active-bg: darken(#fff, 10%);
 
 // We use these for disabled anchor links
-// $pagination-link-unavailable-cursor: default;
+// $pagination-link-unavailable-cursor: $cursor-default-value;
 // $pagination-link-unavailable-font-color: #999;
 // $pagination-link-unavailable-bg-active: transparent;
 
@@ -901,7 +915,7 @@ $em-base: 16px !default;
 // $pagination-link-current-background: $primary-color;
 // $pagination-link-current-font-color: #fff;
 // $pagination-link-current-font-weight: bold;
-// $pagination-link-current-cursor: default;
+// $pagination-link-current-cursor: $cursor-default-value;
 // $pagination-link-current-active-bg: $primary-color;
 
 //
@@ -1092,7 +1106,7 @@ $em-base: 16px !default;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-color: #fff;
 // $sub-nav-active-padding: emCalc(3px) emCalc(9px);
-// $sub-nav-active-cursor: default;
+// $sub-nav-active-cursor: $cursor-default-value;
 
 //
 // Switch Variables

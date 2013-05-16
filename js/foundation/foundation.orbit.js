@@ -119,7 +119,7 @@
       $slides_container.append($slides.first().clone().attr('data-orbit-slide',''));
       $slides_container.prepend($slides.last().clone().attr('data-orbit-slide',''));
       // Make the first "real" slide active
-      $slides_container.css('marginLeft', '-100%');
+      $slides_container.css(Foundation.rtl ? 'marginRight' : 'marginLeft', '-100%');
       $slides.first().addClass(self.settings.active_slide_class);
 
       self._init_events($slides_container);

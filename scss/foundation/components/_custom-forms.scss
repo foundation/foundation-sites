@@ -237,7 +237,7 @@ $custom-dropdown-width-large:           434px !default;
       li {
         color: $custom-dropdown-font-color;
         font-size: $custom-dropdown-font-size;
-        cursor: default;
+        cursor: $cursor-default-value;
         padding-top: $custom-dropdown-list-padding;
         padding-bottom: $custom-dropdown-list-padding;
         padding-#{$default-float}: $custom-dropdown-default-float-padding;
@@ -258,7 +258,7 @@ $custom-dropdown-width-large:           434px !default;
         }
         &.selected:hover {
           background: $custom-dropdown-color-selected;
-          cursor: default;
+          cursor: $cursor-default-value;
           color: $custom-dropdown-font-color-selected;
         }
       }
