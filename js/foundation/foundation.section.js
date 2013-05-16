@@ -45,9 +45,11 @@
         .on('click.fndtn.section', '[data-section] .title, [data-section] [data-section-title]', function (e) {
           var $this = $(this),
               section = $this.closest(self.settings.section_selector);
-
-          self.toggle_active.call(this, e, self);
-          self.reflow();
+          // Check if content exists before handling. (Linking to other pages)
+          if (section.children(self.settings.content_selector).length)
+            self.toggle_active.call(this, e, self);
+            self.reflow();
+          }
         });
 
       $(window)
