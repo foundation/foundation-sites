@@ -104,6 +104,8 @@ $microformat-abbr-font-decoration:     none !default;
 //
 // Typography Placeholders
 //
+
+// These will throw a deprecation warning if used within a media query.
 %lead {
   font-size: $paragraph-font-size + emCalc(3.5px);
   line-height: 1.6;
