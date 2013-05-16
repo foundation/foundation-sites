@@ -41,7 +41,7 @@ $thumb-transition-speed: 200ms !default;
 
     &.radius { @include radius($thumb-radius); }
   }
-  a.th { display: block; }
+  a.th { display: inline-block; }
 
 }
 
