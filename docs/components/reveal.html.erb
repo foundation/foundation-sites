@@ -60,6 +60,46 @@ $('#myModal').foundation('reveal', 'open');
 $('#myModal').foundation('reveal', 'close');
 ", :js %>
 
+        <h5>Firing a Reveal Modal with Ajax Content</h5>
+        <p>To launch a modal with content from another page, just add a <code>data-reveal-ajax</code> attribute pointing to the url of that page. When clicked, the Reveal modal will be opened with a content from that page. Beware, that content of the object from <code>data-reveal-id</code> attribute will be overwritten as a result.</p>
+        <p>To use an url from <code>href</code> attribute just add <code>data-reveal-ajax="true"</code> instead.</p>
+
+<%= code_example '
+<button data-reveal-id="myModal" data-reveal-ajax="http://some-url">
+    Click Me For A Modal
+</button>
+
+<a href="http://some-url" data-reveal-id="myModal" data-reveal-ajax="true">
+    Click Me For A Modal
+</a>
+', :html %>
+
+        <p>Ajax-based Reveal modals can also be opened via JavaScript:</p>
+
+<%= code_example "
+// just an url
+$('#myModal').foundation('reveal', 'open', 'http://some-url');
+
+// url with extra parameters
+$('#myModal').foundation('reveal', 'open', {
+    url: 'http://some-url',
+    data: {param1: 'value1', param2: 'value2'}
+});
+
+// url with custom callbacks
+$('#myModal').foundation('reveal', 'open', {
+    url: 'http://some-url',
+    success: function(data) {
+        alert('modal data loaded');
+    },
+    error: function() {
+        alert('failed loading modal');
+    }
+});
+", :js %>
+
+        <p>Please refer to <a href="http://api.jquery.com/jQuery.ajax/" target="_blank">http://api.jquery.com/jQuery.ajax/</a> for a complete list of possible parameters.</p>
+
         <hr>
 
         <h5>Default SCSS Variables</h5>
