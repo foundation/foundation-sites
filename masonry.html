@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Foundation 4: Workspace Template</title>
+
+  <link rel="stylesheet" href="css/normalize.css" />
+
+  <link rel="stylesheet" href="css/foundation.css" />
+
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+  <style>
+    .masonry-brick { width: 220px; margin: 10px; float: left;  }
+    #masonryContainer { width: 0 auto; }
+  </style>
+</head>
+<body>
+
+  <!-- Masonry Container -->
+  <div class="row">
+    <div class="large-12 columns">
+      <div id="masonryContainer">
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x300&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x600&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x700&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x400&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x200&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x300&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x600&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x700&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x400&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x200&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x200&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x300&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x600&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x700&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x400&text=Item">
+        </div>
+        <div class="masonry-brick">
+          <img src="http://placehold.it/500x200&text=Item">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="js/masonry.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  
+  <script>
+    $(window).load(function(){
+      $('#masonryContainer').masonry({  
+        itemSelector: '.masonry-brick',
+        columnWidth: 240
+      });  
+    });    
+  </script>
+</body>
+</html>
