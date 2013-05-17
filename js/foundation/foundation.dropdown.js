@@ -93,6 +93,7 @@
       if (dropdown.hasClass(this.settings.activeClass)) {
         this.close.call(this, dropdown);
       } else {
+	 this.close.call(this, $('.f-dropdown'));
         this.open.call(this, dropdown, target);
       }
     },
