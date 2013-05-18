@@ -70,8 +70,6 @@
               section = topbar.find('section, .section'),
               titlebar = topbar.children('ul').first();
 
-          if (!topbar.data('height')) self.largestUL();
-
           e.preventDefault();
 
           if (self.breakpoint()) {
@@ -119,19 +117,20 @@
         })
 
         .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
-          e.stopImmediatePropagation();
+          if (self.breakpoint()) return;
 
           var li = $(this),
-              is_hover = li.closest('[data-topbar], .top-bar').data('topbar'),
-              target = $(e.target);
+              target = $(e.target),
+              topbar = li.closest('[data-topbar], .top-bar'),
+              is_hover = topbar.data('topbar');
 
           if (/hover/i.test(is_hover) && !Modernizr.touch) return;
+
+          e.stopImmediatePropagation();
 
           if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
             e.preventDefault();
           }
-
-          // $('.top-bar li').not(li).removeClass('hover');
 
           if (li.hasClass('hover')) {
             li
@@ -144,21 +143,19 @@
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
-          var topbar = $(this).closest('.top-bar, [data-topbar]'),
-              section = topbar.find('section, .section'),
-              titlebar = topbar.children('ul').first(),
-              dropdownHeight = $(this).next('.dropdown').outerHeight();
-
-          if (Modernizr.touch || self.breakpoint()) {
-            e.preventDefault();
-          }
-
           if (self.breakpoint()) {
+            e.preventDefault();
+
             var $this = $(this),
+                topbar = $this.closest('.top-bar, [data-topbar]'),
+                section = topbar.find('section, .section'),
+                titlebar = topbar.children('ul').first(),
+                dropdownHeight = $this.next('.dropdown').outerHeight(),
                 $selectedLi = $this.closest('li');
 
             topbar.data('index', topbar.data('index') + 1);
             $selectedLi.addClass('moved');
+
             if (!self.rtl) {
               section.css({left: -(100 * topbar.data('index')) + '%'});
               section.find('>.name').css({left: 100 * topbar.data('index') + '%'});
@@ -167,12 +164,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('min-height', dropdownHeight);
-
-            $this.siblings('ul')
-              .height(topbar.data('height') + self.outerHeight(titlebar, true));
-            topbar
-              .css('min-height', topbar.data('height') + self.outerHeight(titlebar, true) * 2)
+            topbar.css('min-height', self.height($this.siblings('ul')) + self.outerHeight(titlebar, true));
           }
         });
 
@@ -200,6 +192,7 @@
 
         var $this = $(this),
             topbar = $this.closest('.top-bar, [data-topbar]'),
+            titlebar = topbar.children('ul').first(),
             section = topbar.find('section, .section'),
             $movedLi = $this.closest('li.moved'),
             $previousLevelUl = $movedLi.parent();
@@ -216,6 +209,8 @@
 
         if (topbar.data('index') === 0) {
           topbar.css('min-height', 0);
+        } else {
+          topbar.css('min-height', self.height($previousLevelUl) + self.outerHeight(titlebar, true));
         }
 
         setTimeout(function () {
@@ -260,21 +255,13 @@
       this.sticky();
     },
 
-    largestUL : function () {
-      var uls = this.settings.$topbar.find('section ul ul'),
-          largest = uls.first(),
-          total = 0,
+    height : function (ul) {
+      var total = 0,
           self = this;
 
-      uls.each(function () {
-        if ($(this).children('li').length > largest.children('li').length) {
-          largest = $(this);
-        }
-      });
+      ul.find('> li').each(function () { total += self.outerHeight($(this), true); });
 
-      largest.children('li').each(function () { total += self.outerHeight($(this), true); });
-
-      this.settings.$topbar.data('height', total);
+      return total;
     },
 
     sticky : function () {
