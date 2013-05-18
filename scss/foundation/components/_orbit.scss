@@ -24,30 +24,95 @@ $orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: emCalc(5px) !default;
 
-// Margin for when Orbit is stacked on small screens
-$stack-on-small-margin-bottom: emCalc(20px) !default;
+// Graceful Loading Wrapper and preloader
+$wrapper-class: "slideshow-wrapper" !default;
+$preloader-class: "preloader" !default;
+
 
 @if $include-html-orbit-classes != false {
-  
+
+  @-webkit-keyframes rotate {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-moz-keyframes rotate {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-o-keyframes rotate {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes rotate {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+  }
+
+  /* Orbit Graceful Loading */
+  .#{$wrapper-class} {
+    position: relative;
+
+    ul {
+      // Prevent bullets showing before .orbit-container is loaded
+      list-style-type: none;
+      margin: 0;
+
+      // Hide all list items
+      li,
+      li .orbit-caption { display: none; }
+
+      // ...except for the first one
+      li:first-child { display: block; }
+    }
+
+    .orbit-container { background-color: transparent;
+
+      // Show images when .orbit-container is loaded
+      li { display: block;
+
+        .orbit-caption { display: block; }
+      }
+    }
+  }
+
+  // Orbit preloader
+  .#{$preloader-class} {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    border: solid 3px;
+    border-color: #555 #fff;
+    @include radius(1000px);
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+  }
+
   .orbit-container {
     overflow: hidden;
     width: 100%;
     position: relative;
     background: $orbit-container-bg;
-  
+
     .orbit-slides-container {
       list-style: none;
       margin: 0;
       padding: 0;
       position: relative;
-  
+
       img { display: block; }
-  
+
       &>* {
         position: relative;
         float: $default-float;
         height: 100%;
-  
+
         .orbit-caption {
           position: absolute;
           bottom: 0;
@@ -60,7 +125,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
         }
       }
     }
-  
+
     .orbit-slide-number {
       position: absolute;
       top: 10px;
@@ -70,7 +135,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
       color: $orbit-slide-number-font-color;
       background: $orbit-slide-number-bg;
     }
-  
+
     .orbit-timer {
       position: absolute;
       top: 10px;
@@ -84,7 +149,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
         display: block;
         width: 0%;
       }
-  
+
       & > span {
         display: none;
         position: absolute;
@@ -96,7 +161,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
         border-top: none;
         border-bottom: none;
       }
-  
+
       &.paused {
         & > span {
           #{$opposite-direction}: -6px;
@@ -109,9 +174,9 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
         }
       }
     }
-  
+
     &:hover .orbit-timer > span { display: block; }
-  
+
     // Let's get those controls to be right in the center on each side
     .orbit-prev,
     .orbit-next {
@@ -125,7 +190,7 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
       line-height: 50px;
       color: white;
       text-indent: -9999px !important;
-  
+
       & > span {
         position: absolute;
         top: 50%;
@@ -159,13 +224,13 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
       }
     }
   }
-  
+
   .orbit-bullets {
     margin: 0 auto 30px auto;
     overflow: hidden;
     position: relative;
     top: 10px;
-  
+
     li {
       display: block;
       width: 18px;
@@ -175,36 +240,36 @@ $stack-on-small-margin-bottom: emCalc(20px) !default;
       margin-#{$opposite-direction}: 6px;
       border: solid 2px $orbit-bullet-nav-color-active;
       @include radius(1000px);
-  
+
       &.active {
         background: $orbit-bullet-nav-color-active;
       }
-  
+
       &:last-child { margin-#{$opposite-direction}: 0; }
     }
   }
-  
+
   .touch {
     .orbit-container {
       .orbit-prev,
       .orbit-next { display: none; }
     }
-  
+
     .orbit-bullets { display: none; }
   }
-  
-  
+
+
   @media #{$small} {
-  
+
     .touch {
       .orbit-container {
         .orbit-prev,
         .orbit-next { display: inherit; }
       }
-  
+
       .orbit-bullets { display: block; }
     }
-  
+
   }
 
 }
