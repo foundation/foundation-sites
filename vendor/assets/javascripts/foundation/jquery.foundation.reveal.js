@@ -690,6 +690,11 @@
       }
 
       //
+      // Bind the modal 'close' event.
+      // Handled by the options.close property function.
+      //
+      modal.bind( 'reveal:close.reveal', options.close );
+      //
       // Bind the modal 'close' event
       //
       modal.bind( 'reveal:close.reveal', closeAnimation );
@@ -714,11 +719,6 @@
       // Handled by the options.opened property function.
       //
       modal.bind( 'reveal:opened.reveal', options.opened );
-      //
-      // Bind the modal 'close' event.
-      // Handled by the options.close property function.
-      //
-      modal.bind( 'reveal:close.reveal', options.close );
       //
       // Bind the modal 'closed' event.
       // Handled by the options.closed property function.
