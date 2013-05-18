@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.1.7',
+    version : '4.2.0',
 
     settings : {
       index : 0,
@@ -107,6 +107,42 @@
           }
         })
 
+        .on('mouseenter mouseleave', '.top-bar li', function (e) {
+          var is_hover = $(this).closest('[data-topbar], .top-bar').data('topbar');
+          if (!/hover/i.test(is_hover)) return;
+
+          if (/enter|over/i.test(e.type)) {
+            $(this).addClass('hover');
+          } else {
+            $(this).removeClass('hover');
+          }
+        })
+
+        .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
+          e.stopImmediatePropagation();
+
+          var li = $(this),
+              is_hover = li.closest('[data-topbar], .top-bar').data('topbar'),
+              target = $(e.target);
+
+          if (/hover/i.test(is_hover) && !Modernizr.touch) return;
+
+          if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
+            e.preventDefault();
+          }
+
+          // $('.top-bar li').not(li).removeClass('hover');
+
+          if (li.hasClass('hover')) {
+            li
+              .removeClass('hover')
+              .find('li')
+              .removeClass('hover');
+          } else {
+            li.addClass('hover');
+          }
+        })
+
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
           var topbar = $(this).closest('.top-bar, [data-topbar]'),
               section = topbar.find('section, .section'),
@@ -147,6 +183,16 @@
             .removeClass('expanded');
         }
       }.bind(this));
+
+      $('body').on('click.fndtn.topbar', function (e) {
+        var parent = $(e.target).closest('[data-topbar], .top-bar');
+
+        if (parent.length > 0) {
+          return;
+        }
+
+        $('.top-bar li, [data-topbar] li').removeClass('hover');
+      });
 
       // Go up a level on Click
       $(this.scope).on('click.fndtn', '.top-bar .has-dropdown .back, [data-topbar] .has-dropdown .back', function (e) {
