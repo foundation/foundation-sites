@@ -56,7 +56,7 @@
               '[data-tooltip]', function (e) {
               var $this = $(this);
 
-              if (e.type === 'mouseover' || e.type === 'mouseenter') {
+              if (/enter|over/i.test(e.type)) {
                 self.showOrCreateTip($this);
               } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
                 self.hide($this);
