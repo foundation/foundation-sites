@@ -194,7 +194,7 @@
                 params = this.parse_params(cached_split[0], 
                   cached_split[1], split[1]);
 
-            scenarios.push(params)
+            scenarios.push(params);
           }
         }
       }
