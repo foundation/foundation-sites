@@ -279,7 +279,7 @@ $complementaryWidth: 20% !default;
 
 // Modular Scale Settings
 
-// $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
+$ratio: $golden !default; // THIS IS DEFAULT IN MODULAR-SCALE
 $baseFontSize: 14px !default;
 $importantModNum: 44px !default;
 $base-size: $baseFontSize $importantModNum;
