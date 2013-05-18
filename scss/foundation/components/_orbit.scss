@@ -111,7 +111,7 @@ $preloader-class: "preloader" !default;
       &>* {
         position: relative;
         float: $default-float;
-        height: 100%;
+        height: auto;
 
         .orbit-caption {
           position: absolute;
