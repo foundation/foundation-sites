@@ -13,6 +13,7 @@
       stickyClass : 'sticky',
       custom_back_text: true,
       back_text: 'Back',
+      is_hover: true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
@@ -35,8 +36,6 @@
           self.settings.$topbar = $(this);
           self.settings.$section = self.settings.$topbar.find('section');
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
-
-
           self.settings.$topbar.data('index', 0);
 
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
@@ -73,12 +72,6 @@
           e.preventDefault();
 
           if (self.breakpoint()) {
-            topbar
-              .toggleClass('expanded')
-              .css('min-height', '');
-          }
-
-          if (!topbar.hasClass('expanded')) {
             if (!self.rtl) {
               section.css({left: '0%'});
               section.find('>.name').css({left: '100%'});
@@ -86,9 +79,16 @@
               section.css({right: '0%'});
               section.find('>.name').css({right: '100%'});
             }
+
             section.find('li.moved').removeClass('moved');
             topbar.data('index', 0);
 
+            topbar
+              .toggleClass('expanded')
+              .css('min-height', '');
+          }
+
+          if (!topbar.hasClass('expanded')) {
             if (topbar.hasClass('fixed')) {
               topbar.parent().addClass('fixed');
               topbar.removeClass('fixed');
@@ -106,8 +106,7 @@
         })
 
         .on('mouseenter mouseleave', '.top-bar li', function (e) {
-          var is_hover = $(this).closest('[data-topbar], .top-bar').data('topbar');
-          if (!/hover/i.test(is_hover)) return;
+          if (!self.settings.is_hover) return;
 
           if (/enter|over/i.test(e.type)) {
             $(this).addClass('hover');
@@ -124,7 +123,7 @@
               topbar = li.closest('[data-topbar], .top-bar'),
               is_hover = topbar.data('topbar');
 
-          if (/hover/i.test(is_hover) && !Modernizr.touch) return;
+          if (self.settings.is_hover && !Modernizr.touch) return;
 
           e.stopImmediatePropagation();
 
@@ -172,7 +171,9 @@
         if (!self.breakpoint()) {
           $('.top-bar, [data-topbar]')
             .css('min-height', '')
-            .removeClass('expanded');
+            .removeClass('expanded')
+            .find('li')
+            .removeClass('hover');
         }
       }.bind(this));
 
