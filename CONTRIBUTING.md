@@ -31,7 +31,7 @@ Want to test out the Compass templates.  Don't recompile the gem every time, use
 ```bash
 mkdir demo1
 cd demo1
-echo -e 'source 'https://rubygems.org'\n
+echo -e 'source "https://rubygems.org"\n
 gem "zurb-foundation", :path => "/path/to/foundation/repo"\n
 gem "compass"\n' > Gemfile
 bundle exec compass create -r zurb-foundation --using foundation
