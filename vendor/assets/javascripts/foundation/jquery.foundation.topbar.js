@@ -130,7 +130,13 @@
         settings.$section.find('.has-dropdown>a').each(function () {
           var $link = $(this),
               $dropdown = $link.siblings('.dropdown'),
-              $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
+              url = $link.attr('href');
+
+          if (url && url.length > 1) {
+            var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li><li><a class="parent-link js-generated" href="' + url + '">' + $link.text() +'</a></li>');
+          } else {
+            var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
+          }
 
           // Copy link to subnav
           $titleLi.find('h5>a').html($link.html());
