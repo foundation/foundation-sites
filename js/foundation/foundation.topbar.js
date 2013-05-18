@@ -100,6 +100,7 @@
             topbar.parent().removeClass('fixed');
             topbar.addClass('fixed');
             $('body').css('padding-top','0');
+
             if (self.settings.scrolltop) {
               window.scrollTo(0,0);
             }
@@ -130,7 +131,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            $('.top-bar, [data-topbar]').css('min-height', dropdownHeight);
+            topbar.css('min-height', dropdownHeight);
 
             $this.siblings('ul')
               .height(topbar.data('height') + self.outerHeight(titlebar, true));
@@ -158,6 +159,7 @@
             $previousLevelUl = $movedLi.parent();
 
         topbar.data('index', topbar.data('index') - 1);
+
         if (!self.rtl) {
           section.css({left: -(100 * topbar.data('index')) + '%'});
           section.find('>.name').css({left: 100 * topbar.data('index') + '%'});
@@ -188,7 +190,13 @@
       this.settings.$section.find('.has-dropdown>a').each(function () {
         var $link = $(this),
             $dropdown = $link.siblings('.dropdown'),
-            $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
+            url = $link.attr('href');
+
+        if (url && url.length > 1) {
+          var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li><li><a class="parent-link js-generated" href="' + url + '">' + $link.text() +'</a></li>');
+        } else {
+          var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
+        }
 
         // Copy link to subnav
         if (self.settings.custom_back_text == true) {
