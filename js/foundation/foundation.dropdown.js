@@ -6,7 +6,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.1.3',
+    version : '4.2.0',
 
     settings : {
       activeClass: 'open',
@@ -139,6 +139,9 @@
       } else {
         if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left) {
           var left = position.left;
+          if (dropdown.hasClass('right')) {
+            dropdown.removeClass('right');
+          }
         } else {
           if (!dropdown.hasClass('right')) {
             dropdown.addClass('right');
