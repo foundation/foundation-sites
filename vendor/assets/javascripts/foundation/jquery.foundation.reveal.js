@@ -83,6 +83,8 @@
            * @default close-reveal-modal
            */
           dismissModalClass: 'close-reveal-modal',
+
+          closeOnEsc: true,
           /**
            * Specify a callback function that triggers 'before' the modal opens.
            *
@@ -777,7 +779,7 @@
       //
       // Did the escape key get triggered?
       //
-       if ( event.which === 27 ) { // 27 is the keycode for the Escape key
+       if ( event.which === 27  && options.closeOnEsc) { // 27 is the keycode for the Escape key
          //
          // Escape key was triggered.
          // Trigger the modal 'close' event.
