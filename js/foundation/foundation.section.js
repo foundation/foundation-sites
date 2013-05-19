@@ -242,11 +242,17 @@
           var hash_regions = regions.map(function () {
               var content = $(self.settings.content_selector, this),
                   content_slug = content.data('slug');
-              if (content_slug === hash) 
+
+              if (new RegExp(content_slug, 'i').test(hash)) 
                 return content;
             });
 
-          $(hash_regions[0]).parent().addClass('active');
+
+          var count = hash_regions.length;
+
+          for (var i = count - 1; i >= 0; i--) {
+            $(hash_regions[i]).parent().addClass('active');
+          }
         }
       });
     },
