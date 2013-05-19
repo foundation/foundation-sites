@@ -21,6 +21,9 @@ $em-base: 16px !default;
   @return $pxWidth / $em-base * 1em;
 }
 
+// Change whether or not you include browser prefixes
+$experimental: true !default;
+
 // Various global styles
 
 // $default-float: left;

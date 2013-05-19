@@ -23,11 +23,18 @@ $thumb-transition-speed: 200ms !default;
   line-height: 0;
   display: inline-block;
   border: $thumb-border-style $border-width $thumb-border-color;
-  -webkit-box-shadow: $box-shadow;
+  @if $experimental {
+    -webkit-box-shadow: $box-shadow;
+  }
   box-shadow: $box-shadow;
 
   &:hover,
-  &:focus { -webkit-box-shadow: $box-shadow-hover; box-shadow: $box-shadow-hover; }
+  &:focus {
+    @if $experimental {
+      -webkit-box-shadow: $box-shadow-hover;
+    }
+    box-shadow: $box-shadow-hover;
+  }
 }
 
 
