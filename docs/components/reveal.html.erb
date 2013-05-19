@@ -102,6 +102,82 @@ $('#myModal').foundation('reveal', 'open', {
 
         <hr>
 
+        <h3>Build with Mixins</h3>
+        <p>We've included SCSS mixins used to style reveal. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_breadcrumbs.scss">_reveal.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<%= code_example '
+@import "foundation/variables", "foundation/components/global", "foundation/components/reveal";
+', :css %>
+
+        <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+
+<%= code_example '
+<div id="myModalID" class="your-class">
+  <h2>This is a modal.</h2>
+  <p>Some text...</p>
+  <a class="your-close-class">&times;</a>
+</div>', :html %>
+
+        <h5>Background Mixin</h5>
+        <p>The first mixin you'll need to setup when using Reveal through SCSS is the background cover. This is what fades out the rest of the page to help show the modal. The container mixin looks like this:</p>
+
+<%= code_example '
+.reveal-modal-bg { @include reveal-bg; }', :css %>
+
+        <h5>Base Mixin</h5>
+        <p>This mixin is used to set the basic styles for positioning, visibility and a few other necessities. This mixin also gives you the ability to set the width of the modal. The mixin looks like this:</p>
+
+<%= code_example '
+.your-modal-class { @include reveal-modal-base($base-style, $width); }
+
+/* Control whether or not base styles are included, defaults to "true" */
+$base-style: true;
+
+/* Control the width of each modal, defaults to 80% */
+$width: $reveal-default-width;
+', :css %>
+
+        <h5>Style Mixin</h5>
+        <p>This mixin gives you access to changing the background color, borders, shadows, and offsets. You can create lots of different modals with this mixin. Here's what the mixin looks like:</p>
+
+<%= code_example '
+.your-modal-class { @include reveal-modal-style($bg, $padding, $border, $border-style, $border-width, $border-color, $box-shadow, $top-offset); }
+
+/* Set this to a color to change the background of the modal */
+$bg: $reveal-modal-bg;
+
+/* Padding around content inside the modals */
+$padding: $reveal-modal-padding;
+
+/* Control whether or not you want a border */
+$border: true;
+
+/* If you set border to "true", this controls border style */
+$border-style: $reveal-border-style;
+
+/* If you set border to "true", this controls border width */
+$border-width: $reveal-border-width;
+
+/* If you set border to "true", this controls border color */
+$border-color: $reveal-border-color;
+
+/* Control whether or not you want box-shadows */
+$box-shadow: true;
+
+/* Set how far from the top you want your modal to sit */
+$top-offset: $reveal-position-top;
+', :css %>
+
+        <h5>The Close Button Mixin</h5>
+        <p>One important aspect we musn't forget is the close button. We've given you a mixin that will help style the button, it looks like this:</p>
+
+<%= code_example '
+.your-modal-close-class { @include reveal-close($color); }
+
+/* Change the color of the close button */
+$color: $reveal-close-color;
+', :css %>
+
         <h5>Default SCSS Variables</h5>
 
     <%= code_example '
