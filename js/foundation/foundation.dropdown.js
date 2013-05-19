@@ -105,6 +105,7 @@
       if (dropdown.hasClass(this.settings.activeClass)) {
         this.close.call(this, dropdown);
       } else {
+        this.close.call(this, $('[data-dropdown-content]'))
         this.open.call(this, dropdown, target);
       }
     },
