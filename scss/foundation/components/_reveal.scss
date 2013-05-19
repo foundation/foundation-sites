@@ -81,7 +81,9 @@ $reveal-border-color:    #666 !default;
 
   // We can choose whether or not to include the default box-shadow.
   @if $box-shadow {
-    -webkit-box-shadow: $reveal-box-shadow;
+    @if $experimental {
+      -webkit-box-shadow: $reveal-box-shadow;
+    }
     box-shadow: $reveal-box-shadow;
   }
 

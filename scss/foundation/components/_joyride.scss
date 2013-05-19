@@ -165,8 +165,10 @@ $joyride-screenfill:          rgba(0,0,0,0.5) !default;
     position: absolute;
     border-radius: 3px;
     z-index: 102;
-    -moz-box-shadow: 0px 0px 30px #ffffff;
-    -webkit-box-shadow: 0px 0px 15px #ffffff;
+    @if $experimental {
+      -moz-box-shadow: 0px 0px 30px #ffffff;
+      -webkit-box-shadow: 0px 0px 15px #ffffff;
+    }
     box-shadow: 0px 0px 15px #ffffff;
   }
 

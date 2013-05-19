@@ -137,7 +137,9 @@ $button-disabled-opacity: 0.6 !default;
   @if $disabled {
     cursor: $cursor-default-value;
     opacity: $button-disabled-opacity;
-    -webkit-box-shadow: none;
+    @if $experimental {
+      -webkit-box-shadow: none;
+    }
     box-shadow: none;
     &:hover,
     &:focus { background-color: $bg; }
