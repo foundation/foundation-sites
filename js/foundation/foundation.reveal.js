@@ -134,7 +134,7 @@
           this.toggle_bg(modal);
         }
 
-        if (typeof ajax_settings === 'undefined') {
+        if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
           this.hide(open_modal, this.settings.css.close);
           this.show(modal, this.settings.css.open);
         } else {
