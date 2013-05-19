@@ -14,6 +14,7 @@
       animation: 'fadeAndPop',
       animationSpeed: 250,
       closeOnBackgroundClick: true,
+      closeOnEsc: true,
       dismissModalClass: 'close-reveal-modal',
       bgClass: 'reveal-modal-bg',
       open: function(){},
@@ -94,6 +95,14 @@
         .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
         .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
         .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
+
+      $( 'body' ).bind( 'keyup.reveal', function ( event ) {
+        var open_modal = $('.reveal-modal.open'),
+            settings = $.extend({}, self.settings, self.data_options(open_modal));
+        if ( event.which === 27  && settings.closeOnEsc) { // 27 is the keycode for the Escape key
+          open_modal.foundation('reveal', 'close');
+        }
+      });
 
       return true;
     },
