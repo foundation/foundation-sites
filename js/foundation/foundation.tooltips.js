@@ -127,6 +127,9 @@
       nubWidth = this.outerHeight(nub);
 
       objPos = function (obj, top, right, bottom, left, width) {
+  	  var newTop =  obj.height();
+		  newTop =  newTop/2;
+		  top = top - newTop;
         return obj.css({
           'top' : (top) ? top : 'auto',
           'bottom' : (bottom) ? bottom : 'auto',
@@ -136,7 +139,7 @@
         }).end();
       };
 
-      objPos(tip, (target.offset().top + this.outerHeight(target) + 10), 'auto', 'auto', target.offset().left, width);
+      objPos(tip, (target.offset().top + this.outerHeight(target) + 50), 'auto', 'auto', target.offset().left, width);
 
       if ($(window).width() < 767) {
         objPos(tip, (target.offset().top + this.outerHeight(target) + 10), 'auto', 'auto', 12.5, $(this.scope).width());
