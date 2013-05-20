@@ -190,7 +190,9 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255) !default;
 
             a.th {
               border: none;
-              -webkit-box-shadow: none;
+              @if $experimental {
+                -webkit-box-shadow: none;
+              }
                       box-shadow: none;
               display: block;
             }

@@ -211,7 +211,8 @@
           $customList = $customSelect.find("ul");
 
           liHtml = $options.map(function () {
-            return "<li>" + $(this).html() + "</li>";
+            var copyClasses = $(this).attr('class') ? $(this).attr('class') : '';
+            return "<li class='" + copyClasses + "'>" + $(this).html() + "</li>";
           }).get().join('');
 
           $customList.append(liHtml);

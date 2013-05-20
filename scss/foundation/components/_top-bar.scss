@@ -165,10 +165,11 @@ $topbar-sticky-class:                  ".sticky" !default;
             width: 16px;
             height: 0;
             // Shh, don't tell, but box-shadows create the menu icon :)
-            -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color,
-                                0 16px 0 1px $topbar-menu-icon-color,
-                                0 22px 0 1px $topbar-menu-icon-color;
-
+            @if $experimental {
+              -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color,
+                                  0 16px 0 1px $topbar-menu-icon-color,
+                                  0 22px 0 1px $topbar-menu-icon-color;
+            }
             box-shadow:         0 10px 0 1px $topbar-menu-icon-color,
                                 0 16px 0 1px $topbar-menu-icon-color,
                                 0 22px 0 1px $topbar-menu-icon-color;
@@ -188,10 +189,11 @@ $topbar-sticky-class:                  ".sticky" !default;
         a { color: $topbar-menu-link-color-toggled;
           span {
             // Shh, don't tell, but box-shadows create the menu icon :)
-            -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
-                                0 16px 0 1px $topbar-menu-icon-color-toggled,
-                                0 22px 0 1px $topbar-menu-icon-color-toggled;
-
+            @if $experimental {
+              -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
+                                  0 16px 0 1px $topbar-menu-icon-color-toggled,
+                                  0 22px 0 1px $topbar-menu-icon-color-toggled;
+            }
             box-shadow:         0 10px 0 1px $topbar-menu-icon-color-toggled,
                                 0 16px 0 1px $topbar-menu-icon-color-toggled,
                                 0 22px 0 1px $topbar-menu-icon-color-toggled;
@@ -415,7 +417,7 @@ $topbar-sticky-class:                  ".sticky" !default;
           & > .dropdown { visibility: hidden; }
         }
 
-        &:hover,
+        &.hover,
         &:active {
           & > .dropdown {
             visibility: visible;

@@ -44,10 +44,12 @@
       $(this.scope)
         .on('click.fndtn.section', '[data-section] .title, [data-section] [data-section-title]', function (e) {
           var $this = $(this),
-              section = $this.closest(self.settings.section_selector);
+              section = $this.closest(self.settings.region_selector);
 
-          self.toggle_active.call(this, e, self);
-          self.reflow();
+          if (section.children(self.settings.content_selector).length > 0) {
+            self.toggle_active.call(this, e, self);
+            self.reflow();
+          }
         });
 
       $(window)
@@ -242,11 +244,17 @@
           var hash_regions = regions.map(function () {
               var content = $(self.settings.content_selector, this),
                   content_slug = content.data('slug');
-              if (content_slug === hash) 
+
+              if (new RegExp(content_slug, 'i').test(hash)) 
                 return content;
             });
 
-          $(hash_regions[0]).parent().addClass('active');
+
+          var count = hash_regions.length;
+
+          for (var i = count - 1; i >= 0; i--) {
+            $(hash_regions[i]).parent().addClass('active');
+          }
         }
       });
     },

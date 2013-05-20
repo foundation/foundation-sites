@@ -58,10 +58,10 @@
         <hr>
 
         <h3>Build with a Mixin</h3>
-        <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_pricing-tables.scss">_pricing-tables.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+        <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_pricing-tables.scss">_pricing-tables.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/components/global", "foundation/components/pricing-tables";
+@import "foundation/variables", "foundation/components/global", "foundation/components/pricing-tables";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like with the <code>&lt;ul&gt;</code> and the list items inside it.</p>
@@ -145,7 +145,7 @@ $price-cta-bg:              #f5f5f5;
 $price-cta-align:           center;
 $price-cta-padding:         emCalc(20px) emCalc(20px) 0;', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
       </div>
     </div>

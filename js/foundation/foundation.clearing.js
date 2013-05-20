@@ -388,7 +388,7 @@
 
       if (caption) {
         container
-          .text(caption)
+          .html(caption)
           .show();
       } else {
         container
