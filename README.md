@@ -75,6 +75,7 @@ Middleman
 
 Magento
 * [Magento & Foundation](https://github.com/nandroid/MagentoFoundation) by Nandroid
+* [Waterlee Boilerplate](https://github.com/zeljkoprsa/waterlee-boilerplate) by Jake Sharp
 
 Python
 * [Pyramid Scaffold](https://github.com/ppinette/pyramid_foundation) by Parker Pinette
