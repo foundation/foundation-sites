@@ -304,6 +304,10 @@
         var data_src = iframe.attr('data-src');
         if (typeof data_src === 'string') {
           iframe[0].src = iframe.attr('data-src');
+        } else {
+          var src = iframe[0].src;
+          iframe[0].src = undefined;
+          iframe[0].src = src;
         }
         video.show();
       }
