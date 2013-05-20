@@ -19,19 +19,19 @@
           <div class="row">
             <div class="large-4 columns">
               <input name="radio1" type="radio" id="radio1" CHECKED>
-              <label for="radio1"><span></span> Radio Button 1</label>
+              <label for="radio1">Radio Button 1</label>
               <input name="radio1" type="radio" id="radio2">
-              <label for="radio2"><span></span> Radio Button 2</label>
+              <label for="radio2">Radio Button 2</label>
               <input name="radio1" type="radio" id="radio3" disabled>
-              <label for="radio3"><span></span> Radio Button 3</label>
+              <label for="radio3">Radio Button 3</label>
             </div>
             <div class="large-4 columns">
               <input type="checkbox" id="checkbox1">
-              <label for="checkbox1"><span></span> Label for Checkbox</label>
+              <label for="checkbox1">Label for Checkbox</label>
               <input type="checkbox" id="checkbox2" CHECKED>
-              <label for="checkbox2"><span></span> Label for Checkbox</label>
+              <label for="checkbox2">Label for Checkbox</label>
               <input type="checkbox" CHECKED id="checkbox3">
-              <label for="checkbox3"><span></span> Label for Checkbox</label>
+              <label for="checkbox3">Label for Checkbox</label>
             </div>
             <div class="large-4 columns">
               <label for="customDropdown1">Medium Example</label>
@@ -54,19 +54,19 @@
   <div class="row">
     <div class="large-4 columns">
       <input name="radio1" type="radio" id="radio1" CHECKED>
-      <label for="radio1"><span></span> Radio Button 1</label>
+      <label for="radio1">Radio Button 1</label>
       <input name="radio1" type="radio" id="radio2">
-      <label for="radio2"><span></span> Radio Button 2</label>
+      <label for="radio2">Radio Button 2</label>
       <input name="radio1" type="radio" id="radio3" disabled>
-      <label for="radio3"><span></span> Radio Button 3</label>
+      <label for="radio3">Radio Button 3</label>
     </div>
     <div class="large-4 columns">
       <input type="checkbox" id="checkbox1">
-      <label for="checkbox1"><span></span> Label for Checkbox</label>
+      <label for="checkbox1">Label for Checkbox</label>
       <input type="checkbox" id="checkbox2" CHECKED>
-      <label for="checkbox2"><span></span> Label for Checkbox</label>
+      <label for="checkbox2">Label for Checkbox</label>
       <input type="checkbox" CHECKED id="checkbox3">
-      <label for="checkbox3"><span></span> Label for Checkbox</label>
+      <label for="checkbox3">Label for Checkbox</label>
     </div>
     <div class="large-4 columns">
       <label for="customDropdown1">Medium Example</label>
@@ -88,13 +88,13 @@
 <%= code_example '
 <form class="custom">
   <input name="radio1" type="radio" id="radio1">
-  <label for="radio1"><span></span> Radio Button 1</label>
+  <label for="radio1">Radio Button 1</label>
 </form>', :html %>
 
         <form class="custom">
           <form class="custom">
             <input name="radio1" type="radio" id="radio1">
-            <label for="radio1"><span></span> Radio Button 1</label>
+            <label for="radio1">Radio Button 1</label>
           </form>
         </form>
 
@@ -106,12 +106,12 @@
 <%= code_example '
 <form class="custom">
   <input type="checkbox" id="checkbox1">
-  <label for="checkbox1"><span></span> Label for Checkbox</label>
+  <label for="checkbox1">Label for Checkbox</label>
 </form>', :html %>
 
         <form class="custom">
           <input type="checkbox" id="checkbox1">
-          <label for="checkbox1"><span></span> Label for Checkbox</label>
+          <label for="checkbox1">Label for Checkbox</label>
         </form>
 
         <p>By default, we use <code>×</code> (unicode: U+00D7) as the check mark, and it will be displayed using the same font type of your chosen html body font. The latest version of Foundation 4 allows you to change this. For example, if you are using <a href="http://zurb.com/playground/foundation-icons">Foundation Icon Fonts</a>, you can use it's <code>remove</code> icon:</p>

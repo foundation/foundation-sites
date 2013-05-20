@@ -19,6 +19,8 @@ $custom-form-radio-size:                8px !default;
 $custom-form-checkbox-radius:           $global-radius !default;
 $custom-form-checkbox-glyph-font:       $body-font-family !default;
 $custom-form-checkbox-glyph-symbol:     '\000D7' !default;
+$custom-form-checkbox-x-offset:         8px;
+$custom-form-checkbox-y-offset:         0px;
 
 // We use these to style the custom select form element.
 $custom-select-bg:                      #fff !default;
@@ -70,49 +72,59 @@ $custom-dropdown-width-large:           434px !default;
         width: $custom-form-input-size;
         height: $custom-form-input-size;
 
-        & + label > span {
-          speak: none;
-          display:inline-block;
-          box-sizing: border-box;
-          width: $custom-form-input-size;
-          height: $custom-form-input-size;
-          line-height: $custom-form-input-size - ($custom-form-border-size * 2);
-          background: $custom-form-bg;
-          border: $custom-form-border-size solid $custom-form-border-color;
-          vertical-align: middle;
-          text-align: center;
-          cursor: pointer;
-          margin-#{$opposite-direction}: $custom-form-input-gap;
+        & + label {
+          position: relative;
+          line-height: $custom-form-input-size;
+          padding-#{$default-float}: $custom-form-input-size + $custom-form-input-gap;
+          &:before {
+            speak: none;
+            content: '';
+            display:inline-block;
+            box-sizing: border-box;
+            width: $custom-form-input-size;
+            height: $custom-form-input-size;
+            background: $custom-form-bg;
+            border: $custom-form-border-size solid $custom-form-border-color;
+            cursor: pointer;
+            position: absolute;
+            #{$default-float}: 0;
+          }
         }
       }
 
-      input[type="checkbox"] + label > span {
+      input[type="checkbox"] + label:before {
         @include radius($custom-form-checkbox-radius);
       }
 
-      input[type="radio"] + label > span {
+      input[type="radio"] + label:before {
         @include radius($global-rounded);
       }
 
       input[type="checkbox"]:focus, input[type="radio"]:focus {
-        & + label > span {
+        & + label:before {
           background: $custom-form-bg-focus;
           border-color: $custom-form-border-focus-color;
         }
       }
 
       input[type="checkbox"]:disabled, input[type="radio"]:disabled {
-        & + label > span {
-          background: $custom-form-bg-disabled;
-          border-color: $custom-form-border-disabled-color;
+        cursor: default;
+        & + label {
+          cursor: default;
+          &:before {
+            background: $custom-form-bg-disabled;
+            border-color: $custom-form-border-disabled-color;
+          }
         }
       }
 
-      input[type="checkbox"]:checked + label > span:after {
-        content: $custom-form-checkbox-glyph-symbol;
+      input[type="checkbox"]:checked + label:after {
         font-family: $custom-form-checkbox-glyph-font;
+        content: $custom-form-checkbox-glyph-symbol;
         font-size: $custom-form-check-size;
-        margin: 0 (($custom-form-input-size - $custom-form-check-size) / 2) - $custom-form-border-size;
+        position: absolute;
+        top: $custom-form-checkbox-y-offset;
+        #{$default-float}: (($custom-form-input-size - $custom-form-check-size) / 2) + $custom-form-checkbox-x-offset;
       }
 
       input[type="radio"]:checked + label > span:before {
@@ -122,7 +134,10 @@ $custom-dropdown-width-large:           434px !default;
         height: $custom-form-radio-size;
         @include radius($global-rounded);
         background: $custom-form-check-color;
-        margin: (($custom-form-input-size - $custom-form-radio-size) / 2) - $custom-form-border-size;
+        position: absolute;
+        top: 0;
+        #{$default-float}: 0;
+        margin: (($custom-form-input-size - $custom-form-radio-size) / 2);
       }
     }
   }
