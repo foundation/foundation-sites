@@ -417,8 +417,7 @@ $topbar-sticky-class:                  ".sticky" !default;
           & > .dropdown { visibility: hidden; }
         }
 
-        &.hover,
-        &:active {
+        &.hover {
           & > .dropdown {
             visibility: visible;
           }

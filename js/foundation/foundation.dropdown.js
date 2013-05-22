@@ -6,7 +6,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.2.0',
+    version : '4.1.7',
 
     settings : {
       activeClass: 'open',
@@ -120,8 +120,9 @@
     },
 
     css : function (dropdown, target) {
+      var offset_parent = dropdown.offsetParent();
       // temporary workaround until 4.2
-      if (/body/i.test(dropdown.offsetParent()[0].nodeName)) {
+      if (offset_parent.length > 0 && /body/i.test(dropdown.offsetParent()[0].nodeName)) {
         var position = target.offset();
         position.top -= dropdown.offsetParent().offset().top;
         position.left -= dropdown.offsetParent().offset().left;
