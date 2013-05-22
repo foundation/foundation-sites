@@ -199,7 +199,7 @@
         self.position_titles($this);
 
         if ( (self.is_horizontal_nav($this) && !self.small($this))
-          || self.is_vertical_tabs($this)) {
+          || self.is_vertical_tabs($this) && !self.small($this)) {
           self.position_content($this);
         } else {
           self.position_content($this, false);
@@ -320,6 +320,7 @@
 
             title_width = self.outerWidth(title);
             content_width = self.outerWidth(section) - title_width;
+
             if (content_width < content_min_width) {
               content_min_width = content_width;
             }
@@ -345,9 +346,6 @@
             content.css('maxWidth', content_min_width - 2);
           });
 
-          // Adjust the outer section container width to match
-          // the width of the title and content
-          section.css('maxWidth', title_width + content_min_width);
         } else {
           regions.each(function () {
             var region = $(this),
@@ -393,6 +391,7 @@
 
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
+
       if (this.is_horizontal_tabs(el)) {
         return false;
       }
