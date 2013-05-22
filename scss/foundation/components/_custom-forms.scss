@@ -122,6 +122,7 @@ $custom-dropdown-width-large:           434px !default;
         font-family: $custom-form-checkbox-glyph-font;
         content: $custom-form-checkbox-glyph-symbol;
         font-size: $custom-form-check-size;
+        color: $custom-form-check-color;
         position: absolute;
         top: $custom-form-checkbox-y-offset;
         #{$default-float}: (($custom-form-input-size - $custom-form-check-size) / 2) + $custom-form-checkbox-x-offset;
