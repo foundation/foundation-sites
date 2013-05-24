@@ -13,9 +13,11 @@
     settings : {
       load_attr : 'foundation-load',
       named_rules : {
-        small : 'max-width: 767px',
-        medium : '',
-        large : ''
+        small : 'min-width: 768px',
+        medium : 'min-width: 1280px',
+        large : 'min-width: 1440px',
+        landscape : 'orientation: landscape',
+        portrait : 'orientation: portrait'
       },
       directives : {
         replace : function (el, path, revert) {
