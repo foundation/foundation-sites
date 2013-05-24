@@ -6,10 +6,12 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.1.0',
+    version: '4.1.7',
 
     settings: {
       timer_speed: 10000,
+      pause_on_hover: true,
+      resume_on_mouseout: false,
       animation_speed: 500,
       bullets: true,
       stack_on_small: true,
@@ -161,6 +163,16 @@
         });
 
       $container
+        .on('mouseenter.fndtn.orbit', function(e) {
+          if (self.settings.pause_on_hover) {
+            self._stop_timer($slides_container);
+          }
+        })
+        .on('mouseleave.fndtn.orbit', function(e) {
+          if (self.settings.resume_on_mouseout) {
+            self._start_timer($slides_container);
+          }
+        })
         .on('orbit:after-slide-change.fndtn.orbit', function(e, orbit) {
           var $slide_number = $container.find('.' + self.settings.slide_number_class);
 
