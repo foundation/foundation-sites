@@ -11,7 +11,7 @@
     cache : {},
 
     settings : {
-      load_attr : 'foundation-load',
+      load_attr : 'interchange',
       named_rules : {
         small : 'min-width: 768px',
         medium : 'min-width: 1280px',
