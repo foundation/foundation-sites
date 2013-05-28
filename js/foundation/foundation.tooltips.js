@@ -86,7 +86,7 @@
           tip = null;
 
       if (selector) {
-        tip = $('span[data-selector=' + selector + ']' + this.settings.tooltipClass);
+        tip = $('span[data-selector="' + selector + '"]' + this.settings.tooltipClass);
       }
 
       return (typeof tip === 'object') ? tip : false;
