@@ -105,8 +105,8 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 // We use this to style the list elements or content inside the dropdown.
 @mixin dropdown-style {
   font-size: $f-dropdown-font-size;
-  cursor: pointer;
-  
+  cursor: $cursor-pointer-value;
+
   line-height: $f-dropdown-line-height;
   margin: 0;
 
@@ -132,7 +132,7 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 
   /* Foundation Dropdowns */
   .f-dropdown {
-    @include dropdown-container(content);
+    @include dropdown-container(list);
     // max-width: none;
 
     li { @include dropdown-style; }

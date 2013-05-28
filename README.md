@@ -38,6 +38,7 @@ WordPress (Versions marked 3/20/13)
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris using Foundation version 3
 * [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press using Foundation version 3
 * [f415](https://github.com/javorszky/f415) by Gabor Javorszky
+* [Narga Core](https://github.com/Narga/narga-core) by Nguyễn Đình Quân
 
 Joomla
 
@@ -75,6 +76,7 @@ Middleman
 
 Magento
 * [Magento & Foundation](https://github.com/nandroid/MagentoFoundation) by Nandroid
+* [Waterlee Boilerplate](https://github.com/zeljkoprsa/waterlee-boilerplate) by Jake Sharp
 
 Python
 * [Pyramid Scaffold](https://github.com/ppinette/pyramid_foundation) by Parker Pinette

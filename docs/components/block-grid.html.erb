@@ -54,10 +54,10 @@
         <hr>
 
         <h3>Using The Mixin</h3>
-        <p>We've included SCSS mixins used to style block-grids. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_block-grid.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+        <p>We've included SCSS mixins used to style block-grids. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_block-grid.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/components/global", "foundation/components/block-grid";
+@import "foundation/variables", "foundation/components/global", "foundation/components/block-grid";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure. Since we don't have any media queries baked into the mixin itself, you can apply the styles at whatever breakpoint you want! Just change the configuration within each.</p>
@@ -111,7 +111,7 @@ $base-style: true
 <%= code_example '
 /* We use this to control the maximum blocks and spacing */
 $block-grid-elements: 12;
-$block-grid-default-spacing: 10px;
+$block-grid-default-spacing: emCalc(20px);
 
 /* Enables media queries for block-grid classes. Set to false if writing semantic HTML. */
 $block-grid-media-queries: true

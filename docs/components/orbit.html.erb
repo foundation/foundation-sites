@@ -9,6 +9,8 @@
         <h2><%= @page_title %></h2>
         <h4 class="subheader">Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.</h4>
 
+        <div class="slideshow-wrapper">
+        <span class="preloader"></span>
         <ul id="featured1" data-orbit data-options="timer_speed:5000;">
           <li>
             <img src="../img/demos/demo1.jpg" />
@@ -29,6 +31,7 @@
             </div>
           </li>
         </ul>
+        </div>
 
         <hr>
 
@@ -183,13 +186,40 @@
 
         <hr>
 
+        <h3>Graceful Loading &amp; Preloader</h3>
+        <p>We've cleaned up how Orbit initializes by adding a wrapper feature that stops the ugly flash of unstyled content. Here's the markup needed:</p>
+
+<%= code_example '
+<div class="slideshow-wrapper">
+  <ul id="featured2" data-orbit>
+    <!-- Orbit slides -->
+  </ul>
+</div>
+', :html %>
+
+        <p>To add the preloader, simply include a <code>div class="preloader"</code> right inside the wrapper, like so:</p>
+
+<%= code_example '
+<div class="slideshow-wrapper">
+  <div class="preloader"></div>
+  <ul id="featured2" data-orbit>
+    <!-- Orbit slides -->
+  </ul>
+</div>
+', :html %>
+
+        <div class="slideshow-wrapper" style="height: 200px; border: solid 1px #ddd">
+          <div class="preloader"></div>
+        </div>
+
+        <hr>
+
         <h3>Available SCSS Variables</h3>
         <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
 
 <%= code_example '
 /* We use these to control the caption styles */
 $orbit-container-bg: #f5f5f5;
-$orbit-caption-bg-old-browser: #000;
 $orbit-caption-bg-old: rgb(0,0,0);
 $orbit-caption-bg: rgba(0,0,0,0.6);
 $orbit-caption-font-color: #fff;
@@ -207,12 +237,13 @@ $orbit-bullet-nav-color: #999;
 $orbit-bullet-nav-color-active: #222;
 
 /* We use thes to controls the style of slide numbers */
-$orbit-slide-number-bg: rgb(0,0,0);
+$orbit-slide-number-bg: rgba(0,0,0,0);
 $orbit-slide-number-font-color: #fff;
 $orbit-slide-number-padding: emCalc(5px);
 
-// Margin for when Orbit is stacked on small screens
-$stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function right now
+/* Graceful Loading Wrapper and preloader */
+$wrapper-class: "slideshow-wrapper";
+$preloader-class: "preloader";
 ', :css %>
 
         <hr>

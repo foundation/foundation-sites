@@ -383,9 +383,9 @@ if (typeof jQuery === "undefined" &&
     },
 
     zj : function () {
-      try {
+      if (typeof Zepto !== 'undefined') {
         return Zepto;
-      } catch (e) {
+      } else {
         return jQuery;
       }
     }()

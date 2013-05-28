@@ -29,6 +29,9 @@ $section-vertical-nav-min-width:    emCalc(200px) !default;
 $section-vertical-tabs-title-width: emCalc(200px) !default;
 $section-bottom-margin:             emCalc(20px) !default;
 
+$title-selector: ".title" !default;
+$content-selector: ".content" !default;
+
 
 //
 // Section Mixins
@@ -83,7 +86,7 @@ $section-bottom-margin:             emCalc(20px) !default;
   // Default Styles
   > #{$title-selector} {
     background-color: $title-bg;
-    cursor: pointer;
+    cursor: $cursor-pointer-value;
     margin-bottom: 0;
 
     a {
@@ -278,7 +281,7 @@ $section-bottom-margin:             emCalc(20px) !default;
     @include section-container(false, tabs);
 
     &>section,
-    &>.section { @include section(tabs, $title-bg-active:#fff); }
+    &>.section { @include section(tabs, $title-bg-active:$section-title-bg-active-tabs); }
   }
 
   @media #{$small} {
@@ -287,7 +290,7 @@ $section-bottom-margin:             emCalc(20px) !default;
       @include section-container(false, tabs);
 
       &>section,
-      &>.section { @include section(tabs, $title-bg-active:#fff); }
+      &>.section { @include section(tabs, $title-bg-active:$section-title-bg-active-tabs); }
     }
     .section-container.accordion .section {
       padding-top: 0 !important;
@@ -312,6 +315,38 @@ $section-bottom-margin:             emCalc(20px) !default;
 
       &>section,
       &>.section { @include section(horizontal-nav); }
+    }
+  }
+
+  // Change all variations to expanded accordions when no JS is detected.
+  .no-js .section-container {
+    &.auto,
+    &.accordion,
+    &.tabs,
+    &.vertical-tabs,
+    &.vertical-nav,
+    &.horizontal-nav {
+      @include section-container(accordion);
+
+      &>section,
+      &>.section { @include section(accordion);
+        #{$title-selector} {
+          position: static;
+          width: 100%;
+          border-left: 0;
+          border-right: 0;
+        }
+
+        #{$content-selector} {
+          position: static;
+          display: block;
+          width: 100%;
+          border-left: 0;
+          border-right: 0;
+          border-bottom: 0;
+        }
+      }
+
     }
   }
 

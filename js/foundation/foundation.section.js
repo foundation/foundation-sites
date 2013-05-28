@@ -44,10 +44,12 @@
       $(this.scope)
         .on('click.fndtn.section', '[data-section] .title, [data-section] [data-section-title]', function (e) {
           var $this = $(this),
-              section = $this.closest(self.settings.section_selector);
+              section = $this.closest(self.settings.region_selector);
 
-          self.toggle_active.call(this, e, self);
-          self.reflow();
+          if (section.children(self.settings.content_selector).length > 0) {
+            self.toggle_active.call(this, e, self);
+            self.reflow();
+          }
         });
 
       $(window)
@@ -197,7 +199,7 @@
         self.position_titles($this);
 
         if ( (self.is_horizontal_nav($this) && !self.small($this))
-          || self.is_vertical_tabs($this)) {
+          || self.is_vertical_tabs($this) && !self.small($this)) {
           self.position_content($this);
         } else {
           self.position_content($this, false);
@@ -242,11 +244,17 @@
           var hash_regions = regions.map(function () {
               var content = $(self.settings.content_selector, this),
                   content_slug = content.data('slug');
-              if (content_slug === hash) 
+
+              if (new RegExp(content_slug, 'i').test(hash)) 
                 return content;
             });
 
-          $(hash_regions[0]).parent().addClass('active');
+
+          var count = hash_regions.length;
+
+          for (var i = count - 1; i >= 0; i--) {
+            $(hash_regions[i]).parent().addClass('active');
+          }
         }
       });
     },
@@ -312,6 +320,7 @@
 
             title_width = self.outerWidth(title);
             content_width = self.outerWidth(section) - title_width;
+
             if (content_width < content_min_width) {
               content_min_width = content_width;
             }
@@ -337,9 +346,6 @@
             content.css('maxWidth', content_min_width - 2);
           });
 
-          // Adjust the outer section container width to match
-          // the width of the title and content
-          section.css('maxWidth', title_width + content_min_width);
         } else {
           regions.each(function () {
             var region = $(this),
@@ -385,6 +391,7 @@
 
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
+
       if (this.is_horizontal_tabs(el)) {
         return false;
       }

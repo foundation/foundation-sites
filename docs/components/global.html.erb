@@ -32,7 +32,10 @@ body {
   font-style: $body-font-style;
   line-height: 1;
   position: relative;
+  cursor: $cursor-default-value;
 }
+
+a:hover { cursor: $cursor-pointer-value; }
 
 /* Override outline from normalize, we don't like it */
 a:focus { outline: none; }

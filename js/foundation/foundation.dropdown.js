@@ -6,17 +6,18 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.1.3',
+    version : '4.1.7',
 
     settings : {
       activeClass: 'open',
+      is_hover: false,
       opened: function(){},
       closed: function(){}
     },
 
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
-      Foundation.inherit(this, 'throttle scrollLeft');
+      Foundation.inherit(this, 'throttle scrollLeft data_options');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
@@ -39,8 +40,19 @@
 
       $(this.scope)
         .on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
-            e.preventDefault();
-            self.toggle($(this));
+          var settings = $.extend({}, self.settings, self.data_options($(this)));
+          e.preventDefault();
+
+          if (!settings.is_hover) self.toggle($(this));
+        })
+        .on('mouseenter', '[data-dropdown]', function (e) {
+          var settings = $.extend({}, self.settings, self.data_options($(this)));
+          if (settings.is_hover) self.toggle($(this));
+        })
+        .on('mouseleave', '[data-dropdown-content]', function (e) {
+          var target = $('[data-dropdown="' + $(this).attr('id') + '"]'),
+              settings = $.extend({}, self.settings, self.data_options(target));
+          if (settings.is_hover) self.close.call(self, $(this));
         })
         .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
         .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
@@ -93,6 +105,7 @@
       if (dropdown.hasClass(this.settings.activeClass)) {
         this.close.call(this, dropdown);
       } else {
+        this.close.call(this, $('[data-dropdown-content]'))
         this.open.call(this, dropdown, target);
       }
     },
@@ -107,8 +120,9 @@
     },
 
     css : function (dropdown, target) {
+      var offset_parent = dropdown.offsetParent();
       // temporary workaround until 4.2
-      if (/body/i.test(dropdown.offsetParent()[0].nodeName)) {
+      if (offset_parent.length > 0 && /body/i.test(dropdown.offsetParent()[0].nodeName)) {
         var position = target.offset();
         position.top -= dropdown.offsetParent().offset().top;
         position.left -= dropdown.offsetParent().offset().left;
@@ -127,6 +141,9 @@
       } else {
         if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left) {
           var left = position.left;
+          if (dropdown.hasClass('right')) {
+            dropdown.removeClass('right');
+          }
         } else {
           if (!dropdown.hasClass('right')) {
             dropdown.addClass('right');

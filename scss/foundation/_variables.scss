@@ -21,6 +21,9 @@ $em-base: 16px !default;
   @return $pxWidth / $em-base * 1em;
 }
 
+// Change whether or not you include browser prefixes
+$experimental: true !default;
+
 // Various global styles
 
 // $default-float: left;
@@ -76,6 +79,7 @@ $em-base: 16px !default;
 // $include-html-clearing-classes: $include-html-classes;
 // $include-html-alert-classes: $include-html-classes;
 // $include-html-nav-classes: $include-html-classes;
+// $include-html-top-bar-classes: $include-html-classes;
 // $include-html-label-classes: $include-html-classes;
 // $include-html-panel-classes: $include-html-classes;
 // $include-html-pricing-classes: $include-html-classes;
@@ -96,6 +100,15 @@ $em-base: 16px !default;
 // $landscape: "only screen and (orientation: landscape)";
 // $portrait: "only screen and (orientation: portrait)";
 
+//// Cursors
+
+//Custom use example -> $cursor-default-value: url(http://cursors-site.net/path/to/custom/cursor/default.cur),progress;
+
+// $cursor-crosshair-value: "crosshair";
+// $cursor-default-value: "default";
+// $cursor-pointer-value: "pointer";
+// $cursor-help-value: "help";
+
 //
 // Grid Variables
 //
@@ -111,7 +124,7 @@ $em-base: 16px !default;
 // Maximum number of block grid elements per row
 
 // $block-grid-elements: 12;
-// $block-grid-default-spacing: 10px;
+// $block-grid-default-spacing: emCalc(20px);
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 
@@ -744,7 +757,6 @@ $em-base: 16px !default;
 // Caption styles
 
 // $orbit-container-bg: #f5f5f5;
-// $orbit-caption-bg-old-browser: #000;
 // $orbit-caption-bg-old: rgb(0,0,0);
 // $orbit-caption-bg: rgba(0,0,0,0.6);
 // $orbit-caption-font-color: #fff;
@@ -766,7 +778,7 @@ $em-base: 16px !default;
 
 // Slide numbers
 
-// $orbit-slide-number-bg: rgb(0,0,0);
+// $orbit-slide-number-bg: rgba(0,0,0,0);
 // $orbit-slide-number-font-color: #fff;
 // $orbit-slide-number-padding: emCalc(5px);
 
@@ -799,7 +811,7 @@ $em-base: 16px !default;
 
 // Disabled anchor links
 
-// $pagination-link-unavailable-cursor: default;
+// $pagination-link-unavailable-cursor: $cursor-default-value;
 // $pagination-link-unavailable-font-color: #999;
 // $pagination-link-unavailable-bg-active: transparent;
 
@@ -808,7 +820,7 @@ $em-base: 16px !default;
 // $pagination-link-current-background: $primary-color;
 // $pagination-link-current-font-color: #fff;
 // $pagination-link-current-font-weight: bold;
-// $pagination-link-current-cursor: default;
+// $pagination-link-current-cursor: $cursor-default-value;
 // $pagination-link-current-active-bg: $primary-color;
 
 //
@@ -1030,7 +1042,7 @@ $em-base: 16px !default;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-color: #fff;
 // $sub-nav-active-padding: emCalc(3px) emCalc(9px);
-// $sub-nav-active-cursor: default;
+// $sub-nav-active-cursor: $cursor-default-value;
 
 //
 // Switch Variables

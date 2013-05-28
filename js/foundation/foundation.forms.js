@@ -159,7 +159,7 @@
           if (e.which === 13) {
             dropdown.find('li.selected').trigger('click');
           }
-          
+
           if (e.which === 27) {
             dropdown.removeClass('open');
           }
@@ -231,10 +231,6 @@
           type = $this.attr('type'),
           $span = $this.next('span.custom.' + type);
 
-      if (!$this.parent().hasClass('switch')) {
-        $this.addClass('hidden-field');
-      }
-
       if ($span.length === 0) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
       }
@@ -272,7 +268,8 @@
           $customList = $customSelect.find("ul");
 
           liHtml = $options.map(function () {
-            return "<li>" + $(this).html() + "</li>";
+            var copyClasses = $(this).attr('class') ? $(this).attr('class') : '';
+            return "<li class='" + copyClasses + "'>" + $(this).html() + "</li>";
           }).get().join('');
 
           $customList.append(liHtml);
@@ -448,7 +445,7 @@
           var _self = this;
 
           // Set all hidden parent elements, including this element.
-          _self.hidden = $child.parents().andSelf().filter(":hidden");
+          _self.hidden = $child.parents().addBack().filter(":hidden");
 
           // Loop through all hidden elements.
           _self.hidden.each(function () {

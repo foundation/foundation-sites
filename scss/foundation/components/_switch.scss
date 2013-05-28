@@ -80,11 +80,11 @@ $switch-label-outline:            1px dotted #888 !default;
     width: 100%;
     height: 100%;
     -moz-appearance: none;
-    
+
     // Hover and focus styles for the paddle
     &:hover,
     &:focus {
-      cursor: pointer;
+      cursor: $cursor-pointer-value;
     }
   }
 
@@ -127,7 +127,7 @@ $switch-label-outline:            1px dotted #888 !default;
 
   // Bugfix for older Webkit, including mobile Webkit. Adapted from:
   // http://css-tricks.com/webkit-sibling-bug/
-  -webkit-animation: webkitSiblingBugfix infinite 1s;
+  @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
 
 }
 
@@ -167,15 +167,19 @@ $switch-label-outline:            1px dotted #888 !default;
     & > span {
       border-color: darken($paddle-bg, 30%);
       background: $paddle-bg;
-      background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
-      background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+      @if $experimental {
+        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+      }
       background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
 
       // Building the alternating colored sides of the switch
-      -webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07),
-                          1000px 0 0 1000px $positive-color,
-                          -2px 0 10px 0 rgba(0,0,0,0.07),
-                          -1000px 0 0 1000px $negative-color;
+      @if $experimental {
+        -webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07),
+                            1000px 0 0 1000px $positive-color,
+                            -2px 0 10px 0 rgba(0,0,0,0.07),
+                            -1000px 0 0 1000px $negative-color;
+      }
       box-shadow:         2px 0 10px 0 rgba(0,0,0,0.07),
                           1000px 0 0 980px $positive-color,
                           -2px 0 10px 0 rgba(0,0,0,0.07),
@@ -186,8 +190,10 @@ $switch-label-outline:            1px dotted #888 !default;
     &:focus {
       & > span {
         background: $paddle-bg;
-        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
-        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        @if $experimental {
+          background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+          background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        }
         background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
       }
     }
@@ -245,7 +251,7 @@ $switch-label-outline:            1px dotted #888 !default;
 
     }
 
-    @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
+    @if $experimental { @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } } }
 
   }
 }
