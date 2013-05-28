@@ -7,7 +7,7 @@ $include-html-form-classes: $include-html-classes !default;
 $form-spacing:                       emCalc(16px) !default;
 
 // We use these to style the labels in different ways
-$form-label-pointer:                 pointer !default;
+$form-label-pointer:                 $cursor-pointer-value !default;
 $form-label-font-size:               emCalc(14px) !default;
 $form-label-font-weight:             500 !default;
 $form-label-font-color:              lighten(#000, 30%) !default;
