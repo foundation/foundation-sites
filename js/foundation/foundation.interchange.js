@@ -13,11 +13,12 @@
     settings : {
       load_attr : 'interchange',
       named_rules : {
-        small : 'min-width: 768px',
-        medium : 'min-width: 1280px',
-        large : 'min-width: 1440px',
-        landscape : 'orientation: landscape',
-        portrait : 'orientation: portrait'
+        'default' : 'only screen and (min-width: 1px)',
+        small : 'only screen and (min-width: 768px)',
+        medium : 'only screen and (min-width: 1280px)',
+        large : 'only screen and (min-width: 1440px)',
+        landscape : 'only screen and (orientation: landscape)',
+        portrait : 'only screen and (orientation: portrait)'
       },
       directives : {
         replace : function (el, path, revert) {
@@ -84,9 +85,9 @@
         for (var i = count - 1; i >= 0; i--) {
           var rule = scenarios[i][2];
           if (this.settings.named_rules.hasOwnProperty(rule)) {
-            var mq = matchMedia('(' + this.settings.named_rules[rule] + ')');
+            var mq = matchMedia(this.settings.named_rules[rule]);
           } else {
-            var mq = matchMedia('(' + scenarios[i][2] + ')');
+            var mq = matchMedia(scenarios[i][2]);
           }
           if (mq.matches) {
             return {el: el, scenario: scenarios[i]};
