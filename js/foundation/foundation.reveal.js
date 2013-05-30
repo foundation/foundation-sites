@@ -323,6 +323,8 @@
 
     off : function () {
       $(this.scope).off('.fndtn.reveal');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

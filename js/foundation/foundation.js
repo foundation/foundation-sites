@@ -166,7 +166,7 @@ if (typeof jQuery === "undefined" &&
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.1.5',
+    version : '4.2.0',
 
     cache : {},
 
@@ -186,7 +186,7 @@ if (typeof jQuery === "undefined" &&
       // set foundation global scope
       this.scope = scope || this.scope;
 
-      if (libraries && typeof libraries === 'string') {
+      if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
         if (/off/i.test(libraries)) return this.off();
 
         library_arr = libraries.split(' ');
@@ -197,6 +197,8 @@ if (typeof jQuery === "undefined" &&
           }
         }
       } else {
+        if (/reflow/i.test(libraries)) args[1] = 'reflow';
+
         for (var lib in this.libs) {
           responses.push(this.init_lib(lib, args));
         }

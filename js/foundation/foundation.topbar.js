@@ -289,6 +289,8 @@
     off : function () {
       $(this.scope).off('.fndtn.topbar');
       $(window).off('.fndtn.topbar');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

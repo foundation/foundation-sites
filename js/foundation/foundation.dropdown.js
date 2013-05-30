@@ -171,6 +171,8 @@
       $(window).off('.fndtn.dropdown');
       $('[data-dropdown-content]').off('.fndtn.dropdown');
       this.settings.init = false;
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

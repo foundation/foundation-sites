@@ -12,6 +12,7 @@
 
     settings : {
       load_attr : 'interchange',
+
       named_queries : {
         'default' : 'only screen and (min-width: 1px)',
         small : 'only screen and (min-width: 768px)',
@@ -20,17 +21,19 @@
         landscape : 'only screen and (orientation: landscape)',
         portrait : 'only screen and (orientation: portrait)'
       },
+
       directives : {
-        replace : function (el, path, revert) {
+        replace : function (el, path) {
           if (/IMG/.test(el[0].nodeName)) {
             var path_parts = path.split('/'),
-                path_file = path_parts[path_parts.length - 1];
+                path_file = path_parts[path_parts.length - 1],
+                orig_path = el[0].src;
 
             if (new RegExp(path_file, 'i').test(el[0].src)) return;
 
             el[0].src = path;
 
-            return el.trigger('replace', el);
+            return el.trigger('replace', [el[0].src, orig_path]);
           }
         }
       }
@@ -43,6 +46,7 @@
         $.extend(true, this.settings, method);
       }
 
+      this.events();
       this.images();
 
       if (typeof method != 'string') {
@@ -57,7 +61,7 @@
 
       $(window).on('resize.fndtn.interchange', self.throttle(function () {
         self.resize.call(self);
-      }, 50)).trigger('resize');
+      }, 50));
     },
 
     resize : function () {
@@ -68,11 +72,12 @@
           var passed = this.results(uuid, cache[uuid]);
 
           if (passed) {
-            return this.settings.directives[passed
+            this.settings.directives[passed
               .scenario[1]](passed.el, passed.scenario[0]);
           }
         }
       }
+
     },
 
     results : function (uuid, scenarios) {
@@ -98,8 +103,8 @@
       return false;
     },
 
-    images : function () {
-      if (typeof this.cached_images === 'undefined') {
+    images : function (force_update) {
+      if (typeof this.cached_images === 'undefined' || force_update) {
         return this.update_images();
       }
 
@@ -130,6 +135,9 @@
 
       return 'deferred';
     },
+
+    // based on jquery.imageready.js
+    // @weblinc, @jsantell, (c) 2012
 
     loaded : function (image, last, callback) {
       function loaded () {
@@ -167,7 +175,7 @@
         this._object($(this.images()[i]));
       }
 
-      return this.events();
+      return $(window).trigger('resize');
     },
 
     parse_params : function (path, directive, mq) {
@@ -246,6 +254,10 @@
       }
 
       return output;
+    },
+
+    reflow : function () {
+      this.images(true);
     }
 
   };

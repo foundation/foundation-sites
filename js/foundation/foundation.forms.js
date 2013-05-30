@@ -4,7 +4,7 @@
   Foundation.libs.forms = {
     name: 'forms',
 
-    version: '4.1.6',
+    version: '4.2.0',
 
     cache: {},
 
@@ -499,7 +499,9 @@
 
     off: function () {
       $(this.scope).off('.fndtn.forms');
-    }
+    },
+
+    reflow : function () {}
   };
 
   var getFirstPrevSibling = function($el, selector) {

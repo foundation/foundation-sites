@@ -6,7 +6,7 @@
   Foundation.libs.joyride = {
     name: 'joyride',
 
-    version : '4.1.2',
+    version : '4.2.0',
 
     defaults : {
       expose               : false,      // turn on or off the expose feature
@@ -837,6 +837,8 @@
       $('.joyride-tip-guide, .joyride-modal-bg').remove();
       clearTimeout(this.settings.automate);
       this.settings = {};
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

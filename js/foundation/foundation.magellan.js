@@ -6,7 +6,7 @@
   Foundation.libs.magellan = {
     name : 'magellan',
 
-    version : '4.0.0',
+    version : '4.2.0',
 
     settings : {
       activeClass: 'active'
@@ -125,6 +125,8 @@
 
     off : function () {
       $(this.scope).off('.fndtn.magellan');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

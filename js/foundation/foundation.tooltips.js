@@ -201,6 +201,8 @@
       $(this.settings.tooltipClass).each(function (i) {
         $('[data-tooltip]').get(i).attr('title', $(this).text());
       }).remove();
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));
