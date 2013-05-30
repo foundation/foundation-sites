@@ -45,6 +45,7 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
   position: absolute;
   top: -9999px;
   list-style: $f-dropdown-list-style;
+  margin-#{$default-float}: 0;
 
   > *:first-child { margin-top: 0; }
   > *:last-child { margin-bottom: 0; }
