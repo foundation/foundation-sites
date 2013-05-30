@@ -45,7 +45,6 @@
         <p>Building Orbit is pretty simple using our HTML classes and structure; you'll just need to write the markup, find some images or text, fire up the Javascript and you'll be ready to go. On touch-enabled devices, Orbit has swipe functionality that makes it easy to switch slides. On screens without touch interfaces, you'll see bullet and arrow navigation if you have the options setup in your JS. Here's markup structure for Orbit:</p>
 
 <%= code_example '
-<!-- Basic orbit markup -->
 <ul data-orbit>
   <li>
     <img src="../img/demos/demo1.jpg" />
@@ -158,7 +157,7 @@
         </p>
 
 <%= code_example '
-<ul id="featured2" data-orbit>
+<ul data-orbit>
   <li data-orbit-slide="headline-1">
     <h2>Headline 1</h2>
     <h3>Subheadline</h3>
@@ -202,7 +201,7 @@
 <%= code_example '
 <div class="slideshow-wrapper">
   <div class="preloader"></div>
-  <ul id="featured2" data-orbit>
+  <ul data-orbit>
     <!-- Orbit slides -->
   </ul>
 </div>
@@ -268,8 +267,10 @@ $preloader-class: "preloader";
         <p>Orbit options can only be passed in during initialization at this time.</p>
 
 <%= code_example "
-{
+$(document).foundation('orbit', {
   timer_speed: 10000,
+  pause_on_hover: true,
+  resume_on_mouseout: true,
   animation_speed: 500,
   bullets: true,
   stack_on_small: true,
@@ -287,7 +288,7 @@ $preloader-class: "preloader";
   caption_class: 'orbit-caption',
   active_slide_class: 'active',
   orbit_transition_class: 'orbit-transitioning'
-}", :js %>
+});", :js %>
 
     <p>Starting in 4.0.7 you can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>style</code> property:</p>
 
@@ -296,6 +297,86 @@ $preloader-class: "preloader";
   ...
 </ul>
 ', :html %>
+
+<h3>Events</h3>
+<p>You can bind to the following events in your code.</p>
+
+<table style="width:100%;">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Params</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>orbit:ready</td>
+      <td>event</td>
+      <td>Fires when the slider has loaded</td>
+    </tr>
+    <tr>
+      <td>orbit:before-slide-change</td>
+      <td>event</td>
+      <td>Fires before a slide changes</td>
+    </tr>
+    <tr>
+      <td>orbit:after-slide-change</td>
+      <td>event, orbit</td>
+      <td>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number</code> and <code>total_slides</code>.</td>
+    </tr>
+    <tr>
+      <td>orbit:timer-started</td>
+      <td>event</td>
+      <td>Fires each time the timer is started/resumed</td>
+    </tr>
+    <tr>
+      <td>orbit:timer-stopped</td>
+      <td>event</td>
+      <td>Fires each time the timer is paused/stopped</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5>Example</h5>
+<p>Here's an example of how you can bind to these events:</p>
+
+<%= code_example '<ul id="featured1" data-orbit>
+  <li>
+    <img src="../img/demos/demo1.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo2.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo3.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+</ul>
+
+<script>
+$("#featured1").on("orbit:ready", function(event) {
+  console.info("ready");
+});
+$("#featured1").on("orbit:before-slide-change", function(event) {
+  console.info("before slide change");
+});
+$("#featured1").on("orbit:after-slide-change", function(event, orbit) {
+  console.info("after slide change");
+  console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
+});
+$("#featured1").on("orbit:timer-started", function(event, orbit) {
+  console.info("timer started");
+});
+$("#featured1").on("orbit:timer-stopped", function(event, orbit) {
+  console.info("timer stopped");
+});
+</script>
+', :html %>
+
+
 
       </div>
     </div>
