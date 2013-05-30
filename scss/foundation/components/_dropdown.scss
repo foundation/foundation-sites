@@ -46,8 +46,8 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
   top: -9999px;
   list-style: $f-dropdown-list-style;
 
-  *:first-child { margin-top: 0; }
-  *:last-child { margin-bottom: 0; }
+  > *:first-child { margin-top: 0; }
+  > *:last-child { margin-bottom: 0; }
 
   @if $content == list {
     width: 100%;

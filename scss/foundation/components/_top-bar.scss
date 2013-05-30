@@ -52,7 +52,7 @@ $topbar-menu-icon-color-toggled:       #888 !default;
 // Transitions and breakpoint styles
 $topbar-transition-speed:              300ms !default;
 $topbar-breakpoint:                    emCalc(940px) !default; // Change to 9999px for always mobile layout
-$topbar-media-query:                   "only screen and (min-width:"#{$topbar-breakpoint}")" !default;
+$topbar-media-query:                   "only screen and (min-width: #{$topbar-breakpoint})" !default;
 
 // Divider Styles
 $topbar-divider-border-bottom:         solid 1px lighten($topbar-bg, 10%) !default;
@@ -104,7 +104,10 @@ $topbar-sticky-class:                  ".sticky" !default;
     .button { padding-top: .5em; padding-bottom: .5em; margin-bottom: 0; }
 
     // Title Area
-    .title-area { position: relative; }
+    .title-area {
+      position: relative;
+      margin: 0;
+    }
 
     .name {
       height: $topbar-height;
@@ -215,7 +218,7 @@ $topbar-sticky-class:                  ".sticky" !default;
       width: 100%;
       height: auto;
       display: block;
-      background: $topbar-dropdown-bg;
+      background: $topbar-bg;
       font-size: $em-base;
       margin: 0;
     }
@@ -314,7 +317,10 @@ $topbar-sticky-class:                  ".sticky" !default;
       visibility: hidden;
       z-index: 99;
 
-      li { width: 100%;
+      li {
+        width: 100%;
+        height: auto;
+
         a {
           font-weight: normal;
           padding: 8px $topbar-height / 3;
