@@ -104,7 +104,10 @@ $topbar-sticky-class:                  ".sticky" !default;
     .button { padding-top: .5em; padding-bottom: .5em; margin-bottom: 0; }
 
     // Title Area
-    .title-area { position: relative; }
+    .title-area {
+      position: relative;
+      margin: 0;
+    }
 
     .name {
       height: $topbar-height;
