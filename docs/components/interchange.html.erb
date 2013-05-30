@@ -13,7 +13,7 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <p><img src="../img/demos/interchange/default.jpg" data-interchange="[../img/demos/interchange/default.jpg, (default)], [../img/demos/interchange/small.jpg, (small)], [../img/demos/interchange/small.jpg, (landscape)], [../img/demos/interchange/medium.jpg, (medium)]"></p>
+        <p><img src="../img/demos/interchange/default.jpg" data-interchange="[../img/demos/interchange/default.jpg, (default)], [../img/demos/interchange/smallest.jpg, (screen and (max-width: 568px))], [../img/demos/interchange/small.jpg, (small)], [../img/demos/interchange/med.jpg, (medium)], [../img/demos/interchange/large.jpg, (large)]"></p>
 
         <h3>Using <code>data-interchange</code></h3>
         <p>The Foundation Interchange component utilizes the <code>data-interchange</code> attribute for specifying your media queries and respect images.</p>
@@ -27,7 +27,7 @@
 <%= code_example '
 data-interchange="[image_path, (media query)], [image_path, (media query)]"
 ', :html %>
-      
+
         <p><strong>The last rule that evaluates to true will be the image that gets loaded.</strong> We recommend that you set your image <code>src</code> to the smallest one, as this will always get loaded.</p>
 
         <h3>Named Queries</h3>
