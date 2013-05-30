@@ -143,7 +143,7 @@
       <div class="large-4 columns">
         <dl>
           <dt><h5>css</h5></dt>
-          <dd>Includes <code>foundation.css</code> and <code>foundation.min.css</code> so you can choose which to use. You can add <code>app.css</code> or any other stylesheet to use for custom styles that will sit on top of the Foundation core as overrides.</dd>
+          <dd>Includes <code>foundation.css</code> and <code>foundation.min.css</code> so you can choose which to use. You'll also see <code>normalize.css</code>, which we use for resets. Add another stylesheet on top of Foundation to override defaults.</dd>
         </dl>
       </div>
       <div class="large-4 columns">
@@ -210,9 +210,11 @@
   <meta name="viewport" content="width=device-width" />
   <title>Foundation 4</title>
 
+  <!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
   <link rel="stylesheet" href="css/normalize.css" />
-  <!-- If you are using CSS version, add this -->
   <link rel="stylesheet" href="css/foundation.css" />
+
+  <!-- If you are using the gem version, you need this only -->
   <link rel="stylesheet" href="css/app.css" />
 
   <script src="js/vendor/custom.modernizr.js"></script>
@@ -241,8 +243,9 @@
   <script src="js/foundation/foundation.section.js"></script>
   <script src="js/foundation/foundation.tooltips.js"></script>
   <script src="js/foundation/foundation.topbar.js"></script>
+  <script src="js/foundation/foundation.interchange.js"></script>
   <script>
-  $(document).foundation();
+    $(document).foundation();
   </script>
 </body>
 </html>
@@ -265,7 +268,7 @@
           <dt><h5>CSS &amp; Modernizr</h5></dt>
           <dd>The default CSS download includes everything you need to get going, including necessary styles and our custom Modernizr script.</dd>
           <dt>CSS</dt>
-          <dd>We include <code>foundation.min.css</code> and <code>foundation.css</code>. The difference here is whether or not you want minified code or not (link whichever you want, but not both).</dd>
+          <dd>We include <code>foundation.min.css</code> and <code>foundation.css</code> with a default CSS download. The difference here is whether or not you want minified code or not (link whichever you want, but not both).</dd>
         </dl>
       </div>
       <div class="large-4 columns">
