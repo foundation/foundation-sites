@@ -314,7 +314,10 @@ $topbar-sticky-class:                  ".sticky" !default;
       visibility: hidden;
       z-index: 99;
 
-      li { width: 100%;
+      li {
+        width: 100%;
+        height: auto;
+
         a {
           font-weight: normal;
           padding: 8px $topbar-height / 3;
