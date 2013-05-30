@@ -16,13 +16,15 @@
         <p><img style="width: 100%;" src="../img/demos/interchange/smallest.jpg" data-interchange="[../img/demos/interchange/smallest.jpg, (default)], [../img/demos/interchange/smallest.jpg, (screen and (max-width: 568px))], [../img/demos/interchange/small.jpg, (small)], [../img/demos/interchange/med.jpg, (medium)], [../img/demos/interchange/large.jpg, (large)]"></p>
 
         <h3>Using <code>data-interchange</code></h3>
-        <p>The Foundation Interchange component utilizes the <code>data-interchange</code> attribute for specifying your media queries and respect images.</p>
+        <p>The Foundation Interchange component utilizes the <code>data-interchange</code> attribute for specifying your media queries and their respective images.</p>
 
 <%= code_example '
+<img src="/path/to/default.jpg" data-interchange="[/path/to/default.jpg, (default)], [/path/to/bigger-image.jpg, (large)]">
+<!-- or your own queries -->
 <img src="/path/to/default.jpg" data-interchange="[/path/to/default.jpg, (only screen and (min-width: 1px))], [/path/to/bigger-image.jpg, (only screen and (min-width: 1280px))]">
 ', :html %>
 
-        <p>Each rule passed to <code>data-interchange</code> is comma delimited and incapsulated in square brackets, and each argument within a rule is also comma delimited. The first parameter is the path to your image, and the second parameter is your media query, surrounded by parenthesis.</p>
+        <p>Each rule passed to <code>data-interchange</code> is comma delimited and encapsulated in square brackets, and each argument within a rule is also comma delimited. The first parameter is the path to your image, and the second parameter is your media query, surrounded by parenthesis.</p>
 
 <%= code_example '
 data-interchange="[image_path, (media query)], [image_path, (media query)]"
@@ -77,7 +79,7 @@ data-interchange="[image_path, (large)], [image_path, (landscape)]"
 
         <h3>Custom Named Queries</h3>
 
-        <p>Custom queries can be defined during initialization. You can also override the default queries in this way:</p>
+        <p>Custom queries can be defined during initialization and are an easy way to make your queries more readable. You can also override the default queries in this way:</p>
 
 <%= code_example "
 $(document).foundation('interchange', {
@@ -89,7 +91,7 @@ $(document).foundation('interchange', {
 
         <h3>Events</h3>
 
-        <p>Interchange triggers a <code>replace</code> event when a rule evaluates to true and the image has been replaced.</p>
+        <p>Interchange triggers a <code>replace</code> event when a rule evaluates to true and the image has been replaced. This can be useful when you want to change some styles on your page based on which image is loaded.</p>
 
 <%= code_example "
 $(document).on('replace', 'img', function (e, new_path, original_path) {
