@@ -6,7 +6,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.1.7',
+    version: '4.2.0',
 
     settings: {
       timer_speed: 10000,
