@@ -2,6 +2,8 @@
 // Global Foundation Mixins
 //
 
+$experimental: true !default;
+
 // We use this to control border radius.
 @mixin radius($radius:$global-radius) {
   @if $radius {
