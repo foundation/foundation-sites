@@ -1,4 +1,5 @@
 // NEED TO FINISH THE LOGIC HERE
+$include-html-reveal-classes: $include-html-classes !default;
 
 //
 // Reveal Variables
@@ -27,6 +28,9 @@ $reveal-border-style:    solid !default;
 $reveal-border-width:    1px !default;
 $reveal-border-color:    #666 !default;
 
+$reveal-modal-class: "reveal-modal" !default;
+$close-reveal-modal-class: "close-reveal-modal" !default;
+
 //
 // Reveal Mixins
 //
@@ -53,7 +57,6 @@ $reveal-border-color:    #666 !default;
     #{$default-float}: 50%;
     z-index: 99;
     height: auto;
-    background-color: #fff;
 
     // Make sure rows don't have a min-width on them
     .column,
@@ -80,7 +83,9 @@ $reveal-border-color:    #666 !default;
 
   // We can choose whether or not to include the default box-shadow.
   @if $box-shadow {
-    -webkit-box-shadow: $reveal-box-shadow;
+    @if $experimental {
+      -webkit-box-shadow: $reveal-box-shadow;
+    }
     box-shadow: $reveal-box-shadow;
   }
 
@@ -96,24 +101,25 @@ $reveal-border-color:    #666 !default;
   #{$opposite-direction}: $reveal-close-side;
   color: $color;
   font-weight: $reveal-close-weight;
-  cursor: pointer;
+  cursor: $cursor-pointer-value;
 }
 
 @if $include-html-reveal-classes != false {
+
   // Reveal Modals
   .reveal-modal-bg { @include reveal-bg; }
 
-  .reveal-modal {
+  .#{$reveal-modal-class} {
     @include reveal-modal-base;
     @include reveal-modal-style;
 
-    .close-reveal-modal { @include reveal-close; }
+    .#{$close-reveal-modal-class} { @include reveal-close; }
   }
 
   // Large Screen Styles
   @media #{$small} {
 
-    .reveal-modal {
+    .#{$reveal-modal-class} {
       @include reveal-modal-style(false, emCalc(30px), false, $box-shadow: false, $top-offset: emCalc(100px));
 
       &.tiny  { @include reveal-modal-base(false, 30%); }
@@ -126,6 +132,6 @@ $reveal-border-color:    #666 !default;
 
   // Reveal Print Styles
   @media print {
-    div:not(.reveal-modal) { display: none; }
+    .#{$reveal-modal-class} {background: #fff !important;}
   }
 }

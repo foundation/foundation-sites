@@ -1,6 +1,7 @@
 //
 // Image Thumbnail Variables
 //
+$include-html-media-classes: $include-html-classes !default;
 
 // We use these to control border styles
 $thumb-border-style:     solid !default;
@@ -22,11 +23,18 @@ $thumb-transition-speed: 200ms !default;
   line-height: 0;
   display: inline-block;
   border: $thumb-border-style $border-width $thumb-border-color;
-  -webkit-box-shadow: $box-shadow;
+  @if $experimental {
+    -webkit-box-shadow: $box-shadow;
+  }
   box-shadow: $box-shadow;
 
   &:hover,
-  &:focus { -webkit-box-shadow: $box-shadow-hover; box-shadow: $box-shadow-hover; }
+  &:focus {
+    @if $experimental {
+      -webkit-box-shadow: $box-shadow-hover;
+    }
+    box-shadow: $box-shadow-hover;
+  }
 }
 
 
@@ -40,7 +48,7 @@ $thumb-transition-speed: 200ms !default;
 
     &.radius { @include radius($thumb-radius); }
   }
-  a.th { display: block; }
+  a.th { display: inline-block; }
 
 }
 

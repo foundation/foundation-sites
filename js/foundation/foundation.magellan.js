@@ -6,7 +6,7 @@
   Foundation.libs.magellan = {
     name : 'magellan',
 
-    version : '4.0.0',
+    version : '4.2.0',
 
     settings : {
       activeClass: 'active'
@@ -54,7 +54,7 @@
         .on('update-position.fndtn.magellan', function(){
           var $el = $(this);
           // $el.data("magellan-fixed-position","");
-          //$el.data("magellan-top-offset", "");
+          // $el.data("magellan-top-offset", "");
         })
         .trigger('update-position');
 
@@ -125,6 +125,8 @@
 
     off : function () {
       $(this.scope).off('.fndtn.magellan');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

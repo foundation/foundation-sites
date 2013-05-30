@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.1.3',
+    version : '4.2.0',
 
     settings : {
       deep_linking: false,
@@ -44,10 +44,12 @@
       $(this.scope)
         .on('click.fndtn.section', '[data-section] .title, [data-section] [data-section-title]', function (e) {
           var $this = $(this),
-              section = $this.closest(self.settings.section_selector);
+              section = $this.closest(self.settings.region_selector);
 
-          self.toggle_active.call(this, e, self);
-          self.reflow();
+          if (section.children(self.settings.content_selector).length > 0) {
+            self.toggle_active.call(this, e, self);
+            self.reflow();
+          }
         });
 
       $(window)
@@ -95,7 +97,7 @@
           || self.is_vertical_nav(parent)
           || self.is_horizontal_nav(parent)
           || self.is_accordion(parent)) {
-            if (prev_active_section[0] !== region[0] 
+            if (prev_active_section[0] !== region[0]
               || (prev_active_section[0] === region[0] && !settings.one_up)) {
               region
                 .removeClass('active')
@@ -113,7 +115,7 @@
           if (self.small(parent)) {
             prev_active_section.attr('style', '');
           } else {
-            prev_active_section.attr('style', 
+            prev_active_section.attr('style',
               'visibility: hidden; padding-top: '+title_height+'px;');
           }
         }
@@ -197,7 +199,7 @@
         self.position_titles($this);
 
         if ( (self.is_horizontal_nav($this) && !self.small($this))
-          || self.is_vertical_tabs($this)) {
+          || self.is_vertical_tabs($this) && !self.small($this)) {
           self.position_content($this);
         } else {
           self.position_content($this, false);
@@ -229,7 +231,6 @@
       var hash = window.location.hash.substring(1),
           sections = $('[data-section]'),
           self = this;
-
       sections.each(function () {
         var section = $(this),
             settings = $.extend({}, self.settings, self.data_options(section));
@@ -239,12 +240,21 @@
             .children(self.settings.region_selector)
             .attr('style', '')
             .removeClass('active');
-          regions
-            .map(function () {
-              return $(this).children('.content[data-slug="' + hash + '"], [data-section-content][data-slug="' + hash + '"]');
-            })
-            .parent()
-            .addClass('active');
+
+          var hash_regions = regions.map(function () {
+              var content = $(self.settings.content_selector, this),
+                  content_slug = content.data('slug');
+
+              if (new RegExp(content_slug, 'i').test(hash)) 
+                return content;
+            });
+
+
+          var count = hash_regions.length;
+
+          for (var i = count - 1; i >= 0; i--) {
+            $(hash_regions[i]).parent().addClass('active');
+          }
         }
       });
     },
@@ -310,6 +320,7 @@
 
             title_width = self.outerWidth(title);
             content_width = self.outerWidth(section) - title_width;
+
             if (content_width < content_min_width) {
               content_min_width = content_width;
             }
@@ -335,9 +346,6 @@
             content.css('maxWidth', content_min_width - 2);
           });
 
-          // Adjust the outer section container width to match
-          // the width of the title and content
-          section.css('maxWidth', title_width + content_min_width);
         } else {
           regions.each(function () {
             var region = $(this),
@@ -345,20 +353,20 @@
                 content = region.children(self.settings.content_selector);
             if (!self.rtl) {
               content
-                .css({left: title.position().left - 1, 
+                .css({left: title.position().left - 1,
                   top: self.outerHeight(title) - 2});
             } else {
               content
-                .css({right: self.position_right(title) + 1, 
+                .css({right: self.position_right(title) + 1,
                   top: self.outerHeight(title) - 2});
             }
           });
 
           // temporary work around for Zepto outerheight calculation issues.
           if (typeof Zepto === 'function') {
-            section.height(this.outerHeight(titles.first()));
+            section.height(this.outerHeight($(titles[0])));
           } else {
-            section.height(this.outerHeight(titles.first()) - 2);
+            section.height(this.outerHeight($(titles[0])) - 2);
           }
         }
       }
@@ -383,6 +391,7 @@
 
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
+
       if (this.is_horizontal_tabs(el)) {
         return false;
       }

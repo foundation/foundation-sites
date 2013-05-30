@@ -6,13 +6,14 @@
   Foundation.libs.tooltips = {
     name: 'tooltips',
 
-    version : '4.1.3',
+    version : '4.2.0',
 
     settings : {
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
       appendTo: 'body',
+      'disable-for-touch': false,
       tipTemplate : function (selector, content) {
         return '<span data-selector="' + selector + '" class="' 
           + Foundation.libs.tooltips.settings.tooltipClass.substring(1) 
@@ -23,11 +24,13 @@
     cache : {},
 
     init : function (scope, method, options) {
+      Foundation.inherit(this, 'data_options');
       var self = this;
-      this.scope = scope || this.scope;
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
+      } else if (typeof options !== 'undefined') {
+        $.extend(true, this.settings, options);
       }
 
       if (typeof method != 'string') {
@@ -35,9 +38,12 @@
           $(this.scope)
             .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
               '[data-tooltip]', function (e) {
-              e.preventDefault();
-              $(self.settings.tooltipClass).hide();
-              self.showOrCreateTip($(this));
+              var settings = $.extend({}, self.settings, self.data_options($(this)));
+              if (!settings['disable-for-touch']) {
+                e.preventDefault();
+                $(settings.tooltipClass).hide();
+                self.showOrCreateTip($(this));
+              }
             })
             .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
               this.settings.tooltipClass, function (e) {
@@ -50,7 +56,7 @@
               '[data-tooltip]', function (e) {
               var $this = $(this);
 
-              if (e.type === 'mouseover' || e.type === 'mouseenter') {
+              if (/enter|over/i.test(e.type)) {
                 self.showOrCreateTip($this);
               } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
                 self.hide($this);
@@ -80,7 +86,7 @@
           tip = null;
 
       if (selector) {
-        tip = $('span[data-selector=' + selector + ']' + this.settings.tooltipClass);
+        tip = $('span[data-selector="' + selector + '"]' + this.settings.tooltipClass);
       }
 
       return (typeof tip === 'object') ? tip : false;
@@ -195,6 +201,8 @@
       $(this.settings.tooltipClass).each(function (i) {
         $('[data-tooltip]').get(i).attr('title', $(this).text());
       }).remove();
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

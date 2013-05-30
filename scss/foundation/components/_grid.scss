@@ -1,6 +1,8 @@
 //
 // Grid Variables
 //
+$include-html-grid-classes: $include-html-classes !default;
+
 $row-width:     emCalc(1000px) !default;
 $column-gutter: emCalc(30px) !default;
 $total-columns: 12 !default;
@@ -109,9 +111,8 @@ $total-columns: 12 !default;
 }
 
 
-/* Grid HTML Classes */
 @if $include-html-grid-classes != false {
-
+	/* Grid HTML Classes */
   .row {
     @include grid-row;
 
@@ -137,7 +138,7 @@ $total-columns: 12 !default;
       .small#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
-    @for $i from 1 through $total-columns - 2 {
+    @for $i from 0 through $total-columns - 2 {
       .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
@@ -155,7 +156,7 @@ $total-columns: 12 !default;
       .large#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
     }
 
-    @for $i from 1 through $total-columns - 1 {
+    @for $i from 0 through $total-columns - 1 {
       .row .large-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
@@ -164,20 +165,21 @@ $total-columns: 12 !default;
       .pull#{-$i} { @include grid-column($pull:$i, $collapse:null, $float:false); }
     }
 
-    @for $i from 1 through $total-columns - 1 {
-      .small-push#{-$i} { #{$default-float}: inherit; }
-      .small-pull#{-$i} { #{$opposite-direction}: inherit; }
-    }
-
-    .column.small-centered,
-    .columns.small-centered {
-      margin-#{$default-float}: 0;
-      margin-#{$opposite-direction}: 0;
-      float: none !important;
-    }
-
     .column.large-centered,
     .columns.large-centered { @include grid-column($center:true, $collapse:null, $float:false); }
+
+    .column.large-uncentered,
+    .columns.large-uncentered {
+      margin-#{$default-float}: 0;
+      margin-#{$opposite-direction}: 0;
+      float: $default-float !important;
+    }
+
+    .column.large-uncentered.opposite,
+    .columns.large-uncentered.opposite {
+      float: $opposite-direction !important;
+    }
+
 
   }
 

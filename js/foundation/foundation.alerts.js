@@ -45,6 +45,8 @@
 
     off : function () {
       $(this.scope).off('.fndtn.alerts');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

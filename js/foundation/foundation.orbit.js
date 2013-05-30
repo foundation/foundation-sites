@@ -6,10 +6,12 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.1.0',
+    version: '4.2.0',
 
     settings: {
       timer_speed: 10000,
+      pause_on_hover: true,
+      resume_on_mouseout: false,
       animation_speed: 500,
       bullets: true,
       stack_on_small: true,
@@ -37,6 +39,11 @@
 
       if (typeof method === 'object') {
         $.extend(true, self.settings, method);
+      }
+
+      if ($(scope).is('[data-orbit]')) {
+        var scoped_self = $.extend(true, {}, self);
+        scoped_self._init(idx, el);
       }
 
       $('[data-orbit]', scope).each(function(idx, el) {
@@ -119,7 +126,7 @@
       $slides_container.append($slides.first().clone().attr('data-orbit-slide',''));
       $slides_container.prepend($slides.last().clone().attr('data-orbit-slide',''));
       // Make the first "real" slide active
-      $slides_container.css('marginLeft', '-100%');
+      $slides_container.css(Foundation.rtl ? 'marginRight' : 'marginLeft', '-100%');
       $slides.first().addClass(self.settings.active_slide_class);
 
       self._init_events($slides_container);
@@ -161,6 +168,16 @@
         });
 
       $container
+        .on('mouseenter.fndtn.orbit', function(e) {
+          if (self.settings.pause_on_hover) {
+            self._stop_timer($slides_container);
+          }
+        })
+        .on('mouseleave.fndtn.orbit', function(e) {
+          if (self.settings.resume_on_mouseout) {
+            self._start_timer($slides_container);
+          }
+        })
         .on('orbit:after-slide-change.fndtn.orbit', function(e, orbit) {
           var $slide_number = $container.find('.' + self.settings.slide_number_class);
 

@@ -1,6 +1,7 @@
 //
 // Breadcrumb Variables
 //
+$include-html-nav-classes: $include-html-classes !default;
 
 // We use this to set the background color for the breadcrumb container.
 $crumb-bg: lighten($secondary-color, 5%)                       !default;
@@ -67,10 +68,10 @@ $crumb-slash: "/"                                              !default;
 
   // Current is for the link of the current page
   &.current {
-  	cursor: default;
+  	cursor: $cursor-default-value;
   	color: $crumb-font-color-current;
     a {
-      cursor: default;
+      cursor: $cursor-default-value;
       color: $crumb-font-color-current;
     }
 
@@ -89,7 +90,7 @@ $crumb-slash: "/"                                              !default;
     a:focus {
       text-decoration: none;
       color: $crumb-font-color-unavailable;
-      cursor: default;
+      cursor: $cursor-default-value;
     }
   }
 

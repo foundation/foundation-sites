@@ -6,7 +6,7 @@
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.1.3',
+    version : '4.2.0',
 
     locked : false,
 
@@ -14,6 +14,7 @@
       animation: 'fadeAndPop',
       animationSpeed: 250,
       closeOnBackgroundClick: true,
+      closeOnEsc: true,
       dismissModalClass: 'close-reveal-modal',
       bgClass: 'reveal-modal-bg',
       open: function(){},
@@ -36,7 +37,6 @@
     },
 
     init : function (scope, method, options) {
-      this.scope = scope || this.scope;
       Foundation.inherit(this, 'data_options delay');
 
       if (typeof method === 'object') {
@@ -61,9 +61,20 @@
         .off('.fndtn.reveal')
         .on('click.fndtn.reveal', '[data-reveal-id]', function (e) {
           e.preventDefault();
+
           if (!self.locked) {
+            var element = $(this),
+                ajax = element.data('reveal-ajax');
+
             self.locked = true;
-            self.open.call(self, $(this));
+
+            if (typeof ajax === 'undefined') {
+              self.open.call(self, element);
+            } else {
+              var url = ajax === true ? element.attr('href') : ajax;
+
+              self.open.call(self, element, {url: url});
+            }
           }
         })
         .on('click.fndtn.reveal touchend.click.fndtn.reveal', this.close_targets(), function (e) {
@@ -85,12 +96,26 @@
         .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
         .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
 
+      $( 'body' ).bind( 'keyup.reveal', function ( event ) {
+        var open_modal = $('.reveal-modal.open'),
+            settings = $.extend({}, self.settings, self.data_options(open_modal));
+        if ( event.which === 27  && settings.closeOnEsc) { // 27 is the keycode for the Escape key
+          open_modal.foundation('reveal', 'close');
+        }
+      });
+
       return true;
     },
 
-    open : function (target) {
+    open : function (target, ajax_settings) {
       if (target) {
-        var modal = $('#' + target.data('reveal-id'));
+        if (typeof target.selector !== 'undefined') {
+          var modal = $('#' + target.data('reveal-id'));
+        } else {
+          var modal = $(this.scope);
+
+          ajax_settings = target;
+        }
       } else {
         var modal = $(this.scope);
       }
@@ -108,14 +133,36 @@
         if (open_modal.length < 1) {
           this.toggle_bg(modal);
         }
-        this.hide(open_modal, this.settings.css.close);
-        this.show(modal, this.settings.css.open);
+
+        if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
+          this.hide(open_modal, this.settings.css.close);
+          this.show(modal, this.settings.css.open);
+        } else {
+          var self = this,
+              old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
+
+          $.extend(ajax_settings, {
+            success: function (data, textStatus, jqXHR) {
+              if ( $.isFunction(old_success) ) {
+                old_success(data, textStatus, jqXHR);
+              }
+
+              modal.html(data);
+              $(modal).foundation('section', 'reflow');
+
+              self.hide(open_modal, self.settings.css.close);
+              self.show(modal, self.settings.css.open);
+            }
+          });
+
+          $.ajax(ajax_settings);
+        }
       }
     },
 
     close : function (modal) {
 
-      var modal = modal || $(this.scope),
+      var modal = modal && modal.length ? modal : $(this.scope),
           open_modals = $('.reveal-modal.open');
 
       if (open_modals.length > 0) {
@@ -245,7 +292,7 @@
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
         iframe.attr('src', 'about:blank');
-        video.fadeOut(100).hide();
+        video.hide();
       }
     },
 
@@ -257,8 +304,12 @@
         var data_src = iframe.attr('data-src');
         if (typeof data_src === 'string') {
           iframe[0].src = iframe.attr('data-src');
+        } else {
+          var src = iframe[0].src;
+          iframe[0].src = undefined;
+          iframe[0].src = src;
         }
-        video.show().fadeIn(100);
+        video.show();
       }
     },
 
@@ -272,6 +323,8 @@
 
     off : function () {
       $(this.scope).off('.fndtn.reveal');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

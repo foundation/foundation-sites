@@ -1,6 +1,7 @@
 //
 // Label Variables
 //
+$include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
 $label-padding:     emCalc(3px) emCalc(10px) emCalc(4px) !default;

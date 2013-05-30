@@ -1,6 +1,7 @@
 //
 // Dropdown Variables
 //
+$include-html-button-classes: $include-html-classes !default;
 
 // We use these to controls height and width styles.
 $f-dropdown-max-width:            200px !default;
@@ -45,8 +46,8 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
   top: -9999px;
   list-style: $f-dropdown-list-style;
 
-  *:first-child { margin-top: 0; }
-  *:last-child { margin-bottom: 0; }
+  > *:first-child { margin-top: 0; }
+  > *:last-child { margin-bottom: 0; }
 
   @if $content == list {
     width: 100%;
@@ -104,8 +105,8 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 // We use this to style the list elements or content inside the dropdown.
 @mixin dropdown-style {
   font-size: $f-dropdown-font-size;
-  cursor: pointer;
-  
+  cursor: $cursor-pointer-value;
+
   line-height: $f-dropdown-line-height;
   margin: 0;
 
@@ -120,7 +121,7 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 }
 
 
-@if $include-html-nav-classes != false {
+@if $include-html-button-classes != false {
 
   @media only screen and (max-width: 767px) {
     .f-dropdown {
@@ -131,7 +132,7 @@ $f-dropdown-content-padding:      emCalc(20px) !default;
 
   /* Foundation Dropdowns */
   .f-dropdown {
-    @include dropdown-container(content);
+    @include dropdown-container(list);
     // max-width: none;
 
     li { @include dropdown-style; }
