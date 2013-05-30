@@ -35,6 +35,13 @@
           <li><code>tip-right</code>: Align the tip to the right the element you attach it to.</li>
         </ul>
 
+        <h4>Disable for Touch Devices</h4>
+        <p>If you don't want tooltips to interfere with a touch event, you can disable them for those devices. To do this, you'll just need to add a data-option to your tooltip, like so:</p>
+
+<%= code_example '
+<span data-tooltip data-options="disable-for-touch:true" class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span>
+', :html %>
+
         <hr>
 
         <h3>Using the Javascript</h3>
