@@ -41,6 +41,11 @@
         $.extend(true, self.settings, method);
       }
 
+      if ($(scope).is('[data-orbit]')) {
+        var scoped_self = $.extend(true, {}, self);
+        scoped_self._init(idx, el);
+      }
+
       $('[data-orbit]', scope).each(function(idx, el) {
         var scoped_self = $.extend(true, {}, self);
         scoped_self._init(idx, el);
