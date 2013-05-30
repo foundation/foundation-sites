@@ -6,7 +6,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.1.7',
+    version: '4.2.0',
 
     settings: {
       timer_speed: 10000,
@@ -39,6 +39,11 @@
 
       if (typeof method === 'object') {
         $.extend(true, self.settings, method);
+      }
+
+      if ($(scope).is('[data-orbit]')) {
+        var scoped_self = $.extend(true, {}, self);
+        scoped_self._init(idx, el);
       }
 
       $('[data-orbit]', scope).each(function(idx, el) {
