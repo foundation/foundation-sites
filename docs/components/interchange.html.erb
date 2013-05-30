@@ -19,6 +19,8 @@
         <p>The Foundation Interchange component utilizes the <code>data-interchange</code> attribute for specifying your media queries and respect images.</p>
 
 <%= code_example '
+<img src="/path/to/default.jpg" data-interchange="[/path/to/default.jpg, (default)], [/path/to/bigger-image.jpg, (large)]">
+<!-- or your own queries -->
 <img src="/path/to/default.jpg" data-interchange="[/path/to/default.jpg, (only screen and (min-width: 1px))], [/path/to/bigger-image.jpg, (only screen and (min-width: 1280px))]">
 ', :html %>
 
