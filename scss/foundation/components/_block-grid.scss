@@ -7,6 +7,9 @@ $include-html-grid-classes: $include-html-classes !default;
 $block-grid-elements: 12 !default;
 $block-grid-default-spacing: emCalc(20px) !default;
 
+// Enables media queries for block-grid classes. Set to false if writing semantic HTML.
+$block-grid-media-queries: true !default;
+
 //
 // Block Grid Mixins
 //

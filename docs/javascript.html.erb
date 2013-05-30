@@ -46,13 +46,11 @@
 
         <h5>Initialize Foundation</h5>
         <p>After you have included the Foundation JavaScript, just add a simple call to initialize all plugins on your page.</p>
-        <p>It is recommended that you initialize on document ready</p>
+        <p>It is recommended that you initialize Foundation at the end of the page <code>&lt;body&gt;</code>.</p>
 
 <%= code_example '
 <script>
-  $(function(){
-    $(document).foundation();    
-  })
+  $(document).foundation();
 </script>
 ', :html %>
 
