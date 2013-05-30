@@ -12,7 +12,7 @@
 
     settings : {
       load_attr : 'interchange',
-      named_rules : {
+      named_queries : {
         'default' : 'only screen and (min-width: 1px)',
         small : 'only screen and (min-width: 768px)',
         medium : 'only screen and (min-width: 1280px)',
@@ -84,8 +84,8 @@
 
         for (var i = count - 1; i >= 0; i--) {
           var rule = scenarios[i][2];
-          if (this.settings.named_rules.hasOwnProperty(rule)) {
-            var mq = matchMedia(this.settings.named_rules[rule]);
+          if (this.settings.named_queries.hasOwnProperty(rule)) {
+            var mq = matchMedia(this.settings.named_queries[rule]);
           } else {
             var mq = matchMedia(scenarios[i][2]);
           }
@@ -190,7 +190,7 @@
 
       if (count > 0) {
         for (var i = count - 1; i >= 0; i--) {
-          var split = raw_arr[i].split(/\((.*?)\)/);
+          var split = raw_arr[i].split(/\((.*?)(\))$/);
 
           if (split.length > 1) {
             var cached_split = split[0].split(','),
@@ -217,9 +217,11 @@
     },
 
     store : function (el, scenarios) {
-      var uuid = this.uuid();
+      var uuid = this.uuid(),
+          current_uuid = el.data('uuid');
 
-      // need to check and see if a uuid already exists
+      if (current_uuid) return this.cache[current_uuid];
+
       el.attr('data-uuid', uuid);
 
       return this.cache[uuid] = scenarios;
