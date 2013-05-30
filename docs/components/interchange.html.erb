@@ -7,19 +7,115 @@
     <div class="row">
       <div class="large-12 columns">
         <h2><%= @page_title %></h2>
+        <h4 class="subheader">Interchange uses media queries to load the images that are appropriate for a user's browsers, making responsive images a snap.</h4>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
+        <p><img src="../img/demos/interchange/default.jpg" data-interchange="[../img/demos/interchange/default.jpg, (default)], [../img/demos/interchange/small.jpg, (small)], [../img/demos/interchange/small.jpg, (landscape)], [../img/demos/interchange/medium.jpg, (medium)]"></p>
 
-        <img src="../img/demos/interchange/default.jpg" data-interchange="[../img/demos/interchange/default.jpg, (default)], [../img/demos/interchange/small.jpg, (small)], [../img/demos/interchange/small.jpg, (landscape)], [../img/demos/interchange/medium.jpg, (medium)]">
+        <h3>Using <code>data-interchange</code></h3>
+        <p>The Foundation Interchange component utilizes the <code>data-interchange</code> attribute for specifying your media queries and respect images.</p>
 
-        <br><br>
+<%= code_example '
+<img src="/path/to/default.jpg" data-interchange="[/path/to/default.jpg, (only screen and (min-width: 1px))], [/path/to/bigger-image.jpg, (only screen and (min-width: 1280px))]">
+', :html %>
+
+        <p>Each rule passed to <code>data-interchange</code> is comma delimited and incapsulated in square brackets, and each argument within a rule is also comma delimited. The first parameter is the path to your image, and the second parameter is your media query, surrounded by parenthesis.</p>
+
+<%= code_example '
+data-interchange="[image_path, (media query)], [image_path, (media query)]"
+', :html %>
+      
+        <p><strong>The last rule that evaluates to true will be the image that gets loaded.</strong> We recommend that you set your image <code>src</code> to the smallest one, as this will always get loaded.</p>
+
+        <h3>Named Queries</h3>
+
+        <p>Interchange has a built-in few shortcuts that correlate with our visibility classes.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Media Query</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>default</td>
+              <td><code>only screen and (min-width: 1px)</code></td>
+            </tr>
+            <tr>
+              <td>small</td>
+              <td><code>only screen and (min-width: 768px)</code></td>
+            </tr>
+            <tr>
+              <td>medium</td>
+              <td><code>only screen and (min-width: 1280px)</code></td>
+            </tr>
+            <tr>
+              <td>large</td>
+              <td><code>only screen and (min-width: 1440px)</code></td>
+            </tr>
+            <tr>
+              <td>landscape</td>
+              <td><code>only screen and (orientation: landscape)</code></td>
+            </tr>
+            <tr>
+              <td>portrait</td>
+              <td><code>only screen and (orientation: portrait)</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>To use the named queries, just pass the name in where you would normally specify your query.</p>
+
+<%= code_example '
+data-interchange="[image_path, (large)], [image_path, (landscape)]"
+', :html %>
+
+        <h3>Custom Named Queries</h3>
+
+        <p>Custom queries can be defined during intialization. You can also override the default queries in this way:</p>
+
+<%= code_example "
+$(document).foundation('interchange', {
+  named_queries : {
+    my_custom_query : 'only screen and (max-width: 200px)'
+  }
+});
+", :js %>
+
+        <h3>Events</h3>
+
+        <p>Interchange triggers a <code>replace</code> event when a rule evaluates to true and the image has been replaced.</p>
+
+<%= code_example "
+$(document).on('replace', 'img', function (e, new_path, original_path) {
+  console.log(e.currentTarget, new_path, original_path);
+});
+", :js %>
+
+        <h3>Adding new images after page load</h3>
+
+        <p>If you add new images after the page has been loaded, you will need to trigger a <code>reflow</code> by running one of the following:</p>
+
+<%= code_example "
+$(document).foundation('interchange', 'reflow');
+
+// OR for all Foundation components
+
+$(document).foundation('reflow');
+", :js %>
 
       </div>
     </div>
 
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
   </div>
 
 </div>
