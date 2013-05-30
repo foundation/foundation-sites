@@ -97,6 +97,18 @@ $(document).on('replace', 'img', function (e, new_path, original_path) {
 });
 ", :js %>
 
+        <h3>Adding new images after page load</h3>
+
+        <p>If you add new images after the page has been loaded, you will need to trigger a <code>reflow</code> by running one of the folowing:</p>
+
+<%= code_example "
+$(document).foundation('interchange', 'reflow');
+
+// OR for all Foundation components
+
+$(document).foundation('reflow');
+", :js %>
+
       </div>
     </div>
 
