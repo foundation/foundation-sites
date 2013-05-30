@@ -274,6 +274,7 @@ $default-float: left;
 // $input-border-width: 1px;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+// $input-include-glowing-effect: true;
 
 // Fieldset border and spacing.
 
@@ -307,6 +308,15 @@ $default-float: left;
 // $input-error-message-font-weight: bold;
 // $input-error-message-font-color: #fff;
 // $input-error-message-font-color-alt: #333;
+
+// Glowing effect of inputs when focused
+
+// $glowing-effect-fade-time: 0.45s;
+// $glowing-effect-color: $input-focus-border-color;
+
+//
+// Button Variables
+//
 
 // Padding for buttons.
 
@@ -349,6 +359,14 @@ $default-float: left;
 // Opacity for disabled buttons.
 
 // $button-disabled-opacity: 0.6;
+
+//
+// Button Groups
+//
+
+// Sets the margin for the right side by default, and the left margin if right-to-left direction is used
+
+// $button-bar-margin-opposite: emCalc(10px);
 
 //
 // Dropdown Button Variables
@@ -434,43 +452,44 @@ $default-float: left;
 // Alert Variables
 //
 
-// Alert padding.
+// Alert padding
 
-// $alert-padding-top: emCalc(11px);
-// $alert-padding-left: $alert-padding-top;
-// $alert-padding-right: $alert-padding-top + emCalc(10px);
-// $alert-padding-bottom: $alert-padding-top + emCalc(1px);
+// $alert-padding-top:                emCalc(11px);
+// $alert-padding-default-float:      $alert-padding-top;
+// $alert-padding-opposite-direction: $alert-padding-top + emCalc(10px);
+// $alert-padding-bottom:             $alert-padding-top + emCalc(1px);
 
-// Text style.
+// Text style
 
-// $alert-font-weight: bold;
-// $alert-font-size: emCalc(14px);
-// $alert-font-color: #fff;
-// $alert-font-color-alt: darken($secondary-color, 60%);
+// $alert-font-weight:                bold;
+// $alert-font-size:                  emCalc(14px);
+// $alert-font-color:                 #fff;
+// $alert-font-color-alt:             darken($secondary-color, 60%);
 
-// Close hover effect.
+// Hover effect
 
-// $alert-function-factor: 10%;
+// $alert-function-factor:            10%;
 
-// Border styles.
+// Border Styles
 
-// $alert-border-style: solid;
-// $alert-border-width: 1px;
-// $alert-border-color: darken($primary-color, $alert-function-factor);
-// $alert-bottom-margin: emCalc(20px);
+// $alert-border-style:               solid;
+// $alert-border-width:               1px;
+// $alert-border-color:               darken($primary-color, $alert-function-factor);
+// $alert-bottom-margin:              emCalc(20px);
 
-// Close buttons
+// Close Button style
 
-// $alert-close-color: #333;
-// $alert-close-position: emCalc(5px);
-// $alert-close-font-size: emCalc(22px);
-// $alert-close-opacity: 0.3;
-// $alert-close-opacity-hover: 0.5;
-// $alert-close-padding: 5px 4px 4px;
+// $alert-close-color:                #333;
+// $alert-close-position:             emCalc(5px);
+// $alert-close-font-size:            emCalc(22px);
+// $alert-close-opacity:              0.3;
+// $alert-close-opacity-hover:        0.5;
+// $alert-close-padding:              5px 4px 4px;
 
 // Border radius
 
-// $alert-radius: $global-radius;
+// $alert-radius:                     $global-radius;
+
 
 //
 // Breadcrumb Variables
@@ -783,9 +802,10 @@ $default-float: left;
 // $orbit-slide-number-font-color: #fff;
 // $orbit-slide-number-padding: emCalc(5px);
 
-// Margin for when Orbit is stacked on small screens
+// Graceful Loading Wrapper and preloader
 
-// $stack-on-small-margin-bottom: emCalc(20px); // Doesn't quite work yet
+// $wrapper-class: "slideshow-wrapper";
+// $preloader-class: "preloader" ;
 
 //
 // Pagination Variables
@@ -964,13 +984,17 @@ $default-float: left;
 // $reveal-border-width: 1px;
 // $reveal-border-color: #666;
 
+// $reveal-modal-class: "reveal-modal";
+// $close-reveal-modal-class: "close-reveal-modal";
+
 //
 // Section Variables
 //
 
 // Padding and hover factor
 
-// $section-padding: emCalc(15px);
+// $section-title-padding: emCalc(15px);
+// $section-content-padding: emCalc(15px);
 // $section-function-factor: 10%;
 
 // Titles
@@ -979,6 +1003,7 @@ $default-float: left;
 // $section-title-bg: #efefef;
 // $section-title-bg-active: darken($section-title-bg, $section-function-factor);
 // $section-title-bg-active-tabs: #fff;
+// $section-title-bg-hover: darken($section-title-bg, $section-function-factor/2);
 
 // Border size
 
@@ -986,12 +1011,19 @@ $default-float: left;
 // $section-border-style: solid;
 // $section-border-color: #ccc;
 
-// Color of the background and some size options
+// Font controls
+
+// $section-font-size: emCalc(14px);
+
+// Control the color of the background and some size options
 
 // $section-content-bg: #fff;
 // $section-vertical-nav-min-width: emCalc(200px);
 // $section-vertical-tabs-title-width: emCalc(200px);
 // $section-bottom-margin: emCalc(20px);
+
+// $title-selector: ".title";
+// $content-selector: ".content";
 
 //
 // Side Nav Variables
