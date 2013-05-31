@@ -243,12 +243,6 @@ $topbar-sticky-class:                  ".sticky" !default;
         font-weight: $topbar-link-weight;
         background: $topbar-dropdown-bg;
 
-        &.hover {
-          background: $topbar-link-bg-hover;
-          color: $topbar-link-color-hover;
-        }
-
-
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
@@ -275,6 +269,12 @@ $topbar-sticky-class:                  ".sticky" !default;
           }
         }
 
+      }
+
+      // Apply the hover link color when it has that class
+      &.hover > a {
+        background: $topbar-link-bg-hover;
+        color: $topbar-link-color-hover;
       }
 
       // Apply the active link color when it has that class
