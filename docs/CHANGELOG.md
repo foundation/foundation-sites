@@ -1,7 +1,7 @@
 ### 4.2.1- May 31, 2013
 * Add missing `$experimental` Sass variable
 * Bug fixes for top bar in mobile view
-* Retina is now default media query
+* Retina is now a default named media query for Interchange
 * Removes incompatible Zepto function used in custom forms
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.0...v4.2.1).
