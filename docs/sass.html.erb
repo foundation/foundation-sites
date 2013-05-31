@@ -145,20 +145,22 @@
         <li>run <span class="keystroke">rails g foundation:install</span></li>
     </ol>
 
-    <!-- <h5>Upgrading Foundation Compass projects</h5>
-    <p><strong>Javascript and Image Updates:</strong> If you already added Foundation to your Compass project or created the project using Foundation in the first place and just want to copy over any updated javascripts/image assets to your project, use the provided <kbd>foundation/upgrade</kbd> pattern below:</p>
+    <h5>Upgrading Foundation Compass projects</h5>
+    <p><strong>Javascript Updates:</strong> If you already added Foundation to your Compass project or created the project using Foundation in the first place and just want to copy over any updated javascripts/image assets to your project, use the provided <kbd>foundation/upgrade</kbd> pattern below:</p>
     <ol style="margin-left: 20px;">
       <li><span class="keystroke">cd /path/to/your-project</span></li>
-      <li>run <span class="keystroke">compass install -r zurb-foundation foundation/upgrade force</span></li>
+      <li>run <span class="keystroke">compass install -r zurb-foundation foundation/upgrade --force</span></li>
     </ol>
 
     <p><strong>Settings file updates:</strong> You can also upgrade Foundation as a whole, which will override the existing Foundation styles and your settings file. So if you've made changes to your settings file and want to make sure your project is on the latest version of Foundation, make sure you backup your settings file before you begin. Alternatively, you can copy/paste the settings from our file and <strong>@import</strong> your own so they don't get erased.</p>
+
     <p>We also recommend creating a <code>foundation-overrides.scss</code> file that you can use for your own specific styles. This will ensure that your styles don't get obliterated upon updating. <strong>We do not recommend directly editing the Foundation files if you plan to upgrade.</strong> To update you project, use the following steps:</p>
+
     <ol style="margin-left: 20px;">
       <li>Make sure you've updated your system version of the gem or upgrading won't work.</li>
       <li><span class="keystroke">cd /path/to/your-project</span></li>
       <li>run <span class="keystroke">compass install -r zurb-foundation foundation</span></li>
-    </ol> -->
+    </ol>
 
     <hr>
 
@@ -1499,38 +1501,33 @@ $topbar-sticky-class:                  ".sticky";
 ', :css %>
 
 
-    <!-- <a name="gui-apps"></a>
+    <a name="gui-apps"></a>
     <h3>Working with GUI applications</h3>
     <h5 class="subheader">We want you to be able to work with Foundation in whatever way you are comfortable and we realize that not all of us are Terminal ninjas. Here's a rundown of some of the popular GUI applications and how to utilize Foundation with them.</h5>
 
     <h5>CodeKit Project</h5>
-    <p>We're using a version of Sass and Compass that doesn't come with CodeKit. This means that you'll need to do a couple steps in order to get everything to compile correctly:</p>
+    <p>To work with Codekit, you'll just need to open it up and create a new Foundation project.</p>
     <ol style="margin-left: 20px;">
-      <li>First things first, make sure you have the gem installed.</li>
-      <li>Run <kbd>[sudo] gem environment</kbd> in the command line, note your gem executables path.</li>
-      <li>Go into <strong>Codekit prefs</strong>, click on <strong>Sass/Scss</strong></li>
-      <li>Click on <strong>"Use the Sass executable at this path:"</strong></li>
-      <li>Navigate to the <strong>bin</strong> folder at the gem path you found earlier.</li>
-      <li>Select sass.bin</li>
-      <li>Click on <strong>Compass</strong> in the preferences menu.</li>
-      <li>Click on <strong>"Use the Compass executable at this path:"</strong></li>
-      <li>Navigate to the <strong>bin</strong> folder at the gem path you found earlier.</li>
-      <li>Select compass.bin</li>
-      <li>Compile to your hearts content.</li>
+      <li>Make sure you have the Foundation gem installed.</li>
+      <li>Create a new directory where you're project will live.</li>
+      <li>Open Terminal and move into that new directory.</li>
+      <li>Run <kbd>compass create -r zurb-foundation --using foundation</kbd></li>
+      <li>Open up CodeKit</li>
+      <li>File > Add Project</li>
+      <li>Choose the new folder that now contains the Foundation files.</li>
+      <li>Start making changes to the SCSS files and Codekit will compile the changes.</li>
     </ol>
 
-    <p><strong>Note:</strong> CodeKit does not support adding Foundation as a "framework" through the GUI. You'll need to use the steps above to accomplish this.</p>
-
-    <h5>LiveReload</h5>
-    <p>While LiveReload works great within CodeKit, it doesn't work well on its own because you can't update it to use your system Sass and Compass directories. Do not use this application to compile Foundation.</p>
+   <!--  <h5>LiveReload</h5>
+    <p>While LiveReload works great within CodeKit, it doesn't work well on its own because you can't update it to use your system Sass and Compass directories. Do not use this application to compile Foundation.</p> -->
 
     <h5>Compass.app</h5>
     <p>Foundation is included with Compass.app.</p>
-
+<!--
     <h5>Scout</h5>
-    <p>This app doesn't have support for updating the version of Sass and Compass that you use so we're not supporting it at this point.</p>
+    <p>This app doesn't have support for updating the version of Sass and Compass that you use so we're not supporting it at this point.</p> -->
 
-    <hr> -->
+    <hr>
 
   </div>
 
