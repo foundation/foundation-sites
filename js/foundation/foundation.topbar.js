@@ -38,9 +38,11 @@
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
           self.settings.$topbar.data('index', 0);
 
-          var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
-          self.settings.breakPoint = breakpoint.width();
-          breakpoint.remove();
+          if (!self.settings.breakPoint) {
+            var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
+            self.settings.breakPoint = breakpoint.width();
+            breakpoint.remove();
+          }
 
           self.assemble();
 
