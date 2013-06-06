@@ -490,7 +490,6 @@ $default-float: left;
 
 // $alert-radius:                     $global-radius;
 
-
 //
 // Breadcrumb Variables
 //
@@ -666,7 +665,7 @@ $default-float: left;
 
 // Margins and padding of the inline list.
 
-// $inline-list-margin-bottom: emCalc(17px) emCalc(-22px );
+// $inline-list-margin-bottom: emCalc(17px) emCalc(-22px);
 // $inline-list-margin: 0 0;
 // $inline-list-padding: 0;
 
@@ -1202,68 +1201,68 @@ $default-float: left;
 
 // Background color for the top bar
 
-// $topbar-bg:                            #111 !default;
+// $topbar-bg: #111 !default;
 
 // Height and margin
 
-// $topbar-height:                        45px;
-// $topbar-margin-bottom:                 emCalc(30px);
+// $topbar-height: 45px;
+// $topbar-margin-bottom: emCalc(30px);
 
 // Control Input height for top bar
 
-// $topbar-input-height:                  2.45em;
+// $topbar-input-height: 2.45em;
 
 // Controlling the styles for the title in the top bar
 
-// $topbar-title-weight:                  bold;
-// $topbar-title-font-size:               emCalc(17px);
+// $topbar-title-weight: bold;
+// $topbar-title-font-size: emCalc(17px);
 
 // Style the top bar dropdown elements
 
-// $topbar-dropdown-bg:                   #222;
-// $topbar-dropdown-link-color:           #fff;
-// $topbar-dropdown-link-bg:              lighten($topbar-bg, 5%);
-// $topbar-dropdown-toggle-size:          5px;
-// $topbar-dropdown-toggle-color:         #fff;
-// $topbar-dropdown-toggle-alpha:         0.5;
+// $topbar-dropdown-bg: #222;
+// $topbar-dropdown-link-color: #fff;
+// $topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
+// $topbar-dropdown-toggle-size: 5px;
+// $topbar-dropdown-toggle-color: #fff;
+// $topbar-dropdown-toggle-alpha: 0.5;
 
 // Set the link colors and styles for top-level nav
 
-// $topbar-link-color:                    #fff;
-// $topbar-link-color-hover:              #fff;
-// $topbar-link-color-active:             #fff;
-// $topbar-link-weight:                   bold;
-// $topbar-link-font-size:                emCalc(13px);
-// $topbar-link-hover-lightness:          -30%; // Darken by 30%
-// $topbar-link-bg-hover:                 darken($topbar-bg, 3%);
-// $topbar-link-bg-active:                darken($topbar-bg, 3%);
+// $topbar-link-color: #fff;
+// $topbar-link-color-hover: #fff;
+// $topbar-link-color-active: #fff;
+// $topbar-link-weight: bold;
+// $topbar-link-font-size: emCalc(13px);
+// $topbar-link-hover-lightness: -30%; // Darken by 30%
+// $topbar-link-bg-hover: darken($topbar-bg, 3%);
+// $topbar-link-bg-active: darken($topbar-bg, 3%);
 
-// $topbar-dropdown-label-color:          #555;
+// $topbar-dropdown-label-color: #555;
 // $topbar-dropdown-label-text-transform: uppercase;
-// $topbar-dropdown-label-font-weight:    bold;
-// $topbar-dropdown-label-font-size:      emCalc(10px);
+// $topbar-dropdown-label-font-weight: bold;
+// $topbar-dropdown-label-font-size: emCalc(10px);
 
 // Top menu icon styles
 
-// $topbar-menu-link-transform:           uppercase;
-// $topbar-menu-link-font-size:           emCalc(13px);
-// $topbar-menu-link-weight:              bold;
-// $topbar-menu-link-color:               #fff;
-// $topbar-menu-icon-color:               #fff;
-// $topbar-menu-link-color-toggled:       #888;
-// $topbar-menu-icon-color-toggled:       #888;
+// $topbar-menu-link-transform: uppercase;
+// $topbar-menu-link-font-size: emCalc(13px);
+// $topbar-menu-link-weight: bold;
+// $topbar-menu-link-color: #fff;
+// $topbar-menu-icon-color: #fff;
+// $topbar-menu-link-color-toggled: #888;
+// $topbar-menu-icon-color-toggled: #888;
 
 // Transitions and breakpoint styles
 
-// $topbar-transition-speed:              300ms;
-// $topbar-breakpoint:                    emCalc(940px); // Change to 9999px for always mobile layout
-// $topbar-media-query:                   "only screen and (min-width: #{$topbar-breakpoint})";
+// $topbar-transition-speed: 300ms;
+// $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
+// $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 // Divider Styles
 
-// $topbar-divider-border-bottom:         solid 1px lighten($topbar-bg, 10%);
-// $topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%);
+// $topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
+// $topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
 
 // Sticky Class
 
-// $topbar-sticky-class:                  ".sticky";
+// $topbar-sticky-class: ".sticky";
