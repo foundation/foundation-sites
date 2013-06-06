@@ -43,7 +43,7 @@ WordPress (Versions marked 3/20/13)
 Joomla
 
 * [Joomla Template](https://github.com/meridiansoftech/joomla_foundation_template) by Arnold Mwumva Ford, Meridian Softech
-* [Joomla Template](https://github.com/antonydoyle/siegeengine) by Antony Doyle, Siege21
+* [Joomla Template](https://github.com/antonydoyle/siegeengine2) by Antony Doyle, Siege21
 
 Drupal
 
