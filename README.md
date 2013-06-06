@@ -89,6 +89,10 @@ Shopify
 
 * [Foundationify Shopify Theme](https://github.com/lukebussey/foundationify) by Luke Bussey
 
+Orchard
+
+  * [Foundation Theme for Orchard CMS](https://foundationorchardcms.codeplex.com/)
+
 Other Implementations
 
 * [Mobile First](https://github.com/adamfairhead/mobile-first-foundation) by Adam Fairhead
