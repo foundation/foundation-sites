@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Navigation Bar with Dropdown</title>
+
+  <link rel="stylesheet" href="css/normalize.css" />
+
+  <link rel="stylesheet" href="css/foundation.css" />
+
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+  <nav class="row">
+    <div class="large-12 columns">
+      <ul class="button-group radius even-4">
+        <li><a class="button dropdown" href="#" data-dropdown="drop1">Maine Coon</a></li>
+        <li><a class="button" href="#">Turkish Angora</a></li>
+        <li><a class="button" href="#">Russian Blue</a></li>
+        <li><a class="button" href="#">Scottish Fold</a></li>
+      </ul>
+      <div id="drop1" class="f-dropdown">
+        <h6>Alternative Names</h6>
+        <ul>
+          <li><a href="#">Maine Cat</a></li>
+          <li><a href="#">Maine Shag</a></li>
+          <li><a href="#">Snowshoe Cat</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
