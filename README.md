@@ -78,6 +78,9 @@ Magento
 * [Magento & Foundation](https://github.com/nandroid/MagentoFoundation) by Nandroid
 * [Waterlee Boilerplate](https://github.com/zeljkoprsa/waterlee-boilerplate) by Jake Sharp
 
+Metoer
+* [Meteor Package for Foundation](https://atmosphere.meteor.com/package/foundation) by Eric Wallace
+
 Python
 * [Pyramid Scaffold](https://github.com/ppinette/pyramid_foundation) by Parker Pinette
 
