@@ -1,23 +1,26 @@
 //
-// FIX THE "X" ON CUSTOM FORMS
-//
-
-
-//
 // Custom Form Variables
 //
 $include-html-custom-form-classes: $include-html-classes !default;
 
 // We use these to control the basic form styles input styles
-$custom-form-border-color:              #ccc !default;
 $custom-form-border-size:               1px !default;
+$custom-form-border-color:              #ccc !default;
+$custom-form-border-focus-color:        $primary-color !default;
+$custom-form-border-disabled-color:     #ccc !default;
 $custom-form-bg:                        #fff !default;
+$custom-form-bg-focus:                  $custom-form-bg !default;
 $custom-form-bg-disabled:               #ddd !default;
 $custom-form-input-size:                16px !default;
+$custom-form-input-gap:                 4px !default;
 $custom-form-check-color:               #222 !default;
-$custom-form-check-size:                16px !default;
+$custom-form-check-size:                32px !default;
 $custom-form-radio-size:                8px !default;
-$custom-form-checkbox-radius:           0px !default;
+$custom-form-checkbox-radius:           $global-radius !default;
+$custom-form-checkbox-glyph-font:       $body-font-family !default;
+$custom-form-checkbox-glyph-symbol:     '\000D7' !default;
+$custom-form-checkbox-x-offset:         8px;
+$custom-form-checkbox-y-offset:         0px;
 
 // We use these to style the custom select form element.
 $custom-select-bg:                      #fff !default;
@@ -53,77 +56,101 @@ $custom-dropdown-width-large:           434px !default;
 // We decided not to make a mixin for the custom forms because
 // they rely on a very specific class naming structure.
 // We may look at updating this in the future.
-@mixin custom-form-input($radius:0px, $mark-size:0px) {
-  @include radius($radius);
-  padding: (($custom-form-input-size - $mark-size) / 2) - $custom-form-border-size;
-}
 
 // Only include these classes if the variable is true, otherwise they'll be left out.
 @if $include-html-custom-form-classes != false {
 
   /* Custom Checkbox and Radio Inputs */
-  form.custom {
+  // wrap it in a media query so it would fall back to browser default look and feel for unsupported browsers (namely IE8-)
+  @media only screen {
+    form.custom {
 
-    .hidden-field {
-      margin-#{$default-float}: -99999px;
-      position: absolute;
-      visibility: hidden;
-    }
+      input[type="checkbox"], input[type="radio"] {
+        opacity: 0.01;
+        position: absolute;
+        cursor: pointer;
+        width: $custom-form-input-size;
+        height: $custom-form-input-size;
 
-    .custom {
-      display: inline-block;
-      width: $custom-form-input-size;
-      height: $custom-form-input-size;
-      position: relative;
-      vertical-align: middle;
-      border: solid $custom-form-border-size $custom-form-border-color;
-      background: $custom-form-bg;
-
-      &.checkbox {
-        @include custom-form-input($radius:$custom-form-checkbox-radius, $mark-size:$custom-form-check-size);
-      }
-
-      &.radio {
-        @include custom-form-input($radius:1000px, $mark-size:$custom-form-radio-size);
-      }
-
-      &.checkbox {
-        &:before {
-          content: "";
-          display: block;
-          font-size: $custom-form-check-size;
-          color: $custom-form-bg;
-        }
-      }
-
-      &.radio.checked {
-        &:before {
-          content: "";
-          display: block;
-          width: $custom-form-radio-size;
-          height: $custom-form-radio-size;
-          @include radius(1000px);
-          background: $custom-form-check-color;
+        & + label {
           position: relative;
+          line-height: $custom-form-input-size;
+          padding-#{$default-float}: $custom-form-input-size + $custom-form-input-gap;
+          &:before {
+            speak: none;
+            content: '';
+            display:inline-block;
+            box-sizing: border-box;
+            width: $custom-form-input-size;
+            height: $custom-form-input-size;
+            background: $custom-form-bg;
+            border: $custom-form-border-size solid $custom-form-border-color;
+            cursor: pointer;
+            position: absolute;
+            #{$default-float}: 0;
+          }
         }
       }
 
-      &.checkbox.checked {
-        &:before {
-          content: "\00d7";
-          color: $custom-form-check-color;
-          position: absolute;
-          top: -50%;
-          left: 50%;
-          margin-top: 4px;
-          margin-left: -5px;
+      input[type="checkbox"] + label:before {
+        @include radius($custom-form-checkbox-radius);
+      }
+
+      input[type="radio"] + label:before {
+        @include radius($global-rounded);
+      }
+
+      input[type="checkbox"]:focus, input[type="radio"]:focus {
+        & + label:before {
+          background: $custom-form-bg-focus;
+          border-color: $custom-form-border-focus-color;
         }
+      }
+
+      input[type="checkbox"]:disabled, input[type="radio"]:disabled {
+        cursor: default;
+        & + label {
+          cursor: default;
+          &:before {
+            background: $custom-form-bg-disabled;
+            border-color: $custom-form-border-disabled-color;
+          }
+        }
+      }
+
+      input[type="checkbox"]:checked + label:after {
+        font-family: $custom-form-checkbox-glyph-font;
+        content: $custom-form-checkbox-glyph-symbol;
+        font-size: $custom-form-check-size;
+        color: $custom-form-check-color;
+        position: absolute;
+        top: $custom-form-checkbox-y-offset;
+        #{$default-float}: (($custom-form-input-size - $custom-form-check-size) / 2) + $custom-form-checkbox-x-offset;
+      }
+
+      input[type="radio"]:checked + label > span:before {
+        content: "";
+        display: block;
+        width: $custom-form-radio-size;
+        height: $custom-form-radio-size;
+        @include radius($global-rounded);
+        background: $custom-form-check-color;
+        position: absolute;
+        top: 0;
+        #{$default-float}: 0;
+        margin: (($custom-form-input-size - $custom-form-radio-size) / 2);
       }
     }
   }
 
   /* Custom Select Options and Dropdowns */
   form.custom {
+    .hidden-field {
+      margin-#{$default-float}: -99999px;
+      position: absolute;
+      visibility: hidden;
+    }
+
     .custom.dropdown {
       display: block;
       position: relative;
@@ -133,6 +160,7 @@ $custom-dropdown-width-large:           434px !default;
       margin-top: 0px;
       padding: 0px;
       width: 100%;
+      border: $custom-form-border-size solid $custom-form-border-color;
       background: $custom-dropdown-bg;
       @if $experimental {
         background: -moz-linear-gradient(top, $custom-dropdown-bg 0%, $custom-select-fade-to-color 100%);
