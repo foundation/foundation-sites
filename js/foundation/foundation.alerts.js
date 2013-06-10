@@ -6,7 +6,7 @@
   Foundation.libs.alerts = {
     name : 'alerts',
 
-    version : '4.0.0',
+    version : '4.2.2',
 
     settings : {
       speed: 300, // fade out speed

@@ -166,7 +166,7 @@ if (typeof jQuery === "undefined" &&
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     cache : {},
 
