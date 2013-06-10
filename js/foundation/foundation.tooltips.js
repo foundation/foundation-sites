@@ -33,7 +33,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (Modernizr.touch) {
           $(this.scope)
             .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 

@@ -82,7 +82,7 @@ if (typeof jQuery === "undefined" &&
 
       var t = Object(this),
           len = t.length >>> 0;
-      if (typeof fun != "function") {
+      if (typeof fun !== "function") {
           return;
       }
 

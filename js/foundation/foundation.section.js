@@ -28,7 +28,7 @@
         $.extend(true, self.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         this.set_active_from_hash();
         this.events();
 

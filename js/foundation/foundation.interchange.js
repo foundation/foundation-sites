@@ -20,12 +20,12 @@
         large : 'only screen and (min-width: 1440px)',
         landscape : 'only screen and (orientation: landscape)',
         portrait : 'only screen and (orientation: portrait)',
-        retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),'
-          + 'only screen and (min--moz-device-pixel-ratio: 2),'
-          + 'only screen and (-o-min-device-pixel-ratio: 2/1),'
-          + 'only screen and (min-device-pixel-ratio: 2),'
-          + 'only screen and (min-resolution: 192dpi),'
-          + 'only screen and (min-resolution: 2dppx)'
+        retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 
+          'only screen and (min--moz-device-pixel-ratio: 2),' + 
+          'only screen and (-o-min-device-pixel-ratio: 2/1),' + 
+          'only screen and (min-device-pixel-ratio: 2),' + 
+          'only screen and (min-resolution: 192dpi),' + 
+          'only screen and (min-resolution: 2dppx)'
       },
 
       directives : {
@@ -55,7 +55,7 @@
       this.events();
       this.images();
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         return this.settings.init;
       } else {
         return this[method].call(this, options);

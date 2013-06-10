@@ -45,7 +45,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         this.events();
 
         return this.settings.init;

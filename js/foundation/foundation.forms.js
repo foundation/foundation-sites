@@ -19,7 +19,7 @@
         $.extend(true, this.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (!this.settings.init) {
           this.events();
         }
@@ -71,7 +71,7 @@
                 e.preventDefault();
                 $customCheckbox = $(this).find('span.custom.checkbox');
                 //the checkbox might be outside after the label or inside of another element
-                if ($customCheckbox.length == 0) {
+                if ($customCheckbox.length === 0) {
                   $customCheckbox = $associatedElement.add(this).siblings('span.custom.checkbox').first();
                 }
                 self.toggle_checkbox($customCheckbox);
@@ -79,7 +79,7 @@
                 e.preventDefault();
                 $customRadio = $(this).find('span.custom.radio');
                 //the radio might be outside after the label or inside of another element
-                if ($customRadio.length == 0) {
+                if ($customRadio.length === 0) {
                   $customRadio = $associatedElement.add(this).siblings('span.custom.radio').first();
                 }
                 self.toggle_radio($customRadio);
@@ -136,7 +136,7 @@
               .text($this.text());
 
             $this.closest('ul').find('li').each(function (index) {
-              if ($this[0] == this) {
+              if ($this[0] === this) {
                 selectedIndex = index;
               }
             });
@@ -264,8 +264,8 @@
           var customSelectSize = $this.hasClass('small') ? 'small' : $this.hasClass('medium') ? 'medium' : $this.hasClass('large') ? 'large' : $this.hasClass('expand') ? 'expand' : '';
 
           $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize].concat(copyClasses).filter(function (item, idx, arr) {
-            if (item == '') return false;
-            return arr.indexOf(item) == idx;
+            if (item === '') return false;
+            return arr.indexOf(item) === idx;
           }).join(' ') + '"><a href="#" class="selector"></a><ul /></div>');
 
           $selector = $customSelect.find(".selector");
@@ -359,7 +359,7 @@
           $options = $select.find('option'),
           $listItems = $customSelect.find('li');
 
-      if ($listItems.length != this.cache[$customSelect.data('id')] || force_refresh) {
+      if ($listItems.length !== this.cache[$customSelect.data('id')] || force_refresh) {
         $customSelect.find('ul').html('');
 
         $options.each(function () {

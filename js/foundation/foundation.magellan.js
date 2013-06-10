@@ -20,7 +20,7 @@
         $.extend(true, this.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (!this.settings.init) {
           this.fixed_magellan = $("[data-magellan-expedition]");
           this.set_threshold();

@@ -20,8 +20,8 @@
         $.extend(true, this.settings, method);
       }
 
-      if (typeof method != 'string') {
-        if (!this.settings.init) this.events();
+      if (typeof method !== 'string') {
+        if (!this.settings.init) { this.events(); }
 
         return this.settings.init;
       } else {

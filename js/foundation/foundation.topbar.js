@@ -28,7 +28,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
 
         $('.top-bar, [data-topbar]').each(function () {
           $.extend(true, self.settings, self.data_options($(this)));

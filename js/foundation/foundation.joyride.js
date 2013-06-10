@@ -57,7 +57,7 @@
         $.extend(true, this.settings, this.defaults, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (!this.settings.init) this.events();
 
         return this.settings.init;
