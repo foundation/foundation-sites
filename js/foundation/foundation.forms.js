@@ -4,7 +4,7 @@
   Foundation.libs.forms = {
     name: 'forms',
 
-    version: '4.2.1',
+    version: '4.2.2',
 
     cache: {},
 
@@ -230,6 +230,10 @@
       var $this = $(sel),
           type = $this.attr('type'),
           $span = $this.next('span.custom.' + type);
+          
+      if (!$this.parent().hasClass('switch')) {
+        $this.addClass('hidden-field');
+      }
 
       if ($span.length === 0) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
