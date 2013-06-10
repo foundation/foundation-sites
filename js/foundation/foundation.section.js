@@ -10,6 +10,7 @@
 
     settings : {
       deep_linking: false,
+      small_breakpoint: 768,
       one_up: true,
       section_selector : '[data-section]',
       region_selector : 'section, .section, [data-section-region]',
@@ -404,7 +405,7 @@
       if ($('html').hasClass('ie8compat')) {
         return true;
       }
-      return $(this.scope).width() < 768;
+      return $(this.scope).width() < settings.small_breakpoint;
     },
 
     off : function () {
