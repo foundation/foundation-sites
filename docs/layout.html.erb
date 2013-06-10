@@ -115,7 +115,7 @@
       })();
 
       document.write('<script src="<%= asset_path %>/vendor/'
-        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + ('__proto__' in {} ? 'jquery' : 'jquery')
         + '.js"><\/script>');
     </script>
     <script src="<%= asset_path %>/docs.js"></script>
@@ -125,7 +125,7 @@
         .foundation()
         .foundation('joyride', 'start');
       <% else %>
-        .foundation(null, null, null, null, true);
+        .foundation();
       <% end %>
 
       // For Kitchen Sink Page
