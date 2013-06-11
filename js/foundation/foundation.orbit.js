@@ -185,12 +185,12 @@
             $slide_number.replaceWith(self._slide_number_html(orbit.slide_number, orbit.total_slides));
           }
         })
-        .on('orbit:next-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.next_class, function(e) {
+        .on('orbit:next-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.next_class.split(" ").join("."), function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self._goto($slides_container, 'next', function() {});
         })
-        .on('orbit:prev-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.prev_class, function(e) {
+        .on('orbit:prev-slide.fndtn.orbit click.fndtn.orbit', '.' + self.settings.prev_class.split(" ").join("."), function(e) {
           e.preventDefault();
           self._reset_timer($slides_container, true);
           self._goto($slides_container, 'prev', function() {});
