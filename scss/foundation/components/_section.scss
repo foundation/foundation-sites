@@ -106,7 +106,7 @@ $content-selector: ".content" !default;
 
     &>*:last-child { margin-bottom: 0; }
     &>*:first-child { padding-top: 0; }
-    &>*:last-child { padding-bottom: 0; }
+    &>*:last-child:not(.flex-video) { padding-bottom: 0; }
   }
 
   &.active {
