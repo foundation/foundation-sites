@@ -222,7 +222,7 @@
     },
 
     breakpoint : function () {
-      return $(window).width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
+      return $(document).width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
     },
 
     assemble : function () {
