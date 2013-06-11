@@ -412,58 +412,58 @@ $is-button: false
         <h5>Default SCSS Variables</h5>
 <%= code_example '
 /* We use this to set the base for lots of form spacing and positioning styles */
-$form-spacing:                       emCalc(16px);
+$form-spacing: emCalc(16px);
 
 /* We use these to style the labels in different ways */
-$form-label-pointer:                 pointer;
-$form-label-font-size:               emCalc(14px);
-$form-label-font-weight:             500;
-$form-label-font-color:              lighten(#000, 30%);
-$form-label-bottom-margin:           emCalc(3px);
-$input-font-color:                   rgba(0,0,0,0.75);
-$input-font-size:                    emCalc(14px);
-$input-bg-color:                     #fff;
-$input-focus-bg-color:               darken(#fff, 2%);
-$input-border-color:                 darken(#fff, 20%);
-$input-focus-border-color:           darken(#fff, 40%);
-$input-border-style:                 solid;
-$input-border-width:                 1px;
-$input-disabled-bg:                  #ddd;
-$input-box-shadow:                   inset 0 1px 2px rgba(0,0,0,0.1);
-$input-include-glowing-effect:       true;
+$form-label-pointer: pointer;
+$form-label-font-size: emCalc(14px);
+$form-label-font-weight: 500;
+$form-label-font-color: lighten(#000, 30%);
+$form-label-bottom-margin: emCalc(3px);
+$input-font-color: rgba(0,0,0,0.75);
+$input-font-size: emCalc(14px);
+$input-bg-color: #fff;
+$input-focus-bg-color: darken(#fff, 2%);
+$input-border-color: darken(#fff, 20%);
+$input-focus-border-color: darken(#fff, 40%);
+$input-border-style: solid;
+$input-border-width: 1px;
+$input-disabled-bg: #ddd;
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-include-glowing-effect: true;
 
 /* We use these to style the fieldset border and spacing. */
-$fieldset-border-style:              solid;
-$fieldset-border-width:              1px;
-$fieldset-border-color:              #ddd;
-$fieldset-padding:                   emCalc(20px);
-$fieldset-margin:                    emCalc(18px) 0;
+$fieldset-border-style: solid;
+$fieldset-border-width: 1px;
+$fieldset-border-color: #ddd;
+$fieldset-padding: emCalc(20px);
+$fieldset-margin: emCalc(18px) 0;
 
 /* We use these to style the legends when you use them */
-$legend-bg:                          #fff;
-$legend-font-weight:                 bold;
-$legend-padding:                     0 emCalc(3px);
+$legend-bg: #fff;
+$legend-font-weight: bold;
+$legend-padding: 0 emCalc(3px);
 
 /* We use these to style the prefix and postfix input elements */
-$input-prefix-bg:                    darken(#fff, 5%);
-$input-prefix-border-color:          darken(#fff, 20%);
-$input-prefix-border-size:           1px;
-$input-prefix-border-type:           solid;
-$input-prefix-overflow:              hidden;
-$input-prefix-font-color:            #333;
-$input-prefix-font-color-alt:        #fff;
+$input-prefix-bg: darken(#fff, 5%);
+$input-prefix-border-color: darken(#fff, 20%);
+$input-prefix-border-size: 1px;
+$input-prefix-border-type: solid;
+$input-prefix-overflow: hidden;
+$input-prefix-font-color: #333;
+$input-prefix-font-color-alt: #fff;
 
 /* We use these to style the error states for inputs and labels */
-$input-error-message-padding:        emCalc(6px) emCalc(4px);
-$input-error-message-top:            -($form-spacing) - emCalc(5px);
-$input-error-message-font-size:      emCalc(12px);
-$input-error-message-font-weight:    bold;
-$input-error-message-font-color:     #fff;
+$input-error-message-padding: emCalc(6px) emCalc(4px);
+$input-error-message-top: -($form-spacing) - emCalc(5px);
+$input-error-message-font-size: emCalc(12px);
+$input-error-message-font-weight: bold;
+$input-error-message-font-color: #fff;
 $input-error-message-font-color-alt: #333;
 
 +/* We use this to style the glowing effect of inputs when focused */
-+$glowing-effect-fade-time:           0.45s !default;
-+$glowing-effect-color:               $input-focus-border-color !default;
++$glowing-effect-fade-time: 0.45s !default;
++$glowing-effect-color: $input-focus-border-color !default;
 
 ', :css %>
 

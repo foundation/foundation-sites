@@ -9,13 +9,13 @@ $inline-list-opposite-margin: 0 !default;
 $inline-list-bottom-margin: emCalc(17px) !default;
 $inline-list-default-float-margin: emCalc(-22px) !default;
 
-$inline-list-padding:          0 !default;
+$inline-list-padding: 0 !default;
 
 // We use this to control the overflow of the inline list.
-$inline-list-overflow:         hidden !default;
+$inline-list-overflow: hidden !default;
 
 // We use this to control the list items
-$inline-list-display:          block !default;
+$inline-list-display: block !default;
 
 // We use this to control any elments within list items
 $inline-list-children-display: block !default;
@@ -26,7 +26,7 @@ $inline-list-children-display: block !default;
 
 // We use this mixin to create inline lists
 @mixin inline-list {
-  margin: $inline-list-top-margin auto $inline-list-bottom-margin auto; 
+  margin: $inline-list-top-margin auto $inline-list-bottom-margin auto;
   margin-#{$default-float}: $inline-list-default-float-margin;
   margin-#{$opposite-direction}: $inline-list-opposite-margin;
   padding: $inline-list-padding;

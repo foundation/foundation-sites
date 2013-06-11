@@ -4,35 +4,35 @@
 $include-html-button-classes: $include-html-classes !default;
 
 // We use these to controls height and width styles.
-$f-dropdown-max-width:            200px !default;
-$f-dropdown-height:               auto !default;
-$f-dropdown-max-height:           none !default;
-$f-dropdown-margin-top:           2px !default;
+$f-dropdown-max-width: 200px !default;
+$f-dropdown-height: auto !default;
+$f-dropdown-max-height: none !default;
+$f-dropdown-margin-top: 2px !default;
 
 // We use this to control the background color
-$f-dropdown-bg:                   #fff !default;
+$f-dropdown-bg: #fff !default;
 
 // We use this to set the border styles for dropdowns.
-$f-dropdown-border-style:         solid !default;
-$f-dropdown-border-width:         1px !default;
-$f-dropdown-border-color:         darken(#fff, 20%) !default;
+$f-dropdown-border-style: solid !default;
+$f-dropdown-border-width: 1px !default;
+$f-dropdown-border-color: darken(#fff, 20%) !default;
 
 // We use these to style the triangle pip.
-$f-dropdown-triangle-size:        6px !default;
-$f-dropdown-triangle-color:       #fff !default;
+$f-dropdown-triangle-size: 6px !default;
+$f-dropdown-triangle-color: #fff !default;
 $f-dropdown-triangle-side-offset: 10px !default;
 
 // We use these to control styles for the list elements.
-$f-dropdown-list-style:           none !default;
-$f-dropdown-font-color:           #555 !default;
-$f-dropdown-font-size:            emCalc(14px) !default;
-$f-dropdown-list-padding:         emCalc(5px) emCalc(10px) !default;
-$f-dropdown-line-height:          emCalc(18px) !default;
-$f-dropdown-list-hover-bg:        #eeeeee !default;
-$dropdown-mobile-default-float:   0 !default;
+$f-dropdown-list-style: none !default;
+$f-dropdown-font-color: #555 !default;
+$f-dropdown-font-size: emCalc(14px) !default;
+$f-dropdown-list-padding: emCalc(5px) emCalc(10px) !default;
+$f-dropdown-line-height: emCalc(18px) !default;
+$f-dropdown-list-hover-bg: #eeeeee !default;
+$dropdown-mobile-default-float: 0 !default;
 
 // We use this to control the styles for when the dropdown has custom content.
-$f-dropdown-content-padding:      emCalc(20px) !default;
+$f-dropdown-content-padding: emCalc(20px) !default;
 
 //
 // Dropdown Mixins

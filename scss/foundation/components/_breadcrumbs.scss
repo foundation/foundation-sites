@@ -4,30 +4,30 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use this to set the background color for the breadcrumb container.
-$crumb-bg: lighten($secondary-color, 5%)                       !default;
+$crumb-bg: lighten($secondary-color, 5%) !default;
 
 // We use these to set the padding around the breadcrumbs.
-$crumb-padding: emCalc(9px) emCalc(14px) emCalc(9px)           !default;
-$crumb-side-padding: emCalc(12px)                              !default;
+$crumb-padding: emCalc(9px) emCalc(14px) emCalc(9px) !default;
+$crumb-side-padding: emCalc(12px) !default;
 
 // We use these to control border styles.
-$crumb-function-factor: 10%                                    !default;
-$crumb-border-size: 1px                                        !default;
-$crumb-border-style: solid                                     !default;
+$crumb-function-factor: 10% !default;
+$crumb-border-size: 1px !default;
+$crumb-border-style: solid !default;
 $crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
-$crumb-radius: $global-radius                                  !default;
+$crumb-radius: $global-radius !default;
 
 // We use these to set various text styles for breadcrumbs.
-$crumb-font-size: emCalc(11px)                                 !default;
-$crumb-font-color: $primary-color                              !default;
-$crumb-font-color-current: #333                                !default;
-$crumb-font-color-unavailable: #999                            !default;
-$crumb-font-transform: uppercase                               !default;
-$crumb-link-decor: underline                                   !default;
+$crumb-font-size: emCalc(11px) !default;
+$crumb-font-color: $primary-color !default;
+$crumb-font-color-current: #333 !default;
+$crumb-font-color-unavailable: #999 !default;
+$crumb-font-transform: uppercase !default;
+$crumb-link-decor: underline !default;
 
 // We use these to control the slash between breadcrumbs
-$crumb-slash-color: #aaa                                       !default;
-$crumb-slash: "/"                                              !default;
+$crumb-slash-color: #aaa !default;
+$crumb-slash: "/" !default;
 
 //
 // Breakcrumb Mixins

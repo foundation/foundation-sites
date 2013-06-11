@@ -290,102 +290,102 @@
 
 <%= code_example '
 /* We use these to control header font styles */
-$header-font-family:                   "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$header-font-weight:                   bold;
-$header-font-style:                    normal;
-$header-font-color:                    #222;
-$header-line-height:                   1.4;
-$header-top-margin:                    .2em;
-$header-bottom-margin:                 .5em;
-$header-text-rendering:                optimizeLegibility;
+$header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: bold;
+$header-font-style: normal;
+$header-font-color: #222;
+$header-line-height: 1.4;
+$header-top-margin: .2em;
+$header-bottom-margin: .5em;
+$header-text-rendering: optimizeLegibility;
 
 /* We use these to control header font sizes */
-$h1-font-size:                         emCalc(44px);
-$h2-font-size:                         emCalc(37px);
-$h3-font-size:                         emCalc(27px);
-$h4-font-size:                         emCalc(23px);
-$h5-font-size:                         emCalc(18px);
-$h6-font-size:                         1em;
+$h1-font-size: emCalc(44px);
+$h2-font-size: emCalc(37px);
+$h3-font-size: emCalc(27px);
+$h4-font-size: emCalc(23px);
+$h5-font-size: emCalc(18px);
+$h6-font-size: 1em;
 
 /* These control how subheaders are styled. */
-$subheader-line-height:                1.4;
-$subheader-font-color:                 lighten($header-font-color, 30%);
-$subheader-font-weight:                300;
-$subheader-top-margin:                 .2em;
-$subheader-bottom-margin:              .5em;
+$subheader-line-height: 1.4;
+$subheader-font-color: lighten($header-font-color, 30%);
+$subheader-font-weight: 300;
+$subheader-top-margin: .2em;
+$subheader-bottom-margin: .5em;
 
 /* A general <small> styling */
-$small-font-size:                      60%;
-$small-font-color:                     lighten($header-font-color, 30%);
+$small-font-size: 60%;
+$small-font-color: lighten($header-font-color, 30%);
 
 /* We use these to style paragraphs */
-$paragraph-font-family:                inherit;
-$paragraph-font-weight:                normal;
-$paragraph-font-size:                  1em;
-$paragraph-line-height:                1.6;
-$paragraph-margin-bottom:              emCalc(20px);
-$paragraph-aside-font-size:            emCalc(14px);
-$paragraph-aside-line-height:          1.35;
-$paragraph-aside-font-style:           italic;
-$paragraph-text-rendering:             optimizeLegibility;
+$paragraph-font-family: inherit;
+$paragraph-font-weight: normal;
+$paragraph-font-size: 1em;
+$paragraph-line-height: 1.6;
+$paragraph-margin-bottom: emCalc(20px);
+$paragraph-aside-font-size: emCalc(14px);
+$paragraph-aside-line-height: 1.35;
+$paragraph-aside-font-style: italic;
+$paragraph-text-rendering: optimizeLegibility;
 
 /* We use these to style <code> tags */
-$code-color:                           darken($alert-color, 15%);
-$code-font-family:                     Consolas, "Liberation Mono", Courier, monospace;
-$code-font-weight:                     bold;
+$code-color: darken($alert-color, 15%);
+$code-font-family: Consolas, "Liberation Mono", Courier, monospace;
+$code-font-weight: bold;
 
 /* We use these to style anchors */
-$anchor-text-decoration:               none;
-$anchor-font-color:                    $primary-color;
-$anchor-font-color-hover:              darken($primary-color, 5%);
+$anchor-text-decoration: none;
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: darken($primary-color, 5%);
 
 /* We use these to style the <hr> element */
-$hr-border-width:                      1px;
-$hr-border-style:                      solid;
-$hr-border-color:                      #ddd;
-$hr-margin:                            emCalc(20px);
+$hr-border-width: 1px;
+$hr-border-style: solid;
+$hr-border-color: #ddd;
+$hr-margin: emCalc(20px);
 
 /* We use these to style lists */
-$list-style-position:                  outside;
-$list-side-margin:                     emCalc(20px);
-$list-nested-margin:                   emCalc(20px);
-$definition-list-header-weight:        bold;
+$list-style-position: outside;
+$list-side-margin: emCalc(20px);
+$list-nested-margin: emCalc(20px);
+$definition-list-header-weight: bold;
 $definition-list-header-margin-bottom: .3em;
-$definition-list-margin-bottom:        emCalc(12px);
+$definition-list-margin-bottom: emCalc(12px);
 
 /* We use these to style blockquotes */
-$blockquote-font-color:                lighten($header-font-color, 30%);
-$blockquote-padding:                   emCalc(9px) emCalc(20px) 0 emCalc(19px);
-$blockquote-border:                    1px solid #ddd;
-$blockquote-cite-font-size:            emCalc(13px);
-$blockquote-cite-font-color:           lighten($header-font-color, 20%);
-$blockquote-cite-link-color:           $blockquote-cite-font-color;
+$blockquote-font-color: lighten($header-font-color, 30%);
+$blockquote-padding: emCalc(9px) emCalc(20px) 0 emCalc(19px);
+$blockquote-border: 1px solid #ddd;
+$blockquote-cite-font-size: emCalc(13px);
+$blockquote-cite-font-color: lighten($header-font-color, 20%);
+$blockquote-cite-link-color: $blockquote-cite-font-color;
 
 /* Acronym styles */
-$acronym-underline:                    1px dotted #ddd;
+$acronym-underline: 1px dotted #ddd;
 
 /* We use these to control padding and margin */
-$microformat-padding:                  emCalc(10px) emCalc(12px);
-$microformat-margin:                    0 0 emCalc(20px) 0;
+$microformat-padding: emCalc(10px) emCalc(12px);
+$microformat-margin: 0 0 emCalc(20px) 0;
 
 /* We use these to control the border styles */
-$microformat-border-width:             1px;
-$microformat-border-style:             solid;
-$microformat-border-color:             #ddd;
+$microformat-border-width: 1px;
+$microformat-border-style: solid;
+$microformat-border-color: #ddd;
 
 /* We use these to control full name font styles */
-$microformat-fullname-font-weight:     bold;
-$microformat-fullname-font-size:       emCalc(15px);
+$microformat-fullname-font-weight: bold;
+$microformat-fullname-font-size: emCalc(15px);
 
 /* We use this to control the summary font styles */
-$microformat-summary-font-weight:      bold;
+$microformat-summary-font-weight: bold;
 
 /* We use this to control abbr padding */
-$microformat-abbr-padding:             0 emCalc(1px);
+$microformat-abbr-padding: 0 emCalc(1px);
 
 /* We use this to control abbr font styles */
-$microformat-abbr-font-weight:         bold;
-$microformat-abbr-font-decoration:     none;
+$microformat-abbr-font-weight: bold;
+$microformat-abbr-font-decoration: none;
 ', :css %>
 
       </div>

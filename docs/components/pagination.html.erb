@@ -145,32 +145,32 @@ $base-style: true
 
 <%= code_example '
 /* We use these to control the pagination container */
-$pagination-height:                      emCalc(24px);
-$pagination-margin:                      emCalc(-5px);
+$pagination-height: emCalc(24px);
+$pagination-margin: emCalc(-5px);
 
 /* We use these to set the list-item properties */
-$pagination-li-float:                    $default-float;
-$pagination-li-height:                   emCalc(24px);
-$pagination-li-font-color:               #222;
-$pagination-li-font-size:                emCalc(14px);
-$pagination-li-margin:                   emCalc(5px);
+$pagination-li-float: $default-float;
+$pagination-li-height: emCalc(24px);
+$pagination-li-font-color: #222;
+$pagination-li-font-size: emCalc(14px);
+$pagination-li-margin: emCalc(5px);
 
 /* We use these for the pagination anchor links */
-$pagination-link-pad:                    emCalc(1px) emCalc(7px) emCalc(1px);
-$pagination-link-font-color:             #999;
-$pagination-link-active-bg:              darken(#fff, 10%);
+$pagination-link-pad: emCalc(1px) emCalc(7px) emCalc(1px);
+$pagination-link-font-color: #999;
+$pagination-link-active-bg: darken(#fff, 10%);
 
 /* We use these for disabled anchor links */
-$pagination-link-unavailable-cursor:     $cursor-default-value;
+$pagination-link-unavailable-cursor: $cursor-default-value;
 $pagination-link-unavailable-font-color: #999;
-$pagination-link-unavailable-bg-active:  transparent;
+$pagination-link-unavailable-bg-active: transparent;
 
 /* We use these for currently selected anchor links */
-$pagination-link-current-background:     $primary-color;
-$pagination-link-current-font-color:     #fff;
-$pagination-link-current-font-weight:    bold;
-$pagination-link-current-cursor:         $cursor-default-value;
-$pagination-link-current-active-bg:      $primary-color;', :css %>
+$pagination-link-current-background: $primary-color;
+$pagination-link-current-font-color: #fff;
+$pagination-link-current-font-weight: bold;
+$pagination-link-current-cursor: $cursor-default-value;
+$pagination-link-current-active-bg: $primary-color;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 

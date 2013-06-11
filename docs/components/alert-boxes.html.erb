@@ -145,36 +145,36 @@
         <h5>Default SCSS Variables</h5>
 <%= code_example '
 /* We use this to control alert padding. */
-$alert-padding-top:         emCalc(11px);
-$alert-padding-left:        $alert-padding-top;
-$alert-padding-right:       $alert-padding-top + emCalc(10px);
-$alert-padding-bottom:      $alert-padding-top + emCalc(1px);
+$alert-padding-top: emCalc(11px);
+$alert-padding-left: $alert-padding-top;
+$alert-padding-right: $alert-padding-top + emCalc(10px);
+$alert-padding-bottom: $alert-padding-top + emCalc(1px);
 
 /* We use these to control text style. */
-$alert-font-weight:         bold;
-$alert-font-size:           emCalc(14px);
-$alert-font-color:          #fff;
-$alert-font-color-alt:      darken($secondary-color, 60%);
+$alert-font-weight: bold;
+$alert-font-size: emCalc(14px);
+$alert-font-color: #fff;
+$alert-font-color-alt: darken($secondary-color, 60%);
 
 /* We use this for close hover effect. */
-$alert-function-factor:     10%;
+$alert-function-factor: 10%;
 
 /* We use these to control border styles. */
-$alert-border-style:        solid;
-$alert-border-width:        1px;
-$alert-border-color:        darken($primary-color, $alert-function-factor);
-$alert-bottom-margin:       emCalc(20px);
+$alert-border-style: solid;
+$alert-border-width: 1px;
+$alert-border-color: darken($primary-color, $alert-function-factor);
+$alert-bottom-margin: emCalc(20px);
 
 /* We use these to style the close buttons */
-$alert-close-color:         #333;
-$alert-close-position:      emCalc(5px);
-$alert-close-font-size:     emCalc(22px);
-$alert-close-opacity:       0.3;
+$alert-close-color: #333;
+$alert-close-position: emCalc(5px);
+$alert-close-font-size: emCalc(22px);
+$alert-close-opacity: 0.3;
 $alert-close-opacity-hover: 0.5;
-$alert-close-padding:       5px 4px 4px;
+$alert-close-padding: 5px 4px 4px;
 
 /* We use this to control border radius */
-$alert-radius:              $global-radius;
+$alert-radius: $global-radius;
 ', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>

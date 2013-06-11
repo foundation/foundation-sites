@@ -4,35 +4,35 @@
 $include-html-form-classes: $include-html-classes !default;
 
 // Controlling border styles and background colors for the switch container
-$switch-border-color:             darken(#fff, 20%) !default;
-$switch-border-style:             solid !default;
-$switch-border-width:             1px !default;
-$switch-bg:                       #fff !default;
+$switch-border-color: darken(#fff, 20%) !default;
+$switch-border-style: solid !default;
+$switch-border-width: 1px !default;
+$switch-bg: #fff !default;
 
 // We use these to control the switch heights for our default classes
-$switch-height-tny:               22px !default;
-$switch-height-sml:               28px !default;
-$switch-height-med:               36px !default;
-$switch-height-lrg:               44px !default;
-$switch-bottom-margin:            emCalc(20px) !default;
+$switch-height-tny: 22px !default;
+$switch-height-sml: 28px !default;
+$switch-height-med: 36px !default;
+$switch-height-lrg: 44px !default;
+$switch-bottom-margin: emCalc(20px) !default;
 
 // We use these to control default font sizes for our classes.
-$switch-font-size-tny:            11px !default;
-$switch-font-size-sml:            12px !default;
-$switch-font-size-med:            14px !default;
-$switch-font-size-lrg:            17px !default;
-$switch-label-side-padding:       6px !default;
+$switch-font-size-tny: 11px !default;
+$switch-font-size-sml: 12px !default;
+$switch-font-size-med: 14px !default;
+$switch-font-size-lrg: 17px !default;
+$switch-label-side-padding: 6px !default;
 
 // We use these to style the switch-paddle
-$switch-paddle-bg:                #fff !default;
-$switch-paddle-fade-to-color:     darken($switch-paddle-bg, 10%) !default;
-$switch-paddle-border-color:      darken($switch-paddle-bg, 35%) !default;
-$switch-paddle-border-width:      1px !default;
-$switch-paddle-border-style:      solid !default;
-$switch-paddle-transition-speed:  .1s !default;
-$switch-paddle-transition-ease:   ease-out !default;
-$switch-positive-color:           lighten($success-color, 50%) !default;
-$switch-negative-color:           #f5f5f5 !default;
+$switch-paddle-bg: #fff !default;
+$switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%) !default;
+$switch-paddle-border-color: darken($switch-paddle-bg, 35%) !default;
+$switch-paddle-border-width: 1px !default;
+$switch-paddle-border-style: solid !default;
+$switch-paddle-transition-speed: .1s !default;
+$switch-paddle-transition-ease: ease-out !default;
+$switch-positive-color: lighten($success-color, 50%) !default;
+$switch-negative-color: #f5f5f5 !default;
 
 // Outline Style for tabbing through switches
 $switch-label-outline:            1px dotted #888 !default;

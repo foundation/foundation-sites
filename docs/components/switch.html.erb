@@ -245,38 +245,38 @@ $base-style: true
 
 <%= code_example '
 /* Controlling border styles and background colors for the switch container */
-$switch-border-color:             darken(#fff, 20%);
-$switch-border-style:             solid;
-$switch-border-width:             1px;
-$switch-bg:                       #fff;
+$switch-border-color: darken(#fff, 20%);
+$switch-border-style: solid;
+$switch-border-width: 1px;
+$switch-bg: #fff;
 
 /* We use these to control the switch heights for our default classes */
-$switch-height-tny:               22px;
-$switch-height-sml:               28px;
-$switch-height-med:               36px;
-$switch-height-lrg:               44px;
-$switch-bottom-margin:            emCalc(20px);
+$switch-height-tny: 22px;
+$switch-height-sml: 28px;
+$switch-height-med: 36px;
+$switch-height-lrg: 44px;
+$switch-bottom-margin: emCalc(20px);
 
 /* We use these to control default font sizes for our classes. */
-$switch-font-size-tny:            11px;
-$switch-font-size-sml:            12px;
-$switch-font-size-med:            14px;
-$switch-font-size-lrg:            17px;
-$switch-label-side-padding:       6px;
+$switch-font-size-tny: 11px;
+$switch-font-size-sml: 12px;
+$switch-font-size-med: 14px;
+$switch-font-size-lrg: 17px;
+$switch-label-side-padding: 6px;
 
 /* We use these to style the switch-paddle */
-$switch-paddle-bg:                #fff;
-$switch-paddle-fade-to-color:     darken($switch-paddle-bg, 10%);
-$switch-paddle-border-color:      darken($switch-paddle-bg, 35%);
-$switch-paddle-border-width:      1px;
-$switch-paddle-border-style:      solid;
-$switch-paddle-transition-speed:  .1s;
-$switch-paddle-transition-ease:   ease-out;
-$switch-positive-color:           lighten($success-color, 50%);
-$switch-negative-color:           #f5f5f5;
+$switch-paddle-bg: #fff;
+$switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%);
+$switch-paddle-border-color: darken($switch-paddle-bg, 35%);
+$switch-paddle-border-width: 1px;
+$switch-paddle-border-style: solid;
+$switch-paddle-transition-speed: .1s;
+$switch-paddle-transition-ease: ease-out;
+$switch-positive-color: lighten($success-color, 50%);
+$switch-negative-color: #f5f5f5;
 
 /* Outline Style for tabbing through switches */
-$switch-label-outline:            1px dotted #888;', :css %>
+$switch-label-outline: 1px dotted #888;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 

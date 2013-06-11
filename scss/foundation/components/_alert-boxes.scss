@@ -4,36 +4,36 @@
 $include-html-alert-classes: $include-html-classes !default;
 
 // We use this to control alert padding.
-$alert-padding-top:                emCalc(11px)                                   !default;
-$alert-padding-default-float:      $alert-padding-top                             !default;
-$alert-padding-opposite-direction: $alert-padding-top + emCalc(10px)              !default;
-$alert-padding-bottom:             $alert-padding-top + emCalc(1px)               !default;
+$alert-padding-top: emCalc(11px) !default;
+$alert-padding-default-float: $alert-padding-top !default;
+$alert-padding-opposite-direction: $alert-padding-top + emCalc(10px) !default;
+$alert-padding-bottom: $alert-padding-top + emCalc(1px) !default;
 
 // We use these to control text style.
-$alert-font-weight:                bold                                           !default;
-$alert-font-size:                  emCalc(14px)                                   !default;
-$alert-font-color:                 #fff                                           !default;
-$alert-font-color-alt:             darken($secondary-color, 60%)                  !default;
+$alert-font-weight: bold !default;
+$alert-font-size: emCalc(14px) !default;
+$alert-font-color: #fff !default;
+$alert-font-color-alt: darken($secondary-color, 60%) !default;
 
 // We use this for close hover effect.
-$alert-function-factor:            10%                                            !default;
+$alert-function-factor: 10% !default;
 
 // We use these to control border styles.
-$alert-border-style:               solid                                          !default;
-$alert-border-width:               1px                                            !default;
-$alert-border-color:               darken($primary-color, $alert-function-factor) !default;
-$alert-bottom-margin:              emCalc(20px)                                   !default;
+$alert-border-style: solid !default;
+$alert-border-width: 1px !default;
+$alert-border-color: darken($primary-color, $alert-function-factor) !default;
+$alert-bottom-margin: emCalc(20px) !default;
 
 // We use these to style the close buttons
-$alert-close-color:                #333                                           !default;
-$alert-close-position:             emCalc(5px)                                    !default;
-$alert-close-font-size:            emCalc(22px)                                   !default;
-$alert-close-opacity:              0.3                                            !default;
-$alert-close-opacity-hover:        0.5                                            !default;
-$alert-close-padding:              5px 4px 4px                                    !default;
+$alert-close-color: #333 !default;
+$alert-close-position: emCalc(5px) !default;
+$alert-close-font-size: emCalc(22px) !default;
+$alert-close-opacity: 0.3 !default;
+$alert-close-opacity-hover: 0.5 !default;
+$alert-close-padding: 5px 4px 4px !default;
 
 // We use this to control border radius
-$alert-radius:                     $global-radius                                 !default;
+$alert-radius: $global-radius !default;
 
 //
 // Alert Mixins

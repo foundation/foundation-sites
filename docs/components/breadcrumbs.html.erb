@@ -117,30 +117,30 @@
         <h5>Default SCSS Variables</h5>
 <%= code_example '
 /* We use this to set the background color for the breadcrumb container */
-$crumb-bg:                     lighten($secondaryColor, 5%);
+$crumb-bg: lighten($secondaryColor, 5%);
 
 /* We use these to set the padding around the breadcrumbs. */
-$crumb-padding:                emCalc(6px) emCalc(14px) emCalc(9px);
-$crumb-side-padding:           emCalc(12px);
+$crumb-padding: emCalc(6px) emCalc(14px) emCalc(9px);
+$crumb-side-padding: emCalc(12px);
 
 /* We use these to control border styles. */
-$crumb-function-factor:        10%;
-$crumb-border-size:            1px;
-$crumb-border-style:           solid;
-$crumb-border-color:           darken($crumb-bg, $crumb-function-factor);
-$crumb-radius:                 $global-radius;
+$crumb-function-factor: 10%;
+$crumb-border-size: 1px;
+$crumb-border-style: solid;
+$crumb-border-color: darken($crumb-bg, $crumb-function-factor);
+$crumb-radius: $global-radius;
 
 /* We use these to set various text styles for breadcrumbs. */
-$crumb-font-size:              emCalc(11px);
-$crumb-font-color:             $primary-color;
-$crumb-font-color-current:     #333;
+$crumb-font-size: emCalc(11px);
+$crumb-font-color: $primary-color;
+$crumb-font-color-current: #333;
 $crumb-font-color-unavailable: #999;
-$crumb-font-transform:         uppercase;
-$crumb-link-decor:             underline;
+$crumb-font-transform: uppercase;
+$crumb-link-decor: underline;
 
 /* We use these to control the slash between breadcrumbs */
-$crumb-slash-color:            #aaa;
-$crumb-slash:                  "/";
+$crumb-slash-color: #aaa;
+$crumb-slash: "/";
 ', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>

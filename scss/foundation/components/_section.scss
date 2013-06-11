@@ -4,30 +4,30 @@
 $include-html-section-classes: $include-html-classes !default;
 
 // We use these to set padding and hover factor
-$section-title-padding:             emCalc(15px) !default;
-$section-content-padding:           emCalc(15px) !default;
-$section-function-factor:           10% !default;
+$section-title-padding: emCalc(15px) !default;
+$section-content-padding: emCalc(15px) !default;
+$section-function-factor: 10% !default;
 
 // These style the titles
-$section-title-color:               #333 !default;
-$section-title-bg:                  #efefef !default;
-$section-title-bg-active:           darken($section-title-bg, $section-function-factor) !default;
-$section-title-bg-active-tabs:      #fff !default;
-$section-title-bg-hover:            darken($section-title-bg, $section-function-factor/2) !default;
+$section-title-color: #333 !default;
+$section-title-bg: #efefef !default;
+$section-title-bg-active: darken($section-title-bg, $section-function-factor) !default;
+$section-title-bg-active-tabs: #fff !default;
+$section-title-bg-hover: darken($section-title-bg, $section-function-factor/2) !default;
 
 // Want to control border size, here ya go!
-$section-border-size:               1px !default;
-$section-border-style:              solid !default;
-$section-border-color:              #ccc !default;
+$section-border-size: 1px !default;
+$section-border-style: solid !default;
+$section-border-color: #ccc !default;
 
 // Font controls
-$section-font-size:                 emCalc(14px) !default;
+$section-font-size: emCalc(14px) !default;
 
 // Control the color of the background and some size options
-$section-content-bg:                #fff !default;
-$section-vertical-nav-min-width:    emCalc(200px) !default;
+$section-content-bg: #fff !default;
+$section-vertical-nav-min-width: emCalc(200px) !default;
 $section-vertical-tabs-title-width: emCalc(200px) !default;
-$section-bottom-margin:             emCalc(20px) !default;
+$section-bottom-margin: emCalc(20px) !default;
 
 $title-selector: ".title" !default;
 $content-selector: ".content" !default;

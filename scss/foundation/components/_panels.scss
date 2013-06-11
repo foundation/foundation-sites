@@ -4,23 +4,23 @@
 $include-html-panel-classes: $include-html-classes !default;
 
 // We use these to control the background and border styles
-$panel-bg:              darken(#fff, 5%) !default;
-$panel-border-style:    solid !default;
-$panel-border-size:     1px !default;
+$panel-bg: darken(#fff, 5%) !default;
+$panel-border-style: solid !default;
+$panel-border-size: 1px !default;
 
 // We use this % to control how much we darken things on hover
 $panel-function-factor: 10% !default;
-$panel-border-color:    darken($panel-bg, $panel-function-factor) !default;
+$panel-border-color: darken($panel-bg, $panel-function-factor) !default;
 
 // We use these to set default inner padding and bottom margin
-$panel-margin-bottom:   emCalc(20px) !default;
-$panel-padding:         emCalc(20px) !default;
+$panel-margin-bottom: emCalc(20px) !default;
+$panel-padding: emCalc(20px) !default;
 
 // We use these to set default font colors
-$panel-font-color:      #333 !default;
-$panel-font-color-alt:  #fff !default;
+$panel-font-color: #333 !default;
+$panel-font-color-alt: #fff !default;
 
-$panel-header-adjust:   true !default;
+$panel-header-adjust: true !default;
 
 //
 // Panel Mixins

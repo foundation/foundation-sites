@@ -4,49 +4,49 @@
 $include-html-pricing-classes: $include-html-classes !default;
 
 // We use this to control the border color
-$price-table-border:        solid 1px #ddd !default;
+$price-table-border: solid 1px #ddd !default;
 
 // We use this to control the bottom margin of the pricing table
 $price-table-margin-bottom: emCalc(20px) !default;
 
 // We use these to control the title styles
-$price-title-bg:            #ddd !default;
-$price-title-padding:       emCalc(15px) emCalc(20px) !default;
-$price-title-align:         center !default;
-$price-title-color:         #333 !default;
-$price-title-weight:        bold !default;
-$price-title-size:          emCalc(16px) !default;
+$price-title-bg: #ddd !default;
+$price-title-padding: emCalc(15px) emCalc(20px) !default;
+$price-title-align: center !default;
+$price-title-color: #333 !default;
+$price-title-weight: bold !default;
+$price-title-size: emCalc(16px) !default;
 
 // We use these to control the price styles
-$price-money-bg:            #eee !default;
-$price-money-padding:       emCalc(15px) emCalc(20px) !default;
-$price-money-align:         center !default;
-$price-money-color:         #333 !default;
-$price-money-weight:        normal !default;
-$price-money-size:          emCalc(20px) !default;
+$price-money-bg: #eee !default;
+$price-money-padding: emCalc(15px) emCalc(20px) !default;
+$price-money-align: center !default;
+$price-money-color: #333 !default;
+$price-money-weight: normal !default;
+$price-money-size: emCalc(20px) !default;
 
 // We use these to control the description styles
-$price-bg:                  #fff !default;
-$price-desc-color:          #777 !default;
-$price-desc-padding:        emCalc(15px) !default;
-$price-desc-align:          center !default;
-$price-desc-font-size:      emCalc(12px) !default;
-$price-desc-weight:         normal !default;
-$price-desc-line-height:    1.4 !default;
-$price-desc-bottom-border:  dotted 1px #ddd !default;
+$price-bg: #fff !default;
+$price-desc-color: #777 !default;
+$price-desc-padding: emCalc(15px) !default;
+$price-desc-align: center !default;
+$price-desc-font-size: emCalc(12px) !default;
+$price-desc-weight: normal !default;
+$price-desc-line-height: 1.4 !default;
+$price-desc-bottom-border: dotted 1px #ddd !default;
 
 // We use these to control the list item styles
-$price-item-color:          #333 !default;
-$price-item-padding:        emCalc(15px) !default;
-$price-item-align:          center !default;
-$price-item-font-size:      emCalc(14px) !default;
-$price-item-weight:         normal !default;
-$price-item-bottom-border:  dotted 1px #ddd !default;
+$price-item-color: #333 !default;
+$price-item-padding: emCalc(15px) !default;
+$price-item-align: center !default;
+$price-item-font-size: emCalc(14px) !default;
+$price-item-weight: normal !default;
+$price-item-bottom-border: dotted 1px #ddd !default;
 
 // We use these to control the CTA area styles
-$price-cta-bg:              #f5f5f5 !default;
-$price-cta-align:           center !default;
-$price-cta-padding:         emCalc(20px) emCalc(20px) 0 !default;
+$price-cta-bg: #f5f5f5 !default;
+$price-cta-align: center !default;
+$price-cta-padding: emCalc(20px) emCalc(20px) 0 !default;
 
 //
 // Pricing Table Mixins
