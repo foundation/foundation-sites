@@ -7,7 +7,9 @@
 /* Coderay styles */
 .html, .css, .scss, .js { position: relative; }
 
-ul, ol, dl { list-style-position: inside; }
+.CodeRay {
+  ul, ol, dl { list-style-position: inside; }
+}
 
 .CodeRay:before {
   position: absolute;
