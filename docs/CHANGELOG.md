@@ -1,8 +1,22 @@
+### 4.2.2- June 11, 2013
+* Added touch events to zepto core.
+* Fixed a topbar scroll issue.
+* Fixed a reveal scroll issue.
+* Bumped jQuery to 1.10.1
+* Added PHP template.
+* Removed default webkit appearance on buttons.
+* Updated placeholder.js to actually initiate properly, this should work just fine now.
+* Added a "fixed" class to magellan for alternate styling.
+* Fixed path to variables file for Compass upgrade path.
+* Other small bug fixes.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.1...v4.2.2).
+
 ### 4.2.1- May 31, 2013
-* Add missing `$experimental` Sass variable
-* Bug fixes for top bar in mobile view
-* Retina is now a default named media query for Interchange
-* Removes incompatible Zepto function used in custom forms
+* Add missing `$experimental` Sass variable.
+* Bug fixes for top bar in mobile view.
+* Retina is now a default named media query for Interchange.
+* Removes incompatible Zepto function used in custom forms.
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.0...v4.2.1).
 
