@@ -75,16 +75,19 @@
           Panel content goes here...
         </div>
 
-        <p>You also have <strong>two options</strong> available to customize the panel within the mixin. These control the background color (which also effect border and font color) and the interior padding of the panel itself.</p>
+        <p>You also have <strong>three options</strong> available to customize the panel within the mixin. These control the background color (which also effect border and font color) and the interior padding of the panel itself.</p>
 
 <%= code_example '
-.your-class-name { @include panel($bg, $padding); }
+.your-class-name { @include panel($bg, $padding, $adjust); }
 
 /* This controls the background color, border color and type color based on brightness of the bg. */
 $bg: $secondary-color
 
 /* This controls the interior padding */
 $padding: $panel-padding
+
+/* Control whether panel mixin adjusts header styles */
+$adjust: true
 ', :css %>
 
         <div class="panel-custom">
