@@ -1,0 +1,9 @@
+{
+    "name": "zurb/foundation"
+  , "description": "The most advanced responsive front-end framework in the world."
+  , "keywords": ["foundation", "scss"]
+  , "homepage": "http://foundation.zurb.com"
+  , "author": "ZURB Inc."
+  , "license": "MIT"
+
+}

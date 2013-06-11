@@ -6,7 +6,7 @@
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     locked : false,
 
@@ -45,7 +45,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         this.events();
 
         return this.settings.init;
@@ -162,7 +162,7 @@
 
     close : function (modal) {
 
-      var modal = modal || $(this.scope),
+      var modal = modal && modal.length ? modal : $(this.scope),
           open_modals = $('.reveal-modal.open');
 
       if (open_modals.length > 0) {
@@ -323,6 +323,8 @@
 
     off : function () {
       $(this.scope).off('.fndtn.reveal');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

@@ -6,7 +6,7 @@
   Foundation.libs.alerts = {
     name : 'alerts',
 
-    version : '4.0.0',
+    version : '4.2.2',
 
     settings : {
       speed: 300, // fade out speed
@@ -20,8 +20,8 @@
         $.extend(true, this.settings, method);
       }
 
-      if (typeof method != 'string') {
-        if (!this.settings.init) this.events();
+      if (typeof method !== 'string') {
+        if (!this.settings.init) { this.events(); }
 
         return this.settings.init;
       } else {
@@ -45,6 +45,8 @@
 
     off : function () {
       $(this.scope).off('.fndtn.alerts');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

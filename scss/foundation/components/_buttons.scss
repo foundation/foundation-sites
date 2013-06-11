@@ -99,10 +99,12 @@ $button-disabled-opacity: 0.6 !default;
   @if $is-input == $button-lrg {
     padding-top: $is-input + emCalc(.5px);
     padding-bottom: $is-input + emCalc(.5px);
+    -webkit-appearance: none;
   }
   @else if $is-input {
     padding-top: $is-input + emCalc(1px);
     padding-bottom: $is-input;
+    -webkit-appearance: none;
   }
 }
 

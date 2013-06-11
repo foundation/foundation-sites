@@ -35,6 +35,38 @@
           <li><code>tip-right</code>: Align the tip to the right the element you attach it to.</li>
         </ul>
 
+        <h4>Disable for Touch Devices</h4>
+        <p>If you don't want tooltips to interfere with a touch event, you can disable them for those devices. To do this, you'll just need to add a data-option to your tooltip, like so:</p>
+
+<%= code_example '
+<span data-tooltip data-options="disable-for-touch:true" class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span>
+', :html %>
+
+        <hr>
+
+        <h4>Available SCSS Variables</h4>
+<%= code_example '
+$has-tip-border-bottom:       dotted 1px #ccc;
+$has-tip-font-weight:         bold;
+$has-tip-font-color:          #333;
+$has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
+$has-tip-font-color-hover:    $primary-color;
+$has-tip-cursor-type:         help;
+
+$tooltip-padding:             emCalc(8px);
+$tooltip-bg:                  #000;
+$tooltip-font-size:           emCalc(15px);
+$tooltip-font-weight:         bold;
+$tooltip-font-color:          #fff;
+$tooltip-line-height:         1.3;
+$tooltip-close-font-size:     emCalc(10px);
+$tooltip-close-font-weight:   normal;
+$tooltip-close-font-color:    #888;
+$tooltip-font-size-sml:       emCalc(14px);
+$tooltip-radius:              $global-radius;
+$tooltip-pip-size:            5px;
+', :css %>
+
         <hr>
 
         <h3>Using the Javascript</h3>

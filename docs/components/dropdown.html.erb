@@ -54,6 +54,18 @@
 
         <p>You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>dropdowns from a custom package</strong>. These should be linked up following our default <a href="../index.html#basicHTMLMarkup">HTML page structure</a>.</p>
 
+        <h5>Hoverable Dropdown Option</h5>
+        <p>If you'd rather have your dropdown be accessible by hover you can add a data-option to the target element:</p>
+
+<%= code_example '
+<a href="#" data-dropdown="drop1" data-options="is_hover:true">Has Dropdown</a>
+
+<ul id="drop1" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>', :html %>
+
         <hr>
 
         <h3>Build With Our Mixins</h3>
@@ -133,7 +145,11 @@ $f-dropdown-font-color:           #555;
 $f-dropdown-font-size:            emCalc(14px);
 $f-dropdown-list-padding:         emCalc(5px) emCalc(10px);
 $f-dropdown-line-height:          emCalc(18px);
-$f-dropdown-list-hover-bg:        #eeeeee;', :css %>
+$f-dropdown-list-hover-bg:        #eeeeee;
+$dropdown-mobile-default-float:   0;
+
+/* We use this to control the styles for when the dropdown has custom content. */
+$f-dropdown-content-padding:      emCalc(20px);', :css %>
 
       <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 

@@ -1,7 +1,37 @@
-<!-- 
-### 4.1.7- May 9, 2013
-* Added .clearing-featured-img class to designate the featured image in a .clearing-feature list 
--->
+### 4.2.1- May 31, 2013
+* Add missing `$experimental` Sass variable
+* Bug fixes for top bar in mobile view
+* Retina is now a default named media query for Interchange
+* Removes incompatible Zepto function used in custom forms
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.0...v4.2.1).
+
+### 4.2- May 30, 2013
+* Added new Interchange Plugin for handling responsive images.
+* Made a variable for the "sticky" class on the top-bar.
+* Changed media query variables to pixels for better consistency between font sizes.
+* Fixed deep linking for foundation.section.js.
+* Added data-options support to top-bar, you can now include "is_hover: false" to make it clickable.
+* Each dropdown section of the top-bar for mobile now takes on its natural height rather than looking for the tallest and setting them all to that.
+* Added data-options support for tool-tips.
+* Added .large-uncentered for when you only want centered on small screens.
+* Made block-grid spacing more like the normal grid.
+* Fixed confusing comments in visibility classes SCSS file.
+* Added AJAX support to Reveal.
+* Added cursor variables.
+* Fixed various typos in the documentation.
+* Updated CONTRIBUTOR.md to include how to run the docs locally.
+* Added Codekit instructions to documentation.
+* Changed to a better method test for Zepto.
+* Added hover support for dropdowns data-options by including "is_hover: true" to the options.
+* Added the ability to use deep-linking inside nested Sections.
+* Added the ability to use HTML in the data-caption for Clearing.
+* Fixes problem with embedded Youtube videos inside of Reveal.
+* Orbit now has pause/resume on hover/mousout capability.
+* Fixed Section vertical tabs on mobile.
+* Lots of small bug fixes and improvements for many of the JS components.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.6...v4.2.0).
 
 ### 4.1.6- May 6, 2013
 * Improved performance for custom select boxes.

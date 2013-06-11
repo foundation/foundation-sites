@@ -14,9 +14,9 @@ set :bundle_gemfile, "docs/Gemfile"
 set :scm, :git
 
 foundation1_ip = '166.78.3.108'
-foundation2_ip = '166.78.18.29'
+#foundation2_ip = '166.78.18.29'
 
-role :web, foundation1_ip, foundation2_ip
+role :web, foundation1_ip
 
 after "deploy:update_code", "deploy:generate_static_site"
 set :keep_releases, 3

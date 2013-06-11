@@ -8,7 +8,7 @@
         <h1><%= @page_title %></h1>
         <h4 class="subheader">The Foundation Top Bar gives you a great way to display a complex navigation bar on small or large screens.</h4>
 
-        <nav class="top-bar" data-topbar="hover">
+        <nav class="top-bar">
           <ul class="title-area">
             <!-- Title Area -->
             <li class="name">
@@ -76,7 +76,7 @@
       <div class="large-12 columns">
 
         <h3>Build With HTML Classes</h3>
-        <p>The top bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on many presentational classes to accomplish the styles and there's a lot happening in the JS.</p>
+        <p>The top bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on many presentational classes to accomplish the styles and there's a lot happening in the JS. The top bar is hoverable by default but can be changed to a click event by adding a simple <code>data-options="is_hover:false"</code> to the <code>&lt;nav&gt;</code> element. <a href="#clickable">See an example below</a>.</p>
 
         <h5>Basic Needs</h5>
         <p>The top bar has four main elements, three of which are needed for proper functionality: <code>ul.title-area</code>, a <code>ul class="right/left</code> element enclosed in a <code>section class="top-bar-section"</code>, and the <code>li.toggle-topbar</code> element that will expand the menu in the mobile layout. You can leave out the li class="name" as long as you include the .toggle-topbar element.</p>
@@ -206,6 +206,65 @@
   </section>
 </nav>', :html %>
 
+      <a name="clickable"></a>
+      <h4>Clickable Topbar</h4>
+      <p>You can now make the top bar clickable by adding a data-attribute to the nav element. Here's an example:</p>
+      <nav class="top-bar">
+        <ul class="title-area">
+          <!-- Title Area -->
+          <li class="name">
+            <h1><a href="#">Clickable Top Bar</a></h1>
+          </li>
+          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="divider hide-for-small"></li>
+            <li class="has-dropdown"><a href="#">Main Item 1</a>
+
+              <ul class="dropdown">
+                <li><label>Dropdown Level 1 Label</label></li>
+                <li class="has-dropdown"><a href="#" class="">Dropdown Level 1a</a>
+
+                  <ul class="dropdown">
+                    <li><a href="#">Dropdown Level 2a</a></li>
+                    <li><a href="#">Dropdown Level 2b</a></li>
+                    <li class="has-dropdown"><a href="#">Dropdown Level 2c</a>
+
+                      <ul class="dropdown">
+                        <li><a href="#">Dropdown Level 3a</a></li>
+                        <li><a href="#">Dropdown Level 3b</a></li>
+                        <li><a href="#">Dropdown Level 3c</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Dropdown Level 2d</a></li>
+                    <li><a href="#">Dropdown Level 2e</a></li>
+                    <li><a href="#">Dropdown Level 2f</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Dropdown Level 1b</a></li>
+                <li><a href="#">Dropdown Level 1c</a></li>
+                <li class="divider"></li>
+                <li><label>Dropdown Level 1 Label</label></li>
+                <li><a href="#">Dropdown Level 1d</a></li>
+                <li><a href="#">Dropdown Level 1e</a></li>
+                <li><a href="#">Dropdown Level 1f</a></li>
+                <li class="divider"></li>
+                <li><a href="#">See all &rarr;</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </nav>
+
+<%= code_example '
+<nav class="top-bar" data-options="is_hover:false">', :html %>
+      <hr>
+
       <h4>Available SCSS Variables</h4>
       <p>We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile first, so they are much easier to override than the previous iteration of the top bar.</p>
 
@@ -265,7 +324,7 @@ $topbar-media-query:                   "only screen and (min-width:"#{$topbar-br
 $topbar-divider-border-bottom:         solid 1px lighten($topbar-bg, 10%);
 $topbar-divider-border-top:            solid 1px darken($topbar-bg, 10%);
 
-// Sticky Class
+/* Sticky Class */
 $topbar-sticky-class:                  ".sticky";', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
@@ -289,6 +348,8 @@ $topbar-sticky-class:                  ".sticky";', :css %>
   stickyClass : 'sticky',
   custom_back_text: true, // Set this to false and it will pull the top level link name as the back text
   back_text: 'Back', // Define what you want your custom back text to be if custom_back_text: true
+  is_hover: true,
+  scrolltop : true, // jump to top when sticky nav menu toggle is clicked
   init : false
 }", :js %>
       </div>

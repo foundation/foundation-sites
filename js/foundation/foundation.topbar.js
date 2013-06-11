@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.1.7',
+    version : '4.2.2',
 
     settings : {
       index : 0,
@@ -28,7 +28,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
 
         $('.top-bar, [data-topbar]').each(function () {
           $.extend(true, self.settings, self.data_options($(this)));
@@ -64,6 +64,7 @@
       var self = this;
       var offst = this.outerHeight($('.top-bar, [data-topbar]'));
       $(this.scope)
+        .off('.fndtn.topbar')
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
           var topbar = $(this).closest('.top-bar, [data-topbar]'),
               section = topbar.find('section, .section'),
@@ -85,7 +86,7 @@
 
             topbar
               .toggleClass('expanded')
-              .css('min-height', '');
+              .css('max-height', '');
           }
 
           if (!topbar.hasClass('expanded')) {
@@ -163,14 +164,14 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('min-height', self.height($this.siblings('ul')) + self.outerHeight(titlebar, true));
+            topbar.css('max-height', self.height($this.siblings('ul')) + self.outerHeight(titlebar, true));
           }
         });
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!self.breakpoint()) {
           $('.top-bar, [data-topbar]')
-            .css('min-height', '')
+            .css('max-height', '')
             .removeClass('expanded')
             .find('li')
             .removeClass('hover');
@@ -209,9 +210,9 @@
         }
 
         if (topbar.data('index') === 0) {
-          topbar.css('min-height', 0);
+          topbar.css('max-height', '');
         } else {
-          topbar.css('min-height', self.height($previousLevelUl) + self.outerHeight(titlebar, true));
+          topbar.css('max-height', self.height($previousLevelUl) + self.outerHeight(titlebar, true));
         }
 
         setTimeout(function () {
@@ -289,6 +290,8 @@
     off : function () {
       $(this.scope).off('.fndtn.topbar');
       $(window).off('.fndtn.topbar');
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

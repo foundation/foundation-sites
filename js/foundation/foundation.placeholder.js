@@ -157,3 +157,23 @@
 	}
 
 }(this, document, Foundation.zj));
+
+;(function ($, window, document, undefined) {
+  'use strict';
+
+  Foundation.libs.placeholder = {
+    name : 'placeholder',
+
+    version : '4.2.2',
+
+    init : function (scope, method, options) {
+      this.scope = scope || this.scope;
+
+      if (typeof method !== 'string') {
+        window.onload = function () {
+        	$('input, textarea').placeholder();
+        }
+      }
+    }
+  };
+}(Foundation.zj, this, this.document));

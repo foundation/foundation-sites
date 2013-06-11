@@ -52,7 +52,7 @@ $topbar-menu-icon-color-toggled:       #888 !default;
 // Transitions and breakpoint styles
 $topbar-transition-speed:              300ms !default;
 $topbar-breakpoint:                    emCalc(940px) !default; // Change to 9999px for always mobile layout
-$topbar-media-query:                   "only screen and (min-width:"#{$topbar-breakpoint}")" !default;
+$topbar-media-query:                   "only screen and (min-width: #{$topbar-breakpoint})" !default;
 
 // Divider Styles
 $topbar-divider-border-bottom:         solid 1px lighten($topbar-bg, 10%) !default;
@@ -104,7 +104,10 @@ $topbar-sticky-class:                  ".sticky" !default;
     .button { padding-top: .5em; padding-bottom: .5em; margin-bottom: 0; }
 
     // Title Area
-    .title-area { position: relative; }
+    .title-area {
+      position: relative;
+      margin: 0;
+    }
 
     .name {
       height: $topbar-height;
@@ -240,7 +243,7 @@ $topbar-sticky-class:                  ".sticky" !default;
         font-weight: $topbar-link-weight;
         background: $topbar-dropdown-bg;
 
-        &:hover {
+        &.hover {
           background: $topbar-link-bg-hover;
           color: $topbar-link-color-hover;
         }
@@ -249,25 +252,25 @@ $topbar-sticky-class:                  ".sticky" !default;
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
-          &:hover {
+          &.hover {
             background: darken($primary-color, 10%);
           }
         }
         &.button.secondary {
           background: $secondary-color;
-          &:hover {
+          &.hover {
             background: darken($secondary-color, 10%);
           }
         }
         &.button.success {
           background: $success-color;
-          &:hover {
+          &.hover {
             background: darken($success-color, 10%);
           }
         }
         &.button.alert {
           background: $alert-color;
-          &:hover {
+          &.hover {
             background: darken($alert-color, 10%);
           }
         }
@@ -314,7 +317,10 @@ $topbar-sticky-class:                  ".sticky" !default;
       visibility: hidden;
       z-index: 99;
 
-      li { width: 100%;
+      li {
+        width: 100%;
+        height: auto;
+
         a {
           font-weight: normal;
           padding: 8px $topbar-height / 3;
@@ -398,7 +404,7 @@ $topbar-sticky-class:                  ".sticky" !default;
           padding: 0 $topbar-height / 3;
           line-height: $topbar-height;
           background: $topbar-bg;
-          &:hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
+          &.hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
         }
       }
 
