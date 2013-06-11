@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     settings : {
       index : 0,
@@ -28,7 +28,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
 
         $('.top-bar, [data-topbar]').each(function () {
           $.extend(true, self.settings, self.data_options($(this)));
@@ -86,7 +86,7 @@
 
             topbar
               .toggleClass('expanded')
-              .css('min-height', '');
+              .css('max-height', '');
           }
 
           if (!topbar.hasClass('expanded')) {
@@ -164,14 +164,14 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('min-height', self.height($this.siblings('ul')) + self.outerHeight(titlebar, true));
+            topbar.css('max-height', self.height($this.siblings('ul')) + self.outerHeight(titlebar, true));
           }
         });
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!self.breakpoint()) {
           $('.top-bar, [data-topbar]')
-            .css('min-height', '')
+            .css('max-height', '')
             .removeClass('expanded')
             .find('li')
             .removeClass('hover');
@@ -210,9 +210,9 @@
         }
 
         if (topbar.data('index') === 0) {
-          topbar.css('min-height', 0);
+          topbar.css('max-height', '');
         } else {
-          topbar.css('min-height', self.height($previousLevelUl) + self.outerHeight(titlebar, true));
+          topbar.css('max-height', self.height($previousLevelUl) + self.outerHeight(titlebar, true));
         }
 
         setTimeout(function () {
@@ -222,7 +222,7 @@
     },
 
     breakpoint : function () {
-      return $(window).width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
+      return $(document).width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
     },
 
     assemble : function () {

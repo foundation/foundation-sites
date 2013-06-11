@@ -4,7 +4,7 @@
   Foundation.libs.forms = {
     name: 'forms',
 
-    version: '4.2.0',
+    version: '4.2.2',
 
     cache: {},
 
@@ -19,7 +19,7 @@
         $.extend(true, this.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (!this.settings.init) {
           this.events();
         }
@@ -33,12 +33,17 @@
     },
 
     assemble: function () {
-      $('form.custom input[type="radio"]', $(this.scope)).not('[data-customforms="disabled"]')
+      $('form.custom input[type="radio"]', $(this.scope))
+        .not('[data-customforms="disabled"]')
+        .not('.' + this.settings.disable_class)
         .each(this.append_custom_markup);
-      $('form.custom input[type="checkbox"]', $(this.scope)).not('[data-customforms="disabled"]')
+      $('form.custom input[type="checkbox"]', $(this.scope))
+        .not('[data-customforms="disabled"]')
+        .not('.' + this.settings.disable_class)
         .each(this.append_custom_markup);
       $('form.custom select', $(this.scope))
         .not('[data-customforms="disabled"]')
+        .not('.' + this.settings.disable_class)
         .not('[multiple=multiple]')
         .each(this.append_custom_select);
     },
@@ -57,12 +62,13 @@
           e.stopPropagation();
           self.toggle_radio($(this));
         })
-        .on('change.fndtn.forms', 'form.custom select:not([data-customforms="disabled"])', function (e, force_refresh) {
+        .on('change.fndtn.forms', 'form.custom select', function (e, force_refresh) {
+          if (!$(this).not('[data-customforms="disabled"])')) return;
           self.refresh_custom_select($(this), force_refresh);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
           if ($(e.target).is('label')) {
-            var $associatedElement = $('#' + self.escape($(this).attr('for')) + ':not([data-customforms="disabled"])'),
+            var $associatedElement = $('#' + self.escape($(this).attr('for'))).not('[data-customforms="disabled"]'),
               $customCheckbox,
               $customRadio;
 
@@ -71,7 +77,7 @@
                 e.preventDefault();
                 $customCheckbox = $(this).find('span.custom.checkbox');
                 //the checkbox might be outside after the label or inside of another element
-                if ($customCheckbox.length == 0) {
+                if ($customCheckbox.length === 0) {
                   $customCheckbox = $associatedElement.add(this).siblings('span.custom.checkbox').first();
                 }
                 self.toggle_checkbox($customCheckbox);
@@ -79,7 +85,7 @@
                 e.preventDefault();
                 $customRadio = $(this).find('span.custom.radio');
                 //the radio might be outside after the label or inside of another element
-                if ($customRadio.length == 0) {
+                if ($customRadio.length === 0) {
                   $customRadio = $associatedElement.add(this).siblings('span.custom.radio').first();
                 }
                 self.toggle_radio($customRadio);
@@ -136,7 +142,7 @@
               .text($this.text());
 
             $this.closest('ul').find('li').each(function (index) {
-              if ($this[0] == this) {
+              if ($this[0] === this) {
                 selectedIndex = index;
               }
             });
@@ -230,6 +236,10 @@
       var $this = $(sel),
           type = $this.attr('type'),
           $span = $this.next('span.custom.' + type);
+          
+      if (!$this.parent().hasClass('switch')) {
+        $this.addClass('hidden-field');
+      }
 
       if ($span.length === 0) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
@@ -254,14 +264,12 @@
             $listItems,
             $currentSelect = false;
 
-        if ($this.hasClass(self.settings.disable_class)) return;
-
         if ($customSelect.length === 0) {
           var customSelectSize = $this.hasClass('small') ? 'small' : $this.hasClass('medium') ? 'medium' : $this.hasClass('large') ? 'large' : $this.hasClass('expand') ? 'expand' : '';
 
           $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize].concat(copyClasses).filter(function (item, idx, arr) {
-            if (item == '') return false;
-            return arr.indexOf(item) == idx;
+            if (item === '') return false;
+            return arr.indexOf(item) === idx;
           }).join(' ') + '"><a href="#" class="selector"></a><ul /></div>');
 
           $selector = $customSelect.find(".selector");
@@ -355,7 +363,7 @@
           $options = $select.find('option'),
           $listItems = $customSelect.find('li');
 
-      if ($listItems.length != this.cache[$customSelect.data('id')] || force_refresh) {
+      if ($listItems.length !== this.cache[$customSelect.data('id')] || force_refresh) {
         $customSelect.find('ul').html('');
 
         $options.each(function () {
@@ -423,6 +431,7 @@
     },
 
     escape: function (text) {
+      if (!text) return '';
       return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     },
 
@@ -445,7 +454,8 @@
           var _self = this;
 
           // Set all hidden parent elements, including this element.
-          _self.hidden = $child.parents().addBack().filter(":hidden");
+          _self.hidden = $child.parents();
+          _self.hidden = _self.hidden.add($child).filter(":hidden");
 
           // Loop through all hidden elements.
           _self.hidden.each(function () {

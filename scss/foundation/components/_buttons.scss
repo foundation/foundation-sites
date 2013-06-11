@@ -4,37 +4,37 @@
 $include-html-button-classes: $include-html-classes !default;
 
 // We use these to build padding for buttons.
-$button-med:              emCalc(12px) !default;
-$button-tny:              emCalc(7px) !default;
-$button-sml:              emCalc(9px) !default;
-$button-lrg:              emCalc(16px) !default;
+$button-med: emCalc(12px) !default;
+$button-tny: emCalc(7px) !default;
+$button-sml: emCalc(9px) !default;
+$button-lrg: emCalc(16px) !default;
 
 // We use this to control the display property.
-$button-display:          inline-block !default;
-$button-margin-bottom:    emCalc(20px) !default;
+$button-display: inline-block !default;
+$button-margin-bottom: emCalc(20px) !default;
 
 // We use these to control button text styles.
-$button-font-family:      inherit !default;
-$button-font-color:       #fff !default;
-$button-font-color-alt:   #333 !default;
-$button-font-med:         emCalc(16px) !default;
-$button-font-tny:         emCalc(11px) !default;
-$button-font-sml:         emCalc(13px) !default;
-$button-font-lrg:         emCalc(20px) !default;
-$button-font-weight:      bold !default;
-$button-font-align:       center !default;
+$button-font-family: inherit !default;
+$button-font-color: #fff !default;
+$button-font-color-alt: #333 !default;
+$button-font-med: emCalc(16px) !default;
+$button-font-tny: emCalc(11px) !default;
+$button-font-sml: emCalc(13px) !default;
+$button-font-lrg: emCalc(20px) !default;
+$button-font-weight: bold !default;
+$button-font-align: center !default;
 
 // We use these to control various hover effects.
-$button-function-factor:  10% !default;
+$button-function-factor: 10% !default;
 
 // We use these to control button border styles.
-$button-border-width:     1px !default;
-$button-border-style:     solid !default;
-$button-border-color:     darken($primary-color, $button-function-factor) !default;
+$button-border-width: 1px !default;
+$button-border-style: solid !default;
+$button-border-color: darken($primary-color, $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
-$button-radius:           $global-radius !default;
-$button-round:            $global-rounded !default;
+$button-radius: $global-radius !default;
+$button-round: $global-rounded !default;
 
 // We use this to set default opacity for disabled buttons.
 $button-disabled-opacity: 0.6 !default;
@@ -99,10 +99,12 @@ $button-disabled-opacity: 0.6 !default;
   @if $is-input == $button-lrg {
     padding-top: $is-input + emCalc(.5px);
     padding-bottom: $is-input + emCalc(.5px);
+    -webkit-appearance: none;
   }
   @else if $is-input {
     padding-top: $is-input + emCalc(1px);
     padding-bottom: $is-input;
+    -webkit-appearance: none;
   }
 }
 

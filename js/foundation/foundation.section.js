@@ -6,10 +6,11 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     settings : {
       deep_linking: false,
+      small_breakpoint: 768,
       one_up: true,
       section_selector : '[data-section]',
       region_selector : 'section, .section, [data-section-region]',
@@ -28,7 +29,7 @@
         $.extend(true, self.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         this.set_active_from_hash();
         this.events();
 
@@ -404,7 +405,7 @@
       if ($('html').hasClass('ie8compat')) {
         return true;
       }
-      return $(this.scope).width() < 768;
+      return $(this.scope).width() < settings.small_breakpoint;
     },
 
     off : function () {

@@ -4,23 +4,23 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use this to control padding.
-$side-nav-padding:           emCalc(14px) 0 !default;
+$side-nav-padding: emCalc(14px) 0 !default;
 
 // We use these to control list styles.
-$side-nav-list-type:         none !default;
-$side-nav-list-position:     inside !default;
-$side-nav-list-margin:       0 0 emCalc(7px) 0 !default;
+$side-nav-list-type: none !default;
+$side-nav-list-position: inside !default;
+$side-nav-list-margin: 0 0 emCalc(7px) 0 !default;
 
 // We use these to control link styles.
 $side-nav-link-color: $primary-color !default;
 $side-nav-link-color-active: lighten(#000, 30%) !default;
-$side-nav-font-size:         emCalc(14px) !default;
-$side-nav-font-weight:       bold !default;
+$side-nav-font-size: emCalc(14px) !default;
+$side-nav-font-weight: bold !default;
 
 // We use these to control border styles
-$side-nav-divider-size:      1px !default;
-$side-nav-divider-style:     solid !default;
-$side-nav-divider-color:     darken(#fff, 10%) !default;
+$side-nav-divider-size: 1px !default;
+$side-nav-divider-style: solid !default;
+$side-nav-divider-color: darken(#fff, 10%) !default;
 
 
 //

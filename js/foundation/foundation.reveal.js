@@ -6,7 +6,7 @@
   Foundation.libs.reveal = {
     name: 'reveal',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     locked : false,
 
@@ -45,7 +45,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         this.events();
 
         return this.settings.init;
@@ -77,7 +77,7 @@
             }
           }
         })
-        .on('click.fndtn.reveal touchend.click.fndtn.reveal', this.close_targets(), function (e) {
+        .on('click.fndtn.reveal', this.close_targets(), function (e) {
           e.preventDefault();
           if (!self.locked) {
             var settings = $.extend({}, self.settings, self.data_options($('.reveal-modal.open')));

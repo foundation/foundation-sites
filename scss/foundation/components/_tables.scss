@@ -4,30 +4,30 @@
 $include-html-table-classes: $include-html-classes !default;
 
 // These control the background color for the table and even rows
-$table-bg:               #fff !default;
-$table-even-row-bg:      #f9f9f9 !default;
+$table-bg: #fff !default;
+$table-even-row-bg: #f9f9f9 !default;
 
 // These control the table cell border style
-$table-border-style:     solid !default;
-$table-border-size:      1px !default;
-$table-border-color:     #ddd !default;
+$table-border-style: solid !default;
+$table-border-size: 1px !default;
+$table-border-color: #ddd !default;
 
 // These control the table head styles
-$table-head-bg:          #f5f5f5 !default;
-$table-head-font-size:   emCalc(14px) !default;
-$table-head-font-color:  #222 !default;
+$table-head-bg: #f5f5f5 !default;
+$table-head-font-size: emCalc(14px) !default;
+$table-head-font-color: #222 !default;
 $table-head-font-weight: bold !default;
-$table-head-padding:     emCalc(8px) emCalc(10px) emCalc(10px) !default;
+$table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px) !default;
 
 // These control the row padding and font styles
-$table-row-padding:      emCalc(9px) emCalc(10px) !default;
-$table-row-font-size:    emCalc(14px) !default;
-$table-row-font-color:   #222 !default;
-$table-line-height:      emCalc(18px) !default;
+$table-row-padding: emCalc(9px) emCalc(10px) !default;
+$table-row-font-size: emCalc(14px) !default;
+$table-row-font-color: #222 !default;
+$table-line-height: emCalc(18px) !default;
 
 // These are for controlling the display and margin of tables
-$table-display:          table-cell !default;
-$table-margin-bottom:    emCalc(20px) !default;
+$table-display: table-cell !default;
+$table-margin-bottom: emCalc(20px) !default;
 
 
 //

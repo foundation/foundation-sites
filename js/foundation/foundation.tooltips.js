@@ -6,7 +6,7 @@
   Foundation.libs.tooltips = {
     name: 'tooltips',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     settings : {
       selector : '.has-tip',
@@ -33,7 +33,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (Modernizr.touch) {
           $(this.scope)
             .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 

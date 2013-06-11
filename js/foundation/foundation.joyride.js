@@ -6,7 +6,7 @@
   Foundation.libs.joyride = {
     name: 'joyride',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     defaults : {
       expose               : false,      // turn on or off the expose feature
@@ -57,7 +57,7 @@
         $.extend(true, this.settings, this.defaults, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (!this.settings.init) this.events();
 
         return this.settings.init;

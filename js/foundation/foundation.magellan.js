@@ -6,7 +6,7 @@
   Foundation.libs.magellan = {
     name : 'magellan',
 
-    version : '4.2.0',
+    version : '4.2.2',
 
     settings : {
       activeClass: 'active'
@@ -20,7 +20,7 @@
         $.extend(true, this.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (!this.settings.init) {
           this.fixed_magellan = $("[data-magellan-expedition]");
           this.set_threshold();
@@ -79,8 +79,10 @@
             if ($expedition.data("magellan-fixed-position") != fixed_position) {
               $expedition.data("magellan-fixed-position", fixed_position);
               if (fixed_position) {
+                $expedition.addClass('fixed');
                 $expedition.css({position:"fixed", top:0});
               } else {
+                $expedition.removeClass('fixed');
                 $expedition.css({position:"", top:""});
               }
               if (fixed_position && typeof attr != 'undefined' && attr != false) {
