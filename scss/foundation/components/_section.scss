@@ -10,10 +10,11 @@ $section-function-factor: 10% !default;
 
 // These style the titles
 $section-title-color: #333 !default;
+$section-title-color-active: #333 !default;
 $section-title-bg: #efefef !default;
 $section-title-bg-active: darken($section-title-bg, $section-function-factor) !default;
 $section-title-bg-active-tabs: #fff !default;
-$section-title-bg-hover: darken($section-title-bg, $section-function-factor/2) !default;
+$section-title-bg-hover: darken($section-title-bg, $section-function-factor / 2) !default;
 
 // Want to control border size, here ya go!
 $section-border-size: 1px !default;
@@ -31,323 +32,350 @@ $section-bottom-margin: emCalc(20px) !default;
 
 $title-selector: ".title" !default;
 $content-selector: ".content" !default;
-
+$active-region-selector: ".active" !default;
 
 //
 // Section Mixins
 //
 
-// We use this mixin to create the basic container styles for sections when they act like accordions
-@mixin section-container($base-style:true, $section-type:accordion) {
+// basic styles for sections.js: positions
+@mixin section-container-base($section-type: accordion) {
+  width: 100%;
+  position: relative;
+  display: block;
+  margin-bottom: $section-bottom-margin;
 
-  /// We can set this to false to not include these styles to avoid repeated CSS on classes.
-  @if $base-style {
-    width: 100%;
-    display: block;
-    margin-bottom: $section-bottom-margin;
+  @if $section-type != accordion {
+    &:not([data-section-resized]):not([data-section-small-style]) {
+      visibility: hidden;
+    }
   }
+  
+  @if $section-type != tabs {
+  	&[data-section-small-style] {
+      width: 100% !important; // override inline style
+
+	  & > [data-section-region], & > section, & > .section { 
+        padding: 0 !important; // override inline style
+        margin: 0 !important; // override inline style
+        & > [data-section-title], & > #{$title-selector}{
+          width: 100% !important; // override inline style
+        }
+      }
+	}
+  }
+}
+
+// foundation styles for sections
+@mixin section-container-style($section-type: accordion) {
 
   // Accordion container border styles
   @if $section-type == accordion {
-    border: $section-border-size $section-border-style $section-border-color;
-    border-top: none;
+    border-top: $section-border-size $section-border-style $section-border-color;
   }
 
   // Tabs container border styles
   @else if $section-type == tabs {
-    border: 0;
-    position: relative;
+	border: none;
   }
 
   // Vertical Tabs container border styles
   @else if $section-type == vertical-tabs {
-    border: $section-border-size $section-border-style $section-border-color;
-    position: relative;
+    border: none;
   }
 
   // Vertical Nav container border styles
   @else if $section-type == vertical-nav {
-    border: 0;
-    position: relative;
+    border: none;
   }
 
   // Horizontal Nav container border styles
   @else if $section-type == horizontal-nav {
-    position: relative;
     background: $section-title-bg;
     border: $section-border-size $section-border-style $section-border-color;
   }
-
 }
 
+//basic styles for section.js: section region positions
+@mixin section-base($section-type: accordion) {
 
-@mixin section($section-type:accordion, $title-selector:".title", $content-selector:".content", $title-padding:$section-title-padding, $title-color:$section-title-color, $title-font-size:$section-font-size, $title-bg:$section-title-bg, $title-bg-hover:$section-title-bg-hover, $title-bg-active:$section-title-bg-active, $title-color-active:$section-title-color, $content-bg:$section-content-bg, $content-padding:$section-content-padding, $section-border-size:$section-border-size, $section-border-style:$section-border-style, $section-border-color: $section-border-color) {
+  & > [data-section-title], & > #{$title-selector} {
+    margin-bottom: 0;
+	a {
+	  width: 100%;
+      display: inline-block;
+      white-space: nowrap;
+    }
+  }
+
+  & > [data-section-content], & > #{$content-selector} {
+    display: none;
+  }
+
+  &#{$active-region-selector} {
+    & > [data-section-content], & > #{$content-selector} { display: block; }    
+  }
+
+  &:not(#{$active-region-selector}) {
+    padding: 0 !important; //override inline style
+  }
+
+  // Style for when Accordion
+  @if $section-type == accordion {
+	margin: 0;
+    & > [data-section-title], & > #{$title-selector} { width: 100%; }
+  }
+
+  // Styles for when tabs
+  @else if $section-type == tabs {
+
+    & > [data-section-title], & > #{$title-selector} {
+	  width: auto;
+      position: absolute;
+      top: 0;
+	  #{$default-float}: 0;
+    }
+  }
+
+  // Styles for when Vertical Tabs
+  @else if $section-type == vertical-tabs {
+
+    & > [data-section-title], & > #{$title-selector} {
+	  position: absolute;
+	  top:0;
+      #{$default-float}: 0;
+      width: $section-vertical-tabs-title-width;
+    }
+
+    &#{$active-region-selector} {
+	  padding-#{$default-float}: $section-vertical-tabs-title-width;
+
+      & > [data-section-title], & > #{$title-selector} {
+        width: $section-vertical-tabs-title-width;     
+      }
+    }
+  }
+
+  // Styles for when Vertical Nav
+  @else if $section-type == vertical-nav {
+	
+	position: relative;
+    display: inline-block;
+
+	& > [data-section-title], & > #{$title-selector} {
+	  position: static;
+	  width: auto;
+	  a { display: block; }
+    }
+
+	& > [data-section-content], & > #{$content-selector} {
+	    position: absolute;
+	    top:0;
+		#{$default-float}: 0;
+		z-index: 999;
+		min-width: $section-vertical-nav-min-width;
+	}
+  }
+
+  // Styles for when Horizontal Nav
+  @else if $section-type == horizontal-nav {
+
+	position: relative;
+	float: #{$default-float};
+
+	& > [data-section-title], & > #{$title-selector} {
+	  position: static;
+	  width: auto;
+	  a { display: block; }
+    }
+
+	& > [data-section-content], & > #{$content-selector} {
+	  width: auto;
+	  position: absolute;
+	  top: 0;
+      #{$default-float}: 0;
+	  z-index: 999;
+	  min-width: $section-vertical-nav-min-width;
+	}
+  }
+}
+
+//foundation styles for section regions
+@mixin section-style($section-type:accordion, $title-selector: $title-selector, $content-selector: $content-selector, $title-padding:$section-title-padding, $title-color:$section-title-color, $title-font-size:$section-font-size, $title-bg:$section-title-bg, $title-bg-hover:$section-title-bg-hover, $title-bg-active:$section-title-bg-active, $title-color-active:$section-title-color-active, $content-bg:$section-content-bg, $content-padding:$section-content-padding, $section-border-size:$section-border-size, $section-border-style:$section-border-style, $section-border-color: $section-border-color) {
 
   // Default Styles
-  > #{$title-selector} {
+  & > #{$title-selector} {
     background-color: $title-bg;
     cursor: $cursor-pointer-value;
-    margin-bottom: 0;
-
-    a {
+	border: $section-border-style $section-border-size $section-border-color;
+	a {
       padding: $title-padding;
-      display: inline-block;
       color: $title-color;
       font-size: $title-font-size;
-      white-space: nowrap;
+	  background: none;
     }
     &:hover { background-color: $title-bg-hover; }
   }
 
-  #{$content-selector} {
-    display: none;
+  & > #{$content-selector} {
     padding: $content-padding;
     background-color: $content-bg;
+	border: $section-border-style $section-border-size $section-border-color;
 
     &>*:last-child { margin-bottom: 0; }
     &>*:first-child { padding-top: 0; }
     &>*:last-child:not(.flex-video) { padding-bottom: 0; }
   }
 
-  &.active {
-    & > #{$content-selector} { display: block; }
-    & > #{$title-selector} { background: $title-bg-active;
+  &#{$active-region-selector} {
+	& > #{$title-selector} { 
+	  background: $title-bg-active;
       a { color: $title-color-active; }
     }
   }
 
+  &:not(#{$active-region-selector}) {
+    padding: 0 !important; //override inline style
+  }
+
   // Style for when Accordion
   @if $section-type == accordion {
-    // border-top: $section-border-size $section-border-style $section-border-color;
-    position: relative;
-
-    > #{$title-selector} {
-      top: 0;
-      width: 100%;
-      margin: 0;
-      border-top: $section-border-style $section-border-size $section-border-color;
-
-      a { width: 100%; }
-    }
+    & > #{$title-selector} { border-top: none; }
   }
 
   // Styles for when tabs
   @else if $section-type == tabs {
-    border: 0;
-    position: static;
 
-    > #{$title-selector} {
-      width: auto;
-      border: $section-border-style $section-border-size $section-border-color;
-      border-#{$opposite-direction}: 0;
+	&#{$active-region-selector} > #{$title-selector} {
       border-bottom: 0;
-      position: absolute;
-      top: 0;
-      z-index: 1;
-
-      a { width: 100%; }
-    }
-    &:last-child #{$title-selector} { border-#{$opposite-direction}: $section-border-style $section-border-size $section-border-color; }
-
-    #{$content-selector} {
-      border: $section-border-style $section-border-size $section-border-color;
-      position: absolute;
-      z-index: 10;
-      display: none;
-      top: -1px;
-    }
-
-    &.active {
-      & > #{$title-selector} {
-        z-index: 11;
-        border-bottom: 0;
-        background-color: $title-bg-active;
-      }
-      & > #{$content-selector} { position: relative; }
-    }
+	}
   }
 
   // Styles for when Vertical Tabs
   @else if $section-type == vertical-tabs {
-    padding-top: 0 !important;
-    border: 0;
-    position: static;
 
-    > #{$title-selector} {
-      position: absolute;
-      border-top: $section-border-style $section-border-size $section-border-color;
-      width: $section-vertical-tabs-title-width;
-    }
-    &:first-child #{$title-selector} { border-top: 0; }
+    &#{$active-region-selector} {
+	  padding-#{$default-float}: $section-vertical-tabs-title-width - emCalc(1px);
 
-    #{$content-selector} {
-      // Display all content blocks to account for the scrollbar
-      // in the outerWidth measurements. JavaScript will toggle the active tabs.
-      display: block;
-      position: relative;
-      left: $section-vertical-tabs-title-width;
-      border-left: $section-border-style $section-border-size $section-border-color;
-      z-index: 10;
-    }
-
-    &.active {
       & > #{$title-selector} {
-        background-color: $title-bg-active;
-        width: $section-vertical-tabs-title-width + emCalc(1px); // Cover the content's left border
-        border-right: solid 0 transparent;
-        z-index: 11; // Put active title on top of the content
-      }
-      &:last-child #{$title-selector} { border-bottom: 0; }
-    }
-  }
-
-  // Styles for when Vertical Nav
-  @else if $section-type == vertical-nav {
-    padding-top: 0 !important;
-    position: relative;
-
-    > #{$title-selector} {
-      border-top: none;
-      border: $section-border-style $section-border-size $section-border-color;
-
-      a {
-        display: block;
-        width: 100%;
-      }
-    }
-    #{$content-selector} { display: none; }
-    &:first-child #{$title-selector} { border-bottom: none; }
-
-    &.active {
-      & > #{$content-selector} {
-        display: block;
-        position: absolute;
-        #{$default-float}: 100%;
-        top: 0px;
-        z-index: 999;
-        min-width: $section-vertical-nav-min-width;
-        border: $section-border-style $section-border-size $section-border-color;
+        background-color: $title-bg-active;  
       }
     }
   }
-
-  // Styles for when Horizontal Nav
-  @else if $section-type == horizontal-nav {
-    padding-top: 0;
-    border: 0;
-    position: static;
-
-    > #{$title-selector} {
-      width: auto;
-      border: $section-border-style $section-border-size $section-border-color;
-      border-#{$default-float}: 0;
-      top: -1px;
-      position: absolute;
-      z-index: 1;
-
-      a { width: 100%; }
-    }
-
-    #{$content-selector} { display: none; }
-
-    &.active {
-      & > #{$content-selector} {
-        display: block;
-        position: absolute;
-        z-index: 999;
-        #{$default-float}: 0;
-        top: -2px;
-        min-width: $section-vertical-nav-min-width;
-        border: $section-border-style $section-border-size $section-border-color;
-      }
-    }
-  }
-
 }
-
-
 
 @if $include-html-section-classes != false {
 
   /* Sections */
-  .section-container, .section-container.auto {
-    @include section-container(accordion);
 
-    &>section,
-    &>.section { @include section(accordion); }
+  [data-section=''], [data-section='auto'], .section-container.auto,
+  [data-section='vertical-tabs'], .section-container.vertical-tabs,
+  [data-section='vertical-nav'], .section-container.vertical-nav,
+  [data-section='horizontal-nav'], .section-container.horizontal-nav,
+  [data-section='accordion'], .section-container.accordion {
+	@include section-container-base(accordion);
+	& > section, & > .section, & > [data-section-region] {
+      @include section-base(accordion);
+    }
+  }
+
+  .section-container.auto,
+  .section-container.vertical-tabs,
+  .section-container.vertical-nav,
+  .section-container.horizontal-nav,
+  .section-container.accordion {
+	@include section-container-style(accordion);
+	& > section, & > .section { 
+      @include section-style(accordion);
+    }
+  }
+
+  [data-section='tabs'], .section-container.tabs {
+	@include section-container-base(tabs);
+	& > section, & > .section, & > [data-section-region] {
+      @include section-base(tabs);
+    }
   }
 
   .section-container.tabs {
-    @include section-container(false, tabs);
-
-    &>section,
-    &>.section { @include section(tabs, $title-bg-active:$section-title-bg-active-tabs); }
+	@include section-container-style(tabs);
+	& > section, & > .section { 
+      @include section-style(tabs, $title-bg-active: $section-title-bg-active-tabs);
+    }
   }
 
   @media #{$small} {
 
-    .section-container.auto {
-      @include section-container(false, tabs);
-
-      &>section,
-      &>.section { @include section(tabs, $title-bg-active:$section-title-bg-active-tabs); }
-    }
-    .section-container.accordion .section {
-      padding-top: 0 !important;
+    [data-section=''], [data-section='auto'], .section-container.auto {
+	  @include section-container-base(tabs);
+	  & > section, & > .section, & > [data-section-region] {
+        @include section-base(tabs);
+      }
     }
 
-    .section-container.vertical-tabs {
-      @include section-container(false, vertical-tabs);
-
-      section,
-      .section { @include section(vertical-tabs); }
+	.section-container.auto {
+	  @include section-container-style(tabs);
+	  & > section, & > .section { 
+        @include section-style(tabs, $title-bg-active: $section-title-bg-active-tabs);
+      }
     }
 
-    .section-container.vertical-nav {
-      @include section-container(false, vertical-nav);
-
-      &>section,
-      &>.section { @include section(vertical-nav); }
+	[data-section='vertical-tabs'], .section-container.vertical-tabs {
+	  @include section-container-base(vertical-tabs);
+	  & > section, & > .section, & > [data-section-region] {
+        @include section-base(vertical-tabs);
+      }
     }
 
-    .section-container.horizontal-nav {
-      @include section-container(false, horizontal-nav);
+	.section-container.vertical-tabs {
+	  @include section-container-style(vertical-tabs);
+	  & > section, & > .section { 
+        @include section-style(vertical-tabs);
+      }
+    }
 
-      &>section,
-      &>.section { @include section(horizontal-nav); }
+	[data-section='vertical-nav'], .section-container.vertical-nav {
+	  @include section-container-base(vertical-nav);
+	  & > section, & > .section, & > [data-section-region] {
+        @include section-base(vertical-nav);
+      }
+    }
+
+	.section-container.vertical-nav {
+	  @include section-container-style(vertical-nav);
+	  & > section, & > .section { 
+        @include section-style(vertical-nav);
+      }
+    }
+
+	[data-section='horizontal-nav'], .section-container.horizontal-nav {
+	  @include section-container-base(horizontal-nav);
+	  & > section, & > .section, & > [data-section-region] {
+        @include section-base(horizontal-nav);
+      }
+    }
+
+	.section-container.horizontal-nav {
+	  @include section-container-style(horizontal-nav);
+	  & > section, & > .section { 
+        @include section-style(horizontal-nav);
+      }
     }
   }
 
   // Change all variations to expanded accordions when no JS is detected.
-  .no-js .section-container {
-    &.auto,
-    &.accordion,
-    &.tabs,
-    &.vertical-tabs,
-    &.vertical-nav,
-    &.horizontal-nav {
-      @include section-container(accordion);
-
-      &>section,
-      &>.section { @include section(accordion);
-        #{$title-selector} {
-          position: static;
-          width: 100%;
-          border-left: 0;
-          border-right: 0;
-        }
-
-        #{$content-selector} {
-          position: static;
-          display: block;
-          width: 100%;
-          border-left: 0;
-          border-right: 0;
-          border-bottom: 0;
-        }
+  .no-js {
+    [data-section], .section-container {
+	  @include section-container-base(accordion);
+	  & > section, & > .section, & > [data-section-region] {
+        @include section-base(accordion);
       }
-
+    }
+	.section-container {
+      @include section-container-style(accordion);
+	  & > section, & > .section { 
+        @include section-style(accordion);
+      }
     }
   }
-
 }
