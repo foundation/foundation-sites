@@ -132,10 +132,11 @@
         <p>Just like with the CSS, we've made it easy to center the pagination element using the quick mixin.</p>
 
 <%= code_example '
+.container-class-name { @include pagination-container(true); }
 .your-class-name { @include pagination($centered, $base-styles); }
 
-/* Setting this to true will add styles to the parent of your pagination element for centering */
-$centered: false
+/* Setting this to true will remove floats on li elements and display them as inline-block */
+$centered: true
 
 /* This controls whether or not the base styles come across. Useful when applying the centered option. */
 $base-style: true
