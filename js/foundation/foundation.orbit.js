@@ -157,6 +157,8 @@
         if ($slide.length === 1) {
           self._reset_timer($slides_container, true);
           self._goto($slides_container, $slide.index(), function() {});
+          $(e.currentTarget).parents('ul').find('[data-orbit-link]').removeClass('active');
+          $(e.currentTarget).addClass('active');
         }
       });
 
