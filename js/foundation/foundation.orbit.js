@@ -183,6 +183,13 @@
         .on('orbit:after-slide-change.fndtn.orbit', function(e, orbit) {
           var $slide_number = $container.find('.' + self.settings.slide_number_class);
 
+          var dataOrbitSlide = $slides_container.children().eq(orbit.slide_number).attr('data-orbit-slide');
+          if(dataOrbitSlide) {
+            var dataOrbitLink = $('[data-orbit-link='+dataOrbitSlide.toString()+']');
+            $(dataOrbitLink).parents('ul').find('[data-orbit-link]').removeClass('active');
+            $(dataOrbitLink).addClass('active');
+          }
+
           if ($slide_number.length === 1) {
             $slide_number.replaceWith(self._slide_number_html(orbit.slide_number, orbit.total_slides));
           }
