@@ -1,7 +1,7 @@
 //
 // Inline List Variables
 //
-$include-html-global-classes: $include-html-classes !default;
+$include-html-inline-list-classes: $include-html-classes !default;
 
 // We use this to control the margins and padding of the inline list.
 $inline-list-top-margin: 0 !default;
@@ -43,7 +43,7 @@ $inline-list-children-display: block !default;
 }
 
 
-@if $include-html-global-classes != false {
+@if $include-html-inline-list-classes != false {
 
   /* Inline Lists */
   .inline-list {
