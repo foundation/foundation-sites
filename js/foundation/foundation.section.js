@@ -12,6 +12,7 @@
       deep_linking: false,
       small_breakpoint: 768,
       one_up: true,
+      multi_expand: false,
       section_selector : '[data-section]',
       region_selector : 'section, .section, [data-section-region]',
       title_selector : '.title, [data-section-title]',
@@ -130,9 +131,11 @@
         region.addClass('active');
 
         if (prev_active_section.length > 0) {
-          prev_active_section
-            .removeClass('active')
-            .attr('style', '');
+          if (!self.is_accordion(parent) || (self.is_accordion(parent) && !settings.multi_expand)) {
+            prev_active_section
+              .removeClass('active')
+              .attr('style', '');
+          }
         }
 
         // Toggle the content display attribute. This is done to
@@ -167,10 +170,12 @@
             settings = $.extend({}, self.settings, self.data_options($this));
 
         if (active_section.length > 1) {
-          active_section
-            .not(':first')
-            .removeClass('active')
-            .attr('style', '');
+          if (!self.is_accordion($this) || (self.is_accordion($this) && !settings.multi_expand)) {
+            active_section
+              .not(':first')
+              .removeClass('active')
+              .attr('style', '');
+          }
         } else if (active_section.length < 1
           && !self.is_vertical_nav($this)
           && !self.is_horizontal_nav($this)
