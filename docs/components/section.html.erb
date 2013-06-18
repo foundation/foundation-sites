@@ -1050,10 +1050,11 @@ $('#myModal').on('opened', function () {
 
     <%= code_example "
 {
-  deep_linking: false,
-  one_up: true,
-  rtl: false,
-  callback: function (){}
+  deep_linking: false, // Allows for querystring hashtag direct linking
+  one_up: true, // Ensures the first section is shown on initial view
+  multi_expand: false, // For accordion, allows more than one section to be expanded at the same time.
+  rtl: false, // Flags for right-to-left behavior
+  callback: function (){} // Called when a section is selected.
 }", :js %>
 
       </div>
