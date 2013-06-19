@@ -74,6 +74,7 @@ MODX
 Middleman
 
 * [Middleman Skeleton](https://github.com/axyz/middleman-zurb-foundation) by [Andrea Moretti](https://twitter.com/axyz)
+* [Middleman Foundation 4.x Template](https://github.com/mattolson/middleman-zurb-template) by [Matt Olson](http://mattolson.com)
 
 Magento
 * [Magento & Foundation](https://github.com/nandroid/MagentoFoundation) by Nandroid
