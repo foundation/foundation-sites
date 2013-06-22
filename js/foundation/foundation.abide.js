@@ -83,9 +83,9 @@
  
       var validations = this.parse_patterns(els),
           validation_count = validations.length;
-      console.log(validations)
+
       while (validation_count--) {
-        if (validations[validation_count] && /submit/.test(e.type)) return false;
+        if (!validations[validation_count] && /submit/.test(e.type)) return false;
       }
 
       return true;
