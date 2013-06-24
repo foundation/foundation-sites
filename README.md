@@ -96,7 +96,7 @@ Shopify
 
 Silverstripe
 
-*  [Foundation Silverstripe Theme](https://github.com/ryanwachtl/silverstripe-foundation) by [Ryan Wachtl](https://github.com/ryanwachtl)
+* [Foundation Silverstripe Theme](https://github.com/ryanwachtl/silverstripe-foundation) by [Ryan Wachtl](https://github.com/ryanwachtl)
 
 Orchard
 
