@@ -280,12 +280,12 @@
 			},105);
 		});
           $window.scroll(function() {
-            if ($window.scrollTop() >= (distance)) {
+            if ($window.scrollTop() > (distance)) {
               $(klass).addClass("fixed");
               $('body').css('padding-top',offst);
             }
 
-            else if ($window.scrollTop() < distance) {
+            else if ($window.scrollTop() <= distance) {
               $(klass).removeClass("fixed");
               $('body').css('padding-top','0');
             }
