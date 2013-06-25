@@ -306,6 +306,11 @@
       if (typeof off === 'boolean') {
         content.attr('style', '');
         section.attr('style', '');
+
+        // Reset the minHeight and maxWidth values (only applicable to
+        // vertical tabs)
+        content.css('minHeight', '');
+        content.css('maxWidth', '');
       } else {
         if (self.is_vertical_tabs(section)
             && !self.small(section)) {

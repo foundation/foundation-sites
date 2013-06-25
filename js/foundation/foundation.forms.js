@@ -63,7 +63,7 @@
           self.toggle_radio($(this));
         })
         .on('change.fndtn.forms', 'form.custom select', function (e, force_refresh) {
-          if (!$(this).not('[data-customforms="disabled"])')) return;
+          if ($(this).is('[data-customforms="disabled"]')) return;
           self.refresh_custom_select($(this), force_refresh);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
