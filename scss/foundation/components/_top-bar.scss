@@ -324,6 +324,9 @@ $topbar-sticky-class: ".sticky" !default;
         a {
           font-weight: normal;
           padding: 8px $topbar-height / 3;
+          &.parent-link {
+            font-weight: $topbar-link-weight;
+          }
         }
 
         &.title h5 { margin-bottom: 0;
