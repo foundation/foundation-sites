@@ -128,6 +128,10 @@
         .foundation();
       <% end %>
 
+      $('form').on('invalid', function (e) {
+        console.log(e.target);
+      });
+
       // For Kitchen Sink Page
       $('#start-jr').on('click', function() {
         $(document).foundation('joyride','start');

@@ -10,6 +10,7 @@
 
     settings : {
       live_validate : true,
+      focus_on_invalid : true,
       patterns : {
         alpha: /[a-zA-Z]+/,
         alpha_numeric : /[a-zA-Z0-9]+/,
@@ -61,7 +62,7 @@
           forms = $('form[data-abide]', this.scope).attr('novalidate', 'novalidate');
 
       forms
-        .on('submit', function (e) {
+        .on('submit validate', function (e) {
           return self.validate($(this).find('input, textarea, select'), e);
         });
 
@@ -82,11 +83,23 @@
       }
  
       var validations = this.parse_patterns(els),
-          validation_count = validations.length;
+          validation_count = validations.length,
+          form = $(els[0]).closest('form');
 
       while (validation_count--) {
-        if (!validations[validation_count] && /submit/.test(e.type)) return false;
+        if (!validations[validation_count] && /submit/.test(e.type)) {
+          if (this.settings.focus_on_invalid) els[validation_count].focus();
+          form.trigger('invalid');
+          $(els[validation_count]).closest('form').attr('data-invalid', '');
+          return false;
+        }
       }
+
+      if (/submit/.test(e.type)) {
+        form.trigger('valid');
+      }
+
+      form.removeAttr('data-invalid');
 
       return true;
     },
@@ -135,10 +148,10 @@
 
         if (el_patterns[i][1].test(value) && valid_length ||
           !required && el.value.length < 1) {
-          $(el).parent().removeClass('error');
+          $(el).removeAttr('data-invalid').parent().removeClass('error');
           validations.push(true);
         } else {
-          $(el).parent().addClass('error');
+          $(el).attr('data-invalid', '').parent().addClass('error');
           validations.push(false);
         }
       }
