@@ -102,8 +102,8 @@
       var self = this,
           $slides_container = $(slider),
           $container = $slides_container.wrap(self._container_html()).parent(),
-          $slides = $slides_container.children();
-      
+          $slides = $slides_container.children('li');
+
       $.extend(true, self.settings, self.data_options($slides_container));
 
       if (self.settings.navigation_arrows) {
@@ -156,7 +156,7 @@
 
         if ($slide.length === 1) {
           self._reset_timer($slides_container, true);
-          self._goto($slides_container, $slide.index(), function() {});
+          self._goto($slides_container, $slide.index('li'), function() {});
         }
       });
 
@@ -251,7 +251,7 @@
 
     _init_dimensions: function ($slides_container) {
       var $container = $slides_container.parent(),
-          $slides = $slides_container.children();
+          $slides = $slides_container.children('li');
 
       $slides_container.css('width', $slides.length * 100 + '%');
       $slides.css('width', 100 / $slides.length + '%');
@@ -326,9 +326,9 @@
     _goto: function($slides_container, index_or_direction, callback) {
       var self = this,
           $container = $slides_container.parent(),
-          $slides = $slides_container.children(),
+          $slides = $slides_container.children('li'),
           $active_slide = $slides_container.find('.' + self.settings.active_slide_class),
-          active_index = $active_slide.index(),
+          active_index = $slides.length === 3 ? 1 : $active_slide.index('li'),
           margin_position = Foundation.rtl ? 'marginRight' : 'marginLeft';
 
       if ($container.hasClass(self.settings.orbit_transition_class)) {
@@ -373,7 +373,7 @@
       $slides_container.trigger('orbit:before-slide-change');
       if ($slides_container.css(margin_position) === new_margin_left) {
         $container.removeClass(self.settings.orbit_transition_class);
-        $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
+        $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children('li').length - 2}]);
         callback();
       } else {
         var properties = {};
@@ -381,7 +381,7 @@
 
         $slides_container.animate(properties, self.settings.animation_speed, 'linear', function() {
           $container.removeClass(self.settings.orbit_transition_class);
-          $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children().length - 2}]);
+          $slides_container.trigger('orbit:after-slide-change', [{slide_number: active_index, total_slides: $slides_container.children('li').length - 2}]);
           callback();
         });
       }
