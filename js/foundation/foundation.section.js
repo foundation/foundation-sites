@@ -45,6 +45,8 @@
 
       $(this.scope)
         .on('click.fndtn.section', '[data-section] .title, [data-section] [data-section-title]', function (e) {
+          e.stopPropagation();
+
           var $this = $(this),
               section = $this.closest(self.settings.region_selector);
 
