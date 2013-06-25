@@ -120,15 +120,15 @@ $preloader-class: "preloader" !default;
       list-style: none;
       margin: 0;
       padding: 0;
-      position: relative;
+      display: table;
 
       img { display: block; }
+      
+      & > li {
+        display: table-cell;
+      }
 
       &>* {
-        position: relative;
-        float: $default-float;
-        height: auto;
-
         .orbit-caption {
           position: absolute;
           bottom: 0;

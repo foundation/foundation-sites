@@ -138,17 +138,6 @@
       var self = this,
           $container = $slides_container.parent();
 
-      $(window)
-        .on('load.fndtn.orbit', function() {
-          $slides_container.height('');
-          $slides_container.height($slides_container.height($container.height()));
-          $slides_container.trigger('orbit:ready');
-        })
-        .on('resize.fndtn.orbit', function() {
-          $slides_container.height('');
-          $slides_container.height($slides_container.height($container.height()));
-        });
-
       $(document).on('click.fndtn.orbit', '[data-orbit-link]', function(e) {
         e.preventDefault();
         var id = $(e.currentTarget).attr('data-orbit-link'),
@@ -255,7 +244,6 @@
 
       $slides_container.css('width', $slides.length * 100 + '%');
       $slides.css('width', 100 / $slides.length + '%');
-      $slides_container.height($container.height());
       $slides_container.css('width', $slides.length * 100 + '%');
     },
 
