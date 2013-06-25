@@ -10,6 +10,7 @@
 
     settings : {
       live_validate : true,
+      input_events : 'blur change', // space delimited
       focus_on_invalid : true,
       patterns : {
         alpha: /[a-zA-Z]+/,
@@ -72,7 +73,7 @@
 
       forms
         .find('input, textarea, select')
-        .on('keydown change', function (e) {
+        .on(this.settings.input_events, function (e) {
           self.validate(this, e);
         });
     },
