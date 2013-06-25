@@ -37,9 +37,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 
 // Style the pagination container. Currently only used when centering elements.
 @mixin pagination-container($center:false) {
-  @if $center {
-    text-align: center;
-  }
+  @if $center { text-align: center; }
 }
 
 // Style unavailable list items
@@ -48,7 +46,8 @@ $pagination-link-current-active-bg: $primary-color !default;
     cursor: $pagination-link-unavailable-cursor;
     color: $pagination-link-unavailable-font-color;
   }
-  &:hover a, & a:focus { background: $pagination-link-unavailable-bg-active; }
+  &:hover a,
+  & a:focus { background: $pagination-link-unavailable-bg-active; }
 }
 
 // Style the current list item. Do not assume that the current item has
@@ -119,11 +118,11 @@ $pagination-link-current-active-bg: $primary-color !default;
 
 @if $include-html-nav-classes != false {
 
-  /*
-   * Detach the nested class selectors from the containing
-   * ul and div elements in order to support more flexibility
-   * for external code that uses the Sass mixins.
-   */
+  // Detach the nested class selectors from the containing
+  // ul and div elements in order to support more flexibility
+  // for external code that uses the Sass mixins.
+
+  /* Default Pagination */
   ul.pagination {
     @include pagination;
   }
