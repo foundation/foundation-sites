@@ -243,12 +243,6 @@ $topbar-sticky-class: ".sticky" !default;
         font-weight: $topbar-link-weight;
         background: $topbar-dropdown-bg;
 
-        &.hover {
-          background: $topbar-link-bg-hover;
-          color: $topbar-link-color-hover;
-        }
-
-
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
@@ -275,6 +269,12 @@ $topbar-sticky-class: ".sticky" !default;
           }
         }
 
+      }
+
+      // Apply the hover link color when it has that class
+      &.hover > a {
+        background: $topbar-link-bg-hover;
+        color: $topbar-link-color-hover;
       }
 
       // Apply the active link color when it has that class
@@ -496,9 +496,33 @@ $topbar-sticky-class: ".sticky" !default;
           li .dropdown { right: 100%; }
         }
       }
-
     }
+    
+    // Degrade gracefully when Javascript is disabled. Displays dropdown and changes 
+    // background & text color on hover.
+    .no-js .top-bar-section {
+	  ul li {    
+        // Apply the hover link color when it has that class
+        &:hover > a {
+          background: $topbar-link-bg-hover;
+          color: $topbar-link-color-hover;
+        }
 
+        // Apply the active link color when it has that class
+        &:active > a {
+          background: $topbar-link-bg-active;
+          color: $topbar-link-color-active;
+        }
+      }    
+      
+	  .has-dropdown {
+        &:hover {
+          & > .dropdown {
+            visibility: visible;
+          }
+        }
+	  }
+	}    
   }
 
 }

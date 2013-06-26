@@ -35,8 +35,47 @@ $pagination-link-current-active-bg: $primary-color !default;
 // Pagination Mixin
 //
 
+// Style the pagination container. Currently only used when centering elements.
+@mixin pagination-container($center:false) {
+  @if $center { text-align: center; }
+}
+
+// Style unavailable list items
+@mixin pagination-unavailable-item() {
+  a {
+    cursor: $pagination-link-unavailable-cursor;
+    color: $pagination-link-unavailable-font-color;
+  }
+  &:hover a,
+  & a:focus { background: $pagination-link-unavailable-bg-active; }
+}
+
+// Style the current list item. Do not assume that the current item has
+// an anchor <a> element.
+@mixin pagination-current-item($has-anchor: true) {
+  @if $has-anchor {
+    a {
+      background: $pagination-link-current-background;
+      color: $pagination-link-current-font-color;
+      font-weight: $pagination-link-current-font-weight;
+      cursor: $pagination-link-current-cursor;
+
+      &:hover,
+      &:focus { background: $pagination-link-current-active-bg; }
+    }
+  } @else {
+    background: $pagination-link-current-background;
+    color: $pagination-link-current-font-color;
+    font-weight: $pagination-link-current-font-weight;
+    cursor: $pagination-link-current-cursor;
+
+    &:hover,
+    &:focus { background: $pagination-link-current-active-bg; }
+  }
+}
+
 // We use this mixin to set the properties for the creating Foundation pagination
-@mixin pagination($center:false, $base-style:true) {
+@mixin pagination($center:false, $base-style:true, $use-default-classes:true) {
 
   @if $base-style {
     display: block;
@@ -44,8 +83,6 @@ $pagination-link-current-active-bg: $primary-color !default;
     margin-#{$default-float}: $pagination-margin;
 
     li {
-      display: block;
-      float: $pagination-li-float;
       height: $pagination-li-height;
       color: $pagination-li-font-color;
       font-size: $pagination-li-font-size;
@@ -60,41 +97,42 @@ $pagination-link-current-active-bg: $primary-color !default;
       &:hover a,
       a:focus { background: $pagination-link-active-bg; }
 
-      &.unavailable a {
-        cursor: $pagination-link-unavailable-cursor;
-        color: $pagination-link-unavailable-font-color;
-      }
-
-      &.unavailable:hover a, &.unavailable a:focus { background: $pagination-link-unavailable-bg-active; }
-
-      &.current a {
-        background: $pagination-link-current-background;
-        color: $pagination-link-current-font-color;
-        font-weight: $pagination-link-current-font-weight;
-        cursor: $pagination-link-current-cursor;
-
-        &:hover,
-        &:focus { background: $pagination-link-current-active-bg; }
+      @if $use-default-classes {
+        &.unavailable { @include pagination-unavailable-item(); }
+        &.current { @include pagination-current-item(); }
       }
     }
   }
 
-  @if $center {
-    & { text-align: center;
-      ul > li {
-        float: none;
-        display: inline-block;
-      }
+  // Left or center align the li elements
+  li {
+    @if $center {
+      float: none;
+      display: inline-block;
+    } @else {
+      float: $pagination-li-float;
+      display: block;
     }
   }
 }
 
-
-
-
 @if $include-html-nav-classes != false {
 
-  /* Pagination */
-  .pagination { @include pagination; }
-  .pagination-centered { @include pagination(true,false); }
+  // Detach the nested class selectors from the containing
+  // ul and div elements in order to support more flexibility
+  // for external code that uses the Sass mixins.
+
+  /* Default Pagination */
+  ul.pagination {
+    @include pagination;
+  }
+
+  /* Pagination centred wrapper */
+  .pagination-centered {
+    @include pagination-container(true);
+
+    ul.pagination {
+      @include pagination(true, false);
+    }
+  }
 }

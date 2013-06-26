@@ -56,7 +56,6 @@ $crumb-slash: "/" !default;
   float: $default-float;
   font-size: $crumb-font-size;
   text-transform: $crumb-font-transform;
-  color: $crumb-font-color;
 
   &:hover a, &:focus a { text-decoration: $crumb-link-decor; }
 

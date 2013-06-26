@@ -89,7 +89,7 @@ $switch-label-outline:            1px dotted #888 !default;
   }
 
   // The toggle area for radio switches. We call is a paddle.
-  & > span {
+  span:last-child {
     position: absolute;
     top: -1px;
     #{$default-float}: -1px;
@@ -129,6 +129,11 @@ $switch-label-outline:            1px dotted #888 !default;
   // http://css-tricks.com/webkit-sibling-bug/
   @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
 
+  form.custom & .hidden-field {
+    margin-left: auto;
+    position: absolute;
+    visibility: visible;
+  }
 }
 
 // We use this mixin to create the size styles for switches.
@@ -144,13 +149,13 @@ $switch-label-outline:            1px dotted #888 !default;
 
   input {
     // Move the paddle to the right position
-    &:first-of-type:checked ~ span {
+    &:first-of-type:checked ~ span:last-child {
       #{$default-float}: 100%;
       margin-#{$default-float}: emCalc(-$height + 1px);
     }
   }
 
-  & > span {
+  span:last-child {
     width: emCalc($height);
     height: emCalc($height);
   }
@@ -164,7 +169,7 @@ $switch-label-outline:            1px dotted #888 !default;
     background: $switch-bg;
     border-color: $switch-border-color;
 
-    & > span {
+    span:last-child {
       border-color: darken($paddle-bg, 30%);
       background: $paddle-bg;
       @if $experimental {
@@ -188,7 +193,7 @@ $switch-label-outline:            1px dotted #888 !default;
 
     &:hover,
     &:focus {
-      & > span {
+      span:last-child {
         background: $paddle-bg;
         @if $experimental {
           background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
@@ -204,11 +209,11 @@ $switch-label-outline:            1px dotted #888 !default;
   // Setting up the radius for switches
   @if $radius == true {
     @include radius(4px);
-    & > span { @include radius(3px); }
+    span:last-child { @include radius(3px); }
   }
   @else if $radius {
     @include radius($radius);
-    & > span { @include radius($radius - 1px); }
+    span:last-child { @include radius($radius - 1px); }
   }
 
 }
@@ -240,12 +245,12 @@ $switch-label-outline:            1px dotted #888 !default;
 
       // Add a radius to the switch
       &.radius { @include radius(4px);
-        & > span { @include radius(3px); }
+        span:last-child{ @include radius(3px); }
       }
 
       // Make the switch completely round, like a pill
       &.round { @include radius(1000px);
-        & > span { @include radius(999px); }
+        span:last-child { @include radius(999px); }
         label { padding: 0 emCalc($switch-label-side-padding + 3px); }
       }
 
