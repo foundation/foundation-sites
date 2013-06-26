@@ -1,3 +1,13 @@
+### 4.2.3- June 26, 2013
+* Made it to where custom switches work inside custom forms.
+* Small update to breadcrumb styling so that defaults don't get overridden.
+* Fixed bugs with height of Top Bar.
+* Added Middleman template to README
+* Fixed a wrong selector in forms.js
+* Bug fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.2...v4.2.3).
+
 ### 4.2.2- June 11, 2013
 * Added touch events to zepto core.
 * Fixed a topbar scroll issue.
