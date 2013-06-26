@@ -16,19 +16,25 @@
         <form class="custom">
           <div class="row">
             <div class="large-4 columns">
-              <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" CHECKED><span class="custom radio checked"></span> Radio Button 1</label>
-              <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 2</label>
-              <label for="radio1"><input name="radio1" type="radio" id="radio1" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
+              <input name="radio1" type="radio" id="radio1" checked>
+              <label for="radio1"><span></span> Radio Button 1</label>
+              <input name="radio1" type="radio" id="radio2">
+              <label for="radio2"><span></span> Radio Button 2</label>
+              <input name="radio1" type="radio" id="radio3" disabled>
+              <label for="radio3"><span></span> Radio Button 3</label>
             </div>
             <div class="large-4 columns">
-              <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
-              <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
-              <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
+              <input type="checkbox" id="checkbox1">
+              <label for="checkbox1">Label for Checkbox</label>
+              <input type="checkbox" id="checkbox2" checked>
+              <label for="checkbox2">Label for Checkbox</label>
+              <input type="checkbox" checked id="checkbox3">
+              <label for="checkbox3">Label for Checkbox</label>
             </div>
             <div class="large-4 columns">
               <label for="customDropdown1">Medium Example</label>
               <select id="customDropdown1" class="medium">
-                <option DISABLED>This is a dropdown</option>
+                <option disabled>This is a dropdown</option>
                 <option>This is another option</option>
                 <option>This is another option too</option>
                 <option>Look, a third option</option>
@@ -45,19 +51,25 @@
 <form class="custom">
   <div class="row">
     <div class="large-4 columns">
-      <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" CHECKED><span class="custom radio checked"></span> Radio Button 1</label>
-      <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 2</label>
-      <label for="radio1"><input name="radio1" type="radio" id="radio1" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
+      <input name="radio1" type="radio" id="radio1" checked>
+      <label for="radio1"><span></span> Radio Button 1</label>
+      <input name="radio1" type="radio" id="radio2">
+      <label for="radio2"><span></span> Radio Button 2</label>
+      <input name="radio1" type="radio" id="radio3" disabled>
+      <label for="radio3"><span></span> Radio Button 3</label>
     </div>
     <div class="large-4 columns">
-      <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;"><span class="custom checkbox"></span> Label for Checkbox</label>
-      <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
-      <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" style="display: none;"><span class="custom checkbox checked"></span> Label for Checkbox</label>
+      <input type="checkbox" id="checkbox1">
+      <label for="checkbox1">Label for Checkbox</label>
+      <input type="checkbox" id="checkbox2" checked>
+      <label for="checkbox2">Label for Checkbox</label>
+      <input type="checkbox" checked id="checkbox3">
+      <label for="checkbox3">Label for Checkbox</label>
     </div>
     <div class="large-4 columns">
       <label for="customDropdown1">Medium Example</label>
       <select id="customDropdown1" class="medium">
-        <option DISABLED>This is a dropdown</option>
+        <option disabled>This is a dropdown</option>
         <option>This is another option</option>
         <option>This is another option too</option>
         <option>Look, a third option</option>
@@ -73,17 +85,15 @@
 
 <%= code_example '
 <form class="custom">
-  <label for="radio1">
-    <input name="radio1" type="radio" id="radio1" style="display:none;">
-    <span class="custom radio"></span> Radio Button 1
-  </label>
+  <input name="radio1" type="radio" id="radio1">
+  <label for="radio1"><span></span> Radio Button 1</label>
 </form>', :html %>
 
         <form class="custom">
-          <label for="radio1">
-            <input name="radio1" type="radio" id="radio1" style="display:none;">
-            <span class="custom radio"></span> Radio Button 1
-          </label>
+          <form class="custom">
+            <input name="radio1" type="radio" id="radio4">
+            <label for="radio4"><span></span> Radio Button 1</label>
+          </form>
         </form>
 
         <hr>
@@ -93,18 +103,38 @@
 
 <%= code_example '
 <form class="custom">
-  <label for="checkbox1">
-    <input type="checkbox" id="checkbox1" style="display: none;">
-    <span class="custom checkbox"></span> Label for Checkbox
-  </label>
+  <input type="checkbox" id="checkbox1">
+  <label for="checkbox1">Label for Checkbox</label>
 </form>', :html %>
 
         <form class="custom">
-          <label for="checkbox1">
-            <input type="checkbox" id="checkbox1" style="display: none;">
-            <span class="custom checkbox"></span> Label for Checkbox
-          </label>
+          <input type="checkbox" id="checkbox1">
+          <label for="checkbox1">Label for Checkbox</label>
         </form>
+
+        <p>By default, we use <code>×</code> (unicode: U+00D7) as the check mark, and it will be displayed using the same font type of your chosen html body font. The latest version of Foundation 4 allows you to change this. For example, if you are using <a href="http://zurb.com/playground/foundation-icons">Foundation Icon Fonts</a>, you can use it's <code>remove</code> icon:</p>
+
+<%= code_example '
+$custom-form-checkbox-glyph-font: "GeneralFoundicons";
+$custom-form-checkbox-glyph-symbol: "\f006";
+/* and you can change the size of the mark: */
+$custom-form-check-size: 20px;
+/* or the color of it: */
+$custom-form-check-color: #f00;
+/* or put some rounded corners on the checkbox */
+$custom-form-checkbox-radius: 4px;
+', :css %>
+
+        <p>More check marks symbol code can be found <a href="http://en.wikipedia.org/wiki/X_mark">here</a> and <a href="http://en.wikipedia.org/wiki/Tick_(check_mark)">here</a>, to list a few:</p>
+        <ul>
+          <li><code>×</code> (U+00D7)</li>
+          <li><code>⨯</code> (U+2A2F)</li>
+          <li><code>✗</code> (U+2717)</li>
+          <li><code>✘</code> (U+2718)</li>
+          <li><code>✘</code> (U+2718)</li>
+          <li><code>✓</code> (U+2713)</li>
+          <li><code>✔</code> (U+2714)</li>
+        </ul>
 
         <hr>
 
