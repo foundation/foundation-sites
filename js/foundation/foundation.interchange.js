@@ -266,13 +266,4 @@
 
   };
 
-}(Foundation.zj, this, this.document));t;
-    },
-
-    reflow : function () {
-      this.images(true);
-    }
-
-  };
-
 }(Foundation.zj, this, this.document));
