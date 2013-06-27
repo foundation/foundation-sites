@@ -103,6 +103,8 @@ select {
   width: 100%;
 }
 
+/* Alert Panel HTML Classes */
+/* Alert panel container */
 .alert-panel {
   margin-bottom: 1.5em;
   line-height: 1.3em;
@@ -115,6 +117,7 @@ select {
   background: #fff;
 }
 
+/* Alert panel title */
 .alert-panel-title {
   background-color: #2ba6cb;
   border: solid 1px #2284a1;
@@ -148,6 +151,7 @@ select {
   color: #200203;
 }
 
+/* Alert panel close button */
 .alert-panel.close {
   background-color: #64c2de;
   border-bottom: solid 1px #2284a1;
@@ -214,6 +218,7 @@ select {
   color: #f8a9aa;
 }
 
+/* Alert panel message area */
 .alert-panel-message {
   background: white;
   border-left: solid 1px #2ba6cb;
@@ -234,6 +239,7 @@ select {
   border-right: solid 1px #c60f13;
 }
 
+/* Alert panel action area */
 .alert-panel-action {
   background: #e3f4f9;
   border: solid 1px #64c2de;

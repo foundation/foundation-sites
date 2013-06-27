@@ -11,12 +11,12 @@ $alert-panel-close-bg: lighten($primary-color, 15%);
 $alert-panel-close-bg-hover: darken($primary-color, 10%);
 $alert-panel-close-border: solid 1px darken($primary-color, 10%);
 $alert-panel-close-border-hover: solid 1px darken($primary-color, 10%);
-$alert-panel-close-padding: 0px 12px .25em;
-$alert-panel-close-height: 0;
-$alert-panel-close-font-size: .8em;
-$alert-panel-close-font-weight: bold;
 $alert-panel-close-color: darken($primary-color, 10%);
 $alert-panel-close-color-hover: lighten($primary-color, 40%);
+$alert-panel-close-font-size: .8em;
+$alert-panel-close-font-weight: bold;
+$alert-panel-close-height: 0;
+$alert-panel-close-padding: 0px 12px .25em;
 $alert-panel-close-transition: "all, 300ms";
 
 // Title area options
@@ -31,61 +31,84 @@ $alert-panel-title-padding: 10px 34px 10px 10px;
 // Message area options
 $alert-panel-message-bg: #fff;
 $alert-panel-message-border: solid 1px $primary-color;
-$alert-panel-message-padding: 20px;
-$alert-panel-message-line-height: 1.3;
-$alert-panel-message-font-size: 1em;
 $alert-panel-message-color: #222;
+$alert-panel-message-font-size: 1em;
 $alert-panel-message-font-weight: normal;
+$alert-panel-message-line-height: 1.3;
+$alert-panel-message-padding: 20px;
 
 // Action area options
+$alert-panel-action-align: right;
 $alert-panel-action-bg: lighten($primary-color, 45%);
 $alert-panel-action-border: solid 1px lighten($primary-color, 15%);
 $alert-panel-action-padding: 10px;
-$alert-panel-action-align: right;
 
-// Secondary variables
+// Secondary close variables
 $alert-panel-close-bg-secondary: lighten($secondary-color, 5%);
 $alert-panel-close-bg-hover-secondary: darken($secondary-color, 15%);
 $alert-panel-close-border-secondary: solid 1px darken($secondary-color, 10%);
 $alert-panel-close-border-hover-secondary: solid 1px darken($secondary-color, 15%);
 $alert-panel-close-color-secondary: darken($secondary-color, 15%);
 $alert-panel-close-color-hover-secondary: lighten($secondary-color, 35%);
+
+// Secondary title variables
 $alert-panel-title-bg-secondary: $secondary-color;
 $alert-panel-title-border-secondary: solid 1px darken($secondary-color, 15%);
 $alert-panel-title-color-secondary: darken($secondary-color, 45%);
+
+// Secondary message variables
 $alert-panel-message-border-secondary: solid 1px darken($secondary-color, 10%);
+
+// Secondary action variables
 $alert-panel-action-bg-secondary: lighten($secondary-color, 5%);
 $alert-panel-action-border-secondary: solid 1px darken($secondary-color, 10%);
 
-// Success variables
+// Success close variables
 $alert-panel-close-bg-success: lighten($success-color, 15%);
 $alert-panel-close-bg-hover-success: darken($success-color, 10%);
 $alert-panel-close-border-success: solid 1px darken($success-color, 10%);
 $alert-panel-close-border-hover-success: solid 1px darken($success-color, 10%);
 $alert-panel-close-color-success: darken($success-color, 10%);
 $alert-panel-close-color-hover-success: lighten($success-color, 40%);
+
+// Success title variables
 $alert-panel-title-bg-success: $success-color;
 $alert-panel-title-border-success: solid 1px darken($success-color, 10%);
 $alert-panel-title-color-success: darken($success-color, 35%);
+
+// Success message variables
 $alert-panel-message-border-success: solid 1px $success-color;
+
+// Success action variables
 $alert-panel-action-bg-success: lighten($success-color, 45%);
 $alert-panel-action-border-success: solid 1px lighten($success-color, 15%);
 
-// Alert variables
+// Alert close variables
 $alert-panel-close-bg-alert: lighten($alert-color, 15%);
 $alert-panel-close-bg-hover-alert: darken($alert-color, 10%);
 $alert-panel-close-border-alert: solid 1px darken($alert-color, 10%);
 $alert-panel-close-border-hover-alert: solid 1px darken($alert-color, 10%);
 $alert-panel-close-color-alert: darken($alert-color, 10%);
 $alert-panel-close-color-hover-alert: lighten($alert-color, 40%);
+
+// Alert title variables
 $alert-panel-title-bg-alert: $alert-color;
 $alert-panel-title-border-alert: solid 1px darken($alert-color, 10%);
 $alert-panel-title-color-alert: darken($alert-color, 35%);
+
+// Alert message variables
 $alert-panel-message-border-alert: solid 1px $alert-color;
+
+// Alert action variables
 $alert-panel-action-bg-alert: lighten($alert-color, 45%);
 $alert-panel-action-border-alert: solid 1px lighten($alert-color, 15%);
 
 
+//
+/* Alert Panel HTML Classes */
+//
+
+/* Alert panel container */
 .alert-panel {
   margin-bottom: $alert-panel-margin-bottom;
   line-height: $alert-panel-title-line-height;
@@ -96,6 +119,7 @@ $alert-panel-action-border-alert: solid 1px lighten($alert-color, 15%);
   .button.secondary { background: #fff; }
 }
 
+/* Alert panel title */
 .alert-panel-title {
   background-color: $alert-panel-title-bg;
   border: $alert-panel-title-border;
@@ -126,6 +150,7 @@ $alert-panel-action-border-alert: solid 1px lighten($alert-color, 15%);
   }
 }
 
+/* Alert panel close button */
 .alert-panel.close {
   background-color: $alert-panel-close-bg;
   border-bottom: $alert-panel-close-border;
@@ -195,6 +220,7 @@ $alert-panel-action-border-alert: solid 1px lighten($alert-color, 15%);
   }
 }
 
+/* Alert panel message area */
 .alert-panel-message {
   background: $alert-panel-message-bg;
   border-left: $alert-panel-message-border;
@@ -217,6 +243,7 @@ $alert-panel-action-border-alert: solid 1px lighten($alert-color, 15%);
   }
 }
 
+/* Alert panel action area */
 .alert-panel-action {
   background: $alert-panel-action-bg;
   border: $alert-panel-action-border;
