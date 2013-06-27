@@ -6,7 +6,7 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '4.2.2',
+    version : '4.2.4',
 
     cache : {},
 
@@ -29,13 +29,11 @@
       },
 
       directives : {
-        replace : function (el, path) {
+        replace: function (el, path) {
           if (/IMG/.test(el[0].nodeName)) {
-            var path_parts = path.split('/'),
-                path_file = path_parts[path_parts.length - 1],
-                orig_path = el[0].src;
+            var orig_path = el[0].src;
 
-            if (new RegExp(path_file, 'i').test(el[0].src)) return;
+            if (new RegExp(path, 'i').test(orig_path)) return;
 
             el[0].src = path;
 
@@ -260,6 +258,15 @@
       }
 
       return output;
+    },
+
+    reflow : function () {
+      this.images(true);
+    }
+
+  };
+
+}(Foundation.zj, this, this.document));t;
     },
 
     reflow : function () {
