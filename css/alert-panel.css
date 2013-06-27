@@ -111,6 +111,9 @@ select {
   margin-bottom: 0;
   margin-top: 0;
 }
+.alert-panel .button.secondary {
+  background: #fff;
+}
 
 .alert-panel-title {
   background-color: #2ba6cb;
@@ -145,7 +148,7 @@ select {
   color: #200203;
 }
 
-.alert-panel-close {
+.alert-panel.close {
   background-color: #64c2de;
   border-bottom: solid 1px #2284a1;
   border-left: solid 1px #2284a1;
@@ -168,43 +171,43 @@ select {
   -o-transition: all, 300ms;
   transition: all, 300ms;
 }
-.alert-panel-close:hover, .alert-panel-close:active {
+.alert-panel.close:hover, .alert-panel.close:active {
   background-color: #2284a1;
   border-bottom: solid 1px #2284a1;
   border-left: solid 1px #2284a1;
   color: #cdebf5;
 }
-.alert-panel.secondary .alert-panel-close {
+.alert-panel.secondary .alert-panel.close {
   background-color: #f6f6f6;
   border-bottom: solid 1px #d0d0d0;
   border-left: solid 1px #d0d0d0;
   color: #c3c3c3;
 }
-.alert-panel.secondary .alert-panel-close:hover, .alert-panel.secondary .alert-panel-close:active {
+.alert-panel.secondary .alert-panel.close:hover, .alert-panel.secondary .alert-panel.close:active {
   background-color: #c3c3c3;
   border-bottom: solid 1px #c3c3c3;
   border-left: solid 1px #c3c3c3;
   color: white;
 }
-.alert-panel.success .alert-panel-close {
+.alert-panel.success .alert-panel.close {
   background-color: #82d63e;
   border-bottom: solid 1px #457a1a;
   border-left: solid 1px #457a1a;
   color: #457a1a;
 }
-.alert-panel.success .alert-panel-close:hover, .alert-panel.success .alert-panel-close:active {
+.alert-panel.success .alert-panel.close:hover, .alert-panel.success .alert-panel.close:active {
   background-color: #457a1a;
   border-bottom: solid 1px #457a1a;
   border-left: solid 1px #457a1a;
   color: #c6eca7;
 }
-.alert-panel.alert .alert-panel-close {
+.alert-panel.alert .alert-panel.close {
   background-color: #ef3236;
   border-bottom: solid 1px #970b0e;
   border-left: solid 1px #970b0e;
   color: #970b0e;
 }
-.alert-panel.alert .alert-panel-close:hover, .alert-panel.alert .alert-panel-close:active {
+.alert-panel.alert .alert-panel.close:hover, .alert-panel.alert .alert-panel.close:active {
   background-color: #970b0e;
   border-bottom: solid 1px #970b0e;
   border-left: solid 1px #970b0e;
@@ -245,7 +248,7 @@ select {
 }
 .alert-panel.secondary .alert-panel-action {
   background: #f6f6f6;
-  border: solid 1px gainsboro;
+  border: solid 1px #d0d0d0;
 }
 .alert-panel.success .alert-panel-action {
   background: #d4f1bc;

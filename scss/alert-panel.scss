@@ -1,6 +1,5 @@
 // Make sure to run 'gem install compass' from command line first.
 @import "compass/css3";
-@import "settings";
 @import "foundation/components/global.scss";
 
 // Global options
@@ -56,7 +55,7 @@ $alert-panel-title-border-secondary: solid 1px darken($secondary-color, 15%);
 $alert-panel-title-color-secondary: darken($secondary-color, 45%);
 $alert-panel-message-border-secondary: solid 1px darken($secondary-color, 10%);
 $alert-panel-action-bg-secondary: lighten($secondary-color, 5%);
-$alert-panel-action-border-secondary: solid 1px darken($secondary-color, 5%);
+$alert-panel-action-border-secondary: solid 1px darken($secondary-color, 10%);
 
 // Success variables
 $alert-panel-close-bg-success: lighten($success-color, 15%);
@@ -93,6 +92,8 @@ $alert-panel-action-border-alert: solid 1px lighten($alert-color, 15%);
 
   // Reset some margins to avoid annoyance
   p,a,h1,h2,h3,h4,h5,h6 { margin-bottom: 0; margin-top: 0; }
+
+  .button.secondary { background: #fff; }
 }
 
 .alert-panel-title {
@@ -125,7 +126,7 @@ $alert-panel-action-border-alert: solid 1px lighten($alert-color, 15%);
   }
 }
 
-.alert-panel-close {
+.alert-panel.close {
   background-color: $alert-panel-close-bg;
   border-bottom: $alert-panel-close-border;
   border-left: $alert-panel-close-border;
