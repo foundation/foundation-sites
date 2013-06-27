@@ -1,0 +1,77 @@
+// Colors
+$light-gray: #ebebeb;
+$mid-gray: #c2c2c2;
+$gray: #959595;
+$mid-dark-gray: #636363;
+$dark-gray: #252525;
+
+// Border radii
+$rounded: 1000px;
+
+// User icon 
+i.icon {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background: $light-gray;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin-top: -16px;
+
+	// head
+	&::before {
+		content: "";
+		display: block;
+		background: $mid-gray;
+		width: 10px;
+		height: 10px;
+		border-radius: $rounded;
+		position: absolute;
+		left: 50%;
+		margin-left: -5px;
+		top: 5px;
+	}
+
+	// torso
+	&::after {
+		content: "";
+		display: block;
+		background: $mid-gray;
+		width: 20px;
+		height: 10px;
+		border-radius: $rounded $rounded 0 0;
+		display: block;
+		position: absolute;
+		left: 50%;
+		margin-left: -10px;	
+		top: 15px;
+	}
+
+}
+
+h6.byline {
+	padding-left: 40px;
+	position: relative;
+	.data {
+		font-weight: 400;
+	}
+	.label {
+		font-size: 60%;
+	}
+	margin-bottom: 15px;
+	margin-top: 10px;
+
+}
+
+.indented.comment {
+	padding-left: 15px;
+	border-left: 1px solid $light-gray;
+}
+
+.push { margin-bottom: 40px; }
+
+.bullets {
+	margin-left: 30px;
+}
