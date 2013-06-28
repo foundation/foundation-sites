@@ -90,12 +90,12 @@
           }
 
           if (!topbar.hasClass('expanded')) {
-            if (topbar.hasClass('fixed')) {
+            if (topbar.hasClass('fixed') && !topbar.parent().hasClass(stickyClass)) {
               topbar.parent().addClass('fixed');
               topbar.removeClass('fixed');
               $('body').css('padding-top',offst);
             }
-          } else if (topbar.parent().hasClass('fixed')) {
+          } else if (topbar.parent().hasClass('fixed') && !topbar.parent().hasClass(stickyClass)) {
             topbar.parent().removeClass('fixed');
             topbar.addClass('fixed');
             $('body').css('padding-top','0');
@@ -272,23 +272,20 @@
         var distance = $(klass).length ? $(klass).offset().top: 0,
             $window = $(window);
             var offst = this.outerHeight($('.top-bar'));
-        //Whe resize elements of the page on windows resize. Must recalculate distance
+        //When resize elements of the page on windows resize. Must recalculate distance
 		$(window).resize(function() {
-            clearTimeout(t_top);
-			t_top = setTimeout (function() {
-				distance = $(klass).offset().top;
-			},105);
+			distance = $(klass).offset().top;
 		});
-          $window.scroll(function() {
-            if ($window.scrollTop() > (distance)) {
-              $(klass).addClass("fixed");
-              $('body').css('padding-top',offst);
-            }
-
-            else if ($window.scrollTop() <= distance) {
-              $(klass).removeClass("fixed");
-              $('body').css('padding-top','0');
-            }
+	    $window.scroll(function() {
+	      if ($window.scrollTop() > (distance)) {
+	        $(klass).addClass("fixed");
+	        $('body').css('padding-top',offst);
+	      }
+	
+	      else if ($window.scrollTop() <= distance) {
+	        $(klass).removeClass("fixed");
+	        $('body').css('padding-top','0');
+	      }
         });
       }
     },
