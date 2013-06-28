@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Mobile Top Bar and Button Bar</title>
+
+  <link rel="stylesheet" href="css/normalize.css" />
+
+  <link rel="stylesheet" href="css/foundation.css" />
+
+  <style>
+    body {
+      max-width: 320px;
+    }
+    p,li {
+      font-size: 15px;
+    }
+    .top-bar { 
+      height: 44px; 
+      background: #00AEEF; 
+      text-align: center; 
+      top:0; 
+      z-index:1; 
+      border-bottom: 1px solid #0094d9; 
+      box-shadow: rgba(0, 0, 0, .25) 0 1px 2px;
+    }
+    h2 { 
+        color:#fff; 
+        font-weight: 
+        normal; 
+        font-size: 23px; 
+        line-height: 44px; 
+        margin: 0; 
+        text-shadow: 0 -1px rgba(0,0,0,.2); 
+      }
+    .top-bar-button { 
+        border-style: solid;
+        border-width: 1px;
+        font-family: inherit;
+        font-weight: bold;
+        line-height: 1;
+        position: relative;
+        text-decoration: none;
+        text-align: center;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        background: #009fd9;
+        color: #fff;
+        box-shadow: rgba(255, 255, 255, .4) 0 1px 0 inset;
+        border-color: #008cbf;
+        font-size: 12px;
+        padding: 5px 6px;
+        margin-top: 9px;
+      }
+    .nav {
+      bottom: 0; 
+      width:100%; 
+      margin-top: 44px; 
+      box-shadow: rgba(0, 0, 0, .25) 0 -1px 2px;
+    }
+    .nav-button { 
+      float: left; 
+      background: #46484d; 
+      height:40px; width:25%; 
+      margin:0; 
+      border-right: 1px solid #5a5a5a; 
+      text-align: center;
+    }
+    .nav-button a { 
+      color:#fff; 
+      text-decoration: none; 
+      line-height: 40px; 
+      text-shadow: 0 -1px rgba(0,0,0,.9);
+    }
+    .nav-me { 
+      border: none;
+    }
+    .nav-margin { 
+      margin-bottom: 70px !important;
+    }
+    ul {
+      list-style: none;
+    }
+    a:hover {
+      color: #fff;
+    }
+  </style>
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+</head>
+<body>
+  <div class="row top-bar">
+    <div class="small-4 small-offset-4 columns">
+      <h2>Profile</h2>
+    </div>
+    <div class="small-4 columns">
+      <a href="#" class="top-bar-button right">Settings</a>
+    </div>
+  </div>
+  <div class="nav">
+    <ul>
+      <li class="nav-button"><a href="#">Feed</a></li>
+      <li class="nav-button"><a href="#">Groups</a></li>
+      <li class="nav-button"><a href="#">Goals</a></li>
+      <li class="nav-button nav-me"><a href="#">Me</a></li>
+    </ul>
+</div>
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

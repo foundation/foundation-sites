@@ -1,0 +1,21 @@
+/*
+Errno::ENOENT: No such file or directory - scss/mobile-bars.scss
+
+Backtrace:
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/lib/sass/plugin/compiler.rb:360:in `read'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/lib/sass/plugin/compiler.rb:360:in `update_stylesheet'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/lib/sass/plugin/compiler.rb:201:in `each'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/lib/sass/plugin/compiler.rb:283:in `block in watch'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/vendor/listen/lib/listen/multi_listener.rb:108:in `call'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/vendor/listen/lib/listen/multi_listener.rb:108:in `on_change'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/vendor/listen/lib/listen/multi_listener.rb:117:in `block in initialize_adapter'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/vendor/listen/lib/listen/adapters/polling.rb:56:in `call'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/vendor/listen/lib/listen/adapters/polling.rb:56:in `poll'
+/Users/kurt/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems/sass-3.2.9/vendor/listen/lib/listen/adapters/polling.rb:32:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::ENOENT: No such file or directory - scss/mobile-bars.scss"; }
