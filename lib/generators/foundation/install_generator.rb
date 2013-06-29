@@ -15,7 +15,7 @@ module Foundation
         # gsub_file "app/assets/javascripts/application#{detect_js_format[0]}", /\/\/= require jquery\n/, ""
         insert_into_file File.join(javascripts_base_dir, "application#{detect_js_format[0]}"), "#{detect_js_format[1]} require foundation\n", :before => "//= require_tree ."
         if options.engine?
-          insert_into_file File.join(javascripts_base_dir, "application#{detect_js_format[0]}"), "#{detect_js_format[1]} require vendor/jquery\n", :before => "#{detect_js_format[0]} require foundation ."
+          insert_into_file File.join(javascripts_base_dir, "application#{detect_js_format[0]}"), "#{detect_js_format[1]} require vendor/jquery\n", :before => "#{detect_js_format[1]} require foundation\n"
         end
         append_to_file File.join(javascripts_base_dir, "application#{detect_js_format[0]}"), "\n$(function(){ $(document).foundation(); });\n"
         settings_file = File.join(File.dirname(__FILE__),"..","..","..","scss","foundation","_variables.scss")
