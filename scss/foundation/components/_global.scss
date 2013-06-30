@@ -15,7 +15,7 @@ $experimental: true !default;
 }
 
 // We use this to create equal side border radius on elements.
-@mixin side-radius($side, $radius) {
+@mixin side-radius($side, $radius:$global-radius) {
   @if $side == left {
     @if $experimental {
       -moz-border-radius-bottomleft: $radius;
