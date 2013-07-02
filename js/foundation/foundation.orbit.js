@@ -21,6 +21,8 @@
       stack_on_small_class: 'orbit-stack-on-small',
       next_class: 'orbit-next',
       prev_class: 'orbit-prev',
+      next_text: 'Next',
+      prev_text: 'Prev',   
       timer_container_class: 'orbit-timer',
       timer_paused_class: 'paused',
       timer_progress_class: 'orbit-progress',
@@ -90,12 +92,12 @@
 
     _next_html: function() {
       var self = this;
-      return '<a href="#" class="' + self.settings.next_class + '">Next <span></span></a>';
+      return '<a href="#" class="' + self.settings.next_class + '" title="' + self.settings.next_txt + '">' + self.settings.next_txt + ' <span></span></a>';
     },
 
     _prev_html: function() {
       var self = this;
-      return '<a href="#" class="' + self.settings.prev_class + '">Prev <span></span></a>';
+      return '<a href="#" class="' + self.settings.prev_class + '" title="' + self.settings.prev_txt + '">' + self.settings.prev_txt + ' <span></span></a>';
     },
 
     _init: function (idx, slider) {
