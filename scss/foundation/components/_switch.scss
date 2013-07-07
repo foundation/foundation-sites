@@ -125,10 +125,6 @@ $switch-label-outline:            1px dotted #888 !default;
   // Hiding custom form spans since we auto-create them
   span.custom { display: none !important; }
 
-  // Bugfix for older Webkit, including mobile Webkit. Adapted from:
-  // http://css-tricks.com/webkit-sibling-bug/
-  @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
-
   form.custom & .hidden-field {
     margin-left: auto;
     position: absolute;
