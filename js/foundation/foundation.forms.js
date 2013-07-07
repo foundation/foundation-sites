@@ -119,7 +119,7 @@
             return false;
           }
         })
-        .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
+        .on('click.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
               $customDropdown = $this.closest('div.custom.dropdown'),
               $select = getFirstPrevSibling($customDropdown, 'select'),
@@ -270,7 +270,7 @@
           $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize].concat(copyClasses).filter(function (item, idx, arr) {
             if (item === '') return false;
             return arr.indexOf(item) === idx;
-          }).join(' ') + '"><a href="#" class="selector"></a><ul /></div>');
+          }).join(' ') + '"><a href="#" class="selector"></a><a href="#"><ul /></a></div>');
 
           $selector = $customSelect.find(".selector");
           $customList = $customSelect.find("ul");
