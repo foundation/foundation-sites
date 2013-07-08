@@ -80,7 +80,7 @@
 .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links {
   padding: 50px 0 0 0;
   border-left: 1px solid rgba(255, 255, 255, 0.2);
-  background: url("/../../img/icons/footer-top-icons.png") no-repeat center 0;
+  background: url("icons/footer-top-icons.png") no-repeat center 0;
   height: 200px;
   margin-bottom: 30px;
 }
@@ -118,7 +118,7 @@
 }
 .zurb-footer-top .global .footer-link-block {
   font-weight: normal;
-  background: url("../../img/icons/footer-icons.png") no-repeat 0 0;
+  background: url("icons/footer-icons.png") no-repeat 0 0;
   display: block;
   margin: 30px 0 0 0;
 }
@@ -159,7 +159,7 @@
 .zurb-footer-bottom a.zurb-logo {
   color: #858585;
   font-weight: normal;
-  background: url("/../../img/icons/footer-icons.png") no-repeat 0 3px;
+  background: url("icons/footer-icons.png") no-repeat 0 3px;
   padding: 25px 0 0 0;
   font-size: 1em;
   display: inline-block;
@@ -212,7 +212,7 @@
   display: block;
   height: 50px;
   width: 50px;
-  background: url("../../img/icons/social.png") no-repeat center 0;
+  background: url("icons/social.png") no-repeat center 0;
 }
 .zurb-footer-bottom ul.home-social li a:hover {
   opacity: 0.8;

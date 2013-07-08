@@ -177,6 +177,8 @@ input[type="text"].attached-input {
   }
 }
 
+header { background-color: #2ba6cb; padding: 15px 0; margin-bottom: 25px; }
+
 /* Section Docs */
 .section-auto-sample {
   @include section-container($section-type:accordion);

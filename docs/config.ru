@@ -8,5 +8,6 @@ map '/assets' do
   environment.append_path File.expand_path('../../test/js', __FILE__)
   environment.append_path File.expand_path('../../js', __FILE__)
   environment.append_path File.expand_path('../js', __FILE__)
+  environment.append_path File.expand_path('../img', __FILE__)
   run environment
 end

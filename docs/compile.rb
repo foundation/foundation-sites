@@ -15,6 +15,7 @@ class FoundationAssets
       @env.append_path File.expand_path('../css', __FILE__)
       @env.append_path File.expand_path('../../js', __FILE__)
       @env.append_path File.expand_path('../js', __FILE__)
+      @env.append_path File.expand_path('../img', __FILE__)
     end
 
     def compile

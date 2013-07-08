@@ -17,11 +17,11 @@
     <link rel="stylesheet" href="<%= asset_path %>/normalize.css" />
     <link rel="stylesheet" href="<%= asset_path %>/docs.css" />
     <link rel="stylesheet" href="<%= asset_path %>/footer.css" />
+    <link rel="stylesheet" href="<%= asset_path %>/offcanvas.css" />
     <script src="<%= asset_path %>/vendor/custom.modernizr.js"></script>
   </head>
-  <body class="antialiased">
-
-    <nav class="top-bar">
+  <body class="antialiased off-canvas hide-extras">
+     <nav class="top-bar hide-for-small">
       <ul class="title-area">
         <!-- Title Area -->
         <li class="name">
@@ -51,23 +51,29 @@
         </ul>
       </section>
     </nav>
-
-    <% @page_title = "4 Documentation" %>
-    <div class="row">
-      <div class="large-12 columns">
-        <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation <%= @page_title %></a></h1>
-        <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
-        <hr>
+    <section class="main">
+     
+      
+      <header class="show-for-small">
+        <a class='sidebar-button show-for-small' id="sidebarButton" href="#sidebar" ><img src="../img/offcanvas/menu-wht.png"><h4>Foundation</h4></a>
+      </header>
+  
+      <% @page_title = "4 Documentation" %>
+      <div class="row">
+        <div class="large-12 columns">
+          <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation <%= @page_title %></a></h1>
+          <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
+          <hr>
+        </div>
       </div>
-    </div>
-
-    <%= yield %>
-
-    <div class="zurb-footer-top bg-blue">
+  
+      <%= yield %>
+      <br>
+      <div class="zurb-footer-top bg-blue">
       <div class="row property">
         <div class="large-4 columns">
         	<div class="property-info">
-            <h3><a href="index.php">Foundation</a></h3>
+            <h3><a href="http://foundation.zurb.com/">Foundation</a></h3>
             <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.</p>
         	</div>
         </div>
@@ -78,10 +84,10 @@
     		      <div class="learn-links">
     		        <h4 class="hide-for-small">Want More?</h4>
     		        <ul>
-    		          <li><a href="http://zurb.com/about">About</a></li>
+    		          <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+    		          <li><a href="http://zurb.com/expo/custom">Responsive</a></li>
     		          <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
-    		          <li><a href="http://zurb.com/manifesto">Manifesto</a></li>
-    		          <li><a href="http://zurb.com/blog">Blog</a></li>
+    		          <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
     		        </ul>
     		      </div>
       		  </div>
@@ -129,7 +135,7 @@
       </div>
       </div>
     </div>
-    <div class="zurb-footer-bottom">
+      <div class="zurb-footer-bottom">
       <div class="row">
         <div class="large-4 push-8 columns">
           <ul class="home-social">
@@ -151,44 +157,104 @@
         </div>          
       </div>
     </div>
-
-
-    <!--
-<footer class="row full-width">
-      <div class="large-5 columns">
-        <h6><strong>Made by ZURB</strong></h6>
-        <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 14 years of experience building web products, services and websites into this framework. <a href="http://foundation.zurb.com/about.php">Foundation Info and Goodies &rarr;</a></p>
+    </section>
+    
+    
+    <section id="sidebar" role="complementary">
+      
+      <!-- For Future Use		
+      <div id="passport">
+        <a id="user" href="#">
+      		<h5>Firstname LastName</h5><br>
+      		<p>sign out</p>
+        </a>
+        <a id="ava" href="#">
+    		  <div class="avatar"><img src="placehold.it/75x75"></div>
+    		</a>
       </div>
-
-      <div class="large-3 columns">
-        <h6><strong>Using Foundation?</strong></h6>
-        <p>Let us know how you're using Foundation and we might feature you as an example! <a href="mailto:foundation@zurb.com?subject=I'm%20using%20Foundation">Get in touch &rarr;</a></p>
+      -->
+    	
+    	<!-- This is the apps main navigation -->	  		  
+      <div class="main-menu">
+    		<h6>Foundation</h6>
+    		<nav id="sideMenu" role="navigation">
+    			<ul id="sideMainNav" class="nav-bar">
+    			  <li class="show-for-small">
+            <a href="index.php">Home</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/grid.php">Features</a>
+    			</li>
+          <li>
+            <a href="http://foundation.zurb.com/templates.php">Add-ons</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/case-jacquelinewest.php">Case Studies</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/docs/">Docs</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/training.php">Training</a>
+    			</li>
+    			</ul>
+    		</nav> 			
       </div>
-
-      <div class="large-4 columns">
-        <h6><strong>Need some help?</strong></h6>
-        <p>For answers or help visit the <a href="http://foundation.zurb.com/docs/support.html">Support page</a>.</p>
+    		
+    	<hr>
+    	
+    	<!-- These links will vary depending on what app it is -->	
+      <div class="more-goodness">		
+    		<h6>More ZURB Goodness</h6>
+    		<nav role="navigation">
+    		  <ul id="sideMainNav" class="nav-bar goodness">
+            <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+            <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+            <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    			</ul>
+    		</nav>
       </div>
-    </footer>
-
-    <div id="copyright">
-      <div class="row full-width">
-        <div class="large-4 columns">
-          <p>Site content &copy; <%= Time.now.year %> ZURB, inc.</p>
-        </div>
-        <div class="large-8 columns">
-          <ul class="inline-list right">
-            <li><a href="http://foundation.zurb.com">Home</a></li>
-            <li><a href="http://foundation.zurb.com/download.php">Download</a></li>
-            <li><a href="http://foundation.zurb.com/docs">Docs</a></li>
-            <li><a href="http://foundation.zurb.com/docs/changelog.html">Changelog</a></li>
-            <li><a href="http://foundation.zurb.com/about.php">About</a></li>
-            <li><a href="http://feeds.feedburner.com/zurb/blog">Subscribe to the ZURBlog</a></li>
-          </ul>
-        </div>
+      
+      <hr>
+      
+      <!-- These links will be the same across all of our proprties & apps -->
+      <div class="zurb-links">		
+    		<ul class="top">
+      		<li class="logo"><a href="http://zurb.com"><img src="../img/offcanvas/zurb-logo.png"></a></li>
+      		<li><a href="http://zurb.com/about">About</a></li>
+      		<li><a href="http://zurb.com/blog">Blog</a></li>
+      		<li><a href="http://zurb.com/contact">Contact</a></li>
+    		</ul>
+    		<ul class="pillars">
+      		<li>
+      		  <a href="http://www.zurb.com/services" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping startups win since '98.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>World's most advanced responsive framework.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/apps" class="footer-link-block apps">
+              <span class="title">ZURB Apps</span>
+              <span>Tools to rapidly prototype and iterate.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/expo" class="footer-link-block expo">
+              <span class="title">Expo</span>
+              <span>Online training for smarter product design.</span>
+            </a>
+          </li> 
+    		</ul>
       </div>
-    </div>
--->
+    	
+    </section>
+    
 
     <script>
 
@@ -211,6 +277,7 @@
         + ('__proto__' in {} ? 'zepto' : 'jquery')
         + '.js"><\/script>');
     </script>
+   
     <script src="<%= asset_path %>/docs.js"></script>
     <script>
       $(document)
@@ -244,5 +311,6 @@
         $(document).foundation('joyride','start');
       });
     </script>
+    <script src="<%= asset_path %>/jquery.offcanvas.js"></script>
   </body>
 </html>
