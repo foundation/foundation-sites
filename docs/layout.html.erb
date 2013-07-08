@@ -16,6 +16,7 @@
     <title>Foundation Docs: <%= @page_title %></title>
     <link rel="stylesheet" href="<%= asset_path %>/normalize.css" />
     <link rel="stylesheet" href="<%= asset_path %>/docs.css" />
+    <link rel="stylesheet" href="<%= asset_path %>/footer.css" />
     <script src="<%= asset_path %>/vendor/custom.modernizr.js"></script>
   </head>
   <body class="antialiased">
@@ -62,7 +63,98 @@
 
     <%= yield %>
 
-    <footer class="row full-width">
+    <div class="zurb-footer-top bg-blue">
+      <div class="row property">
+        <div class="large-4 columns">
+        	<div class="property-info">
+            <h3><a href="index.php">Foundation</a></h3>
+            <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.</p>
+        	</div>
+        </div>
+        
+        <div class="large-8 columns">
+          <div class="row collapse">
+    	      <div class="large-4 columns">
+    		      <div class="learn-links">
+    		        <h4 class="hide-for-small">Want More?</h4>
+    		        <ul>
+    		          <li><a href="http://zurb.com/about">About</a></li>
+    		          <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+    		          <li><a href="http://zurb.com/manifesto">Manifesto</a></li>
+    		          <li><a href="http://zurb.com/blog">Blog</a></li>
+    		        </ul>
+    		      </div>
+      		  </div>
+    	      <div class="large-4 columns">
+    		      <div class="support-links">
+    	          <h4 class="hide-for-small">Talk to us</h4>
+    	          <p>Call us at <strong>(408) 341-0600</strong></p>
+    	          <p>Not a big talker? Email us at <a href="mailto:foundation@zurb.com">foundation@zurb.com</a></p>
+    		      </div>
+    	      </div>
+            <div class="large-4 columns">
+    	        <div class="connect-links">
+    	          <h4 class="hide-for-small">Stay in touch</h4>
+    	          <p>Keep up with the latest on Foundation. Find us on Github.</p>
+    	          <a href="https://github.com/zurb/foundation" target="_blank" class="small button">Stay Connected</a>         
+    	        </div>
+    	      </div>
+          </div> 
+        </div>
+      </div>
+      <div class="row global">
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/services" class="footer-link-block services">
+            <span class="title">Services</span>
+            <span>Helping more than 200 startups succeed since 1998.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+            <span class="title">Foundation</span>
+            <span>The most advanced front-end framework in the world.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/apps" class="footer-link-block apps">
+            <span class="title">Products</span>
+            <span>Prototype, iterate and collect feedback on your products.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/expo" class="footer-link-block expo">
+            <span class="title">Expo</span>
+            <span>Ideas, thoughts and design resources shared with you.</span>
+          </a>
+      </div>
+      </div>
+    </div>
+    <div class="zurb-footer-bottom">
+      <div class="row">
+        <div class="large-4 push-8 columns">
+          <ul class="home-social">
+              <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+              <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+              <li><a href="http://zurb.com/contact" class="mail"></a></li>
+            </ul>
+         </div>
+         <div class="large-8 pull-4 columns">
+            <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+            <ul class="zurb-links">
+              <li><a href="http://zurb.com/about">About</a></li>
+              <li><a href="http://zurb.com/blog">Blog</a></li>
+              <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+              <li><a href="http://zurb.com/contact">Contact</a></li>
+              <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+           </ul>
+           <p class="copyright">&copy; 1998&ndash;<%= Time.now.year %> ZURB, Inc. All rights reserved.</p>
+        </div>          
+      </div>
+    </div>
+
+
+    <!--
+<footer class="row full-width">
       <div class="large-5 columns">
         <h6><strong>Made by ZURB</strong></h6>
         <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 14 years of experience building web products, services and websites into this framework. <a href="http://foundation.zurb.com/about.php">Foundation Info and Goodies &rarr;</a></p>
@@ -96,6 +188,7 @@
         </div>
       </div>
     </div>
+-->
 
     <script>
 
