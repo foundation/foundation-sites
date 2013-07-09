@@ -64,6 +64,8 @@ $pagination-link-current-active-bg: $primary-color !default;
       &:focus { background: $pagination-link-current-active-bg; }
     }
   } @else {
+    height: auto;
+    padding: $pagination-link-pad;
     background: $pagination-link-current-background;
     color: $pagination-link-current-font-color;
     font-weight: $pagination-link-current-font-weight;
