@@ -246,7 +246,7 @@
               var content = $(self.settings.content_selector, this),
                   content_slug = content.data('slug');
 
-              if (new RegExp(content_slug, 'i').test(hash)) 
+              if (new RegExp('^' + content_slug + '$', 'i').test(hash)) 
                 return content;
             });
 
