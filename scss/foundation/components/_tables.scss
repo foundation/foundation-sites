@@ -14,20 +14,20 @@ $table-border-color: #ddd !default;
 
 // These control the table head styles
 $table-head-bg: #f5f5f5 !default;
-$table-head-font-size: emCalc(14px) !default;
+$table-head-font-size: emCalc(14) !default;
 $table-head-font-color: #222 !default;
 $table-head-font-weight: bold !default;
-$table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px) !default;
+$table-head-padding: emCalc(8, 10, 10) !default;
 
 // These control the row padding and font styles
-$table-row-padding: emCalc(9px) emCalc(10px) !default;
-$table-row-font-size: emCalc(14px) !default;
+$table-row-padding: emCalc(9, 10) !default;
+$table-row-font-size: emCalc(14) !default;
 $table-row-font-color: #222 !default;
-$table-line-height: emCalc(18px) !default;
+$table-line-height: emCalc(18) !default;
 
 // These are for controlling the display and margin of tables
 $table-display: table-cell !default;
-$table-margin-bottom: emCalc(20px) !default;
+$table-margin-bottom: emCalc(20) !default;
 
 
 //

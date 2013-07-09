@@ -22,7 +22,7 @@ $orbit-bullet-nav-color-active: #222 !default;
 // We use thes to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
-$orbit-slide-number-padding: emCalc(5px) !default;
+$orbit-slide-number-padding: emCalc(5) !default;
 
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper" !default;
@@ -137,7 +137,7 @@ $preloader-class: "preloader" !default;
           color: $orbit-caption-font-color;
           width: 100%;
           padding: 10px 14px;
-          font-size: emCalc(14px);
+          font-size: emCalc(14);
         }
       }
     }
