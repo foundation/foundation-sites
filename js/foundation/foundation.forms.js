@@ -139,7 +139,7 @@
 
             $customDropdown.removeClass('open')
               .find('a.current')
-              .text($this.text());
+              .html($this.html());
 
             $this.closest('ul').find('li').each(function (index) {
               if ($this[0] === this) {
