@@ -117,8 +117,8 @@ $total-columns: 12 !default;
     @include grid-row;
 
     &.collapse {
-      .column,
-      .columns { @include grid-column($collapse:true); }
+      > .column,
+      > .columns { @include grid-column($collapse:true); }
     }
 
     .row { @include grid-row($behavior:nest);
