@@ -10,16 +10,16 @@ $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%) !default;
 $has-tip-font-color-hover: $primary-color !default;
 $has-tip-cursor-type: help !default;
 
-$tooltip-padding: emCalc(8px) !default;
+$tooltip-padding: emCalc(8) !default;
 $tooltip-bg: #000 !default;
-$tooltip-font-size: emCalc(15px) !default;
+$tooltip-font-size: emCalc(15) !default;
 $tooltip-font-weight: bold !default;
 $tooltip-font-color: #fff !default;
 $tooltip-line-height: 1.3 !default;
-$tooltip-close-font-size: emCalc(10px) !default;
+$tooltip-close-font-size: emCalc(10) !default;
 $tooltip-close-font-weight: normal !default;
 $tooltip-close-font-color: #888 !default;
-$tooltip-font-size-sml: emCalc(14px) !default;
+$tooltip-font-size-sml: emCalc(14) !default;
 $tooltip-radius: $global-radius !default;
 $tooltip-pip-size: 5px !default;
 

@@ -14,7 +14,7 @@ $switch-height-tny: 22px !default;
 $switch-height-sml: 28px !default;
 $switch-height-med: 36px !default;
 $switch-height-lrg: 44px !default;
-$switch-bottom-margin: emCalc(20px) !default;
+$switch-bottom-margin: emCalc(20) !default;
 
 // We use these to control default font sizes for our classes.
 $switch-font-size-tny: 11px !default;
@@ -142,7 +142,7 @@ $switch-label-outline:            1px dotted #888 !default;
   height: $height;
 
   label {
-    padding: 0 emCalc($switch-label-side-padding);
+    padding: emCalc(0, $switch-label-side-padding);
     line-height: $line-height;
     font-size: emCalc($font-size);
   }
@@ -251,7 +251,7 @@ $switch-label-outline:            1px dotted #888 !default;
       // Make the switch completely round, like a pill
       &.round { @include radius(1000px);
         span:last-child { @include radius(999px); }
-        label { padding: 0 emCalc($switch-label-side-padding + 3px); }
+        label { padding: emCalc(0, $switch-label-side-padding + 3); }
       }
 
     }

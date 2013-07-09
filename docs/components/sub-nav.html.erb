@@ -94,11 +94,11 @@ $active-bg: $sub-nav-active-bg
 
 <%= code_example '
 /* We use these to control margin and padding */
-$sub-nav-list-margin: emCalc(-4px) 0 emCalc(18px);
-$sub-nav-list-padding-top: emCalc(4px);
+$sub-nav-list-margin: emCalc(-4, 0, 18);
+$sub-nav-list-padding-top: emCalc(4);
 
 /* We use this to control the definition */
-$sub-nav-font-size: emCalc(14px);
+$sub-nav-font-size: emCalc(14);
 $sub-nav-font-color: #999;
 $sub-nav-font-weight: normal;
 $sub-nav-text-decoration: none;
@@ -108,7 +108,7 @@ $sub-nav-border-radius: 1000px;
 $sub-nav-active-font-weight: bold;
 $sub-nav-active-bg: $primary-color;
 $sub-nav-active-color: #fff;
-$sub-nav-active-padding: emCalc(3px) emCalc(9px);
+$sub-nav-active-padding: emCalc(3, 9);
 $sub-nav-active-cursor: $cursor-default-value;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
