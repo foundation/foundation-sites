@@ -14,6 +14,7 @@
       custom_back_text: true,
       back_text: 'Back',
       is_hover: true,
+      mobile_show_parent_link: true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
@@ -235,7 +236,7 @@
             $dropdown = $link.siblings('.dropdown'),
             url = $link.attr('href');
 
-        if (url && url.length > 1) {
+        if (self.settings.mobile_show_parent_link && url && url.length > 1) {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li><li><a class="parent-link js-generated" href="' + url + '">' + $link.text() +'</a></li>');
         } else {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
