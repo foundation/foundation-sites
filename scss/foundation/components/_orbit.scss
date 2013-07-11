@@ -22,7 +22,7 @@ $orbit-bullet-nav-color-active: #222 !default;
 // We use thes to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
-$orbit-slide-number-padding: emCalc(5) !default;
+$orbit-slide-number-padding: emCalc(5px) !default;
 
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper" !default;
@@ -122,12 +122,17 @@ $preloader-class: "preloader" !default;
       padding: 0;
       position: relative;
 
-      img { display: block; }
+      img { display: block; max-width: 100%; }
 
       &>* {
-        position: relative;
-        float: $default-float;
-        height: auto;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin-left: 100%;
+
+        &:first-child {
+          margin-left: 0%;
+        }
 
         .orbit-caption {
           position: absolute;
@@ -137,7 +142,7 @@ $preloader-class: "preloader" !default;
           color: $orbit-caption-font-color;
           width: 100%;
           padding: 10px 14px;
-          font-size: emCalc(14);
+          font-size: emCalc(14px);
         }
       }
     }
@@ -150,6 +155,7 @@ $preloader-class: "preloader" !default;
       span { font-weight: 700; padding: $orbit-slide-number-padding;}
       color: $orbit-slide-number-font-color;
       background: $orbit-slide-number-bg;
+      z-index: 10;
     }
 
     .orbit-timer {
@@ -158,6 +164,7 @@ $preloader-class: "preloader" !default;
       #{$opposite-direction}: 10px;
       height: 6px;
       width: 100px;
+      z-index: 10;
       .orbit-progress {
         height: 100%;
         background-color: $orbit-timer-bg-old;
@@ -206,6 +213,7 @@ $preloader-class: "preloader" !default;
       line-height: 50px;
       color: white;
       text-indent: -9999px !important;
+      z-index: 10;
 
       & > span {
         position: absolute;
