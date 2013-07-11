@@ -1,6 +1,8 @@
 @import "settings";
 @import "foundation";
 @import "coderay";
+@import "footer";
+@import "offcanvas";
 
 /* Documentation Overrides */
 
@@ -177,6 +179,8 @@ input[type="text"].attached-input {
   }
 }
 
+header { background-color: #2ba6cb; padding: 15px 0; margin-bottom: 25px; }
+
 /* Section Docs */
 .section-auto-sample {
   @include section-container($section-type:accordion);
@@ -229,6 +233,11 @@ input[type="text"].attached-input {
 .section-auto-sample-custom {
   @include section-container($section-type:tabs);
   & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample", $title-padding: 10px 50px, $title-color:#000, $title-bg:pink, $title-bg-hover:darken(pink,5%), $title-bg-active: #fff, $title-color-active: darken(pink,10%)); }
+}
+
+.drop-wrapper {
+  position: relative;
+  display: inline;
 }
 
 @media only screen and (min-width: 800px) {

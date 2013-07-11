@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.2.2',
+    version : '4.2.4',
 
     settings : {
       index : 0,
@@ -14,6 +14,7 @@
       custom_back_text: true,
       back_text: 'Back',
       is_hover: true,
+      mobile_show_parent_link: true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
@@ -106,11 +107,11 @@
           }
         })
 
-        .on('mouseenter mouseleave', '.top-bar li', function (e) {
+        .on('mouseenter mouseleave', '.top-bar li, .top-bar li.has-dropdown', function (e) {
           if (!self.settings.is_hover) return;
 
           if (/enter|over/i.test(e.type)) {
-            $(this).addClass('hover');
+            $(this).addClass('hover').siblings().removeClass('hover');
           } else {
             $(this).removeClass('hover');
           }
@@ -235,7 +236,7 @@
             $dropdown = $link.siblings('.dropdown'),
             url = $link.attr('href');
 
-        if (url && url.length > 1) {
+        if (self.settings.mobile_show_parent_link && url && url.length > 1) {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li><li><a class="parent-link js-generated" href="' + url + '">' + $link.text() +'</a></li>');
         } else {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
@@ -270,22 +271,22 @@
       var klass = '.' + this.settings.stickyClass;
       if ($(klass).length > 0) {
         var distance = $(klass).length ? $(klass).offset().top: 0,
-            $window = $(window);
-            var offst = this.outerHeight($('.top-bar'));
-        //Whe resize elements of the page on windows resize. Must recalculate distance
-		$(window).resize(function() {
+            $window = $(window),
+            offst = this.outerHeight($('.top-bar')),
+            t_top;
+
+          //Whe resize elements of the page on windows resize. Must recalculate distance
+      		$(window).resize(function() {
             clearTimeout(t_top);
-			t_top = setTimeout (function() {
-				distance = $(klass).offset().top;
-			},105);
-		});
+      			t_top = setTimeout (function() {
+        			distance = $(klass).offset().top;
+      			},105);
+      		});
           $window.scroll(function() {
             if ($window.scrollTop() > (distance)) {
               $(klass).addClass("fixed");
               $('body').css('padding-top',offst);
-            }
-
-            else if ($window.scrollTop() <= distance) {
+            } else if ($window.scrollTop() <= distance) {
               $(klass).removeClass("fixed");
               $('body').css('padding-top','0');
             }

@@ -140,6 +140,10 @@ Yeoman Generator
 * [Yeoman 1.0-Foundation 4](https://github.com/lkbgift/foundation4-yeoman) by [Leonard Bogdonoff](http://twitter.com/lkbcc)
 * [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
 
+Meteor
+
+* [Foundation Smart Package](https://atmosphere.meteor.com/package/zurb-foundation)
+
 
 MIT Open Source License
 =======================

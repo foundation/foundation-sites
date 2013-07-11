@@ -5,7 +5,7 @@ $include-html-grid-classes: $include-html-classes !default;
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12 !default;
-$block-grid-default-spacing: emCalc(20px) !default;
+$block-grid-default-spacing: emCalc(20) !default;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 $block-grid-media-queries: true !default;

@@ -57,7 +57,7 @@
         .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
         .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
 
-      $('body').on('click.fndtn.dropdown', function (e) {
+      $(document).on('click.fndtn.dropdown', function (e) {
         var parent = $(e.target).closest('[data-dropdown-content]');
 
         if ($(e.target).data('dropdown')) {

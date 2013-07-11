@@ -10,7 +10,20 @@
         <h4 class="subheader">In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a universal dropdown plugin that will attach dropdowns or popovers next to anything!</h4>
 
         <a href="#" class="button" data-dropdown="tinyDrop">Link Dropdown &raquo;</a>
+        <ul id="tinyDrop" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" class="button" data-dropdown="contentDrop">Content Dropdown &raquo;</a>
+        <div id="contentDrop" class="f-dropdown content medium" data-dropdown-content>
+          <h4>Title</h4>
+          <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
+          <img src="../img/demos/demo1.jpg">
+          <p>More test.</p>
+          <a href="#" class="button">Button</a>
+        </div>
 
         <hr>
       </div>
@@ -24,14 +37,13 @@
 
 <%= code_example '
 <a href="#" data-dropdown="drop1">Has Dropdown</a>
-<a href="#" data-dropdown="drop2">Has Content Dropdown</a>
-
 <ul id="drop1" class="f-dropdown" data-dropdown-content>
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
   <li><a href="#">Yet another</a></li>
 </ul>
 
+<a href="#" data-dropdown="drop2">Has Content Dropdown</a>
 <ul id="drop2" class="f-dropdown content" data-dropdown-content>
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
@@ -39,9 +51,19 @@
 </ul>
 ', :html %>
 
-        <p><a href="#" data-dropdown="drop1">Has Dropdown</a> | <a href="#" data-dropdown="drop2">Has Content Dropdown</a></p>
+        <p>
+          <a href="#" data-dropdown="drop1">Has Dropdown</a> | <a href="#" data-dropdown="drop2">Has Content Dropdown</a>
+          <ul id="drop1" data-dropdown-content class="f-dropdown">
+            <li><a href="#">This is a link</a></li>
+            <li><a href="#">This is another</a></li>
+            <li><a href="#">Yet another</a></li>
+          </ul>
+          <div id="drop2" data-dropdown-content class="f-dropdown content">
+            <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
+          </div>
+        </p>
 
-        <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have the same value. This is what tells the dropdown plugin where to look to find the position to attach the dropdown.</p>
+        <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have the same value. This is what tells the dropdown plugin where to look to find the position to attach the dropdown. It is best to place your dropdown and target element <strong>within the same offset parent</strong>.</p>
 
         <p>Available class options:</p>
         <ul class="disc">
@@ -142,21 +164,21 @@ $f-dropdown-triangle-side-offset: 10px;
 /* We use these to control styles for the list elements. */
 $f-dropdown-list-style: none;
 $f-dropdown-font-color: #555;
-$f-dropdown-font-size: emCalc(14px);
-$f-dropdown-list-padding: emCalc(5px) emCalc(10px);
-$f-dropdown-line-height: emCalc(18px);
+$f-dropdown-font-size: emCalc(14);
+$f-dropdown-list-padding: emCalc(5, 10);
+$f-dropdown-line-height: emCalc(18);
 $f-dropdown-list-hover-bg: #eeeeee;
 $dropdown-mobile-default-float: 0;
 
 /* We use this to control the styles for when the dropdown has custom content. */
-$f-dropdown-content-padding: emCalc(20px);', :css %>
+$f-dropdown-content-padding: emCalc(20);', :css %>
 
       <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
       <hr>
 
       <h3>Using the JavaScript</h3>
-      <p>You'll need to include <code>foundation.joyride.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+      <p>You'll need to include <code>foundation.dropdown.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
       <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
@@ -180,25 +202,4 @@ $f-dropdown-content-padding: emCalc(20px);', :css %>
   <div class="large-3 pull-9 columns">
     <%= render "_sidebar-components.html.erb" %>
   </div>
-</div>
-
-<ul id="tinyDrop" class="f-dropdown" data-dropdown-content>
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<div id="contentDrop" class="f-dropdown content medium" data-dropdown-content>
-  <h4>Title</h4>
-  <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
-  <img src="../img/demos/demo1.jpg">
-  <p>More test.</p>
-  <a href="#" class="button">Button</a>
-</div>
-<ul id="drop1" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<div id="drop2" data-dropdown-content class="f-dropdown content">
-  <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
 </div>

@@ -4,7 +4,7 @@
   Foundation.libs.forms = {
     name: 'forms',
 
-    version: '4.2.2',
+    version: '4.2.3',
 
     cache: {},
 

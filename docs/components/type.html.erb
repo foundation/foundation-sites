@@ -300,11 +300,11 @@ $header-bottom-margin: .5em;
 $header-text-rendering: optimizeLegibility;
 
 /* We use these to control header font sizes */
-$h1-font-size: emCalc(44px);
-$h2-font-size: emCalc(37px);
-$h3-font-size: emCalc(27px);
-$h4-font-size: emCalc(23px);
-$h5-font-size: emCalc(18px);
+$h1-font-size: emCalc(44);
+$h2-font-size: emCalc(37);
+$h3-font-size: emCalc(27);
+$h4-font-size: emCalc(23);
+$h5-font-size: emCalc(18);
 $h6-font-size: 1em;
 
 /* These control how subheaders are styled. */
@@ -323,8 +323,8 @@ $paragraph-font-family: inherit;
 $paragraph-font-weight: normal;
 $paragraph-font-size: 1em;
 $paragraph-line-height: 1.6;
-$paragraph-margin-bottom: emCalc(20px);
-$paragraph-aside-font-size: emCalc(14px);
+$paragraph-margin-bottom: emCalc(20);
+$paragraph-aside-font-size: emCalc(14);
 $paragraph-aside-line-height: 1.35;
 $paragraph-aside-font-style: italic;
 $paragraph-text-rendering: optimizeLegibility;
@@ -343,21 +343,21 @@ $anchor-font-color-hover: darken($primary-color, 5%);
 $hr-border-width: 1px;
 $hr-border-style: solid;
 $hr-border-color: #ddd;
-$hr-margin: emCalc(20px);
+$hr-margin: emCalc(20);
 
 /* We use these to style lists */
 $list-style-position: outside;
-$list-side-margin: emCalc(20px);
-$list-nested-margin: emCalc(20px);
+$list-side-margin: emCalc(20);
+$list-nested-margin: emCalc(20);
 $definition-list-header-weight: bold;
 $definition-list-header-margin-bottom: .3em;
-$definition-list-margin-bottom: emCalc(12px);
+$definition-list-margin-bottom: emCalc(12);
 
 /* We use these to style blockquotes */
 $blockquote-font-color: lighten($header-font-color, 30%);
-$blockquote-padding: emCalc(9px) emCalc(20px) 0 emCalc(19px);
+$blockquote-padding: emCalc(9, 20, 0, 19);
 $blockquote-border: 1px solid #ddd;
-$blockquote-cite-font-size: emCalc(13px);
+$blockquote-cite-font-size: emCalc(13);
 $blockquote-cite-font-color: lighten($header-font-color, 20%);
 $blockquote-cite-link-color: $blockquote-cite-font-color;
 
@@ -365,8 +365,8 @@ $blockquote-cite-link-color: $blockquote-cite-font-color;
 $acronym-underline: 1px dotted #ddd;
 
 /* We use these to control padding and margin */
-$microformat-padding: emCalc(10px) emCalc(12px);
-$microformat-margin: 0 0 emCalc(20px) 0;
+$microformat-padding: emCalc(10, 12);
+$microformat-margin: emCalc(0, 0, 20, 0);
 
 /* We use these to control the border styles */
 $microformat-border-width: 1px;
@@ -375,13 +375,13 @@ $microformat-border-color: #ddd;
 
 /* We use these to control full name font styles */
 $microformat-fullname-font-weight: bold;
-$microformat-fullname-font-size: emCalc(15px);
+$microformat-fullname-font-size: emCalc(15);
 
 /* We use this to control the summary font styles */
 $microformat-summary-font-weight: bold;
 
 /* We use this to control abbr padding */
-$microformat-abbr-padding: 0 emCalc(1px);
+$microformat-abbr-padding: emCalc(0, 1);
 
 /* We use this to control abbr font styles */
 $microformat-abbr-font-weight: bold;

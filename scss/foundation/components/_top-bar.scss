@@ -8,14 +8,14 @@ $topbar-bg: #111 !default;
 
 // Height and margin
 $topbar-height: 45px !default;
-$topbar-margin-bottom: emCalc(30px) !default;
+$topbar-margin-bottom: emCalc(30) !default;
 
 // Control Input height for top bar
 $topbar-input-height: 2.45em !default;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: bold !default;
-$topbar-title-font-size: emCalc(17px) !default;
+$topbar-title-font-size: emCalc(17) !default;
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #222 !default;
@@ -30,7 +30,7 @@ $topbar-link-color: #fff !default;
 $topbar-link-color-hover: #fff !default;
 $topbar-link-color-active: #fff !default;
 $topbar-link-weight: bold !default;
-$topbar-link-font-size: emCalc(13px) !default;
+$topbar-link-font-size: emCalc(13) !default;
 $topbar-link-hover-lightness: -30% !default; // Darken by 30%
 $topbar-link-bg-hover: darken($topbar-bg, 3%) !default;
 $topbar-link-bg-active: darken($topbar-bg, 3%) !default;
@@ -38,11 +38,11 @@ $topbar-link-bg-active: darken($topbar-bg, 3%) !default;
 $topbar-dropdown-label-color: #555 !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
 $topbar-dropdown-label-font-weight: bold !default;
-$topbar-dropdown-label-font-size: emCalc(10px) !default;
+$topbar-dropdown-label-font-size: emCalc(10) !default;
 
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
-$topbar-menu-link-font-size: emCalc(13px) !default;
+$topbar-menu-link-font-size: emCalc(13) !default;
 $topbar-menu-link-weight: bold !default;
 $topbar-menu-link-color: #fff !default;
 $topbar-menu-icon-color: #fff !default;
@@ -51,7 +51,7 @@ $topbar-menu-icon-color-toggled: #888 !default;
 
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
-$topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
+$topbar-breakpoint: emCalc(940) !default; // Change to 9999px for always mobile layout
 $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})" !default;
 
 // Divider Styles
@@ -68,7 +68,7 @@ $topbar-sticky-class: ".sticky" !default;
     width: 100%;
     background: $topbar-bg;
 
-    .top-bar { margin-bottom: 0; }
+    .top-bar { margin-bottom: $topbar-margin-bottom; }
   }
 
   // Wrapped around .top-bar to make it stick to the top
@@ -324,6 +324,9 @@ $topbar-sticky-class: ".sticky" !default;
         a {
           font-weight: normal;
           padding: 8px $topbar-height / 3;
+          &.parent-link {
+            font-weight: $topbar-link-weight;
+          }
         }
 
         &.title h5 { margin-bottom: 0;
@@ -369,7 +372,7 @@ $topbar-sticky-class: ".sticky" !default;
       input,
       .button {
         line-height: 2em;
-        font-size: emCalc(14px);
+        font-size: emCalc(14);
         height: 2em;
         padding: 0 10px;
         position: relative;
@@ -382,6 +385,7 @@ $topbar-sticky-class: ".sticky" !default;
     .contain-to-grid .top-bar {
       max-width: $row-width;
       margin: 0 auto;
+      margin-bottom: $topbar-margin-bottom;
     }
 
     .top-bar-section {
