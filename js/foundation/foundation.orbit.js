@@ -1,8 +1,3 @@
-// TODO
-// X Pause on hover
-// X 1:1 swiping
-// X Fire events
-// X Allow callbacks to be provided
 // - Stack on mobile
 
 ;(function ($, window, document, undefined) {
@@ -67,6 +62,10 @@
           var bullet = $('<li>').attr('data-orbit-slide', idx);
           bullets_container.append(bullet);
         });
+      }
+
+      if (settings.stack_on_small) {
+        container.addClass(settings.stack_on_small_class);
       }
 
       self.update_slide_number(0);

@@ -297,3 +297,18 @@ $preloader-class: "preloader" !default;
   }
 
 }
+
+
+@media only screen and (max-width: #{$small-screen}) {
+  .orbit-stack-on-small {
+    .orbit-slides-container {height: auto !important;}
+    .orbit-slides-container > * {
+      position: relative;
+      margin-left: 0% !important;
+    }
+    .orbit-timer,
+    .orbit-next,
+    .orbit-prev,
+    .orbit-bullets {display: none;}
+  }
+}
