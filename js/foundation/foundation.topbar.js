@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.2.3',
+    version : '4.2.4',
 
     settings : {
       index : 0,
@@ -274,20 +274,19 @@
             $window = $(window),
             offst = this.outerHeight($('.top-bar')),
             t_top;
-        //Whe resize elements of the page on windows resize. Must recalculate distance
-		$(window).resize(function() {
+
+          //Whe resize elements of the page on windows resize. Must recalculate distance
+      		$(window).resize(function() {
             clearTimeout(t_top);
-			t_top = setTimeout (function() {
-				distance = $(klass).offset().top;
-			},105);
-		});
+      			t_top = setTimeout (function() {
+        			distance = $(klass).offset().top;
+      			},105);
+      		});
           $window.scroll(function() {
             if ($window.scrollTop() > (distance)) {
               $(klass).addClass("fixed");
               $('body').css('padding-top',offst);
-            }
-
-            else if ($window.scrollTop() <= distance) {
+            } else if ($window.scrollTop() <= distance) {
               $(klass).removeClass("fixed");
               $('body').css('padding-top','0');
             }

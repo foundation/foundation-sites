@@ -13,7 +13,6 @@
   "foundation/components/type",
   "foundation/components/buttons",
   "foundation/components/forms",
-  "foundation/components/custom-forms",
   "foundation/components/button-groups",
   "foundation/components/dropdown-buttons",
   "foundation/components/split-buttons",
@@ -41,6 +40,12 @@
   "foundation/components/thumbs",
   "foundation/components/tooltips",
   "foundation/components/dropdown";
+
+
+// Deprecated in Foundation 4.3, will not be in Foundation 5.
+// @import "foundation/components/custom-forms";
+// New Foundation 5 custom forms.
+@import "foundation/components/custom-forms-new";
 
 
 
