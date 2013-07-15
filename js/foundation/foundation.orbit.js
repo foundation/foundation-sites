@@ -1,5 +1,3 @@
-// - Stack on mobile
-
 ;(function ($, window, document, undefined) {
   'use strict';
 
@@ -155,8 +153,7 @@
     
     self.compute_dimensions = function() {
       var current = $(slides_container.children().get(idx));
-      var h = current.children().first().height();
-      slides_container.height(h);
+      slides_container.height(current.height());
     };
 
     self.create_timer = function() {
