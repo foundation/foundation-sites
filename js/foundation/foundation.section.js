@@ -5,7 +5,7 @@
   'use strict';
 
   Foundation.libs.section = {
-    name: 'section',
+    name : 'section',
 
     version : '4.2.3',
 
