@@ -347,18 +347,42 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
 
   /* Error Handling */
-  .error input,
+
+  span.error, small.error {
+    @include form-error-message;
+    display: none;
+  }
+
+  .error {
+    input,
+    textarea,
+    select {
+      @include form-error-color;
+    }
+
+    label,
+    label.error {
+      @include form-label-error-color;
+    }
+
+    small.error {
+      @include form-error-message;
+    }
+
+    span.error-message {
+      display: block;
+    }
+  }
+
   input.error,
-  .error textarea,
   textarea.error {
     @include form-error-color;
   }
 
-  .error label,
+  .error select {
+    @include form-error-color;
+  }
+
   label.error { @include form-label-error-color; }
 
-  .error small,
-  small.error {
-    @include form-error-message;
-  }
 }

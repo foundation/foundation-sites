@@ -1,0 +1,82 @@
+<% @side_nav = "validation" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Abide" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
+
+        <form class="custom" data-abide>
+          <fieldset>
+            <legend>Fieldset</legend>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Password <small>required</small></label>
+                <input type="password" placeholder="LittleW0men." name="password" required>
+                <small class="error" data-error-message>Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Phone</label>
+                <input type="tel" placeholder="1 234-567-8910">
+                <small class="error" data-error-message>Please enter a properly formatted telephone number.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-4 columns">
+                <label>Email</label>
+                <input type="email" placeholder="foundation@zurb.com">
+                <small class="error">Valid email required.</small>
+              </div>
+              <div class="large-4 columns">
+                <label>URL <small>required</small></label>
+                <input type="url" placeholder="http://zurb.com" required>
+                <small class="error" data-error-message>Valid URL required.</small>
+              </div>
+              <div class="large-4 columns">
+                <div class="row collapse">
+                  <label for="customDropdown1">Hardest to find in grocery <small>required</small></label>
+                  <select id="customDropdown1" class="medium" required>
+                    <option value="">Select grocery item</option>
+                    <option value="first">Green Chilies</option>
+                    <option value="second">Raisins</option>
+                    <option value="third">Panko bread crumbs</option>
+                    <option value="fourth">Assistance</option>
+                  </select>
+                  <small class="error" data-error-message>Broke.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Closing Remarks</label>
+                <textarea placeholder="Leave your remarks here."></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <button class="medium button green">Submit</button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+
+        <hr>
+      </div>
+    </div>
+
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

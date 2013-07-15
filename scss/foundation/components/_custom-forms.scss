@@ -212,6 +212,15 @@ $custom-dropdown-width-large: 434px !default;
       &.open.large ul { min-width: $custom-dropdown-width-large; @include box-sizing(border-box); }
     }
 
+    .error .custom.dropdown {
+      @include form-error-color;
+      margin-bottom: 0;
+    }
+
+    .error .custom.dropdown + small.error {
+      margin-top: 0;
+    }
+
     .custom.dropdown ul {
       position: absolute;
       width: auto;

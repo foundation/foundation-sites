@@ -10,8 +10,8 @@
 
     settings : {
       live_validate : true,
-      input_events : 'blur change', // space delimited
       focus_on_invalid : true,
+      timeout : 1000,
       patterns : {
         alpha: /[a-zA-Z]+/,
         alpha_numeric : /[a-zA-Z0-9]+/,
@@ -46,6 +46,8 @@
       }
     },
 
+    timer : null,
+
     init : function (scope, method, options) {
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
@@ -74,8 +76,14 @@
 
       forms
         .find('input, textarea, select')
-        .on(this.settings.input_events, function (e) {
+        .on('blur change', function (e) {
           self.validate(this, e);
+        })
+        .on('keydown', function (e) {
+          clearTimeout(self.timer);
+          self.timer = setTimeout(function () {
+            self.validate(this, e);
+          }.bind(this), self.settings.timeout);
         });
     },
 

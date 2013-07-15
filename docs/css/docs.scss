@@ -138,6 +138,10 @@ input[type="text"].attached-input {
   }
 }
 
+label small {
+  text-transform: capitalize;
+  color: lighten($form-label-font-color, 10%);
+}
 /* Side Nav Docs */
 .side-nav-custom { @include side-nav(darken(orange, 20%),16px,orange); }
 
