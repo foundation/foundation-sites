@@ -15,10 +15,39 @@
       <div class="large-12 columns">
 
         <a href="#" data-dropdown="drop" class="tiny button dropdown">Dropdown Button</a><br>
+        <ul id="drop" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop2" class="small secondary radius button dropdown">Dropdown Button</a><br>
+        <ul id="drop2" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop3" class="button alert round dropdown">Dropdown Button</a><br>
+        <ul id="drop3" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop4" class="large success button dropdown">Dropdown Button</a><br>
+        <ul id="drop4" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop5" class="large button dropdown expand">Dropdown Button</a><br>
+        <ul id="drop5" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <hr>
 
@@ -78,6 +107,11 @@
 ', :css %>
 
         <a href="" data-dropdown="drop7 "class="dropdown button">Default Dropdown Button</a>
+        <ul id="drop7" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <p>There are also <strong>three options</strong> you can customize on the fly when writing this mixin. These control things like: background color, pip color and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
 
@@ -113,6 +147,11 @@ $base-style: true
 ', :css %>
 
     <a href="#" data-dropdown="drop6" class="customized-dropdown-docs">Button Base, Size, Style &amp; Shine</a>
+    <ul id="drop6" data-dropdown-content class="f-dropdown">
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
@@ -170,6 +209,11 @@ $dropdown-button-pip-top-lrg: -$button-lrg / 2 + emCalc(3);
 ', :html %>
 
         <a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button</a><br>
+        <ul id="drop1" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <p>Required Foundation Library: <code>foundation.dropdown.js</code></p>
 
@@ -191,45 +235,3 @@ $dropdown-button-pip-top-lrg: -$button-lrg / 2 + emCalc(3);
     <%= render "_sidebar-components.html.erb" %>
   </div>
 </div>
-
-
-<ul id="drop" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop1" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop2" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop3" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop4" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop5" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop6" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop7" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
