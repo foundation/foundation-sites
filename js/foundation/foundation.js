@@ -402,7 +402,7 @@ if (typeof jQuery === "undefined" &&
         return el.outerHeight();
       };
 
-      lib.outerWidth = function (el) {
+      lib.outerWidth = function (el, bool) {
         if (typeof Zepto === 'function') {
           return el.width();
         }
