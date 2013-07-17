@@ -118,7 +118,7 @@ $button-disabled-opacity: 0.6 !default;
     $bg-lightness: lightness($bg);
 
     background-color: $bg;
-    border-color: darken($bg, $button-function-factor);
+    border-color: $button-border-color;
     &:hover,
     &:focus { background-color: darken($bg, $button-function-factor); }
 
