@@ -150,7 +150,15 @@
 
             //store the old value in data
             $select.data('prevalue', $oldThis.html());
-            $select.trigger('change');
+            
+            // Kick off full DOM change event
+            if (typeof (document.createEvent) != 'undefined') {
+              var event = document.createEvent('HTMLEvents');
+              event.initEvent('change', true, true);
+              $select[0].dispatchEvent(event);
+            } else {
+              $select[0].fireEvent('onchange'); // for IE
+            }
           }
       });
 
