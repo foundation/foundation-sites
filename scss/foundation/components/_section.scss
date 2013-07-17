@@ -99,7 +99,7 @@ $content-selector: ".content" !default;
     &:hover { background-color: $title-bg-hover; }
   }
 
-  #{$content-selector} {
+  > #{$content-selector} {
     display: none;
     padding: $content-padding;
     background-color: $content-bg;
@@ -149,7 +149,7 @@ $content-selector: ".content" !default;
     }
     &:last-child #{$title-selector} { border-#{$opposite-direction}: $section-border-style $section-border-size $section-border-color; }
 
-    #{$content-selector} {
+    > #{$content-selector} {
       border: $section-border-style $section-border-size $section-border-color;
       position: absolute;
       z-index: 10;
@@ -180,7 +180,7 @@ $content-selector: ".content" !default;
     }
     &:first-child #{$title-selector} { border-top: 0; }
 
-    #{$content-selector} {
+    > #{$content-selector} {
       // Display all content blocks to account for the scrollbar
       // in the outerWidth measurements. JavaScript will toggle the active tabs.
       display: block;
@@ -215,7 +215,7 @@ $content-selector: ".content" !default;
         width: 100%;
       }
     }
-    #{$content-selector} { display: none; }
+    > #{$content-selector} { display: none; }
     &:first-child #{$title-selector} { border-bottom: none; }
 
     &.active {
@@ -248,7 +248,7 @@ $content-selector: ".content" !default;
       a { width: 100%; }
     }
 
-    #{$content-selector} { display: none; }
+    > #{$content-selector} { display: none; }
 
     &.active {
       & > #{$content-selector} {
@@ -337,7 +337,7 @@ $content-selector: ".content" !default;
           border-right: 0;
         }
 
-        #{$content-selector} {
+        > #{$content-selector} {
           position: static;
           display: block;
           width: 100%;
