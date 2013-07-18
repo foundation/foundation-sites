@@ -56,10 +56,27 @@
             </div>
 
             <div class="row">
-              <div class="large-4 columns">
-                <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" required><span class="custom radio checked"></span> Radio Button 1</label>
-                <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 2</label>
-                <label for="radio1"><input name="radio1" type="radio" id="radio1" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
+              <div class="large-12 columns">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-6 columns">
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 1</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 2</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 3</label>
+              </div>
+              <div class="large-6 columns">
+                <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;" required><span class="custom checkbox"></span> Label for Checkbox</label>
+                <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED style="display: none;" required><span class="custom checkbox checked"></span> Label for Checkbox</label>
+                <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" style="display: none;" required><span class="custom checkbox checked"></span> Label for Checkbox</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <hr>
               </div>
             </div>
 
@@ -96,11 +113,17 @@
 
 <%= code_example '
 <form data-abide>
-  <label>Your name</label>
-  <input type="text" required pattern="/[a-zA-Z]+/">
-  <label>Email</label>
-  <input type="text" required>
-  <button type="submit">Submit</button>
+  <div class="name-field">
+    <label>Your name <small>required</small></label>
+    <input type="text" required pattern="/[a-zA-Z]+/">
+    <small class="error">Name is required and must be letters, spaces or dashes only.</small>
+  </div>
+  <div class="email-field">
+    <label>Email <small>required</small></label>
+    <input type="text" required>
+    <button type="submit">Submit</button>
+    <small class="error">An email address is required.</small>
+  </div>
 </form>
 ', :html %>
 
@@ -112,7 +135,7 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Valid Example</th>
+              <th>Valid Example or Format</th>
             </tr>
           </thead>
           <tbody>
@@ -220,7 +243,7 @@
     <div class="row">
       <div class="large-12 columns">
         <h3>Custom named patterns</h3>
-        <p>By overriding Abide during Foundation initilization, you can define your own custom patterns to validate against.</p>
+        <p>By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.</p>
 
 <%= code_example "
 $(document)
@@ -232,6 +255,35 @@ $(document)
     }
   })
 ", :js %>
+        
+        <p>You can then use these custom patterns like you would the predfined patterns in your markup:</p>
+
+<%= code_example '
+<form class="custom" data-abide>
+  <label>Serial Number</label>
+  <input type="text" pattern="dashes_only" required>
+</form>
+', :html %>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+        <h3>Error messages</h3>
+
+        <p>To display an error message for your invalid form element include a <code>&lt;small&gt;</code> tage with an <code>error</code> class as a sibling of your input.</p>
+
+<%= code_example '
+<div class="input-wrapper">
+  <label>Email Address <small>required</small></label>
+  <input type="email" required>
+  <small class="error">A valid email address is required.</small>
+</div>
+', :html %>
+        
+        <p>In the above example we have wrapped our input in a <code>div</code>. This div will receive an <code>error</code> class when the input is invalid. This class will show our error message and style the label and input accordingly.</p>
       </div>
     </div>
 

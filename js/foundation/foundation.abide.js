@@ -154,7 +154,12 @@
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
             value = el.value,
+            is_radio = el.type === "radio",
             valid_length = (required) ? (el.value.length > 0) : true;
+
+        if (is_radio && required) {
+          validations.push(this.valid_radio(el, required));
+        }
 
         if (el_patterns[i][1].test(value) && valid_length ||
           !required && el.value.length < 1) {
@@ -167,6 +172,36 @@
       }
 
       return validations;
+    },
+
+    valid_radio : function (el, required) {
+      var name = el.getAttribute('name'),
+          group = document.getElementsByName(name),
+          count = group.length,
+          valids = [], valid = false;
+
+      for (var i=0; i < count; i++) {
+        if (group[i].checked) {
+          valids.push(true);
+        } else {
+          valids.push(false);
+        }
+        if (valids[i]) valid = true;
+      }
+
+      if (valid) {
+        for (var i=0; i < count; i++) {
+          $(group[i]).removeAttr('data-invalid').parent().removeClass('error');
+        }
+
+        return true;
+      }
+
+      for (var i=0; i < count; i++) {
+        $(group[i]).attr('data-invalid', '').parent().addClass('error');
+      }
+
+      return false;
     }
   };
 }(Foundation.zj, this, this.document));
