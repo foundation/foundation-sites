@@ -75,6 +75,7 @@ $custom-dropdown-width-large: 434px !default;
       width: $custom-form-input-size;
       height: $custom-form-input-size;
       position: relative;
+      top:-1px; /* fix centering issue */
       vertical-align: middle;
       border: solid $custom-form-border-size $custom-form-border-color;
       background: $custom-form-bg;

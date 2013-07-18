@@ -34,7 +34,7 @@
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
       
-      if (settings.nav) {
+      if (settings.navigation_arrows) {
         container.append($('<a>').addClass(settings.prev_class).append('<span>'));
         container.append($('<a>').addClass(settings.next_class).append('<span>'));
       }
@@ -71,6 +71,7 @@
 
     self._goto = function(next_idx, start_timer) {
       // if (locked) {return false;}
+      if (next_idx === idx) {return false;}
       if (typeof timer === 'object') {timer.restart();}
       var slides = slides_container.children();
 
@@ -153,7 +154,13 @@
     
     self.compute_dimensions = function() {
       var current = $(slides_container.children().get(idx));
-      slides_container.height(current.height());
+      var h = current.height();
+      if (!settings.variable_height) {
+        slides_container.children().each(function(){
+          if ($(this).height() > h) { h = $(this).height(); }
+        });
+      }
+      slides_container.height(h);
     };
 
     self.create_timer = function() {
@@ -343,13 +350,12 @@
     version: '4.3.0',
 
     settings: {
-      animation: 'fade',
-      nav: true,
+      animation: 'slide',
       timer_speed: 10000,
       pause_on_hover: true,
       resume_on_mouseout: false,
       animation_speed: 500,
-      stack_on_small: true,
+      stack_on_small: false,
       navigation_arrows: true,
       slide_number: true,
       container_class: 'orbit-container',
@@ -368,6 +374,7 @@
       orbit_transition_class: 'orbit-transitioning',
       bullets: true,
       timer: true,
+      variable_height: false,
       before_slide_change: noop,
       after_slide_change: noop
     },

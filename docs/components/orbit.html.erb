@@ -9,28 +9,30 @@
         <h2><%= @page_title %></h2>
         <h4 class="subheader">Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.</h4>
 
-        <div class="slideshow-wrapper">
-        <span class="preloader"></span>
-        <ul id="featured1" data-orbit data-options="pause_on_hover:false; timer_speed:5000;">
-          <li>
-            <img src="../img/demos/demo1.jpg" />
-            <div class="orbit-caption">
-              Caption One. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-            </div>
-          </li>
-          <li>
-            <img src="../img/demos/demo2.jpg" />
-            <div class="orbit-caption">
-              Caption Two. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-            </div>
-          </li>
-          <li>
-            <img src="../img/demos/demo3.jpg" />
-            <div class="orbit-caption">
-              Caption Three. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-            </div>
-          </li>
-        </ul>
+        <div class="large-10 large-centered columns">
+          <div class="slideshow-wrapper">
+          <span class="preloader"></span>
+          <ul id="featured1" data-orbit data-options="pause_on_hover:false; timer_speed:5000;">
+            <li>
+              <img src="../img/demos/orbit/demo1.jpg" />
+              <div class="orbit-caption">
+                Caption One. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+              </div>
+            </li>
+            <li>
+              <img src="../img/demos/orbit/demo2.jpg" />
+              <div class="orbit-caption">
+                Caption Two. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+              </div>
+            </li>
+            <li>
+              <img src="../img/demos/orbit/demo3.jpg" />
+              <div class="orbit-caption">
+                Caption Three. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+              </div>
+            </li>
+          </ul>
+          </div>
         </div>
 
         <hr>
@@ -114,7 +116,7 @@
 ', :html %>
 
         <hr>
-
+        <div class="large-10 large-centered columns">
         <ul id="featured2" data-orbit>
           <li data-orbit-slide="headline-1">
             <h2>Headline 1</h2>
@@ -132,6 +134,7 @@
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
           </li>
         </ul>
+        </div>
 
         <hr>
 
@@ -268,12 +271,14 @@ $preloader-class: "preloader";
 
 <%= code_example "
 $(document).foundation('orbit', {
+  animation: 'fade',
   timer_speed: 10000,
   pause_on_hover: true,
-  resume_on_mouseout: true,
+  resume_on_mouseout: false,
   animation_speed: 500,
-  bullets: true,
   stack_on_small: true,
+  navigation_arrows: true,
+  slide_number: true,
   container_class: 'orbit-container',
   stack_on_small_class: 'orbit-stack-on-small',
   next_class: 'orbit-next',
@@ -287,7 +292,12 @@ $(document).foundation('orbit', {
   slide_number_class: 'orbit-slide-number',
   caption_class: 'orbit-caption',
   active_slide_class: 'active',
-  orbit_transition_class: 'orbit-transitioning'
+  orbit_transition_class: 'orbit-transitioning',
+  bullets: true,
+  timer: true,
+  variable_height: false,
+  before_slide_change: function(){},
+  after_slide_change: function(){}
 });", :js %>
 
     <p>Starting in 4.0.7 you can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>style</code> property:</p>
