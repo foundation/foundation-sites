@@ -154,7 +154,13 @@
     
     self.compute_dimensions = function() {
       var current = $(slides_container.children().get(idx));
-      slides_container.height(current.height());
+      var h = current.height();
+      if (!settings.variable_height) {
+        slides_container.children().each(function(){
+          if ($(this).height() > h) { h = $(this).height(); }
+        });
+      }
+      slides_container.height(h);
     };
 
     self.create_timer = function() {
@@ -369,6 +375,7 @@
       orbit_transition_class: 'orbit-transitioning',
       bullets: true,
       timer: true,
+      variable_height: false,
       before_slide_change: noop,
       after_slide_change: noop
     },
