@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.2.4',
+    version : '4.3.0',
 
     settings : {
       index : 0,
@@ -45,6 +45,10 @@
 
           self.assemble();
 
+          if (self.settings.is_hover) {
+            self.settings.$topbar.find('.has-dropdown').addClass('not-click');
+          }
+
           if (self.settings.$topbar.parent().hasClass('fixed')) {
             $('body').css('padding-top', self.outerHeight(self.settings.$topbar));
           }
@@ -60,6 +64,8 @@
         return this[method].call(this, options);
       }
     },
+
+    timer : null,
 
     events : function () {
       var self = this;
@@ -104,16 +110,6 @@
             if (self.settings.scrolltop) {
               window.scrollTo(0,0);
             }
-          }
-        })
-
-        .on('mouseenter mouseleave', '.top-bar li, .top-bar li.has-dropdown', function (e) {
-          if (!self.settings.is_hover) return;
-
-          if (/enter|over/i.test(e.type)) {
-            $(this).addClass('hover').siblings().removeClass('hover');
-          } else {
-            $(this).removeClass('hover');
           }
         })
 

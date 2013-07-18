@@ -427,7 +427,7 @@ $topbar-sticky-class: ".sticky" !default;
           & > .dropdown { visibility: hidden; }
         }
 
-        &.hover {
+        &.hover, &.not-click:hover {
           & > .dropdown {
             visibility: visible;
           }
@@ -505,7 +505,7 @@ $topbar-sticky-class: ".sticky" !default;
     // Degrade gracefully when Javascript is disabled. Displays dropdown and changes 
     // background & text color on hover.
     .no-js .top-bar-section {
-	  ul li {    
+	  ul li {
         // Apply the hover link color when it has that class
         &:hover > a {
           background: $topbar-link-bg-hover;
