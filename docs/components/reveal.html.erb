@@ -42,6 +42,12 @@
 
         <p>For these styles to come across, make sure you have the default Foundation CSS package or that you've selected reveal from a custom package. These should be linked up following our default <a href="#">HTML page structure</a>.</p>
 
+        <p>The background element is appended to the end of the <code>body</code> element. If you would like to override this functionality you can add your own Reveal background anywhere on the page; this will allow you to style if if your scope is smaller than the body of the page.</p>
+
+<%= code_example '
+<div class="reveal-modal-bg" style="display: none"></div>
+', :html %>
+
         <h5>Firing a Reveal Modal</h5>
         <p>To launch a modal, just add a <code>data-reveal-id</code> to the object which you want to fire the modal when clicked. The <code>data-reveal-id</code> needs to match the <code>id</code> of your reveal.</p>
 
