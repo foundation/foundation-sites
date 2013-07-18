@@ -350,7 +350,7 @@
     version: '4.3.0',
 
     settings: {
-      animation: 'fade',
+      animation: 'slide',
       nav: true,
       timer_speed: 10000,
       pause_on_hover: true,
