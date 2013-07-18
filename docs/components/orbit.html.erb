@@ -268,12 +268,15 @@ $preloader-class: "preloader";
 
 <%= code_example "
 $(document).foundation('orbit', {
+  animation: 'fade',
+  nav: true,
   timer_speed: 10000,
   pause_on_hover: true,
-  resume_on_mouseout: true,
+  resume_on_mouseout: false,
   animation_speed: 500,
-  bullets: true,
   stack_on_small: true,
+  navigation_arrows: true,
+  slide_number: true,
   container_class: 'orbit-container',
   stack_on_small_class: 'orbit-stack-on-small',
   next_class: 'orbit-next',
@@ -287,7 +290,12 @@ $(document).foundation('orbit', {
   slide_number_class: 'orbit-slide-number',
   caption_class: 'orbit-caption',
   active_slide_class: 'active',
-  orbit_transition_class: 'orbit-transitioning'
+  orbit_transition_class: 'orbit-transitioning',
+  bullets: true,
+  timer: true,
+  variable_height: false,
+  before_slide_change: function(){},
+  after_slide_change: function(){}
 });", :js %>
 
     <p>Starting in 4.0.7 you can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>style</code> property:</p>
