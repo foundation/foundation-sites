@@ -660,7 +660,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container(false,$section-type:tabs);
     & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample" data-section="auto">
           <section>
@@ -701,7 +701,7 @@ $section-border-color: $section-border-color', :css %>
 .section-auto-sample-accordion {
   @include section-container($section-type:accordion);
   & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-accordion" data-section="accordion">
           <section>
@@ -742,7 +742,7 @@ $section-border-color: $section-border-color', :css %>
 .section-auto-sample-tabs {
   @include section-container($section-type:tabs);
   & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-tabs" data-section="tabs">
           <section>
@@ -789,7 +789,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container($section-type:vertical-tabs);
     & > section { @include section($section-type:vertical-tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-vtabs" data-section="vertical-tabs">
           <section>
@@ -847,7 +847,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container($section-type:vertical-nav);
     & > section { @include section($section-type:vertical-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="nav-container">
           <nav>
@@ -900,7 +900,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container($section-type:horizontal-nav);
     & > section { @include section($section-type:horizontal-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-hnav" data-section="horizontal-nav">
           <section>
@@ -941,7 +941,7 @@ $section-border-color: $section-border-color', :css %>
 .section-auto-sample-custom {
   @include section-container($section-type:tabs);
   & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample", $title-padding: 10px 50px, $title-color:#000, $title-bg:pink, $title-bg-hover:darken(pink,5%), $title-bg-active: #fff, $title-color-active: darken(pink,10%)); }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-custom" data-section="tabs">
           <section>
