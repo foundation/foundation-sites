@@ -17,7 +17,7 @@ $orbit-timer-bg: rgba(0,0,0,0.6) !default;
 
 // We use these to control the bullet nav styles
 $orbit-bullet-nav-color: #999 !default;
-$orbit-bullet-nav-color-active: #222 !default;
+$orbit-bullet-nav-color-active: #555 !default;
 
 // We use thes to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
@@ -257,12 +257,12 @@ $preloader-class: "preloader" !default;
 
     li {
       display: block;
-      width: 18px;
-      height: 18px;
+      width: 10px;
+      height: 10px;
       background: $orbit-bullet-nav-color;
       float: $default-float;
       margin-#{$opposite-direction}: 6px;
-      border: solid 2px $orbit-bullet-nav-color-active;
+      border: solid 1px $orbit-bullet-nav-color-active;
       @include radius(1000px);
 
       &.active {
