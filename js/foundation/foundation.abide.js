@@ -67,7 +67,7 @@
 
       forms
         .on('submit validate', function (e) {
-          return self.validate($(this).find('input, textarea, select'), e);
+          return self.validate($(this).find('input, textarea, select').get(), e);
         });
 
       this.settings.init = true;
@@ -77,21 +77,17 @@
       forms
         .find('input, textarea, select')
         .on('blur change', function (e) {
-          self.validate(this, e);
+          self.validate([this], e);
         })
         .on('keydown', function (e) {
           clearTimeout(self.timer);
           self.timer = setTimeout(function () {
-            self.validate(this, e);
+            self.validate([this], e);
           }.bind(this), self.settings.timeout);
         });
     },
 
     validate : function (els, e) {
-      if (Object.prototype.toString.call(els) !== '[object Array]') {
-        els = [els];
-      }
- 
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
           form = $(els[0]).closest('form');

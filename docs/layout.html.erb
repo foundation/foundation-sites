@@ -308,12 +308,7 @@
         .foundation()
         .foundation('joyride', 'start');
       <% else %>
-        .foundation()
-        .foundation('abide', {
-          patterns : {
-            custom: /.*/
-          }
-        });
+        .foundation();
       <% end %>
 
       $.ajax({
