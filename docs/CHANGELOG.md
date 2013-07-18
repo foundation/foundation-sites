@@ -1,3 +1,20 @@
+### 4.3- July 18, 2013
+* Added [Abide](http://foundation.zurb.com/docs/components/abide.html), our new form validation plugin that works with simple data-attributes.
+* Rewrote Orbit to include previous options and animations. We also made it possible to have variable height slides and separate animations.
+* Top Bar JS updates to fix a scrollTop bug
+* Fixed a positioning bug in custom forms when using the collapsed option
+* Added custom section to custom forms
+* Updated Interchance to support absolute URLs
+* Updated the emCalc to be used unitlessly and with multiple values
+* Created an early "opt-in" grid that we've built for Foundation 5. This includes 2 breakpoints and three grids (small, medium, large). Use this to start planning ahead to Foundation 5.
+* Fixed a bug with Section deep linking in nested content
+* Top Bar toggle bug fixes
+* Fixed bugs with dropdown positioning and closing
+* Updated visual style of bullets for Orbit
+* General bug fixes, improvements and refinements.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.3...v4.3.0).
+
 ### 4.2.3- June 26, 2013
 * Made it to where custom switches work inside custom forms.
 * Small update to breadcrumb styling so that defaults don't get overridden.

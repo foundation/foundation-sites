@@ -93,6 +93,8 @@ $active-bg: $sub-nav-active-bg
         <h5>Default SCSS Variables</h5>
 
 <%= code_example '
+$include-html-nav-classes: $include-html-classes;
+
 /* We use these to control margin and padding */
 $sub-nav-list-margin: emCalc(-4, 0, 18);
 $sub-nav-list-padding-top: emCalc(4);
@@ -109,7 +111,7 @@ $sub-nav-active-font-weight: bold;
 $sub-nav-active-bg: $primary-color;
 $sub-nav-active-color: #fff;
 $sub-nav-active-padding: emCalc(3, 9);
-$sub-nav-active-cursor: $cursor-default-value;', :css %>
+$sub-nav-active-cursor: default;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 

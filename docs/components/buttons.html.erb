@@ -173,6 +173,8 @@ $active: true
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-button-classes: $include-html-classes;
+
 /* We use these to build padding for buttons. */
 $button-med: emCalc(12);
 $button-tny: emCalc(7);
@@ -184,6 +186,7 @@ $button-display: inline-block;
 $button-margin-bottom: emCalc(20);
 
 /* We use these to control button text styles. */
+$button-font-family: inherit;
 $button-font-color: #fff;
 $button-font-color-alt: #333;
 $button-font-med: emCalc(16);
@@ -203,6 +206,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 /* We use this to set the default radius used throughout the core. */
 $button-radius: $global-radius;
+$button-round: $global-rounded;
 
 /* We use this to set default opacity for disabled buttons. */
 $button-disabled-opacity: 0.6;

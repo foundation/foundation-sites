@@ -411,6 +411,8 @@ $is-button: false
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-form-classes: $include-html-classes;
+
 /* We use this to set the base for lots of form spacing and positioning styles */
 $form-spacing: emCalc(16);
 
@@ -420,6 +422,7 @@ $form-label-font-size: emCalc(14);
 $form-label-font-weight: 500;
 $form-label-font-color: lighten(#000, 30%);
 $form-label-bottom-margin: emCalc(3);
+$input-font-family: inherit;
 $input-font-color: rgba(0,0,0,0.75);
 $input-font-size: emCalc(14);
 $input-bg-color: #fff;
@@ -455,17 +458,15 @@ $input-prefix-font-color-alt: #fff;
 
 /* We use these to style the error states for inputs and labels */
 $input-error-message-padding: emCalc(6, 4);
-$input-error-message-top: -($form-spacing) - emCalc(5);
+$input-error-message-top: 0;
 $input-error-message-font-size: emCalc(12);
 $input-error-message-font-weight: bold;
 $input-error-message-font-color: #fff;
 $input-error-message-font-color-alt: #333;
 
-+/* We use this to style the glowing effect of inputs when focused */
-+$glowing-effect-fade-time: 0.45s !default;
-+$glowing-effect-color: $input-focus-border-color !default;
-
-', :css %>
+/* We use this to style the glowing effect of inputs when focused */
+$glowing-effect-fade-time: 0.45s;
+$glowing-effect-color: $input-focus-border-color;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
       </div>

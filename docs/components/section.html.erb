@@ -962,7 +962,7 @@ $section-border-color: $section-border-color', :css %>
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
-$include-html-section-classes: $include-html-classes !default;
+$include-html-section-classes: $include-html-classes;
 
 /* We use these to set padding and hover factor */
 $section-title-padding: emCalc(15);
@@ -971,10 +971,11 @@ $section-function-factor: 10%;
 
 /* These style the titles */
 $section-title-color: #333;
+$section-title-color-active: #333;
 $section-title-bg: #efefef;
 $section-title-bg-active: darken($section-title-bg, $section-function-factor);
 $section-title-bg-active-tabs: #fff;
-$section-title-bg-hover: darken($section-title-bg, $section-function-factor/2);
+$section-title-bg-hover: darken($section-title-bg, $section-function-factor / 2);
 
 /* Want to control border size, here ya go! */
 $section-border-size: 1px;
@@ -992,6 +993,7 @@ $section-bottom-margin: emCalc(20);
 
 $title-selector: ".title";
 $content-selector: ".content";
+$active-region-selector: ".active";
 ', :css %>
 
     <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>

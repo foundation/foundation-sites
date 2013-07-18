@@ -116,11 +116,13 @@
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
-/* We use this to set the background color for the breadcrumb container */
-$crumb-bg: lighten($secondaryColor, 5%);
+$include-html-nav-classes: $include-html-classes;
+
+/* We use this to set the background color for the breadcrumb container. */
+$crumb-bg: lighten($secondary-color, 5%);
 
 /* We use these to set the padding around the breadcrumbs. */
-$crumb-padding: emCalc(6, 14, 9);
+$crumb-padding: emCalc(9, 14, 9);
 $crumb-side-padding: emCalc(12);
 
 /* We use these to control border styles. */
