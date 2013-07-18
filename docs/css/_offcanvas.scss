@@ -118,25 +118,23 @@ a.sidebar-button h4 { font-size: 22px !important; display: inline !important; ma
 
 
 @font-face {
-    font-family: 'Proxima Nova Condensed';
-    src: url('fonts/proximanovacond-regular-webfont-webfont.eot');
-    src: url('fonts/proximanovacond-regular-webfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/proximanovacond-regular-webfont-webfont.woff') format('woff'),
-         url('fonts/proximanovacond-regular-webfont-webfont.ttf') format('truetype'),
-         url('fonts/proximanovacond-regular-webfont-webfont.svg#proxima_nova_condensedregular') format('svg');
-    font-weight: normal;
+    font-family: 'proxima-nova-condensed';
+    src: url("fonts/proximanovacond-bold-webfont.eot");
+    src: url("fonts/proximanovacond-bold-webfont.eot?#iefix") format('embedded-opentype'),
+         url("fonts/proximanovacond-bold-webfont.woff") format('woff'),
+         url("fonts/proximanovacond-bold-webfont.ttf") format('truetype'),
+         url("fonts/proximanovacond-bold-webfont.svg#ProximaNovaCondensedBold") format('svg');
+    font-weight: bold;
     font-style: normal;
-
 }
 
 @font-face {
-    font-family: 'Proxima Nova';
-    src: url('fonts/proximanova-reg-webfont-webfont.eot');
-    src: url('fonts/proximanova-reg-webfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/proximanova-reg-webfont-webfont.woff') format('woff'),
-         url('fonts/proximanova-reg-webfont-webfont.ttf') format('truetype'),
-         url('fonts/proximanova-reg-webfont-webfont.svg#webfontuploaded_file') format('svg');
+    font-family: 'proxima-nova';
+    src: url("fonts/ProximaNova-Reg-webfont.eot");
+    src: url("fonts/ProximaNova-Reg-webfont.eot?iefix") format('eot'),
+         url("fonts/ProximaNova-Reg-webfont.woff") format('woff'),
+         url("fonts/ProximaNova-Reg-webfont.ttf") format('truetype'),
+         url("fonts/ProximaNova-Reg-webfont.svg#webfontZam02nTh") format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
