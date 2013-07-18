@@ -34,7 +34,7 @@
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
       
-      if (settings.nav) {
+      if (settings.navigation_arrows) {
         container.append($('<a>').addClass(settings.prev_class).append('<span>'));
         container.append($('<a>').addClass(settings.next_class).append('<span>'));
       }
@@ -351,12 +351,11 @@
 
     settings: {
       animation: 'slide',
-      nav: true,
       timer_speed: 10000,
       pause_on_hover: true,
       resume_on_mouseout: false,
       animation_speed: 500,
-      stack_on_small: true,
+      stack_on_small: false,
       navigation_arrows: true,
       slide_number: true,
       container_class: 'orbit-container',
