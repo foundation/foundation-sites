@@ -159,15 +159,15 @@
 
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
-        }
-
-        if (el_patterns[i][1].test(value) && valid_length ||
-          !required && el.value.length < 1) {
-          $(el).removeAttr('data-invalid').parent().removeClass('error');
-          validations.push(true);
         } else {
-          $(el).attr('data-invalid', '').parent().addClass('error');
-          validations.push(false);
+          if (el_patterns[i][1].test(value) && valid_length ||
+            !required && el.value.length < 1) {
+            $(el).removeAttr('data-invalid').parent().removeClass('error');
+            validations.push(true);
+          } else {
+            $(el).attr('data-invalid', '').parent().addClass('error');
+            validations.push(false);
+          }
         }
       }
 
@@ -178,30 +178,23 @@
       var name = el.getAttribute('name'),
           group = document.getElementsByName(name),
           count = group.length,
-          valids = [], valid = false;
+          valid = false;
 
       for (var i=0; i < count; i++) {
         if (group[i].checked) {
-          valids.push(true);
-        } else {
-          valids.push(false);
+          valid = true;
         }
-        if (valids[i]) valid = true;
-      }
-
-      if (valid) {
-        for (var i=0; i < count; i++) {
-          $(group[i]).removeAttr('data-invalid').parent().removeClass('error');
-        }
-
-        return true;
       }
 
       for (var i=0; i < count; i++) {
-        $(group[i]).attr('data-invalid', '').parent().addClass('error');
+        if (valid) {
+          $(group[i]).removeAttr('data-invalid').parent().removeClass('error');
+        } else {
+          $(group[i]).attr('data-invalid', '').parent().addClass('error');
+        }
       }
 
-      return false;
+      return valid;
     }
   };
 }(Foundation.zj, this, this.document));
