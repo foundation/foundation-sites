@@ -7,7 +7,7 @@
     <div class="row">
       <div class="large-12 columns">
         <h2><%= @page_title %></h2>
-        <h4 class="subheader">With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h4>
+        <h4 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h4>
 
         <form class="custom" data-abide>
           <fieldset>
@@ -15,29 +15,29 @@
 
             <div class="row">
               <div class="large-12 columns">
-                <label>Password <small>required</small></label>
-                <input type="password" placeholder="LittleW0men." name="password" required>
+                <label for="password">Password <small>required</small></label>
+                <input type="password" id="password" placeholder="LittleW0men." name="password" required>
                 <small class="error" data-error-message>Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
               </div>
             </div>
 
             <div class="row">
               <div class="large-12 columns">
-                <label>Phone</label>
-                <input type="tel" placeholder="1 234-567-8910">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="1 234-567-8910">
                 <small class="error" data-error-message>Please enter a properly formatted telephone number.</small>
               </div>
             </div>
 
             <div class="row">
               <div class="large-4 columns">
-                <label>Email</label>
-                <input type="email" placeholder="foundation@zurb.com">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="foundation@zurb.com">
                 <small class="error">Valid email required.</small>
               </div>
               <div class="large-4 columns">
-                <label>URL <small>required</small></label>
-                <input type="url" placeholder="http://zurb.com" required>
+                <label for="url">URL <small>required</small></label>
+                <input type="url" id="url" placeholder="http://zurb.com" required>
                 <small class="error" data-error-message>Valid URL required.</small>
               </div>
               <div class="large-4 columns">
@@ -56,22 +56,182 @@
             </div>
 
             <div class="row">
-              <div class="large-12 columns">
-                <label>Closing Remarks</label>
-                <textarea placeholder="Leave your remarks here."></textarea>
+              <div class="large-4 columns">
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" required><span class="custom radio checked"></span> Radio Button 1</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;"><span class="custom radio"></span> Radio Button 2</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" disabled style="display:none;"><span class="custom radio"></span> Radio Button 3</label>
               </div>
             </div>
 
             <div class="row">
               <div class="large-12 columns">
-                <button class="medium button green">Submit</button>
+                <label for="remarks">Closing Remarks</label>
+                <textarea id="remarks" name="remarks" placeholder="Leave your remarks here."></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <button type="submit" class="medium button green">Submit</button>
               </div>
             </div>
 
           </fieldset>
         </form>
 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
         <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <h3>Setting up validation</h3>
+        <p>To enable validation with Abide add the <code>data-abide</code> attribute to your <code>&lt;form&gt;</code> element. Then add the <code>required</code> attribute to each input that you want to require. Additionaly, you can define a <code>pattern</code> to define restraints on what users can input.</p>
+
+<%= code_example '
+<form data-abide>
+  <label>Your name</label>
+  <input type="text" required pattern="/[a-zA-Z]+/">
+  <label>Email</label>
+  <input type="text" required>
+  <button type="submit">Submit</button>
+</form>
+', :html %>
+
+        <h3>Predefined patterns</h3>
+
+        <p>Abide has several patterns common validation patterns built into the library:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Valid Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>alpha</td>
+              <td>Foundation</td>
+            </tr>
+            <tr>
+              <td>alpha_numeric</td>
+              <td>A1 Sauce</td>
+            </tr>
+            <tr>
+              <td>integer</td>
+              <td>-1</td>
+            </tr>
+            <tr>
+              <td>number</td>
+              <td>2937</td>
+            </tr>
+            <tr>
+              <td>password</td>
+              <td>LittleW0men.</td>
+            </tr>
+            <tr>
+              <td>card</td>
+              <td>visa, ames, mastercard</td>
+            </tr>
+            <tr>
+              <td>cvv</td>
+              <td>384 or 3284</td>
+              </td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td>foundation@zurb.com</td>
+              </td>
+            </tr>
+            <tr>
+              <td>url</td>
+              <td>http://zurb.com</td>
+            </tr>
+            <tr>
+              <td>domain</td>
+              <td>zurb.com</td>
+              </td>
+            </tr>
+            <tr>
+              <td>datetime</td>
+              <td>YYYY-MM-DDThh:mm:ssTZD</td>
+              </td>
+            </tr>
+            <tr>
+              <td>date</td>
+              <td>YYYY-MM-DD</td>
+              </td>
+            </tr>
+            <tr>
+              <td>time</td>
+              <td>HH:MM:SS</td>
+              </td>
+            </tr>
+            <tr>
+              <td>dateISO</td>
+              <td>not sure yet</td>
+              </td>
+            </tr>
+            <tr>
+              <td>month_day_year</td>
+              <td>MM/DD/YYYY</td>
+              </td>
+            </tr>
+            <tr>
+              <td>color</td>
+              <td>#FFF or #FFFFFF</td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>You can also use these patterns by settings the input's type to the name of the pattern instead of using the pattern attribute:</p>
+
+<%= code_example '
+<input type="password" required>
+<input type="email">
+<input type="url">
+', :html %>
+
+        <p>There is a good list of valid HTML5 input types on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">Mozilla Developer Network</a>. Try to avoid using patterns defined by type that do not match the specification.</p>
+
+        <p>For named patterns that are not valid input types you can use the following shortcut:</p>
+
+<%= code_example '
+<input type="text" pattern="integer">
+', :html %>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Custom named patterns</h3>
+        <p>By overriding Abide during Foundation initilization, you can define your own custom patterns to validate against.</p>
+
+<%= code_example "
+$(document)
+  .foundation()
+  .foundation('abide', {
+    patterns: {
+      dashes_only: /^[0-9-]*$/,
+      ip_address: /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/
+    }
+  })
+", :js %>
       </div>
     </div>
 

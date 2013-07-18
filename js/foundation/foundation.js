@@ -166,7 +166,7 @@ if (typeof jQuery === "undefined" &&
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.2.3',
+    version : '4.3.0',
 
     cache : {},
 
@@ -231,8 +231,7 @@ if (typeof jQuery === "undefined" &&
         if (this.libs.hasOwnProperty(lib)) {
           this.patch(this.libs[lib]);
           return this.libs[lib].init.apply(this.libs[lib], args);
-        }
-        else {
+        } else {
           return function () {};
         }
       }.bind(this), lib);
