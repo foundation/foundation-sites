@@ -48,7 +48,7 @@ $input-prefix-font-color-alt: #fff !default;
 
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: emCalc(6, 4) !default;
-$input-error-message-top: -($form-spacing) - emCalc(5) !default;
+$input-error-message-top: 0 !default;
 $input-error-message-font-size: emCalc(12) !default;
 $input-error-message-font-weight: bold !default;
 $input-error-message-font-color: #fff !default;
@@ -264,6 +264,11 @@ $glowing-effect-color: $input-focus-border-color !default;
   label { @include form-label;
     &.right { @include form-label(right,false); }
     &.inline { @include form-label(inline,false); }
+    /* Styles for required inputs */
+    small {
+      text-transform: capitalize;
+      color: lighten($form-label-font-color, 10%);
+    }
   }
 
   /* Attach elements to the beginning or end of an input */
@@ -358,6 +363,7 @@ $glowing-effect-color: $input-focus-border-color !default;
     textarea,
     select {
       @include form-error-color;
+      margin-bottom: 0;
     }
 
     label,

@@ -214,6 +214,7 @@ $custom-dropdown-width-large: 434px !default;
 
     .error .custom.dropdown {
       @include form-error-color;
+      background: rgba($alert-color, 0.1);
       margin-bottom: 0;
     }
 
