@@ -4,7 +4,8 @@
 $include-html-top-bar-classes: $include-html-classes !default;
 
 // Background color for the top bar
-$topbar-bg: #111 !default;
+$topbar-bg-color: #111 !default;
+$topbar-bg: $topbar-bg-color !default;
 
 // Height and margin
 $topbar-height: 45px !default;
@@ -20,7 +21,7 @@ $topbar-title-font-size: emCalc(17) !default;
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #222 !default;
 $topbar-dropdown-link-color: #fff !default;
-$topbar-dropdown-link-bg: lighten($topbar-bg, 5%) !default;
+$topbar-dropdown-link-bg: lighten($topbar-bg-color, 5%) !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.5 !default;
@@ -32,13 +33,14 @@ $topbar-link-color-active: #fff !default;
 $topbar-link-weight: bold !default;
 $topbar-link-font-size: emCalc(13) !default;
 $topbar-link-hover-lightness: -30% !default; // Darken by 30%
-$topbar-link-bg-hover: darken($topbar-bg, 3%) !default;
-$topbar-link-bg-active: darken($topbar-bg, 3%) !default;
+$topbar-link-bg-hover: darken($topbar-bg-color, 3%) !default;
+$topbar-link-bg-active: darken($topbar-bg-color, 3%) !default;
 
 $topbar-dropdown-label-color: #555 !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
 $topbar-dropdown-label-font-weight: bold !default;
 $topbar-dropdown-label-font-size: emCalc(10) !default;
+$topbar-dropdown-label-bg: lighten($topbar-bg-color, 5%) !default;
 
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
@@ -55,8 +57,8 @@ $topbar-breakpoint: emCalc(940) !default; // Change to 9999px for always mobile 
 $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})" !default;
 
 // Divider Styles
-$topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%) !default;
-$topbar-divider-border-top: solid 1px darken($topbar-bg, 10%) !default;
+$topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%) !default;
+$topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%) !default;
 
 // Sticky Class
 $topbar-sticky-class: ".sticky" !default;
@@ -463,7 +465,7 @@ $topbar-sticky-class: ".sticky" !default;
 
           label {
             white-space: nowrap;
-            background: lighten($topbar-bg, 5%);
+            background: $topbar-dropdown-label-bg;
           }
 
           // Second Level Dropdowns
