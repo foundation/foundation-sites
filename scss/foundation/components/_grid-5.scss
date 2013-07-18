@@ -8,14 +8,13 @@
 // @description
 //   With a default "small-#" grid, a 640-1024px "medium-#" grid, and a 1024+ "large-#" grid, we've got you covered for any layout you can think of.
 //
-@import "foundation/modules";
 
 //
 // Grid Variables
 //
 $include-html-grid-classes: true !default;
-$row-width: emCalc(1000px) !default;
-$column-gutter: emCalc(30px) !default;
+$row-width: emCalc(1000) !default;
+$column-gutter: emCalc(30) !default;
 $total-columns: 12 !default;
 
 //

@@ -289,6 +289,8 @@
         <p>We've got a ton of variables for you to use to customize your typography.</p>
 
 <%= code_example '
+$include-html-type-classes: $include-html-classes;
+
 /* We use these to control header font styles */
 $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $header-font-weight: bold;
@@ -331,7 +333,7 @@ $paragraph-text-rendering: optimizeLegibility;
 
 /* We use these to style <code> tags */
 $code-color: darken($alert-color, 15%);
-$code-font-family: Consolas, "Liberation Mono", Courier, monospace;
+$code-font-family: Consolas, \'Liberation Mono\', Courier, monospace;
 $code-font-weight: bold;
 
 /* We use these to style anchors */
@@ -347,7 +349,7 @@ $hr-margin: emCalc(20);
 
 /* We use these to style lists */
 $list-style-position: outside;
-$list-side-margin: emCalc(20);
+$list-side-margin: 0;
 $list-nested-margin: emCalc(20);
 $definition-list-header-weight: bold;
 $definition-list-header-margin-bottom: .3em;

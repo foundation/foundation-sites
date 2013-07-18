@@ -144,6 +144,8 @@
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-alert-classes: $include-html-classes;
+
 /* We use this to control alert padding. */
 $alert-padding-top: emCalc(11);
 $alert-padding-default-float: $alert-padding-top;
@@ -175,6 +177,7 @@ $alert-close-padding: 5px 4px 4px;
 
 /* We use this to control border radius */
 $alert-radius: $global-radius;
+
 ', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>

@@ -278,6 +278,8 @@
       <p>We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile first, so they are much easier to override than the previous iteration of the top bar.</p>
 
 <%= code_example '
+$include-html-top-bar-classes: $include-html-classes;
+
 /* Background color for the top bar */
 $topbar-bg: #111;
 
@@ -327,7 +329,7 @@ $topbar-menu-icon-color-toggled: #888;
 /* Transitions and breakpoint styles */
 $topbar-transition-speed: 300ms;
 $topbar-breakpoint: emCalc(940); /* Change to 9999px for always mobile layout */
-$topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")";
+$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 /* Divider Styles */
 $topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);

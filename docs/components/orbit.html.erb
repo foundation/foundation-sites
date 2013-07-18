@@ -220,6 +220,8 @@
         <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
 
 <%= code_example '
+$include-html-orbit-classes: $include-html-classes;
+
 /* We use these to control the caption styles */
 $orbit-container-bg: #f5f5f5;
 $orbit-caption-bg-old: rgb(0,0,0);
@@ -236,12 +238,12 @@ $orbit-timer-bg: rgba(0,0,0,0.6);
 
 /* We use these to control the bullet nav styles */
 $orbit-bullet-nav-color: #999;
-$orbit-bullet-nav-color-active: #222;
+$orbit-bullet-nav-color-active: #555;
 
 /* We use thes to controls the style of slide numbers */
 $orbit-slide-number-bg: rgba(0,0,0,0);
 $orbit-slide-number-font-color: #fff;
-$orbit-slide-number-padding: emCalc(5);
+$orbit-slide-number-padding: emCalc(5px);
 
 /* Graceful Loading Wrapper and preloader */
 $wrapper-class: "slideshow-wrapper";

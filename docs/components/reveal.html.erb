@@ -181,13 +181,15 @@ $color: $reveal-close-color;
         <h5>Default SCSS Variables</h5>
 
     <%= code_example '
+$include-html-reveal-classes: $include-html-classes;
+
 /* We use these to control the style of the reveal overlay. */
 $reveal-overlay-bg: rgba(#000, .45);
 $reveal-overlay-bg-old: #000;
 
 /* We use these to control the style of the modal itself. */
 $reveal-modal-bg: #fff;
-$reveal-position-top: emCalc(15);
+$reveal-position-top: 50px;
 $reveal-default-width: 80%;
 $reveal-modal-padding: emCalc(20);
 $reveal-box-shadow: 0 0 10px rgba(#000,.4);

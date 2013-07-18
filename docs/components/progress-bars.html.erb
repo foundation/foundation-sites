@@ -92,8 +92,11 @@ $bg: $primary-color
         <h5>Default SCSS Variables</h5>
 
 <%= code_example '
+$include-html-media-classes: $include-html-classes;
+
 /* We use this to se the prog bar height */
 $progress-bar-height: emCalc(25);
+$progress-bar-color: transparent;
 
 /* We use these to control the border styles */
 $progress-bar-border-color: darken(#fff, 20%);
@@ -106,7 +109,6 @@ $progress-bar-pad: emCalc(2);
 $progress-bar-margin-bottom: emCalc(10);
 
 /* We use these to set the meter colors */
-$progress-bar-color: transparent;
 $progress-meter-color: $primary-color;
 $progress-meter-secondary-color: $secondary-color;
 $progress-meter-success-color: $success-color;

@@ -97,6 +97,8 @@ $adjust: true
         <h5>Default SCSS Variables</h5>
 
 <%= code_example '
+$include-html-panel-classes: $include-html-classes;
+
 /* We use these to control the background and border styles */
 $panel-bg: darken(#fff, 5%);
 $panel-border-style: solid;
@@ -112,7 +114,9 @@ $panel-padding: emCalc(20);
 
 /* We use these to set default font colors */
 $panel-font-color: #333;
-$panel-font-color-alt: #fff;', :css %>
+$panel-font-color-alt: #fff;
+
+$panel-header-adjust: true;', :css %>
 
         <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 

@@ -155,6 +155,8 @@ $base-style: true
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-button-classes: $include-html-classes;
+
 /* We use these to set the color of the pip in dropdown buttons */
 $dropdown-button-pip-color: #fff;
 $dropdown-button-pip-color-alt: #333;
@@ -162,25 +164,25 @@ $dropdown-button-pip-color-alt: #333;
 /* We use these to style tiny dropdown buttons */
 $dropdown-button-padding-tny: $button-tny * 5;
 $dropdown-button-pip-size-tny: $button-tny;
-$dropdown-button-pip-right-tny: $button-tny * 2;
+$dropdown-button-pip-opposite-tny: $button-tny * 2;
 $dropdown-button-pip-top-tny: -$button-tny / 2 + emCalc(1);
 
 /* We use these to style small dropdown buttons */
 $dropdown-button-padding-sml: $button-sml * 5;
 $dropdown-button-pip-size-sml: $button-sml;
-$dropdown-button-pip-right-sml: $button-sml * 2;
-$dropdown-button-pip-top-sml: -$button-sml / 2 + emCalc(2);
+$dropdown-button-pip-opposite-sml: $button-sml * 2;
+$dropdown-button-pip-top-sml: -$button-sml / 2 + emCalc(1);
 
 /* We use these to style medium dropdown buttons */
 $dropdown-button-padding-med: $button-med * 4 + emCalc(3);
-$dropdown-button-pip-size-med $button-med - emCalc(3);
-$dropdown-button-pip-right-med: $button-med * 2;
+$dropdown-button-pip-size-med: $button-med - emCalc(3);
+$dropdown-button-pip-opposite-med: $button-med * 2;
 $dropdown-button-pip-top-med: -$button-med / 2 + emCalc(2);
 
 /* We use these to style large dropdown buttons */
 $dropdown-button-padding-lrg: $button-lrg * 4;
 $dropdown-button-pip-size-lrg: $button-lrg - emCalc(6);
-$dropdown-button-pip-right-lrg: $button-lrg + emCalc(12);
+$dropdown-button-pip-opposite-lrg: $button-lrg + emCalc(12);
 $dropdown-button-pip-top-lrg: -$button-lrg / 2 + emCalc(3);
 ', :css %>
 
