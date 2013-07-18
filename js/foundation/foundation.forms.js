@@ -50,6 +50,7 @@
 
     events: function () {
       var self = this;
+          selectScrolled = false;
 
       $(this.scope)
         .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
@@ -119,45 +120,60 @@
             return false;
           }
         })
-        .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
+        .on('click.fndtn.forms touchend.fndtn.forms touchmove.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
               $customDropdown = $this.closest('div.custom.dropdown'),
               $select = getFirstPrevSibling($customDropdown, 'select'),
               selectedIndex = 0;
 
-          e.preventDefault();
-          e.stopPropagation();
+          if (e.type == 'touchmove') {
+            selectScrolled = true;
+          }
 
-          if (!$(this).hasClass('disabled')) {
-            $('div.dropdown').not($customDropdown).removeClass('open');
+          if (e.type == 'touchend') {
+            if (selectScrolled) {
+              selectScrolled = false;
+            }
+            else if (!selectScrolled) {
+              selectItem();
+            }
+          }
+          else if (e.type == 'click') {
+            selectItem();
+          }
+          
+          function selectItem() {
+            if (!$(this).hasClass('disabled')) {
+              $('div.dropdown').not($customDropdown).removeClass('open');
 
-            var $oldThis = $this.closest('ul')
-              .find('li.selected');
-            $oldThis.removeClass('selected');
+              var $oldThis = $this.closest('ul')
+                .find('li.selected');
+              $oldThis.removeClass('selected');
 
-            $this.addClass('selected');
+              $this.addClass('selected');
 
-            $customDropdown.removeClass('open')
-              .find('a.current')
-              .text($this.text());
+              $customDropdown.removeClass('open')
+                .find('a.current')
+                .text($this.text());
 
-            $this.closest('ul').find('li').each(function (index) {
-              if ($this[0] === this) {
-                selectedIndex = index;
-              }
-            });
-            $select[0].selectedIndex = selectedIndex;
+              $this.closest('ul').find('li').each(function (index) {
+                if ($this[0] === this) {
+                  selectedIndex = index;
+                }
+              });
+              $select[0].selectedIndex = selectedIndex;
 
-            //store the old value in data
-            $select.data('prevalue', $oldThis.html());
+              //store the old value in data
+              $select.data('prevalue', $oldThis.html());
             
-            // Kick off full DOM change event
-            if (typeof (document.createEvent) != 'undefined') {
-              var event = document.createEvent('HTMLEvents');
-              event.initEvent('change', true, true);
-              $select[0].dispatchEvent(event);
-            } else {
-              $select[0].fireEvent('onchange'); // for IE
+              // Kick off full DOM change event
+              if (typeof (document.createEvent) != 'undefined') {
+                var event = document.createEvent('HTMLEvents');
+                event.initEvent('change', true, true);
+                $select[0].dispatchEvent(event);
+              } else {
+                $select[0].fireEvent('onchange'); // for IE
+              }
             }
           }
       });
