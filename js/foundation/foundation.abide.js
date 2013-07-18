@@ -177,9 +177,7 @@
           valid = false;
 
       for (var i=0; i < count; i++) {
-        if (group[i].checked) {
-          valid = true;
-        }
+        if (group[i].checked) valid = true;
       }
 
       for (var i=0; i < count; i++) {
