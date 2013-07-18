@@ -272,6 +272,24 @@
 
         <hr>
 
+        <h4>Medium Grid*</h4>
+        <div class="panel">
+          <p>*This <strong>experimental</strong> feature is currently only available by using SASS and importing the _grid-5.scss file into your Compass project. You can also simply download the <a href="">grid-5.css</a> file, and link to it in your HTML head after your foundation.css</p>
+        </div>
+        <p>The small and large grids give you control over mobile and desktop styles. A medium grid now offers greater flexibility and control to create complex layouts for tablets as well.</p>
+
+<%= code_example '
+<div class="row">
+  <div class="medium-2 columns">2</div>
+  <div class="medium-10 columns">10, last</div>
+</div>
+<div class="row">
+  <div class="medium-3 columns">3</div>
+  <div class="medium-9 columns">9, last</div>
+</div>', :html %>
+
+        <hr>
+
         <h3>Building With Mixins</h3>
         <p>If you are keen on SCSS and use it for your Foundation projects, you have access to grid mixins that will let you layout the page without using presentational classes that you don't want. You can create your own set of classes or even create your own grid. Setting any of the options to 'false' will leave off those styles, giving you lots of control over your CSS output. Here's an example structure you might use with the grid mixin:</p>
 
