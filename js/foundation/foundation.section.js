@@ -7,7 +7,7 @@
   Foundation.libs.section = {
     name : 'section',
 
-    version : '4.3.0',
+    version : '4.3.1',
 
     settings: {
       deep_linking: false,
@@ -23,8 +23,7 @@
       content_selector: '.content, [data-section-content]',
       nav_selector: '[data-section="vertical-nav"], [data-section="horizontal-nav"]',
       active_class: 'active',
-      callback: function() {
-      }
+      callback: function() {}
     },
 
     init: function(scope, method, options) {
