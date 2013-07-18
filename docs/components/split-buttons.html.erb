@@ -15,9 +15,32 @@
       <div class="large-12 columns">
 
         <a href="#" class="tiny button split">Split Button <span data-dropdown="drop"></span></a><br>
+        <ul id="drop" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+        
         <a href="#" class="small secondary radius button split">Split Button <span data-dropdown="drop2"></span></a><br>
+        <ul id="drop2" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" class="button alert round split">Split Button <span data-dropdown="drop3"></span></a><br>
+        <ul id="drop3" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+    
         <a href="#" class="large success button split">Split Button <span data-dropdown="drop4"></span></a><br>
+        <ul id="drop4" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <hr>
 
@@ -77,6 +100,11 @@
 ', :css %>
 
         <a href="" class="split button">Default Split Button<span data-dropdown="drop5"></span></a>
+        <ul id="drop5" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <p>There are also <strong>four options</strong> you can customize on the fly when writing this mixin. These control things like: padding size, pip color, border color and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
 
@@ -155,7 +183,6 @@ $split-button-pip-left-lrg: emCalc(-9);
 
 <%= code_example '
 <a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button <span data-dropdown="drop1"></span></a><br>
-
 <ul id="drop1" class="f-dropdown" data-dropdown-content>
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
@@ -185,36 +212,5 @@ $split-button-pip-left-lrg: emCalc(-9);
     <%= render "_sidebar-components.html.erb" %>
   </div>
 </div>
-
-    <ul id="drop" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop1" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop2" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop3" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop4" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop5" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
 
 
