@@ -137,11 +137,11 @@
 
       if (this.settings.patterns.hasOwnProperty(pattern) && pattern.length > 0) {
         return [el, this.settings.patterns[pattern], required];
+      } else if (pattern.length > 0) {
+        return [el, new RegExp(pattern), required];
       }
 
-      if (pattern.length < 1) {
-        pattern = /.*/;
-      }
+      pattern = /.*/;
 
       return [el, pattern, required];
     },

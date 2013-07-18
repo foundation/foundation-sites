@@ -115,15 +115,15 @@
 <form data-abide>
   <div class="name-field">
     <label>Your name <small>required</small></label>
-    <input type="text" required pattern="/[a-zA-Z]+/">
-    <small class="error">Name is required and must be letters, spaces or dashes only.</small>
+    <input type="number" required pattern="[a-zA-Z]+">
+    <small class="error">Name is required and must be a string.</small>
   </div>
   <div class="email-field">
     <label>Email <small>required</small></label>
-    <input type="text" required>
-    <button type="submit">Submit</button>
+    <input type="password" required>
     <small class="error">An email address is required.</small>
   </div>
+  <button type="submit">Submit</button>
 </form>
 ', :html %>
 
