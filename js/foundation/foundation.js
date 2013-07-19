@@ -425,13 +425,7 @@ if (typeof jQuery === "undefined" &&
       return true;
     },
 
-    zj : function () {
-      if (typeof Zepto !== 'undefined') {
-        return Zepto;
-      } else {
-        return jQuery;
-      }
-    }()
+    zj : $
   };
 
   $.fn.foundation = function () {
