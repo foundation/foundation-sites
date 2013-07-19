@@ -63,6 +63,7 @@ $hr-margin: emCalc(20) !default;
 $list-style-position: outside !default;
 $list-side-margin: 0 !default;
 $list-nested-margin: emCalc(20) !default;
+$list-nobullet-side-margin: $list-side-margin !default;
 $definition-list-header-weight: bold !default;
 $definition-list-header-margin-bottom: .3em !default;
 $definition-list-margin-bottom: emCalc(12) !default;
@@ -270,7 +271,12 @@ $microformat-abbr-font-decoration: none !default;
     &.square { list-style-type: square; }
     &.circle { list-style-type: circle; }
     &.disc { list-style-type: disc; }
-    &.no-bullet { list-style: none; }
+    &.no-bullet {
+      list-style: none;
+      @if $list-nobullet-side-margin != $list-side-margin {
+        margin-#{$default-float}: $list-nobullet-side-margin;
+      }
+    }
   }
 
   /* Ordered Lists */
