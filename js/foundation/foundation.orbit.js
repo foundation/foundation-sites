@@ -195,6 +195,7 @@
         animate = new SlideAnimation(slides_container);        
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
+      container.on('click', '[data-orbit-slide]', self.link_bullet);
       container.on('click', self.toggle_timer);
       container.on('touchstart.fndtn.orbit', function(e) {
         if (!e.touches) {e = e.originalEvent;}
@@ -245,7 +246,6 @@
       });
       
       $(document).on('click', '[data-orbit-link]', self.link_custom);
-      $(document).on('click', '[data-orbit-slide]', self.link_bullet)
       $(window).on('resize', self.compute_dimensions);
       $(window).on('load', self.compute_dimensions);
       slides_container.trigger('orbit:ready');
