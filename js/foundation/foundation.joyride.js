@@ -4,7 +4,7 @@
   'use strict';
 
   Foundation.libs.joyride = {
-    name: 'joyride',
+    name : 'joyride',
 
     version : '4.2.2',
 

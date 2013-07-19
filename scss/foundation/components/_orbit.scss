@@ -1,4 +1,6 @@
-// Orbit Settings
+//
+// Orbit Variables
+//
 $include-html-orbit-classes: $include-html-classes !default;
 
 // We use these to control the caption styles
@@ -17,12 +19,12 @@ $orbit-timer-bg: rgba(0,0,0,0.6) !default;
 
 // We use these to control the bullet nav styles
 $orbit-bullet-nav-color: #999 !default;
-$orbit-bullet-nav-color-active: #222 !default;
+$orbit-bullet-nav-color-active: #555 !default;
 
 // We use thes to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
-$orbit-slide-number-padding: emCalc(5) !default;
+$orbit-slide-number-padding: emCalc(5px) !default;
 
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper" !default;
@@ -122,12 +124,17 @@ $preloader-class: "preloader" !default;
       padding: 0;
       position: relative;
 
-      img { display: block; }
+      img { display: block; max-width: 100%; }
 
       &>* {
-        position: relative;
-        float: $default-float;
-        height: auto;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin-left: 100%;
+
+        &:first-child {
+          margin-left: 0%;
+        }
 
         .orbit-caption {
           position: absolute;
@@ -137,7 +144,7 @@ $preloader-class: "preloader" !default;
           color: $orbit-caption-font-color;
           width: 100%;
           padding: 10px 14px;
-          font-size: emCalc(14);
+          font-size: emCalc(14px);
         }
       }
     }
@@ -150,6 +157,7 @@ $preloader-class: "preloader" !default;
       span { font-weight: 700; padding: $orbit-slide-number-padding;}
       color: $orbit-slide-number-font-color;
       background: $orbit-slide-number-bg;
+      z-index: 10;
     }
 
     .orbit-timer {
@@ -158,6 +166,7 @@ $preloader-class: "preloader" !default;
       #{$opposite-direction}: 10px;
       height: 6px;
       width: 100px;
+      z-index: 10;
       .orbit-progress {
         height: 100%;
         background-color: $orbit-timer-bg-old;
@@ -206,6 +215,7 @@ $preloader-class: "preloader" !default;
       line-height: 50px;
       color: white;
       text-indent: -9999px !important;
+      z-index: 10;
 
       & > span {
         position: absolute;
@@ -249,12 +259,12 @@ $preloader-class: "preloader" !default;
 
     li {
       display: block;
-      width: 18px;
-      height: 18px;
+      width: 10px;
+      height: 10px;
       background: $orbit-bullet-nav-color;
       float: $default-float;
       margin-#{$opposite-direction}: 6px;
-      border: solid 2px $orbit-bullet-nav-color-active;
+      border: solid 1px $orbit-bullet-nav-color-active;
       @include radius(1000px);
 
       &.active {
@@ -288,4 +298,19 @@ $preloader-class: "preloader" !default;
 
   }
 
+}
+
+
+@media only screen and (max-width: #{$small-screen}) {
+  .orbit-stack-on-small {
+    .orbit-slides-container {height: auto !important;}
+    .orbit-slides-container > * {
+      position: relative;
+      margin-left: 0% !important;
+    }
+    .orbit-timer,
+    .orbit-next,
+    .orbit-prev,
+    .orbit-bullets {display: none;}
+  }
 }

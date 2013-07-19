@@ -1,9 +1,4 @@
 //
-// FIX THE "X" ON CUSTOM FORMS
-//
-
-
-//
 // Custom Form Variables
 //
 $include-html-custom-form-classes: $include-html-classes !default;
@@ -75,6 +70,7 @@ $custom-dropdown-width-large: 434px !default;
       width: $custom-form-input-size;
       height: $custom-form-input-size;
       position: relative;
+      top:-1px; /* fix centering issue */
       vertical-align: middle;
       border: solid $custom-form-border-size $custom-form-border-color;
       background: $custom-form-bg;
@@ -210,6 +206,16 @@ $custom-dropdown-width-large: 434px !default;
       &.open.small ul { min-width: $custom-dropdown-width-small; @include box-sizing(border-box); }
       &.open.medium ul { min-width: $custom-dropdown-width-medium; @include box-sizing(border-box); }
       &.open.large ul { min-width: $custom-dropdown-width-large; @include box-sizing(border-box); }
+    }
+
+    .error .custom.dropdown {
+      @include form-error-color;
+      background: rgba($alert-color, 0.1);
+      margin-bottom: 0;
+    }
+
+    .error .custom.dropdown + small.error {
+      margin-top: 0;
     }
 
     .custom.dropdown ul {

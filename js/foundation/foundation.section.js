@@ -1,27 +1,32 @@
 /*jslint unparam: true, browser: true, indent: 2 */
 
-;(function ($, window, document, undefined) {
+;
+(function($, window, document) {
   'use strict';
 
   Foundation.libs.section = {
-    name: 'section',
+    name : 'section',
 
-    version : '4.2.3',
+    version : '4.3.1',
 
-    settings : {
+    settings: {
       deep_linking: false,
       small_breakpoint: 768,
       one_up: true,
-      section_selector : '[data-section]',
-      region_selector : 'section, .section, [data-section-region]',
-      title_selector : '.title, [data-section-title]',
-      active_region_selector : 'section.active, .section.active, .active[data-section-region]',
-      content_selector : '.content, [data-section-content]',
-      nav_selector : '[data-section="vertical-nav"], [data-section="horizontal-nav"]',
-      callback: function (){}
+      section_selector: '[data-section]',
+      region_selector: 'section, .section, [data-section-region]',
+      title_selector: '.title, [data-section-title]',
+      //marker: container is resized
+      resized_data_attr: 'data-section-resized',
+      //marker: container should apply accordion style
+      small_style_data_attr: 'data-section-small-style',
+      content_selector: '.content, [data-section-content]',
+      nav_selector: '[data-section="vertical-nav"], [data-section="horizontal-nav"]',
+      active_class: 'active',
+      callback: function() {}
     },
 
-    init : function (scope, method, options) {
+    init: function(scope, method, options) {
       var self = this;
       Foundation.inherit(this, 'throttle data_options position_right offset_right');
 
@@ -30,373 +35,334 @@
       }
 
       if (typeof method !== 'string') {
-        this.set_active_from_hash();
         this.events();
-
         return true;
       } else {
         return this[method].call(this, options);
       }
     },
 
-    events : function () {
+    events: function() {
       var self = this;
 
-      $(this.scope)
-        .on('click.fndtn.section', '[data-section] .title, [data-section] [data-section-title]', function (e) {
-          var $this = $(this),
-              section = $this.closest(self.settings.region_selector);
+      //combine titles selector from settings for click event binding
+      var click_title_selectors = [],
+          section_selector = self.settings.section_selector,
+          region_selectors = self.settings.region_selector.split(","),
+          title_selectors = self.settings.title_selector.split(",");
 
-          if (section.children(self.settings.content_selector).length > 0) {
-            self.toggle_active.call(this, e, self);
-            self.reflow();
+      for (var i = 0, len = region_selectors.length; i < len; i++) {
+        var region_selector = region_selectors[i];
+
+        for (var j = 0, len1 = title_selectors.length; j < len1; j++) {
+          var title_selector = section_selector + ">" + region_selector + ">" + title_selectors[j];
+
+          click_title_selectors.push(title_selector + " a"); //or we can not do preventDefault for click event of <a>
+          click_title_selectors.push(title_selector);
+        }
+      }
+
+      $(self.scope)
+        .on('click.fndtn.section', click_title_selectors.join(","), function(e) {
+          var title = $(this).closest(self.settings.title_selector);
+
+          self.close_navs(title);
+          if (title.siblings(self.settings.content_selector).length > 0) {
+            self.toggle_active.call(title[0], e);
           }
         });
 
       $(window)
-        .on('resize.fndtn.section', self.throttle(function () {
-          self.resize.call(this);
-        }, 30))
-        .on('hashchange', function () {
-          if (!self.settings.toggled){
-            self.set_active_from_hash();
-            $(this).trigger('resize');
-          }
-        }).trigger('resize');
+        .on('resize.fndtn.section', self.throttle(function() { self.resize(); }, 30))
+        .on('hashchange.fndtn.section', self.set_active_from_hash);
 
-      $(document)
-        .on('click.fndtn.section', function (e) {
-          if ($(e.target).closest(self.settings.title_selector).length < 1) {
-            $(self.settings.nav_selector)
-              .children(self.settings.region_selector)
-              .removeClass('active')
-              .attr('style', '');
-          }
-        });
+      $(document).on('click.fndtn.section', function (e) {
+        if (e.isPropagationStopped && e.isPropagationStopped()) return;
+        if (e.target === document) return;
+        self.close_navs($(e.target).closest(self.settings.title_selector));
+      });
 
+      $(window).triggerHandler('resize.fndtn.section');
+      $(window).triggerHandler('hashchange.fndtn.section');
+    },
+    
+    //close nav !one_up on click elsewhere
+    close_navs: function(except_nav_with_title) {
+      var self = Foundation.libs.section,
+          navsToClose = $(self.settings.nav_selector)
+            .filter(function() { return !$.extend({}, 
+              self.settings, self.data_options($(this))).one_up; });
+
+      if (except_nav_with_title.length > 0) {
+        var section = except_nav_with_title.parent().parent();
+
+        if (self.is_horizontal_nav(section) || self.is_vertical_nav(section)) {
+          //exclude current nav from list
+          navsToClose = navsToClose.filter(function() { return this !== section[0]; });
+        }
+      }
+      //close navs on click on title
+      navsToClose.children(self.settings.region_selector).removeClass(self.settings.active_class);
     },
 
-    toggle_active : function (e, self) {
+    toggle_active: function(e) {
       var $this = $(this),
           self = Foundation.libs.section,
-          region = $this.closest(self.settings.region_selector),
+          region = $this.parent(),
           content = $this.siblings(self.settings.content_selector),
-          parent = region.parent(),
-          settings = $.extend({}, self.settings, self.data_options(parent)),
-          prev_active_section = parent
-            .children(self.settings.active_region_selector);
+          section = region.parent(),
+          settings = $.extend({}, self.settings, self.data_options(section)),
+          prev_active_region = section.children(self.settings.region_selector).filter("." + self.settings.active_class);
 
-      self.settings.toggled = true;
-
+      //for anchors inside [data-section-title]
       if (!settings.deep_linking && content.length > 0) {
         e.preventDefault();
       }
 
-      if (region.hasClass('active')) {
-        // this is causing the style flash.
-        if (self.small(parent)
-          || self.is_vertical_nav(parent)
-          || self.is_horizontal_nav(parent)
-          || self.is_accordion(parent)) {
-            if (prev_active_section[0] !== region[0]
-              || (prev_active_section[0] === region[0] && !settings.one_up)) {
-              region
-                .removeClass('active')
-                .attr('style', '');
-            }
-        }
-      } else {
-        var prev_active_section = parent
-              .children(self.settings.active_region_selector),
-            title_height = self.outerHeight(region
-              .children(self.settings.title_selector));
+      e.stopPropagation(); //do not catch same click again on parent
 
-        if (self.small(parent) || settings.one_up) {
-
-          if (self.small(parent)) {
-            prev_active_section.attr('style', '');
-          } else {
-            prev_active_section.attr('style',
-              'visibility: hidden; padding-top: '+title_height+'px;');
-          }
-        }
-
-        if (self.small(parent)) {
-          region.attr('style', '');
-        } else {
-          region.css('padding-top', title_height);
-        }
-
-        region.addClass('active');
-
-        if (prev_active_section.length > 0) {
-          prev_active_section
-            .removeClass('active')
-            .attr('style', '');
-        }
-
-        // Toggle the content display attribute. This is done to
-        // ensure accurate outerWidth measurements that account for
-        // the scrollbar.
-        if (self.is_vertical_tabs(parent)) {
-          content.css('display', 'block');
-
-          if (prev_active_section !== null) {
-            prev_active_section
-              .children(self.settings.content_selector)
-              .css('display', 'none');
-          }
-        }
+      if (!region.hasClass(self.settings.active_class)) {
+        prev_active_region.removeClass(self.settings.active_class);
+        region.addClass(self.settings.active_class);
+        //force resize for better performance (do not wait timer)
+        self.resize(region.find(self.settings.section_selector).not("[" + self.settings.resized_data_attr + "]"), true);
+      } else if (!settings.one_up && (self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))) {
+        region.removeClass(self.settings.active_class);
       }
-
-      setTimeout(function () {
-        self.settings.toggled = false;
-      }, 300);
-
       settings.callback();
     },
 
-    resize : function () {
+    check_resize_timer: null,
+
+    //main function that sets title and content positions; runs for :not(.resized) and :visible once when window width is medium up
+    //sections:
+    //  selected sections to resize, are defined on resize forced by visibility changes
+    //ensure_has_active_region:
+    //  is true when we force resize for no resized sections that were hidden and became visible, 
+    //  these sections can have no selected region, because all regions were hidden along with section on executing set_active_from_hash
+    resize: function(sections, ensure_has_active_region) {
+
       var self = Foundation.libs.section,
-          sections = $(self.settings.section_selector);
+          is_small_window = self.small($(document)),
+          //filter for section resize
+          should_be_resized = function (section, now_is_hidden) {
+            return !self.is_accordion(section) && 
+              !section.is("[" + self.settings.resized_data_attr + "]") && 
+              (!is_small_window || self.is_horizontal_tabs(section)) && 
+              now_is_hidden === (section.css('display') === 'none' || 
+              !section.parent().is(':visible'));
+          };
 
-      sections.each(function() {
-        var $this = $(this),
-            active_section = $this
-              .children(self.settings.active_region_selector),
-            settings = $.extend({}, self.settings, self.data_options($this));
+      sections = sections || $(self.settings.section_selector);
 
-        if (active_section.length > 1) {
-          active_section
-            .not(':first')
-            .removeClass('active')
-            .attr('style', '');
-        } else if (active_section.length < 1
-          && !self.is_vertical_nav($this)
-          && !self.is_horizontal_nav($this)
-          && !self.is_accordion($this)) {
+      clearTimeout(self.check_resize_timer);
 
-          var first = $this.children(self.settings.region_selector).first();
+      if (!is_small_window) {
+        sections.removeAttr(self.settings.small_style_data_attr);
+      }
 
-          if (settings.one_up || !self.small($this)) {
-            first.addClass('active');
+      //resize
+      sections.filter(function() { return should_be_resized($(this), false); })
+        .each(function() {
+          var section = $(this),
+            regions = section.children(self.settings.region_selector),
+            titles = regions.children(self.settings.title_selector),
+            content = regions.children(self.settings.content_selector),
+            titles_max_height = 0;
+
+          if (ensure_has_active_region && 
+            section.children(self.settings.region_selector).filter("." + self.settings.active_class).length == 0) {
+            var settings = $.extend({}, self.settings, self.data_options(section));
+
+            if (!settings.deep_linking && (settings.one_up || !self.is_horizontal_nav(section) &&
+              !self.is_vertical_nav(section) && !self.is_accordion(section))) {
+                regions.filter(":visible").first().addClass(self.settings.active_class);
+            }
           }
 
-          if (self.small($this)) {
-            first.attr('style', '');
-          } else {
-            first.css('padding-top', self.outerHeight(first
-              .children(self.settings.title_selector)));
-          }
-        }
+          if (self.is_horizontal_tabs(section) || self.is_auto(section)) {
+            //    region: position relative
+            //    title: position absolute
+            //    content: position static
+            var titles_sum_width = 0;
 
-        if (self.small($this)) {
-          active_section.attr('style', '');
-        } else {
-          active_section.css('padding-top', self.outerHeight(active_section
-            .children(self.settings.title_selector)));
-        }
+            titles.each(function() {
+              var title = $(this);
 
-        self.position_titles($this);
+              if (title.is(":visible")) {
+                title.css(!self.rtl ? 'left' : 'right', titles_sum_width);
+                var title_h_border_width = parseInt(title.css("border-" + (self.rtl ? 'left' : 'right') + "-width"), 10);
 
-        if ( (self.is_horizontal_nav($this) && !self.small($this))
-          || self.is_vertical_tabs($this) && !self.small($this)) {
-          self.position_content($this);
-        } else {
-          self.position_content($this, false);
-        }
-      });
-    },
+                if (title_h_border_width.toString() === 'Nan') {
+                  title_h_border_width = 0;
+                }
 
-    is_vertical_nav : function (el) {
-      return /vertical-nav/i.test(el.data('section'));
-    },
+                titles_sum_width += self.outerWidth(title) - title_h_border_width;
+                titles_max_height = Math.max(titles_max_height, self.outerHeight(title));
+              }
+            });
+            titles.css('height', titles_max_height);
+            regions.each(function() {
+              var region = $(this),
+                  region_content = region.children(self.settings.content_selector),
+                  content_top_border_width = parseInt(region_content.css("border-top-width"), 10);
 
-    is_horizontal_nav : function (el) {
-      return /horizontal-nav/i.test(el.data('section'));
-    },
+              if (content_top_border_width.toString() === 'Nan') {
+                content_top_border_width = 0;
+              }
 
-    is_accordion : function (el) {
-      return /accordion/i.test(el.data('section'));
-    },
+              region.css('padding-top', titles_max_height - content_top_border_width);
+            });
 
-    is_horizontal_tabs : function (el) {
-      return /^tabs$/i.test(el.data('section'));
-    },
+            section.css("min-height", titles_max_height);
+          } else if (self.is_horizontal_nav(section)) {
+            var first = true;
+            //    region: positon relative, float left
+            //    title: position static
+            //    content: position absolute
+            titles.each(function() {
+              titles_max_height = Math.max(titles_max_height, self.outerHeight($(this)));
+            });
 
-    is_vertical_tabs : function (el) {
-      return /vertical-tabs/i.test(el.data('section'));
-    },
+            regions.each(function() {
+              var region = $(this);
 
-    set_active_from_hash : function () {
-      var hash = window.location.hash.substring(1),
-          sections = $('[data-section]'),
-          self = this;
-      sections.each(function () {
-        var section = $(this),
-            settings = $.extend({}, self.settings, self.data_options(section));
+              region.css("margin-left", "-" + (first ? section : region.children(self.settings.title_selector)).css("border-left-width"));
+              first = false;
+            });
 
-        if (hash.length > 0 && settings.deep_linking) {
-          var regions = section
-            .children(self.settings.region_selector)
-            .attr('style', '')
-            .removeClass('active');
+            regions.css("margin-top", "-" + section.css("border-top-width"));
+            titles.css('height', titles_max_height);
+            content.css('top', titles_max_height);
+            section.css("min-height", titles_max_height);
+          } else if (self.is_vertical_tabs(section)) {
+            var titles_sum_height = 0;
+            //    region: position relative, for .active: fixed padding==title.width
+            //    title: fixed width, position absolute
+            //    content: position static
+            titles.each(function() {
+              var title = $(this);
 
-          var hash_regions = regions.map(function () {
-              var content = $(self.settings.content_selector, this),
-                  content_slug = content.data('slug');
+              if (title.is(":visible")) {
+                title.css('top', titles_sum_height);
+                var title_top_border_width = parseInt(title.css("border-top-width"), 10);
 
-              if (new RegExp('^' + content_slug + '$', 'i').test(hash)) {
-                return content;
+                if (title_top_border_width.toString() === 'Nan') {
+                  title_top_border_width = 0;
+                }
+
+                titles_sum_height += self.outerHeight(title) - title_top_border_width;
               }
             });
 
+            content.css('min-height', titles_sum_height + 1);
+          } else if (self.is_vertical_nav(section)) {
+            var titles_max_width = 0,
+                first1 = true;
+            //    region: positon relative
+            //    title: position static
+            //    content: position absolute
+            titles.each(function() {
+              titles_max_width = Math.max(titles_max_width, self.outerWidth($(this)));
+            });
 
-          var count = hash_regions.length;
+            regions.each(function () {
+              var region = $(this);
 
-          for (var i = count - 1; i >= 0; i--) {
-            $(hash_regions[i]).parents(self.settings.region_selector).addClass('active');
+              region.css("margin-top", "-" + (first1 ? section : region.children(self.settings.title_selector)).css("border-top-width"));
+              first1 = false;
+            });
+
+            titles.css('width', titles_max_width);
+            content.css(!self.rtl ? 'left' : 'right', titles_max_width);
+            section.css('width', titles_max_width);
           }
-        }
+
+          section.attr(self.settings.resized_data_attr, true);
+        });
+
+      //wait elements to become visible then resize
+      if ($(self.settings.section_selector).filter(function() { return should_be_resized($(this), true); }).length > 0)
+        self.check_resize_timer = setTimeout(function() {
+          self.resize(sections.filter(function() { return should_be_resized($(this), false); }), true);
+        }, 700);
+
+      if (is_small_window) {
+        sections.attr(self.settings.small_style_data_attr, true);
+      }
+    },
+
+    is_vertical_nav: function(el) {
+      return /vertical-nav/i.test(el.data('section'));
+    },
+
+    is_horizontal_nav: function(el) {
+      return /horizontal-nav/i.test(el.data('section'));
+    },
+
+    is_accordion: function(el) {
+      return /accordion/i.test(el.data('section'));
+    },
+
+    is_horizontal_tabs: function(el) {
+      return /^tabs$/i.test(el.data('section'));
+    },
+
+    is_vertical_tabs: function(el) {
+      return /vertical-tabs/i.test(el.data('section'));
+    },
+    
+    is_auto: function (el) {
+      var data_section = el.data('section');
+      return data_section === '' || /auto/i.test(data_section);
+    },
+
+    set_active_from_hash: function() {
+      var self = Foundation.libs.section,
+          hash = window.location.hash.substring(1),
+          sections = $(self.settings.section_selector);
+
+      sections.each(function() {
+        var section = $(this),
+            settings = $.extend({}, self.settings, self.data_options(section)),
+            regions = section.children(self.settings.region_selector),
+            set_active_from_hash = settings.deep_linking && hash.length > 0,
+            selected = false;
+
+        regions.each(function() {
+          var region = $(this);
+
+          if (selected) {
+            region.removeClass(self.settings.active_class);
+          } else if (set_active_from_hash) {
+            var data_slug = region.children(self.settings.content_selector).data('slug');
+
+            if (data_slug && new RegExp(data_slug, 'i').test(hash)) {
+              if (!region.hasClass(self.settings.active_class))
+                region.addClass(self.settings.active_class);
+              selected = true;
+            } else {
+              region.removeClass(self.settings.active_class);
+            }
+          } else if (region.hasClass(self.settings.active_class)) {
+            selected = true;
+          }
+        });
+
+        if (!selected && !settings.deep_linking && (settings.one_up || !self.is_horizontal_nav(section) &&
+         !self.is_vertical_nav(section) && !self.is_accordion(section)))
+          regions.filter(":visible").first().addClass(self.settings.active_class);
       });
     },
 
-    position_titles : function (section, off) {
-      var self = this,
-          titles = section
-            .children(this.settings.region_selector)
-            .map(function () {
-              return $(this).children(self.settings.title_selector);
-            }),
-          previous_width = 0,
-          previous_height = 0,
-          self = this;
+    reflow: function() {
+      var self = Foundation.libs.section;
 
-      if (typeof off === 'boolean') {
-        titles.attr('style', '');
-
-      } else {
-        titles.each(function () {
-          if (self.is_vertical_tabs(section)) {
-            $(this).css('top', previous_height);
-            previous_height += self.outerHeight($(this));
-          } else {
-            if (!self.rtl) {
-              $(this).css('left', previous_width);
-            } else {
-              $(this).css('right', previous_width);
-            }
-            previous_width += self.outerWidth($(this));
-          }
-        });
-      }
+      $(self.settings.section_selector).removeAttr(self.settings.resized_data_attr);
+      self.throttle(function() { self.resize(); }, 30)();
     },
 
-    position_content : function (section, off) {
-      var self = this,
-          regions = section.children(self.settings.region_selector),
-          titles = regions
-            .map(function () {
-              return $(this).children(self.settings.title_selector);
-            }),
-          content = regions
-            .map(function () {
-              return $(this).children(self.settings.content_selector);
-            });
-
-      if (typeof off === 'boolean') {
-        content.attr('style', '');
-        section.attr('style', '');
-
-        // Reset the minHeight and maxWidth values (only applicable to
-        // vertical tabs)
-        content.css('minHeight', '');
-        content.css('maxWidth', '');
-      } else {
-        if (self.is_vertical_tabs(section)
-            && !self.small(section)) {
-          var content_min_height = 0,
-              content_min_width = Number.MAX_VALUE,
-              title_width = null;
-
-          regions.each(function () {
-            var region = $(this),
-                title = region.children(self.settings.title_selector),
-                content = region.children(self.settings.content_selector),
-                content_width = 0;
-
-            title_width = self.outerWidth(title);
-            content_width = self.outerWidth(section) - title_width;
-
-            if (content_width < content_min_width) {
-              content_min_width = content_width;
-            }
-
-            // Increment the minimum height of the content region
-            // to align with the height of the titles.
-            content_min_height += self.outerHeight(title);
-
-            // Set all of the inactive tabs to 'display: none'
-            // The CSS sets all of the tabs as 'display: block'
-            // in order to account for scrollbars when measuring the width
-            // of the content regions.
-            if (!$(this).hasClass('active')) {
-              content.css('display', 'none');
-            }
-          });
-
-          regions.each(function () {
-            var content = $(this).children(self.settings.content_selector);
-            content.css('minHeight', content_min_height);
-
-            // Remove 2 pixels to account for the right-shift in the CSS
-            content.css('maxWidth', content_min_width - 2);
-          });
-
-        } else {
-          regions.each(function () {
-            var region = $(this),
-                title = region.children(self.settings.title_selector),
-                content = region.children(self.settings.content_selector);
-            if (!self.rtl) {
-              content
-                .css({left: title.position().left - 1,
-                  top: self.outerHeight(title) - 2});
-            } else {
-              content
-                .css({right: self.position_right(title) + 1,
-                  top: self.outerHeight(title) - 2});
-            }
-          });
-
-          // temporary work around for Zepto outerheight calculation issues.
-          if (typeof Zepto === 'function') {
-            section.height(this.outerHeight($(titles[0])));
-          } else {
-            section.height(this.outerHeight($(titles[0])) - 2);
-          }
-        }
-      }
-    },
-
-    position_right : function (el) {
-      var self = this,
-          section = el.closest(this.settings.section_selector),
-          regions = section.children(this.settings.region_selector),
-          section_width = el.closest(this.settings.section_selector).width(),
-          offset = regions
-            .map(function () {
-              return $(this).children(self.settings.title_selector);
-            }).length;
-      return (section_width - el.position().left - el.width() * (el.index() + 1) - offset);
-    },
-
-    reflow : function (scope) {
-      var scope = scope || document;
-      $(this.settings.section_selector, scope).trigger('resize');
-    },
-
-    small : function (el) {
+    small: function(el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
 
       if (this.is_horizontal_tabs(el)) {
@@ -414,10 +380,21 @@
       return $(this.scope).width() < settings.small_breakpoint;
     },
 
-    off : function () {
+    off: function() {
       $(this.scope).off('.fndtn.section');
       $(window).off('.fndtn.section');
-      $(document).off('.fndtn.section')
+      $(document).off('.fndtn.section');
     }
   };
-}(Foundation.zj, this, this.document));
+
+  //resize selected sections
+  $.fn.reflow_section = function(ensure_has_active_region) {
+    var section = this,
+        self = Foundation.libs.section;
+
+    section.removeAttr(self.settings.resized_data_attr);
+    self.throttle(function() { self.resize(section, ensure_has_active_region); }, 30)();
+    return this;
+  };
+
+}(Foundation.zj, window, document));
