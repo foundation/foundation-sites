@@ -284,11 +284,11 @@ $glowing-effect-color: $input-focus-border-color !default;
   .prefix.button.round { @include radius(0); @include side-radius(left, $button-round); }
   .postfix.button.round { @include radius(0); @include side-radius(right, $button-round); }
 
-  /* Separate prefix and postfix styles when on span so buttons keep their own */
-  span.prefix { @include prefix();
+  /* Separate prefix and postfix styles when on span or label so buttons keep their own */
+  span.prefix,label.prefix { @include prefix();
     &.radius { @include radius(0); @include side-radius(left, $global-radius); }
   }
-  span.postfix { @include postfix();
+  span.postfix,label.postfix { @include postfix();
     &.radius { @include radius(0); @include side-radius(right, $global-radius); }
   }
 
