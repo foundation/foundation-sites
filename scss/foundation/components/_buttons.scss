@@ -30,7 +30,6 @@ $button-function-factor: 10% !default;
 // We use these to control button border styles.
 $button-border-width: 1px !default;
 $button-border-style: solid !default;
-$button-border-color: darken($primary-color, $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
 $button-radius: $global-radius !default;
