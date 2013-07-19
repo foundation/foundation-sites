@@ -6,7 +6,7 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.2.2',
+    version : '4.2.3',
 
     settings : {
       deep_linking: false,
@@ -246,15 +246,16 @@
               var content = $(self.settings.content_selector, this),
                   content_slug = content.data('slug');
 
-              if (new RegExp(content_slug, 'i').test(hash)) 
+              if (new RegExp('^' + content_slug + '$', 'i').test(hash)) {
                 return content;
+              }
             });
 
 
           var count = hash_regions.length;
 
           for (var i = count - 1; i >= 0; i--) {
-            $(hash_regions[i]).parent().addClass('active');
+            $(hash_regions[i]).parents(self.settings.region_selector).addClass('active');
           }
         }
       });

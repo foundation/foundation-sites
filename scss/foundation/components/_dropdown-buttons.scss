@@ -11,25 +11,25 @@ $dropdown-button-pip-color-alt: #333 !default;
 $dropdown-button-padding-tny: $button-tny * 5 !default;
 $dropdown-button-pip-size-tny: $button-tny !default;
 $dropdown-button-pip-opposite-tny: $button-tny * 2 !default;
-$dropdown-button-pip-top-tny: -$button-tny / 2 + emCalc(1px) !default;
+$dropdown-button-pip-top-tny: -$button-tny / 2 + emCalc(1) !default;
 
 // We use these to style small dropdown buttons
 $dropdown-button-padding-sml: $button-sml * 5 !default;
 $dropdown-button-pip-size-sml: $button-sml !default;
 $dropdown-button-pip-opposite-sml: $button-sml * 2 !default;
-$dropdown-button-pip-top-sml: -$button-sml / 2 + emCalc(1px) !default;
+$dropdown-button-pip-top-sml: -$button-sml / 2 + emCalc(1) !default;
 
 // We use these to style medium dropdown buttons
-$dropdown-button-padding-med: $button-med * 4 + emCalc(3px) !default;
-$dropdown-button-pip-size-med: $button-med - emCalc(3px) !default;
+$dropdown-button-padding-med: $button-med * 4 + emCalc(3) !default;
+$dropdown-button-pip-size-med: $button-med - emCalc(3) !default;
 $dropdown-button-pip-opposite-med: $button-med * 2 !default;
-$dropdown-button-pip-top-med: -$button-med / 2 + emCalc(2px) !default;
+$dropdown-button-pip-top-med: -$button-med / 2 + emCalc(2) !default;
 
 // We use these to style large dropdown buttons
 $dropdown-button-padding-lrg: $button-lrg * 4 !default;
-$dropdown-button-pip-size-lrg: $button-lrg - emCalc(6px) !default;
-$dropdown-button-pip-opposite-lrg: $button-lrg + emCalc(12px) !default;
-$dropdown-button-pip-top-lrg: -$button-lrg / 2 + emCalc(3px) !default;
+$dropdown-button-pip-size-lrg: $button-lrg - emCalc(6) !default;
+$dropdown-button-pip-opposite-lrg: $button-lrg + emCalc(12) !default;
+$dropdown-button-pip-top-lrg: -$button-lrg / 2 + emCalc(3) !default;
 
 //
 // Dropdown Button Mixin

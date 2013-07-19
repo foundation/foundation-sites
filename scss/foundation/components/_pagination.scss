@@ -4,18 +4,18 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control the pagination container
-$pagination-height: emCalc(24px) !default;
-$pagination-margin: emCalc(-5px) !default;
+$pagination-height: emCalc(24) !default;
+$pagination-margin: emCalc(-5) !default;
 
 // We use these to set the list-item properties
 $pagination-li-float: $default-float;
-$pagination-li-height: emCalc(24px) !default;
+$pagination-li-height: emCalc(24) !default;
 $pagination-li-font-color: #222 !default;
-$pagination-li-font-size: emCalc(14px) !default;
-$pagination-li-margin: emCalc(5px) !default;
+$pagination-li-font-size: emCalc(14) !default;
+$pagination-li-margin: emCalc(5) !default;
 
 // We use these for the pagination anchor links
-$pagination-link-pad: emCalc(1px) emCalc(7px) emCalc(1px) !default;
+$pagination-link-pad: emCalc(1, 7, 1) !default;
 $pagination-link-font-color: #999 !default;
 $pagination-link-active-bg: darken(#fff, 10%) !default;
 
@@ -64,6 +64,8 @@ $pagination-link-current-active-bg: $primary-color !default;
       &:focus { background: $pagination-link-current-active-bg; }
     }
   } @else {
+    height: auto;
+    padding: $pagination-link-pad;
     background: $pagination-link-current-background;
     color: $pagination-link-current-font-color;
     font-weight: $pagination-link-current-font-weight;

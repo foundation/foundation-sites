@@ -7,8 +7,8 @@ $include-html-nav-classes: $include-html-classes !default;
 $crumb-bg: lighten($secondary-color, 5%) !default;
 
 // We use these to set the padding around the breadcrumbs.
-$crumb-padding: emCalc(9px) emCalc(14px) emCalc(9px) !default;
-$crumb-side-padding: emCalc(12px) !default;
+$crumb-padding: emCalc(9, 14, 9) !default;
+$crumb-side-padding: emCalc(12) !default;
 
 // We use these to control border styles.
 $crumb-function-factor: 10% !default;
@@ -18,7 +18,7 @@ $crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
 $crumb-radius: $global-radius !default;
 
 // We use these to set various text styles for breadcrumbs.
-$crumb-font-size: emCalc(11px) !default;
+$crumb-font-size: emCalc(11) !default;
 $crumb-font-color: $primary-color !default;
 $crumb-font-color-current: #333 !default;
 $crumb-font-color-unavailable: #999 !default;
@@ -67,8 +67,8 @@ $crumb-slash: "/" !default;
 
   // Current is for the link of the current page
   &.current {
-  	cursor: $cursor-default-value;
-  	color: $crumb-font-color-current;
+    cursor: $cursor-default-value;
+    color: $crumb-font-color-current;
     a {
       cursor: $cursor-default-value;
       color: $crumb-font-color-current;
@@ -80,7 +80,7 @@ $crumb-slash: "/" !default;
 
   // Unavailable removed color and link styles so it looks inactive.
   &.unavailable {
-  	color: $crumb-font-color-unavailable;
+    color: $crumb-font-color-unavailable;
     a { color: $crumb-font-color-unavailable; }
 
     &:hover,
@@ -102,8 +102,8 @@ $crumb-slash: "/" !default;
   }
 
   &:first-child:before {
-	  content: " ";
-	  margin: 0;
+    content: " ";
+    margin: 0;
   }
 
 }

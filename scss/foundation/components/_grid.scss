@@ -3,8 +3,8 @@
 //
 $include-html-grid-classes: $include-html-classes !default;
 
-$row-width: emCalc(1000px) !default;
-$column-gutter: emCalc(30px) !default;
+$row-width: emCalc(1000) !default;
+$column-gutter: emCalc(30) !default;
 $total-columns: 12 !default;
 
 //
@@ -112,7 +112,7 @@ $total-columns: 12 !default;
 
 
 @if $include-html-grid-classes != false {
-	/* Grid HTML Classes */
+  /* Grid HTML Classes */
   .row {
     @include grid-row;
 
