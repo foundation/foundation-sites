@@ -6,15 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    version : '4.2.3',
-=======
-    version : '4.2.4',
->>>>>>> master
-=======
     version : '4.3.0',
->>>>>>> master
 
     settings : {
       index : 0,
@@ -278,14 +270,9 @@
             $window = $(window),
             offst = this.outerHeight($('.top-bar')),
             t_top;
-<<<<<<< HEAD
-        //Whe resize elements of the page on windows resize. Must recalculate distance
-		$(window).resize(function() {
-=======
 
           //Whe resize elements of the page on windows resize. Must recalculate distance
       		$(window).resize(function() {
->>>>>>> master
             clearTimeout(t_top);
       			t_top = setTimeout (function() {
         			distance = $(klass).offset().top;
