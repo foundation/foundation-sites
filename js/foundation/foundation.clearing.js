@@ -74,24 +74,21 @@
                 settings = self.get_data(current.parent()),
                 image = $(e.target);
 
-            // only open clearing if an image is clicked
-            if (image['context']['localName'] == 'img') {
-              e.preventDefault();
-              if (!settings) self.init();
+            e.preventDefault();
+            if (!settings) self.init();
 
-              // if clearing is open and the current image is
-              // clicked, go to the next image in sequence
-              if (target.hasClass('visible') && 
-                current[0] === target[0] && 
-                next.length > 0 && self.is_open(current)) {
-                target = next;
-                image = target.find('img');
-              }
-
-              // set current and target to the clicked li if not otherwise defined.
-              self.open(image, current, target);
-              self.update_paddles(target);
+            // if clearing is open and the current image is
+            // clicked, go to the next image in sequence
+            if (target.hasClass('visible') && 
+              current[0] === target[0] && 
+              next.length > 0 && self.is_open(current)) {
+              target = next;
+              image = target.find('img');
             }
+
+            // set current and target to the clicked li if not otherwise defined.
+            self.open(image, current, target);
+            self.update_paddles(target);
           })
 
         .on('click.fndtn.clearing', '.clearing-main-next',

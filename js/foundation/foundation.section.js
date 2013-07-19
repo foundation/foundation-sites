@@ -129,7 +129,7 @@
       } else if (!settings.one_up && (self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))) {
         region.removeClass(self.settings.active_class);
       }
-      settings.callback();
+      settings.callback(section);
     },
 
     check_resize_timer: null,
