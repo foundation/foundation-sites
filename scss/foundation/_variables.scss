@@ -14,7 +14,7 @@ $base-font-size: 100% !default;
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be a different size and not have it effect grid size too,
 // set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
-$em-base: 16 !default;
+$em-base: 16px !default;
 
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
