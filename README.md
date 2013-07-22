@@ -149,6 +149,10 @@ Yeoman Generator
 * [Yeoman 1.0-Foundation 4](https://github.com/lkbgift/foundation4-yeoman) by [Leonard Bogdonoff](http://twitter.com/lkbcc)
 * [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
 
+Offline Documentation Tools
+
+* [Dash](http://kapeli.com/dash) by Bogdan Popescu
+
 MIT Open Source License
 =======================
 
