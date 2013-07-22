@@ -95,7 +95,7 @@
 
 <%= code_example '
 @import "foundation/variables", "foundation/components/global", "foundation/components/dropdown";
-', :css %>
+', :sass %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
 
@@ -125,7 +125,7 @@ $triangle: true
 /* By default, the dropdown is 200px max-width, taking on 100% when gets smaller than that. */
 /* You can set this to any number you want or change it globally with the variable. */
 $max-width: $f-dropdown-max-width
-', :css %>
+', :sass %>
 
         <h5>The List Style Mixin</h5>
         <p>For content dropdowns, we don't add any extra style to the inside of the dropdown other than padding around the edges. For link lists, we wanted to predefined style that would look good out of the box and match the style of our custom select dropdowns. The style mixin looks like this:</p>
@@ -137,7 +137,7 @@ $max-width: $f-dropdown-max-width
 
   li { @include dropdown-style; }
 }
-', :css %>
+', :sass %>
 
         <h5>Default SCSS Variables</h5>
 
