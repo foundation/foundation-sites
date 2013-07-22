@@ -167,7 +167,7 @@
             </tr>
             <tr>
               <td>card</td>
-              <td>visa, ames, mastercard</td>
+              <td>visa, amex, mastercard</td>
             </tr>
             <tr>
               <td>cvv</td>
@@ -250,7 +250,7 @@ $(document)
       dashes_only: /^[0-9-]*$/,
       ip_address: /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/
     }
-  })
+  });
 ", :js %>
         
         <p>You can then use these custom patterns like you would the predfined patterns in your markup:</p>
@@ -292,7 +292,7 @@ $(document)
 
         <h3>Events</h3>
 
-        <p>If a submit event is fired, a <code>valid</code> event is fired if the form is valid and an <code>invalid</code> event is fired if the form is invalid.</p>
+        <p>If a submit event is fired, a <code>valid</code> event is triggered if the form is valid and an <code>invalid</code> event is triggered if the form is invalid.</p>
 
         <p>You can bind to these events and fire your own callback:</p>
 
