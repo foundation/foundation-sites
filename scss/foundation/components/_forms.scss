@@ -48,7 +48,7 @@ $input-prefix-font-color-alt: #fff !default;
 
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: emCalc(6, 4) !default;
-$input-error-message-top: 0 !default;
+$input-error-message-top: -($form-spacing) - emCalc(5) !default;
 $input-error-message-font-size: emCalc(12) !default;
 $input-error-message-font-weight: bold !default;
 $input-error-message-font-color: #fff !default;
@@ -353,11 +353,16 @@ $glowing-effect-color: $input-focus-border-color !default;
 
   /* Error Handling */
 
+  [data-abide] {
+    .error small.error, span.error, small.error {
+      @include form-error-message;
+      margin-top: 0;
+    }
+    span.error, small.error { display: none; }
+  }
   span.error, small.error {
     @include form-error-message;
-    display: none;
   }
-
   .error {
     input,
     textarea,
