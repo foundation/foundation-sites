@@ -1,3 +1,11 @@
+### 4.3.1- July 23, 2013
+* Fixes RTL animation issues in Orbit
+* Addresses error class conflicts between Abide and general form styles
+* Bug fixes
+
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.3.0...v4.3.1).
+
 ### 4.3- July 18, 2013
 * Added [Abide](http://foundation.zurb.com/docs/components/abide.html), our new form validation plugin that works with simple data-attributes.
 * Rewrote Orbit to include previous options and animations. We also made it possible to have variable height slides and separate animations.
