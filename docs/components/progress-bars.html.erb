@@ -49,7 +49,9 @@
         <p>We've included SCSS mixins used to style progress bars. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_progress-bars.scss">_progress-bars.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/variables", "foundation/components/global", "foundation/components/progress-bars";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/progress-bars";
 ', :css %>
 
         <h5>Container Mixin</h5>

@@ -311,7 +311,7 @@ $behavior: collapse
 
 /* If you have a nested row and want it to be collapsed, you need to add this option */
 $behavior: nest-collapse
-', :css %>
+', :scss %>
 
 <%= code_example '
 /* Mixin options creating columns, these must be nested inside or a row */
@@ -344,13 +344,13 @@ $collapse: false
 /* By default, we include float: left. */
 /* To help control this, we made it an option. Set this to false to not include those styles. */
 $float: left
-', :css %>
+', :scss %>
 
 <%= code_example '
 #masthead { @include grid-row; @include panel;
   & > hgroup { @include grid-column(4); }
   & > section { @include grid-column(8); }
-}', :css %>
+}', :scss %>
 
         <header id="masthead">
           <hgroup>
@@ -368,7 +368,7 @@ $float: left
 $row-width: emCalc(1000);
 $column-gutter: emCalc(30);
 $total-columns: 12 !default;
-', :css %>
+', :scss %>
 
         <hr>
 

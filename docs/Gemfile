@@ -5,8 +5,9 @@ gem 'sprockets'
 gem 'foreman'
 gem 'stasis'
 gem 'sass', :require => false
-gem 'coderay'
-gem 'coderay_bash'
+# gem 'coderay'
+# gem 'coderay_bash'
+gem 'rouge'
 gem 'thin'
 gem 'uglifier'
 

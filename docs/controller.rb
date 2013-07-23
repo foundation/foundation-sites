@@ -1,4 +1,5 @@
 require 'socket'
+require 'rouge'
 layout 'layout.html.erb'
 
 ignore /css\//
@@ -19,8 +20,22 @@ helpers do
     end
   end
 
-  def code_example(code, lang=:ruby)
-    "<div class='#{lang}'>" + CodeRay.scan(code, lang).div(:css => :class) + "</div>"
+  def code_example(code, lang=:ruby)    
+    l = case lang
+    when :ruby then "Ruby"
+    when :bash then "Shell"
+    when :html then "HTML"
+    when :sass then "Sass"
+    when :scss then "Sass"
+    when :css then "Sass"
+    when :js then "Javascript"
+    when :json then "JSON"
+    else
+      "Shell"
+    end
+    formatter = Rouge::Formatters::HTML.new(:css_class => "")
+    lexer = Kernel.eval("Rouge::Lexers::#{l}")
+    "<div class='#{lang}'><div class='highlight'>" + formatter.format(lexer.lex(code)) + "</div></div>"
   end
 
   def foundation_home_path

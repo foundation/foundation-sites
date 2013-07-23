@@ -57,8 +57,10 @@
         <p>We've included SCSS mixins used to style block-grids. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_block-grid.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/variables", "foundation/components/global", "foundation/components/block-grid";
-', :css %>
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/block-grid";
+', :sass %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure. Since we don't have any media queries baked into the mixin itself, you can apply the styles at whatever breakpoint you want! Just change the configuration within each.</p>
 
@@ -87,7 +89,7 @@ $spacing: $block-grid-default-spacing
 /* This controls whether or not base styles come through, set to false to leave out */
 /* This is handy for when you create multiple block-grids and want less CSS output repetition */
 $base-style: true
-', :css %>
+', :scss %>
 
         <ul class="small-block-grid-5">
           <li><img src="../img/demos/demo1.jpg"></li>
@@ -102,7 +104,7 @@ $base-style: true
 
 <%= code_example '
 .your-small-class-name > li { clear: none !important; }
-', :css %>
+', :scss %>
 
         <p><strong>Note:</strong> If you are using the same class across breakpoints, your mixin should override this and you won't need it. If you want to control the layout using different classes, use the above snippet.</p>
 
@@ -115,7 +117,7 @@ $block-grid-default-spacing: emCalc(20);
 
 /* Enables media queries for block-grid classes. Set to false if writing semantic HTML. */
 $block-grid-media-queries: true
-', :css %>
+', :scss %>
 
       </div>
     </div>
