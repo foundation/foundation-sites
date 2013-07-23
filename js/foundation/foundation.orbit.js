@@ -91,6 +91,7 @@
 
       current.css('zIndex', 2);
       next.css('zIndex', 4).addClass('active');
+	  current.removeClass('active');
 
       slides_container.trigger('orbit:before-slide-change');
       settings.before_slide_change();
