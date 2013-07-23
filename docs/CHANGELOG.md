@@ -12,7 +12,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Top Bar JS updates to fix a scrollTop bug
 * Fixed a positioning bug in custom forms when using the collapsed option
 * Added custom section to custom forms
-* Updated Interchance to support absolute URLs
+* Updated Interchange to support absolute URLs
 * Updated the emCalc to be used unitlessly and with multiple values
 * Created an early "opt-in" grid that we've built for Foundation 5. This includes 2 breakpoints and three grids (small, medium, large). Use this to start planning ahead to Foundation 5.
 * Fixed a bug with Section deep linking in nested content
