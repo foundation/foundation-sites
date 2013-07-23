@@ -4,6 +4,11 @@
   var noop = function() {};
 
   var Orbit = function(el, settings) {
+    // Don't reinitialize plugin
+    if (el.hasClass(settings.slides_container_class)) {
+      return this;
+    }
+
     var self = this,
         container,
         slides_container = el,
