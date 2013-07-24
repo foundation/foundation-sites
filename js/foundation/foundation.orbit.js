@@ -4,6 +4,11 @@
   var noop = function() {};
 
   var Orbit = function(el, settings) {
+    // Don't reinitialize plugin
+    if (el.hasClass(settings.slides_container_class)) {
+      return this;
+    }
+
     var self = this,
         container,
         slides_container = el,
@@ -195,6 +200,7 @@
         animate = new SlideAnimation(slides_container);        
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
+      container.on('click', '[data-orbit-slide]', self.link_bullet);
       container.on('click', self.toggle_timer);
       container.on('touchstart.fndtn.orbit', function(e) {
         if (!e.touches) {e = e.originalEvent;}
@@ -245,7 +251,6 @@
       });
       
       $(document).on('click', '[data-orbit-link]', self.link_custom);
-      $(document).on('click', '[data-orbit-slide]', self.link_bullet)
       $(window).on('resize', self.compute_dimensions);
       $(window).on('load', self.compute_dimensions);
       slides_container.trigger('orbit:ready');
@@ -304,18 +309,20 @@
   
   var SlideAnimation = function(container) {
     var duration = 400;
+    var is_rtl = ($('html[dir=rtl]').length === 1);
+    var margin = is_rtl ? 'marginRight' : 'marginLeft';
 
     this.next = function(current, next, callback) {
-      next.animate({'marginLeft': '0%'}, duration, 'linear', function() {
-        current.css('marginLeft', '100%');
+      next.animate({margin: '0%'}, duration, 'linear', function() {
+        current.css(margin, '100%');
         callback();
       });
     };
 
     this.prev = function(current, prev, callback) {
-      prev.css('marginLeft', '-100%');
-      prev.animate({'marginLeft':'0%'}, duration, 'linear', function() {
-        current.css('marginLeft', '100%');
+      prev.css(margin, '-100%');
+      prev.animate({margin:'0%'}, duration, 'linear', function() {
+        current.css(margin, '100%');
         callback();
       });
     };
@@ -347,7 +354,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.3.0',
+    version: '4.3.1',
 
     settings: {
       animation: 'slide',

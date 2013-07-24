@@ -130,10 +130,20 @@ $preloader-class: "preloader" !default;
         position: absolute;
         top: 0;
         width: 100%;
-        margin-left: 100%;
-
+        @if $text-direction == rtl {
+          margin-right: 100%;
+        }
+        @else {
+          margin-left: 100%;
+        }
+        
         &:first-child {
+          @if $text-direction == rtl {
+          margin-right: 0%;
+          }
+          @else {
           margin-left: 0%;
+          }
         }
 
         .orbit-caption {

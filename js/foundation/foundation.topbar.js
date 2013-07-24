@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.3.0',
+    version: '4.3.1',
 
     settings : {
       index : 0,
@@ -161,7 +161,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.outerHeight(titlebar, true));
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.height(titlebar));
           }
         });
 
@@ -209,7 +209,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.outerHeight(titlebar, true));
+          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.height(titlebar));
         }
 
         setTimeout(function () {

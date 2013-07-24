@@ -48,7 +48,7 @@ $input-prefix-font-color-alt: #fff !default;
 
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: emCalc(6, 4) !default;
-$input-error-message-top: 0 !default;
+$input-error-message-top: -($form-spacing) - emCalc(5) !default;
 $input-error-message-font-size: emCalc(12) !default;
 $input-error-message-font-weight: bold !default;
 $input-error-message-font-color: #fff !default;
@@ -97,7 +97,7 @@ $glowing-effect-color: $input-focus-border-color !default;
   font-size: $input-font-size;
   margin: 0 0 $form-spacing 0;
   padding: $form-spacing / 2;
-  height: emCalc(13) + ($form-spacing * 1.5);
+  height: ($input-font-size + ($form-spacing * 1.5) - emCalc(1));
   width: 100%;
   @include box-sizing(border-box);
   @if $input-include-glowing-effect {
@@ -284,11 +284,11 @@ $glowing-effect-color: $input-focus-border-color !default;
   .prefix.button.round { @include radius(0); @include side-radius(left, $button-round); }
   .postfix.button.round { @include radius(0); @include side-radius(right, $button-round); }
 
-  /* Separate prefix and postfix styles when on span so buttons keep their own */
-  span.prefix { @include prefix();
+  /* Separate prefix and postfix styles when on span or label so buttons keep their own */
+  span.prefix,label.prefix { @include prefix();
     &.radius { @include radius(0); @include side-radius(left, $global-radius); }
   }
-  span.postfix { @include postfix();
+  span.postfix,label.postfix { @include postfix();
     &.radius { @include radius(0); @include side-radius(right, $global-radius); }
   }
 
@@ -353,11 +353,16 @@ $glowing-effect-color: $input-focus-border-color !default;
 
   /* Error Handling */
 
+  [data-abide] {
+    .error small.error, span.error, small.error {
+      @include form-error-message;
+      margin-top: 0;
+    }
+    span.error, small.error { display: none; }
+  }
   span.error, small.error {
     @include form-error-message;
-    display: none;
   }
-
   .error {
     input,
     textarea,

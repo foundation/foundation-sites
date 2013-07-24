@@ -1,0 +1,32 @@
+*.gem
+*.rbc
+.bundle
+.config
+.yardoc
+Gemfile.lock
+InstalledFiles
+_yardoc
+coverage
+doc/
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+test/css
+test/scss/output-test
+tmp
+*.DS_Store
+marketing/.sass-cache/*
+.sass-cache/*
+test/.sass-cache/*
+test/css/styles.css
+*.orig
+node_modules
+docs/public/*
+<<<<<<< HEAD
+*.sass-cache
+=======
+
+>>>>>>> 01096fd7ecca0caf42c7d7111c109ae1f40c7b63
