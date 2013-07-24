@@ -71,6 +71,7 @@ MODX
 .NET
 
 * [NuGet Package for ASP.Net MVC](http://www.nuget.org/packages/Foundation3_MVC4) by Edward Charbeneau, @EdCharbeneau
+* [Kartris E-commerce](http://www.kartris.com/) by Cactusoft Ltd.
 
 Middleman
 
