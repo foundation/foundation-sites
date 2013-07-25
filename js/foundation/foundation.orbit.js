@@ -195,9 +195,9 @@
     self.init = function() {
       self.build_markup();
       if (settings.timer) {timer = self.create_timer(); timer.start();}
-      animate = new FadeAnimation(slides_container);
+      animate = new FadeAnimation(settings, slides_container);
       if (settings.animation === 'slide') 
-        animate = new SlideAnimation(slides_container);        
+        animate = new SlideAnimation(settings, slides_container);        
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
       container.on('click', '[data-orbit-slide]', self.link_bullet);
@@ -307,8 +307,8 @@
     };
   };
   
-  var SlideAnimation = function(container) {
-    var duration = 400;
+  var SlideAnimation = function(settings, container) {
+    var duration = settings.animation_speed;
     var is_rtl = ($('html[dir=rtl]').length === 1);
     var margin = is_rtl ? 'marginRight' : 'marginLeft';
 
@@ -328,8 +328,8 @@
     };
   };
 
-  var FadeAnimation = function(container) {
-    var duration = 250;
+  var FadeAnimation = function(settings, container) {
+    var duration = settings.animation_speed;
 
     this.next = function(current, next, callback) {
       next.css({'marginLeft':'0%', 'opacity':'0.01'});
