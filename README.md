@@ -66,7 +66,7 @@ Django
 
 MODX
 
-* [MODX Version](http://designfromwithin.com/blog/2012/02/07/foundation-modx/) by Menno Pietersen
+* [Flexibility Theme](http://flexibilitymodx.com/) by Menno Pietersen
 
 .NET
 
