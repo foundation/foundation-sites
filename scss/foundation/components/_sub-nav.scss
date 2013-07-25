@@ -35,7 +35,8 @@ $sub-nav-active-cursor: default !default;
   margin-#{$default-float}: emCalc(-9);
 
   dt,
-  dd {
+  dd,
+  li {
     float: $default-float;
     display: inline;
     margin-#{$default-float}: emCalc(9);
