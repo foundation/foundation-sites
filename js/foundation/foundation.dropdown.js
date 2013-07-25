@@ -46,13 +46,49 @@
           if (!settings.is_hover) self.toggle($(this));
         })
         .on('mouseenter', '[data-dropdown]', function (e) {
+
+          var $this = $(this);
+          var $target = $('#'+$this.data('dropdown'));
+
+          // For hover mode, clears timer that would otherwise close the dropdown
+          clearTimeout($target.data('timeoutId'));
+
           var settings = $.extend({}, self.settings, self.data_options($(this)));
-          if (settings.is_hover) self.toggle($(this));
+          if (settings.is_hover) self.open.call(self, $target, $this);
+        })
+        .on('mouseleave', '[data-dropdown]', function (e) {
+
+          var $this = $(this);
+          var $target = $('#'+$this.data('dropdown'));
+
+          //Timer set to close dropdown unless cancelled
+          var timeoutId = setTimeout(function() {
+            var settings = $.extend({}, self.settings, self.data_options($this));
+            if (settings.is_hover) self.close.call(self, $target, $this);
+          }, 100);
+
+          $('#'+$this.data('dropdown')).data('timeoutId', timeoutId);
+         
+        })
+        .on('mouseenter', '[data-dropdown-content]', function (e) {
+
+          // For hover mode, clears timer that would otherwise close the dropdown
+          clearTimeout($(this).data('timeoutId'));
+         
         })
         .on('mouseleave', '[data-dropdown-content]', function (e) {
-          var target = $('[data-dropdown="' + $(this).attr('id') + '"]'),
-              settings = $.extend({}, self.settings, self.data_options(target));
-          if (settings.is_hover) self.close.call(self, $(this));
+
+          var $this = $(this);
+
+          //Timer set to close dropdown unless cancelled
+          var timeoutId = setTimeout(function() {
+            var target = $('[data-dropdown="' + $this.attr('id') + '"]'),
+                settings = $.extend({}, self.settings, self.data_options(target));
+            if (settings.is_hover) self.close.call(self, $this);
+          }, 100);
+
+          $this.data('timeoutId', timeoutId);
+
         })
         .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
         .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
