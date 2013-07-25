@@ -90,7 +90,8 @@
       var next = $(slides.get(next_idx));
 
       current.css('zIndex', 2);
-      next.css('zIndex', 4).addClass('active');
+      current.removeClass(settings.active_slide_class);
+      next.css('zIndex', 4).addClass(settings.active_slide_class);
 
       slides_container.trigger('orbit:before-slide-change');
       settings.before_slide_change();
