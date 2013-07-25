@@ -12,9 +12,10 @@
 
 .CodeRay pre {
   margin: 0px;
-  font-size: .9em;
+  font-size: .7em;
   line-height: 1.4em;
-  white-space: pre;
+  white-space: pre-wrap;
+  @media only screen and (min-width: 768px) { font-size: .9em; white-space: pre; }
 }
 
 table.CodeRay { border-collapse: collapse; width: 100%; padding: 2px }

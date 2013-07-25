@@ -14,28 +14,28 @@ $split-button-padding-tny: $button-tny * 9 !default;
 $split-button-span-width-tny: $button-tny * 6.5 !default;
 $split-button-pip-size-tny: $button-tny !default;
 $split-button-pip-top-tny: $button-tny * 2 !default;
-$split-button-pip-default-float-tny: emCalc(-5px) !default;
+$split-button-pip-default-float-tny: emCalc(-5) !default;
 
 // We use these to control small split buttons
 $split-button-padding-sml: $button-sml * 7 !default;
 $split-button-span-width-sml: $button-sml * 5 !default;
 $split-button-pip-size-sml: $button-sml !default;
 $split-button-pip-top-sml: $button-sml * 1.5 !default;
-$split-button-pip-default-float-sml: emCalc(-9px) !default;
+$split-button-pip-default-float-sml: emCalc(-9) !default;
 
 // We use these to control medium split buttons
 $split-button-padding-med: $button-med * 6.4 !default;
 $split-button-span-width-med: $button-med * 4 !default;
-$split-button-pip-size-med: $button-med - emCalc(3px) !default;
+$split-button-pip-size-med: $button-med - emCalc(3) !default;
 $split-button-pip-top-med: $button-med * 1.5 !default;
-$split-button-pip-default-float-med: emCalc(-9px) !default;
+$split-button-pip-default-float-med: emCalc(-9) !default;
 
 // We use these to control large split buttons
 $split-button-padding-lrg: $button-lrg * 6 !default;
 $split-button-span-width-lrg: $button-lrg * 3.75 !default;
-$split-button-pip-size-lrg: $button-lrg - emCalc(6px) !default;
-$split-button-pip-top-lrg: $button-lrg + emCalc(5px) !default;
-$split-button-pip-default-float-lrg: emCalc(-9px) !default;
+$split-button-pip-size-lrg: $button-lrg - emCalc(6) !default;
+$split-button-pip-top-lrg: $button-lrg + emCalc(5) !default;
+$split-button-pip-default-float-lrg: emCalc(-9) !default;
 
 
 //

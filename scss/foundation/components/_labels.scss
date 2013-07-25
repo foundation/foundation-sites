@@ -4,11 +4,11 @@
 $include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
-$label-padding: emCalc(3px) emCalc(10px) emCalc(4px) !default;
+$label-padding: emCalc(3, 10, 4) !default;
 $label-radius: $global-radius !default;
 
 // We use these to style the label text
-$label-font-sizing: emCalc(14px) !default;
+$label-font-sizing: emCalc(14) !default;
 $label-font-weight: bold !default;
 $label-font-color: #333 !default;
 $label-font-color-alt: #fff !default;

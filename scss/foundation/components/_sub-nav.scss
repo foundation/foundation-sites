@@ -4,11 +4,11 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control margin and padding
-$sub-nav-list-margin: emCalc(-4px) 0 emCalc(18px) !default;
-$sub-nav-list-padding-top: emCalc(4px) !default;
+$sub-nav-list-margin: emCalc(-4, 0, 18) !default;
+$sub-nav-list-padding-top: emCalc(4) !default;
 
 // We use this to control the definition
-$sub-nav-font-size: emCalc(14px) !default;
+$sub-nav-font-size: emCalc(14) !default;
 $sub-nav-font-color: #999 !default;
 $sub-nav-font-weight: normal !default;
 $sub-nav-text-decoration: none !default;
@@ -18,7 +18,7 @@ $sub-nav-border-radius: 1000px !default;
 $sub-nav-active-font-weight: bold !default;
 $sub-nav-active-bg: $primary-color !default;
 $sub-nav-active-color: #fff !default;
-$sub-nav-active-padding: emCalc(3px) emCalc(9px) !default;
+$sub-nav-active-padding: emCalc(3, 9) !default;
 $sub-nav-active-cursor: default !default;
 
 //
@@ -32,14 +32,14 @@ $sub-nav-active-cursor: default !default;
   margin: $sub-nav-list-margin;
   padding-top: $sub-nav-list-padding-top;
   margin-#{$opposite-direction}: 0;
-  margin-#{$default-float}: emCalc(-9px);
+  margin-#{$default-float}: emCalc(-9);
 
   dt,
   dd {
     float: $default-float;
     display: inline;
-    margin-#{$default-float}: emCalc(9px);
-    margin-bottom: emCalc(10px);
+    margin-#{$default-float}: emCalc(9);
+    margin-bottom: emCalc(10);
     font-weight: $sub-nav-font-weight;
     font-size: $font-size;
 

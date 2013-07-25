@@ -6,9 +6,11 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '4.2.2',
+    version : '4.2.4',
 
     cache : {},
+
+    images_loaded : false,
 
     settings : {
       load_attr : 'interchange',
@@ -29,13 +31,11 @@
       },
 
       directives : {
-        replace : function (el, path) {
+        replace: function (el, path) {
           if (/IMG/.test(el[0].nodeName)) {
-            var path_parts = path.split('/'),
-                path_file = path_parts[path_parts.length - 1],
-                orig_path = el[0].src;
+            var orig_path = el[0].src;
 
-            if (new RegExp(path_file, 'i').test(el[0].src)) return;
+            if (new RegExp(path, 'i').test(orig_path)) return;
 
             el[0].src = path;
 
@@ -73,6 +73,11 @@
     resize : function () {
       var cache = this.cache;
 
+      if(!this.images_loaded) {
+        setTimeout($.proxy(this.resize, this), 50);
+        return;
+      }
+
       for (var uuid in cache) {
         if (cache.hasOwnProperty(uuid)) {
           var passed = this.results(uuid, cache[uuid]);
@@ -87,18 +92,17 @@
     },
 
     results : function (uuid, scenarios) {
-      var count = scenarios.length,
-          results_arr = [];
+      var count = scenarios.length;
 
       if (count > 0) {
         var el = $('[data-uuid="' + uuid + '"]');
 
         for (var i = count - 1; i >= 0; i--) {
-          var rule = scenarios[i][2];
+          var mq, rule = scenarios[i][2];
           if (this.settings.named_queries.hasOwnProperty(rule)) {
-            var mq = matchMedia(this.settings.named_queries[rule]);
+            mq = matchMedia(this.settings.named_queries[rule]);
           } else {
-            var mq = matchMedia(scenarios[i][2]);
+            mq = matchMedia(rule);
           }
           if (mq.matches) {
             return {el: el, scenario: scenarios[i]};
@@ -120,12 +124,15 @@
     update_images : function () {
       var images = document.getElementsByTagName('img'),
           count = images.length,
+          loaded_count = 0,
           data_attr = 'data-' + this.settings.load_attr;
 
       this.cached_images = [];
+      this.images_loaded = false;
 
       for (var i = count - 1; i >= 0; i--) {
-        this.loaded($(images[i]), (i === 0), function (image, last) {
+        this.loaded($(images[i]), function (image) {
+          loaded_count++;
           if (image) {
             var str = image.getAttribute(data_attr) || '';
 
@@ -134,8 +141,10 @@
             }
           }
 
-          if (last) this.enhance();
-
+          if(loaded_count === count) {
+            this.images_loaded = true;
+            this.enhance();
+          }
         }.bind(this));
       }
 
@@ -145,9 +154,9 @@
     // based on jquery.imageready.js
     // @weblinc, @jsantell, (c) 2012
 
-    loaded : function (image, last, callback) {
+    loaded : function (image, callback) {
       function loaded () {
-        callback(image[0], last);
+        callback(image[0]);
       }
 
       function bindLoad () {

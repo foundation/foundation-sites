@@ -1,9 +1,4 @@
 //
-// FIX THE "X" ON CUSTOM FORMS
-//
-
-
-//
 // Custom Form Variables
 //
 $include-html-custom-form-classes: $include-html-classes !default;
@@ -25,8 +20,8 @@ $custom-select-fade-to-color: #f3f3f3 !default;
 $custom-select-border-color: #ddd !default;
 $custom-select-triangle-color: #aaa !default;
 $custom-select-triangle-color-open: #222 !default;
-$custom-select-height: emCalc(13px) + ($form-spacing * 1.5) !default;
-$custom-select-margin-bottom: emCalc(20px) !default;
+$custom-select-height: emCalc(13) + ($form-spacing * 1.5) !default;
+$custom-select-margin-bottom: emCalc(20) !default;
 $custom-select-font-color-selected: #141414 !default;
 $custom-select-disabled-color: #888 !default;
 
@@ -37,15 +32,15 @@ $custom-dropdown-border-color: darken(#fff, 20%) !default;
 $custom-dropdown-border-width: 1px !default;
 $custom-dropdown-border-style: solid !default;
 $custom-dropdown-font-color: #555 !default;
-$custom-dropdown-font-size: emCalc(14px) !default;
+$custom-dropdown-font-size: emCalc(14) !default;
 $custom-dropdown-color-selected: #eeeeee !default;
 $custom-dropdown-font-color-selected: #000 !default;
 $custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1) !default;
 $custom-dropdown-offset-top: auto !default;
-$custom-dropdown-list-padding: emCalc(4px) !default;
-$custom-dropdown-default-float-padding: emCalc(6px) !default;
-$custom-dropdown-opposite-padding: emCalc(38px) !default;
-$custom-dropdown-list-item-min-height: emCalc(24px) !default;
+$custom-dropdown-list-padding: emCalc(4) !default;
+$custom-dropdown-default-float-padding: emCalc(6) !default;
+$custom-dropdown-opposite-padding: emCalc(38) !default;
+$custom-dropdown-list-item-min-height: emCalc(24) !default;
 $custom-dropdown-width-small: 134px !default;
 $custom-dropdown-width-medium: 254px !default;
 $custom-dropdown-width-large: 434px !default;
@@ -75,6 +70,7 @@ $custom-dropdown-width-large: 434px !default;
       width: $custom-form-input-size;
       height: $custom-form-input-size;
       position: relative;
+      top:-1px; /* fix centering issue */
       vertical-align: middle;
       border: solid $custom-form-border-size $custom-form-border-color;
       background: $custom-form-bg;
@@ -152,7 +148,7 @@ $custom-dropdown-width-large: 434px !default;
       .current {
         cursor:default;
         white-space: nowrap;
-        line-height: $custom-select-height - emCalc(1px);
+        line-height: $custom-select-height - emCalc(1);
         color: $input-font-color;
         text-decoration: none;
         overflow: hidden;
@@ -174,7 +170,7 @@ $custom-dropdown-width-large: 434px !default;
           display: block;
           @include css-triangle(5px, $custom-select-triangle-color, top);
           position: absolute;
-          #{$default-float}: ($form-spacing * 2.5) / 2 - emCalc(5px);
+          #{$default-float}: ($form-spacing * 2.5) / 2 - emCalc(5);
           top: 50%;
           margin-top: -3px;
         }
@@ -210,6 +206,16 @@ $custom-dropdown-width-large: 434px !default;
       &.open.small ul { min-width: $custom-dropdown-width-small; @include box-sizing(border-box); }
       &.open.medium ul { min-width: $custom-dropdown-width-medium; @include box-sizing(border-box); }
       &.open.large ul { min-width: $custom-dropdown-width-large; @include box-sizing(border-box); }
+    }
+
+    .error .custom.dropdown {
+      @include form-error-color;
+      background: rgba($alert-color, 0.1);
+      margin-bottom: 0;
+    }
+
+    .error .custom.dropdown + small.error {
+      margin-top: 0;
     }
 
     .custom.dropdown ul {

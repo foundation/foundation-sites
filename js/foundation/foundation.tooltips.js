@@ -4,7 +4,7 @@
   'use strict';
 
   Foundation.libs.tooltips = {
-    name: 'tooltips',
+    name : 'tooltips',
 
     version : '4.2.2',
 

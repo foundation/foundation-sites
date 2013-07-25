@@ -244,6 +244,8 @@ $base-style: true
         <h5>Default SCSS Variables</h5>
 
 <%= code_example '
+$include-html-form-classes: $include-html-classes;
+
 /* Controlling border styles and background colors for the switch container */
 $switch-border-color: darken(#fff, 20%);
 $switch-border-style: solid;
@@ -255,7 +257,7 @@ $switch-height-tny: 22px;
 $switch-height-sml: 28px;
 $switch-height-med: 36px;
 $switch-height-lrg: 44px;
-$switch-bottom-margin: emCalc(20px);
+$switch-bottom-margin: emCalc(20);
 
 /* We use these to control default font sizes for our classes. */
 $switch-font-size-tny: 11px;

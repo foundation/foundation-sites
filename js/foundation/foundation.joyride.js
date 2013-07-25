@@ -4,7 +4,7 @@
   'use strict';
 
   Foundation.libs.joyride = {
-    name: 'joyride',
+    name : 'joyride',
 
     version : '4.2.2',
 
@@ -42,7 +42,7 @@
         expose  : '<div class="joyride-expose-wrapper"></div>',
         exposeCover: '<div class="joyride-expose-cover"></div>'
       },
-      exposeAddClass  	: ''		// One or more space-separated class names to be added to exposed element
+      exposeAddClass : '' // One or more space-separated class names to be added to exposed element
     },
 
     settings : {},
@@ -350,7 +350,13 @@
       if (!this.settings.modal) {
         $('.joyride-modal-bg').hide();
       }
-      this.settings.$current_tip.hide();
+
+      // Prevent scroll bouncing...wait to remove from layout
+      this.settings.$current_tip.css('visibility', 'hidden');
+      setTimeout($.proxy(function() {
+        this.hide();
+        this.css('visibility', 'visible');
+      }, this.settings.$current_tip), 0);
       this.settings.postStepCallback(this.settings.$li.index(),
         this.settings.$current_tip);
     },

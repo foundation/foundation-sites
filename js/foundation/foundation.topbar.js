@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.2.2',
+    version: '4.3.1',
 
     settings : {
       index : 0,
@@ -14,6 +14,7 @@
       custom_back_text: true,
       back_text: 'Back',
       is_hover: true,
+      mobile_show_parent_link: true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
@@ -44,6 +45,10 @@
 
           self.assemble();
 
+          if (self.settings.is_hover) {
+            self.settings.$topbar.find('.has-dropdown').addClass('not-click');
+          }
+
           if (self.settings.$topbar.parent().hasClass('fixed')) {
             $('body').css('padding-top', self.outerHeight(self.settings.$topbar));
           }
@@ -59,6 +64,8 @@
         return this[method].call(this, options);
       }
     },
+
+    timer : null,
 
     events : function () {
       var self = this;
@@ -86,7 +93,7 @@
 
             topbar
               .toggleClass('expanded')
-              .css('max-height', '');
+              .css('height', '');
           }
 
           if (!topbar.hasClass('expanded')) {
@@ -103,16 +110,6 @@
             if (self.settings.scrolltop) {
               window.scrollTo(0,0);
             }
-          }
-        })
-
-        .on('mouseenter mouseleave', '.top-bar li', function (e) {
-          if (!self.settings.is_hover) return;
-
-          if (/enter|over/i.test(e.type)) {
-            $(this).addClass('hover');
-          } else {
-            $(this).removeClass('hover');
           }
         })
 
@@ -164,14 +161,14 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('max-height', self.height($this.siblings('ul')) + self.outerHeight(titlebar, true));
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.height(titlebar));
           }
         });
 
       $(window).on('resize.fndtn.topbar', function () {
         if (!self.breakpoint()) {
           $('.top-bar, [data-topbar]')
-            .css('max-height', '')
+            .css('height', '')
             .removeClass('expanded')
             .find('li')
             .removeClass('hover');
@@ -210,9 +207,9 @@
         }
 
         if (topbar.data('index') === 0) {
-          topbar.css('max-height', '');
+          topbar.css('height', '');
         } else {
-          topbar.css('max-height', self.height($previousLevelUl) + self.outerHeight(titlebar, true));
+          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.height(titlebar));
         }
 
         setTimeout(function () {
@@ -235,7 +232,7 @@
             $dropdown = $link.siblings('.dropdown'),
             url = $link.attr('href');
 
-        if (url && url.length > 1) {
+        if (self.settings.mobile_show_parent_link && url && url.length > 1) {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li><li><a class="parent-link js-generated" href="' + url + '">' + $link.text() +'</a></li>');
         } else {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
@@ -270,16 +267,22 @@
       var klass = '.' + this.settings.stickyClass;
       if ($(klass).length > 0) {
         var distance = $(klass).length ? $(klass).offset().top: 0,
-            $window = $(window);
-            var offst = this.outerHeight($('.top-bar'));
+            $window = $(window),
+            offst = this.outerHeight($('.top-bar')),
+            t_top;
 
+          //Whe resize elements of the page on windows resize. Must recalculate distance
+      		$(window).resize(function() {
+            clearTimeout(t_top);
+      			t_top = setTimeout (function() {
+        			distance = $(klass).offset().top;
+      			},105);
+      		});
           $window.scroll(function() {
-            if ($window.scrollTop() >= (distance)) {
+            if ($window.scrollTop() > (distance)) {
               $(klass).addClass("fixed");
               $('body').css('padding-top',offst);
-            }
-
-            else if ($window.scrollTop() < distance) {
+            } else if ($window.scrollTop() <= distance) {
               $(klass).removeClass("fixed");
               $('body').css('padding-top','0');
             }

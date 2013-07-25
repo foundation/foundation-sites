@@ -15,6 +15,7 @@ class FoundationAssets
       @env.append_path File.expand_path('../css', __FILE__)
       @env.append_path File.expand_path('../../js', __FILE__)
       @env.append_path File.expand_path('../js', __FILE__)
+      @env.append_path File.expand_path('../img', __FILE__)
     end
 
     def compile
@@ -25,6 +26,12 @@ class FoundationAssets
         File.delete(pth) if File.exists?(pth)
         code = @env[bundle].to_s
         File.open(pth, "w") {|f| f.puts code}
+      end
+      Dir["img/**/*.png"].each do |img_pth|
+        pth = "#{assets_path}/#{img_pth.split('img/').last}"
+        FileUtils.mkdir_p(File.dirname(pth))
+        File.delete(pth) if File.exists?(pth)
+        FileUtils.copy_file(img_pth,pth)
       end
     end
 end

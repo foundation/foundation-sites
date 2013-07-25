@@ -5,10 +5,13 @@ gem 'sprockets'
 gem 'foreman'
 gem 'stasis'
 gem 'sass', :require => false
-gem 'coderay'
-gem 'coderay_bash'
+gem 'rouge'
 gem 'thin'
 gem 'uglifier'
+
+group :development do
+  gem 'capistrano'
+end
 
 group :production do
   gem 'therubyracer'

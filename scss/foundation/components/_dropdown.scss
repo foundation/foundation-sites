@@ -25,14 +25,14 @@ $f-dropdown-triangle-side-offset: 10px !default;
 // We use these to control styles for the list elements.
 $f-dropdown-list-style: none !default;
 $f-dropdown-font-color: #555 !default;
-$f-dropdown-font-size: emCalc(14px) !default;
-$f-dropdown-list-padding: emCalc(5px) emCalc(10px) !default;
-$f-dropdown-line-height: emCalc(18px) !default;
+$f-dropdown-font-size: emCalc(14) !default;
+$f-dropdown-list-padding: emCalc(5, 10) !default;
+$f-dropdown-line-height: emCalc(18) !default;
 $f-dropdown-list-hover-bg: #eeeeee !default;
 $dropdown-mobile-default-float: 0 !default;
 
 // We use this to control the styles for when the dropdown has custom content.
-$f-dropdown-content-padding: emCalc(20px) !default;
+$f-dropdown-content-padding: emCalc(20) !default;
 
 //
 // Dropdown Mixins

@@ -4,7 +4,7 @@
   'use strict';
 
   Foundation.libs.reveal = {
-    name: 'reveal',
+    name : 'reveal',
 
     version : '4.2.2',
 

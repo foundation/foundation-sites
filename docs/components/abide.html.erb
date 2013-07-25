@@ -1,0 +1,371 @@
+<% @side_nav = "js" %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    <% @page_title = "Abide" %>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2><%= @page_title %></h2>
+        <h4 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h4>
+
+        <form class="custom" data-abide>
+          <fieldset>
+            <legend>Fieldset</legend>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label for="password">Password <small>required</small></label>
+                <input type="password" id="password" placeholder="LittleW0men." name="password" required>
+                <small class="error" data-error-message>Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="1 234-567-8910">
+                <small class="error" data-error-message>Please enter a properly formatted telephone number.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-4 columns">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="foundation@zurb.com">
+                <small class="error">Valid email required.</small>
+              </div>
+              <div class="large-4 columns">
+                <label for="url">URL <small>required</small></label>
+                <input type="url" id="url" placeholder="http://zurb.com" required>
+                <small class="error" data-error-message>Valid URL required.</small>
+              </div>
+              <div class="large-4 columns">
+                <div class="row collapse">
+                  <label for="customDropdown1">Hardest to find in grocery <small>required</small></label>
+                  <select id="customDropdown1" class="medium" required>
+                    <option value="">Select grocery item</option>
+                    <option value="first">Green Chilies</option>
+                    <option value="second">Raisins</option>
+                    <option value="third">Panko bread crumbs</option>
+                    <option value="fourth">Assistance</option>
+                  </select>
+                  <small class="error" data-error-message>Broke.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-6 columns">
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 1</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 2</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 3</label>
+              </div>
+              <div class="large-6 columns">
+                <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;" required><span class="custom checkbox"></span> Label for Checkbox</label>
+                <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED style="display: none;" required><span class="custom checkbox checked"></span> Label for Checkbox</label>
+                <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" style="display: none;" required><span class="custom checkbox checked"></span> Label for Checkbox</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label for="remarks">Closing Remarks</label>
+                <textarea id="remarks" name="remarks" placeholder="Leave your remarks here."></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <button type="submit" class="medium button green">Submit</button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <h3>Setting up validation</h3>
+        <p>To enable validation with Abide add the <code>data-abide</code> attribute to your <code>&lt;form&gt;</code> element. Then add the <code>required</code> attribute to each input that you want to require. Additionaly, you can define a <code>pattern</code> to define restraints on what users can input.</p>
+
+<%= code_example '
+<form data-abide>
+  <div class="name-field">
+    <label>Your name <small>required</small></label>
+    <input type="number" required pattern="[a-zA-Z]+">
+    <small class="error">Name is required and must be a string.</small>
+  </div>
+  <div class="email-field">
+    <label>Email <small>required</small></label>
+    <input type="password" required>
+    <small class="error">An email address is required.</small>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+', :html %>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+        <h3>Predefined patterns</h3>
+
+        <p>Abide has several patterns common validation patterns built into the library:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Valid Example or Format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>alpha</td>
+              <td>Foundation</td>
+            </tr>
+            <tr>
+              <td>alpha_numeric</td>
+              <td>A1 Sauce</td>
+            </tr>
+            <tr>
+              <td>integer</td>
+              <td>-1</td>
+            </tr>
+            <tr>
+              <td>number</td>
+              <td>2937</td>
+            </tr>
+            <tr>
+              <td>password</td>
+              <td>LittleW0men.</td>
+            </tr>
+            <tr>
+              <td>card</td>
+              <td>visa, amex, mastercard</td>
+            </tr>
+            <tr>
+              <td>cvv</td>
+              <td>384 or 3284</td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td>foundation@zurb.com</td>
+            </tr>
+            <tr>
+              <td>url</td>
+              <td>http://zurb.com</td>
+            </tr>
+            <tr>
+              <td>domain</td>
+              <td>zurb.com</td>
+            </tr>
+            <tr>
+              <td>datetime</td>
+              <td>YYYY-MM-DDThh:mm:ssTZD</td>
+            </tr>
+            <tr>
+              <td>date</td>
+              <td>YYYY-MM-DD</td>
+            </tr>
+            <tr>
+              <td>time</td>
+              <td>HH:MM:SS</td>
+            </tr>
+            <tr>
+              <td>dateISO</td>
+              <td>not sure yet</td>
+            </tr>
+            <tr>
+              <td>month_day_year</td>
+              <td>MM/DD/YYYY</td>
+            </tr>
+            <tr>
+              <td>color</td>
+              <td>#FFF or #FFFFFF</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>You can also use these patterns by settings the input's type to the name of the pattern instead of using the pattern attribute:</p>
+
+<%= code_example '
+<input type="password" required>
+<input type="email">
+<input type="url">
+', :html %>
+
+        <p>There is a good list of valid HTML5 input types on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">Mozilla Developer Network</a>. Try to avoid using patterns defined by type that do not match the specification.</p>
+
+        <p>For named patterns that are not valid input types you can use the following shortcut:</p>
+
+<%= code_example '
+<input type="text" pattern="integer">
+', :html %>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Custom named patterns</h3>
+        <p>By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.</p>
+
+<%= code_example "
+$(document)
+  .foundation()
+  .foundation('abide', {
+    patterns: {
+      dashes_only: /^[0-9-]*$/,
+      ip_address: /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/
+    }
+  });
+", :js %>
+        
+        <p>You can then use these custom patterns like you would the predfined patterns in your markup:</p>
+
+<%= code_example '
+<form class="custom" data-abide>
+  <label>Serial Number</label>
+  <input type="text" pattern="dashes_only" required>
+</form>
+', :html %>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+        <h3>Error messages</h3>
+
+        <p>To display an error message for your invalid form element include a <code>&lt;small&gt;</code> tage with an <code>error</code> class as a sibling of your input.</p>
+
+<%= code_example '
+<div class="input-wrapper">
+  <label>Email Address <small>required</small></label>
+  <input type="email" required>
+  <small class="error">A valid email address is required.</small>
+</div>
+', :html %>
+        
+        <p>In the above example we have wrapped our input in a <code>div</code>. This div will receive an <code>error</code> class when the input is invalid. This class will show our error message and style the label and input accordingly.</p>
+
+        <p>Invalid inputs inherit a <code>data-invalid</code> attribute.</p>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <hr>
+          </div>
+        </div>
+
+        <h3>Events</h3>
+
+        <p>If a submit event is fired, a <code>valid</code> event is triggered if the form is valid and an <code>invalid</code> event is triggered if the form is invalid.</p>
+
+        <p>You can bind to these events and fire your own callback:</p>
+
+<%= code_example "
+$('#myForm')
+  .on('invalid', function () {
+    var invalid_fields = $(this).find('[data-invalid]');
+    console.log(invalid_fields);
+  });
+  .on('valid', function () {
+    console.log('valid!');
+  });
+", :js %>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <hr>
+          </div>
+        </div>
+
+        <h3>Using the JavaScript</h3>
+        <p>You'll need to include <code>foundation.abide.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+
+        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+
+        <p>Required Foundation Library: <code>foundation.abide.js</code></p>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+<%= code_example '
+{
+  live_validate : true,
+  focus_on_invalid : true,
+  timeout : 1000,
+  patterns : {
+    alpha: /[a-zA-Z]+/,
+    alpha_numeric : /[a-zA-Z0-9]+/,
+    integer: /-?\d+/,
+    number: /-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?/,
+
+    // generic password: upper-case, lower-case, number/special character, and min 8 characters
+    password : /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+
+    // amex, visa, diners
+    card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
+    cvv : /^([0-9]){3,4}$/,
+
+    // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
+    email : /^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+
+    url: /(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&\'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&\'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&\'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&\'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&\'\(\)\*\+,;=]|:|@)|\/|\?)*)?/,
+    // abc.de
+    domain: /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/,
+
+    datetime: /([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))/,
+    // YYYY-MM-DD
+    date: /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/,
+    // HH:MM:SS
+    time : /(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/,
+    dateISO: /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/,
+    // MM/DD/YYYY
+    month_day_year : /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/,
+
+    // #FFF or #FFFFFF
+    color: /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+  }
+}', :js %>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="large-3 pull-9 columns">
+    <%= render "_sidebar-components.html.erb" %>
+  </div>
+</div>

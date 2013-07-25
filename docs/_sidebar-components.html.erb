@@ -1,4 +1,4 @@
-<div class="docs section-container accordion" data-section data-options="one_up: false">
+<div class="docs section-container accordion" data-section="accordion">
   <section class="section <%= @side_nav == 'using' ? 'active': '' %>">
     <p class="title"><a href="#">Using Foundation</a></p>
     <div class="content">
@@ -87,6 +87,7 @@
     <p class="title"><a href="#">Javascript</a></p>
     <div class="content">
       <ul class="side-nav">
+        <li><a class="<%= @page_title == 'Abide' ? 'active': '' %>" href="abide.html">Abide</a></li>
         <li><a class="<%= @page_title == 'Clearing' ? 'active': '' %>" href="clearing.html">Clearing</a></li>
         <li><a class="<%= @page_title == 'Dropdown' ? 'active': '' %>" href="dropdown.html">Dropdown</a></li>
         <li><a class="<%= @page_title == 'Interchange' ? 'active': '' %>" href="interchange.html">Interchange</a></li>
@@ -111,6 +112,6 @@
 
 <div class="jobs hide-for-small">
   <h5>Awesome product jobs:</h5>
-  <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3&variation=foundation-sidebar"></script>
+  <div id="zurbJobsWidget"></div>
   <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">ZURBjobs</span></a>
 </div>

@@ -6,8 +6,8 @@ $include-html-inline-list-classes: $include-html-classes !default;
 // We use this to control the margins and padding of the inline list.
 $inline-list-top-margin: 0 !default;
 $inline-list-opposite-margin: 0 !default;
-$inline-list-bottom-margin: emCalc(17px) !default;
-$inline-list-default-float-margin: emCalc(-22px) !default;
+$inline-list-bottom-margin: emCalc(17) !default;
+$inline-list-default-float-margin: emCalc(-22) !default;
 
 $inline-list-padding: 0 !default;
 
@@ -36,7 +36,7 @@ $inline-list-children-display: block !default;
   & > li {
     list-style: none;
     float: $default-float;
-    margin-#{$default-float}: emCalc(22px);
+    margin-#{$default-float}: emCalc(22);
     display: $inline-list-display;
     &>* { display: $inline-list-children-display; }
   }
