@@ -15,6 +15,10 @@ $reveal-default-width: 80% !default;
 $reveal-modal-padding: emCalc(20) !default;
 $reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
 
+// We use these to override the style of the modal on medium and large screens.
+$reveal-position-top-large: emCalc(100) !default;
+$reveal-modal-padding-large: emCalc(30) !default;
+
 // We use these to style the reveal close button
 $reveal-close-font-size: emCalc(22) !default;
 $reveal-close-top: emCalc(8) !default;
@@ -119,7 +123,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   @media #{$small} {
 
     .#{$reveal-modal-class} {
-      @include reveal-modal-style(false, emCalc(30), false, $box-shadow: false, $top-offset: emCalc(100));
+      @include reveal-modal-style(false, $reveal-modal-padding-large, false, $box-shadow: false, $top-offset: $reveal-position-top-large);
 
       &.tiny  { @include reveal-modal-base(false, 30%); }
       &.small { @include reveal-modal-base(false, 40%); }
