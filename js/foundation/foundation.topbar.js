@@ -113,6 +113,16 @@
           }
         })
 
+        .on('mouseenter mouseleave', '.top-bar li, .top-bar li.has-dropdown', function (e) {
+          if (!self.settings.is_hover) return;
+
+          if (/enter|over/i.test(e.type)) {
+            $(this).addClass('hover').siblings().removeClass('hover');
+          } else {
+            $(this).removeClass('hover');
+          }
+        }) 
+
         .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
           if (self.breakpoint()) return;
 
