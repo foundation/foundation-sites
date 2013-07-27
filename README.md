@@ -126,6 +126,7 @@ Templates
 Rapid Prototyping
 
 * [ditbi](https://github.com/roblevintennis/ditbi) by Rob Levin [4 Minute Demo Video](http://www.youtube.com/watch?v=ERgFCJFpq5E)
+* [Serve Foundation - Rapid Prototyping with Serve](https://github.com/bomberstudios/serve-foundation)
 
 Grid Generator
 
