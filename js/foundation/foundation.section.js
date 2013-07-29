@@ -320,7 +320,7 @@
     set_active_from_hash: function() {
       var self = Foundation.libs.section,
           hash = window.location.hash.substring(1),
-          sections = $(self.settings.section_selector);
+          sections = $(self.settings.section_selector).has('div[data-slug="' + hash + '"]');
 
       sections.each(function() {
         var section = $(this),
