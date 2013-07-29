@@ -142,7 +142,8 @@ jQuery(document).ready(function ($) {
   function toggleCheckbox($element) {
     var $input = $element.prev(),
         input = $input[0];
-
+   if (input == undefined)
+          return false;
     if (false == $input.is(':disabled')) {
         input.checked = ((input.checked) ? false : true);
         $element.toggleClass('checked');
@@ -154,7 +155,8 @@ jQuery(document).ready(function ($) {
   function toggleRadio($element) {
     var $input = $element.prev(),
         input = $input[0];
-
+   if (input == undefined)
+          return false;
     if (false == $input.is(':disabled')) {
       $('input:radio[name="' + $input.attr('name') + '"]').each(function () {
         $(this).next().removeClass('checked');
