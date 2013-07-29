@@ -4,7 +4,7 @@
 $include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
-$label-padding: emCalc(3, 10, 4) !default;
+$label-padding: emCalc(3 10 4) !default;
 $label-radius: $global-radius !default;
 
 // We use these to style the label text

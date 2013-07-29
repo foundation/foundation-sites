@@ -15,7 +15,7 @@ $pagination-li-font-size: emCalc(14) !default;
 $pagination-li-margin: emCalc(5) !default;
 
 // We use these for the pagination anchor links
-$pagination-link-pad: emCalc(1, 7, 1) !default;
+$pagination-link-pad: emCalc(1 7 1) !default;
 $pagination-link-font-color: #999 !default;
 $pagination-link-active-bg: darken(#fff, 10%) !default;
 

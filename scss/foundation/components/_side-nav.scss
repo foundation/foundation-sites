@@ -4,12 +4,12 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use this to control padding.
-$side-nav-padding: emCalc(14, 0) !default;
+$side-nav-padding: emCalc(14 0) !default;
 
 // We use these to control list styles.
 $side-nav-list-type: none !default;
 $side-nav-list-position: inside !default;
-$side-nav-list-margin: emCalc(0, 0, 7, 0) !default;
+$side-nav-list-margin: emCalc(0 0 7 0) !default;
 
 // We use these to control link styles.
 $side-nav-link-color: $primary-color !default;

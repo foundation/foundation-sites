@@ -11,7 +11,7 @@ $keystroke-font-color-alt: #fff !default;
 $keystroke-function-factor: 7% !default;
 
 // We use this to control keystroke padding.
-$keystroke-padding: emCalc(2, 4, 0) !default;
+$keystroke-padding: emCalc(2 4 0) !default;
 
 // We use these to control background and border styles.
 $keystroke-bg: darken(#fff, $keystroke-function-factor) !default;

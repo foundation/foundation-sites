@@ -4,7 +4,7 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control margin and padding
-$sub-nav-list-margin: emCalc(-4, 0, 18) !default;
+$sub-nav-list-margin: emCalc(-4 0 18) !default;
 $sub-nav-list-padding-top: emCalc(4) !default;
 
 // We use this to control the definition
@@ -18,7 +18,7 @@ $sub-nav-border-radius: 1000px !default;
 $sub-nav-active-font-weight: bold !default;
 $sub-nav-active-bg: $primary-color !default;
 $sub-nav-active-color: #fff !default;
-$sub-nav-active-padding: emCalc(3, 9) !default;
+$sub-nav-active-padding: emCalc(3 9) !default;
 $sub-nav-active-cursor: default !default;
 
 //

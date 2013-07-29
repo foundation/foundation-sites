@@ -11,7 +11,7 @@ $price-table-margin-bottom: emCalc(20) !default;
 
 // We use these to control the title styles
 $price-title-bg: #ddd !default;
-$price-title-padding: emCalc(15, 20) !default;
+$price-title-padding: emCalc(15 20) !default;
 $price-title-align: center !default;
 $price-title-color: #333 !default;
 $price-title-weight: bold !default;
@@ -19,7 +19,7 @@ $price-title-size: emCalc(16) !default;
 
 // We use these to control the price styles
 $price-money-bg: #eee !default;
-$price-money-padding: emCalc(15, 20) !default;
+$price-money-padding: emCalc(15 20) !default;
 $price-money-align: center !default;
 $price-money-color: #333 !default;
 $price-money-weight: normal !default;
@@ -46,7 +46,7 @@ $price-item-bottom-border: dotted 1px #ddd !default;
 // We use these to control the CTA area styles
 $price-cta-bg: #f5f5f5 !default;
 $price-cta-align: center !default;
-$price-cta-padding: emCalc(20, 20, 0) !default;
+$price-cta-padding: emCalc(20 20 0) !default;
 
 //
 // Pricing Table Mixins
