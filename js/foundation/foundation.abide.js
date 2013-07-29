@@ -67,7 +67,11 @@
 
       forms
         .on('submit validate', function (e) {
-          return self.validate($(this).find('input, textarea, select').get(), e);
+          var form = $(this),
+              noreturn = (undefined !== form.attr('nosubmit')),
+              valid = self.validate(form.find('input, textarea, select').get(), e);
+
+          return !noreturn && valid;
         });
 
       this.settings.init = true;
