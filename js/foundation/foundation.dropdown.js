@@ -60,7 +60,7 @@
       $('body').on('click.fndtn.dropdown', function (e) {
         var parent = $(e.target).closest('[data-dropdown-content]');
 
-        if ($(e.target).data('dropdown')) {
+        if ($(e.target).data('dropdown') || $(e.target).parent().data('dropdown')) {
           return;
         }
         if (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || $.contains(parent.first()[0], e.target))) {
