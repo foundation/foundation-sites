@@ -349,7 +349,7 @@
           }
         });
 
-        if (!selected && !settings.deep_linking && (settings.one_up || !self.is_horizontal_nav(section) &&
+        if (!selected && (settings.one_up || !self.is_horizontal_nav(section) &&
          !self.is_vertical_nav(section) && !self.is_accordion(section)))
           regions.filter(":visible").first().addClass(self.settings.active_class);
       });
