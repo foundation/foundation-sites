@@ -138,7 +138,7 @@
           top: position.top + this.outerHeight(target)
         });
       } else {
-        if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left) {
+        if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left && !dropdown.hasClass('align-right')) {
           var left = position.left;
           if (dropdown.hasClass('right')) {
             dropdown.removeClass('right');
