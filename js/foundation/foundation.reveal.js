@@ -78,7 +78,6 @@
           }
         })
         .on('click.fndtn.reveal touchend', this.close_targets(), function (e) {
-          alert('close')
           e.preventDefault();
           if (!self.locked) {
             var settings = $.extend({}, self.settings, self.data_options($('.reveal-modal.open')));
