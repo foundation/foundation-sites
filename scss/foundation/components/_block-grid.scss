@@ -60,7 +60,7 @@ $block-grid-media-queries: true !default;
   @media #{$small} {
     /* Remove small grid clearing */
     @for $i from 1 through $block-grid-elements {
-      .small-block-grid-#{($i)} > #{$child-element}:nth-of-type(#{$i}n+1) { clear: none; }
+      .small-block-grid-#{($i)} > li:nth-of-type(#{$i}n+1) { clear: none; }
     }
     @for $i from 1 through $block-grid-elements {
       .large-block-grid-#{($i)} {
