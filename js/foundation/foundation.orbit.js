@@ -150,7 +150,7 @@
     self.link_bullet = function(e) {
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
-        self._goto(index);
+        self._goto(parseInt(index));
       }
     }
 
