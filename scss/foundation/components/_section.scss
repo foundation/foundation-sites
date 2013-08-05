@@ -82,6 +82,8 @@ $active-region-selector: ".active" !default;
   // Vertical Tabs container border styles
   @else if $section-type == vertical-tabs {
     border: none;
+    border-left: $section-border-size $section-border-style $section-border-color;
+    border-bottom: $section-border-size $section-border-style $section-border-color;
   }
 
   // Vertical Nav container border styles
@@ -241,6 +243,7 @@ $active-region-selector: ".active" !default;
   // Style for when Accordion
   @if $section-type == accordion {
     & > #{$title-selector} { border-top: none; }
+    & > #{$content-selector} { border-top: none; }
   }
 
   // Styles for when tabs
@@ -253,12 +256,19 @@ $active-region-selector: ".active" !default;
 
   // Styles for when Vertical Tabs
   @else if $section-type == vertical-tabs {
+    & > #{$title-selector} {
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+    & > #{$content-selector} { border-bottom: 0; }
 
     &#{$active-region-selector} {
 	  padding-#{$default-float}: $section-vertical-tabs-title-width - emCalc(1px);
 
       & > #{$title-selector} {
         background-color: $title-bg-active;  
+        border-right: 0;
       }
     }
   }
