@@ -131,7 +131,7 @@
         modal.trigger('open');
 
         if (open_modal.length < 1) {
-          this.toggle_bg(modal);
+          this.toggle_bg();
         }
 
         if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
@@ -168,7 +168,7 @@
       if (open_modals.length > 0) {
         this.locked = true;
         modal.trigger('close');
-        this.toggle_bg(modal);
+        this.toggle_bg();
         this.hide(open_modals, this.settings.css.close);
       }
     },
@@ -183,8 +183,8 @@
       return base;
     },
 
-    toggle_bg : function (modal) {
-      if ($('.reveal-modal-bg').length === 0) {
+    toggle_bg : function () {
+      if ($('.' + this.settings.bgClass).length === 0) {
         this.settings.bg = $('<div />', {'class': this.settings.bgClass})
           .appendTo('body');
       }
