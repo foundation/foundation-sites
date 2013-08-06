@@ -80,13 +80,14 @@
         .on('click.fndtn.reveal touchend', this.close_targets(), function (e) {
           e.preventDefault();
           if (!self.locked) {
-            var settings = $.extend({}, self.settings, self.data_options($('.reveal-modal.open')));
-            if ($(e.target)[0] === $('.' + settings.bgClass)[0] && !settings.closeOnBackgroundClick) {
+            var settings = $.extend({}, self.settings, self.data_options($('.reveal-modal.open'))),
+              bgClicked = $(e.target)[0] === $('.' + settings.bgClass)[0];
+            if (bgClicked && !settings.closeOnBackgroundClick) {
               return;
             }
 
             self.locked = true;
-            self.close.call(self, $(this).closest('.reveal-modal'));
+            self.close.call(self, bgClicked ? $('.reveal-modal.open') : $(this).closest('.reveal-modal'));
           }
         })
         .on('open.fndtn.reveal', '.reveal-modal', this.settings.open)
