@@ -203,44 +203,7 @@
       container.on('click', '.'+settings.prev_class, self.prev);
       container.on('click', '[data-orbit-slide]', self.link_bullet);
       container.on('click', self.toggle_timer);
-      container.on('touchstart.fndtn.orbit', function(e) {
-        if (!e.touches) {e = e.originalEvent;}
-        var data = {
-          start_page_x: e.touches[0].pageX,
-          start_page_y: e.touches[0].pageY,
-          start_time: (new Date()).getTime(),
-          delta_x: 0,
-          is_scrolling: undefined
-        };
-        container.data('swipe-transition', data);
-        e.stopPropagation();
-      })
-      .on('touchmove.fndtn.orbit', function(e) {
-        if (!e.touches) { e = e.originalEvent; }
-        // Ignore pinch/zoom events
-        if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
-
-        var data = container.data('swipe-transition');
-        if (typeof data === 'undefined') {data = {};}
-
-        data.delta_x = e.touches[0].pageX - data.start_page_x;
-
-        if ( typeof data.is_scrolling === 'undefined') {
-          data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
-        }
-
-        if (!data.is_scrolling && !data.active) {
-          e.preventDefault();
-          var direction = (data.delta_x < 0) ? (idx+1) : (idx-1);
-          data.active = true;
-          self._goto(direction);
-        }
-      })
-      .on('touchend.fndtn.orbit', function(e) {
-        container.data('swipe-transition', {});
-        e.stopPropagation();
-      })
-      .on('mouseenter.fndtn.orbit', function(e) {
+      container.on('mouseenter.fndtn.orbit', function(e) {
         if (settings.timer && settings.pause_on_hover) {
           self.stop_timer();
         }
@@ -250,6 +213,51 @@
           timer.start();
         }
       });
+      
+      if (!settings.swipe_disabled) {
+        container.on('touchstart.fndtn.orbit', function(e) {
+          if (!e.touches) {e = e.originalEvent;}
+          var data = {
+            start_page_x: e.touches[0].pageX,
+            start_page_y: e.touches[0].pageY,
+            start_time: (new Date()).getTime(),
+            delta_x: 0,
+            is_scrolling: undefined
+          };
+          container.data('swipe-transition', data);
+          e.stopPropagation();
+        })
+        .on('touchmove.fndtn.orbit', function(e) {
+          if (!e.touches) { e = e.originalEvent; }
+          // Ignore pinch/zoom events
+          if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+  
+          var data = container.data('swipe-transition');
+          if (typeof data === 'undefined') {data = {};}
+  
+          data.delta_x = e.touches[0].pageX - data.start_page_x;
+  
+          if ( typeof data.is_scrolling === 'undefined') {
+            data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
+          }
+  
+          if (!data.is_scrolling && !data.active) {
+            e.preventDefault();
+            var direction = (data.delta_x < 0) ? (idx+1) : (idx-1);
+            data.active = true;
+            self._goto(direction);
+          }
+        })
+        .on('touchend.fndtn.orbit', function(e) {
+          container.data('swipe-transition', {});
+          e.stopPropagation();
+        });
+      } else {
+        if ($('html').hasClass('touch')) {
+          $('.'+settings.prev_class, container).css('display', 'inherit');
+          $('.'+settings.next_class, container).css('display', 'inherit');
+        }
+      }
       
       $(document).on('click', '[data-orbit-link]', self.link_custom);
       $(window).on('resize', self.compute_dimensions);
@@ -383,6 +391,7 @@
       bullets: true,
       timer: true,
       variable_height: false,
+      swipe_disabled: false,
       before_slide_change: noop,
       after_slide_change: noop
     },
