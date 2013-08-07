@@ -371,6 +371,8 @@
           $options = $select.find('option'),
           $listItems = $customSelect.find('li');
 
+      $customSelect.toggleClass('disabled', $(this).is(':disabled'));
+
       if ($listItems.length !== this.cache[$customSelect.data('id')] || force_refresh) {
         $customSelect.find('ul').html('');
 
