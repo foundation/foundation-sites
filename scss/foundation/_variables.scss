@@ -246,8 +246,8 @@ $default-float: left;
 
 // Control padding and margin
 
-// $microformat-padding: emCalc(10, 12);
-// $microformat-margin: emCalc(0, 0, 20, 0);
+// $microformat-padding: emCalc(10 12);
+// $microformat-margin: emCalc(0 0 20 0);
 
 // Control the border styles
 
@@ -265,7 +265,7 @@ $default-float: left;
 // $microformat-summary-font-weight: bold;
 
 // Control abbr padding
-// $microformat-abbr-padding: emCalc(0, 1);
+// $microformat-abbr-padding: emCalc(0 1);
 
 // Control abbr font styles
 
@@ -306,13 +306,13 @@ $default-float: left;
 // $fieldset-border-width: 1px;
 // $fieldset-border-color: #ddd;
 // $fieldset-padding: emCalc(20);
-// $fieldset-margin: emCalc(18, 0);
+// $fieldset-margin: emCalc(18 0);
 
 // We use these to style the legends when you use them
 
 // $legend-bg: #fff;
 // $legend-font-weight: bold;
-// $legend-padding: emCalc(0, 3);
+// $legend-padding: emCalc(0 3);
 
 // We use these to style the prefix and postfix input elements
 
@@ -326,7 +326,7 @@ $default-float: left;
 
 // We use these to style the error states for inputs and labels
 
-// $input-error-message-padding: emCalc(6, 4);
+// $input-error-message-padding: emCalc(6 4);
 // $input-error-message-top: 0;
 // $input-error-message-font-size: emCalc(12);
 // $input-error-message-font-weight: bold;
@@ -525,7 +525,7 @@ $default-float: left;
 
 // We use these to set the padding around the breadcrumbs.
 
-// $crumb-padding: emCalc(9, 14, 9);
+// $crumb-padding: emCalc(9 14 9);
 // $crumb-side-padding: emCalc(12);
 
 // We use these to control border styles.
@@ -664,7 +664,7 @@ $default-float: left;
 // $f-dropdown-list-style: none;
 // $f-dropdown-font-color: #555;
 // $f-dropdown-font-size: emCalc(14);
-// $f-dropdown-list-padding: emCalc(5, 10);
+// $f-dropdown-list-padding: emCalc(5 10);
 // $f-dropdown-line-height: emCalc(18);
 // $f-dropdown-list-hover-bg: #eeeeee;
 // $dropdown-mobile-default-float: 0;
@@ -720,7 +720,7 @@ $default-float: left;
 
 // $joyride-tip-bg: rgb(0,0,0);
 // $joyride-tip-default-width: 300px;
-// $joyride-tip-padding: emCalc(18, 20, 24);
+// $joyride-tip-padding: emCalc(18 20 24);
 // $joyride-tip-border: solid 1px #555;
 // $joyride-tip-radius: 4px;
 // $joyride-tip-position-offset: 22px;
@@ -765,7 +765,7 @@ $default-float: left;
 
 // We use this to control keystroke padding.
 
-// $keystroke-padding: emCalc(2, 4, 0);
+// $keystroke-padding: emCalc(2 4 0);
 
 // We use these to control background and border styles.
 
@@ -781,7 +781,7 @@ $default-float: left;
 
 // We use these to style the labels
 
-// $label-padding: emCalc(3, 10, 4);
+// $label-padding: emCalc(3 10 4);
 // $label-radius: $global-radius;
 
 // We use these to style the label text
@@ -828,7 +828,7 @@ $default-float: left;
 
 // $orbit-slide-number-bg: rgba(0,0,0,0);
 // $orbit-slide-number-font-color: #fff;
-// $orbit-slide-number-padding: emCalc(5px);
+// $orbit-slide-number-padding: emCalc(5);
 
 // Graceful Loading Wrapper and preloader
 
@@ -854,7 +854,7 @@ $default-float: left;
 
 // We use these for the pagination anchor links
 
-// $pagination-link-pad: emCalc(1, 7, 1);
+// $pagination-link-pad: emCalc(1 7 1);
 // $pagination-link-font-color: #999;
 // $pagination-link-active-bg: darken(#fff, 10%);
 
@@ -914,7 +914,7 @@ $default-float: left;
 // We use these to control the title styles
 
 // $price-title-bg: #ddd;
-// $price-title-padding: emCalc(15, 20);
+// $price-title-padding: emCalc(15 20);
 // $price-title-align: center;
 // $price-title-color: #333;
 // $price-title-weight: bold;
@@ -953,7 +953,7 @@ $default-float: left;
 
 // $price-cta-bg: #f5f5f5;
 // $price-cta-align: center;
-// $price-cta-padding: emCalc(20, 20, 0);
+// $price-cta-padding: emCalc(20 20 0);
 
 //
 // Progress Bar Variables
@@ -1063,13 +1063,13 @@ $default-float: left;
 
 // We use this to control padding.
 
-// $side-nav-padding: emCalc(14, 0);
+// $side-nav-padding: emCalc(14 0);
 
 // We use these to control list styles.
 
 // $side-nav-list-type: none;
 // $side-nav-list-position: inside;
-// $side-nav-list-margin: emCalc(0, 0, 7, 0);
+// $side-nav-list-margin: emCalc(0 0 7 0);
 
 // We use these to control link styles.
 
@@ -1090,7 +1090,7 @@ $default-float: left;
 
 // We use these to control margin and padding
 
-// $sub-nav-list-margin: emCalc(-4, 0, 18);
+// $sub-nav-list-margin: emCalc(-4 0 18);
 // $sub-nav-list-padding-top: emCalc(4);
 
 // We use this to control the definition
@@ -1106,7 +1106,7 @@ $default-float: left;
 // $sub-nav-active-font-weight: bold;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-color: #fff;
-// $sub-nav-active-padding: emCalc(3, 9);
+// $sub-nav-active-padding: emCalc(3 9);
 // $sub-nav-active-cursor: default;
 
 //
@@ -1173,11 +1173,11 @@ $default-float: left;
 // $table-head-font-size: emCalc(14);
 // $table-head-font-color: #222;
 // $table-head-font-weight: bold;
-// $table-head-padding: emCalc(8, 10, 10);
+// $table-head-padding: emCalc(8 10 10);
 
 // These control the row padding and font styles
 
-// $table-row-padding: emCalc(9, 10);
+// $table-row-padding: emCalc(9 10);
 // $table-row-font-size: emCalc(14);
 // $table-row-font-color: #222;
 // $table-line-height: emCalc(18);

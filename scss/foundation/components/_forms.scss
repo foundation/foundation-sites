@@ -30,12 +30,12 @@ $fieldset-border-style: solid !default;
 $fieldset-border-width: 1px !default;
 $fieldset-border-color: #ddd !default;
 $fieldset-padding: emCalc(20) !default;
-$fieldset-margin: emCalc(18, 0) !default;
+$fieldset-margin: emCalc(18 0) !default;
 
 // We use these to style the legends when you use them
 $legend-bg: #fff !default;
 $legend-font-weight: bold !default;
-$legend-padding: emCalc(0, 3) !default;
+$legend-padding: emCalc(0 3) !default;
 
 // We use these to style the prefix and postfix input elements
 $input-prefix-bg: darken(#fff, 5%) !default;
@@ -47,7 +47,7 @@ $input-prefix-font-color: #333 !default;
 $input-prefix-font-color-alt: #fff !default;
 
 // We use these to style the error states for inputs and labels
-$input-error-message-padding: emCalc(6, 4) !default;
+$input-error-message-padding: emCalc(6 4) !default;
 $input-error-message-top: -($form-spacing) - emCalc(5) !default;
 $input-error-message-font-size: emCalc(12) !default;
 $input-error-message-font-weight: bold !default;

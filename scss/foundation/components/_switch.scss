@@ -251,7 +251,7 @@ $switch-label-outline: 1px dotted #888 !default;
       // Make the switch completely round, like a pill
       &.round { @include radius(1000px);
         span:last-child { @include radius(999px); }
-        label { padding: emCalc(0, $switch-label-side-padding + 3); }
+        label { padding: emCalc(0 $switch-label-side-padding + 3); }
       }
 
     }
