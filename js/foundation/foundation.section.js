@@ -49,7 +49,7 @@
 
           if (section.children(self.settings.content_selector).length > 0) {
             self.toggle_active.call(this, e, self);
-            self.reflow();
+            self.reflow($(this).parents(self.settings.section_selector));
           }
         });
 
@@ -156,10 +156,11 @@
       settings.callback();
     },
 
-    resize : function () {
-      var self = Foundation.libs.section,
-          sections = $(self.settings.section_selector);
-
+      resize: function (sections) {
+        var self = Foundation.libs.section;
+      if (typeof sections === 'undefined') {
+        sections = $(self.settings.section_selector);
+      }
       sections.each(function() {
         var $this = $(this),
             active_section = $this
