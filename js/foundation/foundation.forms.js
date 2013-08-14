@@ -374,19 +374,13 @@
       if ($listItems.length !== this.cache[$customSelect.data('id')] || force_refresh) {
         $customSelect.find('ul').html('');
 
+        // rebuild and re-populate all at once
+        var customSelectHtml = '';
         $options.each(function () {
-          var $li = $('<li>' + $(this).html() + '</li>');
-          $customSelect.find('ul').append($li);
-        });
-
-        // re-populate
-        $options.each(function (index) {
-          if (this.selected) {
-            $customSelect.find('li').eq(index).addClass('selected');
-            $customSelect.find('.current').html($(this).html());
-          }
-          if ($(this).is(':disabled')) {
-            $customSelect.find('li').eq(index).addClass('disabled');
+          var $this = $(this), thisHtml = $this.html(), thisSelected = this.selected;
+          customSelectHtml += '<li class="' + (thisSelected ? ' selected ' : '') + ($this.is(':disabled') ? ' disabled ' : '') + '">' + thisHtml + '</li>';
+          if (thisSelected) {
+            $customSelect.find('.current').html(thisHtml);
           }
         });
 
