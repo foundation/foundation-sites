@@ -3,6 +3,8 @@
 (function ($, window, document, undefined) {
   'use strict';
 
+  var Modernizr = Modernizr || false;
+
   Foundation.libs.joyride = {
     name : 'joyride',
 
@@ -339,7 +341,7 @@
         return Modernizr.mq('only screen and (max-width: 767px)') || $('.lt-ie9').length > 0;
       }
 
-      return (this.settings.$window.width() < 767);
+      return ($(window).width() < 767);
     },
 
     hide : function () {
