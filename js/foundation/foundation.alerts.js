@@ -33,10 +33,13 @@
       var self = this;
 
       $(this.scope).on('click.fndtn.alerts', '[data-alert] a.close', function (e) {
+          var alertBox = $(this).closest("[data-alert]"),
+              settings = $.extend({}, self.settings, self.data_options(alertBox));
+
         e.preventDefault();
-        $(this).closest("[data-alert]").fadeOut(self.speed, function () {
+        alertBox[settings.animation](settings.speed, function () {
           $(this).remove();
-          self.settings.callback();
+          settings.callback();
         });
       });
 
