@@ -165,10 +165,17 @@
       $(window).on('keydown', function (e) {
         var focus = document.activeElement,
             self = Foundation.libs.forms,
-            dropdown = $('.custom.dropdown.open');
+            dropdown = $('.custom.dropdown'),
+			select = getFirstPrevSibling(dropdown, 'select'),
+			inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
 
-        if (dropdown.length > 0) {
+        if (dropdown.length > 0 && dropdown.hasClass('open')) {
           e.preventDefault();
+
+		  if (e.which === 9) {
+		  	  $(inputs[$(inputs).index(select) + 1]).focus();
+			  dropdown.removeClass('open');
+		  }
 
           if (e.which === 13) {
             dropdown.find('li.selected').trigger('click');
@@ -209,6 +216,15 @@
           }
         }
       });
+
+	  $(window).on('keyup', function (e) {
+          var focus = document.activeElement,
+              dropdown = $('.custom.dropdown');
+
+		  if (focus === dropdown.find('.current')[0]) {
+			  dropdown.find('.selector').focus().click();
+		  }
+	  });
 
       this.settings.init = true;
     },
