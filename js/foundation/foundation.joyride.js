@@ -123,7 +123,7 @@
           integer_settings = ['timer', 'scrollSpeed', 'startOffset', 'tipAnimationFadeSpeed', 'cookieExpires'],
           int_settings_count = integer_settings.length;
 
-      if (!this.settings.init) this.init();
+      if (!this.settings.init) this.events();
 
       // non configureable settings
       this.settings.$content_el = $this;
@@ -607,7 +607,7 @@
         zIndex: el.css('z-index'),
         position: el.css('position')
       };
-      
+
       origClasses = el.attr('class') == null ? '' : el.attr('class');
 
       el.css('z-index',parseInt(expose.css('z-index'))+1);
@@ -686,7 +686,7 @@
           el.css('position', origCSS.position);
         }
       }
-      
+
       origClasses = el.data('orig-class');
       el.attr('class', origClasses);
       el.removeData('orig-classes');
