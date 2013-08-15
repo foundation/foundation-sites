@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Responsive Chart</title>
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/foundation.css" />
+  
+  <style>
+	.barchart { 
+	  background-color: #a3dbe3;
+	  height: 1em;
+	  padding: 0em;
+	  margin: 0.625em 0; 
+	  width: 100%; }
+
+
+	.barchart .meter {
+	  background: #2daebf;
+	  height: 100%;
+	  display: block; }
+
+	table.chart { 
+	  border-width: 0;
+	  margin: 40px 0; }
+
+	table tr.even, table tr.alt, table tr:nth-of-type(even) { background: #FFF; }
+
+	td.chart {
+	  font-size: 14px;
+	  margin-bottom: 50px;
+	  padding: 0 0 20px 0; }
+
+	p.percentage {
+	  font-size: 30px !important; 
+	  color: #6f6f6f;
+	  font-weight: 300;
+	  margin-bottom: 17px;}
+
+  </style>
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<table class="chart">
+		        <tbody>
+		          <tr>
+		            <td>
+		              <p class="percentage">49%</p>
+		            </td>
+		            <td class="chart">
+		              Direct client feedback on your design work
+		              <div class="barchart">
+		                <span class="meter" style="width: 49%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">44%</p>
+		            </td>
+		            <td class="chart">
+		              Design team critiques
+		              <div class="barchart">
+		                <span class="meter" style="width: 44%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">41%</p>
+		            </td>
+		            <td class="chart">
+		              Sideline conversations about your work
+		              <div class="barchart">
+		                <span class="meter" style="width: 41%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">40%</p>
+		            </td>
+		            <td class="chart">
+		              Private bonuses for good work or positive contributions to a company
+		              <div class="barchart">
+		                <span class="meter" style="width: 40%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">40%</p>
+		            </td>
+		            <td class="chart">
+		              One-on-one design critiques with other designers
+		              <div class="barchart">
+		                <span class="meter" style="width: 40%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">34%</p>
+		            </td>
+		            <td class="chart">
+		              Daily project feedback from your boss, lead or mentor
+		              <div class="barchart">
+		                <span class="meter" style="width: 34%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">23%</p>
+		            </td>
+		            <td class="chart">
+		              Business-owner feedback
+		              <div class="barchart">
+		                <span class="meter" style="width: 23%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">23%</p>
+		            </td>
+		            <td class="chart">
+		              Yearly review with a manager or lead
+		              <div class="barchart">
+		                <span class="meter" style="width: 23%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">22%</p>
+		            </td>
+		            <td class="chart">
+		              Quarterly review with a manager or lead
+		              <div class="barchart">
+		                <span class="meter" style="width: 22%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <p class="percentage">21%</p>
+		            </td>
+		            <td class="chart">
+		              Customer feedback through customer service
+		              <div class="barchart">
+		                <span class="meter" style="width: 21%"></span>
+		              </div>
+		            </td>
+		          </tr>
+		        </tbody>
+		      </table>
+		</div>
+	</div>
+
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
