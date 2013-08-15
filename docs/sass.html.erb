@@ -247,10 +247,47 @@ $base-line-height: 150%;
 /* set the value of $em-base to $base-font-size ($em-base: $base-font-size;) */
 $em-base: 16px !default;
 
+/* It strips the unit of measure and returns it */
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+/* Converts "px" to "em" using the ($)em-base */
+@function convert-to-em($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) { $value: 0; } /* Turn 0em into 0 */
+  @return $value;
+}
+
 /* Working in ems is annoying. Think in pixels by using this handy function, em-calc(#) */
-@function em-calc($pxWidth) {
+/* Just enter the number, no need to mention "px" */
+/* Individual values to be space delimted and cannot be comma delimited */
+/* Optionally, include an em-base as a comma separated value to calculate on a different base (needed when em nesting causes issues) */
+@function em-calc($values, $base-value: $em-base) {
+  $max: length($values); /* Get the total number of parameters passed */
+
+  /* If there is only 1 parameter, then return it as an integer. */
+  /* This is done because a list can\'t be multiplied or divided even if it contains a single value */
+  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+
+  $emValues: (); /* This will eventually store the converted $values in a list */
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+  }
+  @return $emValues;
+}
+
+/*Retaining this for backward compatability */
+
+@function emCalc($pxWidth) {
   @return $pxWidth / $em-base * 1em;
 }
+
+/* Maybe you want to create rems with pixels */
+/* $rem-base: 0.625 !default; /*Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;} */
+/* @function remCalc($pxWidth) { */
+/*   @return $pxWidth / $rem-base * 1rem; */
+/* }
 
 /* Change whether or not you include browser prefixes */
 $experimental: true !default;
