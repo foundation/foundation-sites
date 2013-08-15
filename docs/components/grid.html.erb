@@ -124,6 +124,41 @@
           <div class="small-4 columns">4</div>
         </div>
 
+
+<hr>
+
+        <h4>Collapse Rows</h4>
+        <p>The grid allows for nesting down as far as you'd like, though at a certain point it will get absurd. You can use this nesting to create quite complex layouts, as well as some other tricks like form layouts or visual elements.</p>
+
+<%= code_example '
+<div class="row">
+  <div class="small-8 columns">8
+    <div class="row">
+      <div class="small-8 columns">8 Nested
+        <div class="row">
+          <div class="small-8 columns">8 Nested Again</div>
+          <div class="small-4 columns">4</div>
+        </div>
+      </div>
+      <div class="small-4 columns">4</div>
+    </div>
+  </div>
+  <div class="small-4 columns">4</div>
+</div>', :html %>
+
+        <div class="row display collapse">
+          <div class="small-6 columns">6
+            <div class="row">
+              <div class="small-4 columns">4</div>
+              <div class="small-4 columns">4</div>
+              <div class="small-4 columns">4</div>
+            </div>
+          </div>
+          <div class="small-6 columns">6</div>
+        </div>
+
+
+
         <hr>
 
         <h4>Offsets</h4>
