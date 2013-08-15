@@ -134,7 +134,8 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
   @else if $alignment == inline {
     margin: 0 0 $form-spacing 0;
-    padding: $form-spacing / 2 + emCalc($input-border-width * 2) 0;
+    padding-top: $form-spacing / 2 + emCalc($input-border-width * 2);
+    padding-bottom: $form-spacing / 2 + emCalc($input-border-width * 2);
   }
 }
 
