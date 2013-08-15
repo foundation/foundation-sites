@@ -157,7 +157,7 @@ $base-font-size: 100% !default;
 $base-line-height: 150% !default;
 
 // This is the default html and body font-size for the base em value.
-$em-base: 16 !default;
+$em-base: 16px !default;
 
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
@@ -173,7 +173,7 @@ $em-base: 16 !default;
 
 // Working in ems is annoying. Think in pixels by using this handy function, emCalc(#)
 // Just enter the number, no need to mention "px"
-@function emCalc($values, $base-value: $em-base) {
+@function em-calc($values, $base-value: $em-base) {
   $max: length($values); // Get the total number of parameters passed
 
   // If there is only 1 parameter, then return it as an integer.
@@ -185,6 +185,12 @@ $em-base: 16 !default;
     $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
   }
   @return $emValues;
+}
+
+//Retaining this for backward compatability
+
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
 }
 
 // Maybe you want to create rems with pixels
