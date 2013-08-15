@@ -21,6 +21,10 @@ $sub-nav-active-color: #fff !default;
 $sub-nav-active-padding: emCalc(3, 9) !default;
 $sub-nav-active-cursor: default !default;
 
+// We use these to the item divider
+$sub-nav-item-divider: "" !default;
+$sub-nav-item-divider-margin: emCalc(12) !default;
+
 //
 // Sub Nav Mixins
 //
@@ -56,10 +60,22 @@ $sub-nav-active-cursor: default !default;
       cursor: $sub-nav-active-cursor;
       color: $sub-nav-active-color;
     }
+
+    @if $sub-nav-item-divider != "" {
+      margin-#{$default-float}: 0;
+
+      &:before {
+        content: "#{$sub-nav-item-divider}";
+        margin: 0 $sub-nav-item-divider-margin;
+      }
+
+      &:first-child:before {
+        content: "";
+        margin: 0;
+      }
+    }
   }
-
 }
-
 
 @if $include-html-nav-classes != false {
 
