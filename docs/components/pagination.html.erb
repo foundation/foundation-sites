@@ -150,18 +150,18 @@ $base-style: true
 $include-html-nav-classes: $include-html-classes;
 
 /* We use these to control the pagination container */
-$pagination-height: emCalc(24);
-$pagination-margin: emCalc(-5);
+$pagination-height: em-calc(24);
+$pagination-margin: em-calc(-5);
 
 /* We use these to set the list-item properties */
 $pagination-li-float: $default-float;
-$pagination-li-height: emCalc(24);
+$pagination-li-height: em-calc(24);
 $pagination-li-font-color: #222;
-$pagination-li-font-size: emCalc(14);
-$pagination-li-margin: emCalc(5);
+$pagination-li-font-size: em-calc(14);
+$pagination-li-margin: em-calc(5);
 
 /* We use these for the pagination anchor links */
-$pagination-link-pad: emCalc(1, 7, 1);
+$pagination-link-pad: em-calc(1 7 1);
 $pagination-link-font-color: #999;
 $pagination-link-active-bg: darken(#fff, 10%);
 
@@ -177,7 +177,7 @@ $pagination-link-current-font-weight: bold;
 $pagination-link-current-cursor: default;
 $pagination-link-current-active-bg: $primary-color;', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
       </div>
     </div>

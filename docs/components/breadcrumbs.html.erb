@@ -124,8 +124,8 @@ $include-html-nav-classes: $include-html-classes;
 $crumb-bg: lighten($secondary-color, 5%);
 
 /* We use these to set the padding around the breadcrumbs. */
-$crumb-padding: emCalc(9, 14, 9);
-$crumb-side-padding: emCalc(12);
+$crumb-padding: em-calc(9 14 9);
+$crumb-side-padding: em-calc(12);
 
 /* We use these to control border styles. */
 $crumb-function-factor: 10%;
@@ -135,7 +135,7 @@ $crumb-border-color: darken($crumb-bg, $crumb-function-factor);
 $crumb-radius: $global-radius;
 
 /* We use these to set various text styles for breadcrumbs. */
-$crumb-font-size: emCalc(11);
+$crumb-font-size: em-calc(11);
 $crumb-font-color: $primary-color;
 $crumb-font-color-current: #333;
 $crumb-font-color-unavailable: #999;
@@ -147,7 +147,7 @@ $crumb-slash-color: #aaa;
 $crumb-slash: "/";
 ', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
 
       </div>
     </div>

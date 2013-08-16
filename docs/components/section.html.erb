@@ -594,7 +594,7 @@ $title-selector: ".title"
 /* You can set the class that is used for the content elements */
 $content-selector: ".content"
 
-/* Give the titles some padding, can be any px or emCalc() value */
+/* Give the titles some padding, can be any px or em-calc() value */
 $title-padding: $section-padding
 
 /* give the titles a color, any color value */
@@ -965,8 +965,8 @@ $section-border-color: $section-border-color', :css %>
 $include-html-section-classes: $include-html-classes;
 
 /* We use these to set padding and hover factor */
-$section-title-padding: emCalc(15);
-$section-content-padding: emCalc(15);
+$section-title-padding: em-calc(15);
+$section-content-padding: em-calc(15);
 $section-function-factor: 10%;
 
 /* These style the titles */
@@ -983,20 +983,20 @@ $section-border-style: solid;
 $section-border-color: #ccc;
 
 /* Font controls */
-$section-font-size: emCalc(14);
+$section-font-size: em-calc(14);
 
 /* Control the color of the background and some size options */
 $section-content-bg: #fff;
-$section-vertical-nav-min-width: emCalc(200);
-$section-vertical-tabs-title-width: emCalc(200);
-$section-bottom-margin: emCalc(20);
+$section-vertical-nav-min-width: em-calc(200);
+$section-vertical-tabs-title-width: em-calc(200);
+$section-bottom-margin: em-calc(20);
 
 $title-selector: ".title";
 $content-selector: ".content";
 $active-region-selector: ".active";
 ', :css %>
 
-    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+    <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
 
         <hr>
 
