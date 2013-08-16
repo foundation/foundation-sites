@@ -40,8 +40,8 @@
       slides_container.addClass(settings.slides_container_class);
       
       if (settings.navigation_arrows) {
-        container.append($('<a>').addClass(settings.prev_class).append('<span>'));
-        container.append($('<a>').addClass(settings.next_class).append('<span>'));
+        container.append($('<a href="#">').addClass(settings.prev_class).append('<span>'));
+        container.append($('<a href="#">').addClass(settings.next_class).append('<span>'));
       }
 
       if (settings.timer) {
