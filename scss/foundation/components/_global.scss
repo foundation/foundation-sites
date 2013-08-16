@@ -187,8 +187,7 @@ $em-base: 16px !default;
   @return $emValues;
 }
 
-//Retaining this for backward compatability
-
+// DEPRECATED: Use em-calc() instead, will be removed in Foundation 5.1
 @function emCalc($pxWidth) {
   @return $pxWidth / $em-base * 1em;
 }
