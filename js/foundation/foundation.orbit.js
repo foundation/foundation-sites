@@ -312,9 +312,11 @@
     var duration = settings.animation_speed;
     var is_rtl = ($('html[dir=rtl]').length === 1);
     var margin = is_rtl ? 'marginRight' : 'marginLeft';
+    var animMargin = {};
+    animMargin[margin] = '0%';
 
     this.next = function(current, next, callback) {
-      next.animate({margin: '0%'}, duration, 'linear', function() {
+      next.animate(animMargin, duration, 'linear', function() {
         current.css(margin, '100%');
         callback();
       });
@@ -322,7 +324,7 @@
 
     this.prev = function(current, prev, callback) {
       prev.css(margin, '-100%');
-      prev.animate({margin:'0%'}, duration, 'linear', function() {
+      prev.animate(animMargin, duration, 'linear', function() {
         current.css(margin, '100%');
         callback();
       });
