@@ -7,8 +7,8 @@ $include-html-nav-classes: $include-html-classes !default;
 $crumb-bg: lighten($secondary-color, 5%) !default;
 
 // We use these to set the padding around the breadcrumbs.
-$crumb-padding: emCalc(9, 14, 9) !default;
-$crumb-side-padding: emCalc(12) !default;
+$crumb-padding: em-calc(9 14 9) !default;
+$crumb-side-padding: em-calc(12) !default;
 
 // We use these to control border styles.
 $crumb-function-factor: 10% !default;
@@ -18,7 +18,7 @@ $crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
 $crumb-radius: $global-radius !default;
 
 // We use these to set various text styles for breadcrumbs.
-$crumb-font-size: emCalc(11) !default;
+$crumb-font-size: em-calc(11) !default;
 $crumb-font-color: $primary-color !default;
 $crumb-font-color-current: #333 !default;
 $crumb-font-color-unavailable: #999 !default;

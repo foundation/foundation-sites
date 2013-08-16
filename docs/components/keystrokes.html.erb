@@ -54,13 +54,13 @@ $include-html-type-classes: $include-html-classes;
 
 /* We use these to control text styles. */
 $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
-$keystroke-font-size: emCalc(14);
+$keystroke-font-size: em-calc(14);
 $keystroke-font-color: #222;
 $keystroke-font-color-alt: #fff;
 $keystroke-function-factor: 7%;
 
 /* We use this to control keystroke padding. */
-$keystroke-padding: emCalc(2, 4, 0);
+$keystroke-padding: em-calc(2 4 0);
 
 /* We use these to control background and border styles. */
 $keystroke-bg: darken(#fff, $keystroke-function-factor);
@@ -69,7 +69,7 @@ $keystroke-border-width: 1px;
 $keystroke-border-color: darken($keystroke-bg, $keystroke-function-factor);
 $keystroke-radius: $global-radius;', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
       </div>
     </div>
