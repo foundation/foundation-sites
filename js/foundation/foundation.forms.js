@@ -64,7 +64,7 @@
         })
         .on('change.fndtn.forms', 'form.custom select', function (e, force_refresh) {
           if ($(this).is('[data-customforms="disabled"]')) return;
-          self.refresh_custom_select($(this), force_refresh);
+          self.refresh_custom_selection($(this));
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
           if ($(e.target).is('label')) {
@@ -415,6 +415,11 @@
         // cache list length
         this.cache[$customSelect.data('id')] = $listItems.length;
       }
+    },
+    
+    refresh_custom_selection: function ($select) {
+      var selectedValue = $('option:selected', $select).text();
+      $('a.current', $select.next()).text(selectedValue);
     },
 
     toggle_checkbox: function ($element) {
