@@ -246,25 +246,25 @@ $topbar-sticky-class: ".sticky" !default;
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
-          &.hover {
+          &:hover {
             background: darken($primary-color, 10%);
           }
         }
         &.button.secondary {
           background: $secondary-color;
-          &.hover {
+          &:hover {
             background: darken($secondary-color, 10%);
           }
         }
         &.button.success {
           background: $success-color;
-          &.hover {
+          &:hover {
             background: darken($success-color, 10%);
           }
         }
         &.button.alert {
           background: $alert-color;
-          &.hover {
+          &:hover {
             background: darken($alert-color, 10%);
           }
         }
@@ -272,7 +272,7 @@ $topbar-sticky-class: ".sticky" !default;
       }
 
       // Apply the hover link color when it has that class
-      &.hover > a {
+      &:hover > a {
         background: $topbar-link-bg-hover;
         color: $topbar-link-color-hover;
       }
@@ -408,7 +408,7 @@ $topbar-sticky-class: ".sticky" !default;
           padding: 0 $topbar-height / 3;
           line-height: $topbar-height;
           background: $topbar-bg;
-          &.hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
+          &:hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
         }
       }
 
