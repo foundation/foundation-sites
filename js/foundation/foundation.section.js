@@ -143,7 +143,8 @@
     resize: function(sections, ensure_has_active_region) {
 
       var self = Foundation.libs.section,
-          is_small_window = self.small($(document)),
+          section_container = $(self.settings.section_selector),
+          is_small_window = self.small(section_container),
           //filter for section resize
           should_be_resized = function (section, now_is_hidden) {
             return !self.is_accordion(section) && 
