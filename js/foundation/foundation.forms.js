@@ -33,14 +33,19 @@
     },
 
     assemble: function () {
-      $('form.custom input[type="radio"]', $(this.scope))
+
+      var forms = this;
+
+      $('form.custom input[type="radio"],[type="checkbox"]', $(this.scope))
         .not('[data-customforms="disabled"]')
         .not('.' + this.settings.disable_class)
-        .each(this.append_custom_markup);
-      $('form.custom input[type="checkbox"]', $(this.scope))
-        .not('[data-customforms="disabled"]')
-        .not('.' + this.settings.disable_class)
-        .each(this.append_custom_markup);
+        .each(function(idx, sel){
+          forms.set_custom_markup(sel);
+        })
+        .change(function(){
+          forms.set_custom_markup(this);
+        });
+
       $('form.custom select', $(this.scope))
         .not('[data-customforms="disabled"]')
         .not('.' + this.settings.disable_class)
@@ -256,7 +261,7 @@
       }.bind(this), 10);
     },
 
-    append_custom_markup: function (idx, sel) {
+    set_custom_markup: function (sel) {
       var $this = $(sel),
           type = $this.attr('type'),
           $span = $this.next('span.custom.' + type);

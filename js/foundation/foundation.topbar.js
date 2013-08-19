@@ -140,7 +140,8 @@
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
-          if (self.breakpoint()) {
+          if (self.breakpoint() && $(window).width() != self.settings.breakPoint) {
+
             e.preventDefault();
 
             var $this = $(this),
