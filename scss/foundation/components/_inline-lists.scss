@@ -39,6 +39,7 @@ $inline-list-children-display: block !default;
     margin-#{$default-float}: em-calc(22);
     display: $inline-list-display;
     &>* { display: $inline-list-children-display; }
+    &>script { display: none; }
   }
 }
 
