@@ -29,7 +29,7 @@ $button-bar-margin-opposite: em-calc(10) !default;
 
   // We use this to control the flow, or remove those styles completely.
   @if $float {
-    margin: 0 0 0 -1px;
+    margin: 0 0 0 (-$button-border-width);
     float: $float;
     // Make sure the first child doesn't get the negative margin.
     &:first-child { margin-#{$default-float}: 0; }
