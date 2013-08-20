@@ -312,7 +312,7 @@
           $customList.append(liHtml);
 
           $currentSelect = $customSelect
-            .prepend('<a href="#" class="current">' + $selectedOption.html() + '</a>')
+            .prepend('<a href="#" class="current">' + ($selectedOption.html() || '') + '</a>')
             .find(".current");
 
           $this.after($customSelect)
