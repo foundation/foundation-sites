@@ -272,7 +272,10 @@ $microformat-abbr-font-decoration: none !default;
     &.square { list-style-type: square; }
     &.circle { list-style-type: circle; }
     &.disc { list-style-type: disc; }
-    &.no-bullet { list-style: none; }
+    &.no-bullet {
+      list-style: none;
+      margin-#{$default-float}: 0;
+    }
   }
 
   /* Ordered Lists */
