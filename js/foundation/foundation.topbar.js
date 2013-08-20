@@ -280,13 +280,17 @@
       		});
           $window.scroll(function() {
             if ($window.scrollTop() > (distance)) {
-              $(klass).addClass("fixed");
-              $('body').css('padding-top',offst);
+              if (!$(klass).hasClass("fixed")) {
+                $(klass).addClass("fixed");
+                $('body').css('padding-top',offst);
+              }
             } else if ($window.scrollTop() <= distance) {
-              $(klass).removeClass("fixed");
-              $('body').css('padding-top','0');
+              if ($(klass).hasClass("fixed")) {
+                $(klass).removeClass("fixed");
+                $('body').css('padding-top','0');
+              }
             }
-        });
+          });
       }
     },
 
