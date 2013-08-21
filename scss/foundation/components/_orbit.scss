@@ -6,9 +6,9 @@ $include-html-orbit-classes: $include-html-classes !default;
 $orbit-container-bg: #f5f5f5 !default;
 $orbit-caption-bg: rgba(0,0,0,0.6) !default;
 $orbit-caption-font-color: #fff !default;
-$orbit-caption-font-size: emCalc(14) !default;
+$orbit-caption-font-size: em-calc(14) !default;
 $orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"
-$orbit-caption-padding: emCalc(10,14) !default;
+$orbit-caption-padding: em-calc(10,14) !default;
 $orbit-caption-height: auto !default;
 
 // We use these to control the left/right nav styles
@@ -24,7 +24,7 @@ $orbit-timer-show-progress-bar: true !default;
 // We use these to control the bullet nav styles
 $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #555 !default;
-$orbit-bullet-radius: emCalc(18) !default;
+$orbit-bullet-radius: em-calc(12) !default;
 
 // We use these to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
