@@ -333,8 +333,8 @@
     };
   };
 
-  var FadeAnimation = function(container) {
-    var duration = 250;
+  var FadeAnimation = function(settings, container) {
+    var duration = settings.animation_speed;
     var is_rtl = ($('html[dir=rtl]').length === 1);
     var margin = is_rtl ? 'marginRight' : 'marginLeft';
 
