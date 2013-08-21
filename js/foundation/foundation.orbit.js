@@ -11,6 +11,7 @@
 
     var self = this,
         container,
+        slides_container_parent,
         slides_container = el,
         number_container,
         bullets_container,
@@ -35,13 +36,14 @@
     };
 
     self.build_markup = function() {
-      slides_container.wrap('<div class="'+settings.container_class+'"></div>');
-      container = slides_container.parent();
+      slides_container.wrap('<div class="'+settings.container_class+'"><div></div></div>');
+      container = slides_container.parent().parent();
+      slides_container_parent = slides_container.parent()
       slides_container.addClass(settings.slides_container_class);
 
       if (settings.navigation_arrows) {
-        slides_container.append($('<a href="#">').addClass(settings.prev_class).append('<span>'));
-        slides_container.append($('<a href="#">').addClass(settings.next_class).append('<span>'));
+        slides_container_parent.append($('<a href="#">').addClass(settings.prev_class).append('<span>'));
+        slides_container_parent.append($('<a href="#">').addClass(settings.next_class).append('<span>'));
       }
 
       if (settings.timer) {
