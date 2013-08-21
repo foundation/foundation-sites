@@ -390,10 +390,11 @@
       var maxWidth = 0,
           $customSelect = $select.next(),
           $options = $select.find('option'),
+          $customList = $customSelect.find('ul'),
           $listItems = $customSelect.find('li');
 
       if ($options.length !== this.cache[$customSelect.data('id')] || force_refresh) {
-        $customSelect.find('ul').html('');
+        $customList.html('');
 
         // rebuild and re-populate all at once
         var customSelectHtml = '';
@@ -405,11 +406,11 @@
           }
         });
 
-        $customSelect.find('ul').html(customSelectHtml);
+        $customList.html(customSelectHtml);
 
         // fix width
-        $customSelect.removeAttr('style')
-          .find('ul').removeAttr('style');
+        $customSelect.removeAttr('style');
+        $customList.removeAttr('style');
         $customSelect.find('li').each(function () {
           $customSelect.addClass('open');
           if (self.outerWidth($(this)) > maxWidth) {
