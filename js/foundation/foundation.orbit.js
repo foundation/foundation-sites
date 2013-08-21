@@ -38,10 +38,10 @@
       slides_container.wrap('<div class="'+settings.container_class+'"></div>');
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
-      
+
       if (settings.navigation_arrows) {
-        container.append($('<a href="#">').addClass(settings.prev_class).append('<span>'));
-        container.append($('<a href="#">').addClass(settings.next_class).append('<span>'));
+        slides_container.append($('<a href="#">').addClass(settings.prev_class).append('<span>'));
+        slides_container.append($('<a href="#">').addClass(settings.next_class).append('<span>'));
       }
 
       if (settings.timer) {
@@ -85,7 +85,7 @@
       if (next_idx < idx) {dir = 'prev';}
       if (next_idx >= slides.length) {next_idx = 0;}
       else if (next_idx < 0) {next_idx = slides.length - 1;}
-      
+
       var current = $(slides.get(idx));
       var next = $(slides.get(next_idx));
 
@@ -95,7 +95,7 @@
 
       slides_container.trigger('orbit:before-slide-change');
       settings.before_slide_change();
-      
+
       var callback = function() {
         var unlock = function() {
           idx = next_idx;
@@ -116,7 +116,7 @@
 
       var start_animation = function() {
         if (dir === 'next') {animate.next(current, next, callback);}
-        if (dir === 'prev') {animate.prev(current, next, callback);}        
+        if (dir === 'prev') {animate.prev(current, next, callback);}
       };
 
       if (next.height() > slides_container.height() && settings.variable_height) {
@@ -125,13 +125,13 @@
         start_animation();
       }
     };
-    
+
     self.next = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
       self._goto(idx + 1);
     };
-    
+
     self.prev = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
@@ -157,7 +157,7 @@
     self.timer_callback = function() {
       self._goto(idx + 1, true);
     }
-    
+
     self.compute_dimensions = function() {
       var current = $(slides_container.children().get(idx));
       var h = current.height();
@@ -171,8 +171,8 @@
 
     self.create_timer = function() {
       var t = new Timer(
-        container.find('.'+settings.timer_container_class), 
-        settings, 
+        container.find('.'+settings.timer_container_class),
+        settings,
         self.timer_callback
       );
       return t;
@@ -186,7 +186,7 @@
       var t = container.find('.'+settings.timer_container_class);
       if (t.hasClass(settings.timer_paused_class)) {
         if (typeof timer === 'undefined') {timer = self.create_timer();}
-        timer.start();     
+        timer.start();
       }
       else {
         if (typeof timer === 'object') {timer.stop();}
@@ -197,8 +197,8 @@
       self.build_markup();
       if (settings.timer) {timer = self.create_timer(); timer.start();}
       animate = new FadeAnimation(settings, slides_container);
-      if (settings.animation === 'slide') 
-        animate = new SlideAnimation(settings, slides_container);        
+      if (settings.animation === 'slide')
+        animate = new SlideAnimation(settings, slides_container);
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
       container.on('click', '[data-orbit-slide]', self.link_bullet);
@@ -252,7 +252,7 @@
           timer.start();
         }
       });
-      
+
       $(document).on('click', '[data-orbit-link]', self.link_custom);
       $(window).on('resize', self.compute_dimensions);
       $(window).on('load', self.compute_dimensions);
@@ -266,7 +266,7 @@
     var self = this,
         duration = settings.timer_speed,
         progress = el.find('.'+settings.timer_progress_class),
-        start, 
+        start,
         timeout,
         left = -1;
 
@@ -309,7 +309,7 @@
       el.trigger('orbit:timer-stopped');
     };
   };
-  
+
   var SlideAnimation = function(settings, container) {
     var duration = settings.animation_speed;
     var is_rtl = ($('html[dir=rtl]').length === 1);
@@ -414,5 +414,5 @@
     }
   };
 
-    
+
 }(Foundation.zj, this, this.document));
