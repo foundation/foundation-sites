@@ -335,19 +335,21 @@
 
   var FadeAnimation = function(settings, container) {
     var duration = settings.animation_speed;
+    var is_rtl = ($('html[dir=rtl]').length === 1);
+    var margin = is_rtl ? 'marginRight' : 'marginLeft';
 
     this.next = function(current, next, callback) {
-      next.css({'marginLeft':'0%', 'opacity':'0.01'});
+      next.css({'margin':'0%', 'opacity':'0.01'});
       next.animate({'opacity':'1'}, duration, 'linear', function() {
-        current.css('marginLeft', '100%');
+        current.css('margin', '100%');
         callback();
       });
     };
 
     this.prev = function(current, prev, callback) {
-      prev.css({'marginLeft':'0%', 'opacity':'0.01'});
+      prev.css({'margin':'0%', 'opacity':'0.01'});
       prev.animate({'opacity':'1'}, duration, 'linear', function() {
-        current.css('marginLeft', '100%');
+        current.css('margin', '100%');
         callback();
       });
     };
