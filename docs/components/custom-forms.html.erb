@@ -281,11 +281,19 @@
         <hr>
 
         <h3><a name="js"></a>Using the JavaScript</h3>
-        <p>In order to get the custom forms to function, you'll need to include <code>foundation.forms.js</code>. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the forms plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <p>In order to get the custom forms to function, you'll need to include <code>foundation.forms.js</code>. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the forms plugin.
 
         <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
         <p>Required Foundation Library: <code>foundation.forms.js</code></p>
+
+        <h5>Javascript Events</h5>
+        <p>The custom selects can be refreshed by triggering a javascript <code>change</code> event on the native select.  Custom forms will automatically check for and update option tags that have been added or removed when you trigger the change event.  If you change the value of the native select, you will have to pass in the <code>force_refresh</code> argument when triggering the change event to ensure that the custom form gets updated correctly.</p>
+
+<%= code_example "
+$(\"#customDropdown1\").trigger(\"change\"); // Use to add or remove options
+$(\"#customDropdown1\").trigger(\"change\", true); // Use to change the value of the select
+", :js %>
 
         <h5>Optional JavaScript Configuration</h5>
 
