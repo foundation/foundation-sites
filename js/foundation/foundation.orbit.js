@@ -257,7 +257,7 @@
       $(window).on('resize', self.compute_dimensions);
       $(window).on('load', self.compute_dimensions);
       $(window).on('load', function(){
-        container.prev('.preloader').hide();
+        container.prev('.preloader').css('display', 'none');
       });
       slides_container.trigger('orbit:ready');
     };
