@@ -123,11 +123,14 @@
 
       if (!region.hasClass(self.settings.active_class)) {
         prev_active_region.removeClass(self.settings.active_class);
+        prev_active_region.trigger('closed.fndtn.section');
         region.addClass(self.settings.active_class);
         //force resize for better performance (do not wait timer)
         self.resize(region.find(self.settings.section_selector).not("[" + self.settings.resized_data_attr + "]"), true);
+        region.trigger('opened.fndtn.section');
       } else if (region.hasClass(self.settings.active_class) && self.is_accordion(section) || !settings.one_up && (self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))) {
         region.removeClass(self.settings.active_class);
+        region.trigger('closed.fndtn.section');
       }
       settings.callback(section);
     },
