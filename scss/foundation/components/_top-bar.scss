@@ -246,6 +246,8 @@ $topbar-sticky-class: ".sticky" !default;
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
+           padding-right: $topbar-height / 3;
+           padding-left: $topbar-height / 3;
           &:hover {
             background: darken($primary-color, 10%);
           }
