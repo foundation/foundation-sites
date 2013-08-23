@@ -112,7 +112,7 @@
       if (Modernizr.touch) {
         $tip.append('<span class="tap-to-close">tap to close </span>');
       }
-      $target.removeAttr('title').attr('title','');
+      $("[data-tooltip=" + $tip.data("selector") + "]").removeAttr('title').attr('title', '');
       this.show($target);
     },
 
