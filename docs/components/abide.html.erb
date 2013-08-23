@@ -115,12 +115,12 @@
 <form data-abide>
   <div class="name-field">
     <label>Your name <small>required</small></label>
-    <input type="number" required pattern="[a-zA-Z]+">
+    <input type="text" required pattern="[a-zA-Z]+">
     <small class="error">Name is required and must be a string.</small>
   </div>
   <div class="email-field">
     <label>Email <small>required</small></label>
-    <input type="password" required>
+    <input type="email" required>
     <small class="error">An email address is required.</small>
   </div>
   <button type="submit">Submit</button>
@@ -270,7 +270,7 @@ $(document)
 
         <h3>Error messages</h3>
 
-        <p>To display an error message for your invalid form element include a <code>&lt;small&gt;</code> tage with an <code>error</code> class as a sibling of your input.</p>
+        <p>To display an error message for your invalid form element include a <code>&lt;small&gt;</code> tag with an <code>error</code> class as a sibling of your input.</p>
 
 <%= code_example '
 <div class="input-wrapper">
@@ -314,7 +314,7 @@ $('#myForm')
         </div>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.abide.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <p>You'll need to include <code>foundation.abide.js</code> to get the plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
         <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 

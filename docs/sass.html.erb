@@ -225,6 +225,8 @@ bundle exec compass create . -r zurb-foundation --using foundation
 
     <p><em>This works with the default version of Sass and Compass that CodeKit comes with. Since Compass isn't a dependency for Foundation any longer, if you want to use it, make sure you have it installed and @imported at the top of your main .scss file.</em></p>
 
+    <p>Kevin Lorenz recently wrote a good article that goes into a bit more detail on this subject: <a href="http://www.kevinlorenz.com/blog/zurb-foundation-and-codekit" rel="nofollow">http://www.kevinlorenz.com/blog/zurb-foundation-and-codekit</a></p>
+
     <hr>
 
     <h3>Foundation Global Settings and Mixins</h3>
@@ -277,7 +279,7 @@ $em-base: 16px !default;
   @return $emValues;
 }
 
-/*Retaining this for backward compatability */
+// DEPRECATED: Use em-calc() instead, will be removed in Foundation 5.1
 
 @function emCalc($pxWidth) {
   @return $pxWidth / $em-base * 1em;

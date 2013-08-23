@@ -21,7 +21,7 @@
     <div class="row">
       <div class="large-12 columns">
         <h2 id="numero1" class="so-awesome">Build Joyride with HTML</h2>
-        <p>At the bottom of your page but inside of the body, place either an <code>ol</code> or <code>ul</code> with the <code>data-joyride</code> attribute. This list will contain all of the stops on your tour. To associate the tour stops with an item on your page, make sure the ID and data-id match between the two. If you do not associate an if, the tour stop will take on a modal style, positioning itself in the middle of the screen.</p>
+        <p>At the bottom of your page but inside of the body, place either an <code>ol</code> or <code>ul</code> with the <code>data-joyride</code> attribute. This list will contain all of the stops on your tour. To associate the tour stops with an item on your page, make sure the ID and data-id match between the two. If you do not associate an id, the tour stop will take on a modal style, positioning itself in the middle of the screen.</p>
 
 <%= code_example '
 <!-- At the bottom of your page but inside of the body tag -->
@@ -100,7 +100,7 @@ $joyride-screenfill: rgba(0,0,0,0.5);
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.joyride.js</code> to get plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <p>You'll need to include <code>foundation.joyride.js</code> to get the plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
         <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
@@ -172,7 +172,7 @@ $joyride-screenfill: rgba(0,0,0,0.5);
   </li>
   <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
     <h4>Stop #1</h4>
-    <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
+    <p>You can control all the details for your tour stop. Any valid HTML will work inside of Joyride.</p>
   </li>
   <li data-id="numero2" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
     <h4>Stop #2</h4>

@@ -4,7 +4,7 @@
   Foundation.libs.forms = {
     name : 'forms',
 
-    version: '4.3.1',
+    version: '4.3.2',
 
     cache: {},
 
@@ -33,14 +33,19 @@
     },
 
     assemble: function () {
-      $('form.custom input[type="radio"]', $(this.scope))
+
+      var forms = this;
+
+      $('form.custom input[type="radio"],[type="checkbox"]', $(this.scope))
         .not('[data-customforms="disabled"]')
         .not('.' + this.settings.disable_class)
-        .each(this.append_custom_markup);
-      $('form.custom input[type="checkbox"]', $(this.scope))
-        .not('[data-customforms="disabled"]')
-        .not('.' + this.settings.disable_class)
-        .each(this.append_custom_markup);
+        .each(function(idx, sel){
+          forms.set_custom_markup(sel);
+        })
+        .change(function(){
+          forms.set_custom_markup(this);
+        });
+
       $('form.custom select', $(this.scope))
         .not('[data-customforms="disabled"]')
         .not('.' + this.settings.disable_class)
@@ -165,10 +170,17 @@
       $(window).on('keydown', function (e) {
         var focus = document.activeElement,
             self = Foundation.libs.forms,
-            dropdown = $('.custom.dropdown.open');
+            dropdown = $('.custom.dropdown'),
+      select = getFirstPrevSibling(dropdown, 'select'),
+      inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
 
-        if (dropdown.length > 0) {
+        if (dropdown.length > 0 && dropdown.hasClass('open')) {
           e.preventDefault();
+
+      if (e.which === 9) {
+          $(inputs[$(inputs).index(select) + 1]).focus();
+        dropdown.removeClass('open');
+      }
 
           if (e.which === 13) {
             dropdown.find('li.selected').trigger('click');
@@ -210,6 +222,15 @@
         }
       });
 
+    $(window).on('keyup', function (e) {
+          var focus = document.activeElement,
+              dropdown = $('.custom.dropdown');
+
+      if (focus === dropdown.find('.current')[0]) {
+        dropdown.find('.selector').focus().click();
+      }
+    });
+
       this.settings.init = true;
     },
 
@@ -240,7 +261,7 @@
       }.bind(this), 10);
     },
 
-    append_custom_markup: function (idx, sel) {
+    set_custom_markup: function (sel) {
       var $this = $(sel),
           type = $this.attr('type'),
           $span = $this.next('span.custom.' + type);
@@ -291,7 +312,7 @@
           $customList.append(liHtml);
 
           $currentSelect = $customSelect
-            .prepend('<a href="#" class="current">' + $selectedOption.html() + '</a>')
+            .prepend('<a href="#" class="current">' + ($selectedOption.html() || '') + '</a>')
             .find(".current");
 
           $this.after($customSelect)
@@ -369,30 +390,27 @@
       var maxWidth = 0,
           $customSelect = $select.next(),
           $options = $select.find('option'),
+          $customList = $customSelect.find('ul'),
           $listItems = $customSelect.find('li');
 
-      if ($listItems.length !== this.cache[$customSelect.data('id')] || force_refresh) {
-        $customSelect.find('ul').html('');
+      if ($options.length !== this.cache[$customSelect.data('id')] || force_refresh) {
+        $customList.html('');
 
+        // rebuild and re-populate all at once
+        var customSelectHtml = '';
         $options.each(function () {
-          var $li = $('<li>' + $(this).html() + '</li>');
-          $customSelect.find('ul').append($li);
+          var $this = $(this), thisHtml = $this.html(), thisSelected = this.selected;
+          customSelectHtml += '<li class="' + (thisSelected ? ' selected ' : '') + ($this.is(':disabled') ? ' disabled ' : '') + '">' + thisHtml + '</li>';
+          if (thisSelected) {
+            $customSelect.find('.current').html(thisHtml);
+          }
         });
 
-        // re-populate
-        $options.each(function (index) {
-          if (this.selected) {
-            $customSelect.find('li').eq(index).addClass('selected');
-            $customSelect.find('.current').html($(this).html());
-          }
-          if ($(this).is(':disabled')) {
-            $customSelect.find('li').eq(index).addClass('disabled');
-          }
-        });
+        $customList.html(customSelectHtml);
 
         // fix width
-        $customSelect.removeAttr('style')
-          .find('ul').removeAttr('style');
+        $customSelect.removeAttr('style');
+        $customList.removeAttr('style');
         $customSelect.find('li').each(function () {
           $customSelect.addClass('open');
           if (self.outerWidth($(this)) > maxWidth) {
@@ -405,6 +423,11 @@
         // cache list length
         this.cache[$customSelect.data('id')] = $listItems.length;
       }
+    },
+    
+    refresh_custom_selection: function ($select) {
+      var selectedValue = $('option:selected', $select).text();
+      $('a.current', $select.next()).text(selectedValue);
     },
 
     toggle_checkbox: function ($element) {

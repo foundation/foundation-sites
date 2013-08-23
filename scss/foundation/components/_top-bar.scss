@@ -8,7 +8,7 @@ $topbar-bg: #111 !default;
 
 // Height and margin
 $topbar-height: 45px !default;
-$topbar-margin-bottom: em-calc(30) !default;
+$topbar-margin-bottom: 0 !default;
 
 // Control Input height for top bar
 $topbar-input-height: 2.45em !default;
@@ -247,25 +247,27 @@ $topbar-sticky-class: ".sticky" !default;
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
-          &.hover {
+           padding-right: $topbar-height / 3;
+           padding-left: $topbar-height / 3;
+          &:hover {
             background: darken($primary-color, 10%);
           }
         }
         &.button.secondary {
           background: $secondary-color;
-          &.hover {
+          &:hover {
             background: darken($secondary-color, 10%);
           }
         }
         &.button.success {
           background: $success-color;
-          &.hover {
+          &:hover {
             background: darken($success-color, 10%);
           }
         }
         &.button.alert {
           background: $alert-color;
-          &.hover {
+          &:hover {
             background: darken($alert-color, 10%);
           }
         }
@@ -273,7 +275,7 @@ $topbar-sticky-class: ".sticky" !default;
       }
 
       // Apply the hover link color when it has that class
-      &.hover > a {
+      &:hover > a {
         background: $topbar-link-bg-hover;
         color: $topbar-link-color-hover;
       }
@@ -409,7 +411,7 @@ $topbar-sticky-class: ".sticky" !default;
           padding: 0 $topbar-height / 3;
           line-height: $topbar-height;
           background: $topbar-bg;
-          &.hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
+          &.hover, &:hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
         }
       }
 
