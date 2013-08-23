@@ -89,7 +89,7 @@
     },
 
     validate : function (els, e) {
-      if (!$(this).val() && this.settings.ignore_empty) {
+      if (!$(e.target).val() && this.settings.ignore_empty) {
         return false;
       }
       var validations = this.parse_patterns(els),
