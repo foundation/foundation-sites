@@ -51,7 +51,8 @@ $topbar-menu-icon-color-toggled: #888 !default;
 
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
-$topbar-breakpoint: em-calc(940) !default; // Change to 9999px for always mobile layout
+// Using em-calc for the below breakpoint causes issues with top bar
+$topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout
 $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})" !default;
 
 // Divider Styles
@@ -246,6 +247,8 @@ $topbar-sticky-class: ".sticky" !default;
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
+           padding-right: $topbar-height / 3;
+           padding-left: $topbar-height / 3;
           &:hover {
             background: darken($primary-color, 10%);
           }

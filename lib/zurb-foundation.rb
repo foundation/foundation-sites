@@ -6,6 +6,18 @@ if defined?(Rails::Generators::Base)
 end
 
 module Foundation
+  def self.root
+    File.join(File.dirname(__FILE__), "..")
+  end
+
+  def self.js_path
+    File.join(File.dirname(__FILE__), "..", "js")
+  end
+
+  def self.scss_path
+    File.join(File.dirname(__FILE__), "..", "scss")
+  end
+
   if defined?(Rails::Engine)
     require "foundation/engine"
   elsif defined?(Sprockets)

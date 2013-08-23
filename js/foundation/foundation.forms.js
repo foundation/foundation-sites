@@ -69,7 +69,7 @@
         })
         .on('change.fndtn.forms', 'form.custom select', function (e, force_refresh) {
           if ($(this).is('[data-customforms="disabled"]')) return;
-          self.refresh_custom_selection($(this));
+          self.refresh_custom_select($(this), force_refresh);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
           if ($(e.target).is('label')) {
@@ -171,16 +171,16 @@
         var focus = document.activeElement,
             self = Foundation.libs.forms,
             dropdown = $('.custom.dropdown'),
-			select = getFirstPrevSibling(dropdown, 'select'),
-			inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
+      select = getFirstPrevSibling(dropdown, 'select'),
+      inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
 
         if (dropdown.length > 0 && dropdown.hasClass('open')) {
           e.preventDefault();
 
-		  if (e.which === 9) {
-		  	  $(inputs[$(inputs).index(select) + 1]).focus();
-			  dropdown.removeClass('open');
-		  }
+      if (e.which === 9) {
+          $(inputs[$(inputs).index(select) + 1]).focus();
+        dropdown.removeClass('open');
+      }
 
           if (e.which === 13) {
             dropdown.find('li.selected').trigger('click');
@@ -222,14 +222,14 @@
         }
       });
 
-	  $(window).on('keyup', function (e) {
+    $(window).on('keyup', function (e) {
           var focus = document.activeElement,
               dropdown = $('.custom.dropdown');
 
-		  if (focus === dropdown.find('.current')[0]) {
-			  dropdown.find('.selector').focus().click();
-		  }
-	  });
+      if (focus === dropdown.find('.current')[0]) {
+        dropdown.find('.selector').focus().click();
+      }
+    });
 
       this.settings.init = true;
     },
@@ -390,10 +390,11 @@
       var maxWidth = 0,
           $customSelect = $select.next(),
           $options = $select.find('option'),
+          $customList = $customSelect.find('ul'),
           $listItems = $customSelect.find('li');
 
-      if ($listItems.length !== this.cache[$customSelect.data('id')] || force_refresh) {
-        $customSelect.find('ul').html('');
+      if ($options.length !== this.cache[$customSelect.data('id')] || force_refresh) {
+        $customList.html('');
 
         // rebuild and re-populate all at once
         var customSelectHtml = '';
@@ -405,9 +406,11 @@
           }
         });
 
+        $customList.html(customSelectHtml);
+
         // fix width
-        $customSelect.removeAttr('style')
-          .find('ul').removeAttr('style');
+        $customSelect.removeAttr('style');
+        $customList.removeAttr('style');
         $customSelect.find('li').each(function () {
           $customSelect.addClass('open');
           if (self.outerWidth($(this)) > maxWidth) {
