@@ -11,6 +11,7 @@
     settings : {
       live_validate : true,
       focus_on_invalid : true,
+      ignore_empty: false,
       timeout : 1000,
       patterns : {
         alpha: /[a-zA-Z]+/,
@@ -88,6 +89,9 @@
     },
 
     validate : function (els, e) {
+      if (!$(this).val() && this.settings.ignore_empty) {
+        return false;
+      }
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
           form = $(els[0]).closest('form');
