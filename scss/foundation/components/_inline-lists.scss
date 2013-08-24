@@ -17,9 +17,6 @@ $inline-list-overflow: hidden !default;
 // We use this to control the list items
 $inline-list-display: block !default;
 
-// We use this to control what tags are considered a list item
-$list-item-tags: 'li';
-
 // We use this to control any elements within list items
 $inline-list-children-display: block !default;
 
@@ -36,7 +33,7 @@ $inline-list-children-display: block !default;
   list-style: none;
   overflow: $inline-list-overflow;
 
-  & > #{$list-item-tags} {
+  & > * {
     list-style: none;
     float: $default-float;
     margin-#{$default-float}: em-calc(22);
