@@ -69,7 +69,7 @@ $callout-panel-link-color: #fff !default;
       @include panel($primary-color);
       @include inset-shadow($active:false);
       a {
-        color: $panel-link-color;
+        color: $callout-panel-link-color;
       }
     }
 
