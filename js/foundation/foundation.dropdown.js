@@ -63,7 +63,9 @@
         if ($(e.target).data('dropdown') || $(e.target).parent().data('dropdown')) {
           return;
         }
-        if (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || $.contains(parent.first()[0], e.target))) {
+        if (!($(e.target).data('revealId')) && 
+          (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || 
+            $.contains(parent.first()[0], e.target)))) {
           e.stopPropagation();
           return;
         }
