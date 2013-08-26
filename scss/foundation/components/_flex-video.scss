@@ -4,12 +4,12 @@
 $include-html-media-classes: $include-html-classes !default;
 
 // We use these to control video container padding and margins
-$flex-video-padding-top: em-calc(25) !default;
-$flex-video-padding-bottom: 67.5% !default;
-$flex-video-margin-bottom: em-calc(16) !default;
+$flex-video-padding-top: em-calc(30) !default;
+$flex-video-padding-bottom: 75% !default;
+$flex-video-margin-bottom: em-calc(30) !default;
 
 // We use this to control widescreen bottom padding
-$flex-video-widescreen-padding-bottom: 57.25% !default;
+$flex-video-widescreen-padding-bottom: 56% !default;
 
 //
 // Flex Video Mixins
