@@ -64,8 +64,8 @@
                 </div>
               </section>
             </div>
-            <div class="section-container auto" data-section data-options="deep_linking: true; one_up: false">
-              <section>
+            <div class="section-container auto" data-section data-options="deep_linking: true;">
+              <section class="active">
                 <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
                 <div class="content" data-slug="panel1" data-section-content>
                   <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -74,14 +74,14 @@
               <section>
                 <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
                 <div class="content" data-slug="panel2" data-section-content>
-                  <div class="section-container auto" data-section data-options="deep_linking: true; one_up: false">
-                    <section>
+                  <div class="section-container auto" data-section data-options="deep_linking: true;">
+                    <section data-section-region>
                       <p class="title" data-section-title><a href="#panel2nested1">Section 1</a></p>
                       <div class="content" data-slug="nested1" data-section-content>
                         <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
                     </section>
-                    <section>
+                    <section data-section-region>
                       <p class="title" data-section-title><a href="#panel2nested2">Section 2</a></p>
                       <div class="content" data-slug="nested2" data-section-content>
                         <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -594,7 +594,7 @@ $title-selector: ".title"
 /* You can set the class that is used for the content elements */
 $content-selector: ".content"
 
-/* Give the titles some padding, can be any px or emCalc() value */
+/* Give the titles some padding, can be any px or em-calc() value */
 $title-padding: $section-padding
 
 /* give the titles a color, any color value */
@@ -660,7 +660,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container(false,$section-type:tabs);
     & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample" data-section="auto">
           <section>
@@ -701,7 +701,7 @@ $section-border-color: $section-border-color', :css %>
 .section-auto-sample-accordion {
   @include section-container($section-type:accordion);
   & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-accordion" data-section="accordion">
           <section>
@@ -742,7 +742,7 @@ $section-border-color: $section-border-color', :css %>
 .section-auto-sample-tabs {
   @include section-container($section-type:tabs);
   & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-tabs" data-section="tabs">
           <section>
@@ -789,7 +789,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container($section-type:vertical-tabs);
     & > section { @include section($section-type:vertical-tabs, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-vtabs" data-section="vertical-tabs">
           <section>
@@ -847,7 +847,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container($section-type:vertical-nav);
     & > section { @include section($section-type:vertical-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="nav-container">
           <nav>
@@ -900,7 +900,7 @@ $section-border-color: $section-border-color', :css %>
     @include section-container($section-type:horizontal-nav);
     & > section { @include section($section-type:horizontal-nav, $title-selector:".title-sample", $content-selector:".content-sample"); }
   }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-hnav" data-section="horizontal-nav">
           <section>
@@ -941,7 +941,7 @@ $section-border-color: $section-border-color', :css %>
 .section-auto-sample-custom {
   @include section-container($section-type:tabs);
   & > section { @include section($section-type:tabs, $title-selector:".title-sample", $content-selector:".content-sample", $title-padding: 10px 50px, $title-color:#000, $title-bg:pink, $title-bg-hover:darken(pink,5%), $title-bg-active: #fff, $title-color-active: darken(pink,10%)); }
-}', :css %>
+}', :sass %>
 
         <div class="section-auto-sample-custom" data-section="tabs">
           <section>
@@ -962,19 +962,20 @@ $section-border-color: $section-border-color', :css %>
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
-$include-html-section-classes: $include-html-classes !default;
+$include-html-section-classes: $include-html-classes;
 
 /* We use these to set padding and hover factor */
-$section-title-padding: emCalc(15px);
-$section-content-padding: emCalc(15px);
+$section-title-padding: em-calc(15);
+$section-content-padding: em-calc(15);
 $section-function-factor: 10%;
 
 /* These style the titles */
 $section-title-color: #333;
+$section-title-color-active: #333;
 $section-title-bg: #efefef;
 $section-title-bg-active: darken($section-title-bg, $section-function-factor);
 $section-title-bg-active-tabs: #fff;
-$section-title-bg-hover: darken($section-title-bg, $section-function-factor/2);
+$section-title-bg-hover: darken($section-title-bg, $section-function-factor / 2);
 
 /* Want to control border size, here ya go! */
 $section-border-size: 1px;
@@ -982,19 +983,20 @@ $section-border-style: solid;
 $section-border-color: #ccc;
 
 /* Font controls */
-$section-font-size: emCalc(14px);
+$section-font-size: em-calc(14);
 
 /* Control the color of the background and some size options */
 $section-content-bg: #fff;
-$section-vertical-nav-min-width: emCalc(200px);
-$section-vertical-tabs-title-width: emCalc(200px);
-$section-bottom-margin: emCalc(20px);
+$section-vertical-nav-min-width: em-calc(200);
+$section-vertical-tabs-title-width: em-calc(200);
+$section-bottom-margin: em-calc(20);
 
 $title-selector: ".title";
 $content-selector: ".content";
+$active-region-selector: ".active";
 ', :css %>
 
-    <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+    <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
 
         <hr>
 

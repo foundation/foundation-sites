@@ -51,6 +51,9 @@
         <h3 data-magellan-destination="js">Using Our JavaScript</h3>
         <p>You'll need to include <code>foundation.magellan.js</code> to get everything to work properly. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
 
+<%= code_example '
+<script src="javascripts/foundation/foundation.magellan.js"></script>
+', :html %>
         <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
 
         <p>Required Foundation Library: <code>foundation.magellan.js</code></p>
@@ -74,7 +77,9 @@
     <%= code_example "
 {
   // specify the class used for active sections
-  activeClass: 'active'
+  activeClass: 'active',
+  // how many pixels until the magellan bar sticks, 0 = auto
+  threshold: 0
 }", :js %>
 
       </div>

@@ -3,10 +3,12 @@
 (function ($, window, document, undefined) {
   'use strict';
 
-  Foundation.libs.joyride = {
-    name: 'joyride',
+  var Modernizr = Modernizr || false;
 
-    version : '4.2.2',
+  Foundation.libs.joyride = {
+    name : 'joyride',
+
+    version : '4.3.2',
 
     defaults : {
       expose               : false,      // turn on or off the expose feature
@@ -42,7 +44,7 @@
         expose  : '<div class="joyride-expose-wrapper"></div>',
         exposeCover: '<div class="joyride-expose-cover"></div>'
       },
-      exposeAddClass  	: ''		// One or more space-separated class names to be added to exposed element
+      exposeAddClass : '' // One or more space-separated class names to be added to exposed element
     },
 
     settings : {},
@@ -121,7 +123,7 @@
           integer_settings = ['timer', 'scrollSpeed', 'startOffset', 'tipAnimationFadeSpeed', 'cookieExpires'],
           int_settings_count = integer_settings.length;
 
-      if (!this.settings.init) this.init();
+      if (!this.settings.init) this.events();
 
       // non configureable settings
       this.settings.$content_el = $this;
@@ -339,7 +341,7 @@
         return Modernizr.mq('only screen and (max-width: 767px)') || $('.lt-ie9').length > 0;
       }
 
-      return (this.settings.$window.width() < 767);
+      return ($(window).width() < 767);
     },
 
     hide : function () {
@@ -350,7 +352,13 @@
       if (!this.settings.modal) {
         $('.joyride-modal-bg').hide();
       }
-      this.settings.$current_tip.hide();
+
+      // Prevent scroll bouncing...wait to remove from layout
+      this.settings.$current_tip.css('visibility', 'hidden');
+      setTimeout($.proxy(function() {
+        this.hide();
+        this.css('visibility', 'visible');
+      }, this.settings.$current_tip), 0);
       this.settings.postStepCallback(this.settings.$li.index(),
         this.settings.$current_tip);
     },
@@ -599,7 +607,7 @@
         zIndex: el.css('z-index'),
         position: el.css('position')
       };
-      
+
       origClasses = el.attr('class') == null ? '' : el.attr('class');
 
       el.css('z-index',parseInt(expose.css('z-index'))+1);
@@ -678,7 +686,7 @@
           el.css('position', origCSS.position);
         }
       }
-      
+
       origClasses = el.data('orig-class');
       el.attr('class', origClasses);
       el.removeData('orig-classes');

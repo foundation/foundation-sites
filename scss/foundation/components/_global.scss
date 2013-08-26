@@ -15,7 +15,7 @@ $experimental: true !default;
 }
 
 // We use this to create equal side border radius on elements.
-@mixin side-radius($side, $radius) {
+@mixin side-radius($side, $radius:$global-radius) {
   @if $side == left {
     @if $experimental {
       -moz-border-radius-bottomleft: $radius;
@@ -159,14 +159,49 @@ $base-line-height: 150% !default;
 // This is the default html and body font-size for the base em value.
 $em-base: 16px !default;
 
-// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
-@function emCalc($pxWidth) {
-  @return $pxWidth / $em-base * 1em;
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
 }
 
-// Maybe you want to create rems and pixels
+// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em's.
+// Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported
+// em-calc(10 20 30px 40);
+// Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
+// em-calc((10, 20, 30, 40px));
+// Optionally call with a different base (eg: 8px) to calculate em.
+// em-calc(16px 32px 48px, 8px);
+// If you require to comma separate your list
+// em-calc((16px, 32px, 48), 8px);
+
+@function convert-to-em($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
+  @return $value;
+}
+
+@function em-calc($values, $base-value: $em-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+
+  $emValues: ();
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+  }
+  @return $emValues;
+}
+
+// Support for the old syntax
+
+@function emCalc($values){
+  @return em-calc($values);
+}
+
+// Maybe you want to create rems with pixels
+// $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
 // @function remCalc($pxWidth) {
-//   @return $pxWidth / $em-base * 1rem;
+//   @return $pxWidth / $rem-base * 1rem;
 // }
 
 // We use these to control various global styles

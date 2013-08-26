@@ -14,7 +14,7 @@ $switch-height-tny: 22px !default;
 $switch-height-sml: 28px !default;
 $switch-height-med: 36px !default;
 $switch-height-lrg: 44px !default;
-$switch-bottom-margin: emCalc(20px) !default;
+$switch-bottom-margin: em-calc(20) !default;
 
 // We use these to control default font sizes for our classes.
 $switch-font-size-tny: 11px !default;
@@ -35,7 +35,7 @@ $switch-positive-color: lighten($success-color, 50%) !default;
 $switch-negative-color: #f5f5f5 !default;
 
 // Outline Style for tabbing through switches
-$switch-label-outline:            1px dotted #888 !default;
+$switch-label-outline: 1px dotted #888 !default;
 
 
 //
@@ -47,7 +47,6 @@ $switch-label-outline:            1px dotted #888 !default;
 
   // Default position and structure for switch container.
   position: relative;
-  width: 100%;
   padding: 0;
   display: block;
   overflow: hidden;
@@ -142,22 +141,22 @@ $switch-label-outline:            1px dotted #888 !default;
   height: $height;
 
   label {
-    padding: 0 emCalc($switch-label-side-padding);
+    padding: em-calc(0, $switch-label-side-padding);
     line-height: $line-height;
-    font-size: emCalc($font-size);
+    font-size: em-calc($font-size);
   }
 
   input {
     // Move the paddle to the right position
     &:first-of-type:checked ~ span:last-child {
       #{$default-float}: 100%;
-      margin-#{$default-float}: emCalc(-$height + 1px);
+      margin-#{$default-float}: em-calc(-$height + 1px);
     }
   }
 
   span:last-child {
-    width: emCalc($height);
-    height: emCalc($height);
+    width: em-calc($height);
+    height: em-calc($height);
   }
 
 }
@@ -251,7 +250,7 @@ $switch-label-outline:            1px dotted #888 !default;
       // Make the switch completely round, like a pill
       &.round { @include radius(1000px);
         span:last-child { @include radius(999px); }
-        label { padding: 0 emCalc($switch-label-side-padding + 3px); }
+        label { padding: em-calc(0 $switch-label-side-padding + 3); }
       }
 
     }

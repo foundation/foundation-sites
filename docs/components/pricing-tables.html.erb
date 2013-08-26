@@ -61,7 +61,9 @@
         <p>We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_pricing-tables.scss">_pricing-tables.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/variables", "foundation/components/global", "foundation/components/pricing-tables";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/pricing-tables";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like with the <code>&lt;ul&gt;</code> and the list items inside it.</p>
@@ -100,52 +102,54 @@
         <h5>Default SCSS Variables</h5>
 
 <%= code_example '
+$include-html-pricing-classes: $include-html-classes;
+
 /* We use this to control the border color */
 $price-table-border: solid 1px #ddd;
 
 /* We use this to control the bottom margin of the pricing table */
-$price-table-margin-bottom: emCalc(20px);
+$price-table-margin-bottom: em-calc(20);
 
 /* We use these to control the title styles */
 $price-title-bg: #ddd;
-$price-title-padding: emCalc(15px) emCalc(20px);
+$price-title-padding: em-calc(15 20);
 $price-title-align: center;
 $price-title-color: #333;
 $price-title-weight: bold;
-$price-title-size: emCalc(16px);
+$price-title-size: em-calc(16);
 
 /* We use these to control the price styles */
 $price-money-bg: #eee;
-$price-money-padding: emCalc(15px) emCalc(20px);
+$price-money-padding: em-calc(15 20);
 $price-money-align: center;
 $price-money-color: #333;
 $price-money-weight: normal;
-$price-money-size: emCalc(20px);
+$price-money-size: em-calc(20);
 
 /* We use these to control the description styles */
 $price-bg: #fff;
 $price-desc-color: #777;
-$price-desc-padding: emCalc(15px);
+$price-desc-padding: em-calc(15);
 $price-desc-align: center;
-$price-desc-font-size: emCalc(12px);
+$price-desc-font-size: em-calc(12);
 $price-desc-weight: normal;
 $price-desc-line-height: 1.4;
 $price-desc-bottom-border: dotted 1px #ddd;
 
 /* We use these to control the list item styles */
 $price-item-color: #333;
-$price-item-padding: emCalc(15px);
+$price-item-padding: em-calc(15);
 $price-item-align: center;
-$price-item-font-size: emCalc(14px);
+$price-item-font-size: em-calc(14);
 $price-item-weight: normal;
 $price-item-bottom-border: dotted 1px #ddd;
 
 /* We use these to control the CTA area styles */
 $price-cta-bg: #f5f5f5;
 $price-cta-align: center;
-$price-cta-padding: emCalc(20px) emCalc(20px) 0;', :css %>
+$price-cta-padding: em-calc(20 20 0);', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
       </div>
     </div>

@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version : '4.2.3',
+    version: '4.3.1',
 
     settings : {
       index : 0,
@@ -14,6 +14,7 @@
       custom_back_text: true,
       back_text: 'Back',
       is_hover: true,
+      mobile_show_parent_link: false,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       init : false
     },
@@ -44,6 +45,10 @@
 
           self.assemble();
 
+          if (self.settings.is_hover) {
+            self.settings.$topbar.find('.has-dropdown').addClass('not-click');
+          }
+
           if (self.settings.$topbar.parent().hasClass('fixed')) {
             $('body').css('padding-top', self.outerHeight(self.settings.$topbar));
           }
@@ -60,70 +65,70 @@
       }
     },
 
+    toggle: function() {
+      var self = this;
+      var topbar = $('.top-bar, [data-topbar]'),
+          section = topbar.find('section, .section'),
+          titlebar = topbar.children('ul').first();
+
+      var offst = self.outerHeight(topbar);
+      if (self.breakpoint()) {
+        if (!self.rtl) {
+          section.css({left: '0%'});
+          section.find('>.name').css({left: '100%'});
+        } else {
+          section.css({right: '0%'});
+          section.find('>.name').css({right: '100%'});
+        }
+
+        section.find('li.moved').removeClass('moved');
+        topbar.data('index', 0);
+
+        topbar
+          .toggleClass('expanded')
+          .css('height', '');
+      }
+
+      if (!topbar.hasClass('expanded')) {
+        if (topbar.hasClass('fixed')) {
+          topbar.parent().addClass('fixed');
+          topbar.removeClass('fixed');
+          $('body').css('padding-top',offst);
+        }
+      } else if (topbar.parent().hasClass('fixed')) {
+        topbar.parent().removeClass('fixed');
+        topbar.addClass('fixed');
+        $('body').css('padding-top','0');
+
+        if (self.settings.scrolltop) {
+          window.scrollTo(0,0);
+        }
+      }
+    },
+
+    timer : null,
+
     events : function () {
       var self = this;
-      var offst = this.outerHeight($('.top-bar, [data-topbar]'));
       $(this.scope)
         .off('.fndtn.topbar')
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
-          var topbar = $(this).closest('.top-bar, [data-topbar]'),
-              section = topbar.find('section, .section'),
-              titlebar = topbar.children('ul').first();
-
           e.preventDefault();
-
-          if (self.breakpoint()) {
-            if (!self.rtl) {
-              section.css({left: '0%'});
-              section.find('>.name').css({left: '100%'});
-            } else {
-              section.css({right: '0%'});
-              section.find('>.name').css({right: '100%'});
-            }
-
-            section.find('li.moved').removeClass('moved');
-            topbar.data('index', 0);
-
-            topbar
-              .toggleClass('expanded')
-              .css('height', '');
-          }
-
-          if (!topbar.hasClass('expanded')) {
-            if (topbar.hasClass('fixed')) {
-              topbar.parent().addClass('fixed');
-              topbar.removeClass('fixed');
-              $('body').css('padding-top',offst);
-            }
-          } else if (topbar.parent().hasClass('fixed')) {
-            topbar.parent().removeClass('fixed');
-            topbar.addClass('fixed');
-            $('body').css('padding-top','0');
-
-            if (self.settings.scrolltop) {
-              window.scrollTo(0,0);
-            }
-          }
-        })
-
-        .on('mouseenter mouseleave', '.top-bar li', function (e) {
-          if (!self.settings.is_hover) return;
-
-          if (/enter|over/i.test(e.type)) {
-            $(this).addClass('hover');
-          } else {
-            $(this).removeClass('hover');
-          }
+          self.toggle();
         })
 
         .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
-          if (self.breakpoint()) return;
-
           var li = $(this),
               target = $(e.target),
               topbar = li.closest('[data-topbar], .top-bar'),
               is_hover = topbar.data('topbar');
 
+          if(target.data('revealId')) {
+            self.toggle();
+            return;
+          }
+
+          if (self.breakpoint()) return;
           if (self.settings.is_hover && !Modernizr.touch) return;
 
           e.stopImmediatePropagation();
@@ -143,7 +148,8 @@
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
-          if (self.breakpoint()) {
+          if (self.breakpoint() && $(window).width() != self.settings.breakPoint) {
+
             e.preventDefault();
 
             var $this = $(this),
@@ -164,7 +170,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.outerHeight(titlebar, true));
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.height(titlebar));
           }
         });
 
@@ -212,7 +218,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.outerHeight(titlebar, true));
+          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.height(titlebar));
         }
 
         setTimeout(function () {
@@ -235,7 +241,7 @@
             $dropdown = $link.siblings('.dropdown'),
             url = $link.attr('href');
 
-        if (url && url.length > 1) {
+        if (self.settings.mobile_show_parent_link && url && url.length > 1) {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li><li><a class="parent-link js-generated" href="' + url + '">' + $link.text() +'</a></li>');
         } else {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="#"></a></h5></li>');
@@ -273,24 +279,27 @@
             $window = $(window),
             offst = this.outerHeight($('.top-bar')),
             t_top;
-        //Whe resize elements of the page on windows resize. Must recalculate distance
-		$(window).resize(function() {
+
+          //Whe resize elements of the page on windows resize. Must recalculate distance
+      		$(window).resize(function() {
             clearTimeout(t_top);
-			t_top = setTimeout (function() {
-				distance = $(klass).offset().top;
-			},105);
-		});
+      			t_top = setTimeout (function() {
+        			distance = $(klass).offset().top;
+      			},105);
+      		});
           $window.scroll(function() {
             if ($window.scrollTop() > (distance)) {
-              $(klass).addClass("fixed");
-              $('body').css('padding-top',offst);
+              if (!$(klass).hasClass("fixed")) {
+                $(klass).addClass("fixed");
+                $('body').css('padding-top',offst);
+              }
+            } else if ($window.scrollTop() <= distance) {
+              if ($(klass).hasClass("fixed")) {
+                $(klass).removeClass("fixed");
+                $('body').css('padding-top','0');
+              }
             }
-
-            else if ($window.scrollTop() <= distance) {
-              $(klass).removeClass("fixed");
-              $('body').css('padding-top','0');
-            }
-        });
+          });
       }
     },
 

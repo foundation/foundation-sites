@@ -56,7 +56,9 @@
         <p>We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_alert-boxes.scss">_alert-boxes.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/variables", "foundation/components/global", "foundation/components/alerts";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/alert-boxes";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
@@ -144,15 +146,17 @@
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-alert-classes: $include-html-classes;
+
 /* We use this to control alert padding. */
-$alert-padding-top: emCalc(11px);
-$alert-padding-left: $alert-padding-top;
-$alert-padding-right: $alert-padding-top + emCalc(10px);
-$alert-padding-bottom: $alert-padding-top + emCalc(1px);
+$alert-padding-top: em-calc(11);
+$alert-padding-default-float: $alert-padding-top;
+$alert-padding-opposite-direction: $alert-padding-top + em-calc(10);
+$alert-padding-bottom: $alert-padding-top + em-calc(1);
 
 /* We use these to control text style. */
 $alert-font-weight: bold;
-$alert-font-size: emCalc(14px);
+$alert-font-size: em-calc(14);
 $alert-font-color: #fff;
 $alert-font-color-alt: darken($secondary-color, 60%);
 
@@ -163,21 +167,22 @@ $alert-function-factor: 10%;
 $alert-border-style: solid;
 $alert-border-width: 1px;
 $alert-border-color: darken($primary-color, $alert-function-factor);
-$alert-bottom-margin: emCalc(20px);
+$alert-bottom-margin: em-calc(20);
 
 /* We use these to style the close buttons */
 $alert-close-color: #333;
-$alert-close-position: emCalc(5px);
-$alert-close-font-size: emCalc(22px);
+$alert-close-position: em-calc(5);
+$alert-close-font-size: em-calc(22);
 $alert-close-opacity: 0.3;
 $alert-close-opacity-hover: 0.5;
 $alert-close-padding: 5px 4px 4px;
 
 /* We use this to control border radius */
 $alert-radius: $global-radius;
+
 ', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
 
         <hr>
 

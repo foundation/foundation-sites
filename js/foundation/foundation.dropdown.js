@@ -6,7 +6,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.2.0',
+    version : '4.3.2',
 
     settings : {
       activeClass: 'open',
@@ -57,13 +57,15 @@
         .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
         .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
 
-      $('body').on('click.fndtn.dropdown', function (e) {
+      $(document).on('click.fndtn.dropdown', function (e) {
         var parent = $(e.target).closest('[data-dropdown-content]');
 
-        if ($(e.target).data('dropdown')) {
+        if ($(e.target).data('dropdown') || $(e.target).parent().data('dropdown')) {
           return;
         }
-        if (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || $.contains(parent.first()[0], e.target))) {
+        if (!($(e.target).data('revealId')) && 
+          (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || 
+            $.contains(parent.first()[0], e.target)))) {
           e.stopPropagation();
           return;
         }
@@ -121,23 +123,22 @@
 
     css : function (dropdown, target) {
       var offset_parent = dropdown.offsetParent();
-      // temporary workaround until 4.2
-      if (offset_parent.length > 0 && /body/i.test(dropdown.offsetParent()[0].nodeName)) {
+      // if (offset_parent.length > 0 && /body/i.test(dropdown.offsetParent()[0].nodeName)) {
         var position = target.offset();
-        position.top -= dropdown.offsetParent().offset().top;
-        position.left -= dropdown.offsetParent().offset().left;
-      } else {
-        var position = target.position();
-      }
+        position.top -= offset_parent.offset().top;
+        position.left -= offset_parent.offset().left;
+      // } else {
+      //   var position = target.position();
+      // }
 
       if (this.small()) {
         dropdown.css({
           position : 'absolute',
           width: '95%',
-          left: '2.5%',
           'max-width': 'none',
           top: position.top + this.outerHeight(target)
         });
+        dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
       } else {
         if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left) {
           var left = position.left;

@@ -55,7 +55,9 @@
         <p>We've included SCSS mixins used to style panels so that you can code smarter. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_panels.scss">_panels.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/variables", "foundation/components/global", "foundation/components/panels";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/panels";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like to the <code>&lt;div&gt;</code>.</p>
@@ -97,6 +99,8 @@ $adjust: true
         <h5>Default SCSS Variables</h5>
 
 <%= code_example '
+$include-html-panel-classes: $include-html-classes;
+
 /* We use these to control the background and border styles */
 $panel-bg: darken(#fff, 5%);
 $panel-border-style: solid;
@@ -107,14 +111,16 @@ $panel-function-factor: 10%;
 $panel-border-color: darken($panel-bg, $panel-function-factor);
 
 /* We use these to set default inner padding and bottom margin */
-$panel-margin-bottom: emCalc(20px);
-$panel-padding: emCalc(20px);
+$panel-margin-bottom: em-calc(20);
+$panel-padding: em-calc(20);
 
 /* We use these to set default font colors */
 $panel-font-color: #333;
-$panel-font-color-alt: #fff;', :css %>
+$panel-font-color-alt: #fff;
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+$panel-header-adjust: true;', :css %>
+
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
 
       </div>

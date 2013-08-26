@@ -15,9 +15,32 @@
       <div class="large-12 columns">
 
         <a href="#" class="tiny button split">Split Button <span data-dropdown="drop"></span></a><br>
+        <ul id="drop" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" class="small secondary radius button split">Split Button <span data-dropdown="drop2"></span></a><br>
+        <ul id="drop2" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" class="button alert round split">Split Button <span data-dropdown="drop3"></span></a><br>
+        <ul id="drop3" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" class="large success button split">Split Button <span data-dropdown="drop4"></span></a><br>
+        <ul id="drop4" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <hr>
 
@@ -56,7 +79,10 @@
         <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="#extention-install">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="#https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_split-buttons.scss">_split-buttons.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/variables", "foundation/components/global", "foundation/components/buttons", "foundation/components/split-buttons";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/buttons";
+@import "foundation/components/split-buttons";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
@@ -77,6 +103,11 @@
 ', :css %>
 
         <a href="" class="split button">Default Split Button<span data-dropdown="drop5"></span></a>
+        <ul id="drop5" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <p>There are also <strong>four options</strong> you can customize on the fly when writing this mixin. These control things like: padding size, pip color, border color and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
 
@@ -103,6 +134,8 @@ $base-style: true
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-button-classes: $include-html-classes;
+
 /* We use these to control different shared styles for Split Buttons */
 $split-button-function-factor: 15%;
 $split-button-pip-color: #fff;
@@ -114,31 +147,31 @@ $split-button-padding-tny: $button-tny * 9;
 $split-button-span-width-tny: $button-tny * 6.5;
 $split-button-pip-size-tny: $button-tny;
 $split-button-pip-top-tny: $button-tny * 2;
-$split-button-pip-left-tny: emCalc(-5px);
+$split-button-pip-default-float-tny: em-calc(-5);
 
 /* We use these to control small split buttons */
 $split-button-padding-sml: $button-sml * 7;
 $split-button-span-width-sml: $button-sml * 5;
 $split-button-pip-size-sml: $button-sml;
 $split-button-pip-top-sml: $button-sml * 1.5;
-$split-button-pip-left-sml: emCalc(-9px);
+$split-button-pip-default-float-sml: em-calc(-9);
 
 /* We use these to control medium split buttons */
 $split-button-padding-med: $button-med * 6.4;
 $split-button-span-width-med: $button-med * 4;
-$split-button-pip-size-med: $button-med - emCalc(3px);
+$split-button-pip-size-med: $button-med - em-calc(3);
 $split-button-pip-top-med: $button-med * 1.5;
-$split-button-pip-left-med: emCalc(-9px);
+$split-button-pip-default-float-med: em-calc(-9);
 
 /* We use these to control large split buttons */
 $split-button-padding-lrg: $button-lrg * 6;
 $split-button-span-width-lrg: $button-lrg * 3.75;
-$split-button-pip-size-lrg: $button-lrg - emCalc(6px);
-$split-button-pip-top-lrg: $button-lrg + emCalc(5px);
-$split-button-pip-left-lrg: emCalc(-9px);
+$split-button-pip-size-lrg: $button-lrg - em-calc(6);
+$split-button-pip-top-lrg: $button-lrg + em-calc(5);
+$split-button-pip-default-float-lrg: em-calc(-9);
 ', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
         <hr>
 
@@ -154,8 +187,7 @@ $split-button-pip-left-lrg: emCalc(-9px);
         <p>To create a dropdown, you'll need to attach a data-attribute to whatever element you want the dropdown attached to (in this case a button). From there, you'll create a list that holds the links or content and add another data-attribute that associates with the element it belongs to. Here's an example of that markup:</p>
 
 <%= code_example '
-<a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button <span data-dropdown="drop1"></span></a><br>
-
+<a href="#" class="button split">Dropdown Button <span data-dropdown="drop1"></span></a>
 <ul id="drop1" class="f-dropdown" data-dropdown-content>
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
@@ -163,7 +195,12 @@ $split-button-pip-left-lrg: emCalc(-9px);
 </ul>
 ', :html %>
 
-        <a href="#" class="button split">Dropdown Button <span data-dropdown="drop1"></span></a><br>
+        <a href="#" class="button split">Dropdown Button <span data-dropdown="drop6"></span></a><br>
+        <ul id="drop6" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <p>You'll notice that <code>data-dropdown="drop1"</code> and <code>id="drop1"</code> have similar values. This is what tells the dropdown plugin where to look to find the position to attach the dropdown element to.</p>
 
@@ -171,11 +208,10 @@ $split-button-pip-left-lrg: emCalc(-9px);
 
         <p>Dropdown button options can only be passed in during initialization at this time.</p>
 
-<%= code_example "
-{
+<%= code_example "{
   // specify the class used for active sections
   activeClass: 'open'
-}", :json %>
+}", :js %>
 
       </div>
     </div>
@@ -185,36 +221,5 @@ $split-button-pip-left-lrg: emCalc(-9px);
     <%= render "_sidebar-components.html.erb" %>
   </div>
 </div>
-
-    <ul id="drop" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop1" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop2" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop3" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop4" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-    <ul id="drop5" class="f-dropdown" data-dropdown-content>
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
 
 

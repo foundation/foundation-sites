@@ -20,7 +20,6 @@
 
           <section class="top-bar-section">
             <ul class="left">
-              <li class="divider"></li>
               <li class="has-dropdown"><a href="<%= features_path %>">Item 1</a>
 
                 <ul class="dropdown">
@@ -85,7 +84,71 @@
         <p>The top bar is built with a single <code>nav</code> element with a class of <code>top-bar</code>. It will take on full-browser width by default. To make the top bar stay fixed as you scroll, wrap it in <code>div class="fixed"</code>. If you want your navigation to be set to your grid width, wrap it in <code>div class="contain-to-grid"</code>. You may use <code>fixed</code> and <code>contain-to-grid</code> together.</p>
 
         <h5>Building the Nav</h5>
-        <p>When building your bar it is good to be aware of how many links you're going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items, simply include <code>li</code> elements with and anchor inside them for your top-level. To build a dropdown menu, you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> after that anchor. Add a class of <code>active</code> to mark the current page.</p>
+        <p>When building your bar it is good to be aware of how many links you're going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items, simply include <code>li</code> elements with an anchor inside them for your top-level. To build a dropdown menu, you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> after that anchor. Add a class of <code>active</code> to mark the current page.</p>
+
+        <nav class="top-bar hide-for-small" style="">
+          <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+              <h1>
+                <a href="http://www.zurb.com/expo">
+                  Expo
+                </a>
+              </h1>
+            </li>
+            <li class="toggle-topbar"><a href="#"></a></li>
+          </ul>
+
+          
+          <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+              <li><a href="#">Courses</a></li>
+              <li class="has-dropdown">
+                <a href="#">Library</a>
+                <ul class="dropdown">
+                  <li><a href="http://patterntap.com">Pattern Tap</a></li>
+                  <li><a href="http://www.zurb.com/word">Word</a></li>
+                  <li><a href="http://www.zurb.com/responsive">Responsive</a></li>
+                  <li><a href="http://www.zurb.com/playground">Playground</a></li>
+                  <li><a href="http://www.zurb.com/quips">Quips</a></li>
+                </ul>
+              </li>
+              <li class="has-dropdown">
+                <a href="http://www.zurb.com/expo/community">Community</a>
+                <ul class="dropdown">
+                  <li><a href="http://www.forrst.com">Forrst</a></li>
+                  <li><a href="http://www.zurb.com/soapbox">Soapbox</a></li>  
+                  <li><a href="http://www.zurb.com/speak">Speak</a></li>  
+                  <li><a href="http://www.zurb.com/wired">Wired</a></li>       
+                  <li><a href="http://www.enrollapp.com">Enroll</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="http://www.zurb.com/jobs">Job Board</a>
+              </li>
+              <!--
+
+              <li class="logged-in has-dropdown">
+                <a href="#">
+                  <div class="avatar">
+                    <img src="http://placehold.it/25x25"> 
+                    User-Name Here
+                  </div>
+                </a>
+                <ul class="dropdown">
+                  <li><a href="#"><img src="http://placehold.it/20x20&text=N">Notable</a></li>
+                  <li><a href="#"><img src="http://placehold.it/20x20&text=S">Solidify</a></li>
+                  <li><a href="#"><img src="http://placehold.it/20x20&text=V">Verify</a></li>
+                  <li><a href="#"><img src="http://placehold.it/20x20&text=I">Influence</a></li>
+                  <li class="signout"><a href="#">Sign Out</a></li>
+                </ul>
+              </li>
+        -->
+              
+            </ul>
+          </section>
+        </nav>
 
         <h5>Other Elements</h5>
         <p>To make this navigation nice and flexible, we've included patterns for elements like buttons, inputs and dividers. To create dividers between your navigation, just add an empty <code>li.divider</code> and you'll get some separation. You can use a small Foundation button in the nav, just include <code>has-form</code> as a class for its parent li. You can include two different input types: search and text. To use these, add a class of search to the parent li.</p>
@@ -219,7 +282,7 @@
       <a name="clickable"></a>
       <h4>Clickable Topbar</h4>
       <p>You can now make the top bar clickable by adding a data-attribute to the nav element. Here's an example:</p>
-      <nav class="top-bar">
+      <nav class="top-bar" data-options="is_hover:false">
         <ul class="title-area">
           <!-- Title Area -->
           <li class="name">
@@ -279,19 +342,21 @@
       <p>We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile first, so they are much easier to override than the previous iteration of the top bar.</p>
 
 <%= code_example '
+$include-html-top-bar-classes: $include-html-classes;
+
 /* Background color for the top bar */
 $topbar-bg: #111;
 
 /* Height and margin */
 $topbar-height: 45px;
-$topbar-margin-bottom: emCalc(30px);
+$topbar-margin-bottom: em-calc(30);
 
 /* Control Input height for top bar */
 $topbar-input-height: 2.45em;
 
 /* Controlling the styles for the title in the top bar */
 $topbar-title-weight: bold;
-$topbar-title-font-size: emCalc(17px);
+$topbar-title-font-size: em-calc(17);
 
 /* Style the top bar dropdown elements */
 $topbar-dropdown-bg: #222;
@@ -306,7 +371,7 @@ $topbar-link-color: #fff;
 $topbar-link-color-hover: #fff;
 $topbar-link-color-active: #fff;
 $topbar-link-weight: bold;
-$topbar-link-font-size: emCalc(13px);
+$topbar-link-font-size: em-calc(13);
 $topbar-link-hover-lightness: -30%; /* Darken by 30% */
 $topbar-link-bg-hover: darken($topbar-bg, 3%);
 $topbar-link-bg-active: darken($topbar-bg, 3%);
@@ -314,11 +379,11 @@ $topbar-link-bg-active: darken($topbar-bg, 3%);
 $topbar-dropdown-label-color: #555;
 $topbar-dropdown-label-text-transform: uppercase;
 $topbar-dropdown-label-font-weight: bold;
-$topbar-dropdown-label-font-size: emCalc(10px);
+$topbar-dropdown-label-font-size: em-calc(10);
 
 /* Top menu icon styles */
 $topbar-menu-link-transform: uppercase;
-$topbar-menu-link-font-size: emCalc(13px);
+$topbar-menu-link-font-size: em-calc(13);
 $topbar-menu-link-weight: bold;
 $topbar-menu-link-color: #fff;
 $topbar-menu-icon-color: #fff;
@@ -327,8 +392,8 @@ $topbar-menu-icon-color-toggled: #888;
 
 /* Transitions and breakpoint styles */
 $topbar-transition-speed: 300ms;
-$topbar-breakpoint: emCalc(940px); /* Change to 9999px for always mobile layout */
-$topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")";
+$topbar-breakpoint: em-calc(940); /* Change to 9999px for always mobile layout */
+$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 /* Divider Styles */
 $topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
@@ -337,7 +402,7 @@ $topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
 /* Sticky Class */
 $topbar-sticky-class: ".sticky";', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
         <hr>
 

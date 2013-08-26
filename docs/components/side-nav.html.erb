@@ -56,7 +56,9 @@
         <p>We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_side-nav.scss">_side-nav.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/variables", "foundation/components/global", "foundation/components/side-nav";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/side-nav";
 ', :css %>
 
         <h5>Quick Mixin</h5>
@@ -94,18 +96,20 @@ $link-color: $side-nav-link-color
         <h5>Default SCSS Variables</h5>
 
 <%= code_example '
+$include-html-nav-classes: $include-html-classes;
+
 /* We use this to control padding. */
-$side-nav-padding: emCalc(14px) 0;
+$side-nav-padding: em-calc(14 0);
 
 /* We use these to control list styles. */
 $side-nav-list-type: none;
 $side-nav-list-position: inside;
-$side-nav-list-margin: 0 0 emCalc(7px) 0;
+$side-nav-list-margin: em-calc(0 0 7 0);
 
 /* We use these to control link styles. */
 $side-nav-link-color: $primary-color;
 $side-nav-link-color-active: lighten(#000, 30%);
-$side-nav-font-size: emCalc(14px);
+$side-nav-font-size: em-calc(14);
 $side-nav-font-weight: bold;
 
 /* We use these to control border styles */
@@ -113,7 +117,7 @@ $side-nav-divider-size: 1px;
 $side-nav-divider-style: solid;
 $side-nav-divider-color: darken(#fff, 10%);', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
       </div>
     </div>
