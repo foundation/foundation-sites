@@ -13,6 +13,7 @@
       deep_linking: false,
       small_breakpoint: 768,
       one_up: true,
+      multi_expand: false,
       section_selector: '[data-section]',
       region_selector: 'section, .section, [data-section-region]',
       title_selector: '.title, [data-section-title]',
@@ -122,8 +123,10 @@
       e.stopPropagation(); //do not catch same click again on parent
 
       if (!region.hasClass(self.settings.active_class)) {
-        prev_active_region.removeClass(self.settings.active_class);
-        prev_active_region.trigger('closed.fndtn.section');
+        if (!self.is_accordion(section) || (self.is_accordion(section) && !self.settings.multi_expand)) {
+          prev_active_region.removeClass(self.settings.active_class);
+          prev_active_region.trigger('closed.fndtn.section');
+        }
         region.addClass(self.settings.active_class);
         //force resize for better performance (do not wait timer)
         self.resize(region.find(self.settings.section_selector).not("[" + self.settings.resized_data_attr + "]"), true);
@@ -333,51 +336,51 @@
           regions = section.children(self.settings.region_selector);
           regions.each(function() {
             var region = $(this),
-        	  data_slug = region.children(self.settings.content_selector).data('slug');
-        	  if (new RegExp(data_slug, 'i').test(hash)) {
-        		  selectedSection=section;
-        		  return false;
+            data_slug = region.children(self.settings.content_selector).data('slug');
+            if (new RegExp(data_slug, 'i').test(hash)) {
+              selectedSection=section;
+              return false;
               }
           });
           
           if (selectedSection != null) {
-        	  return false;
+            return false;
           }
       });
       
       if (selectedSection != null) {
         sections.each(function() {
-    	    if (selectedSection == $(this)) {
-		        var section = $(this),
-		            settings = $.extend({}, self.settings, self.data_options(section)),
-		            regions = section.children(self.settings.region_selector),
-		            set_active_from_hash = settings.deep_linking && hash.length > 0,
-		            selected = false;
-		
-		        regions.each(function() {
-		          var region = $(this);
-		
-		          if (selected) {
-		            region.removeClass(self.settings.active_class);
-		          } else if (set_active_from_hash) {
-		            var data_slug = region.children(self.settings.content_selector).data('slug');
-		
-		            if (data_slug && new RegExp(data_slug, 'i').test(hash)) {
-		              if (!region.hasClass(self.settings.active_class))
-		                region.addClass(self.settings.active_class);
-		              selected = true;
-		            } else {
-		              region.removeClass(self.settings.active_class);
-		            }
-		          } else if (region.hasClass(self.settings.active_class)) {
-		            selected = true;
-		          }
-		        });
-		
-		        if (!selected && (settings.one_up || !self.is_horizontal_nav(section) &&
-		         !self.is_vertical_nav(section) && !self.is_accordion(section)))
-		          regions.filter(":visible").first().addClass(self.settings.active_class);
-    	    }
+          if (selectedSection == $(this)) {
+            var section = $(this),
+                settings = $.extend({}, self.settings, self.data_options(section)),
+                regions = section.children(self.settings.region_selector),
+                set_active_from_hash = settings.deep_linking && hash.length > 0,
+                selected = false;
+    
+            regions.each(function() {
+              var region = $(this);
+    
+              if (selected) {
+                region.removeClass(self.settings.active_class);
+              } else if (set_active_from_hash) {
+                var data_slug = region.children(self.settings.content_selector).data('slug');
+    
+                if (data_slug && new RegExp(data_slug, 'i').test(hash)) {
+                  if (!region.hasClass(self.settings.active_class))
+                    region.addClass(self.settings.active_class);
+                  selected = true;
+                } else {
+                  region.removeClass(self.settings.active_class);
+                }
+              } else if (region.hasClass(self.settings.active_class)) {
+                selected = true;
+              }
+            });
+    
+            if (!selected && (settings.one_up || !self.is_horizontal_nav(section) &&
+             !self.is_vertical_nav(section) && !self.is_accordion(section)))
+              regions.filter(":visible").first().addClass(self.settings.active_class);
+          }
         });
       }
     },
