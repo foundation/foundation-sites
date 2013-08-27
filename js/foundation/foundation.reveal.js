@@ -89,13 +89,25 @@
             self.locked = true;
             self.close.call(self, bgClicked ? $('.reveal-modal.open') : $(this).closest('.reveal-modal'));
           }
-        })
-        .on('open.fndtn.reveal', '.reveal-modal', this.settings.open)
-        .on('opened.fndtn.reveal', '.reveal-modal', this.settings.opened)
-        .on('opened.fndtn.reveal', '.reveal-modal', this.open_video)
-        .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
-        .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
-        .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
+        });
+
+      if($(this.scope).hasClass('reveal-modal')) {
+        $(this.scope)
+          .on('open.fndtn.reveal', this.settings.open)
+          .on('opened.fndtn.reveal', this.settings.opened)
+          .on('opened.fndtn.reveal', this.open_video)
+          .on('close.fndtn.reveal', this.settings.close)
+          .on('closed.fndtn.reveal', this.settings.closed)
+          .on('closed.fndtn.reveal', this.close_video);
+      } else {
+        $(this.scope)
+          .on('open.fndtn.reveal', '.reveal-modal', this.settings.open)
+          .on('opened.fndtn.reveal', '.reveal-modal', this.settings.opened)
+          .on('opened.fndtn.reveal', '.reveal-modal', this.open_video)
+          .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
+          .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
+          .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
+      }
 
       $( 'body' ).bind( 'keyup.reveal', function ( event ) {
         var open_modal = $('.reveal-modal.open'),
