@@ -128,6 +128,7 @@
 
     off : function () {
       $(this.scope).off('.fndtn.magellan');
+      $(window).off('.fndtn.magellan');
     },
 
     reflow : function () {}
