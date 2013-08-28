@@ -38,7 +38,7 @@
       var link = $('a[data-orbit-link="'+slides_container.children().eq(index).attr('data-orbit-slide')+'"]');
       link.parents('ul').find('[data-orbit-link]').removeClass(settings.bullets_active_class);
       link.addClass(settings.bullets_active_class);
-    }
+    };
 
     self.build_markup = function() {
       slides_container.wrap('<div class="'+settings.container_class+'"></div>');
