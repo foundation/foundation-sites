@@ -126,7 +126,13 @@ $switch-label-outline: 1px dotted #888 !default;
 
   // Bugfix for older Webkit, including mobile Webkit. Adapted from:
   // http://css-tricks.com/webkit-sibling-bug/
-  @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
+  @media only screen and (-webkit-min-device-pixel-ratio:0) and (max-device-width:480px) {
+    @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio:1.5) {
+    @if $experimental { -webkit-animation: none 0; }
+  }
 
   form.custom & .hidden-field {
     margin-left: auto;
@@ -256,6 +262,5 @@ $switch-label-outline: 1px dotted #888 !default;
     }
 
     @if $experimental { @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } } }
-
   }
 }
