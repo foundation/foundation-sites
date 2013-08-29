@@ -282,7 +282,7 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
       }
 
       // Apply the active link color when it has that class
-      &.active > a {
+      &.active > a, & > a.active {
         background: $topbar-link-bg-active;
         color: $topbar-link-color-active;
       }
@@ -521,7 +521,7 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
         }
 
         // Apply the active link color when it has that class
-        &:active > a {
+        &:active > a, & > a.active {
           background: $topbar-link-bg-active;
           color: $topbar-link-color-active;
         }
