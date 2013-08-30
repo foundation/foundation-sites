@@ -1,20 +1,63 @@
 module.exports = function(grunt) {
 
-    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.initConfig({
-      qunit: {
-        all: ['test/javascripts/tests/**/*.html']
+      jasmine: {
+        src: [
+            'js/foundation/foundation.js',
+            'js/foundation/*.js'
+        ],
+        options: {
+            specs: 'spec/**/*Spec.js',
+            helpers: 'spec/**/*Helper.js',
+            keepRunner: true,
+            styles: ['test/stylesheets/normalize.css', 'test/stylesheets/foundation.css']
+        },
+
+        zepto: {
+            src: '<%= jasmine.src %>',
+            options: {
+                outfile: 'test/_SpecRunner_zepto.html',
+                vendor: [
+                    'js/vendor/custom.modernizr.js',
+                    'js/vendor/zepto.js'
+                ],
+            }
+        },
+
+        jquery: {
+            src: '<%= jasmine.src %>',
+            options: {
+                outfile: 'test/_SpecRunner_jquery.html',
+                vendor: [
+                    'js/vendor/custom.modernizr.js',
+                    'js/vendor/jquery.js'
+                ]
+            }
+        }
+      },
+      sass: {
+        test: {
+            files: {
+                'test/stylesheets/normalize.css' : 'scss/normalize.scss',
+                'test/stylesheets/foundation.css' : 'scss/foundation.scss'
+            }
+        }
       },
       watch: {
-        all: {
+        css: {
+            files: 'scss/**/*.scss',
+            tasks: ['sass']
+        },
+        tests: {
             files: [
-                'test/javascripts/tests/**/*.html',
-                'test/javascripts/tests/**/*.js',
-                'lib/assets/javascripts/foundation/*.js'
+                'js/**/*.js',
+                'spec/**/*.js'
             ],
-            tasks: 'default',
+            tasks: 'test',
             options: {
                 interrupt: true
             }
@@ -22,6 +65,7 @@ module.exports = function(grunt) {
       }
     });
 
-    // Default task.
-    grunt.registerTask('default', ['qunit']);
+    grunt.registerTask('test', ['sass:test', 'jasmine:zepto', 'jasmine:jquery']);
+
+    grunt.registerTask('default', ['test']);
 };

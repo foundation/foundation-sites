@@ -2,9 +2,10 @@
   "name": "zurb-foundation",
   "version": "4.0.0-wip",
   "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-watch": "~0.1.0",
-    "grunt-contrib-qunit": "~0.1.1"
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jasmine": "~0.5.1",
+    "grunt-contrib-sass": "~0.5.0"
   },
   "licenses": [
     {
