@@ -151,10 +151,11 @@
             required = el_patterns[i][2],
             value = el.value,
             is_radio = el.type === "radio",
+            is_checkbox = el.type === "checkbox",
             valid_length = (required) ? (el.value.length > 0) : true;
 
-        if (is_radio && required) {
-          validations.push(this.valid_radio(el, required));
+        if ((is_radio || is_checkbox) && required) {
+          validations.push(this.valid_radio_or_checkbox(el, required));
         } else {
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
@@ -170,7 +171,7 @@
       return validations;
     },
 
-    valid_radio : function (el, required) {
+    valid_radio_or_checkbox : function (el, required) {
       var name = el.getAttribute('name'),
           group = document.getElementsByName(name),
           count = group.length,
