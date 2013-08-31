@@ -50,7 +50,9 @@
           }
 
           if (self.settings.$topbar.parent().hasClass('fixed')) {
-            $('body').css('padding-top', self.outerHeight(self.settings.$topbar));
+            var paddingTop = self.outerHeight(self.settings.$topbar);
+            paddingTop += parseInt(self.settings.$topbar.css('margin-bottom'));
+            $('body').css('padding-top', paddingTop);
           }
         });
 
