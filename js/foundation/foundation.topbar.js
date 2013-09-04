@@ -20,7 +20,7 @@
     },
 
     init : function (section, method, options) {
-      Foundation.inherit(this, 'data_options');
+      Foundation.inherit(this, 'data_options addCustomRule');
       var self = this;
 
       if (typeof method === 'object') {
@@ -49,8 +49,11 @@
             self.settings.$topbar.find('.has-dropdown').addClass('not-click');
           }
 
+          // Pad body when sticky (scrolled) or fixed.
+          self.addCustomRule('.f-topbar-fixed { padding-top: ' + self.outerHeight(self.settings.$topbar.parent()) + 'px }');
+
           if (self.settings.$topbar.parent().hasClass('fixed')) {
-            $('body').css('padding-top', self.outerHeight(self.settings.$topbar));
+            $('body').addClass('f-topbar-fixed');
           }
         });
 
@@ -68,10 +71,8 @@
     toggle: function() {
       var self = this;
       var topbar = $('.top-bar, [data-topbar]'),
-          section = topbar.find('section, .section'),
-          titlebar = topbar.children('ul').first();
+          section = topbar.find('section, .section');
 
-      var offst = self.outerHeight(topbar);
       if (self.breakpoint()) {
         if (!self.rtl) {
           section.css({left: '0%'});
@@ -93,12 +94,12 @@
         if (topbar.hasClass('fixed')) {
           topbar.parent().addClass('fixed');
           topbar.removeClass('fixed');
-          $('body').css('padding-top',offst);
+          $('body').addClass('f-topbar-fixed');
         }
       } else if (topbar.parent().hasClass('fixed')) {
         topbar.parent().removeClass('fixed');
         topbar.addClass('fixed');
-        $('body').css('padding-top','0');
+        $('body').removeClass('f-topbar-fixed');
 
         if (self.settings.scrolltop) {
           window.scrollTo(0,0);
@@ -155,7 +156,6 @@
             var $this = $(this),
                 topbar = $this.closest('.top-bar, [data-topbar]'),
                 section = topbar.find('section, .section'),
-                titlebar = topbar.children('ul').first(),
                 dropdownHeight = $this.next('.dropdown').outerHeight(),
                 $selectedLi = $this.closest('li');
 
@@ -170,7 +170,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.height(titlebar));
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true));
           }
         });
 
@@ -200,7 +200,6 @@
 
         var $this = $(this),
             topbar = $this.closest('.top-bar, [data-topbar]'),
-            titlebar = topbar.children('ul').first(),
             section = topbar.find('section, .section'),
             $movedLi = $this.closest('li.moved'),
             $previousLevelUl = $movedLi.parent();
@@ -218,7 +217,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.height(titlebar));
+          topbar.css('height', self.outerHeight($previousLevelUl, true));
         }
 
         setTimeout(function () {
@@ -291,12 +290,12 @@
             if ($window.scrollTop() > (distance)) {
               if (!$(klass).hasClass("fixed")) {
                 $(klass).addClass("fixed");
-                $('body').css('padding-top',offst);
+                $('body').addClass('f-topbar-fixed');
               }
             } else if ($window.scrollTop() <= distance) {
               if ($(klass).hasClass("fixed")) {
                 $(klass).removeClass("fixed");
-                $('body').css('padding-top','0');
+                $('body').removeClass('f-topbar-fixed');
               }
             }
           });
