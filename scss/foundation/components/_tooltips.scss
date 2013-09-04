@@ -72,6 +72,11 @@ $tooltip-pip-size: 5px !default;
       color: $has-tip-font-color-hover !important;
       border-bottom: $has-tip-border-bottom-hover !important;
     }
+    &.tip-center > .nub {
+      left: 50%;
+      margin-left: -$tooltip-pip-size;
+
+    }
   }
 
   .tap-to-close {
