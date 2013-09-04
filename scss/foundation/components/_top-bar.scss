@@ -33,7 +33,7 @@ $topbar-link-color-active: #fff !default;
 $topbar-link-weight: bold !default;
 $topbar-link-font-size: em-calc(13) !default;
 $topbar-link-hover-lightness: -30% !default; // Darken by 30%
-$topbar-link-bg-hover: darken($topbar-bg-color, 3%) !default;
+$topbar-link-bg-hover: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness) !default;
 $topbar-link-bg-active: darken($topbar-bg-color, 3%) !default;
 
 
@@ -413,11 +413,17 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
       }
 
       li {
+        &.hover { 
+          > a:not(.button) {
+            background: $topbar-link-bg-hover;
+            color: $topbar-link-color-hover;
+          }
+        }
         a:not(.button) {
           padding: 0 $topbar-height / 3;
           line-height: $topbar-height;
           background: $topbar-bg;
-          &.hover, &:hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
+          &:hover { background: $topbar-link-bg-hover; }
         }
       }
 
