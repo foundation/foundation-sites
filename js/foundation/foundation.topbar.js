@@ -143,6 +143,9 @@
               .removeClass('hover')
               .find('li')
               .removeClass('hover');
+
+            li.parents('li.hover')
+              .removeClass('hover');
           } else {
             li.addClass('hover');
           }
@@ -185,7 +188,7 @@
       }.bind(this));
 
       $('body').on('click.fndtn.topbar', function (e) {
-        var parent = $(e.target).closest('[data-topbar], .top-bar');
+        var parent = $(e.target).closest('li').closest('li.hover');
 
         if (parent.length > 0) {
           return;
