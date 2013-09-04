@@ -449,7 +449,8 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
             &:after {
               border: none;
               content: "\00bb";
-              margin-top: -16px;
+              top: 1em;
+              margin-top: -7px;
               #{$opposite-direction}: 5px;
             }
           }
