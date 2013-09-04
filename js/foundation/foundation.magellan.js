@@ -129,7 +129,7 @@
     },
 
     set_threshold : function () {
-      if (!this.settings.threshold) {
+      if (typeof this.settings.threshold !== 'number') {
         this.settings.threshold = (this.fixed_magellan.length > 0) ? 
           this.outerHeight(this.fixed_magellan, true) : 0;
       }
