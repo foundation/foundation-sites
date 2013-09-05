@@ -44,7 +44,7 @@
       slides_container.wrap('<div class="'+settings.container_class+'"></div>');
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
-      
+
       if (settings.navigation_arrows) {
         container.append($('<a href="#">').addClass(settings.prev_class).append('<span>'));
         container.append($('<a href="#">').addClass(settings.next_class).append('<span>'));
@@ -92,7 +92,7 @@
       if (next_idx < idx) {dir = 'prev';}
       if (next_idx >= slides.length) {next_idx = 0;}
       else if (next_idx < 0) {next_idx = slides.length - 1;}
-      
+
       var current = $(slides.get(idx));
       var next = $(slides.get(next_idx));
 
@@ -103,7 +103,7 @@
       slides_container.trigger('orbit:before-slide-change');
       settings.before_slide_change();
       self.update_active_link(next_idx);
-      
+
       var callback = function() {
         var unlock = function() {
           idx = next_idx;
@@ -124,7 +124,7 @@
 
       var start_animation = function() {
         if (dir === 'next') {animate.next(current, next, callback);}
-        if (dir === 'prev') {animate.prev(current, next, callback);}        
+        if (dir === 'prev') {animate.prev(current, next, callback);}
       };
 
       if (next.height() > slides_container.height() && settings.variable_height) {
@@ -133,13 +133,13 @@
         start_animation();
       }
     };
-    
+
     self.next = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
       self._goto(idx + 1);
     };
-    
+
     self.prev = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
@@ -165,7 +165,7 @@
     self.timer_callback = function() {
       self._goto(idx + 1, true);
     }
-    
+
     self.compute_dimensions = function() {
       var current = $(slides_container.children().get(idx));
       var h = current.height();
@@ -179,8 +179,8 @@
 
     self.create_timer = function() {
       var t = new Timer(
-        container.find('.'+settings.timer_container_class), 
-        settings, 
+        container.find('.'+settings.timer_container_class),
+        settings,
         self.timer_callback
       );
       return t;
@@ -194,7 +194,7 @@
       var t = container.find('.'+settings.timer_container_class);
       if (t.hasClass(settings.timer_paused_class)) {
         if (typeof timer === 'undefined') {timer = self.create_timer();}
-        timer.start();     
+        timer.start();
       }
       else {
         if (typeof timer === 'object') {timer.stop();}
@@ -205,36 +205,61 @@
       self.build_markup();
       if (settings.timer) {timer = self.create_timer(); timer.start();}
       animate = new FadeAnimation(settings, slides_container);
-      if (settings.animation === 'slide') 
-        animate = new SlideAnimation(settings, slides_container);        
+      if (settings.animation === 'slide')
+        animate = new SlideAnimation(settings, slides_container);
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
       container.on('click', '[data-orbit-slide]', self.link_bullet);
       container.on('click', self.toggle_timer);
       if (settings.swipe) {
-        container.on('touchstart.fndtn.orbit', function(e) {
-          if (!e.touches) {e = e.originalEvent;}
-          var data = {
-            start_page_x: e.touches[0].pageX,
-            start_page_y: e.touches[0].pageY,
-            start_time: (new Date()).getTime(),
-            delta_x: 0,
-            is_scrolling: undefined
-          };
+        var msTouch = window.navigator.msPointerEnabled && navigator.msMaxTouchPoints ? new MSGesture() : false;
+        if(msTouch){ msTouch.target = container[0]; }
+        container.on('MSPointerDown', function(e){
+          if(msTouch){ msTouch.addPointer(e.pointerId); }
+          return;
+        });
+        container.on('touchstart.fndtn.orbit MSGestureStart', function(e) {
+          var data = {};
+          if (msTouch){
+            data = {
+              start_page_x: e.screenX,
+              start_page_y: e.screenY
+            };
+          }
+          else {
+            if (!e.touches) {e = e.originalEvent;}
+            data = {
+              start_page_x: e.touches[0].pageX,
+              start_page_y: e.touches[0].pageY
+            };
+          }
+
+          data.start_time = (new Date()).getTime();
+          data.delta_x = 0;
+          data.is_scrolling = undefined;
+
           container.data('swipe-transition', data);
           e.stopPropagation();
         })
-        .on('touchmove.fndtn.orbit', function(e) {
-          if (!e.touches) { e = e.originalEvent; }
-          // Ignore pinch/zoom events
-          if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+        .on('touchmove.fndtn.orbit MSInertiaStart', function(e) {
+
+          if(msTouch){
+            // Ignore pinch/zoom events
+            if(e.scale.toFixed(2) != 1.00) return;
+          }
+
+          else {
+            if (!e.touches) { e = e.originalEvent; }
+            // Ignore pinch/zoom events
+            if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+          }
 
           var data = container.data('swipe-transition');
           if (typeof data === 'undefined') {data = {};}
 
-          data.delta_x = e.touches[0].pageX - data.start_page_x;
+          data.delta_x = !msTouch ? e.touches[0].pageX - data.start_page_x : e.screenX - data.start_page_x;
 
-          if ( typeof data.is_scrolling === 'undefined') {
+          if ( typeof data.is_scrolling === 'undefined' && !msTouch) {
             data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
           }
 
@@ -245,7 +270,7 @@
             self._goto(direction);
           }
         })
-        .on('touchend.fndtn.orbit', function(e) {
+        .on('touchend.fndtn.orbit MSGestureEnd', function(e) {
           container.data('swipe-transition', {});
           e.stopPropagation();
         })
@@ -260,7 +285,7 @@
           timer.start();
         }
       });
-      
+
       $(document).on('click', '[data-orbit-link]', self.link_custom);
       $(window).on('resize', self.compute_dimensions);
       $(window).on('load', self.compute_dimensions);
@@ -277,7 +302,7 @@
     var self = this,
         duration = settings.timer_speed,
         progress = el.find('.'+settings.timer_progress_class),
-        start, 
+        start,
         timeout,
         left = -1;
 
@@ -320,7 +345,7 @@
       el.trigger('orbit:timer-stopped');
     };
   };
-  
+
   var SlideAnimation = function(settings, container) {
     var duration = settings.animation_speed;
     var is_rtl = ($('html[dir=rtl]').length === 1);
@@ -427,5 +452,5 @@
     }
   };
 
-    
+
 }(Foundation.zj, this, this.document));
