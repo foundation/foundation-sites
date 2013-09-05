@@ -30,6 +30,7 @@ Many thanks to all the people working on Foundation either to improve the base c
 
 WordPress (Versions marked 3/20/13)
 
+* [NARGA](http://www.narga.net/narga-core/) by Nguyễn Đình Quân using Foundation version 4
 * [Reactor](https://github.com/awtheme/reactor) by Anthony Wilhelm using Foundation version 4
 * [Reverie](http://themefortress.com/reverie/) by Zhen using Foundation version 4
 * [Corner Stone](https://github.com/thewirelessguy/cornerstone) by [Stephen Mullen](https://twitter.com/wirelessguyuk) using Foundation version v4.09
@@ -38,7 +39,6 @@ WordPress (Versions marked 3/20/13)
 * [Starter Theme](https://github.com/drewsymo/Foundation) by Drew Morris using Foundation version 3
 * [WP-Foundation](http://320press.com/wp-foundation/features/) by 320press using Foundation version 3
 * [f415](https://github.com/javorszky/f415) by Gabor Javorszky
-* [Narga Core](https://github.com/Narga/narga-core) by Nguyễn Đình Quân
 * [Basey](https://github.com/zslabs/basey-theme) by Zach Schnackel 
 
 Joomla
