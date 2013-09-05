@@ -356,7 +356,6 @@ $glowing-effect-color: $input-focus-border-color !default;
   [data-abide] {
     .error small.error, span.error, small.error {
       @include form-error-message;
-      margin-top: 0;
     }
     span.error, small.error { display: none; }
   }
@@ -368,7 +367,6 @@ $glowing-effect-color: $input-focus-border-color !default;
     textarea,
     select {
       @include form-error-color;
-      margin-bottom: 0;
     }
 
     label,
@@ -376,6 +374,7 @@ $glowing-effect-color: $input-focus-border-color !default;
       @include form-label-error-color;
     }
 
+    small,
     small.error {
       @include form-error-message;
     }
