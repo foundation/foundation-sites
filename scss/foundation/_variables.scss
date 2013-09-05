@@ -98,7 +98,7 @@ $default-float: left;
 // $include-html-media-classes: $include-html-classes;
 // $include-html-section-classes: $include-html-classes;
 // $include-html-orbit-classes: $include-html-classes;
-// $include-html-reveal-classes: $include-html-classes;
+$include-html-reveal-classes: false;
 // $include-html-joyride-classes: $include-html-classes;
 // $include-html-clearing-classes: $include-html-classes;
 // $include-html-alert-classes: $include-html-classes;
@@ -165,8 +165,8 @@ $default-float: left;
 // $header-font-style: normal;
 // $header-font-color: #222;
 // $header-line-height: 1.4;
-// $header-top-margin: .2em;
-// $header-bottom-margin: .5em;
+$header-top-margin: .625em;
+$header-bottom-margin: .313em;
 // $header-text-rendering: optimizeLegibility;
 
 // Control header font sizes
@@ -220,7 +220,7 @@ $default-float: left;
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #ddd;
-// $hr-margin: emCalc(20);
+$hr-margin: emCalc(15);
 
 // Style lists
 
@@ -1234,7 +1234,7 @@ $default-float: left;
 
 // Background color for the top bar
 
-// $topbar-bg: #111;
+$topbar-bg: #4d4235;
 
 // Height and margin
 
@@ -1252,7 +1252,7 @@ $default-float: left;
 
 // Style the top bar dropdown elements
 
-// $topbar-dropdown-bg: #222;
+$topbar-dropdown-bg: #9a7c59;
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
 // $topbar-dropdown-toggle-size: 5px;

@@ -1,0 +1,70 @@
+#loc_book_tab .object_list button {
+    font-size: 12px;
+}
+
+.form_header h6 {
+    display: inline-block;
+}
+
+.edit_submit {
+    margin-left: 5px;
+}
+
+.primary_loc_icon {
+    margin-left: 10px;
+}
+
+.loc_map {
+    display: block;
+    width: 450px;
+    height: 300px;
+    background: #eee;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+}
+
+// TODO: [Patrick] "user_img_container" exists in both general.css and
+// my_account.css. Each page-level css will be combined with general.css
+// to form one single CSS file for the corresponding page to link to, and
+// thus same name should not be used in both general.css and any of the
+// page-level css files to avoid confusion, or even, runtime errors.
+#personal_info_tab .profile_pic_container {
+    width: 240px;
+}
+
+#personal_info_tab form .field_error {
+    margin: 10px 0 0;
+}
+
+#crop_pic_form {
+    .container {
+        background: #eee;
+        border: 1px solid #ccc;
+
+        &.original_pic {
+            width: 360px;
+            height: 360px;
+
+            img {
+                // TODO: [Patrick] Make the img fill its containing element.
+                // The img should be centered if it doesn't fill up its containing element.
+            }
+        }
+
+        &.cropped_preview {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+
+            img {
+                max-width: none;
+            }
+        }
+    }
+
+    .arrow {
+        margin-top: 100px;
+        font-size: 3em;
+        color: #ccc;
+    }
+}

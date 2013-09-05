@@ -1,0 +1,227 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// This includes all of the foundation global elements that are needed to work with any of the other files.
+@import "foundation/variables";
+
+// We need just the mixins
+$include-html-alert-classes: false;
+@import "foundation/components/alert-boxes";
+
+// We need just the mixins
+$include-html-reveal-classes: false;
+@import "foundation/components/reveal";
+
+@import "compass/css3/transition";
+@import "compass/css3/box-shadow";
+
+//
+// Funsha Variables
+//
+$include-html-funsha-classes: true !default;
+
+//
+// Funsha Mixins
+//
+@mixin notice-box($bg, $radius) {
+    @include alert($bg, $radius);
+    top: 200px;
+    left: 50%;
+    position: fixed;
+    z-index: 100;
+    padding: 10px;
+    margin-left: -260px;
+    width: 520px;
+    @include box-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+    opacity: 0;
+    visibility: hidden;
+
+    &.fade {
+        @include transition(opacity 0.3s ease, visibility 0.3s ease);
+    }
+
+    &.fade.in {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    i {
+        font-size: 2em;
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+
+    span {
+        vertical-align: middle;
+    }
+
+    .close { @include alert-close; }
+}
+
+@mixin mod-reveal-bg {
+    @include reveal-bg;
+    // display: block;
+
+    &.fade {
+        opacity: 0;
+    }
+
+    &, &.fade.in {
+        opacity: 0.8;
+        filter: alpha(opacity=80);
+    }
+}
+
+@if $include-html-funsha-classes != false {
+    /* Modified Foundation 4 Reveal classes
+     * Use Foundation 4 default as base and mix in some Bootstrap classe names,
+     * in order to make the Reveal classes compatible with AngularUI Bootstrap's
+     * `$modal` service.
+     */
+    .reveal-modal-bg {
+        @include mod-reveal-bg;
+    }
+
+    .reveal-modal {
+        @include reveal-modal-base;
+        // visibility: visible;
+        // display: block;
+
+        @include reveal-modal-style;
+
+        &.fade {
+            opacity: 0;
+            @include transition(opacity 0.3s linear);
+        }
+
+        &.fade.in {
+            opacity: 1;
+        }
+    }
+
+    span.hint, p.hint, ul.hint {
+        color: #6f6f6f;
+        font-size: 12px;
+    }
+
+    #page_header {
+        margin-bottom: 20px;
+        background-color: #F7F6F0;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .btn_section {
+        text-align: right;
+    }
+
+    /* Supplementary to AngularJS */
+
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+
+    // Taken from Bootstrap to supplement the `collapse` directive
+    .ng_ui_collapse {
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        @include transition(height 0.35s ease);
+    }
+
+
+    /* Top navigation bar */
+
+    a#user_dropdown_toggle {
+        padding-right: $topbar-height / 3 !important;   // overrides Foundation's default for .has-dropdown > a
+
+        &:after {
+            content: none;  // clears Foundation's default triangle for dropdown
+        }
+
+        & > span {
+            margin-right: 10px;
+        }
+    }
+
+    input#quick_search {
+        width: 145px;
+        @include transition(width 0.1s ease);
+    }
+
+
+    /* Alert boxes (success action notice and top alert box) */
+
+    .notice-box-bg {
+        @include mod-reveal-bg;
+    }
+
+    .alert_notice {
+        @include notice-box($alert-color, $alert-radius);
+    }
+
+    .succ_notice {
+        @include notice-box($success-color, $alert-radius);
+    }
+
+    .dialog_alert_notice {
+        @include alert($alert-color);
+
+        i {
+            font-size: 1.2em;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        span {
+            vertical-align: middle;
+        }
+    }
+
+
+    /* Input tooltip (ex. pwd strength) */
+
+    .input_tooltip {
+        position: absolute;
+        top: -15px;
+        left: 101%;
+        width: 320px;
+        padding: 10px;
+        background: #fefefe;
+        border-radius: 2px;
+        box-shadow: 0 0 5px #aaa;
+        border: 1px solid #ddd;
+        z-index: 40;
+
+        ul {
+            list-style-position: inside;
+        }
+
+        .left_arrow {
+            position:absolute;
+            top:25px;
+            left:-10px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .pwd_fragile {
+            // TODO: [Patrick] define a colour for `fragile` strength
+        }
+
+        .pwd_weak {
+            color: #c60f13;
+        }
+
+        .pwd_fair {
+            // TODO: [Patrick] define a colour for `fair` strength
+        }
+
+        .pwd_good {
+            color: #CCCC33;
+        }
+
+        .pwd_strong {
+            color: #5da423;
+        }
+    }
+}
