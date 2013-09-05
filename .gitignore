@@ -27,3 +27,5 @@ test/css/styles.css
 node_modules
 docs/public/*
 *.scssc
+config.rb
+stylesheets/

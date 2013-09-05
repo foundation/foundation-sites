@@ -4,13 +4,15 @@
 // This includes all of the foundation global elements that are needed to work with any of the other files.
 @import "foundation/variables";
 
-// We need just the mixins
+// We need just the mixins and variables.
+$include-html-global-classes: false;
+@import "foundation/components/global";
 $include-html-alert-classes: false;
 @import "foundation/components/alert-boxes";
-
-// We need just the mixins
 $include-html-reveal-classes: false;
 @import "foundation/components/reveal";
+$include-html-top-bar-classes: false;
+@import "foundation/components/top-bar";
 
 @import "compass/css3/transition";
 @import "compass/css3/box-shadow";
