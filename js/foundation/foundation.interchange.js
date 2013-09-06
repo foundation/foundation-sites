@@ -6,11 +6,12 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '4.2.4',
+    version : '5.0.0',
 
     cache : {},
 
     images_loaded : false,
+    nodes_loaded : false,
 
     settings : {
       load_attr : 'interchange',
@@ -41,6 +42,12 @@
 
             return el.trigger('replace', [el[0].src, orig_path]);
           }
+
+          $.get(path, function (response) {
+            el.html(response);
+          });
+
+          return;
         }
       }
     },
@@ -52,8 +59,11 @@
         $.extend(true, this.settings, method);
       }
 
+      this.data_attr = 'data-' + this.settings.load_attr;
+
       this.events();
-      this.images();
+      this.load('images');
+      this.load('nodes');
 
       if (typeof method !== 'string') {
         return this.settings.init;
@@ -68,12 +78,14 @@
       $(window).on('resize.fndtn.interchange', self.throttle(function () {
         self.resize.call(self);
       }, 50));
+
+      return this;
     },
 
     resize : function () {
       var cache = this.cache;
 
-      if(!this.images_loaded) {
+      if(!this.images_loaded || !this.nodes_loaded) {
         setTimeout($.proxy(this.resize, this), 50);
         return;
       }
@@ -113,19 +125,19 @@
       return false;
     },
 
-    images : function (force_update) {
-      if (typeof this.cached_images === 'undefined' || force_update) {
-        return this.update_images();
+    load : function (type, force_update) {
+      if (typeof this['cached_' + type] === 'undefined' || force_update) {
+        this['update_' + type]();
       }
 
-      return this.cached_images;
+      return this['cached_' + type];
     },
 
     update_images : function () {
-      var images = document.getElementsByTagName('img'),
+      var images = document.querySelectorAll('img[' + this.data_attr + ']'),
           count = images.length,
           loaded_count = 0,
-          data_attr = 'data-' + this.settings.load_attr;
+          data_attr = this.data_attr;
 
       this.cached_images = [];
       this.images_loaded = false;
@@ -143,12 +155,38 @@
 
           if(loaded_count === count) {
             this.images_loaded = true;
-            this.enhance();
+            this.enhance('images');
           }
         }.bind(this));
       }
 
-      return 'deferred';
+      return this;
+    },
+
+    update_nodes : function () {
+      var nodes = document.querySelectorAll('[' + this.data_attr + ']:not(img)'),
+          count = nodes.length,
+          loaded_count = 0,
+          data_attr = this.data_attr;
+
+      this.cached_nodes = [];
+      this.nodes_loaded = false;
+
+      for (var i = count - 1; i >= 0; i--) {
+        loaded_count++;
+        var str = nodes[i].getAttribute(data_attr) || '';
+
+        if (str.length > 0) {
+          this.cached_nodes.push(nodes[i]);
+        }
+
+        if(loaded_count === count) {
+          this.nodes_loaded = true;
+          this.enhance('nodes');
+        }
+      }
+
+      return this;
     },
 
     // based on jquery.imageready.js
@@ -183,11 +221,11 @@
       }
     },
 
-    enhance : function () {
-      var count = this.images().length;
+    enhance : function (type) {
+      var count = this['cached_' + type].length;
 
       for (var i = count - 1; i >= 0; i--) {
-        this._object($(this.images()[i]));
+        this._object($(this['cached_' + type][i]));
       }
 
       return $(window).trigger('resize');
@@ -272,7 +310,8 @@
     },
 
     reflow : function () {
-      this.images(true);
+      this.load('images', true);
+      this.load('nodes', true);
     }
 
   };
