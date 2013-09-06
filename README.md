@@ -29,7 +29,7 @@ Community
 Many thanks to all the people working on Foundation either to improve the base code or to support specific frameworks. If you want to get on this readme send an email to foundation@zurb.com, and if you have questions you can join the Unofficial Foundation Google Group here: http://groups.google.com/group/foundation-framework-
 
 WordPress (Versions marked 3/20/13)
-
+* [WP-Forge](http://themeawesome.com/wpforge) by Thomas Vasquez using Foundation 4.3.1
 * [NARGA](http://www.narga.net/narga-core/) by Nguyễn Đình Quân using Foundation version 4
 * [Reactor](https://github.com/awtheme/reactor) by Anthony Wilhelm using Foundation version 4
 * [Reverie](http://themefortress.com/reverie/) by Zhen using Foundation version 4
