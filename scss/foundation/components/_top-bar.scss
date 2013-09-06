@@ -83,6 +83,24 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
     position: fixed;
     top: 0;
     z-index: 99;
+  
+    &.expanded:not(.top-bar) {
+        overflow-y: auto; 
+        height: auto;
+        width: 100%;
+        max-height: 100%;
+
+      .title-area {
+        position: fixed;
+        width: 100%;
+        z-index: 99;
+      }
+      // Ensure you can scroll the menu on small screens 
+      .top-bar-section {
+        z-index: 98;
+        margin-top: $topbar-height;
+      }
+    }
   }
 
   .top-bar {
@@ -313,7 +331,7 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 
       &.moved { position: static;
         & > .dropdown {
-          visibility: visible;
+          display: block;
         }
       }
     }
@@ -323,7 +341,7 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
       position: absolute;
       #{$default-float}: 100%;
       top: 0;
-      visibility: hidden;
+      display: none;
       z-index: 99;
 
       li {
@@ -441,12 +459,12 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
         }
 
         &.moved { position: relative;
-          & > .dropdown { visibility: hidden; }
+          & > .dropdown { display: none; }
         }
 
         &.hover, &.not-click:hover {
           & > .dropdown {
-            visibility: visible;
+            display: block;
           }
         }
 
@@ -540,7 +558,7 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 	  .has-dropdown {
         &:hover {
           & > .dropdown {
-            visibility: visible;
+            display: block;
           }
         }
 	  }
