@@ -416,7 +416,7 @@
           old_index = this.settings.prev_index || target.index(),
           direction = this.direction(clearing, current, target),
           left = parseInt(clearing.css('left'), 10),
-          width = this.outerWidth(target),
+          width = target.outerWidth(),
           skip_shift;
 
       // we use jQuery animate instead of CSS transitions because we
@@ -447,8 +447,8 @@
 
     direction : function ($el, current, target) {
       var lis = $el.find('li'),
-          li_width = this.outerWidth(lis) + (this.outerWidth(lis) / 4),
-          up_count = Math.floor(this.outerWidth($('.clearing-container')) / li_width) - 1,
+          li_width = lis.outerWidth() + (lis.outerWidth() / 4),
+          up_count = Math.floor($('.clearing-container').outerWidth() / li_width) - 1,
           target_index = lis.index(target),
           response;
 
