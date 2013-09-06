@@ -50,7 +50,12 @@ $custom-dropdown-width-large: 434px !default;
 // We may look at updating this in the future.
 @mixin custom-form-input($radius:0px, $mark-size:0px) {
   @include radius($radius);
-  padding: (($custom-form-input-size - $mark-size) / 2) - $custom-form-border-size;
+  $custom-form-input-padding: (($custom-form-input-size - $mark-size) / 2) - $custom-form-border-size;
+  @if $custom-form-input-padding >= 0 {
+    padding: $custom-form-input-padding;
+  } @else {
+    padding: 0;
+  }
 }
 
 // Only include these classes if the variable is true, otherwise they'll be left out.
