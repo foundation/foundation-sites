@@ -133,9 +133,10 @@
         var modal = $(this.scope);
       }
 
-      if (!modal.hasClass('open')) {
-        var open_modal = $('.reveal-modal.open');
+      var already_open = modal.hasClass('open');
+      var open_modal = $('.reveal-modal.open');
 
+      if (!already_open) {
         if (typeof modal.data('css-top') === 'undefined') {
           modal.data('css-top', parseInt(modal.css('top'), 10))
             .data('offset', this.cache_offset(modal));
@@ -146,30 +147,37 @@
         if (open_modal.length < 1) {
           this.toggle_bg();
         }
+      }
+      else {
+        this.locked = false;
+      }
 
-        if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
+      if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
+        if (!already_open) {
           this.hide(open_modal, this.settings.css.close);
           this.show(modal, this.settings.css.open);
-        } else {
-          var self = this,
-              old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
+        }
+      } else {
+        var self = this,
+            old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
 
-          $.extend(ajax_settings, {
-            success: function (data, textStatus, jqXHR) {
-              if ( $.isFunction(old_success) ) {
-                old_success(data, textStatus, jqXHR);
-              }
+        $.extend(ajax_settings, {
+          success: function (data, textStatus, jqXHR) {
+            if ( $.isFunction(old_success) ) {
+              old_success(data, textStatus, jqXHR);
+            }
 
-              modal.html(data);
-              $(modal).foundation('section', 'reflow');
+            modal.html(data);
+            $(modal).foundation('section', 'reflow');
 
+            if (!already_open) {
               self.hide(open_modal, self.settings.css.close);
               self.show(modal, self.settings.css.open);
             }
-          });
+          }
+        });
 
-          $.ajax(ajax_settings);
-        }
+        $.ajax(ajax_settings);
       }
     },
 
