@@ -405,7 +405,7 @@
       if (tipOffset > 0) {
         $('html, body').animate({
           scrollTop: tipOffset
-        }, this.settings.scroll_speed);
+        }, this.settings.scrollSpeed);
       }
     },
 

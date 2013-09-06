@@ -141,7 +141,7 @@
         });
         dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
       } else {
-        if (!Foundation.rtl && $(window).width() > dropdown.outerWidth() + target.offset().left && !this.data_options(target).align_right) {
+        if (!Foundation.rtl && $(window).width() > dropdown.outerWidth() + target.offset().left) {
           var left = position.left;
           if (dropdown.hasClass('right')) {
             dropdown.removeClass('right');

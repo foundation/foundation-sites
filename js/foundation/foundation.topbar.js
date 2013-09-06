@@ -38,14 +38,8 @@
           self.settings.$section = self.settings.$topbar.find('section');
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
           self.settings.$topbar.data('index', 0);
-
-          var topbarContainer = self.settings.$topbar.parent();
-          if(topbarContainer.hasClass('fixed') || topbarContainer.hasClass(self.settings.sticky_class)) {
-            self.settings.$topbar.data('height', topbarContainer.outerHeight());
-            self.settings.$topbar.data('stickyoffset', topbarContainer.offset().top);
-          } else {
-            self.settings.$topbar.data('height', self.settings.$topbar.outerHeight());
-          }
+          self.settings.$topbar.data('height', self.settings.$topbar.parent().outerHeight());
+          self.settings.$topbar.data('stickyoffset', self.settings.$topbar.parent().offset().top);
 
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
           self.settings.breakPoint = breakpoint.width();
@@ -201,7 +195,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', $this.siblings('ul').outerHeight(true) + self.settings.$topbar.data('height'));
+            topbar.css('height', $this.siblings('ul').outerHeight(true));
           }
         });
 
@@ -275,7 +269,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', $previousLevelUl.outerHeight(true) + self.settings.$topbar.data('height'));
+          topbar.css('height', $previousLevelUl.outerHeight(true));
         }
 
         setTimeout(function () {
