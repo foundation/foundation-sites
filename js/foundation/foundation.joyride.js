@@ -51,7 +51,7 @@
 
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
-      Foundation.inherit(this, 'throttle data_options scrollTo scrollLeft delay');
+      Foundation.inherit(this, 'throttle data_options delay');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, this.defaults, method);
@@ -401,9 +401,11 @@
       var window_half, tipOffset;
 
       window_half = $(window).height() / 2;
-      tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.outerHeight(this.settings.$next_tip));
+      tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight());
       if (tipOffset > 0) {
-        this.scrollTo($('html, body'), tipOffset, this.settings.scrollSpeed);
+        $('html, body').animate({
+          scrollTop: tipOffset
+        }, this.settings.scrollSpeed);
       }
     },
 
@@ -421,8 +423,8 @@
       var half_fold = Math.ceil($(window).height() / 2),
           tip_position = this.settings.$next_tip.offset(),
           $nub = this.settings.$next_tip.find('.joyride-nub'),
-          nub_width = Math.ceil(this.outerWidth($nub) / 2),
-          nub_height = Math.ceil(this.outerHeight($nub) / 2),
+          nub_width = Math.ceil($nub.outerWidth() / 2),
+          nub_height = Math.ceil($nub.outerHeight() / 2),
           toggle = init || false;
 
       // tip must not be "display: none" to calculate position
@@ -443,7 +445,7 @@
               leftOffset = this.settings.$target.offset().width - this.settings.$next_tip.width() + leftOffset;
             }
             this.settings.$next_tip.css({
-              top: (this.settings.$target.offset().top + nub_height + this.outerHeight(this.settings.$target)),
+              top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
               left: leftOffset});
 
             this.nub_position($nub, this.settings.tipSettings.nubPosition, 'top');
@@ -454,7 +456,7 @@
               leftOffset = this.settings.$target.offset().width - this.settings.$next_tip.width() + leftOffset;
             }
             this.settings.$next_tip.css({
-              top: (this.settings.$target.offset().top - this.outerHeight(this.settings.$next_tip) - nub_height),
+              top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
               left: leftOffset});
 
             this.nub_position($nub, this.settings.tipSettings.nubPosition, 'bottom');
@@ -506,11 +508,11 @@
     },
 
     pos_phone : function (init) {
-      var tip_height = this.outerHeight(this.settings.$next_tip),
+      var tip_height = this.settings.$next_tip.outerHeight(),
           tip_offset = this.settings.$next_tip.offset(),
-          target_height = this.outerHeight(this.settings.$target),
+          target_height = this.settings.$target.outerHeight(),
           $nub = $('.joyride-nub', this.settings.$next_tip),
-          nub_height = Math.ceil(this.outerHeight($nub) / 2),
+          nub_height = Math.ceil($nub.outerHeight() / 2),
           toggle = init || false;
 
       $nub.removeClass('bottom')
@@ -597,8 +599,8 @@
       expose.css({
         top: el.offset().top,
         left: el.offset().left,
-        width: this.outerWidth(el, true),
-        height: this.outerHeight(el, true)
+        width: el.outerWidth(true),
+        height: el.outerHeight(true)
       });
 
       exposeCover = $(this.settings.template.exposeCover);
@@ -623,8 +625,8 @@
       exposeCover.css({
         top: el.offset().top,
         left: el.offset().left,
-        width: this.outerWidth(el, true),
-        height: this.outerHeight(el, true)
+        width: el.outerWidth(true),
+        height: el.outerHeight(true)
       });
 
       this.settings.$body.append(exposeCover);
@@ -728,8 +730,8 @@
       var $w = $(window);
 
       this.settings.$next_tip.css({
-        top : ((($w.height() - this.outerHeight(this.settings.$next_tip)) / 2) + $w.scrollTop()),
-        left : ((($w.width() - this.outerWidth(this.settings.$next_tip)) / 2) + this.scrollLeft($w))
+        top : ((($w.height() - this.settings.$next_tip.outerHeight()) / 2) + $w.scrollTop()),
+        left : ((($w.width() - this.settings.$next_tip.outerWidth()) / 2) + $w.scrollLeft())
       });
 
       return true;
@@ -756,7 +758,7 @@
           window_half = w.height() / 2,
           //using this to calculate since scroll may not have finished yet.
           tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight()),
-          right = w.width() + this.scrollLeft(w),
+          right = w.width() + w.scrollLeft(),
           offsetBottom =  w.height() + tipOffset,
           bottom = w.height() + w.scrollTop(),
           top = w.scrollTop();
@@ -777,7 +779,7 @@
         el.offset().top < top,
         right < el.offset().left + el.outerWidth(),
         bottom < el.offset().top + el.outerHeight(),
-        this.scrollLeft(w) > el.offset().left
+        w.scrollLeft() > el.offset().left
       ];
     },
 

@@ -8,20 +8,16 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-// Accommodate running jQuery or Zepto in noConflict() mode by
+// Accommodate running jQuery in noConflict() mode by
 // using an anonymous function to redefine the $ shorthand name.
 // See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
-// and http://zeptojs.com/
 var libFuncName = null;
 
 if (typeof jQuery === "undefined" &&
-    typeof Zepto === "undefined" &&
     typeof $ === "function") {
   libFuncName = $;
 } else if (typeof jQuery === "function") {
   libFuncName = jQuery;
-} else if (typeof Zepto === "function") {
-  libFuncName = Zepto;
 } else {
   throw new TypeError();
 }
@@ -170,7 +166,7 @@ if (typeof jQuery === "undefined" &&
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.3.1',
+    version : '5.0.0',
 
     cache : {},
 
@@ -182,15 +178,11 @@ if (typeof jQuery === "undefined" &&
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
-    init : function (scope, libraries, method, options, response, /* internal */ nc) {
+    init : function (scope, libraries, method, options, response) {
       var library_arr,
           args = [scope, method, options, response],
           responses = [],
           nc = nc || false;
-
-      // disable library error catching,
-      // used for development only
-      if (nc) this.nc = nc;
 
       // check RTL
       this.rtl = /rtl/i.test($('html').attr('dir'));
@@ -203,16 +195,14 @@ if (typeof jQuery === "undefined" &&
 
         library_arr = libraries.split(' ');
 
-        if (library_arr.length > 0) {
-          for (var i = library_arr.length - 1; i >= 0; i--) {
-            responses.push(this.init_lib(library_arr[i], args));
-          }
+        if (this.libs.hasOwnProperty(libraries)) {
+          responses.push(this.init_lib(libraries, args));
         }
       } else {
-        if (/reflow/i.test(libraries)) args[1] = 'reflow';
+        // if (/reflow/i.test(libraries)) args[1] = 'reflow';
 
         for (var lib in this.libs) {
-          responses.push(this.init_lib(lib, args));
+          responses.push(this.init_lib(lib, libraries));
         }
       }
 
@@ -221,48 +211,24 @@ if (typeof jQuery === "undefined" &&
         args.unshift(libraries);
       }
 
-      return this.response_obj(responses, args);
-    },
-
-    response_obj : function (response_arr, args) {
-      for (var i = 0, len = args.length; i < len; i++) {
-        if (typeof args[i] === 'function') {
-          return args[i]({
-            errors: response_arr.filter(function (s) {
-              if (typeof s === 'string') return s;
-            })
-          });
-        }
-      }
-
-      return response_arr;
+      return scope;
     },
 
     init_lib : function (lib, args) {
-      return this.trap(function () {
-        if (this.libs.hasOwnProperty(lib)) {
-          this.patch(this.libs[lib]);
-          return this.libs[lib].init.apply(this.libs[lib], args);
-        } else {
-          return function () {};
-        }
-      }.bind(this), lib);
-    },
+      if (this.libs.hasOwnProperty(lib)) {
+        this.patch(this.libs[lib]);
 
-    trap : function (fun, lib) {
-      if (!this.nc) {
-        try {
-          return fun();
-        } catch (e) {
-          return this.error({name: lib, message: 'could not be initialized', more: e.name + ' ' + e.message});
+        if (args && args.hasOwnProperty(lib)) {
+          return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
+
+        return this.libs[lib].init.apply(this.libs[lib], args);
       }
 
-      return fun();
+      return function () {};
     },
 
     patch : function (lib) {
-      this.fix_outer(lib);
       lib.scope = this.scope;
       lib.rtl = this.rtl;
     },
@@ -363,28 +329,9 @@ if (typeof jQuery === "undefined" &&
         return opts;
       },
 
+      // deprecated
       delay : function (fun, delay) {
         return setTimeout(fun, delay);
-      },
-
-      // animated scrolling
-      scrollTo : function (el, to, duration) {
-        if (duration < 0) return;
-        var difference = to - $(window).scrollTop();
-        var perTick = difference / duration * 10;
-
-        this.scrollToTimerCache = setTimeout(function() {
-          if (!isNaN(parseInt(perTick, 10))) {
-            window.scrollTo(0, $(window).scrollTop() + perTick);
-            this.scrollTo(el, to, duration - 10);
-          }
-        }.bind(this), 10);
-      },
-
-      // not supported in core Zepto
-      scrollLeft : function (el) {
-        if (!el.length) return;
-        return ('scrollLeft' in el[0]) ? el[0].scrollLeft : el[0].pageXOffset;
       },
 
       // test for empty object or array
@@ -410,32 +357,6 @@ if (typeof jQuery === "undefined" &&
           }
         }
       }
-    },
-
-    fix_outer : function (lib) {
-      lib.outerHeight = function (el, bool) {
-        if (typeof Zepto === 'function') {
-          return el.height();
-        }
-
-        if (typeof bool !== 'undefined') {
-          return el.outerHeight(bool);
-        }
-
-        return el.outerHeight();
-      };
-
-      lib.outerWidth = function (el, bool) {
-        if (typeof Zepto === 'function') {
-          return el.width();
-        }
-
-        if (typeof bool !== 'undefined') {
-          return el.outerWidth(bool);
-        }
-
-        return el.outerWidth();
-      };
     },
 
     error : function (error) {

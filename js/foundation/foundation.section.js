@@ -204,8 +204,8 @@
                   title_h_border_width = 0;
                 }
 
-                titles_sum_width += self.outerWidth(title) - title_h_border_width;
-                titles_max_height = Math.max(titles_max_height, self.outerHeight(title));
+                titles_sum_width += title.outerWidth() - title_h_border_width;
+                titles_max_height = Math.max(titles_max_height, title.outerHeight());
               }
             });
             titles.css('height', titles_max_height);
@@ -228,7 +228,7 @@
             //    title: position static
             //    content: position absolute
             titles.each(function() {
-              titles_max_height = Math.max(titles_max_height, self.outerHeight($(this)));
+              titles_max_height = Math.max(titles_max_height, $(this).outerHeight());
             });
 
             regions.each(function() {
@@ -258,7 +258,7 @@
                   title_top_border_width = 0;
                 }
 
-                titles_sum_height += self.outerHeight(title) - title_top_border_width;
+                titles_sum_height += title.outerHeight() - title_top_border_width;
               }
             });
 
@@ -270,7 +270,7 @@
             //    title: position static
             //    content: position absolute
             titles.each(function() {
-              titles_max_width = Math.max(titles_max_width, self.outerWidth($(this)));
+              titles_max_width = Math.max(titles_max_width, $(this).outerWidth());
             });
 
             regions.each(function () {

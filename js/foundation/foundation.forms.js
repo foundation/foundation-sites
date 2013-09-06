@@ -196,7 +196,9 @@
 
             if (next) {
               current.removeClass('selected');
-              self.scrollTo(next.addClass('selected'), 300);
+              $('html, body').animate({
+                scrollTop: next.addClass('selected').offset().top
+              }, 300);
             }
           }
 
@@ -205,7 +207,7 @@
                 prev = current.prev(':not(.disabled)');
 
             if (prev.length > 0) {
-              prev.parent()[0].scrollTop = prev.parent().scrollTop() - self.outerHeight(prev);
+              prev.parent()[0].scrollTop = prev.parent().scrollTop() - prev.outerHeight();
               current.removeClass('selected');
               prev.addClass('selected');
             }
@@ -214,7 +216,7 @@
                 next = current.next(':not(.disabled)');
 
             if (next.length > 0) {
-              next.parent()[0].scrollTop = next.parent().scrollTop() + self.outerHeight(next);
+              next.parent()[0].scrollTop = next.parent().scrollTop() + next.outerHeight();
               current.removeClass('selected');
               next.addClass('selected');
             }
@@ -244,21 +246,6 @@
           if (first_letter === String.fromCharCode(character).toLowerCase()) return lis.eq(i);
         }
       }
-    },
-
-    scrollTo: function (el, duration) {
-      if (duration < 0) return;
-      var parent = el.parent();
-      var li_height = this.outerHeight(el);
-      var difference = (li_height * (el.index())) - parent.scrollTop();
-      var perTick = difference / duration * 10;
-
-      this.scrollToTimerCache = setTimeout(function () {
-        if (!isNaN(parseInt(perTick, 10))) {
-          parent[0].scrollTop = parent.scrollTop() + perTick;
-          this.scrollTo(el, duration - 10);
-        }
-      }.bind(this), 10);
     },
 
     set_custom_markup: function (sel) {

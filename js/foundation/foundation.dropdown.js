@@ -17,7 +17,7 @@
 
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
-      Foundation.inherit(this, 'throttle scrollLeft data_options');
+      Foundation.inherit(this, 'throttle data_options');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
@@ -136,11 +136,11 @@
           position : 'absolute',
           width: '95%',
           'max-width': 'none',
-          top: position.top + this.outerHeight(target)
+          top: position.top + target.outerHeight()
         });
         dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
       } else {
-        if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left) {
+        if (!Foundation.rtl && $(window).width() > dropdown.outerWidth() + target.offset().left) {
           var left = position.left;
           if (dropdown.hasClass('right')) {
             dropdown.removeClass('right');
@@ -149,12 +149,12 @@
           if (!dropdown.hasClass('right')) {
             dropdown.addClass('right');
           }
-          var left = position.left - (this.outerWidth(dropdown) - this.outerWidth(target));
+          var left = position.left - (dropdown.outerWidth() - target.outerWidth());
         }
 
         dropdown.attr('style', '').css({
           position : 'absolute',
-          top: position.top + this.outerHeight(target),
+          top: position.top + target.outerHeight(),
           left: left
         });
       }

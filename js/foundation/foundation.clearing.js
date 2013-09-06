@@ -263,7 +263,7 @@
           var li = $(this),
               image = li.find('img');
 
-          if (li.height() > self.outerHeight(image)) {
+          if (li.height() > image.outerHeight()) {
             li.addClass('fix-height');
           }
         })
@@ -302,13 +302,13 @@
     center : function (target) {
       if (!this.rtl) {
         target.css({
-          marginLeft : -(this.outerWidth(target) / 2),
-          marginTop : -(this.outerHeight(target) / 2)
+          marginLeft : -(target.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)
         });
       } else {
         target.css({
-          marginRight : -(this.outerWidth(target) / 2),
-          marginTop : -(this.outerHeight(target) / 2)
+          marginRight : -(target.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)
         });
       }
       return this;

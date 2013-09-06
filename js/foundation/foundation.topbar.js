@@ -38,7 +38,7 @@
           self.settings.$section = self.settings.$topbar.find('section');
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
           self.settings.$topbar.data('index', 0);
-          self.settings.$topbar.data('height', self.outerHeight(self.settings.$topbar.parent()));
+          self.settings.$topbar.data('height', self.settings.$topbar.parent().outerHeight());
           self.settings.$topbar.data('stickyoffset', self.settings.$topbar.parent().offset().top);
 
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
@@ -195,7 +195,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true));
+            topbar.css('height', $this.siblings('ul').outerHeight(true));
           }
         });
 
@@ -268,7 +268,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', self.outerHeight($previousLevelUl, true));
+          topbar.css('height', $previousLevelUl.outerHeight(true));
         }
 
         setTimeout(function () {
@@ -317,7 +317,7 @@
       var total = 0,
           self = this;
 
-      ul.find('> li').each(function () { total += self.outerHeight($(this), true); });
+      ul.find('> li').each(function () { total += $(this).outerHeight(true); });
 
       return total;
     },
