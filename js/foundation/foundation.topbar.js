@@ -195,7 +195,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true));
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.settings.$topbar.data('height'));
           }
         });
 
@@ -268,7 +268,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', self.outerHeight($previousLevelUl, true));
+          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.settings.$topbar.data('height'));
         }
 
         setTimeout(function () {
