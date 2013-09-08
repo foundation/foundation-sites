@@ -256,7 +256,7 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
     }
 
     ul li {
-      & > a {
+      a {
         display: block;
         width: 100%;
         color: $topbar-link-color;
