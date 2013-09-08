@@ -180,6 +180,7 @@
           image = visible_image.find('img').not($image);
 
       if (!this.locked()) {
+				visible_image.trigger('open.fndtn.clearing', $image.attr('id'));
         // set the image to the selected thumbnail
         image
           .attr('src', this.load($image))
@@ -198,6 +199,7 @@
               target.siblings().removeClass('visible');
               target.addClass('visible');
             });
+          visible_image.trigger('opened.fndtn.clearing')
         }.bind(this));
       }
     },
@@ -216,12 +218,14 @@
       if (el === e.target && root) {
         container = root.find('div').first();
         visible_image = container.find('.visible-img');
+        visible_image.trigger('close.fndtn.clearing');
         this.settings.prev_index = 0;
         root.find('ul[data-clearing]')
           .attr('style', '').closest('.clearing-blackout')
           .removeClass('clearing-blackout');
         container.removeClass('clearing-container');
         visible_image.hide();
+        visible_image.trigger('closed.fndtn.clearing');        
       }
 
       return false;
@@ -407,7 +411,8 @@
       if (target.length) {
         target
           .find('img')
-          .trigger('click', [current, target]);
+          .trigger('click', [current, target])
+          .trigger('change.fndtn.clearing');
       }
     },
 
