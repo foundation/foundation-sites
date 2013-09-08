@@ -72,7 +72,7 @@
           self.refresh_custom_select($(this), force_refresh);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
-          if ($(e.target).is('label') || ($(e.target).closest('label').length !== 0 && !$(e.target).is('span.custom.checkbox, span.custom.radio')) && !$(e.target).is('a')) {
+          if ($(e.target).is('label') || ($(e.target).closest('label').length !== 0 && !$(e.target).is('span.custom.checkbox, span.custom.radio, a'))) {
             var $associatedElement = $('#' + self.escape($(this).attr('for'))).not('[data-customforms="disabled"]'),
               $customCheckbox,
               $customRadio;
