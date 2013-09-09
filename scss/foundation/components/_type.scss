@@ -238,12 +238,12 @@ $microformat-abbr-font-decoration: none !default;
   }
   /*selected text*/
   ::selection {
-	background: #1399bd; /* Safari */
-	color: #ecf8ff;
+	background: $primary-color; /* Safari */
+	color: $body-bg;
 	}
   ::-moz-selection {
-	background: #1399bd; /* Firefox */
-	color: #ecf8ff;
+	background: $primary-color; /* Firefox */
+	color: $body-bg;
   }
   
   
