@@ -38,8 +38,14 @@
           self.settings.$section = self.settings.$topbar.find('section');
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
           self.settings.$topbar.data('index', 0);
-          self.settings.$topbar.data('height', self.outerHeight(self.settings.$topbar.parent()));
-          self.settings.$topbar.data('stickyoffset', self.settings.$topbar.parent().offset().top);
+
+          var topbarContainer = self.settings.$topbar.parent();
+          if(topbarContainer.hasClass('fixed') || topbarContainer.hasClass(self.settings.stickyClass)) {
+            self.settings.$topbar.data('height', self.outerHeight(topbarContainer));
+            self.settings.$topbar.data('stickyoffset', topbarContainer.offset().top);
+          } else {
+            self.settings.$topbar.data('height', self.outerHeight(self.settings.$topbar));
+          }
 
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
           self.settings.breakPoint = breakpoint.width();
@@ -112,7 +118,7 @@
           }
         }
       } else {
-        if(topbar.parent().hasClass('sticky')) {
+        if(topbar.parent().hasClass(self.settings.stickyClass)) {
           topbar.parent().addClass('fixed');
         }
 
@@ -195,7 +201,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true));
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.settings.$topbar.data('height'));
           }
         });
 
@@ -268,7 +274,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-          topbar.css('height', self.outerHeight($previousLevelUl, true));
+          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.settings.$topbar.data('height'));
         }
 
         setTimeout(function () {
