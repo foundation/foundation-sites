@@ -118,7 +118,7 @@
           }
         }
       } else {
-        if(topbar.parent().hasClass(stickyClass)) {
+        if(topbar.parent().hasClass(self.settings.stickyClass)) {
           topbar.parent().addClass('fixed');
         }
 
