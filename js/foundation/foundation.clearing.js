@@ -255,6 +255,7 @@
 
       if (image.length) {
         this.center(image);
+        image.trigger('resized.fndtn.clearing')
       }
     },
 
