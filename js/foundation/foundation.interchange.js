@@ -47,7 +47,7 @@
             el.html(response);
           });
 
-          return;
+          return el.trigger('replace', [el[0]]);
         }
       }
     },
