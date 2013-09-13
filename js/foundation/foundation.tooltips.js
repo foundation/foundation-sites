@@ -6,12 +6,13 @@
   Foundation.libs.tooltips = {
     name : 'tooltips',
 
-    version : '4.2.2',
+    version : '4.2.3',
 
     settings : {
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
+      mouseFollower: false,
       appendTo: 'body',
       'disable-for-touch': false,
       tipTemplate : function (selector, content) {
@@ -178,13 +179,25 @@
 
     show : function ($target) {
       var $tip = this.getTip($target);
-
-      this.reposition($target, $tip, $target.attr('class'));
+      
+      if (this.settings.mouseFollower) {
+        $target.mousemove(function (e) {
+  	      $tip.css( 'position' : 'absolute', 'top' : e.pageY + 20, 'left' : e.pageX - 10);
+        });
+      }
+      else {
+        this.reposition($target, $tip, $target.attr('class'));
+      }
+      
       $tip.fadeIn(150);
     },
 
     hide : function ($target) {
       var $tip = this.getTip($target);
+      
+      if (this.settings.mouseFollower) {
+        $target.mousemove(null);
+      }
 
       $tip.fadeOut(150);
     },
