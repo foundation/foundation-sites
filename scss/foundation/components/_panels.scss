@@ -8,7 +8,7 @@ $panel-bg: darken(#fff, 5%) !default;
 $panel-border-style: solid !default;
 $panel-border-size: 1px !default;
 
-// We use this % to control how much we darken things on hover
+// We use this % to control how much we darken border compared to background
 $panel-function-factor: 10% !default;
 $panel-border-color: darken($panel-bg, $panel-function-factor) !default;
 
@@ -27,14 +27,14 @@ $callout-panel-link-color: #fff !default;
 //
 
 // We use this mixin to create panels.
-@mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust) {
+@mixin panel($bg:$panel-bg, $border-color:$panel-border-color, $padding:$panel-padding, $adjust:$panel-header-adjust) {
 
   @if $bg {
     $bg-lightness: lightness($bg);
 
     border-style: $panel-border-style;
     border-width: $panel-border-size;
-    border-color: darken($bg, $panel-function-factor);
+    border-color: $panel-border-color;
     margin-bottom: $panel-margin-bottom;
     padding: $padding;
 
