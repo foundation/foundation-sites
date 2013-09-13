@@ -16,7 +16,7 @@ $block-grid-media-queries: true !default;
 
 // We use this mixin to create different block-grids. You can apply per-row and spacing options.
 // Setting $base-style to false will ommit default styles.
-@mixin block-grid($per-row:false, $spacing:$block-grid-default-spacing, $base-style:true) {
+@mixin block-grid($per-row:false, $spacing:$block-grid-default-spacing, $base-style:true, $child-element:"li") {
 
   @if $base-style {
     display: block;
@@ -24,7 +24,7 @@ $block-grid-media-queries: true !default;
     margin: 0 (-$spacing/2);
     @include clearfix;
 
-    &>li {
+    &>#{$child-element} {
       display: inline;
       height: auto;
       float: $default-float;
@@ -33,7 +33,7 @@ $block-grid-media-queries: true !default;
   }
 
   @if $per-row {
-    &>li {
+    &>#{$child-element} {
       width: 100%/$per-row;
       padding: 0 ($spacing/2) $spacing;
 
