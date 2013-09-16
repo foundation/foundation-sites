@@ -30,6 +30,8 @@ $reveal-border-color: #666 !default;
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
 
+$reveal-full-on-small: false !default;
+
 //
 // Reveal Mixins
 //
@@ -113,6 +115,15 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     @include reveal-modal-style;
 
     .#{$close-reveal-modal-class} { @include reveal-close; }
+
+    @if $reveal-full-on-small {
+      @include reveal-modal-style(false, emCalc(30), false, $box-shadow: false, $top-offset: 0);
+      &.tiny  { @include reveal-modal-base(false, 100%); }
+      &.small { @include reveal-modal-base(false, 100%); }
+      &.medium  { @include reveal-modal-base(false, 100%); }
+      &.large { @include reveal-modal-base(false, 100%); }
+      &.xlarge { @include reveal-modal-base(false, 100%); }
+    }
   }
 
   // Large Screen Styles
