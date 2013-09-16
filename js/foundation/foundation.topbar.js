@@ -360,4 +360,4 @@
 
     reflow : function () {}
   };
-}(Foundation.zj, this, this.document));
+}(jQuery, this, this.document));

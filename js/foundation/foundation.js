@@ -8,20 +8,6 @@
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
-// Accommodate running jQuery in noConflict() mode by
-// using an anonymous function to redefine the $ shorthand name.
-// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
-var libFuncName = null;
-
-if (typeof jQuery === "undefined" &&
-    typeof $ === "function") {
-  libFuncName = $;
-} else if (typeof jQuery === "function") {
-  libFuncName = jQuery;
-} else {
-  throw new TypeError();
-}
-
 (function ($, window, document, undefined) {
   'use strict';
 
@@ -272,9 +258,8 @@ if (typeof jQuery === "undefined" &&
       $(this.scope).off('.fndtn');
       $(window).off('.fndtn');
       return true;
-    },
+    }
 
-    zj : $
   };
 
   $.fn.foundation = function () {
@@ -286,4 +271,4 @@ if (typeof jQuery === "undefined" &&
     });
   };
 
-}(libFuncName, this, this.document));
+}(jQuery, this, this.document));
