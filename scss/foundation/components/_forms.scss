@@ -238,7 +238,7 @@ $glowing-effect-color: $input-focus-border-color !default;
 
 // We use this mixin to create error message styles
 @mixin form-error-message($bg:$alert-color) {
-  display: block !important;
+  display: block;
   padding: $input-error-message-padding;
   margin-top: $input-error-message-top;
   margin-bottom: $form-spacing;

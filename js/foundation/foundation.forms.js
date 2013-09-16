@@ -356,7 +356,7 @@
           var self = Foundation.libs.forms;
           self.hidden_fix.adjust($customList);
 
-          maxWidth = (self.outerWidth($listItems) > maxWidth) ? self.outerWidth($listItems) : maxWidth;
+          maxWidth = ($listItems.outerWidth() > maxWidth) ? $listItems.outerWidth() : maxWidth;
 
           Foundation.libs.forms.hidden_fix.reset();
 

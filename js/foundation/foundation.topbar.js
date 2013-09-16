@@ -201,11 +201,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
-<<<<<<< HEAD
-            topbar.css('height', $this.siblings('ul').outerHeight(true));
-=======
-            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.settings.$topbar.data('height'));
->>>>>>> master
+            topbar.css('height', $this.siblings('ul').outerHeight(true) + self.settings.$topbar.data('height'));
           }
         });
 
@@ -278,11 +274,7 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
-<<<<<<< HEAD
-          topbar.css('height', $previousLevelUl.outerHeight(true));
-=======
-          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.settings.$topbar.data('height'));
->>>>>>> master
+          topbar.css('height', $previousLevelUl.outerHeight(true) + self.settings.$topbar.data('height'));
         }
 
         setTimeout(function () {
