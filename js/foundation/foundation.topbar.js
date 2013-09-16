@@ -305,7 +305,7 @@
 
         // Copy link to subnav
         if (self.settings.custom_back_text == true) {
-          $titleLi.find('h5>a').html('&laquo; ' + self.settings.back_text);
+          $titleLi.find('h5>a').html(self.settings.back_text);
         } else {
           $titleLi.find('h5>a').html('&laquo; ' + $link.html());
         }
