@@ -32,7 +32,18 @@
       },
 
       directives : {
-        replace: function (el, path) {
+        replace: function (el, path, trigger) {
+          // The trigger argument, if called within the directive, fires
+          // an event named after the directive on the element, passing
+          // any parameters along to the event that you pass to trigger.
+          //
+          // ex. trigger(), trigger([a, b, c]), or trigger(a, b, c)
+          //
+          // This allows you to bind a callback like so:
+          // $('#interchangeContainer').on('replace', function (e, a, b, c) {
+          //   console.log($(this).html(), a, b, c);
+          // });
+
           if (/IMG/.test(el[0].nodeName)) {
             var orig_path = el[0].src;
 
@@ -40,14 +51,18 @@
 
             el[0].src = path;
 
-            return el.trigger('replace', [el[0].src, orig_path]);
+            return trigger(el[0].src, orig_path);
           }
+          var last_path = el.data('interchange-last-path');
 
-          $.get(path, function (response) {
+          if (last_path == path) return;
+
+          return $.get(path, function (response) {
             el.html(response);
+            el.data('interchange-last-path', path);
+            trigger();
           });
 
-          return el.trigger('replace', [el[0]]);
         }
       }
     },
@@ -96,7 +111,15 @@
 
           if (passed) {
             this.settings.directives[passed
-              .scenario[1]](passed.el, passed.scenario[0]);
+              .scenario[1]](passed.el, passed.scenario[0], function () {
+                if (arguments[0] instanceof Array) { 
+                  var args = arguments[0];
+                } else { 
+                  var args = Array.prototype.slice.call(arguments, 0);
+                }
+
+                passed.el.trigger(passed.scenario[1], args);
+              });
           }
         }
       }
@@ -225,7 +248,7 @@
       var count = this['cached_' + type].length;
 
       for (var i = count - 1; i >= 0; i--) {
-        this._object($(this['cached_' + type][i]));
+        this.object($(this['cached_' + type][i]));
       }
 
       return $(window).trigger('resize');
@@ -245,7 +268,7 @@
       return 'replace';
     },
 
-    _object : function(el) {
+    object : function(el) {
       var raw_arr = this.parse_data_attr(el),
           scenarios = [], count = raw_arr.length;
 
@@ -316,4 +339,4 @@
 
   };
 
-}(Foundation.zj, this, this.document));
+}(jQuery, this, this.document));
