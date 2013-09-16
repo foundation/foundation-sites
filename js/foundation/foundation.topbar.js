@@ -38,8 +38,14 @@
           self.settings.$section = self.settings.$topbar.find('section');
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
           self.settings.$topbar.data('index', 0);
-          self.settings.$topbar.data('height', self.settings.$topbar.parent().outerHeight());
-          self.settings.$topbar.data('stickyoffset', self.settings.$topbar.parent().offset().top);
+
+          var topbarContainer = self.settings.$topbar.parent();
+          if(topbarContainer.hasClass('fixed') || topbarContainer.hasClass(self.settings.stickyClass)) {
+            self.settings.$topbar.data('height', topbarContainer.outerHeight());
+            self.settings.$topbar.data('stickyoffset', topbarContainer.offset().top);
+          } else {
+            self.settings.$topbar.data('height', self.settings.$topbar.outerHeight());
+          }
 
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
           self.settings.breakPoint = breakpoint.width();
@@ -112,7 +118,7 @@
           }
         }
       } else {
-        if(topbar.parent().hasClass('sticky')) {
+        if(topbar.parent().hasClass(self.settings.stickyClass)) {
           topbar.parent().addClass('fixed');
         }
 
@@ -195,7 +201,11 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
+<<<<<<< HEAD
             topbar.css('height', $this.siblings('ul').outerHeight(true));
+=======
+            topbar.css('height', self.outerHeight($this.siblings('ul'), true) + self.settings.$topbar.data('height'));
+>>>>>>> master
           }
         });
 
@@ -268,7 +278,11 @@
         if (topbar.data('index') === 0) {
           topbar.css('height', '');
         } else {
+<<<<<<< HEAD
           topbar.css('height', $previousLevelUl.outerHeight(true));
+=======
+          topbar.css('height', self.outerHeight($previousLevelUl, true) + self.settings.$topbar.data('height'));
+>>>>>>> master
         }
 
         setTimeout(function () {

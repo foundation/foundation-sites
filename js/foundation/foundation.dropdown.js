@@ -122,14 +122,11 @@
     },
 
     css : function (dropdown, target) {
-      var offset_parent = dropdown.offsetParent();
-      // if (offset_parent.length > 0 && /body/i.test(dropdown.offsetParent()[0].nodeName)) {
-        var position = target.offset();
-        position.top -= offset_parent.offset().top;
-        position.left -= offset_parent.offset().left;
-      // } else {
-      //   var position = target.position();
-      // }
+      var offset_parent = dropdown.offsetParent(),
+          position = target.offset();
+
+      position.top -= offset_parent.offset().top;
+      position.left -= offset_parent.offset().left;
 
       if (this.small()) {
         dropdown.css({
@@ -140,7 +137,7 @@
         });
         dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
       } else {
-        if (!Foundation.rtl && $(window).width() > dropdown.outerWidth() + target.offset().left) {
+        if (!Foundation.rtl && $(window).width() > dropdown.outerWidth() + target.offset().left && !this.data_options(target).align_right) {
           var left = position.left;
           if (dropdown.hasClass('right')) {
             dropdown.removeClass('right');

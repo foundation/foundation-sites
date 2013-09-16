@@ -64,7 +64,7 @@ $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%) !default;
 
 // Sticky Class
 $topbar-sticky-class: ".sticky" !default;
-$topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+$topbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
 
 @if $include-html-top-bar-classes != false {
 
@@ -446,16 +446,18 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
       }
 
       .has-dropdown {
-        & > a {
-          padding-#{$opposite-direction}: $topbar-height / 3 + 20 !important;
 
-          &:after {
-            @if($topbar-arrows){
+        @if($topbar-arrows){
+         
+          & > a {
+            padding-#{$opposite-direction}: $topbar-height / 3 + 20 !important;
+            &:after {
               @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
+              margin-top: -($topbar-dropdown-toggle-size / 2);
+              top: $topbar-height / 2;
             }
-            margin-top: -($topbar-dropdown-toggle-size / 2);
-            top: $topbar-height / 2;
           }
+
         }
 
         &.moved { position: relative;

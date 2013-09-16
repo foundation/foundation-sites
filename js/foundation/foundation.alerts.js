@@ -9,12 +9,14 @@
     version : '4.3.2',
 
     settings : {
+      animation: 'fadeOut',
       speed: 300, // fade out speed
       callback: function (){}
     },
 
     init : function (scope, method, options) {
       this.scope = scope || this.scope;
+      Foundation.inherit(this, 'data_options');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
