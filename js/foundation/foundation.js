@@ -167,6 +167,13 @@ if (typeof jQuery === "undefined" &&
     return this;
   };
 
+  function removeQuotes(string) {
+      if (typeof string === 'string' || string instanceof String) {
+          string = string.replace(/^['"]+|(;\s?})+|['"]$/g, '');
+      }
+      return string;
+  }
+
   window.Foundation = {
     name : 'Foundation',
 
@@ -175,9 +182,9 @@ if (typeof jQuery === "undefined" &&
     cache : {},
 
     media_queries : {
-      small : $('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
-      medium : $('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
-      large : $('.foundation-mq-large').css('font-family').replace(/\'/g, '')
+      small : removeQuotes($('.foundation-mq-small').css('font-family')),
+      medium : removeQuotes($('.foundation-mq-medium').css('font-family')),
+      large : removeQuotes($('.foundation-mq-large').css('font-family'))
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,

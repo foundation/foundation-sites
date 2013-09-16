@@ -11,7 +11,6 @@
 
     settings: {
       deep_linking: false,
-      small_breakpoint: 768,
       one_up: true,
       multi_expand: false,
       section_selector: '[data-section]',
@@ -407,7 +406,8 @@
       if ($('html').hasClass('ie8compat')) {
         return true;
       }
-      return $(this.scope).width() < settings.small_breakpoint;
+
+      return !matchMedia(Foundation.media_queries['small']).matches;
     },
 
     off: function() {
