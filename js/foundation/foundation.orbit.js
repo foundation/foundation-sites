@@ -60,7 +60,7 @@
 
       if (settings.slide_number) {
         number_container = $('<div>').addClass(settings.slide_number_class);
-        number_container.append('<span></span> of <span></span>');
+        number_container.append('<span></span> ' + settings.slide_number_text + ' <span></span>');
         container.append(number_container);
       }
 
@@ -383,6 +383,7 @@
       stack_on_small: false,
       navigation_arrows: true,
       slide_number: true,
+      slide_number_text: 'of',
       container_class: 'orbit-container',
       stack_on_small_class: 'orbit-stack-on-small',
       next_class: 'orbit-next',
