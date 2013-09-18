@@ -51,7 +51,7 @@
 
             el[0].src = path;
 
-            return trigger(el[0].src, orig_path);
+            return trigger(el[0].src);
           }
           var last_path = el.data('interchange-last-path');
 

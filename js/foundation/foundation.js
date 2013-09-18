@@ -15,6 +15,9 @@
   $('head').append('<meta class="foundation-mq-medium">');
   $('head').append('<meta class="foundation-mq-large">');
 
+  // Enable FastClick
+  FastClick.attach(document.body);
+
   /*
     matchMedia() polyfill - Test a CSS media 
     type/query in JS. Authors & copyright (c) 2012: 

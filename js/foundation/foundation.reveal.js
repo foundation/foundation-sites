@@ -80,18 +80,18 @@
         .on('click.fndtn.reveal touchend', this.close_targets(), function (e) {
           e.preventDefault();
           if (!self.locked) {
-            var settings = $.extend({}, self.settings, self.data_options($('.reveal-modal.open'))),
+            var settings = $.extend({}, self.settings, self.data_options($('[data-reveal-modal].open'))),
               bgClicked = $(e.target)[0] === $('.' + settings.bgClass)[0];
             if (bgClicked && !settings.closeOnBackgroundClick) {
               return;
             }
 
             self.locked = true;
-            self.close.call(self, bgClicked ? $('.reveal-modal.open') : $(this).closest('.reveal-modal'));
+            self.close.call(self, bgClicked ? $('[data-reveal-modal].open') : $(this).closest('[data-reveal-modal]'));
           }
         });
 
-      if($(this.scope).hasClass('reveal-modal')) {
+      if($(this.scope).find('[data-reveal-modal]').length > 0) {
         $(this.scope)
           .on('open.fndtn.reveal', this.settings.open)
           .on('opened.fndtn.reveal', this.settings.opened)
@@ -101,16 +101,16 @@
           .on('closed.fndtn.reveal', this.close_video);
       } else {
         $(this.scope)
-          .on('open.fndtn.reveal', '.reveal-modal', this.settings.open)
-          .on('opened.fndtn.reveal', '.reveal-modal', this.settings.opened)
-          .on('opened.fndtn.reveal', '.reveal-modal', this.open_video)
-          .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
-          .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
-          .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
+          .on('open.fndtn.reveal', '[data-reveal-modal]', this.settings.open)
+          .on('opened.fndtn.reveal', '[data-reveal-modal]', this.settings.opened)
+          .on('opened.fndtn.reveal', '[data-reveal-modal]', this.open_video)
+          .on('close.fndtn.reveal', '[data-reveal-modal]', this.settings.close)
+          .on('closed.fndtn.reveal', '[data-reveal-modal]', this.settings.closed)
+          .on('closed.fndtn.reveal', '[data-reveal-modal]', this.close_video);
       }
 
       $( 'body' ).bind( 'keyup.reveal', function ( event ) {
-        var open_modal = $('.reveal-modal.open'),
+        var open_modal = $('[data-reveal-modal].open'),
             settings = $.extend({}, self.settings, self.data_options(open_modal));
         if ( event.which === 27  && settings.closeOnEsc) { // 27 is the keycode for the Escape key
           open_modal.foundation('reveal', 'close');
@@ -134,7 +134,7 @@
       }
 
       if (!modal.hasClass('open')) {
-        var open_modal = $('.reveal-modal.open');
+        var open_modal = $('[data-reveal-modal].open');
 
         if (typeof modal.data('css-top') === 'undefined') {
           modal.data('css-top', parseInt(modal.css('top'), 10))
@@ -176,7 +176,7 @@
     close : function (modal) {
 
       var modal = modal && modal.length ? modal : $(this.scope),
-          open_modals = $('.reveal-modal.open');
+          open_modals = $('[data-reveal-modal].open');
 
       if (open_modals.length > 0) {
         this.locked = true;
