@@ -81,13 +81,13 @@
           e.preventDefault();
           if (!self.locked) {
             var settings = $.extend({}, self.settings, self.data_options($('[data-reveal-modal].open'))),
-              bg_clicked = $(e.target)[0] === $('.' + settings.bg_class)[0];
-            if (bg_clicked && !settings.close_on_background_click) {
+              bgClicked = $(e.target)[0] === $('.' + settings.bgClass)[0];
+            if (bgClicked && !settings.closeOnBackgroundClick) {
               return;
             }
 
             self.locked = true;
-            self.close.call(self, bg_clicked ? $('[data-reveal-modal].open') : $(this).closest('[data-reveal-modal]'));
+            self.close.call(self, bgClicked ? $('[data-reveal-modal].open') : $(this).closest('[data-reveal-modal]'));
           }
         });
 
