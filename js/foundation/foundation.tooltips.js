@@ -12,7 +12,7 @@
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
-      tapToClose_text: 'tap to close',
+      touchCloseText: 'tap to close',
       appendTo: 'body',
       'disable-for-touch': false,
       tipTemplate : function (selector, content) {
