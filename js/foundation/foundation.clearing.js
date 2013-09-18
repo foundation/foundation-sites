@@ -228,7 +228,7 @@
     },
 
     is_open : function (current) {
-      return current.parent().attr('style').length > 0;
+      return current.parent().prop('style').length > 0;
     },
 
     keydown : function (e) {
