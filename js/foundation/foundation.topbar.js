@@ -38,8 +38,14 @@
           self.settings.$section = self.settings.$topbar.find('section');
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
           self.settings.$topbar.data('index', 0);
-          self.settings.$topbar.data('height', self.settings.$topbar.parent().outerHeight());
-          self.settings.$topbar.data('stickyoffset', self.settings.$topbar.parent().offset().top);
+
+          var topbarContainer = self.settings.$topbar.parent();
+          if(topbarContainer.hasClass('fixed') || topbarContainer.hasClass(self.settings.sticky_class)) {
+            self.settings.$topbar.data('height', topbarContainer.outerHeight());
+            self.settings.$topbar.data('stickyoffset', topbarContainer.offset().top);
+          } else {
+            self.settings.$topbar.data('height', self.settings.$topbar.outerHeight());
+          }
 
           var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
           self.settings.breakPoint = breakpoint.width();
@@ -200,8 +206,7 @@
         });
 
       $(window).on('resize.fndtn.topbar', function () {
-        if (typeof self.settings.$topbar === 'undefined') { return; }
-        var stickyContainer = self.settings.$topbar.parent('.' + this.settings.stickyClass);
+        var stickyContainer = self.settings.$topbar.parent('.' + this.settings.sticky_class);
         var stickyOffset;
 
         if (!self.breakpoint()) {
