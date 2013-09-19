@@ -9,7 +9,7 @@
     version : '4.2.2',
 
     settings : {
-      activeClass: 'active',
+      active_class: 'active',
       threshold: 0
     },
 
@@ -40,15 +40,15 @@
       $(this.scope).on('arrival.fndtn.magellan', '[data-magellan-arrival]', function (e) {
         var $destination = $(this),
             $expedition = $destination.closest('[data-magellan-expedition]'),
-            activeClass = $expedition.attr('data-magellan-active-class') 
-              || self.settings.activeClass;
+            active_class = $expedition.attr('data-magellan-active-class') 
+              || self.settings.active_class;
 
           $destination
             .closest('[data-magellan-expedition]')
             .find('[data-magellan-arrival]')
             .not($destination)
-            .removeClass(activeClass);
-          $destination.addClass(activeClass);
+            .removeClass(active_class);
+          $destination.addClass(active_class);
       });
 
       this.fixed_magellan

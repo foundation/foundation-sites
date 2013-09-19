@@ -494,13 +494,6 @@
       return this.settings.locked;
     },
 
-    // plugin management/browser quirks
-
-    outerHTML : function (el) {
-      // support FireFox < 11
-      return el.outerHTML || new XMLSerializer().serializeToString(el);
-    },
-
     off : function () {
       $(this.scope).off('.fndtn.clearing');
       $(window).off('.fndtn.clearing');

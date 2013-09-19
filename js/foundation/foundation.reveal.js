@@ -12,11 +12,11 @@
 
     settings : {
       animation: 'fadeAndPop',
-      animationSpeed: 250,
-      closeOnBackgroundClick: true,
-      closeOnEsc: true,
-      dismissModalClass: 'close-reveal-modal',
-      bgClass: 'reveal-modal-bg',
+      animation_speed: 250,
+      close_on_background_click: true,
+      close_on_esc: true,
+      dismiss_modal_class: 'close-reveal-modal',
+      bg_class: 'reveal-modal-bg',
       open: function(){},
       opened: function(){},
       close: function(){},
@@ -81,13 +81,13 @@
           e.preventDefault();
           if (!self.locked) {
             var settings = $.extend({}, self.settings, self.data_options($('[data-reveal-modal].open'))),
-              bgClicked = $(e.target)[0] === $('.' + settings.bgClass)[0];
-            if (bgClicked && !settings.closeOnBackgroundClick) {
+              bg_clicked = $(e.target)[0] === $('.' + settings.bg_class)[0];
+            if (bg_clicked && !settings.close_on_background_click) {
               return;
             }
 
             self.locked = true;
-            self.close.call(self, bgClicked ? $('[data-reveal-modal].open') : $(this).closest('[data-reveal-modal]'));
+            self.close.call(self, bg_clicked ? $('[data-reveal-modal].open') : $(this).closest('[data-reveal-modal]'));
           }
         });
 
@@ -112,7 +112,7 @@
       $( 'body' ).bind( 'keyup.reveal', function ( event ) {
         var open_modal = $('[data-reveal-modal].open'),
             settings = $.extend({}, self.settings, self.data_options(open_modal));
-        if ( event.which === 27  && settings.closeOnEsc) { // 27 is the keycode for the Escape key
+        if ( event.which === 27  && settings.close_on_esc) { // 27 is the keycode for the Escape key
           open_modal.foundation('reveal', 'close');
         }
       });
@@ -187,18 +187,18 @@
     },
 
     close_targets : function () {
-      var base = '.' + this.settings.dismissModalClass;
+      var base = '.' + this.settings.dismiss_modal_class;
 
-      if (this.settings.closeOnBackgroundClick) {
-        return base + ', .' + this.settings.bgClass;
+      if (this.settings.close_on_background_click) {
+        return base + ', .' + this.settings.bg_class;
       }
 
       return base;
     },
 
     toggle_bg : function () {
-      if ($('.' + this.settings.bgClass).length === 0) {
-        this.settings.bg = $('<div />', {'class': this.settings.bgClass})
+      if ($('.' + this.settings.bg_class).length === 0) {
+        this.settings.bg = $('<div />', {'class': this.settings.bg_class})
           .appendTo('body');
       }
 
@@ -232,12 +232,12 @@
           return this.delay(function () {
             return el
               .css(css)
-              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+              .animate(end_css, this.settings.animation_speed, 'linear', function () {
                 this.locked = false;
                 el.trigger('opened');
               }.bind(this))
               .addClass('open');
-          }.bind(this), this.settings.animationSpeed / 2);
+          }.bind(this), this.settings.animation_speed / 2);
         }
 
         if (/fade/i.test(this.settings.animation)) {
@@ -246,12 +246,12 @@
           return this.delay(function () {
             return el
               .css(css)
-              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+              .animate(end_css, this.settings.animation_speed, 'linear', function () {
                 this.locked = false;
                 el.trigger('opened');
               }.bind(this))
               .addClass('open');
-          }.bind(this), this.settings.animationSpeed / 2);
+          }.bind(this), this.settings.animation_speed / 2);
         }
 
         return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened');
@@ -259,7 +259,7 @@
 
       // should we animate the background?
       if (/fade/i.test(this.settings.animation)) {
-        return el.fadeIn(this.settings.animationSpeed / 2);
+        return el.fadeIn(this.settings.animation_speed / 2);
       }
 
       return el.show();
@@ -276,12 +276,12 @@
 
           return this.delay(function () {
             return el
-              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+              .animate(end_css, this.settings.animation_speed, 'linear', function () {
                 this.locked = false;
                 el.css(css).trigger('closed');
               }.bind(this))
               .removeClass('open');
-          }.bind(this), this.settings.animationSpeed / 2);
+          }.bind(this), this.settings.animation_speed / 2);
         }
 
         if (/fade/i.test(this.settings.animation)) {
@@ -289,12 +289,12 @@
 
           return this.delay(function () {
             return el
-              .animate(end_css, this.settings.animationSpeed, 'linear', function () {
+              .animate(end_css, this.settings.animation_speed, 'linear', function () {
                 this.locked = false;
                 el.css(css).trigger('closed');
               }.bind(this))
               .removeClass('open');
-          }.bind(this), this.settings.animationSpeed / 2);
+          }.bind(this), this.settings.animation_speed / 2);
         }
 
         return el.hide().css(css).removeClass('open').trigger('closed');
@@ -302,7 +302,7 @@
 
       // should we animate the background?
       if (/fade/i.test(this.settings.animation)) {
-        return el.fadeOut(this.settings.animationSpeed / 2);
+        return el.fadeOut(this.settings.animation_speed / 2);
       }
 
       return el.hide();

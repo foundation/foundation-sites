@@ -13,27 +13,27 @@
     defaults : {
       expose               : false,      // turn on or off the expose feature
       modal                : false,      // Whether to cover page with modal during the tour
-      tipLocation          : 'bottom',  // 'top' or 'bottom' in relation to parent
-      nubPosition          : 'auto',    // override on a per tooltip bases
-      scrollSpeed          : 300,       // Page scrolling speed in milliseconds, 0 = no scroll animation
+      tip_location          : 'bottom',  // 'top' or 'bottom' in relation to parent
+      nub_position          : 'auto',    // override on a per tooltip bases
+      scroll_speed          : 300,       // Page scrolling speed in milliseconds, 0 = no scroll animation
       timer                : 0,         // 0 = no timer , all other numbers = timer in milliseconds
-      startTimerOnClick    : true,      // true or false - true requires clicking the first button start the timer
-      startOffset          : 0,         // the index of the tooltip you want to start on (index of the li)
-      nextButton           : true,      // true or false to control whether a next button is used
-      tipAnimation         : 'fade',    // 'pop' or 'fade' in each tip
-      pauseAfter           : [],        // array of indexes where to pause the tour after
+      start_timer_on_click    : true,      // true or false - true requires clicking the first button start the timer
+      start_offset          : 0,         // the index of the tooltip you want to start on (index of the li)
+      next_button           : true,      // true or false to control whether a next button is used
+      tip_animation         : 'fade',    // 'pop' or 'fade' in each tip
+      pause_after           : [],        // array of indexes where to pause the tour after
       exposed              : [],        // array of expose elements
-      tipAnimationFadeSpeed: 300,       // when tipAnimation = 'fade' this is speed in milliseconds for the transition
-      cookieMonster        : false,     // true or false to control whether cookies are used
-      cookieName           : 'joyride', // Name the cookie you'll use
-      cookieDomain         : false,     // Will this cookie be attached to a domain, ie. '.notableapp.com'
-      cookieExpires        : 365,       // set when you would like the cookie to expire.
-      tipContainer         : 'body',    // Where will the tip be attached
-      postRideCallback     : function (){},    // A method to call once the tour closes (canceled or complete)
-      postStepCallback     : function (){},    // A method to call after each step
-      preStepCallback      : function (){},    // A method to call before each step
-      preRideCallback      : function (){},    // A method to call before the tour starts (passed index, tip, and cloned exposed element)
-      postExposeCallback   : function (){},    // A method to call after an element has been exposed
+      tip_animation_fade_speed: 300,       // when tipAnimation = 'fade' this is speed in milliseconds for the transition
+      cookie_monster        : false,     // true or false to control whether cookies are used
+      cookie_name           : 'joyride', // Name the cookie you'll use
+      cookie_domain         : false,     // Will this cookie be attached to a domain, ie. '.notableapp.com'
+      cookie_expires        : 365,       // set when you would like the cookie to expire.
+      tip_container         : 'body',    // Where will the tip be attached
+      post_ride_callback     : function (){},    // A method to call once the tour closes (canceled or complete)
+      post_step_callback     : function (){},    // A method to call after each step
+      pre_step_callback      : function (){},    // A method to call before each step
+      pre_ride_callback      : function (){},    // A method to call before the tour starts (passed index, tip, and cloned exposed element)
+      post_expose_callback   : function (){},    // A method to call after an element has been exposed
       template : { // HTML segments for tip layout
         link    : '<a href="#close" class="joyride-close-tip">&times;</a>',
         timer   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
@@ -42,9 +42,9 @@
         button  : '<a href="#" class="small button joyride-next-tip"></a>',
         modal   : '<div class="joyride-modal-bg"></div>',
         expose  : '<div class="joyride-expose-wrapper"></div>',
-        exposeCover: '<div class="joyride-expose-cover"></div>'
+        expose_cover: '<div class="joyride-expose-cover"></div>'
       },
-      exposeAddClass : '' // One or more space-separated class names to be added to exposed element
+      expose_add_class : '' // One or more space-separated class names to be added to exposed element
     },
 
     settings : {},
@@ -133,7 +133,7 @@
       this.settings.paused = false;
       this.settings.attempts = 0;
 
-      this.settings.tipLocationPatterns = {
+      this.settings.tip_location_patterns = {
         top: ['bottom'],
         bottom: [], // bottom should not need to be repositioned
         left: ['right', 'top', 'bottom'],
@@ -142,11 +142,11 @@
 
       // can we create cookies?
       if (typeof $.cookie !== 'function') {
-        this.settings.cookieMonster = false;
+        this.settings.cookie_monster = false;
       }
 
       // generate the tips and insert into dom.
-      if (!this.settings.cookieMonster || this.settings.cookieMonster && $.cookie(this.settings.cookieName) === null) {
+      if (!this.settings.cookie_monster || this.settings.cookie_monster && $.cookie(this.settings.cookie_name) === null) {
         this.settings.$tip_content.each(function (index) {
           var $this = $(this);
           $.extend(true, self.settings, self.data_options($this));
@@ -158,7 +158,7 @@
         });
 
         // show first tip
-        if (!this.settings.startTimerOnClick && this.settings.timer > 0) {
+        if (!this.settings.start_timer_on_click && this.settings.timer > 0) {
           this.show('init');
           this.startTimer();
         } else {
@@ -194,7 +194,7 @@
     timer_instance : function (index) {
       var txt;
 
-      if ((index === 0 && this.settings.startTimerOnClick && this.settings.timer > 0) || this.settings.timer === 0) {
+      if ((index === 0 && this.settings.start_timer_on_click && this.settings.timer > 0) || this.settings.timer === 0) {
         txt = '';
       } else {
         txt = this.outerHTML($(this.settings.template.timer)[0]);
@@ -203,7 +203,7 @@
     },
 
     button_text : function (txt) {
-      if (this.settings.nextButton) {
+      if (this.settings.next_button) {
         txt = $.trim(txt) || 'Next';
         txt = this.outerHTML($(this.settings.template.button).append(txt)[0]);
       } else {
@@ -230,7 +230,7 @@
 
       // are we paused?
       if (this.settings.$li === undefined
-        || ($.inArray(this.settings.$li.index(), this.settings.pauseAfter) === -1)) {
+        || ($.inArray(this.settings.$li.index(), this.settings.pause_after) === -1)) {
 
         // don't go to the next li if the tour was paused
         if (this.settings.paused) {
@@ -243,13 +243,13 @@
 
         if (this.settings.$li.length && this.settings.$target.length > 0) {
           if (init) { //run when we first start
-            this.settings.preRideCallback(this.settings.$li.index(), this.settings.$next_tip);
+            this.settings.pre_ride_callback(this.settings.$li.index(), this.settings.$next_tip);
             if (this.settings.modal) {
               this.show_modal();
             }
           }
 
-          this.settings.preStepCallback(this.settings.$li.index(), this.settings.$next_tip);
+          this.settings.pre_step_callback(this.settings.$li.index(), this.settings.$next_tip);
 
           if (this.settings.modal && this.settings.expose) {
             this.expose();
@@ -259,7 +259,7 @@
 
           this.settings.timer = parseInt(this.settings.timer, 10);
 
-          this.settings.tipSettings.tipLocationPattern = this.settings.tipLocationPatterns[this.settings.tipSettings.tipLocation];
+          this.settings.tipSettings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tipSettings.tip_location];
 
           // scroll if not modal
           if (!/body/i.test(this.settings.$target.selector)) {
@@ -274,7 +274,7 @@
 
           $timer = this.settings.$next_tip.find('.joyride-timer-indicator');
 
-          if (/pop/i.test(this.settings.tipAnimation)) {
+          if (/pop/i.test(this.settings.tip_animation)) {
 
             $timer.width(0);
 
@@ -286,7 +286,7 @@
                 $timer.animate({
                   width: $timer.parent().width()
                 }, this.settings.timer, 'linear');
-              }.bind(this), this.settings.tipAnimationFadeSpeed);
+              }.bind(this), this.settings.tip_animation_fade_speed);
 
             } else {
               this.settings.$next_tip.show();
@@ -294,24 +294,24 @@
             }
 
 
-          } else if (/fade/i.test(this.settings.tipAnimation)) {
+          } else if (/fade/i.test(this.settings.tip_animation)) {
 
             $timer.width(0);
 
             if (this.settings.timer > 0) {
 
               this.settings.$next_tip
-                .fadeIn(this.settings.tipAnimationFadeSpeed)
+                .fadeIn(this.settings.tip_animation_fade_speed)
                 .show();
 
               this.delay(function () {
                 $timer.animate({
                   width: $timer.parent().width()
                 }, this.settings.timer, 'linear');
-              }.bind(this), this.settings.tipAnimationFadeSpeed);
+              }.bind(this), this.settings.tip_animation_fadeSpeed);
 
             } else {
-              this.settings.$next_tip.fadeIn(this.settings.tipAnimationFadeSpeed);
+              this.settings.$next_tip.fadeIn(this.settings.tip_animation_fade_speed);
 
             }
           }
@@ -359,13 +359,13 @@
         this.hide();
         this.css('visibility', 'visible');
       }, this.settings.$current_tip), 0);
-      this.settings.postStepCallback(this.settings.$li.index(),
+      this.settings.post_step_callback(this.settings.$li.index(),
         this.settings.$current_tip);
     },
 
     set_li : function (init) {
       if (init) {
-        this.settings.$li = this.settings.$tip_content.eq(this.settings.startOffset);
+        this.settings.$li = this.settings.$tip_content.eq(this.settings.start_offset);
         this.set_next_tip();
         this.settings.$current_tip = this.settings.$next_tip;
       } else {
@@ -405,12 +405,12 @@
       if (tipOffset > 0) {
         $('html, body').animate({
           scrollTop: tipOffset
-        }, this.settings.scrollSpeed);
+        }, this.settings.scroll_speed);
       }
     },
 
     paused : function () {
-      return ($.inArray((this.settings.$li.index() + 1), this.settings.pauseAfter) === -1);
+      return ($.inArray((this.settings.$li.index() + 1), this.settings.pause_after) === -1);
     },
 
     restart : function () {
@@ -448,7 +448,7 @@
               top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
               left: leftOffset});
 
-            this.nub_position($nub, this.settings.tipSettings.nubPosition, 'top');
+            this.nub_position($nub, this.settings.tipSettings.nub_position, 'top');
 
           } else if (this.top()) {
             var leftOffset = this.settings.$target.offset().left;
@@ -459,7 +459,7 @@
               top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
               left: leftOffset});
 
-            this.nub_position($nub, this.settings.tipSettings.nubPosition, 'bottom');
+            this.nub_position($nub, this.settings.tipSettings.nub_position, 'bottom');
 
           } else if (this.right()) {
 
@@ -467,7 +467,7 @@
               top: this.settings.$target.offset().top,
               left: (this.outerWidth(this.settings.$target) + this.settings.$target.offset().left + nub_width)});
 
-            this.nub_position($nub, this.settings.tipSettings.nubPosition, 'left');
+            this.nub_position($nub, this.settings.tipSettings.nub_position, 'left');
 
           } else if (this.left()) {
 
@@ -475,18 +475,18 @@
               top: this.settings.$target.offset().top,
               left: (this.settings.$target.offset().left - this.outerWidth(this.settings.$next_tip) - nub_width)});
 
-            this.nub_position($nub, this.settings.tipSettings.nubPosition, 'right');
+            this.nub_position($nub, this.settings.tipSettings.nub_osition, 'right');
 
           }
 
-          if (!this.visible(this.corners(this.settings.$next_tip)) && this.settings.attempts < this.settings.tipSettings.tipLocationPattern.length) {
+          if (!this.visible(this.corners(this.settings.$next_tip)) && this.settings.attempts < this.settings.tipSettings.tip_location_pattern.length) {
 
             $nub.removeClass('bottom')
               .removeClass('top')
               .removeClass('right')
               .removeClass('left');
 
-            this.settings.tipSettings.tipLocation = this.settings.tipSettings.tipLocationPattern[this.settings.attempts];
+            this.settings.tipSettings.tip_location = this.settings.tipSettings.tip_location_pattern[this.settings.attempts];
 
             this.settings.attempts++;
 
@@ -563,10 +563,10 @@
           $('body').append(this.settings.template.modal).show();
         }
 
-        if (/pop/i.test(this.settings.tipAnimation)) {
+        if (/pop/i.test(this.settings.tip_animation)) {
             joyridemodalbg.show();
         } else {
-            joyridemodalbg.fadeIn(this.settings.tipAnimationFadeSpeed);
+            joyridemodalbg.fadeIn(this.settings.tip_animation_fade_speed);
         }
       }
     },
@@ -603,7 +603,7 @@
         height: el.outerHeight(true)
       });
 
-      exposeCover = $(this.settings.template.exposeCover);
+      exposeCover = $(this.settings.template.expose_cover);
 
       origCSS = {
         zIndex: el.css('z-index'),
@@ -620,7 +620,7 @@
 
       el.data('expose-css',origCSS);
       el.data('orig-class', origClasses);
-      el.attr('class', origClasses + ' ' + this.settings.exposeAddClass);
+      el.attr('class', origClasses + ' ' + this.settings.expose_add_class);
 
       exposeCover.css({
         top: el.offset().top,
@@ -633,7 +633,7 @@
       expose.addClass(randId);
       exposeCover.addClass(randId);
       el.data('expose', randId);
-      this.settings.postExposeCallback(this.settings.$li.index(), this.settings.$next_tip, el);
+      this.settings.post_expose_callback(this.settings.$li.index(), this.settings.$next_tip, el);
       this.add_exposed(el);
     },
 
@@ -738,19 +738,19 @@
     },
 
     bottom : function () {
-      return /bottom/i.test(this.settings.tipSettings.tipLocation);
+      return /bottom/i.test(this.settings.tipSettings.tip_location);
     },
 
     top : function () {
-      return /top/i.test(this.settings.tipSettings.tipLocation);
+      return /top/i.test(this.settings.tipSettings.tip_location);
     },
 
     right : function () {
-      return /right/i.test(this.settings.tipSettings.tipLocation);
+      return /right/i.test(this.settings.tipSettings.tip_location);
     },
 
     left : function () {
-      return /left/i.test(this.settings.tipSettings.tipLocation);
+      return /left/i.test(this.settings.tipSettings.tip_location);
     },
 
     corners : function (el) {
@@ -814,8 +814,8 @@
     },
 
     end : function () {
-      if (this.settings.cookieMonster) {
-        $.cookie(this.settings.cookieName, 'ridden', { expires: this.settings.cookieExpires, domain: this.settings.cookieDomain });
+      if (this.settings.cookie_monster) {
+        $.cookie(this.settings.cookie_name, 'ridden', { expires: this.settings.cookie_expires, domain: this.settings.cookie_domain });
       }
 
       if (this.settings.timer > 0) {
@@ -830,8 +830,8 @@
 
       $('.joyride-modal-bg').hide();
       this.settings.$current_tip.hide();
-      this.settings.postStepCallback(this.settings.$li.index(), this.settings.$current_tip);
-      this.settings.postRideCallback(this.settings.$li.index(), this.settings.$current_tip);
+      this.settings.post_step_callback(this.settings.$li.index(), this.settings.$current_tip);
+      this.settings.post_ride_callback(this.settings.$li.index(), this.settings.$current_tip);
       $('.joyride-tip-guide').remove();
     },
 

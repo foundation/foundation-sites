@@ -10,7 +10,7 @@
 
     settings : {
       index : 0,
-      stickyClass : 'sticky',
+      sticky_class : 'sticky',
       custom_back_text: true,
       back_text: 'Back',
       is_hover: true,
@@ -40,7 +40,7 @@
           self.settings.$topbar.data('index', 0);
 
           var topbarContainer = self.settings.$topbar.parent();
-          if(topbarContainer.hasClass('fixed') || topbarContainer.hasClass(self.settings.stickyClass)) {
+          if(topbarContainer.hasClass('fixed') || topbarContainer.hasClass(self.settings.sticky_class)) {
             self.settings.$topbar.data('height', topbarContainer.outerHeight());
             self.settings.$topbar.data('stickyoffset', topbarContainer.offset().top);
           } else {
@@ -118,7 +118,7 @@
           }
         }
       } else {
-        if(topbar.parent().hasClass(self.settings.stickyClass)) {
+        if(topbar.parent().hasClass(self.settings.sticky_class)) {
           topbar.parent().addClass('fixed');
         }
 
@@ -126,7 +126,7 @@
           if (!topbar.hasClass('expanded')) {
             topbar.removeClass('fixed');
             topbar.parent().removeClass('expanded');
-            self.updateStickyPositioning();
+            self.update_sticky_positioning();
           } else {
             topbar.addClass('fixed');
             topbar.parent().addClass('expanded');
@@ -206,7 +206,7 @@
         });
 
       $(window).on('resize.fndtn.topbar', function () {
-        var stickyContainer = self.settings.$topbar.parent('.' + this.settings.stickyClass);
+        var stickyContainer = self.settings.$topbar.parent('.' + this.settings.sticky_class);
         var stickyOffset;
 
         if (!self.breakpoint()) {
@@ -333,11 +333,11 @@
           self = this;
 
       $window.scroll(function() {
-        self.updateStickyPositioning();
+        self.update_sticky_positioning();
       });
     },
 
-    updateStickyPositioning: function() {
+    update_sticky_positioning: function() {
       var klass = '.' + this.settings.stickyClass;
       var $window = $(window);
 
