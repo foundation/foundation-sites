@@ -110,7 +110,7 @@
 
       $tip.addClass(classes).appendTo(this.settings.append_to);
       if (Modernizr.touch) {
-        $tip.append('<span class="tap-to-close">'+this.settings.tapToClose_text+'</span>');
+        $tip.append('<span class="tap-to-close">'+this.settings.touchCloseText+'</span>');
       }
       $target.removeAttr('title').attr('title','');
       this.show($target);
