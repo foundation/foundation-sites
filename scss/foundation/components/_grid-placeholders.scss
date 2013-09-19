@@ -28,193 +28,193 @@
 }
 
 
-%grid-column-small-12 {
+%small-12 {
     @include grid-column(12);
 }
 
-%grid-column-small-11 {
+%small-11 {
     @include grid-column(11);
 }
 
-%grid-column-small-10 {
+%small-10 {
     @include grid-column(10);
 }
 
-%grid-column-small-9 {
+%small-9 {
     @include grid-column(9);
 }
 
-%grid-column-small-8 {
+%small-8 {
     @include grid-column(8);
 }
 
-%grid-column-small-7 {
+%small-7 {
     @include grid-column(7);
 }
 
-%grid-column-small-6 {
+%small-6 {
     @include grid-column(6);
 }
 
-%grid-column-small-5 {
+%small-5 {
     @include grid-column(5);
 }
 
-%grid-column-small-4 {
+%small-4 {
     @include grid-column(4);
 }
 
-%grid-column-small-3 {
+%small-3 {
     @include grid-column(3);
 }
 
-%grid-column-small-2 {
+%small-2 {
     @include grid-column(2);
 }
 
-%grid-column-small-1 {
+%small-1 {
     @include grid-column(1);
 }
 
-%grid-column-medium-12 {
+%medium-12 {
     @media #{$small} {
         @include grid-column(12);
     }
 }
 
-%grid-column-medium-11 {
+%medium-11 {
     @media #{$small} {
         @include grid-column(11);
     }
 }
 
-%grid-column-medium-10 {
+%medium-10 {
     @media #{$small} {
         @include grid-column(10);
     }
 }
 
-%grid-column-medium-9 {
+%medium-9 {
     @media #{$small} {
         @include grid-column(9);
     }
 }
 
-%grid-column-medium-8 {
+%medium-8 {
     @media #{$small} {
         @include grid-column(8);
     }
 }
 
-%grid-column-medium-7 {
+%medium-7 {
     @media #{$small} {
         @include grid-column(7);
     }
 }
 
-%grid-column-medium-6 {
+%medium-6 {
     @media #{$small} {
         @include grid-column(6);
     }
 }
 
-%grid-column-medium-5 {
+%medium-5 {
     @media #{$small} {
         @include grid-column(5);
     }
 }
 
-%grid-column-medium-4 {
+%medium-4 {
     @media #{$small} {
         @include grid-column(4);
     }
 }
 
-%grid-column-medium-3 {
+%medium-3 {
     @media #{$small} {
         @include grid-column(3);
     }
 }
 
-%grid-column-medium-2 {
+%medium-2 {
     @media #{$small} {
         @include grid-column(2);
     }
 }
 
-%grid-column-medium-1 {
+%medium-1 {
     @media #{$small} {
         @include grid-column(1);
     }
 }
 
-%grid-column-large-12 {
+%large-12 {
     @media #{$medium} {
         @include grid-column(12);
     }
 }
 
-%grid-column-large-11 {
+%large-11 {
     @media #{$medium} {
         @include grid-column(11);
     }
 }
 
-%grid-column-large-10 {
+%large-10 {
     @media #{$medium} {
         @include grid-column(10);
     }
 }
 
-%grid-column-large-9 {
+%large-9 {
     @media #{$medium} {
         @include grid-column(9);
     }
 }
 
-%grid-column-large-8 {
+%large-8 {
     @media #{$medium} {
         @include grid-column(8);
     }
 }
 
-%grid-column-large-7 {
+%large-7 {
     @media #{$medium} {
         @include grid-column(7);
     }
 }
 
-%grid-column-large-6 {
+%large-6 {
     @media #{$medium} {
         @include grid-column(6);
     }
 }
 
-%grid-column-large-5 {
+%large-5 {
     @media #{$medium} {
         @include grid-column(5);
     }
 }
 
-%grid-column-large-4 {
+%large-4 {
     @media #{$medium} {
         @include grid-column(4);
     }
 }
 
-%grid-column-large-3 {
+%large-3 {
     @media #{$medium} {
         @include grid-column(3);
     }
 }
 
-%grid-column-large-2 {
+%large-2 {
     @media #{$medium} {
         @include grid-column(2);
     }
 }
 
-%grid-column-large-1 {
+%large-1 {
     @media #{$medium} {
         @include grid-column(1);
     }
