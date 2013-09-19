@@ -376,6 +376,7 @@ $glowing-effect-color: $input-focus-border-color !default;
       @include form-label-error-color;
     }
 
+    small,
     small.error {
       @include form-error-message;
     }
