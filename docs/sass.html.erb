@@ -134,7 +134,9 @@
     <p>If you've created a project using Compass, but didn't require the Foundation gem, you'll need to install it separately. When you do this you'll get all the necessary files on top of the ones you already have. If something is a duplicate, Compass will ignore it. The steps you'll take to properly install Foundation are:</p>
     <ol style="margin-left: 20px;">
       <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
+      <li>Add <span class="keystroke">gem 'zurb-foundation', '~> 4.3.1'</span> to Gemfile's development group</li>
       <li><span class="keystroke">cd path/to/your-project</span></li>
+      <li>run <span class="keystroke">bundle install</span></li>
       <li>run <span class="keystroke">compass install foundation</span></li>
     </ol>
 
