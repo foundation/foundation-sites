@@ -80,13 +80,21 @@
         <p>If you'd rather have your dropdown be accessible by hover you can add a data-option to the target element:</p>
 
 <%= code_example '
-<a href="#" data-dropdown="drop1" data-options="is_hover:true">Has Dropdown</a>
+<a href="#" data-dropdown="hover1" data-options="is_hover:true">Has Hover Dropdown</a>
 
-<ul id="drop1" class="f-dropdown" data-dropdown-content>
+<ul id="hover1" class="f-dropdown" data-dropdown-content>
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
   <li><a href="#">Yet another</a></li>
 </ul>', :html %>
+
+        <a href="#" data-dropdown="hover1" data-options="is_hover:true">Has Hover Dropdown</a>
+
+        <ul id="hover1" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <hr>
 
