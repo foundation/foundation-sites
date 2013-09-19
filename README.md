@@ -53,6 +53,11 @@ Drupal
 * [Zurb Foundation](http://drupal.org/project/zurb-foundation) Supporting F3.2, F4 & Drupal 8  by [Ishmael Sanchez](http://ishmaelsanchez.com), [Chris Lee](http://hire.chrisjlee.net)
 * [Zoundation Theme](http://drupal.org/project/zoundation) by [Andrea Burton](https://twitter.com/andreaburton) & [Jeff Graham](https://twitter.com/jgraham909), FunnyMonkey
 
+Jekyll
+
+* [Foundation 4 SASS](https://github.com/rememberlenny/Jekyll-Foundation-SASS) by [Leonard Bogdonoff](http://twitter.com/rememberlenny)
+* [Foundation 3 CSS](https://github.com/groovemonkey/jekyll-foundation-base) by [Dave Cohen](https://github.com/groovemonkey)
+
 Alfred
 
 * [Foundation Alfred](https://github.com/joshmedeski/foundation-alfred) by Josh Medeski (@joshmedeski)
@@ -154,7 +159,7 @@ Ruby on Rails Sass Gems
 
 Yeoman Generator
 
-* [Yeoman 1.0-Foundation 4](https://github.com/lkbgift/foundation4-yeoman) by [Leonard Bogdonoff](http://twitter.com/lkbcc)
+* [Yeoman 1.0-Foundation 4](https://github.com/lkbgift/foundation4-yeoman) by [Leonard Bogdonoff](http://twitter.com/rememberlenny)
 * [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
 * [Generator-Foundation-Ext](https://github.com/jamesakers/generator-foundation-ext) by James Akers
 
