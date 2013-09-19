@@ -101,6 +101,10 @@
 
     toggle : function (target) {
       var dropdown = $('#' + target.data('dropdown'));
+      if (dropdown.length === 0) {
+        // No dropdown found, not continuing
+        return;
+      }
 
       this.close.call(this, $('[data-dropdown-content]').not(dropdown));
 
