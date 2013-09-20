@@ -51,7 +51,7 @@ $button-disabled-opacity: 0.6 !default;
     cursor: $cursor-pointer-value;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
-    line-height: 1;
+    line-height: normal;
     margin: 0 0 $button-margin-bottom;
     position: relative;
     text-decoration: none;
