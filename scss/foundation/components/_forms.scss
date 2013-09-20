@@ -367,7 +367,6 @@ $glowing-effect-color: $input-focus-border-color !default;
     textarea,
     select {
       @include form-error-color;
-      margin-bottom: 0;
     }
 
     label,
