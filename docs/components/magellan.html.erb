@@ -49,13 +49,33 @@
 
         <a name="js"></a>
         <h3 data-magellan-destination="js">Using Our JavaScript</h3>
-        <p>You'll need to include <code>foundation.magellan.js</code> to get everything to work properly. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <div class="panel">
+          Before you can use Magellan you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-<%= code_example '
-<script src="javascripts/foundation/foundation.magellan.js"></script>
-', :html %>
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.magellan.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
 
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="javascripts/foundation/foundation.js"></script>
+  <script src="javascripts/foundation/foundation.magellan.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.magellan.js</code></p>
 
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
