@@ -131,7 +131,7 @@ $total-columns: 12 !default;
   .column,
   .columns { @include grid-column($columns:$total-columns); }
 
-  @media only screen {
+  @media $screen {
 
     .column,
     .columns { @include grid-column($columns:false); }
