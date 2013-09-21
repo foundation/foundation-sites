@@ -83,7 +83,7 @@
                 $expedition.addClass('fixed');
                 $expedition.css({position:"fixed", top:0});
               } else {
-                $expedition.removeClass('fixed');
+                $expedition.removeClass('fixed').find('[data-magellan-arrival]').removeClass(self.settings.activeClass);
                 $expedition.css({position:"", top:""});
               }
               if (fixed_position && typeof attr != 'undefined' && attr != false) {
