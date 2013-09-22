@@ -260,6 +260,7 @@
           }.bind(this), this.settings.animationSpeed / 2);
         }
 
+        this.locked = false;
         return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened');
       }
 
@@ -303,6 +304,7 @@
           }.bind(this), this.settings.animationSpeed / 2);
         }
 
+        this.locked = false;
         return el.hide().css(css).removeClass('open').trigger('closed');
       }
 
