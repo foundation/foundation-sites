@@ -83,9 +83,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
     position: fixed;
     top: 0;
     z-index: 99;
-  
+
     &.expanded:not(.top-bar) {
-        overflow-y: auto; 
+        overflow-y: auto;
         height: auto;
         width: 100%;
         max-height: 100%;
@@ -95,7 +95,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         width: 100%;
         z-index: 99;
       }
-      // Ensure you can scroll the menu on small screens 
+      // Ensure you can scroll the menu on small screens
       .top-bar-section {
         z-index: 98;
         margin-top: $topbar-height;
@@ -431,7 +431,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       }
 
       li {
-        &.hover { 
+        &.hover {
           > a:not(.button) {
             background: $topbar-link-bg-hover;
             color: $topbar-link-color-hover;
@@ -448,7 +448,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       .has-dropdown {
 
         @if($topbar-arrows){
-         
+
           & > a {
             padding-#{$opposite-direction}: $topbar-height / 3 + 20 !important;
             &:after {
@@ -520,7 +520,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         border-#{$default-float}: $topbar-divider-border-top;
         clear: none;
         height: $topbar-height;
-        width: 0px;
+        width: 0;
       }
 
       .has-form {
