@@ -229,7 +229,7 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
   .zurb-footer-top .property {
-    padding-top: 0px;
+    padding-top: 0;
   }
   .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links {
     height: 240px;
@@ -238,10 +238,10 @@
 }
 @media only screen and (max-width: 767px) {
   .zurb-footer-top .property .property-info {
-    padding-top: 0px;
+    padding-top: 0;
   }
-  
-  
+
+
   .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links {
     border: none;
     height: auto;
@@ -312,7 +312,7 @@
   .zurb-footer-bottom p.copyright {
     margin-bottom: 20px !important;
   }
-  
+
   .zurb-footer-top .property h3 a {
     font-size: 23px !important;
   }
@@ -329,7 +329,7 @@
     clear: both;
   }
   .zurb-footer-top .global .footer-link-block span {
-    padding-left: 0px;
+    padding-left: 0;
   }
   .zurb-footer-top .global .footer-link-block.services {
     border-top: 0;
@@ -368,7 +368,7 @@
     clear: both;
   }
   .zurb-footer-top .global .footer-link-block span {
-    padding-left: 0px;
+    padding-left: 0;
   }
   .zurb-footer-top .global .footer-link-block.services {
     border-top: 0;
