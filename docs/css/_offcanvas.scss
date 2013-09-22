@@ -7,20 +7,20 @@ canvas { background: #23B9D2; }
 #sidebar .paneled .container { overflow: hidden; }
 
 /* ==============================
-     ---- Main Nav Styles ---- 
+     ---- Main Nav Styles ----
 =================================*/
 
 a.sidebar-button { margin-left: 15px; display: inline-block;}
 a.sidebar-button img { margin-top: -6px; width: 23px; }
 a.sidebar-button h4 { font-size: 22px !important; display: inline !important; margin-left: 10px; line-height: 1; color: #fff; font-weight: bold !important; }
-#sidebar { position: absolute; background: #333; height: 100%; padding: 0px; -webkit-box-shadow: inset -2px 0px 8px -1px #111111; box-shadow: inset -2px 0px 8px -1px #111111; padding-top: 10px; }
+#sidebar { position: absolute; background: #333; height: 100%; padding: 0; -webkit-box-shadow: inset -2px 0 8px -1px #111111; box-shadow: inset -2px 0 8px -1px #111111; padding-top: 10px; }
 #sidebar h5 a { font-size: 20px !important; }
 #sidebar hr { margin: 8px 0 20px 0; border-color: #444444 !important;}
-#sidebar h6,#sidebar h5  { color:#727272; text-transform: uppercase; margin-bottom: 0px; font-family:'Proxima Nova Condensed', 'proxima-nova-condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+#sidebar h6,#sidebar h5  { color:#727272; text-transform: uppercase; margin-bottom: 0; font-family:'Proxima Nova Condensed', 'proxima-nova-condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 #sidebar h6 { font-size: 14px; font-weight: bold;}
-#sidebar .nav-bar { background: none; margin-bottom: 0px;}
+#sidebar .nav-bar { background: none; margin-bottom: 0;}
 #sidebar .nav-bar li { width: 100%; box-shadow: none !important; }
-#sidebar .nav-bar li a { font-size: 20px !important; font-weight: 500; color: #ccc; font-family: 'Proxima Nova','ProximaNova', 'proxima-nova'; font-weight: 600; padding: 0px !important;}
+#sidebar .nav-bar li a { font-size: 20px !important; font-weight: 500; color: #ccc; font-family: 'Proxima Nova','ProximaNova', 'proxima-nova'; font-weight: 600; padding: 0 !important;}
 .nav-bar { height:110px; background: #4d4d4d; margin-left: 0; margin-top: 8px !important;  }
 .nav-bar.goodness { height:120px; background: #4d4d4d; margin-left: 0; margin-top: 20px; padding: 0; }
 .nav-bar > li { float: left; display: block; position: relative; padding: 0; margin: 0; border: 1px solid #333333; border-right: none; line-height: 38px; }
@@ -29,11 +29,11 @@ a.sidebar-button h4 { font-size: 22px !important; display: inline !important; ma
 .nav-bar > li ul { margin-bottom: 0; }
 .nav-bar > li .flyout { display: none; }
 #sidebar .main-menu { overflow-x: hidden; }
-#sidebar .main-menu, #sidebar .more-goodness, #sidebar .zurb-links { padding: 0px 15px; }
+#sidebar .main-menu, #sidebar .more-goodness, #sidebar .zurb-links { padding: 0 15px; }
 
 
 /* ==============================
-   ZURB Passport Section 
+   ZURB Passport Section
 ============================== */
 
 #sidebar #passport { display: inline-block; width: 100%; border-bottom: #444444 1px solid; margin-bottom: 10px; }
@@ -44,16 +44,16 @@ a.sidebar-button h4 { font-size: 22px !important; display: inline !important; ma
 #sidebar #passport .avatar { height: 70px; float: right; width: 70px; }
 
 /* ==============================
-     ---- ZURB Pillars ---- 
+     ---- ZURB Pillars ----
 =================================*/
 
 #sidebar .zurb-links { padding-bottom: 25px; margin-top: -5px; }
-#sidebar .zurb-links ul.top li { display: inline-block; margin-left: 0px; line-height: 1;font-family:'Proxima Nova Condensed', 'proxima-nova-condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-#sidebar .zurb-links ul.top li.logo { margin-left: 0px;  }
-#sidebar .zurb-links ul.top li.logo a { padding: 3px 8px 3px 0px; font-size: 0.9em;}
+#sidebar .zurb-links ul.top li { display: inline-block; margin-left: 0; line-height: 1;font-family:'Proxima Nova Condensed', 'proxima-nova-condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+#sidebar .zurb-links ul.top li.logo { margin-left: 0;  }
+#sidebar .zurb-links ul.top li.logo a { padding: 3px 8px 3px 0; font-size: 0.9em;}
 #sidebar .zurb-links ul.top li.logo img { width:60px; margin-top: -4px; }
 #sidebar .zurb-links ul.top li a { color: #727272; text-transform: uppercase; font-size: 13px; padding: 5px; font-weight: 600;}
-#sidebar .zurb-links ul.pillars { list-style: none; } 
+#sidebar .zurb-links ul.pillars { list-style: none; }
 #sidebar .zurb-links .footer-link-block span.title {  padding-bottom:0px;padding-left: 40px; font-family: "ProximaNova" , "Proxima Nova","proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 1.3em; margin-bottom: 8px; color: #cccccc;}
 #sidebar .zurb-links .footer-link-block span { display: block; color: #ccc; font-size: 1.0em;line-height: 18px; margin-bottom: 18px; line-height: 20px; margin-bottom: 24px;  color: #727272; padding-left: 0; font-size: 0.9em; }
 #sidebar .zurb-links .footer-link-block { font-weight: normal; background: url("offcanvas/footer-icons.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
@@ -103,15 +103,15 @@ a.sidebar-button h4 { font-size: 22px !important; display: inline !important; ma
   .page-panel { display: block; min-height: 800px; float: none; margin: 0; width: 100%; background: #f4f4f4; }
   .hide-extras .main { width: 100%; }
   .hide-extras .complementary { display: none; }
-  .navigation#topMenu { display: none; } 
+  .navigation#topMenu { display: none; }
   .active .main { margin-right: 0%; }
 }
 
 
 /* ------------------------------------------------------------
-  Disables Overflow on mobile - Had issues with Foundation 4 
+  Disables Overflow on mobile - Had issues with Foundation 4
 ------------------------------------------------------------ */
-@media all and (max-width: 767px) { 
+@media all and (max-width: 767px) {
   html { overflow-x: hidden; }
   body.off-canvas { padding: 0; margin: 0; overflow-x: hidden; }
 }
