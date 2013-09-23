@@ -372,7 +372,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.3.1',
+    version: '4.3.2',
 
     settings: {
       animation: 'slide',
