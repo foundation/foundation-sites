@@ -74,6 +74,12 @@ $glowing-effect-color: $input-focus-border-color !default;
 
       .column,
       .columns { padding: 0; }
+      input { 
+        -moz-border-radius-bottom#{$opposite-direction}: 0;
+        -moz-border-radius-top#{$opposite-direction}: 0;
+        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
+        -webkit-border-top-#{$opposite-direction}-radius: 0;
+      }
 
     }
   }
