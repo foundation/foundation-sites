@@ -200,7 +200,7 @@ $preloader-class: "preloader" !default;
         display: none;
         position: absolute;
         top: 10px;
-        #{$opposite-direction}: 0px;
+        #{$opposite-direction}: 0;
         width: 11px;
         height: 14px;
         border: solid 4px #000;

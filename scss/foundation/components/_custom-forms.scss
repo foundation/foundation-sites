@@ -12,7 +12,7 @@ $custom-form-input-size: 16px !default;
 $custom-form-check-color: #222 !default;
 $custom-form-check-size: 16px !default;
 $custom-form-radio-size: 8px !default;
-$custom-form-checkbox-radius: 0px !default;
+$custom-form-checkbox-radius: 0 !default;
 
 // We use these to style the custom select form element.
 $custom-select-bg: #fff !default;
@@ -35,7 +35,7 @@ $custom-dropdown-font-color: #555 !default;
 $custom-dropdown-font-size: em-calc(14) !default;
 $custom-dropdown-color-selected: #eeeeee !default;
 $custom-dropdown-font-color-selected: #000 !default;
-$custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1) !default;
+$custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1) !default;
 $custom-dropdown-offset-top: auto !default;
 $custom-dropdown-list-padding: em-calc(4) !default;
 $custom-dropdown-default-float-padding: em-calc(6) !default;
@@ -131,8 +131,8 @@ $custom-dropdown-width-large: 434px !default;
       top: 0;
       height: $custom-select-height;
       margin-bottom: $custom-select-margin-bottom;
-      margin-top: 0px;
-      padding: 0px;
+      margin-top: 0;
+      padding: 0;
       width: 100%;
       background: $custom-dropdown-bg;
       @if $experimental {
