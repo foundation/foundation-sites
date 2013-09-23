@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version: '4.3.1',
+    version: '4.3.2',
 
     settings : {
       index : 0,
@@ -206,6 +206,7 @@
         });
 
       $(window).on('resize.fndtn.topbar', function () {
+        if (typeof self.settings.$topbar === 'undefined') { return; }
         var stickyContainer = self.settings.$topbar.parent('.' + this.settings.stickyClass);
         var stickyOffset;
 
