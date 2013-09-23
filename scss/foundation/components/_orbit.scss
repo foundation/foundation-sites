@@ -1,30 +1,35 @@
-//
 // Orbit Variables
 //
 $include-html-orbit-classes: $include-html-classes !default;
 
 // We use these to control the caption styles
 $orbit-container-bg: #f5f5f5 !default;
-$orbit-caption-bg-old: rgb(0,0,0) !default;
 $orbit-caption-bg: rgba(0,0,0,0.6) !default;
 $orbit-caption-font-color: #fff !default;
+$orbit-caption-font-size: em-calc(14) !default;
+$orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"
+$orbit-caption-padding: em-calc(10,14) !default;
+$orbit-caption-height: auto !default;
 
 // We use these to control the left/right nav styles
-$orbit-nav-bg-old: rgb(0,0,0) !default;
 $orbit-nav-bg: rgba(0,0,0,0.6) !default;
+$orbit-nav-bg-hover: rgba(0,0,0,0.6) !default;
+$orbit-nav-arrow-color: #fff !default;
+$orbit-nav-arrow-color-hover: #ccc !default;
 
 // We use these to control the timer styles
-$orbit-timer-bg-old: rgb(0,0,0) !default;
 $orbit-timer-bg: rgba(0,0,0,0.6) !default;
+$orbit-timer-show-progress-bar: true !default;
 
 // We use these to control the bullet nav styles
 $orbit-bullet-nav-color: #999 !default;
 $orbit-bullet-nav-color-active: #555 !default;
+$orbit-bullet-radius: em-calc(12) !default;
 
-// We use thes to controls the style of slide numbers
+// We use these to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
-$orbit-slide-number-padding: emCalc(5px) !default;
+$orbit-slide-number-padding: em-calc(5) !default;
 
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper" !default;
@@ -39,17 +44,17 @@ $preloader-class: "preloader" !default;
       to { -webkit-transform: rotate(360deg); }
     }
     @-moz-keyframes rotate {
-      from { -webkit-transform: rotate(0deg); }
-      to { -webkit-transform: rotate(360deg); }
+      from { -moz-transform: rotate(0deg); }
+      to { -moz-transform: rotate(360deg); }
     }
     @-o-keyframes rotate {
-      from { -webkit-transform: rotate(0deg); }
-      to { -webkit-transform: rotate(360deg); }
+      from { -o-transform: rotate(0deg); }
+      to { -o-transform: rotate(360deg); }
     }
   }
   @keyframes rotate {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   /* Orbit Graceful Loading */
@@ -136,7 +141,7 @@ $preloader-class: "preloader" !default;
         @else {
           margin-left: 100%;
         }
-        
+
         &:first-child {
           @if $text-direction == rtl {
           margin-right: 0%;
@@ -147,14 +152,18 @@ $preloader-class: "preloader" !default;
         }
 
         .orbit-caption {
-          position: absolute;
-          bottom: 0;
-          background-color: $orbit-caption-bg-old;
+          @if $orbit-caption-position == "bottom" {
+            position: absolute;
+            bottom: 0;
+          } @else if $orbit-caption-position == "under" {
+            position: relative;
+          }
+
           background-color: $orbit-caption-bg;
           color: $orbit-caption-font-color;
           width: 100%;
           padding: 10px 14px;
-          font-size: emCalc(14px);
+          font-size: em-calc(14);
         }
       }
     }
@@ -178,18 +187,20 @@ $preloader-class: "preloader" !default;
       width: 100px;
       z-index: 10;
       .orbit-progress {
-        height: 100%;
-        background-color: $orbit-timer-bg-old;
-        background-color: $orbit-timer-bg;
-        display: block;
-        width: 0%;
+        @if $orbit-timer-show-progress-bar {
+          height: 100%;
+          background-color: $orbit-timer-bg;
+          display: block;
+          width: 0%;
+        }
       }
 
+      // Play button
       & > span {
         display: none;
         position: absolute;
         top: 10px;
-        #{$opposite-direction}: 0px;
+        #{$opposite-direction}: 0;
         width: 11px;
         height: 14px;
         border: solid 4px #000;
@@ -197,6 +208,7 @@ $preloader-class: "preloader" !default;
         border-bottom: none;
       }
 
+      // Pause button
       &.paused {
         & > span {
           #{$opposite-direction}: -6px;
@@ -218,7 +230,6 @@ $preloader-class: "preloader" !default;
       position: absolute;
       top: 50%;
       margin-top: -25px;
-      background-color: $orbit-nav-bg-old;
       background-color: $orbit-nav-bg;
       width: 50px;
       height: 60px;
@@ -226,6 +237,10 @@ $preloader-class: "preloader" !default;
       color: white;
       text-indent: -9999px !important;
       z-index: 10;
+
+      &:hover {
+        background-color: $orbit-nav-bg-hover;
+      }
 
       & > span {
         position: absolute;
@@ -241,22 +256,22 @@ $preloader-class: "preloader" !default;
       & > span {
         border-#{$opposite-direction}-style: solid;
         border-color: transparent;
-        border-#{$opposite-direction}-color: #fff;
+        border-#{$opposite-direction}-color: $orbit-nav-arrow-color;
       }
       &:hover > span {
-        border-#{$opposite-direction}-color: #ccc;
+        border-#{$opposite-direction}-color: $orbit-nav-arrow-color-hover;
       }
     }
     .orbit-next { #{$opposite-direction}: 0;
       & > span {
         border-color: transparent;
         border-#{$default-float}-style: solid;
-        border-#{$default-float}-color: #fff;
+        border-#{$default-float}-color: $orbit-nav-arrow-color;
         #{$default-float}: 50%;
         margin-#{$default-float}: -8px;
       }
       &:hover > span {
-        border-#{$default-float}-color: #ccc;
+        border-#{$default-float}-color: $orbit-nav-arrow-color-hover;
       }
     }
   }
@@ -269,8 +284,8 @@ $preloader-class: "preloader" !default;
 
     li {
       display: block;
-      width: 10px;
-      height: 10px;
+      width: $orbit-bullet-radius;
+      height: $orbit-bullet-radius;
       background: $orbit-bullet-nav-color;
       float: $default-float;
       margin-#{$opposite-direction}: 6px;
@@ -308,19 +323,18 @@ $preloader-class: "preloader" !default;
 
   }
 
-}
-
-
-@media only screen and (max-width: #{$small-screen}) {
-  .orbit-stack-on-small {
-    .orbit-slides-container {height: auto !important;}
-    .orbit-slides-container > * {
-      position: relative;
-      margin-left: 0% !important;
+  @media only screen and (max-width: #{$small-screen}) {
+    .orbit-stack-on-small {
+      .orbit-slides-container {height: auto !important;}
+      .orbit-slides-container > * {
+        position: relative;
+        margin-left: 0% !important;
+      }
+      .orbit-timer,
+      .orbit-next,
+      .orbit-prev,
+      .orbit-bullets {display: none;}
     }
-    .orbit-timer,
-    .orbit-next,
-    .orbit-prev,
-    .orbit-bullets {display: none;}
   }
+
 }

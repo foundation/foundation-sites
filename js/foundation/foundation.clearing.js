@@ -6,7 +6,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '4.3.1',
+    version: '4.3.2',
 
     settings : {
       templates : {
@@ -228,7 +228,7 @@
     },
 
     is_open : function (current) {
-      return current.parent().attr('style').length > 0;
+      return current.parent().prop('style').length > 0;
     },
 
     keydown : function (e) {

@@ -4,23 +4,23 @@
 $include-html-button-classes: $include-html-classes !default;
 
 // We use these to build padding for buttons.
-$button-med: emCalc(12) !default;
-$button-tny: emCalc(7) !default;
-$button-sml: emCalc(9) !default;
-$button-lrg: emCalc(16) !default;
+$button-med: em-calc(12) !default;
+$button-tny: em-calc(7) !default;
+$button-sml: em-calc(9) !default;
+$button-lrg: em-calc(16) !default;
 
 // We use this to control the display property.
 $button-display: inline-block !default;
-$button-margin-bottom: emCalc(20) !default;
+$button-margin-bottom: em-calc(20) !default;
 
 // We use these to control button text styles.
 $button-font-family: inherit !default;
 $button-font-color: #fff !default;
 $button-font-color-alt: #333 !default;
-$button-font-med: emCalc(16) !default;
-$button-font-tny: emCalc(11) !default;
-$button-font-sml: emCalc(13) !default;
-$button-font-lrg: emCalc(20) !default;
+$button-font-med: em-calc(16) !default;
+$button-font-tny: em-calc(11) !default;
+$button-font-sml: em-calc(13) !default;
+$button-font-lrg: em-calc(20) !default;
 $button-font-weight: bold !default;
 $button-font-align: center !default;
 
@@ -51,7 +51,7 @@ $button-disabled-opacity: 0.6 !default;
     cursor: $cursor-pointer-value;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
-    line-height: 1;
+    line-height: normal;
     margin: 0 0 $button-margin-bottom;
     position: relative;
     text-decoration: none;
@@ -68,7 +68,7 @@ $button-disabled-opacity: 0.6 !default;
   @if $padding {
     padding-top: $padding;
     padding-#{$opposite-direction}: $padding * 2;
-    padding-bottom: $padding + emCalc(1);
+    padding-bottom: $padding + em-calc(1);
     padding-#{$default-float}: $padding * 2;
 
     // We control the font-size based on mixin input.
@@ -76,7 +76,7 @@ $button-disabled-opacity: 0.6 !default;
     @else if $padding == $button-tny { font-size: $button-font-tny; }
     @else if $padding == $button-sml { font-size: $button-font-sml; }
     @else if $padding == $button-lrg { font-size: $button-font-lrg; }
-    @else                            { font-size: $padding - emCalc(2); }
+    @else                            { font-size: $padding - em-calc(2); }
   }
 
   // We can set $full-width:true to remove side padding extend width.
@@ -84,24 +84,24 @@ $button-disabled-opacity: 0.6 !default;
     // We still need to check if $padding is set.
     @if $padding {
     padding-top: $padding;
-    padding-bottom: $padding + emCalc(1);
+    padding-bottom: $padding + em-calc(1);
     } @else if $padding == false {
       padding-top:0;
       padding-bottom:0;
     }
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 0;
+    padding-left: 0;
     width: 100%;
   }
 
   // <input>'s and <button>'s take on strange padding. We added this to help fix that.
   @if $is-input == $button-lrg {
-    padding-top: $is-input + emCalc(.5);
-    padding-bottom: $is-input + emCalc(.5);
+    padding-top: $is-input + em-calc(.5);
+    padding-bottom: $is-input + em-calc(.5);
     -webkit-appearance: none;
   }
   @else if $is-input {
-    padding-top: $is-input + emCalc(1);
+    padding-top: $is-input + em-calc(1);
     padding-bottom: $is-input;
     -webkit-appearance: none;
   }
@@ -182,8 +182,8 @@ $button-disabled-opacity: 0.6 !default;
     &.tiny   { @include button-size($padding:$button-tny); }
     &.expand { @include button-size($padding:null,$full-width:true); }
 
-    &.left-align  { text-align: left; text-indent: emCalc(12); }
-    &.right-align { text-align: right; padding-right: emCalc(12); }
+    &.left-align  { text-align: left; text-indent: em-calc(12); }
+    &.right-align { text-align: right; padding-right: em-calc(12); }
 
     &.disabled, &[disabled] { @include button-style($bg:$primary-color, $disabled:true);
       &.secondary { @include button-style($bg:$secondary-color, $disabled:true); }

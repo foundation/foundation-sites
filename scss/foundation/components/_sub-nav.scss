@@ -4,11 +4,11 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control margin and padding
-$sub-nav-list-margin: emCalc(-4, 0, 18) !default;
-$sub-nav-list-padding-top: emCalc(4) !default;
+$sub-nav-list-margin: em-calc(-4 0 18) !default;
+$sub-nav-list-padding-top: em-calc(4) !default;
 
 // We use this to control the definition
-$sub-nav-font-size: emCalc(14) !default;
+$sub-nav-font-size: em-calc(14) !default;
 $sub-nav-font-color: #999 !default;
 $sub-nav-font-weight: normal !default;
 $sub-nav-text-decoration: none !default;
@@ -18,8 +18,11 @@ $sub-nav-border-radius: 1000px !default;
 $sub-nav-active-font-weight: bold !default;
 $sub-nav-active-bg: $primary-color !default;
 $sub-nav-active-color: #fff !default;
-$sub-nav-active-padding: emCalc(3, 9) !default;
+$sub-nav-active-padding: em-calc(3 9) !default;
 $sub-nav-active-cursor: default !default;
+
+$sub-nav-item-divider: "" !default;
+$sub-nav-item-divider-margin: emCalc(12) !default;
 
 //
 // Sub Nav Mixins
@@ -32,14 +35,15 @@ $sub-nav-active-cursor: default !default;
   margin: $sub-nav-list-margin;
   padding-top: $sub-nav-list-padding-top;
   margin-#{$opposite-direction}: 0;
-  margin-#{$default-float}: emCalc(-9);
+  margin-#{$default-float}: em-calc(-9);
 
   dt,
-  dd {
+  dd,
+  li {
     float: $default-float;
     display: inline;
-    margin-#{$default-float}: emCalc(9);
-    margin-bottom: emCalc(10);
+    margin-#{$default-float}: em-calc(9);
+    margin-bottom: em-calc(10);
     font-weight: $sub-nav-font-weight;
     font-size: $font-size;
 
@@ -55,8 +59,20 @@ $sub-nav-active-cursor: default !default;
       cursor: $sub-nav-active-cursor;
       color: $sub-nav-active-color;
     }
-  }
+    @if $sub-nav-item-divider != "" {
+      margin-#{$default-float}: 0;
 
+      &:before {
+        content: "#{$sub-nav-item-divider}";
+        margin: 0 $sub-nav-item-divider-margin;
+      }
+
+      &:first-child:before {
+        content: "";
+        margin: 0;
+      }
+    }
+  }
 }
 
 

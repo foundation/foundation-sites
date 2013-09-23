@@ -4,23 +4,24 @@
 $include-html-top-bar-classes: $include-html-classes !default;
 
 // Background color for the top bar
-$topbar-bg: #111 !default;
+$topbar-bg-color: #111 !default;
+$topbar-bg: $topbar-bg-color !default;
 
 // Height and margin
 $topbar-height: 45px !default;
-$topbar-margin-bottom: emCalc(30) !default;
+$topbar-margin-bottom: 0 !default;
 
 // Control Input height for top bar
 $topbar-input-height: 2.45em !default;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: bold !default;
-$topbar-title-font-size: emCalc(17) !default;
+$topbar-title-font-size: em-calc(17) !default;
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #222 !default;
 $topbar-dropdown-link-color: #fff !default;
-$topbar-dropdown-link-bg: lighten($topbar-bg, 5%) !default;
+$topbar-dropdown-link-bg: lighten($topbar-bg-color, 5%) !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.5 !default;
@@ -30,19 +31,21 @@ $topbar-link-color: #fff !default;
 $topbar-link-color-hover: #fff !default;
 $topbar-link-color-active: #fff !default;
 $topbar-link-weight: bold !default;
-$topbar-link-font-size: emCalc(13) !default;
+$topbar-link-font-size: em-calc(13) !default;
 $topbar-link-hover-lightness: -30% !default; // Darken by 30%
-$topbar-link-bg-hover: darken($topbar-bg, 3%) !default;
-$topbar-link-bg-active: darken($topbar-bg, 3%) !default;
+$topbar-link-bg-hover: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness) !default;
+$topbar-link-bg-active: darken($topbar-bg-color, 3%) !default;
+
 
 $topbar-dropdown-label-color: #555 !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
 $topbar-dropdown-label-font-weight: bold !default;
-$topbar-dropdown-label-font-size: emCalc(10) !default;
+$topbar-dropdown-label-font-size: em-calc(10) !default;
+$topbar-dropdown-label-bg: lighten($topbar-bg-color, 5%) !default;
 
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
-$topbar-menu-link-font-size: emCalc(13) !default;
+$topbar-menu-link-font-size: em-calc(13) !default;
 $topbar-menu-link-weight: bold !default;
 $topbar-menu-link-color: #fff !default;
 $topbar-menu-icon-color: #fff !default;
@@ -51,15 +54,17 @@ $topbar-menu-icon-color-toggled: #888 !default;
 
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
-$topbar-breakpoint: emCalc(940) !default; // Change to 9999px for always mobile layout
+// Using em-calc for the below breakpoint causes issues with top bar
+$topbar-breakpoint: 940px !default; // Change to 9999px for always mobile layout
 $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})" !default;
 
 // Divider Styles
-$topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%) !default;
-$topbar-divider-border-top: solid 1px darken($topbar-bg, 10%) !default;
+$topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%) !default;
+$topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%) !default;
 
 // Sticky Class
 $topbar-sticky-class: ".sticky" !default;
+$topbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
 
 @if $include-html-top-bar-classes != false {
 
@@ -78,6 +83,24 @@ $topbar-sticky-class: ".sticky" !default;
     position: fixed;
     top: 0;
     z-index: 99;
+
+    &.expanded:not(.top-bar) {
+        overflow-y: auto;
+        height: auto;
+        width: 100%;
+        max-height: 100%;
+
+      .title-area {
+        position: fixed;
+        width: 100%;
+        z-index: 99;
+      }
+      // Ensure you can scroll the menu on small screens
+      .top-bar-section {
+        z-index: 98;
+        margin-top: $topbar-height;
+      }
+    }
   }
 
   .top-bar {
@@ -246,25 +269,27 @@ $topbar-sticky-class: ".sticky" !default;
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
-          &.hover {
+           padding-right: $topbar-height / 3;
+           padding-left: $topbar-height / 3;
+          &:hover {
             background: darken($primary-color, 10%);
           }
         }
         &.button.secondary {
           background: $secondary-color;
-          &.hover {
+          &:hover {
             background: darken($secondary-color, 10%);
           }
         }
         &.button.success {
           background: $success-color;
-          &.hover {
+          &:hover {
             background: darken($success-color, 10%);
           }
         }
         &.button.alert {
           background: $alert-color;
-          &.hover {
+          &:hover {
             background: darken($alert-color, 10%);
           }
         }
@@ -272,7 +297,7 @@ $topbar-sticky-class: ".sticky" !default;
       }
 
       // Apply the hover link color when it has that class
-      &.hover > a {
+      &:hover > a {
         background: $topbar-link-bg-hover;
         color: $topbar-link-color-hover;
       }
@@ -293,7 +318,9 @@ $topbar-sticky-class: ".sticky" !default;
 
       & > a {
         &:after {
-          @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
+          @if ($topbar-arrows){
+            @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
+          }
           margin-#{$opposite-direction}: $topbar-height / 3;
           margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
           position: absolute;
@@ -304,7 +331,7 @@ $topbar-sticky-class: ".sticky" !default;
 
       &.moved { position: static;
         & > .dropdown {
-          visibility: visible;
+          display: block;
         }
       }
     }
@@ -314,7 +341,7 @@ $topbar-sticky-class: ".sticky" !default;
       position: absolute;
       #{$default-float}: 100%;
       top: 0;
-      visibility: hidden;
+      display: none;
       z-index: 99;
 
       li {
@@ -372,7 +399,7 @@ $topbar-sticky-class: ".sticky" !default;
       input,
       .button {
         line-height: 2em;
-        font-size: emCalc(14);
+        font-size: em-calc(14);
         height: 2em;
         padding: 0 10px;
         position: relative;
@@ -404,32 +431,42 @@ $topbar-sticky-class: ".sticky" !default;
       }
 
       li {
+        &.hover {
+          > a:not(.button) {
+            background: $topbar-link-bg-hover;
+            color: $topbar-link-color-hover;
+          }
+        }
         a:not(.button) {
           padding: 0 $topbar-height / 3;
           line-height: $topbar-height;
           background: $topbar-bg;
-          &.hover { background: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness); }
+          &:hover { background: $topbar-link-bg-hover; }
         }
       }
 
       .has-dropdown {
-        & > a {
-          padding-#{$opposite-direction}: $topbar-height / 3 + 20 !important;
 
-          &:after {
-            @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
-            margin-top: -($topbar-dropdown-toggle-size / 2);
-            top: $topbar-height / 2;
+        @if($topbar-arrows){
+
+          & > a {
+            padding-#{$opposite-direction}: $topbar-height / 3 + 20 !important;
+            &:after {
+              @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
+              margin-top: -($topbar-dropdown-toggle-size / 2);
+              top: $topbar-height / 2;
+            }
           }
+
         }
 
         &.moved { position: relative;
-          & > .dropdown { visibility: hidden; }
+          & > .dropdown { display: none; }
         }
 
         &.hover, &.not-click:hover {
           & > .dropdown {
-            visibility: visible;
+            display: block;
           }
         }
 
@@ -438,7 +475,8 @@ $topbar-sticky-class: ".sticky" !default;
             &:after {
               border: none;
               content: "\00bb";
-              margin-top: -16px;
+              top: 1em;
+              margin-top: -7px;
               #{$opposite-direction}: 5px;
             }
           }
@@ -463,7 +501,7 @@ $topbar-sticky-class: ".sticky" !default;
 
           label {
             white-space: nowrap;
-            background: lighten($topbar-bg, 5%);
+            background: $topbar-dropdown-label-bg;
           }
 
           // Second Level Dropdowns
@@ -482,7 +520,7 @@ $topbar-sticky-class: ".sticky" !default;
         border-#{$default-float}: $topbar-divider-border-top;
         clear: none;
         height: $topbar-height;
-        width: 0px;
+        width: 0;
       }
 
       .has-form {
@@ -501,8 +539,8 @@ $topbar-sticky-class: ".sticky" !default;
         }
       }
     }
-    
-    // Degrade gracefully when Javascript is disabled. Displays dropdown and changes 
+
+    // Degrade gracefully when Javascript is disabled. Displays dropdown and changes
     // background & text color on hover.
     .no-js .top-bar-section {
 	  ul li {
@@ -517,16 +555,16 @@ $topbar-sticky-class: ".sticky" !default;
           background: $topbar-link-bg-active;
           color: $topbar-link-color-active;
         }
-      }    
-      
+      }
+
 	  .has-dropdown {
         &:hover {
           & > .dropdown {
-            visibility: visible;
+            display: block;
           }
         }
 	  }
-	}    
+	}
   }
 
 }

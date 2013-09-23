@@ -14,7 +14,7 @@ $base-font-size: 100% !default;
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be a different size and not have it effect grid size too,
 // set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
-$em-base: 16 !default;
+$em-base: 16px !default;
 
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
@@ -22,27 +22,39 @@ $em-base: 16 !default;
 }
 
 // Converts "px" to "em" using the ($)em-base
-@function convert-to-em($value)  {
-  $value: strip-unit($value) / strip-unit($em-base) * 1em;
+@function convert-to-em($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
   @if ($value == 0em) { $value: 0; } // Turn 0em into 0
   @return $value;
 }
 
-// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#)
+// Working in ems is annoying. Think in pixels by using this handy function, em-calc(#)
 // Just enter the number, no need to mention "px"
-@function emCalc($values...) {
+@function em-calc($values, $base-value: $em-base) {
   $max: length($values); // Get the total number of parameters passed
 
   // If there is only 1 parameter, then return it as an integer.
   // This is done because a list can't be multiplied or divided even if it contains a single value
-  @if $max == 1 { @return convert-to-em(nth($values, 1)); }
+  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
 
   $emValues: (); // This will eventually store the converted $values in a list
   @for $i from 1 through $max {
-    $emValues: append($emValues, convert-to-em(nth($values, $i)));
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
   }
   @return $emValues;
 }
+
+//Retaining this for backward compatability
+
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+// Maybe you want to create rems with pixels
+// $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
+// @function rem-calc($pxWidth) {
+//   @return $pxWidth / $rem-base * 1rem;
+// }
 
 // Change whether or not you include browser prefixes
 // $experimental: true;
@@ -137,8 +149,8 @@ $default-float: left;
 // Grid Variables
 //
 
-// $row-width: emCalc(1000);
-// $column-gutter: emCalc(30);
+// $row-width: em-calc(1000);
+// $column-gutter: em-calc(30);
 // $total-columns: 12;
 
 //
@@ -148,7 +160,7 @@ $default-float: left;
 // We use this to control the maximum number of block grid elements per row
 
 // $block-grid-elements: 12;
-// $block-grid-default-spacing: emCalc(20);
+// $block-grid-default-spacing: em-calc(20);
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 
@@ -171,11 +183,11 @@ $default-float: left;
 
 // Control header font sizes
 
-// $h1-font-size: emCalc(44);
-// $h2-font-size: emCalc(37);
-// $h3-font-size: emCalc(27);
-// $h4-font-size: emCalc(23);
-// $h5-font-size: emCalc(18);
+// $h1-font-size: em-calc(44);
+// $h2-font-size: em-calc(37);
+// $h3-font-size: em-calc(27);
+// $h4-font-size: em-calc(23);
+// $h5-font-size: em-calc(18);
 // $h6-font-size: 1em;
 
 // Control how subheaders are styled.
@@ -197,8 +209,8 @@ $default-float: left;
 // $paragraph-font-weight: normal;
 // $paragraph-font-size: 1em;
 // $paragraph-line-height: 1.6;
-// $paragraph-margin-bottom: emCalc(20);
-// $paragraph-aside-font-size: emCalc(14);
+// $paragraph-margin-bottom: em-calc(20);
+// $paragraph-aside-font-size: em-calc(14);
 // $paragraph-aside-line-height: 1.35;
 // $paragraph-aside-font-style: italic;
 // $paragraph-text-rendering: optimizeLegibility;
@@ -220,23 +232,23 @@ $default-float: left;
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #ddd;
-// $hr-margin: emCalc(20);
+// $hr-margin: em-calc(20);
 
 // Style lists
 
 // $list-style-position: outside;
 // $list-side-margin: 0;
-// $list-nested-margin: emCalc(20);
+// $list-nested-margin: em-calc(20);
 // $definition-list-header-weight: bold;
 // $definition-list-header-margin-bottom: .3em;
-// $definition-list-margin-bottom: emCalc(12);
+// $definition-list-margin-bottom: em-calc(12);
 
 // Style blockquotes
 
 // $blockquote-font-color: lighten($header-font-color, 30%);
-// $blockquote-padding: emCalc(9, 20, 0, 19);
+// $blockquote-padding: em-calc(9, 20, 0, 19);
 // $blockquote-border: 1px solid #ddd;
-// $blockquote-cite-font-size: emCalc(13);
+// $blockquote-cite-font-size: em-calc(13);
 // $blockquote-cite-font-color: lighten($header-font-color, 20%);
 // $blockquote-cite-link-color: $blockquote-cite-font-color;
 
@@ -246,8 +258,8 @@ $default-float: left;
 
 // Control padding and margin
 
-// $microformat-padding: emCalc(10, 12);
-// $microformat-margin: emCalc(0, 0, 20, 0);
+// $microformat-padding: em-calc(10 12);
+// $microformat-margin: em-calc(0 0 20 0);
 
 // Control the border styles
 
@@ -258,14 +270,14 @@ $default-float: left;
 // Control full name font styles
 
 // $microformat-fullname-font-weight: bold;
-// $microformat-fullname-font-size: emCalc(15);
+// $microformat-fullname-font-size: em-calc(15);
 
 // Control the summary font styles
 
 // $microformat-summary-font-weight: bold;
 
 // Control abbr padding
-// $microformat-abbr-padding: emCalc(0, 1);
+// $microformat-abbr-padding: em-calc(0 1);
 
 // Control abbr font styles
 
@@ -278,18 +290,18 @@ $default-float: left;
 
 // We use this to set the base for lots of form spacing and positioning styles
 
-// $form-spacing: emCalc(16);
+// $form-spacing: em-calc(16);
 
 // We use these to style the labels in different ways
 
 // $form-label-pointer: pointer;
-// $form-label-font-size: emCalc(14);
+// $form-label-font-size: em-calc(14);
 // $form-label-font-weight: 500;
 // $form-label-font-color: lighten(#000, 30%);
-// $form-label-bottom-margin: emCalc(3);
+// $form-label-bottom-margin: em-calc(3);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
-// $input-font-size: emCalc(14);
+// $input-font-size: em-calc(14);
 // $input-bg-color: #fff;
 // $input-focus-bg-color: darken(#fff, 2%);
 // $input-border-color: darken(#fff, 20%);
@@ -305,14 +317,14 @@ $default-float: left;
 // $fieldset-border-style: solid;
 // $fieldset-border-width: 1px;
 // $fieldset-border-color: #ddd;
-// $fieldset-padding: emCalc(20);
-// $fieldset-margin: emCalc(18, 0);
+// $fieldset-padding: em-calc(20);
+// $fieldset-margin: em-calc(18 0);
 
 // We use these to style the legends when you use them
 
 // $legend-bg: #fff;
 // $legend-font-weight: bold;
-// $legend-padding: emCalc(0, 3);
+// $legend-padding: em-calc(0 3);
 
 // We use these to style the prefix and postfix input elements
 
@@ -326,9 +338,9 @@ $default-float: left;
 
 // We use these to style the error states for inputs and labels
 
-// $input-error-message-padding: emCalc(6, 4);
+// $input-error-message-padding: em-calc(6 4);
 // $input-error-message-top: 0;
-// $input-error-message-font-size: emCalc(12);
+// $input-error-message-font-size: em-calc(12);
 // $input-error-message-font-weight: bold;
 // $input-error-message-font-color: #fff;
 // $input-error-message-font-color-alt: #333;
@@ -344,25 +356,25 @@ $default-float: left;
 
 // We use these to build padding for buttons.
 
-// $button-med: emCalc(12);
-// $button-tny: emCalc(7);
-// $button-sml: emCalc(9);
-// $button-lrg: emCalc(16);
+// $button-med: em-calc(12);
+// $button-tny: em-calc(7);
+// $button-sml: em-calc(9);
+// $button-lrg: em-calc(16);
 
 // We use this to control the display property.
 
 // $button-display: inline-block;
-// $button-margin-bottom: emCalc(20);
+// $button-margin-bottom: em-calc(20);
 
 // We use these to control button text styles.
 
 // $button-font-family: inherit;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
-// $button-font-med: emCalc(16);
-// $button-font-tny: emCalc(11);
-// $button-font-sml: emCalc(13);
-// $button-font-lrg: emCalc(20);
+// $button-font-med: em-calc(16);
+// $button-font-tny: em-calc(11);
+// $button-font-sml: em-calc(13);
+// $button-font-lrg: em-calc(20);
 // $button-font-weight: bold;
 // $button-font-align: center;
 
@@ -390,7 +402,7 @@ $default-float: left;
 
 // Sets the margin for the right side by default, and the left margin if right-to-left direction is used
 
-// $button-bar-margin-opposite: emCalc(10);
+// $button-bar-margin-opposite: em-calc(10);
 
 //
 // Dropdown Button Variables
@@ -406,28 +418,28 @@ $default-float: left;
 // $dropdown-button-padding-tny: $button-tny * 5;
 // $dropdown-button-pip-size-tny: $button-tny;
 // $dropdown-button-pip-opposite-tny: $button-tny * 2;
-// $dropdown-button-pip-top-tny: -$button-tny / 2 + emCalc(1);
+// $dropdown-button-pip-top-tny: -$button-tny / 2 + em-calc(1);
 
 // We use these to style small dropdown buttons
 
 // $dropdown-button-padding-sml: $button-sml * 5;
 // $dropdown-button-pip-size-sml: $button-sml;
 // $dropdown-button-pip-opposite-sml: $button-sml * 2;
-// $dropdown-button-pip-top-sml: -$button-sml / 2 + emCalc(1);
+// $dropdown-button-pip-top-sml: -$button-sml / 2 + em-calc(1);
 
 // We use these to style medium dropdown buttons
 
-// $dropdown-button-padding-med: $button-med * 4 + emCalc(3);
-// $dropdown-button-pip-size-med: $button-med - emCalc(3);
+// $dropdown-button-padding-med: $button-med * 4 + em-calc(3);
+// $dropdown-button-pip-size-med: $button-med - em-calc(3);
 // $dropdown-button-pip-opposite-med: $button-med * 2;
-// $dropdown-button-pip-top-med: -$button-med / 2 + emCalc(2);
+// $dropdown-button-pip-top-med: -$button-med / 2 + em-calc(2);
 
 // We use these to style large dropdown buttons
 
 // $dropdown-button-padding-lrg: $button-lrg * 4;
-// $dropdown-button-pip-size-lrg: $button-lrg - emCalc(6);
-// $dropdown-button-pip-opposite-lrg: $button-lrg + emCalc(12);
-// $dropdown-button-pip-top-lrg: -$button-lrg / 2 + emCalc(3);
+// $dropdown-button-pip-size-lrg: $button-lrg - em-calc(6);
+// $dropdown-button-pip-opposite-lrg: $button-lrg + em-calc(12);
+// $dropdown-button-pip-top-lrg: -$button-lrg / 2 + em-calc(3);
 
 //
 // Split Button Variables
@@ -446,7 +458,7 @@ $default-float: left;
 // $split-button-span-width-tny: $button-tny * 6.5;
 // $split-button-pip-size-tny: $button-tny;
 // $split-button-pip-top-tny: $button-tny * 2;
-// $split-button-pip-default-float-tny: emCalc(-5);
+// $split-button-pip-default-float-tny: em-calc(-5);
 
 // We use these to control small split buttons
 
@@ -454,23 +466,23 @@ $default-float: left;
 // $split-button-span-width-sml: $button-sml * 5;
 // $split-button-pip-size-sml: $button-sml;
 // $split-button-pip-top-sml: $button-sml * 1.5;
-// $split-button-pip-default-float-sml: emCalc(-9);
+// $split-button-pip-default-float-sml: em-calc(-9);
 
 // We use these to control medium split buttons
 
 // $split-button-padding-med: $button-med * 6.4;
 // $split-button-span-width-med: $button-med * 4;
-// $split-button-pip-size-med: $button-med - emCalc(3);
+// $split-button-pip-size-med: $button-med - em-calc(3);
 // $split-button-pip-top-med: $button-med * 1.5;
-// $split-button-pip-default-float-med: emCalc(-9);
+// $split-button-pip-default-float-med: em-calc(-9);
 
 // We use these to control large split buttons
 
 // $split-button-padding-lrg: $button-lrg * 6;
 // $split-button-span-width-lrg: $button-lrg * 3.75;
-// $split-button-pip-size-lrg: $button-lrg - emCalc(6);
-// $split-button-pip-top-lrg: $button-lrg + emCalc(5);
-// $split-button-pip-default-float-lrg: emCalc(-9);
+// $split-button-pip-size-lrg: $button-lrg - em-calc(6);
+// $split-button-pip-top-lrg: $button-lrg + em-calc(5);
+// $split-button-pip-default-float-lrg: em-calc(-9);
 
 //
 // Alert Box Variables
@@ -478,15 +490,15 @@ $default-float: left;
 
 // We use this to control alert padding.
 
-// $alert-padding-top: emCalc(11);
+// $alert-padding-top: em-calc(11);
 // $alert-padding-default-float: $alert-padding-top;
-// $alert-padding-opposite-direction: $alert-padding-top + emCalc(10);
-// $alert-padding-bottom: $alert-padding-top + emCalc(1);
+// $alert-padding-opposite-direction: $alert-padding-top + em-calc(10);
+// $alert-padding-bottom: $alert-padding-top + em-calc(1);
 
 // We use these to control text style.
 
 // $alert-font-weight: bold;
-// $alert-font-size: emCalc(14);
+// $alert-font-size: em-calc(14);
 // $alert-font-color: #fff;
 // $alert-font-color-alt: darken($secondary-color, 60%);
 
@@ -499,13 +511,13 @@ $default-float: left;
 // $alert-border-style: solid;
 // $alert-border-width: 1px;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
-// $alert-bottom-margin: emCalc(20);
+// $alert-bottom-margin: em-calc(20);
 
 // We use these to style the close buttons
 
 // $alert-close-color: #333;
-// $alert-close-position: emCalc(5);
-// $alert-close-font-size: emCalc(22);
+// $alert-close-position: em-calc(5);
+// $alert-close-font-size: em-calc(22);
 // $alert-close-opacity: 0.3;
 // $alert-close-opacity-hover: 0.5;
 // $alert-close-padding: 5px 4px 4px;
@@ -525,8 +537,8 @@ $default-float: left;
 
 // We use these to set the padding around the breadcrumbs.
 
-// $crumb-padding: emCalc(9, 14, 9);
-// $crumb-side-padding: emCalc(12);
+// $crumb-padding: em-calc(9 14 9);
+// $crumb-side-padding: em-calc(12);
 
 // We use these to control border styles.
 
@@ -538,7 +550,7 @@ $default-float: left;
 
 // We use these to set various text styles for breadcrumbs.
 
-// $crumb-font-size: emCalc(11);
+// $crumb-font-size: em-calc(11);
 // $crumb-font-color: $primary-color;
 // $crumb-font-color-current: #333;
 // $crumb-font-color-unavailable: #999;
@@ -597,7 +609,7 @@ $default-float: left;
 // $custom-form-check-color: #222;
 // $custom-form-check-size: 16px;
 // $custom-form-radio-size: 8px;
-// $custom-form-checkbox-radius: 0px;
+// $custom-form-checkbox-radius: 0;
 
 // We use these to style the custom select form element.
 
@@ -606,8 +618,8 @@ $default-float: left;
 // $custom-select-border-color: #ddd;
 // $custom-select-triangle-color: #aaa;
 // $custom-select-triangle-color-open: #222;
-// $custom-select-height: emCalc(13) + ($form-spacing * 1.5);
-// $custom-select-margin-bottom: emCalc(20);
+// $custom-select-height: em-calc(13) + ($form-spacing * 1.5);
+// $custom-select-margin-bottom: em-calc(20);
 // $custom-select-font-color-selected: #141414;
 // $custom-select-disabled-color: #888;
 
@@ -619,15 +631,15 @@ $default-float: left;
 // $custom-dropdown-border-width: 1px;
 // $custom-dropdown-border-style: solid;
 // $custom-dropdown-font-color: #555;
-// $custom-dropdown-font-size: emCalc(14);
+// $custom-dropdown-font-size: em-calc(14);
 // $custom-dropdown-color-selected: #eeeeee;
 // $custom-dropdown-font-color-selected: #000;
-// $custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1);
+// $custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
 // $custom-dropdown-offset-top: auto;
-// $custom-dropdown-list-padding: emCalc(4);
-// $custom-dropdown-default-float-padding: emCalc(6);
-// $custom-dropdown-opposite-padding: emCalc(38);
-// $custom-dropdown-list-item-min-height: emCalc(24);
+// $custom-dropdown-list-padding: em-calc(4);
+// $custom-dropdown-default-float-padding: em-calc(6);
+// $custom-dropdown-opposite-padding: em-calc(38);
+// $custom-dropdown-list-item-min-height: em-calc(24);
 // $custom-dropdown-width-small: 134px;
 // $custom-dropdown-width-medium: 254px;
 // $custom-dropdown-width-large: 434px;
@@ -663,15 +675,15 @@ $default-float: left;
 
 // $f-dropdown-list-style: none;
 // $f-dropdown-font-color: #555;
-// $f-dropdown-font-size: emCalc(14);
-// $f-dropdown-list-padding: emCalc(5, 10);
-// $f-dropdown-line-height: emCalc(18);
+// $f-dropdown-font-size: em-calc(14);
+// $f-dropdown-list-padding: em-calc(5 10);
+// $f-dropdown-line-height: em-calc(18);
 // $f-dropdown-list-hover-bg: #eeeeee;
 // $dropdown-mobile-default-float: 0;
 
 // We use this to control the styles for when the dropdown has custom content.
 
-// $f-dropdown-content-padding: emCalc(20);
+// $f-dropdown-content-padding: em-calc(20);
 
 //
 // Flex Video Variables
@@ -679,9 +691,9 @@ $default-float: left;
 
 // We use these to control video container padding and margins
 
-// $flex-video-padding-top: emCalc(25);
+// $flex-video-padding-top: em-calc(25);
 // $flex-video-padding-bottom: 67.5%;
-// $flex-video-margin-bottom: emCalc(16);
+// $flex-video-margin-bottom: em-calc(16);
 
 // We use this to control widescreen bottom padding
 
@@ -695,8 +707,8 @@ $default-float: left;
 
 // $inline-list-top-margin: 0;
 // $inline-list-opposite-margin: 0;
-// $inline-list-bottom-margin: emCalc(17);
-// $inline-list-default-float-margin: emCalc(-22);
+// $inline-list-bottom-margin: em-calc(17);
+// $inline-list-default-float-margin: em-calc(-22);
 
 // $inline-list-padding: 0;
 
@@ -720,7 +732,7 @@ $default-float: left;
 
 // $joyride-tip-bg: rgb(0,0,0);
 // $joyride-tip-default-width: 300px;
-// $joyride-tip-padding: emCalc(18, 20, 24);
+// $joyride-tip-padding: em-calc(18 20 24);
 // $joyride-tip-border: solid 1px #555;
 // $joyride-tip-radius: 4px;
 // $joyride-tip-position-offset: 22px;
@@ -728,7 +740,7 @@ $default-float: left;
 // Here, we're setting the tip dont styles
 
 // $joyride-tip-font-color: #fff;
-// $joyride-tip-font-size: emCalc(14);
+// $joyride-tip-font-size: em-calc(14);
 // $joyride-tip-header-weight: bold;
 
 // This changes the nub size
@@ -758,14 +770,14 @@ $default-float: left;
 // We use these to control text styles.
 
 // $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
-// $keystroke-font-size: emCalc(14);
+// $keystroke-font-size: em-calc(14);
 // $keystroke-font-color: #222;
 // $keystroke-font-color-alt: #fff;
 // $keystroke-function-factor: 7%;
 
 // We use this to control keystroke padding.
 
-// $keystroke-padding: emCalc(2, 4, 0);
+// $keystroke-padding: em-calc(2 4 0);
 
 // We use these to control background and border styles.
 
@@ -781,12 +793,12 @@ $default-float: left;
 
 // We use these to style the labels
 
-// $label-padding: emCalc(3, 10, 4);
+// $label-padding: em-calc(3 10 4);
 // $label-radius: $global-radius;
 
 // We use these to style the label text
 
-// $label-font-sizing: emCalc(14);
+// $label-font-sizing: em-calc(14);
 // $label-font-weight: bold;
 // $label-font-color: #333;
 // $label-font-color-alt: #fff;
@@ -805,30 +817,36 @@ $default-float: left;
 // We use these to control the caption styles
 
 // $orbit-container-bg: #f5f5f5;
-// $orbit-caption-bg-old: rgb(0,0,0);
 // $orbit-caption-bg: rgba(0,0,0,0.6);
 // $orbit-caption-font-color: #fff;
+// $orbit-caption-font-size: emCalc(14);
+// $orbit-caption-position: "bottom";    // Supported values: "bottom", "under"
+// $orbit-caption-padding: emCalc(10,14);
+// $orbit-caption-height: auto;
 
 // We use these to control the left/right nav styles
 
-// $orbit-nav-bg-old: rgb(0,0,0);
 // $orbit-nav-bg: rgba(0,0,0,0.6);
+// $orbit-nav-bg-hover: rgba(0,0,0,0.6);
+// $orbit-nav-arrow-color: #fff;
+// $orbit-nav-arrow-color-hover: #ccc;
 
 // We use these to control the timer styles
 
-// $orbit-timer-bg-old: rgb(0,0,0);
 // $orbit-timer-bg: rgba(0,0,0,0.6);
+// $orbit-timer-show-progress-bar: true;
 
 // We use these to control the bullet nav styles
 
 // $orbit-bullet-nav-color: #999;
 // $orbit-bullet-nav-color-active: #555;
+// $orbit-bullet-radius: emCalc(18);
 
-// We use thes to controls the style of slide numbers
+// We use these to controls the style of slide numbers
 
 // $orbit-slide-number-bg: rgba(0,0,0,0);
 // $orbit-slide-number-font-color: #fff;
-// $orbit-slide-number-padding: emCalc(5px);
+// $orbit-slide-number-padding: em-calc(5);
 
 // Graceful Loading Wrapper and preloader
 
@@ -841,20 +859,20 @@ $default-float: left;
 
 // We use these to control the pagination container
 
-// $pagination-height: emCalc(24);
-// $pagination-margin: emCalc(-5);
+// $pagination-height: em-calc(24);
+// $pagination-margin: em-calc(-5);
 
 // We use these to set the list-item properties
 
 // $pagination-li-float: $default-float;
-// $pagination-li-height: emCalc(24);
+// $pagination-li-height: em-calc(24);
 // $pagination-li-font-color: #222;
-// $pagination-li-font-size: emCalc(14);
-// $pagination-li-margin: emCalc(5);
+// $pagination-li-font-size: em-calc(14);
+// $pagination-li-margin: em-calc(5);
 
 // We use these for the pagination anchor links
 
-// $pagination-link-pad: emCalc(1, 7, 1);
+// $pagination-link-pad: em-calc(1 7 1);
 // $pagination-link-font-color: #999;
 // $pagination-link-active-bg: darken(#fff, 10%);
 
@@ -889,8 +907,8 @@ $default-float: left;
 
 // We use these to set default inner padding and bottom margin
 
-// $panel-margin-bottom: emCalc(20);
-// $panel-padding: emCalc(20);
+// $panel-margin-bottom: em-calc(20);
+// $panel-padding: em-calc(20);
 
 // We use these to set default font colors
 
@@ -909,33 +927,33 @@ $default-float: left;
 
 // We use this to control the bottom margin of the pricing table
 
-// $price-table-margin-bottom: emCalc(20);
+// $price-table-margin-bottom: em-calc(20);
 
 // We use these to control the title styles
 
 // $price-title-bg: #ddd;
-// $price-title-padding: emCalc(15, 20);
+// $price-title-padding: em-calc(15 20);
 // $price-title-align: center;
 // $price-title-color: #333;
 // $price-title-weight: bold;
-// $price-title-size: emCalc(16);
+// $price-title-size: em-calc(16);
 
 // We use these to control the price styles
 
 // $price-money-bg: #eee;
-// $price-money-padding: emCalc(15, 20);
+// $price-money-padding: em-calc(15, 20);
 // $price-money-align: center;
 // $price-money-color: #333;
 // $price-money-weight: normal;
-// $price-money-size: emCalc(20);
+// $price-money-size: em-calc(20);
 
 // We use these to control the description styles
 
 // $price-bg: #fff;
 // $price-desc-color: #777;
-// $price-desc-padding: emCalc(15);
+// $price-desc-padding: em-calc(15);
 // $price-desc-align: center;
-// $price-desc-font-size: emCalc(12);
+// $price-desc-font-size: em-calc(12);
 // $price-desc-weight: normal;
 // $price-desc-line-height: 1.4;
 // $price-desc-bottom-border: dotted 1px #ddd;
@@ -943,9 +961,9 @@ $default-float: left;
 // We use these to control the list item styles
 
 // $price-item-color: #333;
-// $price-item-padding: emCalc(15);
+// $price-item-padding: em-calc(15);
 // $price-item-align: center;
-// $price-item-font-size: emCalc(14);
+// $price-item-font-size: em-calc(14);
 // $price-item-weight: normal;
 // $price-item-bottom-border: dotted 1px #ddd;
 
@@ -953,7 +971,7 @@ $default-float: left;
 
 // $price-cta-bg: #f5f5f5;
 // $price-cta-align: center;
-// $price-cta-padding: emCalc(20, 20, 0);
+// $price-cta-padding: em-calc(20 20 0);
 
 //
 // Progress Bar Variables
@@ -961,7 +979,7 @@ $default-float: left;
 
 // We use this to se the prog bar height
 
-// $progress-bar-height: emCalc(25);
+// $progress-bar-height: em-calc(25);
 // $progress-bar-color: transparent;
 
 // We use these to control the border styles
@@ -973,8 +991,8 @@ $default-float: left;
 
 // We use these to control the margin & padding
 
-// $progress-bar-pad: emCalc(2);
-// $progress-bar-margin-bottom: emCalc(10);
+// $progress-bar-pad: em-calc(2);
+// $progress-bar-margin-bottom: em-calc(10);
 
 // We use these to set the meter colors
 
@@ -997,14 +1015,14 @@ $default-float: left;
 // $reveal-modal-bg: #fff;
 // $reveal-position-top: 50px;
 // $reveal-default-width: 80%;
-// $reveal-modal-padding: emCalc(20);
+// $reveal-modal-padding: em-calc(20);
 // $reveal-box-shadow: 0 0 10px rgba(#000,.4);
 
 // We use these to style the reveal close button
 
-// $reveal-close-font-size: emCalc(22);
-// $reveal-close-top: emCalc(8);
-// $reveal-close-side: emCalc(11);
+// $reveal-close-font-size: em-calc(22);
+// $reveal-close-top: em-calc(8);
+// $reveal-close-side: em-calc(11);
 // $reveal-close-color: #aaa;
 // $reveal-close-weight: bold;
 
@@ -1023,8 +1041,8 @@ $default-float: left;
 
 // We use these to set padding and hover factor
 
-// $section-title-padding: emCalc(15);
-// $section-content-padding: emCalc(15);
+// $section-title-padding: em-calc(15);
+// $section-content-padding: em-calc(15);
 // $section-function-factor: 10%;
 
 // These style the titles
@@ -1044,14 +1062,14 @@ $default-float: left;
 
 // Font controls
 
-// $section-font-size: emCalc(14);
+// $section-font-size: em-calc(14);
 
 // Control the color of the background and some size options
 
 // $section-content-bg: #fff;
-// $section-vertical-nav-min-width: emCalc(200);
-// $section-vertical-tabs-title-width: emCalc(200);
-// $section-bottom-margin: emCalc(20);
+// $section-vertical-nav-min-width: em-calc(200);
+// $section-vertical-tabs-title-width: em-calc(200);
+// $section-bottom-margin: em-calc(20);
 
 // $title-selector: ".title";
 // $content-selector: ".content";
@@ -1063,19 +1081,19 @@ $default-float: left;
 
 // We use this to control padding.
 
-// $side-nav-padding: emCalc(14, 0);
+// $side-nav-padding: em-calc(14 0);
 
 // We use these to control list styles.
 
 // $side-nav-list-type: none;
 // $side-nav-list-position: inside;
-// $side-nav-list-margin: emCalc(0, 0, 7, 0);
+// $side-nav-list-margin: em-calc(0 0 7 0);
 
 // We use these to control link styles.
 
 // $side-nav-link-color: $primary-color;
 // $side-nav-link-color-active: lighten(#000, 30%);
-// $side-nav-font-size: emCalc(14);
+// $side-nav-font-size: em-calc(14);
 // $side-nav-font-weight: bold;
 
 // We use these to control border styles
@@ -1090,12 +1108,12 @@ $default-float: left;
 
 // We use these to control margin and padding
 
-// $sub-nav-list-margin: emCalc(-4, 0, 18);
-// $sub-nav-list-padding-top: emCalc(4);
+// $sub-nav-list-margin: em-calc(-4 0 18);
+// $sub-nav-list-padding-top: em-calc(4);
 
 // We use this to control the definition
 
-// $sub-nav-font-size: emCalc(14);
+// $sub-nav-font-size: em-calc(14);
 // $sub-nav-font-color: #999;
 // $sub-nav-font-weight: normal;
 // $sub-nav-text-decoration: none;
@@ -1106,8 +1124,11 @@ $default-float: left;
 // $sub-nav-active-font-weight: bold;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-color: #fff;
-// $sub-nav-active-padding: emCalc(3, 9);
+// $sub-nav-active-padding: em-calc(3 9);
 // $sub-nav-active-cursor: default;
+
+// $sub-nav-item-divider: "" !default;
+// $sub-nav-item-divider-margin: emCalc(12) !default;
 
 //
 // Switch Variables
@@ -1126,7 +1147,7 @@ $default-float: left;
 // $switch-height-sml: 28px;
 // $switch-height-med: 36px;
 // $switch-height-lrg: 44px;
-// $switch-bottom-margin: emCalc(20);
+// $switch-bottom-margin: em-calc(20);
 
 // We use these to control default font sizes for our classes.
 
@@ -1170,22 +1191,22 @@ $default-float: left;
 // These control the table head styles
 
 // $table-head-bg: #f5f5f5;
-// $table-head-font-size: emCalc(14);
+// $table-head-font-size: em-calc(14);
 // $table-head-font-color: #222;
 // $table-head-font-weight: bold;
-// $table-head-padding: emCalc(8, 10, 10);
+// $table-head-padding: em-calc(8 10 10);
 
 // These control the row padding and font styles
 
-// $table-row-padding: emCalc(9, 10);
-// $table-row-font-size: emCalc(14);
+// $table-row-padding: em-calc(9 10);
+// $table-row-font-size: em-calc(14);
 // $table-row-font-color: #222;
-// $table-line-height: emCalc(18);
+// $table-line-height: em-calc(18);
 
 // These are for controlling the display and margin of tables
 
 // $table-display: table-cell;
-// $table-margin-bottom: emCalc(20);
+// $table-margin-bottom: em-calc(20);
 
 //
 // Image Thumbnail Variables
@@ -1215,16 +1236,16 @@ $default-float: left;
 // $has-tip-font-color-hover: $primary-color;
 // $has-tip-cursor-type: help;
 
-// $tooltip-padding: emCalc(8);
+// $tooltip-padding: em-calc(8);
 // $tooltip-bg: #000;
-// $tooltip-font-size: emCalc(15);
+// $tooltip-font-size: em-calc(15);
 // $tooltip-font-weight: bold;
 // $tooltip-font-color: #fff;
 // $tooltip-line-height: 1.3;
-// $tooltip-close-font-size: emCalc(10);
+// $tooltip-close-font-size: em-calc(10);
 // $tooltip-close-font-weight: normal;
 // $tooltip-close-font-color: #888;
-// $tooltip-font-size-sml: emCalc(14);
+// $tooltip-font-size-sml: em-calc(14);
 // $tooltip-radius: $global-radius;
 // $tooltip-pip-size: 5px;
 
@@ -1234,12 +1255,13 @@ $default-float: left;
 
 // Background color for the top bar
 
-// $topbar-bg: #111;
+// $topbar-bg-color: #111;
+// $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 
 // $topbar-height: 45px;
-// $topbar-margin-bottom: emCalc(30);
+// $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
 
@@ -1248,13 +1270,13 @@ $default-float: left;
 // Controlling the styles for the title in the top bar
 
 // $topbar-title-weight: bold;
-// $topbar-title-font-size: emCalc(17);
+// $topbar-title-font-size: em-calc(17);
 
 // Style the top bar dropdown elements
 
 // $topbar-dropdown-bg: #222;
 // $topbar-dropdown-link-color: #fff;
-// $topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
+// // $topbar-dropdown-link-bg: lighten($topbar-bg-color, 5%);
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;
 // $topbar-dropdown-toggle-alpha: 0.5;
@@ -1265,20 +1287,21 @@ $default-float: left;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
 // $topbar-link-weight: bold;
-// $topbar-link-font-size: emCalc(13);
+// $topbar-link-font-size: em-calc(13);
 // $topbar-link-hover-lightness: -30%; // Darken by 30%
-// $topbar-link-bg-hover: darken($topbar-bg, 3%);
-// $topbar-link-bg-active: darken($topbar-bg, 3%);
+// $topbar-link-bg-hover: darken($topbar-bg-color, 3%);
+// $topbar-link-bg-active: darken($topbar-bg-color, 3%);
 
 // $topbar-dropdown-label-color: #555;
 // $topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: bold;
-// $topbar-dropdown-label-font-size: emCalc(10);
+// $topbar-dropdown-label-font-size: em-calc(10);
+// $topbar-dropdown-label-bg: lighten($topbar-bg-color, 5%);
 
 // Top menu icon styles
 
 // $topbar-menu-link-transform: uppercase;
-// $topbar-menu-link-font-size: emCalc(13);
+// $topbar-menu-link-font-size: em-calc(13);
 // $topbar-menu-link-weight: bold;
 // $topbar-menu-link-color: #fff;
 // $topbar-menu-icon-color: #fff;
@@ -1288,14 +1311,15 @@ $default-float: left;
 // Transitions and breakpoint styles
 
 // $topbar-transition-speed: 300ms;
-// $topbar-breakpoint: emCalc(940); // Change to 9999px for always mobile layout
+// $topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 // Divider Styles
 
-// $topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
-// $topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
+// $topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%);
+//  $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%);
 
 // Sticky Class
 
 // $topbar-sticky-class: ".sticky";
+// $topbar-arrows: true; //Set false to remove the triangle icon from the menu item

@@ -157,39 +157,51 @@ $base-font-size: 100% !default;
 $base-line-height: 150% !default;
 
 // This is the default html and body font-size for the base em value.
-$em-base: 16 !default;
+$em-base: 16px !default;
 
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }
 
-// Converts "px" to "em" using the ($)em-base
-@function convert-to-em($value)  {
-  $value: strip-unit($value) / strip-unit($em-base) * 1em;
+// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em's.
+// Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported
+// em-calc(10 20 30px 40);
+// Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
+// em-calc((10, 20, 30, 40px));
+// Optionally call with a different base (eg: 8px) to calculate em.
+// em-calc(16px 32px 48px, 8px);
+// If you require to comma separate your list
+// em-calc((16px, 32px, 48), 8px);
+
+@function convert-to-em($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
   @if ($value == 0em) { $value: 0; } // Turn 0em into 0
   @return $value;
 }
 
-// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#)
-// Just enter the number, no need to mention "px"
-@function emCalc($values...) {
-  $max: length($values); // Get the total number of parameters passed
+@function em-calc($values, $base-value: $em-base) {
+  $max: length($values);
 
-  // If there is only 1 parameter, then return it as an integer.
-  // This is done because a list can't be multiplied or divided even if it contains a single value
-  @if $max == 1 { @return convert-to-em(nth($values, 1)); }
+  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
 
-  $emValues: (); // This will eventually store the converted $values in a list
+  $emValues: ();
   @for $i from 1 through $max {
-    $emValues: append($emValues, convert-to-em(nth($values, $i)));
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
   }
   @return $emValues;
 }
 
-// Maybe you want to create rems and pixels
+// Support for the old syntax
+
+@function emCalc($values){
+  @return em-calc($values);
+}
+
+// Maybe you want to create rems with pixels
+// $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
 // @function remCalc($pxWidth) {
-//   @return $pxWidth / $em-base * 1rem;
+//   @return $pxWidth / $rem-base * 1rem;
 // }
 
 // We use these to control various global styles
@@ -248,6 +260,22 @@ $large: "only screen and (min-width:#{$large-screen})" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
+// Used to provide media query values for javascript components.
+meta.foundation-mq-small {
+  font-family: $small;
+  width: $small-screen;
+}
+
+meta.foundation-mq-medium {
+  font-family: $medium;
+  width: $medium-screen;
+}
+
+meta.foundation-mq-large {
+  font-family: $large;
+  width: $large-screen;
+}
+
 //We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
 $cursor-crosshair-value: crosshair !default;
 $cursor-default-value: default !default;
@@ -283,9 +311,6 @@ $cursor-text-value: text !default;
   }
 
 a:hover { cursor: $cursor-pointer-value; }
-
-  // Override outline from normalize, we don't like it
-  a:focus { outline: none; }
 
   // Grid Defaults to get images and embeds to work properly
   img,

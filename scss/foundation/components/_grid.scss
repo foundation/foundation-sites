@@ -3,8 +3,8 @@
 //
 $include-html-grid-classes: $include-html-classes !default;
 
-$row-width: emCalc(1000) !default;
-$column-gutter: emCalc(30) !default;
+$row-width: em-calc(1000) !default;
+$column-gutter: em-calc(30) !default;
 $total-columns: 12 !default;
 
 //
@@ -117,8 +117,10 @@ $total-columns: 12 !default;
     @include grid-row;
 
     &.collapse {
-      .column,
-      .columns { @include grid-column($collapse:true); }
+       > .column,
+       > .columns { @include grid-column($collapse:true); }
+    
+      .row {margin-left:0; margin-right:0;}
     }
 
     .row { @include grid-row($behavior:nest);
