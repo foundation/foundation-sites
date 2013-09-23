@@ -333,6 +333,9 @@ $glowing-effect-color: $input-focus-border-color !default;
   input[type="time"],
   input[type="url"],
   textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
     @include form-element;
     @if not $input-include-glowing-effect {
         @include single-transition(all, 0.15s, linear);
