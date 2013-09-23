@@ -31,3 +31,5 @@ docs/public/*
 *.scssc
 *.rbenv-version
 *.ruby-version
+
+.project
