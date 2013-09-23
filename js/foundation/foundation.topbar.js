@@ -206,7 +206,8 @@
         });
 
       $(window).on('resize.fndtn.topbar', function () {
-        var stickyContainer = self.settings.$topbar.parent('.' + this.settings.sticky_class);
+        if (typeof self.settings.$topbar === 'undefined') { return; }
+        var stickyContainer = self.settings.$topbar.parent('.' + this.settings.stickyClass);
         var stickyOffset;
 
         if (!self.breakpoint()) {
