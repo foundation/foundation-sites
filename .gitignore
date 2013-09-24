@@ -18,7 +18,7 @@ test/tmp
 test/version_tmp
 test/css
 test/scss/output-test
-vendor/
+/vendor/
 tmp
 *.DS_Store
 marketing/.sass-cache/*
