@@ -327,20 +327,23 @@
     var margin = is_rtl ? 'marginRight' : 'marginLeft';
     var animMargin = {};
     animMargin[margin] = '0%';
+    var easing = (typeof jQuery === 'undefined') ? 'ease-in-out' : undefined;
 
     this.next = function(current, next, callback) {
-      next.animate(animMargin, duration, 'linear', function() {
+      next.animate(animMargin, duration, easing, function() {
         current.css(margin, '100%');
         callback();
       });
+      current.animate({marginLeft:'-100%'}, duration, easing);
     };
 
     this.prev = function(current, prev, callback) {
       prev.css(margin, '-100%');
-      prev.animate(animMargin, duration, 'linear', function() {
+      prev.animate(animMargin, duration, easing, function() {
         current.css(margin, '100%');
         callback();
       });
+      current.animate({marginLeft:'100%'}, duration, easing);
     };
   };
 
