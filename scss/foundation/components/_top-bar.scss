@@ -242,7 +242,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       height: auto;
       display: block;
       background: $topbar-dropdown-bg;
-      font-size: $em-base;
+      font-size: emCalc($em-base);
       margin: 0;
     }
 
