@@ -329,15 +329,17 @@
     animMargin[margin] = '0%';
 
     this.next = function(current, next, callback) {
-      next.animate(animMargin, duration, 'linear', function() {
+      current.animate({marginLeft:'-100%'}, duration);
+      next.animate(animMargin, duration, function() {
         current.css(margin, '100%');
         callback();
       });
     };
 
     this.prev = function(current, prev, callback) {
+      current.animate({marginLeft:'100%'}, duration);
       prev.css(margin, '-100%');
-      prev.animate(animMargin, duration, 'linear', function() {
+      prev.animate(animMargin, duration, function() {
         current.css(margin, '100%');
         callback();
       });
@@ -372,7 +374,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.3.2',
+    version: '5.0.0',
 
     settings: {
       animation: 'slide',
