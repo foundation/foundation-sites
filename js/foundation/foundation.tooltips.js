@@ -9,8 +9,7 @@
     version : '4.2.2',
 
     settings : {
-      sticky : false, //tooltips stay open on mouseover of tooltip
-      stickyDurationMs : 300, //duration of tooltips staying open before auto closing if no mouseover
+      hoverDelay : 0, //duration of tooltips staying open before auto closing if no mouseover
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
@@ -53,15 +52,15 @@
               $(this).fadeOut(150);
             });
         } else {
-          var timeout, selector = "", toolTipClass = (self.settings.sticky ? ","+self.settings.tooltipClass : ""); //For use with sticky tooltips
+          var hoverTimeout, selector = "", toolTipClass = (self.settings.hoverDelay ? ","+self.settings.tooltipClass : ""); //For use with sticky tooltips
           $(this.scope)
             .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip',
               '[data-tooltip]'+toolTipClass, function (e) {
               var $this = $(this);
               selector = self.selector($this);
               if (/enter|over/i.test(e.type)) {
-                if(self.settings.sticky){
-                    clearTimeout(timeout);
+                if(self.settings.hoverDelay){
+                    clearTimeout(hoverTimeout);
                     if($this.hasClass('has-tip')) {
                         $(self.settings.tooltipClass).hide();
                         self.showOrCreateTip($this);
@@ -71,10 +70,10 @@
                      self.showOrCreateTip($this);
                 }
               } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
-                if(self.settings.sticky) {
-                    timeout = setTimeout(function() {
+                if(self.settings.hoverDelay) {
+                    hoverTimeout = setTimeout(function() {
                         self.hide($this);
-                    }, self.settings.stickyDurationMs);
+                    }, self.settings.hoverDelay);
                 }
                 else {
                     self.hide($this);
