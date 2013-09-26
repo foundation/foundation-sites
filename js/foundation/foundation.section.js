@@ -350,7 +350,7 @@
       
       if (selectedSection != null) {
         sections.each(function() {
-          if (selectedSection == $(this)) {
+          if (selectedSection[0] == this) {
             var section = $(this),
                 settings = $.extend({}, self.settings, self.data_options(section)),
                 regions = section.children(self.settings.region_selector),
