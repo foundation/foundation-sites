@@ -275,4 +275,22 @@ $custom-dropdown-width-large: 434px !default;
     /* Custom input, disabled */
     .custom.disabled { background: $custom-form-bg-disabled; }
   }
+
+  @media only screen and (max-width: #{$small-screen}) {
+    form.custom .custom.dropdown {
+      display: none;
+    }
+
+    select {
+      visibility: visible !important;
+      margin-left: 0 !important;
+      position: static !important;
+
+      -webkit-appearance: menulist-button;
+      height: 30px;
+      padding: 4px 6px;
+      line-height: 30px;
+      display: inline-block;
+    }
+  }
 }
