@@ -2,6 +2,7 @@
 // Form Variables
 //
 $include-html-form-classes: $include-html-classes !default;
+$include-html-form-error-classes: $include-html-form-classes !default;
 
 // We use this to set the base for lots of form spacing and positioning styles
 $form-spacing: em-calc(16) !default;
@@ -359,7 +360,9 @@ $glowing-effect-color: $input-focus-border-color !default;
   fieldset {
     @include fieldset;
   }
+}
 
+@if $include-html-form-error-classes != false {
   /* Error Handling */
 
   [data-abide] {
@@ -405,5 +408,4 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
 
   label.error { @include form-label-error-color; }
-
 }
