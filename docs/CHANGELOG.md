@@ -3,6 +3,7 @@
 * Documentation updates
 * When changing slides in Orbit all `data-orbit-link` will now get an active class
 * Adds new `em-calc` function, old `emCalc` will automatically reference newly named function
+* Support AJAX submissions in Abide form validation by settings `data-abide="ajax"`
 * Lots of other bug fixes
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.3.1...v4.3.2).
