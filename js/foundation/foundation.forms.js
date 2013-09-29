@@ -296,8 +296,9 @@
         if ($customSelect.length === 0) {
           var customSelectSize = $this.hasClass('small') ? 'small' : $this.hasClass('medium') ? 'medium' : $this.hasClass('large') ? 'large' : $this.hasClass('expand') ? 'expand' : '';
 
-          $customSelect = $('<div class="' + ['custom', 'dropdown', customSelectSize].concat(copyClasses).filter(function (item, idx, arr) {
-            if (item === '') return false;
+          var arr = ['custom', 'dropdown', customSelectSize].concat(copyClasses);
+          $customSelect = $('<div class="' + arr.filter(function (item, idx) {
+        	  if (item === '') return false;
             return arr.indexOf(item) === idx;
           }).join(' ') + '"><a href="#" class="selector"></a><ul /></div>');
 
