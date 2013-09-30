@@ -330,6 +330,7 @@
     var easing = (typeof jQuery === 'undefined') ? 'ease-in-out' : undefined;
 
     this.next = function(current, next, callback) {
+      next.css(margin, '100%');
       next.animate(animMargin, duration, easing, function() {
         current.css(margin, '100%');
         callback();
