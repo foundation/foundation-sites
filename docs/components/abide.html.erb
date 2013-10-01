@@ -19,6 +19,11 @@
                 <input type="password" id="password" placeholder="LittleW0men." name="password" required>
                 <small class="error" data-error-message>Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
               </div>
+              <div class="large-12 columns">
+                <label for="confirmPassword">Confirm Password <small>required</small></label>
+                <input type="password" id="confirmPassword" placeholder="LittleW0men." name="confirmPassword" required data-equal="password">
+                <small class="error" data-error-message>Passwords must match.</small>
+              </div>
             </div>
 
             <div class="row">
@@ -252,7 +257,7 @@ $(document)
     }
   });
 ", :js %>
-        
+
         <p>You can then use these custom patterns like you would the predfined patterns in your markup:</p>
 
 <%= code_example '
@@ -279,7 +284,7 @@ $(document)
   <small class="error">A valid email address is required.</small>
 </div>
 ', :html %>
-        
+
         <p>In the above example we have wrapped our input in a <code>div</code>. This div will receive an <code>error</code> class when the input is invalid. This class will show our error message and style the label and input accordingly.</p>
 
         <p>Invalid inputs inherit a <code>data-invalid</code> attribute.</p>
