@@ -153,7 +153,7 @@
       var count = this.images().length;
 
       for (var i = count - 1; i >= 0; i--) {
-        this._object($(this.images()[i]));
+        this.object($(this.images()[i]));
       }
 
       return $(window).trigger('resize');
@@ -173,7 +173,7 @@
       return 'replace';
     },
 
-    _object : function(el) {
+    object : function(el) {
       var raw_arr = this.parse_data_attr(el),
           scenarios = [], count = raw_arr.length;
 
