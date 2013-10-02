@@ -67,9 +67,9 @@
           e.stopPropagation();
           self.toggle_radio($(this));
         })
-        .on('change.fndtn.forms', 'form.custom select', function (e, force_refresh) {
+        .on('change.fndtn.forms', 'form.custom select', function (e) {
           if ($(this).is('[data-customforms="disabled"]')) return;
-          self.refresh_custom_select($(this), force_refresh);
+          self.refresh_custom_select($(this), true);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
           if ($(e.target).is('label')) {
