@@ -36,21 +36,36 @@
 
       var forms = this;
 
-      $('form.custom input[type="radio"],[type="checkbox"]', $(this.scope))
-        .not('[data-customforms="disabled"]')
-        .not('.' + this.settings.disable_class)
-        .each(function(idx, sel){
-          forms.set_custom_markup(sel);
-        })
-        .change(function(){
-          forms.set_custom_markup(this);
-        });
+      var setupRadioCheckbox = function(elements){
+        elements
+          .not('[data-customforms="disabled"]')
+          .not('.' + forms.settings.disable_class)
+          .each(function(idx, sel){
+            forms.set_custom_markup(sel);
+          })
+          .change(function(){
+            forms.set_custom_markup(this);
+          });
+      };
 
-      $('form.custom select', $(this.scope))
-        .not('[data-customforms="disabled"]')
-        .not('.' + this.settings.disable_class)
-        .not('[multiple=multiple]')
-        .each(this.append_custom_select);
+      var setupSelects = function(elements){
+        elements
+          .not('[data-customforms="disabled"]')
+          .not('.' + forms.settings.disable_class)
+          .not('[multiple=multiple]')
+          .each(forms.append_custom_select);
+      };
+
+      var $scope = $(this.scope);
+      if($scope.is('input[type="radio"],[type="checkbox"]')){
+        setupRadioCheckbox($scope);
+      } else if($scope.is('select')){
+        setupSelects($scope);
+      } else{
+        setupRadioCheckbox($('form.custom input[type="radio"],[type="checkbox"]', $scope));
+        setupSelects($('form.custom select', $scope));
+      }
+ 
     },
 
     events: function () {
@@ -304,6 +319,8 @@
 
           $this.after($customSelect)
             .addClass('hidden-field');
+          
+          self.assign_id($this, $customSelect);
         } else {
           liHtml = $options.map(function () {
               return "<li>" + $(this).html() + "</li>";
@@ -312,10 +329,11 @@
 
           $customList.html('')
             .append(liHtml);
+            
+          $customSelect.find('a.current').html($selectedOption.html());
 
         } // endif $customSelect.length === 0
 
-        self.assign_id($this, $customSelect);
         $customSelect.toggleClass('disabled', $this.is(':disabled'));
         $listItems = $customList.find('li');
 
