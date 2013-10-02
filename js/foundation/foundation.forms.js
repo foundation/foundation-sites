@@ -69,7 +69,13 @@
         })
         .on('change.fndtn.forms', 'form.custom select', function (e, force_refresh) {
           if ($(this).is('[data-customforms="disabled"]')) return;
-          self.refresh_custom_select($(this), force_refresh);
+          // self.refresh_custom_select($(this), force_refresh);
+          var $customDropdown = self.getCustomDropdown(this),
+              $newValue;
+
+          $newValue = $customDropdown.find('>ul>li:eq(' + this.selectedIndex + ')')
+
+          self.setSelected($newValue);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
           if ($(e.target).is('label')) {
@@ -126,9 +132,8 @@
         })
         .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
-              $customDropdown = $this.closest('div.custom.dropdown'),
-              $select = getFirstPrevSibling($customDropdown, 'select'),
-              selectedIndex = 0;
+              $customDropdown = self.getCustomDropdown($this),
+              $select = self.getSelect($this);
 
           e.preventDefault();
           e.stopPropagation();
@@ -136,25 +141,7 @@
           if (!$(this).hasClass('disabled')) {
             $('div.dropdown').not($customDropdown).removeClass('open');
 
-            var $oldThis = $this.closest('ul')
-              .find('li.selected');
-            $oldThis.removeClass('selected');
-
-            $this.addClass('selected');
-
-            $customDropdown.removeClass('open')
-              .find('a.current')
-              .text($this.text());
-
-            $this.closest('ul').find('li').each(function (index) {
-              if ($this[0] === this) {
-                selectedIndex = index;
-              }
-            });
-            $select[0].selectedIndex = selectedIndex;
-
-            //store the old value in data
-            $select.data('prevalue', $oldThis.html());
+            self.setSelected($this)
             
             // Kick off full DOM change event
             if (typeof (document.createEvent) != 'undefined') {
@@ -377,6 +364,46 @@
 
         } // endif
 
+    },
+
+    getCustomDropdown: function(element){
+      var $element = $(element);
+      if($element.is('select')){
+        return $('div.custom.dropdown[data-id="' + $element.data('id') + '"]')
+      } else {
+        return $element.closest('div.custom.dropdown');
+      }
+    },
+
+    getSelect: function(element){
+      return getFirstPrevSibling(this.getCustomDropdown(element), 'select');
+    },
+
+    setSelected: function(element){
+
+      var selectedIndex = 0,
+          $element = $(element),
+          $customDropdown = this.getCustomDropdown($element),
+          $select = this.getSelect($element),
+          $oldElement = $element.closest('ul')
+          .find('li.selected');
+      $oldElement.removeClass('selected');
+
+      $element.addClass('selected');
+
+      $customDropdown.removeClass('open')
+        .find('a.current')
+        .text($element.text());
+
+      $element.closest('ul').find('li').each(function (index) {
+        if ($element[0] === this) {
+          selectedIndex = index;
+        }
+      });
+      $select[0].selectedIndex = selectedIndex;
+
+      //store the old value in data
+      $select.data('prevalue', $oldElement.html());
     },
 
     assign_id: function ($select, $customSelect) {
