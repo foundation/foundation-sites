@@ -57,12 +57,12 @@
       };
 
       var $scope = $(this.scope);
-      if($scope.is('input[type="radio"],[type="checkbox"]')){
+      if($scope.is('input[type="radio"], input[type="checkbox"]')){
         setupRadioCheckbox($scope);
       } else if($scope.is('select')){
         setupSelects($scope);
       } else{
-        setupRadioCheckbox($('form.custom input[type="radio"],[type="checkbox"]', $scope));
+        setupRadioCheckbox($('form.custom input[type="radio"], input[type="checkbox"]', $scope));
         setupSelects($('form.custom select', $scope));
       }
  
