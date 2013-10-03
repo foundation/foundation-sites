@@ -5,18 +5,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- For third-generation iPad with high-resolution Retina display: -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicons/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= asset_path('favicons/apple-touch-icon-144x144-precomposed.png') %>">
     <!-- For iPhone with high-resolution Retina display: -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= asset_path('favicons/apple-touch-icon-114x114-precomposed.png') %>">
     <!-- For first- and second-generation iPad: -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= asset_path('favicons/apple-touch-icon-72x72-precomposed.png') %>">
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon-precomposed.png">
-    <link rel="icon" href="img/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="<%= asset_path('favicons/apple-touch-icon-precomposed.png') %>">
+    <link rel="icon" href="<%= asset_path('favicons/favicon.ico') %>" type="image/x-icon">
     <title>Foundation Docs: <%= @page_title %></title>
-    <link rel="stylesheet" href="<%= asset_path %>/normalize.css" />
-    <link rel="stylesheet" href="<%= asset_path %>/docs.css" />
-    <script src="<%= asset_path %>/vendor/custom.modernizr.js"></script>
+    <%= stylesheet_link_tag "normalize" %>
+    <%= stylesheet_link_tag "docs" %>
+    <%= javascript_include_tag "vendor/custom.modernizr" %>
+    
   </head>
   <body class="antialiased off-canvas hide-extras">
      <nav class="top-bar hide-for-small">
@@ -298,8 +299,9 @@
       })();
     </script>
 
-    <script src="<%= asset_path %>/vendor/jquery.js"></script>
-    <script src="<%= asset_path %>/docs.js"></script>
+    <%= javascript_include_tag "vendor/jquery" %>
+    <%= javascript_include_tag "docs" %>
+    
     <script>
       $(document)
       <% if @joyride %>
