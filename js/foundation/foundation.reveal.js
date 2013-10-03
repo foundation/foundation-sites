@@ -156,12 +156,13 @@
 
           $.extend(ajax_settings, {
             success: function (data, textStatus, jqXHR) {
-              if ( $.isFunction(old_success) ) {
-                old_success(data, textStatus, jqXHR);
-              }
 
               modal.html(data);
               $(modal).foundation('section', 'reflow');
+
+              if ( $.isFunction(old_success) ) {
+                old_success(data, textStatus, jqXHR);
+              }
 
               self.hide(open_modal, self.settings.css.close);
               self.show(modal, self.settings.css.open);
