@@ -30,11 +30,10 @@ $callout-panel-link-color: #fff !default;
 @mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust) {
 
   @if $bg {
-    $bg-lightness: lightness($bg);
 
     border-style: $panel-border-style;
     border-width: $panel-border-size;
-    border-color: darken($bg, $panel-function-factor);
+    border-color: $panel-border-color;
     margin-bottom: $panel-margin-bottom;
     padding: $padding;
 
@@ -46,6 +45,7 @@ $callout-panel-link-color: #fff !default;
 
     @if $adjust {
       // We set the font color based on the darkness of the bg.
+      $bg-lightness: lightness($bg);
       @if $bg-lightness >= 50% and $bg == blue { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
       @else if $bg-lightness >= 50%            { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color; } }
       @else                                    { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
