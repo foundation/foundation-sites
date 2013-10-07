@@ -169,7 +169,7 @@
           }
       });
 
-      $(window).on('keydown', function (e) {
+      $(document).on('keydown', function (e) {
         var focus = document.activeElement,
             self = Foundation.libs.forms,
             dropdown = $('.custom.dropdown.open'),
