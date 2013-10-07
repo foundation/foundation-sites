@@ -172,11 +172,11 @@
       $(window).on('keydown', function (e) {
         var focus = document.activeElement,
             self = Foundation.libs.forms,
-            dropdown = $('.custom.dropdown'),
-      select = getFirstPrevSibling(dropdown, 'select'),
-      inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
+            dropdown = $('.custom.dropdown.open'),
+            select = getFirstPrevSibling(dropdown, 'select'),
+            inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
 
-        if (dropdown.length > 0 && dropdown.hasClass('open')) {
+        if (dropdown.length > 0) {
           e.preventDefault();
 
       if (e.which === 9) {
