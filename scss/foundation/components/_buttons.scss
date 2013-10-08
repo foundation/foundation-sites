@@ -38,6 +38,9 @@ $button-round: $global-rounded !default;
 // We use this to set default opacity for disabled buttons.
 $button-disabled-opacity: 0.6 !default;
 
+// We use this to set the default button background color
+$button-bg-color: $primary-color !default;
+$button-secondary-bg-color: $secondary-color !default;
 
 //
 // Button Mixins
@@ -108,7 +111,7 @@ $button-disabled-opacity: 0.6 !default;
 }
 
 // We use this mixin to add button color styles
-@mixin button-style($bg:$primary-color, $radius:false, $disabled:false) {
+@mixin button-style($bg:$button-bg-color, $radius:false, $disabled:false) {
 
   // We control which background styles are used,
   // these can be removed by setting $bg:false
@@ -153,7 +156,7 @@ $button-disabled-opacity: 0.6 !default;
 }
 
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
-@mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
+@mixin button($padding:$button-med, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
   @include button-base;
   @include button-size($padding, $full-width, $is-input);
   @include button-style($bg, $radius, $disabled);
@@ -173,7 +176,7 @@ $button-disabled-opacity: 0.6 !default;
     @include button-size;
     @include button-style;
 
-    &.secondary { @include button-style($bg:$secondary-color); }
+    &.secondary { @include button-style($bg:$button-secondary-bg-color); }
     &.success   { @include button-style($bg:$success-color); }
     &.alert     { @include button-style($bg:$alert-color); }
 
@@ -185,8 +188,8 @@ $button-disabled-opacity: 0.6 !default;
     &.left-align  { text-align: left; text-indent: em-calc(12); }
     &.right-align { text-align: right; padding-right: em-calc(12); }
 
-    &.disabled, &[disabled] { @include button-style($bg:$primary-color, $disabled:true);
-      &.secondary { @include button-style($bg:$secondary-color, $disabled:true); }
+    &.disabled, &[disabled] { @include button-style($bg:$button-bg-color, $disabled:true);
+      &.secondary { @include button-style($bg:$button-secondary-bg-color, $disabled:true); }
       &.success { @include button-style($bg:$success-color, $disabled:true); }
       &.alert { @include button-style($bg:$alert-color, $disabled:true); }
     }

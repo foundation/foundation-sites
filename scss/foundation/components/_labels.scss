@@ -6,6 +6,8 @@ $include-html-label-classes: $include-html-classes !default;
 // We use these to style the labels
 $label-padding: em-calc(3 10 4) !default;
 $label-radius: $global-radius !default;
+$label-bg-color: $primary-color !default;
+$label-secondary-bg-color: $secondary-color !default;
 
 // We use these to style the label text
 $label-font-sizing: em-calc(14) !default;
@@ -35,7 +37,7 @@ $label-font-color-alt: #fff !default;
 }
 
 // We use this mixin to add label styles.
-@mixin label-style($bg:$primary-color, $radius:false) {
+@mixin label-style($bg:$label-bg-color, $radius:false) {
 
   // We control which background color comes through
   @if $bg {
@@ -79,7 +81,7 @@ $label-font-color-alt: #fff !default;
 
     &.alert     { @include label-style($alert-color); }
     &.success   { @include label-style($success-color); }
-    &.secondary { @include label-style($secondary-color); }
+    &.secondary { @include label-style($label-secondary-bg-color); }
   }
 
 }

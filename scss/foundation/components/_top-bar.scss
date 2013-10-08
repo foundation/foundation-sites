@@ -66,6 +66,10 @@ $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%) !default;
 $topbar-sticky-class: ".sticky" !default;
 $topbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
 
+// Control color of buttons in topbar
+$topbar-button-bg-color: $button-bg-color !default;
+$topbar-button-secondary-bg-color: $secondary-color !default;
+
 @if $include-html-top-bar-classes != false {
 
   /* Wrapped around .top-bar to contain to grid width */
@@ -267,18 +271,18 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         background: $topbar-dropdown-bg;
 
         &.button {
-          background: $primary-color;
+          background: $topbar-button-bg-color;
           font-size: $topbar-link-font-size;
            padding-right: $topbar-height / 3;
            padding-left: $topbar-height / 3;
           &:hover {
-            background: darken($primary-color, 10%);
+            background: darken($topbar-button-bg-color, 10%);
           }
         }
         &.button.secondary {
-          background: $secondary-color;
+          background: $topbar-button-secondary-bg-color;
           &:hover {
-            background: darken($secondary-color, 10%);
+            background: darken($topbar-button-secondary-bg-color, 10%);
           }
         }
         &.button.success {

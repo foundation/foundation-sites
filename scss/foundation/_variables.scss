@@ -397,6 +397,10 @@ $default-float: left;
 
 // $button-disabled-opacity: 0.6;
 
+// We use this to set the default button background color
+// $button-bg-color: $primary-color;
+// $button-secondary-bg-color: $secondary-color;
+
 //
 // Button Groups
 //
@@ -452,6 +456,8 @@ $default-float: left;
 // $split-button-pip-color: #fff;
 // $split-button-pip-color-alt: #333;
 // $split-button-active-bg-tint: rgba(0,0,0,0.1);
+// $split-button-span-border-color: $primary-color;
+// $split-button-secondary-span-border-color: $secondary-color;
 
 // We use these to control tiny split buttons
 
@@ -488,6 +494,10 @@ $default-float: left;
 //
 // Alert Box Variables
 //
+
+// We use these to control base alert colors
+// $alert-primary-color: $primary-color;
+// $alert-secondary-color: $secondary-color;
 
 // We use this to control alert padding.
 
@@ -796,7 +806,8 @@ $default-float: left;
 
 // $label-padding: em-calc(3 10 4);
 // $label-radius: $global-radius;
-
+// $label-bg-color: $primary-color;
+// $label-secondary-bg-color: $secondary-color;
 // We use these to style the label text
 
 // $label-font-sizing: em-calc(14);
@@ -917,7 +928,8 @@ $default-float: left;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;
-
+// $callout-panel-link-color: #fff;
+// $callout-bg-color: $primary-color;
 //
 // Pricing Table Variables
 //
@@ -1324,3 +1336,7 @@ $default-float: left;
 
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+
+// Control color of buttons in topbar
+// $topbar-button-bg-color: $button-bg-color;
+// $topbar-button-secondary-bg-color: $secondary-color;
