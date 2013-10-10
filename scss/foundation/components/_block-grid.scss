@@ -47,7 +47,10 @@ $block-grid-media-queries: true !default;
 @if $include-html-grid-classes {
   /* Foundation Block Grids for below small breakpoint */
   @media only screen {
-    [class*="block-grid-"] { @include block-grid; }
+    [class*="block-grid-"] {
+      @include block-grid;
+      clear: both;
+    }
 
     @for $i from 1 through $block-grid-elements {
       .small-block-grid-#{($i)} {
