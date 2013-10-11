@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <%= stylesheet_link_tag "docs" %>
+    <%= javascript_include_tag "modernizr" %>
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-4 columns">
+        <%= render "_sidebar.html.erb" %>
+      </div>
+      <div class="large-8 columns">
+        <%= yield %>
+      </div>
+    </div>
+
+    <% if @options.javascript_enabled %>
+      <%= javascript_include_tag "docs" %>
+      <script>
+      $(document).foundation();
+      </script>
+    <% end %>
+  </body>
+</html>

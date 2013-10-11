@@ -1,0 +1,64 @@
+require "fileutils"
+require "bundler"
+Bundler.require
+
+task :clean do
+  # FileUtils.rm_rf()
+  public_path = File.expand_path('public', File.dirname(__FILE__))
+  if File.exists?(public_path)
+    FileUtils.rm_rf(public_path)
+  end
+end
+
+task :setup do
+  image_path = File.expand_path('../assets/img', __FILE__)
+  scss_path  = File.expand_path('../assets/css', __FILE__)
+  js_path    = File.expand_path('../assets/js', __FILE__)
+
+  @env = Sprockets::Environment.new
+  @env.append_path File.expand_path(Foundation.js_path)
+  @env.append_path File.expand_path(Foundation.scss_path)
+  @env.append_path image_path
+  @env.append_path scss_path
+  @env.append_path js_path
+
+  # Compress assets
+  @env.css_compressor = YUI::CssCompressor.new
+  @env.js_compressor  = Uglifier.new(mangle: true, comments: :none)
+
+  @assets = []
+  @env.each_file do |pth| 
+    [image_path, scss_path, js_path].each do |asset_path|
+      if pth.to_s.start_with?("#{asset_path}/")
+        # Don't copy partials (i.e. _partial.scss)
+        unless File.basename(pth).start_with?("_")
+          to = pth.to_s.split("#{asset_path}/").last
+          to.gsub!(/\.scss/, ".css")
+
+          @assets << {
+            from: pth.to_s,
+            to: File.expand_path("./public/assets/#{to}", File.dirname(__FILE__))
+          }
+        end
+      end
+    end
+  end
+  
+end
+
+desc "Build site"
+task :build => [:clean, :setup] do
+  stasis = Stasis.new(File.dirname(__FILE__))  
+  stasis.render
+  @assets.each do |asset|
+    FileUtils.mkdir_p(File.dirname(asset[:to]))
+    
+    if %w{.js .css .scss}.include?(File.extname(asset[:to]))
+      File.open(asset[:to], "w") do |f|
+        f.write(@env[File.basename(asset[:to])].to_s)
+      end
+    else
+      FileUtils.cp(asset[:from], asset[:to])
+    end
+  end
+end

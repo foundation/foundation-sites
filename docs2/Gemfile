@@ -1,0 +1,11 @@
+source "https://rubygems.org"
+
+gem "stasis"
+gem "rouge"
+gem "redcarpet"
+gem "foreman"
+gem "rack"
+gem "sprockets"
+gem "zurb-foundation", "4.3.2"
+gem "uglifier"
+gem "yui-compressor"
