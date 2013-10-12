@@ -85,7 +85,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Added the ability to use deep-linking inside nested Sections.
 * Added the ability to use HTML in the data-caption for Clearing.
 * Fixes problem with embedded Youtube videos inside of Reveal.
-* Orbit now has pause/resume on hover/mousout capability.
+* Orbit now has pause/resume on hover/mouseout capability.
 * Fixed Section vertical tabs on mobile.
 * Lots of small bug fixes and improvements for many of the JS components.
 
@@ -128,7 +128,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Section is now fully semantic
 * Clicking on current thumbnail in Clearing now advances to next slide
 * data-options support added to Clearing
-* Addressed Foundation loader incompatiblities with non-jQuery and non-Zepto JS libraries
+* Addressed Foundation loader incompatibilities with non-jQuery and non-Zepto JS libraries
 * Fixed Rails generator bug when using CoffeeScript files
 * Added `reflow` to Section js plugin to support dynamic content
 
@@ -173,7 +173,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Added modular HTML class variables to control whether or no those classes come through into your CSS.
 * Changed global font size defaults to 100% to let browsers use their default zooming.
 * Fixed bugs with top-bar bottom margin variables.
-* Bug fixes for Reveal click event propigation.
+* Bug fixes for Reveal click event propagation.
 * Bug fixes in the Dropdown plugins for positioning.
 * Removed duplicate binding in sections.
 * Changes all references to `$button-radius` to `$global-radius` to fix customizer blank css files.
@@ -276,7 +276,7 @@ The updates to Foundation itself are as follows:
 * Added [Magellan](http://foundation.zurb.com/docs/magellan.php), a plugin for building design agnostic sticky navs that know where you are on the page.
 * Added [Joyride](http://foundation.zurb.com/docs/joyride.php), our plugin for creating tours of your website or app.
 * Added [Clearing](http://foundation.zurb.com/docs/clearing.php), our new responsive image gallery lightbox plugin.
-* Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipable on mobile as well.
+* Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipeable on mobile as well.
 * Updated Reveal
 * Updated index files to use defined header and footer structure
 * Cleaned up some Compass included
@@ -286,12 +286,12 @@ The updates to Foundation itself are as follows:
 * Added mobile-#-up classes to use in conjunction with regular block-grid classes for a different mobile grid.
 * Updated block grids to be really flexible and customizable based on a variable.
 * Added better responsive styling for tooltips.
-* Separated all media queries into their own file for easy droppping.
+* Separated all media queries into their own file for easy dropping.
 * Updated modular scale to use new functions, doesn't effect end-users.
-* Updated visibility classes to use inherit instead of block to accomodate for spans.
+* Updated visibility classes to use inherit instead of block to accommodate for spans.
 * Removed HTML5 Shiv from header since its included in modernizr.
 * Added [pricing tables](http://foundation.zurb.com/docs/elements.php#pricing-tables) UI element
-* Added many new Scss variables to control styling for things like: topbar, clearing, joyride, pricint tables, etc.
+* Added many new Scss variables to control styling for things like: topbar, clearing, joyride, pricing tables, etc.
 * Bug fixes for Topbar.
 * Added 5 [HTML templates](http://foundation.zurb.com/templates.php) to the add-ons section.
 
@@ -325,7 +325,7 @@ Bug fixes and locking down dependencies.
 ### 3.0.8- August 10, 2012
 Numerous bugfixes. Added media query toggle plugin. Removed marketing site from repository and included a new `test/` directory to help contributors test patches.
 
-New features: Media Query Toggler, block-grid mobile layouts, font-size customizer options and included modular scale gem as dependancy for SCSS version.
+New features: Media Query Toggler, block-grid mobile layouts, font-size customizer options and included modular scale gem as dependency for SCSS version.
 
 ---
 
