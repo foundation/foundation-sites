@@ -336,7 +336,7 @@
           regions = section.children(self.settings.region_selector);
           regions.each(function() {
             var region = $(this),
-            data_slug = region.children(self.settings.content_selector).data('slug');
+            data_slug = "^" + region.children(self.settings.content_selector).data('slug') + "$";
             if (new RegExp(data_slug, 'i').test(hash)) {
               selectedSection=section;
               return false;
@@ -363,7 +363,7 @@
               if (selected) {
                 region.removeClass(self.settings.active_class);
               } else if (set_active_from_hash) {
-                var data_slug = region.children(self.settings.content_selector).data('slug');
+                var data_slug = "^" + region.children(self.settings.content_selector).data('slug') + "$";
     
                 if (data_slug && new RegExp(data_slug, 'i').test(hash)) {
                   if (!region.hasClass(self.settings.active_class))
