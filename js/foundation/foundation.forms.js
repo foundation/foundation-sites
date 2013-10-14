@@ -135,10 +135,12 @@
             $dropdown.toggleClass('open');
 
             if ($dropdown.hasClass('open')) {
-              $(self.scope).on('click.fndtn.forms.customdropdown', function () {
+              var close = function () {
                 $dropdown.removeClass('open');
                 $(self.scope).off('.fndtn.forms.customdropdown');
-              });
+              }
+              $this.on('blur.fndtn.forms.customdropdown ', close);
+              $(self.scope).on('click.fndtn.forms.customdropdown ', close);
             } else {
               $(self.scope).on('.fndtn.forms.customdropdown');
             }
