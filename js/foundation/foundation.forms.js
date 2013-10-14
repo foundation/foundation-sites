@@ -122,7 +122,7 @@
         .on('mousedown.fndtn.forms', 'form.custom div.custom.dropdown', function () {
           return false;
         })
-        .on('click.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
+        .on('click.fndtn.forms focus.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
           var $this = $(this),
               $dropdown = $this.closest('div.custom.dropdown'),
               $select = getFirstPrevSibling($dropdown, 'select');
@@ -167,7 +167,7 @@
               $select[0].fireEvent('onchange'); // for IE
             }
           }
-      });
+        });
 
       $(document).on('keydown', function (e) {
         var focus = document.activeElement,
@@ -176,13 +176,10 @@
             select = getFirstPrevSibling(dropdown, 'select'),
             inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
 
-        if (dropdown.length > 0) {
+        if (e.which === 9) {
+            //user is tabbing off, do nothing
+        } else if (dropdown.length > 0) {
           e.preventDefault();
-
-      if (e.which === 9) {
-          $(inputs[$(inputs).index(select) + 1]).focus();
-        dropdown.removeClass('open');
-      }
 
           if (e.which === 13) {
             dropdown.find('li.selected').trigger('click');
@@ -224,14 +221,14 @@
         }
       });
 
-    $(window).on('keyup', function (e) {
-          var focus = document.activeElement,
-              dropdown = $('.custom.dropdown');
+      $(document).on('keyup', function (e) {
+        // var focus = document.activeElement,
+        //     dropdown = $(focus).parent('.custom.dropdown');
 
-      if (focus === dropdown.find('.current')[0]) {
-        dropdown.find('.selector').focus().click();
-      }
-    });
+        // if (dropdown.length > 0) {
+        //   dropdown.find('.selector').focus().click();
+        // }
+      });
 
       this.settings.init = true;
     },
@@ -314,7 +311,7 @@
           $customList.append(liHtml);
 
           $currentSelect = $customSelect
-            .prepend('<a href="#" class="current">' + ($selectedOption.html() || '') + '</a>')
+            .prepend('<a href="#" class="current" tabindex="-1">' + ($selectedOption.html() || '') + '</a>')
             .find(".current");
 
           $this.after($customSelect)
