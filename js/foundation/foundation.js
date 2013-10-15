@@ -38,6 +38,10 @@ if (typeof jQuery === "undefined" &&
     https://github.com/paulirish/matchMedia.js
   */
 
+   $('head').append('<meta class="foundation-mq-small">');
+   $('head').append('<meta class="foundation-mq-medium">');
+   $('head').append('<meta class="foundation-mq-large">');
+
   window.matchMedia = window.matchMedia || (function( doc, undefined ) {
 
     "use strict";
@@ -166,9 +170,17 @@ if (typeof jQuery === "undefined" &&
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.3.1',
+    version : '4.3.2',
 
     cache : {},
+
+    media_queries : {
+      small : $('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
+      medium : $('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
+      large : $('.foundation-mq-large').css('font-family').replace(/\'/g, '')
+    },
+
+    stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
     init : function (scope, libraries, method, options, response, /* internal */ nc) {
       var library_arr,
@@ -385,6 +397,18 @@ if (typeof jQuery === "undefined" &&
         }
 
         return true;
+      },
+
+      addCustomRule : function(rule, media) {
+        if(media === undefined) {
+          Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
+        } else {
+          var query = Foundation.media_queries[media];
+          if(query !== undefined) {
+            Foundation.stylesheet.insertRule('@media ' + 
+              Foundation.media_queries[media] + '{ ' + rule + ' }');
+          }
+        }
       }
     },
 

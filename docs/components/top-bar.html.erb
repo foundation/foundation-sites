@@ -81,7 +81,7 @@
         <p>The top bar has four main elements, three of which are needed for proper functionality: <code>ul.title-area</code>, a <code>ul class="right/left</code> element enclosed in a <code>section class="top-bar-section"</code>, and the <code>li.toggle-topbar</code> element that will expand the menu in the mobile layout.</p>
 
         <h5>Positioning the Bar</h5>
-        <p>The top bar is built with a single <code>nav</code> element with a class of <code>top-bar</code>. It will take on full-browser width by default. To make the top bar stay fixed as you scroll, wrap it in <code>div class="fixed"</code>. If you want your navigation to be set to your grid width, wrap it in <code>div class="contain-to-grid"</code>. You may use <code>fixed</code> and <code>contain-to-grid</code> together.</p>
+        <p>The top bar is built with a single <code>nav</code> element with a class of <code>top-bar</code>. It will take on full-browser width by default. To make the top bar stay fixed as you scroll, wrap it in <code>div class="fixed"</code>. If you want your navigation to be set to your grid width, wrap it in <code>div class="contain-to-grid"</code>. You may use <code>fixed</code> and <code>contain-to-grid</code> together in the wrapping div (<code>div class="contain-to-grid fixed</code>).</p>
 
         <h5>Building the Nav</h5>
         <p>When building your bar it is good to be aware of how many links you're going to need in it so you can customize your responsive breakpoint accordingly. Build your navigation with <code>ul.left</code> and/or <code>ul.right</code> depending where you want links. To add items, simply include <code>li</code> elements with an anchor inside them for your top-level. To build a dropdown menu, you'll need to add <code>has-dropdown</code> to the <code>li</code> and include <code>ul.dropdown</code> after that anchor. Add a class of <code>active</code> to mark the current page.</p>
@@ -377,6 +377,7 @@ $topbar-link-bg-hover: darken($topbar-bg, 3%);
 $topbar-link-bg-active: darken($topbar-bg, 3%);
 
 $topbar-dropdown-label-color: #555;
+$topbar-dropdown-label-bg: lighten($topbar-bg, 5%);
 $topbar-dropdown-label-text-transform: uppercase;
 $topbar-dropdown-label-font-weight: bold;
 $topbar-dropdown-label-font-size: em-calc(10);
@@ -408,10 +409,33 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.topbar.js</code> to get the topbar to play nice. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the topbar plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <div class="panel">
+          Before you can use the top bar you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.topbar.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
 
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.topbar.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.topbar.js</code></p>
 
         <h5>Optional JavaScript Configuration</h5>

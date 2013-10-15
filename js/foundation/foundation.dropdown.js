@@ -101,6 +101,10 @@
 
     toggle : function (target) {
       var dropdown = $('#' + target.data('dropdown'));
+      if (dropdown.length === 0) {
+        // No dropdown found, not continuing
+        return;
+      }
 
       this.close.call(this, $('[data-dropdown-content]').not(dropdown));
 
@@ -140,7 +144,7 @@
         });
         dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
       } else {
-        if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left) {
+        if (!Foundation.rtl && $(window).width() > this.outerWidth(dropdown) + target.offset().left && !this.data_options(target).align_right) {
           var left = position.left;
           if (dropdown.hasClass('right')) {
             dropdown.removeClass('right');

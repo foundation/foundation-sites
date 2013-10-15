@@ -2,6 +2,7 @@
 // Form Variables
 //
 $include-html-form-classes: $include-html-classes !default;
+$include-html-form-error-classes: $include-html-form-classes !default;
 
 // We use this to set the base for lots of form spacing and positioning styles
 $form-spacing: em-calc(16) !default;
@@ -48,7 +49,7 @@ $input-prefix-font-color-alt: #fff !default;
 
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: em-calc(6 4) !default;
-$input-error-message-top: -($form-spacing) - em-calc(5) !default;
+$input-error-message-top: 0;
 $input-error-message-font-size: em-calc(12) !default;
 $input-error-message-font-weight: bold !default;
 $input-error-message-font-color: #fff !default;
@@ -74,6 +75,12 @@ $glowing-effect-color: $input-focus-border-color !default;
 
       .column,
       .columns { padding: 0; }
+      input { 
+        -moz-border-radius-bottom#{$opposite-direction}: 0;
+        -moz-border-radius-top#{$opposite-direction}: 0;
+        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
+        -webkit-border-top-#{$opposite-direction}-radius: 0;
+      }
 
     }
   }
@@ -238,7 +245,7 @@ $glowing-effect-color: $input-focus-border-color !default;
 
 // We use this mixin to create error message styles
 @mixin form-error-message($bg:$alert-color) {
-  display: block !important;
+  display: block;
   padding: $input-error-message-padding;
   margin-top: $input-error-message-top;
   margin-bottom: $form-spacing;
@@ -327,6 +334,9 @@ $glowing-effect-color: $input-focus-border-color !default;
   input[type="time"],
   input[type="url"],
   textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
     @include form-element;
     @if not $input-include-glowing-effect {
         @include single-transition(all, 0.15s, linear);
@@ -350,13 +360,14 @@ $glowing-effect-color: $input-focus-border-color !default;
   fieldset {
     @include fieldset;
   }
+}
 
+@if $include-html-form-error-classes != false {
   /* Error Handling */
 
   [data-abide] {
     .error small.error, span.error, small.error {
       @include form-error-message;
-      margin-top: 0;
     }
     span.error, small.error { display: none; }
   }
@@ -376,6 +387,7 @@ $glowing-effect-color: $input-focus-border-color !default;
       @include form-label-error-color;
     }
 
+    > small,
     small.error {
       @include form-error-message;
     }
@@ -388,6 +400,7 @@ $glowing-effect-color: $input-focus-border-color !default;
   input.error,
   textarea.error {
     @include form-error-color;
+    margin-bottom: 0;
   }
 
   .error select {
@@ -395,5 +408,4 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
 
   label.error { @include form-label-error-color; }
-
 }
