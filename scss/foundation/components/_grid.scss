@@ -11,7 +11,12 @@ $total-columns: 12 !default;
 // Grid Function
 //
 
+// DEPRECATED Use grid-calc
 @function gridCalc($colNumber, $totalColumns) {
+  @return grid-calc($colNumber, $totalColumns);
+}
+
+@function grid-calc($colNumber, $totalColumns) {
   @return percentage(($colNumber / $totalColumns));
 }
 
