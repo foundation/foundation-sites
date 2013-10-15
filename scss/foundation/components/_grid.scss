@@ -180,6 +180,15 @@ $total-columns: 12 !default;
   }
   @media #{$medium-up} {
     @include grid-html-classes($size:medium);
+    // Old push and pull classes
+    @for $i from 1 through $total-columns - 1 {
+      .push#{-$i} { 
+        @include grid-column($push:$i, $collapse:null, $float:false); 
+      }
+      .pull#{-$i} { 
+        @include grid-column($pull:$i, $collapse:null, $float:false); 
+      }
+    }
   }
   @media #{$large-up} {
     @include grid-html-classes($size:large);
