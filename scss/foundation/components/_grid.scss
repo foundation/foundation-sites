@@ -136,6 +136,7 @@ $total-columns: 12 !default;
 
 }
 
+
 // Create presentational classes for grid
 //
 // $size - Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
@@ -149,6 +150,7 @@ $total-columns: 12 !default;
       @include grid-column($pull:$i, $collapse:null, $float:false);
     }
   }
+
   .column,
   .columns { @include grid-column($columns:false); }
 
@@ -202,6 +204,7 @@ $total-columns: 12 !default;
   @media #{$small-up} {
     @include grid-html-classes($size:small);
   }
+
   @media #{$medium-up} {
     @include grid-html-classes($size:medium);
     // Old push and pull classes
