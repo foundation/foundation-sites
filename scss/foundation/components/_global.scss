@@ -260,6 +260,15 @@ $large: "only screen and (min-width:#{$large-screen})" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
+// New Media Queries
+
+$small-only: "only screen and (max-width: #{$small-screen})" !default;
+$medium-up: "only screen and (min-width:#{$medium-screen})" !default;
+$medium-only: "only screen and (min-width:#{$medium-screen}) and (max-width:#{$large-screen})" !default;
+$large-up: "only screen and (min-width:#{$large-screen})" !default;
+$large-only: "only screen and (min-width:#{$large-screen}) and (max-width:#{$large-screen})" !default;
+
+
 // Used to provide media query values for javascript components.
 meta.foundation-mq-small {
   font-family: $small;
@@ -359,5 +368,4 @@ a:hover { cursor: $cursor-pointer-value; }
 
   // Make select elements 100% width by default
   select { width: 100%; }
-
 }
