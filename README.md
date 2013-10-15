@@ -7,6 +7,9 @@ Homepage:      http://foundation.zurb.com<br />
 Documentation: http://foundation.zurb.com/docs<br />
 Download:      http://foundation.zurb.com/download.php
 
+[![IDE](https://codio-public.s3.amazonaws.com/sharing/open-in-ide.png)](https://codio.com/p/create/?from_github=zurb/foundation)<br />
+[![IDE](https://codio-public.s3.amazonaws.com/sharing/demo-in-ide.png)](https://codio.com/p/create/?from_github=zurb/foundation-demo)
+
 Foundation is MIT-licensed and absolutely free to use. Foundation wouldn't be possible without the support of the entire ZURB team, our friends and colleagues who gave feedback, and some luminaries who did some heavy lifting that we took advantage of (thanks guys).
 
 Repo Contents
