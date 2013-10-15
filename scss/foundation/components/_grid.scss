@@ -137,6 +137,7 @@ $total-columns: 12 !default;
 
 }
 
+
 // Create presentational classes for grid
 //
 // $size - Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
@@ -145,6 +146,7 @@ $total-columns: 12 !default;
   @for $i from 1 through $total-columns - 1 {
     .#{$size}-push#{-$i} {
       @include grid-column($push:$i, $collapse:null, $float:false);
+
     }
     .#{$size}-pull#{-$i} {
       @include grid-column($pull:$i, $collapse:null, $float:false);
@@ -153,6 +155,7 @@ $total-columns: 12 !default;
 
   .column,
   .columns { @include grid-column($columns:false); }
+
 
   @for $i from 1 through $total-columns {
     .#{$size}#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
@@ -178,6 +181,7 @@ $total-columns: 12 !default;
   .column.#{$size}-uncentered.opposite,
   .columns.#{$size}-uncentered.opposite {
     float: $opposite-direction !important;
+
   }
 }
 
