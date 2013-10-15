@@ -164,8 +164,7 @@ $button-disabled-opacity: 0.6 !default;
 // Button Classes
 //
 
-// Only include these classes if the variable is true, otherwise they'll be left out.
-@if $include-html-button-classes != false {
+@if $include-html-button-classes {
 
   // Default styles applied outside of media query
   button, .button {
@@ -194,37 +193,27 @@ $button-disabled-opacity: 0.6 !default;
   }
 
   button, .button {
+    @include inset-shadow();
+    @include single-transition(background-color);
     @include button-size($padding:false, $is-input:$button-med);
-    &.tiny { @include button-size($padding:false, $is-input:$button-tny); }
-    &.small { @include button-size($padding:false, $is-input:$button-sml); }
-    &.large { @include button-size($padding:false, $is-input:$button-lrg); }
-  }
-
-  // Styles for any browser or device that support media queries
-  @media only screen {
-
-    button, .button {
-      @include inset-shadow();
-      @include single-transition(background-color);
-
-      &.large  { @include button-size($padding:false, $full-width:false); }
-      &.small  { @include button-size($padding:false, $full-width:false); }
-      &.tiny   { @include button-size($padding:false, $full-width:false); }
-
-      &.radius { @include button-style($bg:false, $radius:true); }
-      &.round  { @include button-style($bg:false, $radius:$button-round); }
+    &.tiny { 
+      @include button-size($padding:false, $is-input:$button-tny);
     }
-
+    &.small {
+      @include button-size($padding:false, $full-width:false);
+    }
+    &.large { 
+      @include button-size($padding:false, $full-width:false);
+    }
+    &.radius { @include button-style($bg:false, $radius:true); }
+    &.round  { @include button-style($bg:false, $radius:$button-round); }
   }
 
-  // Additional styles for screens larger than 768px
-  @media #{$small} {
-
+  @media #{$medium-up} {
     button, .button {
       @include button-base($style:false, $display:inline-block);
       @include button-size($padding:false, $full-width:false);
     }
-
   }
 
 }
