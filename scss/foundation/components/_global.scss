@@ -248,7 +248,7 @@ $include-html-classes: true !default;
 $include-print-styles: true !default;
 $include-html-global-classes: $include-html-classes !default;
 
-// Media Queries
+// Media Sizes
 $small-screen: 768px !default;
 $medium-screen: 1280px !default;
 $large-screen: 1440px !default;
@@ -261,13 +261,30 @@ $small: "only screen and (min-width: #{$small-screen})" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
+// New Media Sizes
+$small-only-screen: 767px !default;
+$medium-up-screen: 768px !default;
+$medium-only-screen: 1024px !default;
+$large-up-screen: 1025px !default;
+$large-only-screen: 1440px !default;
+$xlarge-up-screen: 1441px !default;
+$xlarge-only-screen: 1919px !default;
+$xxlarge-up-screen: 1920px !default;
+$xxlarge-only-screen: 2560px !default;
+
+
 // New Media Queries
 $small-up: $screen;
-$small-only: "only screen and (max-width: #{$small-screen})" !default;
-$medium-up: "only screen and (min-width:#{$medium-screen})" !default;
-$medium-only: "only screen and (min-width:#{$medium-screen}) and (max-width:#{$large-screen})" !default;
-$large-up: "only screen and (min-width:#{$large-screen})" !default;
-$large-only: "only screen and (min-width:#{$large-screen}) and (max-width:#{$large-screen})" !default;
+$small-only: "only screen and (max-width: #{$small-only-screen})" !default;
+$medium-up: "only screen and (min-width:#{$medium-up-screen})" !default;
+$medium-only: "only screen and (min-width:#{$medium-up-screen}) and (max-width:#{$medium-only-screen})" !default;
+$large-up: "only screen and (min-width:#{$large-up-screen})" !default;
+$large-only: "only screen and (min-width:#{$large-up-screen}) and (max-width:#{$large-only-screen})" !default;
+$xlarge-up: "only screen and (min-width:#{$xlarge-up-screen})" !default;
+$xlarge-only: "only screen and (min-width:#{$xlarge-up-screen}) and (max-width:#{$xlarge-only-screen})" !default;
+$xxlarge-up: "only screen and (min-width:#{$xxlarge-up-screen})" !default;
+$xxlarge-only: "only screen and (min-width:#{$xxlarge-up-screen}) and (max-width:#{$xxlarge-only-screen})" !default;
+
 
 // Setup Mapping for Old Media Queries (will deprecate in 5.1)
 $medium: $medium-up;

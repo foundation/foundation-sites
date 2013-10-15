@@ -117,6 +117,14 @@ $total-columns: 12 !default;
 }
 
 @mixin grid-html-classes($size) {
+  @for $i from 1 through $total-columns - 1 {
+    .#{$size}-push#{-$i} { 
+      @include grid-column($push:$i, $collapse:null, $float:false); 
+    }
+    .#{$size}-pull#{-$i} { 
+      @include grid-column($pull:$i, $collapse:null, $float:false); 
+    }
+  }
   .column,
   .columns { @include grid-column($columns:false); }
 
@@ -170,12 +178,16 @@ $total-columns: 12 !default;
   @media #{$small-up} {
     @include grid-html-classes($size:small);
   }
-
   @media #{$medium-up} {
     @include grid-html-classes($size:medium);
   }
-
   @media #{$large-up} {
     @include grid-html-classes($size:large);
+  }
+  @media #{$xlarge-up} {
+    @include grid-html-classes($size:xlarge);
+  }
+  @media #{$xxlarge-up} {
+    @include grid-html-classes($size:xxlarge);
   }
 }
