@@ -46,8 +46,8 @@
       slides_container.addClass(settings.slides_container_class);
       
       if (settings.navigation_arrows) {
-        container.append($('<a href="#">').addClass(settings.prev_class).append('<span>'));
-        container.append($('<a href="#">').addClass(settings.next_class).append('<span>'));
+        container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
+        container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
       }
 
       if (settings.timer) {
@@ -60,7 +60,7 @@
 
       if (settings.slide_number) {
         number_container = $('<div>').addClass(settings.slide_number_class);
-        number_container.append('<span></span> of <span></span>');
+        number_container.append('<span></span> ' + settings.slide_number_text + ' <span></span>');
         container.append(number_container);
       }
 
@@ -327,20 +327,23 @@
     var margin = is_rtl ? 'marginRight' : 'marginLeft';
     var animMargin = {};
     animMargin[margin] = '0%';
+    var easing = (typeof jQuery === 'undefined') ? 'ease-in-out' : undefined;
 
     this.next = function(current, next, callback) {
-      next.animate(animMargin, duration, 'linear', function() {
+      next.animate(animMargin, duration, easing, function() {
         current.css(margin, '100%');
         callback();
       });
+      current.animate({marginLeft:'-100%'}, duration, easing);
     };
 
     this.prev = function(current, prev, callback) {
       prev.css(margin, '-100%');
-      prev.animate(animMargin, duration, 'linear', function() {
+      prev.animate(animMargin, duration, easing, function() {
         current.css(margin, '100%');
         callback();
       });
+      current.animate({marginLeft:'100%'}, duration, easing);
     };
   };
 
@@ -372,7 +375,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '4.3.1',
+    version: '4.3.2',
 
     settings: {
       animation: 'slide',
@@ -383,6 +386,7 @@
       stack_on_small: false,
       navigation_arrows: true,
       slide_number: true,
+      slide_number_text: 'of',
       container_class: 'orbit-container',
       stack_on_small_class: 'orbit-stack-on-small',
       next_class: 'orbit-next',

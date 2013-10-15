@@ -37,8 +37,8 @@
     <h4>Stop #2</h4>
     <p>Get the details right by styling Joyride with a custom stylesheet!</p>
   </li>
-  <li data-button="Next">
-    <h4>Stop #4</h4>
+  <li data-button="End">
+    <h4>Stop #3</h4>
     <p>It works as a modal too!</p>
   </li>
 </ol>
@@ -100,10 +100,34 @@ $joyride-screenfill: rgba(0,0,0,0.5);
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.joyride.js</code> to get the plugin to work. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <div class="panel">
+          Before you can use Joyride you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.joyride.js</code> and <code>foundation.cookie.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
 
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.joyride.js"></script>
+  <script src="js/foundation/foundation.cookie.js"></script> <!-- Optional -->
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.joyride.js</code>, Optional JS Library: <code>foundation.cookie.js</code></p>
 
         <p>Joyride does not initialize on page load like the rest of the plugins. You need to call <code>start</code> to get it to load.</p>
@@ -178,8 +202,8 @@ $joyride-screenfill: rgba(0,0,0,0.5);
     <h4>Stop #2</h4>
     <p>Get the details right by styling Joyride with a custom stylesheet!</p>
   </li>
-  <li data-button="Next">
-    <h4>Stop #4</h4>
+  <li data-button="End">
+    <h4>Stop #3</h4>
     <p>It works as a modal too!</p>
   </li>
 </ol>

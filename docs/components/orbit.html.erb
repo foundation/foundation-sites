@@ -259,9 +259,33 @@ $preloader-class: "preloader";
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.orbit.js</code> if you want to use Orbit. You'll also need to make sure to include <code>zepto.js</code> and/or <code>jquery.js</code> along with <code>foundation.js</code> above the Orbit plugin. Above your closing <code>&lt;/body&gt;</code> tag include the Foundation library and either Zepto or jQuery.</p>
+        <div class="panel">
+          Before you can use Orbit you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.orbit.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.orbit.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
 
         <p>Required Foundation Library: <code>foundation.orbit.js</code></p>
 

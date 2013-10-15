@@ -106,6 +106,7 @@ $default-float: left;
 // $include-html-visibility-classes: $include-html-classes;
 // $include-html-button-classes: $include-html-classes;
 // $include-html-form-classes: $include-html-classes;
+// $include-html-form-error-classes: $include-html-classes;
 // $include-html-custom-form-classes: $include-html-classes;
 // $include-html-media-classes: $include-html-classes;
 // $include-html-section-classes: $include-html-classes;
@@ -609,7 +610,7 @@ $default-float: left;
 // $custom-form-check-color: #222;
 // $custom-form-check-size: 16px;
 // $custom-form-radio-size: 8px;
-// $custom-form-checkbox-radius: 0px;
+// $custom-form-checkbox-radius: 0;
 
 // We use these to style the custom select form element.
 
@@ -634,7 +635,7 @@ $default-float: left;
 // $custom-dropdown-font-size: em-calc(14);
 // $custom-dropdown-color-selected: #eeeeee;
 // $custom-dropdown-font-color-selected: #000;
-// $custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1);
+// $custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
 // $custom-dropdown-offset-top: auto;
 // $custom-dropdown-list-padding: em-calc(4);
 // $custom-dropdown-default-float-padding: em-calc(6);
@@ -1126,6 +1127,9 @@ $default-float: left;
 // $sub-nav-active-color: #fff;
 // $sub-nav-active-padding: em-calc(3 9);
 // $sub-nav-active-cursor: default;
+
+// $sub-nav-item-divider: "" !default;
+// $sub-nav-item-divider-margin: emCalc(12) !default;
 
 //
 // Switch Variables

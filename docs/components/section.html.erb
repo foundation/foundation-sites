@@ -75,7 +75,7 @@
                 <p class="title" data-section-title><a href="#panel2">Section 2</a></p>
                 <div class="content" data-slug="panel2" data-section-content>
                   <div class="section-container auto" data-section data-options="deep_linking: true;">
-                    <section data-section-region>
+                    <section class="active" data-section-region>
                       <p class="title" data-section-title><a href="#panel2nested1">Section 1</a></p>
                       <div class="content" data-slug="nested1" data-section-content>
                         <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -83,13 +83,13 @@
                     </section>
                     <section data-section-region>
                       <p class="title" data-section-title><a href="#panel2nested2">Section 2</a></p>
-                      <div class="content" data-slug="nested2" data-section-content>
+                      <div class="content" data-slug="panel2nested2" data-section-content>
                         <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
                     </section>
                     <div data-section-region class="section">
                       <p class="title" data-section-title><a href="#panel2nested3">Section 3</a></p>
-                      <div class="content" data-slug="nested3" data-section-content>
+                      <div class="content" data-slug="panel2nested3" data-section-content>
                         <form>
                           <div class="row collapse">
                             <div class="large-2 columns">
@@ -166,7 +166,7 @@
 
 <%= code_example '
 <div class="section-container auto" data-section>
-  <section>
+  <section class="active">
     <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
     <div class="content" data-section-content>
       <p>Content of section 1.</p>
@@ -180,7 +180,7 @@
   </section>
 </div>', :html %>
 <div class="section-container auto" data-section>
-  <section>
+  <section class="active">
     <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
     <div class="content" data-section-content>
       <p>Content of section 1.</p>
@@ -213,7 +213,7 @@
         <p>Adding an <code>accordion</code> class to the section container will show an accordion on both small and large screens.</p>
 <%= code_example '
 <div class="section-container accordion" data-section="accordion">
-  <section>
+  <section class="active">
     <p class="title" data-section-title><a href="#">Section 1</a></p>
     <div class="content" data-section-content>
       <p>Content of section 1.</p>
@@ -227,7 +227,7 @@
   </section>
 </div>', :html %>
         <div class="section-container accordion" data-section="accordion">
-          <section>
+          <section class="active">
             <p class="title" data-section-title><a href="#">Section 1</a></p>
             <div class="content" data-section-content>
               <p>Content of section 1.</p>
@@ -245,7 +245,7 @@
         <p>Adding a <code>tabs</code> class to the section container will enable tabs on both small and large screens.</p>
 <%= code_example '
 <div class="section-container tabs" data-section="tabs">
-  <section>
+  <section class="active">
     <p class="title" data-section-title><a href="#">Section 1</a></p>
     <div class="content" data-section-content>
       <p>Content of section 1.</p>
@@ -260,7 +260,7 @@
 </div>', :html %>
 
         <div class="section-container tabs" data-section="tabs">
-          <section>
+          <section class="active">
             <p class="title" data-section-title><a href="#">Section 1</a></p>
             <div class="content" data-section-content>
               <p>Content of section 1.</p>
@@ -279,7 +279,7 @@
 
 <%= code_example '
 <div class="section-container vertical-tabs" data-section="vertical-tabs">
-  <section>
+  <section class="active">
     <p class="title" data-section-title><a href="#">Section 1</a></p>
     <div class="content" data-section-content>
       <p>Content of section 1.</p>
@@ -300,7 +300,7 @@
 </div>', :html %>
 
         <div class="section-container vertical-tabs" data-section="vertical-tabs">
-          <section>
+          <section class="active">
             <p class="title" data-section-title><a href="#">Section 1</a></p>
             <div class="content" data-section-content>
               <p>Content of section 1.</p>
@@ -464,7 +464,7 @@
 
 <%= code_example '
 <div class="section-container auto" data-section data-options="deep_linking: true">
-  <section>
+  <section class="active">
     <p class="title" data-section-title><a href="#section1">Section 1</a></p>
     <div class="content" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
@@ -482,7 +482,7 @@
         <p>You can infinitely nest Section elements to create more complicated Section layouts.</p>
 
         <div class="section-container auto" data-section>
-          <section>
+          <section class="active">
             <p class="title"><a href="#section1">ROOT: Section 1</a></p>
             <div class="content" data-slug="section1">
               <p>Content 1 Summary Paragraphs</p>
@@ -511,7 +511,7 @@
         </div>
 <%= code_example '
 <div class="section-container auto" data-section>
-  <section>
+  <section class="active">
     <p class="title"><a href="#section1">ROOT: Section 1</a></p>
     <div class="content" data-slug="section1">
       <p>Content 1 Summary Paragraphs</p>
@@ -564,8 +564,8 @@
     <p class="your-title-class" data-section-title><a href="#section2">Section 2</a></p>
     <div class="your-content-class" data-slug="section2" data-section-content>
       <p>Content of section 2.</p>
-    </section>
-  </div>
+    </div>
+  </section>
 </div>', :html %>
 
         <p>Here's a look at the available options for the mixins you need to create sections:</p>
@@ -637,7 +637,7 @@ $section-border-color: $section-border-color', :css %>
         <p>The default use case for our section plugin is to create accordions on small screens and tabs on large screens.</p>
 <%= code_example '
 <div class="section-auto-sample" data-section="auto">
-  <section>
+  <section class="active">
     <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
     <div class="content-sample" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
@@ -663,7 +663,7 @@ $section-border-color: $section-border-color', :css %>
 }', :sass %>
 
         <div class="section-auto-sample" data-section="auto">
-          <section>
+          <section class="active">
             <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
             <div class="content-sample" data-slug="section1" data-section-content>
               <p>Content of section 1.</p>
@@ -683,7 +683,7 @@ $section-border-color: $section-border-color', :css %>
         <p>You can have your section act like an accordion the entire time, like so:</p>
 <%= code_example '
 <div class="section-auto-sample-accordion" data-section="accordion">
-  <section>
+  <section class="active">
     <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
     <div class="content-sample" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
@@ -704,7 +704,7 @@ $section-border-color: $section-border-color', :css %>
 }', :sass %>
 
         <div class="section-auto-sample-accordion" data-section="accordion">
-          <section>
+          <section class="active">
             <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
             <div class="content-sample" data-slug="section1" data-section-content>
               <p>Content of section 1.</p>
@@ -724,7 +724,7 @@ $section-border-color: $section-border-color', :css %>
         <p>You can have your section act like tabs the entire time, like so:</p>
 <%= code_example '
 <div class="section-auto-sample-tabs" data-section="tabs">
-  <section>
+  <section class="active">
     <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
     <div class="content-sample" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
@@ -745,7 +745,7 @@ $section-border-color: $section-border-color', :css %>
 }', :sass %>
 
         <div class="section-auto-sample-tabs" data-section="tabs">
-          <section>
+          <section class="active">
             <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
             <div class="content-sample" data-slug="section1" data-section-content>
               <p>Content of section 1.</p>
@@ -765,7 +765,7 @@ $section-border-color: $section-border-color', :css %>
         <p>You can have your section act like vertical tabs on large screen and go back to accordion on small screens, like so:</p>
 <%= code_example '
 <div class="section-auto-sample-vtabs" data-section="vertical-tabs">
-  <section>
+  <section class="active">
     <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
     <div class="content-sample" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
@@ -792,7 +792,7 @@ $section-border-color: $section-border-color', :css %>
 }', :sass %>
 
         <div class="section-auto-sample-vtabs" data-section="vertical-tabs">
-          <section>
+          <section class="active">
             <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
             <div class="content-sample" data-slug="section1" data-section-content>
               <p>Content of section 1.</p>
@@ -923,7 +923,7 @@ $section-border-color: $section-border-color', :css %>
         <p>You have access to a few options that will make styling the sections really easy and you can add onto it as you want. You'll still need the data-section attribute to match the style you give the mixin.</p>
 <%= code_example '
 <div class="section-auto-sample-custom" data-section="tabs">
-  <section>
+  <section class="active">
     <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
     <div class="content-sample" data-slug="section1" data-section-content>
       <p>Content of section 1.</p>
@@ -944,7 +944,7 @@ $section-border-color: $section-border-color', :css %>
 }', :sass %>
 
         <div class="section-auto-sample-custom" data-section="tabs">
-          <section>
+          <section class="active">
             <p class="title-sample" data-section-title><a href="#section1">Section 1</a></p>
             <div class="content-sample" data-slug="section1" data-section-content>
               <p>Content of section 1.</p>
@@ -1001,17 +1001,40 @@ $active-region-selector: ".active";
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>zepto.js</code> and <code>foundation.js</code> above the sections plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <div class="panel">
+          Before you can use sections you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.section.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
 
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.section.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.section.js</code></p>
 
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>
 
 <%= code_example '
 <div class="section-container auto" data-section>
-  <section>
+  <section class="active">
     <p class="title" data-section-title><a href="#panel1">Section 1</a></p>
     <div class="content" data-section-content>
       <ul class="side-nav">

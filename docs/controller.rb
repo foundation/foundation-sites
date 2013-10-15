@@ -16,8 +16,7 @@ helpers do
     elsif Socket.gethostname == "foundation"
       "http://foundation.zurb.com/docs/assets"
     else
-      ip = IPSocket.getaddress(Socket.gethostname)
-      "http://#{ip}:4001/assets"
+      "/assets"
     end
   end
 
