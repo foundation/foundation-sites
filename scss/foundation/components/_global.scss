@@ -253,20 +253,25 @@ $small-screen: 768px !default;
 $medium-screen: 1280px !default;
 $large-screen: 1440px !default;
 
+// Current Media Queries
 $screen: "only screen" !default;
 $small: "only screen and (min-width: #{$small-screen})" !default;
-$medium: "only screen and (min-width:#{$medium-screen})" !default;
-$large: "only screen and (min-width:#{$large-screen})" !default;
+// $medium: "only screen and (min-width:#{$medium-screen})" !default;
+// $large: "only screen and (min-width:#{$large-screen})" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
 // New Media Queries
-
+$small-up: $screen;
 $small-only: "only screen and (max-width: #{$small-screen})" !default;
 $medium-up: "only screen and (min-width:#{$medium-screen})" !default;
 $medium-only: "only screen and (min-width:#{$medium-screen}) and (max-width:#{$large-screen})" !default;
 $large-up: "only screen and (min-width:#{$large-screen})" !default;
 $large-only: "only screen and (min-width:#{$large-screen}) and (max-width:#{$large-screen})" !default;
+
+// Setup Mapping for Old Media Queries (will deprecate in 5.1)
+$medium: $medium-up;
+$large: $large-up;
 
 
 // Used to provide media query values for javascript components.
