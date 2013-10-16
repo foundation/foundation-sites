@@ -310,7 +310,7 @@ $preloader-class: "preloader" !default;
   }
 
 
-  @media #{$small} {
+  @media #{$medium-up} {
 
     .touch {
       .orbit-container {
@@ -323,7 +323,7 @@ $preloader-class: "preloader" !default;
 
   }
 
-  @media only screen and (max-width: #{$small-screen}) {
+  @media #{$small-only} {
     .orbit-stack-on-small {
       .orbit-slides-container {height: auto !important;}
       .orbit-slides-container > * {
