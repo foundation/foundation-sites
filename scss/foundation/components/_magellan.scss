@@ -6,7 +6,7 @@ $include-html-magellan-classes: $include-html-classes !default;
 $magellan-bg: #fff !default;
 $magellan-padding: 10px !default;
 
-@if $include-html-magellan-classes != false {
+@if $include-html-magellan-classes {
 
   [data-magellan-expedition] {
     background: $magellan-bg;

@@ -45,7 +45,7 @@ $keystroke-radius: $global-radius !default;
 }
 
 
-@if $include-html-type-classes != false {
+@if $include-html-type-classes  {
 
   /* Keystroke Characters */
   .keystroke,

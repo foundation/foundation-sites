@@ -44,7 +44,7 @@ $progress-meter-alert-color: $alert-color !default;
 }
 
 
-@if $include-html-media-classes != false {
+@if $include-html-media-classes {
 
   /* Progress Bar */
   .progress {

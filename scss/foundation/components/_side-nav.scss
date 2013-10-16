@@ -61,7 +61,7 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
 }
 
 
-@if $include-html-nav-classes != false {
+@if $include-html-nav-classes {
 
   /* Side Nav */
   .side-nav { @include side-nav; }

@@ -65,7 +65,7 @@ $label-font-color-alt: #fff !default;
 }
 
 
-@if $include-html-label-classes != false {
+@if $include-html-label-classes {
 
   /* Labels */
   .label {

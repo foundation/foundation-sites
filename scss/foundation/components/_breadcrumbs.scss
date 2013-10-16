@@ -109,7 +109,7 @@ $crumb-slash: "/" !default;
 }
 
 
-@if $include-html-nav-classes != false {
+@if $include-html-nav-classes {
 
   /* Breadcrumbs */
   .breadcrumbs {

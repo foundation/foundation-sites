@@ -76,7 +76,7 @@ $sub-nav-item-divider-margin: emCalc(12) !default;
 }
 
 
-@if $include-html-nav-classes != false {
+@if $include-html-nav-classes {
 
   /* Side Nav */
   .sub-nav { @include sub-nav; }

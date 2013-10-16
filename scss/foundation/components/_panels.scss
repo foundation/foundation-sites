@@ -60,7 +60,7 @@ $callout-panel-link-color: #fff !default;
 }
 
 // Only include these classes if the option exists
-@if $include-html-panel-classes != false {
+@if $include-html-panel-classes {
 
   /* Panels */
   .panel { @include panel;

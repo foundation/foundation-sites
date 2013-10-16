@@ -23,7 +23,7 @@ $tooltip-font-size-sml: em-calc(14) !default;
 $tooltip-radius: $global-radius !default;
 $tooltip-pip-size: 5px !default;
 
-@if $include-html-tooltip-classes != false {
+@if $include-html-tooltip-classes {
 
   /* Tooltips */
   .has-tip {

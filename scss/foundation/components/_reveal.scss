@@ -103,7 +103,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   cursor: $cursor-pointer-value;
 }
 
-@if $include-html-reveal-classes != false {
+@if $include-html-reveal-classes {
 
   // Reveal Modals
   .reveal-modal-bg { @include reveal-bg; }

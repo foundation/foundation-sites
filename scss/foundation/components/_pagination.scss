@@ -118,7 +118,7 @@ $pagination-link-current-active-bg: $primary-color !default;
   }
 }
 
-@if $include-html-nav-classes != false {
+@if $include-html-nav-classes {
 
   // Detach the nested class selectors from the containing
   // ul and div elements in order to support more flexibility

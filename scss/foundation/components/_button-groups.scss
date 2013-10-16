@@ -65,8 +65,8 @@ $button-bar-margin-opposite: em-calc(10) !default;
 
 }
 
-// Only include these CSS classes if $include-html-classes: true
-@if $include-html-button-classes != false {
+
+@if $include-html-button-classes {
 
   /* Button Groups */
   .button-group { @include button-group-container;

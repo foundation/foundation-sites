@@ -274,7 +274,7 @@ $active-region-selector: ".active" !default;
   @include section-style($section-type, $title-selector, $content-selector, $title-padding, $title-color, $title-font-size, $title-bg, $title-bg-hover, $title-bg-active, $title-color-active, $content-bg, $content-padding, $section-border-size, $section-border-style, $section-border-color);
 }
 
-@if $include-html-section-classes != false {
+@if $include-html-section-classes {
 
   /* Sections */
 

@@ -38,7 +38,7 @@ $flex-video-widescreen-padding-bottom: 57.25% !default;
   }
 }
 
-@if $include-html-media-classes != false {
+@if $include-html-media-classes {
 
   /* Flex Video */
   .flex-video { @include flex-video-container; }

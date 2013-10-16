@@ -35,7 +35,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
 
 // We decided not to make a mixin for this because it relies on predefined classes to work properly.
 
-@if $include-html-joyride-classes != false {
+@if $include-html-joyride-classes {
 
   /* Foundation Joyride */
   .joyride-list { display: none; }

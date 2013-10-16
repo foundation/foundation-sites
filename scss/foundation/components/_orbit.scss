@@ -36,7 +36,7 @@ $wrapper-class: "slideshow-wrapper" !default;
 $preloader-class: "preloader" !default;
 
 
-@if $include-html-orbit-classes != false {
+@if $include-html-orbit-classes {
 
   @if $experimental {
     @-webkit-keyframes rotate {

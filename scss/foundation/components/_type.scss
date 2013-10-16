@@ -121,7 +121,7 @@ $microformat-abbr-font-decoration: none !default;
   margin-bottom: $subheader-bottom-margin;
 }
 
-@if $include-html-type-classes != false {
+@if $include-html-type-classes {
 
   /* Typography resets */
   div,
