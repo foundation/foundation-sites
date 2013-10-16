@@ -61,8 +61,9 @@ $hr-margin: em-calc(20) !default;
 
 // We use these to style lists
 $list-style-position: outside !default;
-$list-side-margin: 0 !default;
-$list-side-margin-no-bullet: $list-side-margin;
+$list-side-margin: 1.1em !default;
+$list-ordered-side-margin: 1.4em !default;
+$list-side-margin-no-bullet: 0 !default;
 $list-nested-margin: em-calc(20) !default;
 $definition-list-header-weight: bold !default;
 $definition-list-header-margin-bottom: .3em !default;
@@ -248,9 +249,19 @@ $microformat-abbr-font-decoration: none !default;
     font-family: $paragraph-font-family;
   }
 
-  ul, ol {
+  ul {
     margin-#{$default-float}: $list-side-margin;
-    &.no-bullet { margin-#{$default-float}: $list-side-margin-no-bullet; }
+    &.no-bullet { 
+      margin-#{$default-float}: $list-side-margin-no-bullet; 
+      li {
+        ul,
+        ol {
+          margin-#{$default-float}: $list-nested-margin;
+          margin-bottom: 0;
+          list-style: none;
+        }
+      }
+    }
   }
 
   /* Unordered Lists */
@@ -277,6 +288,7 @@ $microformat-abbr-font-decoration: none !default;
 
   /* Ordered Lists */
   ol {
+    margin-#{$default-float}: $list-ordered-side-margin;
     li {
       ul,
       ol {
