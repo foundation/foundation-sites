@@ -294,11 +294,13 @@ $cursor-text-value: text !default;
   }
 
   html,
-  body { font-size: $base-font-size; }
+  body {
+    background: $body-bg;
+    font-size: $base-font-size;
+  }
 
   // Default body styles
   body {
-    background: $body-bg;
     color: $body-font-color;
     padding: 0;
     margin: 0;
