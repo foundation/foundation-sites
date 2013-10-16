@@ -162,7 +162,7 @@
           settings = this.get_data($el),
           grid = $el.detach(),
           data = {
-            grid: '<div class="carousel">' + this.outerHTML(grid[0]) + '</div>',
+            grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',
             viewing: settings.templates.viewing
           },
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
