@@ -1,5 +1,6 @@
-require 'sprockets'
+require 'sprockets-sass'
 require 'sass'
+require 'compass'
 
 map '/assets' do
   environment = Sprockets::Environment.new
