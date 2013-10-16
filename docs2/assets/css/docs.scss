@@ -62,3 +62,81 @@
 .vg { color: #008080 } /* Name.Variable.Global */
 .vi { color: #008080 } /* Name.Variable.Instance */
 .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+
+
+// Docs Styles
+$body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$row-width: emCalc(1100);
+$column-gutter: emCalc(22);
+
+.section-header {
+  padding: 24px 0;
+}
+
+.sidebar.fixed,
+[data-magellan-expedition] {
+  min-width: 250px !important;
+  max-width: 250px;
+  width: 250px;
+  left: auto !important;
+
+}
+.side-nav .heading { text-transform: uppercase; }
+[data-magellan-expedition] { padding:0 !important; }
+.side-nav li a,
+.side-nav .heading,
+.sidebar form { 
+  padding: 4px 20px;
+}
+
+.side-nav li.divider { margin: 11px 20px; }
+
+// .sidebar {
+//   #{headings(all)} { padding: 4px 20px; }
+// }
+.sidebar .button { margin: 0 20px 20px; }
+
+.side-nav li.active a,
+.side-nav li a:hover { border-left: 3px solid darken($secondary-color, 20%); padding-left: 17px; }
+[data-magellan-expedition] { overflow-y: scroll; }
+.sidebar form { margin-bottom: 0; }
+
+.code-container { position: relative; }
+.code-container .button { position: absolute; top: 25px; right: 10px; }
+
+footer { margin-top: 45px; }
+
+.magellan-fixed {
+&.magellan-outer-wrapper {position:fixed; top:0px; overflow:hidden; height:100%; width:inherit;}
+.magellan-inner-wrapper {overflow:scroll; height:100%;}
+}
+
+.zurb-jobs {
+  padding: 0 20px 200px;
+  h6 { 
+    padding:0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  ul {
+    list-style: none;
+    li { margin-bottom: 10px;}
+  }
+  .location { display: block; font-size: 12px; color: #666; }
+}
+.fader {
+  position: fixed;
+  z-index: 400;
+  bottom: 0;
+  width: 250px;
+}
+
+#appHeader { background: $primary-color; }
+
+
+// #appHeader a.sidebar-button span {
+//   @include box-shadow(-15px 0 2px #fff, -6px 0 2px #fff, 3px 0 2px #fff);
+// }
