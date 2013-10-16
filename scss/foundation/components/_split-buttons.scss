@@ -8,6 +8,8 @@ $split-button-function-factor: 15% !default;
 $split-button-pip-color: #fff !default;
 $split-button-pip-color-alt: #333 !default;
 $split-button-active-bg-tint: rgba(0,0,0,0.1) !default;
+$split-button-span-border-color: $primary-color !default;
+$split-button-secondary-span-border-color: $secondary-color !default;
 
 // We use these to control tiny split buttons
 $split-button-padding-tny: $button-tny * 9 !default;
@@ -37,13 +39,12 @@ $split-button-pip-size-lrg: $button-lrg - em-calc(6) !default;
 $split-button-pip-top-lrg: $button-lrg + em-calc(5) !default;
 $split-button-pip-default-float-lrg: em-calc(-9) !default;
 
-
 //
 // Split Button Mixin
 //
 
 // We use this mixin to create split buttons that build upon the button mixins
-@mixin split-button($padding:medium, $pip-color:$split-button-pip-color, $span-border:$primary-color, $base-style:true) {
+@mixin split-button($padding:medium, $pip-color:$split-button-pip-color, $span-border:$split-button-span-border-color, $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
   @if $base-style {
@@ -149,7 +150,7 @@ $split-button-pip-default-float-lrg: em-calc(-9) !default;
   /* Split Buttons */
   .split.button { @include split-button;
 
-    &.secondary { @include split-button(false, $split-button-pip-color, $secondary-color, false); }
+    &.secondary { @include split-button(false, $split-button-pip-color, $split-button-secondary-span-border-color, false); }
     &.alert { @include split-button(false, false, $alert-color, false); }
     &.success { @include split-button(false, false, $success-color, false); }
 

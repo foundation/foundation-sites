@@ -102,7 +102,7 @@
 $padding: $button-med
 
 /* This controls button color. Set to one of our variables or a custom hex value */
-$bg: $primary-color
+$bg: $button-bg-color
 
 /* This controls button radius. Set to a variable, true/false, or custom px value */
 $radius: false
@@ -211,6 +211,9 @@ $button-round: $global-rounded;
 
 /* We use this to set default opacity for disabled buttons. */
 $button-disabled-opacity: 0.6;
+
+/* We use this to set the default button background color */
+$button-bg-color: $primary-color;
 ', :css %>
 
         <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
