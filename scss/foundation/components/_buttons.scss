@@ -244,6 +244,7 @@ $button-disabled-opacity: 0.7 !default;
       &.radius { @include button-style($bg:false, $radius:true); }
       &.round  { @include button-style($bg:false, $radius:$button-round); }
     }
+
     &.small {
       @include button-size($padding:false, $full-width:false);
     }
