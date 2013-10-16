@@ -1,32 +1,126 @@
-<h4>Sidebar</h4>
-<h5>tags: <%= @metadata.tags %></h5>
-<hr />
-<ul class="side-nav">
-  <li class="heading">Setup</li>
-  <li><a href="#cli">What Comes with Foundation?</a></li>
-  <li><a href="#sass">Sass</a></li>
-  <li><a href="#rails">Rails</a></li>
-  <li><a href="#mediaQueries">Media Queries</a></li>
-  <li class="divider"></li>
-  <li class="heading">Structure</li>
-  <li><a href="#grid">The Grid</a></li>
-  <li><a href="#blockGrid">Block Grid</a></li>
-  <li><a href="#thumbnails">Thumbnails</a></li>
-  <li><a href="#utility">Utility Classes</a></li>          
-  <li><a href="#rtl">Right-to-Left Support</a></li>
-  <li class="divider"></li>
-  <li class="heading">Media</li>
-  <li><a href="#clearing">Clearing Lightbox <span class="label">JS Required</span></a></li>
-  <li>
-    <% link_to "components/orbit" do %>
-      Orbit Slider <span class="label">JS Required</span>
-    <% end %>
-  </li>
-  <li><a href="#flexVideo">Flex Video</a></li>
-  <li class="divider"></li>
-  <li class="heading">Forms</li>
-  <li><a href="#forms">Forms</a></li>
-  <li><a href="#switch">Switch</a></li>
-  <li><a href="#abide">Abide Validation <span class="label">JS Required</span></a></li>
-  <li class="divider"></li>
-</ul>
+<div data-magellan-expedition id="docs-sidebar" class="sidebar magellan-outer-wrapper">
+  <div class="magellan-inner-wrapper">
+    <header>
+      <h6>Foundation Documentation</h6>
+<!--       <span class="label"><%= @metadata.tags %></span>
+      <br>
+ -->      <a href="#" class="button">Download Foundation</a>
+      <br>
+    </header>
+    <form>
+      <label>Search Documentation</label>
+      <input type="search" placeholder="E.g. forms">
+    </form>
+    <nav>
+      <ul class="side-nav">
+        <li class="heading">Setup</li>
+        <li data-magellan-arrival="css"><a href="#css">CSS</a></li>
+        <li data-magellan-arrival="sass"><a href="#sass">Sass</a></li>
+        <li data-magellan-arrival="rails"><a href="#rails">Rails</a></li>
+        <li data-magellan-arrival="globalStyles"><a href="#globalStyles">Global Styles <span class="label">Sass Required</span></a></li>
+        <li data-magellan-arrival="upgrading"><a href="#upgrading">Upgrading</a></li>
+        <li class="divider"></li>
+        <li class="heading">Structure</li>
+        <li data-magellan-arrival="mediaQueries"><a href="#mediaQueries">Media Queries <span class="label">Sass Required</span></a></li>
+        <li data-magellan-arrival="grid"><a href="#grid">Grid</a></li>
+        <li data-magellan-arrival="blockGrid"><a href="#blockGrid">Block Grid</a></li>
+        <li data-magellan-arrival="thumbnails"><a href="#thumbnails">Thumbnails</a></li>
+        <li data-magellan-arrival="grid"><a href="#grid">Grid</a></li>
+        <li data-magellan-arrival="utilityClasses"><a href="#utilityClasses">Utility Classes</a></li>
+        <li data-magellan-arrival="rtl"><a href="#rtl">Right-to-Left Support</a></li>
+        <li class="divider"></li>
+        <li class="heading">Media</li>
+        <li data-magellan-arrival="clearing"><a href="#clearing">Clearing Lightbox <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="orbit"><a href="#orbit">Orbit Slider <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="flexVideo"><a href="#flexVideo">Flex Video</a></li>
+        <li data-magellan-arrival="interchange"><a href="#interchange">Interchange Responsive Images <span class="orange label">JS Required</span></a></li>
+        <li class="divider"></li>
+        <li class="heading">Forms</li>
+        <li data-magellan-arrival="forms"><a href="#forms">Forms</a></li>
+        <li data-magellan-arrival="abide"><a href="#abide">Abide Validation <span class="orange label">JS Required</span></a></li>
+        <li class="divider"></li>
+        <li class="heading">Navigation</li>
+        <li data-magellan-arrival="breadcrumbs"><a href="#breadcrumbs">Breadcrumbs</a></li>
+        <li data-magellan-arrival="pagination"><a href="#pagination">Pagination</a></li>
+        <li data-magellan-arrival="sidenav"><a href="#sidenav">Side Nav</a></li>
+        <li data-magellan-arrival="subnav"><a href="#subnav">Sub Nav</a></li>
+        <li data-magellan-arrival="magellan"><a href="#magellan">Magellan Sticky Nav <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="topbar"><a href="#topbar">Top Bar <span class="orange label">JS Required</span></a></li>
+        <li class="divider"></li>
+        <li class="heading">Buttons</li>
+        <li data-magellan-arrival="buttons"><a href="#buttons">Buttons</a></li>
+        <li data-magellan-arrival="buttonGroups"><a href="#buttonGroups">Button Groups</a></li>
+        <li data-magellan-arrival="splitButtons"><a href="#splitButtons">Split Buttons</a></li>
+        <li data-magellan-arrival="dropdownButtons"><a href="#dropdownButtons">Dropdown Buttons</a></li>
+        <li class="divider"></li>
+        <li class="heading">Typography</li>
+        <li data-magellan-arrival="type"><a href="#type">Type</a></li>
+        <li data-magellan-arrival="lists"><a href="#lists">Lists</a></li>
+        <li data-magellan-arrival="labels"><a href="#labels">Labels</a></li>
+        <li data-magellan-arrival="keystrokes"><a href="#keystrokes">Keystrokes</a></li>
+        <li class="divider"></li>
+        <li class="heading">Callouts &amp; Prompts</li>
+        <li data-magellan-arrival="reveal"><a href="#reveal">Reveal Modal</a></li>
+        <li data-magellan-arrival="alerts"><a href="#alerts">Alerts</a></li>
+        <li data-magellan-arrival="panels"><a href="#panels">Panels</a></li>
+        <li data-magellan-arrival="tooltips"><a href="#tooltips">Tooltips <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="joyride"><a href="#joyride">Joyride <span class="orange label">JS Required</span></a></li>
+        <li class="divider"></li>
+        <li class="heading">Content</li>
+        <li data-magellan-arrival="orbit"><a href="#orbit">Orbit Carousel <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="dropdowns"><a href="#dropdowns">Dropdowns <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="pricingTables"><a href="#pricingTables">Pricing Tables</a></li>
+        <li data-magellan-arrival="progressBars"><a href="#progressBars">Progress Bars</a></li>
+        <li data-magellan-arrival="interchange"><a href="#interchange">Interchange Responsive Content <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="accordion"><a href="#accordion">Accordion <span class="orange label">JS Required</span></a></li>
+        <li data-magellan-arrival="tabs"><a href="#tabs">Tabs <span class="orange label">JS Required</span></a></li>
+        <li class="divider"></li>
+        <li class="heading">Support</li>
+        <li data-magellan-arrival="changelog"><a href="#changelog">Changelog</a></li>
+        <li data-magellan-arrival="compatibility"><a href="#compatibility">Compatibility</a></li>
+        <li data-magellan-arrival="faq"><a href="#faq">FAQ</a></li>
+        <li class="divider"></li>
+        <li class="heading">Older Docs</li>
+        <li><a href="#">Foundation 4 Docs</a></li>
+        <li><a href="#">Foundation 3 Docs</a></li>
+        <li><a href="#">Foundation 2 Docs</a></li>
+        <li data-magellan-arrival="cli">
+          <a href="#cli">What Comes with Foundation?</a>
+        </li>
+      </ul>
+    </nav>
+    
+
+
+    <section class="zurb-jobs">
+      <h6>Awesome Design Jobs:</h6>
+      <ul>
+        <li>
+          <a href="http://zurb.com/jobs/894-the-tombras-group-front-end-developer" target="_blank">
+            <span class="positionTitle">Front-End Developer</span>
+            <span class="location"><span class="companyName">The Tombras Group</span> in Knoxville, Tennessee</span>
+          </a>    
+        </li>
+        <li>
+          <a href="http://zurb.com/jobs/895-the-tombras-group-back-end-developer" target="_blank">
+            <span class="positionTitle">Back End Developer </span>
+            <span class="location"><span class="companyName">The Tombras Group</span> in Knoxville, Tennessee</span>
+          </a>    
+        </li>
+        <li>
+          <a href="http://zurb.com/jobs/984-booking-com-team-lead-development" target="_blank">
+            <span class="positionTitle">Team Lead Development</span>
+            <span class="location"><span class="companyName">Booking.com</span> in Amsterdam, the Netherlands</span>
+          </a>    
+        </li>
+        <li>
+          <a href="http://zurb.com/jobs/980-a-cutting-edge-digital-design-studio-visual-designer" target="_blank">
+            <span class="positionTitle">Visual Designer</span>
+            <span class="location"><span class="companyName">A Cutting-Edge Digital Design Studio</span> in New York, NY</span>
+          </a>    
+        </li>
+      </ul>
+    </section>
+    <div class="fader"></div>
+  </div>
+</div>
