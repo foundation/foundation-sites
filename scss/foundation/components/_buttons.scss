@@ -230,7 +230,6 @@ $button-disabled-opacity: 0.7 !default;
     &.large { @include button-size($padding:false, $is-input:$button-lrg); }
   }
 
-  // Styles for any browser or device that support media queries
 
   button, .button {
     // @include inset-shadow(); //
@@ -239,7 +238,13 @@ $button-disabled-opacity: 0.7 !default;
     &.large  { @include button-size($padding:false, $full-width:false); }
     &.small  { @include button-size($padding:false, $full-width:false); }
     &.tiny   { @include button-size($padding:false, $full-width:false); }
-
+    }
+    &.small {
+      @include button-size($padding:false, $full-width:false);
+    }
+    &.large { 
+      @include button-size($padding:false, $full-width:false);
+    }
     &.radius { @include button-style($bg:false, $radius:true); }
     &.round  { @include button-style($bg:false, $radius:$button-round); }
   }
