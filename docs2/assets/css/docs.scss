@@ -13,7 +13,6 @@
   $shadow-10: false
 ) {}
 
-
 body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-size: em-calc(14);
@@ -28,6 +27,7 @@ body {
 
 
 // Docs Styles
+
 
 .section-header {
   padding: 24px 0;
@@ -46,9 +46,12 @@ footer { margin-top: 45px; }
 
 
 
+
 #appHeader { background: $primary-color; }
+
 
 
 #appHeader a.sidebar-button span {
   @include box-shadow(-15px 0 2px #fff, -6px 0 2px #fff, 3px 0 2px #fff);
 }
+
