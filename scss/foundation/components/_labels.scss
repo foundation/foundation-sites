@@ -4,14 +4,15 @@
 $include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
-$label-padding: em-calc(3 10 4) !default;
+$label-padding: em-calc(7 16 8) !default;
 $label-radius: $global-radius !default;
 
 // We use these to style the label text
-$label-font-sizing: em-calc(14) !default;
-$label-font-weight: bold !default;
+$label-font-sizing: em-calc(13) !default;
+$label-font-weight: normal !default;
 $label-font-color: #333 !default;
 $label-font-color-alt: #fff !default;
+$label-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 
 //
 // @mixins
@@ -19,12 +20,14 @@ $label-font-color-alt: #fff !default;
 // We use this mixin to create a default label base.
 @mixin label-base {
   font-weight: $label-font-weight;
+  font-family: $label-font-family;
   text-align: center;
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
   display: inline-block;
   position: relative;
+  margin-bottom: inherit;
 }
 
 // @mixins

@@ -4,7 +4,7 @@ $include-html-orbit-classes: $include-html-classes !default;
 
 // We use these to control the caption styles
 $orbit-container-bg: #f5f5f5 !default;
-$orbit-caption-bg: rgba(0,0,0,0.6) !default;
+$orbit-caption-bg: rgba(51,51,51, 0.8) !default;
 $orbit-caption-font-color: #fff !default;
 $orbit-caption-font-size: em-calc(14) !default;
 $orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"
@@ -22,9 +22,9 @@ $orbit-timer-bg: rgba(0,0,0,0.6) !default;
 $orbit-timer-show-progress-bar: true !default;
 
 // We use these to control the bullet nav styles
-$orbit-bullet-nav-color: #999 !default;
-$orbit-bullet-nav-color-active: #555 !default;
-$orbit-bullet-radius: em-calc(12) !default;
+$orbit-bullet-nav-color: #aaa !default;
+$orbit-bullet-nav-color-active: #777 !default;
+$orbit-bullet-radius: em-calc(9) !default;
 
 // We use these to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
@@ -230,7 +230,6 @@ $preloader-class: "preloader" !default;
       position: absolute;
       top: 50%;
       margin-top: -25px;
-      background-color: $orbit-nav-bg;
       width: 50px;
       height: 60px;
       line-height: 50px;
@@ -249,7 +248,7 @@ $preloader-class: "preloader" !default;
         display: block;
         width: 0;
         height: 0;
-        border: inset 16px;
+        border: inset 10px;
       }
     }
     .orbit-prev { #{$default-float}: 0;
@@ -289,7 +288,6 @@ $preloader-class: "preloader" !default;
       background: $orbit-bullet-nav-color;
       float: $default-float;
       margin-#{$opposite-direction}: 6px;
-      border: solid 1px $orbit-bullet-nav-color-active;
       @include radius(1000px);
 
       &.active {

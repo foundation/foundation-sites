@@ -9,9 +9,9 @@ $form-spacing: em-calc(16) !default;
 // We use these to style the labels in different ways
 $form-label-pointer: pointer !default;
 $form-label-font-size: em-calc(14) !default;
-$form-label-font-weight: 500 !default;
+$form-label-font-weight: normal !default;
 $form-label-font-color: lighten(#000, 30%) !default;
-$form-label-bottom-margin: em-calc(3) !default;
+$form-label-bottom-margin: em-calc(8) !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
 $input-font-size: em-calc(14) !default;
