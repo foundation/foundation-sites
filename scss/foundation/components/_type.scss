@@ -236,7 +236,17 @@ $microformat-abbr-font-decoration: none !default;
     font-weight: $code-font-weight;
     color: $code-color;
   }
-
+  /*selected text*/
+  ::selection {
+	background: $primary-color; /* Safari */
+	color: $body-bg;
+	}
+  ::-moz-selection {
+	background: $primary-color; /* Firefox */
+	color: $body-bg;
+  }
+  
+  
   /* Lists */
   ul,
   ol,
