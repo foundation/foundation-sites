@@ -407,3 +407,11 @@ $glowing-effect-color: $input-focus-border-color !default;
   label.error { @include form-label-error-color; }
 
 }
+
+@media #{$small-only} { 
+   select:focus, 
+   textarea:focus, 
+   input:focus {
+     font-size: $base-font-size;
+     }
+ }
