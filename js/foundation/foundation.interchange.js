@@ -127,6 +127,7 @@
           loaded_count = 0,
           data_attr = 'data-' + this.settings.load_attr;
 
+      this.cache = {};
       this.cached_images = [];
       this.images_loaded = false;
 
