@@ -160,10 +160,6 @@
 
           e.stopImmediatePropagation();
 
-          if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
-            //e.preventDefault();
-          }
-
           if (li.hasClass('hover')) {
             li
               .removeClass('hover')
@@ -174,6 +170,9 @@
               .removeClass('hover');
           } else {
             li.addClass('hover');
+            if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
+              e.preventDefault();
+            }
           }
         })
 
@@ -240,7 +239,7 @@
         }
       }.bind(this));
 
-      $('body').on('click.fndtn.topbar', function (e) {
+      $('body').on('click.fndtn.topbar touchstart', function (e) {
         var parent = $(e.target).closest('li').closest('li.hover');
 
         if (parent.length > 0) {
