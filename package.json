@@ -10,7 +10,8 @@
     "grunt-contrib-concat": "~0.3.0",
     "assemble": "~0.4.13",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "highlight.js": "~7.3.0"
   },
   "licenses": [
     {

@@ -1,5 +1,7 @@
+
 module.exports = function(grunt) {
   var manifest = require('./manifest.json');
+  var hljs = require('highlight.js');
 
   grunt.initConfig({
 
@@ -7,7 +9,15 @@ module.exports = function(grunt) {
       options: {
         flatten: true,
         assets: 'dist/docs/assets',
-        data: ['doc/data/*.{json,yml}']
+        data: ['doc/data/*.{json,yml}'],
+        marked: {
+          gfm: true,
+          sanitize: true,
+          highlight: function(code, lang) {
+            // return hljs.highlight(code, lang).value;
+            return hljs.highlightAuto(code).value;
+          }
+        }
       },
       docs: {
         options: {
