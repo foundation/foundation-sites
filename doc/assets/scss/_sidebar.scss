@@ -1,0 +1,80 @@
+.sidebar {
+  background: #FAFAFA;
+}
+.sidebar.fixed,
+[data-magellan-expedition] {
+  min-width: 220px !important;
+  max-width: 220px;
+  width: 220px;
+  left: auto !important;
+
+}
+.side-nav .heading { text-transform: uppercase; }
+[data-magellan-expedition] { padding:0 !important; }
+.side-nav li a,
+.side-nav .heading,
+.sidebar form { 
+  padding: 4px 20px;
+}
+
+.side-nav li.divider { margin: 11px 20px; }
+
+.sidebar {
+  #{headings(all)} {
+    padding: 4px 20px;
+    font-size: em-calc(14);
+  }
+}
+.sidebar .button { margin: 0 20px 20px; }
+
+.sidebar .side-nav {
+  overflow-y: scroll; 
+  height: 600px;
+
+}
+.side-nav li.active a,
+.side-nav li a:hover { 
+  border-left: 3px solid darken($secondary-color, 20%); 
+  padding-left: 17px;
+}
+[data-magellan-expedition] { 
+}
+.sidebar form { margin-bottom: 0; }
+.sidebar .button { font-size: em-calc(12); }
+.magellan-fixed {
+  &.magellan-outer-wrapper {
+    overflow-y: scroll; 
+    width:inherit;
+  }
+  .magellan-inner-wrapper {
+    overflow-y: scroll; 
+  }
+}
+
+.zurb-jobs {
+  padding: 0 20px 200px;
+  h6 { 
+    padding:0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  ul {
+    list-style: none;
+    li { margin-bottom: 10px;}
+  }
+  .location { 
+    display: block; 
+    font-size: 12px; 
+    color: #666;
+  }
+}
+.fader {
+  display: block;
+  position: fixed;
+  z-index: 400;
+  bottom: 0;
+  width: 220px;
+  background: url(../img/fader.png) no-repeat center bottom;
+}
