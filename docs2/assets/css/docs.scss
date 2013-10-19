@@ -1,8 +1,17 @@
 @import "foundation";
-@import "compass/css3";
+//@import "compass/css3";
+@mixin box-shadow(
   $shadow-1 : default,
   $shadow-2 : false,
   $shadow-3 : false,
+  $shadow-4 : false,
+  $shadow-5 : false,
+  $shadow-6 : false,
+  $shadow-7 : false,
+  $shadow-8 : false,
+  $shadow-9 : false,
+  $shadow-10: false
+) {}
 
 
 body {
