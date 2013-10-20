@@ -239,7 +239,7 @@
         }
       }.bind(this));
 
-      $('body').on('click.fndtn.topbar touchstart', function (e) {
+      $('body').on('click.fndtn.topbar touchstart.fndtn.topbar', function (e) {
         var parent = $(e.target).closest('li').closest('li.hover');
 
         if (parent.length > 0) {
