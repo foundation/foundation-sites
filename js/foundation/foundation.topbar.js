@@ -76,9 +76,9 @@
       }
     },
 
-    toggle: function() {
+    toggle: function(target) {
       var self = this;
-      var topbar = $('.top-bar, [data-topbar]'),
+      var topbar = $(target).closest('.top-bar, [data-topbar]'),
           section = topbar.find('section, .section');
 
       if (self.breakpoint()) {
@@ -143,7 +143,7 @@
         .off('.fndtn.topbar')
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
           e.preventDefault();
-          self.toggle();
+          self.toggle(e.target);
         })
 
         .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
@@ -153,7 +153,7 @@
               is_hover = topbar.data('topbar');
 
           if(target.data('revealId')) {
-            self.toggle();
+            self.toggle(e.target);
             return;
           }
 
