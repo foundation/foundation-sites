@@ -23,8 +23,8 @@ $em-base: 16px !default;
 // Global Functions
 //
 
-
 // It strips the unit of measure and returns it
+
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }
@@ -73,8 +73,10 @@ $em-base: 16px !default;
 //
 
 
-
+// @mixins
+//
 // We use this to control border radius.
+// $radius - Default: $global-radius || 4px
 @mixin radius($radius:$global-radius) {
   @if $radius {
     @if $experimental {
@@ -84,7 +86,10 @@ $em-base: 16px !default;
   }
 }
 
+// @mixins
+//
 // We use this to create equal side border radius on elements.
+// $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
   @if $side == left {
     @if $experimental {
@@ -128,7 +133,10 @@ $em-base: 16px !default;
   }
 }
 
+// @mixins
+//
 // We can control whether or not we have inset shadows edges.
+// $active - Default: true, Options: false
 @mixin inset-shadow($active:true) {
   @if $experimental {
     -webkit-box-shadow: $shiny-edge-size $shiny-edge-color inset;
@@ -142,7 +150,12 @@ $em-base: 16px !default;
     box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
 }
 
+// @mixins
+//
 // We use this to add transitions to elements
+// $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties
+// $speed - Default: 300ms
+// $ease - Default:ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
 @mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
   @if $experimental {
     -webkit-transition: $property $speed $ease;
@@ -151,6 +164,8 @@ $em-base: 16px !default;
   transition: $property $speed $ease;
 }
 
+// @mixins
+//
 // We use this to add box-sizing across browser prefixes
 @mixin box-sizing($type:border-box) {
   @if $experimental {
@@ -160,7 +175,12 @@ $em-base: 16px !default;
   box-sizing: $type;
 }
 
+// @mixins
+//
 // We use this to create equilateral triangles
+// $triangle-size - Used to set border-size. No default, set a px or em size.
+// $triangle-color - Used to set border-color which makes up triangle. No default
+// $triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right
 @mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
   content: "";
   display: block;
@@ -186,14 +206,18 @@ $em-base: 16px !default;
 }
 
 // We use this to do clear floats
-@mixin clearfix() {
+@mixin clearfix {
   *zoom:1;
   &:before, &:after { content: " "; display: table; }
   &:after { clear: both; }
 }
 
-
+// @mixins
+//
 // We use this to add a glowing effect to block elements
+// $selector - Used for selector state. Default: focus, Options: hover, active, visited
+// $fade-time - Default: 300ms
+// $glowing-effect-color - Default: fade-out($primary-color, .25)
 @mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($primary-color, .25)) {
   @if $experimental {
     -webkit-transition: -webkit-box-shadow $fade-time, border-color $fade-time ease-in-out;
