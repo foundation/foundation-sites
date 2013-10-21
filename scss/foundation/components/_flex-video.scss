@@ -1,5 +1,5 @@
 //
-// Flex Video Variables
+// @VARIABLES
 //
 $include-html-media-classes: $include-html-classes !default;
 
@@ -12,7 +12,7 @@ $flex-video-margin-bottom: em-calc(16) !default;
 $flex-video-widescreen-padding-bottom: 57.25% !default;
 
 //
-// Flex Video Mixins
+// @MIXIN
 //
 
 @mixin flex-video-container {
