@@ -1,5 +1,5 @@
 //
-// Progress Bar Variables
+// @variables
 //
 $include-html-media-classes: $include-html-classes !default;
 
@@ -23,11 +23,8 @@ $progress-meter-secondary-color: $secondary-color !default;
 $progress-meter-success-color: $success-color !default;
 $progress-meter-alert-color: $alert-color !default;
 
-
+// @mixins
 //
-// Progress Bar Mixins
-//
-
 // We use this to set up the progress bar container
 @mixin progress-container {
   background-color: $progress-bar-color;
@@ -37,6 +34,9 @@ $progress-meter-alert-color: $alert-color !default;
   margin-bottom: $progress-bar-margin-bottom;
 }
 
+// @mixins
+//
+// $bg - Default: $progress-meter-color || $primary-color
 @mixin progress-meter($bg:$progress-meter-color) {
   background: $bg;
   height: 100%;
