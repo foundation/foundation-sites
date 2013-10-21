@@ -14,9 +14,15 @@ $block-grid-media-queries: true !default;
 // Block Grid Mixins
 //
 
-// We use this mixin to create different block-grids. You can apply per-row and spacing options.
-// Setting $base-style to false will ommit default styles.
-@mixin block-grid($per-row:false, $spacing:$block-grid-default-spacing, $base-style:true) {
+// Create a custom block grid
+//
+// $per-row - # of items to display per row. Default: false.
+// $spacing - # of ems to use as padding on each block item. Default: em-calc(20).
+// $base-style - Apply a base style to block grid. Default: true.
+@mixin block-grid(
+  $per-row:false, 
+  $spacing:$block-grid-default-spacing, 
+  $base-style:true) {
 
   @if $base-style {
     display: block;
@@ -44,6 +50,9 @@ $block-grid-media-queries: true !default;
 
 }
 
+// Generate presentational markup for block grid.
+//
+// $size - Name of class to use, i.e. "large" will generate .large-block-grid-1, .large-block-grid-2, etc.
 @mixin block-grid-html-classes($size) {
   @for $i from 1 through $block-grid-elements {
     .#{$size}-block-grid-#{($i)} {
