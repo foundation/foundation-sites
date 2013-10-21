@@ -1,5 +1,5 @@
 //
-// Dropdown Variables
+// @VARIABLES
 //
 $include-html-button-classes: $include-html-classes !default;
 
@@ -34,13 +34,16 @@ $dropdown-mobile-default-float: 0 !default;
 // We use this to control the styles for when the dropdown has custom content.
 $f-dropdown-content-padding: em-calc(20) !default;
 
+// @MIXINS
 //
 // Dropdown Mixins
 //
-
 // NOTE: Make default max-width change between list and content types. Can add more width with classes, maybe .small, .medium, .large, etc.;
-
 // We use this to style the dropdown container element.
+// $content-list - Sets list-style. Default: list. Options: [list, content]
+// $triangle - Sets if dropdown has triangle. Default:true.
+// $max-width - Default: $f-dropdown-max-width || 200px.
+
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
   position: absolute;
   top: -9999px;
@@ -103,7 +106,10 @@ $f-dropdown-content-padding: em-calc(20) !default;
 
 }
 
+// @MIXIN
+//
 // We use this to style the list elements or content inside the dropdown.
+
 @mixin dropdown-style {
   font-size: $f-dropdown-font-size;
   cursor: $cursor-pointer-value;
