@@ -1,5 +1,5 @@
 //
-// Grid Variables
+// @variableS
 //
 $include-html-grid-classes: $include-html-classes !default;
 
@@ -17,6 +17,9 @@ $total-columns: 12 !default;
   @return grid-calc($colNumber, $totalColumns);
 }
 
+// @FUNCTION
+// $colNumber - Found in settings file
+// $totalColumns - Found in settings file
 @function grid-calc($colNumber, $totalColumns) {
   @return percentage(($colNumber / $totalColumns));
 }
@@ -26,7 +29,7 @@ $total-columns: 12 !default;
 //
 
 // For creating container, nested, and collapsed rows.
-// 
+//
 // $behavior - Any special beavior for this row? Default: false. Options: nest, collapse, nest-collapse, false.
 @mixin grid-row($behavior: false) {
 
@@ -79,13 +82,13 @@ $total-columns: 12 !default;
 // $collapse - Get rid of gutter padding on column? Default: false.
 // $float - Should this float? Default: true. Options: true, false, left, right.
 @mixin grid-column(
-  $columns:false, 
-  $last-column:false, 
-  $center:false, 
-  $offset:false, 
-  $push:false, 
-  $pull:false, 
-  $collapse:false, 
+  $columns:false,
+  $last-column:false,
+  $center:false,
+  $offset:false,
+  $push:false,
+  $pull:false,
+  $collapse:false,
   $float:true) {
 
   position: relative;
@@ -139,11 +142,11 @@ $total-columns: 12 !default;
 @mixin grid-html-classes($size) {
 
   @for $i from 1 through $total-columns - 1 {
-    .#{$size}-push#{-$i} { 
-      @include grid-column($push:$i, $collapse:null, $float:false); 
+    .#{$size}-push#{-$i} {
+      @include grid-column($push:$i, $collapse:null, $float:false);
     }
-    .#{$size}-pull#{-$i} { 
-      @include grid-column($pull:$i, $collapse:null, $float:false); 
+    .#{$size}-pull#{-$i} {
+      @include grid-column($pull:$i, $collapse:null, $float:false);
     }
   }
   .column,
@@ -184,7 +187,7 @@ $total-columns: 12 !default;
     &.collapse {
        > .column,
        > .columns { @include grid-column($collapse:true); }
-    
+
       .row {margin-left:0; margin-right:0;}
     }
 
@@ -203,11 +206,11 @@ $total-columns: 12 !default;
     @include grid-html-classes($size:medium);
     // Old push and pull classes
     @for $i from 1 through $total-columns - 1 {
-      .push#{-$i} { 
-        @include grid-column($push:$i, $collapse:null, $float:false); 
+      .push#{-$i} {
+        @include grid-column($push:$i, $collapse:null, $float:false);
       }
-      .pull#{-$i} { 
-        @include grid-column($pull:$i, $collapse:null, $float:false); 
+      .pull#{-$i} {
+        @include grid-column($pull:$i, $collapse:null, $float:false);
       }
     }
   }
