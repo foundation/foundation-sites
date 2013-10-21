@@ -1,5 +1,5 @@
 //
-// Inline List Variables
+// @variables
 //
 $include-html-inline-list-classes: $include-html-classes !default;
 
@@ -21,9 +21,8 @@ $inline-list-display: block !default;
 $inline-list-children-display: block !default;
 
 //
-// Inline List Mixins
+// @mixins
 //
-
 // We use this mixin to create inline lists
 @mixin inline-list {
   margin: $inline-list-top-margin auto $inline-list-bottom-margin auto;

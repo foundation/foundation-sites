@@ -1,5 +1,5 @@
 //
-// @variableS
+// @variables
 //
 $include-html-grid-classes: $include-html-classes !default;
 
@@ -25,7 +25,7 @@ $total-columns: 12 !default;
 }
 
 //
-// Grid Mixins
+// @mixins
 //
 
 // For creating container, nested, and collapsed rows.
@@ -73,7 +73,7 @@ $total-columns: 12 !default;
 
 // Creates a column, should be used inside of a media query to control layouts
 //
-// $columns - The number of columns this should be
+// $columns - The number of columns this should be. Default: false.
 // $last-column - Is this the last column? Default: false.
 // $center - Center these columns? Default: false.
 // $offset - # of columns to offset. Default: false.

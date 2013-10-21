@@ -1,5 +1,5 @@
 //
-// Keystroke Variables
+// @variables
 //
 $include-html-type-classes: $include-html-classes !default;
 
@@ -21,10 +21,10 @@ $keystroke-border-color: darken($keystroke-bg, $keystroke-function-factor) !defa
 $keystroke-radius: $global-radius !default;
 
 //
-// Keystroke Mixins
+// @mixins
 //
-
 // We use this mixin to create keystroke styles.
+// $bg - Default: $keystroke-bg || darken(#fff, $keystroke-function-factor) !default;
 @mixin keystroke($bg:$keystroke-bg) {
   // This find the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
