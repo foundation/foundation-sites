@@ -13,7 +13,7 @@
 [data-magellan-expedition] { padding:0 !important; }
 .side-nav li a,
 .side-nav .heading,
-.sidebar form { 
+.sidebar form {
   padding: 4px 20px;
 }
 
@@ -28,32 +28,32 @@
 .sidebar .button { margin: 0 20px 20px; }
 
 .sidebar .side-nav {
-  overflow-y: scroll; 
+  overflow-y: scroll;
   height: 600px;
 
 }
 .side-nav li.active a,
-.side-nav li a:hover { 
-  border-left: 3px solid darken($secondary-color, 20%); 
+.side-nav li a:hover {
+  border-left: 3px solid darken($secondary-color, 20%);
   padding-left: 17px;
 }
-[data-magellan-expedition] { 
+[data-magellan-expedition] {
 }
 .sidebar form { margin-bottom: 0; }
 .sidebar .button { font-size: em-calc(12); }
 .magellan-fixed {
   &.magellan-outer-wrapper {
-    overflow-y: scroll; 
+    overflow-y: scroll;
     width:inherit;
   }
   .magellan-inner-wrapper {
-    overflow-y: scroll; 
+    overflow-y: scroll;
   }
 }
 
 .zurb-jobs {
   padding: 0 20px 200px;
-  h6 { 
+  h6 {
     padding:0;
     font-size: 12px;
     text-transform: uppercase;
@@ -64,9 +64,9 @@
     list-style: none;
     li { margin-bottom: 10px;}
   }
-  .location { 
-    display: block; 
-    font-size: 12px; 
+  .location {
+    display: block;
+    font-size: 12px;
     color: #666;
   }
 }

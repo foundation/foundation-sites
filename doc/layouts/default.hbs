@@ -20,6 +20,10 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
+{{!--         {{#each foundation.sections}}
+          <li class="divider"></li>
+          <li><a href="#">{{this}}</a></li>
+        {{/each}} --}}
           <li class="divider"></li>
           <li><a href="#">Features</a></li>
           <li class="divider"></li>
@@ -58,7 +62,7 @@
               <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.</p>
             </div>
           </div>
-          
+
           <div class="large-8 columns">
             <div class="row collapse">
               <div class="large-4 columns">
@@ -83,10 +87,10 @@
                 <div class="connect-links">
                   <h4 class="hide-for-small">Stay in touch</h4>
                   <p>Keep up with the latest on Foundation. Find us on Github.</p>
-                  <a href="https://github.com/zurb/foundation" target="_blank" class="small button">Stay Connected</a>         
+                  <a href="https://github.com/zurb/foundation" target="_blank" class="small button">Stay Connected</a>
                 </div>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
         <div class="row global">
@@ -135,16 +139,16 @@
                 <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
              </ul>
              <p class="copyright">&copy; 1998&ndash;{{currentYear}} ZURB, Inc. All rights reserved.</p>
-          </div>          
+          </div>
         </div>
       </div>
       <div class="joyride-modal-bg"></div>
     </section>
-      
-      
+
+
     <aside id="sidebar" role="complementary">
-      
-      <!-- This is the apps main navigation -->         
+
+      <!-- This is the apps main navigation -->
       <div class="main-menu">
         <h6>Foundation</h6>
         <nav id="sideMenu" role="navigation">
@@ -168,13 +172,13 @@
             <a href="http://foundation.zurb.com/training.php">Training</a>
           </li>
           </ul>
-        </nav>      
+        </nav>
       </div>
-        
+
       <hr>
-      
-      <!-- These links will vary depending on what app it is -->  
-      <div class="more-goodness">   
+
+      <!-- These links will vary depending on what app it is -->
+      <div class="more-goodness">
         <h6>More ZURB Goodness</h6>
         <nav role="navigation">
           <ul id="secondarySideMainNav" class="nav-bar goodness">
@@ -184,11 +188,11 @@
           </ul>
         </nav>
       </div>
-      
+
       <hr>
-      
+
       <!-- These links will be the same across all of our proprties & apps -->
-      <div class="zurb-links">    
+      <div class="zurb-links">
         <ul class="top">
           <li class="logo"><a href="http://zurb.com"><img src="{{assets}}/img/offcanvas/zurb-logo.png" alt="ZURB"></a></li>
           <li><a href="http://zurb.com/about">About</a></li>
@@ -219,11 +223,10 @@
               <span class="title">Expo</span>
               <span>Online training for smarter product design.</span>
             </a>
-          </li> 
+          </li>
         </ul>
       </div>
     </aside>
-
     <script src="{{assets}}/js/all.js"></script>
     <script>$(document).foundation();</script>
   </body>
