@@ -1,5 +1,5 @@
 //
-// Button Variables
+// @VARIABLES
 //
 $include-html-button-classes: $include-html-classes !default;
 
@@ -40,9 +40,8 @@ $button-disabled-opacity: 0.6 !default;
 
 
 //
-// Button Mixins
+// @MIXIN
 //
-
 // We use this mixin to create a default button base.
 //
 // $style - Sets base styles. Can be set to false. Default: true.
@@ -64,6 +63,8 @@ $button-disabled-opacity: 0.6 !default;
   @if $display { display: $display; }
 }
 
+// @MIXIN
+//
 // We use this mixin to add button size styles
 //
 // $padding - Used to build padding for buttons Default: $button-med ||= em-calc(12)
@@ -116,6 +117,8 @@ $button-disabled-opacity: 0.6 !default;
   }
 }
 
+// @MIXIN
+//
 // We use this mixin to add button color styles
 //
 // $bg - Primary color set in settings file. Default: $primary-color.
@@ -165,6 +168,8 @@ $button-disabled-opacity: 0.6 !default;
 
 }
 
+// @MIXIN
+//
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
 //
 // $padding - Used to build padding for buttons Default: $button-med ||= em-calc(12)
