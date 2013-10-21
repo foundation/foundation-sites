@@ -36,7 +36,7 @@
 
       var forms = this;
 
-      $('form.custom input[type="radio"],[type="checkbox"]', $(this.scope))
+      $('form.custom input[type="radio"], form.custom [type="checkbox"]', $(this.scope))
         .not('[data-customforms="disabled"]')
         .not('.' + this.settings.disable_class)
         .each(function(idx, sel){
