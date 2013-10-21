@@ -36,21 +36,36 @@
 
       var forms = this;
 
-      $('form.custom input[type="radio"],[type="checkbox"]', $(this.scope))
-        .not('[data-customforms="disabled"]')
-        .not('.' + this.settings.disable_class)
-        .each(function(idx, sel){
-          forms.set_custom_markup(sel);
-        })
-        .change(function(){
-          forms.set_custom_markup(this);
-        });
+      var setupRadioCheckbox = function(elements){
+        elements
+          .not('[data-customforms="disabled"]')
+          .not('.' + forms.settings.disable_class)
+          .each(function(idx, sel){
+            forms.set_custom_markup(sel);
+          })
+          .change(function(){
+            forms.set_custom_markup(this);
+          });
+      };
 
-      $('form.custom select', $(this.scope))
-        .not('[data-customforms="disabled"]')
-        .not('.' + this.settings.disable_class)
-        .not('[multiple=multiple]')
-        .each(this.append_custom_select);
+      var setupSelects = function(elements){
+        elements
+          .not('[data-customforms="disabled"]')
+          .not('.' + forms.settings.disable_class)
+          .not('[multiple=multiple]')
+          .each(forms.append_custom_select);
+      };
+
+      var $scope = $(this.scope);
+      if($scope.is('input[type="radio"], input[type="checkbox"]')){
+        setupRadioCheckbox($scope);
+      } else if($scope.is('select')){
+        setupSelects($scope);
+      } else{
+        setupRadioCheckbox($('form.custom input[type="radio"], input[type="checkbox"]', $scope));
+        setupSelects($('form.custom select', $scope));
+      }
+ 
     },
 
     events: function () {
@@ -69,7 +84,13 @@
         })
         .on('change.fndtn.forms', 'form.custom select', function (e, force_refresh) {
           if ($(this).is('[data-customforms="disabled"]')) return;
-          self.refresh_custom_select($(this), force_refresh);
+          // self.refresh_custom_select($(this), force_refresh);
+          var $customDropdown = self.getCustomDropdown(this),
+              $newValue;
+
+          $newValue = $customDropdown.find('>ul>li:eq(' + this.selectedIndex + ')')
+
+          self.setSelected($newValue);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
           if ($(e.target).is('label')) {
@@ -101,7 +122,7 @@
         .on('mousedown.fndtn.forms', 'form.custom div.custom.dropdown', function () {
           return false;
         })
-        .on('click.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
+        .on('click.fndtn.forms focus.fndtn.forms', 'form.custom div.custom.dropdown a.current, form.custom div.custom.dropdown a.selector', function (e) {
           var $this = $(this),
               $dropdown = $this.closest('div.custom.dropdown'),
               $select = getFirstPrevSibling($dropdown, 'select');
@@ -114,10 +135,12 @@
             $dropdown.toggleClass('open');
 
             if ($dropdown.hasClass('open')) {
-              $(self.scope).on('click.fndtn.forms.customdropdown', function () {
+              var close = function () {
                 $dropdown.removeClass('open');
                 $(self.scope).off('.fndtn.forms.customdropdown');
-              });
+              }
+              $this.on('blur.fndtn.forms.customdropdown ', close);
+              $(self.scope).on('click.fndtn.forms.customdropdown ', close);
             } else {
               $(self.scope).on('.fndtn.forms.customdropdown');
             }
@@ -126,9 +149,8 @@
         })
         .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom div.custom.dropdown li', function (e) {
           var $this = $(this),
-              $customDropdown = $this.closest('div.custom.dropdown'),
-              $select = getFirstPrevSibling($customDropdown, 'select'),
-              selectedIndex = 0;
+              $customDropdown = self.getCustomDropdown($this),
+              $select = self.getSelect($this);
 
           e.preventDefault();
           e.stopPropagation();
@@ -136,25 +158,7 @@
           if (!$(this).hasClass('disabled')) {
             $('div.dropdown').not($customDropdown).removeClass('open');
 
-            var $oldThis = $this.closest('ul')
-              .find('li.selected');
-            $oldThis.removeClass('selected');
-
-            $this.addClass('selected');
-
-            $customDropdown.removeClass('open')
-              .find('a.current')
-              .text($this.text());
-
-            $this.closest('ul').find('li').each(function (index) {
-              if ($this[0] === this) {
-                selectedIndex = index;
-              }
-            });
-            $select[0].selectedIndex = selectedIndex;
-
-            //store the old value in data
-            $select.data('prevalue', $oldThis.html());
+            self.setSelected($this)
             
             // Kick off full DOM change event
             if (typeof (document.createEvent) != 'undefined') {
@@ -165,22 +169,19 @@
               $select[0].fireEvent('onchange'); // for IE
             }
           }
-      });
+        });
 
-      $(window).on('keydown', function (e) {
+      $(document).on('keydown', function (e) {
         var focus = document.activeElement,
             self = Foundation.libs.forms,
-            dropdown = $('.custom.dropdown'),
-      select = getFirstPrevSibling(dropdown, 'select'),
-      inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
+            dropdown = $('.custom.dropdown.open'),
+            select = getFirstPrevSibling(dropdown, 'select'),
+            inputs = $('input,select,textarea,button'); // Zepto-compatible jQuery(":input")
 
-        if (dropdown.length > 0 && dropdown.hasClass('open')) {
+        if (e.which === 9) {
+            //user is tabbing off, do nothing
+        } else if (dropdown.length > 0) {
           e.preventDefault();
-
-      if (e.which === 9) {
-          $(inputs[$(inputs).index(select) + 1]).focus();
-        dropdown.removeClass('open');
-      }
 
           if (e.which === 13) {
             dropdown.find('li.selected').trigger('click');
@@ -222,14 +223,14 @@
         }
       });
 
-    $(window).on('keyup', function (e) {
-          var focus = document.activeElement,
-              dropdown = $('.custom.dropdown');
+      $(document).on('keyup', function (e) {
+        // var focus = document.activeElement,
+        //     dropdown = $(focus).parent('.custom.dropdown');
 
-      if (focus === dropdown.find('.current')[0]) {
-        dropdown.find('.selector').focus().click();
-      }
-    });
+        // if (dropdown.length > 0) {
+        //   dropdown.find('.selector').focus().click();
+        // }
+      });
 
       this.settings.init = true;
     },
@@ -312,11 +313,13 @@
           $customList.append(liHtml);
 
           $currentSelect = $customSelect
-            .prepend('<a href="#" class="current">' + ($selectedOption.html() || '') + '</a>')
+            .prepend('<a href="#" class="current" tabindex="-1">' + ($selectedOption.html() || '') + '</a>')
             .find(".current");
 
           $this.after($customSelect)
             .addClass('hidden-field');
+          
+          self.assign_id($this, $customSelect);
         } else {
           liHtml = $options.map(function () {
               return "<li>" + $(this).html() + "</li>";
@@ -325,10 +328,11 @@
 
           $customList.html('')
             .append(liHtml);
+            
+          $customSelect.find('a.current').html($selectedOption.html());
 
         } // endif $customSelect.length === 0
 
-        self.assign_id($this, $customSelect);
         $customSelect.toggleClass('disabled', $this.is(':disabled'));
         $listItems = $customList.find('li');
 
@@ -377,6 +381,46 @@
 
         } // endif
 
+    },
+
+    getCustomDropdown: function(element){
+      var $element = $(element);
+      if($element.is('select')){
+        return $('div.custom.dropdown[data-id="' + $element.data('id') + '"]')
+      } else {
+        return $element.closest('div.custom.dropdown');
+      }
+    },
+
+    getSelect: function(element){
+      return getFirstPrevSibling(this.getCustomDropdown(element), 'select');
+    },
+
+    setSelected: function(element){
+
+      var selectedIndex = 0,
+          $element = $(element),
+          $customDropdown = this.getCustomDropdown($element),
+          $select = this.getSelect($element),
+          $oldElement = $element.closest('ul')
+          .find('li.selected');
+      $oldElement.removeClass('selected');
+
+      $element.addClass('selected');
+
+      $customDropdown.removeClass('open')
+        .find('a.current')
+        .text($element.text());
+
+      $element.closest('ul').find('li').each(function (index) {
+        if ($element[0] === this) {
+          selectedIndex = index;
+        }
+      });
+      $select[0].selectedIndex = selectedIndex;
+
+      //store the old value in data
+      $select.data('prevalue', $oldElement.html());
     },
 
     assign_id: function ($select, $customSelect) {
