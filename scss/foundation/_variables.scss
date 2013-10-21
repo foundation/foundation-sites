@@ -1150,6 +1150,8 @@ $default-float: left;
 // $switch-height-lrg: 44px;
 // $switch-bottom-margin: em-calc(20);
 
+// $switch-font-color: rgba(0,0,0,0.75);
+
 // We use these to control default font sizes for our classes.
 
 // $switch-font-size-tny: 11px;
@@ -1161,6 +1163,7 @@ $default-float: left;
 // We use these to style the switch-paddle
 
 // $switch-paddle-bg: #fff;
+// $switch-disabled-paddle-bg: #ddd;
 // $switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%);
 // $switch-paddle-border-color: darken($switch-paddle-bg, 35%);
 // $switch-paddle-border-width: 1px;
