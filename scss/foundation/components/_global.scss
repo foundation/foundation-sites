@@ -23,7 +23,6 @@ $em-base: 16px !default;
 // Global Functions
 //
 
-
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
