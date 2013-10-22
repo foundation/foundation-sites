@@ -68,6 +68,8 @@ body {
 .options-bg {
   padding: 18px;
   background-color: darken($panel-bg-color, 2%);
+  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  border-radius: 4px;
   ul {
     margin-left: 30px;
   }
@@ -81,7 +83,7 @@ body {
 
 .code-container {
   position: relative;
-  @include border(solid, 2px, darken($panel-bg-color, 4%));
+  @include border(solid, 1px, darken($panel-bg-color, 4%));
   // border: solid 1px darken($panel-bg-color, 4%);
   border-radius: 3px;
   pre {
