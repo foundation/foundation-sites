@@ -13,13 +13,17 @@
   $shadow-8 : false,
   $shadow-9 : false,
   $shadow-10: false
-) {}
+) { }
 
 
 body {
-  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-size: em-calc(14);
-} 
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+.row {
+  max-width: emCalc(1440);
+}
 
 // Docs Components
 @import
@@ -35,18 +39,56 @@ body {
   padding: 24px 0;
 }
 
+.code {
+  @include grid-column($columns:7);
+  padding-right: 0;
+}
 
+.options {
+  @include grid-column($columns:5);
+}
 
-.code-container { position: relative; }
-.code-container .button { 
-  position: absolute; 
-  top: 25px; 
-  right: 10px; 
+.options-bg {
+  background-color: darken($panel-bg-color, 2%);
+  padding: 18px;
+}
+
+.options-code-container {
+  .code-container {
+    background-color: darken($panel-bg-color, 2%);
+  }
+}
+
+@mixin border($direction:top ,$style:solid, $width:2px, $color:darken($panel-bg-color, 1%)) {
+  border-#{$direction}: #{$style} #{$width} $color;
+}
+
+.code-container {
+  position: relative;
+  pre {
+    padding: 10px;
+    line-height: 1.8em;
+    &:nth-of-type(even) {
+      background-color: $panel-bg-color;
+    }
+    code {
+      background: none;
+    }
+  }
+}
+
+.code-container .button {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+}
+
+#masthead { @include grid-row; @include panel;
+  hgroup { @include grid-column(4); }
+  section { @include grid-column(8); }
 }
 
 footer { margin-top: 45px; }
-
-
 
 #appHeader { background: $primary-color; }
 

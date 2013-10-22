@@ -219,159 +219,220 @@
   <div class="row">
     <section class="large-12 columns">
       <h5>Building Grids With Mixins</h5>
-      <p>Some comment about using mixins and how cool it is.</p>
+      <p>Mixins are incredibily important because they allow you to remove presentational class names from your HTML markup! This is an issue that has been on the radar since 2009 as can be found <a href="http://www.sitepoint.com/css-frameworks-semantic-class-names/">here</a></p>
     </section>
   </div>
 
-{{!-- Grid-row Mixin Begin --}}
+  {{!-- Begin mixins --}}
 
-  <h6>Grid-row mixin</h6>
-  <div class="code-container">
-
-  {{#markdown}}
-  ```scss
-  @mixin grid-row($behavior: false);
-
-  ```
-  {{/markdown}}
-  </div>
-
-  <ul class="disc">
-    <li>The Grid-row mixin is used for creating container, nested, and collapsed rows. The behavior options include the following:</li>
-  </ul>
+  <h4>Grid-row Mixin</h4>
   <div class="row">
-    <div class="large-7 columns">
+    <section class="code">
+      <h5 class="subheader">Code Example</h5>
       <div class="code-container">
 {{#markdown}}
 ```scss
-.custom-class-name {
-  @include grid-row();
-}
-```
-{{/markdown}}
-      </div>
-    </div>
-    <div class="large-5 columns"><p><kbd>Container</kbd> to use a container row. This option is set to the default.</p></div>
-  </div>
+@include grid-row();
 
-  <div class="row">
-    <div class="large-7 columns">
-      <div class="code-container">
-{{#markdown}}
-```scss
-.custom-class-name2 {
-  @include grid-row(nest);
-}
-```
-{{/markdown}}
-      </div>
-    </div>
-    <div class="large-5 columns">
-      <p><kbd>nest</kbd> to include a nested row</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-7 columns">
-      <div class="code-container">
-{{#markdown}}
-```scss
-.custom-class-name3 {
-  @include grid-row(collapse);
-}
-```
-{{/markdown}}
-      </div>
-    </div>
-    <div class="large-5 columns">
-      <p><kbd>collapse</kbd> to include a grid where container row margins collapse</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-7 columns">
-      <div class="code-container">
-{{#markdown}}
-```scss
-.custom-class-name4 {
-  @include grid-row(nest-collapse);
-}
-```
-{{/markdown}}
-      </div>
-    </div>
-    <div class="large-5 columns">
-      <p><kbd>nest-collapse</kbd> to include a grid where outer margins on a nested row collapse</p>
-    </div>
-  </div>
-
-{{!-- Grid-row Mixin End --}}
-
-{{!-- Grid-column Mixin Begin --}}
-
-  <h6>Grid-Column mixin</h6>
-
-  <ul class="disc">
-    <li>The grid-column mixin is used for inside of media queries for controlling layouts.</li>
-  </ul>
-  <div class="row">
-    <div class="large-7 columns">
-      <div class="code-container">
-{{#markdown}}
-```scss
-@mixin grid-column(
-  $columns:false,
-  $last-column:false,
-  $center:false,
-  $offset:false,
-  $push:false,
-  $pull:false,
-  $collapse:false,
-  $float:true
-);
-```
-{{/markdown}}
-      </div>
-    </div>
-    <div class="large-5 columns">
-      <p>These are all of the options available for you to use with the grid-column mixin. Please see specific examples below for further customization of the mixin.</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-7 columns">
-      <div class="code-container">
-{{#markdown}}
-```scss
-.custom-class-1 {
-  @include grid-column(8);
-}
-```
-{{/markdown}}
-      </div>
-    </div>
-    <div class="large-5 columns">
-      <p>The <kbd>columns</kbd> option is set explicitly with a numeric value depending on how many columns you wish your element to use.</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-7 columns">
-{{#markdown}}
-```scss
-.custom-class-2{
-  @include grid-row(8, true);
+// i.e.
+.your-custom-class {
+  @include grid-row($behavior:nest);
 }
 ```
 {{/markdown}}
     </div>
-    <div class="large-5 columns">
-      <p>The <kbd>last-column</kbd> option checks wether this is the last column, and if it returns true, the last column will be floated in the opposite direction.</p>
-    </div>
+    </section>
+    <section class="options">
+      <h5 class="subheader">Options</h5>
+        <div class="options-bg">
+          <dl>
+            <dt>$behavior</dt>
+            <dd>
+              Special behavior options. (Default: false). Options:
+              <ul style="margin-left:30px;">
+                <li>nest</li>
+                <li>collapse</li>
+                <li>nest-collapse</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+
+    </section>
   </div>
 
+  {{!-- End Grid-row Mixin --}}
+
+  {{!-- Begin Grid-column Mixin --}}
+
+  <h4>Grid-column Mixin</h4>
+  <div class="row">
+    <section class="code">
+      <h5 class="subheader">Code Example</h5>
+      <div class="code-container">
+{{#markdown}}
+```scss
+@include grid-column();
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($columns:12);
+}
+```
 
 
-{{!-- Grid-column Mixin End --}}
+```scss
+.your-custom-class {
+  @include grid-column($last-column:true);
+}
+```
 
+```scss
+.your-custom-class {
+  @include grid-column($center:true);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-row($offset:3);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($push:3);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($pull:9);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($collapse:true);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($float:right);
+}
+```
+{{/markdown}}
+      </div>
+    </section>
+    <section class="options">
+      <h5 class="subheader">Options</h5>
+      <div class="options-bg">
+        <dl>
+          <dt>$columns</dt>
+          <dd>
+            Total number of columns (Default: 12)
+          </dd>
+
+          <dt>$last-column</dt>
+          <dd>Is this the last column? (Default: false)</dd>
+
+          <dt>$center</dt>
+          <dd>Center these columns (Default: false)</dd>
+          <dt>$offset</dt>
+          <dd>Number of columns to offset (Default: false)</dd>
+
+          <dt>$push</dt>
+          <dd>Number of columns to push (Default: false)</dd>
+
+          <dt>$pull</dt>
+          <dd>Number of columns to pull (Default: false)</dd>
+
+          <dt>$collapse</dt>
+          <dd>Get rid of gutter padding on column? (Default: false)</dd>
+
+          <dt>$float</dt>
+          <dd>
+            Should this float? (Default: false). Options:
+            <ul style="margin-left:30px;">
+              <li>true</li>
+              <li>left</li>
+              <li>right</li>
+            </ul>
+          </dd>
+        </dl>
+      </div>
+
+    </section>
+  </div>
+
+  <h4>Real World Example</h4>
+  <div class="row">
+    <section class="code">
+      <h5 class="subheader">SCSS</h5>
+      <div class="code-container">
+{{#markdown}}
+```scss
+  #masthead {
+    @include grid-row();
+    @include panel();
+    hgroup {
+      @include grid-column(4);
+    }
+    section {
+      @include grid-column(8);
+    }
+  }
+```
+{{/markdown}}
+      </div>
+    </section>
+
+    <section class="options">
+      <h5 class="subheader">HTML</h5>
+      <div class="options-code-container">
+        {{!-- <p>The HTML element with the ID of masthead is passed the mixin grid-row, as well as the panel mixin.</p> --}}
+        <div class="code-container">
+{{#markdown}}
+```xml
+<header id="masthead">
+  <hgroup>
+    <h2>Title</h2>
+  </hgroup>
+  <section>
+    <p>
+      Aenean lacinia bibendum
+      nulla sed consectetur.
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.
+    </p>
+  </section>
+</header>
+
+```
+{{/markdown}}
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <h5 class="subheader">This is what it makes</h5>
+      <header id="masthead">
+        <hgroup>
+          <h2>Title</h2>
+        </hgroup>
+        <section>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+      </header>
+    </div>
+  </div>
+  {{!-- End Grid-column Mixin --}}
 </article>
+
+
+{{!-- Alternate colors --}}
+{{!-- Name and code example on left --}}
+{{!--  --}}

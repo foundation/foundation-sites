@@ -1,11 +1,13 @@
+$panel-bg-color: #FAFAFA;
+
 .sidebar {
-  background: #FAFAFA;
+  background: $panel-bg-color;
 }
 .sidebar.fixed,
 [data-magellan-expedition] {
-  min-width: 220px !important;
-  max-width: 220px;
-  width: 220px;
+  min-width: 270px !important;
+  max-width: 270px;
+  width: 270px;
   left: auto !important;
 
 }
