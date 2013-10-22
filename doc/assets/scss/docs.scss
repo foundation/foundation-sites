@@ -39,6 +39,10 @@ body {
   padding: 24px 0;
 }
 
+.full-grid {
+  @include grid-column($columns:12);
+}
+
 .code {
   @include grid-column($columns:7);
   padding-right: 0;
@@ -49,8 +53,11 @@ body {
 }
 
 .options-bg {
-  background-color: darken($panel-bg-color, 2%);
   padding: 18px;
+  background-color: darken($panel-bg-color, 2%);
+  ul {
+    margin-left: 30px;
+  }
 }
 
 .options-code-container {
@@ -59,18 +66,31 @@ body {
   }
 }
 
-@mixin border($direction:top ,$style:solid, $width:2px, $color:darken($panel-bg-color, 1%)) {
-  border-#{$direction}: #{$style} #{$width} $color;
+@mixin border-direction($direction:top ,$style:solid, $width:2px, $color:darken($panel-bg-color, 1%)) {
+  border-#{$direction}: #{$style} #{$width} #{$color};
+}
+
+@mixin border($style:solid, $width:2px, $color:darken($panel-bg-color, 1%)) {
+  border: #{$style} #{$width} #{$color};
 }
 
 .code-container {
   position: relative;
+  border: solid 1px darken($panel-bg-color, 4%);
+  border-radius: 3px;
   pre {
     padding: 10px;
+    @include border-direction(bottom,solid,1px,darken($panel-bg-color, 6%));
+    // border-bottom: solid 1px darken($panel-bg-color, 6%);
+    background-color: darken($panel-bg-color, 0%);
     line-height: 1.8em;
-    &:nth-of-type(even) {
-      background-color: $panel-bg-color;
+    &:last-child {
+      border: none;
     }
+    // &:nth-of-type(even) {
+    //   border-bottom: solid 1px darken($panel-bg-color, 4%);
+    //   background-color: darken($panel-bg-color, 2%);
+    // }
     code {
       background: none;
     }
