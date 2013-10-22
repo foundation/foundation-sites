@@ -3,8 +3,8 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
-  Foundation.libs.alerts = {
-    name : 'alerts',
+  Foundation.libs.alert = {
+    name : 'alert',
 
     version : '4.3.2',
 
@@ -15,28 +15,15 @@
     },
 
     init : function (scope, method, options) {
-      this.scope = scope || this.scope;
       Foundation.inherit(this, 'data_options');
 
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, method);
-      }
-
-      if (typeof method !== 'string') {
-        if (!this.settings.init) { this.events(); }
-
-        return this.settings.init;
-      } else {
-        return this[method].call(this, options);
-      }
+      this.bindings.call(this, [method, options]);
     },
 
-    events : function () {
-      var self = this;
-
+    events : function (scope) {
       $(this.scope).on('click.fndtn.alerts', '[data-alert] a.close', function (e) {
           var alertBox = $(this).closest("[data-alert]"),
-              settings = $.extend({}, self.settings, self.data_options(alertBox));
+              settings = alertBox.data('alert-init');
 
         e.preventDefault();
         alertBox[settings.animation](settings.speed, function () {
@@ -44,12 +31,10 @@
           settings.callback();
         });
       });
-
-      this.settings.init = true;
     },
 
     off : function () {
-      $(this.scope).off('.fndtn.alerts');
+      $('[data-alert]').off('.fndtn.alerts');
     },
 
     reflow : function () {}

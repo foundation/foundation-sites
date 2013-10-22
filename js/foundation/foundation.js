@@ -141,6 +141,7 @@ if (typeof jQuery === "undefined" &&
 
     patch : function (lib) {
       lib.scope = this.scope;
+      lib['bindings'] = this.lib_methods.bindings;
       lib.rtl = this.rtl;
     },
 
@@ -266,6 +267,32 @@ if (typeof jQuery === "undefined" &&
             Foundation.stylesheet.insertRule('@media ' + 
               Foundation.media_queries[media] + '{ ' + rule + ' }');
           }
+        }
+      },
+
+      bindings : function (method, options) {
+        var self = this;
+
+        if (this.scope.hasAttribute && this.scope.hasAttribute('data-alert')) {
+          if (this.scope.hasAttribute && !this.scope.hasAttribute('data-alert-init')) {
+            self.events(this.scope);
+          }
+
+          $(this.scope).data('alert-init', $.extend(true, this.settings, (options || method), this.data_options($(this.scope))));
+          self.events(this.scope);
+        } else {
+          // multiple
+          $(this.scope).find('[data-alert]').each(function () {
+            if (this.hasAttribute && !this.hasAttribute('data-alert-init')) {
+              self.events(this);
+            }
+
+            $(this).data('alert-init', $.extend(true, self.settings, (options || method), self.data_options($(this.scope))));
+          });
+        }
+
+        if (typeof method === 'string') {
+          return this[method].call(this);
         }
       }
     },

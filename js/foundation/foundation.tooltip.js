@@ -3,8 +3,8 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
-  Foundation.libs.tooltips = {
-    name : 'tooltips',
+  Foundation.libs.tooltip = {
+    name : 'tooltip',
 
     version : '4.3.2',
 

@@ -1,8 +1,8 @@
 (function ($, window, document, undefined) {
   'use strict';
 
-  Foundation.libs.forms = {
-    name : 'forms',
+  Foundation.libs.form = {
+    name : 'form',
 
     version: '4.3.2',
 
