@@ -15,6 +15,19 @@
   $shadow-10: false
 ) { }
 
+@mixin border-direction($direction:top,
+                        $style:solid,
+                        $width:2px,
+                        $color:darken($panel-bg-color, 1%)) {
+  border-#{$direction}: #{$style} #{$width} #{$color};
+}
+
+@mixin border($style:solid,
+              $width:2px,
+              $color:darken($panel-bg-color, 1%)) {
+  border: #{$style} #{$width} #{$color};
+}
+
 
 body {
   font-size: em-calc(14);
@@ -66,17 +79,10 @@ body {
   }
 }
 
-@mixin border-direction($direction:top ,$style:solid, $width:2px, $color:darken($panel-bg-color, 1%)) {
-  border-#{$direction}: #{$style} #{$width} #{$color};
-}
-
-@mixin border($style:solid, $width:2px, $color:darken($panel-bg-color, 1%)) {
-  border: #{$style} #{$width} #{$color};
-}
-
 .code-container {
   position: relative;
-  border: solid 1px darken($panel-bg-color, 4%);
+  @include border(solid, 2px, darken($panel-bg-color, 4%));
+  // border: solid 1px darken($panel-bg-color, 4%);
   border-radius: 3px;
   pre {
     padding: 10px;
