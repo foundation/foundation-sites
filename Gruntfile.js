@@ -1,4 +1,3 @@
-
 module.exports = function(grunt) {
   var manifest = require('./manifest.json');
   var hljs = require('highlight.js');
@@ -51,7 +50,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/foundation.js': ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-          'dist/assets/all.js': ['js/vendor/jquery.js', 'js/vendor/fastclick.js', 'dist/foundation.js'],
+          'dist/assets/all.js': ['js/vendor/jquery.js', 'js/vendor/fastclick.js', 'js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
           'dist/assets/custom.modernizr.js': ['js/vendor/custom.modernizr.js'],
           'dist/assets/foundation.scss': manifest.sass
         }
