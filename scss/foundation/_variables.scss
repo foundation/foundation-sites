@@ -16,46 +16,6 @@ $base-font-size: 100% !default;
 // set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
 $em-base: 16px !default;
 
-// It strips the unit of measure and returns it
-@function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
-}
-
-// Converts "px" to "em" using the ($)em-base
-@function convert-to-em($value, $base-value: $em-base)  {
-  $value: strip-unit($value) / strip-unit($base-value) * 1em;
-  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
-  @return $value;
-}
-
-// Working in ems is annoying. Think in pixels by using this handy function, em-calc(#)
-// Just enter the number, no need to mention "px"
-@function em-calc($values, $base-value: $em-base) {
-  $max: length($values); // Get the total number of parameters passed
-
-  // If there is only 1 parameter, then return it as an integer.
-  // This is done because a list can't be multiplied or divided even if it contains a single value
-  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
-
-  $emValues: (); // This will eventually store the converted $values in a list
-  @for $i from 1 through $max {
-    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
-  }
-  @return $emValues;
-}
-
-//Retaining this for backward compatability
-
-@function emCalc($pxWidth) {
-  @return $pxWidth / $em-base * 1em;
-}
-
-// Maybe you want to create rems with pixels
-// $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
-// @function rem-calc($pxWidth) {
-//   @return $pxWidth / $rem-base * 1rem;
-// }
-
 // Change whether or not you include browser prefixes
 // $experimental: true;
 
@@ -820,9 +780,9 @@ $default-float: left;
 // $orbit-container-bg: #f5f5f5;
 // $orbit-caption-bg: rgba(0,0,0,0.6);
 // $orbit-caption-font-color: #fff;
-// $orbit-caption-font-size: emCalc(14);
+// $orbit-caption-font-size: em-calc(14);
 // $orbit-caption-position: "bottom";    // Supported values: "bottom", "under"
-// $orbit-caption-padding: emCalc(10,14);
+// $orbit-caption-padding: em-calc(10,14);
 // $orbit-caption-height: auto;
 
 // We use these to control the left/right nav styles
@@ -841,7 +801,7 @@ $default-float: left;
 
 // $orbit-bullet-nav-color: #999;
 // $orbit-bullet-nav-color-active: #555;
-// $orbit-bullet-radius: emCalc(18);
+// $orbit-bullet-radius: em-calc(18);
 
 // We use these to controls the style of slide numbers
 
@@ -1129,7 +1089,7 @@ $default-float: left;
 // $sub-nav-active-cursor: default;
 
 // $sub-nav-item-divider: "" !default;
-// $sub-nav-item-divider-margin: emCalc(12) !default;
+// $sub-nav-item-divider-margin: em-calc(12) !default;
 
 //
 // Switch Variables
