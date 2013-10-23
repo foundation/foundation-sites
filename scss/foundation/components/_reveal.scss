@@ -1,5 +1,6 @@
 //
-// @variables
+// @name _reveal.scss
+// @dependencies _global.scss
 //
 
 $include-html-reveal-classes: $include-html-classes !default;
@@ -30,8 +31,10 @@ $reveal-border-color: #666 !default;
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
 
+// 
 // @mixins
 //
+
 // We use this to create the reveal background overlay styles
 @mixin reveal-bg {
   position: fixed;
@@ -45,12 +48,14 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   #{$default-float}: 0;
 }
 
-// @mixins
-//
 // We use this mixin to create the structure of a reveal modal
+//
 // $base-style - Provides reveal base styles, can be set to false to override. Default: true, Options: false
 // $width - Sets reveal width Default: $reveal-default-width || 80%
-@mixin reveal-modal-base($base-style:true, $width:$reveal-default-width) {
+//
+@mixin reveal-modal-base(
+  $base-style:true, 
+  $width:$reveal-default-width) {
   @if $base-style {
     visibility: hidden;
     display: none;
@@ -74,15 +79,25 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   }
 }
 
-// @mixins
-//
 // We use this to style the reveal modal defaults
+//
 // $bg - Sets background color of reveal modal. Default: $reveal-modal-bg || #fff
+// $padding - Padding to apply to reveal modal. Default: $reveal-modal-padding.
 // $border - Choose whether reveal uses a border. Default: true, Options: false
 // $border-style - Set reveal border style. Default: $reveal-border-style || solid
+// $border-width - Width of border (i.e. 1px). Default: $reveal-border-width.
+// $border-color - Color of border. Default: $reveal-border-color.
 // $box-shadow - Choose whether or not to include the default box-shadow. Default: true, Options: false
 // $top-offset - Default: $reveal-position-top || 50px
-@mixin reveal-modal-style($bg:$reveal-modal-bg, $padding:$reveal-modal-padding, $border:true, $border-style:$reveal-border-style, $border-width:$reveal-border-width, $border-color:$reveal-border-color, $box-shadow:true, $top-offset:$reveal-position-top) {
+@mixin reveal-modal-style(
+  $bg:$reveal-modal-bg, 
+  $padding:$reveal-modal-padding, 
+  $border:true, 
+  $border-style:$reveal-border-style, 
+  $border-width:$reveal-border-width, 
+  $border-color:$reveal-border-color, 
+  $box-shadow:true, 
+  $top-offset:$reveal-position-top) {
 
   @if $bg { background-color: $bg; }
   @if $padding { padding: $padding; }
@@ -100,9 +115,8 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   @if $top-offset { top: $top-offset; }
 }
 
-// @mixins
-//
 // We use this to create a close button for the reveal modal
+//
 // $color - Default: $reveal-close-color || #aaa
 @mixin reveal-close($color:$reveal-close-color) {
   font-size: $reveal-close-font-size;
@@ -127,8 +141,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     .#{$close-reveal-modal-class} { @include reveal-close; }
   }
 
-  // Large Screen Styles
-  @media #{$small} {
+  @media #{$medium-up-screen} {
 
     .#{$reveal-modal-class} {
       @include reveal-modal-style(false, em-calc(30), false, $box-shadow: false, $top-offset: em-calc(100));

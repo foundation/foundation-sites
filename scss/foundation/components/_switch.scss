@@ -1,6 +1,12 @@
 //
-// Switch Variables
+// @name
+// @dependencies _global.scss
+// 
+
 //
+// @variables
+//
+
 $include-html-form-classes: $include-html-classes !default;
 
 // Controlling border styles and background colors for the switch container
@@ -39,11 +45,16 @@ $switch-label-outline: 1px dotted #888 !default;
 
 
 //
-// Switch Mixins
+// @mixins
 //
 
 // We use this mixin to create the base styles for our switch element.
-@mixin switch-base($transition-speed:$switch-paddle-transition-speed, $transition-ease:$switch-paddle-transition-ease) {
+//
+// $transition-speed - Time in ms for switch to toggle. Default: $switch-paddle-transition-speed.
+// $transition-ease - Easing function to use for animation (i.e. ease-out). Default: $switch-paddle-transition-ease.
+@mixin switch-base(
+  $transition-speed:$switch-paddle-transition-speed, 
+  $transition-ease:$switch-paddle-transition-ease) {
 
   // Default position and structure for switch container.
   position: relative;
@@ -124,15 +135,15 @@ $switch-label-outline: 1px dotted #888 !default;
   // Hiding custom form spans since we auto-create them
   span.custom { display: none !important; }
 
+  // FIXME We should be able to remove this going forward.
   // Bugfix for older Webkit, including mobile Webkit. Adapted from:
   // http://css-tricks.com/webkit-sibling-bug/
-  @media only screen and (-webkit-min-device-pixel-ratio:0) and (max-device-width:480px) {
-    @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
-  }
-
-  @media only screen and (-webkit-min-device-pixel-ratio:1.5) {
-    @if $experimental { -webkit-animation: none 0; }
-  }
+  // @media only screen and (-webkit-min-device-pixel-ratio:0) and (max-device-width:480px) {
+  //   @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
+  // }
+  // @media only screen and (-webkit-min-device-pixel-ratio:1.5) {
+  //   @if $experimental { -webkit-animation: none 0; }
+  // }
 
   form.custom & .hidden-field {
     margin-left: auto;
@@ -142,7 +153,14 @@ $switch-label-outline: 1px dotted #888 !default;
 }
 
 // We use this mixin to create the size styles for switches.
-@mixin switch-size($height:$switch-height-med, $font-size:$switch-font-size-med, $line-height:2.3em) {
+//
+// $height - Height (in px) of the switch. Default: $switch-height-med.
+// $font-size - Font size of text in switch. Default: $switch-font-size-med.
+// $line-height - Line height of switch. Default: 2.3em.
+@mixin switch-size(
+  $height:$switch-height-med, 
+  $font-size:$switch-font-size-med, 
+  $line-height:2.3em) {
 
   height: em-calc($height);
 
@@ -168,7 +186,18 @@ $switch-label-outline: 1px dotted #888 !default;
 }
 
 // We use this mixin to add color and other fanciness to the switches.
-@mixin switch-style($paddle-bg:$switch-paddle-bg, $positive-color:$switch-positive-color, $negative-color:$switch-negative-color, $radius:false, $base-style:true) {
+//
+// $paddle-bg - Background of switch paddle. Default: $switch-paddle-bg.
+// $positive-color - Background color of positive side of switch. Default: $switch-positive-color.
+// $negative-color - Background color of negative side of switch. Default: $switch-negative-color.
+// $radius - Radius to apply to switch. Default: false.
+// $base-style - Apply base styles? Default: true.
+@mixin switch-style(
+  $paddle-bg:$switch-paddle-bg, 
+  $positive-color:$switch-positive-color, 
+  $negative-color:$switch-negative-color, 
+  $radius:false, 
+  $base-style:true) {
 
   @if $base-style {
     background: $switch-bg;
@@ -224,18 +253,34 @@ $switch-label-outline: 1px dotted #888 !default;
 }
 
 // We use this to quickly create switches with a single mixin
-@mixin switch($transition-speed:$switch-paddle-transition-speed, $transition-ease:$switch-paddle-transition-ease, $height:$switch-height-med, $font-size:$switch-font-size-med, $line-height:2.3em, $paddle-bg:$switch-paddle-bg, $positive-color:$switch-positive-color, $negative-color:$switch-negative-color, $radius:false, $base-style:true) {
+//
+// $transition-speed - Time in ms for switch to toggle. Default: $switch-paddle-transition-speed.
+// $transition-ease - Easing function to use for animation (i.e. ease-out). Default: $switch-paddle-transition-ease.
+// $height - Height (in px) of the switch. Default: $switch-height-med.
+// $font-size - Font size of text in switch. Default: $switch-font-size-med.
+// $line-height - Line height of switch. Default: 2.3em.
+// $paddle-bg - Background of switch paddle. Default: $switch-paddle-bg.
+// $positive-color - Background color of positive side of switch. Default: $switch-positive-color.
+// $negative-color - Background color of negative side of switch. Default: $switch-negative-color.
+// $radius - Radius to apply to switch. Default: false.
+// $base-style - Apply base styles? Default: true.
+@mixin switch(
+  $transition-speed:$switch-paddle-transition-speed, 
+  $transition-ease:$switch-paddle-transition-ease, 
+  $height:$switch-height-med, 
+  $font-size:$switch-font-size-med, 
+  $line-height:2.3em, 
+  $paddle-bg:$switch-paddle-bg, 
+  $positive-color:$switch-positive-color, 
+  $negative-color:$switch-negative-color, 
+  $radius:false, 
+  $base-style:true) {
   @include switch-base($transition-speed, $transition-ease);
   @include switch-size($height, $font-size, $line-height);
   @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
 @if $include-html-form-classes {
-
-  /* Foundation Switches */
-  @media only screen {
-
-    // Containing element for the radio switch
     div.switch {
       @include switch;
 
@@ -262,5 +307,4 @@ $switch-label-outline: 1px dotted #888 !default;
     }
 
     @if $experimental { @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } } }
-  }
 }

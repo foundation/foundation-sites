@@ -1,6 +1,7 @@
 //
-// Side Nav Variables
+// @variables
 //
+
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use this to control padding.
@@ -24,12 +25,19 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
 
 
 //
-// Side Nav Mixins
+// @mixins
 //
 
 
 // We use this to style the side-nav
-@mixin side-nav($divider-color:$side-nav-divider-color, $font-size:$side-nav-font-size, $link-color:$side-nav-link-color) {
+//
+// $divider-color - Border color of divider. Default: $side-nav-divider-color.
+// $font-size - Font size of nav items. Default: $side-nav-font-size.
+// $link-color - Color of navigation links. Default: $side-nav-link-color.
+@mixin side-nav(
+  $divider-color:$side-nav-divider-color, 
+  $font-size:$side-nav-font-size, 
+  $link-color:$side-nav-link-color) {
   display: block;
   margin: 0;
   padding: $side-nav-padding;
@@ -62,8 +70,5 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
 
 
 @if $include-html-nav-classes {
-
-  /* Side Nav */
   .side-nav { @include side-nav; }
-
 }
