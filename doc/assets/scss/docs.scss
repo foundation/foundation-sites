@@ -52,8 +52,22 @@ body {
   padding: 24px 0;
 }
 
+.easel {
+  @include panel($bg:$panel-bg-color);
+  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  @include radius();
+}
+
 .full-grid {
   @include grid-column($columns:12);
+  .panel {
+    @extend .easel;
+  }
+}
+
+.half-width {
+  @include grid-column($columns:6);
+
 }
 
 .code {
@@ -84,21 +98,15 @@ body {
 .code-container {
   position: relative;
   @include border(solid, 1px, darken($panel-bg-color, 4%));
-  // border: solid 1px darken($panel-bg-color, 4%);
   border-radius: 3px;
   pre {
     padding: 10px;
     @include border-direction(bottom,solid,1px,darken($panel-bg-color, 6%));
-    // border-bottom: solid 1px darken($panel-bg-color, 6%);
     background-color: darken($panel-bg-color, 0%);
     line-height: 1.8em;
     &:last-child {
       border: none;
     }
-    // &:nth-of-type(even) {
-    //   border-bottom: solid 1px darken($panel-bg-color, 4%);
-    //   background-color: darken($panel-bg-color, 2%);
-    // }
     code {
       background: none;
     }
@@ -120,7 +128,9 @@ footer { margin-top: 45px; }
 
 #appHeader { background: $primary-color; }
 
-
 #appHeader a.sidebar-button span {
   @include box-shadow(-15px 0 2px #fff, -6px 0 2px #fff, 3px 0 2px #fff);
 }
+
+// orbit styles
+

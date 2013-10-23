@@ -1,0 +1,840 @@
+<h2>Welcome to Foundation!</h2>
+
+<header class="section-header">
+  <h3>Orbit</h3>
+  <ul class="inline-list">
+    <li><a href="#">View on Github</a></li>
+    <li><a href="#">Email link</a></li>
+  </ul>
+
+  <h4 class="subheader">Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.</h4>
+</header>
+<article class="section-content">
+  <div class="row">
+    <section class="full-grid">
+
+      <div class="slideshow-wrapper">
+        <span class="preloader"></span>
+        <ul id="featured1" data-orbit data-options="pause_on_hover:false; timer_speed:5000;">
+          <li>
+            <img src="http://placehold.it/1000x450" alt="Orbit Image 1" />
+            <div class="orbit-caption">
+              Caption One. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            </div>
+          </li>
+          <li>
+            <img src="http://placehold.it/1000x450" alt="Orbit Image 2" />
+            <div class="orbit-caption">
+              Caption Two. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            </div>
+          </li>
+          <li>
+            <img src="http://placehold.it/1000x450" alt="Orbit Image 3" />
+            <div class="orbit-caption">
+              Caption Three. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <section class="full-grid">
+      <h3>Build Orbit With HTML</h3>
+      <p>Building Orbit is pretty simple using our HTML classes and structure; you'll just need to write the markup, find some images or text, fire up the Javascript and you'll be ready to go. On touch-enabled devices, Orbit has swipe functionality that makes it easy to switch slides. On screens without touch interfaces, you'll see bullet and arrow navigation if you have the options setup in your JS. Here's markup structure for Orbit:</p>
+      <div class="code-container">
+{{#markdown}}
+```xml
+<ul data-orbit>
+  <li>
+    <img src="http://placehold.it/1000x500" alt="Orbit Image 1" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="http://placehold.it/1000x500" alt="Orbit Image 2" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="http://placehold.it/1000x500" alt="Orbit Image 3" />
+    <div class="orbit-caption">...</div>
+  </li>
+</ul>
+```
+{{/markdown}}
+      </div>
+
+      <h5>We'll Automatically Add HTML</h5>
+      <p>To keep your markup really clean, we've let JS add what's needed for the navigation, bullets and other parts of the plugin. Once the page has been loaded, your markup will look different. Below is an example of the markup so you know what to target.</p>
+      <div class="code-container">
+
+{{#markdown}}
+```xml
+<!-- Orbit Container -->
+<div class="orbit-container">
+  <ul data-orbit="" class="orbit-slides-container">
+    <li>
+      <img src="../img/demos/demo3.jpg">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li class="active">
+      <img src="../img/demos/demo1.jpg">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li>
+      <img src="../img/demos/demo2.jpg">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li>
+      <img src="../img/demos/demo3.jpg">
+      <div class="orbit-caption">...</div>
+    </li>
+    <li>
+      <img src="../img/demos/demo1.jpg">
+      <div class="orbit-caption">...</div>
+    </li>
+  </ul>
+
+  <!-- Prev/Next Arrows -->
+  <a href="#" class="orbit-prev">Prev <span></span></a>
+  <a href="#" class="orbit-next">Next <span></span></a>
+
+  <!-- Slide Numbers -->
+  <div class="orbit-slide-number">
+    <span>1</span> of <span>3</span>
+  </div>
+
+  <!-- Timer and Play/Pause Button -->
+  <div class="orbit-timer">
+    <span></span>
+    <div class="orbit-progress" style="width: 100%; -webkit-transition: width 10s linear;"></div>
+  </div>
+</div>
+
+<!-- Orbit Bullet Slide Indicator -->
+<ol class="orbit-bullets">
+  <li data-orbit-slide-number="1"></li>
+  <li data-orbit-slide-number="2" class="active"></li>
+  <li data-orbit-slide-number="3"></li>
+</ol>
+```
+{{/markdown}}
+
+      </div>
+      {{!-- Closing Code Container --}}
+    </section>
+  </div>
+  <hr>
+
+  {{!-- Begin Full Grid --}}
+  <div class="row">
+    <section class="full-grid">
+
+      <ul id="featured2" data-orbit>
+        <li data-orbit-slide="headline-1">
+          <h2>Headline 1</h2>
+          <h3>Subheadline</h3>
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+        </li>
+        <li data-orbit-slide="headline-2">
+          <h2>Headline 2</h2>
+          <h3>Subheadline</h3>
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+        </li>
+        <li data-orbit-slide="headline-3">
+          <h2>Headline 3</h2>
+          <h3>Subheadline</h3>
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+        </li>
+      </ul>
+
+    </section>
+  </div>
+  {{!-- End Full Grid --}}
+
+  <hr>
+
+  <div class="row">
+    <section class="full-grid">
+
+      <h3>Deep Linking Support</h3>
+      <p>
+        You can now link to slides in Orbit. This is useful when constructing
+        custom bullets or referencing a particular slide in a description. To
+        see it in action click on one of the links below:
+      </p>
+
+      <ul class="disc">
+        <li><a href="#" data-orbit-link="headline-1">Goto Slide 1</a></li>
+        <li><a href="#" data-orbit-link="headline-2">Goto Slide 2</a></li>
+        <li><a href="#" data-orbit-link="headline-3">Goto Slide 3</a></li>
+      </ul>
+
+      <p>
+        The markup is simple, each <kbd>&lt;li&gt;</kbd> should
+        have a <kbd>data-orbit-slide</kbd> data attribute with a
+        unique identifier for the slide. Then anywhere outside
+        of your Orbit slider you can use <kbd>data-orbit-link</kbd>
+        to reference that slide.
+      </p>
+
+      <div class="code-container">
+{{#markdown}}
+```xml
+<ul data-orbit>
+  <li data-orbit-slide="headline-1">
+    <h2>Headline 1</h2>
+    <h3>Subheadline</h3>
+    <p>Pellentesque habitant morbi tristique senectus.</p>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <h2>Headline 2</h2>
+    <h3>Subheadline</h3>
+    <p>Pellentesque habitant morbi tristique senectus.</p>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <h2>Headline 3</h2>
+    <h3>Subheadline</h3>
+    <p>Pellentesque habitant morbi tristique senectus.</p>
+  </li>
+</ul>
+<!-- Now link to the slides above -->
+<ul class="disc">
+  <li><a href="#" data-orbit-link="headline-1">Goto Slide 1</a></li>
+  <li><a href="#" data-orbit-link="headline-2">Goto Slide 2</a></li>
+  <li><a href="#" data-orbit-link="headline-3">Goto Slide 3</a></li>
+</ul>
+```
+{{/markdown}}
+      </div>
+    </section>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <section class="full-grid">
+      <h3>Graceful Loading & Preloader</h3>
+      <p>We've cleaned up how Orbit initializes by adding a wrapper feature that stops the ugly flash of unstyled content. Here's the markup needed:</p>
+      <div class="code-container">
+{{#markdown}}
+```xml
+<div class="slideshow-wrapper">
+  <ul id="featured2" data-orbit>
+    <!-- Orbit slides -->
+  </ul>
+</div>
+```
+{{/markdown}}
+      </div>
+
+      <p>To add the preloader, simply include a <code>div class="preloader"</code> right inside the wrapper, like so:</p>
+      <div class="code-container">
+{{#markdown}}
+```xml
+<div class="slideshow-wrapper">
+  <div class="preloader"></div>
+  <ul data-orbit>
+    <!-- Orbit slides -->
+  </ul>
+</div>
+```
+{{/markdown}}
+      </div>
+      <div class="slideshow-wrapper">
+        <div class="preloader"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h3>Available SCSS Variables</h3>
+      <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
+      <div class="code-container">
+{{#markdown}}
+```scss
+$include-html-orbit-classes: $include-html-classes;
+
+// We use these to control the caption styles
+$orbit-container-bg: #f5f5f5;
+$orbit-caption-bg: rgba(0,0,0,0.6);
+$orbit-caption-font-color: #fff;
+$orbit-caption-font-size: emCalc(14);
+$orbit-caption-position: "bottom";    // Supported values: "bottom", "under"
+$orbit-caption-padding: emCalc(10,14);
+$orbit-caption-height: auto;
+
+// We use these to control the left/right nav styles
+$orbit-nav-bg: rgba(0,0,0,0.6);
+$orbit-nav-bg-hover: rgba(0,0,0,0.6);
+$orbit-nav-arrow-color: #fff;
+$orbit-nav-arrow-color-hover: #ccc;
+
+// We use these to control the timer styles
+$orbit-timer-bg: rgba(0,0,0,0.6);
+$orbit-timer-show-progress-bar: true;
+
+// We use these to control the bullet nav styles
+$orbit-bullet-nav-color: #999;
+$orbit-bullet-nav-color-active: #222;
+$orbit-bullet-radius: emCalc(18);
+
+// We use these to controls the style of slide numbers
+$orbit-slide-number-bg: rgba(0,0,0,0);
+$orbit-slide-number-font-color: #fff;
+$orbit-slide-number-padding: em-calc(5px);
+
+// Graceful Loading Wrapper and preloader
+$wrapper-class: "slideshow-wrapper";
+$preloader-class: "preloader";
+```
+{{/markdown}}
+      </div>
+    </section>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <section class="full-grid">
+      <h3>Using the JavaScript</h3>
+      <div class="panel">Before you can use Orbit you'll want to verify that both jQuery and <code>foundation.js</code> are available on your page. You can refer to the javascript documentation on setting that up</div>
+      <p>Just add <code>foundation.orbit.js</code> AFTER the </p>
+      <div class="code-container">
+{{#markdown}}
+```xml
+<body>
+
+  ...
+
+  <script>
+      document.write('<script src=/js/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.orbit.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+```
+{{/markdown}}
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <div class="full-grid">
+      <p>Required Foundation Library: <code>foundation.orbit.js</code></p>
+      <p>Then, you'll need to add a <kbd>data-orbit</kbd> data attribute to make the JS work properly on that element. That looks like:</p>
+      <div class="code-container">
+{{#markdown}}
+```xml
+<ul class="data-orbit">
+  ...
+</ul>
+```
+{{/markdown}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>Configuring Orbit</h4>
+    <div class="half-width">
+      <div class="code-container">
+{{#markdown}}
+```js
+$(document).foundation('orbit', {
+  animation_speed: 1500
+});
+```
+{{/markdown}}
+      </div>
+    </div>
+    <section class="half-width">
+      <div class="code-container">
+{{#markdown}}
+```html
+<ul data-orbit data-options="animation_speed:1500;">
+  ...
+</ul>
+```
+{{/markdown}}
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h4>Available Configuration Options</h4>
+      <div class="code-container">
+
+{{#markdown}}
+```js
+$(document).foundation('orbit', {
+
+  // String - Sets the type of animation used for transitioning between slides - Options: fade, slide
+  animation: 'fade',
+
+  //Number - Sets the amount of time in milliseconds before transitioning a slide
+  timer_speed: 10000,
+
+  //Boolean - Pauses on the current slide while hovering
+  pause_on_hover: true,
+
+  //Boolean - If pause on hover is set to true, this setting resumes playback after mousing out of slide
+  resume_on_mouseout: false,
+
+  //Number - Sets the amount of time in milliseconds the transition between slides will last
+  animation_speed: 500,
+
+  //Boolean - ??
+  stack_on_small: true,
+
+  //Boolean - Are the arrows enabled or disabled?
+  navigation_arrows: true,
+
+  //Boolean - Are the slide numbers visible?
+  slide_number: true,
+
+  //String - The class of the orbit container element
+  container_class: 'orbit-container',
+
+  //String - ??
+  stack_on_small_class: 'orbit-stack-on-small',
+
+  //String - Class name given to the next button
+  next_class: 'orbit-next',
+
+  //String - Class name given to the previous button
+  prev_class: 'orbit-prev',
+
+  //String - Class name given to the timer
+  timer_container_class: 'orbit-timer',
+
+  //String - Class name given to the paused button
+  timer_paused_class: 'paused',
+
+  //String - Class name given to the progress bar
+  timer_progress_class: 'orbit-progress',
+
+  //String - Class name given to the slides container
+  slides_container_class: 'orbit-slides-container',
+
+  //String - Class name given to the bullets container
+  bullets_container_class: 'orbit-bullets',
+
+  //String - Class name given to the active bullet
+  bullets_active_class: 'active',
+
+  //String - Class name given to the slide number
+  slide_number_class: 'orbit-slide-number',
+
+  //String - Class name given to the caption
+  caption_class: 'orbit-caption',
+
+  //String - Class name given to the active slide
+  active_slide_class: 'active',
+
+  //String - Class name given to ??
+  orbit_transition_class: 'orbit-transitioning',
+
+  //Boolean - Does the slider have bullets visible?
+  bullets: true,
+
+  //Boolean - Does the slider have a timer visible
+  timer: true,
+
+  //Boolean - ??
+  next_on_click: false,
+
+  //Boolean - Does the slider have variable height images?
+  variable_height: false,
+
+  //Function - Execute a function before the slide changes
+  before_slide_change: function(){},
+
+  //Function - Execute a function after the slide changes
+  after_slide_change: function(){}
+});
+```
+{{/markdown}}
+
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="code">
+      <h5 class="subheader">Code Example</h5>
+      <p>Orbit options can only be passed in during initialization at this time.</p>
+      <div class="code-container">
+{{#markdown}}
+```javascript
+$(document).foundation('orbit', {
+```
+
+```javascript
+  animation: 'fade',
+```
+
+```javascript
+  timer_speed: 10000,
+```
+
+```javascript
+  pause_on_hover: true,
+```
+```javascript
+  resume_on_mouseout: false,
+```
+
+```javascript
+  animation_speed: 500,
+```
+
+```javascript
+  stack_on_small: true,
+```
+
+```javascript
+  navigation_arrows: true,
+```
+
+```javascript
+  slide_number: true,
+```
+
+```javascript
+  container_class: 'orbit-container',
+```
+
+```javascript
+  stack_on_small_class: 'orbit-stack-on-small',
+```
+
+```javascript
+  next_class: 'orbit-next',
+```
+
+```javascript
+  prev_class: 'orbit-prev',
+```
+
+```javascript
+  timer_container_class: 'orbit-timer',
+```
+
+```javascript
+  timer_paused_class: 'paused',
+```
+
+```javascript
+  timer_progress_class: 'orbit-progress',
+```
+
+```javascript
+  slides_container_class: 'orbit-slides-container',
+```
+
+```javascript
+  bullets_container_class: 'orbit-bullets',
+```
+
+```javascript
+  bullets_active_class: 'active',
+```
+
+```javascript
+  slide_number_class: 'orbit-slide-number',
+```
+
+```javascript
+  caption_class: 'orbit-caption',
+```
+
+```javascript
+  active_slide_class: 'active',
+```
+
+```javascript
+  orbit_transition_class: 'orbit-transitioning',
+```
+
+```javascript
+  bullets: true,
+```
+
+```javascript
+  timer: true,
+```
+
+```javascript
+  next_on_click: false,
+```
+
+```javascript
+  variable_height: false,
+```
+
+```javascript
+  before_slide_change: function(){},
+```
+
+```javascript
+  after_slide_change: function(){}
+```
+
+```javascript
+  });
+```
+{{/markdown}}
+      </div>
+    </section>
+    <section class="options">
+      <h5 class="subheader">Options</h5>
+      <div class="options-bg">
+        <dl>
+          <dt>animation</dt>
+          <dd>Sets the type of animation used for transitioning between slides. Default: fade</dd>
+          <dt>timer_speed</dt>
+          <dd>Sets the amount of time in milliseconds before transitioning a slide. Default: 10000</dd>
+          <dt>pause_on_hover</dt>
+          <dd>Pauses on the current slide while hovering. Default: true</dd>
+          <dt>resume_on_mouseout</dt>
+          <dd>If pause on hover is set to true, this setting resumes playback after mousing out of slide. Default: false</dd>
+          <dt>animation_speed</dt>
+          <dd>Sets the amount of time in milliseconds the transition between slides will last. Default: 500</dd>
+          <dt>stack_on_small</dt>
+          <dd>Default: true</dd>
+          <dt>navigation_arrows</dt>
+          <dd>Default: true</dd>
+          <dt>slide_number</dt>
+          <dd>Default: true</dd>
+          <dt>container_class</dt>
+          <dd>Default: orbit-container</dd>
+          <dt>stack_on_small_class</dt>
+          <dd>TODO: What does it do?? Default: orbit-stack-on-small</dd>
+          <dt>next_class</dt>
+          <dd>orbit-next</dd>
+          <dt>prev_class</dt>
+          <dd>orbit-prev</dd>
+          <dt>timer_container_class</dt>
+          <dd>orbit_timer</dd>
+          <dt>timer_paused_class</dt>
+          <dd>paused</dd>
+          <dt>timer_progress_class</dt>
+          <dd>orbit-progress</dd>
+          <dt>slides_container_class</dt>
+          <dd>orbit-slides-container</dd>
+          <dt>bullets_container_class</dt>
+          <dd>orbit-bullets</dd>
+          <dt>bullets_active_class</dt>
+          <dd>active</dd>
+          <dt>slide_number_class</dt>
+          <dd>orbit-slide-number</dd>
+          <dt>caption_class</dt>
+          <dd>orbit-caption</dd>
+          <dt>active_slide_class</dt>
+          <dd>active</dd>
+          <dt>orbit_transition_class</dt>
+          <dd>orbit-transitioning</dd>
+          <dt>bullets</dt>
+          <dd>true</dd>
+          <dt>timer</dt>
+          <dd>true</dd>
+          <dt>next_on_click</dt>
+          <dd>false</dd>
+          <dt>variable_height</dt>
+          <dd>false</dd>
+          <dt>before_slide_change</dt>
+          <dd>empty function?</dd>
+          <dt>after_slide_change</dt>
+          <dd>empty function?</dd>
+        </dl>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <p>Starting in 4.0.7 you can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>css style</code> property</p>
+{{#markdown}}
+```xml
+<ul data-orbit data-options="timer_speed:2500; bullets:false;">
+  ...
+</ul>
+```
+{{/markdown}}
+    </section>
+  </div>
+
+{{!-- Begin Real World Example --}}
+
+  <h4>Real World Example</h4>
+  <div class="row">
+    <section class="half-width">
+      <h5 class="subheader">JavaScript</h5>
+      <div class="code-container">
+{{#markdown}}
+```javascript
+$(document).foundation('orbit', {
+  animation: 'slide',
+  timer_speed: 1000,
+  pause_on_hover: true,
+  animation_speed: 500,
+  navigation_arrows: true,
+  bullets: false,
+  next_on_click: true
+});
+```
+{{/markdown}}
+      </div>
+    </section>
+
+    <section class="half-width">
+      <h5 class="subheader">HTML</h5>
+      <div class="options-code-container">
+        <div class="code-container">
+{{#markdown}}
+```html
+<ul data-orbit
+    data-options="animation:'slide';
+                  animation_speed:1000;
+                  pause_on_hover:true;
+                  animation_speed:500;
+                  navigation_arrows:true;
+                  bullets:false;
+                  next_on_click:true;">
+</ul>
+```
+{{/markdown}}
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="full-grid">
+      <ul data-orbit data-options="animation:'slide';animation_speed:1000;pause_on_hover:true;animation_speed:500;navigation_arrows:true;bullets:false;next_on_click:true;">
+        <li><img src="http://placehold.it/1000x300" alt="Placeholder image 1 for real world example slider"></li>
+        <li><img src="http://placehold.it/1000x300" alt="Placeholder image 2 for real world example slider"></li>
+        <li><img src="http://placehold.it/1000x300" alt="Placeholder image 3 for real world example slider"></li>
+        <li><img src="http://placehold.it/1000x300" alt="Placeholder image 4 for real world example slider"></li>
+        <li><img src="http://placehold.it/1000x300" alt="Placeholder image 5 for real world example slider"></li>
+      </ul>
+    </section>
+  </div>
+
+{{!-- End Real World Example --}}
+
+  <h4>Events</h4>
+  <p>You can bind to the following events in your code.</p>
+  <div class="row">
+    <section class="code">
+      <h5 class="subheader">Event</h5>
+      <div class="code-container">
+{{#markdown}}
+```
+orbit:ready
+
+
+```
+
+```
+orbit:before-slide-change
+
+```
+
+```
+orbit:after-slide-change
+
+```
+
+```
+orbit:timer-started
+
+```
+
+```
+orbit:timer-stopped
+
+```
+{{/markdown}}
+      </div>
+    </section>
+    <section class="options">
+      <h5 class="subheader">Description</h5>
+      <div class="options-bg">
+        <dl>
+          <dt>event</dt>
+          <dd>Fires when the slider has loaded</dd>
+          <dt>event</dt>
+          <dd>Fires before a slide changes</dd>
+          <dt>event, orbit</dt>
+          <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and <code>total_slides</code></code></dd>
+          <dt>event</dt>
+          <dd>Fires each time the timer is started/resumed</dd>
+          <dt>event</dt>
+          <dd>Fires each time the timer is paused/stopped</dd>
+        </dl>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h4>Example</h4>
+      <p>Here's an example of how you can bind to these events:</p>
+      <div class="code-container">
+{{#markdown}}
+```xml
+<ul id="featured1" data-orbit>
+  <li>
+    <img src="../img/demos/demo1.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo2.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo3.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+</ul>
+
+<script>
+$("#featured1").on("orbit:ready", function(event) {
+  console.info("ready");
+});
+$("#featured1").on("orbit:before-slide-change", function(event) {
+  console.info("before slide change");
+});
+$("#featured1").on("orbit:after-slide-change", function(event, orbit) {
+  console.info("after slide change");
+  console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
+});
+$("#featured1").on("orbit:timer-started", function(event, orbit) {
+  console.info("timer started");
+});
+$("#featured1").on("orbit:timer-stopped", function(event, orbit) {
+  console.info("timer stopped");
+});
+</script>
+```
+{{/markdown}}
+
+      </div>
+    </section>
+  </div>
+
+</article>
