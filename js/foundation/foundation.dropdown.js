@@ -6,7 +6,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '4.3.2',
+    version : '5.0.0',
 
     settings : {
       activeClass: 'open',
@@ -16,26 +16,12 @@
     },
 
     init : function (scope, method, options) {
-      this.scope = scope || this.scope;
       Foundation.inherit(this, 'throttle data_options');
 
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, method);
-      }
-
-      if (typeof method !== 'string') {
-
-        if (!this.settings.init) {
-          this.events();
-        }
-
-        return this.settings.init;
-      } else {
-        return this[method].call(this, options);
-      }
+      this.bindings(method, options);
     },
 
-    events : function () {
+    events : function (scope) {
       var self = this;
 
       $(this.scope)
