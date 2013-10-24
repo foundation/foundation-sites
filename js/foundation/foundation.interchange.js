@@ -80,9 +80,11 @@
     events : function () {
       var self = this;
 
-      $(window).on('resize.fndtn.interchange', self.throttle(function () {
-        self.resize.call(self);
-      }, 50));
+      $(window)
+        .off('.interchange')
+        .on('resize.fndtn.interchange', self.throttle(function () {
+          self.resize.call(self);
+        }, 50));
 
       return this;
     },
