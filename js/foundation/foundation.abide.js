@@ -6,10 +6,9 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '4.3.2',
+    version : '5.0.0',
 
     settings : {
-      live_validate : true,
       focus_on_invalid : true,
       timeout : 1000,
       patterns : {
@@ -49,42 +48,29 @@
     timer : null,
 
     init : function (scope, method, options) {
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, method);
-      }
-
-      if (typeof method !== 'string') {
-        if (!this.settings.init) { this.events(); }
-
-      } else {
-        return this[method].call(this, options);
-      }
+      this.bindings(method, options);
     },
 
-    events : function () {
+    events : function (scope) {
       var self = this,
-          forms = $('form[data-abide]', this.scope).attr('novalidate', 'novalidate');
+          form = $(scope).attr('novalidate', 'novalidate'),
+          settings = form.data('abide-init');
 
-      forms
+      form
         .on('submit validate', function (e) {
           return self.validate($(this).find('input, textarea, select').get(), e);
-        });
-
-      this.settings.init = true;
-
-      if (!this.settings.live_validate) return;
-
-      forms
-        .find('input, textarea, select')
-        .on('blur change', function (e) {
-          self.validate([this], e);
         })
-        .on('keydown', function (e) {
-          clearTimeout(self.timer);
-          self.timer = setTimeout(function () {
+        .find('input, textarea, select')
+          .on('blur change', function (e) {
             self.validate([this], e);
-          }.bind(this), self.settings.timeout);
-        });
+          })
+          .on('keydown', function (e) {
+            var settings = $(this).closest('form').data('abide-init');
+            clearTimeout(self.timer);
+            self.timer = setTimeout(function () {
+              self.validate([this], e);
+            }.bind(this), settings.timeout);
+          });
     },
 
     validate : function (els, e) {

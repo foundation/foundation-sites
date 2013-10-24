@@ -6,7 +6,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '4.3.2',
+    version: '5.0.0',
 
     settings : {
       templates : {
@@ -27,55 +27,41 @@
 
     init : function (scope, method, options) {
       var self = this;
-      Foundation.inherit(this, 'set_data get_data remove_data throttle data_options');
+      Foundation.inherit(this, 'throttle');
 
-      if (typeof method === 'object') {
-        options = $.extend(true, this.settings, method);
-      }
+      this.bindings(method, options);
 
-      if (typeof method !== 'string') {
-        $(this.scope).find('ul[data-clearing]').each(function () {
-          var $el = $(this),
-              options = options || {},
-              lis = $el.find('li'),
-              settings = self.get_data($el);
-
-          if (!settings && lis.length > 0) {
-            options.$parent = $el.parent();
-
-            self.set_data($el, $.extend({}, self.settings, options, self.data_options($el)));
-
-            self.assemble($el.find('li'));
-
-            if (!self.settings.init) {
-              self.events().swipe_events();
-            }
-          }
-        });
-
-        return this.settings.init;
+      if (this.scope.hasAttribute && this.scope.hasAttribute('data-clearing')) {
+        this.assemble($(this.scope).find('li'));
       } else {
-        // fire method
-        return this[method].call(this, options);
+        $(this.scope).find('[data-clearing]').each(function () {
+          self.assemble($(this).find('li'));
+        });
       }
     },
 
-    // event binding and initial setup
-
-    events : function () {
+    events : function (scope) {
       var self = this;
 
-      $(this.scope)
+      if (this.globals_bound()) return;
+
+      $(document)
         .on('click.fndtn.clearing', 'ul[data-clearing] li',
           function (e, current, target) {
             var current = current || $(this),
                 target = target || current,
                 next = current.next('li'),
-                settings = self.get_data(current.parent()),
+                settings = current.closest('[data-clearing]').data('clearing-init'),
                 image = $(e.target);
 
             e.preventDefault();
-            if (!settings) self.init();
+
+            console.log($('[data-clearing]').data('clearing-init'))
+
+            if (!settings) {
+              self.init();
+              settings = current.closest('[data-clearing]').data('clearing-init');
+            }
 
             // if clearing is open and the current image is
             // clicked, go to the next image in sequence
@@ -103,14 +89,13 @@
       $(window).on('resize.fndtn.clearing',
         function () { this.resize() }.bind(this));
 
-      this.settings.init = true;
-      return this;
+      this.swipe_events(scope);
     },
 
-    swipe_events : function () {
+    swipe_events : function (scope) {
       var self = this;
 
-      $(this.scope)
+      $(document)
         .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
           if (!e.touches) { e = e.originalEvent; }
           var data = {
@@ -159,7 +144,7 @@
       $el.after('<div id="foundationClearingHolder"></div>');
 
       var holder = $('#foundationClearingHolder'),
-          settings = this.get_data($el),
+          settings = $el.data('clearing-init'),
           grid = $el.detach(),
           data = {
             grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',
@@ -497,8 +482,6 @@
     off : function () {
       $(this.scope).off('.fndtn.clearing');
       $(window).off('.fndtn.clearing');
-      this.remove_data(); // empty settings cache
-      this.settings.init = false;
     },
 
     reflow : function () {

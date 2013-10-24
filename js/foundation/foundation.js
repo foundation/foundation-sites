@@ -141,6 +141,8 @@ if (typeof jQuery === "undefined" &&
 
     patch : function (lib) {
       lib.scope = this.scope;
+      lib['data_options'] = this.lib_methods.data_options;
+      lib['globals_bound'] = this.lib_methods.globals_bound;
       lib['bindings'] = this.lib_methods.bindings;
       lib.rtl = this.rtl;
     },
@@ -173,31 +175,6 @@ if (typeof jQuery === "undefined" &&
 
     // methods that can be inherited in libraries
     lib_methods : {
-      set_data : function (node, data) {
-        // this.name references the name of the library calling this method
-        var id = [this.name,+new Date(),Foundation.random_str(5)].join('-');
-
-        Foundation.cache[id] = data;
-        node.attr('data-' + this.name + '-id', id);
-        return data;
-      },
-
-      get_data : function (node) {
-        return Foundation.cache[node.attr('data-' + this.name + '-id')];
-      },
-
-      remove_data : function (node) {
-        if (node) {
-          delete Foundation.cache[node.attr('data-' + this.name + '-id')];
-          node.attr('data-' + this.name + '-id', '');
-        } else {
-          $('[data-' + this.name + '-id]').each(function () {
-            delete Foundation.cache[$(this).attr('data-' + this.name + '-id')];
-            $(this).attr('data-' + this.name + '-id', '');
-          });
-        }
-      },
-
       throttle : function(fun, delay) {
         var timer = null;
         return function () {
@@ -273,32 +250,45 @@ if (typeof jQuery === "undefined" &&
       bindings : function (method, options) {
         var self = this;
 
-        if (this.scope.hasAttribute && this.scope.hasAttribute('data-alert')) {
-          if (this.scope.hasAttribute && !this.scope.hasAttribute('data-alert-init')) {
-            self.events(this.scope);
+        if (this.scope.hasAttribute && this.scope.hasAttribute('data-' + this.name)) {
+          if (!$(this).data(this.name + '-init')) {
+            this.events(this.scope);
           }
 
-          $(this.scope).data('alert-init', $.extend(true, this.settings, (options || method), this.data_options($(this.scope))));
-          self.events(this.scope);
+          $(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options($(this.scope))));
         } else {
-          // multiple
-          $(this.scope).find('[data-alert]').each(function () {
-            if (this.hasAttribute && !this.hasAttribute('data-alert-init')) {
+          $(this.scope).find('[data-' + this.name + ']').each(function () {
+            if (!$(this).data(self.name + '-init')) {
               self.events(this);
             }
 
-            $(this).data('alert-init', $.extend(true, self.settings, (options || method), self.data_options($(this.scope))));
+            $(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options($(this))));
           });
         }
 
         if (typeof method === 'string') {
           return this[method].call(this);
         }
-      }
-    },
+      },
 
-    error : function (error) {
-      return error.name + ' ' + error.message + '; ' + error.more;
+      globals_bound : function () {
+        // WARNING: Uses jQuery internal data method
+        //          to determine if events are bount,
+        //          this may be deprecated.
+        var events = $._data(document, 'events');
+
+        for (var type_collection in events) {
+          var collection = events[type_collection],
+              length = collection.length;
+          for (var i = 0; i < length; i++) {
+            if (new RegExp(this.name, 'i').test(collection[i].namespace)) {
+              return true;
+            }
+          }
+        }
+
+        return false;
+      }
     },
 
     // remove all foundation events.

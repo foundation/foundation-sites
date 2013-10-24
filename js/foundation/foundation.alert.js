@@ -6,7 +6,7 @@
   Foundation.libs.alert = {
     name : 'alert',
 
-    version : '4.3.2',
+    version : '5.0.0',
 
     settings : {
       animation: 'fadeOut',
@@ -15,12 +15,10 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'data_options');
-
-      this.bindings.call(this, [method, options]);
+      this.bindings(method, options);
     },
 
-    events : function (scope) {
+    events : function () {
       $(this.scope).on('click.fndtn.alerts', '[data-alert] a.close', function (e) {
           var alertBox = $(this).closest("[data-alert]"),
               settings = alertBox.data('alert-init');
