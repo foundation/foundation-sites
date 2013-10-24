@@ -19,7 +19,7 @@
     },
 
     events : function () {
-      $(this.scope).on('click.fndtn.alerts', '[data-alert] a.close', function (e) {
+      $(this.scope).off('.alert').on('click.fndtn.alert', '[data-alert] a.close', function (e) {
           var alertBox = $(this).closest("[data-alert]"),
               settings = alertBox.data('alert-init');
 
@@ -29,10 +29,6 @@
           settings.callback();
         });
       });
-    },
-
-    off : function () {
-      $('[data-alert]').off('.fndtn.alerts');
     },
 
     reflow : function () {}

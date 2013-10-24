@@ -31,10 +31,10 @@
 
       this.bindings(method, options);
 
-      if (this.scope.hasAttribute && this.scope.hasAttribute('data-clearing')) {
+      if ($(this.scope).is('[data-clearing]')) {
         this.assemble($(this.scope).find('li'));
       } else {
-        $(this.scope).find('[data-clearing]').each(function () {
+        $('[data-clearing]', this.scope).each(function () {
           self.assemble($(this).find('li'));
         });
       }
@@ -43,11 +43,11 @@
     events : function (scope) {
       var self = this;
 
-      if (this.globals_bound()) return;
-
-      $(document)
+      $(this.scope)
+        .off('.clearing')
         .on('click.fndtn.clearing', 'ul[data-clearing] li',
           function (e, current, target) {
+            console.log('this')
             var current = current || $(this),
                 target = target || current,
                 next = current.next('li'),
@@ -76,16 +76,16 @@
           })
 
         .on('click.fndtn.clearing', '.clearing-main-next',
-          function (e) { this.nav(e, 'next') }.bind(this))
+          function (e) { self.nav(e, 'next') })
         .on('click.fndtn.clearing', '.clearing-main-prev',
-          function (e) { this.nav(e, 'prev') }.bind(this))
+          function (e) { self.nav(e, 'prev') })
         .on('click.fndtn.clearing', this.settings.close_selectors,
           function (e) { Foundation.libs.clearing.close(e, this) })
         .on('keydown.fndtn.clearing',
-          function (e) { this.keydown(e) }.bind(this));
+          function (e) { self.keydown(e) });
 
-      $(window).on('resize.fndtn.clearing',
-        function () { this.resize() }.bind(this));
+      $(window).off('.clearing').on('resize.fndtn.clearing',
+        function () { self.resize() });
 
       this.swipe_events(scope);
     },
@@ -93,7 +93,7 @@
     swipe_events : function (scope) {
       var self = this;
 
-      $(document)
+      $(this.scope)
         .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
           if (!e.touches) { e = e.originalEvent; }
           var data = {
@@ -153,8 +153,6 @@
 
       return holder.after(wrapper).remove();
     },
-
-    // event callbacks
 
     open : function ($image, current, target) {
       var root = target.closest('.clearing-assembled'),

@@ -57,14 +57,16 @@
           settings = form.data('abide-init');
 
       form
-        .on('submit validate', function (e) {
+        .off('.abide')
+        .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
           return self.validate($(this).find('input, textarea, select').get(), e);
         })
         .find('input, textarea, select')
-          .on('blur change', function (e) {
+          .off('.abide')
+          .on('blur.fndtn.abide change.fndtn.abide', function (e) {
             self.validate([this], e);
           })
-          .on('keydown', function (e) {
+          .on('keydown.fndtn.abide', function (e) {
             var settings = $(this).closest('form').data('abide-init');
             clearTimeout(self.timer);
             self.timer = setTimeout(function () {
