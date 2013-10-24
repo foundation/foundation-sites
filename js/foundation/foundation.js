@@ -92,8 +92,7 @@ if (typeof jQuery === "undefined" &&
     init : function (scope, libraries, method, options, response) {
       var library_arr,
           args = [scope, method, options, response],
-          responses = [],
-          nc = nc || false;
+          responses = [];
 
       // check RTL
       this.rtl = /rtl/i.test($('html').attr('dir'));
@@ -102,24 +101,13 @@ if (typeof jQuery === "undefined" &&
       this.scope = scope || this.scope;
 
       if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
-        if (/off/i.test(libraries)) return this.off();
-
-        library_arr = libraries.split(' ');
-
         if (this.libs.hasOwnProperty(libraries)) {
           responses.push(this.init_lib(libraries, args));
         }
       } else {
-        // if (/reflow/i.test(libraries)) args[1] = 'reflow';
-
         for (var lib in this.libs) {
           responses.push(this.init_lib(lib, libraries));
         }
-      }
-
-      // if first argument is callback, add to args
-      if (typeof libraries === 'function') {
-        args.unshift(libraries);
       }
 
       return scope;
@@ -250,14 +238,14 @@ if (typeof jQuery === "undefined" &&
       bindings : function (method, options) {
         var self = this;
 
-        if (this.scope.hasAttribute && this.scope.hasAttribute('data-' + this.name)) {
+        if ($(this.scope).is('[data-' + this.name +']')) {
           if (!$(this).data(this.name + '-init')) {
             this.events(this.scope);
           }
 
           $(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options($(this.scope))));
         } else {
-          $(this.scope).find('[data-' + this.name + ']').each(function () {
+          $('[data-' + this.name + ']', this.scope).each(function () {
             if (!$(this).data(self.name + '-init')) {
               self.events(this);
             }
@@ -273,7 +261,7 @@ if (typeof jQuery === "undefined" &&
 
       globals_bound : function () {
         // WARNING: Uses jQuery internal data method
-        //          to determine if events are bount,
+        //          to determine if events are bound,
         //          this may be deprecated.
         var events = $._data(document, 'events');
 
@@ -289,15 +277,7 @@ if (typeof jQuery === "undefined" &&
 
         return false;
       }
-    },
-
-    // remove all foundation events.
-    off: function () {
-      $(this.scope).off('.fndtn');
-      $(window).off('.fndtn');
-      return true;
     }
-
   };
 
   $.fn.foundation = function () {

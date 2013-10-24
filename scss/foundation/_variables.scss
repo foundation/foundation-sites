@@ -106,9 +106,7 @@ $default-float: left;
 // $include-html-visibility-classes: $include-html-classes;
 // $include-html-button-classes: $include-html-classes;
 // $include-html-form-classes: $include-html-classes;
-// $include-html-custom-form-classes: $include-html-classes;
 // $include-html-media-classes: $include-html-classes;
-// $include-html-section-classes: $include-html-classes;
 // $include-html-orbit-classes: $include-html-classes;
 // $include-html-reveal-classes: $include-html-classes;
 // $include-html-joyride-classes: $include-html-classes;
@@ -598,55 +596,6 @@ $default-float: left;
 // $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
 
 //
-// Custom Form Variables
-//
-
-// We use these to control the basic form styles input styles
-
-// $custom-form-border-color: #ccc;
-// $custom-form-border-size: 1px;
-// $custom-form-bg: #fff;
-// $custom-form-bg-disabled: #ddd;
-// $custom-form-input-size: 16px;
-// $custom-form-check-color: #222;
-// $custom-form-check-size: 16px;
-// $custom-form-radio-size: 8px;
-// $custom-form-checkbox-radius: 0;
-
-// We use these to style the custom select form element.
-
-// $custom-select-bg: #fff;
-// $custom-select-fade-to-color: #f3f3f3;
-// $custom-select-border-color: #ddd;
-// $custom-select-triangle-color: #aaa;
-// $custom-select-triangle-color-open: #222;
-// $custom-select-height: em-calc(13) + ($form-spacing * 1.5);
-// $custom-select-margin-bottom: em-calc(20);
-// $custom-select-font-color-selected: #141414;
-// $custom-select-disabled-color: #888;
-
-// We use these to control the style of the custom select dropdown element.
-
-// $custom-dropdown-height: 200px;
-// $custom-dropdown-bg: #fff;
-// $custom-dropdown-border-color: darken(#fff, 20%);
-// $custom-dropdown-border-width: 1px;
-// $custom-dropdown-border-style: solid;
-// $custom-dropdown-font-color: #555;
-// $custom-dropdown-font-size: em-calc(14);
-// $custom-dropdown-color-selected: #eeeeee;
-// $custom-dropdown-font-color-selected: #000;
-// $custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
-// $custom-dropdown-offset-top: auto;
-// $custom-dropdown-list-padding: em-calc(4);
-// $custom-dropdown-default-float-padding: em-calc(6);
-// $custom-dropdown-opposite-padding: em-calc(38);
-// $custom-dropdown-list-item-min-height: em-calc(24);
-// $custom-dropdown-width-small: 134px;
-// $custom-dropdown-width-medium: 254px;
-// $custom-dropdown-width-large: 434px;
-
-//
 // Dropdown Variables
 //
 
@@ -1036,46 +985,6 @@ $default-float: left;
 
 // $reveal-modal-class: "reveal-modal";
 // $close-reveal-modal-class: "close-reveal-modal";
-
-//
-// Section Variables
-//
-
-// We use these to set padding and hover factor
-
-// $section-title-padding: em-calc(15);
-// $section-content-padding: em-calc(15);
-// $section-function-factor: 10%;
-
-// These style the titles
-
-// $section-title-color: #333;
-// $section-title-color-active: #333;
-// $section-title-bg: #efefef;
-// $section-title-bg-active: darken($section-title-bg, $section-function-factor);
-// $section-title-bg-active-tabs: #fff;
-// $section-title-bg-hover: darken($section-title-bg, $section-function-factor / 2);
-
-// Want to control border size, here ya go!
-
-// $section-border-size: 1px;
-// $section-border-style: solid;
-// $section-border-color: #ccc;
-
-// Font controls
-
-// $section-font-size: em-calc(14);
-
-// Control the color of the background and some size options
-
-// $section-content-bg: #fff;
-// $section-vertical-nav-min-width: em-calc(200);
-// $section-vertical-tabs-title-width: em-calc(200);
-// $section-bottom-margin: em-calc(20);
-
-// $title-selector: ".title";
-// $content-selector: ".content";
-// $active-region-selector: ".active";
 
 //
 // Side Nav Variables
