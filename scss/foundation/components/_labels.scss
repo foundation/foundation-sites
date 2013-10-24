@@ -1,5 +1,5 @@
 //
-// Label Variables
+// @variables
 //
 $include-html-label-classes: $include-html-classes !default;
 
@@ -14,9 +14,8 @@ $label-font-color: #333 !default;
 $label-font-color-alt: #fff !default;
 
 //
-// Label Mixins
+// @mixins
 //
-
 // We use this mixin to create a default label base.
 @mixin label-base {
   font-weight: $label-font-weight;
@@ -28,13 +27,21 @@ $label-font-color-alt: #fff !default;
   position: relative;
 }
 
+// @mixins
+//
 // We use this mixin to add label size styles.
+// $padding - Used to determine label padding. Default: $label-padding || em-calc(3 10 4) !default
+// $text-size - Used to determine label text-size. Default: $text-size found in settings
 @mixin label-size($padding:$label-padding, $text-size:$label-font-sizing) {
   @if $padding { padding: $padding; }
   @if $text-size { font-size: $text-size; }
 }
 
+// @mixins
+//
 // We use this mixin to add label styles.
+// $bg - Default: $primary-color (found in settings file)
+// $radius - Default: false, Options: true, sets radius to $global-radius (found in settings file)
 @mixin label-style($bg:$primary-color, $radius:false) {
 
   // We control which background color comes through
@@ -56,7 +63,13 @@ $label-font-color-alt: #fff !default;
 
 }
 
+// @mixins
+//
 // We use this to add close buttons to alerts
+// $padding - Default: $label-padding,
+// $text-size - Default: $label-font-sizing,
+// $bg - Default: $primary-color(found in settings file)
+// $radius - Default: false, Options: true which sets radius to $global-radius (found in settings file)
 @mixin label($padding:$label-padding, $text-size:$label-font-sizing, $bg:$primary-color, $radius:false) {
 
   @include label-base;

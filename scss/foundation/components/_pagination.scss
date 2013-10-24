@@ -1,5 +1,5 @@
 //
-// Pagination Variables
+// @variables
 //
 $include-html-nav-classes: $include-html-classes !default;
 
@@ -31,17 +31,17 @@ $pagination-link-current-font-weight: bold !default;
 $pagination-link-current-cursor: default !default;
 $pagination-link-current-active-bg: $primary-color !default;
 
+// @mixins
 //
-// Pagination Mixin
-//
-
 // Style the pagination container. Currently only used when centering elements.
+// $center - Default: false, Options: true
 @mixin pagination-container($center:false) {
   @if $center { text-align: center; }
 }
 
+// @mixins
 // Style unavailable list items
-@mixin pagination-unavailable-item() {
+@mixin pagination-unavailable-item {
   a {
     cursor: $pagination-link-unavailable-cursor;
     color: $pagination-link-unavailable-font-color;
@@ -49,9 +49,10 @@ $pagination-link-current-active-bg: $primary-color !default;
   &:hover a,
   & a:focus { background: $pagination-link-unavailable-bg-active; }
 }
-
+// @mixins
 // Style the current list item. Do not assume that the current item has
 // an anchor <a> element.
+// $has-anchor - Default: true, Options: false
 @mixin pagination-current-item($has-anchor: true) {
   @if $has-anchor {
     a {
@@ -76,7 +77,12 @@ $pagination-link-current-active-bg: $primary-color !default;
   }
 }
 
+// @mixins
+//
 // We use this mixin to set the properties for the creating Foundation pagination
+// $center - Left or center align the li elements. Default: false
+// $base-style - Sets base styles for pagination. Default: true, Options: false
+// $use-default-classes - Makes unavailable & current classes available for use. Default: true
 @mixin pagination($center:false, $base-style:true, $use-default-classes:true) {
 
   @if $base-style {

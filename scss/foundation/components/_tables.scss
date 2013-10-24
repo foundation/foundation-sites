@@ -1,6 +1,12 @@
 //
-// Table Variables
+// @name _tables.scss
+// @dependencies _global.scss
 //
+
+//
+// @variables
+//
+
 $include-html-table-classes: $include-html-classes !default;
 
 // These control the background color for the table and even rows
@@ -31,8 +37,9 @@ $table-margin-bottom: em-calc(20) !default;
 
 
 //
-// Table Mixin
+// @mixins
 //
+
 @mixin table {
   background: $table-bg;
   margin-bottom: $table-margin-bottom;
@@ -75,10 +82,7 @@ $table-margin-bottom: em-calc(20) !default;
 }
 
 @if $include-html-table-classes {
-
-  /* Tables */
   table {
     @include table;
   }
-
 }

@@ -1,6 +1,12 @@
 //
-// Split Button Variables
+// @name _split-buttons.scss
+// @dependencies _buttons.scss, _global.scss
 //
+
+//
+// @variables
+//
+
 $include-html-button-classes: $include-html-classes !default;
 
 // We use these to control different shared styles for Split Buttons
@@ -39,11 +45,20 @@ $split-button-pip-default-float-lrg: em-calc(-9) !default;
 
 
 //
-// Split Button Mixin
+// @mixins
 //
 
 // We use this mixin to create split buttons that build upon the button mixins
-@mixin split-button($padding:medium, $pip-color:$split-button-pip-color, $span-border:$primary-color, $base-style:true) {
+//
+// $padding - Type of padding to apply. Default: medium. Options: tiny, small, medium, large.
+// $pip-color - Color of the triangle. Default: $split-button-pip-color.
+// $span-border - Border color of button divider. Default: $primary-color.
+// $base-style - Apply base style to split button. Default: true.
+@mixin split-button(
+  $padding:medium,
+  $pip-color:$split-button-pip-color, 
+  $span-border:$primary-color, 
+  $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
   @if $base-style {

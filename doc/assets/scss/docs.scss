@@ -1,0 +1,136 @@
+@import "foundation";
+@import "code";
+//@import "compass/css3";
+
+@mixin box-shadow(
+  $shadow-1 : default,
+  $shadow-2 : false,
+  $shadow-3 : false,
+  $shadow-4 : false,
+  $shadow-5 : false,
+  $shadow-6 : false,
+  $shadow-7 : false,
+  $shadow-8 : false,
+  $shadow-9 : false,
+  $shadow-10: false
+) { }
+
+@mixin border-direction($direction:top,
+                        $style:solid,
+                        $width:2px,
+                        $color:darken($panel-bg-color, 1%)) {
+  border-#{$direction}: #{$style} #{$width} #{$color};
+}
+
+@mixin border($style:solid,
+              $width:2px,
+              $color:darken($panel-bg-color, 1%)) {
+  border: #{$style} #{$width} #{$color};
+}
+
+
+body {
+  font-size: em-calc(14);
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+.row {
+  max-width: emCalc(1440);
+}
+
+// Docs Components
+@import
+  "syntax-highlighting",
+  "sidebar",
+  "offcanvas",
+  "zurb-footer";
+
+
+// Docs Styles
+
+.section-header {
+  padding: 24px 0;
+}
+
+.easel {
+  @include panel($bg:$panel-bg-color);
+  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  @include radius();
+}
+
+.full-grid {
+  @include grid-column($columns:12);
+  .panel {
+    @extend .easel;
+  }
+}
+
+.half-width {
+  @include grid-column($columns:6);
+
+}
+
+.code {
+  @include grid-column($columns:7);
+  padding-right: 0;
+}
+
+.options {
+  @include grid-column($columns:5);
+}
+
+.options-bg {
+  padding: 18px;
+  background-color: darken($panel-bg-color, 2%);
+  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  border-radius: 4px;
+  ul {
+    margin-left: 30px;
+  }
+}
+
+.options-code-container {
+  .code-container {
+    background-color: darken($panel-bg-color, 2%);
+  }
+}
+
+.code-container {
+  position: relative;
+  @include border(solid, 1px, darken($panel-bg-color, 4%));
+  border-radius: 3px;
+  pre {
+    padding: 10px;
+    @include border-direction(bottom,solid,1px,darken($panel-bg-color, 6%));
+    background-color: darken($panel-bg-color, 0%);
+    line-height: 1.8em;
+    &:last-child {
+      border: none;
+    }
+    code {
+      background: none;
+    }
+  }
+}
+
+.code-container .button {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+}
+
+#masthead { @include grid-row; @include panel;
+  hgroup { @include grid-column(4); }
+  section { @include grid-column(8); }
+}
+
+footer { margin-top: 45px; }
+
+#appHeader { background: $primary-color; }
+
+#appHeader a.sidebar-button span {
+  @include box-shadow(-15px 0 2px #fff, -6px 0 2px #fff, 3px 0 2px #fff);
+}
+
+// orbit styles
+

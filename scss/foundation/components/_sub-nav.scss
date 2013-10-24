@@ -1,6 +1,12 @@
 //
-// Sub Nav Variables
+// @name _sub-nav.scss
+// @dependencies _global.scss
 //
+
+//
+// @variables
+//
+
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control margin and padding
@@ -25,10 +31,19 @@ $sub-nav-item-divider: "" !default;
 $sub-nav-item-divider-margin: emCalc(12) !default;
 
 //
-// Sub Nav Mixins
+// @mixins
 //
 
-@mixin sub-nav($font-color:$sub-nav-font-color, $font-size:$sub-nav-font-size, $active-bg:$sub-nav-active-bg) {
+
+// Create a sub-nav item
+//
+// $font-color - Font color. Default: $sub-nav-font-color.
+// $font-size - Font size. Default: $sub-nav-font-size.
+// $active-bg - Background of active nav item. Default: $sub-nav-active-bg.
+@mixin sub-nav(
+  $font-color:$sub-nav-font-color, 
+  $font-size:$sub-nav-font-size, 
+  $active-bg:$sub-nav-active-bg) {
   display: block;
   width: auto;
   overflow: hidden;
@@ -75,10 +90,6 @@ $sub-nav-item-divider-margin: emCalc(12) !default;
   }
 }
 
-
 @if $include-html-nav-classes {
-
-  /* Side Nav */
   .sub-nav { @include sub-nav; }
-
 }

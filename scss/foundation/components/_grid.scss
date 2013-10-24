@@ -1,5 +1,5 @@
 //
-// Grid Variables
+// @variables
 //
 $include-html-grid-classes: $include-html-classes !default;
 
@@ -8,23 +8,29 @@ $column-gutter: em-calc(30) !default;
 $total-columns: 12 !default;
 
 //
-// Grid Function
+// Grid Functions
 //
 
-// DEPRECATED Use grid-calc
+// Deprecated: We'll drop support for this in 5.1, use grid-calc()
 @function gridCalc($colNumber, $totalColumns) {
+  @warn "gridCalc() is deprecated, use grid-calc()";
   @return grid-calc($colNumber, $totalColumns);
 }
 
+// @FUNCTION
+// $colNumber - Found in settings file
+// $totalColumns - Found in settings file
 @function grid-calc($colNumber, $totalColumns) {
   @return percentage(($colNumber / $totalColumns));
 }
 
 //
-// Grid Mixins
+// @mixins
 //
 
 // For creating container, nested, and collapsed rows.
+//
+// $behavior - Any special beavior for this row? Default: false. Options: nest, collapse, nest-collapse, false.
 @mixin grid-row($behavior: false) {
 
   // use @include grid-row(nest); to include a nested row
@@ -63,13 +69,27 @@ $total-columns: 12 !default;
 
   // Clearfix for all rows
   @include clearfix();
-
 }
 
-
-// For creating columns - @include these inside a media query to control small vs. medium vs. large grid layouts
-
-@mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:true) {
+// Creates a column, should be used inside of a media query to control layouts
+//
+// $columns - The number of columns this should be. Default: false.
+// $last-column - Is this the last column? Default: false.
+// $center - Center these columns? Default: false.
+// $offset - # of columns to offset. Default: false.
+// $push - # of columns to push. Default: false.
+// $pull - # of columns to pull. Default: false.
+// $collapse - Get rid of gutter padding on column? Default: false.
+// $float - Should this float? Default: true. Options: true, false, left, right.
+@mixin grid-column(
+  $columns:false,
+  $last-column:false,
+  $center:false,
+  $offset:false,
+  $push:false,
+  $pull:false,
+  $collapse:false,
+  $float:true) {
 
   position: relative;
 
@@ -116,15 +136,21 @@ $total-columns: 12 !default;
 
 }
 
+
+// Create presentational classes for grid
+//
+// $size - Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
 @mixin grid-html-classes($size) {
+
   @for $i from 1 through $total-columns - 1 {
-    .#{$size}-push#{-$i} { 
-      @include grid-column($push:$i, $collapse:null, $float:false); 
+    .#{$size}-push#{-$i} {
+      @include grid-column($push:$i, $collapse:null, $float:false);
     }
-    .#{$size}-pull#{-$i} { 
-      @include grid-column($pull:$i, $collapse:null, $float:false); 
+    .#{$size}-pull#{-$i} {
+      @include grid-column($pull:$i, $collapse:null, $float:false);
     }
   }
+
   .column,
   .columns { @include grid-column($columns:false); }
 
@@ -163,7 +189,7 @@ $total-columns: 12 !default;
     &.collapse {
        > .column,
        > .columns { @include grid-column($collapse:true); }
-    
+
       .row {margin-left:0; margin-right:0;}
     }
 
@@ -178,15 +204,16 @@ $total-columns: 12 !default;
   @media #{$small-up} {
     @include grid-html-classes($size:small);
   }
+
   @media #{$medium-up} {
     @include grid-html-classes($size:medium);
     // Old push and pull classes
     @for $i from 1 through $total-columns - 1 {
-      .push#{-$i} { 
-        @include grid-column($push:$i, $collapse:null, $float:false); 
+      .push#{-$i} {
+        @include grid-column($push:$i, $collapse:null, $float:false);
       }
-      .pull#{-$i} { 
-        @include grid-column($pull:$i, $collapse:null, $float:false); 
+      .pull#{-$i} {
+        @include grid-column($pull:$i, $collapse:null, $float:false);
       }
     }
   }

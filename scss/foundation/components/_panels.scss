@@ -1,5 +1,5 @@
 //
-// Panel Variables
+// @variables
 //
 $include-html-panel-classes: $include-html-classes !default;
 
@@ -23,10 +23,12 @@ $panel-font-color-alt: #fff !default;
 $panel-header-adjust: true !default;
 $callout-panel-link-color: #fff !default;
 //
-// Panel Mixins
+// @mixins
 //
-
 // We use this mixin to create panels.
+// $bg - Sets the panel background color. Default: $panel-pg || darken(#fff, 5%) !default
+// $padding - Sets the panel padding amount. Default: $panel-padding || em-calc(20)
+// $adjust - Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust || true
 @mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust) {
 
   @if $bg {

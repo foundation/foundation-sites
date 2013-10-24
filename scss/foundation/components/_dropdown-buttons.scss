@@ -1,5 +1,5 @@
 //
-// Dropdown Button Variables
+// @variables
 //
 $include-html-button-classes: $include-html-classes !default;
 
@@ -31,11 +31,15 @@ $dropdown-button-pip-size-lrg: $button-lrg - em-calc(6) !default;
 $dropdown-button-pip-opposite-lrg: $button-lrg + em-calc(12) !default;
 $dropdown-button-pip-top-lrg: -$button-lrg / 2 + em-calc(3) !default;
 
+// @MIXIN
 //
 // Dropdown Button Mixin
 //
-
 // We use this mixin to build off of the button mixin and add dropdown button styles
+//
+// $padding - Determines the size of button you're working with. Default: medium. Options [tiny, small, medium, large]
+// $pip-color - Color of the little triangle that points to the dropdown. Default: #fff.
+// $base-style - Add in base-styles. This can be set to false. Default:true
 
 @mixin dropdown-button($padding:medium, $pip-color:#fff, $base-style:true) {
 

@@ -52,6 +52,8 @@ $alert-radius: $global-radius !default;
 }
 
 // We use this mixin to add alert styles
+//
+// $bg - The background of the alert. Default: $primary-color.
 @mixin alert-style($bg:$primary-color) {
 
   // This find the lightness percentage of the background color.
@@ -82,6 +84,9 @@ $alert-radius: $global-radius !default;
 }
 
 // We use this to quickly create alerts with a single mixin.
+//
+// $bg - Background of alert. Default: $primary-color.
+// $radius - Radius of alert box. Default: false.
 @mixin alert($bg:$primary-color, $radius:false) {
   @include alert-base;
   @include alert-style($bg);
@@ -90,17 +95,16 @@ $alert-radius: $global-radius !default;
 
 @if $include-html-alert-classes {
 
-  /* Foundation Alerts */
   .alert-box {
     @include alert;
 
-    .close { @include alert-close; }
+    .close      { @include alert-close; }
 
-    &.radius { @include radius($alert-radius); }
-    &.round { @include radius($global-rounded); }
+    &.radius    { @include radius($alert-radius); }
+    &.round     { @include radius($global-rounded); }
 
-    &.success { @include alert-style($success-color); }
-    &.alert { @include alert-style($alert-color); }
+    &.success   { @include alert-style($success-color); }
+    &.alert     { @include alert-style($alert-color); }
     &.secondary { @include alert-style($secondary-color); }
   }
 

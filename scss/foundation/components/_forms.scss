@@ -1,5 +1,5 @@
 //
-// Form Variables
+// @variables
 //
 $include-html-form-classes: $include-html-classes !default;
 
@@ -59,7 +59,7 @@ $glowing-effect-fade-time: 0.45s !default;
 $glowing-effect-color: $input-focus-border-color !default;
 
 //
-// Form Mixins
+// @MIXINS
 //
 
 // We use this mixin to give us form styles for rows inside of forms
@@ -74,7 +74,7 @@ $glowing-effect-color: $input-focus-border-color !default;
 
       .column,
       .columns { padding: 0; }
-      input { 
+      input {
         -moz-border-radius-bottom#{$opposite-direction}: 0;
         -moz-border-radius-top#{$opposite-direction}: 0;
         -webkit-border-bottom-#{$opposite-direction}-radius: 0;
@@ -89,8 +89,10 @@ $glowing-effect-color: $input-focus-border-color !default;
   textarea.columns { padding-#{$default-float}: $form-spacing / 2; }
 }
 
+// @MIXIN
+//
 // We use this mixin to give all basic form elements their style
-@mixin form-element() {
+@mixin form-element {
   background-color: $input-bg-color;
   font-family: $input-font-family;
   border: $input-border-width $input-border-style $input-border-color;
@@ -120,7 +122,12 @@ $glowing-effect-color: $input-focus-border-color !default;
   &[disabled] { background-color: $input-disabled-bg; }
 }
 
+// @MIXIN
+//
 // We use this mixin to create form labels
+//
+// $alignment - Alignment options. Default: false. Options: [right, inline, false]
+// $base-style - Control whether or not the base styles come through. Default: true.
 @mixin form-label($alignment:false, $base-style:true) {
 
   // Control whether or not the base styles come through.
@@ -161,7 +168,12 @@ $glowing-effect-color: $input-focus-border-color !default;
   line-height: ($form-label-font-size + ($form-spacing * 1.5) - em-calc(1));
 }
 
+// @MIXIN
+//
 // We use this mixin to create prefix label styles
+// $bg - Default:$input-prefix-bg || darken(#fff, 5%) !default;
+// $is-button - Toggle position settings if prefix is a button. Default:false
+//
 @mixin prefix($bg:$input-prefix-bg,$is-button:false) {
 
   @if $bg {
@@ -186,7 +198,11 @@ $glowing-effect-color: $input-focus-border-color !default;
 
 }
 
+// @MIXIN
+//
 // We use this mixin to create postfix label styles
+// $bg - Default:$input-prefix-bg || darken(#fff, 5%) !default;
+// $is-button - Toggle position settings if prefix is a button. Default: false
 @mixin postfix($bg:$input-prefix-bg, $is-button:false) {
 
   @if $bg {
@@ -227,7 +243,10 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
 }
 
+// @MIXIN
+//
 // We use this mixin to control border and background color of error inputs
+// $color - Default: $alert-color (found in settings file)
 @mixin form-error-color($color:$alert-color) {
   border-color: $color;
   background-color: rgba($color, 0.1);
@@ -239,10 +258,16 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
 }
 
+// @MIXIN
+//
 // We use this simple mixin to style labels for error inputs
+// $color - Default:$alert-color. Found in settings file
 @mixin form-label-error-color($color:$alert-color) { color: $color; }
 
+// @MIXIN
+//
 // We use this mixin to create error message styles
+// $bg - Default: $alert-color (Found in settings file)
 @mixin form-error-message($bg:$alert-color) {
   display: block;
   padding: $input-error-message-padding;

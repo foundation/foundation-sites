@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag "docs" %>
+    <%= javascript_include_tag "modernizr" %>
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-4 columns">
+        <%= render "_sidebar.html.erb" %>
+      </div>
+      
+      <hr>
+      
+      <!-- These links will be the same across all of our proprties & apps -->
+      <div class="zurb-links">    
+        <ul class="top">
+          <li class="logo"><a href="http://zurb.com"><img src="<%= asset_path %>/offcanvas/zurb-logo.png" alt="ZURB"></a></li>
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+        </ul>
+        <ul class="pillars">
+          <li>
+            <a href="http://www.zurb.com/services" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping startups win since '98.</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>World's most advanced responsive framework.</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://zurb.com/apps" class="footer-link-block apps">
+              <span class="title">ZURB Apps</span>
+              <span>Tools to rapidly prototype and iterate.</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://zurb.com/expo" class="footer-link-block expo">
+              <span class="title">Expo</span>
+              <span>Online training for smarter product design.</span>
+            </a>
+          </li> 
+        </ul>
+      </div>
+      
+    </aside>
+
+
+
+
+
+
+
+    <% if @options.javascript_enabled %>
+      <%= javascript_include_tag "docs" %>
+      <script>
+      $(document).foundation();
+      </script>
+    <% end %>
+  </body>
+</html>

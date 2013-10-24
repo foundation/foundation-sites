@@ -1,0 +1,422 @@
+<h2>Welcome to Foundation!</h2>
+
+<header class="section-header">
+  <h3>The Grid</h3>
+  <ul class="inline-list">
+    <li><a href="#">View on Github</a></li>
+    <li><a href="#">Email link</a></li>
+  </ul>
+
+  <p>Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</p>
+
+</header>
+<article class="section-content">
+  <div class="row">
+    <section class="full-grid">
+      <h5>Basic Grid</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>The basic grid is built using rows and columns.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="column">...</div>
+      <div class="column">...</div>
+      <div class="column">...</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Small and Large Grids</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>These are examples of different ways to use the Foundation Grid. Foundation uses <kbd>box-sizing: border-box</kbd> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we'll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="small-2 large-4 columns">...</div>
+      <div class="small-4 large-4 columns">...</div>
+      <div class="small-6 large-4 columns">...</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Infinitely Nest Your Grid</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>The grid allows for nesting down as far as you'd like, though at a certain point it will get absurd. You can use this nesting to create quite complex layouts, as well as some other tricks like form layouts or visual elements.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="small-8 columns">8
+        <div class="row">
+          <div class="small-8 columns">8 Nested
+            <div class="row">
+              <div class="small-8 columns">8 Nested Again</div>
+              <div class="small-4 columns">4</div>
+            </div>
+          </div>
+          <div class="small-4 columns">4</div>
+        </div>
+      </div>
+      <div class="small-4 columns">4</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Offsets</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>Offsets allow you to create additional space between columns in a row. Like the rest of the grid, they're nestable. You can use classes like .large-offset-1 and .small-offset-3 to manipulate your column positions in different ways. You can offset up to 11 since you wouldn't ever offset a full-width column.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="small-2 large-4 columns">...</div>
+      <div class="small-4 large-4 columns">...</div>
+      <div class="small-6 large-4 columns">...</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Centered Columns</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element, itself. This is accomplished by adding a class of large-centered or small-centered depending on which breakpoint you want the columns to center on. Small versions will carry through all breakpoints if not overridden by a large version. You can center any number of columns you have. To have a column not carry it's small-centered to large, add a class of large-uncentered.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="small-3 small-centered columns">3 centered</div>
+    </div>
+    <div class="row">
+      <div class="small-6 large-centered columns">6 centered</div>
+    </div>
+    <div class="row">
+      <div class="small-9 small-centered large-uncentered columns">9 centered</div>
+    </div>
+    <div class="row">
+      <div class="small-11 small-centered columns">11 centered</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Source Ordering</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>Using these source ordering classes, you can shift columns around between our breakpoints. This means you can have a sub-nav on the left on large displays, but go below on small ones. .push-# is the syntax you'll use.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="large-10 push-2 columns">10</div>
+      <div class="large-2 pull-10 columns">2, last</div>
+    </div>
+    <div class="row">
+      <div class="large-9 push-3 columns">9</div>
+      <div class="large-3 pull-9 columns">3, last</div>
+    </div>
+    <div class="row">
+      <div class="large-8 push-4 columns">8</div>
+      <div class="large-4 pull-8 columns">4, last</div>
+    </div>
+    <div class="row">
+      <div class="large-7 push-5 columns">7</div>
+      <div class="large-5 pull-7 columns">5, last</div>
+    </div>
+    <div class="row">
+      <div class="large-6 push-6 columns">6</div>
+      <div class="large-6 pull-6 columns">6, last</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Small Grid</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>As you've probably noticed in the examples above, you have access to a small and large grid. If you know that your grid structure will be the same for small devices as it will be on large devices, just use the small grid. You can override your small grid classes by adding large grid classes to it. To use the mixin, you'll need to have the extension installed or grab _variables.scss, _global.scss and _grid.scss from Github and throw them into a Foundation folder in your project directory.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="small-2 columns">2</div>
+      <div class="small-10 columns">10, last</div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">3</div>
+      <div class="small-9 columns">9, last</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Medium Grid</h5>
+      <img src="http://placehold.it/1000x300" alt="Grid Image">
+      <p>The small and large grids give you control over mobile and desktop styles. A medium grid now offers greater flexibility and control to create complex layouts for tablets as well.</p>
+    </section>
+  </div>
+
+  <div class="code-container">
+    <a href="#" class="small primary button">Copy</a>
+  {{#markdown}}
+  ```xml
+    <div class="row">
+      <div class="medium-2 columns">2</div>
+      <div class="medium-10 columns">10, last</div>
+    </div>
+    <div class="row">
+      <div class="medium-3 columns">3</div>
+      <div class="medium-9 columns">9, last</div>
+    </div>
+  ```
+  {{/markdown}}
+  </div>
+
+  <div class="row">
+    <section class="full-grid">
+      <h5>Building Grids With Mixins</h5>
+      <p>Mixins are incredibily important because they allow you to remove presentational class names from your HTML markup! This is an issue that has been on the radar since 2009 as can be found <a href="http://www.sitepoint.com/css-frameworks-semantic-class-names/">here</a></p>
+    </section>
+  </div>
+
+  {{!-- Begin mixins --}}
+
+  <h4>Grid-row Mixin</h4>
+  <div class="row">
+    <section class="code">
+      <h5 class="subheader">Code Example</h5>
+      <div class="code-container">
+{{#markdown}}
+```scss
+@include grid-row();
+
+// i.e.
+.your-custom-class {
+  @include grid-row($behavior:nest);
+}
+```
+{{/markdown}}
+    </div>
+    </section>
+    <section class="options">
+      <h5 class="subheader">Options</h5>
+        <div class="options-bg">
+          <dl>
+            <dt>$behavior</dt>
+            <dd>
+              Special behavior options. (Default: false). Options:
+              <ul>
+                <li>nest</li>
+                <li>collapse</li>
+                <li>nest-collapse</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+
+    </section>
+  </div>
+
+  {{!-- End Grid-row Mixin --}}
+
+  {{!-- Begin Grid-column Mixin --}}
+
+  <h4>Grid-column Mixin</h4>
+  <div class="row">
+    <section class="code">
+      <h5 class="subheader">Code Example</h5>
+      <div class="code-container">
+{{#markdown}}
+```scss
+@include grid-column();
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($columns:12);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($last-column:true);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($center:true);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-row($offset:3);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($push:3);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($pull:9);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($collapse:true);
+}
+```
+
+```scss
+.your-custom-class {
+  @include grid-column($float:right);
+}
+```
+{{/markdown}}
+      </div>
+    </section>
+    <section class="options">
+      <h5 class="subheader">Options</h5>
+      <div class="options-bg">
+        <dl>
+          <dt>$columns</dt>
+          <dd>Total number of columns (Default: 12)</dd>
+          <dt>$last-column</dt>
+          <dd>Is this the last column? (Default: false)</dd>
+          <dt>$center</dt>
+          <dd>Center these columns (Default: false)</dd>
+          <dt>$offset</dt>
+          <dd>Number of columns to offset (Default: false)</dd>
+          <dt>$push</dt>
+          <dd>Number of columns to push (Default: false)</dd>
+          <dt>$pull</dt>
+          <dd>Number of columns to pull (Default: false)</dd>
+          <dt>$collapse</dt>
+          <dd>Get rid of gutter padding on column? (Default: false)</dd>
+          <dt>$float</dt>
+          <dd>Should this float? (Default: false). Options:
+            <ul class="no-disc">
+              <li>true</li>
+              <li>left</li>
+              <li>right</li>
+            </ul>
+          </dd>
+        </dl>
+      </div>
+
+    </section>
+  </div>
+
+  <h4>Real World Example</h4>
+  <div class="row">
+    <section class="code">
+      <h5 class="subheader">SCSS</h5>
+      <div class="code-container">
+{{#markdown}}
+```scss
+  #masthead {
+    @include grid-row();
+    @include panel();
+    hgroup {
+      @include grid-column(4);
+    }
+    section {
+      @include grid-column(8);
+    }
+  }
+```
+{{/markdown}}
+      </div>
+    </section>
+
+    <section class="options">
+      <h5 class="subheader">HTML</h5>
+      <div class="options-code-container">
+        <div class="code-container">
+{{#markdown}}
+```xml
+<header id="masthead">
+  <hgroup>
+    <h2>Title</h2>
+  </hgroup>
+  <section>
+    <p>
+      Aenean lacinia bibendum
+      nulla sed consectetur.
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.
+    </p>
+  </section>
+</header>
+
+```
+{{/markdown}}
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="full-grid">
+      <h5 class="subheader">This is what it makes</h5>
+      <header id="masthead">
+        <hgroup>
+          <h2>Title</h2>
+        </hgroup>
+        <section>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+      </header>
+    </section>
+  </div>
+  {{!-- End Grid-column Mixin --}}
+</article>

@@ -1,5 +1,5 @@
 //
-// Button Variables
+// @variables
 //
 $include-html-button-classes: $include-html-classes !default;
 
@@ -40,10 +40,13 @@ $button-disabled-opacity: 0.6 !default;
 
 
 //
-// Button Mixins
+// @MIXIN
 //
-
 // We use this mixin to create a default button base.
+//
+// $style - Sets base styles. Can be set to false. Default: true.
+// $display - Used to control display property. Default: $button-display || inline-block
+
 @mixin button-base($style:true, $display:$button-display) {
   @if $style {
     border-style: $button-border-style;
@@ -60,7 +63,14 @@ $button-disabled-opacity: 0.6 !default;
   @if $display { display: $display; }
 }
 
+// @MIXIN
+//
 // We use this mixin to add button size styles
+//
+// $padding - Used to build padding for buttons Default: $button-med ||= em-calc(12)
+// $full-width - We can set $full-width:true to remove side padding extend width - Default: false
+// $is-input - <input>'s and <button>'s take on strange padding. We added this to help fix that. Default: false
+
 @mixin button-size($padding:$button-med, $full-width:false, $is-input:false) {
 
   // We control which padding styles come through,
@@ -107,7 +117,13 @@ $button-disabled-opacity: 0.6 !default;
   }
 }
 
+// @MIXIN
+//
 // We use this mixin to add button color styles
+//
+// $bg - Primary color set in settings file. Default: $primary-color.
+// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+// $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
 @mixin button-style($bg:$primary-color, $radius:false, $disabled:false) {
 
   // We control which background styles are used,
@@ -152,7 +168,17 @@ $button-disabled-opacity: 0.6 !default;
 
 }
 
+// @MIXIN
+//
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
+//
+// $padding - Used to build padding for buttons Default: $button-med ||= em-calc(12)
+// $bg - Primary color set in settings file. Default: $primary-color.
+// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default:false.
+// $full-width - We can set $full-width:true to remove side padding extend width. Default:false.
+// $disabled - We can set $disabled:true to create a disabled transparent button. Default:false.
+// $is-input - <input>'s and <button>'s take on strange padding. We added this to help fix that. Default:false.
+// $is-prefix - Not used? Default:false.
 @mixin button($padding:$button-med, $bg:$primary-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
   @include button-base;
   @include button-size($padding, $full-width, $is-input);
@@ -196,13 +222,13 @@ $button-disabled-opacity: 0.6 !default;
     @include inset-shadow();
     @include single-transition(background-color);
     @include button-size($padding:false, $is-input:$button-med);
-    &.tiny { 
+    &.tiny {
       @include button-size($padding:false, $is-input:$button-tny);
     }
     &.small {
       @include button-size($padding:false, $full-width:false);
     }
-    &.large { 
+    &.large {
       @include button-size($padding:false, $full-width:false);
     }
     &.radius { @include button-style($bg:false, $radius:true); }
