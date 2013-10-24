@@ -352,9 +352,9 @@ $microformat-abbr-font-decoration: none !default;
       li ul { list-style: inherit; }
     }
 
-    &.square { list-style-type: square; margin-#{$default-float}: $list-bullets-margin;}
-    &.circle { list-style-type: circle; margin-#{$default-float}: $list-bullets-margin;}
-    &.disc { list-style-type: disc; margin-#{$default-float}: $list-bullets-margin;}
+    &.square { list-style-type: square; margin-#{$default-float}: $list-side-margin;}
+    &.circle { list-style-type: circle; margin-#{$default-float}: $list-side-margin;}
+    &.disc { list-style-type: disc; margin-#{$default-float}: $list-side-margin;}
     &.no-bullet { list-style: none; }
   }
 
