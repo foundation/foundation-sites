@@ -47,7 +47,6 @@
         .off('.clearing')
         .on('click.fndtn.clearing', 'ul[data-clearing] li',
           function (e, current, target) {
-            console.log('this')
             var current = current || $(this),
                 target = target || current,
                 next = current.next('li'),
