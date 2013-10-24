@@ -6,7 +6,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version: '4.3.2',
+    version: '5.0.0',
 
     settings : {
       index : 0,
@@ -15,12 +15,11 @@
       back_text: 'Back',
       is_hover: true,
       mobile_show_parent_link: false,
-      scrolltop : true, // jump to top when sticky nav menu toggle is clicked
-      init : false
+      scrolltop : true // jump to top when sticky nav menu toggle is clicked
     },
 
     init : function (section, method, options) {
-      Foundation.inherit(this, 'data_options addCustomRule');
+      Foundation.inherit(this, 'addCustomRule');
       var self = this;
 
       if (typeof method === 'object') {
@@ -30,7 +29,6 @@
       }
 
       if (typeof method !== 'string') {
-
         $('.top-bar, [data-topbar]').each(function () {
           $.extend(true, self.settings, self.data_options($(this)));
           self.settings.$w = $(window);
@@ -65,13 +63,8 @@
           }
         });
 
-        if (!self.settings.init) {
-          this.events();
-        }
-
-        return this.settings.init;
+        this.events();
       } else {
-        // fire method
         return this[method].call(this, options);
       }
     },
@@ -79,18 +72,18 @@
     toggle: function() {
       var self = this;
       var topbar = $('.top-bar, [data-topbar]'),
-          section = topbar.find('section, .section');
+          section = $('section, .section', topbar);
 
       if (self.breakpoint()) {
         if (!self.rtl) {
           section.css({left: '0%'});
-          section.find('>.name').css({left: '100%'});
+          $('>.name', section).css({left: '100%'});
         } else {
           section.css({right: '0%'});
-          section.find('>.name').css({right: '100%'});
+          $('>.name', section).css({right: '100%'});
         }
 
-        section.find('li.moved').removeClass('moved');
+        $('li.moved', section).removeClass('moved');
         topbar.data('index', 0);
 
         topbar
@@ -140,12 +133,11 @@
     events : function () {
       var self = this;
       $(this.scope)
-        .off('.fndtn.topbar')
+        .off('.topbar')
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
           e.preventDefault();
           self.toggle();
         })
-
         .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
           var li = $(this),
               target = $(e.target),
@@ -178,7 +170,6 @@
             li.addClass('hover');
           }
         })
-
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
           if (self.breakpoint() && $(window).width() != self.settings.breakPoint) {
 
@@ -205,7 +196,7 @@
           }
         });
 
-      $(window).on('resize.fndtn.topbar', function () {
+      $(window).off('.topbar').on('resize.fndtn.topbar', function () {
         var stickyContainer = self.settings.$topbar.parent('.' + this.settings.sticky_class);
         var stickyOffset;
 
@@ -241,7 +232,7 @@
         }
       }.bind(this));
 
-      $('body').on('click.fndtn.topbar', function (e) {
+      $('body').off('.topbar').on('click.fndtn.topbar', function (e) {
         var parent = $(e.target).closest('li').closest('li.hover');
 
         if (parent.length > 0) {
