@@ -257,7 +257,6 @@ if (typeof jQuery === "undefined" &&
             }
 
             $(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options($(this))));
-            // console.log($(this).data(self.name + '-init'), '[data-' + self.name + '-init]')
           });
         }
 

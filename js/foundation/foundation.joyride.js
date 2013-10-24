@@ -8,9 +8,9 @@
   Foundation.libs.joyride = {
     name : 'joyride',
 
-    version : '4.3.2',
+    version : '5.0.0',
 
-    defaults : {
+    settings : {
       expose               : false,      // turn on or off the expose feature
       modal                : false,      // Whether to cover page with modal during the tour
       tip_location          : 'bottom',  // 'top' or 'bottom' in relation to parent
@@ -47,31 +47,18 @@
       expose_add_class : '' // One or more space-separated class names to be added to exposed element
     },
 
-    settings : {},
-
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle delay');
 
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, this.defaults, method);
-      } else {
-        $.extend(true, this.settings, this.defaults, options);
-      }
-
-      if (typeof method !== 'string') {
-        if (!this.settings.init) this.events();
-
-        return this.settings.init;
-      } else {
-        return this[method].call(this, options);
-      }
+      this.bindings(method, options)
     },
 
     events : function () {
       var self = this;
 
       $(this.scope)
-        .on('click.joyride', '.joyride-next-tip, .joyride-modal-bg', function (e) {
+        .off('.joyride')
+        .on('click.fndtn.joyride', '.joyride-next-tip, .joyride-modal-bg', function (e) {
           e.preventDefault();
 
           if (this.settings.$li.next().length < 1) {
@@ -88,37 +75,37 @@
 
         }.bind(this))
 
-        .on('click.joyride', '.joyride-close-tip', function (e) {
+        .on('click.fndtn.joyride', '.joyride-close-tip', function (e) {
           e.preventDefault();
           this.end();
         }.bind(this));
 
-      $(window).on('resize.fndtn.joyride', self.throttle(function () {
-        if ($('[data-joyride]').length > 0 && self.settings.$next_tip) {
-          if (self.settings.exposed.length > 0) {
-            var $els = $(self.settings.exposed);
+      $(window)
+        .off('.joyride')
+        .on('resize.fndtn.joyride', self.throttle(function () {
+          if ($('[data-joyride]').length > 0 && self.settings.$next_tip) {
+            if (self.settings.exposed.length > 0) {
+              var $els = $(self.settings.exposed);
 
-            $els.each(function () {
-              var $this = $(this);
-              self.un_expose($this);
-              self.expose($this);
-            });
+              $els.each(function () {
+                var $this = $(this);
+                self.un_expose($this);
+                self.expose($this);
+              });
+            }
+
+            if (self.is_phone()) {
+              self.pos_phone();
+            } else {
+              self.pos_default(false, true);
+            }
           }
-
-          if (self.is_phone()) {
-            self.pos_phone();
-          } else {
-            self.pos_default(false, true);
-          }
-        }
-      }, 100));
-
-      this.settings.init = true;
+        }, 100));
     },
 
     start : function () {
       var self = this,
-          $this = $(this.scope).find('[data-joyride]'),
+          $this = $('[data-joyride]', this.scope),
           integer_settings = ['timer', 'scrollSpeed', 'startOffset', 'tipAnimationFadeSpeed', 'cookieExpires'],
           int_settings_count = integer_settings.length;
 
@@ -126,8 +113,8 @@
 
       // non configureable settings
       this.settings.$content_el = $this;
-      this.settings.$body = $(this.settings.tipContainer);
-      this.settings.body_offset = $(this.settings.tipContainer).position();
+      this.settings.$body = $(this.settings.tip_container);
+      this.settings.body_offset = $(this.settings.tip_container).position();
       this.settings.$tip_content = this.settings.$content_el.find('> li');
       this.settings.paused = false;
       this.settings.attempts = 0;
@@ -221,7 +208,7 @@
           li : opts.$li
         }));
 
-      $(this.settings.tipContainer).append($tip_content);
+      $(this.settings.tip_container).append($tip_content);
     },
 
     show : function (init) {
@@ -254,11 +241,11 @@
             this.expose();
           }
 
-          this.settings.tipSettings = $.extend(this.settings, this.data_options(this.settings.$li));
+          this.settings.tip_settings = $.extend({}, this.settings, this.data_options(this.settings.$li));
 
           this.settings.timer = parseInt(this.settings.timer, 10);
 
-          this.settings.tipSettings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tipSettings.tip_location];
+          this.settings.tip_settings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tip_settings.tip_location];
 
           // scroll if not modal
           if (!/body/i.test(this.settings.$target.selector)) {
@@ -376,7 +363,7 @@
     },
 
     set_next_tip : function () {
-      this.settings.$next_tip = $(".joyride-tip-guide[data-index='" + this.settings.$li.index() + "']");
+      this.settings.$next_tip = $(".joyride-tip-guide").eq(this.settings.$li.index());
       this.settings.$next_tip.data('closed', '');
     },
 
@@ -447,7 +434,7 @@
               top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
               left: leftOffset});
 
-            this.nub_position($nub, this.settings.tipSettings.nub_position, 'top');
+            this.nub_position($nub, this.settings.tip_settings.nub_position, 'top');
 
           } else if (this.top()) {
             var leftOffset = this.settings.$target.offset().left;
@@ -458,7 +445,7 @@
               top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
               left: leftOffset});
 
-            this.nub_position($nub, this.settings.tipSettings.nub_position, 'bottom');
+            this.nub_position($nub, this.settings.tip_settings.nub_position, 'bottom');
 
           } else if (this.right()) {
 
@@ -466,7 +453,7 @@
               top: this.settings.$target.offset().top,
               left: (this.outerWidth(this.settings.$target) + this.settings.$target.offset().left + nub_width)});
 
-            this.nub_position($nub, this.settings.tipSettings.nub_position, 'left');
+            this.nub_position($nub, this.settings.tip_settings.nub_position, 'left');
 
           } else if (this.left()) {
 
@@ -474,18 +461,18 @@
               top: this.settings.$target.offset().top,
               left: (this.settings.$target.offset().left - this.outerWidth(this.settings.$next_tip) - nub_width)});
 
-            this.nub_position($nub, this.settings.tipSettings.nub_osition, 'right');
+            this.nub_position($nub, this.settings.tip_settings.nub_position, 'right');
 
           }
 
-          if (!this.visible(this.corners(this.settings.$next_tip)) && this.settings.attempts < this.settings.tipSettings.tip_location_pattern.length) {
+          if (!this.visible(this.corners(this.settings.$next_tip)) && this.settings.attempts < this.settings.tip_settings.tip_location_pattern.length) {
 
             $nub.removeClass('bottom')
               .removeClass('top')
               .removeClass('right')
               .removeClass('left');
 
-            this.settings.tipSettings.tip_location = this.settings.tipSettings.tip_location_pattern[this.settings.attempts];
+            this.settings.tip_settings.tip_location = this.settings.tip_settings.tip_location_pattern[this.settings.attempts];
 
             this.settings.attempts++;
 
@@ -737,19 +724,19 @@
     },
 
     bottom : function () {
-      return /bottom/i.test(this.settings.tipSettings.tip_location);
+      return /bottom/i.test(this.settings.tip_settings.tip_location);
     },
 
     top : function () {
-      return /top/i.test(this.settings.tipSettings.tip_location);
+      return /top/i.test(this.settings.tip_settings.tip_location);
     },
 
     right : function () {
-      return /right/i.test(this.settings.tipSettings.tip_location);
+      return /right/i.test(this.settings.tip_settings.tip_location);
     },
 
     left : function () {
-      return /left/i.test(this.settings.tipSettings.tip_location);
+      return /left/i.test(this.settings.tip_settings.tip_location);
     },
 
     corners : function (el) {
