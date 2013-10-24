@@ -30,7 +30,9 @@ if (typeof jQuery === "undefined" &&
   $('head').append('<meta class="foundation-mq-large">');
 
   // Enable FastClick
-  FastClick.attach(document.body);
+  if(typeof FastClick !== 'undefined') {
+    FastClick.attach(document.body);
+  }
 
   /*
     matchMedia() polyfill - Test a CSS media 
