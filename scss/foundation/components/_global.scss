@@ -23,8 +23,8 @@ $em-base: 16px !default;
 // Global Functions
 //
 
-// It strips the unit of measure and returns it
 
+// It strips the unit of measure and returns it
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }
@@ -243,7 +243,7 @@ $body-font-weight: normal !default;
 $body-font-style: normal !default;
 
 // We use this to control font-smoothing
-$font-smoothing: subpixel-antialiased !default;
+$font-smoothing: antialiased !default;
 
 // We use these to control text direction settings
 $text-direction: ltr !default;
@@ -261,9 +261,9 @@ $opposite-direction: right !default;
 
 // We use these as default colors throughout
 $primary-color: #2ba6cb !default;
-$secondary-color: #e9e9e9 !default;
-$alert-color: #c60f13 !default;
-$success-color: #5da423 !default;
+$secondary-color: #e7e7e7 !default;
+$alert-color: #f04124 !default;
+$success-color: #43ac61 !default;
 
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;

@@ -4,7 +4,7 @@
 $include-html-top-bar-classes: $include-html-classes !default;
 
 // Background color for the top bar
-$topbar-bg-color: #111 !default;
+$topbar-bg-color: #333 !default;
 $topbar-bg: $topbar-bg-color !default;
 
 // Height and margin
@@ -15,33 +15,35 @@ $topbar-margin-bottom: 0 !default;
 $topbar-input-height: 2.45em !default;
 
 // Controlling the styles for the title in the top bar
-$topbar-title-weight: bold !default;
+$topbar-title-weight: normal !default;
 $topbar-title-font-size: em-calc(17) !default;
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: #222 !default;
+$topbar-dropdown-bg: #333 !default;
 $topbar-dropdown-link-color: #fff !default;
-$topbar-dropdown-link-bg: lighten($topbar-bg-color, 5%) !default;
+$topbar-dropdown-link-bg: #333 !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
-$topbar-dropdown-toggle-alpha: 0.5 !default;
+$topbar-dropdown-toggle-alpha: 0.4 !default;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: #fff !default;
 $topbar-link-color-hover: #fff !default;
 $topbar-link-color-active: #fff !default;
-$topbar-link-weight: bold !default;
+$topbar-link-weight: normal !default;
 $topbar-link-font-size: em-calc(13) !default;
-$topbar-link-hover-lightness: -30% !default; // Darken by 30%
-$topbar-link-bg-hover: adjust-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness) !default;
-$topbar-link-bg-active: darken($topbar-bg-color, 3%) !default;
+$topbar-link-hover-lightness: -10% !default; // Darken by 10%
+$topbar-link-bg-hover: #272727 !default;
+$topbar-link-bg-active: $primary-color !default;
+$topbar-link-bg-active-hover: darken($primary-color, 5%) !default;
+$topbar-link-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 
 
-$topbar-dropdown-label-color: #555 !default;
+$topbar-dropdown-label-color: #777 !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
 $topbar-dropdown-label-font-weight: bold !default;
 $topbar-dropdown-label-font-size: em-calc(10) !default;
-$topbar-dropdown-label-bg: lighten($topbar-bg-color, 5%) !default;
+$topbar-dropdown-label-bg: #333 !default;
 
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
@@ -262,10 +264,11 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         color: $topbar-link-color;
         padding: 12px 0 12px 0;
         padding-#{$default-float}: $topbar-height / 3;
+        font-family: $topbar-link-font-family;
         font-size: $topbar-link-font-size;
         font-weight: $topbar-link-weight;
         background: $topbar-dropdown-bg;
-
+        
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
@@ -300,12 +303,18 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       &:hover > a {
         background: $topbar-link-bg-hover;
         color: $topbar-link-color-hover;
+        box-shadow: inset 0 -4px darken($topbar-link-bg-hover, 10%);
+
       }
 
       // Apply the active link color when it has that class
       &.active > a {
         background: $topbar-link-bg-active;
         color: $topbar-link-color-active;
+        box-shadow: inset 0 -4px darken($primary-color, 10%);
+		&:hover {
+            background: $topbar-link-bg-active-hover;
+        }
       }
     }
 
@@ -319,7 +328,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       & > a {
         &:after {
           @if ($topbar-arrows){
-            @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
+            @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float); 
           }
           margin-#{$opposite-direction}: $topbar-height / 3;
           margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
@@ -476,7 +485,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               border: none;
               content: "\00bb";
               top: 1em;
-              margin-top: -7px;
+              margin-top: -2px;
               #{$opposite-direction}: 5px;
             }
           }
@@ -495,7 +504,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             color: $topbar-dropdown-link-color;
             line-height: 1;
             white-space: nowrap;
-            padding: 7px $topbar-height / 3;
+            padding: 12px $topbar-height / 3;
             background: $topbar-dropdown-link-bg;
           }
 

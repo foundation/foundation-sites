@@ -5,7 +5,7 @@ $include-html-media-classes: $include-html-classes !default;
 
 // We use this to se the prog bar height
 $progress-bar-height: em-calc(25) !default;
-$progress-bar-color: transparent !default;
+$progress-bar-color: #f6f6f6 !default;
 
 // We use these to control the border styles
 $progress-bar-border-color: darken(#fff, 20%) !default;

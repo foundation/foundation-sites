@@ -9,6 +9,7 @@ map '/assets' do
   environment.append_path File.expand_path('../../test/js', __FILE__)
   environment.append_path File.expand_path('../js', __FILE__)
   environment.append_path File.expand_path('../img', __FILE__)
+  environment.append_path File.expand_path('../../fonts', __FILE__)
   
   # environment.css_compressor = YUI::CssCompressor.new
   # environment.js_compressor  = Uglifier.new(mangle: true)

@@ -16,7 +16,9 @@ $side-nav-list-margin: em-calc(0 0 7 0) !default;
 $side-nav-link-color: $primary-color !default;
 $side-nav-link-color-active: lighten(#000, 30%) !default;
 $side-nav-font-size: em-calc(14) !default;
-$side-nav-font-weight: bold !default;
+$side-nav-font-weight: normal !default;
+$side-nav-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+
 
 // We use these to control border styles
 $side-nav-divider-size: 1px !default;
@@ -43,6 +45,7 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
   padding: $side-nav-padding;
   list-style-type: $side-nav-list-type;
   list-style-position: $side-nav-list-position;
+  font-family: $side-nav-font-family;
 
   li {
     margin: $side-nav-list-margin;

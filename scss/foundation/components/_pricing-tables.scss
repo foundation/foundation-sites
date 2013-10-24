@@ -10,20 +10,23 @@ $price-table-border: solid 1px #ddd !default;
 $price-table-margin-bottom: em-calc(20) !default;
 
 // We use these to control the title styles
-$price-title-bg: #ddd !default;
+$price-title-bg: #333 !default;
 $price-title-padding: em-calc(15 20) !default;
 $price-title-align: center !default;
-$price-title-color: #333 !default;
-$price-title-weight: bold !default;
+$price-title-color: #eee !default;
+$price-title-weight: normal !default;
 $price-title-size: em-calc(16) !default;
+$price-title-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 
 // We use these to control the price styles
-$price-money-bg: #eee !default;
+$price-money-bg: #f6f6f6 !default;
 $price-money-padding: em-calc(15 20) !default;
 $price-money-align: center !default;
 $price-money-color: #333 !default;
 $price-money-weight: normal !default;
-$price-money-size: em-calc(20) !default;
+$price-money-size: em-calc(32) !default;
+$price-money-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+
 
 // We use these to control the description styles
 $price-bg: #fff !default;
@@ -44,7 +47,7 @@ $price-item-weight: normal !default;
 $price-item-bottom-border: dotted 1px #ddd !default;
 
 // We use these to control the CTA area styles
-$price-cta-bg: #f5f5f5 !default;
+$price-cta-bg: #fff !default;
 $price-cta-align: center !default;
 $price-cta-padding: em-calc(20 20 0) !default;
 
@@ -71,6 +74,7 @@ $price-cta-padding: em-calc(20 20 0) !default;
   color: $price-title-color;
   font-weight: $price-title-weight;
   font-size: $price-title-size;
+  font-family: $price-title-font-family;
 }
 
 // @mixins
@@ -83,6 +87,7 @@ $price-cta-padding: em-calc(20 20 0) !default;
   color: $price-money-color;
   font-weight: $price-money-weight;
   font-size: $price-money-size;
+  font-family: $price-money-font-family;
 }
 
 // @mixins

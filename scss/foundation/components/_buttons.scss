@@ -4,28 +4,28 @@
 $include-html-button-classes: $include-html-classes !default;
 
 // We use these to build padding for buttons.
-$button-med: em-calc(12) !default;
-$button-tny: em-calc(7) !default;
-$button-sml: em-calc(9) !default;
-$button-lrg: em-calc(16) !default;
+$button-tny: em-calc(10) !default;
+$button-sml: em-calc(14) !default;
+$button-med: em-calc(16) !default;
+$button-lrg: em-calc(18) !default;
 
 // We use this to control the display property.
 $button-display: inline-block !default;
 $button-margin-bottom: em-calc(20) !default;
 
 // We use these to control button text styles.
-$button-font-family: inherit !default;
+$button-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $button-font-color: #fff !default;
 $button-font-color-alt: #333 !default;
-$button-font-med: em-calc(16) !default;
 $button-font-tny: em-calc(11) !default;
 $button-font-sml: em-calc(13) !default;
+$button-font-med: em-calc(16) !default;
 $button-font-lrg: em-calc(20) !default;
-$button-font-weight: bold !default;
+$button-font-weight: normal !default;
 $button-font-align: center !default;
 
 // We use these to control various hover effects.
-$button-function-factor: 10% !default;
+$button-function-factor: 5% !default;
 
 // We use these to control button border styles.
 $button-border-width: 1px !default;
@@ -36,7 +36,7 @@ $button-radius: $global-radius !default;
 $button-round: $global-rounded !default;
 
 // We use this to set default opacity for disabled buttons.
-$button-disabled-opacity: 0.6 !default;
+$button-disabled-opacity: 0.7 !default;
 
 
 //
@@ -49,8 +49,6 @@ $button-disabled-opacity: 0.6 !default;
 
 @mixin button-base($style:true, $display:$button-display) {
   @if $style {
-    border-style: $button-border-style;
-    border-width: $button-border-width;
     cursor: $cursor-pointer-value;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
@@ -109,11 +107,15 @@ $button-disabled-opacity: 0.6 !default;
     padding-top: $is-input + em-calc(.5);
     padding-bottom: $is-input + em-calc(.5);
     -webkit-appearance: none;
+    border: none; 
+    font-weight: $button-font-weight !important;
   }
   @else if $is-input {
     padding-top: $is-input + em-calc(1);
     padding-bottom: $is-input;
     -webkit-appearance: none;
+    border: none; 
+    font-weight: $button-font-weight !important;
   }
 }
 
@@ -222,15 +224,22 @@ $button-disabled-opacity: 0.6 !default;
     @include inset-shadow();
     @include single-transition(background-color);
     @include button-size($padding:false, $is-input:$button-med);
-    &.tiny {
-      @include button-size($padding:false, $is-input:$button-tny);
-    }
-    &.small {
-      @include button-size($padding:false, $full-width:false);
-    }
-    &.large {
-      @include button-size($padding:false, $full-width:false);
-    }
+
+    &.tiny { @include button-size($padding:false, $is-input:$button-tny); }
+    &.small { @include button-size($padding:false, $is-input:$button-sml); }
+    &.large { @include button-size($padding:false, $is-input:$button-lrg); }
+  }
+
+  // Styles for any browser or device that support media queries
+
+  button, .button {
+    // @include inset-shadow(); //
+    @include single-transition(background-color);
+
+    &.large  { @include button-size($padding:false, $full-width:false); }
+    &.small  { @include button-size($padding:false, $full-width:false); }
+    &.tiny   { @include button-size($padding:false, $full-width:false); }
+
     &.radius { @include button-style($bg:false, $radius:true); }
     &.round  { @include button-style($bg:false, $radius:$button-round); }
   }

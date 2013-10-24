@@ -14,17 +14,22 @@ $sub-nav-list-margin: em-calc(-4 0 18) !default;
 $sub-nav-list-padding-top: em-calc(4) !default;
 
 // We use this to control the definition
+$sub-nav-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $sub-nav-font-size: em-calc(14) !default;
 $sub-nav-font-color: #999 !default;
 $sub-nav-font-weight: normal !default;
 $sub-nav-text-decoration: none !default;
-$sub-nav-border-radius: 1000px !default;
+$sub-nav-border-radius: 3px !default;
+$sub-nav-font-color-hover: darken($sub-nav-font-color, 15%) !default;
+
 
 // We use these to control the active item styles
-$sub-nav-active-font-weight: bold !default;
+
+$sub-nav-active-font-weight: normal !default;
 $sub-nav-active-bg: $primary-color !default;
+$sub-nav-active-bg-hover: darken($primary-color, 5%) !default;
 $sub-nav-active-color: #fff !default;
-$sub-nav-active-padding: em-calc(3 9) !default;
+$sub-nav-active-padding: em-calc(3 16) !default;
 $sub-nav-active-cursor: default !default;
 
 $sub-nav-item-divider: "" !default;
@@ -50,29 +55,42 @@ $sub-nav-item-divider-margin: emCalc(12) !default;
   margin: $sub-nav-list-margin;
   padding-top: $sub-nav-list-padding-top;
   margin-#{$opposite-direction}: 0;
-  margin-#{$default-float}: em-calc(-9);
+  margin-#{$default-float}: em-calc(-12);
+  
+  dt {
+	  text-transform: uppercase; 
+  }
 
   dt,
   dd,
   li {
     float: $default-float;
     display: inline;
-    margin-#{$default-float}: em-calc(9);
+    margin-#{$default-float}: em-calc(16);
     margin-bottom: em-calc(10);
+    font-family: $sub-nav-font-family;
     font-weight: $sub-nav-font-weight;
     font-size: $font-size;
+    color: $font-color;
 
     a {
-      color: $font-color;
-      text-decoration: $sub-nav-text-decoration; }
+      text-decoration: $sub-nav-text-decoration; 
+      color: $sub-nav-font-color;
+      &:hover {
+	      color: $sub-nav-font-color-hover;
+      }
+    }
 
     &.active a {
-      @include radius($sub-nav-border-radius);
+      @include radius($global-radius);
       font-weight: $sub-nav-active-font-weight;
       background: $active-bg;
       padding: $sub-nav-active-padding;
       cursor: $sub-nav-active-cursor;
       color: $sub-nav-active-color;
+      &:hover {
+	      background: $sub-nav-active-bg-hover;
+      }
     }
     @if $sub-nav-item-divider != "" {
       margin-#{$default-float}: 0;
