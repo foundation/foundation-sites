@@ -231,26 +231,15 @@ $button-disabled-opacity: 0.7 !default;
   }
 
   // Styles for any browser or device that support media queries
-  @media only screen {
 
-    button, .button {
-      // @include inset-shadow(); //
-      @include single-transition(background-color);
+  button, .button {
+    // @include inset-shadow(); //
+    @include single-transition(background-color);
 
-      &.large  { @include button-size($padding:false, $full-width:false); }
-      &.small  { @include button-size($padding:false, $full-width:false); }
-      &.tiny   { @include button-size($padding:false, $full-width:false); }
+    &.large  { @include button-size($padding:false, $full-width:false); }
+    &.small  { @include button-size($padding:false, $full-width:false); }
+    &.tiny   { @include button-size($padding:false, $full-width:false); }
 
-      &.radius { @include button-style($bg:false, $radius:true); }
-      &.round  { @include button-style($bg:false, $radius:$button-round); }
-    }
-
-    &.small {
-      @include button-size($padding:false, $full-width:false);
-    }
-    &.large {
-      @include button-size($padding:false, $full-width:false);
-    }
     &.radius { @include button-style($bg:false, $radius:true); }
     &.round  { @include button-style($bg:false, $radius:$button-round); }
   }
