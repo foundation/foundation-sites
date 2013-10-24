@@ -3,7 +3,7 @@
 @import "code";
 @import "fonts";
 @import "footer";
-//@import "compass/css3";
+@import "fonts";
 
 @mixin box-shadow(
   $shadow-1 : default,
