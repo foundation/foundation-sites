@@ -221,7 +221,6 @@ $button-disabled-opacity: 0.7 !default;
   }
 
   button, .button {
-    @include inset-shadow();
     @include single-transition(background-color);
     @include button-size($padding:false, $is-input:$button-med);
 

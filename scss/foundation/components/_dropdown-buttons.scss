@@ -31,7 +31,7 @@ $dropdown-button-pip-opposite-med: $button-pip-med * 2 !default;
 $dropdown-button-pip-top-med: -$button-pip-med / 2 + em-calc(2) !default;
 
 // We use these to style large dropdown buttons
-$dropdown-button-padding-lrg: $button-pip-lrg * 5 !default;
+$dropdown-button-padding-lrg: $button-pip-lrg * 5 + em-calc(3) !default;
 $dropdown-button-pip-size-lrg: $button-pip-lrg - em-calc(6) !default;
 $dropdown-button-pip-opposite-lrg: $button-pip-lrg + em-calc(12) !default;
 $dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + em-calc(3) !default;
