@@ -6,7 +6,7 @@
   Foundation.libs.tooltip = {
     name : 'tooltip',
 
-    version : '4.3.2',
+    version : '5.0.0',
 
     settings : {
       // selector : '.has-tip',
@@ -16,7 +16,7 @@
       disable_for_touch: false,
       tip_template : function (selector, content) {
         return '<span data-selector="' + selector + '" class="' 
-          + Foundation.libs.tooltips.settings.tooltip_class.substring(1) 
+          + Foundation.libs.tooltip.settings.tooltip_class.substring(1) 
           + '">' + content + '<span class="nub"></span></span>';
       }
     },
@@ -24,51 +24,43 @@
     cache : {},
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'data_options');
+      this.bindings(method, options);
+    },
+
+    events : function () {
       var self = this;
 
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, method);
-      } else if (typeof options !== 'undefined') {
-        $.extend(true, this.settings, options);
-      }
-
-      if (typeof method !== 'string') {
-        if (Modernizr.touch) {
-          $(this.scope)
-            .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
-              '[data-tooltip]', function (e) {
-              var settings = $.extend({}, self.settings, self.data_options($(this)));
-              if (!settings.disable_for_touch) {
-                e.preventDefault();
-                $(settings.tooltip_class).hide();
-                self.showOrCreateTip($(this));
-              }
-            })
-            .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
-              this.settings.tooltip_class, function (e) {
+      if (Modernizr.touch) {
+        $(this.scope)
+          .off('.tooltip')
+          .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
+            '[data-tooltip]', function (e) {
+            var settings = $.extend({}, self.settings, self.data_options($(this)));
+            if (!settings.disable_for_touch) {
               e.preventDefault();
-              $(this).fadeOut(150);
-            });
-        } else {
-          $(this.scope)
-            .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', 
-              '[data-tooltip]', function (e) {
-              var $this = $(this);
-
-              if (/enter|over/i.test(e.type)) {
-                self.showOrCreateTip($this);
-              } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
-                self.hide($this);
-              }
-            });
-        }
-
-        // $(this.scope).data('fndtn-tooltips', true);
+              $(settings.tooltip_class).hide();
+              self.showOrCreateTip($(this));
+            }
+          })
+          .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
+            this.settings.tooltip_class, function (e) {
+            e.preventDefault();
+            $(this).fadeOut(150);
+          });
       } else {
-        return this[method].call(this, options);
-      }
+        $(this.scope)
+          .off('.tooltip')
+          .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', 
+            '[data-tooltip]', function (e) {
+            var $this = $(this);
 
+            if (/enter|over/i.test(e.type)) {
+              self.showOrCreateTip($this);
+            } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
+              self.hide($this);
+            }
+          });
+      }
     },
 
     showOrCreateTip : function ($target) {
@@ -153,10 +145,10 @@
           objPos(tip, (target.offset().top - tip.outerHeight()), 'auto', 'auto', left, width)
             .removeClass('tip-override');
         } else if (classes && classes.indexOf('tip-left') > -1) {
-          objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight*2.5), 'auto', 'auto', (target.offset().left - this.outerWidth(tip) - nubHeight), width)
+          objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight*2.5), 'auto', 'auto', (target.offset().left - tip.outerWidth() - nubHeight), width)
             .removeClass('tip-override');
         } else if (classes && classes.indexOf('tip-right') > -1) {
-          objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight*2.5), 'auto', 'auto', (target.offset().left + this.outerWidth(target) + nubHeight), width)
+          objPos(tip, (target.offset().top + (target.outerHeight() / 2) - nubHeight*2.5), 'auto', 'auto', (target.offset().left + target.outerWidth() + nubHeight), width)
             .removeClass('tip-override');
         }
       }
