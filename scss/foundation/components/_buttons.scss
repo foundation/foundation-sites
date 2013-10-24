@@ -221,7 +221,6 @@ $button-disabled-opacity: 0.7 !default;
   }
 
   button, .button {
-    @include inset-shadow();
     @include single-transition(background-color);
     @include button-size($padding:false, $is-input:$button-med);
 
@@ -229,8 +228,6 @@ $button-disabled-opacity: 0.7 !default;
     &.small { @include button-size($padding:false, $is-input:$button-sml); }
     &.large { @include button-size($padding:false, $is-input:$button-lrg); }
   }
-
-  // Styles for any browser or device that support media queries
 
   button, .button {
     // @include inset-shadow(); //
@@ -242,6 +239,7 @@ $button-disabled-opacity: 0.7 !default;
 
     &.radius { @include button-style($bg:false, $radius:true); }
     &.round  { @include button-style($bg:false, $radius:$button-round); }
+    }
   }
 
   @media #{$medium-up} {

@@ -18,6 +18,8 @@ $side-nav-link-color-active: lighten(#000, 30%) !default;
 $side-nav-font-size: em-calc(14) !default;
 $side-nav-font-weight: normal !default;
 $side-nav-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$side-nav-active-font-family: "open_sansbold", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+
 
 
 // We use these to control border styles
@@ -59,6 +61,7 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
     &.active > a:first-child {
       color: $side-nav-link-color-active;
       font-weight: $side-nav-font-weight;
+      font-family: $side-nav-active-font-family;
     }
 
     &.divider {

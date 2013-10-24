@@ -3,7 +3,7 @@
 $include-html-orbit-classes: $include-html-classes !default;
 
 // We use these to control the caption styles
-$orbit-container-bg: #f5f5f5 !default;
+$orbit-container-bg: none !default;
 $orbit-caption-bg: rgba(51,51,51, 0.8) !default;
 $orbit-caption-font-color: #fff !default;
 $orbit-caption-font-size: em-calc(14) !default;
@@ -12,18 +12,18 @@ $orbit-caption-padding: em-calc(10,14) !default;
 $orbit-caption-height: auto !default;
 
 // We use these to control the left/right nav styles
-$orbit-nav-bg: rgba(0,0,0,0.6) !default;
-$orbit-nav-bg-hover: rgba(0,0,0,0.6) !default;
+$orbit-nav-bg: none !default;
+$orbit-nav-bg-hover: rgba(0,0,0,0.3) !default;
 $orbit-nav-arrow-color: #fff !default;
-$orbit-nav-arrow-color-hover: #ccc !default;
+$orbit-nav-arrow-color-hover: #fff !default;
 
 // We use these to control the timer styles
-$orbit-timer-bg: rgba(0,0,0,0.6) !default;
+$orbit-timer-bg: rgba(255,255,255,0.3) !default;
 $orbit-timer-show-progress-bar: true !default;
 
 // We use these to control the bullet nav styles
-$orbit-bullet-nav-color: #aaa !default;
-$orbit-bullet-nav-color-active: #777 !default;
+$orbit-bullet-nav-color: #ccc !default;
+$orbit-bullet-nav-color-active: #999 !default;
 $orbit-bullet-radius: em-calc(9) !default;
 
 // We use these to controls the style of slide numbers
@@ -181,17 +181,20 @@ $preloader-class: "preloader" !default;
 
     .orbit-timer {
       position: absolute;
-      top: 10px;
+      top: 12px;
       #{$opposite-direction}: 10px;
       height: 6px;
       width: 100px;
       z-index: 10;
       .orbit-progress {
         @if $orbit-timer-show-progress-bar {
-          height: 100%;
+          height: 3px;
           background-color: $orbit-timer-bg;
           display: block;
           width: 0%;
+          position: relative;
+          right: 20px;
+          top: 5px;
         }
       }
 
@@ -199,28 +202,33 @@ $preloader-class: "preloader" !default;
       & > span {
         display: none;
         position: absolute;
-        top: 10px;
+        top: 0px;
         #{$opposite-direction}: 0;
         width: 11px;
         height: 14px;
-        border: solid 4px #000;
+        border: solid 4px #fff;
         border-top: none;
         border-bottom: none;
       }
-
+	  
       // Pause button
       &.paused {
         & > span {
-          #{$opposite-direction}: -6px;
-          top: 9px;
+          #{$opposite-direction}: -4px;
+          top: 0px;
           width: 11px;
           height: 14px;
           border: inset 8px;
           border-right-style: solid;
-          border-color: transparent transparent transparent #000;
+          border-color: transparent transparent transparent #fff;
+          &.dark { 
+          	border-color: transparent transparent transparent #333;
+          }
         }
       }
     }
+    
+    
 
     &:hover .orbit-timer > span { display: block; }
 
@@ -228,9 +236,9 @@ $preloader-class: "preloader" !default;
     .orbit-prev,
     .orbit-next {
       position: absolute;
-      top: 50%;
+      top: 45%;
       margin-top: -25px;
-      width: 50px;
+      width: 36px;
       height: 60px;
       line-height: 50px;
       color: white;
@@ -244,7 +252,7 @@ $preloader-class: "preloader" !default;
       & > span {
         position: absolute;
         top: 50%;
-        margin-top: -16px;
+        margin-top: -10px;
         display: block;
         width: 0;
         height: 0;
@@ -267,7 +275,7 @@ $preloader-class: "preloader" !default;
         border-#{$default-float}-style: solid;
         border-#{$default-float}-color: $orbit-nav-arrow-color;
         #{$default-float}: 50%;
-        margin-#{$default-float}: -8px;
+        margin-#{$default-float}: -4px;
       }
       &:hover > span {
         border-#{$default-float}-color: $orbit-nav-arrow-color-hover;
@@ -275,11 +283,15 @@ $preloader-class: "preloader" !default;
     }
   }
 
+  .orbit-bullets-container { text-align: center; }
   .orbit-bullets {
     margin: 0 auto 30px auto;
     overflow: hidden;
     position: relative;
     top: 10px;
+    float: none;
+	text-align: center;
+	display: inline-block;
 
     li {
       display: block;

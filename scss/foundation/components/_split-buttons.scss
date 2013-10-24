@@ -93,7 +93,7 @@ $split-button-pip-default-float-lrg: em-calc(-6) !default;
   // Control the border color for the span area of the split button
   @if $span-border {
     span {
-      border-#{$default-float}-color: darken($span-border, $split-button-function-factor);
+      border-#{$default-float}-color: rgba(255,255,255,0.5);
     }
   }
 

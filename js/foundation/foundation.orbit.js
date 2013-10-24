@@ -67,6 +67,7 @@
       if (settings.bullets) {
         bullets_container = $('<ol>').addClass(settings.bullets_container_class);
         container.append(bullets_container);
+        bullets_container.wrap('<div class="orbit-bullets-container"></div>');
         slides_container.children().each(function(idx, el) {
           var bullet = $('<li>').attr('data-orbit-slide', idx);
           bullets_container.append(bullet);
