@@ -32,10 +32,10 @@
       this.bindings(method, options);
 
       if ($(this.scope).is('[data-clearing]')) {
-        this.assemble($(this.scope).find('li'));
+        this.assemble($('li', this.scope));
       } else {
         $('[data-clearing]', this.scope).each(function () {
-          self.assemble($(this).find('li'));
+          self.assemble($('li', this));
         });
       }
     },
@@ -55,8 +55,6 @@
 
             e.preventDefault();
 
-            console.log(current.closest('[data-clearing]'))
-
             if (!settings) {
               self.init();
               settings = current.closest('[data-clearing]').data('clearing-init');
@@ -68,7 +66,7 @@
               current[0] === target[0] && 
               next.length > 0 && self.is_open(current)) {
               target = next;
-              image = target.find('img');
+              image = $('img', target);
             }
 
             // set current and target to the clicked li if not otherwise defined.
@@ -140,6 +138,8 @@
 
     assemble : function ($li) {
       var $el = $li.parent();
+
+      if ($el.parent().hasClass('carousel')) return;
       $el.after('<div id="foundationClearingHolder"></div>');
 
       var holder = $('#foundationClearingHolder'),
@@ -157,9 +157,9 @@
 
     open : function ($image, current, target) {
       var root = target.closest('.clearing-assembled'),
-          container = root.find('div').first(),
-          visible_image = container.find('.visible-img'),
-          image = visible_image.find('img').not($image);
+          container = $('div', root).first(),
+          visible_image = $('.visible-img', container),
+          image = $('img', visible_image).not($image);
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
@@ -174,7 +174,7 @@
           container.addClass('clearing-container');
           visible_image.show();
           this.fix_height(target)
-            .caption(visible_image.find('.clearing-caption'), $image)
+            .caption($('.clearing-caption', visible_image), $image)
             .center(image)
             .shift(current, target, function () {
               target.siblings().removeClass('visible');
@@ -196,10 +196,10 @@
           }($(el))), container, visible_image;
 
       if (el === e.target && root) {
-        container = root.find('div').first();
-        visible_image = container.find('.visible-img');
+        container = $('div', root).first();
+        visible_image = $('.visible-img', container);
         this.settings.prev_index = 0;
-        root.find('ul[data-clearing]')
+        $('ul[data-clearing]', root)
           .attr('style', '').closest('.clearing-blackout')
           .removeClass('clearing-blackout');
         container.removeClass('clearing-container');
@@ -214,7 +214,7 @@
     },
 
     keydown : function (e) {
-      var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+      var clearing = $('ul[data-clearing]', '.clearing-blackout');
 
       if (e.which === 39) this.go(clearing, 'next');
       if (e.which === 37) this.go(clearing, 'prev');
@@ -222,14 +222,14 @@
     },
 
     nav : function (e, direction) {
-      var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+      var clearing = $('ul[data-clearing]', '.clearing-blackout');
 
       e.preventDefault();
       this.go(clearing, direction);
     },
 
     resize : function () {
-      var image = $('.clearing-blackout .visible-img').find('img');
+      var image = $('img', '.clearing-blackout .visible-img');
 
       if (image.length) {
         this.center(image);
@@ -261,22 +261,18 @@
         .siblings('.visible-img');
 
       if (target.next().length > 0) {
-        visible_image
-          .find('.clearing-main-next')
+        $('.clearing-main-next', visible_image)
           .removeClass('disabled');
       } else {
-        visible_image
-          .find('.clearing-main-next')
+        $('.clearing-main-next', visible_image)
           .addClass('disabled');
       }
 
       if (target.prev().length > 0) {
-        visible_image
-          .find('.clearing-main-prev')
+        $('.clearing-main-prev', visible_image)
           .removeClass('disabled');
       } else {
-        visible_image
-          .find('.clearing-main-prev')
+        $('.clearing-main-prev', visible_image)
           .addClass('disabled');
       }
     },
@@ -352,12 +348,12 @@
     img : function (img) {
       if (img.length) {
         var new_img = new Image(),
-            new_a = img.find('a');
+            new_a = $('a', img);
 
         if (new_a.length) {
           new_img.src = new_a.attr('href');
         } else {
-          new_img.src = img.find('img').attr('src');
+          new_img.src = $('img', img).attr('src');
         }
       }
       return this;
@@ -383,12 +379,11 @@
     // directional methods
 
     go : function ($ul, direction) {
-      var current = $ul.find('.visible'),
+      var current = $('.visible', $ul),
           target = current[direction]();
 
       if (target.length) {
-        target
-          .find('img')
+        $('img', target)
           .trigger('click', [current, target]);
       }
     },
@@ -428,7 +423,7 @@
     },
 
     direction : function ($el, current, target) {
-      var lis = $el.find('li'),
+      var lis = $('li', $el),
           li_width = lis.outerWidth() + (lis.outerWidth() / 4),
           up_count = Math.floor($('.clearing-container').outerWidth() / li_width) - 1,
           target_index = lis.index(target),

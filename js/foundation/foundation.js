@@ -265,25 +265,6 @@ if (typeof jQuery === "undefined" &&
           return this[method].call(this);
         }
 
-      },
-
-      globals_bound : function () {
-        // WARNING: Uses jQuery internal data method
-        //          to determine if events are bound,
-        //          this may be deprecated.
-        var events = $._data(document, 'events');
-
-        for (var type_collection in events) {
-          var collection = events[type_collection],
-              length = collection.length;
-          for (var i = 0; i < length; i++) {
-            if (new RegExp(this.name, 'i').test(collection[i].namespace)) {
-              return true;
-            }
-          }
-        }
-
-        return false;
       }
     }
   };
