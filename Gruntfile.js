@@ -65,11 +65,10 @@ module.exports = function(grunt) {
 
     copy: {
       docs: {
-        cwd: 'doc/assets/img/',
-        expand: true,
-        filter: 'isFile',
-        src: '**/*',
-        dest: 'dist/docs/img/'
+        files: [
+          {cwd: 'doc/assets/img/',expand: true,filter: 'isFile',src: '**/*',dest: 'dist/docs/assets/img/'},
+          {cwd: 'doc/assets/fonts/',expand: true,filter: 'isFile',src: '**/*',dest: 'dist/docs/assets/fonts/'}
+        ]
       }
     },
 
@@ -89,7 +88,7 @@ module.exports = function(grunt) {
         tasks: ['assemble:docs']
       },
       docs_assets: {
-        files: ['doc/assets/img/**/*'],
+        files: ['doc/assets/img/**/*', 'doc/assets/fonts/**/*'],
         tasks: ['copy:docs']
       }
     }
