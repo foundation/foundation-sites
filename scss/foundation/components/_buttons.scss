@@ -229,11 +229,9 @@ $button-disabled-opacity: 0.7 !default;
     &.large { @include button-size($padding:false, $is-input:$button-lrg); }
   }
 
-
   button, .button {
     // @include inset-shadow(); //
     @include single-transition(background-color);
-
 
     &.large  { @include button-size($padding:false, $full-width:false); }
     &.small  { @include button-size($padding:false, $full-width:false); }
