@@ -177,9 +177,15 @@ if (typeof jQuery === "undefined" &&
       // parses data-options attribute on nodes and turns
       // them into an object
       data_options : function (el) {
-        var opts = {}, ii, p,
-            opts_arr = (el.attr('data-options') || ':').split(';'),
-            opts_len = opts_arr.length;
+        var opts = {}, ii, p, opts_arr, opts_len,
+            data_options = el.data('options');
+
+        if (typeof data_options === 'object') {
+          return data_options;
+        }
+
+        opts_arr = (data_options || ':').split(';'),
+        opts_len = opts_arr.length;
 
         function isNumber (o) {
           return ! isNaN (o-0) && o !== null && o !== "" && o !== false && o !== true;
@@ -251,6 +257,7 @@ if (typeof jQuery === "undefined" &&
             }
 
             $(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options($(this))));
+            // console.log($(this).data(self.name + '-init'), '[data-' + self.name + '-init]')
           });
         }
 

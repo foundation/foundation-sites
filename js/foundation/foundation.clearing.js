@@ -55,6 +55,8 @@
 
             e.preventDefault();
 
+            console.log(current.closest('[data-clearing]'))
+
             if (!settings) {
               self.init();
               settings = current.closest('[data-clearing]').data('clearing-init');
