@@ -37,29 +37,17 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'data_options delay');
+      Foundation.inherit(this, 'delay');
 
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, method);
-      } else if (typeof options !== 'undefined') {
-        $.extend(true, this.settings, options);
-      }
-
-      if (typeof method !== 'string') {
-        this.events();
-
-        return this.settings.init;
-      } else {
-        return this[method].call(this, options);
-      }
+      this.bindings(method, options);
     },
 
-    events : function () {
+    events : function (scope) {
       var self = this;
 
-      $(this.scope)
-        .off('.fndtn.reveal')
-        .on('click.fndtn.reveal', '[data-reveal-id]', function (e) {
+      $('[data-reveal-id]', this.scope)
+        .off('.reveal')
+        .on('click.fndtn.reveal', function (e) {
           e.preventDefault();
 
           if (!self.locked) {
@@ -76,23 +64,28 @@
               self.open.call(self, element, {url: url});
             }
           }
-        })
-        .on('click.fndtn.reveal touchend', this.close_targets(), function (e) {
+        });
+
+      $(this.close_targets())
+        .off('.reveal')
+        .on('click.fndtn.reveal touchend.fndtn.reveal', function (e) {
           e.preventDefault();
+
           if (!self.locked) {
-            var settings = $.extend({}, self.settings, self.data_options($('[data-reveal-modal].open'))),
+            var settings = $('[data-reveal].open').data('reveal-init'),
               bg_clicked = $(e.target)[0] === $('.' + settings.bg_class)[0];
             if (bg_clicked && !settings.close_on_background_click) {
               return;
             }
 
             self.locked = true;
-            self.close.call(self, bg_clicked ? $('[data-reveal-modal].open') : $(this).closest('[data-reveal-modal]'));
+            self.close.call(self, bg_clicked ? $('[data-reveal].open') : $(this).closest('[data-reveal]'));
           }
         });
 
-      if($(this.scope).find('[data-reveal-modal]').length > 0) {
+      if($('[data-reveal]', this.scope).length > 0) {
         $(this.scope)
+          .off('.reveal')
           .on('open.fndtn.reveal', this.settings.open)
           .on('opened.fndtn.reveal', this.settings.opened)
           .on('opened.fndtn.reveal', this.open_video)
@@ -101,17 +94,18 @@
           .on('closed.fndtn.reveal', this.close_video);
       } else {
         $(this.scope)
-          .on('open.fndtn.reveal', '[data-reveal-modal]', this.settings.open)
-          .on('opened.fndtn.reveal', '[data-reveal-modal]', this.settings.opened)
-          .on('opened.fndtn.reveal', '[data-reveal-modal]', this.open_video)
-          .on('close.fndtn.reveal', '[data-reveal-modal]', this.settings.close)
-          .on('closed.fndtn.reveal', '[data-reveal-modal]', this.settings.closed)
-          .on('closed.fndtn.reveal', '[data-reveal-modal]', this.close_video);
+          .off('.reveal')
+          .on('open.fndtn.reveal', '[data-reveal]', this.settings.open)
+          .on('opened.fndtn.reveal', '[data-reveal]', this.settings.opened)
+          .on('opened.fndtn.reveal', '[data-reveal]', this.open_video)
+          .on('close.fndtn.reveal', '[data-reveal]', this.settings.close)
+          .on('closed.fndtn.reveal', '[data-reveal]', this.settings.closed)
+          .on('closed.fndtn.reveal', '[data-reveal]', this.close_video);
       }
 
-      $( 'body' ).bind( 'keyup.reveal', function ( event ) {
-        var open_modal = $('[data-reveal-modal].open'),
-            settings = $.extend({}, self.settings, self.data_options(open_modal));
+      $('body').off('.reveal').on('keyup.fndtn.reveal', function ( event ) {
+        var open_modal = $('[data-reveal].open'),
+            settings = open_modal.data('reveal-init');
         if ( event.which === 27  && settings.close_on_esc) { // 27 is the keycode for the Escape key
           open_modal.foundation('reveal', 'close');
         }
@@ -134,7 +128,7 @@
       }
 
       if (!modal.hasClass('open')) {
-        var open_modal = $('[data-reveal-modal].open');
+        var open_modal = $('[data-reveal].open');
 
         if (typeof modal.data('css-top') === 'undefined') {
           modal.data('css-top', parseInt(modal.css('top'), 10))
@@ -176,7 +170,7 @@
     close : function (modal) {
 
       var modal = modal && modal.length ? modal : $(this.scope),
-          open_modals = $('[data-reveal-modal].open');
+          open_modals = $('[data-reveal].open');
 
       if (open_modals.length > 0) {
         this.locked = true;

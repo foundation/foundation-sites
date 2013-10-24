@@ -410,7 +410,6 @@
 
     init: function (scope, method, options) {
       var self = this;
-      Foundation.inherit(self, 'data_options');
 
       if (typeof method === 'object') {
         $.extend(true, self.settings, method);
