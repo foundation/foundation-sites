@@ -293,8 +293,7 @@ $cursor-text-value: text !default;
     @include box-sizing(border-box);
   }
 
-  html,
-  body { font-size: $base-font-size; }
+  html { font-size: $base-font-size; }
 
   // Default body styles
   body {
@@ -302,6 +301,8 @@ $cursor-text-value: text !default;
     color: $body-font-color;
     padding: 0;
     margin: 0;
+    font-size: $em-base; // In case the browser doesn't support rem units
+    font-size: 1rem;
     font-family: $body-font-family;
     font-weight: $body-font-weight;
     font-style: $body-font-style;
