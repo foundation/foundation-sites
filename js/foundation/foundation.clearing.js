@@ -79,8 +79,8 @@
 
             // if clearing is open and the current image is
             // clicked, go to the next image in sequence
-            if (target.hasClass('visible') && 
-              current[0] === target[0] && 
+            if (target.hasClass('visible') &&
+              current[0] === target[0] &&
               next.length > 0 && self.is_open(current)) {
               target = next;
               image = target.find('img');
@@ -225,7 +225,7 @@
           .removeClass('clearing-blackout');
         container.removeClass('clearing-container');
         visible_image.hide();
-        visible_image.trigger('closed.fndtn.clearing');        
+        visible_image.trigger('closed.fndtn.clearing');
       }
 
       return false;
@@ -412,8 +412,8 @@
       if (target.length) {
         target
           .find('img')
-          .trigger('click', [current, target])
-          .trigger('change.fndtn.clearing');
+          .trigger('change.fndtn.clearing')
+          .trigger('click', [current, target]);
       }
     },
 
