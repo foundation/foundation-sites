@@ -70,21 +70,11 @@
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
 
-      if (typeof method === 'object') {
-        $.extend(true, this.settings, method);
-      }
-
       this.data_attr = 'data-' + this.settings.load_attr;
 
-      this.events();
+      this.bindings(method, options);
       this.load('images');
       this.load('nodes');
-
-      if (typeof method !== 'string') {
-        return this.settings.init;
-      } else {
-        return this[method].call(this, options);
-      }
     },
 
     events : function () {

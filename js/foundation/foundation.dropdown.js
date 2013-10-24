@@ -25,6 +25,7 @@
       var self = this;
 
       $(this.scope)
+        .off('.dropdown')
         .on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
           var settings = $.extend({}, self.settings, self.data_options($(this)));
           e.preventDefault();
@@ -40,30 +41,29 @@
               settings = $.extend({}, self.settings, self.data_options(target));
           if (settings.is_hover) self.close.call(self, $(this));
         })
+        .on('click.fndtn.dropdown', function (e) {
+          var parent = $(e.target).closest('[data-dropdown-content]');
+
+          if ($(e.target).data('dropdown') || $(e.target).parent().data('dropdown')) {
+            return;
+          }
+          if (!($(e.target).data('revealId')) && 
+            (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || 
+              $.contains(parent.first()[0], e.target)))) {
+            e.stopPropagation();
+            return;
+          }
+
+          self.close.call(self, $('[data-dropdown-content]'));
+        })
         .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
         .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
 
-      $(document).on('click.fndtn.dropdown', function (e) {
-        var parent = $(e.target).closest('[data-dropdown-content]');
-
-        if ($(e.target).data('dropdown') || $(e.target).parent().data('dropdown')) {
-          return;
-        }
-        if (!($(e.target).data('revealId')) && 
-          (parent.length > 0 && ($(e.target).is('[data-dropdown-content]') || 
-            $.contains(parent.first()[0], e.target)))) {
-          e.stopPropagation();
-          return;
-        }
-
-        self.close.call(self, $('[data-dropdown-content]'));
-      });
-
-      $(window).on('resize.fndtn.dropdown', self.throttle(function () {
-        self.resize.call(self);
-      }, 50)).trigger('resize');
-
-      this.settings.init = true;
+      $(window)
+        .off('.dropdown')
+        .on('resize.fndtn.dropdown', self.throttle(function () {
+          self.resize.call(self);
+        }, 50)).trigger('resize');
     },
 
     close: function (dropdown) {
