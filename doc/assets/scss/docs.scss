@@ -1,6 +1,9 @@
+@import "global";
 @import "foundation";
 @import "code";
 @import "fonts";
+@import "footer";
+//@import "compass/css3";
 
 @mixin box-shadow(
   $shadow-1 : default,
@@ -52,12 +55,14 @@ body {
   padding: 24px 0;
 }
 
+// Modified Panel
 .easel {
   @include panel($bg:$panel-bg-color);
   @include border(solid, 1px, darken($panel-bg-color, 6%));
   @include radius();
 }
 
+// 12 column grid mixin (would be cool to implement with mixins where possible)
 .full-grid {
   @include grid-column($columns:12);
   .panel {
@@ -65,7 +70,8 @@ body {
   }
 }
 
-.half-width {
+
+.half-grid {
   @include grid-column($columns:6);
 
 }

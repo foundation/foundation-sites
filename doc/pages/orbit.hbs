@@ -349,7 +349,7 @@ $preloader-class: "preloader";
 
   <div class="row">
     <h4>Configuring Orbit</h4>
-    <div class="half-width">
+    <div class="half-grid">
       <div class="code-container">
 {{#markdown}}
 ```js
@@ -360,7 +360,7 @@ $(document).foundation('orbit', {
 {{/markdown}}
       </div>
     </div>
-    <section class="half-width">
+    <section class="half-grid">
       <div class="code-container">
 {{#markdown}}
 ```html
@@ -373,296 +373,486 @@ $(document).foundation('orbit', {
     </section>
   </div>
 
+{{!-- quick example --}}
+
   <div class="row">
-    <section class="full-grid">
-      <h4>Available Configuration Options</h4>
-      <div class="code-container">
-
-{{#markdown}}
-```js
-$(document).foundation('orbit', {
-
-  // String - Sets the type of animation used for transitioning between slides - Options: fade, slide
-  animation: 'fade',
-
-  //Number - Sets the amount of time in milliseconds before transitioning a slide
-  timer_speed: 10000,
-
-  //Boolean - Pauses on the current slide while hovering
-  pause_on_hover: true,
-
-  //Boolean - If pause on hover is set to true, this setting resumes playback after mousing out of slide
-  resume_on_mouseout: false,
-
-  //Number - Sets the amount of time in milliseconds the transition between slides will last
-  animation_speed: 500,
-
-  //Boolean - ??
-  stack_on_small: true,
-
-  //Boolean - Are the arrows enabled or disabled?
-  navigation_arrows: true,
-
-  //Boolean - Are the slide numbers visible?
-  slide_number: true,
-
-  //String - The class of the orbit container element
-  container_class: 'orbit-container',
-
-  //String - ??
-  stack_on_small_class: 'orbit-stack-on-small',
-
-  //String - Class name given to the next button
-  next_class: 'orbit-next',
-
-  //String - Class name given to the previous button
-  prev_class: 'orbit-prev',
-
-  //String - Class name given to the timer
-  timer_container_class: 'orbit-timer',
-
-  //String - Class name given to the paused button
-  timer_paused_class: 'paused',
-
-  //String - Class name given to the progress bar
-  timer_progress_class: 'orbit-progress',
-
-  //String - Class name given to the slides container
-  slides_container_class: 'orbit-slides-container',
-
-  //String - Class name given to the bullets container
-  bullets_container_class: 'orbit-bullets',
-
-  //String - Class name given to the active bullet
-  bullets_active_class: 'active',
-
-  //String - Class name given to the slide number
-  slide_number_class: 'orbit-slide-number',
-
-  //String - Class name given to the caption
-  caption_class: 'orbit-caption',
-
-  //String - Class name given to the active slide
-  active_slide_class: 'active',
-
-  //String - Class name given to ??
-  orbit_transition_class: 'orbit-transitioning',
-
-  //Boolean - Does the slider have bullets visible?
-  bullets: true,
-
-  //Boolean - Does the slider have a timer visible
-  timer: true,
-
-  //Boolean - ??
-  next_on_click: false,
-
-  //Boolean - Does the slider have variable height images?
-  variable_height: false,
-
-  //Function - Execute a function before the slide changes
-  before_slide_change: function(){},
-
-  //Function - Execute a function after the slide changes
-  after_slide_change: function(){}
-});
-```
-{{/markdown}}
-
-      </div>
+    <section class="half-grid">
+      <h5 class="subheader">Code Example</h5>
+    </section>
+    <section class="half-grid">
+      <h5 class="subheader">Description</h5>
     </section>
   </div>
 
   <div class="row">
-    <section class="code">
-      <h5 class="subheader">Code Example</h5>
-      <p>Orbit options can only be passed in during initialization at this time.</p>
-      <div class="code-container">
+    <div class="half-grid">
 {{#markdown}}
 ```javascript
 $(document).foundation('orbit', {
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>Initialization</dt>
+        <dd>Initializes orbit</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   animation: 'fade',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>animation</dt>
+        <dd>Sets the type of animation used for transitioning between slides. Default: fade</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   timer_speed: 10000,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>timer_speed</dt>
+        <dd>Sets the amount of time in milliseconds before transitioning a slide. Default: 10000</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   pause_on_hover: true,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>pause_on_hover</dt>
+        <dd>Pauses on the current slide while hovering. Default: true</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   resume_on_mouseout: false,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>resume_on_mouseout</dt>
+        <dd>If pause on hover is set to true, this setting resumes playback after mousing out of slide. Default: false</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   animation_speed: 500,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>animation_speed</dt>
+        <dd>Sets the amount of time in milliseconds the transition between slides will last. Default: 500</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   stack_on_small: true,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>stack_on_small</dt>
+        <dd>Default: true</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   navigation_arrows: true,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>navigation_arrows</dt>
+        <dd>Default: true</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   slide_number: true,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>slide_number</dt>
+        <dd>Default: true</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   container_class: 'orbit-container',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>container_class</dt>
+        <dd>Default: orbit-container</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
-  stack_on_small_class: 'orbit-stack-on-small',
+  container_class: 'stack_on_small_class',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>stack_on_small_class</dt>
+        <dd>Default: 'orbit-stack-on-small'</dd>
+      </dl>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   next_class: 'orbit-next',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>next_class</dt>
+        <dd>Class name given to the next button. Default: 'orbit-stack-on-small'</dd>
+      </dl>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   prev_class: 'orbit-prev',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>prev_class</dt>
+        <dd>Class name given to the previous button. Default: 'orbit-prev'</dd>
+      </dl>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   timer_container_class: 'orbit-timer',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>timer_container</dt>
+        <dd>Class name given to the timer. Default: 'orbit_timer'</dd>
+      </dl>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   timer_paused_class: 'paused',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>timer_paused_class</dt>
+        <dd>Class name given to the paused button. Default: 'paused'</dd>
+      </dl>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   timer_progress_class: 'orbit-progress',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>timer_progress_class</dt>
+        <dd>Class name given to the progress bar. Default: 'orbit-progress'</dd>
+      </dl>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   slides_container_class: 'orbit-slides-container',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>slides_container_class</dt>
+        <dd>Class name given to the slides container. Default: 'orbit-stack-on-small'</dd>
+      </dl>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   bullets_container_class: 'orbit-bullets',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>bullets_container_class</dt>
+        <dd>Default: 'orbit-bullets'</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   bullets_active_class: 'active',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>bullets_active_class</dt>
+        <dd>Class name given to the active bullet. Default: 'active'</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   slide_number_class: 'orbit-slide-number',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>slide_number_class</dt>
+        <dd>Class name given to the slide number. Default: 'orbit-slide_number'</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   caption_class: 'orbit-caption',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>caption_class</dt>
+        <dd>Class name given to the caption. Default: 'orbit-caption'</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   active_slide_class: 'active',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>active_slide_class</dt>
+        <dd>Class name given to the active slide. Default: 'active'</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   orbit_transition_class: 'orbit-transitioning',
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>orbit_transition_class</dt>
+        <dd>Class name given to ?? Default: 'orbit-transitioning'</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   bullets: true,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>bullets</dt>
+        <dd>Does the slider have bullets visible? Default: true</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   timer: true,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>bullets_container_class</dt>
+        <dd>Does the slider have a timer visible. Default: true</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   next_on_click: false,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>?? next_on_click</dt>
+        <dd>Default: false</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
   variable_height: false,
 ```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>variable_height</dt>
+        <dd>Does the slider have variable height images? Default: false</dd>
+      </dl>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
 ```javascript
-  before_slide_change: function(){},
-```
-
-```javascript
-  after_slide_change: function(){}
-```
-
-```javascript
-  });
+  before_slide_change: function() {}
 ```
 {{/markdown}}
-      </div>
-    </section>
-    <section class="options">
-      <h5 class="subheader">Options</h5>
-      <div class="options-bg">
-        <dl>
-          <dt>animation</dt>
-          <dd>Sets the type of animation used for transitioning between slides. Default: fade</dd>
-          <dt>timer_speed</dt>
-          <dd>Sets the amount of time in milliseconds before transitioning a slide. Default: 10000</dd>
-          <dt>pause_on_hover</dt>
-          <dd>Pauses on the current slide while hovering. Default: true</dd>
-          <dt>resume_on_mouseout</dt>
-          <dd>If pause on hover is set to true, this setting resumes playback after mousing out of slide. Default: false</dd>
-          <dt>animation_speed</dt>
-          <dd>Sets the amount of time in milliseconds the transition between slides will last. Default: 500</dd>
-          <dt>stack_on_small</dt>
-          <dd>Default: true</dd>
-          <dt>navigation_arrows</dt>
-          <dd>Default: true</dd>
-          <dt>slide_number</dt>
-          <dd>Default: true</dd>
-          <dt>container_class</dt>
-          <dd>Default: orbit-container</dd>
-          <dt>stack_on_small_class</dt>
-          <dd>TODO: What does it do?? Default: orbit-stack-on-small</dd>
-          <dt>next_class</dt>
-          <dd>orbit-next</dd>
-          <dt>prev_class</dt>
-          <dd>orbit-prev</dd>
-          <dt>timer_container_class</dt>
-          <dd>orbit_timer</dd>
-          <dt>timer_paused_class</dt>
-          <dd>paused</dd>
-          <dt>timer_progress_class</dt>
-          <dd>orbit-progress</dd>
-          <dt>slides_container_class</dt>
-          <dd>orbit-slides-container</dd>
-          <dt>bullets_container_class</dt>
-          <dd>orbit-bullets</dd>
-          <dt>bullets_active_class</dt>
-          <dd>active</dd>
-          <dt>slide_number_class</dt>
-          <dd>orbit-slide-number</dd>
-          <dt>caption_class</dt>
-          <dd>orbit-caption</dd>
-          <dt>active_slide_class</dt>
-          <dd>active</dd>
-          <dt>orbit_transition_class</dt>
-          <dd>orbit-transitioning</dd>
-          <dt>bullets</dt>
-          <dd>true</dd>
-          <dt>timer</dt>
-          <dd>true</dd>
-          <dt>next_on_click</dt>
-          <dd>false</dd>
-          <dt>variable_height</dt>
-          <dd>false</dd>
-          <dt>before_slide_change</dt>
-          <dd>empty function?</dd>
-          <dt>after_slide_change</dt>
-          <dd>empty function?</dd>
-        </dl>
-      </div>
-    </section>
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>before_slide_change</dt>
+        <dd>Execute a function before the slide changes. Default: function() {}</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="half-grid">
+{{#markdown}}
+```javascript
+  after_slide_changes: function() {}
+```
+{{/markdown}}
+    </div>
+    <div class="half-grid">
+      <dl>
+        <dt>after_slide_changes</dt>
+        <dd>Execute a function after the slide changes. Default: function() {}</dd>
+      </dl>
+    </div>
   </div>
 
   <div class="row">
@@ -682,7 +872,7 @@ $(document).foundation('orbit', {
 
   <h4>Real World Example</h4>
   <div class="row">
-    <section class="half-width">
+    <section class="half-grid">
       <h5 class="subheader">JavaScript</h5>
       <div class="code-container">
 {{#markdown}}
@@ -701,7 +891,7 @@ $(document).foundation('orbit', {
       </div>
     </section>
 
-    <section class="half-width">
+    <section class="half-grid">
       <h5 class="subheader">HTML</h5>
       <div class="options-code-container">
         <div class="code-container">
@@ -736,59 +926,117 @@ $(document).foundation('orbit', {
 
 {{!-- End Real World Example --}}
 
+
+{{!-- Begin Events Section --}}
+
   <h4>Events</h4>
   <p>You can bind to the following events in your code.</p>
+
   <div class="row">
-    <section class="code">
-      <h5 class="subheader">Event</h5>
-      <div class="code-container">
+    <section class="half-grid">
+      <h5 class="subheader">Events</h5>
+    </section>
+    <section class="half-grid">
+      <h5 class="subheader">Description</h5>
+    </section>
+  </div>
+  <div class="row">
+    <section class="half-grid">
 {{#markdown}}
 ```
 orbit:ready
-
-
-```
-
-```
-orbit:before-slide-change
-
-```
-
-```
-orbit:after-slide-change
-
-```
-
-```
-orbit:timer-started
-
-```
-
-```
-orbit:timer-stopped
-
 ```
 {{/markdown}}
-      </div>
     </section>
-    <section class="options">
-      <h5 class="subheader">Description</h5>
-      <div class="options-bg">
-        <dl>
-          <dt>event</dt>
-          <dd>Fires when the slider has loaded</dd>
-          <dt>event</dt>
-          <dd>Fires before a slide changes</dd>
-          <dt>event, orbit</dt>
-          <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and <code>total_slides</code></code></dd>
-          <dt>event</dt>
-          <dd>Fires each time the timer is started/resumed</dd>
-          <dt>event</dt>
-          <dd>Fires each time the timer is paused/stopped</dd>
-        </dl>
-      </div>
+    <section class="half-grid">
+      <dl>
+        <dt>event</dt>
+        <dd>Fires when the slider has loaded</dd>
+      </dl>
     </section>
   </div>
+
+  <div class="row">
+    <section class="half-grid">
+{{#markdown}}
+```
+orbit:before-slide-change
+```
+{{/markdown}}
+    </section>
+    <section class="half-grid">
+      <dl>
+        <dt>event</dt>
+        <dd>Fires before the slide changes</dd>
+      </dl>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="half-grid">
+{{#markdown}}
+```
+orbit:after-slide-change
+```
+{{/markdown}}
+    </section>
+    <section class="half-grid">
+      <dl>
+        <dt>event, orbit</dt>
+        <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and total_slides</code></dd>
+      </dl>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="half-grid">
+{{#markdown}}
+```
+orbit:after-slide-change
+```
+{{/markdown}}
+    </section>
+    <section class="half-grid">
+      <dl>
+        <dt>event</dt>
+        <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and total_slides</code></dd>
+      </dl>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="half-grid">
+{{#markdown}}
+```
+orbit:timer-started
+```
+{{/markdown}}
+    </section>
+    <section class="half-grid">
+      <dl>
+        <dt>event</dt>
+        <dd>Fires each time the timer is started/resumed</dd>
+      </dl>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="half-grid">
+{{#markdown}}
+```
+orbit:timer-stopped
+```
+{{/markdown}}
+    </section>
+    <section class="half-grid">
+      <dl>
+        <dt>event</dt>
+        <dd>Fires each time the timer is paused/stopped</dd>
+      </dl>
+    </section>
+  </div>
+
+  {{!-- End Events Section --}}
 
   <div class="row">
     <section class="full-grid">

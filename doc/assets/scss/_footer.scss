@@ -1,0 +1,165 @@
+
+// Newsletter
+#newsletter { 
+  background: #33A6C9; padding: 25px 0 25px 0; margin-top: 30px; 
+  h5 { margin-bottom: 0px; margin-top: 10px; color: #fff; line-height: 24px; }
+  p { clear: both; font-size: 12px; padding-top: 2px; color: #fff; }
+  a { color: #fff; }
+  .row.collapse form {
+    margin-top: 14px;
+    input[type="text"] { font-size: 17px; font-weight: 200; color: #999; border: 0; }
+    .button { border: 0; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; background: #257696; }
+    .button:hover { background: #1b566d; }
+  }
+}
+
+// Global Footer
+
+.zurb-footer-top {
+  padding: 40px 0; color: white; @include proxima-nova;
+  .row .columns { @include clearfix(); }
+  &.zurb { background-position: 10px 7px; }
+  .property {
+    text-align: center;     
+    .property-info { padding-top: 20px; }
+
+    h2 {
+      margin: 0; padding: 0 !important; 
+      a {
+        -webkit-transition: all .25s ease-in-out; -moz-transition: all .25s ease-in-out; -o-transition: all .25s ease-in-out; transition: all .25s ease-in-out; font-family: "zurb-logo"; font-weight: normal; font-size: em-calc(18px); padding: 0; 
+        &:hover { @include opacity(0.8); }
+        &.services { width: 190px; }
+        span { display: none; }
+        strong { @include proxima-nova; font-size: 17px; margin-left: -7px; }
+      }
+    }
+    h3 { font-size: em-calc(24px); font-weight: bold; color: white; margin-bottom: 10px; }
+    h4 { font-size: em-calc(20px); font-weight: 200; color: white; margin-bottom: 10px; }
+    p, li, a { font-size: 13px; line-height: 21px; color: white; }
+    a {
+      @include proxima-nova; font-weight: bold; color: white; 
+      &:hover { @include opacity(0.8); }
+    }
+  }
+    .learn-links, .support-links, .connect-links {
+      padding: 50px 0 0 0; border-left: 1px solid rgba(255, 255, 255, 0.2); background: image-url("icons/footer-top-icons.png") no-repeat center 0; height: 220px; margin-bottom: 30px;
+      ul {
+        list-style: none; 
+        li { line-height: 20px; }
+      }
+    }
+    .learn-links { background-position: center -325px; }
+    .support-links { background-position: center -635px; }
+    .connect-links {
+      padding: 50px 20px 0; background-position: center -9px;
+      .button { font-size: 12px; font-weight: normal; background: rgba(0, 0, 0, 0.1); color: #FFF !important; font-weight: bold; text-shadow: none; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; border: none; padding: 6px 16px; } 
+    }
+
+    .global {
+      border-top: 1px solid rgba(255, 255, 255, 0.2); 
+      .footer-link-block {
+        font-weight: normal; display: block; margin: 30px 0 0 0;
+        &.services { background: image-url("icons/footer-studios.png") left top no-repeat; }
+        &.foundation { background: image-url("icons/footer-foundation.png") left top no-repeat;}
+        &.apps { background: image-url("icons/footer-products.png") left top no-repeat; }
+        &.expo { background: image-url("icons/footer-expo.png") left top no-repeat; }
+        span {
+          display: block; color: white; font-size: em-calc(12px); padding-left: 40px; line-height: 18px;
+          &.title { @include proxima-nova; font-size: em-calc(18px); margin-bottom: 5px; }
+        }
+      } 
+    }
+  
+}
+
+
+.zurb-footer-bottom {
+  background: #333; padding: 24px 0 10px; 
+  .design-border { border-bottom: 1px solid #484848; padding-bottom: 5px; margin-bottom: 25px; }  
+  a.zurb-logo { color: #858585; font-weight: normal; background: image-url("icons/footer-icons.png") no-repeat 0 3px; padding: 25px 0 0 0; font-size: em-calc(16px); display: inline-block; @include proxima-nova; width: 90px; 
+    &:hover { @include opacity(0.8); }
+  }
+  ul.zurb-links { margin: 0; display: inline-block; 
+    li { display: block; float: left; margin-left: 6px; @include proxima-nova-condensed; text-transform: uppercase; font-weight: 700; font-size: em-calc(14px) ;
+      a { color: #666; padding: 3px 6px;  
+        &:hover { color: #777; }
+      }
+    }    
+  }
+  p.copyright { margin: 6px 0 0; font-size: em-calc(12px); color: #666; }
+  ul.home-social { display: block; float: right; margin-bottom: 8px; 
+    li { list-style: none; display: block; float: left; margin-left: 10px;
+      &:first-child { margin-left: 0; } 
+      a { display: block; height: 50px; width: 50px; background: image-url("zurb/icons/social.png") no-repeat center 0;
+        &:hover { @include opacity(0.8); } 
+        &.twitter { background-position: center 0; }
+        &.facebook { background-position: center -200px; }
+        &.mail { background-position: center -400px; }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
+  .zurb-footer-top .property { padding-top: 0px; 
+    .learn-links, .support-links, .connect-links { height: 240px; padding: 50px 10px 0; }
+  }  
+}
+
+@media #{$small-only} {
+  .zurb-footer-top {
+    .property {
+      .property-info { padding-top: 0px; }
+      .learn-links, .support-links, .connect-links { border: none; height: auto; padding: 80px 20px 0; margin: 4px 0 0 0; border-top: 1px dotted rgba(255, 255, 255, 0.2); 
+        li a { font-size: 15px; line-height: 2; }
+        p, a { font-size: 16px; }
+      }
+      .learn-links { background-position: center -300px;padding-top: 76px 20px 0; 
+      }
+      .support-links { padding: 76px 20px 0; background-position: center -618px; }
+      .connect-links { padding: 76px 20px 14px ; background-position: center 10px; }
+    }
+    .global { border: none; }
+      .footer-link-block { 
+      span { font-size: em-calc(11px); line-height: 16px; }
+      &.services { border-top: 1px dotted rgba(255, 255, 255, 0.2); padding-top: 40px; margin-top: 0; background-position: center 10px !important;}
+    }
+  }
+  
+  .zurb-footer-bottom { text-align: center; 
+    .columns { padding: 0; }
+    a.zurb-logo { display: block; margin: 0 auto; }
+    ul.zurb-links { margin: 16px 0 10px; }
+    ul.home-social { float: none; margin: 0 0 20px 0; text-align: center; height: 44px; display: inline-block;}
+  }
+}
+
+/* Reformating pillars */
+
+@media #{$small-only} {
+  .zurb-footer-top .property .connect-links { border-bottom: 1px dotted rgba(255, 255, 255, 0.2); margin-bottom: 20px; }
+  .zurb-footer-top .global { 
+    .footer-link-block { padding-top: 50px; text-align: center; margin: 0 !important; clear: both;
+      span { padding-left: 0px; }
+      &.services { border-top: 0; background-position: center 15px !important; } 
+      &.foundation { background-position: center 15px !important; } 
+      &.apps { padding-top: 80px; background-position: center 45px !important; } 
+      &.expo { padding-top: 80px; background-position: center 45px !important; } 
+    }
+  }
+}
+
+
+.zurb-footer-top {
+  &.bg-blue { background: #2DAEBF; }
+  &.bg-fblue { background: #1399bd; }
+  &.bg-green { background: #B8D30B; }
+  &.bg-dgreen { background: #afc908; }
+  &.bg-magenta { background: #A9014B; }
+  &.bg-orange { background: #FF5C00; }
+  &.bg-lorange { background: #FF6908; }
+  &.bg-oyellow { background: #FC9200; }
+  &.bg-loyellow { background: #FFB515; }
+}
+
+
