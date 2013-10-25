@@ -9,6 +9,7 @@
     version : '5.0.0',
 
     settings : {
+      active_class: 'active'
     },
 
     init : function (scope, method, options) {
@@ -16,16 +17,17 @@
     },
 
     events : function () {
-      $(this.scope).on('click', '[data-tab] a', function (e) {
+      $(this.scope).off('.tab').on('click.fndtn.tab', '[data-tab] a', function (e) {
         e.preventDefault();
 
         var tab = $(this).parent(),
             target = $('#' + this.href.split('#')[1]),
-            siblings = $(this).parent().siblings();
+            siblings = tab.siblings(),
+            settings = tab.closest('[data-tab]').data('tab-init');
 
-        tab.addClass('active');
-        siblings.removeClass('active');
-        target.siblings().removeClass('active').end().addClass('active');
+        tab.addClass(settings.active_class);
+        siblings.removeClass(settings.active_class);
+        target.siblings().removeClass(settings.active_class).end().addClass(settings.active_class);
       });
     },
 
