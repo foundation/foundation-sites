@@ -20,11 +20,11 @@ module.exports = function(grunt) {
       },
       docs: {
         options: {
-          partials: ['doc/includes/*.hbs'],
+          partials: ['doc/includes/*.html'],
           helpers: ['doc/helpers/*.js'],
-          layout: 'doc/layouts/default.hbs'
+          layout: 'doc/layouts/default.html'
         },
-        src: 'doc/pages/*.hbs',
+        src: 'doc/pages/*.html',
         dest: 'dist/docs/'
       }
     },
