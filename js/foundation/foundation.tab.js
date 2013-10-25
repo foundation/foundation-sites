@@ -1,5 +1,3 @@
-/*jslint unparam: true, browser: true, indent: 2 */
-
 ;(function ($, window, document, undefined) {
   'use strict';
 
@@ -31,9 +29,7 @@
       });
     },
 
-    off : function () {
-    },
-
+    off : function () {},
     reflow : function () {}
   };
 }(jQuery, this, this.document));

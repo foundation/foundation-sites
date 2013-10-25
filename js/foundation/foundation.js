@@ -6,8 +6,6 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-/*jslint unparam: true, browser: true, indent: 2 */
-
 // Accommodate running jQuery in noConflict() mode by
 // using an anonymous function to redefine the $ shorthand name.
 // See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
@@ -176,8 +174,7 @@ if (typeof jQuery === "undefined" &&
         };
       },
 
-      // parses data-options attribute on nodes and turns
-      // them into an object
+      // parses data-options attribute
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr, opts_len,
             data_options = el.data('options');

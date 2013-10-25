@@ -28,9 +28,7 @@
       });
     },
 
-    off : function () {
-    },
-
+    off : function () {},
     reflow : function () {}
   };
 }(jQuery, this, this.document));
