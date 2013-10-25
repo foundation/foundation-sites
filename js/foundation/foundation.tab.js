@@ -16,6 +16,17 @@
     },
 
     events : function () {
+      $(this.scope).on('click', '[data-tab] a', function (e) {
+        e.preventDefault();
+
+        var tab = $(this).parent(),
+            target = $('#' + this.href.split('#')[1]),
+            siblings = $(this).parent().siblings();
+
+        tab.addClass('active');
+        siblings.removeClass('active');
+        target.siblings().removeClass('active').end().addClass('active');
+      });
     },
 
     off : function () {
