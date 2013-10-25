@@ -7,7 +7,6 @@
     version : '5.0.0',
 
     settings : {
-      // selector : '.has-tip',
       additional_inheritable_classes : [],
       tooltip_class : '.tooltip',
       append_to: 'body',
