@@ -1,7 +1,7 @@
 $panel-bg-color: #FAFAFA;
 
 .sidebar {
-  background: $panel-bg-color;
+  background: $panel-bg-color; padding: 32px 20px; margin-right: 16px;
 }
 .sidebar.fixed,
 [data-magellan-expedition] {
@@ -12,33 +12,40 @@ $panel-bg-color: #FAFAFA;
 
 }
 .side-nav .heading { text-transform: uppercase; }
-[data-magellan-expedition] { padding:0 !important; }
-.side-nav li a,
-.side-nav .heading,
-.sidebar form {
-  padding: 4px 20px;
+
+.side-nav li a {
+  padding: 0;
 }
 
-// .side-nav li.divider { margin: 11px 20px; }
+.side-nav .heading,
+.sidebar form {
+  padding: 2px 0px;
+}
+
+.side-nav li.divider { margin: 16px 0px; }
 
 .sidebar {
   #{headings(all)} {
-    padding: 4px 20px;
+    padding: 4px 0px;
     font-size: em-calc(14);
   }
 }
-.sidebar .button { margin: 0 20px 20px; }
+.sidebar .download.button { 
+  margin: 10px 0px;
+  font-size: 1em;
+}
 
+/*
 .sidebar .side-nav {
   overflow-y: scroll;
   height: 600px;
 
 }
-.side-nav li.active a,
-.side-nav li a:hover {
-  border-left: 3px solid darken($secondary-color, 20%);
-  padding-left: 17px;
+*/
+.sidebar .label {
+	background: #ddd; border-radius: $global-radius; color: #777; margin-left: 5px;
 }
+
 [data-magellan-expedition] {
 }
 .sidebar form { margin-bottom: 0; }
@@ -53,8 +60,8 @@ $panel-bg-color: #FAFAFA;
   }
 }
 
-.zurb-jobs {
-  padding: 0 20px 200px;
+#jobs {
+/*
   h6 {
     padding:0;
     font-size: 12px;
@@ -62,16 +69,25 @@ $panel-bg-color: #FAFAFA;
     font-weight: 300;
     margin-bottom: 8px;
   }
+*/
   ul {
+  	margin-left: 0; 
     list-style: none;
     li { margin-bottom: 10px;}
   }
+  .positionTitle {
+	font-size: 14px;
+  }
   .location {
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
   }
+  #via { 
+  font-size: 12px; 
+  color: #333;}
 }
+
 .fader {
   display: block;
   position: fixed;
