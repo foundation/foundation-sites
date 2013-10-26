@@ -38,6 +38,15 @@ body {
   max-width: emCalc(1440);
 }
 
+h3, h4, h5 { margin-top: 30px; }
+
+.top30 { margin-top: 30px; }
+.top20 { margin-top: 20px; }
+.bottom30 { margin-top: 30px; }
+.bottom20 { margin-top: 20px; }
+
+hr.dashed { border-style: dashed; }
+
 // Docs Components
 @import
   "syntax-highlighting",
@@ -49,7 +58,13 @@ body {
 // Docs Styles
 
 .section-header {
-  padding: 24px 0;
+  h1 { border-bottom: 1px solid #ddd; }
+  ul.inline-list { 
+  	display: inline-block;
+  	position: absolute;
+  	top: 47px;
+  	right: 0.9375em; 
+  }
 }
 
 .easel {
@@ -81,12 +96,13 @@ body {
 
 .options-bg {
   padding: 18px;
-  background-color: darken($panel-bg-color, 2%);
-  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  background-color: darken($panel-bg-color, 0%);
+  @include border(solid, 1px, darken($panel-bg-color, 4%));
   border-radius: 4px;
   ul {
-    margin-left: 30px;
+    margin-left: 20px;
   }
+  dt { color: #008080; }
 }
 
 .options-code-container {
@@ -115,11 +131,11 @@ body {
 
 .code-container .button {
   position: absolute;
-  top: 25px;
+  top: 10px;
   right: 10px;
 }
 
-#masthead { @include grid-row; @include panel;
+#masthead { @include grid-row; @include panel; max-width: none;
   hgroup { @include grid-column(4); }
   section { @include grid-column(8); }
 }
