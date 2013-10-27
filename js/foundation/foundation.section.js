@@ -116,8 +116,7 @@
           section = region.parent(),
           settings = $.extend({}, self.settings, self.data_options(section));
 
-      return !settings.one_up; //&& 
-        //(self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))
+      return !settings.one_up;
     },
 
     should_show_one: function(section) {
