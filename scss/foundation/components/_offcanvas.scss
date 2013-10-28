@@ -1,0 +1,140 @@
+html, body { height: 100%; }
+
+body {  }
+
+// Wrap visible content and prevent scroll bars
+#outer-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+// Main content area that moves to reveal the off-canvas nav
+#inner-wrap {
+    position: relative;
+    width: 100%;
+    top:0;
+    bottom:0;
+}
+
+$off-canvas-width: 250px;
+
+// NAV BAR
+nav#main-nav {
+  // Remove transition flicker on phones
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  * { -webkit-transform: translate3d(0,0,0); }
+
+
+  // base styles
+  background: #222;
+  color: #FFF;
+  height: 60px;
+  padding: 0 20px;
+
+  // below #back link
+  position: relative;
+  z-index: 999;
+
+
+  // a, #{headings(all)} { 
+  //  color: #FFF;
+  //  margin: 0; 
+  // }
+
+  ul.title {
+    // base styles 
+    margin: 0; 
+    min-height: 60px;
+    line-height: 60px;
+    li { display: inline-block; }
+  }
+
+  // menu button
+  a.menu-icon { font-size: $h4-font-size; }
+
+}
+
+
+body#off-canvas {
+
+  #inner-wrap {
+    transition: -webkit-transform 500ms ease;
+
+    
+    
+  }
+
+  #off-canvas-content {
+    $off-canvas-bg: #111;
+
+    // Remove transition flicker on phones
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    * { -webkit-transform: translate3d(0,0,0); }
+
+    -webkit-transform: translate3d(-100%,-60px,0);
+    
+    width: $off-canvas-width;
+    // top:0;
+    min-height: 480px;
+    height: 100%;
+    position: absolute;
+
+    // base styles
+    // @include box-shadow(inset -4px 0 4px #000);
+    padding: 15px;
+    background-color: $off-canvas-bg;
+
+    // crazy thing to have part of the sidebar render invisibly in the viewport, eliminating the flicker of the bg color 
+    &::after {
+      content:"";
+      position: absolute;
+      display: block;
+      background: transparent;
+      top:0;
+      width: 10px;
+      height:1px;
+      right: -5px;
+    }
+
+    z-index: 1001;
+
+
+
+  }
+
+  &:target {
+    #inner-wrap {
+      -webkit-transform: translateX($off-canvas-width);
+
+    }
+    #off-canvas-content {
+      
+      background: #111;
+    }
+
+    a#back {
+      cursor: default;
+      // fill the screen 
+      display: block;
+      position: absolute;
+      background: rgba(red, 0.2);
+      top: -20em;
+      bottom: -20em;
+      left:0;
+      right:0;
+      z-index: 1000;
+
+    }
+  }
+
+}
+
+.main-section {
+  // Remove transition flicker on phones
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  * { -webkit-transform: translate3d(0,0,0); }
+}
