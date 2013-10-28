@@ -176,35 +176,29 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
   <thead>
     <tr>
       <th>Event</th>
-      <th>Params</th>
       <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>open.clearing.fndtn</td>
-      <td>event, thumb-id</td>
-      <td>Fires before a thumbnail is expanded. The <code>thumb-id</code> parameter contains the thumbnail id.</td>
+      <td>Fires when the visible image panel is to be opened.</td>
     </tr>
     <tr>
       <td>opened.clearing.fndtn</td>
-      <td>event</td>
-      <td>Fires after an expanded image has opened.</td>
+      <td>Fires when the visible image panel has opened.</td>
     </tr>
     <tr>
       <td>close.clearing.fndtn</td>
-      <td>event</td>
-      <td>Fires before a large image is closed</td>
+      <td>Fires when the visible image panel is to be closde</td>
     </tr>
     <tr>
       <td>closed.clearing.fndtn</td>
-      <td>event</td>
-      <td>Fires after a large image is closed</td>
+      <td>Fires when the visible image panel has closed</td>
     </tr>
     <tr>
     	<td>change.clearing.fndtn</td>
-    	<td>event</td>
-    	<td>Fires when the large image is changed using the arrows at the side</td>
+    	<td>Fires when the large image is opened or changed.</td>
     </tr>
   </tbody>
 </table>
@@ -222,8 +216,8 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
 </div>
 
 <script>
-$("div#myClearingEx").on("open.clearing.fndtn", function(event, id) {
-  console.info("About to open thumbnail with id " + id);
+$("div#myClearingEx").on("open.clearing.fndtn", function() {
+  console.info("About to open a large image");
 });
 </script>
 ', :html %>

@@ -85,12 +85,12 @@
       $(window).triggerHandler('resize.fndtn.section');
       $(window).triggerHandler('hashchange.fndtn.section');
     },
-    
+
     //close nav !one_up on click elsewhere
     close_navs: function(except_nav_with_title) {
       var self = Foundation.libs.section,
           navsToClose = $(self.settings.nav_selector)
-            .filter(function() { return !$.extend({}, 
+            .filter(function() { return !$.extend({},
               self.settings, self.data_options($(this))).one_up; });
 
       if (except_nav_with_title.length > 0) {
@@ -103,6 +103,38 @@
       }
       //close navs on click on title
       navsToClose.children(self.settings.region_selector).removeClass(self.settings.active_class);
+    },
+
+    supports_multi_expand: function(section) {
+      var self = Foundation.libs.section,
+        settings = $.extend({}, self.settings, self.data_options(section));
+      return self.is_accordion(section) && settings.multi_expand;
+    },
+
+    can_close: function(region) {
+      var self = Foundation.libs.section,
+          section = region.parent(),
+          settings = $.extend({}, self.settings, self.data_options(section));
+
+      return !settings.one_up;
+    },
+
+    should_show_one: function(section) {
+      var self = Foundation.libs.section,
+          settings = $.extend({}, self.settings, self.data_options(section));
+
+      return settings.one_up && !self.is_horizontal_nav(section) &&
+             !self.is_vertical_nav(section);
+    },
+
+    ensure_region_shown: function(section) {
+      var self = Foundation.libs.section,
+          settings = $.extend({}, self.settings, self.data_options(section)),
+          regions = section.children(self.settings.region_selector);
+
+      if(regions.filter("." + settings.active_class).length == 0) {
+        regions.filter(":visible").first().addClass(settings.active_class);
+      }
     },
 
     toggle_active: function(e) {
@@ -122,7 +154,7 @@
       e.stopPropagation(); //do not catch same click again on parent
 
       if (!region.hasClass(self.settings.active_class)) {
-        if (!self.is_accordion(section) || (self.is_accordion(section) && !self.settings.multi_expand)) {
+        if (!self.supports_multi_expand(section)) {
           prev_active_region.removeClass(self.settings.active_class);
           prev_active_region.trigger('closed.fndtn.section');
         }
@@ -130,7 +162,11 @@
         //force resize for better performance (do not wait timer)
         self.resize(region.find(self.settings.section_selector).not("[" + self.settings.resized_data_attr + "]"), true);
         region.trigger('opened.fndtn.section');
-      } else if (region.hasClass(self.settings.active_class) && self.is_accordion(section) || !settings.one_up && (self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))) {
+      } else if (self.can_close(region)) {
+        e.preventDefault();
+        if(settings.deep_linking) {
+          window.location.hash = '';
+        }
         region.removeClass(self.settings.active_class);
         region.trigger('closed.fndtn.section');
       }
@@ -143,19 +179,19 @@
     //sections:
     //  selected sections to resize, are defined on resize forced by visibility changes
     //ensure_has_active_region:
-    //  is true when we force resize for no resized sections that were hidden and became visible, 
+    //  is true when we force resize for no resized sections that were hidden and became visible,
     //  these sections can have no selected region, because all regions were hidden along with section on executing set_active_from_hash
     resize: function(sections, ensure_has_active_region) {
 
       var self = Foundation.libs.section,
           section_container = $(self.settings.section_selector),
-          is_small_window = self.small(section_container),
+          is_small_window = !matchMedia(Foundation.media_queries['small']).matches,
           //filter for section resize
           should_be_resized = function (section, now_is_hidden) {
-            return !self.is_accordion(section) && 
-              !section.is("[" + self.settings.resized_data_attr + "]") && 
-              (!is_small_window || self.is_horizontal_tabs(section)) && 
-              now_is_hidden === (section.css('display') === 'none' || 
+            return !self.is_accordion(section) &&
+              !section.is("[" + self.settings.resized_data_attr + "]") &&
+              (!is_small_window || self.is_horizontal_tabs(section)) &&
+              now_is_hidden === (section.css('display') === 'none' ||
               !section.parent().is(':visible'));
           };
 
@@ -176,13 +212,11 @@
             content = regions.children(self.settings.content_selector),
             titles_max_height = 0;
 
-          if (ensure_has_active_region && 
-            section.children(self.settings.region_selector).filter("." + self.settings.active_class).length == 0) {
+          if (ensure_has_active_region) {
             var settings = $.extend({}, self.settings, self.data_options(section));
 
-            if (!settings.deep_linking && (settings.one_up || !self.is_horizontal_nav(section) &&
-              !self.is_vertical_nav(section) && !self.is_accordion(section))) {
-                regions.filter(":visible").first().addClass(self.settings.active_class);
+            if (self.should_show_one(section)) {
+                self.ensure_region_shown(section);
             }
           }
 
@@ -317,7 +351,7 @@
     is_vertical_tabs: function(el) {
       return /vertical-tabs/i.test(el.data('section'));
     },
-    
+
     is_auto: function (el) {
       var data_section = el.data('section');
       return data_section === '' || /auto/i.test(data_section);
@@ -328,60 +362,35 @@
           hash = window.location.hash.substring(1),
           sections = $(self.settings.section_selector);
 
-      var selectedSection;
-      
       sections.each(function() {
           var section = $(this),
-          regions = section.children(self.settings.region_selector);
+              settings = $.extend({}, self.settings, self.data_options(section)),
+              set_active_from_hash = settings.deep_linking && hash.length > 0,
+              selected = false,
+              nonmatched = [],
+              regions = section.children(self.settings.region_selector);
           regions.each(function() {
             var region = $(this),
             data_slug = "^" + region.children(self.settings.content_selector).data('slug') + "$";
-            if (new RegExp(data_slug, 'i').test(hash)) {
-              selectedSection=section;
-              return false;
-              }
+            if (!selected && new RegExp(data_slug, 'i').test(hash)) {
+              selected = true;
+              region.addClass(self.settings.active_class);
+            } else if (!settings.multi_expand) {
+              nonmatched.push(region);
+            }
           });
-          
-          if (selectedSection != null) {
+
+          if (selected) {
+            while(region = nonmatched.pop()) {
+              region.removeClass(self.settings.active_class);
+            }
             return false;
+          } else {
+            if (self.should_show_one(section)) {
+              self.ensure_region_shown(section);
+            }
           }
       });
-      
-      if (selectedSection != null) {
-        sections.each(function() {
-          if (selectedSection == $(this)) {
-            var section = $(this),
-                settings = $.extend({}, self.settings, self.data_options(section)),
-                regions = section.children(self.settings.region_selector),
-                set_active_from_hash = settings.deep_linking && hash.length > 0,
-                selected = false;
-    
-            regions.each(function() {
-              var region = $(this);
-    
-              if (selected) {
-                region.removeClass(self.settings.active_class);
-              } else if (set_active_from_hash) {
-                var data_slug = "^" + region.children(self.settings.content_selector).data('slug') + "$";
-    
-                if (data_slug && new RegExp(data_slug, 'i').test(hash)) {
-                  if (!region.hasClass(self.settings.active_class))
-                    region.addClass(self.settings.active_class);
-                  selected = true;
-                } else {
-                  region.removeClass(self.settings.active_class);
-                }
-              } else if (region.hasClass(self.settings.active_class)) {
-                selected = true;
-              }
-            });
-    
-            if (!selected && (settings.one_up || !self.is_horizontal_nav(section) &&
-             !self.is_vertical_nav(section) && !self.is_accordion(section)))
-              regions.filter(":visible").first().addClass(self.settings.active_class);
-          }
-        });
-      }
     },
 
     reflow: function() {
@@ -392,8 +401,6 @@
     },
 
     small: function(el) {
-      var settings = $.extend({}, this.settings, this.data_options(el));
-
       if (this.is_horizontal_tabs(el)) {
         return false;
       }
