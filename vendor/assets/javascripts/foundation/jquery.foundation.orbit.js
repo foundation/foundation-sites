@@ -473,7 +473,7 @@
         if (thumbName) {
           $li
             .addClass('has-thumb')
-            .css({background: "url(" + this.options.bulletThumbLocation + thumbName + ") no-repeat"});;
+            .css({background: "url('" + this.options.bulletThumbLocation + thumbName + "') no-repeat"});;
         }
       }
       this.$bullets.append($li);
