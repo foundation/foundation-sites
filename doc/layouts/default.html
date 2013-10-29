@@ -20,7 +20,11 @@
 
 
     {{> footer}}
-    <script src="{{assets}}/js/all.js"></script>
-    <script>$(document).foundation();</script>
+    <script src="{{assets}}/js/jquery.js"></script>
+    <script>
+    $.getScript("{{assets}}/js/all.js", function(){
+      $(document).foundation();
+    });
+    </script>
   </body>
 </html>

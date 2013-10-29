@@ -61,7 +61,8 @@ module.exports = function(grunt) {
       docs: {
         files: {
           'dist/docs/assets/js/custom.modernizr.js': ['js/vendor/custom.modernizr.js'],
-          'dist/docs/assets/js/all.js': ['js/vendor/jquery.js', 'js/vendor/fastclick.js', 'js/foundation/foundation.js', 'js/foundation/foundation.*.js', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/jquery.js': ['js/vendor/jquery.js'],
+          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/foundation/foundation.js', 'js/foundation/foundation.*.js', 'doc/assets/js/docs.js']
         }
       }
     },
