@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   var manifest = require('./manifest.json');
   var hljs = require('highlight.js');
+  hljs.LANGUAGES['scss'] = require('./js/vendor/scss.js')(hljs);
 
   grunt.initConfig({
 
@@ -13,8 +14,10 @@ module.exports = function(grunt) {
           gfm: true,
           sanitize: true,
           highlight: function(code, lang) {
-            // return hljs.highlight(code, lang).value;
-            return hljs.highlightAuto(code).value;
+            if (lang === 'html') lang = 'xml';
+            // if (lang === 'scss') lang = 'scss';
+            if (lang === 'js') lang = 'javascript';
+            return hljs.highlight(lang, code).value;
           }
         }
       },

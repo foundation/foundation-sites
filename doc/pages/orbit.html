@@ -47,7 +47,7 @@
       <p>Building Orbit is pretty simple using our HTML classes and structure; you'll just need to write the markup, find some images or text, fire up the Javascript and you'll be ready to go. On touch-enabled devices, Orbit has swipe functionality that makes it easy to switch slides. On screens without touch interfaces, you'll see bullet and arrow navigation if you have the options setup in your JS. Here's markup structure for Orbit:</p>
       <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <ul data-orbit>
   <li>
     <img src="http://placehold.it/1000x500" alt="Orbit Image 1" />
@@ -71,7 +71,7 @@
       <div class="code-container">
 
 {{#markdown}}
-```xml
+```html
 <!-- Orbit Container -->
 <div class="orbit-container">
   <ul data-orbit="" class="orbit-slides-container">
@@ -182,7 +182,7 @@
 
       <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <ul data-orbit>
   <li data-orbit-slide="headline-1">
     <h2>Headline 1</h2>
@@ -220,7 +220,7 @@
       <p>We've cleaned up how Orbit initializes by adding a wrapper feature that stops the ugly flash of unstyled content. Here's the markup needed:</p>
       <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <div class="slideshow-wrapper">
   <ul id="featured2" data-orbit>
     <!-- Orbit slides -->
@@ -233,7 +233,7 @@
       <p>To add the preloader, simply include a <code>div class="preloader"</code> right inside the wrapper, like so:</p>
       <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <div class="slideshow-wrapper">
   <div class="preloader"></div>
   <ul data-orbit>
@@ -305,7 +305,7 @@ $preloader-class: "preloader";
       <p>Just add <code>foundation.orbit.js</code> AFTER the </p>
       <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <body>
 
   ...
@@ -337,7 +337,7 @@ $preloader-class: "preloader";
       <p>Then, you'll need to add a <kbd>data-orbit</kbd> data attribute to make the JS work properly on that element. That looks like:</p>
       <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <ul class="data-orbit">
   ...
 </ul>
@@ -388,7 +388,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
 $(document).foundation('orbit', {
 ```
 {{/markdown}}
@@ -404,7 +404,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   animation: 'fade',
 ```
 {{/markdown}}
@@ -420,7 +420,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   timer_speed: 10000,
 ```
 {{/markdown}}
@@ -436,7 +436,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   pause_on_hover: true,
 ```
 {{/markdown}}
@@ -452,7 +452,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   resume_on_mouseout: false,
 ```
 {{/markdown}}
@@ -468,7 +468,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   animation_speed: 500,
 ```
 {{/markdown}}
@@ -484,7 +484,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   stack_on_small: true,
 ```
 {{/markdown}}
@@ -500,7 +500,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   navigation_arrows: true,
 ```
 {{/markdown}}
@@ -516,7 +516,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   slide_number: true,
 ```
 {{/markdown}}
@@ -532,7 +532,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   container_class: 'orbit-container',
 ```
 {{/markdown}}
@@ -548,7 +548,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   container_class: 'stack_on_small_class',
 ```
 {{/markdown}}
@@ -565,7 +565,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   next_class: 'orbit-next',
 ```
 {{/markdown}}
@@ -582,7 +582,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   prev_class: 'orbit-prev',
 ```
 {{/markdown}}
@@ -599,7 +599,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   timer_container_class: 'orbit-timer',
 ```
 {{/markdown}}
@@ -616,7 +616,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   timer_paused_class: 'paused',
 ```
 {{/markdown}}
@@ -633,7 +633,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   timer_progress_class: 'orbit-progress',
 ```
 {{/markdown}}
@@ -650,7 +650,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   slides_container_class: 'orbit-slides-container',
 ```
 {{/markdown}}
@@ -667,7 +667,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   bullets_container_class: 'orbit-bullets',
 ```
 {{/markdown}}
@@ -683,7 +683,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   bullets_active_class: 'active',
 ```
 {{/markdown}}
@@ -699,7 +699,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   slide_number_class: 'orbit-slide-number',
 ```
 {{/markdown}}
@@ -715,7 +715,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   caption_class: 'orbit-caption',
 ```
 {{/markdown}}
@@ -731,7 +731,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   active_slide_class: 'active',
 ```
 {{/markdown}}
@@ -747,7 +747,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   orbit_transition_class: 'orbit-transitioning',
 ```
 {{/markdown}}
@@ -763,7 +763,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   bullets: true,
 ```
 {{/markdown}}
@@ -779,7 +779,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   timer: true,
 ```
 {{/markdown}}
@@ -795,7 +795,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   next_on_click: false,
 ```
 {{/markdown}}
@@ -811,7 +811,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   variable_height: false,
 ```
 {{/markdown}}
@@ -827,7 +827,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   before_slide_change: function() {}
 ```
 {{/markdown}}
@@ -843,7 +843,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <div class="half-grid">
 {{#markdown}}
-```javascript
+```js
   after_slide_changes: function() {}
 ```
 {{/markdown}}
@@ -860,7 +860,7 @@ $(document).foundation('orbit', {
     <section class="full-grid">
       <p>Starting in 4.0.7 you can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>css style</code> property</p>
 {{#markdown}}
-```xml
+```html
 <ul data-orbit data-options="timer_speed:2500; bullets:false;">
   ...
 </ul>
@@ -877,7 +877,7 @@ $(document).foundation('orbit', {
       <h5 class="subheader">JavaScript</h5>
       <div class="code-container">
 {{#markdown}}
-```javascript
+```js
 $(document).foundation('orbit', {
   animation: 'slide',
   timer_speed: 1000,
@@ -944,7 +944,7 @@ $(document).foundation('orbit', {
   <div class="row">
     <section class="half-grid">
 {{#markdown}}
-```
+```js
 orbit:ready
 ```
 {{/markdown}}
@@ -960,7 +960,7 @@ orbit:ready
   <div class="row">
     <section class="half-grid">
 {{#markdown}}
-```
+```js
 orbit:before-slide-change
 ```
 {{/markdown}}
@@ -976,7 +976,7 @@ orbit:before-slide-change
   <div class="row">
     <section class="half-grid">
 {{#markdown}}
-```
+```js
 orbit:after-slide-change
 ```
 {{/markdown}}
@@ -992,7 +992,7 @@ orbit:after-slide-change
   <div class="row">
     <section class="half-grid">
 {{#markdown}}
-```
+```js
 orbit:after-slide-change
 ```
 {{/markdown}}
@@ -1008,7 +1008,7 @@ orbit:after-slide-change
   <div class="row">
     <section class="half-grid">
 {{#markdown}}
-```
+```js
 orbit:timer-started
 ```
 {{/markdown}}
@@ -1024,7 +1024,7 @@ orbit:timer-started
   <div class="row">
     <section class="half-grid">
 {{#markdown}}
-```
+```js
 orbit:timer-stopped
 ```
 {{/markdown}}
@@ -1045,7 +1045,7 @@ orbit:timer-stopped
       <p>Here's an example of how you can bind to these events:</p>
       <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <ul id="featured1" data-orbit>
   <li>
     <img src="../img/demos/demo1.jpg" />
