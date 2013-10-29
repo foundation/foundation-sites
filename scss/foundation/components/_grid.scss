@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -183,49 +185,50 @@ $total-columns: 12 !default;
   }
 }
 
+@include exports("grid") {
+  @if $include-html-grid-classes {
+    .row {
+      @include grid-row;
 
-@if $include-html-grid-classes {
-  .row {
-    @include grid-row;
+      &.collapse {
+         > .column,
+         > .columns { @include grid-column($collapse:true); }
 
-    &.collapse {
-       > .column,
-       > .columns { @include grid-column($collapse:true); }
-
-      .row {margin-left:0; margin-right:0;}
-    }
-
-    .row { @include grid-row($behavior:nest);
-      &.collapse { @include grid-row($behavior:nest-collapse); }
-    }
-  }
-
-  .column,
-  .columns { @include grid-column($columns:$total-columns); }
-
-  @media #{$small-up} {
-    @include grid-html-classes($size:small);
-  }
-
-  @media #{$medium-up} {
-    @include grid-html-classes($size:medium);
-    // Old push and pull classes
-    @for $i from 1 through $total-columns - 1 {
-      .push#{-$i} {
-        @include grid-column($push:$i, $collapse:null, $float:false);
+        .row {margin-left:0; margin-right:0;}
       }
-      .pull#{-$i} {
-        @include grid-column($pull:$i, $collapse:null, $float:false);
+
+      .row { @include grid-row($behavior:nest);
+        &.collapse { @include grid-row($behavior:nest-collapse); }
       }
     }
-  }
-  @media #{$large-up} {
-    @include grid-html-classes($size:large);
-  }
-  @media #{$xlarge-up} {
-    @include grid-html-classes($size:xlarge);
-  }
-  @media #{$xxlarge-up} {
-    @include grid-html-classes($size:xxlarge);
+
+    .column,
+    .columns { @include grid-column($columns:$total-columns); }
+
+    @media #{$small-up} {
+      @include grid-html-classes($size:small);
+    }
+
+    @media #{$medium-up} {
+      @include grid-html-classes($size:medium);
+      // Old push and pull classes
+      @for $i from 1 through $total-columns - 1 {
+        .push#{-$i} {
+          @include grid-column($push:$i, $collapse:null, $float:false);
+        }
+        .pull#{-$i} {
+          @include grid-column($pull:$i, $collapse:null, $float:false);
+        }
+      }
+    }
+    @media #{$large-up} {
+      @include grid-html-classes($size:large);
+    }
+    @media #{$xlarge-up} {
+      @include grid-html-classes($size:xlarge);
+    }
+    @media #{$xxlarge-up} {
+      @include grid-html-classes($size:xxlarge);
+    }
   }
 }

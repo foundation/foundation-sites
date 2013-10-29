@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -34,16 +36,15 @@ $dropdown-mobile-default-float: 0 !default;
 // We use this to control the styles for when the dropdown has custom content.
 $f-dropdown-content-padding: em-calc(20) !default;
 
-// @MIXINS
 //
-// Dropdown Mixins
+// @mixins
+//
 //
 // NOTE: Make default max-width change between list and content types. Can add more width with classes, maybe .small, .medium, .large, etc.;
 // We use this to style the dropdown container element.
 // $content-list - Sets list-style. Default: list. Options: [list, content]
 // $triangle - Sets if dropdown has triangle. Default:true.
 // $max-width - Default: $f-dropdown-max-width || 200px.
-
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
   position: absolute;
   top: -9999px;
@@ -127,31 +128,32 @@ $f-dropdown-content-padding: em-calc(20) !default;
   }
 }
 
+@include exports("dropdown") {
+  @if $include-html-button-classes {
 
-@if $include-html-button-classes {
-
-  @media #{$small-only} {
-    .f-dropdown {
-      max-width: 100%;
-      #{$default-float}: $dropdown-mobile-default-float;
+    @media #{$small-only} {
+      .f-dropdown {
+        max-width: 100%;
+        #{$default-float}: $dropdown-mobile-default-float;
+      }
     }
+
+    /* Foundation Dropdowns */
+    .f-dropdown {
+      @include dropdown-container(list);
+      // max-width: none;
+
+      li { @include dropdown-style; }
+
+      // You can also put custom content in these dropdowns
+      &.content { @include dropdown-container(content, $triangle:false); }
+
+      // Sizes
+      &.tiny    { max-width: 200px; }
+      &.small   { max-width: 300px; }
+      &.medium  { max-width: 500px; }
+      &.large   { max-width: 800px; }
+    }
+
   }
-
-  /* Foundation Dropdowns */
-  .f-dropdown {
-    @include dropdown-container(list);
-    // max-width: none;
-
-    li { @include dropdown-style; }
-
-    // You can also put custom content in these dropdowns
-    &.content { @include dropdown-container(content, $triangle:false); }
-
-    // Sizes
-    &.tiny    { max-width: 200px; }
-    &.small   { max-width: 300px; }
-    &.medium  { max-width: 500px; }
-    &.large   { max-width: 800px; }
-  }
-
 }

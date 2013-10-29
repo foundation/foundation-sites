@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -126,18 +128,19 @@ $price-cta-padding: em-calc(20 20 0) !default;
   padding: $price-cta-padding;
 }
 
+@include exports("pricing-table") {
+  @if $include-html-pricing-classes {
 
-@if $include-html-pricing-classes {
+    /* Pricing Tables */
+    .pricing-table {
+      @include pricing-table-container;
 
-  /* Pricing Tables */
-  .pricing-table {
-    @include pricing-table-container;
+      .title { @include pricing-table-title; }
+      .price { @include pricing-table-price; }
+      .description { @include pricing-table-description; }
+      .bullet-item { @include pricing-table-bullet; }
+      .cta-button { @include pricing-table-cta; }
+    }
 
-    .title { @include pricing-table-title; }
-    .price { @include pricing-table-price; }
-    .description { @include pricing-table-description; }
-    .bullet-item { @include pricing-table-bullet; }
-    .cta-button { @include pricing-table-cta; }
   }
-
 }

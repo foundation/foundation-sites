@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -44,28 +46,30 @@ $progress-meter-alert-color: $alert-color !default;
 }
 
 
-@if $include-html-media-classes {
+@include exports("progress-bar") {
+  @if $include-html-media-classes {
 
-  /* Progress Bar */
-  .progress {
-    @include progress-container;
+    /* Progress Bar */
+    .progress {
+      @include progress-container;
 
-    // Meter
-    .meter {
-      @include progress-meter;
-    }
-    &.secondary .meter { @include progress-meter($bg:$progress-meter-secondary-color); }
-    &.success .meter { @include progress-meter($bg:$progress-meter-success-color); }
-    &.alert .meter { @include progress-meter($bg:$progress-meter-alert-color); }
+      // Meter
+      .meter {
+        @include progress-meter;
+      }
+      &.secondary .meter { @include progress-meter($bg:$progress-meter-secondary-color); }
+      &.success .meter { @include progress-meter($bg:$progress-meter-success-color); }
+      &.alert .meter { @include progress-meter($bg:$progress-meter-alert-color); }
 
-    &.radius { @include radius($global-radius);
-      .meter { @include radius($global-radius - 1); }
-    }
+      &.radius { @include radius($global-radius);
+        .meter { @include radius($global-radius - 1); }
+      }
 
-    &.round { @include radius(1000px);
-      .meter { @include radius(999px); }
+      &.round { @include radius(1000px);
+        .meter { @include radius(999px); }
+      }
+
     }
 
   }
-
 }

@@ -1,3 +1,7 @@
+@import "global";
+@import "buttons";
+
+
 //
 // Button Group Variables
 //
@@ -65,25 +69,23 @@ $button-bar-margin-opposite: em-calc(10) !default;
 
 }
 
+@include exports("button-group") {
+  @if $include-html-button-classes {
+    .button-group { @include button-group-container;
 
-@if $include-html-button-classes {
+      &> * { @include button-group-style(); }
 
-  /* Button Groups */
-  .button-group { @include button-group-container;
+      &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
+      &.round > * { @include button-group-style($radius:$button-round, $float:null); }
 
-    &> * { @include button-group-style(); }
+      @for $i from 2 through 8 {
+        &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
+      }
+    }
 
-    &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
-    &.round > * { @include button-group-style($radius:$button-round, $float:null); }
-
-    @for $i from 2 through 8 {
-      &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
+    .button-bar {
+      @include clearfix;
+      .button-group { @include button-group-container($styles:false,$float:true); }
     }
   }
-
-  .button-bar {
-    @include clearfix;
-    .button-group { @include button-group-container($styles:false,$float:true); }
-  }
-
 }

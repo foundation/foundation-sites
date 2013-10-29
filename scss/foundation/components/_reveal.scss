@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @name _reveal.scss
 // @dependencies _global.scss
@@ -129,33 +131,35 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   cursor: $cursor-pointer-value;
 }
 
-@if $include-html-reveal-classes {
+@include exports("reveal") {
+  @if $include-html-reveal-classes {
 
-  // Reveal Modals
-  .reveal-modal-bg { @include reveal-bg; }
-
-  .#{$reveal-modal-class} {
-    @include reveal-modal-base;
-    @include reveal-modal-style;
-
-    .#{$close-reveal-modal-class} { @include reveal-close; }
-  }
-
-  @media #{$medium-up} {
+    // Reveal Modals
+    .reveal-modal-bg { @include reveal-bg; }
 
     .#{$reveal-modal-class} {
-      @include reveal-modal-style(false, em-calc(30), false, $box-shadow: false, $top-offset: em-calc(100));
+      @include reveal-modal-base;
+      @include reveal-modal-style;
 
-      &.tiny  { @include reveal-modal-base(false, 30%); }
-      &.small { @include reveal-modal-base(false, 40%); }
-      &.medium  { @include reveal-modal-base(false, 60%); }
-      &.large { @include reveal-modal-base(false, 70%); }
-      &.xlarge { @include reveal-modal-base(false, 95%); }
+      .#{$close-reveal-modal-class} { @include reveal-close; }
     }
-  }
 
-  // Reveal Print Styles
-  @media print {
-    .#{$reveal-modal-class} {background: #fff !important;}
+    @media #{$medium-up} {
+
+      .#{$reveal-modal-class} {
+        @include reveal-modal-style(false, em-calc(30), false, $box-shadow: false, $top-offset: em-calc(100));
+
+        &.tiny  { @include reveal-modal-base(false, 30%); }
+        &.small { @include reveal-modal-base(false, 40%); }
+        &.medium  { @include reveal-modal-base(false, 60%); }
+        &.large { @include reveal-modal-base(false, 70%); }
+        &.xlarge { @include reveal-modal-base(false, 95%); }
+      }
+    }
+
+    // Reveal Print Styles
+    @media print {
+      .#{$reveal-modal-class} {background: #fff !important;}
+    }
   }
 }

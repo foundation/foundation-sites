@@ -1,1 +1,5 @@
-// Accordion Styles Go Here
+@import "global";
+
+@include exports("accordion") {
+
+}
