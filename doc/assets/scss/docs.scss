@@ -110,13 +110,9 @@ hr.dashed { border-style: dashed; }
   dt { color: #008080; }
 }
 
-.options-code-container {
-  .code-container {
-    background-color: darken($panel-bg-color, 2%);
-  }
-}
-
 .code-container {
+  background-color: darken($panel-bg-color, 2%);
+  overflow-x:auto;
   position: relative;
   @include border(solid, 1px, darken($panel-bg-color, 4%));
   border-radius: 3px;
