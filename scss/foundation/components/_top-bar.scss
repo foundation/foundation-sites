@@ -251,7 +251,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
     .divider,
     [role="separator"] {
       border-bottom: $topbar-divider-border-bottom;
-      border-top: $topbar-divider-border-top;
       clear: both;
       height: 1px;
       width: 100%;
@@ -269,57 +268,54 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         font-weight: $topbar-link-weight;
         background: $topbar-dropdown-bg;
         
+        // Apply the hover link color when it has that class
+	      &:hover > a {
+	        background: $topbar-link-bg-hover;
+	        color: $topbar-link-color-hover;
+	        box-shadow: inset 0 -4px darken($topbar-link-bg-hover, 10%);
+	
+	      }
+
+		// Apply the active link color when it has that class
+	      &.active > a {
+	        background: $topbar-link-bg-active;
+	        color: $topbar-link-color-active;
+	        box-shadow: inset 0 -4px darken($primary-color, 10%);
+			&:hover {
+	            background: $topbar-link-bg-active-hover;
+	        }
+	      }
+
         &.button {
           background: $primary-color;
           font-size: $topbar-link-font-size;
-           padding-right: $topbar-height / 3;
-           padding-left: $topbar-height / 3;
+          padding-right: $topbar-height / 3;
+          padding-left: $topbar-height / 3;
+          box-shadow: none; 
           &:hover {
-            background: darken($primary-color, 10%);
+            background: darken($primary-color, 5%); box-shadow: none; 
           }
         }
         &.button.secondary {
           background: $secondary-color;
           &:hover {
-            background: darken($secondary-color, 10%);
+            background: darken($secondary-color, 5%); box-shadow: none; 
           }
         }
         &.button.success {
           background: $success-color;
           &:hover {
-            background: darken($success-color, 10%);
+            background: darken($success-color, 5%); box-shadow: none; 
           }
         }
         &.button.alert {
           background: $alert-color;
           &:hover {
-            background: darken($alert-color, 10%);
+            background: darken($alert-color, 5%); box-shadow: none; 
           }
         }
-
       }
-
-      // Apply the hover link color when it has that class
-      &:hover > a {
-        background: $topbar-link-bg-hover;
-        color: $topbar-link-color-hover;
-        box-shadow: inset 0 -4px darken($topbar-link-bg-hover, 10%);
-
-      }
-
-      // Apply the active link color when it has that class
-      &.active > a {
-        background: $topbar-link-bg-active;
-        color: $topbar-link-color-active;
-        box-shadow: inset 0 -4px darken($primary-color, 10%);
-		&:hover {
-            background: $topbar-link-bg-active-hover;
-        }
-      }
-    }
-
-    // Add some extra padding for list items contains buttons
-    .has-form { padding: $topbar-height / 3; }
+   }
 
     // Styling for list items that have a dropdown within them.
     .has-dropdown {
@@ -450,7 +446,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           padding: 0 $topbar-height / 3;
           line-height: $topbar-height;
           background: $topbar-bg;
-          &:hover { background: $topbar-link-bg-hover; }
+          &:hover { background: $topbar-link-bg-hover; box-shadow: inset 0 -4px darken($topbar-link-bg-hover, 20%); }
         }
       }
 
@@ -526,7 +522,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         border-bottom: none;
         border-top: none;
         border-#{$opposite-direction}: $topbar-divider-border-bottom;
-        border-#{$default-float}: $topbar-divider-border-top;
         clear: none;
         height: $topbar-height;
         width: 0;
