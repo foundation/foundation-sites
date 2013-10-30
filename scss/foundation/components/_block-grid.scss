@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // Block Grid Variables
 //
@@ -61,20 +63,21 @@ $block-grid-media-queries: true !default;
   }
 }
 
-@if $include-html-grid-classes {
-  
-  [class*="block-grid-"] { @include block-grid; }
+@include exports("block-grid") {
+  @if $include-html-grid-classes {
+    
+    [class*="block-grid-"] { @include block-grid; }
 
-  @media #{$small-up} {
-    @include block-grid-html-classes($size:small);
-  }
+    @media #{$small-up} {
+      @include block-grid-html-classes($size:small);
+    }
 
-  @media #{$medium-up} {
-    @include block-grid-html-classes($size:medium);
-  }
+    @media #{$medium-up} {
+      @include block-grid-html-classes($size:medium);
+    }
 
-  @media #{$large-up} {
-    @include block-grid-html-classes($size:large);
+    @media #{$large-up} {
+      @include block-grid-html-classes($size:large);
+    }
   }
-  
 }

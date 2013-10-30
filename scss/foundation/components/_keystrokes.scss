@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -44,14 +46,12 @@ $keystroke-radius: $global-radius !default;
   padding: $keystroke-padding;
 }
 
-
-@if $include-html-type-classes  {
-
-  /* Keystroke Characters */
-  .keystroke,
-  kbd {
-    @include keystroke;
-    @include radius($keystroke-radius);
+@include exports("keystroke") {
+  @if $include-html-type-classes  {
+    .keystroke,
+    kbd {
+      @include keystroke;
+      @include radius($keystroke-radius);
+    }
   }
-
 }

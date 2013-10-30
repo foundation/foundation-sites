@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -80,22 +82,19 @@ $label-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial
   @include label-style($bg, $radius);
 }
 
+@include exports("label") {
+  @if $include-html-label-classes {
+    .label {
+      @include label-base;
+      @include label-size;
+      @include label-style;
 
-@if $include-html-label-classes {
+      &.radius { @include label-style(false, true); }
+      &.round { @include label-style(false, $radius:1000px); }
 
-  /* Labels */
-  .label {
-    @include label-base;
-    @include label-size;
-    @include label-style;
-
-
-    &.radius { @include label-style(false, true); }
-    &.round { @include label-style(false, $radius:1000px); }
-
-    &.alert     { @include label-style($alert-color); }
-    &.success   { @include label-style($success-color); }
-    &.secondary { @include label-style($secondary-color); }
+      &.alert     { @include label-style($alert-color); }
+      &.success   { @include label-style($success-color); }
+      &.secondary { @include label-style($secondary-color); }
+    }
   }
-
 }

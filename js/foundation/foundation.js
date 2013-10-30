@@ -6,8 +6,6 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-/*jslint unparam: true, browser: true, indent: 2 */
-
 // Accommodate running jQuery in noConflict() mode by
 // using an anonymous function to redefine the $ shorthand name.
 // See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
@@ -176,8 +174,7 @@ if (typeof jQuery === "undefined" &&
         };
       },
 
-      // parses data-options attribute on nodes and turns
-      // them into an object
+      // parses data-options attribute
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr, opts_len,
             data_options = el.data('options');
@@ -214,7 +211,6 @@ if (typeof jQuery === "undefined" &&
         return opts;
       },
 
-      // deprecated
       delay : function (fun, delay) {
         return setTimeout(fun, delay);
       },
@@ -265,26 +261,6 @@ if (typeof jQuery === "undefined" &&
         if (typeof method === 'string') {
           return this[method].call(this);
         }
-
-      },
-
-      globals_bound : function () {
-        // WARNING: Uses jQuery internal data method
-        //          to determine if events are bound,
-        //          this may be deprecated.
-        var events = $._data(document, 'events');
-
-        for (var type_collection in events) {
-          var collection = events[type_collection],
-              length = collection.length;
-          for (var i = 0; i < length; i++) {
-            if (new RegExp(this.name, 'i').test(collection[i].namespace)) {
-              return true;
-            }
-          }
-        }
-
-
       }
     }
   };

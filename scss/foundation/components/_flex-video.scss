@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -12,7 +14,7 @@ $flex-video-margin-bottom: em-calc(16) !default;
 $flex-video-widescreen-padding-bottom: 57.25% !default;
 
 //
-// @MIXIN
+// @mixins
 //
 
 @mixin flex-video-container {
@@ -38,9 +40,8 @@ $flex-video-widescreen-padding-bottom: 57.25% !default;
   }
 }
 
-@if $include-html-media-classes {
-
-  /* Flex Video */
-  .flex-video { @include flex-video-container; }
-
+@include exports("flex-video") {
+  @if $include-html-media-classes {
+    .flex-video { @include flex-video-container; }
+  }
 }

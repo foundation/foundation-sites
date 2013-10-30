@@ -8,27 +8,6 @@
 </header>
 
 <article class="section-content">
-
-	<div class="row">
-		<div class="full grid">
-			<a href="#" data-dropdown="drop" class="tiny button dropdown">Dropdown Button</a><br/>
-			<a href="#" data-dropdown="drop2" class="small secondary radius button dropdown">Dropdown Button</a><br/>
-			<a href="#" data-dropdown="drop3" class="button alert round dropdown">Dropdown Button</a><br/>
-			<a href="#" data-dropdown="drop3" class="button alert dropdown">Dropdown Button</a><br/>
-<a href="#" data-dropdown="drop4" class="large success button dropdown">Dropdown Button</a><br/>
-			<a href="#" class="tiny button split">Split Button <span data-dropdown="drop"></span></a><br/>
-			<a href="#" class="small secondary radius button split">Split Button <span data-dropdown="drop2"></span></a><br/>
-			<a href="#" class="button alert round split">Split Button <span data-dropdown="drop3"></span></a><br/>
-			<a href="#" class="button alert split">Split Button <span data-dropdown="drop3"></span></a><br/>
-			<a href="#" class="large success button split">Split Button <span data-dropdown="drop4"></span></a><br/>	
-			<ul class="button-group">
-	          <li><a href="#" class="button alert">Button 1</a></li>
-	          <li><a href="#" class="button alert">Button 2</a></li>
-	          <li><a href="#" class="button alert">Button 3</a></li>
-	        </ul>
-		</div>
-	</div>
-
   <div class="row">
     <section class="full-grid">
       <h3>Basic Grid</h3>
@@ -39,15 +18,15 @@
 
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
-  {{#markdown}}
-  ```xml
-    <div class="row">
-      <div class="column">...</div>
-      <div class="column">...</div>
-      <div class="column">...</div>
-    </div>
-  ```
-  {{/markdown}}
+{{#markdown}}
+```html
+<div class="row">
+  <div class="column">...</div>
+  <div class="column">...</div>
+  <div class="column">...</div>
+</div>
+```
+{{/markdown}}
   </div>
 
   <div class="row">
@@ -60,15 +39,15 @@
 
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
-  {{#markdown}}
-  ```xml
-    <div class="row">
-      <div class="small-2 large-4 columns">...</div>
-      <div class="small-4 large-4 columns">...</div>
-      <div class="small-6 large-4 columns">...</div>
-    </div>
-  ```
-  {{/markdown}}
+{{#markdown}}
+```html
+<div class="row">
+  <div class="small-2 large-4 columns">...</div>
+  <div class="small-4 large-4 columns">...</div>
+  <div class="small-6 large-4 columns">...</div>
+</div>
+```
+{{/markdown}}
   </div>
 
   <div class="row">
@@ -81,24 +60,24 @@
 
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
-  {{#markdown}}
-  ```xml
+{{#markdown}}
+```html
+<div class="row">
+  <div class="small-8 columns">8
     <div class="row">
-      <div class="small-8 columns">8
+      <div class="small-8 columns">8 Nested
         <div class="row">
-          <div class="small-8 columns">8 Nested
-            <div class="row">
-              <div class="small-8 columns">8 Nested Again</div>
-              <div class="small-4 columns">4</div>
-            </div>
-          </div>
+          <div class="small-8 columns">8 Nested Again</div>
           <div class="small-4 columns">4</div>
         </div>
       </div>
       <div class="small-4 columns">4</div>
     </div>
-  ```
-  {{/markdown}}
+  </div>
+  <div class="small-4 columns">4</div>
+</div>
+```
+{{/markdown}}
   </div>
 
   <div class="row">
@@ -111,15 +90,15 @@
 
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
-  {{#markdown}}
-  ```xml
-    <div class="row">
-      <div class="small-2 large-4 columns">...</div>
-      <div class="small-4 large-4 columns">...</div>
-      <div class="small-6 large-4 columns">...</div>
-    </div>
-  ```
-  {{/markdown}}
+{{#markdown}}
+```html
+<div class="row">
+  <div class="small-2 large-4 columns">...</div>
+  <div class="small-4 large-4 columns">...</div>
+  <div class="small-6 large-4 columns">...</div>
+</div>
+```
+{{/markdown}}
   </div>
 
   <div class="row">
@@ -132,22 +111,22 @@
 
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
-  {{#markdown}}
-  ```xml
-    <div class="row">
-      <div class="small-3 small-centered columns">3 centered</div>
-    </div>
-    <div class="row">
-      <div class="small-6 large-centered columns">6 centered</div>
-    </div>
-    <div class="row">
-      <div class="small-9 small-centered large-uncentered columns">9 centered</div>
-    </div>
-    <div class="row">
-      <div class="small-11 small-centered columns">11 centered</div>
-    </div>
-  ```
-  {{/markdown}}
+{{#markdown}}
+```html
+<div class="row">
+  <div class="small-3 small-centered columns">3 centered</div>
+</div>
+<div class="row">
+  <div class="small-6 large-centered columns">6 centered</div>
+</div>
+<div class="row">
+  <div class="small-9 small-centered large-uncentered columns">9 centered</div>
+</div>
+<div class="row">
+  <div class="small-11 small-centered columns">11 centered</div>
+</div>
+```
+{{/markdown}}
   </div>
 
   <div class="row">
@@ -160,8 +139,8 @@
 
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
-  {{#markdown}}
-  ```xml
+{{#markdown}}
+```html
 <div class="row">
   <div class="large-10 push-2 columns">10</div>
   <div class="large-2 pull-10 columns">2, last</div>
@@ -182,8 +161,8 @@
   <div class="large-6 push-6 columns">6</div>
   <div class="large-6 pull-6 columns">6, last</div>
 </div>
-  ```
-  {{/markdown}}
+```
+{{/markdown}}
   </div>
 
   <div class="row">
@@ -197,7 +176,7 @@
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
   {{#markdown}}
-  ```xml
+  ```html
     <div class="row">
       <div class="small-2 columns">2</div>
       <div class="small-10 columns">10, last</div>
@@ -221,7 +200,7 @@
   <div class="code-container">
     <a href="#" class="tiny primary button">Copy</a>
   {{#markdown}}
-  ```xml
+  ```html
     <div class="row">
       <div class="medium-2 columns">2</div>
       <div class="medium-10 columns">10, last</div>
@@ -243,9 +222,8 @@
     </section>
   </div>
 
-  {{!-- Begin mixins --}}
-
   <h3>Grid-row Mixin</h3>
+
   <div class="row">
     <section class="code">
       <h5 class="subheader">Code Example</h5>
@@ -281,11 +259,8 @@
     </section>
   </div>
 
-  {{!-- End Grid-row Mixin --}}
-
-  {{!-- Begin Grid-column Mixin --}}
-
   <h3>Grid-column Mixin</h3>
+
   <div class="row">
     <section class="code">
       <h5 class="subheader">Code Example</h5>
@@ -404,7 +379,7 @@
       <div class="options-code-container">
         <div class="code-container">
 {{#markdown}}
-```xml
+```html
 <header id="masthead">
   <hgroup>
     <h2>Title</h2>
@@ -438,5 +413,6 @@
       </header>
     </section>
   </div>
-  {{!-- End Grid-column Mixin --}}
+
+  <h3>TODO: media queries with mixins (using small and large with same class)</h3>
 </article>

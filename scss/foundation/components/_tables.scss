@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @name _tables.scss
 // @dependencies _global.scss
@@ -81,8 +83,11 @@ $table-margin-bottom: em-calc(20) !default;
   tfoot tr td { display: $table-display; line-height: $table-line-height; }
 }
 
-@if $include-html-table-classes {
-  table {
-    @include table;
+
+@include exports("table") {
+  @if $include-html-table-classes {
+    table {
+      @include table;
+    }
   }
 }

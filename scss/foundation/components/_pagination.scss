@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -125,23 +127,19 @@ $pagination-link-current-active-bg: $primary-color !default;
   }
 }
 
-@if $include-html-nav-classes {
-
-  // Detach the nested class selectors from the containing
-  // ul and div elements in order to support more flexibility
-  // for external code that uses the Sass mixins.
-
-  /* Default Pagination */
-  ul.pagination {
-    @include pagination;
-  }
-
-  /* Pagination centred wrapper */
-  .pagination-centered {
-    @include pagination-container(true);
-
+@include exports("pagination") {
+  @if $include-html-nav-classes {
     ul.pagination {
-      @include pagination(true, false);
+      @include pagination;
+    }
+
+    /* Pagination centred wrapper */
+    .pagination-centered {
+      @include pagination-container(true);
+
+      ul.pagination {
+        @include pagination(true, false);
+      }
     }
   }
 }

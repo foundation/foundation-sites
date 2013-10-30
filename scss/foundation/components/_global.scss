@@ -1,3 +1,11 @@
+$modules: () !default;
+@mixin exports($name) {
+  @if (index($modules, $name) == false) {
+    $modules: append($modules, $name);
+    @content;
+  }
+}
+
 //
 // Foundation Variables
 //
@@ -71,7 +79,6 @@ $em-base: 16px !default;
 //
 // Global Foundation Mixins
 //
-
 
 // @mixins
 //
@@ -321,22 +328,6 @@ $xxlarge-only: "only screen and (min-width:#{$xxlarge-up-screen}) and (max-width
 $medium: $medium-up;
 $large: $large-up;
 
-// Used to provide media query values for javascript components.
-meta.foundation-mq-small {
-  font-family: $small;
-  width: $small-screen;
-}
-
-meta.foundation-mq-medium {
-  font-family: $medium;
-  width: $medium-screen;
-}
-
-meta.foundation-mq-large {
-  font-family: $large;
-  width: $large-screen;
-}
-
 //We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
 $cursor-crosshair-value: crosshair !default;
 $cursor-default-value: default !default;
@@ -345,79 +336,97 @@ $cursor-help-value: help !default;
 $cursor-text-value: text !default;
 
 
-@if $include-html-global-classes {
-
-  // Set box-sizing globally to handle padding and border widths
-  *,
-  *:before,
-  *:after {
-    @include box-sizing(border-box);
+@include exports("global") {
+  // Used to provide media query values for javascript components.
+  meta.foundation-mq-small {
+    font-family: $small;
+    width: $small-screen;
   }
 
-  html,
-  body { font-size: $base-font-size; }
-
-  // Default body styles
-  body {
-    background: $body-bg;
-    color: $body-font-color;
-    padding: 0;
-    margin: 0;
-    font-family: $body-font-family;
-    font-weight: $body-font-weight;
-    font-style: $body-font-style;
-    line-height: 1; // Set to $base-line-height to take on browser default of 150%
-    position: relative;
-    cursor: $cursor-default-value;
+  meta.foundation-mq-medium {
+    font-family: $medium;
+    width: $medium-screen;
   }
 
-a:hover { cursor: $cursor-pointer-value; }
+  meta.foundation-mq-large {
+    font-family: $large;
+    width: $large-screen;
+  }
 
-  // Grid Defaults to get images and embeds to work properly
-  img,
-  object,
-  embed { max-width: 100%; height: auto; }
+  @if $include-html-global-classes {
 
-  object,
-  embed { height: 100%; }
-  img { -ms-interpolation-mode: bicubic; }
-
-  #map_canvas,
-  .map_canvas {
-    img,
-    embed,
-    object { max-width: none !important;
+    // Set box-sizing globally to handle padding and border widths
+    *,
+    *:before,
+    *:after {
+      @include box-sizing(border-box);
     }
+
+    html,
+    body { font-size: $base-font-size; }
+
+    // Default body styles
+    body {
+      background: $body-bg;
+      color: $body-font-color;
+      padding: 0;
+      margin: 0;
+      font-family: $body-font-family;
+      font-weight: $body-font-weight;
+      font-style: $body-font-style;
+      line-height: 1; // Set to $base-line-height to take on browser default of 150%
+      position: relative;
+      cursor: $cursor-default-value;
+    }
+
+  a:hover { cursor: $cursor-pointer-value; }
+
+    // Grid Defaults to get images and embeds to work properly
+    img,
+    object,
+    embed { max-width: 100%; height: auto; }
+
+    object,
+    embed { height: 100%; }
+    img { -ms-interpolation-mode: bicubic; }
+
+    #map_canvas,
+    .map_canvas {
+      img,
+      embed,
+      object { max-width: none !important;
+      }
+    }
+
+    // Miscellaneous useful HTML classes
+    .left         { float: left !important; }
+    .right        { float: right !important; }
+    .text-left    { text-align: left !important; }
+    .text-right   { text-align: right !important; }
+    .text-center  { text-align: center !important; }
+    .text-justify { text-align: justify !important; }
+    .hide         { display: none; }
+
+    // Font smoothing
+    // Antialiased font smoothing works best for light text on a dark background.
+    // Apply to single elements instead of globally to body.
+    // Note this only applies to webkit-based desktop browsers on the Mac.
+    .antialiased { -webkit-font-smoothing: antialiased; }
+
+    // Get rid of gap under images by making them display: inline-block; by default
+    img {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    //
+    // Global resets for forms
+    //
+
+    // Make sure textarea takes on height automatically
+    textarea { height: auto; min-height: 50px; }
+
+    // Make select elements 100% width by default
+    select { width: 100%; }
   }
-
-  // Miscellaneous useful HTML classes
-  .left         { float: left !important; }
-  .right        { float: right !important; }
-  .text-left    { text-align: left !important; }
-  .text-right   { text-align: right !important; }
-  .text-center  { text-align: center !important; }
-  .text-justify { text-align: justify !important; }
-  .hide         { display: none; }
-
-  // Font smoothing
-  // Antialiased font smoothing works best for light text on a dark background.
-  // Apply to single elements instead of globally to body.
-  // Note this only applies to webkit-based desktop browsers on the Mac.
-  .antialiased { -webkit-font-smoothing: antialiased; }
-
-  // Get rid of gap under images by making them display: inline-block; by default
-  img {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  //
-  // Global resets for forms
-  //
-
-  // Make sure textarea takes on height automatically
-  textarea { height: auto; min-height: 50px; }
-
-  // Make select elements 100% width by default
-  select { width: 100%; }
 }

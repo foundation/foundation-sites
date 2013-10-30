@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -41,12 +43,10 @@ $inline-list-children-display: block !default;
   }
 }
 
-
-@if $include-html-inline-list-classes {
-
-  /* Inline Lists */
-  .inline-list {
-    @include inline-list();
+@include exports("inline-list") {
+  @if $include-html-inline-list-classes {
+    .inline-list {
+      @include inline-list();
+    }
   }
-
 }

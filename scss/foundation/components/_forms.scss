@@ -1,3 +1,6 @@
+@import "global";
+@import "buttons";
+
 //
 // @variables
 //
@@ -285,155 +288,156 @@ $glowing-effect-color: $input-focus-border-color !default;
   @else { color: $input-error-message-font-color-alt; }
 }
 
-// Only include these classes if the variable is true, otherwise they'll be left out.
-@if $include-html-form-classes {
-  /* Standard Forms */
-  form { margin: 0 0 $form-spacing; }
+@include exports("form") {
+  @if $include-html-form-classes {
+    /* Standard Forms */
+    form { margin: 0 0 $form-spacing; }
 
-  /* Using forms within rows, we need to set some defaults */
-  form .row { @include form-row-base; }
+    /* Using forms within rows, we need to set some defaults */
+    form .row { @include form-row-base; }
 
-  /* Label Styles */
-  label { @include form-label;
-    &.right { @include form-label(right,false); }
-    &.inline { @include form-label(inline,false); }
-    /* Styles for required inputs */
-    small {
-      text-transform: capitalize;
-      color: lighten($form-label-font-color, 10%);
-    }
-  }
-
-  /* Attach elements to the beginning or end of an input */
-  .prefix,
-  .postfix { @include prefix-postfix-base; }
-
-  /* Adjust padding, alignment and radius if pre/post element is a button */
-  .postfix.button { @include button-size(false,false,false); @include postfix(false,true); }
-  .prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
-
-  .prefix.button.radius { @include radius(0); @include side-radius(left, $button-radius); }
-  .postfix.button.radius { @include radius(0); @include side-radius(right, $button-radius); }
-  .prefix.button.round { @include radius(0); @include side-radius(left, $button-round); }
-  .postfix.button.round { @include radius(0); @include side-radius(right, $button-round); }
-
-  /* Separate prefix and postfix styles when on span or label so buttons keep their own */
-  span.prefix,label.prefix { @include prefix();
-    &.radius { @include radius(0); @include side-radius(left, $global-radius); }
-  }
-  span.postfix,label.postfix { @include postfix();
-    &.radius { @include radius(0); @include side-radius(right, $global-radius); }
-  }
-
-  /* Input groups will automatically style first and last elements of the group */
-  .input-group {
-    &.radius {
-      &>*:first-child,  &>*:first-child * {
-        @include side-radius($default-float, $global-radius);
-      }
-      &>*:last-child, &>*:last-child * {
-        @include side-radius($opposite-direction, $global-radius);
+    /* Label Styles */
+    label { @include form-label;
+      &.right { @include form-label(right,false); }
+      &.inline { @include form-label(inline,false); }
+      /* Styles for required inputs */
+      small {
+        text-transform: capitalize;
+        color: lighten($form-label-font-color, 10%);
       }
     }
-    &.round {
-      &>*:first-child,  &>*:first-child * {
-        @include side-radius($default-float, $button-round);
+
+    /* Attach elements to the beginning or end of an input */
+    .prefix,
+    .postfix { @include prefix-postfix-base; }
+
+    /* Adjust padding, alignment and radius if pre/post element is a button */
+    .postfix.button { @include button-size(false,false,false); @include postfix(false,true); }
+    .prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
+
+    .prefix.button.radius { @include radius(0); @include side-radius(left, $button-radius); }
+    .postfix.button.radius { @include radius(0); @include side-radius(right, $button-radius); }
+    .prefix.button.round { @include radius(0); @include side-radius(left, $button-round); }
+    .postfix.button.round { @include radius(0); @include side-radius(right, $button-round); }
+
+    /* Separate prefix and postfix styles when on span or label so buttons keep their own */
+    span.prefix,label.prefix { @include prefix();
+      &.radius { @include radius(0); @include side-radius(left, $global-radius); }
+    }
+    span.postfix,label.postfix { @include postfix();
+      &.radius { @include radius(0); @include side-radius(right, $global-radius); }
+    }
+
+    /* Input groups will automatically style first and last elements of the group */
+    .input-group {
+      &.radius {
+        &>*:first-child,  &>*:first-child * {
+          @include side-radius($default-float, $global-radius);
+        }
+        &>*:last-child, &>*:last-child * {
+          @include side-radius($opposite-direction, $global-radius);
+        }
       }
-      &>*:last-child, &>*:last-child * {
-        @include side-radius($opposite-direction, $button-round);
+      &.round {
+        &>*:first-child,  &>*:first-child * {
+          @include side-radius($default-float, $button-round);
+        }
+        &>*:last-child, &>*:last-child * {
+          @include side-radius($opposite-direction, $button-round);
+        }
       }
     }
-  }
 
-  /* We use this to get basic styling on all basic form elements */
-  input[type="text"],
-  input[type="password"],
-  input[type="date"],
-  input[type="datetime"],
-  input[type="datetime-local"],
-  input[type="month"],
-  input[type="week"],
-  input[type="email"],
-  input[type="number"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="time"],
-  input[type="url"],
-  textarea {
-    -webkit-appearance: none;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-    @include form-element;
-    @if not $input-include-glowing-effect {
-        @include single-transition(all, 0.15s, linear);
+    /* We use this to get basic styling on all basic form elements */
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="week"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    textarea {
+      -webkit-appearance: none;
+      -webkit-border-radius: 0;
+      border-radius: 0;
+      @include form-element;
+      @if not $input-include-glowing-effect {
+          @include single-transition(all, 0.15s, linear);
+      }
     }
-  }
 
-  /* Adjust margin for form elements below */
-  input[type="file"],
-  input[type="checkbox"],
-  input[type="radio"],
-  select {
-    margin: 0 0 $form-spacing 0;
-  }
+    /* Adjust margin for form elements below */
+    input[type="file"],
+    input[type="checkbox"],
+    input[type="radio"],
+    select {
+      margin: 0 0 $form-spacing 0;
+    }
 
-  /* Normalize file input width */
-  input[type="file"] {
-    width:100%;
-  }
+    /* Normalize file input width */
+    input[type="file"] {
+      width:100%;
+    }
 
-  /* We add basic fieldset styling */
-  fieldset {
-    @include fieldset;
-  }
+    /* We add basic fieldset styling */
+    fieldset {
+      @include fieldset;
+    }
 
-  /* Error Handling */
+    /* Error Handling */
 
-  [data-abide] {
-    .error small.error, span.error, small.error {
+    [data-abide] {
+      .error small.error, span.error, small.error {
+        @include form-error-message;
+      }
+      span.error, small.error { display: none; }
+    }
+    span.error, small.error {
       @include form-error-message;
     }
-    span.error, small.error { display: none; }
-  }
-  span.error, small.error {
-    @include form-error-message;
-  }
-  .error {
-    input,
-    textarea,
-    select {
+    .error {
+      input,
+      textarea,
+      select {
+        margin-bottom: 0;
+      }
+
+      label,
+      label.error {
+        @include form-label-error-color;
+      }
+
+      > small,
+      small.error {
+        @include form-error-message;
+      }
+
+      span.error-message {
+        display: block;
+      }
+    }
+
+    input.error,
+    textarea.error {
       margin-bottom: 0;
     }
 
-    label,
-    label.error {
-      @include form-label-error-color;
-    }
 
-    > small,
-    small.error {
-      @include form-error-message;
-    }
+    label.error { @include form-label-error-color; }
 
-    span.error-message {
-      display: block;
-    }
   }
 
-  input.error,
-  textarea.error {
-    margin-bottom: 0;
+  @media #{$small-only} { 
+     select:focus, 
+     textarea:focus, 
+     input:focus {
+       font-size: $base-font-size;
+       }
   }
-
-
-  label.error { @include form-label-error-color; }
-
 }
-
-@media #{$small-only} { 
-   select:focus, 
-   textarea:focus, 
-   input:focus {
-     font-size: $base-font-size;
-     }
- }

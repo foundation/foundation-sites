@@ -1,5 +1,8 @@
+@import "global";
 @import "foundation";
 @import "code";
+@import "fonts";
+@import "footer";
 @import "fonts";
 
 @mixin box-shadow(
@@ -51,7 +54,6 @@ hr.dashed { border-style: dashed; }
 @import
   "syntax-highlighting",
   "sidebar",
-  "offcanvas",
   "zurb-footer";
 
 
@@ -67,12 +69,14 @@ hr.dashed { border-style: dashed; }
   }
 }
 
+// Modified Panel
 .easel {
   @include panel($bg:$panel-bg-color);
   @include border(solid, 1px, darken($panel-bg-color, 6%));
   @include radius();
 }
 
+// 12 column grid mixin (would be cool to implement with mixins where possible)
 .full-grid {
   @include grid-column($columns:12);
   .panel {
@@ -80,7 +84,8 @@ hr.dashed { border-style: dashed; }
   }
 }
 
-.half-width {
+
+.half-grid {
   @include grid-column($columns:6);
 
 }
@@ -105,13 +110,9 @@ hr.dashed { border-style: dashed; }
   dt { color: #008080; }
 }
 
-.options-code-container {
-  .code-container {
-    background-color: darken($panel-bg-color, 2%);
-  }
-}
-
 .code-container {
+  background-color: darken($panel-bg-color, 2%);
+  overflow-x:auto;
   position: relative;
   @include border(solid, 1px, darken($panel-bg-color, 4%));
   border-radius: 3px;

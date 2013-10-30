@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @name _sub-nav.scss
 // @dependencies _global.scss
@@ -108,6 +110,8 @@ $sub-nav-item-divider-margin: emCalc(12) !default;
   }
 }
 
-@if $include-html-nav-classes {
-  .sub-nav { @include sub-nav; }
+@include exports("sub-nav") {
+  @if $include-html-nav-classes {
+    .sub-nav { @include sub-nav; }
+  }
 }

@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // Breadcrumb Variables
 //
@@ -105,20 +107,17 @@ $crumb-slash: "/" !default;
     content: " ";
     margin: 0;
   }
-
 }
 
+@include exports("breadcrumbs") {
+  @if $include-html-nav-classes {
+    .breadcrumbs {
+      @include crumb-container;
+      @include radius($crumb-radius);
 
-@if $include-html-nav-classes {
-
-  /* Breadcrumbs */
-  .breadcrumbs {
-    @include crumb-container;
-    @include radius($crumb-radius);
-
-    &>* {
-      @include crumbs;
+      &>* {
+        @include crumbs;
+      }
     }
   }
-
 }

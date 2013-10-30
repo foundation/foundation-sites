@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -74,7 +76,7 @@ $total-columns: 12 !default;
 
 // Creates a column, should be used inside of a media query to control layouts
 //
-// $columns - The number of columns this should be. Default: false.
+// $columns - The number of columns this should be
 // $last-column - Is this the last column? Default: false.
 // $center - Center these columns? Default: false.
 // $offset - # of columns to offset. Default: false.
@@ -154,6 +156,7 @@ $total-columns: 12 !default;
   .column,
   .columns { @include grid-column($columns:false); }
 
+
   @for $i from 1 through $total-columns {
     .#{$size}#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
   }
@@ -178,52 +181,54 @@ $total-columns: 12 !default;
   .column.#{$size}-uncentered.opposite,
   .columns.#{$size}-uncentered.opposite {
     float: $opposite-direction !important;
+
   }
 }
 
+@include exports("grid") {
+  @if $include-html-grid-classes {
+    .row {
+      @include grid-row;
 
-@if $include-html-grid-classes {
-  .row {
-    @include grid-row;
+      &.collapse {
+         > .column,
+         > .columns { @include grid-column($collapse:true); }
 
-    &.collapse {
-       > .column,
-       > .columns { @include grid-column($collapse:true); }
-
-      .row {margin-left:0; margin-right:0;}
-    }
-
-    .row { @include grid-row($behavior:nest);
-      &.collapse { @include grid-row($behavior:nest-collapse); }
-    }
-  }
-
-  .column,
-  .columns { @include grid-column($columns:$total-columns); }
-
-  @media #{$small-up} {
-    @include grid-html-classes($size:small);
-  }
-
-  @media #{$medium-up} {
-    @include grid-html-classes($size:medium);
-    // Old push and pull classes
-    @for $i from 1 through $total-columns - 1 {
-      .push#{-$i} {
-        @include grid-column($push:$i, $collapse:null, $float:false);
+        .row {margin-left:0; margin-right:0;}
       }
-      .pull#{-$i} {
-        @include grid-column($pull:$i, $collapse:null, $float:false);
+
+      .row { @include grid-row($behavior:nest);
+        &.collapse { @include grid-row($behavior:nest-collapse); }
       }
     }
-  }
-  @media #{$large-up} {
-    @include grid-html-classes($size:large);
-  }
-  @media #{$xlarge-up} {
-    @include grid-html-classes($size:xlarge);
-  }
-  @media #{$xxlarge-up} {
-    @include grid-html-classes($size:xxlarge);
+
+    .column,
+    .columns { @include grid-column($columns:$total-columns); }
+
+    @media #{$small-up} {
+      @include grid-html-classes($size:small);
+    }
+
+    @media #{$medium-up} {
+      @include grid-html-classes($size:medium);
+      // Old push and pull classes
+      @for $i from 1 through $total-columns - 1 {
+        .push#{-$i} {
+          @include grid-column($push:$i, $collapse:null, $float:false);
+        }
+        .pull#{-$i} {
+          @include grid-column($pull:$i, $collapse:null, $float:false);
+        }
+      }
+    }
+    @media #{$large-up} {
+      @include grid-html-classes($size:large);
+    }
+    @media #{$xlarge-up} {
+      @include grid-html-classes($size:xlarge);
+    }
+    @media #{$xxlarge-up} {
+      @include grid-html-classes($size:xxlarge);
+    }
   }
 }

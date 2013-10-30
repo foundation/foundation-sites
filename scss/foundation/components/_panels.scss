@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // @variables
 //
@@ -61,25 +63,26 @@ $callout-panel-link-color: #fff !default;
   }
 }
 
-// Only include these classes if the option exists
-@if $include-html-panel-classes {
+@include exports("panel") {
+  @if $include-html-panel-classes {
 
-  /* Panels */
-  .panel { @include panel;
+    /* Panels */
+    .panel { @include panel;
 
-    &.callout {
-      @include panel($primary-color);
-      @include inset-shadow($active:false);
-      a {
-        color: $callout-panel-link-color;
+      &.callout {
+        @include panel($primary-color);
+        @include inset-shadow($active:false);
+        a {
+          color: $callout-panel-link-color;
+        }
       }
-    }
 
-    &.radius {
-      @include panel($bg:false);
-      @include radius;
+      &.radius {
+        @include panel($bg:false);
+        @include radius;
+      }
+
     }
 
   }
-
 }
