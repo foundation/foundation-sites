@@ -122,7 +122,7 @@
       e.stopPropagation(); //do not catch same click again on parent
 
       if (!region.hasClass(self.settings.active_class)) {
-        if (!self.is_accordion(section) || (self.is_accordion(section) && !self.settings.multi_expand)) {
+        if (!self.is_accordion(section) || (self.is_accordion(section) && !settings.multi_expand)) {
           prev_active_region.removeClass(self.settings.active_class);
           prev_active_region.trigger('closed.fndtn.section');
         }
