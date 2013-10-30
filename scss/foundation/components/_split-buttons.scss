@@ -27,18 +27,18 @@ $split-button-padding-sml: $button-pip-sml * 10 !default;
 $split-button-span-width-sml: $button-pip-sml * 6 !default;
 $split-button-pip-size-sml: $button-pip-sml !default;
 $split-button-pip-top-sml: $button-pip-sml * 1.5 !default;
-$split-button-pip-default-float-sml: em-calc(-8) !default;
+$split-button-pip-default-float-sml: em-calc(-6) !default;
 
 // We use these to control medium split buttons
-$split-button-padding-med: $button-pip-med * 8 !default;
-$split-button-span-width-med: $button-pip-med * 5 !default;
+$split-button-padding-med: $button-pip-med * 9 !default;
+$split-button-span-width-med: $button-pip-med * 5.5 !default;
 $split-button-pip-size-med: $button-pip-med - em-calc(3) !default;
 $split-button-pip-top-med: $button-pip-med * 1.5 !default;
-$split-button-pip-default-float-med: em-calc(-7) !default;
+$split-button-pip-default-float-med: em-calc(-6) !default;
 
 // We use these to control large split buttons
-$split-button-padding-lrg: $button-pip-lrg * 7 !default;
-$split-button-span-width-lrg: $button-pip-lrg * 4 !default;
+$split-button-padding-lrg: $button-pip-lrg * 8 !default;
+$split-button-span-width-lrg: $button-pip-lrg * 5 !default;
 $split-button-pip-size-lrg: $button-pip-lrg - em-calc(6) !default;
 $split-button-pip-top-lrg: $button-pip-lrg + em-calc(5) !default;
 $split-button-pip-default-float-lrg: em-calc(-6) !default;
@@ -105,7 +105,7 @@ $split-button-pip-default-float-lrg: em-calc(-6) !default;
       &:before {
         border-top-style: solid;
         border-width: $split-button-pip-size-tny;
-        top: 50%;
+        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-tny;
       }
     }
@@ -119,7 +119,7 @@ $split-button-pip-default-float-lrg: em-calc(-6) !default;
       &:before {
         border-top-style: solid;
         border-width: $split-button-pip-size-sml;
-        top: 50%;
+        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-sml;
       }
     }
@@ -133,7 +133,7 @@ $split-button-pip-default-float-lrg: em-calc(-6) !default;
       &:before {
         border-top-style: solid;
         border-width: $split-button-pip-size-med;
-        top: 50%;
+        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-med;
       }
     }
@@ -147,7 +147,7 @@ $split-button-pip-default-float-lrg: em-calc(-6) !default;
       &:before {
         border-top-style: solid;
         border-width: $split-button-pip-size-lrg;
-        top: 50%;
+        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-lrg;
       }
     }
@@ -176,7 +176,9 @@ $split-button-pip-default-float-lrg: em-calc(-6) !default;
     &.secondary { @include split-button(false, $split-button-pip-color-alt, false, false); }
 
     &.radius span { @include side-radius($opposite-direction, $global-radius); }
-    &.round span { @include side-radius($opposite-direction, 1000px); }
+    &.round span { @include side-radius($opposite-direction, 1000px);
+    	&:before {  margin-left: -0.5em;} 
+    }
   }
 
 }
