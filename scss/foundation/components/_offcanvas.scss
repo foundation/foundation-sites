@@ -1,6 +1,12 @@
 // Make sure it fills up all vertical space
 html, body { height: 100%; }
 
+%kill-flicker {
+  // Remove transition flicker on phones
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+}
+
 // Top Bar Variables
 $topbar-bg-color: #333 !default;
 
@@ -10,13 +16,16 @@ $off-canvas-bg: #111;
 
 // Wrap visible content and prevent scroll bars
 #outer-wrap {
+    @extend %kill-flicker;
     position: relative;
     overflow: hidden;
     width: 100%;
+
 }
 
 // Main content area that moves to reveal the off-canvas nav
 #inner-wrap {
+    @extend %kill-flicker;
     position: relative;
     width: 100%;
     top:0;
@@ -24,14 +33,9 @@ $off-canvas-bg: #111;
 }
 
 
-
 // NAV BAR
 nav.off-canvas-nav {
-  // Remove transition flicker on phones
-  -webkit-transform: translate3d(0,0,0);
-  -webkit-backface-visibility: hidden;
-  * { -webkit-transform: translate3d(0,0,0); }
-
+  @extend %kill-flicker;
 
   // base styles
   background: $topbar-bg-color;
@@ -69,7 +73,7 @@ nav.off-canvas-nav {
 }
 
 // menu button
-a.toggle-off-canvas { 
+a.off-canvas-left-toggle { 
   text-indent: 35px;
   width: 34px;
   height: 34px;
@@ -100,19 +104,13 @@ a.toggle-off-canvas {
 
 body#off-canvas {
 
+  @extend %kill-flicker;
+
   #inner-wrap {
     transition: -webkit-transform 500ms ease; 
   }
 
-  #off-canvas-menu {
-
-    // Remove transition flicker on phones
-    -webkit-transform: translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
-    * { -webkit-transform: translate3d(0,0,0); }
-
-    -webkit-transform: translate3d(-100%,0,0);
-    
+  %off-canvas-menu {    
     width: $off-canvas-width;
     top:0;
     bottom:0;
@@ -121,68 +119,88 @@ body#off-canvas {
     position: absolute;
 
     // base styles
-    background-color: $off-canvas-bg;
+    background: #333;
 
     // crazy thing to have part of the sidebar render invisibly in the viewport, eliminating the flicker of the bg color 
-    &::after {
-      content:"";
-      position: absolute;
-      display: block;
-      background: transparent;
-      top:0;
-      width: 10px;
-      height:1px;
-      right: -5px;
-    }
+    // &::after {
+    //   content:"";
+    //   position: absolute;
+    //   display: block;
+    //   background: transparent;
+    //   top:0;
+    //   width: 10px;
+    //   height:1px;
+    //   right: -5px;
+    // }
 
     z-index: 1001;
 
-
-
   }
 
-  &.target {
-    #inner-wrap {
-      -webkit-transform: translateX($off-canvas-width);
-    }
-    #off-canvas-menu {
-      background: #333;
-    }
+  #left-off-canvas-menu {
+    @extend %kill-flicker;
+    @extend %off-canvas-menu;
+    -webkit-transform: translate3d(-100%,0,0);
 
-    a#back {
+  }
+  #right-off-canvas-menu {
+    @extend %kill-flicker;
+    @extend %off-canvas-menu;
+    -webkit-transform: translate3d(100%,0,0);
+    right:0;
+  }
+
+  @mixin back-link {
+      @extend %kill-flicker;
+
+      transition: background 300ms ease;
       cursor: pointer;
       box-shadow:-4px 0 4px rgba(#000, 0.5);
-
 
       // fill the screen 
       display: block;
       position: absolute;
       background: rgba(#FFF, 0.2);
-      top: -20em;
-      bottom: -20em;
+      top: 0;
+      bottom: 0;
       left:0;
       right:0;
       z-index: 1002;
-      transition: background 300ms ease;
 
-      &:hover {
-        background: rgba(#FFF, 0.05);
+      @media #{$medium} { 
+        &:hover {
+          background: rgba(#FFF, 0.05) !important;
+        }
       }
-
-    }
   }
+
+  &.move-right {
+    #inner-wrap {
+      -webkit-transform: translateX($off-canvas-width);
+    }
+    a#back { @include back-link;}
+  }
+
+  &.move-left {
+    #inner-wrap {
+      -webkit-transform: translateX(-($off-canvas-width));
+    }
+    a#back { @include back-link; }
+  }
+
+
+
+
 
 }
 
 .main-section {
-  // Remove transition flicker on phones
-  -webkit-transform: translate3d(0,0,0);
-  -webkit-backface-visibility: hidden;
-  * { -webkit-transform: translate3d(0,0,0); }
+  @extend %kill-flicker;
 }
 
 // special display stuff for the docs
 #outer-wrap.docs-wrap {
+  @extend %kill-flicker;
   margin-top: em-calc(30); 
   #inner-wrap { background: #efefef; }
   .main-section {
@@ -203,15 +221,15 @@ ul.off-canvas-nav {
       font-weight: bold;
       background: #444;
       border-top: 1px solid lighten(#444, 10%);
-      border-bottom: 1px solid darken($off-canvas-bg, 1%);
+      border-bottom: 1px solid rgba($off-canvas-bg, 0.4);
       margin:0;
     }
     a {
       display: block;
       padding: 8px 15px;
       color: rgba(#FFF, 0.7);
-      border-top: 1px solid lighten($off-canvas-bg, 20%);
-      border-bottom: 1px solid darken($off-canvas-bg, 1%);
+      // border-bottom: 1px solid lighten($off-canvas-bg, 20%);
+      border-bottom: 1px solid rgba($off-canvas-bg, 0.4);
     }
     // &.divider {
     //   height:0;

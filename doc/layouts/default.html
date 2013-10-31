@@ -24,11 +24,17 @@
     <script src="{{assets}}/js/all.js"></script>
     <script>
     $(document).foundation();
-    $(".toggle-off-canvas").click(function(e){
-      $("body").addClass("target");
+    $(".off-canvas-left-toggle").click(function(e){
+      $("body").addClass("move-right");
     });
     $("#back").click(function(){
-      $("body").removeClass("target");
+      $("body").removeClass("move-right");
+    });
+    $(".off-canvas-right-toggle").click(function(e){
+      $("body").addClass("move-left");
+    });
+    $("#back").click(function(){
+      $("body").removeClass("move-left");
     });
     </script>
   </body>
