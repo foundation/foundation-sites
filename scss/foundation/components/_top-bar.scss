@@ -155,6 +155,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
     // Menu toggle button on small devices
     .toggle-topbar {
+      
       position: absolute;
       #{$opposite-direction}: 0;
       top: 0;

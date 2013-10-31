@@ -1,6 +1,12 @@
+// Make sure it fills up all vertical space
 html, body { height: 100%; }
 
-body {  }
+// Top Bar Variables
+$topbar-bg-color: #333 !default;
+
+// Off Canvas Menu Variables
+$off-canvas-width: 250px;
+$off-canvas-bg: #111;
 
 // Wrap visible content and prevent scroll bars
 #outer-wrap {
@@ -17,10 +23,10 @@ body {  }
     bottom:0;
 }
 
-$off-canvas-width: 250px;
+
 
 // NAV BAR
-nav#main-nav {
+nav.off-canvas-nav {
   // Remove transition flicker on phones
   -webkit-transform: translate3d(0,0,0);
   -webkit-backface-visibility: hidden;
@@ -28,9 +34,9 @@ nav#main-nav {
 
 
   // base styles
-  background: #222;
+  background: $topbar-bg-color;
   color: #FFF;
-  height: 60px;
+  height: 45px;
   padding: 0 20px;
 
   // below #back link
@@ -46,45 +52,75 @@ nav#main-nav {
   ul.title {
     // base styles 
     margin: 0; 
-    min-height: 60px;
-    line-height: 60px;
+    min-height: 45px;
+    line-height: 45px;
     li { display: inline-block; }
   }
 
-  // menu button
-  a.menu-icon { font-size: $h4-font-size; }
+  ul.left {
+    list-style-type: none;
+    li {
+      display: inline;
+    }
+    margin-left:0;
+  }
 
+    
 }
 
+// menu button
+a.toggle-off-canvas { 
+  text-indent: 35px;
+  width: 34px;
+  height: 34px;
+  display: block;
+  line-height: 33px;
+  padding: 0;
+  color: $topbar-menu-link-color;
+  
+  span {
+
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 0;
+    top: 0.4em;
+
+    @if $experimental {
+      -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color,
+                          0 16px 0 1px $topbar-menu-icon-color,
+                          0 22px 0 1px $topbar-menu-icon-color;
+    }
+      box-shadow:         0 10px 0 1px $topbar-menu-icon-color,
+                          0 16px 0 1px $topbar-menu-icon-color,
+                          0 22px 0 1px $topbar-menu-icon-color;
+
+  }
+}
 
 body#off-canvas {
 
   #inner-wrap {
-    transition: -webkit-transform 500ms ease;
-
-    
-    
+    transition: -webkit-transform 500ms ease; 
   }
 
-  #off-canvas-content {
-    $off-canvas-bg: #111;
+  #off-canvas-menu {
 
     // Remove transition flicker on phones
     -webkit-transform: translate3d(0,0,0);
     -webkit-backface-visibility: hidden;
     * { -webkit-transform: translate3d(0,0,0); }
 
-    -webkit-transform: translate3d(-100%,-60px,0);
+    -webkit-transform: translate3d(-100%,0,0);
     
     width: $off-canvas-width;
-    // top:0;
+    top:0;
+    bottom:0;
     min-height: 480px;
-    height: 100%;
+    height: 101%;
     position: absolute;
 
     // base styles
-    // @include box-shadow(inset -4px 0 4px #000);
-    padding: 15px;
     background-color: $off-canvas-bg;
 
     // crazy thing to have part of the sidebar render invisibly in the viewport, eliminating the flicker of the bg color 
@@ -105,27 +141,33 @@ body#off-canvas {
 
   }
 
-  &:target {
+  &.target {
     #inner-wrap {
       -webkit-transform: translateX($off-canvas-width);
-
     }
-    #off-canvas-content {
-      
-      background: #111;
+    #off-canvas-menu {
+      background: #333;
     }
 
     a#back {
-      cursor: default;
+      cursor: pointer;
+      box-shadow:-4px 0 4px rgba(#000, 0.5);
+
+
       // fill the screen 
       display: block;
       position: absolute;
-      background: rgba(red, 0.2);
+      background: rgba(#FFF, 0.2);
       top: -20em;
       bottom: -20em;
       left:0;
       right:0;
-      z-index: 1000;
+      z-index: 1002;
+      transition: background 300ms ease;
+
+      &:hover {
+        background: rgba(#FFF, 0.05);
+      }
 
     }
   }
@@ -137,4 +179,46 @@ body#off-canvas {
   -webkit-transform: translate3d(0,0,0);
   -webkit-backface-visibility: hidden;
   * { -webkit-transform: translate3d(0,0,0); }
+}
+
+// special display stuff for the docs
+#outer-wrap.docs-wrap {
+  margin-top: em-calc(30); 
+  #inner-wrap { background: #efefef; }
+  .main-section {
+    padding: 0 20px 0 20px;
+  }
+}
+
+ul.off-canvas-nav {
+  list-style-type: none;
+  padding:0;
+  margin:0;
+
+  li {
+    label { 
+      padding: 0.3em 15px;
+      color: #999;
+      text-transform: uppercase;
+      font-weight: bold;
+      background: #444;
+      border-top: 1px solid lighten(#444, 10%);
+      border-bottom: 1px solid darken($off-canvas-bg, 1%);
+      margin:0;
+    }
+    a {
+      display: block;
+      padding: 8px 15px;
+      color: rgba(#FFF, 0.7);
+      border-top: 1px solid lighten($off-canvas-bg, 20%);
+      border-bottom: 1px solid darken($off-canvas-bg, 1%);
+    }
+    // &.divider {
+    //   height:0;
+    //   border-bottom: 1px solid lighten($off-canvas-bg, 20%);
+    //   border-top: 1px solid darken($off-canvas-bg, 1%);
+    // }
+  }
+
+
 }
