@@ -1,0 +1,99 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Side Nav
+
+#### Side nav, like you'll see on Foundation's main site, is useful for sections of either a site or a page.
+
+---
+
+<ul class="side-nav">
+  <li class="active"><a href="#">Link 1</a></li>
+  <li><a href="#">Link 2</a></li>
+  <li class="divider"></li>
+  <li><a href="#">Link 3</a></li>
+  <li><a href="#">Link 4</a></li>
+</ul>
+
+---
+
+### Build With Predefined HTML Classes
+
+There are two ways to build a side nav in Foundation 4: either with our predefined HTML classes or our mixins. Building side nav using our predefined classes is simple, you'll just need to write a <code>&lt;ul class="side-nav"&gt;</code> and fill it full of list items. The width of the side nav is controlled by the columns you put it inside.
+
+The list item options:
+
+<ul class="disc">
+  <li><code>active</code> Will add style to denote the active link.</li>
+  <li><code>divider</code> Creates a divider between list items.</li>
+</ul>
+
+{{#markdown}}
+```html
+{{> examples_sidenav_basic}}
+```
+{{/markdown}}
+
+For these styles to come across, make sure you have the default Foundation CSS package or that you've selected side nav from a custom package. These should be linked up following our default (HTML page structure)[../index.html].
+
+---
+
+### Build with our Mixins
+
+We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_side-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_side-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/side-nav";
+```
+{{/markdown}}
+
+##### Quick Mixin
+
+You can build your side nav using our global mixin by including it on a custom class or ID in your own stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. You'll also have the ability to change the font-size and padding. The rest of the defaults can be modified using the available variables. The global mixin looks like this:
+
+{{#markdown}}
+```scss
+/* Using the default styles */
+.your-class-name { @include side-nav; }
+```
+{{/markdown}}
+
+There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color.
+
+{{#markdown}}
+```scss
+/* Using the available options */
+.your-class-name { @include side-nav($divider-color, $font-size, $link-color); }
+
+/* Control the color of the divider between links */
+$divider-color: $side-nav-divider-color
+
+/* Control your font-size per label */
+$font-size: $side-nav-font-size
+
+/* Change the background color for your labels */
+$link-color: $side-nav-link-color
+```
+{{/markdown}}
+
+<ul class="side-nav-custom large-3">
+  <li class="active"><a href="#">Link 1</a></li>
+  <li><a href="#">Link 2</a></li>
+  <li class="divider"></li>
+  <li><a href="#">Link 3</a></li>
+  <li><a href="#">Link 4</a></li>
+</ul>
+
+##### Default SCSS Variables
+
+{{#markdown}}
+```scss
+{{> examples_sidenav_variables.scss}}
+```
+{{/markdown}}
+
+**Note:** `em-calc();`  is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
