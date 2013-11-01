@@ -1,0 +1,15 @@
+/* Mixin and configurable options */
+.your-class-name {
+  @include block-grid($per-row, $spacing, $base-styles);
+}
+
+/* This controls how many elements will be on each row of the block grid. */
+/* Set this to whatever number you need, up to the max allowed in the variable */
+$per-row: false
+
+/* This controls how much space is between each item in the block grid */
+$spacing: $block-grid-default-spacing
+
+/* This controls whether or not base styles come through, set to false to leave out */
+/* This is handy for when you create multiple block-grids and want less CSS output repetition */
+$base-style: true
