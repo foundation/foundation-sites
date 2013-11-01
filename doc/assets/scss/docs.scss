@@ -39,6 +39,19 @@ body {
 
 .row {
   max-width: emCalc(1440);
+  .display {
+    background: #eee;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2em;
+    border: solid 1px #c6c6c6;
+    .columns {
+      border-right: solid 1px #c6c6c6;
+      &:nth-last-child {
+        border-right: none;
+      }
+    }
+  }
 }
 
 h3, h4, h5 { margin-top: 30px; }
@@ -61,11 +74,11 @@ hr.dashed { border-style: dashed; }
 
 .section-header {
   h1 { border-bottom: 1px solid #ddd; }
-  ul.inline-list { 
+  ul.inline-list {
   	display: inline-block;
   	position: absolute;
   	top: 47px;
-  	right: 0.9375em; 
+  	right: 0.9375em;
   }
 }
 
@@ -145,7 +158,7 @@ pre {
 //     }
 //   }
 // }
-// 
+//
 // .code-container .button {
 //   position: absolute;
 //   top: 10px;
@@ -167,8 +180,8 @@ footer { margin-top: 45px; }
 
 // Examples
 .example-orbit {}
-.example-orbit-content li div { 
-  color:white; 
+.example-orbit-content li div {
+  color:white;
   background:#2ba6cb;
   padding:30px 40px;
   h1,h2,h3 {color:white;}
