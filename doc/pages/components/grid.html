@@ -208,3 +208,46 @@ If you are keen on SCSS and use it for your Foundation projects, you have access
     {{> examples_grid_column_options}}
   </div>
 </div>
+
+### Real World Example
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+### SCSS
+```scss
+#masthead { @include grid-row; @include panel;
+  & > hgroup { @include grid-column(4); }
+  & > section { @include grid-column(8); }
+}
+```
+{{/markdown}}
+  </div>
+
+  <div class="large-6 columns">
+{{#markdown}}
+### HTML
+```html
+<header id="masthead">
+  <hgroup>
+    <h2>Title</h2>
+  </hgroup>
+  <section>
+    <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </section>
+</header>
+```
+{{/markdown}}
+  </div>
+  <div class="large-12 columns">
+    <h3>Example</h3>
+    <header id="masthead">
+      <hgroup>
+        <h2>Title</h2>
+      </hgroup>
+      <section>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </section>
+    </header>
+  </div>
+</div>
