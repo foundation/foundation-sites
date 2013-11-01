@@ -110,31 +110,47 @@ hr.dashed { border-style: dashed; }
   dt { color: #008080; }
 }
 
-.code-container {
-  background-color: darken($panel-bg-color, 2%);
-  overflow-x:auto;
-  position: relative;
-  @include border(solid, 1px, darken($panel-bg-color, 4%));
-  border-radius: 3px;
-  pre {
-    padding: 10px;
-    @include border-direction(bottom,solid,1px,darken($panel-bg-color, 6%));
-    background-color: darken($panel-bg-color, 0%);
-    line-height: 1.8em;
-    &:last-child {
-      border: none;
-    }
-    code {
-      background: none;
+pre {
+
+  code {
+    .code-container {
+      //@include border(solid, 1px, darken($panel-bg-color, 4%));
+      //border-radius: 3px;
+      //background-color: darken($panel-bg-color, 2%);
+      padding: 5px;
+      overflow-x: auto;
+      line-height: 1.3em;
+      font-weight: normal;
     }
   }
 }
 
-.code-container .button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
+
+// .code-container {
+//   background-color: darken($panel-bg-color, 2%);
+//   overflow-x:auto;
+//   position: relative;
+//   @include border(solid, 1px, darken($panel-bg-color, 4%));
+//   border-radius: 3px;
+//   pre {
+//     padding: 10px;
+//     @include border-direction(bottom,solid,1px,darken($panel-bg-color, 6%));
+//     background-color: darken($panel-bg-color, 0%);
+//     line-height: 1.8em;
+//     &:last-child {
+//       border: none;
+//     }
+//     code {
+//       background: none;
+//     }
+//   }
+// }
+// 
+// .code-container .button {
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+// }
 
 #masthead { @include grid-row; @include panel; max-width: none;
   hgroup { @include grid-column(4); }
@@ -149,5 +165,11 @@ footer { margin-top: 45px; }
   @include box-shadow(-15px 0 2px #fff, -6px 0 2px #fff, 3px 0 2px #fff);
 }
 
-// orbit styles
-
+// Examples
+.example-orbit {}
+.example-orbit-content li div { 
+  color:white; 
+  background:#2ba6cb;
+  padding:30px 40px;
+  h1,h2,h3 {color:white;}
+}
