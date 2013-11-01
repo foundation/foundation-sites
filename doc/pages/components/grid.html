@@ -32,8 +32,6 @@ The grid allows for nesting down as far as you'd like, though at a certain point
 
 ---
 
-<div class="row">
-  <div class="large-12 columns">
 {{#markdown}}
 ### HTML
 ```html
@@ -41,12 +39,10 @@ The grid allows for nesting down as far as you'd like, though at a certain point
 {{> examples_grid_nested}}
 ```
 {{/markdown}}
-  </div>
-  <div class="large-12 columns">
-    <h3>Example</h3>
+
+### Examples
+
 {{> examples_grid_nested_rendered}}
-  </div>
-</div>
 
 ---
 
@@ -56,20 +52,16 @@ Offsets allow you to create additional space between columns in a row. Like the 
 
 ---
 
-<div class="row">
-  <div class="large-12 columns">
 {{#markdown}}
 ### HTML
 ```html
 {{> examples_grid_offsets}}
 ```
 {{/markdown}}
-  </div>
-  <div class="large-12 columns">
-    <h3>Example</h3>
+
+### Examples
+
 {{> examples_grid_offsets_rendered}}
-  </div>
-</div>
 
 ---
 
@@ -79,21 +71,16 @@ Centered columns are placed in the middle of the row. This does not center their
 
 ---
 
-<div class="row">
-  <div class="large-12 columns">
 {{#markdown}}
 ### HTML
 ```html
 {{> examples_grid_centered}}
 ```
 {{/markdown}}
-  </div>
 
-  <div class="large-12 columns">
-    <h3>Example</h3>
-    {{> examples_grid_centered_rendered}}
-  </div>
-</div>
+### Examples
+
+{{> examples_grid_centered_rendered}}
 
 ---
 
@@ -103,20 +90,16 @@ Using these source ordering classes, you can shift columns around between our br
 
 ---
 
-<div class="row">
-  <div class="large-12 columns">
 {{#markdown}}
 ### HTML
 ```html
 {{> examples_grid_source}}
 ```
 {{/markdown}}
-  </div>
-  <div class="large-12 columns">
-    <h3>Example</h3>
+
+### Examples
+
 {{> examples_grid_source_rendered}}
-  </div>
-</div>
 
 ---
 
@@ -127,19 +110,14 @@ As you've probably noticed in the examples above, you have access to a small and
 
 ---
 
-<div class="row">
-  <div class="large-12 columns">
 {{#markdown}}
 ### HTML
 ```html
 {{> examples_grid_small}}
 ```
 {{/markdown}}
-  </div>
-  <div class="large-12 columns">
+
 {{> examples_grid_small_rendered}}
-  </div>
-</div>
 
 ---
 
@@ -149,19 +127,14 @@ The small and large grids give you control over mobile and desktop styles. A med
 
 ---
 
-<div class="row">
-  <div class="large-12 columns">
 {{#markdown}}
 ### HTML
 ```html
 {{> examples_grid_medium}}
 ```
 {{/markdown}}
-  </div>
-  <div class="large-12 columns">
+
 {{> examples_grid_medium_rendered}}
-  </div>
-</div>
 
 ---
 
@@ -195,7 +168,7 @@ If you are keen on SCSS and use it for your Foundation projects, you have access
 {{#markdown}}
 ### Code Example
 ```scss
-{{> examples_grid_column_mixin}}
+{{> examples_grid_column_mixin.scss}}
 ```
 {{/markdown}}
   </div>
@@ -235,15 +208,15 @@ If you are keen on SCSS and use it for your Foundation projects, you have access
 ```
 {{/markdown}}
   </div>
-  <div class="large-12 columns">
-    <h3>Example</h3>
-    <header id="masthead">
-      <hgroup>
-        <h2>Title</h2>
-      </hgroup>
-      <section>
-        <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </section>
-    </header>
-  </div>
 </div>
+
+### Example
+
+<header id="masthead">
+  <hgroup>
+    <h2>Title</h2>
+  </hgroup>
+  <section>
+    <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </section>
+</header>
