@@ -1,5 +1,5 @@
 // Make sure it fills up all vertical space
-html, body { height: 100%; }
+html, body { height: 100%; -webkit-text-size-adjust: none;}
 
 %kill-flicker {
   // Remove transition flicker on phones
@@ -8,7 +8,12 @@ html, body { height: 100%; }
 }
 
 // Top Bar Variables
-$topbar-bg-color: #333 !default;
+$tabbar-bg-color: #333 !default;
+$tab-bar-height: 45px;
+
+// Divider Styles
+$tabbar-divider-border-right: solid 1px lighten($tabbar-bg-color, 10%) !default;
+$tabbar-divider-border-left: solid 1px darken($tabbar-bg-color, 10%) !default;
 
 // Off Canvas Menu Variables
 $off-canvas-width: 250px;
@@ -34,53 +39,84 @@ $off-canvas-bg: #111;
 
 
 // NAV BAR
-nav.off-canvas-nav {
+nav.tab-bar {
   @extend %kill-flicker;
 
   // base styles
-  background: $topbar-bg-color;
+  background: $tabbar-bg-color;
   color: #FFF;
-  height: 45px;
-  padding: 0 20px;
+  height: $tab-bar-height;
+  line-height:45px;
+  // padding: 0 20px;
 
   // below #back link
   position: relative;
   z-index: 999;
 
-
-  // a, #{headings(all)} { 
-  //  color: #FFF;
-  //  margin: 0; 
-  // }
-
-  ul.title {
-    // base styles 
-    margin: 0; 
-    min-height: 45px;
-    line-height: 45px;
-    li { display: inline-block; }
+  section.left {
+    width: $tab-bar-height;
+    height: $tab-bar-height;
+    border-right: $tabbar-divider-border-left;
+    box-shadow: 1px 0 0 lighten($tabbar-bg-color, 10%);
   }
 
-  ul.left {
-    list-style-type: none;
-    li {
-      display: inline;
+  section.right {
+    width: $tab-bar-height;
+    height: $tab-bar-height;
+    text-align: center;
+    border-left: $tabbar-divider-border-right;
+    box-shadow: -1px 0 0 darken($tabbar-bg-color, 10%);
+  }
+
+  section.middle {
+    padding: 0 10px;
+    position: absolute;
+    text-align: center;
+    height: $tab-bar-height;
+    left: $tab-bar-height;
+    right: $tab-bar-height;
+    @media #{$medium} {
+      text-align: left;
     }
-    margin-left:0;
+    .row { 
+      height: $tab-bar-height;
+      line-height: $tab-bar-height;
+    }
+    form {
+      margin:0;
+      input { margin:0; }
+      height: $tab-bar-height;
+      line-height: $tab-bar-height;
+      position: relative;
+      top: 8px;
+    }
   }
 
+  a.button {
+    margin:0;
+  }
+
+  // Typography 
+  h1,h2,h3,h4,h5,h6 {
+    color: #FFF;
+    font-weight: bold;
+    line-height: $tab-bar-height;
+    margin:0;
+  }
+  h1,h2,h3,h4 { font-size: $h5-font-size; }
     
 }
 
 // menu button
-a.off-canvas-left-toggle { 
+a.menu-icon { 
   text-indent: 35px;
-  width: 34px;
-  height: 34px;
+  width: $tab-bar-height;
+  height: $tab-bar-height;
   display: block;
   line-height: 33px;
   padding: 0;
   color: $topbar-menu-link-color;
+  position: relative;
   
   span {
 
@@ -88,6 +124,7 @@ a.off-canvas-left-toggle {
     display: block;
     width: 16px;
     height: 0;
+    left:13px;
     top: 0.4em;
 
     @if $experimental {
@@ -155,7 +192,7 @@ body#off-canvas {
 
       transition: background 300ms ease;
       cursor: pointer;
-      box-shadow:-4px 0 4px rgba(#000, 0.5);
+      box-shadow:-4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000, 0.5);
 
       // fill the screen 
       display: block;
@@ -187,11 +224,6 @@ body#off-canvas {
     }
     a#back { @include back-link; }
   }
-
-
-
-
-
 }
 
 .main-section {
@@ -240,3 +272,8 @@ ul.off-canvas-nav {
 
 
 }
+
+
+  select, textarea, input {
+    font-size: 16px;
+  }
