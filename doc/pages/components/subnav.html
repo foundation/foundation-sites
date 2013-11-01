@@ -1,0 +1,104 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Sub Nav
+
+##### This simple sub nav is great for moving between different states of a page. We use these frequently to show iterations of something, typically by date, but they're also handy for filters like these.
+
+<dl class="sub-nav">
+  <dt>Filter:</dt>
+  <dd class="active"><a href="#">All</a></dd>
+  <dd><a href="#">Active</a></dd>
+  <dd><a href="#">Pending</a></dd>
+  <dd><a href="#">Suspended</a></dd>
+</dl>
+
+---
+
+### Build With Predefined HTML Classes
+
+There are two ways to build sub nav in Foundation 4: you can use our predefined HTML classes or our mixins. Building sub nav using our predefined classes is simple, you'll just need to write a `<dl class="sub-nav">` and fill it full of definitions. You can use the definition title as a label at the beginning (useful for building filters on a page).
+
+The list options:
+
+<ul class="disc">
+  <li>`<dt>` Creates a title at the beginning of the list.</li>
+  <li>`<dd class="active">` Will add style to denote the active link.</li>
+</ul>
+
+{{#markdown}}
+```html
+<dl class="sub-nav">
+  <dt>Filter:</dt>
+  <dd class="active"><a href="#">All</a></dd>
+  <dd><a href="#">Active</a></dd>
+  <dd><a href="#">Pending</a></dd>
+  <dd><a href="#">Suspended</a></dd>
+</dl>
+```
+{{/markdown}}
+
+To use these styles, make sure you have the default Foundation CSS package or that you've selected sub-nav from a custom package. These should be linked up following our default [HTML page structure](../index.html).
+
+---
+
+### Build with our Mixins
+
+We've included SCSS mixins used to style sub-nav. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_sub-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_sub-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/sub-nav";
+```
+{{/markdown}}
+
+##### Quick Mixin
+
+You can build your sub-nav using our global mixin by including it on a custom class or ID in your own stylesheet. The mixin contains options for changing the font color, font size and active background color. The rest of the defaults can be modified using the available variables. The global mixin looks like this:
+
+{{#markdown}}
+```scss
+/* Using the default styles */
+.your-class-name {
+  @include sub-nav;
+}
+```
+{{/markdown}}
+
+There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color.
+
+{{#markdown}}
+```scss
+{{> examples_subnav_available_options.scss}}
+```
+{{/markdown}}
+
+{{#markdown}}
+```scss
+/* Using customized options */
+.your-class-name {
+  @include sub-nav(orange, 11px, orange);
+}
+```
+{{/markdown}}
+
+<dl class="sub-nav-custom">
+  <dt>Filter:</dt>
+  <dd class="active"><a href="#">All</a></dd>
+  <dd><a href="#">Active</a></dd>
+  <dd><a href="#">Pending</a></dd>
+  <dd><a href="#">Suspended</a></dd>
+</dl>
+
+##### Default SCSS Variables
+
+{{#markdown}}
+```scss
+{{> examples_subnav_variables.scss}}
+```
+{{/markdown}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
