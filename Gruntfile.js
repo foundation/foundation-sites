@@ -7,27 +7,29 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
-        flatten: true,
-        assets: 'dist/docs/assets',
-        data: ['doc/data/*.{json,yml}'],
         marked: {
           gfm: true,
-          sanitize: true,
+          sanitize: false,
           highlight: function(code, lang) {
+            if (lang === undefined) lang = 'bash';
             if (lang === 'html') lang = 'xml';
-            // if (lang === 'scss') lang = 'scss';
             if (lang === 'js') lang = 'javascript';
-            return hljs.highlight(lang, code).value;
+            return '<div class="code-container">' + hljs.highlight(lang, code).value + '</div>';
           }
         }
       },
       docs: {
         options: {
-          partials: ['doc/includes/*.html'],
+          assets: 'dist/docs/assets',
+          data: ['doc/data/*.{json,yml}'],
+          flatten: false,
+          partials: ['doc/includes/**/*.{html,md}'],
           helpers: ['doc/helpers/*.js'],
           layout: 'doc/layouts/default.html'
         },
-        src: 'doc/pages/*.html',
+        expand: true,
+        cwd: 'doc/pages',
+        src: '**/*.{html,md}',
         dest: 'dist/docs/'
       }
     },
