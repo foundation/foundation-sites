@@ -1,0 +1,177 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Forms
+
+#### With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.
+
+{{> examples_form_basic}}
+
+---
+
+### Building Forms with HTML
+
+OK, so you have a client that needs a form with an unhuman layout. "You can't back down because of some legal reason," he says. What are you to do? Foundation has you covered with versatile forms that looks great out of the box and are easily customizable as you need.
+
+Form elements in Foundation are styled based on their type attribute rather than a class. Inputs in Foundation have another major advantage &mdash; they are full width by default. That means that inputs will run as wide as the column that contains them. However, you have two options which make these forms extremely versatile:
+
+* You can size inputs using column sizes, like `.large-6`, `.small-6`.
+* You can create row elements inside your form and use columns for the form, including inputs, labels and more. Rows inside a form inherit some special padding to even up input spacing.
+
+This ultimately adds a bit of code to your forms, but it's worth the trade off! Here's what the example above looks like in HTML:
+
+{{> examples_form_basic_rendered}}
+
+---
+
+#### Inline Labels
+
+Sometimes you want a form with labels to the left of your inputs. Piece of cake. You can put the label inside a different column to the left of the input. Then add a class of `.right` to the label to have it align to the right.
+
+{{> examples_form_inline_labels}}
+
+{{> examples_form_inline_labels_rendered}}
+
+Adding a class of `.inline` will have it vertically center against an input. You can use one or both of these classes to accomplish the look you want.
+
+{{> examples_form_inline}}
+
+{{> examples_form_inline_rendered}}
+
+---
+
+#### Defining a Fieldset
+
+We don't see them too much, but one of the useful form elements included with Foundation is `<fieldset>`. This is used as a wrapper right inside the form element. Right after you define a fieldset, you can include a legend title by using `<legend>`. Here's some HTML to help make copy paste.
+
+{{> examples_form_fieldset_rendered}}
+
+{{> examples_form_fieldset}}
+
+---
+
+#### Pre/Postfix Labels &amp; Actions
+
+Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`. Here are a few examples:
+
+{{> examples_form_labels_rendered}}
+
+{{> examples_form_labels}}
+
+You'll notice that on the last postfix element, we've included the class of `radius`. This adds the border radius on the appropriate edge depending on whether it's a prefix or a postfix element. You can even include buttons with these styles, just apply the `.button` as well as the pre/postfix class.
+
+---
+
+#### Error States
+
+Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically. You can attach a class of `.error` either to the individual elements (label, input, small) or to a column/div.
+
+{{> examples_form_errors_rendered}}
+
+{{> examples_form_errors}}
+
+---
+
+### Build with Mixins
+
+A lot of elements in Foundation can be created using SCSS mixins so that you can include your own classes and just enough style as needed for the job at hand. To use these mixins, you'll need to have the extension installed or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_forms.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_forms.scss), <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and [_buttons.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables", "foundation/components/global", "foundation/components/buttons", "foundation/components/forms";
+```
+{{/markdown}}
+
+We include most of the form styles by default, but the ones that are attached to HTML classes can be accessed via the mixins below. The error states have mixins, but we suggest using the classes since they are usually only visible temporarily.
+
+##### The Pre/Postfix Mixin
+
+With the form label mixin, you can control which classes make your labels line up how you want them to next to their form elements. You'll use these in conjunction with the grid mixin.
+
+{{#markdown}}
+```html
+<form>
+  <div class="row collapse">
+    <span class="your-prefix-class">Label</span>
+    <input type="text" class="your-input-class" placeholder="Value">
+  </div>
+</form>
+```
+{{/markdown}}
+
+Since you need to wrap columns in a container anyway, we've used a `.row.collapse` rather than creating our own class to hold those mixins. Feel free to attach those styles to your own class or ID though.
+
+###### The base mixin:
+
+{{#markdown}}
+```scss
+.your-prefix-class {
+  @include prefix-postfix-base;
+  @include grid-column($columns:3,$float:left);
+}
+
+input[type="text"].your-input-class {
+  @include grid-column($columns:9);
+}
+```
+{{/markdown}}
+
+<form>
+  <div class="row collapse">
+    <span class="attached-label">Label</span>
+    <input type="text" class="attached-input" placeholder="Value">
+  </div>
+</form>
+
+###### The Prefix &amp; Postfix Style Mixins
+
+You can control the style you add to your prefix or postfix elements using this mixin, it looks like this:
+
+{{#markdown}}
+```scss
+.your-prefix-class {
+  @include prefix-postfix-base;
+  @include prefix;
+  @include grid-column($columns:3,$float:left);
+}
+
+input[type="text"].your-input-class {
+  @include grid-column($columns:9);
+}
+```
+{{/markdown}}
+
+<form>
+  <div class="row collapse">
+    <span class="attached-label style">Label</span>
+    <input type="text" class="attached-input" placeholder="Value">
+  </div>
+</form>
+
+There are two options you can set with the prefix and postfix mixins, these are:
+
+{{#markdown}}
+```scss
+@include prefix($bg, $is-button);
+
+/* Control the background color, which also effect the border and font color */
+$bg: $input-prefix-bg;
+
+/* If you prefix or postfix element is a button, make sure to set this to true */
+$is-button: false;
+```
+{{/markdown}}
+
+<form>
+  <div class="row collapse">
+    <span class="attached-label style custom">Label</span>
+    <input type="text" class="attached-input" placeholder="Value">
+  </div>
+</form>
+
+##### Default SCSS Variables
+
+{{> examples_form_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
