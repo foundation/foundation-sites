@@ -29,6 +29,19 @@ if (typeof jQuery === "undefined" &&
 (function ($, window, document, undefined) {
   'use strict';
 
+  // Used to retrieve Foundation media queries from CSS.
+  if(!$('head').has('.foundation-mq-small')) {
+    $('head').append('<meta class="foundation-mq-small">')
+  }
+
+  if(!$('head').has('.foundation-mq-medium')) {
+    $('head').append('<meta class="foundation-mq-medium">')
+  }
+
+  if(!$('head').has('.foundation-mq-large')) {
+    $('head').append('<meta class="foundation-mq-large">')
+  }
+
   /*
     matchMedia() polyfill - Test a CSS media 
     type/query in JS. Authors & copyright (c) 2012: 
@@ -37,11 +50,6 @@ if (typeof jQuery === "undefined" &&
 
     https://github.com/paulirish/matchMedia.js
   */
-
-   $('head').append('<meta class="foundation-mq-small">');
-   $('head').append('<meta class="foundation-mq-medium">');
-   $('head').append('<meta class="foundation-mq-large">');
-
   window.matchMedia = window.matchMedia || (function( doc, undefined ) {
 
     "use strict";
@@ -169,7 +177,9 @@ if (typeof jQuery === "undefined" &&
 
   function removeQuotes(string) {
       if (typeof string === 'string' || string instanceof String) {
-          string = string.replace(/^['"]+|(;\s?})+|['"]$/g, '');
+        // Some trickery to get around PhantomJS issues with parentheses in font-family
+        //string = string.replace('#\\\'(', '(').replace(')\\\'#', ')');
+        string = string.replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '');
       }
       return string;
   }
