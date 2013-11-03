@@ -177,8 +177,6 @@ if (typeof jQuery === "undefined" &&
 
   function removeQuotes(string) {
       if (typeof string === 'string' || string instanceof String) {
-        // Some trickery to get around PhantomJS issues with parentheses in font-family
-        //string = string.replace('#\\\'(', '(').replace(')\\\'#', ')');
         string = string.replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '');
       }
       return string;
