@@ -297,7 +297,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       }
 
       // Apply the hover link color when it has that class
-      &:hover > a {
+      &:not(.has-form):hover > a:not(.button) {
         background: $topbar-link-bg-hover;
         color: $topbar-link-color-hover;
       }
