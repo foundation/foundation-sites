@@ -1,0 +1,114 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Progress Bars
+
+#### A simple way to add progress bars to your layouts. You only need two HTML elements to make them and they're easy to customize.
+
+<div class="progress large-6"><span class="meter" style="width: 40%"></span></div>
+<div class="radius progress success large-8"><span class="meter" style="width: 80%"></span></div>
+<div class="nice round progress alert large-10"><span class="meter" style="width: 30%"></span></div>
+<div class="nice secondary progress"><span class="meter" style="width: 50%"></span></div>
+
+---
+
+### Build With Predefined HTML Classes
+
+There are two ways to add progress bars labels in Foundation 5: with our predefined HTML classes or with our mixins. Building progress bars using our predefined classes is simple, you'll just need to write a `<div class="progress">` and inside of that a `<span class="meter">`. The meter is the element that you can set a width to, either inline or programmatically on your own accord. The simplest way to do this is to change the `style="width:%"` property on the meter, itself.
+
+{{#markdown}}
+```html
+<div class="progress"><span class="meter"></span></div>
+```
+{{/markdown}}
+
+<div class="progress"><span class="meter"></span></div>
+
+The class options:
+
+* The color classes include: `.secondary, .alert` or `.success`
+* The radius classes include: `.radius` or `.round`
+* You may also you the grid width classes: `.small-#` or `.large-#`
+
+{{#markdown}}
+```html
+<div class="progress large-6 success round">
+  <span class="meter" style="width: 40%"></span>
+</div>
+```
+{{/markdown}}
+
+For these styles to come across, make sure you have the default Foundation CSS package or that you've selected labels from a custom package. These should be linked up following our default [HTML page structure](../index.html).
+
+---
+
+### Build with our Mixins
+
+We've included SCSS mixins used to style progress bars. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_progress-bars.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_progress-bars.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/progress-bars";
+```
+{{/markdown}}
+
+##### Container Mixin
+
+Progress bars are made from a container and a meter. The container element holds most of the styles that come across and holds the meter, itself. You can create progress bars by creating a `<div>` and giving it a unique class or ID, then applying the mixin styles to it.
+
+{{#markdown}}
+```scss
+.your-class-name { @include progress-container; }
+```
+{{/markdown}}
+
+<div class="progress"></div>
+
+##### Meter Mixin
+
+The next step is to include an element inside of your container that will be styled as the meter.
+
+{{#markdown}}
+```scss
+.your-class-name { @include progress-container;
+  & > span { @include progress-meter($bg); }
+}
+
+/* We can set the background color of the meter to a variable or any color value */
+$bg: $primary-color;
+```
+{{/markdown}}
+
+<div class="progress">
+  <span class="meter"></span>
+</div>
+
+##### Adding Border Radius
+
+Like we mentioned on a few of the other component pages, you have access to some global mixins that can add even more style to elements like this. Here's an example of using border radius:
+
+{{#markdown}}
+```scss
+.your-class-name {
+  @include progress-container;
+  @include radius(6px);
+  & > span {
+    @include progress-meter(pink);
+    @include radius(5px);
+  }
+}
+```
+{{/markdown}}
+
+<div class="progress-custom">
+  <span style="width:33%"></span>
+</div>
+
+##### Default SCSS Variables
+
+{{> examples_progress_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
