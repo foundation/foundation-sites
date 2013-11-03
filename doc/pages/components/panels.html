@@ -1,0 +1,97 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Panels
+
+#### A panel is a simple, helpful Foundation component that enables you to outline sections of your page easily. This allows you to view your page sections as you add content to them or add emphasis to a section. The width is controlled by the grid columns you put them inside.
+
+{{> examples_panels_basic}}
+
+---
+
+### Build With Predefined HTML Classes
+
+There are two ways to build panels in Foundation 5, either with our predefined HTML or with our mixin. Building panels using our predefined class isn't hard at all. You'll start with `<div>` and add a class of `.panel` to it. From there, you just need to add content inside, anything will do.
+
+Available HTML class options:
+
+* Adding `.callout` to your panel will make it our default blue and add a shiny top edge to help it stand out.
+* You may also you `.radius` to add a tasteful border-radius to the mix.
+
+{{#markdown}}
+```html
+<div class="panel">
+  <!-- Content here -->
+</div>
+```
+{{/markdown}}
+
+<div class="panel">Basic panel with content.</div>
+
+For these styles to come across, make sure you have the default Foundation CSS package or that you've selected panels from a custom package. These should be linked up following our default [HTML page structure](../index.html).
+
+---
+
+### Build with a Mixin
+
+We've included SCSS mixins used to style panels so that you can code smarter. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_panels.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_panels.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/panels";
+```
+{{/markdown}}
+
+If you are using the mixins, you may include the styles on whatever class or ID you'd like to the `<div>`.
+
+{{#markdown}}
+```html
+<div class="your-class-name">
+  <!-- Content here -->
+</div>
+```
+{{/markdown}}
+
+##### Quick Mixin
+
+You can build your panel using our global mixin by including it on your own custom class or ID. The mixin contains all the necessary styles and they can be customized a bit within the mixin. The rest of the important styles are controlled by variables. The code looks like this:
+
+{{#markdown}}
+```scss
+.your-class-name { @include panel; }
+```
+{{/markdown}}
+
+<div class="panel">
+  Panel content goes here...
+</div>
+
+You also have **three options** available to customize the panel within the mixin. These control the background color (which also effect border and font color) and the interior padding of the panel itself.
+
+{{#markdown}}
+```scss
+.your-class-name { @include panel($bg, $padding, $adjust); }
+
+/* This controls the background color, border color and type color based on brightness of the bg. */
+$bg: $secondary-color
+
+/* This controls the interior padding */
+$padding: $panel-padding
+
+/* Control whether panel mixin adjusts header styles */
+$adjust: true
+```
+{{/markdown}}
+
+<div class="panel-custom">
+  Custom panel. Hell yeah! We used @include panel(pink, 40px);
+</div>
+
+##### Default SCSS Variables
+
+{{> examples_panels_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
