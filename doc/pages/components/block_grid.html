@@ -8,14 +8,7 @@ layout: doc/layouts/default.html
 
 ---
 
-<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-</ul>
+{{> examples_block_basic}}
 
 ---
 
@@ -25,20 +18,15 @@ Block grids are made from a `ul.small-block-grid-#` or `ul.large-block-grid-#`. 
 
 These have a bit of flexibility since you have access to two separate grids between our built in 768px breakpoint. If you use the `small-block-grid` only, the grid will keep its spacing and configuration no matter the screen size. If you use `large-block-grid` only, the list items will stack on top of each other for small devices. If you use both of those classes combined, you can control the configuration and layout separately for each breakpoint.
 
-{{#markdown}}
-```html
-{{> examples_block_basic}}
-```
-{{/markdown}}
+{{> examples_block_basic_rendered}}
 
-<!-- TODO FIX LINK TARGET LOCATION!!!! -->
-For these styles to take effect, make sure you have the <strong>default Foundation CSS package</strong> or that you've <strong>selected block grid from a custom package</strong>. These should be linked up following our default <a href="../index.html">HTML page structure</a>.
+For these styles to take effect, make sure you have the **default Foundation CSS package** or that you've **selected block grid from a custom package**. These should be linked up following our default [HTML page structure]({{relative absolute 'dist/docs/components/index.html'}}).
 
 ---
 
 ### Using The Mixin
-<!-- TODO FIX LINK TARGET LOCATION!!!! -->
-We've included SCSS mixins used to style block-grids. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_block-grid.scss</a> from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+We've included SCSS mixins used to style block-grids. To use the mixin, you'll need to have the [extension installed](../sass.html)[]() or grab [_variables.scss](https://github.com/zurb/foundation/tree/master/scss/foundation/components), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_block-grid.scss](https://github.com/zurb/foundation/tree/master/scss/foundation/components) from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
 
 {{#markdown}}
 ```scss
@@ -50,31 +38,15 @@ We've included SCSS mixins used to style block-grids. To use the mixin, you'll n
 
 If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure. Since we don't have any media queries baked into the mixin itself, you can apply the styles at whatever breakpoint you want! Just change the configuration within each.
 
-{{#markdown}}
-### Example
-```html
 {{> examples_block_mixin}}
-```
-{{/markdown}}
 
 ##### Quick Mixin
 
 You can build your block-grid using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options configuring the block grid layout and margin on the fly. The global mixin looks like this:
 
-{{#markdown}}
-### Options
-```scss
-   {{> examples_block_mixin_options.scss}}
-```
-{{/markdown}}
+{{> examples_block_mixin_options}}
 
-<ul class="small-block-grid-5">
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-  <li><img class="th" src="http://placehold.it/300x300"></li>
-</ul>
+{{> examples_block_mixin_example}}
 
 ##### Clearing Block Grid Rows
 
@@ -92,8 +64,4 @@ We have this built into the CSS, but you'll need to add a bit of code if you wan
 
 ##### Available SCSS Variables
 
-{{#markdown}}
-```scss
 {{> examples_block_variables.scss}}
-```
-{{/markdown}}

@@ -108,9 +108,7 @@ hr.dashed { border-style: dashed; }
   padding-right: 0;
 }
 
-.options {
-  @include grid-column($columns:5);
-}
+.options { @include grid-column($columns:5); }
 
 .options-bg {
   padding: 18px;
@@ -124,12 +122,12 @@ hr.dashed { border-style: dashed; }
 }
 
 pre {
-
   code {
     .code-container {
       //@include border(solid, 1px, darken($panel-bg-color, 4%));
       //border-radius: 3px;
       //background-color: darken($panel-bg-color, 2%);
+      margin: 10px 0px;
       padding: 5px;
       overflow-x: auto;
       line-height: 1.3em;
