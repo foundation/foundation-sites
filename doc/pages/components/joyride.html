@@ -1,0 +1,64 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Joyride
+
+#### Joyride is an extremely flexible plugin that gives users a tour of your site or app when they visit.
+
+<div id="firstStop" class="panel">Some awesome part of your site!</div>
+
+---
+
+{{> examples_joyride_basic}}
+
+{{> examples_joyride_basic_rendered}}
+
+##### We Add Some HTML with JS
+
+To make Joyride really easy to use, we built its container and tour element inside the JS. This can make it hard to know what to target for styling purposes in some cases. To help this process go smoothly, here's what the output looks like with the appropriate classes to target for styling:
+
+{{> examples_joyride_add_html}}
+
+---
+
+<h3 id="numero2">Available SCSS Variables<h3>
+We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.
+
+{{> examples_joyride_variables}}
+
+---
+
+### Using the JavaScript
+
+<div class="panel">
+  Before you can use Joyride you'll want to verify that both jQuery (or Zepto) and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.joyride.js` and `foundation.cookie.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_joyride_javascript}}
+
+Required Foundation Library: `foundation.joyride.js`, Optional JS Library: `foundation.cookie.js`
+
+Joyride does not initialize on page load like the rest of the plugins. You need to call `start` to get it to load.
+
+{{> examples_joyride_library}}
+
+Then, you'll need to add a data-joyride to make the JS work properly on that element. It looks something like this:
+
+{{#markdown}}
+```html
+<ol data-joyride>
+  ...
+</ol>
+```
+{{/markdown}}
+
+##### Optional JavaScript Configuration
+
+You can either set these options in a `data-options` attribute in the markup, `data-options="option: value; option2: value syntax"`, or pass in on initialization. Configurations that are <i>objects</i>, <i>functions</i>, or <i>arrays</i> can only be passed in during intitialization.
+
+{{> examples_joyride_options}}
+
+{{> examples_joyride_tour_stop}}
