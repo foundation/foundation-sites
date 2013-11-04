@@ -401,12 +401,15 @@ meta.foundation-mq-topbar {
 
       input,
       .button {
-        line-height: 2em;
         font-size: em-calc(14);
         height: 2em;
         padding: 0 10px;
         position: relative;
         top: 8px;
+      }
+
+      .button {
+        line-height: 2em;
       }
 
       &.expanded { background: $topbar-bg; }
