@@ -182,27 +182,27 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
   </thead>
   <tbody>
     <tr>
-      <td>open.clearing.fndtn</td>
+      <td>open.fndtn.clearing</td>
       <td>event, thumb-id</td>
       <td>Fires before a thumbnail is expanded. The <code>thumb-id</code> parameter contains the thumbnail id.</td>
     </tr>
     <tr>
-      <td>opened.clearing.fndtn</td>
+      <td>opened.fndtn.clearing</td>
       <td>event</td>
       <td>Fires after an expanded image has opened.</td>
     </tr>
     <tr>
-      <td>close.clearing.fndtn</td>
+      <td>close.fndtn.clearing</td>
       <td>event</td>
       <td>Fires before a large image is closed</td>
     </tr>
     <tr>
-      <td>closed.clearing.fndtn</td>
+      <td>closed.fndtn.clearing</td>
       <td>event</td>
       <td>Fires after a large image is closed</td>
     </tr>
     <tr>
-    	<td>change.clearing.fndtn</td>
+    	<td>change.fndtn.clearing</td>
     	<td>event</td>
     	<td>Fires when the large image is changed using the arrows at the side</td>
     </tr>
@@ -222,7 +222,7 @@ $clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
 </div>
 
 <script>
-$("div#myClearingEx").on("open.clearing.fndtn", function(event, id) {
+$("div#myClearingEx").on("open.fndtn.clearing", function(event, id) {
   console.info("About to open thumbnail with id " + id);
 });
 </script>
