@@ -86,6 +86,8 @@
         if ($(this).hasClass(self.settings.activeClass)) {
           $(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
+            .removeClass(self.settings.activeClass)
+            .prev('[data-dropdown]')
             .removeClass(self.settings.activeClass);
           $(this).trigger('closed');
         }
@@ -96,6 +98,7 @@
         this
           .css(dropdown
             .addClass(this.settings.activeClass), target);
+        dropdown.prev('[data-dropdown]').addClass(this.settings.activeClass);
         dropdown.trigger('opened');
     },
 
