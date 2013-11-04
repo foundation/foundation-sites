@@ -22,7 +22,7 @@ function when(size, testFunc) {
 beforeEach(function() {
   jasmine.Clock.useMock();
 
-  if(!$('head').has('#foundation-style')) {
+  if($('head').has('#foundation-style').length === 0) {
     $('head').append('<style id="foundation-style"></style>')
   }
 
