@@ -16,6 +16,8 @@ $switch-height-med: 36px !default;
 $switch-height-lrg: 44px !default;
 $switch-bottom-margin: em-calc(20) !default;
 
+$switch-font-color: rgba(0,0,0,0.75) !default;
+
 // We use these to control default font sizes for our classes.
 $switch-font-size-tny: 11px !default;
 $switch-font-size-sml: 12px !default;
@@ -25,6 +27,7 @@ $switch-label-side-padding: 6px !default;
 
 // We use these to style the switch-paddle
 $switch-paddle-bg: #fff !default;
+$switch-disabled-paddle-bg: #ddd !default;
 $switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%) !default;
 $switch-paddle-border-color: darken($switch-paddle-bg, 35%) !default;
 $switch-paddle-border-width: 1px !default;
@@ -63,6 +66,7 @@ $switch-label-outline: 1px dotted #888 !default;
     width: 50%;
     height: 100%;
     margin: 0;
+    font-color: $switch-font-color;
     font-weight: bold;
     text-align: $default-float;
 
@@ -173,6 +177,22 @@ $switch-label-outline: 1px dotted #888 !default;
   @if $base-style {
     background: $switch-bg;
     border-color: $switch-border-color;
+
+    input:first-of-type:checked ~ input:last-of-type:disabled ~ span:last-child,
+    input:first-of-type:disabled ~ input:last-of-type:checked ~ span:last-child {
+      background: $switch-disabled-paddle-bg;
+      // Building the alternating colored sides of the switch
+      @if $experimental {
+        -webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07),
+                            1000px 0 0 1000px lighten($positive-color, 5%),
+                            -2px 0 10px 0 rgba(0,0,0,0.07),
+                            -1000px 0 0 1000px lighten($negative-color, 5%);
+      }
+      box-shadow:         2px 0 10px 0 rgba(0,0,0,0.07),
+                          1000px 0 0 980px lighten($positive-color, 5%),
+                          -2px 0 10px 0 rgba(0,0,0,0.07),
+                          -1000px 0 0 1000px lighten($negative-color, 5%);
+    }
 
     span:last-child {
       border-color: darken($paddle-bg, 30%);
