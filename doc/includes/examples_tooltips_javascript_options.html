@@ -1,0 +1,16 @@
+{{#markdown}}
+```javascript
+{
+  selector : '.has-tip',
+  additionalInheritableClasses : [],
+  tooltipClass : '.tooltip',
+  touchCloseText: 'tap to close',
+  disable-for-touch: false,
+  tipTemplate : function (selector, content) {
+    return '<span data-selector=\"' + selector + '\" class=\"'
+      + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
+      + '\">' + content + '<span class=\"nub\"></span></span>';
+  }
+}
+```
+{{/markdown}}
