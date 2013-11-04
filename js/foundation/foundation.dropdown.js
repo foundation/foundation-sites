@@ -57,7 +57,7 @@
         .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
         .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
 
-      $(document).on('click.fndtn.dropdown', function (e) {
+      $(document).on('click.fndtn.dropdown touchstart.fndtn.dropdown', function (e) {
         var parent = $(e.target).closest('[data-dropdown-content]');
 
         if ($(e.target).data('dropdown') || $(e.target).parent().data('dropdown')) {
@@ -86,6 +86,8 @@
         if ($(this).hasClass(self.settings.activeClass)) {
           $(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
+            .removeClass(self.settings.activeClass)
+            .prev('[data-dropdown]')
             .removeClass(self.settings.activeClass);
           $(this).trigger('closed');
         }
@@ -96,6 +98,7 @@
         this
           .css(dropdown
             .addClass(this.settings.activeClass), target);
+        dropdown.prev('[data-dropdown]').addClass(this.settings.activeClass);
         dropdown.trigger('opened');
     },
 

@@ -20,8 +20,10 @@
     },
 
     init : function (section, method, options) {
-      Foundation.inherit(this, 'data_options addCustomRule');
+      Foundation.inherit(this, 'data_options register_media addCustomRule');
       var self = this;
+
+      self.register_media('topbar', 'foundation-mq-topbar');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
@@ -46,10 +48,6 @@
           } else {
             self.settings.$topbar.data('height', self.outerHeight(self.settings.$topbar));
           }
-
-          var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
-          self.settings.breakPoint = breakpoint.width();
-          breakpoint.remove();
 
           self.assemble();
 
@@ -162,10 +160,6 @@
 
           e.stopImmediatePropagation();
 
-          if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
-            e.preventDefault();
-          }
-
           if (li.hasClass('hover')) {
             li
               .removeClass('hover')
@@ -176,11 +170,14 @@
               .removeClass('hover');
           } else {
             li.addClass('hover');
+            if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
+              e.preventDefault();
+            }
           }
         })
 
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
-          if (self.breakpoint() && $(window).width() != self.settings.breakPoint) {
+          if (self.breakpoint()) {
 
             e.preventDefault();
 
@@ -242,7 +239,7 @@
         }
       }.bind(this));
 
-      $('body').on('click.fndtn.topbar', function (e) {
+      $('body').on('click.fndtn.topbar touchstart.fndtn.topbar', function (e) {
         var parent = $(e.target).closest('li').closest('li.hover');
 
         if (parent.length > 0) {
@@ -285,7 +282,7 @@
     },
 
     breakpoint : function () {
-      return $(document).width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
+      return !matchMedia(Foundation.media_queries['topbar']).matches || $('html').hasClass('lt-ie9');
     },
 
     assemble : function () {
