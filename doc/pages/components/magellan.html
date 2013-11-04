@@ -1,0 +1,43 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Magellan
+
+#### Magellan is a style agnostic plugin that lets you style a sticky navigation that denotes where you are on the page.
+
+{{> examples_magellan_basic}}
+
+---
+
+<a name="build"></a>
+<h3 data-magellan-destination="build">Build With Predefined HTML Structure</h3>
+<p>When we set out to build Magellan, we wanted it to be really lightweight and stay out of your way. With that in mind, we kept custom styles out of the game. Magellan is style agnostic, meaning you can attach it to anything. There are a few built-in lists in Foundation that will work, including the sub-nav. If you look at the top of this page you'll see our sub-nav. As you scroll, you'll see Magellan in action!</p>
+
+{{> examples_magellan_basic_rendered}}
+
+For these styles to come across, make sure you have the default Foundation CSS package or that you've selected **magellan from a custom package**. These should be linked up following our default [HTML page structure](../index.html#basicHTMLMarkup).
+
+---
+
+<a name="js"></a>
+<h3 data-magellan-destination="js">Using Our JavaScript</h3>
+<div class="panel">
+  Before you can use Magellan you'll want to verify that both jQuery (or Zepto) and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.magellan.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_magellan_javascript}}
+
+Required Foundation Library: `foundation.magellan.js`
+
+Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:
+
+{{> examples_magellan_library}}
+
+##### Optional JavaScript Configuration
+
+Magellan options can only be passed in during initialization at this time.
+
+{{> examples_magellan_options}}
