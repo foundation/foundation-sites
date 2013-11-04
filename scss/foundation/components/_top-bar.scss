@@ -66,6 +66,14 @@ $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%) !default;
 $topbar-sticky-class: ".sticky" !default;
 $topbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
 
+// Used to provide media query values for javascript components.
+// This class is generated despite the value of $include-html-top-bar-classes
+// to ensure width calculations work correctly.
+meta.foundation-mq-topbar {
+  font-family: $topbar-media-query;
+  width: $topbar-breakpoint;
+}
+
 @if $include-html-top-bar-classes != false {
 
   /* Wrapped around .top-bar to contain to grid width */
@@ -376,11 +384,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
     }
   }
 
-  // Element that controls breakpoint, no need to change this ever
-  .top-bar-js-breakpoint {
-    width: $topbar-breakpoint !important;
-    visibility: hidden;
-  }
   .js-generated { display: block; }
 
 

@@ -406,6 +406,13 @@ if (typeof jQuery === "undefined" &&
         return true;
       },
 
+      register_media : function(media, media_class) {
+        if(Foundation.media_queries[media] === undefined) {
+          $('head').append('<meta class="' + media_class + '">');
+          Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
+        }
+      },
+
       addCustomRule : function(rule, media) {
         if(media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
