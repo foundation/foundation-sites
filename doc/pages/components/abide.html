@@ -1,0 +1,100 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Abide
+
+#### Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.
+
+{{> examples_abide_basic}}
+
+---
+
+### Setting up validation
+
+To enable validation with Abide add the `data-abide` attribute to your `<form>` element. Then add the `required` attribute to each input that you want to require. Additionaly, you can define a `pattern` to define restraints on what users can input.
+
+{{> examples_abide_basic_rendered}}
+
+---
+
+### Predefined patterns
+
+Abide has several patterns common validation patterns built into the library:
+
+{{> examples_abide_patterns}}
+
+You can also use these patterns by settings the input's type to the name of the pattern instead of using the pattern attribute:
+
+{{#markdown}}
+```html
+<input type="password" required>
+<input type="email">
+<input type="url">
+```
+{{/markdown}}
+
+There is a good list of valid HTML5 input types on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input). Try to avoid using patterns defined by type that do not match the specification.
+
+For named patterns that are not valid input types you can use the following shortcut:
+
+{{#markdown}}
+```html
+<input type="text" pattern="integer">
+```
+{{/markdown}}
+
+---
+
+### Custom named patterns
+
+By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.
+
+<!-- Abide Custom Patterns Javascript Example -->
+{{> examples_abide_custom_patterns}}
+
+You can then use these custom patterns like you would the predfined patterns in your markup:
+
+<!-- Abide Custom Patterns HTML Example -->
+{{> examples_abide_custom_patterns_rendered}}
+
+---
+
+### Error Messages
+
+To display an error message for your invalid form element include a `<small>` tag with an `error` class as a sibling of your input.
+
+{{> examples_abide_errors}}
+
+In the above example we have wrapped our input in a `div`. This div will receive an `error` class when the input is invalid. This class will show our error message and style the label and input accordingly.
+
+Invalid inputs inherit a `data-invalid` attribute.
+
+---
+
+### Events
+
+If a submit event is fired, a `valid` event is triggered if the form is valid and an `invalid` event is triggered if the form is invalid.
+
+You can bind to these events and fire your own callback:
+
+{{> examples_abide_events}}
+
+---
+
+### Using the JavaScript
+
+<div class="panel">
+  Before you can use Abide you'll want to verify that both jQuery (or Zepto) and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.abide.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_abide_javascript}}
+
+Required Foundation Library: `foundation.abide.js`
+
+##### Optional JavaScript Configuration
+
+{{> examples_abide_javascript_options}}
+
