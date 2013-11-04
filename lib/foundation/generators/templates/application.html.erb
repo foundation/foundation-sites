@@ -25,7 +25,7 @@
 
     <%%= yield %>
 
-    <% if false %>
+    <%- if false -%>
       <script>
         document.write('<script src=' +
         ('__proto__' in {} ? '<%%= asset_path("vendor/zepto") %>' : '<%%= asset_path("jquery") %>') +
@@ -41,7 +41,7 @@
         };
         var jQuery = $;
       </script>
-    <% end %>
+    <%- end -%>
     <%%= javascript_include_tag "application" %>
   </body>
 </html>
