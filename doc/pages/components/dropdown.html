@@ -1,0 +1,85 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Dropdown
+
+#### In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a universal dropdown plugin that will attach dropdowns or popovers next to anything!
+
+{{> examples_dropdown_basic}}
+
+---
+
+##### Build With Predefined HTML Classes
+
+To create the dropdown you'll need to attach a `data-dropdown="your-id"` to whatever element you want the dropdown attached to. From there you'll create a list that holds the links or content and add an `id="your-id"` that associates with the element it belongs to. To style the dropdown, we've included a class of `.f-dropdown` that you can target and style to your heart's desire. If you want the dropdown to be content, simply chain the class `.content` to the dropdown. Here's an example of that markup:
+
+{{> examples_dropdown_basic_rendered}}
+
+{{> examples_dropdown_basic_nostyle}}
+
+You'll notice that `data-dropdown="drop1"` and `id="drop1"` have the same value. This is what tells the dropdown plugin where to look to find the position to attach the dropdown. It is best to place your dropdown and target element **within the same offset parent**.
+
+Available class options:
+
+* `tiny`: Make the dropdown have a max-width of 200px
+* `small`: Make the dropdown have a max-width of 300px
+* `medium`: Make the dropdown have a max-width of 500px
+* `large`: Make the dropdown have a max-width of 800px
+* `content`: Add padding inside the dropdown for better looking content.
+
+You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the **default Foundation CSS package** or that you've selected **dropdowns from a custom package**. These should be linked up following our default [HTML page structure](../index.html#basicHTMLMarkup).
+
+##### Hoverable Dropdown Option
+
+If you'd rather have your dropdown be accessible by hover you can add a data-option to the target element:
+
+{{> examples_dropdown_hoverable_rendered}}
+
+{{> examples_dropdown_hoverable}}
+
+---
+
+### Build With Our Mixins
+
+We've included SCSS mixins used to style dropdowns. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_dropdown.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_dropdown.scss) from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/dropdown";
+```
+{{/markdown}}
+
+If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
+
+{{#markdown}}
+```html
+<a href="#" data-dropdown="drop1">Has Dropdown</a>
+
+<ul id="drop1" class="your-class-name" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+
+##### The Container Mixin
+
+There are two mixins you can use when building your dropdowns&mdash; the container and the list style. The container mixin will give you all the styles needed for the base styles of the dropdown, not including styles for the default link list style. The container mixin looks like this:
+
+{{> examples_dropdown_container_mixin}}
+
+##### The List Style Mixin
+
+For content dropdowns, we don't add any extra style to the inside of the dropdown other than padding around the edges. For link lists, we wanted to predefined style that would look good out of the box and match the style of our custom select dropdowns. The style mixin looks like this:
+
+{{> examples_dropdown_list_mixin}}
+
+##### Default SCSS Variables
+
+{{> examples_dropdown_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
