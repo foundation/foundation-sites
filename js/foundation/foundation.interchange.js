@@ -183,7 +183,10 @@
           data_attr = this.data_attr;
 
       this.cached_nodes = [];
-      this.nodes_loaded = false;
+      // Set nodes_loaded to true if there are no nodes
+      // this.nodes_loaded = false;
+      this.nodes_loaded = (count === 0);
+
 
       for (var i = count - 1; i >= 0; i--) {
         loaded_count++;
