@@ -89,86 +89,23 @@ We include most of the form styles by default, but the ones that are attached to
 
 With the form label mixin, you can control which classes make your labels line up how you want them to next to their form elements. You'll use these in conjunction with the grid mixin.
 
-{{#markdown}}
-```html
-<form>
-  <div class="row collapse">
-    <span class="your-prefix-class">Label</span>
-    <input type="text" class="your-input-class" placeholder="Value">
-  </div>
-</form>
-```
-{{/markdown}}
+{{> examples_form_prepost_mixin}}
 
 Since you need to wrap columns in a container anyway, we've used a `.row.collapse` rather than creating our own class to hold those mixins. Feel free to attach those styles to your own class or ID though.
 
 ###### The base mixin:
 
-{{#markdown}}
-```scss
-.your-prefix-class {
-  @include prefix-postfix-base;
-  @include grid-column($columns:3,$float:left);
-}
-
-input[type="text"].your-input-class {
-  @include grid-column($columns:9);
-}
-```
-{{/markdown}}
-
-<form>
-  <div class="row collapse">
-    <span class="attached-label">Label</span>
-    <input type="text" class="attached-input" placeholder="Value">
-  </div>
-</form>
+{{> examples_form_base_mixin}}
 
 ###### The Prefix &amp; Postfix Style Mixins
 
 You can control the style you add to your prefix or postfix elements using this mixin, it looks like this:
 
-{{#markdown}}
-```scss
-.your-prefix-class {
-  @include prefix-postfix-base;
-  @include prefix;
-  @include grid-column($columns:3,$float:left);
-}
-
-input[type="text"].your-input-class {
-  @include grid-column($columns:9);
-}
-```
-{{/markdown}}
-
-<form>
-  <div class="row collapse">
-    <span class="attached-label style">Label</span>
-    <input type="text" class="attached-input" placeholder="Value">
-  </div>
-</form>
+{{> examples_form_style_mixin}}
 
 There are two options you can set with the prefix and postfix mixins, these are:
 
-{{#markdown}}
-```scss
-@include prefix($bg, $is-button);
-
-/* Control the background color, which also effect the border and font color */
-$bg: $input-prefix-bg;
-
-/* If you prefix or postfix element is a button, make sure to set this to true */
-$is-button: false;
-```
-{{/markdown}}
-
-<form>
-  <div class="row collapse">
-    <span class="attached-label style custom">Label</span>
-    <input type="text" class="attached-input" placeholder="Value">
-  </div>
-</form>
+{{> examples_form_prepost_options}}
 
 ##### Default SCSS Variables
 

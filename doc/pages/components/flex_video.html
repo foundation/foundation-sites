@@ -19,13 +19,7 @@ The available class options:
 * `widescreen`: Will give the player a widescreen aspect ratio.
 * `vimeo`: This will ensure that we don't add extra padding since Vimeo has controls within the player, itself.
 
-{{#markdown}}
-```html
-<div class="flex-video">
-  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
-</div>
-```
-{{/markdown}}
+{{> examples_flex_video_basic_rendered}}
 
 For these styles to come across, make sure you have the default Foundation CSS package or that you've selected flex-video from a custom package. These should be linked up following our default [HTML page structure](../index.html#basicHTMLMarkup).
 
@@ -45,13 +39,7 @@ We've included SCSS mixins used to style labels. To use the mixin, you'll need t
 
 The markup is just like we showed you above, but you can apply the mixin to your own custom class or ID.
 
-{{#markdown}}
-```html
-<div class="your-class-name">
-  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
-</div>
-```
-{{/markdown}}
+{{> examples_flex_video_mixin}}
 
 ##### Quick Mixin
 
@@ -66,18 +54,6 @@ You can build your flex-video containers using our global mixin by including it 
 
 ##### Default SCSS Variables
 
-{{#markdown}}
-```scss
-$include-html-media-classes: $include-html-classes;
-
-/* We use these to control video container padding and margins */
-$flex-video-padding-top: em-calc(25);
-$flex-video-padding-bottom: 67.5%;
-$flex-video-margin-bottom: em-calc(16);
-
-/* We use this to control widescreen bottom padding */
-$flex-video-widescreen-padding-bottom: 57.25%;
-```
-{{/markdown}}
+{{> examples_flex_video_variables}}
 
 **Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.

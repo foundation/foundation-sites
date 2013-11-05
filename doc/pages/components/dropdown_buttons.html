@@ -41,22 +41,7 @@ We've included SCSS mixins used to style buttons. To use these mixins, you'll ne
 
 If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
 
-{{#markdown}}
-```scss
-/* Using the default styles */
-.your-class-name {
-  @include button;
-  @include dropdown-button;
-}
-```
-{{/markdown}}
-
-<a href="" data-dropdown="drop7 "class="dropdown button">Default Dropdown Button</a>
-<ul id="drop7" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
+{{> examples_dropdown_button_mixin}}
 
 There are also **three options** you can customize on the fly when writing this mixin. These control things like: background color, pip color and base styles. Setting any of these options to **false** will not include the styles.
 
@@ -66,24 +51,7 @@ There are also **three options** you can customize on the fly when writing this 
 
 Sometimes you want to add a nice fancy shine to the edge of your button. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the button a nice zero-fade.
 
-{{#markdown}}
-```scss
-.your-class-name {
-  @include button;
-  @include dropdown-button;
-  @include radius;
-  @include single-transition;
-  @include inset-shadow;
-}
-```
-{{/markdown}}
-
-<a href="#" data-dropdown="drop6" class="customized-dropdown-docs">Button Base, Size, Style &amp; Shine</a>
-<ul id="drop6" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
+{{> examples_dropdown_button_options_mixin}}
 
 ##### Default SCSS Variables
 
