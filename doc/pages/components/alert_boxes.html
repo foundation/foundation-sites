@@ -13,7 +13,7 @@ layout: doc/layouts/default.html
 
 ### Build With Predefined HTML Classes
 
-There are two ways to build alerts in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building an alert using our predefined class is super-easy, you only need a block-level element with a class of `.alert-box` (we usually use a `<div>`). You may also include an anchor with a class of `.close` to create a close box. Here is the markup you'll need:
+There are two ways to build alerts in Foundation 5: with our predefined HTML classes or with our structure and mixins. Building an alert using our predefined class is super-easy, you only need a block-level element with a class of `.alert-box` (we usually use a `<div>`). You may also include an anchor with a class of `.close` to create a close box. Here is the markup you'll need:
 
 <!-- Basic Alert Box Code Example -->
 {{> examples_alert_basic_rendered}}
@@ -24,7 +24,7 @@ For these styles to come across, make sure you have the **default Foundation CSS
 
 ### Build with Mixins
 
-We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_alert-boxes.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_alert-boxes.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the [extension installed]({{relative absolute 'dist/docs/components/sass.html'}}) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_alert-boxes.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_alert-boxes.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
 
 {{#markdown}}
 ```scss
