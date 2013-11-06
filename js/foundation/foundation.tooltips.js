@@ -148,6 +148,9 @@
         if (Foundation.rtl) {
           left = target.offset().left + target.offset().width - this.outerWidth(tip);
         }
+        if (classes && classes.indexOf('tip-center') > -1) {
+          left = target.offset().left + (this.outerWidth(target) / 2) - (this.outerWidth(tip) / 2);
+        }
         objPos(tip, (target.offset().top + this.outerHeight(target) + 10), 'auto', 'auto', left, width);
         tip.removeClass('tip-override');
         if (classes && classes.indexOf('tip-top') > -1) {
@@ -166,7 +169,7 @@
     },
 
     inheritable_classes : function (target) {
-      var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'noradius'].concat(this.settings.additionalInheritableClasses),
+      var inheritables = ['tip-top', 'tip-left', 'tip-bottom', 'tip-right', 'tip-center', 'noradius'].concat(this.settings.additionalInheritableClasses),
           classes = target.attr('class'),
           filtered = classes ? $.map(classes.split(' '), function (el, i) {
             if ($.inArray(el, inheritables) !== -1) {

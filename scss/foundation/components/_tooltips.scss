@@ -72,6 +72,14 @@ $tooltip-pip-size: 5px !default;
       color: $has-tip-font-color-hover !important;
       border-bottom: $has-tip-border-bottom-hover !important;
     }
+    &.tip-center {
+      text-align: center;
+
+      & > .nub {
+        left: 50%;
+        margin-left: -$tooltip-pip-size;
+      }
+    }
   }
 
   .tap-to-close {
@@ -110,8 +118,16 @@ $tooltip-pip-size: 5px !default;
         top: 50%;
         margin-top: -$tooltip-pip-size;
       }
-
     }
   }
 
+  @media #{large} {
+    .tooltip {
+      .tip-center
+        > .nub {
+        left: 50%;
+        margin-left: -$tooltip-pip-size;
+      }
+    }
+  }
 }
