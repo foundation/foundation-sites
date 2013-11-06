@@ -288,7 +288,11 @@
     assemble : function () {
       var self = this;
       // Pull element out of the DOM for manipulation
-      this.settings.$section.detach();
+      this.settings.$section.each(function(index, item){
+        var $item = $(item);
+        $item.data("initial-parent", $item.parent());
+        $item.detach();
+      })
 
       this.settings.$section.find('.has-dropdown>a').each(function () {
         var $link = $(this),
@@ -311,7 +315,11 @@
       });
 
       // Put element back in the DOM
-      this.settings.$section.appendTo(this.settings.$topbar);
+      var reattachTarget;
+      this.settings.$section.each(function(index, item){
+        var $item = $(item);
+        $item.appendTo($item.data("initial-parent"));
+      })
 
       // check for sticky
       this.sticky();
