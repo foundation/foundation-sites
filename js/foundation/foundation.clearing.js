@@ -412,8 +412,8 @@
       if (target.length) {
         target
           .find('img')
-          .trigger('click', [current, target])
-          .trigger('change.fndtn.clearing');
+          .trigger('change.fndtn.clearing')
+          .trigger('click', [current, target]);
       }
     },
 

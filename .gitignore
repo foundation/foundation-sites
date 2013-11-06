@@ -31,5 +31,9 @@ docs/public/*
 *.scssc
 *.rbenv-version
 *.ruby-version
+<<<<<<< HEAD
+.project
+=======
 
 .project
+>>>>>>> origin/add-events-to-settings
