@@ -8,7 +8,7 @@
     <link href='{{assets}}/css/docs.css' rel='stylesheet' />
     <script src="{{assets}}/js/custom.modernizr.js"></script>
   </head>
-  <body class="antialiased off-canvas hide-extras">
+  <body id="off-canvas" class="antialiased hide-extras">
     {{> topbar}}
     <section role="main">
       <header class="show-for-small">
@@ -32,10 +32,19 @@
     <script src="{{assets}}/js/jquery.js"></script>
     {{!-- Use async code to load
     <script src="{{assets}}/js/all.js"></script>
-    --}}
     <script>
-    $.getScript("{{assets}}/js/all.js", function(){
-      $(document).foundation().foundation('joyride', 'start');
+    $(document).foundation();
+    $(".off-canvas-left-toggle").click(function(e){
+      $("body").addClass("move-right");
+    });
+    $("#back").click(function(){
+      $("body").removeClass("move-right");
+    });
+    $(".off-canvas-right-toggle").click(function(e){
+      $("body").addClass("move-left");
+    });
+    $("#back").click(function(){
+      $("body").removeClass("move-left");
     });
     </script>
   </body>
