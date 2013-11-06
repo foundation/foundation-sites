@@ -109,10 +109,10 @@
       var $this = $(this),
           self = Foundation.libs.section,
           region = $this.parent(),
-          content = $this.siblings(self.settings.content_selector),
           section = region.parent(),
           settings = $.extend({}, self.settings, self.data_options(section)),
-          prev_active_region = section.children(self.settings.region_selector).filter("." + self.settings.active_class);
+          content = $this.siblings(settings.content_selector),
+          prev_active_region = section.children(settings.region_selector).filter("." + settings.active_class);
 
       //for anchors inside [data-section-title]
       if (!settings.deep_linking && content.length > 0) {
@@ -121,17 +121,17 @@
 
       e.stopPropagation(); //do not catch same click again on parent
 
-      if (!region.hasClass(self.settings.active_class)) {
-        if (!self.is_accordion(section) || (self.is_accordion(section) && !self.settings.multi_expand)) {
-          prev_active_region.removeClass(self.settings.active_class);
+      if (!region.hasClass(settings.active_class)) {
+        if (!self.is_accordion(section) || (self.is_accordion(section) && !settings.multi_expand)) {
+          prev_active_region.removeClass(settings.active_class);
           prev_active_region.trigger('closed.fndtn.section');
         }
-        region.addClass(self.settings.active_class);
+        region.addClass(settings.active_class);
         //force resize for better performance (do not wait timer)
-        self.resize(region.find(self.settings.section_selector).not("[" + self.settings.resized_data_attr + "]"), true);
+        self.resize(region.find(settings.section_selector).not("[" + settings.resized_data_attr + "]"), true);
         region.trigger('opened.fndtn.section');
-      } else if (region.hasClass(self.settings.active_class) && self.is_accordion(section) || !settings.one_up && (self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))) {
-        region.removeClass(self.settings.active_class);
+      } else if (region.hasClass(settings.active_class) && self.is_accordion(section) || !settings.one_up && (self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))) {
+        region.removeClass(settings.active_class);
         region.trigger('closed.fndtn.section');
       }
       settings.callback(section);
@@ -148,41 +148,41 @@
     resize: function(sections, ensure_has_active_region) {
 
       var self = Foundation.libs.section,
-          section_container = $(self.settings.section_selector),
-          is_small_window = self.small(section_container),
+          section = $(this).parent(),
+          settings = $.extend({}, self.settings, self.data_options(section)),
+          is_small_window = self.small(section),
           //filter for section resize
           should_be_resized = function (section, now_is_hidden) {
             return !self.is_accordion(section) && 
-              !section.is("[" + self.settings.resized_data_attr + "]") && 
+              !section.is("[" + settings.resized_data_attr + "]") && 
               (!is_small_window || self.is_horizontal_tabs(section)) && 
               now_is_hidden === (section.css('display') === 'none' || 
               !section.parent().is(':visible'));
           };
 
-      sections = sections || $(self.settings.section_selector);
+      sections = sections || $(settings.section_selector);
 
       clearTimeout(self.check_resize_timer);
 
       if (!is_small_window) {
-        sections.removeAttr(self.settings.small_style_data_attr);
+        sections.removeAttr(settings.small_style_data_attr);
       }
 
       //resize
       sections.filter(function() { return should_be_resized($(this), false); })
         .each(function() {
           var section = $(this),
-            regions = section.children(self.settings.region_selector),
-            titles = regions.children(self.settings.title_selector),
-            content = regions.children(self.settings.content_selector),
+            regions = section.children(settings.region_selector),
+            titles = regions.children(settings.title_selector),
+            content = regions.children(settings.content_selector),
             titles_max_height = 0;
 
           if (ensure_has_active_region && 
-            section.children(self.settings.region_selector).filter("." + self.settings.active_class).length == 0) {
-            var settings = $.extend({}, self.settings, self.data_options(section));
+            section.children(settings.region_selector).filter("." + settings.active_class).length == 0) {
 
             if (!settings.deep_linking && (settings.one_up || !self.is_horizontal_nav(section) &&
               !self.is_vertical_nav(section) && !self.is_accordion(section))) {
-                regions.filter(":visible").first().addClass(self.settings.active_class);
+                regions.filter(":visible").first().addClass(settings.active_class);
             }
           }
 
@@ -210,7 +210,7 @@
             titles.css('height', titles_max_height);
             regions.each(function() {
               var region = $(this),
-                  region_content = region.children(self.settings.content_selector),
+                  region_content = region.children(settings.content_selector),
                   content_top_border_width = parseInt(region_content.css("border-top-width"), 10);
 
               if (content_top_border_width.toString() === 'Nan') {
@@ -233,7 +233,7 @@
             regions.each(function() {
               var region = $(this);
 
-              region.css("margin-left", "-" + (first ? section : region.children(self.settings.title_selector)).css("border-left-width"));
+              region.css("margin-left", "-" + (first ? section : region.children(settings.title_selector)).css("border-left-width"));
               first = false;
             });
 
@@ -275,7 +275,7 @@
             regions.each(function () {
               var region = $(this);
 
-              region.css("margin-top", "-" + (first1 ? section : region.children(self.settings.title_selector)).css("border-top-width"));
+              region.css("margin-top", "-" + (first1 ? section : region.children(settings.title_selector)).css("border-top-width"));
               first1 = false;
             });
 
@@ -284,17 +284,17 @@
             section.css('width', titles_max_width);
           }
 
-          section.attr(self.settings.resized_data_attr, true);
+          section.attr(settings.resized_data_attr, true);
         });
 
       //wait elements to become visible then resize
-      if ($(self.settings.section_selector).filter(function() { return should_be_resized($(this), true); }).length > 0)
+      if ($(settings.section_selector).filter(function() { return should_be_resized($(this), true); }).length > 0)
         self.check_resize_timer = setTimeout(function() {
           self.resize(sections.filter(function() { return should_be_resized($(this), false); }), true);
         }, 700);
 
       if (is_small_window) {
-        sections.attr(self.settings.small_style_data_attr, true);
+        sections.attr(settings.small_style_data_attr, true);
       }
     },
 
