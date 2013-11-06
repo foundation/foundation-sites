@@ -9,6 +9,7 @@
     version : '4.3.2',
 
     settings : {
+      hoverDelay : 0, //duration of tooltips staying open before auto closing if no mouseover
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
@@ -16,8 +17,8 @@
       appendTo: 'body',
       'disable-for-touch': false,
       tipTemplate : function (selector, content) {
-        return '<span data-selector="' + selector + '" class="' 
-          + Foundation.libs.tooltips.settings.tooltipClass.substring(1) 
+        return '<span data-selector="' + selector + '" class="'
+          + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
           + '">' + content + '<span class="nub"></span></span>';
       }
     },
@@ -37,7 +38,7 @@
       if (typeof method !== 'string') {
         if (Modernizr.touch) {
           $(this.scope)
-            .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
+            .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip',
               '[data-tooltip]', function (e) {
               var settings = $.extend({}, self.settings, self.data_options($(this)));
               if (!settings['disable-for-touch']) {
@@ -46,21 +47,38 @@
                 self.showOrCreateTip($(this));
               }
             })
-            .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
+            .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip',
               this.settings.tooltipClass, function (e) {
               e.preventDefault();
               $(this).fadeOut(150);
             });
         } else {
+          var hoverTimeout, selector = "", toolTipClass = (self.settings.hoverDelay ? ","+self.settings.tooltipClass : ""); //For use with sticky tooltips
           $(this.scope)
-            .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', 
-              '[data-tooltip]', function (e) {
+            .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip',
+              '[data-tooltip]'+toolTipClass, function (e) {
               var $this = $(this);
-
+              selector = self.selector($this);
               if (/enter|over/i.test(e.type)) {
-                self.showOrCreateTip($this);
+                if(self.settings.hoverDelay){
+                    clearTimeout(hoverTimeout);
+                    if($this.hasClass('has-tip')) {
+                        $(self.settings.tooltipClass).hide();
+                        self.showOrCreateTip($this);
+                    }
+                }
+                else {
+                     self.showOrCreateTip($this);
+                }
               } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
-                self.hide($this);
+                if(self.settings.hoverDelay) {
+                    hoverTimeout = setTimeout(function() {
+                        self.hide($this);
+                    }, self.settings.hoverDelay);
+                }
+                else {
+                    self.hide($this);
+                }
               }
             });
         }
