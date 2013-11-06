@@ -126,19 +126,19 @@
     },
 
     pattern : function (el) {
-      var type = el.getAttribute('type'),
+      var pattern = el.getAttribute('pattern') || '',
           required = typeof el.getAttribute('required') === 'string';
-
-      if (this.settings.patterns.hasOwnProperty(type)) {
-        return [el, this.settings.patterns[type], required];
-      }
-
-      var pattern = el.getAttribute('pattern') || '';
 
       if (this.settings.patterns.hasOwnProperty(pattern) && pattern.length > 0) {
         return [el, this.settings.patterns[pattern], required];
       } else if (pattern.length > 0) {
         return [el, new RegExp(pattern), required];
+      }
+      
+      var type = el.getAttribute('type');
+
+      if (this.settings.patterns.hasOwnProperty(type)) {
+        return [el, this.settings.patterns[type], required];
       }
 
       pattern = /.*/;
