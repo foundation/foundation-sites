@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   var hljs = require('highlight.js');
-  hljs.LANGUAGES['scss'] = require('./js/vendor/scss.js')(hljs);
+  hljs.LANGUAGES['scss'] = require('./lib/scss.js')(hljs);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -36,6 +36,13 @@ module.exports = function(grunt) {
         cwd: 'doc/pages',
         src: '**/*.{html,md}',
         dest: 'dist/docs/'
+      },
+      dist_download: {
+        options: {
+          assets: 'dist/assets'
+        },
+        src: 'index.html',
+        dest: 'dist/index.html'
       }
     },
 
@@ -78,12 +85,12 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      docs: {
+      dist: {
         files: [
           {cwd: 'doc/assets/', expand:true, filter: 'isFile', src: '{img}/**/*', dest: 'dist/docs/assets/'},
-          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/docs/assets/js'},
-          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/docs/assets/js/vendor'},
-          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/assets/scss/'}
+          {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor}/**/*.js'], dest: 'dist/assets/js'},
+          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: ['**/*.js'], dest: 'dist/docs/assets/js/'},
+          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'}
         ]
       }
     },
@@ -105,7 +112,7 @@ module.exports = function(grunt) {
       },
       assets: {
         files: ['doc/assets/{img}/**/*'],
-        tasks: ['copy:docs']
+        tasks: ['copy']
       }
     }
   });
