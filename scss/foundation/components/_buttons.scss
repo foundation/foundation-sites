@@ -16,7 +16,7 @@ $button-display: inline-block !default;
 $button-margin-bottom: em-calc(20) !default;
 
 // We use these to control button text styles.
-$button-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$button-font-family: $body-font-family !default;
 $button-font-color: #fff !default;
 $button-font-color-alt: #333 !default;
 $button-font-tny: em-calc(11) !default;

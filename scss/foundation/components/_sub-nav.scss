@@ -16,7 +16,7 @@ $sub-nav-list-margin: em-calc(-4 0 18) !default;
 $sub-nav-list-padding-top: em-calc(4) !default;
 
 // We use this to control the definition
-$sub-nav-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$sub-nav-font-family: $body-font-family !default;
 $sub-nav-font-size: em-calc(14) !default;
 $sub-nav-font-color: #999 !default;
 $sub-nav-font-weight: normal !default;

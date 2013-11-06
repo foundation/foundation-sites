@@ -19,8 +19,8 @@ $side-nav-link-color: $primary-color !default;
 $side-nav-link-color-active: lighten(#000, 30%) !default;
 $side-nav-font-size: em-calc(14) !default;
 $side-nav-font-weight: normal !default;
-$side-nav-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
-$side-nav-active-font-family: "open_sansbold", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$side-nav-font-family: $body-font-family !default;
+$side-nav-active-font-family: $side-nav-font-family !default;
 
 
 

@@ -39,7 +39,7 @@ $topbar-link-hover-lightness: -10% !default; // Darken by 10%
 $topbar-link-bg-hover: #272727 !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: darken($primary-color, 5%) !default;
-$topbar-link-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$topbar-link-font-family: $body-font-family !default;
 
 
 $topbar-dropdown-label-color: #777 !default;
