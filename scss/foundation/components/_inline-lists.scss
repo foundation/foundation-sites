@@ -36,7 +36,7 @@ $inline-list-children-display: block !default;
   & > li {
     list-style: none;
     float: $default-float;
-    margin-#{$default-float}: em-calc(22);
+    margin-#{$default-float}: abs($inline-list-default-float-margin);
     display: $inline-list-display;
     &>* { display: $inline-list-children-display; }
   }
