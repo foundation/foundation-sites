@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 
     foundation: {
       js: ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-      scss: ['scss/foundation/components/_*.scss']
+      scss: ['scss/foundation.scss']
     },
 
     assemble: {
@@ -106,9 +106,13 @@ module.exports = function(grunt) {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
         tasks: ['concat']
       },
-      docs: {
+      dist_docs: {
         files: ['doc/{includes,layouts,pages}/**/*.{html}'],
-        tasks: ['assemble:docs']
+        tasks: ['assemble:dist_docs']
+      },
+      dist_download: {
+        files: ['index.html'],
+        tasks: ['assemble:dist_download']
       },
       assets: {
         files: ['doc/assets/{img}/**/*'],
