@@ -33,3 +33,11 @@
 @function font-url($pth) {
   @return unquote("url(../fonts/#{$pth})");
 }
+
+//
+// @variables
+//
+
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+$body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$em-base: 18;

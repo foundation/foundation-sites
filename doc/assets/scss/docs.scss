@@ -1,9 +1,7 @@
 @import "global";
 @import "foundation";
 @import "code";
-@import "fonts";
 @import "footer";
-@import "fonts";
 
 @mixin box-shadow(
   $shadow-1 : default,
@@ -31,10 +29,9 @@
   border: #{$style} #{$width} #{$color};
 }
 
-
 body {
-  font-size: em-calc(14);
-  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  //font-size: em-calc(14);
+  //font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 
 .row {
