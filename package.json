@@ -11,7 +11,8 @@
     "assemble": "~0.4.18",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
-    "highlight.js": "~7.3.0"
+    "highlight.js": "~7.3.0",
+    "grunt-contrib-uglify": "~0.2.5"
   },
   "licenses": [
     {

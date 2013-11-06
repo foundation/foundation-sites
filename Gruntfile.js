@@ -41,16 +41,21 @@ module.exports = function(grunt) {
 
     sass: {
       dist: {
-        files: {
-          'dist/assets/css/foundation.css': '<%= foundation.scss %>',
-        }
-      },
-      dist_docs: {
         options: {
           includePaths: ['scss']
         },
         files: {
+          'dist/assets/css/foundation.css': '<%= foundation.scss %>',
           'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss'
+        }
+      },
+      dist_compressed: {
+        options: {
+          outputStyle:'compressed',
+          includePaths: ['scss']
+        },
+        files: {
+          'dist/assets/css/foundation.min.css': '<%= foundation.scss %>'
         }
       }
     },
@@ -61,6 +66,14 @@ module.exports = function(grunt) {
           'dist/assets/js/foundation.js': '<%= foundation.js %>',
           'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
+      }
+    },
+
+    uglify: {
+      dist: {
+        files: {
+          'dist/assets/js/foundation.min.js': ['<%= foundation.js %>']
+        }        
       }
     },
 
@@ -98,7 +111,7 @@ module.exports = function(grunt) {
   });
   
   grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
