@@ -72,7 +72,7 @@
           self.refresh_custom_select($(this), force_refresh);
         })
         .on('click.fndtn.forms', 'form.custom label', function (e) {
-          if ($(e.target).is('label')) {
+          if ($(e.target).is('label') || ($(e.target).closest('label').length !== 0 && !$(e.target).is('span.custom.checkbox, span.custom.radio, a'))) {
             var $associatedElement = $('#' + self.escape($(this).attr('for'))).not('[data-customforms="disabled"]'),
               $customCheckbox,
               $customRadio;
@@ -155,7 +155,7 @@
 
             //store the old value in data
             $select.data('prevalue', $oldThis.html());
-            
+
             // Kick off full DOM change event
             if (typeof (document.createEvent) != 'undefined') {
               var event = document.createEvent('HTMLEvents');
@@ -265,7 +265,7 @@
       var $this = $(sel),
           type = $this.attr('type'),
           $span = $this.next('span.custom.' + type);
-          
+
       if (!$this.parent().hasClass('switch')) {
         $this.addClass('hidden-field');
       }
@@ -424,7 +424,7 @@
         this.cache[$customSelect.data('id')] = $listItems.length;
       }
     },
-    
+
     refresh_custom_selection: function ($select) {
       var selectedValue = $('option:selected', $select).text();
       $('a.current', $select.next()).text(selectedValue);
