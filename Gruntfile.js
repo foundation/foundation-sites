@@ -104,7 +104,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
-        tasks: ['concat']
+        tasks: ['concat', 'uglify']
       },
       dist_docs: {
         files: ['doc/{includes,layouts,pages}/**/*.{html}'],
@@ -129,6 +129,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('assemble');
 
-  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'copy', 'assemble'])
+  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'uglify', 'copy', 'assemble'])
   grunt.registerTask('default', ['compile', 'watch']);
 };
