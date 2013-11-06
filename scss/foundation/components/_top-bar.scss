@@ -311,7 +311,7 @@ meta.foundation-mq-topbar {
       }
 
       // Apply the active link color when it has that class
-      &.active > a {
+      &.active > a, & > a.active {
         background: $topbar-link-bg-active;
         color: $topbar-link-color-active;
       }
@@ -557,7 +557,7 @@ meta.foundation-mq-topbar {
         }
 
         // Apply the active link color when it has that class
-        &:active > a {
+        &:active > a, & > a.active {
           background: $topbar-link-bg-active;
           color: $topbar-link-color-active;
         }
