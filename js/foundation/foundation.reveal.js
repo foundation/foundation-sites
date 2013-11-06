@@ -210,6 +210,10 @@
     },
 
     show : function (el, css) {
+
+      // Get the top of the viewport so we know where to show the modal
+      var viewport_top = $(window).scrollTop() + el.data('css-top') + 'px';
+
       // is modal
       if (css) {
         if (el.parent('body').length === 0) {
@@ -225,7 +229,7 @@
         if (/pop/i.test(this.settings.animation)) {
           css.top = $(window).scrollTop() - el.data('offset') + 'px';
           var end_css = {
-            top: $(window).scrollTop() + el.data('css-top') + 'px',
+            top: viewport_top,
             opacity: 1
           };
 
@@ -239,6 +243,8 @@
               .addClass('open');
           }.bind(this), this.settings.animationSpeed / 2);
         }
+
+        css.top = viewport_top;
 
         if (/fade/i.test(this.settings.animation)) {
           var end_css = {opacity: 1};
@@ -254,6 +260,7 @@
           }.bind(this), this.settings.animationSpeed / 2);
         }
 
+        this.locked = false;
         return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened');
       }
 
@@ -297,6 +304,7 @@
           }.bind(this), this.settings.animationSpeed / 2);
         }
 
+        this.locked = false;
         return el.hide().css(css).removeClass('open').trigger('closed');
       }
 
