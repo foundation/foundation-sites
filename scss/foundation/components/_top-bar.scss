@@ -305,7 +305,7 @@ meta.foundation-mq-topbar {
       }
 
       // Apply the hover link color when it has that class
-      &:hover > a {
+      &:hover > a:not(.button) {
         background: $topbar-link-bg-hover;
         color: $topbar-link-color-hover;
       }
@@ -551,7 +551,7 @@ meta.foundation-mq-topbar {
     .no-js .top-bar-section {
 	  ul li {
         // Apply the hover link color when it has that class
-        &:hover > a {
+        &:hover > a:not(.button) {
           background: $topbar-link-bg-hover;
           color: $topbar-link-color-hover;
         }
