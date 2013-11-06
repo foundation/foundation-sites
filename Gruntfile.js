@@ -1,9 +1,14 @@
 module.exports = function(grunt) {
-  var manifest = require('./manifest.json');
   var hljs = require('highlight.js');
   hljs.LANGUAGES['scss'] = require('./js/vendor/scss.js')(hljs);
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+
+    foundation: {
+      js: ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
+      scss: ['scss/foundation/components/_*.scss']
+    },
 
     assemble: {
       options: {
@@ -18,12 +23,12 @@ module.exports = function(grunt) {
           }
         }
       },
-      docs: {
+      dist_docs: {
         options: {
-          assets: 'dist/docs/assets',
-          data: ['doc/data/*.{json,yml}'],
           flatten: false,
-          partials: ['doc/includes/**/*.{html,md,scss}'],
+          assets: 'dist/docs/assets',
+          data: ['doc/data/*.json'],
+          partials: ['doc/includes/**/*.{html,scss}'],
           helpers: ['doc/helpers/*.js'],
           layout: 'doc/layouts/default.html'
         },
@@ -37,10 +42,10 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'dist/assets/foundation.css': 'scss/foundation.scss',
+          'dist/assets/css/foundation.css': '<%= foundation.scss %>',
         }
       },
-      docs: {
+      dist_docs: {
         options: {
           includePaths: ['scss']
         },
@@ -51,20 +56,10 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      options: {},
       dist: {
         files: {
-          'dist/assets/foundation.js': ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-          'dist/assets/all.js': ['js/vendor/jquery.js', 'js/vendor/fastclick.js', 'js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-          'dist/assets/custom.modernizr.js': ['js/vendor/custom.modernizr.js'],
-          'dist/assets/foundation.scss': manifest.sass
-        }
-      },
-      docs: {
-        files: {
-          'dist/docs/assets/js/custom.modernizr.js': ['js/vendor/custom.modernizr.js'],
-          'dist/docs/assets/js/jquery.js': ['js/vendor/jquery.js'],
-          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/foundation/foundation.js', 'js/foundation/foundation.*.js', 'doc/assets/js/docs.js']
+          'dist/assets/js/foundation.js': '<%= foundation.js %>',
+          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
     },
@@ -72,8 +67,10 @@ module.exports = function(grunt) {
     copy: {
       docs: {
         files: [
-          {cwd: 'doc/assets/img/',expand: true,filter: 'isFile',src: '**/*',dest: 'dist/docs/assets/img/'},
-          {cwd: 'doc/assets/fonts/',expand: true,filter: 'isFile',src: '**/*',dest: 'dist/docs/assets/fonts/'}
+          {cwd: 'doc/assets/', expand:true, filter: 'isFile', src: '{img}/**/*', dest: 'dist/docs/assets/'},
+          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/docs/assets/js'},
+          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/docs/assets/js/vendor'},
+          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/assets/scss/'}
         ]
       }
     },
@@ -82,19 +79,19 @@ module.exports = function(grunt) {
 
     watch: {
       styles: {
-        files: ['scss/**/*.scss', 'doc/assets/scss/**/*.scss'],
-        tasks: ['sass', 'assemble:docs']
+        files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
+        tasks: ['sass']
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
-        tasks: ['concat:dist']
+        tasks: ['concat']
       },
       docs: {
-        files: ['doc/**/*'],
+        files: ['doc/{includes,layouts,pages}/**/*.{html}'],
         tasks: ['assemble:docs']
       },
-      docs_assets: {
-        files: ['doc/assets/img/**/*', 'doc/assets/fonts/**/*'],
+      assets: {
+        files: ['doc/assets/{img}/**/*'],
         tasks: ['copy:docs']
       }
     }
@@ -108,6 +105,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('assemble');
 
-  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'copy', 'assemble:docs'])
+  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'copy', 'assemble'])
   grunt.registerTask('default', ['compile', 'watch']);
 };
