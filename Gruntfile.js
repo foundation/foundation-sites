@@ -90,7 +90,8 @@ module.exports = function(grunt) {
           {cwd: 'doc/assets/', expand:true, filter: 'isFile', src: '{img}/**/*', dest: 'dist/docs/assets/'},
           {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor}/**/*.js'], dest: 'dist/assets/js'},
           {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: ['**/*.js'], dest: 'dist/docs/assets/js/'},
-          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'}
+          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
+          {src: 'bower.json', dest: 'dist/assets/'}
         ]
       }
     },
@@ -118,6 +119,17 @@ module.exports = function(grunt) {
         files: ['doc/assets/{img}/**/*'],
         tasks: ['copy']
       }
+    },
+
+    compress: {
+      dist: {
+        options: {
+          archive: 'dist/foundation.tar.gz'
+        },
+        files: [
+          {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
+        ]
+      }
     }
   });
   
@@ -127,8 +139,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('assemble');
 
   grunt.registerTask('compile', ['clean', 'sass', 'concat', 'uglify', 'copy', 'assemble'])
+  grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
 };

@@ -1,0 +1,10 @@
+{
+  "name": "foundation",
+  "version": "5.0.0.beta.1",
+  "main": ["css/foundation.css", "js/foundation.js"],
+  "dependencies": {
+    "jquery" : ">= 2.0.0",
+    "modernizr": ">= 2.6.2"
+  },
+  "private": true
+}

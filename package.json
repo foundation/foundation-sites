@@ -12,7 +12,8 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
     "highlight.js": "~7.3.0",
-    "grunt-contrib-uglify": "~0.2.5"
+    "grunt-contrib-uglify": "~0.2.5",
+    "grunt-contrib-compress": "~0.5.2"
   },
   "licenses": [
     {
