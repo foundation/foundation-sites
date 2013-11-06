@@ -70,6 +70,11 @@
           var is_ajax = /ajax/i.test($(this).attr('data-abide'));
           return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
         });
+      
+      forms
+        .on('reset', function() {
+          return self.reset($(this));
+        });
 
       this.settings.init = true;
 
@@ -86,6 +91,14 @@
             self.validate([this], e);
           }.bind(this), self.settings.timeout);
         });
+    },
+    
+    reset : function (form) {
+      form.removeAttr('data-invalid');
+      form.find('input, textarea, select').each(function() {
+        var el = $(this);
+        el.removeAttr('data-invalid').parent().removeClass('error');
+      });
     },
 
     validate : function (els, e, is_ajax) {
