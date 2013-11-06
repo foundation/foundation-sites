@@ -280,7 +280,9 @@
       if ($span.length === 0) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
       }
-      $span.prop("tabindex", $this.prop("tabindex"));
+      if (type === "checkbox") {
+        $span.prop("tabindex", $this.prop("tabindex"));
+      }
       $span.toggleClass('checked', $this.is(':checked'));
       $span.toggleClass('disabled', $this.is(':disabled'));
     },
