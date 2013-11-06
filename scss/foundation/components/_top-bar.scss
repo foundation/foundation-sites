@@ -250,7 +250,7 @@ meta.foundation-mq-topbar {
       height: auto;
       display: block;
       background: $topbar-dropdown-bg;
-      font-size: $em-base;
+      font-size: emCalc($em-base);
       margin: 0;
     }
 
@@ -419,6 +419,8 @@ meta.foundation-mq-topbar {
       max-width: $row-width;
       margin: 0 auto;
       margin-bottom: $topbar-margin-bottom;
+      padding-left: $column-gutter / 2;
+      padding-right: $column-gutter / 2;
     }
 
     .top-bar-section {
