@@ -11,9 +11,6 @@
   <body id="off-canvas" class="antialiased hide-extras">
     {{> topbar}}
     <section role="main">
-      <header class="show-for-small">
-        <a class='sidebar-button show-for-small' id="sidebarButton" href="#sidebar" ><img src="{{assets}}/img/offcanvas/menu-wht.png" alt="ZURB Menu"><h4>Foundation</h4></a>
-      </header>
       <div class="row">
         <div class="large-3 show-for-medium-up columns">
           {{> sidebar}}
@@ -30,10 +27,11 @@
 
 
     <script src="{{assets}}/js/jquery.js"></script>
-    {{!-- Use async code to load
-    <script src="{{assets}}/js/all.js"></script>
     <script>
-    $(document).foundation();
+    $.getScript("{{assets}}/js/all.js", function(){
+      $(document).foundation();
+    });
+    
     $(".off-canvas-left-toggle").click(function(e){
       $("body").addClass("move-right");
     });

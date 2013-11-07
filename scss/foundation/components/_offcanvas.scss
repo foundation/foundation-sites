@@ -1,3 +1,7 @@
+@import "global";
+@import "type";
+@import "top-bar";
+
 // Make sure it fills up all vertical space
 html, body { height: 100%; -webkit-text-size-adjust: none;}
 
@@ -75,7 +79,7 @@ nav.tab-bar {
     height: $tab-bar-height;
     left: $tab-bar-height;
     right: $tab-bar-height;
-    @media #{$medium} {
+    @media #{$medium-up} {
       text-align: left;
     }
     .row { 
@@ -204,7 +208,7 @@ body#off-canvas {
       right:0;
       z-index: 1002;
 
-      @media #{$medium} { 
+      @media #{$medium-up} { 
         &:hover {
           background: rgba(#FFF, 0.05) !important;
         }
