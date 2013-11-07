@@ -13,7 +13,7 @@ script:
 - npm install grunt-cli
 - grunt compile
 after_script:
-- git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation-css.git
+- git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
 - cp -r dist/assets/* bower-foundation-css/
 - cd bower-foundation-css
 - git remote rm origin
