@@ -108,7 +108,7 @@ module.exports = function(grunt) {
         tasks: ['concat', 'uglify']
       },
       dist_docs: {
-        files: ['doc/{includes,layouts,pages}/**/*.{html}'],
+        files: ['doc/{includes,layouts,pages}/**/*.html'],
         tasks: ['assemble:dist_docs']
       },
       dist_download: {
