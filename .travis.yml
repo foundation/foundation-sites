@@ -14,12 +14,12 @@ script:
 - grunt compile
 after_script:
 - git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
-- cp -r dist/assets/* bower-foundation-css/
-- cd bower-foundation-css
+- cp -r dist/assets/* bower-foundation/
+- cd bower-foundation
 - git remote rm origin
-- git remote add origin https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation-css.git
+- git remote add origin https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
 - git add .
-- git commit -m "Foundation build to bower-foundation-css"
+- git commit -m "Foundation build to bower-foundation"
 - git push -fq origin master
 - echo -e "Done with magic\n"
 env:
