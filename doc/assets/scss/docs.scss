@@ -180,11 +180,24 @@ footer { margin-top: 45px; }
   @include radius()
 }
 
-$custom-link-color: $primary-color;
+$custom-link-color: #FF6908;
 $custom-divider-color: lighten($custom-link-color, 40%);
 .custom-sidenav-class {
   @include side-nav(
             $divider-color:$custom-divider-color,
             $font-size:1.2em,
             $link-color:$custom-link-color);
+}
+
+.basic-subnav-class {
+  @include sub-nav();
+}
+
+$custom-font-color:$custom-link-color;
+$custom-active-bg:darken($custom-link-color, 20%);
+.custom-subnav-class {
+  @include sub-nav(
+    $font-color:$custom-font-color,
+    $font-size:1.2em,
+    $active-bg:$custom-active-bg);
 }

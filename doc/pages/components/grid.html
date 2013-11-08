@@ -6,31 +6,28 @@ layout: doc/layouts/default.html
 
 #### Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.
 
----
+***
 
 ##### Using our Predefined HTML Classes
 
 These are examples of different ways to use the Foundation Grid. Foundation uses box-sizing: border-box so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we'll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.
 
----
-
+***
 
 ### HTML
 ```html
 {{> examples_grid_basic}}
 ```
-
 ### Example
 {{> examples_grid_rendered}}
 
-
----
+***
 
 #### Infinitely Nest Your Grid
 
 The grid allows for nesting down as far as you'd like, though at a certain point it will get absurd. You can use this nesting to create quite complex layouts, as well as some other tricks like form layouts or visual elements.
 
----
+***
 
 {{#markdown}}
 ### HTML
@@ -44,13 +41,13 @@ The grid allows for nesting down as far as you'd like, though at a certain point
 
 {{> examples_grid_nested_rendered}}
 
----
+***
 
 #### Offsets
 
 Offsets allow you to create additional space between columns in a row. Like the rest of the grid, they're nestable. You can use classes like <code>.large-offset-1</code> and <code>.small-offset-3</code> to manipulate your column positions in different ways. You can offset up to 11 since you wouldn't ever offset a full-width column.
 
----
+***
 
 {{#markdown}}
 ### HTML
@@ -63,13 +60,13 @@ Offsets allow you to create additional space between columns in a row. Like the 
 
 {{> examples_grid_offsets_rendered}}
 
----
+***
 
 #### Centered Columns
 
 Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element, itself. This is accomplished by adding a class of <code>large-centered</code> or `small-centered` depending on which breakpoint you want the columns to center on. Small versions will carry through all breakpoints if not overridden by a large version. You can center any number of columns you have. To have a column not carry it's small-centered to large, add a class of <code>large-uncentered</code>.
 
----
+***
 
 {{#markdown}}
 ### HTML
@@ -82,13 +79,13 @@ Centered columns are placed in the middle of the row. This does not center their
 
 {{> examples_grid_centered_rendered}}
 
----
+***
 
 #### Source Ordering
 
 Using these source ordering classes, you can shift columns around between our breakpoints. This means you can have a sub-nav on the left on large displays, but go below on small ones. <code>.push-#</code> is the syntax you'll use.
 
----
+***
 
 {{#markdown}}
 ### HTML
@@ -101,14 +98,14 @@ Using these source ordering classes, you can shift columns around between our br
 
 {{> examples_grid_source_rendered}}
 
----
+***
 
 #### Small Grid
 
 <!-- TODO FIX LINKS -->
 As you've probably noticed in the examples above, you have access to a small and large grid. If you know that your grid structure will be the same for small devices as it will be on large devices, just use the small grid. You can override your small grid classes by adding large grid classes to it. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a target="_blank" href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a target="_blank" href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_grid.scss</a> from Github and throw them into a Foundation folder in your project directory.
 
----
+***
 
 {{#markdown}}
 ### HTML
@@ -119,13 +116,13 @@ As you've probably noticed in the examples above, you have access to a small and
 
 {{> examples_grid_small_rendered}}
 
----
+***
 
 #### Medium Grid
 
 The small and large grids give you control over mobile and desktop styles. A medium grid now offers greater flexibility and control to create complex layouts for tablets as well.
 
----
+***
 
 {{#markdown}}
 ### HTML
@@ -136,13 +133,13 @@ The small and large grids give you control over mobile and desktop styles. A med
 
 {{> examples_grid_medium_rendered}}
 
----
+***
 
 #### Building With Mixins
 
 If you are keen on SCSS and use it for your Foundation projects, you have access to grid mixins that will let you layout the page without using presentational classes that you don't want. You can create your own set of classes or even create your own grid. Setting any of the options to 'false' will leave off those styles, giving you lots of control over your CSS output. Here's an example structure you might use with the grid mixin:
 
----
+***
 
 ### Grid-row Mixin
 
