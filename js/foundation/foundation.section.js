@@ -62,6 +62,8 @@
         }
       }
 
+      self.off();
+
       $(self.scope)
         .on('click.fndtn.section', click_title_selectors.join(","), function(e) {
           var title = $(this).closest(self.settings.title_selector);
