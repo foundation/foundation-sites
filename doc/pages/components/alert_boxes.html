@@ -6,21 +6,21 @@ layout: doc/layouts/default.html
 
 #### Alerts are a handy element you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.
 
-<!-- Basic Alert Box Example -->
 {{> examples_alert_basic}}
 
----
+***
 
-### Build With Predefined HTML Classes
+### How To Work With Alerts
 
-There are two ways to build alerts in Foundation 5: with our predefined HTML classes or with our structure and mixins. Building an alert using our predefined class is super-easy, you only need a block-level element with a class of `.alert-box` (we usually use a `<div>`). You may also include an anchor with a class of `.close` to create a close box. Here is the markup you'll need:
+There are two ways to build alerts. You can use our predefined HTML classes or use our crafted mixins. Building an alert using our predefined classes is super-easy, you only need a block-level element with a class of `.alert-box` (we usually use a `<div>`). You may also include an anchor with a class of `.close` to create a close box. Here are some examples:
 
-<!-- Basic Alert Box Code Example -->
+### HTML
+
 {{> examples_alert_basic_rendered}}
 
-For these styles to come across, make sure you have the **default Foundation CSS package** or that you've selected **alerts from a custom package**. These should be linked up following our default [HTML page structure](#getting-started).
+For these styles to come across, make sure you have the **default Foundation CSS package** or that you've selected **alerts from a custom package**. These should be linked up following our default [HTML page structure]({{relative absolute 'dist/docs/components/getting_started.html'}}).
 
----
+***
 
 ### Build with Mixins
 
@@ -36,65 +36,141 @@ We've included SCSS mixins used to style alert boxes. To use these mixins, you'l
 
 If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
 
-<!-- Alert Box Mixin Code Example -->
 {{> examples_alert_mixin_rendered}}
 
-##### Quick Mixin
+## Configuring Alert Boxes
 
-You can build your alert using our global mixin by including it on your custom class or ID in your stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. The rest of the defaults can be modified using the available variables. The global mixin looks like this:
+You can use this to quickly create alerts with a single mixin.
 
+<div class="row">
+  <div class="half-grid">
+    <h3>SCSS</h3>
 {{#markdown}}
 ```scss
 /* Using the default styles */
-.your-class-name { @include alert; }
+.your-class-name { @include alert(); }
 
 /* Using the available options */
-.your-class-name { @include alert(#ff6c3c); }
+.your-class-name { @include alert($bg:#ff6c3c); }
 ```
 {{/markdown}}
-
+  </div>
+  <div class="half-grid">
+    <h3>Rendered HTML</h3>
 {{> examples_alert_mixin}}
+  </div>
+</div>
 
-##### Base Mixin
+<h3>Options</h3>
+<div class="row">
+  <div class="half-grid">
+    <h5 class="subheader">Options</h5>
+{{#markdown}}
+```scss
+$bg: $primary-color
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <h5 class="subheader">Description</h5>
+    <dl>
+      <dt>$bg</dt>
+      <dd>Background of alert. Default: $primary-color</dd>
+    </dl>
+  </div>
+</div>
 
-Use this mixin to create the base styles for alert boxes. This will include styles that create the basic structure of an alert box.
+<div class="row">
+  <div class="half-grid">
+{{#markdown}}
+```scss
+$radius: false
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <dl>
+      <dt>$radius</dt>
+      <dd>Radius of alert box. Default: false.</dd>
+    </dl>
+  </div>
+</div>
 
-<!-- Alert Box Base Mixin -->
+## Base Mixin
+
+We use this mixin to create a default alert base
+
+<div class="row">
+  <div class="half-grid">
+    <h3>SCSS</h3>
 {{> examples_alert_base_mixin}}
+  </div>
+  <div class="half-grid">
+    <h3>Rendered HTML</h3>
+    <div class="alert-base">This is the base mixin.</div>
+  </div>
+</div>
 
-##### Background Mixin
+## Background Mixin
 
 You can control the background, border and text styles for the alert using this mixin. We base the border and text style on the background color you choose using some sweet Sass logic.
 
-<!-- Alert Box Background Mixin -->
+<div class="row">
+  <div class="half-grid">
+    <h3>SCSS</h3>
 {{> examples_alert_background_mixin}}
+  </div>
+  <div class="half-grid">
+    <h3>Rendered HTML</h3>
+    <div data-alert class="alert-background">This is base and bg mixins.</div>
+  </div>
+</div>
 
-You can set `$bg` color to any of our predefined color variables or any hexadecimal color of your choosing. To set this value to something other than our default, use `@include alert-bg(#hexcolor);`
+<div class="row">
+  <div class="half-grid">
+    <h5 class="subheader">Options</h5>
+{{#markdown}}
+```scss
+$bg:$primary-color
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <h5 class="subheader">Description</h5>
+    <dl>
+      <dt>$bg</dt>
+      <dd>The background of the alert. Default: $primary-color.</dd>
+    </dl>
+  </div>
+</div>
 
-##### Close Box Mixin
+## Close Box Mixin
 
-You can include a close box with each of the alert boxes by adding an anchor right before the closing `</div>`. This anchor should have a class of `.close` in order to work with **foundation.alerts.js**, which contains the interaction for closing.
+We use this to create the close button.
 
-<!-- Alert Box Close Mixin -->
+<div class="row">
+  <div class="half-grid">
+    <h3>SCSS</h3>
 {{> examples_alert_close_mixin}}
+  </div>
+  <div class="half-grid">
+    <h3>Rendered HTML</h3>
+    <div data-alert class="alert-background">
+      This is base, bg and close mixins.
+      <a href="" class="close">&times;</a>
+    </div>
+  </div>
+</div>
 
-##### Radius Mixin
+## Default SCSS Variables
 
-We've also created a global radius mixin that you can use to add border-radius to any element you'd like.
-
-<!-- Alert Box Radius Mixin -->
-{{> examples_alert_radius_mixin}}
-
-##### Default SCSS Variables
-
-<!-- Alert Box SCSS Variables -->
 {{> examples_alert_variables}}
 
 **Note:** `em-calc();` is a function we wrote to convert `px` to `em`.
 
----
+***
 
-### Using the JavaScript
+## Using the JavaScript
 
 You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include `foundation.alerts.js` is if you want to add the ability to close an alert.
 
@@ -104,11 +180,10 @@ You don't need ths JS to create alert boxes with Foundation. The only reason you
 
 Just add `foundation.alerts.js` AFTER the `foundation.js` file. Your markup should look something like this:
 
-{{> examples_javascript}}
+{{> examples_alert_javascript}}
 
 Required Foundation Library: `foundation.alerts.js`
 
 Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:
 
-<!-- Alert Box Data Attributes Code Example -->
 {{> examples_alert_data_attributes}}

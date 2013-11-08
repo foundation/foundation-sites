@@ -133,33 +133,6 @@ pre {
   }
 }
 
-
-// .code-container {
-//   background-color: darken($panel-bg-color, 2%);
-//   overflow-x:auto;
-//   position: relative;
-//   @include border(solid, 1px, darken($panel-bg-color, 4%));
-//   border-radius: 3px;
-//   pre {
-//     padding: 10px;
-//     @include border-direction(bottom,solid,1px,darken($panel-bg-color, 6%));
-//     background-color: darken($panel-bg-color, 0%);
-//     line-height: 1.8em;
-//     &:last-child {
-//       border: none;
-//     }
-//     code {
-//       background: none;
-//     }
-//   }
-// }
-//
-// .code-container .button {
-//   position: absolute;
-//   top: 10px;
-//   right: 10px;
-// }
-
 #masthead { @include grid-row; @include panel; max-width: none;
   hgroup { @include grid-column(4); }
   section { @include grid-column(8); }
@@ -180,4 +153,29 @@ footer { margin-top: 45px; }
   background:#2ba6cb;
   padding:30px 40px;
   h1,h2,h3 {color:white;}
+}
+
+// Alert Styles
+
+.custom-bg {
+  @include alert(#ff6c3c);
+}
+
+.alert-base {
+  @include alert-base();
+}
+
+.alert-background {
+  @include alert-base();
+  @include alert-style();
+}
+
+.close {
+  @include alert-close();
+}
+
+.alert-radius {
+  @include alert-base();
+  @include alert-style();
+  @include radius()
 }

@@ -15,24 +15,19 @@ layout: doc/layouts/default.html
 
 Orbit requires minimal HTML markup to function. Our javascript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
 
-<div class="row">
-  <div class="large-12 columns">
 {{#markdown}}
 ### HTML
 ```html
 {{> examples_orbit_basic}}
 ```
 {{/markdown}}
-  </div>
-  <div class="large-12 columns">
+
 {{#markdown}}
 ### Rendered HTML
 ```html
 {{> examples_orbit_basic_rendered}}
 ```
 {{/markdown}}
-  </div>
-</div>
 
 ---
 
@@ -41,15 +36,15 @@ Orbit requires minimal HTML markup to function. Our javascript takes care of mos
 Orbit can also be used with just content and no images.
 
 <div class="row">
-  <div class="large-6 columns">
-    <h3>HTML</h3>
+  <div class="half-grid">
 {{#markdown}}
+  ### HTML
 ```html
 {{> examples_orbit_content}}
 ```
 {{/markdown}}
   </div>
-  <div class="large-6 columns">
+  <div class="half-grid">
     <h3>Rendered HTML</h3>
     {{> examples_orbit_content}}
   </div>
@@ -62,7 +57,7 @@ Orbit can also be used with just content and no images.
 To link to a particular slide in your Orbit slider you will need to add a  `data-orbit-slide` attribute to each slide. Then anywhere on your page you can use `data-orbit-link` to link to that slide.
 
 <div class="row">
-  <div class="large-6 columns">
+  <div class="half-grid">
     <h3>HTML</h3>
 {{#markdown}}
 ```html
@@ -78,7 +73,7 @@ To link to a particular slide in your Orbit slider you will need to add a  `data
 ```
 {{/markdown}}
   </div>
-  <div class="large-6 columns">
+  <div class="half-grid">
     <h3>Rendered HTML</h3>
     <a class="small button" data-orbit-link="headline-1">Goto Slide 1</a>
     <a class="small button" data-orbit-link="headline-2">Goto Slide 2</a>
@@ -90,7 +85,6 @@ To link to a particular slide in your Orbit slider you will need to add a  `data
 ---
 
 ## Customize With Sass
-
 
   <div class="row">
     <section class="full-grid">
