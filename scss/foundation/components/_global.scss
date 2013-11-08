@@ -375,3 +375,10 @@ $cursor-text-value: text !default;
     select { width: 100%; }
   }
 }
+
+html, body { 
+  // Make sure the body fills up all vertical space
+  height: 100%;
+  // keep text from changing stupidly on phones
+  -webkit-text-size-adjust: none; 
+}
