@@ -24,12 +24,20 @@ The list item options:
 * `active` Will add style to denote the active link.
 * `divider` Creates a divider between list items.
 
-### HTML
+<div class="row">
+  <div class="half-grid">
+    <h3>HTML</h3>
 {{#markdown}}
 ```html
 {{> examples_sidenav_basic}}
 ```
 {{/markdown}}
+  </div>
+  <div class="half-grid">
+    <h3>Rendered HTML</h3>
+{{> examples_sidenav_basic}}
+  </div>
+</div>
 
 {{!-- TODO FIX PATH --}}
 For these styles to come across, make sure you have the default Foundation CSS package or that you've selected side nav from a custom package. These should be linked up following our default (HTML page structure)[../index.html].
@@ -58,10 +66,15 @@ You can build your side nav using our global mixin by including it on a custom c
 {{#markdown}}
 ```scss
 /* Using the default styles */
-.your-class-name { @include side-nav(); }
+.custom-sidenav-class { @include side-nav(); }
 
 /* Using the available options */
-.your-class-name { @include side-nav($divider-color, $font-size, $link-color); }
+.custom-sidenav-class {
+  @include side-nav(
+            $divider-color:$custom-mixin-color,
+            $font-size:1.2em,
+            $link-color:$custom-link-color;
+}
 ```
 {{/markdown}}
   </div>
@@ -69,9 +82,15 @@ You can build your side nav using our global mixin by including it on a custom c
     <h3>HTML</h3>
 {{#markdown}}
 ```html
-{{> examples_sidenav_basic}}
+{{> examples_sidenav_mixin}}
 ```
 {{/markdown}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="half-grid">
+{{> examples_sidenav_mixin}}
   </div>
 </div>
 

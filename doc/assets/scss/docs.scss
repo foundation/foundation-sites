@@ -179,3 +179,12 @@ footer { margin-top: 45px; }
   @include alert-style();
   @include radius()
 }
+
+$custom-link-color: $primary-color;
+$custom-divider-color: lighten($custom-link-color, 40%);
+.custom-sidenav-class {
+  @include side-nav(
+            $divider-color:$custom-divider-color,
+            $font-size:1.2em,
+            $link-color:$custom-link-color);
+}
