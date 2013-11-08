@@ -368,6 +368,7 @@
               set_active_from_hash = settings.deep_linking && hash.length > 0,
               selected = false,
               nonmatched = [],
+              region,
               regions = section.children(self.settings.region_selector);
           regions.each(function() {
             var region = $(this),
