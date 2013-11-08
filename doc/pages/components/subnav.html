@@ -45,14 +45,22 @@ To use these styles, make sure you have the default Foundation CSS package or th
 
 ***
 
+## Default SCSS Variables
+
+{{#markdown}}
+```scss
+{{> examples_subnav_variables.scss}}
+```
+{{/markdown}}
+
+***
+
 ### Build with Mixins
 
 We've included SCSS mixins used to style sub-nav. To use the mixin, you'll need to have the [extension installed]({{relative absolute 'dist/docs/components/sass.html'}}) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_sub-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_sub-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
 
 {{#markdown}}
 ```scss
-@import "foundation/variables";
-@import "foundation/components/global";
 @import "foundation/components/sub-nav";
 ```
 {{/markdown}}
@@ -67,7 +75,7 @@ You can build your sub-nav using our global mixin by including it on a custom cl
 {{#markdown}}
 ```scss
 /* Using the default styles */
-.custom-subnav-class {
+.basic-subnav-class {
   @include sub-nav();
 }
 ```
@@ -166,13 +174,5 @@ $active-bg: $sub-nav-active-bg
     </dl>
   </div>
 </div>
-
-## Default SCSS Variables
-
-{{#markdown}}
-```scss
-{{> examples_subnav_variables.scss}}
-```
-{{/markdown}}
 
 **Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.

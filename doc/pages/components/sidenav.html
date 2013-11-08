@@ -39,14 +39,22 @@ For these styles to come across, make sure you have the default Foundation CSS p
 
 ***
 
-### Build with Mixins
-
-We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the [extension installed]({{relative absolute 'dist/docs/components/sass.html'}}) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_side-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_side-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+## Default SCSS Variables
 
 {{#markdown}}
 ```scss
-@import "foundation/variables";
-@import "foundation/components/global";
+{{> examples_sidenav_variables.scss}}
+```
+{{/markdown}}
+
+***
+
+### Build with Mixins
+
+We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the [extension installed]({{relative absolute 'dist/docs/components/sass.html'}}) and grab [_side-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_side-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the component at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
 @import "foundation/components/side-nav";
 ```
 {{/markdown}}
@@ -141,13 +149,5 @@ $link-color: $side-nav-link_color
     </dl>
   </div>
 </div>
-
-## Default SCSS Variables
-
-{{#markdown}}
-```scss
-{{> examples_sidenav_variables.scss}}
-```
-{{/markdown}}
 
 **Note:** `em-calc();`  is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.

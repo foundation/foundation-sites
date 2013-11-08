@@ -8,7 +8,7 @@ layout: doc/layouts/default.html
 
 {{> examples_buttons_basic}}
 
----
+***
 
 ### Build With Predefined HTML Classes
 
@@ -25,7 +25,7 @@ The class options:
 
 You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the **default Foundation CSS package** or that you've selected **button from a custom package**. These should be linked up following our default [HTML page structure](../index.html).
 
----
+***
 
 ### Build with Mixins
 
@@ -51,12 +51,10 @@ If you are using the mixins, you may include the styles on whatever class or ID 
 
 You can quickly build an entire button using our global mixin by including it on your custom class or ID in your stylesheet. The global mixin will create the necessary style for the button. The global mixin looks like this:
 
-<!-- Default Button Mixin -->
 {{> examples_buttons_default_mixin}}
 
 There are also **six options** you can customize on the fly when writing this mixin. These controls things like: background color, border color, text color, size and state. Setting any of these options to **false** will negate those styles.
 
-<!-- Custom Button Mixin -->
 {{> examples_buttons_custom_mixin}}
 
 ##### Base Mixin
@@ -81,7 +79,6 @@ Inset Shadow, Border Radius &amp; Transition Mixin
 
 Sometimes you want to add a nice fancy shine to the edge of your button. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the button a nice zero-fade.
 
-<!-- Inset Shadow, Border Radius, and Transition -->
 {{> examples_buttons_options_mixin}}
 
 ##### Default SCSS Variables

@@ -194,7 +194,7 @@ $custom-divider-color: lighten($custom-link-color, 40%);
 }
 
 $custom-font-color:$custom-link-color;
-$custom-active-bg:darken($custom-link-color, 20%);
+$custom-active-bg:darken($custom-link-color, 5%);
 .custom-subnav-class {
   @include sub-nav(
     $font-color:$custom-font-color,

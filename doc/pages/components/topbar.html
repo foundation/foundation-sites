@@ -65,7 +65,7 @@ layout: doc/layouts/default.html
   </section>
 </nav>
 
----
+***
 
 ### Build With HTML Classes
 
@@ -95,7 +95,6 @@ When building your bar it is good to be aware of how many links you're going to 
     </li>
     <li class="toggle-topbar"><a href="#"></a></li>
   </ul>
-
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
@@ -192,7 +191,7 @@ You can now make the top bar clickable by adding a data-attribute to the nav ele
 ```
 {{/markdown}}
 
----
+***
 
 #### Available SCSS Variables
 
@@ -206,7 +205,7 @@ We do include SCSS variable to help you control some of the styles for the top b
 
 **Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
 
----
+***
 
 ### Using the JavaScript
 
@@ -221,12 +220,6 @@ Just add `foundation.topbar.js` AFTER the `foundation.js` file. Your markup shou
 <body>
 
   ...
-
-  <!--script>
-      document.write(\'<script src=/js/vendor/\'
-        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
-        + \'.js><\/script>\');
-    </script-->
 
   <script src="js/foundation/foundation.js"></script>
   <script src="js/foundation/foundation.topbar.js"></script>
