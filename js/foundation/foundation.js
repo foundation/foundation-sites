@@ -23,9 +23,18 @@ if (typeof jQuery === "undefined" &&
 (function ($, window, document, undefined) {
   'use strict';
 
-  $('head').append('<meta class="foundation-mq-small">');
-  $('head').append('<meta class="foundation-mq-medium">');
-  $('head').append('<meta class="foundation-mq-large">');
+  // Used to retrieve Foundation media queries from CSS.
+  if($('head').has('.foundation-mq-small').length === 0) {
+    $('head').append('<meta class="foundation-mq-small">')
+  }
+
+  if($('head').has('.foundation-mq-medium').length === 0) {
+    $('head').append('<meta class="foundation-mq-medium">')
+  }
+
+  if($('head').has('.foundation-mq-large').length === 0) {
+    $('head').append('<meta class="foundation-mq-large">')
+  }
 
   // Enable FastClick
   if(typeof FastClick !== 'undefined') {
@@ -82,9 +91,9 @@ if (typeof jQuery === "undefined" &&
     cache : {},
 
     media_queries : {
-      small : $('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
-      medium : $('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
-      large : $('.foundation-mq-large').css('font-family').replace(/\'/g, '')
+      small : $('.foundation-mq-small').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      medium : $('.foundation-mq-medium').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      large : $('.foundation-mq-large').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
