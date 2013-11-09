@@ -225,7 +225,10 @@ $f-dropdown-content-padding: em-calc(20);', :css %>
 
     <%= code_example "{
   // specify the class used for active dropdowns
-  activeClass: 'open'
+  activeClass: 'open',
+  is_hover: false,
+  opened: function(){},
+  closed: function(){}
 }", :js %>
 
       </div>
