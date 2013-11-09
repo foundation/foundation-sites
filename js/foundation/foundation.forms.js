@@ -57,7 +57,14 @@
       var self = this;
 
       $(this.scope)
-        .on('click.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
+        .on('keyup.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
+          if (e.which == 32) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            self.toggle_checkbox($(this));
+          }
+        })
+        .on('click.fndtn.forms touchend.fndtn.forms', 'form.custom span.custom.checkbox', function (e) {
           e.preventDefault();
           e.stopPropagation();
           self.toggle_checkbox($(this));
@@ -273,7 +280,9 @@
       if ($span.length === 0) {
         $span = $('<span class="custom ' + type + '"></span>').insertAfter($this);
       }
-
+      if (type === "checkbox") {
+        $span.prop("tabindex", $this.prop("tabindex"));
+      }
       $span.toggleClass('checked', $this.is(':checked'));
       $span.toggleClass('disabled', $this.is(':disabled'));
     },
