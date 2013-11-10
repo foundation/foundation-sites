@@ -159,8 +159,10 @@
           var left = position.left - (this.outerWidth(dropdown) - this.outerWidth(target));
         }
 
-        dropdown.attr('style', '').css({
+        dropdown.css({
           position : 'absolute',
+          width: '',
+          'max-width': '',
           top: position.top + this.outerHeight(target),
           left: left
         });
