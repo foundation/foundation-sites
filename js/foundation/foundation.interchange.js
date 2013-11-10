@@ -32,7 +32,7 @@
 
       directives : {
         replace: function (el, path) {
-          if (/IMG/.test(el[0].nodeName)) {
+          if (el[0] && /IMG/.test(el[0].nodeName)) {
             var orig_path = el[0].src;
 
             if (new RegExp(path, 'i').test(orig_path)) return;
@@ -64,6 +64,8 @@
 
     events : function () {
       var self = this;
+
+      this.off();
 
       $(window).on('resize.fndtn.interchange', self.throttle(function () {
         self.resize.call(self);
@@ -236,6 +238,10 @@
       }
 
       return output;
+    },
+
+    off: function() {
+      $(window).off('.fndtn.interchange');
     },
 
     reflow : function () {
