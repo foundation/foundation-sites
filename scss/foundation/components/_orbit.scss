@@ -122,6 +122,8 @@ $preloader-class: "preloader" !default;
     width: 100%;
     position: relative;
     background: $orbit-container-bg;
+    -ms-user-select: none;
+    -ms-touch-action: none;
 
     .orbit-slides-container {
       list-style: none;
