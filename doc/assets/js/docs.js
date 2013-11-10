@@ -27,7 +27,7 @@ var components = [
   { value: 'Button Groups', data: 'button_groups.html' },
   { value: 'Split Buttons', data: 'split_buttons.html' },
   { value: 'Dropdown Buttons', data: 'dropdown_buttons.html' },
-  { value: 'Type', data: 'http://foundation.dev/typography.html/typography.html' },
+  { value: 'Type', data: 'typography.html' },
   { value: 'Lists', data: 'inline_lists.html' },
   { value: 'Labels', data: 'labels.html' },
   { value: 'Keystrokes', data: 'keystrokes.html' },
