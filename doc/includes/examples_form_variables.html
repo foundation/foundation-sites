@@ -1,0 +1,60 @@
+{{#markdown}}
+```scss
+$include-html-form-classes: $include-html-classes;
+
+/* We use this to set the base for lots of form spacing and positioning styles */
+$form-spacing: em-calc(16);
+
+/* We use these to style the labels in different ways */
+$form-label-pointer: pointer;
+$form-label-font-size: em-calc(14);
+$form-label-font-weight: 500;
+$form-label-font-color: lighten(#000, 30%);
+$form-label-bottom-margin: em-calc(3);
+$input-font-family: inherit;
+$input-font-color: rgba(0,0,0,0.75);
+$input-font-size: em-calc(14);
+$input-bg-color: #fff;
+$input-focus-bg-color: darken(#fff, 2%);
+$input-border-color: darken(#fff, 20%);
+$input-focus-border-color: darken(#fff, 40%);
+$input-border-style: solid;
+$input-border-width: 1px;
+$input-disabled-bg: #ddd;
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-include-glowing-effect: true;
+
+/* We use these to style the fieldset border and spacing. */
+$fieldset-border-style: solid;
+$fieldset-border-width: 1px;
+$fieldset-border-color: #ddd;
+$fieldset-padding: em-calc(20);
+$fieldset-margin: em-calc(18 0);
+
+/* We use these to style the legends when you use them */
+$legend-bg: #fff;
+$legend-font-weight: bold;
+$legend-padding: em-calc(0 3);
+
+/* We use these to style the prefix and postfix input elements */
+$input-prefix-bg: darken(#fff, 5%);
+$input-prefix-border-color: darken(#fff, 20%);
+$input-prefix-border-size: 1px;
+$input-prefix-border-type: solid;
+$input-prefix-overflow: hidden;
+$input-prefix-font-color: #333;
+$input-prefix-font-color-alt: #fff;
+
+/* We use these to style the error states for inputs and labels */
+$input-error-message-padding: em-calc(6 4);
+$input-error-message-top: 0;
+$input-error-message-font-size: em-calc(12);
+$input-error-message-font-weight: bold;
+$input-error-message-font-color: #fff;
+$input-error-message-font-color-alt: #333;
+
+/* We use this to style the glowing effect of inputs when focused */
+$glowing-effect-fade-time: 0.45s;
+$glowing-effect-color: $input-focus-border-color;
+```
+{{/markdown}}

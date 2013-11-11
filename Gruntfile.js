@@ -1,77 +1,97 @@
 module.exports = function(grunt) {
-  var manifest = require('./manifest.json');
   var hljs = require('highlight.js');
-  hljs.LANGUAGES['scss'] = require('./js/vendor/scss.js')(hljs);
+  hljs.LANGUAGES['scss'] = require('./lib/scss.js')(hljs);
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+
+    foundation: {
+      js: ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
+      scss: ['scss/foundation.scss']
+    },
 
     assemble: {
       options: {
-        flatten: true,
-        assets: 'dist/docs/assets',
-        data: ['doc/data/*.{json,yml}'],
         marked: {
           gfm: true,
-          sanitize: true,
+          sanitize: false,
           highlight: function(code, lang) {
+            if (lang === undefined) lang = 'bash';
             if (lang === 'html') lang = 'xml';
-            // if (lang === 'scss') lang = 'scss';
             if (lang === 'js') lang = 'javascript';
-            return hljs.highlight(lang, code).value;
+            return '<div class="code-container">' + hljs.highlight(lang, code).value + '</div>';
           }
         }
       },
-      docs: {
+      dist_docs: {
         options: {
-          partials: ['doc/includes/*.html'],
+          flatten: false,
+          assets: 'dist/docs/assets',
+          data: ['doc/data/*.json'],
+          partials: ['doc/includes/**/*.{html,scss}'],
           helpers: ['doc/helpers/*.js'],
           layout: 'doc/layouts/default.html'
         },
-        src: 'doc/pages/*.html',
+        expand: true,
+        cwd: 'doc/pages',
+        src: '**/*.{html,md}',
         dest: 'dist/docs/'
+      },
+      dist_download: {
+        options: {
+          assets: 'dist/assets'
+        },
+        src: 'index.html',
+        dest: 'dist/index.html'
       }
     },
 
     sass: {
       dist: {
-        files: {
-          'dist/assets/foundation.css': 'scss/foundation.scss',
-        }
-      },
-      docs: {
         options: {
           includePaths: ['scss']
         },
         files: {
+          'dist/assets/css/foundation.css': '<%= foundation.scss %>',
           'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss'
+        }
+      },
+      dist_compressed: {
+        options: {
+          outputStyle:'compressed',
+          includePaths: ['scss']
+        },
+        files: {
+          'dist/assets/css/foundation.min.css': '<%= foundation.scss %>'
         }
       }
     },
 
     concat: {
-      options: {},
       dist: {
         files: {
-          'dist/assets/foundation.js': ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-          'dist/assets/all.js': ['js/vendor/jquery.js', 'js/vendor/fastclick.js', 'js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-          'dist/assets/custom.modernizr.js': ['js/vendor/custom.modernizr.js'],
-          'dist/assets/foundation.scss': manifest.sass
+          'dist/assets/js/foundation.js': '<%= foundation.js %>',
+          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
-      },
-      docs: {
+      }
+    },
+
+    uglify: {
+      dist: {
         files: {
-          'dist/docs/assets/js/custom.modernizr.js': ['js/vendor/custom.modernizr.js'],
-          'dist/docs/assets/js/jquery.js': ['js/vendor/jquery.js'],
-          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/foundation/foundation.js', 'js/foundation/foundation.*.js', 'doc/assets/js/docs.js']
+          'dist/assets/js/foundation.min.js': ['<%= foundation.js %>']
         }
       }
     },
 
     copy: {
-      docs: {
+      dist: {
         files: [
-          {cwd: 'doc/assets/img/',expand: true,filter: 'isFile',src: '**/*',dest: 'dist/docs/assets/img/'},
-          {cwd: 'doc/assets/fonts/',expand: true,filter: 'isFile',src: '**/*',dest: 'dist/docs/assets/fonts/'}
+          {cwd: 'doc/assets/', expand:true, filter: 'isFile', src: '{img}/**/*', dest: 'dist/docs/assets/'},
+          {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor}/**/*.js'], dest: 'dist/assets/js'},
+          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: ['**/*.js'], dest: 'dist/docs/assets/js/'},
+          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
+          {src: 'bower.json', dest: 'dist/assets/'}
         ]
       }
     },
@@ -80,32 +100,49 @@ module.exports = function(grunt) {
 
     watch: {
       styles: {
-        files: ['scss/**/*.scss', 'doc/assets/scss/**/*.scss'],
-        tasks: ['sass', 'assemble:docs']
+        files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
+        tasks: ['sass']
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
-        tasks: ['concat:dist']
+        tasks: ['concat', 'uglify']
       },
-      docs: {
-        files: ['doc/**/*'],
-        tasks: ['assemble:docs']
+      dist_docs: {
+        files: ['doc/{includes,layouts,pages}/**/*.html'],
+        tasks: ['assemble:dist_docs']
       },
-      docs_assets: {
-        files: ['doc/assets/img/**/*', 'doc/assets/fonts/**/*'],
-        tasks: ['copy:docs']
+      dist_download: {
+        files: ['index.html'],
+        tasks: ['assemble:dist_download']
+      },
+      assets: {
+        files: ['doc/assets/{img}/**/*'],
+        tasks: ['copy']
+      }
+    },
+
+    compress: {
+      dist: {
+        options: {
+          archive: 'dist/foundation.tar.gz'
+        },
+        files: [
+          {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
+        ]
       }
     }
   });
-  
+
   grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('assemble');
 
-  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'copy', 'assemble:docs'])
+  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'uglify', 'copy', 'assemble'])
+  grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
 };

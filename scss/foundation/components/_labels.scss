@@ -14,7 +14,7 @@ $label-font-sizing: em-calc(13) !default;
 $label-font-weight: normal !default;
 $label-font-color: #333 !default;
 $label-font-color-alt: #fff !default;
-$label-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$label-font-family: $body-font-family !default;
 
 //
 // @mixins

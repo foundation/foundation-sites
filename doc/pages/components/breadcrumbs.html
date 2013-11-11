@@ -1,0 +1,61 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Breadcrumbs
+
+#### Breadcrumbs come in handy to show a navigation trail for users clicking through a site or app. They'll conform to 100% of the container width you put them in.
+
+{{> examples_breadcrumbs_basic}}
+
+***
+
+### Build With Predefined HTML Classes
+
+There are two ways to build breadcrumbs in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building breadcrumbs using our predefined class is easy. You'll need an `<ul class="breadcrumbs">` with `<li>` elements inside. You have access to two state classes: `<li class="unavailable">` and `<li class="current">` to control link intentions. The default markup looks like this:
+
+{{> examples_breadcrumbs_basic_rendered}}
+
+For these styles to come across, make sure you have the **default Foundation CSS package** or that you've selected **breadcrumbs from a custom package**. These should be linked up following our default [HTML page structure](../index.html).
+
+***
+
+### Build with Mixins
+
+We've included SCSS mixins used to style breadcrumbs. To use these mixins, you'll need to have the [../sass.html](extension installed) or grab,[_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss) [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_breadcrumbs.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_breadcrumbs.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/breadcrumbs";
+```
+{{/markdown}}
+
+If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
+
+{{> examples_breadcrumbs_mixin}}
+
+##### Container Mixin
+
+You can build your breadcrumbs using our global mixin by including it on your custom class or ID in your stylesheet. The container mixin will create the necessary style for the `<ul>`. The global mixin looks like this:
+
+{{> examples_breadcrumbs_container_mixin}}
+
+##### Crumb Mixin
+
+Use this mixin to apply the list item and link styles to items inside the breadcrumb container. You attach this mixin to the list items inside of your container.
+
+{{> examples_breadcrumbs_crumb_mixin}}
+
+##### Radius Mixin
+
+We've also created a global radius mixin that you can use to add border-radius to any element you'd like.
+
+{{> examples_breadcrumbs_radius_mixin}}
+
+##### Default SCSS Variables
+
+{{> examples_breadcrumbs_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`.

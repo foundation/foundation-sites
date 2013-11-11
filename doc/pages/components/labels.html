@@ -1,0 +1,61 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Labels
+
+#### Labels are useful inline styles that can be dropped into body copy to call out certain sections or to attach metadata. Examples might be noting when something was updated or that something is new.
+
+{{> examples_labels_basic}}
+
+***
+
+### Build With Predefined HTML Classes
+
+There are two ways to build labels in Foundation 4: with our predefined HTML classes or with our mixins. Building labels using our predefined classes is simple, you'll just need to write a `<span class="label">` and apply the classes you want.
+
+{{> examples_labels_basic_rendered}}
+
+The class options:
+
+* The color classes include: `.secondary, .alert` or `.success`
+* The radius classes include: `.radius` or `.round`.
+
+For these styles to come across, make sure you have the default Foundation CSS package or that you've selected labels from a custom package. These should be linked up following our default [HTML page structure](../index.html).
+
+***
+
+### Build With Our Mixins
+
+We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_labels.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_labels.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/labels";
+```
+{{/markdown}}
+
+##### Quick Mixins
+
+You can build your labels using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. You'll also have the ability to change the font-size and padding. The rest of the defaults can be modified using the available variables. The global mixin looks like this:
+
+{{#markdown}}
+```scss
+/* Using the default styles */
+.your-class-name { @include label; }
+```
+{{/markdown}}
+
+There are also four options you can customize on the fly when writing this mixin. These control things like: padding, text size, background color and radius. Setting any of these options to false will negate those styles.
+
+{{> examples_labels_mixin}}
+
+<p class="custom-keystroke">Here's an example of a custom <span class="label-custom">label</span> style.</p>
+
+##### Default SCSS Variables
+
+{{> examples_labels_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.

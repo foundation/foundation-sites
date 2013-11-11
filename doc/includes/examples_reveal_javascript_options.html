@@ -1,0 +1,28 @@
+{{#markdown}}
+```javascript
+{
+  animation: 'fadeAndPop',
+  animationSpeed: 250,
+  closeOnBackgroundClick: true,
+  dismissModalClass: 'close-reveal-modal',
+  bgClass: 'reveal-modal-bg',
+  open: function(){},
+  opened: function(){},
+  close: function(){},
+  closed: function(){},
+  bg : $('.reveal-modal-bg'),
+  css : {
+    open : {
+      'opacity': 0,
+      'visibility': 'visible',
+      'display' : 'block'
+    },
+    close : {
+      'opacity': 1,
+      'visibility': 'hidden',
+      'display': 'none'
+    }
+  }
+}
+```
+{{/markdown}}

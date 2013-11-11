@@ -1,0 +1,283 @@
+@import "global";
+@import "type";
+@import "top-bar";
+
+// Make sure it fills up all vertical space
+html, body { height: 100%; -webkit-text-size-adjust: none;}
+
+%kill-flicker {
+  // Remove transition flicker on phones
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+}
+
+// Top Bar Variables
+$tabbar-bg-color: #333 !default;
+$tab-bar-height: 45px;
+
+// Divider Styles
+$tabbar-divider-border-right: solid 1px lighten($tabbar-bg-color, 10%) !default;
+$tabbar-divider-border-left: solid 1px darken($tabbar-bg-color, 10%) !default;
+
+// Off Canvas Menu Variables
+$off-canvas-width: 250px;
+$off-canvas-bg: #111;
+
+// Wrap visible content and prevent scroll bars
+#outer-wrap {
+    @extend %kill-flicker;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+}
+
+// Main content area that moves to reveal the off-canvas nav
+#inner-wrap {
+    @extend %kill-flicker;
+    position: relative;
+    width: 100%;
+    top:0;
+    bottom:0;
+}
+
+
+// NAV BAR
+nav.tab-bar {
+  @extend %kill-flicker;
+
+  // base styles
+  background: $tabbar-bg-color;
+  color: #FFF;
+  height: $tab-bar-height;
+  line-height:45px;
+  // padding: 0 20px;
+
+  // below #back link
+  position: relative;
+  z-index: 999;
+
+  section.left {
+    width: $tab-bar-height;
+    height: $tab-bar-height;
+    border-right: $tabbar-divider-border-left;
+    box-shadow: 1px 0 0 lighten($tabbar-bg-color, 10%);
+  }
+
+  section.right {
+    width: $tab-bar-height;
+    height: $tab-bar-height;
+    text-align: center;
+    border-left: $tabbar-divider-border-right;
+    box-shadow: -1px 0 0 darken($tabbar-bg-color, 10%);
+  }
+
+  section.middle {
+    padding: 0 10px;
+    position: absolute;
+    text-align: center;
+    height: $tab-bar-height;
+    left: $tab-bar-height;
+    right: $tab-bar-height;
+    @media #{$medium-up} {
+      text-align: left;
+    }
+    .row { 
+      height: $tab-bar-height;
+      line-height: $tab-bar-height;
+    }
+    form {
+      margin:0;
+      input { margin:0; }
+      height: $tab-bar-height;
+      line-height: $tab-bar-height;
+      position: relative;
+      top: 8px;
+    }
+  }
+
+  a.button {
+    margin:0;
+  }
+
+  // Typography 
+  h1,h2,h3,h4,h5,h6 {
+    color: #FFF;
+    font-weight: bold;
+    line-height: $tab-bar-height;
+    margin:0;
+  }
+  h1,h2,h3,h4 { font-size: $h5-font-size; }
+    
+}
+
+// menu button
+a.menu-icon { 
+  text-indent: 35px;
+  width: $tab-bar-height;
+  height: $tab-bar-height;
+  display: block;
+  line-height: 33px;
+  padding: 0;
+  color: $topbar-menu-link-color;
+  position: relative;
+  
+  span {
+
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 0;
+    left:13px;
+    top: 0.4em;
+
+    @if $experimental {
+      -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color,
+                          0 16px 0 1px $topbar-menu-icon-color,
+                          0 22px 0 1px $topbar-menu-icon-color;
+    }
+      box-shadow:         0 10px 0 1px $topbar-menu-icon-color,
+                          0 16px 0 1px $topbar-menu-icon-color,
+                          0 22px 0 1px $topbar-menu-icon-color;
+
+  }
+}
+
+body#off-canvas {
+
+  @extend %kill-flicker;
+
+  #inner-wrap {
+    transition: -webkit-transform 500ms ease; 
+  }
+
+  %off-canvas-menu {    
+    width: $off-canvas-width;
+    top:0;
+    bottom:0;
+    min-height: 480px;
+    height: 101%;
+    position: absolute;
+
+    // base styles
+    background: #333;
+
+    // crazy thing to have part of the sidebar render invisibly in the viewport, eliminating the flicker of the bg color 
+    // &::after {
+    //   content:"";
+    //   position: absolute;
+    //   display: block;
+    //   background: transparent;
+    //   top:0;
+    //   width: 10px;
+    //   height:1px;
+    //   right: -5px;
+    // }
+
+    z-index: 1001;
+
+  }
+
+  #left-off-canvas-menu {
+    @extend %kill-flicker;
+    @extend %off-canvas-menu;
+    -webkit-transform: translate3d(-100%,0,0);
+
+  }
+  #right-off-canvas-menu {
+    @extend %kill-flicker;
+    @extend %off-canvas-menu;
+    -webkit-transform: translate3d(100%,0,0);
+    right:0;
+  }
+
+  @mixin back-link {
+      @extend %kill-flicker;
+
+      transition: background 300ms ease;
+      cursor: pointer;
+      box-shadow:-4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000, 0.5);
+
+      // fill the screen 
+      display: block;
+      position: absolute;
+      background: rgba(#FFF, 0.2);
+      top: 0;
+      bottom: 0;
+      left:0;
+      right:0;
+      z-index: 1002;
+
+      @media #{$medium-up} { 
+        &:hover {
+          background: rgba(#FFF, 0.05) !important;
+        }
+      }
+  }
+
+  &.move-right {
+    #inner-wrap {
+      -webkit-transform: translateX($off-canvas-width);
+    }
+    a#back { @include back-link;}
+  }
+
+  &.move-left {
+    #inner-wrap {
+      -webkit-transform: translateX(-($off-canvas-width));
+    }
+    a#back { @include back-link; }
+  }
+}
+
+.main-section {
+  @extend %kill-flicker;
+}
+
+// special display stuff for the docs
+#outer-wrap.docs-wrap {
+  @extend %kill-flicker;
+  margin-top: em-calc(30); 
+  #inner-wrap { background: #efefef; }
+  .main-section {
+    padding: 0 20px 0 20px;
+  }
+}
+
+ul.off-canvas-nav {
+  list-style-type: none;
+  padding:0;
+  margin:0;
+
+  li {
+    label { 
+      padding: 0.3em 15px;
+      color: #999;
+      text-transform: uppercase;
+      font-weight: bold;
+      background: #444;
+      border-top: 1px solid lighten(#444, 10%);
+      border-bottom: 1px solid rgba($off-canvas-bg, 0.4);
+      margin:0;
+    }
+    a {
+      display: block;
+      padding: 8px 15px;
+      color: rgba(#FFF, 0.7);
+      // border-bottom: 1px solid lighten($off-canvas-bg, 20%);
+      border-bottom: 1px solid rgba($off-canvas-bg, 0.4);
+    }
+    // &.divider {
+    //   height:0;
+    //   border-bottom: 1px solid lighten($off-canvas-bg, 20%);
+    //   border-top: 1px solid darken($off-canvas-bg, 1%);
+    // }
+  }
+
+
+}
+
+
+  select, textarea, input {
+    font-size: 16px;
+  }

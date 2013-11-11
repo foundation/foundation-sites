@@ -1,0 +1,153 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Side Nav
+
+#### Side nav, like you'll see on Foundation's main site, is useful for sections of either a site or a page.
+
+{{> examples_sidenav_basic}}
+
+***
+
+### How to Work With Side Nav
+
+There are two ways to build a side nav in Foundation 5: either with our predefined HTML classes or our mixins. Building side nav using our predefined classes is simple, you'll just need to write a `<ul class="side-nav">` and fill it full of list items.
+
+The list item options:
+
+* `active` Will add style to denote the active link.
+* `divider` Creates a divider between list items.
+
+<div class="row">
+  <div class="half-grid">
+    <h3>HTML</h3>
+{{#markdown}}
+```html
+{{> examples_sidenav_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <h3>Rendered HTML</h3>
+{{> examples_sidenav_basic}}
+  </div>
+</div>
+
+{{!-- TODO FIX PATH --}}
+For these styles to come across, make sure you have the default Foundation CSS package or that you've selected side nav from a custom package. These should be linked up following our default (HTML page structure)[../index.html].
+
+***
+
+## Default SCSS Variables
+
+{{#markdown}}
+```scss
+{{> examples_sidenav_variables.scss}}
+```
+{{/markdown}}
+
+***
+
+### Build with Mixins
+
+We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the [extension installed]({{relative absolute 'dist/docs/components/sass.html'}}) and grab [_side-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_side-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the component at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/components/side-nav";
+```
+{{/markdown}}
+
+## Configuring the Side Nav
+
+You can build your side nav using our global mixin by including it on a custom class or ID in your own stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. You'll also have the ability to change the font-size and padding. The rest of the defaults can be modified using the available variables. The global mixin looks like this:
+
+<div class="row">
+  <div class="half-grid">
+    <h3>SCSS</h3>
+{{#markdown}}
+```scss
+/* Using the default styles */
+.custom-sidenav-class { @include side-nav(); }
+
+/* Using the available options */
+.custom-sidenav-class {
+  @include side-nav(
+            $divider-color:$custom-mixin-color,
+            $font-size:1.2em,
+            $link-color:$custom-link-color;
+}
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <h3>HTML</h3>
+{{#markdown}}
+```html
+{{> examples_sidenav_mixin}}
+```
+{{/markdown}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="half-grid">
+{{> examples_sidenav_mixin}}
+  </div>
+</div>
+
+{{!-- There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color. --}}
+
+<h3>Options</h3>
+<div class="row">
+  <div class="half-grid">
+    <h5 class="subheader">Options</h5>
+{{#markdown}}
+```scss
+$divider-color: $side-nav-divider-color
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <h5 class="subheader">Description</h5>
+    <dl>
+      <dt>$divider-color</dt>
+      <dd>Border color of divider. Default: $side-nav-divider-color.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <div class="half-grid">
+{{#markdown}}
+```scss
+$font-size: $side-nav-font-size
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <dl>
+      <dt>$font-size</dt>
+      <dd>Font size of nav items. Default: $side-nav-font-size.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <div class="half-grid">
+{{#markdown}}
+```scss
+$link-color: $side-nav-link_color
+```
+{{/markdown}}
+  </div>
+  <div class="half-grid">
+    <dl>
+      <dt>$link-color</dt>
+      <dd>Color of navigation links. Default: $side-nav-link-color.</dd>
+    </dl>
+  </div>
+</div>
+
+**Note:** `em-calc();`  is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.

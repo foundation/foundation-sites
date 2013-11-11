@@ -1,0 +1,38 @@
+{{#markdown}}
+```scss
+/* Using the available options */
+.your-class-name {
+  @include switch($transition-speed, $transition-ease, $height, $font-size, $line-height, $paddle-bg, $positive-color, $negative-color, $radius, $base-style);
+}
+
+/* This sets the speed at which the switch toggles */
+$transition-speed: $switch-paddle-transition-speed;
+
+/* This sets the ease of the switch transition */
+$transition-ease: $switch-paddle-transition-ease;
+
+/* This controls the overall height of the switch */
+$height: $switch-height-med;
+
+/* You can set a different font-size for you switch */
+$font-size: $switch-font-size-med;
+
+/* You can set a different line-height too */
+$line-height: 2.3em;
+
+/* This controls the background of the paddle */
+$paddle-bg: $switch-paddle-bg;
+
+/* Set the box-shadow color for the right side of the switch */
+$positive-color: $switch-positive-color;
+
+/* Set the box-shadow color for the left side of the switch */
+$negative-color: $switch-negative-color;
+
+/* Set this to true for default radius or any number for complete control */
+$radius: false;
+
+/* If you set this to false, base styles are left out */
+$base-style: true;
+```
+{{/markdown}}

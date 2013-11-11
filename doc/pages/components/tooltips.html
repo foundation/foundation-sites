@@ -1,0 +1,56 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Tooltips
+
+#### Tooltips are a quick way to provide <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.
+
+***
+
+{{> examples_tooltips_basic}}
+
+{{> examples_tooltips_basic_rendered}}
+
+Available class options:
+
+* `tip-top`: Align the tip above the element you attach it to.
+* `tip-bottom`: Align the tip below the element you attach it to.
+* `tip-left`: Align the tip to the left the element you attach it to.
+* `tip-right`: Align the tip to the right the element you attach it to.
+
+#### Disable for Touch Devices
+
+If you don't want tooltips to interfere with a touch event, you can disable them for those devices. To do this, you'll just need to add a data-option to your tooltip, like so:
+
+{{> examples_tooltips_disable_touch}}
+
+***
+
+#### Available SCSS Variables
+
+{{> examples_tooltips_variables}}
+
+***
+
+### Using the JavaScript
+
+<div class="panel">
+  Before you can use tooltips you'll want to verify that both jQuery (or Zepto) and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.tooltips.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_tooltips_javascript}}
+
+Required Foundation Library: `foundation.tooltips.js`
+
+Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:
+
+{{> examples_tooltips_javascript_required}}
+
+##### Optional JavaScript Configuration
+
+Tooltips now support `data-options` configuration. You can use this functionality to disable tooltips selectively by defining `data-options="disable-for-touch: true"` on your tip target.
+
+{{> examples_tooltips_javascript_options}}

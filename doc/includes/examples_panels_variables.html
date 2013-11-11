@@ -1,0 +1,24 @@
+{{#markdown}}
+```scss
+$include-html-panel-classes: $include-html-classes;
+
+/* We use these to control the background and border styles */
+$panel-bg: darken(#fff, 5%);
+$panel-border-style: solid;
+$panel-border-size: 1px;
+
+/* We use this % to control how much we darken things on hover */
+$panel-function-factor: 10%;
+$panel-border-color: darken($panel-bg, $panel-function-factor);
+
+/* We use these to set default inner padding and bottom margin */
+$panel-margin-bottom: em-calc(20);
+$panel-padding: em-calc(20);
+
+/* We use these to set default font colors */
+$panel-font-color: #333;
+$panel-font-color-alt: #fff;
+
+$panel-header-adjust: true;
+```
+{{/markdown}}

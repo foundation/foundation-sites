@@ -1,0 +1,129 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Reveal
+
+#### Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal our jQuery modal plugin, to make this easy for you.
+
+{{> examples_reveal_basic}}
+
+***
+
+### Build With HTML Classes
+
+Reveal modals are easy to build. They should live right above your closing `body` tag, but if they are nested within the document, Reveal will temporarily relocate them while open to ensure proper positioning. Follow the markup below to get started:
+
+{{> examples_reveal_basic_rendered}}
+
+The class options:
+
+* `small`: Set the width to 30%.
+* `medium`: Set the width to 40%.
+* `large`: Set the width to 60%.
+* `xlarge`: Set the width to 70%.
+* `expand`: Set the width to 95%.
+
+For these styles to come across, make sure you have the default Foundation CSS package or that you've selected reveal from a custom package. These should be linked up following our default [HTML page structure](#).
+
+The background element is appended to the end of the `body` element. If you would like to override this functionality you can add your own Reveal background anywhere on the page; this will allow you to style if if your scope is smaller than the body of the page.
+
+{{> examples_reveal_background}}
+
+##### Firing a Reveal Modal
+
+To launch a modal, just add a `data-reveal-id` to the object which you want to fire the modal when clicked. The `data-reveal-id` needs to match the `id` of your reveal.
+
+{{> examples_reveal_data}}
+
+You can also open and close Reveal via JavaScript:
+
+{{> examples_reveal_open_close}}
+
+##### Firing a Reveal Modal with Ajax Content
+
+To launch a modal with content from another page, just add a `data-reveal-ajax` attribute pointing to the url of that page. When clicked, the Reveal modal will be opened with a content from that page. Beware, that content of the object from `data-reveal-id` attribute will be overwritten as a result.
+
+To use an url from `href` attribute just add `data-reveal-ajax="true"` instead.
+
+{{> examples_reveal_ajax}}
+
+Ajax-based Reveal modals can also be opened via JavaScript:
+
+{{> examples_reveal_ajax_javascript}}
+
+Please refer to [http://api.jquery.com/jQuery.ajax/](http://api.jquery.com/jQuery.ajax/) for a complete list of possible parameters.
+
+***
+
+### Build with Mixins
+
+We've included SCSS mixins used to style reveal. To use these mixins, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_reveal.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_breadcrumbs.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/reveal";
+```
+{{/markdown}}
+
+If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
+
+{{examples_reveal_mixin}}
+
+##### Background Mixin
+
+The first mixin you'll need to setup when using Reveal through SCSS is the background cover. This is what fades out the rest of the page to help show the modal. The container mixin looks like this:
+
+{{#markdown}}
+```scss
+.reveal-modal-bg { @include reveal-bg; }
+```
+{{/markdown}}
+
+##### Base Mixin
+
+This mixin is used to set the basic styles for positioning, visibility and a few other necessities. This mixin also gives you the ability to set the width of the modal. The mixin looks like this:
+
+{{> examples_reveal_base_mixin}}
+
+##### Style Mixin
+
+This mixin gives you access to changing the background color, borders, shadows, and offsets. You can create lots of different modals with this mixin. Here's what the mixin looks like:
+
+{{> examples_reveal_style_mixin}}
+
+##### The Close Button Mixin
+
+One important aspect we musn't forget is the close button. We've given you a mixin that will help style the button, it looks like this:
+
+{{> examples_reveal_close_mixin}}
+
+##### Default SCSS Variables
+
+{{> examples_reveal_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+
+***
+
+### Using the JavaScript
+
+<div class="panel">
+  Before you can use Reveal you'll want to verify that both jQuery (or Zepto) and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.reveal.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_reveal_javascript}}
+
+Required Foundation Library: `foundation.reveal.js`
+
+##### Optional JavaScript Configuration
+
+Reveal options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>opened</i>, <i>close</i>, and <i>closed</i> events.
+
+{{> examples_reveal_javascript_options}}
+
+{{> examples_reveal_modal_examples}}

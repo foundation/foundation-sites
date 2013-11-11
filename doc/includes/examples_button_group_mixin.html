@@ -1,0 +1,26 @@
+{{#markdown}}
+```scss
+.your-class-name { @include button-group-container;
+  .your-button-class { @include button; }
+
+  & > li { @include button-group-style($radius, $even, $float); }
+}
+
+/* This controls the radius of the left and right edges. */
+/* Set to true or px value */
+$radius: false;
+
+/* This makes the buttons take up even space in their container */
+/* Set to the number of buttons in the group */
+$even: false;
+
+/* Controls how the buttons in the group floatm set to left or right */
+$float: left;
+```
+{{/markdown}}
+
+<ul class="button-group-docs list">
+  <li><a href="#" class="button-class">Button 1</a></li>
+  <li><a href="#" class="button-class">Button 2</a></li>
+  <li><a href="#" class="button-class">Button 3</a></li>
+</ul>

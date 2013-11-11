@@ -1,0 +1,60 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Dropdown Buttons
+
+#### We've simplified our dropdown buttons by getting rid of the dedicated dropdown associated with them. Instead, you'll use our [new dropdown plugin](#) to attach a dropdown to the button style of your choice.
+
+{{> examples_dropdown_button_basic}}
+
+***
+
+### Build With Predefined HTML Classes
+
+There are two ways to build buttons in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building buttons using our predefined classes is simple, you'll need an `<a>`, `<button>` or `<input>` with a class of `.button.dropdown`. This will create a default medium button. You can also use size, color and radius classes to control more of the style.
+
+The classes options:
+
+* The size classes include: `.tiny, .small, .medium` or `.large`
+* The color classes include: `.secondary, .alert` or `.success`
+* The radius classes include: `.radius` or `.round`
+
+{{> examples_dropdown_button_basic_rendered}}
+
+You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the **default Foundation CSS package** or that you've selected **dropdown buttons from a custom package**. These should be linked up following our default [HTML page structure](../index.html).
+
+***
+
+### Build with Mixins
+
+We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the [extension installed](../sass.html) or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and [_dropdown-buttons.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_dropdown-buttons.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/buttons";
+@import "foundation/components/dropdown-buttons";
+```
+{{/markdown}}
+
+If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
+
+{{> examples_dropdown_button_mixin}}
+
+There are also **three options** you can customize on the fly when writing this mixin. These control things like: background color, pip color and base styles. Setting any of these options to **false** will not include the styles.
+
+{{> examples_dropdown_button_options}}
+
+##### Inset Shadow, Border Radius & Transition Mixin
+
+Sometimes you want to add a nice fancy shine to the edge of your button. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the button a nice zero-fade.
+
+{{> examples_dropdown_button_options_mixin}}
+
+##### Default SCSS Variables
+
+{{> examples_dropdown_buttons_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.

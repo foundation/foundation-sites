@@ -39,7 +39,7 @@ $topbar-link-hover-lightness: -10% !default; // Darken by 10%
 $topbar-link-bg-hover: #272727 !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: darken($primary-color, 5%) !default;
-$topbar-link-font-family: "open_sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$topbar-link-font-family: $body-font-family !default;
 
 
 $topbar-dropdown-label-color: #777 !default;
@@ -175,12 +175,12 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           line-height: $topbar-height;
         }
 
-        // Adding the class "menu-icon" will add the 3-line icon people love and adore.
-        &.menu-icon {
-          #{$opposite-direction}: $topbar-height / 3;
-          top: 50%;
-          margin-top: -16px;
-          padding-#{$default-float}: 40px;
+    // Menu toggle button on small devices
+    .toggle-topbar {
+      
+      position: absolute;
+      #{$opposite-direction}: 0;
+      top: 0;
 
           a {
             text-indent: -48px;

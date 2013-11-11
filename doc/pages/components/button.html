@@ -1,0 +1,88 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Buttons
+
+#### Buttons are a convenient tool when it comes to more traditional actions. To that end, Foundation has a lot of easy to use button styles that you can customize or override to fit your needs.
+
+{{> examples_buttons_basic}}
+
+***
+
+### Build With Predefined HTML Classes
+
+There are two ways to build buttons in Foundation 5: with our predefined HTML classes or with our structure and mixins. Building buttons using our predefined classes is simple, you'll need an `<a>`, `<button>` or `<input>` with a class of `.button`. This will create a default medium button. You can also use size, color and radius classes to control more of the style.
+
+The class options:
+
+* The size classes include: `.tiny, .small, .medium` or `.large`
+* The color classes include: `.secondary, .alert` or `.success`
+* The radius classes include: `.radius` or `.round`
+* You can also add `.disabled` to any button and it will look and act disabled
+
+{{> examples_buttons_basic_rendered}}
+
+You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the **default Foundation CSS package** or that you've selected **button from a custom package**. These should be linked up following our default [HTML page structure](../index.html).
+
+***
+
+### Build with Mixins
+
+We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_buttons.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+
+{{#markdown}}
+```scss
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/buttons";
+```
+{{/markdown}}
+
+If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
+
+{{#markdown}}
+```html
+<a href="#" class="your-class-name">Button Text</a>
+```
+{{/markdown}}
+
+##### Quick Mixin
+
+You can quickly build an entire button using our global mixin by including it on your custom class or ID in your stylesheet. The global mixin will create the necessary style for the button. The global mixin looks like this:
+
+{{> examples_buttons_default_mixin}}
+
+There are also **six options** you can customize on the fly when writing this mixin. These controls things like: background color, border color, text color, size and state. Setting any of these options to **false** will negate those styles.
+
+{{> examples_buttons_custom_mixin}}
+
+##### Base Mixin
+
+You also have access to a few internal mixins that can create parts of the button as needed. The base mixin will create a button base that only include structural styles.
+
+{{> examples_buttons_base_mixin}}
+
+##### Size Mixin
+
+The size mixin will let you control the padding, which adjusts text size. You can also choose whether the button is full-width or an input button.
+
+{{> examples_buttons_size_mixin}}
+
+##### Style Mixin
+
+The last internal mixin you have access to for buttons is the style mixin. This will help you style background color, text, border and radius.
+
+{{> examples_buttons_style_mixin}}
+
+Inset Shadow, Border Radius &amp; Transition Mixin
+
+Sometimes you want to add a nice fancy shine to the edge of your button. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the button a nice zero-fade.
+
+{{> examples_buttons_options_mixin}}
+
+##### Default SCSS Variables
+
+{{> examples_buttons_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`.

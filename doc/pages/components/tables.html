@@ -1,0 +1,25 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Tables
+
+#### Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course).
+
+{{> examples_tables_basic}}
+
+***
+
+### Build With Predefined HTML Classes
+
+Tables are built from a mixin, but since tables don't rely on any classes to build, you can use the table element and customize with your CSS. If you are using SCSS, the variables will help you customize the look and feel.
+
+{{> examples_tables_basic_rendered}}
+
+***
+
+##### Default SCSS Variables
+
+{{> examples_tables_variables}}
+
+**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.

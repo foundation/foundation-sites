@@ -1,0 +1,19 @@
+{{#markdown}}
+```scss
+.your-class-name { @include button-group-container;
+  .your-button-class {
+    @include button;
+    @include inset-shadow;
+    @include single-transition;
+  }
+
+  & > li { @include button-group-style(true); }
+}
+```
+{{/markdown}}
+
+<ul class="button-group-docs list extras">
+  <li><a href="#" class="button-class">Button 1</a></li>
+  <li><a href="#" class="button-class">Button 2</a></li>
+  <li><a href="#" class="button-class">Button 3</a></li>
+</ul>
