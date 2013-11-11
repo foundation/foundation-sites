@@ -9,7 +9,7 @@ $include-html-alert-classes: $include-html-classes !default;
 $alert-padding-top: em-calc(14) !default;
 $alert-padding-default-float: $alert-padding-top !default;
 $alert-padding-opposite-direction: $alert-padding-top + em-calc(10) !default;
-$alert-padding-bottom: $alert-padding-top + em-calc(1) !default;
+$alert-padding-bottom: $alert-padding-top !default;
 
 // We use these to control text style.
 $alert-font-weight: normal !default;

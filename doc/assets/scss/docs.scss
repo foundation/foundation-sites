@@ -51,13 +51,18 @@ body {
   }
 }
 
-h3, h4, h5 { margin-top: 30px; }
+h1 { margin-top: 20px; }
+h2, h3 { margin: 1em 0 0.15em; }
+h3.subheader { margin: 0 0 10px 0; font-size: 1.25em; }
+h4 { font-size: 0.75em; font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
+
 
 .top30 { margin-top: 30px; }
 .top20 { margin-top: 20px; }
 .bottom30 { margin-top: 30px; }
 .bottom20 { margin-top: 20px; }
 
+hr { margin: 2.5em 0 2em;}
 hr.dashed { border-style: dashed; }
 
 // Docs Components
@@ -145,7 +150,7 @@ hr.dashed { border-style: dashed; }
   dt { color: #008080; }
 }
 
-pre {
+pre { margin-bottom: 30px; 
   code {
     .code-container {
       //@include border(solid, 1px, darken($panel-bg-color, 4%));
