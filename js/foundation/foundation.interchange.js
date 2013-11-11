@@ -152,25 +152,24 @@
           loaded_count = 0,
           data_attr = this.data_attr;
 
+      this.cache = {};
       this.cached_images = [];
       this.images_loaded = false;
 
       for (var i = count - 1; i >= 0; i--) {
-        this.loaded($(images[i]), function (image) {
-          loaded_count++;
-          if (image) {
-            var str = image.getAttribute(data_attr) || '';
+        loaded_count++;
+        if (images[i]) {
+          var str = images[i].getAttribute(data_attr) || '';
 
-            if (str.length > 0) {
-              this.cached_images.push(image);
-            }
+          if (str.length > 0) {
+            this.cached_images.push(images[i]);
           }
+        }
 
-          if(loaded_count === count) {
-            this.images_loaded = true;
-            this.enhance('images');
-          }
-        }.bind(this));
+        if(loaded_count === count) {
+          this.images_loaded = true;
+          this.enhance('images');
+        }
       }
 
       return this;
@@ -203,38 +202,6 @@
       }
 
       return this;
-    },
-
-    // based on jquery.imageready.js
-    // @weblinc, @jsantell, (c) 2012
-
-    loaded : function (image, callback) {
-      function loaded () {
-        callback(image[0]);
-      }
-
-      function bindLoad () {
-        this.one('load', loaded);
-
-        if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-          var src = this.attr( 'src' ),
-              param = src.match( /\?/ ) ? '&' : '?';
-
-          param += 'random=' + (new Date()).getTime();
-          this.attr('src', src + param);
-        }
-      }
-
-      if (!image.attr('src')) {
-        loaded();
-        return;
-      }
-
-      if (image[0].complete || image[0].readyState === 4) {
-        loaded();
-      } else {
-        bindLoad.call(image);
-      }
     },
 
     enhance : function (type) {
