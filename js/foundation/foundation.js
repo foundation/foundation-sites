@@ -9,9 +9,10 @@
 (function ($, window, document, undefined) {
   'use strict';
 
-  $('head').append('<meta class="foundation-mq-small">');
-  $('head').append('<meta class="foundation-mq-medium">');
-  $('head').append('<meta class="foundation-mq-large">');
+  $('head').append([
+    '<meta class="foundation-mq-small">', 
+    '<meta class="foundation-mq-medium">', 
+    '<meta class="foundation-mq-large">'].join(''));
 
   // Enable FastClick
   if(typeof FastClick !== 'undefined') {
