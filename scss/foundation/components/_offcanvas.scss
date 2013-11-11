@@ -18,7 +18,7 @@ $tabbar-left-section-border: solid 1px darken($tabbar-bg, 10%) !default;
 $tabbar-header-color: #FFF !default;
 $tabbar-header-weight: bold !default;
 $tabbar-header-line-height: $tabbar-height !default;
-$tabbar-header-margin: 0 !default;    
+$tabbar-header-margin: 0 !default;
 
 // Off Canvas Menu Variables
 $off-canvas-width: 250px !default;
@@ -36,7 +36,7 @@ $off-canvas-label-margin:0 !default;
 $off-canvas-link-padding: em-calc(10, 15) !default;
 $off-canvas-link-color: rgba(#FFF, 0.7) !default;
 $off-canvas-link-border-bottom: 1px solid darken($off-canvas-bg, 5%) !default;
-      
+
 // Off Canvas Menu Icon Variables
 $tabbar-menu-icon-color: #FFF !default;
 $tabbar-menu-icon-hover: darken($tabbar-menu-icon-color, 30%) !default;
@@ -144,7 +144,7 @@ nav.tab-bar {
     @media #{$medium-up} {
       text-align: left;
     }
-    .row { 
+    .row {
       height: $tabbar-height;
       line-height: $tabbar-height;
     }
@@ -162,7 +162,7 @@ nav.tab-bar {
     margin:0;
   }
 
-  // Typography 
+  // Typography
   h1,h2,h3,h4,h5,h6 {
     color: $tabbar-header-color;
     font-weight: $tabbar-header-weight;
@@ -170,11 +170,11 @@ nav.tab-bar {
     margin: $tabbar-header-margin;
   }
   h1,h2,h3,h4 { font-size: $h5-font-size; }
-    
+
 }
 
 // MENU BUTTON
-a.menu-icon { 
+a.menu-icon {
   text-indent: $tabbar-menu-icon-text-indent;
   width: $tabbar-height;
   height: $tabbar-height;
@@ -183,7 +183,7 @@ a.menu-icon {
   padding: $tabbar-menu-icon-padding;
   color: $topbar-menu-link-color;
   position: relative;
-  
+
   // this is the actual hamburger icon
   span {
 
@@ -200,7 +200,7 @@ a.menu-icon {
                           0 16px 0 1px $tabbar-menu-icon-color,
                           0 22px 0 1px $tabbar-menu-icon-color;
     }
-      box-shadow:         0 10px 0 1px $tabbar-menu-icon-color,
+      box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
                           0 16px 0 1px $tabbar-menu-icon-color,
                           0 22px 0 1px $tabbar-menu-icon-color;
   }
@@ -210,7 +210,7 @@ a.menu-icon {
                           0 16px 0 1px $tabbar-menu-icon-hover,
                           0 22px 0 1px $tabbar-menu-icon-hover;
     }
-      box-shadow:         0 10px 0 1px $tabbar-menu-icon-hover,
+      box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
                           0 16px 0 1px $tabbar-menu-icon-hover,
                           0 22px 0 1px $tabbar-menu-icon-hover;
   }
@@ -219,15 +219,15 @@ a.menu-icon {
 .off-canvas-wrap {
 
   .inner-wrap {
-    -webkit-transition: -webkit-#{$menu-slide}; 
-    -moz-transition: -moz-#{$menu-slide}; 
-    -ms-transition: -ms-#{$menu-slide}; 
-    -o-transition: -o-#{$menu-slide}; 
-    transition: #{$menu-slide}; 
+    -webkit-transition: -webkit-#{$menu-slide};
+    -moz-transition: -moz-#{$menu-slide};
+    -ms-transition: -ms-#{$menu-slide};
+    -o-transition: -o-#{$menu-slide};
+    transition: #{$menu-slide};
   }
 
   // basic styles for off-canvas menu container
-  %off-canvas-menu {    
+  %off-canvas-menu {
     width: $off-canvas-width;
     top:0;
     bottom:0;
@@ -262,7 +262,7 @@ a.menu-icon {
     margin:0;
 
     li {
-      label { 
+      label {
         padding: $off-canvas-label-padding;
         color: $off-canvas-label-color;
         text-transform: $off-canvas-label-text-transform;
@@ -289,7 +289,7 @@ a.menu-icon {
       cursor: $off-canvas-overlay-cursor;
       box-shadow: $off-canvas-overlay-box-shadow;
 
-      // fill the screen 
+      // fill the screen
       display: block;
       position: absolute;
       background: $off-canvas-overlay-background;
@@ -299,7 +299,7 @@ a.menu-icon {
       right:0;
       z-index: 1002;
 
-      @media #{$medium-up} { 
+      @media #{$medium-up} {
         &:hover {
           background: $off-canvas-overlay-background-hover;
         }
@@ -310,7 +310,7 @@ a.menu-icon {
     .inner-wrap {
       @include translate3d($off-canvas-width,0,0);
     }
-    a.exit-offcanvas { @include back-link;}
+    a.exit-off-canvas { @include back-link;}
   }
 
   &.move-left {
@@ -318,7 +318,7 @@ a.menu-icon {
       @include translate3d(-($off-canvas-width),0,0);
 
     }
-    a.exit-offcanvas { @include back-link; }
+    a.exit-off-canvas { @include back-link; }
   }
 }
 
