@@ -8,9 +8,9 @@
     <link href='{{assets}}/css/docs.css' rel='stylesheet' />
     <script src="{{assets}}/js/custom.modernizr.js"></script>
   </head>
-  <body id="off-canvas" class="antialiased hide-extras">
-    <div id="outer-wrap">
-      <div id="inner-wrap">
+  <body class="antialiased hide-extras">
+    <div class="off-canvas-wrap">
+      <div class="inner-wrap">
 
         {{> topbar}}
         {{> offcanvas-nav}}
@@ -47,13 +47,13 @@
     $(".off-canvas-left-toggle").click(function(e){
       $(".off-canvas-wrap").addClass("move-right");
     });
-    $(".exit-offcanvas").click(function(){
+    $(".exit-off-canvas").click(function(){
       $(".off-canvas-wrap").removeClass("move-right");
     });
     $(".off-canvas-right-toggle").click(function(e){
       $(".off-canvas-wrap").addClass("move-left");
     });
-    $(".exit-offcanvas").click(function(){
+    $(".exit-off-canvas").click(function(){
       $(".off-canvas-wrap").removeClass("move-left");
     });
     </script>

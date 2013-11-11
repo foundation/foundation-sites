@@ -144,10 +144,9 @@ nav.tab-bar {
     @media #{$medium-up} {
       text-align: left;
     }
-
     .row {
-      height: $tab-bar-height;
-      line-height: $tab-bar-height;
+      height: $tabbar-height;
+      line-height: $tabbar-height;
     }
     form {
       margin:0;
@@ -201,7 +200,7 @@ a.menu-icon {
                           0 16px 0 1px $tabbar-menu-icon-color,
                           0 22px 0 1px $tabbar-menu-icon-color;
     }
-      box-shadow:         0 10px 0 1px $tabbar-menu-icon-color,
+      box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
                           0 16px 0 1px $tabbar-menu-icon-color,
                           0 22px 0 1px $tabbar-menu-icon-color;
   }
@@ -211,20 +210,14 @@ a.menu-icon {
                           0 16px 0 1px $tabbar-menu-icon-hover,
                           0 22px 0 1px $tabbar-menu-icon-hover;
     }
-      box-shadow:         0 10px 0 1px $tabbar-menu-icon-hover,
+      box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
                           0 16px 0 1px $tabbar-menu-icon-hover,
                           0 22px 0 1px $tabbar-menu-icon-hover;
   }
 }
 
 .off-canvas-wrap {
-  @extend %kill-flicker;
 
-  #inner-wrap {
-    transition: -webkit-transform 500ms ease;
-  }
-
-  %off-canvas-menu {
   .inner-wrap {
     -webkit-transition: -webkit-#{$menu-slide};
     -moz-transition: -moz-#{$menu-slide};
@@ -244,19 +237,6 @@ a.menu-icon {
     overflow: scroll;
 
     // base styles
-
-    // crazy thing to have part of the sidebar render invisibly in the viewport, eliminating the flicker of the bg color
-    // &::after {
-    //   content:"";
-    //   position: absolute;
-    //   display: block;
-    //   background: transparent;
-    //   top:0;
-    //   width: 10px;
-    //   height:1px;
-    //   right: -5px;
-    // }
-
     background: $off-canvas-bg;
 
     z-index: 1001;
@@ -330,7 +310,7 @@ a.menu-icon {
     .inner-wrap {
       @include translate3d($off-canvas-width,0,0);
     }
-    a.exit-offcanvas { @include back-link;}
+    a.exit-off-canvas { @include back-link;}
   }
 
   &.move-left {
@@ -338,59 +318,10 @@ a.menu-icon {
       @include translate3d(-($off-canvas-width),0,0);
 
     }
-    a.exit-offcanvas { @include back-link; }
+    a.exit-off-canvas { @include back-link; }
   }
 }
 
 .main-section {
   @extend %kill-flicker;
-}
-
-// special display stuff for the docs
-#outer-wrap.docs-wrap {
-  @extend %kill-flicker;
-  margin-top: em-calc(30);
-  #inner-wrap { background: #efefef; }
-  .main-section {
-    padding: 0 20px 0 20px;
-  }
-}
-
-ul.off-canvas-nav {
-  list-style-type: none;
-  padding:0;
-  margin:0;
-
-  li {
-    label {
-      padding: 0.3em 15px;
-      color: #999;
-      text-transform: uppercase;
-      font-weight: bold;
-      background: #444;
-      border-top: 1px solid lighten(#444, 10%);
-      border-bottom: 1px solid rgba($off-canvas-bg, 0.4);
-      margin:0;
-    }
-    a {
-      display: block;
-      padding: 8px 15px;
-      color: rgba(#FFF, 0.7);
-      // border-bottom: 1px solid lighten($off-canvas-bg, 20%);
-      border-bottom: 1px solid rgba($off-canvas-bg, 0.4);
-    }
-    // &.divider {
-    //   height:0;
-    //   border-bottom: 1px solid lighten($off-canvas-bg, 20%);
-    //   border-top: 1px solid darken($off-canvas-bg, 1%);
-    // }
-  }
-
-
-}
-
-
-  select, textarea, input {
-    font-size: 16px;
-  }
 }
