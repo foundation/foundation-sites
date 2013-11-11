@@ -68,7 +68,7 @@ hr.dashed { border-style: dashed; }
 
 // Auto complete styles
 .autocomplete-suggestions {
-  border: 1px solid #999;
+  border: 1px solid $secondary-color;
   background: #FFF;
   overflow: auto;
 }
@@ -79,13 +79,18 @@ hr.dashed { border-style: dashed; }
   overflow: hidden;
 }
 .autocomplete-selected {
-  background: lighten($secondary-color, 5%);
-  @include single-transition($property:all, $speed:150ms, $ease:ease-in-out)
+  background-color: lighten($primary-color, 5%);
+  @include single-transition($property:all, $speed:100ms, $ease:ease-in-out);
+  color: #fff;
+  strong {
+    color: #fff !important;
+  }
 }
 .autocomplete-suggestions {
   strong {
     font-weight: bold;
     color: $primary-color;
+    // text-shadow: 0px 0px 1px lighten($primary-color, 20%);
   }
 }
 
