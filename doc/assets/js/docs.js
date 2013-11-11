@@ -107,6 +107,8 @@ var components = [
   { value: 'Accordian', data: '#accordian' },
   { value: 'Collapse', data: '#accordian' },
 
+  { value: 'Visibility', data: 'visibility.html' },
+
   { value: 'Tabs', data: '#tabs' },
   { value: 'Changelog', data: '#changelog' },
   { value: 'Compatibility', data: '#compatibility' },
