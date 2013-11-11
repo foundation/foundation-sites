@@ -41,6 +41,9 @@ var components = [
   { value: 'Navigation Path', data: 'breadcrumbs.html' },
   { value: 'Cookie crumb', data: 'breadcrumbs.html' },
 
+  { value: 'Pagination', data: 'pagination.html' },
+  { value: 'Pagination', data: 'pagination.html' },
+
   { value: 'Orbit Slider', data: 'orbit.html' },
   { value: 'Carousel', data: 'orbit.html' },
   { value: 'Slider', data: 'orbit.html' },
@@ -90,6 +93,7 @@ var components = [
   { value: 'Wells', data: 'panels.html' },
 
   { value: 'Tooltips', data: 'tooltips.html' },
+  { value: 'Popover', data: 'tooltips.html' },
 
   { value: 'Joyride', data: 'joyride.html' },
   { value: 'Tooltip Tour', data: 'joyride.html' },
@@ -102,6 +106,8 @@ var components = [
   { value: 'Progress Bars', data: 'progress_bars.html' },
 
   { value: 'Accordian', data: '#accordian' },
+  { value: 'Collapse', data: '#accordian' },
+
   { value: 'Tabs', data: '#tabs' },
   { value: 'Changelog', data: '#changelog' },
   { value: 'Compatibility', data: '#compatibility' },
