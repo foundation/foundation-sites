@@ -33,16 +33,16 @@
     });
     
     $(".off-canvas-left-toggle").click(function(e){
-      $("body").addClass("move-right");
+      $(".off-canvas-wrap").addClass("move-right");
     });
-    $("#back").click(function(){
-      $("body").removeClass("move-right");
+    $(".exit-offcanvas").click(function(){
+      $(".off-canvas-wrap").removeClass("move-right");
     });
     $(".off-canvas-right-toggle").click(function(e){
-      $("body").addClass("move-left");
+      $(".off-canvas-wrap").addClass("move-left");
     });
-    $("#back").click(function(){
-      $("body").removeClass("move-left");
+    $(".exit-offcanvas").click(function(){
+      $(".off-canvas-wrap").removeClass("move-left");
     });
     </script>
   </body>
