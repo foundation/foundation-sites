@@ -181,7 +181,7 @@
       if ((index === 0 && this.settings.start_timer_on_click && this.settings.timer > 0) || this.settings.timer === 0) {
         txt = '';
       } else {
-        txt = this.outerHTML($(this.settings.template.timer)[0]);
+        txt = $(this.settings.template.timer)[0].outerHTML;
       }
       return txt;
     },
@@ -189,7 +189,7 @@
     button_text : function (txt) {
       if (this.settings.next_button) {
         txt = $.trim(txt) || 'Next';
-        txt = this.outerHTML($(this.settings.template.button).append(txt)[0]);
+        txt = $(this.settings.template.button).append(txt)[0].outerHTML;
       } else {
         txt = '';
       }
@@ -817,11 +817,6 @@
       this.settings.post_step_callback(this.settings.$li.index(), this.settings.$current_tip);
       this.settings.post_ride_callback(this.settings.$li.index(), this.settings.$current_tip);
       $('.joyride-tip-guide').remove();
-    },
-
-    outerHTML : function (el) {
-      // support FireFox < 11
-      return el.outerHTML || new XMLSerializer().serializeToString(el);
     },
 
     off : function () {
