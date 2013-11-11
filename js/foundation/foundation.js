@@ -239,6 +239,35 @@ if (typeof jQuery === "undefined" &&
         }
       },
 
+      loaded : function (image, callback) {
+        function loaded () {
+          callback(image[0]);
+        }
+
+        function bindLoad () {
+          this.one('load', loaded);
+
+          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+            var src = this.attr( 'src' ),
+                param = src.match( /\?/ ) ? '&' : '?';
+
+            param += 'random=' + (new Date()).getTime();
+            this.attr('src', src + param);
+          }
+        }
+
+        if (!image.attr('src')) {
+          loaded();
+          return;
+        }
+
+        if (image[0].complete || image[0].readyState === 4) {
+          loaded();
+        } else {
+          bindLoad.call(image);
+        }
+      },
+
       bindings : function (method, options) {
         var self = this;
 
