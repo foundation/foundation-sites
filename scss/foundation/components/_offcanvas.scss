@@ -82,7 +82,7 @@ nav.tab-bar {
     @media #{$medium-up} {
       text-align: left;
     }
-    .row { 
+    .row {
       height: $tab-bar-height;
       line-height: $tab-bar-height;
     }
@@ -100,7 +100,7 @@ nav.tab-bar {
     margin:0;
   }
 
-  // Typography 
+  // Typography
   h1,h2,h3,h4,h5,h6 {
     color: #FFF;
     font-weight: bold;
@@ -108,11 +108,11 @@ nav.tab-bar {
     margin:0;
   }
   h1,h2,h3,h4 { font-size: $h5-font-size; }
-    
+
 }
 
 // menu button
-a.menu-icon { 
+a.menu-icon {
   text-indent: 35px;
   width: $tab-bar-height;
   height: $tab-bar-height;
@@ -121,7 +121,7 @@ a.menu-icon {
   padding: 0;
   color: $topbar-menu-link-color;
   position: relative;
-  
+
   span {
 
     position: absolute;
@@ -148,10 +148,10 @@ body#off-canvas {
   @extend %kill-flicker;
 
   #inner-wrap {
-    transition: -webkit-transform 500ms ease; 
+    transition: -webkit-transform 500ms ease;
   }
 
-  %off-canvas-menu {    
+  %off-canvas-menu {
     width: $off-canvas-width;
     top:0;
     bottom:0;
@@ -162,7 +162,7 @@ body#off-canvas {
     // base styles
     background: #333;
 
-    // crazy thing to have part of the sidebar render invisibly in the viewport, eliminating the flicker of the bg color 
+    // crazy thing to have part of the sidebar render invisibly in the viewport, eliminating the flicker of the bg color
     // &::after {
     //   content:"";
     //   position: absolute;
@@ -198,7 +198,7 @@ body#off-canvas {
       cursor: pointer;
       box-shadow:-4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000, 0.5);
 
-      // fill the screen 
+      // fill the screen
       display: block;
       position: absolute;
       background: rgba(#FFF, 0.2);
@@ -208,7 +208,7 @@ body#off-canvas {
       right:0;
       z-index: 1002;
 
-      @media #{$medium-up} { 
+      @media #{$medium-up} {
         &:hover {
           background: rgba(#FFF, 0.05) !important;
         }
@@ -237,7 +237,7 @@ body#off-canvas {
 // special display stuff for the docs
 #outer-wrap.docs-wrap {
   @extend %kill-flicker;
-  margin-top: em-calc(30); 
+  margin-top: em-calc(30);
   #inner-wrap { background: #efefef; }
   .main-section {
     padding: 0 20px 0 20px;
@@ -250,7 +250,7 @@ ul.off-canvas-nav {
   margin:0;
 
   li {
-    label { 
+    label {
       padding: 0.3em 15px;
       color: #999;
       text-transform: uppercase;

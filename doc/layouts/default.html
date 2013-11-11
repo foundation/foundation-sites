@@ -9,29 +9,41 @@
     <script src="{{assets}}/js/custom.modernizr.js"></script>
   </head>
   <body id="off-canvas" class="antialiased hide-extras">
-    {{> topbar}}
-    <section role="main">
-      <div class="row">
-        <div class="large-3 show-for-medium-up columns">
-          {{> sidebar}}
-        </div>
-        <div class="large-9 columns">
+    <div id="outer-wrap">
+      <div id="inner-wrap">
+
+        {{> topbar}}
+        {{> offcanvas-nav}}
+
+        <section role="main">
+
+          <div class="row">
+            <div class="large-3 show-for-medium-up columns">
+
+              {{> sidebar}}
+
+            </div>
+            <div class="large-9 columns">
+
 {{#markdown}}
 {{> body}}
 {{/markdown}}
-        </div>
+
+            </div>
+          </div>
+
+          {{> footer}}
+        </section>
+
       </div>
-
-      {{> footer}}
-    </section>
-
+    </div>
 
     <script src="{{assets}}/js/jquery.js"></script>
     <script>
     $.getScript("{{assets}}/js/all.js", function(){
       $(document).foundation();
     });
-    
+
     $(".off-canvas-left-toggle").click(function(e){
       $("body").addClass("move-right");
     });
