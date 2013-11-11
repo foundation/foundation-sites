@@ -6,20 +6,6 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-// Accommodate running jQuery in noConflict() mode by
-// using an anonymous function to redefine the $ shorthand name.
-// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
-var libFuncName = null;
-
-if (typeof jQuery === "undefined" &&
-    typeof $ === "function") {
-  libFuncName = $;
-} else if (typeof jQuery === "function") {
-  libFuncName = jQuery;
-} else {
-  throw new TypeError();
-}
-
 (function ($, window, document, undefined) {
   'use strict';
 
@@ -33,11 +19,6 @@ if (typeof jQuery === "undefined" &&
   }
 
   /*
-    matchMedia() polyfill - Test a CSS media 
-    type/query in JS. Authors & copyright (c) 2012: 
-    Scott Jehl, Paul Irish, Nicholas Zakas. 
-    Dual MIT/BSD license
-
     https://github.com/paulirish/matchMedia.js
   */
 
