@@ -47,7 +47,8 @@ var components = [
   { value: 'Slideshow', data: 'orbit.html' },
 
   { value: 'Clearing Lightbox', data: 'clearing.html' },
-  { value: 'lightbox', data: 'clearing.html' },
+  { value: 'Responsive Lightbox', data: 'clearing.html' },
+  { value: 'Lightbox', data: 'clearing.html' },
 
   { value: 'Interchange Responsive Images', data: 'interchange.html' },
 
@@ -57,6 +58,8 @@ var components = [
   { value: 'Forms', data: 'forms.html' },
 
   { value: 'Abide Validation', data: 'abide.html' },
+  { value: 'Form Validation', data: 'abide.html' },
+  { value: 'Field Validation', data: 'abide.html' },
 
   { value: 'Buttons', data: 'buttons.html' },
   { value: 'Button Groups', data: 'button_groups.html' },
@@ -69,9 +72,13 @@ var components = [
   { value: 'Composition', data: 'typography.html' },
 
   { value: 'Lists', data: 'inline_lists.html' },
+
   { value: 'Labels', data: 'labels.html' },
+  { value: 'Tags', data: 'labels.html' },
+
   { value: 'Keystrokes', data: 'keystrokes.html' },
 
+  { value: 'Reveal Modal', data: 'reveal.html' },
   { value: 'Reveal Modal', data: 'reveal.html' },
 
   { value: 'Alerts', data: 'alert_boxes.html' },
