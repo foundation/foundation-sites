@@ -57,7 +57,8 @@
       form
         .off('.abide')
         .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
-          return self.validate($(this).find('input, textarea, select').get(), e);
+          var is_ajax = /ajax/i.test($(this).attr('data-abide'));
+          return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
         })
         .find('input, textarea, select')
           .off('.abide')
@@ -73,13 +74,14 @@
           });
     },
 
-    validate : function (els, e) {
+    validate : function (els, e, is_ajax) {
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
-          form = $(els[0]).closest('form');
+          form = $(els[0]).closest('form'),
+          submit_event = /submit/.test(e.type);
 
       for (var i=0; i < validation_count; i++) {
-        if (!validations[i] && /submit/.test(e.type)) {
+        if (!validations[i] && (submit_event || is_ajax)) {
           if (this.settings.focus_on_invalid) els[i].focus();
           form.trigger('invalid');
           $(els[i]).closest('form').attr('data-invalid', '');
@@ -87,11 +89,13 @@
         }
       }
 
-      if (/submit/.test(e.type)) {
+      if (submit_event || is_ajax) {
         form.trigger('valid');
       }
 
       form.removeAttr('data-invalid');
+
+      if (is_ajax) return false;
 
       return true;
     },
