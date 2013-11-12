@@ -49,27 +49,34 @@ Breadcrumbs can be easily customized using our provided Sass variables.
 
 ***
 
-##### Semantic Markup with Sass
+## Semantic Markup with Sass
 
-You apply block grid styles to semantic markup using Sass mixins.
+You apply breadcrumb styles to semantic markup using Sass mixins.
 
-You can build your breadcrumbs using our global mixin by including it on your custom class or ID in your stylesheet. The container mixin will create the necessary style for the `ul`. The global mixin looks like this:
+### Basic
 
-{{> examples_breadcrumbs_mixin}}
+Include the `crumb-container()` mixin to style your own breadcrumbs container with semantic markup and include the `crumbs()` mixin for each breadcrumb, like so:
 
-{{> examples_breadcrumbs_container_mixin}}
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+    {{> examples_breadcrumbs_mixin.scss}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_breadcrumbs_mixin}}
+  </div>
+</div>
 
-##### Crumb Mixin
+***
 
-Use this mixin to apply the list item and link styles to items inside the breadcrumb container. You attach this mixin to the list items inside of your container.
+##### Sass Errors?
 
-{{> examples_breadcrumbs_crumb_mixin}}
+If the default "foundation" import was commented out, then make sure you import this file:
 
-##### Radius Mixin
+#### SCSS
 
-We've also created a global radius mixin that you can use to add border-radius to any element you'd like.
+```scss
+@import "foundation/components/breadcrumbs";
+```
 
-{{> examples_breadcrumbs_radius_mixin}}
-
-
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`.
