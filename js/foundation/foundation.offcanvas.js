@@ -6,25 +6,28 @@
 
     version : '5.0.0',
 
-    settings : {
-    },
+    settings : {},
 
     init : function (scope, method, options) {
-      this.bindings(method, options);
+      this.events();
     },
 
     events : function () {
       $(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.off-canvas-left-toggle', function (e) {
-          $(this).closest(".off-canvas-wrap").addClass("move-right");
+          console.log('toggle left')
+          $(this).closest(".off-canvas-wrap").first().toggleClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
+          console.log('exit left')
           $(this).closest(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.off-canvas-right-toggle', function (e) {
-          $(this).closest(".off-canvas-wrap").addClass("move-left");
+          console.log('toggle right')
+          $(this).closest(".off-canvas-wrap").first().toggleClass("move-left");
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
+          console.log('exit right')
           $(this).closest(".off-canvas-wrap").removeClass("move-left");
         });
     },
