@@ -87,9 +87,6 @@ You can use the `thumb()` mixin to create your own thumbnails, like so:
 
 #### SCSS
 ```scss
-// This should already be included in most cases
-@import "foundation";
-
 .custom-thumbnail-class {
   @include thumb;
 }
@@ -97,7 +94,9 @@ You can use the `thumb()` mixin to create your own thumbnails, like so:
 
 #### HTML
 ```html
-<a class="custom-thumbnail-class" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100"></a>
+<a class="custom-thumbnail-class" href="http://placehold.it/100x100">
+  <img src="http://placehold.it/100x100">
+</a>
 ```
 
 ### Advanced
@@ -106,10 +105,6 @@ You can further customize your thumbnails using the provided options in the `thu
 
 #### SCSS
 ```scss
-// You can also selectively import just the thumbnails component
-// @import "foundation";
-@import "foundation/components/thumbs";
-
 .custom-thumbnail-class {
   @include thumb(
     // Width of border around thumbnail
@@ -124,5 +119,7 @@ You can further customize your thumbnails using the provided options in the `thu
 
 #### HTML
 ```html
-<a class="custom-thumbnail-class" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100"></a>
+<a class="custom-thumbnail-class" href="http://placehold.it/100x100">
+  <img src="http://placehold.it/100x100">
+</a>
 ```
