@@ -40,15 +40,15 @@ Additional classes can be added to your thumbnails to change it's appearance.
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<a class="th radius" href="../img/demos/demo2.png">
-  <img src="../img/demos/demo2-th.png">
+<a class="th [radius]" href="#">
+  <img src="http://placehold.it/100x100">
 </a>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <a class="th" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100"></a>
+    <a class="th" href="#"><img src="http://placehold.it/100x100"></a>
   </div>
 </div>
 
@@ -86,9 +86,9 @@ You can create your own thumbnails using our own Sass mixins.
 You can use the `thumb()` mixin to create your own thumbnails, like so:
 
 #### SCSS
-
 ```scss
-@import "foundation/components/thumbs";
+// This should already be included in most cases
+@import "foundation";
 
 .custom-thumbnail-class {
   @include thumb;
@@ -96,30 +96,33 @@ You can use the `thumb()` mixin to create your own thumbnails, like so:
 ```
 
 #### HTML
-
 ```html
 <a class="custom-thumbnail-class" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100"></a>
 ```
 
 ### Advanced
 
-You can further customize your thumbnails using the provided options in the thumb() mixin:
+You can further customize your thumbnails using the provided options in the `thumb()` mixin:
 
+#### SCSS
 ```scss
+// You can also selectively import just the thumbnails component
+// @import "foundation";
 @import "foundation/components/thumbs";
 
 .custom-thumbnail-class {
   @include thumb(
-    /* Width of border around thumbnail. Default: $thumb-border-width */
-    $border-width,
-    /* Box shadow to apply to thumbnail. Default: $thumb-box-shadow */
-    $box-shadow,
-    /* Box shadow to apply on hover. Default: $thumb-box-shadow-hover */
-    $box-shadow-hover
+    // Width of border around thumbnail
+    $border-width: 2px,
+    // Box shadow to apply to thumbnail
+    $box-shadow: 0 0 0 1px rgba(#000,.2),
+    // Box shadow to apply on hover
+    $box-shadow-hover: 0 0 6px 1px rgba(#ccc,0.5)
   );
 }
 ```
 
-You can also add the radius and single-transition mixin on top of this to create even more versatility!
-
-<a class="th-custom" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100"></a>
+#### HTML
+```html
+<a class="custom-thumbnail-class" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100"></a>
+```

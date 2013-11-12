@@ -10,6 +10,20 @@ $modules: () !default;
 // @functions
 //
 
+@function lower-bound($range){
+  @if length($range) <= 0 {
+    @return 0;
+  }
+  @return nth($range,1);
+}
+
+@function upper-bound($range) {
+  @if length($range) < 2 {
+    @return 999999999999;
+  }
+  @return nth($range, 2);
+}
+
 
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
