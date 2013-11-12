@@ -19,6 +19,21 @@
     FastClick.attach(document.body);
   }
 
+  // private Fast Selector wrapper,
+  // returns jQuery object. Only use where
+  // getElementById is not available.
+  var S = function (selector, context) {
+    if (typeof selector === 'string') {
+      if (context) {
+        return $(context.querySelectorAll(selector));
+      }
+
+      return $(document.querySelectorAll(selector));
+    }
+
+    return $(selector, context);
+  };
+
   /*
     https://github.com/paulirish/matchMedia.js
   */
@@ -61,12 +76,10 @@
 
     version : '5.0.0',
 
-    cache : {},
-
     media_queries : {
-      small : $('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
-      medium : $('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
-      large : $('.foundation-mq-large').css('font-family').replace(/\'/g, '')
+      small : S('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
+      medium : S('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
+      large : S('.foundation-mq-large').css('font-family').replace(/\'/g, '')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
@@ -77,7 +90,7 @@
           responses = [];
 
       // check RTL
-      this.rtl = /rtl/i.test($('html').attr('dir'));
+      this.rtl = /rtl/i.test(S('html').attr('dir'));
 
       // set foundation global scope
       this.scope = scope || this.scope;
@@ -147,8 +160,10 @@
     lib_methods : {
       throttle : function(fun, delay) {
         var timer = null;
+
         return function () {
           var context = this, args = arguments;
+
           clearTimeout(timer);
           timer = setTimeout(function () {
             fun.apply(context, args);
@@ -253,19 +268,19 @@
       bindings : function (method, options) {
         var self = this;
 
-        if ($(this.scope).is('[data-' + this.name +']')) {
-          if (!$(this).data(this.name + '-init')) {
+        if (S(this.scope).is('[data-' + this.name +']')) {
+          if (!S(this).data(this.name + '-init')) {
             this.events(this.scope);
           }
 
-          $(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options($(this.scope))));
+          S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
         } else {
-          $('[data-' + this.name + ']', this.scope).each(function () {
-            if (!$(this).data(self.name + '-init')) {
+          S('[data-' + this.name + ']', this.scope).each(function () {
+            if (!S(this).data(self.name + '-init')) {
               self.events(this);
             }
 
-            $(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options($(this))));
+            S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
           });
         }
 
