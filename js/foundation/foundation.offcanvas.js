@@ -14,18 +14,19 @@
     },
 
     events : function () {
-      $(".off-canvas-left-toggle").click(function (e) {
-        $(this).closest(".off-canvas-wrap").addClass("move-right");
-      });
-      $(".exit-off-canvas").click(function () {
-        $(this).closest(".off-canvas-wrap").removeClass("move-right");
-      });
-      $(".off-canvas-right-toggle").click(function (e) {
-        $(this).closest(".off-canvas-wrap").addClass("move-left");
-      });
-      $(".exit-off-canvas").click(function () {
-        $(this).closest(".off-canvas-wrap").removeClass("move-left");
-      });
+      $(this.scope).off('.offcanvas')
+        .on('click.fndtn.offcanvas', '.off-canvas-left-toggle', function (e) {
+          $(this).closest(".off-canvas-wrap").addClass("move-right");
+        })
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
+          $(this).closest(".off-canvas-wrap").removeClass("move-right");
+        })
+        .on('click.fndtn.offcanvas', '.off-canvas-right-toggle', function (e) {
+          $(this).closest(".off-canvas-wrap").addClass("move-left");
+        })
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
+          $(this).closest(".off-canvas-wrap").removeClass("move-left");
+        });
     },
 
     reflow : function () {}
