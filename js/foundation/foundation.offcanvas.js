@@ -15,15 +15,19 @@
     events : function () {
       $(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.off-canvas-left-toggle', function (e) {
+          e.preventDefault();
           $(this).closest('.off-canvas-wrap').toggleClass('move-right');
         })
-        .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          e.preventDefault();
           $(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.off-canvas-right-toggle', function (e) {
+          e.preventDefault();
           $(this).closest(".off-canvas-wrap").toggleClass("move-left");
         })
-        .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          e.preventDefault();
           $(".off-canvas-wrap").removeClass("move-left");
         });
     },
