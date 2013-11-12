@@ -100,7 +100,6 @@ hr.dashed { border-style: dashed; }
 }
 
 // Docs Styles
-
 .section-header {
   h1 { border-bottom: 1px solid #ddd; }
   ul.inline-list {
@@ -150,7 +149,7 @@ hr.dashed { border-style: dashed; }
   dt { color: #008080; }
 }
 
-pre { margin-bottom: 30px; 
+pre { margin-bottom: 30px;
   code {
     .code-container {
       //@include border(solid, 1px, darken($panel-bg-color, 4%));
@@ -210,6 +209,14 @@ footer { margin-top: 45px; }
   @include alert-base();
   @include alert-style();
   @include radius()
+}
+
+// Thumbnail Styles
+
+.th-custom {
+  @include thumb(10px,0 0 0 2px black, 0 0 10px 2px rgba(orange,0.5));
+  @include radius(6);
+  @include single-transition(all,400ms,ease-in);
 }
 
 $custom-link-color: #FF6908;

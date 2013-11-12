@@ -234,7 +234,7 @@ a.menu-icon {
     // min-height: 480px;
     height: 100%;
     position: absolute;
-    overflow: scroll;
+    overflow-y: auto;
 
     // base styles
     background: $off-canvas-bg;
