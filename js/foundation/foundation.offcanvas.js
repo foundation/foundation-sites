@@ -6,26 +6,29 @@
 
     version : '5.0.0',
 
-    settings : {
-    },
+    settings : {},
 
     init : function (scope, method, options) {
-      this.bindings(method, options);
+      this.events();
     },
 
     events : function () {
       $(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.off-canvas-left-toggle', function (e) {
-          $(this).closest(".off-canvas-wrap").addClass("move-right");
+          e.preventDefault();
+          $(this).closest('.off-canvas-wrap').toggleClass('move-right');
         })
-        .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
-          $(this).closest(".off-canvas-wrap").removeClass("move-right");
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          e.preventDefault();
+          $(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.off-canvas-right-toggle', function (e) {
-          $(this).closest(".off-canvas-wrap").addClass("move-left");
+          e.preventDefault();
+          $(this).closest(".off-canvas-wrap").toggleClass("move-left");
         })
-        .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
-          $(this).closest(".off-canvas-wrap").removeClass("move-left");
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          e.preventDefault();
+          $(".off-canvas-wrap").removeClass("move-left");
         });
     },
 
