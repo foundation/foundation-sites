@@ -42,7 +42,6 @@ var components = [
   { value: 'Cookie crumb', data: 'breadcrumbs.html' },
 
   { value: 'Pagination', data: 'pagination.html' },
-  { value: 'Pagination', data: 'pagination.html' },
 
   { value: 'Orbit Slider', data: 'orbit.html' },
   { value: 'Carousel', data: 'orbit.html' },
@@ -107,6 +106,8 @@ var components = [
 
   { value: 'Accordian', data: '#accordian' },
   { value: 'Collapse', data: '#accordian' },
+
+  { value: 'Visibility', data: 'visibility.html' },
 
   { value: 'Tabs', data: '#tabs' },
   { value: 'Changelog', data: '#changelog' },

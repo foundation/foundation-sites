@@ -12,9 +12,19 @@ $panel-bg-color: #FAFAFA;
 
 }
 .side-nav .heading { text-transform: uppercase; }
-
-.side-nav li a {
+.side-nav li { 
+  margin: 0; 
   padding: 0;
+  }
+.side-nav li a {
+  padding: em-calc(6) 0;
+  &:hover { 
+    color: darken($primary-color, 20%); 
+    span { 
+      background: darken($secondary-color, 5%);
+      color: #000;
+    }
+  }
 }
 
 .side-nav .heading,
@@ -59,7 +69,13 @@ $panel-bg-color: #FAFAFA;
     overflow-y: scroll;
   }
 }
-
+.sidebar {
+  input[type="search"]:focus { 
+    -moz-box-shadow: 0 0 0 !important;
+    -webkit-box-shadow: 0 0 0 !important;
+    box-shadow: 0 0 0 !important;
+  }
+}
 #jobs {
 /*
   h6 {
@@ -73,7 +89,7 @@ $panel-bg-color: #FAFAFA;
   ul {
   	margin-left: 0; 
     list-style: none;
-    li { margin-bottom: 10px;}
+    // li { margin-bottom: 10px;}
   }
   .positionTitle {
 	font-size: 14px;
