@@ -18,13 +18,13 @@
           $(this).closest('.off-canvas-wrap').toggleClass('move-right');
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
-          $(this).closest(".off-canvas-wrap").removeClass("move-right");
+          $(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.off-canvas-right-toggle', function (e) {
           $(this).closest(".off-canvas-wrap").toggleClass("move-left");
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function () {
-          $(this).closest(".off-canvas-wrap").removeClass("move-left");
+          $(".off-canvas-wrap").removeClass("move-left");
         });
     },
 
