@@ -4,54 +4,69 @@ layout: doc/layouts/default.html
 
 # Inline Lists
 
-#### You can use this simple construct when you just need a horizontal list of links, like in a footer, and want more control than just spaces between them.
+<h3 class="subheader">
+  You can use this simple construct when you just need a horizontal list of links, like in a footer, and want more control than just spaces between them.
+</h3>
 
 {{> examples_inline_lists_basic}}
 
 ***
 
-### Build With Predefined HTML Classes
+### Basic
 
-There are two ways to build inline lists in Foundation 4: with our predefined HTML or with our mixins. Building inline lists using our predefined classes is easy. You'll start with an unordered list and add a class of `.inline-list` to it. From there, you just need to add list items with links in them.
+Using minimal markup you can create an inline list.
 
-{{> examples_inline_lists_basic_rendered}}
-
-For these styles to come across, make sure you have the default Foundation CSS package or that you've selected inline-lists from a custom package. These should be linked up following our default HTML page structure.
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_inline_lists_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_inline_lists_basic}}
+  </div>
+</div>
 
 ***
 
-### Build with a Mixin
+## Customize with Sass
 
-We've included SCSS mixins used to style inline lists. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_inline-lists.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_inline-lists.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
-
-{{#markdown}}
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/inline-lists";
-```
-{{/markdown}}
-
-##### Quick Mixin
-
-You can build your inline lists using our global mixin by including it on your own custom class. The mixin contains all the necessary styles for positioning and styling the unordered list full of list items, the code looks like this:
-
-{{#markdown}}
-```scss
-.your-class-name { @include inline-list; }
-```
-{{/markdown}}
-
-<ul class="inline-list">
-  <li><a href="#">Link 1</a></li>
-  <li><a href="#">Link 2</a></li>
-  <li><a href="#">Link 3</a></li>
-  <li><a href="#">Link 4</a></li>
-  <li><a href="#">Link 5</a></li>
-</ul>
-
-##### Default SCSS Variables
+Lists can be easily customized using our provided Sass variables.
 
 {{> examples_inline_lists_variables}}
 
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+***
+
+## Semantic markup with Sass
+
+You can create your own list using our Sass mixins.
+
+### Basic
+
+You can use the `inline-list()` mixin like so:
+
+#### SCSS
+
+{{#markdown}}
+```scss
+@import "foundation/components/inline-lists";
+
+.custom-list-class {
+  @include inline-list;
+}
+```
+#### HTML
+```html
+<ul class="custom-list-class">
+  <li><a href="#">Link 1</a></li>
+  <li><a href="#">Link 2</a></li>
+  <li><a href="#">Link 3</a></li>
+</ul>
+```
+{{/markdown}}
+
+***
