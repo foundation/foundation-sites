@@ -45,7 +45,7 @@ If you use the `small-block-grid` only, the grid will keep its spacing and confi
 
 ***
 
-### Customize with Sass
+## Customize with Sass
 
 Block grids can be easily customized with the Sass variables provided in the `_settings.scss` file.
 
@@ -57,33 +57,37 @@ Block grids can be easily customized with the Sass variables provided in the `_s
 
 You apply block-grid styles to semantic markup using Sass mixins.
 
-### Import Foundation
+##### Import Foundation
 
-This is included in your app.scss file by default. This makes sure that you have all the necessary Foundation component files.
-
+**This is included in your app.scss file by default.** This imports all Foundation components.
 
 ```scss
-/* This is imported by default. */
 @import "foundation";
 ```
 
+### Basic
+
+You can use the `block-grid(#)` mixin to create your own alert box, like so:
+
+#### SCSS
+{{> examples_block_mixin_basic.scss}}
+
+#### HTML
+{{> examples_block_mixin_basic}}
+
+### Advanced
+
+You can further customize your alert boxes using the provided options in the `block-grid()` mixin:
+
+#### SCSS
+{{> examples_block_mixin_options.scss}}
 
 
-If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure. Since we don't have any media queries baked into the mixin itself, you can apply the styles at whatever breakpoint you want! Just change the configuration within each.
+##### Clear Block Grid Rows
 
-{{> examples_block_mixin}}
+When you use mixins and you want to control the layout using different classes, add this snippet to your Sass:
 
-##### Basic
-
-You can build your block-grid using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options configuring the block grid layout and margin on the fly. The global mixin looks like this:
-
-{{> examples_block_mixin_options}}
-
-{{> examples_block_mixin_example}}
-
-##### Clearing Block Grid Rows
-
-We have this built into the CSS, but you'll need to add a bit of code if you want your block grid to change layout between breakpoints. If you don't use this, it will inherit whatever you put in the smallest media query. This code looks for the <code>n+1</code> of the grid so that it clears properly. That code looks like this:
+#### SCSS
 
 {{#markdown}}
 ```scss
@@ -93,18 +97,13 @@ We have this built into the CSS, but you'll need to add a bit of code if you wan
 ```
 {{/markdown}}
 
-**Note:** If you are using the same class across breakpoints, your mixin should override this and you won't need it. If you want to control the layout using different classes, use the above snippet.
-
-##### Advanced
-
 If you only want to use block-grids and you've commented out `@import "foundation"` then make sure to include the following in your `
+
+If the default "foundation" import was commented out, then make sure you import this file:
 
 #### SCSS
 
 ```scss
-/* If the default "foundation" import was commented out, then make sure you import the following file */
 @import "foundation/components/block-grid";
 ```
-
-##### Available SCSS Variables
 
