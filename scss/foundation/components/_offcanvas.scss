@@ -218,7 +218,7 @@ a.menu-icon {
 
 .off-canvas-wrap {
 
-  .inner-wrap {
+  > .inner-wrap {
     -webkit-transition: -webkit-#{$menu-slide};
     -moz-transition: -moz-#{$menu-slide};
     -ms-transition: -ms-#{$menu-slide};
@@ -243,13 +243,13 @@ a.menu-icon {
 
   }
 
-  #left-off-canvas-menu {
+  .left-off-canvas-menu {
     @extend %kill-flicker;
     @extend %off-canvas-menu;
     @include translate3d(-100%,0,0);
 
   }
-  #right-off-canvas-menu {
+  .right-off-canvas-menu {
     @extend %kill-flicker;
     @extend %off-canvas-menu;
     @include translate3d(100%,0,0);
@@ -307,14 +307,14 @@ a.menu-icon {
   }
 
   &.move-right {
-    .inner-wrap {
+    > .inner-wrap {
       @include translate3d($off-canvas-width,0,0);
     }
     a.exit-off-canvas { @include back-link;}
   }
 
   &.move-left {
-    .inner-wrap {
+    > .inner-wrap {
       @include translate3d(-($off-canvas-width),0,0);
 
     }
