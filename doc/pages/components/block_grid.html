@@ -53,6 +53,8 @@ Block grids can be easily customized with the Sass variables provided in the `_s
 
 {{> examples_block_variables.scss}}
 
+***
+
 ## Semantic Markup with Sass
 
 You apply block grid styles to semantic markup using Sass mixins.
@@ -61,11 +63,16 @@ You apply block grid styles to semantic markup using Sass mixins.
 
 You can use the `block-grid(#)` mixin to create your own alert box, like so:
 
-#### SCSS
-{{> examples_block_mixin_basic.scss}}
-
-#### HTML
-{{> examples_block_mixin_basic}}
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+    {{> examples_block_mixin_basic.scss}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_block_mixin_basic}}
+  </div>
+</div>
 
 ### Advanced
 
@@ -89,7 +96,9 @@ When you use mixins and you want to control the layout using different classes, 
 ```
 {{/markdown}}
 
-If you only want to use block-grids and you've commented out `@import "foundation"` then make sure to include the following in your `
+***
+
+##### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
