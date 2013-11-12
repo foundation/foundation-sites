@@ -67,10 +67,16 @@
       }
     },
 
-    toggle: function() {
+    toggle: function (toggleEl) {
       var self = this;
-      var topbar = $('.top-bar, [data-topbar]'),
-          section = $('section, .section', topbar);
+
+      if (toggleEl) {
+        var topbar = $(toggleEl).closest('.top-bar, [data-topbar]');
+      } else {
+        var topbar = $('[data-topbar]');
+      }
+
+      var section = $('section, .section', topbar);
 
       if (self.breakpoint()) {
         if (!self.rtl) {
@@ -134,7 +140,7 @@
         .off('.topbar')
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
           e.preventDefault();
-          self.toggle();
+          self.toggle(this);
         })
         .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
           var li = $(this),
