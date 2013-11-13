@@ -148,7 +148,7 @@
     },
 
     small : function () {
-      return $(window).width() < 768 || $('html').hasClass('lt-ie9');
+      return matchMedia(Foundation.media_queries.small).matches;
     },
 
     off: function () {
