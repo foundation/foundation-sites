@@ -13,7 +13,8 @@
       modal                : false,      // Whether to cover page with modal during the tour
       tip_location          : 'bottom',  // 'top' or 'bottom' in relation to parent
       nub_position          : 'auto',    // override on a per tooltip bases
-      scroll_speed          : 300,       // Page scrolling speed in milliseconds, 0 = no scroll animation
+      scroll_speed          : 1500,       // Page scrolling speed in milliseconds, 0 = no scroll animation
+      scroll_animation     : 'linear',   // supports 'swing' and 'linear', extend with jQuery UI.
       timer                : 0,         // 0 = no timer , all other numbers = timer in milliseconds
       start_timer_on_click    : true,      // true or false - true requires clicking the first button start the timer
       start_offset          : 0,         // the index of the tooltip you want to start on (index of the li)
@@ -386,10 +387,11 @@
 
       window_half = $(window).height() / 2;
       tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight());
+
       if (tipOffset > 0) {
         $('html, body').animate({
           scrollTop: tipOffset
-        }, this.settings.scroll_speed);
+        }, this.settings.scroll_speed, 'swing');
       }
     },
 
