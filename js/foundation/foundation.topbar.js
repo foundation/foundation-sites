@@ -201,6 +201,7 @@
         });
 
       $(window).off('.topbar').on('resize.fndtn.topbar', function () {
+        if (typeof self.settings.$topbar === 'undefined') { return; }
         var stickyContainer = self.settings.$topbar.parent('.' + this.settings.sticky_class);
         var stickyOffset;
 
