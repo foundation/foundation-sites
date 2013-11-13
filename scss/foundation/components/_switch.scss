@@ -147,7 +147,7 @@ $switch-label-outline: 1px dotted #888 !default;
   height: em-calc($height);
 
   label {
-    padding: em-calc(0, $switch-label-side-padding);
+    padding: em-calc(0 $switch-label-side-padding);
     line-height: $line-height;
     font-size: em-calc($font-size);
   }

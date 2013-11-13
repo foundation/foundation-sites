@@ -166,10 +166,10 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
     border-radius: 3px;
     z-index: 102;
     @if $experimental {
-      -moz-box-shadow: 0px 0px 30px #ffffff;
-      -webkit-box-shadow: 0px 0px 15px #ffffff;
+      -moz-box-shadow: 0 0 30px #ffffff;
+      -webkit-box-shadow: 0 0 15px #ffffff;
     }
-    box-shadow: 0px 0px 15px #ffffff;
+    box-shadow: 0 0 15px #ffffff;
   }
 
   .joyride-expose-cover {
@@ -177,8 +177,8 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
     border-radius: 3px;
     position: absolute;
     z-index: 9999;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
   }
 
 

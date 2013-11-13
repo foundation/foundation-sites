@@ -83,13 +83,13 @@
                     </section>
                     <section data-section-region>
                       <p class="title" data-section-title><a href="#panel2nested2">Section 2</a></p>
-                      <div class="content" data-slug="nested2" data-section-content>
+                      <div class="content" data-slug="panel2nested2" data-section-content>
                         <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
                     </section>
                     <div data-section-region class="section">
                       <p class="title" data-section-title><a href="#panel2nested3">Section 3</a></p>
-                      <div class="content" data-slug="nested3" data-section-content>
+                      <div class="content" data-slug="panel2nested3" data-section-content>
                         <form>
                           <div class="row collapse">
                             <div class="large-2 columns">
@@ -564,8 +564,8 @@
     <p class="your-title-class" data-section-title><a href="#section2">Section 2</a></p>
     <div class="your-content-class" data-slug="section2" data-section-content>
       <p>Content of section 2.</p>
-    </section>
-  </div>
+    </div>
+  </section>
 </div>', :html %>
 
         <p>Here's a look at the available options for the mixins you need to create sections:</p>
@@ -1001,10 +1001,33 @@ $active-region-selector: ".active";
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>zepto.js</code> and <code>foundation.js</code> above the sections plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory.</p>
+        <div class="panel">
+          Before you can use sections you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.section.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
 
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.section.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.section.js</code></p>
 
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>

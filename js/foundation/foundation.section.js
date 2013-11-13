@@ -7,11 +7,10 @@
   Foundation.libs.section = {
     name : 'section',
 
-    version : '4.3.1',
+    version : '4.3.2',
 
     settings: {
       deep_linking: false,
-      small_breakpoint: 768,
       one_up: true,
       multi_expand: false,
       section_selector: '[data-section]',
@@ -63,6 +62,8 @@
         }
       }
 
+      self.off();
+
       $(self.scope)
         .on('click.fndtn.section', click_title_selectors.join(","), function(e) {
           var title = $(this).closest(self.settings.title_selector);
@@ -106,6 +107,38 @@
       navsToClose.children(self.settings.region_selector).removeClass(self.settings.active_class);
     },
 
+    supports_multi_expand: function(section) {
+      var self = Foundation.libs.section,
+        settings = $.extend({}, self.settings, self.data_options(section));
+      return self.is_accordion(section) && settings.multi_expand;
+    },
+
+    can_close: function(region) {
+      var self = Foundation.libs.section,
+          section = region.parent(),
+          settings = $.extend({}, self.settings, self.data_options(section));
+
+      return !settings.one_up;
+    },
+
+    should_show_one: function(section) {
+      var self = Foundation.libs.section,
+          settings = $.extend({}, self.settings, self.data_options(section));
+
+      return settings.one_up && !self.is_horizontal_nav(section) &&
+             !self.is_vertical_nav(section);
+    },
+
+    ensure_region_shown: function(section) {
+      var self = Foundation.libs.section,
+          settings = $.extend({}, self.settings, self.data_options(section)),
+          regions = section.children(self.settings.region_selector);
+
+      if(regions.filter("." + settings.active_class).length == 0) {
+        regions.filter(":visible").first().addClass(settings.active_class);
+      }
+    },
+
     toggle_active: function(e) {
       var $this = $(this),
           self = Foundation.libs.section,
@@ -123,7 +156,7 @@
       e.stopPropagation(); //do not catch same click again on parent
 
       if (!region.hasClass(self.settings.active_class)) {
-        if (!self.is_accordion(section) || (self.is_accordion(section) && !self.settings.multi_expand)) {
+        if (!self.supports_multi_expand(section)) {
           prev_active_region.removeClass(self.settings.active_class);
           prev_active_region.trigger('closed.fndtn.section');
         }
@@ -131,7 +164,11 @@
         //force resize for better performance (do not wait timer)
         self.resize(region.find(self.settings.section_selector).not("[" + self.settings.resized_data_attr + "]"), true);
         region.trigger('opened.fndtn.section');
-      } else if (region.hasClass(self.settings.active_class) && self.is_accordion(section) || !settings.one_up && (self.small(section) || self.is_vertical_nav(section) || self.is_horizontal_nav(section) || self.is_accordion(section))) {
+      } else if (self.can_close(region)) {
+        e.preventDefault();
+        if(settings.deep_linking) {
+          window.location.hash = '';
+        }
         region.removeClass(self.settings.active_class);
         region.trigger('closed.fndtn.section');
       }
@@ -150,7 +187,7 @@
 
       var self = Foundation.libs.section,
           section_container = $(self.settings.section_selector),
-          is_small_window = self.small(section_container),
+          is_small_window = !matchMedia(Foundation.media_queries['small']).matches,
           //filter for section resize
           should_be_resized = function (section, now_is_hidden) {
             return !self.is_accordion(section) && 
@@ -177,13 +214,11 @@
             content = regions.children(self.settings.content_selector),
             titles_max_height = 0;
 
-          if (ensure_has_active_region && 
-            section.children(self.settings.region_selector).filter("." + self.settings.active_class).length == 0) {
+          if (ensure_has_active_region) {
             var settings = $.extend({}, self.settings, self.data_options(section));
 
-            if (!settings.deep_linking && (settings.one_up || !self.is_horizontal_nav(section) &&
-              !self.is_vertical_nav(section) && !self.is_accordion(section))) {
-                regions.filter(":visible").first().addClass(self.settings.active_class);
+            if (self.should_show_one(section)) {
+                self.ensure_region_shown(section);
             }
           }
 
@@ -329,60 +364,36 @@
           hash = window.location.hash.substring(1),
           sections = $(self.settings.section_selector);
 
-      var selectedSection;
-      
       sections.each(function() {
           var section = $(this),
-          regions = section.children(self.settings.region_selector);
+              settings = $.extend({}, self.settings, self.data_options(section)),
+              set_active_from_hash = settings.deep_linking && hash.length > 0,
+              selected = false,
+              nonmatched = [],
+              region,
+              regions = section.children(self.settings.region_selector);
           regions.each(function() {
             var region = $(this),
-            data_slug = region.children(self.settings.content_selector).data('slug');
-            if (new RegExp(data_slug, 'i').test(hash)) {
-              selectedSection=section;
-              return false;
-              }
+            data_slug = "^" + region.children(self.settings.content_selector).data('slug') + "$";
+            if (!selected && new RegExp(data_slug, 'i').test(hash)) {
+              selected = true;
+              region.addClass(self.settings.active_class);
+            } else if (!settings.multi_expand) {
+              nonmatched.push(region);
+            }
           });
           
-          if (selectedSection != null) {
+          if (selected) {
+            while(region = nonmatched.pop()) {
+              region.removeClass(self.settings.active_class);
+            }
             return false;
+          } else {
+            if (self.should_show_one(section)) {
+              self.ensure_region_shown(section);
+            }
           }
       });
-      
-      if (selectedSection != null) {
-        sections.each(function() {
-          if (selectedSection == $(this)) {
-            var section = $(this),
-                settings = $.extend({}, self.settings, self.data_options(section)),
-                regions = section.children(self.settings.region_selector),
-                set_active_from_hash = settings.deep_linking && hash.length > 0,
-                selected = false;
-    
-            regions.each(function() {
-              var region = $(this);
-    
-              if (selected) {
-                region.removeClass(self.settings.active_class);
-              } else if (set_active_from_hash) {
-                var data_slug = region.children(self.settings.content_selector).data('slug');
-    
-                if (data_slug && new RegExp(data_slug, 'i').test(hash)) {
-                  if (!region.hasClass(self.settings.active_class))
-                    region.addClass(self.settings.active_class);
-                  selected = true;
-                } else {
-                  region.removeClass(self.settings.active_class);
-                }
-              } else if (region.hasClass(self.settings.active_class)) {
-                selected = true;
-              }
-            });
-    
-            if (!selected && (settings.one_up || !self.is_horizontal_nav(section) &&
-             !self.is_vertical_nav(section) && !self.is_accordion(section)))
-              regions.filter(":visible").first().addClass(self.settings.active_class);
-          }
-        });
-      }
     },
 
     reflow: function() {
@@ -393,8 +404,6 @@
     },
 
     small: function(el) {
-      var settings = $.extend({}, this.settings, this.data_options(el));
-
       if (this.is_horizontal_tabs(el)) {
         return false;
       }
@@ -407,7 +416,8 @@
       if ($('html').hasClass('ie8compat')) {
         return true;
       }
-      return $(this.scope).width() < settings.small_breakpoint;
+
+      return !matchMedia(Foundation.media_queries['small']).matches;
     },
 
     off: function() {

@@ -29,6 +29,7 @@ Community
 Many thanks to all the people working on Foundation either to improve the base code or to support specific frameworks. If you want to get on this readme send an email to foundation@zurb.com, and if you have questions you can join the Unofficial Foundation Google Group here: http://groups.google.com/group/foundation-framework-
 
 WordPress (Versions marked 3/20/13)
+
 * [WP-Forge](http://themeawesome.com/responsive-wordpress-theme/) by Thomas E. Vasquez using Foundation 4.3.1
 * [NARGA](http://www.narga.net/narga-core/) by Nguyễn Đình Quân using Foundation version 4
 * [Reactor](https://github.com/awtheme/reactor) by Anthony Wilhelm using Foundation version 4
@@ -55,6 +56,11 @@ Drupal
 Alfred
 
 * [Foundation Alfred](https://github.com/joshmedeski/foundation-alfred) by Josh Medeski (@joshmedeski)
+
+Jekyll
+
+* [Foundation 4 SASS](https://github.com/rememberlenny/Jekyll-Foundation-SASS) by [Leonard Bogdonoff](http://twitter.com/rememberlenny)
+* [Foundation 3 CSS](https://github.com/groovemonkey/jekyll-foundation-base) by [Dave Cohen](https://github.com/groovemonkey)
 
 PyroCMS
 

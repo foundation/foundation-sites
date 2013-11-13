@@ -8,7 +8,7 @@
   Foundation.libs.joyride = {
     name : 'joyride',
 
-    version : '4.3.2',
+    version : '4.3.3',
 
     defaults : {
       expose               : false,      // turn on or off the expose feature
@@ -129,7 +129,7 @@
       this.settings.$content_el = $this;
       this.settings.$body = $(this.settings.tipContainer);
       this.settings.body_offset = $(this.settings.tipContainer).position();
-      this.settings.$tip_content = this.settings.$content_el.find('> li');
+      this.settings.$tip_content = this.settings.$content_el.children();
       this.settings.paused = false;
       this.settings.attempts = 0;
 

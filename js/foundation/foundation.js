@@ -29,6 +29,19 @@ if (typeof jQuery === "undefined" &&
 (function ($, window, document, undefined) {
   'use strict';
 
+  // Used to retrieve Foundation media queries from CSS.
+  if($('head').has('.foundation-mq-small').length === 0) {
+    $('head').append('<meta class="foundation-mq-small">')
+  }
+
+  if($('head').has('.foundation-mq-medium').length === 0) {
+    $('head').append('<meta class="foundation-mq-medium">')
+  }
+
+  if($('head').has('.foundation-mq-large').length === 0) {
+    $('head').append('<meta class="foundation-mq-large">')
+  }
+
   /*
     matchMedia() polyfill - Test a CSS media 
     type/query in JS. Authors & copyright (c) 2012: 
@@ -37,11 +50,6 @@ if (typeof jQuery === "undefined" &&
 
     https://github.com/paulirish/matchMedia.js
   */
-
-   $('head').append('<meta class="foundation-mq-small">');
-   $('head').append('<meta class="foundation-mq-medium">');
-   $('head').append('<meta class="foundation-mq-large">');
-
   window.matchMedia = window.matchMedia || (function( doc, undefined ) {
 
     "use strict";
@@ -167,17 +175,24 @@ if (typeof jQuery === "undefined" &&
     return this;
   };
 
+  function removeQuotes(string) {
+      if (typeof string === 'string' || string instanceof String) {
+        string = string.replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '');
+      }
+      return string;
+  }
+
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.3.1',
+    version : '4.3.2',
 
     cache : {},
 
     media_queries : {
-      small : $('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
-      medium : $('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
-      large : $('.foundation-mq-large').css('font-family').replace(/\'/g, '')
+      small : removeQuotes($('.foundation-mq-small').css('font-family')),
+      medium : removeQuotes($('.foundation-mq-medium').css('font-family')),
+      large : removeQuotes($('.foundation-mq-large').css('font-family'))
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
@@ -397,6 +412,13 @@ if (typeof jQuery === "undefined" &&
         }
 
         return true;
+      },
+
+      register_media : function(media, media_class) {
+        if(Foundation.media_queries[media] === undefined) {
+          $('head').append('<meta class="' + media_class + '">');
+          Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
+        }
       },
 
       addCustomRule : function(rule, media) {

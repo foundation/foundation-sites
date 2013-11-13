@@ -1,3 +1,12 @@
+### 4.3.2- September 23, 2013
+
+* Documentation updates
+* When changing slides in Orbit all `data-orbit-link` will now get an active class
+* Adds new `em-calc` function, old `emCalc` will automatically reference newly named function
+* Lots of other bug fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.3.1...v4.3.2).
+
 ### 4.3.1- July 23, 2013
 * Fixes RTL animation issues in Orbit
 * Addresses error class conflicts between Abide and general form styles

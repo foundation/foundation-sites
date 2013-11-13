@@ -133,6 +133,7 @@
     <h5>Adding Foundation to existing Compass projects</h5>
     <p>If you've created a project using Compass, but didn't require the Foundation gem, you'll need to install it separately. When you do this you'll get all the necessary files on top of the ones you already have. If something is a duplicate, Compass will ignore it. The steps you'll take to properly install Foundation are:</p>
     <ol style="margin-left: 20px;">
+      <li>run <span class="keystroke">gem install zurb-foundation</span></li>
       <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
       <li><span class="keystroke">cd path/to/your-project</span></li>
       <li>run <span class="keystroke">compass install foundation</span></li>
@@ -840,7 +841,7 @@ $custom-form-input-size: 16px;
 $custom-form-check-color: #222;
 $custom-form-check-size: 14px;
 $custom-form-radio-size: 8px;
-$custom-form-checkbox-radius: 0px;
+$custom-form-checkbox-radius: 0;
 
 /* Custom select form element. */
 
@@ -865,7 +866,7 @@ $custom-dropdown-font-color: #555;
 $custom-dropdown-font-size: em-calc(14);
 $custom-dropdown-color-selected: #eeeeee;
 $custom-dropdown-font-color-selected: #000;
-$custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1);
+$custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
 $custom-dropdown-offset-top: none;
 $custom-dropdown-list-padding: em-calc(4);
 $custom-dropdown-left-padding: em-calc(6);
