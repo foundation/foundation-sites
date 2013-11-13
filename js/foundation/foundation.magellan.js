@@ -56,6 +56,15 @@
           var $el = $(this);
           // $el.data("magellan-fixed-position","");
           // $el.data("magellan-top-offset", "");
+
+          var mode = $el.data("magellan-expedition");
+
+          if(mode=="contained"){
+            var referenceSelector = $el.data("magellan-reference");
+            var reference = referenceSelector?$el.closest(referenceSelector):$el.parent();
+            $el.css({ left: reference.offset().left })
+          }
+
         })
         .trigger('update-position');
 
