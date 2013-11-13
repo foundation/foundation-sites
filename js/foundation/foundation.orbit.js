@@ -101,7 +101,7 @@
       current.removeClass(settings.active_slide_class);
       next.css('zIndex', 4).addClass(settings.active_slide_class);
 
-      slides_container.trigger('orbit:before-slide-change');
+      slides_container.trigger('before-slide-change.fndtn.orbit');
       settings.before_slide_change();
       self.update_active_link(next_idx);
       
@@ -111,7 +111,7 @@
           locked = false;
           if (start_timer === true) {timer = self.create_timer(); timer.start();}
           self.update_slide_number(idx);
-          slides_container.trigger('orbit:after-slide-change',[{slide_number: idx, total_slides: slides.length}]);
+          slides_container.trigger('after-slide-change.fndtn.orbit',[{slide_number: idx, total_slides: slides.length}]);
           settings.after_slide_change(idx, slides.length);
         };
         if (slides_container.height() != next.height() && settings.variable_height) {
@@ -268,7 +268,7 @@
       $(window).on('load', function(){
         container.prev('.preloader').css('display', 'none');
       });
-      slides_container.trigger('orbit:ready');
+      slides_container.trigger('ready.fndtn.orbit');
     };
 
     self.init();
@@ -307,7 +307,7 @@
         self.restart();
         callback();
       }, left);
-      el.trigger('orbit:timer-started')
+      el.trigger('timer-started.fndtn.orbit')
     };
 
     this.stop = function() {
@@ -318,7 +318,7 @@
       left = left - (end - start);
       var w = 100 - ((left / duration) * 100);
       self.update_progress(w);
-      el.trigger('orbit:timer-stopped');
+      el.trigger('timer-stopped.fndtn.orbit');
     };
   };
   
