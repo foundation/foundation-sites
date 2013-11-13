@@ -16,9 +16,9 @@
 
       named_queries : {
         'default' : 'only screen and (min-width: 1px)',
-        small : 'only screen and (min-width: 768px)',
-        medium : 'only screen and (min-width: 1280px)',
-        large : 'only screen and (min-width: 1440px)',
+        small : Foundation.media_queries.small,
+        medium : Foundation.media_queries.medium,
+        large : Foundation.media_queries.large,
         landscape : 'only screen and (orientation: landscape)',
         portrait : 'only screen and (orientation: portrait)',
         retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 
