@@ -14,10 +14,9 @@ layout: doc/layouts/default.html
 
 Using minimal markup we can create a side nav.
 
-#### HTML
-
 <div class="row">
   <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 {{> examples_sidenav_basic}}
@@ -25,6 +24,7 @@ Using minimal markup we can create a side nav.
 {{/markdown}}
   </div>
   <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
     {{> examples_sidenav_basic}}
   </div>
 </div>
@@ -35,6 +35,7 @@ Additional classes can be added to your side nav to change its appearance.
 
 <div class="row">
   <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 {{> examples_sidenav_advanced}}
@@ -42,6 +43,7 @@ Additional classes can be added to your side nav to change its appearance.
 {{/markdown}}
   </div>
   <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
     {{> examples_sidenav_advanced}}
   </div>
 </div>
@@ -51,6 +53,8 @@ Additional classes can be added to your side nav to change its appearance.
 ## Customize with Sass
 
 The side nav can be easily customized using our provided Sass variables
+
+#### SCSS
 
 {{#markdown}}
 ```scss
@@ -66,14 +70,12 @@ You can create your own sub nav with our Sass mixins.
 
 ### Basic
 
-You can use the side-nav() mixin to create your own sub nav, like so:
+You can use the `side-nav()` mixin to create your own sub nav, like so:
 
 #### SCSS
 
 {{#markdown}}
 ```scss
-@import "foundation/components/side-nav";
-
 .custom-side-nav {
   @include side-nav();
 }
@@ -96,8 +98,6 @@ You can further customize your side nav
 
 {{#markdown}}
 ```scss
-@import "foundation/components/side-nav";
-
 .custom-sidenav-class {
   @include side-nav(
             // Border color of divider

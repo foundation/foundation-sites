@@ -4,7 +4,7 @@ layout: doc/layouts/default.html
 
 # Sub Nav
 
-#### This simple sub nav is great for moving between different states of a page. We use these frequently to show iterations of something, typically by date, but they're also handy for filters like these.
+<h3 class="subheader">This simple sub nav is great for moving between different states of a page. We use these frequently to show iterations of something, typically by date, but they're also handy for filters like these.</h3>
 
 <dl class="sub-nav">
   <dt>Filter:</dt>
@@ -16,36 +16,34 @@ layout: doc/layouts/default.html
 
 ***
 
-### How to Work With Sub Nav
+### Basic
 
-There are two ways to build sub nav in Foundation 5: you can use our predefined HTML classes or our mixins. Building sub nav using our predefined classes is simple, you'll just need to write a `<dl class="sub-nav">` and fill it full of definitions. You can use the definition title as a label at the beginning (useful for building filters on a page).
+Add a `.sub-nav` class to a `dl` element and fill it full of definitions. You can use the definition title as a label at the beginning (useful for building filters on a page).
 
-The list options:
-
-* `<dt>` Creates a title at the beginning of the list.
-* `<dd class="active">` Will add style to denote the active link.
+Add a title to the beginning of your list with the `dt` element. Add an `.active` class to a `dd` element to give it the active style.
 
 <div class="row">
-  <div class="half-grid">
-    <h3>HTML</h3>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 {{> examples_subnav_basic}}
 ```
 {{/markdown}}
   </div>
-  <div class="half-grid">
-    <h3>Rendered HTML</h3>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
 {{> examples_subnav_basic}}
   </div>
 </div>
 
-{{!-- TODO FIX INDEX PATH --}}
-To use these styles, make sure you have the default Foundation CSS package or that you've selected sub-nav from a custom package. These should be linked up following our default [HTML page structure](../index.html).
-
 ***
 
-## Default SCSS Variables
+## Customize with Sass
+
+Sub Navs can be easily customized using our provided Sass variables.
+
+#### SCSS
 
 {{#markdown}}
 ```scss
@@ -55,34 +53,27 @@ To use these styles, make sure you have the default Foundation CSS package or th
 
 ***
 
-### Build with Mixins
+## Semantic Markup with Sass
 
-We've included SCSS mixins used to style sub-nav. To use the mixin, you'll need to have the [extension installed]({{relative absolute 'dist/docs/components/sass.html'}}) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_sub-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_sub-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+You apply Sub Nav styles to semantic markup using Sass mixins.
 
-{{#markdown}}
-```scss
-@import "foundation/components/sub-nav";
-```
-{{/markdown}}
+### Basic
 
-## Configuring the Sub Nav
-
-You can build your sub-nav using our global mixin by including it on a custom class or ID in your own stylesheet. The mixin contains options for changing the font color, font size and active background color. The rest of the defaults can be modified using the available variables. The global mixin looks like this:
+You can use the `sub-nav()` mixin to create your own sub nav with semantic markup, like so:
 
 <div class="row">
-  <div class="half-grid">
-    <h3>SCSS</h3>
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
 {{#markdown}}
 ```scss
-/* Using the default styles */
-.basic-subnav-class {
+.your-class-name {
   @include sub-nav();
 }
 ```
 {{/markdown}}
   </div>
-  <div class="half-grid">
-    <h3>HTML</h3>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 {{> examples_subnav_basic_mixin}}
@@ -91,88 +82,36 @@ You can build your sub-nav using our global mixin by including it on a custom cl
   </div>
 </div>
 
-There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color.
 
-<div class="row">
-  <div class="half-grid">
-    <h3>SCSS</h3>
-{{#markdown}}
+### Advanced
+
+You can further customize your alert boxes using the provided options in the `sub-nav()` mixin:
+
+#### SCSS
+
 ```scss
-/* Using the custom styles */
-.custom-subnav-class {
+.your-class-name {
   @include sub-nav(
-    $font-color:$primary-color,
-    $font-size:1.2em,
-    $active-bg:$primary-color);
+    // Control the color of the divider between links.
+    $font-color: $primary-color,
+    // Control your font-size per label.
+    $font-size: em-calc(14),
+    // Change the background color for your labels
+    $active-bg: $primary-color
+  );
 }
 ```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <h3>HTML</h3>
-{{#markdown}}
-```html
-{{> examples_subnav_mixin}}
-```
-{{/markdown}}
-  </div>
-</div>
-
-<div class="row">
-  <div class="full-grid">
-{{> examples_subnav_mixin}}
-  </div>
-</div>
-
-<h3>Options</h3>
-<div class="row">
-  <div class="half-grid">
-    <h5 class="subheader">Options</h5>
-{{#markdown}}
-```scss
-$font-color: $sub-nav-font-color
-```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <h5 class="subheader">Description</h5>
-    <dl>
-      <dt>$font-color: $sub-nav-font-color</dt>
-      <dd>Font color. Default: $sub-nav-font-color.</dd>
-    </dl>
-  </div>
-</div>
-
-<div class="row">
-  <div class="half-grid">
-{{#markdown}}
-```scss
-$font-size: $sub-nav-font-size
-```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <dl>
-      <dt>$font-size: $sub-nav-font-size</dt>
-      <dd>Font size. Default: $sub-nav-font-size.</dd>
-    </dl>
-  </div>
-</div>
-
-<div class="row">
-  <div class="half-grid">
-{{#markdown}}
-```scss
-$active-bg: $sub-nav-active-bg
-```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <dl>
-      <dt>$active-bg: $sub-nav-active-bg</dt>
-      <dd>Background of active nav item. Default: $sub-nav-active-bg.</dd>
-    </dl>
-  </div>
-</div>
 
 **Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+#### SCSS
+
+```scss
+@import "foundation/components/sub-nav";
+```
