@@ -322,11 +322,7 @@
     },
 
     is_phone : function () {
-      if (Modernizr) {
-        return Modernizr.mq('only screen and (max-width: 767px)') || $('.lt-ie9').length > 0;
-      }
-
-      return ($(window).width() < 767);
+      return matchMedia(Foundation.media_queries.small).matches;
     },
 
     hide : function () {
