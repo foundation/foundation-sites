@@ -1,0 +1,10 @@
+{{#markdown}}
+```scss
+.your-class-name {
+  @include crumb-container;
+  li {
+    @include crumbs;
+  }
+}
+```
+{{/markdown}}
