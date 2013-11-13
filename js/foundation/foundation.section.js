@@ -67,11 +67,7 @@
       $(self.scope)
         .on('click.fndtn.section', click_title_selectors.join(","), function(e) {
           var title = $(this).closest(self.settings.title_selector);
-
-          self.close_navs(title);
-          if (title.siblings(self.settings.content_selector).length > 0) {
-            self.toggle_active.call(title[0], e);
-          }
+          self.activate_title(title, e);
         });
 
       $(window)
@@ -86,6 +82,15 @@
 
       $(window).triggerHandler('resize.fndtn.section');
       $(window).triggerHandler('hashchange.fndtn.section');
+    },
+
+    activate_title: function(title_element, e) {
+      var self = Foundation.libs.section,
+          title = $(title_element);
+      self.close_navs(title);
+      if (title.siblings(self.settings.content_selector).length > 0) {
+        self.toggle_active.call(title[0], e);
+      }
     },
     
     //close nav !one_up on click elsewhere
@@ -150,10 +155,10 @@
 
       //for anchors inside [data-section-title]
       if (!settings.deep_linking && content.length > 0) {
-        e.preventDefault();
+        e && e.preventDefault();
       }
 
-      e.stopPropagation(); //do not catch same click again on parent
+      e && e.stopPropagation(); //do not catch same click again on parent
 
       if (!region.hasClass(self.settings.active_class)) {
         if (!self.supports_multi_expand(section)) {
@@ -165,7 +170,7 @@
         self.resize(region.find(self.settings.section_selector).not("[" + self.settings.resized_data_attr + "]"), true);
         region.trigger('opened.fndtn.section');
       } else if (self.can_close(region)) {
-        e.preventDefault();
+        e && e.preventDefault();
         if(settings.deep_linking) {
           window.location.hash = '';
         }
@@ -372,26 +377,31 @@
               nonmatched = [],
               region,
               regions = section.children(self.settings.region_selector);
-          regions.each(function() {
-            var region = $(this),
-            data_slug = "^" + region.children(self.settings.content_selector).data('slug') + "$";
-            if (!selected && new RegExp(data_slug, 'i').test(hash)) {
-              selected = true;
-              region.addClass(self.settings.active_class);
-            } else if (!settings.multi_expand) {
-              nonmatched.push(region);
+          if (!selected) {
+            regions.each(function() {
+              var region = $(this),
+              data_slug = "^" + region.children(self.settings.content_selector).data('slug') + "$";
+              if (!selected && new RegExp(data_slug, 'i').test(hash)) {
+                selected = true;
+                region.addClass(self.settings.active_class);
+                region.parents(self.settings.region_selector)
+                  .children(self.settings.title_selector).each(function() {
+                    self.activate_title(this);
+                  });
+              } else if (!settings.multi_expand) {
+                nonmatched.push(region);
+              }
+            });
+            
+            if (selected) {
+              while(region = nonmatched.pop()) {
+                region.removeClass(self.settings.active_class);
+              }
             }
-          });
+          }
           
-          if (selected) {
-            while(region = nonmatched.pop()) {
-              region.removeClass(self.settings.active_class);
-            }
-            return false;
-          } else {
-            if (self.should_show_one(section)) {
-              self.ensure_region_shown(section);
-            }
+          if (self.should_show_one(section)) {
+            self.ensure_region_shown(section);
           }
       });
     },
