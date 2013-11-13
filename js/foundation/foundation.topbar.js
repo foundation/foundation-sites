@@ -58,7 +58,7 @@
           // Pad body when sticky (scrolled) or fixed.
           self.addCustomRule('.f-topbar-fixed { padding-top: ' + self.settings.$topbar.data('height') + 'px }');
 
-          if (self.settings.$topbar.parent().hasClass('fixed')) {
+          if (topbarContainer.hasClass('fixed') || topbarContainer.hasClass(self.settings.stickyClass)) {
             $('body').addClass('f-topbar-fixed');
           }
         });
