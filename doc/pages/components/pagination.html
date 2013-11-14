@@ -35,7 +35,7 @@ Add a `.pagination` class to a `ul` to get started, then add list items with lin
 
 ### Advanced
 
-To center your wrap your `.pagination` `ul` with an element that has the `.pagination-centered` class.
+To center your wrap your `ul.pagination` with an element that has the `.pagination-centered` class.
 
 <div class="row">
   <div class="large-6 columns">
@@ -64,68 +64,13 @@ To center your wrap your `.pagination` `ul` with an element that has the `.pagin
   </div>
 </div>
 
-
-
-
 ***
 
-### Build with a Mixin
+## Customize with Sass
 
-We've included SCSS mixins used to style pagination. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and [_pagination.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_pagination.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+Pagination styles can be easily customized with the Sass variables provided in the `_settings.scss` file.
 
-{{#markdown}}
-### SCSS
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/pagination";
-```
-{{/markdown}}
-
-If you are using the mixins, you may include the styles on whatever class or ID you'd like to the unordered list. The interior classes come with the mixin, just make sure you follow our markup structure:
-
-{{#markdown}}
-### HTML
-```html
-{{> examples_pagination_mixin}}
-```
-{{/markdown}}
-
-##### Quick Mixin
-
-You can build your pagination using our global mixin by including it on your own custom class. The mixin contains all the necessary styles for positioning and styling the unordered full list of items, the code looks like this:
-
-{{#markdown}}
-```scss
-.your-class-name {
-  @include pagination;
-}
-```
-{{/markdown}}
-
-<ul class="pagination">
-  <li class="arrow unavailable"><a href="">&laquo;</a></li>
-  <li class="current"><a href="">1</a></li>
-  <li><a href="">2</a></li>
-  <li><a href="">3</a></li>
-  <li><a href="">4</a></li>
-  <li class="unavailable"><a href="">&hellip;</a></li>
-  <li><a href="">12</a></li>
-  <li><a href="">13</a></li>
-  <li class="arrow"><a href="">&raquo;</a></li>
-</ul>
-
-##### Centering
-
-Just like with the CSS, we've made it easy to center the pagination element using the quick mixin.
-
-{{#markdown}}
-```scss
-{{> examples_pagination_centered_mixin.scss}}
-```
-{{/markdown}}
-
-##### Default SCSS Variables
+#### SCSS
 
 {{#markdown}}
 ```scss
@@ -133,4 +78,62 @@ Just like with the CSS, we've made it easy to center the pagination element usin
 ```
 {{/markdown}}
 
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+## Semantic Markup with Sass
+
+You apply pagination styles to semantic markup using Sass mixins.
+
+### Basic
+
+You can use the `pagination()` mixin to create your own pagination element, like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.your-class-name {
+  @include pagination;
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_pagination_mixin}}
+```
+{{/markdown}}
+  </div>
+</div>
+
+### Advanced
+
+You can center your pagination by wrapping your pagination element in another container that styled with the `pagination-container()` mixin. To center your pagination within the container element, set the `$centered` option in your mixin to `true`.
+
+#### SCSS
+{{#markdown}}
+```scss
+{{> examples_pagination_centered_mixin.scss}}
+```
+{{/markdown}}
+
+#### HTML
+{{#markdown}}
+```html
+{{> examples_pagination_centered_mixin}}
+```
+{{/markdown}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+#### SCSS
+
+```scss
+@import "foundation/components/pagination";
+```
+
