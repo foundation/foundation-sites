@@ -120,7 +120,7 @@
       var count = scenarios.length;
 
       if (count > 0) {
-        var el = $('[data-uuid="' + uuid + '"]');
+        var el = this.S('[data-uuid="' + uuid + '"]');
 
         for (var i = count - 1; i >= 0; i--) {
           var mq, rule = scenarios[i][2];
@@ -147,7 +147,7 @@
     },
 
     update_images : function () {
-      var images = document.querySelectorAll('img[' + this.data_attr + ']'),
+      var images = this.S('img[' + this.data_attr + ']'),
           count = images.length,
           loaded_count = 0,
           data_attr = this.data_attr;
@@ -176,7 +176,7 @@
     },
 
     update_nodes : function () {
-      var nodes = document.querySelectorAll('[' + this.data_attr + ']:not(img)'),
+      var nodes = this.S('[' + this.data_attr + ']:not(img)'),
           count = nodes.length,
           loaded_count = 0,
           data_attr = this.data_attr;

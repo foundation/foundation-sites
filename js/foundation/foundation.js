@@ -215,6 +215,7 @@
       lib['data_options'] = this.lib_methods.data_options;
       lib['globals_bound'] = this.lib_methods.globals_bound;
       lib['bindings'] = this.lib_methods.bindings;
+      lib['S'] = S;
       lib.rtl = this.rtl;
     },
 

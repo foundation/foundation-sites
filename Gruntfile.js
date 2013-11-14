@@ -71,7 +71,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.js': '<%= foundation.js %>',
-          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js', 'doc/assets/js/foundation.migrate.js']
         }
       }
     },
