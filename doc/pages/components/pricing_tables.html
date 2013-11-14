@@ -4,15 +4,21 @@ layout: doc/layouts/default.html
 
 # Pricing Tables
 
-#### If you're making a rockin' marketing site for a subscription-based product, you are likely in need of a pricing table. These fill 100% of their container and are made from a simple unordered list.
+<h3 class="subheader">If you're making a rockin' marketing site for a subscription-based product, you are likely in need of a pricing table. These fill 100% of their container and are made from a simple unordered list.</h3>
+
+***
+
+### Basic Example
+
+The pricing table is simply a `<ul>` with specific classes on the `<li>`s, if you build the element with predefined HTML classes.
 
 {{> examples_pricing_basic}}
 
 ***
 
-### Build With Predefined HTML Classes
+### Building With Predefined HTML Classes
 
-There are two ways to build pricing tables in Foundation 5: with our predefined HTML or with our mixins. Building pricing tables with our predefined classes is quite easy. You'll start with an `<ul>` and add a class of `.pricing-table` to it. From there, you just need to add list items inside that represent each piece of the table.
+There are two ways to build pricing tables in Foundation 5: with our predefined HTML or with our mixins. Building pricing tables with our predefined classes is quite easy. You'll start with a `<ul>` and add a class of `.pricing-table` to it. From there, you just need to add list items inside that represent each piece of the table.
 
 Available HTML class options for the list items:
 
@@ -24,11 +30,9 @@ Available HTML class options for the list items:
 
 {{> examples_pricing_basic_rendered}}
 
-For these styles to come across, make sure you have the default Foundation CSS package or that you've selected pricing-tables from a custom package. These should be linked up following our default [HTML page structure](../index.html).
-
 ***
 
-### Build with a Mixin
+### Building Semantically with Mixins
 
 We've included SCSS mixins used to style pricing tables so that you can code how you want to. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_pricing-tables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_pricing-tables.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
 
@@ -42,6 +46,11 @@ We've included SCSS mixins used to style pricing tables so that you can code how
 
 If you are using the mixins, you may include the styles on whatever class or ID you'd like with the `<ul>` and the list items inside it.
 
+Pricing tables are built up from an unordered list. We give this container some necessary styles by using our container mixin. There are no customizable options within the mixin, but everything can be changed using the SCSS variables below.
+
+<div class="row">
+  <div class="large-4 columns">
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 <ul class="your-pricing-class">
@@ -53,11 +62,9 @@ If you are using the mixins, you may include the styles on whatever class or ID 
 </ul>
 ```
 {{/markdown}}
-
-##### The Container Mixin
-
-Pricing tables are built up from an unordered list. We give this container some necessary styles by using our container mixin. There are no customizable options within the mixin, but everything can be changed using the SCSS variables below.
-
+  </div>
+  <div class="large-8 columns">
+    <h4>SCSS</h4>
 {{#markdown}}
 ```scss
 .your-pricing-class  { @include pricing-table-container;
@@ -69,6 +76,10 @@ Pricing tables are built up from an unordered list. We give this container some 
 }
 ```
 {{/markdown}}
+  </div>
+</div>
+
+
 
 <ul class="pricing-table">
   <li class="title">Standard</li>
@@ -80,7 +91,7 @@ Pricing tables are built up from an unordered list. We give this container some 
   <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
 </ul>
 
-##### Default SCSS Variables
+###Default SCSS Variables
 
 {{> examples_pricing_variables}}
 
