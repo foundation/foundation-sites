@@ -272,18 +272,18 @@ $cursor-text-value: text !default;
 @include exports("global") {
   // Used to provide media query values for javascript components.
   meta.foundation-mq-small {
-    font-family: $small-only;
-    width: upper-bound($small-range);
+    font-family: $small-up;
+    width: lower-bound($small-range);
   }
 
   meta.foundation-mq-medium {
-    font-family: $medium-only;
-    width: upper-bound($medium-range);
+    font-family: $medium-up;
+    width: lower-bound($medium-range);
   }
 
   meta.foundation-mq-large {
-    font-family: $large-only;
-    width: upper-bound($large-range);
+    font-family: $large-up;
+    width: lower-bound($large-range);
   }
 
   @if $include-html-global-classes {
