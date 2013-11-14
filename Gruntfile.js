@@ -142,7 +142,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('assemble');
 
-  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'uglify', 'copy', 'assemble'])
+
+  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy'])
+  grunt.registerTask('compile', ['compile:assets', 'assemble'])
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
 };

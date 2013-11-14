@@ -11,7 +11,7 @@ before_script:
 script:
   - npm install grunt
   - npm install grunt-cli
-  - grunt compile
+  - grunt compile:assets
 after_script:
   - git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
   - cp -r dist/assets/* bower-foundation/
