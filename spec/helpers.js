@@ -14,7 +14,7 @@ function when(size, testFunc) {
       testFunc.apply(this);
     } else {
       // Uncomment to verify skipping correct tests for media queries...
-      //console.log('[' + document.width.toString() + 'px]: Skipping ' + jasmine.getEnv().currentSpec.getFullName());
+      //console.log('[' + $(window).width().toString() + 'px]: Skipping ' + jasmine.getEnv().currentSpec.getFullName());
     }
   }
 }
