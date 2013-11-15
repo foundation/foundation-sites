@@ -305,7 +305,7 @@ meta.foundation-mq-topbar {
       }
 
       // Apply the hover link color when it has that class
-      &:hover > a {
+      &.hover > a {
         background: $topbar-link-bg-hover;
         color: $topbar-link-color-hover;
       }
