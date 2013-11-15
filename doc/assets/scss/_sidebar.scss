@@ -1,7 +1,8 @@
 $panel-bg-color: #FAFAFA;
 
 .sidebar {
-  background: $panel-bg-color; padding: 32px 20px; margin-right: 16px;
+  background: $panel-bg-color;
+  padding: 32px 20px;
 }
 .sidebar.fixed,
 [data-magellan-expedition] {

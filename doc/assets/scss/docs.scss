@@ -36,15 +36,18 @@ body {
 
 .row {
   max-width: emCalc(1440);
-  .display {
+  &.display {
     background: #eee;
     font-size: 11px;
     margin-bottom: 10px;
     line-height: 2em;
     border: solid 1px #c6c6c6;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     .columns {
       border-right: solid 1px #c6c6c6;
-      &:nth-last-child {
+      &:last-child { border-right: 0; }
+        &:nth-last-child {
         border-right: none;
       }
     }
