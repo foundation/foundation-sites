@@ -79,5 +79,13 @@ $block-grid-media-queries: true !default;
     @media #{$large-up} {
       @include block-grid-html-classes($size:large);
     }
+
+    @media #{$xlarge-up} {
+      @include block-grid-html-classes($size:xlarge);
+    }
+
+    @media #{$xxlarge-up} {
+      @include block-grid-html-classes($size:xxlarge);
+    }
   }
 }
