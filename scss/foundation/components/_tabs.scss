@@ -11,13 +11,6 @@
 		&.vertical { width: 20%; float: left; margin-bottom: 1.25em;
 			dd { float: none; top: 0px; }
 		}
-		
-		&.accordion {
-			dd { float: none; display: block; border-bottom: 1px solid #fff; }
-			div.content { display: none; padding: 1em 2em; 
-				&.active { display: block; background: #fff; }
-			}
-		}
 	}
 
 	.tabs-content { @include clearfix; margin-bottom: 1.25em;
