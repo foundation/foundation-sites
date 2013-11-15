@@ -141,6 +141,22 @@ $experimental: true !default;
   }
 }
 
+// We use this to vertically center block elements
+.vertical-center {  
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%; 
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }  
+  div {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+  }
+ }
+
 //
 // Foundation Variables
 //
