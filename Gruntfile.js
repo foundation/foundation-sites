@@ -101,15 +101,18 @@ module.exports = function(grunt) {
     watch: {
       styles: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
-        tasks: ['sass']
+        tasks: ['sass'],
+        options: {livereload:true}
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
-        tasks: ['concat', 'uglify']
+        tasks: ['concat', 'uglify'],
+        options: {livereload:true}
       },
       dist_docs: {
         files: ['doc/{includes,layouts,pages}/**/*.html'],
-        tasks: ['assemble:dist_docs']
+        tasks: ['assemble:dist_docs'],
+        options: {livereload:true}
       },
       dist_download: {
         files: ['index.html'],
@@ -117,7 +120,8 @@ module.exports = function(grunt) {
       },
       assets: {
         files: ['doc/assets/{img}/**/*'],
-        tasks: ['copy']
+        tasks: ['copy'],
+        options: {livereload:true}
       }
     },
 
