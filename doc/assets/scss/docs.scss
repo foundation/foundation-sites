@@ -45,10 +45,10 @@ body {
     margin-left: 0 !important;
     margin-right: 0 !important;
     .columns {
-      border-right: solid 1px #c6c6c6;
-      &:last-child { border-right: 0; }
-        &:nth-last-child {
-        border-right: none;
+      &:nth-child(2),
+      &.small-centered,
+      &.large-centered {
+        background: darken(#eee, 5%);
       }
     }
   }
