@@ -1,7 +1,10 @@
 {{#markdown}}
 ```scss
-.your-class-name {
+.your-row-class-name {
   @include grid-row();
+  .your-column-class-name {
+    @include grid-column(4);
+  }
 }
 ```
 {{/markdown}}
