@@ -10,6 +10,8 @@ layout: doc/layouts/default.html
 
 <h3>Basic</h3>
 
+Start by adding an element with a class of `row`, forming your block element. Then add divs with a `columns` class within that row with and specify the widths of those inline elements with the `small-#`, `medium-#`, and `large-#` classes.
+
 * **Foundation uses border-box**: Borders and padding do not affect the overall width of the columns, making the math dead-simple. 
 * **Foundation is mobile-first**. Code for small first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 
@@ -55,12 +57,12 @@ Offset up to 11 by using classes like `.large-offset-1` and `.small-offset-3`.
 
 Center your columns by adding a class of `small-centered` to your `column`. Large will inherit small centering by default, but you can also center on large only by applying a `large-centered` class. To uncenter on large screens use `large-uncentered`.
 
-***
-
 <h4>HTML</h4>
 
 {{> examples_grid_centered}}
+
 <h4>Rendered HTML</h4>
+
 {{> examples_grid_centered_rendered}}
 
 ***
@@ -71,76 +73,72 @@ Using these source ordering classes, you can shift columns around between our br
 
 ***
 
-{{#markdown}}
-### HTML
-```html
-{{> examples_grid_source}}
-```
-{{/markdown}}
+<h4>HTML</h4>
 
-### Examples
+{{> examples_grid_source}}
+
+<h4>Rendered HTML</h4>
 
 {{> examples_grid_source_rendered}}
 
 ***
 
-#### Small Grid
+##### Small Grid
 
-<!-- TODO FIX LINKS -->
-As you've probably noticed in the examples above, you have access to a small and large grid. If you know that your grid structure will be the same for small devices as it will be on large devices, just use the small grid. You can override your small grid classes by adding large grid classes to it. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a target="_blank" href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a target="_blank" href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_grid.scss</a> from Github and throw them into a Foundation folder in your project directory.
+<h4>HTML</h4>
 
-***
-
-{{#markdown}}
-### HTML
-```html
 {{> examples_grid_small}}
-```
-{{/markdown}}
+
+<h4>Rendered HTML</h4>
 
 {{> examples_grid_small_rendered}}
 
 ***
 
-#### Medium Grid
+##### Medium Grid
 
 The small and large grids give you control over mobile and desktop styles. A medium grid now offers greater flexibility and control to create complex layouts for tablets as well.
 
 ***
 
-{{#markdown}}
-### HTML
-```html
 {{> examples_grid_medium}}
-```
-{{/markdown}}
+
+<h4>Rendered HTML</h4>
 
 {{> examples_grid_medium_rendered}}
 
 ***
 
-#### Building With Mixins
+## Customize with Sass
 
-If you are keen on SCSS and use it for your Foundation projects, you have access to grid mixins that will let you layout the page without using presentational classes that you don't want. You can create your own set of classes or even create your own grid. Setting any of the options to 'false' will leave off those styles, giving you lots of control over your CSS output. Here's an example structure you might use with the grid mixin:
+The grid can be easily customized with the Sass variables provided in the `_settings.scss` file.
 
-***
+<h4>SCSS</h4>
 
-### Grid-row Mixin
+{{> examples_grid_variables.scss}}
+
+
+<h3>Basic</h3>
+
+You can use the `grid-row()` mixin to create your own row with semantic markup, like so:
 
 <div class="row">
   <div class="large-6 columns">
-{{#markdown}}
-### Code Example
-```scss
+    <h4>SCSS</h4>
 {{> examples_grid_row_mixin.scss}}
-```
-{{/markdown}}
   </div>
   <div class="large-6 columns">
-    <h3>Options</h3>
-{{> examples_grid_row_options}}
+    <h4>HTML</h4>
+{{> examples_grid_row_mixin}}
   </div>
 </div>
+
+##### Row Mixin Options
+
+<h4>SCSS</h4>
+
+{{> examples_grid_row_options.scss}}
+
 
 ### Grid-column Mixin
 
