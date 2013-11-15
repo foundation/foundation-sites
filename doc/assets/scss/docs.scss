@@ -511,3 +511,8 @@ $custom-active-bg:darken($custom-link-color, 5%);
     $active-bg:$custom-active-bg);
 }
 
+// custom off-canvas styles
+// .docs-wrap { margin-top: 30px; }
+.docs-wrap .inner-wrap { background: #efefef; }
+.docs-wrap .main-section { padding: 0 20px 0 20px; }
+
