@@ -10,7 +10,7 @@ layout: doc/layouts/default.html
 
 ***
 
-### Basic
+<h3>Basic</h3>
 
 Using minimal markup you can create a thumbnail image.
 
@@ -31,7 +31,7 @@ Using minimal markup you can create a thumbnail image.
   </div>
 </div>
 
-### Advanced
+<h3>Advanced</h3>
 
 Additional classes can be added to your thumbnails to change it's appearance.
 
@@ -58,7 +58,7 @@ Additional classes can be added to your thumbnails to change it's appearance.
 
 Thumbnails can be easily customized using our provided Sass variables.
 
-#### scss
+<h4>SCSS</h4>
 
 ```scss
 $include-html-media-classes: $include-html-classes;
@@ -81,11 +81,11 @@ $thumb-transition-speed: 200ms;
 
 You can create your own thumbnails using our own Sass mixins.
 
-### Basic
+<h3>Basic</h3>
 
 You can use the `thumb()` mixin to create your own thumbnails, like so:
 
-#### SCSS
+<h4>SCSS</h4>
 ```scss
 .custom-thumbnail-class {
   @include thumb;
@@ -99,11 +99,11 @@ You can use the `thumb()` mixin to create your own thumbnails, like so:
 </a>
 ```
 
-### Advanced
+<h3>Advanced</h3>
 
 You can further customize your thumbnails using the provided options in the `thumb()` mixin:
 
-#### SCSS
+<h4>SCSS</h4>
 ```scss
 .custom-thumbnail-class {
   @include thumb(

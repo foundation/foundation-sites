@@ -10,7 +10,7 @@ layout: doc/layouts/default.html
 
 ***
 
-### Basic
+<h3>Basic</h3>
 
 Add a class of `.breadcrumbs` to a `ul` element. List items will automatically be styled, and you can add `.current` or `.unavailable` classes to list items to denote their state.
 
@@ -44,7 +44,7 @@ You can also add a `.breadcrumbs` class to a `nav` element containing anchor lin
 
 Breadcrumbs can be easily customized using our provided Sass variables.
 
-#### SCSS
+<h4>SCSS</h4>
 {{> examples_breadcrumbs_variables}}
 
 ***
@@ -53,7 +53,7 @@ Breadcrumbs can be easily customized using our provided Sass variables.
 
 You apply breadcrumb styles to semantic markup using Sass mixins.
 
-### Basic
+<h3>Basic</h3>
 
 Include the `crumb-container()` mixin to style your own breadcrumbs container with semantic markup and include the `crumbs()` mixin for each breadcrumb, like so:
 
@@ -74,7 +74,7 @@ Include the `crumb-container()` mixin to style your own breadcrumbs container wi
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
-#### SCSS
+<h4>SCSS</h4>
 
 ```scss
 @import "foundation/components/breadcrumbs";

@@ -12,7 +12,7 @@ layout: doc/layouts/default.html
 
 ***
 
-### Basic
+<h3>Basic</h3>
 
 Use a simple `small-block-#` class to code up the block grid and specify the number of items in a row.
 
@@ -27,7 +27,7 @@ Use a simple `small-block-#` class to code up the block grid and specify the num
   </div>
 </div>
 
-### Advanced
+<h3>Advanced</h3>
 
 Use additional classes to specify different a different number of items in a row for each screen size. 
 
@@ -49,7 +49,7 @@ If you use the `small-block-grid` only, the grid will keep its spacing and confi
 
 Block grids can be easily customized with the Sass variables provided in the `_settings.scss` file.
 
-#### SCSS
+<h4>SCSS</h4>
 
 {{> examples_block_variables}}
 
@@ -59,7 +59,7 @@ Block grids can be easily customized with the Sass variables provided in the `_s
 
 You apply block grid styles to semantic markup using Sass mixins.
 
-### Basic
+<h3>Basic</h3>
 
 You can use the `block-grid(#)` mixin to create your own block grid, like so:
 
@@ -74,11 +74,11 @@ You can use the `block-grid(#)` mixin to create your own block grid, like so:
   </div>
 </div>
 
-### Advanced
+<h3>Advanced</h3>
 
 You can further customize your block grid using the provided options in the `block-grid()` mixin:
 
-#### SCSS
+<h4>SCSS</h4>
 {{> examples_block_mixin_options}}
 
 
@@ -86,7 +86,7 @@ You can further customize your block grid using the provided options in the `blo
 
 When you use mixins and you want to control the layout using different classes, add this snippet to your Sass:
 
-#### SCSS
+<h4>SCSS</h4>
 
 {{#markdown}}
 ```scss
@@ -102,7 +102,7 @@ When you use mixins and you want to control the layout using different classes, 
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
-#### SCSS
+<h4>SCSS</h4>
 
 ```scss
 @import "foundation/components/block-grid";

@@ -10,7 +10,7 @@ layout: doc/layouts/default.html
 
 ***
 
-### Basic
+<h3>Basic</h3>
 
 Add a `.pagination` class to a `ul` to get started, then add list items with links in them.
 
@@ -33,7 +33,7 @@ Add a `.pagination` class to a `ul` to get started, then add list items with lin
   </div>
 </div>
 
-### Advanced
+<h3>Advanced</h3>
 
 To center your wrap your `ul.pagination` with an element that has the `.pagination-centered` class.
 
@@ -70,7 +70,7 @@ To center your wrap your `ul.pagination` with an element that has the `.paginati
 
 Pagination styles can be easily customized with the Sass variables provided in the `_settings.scss` file.
 
-#### SCSS
+<h4>SCSS</h4>
 
 {{#markdown}}
 ```scss
@@ -82,7 +82,7 @@ Pagination styles can be easily customized with the Sass variables provided in t
 
 You apply pagination styles to semantic markup using Sass mixins.
 
-### Basic
+<h3>Basic</h3>
 
 You can use the `pagination()` mixin to create your own pagination element, like so:
 
@@ -107,11 +107,11 @@ You can use the `pagination()` mixin to create your own pagination element, like
   </div>
 </div>
 
-### Advanced
+<h3>Advanced</h3>
 
 You can center your pagination by wrapping your pagination element in another container that styled with the `pagination-container()` mixin. To center your pagination within the container element, set the `$centered` option in your mixin to `true`.
 
-#### SCSS
+<h4>SCSS</h4>
 {{#markdown}}
 ```scss
 {{> examples_pagination_centered_mixin.scss}}
@@ -131,7 +131,7 @@ You can center your pagination by wrapping your pagination element in another co
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
-#### SCSS
+<h4>SCSS</h4>
 
 ```scss
 @import "foundation/components/pagination";
