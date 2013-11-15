@@ -15,6 +15,7 @@
       animationSpeed: 250,
       closeOnBackgroundClick: true,
       closeOnEsc: true,
+      modalClass: 'reveal-modal',
       dismissModalClass: 'close-reveal-modal',
       bgClass: 'reveal-modal-bg',
       open: function(){},
@@ -56,6 +57,7 @@
 
     events : function () {
       var self = this;
+      var modal_selector = '.' + self.settings.modalClass;
 
       $(this.scope)
         .off('.fndtn.reveal')
@@ -80,18 +82,18 @@
         .on('click.fndtn.reveal touchend', this.close_targets(), function (e) {
           e.preventDefault();
           if (!self.locked) {
-            var settings = $.extend({}, self.settings, self.data_options($('.reveal-modal.open'))),
+            var settings = $.extend({}, self.settings, self.data_options($(modal_selector + '.open'))),
               bgClicked = $(e.target)[0] === $('.' + settings.bgClass)[0];
             if (bgClicked && !settings.closeOnBackgroundClick) {
               return;
             }
 
             self.locked = true;
-            self.close.call(self, bgClicked ? $('.reveal-modal.open') : $(this).closest('.reveal-modal'));
+            self.close.call(self, bgClicked ? $(modal_selector + '.open') : $(this).closest(modal_selector));
           }
         });
 
-      if($(this.scope).hasClass('reveal-modal')) {
+      if($(this.scope).hasClass(self.settings.modalClass)) {
         $(this.scope)
           .on('open.fndtn.reveal', this.settings.open)
           .on('opened.fndtn.reveal', this.settings.opened)
@@ -101,16 +103,16 @@
           .on('closed.fndtn.reveal', this.close_video);
       } else {
         $(this.scope)
-          .on('open.fndtn.reveal', '.reveal-modal', this.settings.open)
-          .on('opened.fndtn.reveal', '.reveal-modal', this.settings.opened)
-          .on('opened.fndtn.reveal', '.reveal-modal', this.open_video)
-          .on('close.fndtn.reveal', '.reveal-modal', this.settings.close)
-          .on('closed.fndtn.reveal', '.reveal-modal', this.settings.closed)
-          .on('closed.fndtn.reveal', '.reveal-modal', this.close_video);
+          .on('open.fndtn.reveal', modal_selector, this.settings.open)
+          .on('opened.fndtn.reveal', modal_selector, this.settings.opened)
+          .on('opened.fndtn.reveal', modal_selector, this.open_video)
+          .on('close.fndtn.reveal', modal_selector, this.settings.close)
+          .on('closed.fndtn.reveal', modal_selector, this.settings.closed)
+          .on('closed.fndtn.reveal', modal_selector, this.close_video);
       }
 
       $( 'body' ).bind( 'keyup.reveal', function ( event ) {
-        var open_modal = $('.reveal-modal.open'),
+        var open_modal = $(modal_selector + '.open'),
             settings = $.extend({}, self.settings, self.data_options(open_modal));
         if ( event.which === 27  && settings.closeOnEsc) { // 27 is the keycode for the Escape key
           open_modal.foundation('reveal', 'close');
@@ -134,7 +136,7 @@
       }
 
       if (!modal.hasClass('open')) {
-        var open_modal = $('.reveal-modal.open');
+        var open_modal = $('.' + this.settings.modalClass + '.open');
 
         if (typeof modal.data('css-top') === 'undefined') {
           modal.data('css-top', parseInt(modal.css('top'), 10))
@@ -176,7 +178,7 @@
     close : function (modal) {
 
       var modal = modal && modal.length ? modal : $(this.scope),
-          open_modals = $('.reveal-modal.open');
+          open_modals = $('.' + this.settings.modalClass + '.open');
 
       if (open_modals.length > 0) {
         this.locked = true;
