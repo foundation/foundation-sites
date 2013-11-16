@@ -75,7 +75,7 @@ $menu-slide: "transform 500ms ease" !default;
   width: 100%;
 }
 
-// Translate3d mixin for all browsers
+// TRANSLATE 3D
 @mixin translate3d($tx,$ty,$tz) {
   -webkit-transform: translate3d($tx,$ty,$tz);
   -moz-transform: translate3d($tx,$ty,$tz);
@@ -84,11 +84,9 @@ $menu-slide: "transform 500ms ease" !default;
   transform: translate3d($tx,$ty,$tz)
 }
 
-//////////////////////////////////////////////////////////////
-
 // OFF CANVAS WRAP
 // Wrap visible content and prevent scroll bars
-.off-canvas-wrap {
+@mixin off-canvas-wrap {
     @extend %kill-flicker;
     @extend %wrap-base;
     overflow: hidden;
@@ -96,7 +94,7 @@ $menu-slide: "transform 500ms ease" !default;
 
 // INNER WRAP
 // Main content area that moves to reveal the off-canvas nav
-.inner-wrap {
+@mixin inner-wrap {
     @extend %kill-flicker;
     @extend %wrap-base;
     top:0;
@@ -104,8 +102,46 @@ $menu-slide: "transform 500ms ease" !default;
 }
 
 // TAB BAR
-// This is a basic nav bar. There aren't a lot of pre-built components here besides the off-canvas buttons.
+// This is the tab bar base
+@mixin tab-bar-base { }
+
+// BACK LINK
+// This is an overlay that, when clicked, will toggle off the off canvas menu
+@mixin back-link {
+    @extend %kill-flicker;
+
+    transition: $off-canvas-overlay-transition;
+    cursor: $off-canvas-overlay-cursor;
+    box-shadow: $off-canvas-overlay-box-shadow;
+
+    // fill the screen
+    display: block;
+    position: absolute;
+    background: $off-canvas-overlay-background;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    z-index: 1002;
+
+    @media #{$medium-up} {
+      &:hover {
+        background: $off-canvas-overlay-background-hover;
+      }
+    }
+}
+
+//
+// DEFAULT CLASSES
+//
+
+.off-canvas-wrap { @include off-canvas-wrap; }
+
+.inner-wrap { @include inner-wrap; }
+
+
 nav.tab-bar {
+
   @extend %kill-flicker;
 
   // base styles
@@ -280,30 +316,6 @@ a.menu-icon {
       }
     }
 
-  }
-
-  @mixin back-link {
-      @extend %kill-flicker;
-
-      transition: $off-canvas-overlay-transition;
-      cursor: $off-canvas-overlay-cursor;
-      box-shadow: $off-canvas-overlay-box-shadow;
-
-      // fill the screen
-      display: block;
-      position: absolute;
-      background: $off-canvas-overlay-background;
-      top: 0;
-      bottom: 0;
-      left:0;
-      right:0;
-      z-index: 1002;
-
-      @media #{$medium-up} {
-        &:hover {
-          background: $off-canvas-overlay-background-hover;
-        }
-      }
   }
 
   &.move-right {
