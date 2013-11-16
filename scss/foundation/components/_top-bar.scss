@@ -220,8 +220,12 @@ meta.foundation-mq-topbar {
       .title-area { background: $topbar-bg; }
 
       .toggle-topbar {
-        a { color: $topbar-menu-link-color-toggled;
-          span {
+        a {
+          color: $topbar-menu-link-color-toggled;
+        }
+
+        &.menu-icon {
+          a span {
             // Shh, don't tell, but box-shadows create the menu icon :)
             @if $experimental {
               -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
