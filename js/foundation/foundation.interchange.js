@@ -16,9 +16,9 @@
 
       named_queries : {
         'default' : 'only screen and (min-width: 1px)',
-        small : 'only screen and (min-width: 768px)',
-        medium : 'only screen and (min-width: 1280px)',
-        large : 'only screen and (min-width: 1440px)',
+        small : Foundation.media_queries.small,
+        medium : Foundation.media_queries.medium,
+        large : Foundation.media_queries.large,
         landscape : 'only screen and (orientation: landscape)',
         portrait : 'only screen and (orientation: portrait)',
         retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 
@@ -120,7 +120,7 @@
       var count = scenarios.length;
 
       if (count > 0) {
-        var el = $('[data-uuid="' + uuid + '"]');
+        var el = this.S('[data-uuid="' + uuid + '"]');
 
         for (var i = count - 1; i >= 0; i--) {
           var mq, rule = scenarios[i][2];
@@ -147,37 +147,36 @@
     },
 
     update_images : function () {
-      var images = document.querySelectorAll('img[' + this.data_attr + ']'),
+      var images = this.S('img[' + this.data_attr + ']'),
           count = images.length,
           loaded_count = 0,
           data_attr = this.data_attr;
 
+      this.cache = {};
       this.cached_images = [];
-      this.images_loaded = false;
+      this.images_loaded = (count === 0);
 
       for (var i = count - 1; i >= 0; i--) {
-        this.loaded($(images[i]), function (image) {
-          loaded_count++;
-          if (image) {
-            var str = image.getAttribute(data_attr) || '';
+        loaded_count++;
+        if (images[i]) {
+          var str = images[i].getAttribute(data_attr) || '';
 
-            if (str.length > 0) {
-              this.cached_images.push(image);
-            }
+          if (str.length > 0) {
+            this.cached_images.push(images[i]);
           }
+        }
 
-          if(loaded_count === count) {
-            this.images_loaded = true;
-            this.enhance('images');
-          }
-        }.bind(this));
+        if(loaded_count === count) {
+          this.images_loaded = true;
+          this.enhance('images');
+        }
       }
 
       return this;
     },
 
     update_nodes : function () {
-      var nodes = document.querySelectorAll('[' + this.data_attr + ']:not(img)'),
+      var nodes = this.S('[' + this.data_attr + ']:not(img)'),
           count = nodes.length,
           loaded_count = 0,
           data_attr = this.data_attr;
@@ -203,38 +202,6 @@
       }
 
       return this;
-    },
-
-    // based on jquery.imageready.js
-    // @weblinc, @jsantell, (c) 2012
-
-    loaded : function (image, callback) {
-      function loaded () {
-        callback(image[0]);
-      }
-
-      function bindLoad () {
-        this.one('load', loaded);
-
-        if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-          var src = this.attr( 'src' ),
-              param = src.match( /\?/ ) ? '&' : '?';
-
-          param += 'random=' + (new Date()).getTime();
-          this.attr('src', src + param);
-        }
-      }
-
-      if (!image.attr('src')) {
-        loaded();
-        return;
-      }
-
-      if (image[0].complete || image[0].readyState === 4) {
-        loaded();
-      } else {
-        bindLoad.call(image);
-      }
     },
 
     enhance : function (type) {

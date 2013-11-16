@@ -28,7 +28,7 @@ Stay on top of the latest before official releases by installing release candida
 
 `[sudo] gem install zurb-foundation --pre`
 
----
+***
 
 <a name="create-compass"></a>
 
@@ -42,7 +42,7 @@ Follow these two steps to get going:
 2. `cd path/to/where-you-want-your-project`
 3. run `compass create <project-name> -r zurb-foundation --using foundation`
 
----
+***
 
 ### Using Sass Standalone
 
@@ -110,7 +110,7 @@ If you want to pick and choose which pieces of Foundation you want, the pieces y
 ```
 {{/markdown}}
 
----
+***
 
 ### Compiling Your Scss with Compass
 
@@ -122,7 +122,7 @@ If you are in a different directory you can use the same command, but navigate t
 
 `compass watch path/to/project`
 
----
+***
 
 ### Compiling Your Scss with Sass
 
@@ -130,7 +130,7 @@ If you are in a different directory you can use the same command, but navigate t
 
 You can watch individual files or the entire directory, we usually watch the entire directory when using Sass standalone.
 
----
+***
 
 <a name="compass-existing"></a>
 
@@ -168,7 +168,7 @@ We also recommend creating a `foundation-overrides.scss` file that you can use f
 2.  `cd /path/to/your-project`
 3.  run `compass install -r zurb-foundation foundation`
 
----
+***
 
 <a name="project-git"></a>
 
@@ -199,7 +199,7 @@ bundle exec compass create . -r zurb-foundation --using foundation
 
 4. When you're working on your project, run: <kbd>bundle exec compass watch</kbd>
 
----
+***
 
 <a name="multiple-versions"></a>
 
@@ -233,7 +233,7 @@ bundle exec compass create . -r zurb-foundation --using foundation
 
 Zach Shnackel recently wrote a good article that goes into a bit more detail on this subject: [http://zslabs.com/articles/versioned-dependencies-with-compass](http://zslabs.com/articles/versioned-dependencies-with-compass)
 
----
+***
 
 <a name="codekit"></a>
 
@@ -241,17 +241,16 @@ Zach Shnackel recently wrote a good article that goes into a bit more detail on 
 
 Previous version of Foundation were a bit harder to compile with codekit because of the structure of the Foundation files. We just went through a round of testing with a default project directory, created with the gem. Here are the instructions to follow to get CodeKit working properly:
 
-*   Create a project: <kbd>compass create _project-name_ -r zurb-foundation --using foundation</kbd>
-*   Open CodeKit and drag that project folder into the side panel or add it with the "+" button.
-*   Compile away!
+* Create a project: <kbd>compass create _project-name_ -r zurb-foundation --using foundation</kbd>
+* Open CodeKit and drag that project folder into the side panel or add it with the "+" button.
+* Compile away!
 
 _This works with the default version of Sass and Compass that CodeKit comes with. Since Compass isn't a dependency for Foundation any longer, if you want to use it, make sure you have it installed and @imported at the top of your main .scss file._
 
----
+***
 
 ### Foundation Global Settings and Mixins
 
 We've included a global settings file that holds variables and mixins that are used throughout the entirety of Foundation. Here's a look at that file:
 
 {{> examples_sass_variables}}
-

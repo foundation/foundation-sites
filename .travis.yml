@@ -25,3 +25,7 @@ after_script:
 env:
   global:
     secure: USNBfNsfQFF6UgNzXRXA+8mWc66WvOUXjIH5PRjbBRUfUFZkt0a74P7uW/IMJZ0XlQwbWCphzv6Rh1qfI5bbmh6nwlJtBgP6KCc/GrPyN61YrudmPZfiNrHFkylhELz82CE6oWZjZGRwlCsLa3IADo27azmQx7kJhko5t3war5A=
+notifications:
+  email:
+    recipients:
+      - mark@zurb.com

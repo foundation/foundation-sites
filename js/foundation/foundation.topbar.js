@@ -17,8 +17,10 @@
     },
 
     init : function (section, method, options) {
-      Foundation.inherit(this, 'addCustomRule');
+      Foundation.inherit(this, 'addCustomRule register_media');
       var self = this;
+
+      self.register_media('topbar', 'foundation-mq-topbar');
 
       if (typeof method === 'object') {
         $.extend(true, this.settings, method);
@@ -43,10 +45,6 @@
             self.settings.$topbar.data('height', self.settings.$topbar.outerHeight());
           }
 
-          var breakpoint = $("<div class='top-bar-js-breakpoint'/>").insertAfter(self.settings.$topbar);
-          self.settings.breakPoint = breakpoint.width();
-          breakpoint.remove();
-
           self.assemble();
 
           if (self.settings.is_hover) {
@@ -67,10 +65,16 @@
       }
     },
 
-    toggle: function() {
+    toggle: function (toggleEl) {
       var self = this;
-      var topbar = $('.top-bar, [data-topbar]'),
-          section = $('section, .section', topbar);
+
+      if (toggleEl) {
+        var topbar = $(toggleEl).closest('.top-bar, [data-topbar]');
+      } else {
+        var topbar = $('[data-topbar]');
+      }
+
+      var section = $('section, .section', topbar);
 
       if (self.breakpoint()) {
         if (!self.rtl) {
@@ -134,7 +138,7 @@
         .off('.topbar')
         .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
           e.preventDefault();
-          self.toggle();
+          self.toggle(this);
         })
         .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
           var li = $(this),
@@ -152,10 +156,6 @@
 
           e.stopImmediatePropagation();
 
-          if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
-            e.preventDefault();
-          }
-
           if (li.hasClass('hover')) {
             li
               .removeClass('hover')
@@ -166,10 +166,14 @@
               .removeClass('hover');
           } else {
             li.addClass('hover');
+
+            if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
+              e.preventDefault();
+            }
           }
         })
         .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
-          if (self.breakpoint() && $(window).width() != self.settings.breakPoint) {
+          if (self.breakpoint()) {
 
             e.preventDefault();
 
@@ -195,6 +199,7 @@
         });
 
       $(window).off('.topbar').on('resize.fndtn.topbar', function () {
+        if (typeof self.settings.$topbar === 'undefined') { return; }
         var stickyContainer = self.settings.$topbar.parent('.' + this.settings.sticky_class);
         var stickyOffset;
 
@@ -230,7 +235,7 @@
         }
       }.bind(this));
 
-      $('body').off('.topbar').on('click.fndtn.topbar', function (e) {
+      $('body').off('.topbar').on('click.fndtn.topbar touchstart.fndtn.topbar', function (e) {
         var parent = $(e.target).closest('li').closest('li.hover');
 
         if (parent.length > 0) {
@@ -273,7 +278,7 @@
     },
 
     breakpoint : function () {
-      return $(document).width() <= this.settings.breakPoint || $('html').hasClass('lt-ie9');
+      return !matchMedia(Foundation.media_queries['topbar']).matches;
     },
 
     assemble : function () {

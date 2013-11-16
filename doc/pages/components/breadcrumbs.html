@@ -4,58 +4,79 @@ layout: doc/layouts/default.html
 
 # Breadcrumbs
 
-#### Breadcrumbs come in handy to show a navigation trail for users clicking through a site or app. They'll conform to 100% of the container width you put them in.
+<h3 class="subheader">Breadcrumbs come in handy to show a navigation trail for users clicking through a site or app. They'll conform to 100% of the container width you put them in.</h3>
 
 {{> examples_breadcrumbs_basic}}
 
----
+***
 
-### Build With Predefined HTML Classes
+<h3>Basic</h3>
 
-There are two ways to build breadcrumbs in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building breadcrumbs using our predefined class is easy. You'll need an `<ul class="breadcrumbs">` with `<li>` elements inside. You have access to two state classes: `<li class="unavailable">` and `<li class="current">` to control link intentions. The default markup looks like this:
+Add a class of `.breadcrumbs` to a `ul` element. List items will automatically be styled, and you can add `.current` or `.unavailable` classes to list items to denote their state.
 
-{{> examples_breadcrumbs_basic_rendered}}
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_breadcrumbs_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_breadcrumbs_basic}}
+  </div>
+</div>
 
-For these styles to come across, make sure you have the **default Foundation CSS package** or that you've selected **breadcrumbs from a custom package**. These should be linked up following our default [HTML page structure](../index.html).
+You can also add a `.breadcrumbs` class to a `nav` element containing anchor links to get the same result.
 
----
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_breadcrumbs_basic_nav_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_breadcrumbs_basic_nav}}
+  </div>
+</div>
 
-### Build with Mixins
+***
 
-We've included SCSS mixins used to style breadcrumbs. To use these mixins, you'll need to have the [../sass.html](extension installed) or grab,[_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss) [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_breadcrumbs.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_breadcrumbs.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+## Customize with Sass
 
-{{#markdown}}
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/breadcrumbs";
-```
-{{/markdown}}
+Breadcrumbs can be easily customized using our provided Sass variables.
 
-If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
-
-{{> examples_breadcrumbs_mixin}}
-
-##### Container Mixin
-
-You can build your breadcrumbs using our global mixin by including it on your custom class or ID in your stylesheet. The container mixin will create the necessary style for the `<ul>`. The global mixin looks like this:
-
-{{> examples_breadcrumbs_container_mixin}}
-
-##### Crumb Mixin
-
-Use this mixin to apply the list item and link styles to items inside the breadcrumb container. You attach this mixin to the list items inside of your container.
-
-{{> examples_breadcrumbs_crumb_mixin}}
-
-##### Radius Mixin
-
-We've also created a global radius mixin that you can use to add border-radius to any element you'd like.
-
-{{> examples_breadcrumbs_radius_mixin}}
-
-##### Default SCSS Variables
-
+<h4>SCSS</h4>
 {{> examples_breadcrumbs_variables}}
 
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`.
+***
+
+## Semantic Markup with Sass
+
+You apply breadcrumb styles to semantic markup using Sass mixins.
+
+<h3>Basic</h3>
+
+Include the `crumb-container()` mixin to style your own breadcrumbs container with semantic markup and include the `crumbs()` mixin for each breadcrumb, like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+    {{> examples_breadcrumbs_mixin.scss}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_breadcrumbs_mixin}}
+  </div>
+</div>
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/breadcrumbs";
+```
+

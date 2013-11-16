@@ -13,7 +13,8 @@
       modal                : false,      // Whether to cover page with modal during the tour
       tip_location          : 'bottom',  // 'top' or 'bottom' in relation to parent
       nub_position          : 'auto',    // override on a per tooltip bases
-      scroll_speed          : 300,       // Page scrolling speed in milliseconds, 0 = no scroll animation
+      scroll_speed          : 1500,       // Page scrolling speed in milliseconds, 0 = no scroll animation
+      scroll_animation     : 'linear',   // supports 'swing' and 'linear', extend with jQuery UI.
       timer                : 0,         // 0 = no timer , all other numbers = timer in milliseconds
       start_timer_on_click    : true,      // true or false - true requires clicking the first button start the timer
       start_offset          : 0,         // the index of the tooltip you want to start on (index of the li)
@@ -181,7 +182,7 @@
       if ((index === 0 && this.settings.start_timer_on_click && this.settings.timer > 0) || this.settings.timer === 0) {
         txt = '';
       } else {
-        txt = this.outerHTML($(this.settings.template.timer)[0]);
+        txt = $(this.settings.template.timer)[0].outerHTML;
       }
       return txt;
     },
@@ -189,7 +190,7 @@
     button_text : function (txt) {
       if (this.settings.next_button) {
         txt = $.trim(txt) || 'Next';
-        txt = this.outerHTML($(this.settings.template.button).append(txt)[0]);
+        txt = $(this.settings.template.button).append(txt)[0].outerHTML;
       } else {
         txt = '';
       }
@@ -321,11 +322,7 @@
     },
 
     is_phone : function () {
-      if (Modernizr) {
-        return Modernizr.mq('only screen and (max-width: 767px)') || $('.lt-ie9').length > 0;
-      }
-
-      return ($(window).width() < 767);
+      return matchMedia(Foundation.media_queries.small).matches;
     },
 
     hide : function () {
@@ -386,10 +383,11 @@
 
       window_half = $(window).height() / 2;
       tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight());
+
       if (tipOffset > 0) {
         $('html, body').animate({
           scrollTop: tipOffset
-        }, this.settings.scroll_speed);
+        }, this.settings.scroll_speed, 'swing');
       }
     },
 
@@ -817,11 +815,6 @@
       this.settings.post_step_callback(this.settings.$li.index(), this.settings.$current_tip);
       this.settings.post_ride_callback(this.settings.$li.index(), this.settings.$current_tip);
       $('.joyride-tip-guide').remove();
-    },
-
-    outerHTML : function (el) {
-      // support FireFox < 11
-      return el.outerHTML || new XMLSerializer().serializeToString(el);
     },
 
     off : function () {

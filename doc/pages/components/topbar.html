@@ -65,13 +65,13 @@ layout: doc/layouts/default.html
   </section>
 </nav>
 
----
+***
 
 ### Build With HTML Classes
 
 The top bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on many presentational classes to accomplish the styles and there's a lot happening in the JS. The top bar is hoverable by default but can be changed to a click event by adding a simple `data-options="is_hover:false"` to the `<nav>` element. [See an example below](#clickable).
 
-##### Basic Needs
+##<h3>Basic</h3> Needs
 
 The top bar has four main elements, three of which are needed for proper functionality: `ul.title-area`, a `ul class="right/left` element enclosed in a `section class="top-bar-section"`, and the `li.toggle-topbar` element that will expand the menu in the mobile layout.
 
@@ -95,7 +95,6 @@ When building your bar it is good to be aware of how many links you're going to 
     </li>
     <li class="toggle-topbar"><a href="#"></a></li>
   </ul>
-
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
@@ -192,7 +191,7 @@ You can now make the top bar clickable by adding a data-attribute to the nav ele
 ```
 {{/markdown}}
 
----
+***
 
 #### Available SCSS Variables
 
@@ -206,7 +205,7 @@ We do include SCSS variable to help you control some of the styles for the top b
 
 **Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
 
----
+***
 
 ### Using the JavaScript
 
@@ -221,12 +220,6 @@ Just add `foundation.topbar.js` AFTER the `foundation.js` file. Your markup shou
 <body>
 
   ...
-
-  <!--script>
-      document.write(\'<script src=/js/vendor/\'
-        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
-        + \'.js><\/script>\');
-    </script-->
 
   <script src="js/foundation/foundation.js"></script>
   <script src="js/foundation/foundation.topbar.js"></script>

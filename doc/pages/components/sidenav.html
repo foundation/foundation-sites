@@ -4,145 +4,57 @@ layout: doc/layouts/default.html
 
 # Side Nav
 
-#### Side nav, like you'll see on Foundation's main site, is useful for sections of either a site or a page.
+<h3 class="subheader">Side nav, like you'll see on Foundation's main site, is useful for sections of either a site or a page.</h3>
 
 {{> examples_sidenav_basic}}
 
 ***
 
-### How to Work With Side Nav
+<h3>Basic</h3>
 
-There are two ways to build a side nav in Foundation 5: either with our predefined HTML classes or our mixins. Building side nav using our predefined classes is simple, you'll just need to write a `<ul class="side-nav">` and fill it full of list items.
-
-The list item options:
-
-* `active` Will add style to denote the active link.
-* `divider` Creates a divider between list items.
+Using minimal markup we can create a side nav.
 
 <div class="row">
-  <div class="half-grid">
-    <h3>HTML</h3>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 {{> examples_sidenav_basic}}
 ```
 {{/markdown}}
   </div>
-  <div class="half-grid">
-    <h3>Rendered HTML</h3>
-{{> examples_sidenav_basic}}
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_sidenav_basic}}
   </div>
 </div>
 
-{{!-- TODO FIX PATH --}}
-For these styles to come across, make sure you have the default Foundation CSS package or that you've selected side nav from a custom package. These should be linked up following our default (HTML page structure)[../index.html].
+<h3>Advanced</h3>
+
+Additional classes can be added to your side nav to change its appearance.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_sidenav_advanced}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_sidenav_advanced}}
+  </div>
+</div>
 
 ***
 
-### Build with Mixins
+## Customize with Sass
 
-We've included SCSS mixins used to style side nav. To use the mixin, you'll need to have the [extension installed]({{relative absolute 'dist/docs/components/sass.html'}}) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_side-nav.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_side-nav.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+The side nav can be easily customized using our provided Sass variables
 
-{{#markdown}}
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/side-nav";
-```
-{{/markdown}}
-
-## Configuring the Side Nav
-
-You can build your side nav using our global mixin by including it on a custom class or ID in your own stylesheet. The mixin contains options for changing the background color, which also controls the border and text color. You'll also have the ability to change the font-size and padding. The rest of the defaults can be modified using the available variables. The global mixin looks like this:
-
-<div class="row">
-  <div class="half-grid">
-    <h3>SCSS</h3>
-{{#markdown}}
-```scss
-/* Using the default styles */
-.custom-sidenav-class { @include side-nav(); }
-
-/* Using the available options */
-.custom-sidenav-class {
-  @include side-nav(
-            $divider-color:$custom-mixin-color,
-            $font-size:1.2em,
-            $link-color:$custom-link-color;
-}
-```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <h3>HTML</h3>
-{{#markdown}}
-```html
-{{> examples_sidenav_mixin}}
-```
-{{/markdown}}
-  </div>
-</div>
-
-<div class="row">
-  <div class="half-grid">
-{{> examples_sidenav_mixin}}
-  </div>
-</div>
-
-{{!-- There are also three options you can customize on the fly when writing this mixin. These controls things like: divider color, text size and font color. --}}
-
-<h3>Options</h3>
-<div class="row">
-  <div class="half-grid">
-    <h5 class="subheader">Options</h5>
-{{#markdown}}
-```scss
-$divider-color: $side-nav-divider-color
-```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <h5 class="subheader">Description</h5>
-    <dl>
-      <dt>$divider-color</dt>
-      <dd>Border color of divider. Default: $side-nav-divider-color.</dd>
-    </dl>
-  </div>
-</div>
-
-<div class="row">
-  <div class="half-grid">
-{{#markdown}}
-```scss
-$font-size: $side-nav-font-size
-```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <dl>
-      <dt>$font-size</dt>
-      <dd>Font size of nav items. Default: $side-nav-font-size.</dd>
-    </dl>
-  </div>
-</div>
-
-<div class="row">
-  <div class="half-grid">
-{{#markdown}}
-```scss
-$link-color: $side-nav-link_color
-```
-{{/markdown}}
-  </div>
-  <div class="half-grid">
-    <dl>
-      <dt>$link-color</dt>
-      <dd>Color of navigation links. Default: $side-nav-link-color.</dd>
-    </dl>
-  </div>
-</div>
-
-## Default SCSS Variables
+<h4>SCSS</h4>
 
 {{#markdown}}
 ```scss
@@ -150,4 +62,60 @@ $link-color: $side-nav-link_color
 ```
 {{/markdown}}
 
-**Note:** `em-calc();`  is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+***
+
+## Semantic Markup with Sass
+
+You can create your own sub nav with our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `side-nav()` mixin to create your own sub nav, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-side-nav {
+  @include side-nav();
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_sidenav_mixin}}
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your side nav
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-sidenav-class {
+  @include side-nav(
+            // Border color of divider
+            $divider-color: '#ccc',
+            // Font size of nav items
+            $font-size:1.2em,
+            // Color of navigation links
+            $link-color:'#ccc';
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_sidenav_mixin}}
+```
+{{/markdown}}
+
+***

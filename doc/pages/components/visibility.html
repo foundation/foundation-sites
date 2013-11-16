@@ -1,0 +1,35 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Visibility Classes
+
+<h3 class="subheader"> Visibility classes provide some easy utility classes that let you hide or show elements based on a few device characteristics like screen size or orientation. This can be useful to turn off elements not well-suited to a situation,a mong other things.</h3>
+
+{{> examples_visibility_basic}}
+
+***
+
+### Show By Screen Size
+
+In this example we're using the <strong>show</strong> visibility classes to show certain strings based on the device you're currently viewing this page on. If a class conditions are met, the element will be shown; if not, it will be hidden.
+
+{{> examples_visibility_show}}
+
+### Hide By Screen Size
+
+This example shows the opposite: we're using the <strong>hide</strong> visibility classes to state which elements we should hide based on the device you're viewing this on. If the conditions are not met, the element will be shown.
+
+{{> examples_visibility_hide}}
+
+### Orientation Detection
+
+This is a very straightforward example, showing a string based on which orientation your screen is in. On mobile devices this will change when you rotate the device; on a desktop the orientation is almost always reported as landscape.
+
+{{> examples_visibility_orientation}}
+
+### Touch Detection
+
+Finally, there are visibility classes to hide or show content based on whether a device supports touch (as determined by Normalizr).
+
+{{> examples_visibility_touch}}

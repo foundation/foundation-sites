@@ -1,31 +1,30 @@
 <div class="sidebar">
-
+  <h5>Foundation Documentation</h5>
   <form>
     <!--  <label>Search Documentation</label> -->
-    <input type="search" placeholder="Search Docs: e.g. forms">
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
   </form>
 
   <nav>
     <ul class="side-nav">
       <li class="heading">Setup</li>
 
-      {{!-- Create a link to helper, look at documentation for passing arguments into handlebars --}}
-      {{!-- {{link_to "css"}} --}}
-
-      <li><a href="#css">CSS</a></li>
-      <li><a href="{{relative absolute 'dist/docs/components/sass.html'}}">Sass</a></li>
-      <li><a href="#rails">Rails</a></li>
+      <li><a href="{{relative absolute 'dist/docs/getting-started.html'}}">Getting Started</a></li>
+      <li><a href="{{relative absolute 'dist/docs/css.html'}}">CSS</a></li>
+      <li><a href="{{relative absolute 'dist/docs/sass.html'}}">Sass</a></li>
+      <li><a href="{{relative absolute 'dist/docs/applications.html'}}">Applications</a></li>
       <li><a href="{{relative absolute 'dist/docs/components/global.html'}}">Global Styles <span class="label">Sass</span></a></li>
       <li><a href="#upgrading">Upgrading</a></li>
 
       <li class="divider"></li>
       <li class="heading">Structure</li>
       <li><a href="#mediaQueries">Media Queries <span class="label">Sass</span></a></li>
+      <li><a href="{{relative absolute 'dist/docs/components/visibility.html'}}">Visibility</a></li>
       <li><a href="{{relative absolute 'dist/docs/components/grid.html'}}">Grid</a></li>
       <li><a href="{{relative absolute 'dist/docs/components/block_grid.html'}}">Block Grid</a></li>
       <li><a href="{{relative absolute 'dist/docs/components/thumbnails.html'}}">Thumbnails</a></li>
       <li><a href="#utilityClasses">Utility Classes</a></li>
-      <li><a href="#rtl">Right-to-Left Support</a></li>
+      <li><a href="{{relative absolute 'dist/docs/components/rtl.html'}}">Right-to-Left Support <span class="label">Sass</span></a></li>
 
       <li class="divider"></li>
       <li class="heading">Navigation</li>
@@ -73,11 +72,11 @@
 
       <li class="divider"></li>
       <li class="heading">Content</li>
-      <li><a href="{{relative absolute 'dist/docs/components/dropdowns.html'}}">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="{{relative absolute 'dist/docs/components/dropdown.html'}}">Dropdowns <span class="label">JS</span></a></li>
       <li><a href="{{relative absolute 'dist/docs/components/pricing_tables.html'}}">Pricing Tables</a></li>
       <li><a href="{{relative absolute 'dist/docs/components/progress_bars.html'}}">Progress Bars</a></li>
-      <li><a href="#accordion">Accordion <span class="label">JS</span></a></li>
-      <li><a href="#tabs">Tabs <span class="label">JS</span></a></li>
+      <li><a href="{{relative absolute 'dist/docs/components/tabs.html'}}">Accordion <span class="label">JS</span></a></li>
+      <li><a href="{{relative absolute 'dist/docs/components/accordion.html'}}">Tabs <span class="label">JS</span></a></li>
 
       <li class="divider"></li>
       <li class="heading">Support</li>

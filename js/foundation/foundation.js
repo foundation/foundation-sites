@@ -6,20 +6,6 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-// Accommodate running jQuery in noConflict() mode by
-// using an anonymous function to redefine the $ shorthand name.
-// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
-var libFuncName = null;
-
-if (typeof jQuery === "undefined" &&
-    typeof $ === "function") {
-  libFuncName = $;
-} else if (typeof jQuery === "function") {
-  libFuncName = jQuery;
-} else {
-  throw new TypeError();
-}
-
 (function ($, window, document, undefined) {
   'use strict';
 
@@ -41,12 +27,22 @@ if (typeof jQuery === "undefined" &&
     FastClick.attach(document.body);
   }
 
-  /*
-    matchMedia() polyfill - Test a CSS media 
-    type/query in JS. Authors & copyright (c) 2012: 
-    Scott Jehl, Paul Irish, Nicholas Zakas. 
-    Dual MIT/BSD license
+  // private Fast Selector wrapper,
+  // returns jQuery object. Only use where
+  // getElementById is not available.
+  var S = function (selector, context) {
+    if (typeof selector === 'string') {
+      if (context) {
+        return $(context.querySelectorAll(selector));
+      }
 
+      return $(document.querySelectorAll(selector));
+    }
+
+    return $(selector, context);
+  };
+
+  /*
     https://github.com/paulirish/matchMedia.js
   */
 
@@ -83,17 +79,95 @@ if (typeof jQuery === "undefined" &&
 
   }( document ));
 
+  /*
+   * jquery.requestAnimationFrame
+   * https://github.com/gnarf37/jquery-requestAnimationFrame
+   * Requires jQuery 1.8+
+   *
+   * Copyright (c) 2012 Corey Frang
+   * Licensed under the MIT license.
+   */
+
+  (function( $ ) {
+
+  // requestAnimationFrame polyfill adapted from Erik Möller
+  // fixes from Paul Irish and Tino Zijdel
+  // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+  // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+
+  var animating,
+    lastTime = 0,
+    vendors = ['webkit', 'moz'],
+    requestAnimationFrame = window.requestAnimationFrame,
+    cancelAnimationFrame = window.cancelAnimationFrame;
+
+  for(; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
+    requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
+    cancelAnimationFrame = cancelAnimationFrame ||
+      window[ vendors[lastTime] + "CancelAnimationFrame" ] || 
+      window[ vendors[lastTime] + "CancelRequestAnimationFrame" ];
+  }
+
+  function raf() {
+    if ( animating ) {
+      requestAnimationFrame( raf );
+      jQuery.fx.tick();
+    }
+  }
+
+  if ( requestAnimationFrame ) {
+    // use rAF
+    window.requestAnimationFrame = requestAnimationFrame;
+    window.cancelAnimationFrame = cancelAnimationFrame;
+    jQuery.fx.timer = function( timer ) {
+      if ( timer() && jQuery.timers.push( timer ) && !animating ) {
+        animating = true;
+        raf();
+      }
+    };
+
+    jQuery.fx.stop = function() {
+      animating = false;
+    };
+  } else {
+    // polyfill
+    window.requestAnimationFrame = function( callback, element ) {
+      var currTime = new Date().getTime(),
+        timeToCall = Math.max( 0, 16 - ( currTime - lastTime ) ),
+        id = window.setTimeout( function() {
+          callback( currTime + timeToCall );
+        }, timeToCall );
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+
+    window.cancelAnimationFrame = function(id) {
+      clearTimeout(id);
+    };
+      
+  }
+
+  }( jQuery ));
+
+
+  function removeQuotes (string) {
+    if (typeof string === 'string' || string instanceof String) {
+      string = string.replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '');
+    }
+
+    return string;
+  }
+
   window.Foundation = {
     name : 'Foundation',
 
     version : '5.0.0',
 
-    cache : {},
-
     media_queries : {
-      small : $('.foundation-mq-small').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
-      medium : $('.foundation-mq-medium').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
-      large : $('.foundation-mq-large').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '')
+      small : S('.foundation-mq-small').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      medium : S('.foundation-mq-medium').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      large : S('.foundation-mq-large').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
@@ -104,7 +178,7 @@ if (typeof jQuery === "undefined" &&
           responses = [];
 
       // check RTL
-      this.rtl = /rtl/i.test($('html').attr('dir'));
+      this.rtl = /rtl/i.test(S('html').attr('dir'));
 
       // set foundation global scope
       this.scope = scope || this.scope;
@@ -141,6 +215,7 @@ if (typeof jQuery === "undefined" &&
       lib['data_options'] = this.lib_methods.data_options;
       lib['globals_bound'] = this.lib_methods.globals_bound;
       lib['bindings'] = this.lib_methods.bindings;
+      lib['S'] = S;
       lib.rtl = this.rtl;
     },
 
@@ -174,8 +249,10 @@ if (typeof jQuery === "undefined" &&
     lib_methods : {
       throttle : function(fun, delay) {
         var timer = null;
+
         return function () {
           var context = this, args = arguments;
+
           clearTimeout(timer);
           timer = setTimeout(function () {
             fun.apply(context, args);
@@ -236,6 +313,13 @@ if (typeof jQuery === "undefined" &&
         return true;
       },
 
+      register_media : function(media, media_class) {
+        if(Foundation.media_queries[media] === undefined) {
+          $('head').append('<meta class="' + media_class + '">');
+          Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
+        }
+      },
+
       addCustomRule : function(rule, media) {
         if(media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
@@ -248,22 +332,51 @@ if (typeof jQuery === "undefined" &&
         }
       },
 
+      loaded : function (image, callback) {
+        function loaded () {
+          callback(image[0]);
+        }
+
+        function bindLoad () {
+          this.one('load', loaded);
+
+          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+            var src = this.attr( 'src' ),
+                param = src.match( /\?/ ) ? '&' : '?';
+
+            param += 'random=' + (new Date()).getTime();
+            this.attr('src', src + param);
+          }
+        }
+
+        if (!image.attr('src')) {
+          loaded();
+          return;
+        }
+
+        if (image[0].complete || image[0].readyState === 4) {
+          loaded();
+        } else {
+          bindLoad.call(image);
+        }
+      },
+
       bindings : function (method, options) {
         var self = this;
 
-        if ($(this.scope).is('[data-' + this.name +']')) {
-          if (!$(this).data(this.name + '-init')) {
+        if (S(this.scope).is('[data-' + this.name +']')) {
+          if (!S(this).data(this.name + '-init')) {
             this.events(this.scope);
           }
 
-          $(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options($(this.scope))));
+          S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
         } else {
-          $('[data-' + this.name + ']', this.scope).each(function () {
-            if (!$(this).data(self.name + '-init')) {
+          S('[data-' + this.name + ']', this.scope).each(function () {
+            if (!S(this).data(self.name + '-init')) {
               self.events(this);
             }
 
-            $(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options($(this))));
+            S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
           });
         }
 

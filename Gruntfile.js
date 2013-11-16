@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           flatten: false,
           assets: 'dist/docs/assets',
           data: ['doc/data/*.json'],
-          partials: ['doc/includes/**/*.{html,scss}'],
+          partials: ['doc/includes/**/*.{html,scss}', 'doc/includes/**/**/*.{html,scss}'],
           helpers: ['doc/helpers/*.js'],
           layout: 'doc/layouts/default.html'
         },
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.js': '<%= foundation.js %>',
-          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js', 'doc/assets/js/foundation.migrate.js']
         }
       }
     },
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>']
-        }        
+        }
       }
     },
 
@@ -141,15 +141,18 @@ module.exports = function(grunt) {
 
       styles: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
-        tasks: ['sass']
+        tasks: ['sass'],
+        options: {livereload:true}
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
-        tasks: ['copy', 'concat', 'uglify']
+        tasks: ['copy', 'concat', 'uglify'],
+        options: {livereload:true}
       },
       dist_docs: {
         files: ['doc/{includes,layouts,pages}/**/*.html'],
-        tasks: ['assemble:dist_docs']
+        tasks: ['assemble:dist_docs'],
+        options: {livereload:true}
       },
       dist_download: {
         files: ['index.html'],
@@ -157,7 +160,8 @@ module.exports = function(grunt) {
       },
       assets: {
         files: ['doc/assets/{img}/**/*'],
-        tasks: ['copy']
+        tasks: ['copy'],
+        options: {livereload:true}
       }
     },
 
@@ -172,7 +176,7 @@ module.exports = function(grunt) {
       }
     }
   });
-  
+
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -186,7 +190,8 @@ module.exports = function(grunt) {
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
 
-  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'uglify', 'copy', 'assemble'])
+  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy'])
+  grunt.registerTask('compile', ['compile:assets', 'assemble'])
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
   grunt.registerTask('travis', ['compile', 'karma:continuous']);

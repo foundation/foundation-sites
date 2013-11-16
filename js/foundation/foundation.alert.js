@@ -23,7 +23,7 @@
 
         e.preventDefault();
         alertBox[settings.animation](settings.speed, function () {
-          $(this).remove();
+          $(this).trigger('closed').remove();
           settings.callback();
         });
       });
