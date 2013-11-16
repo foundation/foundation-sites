@@ -12,7 +12,7 @@ layout: doc/layouts/default.html
 
 Start by adding an element with a class of `row`, forming your block element. Then add divs with a `columns` class within that row with and specify the widths of those inline elements with the `small-#`, `medium-#`, and `large-#` classes.
 
-* **Foundation uses border-box**: Borders and padding do not affect the overall width of the columns, making the math dead-simple. 
+* **Foundation uses border-box**: Borders and padding do not affect the overall width of the columns, making the math dead-simple.
 * **Foundation is mobile-first**. Code for small first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 
 <h4>HTML</h4>
@@ -111,7 +111,7 @@ The grid can be easily customized with the Sass variables provided in the `_sett
 
 <h4>SCSS</h4>
 
-{{> examples_grid_variables.scss}}
+{{> examples_grid_variables}}
 
 
 <h3>Basic</h3>
@@ -121,7 +121,7 @@ You can use the `grid-row()` and `grid-column()` mixins to create your own rows 
 <div class="row">
   <div class="large-6 columns">
     <h4>SCSS</h4>
-{{> examples_grid_row_mixin.scss}}
+{{> examples_grid_row_mixin}}
   </div>
   <div class="large-6 columns">
     <h4>HTML</h4>
@@ -137,15 +137,13 @@ You can further customize your grid columns using the provided options in the `g
 
 <h4>SCSS</h4>
 
-{{> examples_grid_row_options.scss}}
+{{> examples_grid_row_options}}
 
 ##### Column Mixin Options
 
 <h4>SCSS</h4>
 
-```scss
-{{> examples_grid_column_mixin.scss}}
-```
+{{> examples_grid_column_mixin}}
 
 ***
 

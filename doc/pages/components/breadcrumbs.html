@@ -60,7 +60,16 @@ Include the `crumb-container()` mixin to style your own breadcrumbs container wi
 <div class="row">
   <div class="large-6 columns">
     <h4>SCSS</h4>
-    {{> examples_breadcrumbs_mixin.scss}}
+{{#markdown}}
+```scss
+.your-class-name {
+  @include crumb-container;
+  li {
+    @include crumbs;
+  }
+}
+```
+{{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>HTML</h4>
