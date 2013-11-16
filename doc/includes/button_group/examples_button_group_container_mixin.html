@@ -1,13 +1,13 @@
 {{#markdown}}
 ```scss
-.your-class-name { @include button-group-container;
-  .your-button-class { @include button; }
+.custom-button-container-class {
+  @include button-group-container(
+    /* we use this to add styles for a button group container. Default: true */
+    $styles:true,
+    /* We use this if we want the button group container floated. It relies on the $default-float scss variable. Default: false;
+    $float:false
+  );
+  .custom-button-class { @include button; }
 }
 ```
 {{/markdown}}
-
-<ul class="button-group-docs">
-  <li><a href="#" class="button-class">Button 1</a></li>
-  <li><a href="#" class="button-class">Button 2</a></li>
-  <li><a href="#" class="button-class">Button 3</a></li>
-</ul>
