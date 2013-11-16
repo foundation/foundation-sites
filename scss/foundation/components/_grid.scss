@@ -84,7 +84,7 @@ $total-columns: 12 !default;
   @if $columns {
     width: gridCalc($columns, $total-columns);
 
-    // If last column, float naturally instead of with with text direction
+    // If last column, float naturally instead of with text direction
     @if $last-column {
       float: left;
       [dir="ltr"] & { float: left; }
