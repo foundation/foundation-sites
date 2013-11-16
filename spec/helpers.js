@@ -2,8 +2,9 @@ function when(size, testFunc) {
   return function() {
     var runFunc = false;
 
-    if(size === 'tiny') {
-      if(!matchMedia(Foundation.media_queries['small']).matches) {
+    console.log(Foundation.media_queries['small']);
+    if(size === 'small') {
+      if(!matchMedia(Foundation.media_queries['medium']).matches) {
         runFunc = true;
       }
     } else if(matchMedia(Foundation.media_queries[size]).matches) {
@@ -14,7 +15,7 @@ function when(size, testFunc) {
       testFunc.apply(this);
     } else {
       // Uncomment to verify skipping correct tests for media queries...
-      //console.log('[' + document.width.toString() + 'px]: Skipping ' + jasmine.getEnv().currentSpec.getFullName());
+      console.log('[' + $(document).width().toString() + 'px]: Skipping ' + jasmine.getEnv().currentSpec.getFullName());
     }
   }
 }
