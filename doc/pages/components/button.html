@@ -72,17 +72,16 @@ You can use the `button()` mixin like so:
 {{> examples_buttons_default_mixin}}
   </div>
   <div class="large-6 columns">
-{{> examples_buttons_basic}}
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<a href="#" class="custom-button-class">...</a>
+```
+{{/markdown}}
   </div>
 </div>
 
-{{#markdown}}
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/buttons";
-```
-{{/markdown}}
+
 
 If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
 

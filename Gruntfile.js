@@ -143,8 +143,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
 
 
-  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy'])
-  grunt.registerTask('compile', ['compile:assets', 'assemble'])
+  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('compile', ['compile:assets', 'assemble']);
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
 };
