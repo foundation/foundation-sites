@@ -25,8 +25,8 @@ $total-columns: 12 !default;
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
     width: auto;
-    margin-#{$default-float}: -($column-gutter/2);
-    margin-#{$opposite-direction}: -($column-gutter/2);
+    margin-left: -($column-gutter/2);
+    margin-right: -($column-gutter/2);
     margin-top: 0;
     margin-bottom: 0;
     max-width: none;
@@ -49,8 +49,8 @@ $total-columns: 12 !default;
   // use @include grid-row; to use a container row
   @else {
     width: 100%;
-    margin-#{$default-float}: auto;
-    margin-#{$opposite-direction}: auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
     max-width: $row-width;
@@ -84,27 +84,49 @@ $total-columns: 12 !default;
   @if $columns {
     width: gridCalc($columns, $total-columns);
 
-    // If last column, float naturally instead of to the right
-    @if $last-column { float: $opposite-direction; }
+    // If last column, float naturally instead of with text direction
+    @if $last-column {
+      float: left;
+      [dir="ltr"] & { float: left; }
+      [dir="rtl"] & { float: right; }
+      &[dir="ltr"] { float: left; }
+      &[dir="rtl"] { float: right; }
+    }
   }
 
   // If offset, calculate appropriate margins
-  @if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
+  @if $offset {
+    margin-left: gridCalc($offset, $total-columns);
+    [dir=ltr] & { margin-left: gridCalc($offset, $total-columns); }
+    [dir=rtl] & { margin-right: gridCalc($offset, $total-columns); }
+    &[dir=ltr] { margin-left: gridCalc($offset, $total-columns); }
+    &[dir=rtl] { margin-right: gridCalc($offset, $total-columns); }
+  }
 
-  // Source Ordering, adds left/right depending on which you use.
-  @if $push { #{$default-float}: gridCalc($push, $total-columns); #{$opposite-direction}: auto; }
-  @if $pull { #{$opposite-direction}: gridCalc($pull, $total-columns); #{$default-float}: auto; }
+  // Source Ordering, adds left/right depending on directionality.
+  @if $push {
+    left: gridCalc($push, $total-columns); right: auto;
+    [dir=ltr] & { left: gridCalc($push, $total-columns); right: auto; }
+    [dir=rtl] & { right: gridCalc($push, $total-columns); left: auto; }
+    &[dir=ltr] { left: gridCalc($push, $total-columns); right: auto; }
+    &[dir=rtl] { right: gridCalc($push, $total-columns); left: auto; }
+  }
 
   // If centered, get rid of float and add appropriate margins
   @if $center {
-    margin-#{$default-float}: auto;
-    margin-#{$opposite-direction}: auto;
+    margin-left: auto;
+    margin-right: auto;
     float: none !important;
   }
 
   @if $float {
-    @if $float == left or $float == true { float: $default-float; }
-    @else if $float == right { float: $opposite-direction; }
+    @if $float == true {
+      float: left;
+      [dir="ltr"] & { float: left; }
+      [dir="rtl"] & { float: right; }
+      &[dir="ltr"] { float: left; }
+      &[dir="rtl"] { float: right; }
+    }
     @else { float: none; }
   }
 
@@ -144,8 +166,21 @@ $total-columns: 12 !default;
       .small-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
     }
 
-    [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
-    [class*="column"] + [class*="column"].end { float: $default-float; }
+      [class*="column"] + [class*="column"]:last-child {
+        float: right;
+        [dir=ltr] & { float: right; }
+        [dir=rtl] & { float: left; }
+        &[dir=ltr] { float: right; }
+        &[dir=rtl] { float: left; }
+      }
+
+      [class*="column"] + [class*="column"].end {
+        float: left;
+        [dir=ltr] & { float: left; }
+        [dir=rtl] & { float: right; }
+        &[dir=ltr] { float: left; }
+        &[dir=rtl] { float: right; }
+      }
 
     .column.small-centered,
     .columns.small-centered { @include grid-column($center:true, $collapse:null, $float:false); }
@@ -172,14 +207,22 @@ $total-columns: 12 !default;
 
     .column.large-uncentered,
     .columns.large-uncentered {
-      margin-#{$default-float}: 0;
-      margin-#{$opposite-direction}: 0;
-      float: $default-float !important;
+      margin-left: 0;
+      margin-right: 0;
+      float: left !important;
+      [dir=ltr] & { float: left !important; }
+      [dir=rtl] & { float: right !important; }
+      &[dir=ltr] { float: left !important; }
+      &[dir=rtl] { float: right !important; }
     }
 
     .column.large-uncentered.opposite,
     .columns.large-uncentered.opposite {
-      float: $opposite-direction !important;
+      float: right !important;
+      [dir=ltr] & { float: right !important; }
+      [dir=rtl] & { float: left !important; }
+      &[dir=ltr] { float: right !important; }
+      &[dir=rtl] { float: left !important; }
     }
 
 
