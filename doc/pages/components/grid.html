@@ -121,7 +121,16 @@ You can use the `grid-row()` and `grid-column()` mixins to create your own rows 
 <div class="row">
   <div class="large-6 columns">
     <h4>SCSS</h4>
-{{> examples_grid_row_mixin}}
+{{#markdown}}
+```scss
+.custom-row-class {
+  @include grid-row();
+  .custom-column-class {
+    @include grid-column(12);
+  }
+}
+```
+{{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>HTML</h4>
