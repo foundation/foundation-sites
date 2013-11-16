@@ -86,6 +86,7 @@ $total-columns: 12 !default;
 
     // If last column, float naturally instead of with with text direction
     @if $last-column {
+      float: left;
       [dir="ltr"] & { float: left; }
       [dir="rtl"] & { float: right; }
       &[dir="ltr"] { float: left; }
@@ -95,6 +96,7 @@ $total-columns: 12 !default;
 
   // If offset, calculate appropriate margins
   @if $offset {
+    margin-left: gridCalc($offset, $total-columns);
     [dir=ltr] & { margin-left: gridCalc($offset, $total-columns); }
     [dir=rtl] & { margin-right: gridCalc($offset, $total-columns); }
     &[dir=ltr] { margin-left: gridCalc($offset, $total-columns); }
@@ -103,6 +105,7 @@ $total-columns: 12 !default;
 
   // Source Ordering, adds left/right depending on directionality.
   @if $push {
+    left: gridCalc($push, $total-columns); right: auto;
     [dir=ltr] & { left: gridCalc($push, $total-columns); right: auto; }
     [dir=rtl] & { right: gridCalc($push, $total-columns); left: auto; }
     &[dir=ltr] { left: gridCalc($push, $total-columns); right: auto; }
@@ -118,6 +121,7 @@ $total-columns: 12 !default;
 
   @if $float {
     @if $float == true {
+      float: left;
       [dir="ltr"] & { float: left; }
       [dir="rtl"] & { float: right; }
       &[dir="ltr"] { float: left; }
@@ -163,6 +167,7 @@ $total-columns: 12 !default;
     }
 
       [class*="column"] + [class*="column"]:last-child {
+        float: right;
         [dir=ltr] & { float: right; }
         [dir=rtl] & { float: left; }
         &[dir=ltr] { float: right; }
@@ -170,6 +175,7 @@ $total-columns: 12 !default;
       }
 
       [class*="column"] + [class*="column"].end {
+        float: left;
         [dir=ltr] & { float: left; }
         [dir=rtl] & { float: right; }
         &[dir=ltr] { float: left; }
@@ -203,6 +209,7 @@ $total-columns: 12 !default;
     .columns.large-uncentered {
       margin-left: 0;
       margin-right: 0;
+      float: left !important;
       [dir=ltr] & { float: left !important; }
       [dir=rtl] & { float: right !important; }
       &[dir=ltr] { float: left !important; }
@@ -211,6 +218,7 @@ $total-columns: 12 !default;
 
     .column.large-uncentered.opposite,
     .columns.large-uncentered.opposite {
+      float: right !important;
       [dir=ltr] & { float: right !important; }
       [dir=rtl] & { float: left !important; }
       &[dir=ltr] { float: right !important; }
