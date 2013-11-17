@@ -1,7 +1,6 @@
 function when(size, testFunc) {
   return function() {
     var runFunc = false;
-
     if(size === 'tiny') {
       if(!matchMedia(Foundation.media_queries['small']).matches) {
         runFunc = true;
@@ -14,7 +13,7 @@ function when(size, testFunc) {
       testFunc.apply(this);
     } else {
       // Uncomment to verify skipping correct tests for media queries...
-      //console.log('[' + document.width.toString() + 'px]: Skipping ' + jasmine.getEnv().currentSpec.getFullName());
+      //console.log('[' + $(document).width().toString() + 'px]: Skipping ' + jasmine.getEnv().currentSpec.getFullName());
     }
   }
 }
@@ -33,4 +32,9 @@ beforeEach(function() {
   $.ajax({ url: '/base/test/stylesheets/foundation.css', cache: true, async: false, success: function(data) {
     $('#foundation-style').append(data);
   }});
+});
+
+afterEach(function() {
+  $(document).off('.fndtn');
+  $(window).off('.fndtn');
 });

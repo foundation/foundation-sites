@@ -169,7 +169,16 @@
             li.parents('li.hover')
               .removeClass('hover');
           } else {
-            li.addClass('hover');
+            li.parents('li.hover')
+              .siblings('li.hover')
+              .removeClass('hover')
+              .find('li')
+              .removeClass('hover');
+
+            li.addClass('hover')
+              .siblings('li.hover')
+              .removeClass('hover');
+              
             if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
               e.preventDefault();
             }
