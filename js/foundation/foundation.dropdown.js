@@ -148,8 +148,7 @@
     },
 
     small : function () {
-      console.log(Foundation.media_queries.small)
-      return !matchMedia(Foundation.media_queries.small).matches;
+      return matchMedia(Foundation.media_queries.small).matches;
     },
 
     off: function () {
