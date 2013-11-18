@@ -4,56 +4,105 @@ layout: doc/layouts/default.html
 
 # Flex Video
 
-#### If you're embedding a video from YouTube, Vimeo, or another site that uses iframe, embed or object elements, you can wrap your video in `div.flex-video` to create an intrinsic ratio that will properly scale your video on any device.
+<h3 class="subheader">If you're embedding a video from YouTube, Vimeo, or another site that uses iframe, embed or object elements, you can wrap your video in `div.flex-video` to create an intrinsic ratio that will properly scale your video on any device.</h3>
 
-{{> examples_flex_video_basic}}
-
-***
-
-### Build With Predefined HTML Classes
-
-here are two ways to build flex-video containers in Foundation 4: with our predefined HTML classes or with our mixins. Building flex-video containers using our classes is simple, you'll just need to create a `<div class="flex-video">` and apply the classes you want to style it appropriately.
-
-The available class options:
-
-* `widescreen`: Will give the player a widescreen aspect ratio.
-* `vimeo`: This will ensure that we don't add extra padding since Vimeo has controls within the player, itself.
-
-{{> examples_flex_video_basic_rendered}}
-
-For these styles to come across, make sure you have the default Foundation CSS package or that you've selected flex-video from a custom package. These should be linked up following our default [HTML page structure](../index.html#basicHTMLMarkup).
+<div class="row">
+  <div class="large-6 columns">
+    <div class="flex-video">
+      <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="flex-video widescreen vimeo">
+      <iframe src="http://player.vimeo.com/video/21762736" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>
+  </div>
+</div>
 
 ***
 
-### Build with our Mixins
+<h3>Basic</h3>
 
-We've included SCSS mixins used to style labels. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_flex-video.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_flex-video.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+Using minimal markup you can create a flex video.
 
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/flex-video";
+```html
+<div class="flex-video">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+</div>
 ```
 {{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="flex-video">
+      <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
-The markup is just like we showed you above, but you can apply the mixin to your own custom class or ID.
+<h3>Advanced</h3>
 
-{{> examples_flex_video_mixin}}
+Additional classes can be added to your flex video to change it's appearance.
 
-##### Quick Mixin
-
-You can build your flex-video containers using our global mixin by including it on your custom class or ID in your own stylesheet. The defaults can be modified using the available variables. The global mixin looks like this:
-
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
-```scss
-/* Using the default styles */
-.your-class-name { @include flex-video-container; }
+```html
+<div class="flex-video widescreen vimeo">
+  <iframe src="http://player.vimeo.com/video/21762736" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
 ```
 {{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="flex-video widescreen vimeo">
+      <iframe src="http://player.vimeo.com/video/21762736" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>
+  </div>
+</div>
 
-##### Default SCSS Variables
+***
+
+## Customize with Sass
+
+Flex video can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
 
 {{> examples_flex_video_variables}}
 
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+***
+
+## Semantic Markup with Sass
+
+You can create your own flex video using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `flex-video-container()` mixin to create your own flex-video container, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-flex-video-class {
+  @include flex-video-container();
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<div class="custom-flex-video-class">
+  <iframe src="http://player.vimeo.com/video/21762736" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
+```
+{{/markdown}}
