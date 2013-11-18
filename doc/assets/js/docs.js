@@ -65,6 +65,7 @@ var components = [
 
   { value: 'Buttons', data: 'buttons.html' },
   { value: 'Button Groups', data: 'button_groups.html' },
+  { value: 'Button Bar', data: 'button_groups.html' },
   { value: 'Split Buttons', data: 'split_buttons.html' },
   { value: 'Dropdown Buttons', data: 'dropdown_buttons.html' },
 

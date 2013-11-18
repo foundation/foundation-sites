@@ -44,7 +44,7 @@ To center your wrap your `ul.pagination` with an element that has the `.paginati
 ```html
 {{> examples_pagination_centered}}
 ```
-{{/markdown}} 
+{{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
@@ -72,11 +72,7 @@ Pagination styles can be easily customized with the Sass variables provided in t
 
 <h4>SCSS</h4>
 
-{{#markdown}}
-```scss
-{{> examples_pagination_variables.scss}}
-```
-{{/markdown}}
+{{> examples_pagination_variables}}
 
 ## Semantic Markup with Sass
 
@@ -114,7 +110,8 @@ You can center your pagination by wrapping your pagination element in another co
 <h4>SCSS</h4>
 {{#markdown}}
 ```scss
-{{> examples_pagination_centered_mixin.scss}}
+.container-class-name { @include pagination-container(true); }
+.your-class-name { @include pagination($centered, $base-styles); }
 ```
 {{/markdown}}
 

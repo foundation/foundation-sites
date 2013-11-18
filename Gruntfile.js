@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           flatten: false,
           assets: 'dist/docs/assets',
           data: ['doc/data/*.json'],
-          partials: ['doc/includes/**/*.{html,scss}', 'doc/includes/**/**/*.{html,scss}'],
+          partials: ['doc/includes/**/*.{html,scss}'],
           helpers: ['doc/helpers/*.js'],
           layout: 'doc/layouts/default.html'
         },
@@ -161,8 +161,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
 
 
-  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy'])
-  grunt.registerTask('compile', ['compile:assets', 'assemble'])
+  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('compile', ['compile:assets', 'assemble']);
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
   grunt.registerTask('deploy', ['compile', 'rsync:dist']);
