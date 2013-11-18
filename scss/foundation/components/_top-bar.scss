@@ -264,7 +264,7 @@ meta.foundation-mq-topbar {
     }
 
     ul li {
-      & > a {
+      a {
         display: block;
         width: 100%;
         color: $topbar-link-color;
