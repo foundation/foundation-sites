@@ -99,6 +99,7 @@ module.exports = function(grunt) {
     clean: ['dist/'],
 
     watch: {
+      grunt: { files: ['Gruntfile.js'] },
       styles: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
@@ -134,7 +135,20 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
         ]
       }
+    },
+
+    rsync: {
+      dist: {
+        options: {
+          args: ["--verbose"],
+          src: "./dist/docs/",
+          recursive: true,
+          dest: "/home/deployer/sites/foundation-docs/current",
+          host: "deployer@foundation5.zurb.com"
+        }
+      }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-sass');
@@ -144,6 +158,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
 
 
@@ -151,4 +166,5 @@ module.exports = function(grunt) {
   grunt.registerTask('compile', ['compile:assets', 'assemble']);
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
+  grunt.registerTask('deploy', ['compile', 'rsync:dist']);
 };

@@ -4,76 +4,108 @@ layout: doc/layouts/default.html
 
 # Split Buttons
 
-#### We've simplified our split buttons by getting rid of the dedicated dropdown associated with them. Instead, you'll use our [new dropdown plugin](#) to attach a dropdown to the button style of your choice.
+<h3 class="subheader">
+  We've simplified our split buttons by getting rid of the dedicated dropdown associated with them. Instead, you'll use our [new dropdown plugin](#) to attach a dropdown to the button style of your choice.
+</h3>
 
 {{> examples_split_button_basic}}
 
 ***
 
-### Build With Predefined HTML Classes
+<h3>Basic</h3>
 
-There are two ways to build buttons in Foundation 4: with our predefined HTML classes or our structure and mixins. Building buttons using our predefined classes is simple, you'll need an `<a>`, `<button>` or `<input>` with a class of `.button.split`. This will create a default medium button. You can also use size, color and radius classes to control more of the style.
+Using minimal markup you can create a split button.
 
-The classes options:
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_split_button_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a href="#" class="button split">Split Button <span data-dropdown="drop"></span></a><br>
+    <ul id="drop" class="f-dropdown" data-dropdown-content>
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
+{{!-- {{> examples_split_button_basic}} --}}
+  </div>
+</div>
 
-* The size classes include: `.tiny, .small, .medium` or `.large`
-* The color classes include: `.secondary, .alert` or `.success`
-* The radius classes include: `.radius` or `.round`.
+<h3>Advanced</h3>
 
-{{> examples_split_button_presentation}}
+Additional classes can be added to your split buttons to change it's appearance.
 
-You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the **default Foundation CSS package** or that you've selected **split buttons from a custom package**. These should be linked up following our default [HTML page structure](#getting-started).
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_split_button_advanced_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML Rendered</h4>
+{{> examples_split_button_advanced}}
+  </div>
+</div>
 
 ***
 
-### Build with Mixins
+## Customize with Sass
 
-We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the [extension installed](#extention-install) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_buttons.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_split-buttons.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_split-buttons.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+Split buttons can be easily customized using our provided Sass variables.
 
-{{#markdown}}
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/buttons";
-@import "foundation/components/split-buttons";
-```
-{{/markdown}}
+<h4>SCSS</h4>
 
-If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
+{{> examples_split_button_variables}}
 
-{{#markdown}}
-```html
-<a href="#" class="your-class-name">Split Button Text <span></span></a>
-```
-{{/markdown}}
+***
 
-##### Quick Mixin
+## Semantic Markup with Sass
 
-You can quickly build an entire split buttons using our global mixin by including it on your custom class or ID in your stylesheet. The global mixin will create the necessary style for the button. The global mixin looks like this:
+You can create your own split buttons using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `split-button()` mixin to create your own split button, like so:
+
+<h4>SCSS</h4>
 
 {{#markdown}}
 ```scss
-/* Using the default styles */
-.your-class-name {
-  @include button;
-  @include split-button;
+.custom-split-button-class {
+  @include split-button();
 }
 ```
 {{/markdown}}
 
-<a href="" class="split button">Default Split Button<span data-dropdown="drop5"></span></a>
-<ul id="drop5" class="f-dropdown" data-dropdown-content>
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
+<h4>HTML</h4>
 
-There are also **four options** you can customize on the fly when writing this mixin. These control things like: padding size, pip color, border color and base styles. Setting any of these options to **false** will not include the styles.
+{{#markdown}}
+```html
+<a href="#" class="custom-split-button-class">Split Button Text <span></span></a>
+```
+{{/markdown}}
 
-{{> examples_split_button_mixin}}
+<h3>Advanced</h3>
 
-##### Default SCSS Variables
+You can further customize your alert boxes using the provided options in the `split-button` mixin:
 
-{{> examples_split_button_variables}}
+<h4>SCSS</h4>
 
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+{{#markdown}}
+```scss
+.custom-split-button-class {
+  @include split-button(
+    // Type of padding to apply. Default: medium.
+    // Options: tiny, small, medium, large.
+    $padding: medium,
+    // Color of the triangle. Default: $split-button-pip-color.
+    $pip-color: orange,
+    // Border color of button divider. Default: $primary-color.
+    $span-border: pink,
+    // Apply base style to split button. Default: true.
+    $base-style: true
+  );
+}
+```
+{{/markdown}}
