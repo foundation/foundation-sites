@@ -112,7 +112,7 @@ module.exports = function(grunt) {
       },
       dist_docs: {
         files: ['doc/{includes,layouts,pages}/**/*.html'],
-        tasks: ['assemble:dist_docs'],
+        tasks: ['newer:assemble'],
         options: {livereload:true}
       },
       dist_download: {
@@ -160,6 +160,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-newer');
 
 
   grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);

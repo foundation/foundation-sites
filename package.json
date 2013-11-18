@@ -13,7 +13,8 @@
     "highlight.js": "~7.3.0",
     "grunt-contrib-uglify": "~0.2.5",
     "grunt-contrib-compress": "~0.5.2",
-    "grunt-rsync": "~0.2.1"
+    "grunt-rsync": "~0.2.1",
+    "grunt-newer": "~0.6.0"
   },
   "licenses": [
     {
