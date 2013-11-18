@@ -6,7 +6,7 @@
 $include-html-joyride-classes: $include-html-classes !default;
 
 // Controlling default Joyride styles
-$joyride-tip-bg: rgb(0,0,0) !default;
+$joyride-tip-bg: red !default;
 $joyride-tip-default-width: 300px !default;
 $joyride-tip-padding: em-calc(18 20 24) !default;
 $joyride-tip-border: solid 1px #555 !default;
@@ -79,7 +79,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
         #{$default-float}: $joyride-tip-position-offset;
         width: 0;
         height: 0;
-        border: inset $joyride-tip-nub-size;
+        border: $joyride-tip-nub-size solid $joyride-tip-bg;
 
         &.top {
           border-top-style: solid;

@@ -4,9 +4,9 @@ layout: doc/layouts/default.html
 
 # Topbar
 
-#### The Foundation Top Bar gives you a great way to display a complex navigation bar on small or large screens.
+<h3 class="subheader">The Foundation Top Bar gives you a great way to display a complex navigation bar on small, medium or large screens.</h3>
 
-<nav class="top-bar">
+<nav class="top-bar" data-top-bar>
   <ul class="title-area">
     <!-- Title Area -->
     <li class="name">
@@ -71,11 +71,47 @@ layout: doc/layouts/default.html
 
 The top bar is a pretty complex piece of magical UI goodness, which makes it really difficult to create a mixin from it. We rely on many presentational classes to accomplish the styles and there's a lot happening in the JS. The top bar is hoverable by default but can be changed to a click event by adding a simple `data-options="is_hover:false"` to the `<nav>` element. [See an example below](#clickable).
 
-##<h3>Basic</h3> Needs
+<div class="row">
+  <div class="large-12 columns">
+    <nav class="top-bar" data-top-bar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">My Site</a></h1>
+        </li>
+      </ul>
+        
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active"><a href="#">Right Nav Button Active</a></li>
+          <li class="has-dropdown">
+            <a href="#">Right Button with Dropdown</a>
+            <ul class="dropdown">
+              <li><a href="#">First link in dropdown</a></li>
+            </ul>
+          </li>
+        </ul>
 
-The top bar has four main elements, three of which are needed for proper functionality: `ul.title-area`, a `ul class="right/left` element enclosed in a `section class="top-bar-section"`, and the `li.toggle-topbar` element that will expand the menu in the mobile layout.
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><a href="#">Left Nav Button</a></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+</div>
+<div><br></div>
 
-##### Positioning the Bar
+#### HTML
+{{#markdown}}
+```html
+{{> examples_topbar_default}}
+```
+{{/markdown}}
+
+***
+
+### Positioning the Bar
 
 The top bar is built with a single `nav` element with a class of `top-bar`. It will take on full-browser width by default. To make the top bar stay fixed as you scroll, wrap it in `div class="fixed"`. If you want your navigation to be set to your grid width, wrap it in `div class="contain-to-grid"`. You may use `fixed` and `contain-to-grid` together in the wrapping div (`div class="contain-to-grid fixed`).
 
@@ -157,7 +193,7 @@ If you want a bar that doesn't include a title, just take out the content within
 {{#markdown}}
 ### HTML
 ```html
-<nav class="top-bar">
+<nav class="top-bar" data-top-bar>
   <ul class="title-area">
     <li class="name"><!-- Leave this empty --></li>
     ...
@@ -183,11 +219,16 @@ You may also wrap your top bar in `div class="contain-to-grid sticky"` and put i
 
 You can now make the top bar clickable by adding a data-attribute to the nav element. Here's an example:
 
-{{> examples_topbar_clickable}}
+<div class="row">
+  <div class="large-12 columns">
+    {{> examples_topbar_clickable}}
+  </div>
+</div>
+<div><br></div>
 
 {{#markdown}}
 ```html
-<nav class="top-bar" data-options="is_hover:false">
+<nav class="top-bar" data-top-bar data-options="is_hover:false">
 ```
 {{/markdown}}
 
