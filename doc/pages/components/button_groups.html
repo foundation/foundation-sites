@@ -4,88 +4,154 @@ layout: doc/layouts/default.html
 
 # Button Groups
 
-#### Button groups are great when you need to display a group of actions in a bar. These build off the button styles and work perfectly with the grid.
+<h3 class="subheader">Button groups are great when you need to display a group of actions in a bar. These build off the button styles and work perfectly with the grid.</h3>
 
 {{> examples_button_group_basic}}
 
 ***
 
-### Build With Predefined HTML Classes
+<h3>Basic</h3>
 
-There are two ways to build button groups in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building button groups using our predefined classes is a breeze, you'll just wrap a [button](buttons.html) inside an `<ul>`.
+Using minimal markup you can create a button group
 
-The button styles will work the same as they do when building a single button, but they'll float next to each other to create a group. You also have access to the same radius classes as buttons, only they'll go on the unordered list instead of the button. You can even make sure the buttons take up even space within the container you put them in.
-
-* The radius classes: `.radius` or `.round`.
-* The even classes: `.even-2` through `.even-8` to control the even widths.
-
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
 {{> examples_button_group_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_button_group_basic}}
+  </div>
+</div>
 
-##### Button Bars
+<h3>Advanced</h3>
 
-A button bar is a group of button groups (I N C E P T I O N), perfect for situations where you want groups of actions that are all related to a similar element or page. Simply wrap two or more button groups in a `.button-bar` and Foundation takes care of the rest.
+Additional classes can be added to your button groups to change its appearance
 
-{{> examples_button_group_bar_rendered}}
-
-{{> examples_button_group_bar}}
-
-For any of these styles to take effect, make sure you have the **default Foundation CSS package** or that you've selected **buttons and button-groups from a custom package**. These should be linked up following our default [HTML page structure](../index.html).
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<ul class="button-group [radius round]">
+  <li><a href="#" class="button [secondary alert success]">Button 1</a></li>
+  <li><a href="#" class="button [secondary alert success]">Button 2</a></li>
+  <li><a href="#" class="button [secondary alert success]">Button 3</a></li>
+  <li><a href="#" class="button [secondary alert success]">Button 4</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <ul class="button-group radius">
+      <li><a href="#" class="button [secondary alert success]">Button 1</a></li>
+      <li><a href="#" class="button [secondary alert success]">Button 2</a></li>
+      <li><a href="#" class="button [secondary alert success]">Button 3</a></li>
+      <li><a href="#" class="button [secondary alert success]">Button 4</a></li>
+    </ul>
+  </div>
+</div>
 
 ***
 
-### Build with Mixins
+## Button Bars
 
-We've included SCSS mixins used to style button groups. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a> and [_button-groups.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_button-groups.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+<h3 class="subheader">A button bar is a group of button groups, perfect for situations where you want groups of actions that are all related to a similar element or page. Simply wrap two or more button groups in a `.button-bar` and Foundation takes care of the rest.</h3>
 
+{{> examples_button_group_bar}}
+
+***
+
+<h3>Basic</h3>
+
+Using minimal markup you can create a button bar.
+
+<h4>HTML</h4>
+
+{{> examples_button_group_bar}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_button_group_bar_rendered}}
+
+<h3>Advanced</h3>
+
+Additional classes can be added to your button bar to change it's appearance.
+
+
+<h4>HTML</h4>
+
+{{> examples_button_group_bar_advanced}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_button_group_bar_advanced_rendered}}
+
+***
+
+## Customize with Sass
+
+Button bars can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_button_group_variables}}
+
+***
+
+## Semantic Markup with Sass
+
+<h3>Basic</h3>
+
+You can use the `button-group-container()` and `button-group-style()` mixins to create your own button groups and button bars with semantic markup, like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
 {{#markdown}}
 ```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/buttons";
-@import "foundation/components/button-groups";
-```
-{{/markdown}}
-
-If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
-
-{{> examples_button_group_html_mixin}}
-
-##### Container Mixin
-
-Since button groups need to be within a list to work properly, you'll need to create some styles for the list container that you use.
-
-{{#markdown}}
-```scss
-.your-class-name {
-  @include button-group-container;
+.custom-button-group-class {
+  @include button-group-container();
+  .custom-button-class {
+    @include button();
+  }
+  & > li { @include button-group-style(); }
 }
 ```
 {{/markdown}}
 
-You'll also need to make sure to include some styles for your buttons inside the group. Either use a class you've already styled, or apply it specifically here.
+  <p>You can find more information regarding button mixins <a href="{{relative absolute 'dist/docs/components/buttons.html'}}">here</a></p>
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_button_group_basic_mixin}}
+  </div>
+</div>
+
+<h3>Advanced</h3>
+
+You can further customize your button groups using using the provided options in the `button-group-container()` and `button-group-style()` mixin:
+
+##### Button Group Container Options
+
+<h4>SCSS</h4>
 
 {{> examples_button_group_container_mixin}}
 
-##### Style Mixin
+##### Button Group Style Options
 
-With this mixin, you'll be able to make the rest of the button-group, including: radius, even with styles and floats. You'll apply this mixin to the `<li>` elements of the button group list.
+{{> examples_button_group_style_mixin}}
 
-{{> examples_button_group_mixin}}
+***
 
-##### Inset Shadow, Border Radius & Transition Mixin
+##### Sass Errors?
 
-Sometimes you want to add a nice fancy shine to the edge of your buttons. And sometimes you want to make that shine look like it gets depressed upon tap or click. We've got you covered with our quick inset shadow mixin. You can use our radius mixin to quickly apply rounded corners or a transition mixin to give the buttons a fade effect.
+If the default "foundation" import was commented out, then make sure you import this file:
 
-{{> examples_button_group_options_mixin}}
+<h4>SCSS</h4>
 
-##### Building Button Bars
-
-You can also build button bars with mixin options.
-
-{{> examples_button_group_mixin_bar}}
-
-##### Default SCSS Variables
-
-{{> examples_button_group_variables}}
-
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`.
+```scss
+@import "foundation/components/grid";
+```

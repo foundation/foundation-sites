@@ -4,21 +4,55 @@ layout: doc/layouts/default.html
 
 # Dropdown
 
-#### In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a universal dropdown plugin that will attach dropdowns or popovers next to anything!
+<h3 class="subheader">In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a universal dropdown plugin that will attach dropdowns or popovers next to anything!</h3>
 
 {{> examples_dropdown_basic}}
 
 ***
 
-##### Build With Predefined HTML Classes
+<h3>Basic</h3>
 
-To create the dropdown you'll need to attach a `data-dropdown="your-id"` to whatever element you want the dropdown attached to. From there you'll create a list that holds the links or content and add an `id="your-id"` that associates with the element it belongs to. To style the dropdown, we've included a class of `.f-dropdown` that you can target and style to your heart's desire. If you want the dropdown to be content, simply chain the class `.content` to the dropdown. Here's an example of that markup:
+Using minimal markup you can create a dropdown.
 
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
 {{> examples_dropdown_basic_rendered}}
-
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML Rendered</h4>
 {{> examples_dropdown_basic_nostyle}}
+  </div>
+</div>
 
-You'll notice that `data-dropdown="drop1"` and `id="drop1"` have the same value. This is what tells the dropdown plugin where to look to find the position to attach the dropdown. It is best to place your dropdown and target element **within the same offset parent**.
+<h3>Advanced</h3>
+
+Additional classes can be added to your dropdown to change it's appearance.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<a href="#" class="button" data-dropdown="drop">Link Dropdown &raquo;</a>
+<ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a href="#" class="button" data-dropdown="tinyDrop">Link Dropdown &raquo;</a>
+    <ul id="tinyDrop" class="medium f-dropdown" data-dropdown-content>
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
+  </div>
+</div>
 
 Available class options:
 
@@ -28,48 +62,111 @@ Available class options:
 * `large`: Make the dropdown have a max-width of 800px
 * `content`: Add padding inside the dropdown for better looking content.
 
-You may chain one class from each group to build up desired default styles. For these styles to take effect, make sure you have the **default Foundation CSS package** or that you've selected **dropdowns from a custom package**. These should be linked up following our default [HTML page structure](../index.html#basicHTMLMarkup).
-
 ##### Hoverable Dropdown Option
 
 If you'd rather have your dropdown be accessible by hover you can add a data-option to the target element:
 
+<div class="row">
+  <div class="large-6 columns">
 {{> examples_dropdown_hoverable_rendered}}
-
+  </div>
+  <div class="large-6 columns">
 {{> examples_dropdown_hoverable}}
+  </div>
+</div>
 
 ***
 
-### Build With Our Mixins
+## Customize with Sass
 
-We've included SCSS mixins used to style dropdowns. To use the mixin, you'll need to have the [extension installed](../sass.html) or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_global.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss) and [_dropdown.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_dropdown.scss) from Github and throw them into a foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
-
-{{#markdown}}
-```scss
-@import "foundation/variables";
-@import "foundation/components/global";
-@import "foundation/components/dropdown";
-```
-{{/markdown}}
-
-If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:
-
-{{> examples_dropdown_mixin}}
-
-##### The Container Mixin
-
-There are two mixins you can use when building your dropdowns&mdash; the container and the list style. The container mixin will give you all the styles needed for the base styles of the dropdown, not including styles for the default link list style. The container mixin looks like this:
-
-{{> examples_dropdown_container_mixin}}
-
-##### The List Style Mixin
-
-For content dropdowns, we don't add any extra style to the inside of the dropdown other than padding around the edges. For link lists, we wanted to predefined style that would look good out of the box and match the style of our custom select dropdowns. The style mixin looks like this:
-
-{{> examples_dropdown_list_mixin}}
-
-##### Default SCSS Variables
+Dropdowns can be easily customized using our provided Sass variables.
 
 {{> examples_dropdown_variables}}
 
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+***
+
+## Semantic Markup with Sass
+
+You can create your own dropdowns using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `dropdown-container()` and `dropdown-style()` mixins to create your own dropdowns, like so:
+
+##### The Container Mixin
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-container-class {
+  @include dropdown-container();
+}
+```
+{{/markdown}}
+
+##### The List Style Mixin
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-container-class {
+  @include dropdown-container();
+
+  li { @include dropdown-style; }
+}
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your dropdowns using the provided options in the `dropdown-container()` mixin:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-container-class {
+  @include dropdown-container(
+    // Sets list-style. Default: list. Options: [list, content]
+    $content:list,
+    // Sets if dropdown has triangle. Default:true.
+    $triangle:true,
+    // Sets max-width. Default: $f-dropdown-max-width
+    $max-width
+  );
+
+  li { @include dropdown-style; }
+}
+```
+{{/markdown}}
+
+***
+
+## Configure with JavaScript
+
+It's easy to configure dropdowns using our provided javascript. You can use with data-attributes or plain old javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.dropdown.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
+
+{{#markdown}}
+  ```html
+<script src="js/jquery.js"></script>
+<script src="js/foundation.js"></script>
+<script src="js/foundation.dropdown.js"></script>
+  ```
+{{/markdown}}
+
+### Optional Javascript Configuration
+
+#### JS
+
+{{!-- TODO: Initialization is incorrect? --}}
+{{#markdown}}
+```js
+$(document).foundation({
+  // specify the class used for active dropdowns
+  activeClass: 'open'
+});
+```
+{{/markdown}}
+

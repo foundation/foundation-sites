@@ -24,6 +24,7 @@
     "karma-phantomjs-launcher": "~0.1.0",
     "karma-browserstack-launcher": "0.0.4",
     "grunt-karma": "~0.6.2"
+    "grunt-rsync": "~0.2.1"
   },
   "licenses": [
     {

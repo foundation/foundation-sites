@@ -130,6 +130,7 @@ module.exports = function(grunt) {
     },
 
     watch_start: {
+      grunt: { files: ['Gruntfile.js'] },
       karma: {
         files: [
           'dist/assets/js/*.js',
@@ -174,7 +175,20 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
         ]
       }
+    },
+
+    rsync: {
+      dist: {
+        options: {
+          args: ["--verbose"],
+          src: "./dist/docs/",
+          recursive: true,
+          dest: "/home/deployer/sites/foundation-docs/current",
+          host: "deployer@foundation5.zurb.com"
+        }
+      }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-sass');
@@ -185,6 +199,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
 
   grunt.task.renameTask('watch', 'watch_start');
@@ -195,4 +210,5 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
   grunt.registerTask('travis', ['compile', 'karma:continuous']);
+  grunt.registerTask('deploy', ['compile', 'rsync:dist']);
 };
