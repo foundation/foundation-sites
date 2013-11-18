@@ -9,7 +9,6 @@
     settings : {
       activeClass: 'open',
       is_hover: false,
-      direction: 'down',
       opened: function(){},
       closed: function(){}
     },
@@ -112,22 +111,11 @@
 
     css : function (dropdown, target) {
       var offset_parent = dropdown.offsetParent(),
-          position = target.offset(),
-          settings = target.data('dropdown-init');
+          position = target.offset();
 
       position.top -= offset_parent.offset().top;
       position.left -= offset_parent.offset().left;
-      console.log(settings.direction)
-      this[settings.direction](dropdown, target, position);
-      
-      return dropdown;
-    },
 
-    small : function () {
-      return matchMedia(Foundation.media_queries.small).matches;
-    },
-
-    down : function () {
       if (this.small()) {
         dropdown.css({
           position : 'absolute',
@@ -155,6 +143,13 @@
           left: left
         });
       }
+
+      return dropdown;
+    },
+
+    small : function () {
+      console.log(Foundation.media_queries.small)
+      return !matchMedia(Foundation.media_queries.small).matches;
     },
 
     off: function () {
@@ -162,6 +157,7 @@
       $('html, body').off('.fndtn.dropdown');
       $(window).off('.fndtn.dropdown');
       $('[data-dropdown-content]').off('.fndtn.dropdown');
+      this.settings.init = false;
     },
 
     reflow : function () {}
