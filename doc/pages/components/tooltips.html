@@ -39,7 +39,9 @@ Additional classes can be added to your tooltips to change it's appearance.
 
 <h4>Rendered HTML</h4>
 
-<span data-tooltip class="has-tip [tip-top tip-bottom tip-left tip-right]" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span>
+<span data-tooltip class="has-tip tip-bottom" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span>
+
+<h5>Disable for touch events</h5>
 
 If you don't want tooltips to interfere with a touch event, you can disable them for those devices, like so:
 
@@ -61,6 +63,8 @@ Tooltips can be easily customized using our provided Sass variables.
 
 It's easy to configure tooltips using our provided javascript. You can use with data-attributes or plain old javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.tooltips.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
 
+<h4>HTML</h4>
+
 {{#markdown}}
 ```html
 <script src="js/jquery.js"></script>
@@ -72,8 +76,10 @@ It's easy to configure tooltips using our provided javascript. You can use with 
 <h3>Basic</h3>
 
 Using data-attributes is the preferred method of making changes to our javascript.
+<br />
 
 <h4>HTML</h4>
+
 {{#markdown}}
 ```html
 <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
@@ -84,9 +90,10 @@ Using data-attributes is the preferred method of making changes to our javascrip
 
 You can adjust lots of settings. For example:
 
-#### JS
+<h4>JS</h4>
+
 {{#markdown}}
-```js
+```javascript
 $(document).foundation({
   tooltips: {
     selector : '.has-tip',

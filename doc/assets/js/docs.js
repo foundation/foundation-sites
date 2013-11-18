@@ -122,10 +122,14 @@ var components = [
 ];
 
 $('#autocomplete').autocomplete({
-    lookup: components,
-    onSelect: function (suggestion) {
-        window.location = suggestion.data;
+  lookup: components,
+  onSelect: function (suggestion) {
+    if (/index.html/i.test(window.location.href)) {
+      return window.location = 'components/' + suggestion.data;
     }
+    
+    return window.location = '../components/' + suggestion.data;
+  }
 });
 
 // `lookup`: Lookup array for the suggestions. It may be array of strings or `suggestion` object literals.
