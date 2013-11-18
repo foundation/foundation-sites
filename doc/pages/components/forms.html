@@ -4,13 +4,11 @@ layout: doc/layouts/default.html
 
 # Forms
 
-#### With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.
-
-{{> examples_form_basic}}
+<h3 class="subheader"> With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h3>
 
 ***
 
-### Building Forms with HTML
+## Building Forms with HTML
 
 OK, so you have a client that needs a form with an unhuman layout. "You can't back down because of some legal reason," he says. What are you to do? Foundation has you covered with versatile forms that looks great out of the box and are easily customizable as you need.
 
@@ -18,6 +16,8 @@ Form elements in Foundation are styled based on their type attribute rather than
 
 * You can size inputs using column sizes, like `.large-6`, `.small-6`.
 * You can create row elements inside your form and use columns for the form, including inputs, labels and more. Rows inside a form inherit some special padding to even up input spacing.
+
+{{> examples_form_basic}}
 
 This ultimately adds a bit of code to your forms, but it's worth the trade off! Here's what the example above looks like in HTML:
 
@@ -73,7 +73,7 @@ Foundation includes error states for labels, inputs and messaging that you can h
 
 ***
 
-### Build with Mixins
+## Building with Mixins
 
 A lot of elements in Foundation can be created using SCSS mixins so that you can include your own classes and just enough style as needed for the job at hand. To use these mixins, you'll need to have the extension installed or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_forms.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_forms.scss), <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and [_buttons.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
 
