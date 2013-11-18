@@ -53,6 +53,7 @@ module.exports = function(grunt) {
         },
         files: {
           'dist/assets/css/foundation.css': '<%= foundation.scss %>',
+          'dist/assets/css/normalize.css': 'scss/normalize.scss',
           'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss'
         }
       },
@@ -98,8 +99,47 @@ module.exports = function(grunt) {
 
     clean: ['dist/'],
 
-    watch: {
+    karma: {
+      options: {
+        configFile: 'karma.conf.js',
+        runnerPort: 9999,
+      },
+      continuous: {
+        singleRun: true,
+        browsers: ['TinyPhantomJS', 'SmallPhantomJS']
+      },
+      dev: {
+        singleRun: true,
+        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
+        reporters: 'dots'
+      },
+      dev_watch: {
+        background: true,
+        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
+      },
+      mac: {
+        singleRun: true,
+        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'Safari'],
+        reporters: 'dots'
+      },
+      win: {
+        singleRun: true,
+        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'IE'],
+        reporters: 'dots'
+      }
+    },
+
+    watch_start: {
       grunt: { files: ['Gruntfile.js'] },
+      karma: {
+        files: [
+          'dist/assets/js/*.js',
+          'spec/**/*.js',
+          'dist/assets/css/*.css'
+        ],
+        tasks: ['karma:dev_watch:run']
+      },
+
       styles: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
@@ -107,7 +147,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
-        tasks: ['concat', 'uglify'],
+        tasks: ['copy', 'concat', 'uglify'],
         options: {livereload:true}
       },
       dist_docs: {
@@ -158,13 +198,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
 
+  grunt.task.renameTask('watch', 'watch_start');
+  grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
 
   grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
   grunt.registerTask('compile', ['compile:assets', 'assemble']);
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
+  grunt.registerTask('travis', ['compile', 'karma:continuous']);
   grunt.registerTask('deploy', ['compile', 'rsync:dist']);
 };
