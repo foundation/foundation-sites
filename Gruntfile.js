@@ -99,6 +99,7 @@ module.exports = function(grunt) {
     clean: ['dist/'],
 
     watch: {
+      grunt: { files: ['Gruntfile.js'] },
       styles: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
