@@ -165,9 +165,9 @@
     version : '5.0.0',
 
     media_queries : {
-      small : S('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
-      medium : S('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
-      large : S('.foundation-mq-large').css('font-family').replace(/\'/g, '')
+      small : S('.foundation-mq-small').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      medium : S('.foundation-mq-medium').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      large : S('.foundation-mq-large').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
