@@ -1,20 +1,20 @@
 @import "global";
 
 @include exports("tab") {
-	.tabs { @include clearfix; margin-bottom: 0; 
-		dd { float: left; background: #efefef; margin-bottom: 0; position: relative; top: 1px; border: 1px solid #efefef; 
+	.tabs { @include clearfix; margin-bottom: 0;
+		dd { float: left; background: #efefef; margin-bottom: 0; position: relative; top: 1px; border: 1px solid #efefef;
 			&.active { background: #fff; border-bottom: 1px solid #fff; }
 			&:hover { background: #e4e4e4; }
 			> a { color: #222; padding: .75em 2em; display: block; font-family: $body-font-family; font-size: 1em; }
 		}
-		
+
 		&.vertical { width: 20%; float: left; margin-bottom: 1.25em;
 			dd { float: none; top: 0px; }
 		}
 	}
 
 	.tabs-content { @include clearfix; margin-bottom: 1.25em;
-		> .content { display: none; float: left; padding: 1em 1.35em; border: 1px solid #efefef; 
+		> .content { display: none; float: left; padding: 1em 1.35em; border: 1px solid #efefef;
 			&.active { display: block; }
 			p { margin-bottom: 0; }
 		}
@@ -23,8 +23,7 @@
 		}
 	}
 
-
-	@media #{$small-only} {	
+	@media #{$small-only} {
 		.tabs dd a { font-size: .85em; padding: .75em 1em; }
 	}
 }
