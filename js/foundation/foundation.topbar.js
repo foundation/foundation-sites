@@ -44,7 +44,7 @@
 
         self.assemble(topbar);
 
-        if (/true/i.test(settings.is_hover)) {
+        if (settings.is_hover) {
           $('.has-dropdown', topbar).addClass('not-click');
         }
 
@@ -147,7 +147,7 @@
           }
 
           if (self.breakpoint()) return;
-          if (/true/i.test(settings.is_hover) && !Modernizr.touch) return;
+          if (settings.is_hover && !Modernizr.touch) return;
 
           e.stopImmediatePropagation();
 
