@@ -115,7 +115,8 @@ module.exports = function(grunt) {
       },
       dev_watch: {
         background: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
+        // browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox']
+        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome']
       },
       mac: {
         singleRun: true,
