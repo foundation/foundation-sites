@@ -64,9 +64,10 @@
           }
         });
 
-      $(this.close_targets())
+      $(this.scope)
         .off('.reveal')
-        .on('click.fndtn.reveal touchend.fndtn.reveal', function (e) {
+        .on('click.fndtn.reveal', this.close_targets(), function (e) {
+
           e.preventDefault();
 
           if (!self.locked) {
@@ -84,7 +85,7 @@
 
       if($('[data-reveal]', this.scope).length > 0) {
         $(this.scope)
-          .off('.reveal')
+          // .off('.reveal')
           .on('open.fndtn.reveal', this.settings.open)
           .on('opened.fndtn.reveal', this.settings.opened)
           .on('opened.fndtn.reveal', this.open_video)
@@ -93,7 +94,7 @@
           .on('closed.fndtn.reveal', this.close_video);
       } else {
         $(this.scope)
-          .off('.reveal')
+          // .off('.reveal')
           .on('open.fndtn.reveal', '[data-reveal]', this.settings.open)
           .on('opened.fndtn.reveal', '[data-reveal]', this.settings.opened)
           .on('opened.fndtn.reveal', '[data-reveal]', this.open_video)
@@ -102,7 +103,7 @@
           .on('closed.fndtn.reveal', '[data-reveal]', this.close_video);
       }
 
-      $('body').off('.reveal').on('keyup.fndtn.reveal', function ( event ) {
+      $('body').on('keyup.fndtn.reveal', function ( event ) {
         var open_modal = $('[data-reveal].open'),
             settings = open_modal.data('reveal-init');
         if ( event.which === 27  && settings.close_on_esc) { // 27 is the keycode for the Escape key
