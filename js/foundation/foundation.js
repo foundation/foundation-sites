@@ -22,6 +22,14 @@
     $('head').append('<meta class="foundation-mq-large">')
   }
 
+  if($('head').has('.foundation-mq-xlarge').length === 0) {
+    $('head').append('<meta class="foundation-mq-xlarge">')
+  }
+
+  if($('head').has('.foundation-mq-xxlarge').length === 0) {
+    $('head').append('<meta class="foundation-mq-xxlarge">')
+  }
+
   // Enable FastClick
   if(typeof FastClick !== 'undefined') {
     FastClick.attach(document.body);
@@ -167,7 +175,9 @@
     media_queries : {
       small : S('.foundation-mq-small').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
       medium : S('.foundation-mq-medium').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
-      large : S('.foundation-mq-large').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '')
+      large : S('.foundation-mq-large').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      xlarge: S('.foundation-mq-xlarge').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, ''),
+      xxlarge: S('.foundation-mq-xxlarge').css('font-family').replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
