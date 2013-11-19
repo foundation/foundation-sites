@@ -42,10 +42,12 @@
           topbar.data('height', topbar.outerHeight());
         }
 
-        self.assemble(topbar);
+        if (!settings.assembled) self.assemble(topbar);
 
-        if (/true/i.test(settings.is_hover)) {
+        if (settings.is_hover) {
           $('.has-dropdown', topbar).addClass('not-click');
+        } else {
+          $('.has-dropdown', topbar).removeClass('not-click');
         }
 
         // Pad body when sticky (scrolled) or fixed.
@@ -147,7 +149,7 @@
           }
 
           if (self.breakpoint()) return;
-          if (/true/i.test(settings.is_hover) && !Modernizr.touch) return;
+          if (settings.is_hover && !Modernizr.touch) return;
 
           e.stopImmediatePropagation();
 
@@ -321,6 +323,12 @@
 
       // check for sticky
       this.sticky();
+
+      this.assembled(topbar);
+    },
+
+    assembled : function (topbar) {
+      topbar.data('topbar-init', $({}, topbar.data('topbar-init'), {assembled: true}));
     },
 
     height : function (ul) {
