@@ -17,11 +17,11 @@ Using minimal markup you can create an alert box.
 <div class="row">
   <div class="large-6 columns">
     <h4>HTML</h4>
-    {{> examples_alert_basic_rendered}}
+{{> examples_alert_basic_rendered}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    {{> examples_alert_basic}}
+{{> examples_alert_basic}}
   </div>
 </div>
 
@@ -35,7 +35,6 @@ Additional classes can be added to your alert box to change its appearance.
 {{#markdown}}
 ```html
 <div data-alert class="alert-box [success alert secondary] [radius round]">
-  <!-- Your content goes here -->
   <a href="#" class="close">&times;</a>
 </div>
 ```
@@ -51,7 +50,7 @@ Additional classes can be added to your alert box to change its appearance.
   </div>
 </div>
 
-***
+<hr>
 
 ## Customize with Sass
 
@@ -62,28 +61,28 @@ Alert boxes can be easily customized using our provided Sass variables.
 ```scss
 $include-html-alert-classes: $include-html-classes;
 
-/* We use this to control alert padding. */
+// We use this to control alert padding.
 $alert-padding-top: rem-calc(11);
 $alert-padding-default-float: $alert-padding-top;
 $alert-padding-opposite-direction: $alert-padding-top + rem-calc(10);
 $alert-padding-bottom: $alert-padding-top + rem-calc(1);
 
-/* We use these to control text style. */
+// We use these to control text style.
 $alert-font-weight: bold;
 $alert-font-size: rem-calc(14);
 $alert-font-color: #fff;
 $alert-font-color-alt: darken($secondary-color, 60%);
 
-/* We use this for close hover effect. */
+// We use this for close hover effect.
 $alert-function-factor: 10%;
 
-/* We use these to control border styles. */
+// We use these to control border styles.
 $alert-border-style: solid;
 $alert-border-width: 1px;
 $alert-border-color: darken($primary-color, $alert-function-factor);
 $alert-bottom-margin: rem-calc(20);
 
-/* We use these to style the close buttons */
+// We use these to style the close buttons
 $alert-close-color: #333;
 $alert-close-position: rem-calc(5);
 $alert-close-font-size: rem-calc(22);
@@ -91,14 +90,14 @@ $alert-close-opacity: 0.3;
 $alert-close-opacity-hover: 0.5;
 $alert-close-padding: 5px 4px 4px;
 
-/* We use this to control border radius */
+// We use this to control border radius
 $alert-radius: $global-radius;
 ```
 {{/markdown}}
 
-***
+<hr>
 
-## Semantic Markup with Sass
+<h2>Semantic Markup with Sass</h2>
 
 You can create your own alert boxes using our Sass mixins.
 
@@ -119,7 +118,6 @@ You can use the `alert()` mixin to create your own alert box, like so:
 {{#markdown}}
 ```html
 <div data-alert class="custom-alert-box">
-  <!-- Your content goes here -->
   <a href="#" class="close">&times;</a>
 </div>
 ```
@@ -154,19 +152,20 @@ You can further customize your alert boxes using the provided options in the `al
 ```
 {{/markdown}}
 
-***
+<hr>
 
-## Configure with JavaScript
+<h2>Configure with JavaScript</h2>
 
-It's easy to configure alert boxes using our provided javascript. You can use with data-attributes or plain old javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.alert.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
+<p>It's easy to configure alert boxes using our provided javascript. You can use with data-attributes or plain old javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.alert.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:</p>
 
-  {{#markdown}}
-  ```html
+<h4>HTML</h4>
+{{#markdown}}
+```html
 <script src="js/jquery.js"></script>
 <script src="js/foundation.js"></script>
 <script src="js/foundation.alert.js"></script>
-  ```
-  {{/markdown}}
+```
+{{/markdown}}
 
 <h3>Basic</h3>
 
@@ -186,7 +185,8 @@ Using data-attributes is the preferred method of making changes to our javascrip
 
 You can adjust lots of settings. For example:
 
-#### JS
+<h4>JS</h4>
+
 {{#markdown}}
 ```js
 $(document).foundation({
@@ -198,15 +198,17 @@ $(document).foundation({
 ```
 {{/markdown}}
 
-***
+<hr>
 
-## Binding to Events
+<h2>Binding to Events</h2>
 
 The last thing you can do with alerts is listen for events and respond accordingly.
 
 <h3>Basic</h3>
 
 We can respond to an alert box being closed by using the following alert.
+
+<h4>JS</h4>
 
 {{#markdown}}
 ```js
@@ -220,6 +222,8 @@ $(document).on('close.fndtn.alert-box', function(event) {
 
 We can respond to all the possible events.
 
+<h4>JS</h4>
+
 {{#markdown}}
 ```js
 $(document).on('open.fndtn.alert-box', function(event) {
@@ -232,9 +236,9 @@ $(document).on('close.fndtn.alert-box', function(event) {
 ```
 {{/markdown}}
 
-***
+<hr>
 
-##### Sass Errors?
+<h5>Sass Errors?</h5>
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
