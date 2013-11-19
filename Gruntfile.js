@@ -152,7 +152,7 @@ module.exports = function(grunt) {
       },
       dist_docs: {
         files: ['doc/{includes,layouts,pages}/**/*.html'],
-        tasks: ['newer:assemble'],
+        tasks: ['assemble'],
         options: {livereload:true}
       },
       dist_download: {
