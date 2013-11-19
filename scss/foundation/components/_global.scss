@@ -298,7 +298,7 @@ $cursor-text-value: text !default;
     width: lower-bound($xlarge-range);
   }
 
-  meta.foundation-mq-xlarge {
+  meta.foundation-mq-xxlarge {
     font-family: "'" + unquote($xxlarge-up) + "'";
     width: lower-bound($xxlarge-range);
   }
