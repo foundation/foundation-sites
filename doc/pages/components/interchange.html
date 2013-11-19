@@ -11,7 +11,7 @@ layout: doc/layouts/default.html
 
 ***
 
-### Using the Markup
+### Using the Markup with Images
 
 The Foundation Interchange component utilizes the `data-interchange` attribute for specifying your media queries and their respective images.
 
@@ -26,6 +26,14 @@ data-interchange="[image_path, (media query)], [image_path, (media query)]"
 {{/markdown}}
 
 **The last rule that evaluates to true will be the image that gets loaded.** We recommend setting your default image in a `<noscript>` tag so that browsers with JavaScript disabled will have a reliable fallback. 
+
+***
+
+### Interchange for Other Content
+
+You are not restricted to using Interchange with just images. You can now, as of Foundation 5, load responsive content on any html element.
+
+<div data-interchange=""></div>
 
 ***
 

@@ -293,6 +293,16 @@ $cursor-text-value: text !default;
     width: lower-bound($large-range);
   }
 
+  meta.foundation-mq-xlarge {
+    font-family: "'" + unquote($xlarge-up) + "'";
+    width: lower-bound($xlarge-range);
+  }
+
+  meta.foundation-mq-xlarge {
+    font-family: "'" + unquote($xxlarge-up) + "'";
+    width: lower-bound($xxlarge-range);
+  }
+
   @if $include-html-global-classes {
 
     // Set box-sizing globally to handle padding and border widths
