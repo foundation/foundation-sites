@@ -323,14 +323,14 @@ ul.off-canvas-list { @include off-canvas-list; }
 
 // ANIMATION CLASSES
 // These classes are added with JS and trigger the actual animation. 
-&.move-right {
+.move-right {
   > .inner-wrap {
     @include translate3d($off-canvas-width,0,0);
   }
   a.exit-off-canvas { @include back-link;}
 }
 
-&.move-left {
+.move-left {
   > .inner-wrap {
     @include translate3d(-($off-canvas-width),0,0);
 
