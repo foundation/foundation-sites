@@ -6,7 +6,7 @@ layout: doc/layouts/default.html
 
 <h3 class="subheader">The Foundation Top Bar gives you a great way to display a complex navigation bar on small, medium or large screens.</h3>
 
-<nav class="top-bar" data-top-bar>
+<nav class="top-bar" data-topbar>
   <ul class="title-area">
     <!-- Title Area -->
     <li class="name">
@@ -73,7 +73,7 @@ The top bar is a pretty complex piece of magical UI goodness, which makes it rea
 
 <div class="row">
   <div class="large-12 columns">
-    <nav class="top-bar" data-top-bar>
+    <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
           <h1><a href="#">My Site</a></h1>
@@ -123,7 +123,7 @@ The top bar is built with a single `nav` element with a class of `top-bar`. It w
 {{#markdown}}
 ```html
 <div class="fixed">
-  <nav class="top-bar" data-top-bar>
+  <nav class="top-bar" data-topbar>
     ...
   </nav>
 </div>
@@ -137,7 +137,7 @@ The top bar is built with a single `nav` element with a class of `top-bar`. It w
 {{#markdown}}
 ```html
 <div class="contain-to-grid">
-  <nav class="top-bar" data-top-bar>
+  <nav class="top-bar" data-topbar>
     ...
   </nav>
 </div>
@@ -153,7 +153,7 @@ You may also wrap your top bar in `div class="contain-to-grid sticky"` and put i
 {{#markdown}}
 ```html
 <div class="contain-to-grid sticky">
-  <nav class="top-bar" data-top-bar>
+  <nav class="top-bar" data-topbar>
     ...
   </nav>
 </div>
@@ -177,7 +177,7 @@ You can now make the top bar clickable by adding a data-attribute to the nav ele
 
 {{#markdown}}
 ```html
-<nav class="top-bar" data-top-bar data-options='{"is_hover": "false"}'>
+<nav class="top-bar" data-topbar data-options='{"is_hover": "false"}'>
 ```
 {{/markdown}}
 
@@ -187,7 +187,7 @@ You can now make the top bar clickable by adding a data-attribute to the nav ele
 
 Several common elements have been supported by default, each one of these elements gets added to ether the `ul.right` or `ul.left` unordered lists within your Top Bar navigation.
 
-<nav class="top-bar" data-top-bar>
+<nav class="top-bar" data-topbar>
   <!-- Title -->
   <ul class="title-area">
     <li class="name"><h1><a href="#">Sexy Top Bar</a></h1></li>
@@ -299,7 +299,7 @@ If you want a bar that doesn't include a title, just take out the content within
 
 {{#markdown}}
 ```html
-<nav class="top-bar" data-top-bar>
+<nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name"><!-- Leave this empty --></li>
     ...
