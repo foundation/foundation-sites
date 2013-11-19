@@ -30,8 +30,6 @@
             section = $('section', this),
             titlebar = $('> ul', this).first();
 
-        if (!settings) return;
-
         topbar.data('index', 0);
 
         var topbarContainer = topbar.parent();
