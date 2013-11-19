@@ -65,7 +65,7 @@ Adding a class of `.inline` will have it vertically center against an input. You
 
 ***
 
-#### Defining a Fieldset
+### Defining a Fieldset
 
 We don't see them too much, but one of the useful form elements included with Foundation is `<fieldset>`. This is used as a wrapper right inside the form element. Right after you define a fieldset, you can include a legend title by using `<legend>`. Here's some HTML to help make copy paste.
 
@@ -120,48 +120,101 @@ Foundation includes error states for labels, inputs and messaging that you can h
   </div>
 </div>
 
-
 ***
 
-### Building with Mixins
+## Customize with Sass
 
-A lot of elements in Foundation can be created using SCSS mixins so you can use your own classes (or no classes at all). To use these mixins, you'll need to have the extension installed or grab [_variables.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss), [_forms.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_forms.scss), <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and [_buttons.scss](https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss) from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:
+Forms can be easily customized with our provided Sass variables.
 
-{{#markdown}}
-```scss
-@import "foundation/variables", "foundation/components/global", "foundation/components/buttons", "foundation/components/forms";
-```
-{{/markdown}}
-
-We include most of the form styles by default, but the ones that are attached to HTML classes can be accessed via the mixins below. The error states have mixins, but we suggest using the classes since they are usually only visible temporarily.
-
-##### The Pre/Postfix Mixin
-
-With the form label mixin, you can control which classes make your labels line up how you want them to next to their form elements. You'll use these in conjunction with the grid mixin.
-
-{{> examples_form_prepost_mixin}}
-
-Since you need to wrap columns in a container anyway, we've used a `.row.collapse` rather than creating our own class to hold those mixins. Feel free to attach those styles to your own class or ID though.
-
-###### The base mixin:
-
-{{> examples_form_base_mixin}}
-
-###### The Prefix &amp; Postfix Style Mixins
-
-You can control the style you add to your prefix or postfix elements using this mixin, it looks like this:
-
-{{> examples_form_style_mixin}}
-
-There are two options you can set with the prefix and postfix mixins, these are:
-
-{{> examples_form_prepost_options}}
-
-##### Default SCSS Variables
+<h4>SCSS</h4>
 
 {{> examples_form_variables}}
 
-**Note:** `rem-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+***
+
+## Semantic Markup with Sass
+
+You can create your own forms using our Sass mixins.
+
+<h3>Pre/Postfix Mixin</h3>
+
+You can use the `prefix-postfix-base()` and `prefix()` mixin to create your own form, like so:
+
+##### Base mixin
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.custom-prefix-class {
+  @include prefix-postfix-base();
+  @include grid-column(
+    $columns:3,
+    $float:left
+  );
+}
+
+input[type="text"].custom-input-class {
+  @include grid-column($columns:9);
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+```html
+<form>
+  <div class="row collapse">
+    <span class="custom-prefix-class">Label</span>
+    <input type="text" class="custom-input-class" placeholder="Value">
+  </div>
+</form>
+```
+{{/markdown}}
+  </div>
+</div>
+
+##### Prefix & Postfix Style Mixins
+
+We use this mixin to create prefix label styles
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.custom-prefix-class {
+  @include prefix-postfix-base();
+  @include prefix(
+    /* Control the background color, which also effect the border and font color. Default:$input-prefix-bg (darken(#fff, 5%)) */
+    $bg: $input-prefix-bg,
+    /* Toggle position settings if prefix is a button. Default:false */
+    $is-button: false
+  );
+  @include grid-column($columns:3,$float:left);
+}
+
+input[type="text"].custom-input-class {
+  @include grid-column($columns:9);
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<form>
+  <div class="row collapse">
+    <span class="custom-prefix-class">Label</span>
+    <input type="text" class="custom-input-class" placeholder="Value">
+  </div>
+</form>
+```
+{{/markdown}}
+  </div>
+</div>
 
 ***
 
