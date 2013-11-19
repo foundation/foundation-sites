@@ -15,8 +15,8 @@ $panel-function-factor: 10% !default;
 $panel-border-color: darken($panel-bg, $panel-function-factor) !default;
 
 // We use these to set default inner padding and bottom margin
-$panel-margin-bottom: em-calc(20) !default;
-$panel-padding: em-calc(20) !default;
+$panel-margin-bottom: rem-calc(20) !default;
+$panel-padding: rem-calc(20) !default;
 
 // We use these to set default font colors
 $panel-font-color: #333 !default;
@@ -29,7 +29,7 @@ $callout-panel-link-color: #fff !default;
 //
 // We use this mixin to create panels.
 // $bg - Sets the panel background color. Default: $panel-pg || darken(#fff, 5%) !default
-// $padding - Sets the panel padding amount. Default: $panel-padding || em-calc(20)
+// $padding - Sets the panel padding amount. Default: $panel-padding || rem-calc(20)
 // $adjust - Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust || true
 @mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust) {
 
@@ -56,7 +56,7 @@ $callout-panel-link-color: #fff !default;
 
       // reset header line-heights for panels
       h1,h2,h3,h4,h5,h6 {
-        line-height: 1; margin-bottom: em-calc(20) / 2;
+        line-height: 1; margin-bottom: rem-calc(20) / 2;
         &.subheader { line-height: 1.4; }
       }
     }

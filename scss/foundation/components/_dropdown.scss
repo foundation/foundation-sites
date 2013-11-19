@@ -27,14 +27,14 @@ $f-dropdown-triangle-side-offset: 10px !default;
 // We use these to control styles for the list elements.
 $f-dropdown-list-style: none !default;
 $f-dropdown-font-color: #555 !default;
-$f-dropdown-font-size: em-calc(14) !default;
-$f-dropdown-list-padding: em-calc(5, 10) !default;
-$f-dropdown-line-height: em-calc(18) !default;
+$f-dropdown-font-size: rem-calc(14) !default;
+$f-dropdown-list-padding: rem-calc(5, 10) !default;
+$f-dropdown-line-height: rem-calc(18) !default;
 $f-dropdown-list-hover-bg: #eeeeee !default;
 $dropdown-mobile-default-float: 0 !default;
 
 // We use this to control the styles for when the dropdown has custom content.
-$f-dropdown-content-padding: em-calc(20) !default;
+$f-dropdown-content-padding: rem-calc(20) !default;
 
 //
 // @mixins
@@ -60,7 +60,7 @@ $f-dropdown-content-padding: em-calc(20) !default;
     height: $f-dropdown-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
-    font-size: $em-base;
+    font-size: $rem-base;
     z-index: 99;
   }
   @else if $content == content {
@@ -70,7 +70,7 @@ $f-dropdown-content-padding: em-calc(20) !default;
     max-height: $f-dropdown-max-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
-    font-size: $em-base;
+    font-size: $rem-base;
     z-index: 99;
   }
 

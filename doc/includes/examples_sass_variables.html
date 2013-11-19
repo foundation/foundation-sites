@@ -13,8 +13,8 @@ $base-line-height: 150%;
 
 /* Since the typical default browser font-size is 16px, that makes the calculation for grid size. */
 /* If you want your base font-size to be a different size and not have it effect grid size too, */
-/* set the value of $em-base to $base-font-size ($em-base: $base-font-size;) */
-$em-base: 16px !default;
+/* set the value of $rem-base to $base-font-size ($rem-base: $base-font-size;) */
+$rem-base: 16px !default;
 
 /* It strips the unit of measure and returns it */
 @function strip-unit($num) {
@@ -23,36 +23,36 @@ $em-base: 16px !default;
 
 /* New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em\'s. */
 /* Call with 1, 2, 3 or 4 parameters, \'px\' is not required but supported */
-/* em-calc(10 20 30px 40); */
+/* rem-calc(10 20 30px 40); */
 /* Space delimited, if you want to delimit using comma\'s, wrap it in another pair of brackets */
-/* em-calc((10, 20, 30, 40px)); */
+/* rem-calc((10, 20, 30, 40px)); */
 /* Optionally call with a different base (eg: 8px) to calculate em. */
-/* em-calc(16px 32px 48px, 8px); */
+/* rem-calc(16px 32px 48px, 8px); */
 /* If you require to comma separate your list */
-/* em-calc((16px, 32px, 48), 8px); */
+/* rem-calc((16px, 32px, 48), 8px); */
 
-@function convert-to-em($value, $base-value: $em-base)  {
+@function convert-to-rem($value, $base-value: $rem-base)  {
   $value: strip-unit($value) / strip-unit($base-value) * 1em;
   @if ($value == 0em) { $value: 0; } /* Turn 0em into 0 */
   @return $value;
 }
 
-@function em-calc($values, $base-value: $em-base) {
+@function rem-calc($values, $base-value: $rem-base) {
   $max: length($values);
 
-  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
 
-  $emValues: ();
+  $remValues: ();
   @for $i from 1 through $max {
-    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
   }
-  @return $emValues;
+  @return $remValues;
 }
 
 /* Support for the old syntax */
 
 @function emCalc($values){
-  @return em-calc($values);
+  @return rem-calc($values);
 }
 
 /* Maybe you want to create rems with pixels */
@@ -153,8 +153,8 @@ $cursor-help-value: "help";
 /* Grid Variables */
 
 
-$row-width: em-calc(1000);
-$column-gutter: em-calc(30);
+$row-width: rem-calc(1000);
+$column-gutter: rem-calc(30);
 $total-columns: 12;
 
 
@@ -164,7 +164,7 @@ $total-columns: 12;
 /* Maximum number of block grid elements per row */
 
 $block-grid-elements: 12;
-$block-grid-default-spacing: em-calc(20);
+$block-grid-default-spacing: rem-calc(20);
 
 /* Enables media queries for block-grid classes. Set to false if writing semantic HTML. */
 
@@ -187,11 +187,11 @@ $header-text-rendering: optimizeLegibility;
 
 /* Heading font sizes */
 
-$h1-font-size: em-calc(44);
-$h2-font-size: em-calc(37);
-$h3-font-size: em-calc(27);
-$h4-font-size: em-calc(23);
-$h5-font-size: em-calc(18);
+$h1-font-size: rem-calc(44);
+$h2-font-size: rem-calc(37);
+$h3-font-size: rem-calc(27);
+$h4-font-size: rem-calc(23);
+$h5-font-size: rem-calc(18);
 $h6-font-size: 1em;
 
 /* Subheaders */
@@ -213,8 +213,8 @@ $paragraph-font-family: inherit;
 $paragraph-font-weight: normal;
 $paragraph-font-size: 1em;
 $paragraph-line-height: 1.6;
-$paragraph-margin-bottom: em-calc(20);
-$paragraph-aside-font-size: em-calc(14);
+$paragraph-margin-bottom: rem-calc(20);
+$paragraph-aside-font-size: rem-calc(14);
 $paragraph-aside-line-height: 1.35;
 $paragraph-aside-font-style: italic;
 
@@ -235,23 +235,23 @@ $anchor-font-color-hover: darken($primary-color, 5%);
 $hr-border-width: 1px;
 $hr-border-style: solid;
 $hr-border-color: #ddd;
-$hr-margin: em-calc(20);
+$hr-margin: rem-calc(20);
 
 /* Lists */
 
 $list-style-position: outside;
 $list-side-margin: 0;
-$list-nested-margin: em-calc(20);
+$list-nested-margin: rem-calc(20);
 $definition-list-header-weight: bold;
 $definition-list-header-margin-bottom: .3em;
-$definition-list-margin-bottom: em-calc(12);
+$definition-list-margin-bottom: rem-calc(12);
 
 /* Blockquotes */
 
 $blockquote-font-color: lighten($header-font-color, 30%);
-$blockquote-padding: em-calc(9, 20, 0, 19);
+$blockquote-padding: rem-calc(9, 20, 0, 19);
 $blockquote-border: 1px solid #ddd;
-$blockquote-cite-font-size: em-calc(13);
+$blockquote-cite-font-size: rem-calc(13);
 $blockquote-cite-font-color: lighten($header-font-color, 20%);
 $blockquote-cite-link-color: $blockquote-cite-font-color;
 
@@ -261,8 +261,8 @@ $acronym-underline: 1px dotted #ddd;
 
 /* Padding and margin */
 
-$microformat-padding: em-calc(10, 12);
-$microformat-margin: em-calc(0, 0, 20, 0);
+$microformat-padding: rem-calc(10, 12);
+$microformat-margin: rem-calc(0, 0, 20, 0);
 
 /* Border styles */
 
@@ -273,7 +273,7 @@ $microformat-border-color: #ddd;
 /* Full name font styles */
 
 $microformat-fullname-font-weight: bold;
-$microformat-fullname-font-size: em-calc(15);
+$microformat-fullname-font-size: rem-calc(15);
 
 /* Summary font styles */
 
@@ -281,7 +281,7 @@ $microformat-summary-font-weight: bold;
 
 /* <abbr> padding */
 
-$microformat-abbr-padding: em-calc(0, 1);
+$microformat-abbr-padding: rem-calc(0, 1);
 
 /* <abbr> font styles */
 
@@ -294,18 +294,18 @@ $microformat-abbr-font-decoration: none;
 
 /* Base for lots of form spacing and positioning styles */
 
-$form-spacing: em-calc(16);
+$form-spacing: rem-calc(16);
 
 /* Labels */
 
 $form-label-pointer: pointer;
-$form-label-font-size: em-calc(14);
+$form-label-font-size: rem-calc(14);
 $form-label-font-weight: 500;
 $form-label-font-color: lighten(#000, 30%);
-$form-label-bottom-margin: em-calc(3);
+$form-label-bottom-margin: rem-calc(3);
 $input-font-family: inherit;
 $input-font-color: rgba(0,0,0,0.75);
-$input-font-size: em-calc(14);
+$input-font-size: rem-calc(14);
 $input-bg-color: #fff;
 $input-focus-bg-color: darken(#fff, 2%);
 $input-border-color: darken(#fff, 20%);
@@ -321,14 +321,14 @@ $input-include-glowing-effect: true;
 $fieldset-border-style: solid;
 $fieldset-border-width: 1px;
 $fieldset-border-color: #ddd;
-$fieldset-padding: em-calc(20);
-$fieldset-margin: em-calc(18, 0);
+$fieldset-padding: rem-calc(20);
+$fieldset-margin: rem-calc(18, 0);
 
 /* Legends */
 
 $legend-bg: #fff;
 $legend-font-weight: bold;
-$legend-padding: em-calc(0, 3);
+$legend-padding: rem-calc(0, 3);
 
 /* Prefix and postfix input elements */
 
@@ -342,9 +342,9 @@ $input-prefix-font-color-alt: #fff;
 
 /* Error states for inputs and labels */
 
-$input-error-message-padding: em-calc(6, 4);
-$input-error-message-top: -($form-spacing) - em-calc(5);
-$input-error-message-font-size: em-calc(12);
+$input-error-message-padding: rem-calc(6, 4);
+$input-error-message-top: -($form-spacing) - rem-calc(5);
+$input-error-message-font-size: rem-calc(12);
 $input-error-message-font-weight: bold;
 $input-error-message-font-color: #fff;
 $input-error-message-font-color-alt: #333;
@@ -360,25 +360,25 @@ $glowing-effect-color: $input-focus-border-color;
 
 /* Padding for buttons. */
 
-$button-tny: em-calc(7);
-$button-sml: em-calc(9);
-$button-med: em-calc(12);
-$button-lrg: em-calc(16);
+$button-tny: rem-calc(7);
+$button-sml: rem-calc(9);
+$button-med: rem-calc(12);
+$button-lrg: rem-calc(16);
 
 /* Display property. */
 
 $button-display: inline-block;
-$button-margin-bottom: em-calc(20);
+$button-margin-bottom: rem-calc(20);
 
 /* Button text styles. */
 
 $button-font-family: inherit;
 $button-font-color: #fff;
 $button-font-color-alt: #333;
-$button-font-med: em-calc(16);
-$button-font-tny: em-calc(11);
-$button-font-sml: em-calc(13);
-$button-font-lrg: em-calc(20);
+$button-font-med: rem-calc(16);
+$button-font-tny: rem-calc(11);
+$button-font-sml: rem-calc(13);
+$button-font-lrg: rem-calc(20);
 $button-font-weight: bold;
 $button-font-align: center;
 
@@ -406,7 +406,7 @@ $button-disabled-opacity: 0.6;
 
 /* Sets the margin for the right side by default, and the left margin if right-to-left direction is used */
 
-$button-bar-margin-opposite: em-calc(10);
+$button-bar-margin-opposite: rem-calc(10);
 
 
 /* Dropdown Button Variables */
@@ -422,28 +422,28 @@ $dropdown-button-pip-color-alt: #333;
 $dropdown-button-padding-tny: $button-tny * 5;
 $dropdown-button-pip-size-tny: $button-tny;
 $dropdown-button-pip-right-tny: $button-tny * 2;
-$dropdown-button-pip-top-tny: -$button-tny / 2 + em-calc(1);
+$dropdown-button-pip-top-tny: -$button-tny / 2 + rem-calc(1);
 
 /* Small dropdown buttons */
 
 $dropdown-button-padding-sml: $button-sml * 5;
 $dropdown-button-pip-size-sml: $button-sml;
 $dropdown-button-pip-right-sml: $button-sml * 2;
-$dropdown-button-pip-top-sml: -$button-sml / 2 + em-calc(1);
+$dropdown-button-pip-top-sml: -$button-sml / 2 + rem-calc(1);
 
 /* Medium dropdown buttons */
 
-$dropdown-button-padding-med: $button-med * 4 + em-calc(3);
-$dropdown-button-pip-size-med: $button-med - em-calc(3);
+$dropdown-button-padding-med: $button-med * 4 + rem-calc(3);
+$dropdown-button-pip-size-med: $button-med - rem-calc(3);
 $dropdown-button-pip-right-med: $button-med * 2;
-$dropdown-button-pip-top-med: -$button-med / 2 + em-calc(2);
+$dropdown-button-pip-top-med: -$button-med / 2 + rem-calc(2);
 
 /* Large dropdown buttons */
 
 $dropdown-button-padding-lrg: $button-lrg * 4;
-$dropdown-button-pip-size-lrg: $button-lrg - em-calc(6);
-$dropdown-button-pip-right-lrg: $button-lrg + em-calc(12);
-$dropdown-button-pip-top-lrg: -$button-lrg / 2 + em-calc(3);
+$dropdown-button-pip-size-lrg: $button-lrg - rem-calc(6);
+$dropdown-button-pip-right-lrg: $button-lrg + rem-calc(12);
+$dropdown-button-pip-top-lrg: -$button-lrg / 2 + rem-calc(3);
 
 
 /* Split Button Variables */
@@ -462,7 +462,7 @@ $split-button-padding-tny: $button-tny * 9;
 $split-button-span-width-tny: $button-tny * 6.5;
 $split-button-pip-size-tny: $button-tny;
 $split-button-pip-top-tny: $button-tny * 2;
-$split-button-pip-left-tny: em-calc(-5);
+$split-button-pip-left-tny: rem-calc(-5);
 
 /* Small split buttons */
 
@@ -470,23 +470,23 @@ $split-button-padding-sml: $button-sml * 7;
 $split-button-span-width-sml: $button-sml * 5;
 $split-button-pip-size-sml: $button-sml;
 $split-button-pip-top-sml: $button-sml * 1.5;
-$split-button-pip-left-sml: em-calc(-9);
+$split-button-pip-left-sml: rem-calc(-9);
 
 /* Medium split buttons */
 
 $split-button-padding-med: $button-med * 6.4;
 $split-button-span-width-med: $button-med * 4;
-$split-button-pip-size-med: $button-med - em-calc(3);
+$split-button-pip-size-med: $button-med - rem-calc(3);
 $split-button-pip-top-med: $button-med * 1.5;
-$split-button-pip-left-med: em-calc(-9);
+$split-button-pip-left-med: rem-calc(-9);
 
 /* Large split buttons */
 
 $split-button-padding-lrg: $button-lrg * 6;
 $split-button-span-width-lrg: $button-lrg * 3.75;
-$split-button-pip-size-lrg: $button-lrg - em-calc(6);
-$split-button-pip-top-lrg: $button-lrg + em-calc(5);
-$split-button-pip-left-lrg: em-calc(-9);
+$split-button-pip-size-lrg: $button-lrg - rem-calc(6);
+$split-button-pip-top-lrg: $button-lrg + rem-calc(5);
+$split-button-pip-left-lrg: rem-calc(-9);
 
 
 /* Alert Variables */
@@ -494,15 +494,15 @@ $split-button-pip-left-lrg: em-calc(-9);
 
 /* Alert padding */
 
-$alert-padding-top: em-calc(11);
+$alert-padding-top: rem-calc(11);
 $alert-padding-default-float: $alert-padding-top;
-$alert-padding-opposite-direction: $alert-padding-top + em-calc(10);
-$alert-padding-bottom: $alert-padding-top + em-calc(1);
+$alert-padding-opposite-direction: $alert-padding-top + rem-calc(10);
+$alert-padding-bottom: $alert-padding-top + rem-calc(1);
 
 /* Text style */
 
 $alert-font-weight: bold;
-$alert-font-size: em-calc(14);
+$alert-font-size: rem-calc(14);
 $alert-font-color: #fff;
 $alert-font-color-alt: darken($secondary-color, 60%);
 
@@ -515,13 +515,13 @@ $alert-function-factor: 10%;
 $alert-border-style: solid;
 $alert-border-width: 1px;
 $alert-border-color: darken($primary-color, $alert-function-factor);
-$alert-bottom-margin: em-calc(20);
+$alert-bottom-margin: rem-calc(20);
 
 /* Close Button style */
 
 $alert-close-color: #333;
-$alert-close-position: em-calc(5);
-$alert-close-font-size: em-calc(22);
+$alert-close-position: rem-calc(5);
+$alert-close-font-size: rem-calc(22);
 $alert-close-opacity: 0.3;
 $alert-close-opacity-hover: 0.5;
 $alert-close-padding: 5px 4px 4px;
@@ -539,8 +539,8 @@ $crumb-bg: lighten($secondary-color, 5%);
 
 /* Padding around the breadcrumbs. */
 
-$crumb-padding: em-calc(6, 14, 9);
-$crumb-side-padding: em-calc(12);
+$crumb-padding: rem-calc(6, 14, 9);
+$crumb-side-padding: rem-calc(12);
 
 /* Border styles. */
 
@@ -552,7 +552,7 @@ $crumb-radius: $global-radius;
 
 /* Various text styles for breadcrumbs. */
 
-$crumb-font-size: em-calc(11);
+$crumb-font-size: rem-calc(11);
 $crumb-font-color: $primary-color;
 $crumb-font-color-current: #333;
 $crumb-font-color-unavailable: #999;
@@ -618,8 +618,8 @@ $custom-select-fade-to-color: #f3f3f3;
 $custom-select-border-color: #ddd;
 $custom-select-triangle-color: #aaa;
 $custom-select-triangle-color-open: #222;
-$custom-select-height: em-calc(13) + ($form-spacing * 1.5);
-$custom-select-margin-bottom: em-calc(20);
+$custom-select-height: rem-calc(13) + ($form-spacing * 1.5);
+$custom-select-margin-bottom: rem-calc(20);
 $custom-select-font-color-selected: #141414;
 $custom-select-disabled-color: #888;
 
@@ -631,15 +631,15 @@ $custom-dropdown-border-color: darken(#fff, 20%);
 $custom-dropdown-border-width: 1px;
 $custom-dropdown-border-style: solid;
 $custom-dropdown-font-color: #555;
-$custom-dropdown-font-size: em-calc(14);
+$custom-dropdown-font-size: rem-calc(14);
 $custom-dropdown-color-selected: #eeeeee;
 $custom-dropdown-font-color-selected: #000;
 $custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
 $custom-dropdown-offset-top: none;
-$custom-dropdown-list-padding: em-calc(4);
-$custom-dropdown-left-padding: em-calc(6);
-$custom-dropdown-right-padding: em-calc(38);
-$custom-dropdown-list-item-min-height: em-calc(24);
+$custom-dropdown-list-padding: rem-calc(4);
+$custom-dropdown-left-padding: rem-calc(6);
+$custom-dropdown-right-padding: rem-calc(38);
+$custom-dropdown-list-item-min-height: rem-calc(24);
 
 
 /* Dropdown Variables */
@@ -671,15 +671,15 @@ $f-dropdown-triangle-side-offset: 10px;
 
 $f-dropdown-list-style: none;
 $f-dropdown-font-color: #555;
-$f-dropdown-font-size: em-calc(14);
-$f-dropdown-list-padding: em-calc(5, 10);
-$f-dropdown-line-height: em-calc(18);
+$f-dropdown-font-size: rem-calc(14);
+$f-dropdown-list-padding: rem-calc(5, 10);
+$f-dropdown-line-height: rem-calc(18);
 $f-dropdown-list-hover-bg: #eeeeee;
 $dropdown-mobile-left: 0;
 
 /* When the dropdown has custom content. */
 
-$f-dropdown-content-padding: em-calc(20);
+$f-dropdown-content-padding: rem-calc(20);
 
 
 /* Flex Video Variables */
@@ -687,9 +687,9 @@ $f-dropdown-content-padding: em-calc(20);
 
 /* Video container padding and margins */
 
-$flex-video-padding-top: em-calc(25);
+$flex-video-padding-top: rem-calc(25);
 $flex-video-padding-bottom: 67.5%;
-$flex-video-margin-bottom: em-calc(16);
+$flex-video-margin-bottom: rem-calc(16);
 
 /* Widescreen bottom padding */
 
@@ -701,7 +701,7 @@ $flex-video-widescreen-padding-bottom: 57.25%;
 
 /* Margins and padding of the inline list. */
 
-$inline-list-margin-bottom: em-calc(17, -22);
+$inline-list-margin-bottom: rem-calc(17, -22);
 $inline-list-margin: 0 0;
 $inline-list-padding: 0;
 
@@ -725,7 +725,7 @@ $inline-list-children-display: block;
 
 $joyride-tip-bg: rgb(0,0,0);
 $joyride-tip-default-width: 300px;
-$joyride-tip-padding: em-calc(18, 20, 24);
+$joyride-tip-padding: rem-calc(18, 20, 24);
 $joyride-tip-border: solid 1px #555;
 $joyride-tip-radius: 4px;
 $joyride-tip-position-offset: 22px;
@@ -733,7 +733,7 @@ $joyride-tip-position-offset: 22px;
 /* Tip font styles */
 
 $joyride-tip-font-color: #fff;
-$joyride-tip-font-size: em-calc(14);
+$joyride-tip-font-size: rem-calc(14);
 $joyride-tip-header-weight: bold;
 
 /* Changes the nub size */
@@ -763,14 +763,14 @@ $joyride-screenfill: rgba(0,0,0,0.5);
 /* Text styles. */
 
 $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
-$keystroke-font-size: em-calc(15);
+$keystroke-font-size: rem-calc(15);
 $keystroke-font-color: #222;
 $keystroke-font-color-alt: #fff;
 $keystroke-function-factor: 7%;
 
 /* Keystroke padding. */
 
-$keystroke-padding: em-calc(2, 4, 0);
+$keystroke-padding: rem-calc(2, 4, 0);
 
 /* Background and border styles. */
 
@@ -786,12 +786,12 @@ $keystroke-radius: $global-radius;
 
 /* Style the labels */
 
-$label-padding: em-calc(3, 10, 4);
+$label-padding: rem-calc(3, 10, 4);
 $label-radius: $global-radius;
 
 /* We use these to style the label text */
 
-$label-font-sizing: em-calc(14);
+$label-font-sizing: rem-calc(14);
 $label-font-weight: bold;
 $label-font-color: #333;
 $label-font-color-alt: #fff;
@@ -835,7 +835,7 @@ $orbit-bullet-nav-color-active: #222;
 
 $orbit-slide-number-bg: rgba(0,0,0,0);
 $orbit-slide-number-font-color: #fff;
-$orbit-slide-number-padding: em-calc(5);
+$orbit-slide-number-padding: rem-calc(5);
 
 /* Graceful Loading Wrapper and preloader */
 
@@ -848,20 +848,20 @@ $preloader-class: "preloader" ;
 
 /* Pagination container */
 
-$pagination-height: em-calc(24);
-$pagination-margin: em-calc(-5);
+$pagination-height: rem-calc(24);
+$pagination-margin: rem-calc(-5);
 
 /* List-item properties */
 
 $pagination-li-float: $default-float;
-$pagination-li-height: em-calc(24);
+$pagination-li-height: rem-calc(24);
 $pagination-li-font-color: #222;
-$pagination-li-font-size: em-calc(14);
-$pagination-li-margin: em-calc(5);
+$pagination-li-font-size: rem-calc(14);
+$pagination-li-margin: rem-calc(5);
 
 /* Pagination anchor links */
 
-$pagination-link-pad: em-calc(1, 7, 1);
+$pagination-link-pad: rem-calc(1, 7, 1);
 $pagination-link-font-color: #999;
 $pagination-link-active-bg: darken(#fff, 10%);
 
@@ -896,8 +896,8 @@ $panel-border-color: darken($panel-bg, $panel-function-factor);
 
 /* Inner padding and bottom margin */
 
-$panel-margin-bottom: em-calc(20);
-$panel-padding: em-calc(20);
+$panel-margin-bottom: rem-calc(20);
+$panel-padding: rem-calc(20);
 
 /* Font colors */
 
@@ -914,33 +914,33 @@ $price-table-border: solid 1px #ddd;
 
 /* Bottom margin of the pricing table */
 
-$price-table-margin-bottom: em-calc(20);
+$price-table-margin-bottom: rem-calc(20);
 
 /* Control the title styles */
 
 $price-title-bg: #ddd;
-$price-title-padding: em-calc(15, 20);
+$price-title-padding: rem-calc(15, 20);
 $price-title-align: center;
 $price-title-color: #333;
 $price-title-weight: bold;
-$price-title-size: em-calc(16);
+$price-title-size: rem-calc(16);
 
 /* Control the price styles */
 
 $price-money-bg: #eee;
-$price-money-padding: em-calc(15, 20);
+$price-money-padding: rem-calc(15, 20);
 $price-money-align: center;
 $price-money-color: #333;
 $price-money-weight: normal;
-$price-money-size: em-calc(20);
+$price-money-size: rem-calc(20);
 
 /* Description styles */
 
 $price-bg: #fff;
 $price-desc-color: #777;
-$price-desc-padding: em-calc(15);
+$price-desc-padding: rem-calc(15);
 $price-desc-align: center;
-$price-desc-font-size: em-calc(12);
+$price-desc-font-size: rem-calc(12);
 $price-desc-weight: normal;
 $price-desc-line-height: 1.4;
 $price-desc-bottom-border: dotted 1px #ddd;
@@ -948,9 +948,9 @@ $price-desc-bottom-border: dotted 1px #ddd;
 /* List item styles */
 
 $price-item-color: #333;
-$price-item-padding: em-calc(15);
+$price-item-padding: rem-calc(15);
 $price-item-align: center;
-$price-item-font-size: em-calc(14);
+$price-item-font-size: rem-calc(14);
 $price-item-weight: normal;
 $price-item-bottom-border: dotted 1px #ddd;
 
@@ -958,7 +958,7 @@ $price-item-bottom-border: dotted 1px #ddd;
 
 $price-cta-bg: #f5f5f5;
 $price-cta-align: center;
-$price-cta-padding: em-calc(20, 20, 0);
+$price-cta-padding: rem-calc(20, 20, 0);
 
 
 /* Progress Bar Variables */
@@ -966,7 +966,7 @@ $price-cta-padding: em-calc(20, 20, 0);
 
 /* Progress bar height */
 
-$progress-bar-height: em-calc(25);
+$progress-bar-height: rem-calc(25);
 $progress-bar-color: transparent;
 
 /* Border styles */
@@ -978,8 +978,8 @@ $progress-bar-border-radius: $global-radius;
 
 /* Margin & padding */
 
-$progress-bar-pad: em-calc(2);
-$progress-bar-margin-bottom: em-calc(10);
+$progress-bar-pad: rem-calc(2);
+$progress-bar-margin-bottom: rem-calc(10);
 
 /* Meter colors */
 
@@ -1002,14 +1002,14 @@ $reveal-overlay-bg-old: #000;
 $reveal-modal-bg: #fff;
 $reveal-position-top: 50px;
 $reveal-default-width: 80%;
-$reveal-modal-padding: em-calc(20);
+$reveal-modal-padding: rem-calc(20);
 $reveal-box-shadow: 0 0 10px rgba(#000,.4);
 
 /* Reveal close button */
 
-$reveal-close-font-size: em-calc(22);
-$reveal-close-top: em-calc(8);
-$reveal-close-side: em-calc(11);
+$reveal-close-font-size: rem-calc(22);
+$reveal-close-top: rem-calc(8);
+$reveal-close-side: rem-calc(11);
 $reveal-close-color: #aaa;
 $reveal-close-weight: bold;
 
@@ -1028,8 +1028,8 @@ $close-reveal-modal-class: "close-reveal-modal";
 
 /* Padding and hover factor */
 
-$section-title-padding: em-calc(15);
-$section-content-padding: em-calc(15);
+$section-title-padding: rem-calc(15);
+$section-content-padding: rem-calc(15);
 $section-function-factor: 10%;
 
 /* Titles */
@@ -1048,14 +1048,14 @@ $section-border-color: #ccc;
 
 /* Font controls */
 
-$section-font-size: em-calc(14);
+$section-font-size: rem-calc(14);
 
 /* Control the color of the background and some size options */
 
 $section-content-bg: #fff;
-$section-vertical-nav-min-width: em-calc(200);
-$section-vertical-tabs-title-width: em-calc(200);
-$section-bottom-margin: em-calc(20);
+$section-vertical-nav-min-width: rem-calc(200);
+$section-vertical-tabs-title-width: rem-calc(200);
+$section-bottom-margin: rem-calc(20);
 
 $title-selector: ".title";
 $content-selector: ".content";
@@ -1066,19 +1066,19 @@ $content-selector: ".content";
 
 /* Padding */
 
-$side-nav-padding: em-calc(14, 0);
+$side-nav-padding: rem-calc(14, 0);
 
 /* List styles */
 
 $side-nav-list-type: none;
 $side-nav-list-position: inside;
-$side-nav-list-margin: em-calc(0, 0, 7, 0);
+$side-nav-list-margin: rem-calc(0, 0, 7, 0);
 
 /* Link styles */
 
 $side-nav-link-color: $primary-color;
 $side-nav-link-color-active: lighten(#000, 30%);
-$side-nav-font-size: em-calc(14);
+$side-nav-font-size: rem-calc(14);
 $side-nav-font-weight: bold;
 
 /* Border styles */
@@ -1093,12 +1093,12 @@ $side-nav-divider-color: darken(#fff, 10%);
 
 /* Margin and padding */
 
-$sub-nav-list-margin: em-calc(-4, 0, 18);
-$sub-nav-list-padding-top: em-calc(4);
+$sub-nav-list-margin: rem-calc(-4, 0, 18);
+$sub-nav-list-padding-top: rem-calc(4);
 
 /* Definition */
 
-$sub-nav-font-size: em-calc(14);
+$sub-nav-font-size: rem-calc(14);
 $sub-nav-font-color: #999;
 $sub-nav-font-weight: normal;
 $sub-nav-text-decoration: none;
@@ -1109,7 +1109,7 @@ $sub-nav-border-radius: 1000px;
 $sub-nav-active-font-weight: bold;
 $sub-nav-active-bg: $primary-color;
 $sub-nav-active-color: #fff;
-$sub-nav-active-padding: em-calc(3, 9);
+$sub-nav-active-padding: rem-calc(3, 9);
 $sub-nav-active-cursor: $cursor-default-value;
 
 
@@ -1129,7 +1129,7 @@ $switch-height-tny: 22px;
 $switch-height-sml: 28px;
 $switch-height-med: 36px;
 $switch-height-lrg: 44px;
-$switch-bottom-margin: em-calc(20);
+$switch-bottom-margin: rem-calc(20);
 
 /* Font sizes for our classes. */
 
@@ -1172,22 +1172,22 @@ $table-border-color: #ddd;
 /* Table head styles */
 
 $table-head-bg: #f5f5f5;
-$table-head-font-size: em-calc(14);
+$table-head-font-size: rem-calc(14);
 $table-head-font-color: #222;
 $table-head-font-weight: bold;
-$table-head-padding: em-calc(8, 10, 10);
+$table-head-padding: rem-calc(8, 10, 10);
 
 /* Row padding and font styles */
 
-$table-row-padding: em-calc(9, 10);
-$table-row-font-size: em-calc(14);
+$table-row-padding: rem-calc(9, 10);
+$table-row-font-size: rem-calc(14);
 $table-row-font-color: #222;
-$table-line-height: em-calc(18);
+$table-line-height: rem-calc(18);
 
 /* Display and margin of tables */
 
 $table-display: table-cell;
-$table-margin-bottom: em-calc(20);
+$table-margin-bottom: rem-calc(20);
 
 
 /* Image Thumbnail Variables */
@@ -1217,16 +1217,16 @@ $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
 $has-tip-font-color-hover: $primary-color;
 $has-tip-cursor-type: help;
 
-$tooltip-padding: em-calc(8);
+$tooltip-padding: rem-calc(8);
 $tooltip-bg: #000;
-$tooltip-font-size: em-calc(15);
+$tooltip-font-size: rem-calc(15);
 $tooltip-font-weight: bold;
 $tooltip-font-color: #fff;
 $tooltip-line-height: 1.3;
-$tooltip-close-font-size: em-calc(10);
+$tooltip-close-font-size: rem-calc(10);
 $tooltip-close-font-weight: normal;
 $tooltip-close-font-color: #888;
-$tooltip-font-size-sml: em-calc(14);
+$tooltip-font-size-sml: rem-calc(14);
 $tooltip-radius: $global-radius;
 $tooltip-pip-size: 5px;
 
@@ -1241,7 +1241,7 @@ $topbar-bg: #111 !default;
 /* Height and margin */
 
 $topbar-height: 45px;
-$topbar-margin-bottom: em-calc(30);
+$topbar-margin-bottom: rem-calc(30);
 
 /* Control Input height for top bar */
 
@@ -1250,7 +1250,7 @@ $topbar-input-height: 2.45em;
 /* Controlling the styles for the title in the top bar */
 
 $topbar-title-weight: bold;
-$topbar-title-font-size: em-calc(17);
+$topbar-title-font-size: rem-calc(17);
 
 /* Style the top bar dropdown elements */
 
@@ -1267,7 +1267,7 @@ $topbar-link-color: #fff;
 $topbar-link-color-hover: #fff;
 $topbar-link-color-active: #fff;
 $topbar-link-weight: bold;
-$topbar-link-font-size: em-calc(13);
+$topbar-link-font-size: rem-calc(13);
 $topbar-link-hover-lightness: -30%; Darken by 30%
 $topbar-link-bg-hover: darken($topbar-bg, 3%);
 $topbar-link-bg-active: darken($topbar-bg, 3%);
@@ -1275,12 +1275,12 @@ $topbar-link-bg-active: darken($topbar-bg, 3%);
 $topbar-dropdown-label-color: #555;
 $topbar-dropdown-label-text-transform: uppercase;
 $topbar-dropdown-label-font-weight: bold;
-$topbar-dropdown-label-font-size: em-calc(10);
+$topbar-dropdown-label-font-size: rem-calc(10);
 
 /* Top menu icon styles */
 
 $topbar-menu-link-transform: uppercase;
-$topbar-menu-link-font-size: em-calc(13);
+$topbar-menu-link-font-size: rem-calc(13);
 $topbar-menu-link-weight: bold;
 $topbar-menu-link-color: #fff;
 $topbar-menu-icon-color: #fff;
@@ -1290,7 +1290,7 @@ $topbar-menu-icon-color-toggled: #888;
 /* Transitions and breakpoint styles */
 
 $topbar-transition-speed: 300ms;
-$topbar-breakpoint: em-calc(940);
+$topbar-breakpoint: rem-calc(940);
 $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 /* Divider Styles */

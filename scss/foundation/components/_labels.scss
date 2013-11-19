@@ -6,11 +6,11 @@
 $include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
-$label-padding: em-calc(7 16 9) !default;
+$label-padding: rem-calc(2 8 6) !default;
 $label-radius: $global-radius !default;
 
 // We use these to style the label text
-$label-font-sizing: em-calc(13) !default;
+$label-font-sizing: rem-calc(11) !default;
 $label-font-weight: normal !default;
 $label-font-color: #333 !default;
 $label-font-color-alt: #fff !default;
@@ -35,7 +35,7 @@ $label-font-family: $body-font-family !default;
 // @mixins
 //
 // We use this mixin to add label size styles.
-// $padding - Used to determine label padding. Default: $label-padding || em-calc(3 10 4) !default
+// $padding - Used to determine label padding. Default: $label-padding || rem-calc(3 10 4) !default
 // $text-size - Used to determine label text-size. Default: $text-size found in settings
 @mixin label-size($padding:$label-padding, $text-size:$label-font-sizing) {
   @if $padding { padding: $padding; }
