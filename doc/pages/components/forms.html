@@ -6,11 +6,7 @@ layout: doc/layouts/default.html
 
 <h3 class="subheader"> With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h3>
 
-{{> examples_form_basic}}
-
 ***
-
-<h3>Basic</h3>
 
 ### Building Forms with HTML
 
@@ -165,4 +161,17 @@ There are two options you can set with the prefix and postfix mixins, these are:
 
 {{> examples_form_variables}}
 
-**Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_variables.scss**.
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+```
