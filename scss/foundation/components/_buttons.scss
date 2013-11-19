@@ -199,6 +199,9 @@ $button-disabled-opacity: 0.7 !default;
       @include button-size;
       @include button-style;
 
+      @include single-transition(background-color);
+      @include button-size($padding:false, $is-input:$button-med);
+
       &.secondary { @include button-style($bg:$secondary-color); }
       &.success   { @include button-style($bg:$success-color); }
       &.alert     { @include button-style($bg:$alert-color); }
@@ -211,33 +214,14 @@ $button-disabled-opacity: 0.7 !default;
       &.left-align  { text-align: left; text-indent: em-calc(12); }
       &.right-align { text-align: right; padding-right: em-calc(12); }
 
+      &.radius { @include button-style($bg:false, $radius:true); }
+      &.round  { @include button-style($bg:false, $radius:$button-round); }
+
       &.disabled, &[disabled] { @include button-style($bg:$primary-color, $disabled:true);
         &.secondary { @include button-style($bg:$secondary-color, $disabled:true); }
         &.success { @include button-style($bg:$success-color, $disabled:true); }
         &.alert { @include button-style($bg:$alert-color, $disabled:true); }
       }
-
-    }
-
-    button, .button {
-      @include single-transition(background-color);
-      @include button-size($padding:false, $is-input:$button-med);
-
-      &.tiny { @include button-size($padding:false, $is-input:$button-tny); }
-      &.small { @include button-size($padding:false, $is-input:$button-sml); }
-      &.large { @include button-size($padding:false, $is-input:$button-lrg); }
-    }
-
-    button, .button {
-      // @include inset-shadow(); //
-      @include single-transition(background-color);
-
-      &.large  { @include button-size($padding:false, $full-width:false); }
-      &.small  { @include button-size($padding:false, $full-width:false); }
-      &.tiny   { @include button-size($padding:false, $full-width:false); }
-
-      &.radius { @include button-style($bg:false, $radius:true); }
-      &.round  { @include button-style($bg:false, $radius:$button-round); }
     }
 
     @media #{$medium-up} {
