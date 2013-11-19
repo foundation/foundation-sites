@@ -82,7 +82,7 @@ var components = [
   { value: 'Keystrokes', data: 'keystrokes.html' },
 
   { value: 'Reveal Modal', data: 'reveal.html' },
-  { value: 'Reveal Modal', data: 'reveal.html' },
+  { value: 'Modal', data: 'reveal.html' },
 
   { value: 'Alerts', data: 'alert_boxes.html' },
   { value: 'Error', data: 'alert_boxes.html' },
@@ -105,7 +105,7 @@ var components = [
 
   { value: 'Progress Bars', data: 'progress_bars.html' },
 
-  { value: 'Accordian', data: 'accordion.html' },
+  { value: 'Accordion', data: 'accordion.html' },
   { value: 'Collapse', data: 'accordion.html' },
 
   { value: 'Visibility', data: 'visibility.html' },
