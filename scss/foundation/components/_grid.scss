@@ -5,8 +5,8 @@
 //
 $include-html-grid-classes: $include-html-classes !default;
 
-$row-width: em-calc(1000) !default;
-$column-gutter: em-calc(30) !default;
+$row-width: rem-calc(1000) !default;
+$column-gutter: rem-calc(30) !default;
 $total-columns: 12 !default;
 
 //

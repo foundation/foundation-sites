@@ -12,12 +12,12 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control margin and padding
-$sub-nav-list-margin: em-calc(-4 0 18) !default;
-$sub-nav-list-padding-top: em-calc(4) !default;
+$sub-nav-list-margin: rem-calc(-4 0 18) !default;
+$sub-nav-list-padding-top: rem-calc(4) !default;
 
 // We use this to control the definition
 $sub-nav-font-family: $body-font-family !default;
-$sub-nav-font-size: em-calc(14) !default;
+$sub-nav-font-size: rem-calc(14) !default;
 $sub-nav-font-color: #999 !default;
 $sub-nav-font-weight: normal !default;
 $sub-nav-text-decoration: none !default;
@@ -31,11 +31,11 @@ $sub-nav-active-font-weight: normal !default;
 $sub-nav-active-bg: $primary-color !default;
 $sub-nav-active-bg-hover: darken($sub-nav-active-bg, 5%) !default;
 $sub-nav-active-color: #fff !default;
-$sub-nav-active-padding: em-calc(3 16) !default;
+$sub-nav-active-padding: rem-calc(3 16) !default;
 $sub-nav-active-cursor: default !default;
 
 $sub-nav-item-divider: "" !default;
-$sub-nav-item-divider-margin: emCalc(12) !default;
+$sub-nav-item-divider-margin: rem-calc(12) !default;
 
 //
 // @mixins
@@ -58,7 +58,7 @@ $sub-nav-item-divider-margin: emCalc(12) !default;
   margin: $sub-nav-list-margin;
   padding-top: $sub-nav-list-padding-top;
   margin-#{$opposite-direction}: 0;
-  margin-#{$default-float}: em-calc(-12);
+  margin-#{$default-float}: rem-calc(-12);
 
   dt {
 	  text-transform: uppercase;
@@ -69,8 +69,8 @@ $sub-nav-item-divider-margin: emCalc(12) !default;
   li {
     float: $default-float;
     display: inline;
-    margin-#{$default-float}: em-calc(16);
-    margin-bottom: em-calc(10);
+    margin-#{$default-float}: rem-calc(16);
+    margin-bottom: rem-calc(10);
     font-family: $sub-nav-font-family;
     font-weight: $sub-nav-font-weight;
     font-size: $font-size;

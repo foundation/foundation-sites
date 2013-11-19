@@ -8,24 +8,24 @@ $header-font-weight: 300 !default;
 $header-font-style: normal !default;
 $header-font-color: #222 !default;
 $header-line-height: 1.4 !default;
-$header-top-margin: .2em !default;
-$header-bottom-margin: .5em !default;
+$header-top-margin: .2rem !default;
+$header-bottom-margin: .5rem !default;
 $header-text-rendering: optimizeLegibility !default;
 
 // We use these to control header font sizes
-$h1-font-size: em-calc(44) !default;
-$h2-font-size: em-calc(37) !default;
-$h3-font-size: em-calc(27) !default;
-$h4-font-size: em-calc(23) !default;
-$h5-font-size: em-calc(18) !default;
-$h6-font-size: 1em !default;
+$h1-font-size: rem-calc(44) !default;
+$h2-font-size: rem-calc(37) !default;
+$h3-font-size: rem-calc(27) !default;
+$h4-font-size: rem-calc(23) !default;
+$h5-font-size: rem-calc(18) !default;
+$h6-font-size: 1rem !default;
 
 // These control how subheaders are styled.
 $subheader-line-height: 1.4 !default;
 $subheader-font-color: lighten($header-font-color, 30%) !default;
 $subheader-font-weight: 300 !default;
-$subheader-top-margin: .2em !default;
-$subheader-bottom-margin: .5em !default;
+$subheader-top-margin: .2rem !default;
+$subheader-bottom-margin: .5rem !default;
 
 // A general <small> styling
 $small-font-size: 60% !default;
@@ -34,10 +34,10 @@ $small-font-color: lighten($header-font-color, 30%) !default;
 // We use these to style paragraphs
 $paragraph-font-family: inherit !default;
 $paragraph-font-weight: normal !default;
-$paragraph-font-size: 1em !default;
+$paragraph-font-size: 1rem !default;
 $paragraph-line-height: 1.6 !default;
-$paragraph-margin-bottom: em-calc(20) !default;
-$paragraph-aside-font-size: em-calc(14) !default;
+$paragraph-margin-bottom: rem-calc(20) !default;
+$paragraph-aside-font-size: rem-calc(14) !default;
 $paragraph-aside-line-height: 1.35 !default;
 $paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
@@ -56,23 +56,23 @@ $anchor-font-color-hover: darken($primary-color, 5%) !default;
 $hr-border-width: 1px !default;
 $hr-border-style: solid !default;
 $hr-border-color: #ddd !default;
-$hr-margin: em-calc(20) !default;
+$hr-margin: rem-calc(20) !default;
 
 // We use these to style lists
 $list-style-position: outside !default;
-$list-side-margin: 1.1em !default;
-$list-ordered-side-margin: 1.4em !default;
+$list-side-margin: 1.1rem !default;
+$list-ordered-side-margin: 1.4rem !default;
 $list-side-margin-no-bullet: 0 !default;
-$list-nested-margin: em-calc(20) !default;
+$list-nested-margin: rem-calc(20) !default;
 $definition-list-header-weight: bold !default;
-$definition-list-header-margin-bottom: .3em !default;
-$definition-list-margin-bottom: em-calc(12) !default;
+$definition-list-header-margin-bottom: .3rem !default;
+$definition-list-margin-bottom: rem-calc(12) !default;
 
 // We use these to style blockquotes
 $blockquote-font-color: lighten($header-font-color, 30%) !default;
-$blockquote-padding: em-calc(9 20 0 19) !default;
+$blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border: 1px solid #ddd !default;
-$blockquote-cite-font-size: em-calc(13) !default;
+$blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: lighten($header-font-color, 20%) !default;
 $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
@@ -80,8 +80,8 @@ $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 $acronym-underline: 1px dotted #ddd !default;
 
 // We use these to control padding and margin
-$microformat-padding: em-calc(10 12) !default;
-$microformat-margin: em-calc(0 0 20 0) !default;
+$microformat-padding: rem-calc(10 12) !default;
+$microformat-margin: rem-calc(0 0 20 0) !default;
 
 // We use these to control the border styles
 $microformat-border-width: 1px !default;
@@ -90,13 +90,13 @@ $microformat-border-color: #ddd !default;
 
 // We use these to control full name font styles
 $microformat-fullname-font-weight: bold !default;
-$microformat-fullname-font-size: em-calc(15) !default;
+$microformat-fullname-font-size: rem-calc(15) !default;
 
 // We use this to control the summary font styles
 $microformat-summary-font-weight: bold !default;
 
 // We use this to control abbr padding
-$microformat-abbr-padding: em-calc(0 1) !default;
+$microformat-abbr-padding: rem-calc(0 1) !default;
 
 // We use this to control abbr font styles
 $microformat-abbr-font-weight: bold !default;
@@ -109,7 +109,7 @@ $microformat-abbr-font-decoration: none !default;
 
 // These will throw a deprecation warning if used within a media query.
 %lead {
-  font-size: $paragraph-font-size + em-calc(3.5);
+  font-size: $paragraph-font-size + rem-calc(3.5);
   line-height: 1.6;
 }
 
@@ -187,7 +187,7 @@ $microformat-abbr-font-decoration: none !default;
       text-rendering: $header-text-rendering;
       margin-top: $header-top-margin;
       margin-bottom: $header-bottom-margin;
-      line-height: $header-line-height - em-calc(3);
+      line-height: $header-line-height - rem-calc(3);
 
       small {
         font-size: $small-font-size;
@@ -196,10 +196,10 @@ $microformat-abbr-font-decoration: none !default;
       }
     }
 
-    h1 { font-size: $h1-font-size - em-calc(10); }
-    h2 { font-size: $h2-font-size - em-calc(10); }
-    h3 { font-size: $h3-font-size - em-calc(5); }
-    h4 { font-size: $h4-font-size - em-calc(5); }
+    h1 { font-size: $h1-font-size - rem-calc(10); }
+    h2 { font-size: $h2-font-size - rem-calc(10); }
+    h3 { font-size: $h3-font-size - rem-calc(5); }
+    h4 { font-size: $h4-font-size - rem-calc(5); }
     h5 { font-size: $h5-font-size; }
     h6 { font-size: $h6-font-size; }
 
@@ -209,7 +209,7 @@ $microformat-abbr-font-decoration: none !default;
       border: $hr-border-style $hr-border-color;
       border-width: $hr-border-width 0 0;
       clear: both;
-      margin: $hr-margin 0 ($hr-margin - em-calc(1));
+      margin: $hr-margin 0 ($hr-margin - rem-calc(1));
       height: 0;
     }
 
@@ -270,7 +270,7 @@ $microformat-abbr-font-decoration: none !default;
         ol {
           margin-#{$default-float}: $list-nested-margin;
           margin-bottom: 0;
-          font-size: 1em; /* Override nested font-size change */
+          font-size: 1rem; /* Override nested font-size change */
         }
       }
       &.square,

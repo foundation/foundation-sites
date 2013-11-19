@@ -6,17 +6,17 @@
 
 .zurb-footer-bottom { background: #333; padding: 24px 0 10px; 
   .design-border { border-bottom: 1px solid #484848; padding-bottom: 5px; margin-bottom: 25px; }  
-  a.zurb-logo { color: #858585; font-weight: normal; background: url(../img/icons/footer-icons.png) no-repeat 0 3px; padding: 25px 0 0 0; font-size: em-calc(16px); display: inline-block; width: 90px; 
+  a.zurb-logo { color: #858585; font-weight: normal; background: url(../img/icons/footer-icons.png) no-repeat 0 3px; padding: 25px 0 0 0; font-size: rem-calc(16px); display: inline-block; width: 90px; 
     &:hover { opacity: 0.8; }
   }
   ul.zurb-links { margin: 0; display: inline-block; 
-    li { display: block; float: left; margin-left: 6px; text-transform: uppercase; font-weight: 700; font-size: emCalc(14px) ;
+    li { display: block; float: left; margin-left: 6px; text-transform: uppercase; font-weight: 700; font-size: rem-calc(14px) ;
       a { color: #666; padding: 3px 6px;  
         &:hover { color: #777; }
       }
     }    
   }
-  p.copyright { margin: 6px 0 0; font-size: em-calc(12px); color: #666; }
+  p.copyright { margin: 6px 0 0; font-size: rem-calc(12px); color: #666; }
   ul.home-social { display: block; float: right; margin-bottom: 8px; 
     li { list-style: none; display: block; float: left; margin-left: 10px;
       &:first-child { margin-left: 0; } 

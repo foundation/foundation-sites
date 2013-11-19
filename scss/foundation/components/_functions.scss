@@ -30,37 +30,37 @@ $modules: () !default;
   @return $num / ($num * 0 + 1);
 }
 
-// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em's.
+// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
 // Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported
-// em-calc(10 20 30px 40);
+// rem-calc(10 20 30px 40);
 // Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
-// em-calc((10, 20, 30, 40px));
-// Optionally call with a different base (eg: 8px) to calculate em.
-// em-calc(16px 32px 48px, 8px);
+// rem-calc((10, 20, 30, 40px));
+// Optionally call with a different base (eg: 8px) to calculate rem.
+// rem-calc(16px 32px 48px, 8px);
 // If you require to comma separate your list
-// em-calc((16px, 32px, 48), 8px);
+// rem-calc((16px, 32px, 48), 8px);
 
-@function convert-to-em($value, $base-value: $em-base)  {
-  $value: strip-unit($value) / strip-unit($base-value) * 1em;
-  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
+@function convert-to-rem($value, $base-value: $rem-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
   @return $value;
 }
 
-@function em-calc($values, $base-value: $em-base) {
+@function rem-calc($values, $base-value: $rem-base) {
   $max: length($values);
 
-  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
 
-  $emValues: ();
+  $remValues: ();
   @for $i from 1 through $max {
-    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
   }
-  @return $emValues;
+  @return $remValues;
 }
 
-// Deprecated: We'll drop support for this in 5.1.0, use em-calc()
+// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
 @function emCalc($values){
-  @return em-calc($values);
+  @return rem-calc($values);
 }
 
 // Maybe you want to create rems with pixels

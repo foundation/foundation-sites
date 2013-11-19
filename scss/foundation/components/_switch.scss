@@ -22,7 +22,7 @@ $switch-height-tny: 22px !default;
 $switch-height-sml: 28px !default;
 $switch-height-med: 36px !default;
 $switch-height-lrg: 44px !default;
-$switch-bottom-margin: em-calc(20) !default;
+$switch-bottom-margin: rem-calc(20) !default;
 
 // We use these to control default font sizes for our classes.
 $switch-font-size-tny: 11px !default;
@@ -158,31 +158,31 @@ $switch-label-outline: 1px dotted #888 !default;
 //
 // $height - Height (in px) of the switch. Default: $switch-height-med.
 // $font-size - Font size of text in switch. Default: $switch-font-size-med.
-// $line-height - Line height of switch. Default: 2.3em.
+// $line-height - Line height of switch. Default: 2.3rem.
 @mixin switch-size(
-  $height:$switch-height-med, 
-  $font-size:$switch-font-size-med, 
-  $line-height:2.3em) {
+  $height: $switch-height-med, 
+  $font-size: $switch-font-size-med, 
+  $line-height: 2.3rem) {
 
-  height: em-calc($height);
+  height: rem-calc($height);
 
   label {
-    padding: em-calc(0, $switch-label-side-padding);
+    padding: rem-calc(0, $switch-label-side-padding);
     line-height: $line-height;
-    font-size: em-calc($font-size);
+    font-size: rem-calc($font-size);
   }
 
   input {
     // Move the paddle to the right position
     &:first-of-type:checked ~ span:last-child {
       #{$default-float}: 100%;
-      margin-#{$default-float}: em-calc(-$height + 1px);
+      margin-#{$default-float}: rem-calc(-$height + 1px);
     }
   }
 
   span:last-child {
-    width: em-calc($height);
-    height: em-calc($height);
+    width: rem-calc($height);
+    height: rem-calc($height);
   }
 
 }
@@ -260,26 +260,26 @@ $switch-label-outline: 1px dotted #888 !default;
 // $transition-ease - Easing function to use for animation (i.e. ease-out). Default: $switch-paddle-transition-ease.
 // $height - Height (in px) of the switch. Default: $switch-height-med.
 // $font-size - Font size of text in switch. Default: $switch-font-size-med.
-// $line-height - Line height of switch. Default: 2.3em.
+// $line-height - Line height of switch. Default: 2.3rem.
 // $paddle-bg - Background of switch paddle. Default: $switch-paddle-bg.
 // $positive-color - Background color of positive side of switch. Default: $switch-positive-color.
 // $negative-color - Background color of negative side of switch. Default: $switch-negative-color.
 // $radius - Radius to apply to switch. Default: false.
 // $base-style - Apply base styles? Default: true.
 @mixin switch(
-  $transition-speed:$switch-paddle-transition-speed, 
-  $transition-ease:$switch-paddle-transition-ease, 
-  $height:$switch-height-med, 
-  $font-size:$switch-font-size-med, 
-  $line-height:2.3em, 
-  $paddle-bg:$switch-paddle-bg, 
-  $positive-color:$switch-positive-color, 
-  $negative-color:$switch-negative-color, 
+  $transition-speed: $switch-paddle-transition-speed, 
+  $transition-ease: $switch-paddle-transition-ease, 
+  $height: $switch-height-med, 
+  $font-size: $switch-font-size-med, 
+  $line-height: 2.3rem, 
+  $paddle-bg: $switch-paddle-bg, 
+  $positive-color: $switch-positive-color, 
+  $negative-color: $switch-negative-color, 
   $radius:false, 
   $base-style:true) {
-  @include switch-base($transition-speed, $transition-ease);
-  @include switch-size($height, $font-size, $line-height);
-  @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
+    @include switch-base($transition-speed, $transition-ease);
+    @include switch-size($height, $font-size, $line-height);
+    @include switch-style($paddle-bg, $positive-color, $negative-color, $radius, $base-style);
 }
 
 @include exports("switch") {
@@ -291,10 +291,10 @@ $switch-label-outline: 1px dotted #888 !default;
         &.large { @include switch-size($switch-height-lrg, $switch-font-size-lrg); }
 
         // Small radio switches
-        &.small { @include switch-size($switch-height-sml, $switch-font-size-sml, 2.1em); }
+        &.small { @include switch-size($switch-height-sml, $switch-font-size-sml, 2.1rem); }
 
         // Tiny radio switches
-        &.tiny { @include switch-size($switch-height-tny, $switch-font-size-tny, 1.9em); }
+        &.tiny { @include switch-size($switch-height-tny, $switch-font-size-tny, 1.9rem); }
 
         // Add a radius to the switch
         &.radius { @include radius(4px);
@@ -304,7 +304,7 @@ $switch-label-outline: 1px dotted #888 !default;
         // Make the switch completely round, like a pill
         &.round { @include radius(1000px);
           span:last-child { @include radius(999px); }
-          label { padding: em-calc(0 $switch-label-side-padding + 3); }
+          label { padding: rem-calc(0 $switch-label-side-padding + 3); }
         }
 
       }
