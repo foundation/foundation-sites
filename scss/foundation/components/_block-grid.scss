@@ -7,7 +7,7 @@ $include-html-grid-classes: $include-html-classes !default;
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12 !default;
-$block-grid-default-spacing: em-calc(20) !default;
+$block-grid-default-spacing: rem-calc(20) !default;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 $block-grid-media-queries: true !default;
@@ -19,7 +19,7 @@ $block-grid-media-queries: true !default;
 // Create a custom block grid
 //
 // $per-row - # of items to display per row. Default: false.
-// $spacing - # of ems to use as padding on each block item. Default: em-calc(20).
+// $spacing - # of ems to use as padding on each block item. Default: rem-calc(20).
 // $base-style - Apply a base style to block grid. Default: true.
 @mixin block-grid(
   $per-row:false, 

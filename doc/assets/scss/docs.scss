@@ -30,17 +30,17 @@
 }
 
 body {
-  //font-size: em-calc(14);
+  //font-size: rem-calc(14);
   //font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 
 .row {
-  max-width: emCalc(1440);
+  max-width: rem-calc(1440);
   &.display {
     background: #eee;
     font-size: 11px;
     margin-bottom: 10px;
-    line-height: 2em;
+    line-height: 2rem;
     border: solid 1px #c6c6c6;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -55,9 +55,9 @@ body {
 }
 
 h1 { margin-top: 20px; }
-h2, h3 { margin: 1em 0 0.15em; }
-h3.subheader { margin: 0 0 10px 0; font-size: 1.25em; }
-h4 { font-size: 0.75em; font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
+h2, h3 { margin: 1rem 0 0.15rem; }
+h3.subheader { margin: 0 0 10px 0; font-size: 1.25rem; }
+h4 { font-size: 0.75rem; font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
 
 
 .top30 { margin-top: 30px; }
@@ -65,7 +65,7 @@ h4 { font-size: 0.75em; font-family: "Open Sans", "Helvetica Neue", "Helvetica",
 .bottom30 { margin-top: 30px; }
 .bottom20 { margin-top: 20px; }
 
-hr { margin: 2.5em 0 2em;}
+hr { margin: 2.5rem 0 2rem;}
 hr.dashed { border-style: dashed; }
 
 // Docs Components
@@ -82,7 +82,7 @@ hr.dashed { border-style: dashed; }
 }
 .autocomplete-suggestion {
   padding: 6px;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -109,7 +109,7 @@ hr.dashed { border-style: dashed; }
     display: inline-block;
     position: absolute;
     top: 47px;
-    right: 0.9375em;
+    right: 0.9375rem;
   }
 }
 
@@ -161,7 +161,7 @@ pre { margin-bottom: 30px;
       margin: 10px 0px;
       padding: 5px;
       overflow-x: auto;
-      line-height: 1.3em;
+      line-height: 1.3rem;
       font-weight: normal;
     }
   }
@@ -257,7 +257,7 @@ footer { margin-top: 45px; }
     text-rendering: $header-text-rendering;
     margin-top: $header-top-margin;
     margin-bottom: $header-bottom-margin;
-    line-height: $header-line-height - em-calc(3);
+    line-height: $header-line-height - rem-calc(3);
     text-transform: none;
 
     small {
@@ -267,10 +267,10 @@ footer { margin-top: 45px; }
     }
   }
 
-  h1 { font-size: $h1-font-size - em-calc(10); }
-  h2 { font-size: $h2-font-size - em-calc(10); }
-  h3 { font-size: $h3-font-size - em-calc(5); }
-  h4 { font-size: $h4-font-size - em-calc(5); }
+  h1 { font-size: $h1-font-size - rem-calc(10); }
+  h2 { font-size: $h2-font-size - rem-calc(10); }
+  h3 { font-size: $h3-font-size - rem-calc(5); }
+  h4 { font-size: $h4-font-size - rem-calc(5); }
   h5 { font-size: $h5-font-size; }
   h6 { font-size: $h6-font-size; }
 
@@ -280,7 +280,7 @@ footer { margin-top: 45px; }
     border: $hr-border-style $hr-border-color;
     border-width: $hr-border-width 0 0;
     clear: both;
-    margin: $hr-margin 0 ($hr-margin - em-calc(1));
+    margin: $hr-margin 0 ($hr-margin - rem-calc(1));
     height: 0;
   }
 
@@ -341,7 +341,7 @@ footer { margin-top: 45px; }
       ol {
         margin-#{$default-float}: $list-nested-margin;
         margin-bottom: 0;
-        font-size: 1em; /* Override nested font-size change */
+        font-size: 1rem; /* Override nested font-size change */
       }
     }
     &.square,
@@ -494,7 +494,7 @@ $custom-divider-color: lighten($custom-link-color, 40%);
 .custom-sidenav-class {
   @include side-nav(
             $divider-color:$custom-divider-color,
-            $font-size:1.2em,
+            $font-size:1.2rem,
             $link-color:$custom-link-color);
 }
 
@@ -507,7 +507,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .custom-subnav-class {
   @include sub-nav(
     $font-color:$custom-font-color,
-    $font-size:1.2em,
+    $font-size:1.2rem,
     $active-bg:$custom-active-bg);
 }
 

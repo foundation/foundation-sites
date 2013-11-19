@@ -263,7 +263,7 @@ $em-base: 16px !default;
 /* If you require to comma separate your list */
 /* em-calc((16px, 32px, 48), 8px); */
 
-@function convert-to-em($value, $base-value: $em-base)  {
+@function convert-to-rem($value, $base-value: $em-base)  {
   $value: strip-unit($value) / strip-unit($base-value) * 1em;
   @if ($value == 0em) { $value: 0; } /* Turn 0em into 0 */
   @return $value;
@@ -272,13 +272,13 @@ $em-base: 16px !default;
 @function em-calc($values, $base-value: $em-base) {
   $max: length($values);
 
-  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
 
-  $emValues: ();
+  $remValues: ();
   @for $i from 1 through $max {
-    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
   }
-  @return $emValues;
+  @return $remValues;
 }
 
 /* Support for the old syntax */

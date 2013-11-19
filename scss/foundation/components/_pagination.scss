@@ -6,18 +6,18 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use these to control the pagination container
-$pagination-height: em-calc(24) !default;
-$pagination-margin: em-calc(-5) !default;
+$pagination-height: rem-calc(24) !default;
+$pagination-margin: rem-calc(-5) !default;
 
 // We use these to set the list-item properties
 $pagination-li-float: $default-float;
-$pagination-li-height: em-calc(24) !default;
+$pagination-li-height: rem-calc(24) !default;
 $pagination-li-font-color: #222 !default;
-$pagination-li-font-size: em-calc(14) !default;
-$pagination-li-margin: em-calc(5) !default;
+$pagination-li-font-size: rem-calc(14) !default;
+$pagination-li-margin: rem-calc(5) !default;
 
 // We use these for the pagination anchor links
-$pagination-link-pad: em-calc(1 10 1) !default;
+$pagination-link-pad: rem-calc(1 10 1) !default;
 $pagination-link-font-color: #999 !default;
 $pagination-link-active-bg: darken(#fff, 10%) !default;
 

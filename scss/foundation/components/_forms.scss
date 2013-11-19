@@ -7,17 +7,17 @@
 $include-html-form-classes: $include-html-classes !default;
 
 // We use this to set the base for lots of form spacing and positioning styles
-$form-spacing: em-calc(16) !default;
+$form-spacing: rem-calc(16) !default;
 
 // We use these to style the labels in different ways
 $form-label-pointer: pointer !default;
-$form-label-font-size: em-calc(14) !default;
+$form-label-font-size: rem-calc(14) !default;
 $form-label-font-weight: normal !default;
 $form-label-font-color: lighten(#000, 30%) !default;
-$form-label-bottom-margin: em-calc(8) !default;
+$form-label-bottom-margin: rem-calc(8) !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
-$input-font-size: em-calc(14) !default;
+$input-font-size: rem-calc(14) !default;
 $input-bg-color: #fff !default;
 $input-focus-bg-color: darken(#fff, 2%) !default;
 $input-border-color: darken(#fff, 20%) !default;
@@ -32,13 +32,13 @@ $input-include-glowing-effect: true !default;
 $fieldset-border-style: solid !default;
 $fieldset-border-width: 1px !default;
 $fieldset-border-color: #ddd !default;
-$fieldset-padding: em-calc(20) !default;
-$fieldset-margin: em-calc(18 0) !default;
+$fieldset-padding: rem-calc(20) !default;
+$fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
 $legend-bg: #fff !default;
 $legend-font-weight: bold !default;
-$legend-padding: em-calc(0 3) !default;
+$legend-padding: rem-calc(0 3) !default;
 
 // We use these to style the prefix and postfix input elements
 $input-prefix-bg: darken(#fff, 5%) !default;
@@ -50,9 +50,9 @@ $input-prefix-font-color: #333 !default;
 $input-prefix-font-color-alt: #fff !default;
 
 // We use these to style the error states for inputs and labels
-$input-error-message-padding: em-calc(6 9 9) !default;
+$input-error-message-padding: rem-calc(6 9 9) !default;
 $input-error-message-top: -1px;
-$input-error-message-font-size: em-calc(12) !default;
+$input-error-message-font-size: rem-calc(12) !default;
 $input-error-message-font-weight: normal !default;
 $input-error-message-font-style: italic !default;
 $input-error-message-font-color: #fff !default;
@@ -109,7 +109,7 @@ $glowing-effect-color: $input-focus-border-color !default;
   font-size: $input-font-size;
   margin: 0 0 $form-spacing 0;
   padding: $form-spacing / 2;
-  height: ($input-font-size + ($form-spacing * 1.5) - em-calc(1));
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
   width: 100%;
   @include box-sizing(border-box);
   @if $input-include-glowing-effect {
@@ -151,7 +151,7 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
   @else if $alignment == inline {
     margin: 0 0 $form-spacing 0;
-    padding: $form-spacing / 2 + em-calc($input-border-width * 2) 0;
+    padding: $form-spacing / 2 + rem-calc($input-border-width * 2) 0;
   }
 }
 
@@ -168,8 +168,8 @@ $glowing-effect-color: $input-focus-border-color !default;
   border-width: $input-prefix-border-size;
   overflow: $input-prefix-overflow;
   font-size: $form-label-font-size;
-  height: ($form-label-font-size + ($form-spacing * 1.5) - em-calc(1));
-  line-height: ($form-label-font-size + ($form-spacing * 1.5) - em-calc(1));
+  height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
 }
 
 // @MIXIN
@@ -197,7 +197,8 @@ $glowing-effect-color: $input-focus-border-color !default;
     padding-top: 0;
     padding-bottom: 0;
     text-align: center;
-    line-height: em-calc(34);
+    line-height: rem-calc(34);
+    border: none;
   }
 
 }
@@ -226,7 +227,8 @@ $glowing-effect-color: $input-focus-border-color !default;
     padding-top: 0;
     padding-bottom: 0;
     text-align: center;
-    line-height: em-calc(34);
+    line-height: rem-calc(34);
+    border: none;
   }
 
 }
@@ -243,7 +245,7 @@ $glowing-effect-color: $input-focus-border-color !default;
     background: $legend-bg;
     padding: $legend-padding;
     margin: 0;
-    margin-#{$default-float}: em-calc(-3);
+    margin-#{$default-float}: rem-calc(-3);
   }
 }
 
@@ -304,6 +306,23 @@ $glowing-effect-color: $input-focus-border-color !default;
       small {
         text-transform: capitalize;
         color: lighten($form-label-font-color, 10%);
+      }
+    }
+
+    select {
+      -webkit-appearance: none;
+      background: $input-bg-color;
+      border: $input-border-width $input-border-style $input-border-color;
+      padding: $form-spacing / 2;
+      font-size: rem-calc(14);
+      @include radius(0);
+      &:after {
+        @include css-triangle(3px, rgba(0,0,0,1), $opposite-direction);
+        margin-#{$opposite-direction}: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+        margin-top: -($input-font-size / 2) - 2;
+        position: absolute;
+        top: 50%;
+        #{$opposite-direction}: 0;
       }
     }
 
@@ -434,10 +453,10 @@ $glowing-effect-color: $input-focus-border-color !default;
   }
 
   @media #{$small-only} { 
-     select:focus, 
-     textarea:focus, 
-     input:focus {
-       font-size: $base-font-size;
-       }
+    select:focus, 
+    textarea:focus, 
+    input:focus {
+      font-size: $base-font-size;
+    }
   }
 }

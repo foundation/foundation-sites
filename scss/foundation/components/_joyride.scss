@@ -8,14 +8,14 @@ $include-html-joyride-classes: $include-html-classes !default;
 // Controlling default Joyride styles
 $joyride-tip-bg: red !default;
 $joyride-tip-default-width: 300px !default;
-$joyride-tip-padding: em-calc(18 20 24) !default;
+$joyride-tip-padding: rem-calc(18 20 24) !default;
 $joyride-tip-border: solid 1px #555 !default;
 $joyride-tip-radius: 4px !default;
 $joyride-tip-position-offset: 22px !default;
 
 // Here, we're setting the tip dont styles
 $joyride-tip-font-color: #fff !default;
-$joyride-tip-font-size: em-calc(14) !default;
+$joyride-tip-font-size: rem-calc(14) !default;
 $joyride-tip-header-weight: bold !default;
 
 // This changes the nub size
@@ -116,7 +116,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
       color: $joyride-tip-font-color;
     }
     .joyride-tip-guide p {
-      margin: em-calc(0 0 18 0);
+      margin: rem-calc(0 0 18 0);
       font-size: $joyride-tip-font-size;
       line-height: 1.3;
     }
@@ -126,8 +126,8 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
       height: $joyride-tip-timer-height;
       border: $joyride-tip-border;
       position: absolute;
-      #{$opposite-direction}: em-calc(17);
-      bottom: em-calc(16);
+      #{$opposite-direction}: rem-calc(17);
+      bottom: rem-calc(16);
     }
     .joyride-timer-indicator {
       display: block;
