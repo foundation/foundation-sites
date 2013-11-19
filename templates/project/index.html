@@ -99,11 +99,7 @@
 		</div>
 	</div>
 
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? '<%= javascripts_dir %>/vendor/zepto' : '<%= javascripts_dir %>/vendor/jquery') +
-  '.js><\/script>')
-  </script>
+  <script src="js/vendor/jquery.js"></script>
   <% if template[:options][:customizer_used] %>
   <script src="<%= javascripts_dir %>/foundation.min.js"></script>
   <!--
