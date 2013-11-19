@@ -70,6 +70,7 @@
       }
 
       var settings = topbar.data('topbar-init');
+      if (typeof settings === 'undefined') {settings = {};}
 
       var section = $('section, .section', topbar);
 
