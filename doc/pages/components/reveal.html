@@ -111,7 +111,7 @@ One important aspect we musn't forget is the close button. We've given you a mix
 ### Using the JavaScript
 
 <div class="panel">
-  Before you can use Reveal you'll want to verify that both jQuery (or Zepto) and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+  Before you can use Reveal you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
 </div>
 
 Just add `foundation.reveal.js` AFTER the `foundation.js` file. Your markup should look something like this:
@@ -127,3 +127,15 @@ Reveal options can only be passed in during initialization at this time. However
 {{> examples_reveal_javascript_options}}
 
 {{> examples_reveal_modal_examples}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/reveal";
+```

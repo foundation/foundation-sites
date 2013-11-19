@@ -147,7 +147,7 @@
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
         } else if (is_equal && required) {
-+         validations.push(this.valid_equal(el, required));
+          validations.push(this.valid_equal(el, required));
         } else {
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
