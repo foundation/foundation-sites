@@ -31,6 +31,7 @@
 
       directives : {
         replace: function (el, path, trigger) {
+          console.log(Foundation.media_queries.large)
           // The trigger argument, if called within the directive, fires
           // an event named after the directive on the element, passing
           // any parameters along to the event that you pass to trigger.
