@@ -140,11 +140,14 @@
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
             value = el.value,
+            is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
             valid_length = (required) ? (el.value.length > 0) : true;
 
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
+        } else if (is_equal && required) {
++         validations.push(this.valid_equal(el, required));
         } else {
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
@@ -176,6 +179,20 @@
         } else {
           $(group[i]).attr('data-invalid', '').parent().addClass('error');
         }
+      }
+
+      return valid;
+    },
+
+    valid_equal: function(el, required) {
+      var from  = document.getElementById(el.getAttribute('data-equalto')).value,
+          to    = el.value,
+          valid = (from === to);
+
+      if (valid) {
+        $(el).removeAttr('data-invalid').parent().removeClass('error');
+      } else {
+        $(el).attr('data-invalid', '').parent().addClass('error');
       }
 
       return valid;

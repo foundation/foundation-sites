@@ -8,6 +8,11 @@
         <input type="password" id="password" placeholder="LittleW0men." name="password" required>
         <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
       </div>
+      <div class="large-12 columns">
+        <label for="confirmPassword">Confirm Password <small>required</small></label>
+        <input type="password" id="confirmPassword" placeholder="LittleW0men." name="confirmPassword" required data-equal="password">
+        <small class="error" data-error-message>Passwords must match.</small>
+      </div>
     </div>
 
     <div class="row">
