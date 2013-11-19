@@ -79,7 +79,7 @@ The top bar is a pretty complex piece of magical UI goodness, which makes it rea
           <h1><a href="#">My Site</a></h1>
         </li>
       </ul>
-        
+
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
@@ -364,3 +364,15 @@ Top bar supports `data-options` configuration.
 }
 ```
 {{/markdown}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/topbar";
+```

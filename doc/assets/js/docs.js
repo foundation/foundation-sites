@@ -82,7 +82,7 @@ var components = [
   { value: 'Keystrokes', data: 'keystrokes.html' },
 
   { value: 'Reveal Modal', data: 'reveal.html' },
-  { value: 'Reveal Modal', data: 'reveal.html' },
+  { value: 'Modal', data: 'reveal.html' },
 
   { value: 'Alerts', data: 'alert_boxes.html' },
   { value: 'Error', data: 'alert_boxes.html' },

@@ -161,4 +161,17 @@ There are two options you can set with the prefix and postfix mixins, these are:
 
 {{> examples_form_variables}}
 
-**Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_variables.scss**.
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+```
