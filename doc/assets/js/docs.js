@@ -32,7 +32,7 @@ var components = [
 
   { value: 'Side Nav', data: 'sidenav.html' },
 
-  { value: 'magellan', data: 'magellan.html' },
+  { value: 'Magellan', data: 'magellan.html' },
   { value: 'scrollspy', data: 'magellan.html' },
 
   { value: 'Sub Nav', data: 'subnav.html' },
@@ -105,12 +105,12 @@ var components = [
 
   { value: 'Progress Bars', data: 'progress_bars.html' },
 
-  { value: 'Accordian', data: '#accordian' },
-  { value: 'Collapse', data: '#accordian' },
+  { value: 'Accordian', data: 'accordion.html' },
+  { value: 'Collapse', data: 'accordion.html' },
 
   { value: 'Visibility', data: 'visibility.html' },
 
-  { value: 'Tabs', data: '#tabs' },
+  { value: 'Tabs', data: 'tabs.html' },
   { value: 'Changelog', data: '#changelog' },
   { value: 'Compatibility', data: '#compatibility' },
   { value: 'FAQ', data: 'faq.html' },
@@ -127,7 +127,7 @@ $('#autocomplete').autocomplete({
     if (/index.html/i.test(window.location.href)) {
       return window.location = 'components/' + suggestion.data;
     }
-    
+
     return window.location = '../components/' + suggestion.data;
   }
 });
