@@ -18,7 +18,7 @@ $panel-bg-color: #FAFAFA;
   padding: 0;
   }
 .side-nav li a {
-  padding: em-calc(6) 0;
+  padding: rem-calc(6) 0;
   &:hover { 
     color: darken($primary-color, 20%); 
     span { 
@@ -38,12 +38,12 @@ $panel-bg-color: #FAFAFA;
 .sidebar {
   h1,h2,h3,h4,h5,h6 {
     padding: 4px 0px;
-    font-size: em-calc(14);
+    font-size: rem-calc(14);
   }
 }
 .sidebar .download.button { 
   margin: 10px 0px;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 /*
@@ -60,7 +60,7 @@ $panel-bg-color: #FAFAFA;
 [data-magellan-expedition] {
 }
 .sidebar form { margin-bottom: 0; }
-.sidebar .button { font-size: em-calc(12); }
+.sidebar .button { font-size: rem-calc(12); }
 .magellan-fixed {
   &.magellan-outer-wrapper {
     overflow-y: scroll;

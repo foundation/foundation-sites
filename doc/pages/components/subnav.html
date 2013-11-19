@@ -45,11 +45,7 @@ Sub Navs can be easily customized using our provided Sass variables.
 
 <h4>SCSS</h4>
 
-{{#markdown}}
-```scss
 {{> examples_subnav_variables}}
-```
-{{/markdown}}
 
 ***
 
@@ -95,14 +91,14 @@ You can further customize your alert boxes using the provided options in the `su
     // Control the color of the divider between links.
     $font-color: $primary-color,
     // Control your font-size per label.
-    $font-size: em-calc(14),
+    $font-size: rem-calc(14),
     // Change the background color for your labels
     $active-bg: $primary-color
   );
 }
 ```
 
-**Note:** `em-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `em`. It is included in **_variables.scss**.
 
 ***
 
