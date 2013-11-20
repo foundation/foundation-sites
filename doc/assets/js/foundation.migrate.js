@@ -82,7 +82,7 @@
         'nextButton' : 'next_button',
         'tipAnimation' : 'tip_animation',
         'pauseAfter' : 'pause_after',
-        'tipAnimationFadeSpeed', 'tip_animation_fade_speed',
+        'tipAnimationFadeSpeed': 'tip_animation_fade_speed',
         'cookieMonster' : 'cookie_monster',
         'cookieName' : 'cookie_name',
         'cookieDomain' : 'cookie_domain',
