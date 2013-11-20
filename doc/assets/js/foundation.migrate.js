@@ -104,7 +104,7 @@
         'closeOnEsc' : 'close_on_esc',
         'dismissModalClass' : 'dismiss_modal_class',
         'bgClass' : 'bg_class'
-      }
+      },
       tooltip : {
         'additionalInheritableClasses' : 'additional_inheritable_classes',
         'tooltipClass' : 'tooltip_class',
