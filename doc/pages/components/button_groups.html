@@ -14,24 +14,20 @@ layout: doc/layouts/default.html
 
 You can create a button group using minimal markup.
 
-<div class="row">
-  <div class="large-6 columns">
-    <h4>HTML</h4>
+<h4>HTML</h4>
+
 {{> examples_button_group_basic_rendered}}
-  </div>
-  <div class="large-6 columns">
-    <h4>Rendered HTML</h4>
+
+<h4>Rendered HTML</h4>
+
 {{> examples_button_group_basic}}
-  </div>
-</div>
 
 <h3>Advanced</h3>
 
 Additional classes can be added to your button groups to change its appearance.
 
-<div class="row">
-  <div class="large-6 columns">
-    <h4>HTML</h4>
+<h4>HTML</h4>
+
 {{#markdown}}
 ```html
 <ul class="button-group [radius round]">
@@ -42,17 +38,15 @@ Additional classes can be added to your button groups to change its appearance.
 </ul>
 ```
 {{/markdown}}
-  </div>
-  <div class="large-6 columns">
-    <h4>Rendered HTML</h4>
-    <ul class="button-group radius">
-      <li><a href="#" class="button [secondary alert success]">Button 1</a></li>
-      <li><a href="#" class="button [secondary alert success]">Button 2</a></li>
-      <li><a href="#" class="button [secondary alert success]">Button 3</a></li>
-      <li><a href="#" class="button [secondary alert success]">Button 4</a></li>
-    </ul>
-  </div>
-</div>
+
+<h4>Rendered HTML</h4>
+
+<ul class="button-group radius">
+  <li><a href="#" class="button [secondary alert success]">Button 1</a></li>
+  <li><a href="#" class="button [secondary alert success]">Button 2</a></li>
+  <li><a href="#" class="button [secondary alert success]">Button 3</a></li>
+  <li><a href="#" class="button [secondary alert success]">Button 4</a></li>
+</ul>
 
 ***
 
@@ -107,9 +101,8 @@ Button bars can be easily customized using our provided Sass variables.
 
 You can use the `button-group-container()` and `button-group-style()` mixins to create your own button groups and button bars with semantic markup, like so:
 
-<div class="row">
-  <div class="large-6 columns">
-    <h4>SCSS</h4>
+<h4>SCSS</h4>
+
 {{#markdown}}
 ```scss
 .custom-button-group-class {
@@ -123,12 +116,10 @@ You can use the `button-group-container()` and `button-group-style()` mixins to 
 {{/markdown}}
 
 <p>You can find more information regarding button mixins <a href="{{relative absolute 'dist/docs/components/buttons.html'}}">here</a>.</p>
-  </div>
-  <div class="large-6 columns">
-    <h4>HTML</h4>
-    {{> examples_button_group_basic_mixin}}
-  </div>
-</div>
+
+<h4>HTML</h4>
+
+{{> examples_button_group_basic_mixin}}
 
 <h3>Advanced</h3>
 
