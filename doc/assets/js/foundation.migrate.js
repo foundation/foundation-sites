@@ -6,10 +6,10 @@
 
   Foundation.init = function (scope, libraries, method, options, response) {
     if (typeof libraries === 'string' && typeof method === 'object') {
-      Foundation.migrate.warn('$(document).foundation(\'plugin\', {mySetting: value}) is now $(document).foundation({plugin: {mySetting: value}})');
+      Foundation.migrate.warn('$(document).foundation(\'plugin\', {mySetting: value}); is now $(document).foundation({plugin: {my_setting: value}});');
     }
 
-    if (typeof libraries === 'string') {
+    if (typeof libraries === 'string' && typeof method !== 'string') {
       var libs = libraries.split(' '),
           count = libs.length;
 
@@ -72,6 +72,45 @@
       },
       topbar : {
         'stickyClass' : 'sticky_class'
+      },
+      joyride : {
+        'tipLocation' : 'tip_location',
+        'nubPosition' : 'nub_position',
+        'scrollSpeed' : 'scroll_speed',
+        'startTimeOnClick' : 'start_timer_on_click',
+        'startOffset' : 'start_offset',
+        'nextButton' : 'next_button',
+        'tipAnimation' : 'tip_animation',
+        'pauseAfter' : 'pause_after',
+        'tipAnimationFadeSpeed': 'tip_animation_fade_speed',
+        'cookieMonster' : 'cookie_monster',
+        'cookieName' : 'cookie_name',
+        'cookieDomain' : 'cookie_domain',
+        'cookieExpires' : 'cookie_expires',
+        'tipContainer' : 'tip_container',
+        'postRideCallback' : 'post_ride_callback',
+        'postStepCallback' : 'post_step_callback',
+        'preStepCallback' : 'pre_step_callback',
+        'preRideCallback' : 'pre_ride_callback',
+        'postExposeCallback' : 'post_expose_callback',
+        'exposeAddClass' : 'expose_add_class'
+      },
+      magellan : {
+        'activeClass' : 'active_class'
+      },
+      reveal : {
+        'animationSpeed' : 'animation_speed',
+        'closeOnBackgroundClick' : 'close_on_background_click',
+        'closeOnEsc' : 'close_on_esc',
+        'dismissModalClass' : 'dismiss_modal_class',
+        'bgClass' : 'bg_class'
+      },
+      tooltip : {
+        'additionalInheritableClasses' : 'additional_inheritable_classes',
+        'tooltipClass' : 'tooltip_class',
+        'touchCloseText' : 'touch_close_text',
+        'appendTo' : 'append_to',
+        'tipTemplate' : 'tip_template'
       }
     },
 
@@ -82,6 +121,7 @@
 
       if (typeof Zepto === 'function') {
         Zepto = jQuery;
+        $ = jQuery;
         Foundation.migrate.warn('Zepto is no longer supported by Foundation, use jQuery 1.8+');
       }
 
