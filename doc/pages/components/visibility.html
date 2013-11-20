@@ -4,7 +4,7 @@ layout: doc/layouts/default.html
 
 # Visibility Classes
 
-<h3 class="subheader"> Visibility classes provide some easy utility classes that let you hide or show elements based on a few device characteristics like screen size or orientation. This can be useful to turn off elements not well-suited to a situation,a mong other things.</h3>
+<h3 class="subheader"> Visibility classes let you hide or show elements based on device characteristics like screen size or orientation. This can be useful to turn off elements not well-suited to a situation, among other things.</h3>
 
 {{> examples_visibility_basic}}
 
@@ -12,19 +12,19 @@ layout: doc/layouts/default.html
 
 ### Show By Screen Size
 
-In this example we're using the <strong>show</strong> visibility classes to show certain strings based on the device you're currently viewing this page on. If a class conditions are met, the element will be shown; if not, it will be hidden.
+This example uses the **show** visibility classes to show certain strings based on the device on which you're currently viewing this page. If a browser meets the class's conditions, the element will be shown; if not, it will be hidden.
 
 {{> examples_visibility_show}}
 
 ### Hide By Screen Size
 
-This example shows the opposite: we're using the <strong>hide</strong> visibility classes to state which elements we should hide based on the device you're viewing this on. If the conditions are not met, the element will be shown.
+This example shows the opposite: We're using the **hide** visibility classes to state which elements should disappear based on the device's size or orientation you're viewing this on. Users will see elements on every browser **except** those that meet these conditions.
 
 {{> examples_visibility_hide}}
 
 ### Orientation Detection
 
-This is a very straightforward example, showing a string based on which orientation your screen is in. On mobile devices this will change when you rotate the device; on a desktop the orientation is almost always reported as landscape.
+This straightforward example shows how two strings of text determine whether or not an element is visible in different orientations. On mobile devices this will change when you rotate the device; on a desktop the orientation is almost always reported as landscape.
 
 {{> examples_visibility_orientation}}
 
