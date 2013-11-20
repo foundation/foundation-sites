@@ -11,23 +11,23 @@
 
   // Used to retrieve Foundation media queries from CSS.
   if($('head').has('.foundation-mq-small').length === 0) {
-    $('head').append('<meta class="foundation-mq-small">')
+    $('head').append('<meta class="foundation-mq-small">');
   }
 
   if($('head').has('.foundation-mq-medium').length === 0) {
-    $('head').append('<meta class="foundation-mq-medium">')
+    $('head').append('<meta class="foundation-mq-medium">');
   }
 
   if($('head').has('.foundation-mq-large').length === 0) {
-    $('head').append('<meta class="foundation-mq-large">')
+    $('head').append('<meta class="foundation-mq-large">');
   }
 
   if($('head').has('.foundation-mq-xlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xlarge">')
+    $('head').append('<meta class="foundation-mq-xlarge">');
   }
 
   if($('head').has('.foundation-mq-xxlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xxlarge">')
+    $('head').append('<meta class="foundation-mq-xxlarge">');
   }
 
   // Enable FastClick

@@ -148,7 +148,7 @@ The top bar is built with a single `nav` element with a class of `top-bar`. It w
 
 ##### Sticky Top Bar
 
-You may also wrap your top bar in `div class="contain-to-grid sticky"` and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. **Note:** If you are using Scss, you can control the default `sticky` class by adjusting the `$topbar-sticky-class` variable. **Make sure the JS variable for `stickyClass` matches whatever class you use in the variable.**
+You may also wrap your top bar in `div class="contain-to-grid sticky"` and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. **Note:** If you are using Scss, you can control the default `sticky` class by adjusting the `$topbar-sticky-class` variable. **Make sure the JS variable for `sticky_class` matches whatever class you use in the variable.**
 
 {{#markdown}}
 ```html
@@ -355,7 +355,7 @@ Top bar supports `data-options` configuration.
 {{#markdown}}
 ```js
 {
-  stickyClass : 'sticky',
+  sticky_class : 'sticky',
   custom_back_text: true, // Set this to false and it will pull the top level link name as the back text
   back_text: 'Back', // Define what you want your custom back text to be if custom_back_text: true
   is_hover: true,
