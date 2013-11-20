@@ -74,6 +74,7 @@ var components = [
   { value: 'Type-setting', data: 'typography.html' },
   { value: 'Composition', data: 'typography.html' },
 
+  { value: 'Inline Lists', data: 'inline_lists.html' },
   { value: 'Lists', data: 'inline_lists.html' },
 
   { value: 'Labels', data: 'labels.html' },
