@@ -34,7 +34,7 @@
           var $this = $(this);
           clearTimeout(self.timeout);
 
-          if ($this.data('dropdown').length > 0) {
+          if ($this.data('dropdown')) {
             var dropdown = $('#' + $this.data('dropdown')),
                 target = $this;
           } else {
