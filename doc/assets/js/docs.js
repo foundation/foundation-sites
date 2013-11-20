@@ -123,6 +123,7 @@ var components = [
 
 $('#autocomplete').autocomplete({
   lookup: components,
+  autoSelectFirst: true,
   onSelect: function (suggestion) {
     if (/index.html/i.test(window.location.href)) {
       return window.location = 'components/' + suggestion.data;
