@@ -244,8 +244,6 @@
 
           this.settings.tip_settings = $.extend({}, this.settings, this.data_options(this.settings.$li));
 
-          console.log(this.settings.tip_settings)
-
           this.settings.timer = parseInt(this.settings.timer, 10);
 
           this.settings.tip_settings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tip_settings.tip_location];
