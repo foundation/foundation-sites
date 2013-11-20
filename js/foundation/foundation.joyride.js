@@ -8,9 +8,9 @@
 
     version : '5.0.0',
 
-    settings : {
+    defaults : {
       expose               : false,      // turn on or off the expose feature
-      modal                : false,      // Whether to cover page with modal during the tour
+      modal                : true,      // Whether to cover page with modal during the tour
       tip_location          : 'bottom',  // 'top' or 'bottom' in relation to parent
       nub_position          : 'auto',    // override on a per tooltip bases
       scroll_speed          : 1500,       // Page scrolling speed in milliseconds, 0 = no scroll animation
@@ -28,6 +28,12 @@
       cookie_domain         : false,     // Will this cookie be attached to a domain, ie. '.notableapp.com'
       cookie_expires        : 365,       // set when you would like the cookie to expire.
       tip_container         : 'body',    // Where will the tip be attached
+      tip_location_patterns : {
+        top: ['bottom'],
+        bottom: [], // bottom should not need to be repositioned
+        left: ['right', 'top', 'bottom'],
+        right: ['left', 'top', 'bottom']
+      },
       post_ride_callback     : function (){},    // A method to call once the tour closes (canceled or complete)
       post_step_callback     : function (){},    // A method to call after each step
       pre_step_callback      : function (){},    // A method to call before each step
@@ -48,6 +54,8 @@
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle delay');
+
+      this.settings = this.defaults;
 
       this.bindings(method, options)
     },
@@ -110,6 +118,8 @@
 
       if (!this.settings.init) this.events();
 
+      this.settings = $this.data('joyride-init');
+
       // non configureable settings
       this.settings.$content_el = $this;
       this.settings.$body = $(this.settings.tip_container);
@@ -117,13 +127,6 @@
       this.settings.$tip_content = this.settings.$content_el.find('> li');
       this.settings.paused = false;
       this.settings.attempts = 0;
-
-      this.settings.tip_location_patterns = {
-        top: ['bottom'],
-        bottom: [], // bottom should not need to be repositioned
-        left: ['right', 'top', 'bottom'],
-        right: ['left', 'top', 'bottom']
-      };
 
       // can we create cookies?
       if (typeof $.cookie !== 'function') {
@@ -134,7 +137,8 @@
       if (!this.settings.cookie_monster || this.settings.cookie_monster && $.cookie(this.settings.cookie_name) === null) {
         this.settings.$tip_content.each(function (index) {
           var $this = $(this);
-          $.extend(true, self.settings, self.data_options($this));
+          this.settings = $.extend({}, self.defaults, self.data_options($this))
+
           // Make sure that settings parsed from data_options are integers where necessary
           for (var i = int_settings_count - 1; i >= 0; i--) {
             self.settings[integer_settings[i]] = parseInt(self.settings[integer_settings[i]], 10);
@@ -297,7 +301,6 @@
 
             } else {
               this.settings.$next_tip.fadeIn(this.settings.tip_animation_fade_speed);
-
             }
           }
 
@@ -322,7 +325,8 @@
     },
 
     is_phone : function () {
-      return matchMedia(Foundation.media_queries.small).matches;
+      return matchMedia(Foundation.media_queries.small).matches &&
+        !matchMedia(Foundation.media_queries.medium).matches;
     },
 
     hide : function () {
@@ -610,6 +614,8 @@
         width: el.outerWidth(true),
         height: el.outerHeight(true)
       });
+
+      if (this.settings.modal) this.show_modal();
 
       this.settings.$body.append(exposeCover);
       expose.addClass(randId);
