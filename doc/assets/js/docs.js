@@ -132,6 +132,10 @@ $('#autocomplete').autocomplete({
   }
 });
 
+$('#interchangeMarkup').on('replace', function () {
+  $(document).foundation();
+});
+
 // `lookup`: Lookup array for the suggestions. It may be array of strings or `suggestion` object literals.
 // `suggestion`: An object literal with the following format: `{ value: 'string', data: any }`.
 // `onSelect`: `function (suggestion) {}` Callback function invoked when user selects suggestion
