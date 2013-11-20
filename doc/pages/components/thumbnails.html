@@ -60,20 +60,22 @@ Thumbnails can be easily customized using our Sass variables.
 
 <h4>SCSS</h4>
 
+{{#markdown}}
 ```scss
 $include-html-media-classes: $include-html-classes;
 
-/* We use these to control border styles */
+// We use these to control border styles
 $thumb-border-style: solid;
 $thumb-border-width: 4px;
 $thumb-border-color: #fff;
 $thumb-box-shadow: 0 0 0 1px rgba(#000,.2);
 $thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5);
 
-/* Radius and transition speed for thumbs */
+// Radius and transition speed for thumbs
 $thumb-radius: $global-radius;
 $thumb-transition-speed: 200ms;
 ```
+{{/markdown}}
 
 ***
 
@@ -86,24 +88,32 @@ You can create your own thumbnails using our own Sass mixins.
 You can use the `thumb()` mixin to create your own thumbnails, like so:
 
 <h4>SCSS</h4>
+
+{{#markdown}}
 ```scss
 .custom-thumbnail-class {
   @include thumb;
 }
 ```
+{{/markdown}}
 
 <h4>HTML</h4>
+
+{{#markdown}}
 ```html
 <a class="custom-thumbnail-class" href="http://placehold.it/100x100">
   <img src="http://placehold.it/100x100">
 </a>
 ```
+{{/markdown}}
 
 <h3>Advanced</h3>
 
 You can further customize your thumbnails using the provided options in the `thumb()` mixin:
 
 <h4>SCSS</h4>
+
+{{#markdown}}
 ```scss
 .custom-thumbnail-class {
   @include thumb(
@@ -116,13 +126,17 @@ You can further customize your thumbnails using the provided options in the `thu
   );
 }
 ```
+{{/markdown}}
 
 <h4>HTML</h4>
+
+{{#markdown}}
 ```html
 <a class="custom-thumbnail-class" href="http://placehold.it/100x100">
   <img src="http://placehold.it/100x100">
 </a>
 ```
+{{/markdown}}
 
 ***
 
@@ -132,6 +146,8 @@ If the default "foundation" import was commented out, then make sure you import 
 
 <h4>SCSS</h4>
 
+{{#markdown}}
 ```scss
 @import "foundation/components/thumbs";
 ```
+{{/markdown}}
