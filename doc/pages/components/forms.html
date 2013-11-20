@@ -4,11 +4,11 @@ layout: doc/layouts/default.html
 
 # Forms
 
-<h3 class="subheader"> With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h3>
+<h3 class="subheader">With Foundation, we set out to create an easy to handle, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do basically anything.</h3>
 
 ***
 
-### Building Forms with HTML
+### Building Forms With HTML
 
 Ceating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as the Grid (rows and columns).
 
@@ -30,7 +30,6 @@ This is an example form we've created that is laid out using the grid:
 {{> examples_form_basic}}
   </div>
 </div>
-
 
 ### Inline Labels
 
@@ -62,7 +61,6 @@ Adding a class of `.inline` will have it vertically center against an input. You
   </div>
 </div>
 
-
 ***
 
 ### Defining a Fieldset
@@ -80,7 +78,6 @@ We don't see them too much, but one of the useful form elements included with Fo
 {{> examples_form_fieldset}}
   </div>
 </div>
-
 
 ***
 
@@ -122,7 +119,7 @@ Foundation includes error states for labels, inputs and messaging that you can h
 
 ***
 
-## Customize with Sass
+## Customize With Sass
 
 Forms can be easily customized with our provided Sass variables.
 
@@ -132,7 +129,7 @@ Forms can be easily customized with our provided Sass variables.
 
 ***
 
-## Semantic Markup with Sass
+## Semantic Markup With Sass
 
 You can create your own forms using our Sass mixins.
 
@@ -175,7 +172,7 @@ input[type="text"].custom-input-class {
   </div>
 </div>
 
-##### Prefix & Postfix Style Mixins
+##### Prefix &amp; Postfix Style Mixins
 
 We use this mixin to create prefix label styles
 
@@ -187,9 +184,9 @@ We use this mixin to create prefix label styles
 .custom-prefix-class {
   @include prefix-postfix-base();
   @include prefix(
-    /* Control the background color, which also effect the border and font color. Default:$input-prefix-bg (darken(#fff, 5%)) */
+    // Control the background color, which also effect the border and font color. Default:$input-prefix-bg (darken(#fff, 5%))
     $bg: $input-prefix-bg,
-    /* Toggle position settings if prefix is a button. Default:false */
+    // Toggle position settings if prefix is a button. Default:false
     $is-button: false
   );
   @include grid-column($columns:3,$float:left);

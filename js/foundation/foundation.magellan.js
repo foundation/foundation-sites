@@ -57,7 +57,7 @@
               $expedition.data('magellan-top-offset', $expedition.offset().top);
             }
             if (typeof $expedition.data('magellan-fixed-position') === 'undefined') {
-              $expedition.data('magellan-fixed-position', false)
+              $expedition.data('magellan-fixed-position', false);
             }
             var fixed_position = (windowScrollTop + self.settings.threshold) > $expedition.data("magellan-top-offset");
             var attr = $expedition.attr('data-magellan-top-offset');
