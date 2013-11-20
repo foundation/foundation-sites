@@ -8,7 +8,7 @@
 
     version : '5.0.0',
 
-    settings : {
+    defaults : {
       expose               : false,      // turn on or off the expose feature
       modal                : false,      // Whether to cover page with modal during the tour
       tip_location          : 'bottom',  // 'top' or 'bottom' in relation to parent
@@ -28,6 +28,12 @@
       cookie_domain         : false,     // Will this cookie be attached to a domain, ie. '.notableapp.com'
       cookie_expires        : 365,       // set when you would like the cookie to expire.
       tip_container         : 'body',    // Where will the tip be attached
+      tip_location_patterns : {
+        top: ['bottom'],
+        bottom: [], // bottom should not need to be repositioned
+        left: ['right', 'top', 'bottom'],
+        right: ['left', 'top', 'bottom']
+      },
       post_ride_callback     : function (){},    // A method to call once the tour closes (canceled or complete)
       post_step_callback     : function (){},    // A method to call after each step
       pre_step_callback      : function (){},    // A method to call before each step
@@ -48,6 +54,8 @@
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle delay');
+
+      this.settings = this.defaults;
 
       this.bindings(method, options)
     },
@@ -118,13 +126,6 @@
       this.settings.paused = false;
       this.settings.attempts = 0;
 
-      this.settings.tip_location_patterns = {
-        top: ['bottom'],
-        bottom: [], // bottom should not need to be repositioned
-        left: ['right', 'top', 'bottom'],
-        right: ['left', 'top', 'bottom']
-      };
-
       // can we create cookies?
       if (typeof $.cookie !== 'function') {
         this.settings.cookie_monster = false;
@@ -134,7 +135,8 @@
       if (!this.settings.cookie_monster || this.settings.cookie_monster && $.cookie(this.settings.cookie_name) === null) {
         this.settings.$tip_content.each(function (index) {
           var $this = $(this);
-          $.extend(true, self.settings, self.data_options($this));
+          this.settings = $.extend({}, self.defaults, self.data_options($this))
+
           // Make sure that settings parsed from data_options are integers where necessary
           for (var i = int_settings_count - 1; i >= 0; i--) {
             self.settings[integer_settings[i]] = parseInt(self.settings[integer_settings[i]], 10);
@@ -242,6 +244,8 @@
 
           this.settings.tip_settings = $.extend({}, this.settings, this.data_options(this.settings.$li));
 
+          console.log(this.settings.tip_settings)
+
           this.settings.timer = parseInt(this.settings.timer, 10);
 
           this.settings.tip_settings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tip_settings.tip_location];
@@ -297,7 +301,6 @@
 
             } else {
               this.settings.$next_tip.fadeIn(this.settings.tip_animation_fade_speed);
-
             }
           }
 
