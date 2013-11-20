@@ -29,7 +29,7 @@ Use a simple `small-block-#` class to code up the block grid and specify the num
 
 <h3>Advanced</h3>
 
-Use additional classes to specify different a different number of items in a row for each screen size.
+Use additional classes to specify a different number of items in a row for each screen size.
 
 <div class="row">
   <div class="large-6 columns">
@@ -45,7 +45,7 @@ If you use the `small-block-grid` only, the grid will keep its spacing and confi
 
 ***
 
-## Customize with Sass
+## Customize With Sass
 
 Block grids can be easily customized with the Sass variables provided in the `_settings.scss` file.
 
@@ -55,7 +55,7 @@ Block grids can be easily customized with the Sass variables provided in the `_s
 
 ***
 
-## Semantic Markup with Sass Mixins
+## Semantic Markup With Sass Mixins
 
 You apply block grid styles to semantic markup using Sass mixins.
 
@@ -66,11 +66,25 @@ You can use the `block-grid(#)` mixin to create your own block grid, like so:
 <div class="row">
   <div class="large-6 columns">
     <h4>SCSS</h4>
-    {{> examples_block_mixin_basic}}
+{{#markdown}}
+```scss
+.your-class-name {
+  @include block-grid(3);
+}
+```
+{{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>HTML</h4>
-    {{> examples_block_mixin_basic}}
+{{#markdown}}
+```html
+<ul class="your-class-name">
+  <li><img src="http://placehold.it/100x100" /></li>
+  <li><img src="http://placehold.it/100x100" /></li>
+  <li><img src="http://placehold.it/100x100" /></li>
+</ul>
+```
+{{/markdown}}
   </div>
 </div>
 
@@ -83,7 +97,7 @@ You can further customize your block grid using the provided options in the `blo
 {{> examples_block_mixin_options}}
 
 
-##### Clear Block Grid Rows
+<h5>Clear Block Grid Rows</h5>
 
 When you use mixins and you want to control the layout using different classes, add this snippet to your Sass:
 
@@ -97,9 +111,9 @@ When you use mixins and you want to control the layout using different classes, 
 ```
 {{/markdown}}
 
-***
+<hr />
 
-##### Sass Errors?
+<h5>Sass Errors?</h5>
 
 If the default "foundation" import was commented out, then make sure you import this file:
 

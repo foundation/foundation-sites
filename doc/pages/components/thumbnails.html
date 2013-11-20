@@ -4,7 +4,7 @@ layout: doc/layouts/default.html
 
 # Thumbnails
 
-<h3 class="subheader">If you are going to use an image as an anchor, we got you covered. All you gotta do is wrap an `a.th` around your image and voilà!</h3>
+<h3 class="subheader">If you are going to use an image as an anchor, we got you covered. All you gotta do is wrap an `a.th` around your image and viol&#224;!</h3>
 
 <a class="th" href="{{assets}}/img/examples/earth.jpg"><img src="{{assets}}/img/examples/earth-th-sm.jpg" /></a>
 
@@ -12,7 +12,7 @@ layout: doc/layouts/default.html
 
 <h3>Basic</h3>
 
-Using minimal markup you can create a thumbnail image.
+You can create a thumbnail image using minimal markup.
 
 <div class="row">
   <div class="large-6 columns">
@@ -33,7 +33,7 @@ Using minimal markup you can create a thumbnail image.
 
 <h3>Advanced</h3>
 
-Additional classes can be added to your thumbnails to change it's appearance.
+Additional classes can be added to your thumbnails to change its appearance.
 
 <div class="row">
   <div class="large-6 columns">
@@ -48,36 +48,38 @@ Additional classes can be added to your thumbnails to change it's appearance.
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <a class="th" href="#"><img src="{{assets}}/img/examples/earth-th-sm.jpg" /></a>
+    <a class="th radius" href="#"><img src="{{assets}}/img/examples/earth-th-sm.jpg" /></a>
   </div>
 </div>
 
 ***
 
-## Customize with Sass
+## Customize With Sass
 
-Thumbnails can be easily customized using our provided Sass variables.
+Thumbnails can be easily customized using our Sass variables.
 
 <h4>SCSS</h4>
 
+{{#markdown}}
 ```scss
 $include-html-media-classes: $include-html-classes;
 
-/* We use these to control border styles */
+// We use these to control border styles
 $thumb-border-style: solid;
 $thumb-border-width: 4px;
 $thumb-border-color: #fff;
 $thumb-box-shadow: 0 0 0 1px rgba(#000,.2);
 $thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5);
 
-/* Radius and transition speed for thumbs */
+// Radius and transition speed for thumbs
 $thumb-radius: $global-radius;
 $thumb-transition-speed: 200ms;
 ```
+{{/markdown}}
 
 ***
 
-## Semantic Markup with Sass
+## Semantic Markup With Sass
 
 You can create your own thumbnails using our own Sass mixins.
 
@@ -144,6 +146,8 @@ If the default "foundation" import was commented out, then make sure you import 
 
 <h4>SCSS</h4>
 
+{{#markdown}}
 ```scss
 @import "foundation/components/thumbs";
 ```
+{{/markdown}}

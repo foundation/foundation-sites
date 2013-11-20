@@ -74,6 +74,10 @@ hr.dashed { border-style: dashed; }
   "sidebar",
   "zurb-footer";
 
+.custom-block-grid {
+  @include block-grid(3);
+}
+
 // Auto complete styles
 .autocomplete-suggestions {
   border: 1px solid $secondary-color;
@@ -321,8 +325,8 @@ footer { margin-top: 45px; }
 
   ul {
     margin-#{$default-float}: $list-side-margin;
-    &.no-bullet { 
-      margin-#{$default-float}: $list-side-margin-no-bullet; 
+    &.no-bullet {
+      margin-#{$default-float}: $list-side-margin-no-bullet;
       li {
         ul,
         ol {
@@ -517,3 +521,6 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .docs-wrap .main-section { padding: 0 20px 0 20px; }
 .main-section { @extend %kill-flicker; }
 .doc-oc-list { background: $off-canvas-bg; }
+
+// Make sure topbar dropdowns are above tab bar.
+.docs-bar { z-index: 1003; }
