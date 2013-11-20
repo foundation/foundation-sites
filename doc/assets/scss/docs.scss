@@ -152,7 +152,7 @@ hr.dashed { border-style: dashed; }
   dt { color: #008080; }
 }
 
-pre { margin-bottom: 30px;
+pre { margin-bottom: 15px;
   code {
     .code-container {
       //@include border(solid, 1px, darken($panel-bg-color, 4%));
@@ -516,3 +516,4 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .docs-wrap .inner-wrap { background: #efefef; }
 .docs-wrap .main-section { padding: 0 20px 0 20px; }
 .main-section { @extend %kill-flicker; }
+.doc-oc-list { background: $off-canvas-bg; }

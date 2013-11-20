@@ -109,13 +109,14 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin inner-wrap {
     @extend %kill-flicker;
     @extend %wrap-base;
-    bottom:0;
-    top:0;
+    @include clearfix;
+
     -webkit-transition: -webkit-#{$menu-slide};
     -moz-transition: -moz-#{$menu-slide};
     -ms-transition: -ms-#{$menu-slide};
     -o-transition: -o-#{$menu-slide};
     transition: #{$menu-slide};
+
 }
 
 // TAB BAR
@@ -164,6 +165,31 @@ $menu-slide: "transform 500ms ease" !default;
   border-left: $tabbar-right-section-border;
   box-shadow: -1px 0 0 darken($tabbar-bg, 10%);
   right:0;
+}
+
+@mixin tab-bar-section {
+  padding: $tabbar-middle-padding;
+  position: absolute;
+  text-align: center;
+  height: $tabbar-height;
+  top:0;
+  @media #{$medium-up} {
+    text-align: left;
+  }
+
+  // still need to make these non-presntational
+  &.left {     
+    left: 0;
+    right: $tabbar-height;
+  }
+  &.right {
+    left: $tabbar-height;
+    right: 0;
+  }
+  &.middle {
+    left: $tabbar-height;
+    right: $tabbar-height;
+  }
 }
 
 // OFF CANVAS LIST
@@ -247,31 +273,10 @@ nav.tab-bar { @include tab-bar-base; }
 section.left-small { @include left-small-section; }
 section.right-small { @include right-small-section; }
 
-section.tab-bar-section {
-  padding: $tabbar-middle-padding;
-  position: absolute;
-  text-align: center;
-  height: $tabbar-height;
-  top:0;
-
-  @media #{$medium-up} {
-    text-align: left;
-  }
-  &.left {     
-    left: 0;
-    right: $tabbar-height;
-  }
-  &.right {
-    left: $tabbar-height;
-    right: 0;
-  }
-  &.middle {
-    left: $tabbar-height;
-    right: $tabbar-height;
-  }
-}
+section.tab-bar-section { @include tab-bar-section; }
 
 // MENU BUTTON
+// This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
 a.menu-icon {
   text-indent: $tabbar-menu-icon-text-indent;
   width: $tabbar-height;

@@ -14,7 +14,7 @@
 
     events : function () {
       $(this.scope).off('.offcanvas')
-        .on('click.fndtn.offcanvas', '.off-canvas-left-toggle', function (e) {
+        .on('click.fndtn.offcanvas', '.left-off-canvas-toggle', function (e) {
           e.preventDefault();
           $(this).closest('.off-canvas-wrap').toggleClass('move-right');
         })
@@ -22,7 +22,7 @@
           e.preventDefault();
           $(".off-canvas-wrap").removeClass("move-right");
         })
-        .on('click.fndtn.offcanvas', '.off-canvas-right-toggle', function (e) {
+        .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
           e.preventDefault();
           $(this).closest(".off-canvas-wrap").toggleClass("move-left");
         })
