@@ -5,6 +5,10 @@
   Foundation.lib_methods.old_bindings = Foundation.lib_methods.old_bindings || Foundation.lib_methods.bindings;
 
   Foundation.init = function (scope, libraries, method, options, response) {
+    if (typeof libraries === 'string' && typeof method === 'object') {
+      Foundation.migrate.warn('$(document).foundation(\'plugin\', {mySetting: value}) is now $(document).foundation({plugin: {mySetting: value}})');
+    }
+
     if (typeof libraries === 'string') {
       var libs = libraries.split(' '),
           count = libs.length;
@@ -27,7 +31,13 @@
       }
     }
 
-    return Foundation.old_init(scope, libraries, method, options, response);
+    Foundation.old_init.apply(Foundation, [scope, libraries, method, options, response]);
+    if (Foundation.migrate.notified) return;
+
+    if (Foundation.migrate.warnings.length > 1) {
+      console.warn('You have ' + Foundation.migrate.warnings.length + ' Foundation migration issues on your page, learn more: http://foundation.zurb.com/docs/upgrading.html');
+      Foundation.migrate.notified = true;
+    }
   };
 
   Foundation.lib_methods.bindings = function (method, options) {
@@ -56,7 +66,6 @@
       warnings: {
         Modernizr : 'Please include Modernizr.',
         IE8: 'IE8 is not supported by Foundation 5+. Please use Foundation 4 or lower.'
-        // dropdown_settings: 'All settings are now underscore in Dropdown. ex. activeClass => active_class.'
       },
       dropdown : {
         'activeClass' : 'active_class'
@@ -70,7 +79,11 @@
 
     init : function () {
       this.pollyfill();
-      this.patch_init();
+
+      if (typeof Zepto === 'function') {
+        Zepto = jQuery;
+        Foundation.migrate.warn('Zepto is no longer supported by Foundation, use jQuery 1.8+');
+      }
 
       for (var warning in this.settings.warnings) {
         if (this.settings.warnings.hasOwnProperty(warning)) {
@@ -90,19 +103,6 @@
     },
 
     // END LOGIC FOR WARNINGS
-
-    patch_init : function () {
-      if (Foundation.old_init) return;
-      Foundation.old_init = Foundation.init;
-
-      Foundation.init = function (scope, libraries, method, options, response) {
-        if (typeof libraries === 'string' && typeof method === 'object') {
-          Foundation.libs.migrate.warn('$(document).foundation(\'plugin\', {mySetting: value}) is now $(document).foundation({plugin: {mySetting: value}})');
-        }
-
-        return Foundation.old_init(scope, libraries, method, options, response);
-      };
-    },
 
     check : function (check) {
       return this[check]() ? this.warn(this.settings.warnings[check]) : false;
@@ -131,5 +131,7 @@
       })(window.console = window.console || {});
     }
   };
+
+  Foundation.migrate.init();
 
 }(jQuery, this, this.document));
