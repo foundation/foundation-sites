@@ -30,14 +30,33 @@
 
           if (!settings.is_hover) self.toggle($(this));
         })
-        .on('mouseenter', '[data-dropdown]', function (e) {
-          var settings = $(this).data('dropdown-init');
-          if (settings.is_hover) self.toggle($(this));
+        .on('mouseenter.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
+          var $this = $(this);
+          clearTimeout(self.timeout);
+
+          if ($this.data('dropdown').length > 0) {
+            var dropdown = $('#' + $this.data('dropdown')),
+                target = $this;
+          } else {
+            var dropdown = $this;
+                target = $("[data-dropdown='" + dropdown.attr('id') + "']");
+          }
+
+          var settings = target.data('dropdown-init');
+          if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
-        .on('mouseleave', '[data-dropdown-content]', function (e) {
-          var target = $('[data-dropdown="' + $(this).attr('id') + '"]'),
-              settings = target.data('dropdown-init');
-          if (settings.is_hover) self.close.call(self, $(this));
+        .on('mouseleave.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
+          var $this = $(this);
+          self.timeout = setTimeout(function () {
+            if ($this.data('dropdown')) {
+              var settings = $this.data('dropdown-init');
+              if (settings.is_hover) self.close.call(self, $('#' + $this.data('dropdown')));
+            } else {
+              var target = $('[data-dropdown="' + $(this).attr('id') + '"]'),
+                  settings = target.data('dropdown-init');
+              if (settings.is_hover) self.close.call(self, $this);
+            }
+          }.bind(this), 150);
         })
         .on('click.fndtn.dropdown', function (e) {
           var parent = $(e.target).closest('[data-dropdown-content]');
