@@ -4,7 +4,7 @@ layout: doc/layouts/default.html
 
 # Dropdown
 
-<h3 class="subheader">In Foundation 4, we wanted to rid our codebase of many different dropdowns within various UI elements. So we created a universal dropdown plugin that will attach dropdowns or popovers next to anything!</h3>
+<h3 class="subheader">We removed the various dropdowns within different UI elements for Foundation 5. Instead, we created a universal dropdown plugin that will attach dropdowns or popovers to whatever element you need.</h3>
 
 {{> examples_dropdown_basic}}
 
@@ -12,7 +12,7 @@ layout: doc/layouts/default.html
 
 <h3>Basic</h3>
 
-Using minimal markup you can create a dropdown.
+You can create a dropdown using minimal markup.
 
 <div class="row">
   <div class="large-6 columns">
@@ -27,7 +27,7 @@ Using minimal markup you can create a dropdown.
 
 <h3>Advanced</h3>
 
-Additional classes can be added to your dropdown to change it's appearance.
+Additional classes can be added to your dropdown to change its appearance.
 
 <div class="row">
   <div class="large-6 columns">
@@ -60,11 +60,11 @@ Available class options:
 * `small`: Make the dropdown have a max-width of 300px
 * `medium`: Make the dropdown have a max-width of 500px
 * `large`: Make the dropdown have a max-width of 800px
-* `content`: Add padding inside the dropdown for better looking content.
+* `content`: Add padding inside the dropdown for better-looking content
 
 ##### Hoverable Dropdown Option
 
-If you'd rather have your dropdown be accessible by hover you can add a data-option to the target element:
+If you'd rather have your dropdown be accessible by hover, you can add a data-option to the target element:
 
 <div class="row">
   <div class="large-6 columns">
@@ -77,15 +77,15 @@ If you'd rather have your dropdown be accessible by hover you can add a data-opt
 
 ***
 
-## Customize with Sass
+## Customize With Sass
 
-Dropdowns can be easily customized using our provided Sass variables.
+Dropdowns can be easily customized using our Sass variables.
 
 {{> examples_dropdown_variables}}
 
 ***
 
-## Semantic Markup with Sass
+## Semantic Markup With Sass
 
 You can create your own dropdowns using our Sass mixins.
 
@@ -121,7 +121,7 @@ You can use the `dropdown-container()` and `dropdown-style()` mixins to create y
 
 <h3>Advanced</h3>
 
-You can further customize your dropdowns using the provided options in the `dropdown-container()` mixin:
+You can further customize your dropdowns with the options in the `dropdown-container()` mixin:
 
 <h4>SCSS</h4>
 
@@ -144,9 +144,9 @@ You can further customize your dropdowns using the provided options in the `drop
 
 ***
 
-## Configure with JavaScript
+## Configure With JavaScript
 
-It's easy to configure dropdowns using our provided javascript. You can use with data-attributes or plain old javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.dropdown.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
+It's easy to configure dropdowns using our provided javascript. You can use data-attributes or plain old javascript. Make sure `jquery.js` `foundation.js` and `foundation.dropdown.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
 
 {{#markdown}}
   ```html

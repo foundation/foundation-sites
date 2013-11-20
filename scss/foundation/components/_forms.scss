@@ -62,6 +62,15 @@ $input-error-message-font-color-alt: #333 !default;
 $glowing-effect-fade-time: 0.45s !default;
 $glowing-effect-color: $input-focus-border-color !default;
 
+// Select variables
+$select-bg-color: #fafafa;
+
+// We use these to style the triangle pip.
+$select-triangle-size: 6px !default;
+$select-triangle-color: red !default;
+$select-triangle-side-offset: 10px !default;
+
+
 //
 // @MIXINS
 //
@@ -310,19 +319,27 @@ $glowing-effect-color: $input-focus-border-color !default;
     }
 
     select {
-      -webkit-appearance: none;
-      background: $input-bg-color;
+      -webkit-appearance: none !important;
+      background: 
+        $select-bg-color 
+        url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
+      background-position-x: 95%;
+      background-position-y: center;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
-      font-size: rem-calc(14);
+      font-size: $input-font-size;
       @include radius(0);
-      &:after {
-        @include css-triangle(3px, rgba(0,0,0,1), $opposite-direction);
-        margin-#{$opposite-direction}: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-        margin-top: -($input-font-size / 2) - 2;
-        position: absolute;
-        top: 50%;
-        #{$opposite-direction}: 0;
+
+      &.radius {
+        @include radius($global-radius);
+      }
+      &:hover {
+        background: 
+          darken($select-bg-color, 3%) 
+          url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
+        background-position-x: 95%;
+        background-position-y: center;
+        border-color: $input-focus-border-color;
       }
     }
 
@@ -399,6 +416,15 @@ $glowing-effect-color: $input-focus-border-color !default;
       margin: 0 0 $form-spacing 0;
     }
 
+    input[type="checkbox"] + label,
+    input[type="radio"] + label {
+      display: inline-block;
+      margin-#{$default-float}: $form-spacing * .5;
+      margin-#{$opposite-direction}: $form-spacing;
+      margin-bottom: 0;
+      vertical-align: baseline;
+    }
+
     /* Normalize file input width */
     input[type="file"] {
       width:100%;
@@ -450,13 +476,5 @@ $glowing-effect-color: $input-focus-border-color !default;
 
     label.error { @include form-label-error-color; }
 
-  }
-
-  @media #{$small-only} { 
-    select:focus, 
-    textarea:focus, 
-    input:focus {
-      font-size: $base-font-size;
-    }
   }
 }

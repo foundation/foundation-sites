@@ -23,7 +23,7 @@ $panel-font-color: #333 !default;
 $panel-font-color-alt: #fff !default;
 
 $panel-header-adjust: true !default;
-$callout-panel-link-color: #fff !default;
+$callout-panel-link-color: $primary-color !default;
 //
 // @mixins
 //
@@ -70,8 +70,7 @@ $callout-panel-link-color: #fff !default;
     .panel { @include panel;
 
       &.callout {
-        @include panel($primary-color);
-        @include inset-shadow($active:false);
+        @include panel(lighten($primary-color, 60%));
         a {
           color: $callout-panel-link-color;
         }

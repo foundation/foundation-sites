@@ -12,8 +12,7 @@ layout: doc/layouts/default.html
 
 Start by adding an element with a class of `row`, forming your block element. Then add divs with a `columns` class within that row with and specify the widths of those inline elements with the `small-#`, `medium-#`, and `large-#` classes.
 
-* **Foundation uses border-box**: Borders and padding do not affect the overall width of the columns, making the math dead-simple.
-* **Foundation is mobile-first**. Code for small first, and larger devices will inherit those styles. Customize for larger screens as necessary.
+**Foundation is mobile-first**. Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 
 <h4>HTML</h4>
 
@@ -25,7 +24,7 @@ Start by adding an element with a class of `row`, forming your block element. Th
 
 ### Small Grid
 
-Start coding your layout using this small grid. Larger screens will inherit these styles.
+Small grids expand to large screens easier than large grids cram into small screens.
 
 <h4>HTML</h4>
 
@@ -39,7 +38,7 @@ Start coding your layout using this small grid. Larger screens will inherit thes
 
 ### Medium Grid
 
-Medium sized screens will inherit styles from small unless you specify a different layout using the medium grid classes.
+Medium sized screens will inherit styles from small, unless you specify a different layout, using the medium grid classes.
 
 {{> examples_grid_medium}}
 
@@ -51,7 +50,7 @@ Medium sized screens will inherit styles from small unless you specify a differe
 
 <h3>Advanced</h3>
 
-You can infinitely nest the grid, though at a certain point it will get absurd.
+You can nest the grids indefinitely, though at a certain point it will get absurd.
 
 <h4>HTML</h4>
 
@@ -65,7 +64,7 @@ You can infinitely nest the grid, though at a certain point it will get absurd.
 
 ### Offsets
 
-Offset up to 11 by using classes like `.large-offset-1` and `.small-offset-3`.
+Move blocks up to 11 columns to the right by using classes like `.large-offset-1` and `.small-offset-3`.
 
 <h4>HTML</h4>
 
@@ -79,7 +78,7 @@ Offset up to 11 by using classes like `.large-offset-1` and `.small-offset-3`.
 
 ### Centered Columns
 
-Center your columns by adding a class of `small-centered` to your `column`. Large will inherit small centering by default, but you can also center on large only by applying a `large-centered` class. To uncenter on large screens use `large-uncentered`.
+Center your columns by adding a class of `small-centered` to your `column`. Large will inherit small centering by default, but you can also center solely on large by applying a `large-centered` class. To uncenter on large screens use `large-uncentered`.
 
 <h4>HTML</h4>
 
@@ -107,12 +106,11 @@ Using these source ordering classes, you can shift columns around between our br
 
 ## Customize with Sass
 
-The grid can be easily customized with the Sass variables provided in the `_settings.scss` file.
+Customizing the grid is easy with the Sass variables provided in the `_settings.scss` file.
 
 <h4>SCSS</h4>
 
 {{> examples_grid_variables}}
-
 
 <h3>Basic</h3>
 
