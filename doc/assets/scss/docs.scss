@@ -517,3 +517,6 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .docs-wrap .main-section { padding: 0 20px 0 20px; }
 .main-section { @extend %kill-flicker; }
 .doc-oc-list { background: $off-canvas-bg; }
+
+// Make sure topbar dropdowns are above tab bar.
+.docs-bar { z-index: 1003; }
