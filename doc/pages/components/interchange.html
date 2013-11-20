@@ -6,7 +6,7 @@ layout: doc/layouts/default.html
 
 <h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for a user's browser.</h3>
 
-<img data-interchange="[{{assets}}/img/examples/space-default.jpg, (default)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
+<img data-interchange="[{{assets}}/img/examples/space-small.jpg, (small)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
 <noscript><img src="{{assets}}/img/examples/space-default.jpg"></noscript>
 
 ***
@@ -33,7 +33,18 @@ data-interchange="[image_path, (media query)], [image_path, (media query)]"
 
 You are not restricted to using Interchange with just images. You can now, as of Foundation 5, load responsive content on any html element.
 
-<div data-interchange=""></div>
+<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/examples/interchange/default.html'}}, (small)], [{{relative absolute 'dist/docs/examples/interchange/medium.html'}}, (medium)], [{{relative absolute 'dist/docs/examples/interchange/large.html'}}, (large)]">
+  <div data-alert class="alert-box secondary radius">
+    This is the default content.
+    <a href="#" class="close">&times;</a>
+  </div>
+</div>
+
+{{#markdown}}
+```html
+{{> examples_interchange_markup}}
+```
+{{/markdown}}
 
 ***
 
