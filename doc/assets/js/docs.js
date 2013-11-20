@@ -106,6 +106,8 @@ var components = [
 
   { value: 'Progress Bars', data: 'progress_bars.html' },
 
+  { value: 'Tables', data: 'tables.html' },
+
   { value: 'Accordion', data: 'accordion.html' },
   { value: 'Collapse', data: 'accordion.html' },
 
