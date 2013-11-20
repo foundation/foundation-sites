@@ -452,9 +452,9 @@ $glowing-effect-color: $input-focus-border-color !default;
 
   }
 
-  @media #{$small-only} { 
-    select:focus, 
-    textarea:focus, 
+  @media #{$small-only} {
+    select:focus,
+    textarea:focus,
     input:focus {
       font-size: $base-font-size;
     }
