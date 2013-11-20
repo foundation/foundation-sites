@@ -74,6 +74,7 @@ var components = [
   { value: 'Type-setting', data: 'typography.html' },
   { value: 'Composition', data: 'typography.html' },
 
+  { value: 'Inline Lists', data: 'inline_lists.html' },
   { value: 'Lists', data: 'inline_lists.html' },
 
   { value: 'Labels', data: 'labels.html' },
@@ -105,6 +106,8 @@ var components = [
 
   { value: 'Progress Bars', data: 'progress_bars.html' },
 
+  { value: 'Tables', data: 'tables.html' },
+
   { value: 'Accordion', data: 'accordion.html' },
   { value: 'Collapse', data: 'accordion.html' },
 
@@ -123,6 +126,7 @@ var components = [
 
 $('#autocomplete').autocomplete({
   lookup: components,
+  autoSelectFirst: true,
   onSelect: function (suggestion) {
     if (/index.html/i.test(window.location.href)) {
       return window.location = 'components/' + suggestion.data;
