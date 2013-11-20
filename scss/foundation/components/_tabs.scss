@@ -4,6 +4,14 @@
 // @variables
 //
 
+$include-html-tabs-classes: $include-html-classes !default;
+
+$tab-navigation-padding: rem-calc(16);
+$tab-navigation-bg-color: #efefef;
+$tab-navigation-hover-bg-color: darken($tab-navigation-bg-color, 5%);
+$tab-navigation-font-color: #222;
+$tab-navigation-font-size: rem-calc(16);
+$tab-navigation-font-family: $body-font-family;
 
 
 @include exports("tab") {
@@ -11,24 +19,23 @@
 		@include clearfix; 
 		margin-bottom: 0 !important;
 		dd { 
-			float: $default-float; 
 			position: relative; 
 			margin-bottom: 0 !important;
 			top: 1px; 
+			float: $default-float; 
 			> a { 
-				background: #efefef; 
-				color: #222; 
-				font-size: rem-calc(14); 
-				padding: .75rem 1rem;
 				display: block; 
-				font-family: $body-font-family;
-				&:hover { 
-					background: #e4e4e4;
-				}
+				background: $tab-navigation-bg-color;
+				color: $tab-navigation-font-color; 
+				padding-top: $tab-navigation-padding;
+				padding-#{$opposite-direction}: $tab-navigation-padding * 2;
+		    padding-bottom: $tab-navigation-padding + rem-calc(1);
+		    padding-#{$default-float}: $tab-navigation-padding * 2;
+				font-family: $tab-navigation-font-family;
+				font-size: $tab-navigation-font-size; 
+				&:hover { background: $tab-navigation-hover-bg-color; }
 			}
-			&.active a { 
-				background: #fff; 
-			}
+			&.active a { background: #fff; }
 		}
 		&.radius {
 			dd:first-child {
@@ -40,7 +47,8 @@
 		}
 		&.vertical { 
 			dd { 
-				float: none; 
+				float: none;
+				display: block;
 				top: 0px;
 			}
 		}
@@ -52,24 +60,26 @@
 		> .content { 
 			display: none; 
 			float: $default-float; 
-			padding: 1rem 1.35rem; 
+			padding: $column-gutter/2 0; 
 			&.active { 
 				display: block;
 			}
 			p { 
 				margin-bottom: 0;
 			}
+			&.contained {
+				padding: $column-gutter/2; 
+			}
 		}
 		&.vertical {
 			display: block;
+			> .content {
+				padding: 0 $column-gutter/2; 
+			}
 		}
 	}
 	@media #{$medium-up} {
 		.tabs {
-			dd > a {
-				padding: .85rem 2rem;
-				font-size: 1rem;
-			}
 			&.vertical {
 				width: 20%; 
 				float: $default-float; 
