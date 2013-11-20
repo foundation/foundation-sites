@@ -74,6 +74,10 @@ hr.dashed { border-style: dashed; }
   "sidebar",
   "zurb-footer";
 
+.custom-block-grid {
+  @include block-grid(3);
+}
+
 // Auto complete styles
 .autocomplete-suggestions {
   border: 1px solid $secondary-color;
@@ -321,8 +325,8 @@ footer { margin-top: 45px; }
 
   ul {
     margin-#{$default-float}: $list-side-margin;
-    &.no-bullet { 
-      margin-#{$default-float}: $list-side-margin-no-bullet; 
+    &.no-bullet {
+      margin-#{$default-float}: $list-side-margin-no-bullet;
       li {
         ul,
         ol {

@@ -113,3 +113,7 @@ $panel-bg-color: #FAFAFA;
   width: 220px;
   background: url(../img/fader.png) no-repeat center bottom;
 }
+
+input[type="search"]:focus {
+  background: #fff;
+}
