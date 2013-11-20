@@ -6,13 +6,17 @@
 
 $include-html-tabs-classes: $include-html-classes !default;
 
-$tab-navigation-padding: rem-calc(16);
-$tab-navigation-bg-color: #efefef;
-$tab-navigation-hover-bg-color: darken($tab-navigation-bg-color, 5%);
-$tab-navigation-font-color: #222;
-$tab-navigation-font-size: rem-calc(16);
-$tab-navigation-font-family: $body-font-family;
+$tabs-navigation-padding: rem-calc(16) !default;
+$tabs-navigation-bg-color: #efefef !default;
+$tabs-navigation-hover-bg-color: darken($tabs-navigation-bg-color, 5%) !default;
+$tabs-navigation-font-color: #222 !default;
+$tabs-navigation-font-size: rem-calc(16) !default;
+$tabs-navigation-font-family: $body-font-family !default;
 
+$tabs-content-margin-bottom: rem-calc(24) !default;
+$tabs-content-padding: $column-gutter/2 !default;
+
+$tabs-vertical-navigation-margin-bottom: 1.25rem;
 
 @include exports("tab") {
 	.tabs { 
@@ -25,15 +29,15 @@ $tab-navigation-font-family: $body-font-family;
 			float: $default-float; 
 			> a { 
 				display: block; 
-				background: $tab-navigation-bg-color;
-				color: $tab-navigation-font-color; 
-				padding-top: $tab-navigation-padding;
-				padding-#{$opposite-direction}: $tab-navigation-padding * 2;
-		    padding-bottom: $tab-navigation-padding + rem-calc(1);
-		    padding-#{$default-float}: $tab-navigation-padding * 2;
-				font-family: $tab-navigation-font-family;
-				font-size: $tab-navigation-font-size; 
-				&:hover { background: $tab-navigation-hover-bg-color; }
+				background: $tabs-navigation-bg-color;
+				color: $tabs-navigation-font-color; 
+				padding-top: $tabs-navigation-padding;
+				padding-#{$opposite-direction}: $tabs-navigation-padding * 2;
+		    padding-bottom: $tabs-navigation-padding + rem-calc(1);
+		    padding-#{$default-float}: $tabs-navigation-padding * 2;
+				font-family: $tabs-navigation-font-family;
+				font-size: $tabs-navigation-font-size; 
+				&:hover { background: $tabs-navigation-hover-bg-color; }
 			}
 			&.active a { background: #fff; }
 		}
@@ -56,26 +60,17 @@ $tab-navigation-font-family: $body-font-family;
 
 	.tabs-content { 
 		@include clearfix; 
-		margin-bottom: rem-calc(24);
+		margin-bottom: $tabs-content-margin-bottom;
 		> .content { 
 			display: none; 
 			float: $default-float; 
-			padding: $column-gutter/2 0; 
-			&.active { 
-				display: block;
-			}
-			p { 
-				margin-bottom: 0;
-			}
-			&.contained {
-				padding: $column-gutter/2; 
-			}
+			padding: $tabs-content-padding 0; 
+			&.active { display: block; }
+			&.contained { padding: $tabs-content-padding; }
 		}
 		&.vertical {
 			display: block;
-			> .content {
-				padding: 0 $column-gutter/2; 
-			}
+			> .content { padding: 0 $tabs-content-padding; }
 		}
 	}
 	@media #{$medium-up} {
@@ -83,7 +78,7 @@ $tab-navigation-font-family: $body-font-family;
 			&.vertical {
 				width: 20%; 
 				float: $default-float; 
-				margin-bottom: 1.25em;
+				margin-bottom: $tabs-vertical-navigation-margin-bottom;
 			}
 		}
 		.tabs-content {
