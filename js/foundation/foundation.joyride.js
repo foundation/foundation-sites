@@ -10,7 +10,7 @@
 
     defaults : {
       expose               : false,      // turn on or off the expose feature
-      modal                : false,      // Whether to cover page with modal during the tour
+      modal                : true,      // Whether to cover page with modal during the tour
       tip_location          : 'bottom',  // 'top' or 'bottom' in relation to parent
       nub_position          : 'auto',    // override on a per tooltip bases
       scroll_speed          : 1500,       // Page scrolling speed in milliseconds, 0 = no scroll animation
@@ -117,6 +117,8 @@
           int_settings_count = integer_settings.length;
 
       if (!this.settings.init) this.events();
+
+      this.settings = $this.data('joyride-init');
 
       // non configureable settings
       this.settings.$content_el = $this;
@@ -612,6 +614,8 @@
         width: el.outerWidth(true),
         height: el.outerHeight(true)
       });
+
+      if (this.settings.modal) this.show_modal();
 
       this.settings.$body.append(exposeCover);
       expose.addClass(randId);
