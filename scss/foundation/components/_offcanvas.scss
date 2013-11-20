@@ -85,6 +85,7 @@ $menu-slide: "transform 500ms ease" !default;
   overflow-y: auto;
   background: $off-canvas-bg;
   z-index: 1001;
+  box-sizing: content-box;
 }
 
 // TRANSLATE 3D
@@ -341,4 +342,18 @@ ul.off-canvas-list { @include off-canvas-list; }
 
   }
   a.exit-off-canvas { @include back-link; }
+}
+
+// IE9 HAX
+// Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
+.lt-ie10 {
+  
+  // move off canvas menus off the viewport
+  .left-off-canvas-menu { left: -($off-canvas-width); } 
+  .right-off-canvas-menu { right: -($off-canvas-width); }
+
+  // Snap them in place
+  .move-left > .inner-wrap { right: $off-canvas-width; }
+  .move-right > .inner-wrap { left: $off-canvas-width; }
+
 }
