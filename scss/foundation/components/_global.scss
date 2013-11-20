@@ -246,7 +246,7 @@ $screen: "only screen" !default;
 $landscape: "#{$screen} and (orientation: landscape)" !default;
 $portrait: "#{$screen} and (orientation: portrait)" !default;
 
-$small-up: $screen;
+$small-up: $screen !default;
 $small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})" !default;
 
 $medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})" !default;
