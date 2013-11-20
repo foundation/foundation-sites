@@ -4,7 +4,7 @@ layout: doc/layouts/default.html
 
 # Pricing Tables
 
-<h3 class="subheader">If you're making a rockin' marketing site for a subscription-based product, you are likely in need of a pricing table. These fill 100% of their container and are made from a simple unordered list.</h3>
+<h3 class="subheader">If you're making a rockin' marketing site for a subscription-based product, you're likely in need of a pricing table. These tables fill 100% of their container and are made from a simple unordered list.</h3>
 
 {{> examples_pricing_basic}}
 
@@ -34,7 +34,7 @@ Code up a `ul` and apply the following classes to the `li`s.
 
 ***
 
-## Customize with Sass
+## Customize With Sass
 
 Pricing tables can be easily customized with the Sass variables provided in the `_settings.scss` file.
 
@@ -42,7 +42,7 @@ Pricing tables can be easily customized with the Sass variables provided in the 
 
 {{> examples_pricing_variables}}
 
-## Semantic Markup with Sass Mixins
+## Semantic Markup With Sass Mixins
 
 You can use the `pricing-table-container()` mixin, with mixins for each list item type to create your own pricing table with semantic markup, like so:
 
@@ -51,22 +51,22 @@ You can use the `pricing-table-container()` mixin, with mixins for each list ite
     <h4>SCSS</h4>
 {{#markdown}}
 ```scss
-.your-pricing-class  { 
+.your-pricing-class  {
   @include pricing-table-container;
-  .your-title-class  { 
-    @include pricing-table-title; 
+  .your-title-class  {
+    @include pricing-table-title;
   }
-  .your-price-class  { 
-    @include pricing-table-price; 
+  .your-price-class  {
+    @include pricing-table-price;
   }
-  .your-desc-class   { 
-    @include pricing-table-description; 
+  .your-desc-class   {
+    @include pricing-table-description;
   }
-  .your-bullet-class { 
-    @include pricing-table-bullet; 
+  .your-bullet-class {
+    @include pricing-table-bullet;
   }
-  .your-cta-class    { 
-    @include pricing-table-cta; 
+  .your-cta-class    {
+    @include pricing-table-cta;
   }
 }
 ```
