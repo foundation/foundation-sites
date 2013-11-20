@@ -4,21 +4,62 @@ layout: doc/layouts/default.html
 
 # Tables
 
-#### Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course).
+<h3 class="subheader">Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course).</h3>
 
 {{> examples_tables_basic}}
 
 ***
 
-### Build With Predefined HTML Classes
+<h3>Basic</h3>
 
-Tables are built from a mixin, but since tables don't rely on any classes to build, you can use the table element and customize with your CSS. If you are using SCSS, the variables will help you customize the look and feel.
+You can create a table using minimal markup.
 
-{{> examples_tables_basic_rendered}}
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<table>
+  <thead>
+    <tr>
+      <th width="200">Table Header</th>
+      <th>Table Header</th>
+      <th width="150">Table Header</th>
+      <th width="150">Table Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+  </tbody>
+</table>
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_tables_basic}}
 
 ***
 
-##### Default SCSS Variables
+## Customize With Sass
+
+Tables can be easily customized using our Sass variables.
 
 {{> examples_tables_variables}}
 

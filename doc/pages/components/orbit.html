@@ -4,26 +4,27 @@ layout: doc/layouts/default.html
 
 # Orbit
 
-#### Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.
+<h3 class="subheader">Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.</h3>
 
 {{> examples_orbit_basic}}
 
 ***
 
 <a name="setup"></a>
+
 ## How to Setup Orbit
 
 Orbit requires minimal HTML markup to function. Our javascript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
 
 {{#markdown}}
-### HTML
+<h4>HTML</h4>
 ```html
 {{> examples_orbit_basic}}
 ```
 {{/markdown}}
 
 {{#markdown}}
-### Rendered HTML
+<h4>Rendered HTML</h4>
 ```html
 {{> examples_orbit_basic_rendered}}
 ```
@@ -37,15 +38,15 @@ Orbit can also be used with just content and no images.
 
 <div class="row">
   <div class="half-grid">
+    <h4>HTML</h4>
 {{#markdown}}
-  ### HTML
 ```html
 {{> examples_orbit_content}}
 ```
 {{/markdown}}
   </div>
   <div class="half-grid">
-    <h3>Rendered HTML</h3>
+    <h4>Rendered HTML</h4>
     {{> examples_orbit_content}}
   </div>
 </div>
@@ -58,7 +59,7 @@ To link to a particular slide in your Orbit slider you will need to add a  `data
 
 <div class="row">
   <div class="half-grid">
-    <h3>HTML</h3>
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 <a data-orbit-link="headline-1" class="small button">
@@ -74,7 +75,7 @@ To link to a particular slide in your Orbit slider you will need to add a  `data
 {{/markdown}}
   </div>
   <div class="half-grid">
-    <h3>Rendered HTML</h3>
+    <h4>Rendered HTML</h4>
     <a class="small button" data-orbit-link="headline-1">Goto Slide 1</a>
     <a class="small button" data-orbit-link="headline-2">Goto Slide 2</a>
     <a class="small button" data-orbit-link="headline-3">Goto Slide 3</a>

@@ -26,7 +26,7 @@
         .on('arrival.fndtn.magellan', '[data-magellan-arrival]', function (e) {
           var $destination = $(this),
               $expedition = $destination.closest('[data-magellan-expedition]'),
-              active_class = $expedition.attr('data-magellan-active-class') 
+              active_class = $expedition.attr('data-magellan-active-class')
                 || self.settings.active_class;
 
             $destination
@@ -57,7 +57,7 @@
               $expedition.data('magellan-top-offset', $expedition.offset().top);
             }
             if (typeof $expedition.data('magellan-fixed-position') === 'undefined') {
-              $expedition.data('magellan-fixed-position', false)
+              $expedition.data('magellan-fixed-position', false);
             }
             var fixed_position = (windowScrollTop + self.settings.threshold) > $expedition.data("magellan-top-offset");
             var attr = $expedition.attr('data-magellan-top-offset');
@@ -88,8 +88,7 @@
           $('[data-magellan-destination]').each(function () {
             var $destination = $(this),
                 destination_name = $destination.attr('data-magellan-destination'),
-                topOffset = $destination.offset().top - windowScrollTop;
-
+                topOffset = $destination.offset().top - $destination.outerHeight(true) - windowScrollTop;
             if (topOffset <= self.settings.threshold) {
               $("[data-magellan-arrival='" + destination_name + "']").trigger('arrival');
             }
@@ -104,7 +103,7 @@
 
     set_threshold : function () {
       if (typeof this.settings.threshold !== 'number') {
-        this.settings.threshold = (this.fixed_magellan.length > 0) ? 
+        this.settings.threshold = (this.fixed_magellan.length > 0) ?
           this.fixed_magellan.outerHeight(true) : 0;
       }
     },

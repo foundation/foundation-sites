@@ -6,10 +6,10 @@
 
   Foundation.init = function (scope, libraries, method, options, response) {
     if (typeof libraries === 'string' && typeof method === 'object') {
-      Foundation.migrate.warn('$(document).foundation(\'plugin\', {mySetting: value}) is now $(document).foundation({plugin: {mySetting: value}})');
+      Foundation.migrate.warn('$(document).foundation(\'plugin\', {mySetting: value}); is now $(document).foundation({plugin: {my_setting: value}});');
     }
 
-    if (typeof libraries === 'string') {
+    if (typeof libraries === 'string' && typeof method !== 'string') {
       var libs = libraries.split(' '),
           count = libs.length;
 
@@ -121,6 +121,7 @@
 
       if (typeof Zepto === 'function') {
         Zepto = jQuery;
+        $ = jQuery;
         Foundation.migrate.warn('Zepto is no longer supported by Foundation, use jQuery 1.8+');
       }
 
