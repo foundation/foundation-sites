@@ -24,7 +24,7 @@
 
       this.bindings(method, options);
 
-      $('.top-bar, [data-topbar]').each(function () {
+      $('[data-topbar]').each(function () {
         var topbar = $(this),
             settings = topbar.data('topbar-init'),
             section = $('section', this),
@@ -64,7 +64,7 @@
       var self = this;
 
       if (toggleEl) {
-        var topbar = $(toggleEl).closest('.top-bar, [data-topbar]');
+        var topbar = $(toggleEl).closest('[data-topbar]');
       } else {
         var topbar = $('[data-topbar]');
       }
@@ -134,11 +134,11 @@
       var self = this;
       $(this.scope)
         .off('.topbar')
-        .on('click.fndtn.topbar', '.top-bar .toggle-topbar, [data-topbar] .toggle-topbar', function (e) {
+        .on('click.fndtn.topbar', '[data-topbar] .toggle-topbar', function (e) {
           e.preventDefault();
           self.toggle(this);
         })
-        .on('click.fndtn.topbar', '.top-bar li.has-dropdown', function (e) {
+        .on('click.fndtn.topbar', '[data-topbar] li.has-dropdown', function (e) {
           var li = $(this),
               target = $(e.target),
               topbar = li.closest('[data-topbar], .top-bar'),
@@ -170,13 +170,13 @@
             }
           }
         })
-        .on('click.fndtn.topbar', '.top-bar .has-dropdown>a, [data-topbar] .has-dropdown>a', function (e) {
+        .on('click.fndtn.topbar', '[data-topbar] .has-dropdown>a', function (e) {
           if (self.breakpoint()) {
 
             e.preventDefault();
 
             var $this = $(this),
-                topbar = $this.closest('.top-bar, [data-topbar]'),
+                topbar = $this.closest('[data-topbar]'),
                 section = topbar.find('section, .section'),
                 dropdownHeight = $this.next('.dropdown').outerHeight(),
                 $selectedLi = $this.closest('li');
@@ -207,15 +207,15 @@
           return;
         }
 
-        $('.top-bar li, [data-topbar] li').removeClass('hover');
+        $('[data-topbar] li').removeClass('hover');
       });
 
       // Go up a level on Click
-      $(this.scope).on('click.fndtn', '.top-bar .has-dropdown .back, [data-topbar] .has-dropdown .back', function (e) {
+      $(this.scope).on('click.fndtn', '[data-topbar] .has-dropdown .back', function (e) {
         e.preventDefault();
 
         var $this = $(this),
-            topbar = $this.closest('.top-bar, [data-topbar]'),
+            topbar = $this.closest('[data-topbar]'),
             section = topbar.find('section, .section'),
             settings = topbar.data('topbar-init'),
             $movedLi = $this.closest('li.moved'),
