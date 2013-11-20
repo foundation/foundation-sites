@@ -25,7 +25,16 @@ data-interchange="[image_path, (media query)], [image_path, (media query)]"
 ```
 {{/markdown}}
 
-**The last rule that evaluates to true will be the image that gets loaded.** We recommend setting your default image in a `<noscript>` tag so that browsers with JavaScript disabled will have a reliable fallback. 
+The last rule that evaluates to true will be the image that gets loaded. Exluding the `src` attribute keeps the browser from making two requests for images.
+
+If you want to support browsers with JavaScript disabled, we recommend setting your default image in a `<noscript>` tag so that these browsers will have a fallback:
+
+```html
+<img data-interchange="[/path/to/default.jpg, (default)], [/path/to/bigger-image.jpg, (large)]">
+<noscript><img src="/path/to/default.jpg"></noscript>
+```
+
+You should always specify a `default` directive for Interchange.
 
 ***
 

@@ -373,6 +373,10 @@
       bindings : function (method, options) {
         var self = this;
 
+        if (typeof method === 'string') {
+          return this[method].call(this);
+        }
+
         if (S(this.scope).is('[data-' + this.name +']')) {
           if (!S(this).data(this.name + '-init')) {
             this.events(this.scope);
@@ -387,10 +391,6 @@
 
             S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
           });
-        }
-
-        if (typeof method === 'string') {
-          return this[method].call(this);
         }
       }
     }

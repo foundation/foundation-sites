@@ -52,7 +52,7 @@ var components = [
   { value: 'Responsive Lightbox', data: 'clearing.html' },
   { value: 'Lightbox', data: 'clearing.html' },
 
-  { value: 'Interchange Responsive Images', data: 'interchange.html' },
+  { value: 'Interchange Responsive Content', data: 'interchange.html' },
 
   { value: 'Flex Video', data: 'flex_video.html' },
   { value: 'Responsive Video', data: 'flex_video.html' },

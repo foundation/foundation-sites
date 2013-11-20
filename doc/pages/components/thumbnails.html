@@ -6,7 +6,7 @@ layout: doc/layouts/default.html
 
 <h3 class="subheader">If you are going to use an image as an anchor, we got you covered. All you gotta do is wrap an `a.th` around your image and viol&#224;!</h3>
 
-<a class="th" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100" /></a>
+<a class="th" href="{{assets}}/img/examples/earth.jpg"><img src="{{assets}}/img/examples/earth-th-sm.jpg" /></a>
 
 ***
 
@@ -27,7 +27,7 @@ You can create a thumbnail image using minimal markup.
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <a class="th" href="http://placehold.it/100x100"><img src="http://placehold.it/100x100"></a>
+    <a class="th" href="{{assets}}/img/examples/space.jpg"><img src="{{assets}}/img/examples/space-th-sm.jpg" /></a>
   </div>
 </div>
 
@@ -41,14 +41,14 @@ Additional classes can be added to your thumbnails to change its appearance.
 {{#markdown}}
 ```html
 <a class="th [radius]" href="#">
-  <img src="http://placehold.it/100x100">
+  <img src="{{assets}}/img/examples/earth-th-sm.jpg">
 </a>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <a class="th" href="#"><img src="http://placehold.it/100x100"></a>
+    <a class="th" href="#"><img src="{{assets}}/img/examples/earth-th-sm.jpg" /></a>
   </div>
 </div>
 
@@ -101,8 +101,8 @@ You can use the `thumb()` mixin to create your own thumbnails, like so:
 
 {{#markdown}}
 ```html
-<a class="custom-thumbnail-class" href="http://placehold.it/100x100">
-  <img src="http://placehold.it/100x100">
+<a class="custom-thumbnail-class" href="{{assets}}/img/examples/space.jpg">
+  <img src="{{assets}}/img/examples/space-th-sm.jpg">
 </a>
 ```
 {{/markdown}}
@@ -132,8 +132,8 @@ You can further customize your thumbnails using the provided options in the `thu
 
 {{#markdown}}
 ```html
-<a class="custom-thumbnail-class" href="http://placehold.it/100x100">
-  <img src="http://placehold.it/100x100">
+<a class="custom-thumbnail-class" href="{{assets}}/img/examples/launch.jpg">
+  <img src="{{assets}}/img/examples/launch-th.jpg">
 </a>
 ```
 {{/markdown}}

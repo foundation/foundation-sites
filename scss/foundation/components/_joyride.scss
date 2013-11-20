@@ -6,7 +6,7 @@
 $include-html-joyride-classes: $include-html-classes !default;
 
 // Controlling default Joyride styles
-$joyride-tip-bg: red !default;
+$joyride-tip-bg: #333 !default;
 $joyride-tip-default-width: 300px !default;
 $joyride-tip-padding: rem-calc(18 20 24) !default;
 $joyride-tip-border: solid 1px #555 !default;
