@@ -60,8 +60,8 @@ $topbar-menu-icon-color-toggled: #888 !default;
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
 // Using rem-calc for the below breakpoint causes issues with top bar
-$topbar-breakpoint: #{upper-bound($medium-range)} !default; // Change to 9999px for always mobile layout
-$topbar-media-query: "only screen and (min-width: #{upper-bound($medium-range)})" !default;
+$topbar-breakpoint: #{upper-bound($small-range)} !default; // Change to 9999px for always mobile layout
+$topbar-media-query: "only screen and (min-width: #{upper-bound($small-range)})" !default;
 
 // Divider Styles
 $topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%) !default;
@@ -75,7 +75,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 // This class is generated despite the value of $include-html-top-bar-classes
 // to ensure width calculations work correctly.
 meta.foundation-mq-topbar {
-  font-family: $topbar-media-query;
+  font-family: "/" + unquote($topbar-media-query) "/";
   width: $topbar-breakpoint;
 }
 
