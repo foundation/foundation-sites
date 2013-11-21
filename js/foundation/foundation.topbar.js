@@ -90,7 +90,7 @@
           .css('height', '');
       }
 
-      if(settings.scrolltop) {
+      if (settings.scrolltop) {
         if (!topbar.hasClass('expanded')) {
           if (topbar.hasClass('fixed')) {
             topbar.parent().addClass('fixed');
@@ -146,7 +146,7 @@
             self.toggle();
             return;
           }
-
+          console.log(self.breakpoint())
           if (self.breakpoint()) return;
           if (settings.is_hover && !Modernizr.touch) return;
 
@@ -285,7 +285,7 @@
     },
 
     breakpoint : function () {
-      return matchMedia(Foundation.media_queries['medium']).matches;
+      return matchMedia(Foundation.media_queries['topbar']).matches;
     },
 
     assemble : function (topbar) {

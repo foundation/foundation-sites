@@ -6,7 +6,9 @@ layout: doc/layouts/default.html
 # Flex Video
 
 <h3 class="subheader">Flex Video lets browsers automatically scale video objects in your webpages. If you're embedding a video from YouTube, Vimeo, or another site that uses iframe, embed or object elements, you can wrap your video in `div.flex-video` to create an intrinsic ratio that will properly scale your video on any device.</h3>
+
 ***
+
 <div class="row">
   <div class="large-6 columns">
     <div class="flex-video">
@@ -22,13 +24,15 @@ layout: doc/layouts/default.html
 
 ***
 
-<h3>Basic</h3>
+<h2>Basic</h2>
 
 You can create a flex video with minimal markup.
 
 <div class="row">
   <div class="large-6 columns">
+    
     <h4>HTML</h4>
+
 {{#markdown}}
 ```html
 <div class="flex-video">
@@ -36,6 +40,7 @@ You can create a flex video with minimal markup.
 </div>
 ```
 {{/markdown}}
+
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
@@ -45,13 +50,15 @@ You can create a flex video with minimal markup.
   </div>
 </div>
 
-<h3>Advanced</h3>
+<h2>Advanced</h2>
 
 Additional classes can be added to your flex video to change its appearance.
 
 <div class="row">
   <div class="large-6 columns">
+
     <h4>HTML</h4>
+
 {{#markdown}}
 ```html
 <div class="flex-video widescreen vimeo">
@@ -110,7 +117,7 @@ You can use the `flex-video-container()` mixin to create your own flex-video con
 
 ***
 
-##### Sass Errors?
+### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
