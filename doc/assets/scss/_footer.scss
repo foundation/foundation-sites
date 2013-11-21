@@ -1,7 +1,7 @@
 
 // Newsletter
 #newsletter {
-  background: #33A6C9; padding: 25px 0 25px 0; margin-top: 30px;
+  background: #085a78; padding: 25px 0 25px 0; margin-top: 30px;
   h5 { margin-bottom: 0px; margin-top: 10px; color: #fff; line-height: 24px; }
   p { clear: both; font-size: 12px; padding-top: 2px; color: #fff; }
   a { color: #fff; }
@@ -34,6 +34,7 @@
       }
     }
     h3 { font-size: rem-calc(24px); font-weight: bold; color: white; margin-bottom: 10px; }
+    h3 a { font-size: rem-calc(24px); }
     h4 { font-size: rem-calc(20px); font-weight: 200; color: white; margin-bottom: 10px; }
     p, li, a { font-size: 13px; line-height: 21px; color: white; }
     a {
@@ -160,6 +161,7 @@
   &.bg-lorange { background: #FF6908; }
   &.bg-oyellow { background: #FC9200; }
   &.bg-loyellow { background: #FFB515; }
+  &.bg-navy { background: #074e68; }
 }
 
 
