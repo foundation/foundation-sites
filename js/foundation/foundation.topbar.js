@@ -211,7 +211,7 @@
       });
 
       // Go up a level on Click
-      $(this.scope).on('click.fndtn', '[data-topbar] .has-dropdown .back', function (e) {
+      $(this.scope).on('click.fndtn.topbar', '[data-topbar] .has-dropdown .back', function (e) {
         e.preventDefault();
 
         var $this = $(this),
