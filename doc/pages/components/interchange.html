@@ -17,7 +17,7 @@ In Foundation 5 Interchange can now pull in HTML partials, so you can load diffe
 
 To do we use the `data-interchange` attribute on a markup container (probably a `div`). Here's an example which loads up a small, static map on mobile, a larger static map for medium sized devices, and a full interactive Google map on large display devices.
 
-<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/examples/interchange/default.html'}}, (default)], [{{relative absolute 'dist/docs/examples/interchange/medium.html'}}, (medium)], [{{relative absolute 'dist/docs/examples/interchange/large.html'}}, (large)]">
+<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/components/interchange-default.html'}}, (default)], [{{relative absolute 'dist/docs/components/interchange-medium.html'}}, (medium)], [{{relative absolute 'dist/docs/components/interchange-large.html'}}, (large)]">
   <p><img src="{{assets}}/img/examples/map-small.png" /></p>
 </div>
 
