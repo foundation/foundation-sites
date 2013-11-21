@@ -1,5 +1,5 @@
 
-// Newsletter
+/* Newsletter */
 #newsletter { 
   padding: 20px 0;
   background: #085a78; padding: 10px 0 10px 0;
@@ -17,7 +17,7 @@
   }
 }
 
-// Global Footer
+/* Global Footer */
 
 .zurb-footer-top {
   padding: 40px 0; color: white; 
@@ -109,7 +109,7 @@
   }  
 }
 
-@media #{$small-only} {
+@media only screen and (max-width: 767px) {
   .zurb-footer-top {
     .property {
       .property-info { padding-top: 0px; }
@@ -139,7 +139,7 @@
 
 /* Reformating pillars */
 
-@media #{$small-only} {
+@media only screen and (max-width: 767px) {
   .zurb-footer-top .property .connect-links { border-bottom: 1px dotted rgba(255, 255, 255, 0.2); margin-bottom: 20px; }
   .zurb-footer-top .global { 
     .footer-link-block { padding-top: 50px; text-align: center; margin: 0 !important; clear: both;
@@ -180,9 +180,7 @@
    .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links { background-image: url("../img/icons/footer-top-icons-retina.png"); background-size: 100px 1400px; }
 }
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px)  {
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .zurb-footer-top .property .learn-links { background:none; }
 }
 
