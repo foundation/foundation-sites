@@ -70,7 +70,6 @@
       }
 
       var settings = topbar.data('topbar-init');
-      if (typeof settings === 'undefined') {settings = {};}
 
       var section = $('section, .section', topbar);
 
@@ -247,7 +246,7 @@
       var self = this;
       $('[data-topbar]').each(function () {
         var topbar = $(this),
-            settings = topbar.data('topbar-int');
+            settings = topbar.data('topbar-init');
 
         var stickyContainer = topbar.parent('.' + self.settings.sticky_class);
         var stickyOffset;
@@ -261,7 +260,7 @@
             .removeClass('hover');
 
             if(doToggle) {
-              self.toggle();
+              self.toggle(topbar);
             }
         }
 
