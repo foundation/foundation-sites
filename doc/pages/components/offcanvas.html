@@ -27,7 +27,7 @@ You can create a basic, unstyled off-canvas menu with just a little bit of marku
 </div>
 
 ### What You Need
-The basics of Off Canvas are pretty simple. The off canvas layout is wrapped in `.off-canvas-wrap`. Next comes `.inner-wrap`. You also need to include the menu itself, which is `.left-off-canvas-menu` or `.right-off-canvas-menu`. You need a corresponding target for your off canvas menu, either `.left-off-canvas-toggle` or `.right-off-canvas-toggle`. Finally, be sure to include `.exit-off-canvas` so your users can get back to the main page! 
+The basics of Off Canvas are pretty simple. The off canvas layout is wrapped in `.off-canvas-wrap`. Next comes `.inner-wrap`. You also need to include the menu itself, which is `.left-off-canvas-menu` or `.right-off-canvas-menu`. You need a corresponding target for your off canvas menu, either `.left-off-canvas-toggle` or `.right-off-canvas-toggle`. Finally, be sure to include `.exit-off-canvas` so your users can get back to the main page!
 
 ##### Off Canvas Wrap
 This is the outer-most element. It contains the entire off canvas layout and hides overflows.
@@ -46,12 +46,13 @@ This is the element that is animated. All of your page content needs to be insid
 
 ###### Off Canvas Menu 
 This is the panel that slides in and out when activated. You can place it on either the left or the right side. You can even create menus on both sides!
+
 ```html
 <aside class="left-off-canvas-menu"><!-- put your links in here --></aside>
 <aside class="right-off-canvas-menu"><!-- put your links in here --></aside>
 ```
 
-###### Targeting Off Canvas Menus 
+###### Targeting Off Canvas Menus
 To target an off canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
 ```html
 <!-- target the leftside menu -->
@@ -63,7 +64,7 @@ To target an off canvas menu, add `.left-off-canvas-toggle` or `.right-off-canva
 <aside class="right-off-canvas-menu"></aside>
 ```
 
-###### Exit Off Canvas Menus 
+###### Exit Off Canvas Menus
 
 Include `.exit-off-canvas` to provide a way back to the main page. This is an overlay that covers the `.inner-wrap` when an off canvas menu is active. Clicking on it will deactivate the off canvas menu.
 ```html
@@ -90,7 +91,7 @@ Using our pre-built components, you can create an awesome off-canvas menu right 
 ### Tab Bar
 We've provided a simple navigation pattern called `.tab-bar`. It's a very plain component, designed to be easily customizable.
 
-##### Tab Bar Container 
+##### Tab Bar Container
 First, we need to add the tab bar container: `nav.tab-bar`.
 ```html
 <nav class="tab-bar"></nav>
@@ -111,7 +112,7 @@ To add the nice hamburger icon that everyone knows and loves, add a class of `.m
 <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
 ```
 
-Now put it all together... 
+Now put it all together...
 ```html
 <nav class="tab-bar">
   <section class="left-small">
@@ -229,3 +230,17 @@ Off canvas layouts can be easily customized using our provided Sass variables.
 
 <h4>SCSS</h4>
 {{> examples_offcanvas_variables}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/offcanvas";
+```
+{{/markdown}}

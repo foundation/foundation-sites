@@ -34,3 +34,17 @@ This straightforward example shows how two strings of text determine whether or 
 Finally, there are visibility classes to hide or show content based on whether a device supports touch (as determined by Normalizr).
 
 {{> examples_visibility_touch}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/visibility";
+```
+{{/markdown}}

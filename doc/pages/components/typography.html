@@ -20,7 +20,7 @@ Foundation includes styles for all of the header elements that are balanced and 
   ```html
 {{> examples_typography_basic}}
 	```
-	{{/markdown}}  
+	{{/markdown}}
   </div>
   <div class="large-6 columns">
   <h4>Rendered HTML</h4>
@@ -43,7 +43,7 @@ Lighten up your headers by adding a class of .subheader to any header element.
   ```html
 {{> examples_typography_subheader}}
 	```
-	{{/markdown}}  
+	{{/markdown}}
   </div>
   <div class="large-6 columns">
   <h4>Rendered HTML</h4>
@@ -68,7 +68,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
   ```html
 {{> examples_typography_small}}
 	```
-	{{/markdown}}  
+	{{/markdown}}
   </div>
   <div class="large-6 columns">
   <h4>Rendered HTML</h4>
@@ -82,7 +82,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 
 ### Paragraphs
 
-This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap `<strong>` around type to **make it bold!**. You can also you `<em>` to *italicize your words*.
+This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap `<strong>` around type to **make it bold!** You can also you `<em>` to *italicize your words*.
 
 <h4>HTML</h4>
 {{#markdown}}
@@ -127,7 +127,7 @@ Sometimes other people say smart things, and you may want to mention that throug
   ```html
 <blockquote>Those people who think they know everything are a great annoyance to those of us who do.<cite>Isaac Asimov</cite></blockquote>
 	```
-	{{/markdown}}  
+	{{/markdown}}
   </div>
   <div class="large-6 columns">
   <h4>Rendered HTML</h4>
@@ -149,7 +149,7 @@ Here's a handy microformat-friendly list to *address* all your needs.
   ```html
 {{> examples_typography_vcard}}
 	```
-	{{/markdown}}  
+	{{/markdown}}
   </div>
   <div class="large-6 columns">
   <h4>Rendered HTML</h4>
@@ -176,4 +176,20 @@ On top of that, Foundation includes a couple of simple classes you can use to co
 
 We've got a ton of variables for you to use to customize your typography.
 
+#### SCSS
+
 {{> examples_typography_variables}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/typography";
+```
+{{/markdown}}
