@@ -2,15 +2,11 @@ function when(size, testFunc) {
   return function() {
     var runFunc = false;
 
-    if(size === 'small') {
-      if(!matchMedia(Foundation.media_queries['medium']).matches) {
-        runFunc = true;
-      }
-    } else if(matchMedia(Foundation.media_queries[size]).matches) {
+    if (matchMedia(Foundation.media_queries[size]).matches) {
       runFunc = true;
     }
 
-    if(runFunc) {
+    if (runFunc) {
       testFunc.apply(this);
     } else {
       // Uncomment to verify skipping correct tests for media queries...
