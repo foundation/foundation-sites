@@ -21,6 +21,10 @@ describe('topbar:', function() {
       $.ajax({ dataType: 'script', cache: true, async: false, url: '/base/dist/assets/js/foundation/foundation.topbar.js'});
     });
 
+    afterEach(function() {
+      document.body.innerHTML = '';
+    });
+
     describe('when below the small breakpoint', function () {
       it('should have a toggle button', when('small', function() {
         $(document).foundation();
@@ -46,6 +50,8 @@ describe('topbar:', function() {
       }));
 
       it('should collapse after being expanded by the toggle', when('small', function() {
+        $(document).foundation();
+
         var topbar = $('.top-bar, [data-topbar]');
         var toggle = topbar.find('.toggle-topbar');
 
