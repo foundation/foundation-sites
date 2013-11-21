@@ -30,6 +30,8 @@
   border: #{$style} #{$width} #{$color};
 }
 
+
+
 body {
   //font-size: rem-calc(14);
   //font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -524,7 +526,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .doc-oc-list { background: $off-canvas-bg; }
 
 // Make sure topbar dropdowns are above tab bar.
-.docs-bar { z-index: 1003; }
+.docs-bar ul.dropdown { z-index: 1003; }
 
 // Side nav custom active style 
  .side-nav li.active > a:first-child {
@@ -553,3 +555,5 @@ $custom-active-bg:darken($custom-link-color, 5%);
     padding-right: 20px;
     background: rgba(#004054, 0.03);
   }
+
+

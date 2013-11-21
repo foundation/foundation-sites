@@ -28,7 +28,7 @@
           var settings = $(this).data('dropdown-init');
           e.preventDefault();
 
-          if (!settings.is_hover) self.toggle($(this));
+          if (!settings.is_hover || Modernizr.touch) self.toggle($(this));
         })
         .on('mouseenter.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
           var $this = $(this);

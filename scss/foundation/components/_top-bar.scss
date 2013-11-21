@@ -15,7 +15,6 @@ $topbar-height: 45px !default;
 $topbar-margin-bottom: 0 !default;
 
 // Control Input height for top bar
-$topbar-input-height: 2.45rem !default;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal !default;
@@ -41,6 +40,7 @@ $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: darken($primary-color, 5%) !default;
 $topbar-link-font-family: $body-font-family !default;
 
+$topbar-button-font-size: 0.75rem;
 
 $topbar-dropdown-label-color: #777 !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
@@ -136,9 +136,17 @@ meta.foundation-mq-topbar {
       form,
       input { margin-bottom: 0; }
 
-      input { height: $topbar-input-height; }
+      input { height: auto; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
-      .button { padding-top: .5rem; padding-bottom: .5rem; margin-bottom: 0; }
+      .button { 
+        padding-top: .45rem; 
+        padding-bottom: .35rem; 
+        margin-bottom: 0; 
+        font-size: $topbar-button-font-size; 
+          // position: relative;
+          // top: -1px;
+        
+      }
 
       // Title Area
       .title-area {
@@ -183,12 +191,12 @@ meta.foundation-mq-topbar {
           line-height: $topbar-height;
         }
 
-    // Menu toggle button on small devices
-    .toggle-topbar {
-      
-      position: absolute;
-      #{$opposite-direction}: 0;
-      top: 0;
+        // Adding the class "menu-icon" will add the 3-line icon people love and adore.
+        &.menu-icon {
+          #{$opposite-direction}: $topbar-height / 3;
+          top: 50%;
+          margin-top: -16px;
+          padding-#{$default-float}: 40px;
 
           a {
             text-indent: -48px;
@@ -241,6 +249,8 @@ meta.foundation-mq-topbar {
           }
         }
       }
+      
+
 
     }
 
@@ -413,7 +423,7 @@ meta.foundation-mq-topbar {
         .button {
           font-size: rem-calc(14);
           position: relative;
-          top: 8px;
+          top: 7px;
         }
 
         &.expanded { background: $topbar-bg; }

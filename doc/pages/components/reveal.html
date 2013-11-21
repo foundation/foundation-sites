@@ -41,6 +41,7 @@ The class options:
 ##### Removing the Background
 
 <h4>HTML</h4>
+
 {{> examples_reveal_background}}
 
 <h5>Firing a Reveal Modal</h5>
@@ -48,13 +49,14 @@ The class options:
 <p>To launch a modal, just add a `data-reveal-id` to the object which you want to fire the modal when clicked. The `data-reveal-id` needs to match the `id` of your reveal.</p>
 
 <h4>HTML</h4>
+
 {{> examples_reveal_data}}
 
 You can also open and close Reveal via JavaScript:
 
 <h5>Firing a Reveal Modal with Ajax Content</h5>
 
-To launch a modal with content from another page, just add a `data-reveal-ajax` attribute pointing to the url of that page. When clicked, the Reveal modal will be opened with a content from that page. Beware, that content of the object from `data-reveal-id` attribute will be overwritten as a result.
+To launch a modal with content from another page, just add a `data-reveal-ajax` attribute pointing to the url of that page. When clicked, the Reveal modal will be opened with a content from that page. Beware: content of the object from `data-reveal-id` attribute will be overwritten as a result.
 
 To use an url from `href` attribute just add `data-reveal-ajax="true"` instead.
 
@@ -140,7 +142,7 @@ Ajax-based Reveal modals can also be opened via JavaScript:
 ```
 {{/markdown}}
 
-<h3>You can use this mixin to add a close button to a reveal modal</h3>
+<h3>Add a close button</h3>
 
 <p>You can use this mixin to create a close button for the reveal modal</p>
 

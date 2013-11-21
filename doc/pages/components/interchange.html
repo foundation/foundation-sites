@@ -12,15 +12,16 @@ layout: doc/layouts/default.html
 
 ***
 
-### Using Interchange with HTML Content
+### Using Interchange With HTML Content
 
-In Foundation 5 Interchange can now pull in HTML partials, so you can load different sections of your page for particular media queries. This is great for loading up a mobile-friendly component on small devices, and a more robust or heavier load component on desktops.
+Interchange can now pull in HTML partials so you can load different sections of your page for particular media queries. This is great for loading up a mobile-friendly component on small devices, and a more robust or heavier load component on desktops.
 
-To do we use the `data-interchange` attribute on a markup container (probably a `div`). Here's an example which loads up a small, static map on mobile, a larger static map for medium sized devices, and a full interactive Google map on large display devices.
+We use the data-interchange attribute on a markup container (probably a div) to do this. Here's an example which loads up a small, static map on mobile, a larger static map for medium-sized devices, and a full interactive Google map on large display devices.
 
 <div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/components/interchange-default.html'}}, (default)], [{{relative absolute 'dist/docs/components/interchange-medium.html'}}, (medium)], [{{relative absolute 'dist/docs/components/interchange-large.html'}}, (large)]">
   <p><img src="{{assets}}/img/examples/map-small.png" /></p>
 </div>
+<div><br></div>
 
 {{#markdown}}
 ```html
@@ -34,7 +35,7 @@ The last rule that evaluates to true will be the image that gets loaded. Exludin
 
 ***
 
-### Using Interchange with Images
+### Using Interchange With Images
 
 Using Interchange with images alone is the same process as arbitrary HTML content, and a common use case for Interchange. This way you'll only load larger resources for devices that can handle it.
 
@@ -93,7 +94,7 @@ Interchange triggers a `replace` event when a rule evaluates to true and the con
 
 ***
 
-### Adding new Interchange content after page load
+### Adding New Interchange Content After Page Load
 
 If you add new content after the page has been loaded, you will need to trigger a `reflow` by running one of the following:
 

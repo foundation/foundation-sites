@@ -24,7 +24,7 @@
 
       this.bindings(method, options);
 
-      $('[data-topbar]').each(function () {
+      $('[data-topbar]', this.scope).each(function () {
         var topbar = $(this),
             settings = topbar.data('topbar-init'),
             section = $('section', this),
@@ -70,7 +70,6 @@
       }
 
       var settings = topbar.data('topbar-init');
-      if (typeof settings === 'undefined') {settings = {};}
 
       var section = $('section, .section', topbar);
 
@@ -91,8 +90,7 @@
           .css('height', '');
       }
 
-      if(settings.scrolltop)
-      {
+      if(settings.scrolltop) {
         if (!topbar.hasClass('expanded')) {
           if (topbar.hasClass('fixed')) {
             topbar.parent().addClass('fixed');
@@ -141,7 +139,7 @@
         .on('click.fndtn.topbar', '[data-topbar] li.has-dropdown', function (e) {
           var li = $(this),
               target = $(e.target),
-              topbar = li.closest('[data-topbar], .top-bar'),
+              topbar = li.closest('[data-topbar]'),
               settings = topbar.data('topbar-init');
 
           if(target.data('revealId')) {
@@ -211,7 +209,7 @@
       });
 
       // Go up a level on Click
-      $(this.scope).on('click.fndtn', '[data-topbar] .has-dropdown .back', function (e) {
+      $(this.scope).on('click.fndtn.topbar', '[data-topbar] .has-dropdown .back', function (e) {
         e.preventDefault();
 
         var $this = $(this),
@@ -247,7 +245,7 @@
       var self = this;
       $('[data-topbar]').each(function () {
         var topbar = $(this),
-            settings = topbar.data('topbar-int');
+            settings = topbar.data('topbar-init');
 
         var stickyContainer = topbar.parent('.' + self.settings.sticky_class);
         var stickyOffset;
@@ -261,7 +259,7 @@
             .removeClass('hover');
 
             if(doToggle) {
-              self.toggle();
+              self.toggle(topbar);
             }
         }
 
@@ -329,7 +327,7 @@
     },
 
     assembled : function (topbar) {
-      topbar.data('topbar-init', $({}, topbar.data('topbar-init'), {assembled: true}));
+      topbar.data('topbar-init', $.extend({}, topbar.data('topbar-init'), {assembled: true}));
     },
 
     height : function (ul) {
