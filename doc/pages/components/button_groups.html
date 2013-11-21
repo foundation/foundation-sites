@@ -13,7 +13,7 @@ layout: doc/layouts/default.html
 
 ***
 
-<h3>Basic</h3>
+<h2>Basic</h2>
 
 You can create a button group using minimal markup.
 
@@ -25,7 +25,9 @@ You can create a button group using minimal markup.
 
 {{> examples_button_group_basic}}
 
-<h3>Advanced</h3>
+***
+
+<h2>Advanced</h2>
 
 Additional classes can be added to your button group to change its appearance.
 
@@ -55,11 +57,7 @@ Additional classes can be added to your button group to change its appearance.
 
 ## Button Bars
 
-<h3 class="subheader">A button bar is a group of button groups, perfect for situations where you want groups of actions that are all related to a similar element or page. Simply wrap two or more button groups in a `.button-bar` and Foundation takes care of the rest.</h3>
-
-{{> examples_button_group_bar}}
-
-***
+A button bar is a group of button groups, perfect for situations where you want groups of actions that are all related to a similar element or page. Simply wrap two or more button groups in a `.button-bar` and Foundation takes care of the rest.
 
 <h3>Basic</h3>
 
@@ -100,6 +98,8 @@ Button bars can be easily customized using our provided Sass variables.
 
 ## Semantic Markup With Sass
 
+You can use our mixins to use button groups on your own markup.
+
 <h3>Basic</h3>
 
 You can use the `button-group-container()` and `button-group-style()` mixins to create your own button groups and button bars with semantic markup, like so:
@@ -136,11 +136,13 @@ You can further customize your button groups using using the provided options in
 
 ##### Button Group Style Options
 
+<h4>SCSS</h4>
+
 {{> examples_button_group_style_mixin}}
 
 ***
 
-##### Sass Errors?
+### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
