@@ -131,11 +131,12 @@ $('#autocomplete').autocomplete({
   lookup: components,
   autoSelectFirst: true,
   onSelect: function (suggestion) {
-    if (/index.html/i.test(window.location.href)) {
-      return window.location = 'components/' + suggestion.data;
-    }
+    // if (/index.html/i.test(window.location.href)) {
+    //   return window.location = 'components/' + suggestion.data;
+    // }
 
-    return window.location = '../components/' + suggestion.data;
+    // return window.location = '../components/' + suggestion.data;
+    window.location = "http://foundation5.zurb.com" + suggestion.data;
   }
 });
 
