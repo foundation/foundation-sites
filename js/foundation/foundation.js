@@ -165,7 +165,7 @@
 
   function removeQuotes (string) {
     if (typeof string === 'string' || string instanceof String) {
-      string = string.replace(/^[\\'"]+|(;\s?})+|[\\'"]+$/g, '');
+      string = string.replace(/^[\\/'"]+|(;\s?})+|[\\/'"]+$/g, '');
     }
 
     return string;
