@@ -51,10 +51,11 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
 				}
 			}
 			&.vertical { 
-				dd { 
+				dd {
+					position: inherit;
 					float: none;
 					display: block;
-					top: 0px;
+					top: auto;
 				}
 			}
 		}
