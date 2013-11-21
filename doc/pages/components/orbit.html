@@ -38,7 +38,7 @@ Orbit requires minimal HTML markup to function. Our JavaScript takes care of mos
 Orbit can also be used with just content and no images.
 
 <div class="row">
-  <div class="half-grid">
+  <div class="large-6 columns">
     <h4>HTML</h4>
 {{#markdown}}
 ```html
@@ -46,7 +46,7 @@ Orbit can also be used with just content and no images.
 ```
 {{/markdown}}
   </div>
-  <div class="half-grid">
+  <div class="large-6 columns">
     <h4>Rendered HTML</h4>
     {{> examples_orbit_content}}
   </div>
@@ -59,7 +59,7 @@ Orbit can also be used with just content and no images.
 To link to a particular slide in your Orbit slider you will need to add a  `data-orbit-slide` attribute to each slide. Then anywhere on your page you can use `data-orbit-link` to link to that slide.
 
 <div class="row">
-  <div class="half-grid">
+  <div class="large-6 columns">
     <h4>HTML</h4>
 {{#markdown}}
 ```html
@@ -75,7 +75,7 @@ To link to a particular slide in your Orbit slider you will need to add a  `data
 ```
 {{/markdown}}
   </div>
-  <div class="half-grid">
+  <div class="large-6 columns">
     <h4>Rendered HTML</h4>
     <a class="small button" data-orbit-link="headline-1">Goto Slide 1</a>
     <a class="small button" data-orbit-link="headline-2">Goto Slide 2</a>
@@ -140,6 +140,7 @@ Here is Orbit in its most basic configuration. You can choose to either initiali
 
 <div class="row">
   <div class="large-6 columns">
+    <h4>JS</h4>
 {{#markdown}}
 ```js
 $(document).foundation('orbit', {
@@ -149,6 +150,7 @@ $(document).foundation('orbit', {
 {{/markdown}}
   </div>
   <div class="large-6 columns">
+    <h4>HTML</h4>
 {{#markdown}}
 ```html
 <ul data-orbit data-options="animation_speed:1500;">
@@ -161,23 +163,23 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
       <h5 class="subheader">Code Example</h5>
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <h5 class="subheader">Description</h5>
     </section>
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
 $(document).foundation('orbit', {
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>Initialization</dt>
         <dd>Initializes orbit</dd>
@@ -186,14 +188,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   animation: 'fade',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>animation</dt>
         <dd>Sets the type of animation used for transitioning between slides. Default: fade</dd>
@@ -202,14 +204,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   timer_speed: 10000,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>timer_speed</dt>
         <dd>Sets the amount of time in milliseconds before transitioning a slide. Default: 10000</dd>
@@ -218,14 +220,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   pause_on_hover: true,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>pause_on_hover</dt>
         <dd>Pauses on the current slide while hovering. Default: true</dd>
@@ -234,14 +236,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   resume_on_mouseout: false,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>resume_on_mouseout</dt>
         <dd>If pause on hover is set to true, this setting resumes playback after mousing out of slide. Default: false</dd>
@@ -250,14 +252,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   animation_speed: 500,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>animation_speed</dt>
         <dd>Sets the amount of time in milliseconds the transition between slides will last. Default: 500</dd>
@@ -266,14 +268,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   stack_on_small: true,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>stack_on_small</dt>
         <dd>Default: true</dd>
@@ -282,14 +284,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   navigation_arrows: true,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>navigation_arrows</dt>
         <dd>Default: true</dd>
@@ -298,14 +300,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   slide_number: true,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>slide_number</dt>
         <dd>Default: true</dd>
@@ -314,14 +316,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   container_class: 'orbit-container',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>container_class</dt>
         <dd>Default: orbit-container</dd>
@@ -330,14 +332,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   container_class: 'stack_on_small_class',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>stack_on_small_class</dt>
         <dd>Default: 'orbit-stack-on-small'</dd>
@@ -347,14 +349,14 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   next_class: 'orbit-next',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>next_class</dt>
         <dd>Class name given to the next button. Default: 'orbit-stack-on-small'</dd>
@@ -364,14 +366,14 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   prev_class: 'orbit-prev',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>prev_class</dt>
         <dd>Class name given to the previous button. Default: 'orbit-prev'</dd>
@@ -381,14 +383,14 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   timer_container_class: 'orbit-timer',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>timer_container</dt>
         <dd>Class name given to the timer. Default: 'orbit_timer'</dd>
@@ -398,14 +400,14 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   timer_paused_class: 'paused',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>timer_paused_class</dt>
         <dd>Class name given to the paused button. Default: 'paused'</dd>
@@ -415,14 +417,14 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   timer_progress_class: 'orbit-progress',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>timer_progress_class</dt>
         <dd>Class name given to the progress bar. Default: 'orbit-progress'</dd>
@@ -432,14 +434,14 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   slides_container_class: 'orbit-slides-container',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>slides_container_class</dt>
         <dd>Class name given to the slides container. Default: 'orbit-stack-on-small'</dd>
@@ -449,14 +451,14 @@ $(document).foundation('orbit', {
 
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   bullets_container_class: 'orbit-bullets',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>bullets_container_class</dt>
         <dd>Default: 'orbit-bullets'</dd>
@@ -465,14 +467,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   bullets_active_class: 'active',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>bullets_active_class</dt>
         <dd>Class name given to the active bullet. Default: 'active'</dd>
@@ -481,14 +483,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   slide_number_class: 'orbit-slide-number',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>slide_number_class</dt>
         <dd>Class name given to the slide number. Default: 'orbit-slide_number'</dd>
@@ -497,14 +499,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   caption_class: 'orbit-caption',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>caption_class</dt>
         <dd>Class name given to the caption. Default: 'orbit-caption'</dd>
@@ -513,14 +515,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   active_slide_class: 'active',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>active_slide_class</dt>
         <dd>Class name given to the active slide. Default: 'active'</dd>
@@ -529,14 +531,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   orbit_transition_class: 'orbit-transitioning',
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>orbit_transition_class</dt>
         <dd>Class name given to ?? Default: 'orbit-transitioning'</dd>
@@ -545,14 +547,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   bullets: true,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>bullets</dt>
         <dd>Does the slider have bullets visible? Default: true</dd>
@@ -561,14 +563,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   timer: true,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>bullets_container_class</dt>
         <dd>Does the slider have a timer visible. Default: true</dd>
@@ -577,14 +579,14 @@ $(document).foundation('orbit', {
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
 next_on_click: false,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>next_on_click</dt>
         <dd>Default: false</dd>
@@ -593,14 +595,14 @@ next_on_click: false,
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   variable_height: false,
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>variable_height</dt>
         <dd>Does the slider have variable height images? Default: false</dd>
@@ -609,14 +611,14 @@ next_on_click: false,
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   before_slide_change: function() {}
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>before_slide_change</dt>
         <dd>Execute a function before the slide changes. Default: function() {}</dd>
@@ -625,14 +627,14 @@ next_on_click: false,
   </div>
 
   <div class="row">
-    <div class="half-grid">
+    <div class="large-6 columns">
 {{#markdown}}
 ```js
   after_slide_changes: function() {}
 ```
 {{/markdown}}
     </div>
-    <div class="half-grid">
+    <div class="large-6 columns">
       <dl>
         <dt>after_slide_changes</dt>
         <dd>Execute a function after the slide changes. Default: function() {}</dd>
@@ -645,7 +647,7 @@ next_on_click: false,
 ## Real World Example
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
       <h5 class="subheader">JavaScript</h5>
       <div class="code-container">
 {{#markdown}}
@@ -666,7 +668,7 @@ $(document).foundation({
       </div>
     </section>
 
-    <section class="half-grid">
+    <section class="large-6 columns">
       <h5 class="subheader">HTML</h5>
       <div class="options-code-container">
         <div class="code-container">
@@ -711,22 +713,22 @@ $(document).foundation({
 You can bind to the following events in your code.
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
       <h5 class="subheader">Events</h5>
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <h5 class="subheader">Description</h5>
     </section>
   </div>
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
 {{#markdown}}
 ```js
 orbit:ready
 ```
 {{/markdown}}
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <dl>
         <dt>event</dt>
         <dd>Fires when the slider has loaded</dd>
@@ -735,14 +737,14 @@ orbit:ready
   </div>
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
 {{#markdown}}
 ```js
 orbit:before-slide-change
 ```
 {{/markdown}}
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <dl>
         <dt>event</dt>
         <dd>Fires before the slide changes</dd>
@@ -751,14 +753,14 @@ orbit:before-slide-change
   </div>
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
 {{#markdown}}
 ```js
 orbit:after-slide-change
 ```
 {{/markdown}}
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <dl>
         <dt>event, orbit</dt>
         <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and total_slides</code></dd>
@@ -767,14 +769,14 @@ orbit:after-slide-change
   </div>
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
 {{#markdown}}
 ```js
 orbit:after-slide-change
 ```
 {{/markdown}}
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <dl>
         <dt>event</dt>
         <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and total_slides</code></dd>
@@ -783,14 +785,14 @@ orbit:after-slide-change
   </div>
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
 {{#markdown}}
 ```js
 orbit:timer-started
 ```
 {{/markdown}}
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <dl>
         <dt>event</dt>
         <dd>Fires each time the timer is started/resumed</dd>
@@ -799,14 +801,14 @@ orbit:timer-started
   </div>
 
   <div class="row">
-    <section class="half-grid">
+    <section class="large-6 columns">
 {{#markdown}}
 ```js
 orbit:timer-stopped
 ```
 {{/markdown}}
     </section>
-    <section class="half-grid">
+    <section class="large-6 columns">
       <dl>
         <dt>event</dt>
         <dd>Fires each time the timer is paused/stopped</dd>
