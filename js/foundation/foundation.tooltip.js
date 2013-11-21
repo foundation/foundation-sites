@@ -127,7 +127,7 @@
 
       objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', target.offset().left, width);
 
-      if ($(window).width() < 767) {
+      if (this.small()) {
         objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', 12.5, $(this.scope).width());
         tip.addClass('tip-override');
         objPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
@@ -151,6 +151,10 @@
       }
 
       tip.css('visibility', 'visible').hide();
+    },
+
+    small : function () {
+      return matchMedia(Foundation.media_queries.small).matches;
     },
 
     inheritable_classes : function (target) {
