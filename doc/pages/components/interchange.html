@@ -112,3 +112,17 @@ Just add `foundation.interchange.js` AFTER the `foundation.js` file. Your markup
 {{> examples_interchange_javascript}}
 
 Required Foundation Library: `foundation.interchange.js`
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/interchange";
+```
+{{/markdown}}
