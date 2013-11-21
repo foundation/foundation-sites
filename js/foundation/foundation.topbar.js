@@ -146,7 +146,7 @@
             self.toggle();
             return;
           }
-          console.log(self.breakpoint())
+
           if (self.breakpoint()) return;
           if (settings.is_hover && !Modernizr.touch) return;
 
@@ -285,7 +285,7 @@
     },
 
     breakpoint : function () {
-      return matchMedia(Foundation.media_queries['topbar']).matches;
+      return !matchMedia(Foundation.media_queries['topbar']).matches;
     },
 
     assemble : function (topbar) {

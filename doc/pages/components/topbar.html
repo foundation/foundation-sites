@@ -82,11 +82,22 @@ The top bar is a pretty complex piece of magical UI goodness. We rely on many pr
       </ul>
 
       <section class="top-bar-section">
+
         <!-- Right Nav Section -->
-        <ul class="right">
-          <li class="active"><a href="#">Right Nav Button Active</a></li>
+        <ul class="right show-for-large-up">
+          <li class="active"><a href="#">Right Button Active</a></li>
           <li class="has-dropdown">
-            <a href="#">Right Button with Dropdown</a>
+            <a href="#">Right Button Dropdown</a>
+            <ul class="dropdown">
+              <li><a href="#">First link in dropdown</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="right hide-for-large-up">
+          <li class="active"><a href="#">Right Button</a></li>
+          <li class="has-dropdown">
+            <a href="#">Right Dropdown</a>
             <ul class="dropdown">
               <li><a href="#">First link in dropdown</a></li>
             </ul>
@@ -94,8 +105,8 @@ The top bar is a pretty complex piece of magical UI goodness. We rely on many pr
         </ul>
 
         <!-- Left Nav Section -->
-        <ul class="left">
-          <li><a href="#">Left Nav Button</a></li>
+        <ul class="left show-for-large-up">
+          <li><a href="#">Left Button</a></li>
         </ul>
       </section>
     </nav>
@@ -204,7 +215,7 @@ Several common elements have been supported by default, each one of these elemen
     <ul class="left">
 
       <!-- Search | has-form wrapper -->
-      <li class="has-form">
+      <li class="has-form show-for-large-up">
         <div class="row collapse">
           <div class="large-8 small-9 columns">
             <input type="text" placeholder="Find Stuff">
@@ -250,7 +261,7 @@ Several common elements have been supported by default, each one of these elemen
       <li class="divider"></li>
 
       <!-- Button -->
-      <li class="has-form">
+      <li class="has-form show-for-large-up">
         <a href="http://foundation.zurb.com/docs" class="button">Get Lucky</a>
       </li>
     </ul>
