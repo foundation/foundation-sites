@@ -5,24 +5,27 @@ var components = [
   { value: 'Sass', data: 'sass.html' },
   { value: 'SCSS', data: 'sass.html' },
 
-  { value: 'Rails', data: '#rails' },
-  { value: 'Gem', data: '#rails' },
+  { value: 'Applications', data: 'applications.html' },
+  { value: 'Rails', data: 'applications.html' },
+  { value: 'Gem', data: 'applications.html' },
 
   { value: 'Global Styles', data: 'global.html' },
   { value: 'Global Mixins', data: 'global.html' },
   { value: 'Global Variables', data: 'global.html' },
   { value: 'Useful HTML Classes', data: 'global.html' },
 
-  { value: 'Upgrading', data: '#upgrading' },
-  { value: 'Migration', data: '#upgrading' },
+  { value: 'Upgrading', data: 'upgrading.html' },
+  { value: 'Migration', data: 'upgrading.html' },
 
-  { value: 'Media Queries', data: '#mediaQueries' },
+  { value: 'Media Queries', data: 'media-queries.html' },
+  { value: 'Breakpoints', data: 'media-queries.html' },
+
   { value: 'Grid', data: 'grid.html' },
   { value: 'Block Grid', data: 'block_grid.html' },
   { value: 'Thumbnails', data: 'thumbnails.html' },
   { value: 'Images', data: 'thumbnails.html'},
-  { value: 'Utility Classes', data: '#utility classes' },
-  { value: 'Right-to-Left Support', data: '#right-to-left support' },
+  { value: 'Utility Classes', data: 'utility-classes.html' },
+  { value: 'Right-to-Left Support', data: 'rtl.html' },
   { value: 'Offcanvas', data: 'offcanvas.html' },
 
   { value: 'Top Bar', data: 'topbar.html' },
