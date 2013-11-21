@@ -4,28 +4,46 @@ layout: doc/layouts/default.html
 
 # Interchange
 
-<h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for a user's browser.</h3>
+<h3 class="subheader">Interchange uses media queries to dynamically load responsive content (arbitrary HTML partials, or images) that is appropriate for a user's device.</h3>
 
 <img data-interchange="[{{assets}}/img/examples/space-small.jpg, (small)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
 <noscript><img src="{{assets}}/img/examples/space-default.jpg"></noscript>
 
 ***
 
-### Using the Markup with Images
+### Using Interchange with HTML Content
 
-The Foundation Interchange component utilizes the `data-interchange` attribute for specifying your media queries and their respective images.
+In Foundation 5 Interchange can now pull in HTML partials, so you can load different sections of your page for particular media queries. This is great for loading up a mobile-friendly component on small devices, and a more robust or heavier load component on desktops.
 
-{{> examples_interchange_basic_rendered}}
+To do we use the `data-interchange` attribute on a markup container (probably a `div`). Here's an example which loads up a small, static map on mobile, a larger static map for medium sized devices, and a full interactive Google map on large display devices.
+
+<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/doc/examples/interchange/default.html'}}, (small)], [{{relative absolute 'dist/doc/examples/interchange/medium.html'}}, (medium)], [{{relative absolute 'dist/doc/examples/interchange/large.html'}}, (large)]">
+  <p><img src="{{assets}}/img/examples/map-small.png" /></p>
+</div>
+
+{{#markdown}}
+```html
+{{> examples_interchange_markup}}
+```
+{{/markdown}}
 
 Each rule passed to `data-interchange` is comma delimited and encapsulated in square brackets, and each argument within a rule is also comma delimited. The first parameter is the path to your image, and the second parameter is your media query, surrounded by parenthesis.
+
+The last rule that evaluates to true will be the image that gets loaded. Exluding the `src` attribute keeps the browser from making two requests for images.
+
+***
+
+### Using Interchange with Images
+
+Using Interchange with images alone is the same process as arbitrary HTML content, and a common use case for Interchange. This way you'll only load larger resources for devices that can handle it.
+
+{{> examples_interchange_basic_rendered}}
 
 {{#markdown}}
 ```html
 data-interchange="[image_path, (media query)], [image_path, (media query)]"
 ```
 {{/markdown}}
-
-The last rule that evaluates to true will be the image that gets loaded. Exluding the `src` attribute keeps the browser from making two requests for images.
 
 If you want to support browsers with JavaScript disabled, we recommend setting your default image in a `<noscript>` tag so that these browsers will have a fallback:
 
@@ -35,25 +53,6 @@ If you want to support browsers with JavaScript disabled, we recommend setting y
 ```
 
 You should always specify a `default` directive for Interchange.
-
-***
-
-### Interchange for Other Content
-
-You are not restricted to using Interchange with just images. You can now, as of Foundation 5, load responsive content on any html element.
-
-<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/examples/interchange/default.html'}}, (small)], [{{relative absolute 'dist/docs/examples/interchange/medium.html'}}, (medium)], [{{relative absolute 'dist/docs/examples/interchange/large.html'}}, (large)]">
-  <div data-alert class="alert-box secondary radius">
-    This is the default content.
-    <a href="#" class="close">&times;</a>
-  </div>
-</div>
-
-{{#markdown}}
-```html
-{{> examples_interchange_markup}}
-```
-{{/markdown}}
 
 ***
 
