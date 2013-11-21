@@ -1,10 +1,11 @@
 ---
+title: Off-canvas navigation
 layout: doc/layouts/default.html
 ---
 
 # Off Canvas
 
-<h3 class="subheader"> Off canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off canvas layout in Foundation is super easy.</h3>
+<h3 class="subheader">Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off canvas layout in Foundation is super easy.</h3>
 
 {{> examples_offcanvas_basic}}
 
@@ -51,10 +52,15 @@ This is the element that is animated. All of your page content needs to be insid
 </div>
 ```
 
+<<<<<<< HEAD
 ###### Off Canvas Menu
 This is the panel that slides in and out when activated. You can place it on either the left or the right side. You can even have one menu on either side!
 
 <h4>HTML</h4>
+=======
+###### Off Canvas Menu 
+This is the panel that slides in and out when activated. You can place it on either the left or the right side. You can even create menus on both sides!
+>>>>>>> 2fb4ca44ea7cb99d61fd951e0746acc609e0f4f2
 
 ```html
 <aside class="left-off-canvas-menu"><!-- put your links in here --></aside>
@@ -91,7 +97,7 @@ Include `.exit-off-canvas` to provide a way back to the main page. This is an ov
 
 ## Advanced
 
-Using our pre-built components, you can create a nicer looking off-canvas menu right out of the box.
+Using our pre-built components, you can create an awesome off-canvas menu right out of the box.
 
 <div class="row">
   <div class="large-6 columns">
@@ -193,13 +199,13 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 ```html
 <nav class="tab-bar">
   <section class="left-small"></section>
-  <section class="middle tab-bar-section"><!-- I'm in the middle --></section>
-  <section class="right-small"></section>
+  <section class="right tab-bar-section"><!-- I stretch all the way to the right --></section>
 </nav>
 
 <nav class="tab-bar">
   <section class="left-small"></section>
-  <section class="right tab-bar-section"><!-- I stretch all the way to the right --></section>
+  <section class="middle tab-bar-section"><!-- I'm in the middle --></section>
+  <section class="right-small"></section>
 </nav>
 
 <nav class="tab-bar">

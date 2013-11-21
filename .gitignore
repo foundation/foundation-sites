@@ -1,3 +1,4 @@
+/bower_components/*
 /dist/*
 *.gem
 *.rbc

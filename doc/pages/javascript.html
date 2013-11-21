@@ -1,12 +1,13 @@
 # JavaScript Setup
 
-<h3 class="subheader">Foundation streamlines the implementation of the Foundation plugins by combining them all into a single plugin under the `$.fn.foundation()` jQuery namespace.</h3>
+<h3 class="subheader">We streamlined how you implement Foundation plugins by combining them into a single plugin under the `$.fn.foundation()` jQuery namespace.</h3>
+
+
+
 
 ### Installation
 
-Foundation JavaScript was designed to work with <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. In the `head` section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements for older browsers as well as detection for mobile devices.
-
-<h4>HTML</h4>
+Foundation JavaScript was designed to work with <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. In the `&lt;head&gt;` section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements that older browsers may not recognize, and provides detection for mobile devices.
 
 ```html
 <script src="/js/custom.modernizr.js"></script>
@@ -20,7 +21,10 @@ Before the closing `body` tag, insert JQuery.
 <script src="/js/vendor/jquery.js"></script>
 ```
 
-Then include either `foundation.min.js`, which includes Foundation Core and all JavaScript plugins or you can load them individually.
+Then either load each plugin individually, or include `foundation.min.js`, which automatically loads the Foundation Core and all JavaScript plugins.
+
+
+
 
 <h4>HTML</h4>
 
@@ -42,7 +46,9 @@ Then include either `foundation.min.js`, which includes Foundation Core and all 
 
 After you have included the Foundation JavaScript, just add a simple call to initialize all plugins on your page.
 
-It is recommended that you initialize Foundation at the end of the page `body`.
+
+We recommend that you initialize Foundation at the end of the page `&lt;body&gt;`.
+
 
 <h4>HTML</h4>
 
@@ -52,13 +58,13 @@ It is recommended that you initialize Foundation at the end of the page `body`.
 </script>
 ```
 
-**Note:** We include tested a versions of jQuery in the Foundation repo to get you started quickly.
+**Note:** We include a tested version of jQuery in the Foundation repo to get you started quickly.
 
 ***
 
 ### Configuration
 
-Foundation accepts a myriad of options for initialization. By default, calling `$('#scope').foundation();` will initialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback. This will allow you to select specific plugins to configure on your page. You can take a look at the call here:
+Foundation offers you options to customize plugin initialization. By default, calling `$('#scope').foundation();` will initialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback. This way, you can select which plugins you want to customize, and which are fine by default. You can take a look at the call here:
 
 ```js
 $(document).foundation({tab: {toggleable: false}});
@@ -66,7 +72,7 @@ $(document).foundation({tab: {toggleable: false}});
 
 The call will initialize all the plugins on the page and will configure tabs with `toggleable` enabled.
 
-You can configure multiple libraries within the same call as well. Here are a few ways this can be done:
+You can configure multiple libraries within the same call as well. Here are a few ways to make it happen:
 
 <h4>JS</h4>
 
@@ -86,7 +92,7 @@ $(document).foundation({
 });
 ```
 
-The above will initialize all of the plugins included on the page, but will pass the respective configurations to `reveal`, `tooltip`, and `topbar`.
+The above will initialize all of the plugins with default settings — but customize settings for `reveal`, `tooltip`, and `topbar`.
 
 ### Configure on the fly
 
@@ -111,13 +117,13 @@ The default fade out speed is 300 miliseconds, if we wanted to change this to 3 
 $('#myAlert').foundation({alert: {speed: 3000}});
 ```
 
-Any configuration option, or callback, can be set in this way.
+You can set any configuration option or callback this way.
 
 ***
 
 ### Calling Internal Methods
 
-Foundation JavaScript allows you call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not initialized on page load by default.
+Foundation JavaScript allows you call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, which are not initialized on page load by default.
 
 This will fire the `start` method on Joyride:
 
