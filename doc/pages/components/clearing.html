@@ -6,12 +6,14 @@ layout: doc/layouts/default.html
 # Clearing
 
 <h3 class="subheader">Since we didn't intend Orbit to handle variable-height content, we decided to create a plugin that would. Clearing makes it easy to create responsive lightboxes with any size image.</h3>
+
 ***
+
 {{> examples_clearing_basic}}
 
 ***
 
-### Build Your Clearing Lightbox
+## Build Your Clearing Lightbox
 
 There is only one way to build a Clearing lightbox, using our predefined class and data-attribute structure. We've made it really easy: gather some images, decide on their order, and put them into a url with a `.clearing-thumbs` class. In order to get Clearing to build itself properly, you'll need to have JavaScript properly included. We outline [Clearing JS](#js) a bit further down the page.
 
@@ -21,13 +23,13 @@ Once you get your JS hooked up, you'll need to add `data-clearing` to your list 
 
 {{> examples_clearing_basic_rendered}}
 
-##### Styling the List
+### Styling the List
 
 We're using the `.th` class from Foundation to style the thumbnails in the Clearing example at the top of the page. You can also use `@include thumb;` in SCSS to use those same styles.
 
 ***
 
-### Start From a Featured Image
+## Start From a Featured Image
 
 Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in a `.clearing-feature` list and using `.clearing-featured-img` on the `<li>` of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than one, try using our `.hide` class to set the ones you don't want to `display: none;`.
 
@@ -37,7 +39,7 @@ Sometimes you don't want to show a gallery full of images on your site, but you 
 
 ***
 
-### Including Captions
+## Including Captions
 
 Another common use-case for Lightboxes is to include a caption per image. We've made this quick and easy by using data-attributes to hold the content. You'll just attach this attribute to the image it belongs to and voila! Here's the code example:
 
@@ -49,7 +51,7 @@ Another common use-case for Lightboxes is to include a caption per image. We've 
 
 ***
 
-### Available SCSS Variables
+## Available SCSS Variables
 
 We opted not to create mixins for this plugin because it relies on classes in the JS to work. These variables should give you the control you need to change styles as you see fit:
 
@@ -59,7 +61,7 @@ We opted not to create mixins for this plugin because it relies on classes in th
 
 ***
 
-### Using the JavaScript
+## Using the JavaScript
 
 <div class="panel">
   Before you can use Clearing you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../JavaScript.html) on setting that up.
@@ -73,7 +75,7 @@ Just add `foundation.clearing.js` AFTER the `foundation.js` file. Your markup sh
 
 Required Foundation Library: `foundation.clearing.js`
 
-##### Optional JavaScript Configuration
+### Optional JavaScript Configuration
 
 Clearing supports `data-options` on-the-fly configuration:
 
@@ -83,7 +85,7 @@ Clearing supports `data-options` on-the-fly configuration:
 
 ***
 
-##### Sass Errors?
+### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
