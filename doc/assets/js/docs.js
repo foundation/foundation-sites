@@ -27,7 +27,7 @@ var components = [
   { value: 'Block Grid', data: '/docs/components/block_grid.html' },
   { value: 'Thumbnails', data: '/docs/components/thumbnails.html' },
   { value: 'Images', data: '/docs/components/thumbnails.html'},
-  { value: 'Utility Classes', data: '/docs/components/utility-classes.html' },
+  { value: 'Utility Classes', data: '/docs/utility-classes.html' },
   { value: 'Right-to-Left Support', data: '/docs/components/rtl.html' },
   { value: 'Offcanvas', data: '/docs/components/offcanvas.html' },
 
