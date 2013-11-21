@@ -127,7 +127,7 @@ var components = [
   { value: 'Foundation 3', data: 'http://foundation3.zurb.com/old-docs/f3/' },
   { value: 'Foundation 2', data: '/docs/v/2.2.1' },
   // { value: 'What Comes With Foundation', data: '/docs/components/#what comes with foundation' },
-  { value: 'Download', data: '/docs/components/#download' }
+  { value: 'Download', data: '/develop/download.html' }
 ];
 
 $('#autocomplete').autocomplete({
