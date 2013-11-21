@@ -13,9 +13,11 @@ layout: doc/layouts/default.html
 
 ### Build Your Clearing Lightbox
 
-There is only one way to build a Clearing lightbox, using our predefined class and data-attribute structure. We've made it really easy: gather some images, decide on their order, and put them into a `<ul class="clearing-thumbs">` of your choice. In order to get Clearing to build itself properly, you'll need to have JavaScript properly included. We outline [Clearing JS](#js) a bit further down the page.
+There is only one way to build a Clearing lightbox, using our predefined class and data-attribute structure. We've made it really easy: gather some images, decide on their order, and put them into a url with a `.clearing-thumbs` class. In order to get Clearing to build itself properly, you'll need to have JavaScript properly included. We outline [Clearing JS](#js) a bit further down the page.
 
 Once you get your JS hooked up, you'll need to add `data-clearing` to your list container. Here's an example of the most basic markup needed:
+
+<h4>HTML</h4>
 
 {{> examples_clearing_basic_rendered}}
 
@@ -29,6 +31,8 @@ We're using the `.th` class from Foundation to style the thumbnails in the Clear
 
 Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in a `.clearing-feature` list and using `.clearing-featured-img` on the `<li>` of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than one, try using our `.hide` class to set the ones you don't want to `display: none;`.
 
+<h4>HTML</h4>
+
 {{> examples_clearing_featured}}
 
 ***
@@ -39,6 +43,8 @@ Another common use-case for Lightboxes is to include a caption per image. We've 
 
 **Note:** You can now use HTML inside the data-caption attribute.
 
+<h4>HTML</h4>
+
 {{> examples_clearing_captions}}
 
 ***
@@ -46,6 +52,8 @@ Another common use-case for Lightboxes is to include a caption per image. We've 
 ### Available SCSS Variables
 
 We opted not to create mixins for this plugin because it relies on classes in the JS to work. These variables should give you the control you need to change styles as you see fit:
+
+<h4>SCSS</h4>
 
 {{> examples_clearing_variables}}
 
@@ -59,6 +67,8 @@ We opted not to create mixins for this plugin because it relies on classes in th
 
 Just add `foundation.clearing.js` AFTER the `foundation.js` file. Your markup should look something like this:
 
+<h4>HTML</h4>
+
 {{> examples_clearing_javascript}}
 
 Required Foundation Library: `foundation.clearing.js`
@@ -66,6 +76,8 @@ Required Foundation Library: `foundation.clearing.js`
 ##### Optional JavaScript Configuration
 
 Clearing supports `data-options` on-the-fly configuration:
+
+<h4>JS</h4>
 
 {{> examples_clearing_data_options}}
 
