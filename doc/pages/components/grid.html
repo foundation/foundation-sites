@@ -1,16 +1,17 @@
 ---
+title: Grid
 layout: doc/layouts/default.html
 ---
 
 # Grid
 
-<h3 class="subheader">Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</h3>
+<h3 class="subheader">Create powerful multi-device layouts quickly and easily with the default 12-column, nest-able Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</h3>
 
 ***
 
 <h3>Basic</h3>
 
-Start by adding an element with a class of `row`, forming your block element. Then add divs with a `columns` class within that row with and specify the widths of those inline elements with the `small-#`, `medium-#`, and `large-#` classes.
+Start by adding an element with a class of `row`. This will create a horizontal block to contain vertical columns. Then add divs with a `column` class within that row. You can use `column` or `column**s**` — the only difference is grammar. Specify the widths of each column with the small-#, medium-#, and large-# classes.
 
 **Foundation is mobile-first**. Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 
@@ -92,7 +93,7 @@ Center your columns by adding a class of `small-centered` to your `column`. Larg
 
 ### Source Ordering
 
-Using these source ordering classes, you can shift columns around between our breakpoints. This means you can have a sub-nav on the left on large displays, but go below on small ones. Prefix push/pull with the size of the device you want to apply the styles to. `small-pull-#`, `medium-push-#`, `large-push-#` is the syntax you'll use.
+Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `small-pull-#`, `medium-push-#`, `large-push-#` is the syntax you'll use.
 
 <h4>HTML</h4>
 

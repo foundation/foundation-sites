@@ -1,10 +1,11 @@
 ---
+title: Off-canvas navigation
 layout: doc/layouts/default.html
 ---
 
 # Off Canvas
 
-<h3 class="subheader"> Off canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off canvas layout in Foundation is super easy.</h3>
+<h3 class="subheader">Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off canvas layout in Foundation is super easy.</h3>
 
 {{> examples_offcanvas_basic}}
 
@@ -26,32 +27,52 @@ You can create a basic, unstyled off-canvas menu with just a little bit of marku
 </div>
 
 ### What You Need
+
 The basics of Off Canvas are pretty simple. The off canvas layout is wrapped in `.off-canvas-wrap`. Next comes `.inner-wrap`. You also need to include the menu itself, which is `.left-off-canvas-menu` or `.right-off-canvas-menu`. You need a corresponding target for your off canvas menu, either `.left-off-canvas-toggle` or `.right-off-canvas-toggle`. Finally, be sure to include `.exit-off-canvas` so your users can get back to the main page!
 
 ##### Off Canvas Wrap
+
 This is the outer-most element. It contains the entire off canvas layout and hides overflows.
+
+<h4>HTML</h4>
 
 ```html
 <div class="off-canvas-wrap"><!-- page layout goes here --></div>
 ```
 
 ###### Inner Wrap
+
 This is the element that is animated. All of your page content needs to be inside here.
+
+<h4>HTML</h4>
+
 ```html
 <div class="off-canvas-wrap">
   <div class="inner-wrap"><!-- all content goes here --></div>
 </div>
 ```
 
+<<<<<<< HEAD
 ###### Off Canvas Menu
 This is the panel that slides in and out when activated. You can place it on either the left or the right side. You can even have one menu on either side!
+
+<h4>HTML</h4>
+=======
+###### Off Canvas Menu 
+This is the panel that slides in and out when activated. You can place it on either the left or the right side. You can even create menus on both sides!
+>>>>>>> 2fb4ca44ea7cb99d61fd951e0746acc609e0f4f2
+
 ```html
 <aside class="left-off-canvas-menu"><!-- put your links in here --></aside>
 <aside class="right-off-canvas-menu"><!-- put your links in here --></aside>
 ```
 
 ###### Targeting Off Canvas Menus
+
 To target an off canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
+
+<h4>HTML</h4>
+
 ```html
 <!-- target the leftside menu -->
 <a class="left-off-canvas-toggle">Left Menu</a>
@@ -65,6 +86,9 @@ To target an off canvas menu, add `.left-off-canvas-toggle` or `.right-off-canva
 ###### Exit Off Canvas Menus
 
 Include `.exit-off-canvas` to provide a way back to the main page. This is an overlay that covers the `.inner-wrap` when an off canvas menu is active. Clicking on it will deactivate the off canvas menu.
+
+<h4>HTML</h4>
+
 ```html
 <a class="exit-off-canvas"></a>
 ```
@@ -73,7 +97,7 @@ Include `.exit-off-canvas` to provide a way back to the main page. This is an ov
 
 ## Advanced
 
-Using our pre-built components, you can create a nicer looking off-canvas menu right out of the box.
+Using our pre-built components, you can create an awesome off-canvas menu right out of the box.
 
 <div class="row">
   <div class="large-6 columns">
@@ -87,16 +111,25 @@ Using our pre-built components, you can create a nicer looking off-canvas menu r
 </div>
 
 ### Tab Bar
+
 We've provided a simple navigation pattern called `.tab-bar`. It's a very plain component, designed to be easily customizable.
 
 ##### Tab Bar Container
+
 First, we need to add the tab bar container: `nav.tab-bar`.
+
+<h4>HTML</h4>
+
 ```html
 <nav class="tab-bar"></nav>
 ```
 
 ##### Button Containers
+
 The button containers, `section.left-small` and `section.right-small`, contain the toggle buttons.
+
+<h4>HTML</h4>
+
 ```html
 <nav class="tab-bar">
   <section class="left-small"></section>
@@ -105,12 +138,17 @@ The button containers, `section.left-small` and `section.right-small`, contain t
 ```
 
 ##### Menu Icon
+
 To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
+
 ```html
 <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
 ```
 
 Now put it all together...
+
+<h4>HTML</h4>
+
 ```html
 <nav class="tab-bar">
   <section class="left-small">
@@ -122,6 +160,7 @@ Now put it all together...
 </nav>
 ```
 ...and here's what you'll get:
+
 <nav class="tab-bar">
   <section class="left-small">
     <a class=" menu-icon" ><span></span></a>
@@ -132,8 +171,13 @@ Now put it all together...
 </nav>
 
 &nbsp;
+
 ##### Tab Bar Section
+
 The last thing we need is a section for the tab bar content. Add `section.tab-bar-section` inside `nav.tab-bar`.
+
+<h4>HTML</h4>
+
 ```html
 <nav class="tab-bar">
   <section class="left-small">
@@ -149,7 +193,15 @@ The last thing we need is a section for the tab bar content. Add `section.tab-ba
 ```
 
 Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`.
+
+<h4>HTML</h4>
+
 ```html
+<nav class="tab-bar">
+  <section class="left-small"></section>
+  <section class="right tab-bar-section"><!-- I stretch all the way to the right --></section>
+</nav>
+
 <nav class="tab-bar">
   <section class="left-small"></section>
   <section class="middle tab-bar-section"><!-- I'm in the middle --></section>
@@ -157,15 +209,9 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 </nav>
 
 <nav class="tab-bar">
-  <section class="left-small"></section>
-  <section class="right tab-bar-section"><!-- I stretch all the way to the right --></section>
-</nav>
-
-<nav class="tab-bar">
   <section class="left tab-bar-section"><!-- I stretch all the way to the left --></section>
   <section class="right-small"></section>
 </nav>
-
 ```
 <!-- that's what she said, lol -->
 
@@ -184,15 +230,16 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
   <section class="left tab-bar-section"><h1>Right Section</h1></section>
   <section class="right-small"><a class=" menu-icon" ><span></span></a></section>
 </nav>
-
 &nbsp;
+
 ##### Off Canvas List
+
 We've included a nice list pattern for list in the off-canvas menu. Include `ul.off-canvas-list` inside your off canvas menu. For section titles, wrap the `li` contents in a `label`.
- </aside>
+
 <div class="row">
   <div class="large-6 columns">
-  <h4>HTML</h4>
-  {{#markdown}}
+    <h4>HTML</h4>
+{{#markdown}}
 ```html
 <aside class="left-off-canvas-menu">
   <ul class="off-canvas-list">
@@ -205,10 +252,10 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
   </ul>
 </aside>
 ```
-  {{/markdown}}
+{{/markdown}}
   </div>
   <div class="large-6 columns">
-  <h4>Rendered HTML</h4>
+    <h4>Rendered HTML</h4>
       <ul class="off-canvas-list doc-oc-list">
         <li><label>Foundation</label></li>
         <li><a href="#">The Psychohistorians</a></li>
@@ -227,6 +274,7 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
 Off canvas layouts can be easily customized using our provided Sass variables.
 
 <h4>SCSS</h4>
+
 {{> examples_offcanvas_variables}}
 
 ***

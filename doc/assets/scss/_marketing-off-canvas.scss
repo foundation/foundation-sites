@@ -1,0 +1,41 @@
+
+
+
+ul.off-canvas-list li.gs { padding: 0 1.08rem; margin-top: 8px; }
+ul.off-canvas-list li a { border-bottom: none !important; font-size: 1.25rem; padding: 0.2rem 0.95rem !important; color: #ccc; font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: 500; }
+ul.off-canvas-list li label { background: none !important; border-top: none !important; padding: 0.4rem 0.95rem  0.4rem 0.95rem !important; font-size: 0.775rem !important; }
+ul.off-canvas-list li label.first { padding-top: 0.75rem !important; }
+
+.zurb-links { padding-bottom: 25px; margin-top: -5px; }
+.zurb-links ul.top { margin-top: 15px; }
+.zurb-links ul.top li { display: inline-block; margin-left: 0px; line-height: 1;font-family:"Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+.zurb-links ul.top li.logo { margin-left: 0px;  width: 60px; height: 10px; }
+.zurb-links ul.top li.logo a { margin-top: 1px; padding: 3px 8px 3px 0px; display:block; font-size: 0.9em; height: 12px; width: 60px; background:url("../img/offcanvas/zurb-logo.png") no-repeat; background-size: 100%; }
+.zurb-links ul.top li.logo img { width:60px; margin-top: -4px; }
+.zurb-links ul.top li a { color: #727272; text-transform: uppercase; font-size: 12px; padding: 5px; font-weight: 600;}
+.zurb-links ul.pillars { list-style: none; } 
+.zurb-links .footer-link-block span.title {  padding-bottom:0px;padding-left: 40px; font-family:"Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 1.3em; margin-bottom: 8px; color: #cccccc;}
+.zurb-links .footer-link-block span { display: block; color: #ccc; font-size: 1.0em;line-height: 18px; margin-bottom: 18px; line-height: 20px; margin-bottom: 24px;  color: #727272; padding-left: 0; font-size: 0.9em; }
+.zurb-links .footer-link-block { font-weight: normal; background: url("../img/offcanvas/footer-icons.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
+.zurb-links .footer-link-block.expo { background-position: 0 -798px; }
+.zurb-links .footer-link-block.services { background-position: 0 -198px; }
+.zurb-links .footer-link-block.apps { background-position: 0 -598px; }
+.zurb-links .footer-link-block.foundation { background-position: 0 -398px; }
+
+/* Retina Images */
+
+@media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  .zurb-links .footer-link-block { font-weight: normal; background: url("../img/offcanvas/footer-icons-retina.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
+  .zurb-links .footer-link-block.expo { background-position: 0 -798px; }
+  .zurb-links .footer-link-block.services { background-position: 0 -400px;}
+  .zurb-links .footer-link-block.apps { background-position: 0 -598px; }
+  .zurb-links .footer-link-block.foundation { background-position: 0 -398px; }
+}
+
+@media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (max-width: 320px) {
+  .zurb-links .footer-link-block { font-weight: normal; background: url("../img/offcanvas/footer-icons-retina.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
+  .zurb-links .footer-link-block.expo { background-position: 0 -793px; background-size: 100px 1400px; }
+  .zurb-links .footer-link-block.services { background-position: 0 -197px !important; background-size: 100px 1400px; }
+  .zurb-links .footer-link-block.apps { background-position: 0 -595px; background-size: 100px 1400px; }
+  .zurb-links .footer-link-block.foundation { background-position: 0 -395px;background-size: 100px 1400px;}
+}
