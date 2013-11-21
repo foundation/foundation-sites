@@ -133,7 +133,7 @@ $menu-slide: "transform 500ms ease" !default;
 
   // make sure it's below the .exit-offcanvas link
   position: relative;
-  z-index: 999;
+  // z-index: 999;
 
   // Typography
   h1,h2,h3,h4,h5,h6 {

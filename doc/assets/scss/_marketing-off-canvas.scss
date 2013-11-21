@@ -1,7 +1,8 @@
 .marketing-left-off-canvas-menu .zurb-links ul.pillars li a { padding: 0 !important; }
 
+$marketing-oc-width: 84%;
+
 .marketing.off-canvas-wrap {
-  $marketing-oc-width: 84%;
   
   .marketing-left-off-canvas-menu { 
     @include left-off-canvas-menu;
@@ -30,21 +31,22 @@
     }
     a.exit-off-canvas { @include back-link; }
   }
+}
 
-  // IE9 HAX
-  // Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
-  .lt-ie10 {
-    
+// IE9 HAX
+// Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
+.lt-ie10 {
+  
+  .marketing.off-canvas-wrap {
     // move off canvas menus off the viewport
-    .left-off-canvas-menu { left: -($marketing-oc-width); } 
-    .right-off-canvas-menu { right: -($marketing-oc-width); }
+    .marketing-left-off-canvas-menu { left: -($marketing-oc-width); } 
+    .marketing-right-off-canvas-menu { right: -($marketing-oc-width); }
 
     // Snap them in place
     .move-left > .inner-wrap { right: $marketing-oc-width; }
     .move-right > .inner-wrap { left: $marketing-oc-width; }
-
   }
-  
+
 }
 
 .marketing-left-off-canvas-menu .zurb-links { padding-bottom: 25px; margin-top: -5px; }
