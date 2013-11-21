@@ -23,25 +23,25 @@ Media queries are built using ems in Foundation.
 // Medium screens
 @media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
 
-@media only screen and (min-width: 40.063em) and (max-width: 63.938em) { } /* min-width 641px and max-width 1023px, use when QAing tablet-only issues */
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
 
 // Large screens
-@media only screen and (min-width: 64em) { } /* min-width 1024px, large screens */
+@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
 
-@media only screen and (min-width: 64em) and (max-width: 90em) { } /* min-width 1024px and max-width 1440px, use when QAing large screen-only issues */
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1024px and max-width 1440px, use when QAing large screen-only issues */
 
 // XLarge screens
 @media only screen and (min-width: 90.063) { } /* min-width 1441px, xlarge screens */
 
-@media only screen and (min-width: 90.063) and (max-width: 119.938em) { } /* min-width 1441px and max-width 1919px, use when QAing xlarge screen-only issues */
+@media only screen and (min-width: 90.063) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
 
 // XXLarge screens
-@media only screen and (min-width: 120em) { } /* min-width 1920px, xlarge screens */
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xlarge screens */
 ```
 
 ***
 
-## Customize With Sass
+### Customize With Sass
 
 Media queries can be easily customized by changing the variable values in `_settings.scss`.
 
@@ -50,10 +50,10 @@ Media queries can be easily customized by changing the variable values in `_sett
 ```scss
 // Here we define the lower and upper bounds for each media size
 $small-range: (0em, 40em); /* 0, 640px */
-$medium-range: (40.063em, 63.938em); /* 641px, 1023px */
-$large-range: (64em, 90em); /* 1024px, 1440px */
-$xlarge-range: (90.063em, 119.938em); /* 1441px, 1919px */
-$xxlarge-range: (120em); /* 1920px */
+$medium-range: (40.063em, 64em); /* 641px, 1024px */
+$large-range: (64.063em, 90em); /* 1025px, 1440px */
+$xlarge-range: (90.063em, 120em); /* 1441px, 1920px */
+$xxlarge-range: (120.063em); /* 1921px */
 
 // Media Queries
 $screen: "only screen" !default;
