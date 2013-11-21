@@ -526,7 +526,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .doc-oc-list { background: $off-canvas-bg; }
 
 // Make sure topbar dropdowns are above tab bar.
-.docs-bar { z-index: 1003; }
+.docs-bar ul.dropdown { z-index: 1003; }
 
 // Side nav custom active style 
  .side-nav li.active > a:first-child {
