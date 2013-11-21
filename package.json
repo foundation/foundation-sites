@@ -1,6 +1,6 @@
 {
   "name": "zurb-foundation",
-  "version": "4.0.0-wip",
+  "version": "5.0.0",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
