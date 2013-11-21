@@ -15,7 +15,7 @@ layout: doc/layouts/default.html
 
 ## Basic
 
-You can create a basic, unstyled off-canvas menu with just a little bit of markup. Here's how:
+You can create a basic, <strong>unstyled</strong> off-canvas menu with just a little bit of markup. Here's how:
 
 <div class="row">
   <div class="large-6 columns">
@@ -28,11 +28,9 @@ You can create a basic, unstyled off-canvas menu with just a little bit of marku
   </div>
 </div>
 
-### Build with HTML
-
 The basics of Off Canvas are pretty simple. The off-canvas layout is wrapped in `.off-canvas-wrap`. Next comes `.inner-wrap`. You also need to include the menu itself, which is `.left-off-canvas-menu` or `.right-off-canvas-menu`. You need a corresponding target for your off-canvas menu, either `.left-off-canvas-toggle` or `.right-off-canvas-toggle`. Finally, be sure to include `.exit-off-canvas` so your users can get back to the main page!
 
-##### Off-Canvas Wrap
+### Off-Canvas Wrap
 
 This is the outer-most element. It contains the entire off-canvas layout and hides overflows.
 
@@ -42,7 +40,7 @@ This is the outer-most element. It contains the entire off-canvas layout and hid
 <div class="off-canvas-wrap"><!-- page layout goes here --></div>
 ```
 
-###### Inner Wrap
+### Inner Wrap
 
 This is the element that is animated. All of your page content needs to be inside here.
 
@@ -54,17 +52,18 @@ This is the element that is animated. All of your page content needs to be insid
 </div>
 ```
 
-<h4>HTML</h4>
+### Off-Canvas Menu
 
-###### Off-Canvas Menu
 This is the panel that slides in and out when activated. You can place it on either the left or the right side. You can even create menus on both sides!
+
+<h4>HTML</h4>
 
 ```html
 <aside class="left-off-canvas-menu"><!-- put your links in here --></aside>
 <aside class="right-off-canvas-menu"><!-- put your links in here --></aside>
 ```
 
-###### Targeting Off-Canvas Menus
+### Target Off-Canvas Menu
 
 To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
 
@@ -80,7 +79,7 @@ To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canva
 <aside class="right-off-canvas-menu"></aside>
 ```
 
-###### Exit Off-Canvas Menus
+### Exit Off-Canvas Menu
 
 Include `.exit-off-canvas` to provide a way back to the main page. This is an overlay that covers the `.inner-wrap` when an off-canvas menu is active. Clicking on it will deactivate the off-canvas menu.
 
@@ -111,7 +110,7 @@ Using our pre-built components, you can create an awesome off-canvas menu right 
 
 We've provided a simple navigation pattern called `.tab-bar`. It's a very plain component, designed to be easily customizable.
 
-##### Tab Bar Container
+### Tab Bar Container
 
 First, we need to add the tab bar container: `nav.tab-bar`.
 
@@ -121,7 +120,7 @@ First, we need to add the tab bar container: `nav.tab-bar`.
 <nav class="tab-bar"></nav>
 ```
 
-##### Button Containers
+### Button Containers
 
 The button containers, `section.left-small` and `section.right-small`, contain the toggle buttons.
 
@@ -134,7 +133,7 @@ The button containers, `section.left-small` and `section.right-small`, contain t
 </nav>
 ```
 
-##### Menu Icon
+### Menu Icon
 
 To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
 
@@ -169,7 +168,7 @@ Now put it all together...
 
 &nbsp;
 
-##### Tab Bar Section
+### Tab Bar Section
 
 The last thing we need is a section for the tab bar content. Add `section.tab-bar-section` inside `nav.tab-bar`.
 
@@ -229,7 +228,7 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 </nav>
 &nbsp;
 
-##### Off-Canvas List
+### Off-Canvas List
 
 We've included a nice list pattern for list in the off-canvas menu. Include `ul.off-canvas-list` inside your off-canvas menu. For section titles, wrap the `li` contents in a `label`.
 
@@ -276,7 +275,7 @@ Off-canvas layouts can be easily customized using our provided Sass variables.
 
 ***
 
-##### Sass Errors?
+### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
