@@ -162,3 +162,16 @@ The last internal mixin you have access to for buttons is the style mixin. This 
 
 **Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_variables.scss**.
 
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/switch";
+```
+{{/markdown}}
