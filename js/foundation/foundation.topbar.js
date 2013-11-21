@@ -285,7 +285,7 @@
     },
 
     breakpoint : function () {
-      return !matchMedia(Foundation.media_queries['topbar']).matches;
+      return matchMedia(Foundation.media_queries['medium']).matches;
     },
 
     assemble : function (topbar) {
