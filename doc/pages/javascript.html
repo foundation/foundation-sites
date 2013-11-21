@@ -4,7 +4,9 @@
 
 ### Installation
 
-Foundation JavaScript was designed to work with <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. In the `<head>` section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements for older browsers as well as detection for mobile devices.
+Foundation JavaScript was designed to work with <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. In the `head` section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements for older browsers as well as detection for mobile devices.
+
+<h4>HTML</h4>
 
 ```html
 <script src="/js/custom.modernizr.js"></script>
@@ -12,11 +14,15 @@ Foundation JavaScript was designed to work with <a href="http://jquery.com/" tit
 
 Before the closing `body` tag, insert JQuery.
 
+<h4>HTML</h4>
+
 ```html
 <script src="/js/vendor/jquery.js"></script>
 ```
 
 Then include either `foundation.min.js`, which includes Foundation Core and all JavaScript plugins or you can load them individually.
+
+<h4>HTML</h4>
 
 ```html
 <script src="/js/foundation.min.js"></script>
@@ -36,7 +42,9 @@ Then include either `foundation.min.js`, which includes Foundation Core and all 
 
 After you have included the Foundation JavaScript, just add a simple call to initialize all plugins on your page.
 
-It is recommended that you initialize Foundation at the end of the page `<body>`.
+It is recommended that you initialize Foundation at the end of the page `body`.
+
+<h4>HTML</h4>
 
 ```html
 <script>
@@ -59,6 +67,8 @@ $(document).foundation({tab: {toggleable: false}});
 The call will initialize all the plugins on the page and will configure tabs with `toggleable` enabled.
 
 You can configure multiple libraries within the same call as well. Here are a few ways this can be done:
+
+<h4>JS</h4>
 
 ```js
 $(document).foundation({
@@ -84,6 +94,8 @@ New to Foundation 5, you can now reconfigure instances of your plugin after the 
 
 Lets pretend that we have an alert that was on our page when Foundation was first initialized:
 
+<h4>HTML</h4>
+
 ```html
 <div data-alert class="alert-box" id="myAlert">
   This is a standard alert.
@@ -92,6 +104,8 @@ Lets pretend that we have an alert that was on our page when Foundation was firs
 ```
 
 The default fade out speed is 300 miliseconds, if we wanted to change this to 3 seconds we could do the following:
+
+<h4>JS</h4>
 
 ```js
 $('#myAlert').foundation({alert: {speed: 3000}});
@@ -106,6 +120,8 @@ Any configuration option, or callback, can be set in this way.
 Foundation JavaScript allows you call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not initialized on page load by default.
 
 This will fire the `start` method on Joyride:
+
+<h4>HTML</h4>
 
 ```html
 $(document).foundation('joyride', 'start');
