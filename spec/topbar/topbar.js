@@ -57,7 +57,7 @@ describe('topbar:', function() {
     });
 
     describe('when above the small breakpoint', function() {
-      it('should not have a toggle button', when('medium', function() {
+      it('should not have a toggle button', when('large', function() {
         $(document).foundation();
 
         var settings = Foundation.libs.topbar.settings;
