@@ -166,3 +166,15 @@ function initializeMaps() {
   var map = new google.maps.Map(mapElement, mapOptions);
 }
 
+var currentUrl = window.location.href;
+    partial = currentUrl.split('docs')[1].split('/'),
+    page = partial[partial.length-1],
+    sidenav_links = $('.side-nav a');
+
+sidenav_links.each(function () {
+  var link = $(this);
+  if (page == link.attr('href')) {
+    link.closest('li').addClass('active');
+  }
+});
+
