@@ -356,8 +356,8 @@ $cursor-text-value: text !default;
     }
 
     // Miscellaneous useful HTML classes
-    .float-left   { float: left !important; }
-    .float-right  { float: right !important; }
+    .left   { float: left !important; }
+    .right  { float: right !important; }
     .clearfix     { @include clearfix; }
     .text-left    { text-align: left !important; }
     .text-right   { text-align: right !important; }

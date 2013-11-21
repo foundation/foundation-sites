@@ -525,3 +525,31 @@ $custom-active-bg:darken($custom-link-color, 5%);
 
 // Make sure topbar dropdowns are above tab bar.
 .docs-bar { z-index: 1003; }
+
+// Side nav custom active style 
+ .side-nav li.active > a:first-child {
+  font-weight: bold;
+  color: lighten(#004054,20%);
+  position: relative;
+  margin: 0 -20px;
+  padding-left:20px;
+  padding-right: 20px;
+  background: rgba(#004054, 0.05);
+
+  // &::before {
+  //   content:"";
+  //   @include css-triangle(6px, darken(#008cba, 10%), left);
+  //   position: absolute;
+  //   left:0;
+  //   top:50%;
+  //   margin-top:-6px;
+  // }
+ }
+  .side-nav li:hover > a:first-child {
+    color: lighten(#004054,10%);
+    position: relative;
+    margin: 0 -20px;
+    padding-left:20px;
+    padding-right: 20px;
+    background: rgba(#004054, 0.03);
+  }
