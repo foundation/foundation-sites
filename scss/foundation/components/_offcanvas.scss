@@ -253,7 +253,7 @@ $menu-slide: "transform 500ms ease" !default;
   @extend %kill-flicker;
   @extend %off-canvas-menu;
   @include translate3d(-100%,0,0);
-  * { @extend %kill-flicker; }
+  * { @extend %kill-flicker; } 
 }
 @mixin right-off-canvas-menu {
   @extend %kill-flicker;
