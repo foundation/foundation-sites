@@ -16,7 +16,7 @@ $tabs-navigation-font-family: $body-font-family !default;
 $tabs-content-margin-bottom: rem-calc(24) !default;
 $tabs-content-padding: $column-gutter/2 !default;
 
-$tabs-vertical-navigation-margin-bottom: 1.25rem;
+$tabs-vertical-navigation-margin-bottom: 1.25rem !default;
 
 @include exports("tab") {
 	@if $include-html-tabs-classes {
@@ -51,10 +51,11 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem;
 				}
 			}
 			&.vertical { 
-				dd { 
+				dd {
+					position: inherit;
 					float: none;
 					display: block;
-					top: 0px;
+					top: auto;
 				}
 			}
 		}
