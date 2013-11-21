@@ -1,4 +1,6 @@
 var components = [
+  { value: 'Getting Started', data: '/docs/index.html' },
+
   { value: 'CSS', data: '/docs/css.html' },
   { value: 'Styles', data: '/docs/css.html' },
 
@@ -8,14 +10,15 @@ var components = [
   { value: 'Applications', data: '/docs/applications.html' },
   { value: 'Rails', data: '/docs/applications.html' },
   { value: 'Gem', data: '/docs/applications.html' },
+  { value: 'JavaScript', data: '/docs/javascript.html' },
 
   { value: 'Global Styles', data: '/docs/components/global.html' },
   { value: 'Global Mixins', data: '/docs/components/global.html' },
   { value: 'Global Variables', data: '/docs/components/global.html' },
   { value: 'Useful HTML Classes', data: '/docs/components/global.html' },
 
-  { value: 'Upgrading', data: '/docs/components/upgrading.html' },
-  { value: 'Migration', data: '/docs/components/upgrading.html' },
+  { value: 'Upgrading', data: '/docs/upgrading.html' },
+  { value: 'Migration', data: '/docs/upgrading.html' },
 
   { value: 'Media Queries', data: '/docs/media-queries.html' },
   { value: 'Breakpoints', data: '/docs/media-queries.html' },
@@ -24,7 +27,7 @@ var components = [
   { value: 'Block Grid', data: '/docs/components/block_grid.html' },
   { value: 'Thumbnails', data: '/docs/components/thumbnails.html' },
   { value: 'Images', data: '/docs/components/thumbnails.html'},
-  { value: 'Utility Classes', data: '/docs/components/utility-classes.html' },
+  { value: 'Utility Classes', data: '/docs/utility-classes.html' },
   { value: 'Right-to-Left Support', data: '/docs/components/rtl.html' },
   { value: 'Offcanvas', data: '/docs/components/offcanvas.html' },
 
@@ -123,8 +126,8 @@ var components = [
   { value: 'Foundation 4', data: '/docs/v/4.3.2/' },
   { value: 'Foundation 3', data: 'http://foundation3.zurb.com/old-docs/f3/' },
   { value: 'Foundation 2', data: '/docs/v/2.2.1' },
-  { value: 'What Comes With Foundation', data: '/docs/components/#what comes with foundation' },
-  { value: 'Download', data: '/docs/components/#download' }
+  // { value: 'What Comes With Foundation', data: '/docs/components/#what comes with foundation' },
+  { value: 'Download', data: '/develop/download.html' }
 ];
 
 $('#autocomplete').autocomplete({

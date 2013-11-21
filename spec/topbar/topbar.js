@@ -26,7 +26,7 @@ describe('topbar:', function() {
     });
 
     describe('when below the medium breakpoint', function () {
-      it('should have a toggle button', when('medium', function() {
+      it('should have a toggle button', when('small', function() {
         $(document).foundation();
 
         var settings = Foundation.libs.topbar.settings;
@@ -35,21 +35,21 @@ describe('topbar:', function() {
         expect(toggle.length).toBe(1);
       }));
 
-      it('should expand when the toggle is clicked', when('medium', function() {
-        $(document).foundation();
+      // it('should expand when the toggle is clicked', when('small', function() {
+      //   $(document).foundation();
 
-        var topbar = $('.top-bar, [data-topbar]');
-        var toggle = topbar.find('.toggle-topbar');
+      //   var topbar = $('.top-bar, [data-topbar]');
+      //   var toggle = topbar.find('.toggle-topbar');
 
-        spyOn(Foundation.libs.topbar, 'toggle').andCallThrough();
+      //   spyOn(Foundation.libs.topbar, 'toggle').andCallThrough();
 
-        toggle.click();
+      //   toggle.click();
 
-        expect(Foundation.libs.topbar.toggle).toHaveBeenCalled();
-        expect(topbar.hasClass('expanded')).toBe(true);
-      }));
+      //   expect(Foundation.libs.topbar.toggle).toHaveBeenCalled();
+      //   expect(topbar.hasClass('expanded')).toBe(true);
+      // }));
 
-      it('should collapse after being expanded by the toggle', when('medium', function() {
+      it('should collapse after being expanded by the toggle', when('small', function() {
         $(document).foundation();
 
         var topbar = $('.top-bar, [data-topbar]');
