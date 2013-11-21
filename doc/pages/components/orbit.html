@@ -6,7 +6,9 @@ layout: doc/layouts/default.html
 # Orbit
 
 <h3 class="subheader">Orbit is an easy, powerful, responsive image slider that allows users to swipe on touch-enabled devices.</h3>
+
 ***
+
 {{> examples_orbit_basic}}
 
 ***
@@ -17,15 +19,17 @@ layout: doc/layouts/default.html
 
 Orbit requires minimal HTML markup to function. Our JavaScript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
 
-{{#markdown}}
 <h4>HTML</h4>
+
+{{#markdown}}
 ```html
 {{> examples_orbit_basic}}
 ```
 {{/markdown}}
 
-{{#markdown}}
 <h4>Rendered HTML</h4>
+
+{{#markdown}}
 ```html
 {{> examples_orbit_basic_rendered}}
 ```
@@ -161,16 +165,17 @@ $(document).foundation('orbit', {
   </div>
 </div>
 
+&nbsp;
 
   <div class="row">
     <section class="large-6 columns">
-      <h5 class="subheader">Code Example</h5>
+      <h3 class="">Code Example</h3>
     </section>
     <section class="large-6 columns">
-      <h5 class="subheader">Description</h5>
+      <h3 class="">Description</h3>
     </section>
   </div>
-
+  <br/>
   <div class="row">
     <div class="large-6 columns">
 {{#markdown}}
@@ -646,10 +651,13 @@ next_on_click: false,
 
 ## Real World Example
 
+<h3 class="subheader">Here's an example of a customized Orbit container.</h3>
+
   <div class="row">
     <section class="large-6 columns">
-      <h5 class="subheader">JavaScript</h5>
+      <h4 class="">JavaScript</h4>
       <div class="code-container">
+
 {{#markdown}}
 ```js
 $(document).foundation({
@@ -665,11 +673,12 @@ $(document).foundation({
 });
 ```
 {{/markdown}}
+
       </div>
     </section>
 
     <section class="large-6 columns">
-      <h5 class="subheader">HTML</h5>
+      <h4 class="">HTML</h4>
       <div class="options-code-container">
         <div class="code-container">
 {{#markdown}}
@@ -714,12 +723,13 @@ You can bind to the following events in your code.
 
   <div class="row">
     <section class="large-6 columns">
-      <h5 class="subheader">Events</h5>
+      <h3 class="">Events</h3>
     </section>
     <section class="large-6 columns">
-      <h5 class="subheader">Description</h5>
+      <h3 class="">Description</h3>
     </section>
   </div>
+  <br/>
   <div class="row">
     <section class="large-6 columns">
 {{#markdown}}
@@ -820,8 +830,9 @@ orbit:timer-stopped
 
   <div class="row">
     <section class="full-grid">
-      <h4>Example</h4>
+      <h3>Example</h3>
       <p>Here's an example of how you can bind to these events:</p>
+      <h4>HTML</h4>
 {{#markdown}}
 ```html
 <ul id="featured1" data-orbit>
@@ -830,7 +841,7 @@ orbit:timer-stopped
 ```
 {{/markdown}}
 
-You can then bind using the following markup:
+<p>You can then bind using the following markup:</p>
 
 {{#markdown}}
 ```js
@@ -857,7 +868,7 @@ $("#featured1").on("orbit:timer-stopped", function(event, orbit) {
 
 ***
 
-##### Sass Errors?
+### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
