@@ -10,6 +10,7 @@
       additional_inheritable_classes : [],
       tooltip_class : '.tooltip',
       append_to: 'body',
+      touch_close_text: 'Tap To Close',
       disable_for_touch: false,
       tip_template : function (selector, content) {
         return '<span data-selector="' + selector + '" class="' 
@@ -99,7 +100,7 @@
 
       $tip.addClass(classes).appendTo(this.settings.append_to);
       if (Modernizr.touch) {
-        $tip.append('<span class="tap-to-close">'+this.settings.touchCloseText+'</span>');
+        $tip.append('<span class="tap-to-close">'+this.settings.touch_close_text+'</span>');
       }
       $target.removeAttr('title').attr('title','');
       this.show($target);
