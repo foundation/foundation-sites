@@ -13,7 +13,7 @@ layout: doc/layouts/default.html
 
 ***
 
-### Setting Up validation
+## Setting Up Validation
 
 To enable validation with Abide, add the `data-abide` attribute to your `form` element. Then add the `required` attribute to each input that you want to require. Additionaly, you can define a `pattern` to define restraints on what users can input.
 
@@ -21,7 +21,7 @@ To enable validation with Abide, add the `data-abide` attribute to your `form` e
 
 ***
 
-### Predefined patterns
+## Predefined Patterns
 
 Abide has several patterns common validation patterns built into the library:
 
@@ -49,7 +49,7 @@ You can use the following shortcut for named patterns that aren't valid input ty
 
 ***
 
-### Custom Named Patterns
+## Custom Named Patterns
 
 By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.
 
@@ -61,7 +61,7 @@ You can then use these custom patterns like you would the predfined patterns in 
 
 ***
 
-### Error Messages
+## Error Messages
 
 To display an error message for your invalid form element, include a `small` tag with an `error` class as a sibling of your input.
 
@@ -73,7 +73,7 @@ Invalid inputs inherit a `data-invalid` attribute.
 
 ***
 
-### Events
+## Events
 
 If a submit event is fired, a `valid` event is triggered when the form is valid and an `invalid` event is triggered when the form is invalid.
 
@@ -83,7 +83,7 @@ You can bind to these events and fire your own callback:
 
 ***
 
-### Using the JavaScript
+## Using the JavaScript
 
 <div class="panel">
   {{!-- TODO FIX JAVASCRIPT PATH --}}
@@ -96,13 +96,13 @@ Just add `foundation.abide.js` AFTER the `foundation.js` file. Your markup shoul
 
 Required Foundation Library: `foundation.abide.js`
 
-##### Optional JavaScript Configuration
+### Optional JavaScript Configuration
 
 {{> examples_abide_javascript_options}}
 
 ***
 
-##### Sass Errors?
+### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
 
