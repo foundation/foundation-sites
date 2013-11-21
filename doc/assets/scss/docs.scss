@@ -564,3 +564,5 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .support .meh { color: #888; font-weight: bold; }
 .support .fail { color: #cc0000; font-weight: bold; }
 
+.docs-bar .top-bar-section .has-dropdown > a:after { display: none; }
+.docs-bar .top-bar-section .has-dropdown a { padding-right: 15px !important; }
