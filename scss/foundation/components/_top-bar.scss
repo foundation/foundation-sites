@@ -136,17 +136,16 @@ meta.foundation-mq-topbar {
       form,
       input { margin-bottom: 0; }
 
-      input { height: auto; padding-top: .3rem; padding-bottom: .25rem; font-size: $topbar-button-font-size; }
+      input { height: auto; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
       .button { 
-        padding-top: .35rem; 
+        padding-top: .45rem; 
         padding-bottom: .35rem; 
         margin-bottom: 0; 
         font-size: $topbar-button-font-size; 
-        @moz-document {
-          position: relative;
-          top: -1px;
-        }
+          // position: relative;
+          // top: -1px;
+        
       }
 
       // Title Area
@@ -424,7 +423,7 @@ meta.foundation-mq-topbar {
         .button {
           font-size: rem-calc(14);
           position: relative;
-          top: 8px;
+          top: 7px;
         }
 
         &.expanded { background: $topbar-bg; }
