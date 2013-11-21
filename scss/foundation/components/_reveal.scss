@@ -33,7 +33,7 @@ $reveal-border-color: #666 !default;
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
 
-// 
+//
 // @mixins
 //
 
@@ -56,7 +56,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 // $width - Sets reveal width Default: $reveal-default-width || 80%
 //
 @mixin reveal-modal-base(
-  $base-style:true, 
+  $base-style:true,
   $width:$reveal-default-width) {
   @if $base-style {
     visibility: hidden;
@@ -92,13 +92,13 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 // $box-shadow - Choose whether or not to include the default box-shadow. Default: true, Options: false
 // $top-offset - Default: $reveal-position-top || 50px
 @mixin reveal-modal-style(
-  $bg:$reveal-modal-bg, 
-  $padding:$reveal-modal-padding, 
-  $border:true, 
-  $border-style:$reveal-border-style, 
-  $border-width:$reveal-border-width, 
-  $border-color:$reveal-border-color, 
-  $box-shadow:true, 
+  $bg:$reveal-modal-bg,
+  $padding:$reveal-modal-padding,
+  $border:true,
+  $border-style:$reveal-border-style,
+  $border-width:$reveal-border-width,
+  $border-color:$reveal-border-color,
+  $box-shadow:true,
   $top-offset:$reveal-position-top) {
 
   @if $bg { background-color: $bg; }
