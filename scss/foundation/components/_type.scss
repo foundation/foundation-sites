@@ -187,7 +187,7 @@ $microformat-abbr-font-decoration: none !default;
       text-rendering: $header-text-rendering;
       margin-top: $header-top-margin;
       margin-bottom: $header-bottom-margin;
-      line-height: $header-line-height - rem-calc(3);
+      line-height: $header-line-height;
 
       small {
         font-size: $small-font-size;
