@@ -11,9 +11,9 @@ layout: doc/layouts/default.html
 
 ***
 
-### Setting up validation
+### Setting Up validation
 
-To enable validation with Abide add the `data-abide` attribute to your `<form>` element. Then add the `required` attribute to each input that you want to require. Additionaly, you can define a `pattern` to define restraints on what users can input.
+To enable validation with Abide, add the `data-abide` attribute to your `<form>` element. Then add the `required` attribute to each input that you want to require. Additionaly, you can define a `pattern` to define restraints on what users can input.
 
 {{> examples_abide_basic_rendered}}
 
@@ -25,7 +25,7 @@ Abide has several patterns common validation patterns built into the library:
 
 {{> examples_abide_patterns}}
 
-You can also use these patterns by settings the input's type to the name of the pattern instead of using the pattern attribute:
+You can also use these patterns by setting the input's type to the name of the pattern instead of using the pattern attribute:
 
 {{#markdown}}
 ```html
@@ -35,9 +35,9 @@ You can also use these patterns by settings the input's type to the name of the 
 ```
 {{/markdown}}
 
-There is a good list of valid HTML5 input types on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input). Try to avoid using patterns defined by type that do not match the specification.
+There is a good list of valid HTML5 input types on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input). Try avoiding patterns defined by type that do not match the specification.
 
-For named patterns that are not valid input types you can use the following shortcut:
+You can use the following shortcut for named patterns that aren't valid input types:
 
 {{#markdown}}
 ```html
@@ -47,7 +47,7 @@ For named patterns that are not valid input types you can use the following shor
 
 ***
 
-### Custom named patterns
+### Custom Named Patterns
 
 By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.
 
@@ -61,11 +61,11 @@ You can then use these custom patterns like you would the predfined patterns in 
 
 ### Error Messages
 
-To display an error message for your invalid form element include a `<small>` tag with an `error` class as a sibling of your input.
+To display an error message for your invalid form element, include a `<small>` tag with an `error` class as a sibling of your input.
 
 {{> examples_abide_errors}}
 
-In the above example we have wrapped our input in a `div`. This div will receive an `error` class when the input is invalid. This class will show our error message and style the label and input accordingly.
+We have wrapped our input in a div in the example above. This div will receive an `error` class when the input is invalid. This class will show our error message and style the label and input accordingly.
 
 Invalid inputs inherit a `data-invalid` attribute.
 
@@ -73,7 +73,7 @@ Invalid inputs inherit a `data-invalid` attribute.
 
 ### Events
 
-If a submit event is fired, a `valid` event is triggered if the form is valid and an `invalid` event is triggered if the form is invalid.
+If a submit event is fired, a `valid` event is triggered when the form is valid and an `invalid` event is triggered when the form is invalid.
 
 You can bind to these events and fire your own callback:
 
