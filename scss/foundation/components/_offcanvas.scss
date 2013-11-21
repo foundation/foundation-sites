@@ -64,19 +64,19 @@ $menu-slide: "transform 500ms ease" !default;
 
 // EXTEND CLASSES
 // Remove transition flicker on phones
-%kill-flicker {
-  // -webkit-transform: translateZ(0);
+@mixin kill-flicker {
+  // -webkit-transform: translateZ(0x);
   -webkit-backface-visibility: hidden;
 }
 
 // Basic properties for the content wraps
-%wrap-base {
+@mixin wrap-base {
   position: relative;
   width: 100%;
 }
 
 // basic styles for off-canvas menu container
-%off-canvas-menu {
+@mixin off-canvas-menu {
   width: $off-canvas-width;
   top:0;
   bottom:0;
@@ -100,16 +100,16 @@ $menu-slide: "transform 500ms ease" !default;
 // OFF CANVAS WRAP
 // Wrap visible content and prevent scroll bars
 @mixin off-canvas-wrap {
-    @extend %kill-flicker;
-    @extend %wrap-base;
+    @include kill-flicker;
+    @include wrap-base;
     overflow: hidden;
 }
 
 // INNER WRAP
 // Main content area that moves to reveal the off-canvas nav
 @mixin inner-wrap {
-    @extend %kill-flicker;
-    @extend %wrap-base;
+    @include kill-flicker;
+    @include wrap-base;
     @include clearfix;
 
     -webkit-transition: -webkit-#{$menu-slide};
@@ -123,7 +123,7 @@ $menu-slide: "transform 500ms ease" !default;
 // TAB BAR
 // This is the tab bar base
 @mixin tab-bar-base { 
-  @extend %kill-flicker;
+  @include kill-flicker;
 
   // base styles
   background: $tabbar-bg;
@@ -147,7 +147,7 @@ $menu-slide: "transform 500ms ease" !default;
 
 // SMALL SECTIONS
 // These are small sections on the left and right that contain the off-canvas toggle buttons;
-%tabbar-small-section {
+@mixin tabbar-small-section {
   width: $tabbar-height;
   height: $tabbar-height;
   position: absolute;
@@ -155,14 +155,14 @@ $menu-slide: "transform 500ms ease" !default;
 }
 
 @mixin left-small-section {
-  @extend %tabbar-small-section;
+  @include tabbar-small-section;
   border-right: $tabbar-left-section-border;
   box-shadow: 1px 0 0 lighten($tabbar-bg, 10%);
   left:0;
 }
 
 @mixin right-small-section {
-  @extend %tabbar-small-section;
+  @include tabbar-small-section;
   border-left: $tabbar-right-section-border;
   box-shadow: -1px 0 0 darken($tabbar-bg, 10%);
   right:0;
@@ -224,7 +224,7 @@ $menu-slide: "transform 500ms ease" !default;
 // BACK LINK
 // This is an overlay that, when clicked, will toggle off the off canvas menu
 @mixin back-link {
-    @extend %kill-flicker;
+    @include kill-flicker;
 
     transition: $off-canvas-overlay-transition;
     cursor: $off-canvas-overlay-cursor;
@@ -250,14 +250,14 @@ $menu-slide: "transform 500ms ease" !default;
 // OFF CANVAS MENUS
 // These are the containers that contain the off canvas content
 @mixin left-off-canvas-menu {
-  @extend %kill-flicker;
-  @extend %off-canvas-menu;
+  @include kill-flicker;
+  @include off-canvas-menu;
   @include translate3d(-100%,0,0);
-  * { @extend %kill-flicker; } 
+  * { @include kill-flicker; } 
 }
 @mixin right-off-canvas-menu {
-  @extend %kill-flicker;
-  @extend %off-canvas-menu;
+  @include kill-flicker;
+  @include off-canvas-menu;
   @include translate3d(100%,0,0);
   right:0;
 }
