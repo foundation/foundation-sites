@@ -1,10 +1,11 @@
 ---
+title: Interchange
 layout: doc/layouts/default.html
 ---
 
 # Interchange
 
-<h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for a user's browser.</h3>
+<h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for different users' browsers.</h3>
 
 <img data-interchange="[{{assets}}/img/examples/space-small.jpg, (small)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
 <noscript><img src="{{assets}}/img/examples/space-default.jpg"></noscript>
@@ -104,7 +105,7 @@ If you add new content after the page has been loaded, you will need to trigger 
 ### Using the JavaScript
 
 <div class="panel">
-  Before you can use Interchange you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+  Before you can use Interchange you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../JavaScript.html) on setting that up.
 </div>
 
 Just add `foundation.interchange.js` AFTER the `foundation.js` file. Your markup should look something like this:

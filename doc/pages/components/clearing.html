@@ -1,10 +1,11 @@
 ---
+title: Clearing
 layout: doc/layouts/default.html
 ---
 
 # Clearing
 
-<h3 class="subheader">Since Orbit isn't intended for variable-height content, we decided it would be a great idea to create a plugin that would help in that regard. Clearing makes it easy to create responsive lightboxes with any size image.</h3>
+<h3 class="subheader">Since we didn't intend Orbit to handle variable-height content, we decided to create a plugin that would. Clearing makes it easy to create responsive lightboxes with any size image.</h3>
 
 {{> examples_clearing_basic}}
 
@@ -26,7 +27,7 @@ We're using the `.th` class from Foundation to style the thumbnails in the Clear
 
 ### Start From a Featured Image
 
-Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in a `.clearing-feature` list and using `.clearing-featured-img` on the `<li>` of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than once, try using our `.hide` class to set the ones you don't want to `display: none;`.
+Sometimes you don't want to show a gallery full of images on your site, but you want to open the gallery from a single image. By including all of your images in a `.clearing-feature` list and using `.clearing-featured-img` on the `<li>` of your choice, you'll be able to hide the rest of the images in the on-page gallery. If you want to show more than one, try using our `.hide` class to set the ones you don't want to `display: none;`.
 
 {{> examples_clearing_featured}}
 
@@ -53,7 +54,7 @@ We opted not to create mixins for this plugin because it relies on classes in th
 ### Using the JavaScript
 
 <div class="panel">
-  Before you can use Clearing you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+  Before you can use Clearing you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../JavaScript.html) on setting that up.
 </div>
 
 Just add `foundation.clearing.js` AFTER the `foundation.js` file. Your markup should look something like this:
