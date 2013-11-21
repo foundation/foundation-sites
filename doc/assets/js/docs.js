@@ -14,8 +14,8 @@ var components = [
   { value: 'Global Variables', data: '/docs/components/global.html' },
   { value: 'Useful HTML Classes', data: '/docs/components/global.html' },
 
-  { value: 'Upgrading', data: '/docs/components/upgrading.html' },
-  { value: 'Migration', data: '/docs/components/upgrading.html' },
+  { value: 'Upgrading', data: '/docs/upgrading.html' },
+  { value: 'Migration', data: '/docs/upgrading.html' },
 
   { value: 'Media Queries', data: '/docs/media-queries.html' },
   { value: 'Breakpoints', data: '/docs/media-queries.html' },
