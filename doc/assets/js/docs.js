@@ -1,4 +1,6 @@
 var components = [
+  { value: 'Getting Started', data: '/docs/index.html' },
+
   { value: 'CSS', data: '/docs/css.html' },
   { value: 'Styles', data: '/docs/css.html' },
 
@@ -8,6 +10,7 @@ var components = [
   { value: 'Applications', data: '/docs/applications.html' },
   { value: 'Rails', data: '/docs/applications.html' },
   { value: 'Gem', data: '/docs/applications.html' },
+  { value: 'JavaScript', data: '/docs/javascript.html' },
 
   { value: 'Global Styles', data: '/docs/components/global.html' },
   { value: 'Global Mixins', data: '/docs/components/global.html' },
