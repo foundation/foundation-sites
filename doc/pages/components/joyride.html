@@ -63,3 +63,17 @@ You can either set these options in a `data-options` attribute in the markup, `d
 {{> examples_joyride_options}}
 
 {{> examples_joyride_tour_stop}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/joyride";
+```
+{{/markdown}}
