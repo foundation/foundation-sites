@@ -286,27 +286,27 @@ $cursor-text-value: text !default;
   // Used to provide media query values for javascript components.
   // Forward slash placed around everything to convince PhantomJS to read the value.
   meta.foundation-mq-small {
-    font-family: "/" + unquote($small-up) + "/";
+    font-family: "/" + unquote($small-only) + "/";
     width: lower-bound($small-range);
   }
 
   meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-up) + "/";
+    font-family: "/" + unquote($medium-only) + "/";
     width: lower-bound($medium-range);
   }
 
   meta.foundation-mq-large {
-    font-family: "/" + unquote($large-up) + "/";
+    font-family: "/" + unquote($large-only) + "/";
     width: lower-bound($large-range);
   }
 
   meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-up) + "/";
+    font-family: "/" + unquote($xlarge-only) + "/";
     width: lower-bound($xlarge-range);
   }
 
   meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-up) + "/";
+    font-family: "/" + unquote($xxlarge-only) + "/";
     width: lower-bound($xxlarge-range);
   }
 

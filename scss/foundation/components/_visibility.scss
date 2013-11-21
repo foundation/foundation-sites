@@ -16,11 +16,15 @@ $include-html-visibility-classes: $include-html-classes !default;
   .show-for-large-down,
   .hide-for-medium,
   .hide-for-medium-up,
+  .hide-for-medium-only,
   .hide-for-large,
   .hide-for-large-up,
-  .hide-for-xlarge
+  .hide-for-large-only,
+  .hide-for-xlarge,
   .hide-for-xlarge-up,
-  .hide-for-xxlarge-up { display: inherit !important; }
+  .hide-for-xlarge-only,
+  .hide-for-xxlarge-up,
+  .hide-for-xxlarge-only { display: inherit !important; }
 
   .hide-for-small,
   .hide-for-small-only,
@@ -32,7 +36,7 @@ $include-html-visibility-classes: $include-html-classes !default;
   .show-for-large,
   .show-for-large-up,
   .show-for-large-only,
-  .show-for-xlarge
+  .show-for-xlarge,
   .show-for-xlarge-up,
   .show-for-xlarge-only,
   .show-for-xxlarge-up,
@@ -42,54 +46,70 @@ $include-html-visibility-classes: $include-html-classes !default;
   table {
     &.show-for-small,
     &.show-for-small-only,
-    &.show-for-medium-down
+    &.show-for-medium-down,
     &.show-for-large-down,
     &.hide-for-medium,
     &.hide-for-medium-up,
+    &.hide-for-medium-only,
     &.hide-for-large,
     &.hide-for-large-up,
-    &.hide-for-xlarge
+    &.hide-for-large-only,
+    &.hide-for-xlarge,
     &.hide-for-xlarge-up,
-    &.hide-for-xxlarge-up { display: table; }
+    &.hide-for-xlarge-only,
+    &.hide-for-xxlarge-up,
+    &.hide-for-xxlarge-only { display: table; }
   }
   thead {
     &.show-for-small,
     &.show-for-small-only,
-    &.show-for-medium-down
+    &.show-for-medium-down,
     &.show-for-large-down,
     &.hide-for-medium,
     &.hide-for-medium-up,
+    &.hide-for-medium-only,
     &.hide-for-large,
     &.hide-for-large-up,
-    &.hide-for-xlarge
+    &.hide-for-large-only,
+    &.hide-for-xlarge,
     &.hide-for-xlarge-up,
-    &.hide-for-xxlarge-up { display: table-header-group !important; }
+    &.hide-for-xlarge-only,
+    &.hide-for-xxlarge-up,
+    &.hide-for-xxlarge-only { display: table-header-group !important; }
   }
   tbody {
     &.show-for-small,
     &.show-for-small-only,
-    &.show-for-medium-down
+    &.show-for-medium-down,
     &.show-for-large-down,
     &.hide-for-medium,
     &.hide-for-medium-up,
+    &.hide-for-medium-only,
     &.hide-for-large,
     &.hide-for-large-up,
-    &.hide-for-xlarge
+    &.hide-for-large-only,
+    &.hide-for-xlarge,
     &.hide-for-xlarge-up,
-    &.hide-for-xxlarge-up { display: table-row-group !important; }
+    &.hide-for-xlarge-only,
+    &.hide-for-xxlarge-up,
+    &.hide-for-xxlarge-only { display: table-row-group !important; }
   }
   tr {
     &.show-for-small,
     &.show-for-small-only,
-    &.show-for-medium-down
+    &.show-for-medium-down,
     &.show-for-large-down,
     &.hide-for-medium,
     &.hide-for-medium-up,
+    &.hide-for-medium-only,
     &.hide-for-large,
     &.hide-for-large-up,
-    &.hide-for-xlarge
+    &.hide-for-large-only,
+    &.hide-for-xlarge,
     &.hide-for-xlarge-up,
-    &.hide-for-xxlarge-up { display: table-row !important; }
+    &.hide-for-xlarge-only,
+    &.hide-for-xxlarge-up,
+    &.hide-for-xxlarge-only { display: table-row !important; }
   }
   td,
   th {
@@ -113,7 +133,15 @@ $include-html-visibility-classes: $include-html-classes !default;
     .show-for-medium,
     .show-for-medium-down,
     .show-for-medium-up,
-    .show-for-medium-only { display: inherit !important; }
+    .show-for-medium-only,
+    .hide-for-large,
+    .hide-for-large-up,
+    .hide-for-large-only,
+    .hide-for-xlarge,
+    .hide-for-xlarge-up,
+    .hide-for-xlarge-only,
+    .hide-for-xxlarge-up,
+    .hide-for-xxlarge-only { display: inherit !important; }
 
     .show-for-small,
     .show-for-small-only,
@@ -125,7 +153,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .show-for-large,
     .show-for-large-up,
     .show-for-large-only,
-    .show-for-xlarge
+    .show-for-xlarge,
     .show-for-xlarge-up,
     .show-for-xlarge-only,
     .show-for-xxlarge-up,
@@ -138,7 +166,15 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.show-for-medium,
       &.show-for-medium-down,
       &.show-for-medium-up,
-      &.show-for-medium-only { display: table; }
+      &.show-for-medium-only,
+      &.hide-for-large,
+      &.hide-for-large-up,
+      &.hide-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table; }
     }
     thead {
       &.hide-for-small,
@@ -146,7 +182,15 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.show-for-medium,
       &.show-for-medium-down,
       &.show-for-medium-up,
-      &.show-for-medium-only { display: table-header-group !important; }
+      &.show-for-medium-only,
+      &.hide-for-large,
+      &.hide-for-large-up,
+      &.hide-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-header-group !important; }
     }
     tbody {
       &.hide-for-small,
@@ -154,7 +198,15 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.show-for-medium,
       &.show-for-medium-down,
       &.show-for-medium-up,
-      &.show-for-medium-only { display: table-row-group !important; }
+      &.show-for-medium-only,
+      &.hide-for-large,
+      &.hide-for-large-up,
+      &.hide-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-row-group !important; }
     }
     tr {
       &.hide-for-small,
@@ -162,7 +214,15 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.show-for-medium,
       &.show-for-medium-down,
       &.show-for-medium-up,
-      &.show-for-medium-only { display: table-row !important; }
+      &.show-for-medium-only,
+      &.hide-for-large,
+      &.hide-for-large-up,
+      &.hide-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-row !important; }
     }
     td,
     th {
@@ -171,7 +231,15 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.show-for-medium,
       &.show-for-medium-down,
       &.show-for-medium-up,
-      &.show-for-medium-only { display: table-cell !important; }
+      &.show-for-medium-only,
+      &.hide-for-large,
+      &.hide-for-large-up,
+      &.hide-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-cell !important; }
     }
   }
 
@@ -181,10 +249,16 @@ $include-html-visibility-classes: $include-html-classes !default;
     .hide-for-small-only,
     .hide-for-medium,
     .hide-for-medium-down,
+    .hide-for-medium-only,
     .show-for-medium-up,
     .show-for-large,
     .show-for-large-up,
-    .show-for-large-only { display: inherit !important; }
+    .show-for-large-only,
+    .hide-for-xlarge,
+    .hide-for-xlarge-up,
+    .hide-for-xlarge-only,
+    .hide-for-xxlarge-up,
+    .hide-for-xxlarge-only { display: inherit !important; }
 
     .show-for-small-only,
     .show-for-medium,
@@ -193,7 +267,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .hide-for-large,
     .hide-for-large-up,
     .hide-for-large-only,
-    .show-for-xlarge
+    .show-for-xlarge,
     .show-for-xlarge-up,
     .show-for-xlarge-only,
     .show-for-xxlarge-up,
@@ -201,76 +275,276 @@ $include-html-visibility-classes: $include-html-classes !default;
 
     /* Specific visilbity for tables */
     table {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
       &.show-for-large,
       &.show-for-large-up,
-      &.hide-for-medium,
-      &.hide-for-medium-down { display: table; }
+      &.show-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table; }
     }
     thead {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
       &.show-for-large,
       &.show-for-large-up,
-      &.hide-for-medium,
-      &.hide-for-medium-down { display: table-header-group !important; }
+      &.show-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-header-group !important; }
     }
     tbody {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
       &.show-for-large,
       &.show-for-large-up,
-      &.hide-for-medium,
-      &.hide-for-medium-down { display: table-row-group !important; }
+      &.show-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-row-group !important; }
     }
     tr {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
       &.show-for-large,
       &.show-for-large-up,
-      &.hide-for-medium,
-      &.hide-for-medium-down { display: table-row !important; }
+      &.show-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-row !important; }
     }
     td,
     th {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
       &.show-for-large,
       &.show-for-large-up,
-      &.hide-for-medium,
-      &.hide-for-medium-down { display: table-cell !important; }
+      &.show-for-large-only,
+      &.hide-for-xlarge,
+      &.hide-for-xlarge-up,
+      &.hide-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-cell !important; }
     }
   }
 
-  /* X-Large Displays: 1400px and up */
-  @media #{$large} {
-    .show-for-xlarge { display: inherit !important; }
+  /* X-Large Displays: 1441 and up */
+  @media #{$xlarge-up} {
+    .hide-for-small,
+    .hide-for-small-only,
+    .hide-for-medium,
+    .hide-for-medium-down,
+    .hide-for-medium-only,
+    .show-for-medium-up,
+    .show-for-large-up,
+    .show-for-xlarge,
+    .show-for-xlarge-up,
+    .show-for-xlarge-only,
+    .hide-for-xxlarge-up,
+    .hide-for-xxlarge-only { display: inherit !important; }
 
+    .show-for-small-only,
+    .show-for-medium,
+    .show-for-medium-down,
+    .show-for-medium-only,
     .show-for-large,
-    .show-for-large-down { display: none !important; }
-
-    .hide-for-large,
-    .hide-for-large-down { display: inherit !important; }
-
-    .hide-for-xlarge { display: none !important; }
+    .show-for-large-only,
+    .show-for-large-down,
+    .hide-for-xlarge,
+    .hide-for-xlarge-up,
+    .hide-for-xlarge-only,
+    .show-for-xxlarge-up,
+    .show-for-xxlarge-only { display: none !important; }
 
     /* Specific visilbity for tables */
     table {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
       &.show-for-xlarge,
-      &.hide-for-large,
-      &.hide-for-large-down { display: table; }
+      &.show-for-xlarge-up,
+      &.show-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table; }
     }
     thead {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
       &.show-for-xlarge,
-      &.hide-for-large,
-      &.hide-for-large-down { display: table-header-group !important; }
+      &.show-for-xlarge-up,
+      &.show-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-header-group !important; }
     }
     tbody {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
       &.show-for-xlarge,
-      &.hide-for-large,
-      &.hide-for-large-down { display: table-row-group !important; }
+      &.show-for-xlarge-up,
+      &.show-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-row-group !important; }
     }
     tr {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
       &.show-for-xlarge,
-      &.hide-for-large,
-      &.hide-for-large-down { display: table-row !important; }
+      &.show-for-xlarge-up,
+      &.show-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-row !important; }
     }
     td,
     th {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
       &.show-for-xlarge,
-      &.hide-for-large,
-      &.hide-for-large-down { display: table-cell !important; }
+      &.show-for-xlarge-up,
+      &.show-for-xlarge-only,
+      &.hide-for-xxlarge-up,
+      &.hide-for-xxlarge-only { display: table-cell !important; }
+    }
+  }
+
+  /* XX-Large Displays: 1920 and up */
+  @media #{$xxlarge-up} {
+    .hide-for-small,
+    .hide-for-small-only,
+    .hide-for-medium,
+    .hide-for-medium-down,
+    .hide-for-medium-only,
+    .show-for-medium-up,
+    .show-for-large-up,
+    .show-for-xlarge-up,
+    .show-for-xxlarge-up,
+    .show-for-xxlarge-only { display: inherit !important; }
+
+    .show-for-small-only,
+    .show-for-medium,
+    .show-for-medium-down,
+    .show-for-medium-only,
+    .show-for-large,
+    .show-for-large-only,
+    .show-for-large-down,
+    .hide-for-xlarge,
+    .show-for-xlarge-only,
+    .hide-for-xxlarge-up,
+    .hide-for-xxlarge-only { display: none !important; }
+
+    /* Specific visilbity for tables */
+    table {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
+      &.show-for-xlarge-up,
+      &.show-for-xxlarge-up,
+      &.show-for-xxlarge-only { display: table; }
+    }
+    thead {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
+      &.show-for-xlarge-up,
+      &.show-for-xxlarge-up,
+      &.show-for-xxlarge-only { display: table-header-group !important; }
+    }
+    tbody {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
+      &.show-for-xlarge-up,
+      &.show-for-xxlarge-up,
+      &.show-for-xxlarge-only { display: table-row-group !important; }
+    }
+    tr {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
+      &.show-for-xlarge-up,
+      &.show-for-xxlarge-up,
+      &.show-for-xxlarge-only { display: table-row !important; }
+    }
+    td,
+    th {
+      &.hide-for-small,
+      &.hide-for-small-only,
+      &.hide-for-medium,
+      &.hide-for-medium-down,
+      &.hide-for-medium-only,
+      &.show-for-medium-up,
+      &.show-for-large-up,
+      &.show-for-xlarge-up,
+      &.show-for-xxlarge-up,
+      &.show-for-xxlarge-only { display: table-cell !important; }
     }
   }
 
