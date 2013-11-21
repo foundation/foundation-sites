@@ -155,7 +155,7 @@ Ruby on Rails Sass Gems
 Yeoman Generator
 
 * [Yeoman 1.0-Foundation 4](https://github.com/lkbgift/foundation4-yeoman) by [Leonard Bogdonoff](http://twitter.com/lkbcc)
-* [Yeoman-Foundation](https://npmjs.org/package/yeoman-foundation) by Vincent Mac
+* [Generator-Browserify](https://npmjs.org/package/generator-browserify) by [Vincent Mac](http://twitter.com/vincentmac)
 * [Generator-Foundation-Ext](https://github.com/jamesakers/generator-foundation-ext) by James Akers
 
 MIT Open Source License
