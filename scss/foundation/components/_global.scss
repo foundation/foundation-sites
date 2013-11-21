@@ -296,17 +296,17 @@ $cursor-text-value: text !default;
   }
 
   meta.foundation-mq-large {
-    font-family: "/" + unquote($large-only) + "/";
+    font-family: "/" + unquote($large-up) + "/";
     width: lower-bound($large-range);
   }
 
   meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-only) + "/";
+    font-family: "/" + unquote($xlarge-up) + "/";
     width: lower-bound($xlarge-range);
   }
 
   meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-only) + "/";
+    font-family: "/" + unquote($xxlarge-up) + "/";
     width: lower-bound($xxlarge-range);
   }
 

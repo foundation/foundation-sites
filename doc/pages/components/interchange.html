@@ -1,10 +1,11 @@
 ---
+title: Interchange
 layout: doc/layouts/default.html
 ---
 
 # Interchange
 
-<h3 class="subheader">Interchange uses media queries to dynamically load responsive content (arbitrary HTML partials, or images) that is appropriate for a user's device.</h3>
+<h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for different users' browsers.</h3>
 
 <img data-interchange="[{{assets}}/img/examples/space-small.jpg, (small)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
 <noscript><img src="{{assets}}/img/examples/space-default.jpg"></noscript>
@@ -17,7 +18,7 @@ In Foundation 5 Interchange can now pull in HTML partials, so you can load diffe
 
 To do we use the `data-interchange` attribute on a markup container (probably a `div`). Here's an example which loads up a small, static map on mobile, a larger static map for medium sized devices, and a full interactive Google map on large display devices.
 
-<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/doc/examples/interchange/default.html'}}, (small)], [{{relative absolute 'dist/doc/examples/interchange/medium.html'}}, (medium)], [{{relative absolute 'dist/doc/examples/interchange/large.html'}}, (large)]">
+<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/components/interchange-default.html'}}, (default)], [{{relative absolute 'dist/docs/components/interchange-medium.html'}}, (medium)], [{{relative absolute 'dist/docs/components/interchange-large.html'}}, (large)]">
   <p><img src="{{assets}}/img/examples/map-small.png" /></p>
 </div>
 
@@ -103,7 +104,7 @@ If you add new content after the page has been loaded, you will need to trigger 
 ### Using the JavaScript
 
 <div class="panel">
-  Before you can use Interchange you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [javascript documentation](../javascript.html) on setting that up.
+  Before you can use Interchange you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../JavaScript.html) on setting that up.
 </div>
 
 Just add `foundation.interchange.js` AFTER the `foundation.js` file. Your markup should look something like this:

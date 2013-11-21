@@ -8,6 +8,8 @@ We have built a migration plugin, [foundation-migrate](http://github.com/zurb/fo
 
 Foundation 5 removes support for Zepto, so instead of doing this to include jQuery or Zepto:
 
+<h4>HTML</h4>
+
 ```html
 <script>
   document.write('<script src=/js/vendor/'
@@ -18,11 +20,15 @@ Foundation 5 removes support for Zepto, so instead of doing this to include jQue
 
 All you need to do is add jQuery to the end of your `body`:
 
+<h4>HTML</h4>
+
 ```html
 <script src="/js/vendor/jquery.js"></script>
 ```
 
 After you have included jQuery, you can drop in the Foundation library and initialize Foundation:
+
+<h4>HTML</h4>
 
 ```html
 <script src="/js/vendor/jquery.js"></script>
@@ -62,6 +68,8 @@ $(document).foundation({dropdown: {is_hover: false}});
 </div>
 
 In Foundation 5 you can reconfigure variables on the fly after the page has loaded and Foundation has been initialized:
+
+<h4>JS</h4>
 
 {{#markdown}}
 ```js
@@ -256,5 +264,3 @@ All JavaScript configuration variables are now `under_score` instead of `camelCa
     </tr>
   </tbody>
 </table>
-
-***
