@@ -15,7 +15,7 @@ $topbar-height: 45px !default;
 $topbar-margin-bottom: 0 !default;
 
 // Control Input height for top bar
-$topbar-input-height: 2.45rem !default;
+$topbar-input-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal !default;
@@ -136,7 +136,7 @@ meta.foundation-mq-topbar {
       form,
       input { margin-bottom: 0; }
 
-      input { height: $topbar-input-height; }
+      input { height: $topbar-input-height; padding-top: .5rem; padding-bottom: .5rem; }
 
       .button { padding-top: .5rem; padding-bottom: .5rem; margin-bottom: 0; }
 
@@ -183,12 +183,12 @@ meta.foundation-mq-topbar {
           line-height: $topbar-height;
         }
 
-    // Menu toggle button on small devices
-    .toggle-topbar {
-      
-      position: absolute;
-      #{$opposite-direction}: 0;
-      top: 0;
+        // Adding the class "menu-icon" will add the 3-line icon people love and adore.
+        &.menu-icon {
+          #{$opposite-direction}: $topbar-height / 3;
+          top: 50%;
+          margin-top: -16px;
+          padding-#{$default-float}: 40px;
 
           a {
             text-indent: -48px;
@@ -241,6 +241,8 @@ meta.foundation-mq-topbar {
           }
         }
       }
+      
+
 
     }
 
@@ -413,7 +415,7 @@ meta.foundation-mq-topbar {
         .button {
           font-size: rem-calc(14);
           position: relative;
-          top: 8px;
+          top: 6px;
         }
 
         &.expanded { background: $topbar-bg; }
