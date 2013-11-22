@@ -63,6 +63,11 @@ $modules: () !default;
   @return rem-calc($values);
 }
 
+// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
+@function em-calc($values){
+  @return rem-calc($values);
+}
+
 // Maybe you want to create rems with pixels
 // $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
 // @function remCalc($pxWidth) {
