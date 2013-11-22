@@ -4,7 +4,7 @@
   Foundation.libs.accordion = {
     name : 'accordion',
 
-    version : '5.0.0',
+    version : '5.0.1',
 
     settings : {
       active_class: 'active',
@@ -16,12 +16,12 @@
     },
 
     events : function () {
-      $(this.scope).off('.accordion').on('click.fndtn.accordion', '[data-accordion] a', function (e) {
+      $(this.scope).off('.accordion').on('click.fndtn.accordion', '[data-accordion] > dd > a', function (e) {
         var accordion = $(this).parent(),
             target = $('#' + this.href.split('#')[1]),
-            siblings = $('.content', target.closest('[data-accordion]')),
+            siblings = $('> dd > .content', target.closest('[data-accordion]')),
             settings = accordion.parent().data('accordion-init'),
-            active = $('.content.' + settings.active_class, accordion.parent());
+            active = $('> dd > .content.' + settings.active_class, accordion.parent());
 
         e.preventDefault();
 

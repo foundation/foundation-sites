@@ -5,7 +5,7 @@
   Foundation.libs.tab = {
     name : 'tab',
 
-    version : '5.0.0',
+    version : '5.0.1',
 
     settings : {
       active_class: 'active'
@@ -16,7 +16,7 @@
     },
 
     events : function () {
-      $(this.scope).off('.tab').on('click.fndtn.tab', '[data-tab] a', function (e) {
+      $(this.scope).off('.tab').on('click.fndtn.tab', '[data-tab] > dd > a', function (e) {
         e.preventDefault();
 
         var tab = $(this).parent(),
