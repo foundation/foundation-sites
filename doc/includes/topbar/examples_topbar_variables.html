@@ -50,8 +50,8 @@ $topbar-menu-icon-color-toggled: #888;
 
 /* Transitions and breakpoint styles */
 $topbar-transition-speed: 300ms;
-$topbar-breakpoint: rem-calc(940); /* Change to 9999px for always mobile layout */
-$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
+$topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
+$topbar-media-query: $medium-up !default;
 
 /* Divider Styles */
 $topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
