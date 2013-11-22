@@ -65,7 +65,7 @@ $menu-slide: "transform 500ms ease" !default;
 // EXTEND CLASSES
 // Remove transition flicker on phones
 %kill-flicker {
-  -webkit-transform: translateZ(0x);
+  -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
 }
 
