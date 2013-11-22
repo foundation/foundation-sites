@@ -3,7 +3,7 @@ node_js:
   - '0.10'
 branches:
   only:
-    - 5.0-wip
+    - master
 before_script:
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "mark@zurb.com"
