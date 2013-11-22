@@ -55,7 +55,7 @@ Drupal
 
 Alfred
 
-* [Foundation Alfred](https://github.com/joshmedeski/foundation-alfred) by Josh Medeski (@joshmedeski)
+* [Foundation Alfred](https://github.com/joshmedeski/foundation-alfred) by [Josh Medeski](http://joshmedeski.com)
 
 Jekyll
 
