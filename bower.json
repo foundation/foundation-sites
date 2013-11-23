@@ -1,6 +1,6 @@
 {
   "name": "foundation",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "main": ["css/foundation.css", "js/foundation.js"],
   "dependencies": {
     "jquery" : ">= 2.0.0",
