@@ -21,9 +21,9 @@ $spacing-margin-bottom: $paragraph-margin-bottom !default;
 //
 // Trailers add space after copy, text or image
 .trail-0 { margin-bottom: 0em; }
-.trail-0-2 { margin-bottom: $spacing-bottom / 4; }
-.trail-0-5 { margin-bottom: $spacing-bottom / 2; }
-.trail-1 { margin-bottom: $spacing-bottom; }
-.trail-1-25 { margin-bottom: $spacing-bottom * 1.25; }
-.trail-1-5 { margin-bottom: $spacing-bottom * 1.5; }
-.trail-2 { margin-bottom: $spacing-bottom * 2; }
+.trail-0-2 { margin-bottom: $spacing-margin-bottom / 4; }
+.trail-0-5 { margin-bottom: $spacing-margin-bottom / 2; }
+.trail-1 { margin-bottom: $spacing-margin-bottom; }
+.trail-1-25 { margin-bottom: $spacing-margin-bottom * 1.25; }
+.trail-1-5 { margin-bottom: $spacing-margin-bottom * 1.5; }
+.trail-2 { margin-bottom: $spacing-margin-bottom * 2; }
