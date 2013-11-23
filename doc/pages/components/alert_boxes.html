@@ -19,12 +19,17 @@ You can create an alert box using minimal markup.
 
 <div class="row">
   <div class="large-6 columns">
+
     <h4>HTML</h4>
+
 {{> examples_alert_basic_rendered}}
+
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
+
 {{> examples_alert_basic}}
+
   </div>
 </div>
 
@@ -34,11 +39,22 @@ You can add more classes to your alert box to change its appearance.
 
 <div class="row">
   <div class="large-6 columns">
-    <h4>HTML</h4>
+<h4>HTML</h4>
 
 {{#markdown}}
 ```html
-<div data-alert class="alert-box [success alert secondary] [radius round]">
+<div class="alert-box success radius">
+  This is a success alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="alert-box warning round">
+  This is a warning alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="alert-box info radius">
+  This is an info alert with a radius.
   <a href="#" class="close">&times;</a>
 </div>
 ```
@@ -46,17 +62,27 @@ You can add more classes to your alert box to change its appearance.
 
   </div>
   <div class="large-6 columns">
-    <h4>Rendered HTML</h4>
+<h4>Rendered HTML</h4>
 
-    <div data-alert class="alert-box success radius">
-      This is a success alert with a radius.
-      <a href="#" class="close">&times;</a>
-    </div>
+<div data-alert class="alert-box success radius">
+  This is a success alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box warning round">
+  This is a warning alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box info radius">
+  This is an info alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
 
   </div>
 </div>
 
-<hr>
+---
 
 ## Customize With Sass
 
