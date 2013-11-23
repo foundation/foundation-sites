@@ -529,7 +529,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .docs-bar ul.dropdown { z-index: 1003; }
 
 // Side nav custom active style 
- .side-nav li.active > a:first-child {
+.sidebar .side-nav li.active > a:first-child {
   font-weight: bold;
   color: lighten(#004054,20%);
   position: relative;
@@ -547,7 +547,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
   //   margin-top:-6px;
   // }
  }
-  .side-nav li:hover > a:first-child {
+.sidebar .side-nav li:hover > a:first-child {
     color: lighten(#004054,10%);
     position: relative;
     margin: 0 -20px;
