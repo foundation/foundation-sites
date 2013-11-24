@@ -35,9 +35,11 @@
 
 
   // Enable FastClick
-  if(typeof FastClick !== 'undefined') {
-    FastClick.attach(document.body);
-  }
+  $(function() {
+    if(typeof FastClick !== 'undefined') {
+      FastClick.attach(document.body);
+    }
+  });
 
   // private Fast Selector wrapper,
   // returns jQuery object. Only use where
