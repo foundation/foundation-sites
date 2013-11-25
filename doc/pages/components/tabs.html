@@ -57,6 +57,45 @@ You can create a group of vertical tabs using minimal markup.
 
 {{> examples_tabs_vertical_basic_rendered}}
 
+<div class="clearfix"></div>
+
+***
+
+### Callbacks
+
+There are two ways to bind to callbacks in your tabs.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Callback function</h4>
+```html
+<script>
+  $(document).foundation({
+    tab: {
+      callback : function (tab) {
+        console.log(tab);
+      }
+    }
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Toggled Event</h4>
+```html
+<script>
+  $('#myTabs').on('toggled', function (event, tab) {
+    console.log(tab);
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+</div>
+
 ***
 
 ## Customize With Sass
