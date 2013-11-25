@@ -27,6 +27,7 @@ $input-border-width: 1px !default;
 $input-disabled-bg: #ddd !default;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $input-include-glowing-effect: true !default;
+$input-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1)) !default;
 
 // We use these to style the fieldset border and spacing.
 $fieldset-border-style: solid !default;
@@ -113,7 +114,7 @@ $select-bg-color: #fafafa;
   font-size: $input-font-size;
   margin: 0 0 $form-spacing 0;
   padding: $form-spacing / 2;
-  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  height: $input-height;
   width: 100%;
   @include box-sizing(border-box);
   @if $input-include-glowing-effect {
@@ -323,6 +324,7 @@ $select-bg-color: #fafafa;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
+      height: $input-height;
       @include radius(0);
       &.radius { @include radius($global-radius); }
       &:hover {
