@@ -35,7 +35,11 @@ $off-canvas-label-border-bottom: none !default;
 $off-canvas-label-margin:0 !default;
 $off-canvas-link-padding: rem-calc(10, 15) !default;
 $off-canvas-link-color: rgba(#FFF, 0.7) !default;
-$off-canvas-link-border-bottom: 1px solid darken($off-canvas-bg, 5%) !default;
+@if type-of($off-canvas-bg) == 'color' {
+  $off-canvas-link-border-bottom: 1px solid darken($off-canvas-bg, 5%) !default;
+} @else {
+  $off-canvas-link-border-bottom: 1px solid darken($off-canvas-label-bg, 5%) !default;
+}
 
 // Off Canvas Menu Icon Variables
 $tabbar-menu-icon-color: #FFF !default;
