@@ -275,7 +275,6 @@
     hide : function (el, css) {
       // is modal
       if (css) {
-        console.log(el)
         var settings = el.data('reveal-init');
         if (/pop/i.test(settings.animation)) {
           var end_css = {
