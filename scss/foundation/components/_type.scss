@@ -108,12 +108,12 @@ $microformat-abbr-font-decoration: none !default;
 //
 
 // These will throw a deprecation warning if used within a media query.
-%lead {
+@mixin lead {
   font-size: $paragraph-font-size + rem-calc(3.5);
   line-height: 1.6;
 }
 
-%subheader {
+@mixin subheader {
   line-height: $subheader-line-height;
   color: $subheader-font-color;
   font-weight: $subheader-font-weight;
@@ -169,7 +169,7 @@ $microformat-abbr-font-decoration: none !default;
       margin-bottom: $paragraph-margin-bottom;
       text-rendering: $paragraph-text-rendering;
 
-      &.lead { @extend %lead; }
+      &.lead { @include lead; }
 
       & aside {
         font-size: $paragraph-aside-font-size;
@@ -203,7 +203,7 @@ $microformat-abbr-font-decoration: none !default;
     h5 { font-size: $h5-font-size; }
     h6 { font-size: $h6-font-size; }
 
-    .subheader { @extend %subheader; }
+    .subheader { @include subheader; }
 
     hr {
       border: $hr-border-style $hr-border-color;
