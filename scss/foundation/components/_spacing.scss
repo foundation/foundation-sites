@@ -1,0 +1,29 @@
+//
+// Spacing Variables
+//
+$spacing-margin-top: $paragraph-margin-top !default;
+$spacing-margin-bottom: $paragraph-margin-bottom !default;
+
+//
+// Leaders
+//
+// Leaders add space before copy, text or image
+.lead-0 { margin-top: 0em; }
+.lead-0-2 { margin-top: $spacing-margin-top / 4; }
+.lead-0-5 { margin-top: $spacing-margin-top / 2; }
+.lead-1 { margin-top: $spacing-margin-top; }
+.lead-1-25 { margin-top: $spacing-margin-top * 1.25; }
+.lead-1-5 { margin-top: $spacing-margin-top * 1.5; }
+.lead-2 { margin-top: $spacing-margin-top * 2; }
+
+//
+// Trailers
+//
+// Trailers add space after copy, text or image
+.trail-0 { margin-bottom: 0em; }
+.trail-0-2 { margin-bottom: $spacing-margin-bottom / 4; }
+.trail-0-5 { margin-bottom: $spacing-margin-bottom / 2; }
+.trail-1 { margin-bottom: $spacing-margin-bottom; }
+.trail-1-25 { margin-bottom: $spacing-margin-bottom * 1.25; }
+.trail-1-5 { margin-bottom: $spacing-margin-bottom * 1.5; }
+.trail-2 { margin-bottom: $spacing-margin-bottom * 2; }
