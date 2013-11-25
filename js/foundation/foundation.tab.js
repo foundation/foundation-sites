@@ -5,10 +5,11 @@
   Foundation.libs.tab = {
     name : 'tab',
 
-    version : '5.0.1',
+    version : '5.0.3',
 
     settings : {
-      active_class: 'active'
+      active_class: 'active',
+      callback : function () {}
     },
 
     init : function (scope, method, options) {
@@ -20,13 +21,16 @@
         e.preventDefault();
 
         var tab = $(this).parent(),
+            tabs = tab.closest('[data-tab]'),
             target = $('#' + this.href.split('#')[1]),
             siblings = tab.siblings(),
-            settings = tab.closest('[data-tab]').data('tab-init');
+            settings = tabs.data('tab-init');
 
-        tab.addClass(settings.active_class);
+        tab.addClass(settings.active_class).trigger('opened');
         siblings.removeClass(settings.active_class);
         target.siblings().removeClass(settings.active_class).end().addClass(settings.active_class);
+        settings.callback(tab);
+        tabs.trigger('toggled', [tab]);
       });
     },
 
