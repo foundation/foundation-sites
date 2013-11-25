@@ -151,8 +151,13 @@ module.exports = function(grunt) {
         options: {livereload:true}
       },
       dist_docs: {
-        files: ['doc/{includes,layouts,pages}/**/*.html'],
+        files: ['doc/{includes,layouts}/**/*.html'],
         tasks: ['assemble'],
+        options: {livereload:true}
+      },
+      dist_docs_pages: {
+        files: ['doc/pages/**/*.html'],
+        tasks: ['newer:assemble'],
         options: {livereload:true}
       },
       dist_download: {
