@@ -2,8 +2,11 @@
 // FOUNDATION SETTINGS
 //
 
+// This is the default html and body font-size for the base rem value.
+// $rem-base: 16px;
+
 // Uncomment to use rem-calc() in your settings
-// @import "foundation/functions";
+@import "foundation/functions";
 
 // $experimental: true;
 
@@ -17,9 +20,6 @@
 
 // The $base-line-height is 100% while $base-font-size is 150%
 // $base-line-height: 150%;
-
-// This is the default html and body font-size for the base rem value.
-// $rem-base: 16px;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
