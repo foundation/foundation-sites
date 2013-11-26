@@ -76,7 +76,31 @@ Ajax-based Reveal modals can also be opened via JavaScript:
 
 <p>Please refer to <a href="http://api.jquery.com/jQuery.ajax/">http://api.jquery.com/jQuery.ajax/</a> for a complete list of possible parameters.</p>
 
-<hr />
+***
+
+### Event Bindings
+
+There are a series of events that you can bind to to trigger your callbacks:
+
+```js
+$(document).on('open', '[data-reveal]', function () {
+  var modal = $(this);
+});
+
+$(document).on('opened', '[data-reveal]', function () {
+  var modal = $(this);
+});
+
+$(document).on('close', '[data-reveal]', function () {
+  var modal = $(this);
+});
+
+$(document).on('closed', '[data-reveal]', function () {
+  var modal = $(this);
+});
+```
+
+***
 
 <h2>Customize With Sass</h2>
 
