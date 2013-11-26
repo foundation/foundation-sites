@@ -36,6 +36,7 @@ $paragraph-font-family: inherit !default;
 $paragraph-font-weight: normal !default;
 $paragraph-font-size: 1em !default;
 $paragraph-line-height: 1.6 !default;
+$paragraph-margin-top: em-calc(5) !default;
 $paragraph-margin-bottom: em-calc(20) !default;
 $paragraph-aside-font-size: em-calc(14) !default;
 $paragraph-aside-line-height: 1.35 !default;
@@ -250,8 +251,8 @@ $microformat-abbr-font-decoration: none !default;
 
     ul {
       margin-#{$default-float}: $list-side-margin;
-      &.no-bullet { 
-        margin-#{$default-float}: $list-side-margin-no-bullet; 
+      &.no-bullet {
+        margin-#{$default-float}: $list-side-margin-no-bullet;
         li {
           ul,
           ol {
