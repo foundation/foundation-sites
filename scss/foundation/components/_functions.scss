@@ -1,3 +1,6 @@
+// This is the default html and body font-size for the base rem value.
+$rem-base: 16px !default;
+
 $modules: () !default;
 @mixin exports($name) {
   @if (index($modules, $name) == false) {
