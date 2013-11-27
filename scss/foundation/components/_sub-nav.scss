@@ -61,7 +61,7 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
   margin-#{$default-float}: rem-calc(-12);
 
   dt {
-	  text-transform: uppercase;
+    text-transform: uppercase;
   }
 
   dt,
@@ -80,7 +80,7 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
       text-decoration: $sub-nav-text-decoration;
       color: $sub-nav-font-color;
       &:hover {
-	      color: $active-bg-hover;
+        color: $active-bg-hover;
       }
     }
 
@@ -92,7 +92,7 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
       cursor: $sub-nav-active-cursor;
       color: $sub-nav-active-color;
       &:hover {
-	      background: $active-bg-hover;
+        background: $active-bg-hover;
       }
     }
     @if $sub-nav-item-divider != "" {

@@ -1,6 +1,123 @@
 # Upgrading From Foundation 4
 <h3 class="subheader">Need to upgrade from Foundation 4? No problem. This handy migration guide makes it super easy!</h3>
 
+
+### Upgrade your Rails project
+
+Change the following line in your `Gemfile`:
+
+```ruby
+gem 'zurb-foundation'
+```
+
+to:
+
+```ruby
+gem 'foundation-rails'
+```
+
+Then run `bundle install`.
+
+***
+
+### Upgrade using our CLI and Compass
+
+Before continuing you'll need to install the following on your system:
+
+  * [NodeJS](http://nodejs.org)
+  * [bower](http://bower.io) (sudo npm install -g bower)
+
+Our CLI can help you upgrade your Foundation 4 project to Foundation 5. It can be installed using the following commands in terminal:
+
+```bash
+gem install foundation
+foundation version #=> should say v1.0.3 or higher
+```
+
+So let's assume you have a project in `~/Sites/PROJECT_NAME`. To upgrade it to Foundation 5 you would run the following in terminal:
+
+```bash
+cd ~/Sites/PROJECT_NAME
+foundation upgrade
+```
+
+***
+
+### Upgrade manually with Compass
+
+Before continuing you'll need to install the following on your system:
+
+  * [NodeJS](http://nodejs.org)
+  * [bower](http://bower.io) (sudo npm install -g bower)
+
+Starting in Foundation 5 there's no longer a Compass extension. Instead we use [bower](http://bower.io) to keep Foundation assets up to date with your project.
+
+
+
+Starting in Foundation 5 there's no longer a Compass extension. Instead we use [bower](http://bower.io) to bring in updated Sass and Javascript assets to your project. Here's how you can update your project:
+
+#### Step 1: Create a bower.json file
+
+In the root of your Compass project create a file called `bower.json` with this content:
+
+```js
+{
+  "name": "PROJECT_NAME",
+  "dependencies": {
+    "foundation": "~5.0.2"
+  }
+}
+```
+
+#### Step 2: Install Foundation 5
+
+Now run `bower install`. This will create a directory called `bower_components/` in your project. Foundation's Sass and JavaScript files will be placed in the `bower_components/foundation` folder.
+
+#### Step 3: Tell Compass where Foundation resides
+
+You'll want to update your `config.rb` folder to change this line from:
+
+```ruby
+require "zurb-foundation"
+```
+
+to:
+
+```ruby
+add_import_path "bower_components/foundation/scss"
+```
+
+#### Step 4: Update javascript links
+
+Any references to the javascript files in your project will have changed. Links to Foundation javascript files should be changed from:
+
+```html
+<script src="javascripts/foundation.min.js"></script>
+```
+
+to:
+
+```html
+<script src="bower_components/foundation/js/foundation.min.js"></script>
+```
+
+This will ensure that when you run `bower update` to fetch the latest version of Foundation that the javascript is also updated.
+
+#### Step 5: Recompile your project
+
+Now run `compass watch` to recompile your project. If you see any errors please jump down to the upgrading your sass section.
+
+***
+
+### Upgrading the Sass
+
+In Foundation 5 we removed the following components:
+
+```scss
+@import "foundation/components/sections";
+@import "foundation/components/custom-forms";
+```
+
 ***
 
 ### Upgrading the JavaScript
