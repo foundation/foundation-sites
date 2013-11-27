@@ -212,7 +212,7 @@ $preloader-class: "preloader" !default;
           border-top: none;
           border-bottom: none;
         }
-  	  
+      
         // Pause button
         &.paused {
           & > span {
@@ -224,7 +224,7 @@ $preloader-class: "preloader" !default;
             border-right-style: solid;
             border-color: transparent transparent transparent #fff;
             &.dark { 
-            	border-color: transparent transparent transparent #333;
+              border-color: transparent transparent transparent #333;
             }
           }
         }
@@ -292,8 +292,8 @@ $preloader-class: "preloader" !default;
       position: relative;
       top: 10px;
       float: none;
-  	text-align: center;
-  	display: inline-block;
+      text-align: center;
+      display: inline-block;
 
       li {
         display: block;
