@@ -331,7 +331,7 @@ meta.foundation-mq-topbar {
         &.active > a {
           background: $topbar-link-bg-active;
           color: $topbar-link-color-active;
-  		&:hover {
+          &:hover {
               background: $topbar-link-bg-active-hover;
           }
         }
