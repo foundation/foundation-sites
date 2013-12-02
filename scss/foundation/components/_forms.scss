@@ -24,6 +24,7 @@ $input-border-color: darken(#fff, 20%) !default;
 $input-focus-border-color: darken(#fff, 40%) !default;
 $input-border-style: solid !default;
 $input-border-width: 1px !default;
+$input-border-radius: 0 !default;
 $input-disabled-bg: #ddd !default;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $input-include-glowing-effect: true !default;
@@ -395,8 +396,8 @@ $select-bg-color: #fafafa;
     input[type="url"],
     textarea {
       -webkit-appearance: none;
-      -webkit-border-radius: 0;
-      border-radius: 0;
+      -webkit-border-radius: $input-border-radius;
+      border-radius: $input-border-radius;
       @include form-element;
       @if not $input-include-glowing-effect {
           @include single-transition(all, 0.15s, linear);
