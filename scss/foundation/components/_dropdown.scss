@@ -3,7 +3,7 @@
 //
 // @variables
 //
-$include-html-button-classes: $include-html-classes !default;
+$include-html-dropdown-classes: $include-html-classes !default;
 
 // We use these to controls height and width styles.
 $f-dropdown-max-width: 200px !default;
@@ -129,7 +129,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 }
 
 @include exports("dropdown") {
-  @if $include-html-button-classes {
+  @if $include-html-dropdown-classes {
 
     @media #{$small-only} {
       .f-dropdown {
