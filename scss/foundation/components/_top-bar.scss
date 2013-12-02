@@ -457,11 +457,13 @@ meta.foundation-mq-topbar {
               color: $topbar-link-color-hover;
             }
           }
-          a:not(.button) {
-            padding: 0 $topbar-height / 3;
-            line-height: $topbar-height;
-            background: $topbar-bg;
-            &:hover { background: $topbar-link-bg-hover; }
+          &:not(.has-form) {
+            a:not(.button) {
+              padding: 0 $topbar-height / 3;
+              line-height: $topbar-height;
+              background: $topbar-bg;
+              &:hover { background: $topbar-link-bg-hover; }
+            }
           }
         }
 
