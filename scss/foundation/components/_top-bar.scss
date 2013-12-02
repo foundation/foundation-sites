@@ -293,8 +293,8 @@ meta.foundation-mq-topbar {
           &.button {
             background: $primary-color;
             font-size: $topbar-link-font-size;
-             padding-right: $topbar-height / 3;
-             padding-left: $topbar-height / 3;
+             padding-#{$opposite-direction}: $topbar-height / 3;
+             padding-#{$default-float}: $topbar-height / 3;
             &:hover {
               background: darken($primary-color, 10%);
             }
