@@ -45,8 +45,8 @@ body {
     margin-bottom: 10px;
     line-height: 2rem;
     border: solid 1px #c6c6c6;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-#{$default-float}: 0 !important;
+    margin-#{$opposite-direction}: 0 !important;
     .columns {
       &:nth-child(2),
       &.small-centered,
@@ -154,7 +154,7 @@ hr.dashed { border-style: dashed; }
   @include border(solid, 1px, darken($panel-bg-color, 4%));
   border-radius: 4px;
   ul {
-    margin-left: 20px;
+    margin-#{$default-float}: 20px;
   }
   dt { color: #008080; }
 }
@@ -222,7 +222,6 @@ footer { margin-top: 45px; }
   td {
     margin:0;
     padding:0;
-    direction: $text-direction;
   }
 
   /* Default Link Styles */
@@ -534,8 +533,8 @@ $custom-active-bg:darken($custom-link-color, 5%);
   color: lighten(#004054,20%);
   position: relative;
   margin: 0 -20px;
-  padding-left:20px;
-  padding-right: 20px;
+  padding-#{$default-float}:20px;
+  padding-#{$opposite-direction}: 20px;
   background: rgba(#004054, 0.05);
 
   // &::before {
@@ -551,13 +550,13 @@ $custom-active-bg:darken($custom-link-color, 5%);
     color: lighten(#004054,10%);
     position: relative;
     margin: 0 -20px;
-    padding-left:20px;
-    padding-right: 20px;
+    padding-#{$default-float}:20px;
+    padding-#{$opposite-direction}: 20px;
     background: rgba(#004054, 0.03);
   }
 
 // Compatibility
-.row.support { padding: 9px 0; margin-left:0; margin-right:0; }
+.row.support { padding: 9px 0; margin-#{$default-float}:0; margin-#{$opposite-direction}:0; }
 .row.support:nth-child(2n) { background: #f4f4f4; }
 
 .support .win { color: #4ea600; font-weight: bold; }
@@ -565,4 +564,4 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .support .fail { color: #cc0000; font-weight: bold; }
 
 .docs-bar .top-bar-section .has-dropdown > a:after { display: none; }
-.docs-bar .top-bar-section .has-dropdown a { padding-right: 15px !important; }
+.docs-bar .top-bar-section .has-dropdown a { padding-#{$opposite-direction}: 15px !important; }
