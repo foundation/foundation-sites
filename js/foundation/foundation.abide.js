@@ -142,10 +142,13 @@
             value = el.value,
             is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
+            is_checkbox = el.type === "checkbox",
             valid_length = (required) ? (el.value.length > 0) : true;
 
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
+        } else if (is_checkbox && required) {
+          validations.push(this.valid_checkbox(el, required));
         } else if (is_equal && required) {
           validations.push(this.valid_equal(el, required));
         } else {
@@ -161,6 +164,18 @@
       }
 
       return validations;
+    },
+
+    valid_checkbox : function(el, required) {
+      var el = $(el),
+          valid = (el.is(':checked') || !required);
+      if (valid) {
+        el.removeAttr('data-invalid').parent().removeClass('error');
+      } else {
+        el.attr('data-invalid', '').parent().addClass('error');
+      }
+
+      return valid;
     },
 
     valid_radio : function (el, required) {
