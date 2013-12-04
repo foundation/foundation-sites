@@ -14,6 +14,7 @@ script:
   - grunt travis
 after_script:
   - git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
+  - rm -rf bower-foundation/*
   - cp -r dist/assets/* bower-foundation/
   - cd bower-foundation
   - git remote rm origin
