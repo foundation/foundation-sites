@@ -18,7 +18,7 @@ after_script:
   - cd bower-foundation
   - git remote rm origin
   - git remote add origin https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
-  - git add .
+  - git add -A
   - git commit -m "Foundation build to bower-foundation"
   - git push -fq origin master
   - echo -e "Done with magic\n"
