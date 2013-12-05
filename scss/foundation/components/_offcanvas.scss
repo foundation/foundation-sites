@@ -2,8 +2,9 @@
 @import "type";
 @import "top-bar";
 
-// OFF CANVAS VARIABLES
 // Off Canvas Tab Bar Variables
+$include-html-off-canvas-classes: $include-html-classes !default;
+
 $tabbar-bg: #333 !default;
 $tabbar-height: rem-calc(45) !default;
 $tabbar-line-height: $tabbar-height !default;
@@ -267,94 +268,97 @@ $menu-slide: "transform 500ms ease" !default;
 // DEFAULT CLASSES
 //
 
-.off-canvas-wrap { @include off-canvas-wrap; }
-.inner-wrap { @include inner-wrap; }
+@if $include-html-off-canvas-classes {
 
-nav.tab-bar { @include tab-bar-base; }
+  .off-canvas-wrap { @include off-canvas-wrap; }
+  .inner-wrap { @include inner-wrap; }
 
-section.left-small { @include left-small-section; }
-section.right-small { @include right-small-section; }
+  nav.tab-bar { @include tab-bar-base; }
 
-section.tab-bar-section { @include tab-bar-section; }
+  section.left-small { @include left-small-section; }
+  section.right-small { @include right-small-section; }
 
-// MENU BUTTON
-// This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
-a.menu-icon {
-  text-indent: $tabbar-menu-icon-text-indent;
-  width: $tabbar-height;
-  height: $tabbar-height;
-  display: block;
-  line-height: $tabbar-menu-icon-line-height;
-  padding: $tabbar-menu-icon-padding;
-  color: $topbar-menu-link-color;
-  position: relative;
+  section.tab-bar-section { @include tab-bar-section; }
 
-  // this is the actual hamburger icon
-  span {
-
-    position: absolute;
+  // MENU BUTTON
+  // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
+  a.menu-icon {
+    text-indent: $tabbar-menu-icon-text-indent;
+    width: $tabbar-height;
+    height: $tabbar-height;
     display: block;
-    width: $tabbar-hamburger-icon-width;
-    height: 0;
-    left: $tabbar-hamburger-icon-left;
-    top: $tabbar-hamburger-icon-top;
-    // margin-top: $tabbar-height / 4;
+    line-height: $tabbar-menu-icon-line-height;
+    padding: $tabbar-menu-icon-padding;
+    color: $topbar-menu-link-color;
+    position: relative;
 
-    @if $experimental {
-      -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-color,
-                          0 16px 0 1px $tabbar-menu-icon-color,
-                          0 22px 0 1px $tabbar-menu-icon-color;
+    // this is the actual hamburger icon
+    span {
+
+      position: absolute;
+      display: block;
+      width: $tabbar-hamburger-icon-width;
+      height: 0;
+      left: $tabbar-hamburger-icon-left;
+      top: $tabbar-hamburger-icon-top;
+      // margin-top: $tabbar-height / 4;
+
+      @if $experimental {
+        -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-color,
+                            0 16px 0 1px $tabbar-menu-icon-color,
+                            0 22px 0 1px $tabbar-menu-icon-color;
+      }
+        box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
+                            0 16px 0 1px $tabbar-menu-icon-color,
+                            0 22px 0 1px $tabbar-menu-icon-color;
     }
-      box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
-                          0 16px 0 1px $tabbar-menu-icon-color,
-                          0 22px 0 1px $tabbar-menu-icon-color;
-  }
-  
-  &:hover span {
-    @if $experimental {
-      -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-hover,
-                          0 16px 0 1px $tabbar-menu-icon-hover,
-                          0 22px 0 1px $tabbar-menu-icon-hover;
+    
+    &:hover span {
+      @if $experimental {
+        -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-hover,
+                            0 16px 0 1px $tabbar-menu-icon-hover,
+                            0 22px 0 1px $tabbar-menu-icon-hover;
+      }
+        box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
+                            0 16px 0 1px $tabbar-menu-icon-hover,
+                            0 22px 0 1px $tabbar-menu-icon-hover;
     }
-      box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
-                          0 16px 0 1px $tabbar-menu-icon-hover,
-                          0 22px 0 1px $tabbar-menu-icon-hover;
   }
-}
 
-.left-off-canvas-menu { @include left-off-canvas-menu; }
-.right-off-canvas-menu { @include right-off-canvas-menu; }
+  .left-off-canvas-menu { @include left-off-canvas-menu; }
+  .right-off-canvas-menu { @include right-off-canvas-menu; }
 
-ul.off-canvas-list { @include off-canvas-list; }
+  ul.off-canvas-list { @include off-canvas-list; }
 
 
-// ANIMATION CLASSES
-// These classes are added with JS and trigger the actual animation. 
-.move-right {
-  > .inner-wrap {
-    @include translate3d($off-canvas-width,0,0);
+  // ANIMATION CLASSES
+  // These classes are added with JS and trigger the actual animation. 
+  .move-right {
+    > .inner-wrap {
+      @include translate3d($off-canvas-width,0,0);
+    }
+    a.exit-off-canvas { @include back-link;}
   }
-  a.exit-off-canvas { @include back-link;}
-}
 
-.move-left {
-  > .inner-wrap {
-    @include translate3d(-($off-canvas-width),0,0);
+  .move-left {
+    > .inner-wrap {
+      @include translate3d(-($off-canvas-width),0,0);
+
+    }
+    a.exit-off-canvas { @include back-link; }
+  }
+
+  // IE9 HAX
+  // Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
+  .lt-ie10 {
+    
+    // move off canvas menus off the viewport
+    .left-off-canvas-menu { left: -($off-canvas-width); } 
+    .right-off-canvas-menu { right: -($off-canvas-width); }
+
+    // Snap them in place
+    .move-left > .inner-wrap { right: $off-canvas-width; }
+    .move-right > .inner-wrap { left: $off-canvas-width; }
 
   }
-  a.exit-off-canvas { @include back-link; }
-}
-
-// IE9 HAX
-// Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
-.lt-ie10 {
-  
-  // move off canvas menus off the viewport
-  .left-off-canvas-menu { left: -($off-canvas-width); } 
-  .right-off-canvas-menu { right: -($off-canvas-width); }
-
-  // Snap them in place
-  .move-left > .inner-wrap { right: $off-canvas-width; }
-  .move-right > .inner-wrap { left: $off-canvas-width; }
-
 }
