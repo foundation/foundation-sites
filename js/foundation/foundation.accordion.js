@@ -8,7 +8,8 @@
 
     settings : {
       active_class: 'active',
-      toggleable: true
+      toggleable: true,
+      multi_expand: false
     },
 
     init : function (scope, method, options) {
@@ -26,10 +27,13 @@
         e.preventDefault();
 
         if (active[0] == target[0] && settings.toggleable) {
+        if (settings.toggleable && $.inArray(target[0], active) !== -1) {
           return target.toggleClass(settings.active_class);
         }
 
-        siblings.removeClass(settings.active_class);
+        if (!settings.multi_expand) {
+          siblings.removeClass(settings.active_class);
+        }
         target.addClass(settings.active_class);
       });
     },
