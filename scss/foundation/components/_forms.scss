@@ -13,7 +13,7 @@ $form-spacing: rem-calc(16) !default;
 $form-label-pointer: pointer !default;
 $form-label-font-size: rem-calc(14) !default;
 $form-label-font-weight: normal !default;
-$form-label-font-color: lighten(#000, 30%) !default;
+$form-label-font-color: scale-color(#000, $lightness: 30%) !default;
 $form-label-bottom-margin: rem-calc(8) !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
@@ -309,14 +309,14 @@ $select-bg-color: #fafafa;
       /* Styles for required inputs */
       small {
         text-transform: capitalize;
-        color: lighten($form-label-font-color, 10%);
+        color: scale-color($form-label-font-color, $lightness: 15%);
       }
     }
 
     select {
       -webkit-appearance: none !important;
-      background: 
-        $select-bg-color 
+      background:
+        $select-bg-color
         url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
       background-position-x: 97%;
       background-position-y: center;
@@ -326,8 +326,8 @@ $select-bg-color: #fafafa;
       @include radius(0);
       &.radius { @include radius($global-radius); }
       &:hover {
-        background: 
-          darken($select-bg-color, 3%) 
+        background:
+          darken($select-bg-color, 3%)
           url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
         background-position-x: 97%;
         background-position-y: center;

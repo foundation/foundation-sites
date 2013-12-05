@@ -70,7 +70,7 @@ $callout-panel-link-color: $primary-color !default;
     .panel { @include panel;
 
       &.callout {
-        @include panel(lighten($primary-color, 60%));
+        @include panel(scale-color($primary-color, $lightness: 94%));
         a {
           color: $callout-panel-link-color;
         }

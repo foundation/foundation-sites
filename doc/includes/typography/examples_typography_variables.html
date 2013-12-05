@@ -22,14 +22,14 @@ $h6-font-size: 1rem;
 
 // These control how subheaders are styled
 $subheader-line-height: 1.4;
-$subheader-font-color: lighten($header-font-color, 30%);
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%);
 $subheader-font-weight: 300;
 $subheader-top-margin: .2rem;
 $subheader-bottom-margin: .5rem;
 
 // A general small styling
 $small-font-size: 60%;
-$small-font-color: lighten($header-font-color, 30%);
+$small-font-color: scale-color($header-font-color, $lightness: 35%);
 
 // We use these to style paragraphs
 $paragraph-font-family: inherit;
@@ -67,11 +67,11 @@ $definition-list-header-margin-bottom: .3rem;
 $definition-list-margin-bottom: rem-calc(12);
 
 // We use these to style blockquotes
-$blockquote-font-color: lighten($header-font-color, 30%);
+$blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
 $blockquote-padding: rem-calc(9 20 0 19);
 $blockquote-border: 1px solid #ddd;
 $blockquote-cite-font-size: rem-calc(13);
-$blockquote-cite-font-color: lighten($header-font-color, 20%);
+$blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%);
 $blockquote-cite-link-color: $blockquote-cite-font-color;
 
 // Acronym styles

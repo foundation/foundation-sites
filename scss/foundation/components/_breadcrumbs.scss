@@ -6,7 +6,7 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use this to set the background color for the breadcrumb container.
-$crumb-bg: lighten($secondary-color, 5%) !default;
+$crumb-bg: scale-color($secondary-color, $lightness: 55%) !default;
 
 // We use these to set the padding around the breadcrumbs.
 $crumb-padding: rem-calc(9 14 9) !default;

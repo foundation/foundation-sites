@@ -12,7 +12,7 @@ $tabbar-color: #FFF !default;
 $tabbar-middle-padding: 0 rem-calc(10) !default;
 
 // Off Canvas Divider Styles
-$tabbar-right-section-border: solid 1px lighten($tabbar-bg, 10%) !default;
+$tabbar-right-section-border: solid 1px scale-color($tabbar-bg, $lightness: 13%) !default;
 $tabbar-left-section-border: solid 1px darken($tabbar-bg, 10%) !default;
 
 // Off Canvas Tab Bar Headers
@@ -31,7 +31,7 @@ $off-canvas-label-color: #999 !default;
 $off-canvas-label-text-transform: uppercase !default;
 $off-canvas-label-font-weight: bold !default;
 $off-canvas-label-bg: #444 !default;
-$off-canvas-label-border-top: 1px solid lighten(#444, 10%) !default;
+$off-canvas-label-border-top: 1px solid scale-color(#444, $lightness: 14%) !default;
 $off-canvas-label-border-bottom: none !default;
 $off-canvas-label-margin:0 !default;
 $off-canvas-link-padding: rem-calc(10, 15) !default;
@@ -123,7 +123,7 @@ $menu-slide: "transform 500ms ease" !default;
 
 // TAB BAR
 // This is the tab bar base
-@mixin tab-bar-base { 
+@mixin tab-bar-base {
   @include kill-flicker;
 
   // base styles
@@ -158,7 +158,7 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin left-small-section {
   @include tabbar-small-section;
   border-right: $tabbar-left-section-border;
-  box-shadow: 1px 0 0 lighten($tabbar-bg, 10%);
+  box-shadow: 1px 0 0 scale-color($tabbar-bg, $lightness: 13%);
   left:0;
 }
 
@@ -180,7 +180,7 @@ $menu-slide: "transform 500ms ease" !default;
   }
 
   // still need to make these non-presntational
-  &.left {     
+  &.left {
     left: 0;
     right: $tabbar-height;
   }
@@ -254,7 +254,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include off-canvas-menu;
   @include translate3d(-100%,0,0);
-  * { @include kill-flicker; } 
+  * { @include kill-flicker; }
 }
 @mixin right-off-canvas-menu {
   @include kill-flicker;
@@ -312,7 +312,7 @@ $menu-slide: "transform 500ms ease" !default;
                             0 16px 0 1px $tabbar-menu-icon-color,
                             0 22px 0 1px $tabbar-menu-icon-color;
     }
-    
+
     &:hover span {
       @if $experimental {
         -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-hover,
@@ -332,7 +332,7 @@ $menu-slide: "transform 500ms ease" !default;
 
 
   // ANIMATION CLASSES
-  // These classes are added with JS and trigger the actual animation. 
+  // These classes are added with JS and trigger the actual animation.
   .move-right {
     > .inner-wrap {
       @include translate3d($off-canvas-width,0,0);
@@ -351,9 +351,9 @@ $menu-slide: "transform 500ms ease" !default;
   // IE9 HAX
   // Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
   .lt-ie10 {
-    
+
     // move off canvas menus off the viewport
-    .left-off-canvas-menu { left: -($off-canvas-width); } 
+    .left-off-canvas-menu { left: -($off-canvas-width); }
     .right-off-canvas-menu { right: -($off-canvas-width); }
 
     // Snap them in place
