@@ -22,14 +22,14 @@ $sub-nav-font-color: #999 !default;
 $sub-nav-font-weight: normal !default;
 $sub-nav-text-decoration: none !default;
 $sub-nav-border-radius: 3px !default;
-$sub-nav-font-color-hover: darken($sub-nav-font-color, 15%) !default;
+$sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%) !default;
 
 
 // We use these to control the active item styles
 
 $sub-nav-active-font-weight: normal !default;
 $sub-nav-active-bg: $primary-color !default;
-$sub-nav-active-bg-hover: darken($sub-nav-active-bg, 5%) !default;
+$sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%) !default;
 $sub-nav-active-color: #fff !default;
 $sub-nav-active-padding: rem-calc(3 16) !default;
 $sub-nav-active-cursor: default !default;
@@ -51,7 +51,7 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
   $font-color:$sub-nav-font-color,
   $font-size:$sub-nav-font-size,
   $active-bg:$sub-nav-active-bg,
-  $active-bg-hover:darken($active-bg, 5%)) {
+  $active-bg-hover:scale-color(#008CBA, $lightness: 5%)) {
   display: block;
   width: auto;
   overflow: hidden;

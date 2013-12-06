@@ -16,7 +16,7 @@ $side-nav-list-margin: rem-calc(0 0 7 0) !default;
 
 // We use these to control link styles.
 $side-nav-link-color: $primary-color !default;
-$side-nav-link-color-active: lighten(#000, 30%) !default;
+$side-nav-link-color-active: scale-color(#000, $lightness: 30%) !default;
 $side-nav-font-size: rem-calc(14) !default;
 $side-nav-font-weight: normal !default;
 $side-nav-font-family: $body-font-family !default;
@@ -27,7 +27,7 @@ $side-nav-active-font-family: $side-nav-font-family !default;
 // We use these to control border styles
 $side-nav-divider-size: 1px !default;
 $side-nav-divider-style: solid !default;
-$side-nav-divider-color: darken(#fff, 10%) !default;
+$side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
 
 
 //
@@ -41,8 +41,8 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
 // $font-size - Font size of nav items. Default: $side-nav-font-size.
 // $link-color - Color of navigation links. Default: $side-nav-link-color.
 @mixin side-nav(
-  $divider-color:$side-nav-divider-color, 
-  $font-size:$side-nav-font-size, 
+  $divider-color:$side-nav-divider-color,
+  $font-size:$side-nav-font-size,
   $link-color:$side-nav-link-color) {
   display: block;
   margin: 0;

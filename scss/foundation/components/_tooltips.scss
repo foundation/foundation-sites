@@ -8,7 +8,7 @@ $include-html-tooltip-classes: $include-html-classes !default;
 $has-tip-border-bottom: dotted 1px #ccc !default;
 $has-tip-font-weight: bold !default;
 $has-tip-font-color: #333 !default;
-$has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%) !default;
+$has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%) !default;
 $has-tip-font-color-hover: $primary-color !default;
 $has-tip-cursor-type: help !default;
 
