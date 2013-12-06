@@ -121,6 +121,7 @@
           } else {
             topbar.addClass('fixed');
             topbar.parent().addClass('expanded');
+            $('body').addClass('f-topbar-fixed');
           }
         }
       }
