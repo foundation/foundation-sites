@@ -3,13 +3,13 @@
 $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-$panel-bg: darken(#fff, 5%);
+$panel-bg: scale-color(#fff, $lightness: -5%);
 $panel-border-style: solid;
 $panel-border-size: 1px;
 
 // We use this % to control how much we darken things on hover
-$panel-function-factor: 10%;
-$panel-border-color: darken($panel-bg, $panel-function-factor);
+$panel-function-factor: -11%;
+$panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor);
 
 // We use these to set default inner padding and bottom margin
 $panel-margin-bottom: rem-calc(20);

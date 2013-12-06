@@ -19,9 +19,9 @@ $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
 $input-font-size: rem-calc(14) !default;
 $input-bg-color: #fff !default;
-$input-focus-bg-color: darken(#fff, 2%) !default;
-$input-border-color: darken(#fff, 20%) !default;
-$input-focus-border-color: darken(#fff, 40%) !default;
+$input-focus-bg-color: scale-color(#fff, $lightness: -2%) !default;
+$input-border-color: scale-color(#fff, $lightness: -20%) !default;
+$input-focus-border-color: scale-color(#fff, $lightness: -40%) !default;
 $input-border-style: solid !default;
 $input-border-width: 1px !default;
 $input-disabled-bg: #ddd !default;
@@ -41,8 +41,8 @@ $legend-font-weight: bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
 // We use these to style the prefix and postfix input elements
-$input-prefix-bg: darken(#fff, 5%) !default;
-$input-prefix-border-color: darken(#fff, 20%) !default;
+$input-prefix-bg: scale-color(#fff, $lightness: -5%) !default;
+$input-prefix-border-color: scale-color(#fff, $lightness: -20%) !default;
 $input-prefix-border-size: 1px !default;
 $input-prefix-border-type: solid !default;
 $input-prefix-overflow: hidden !default;
@@ -179,7 +179,7 @@ $select-bg-color: #fafafa;
 // @MIXIN
 //
 // We use this mixin to create prefix label styles
-// $bg - Default:$input-prefix-bg || darken(#fff, 5%) !default;
+// $bg - Default:$input-prefix-bg || scale-color(#fff, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default:false
 //
 @mixin prefix($bg:$input-prefix-bg,$is-button:false) {
@@ -187,7 +187,7 @@ $select-bg-color: #fafafa;
   @if $bg {
     $bg-lightness: lightness($bg);
     background: $bg;
-    border-color: darken($bg, 10%);
+    border-color: scale-color($bg, $lightness: -11%);
     border-#{$opposite-direction}: none;
 
     // Control the font color based on background brightness
@@ -210,14 +210,14 @@ $select-bg-color: #fafafa;
 // @MIXIN
 //
 // We use this mixin to create postfix label styles
-// $bg - Default:$input-prefix-bg || darken(#fff, 5%) !default;
+// $bg - Default:$input-prefix-bg || scale-color(#fff, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default: false
 @mixin postfix($bg:$input-prefix-bg, $is-button:false) {
 
   @if $bg {
     $bg-lightness: lightness($bg);
     background: $bg;
-    border-color: darken($bg, 15%);
+    border-color: scale-color($bg, $lightness: -16%);
     border-#{$default-float}: none;
 
     // Control the font color based on background brightness
@@ -327,7 +327,7 @@ $select-bg-color: #fafafa;
       &.radius { @include radius($global-radius); }
       &:hover {
         background:
-          darken($select-bg-color, 3%)
+          scale-color($select-bg-color, $lightness: -3%)
           url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
         background-position-x: 97%;
         background-position-y: center;
@@ -336,7 +336,7 @@ $select-bg-color: #fafafa;
     }
     @-moz-document url-prefix() {
       select { background: $select-bg-color; }
-      select:hover { background: darken($select-bg-color, 3%); }
+      select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
     }
     /* Attach elements to the beginning or end of an input */
     .prefix,

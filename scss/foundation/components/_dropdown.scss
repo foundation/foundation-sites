@@ -17,7 +17,7 @@ $f-dropdown-bg: #fff !default;
 // We use this to set the border styles for dropdowns.
 $f-dropdown-border-style: solid !default;
 $f-dropdown-border-width: 1px !default;
-$f-dropdown-border-color: darken(#fff, 20%) !default;
+$f-dropdown-border-color: scale-color(#fff, $lightness: -20%) !default;
 
 // We use these to style the triangle pip.
 $f-dropdown-triangle-size: 6px !default;

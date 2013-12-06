@@ -27,7 +27,7 @@ $side-nav-active-font-family: $side-nav-font-family !default;
 // We use these to control border styles
 $side-nav-divider-size: 1px !default;
 $side-nav-divider-style: solid !default;
-$side-nav-divider-color: darken(#fff, 10%) !default;
+$side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
 
 
 //

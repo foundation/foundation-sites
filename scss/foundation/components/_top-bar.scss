@@ -37,7 +37,7 @@ $topbar-link-font-size: rem-calc(13) !default;
 $topbar-link-hover-lightness: -10% !default; // Darken by 10%
 $topbar-link-bg-hover: #272727 !default;
 $topbar-link-bg-active: $primary-color !default;
-$topbar-link-bg-active-hover: darken($primary-color, 5%) !default;
+$topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !default;
 $topbar-link-font-family: $body-font-family !default;
 
 $topbar-button-font-size: 0.75rem;
@@ -65,7 +65,7 @@ $topbar-media-query: $medium-up !default;
 
 // Divider Styles
 $topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%) !default;
-$topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%) !default;
+$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%) !default;
 
 // Sticky Class
 $topbar-sticky-class: ".sticky" !default;
@@ -296,25 +296,25 @@ meta.foundation-mq-topbar {
              padding-#{$opposite-direction}: $topbar-height / 3;
              padding-#{$default-float}: $topbar-height / 3;
             &:hover {
-              background: darken($primary-color, 10%);
+              background: scale-color($primary-color, $lightness: -27%);
             }
           }
           &.button.secondary {
             background: $secondary-color;
             &:hover {
-              background: darken($secondary-color, 10%);
+              background: scale-color($secondary-color, $lightness: -11%);
             }
           }
           &.button.success {
             background: $success-color;
             &:hover {
-              background: darken($success-color, 10%);
+              background: scale-color($success-color, $lightness: -21%);
             }
           }
           &.button.alert {
             background: $alert-color;
             &:hover {
-              background: darken($alert-color, 10%);
+              background: scale-color($alert-color, $lightness: -18%);
             }
           }
 

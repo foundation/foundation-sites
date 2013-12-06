@@ -43,14 +43,14 @@ $paragraph-aside-font-style: italic;
 $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style code tags
-$code-color: darken($alert-color, 15%);
+$code-color: scale-color($alert-color, $lightness: -27%);
 $code-font-family: Consolas, Liberation Mono, Courier, monospace;
 $code-font-weight: bold;
 
 // We use these to style anchors
 $anchor-text-decoration: none;
 $anchor-font-color: $primary-color;
-$anchor-font-color-hover: darken($primary-color, 5%);
+$anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
 
 // We use these to style the hr element
 $hr-border-width: 1px;

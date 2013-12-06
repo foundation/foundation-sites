@@ -13,7 +13,7 @@ $tabbar-middle-padding: 0 rem-calc(10) !default;
 
 // Off Canvas Divider Styles
 $tabbar-right-section-border: solid 1px scale-color($tabbar-bg, $lightness: 13%) !default;
-$tabbar-left-section-border: solid 1px darken($tabbar-bg, 10%) !default;
+$tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -50%) !default;
 
 // Off Canvas Tab Bar Headers
 $tabbar-header-color: #FFF !default;
@@ -36,11 +36,11 @@ $off-canvas-label-border-bottom: none !default;
 $off-canvas-label-margin:0 !default;
 $off-canvas-link-padding: rem-calc(10, 15) !default;
 $off-canvas-link-color: rgba(#FFF, 0.7) !default;
-$off-canvas-link-border-bottom: 1px solid darken($off-canvas-bg, 5%) !default;
+$off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: -25%) !default;
 
 // Off Canvas Menu Icon Variables
 $tabbar-menu-icon-color: #FFF !default;
-$tabbar-menu-icon-hover: darken($tabbar-menu-icon-color, 30%) !default;
+$tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%) !default;
 
 $tabbar-menu-icon-text-indent: rem-calc(35) !default;
 $tabbar-menu-icon-width: $tabbar-height !default;
@@ -165,7 +165,7 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin right-small-section {
   @include tabbar-small-section;
   border-left: $tabbar-right-section-border;
-  box-shadow: -1px 0 0 darken($tabbar-bg, 10%);
+  box-shadow: -1px 0 0 scale-color($tabbar-bg, $lightness: -50%);
   right:0;
 }
 

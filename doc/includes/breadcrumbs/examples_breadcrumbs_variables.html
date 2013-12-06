@@ -10,10 +10,10 @@ $crumb-padding: rem-calc(9 14 9);
 $crumb-side-padding: rem-calc(12);
 
 // We use these to control border styles.
-$crumb-function-factor: 10%;
+$crumb-function-factor: -10%;
 $crumb-border-size: 1px;
 $crumb-border-style: solid;
-$crumb-border-color: darken($crumb-bg, $crumb-function-factor);
+$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor);
 $crumb-radius: $global-radius;
 
 // We use these to set various text styles for breadcrumbs.

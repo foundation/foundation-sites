@@ -12,7 +12,7 @@
 $include-html-form-classes: $include-html-classes !default;
 
 // Controlling border styles and background colors for the switch container
-$switch-border-color: darken(#fff, 20%) !default;
+$switch-border-color: scale-color(#fff, $lightness: -20%) !default;
 $switch-border-style: solid !default;
 $switch-border-width: 1px !default;
 $switch-bg: #fff !default;
@@ -33,8 +33,8 @@ $switch-label-side-padding: 6px !default;
 
 // We use these to style the switch-paddle
 $switch-paddle-bg: #fff !default;
-$switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%) !default;
-$switch-paddle-border-color: darken($switch-paddle-bg, 35%) !default;
+$switch-paddle-fade-to-color: scale-color($switch-paddle-bg, $lightness: -10%) !default;
+$switch-paddle-border-color: scale-color($switch-paddle-bg, $lightness: -35%) !default;
 $switch-paddle-border-width: 1px !default;
 $switch-paddle-border-style: solid !default;
 $switch-paddle-transition-speed: .1s !default;
@@ -206,13 +206,13 @@ $switch-label-outline: 1px dotted #888 !default;
     border-color: $switch-border-color;
 
     span:last-child {
-      border-color: darken($paddle-bg, 30%);
+      border-color: scale-color($paddle-bg, $lightness: -30%);
       background: $paddle-bg;
       @if $experimental {
-        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
-        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+        background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
+        background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
       }
-      background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+      background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
 
       // Building the alternating colored sides of the switch
       @if $experimental {
@@ -232,10 +232,10 @@ $switch-label-outline: 1px dotted #888 !default;
       span:last-child {
         background: $paddle-bg;
         @if $experimental {
-          background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
-          background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+          background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
+          background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
         }
-        background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
       }
     }
 

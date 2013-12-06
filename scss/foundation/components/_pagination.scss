@@ -19,7 +19,7 @@ $pagination-li-margin: rem-calc(5) !default;
 // We use these for the pagination anchor links
 $pagination-link-pad: rem-calc(1 10 1) !default;
 $pagination-link-font-color: #999 !default;
-$pagination-link-active-bg: darken(#fff, 10%) !default;
+$pagination-link-active-bg: scale-color(#fff, $lightness: -10%) !default;
 
 // We use these for disabled anchor links
 $pagination-link-unavailable-cursor: default !default;
