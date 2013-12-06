@@ -304,9 +304,9 @@ $menu-slide: "transform 500ms ease" !default;
       // margin-top: $tabbar-height / 4;
 
       @if $experimental {
-        -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-color,
-                            0 16px 0 1px $tabbar-menu-icon-color,
-                            0 22px 0 1px $tabbar-menu-icon-color;
+        -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-color,
+                            1px 16px 1px 1px $tabbar-menu-icon-color,
+                            1px 22px 1px 1px $tabbar-menu-icon-color;
       }
         box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
                             0 16px 0 1px $tabbar-menu-icon-color,
@@ -315,9 +315,9 @@ $menu-slide: "transform 500ms ease" !default;
     
     &:hover span {
       @if $experimental {
-        -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-hover,
-                            0 16px 0 1px $tabbar-menu-icon-hover,
-                            0 22px 0 1px $tabbar-menu-icon-hover;
+        -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-hover,
+                            1px 16px 1px 1px $tabbar-menu-icon-hover,
+                            1px 22px 1px 1px $tabbar-menu-icon-hover;
       }
         box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
                             0 16px 0 1px $tabbar-menu-icon-hover,
