@@ -14,7 +14,7 @@ To get going with Foundation you can:
 
 ## Documentation
 
-Foundation uses [Assemble.io](http://assemble.io) and [Grunt](http://gruntjs.com/) to generate it's [documentation pages](http://foundation.zurb.com/docs). Documentation can also be run from your local computer:
+Foundation uses [Assemble.io](http://assemble.io) and [Grunt](http://gruntjs.com/) to generate its [documentation pages](http://foundation.zurb.com/docs). Documentation can also be run from your local computer:
 
 ### View documentation locally
 
