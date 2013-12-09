@@ -16,6 +16,7 @@ $side-nav-list-margin: rem-calc(0 0 7 0) !default;
 
 // We use these to control link styles.
 $side-nav-link-color: $primary-color !default;
+$side-nav-link-color-hover: darken($primary-color,5%) !default;
 $side-nav-link-color-active: lighten(#000, 30%) !default;
 $side-nav-font-size: rem-calc(14) !default;
 $side-nav-font-weight: normal !default;
@@ -40,10 +41,12 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
 // $divider-color - Border color of divider. Default: $side-nav-divider-color.
 // $font-size - Font size of nav items. Default: $side-nav-font-size.
 // $link-color - Color of navigation links. Default: $side-nav-link-color.
+// $link-color-hover - Color of navigation links when hovered. Default: $side-nav-link-color-hover.
 @mixin side-nav(
   $divider-color:$side-nav-divider-color, 
   $font-size:$side-nav-font-size, 
-  $link-color:$side-nav-link-color) {
+  $link-color:$side-nav-link-color,
+  $link-color-hover:$side-nav-link-color-hover) {
   display: block;
   margin: 0;
   padding: $side-nav-padding;
@@ -58,6 +61,9 @@ $side-nav-divider-color: darken(#fff, 10%) !default;
     a {
       display: block;
       color: $link-color;
+      
+      &:hover,
+      &:focus { color: $link-color-hover; }
     }
 
     &.active > a:first-child {
