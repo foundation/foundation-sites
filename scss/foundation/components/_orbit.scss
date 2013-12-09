@@ -244,6 +244,7 @@ $preloader-class: "preloader" !default;
         height: 60px;
         line-height: 50px;
         color: white;
+        background-color: $orbit-nav-bg;
         text-indent: -9999px !important;
         z-index: 10;
 
