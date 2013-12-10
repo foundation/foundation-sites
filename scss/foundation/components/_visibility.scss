@@ -366,6 +366,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .hide-for-medium-only,
     .show-for-medium-up,
     .show-for-large-up,
+    .hide-for-large-only,
     .show-for-xlarge,
     .show-for-xlarge-up,
     .show-for-xlarge-only,
@@ -385,7 +386,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .show-for-xxlarge-up,
     .show-for-xxlarge-only { display: none !important; }
 
-    /* Specific visilbity for tables */
+    /* Specific visibility for tables */
     table {
       &.hide-for-small,
       &.hide-for-small-only,
@@ -394,6 +395,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-large-only,
       &.show-for-xlarge,
       &.show-for-xlarge-up,
       &.show-for-xlarge-only,
@@ -408,6 +410,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-large-only,
       &.show-for-xlarge,
       &.show-for-xlarge-up,
       &.show-for-xlarge-only,
@@ -422,6 +425,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-large-only,
       &.show-for-xlarge,
       &.show-for-xlarge-up,
       &.show-for-xlarge-only,
@@ -436,6 +440,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-large-only,
       &.show-for-xlarge,
       &.show-for-xlarge-up,
       &.show-for-xlarge-only,
@@ -451,6 +456,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-large-only,
       &.show-for-xlarge,
       &.show-for-xlarge-up,
       &.show-for-xlarge-only,
@@ -468,6 +474,8 @@ $include-html-visibility-classes: $include-html-classes !default;
     .hide-for-medium-only,
     .show-for-medium-up,
     .show-for-large-up,
+    .hide-for-large-only,
+    .hide-for-xlarge-only,
     .show-for-xlarge-up,
     .show-for-xxlarge-up,
     .show-for-xxlarge-only { display: inherit !important; }
@@ -493,6 +501,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-xlarge-only,
       &.show-for-xlarge-up,
       &.show-for-xxlarge-up,
       &.show-for-xxlarge-only { display: table; }
@@ -505,6 +514,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-xlarge-only,
       &.show-for-xlarge-up,
       &.show-for-xxlarge-up,
       &.show-for-xxlarge-only { display: table-header-group !important; }
@@ -517,6 +527,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-xlarge-only,
       &.show-for-xlarge-up,
       &.show-for-xxlarge-up,
       &.show-for-xxlarge-only { display: table-row-group !important; }
@@ -529,6 +540,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-xlarge-only,
       &.show-for-xlarge-up,
       &.show-for-xxlarge-up,
       &.show-for-xxlarge-only { display: table-row !important; }
@@ -542,6 +554,7 @@ $include-html-visibility-classes: $include-html-classes !default;
       &.hide-for-medium-only,
       &.show-for-medium-up,
       &.show-for-large-up,
+      &.hide-for-xlarge-only,
       &.show-for-xlarge-up,
       &.show-for-xxlarge-up,
       &.show-for-xxlarge-only { display: table-cell !important; }
