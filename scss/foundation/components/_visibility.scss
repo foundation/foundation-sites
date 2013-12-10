@@ -273,7 +273,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .show-for-xxlarge-up,
     .show-for-xxlarge-only { display: none !important; }
 
-    /* Specific visilbity for tables */
+    /* Specific visibility for tables */
     table {
       &.hide-for-small,
       &.hide-for-small-only,
@@ -492,7 +492,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .hide-for-xxlarge-up,
     .hide-for-xxlarge-only { display: none !important; }
 
-    /* Specific visilbity for tables */
+    /* Specific visibility for tables */
     table {
       &.hide-for-small,
       &.hide-for-small-only,
@@ -568,7 +568,7 @@ $include-html-visibility-classes: $include-html-classes !default;
   .hide-for-landscape,
   .show-for-portrait { display: none !important; }
 
-  /* Specific visilbity for tables */
+  /* Specific visibility for tables */
   table {
     &.hide-for-landscape,
     &.show-for-portrait { display: table; }
