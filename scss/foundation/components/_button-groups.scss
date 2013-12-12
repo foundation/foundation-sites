@@ -37,6 +37,12 @@ $button-group-border-width: 1px !default;
     border-color: rgba(255, 255, 255, 0.5);  
   }
 
+  &:last-child { 
+    button, .button {
+      border-#{$opposite-direction}: 0; 
+    }
+  }
+
   // We use this to control the flow, or remove those styles completely.
   @if $float {
     margin: 0;
