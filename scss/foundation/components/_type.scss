@@ -20,6 +20,14 @@ $h4-font-size: rem-calc(23) !default;
 $h5-font-size: rem-calc(18) !default;
 $h6-font-size: 1rem !default;
 
+// We use these to control header font letter spacing (or tracking)
+$h1-letter-spacing: normal !default;
+$h2-letter-spacing: normal !default;
+$h3-letter-spacing: normal !default;
+$h4-letter-spacing: normal !default;
+$h5-letter-spacing: normal !default;
+$h6-letter-spacing: normal !default;
+
 // These control how subheaders are styled.
 $subheader-line-height: 1.4 !default;
 $subheader-font-color: lighten($header-font-color, 30%) !default;
@@ -196,12 +204,30 @@ $microformat-abbr-font-decoration: none !default;
       }
     }
 
-    h1 { font-size: $h1-font-size - rem-calc(10); }
-    h2 { font-size: $h2-font-size - rem-calc(10); }
-    h3 { font-size: $h3-font-size - rem-calc(5); }
-    h4 { font-size: $h4-font-size - rem-calc(5); }
-    h5 { font-size: $h5-font-size; }
-    h6 { font-size: $h6-font-size; }
+    h1 { 
+        font-size: $h1-font-size - rem-calc(10);
+        letter-spacing: $h1-letter-spacing;
+       }
+    h2 { 
+        font-size: $h2-font-size - rem-calc(10);
+        letter-spacing: $h2-letter-spacing;
+       }
+    h3 { 
+        font-size: $h3-font-size - rem-calc(5);
+        letter-spacing: $h3-letter-spacing;
+       }
+    h4 { 
+        font-size: $h4-font-size - rem-calc(5);
+        letter-spacing: $h4-letter-spacing;
+       }
+    h5 { 
+        font-size: $h5-font-size;
+        letter-spacing: $h5-letter-spacing;
+       }
+    h6 { 
+        font-size: $h6-font-size;
+        letter-spacing: $h6-letter-spacing;
+       }
 
     .subheader { @include subheader; }
 
