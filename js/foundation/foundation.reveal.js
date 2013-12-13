@@ -219,13 +219,14 @@
       if (css) {
         var settings = el.data('reveal-init');
         if (el.parent('body').length === 0) {
-          var placeholder = el.wrap('<div style="display: none;" />').parent();
+          var placeholder = el.wrap('<div style="display: none;" />').parent(),
+              rootElement = this.settings.rootElement || 'body';;
           el.on('closed.fndtn.reveal.wrapped', function() {
             el.detach().appendTo(placeholder);
             el.unwrap().unbind('closed.fndtn.reveal.wrapped');
           });
 
-          el.detach().appendTo('body');
+          el.detach().appendTo(rootElement);
         }
 
         if (/pop/i.test(settings.animation)) {
