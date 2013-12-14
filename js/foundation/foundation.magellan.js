@@ -11,10 +11,10 @@
       threshold: 0
     },
 
-    init : function (scope, options) {
+    init : function (scope, method, options) {
       this.fixed_magellan = $("[data-magellan-expedition]");
       this.set_threshold();
-      this.set_active_class(options);
+      this.set_active_class(method);
       this.last_destination = $('[data-magellan-destination]').last();
       this.events();
     },
