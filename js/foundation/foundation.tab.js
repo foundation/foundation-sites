@@ -25,7 +25,12 @@
             target = $('#' + this.href.split('#')[1]),
             siblings = tab.siblings(),
             settings = tabs.data('tab-init');
-
+        
+        // allow usage of data-tab-content attribute instead of href
+        if ($(this).data('tab-content')) {
+          target = $('#' + $(this).data('tab-content').split('#')[1]);
+        }
+        
         tab.addClass(settings.active_class).trigger('opened');
         siblings.removeClass(settings.active_class);
         target.siblings().removeClass(settings.active_class).end().addClass(settings.active_class);
