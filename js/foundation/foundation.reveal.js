@@ -144,6 +144,12 @@
           this.toggle_bg(modal);
         }
 
+        if (typeof ajax_settings === 'string') {
+          ajax_settings = {
+            url: ajax_settings
+          };
+        }
+
         if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
           if (open_modal.length > 0) {
             var open_modal_settings = open_modal.data('reveal-init');

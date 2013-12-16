@@ -381,7 +381,7 @@
             should_bind_events = !S(this).data(this.name + '-init');
 
         if (typeof method === 'string') {
-          return this[method].call(this);
+          return this[method].call(this, options);
         }
 
         if (S(this.scope).is('[data-' + this.name +']')) {
