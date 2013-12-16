@@ -147,7 +147,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     @media #{$medium-up} {
 
       .#{$reveal-modal-class} {
-        @include reveal-modal-style(false, rem-calc(30), false, $box-shadow: false, $top-offset: rem-calc(100));
+        @include reveal-modal-style(false, $reveal-modal-padding * 1.5, false, $box-shadow: false, $top-offset: rem-calc(100));
 
         &.tiny  { @include reveal-modal-base(false, 30%); }
         &.small { @include reveal-modal-base(false, 40%); }
