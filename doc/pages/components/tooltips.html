@@ -78,7 +78,7 @@ It's easy to configure tooltips using our JavaScript. You can use data-attribute
 ```html
 <script src="js/jquery.js"></script>
 <script src="js/foundation.js"></script>
-<script src="js/foundation.tooltips.js"></script>
+<script src="js/foundation.tooltip.js"></script>
 ```
 {{/markdown}}
 
@@ -113,6 +113,7 @@ $(document).foundation({
       return '<span data-selector="' + selector + '" class="'
         + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
         + '">' + content + '<span class="nub"></span></span>';
+    }
   }
 });
 ```
