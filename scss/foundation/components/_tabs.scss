@@ -9,6 +9,7 @@ $include-html-tabs-classes: $include-html-classes !default;
 $tabs-navigation-padding: rem-calc(16) !default;
 $tabs-navigation-bg-color: #efefef !default;
 $tabs-navigation-hover-bg-color: darken($tabs-navigation-bg-color, 5%) !default;
+$tabs-navigation-active-bg-color: #fff !default;
 $tabs-navigation-font-color: #222 !default;
 $tabs-navigation-font-size: rem-calc(16) !default;
 $tabs-navigation-font-family: $body-font-family !default;
@@ -40,7 +41,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
           font-size: $tabs-navigation-font-size; 
           &:hover { background: $tabs-navigation-hover-bg-color; }
         }
-        &.active a { background: #fff; }
+        &.active a { background: $tabs-navigation-active-bg-color; }
       }
       &.radius {
         dd:first-child {
