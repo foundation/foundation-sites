@@ -402,6 +402,11 @@ $select-bg-color: #fafafa !default;
           @include single-transition(all, 0.15s, linear);
       }
     }
+    
+    /* Add height value for select elements to match text input height */
+    select {
+      height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+    }
 
     /* Adjust margin for form elements below */
     input[type="file"],
