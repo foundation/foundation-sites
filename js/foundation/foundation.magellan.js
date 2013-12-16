@@ -13,6 +13,9 @@
 
     init : function (scope, method, options) {
       this.fixed_magellan = $("[data-magellan-expedition]");
+      this.magellan_placeholder = $('<div></div>').css({
+        height: this.fixed_magellan.outerHeight(true)
+      }).hide().insertAfter(this.fixed_magellan);
       this.set_threshold();
       this.set_active_class(method);
       this.last_destination = $('[data-magellan-destination]').last();
@@ -68,9 +71,11 @@
               if (fixed_position) {
                 $expedition.addClass('fixed');
                 $expedition.css({position:"fixed", top:0});
+                self.magellan_placeholder.show();
               } else {
                 $expedition.removeClass('fixed');
                 $expedition.css({position:"", top:""});
+                self.magellan_placeholder.hide();
               }
               if (fixed_position && typeof attr != 'undefined' && attr != false) {
                 $expedition.css({position:"fixed", top:attr + "px"});
