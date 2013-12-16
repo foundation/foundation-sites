@@ -27,6 +27,7 @@ $input-border-width: 1px !default;
 $input-disabled-bg: #ddd !default;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $input-include-glowing-effect: true !default;
+$input-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1)) !default;
 
 // We use these to style the fieldset border and spacing.
 $fieldset-border-style: solid !default;
@@ -113,7 +114,7 @@ $select-bg-color: #fafafa;
   font-size: $input-font-size;
   margin: 0 0 $form-spacing 0;
   padding: $form-spacing / 2;
-  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  height: $input-height;
   width: 100%;
   @include box-sizing(border-box);
   @if $input-include-glowing-effect {
@@ -315,23 +316,27 @@ $select-bg-color: #fafafa;
 
     select {
       -webkit-appearance: none !important;
-      background: 
-        $select-bg-color 
+      background:
+        $select-bg-color
         url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
       background-position-x: 97%;
       background-position-y: center;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
+      height: $input-height;
       @include radius(0);
       &.radius { @include radius($global-radius); }
       &:hover {
-        background: 
-          darken($select-bg-color, 3%) 
+        background:
+          darken($select-bg-color, 3%)
           url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
         background-position-x: 97%;
         background-position-y: center;
         border-color: $input-focus-border-color;
+      }
+      &[multiple] {
+        height: auto;
       }
     }
     @-moz-document url-prefix() {
