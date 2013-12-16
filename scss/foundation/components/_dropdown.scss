@@ -47,7 +47,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 // $max-width - Default: $f-dropdown-max-width || 200px.
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
   position: absolute;
-  top: -9999px;
+  left: -9999px;
   list-style: $f-dropdown-list-style;
   margin-#{$default-float}: 0;
 
