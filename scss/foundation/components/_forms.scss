@@ -316,8 +316,8 @@ $select-bg-color: #fafafa;
 
     select {
       -webkit-appearance: none !important;
-      background: 
-        $select-bg-color 
+      background:
+        $select-bg-color
         url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
       background-position-x: 97%;
       background-position-y: center;
@@ -328,12 +328,15 @@ $select-bg-color: #fafafa;
       @include radius(0);
       &.radius { @include radius($global-radius); }
       &:hover {
-        background: 
-          darken($select-bg-color, 3%) 
+        background:
+          darken($select-bg-color, 3%)
           url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
         background-position-x: 97%;
         background-position-y: center;
         border-color: $input-focus-border-color;
+      }
+      &[multiple] {
+        height: auto;
       }
     }
     @-moz-document url-prefix() {
