@@ -23,7 +23,7 @@ module.exports = function(grunt) {
           }
         }
       },
-      dist_docs: {
+      dist: {
         options: {
           flatten: false,
           assets: 'dist/docs/assets',
@@ -36,13 +36,6 @@ module.exports = function(grunt) {
         cwd: 'doc/pages',
         src: '**/*.{html,md}',
         dest: 'dist/docs/'
-      },
-      dist_download: {
-        options: {
-          assets: 'dist/assets'
-        },
-        src: 'index.html',
-        dest: 'dist/index.html'
       }
     },
 
@@ -80,7 +73,17 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
+          'dist/docs/assets/js/all.js': ['bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+        }
+      },
+      vendor: {
+        files: {
+          'dist/assets/js/vendor/placeholder.js': 'bower_components/jquery-placeholder/jquery.placeholder.js',
+          'dist/assets/js/vendor/fastclick.js': 'bower_components/fastclick/lib/fastclick.js',
+          'dist/assets/js/vendor/jquery.cookie.js': 'bower_components/jquery.cookie/jquery.cookie.js',
+          'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/jquery.js',
+          'dist/assets/js/vendor/modernizr.js': 'bower_components/modernizr/modernizr.js'
         }
       }
     },
@@ -88,10 +91,10 @@ module.exports = function(grunt) {
     copy: {
       dist: {
         files: [
-          {cwd: 'doc/assets/', expand:true, filter: 'isFile', src: 'img/**/*', dest: 'dist/docs/assets/'},
-          {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor}/**/*.js'], dest: 'dist/assets/js'},
-          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: ['**/*.js'], dest: 'dist/docs/assets/js/'},
-          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
+          {expand:true, cwd: 'doc/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/docs/assets/', filter:'isFile'},
+          {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
+          {src: 'bower_components/jquery/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
+          {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
           {src: 'bower.json', dest: 'dist/assets/'}
         ]
       }
@@ -139,8 +142,7 @@ module.exports = function(grunt) {
         ],
         tasks: ['karma:dev_watch:run']
       },
-
-      styles: {
+      sass: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
         options: {livereload:true}
@@ -150,35 +152,20 @@ module.exports = function(grunt) {
         tasks: ['copy', 'concat', 'uglify'],
         options: {livereload:true}
       },
-      dist_docs: {
+      assemble_all: {
         files: ['doc/{includes,layouts}/**/*.html'],
         tasks: ['assemble'],
         options: {livereload:true}
       },
-      dist_docs_pages: {
+      assemble_pages: {
         files: ['doc/pages/**/*.html'],
         tasks: ['newer:assemble'],
         options: {livereload:true}
       },
-      dist_download: {
-        files: ['index.html'],
-        tasks: ['assemble:dist_download']
-      },
       assets: {
-        files: ['doc/assets/{img}/**/*'],
-        tasks: ['copy'],
-        options: {livereload:true}
-      }
-    },
-
-    compress: {
-      dist: {
-        options: {
-          archive: 'dist/foundation.tar.gz'
-        },
-        files: [
-          {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
-        ]
+        options: {cwd: 'doc/assets/', livereload: true},
+        files: ['**/*','!{scss,js}/**/*'],
+        tasks: ['copy']
       }
     },
 
@@ -193,7 +180,6 @@ module.exports = function(grunt) {
         }
       }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-sass');
@@ -202,7 +188,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
@@ -211,10 +196,9 @@ module.exports = function(grunt) {
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
 
-  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
-  grunt.registerTask('compile', ['compile:assets', 'assemble']);
-  grunt.registerTask('build', ['compile', 'compress']);
-  grunt.registerTask('default', ['compile', 'watch']);
-  grunt.registerTask('travis', ['compile', 'karma:continuous']);
-  grunt.registerTask('deploy', ['compile', 'rsync:dist']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('build', ['build:assets', 'assemble']);
+  grunt.registerTask('travis', ['build', 'karma:continuous']);
+  grunt.registerTask('deploy', ['build', 'rsync:dist']);
+  grunt.registerTask('default', ['build', 'watch']);
 };
