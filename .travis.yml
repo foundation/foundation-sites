@@ -3,7 +3,7 @@ node_js:
   - '0.10'
 branches:
   only:
-    - travis_ci_tests
+    - master
 before_install:
   - npm install -g grunt-cli bower
   - gem install compass
