@@ -11,6 +11,7 @@ before_script:
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "mark@zurb.com"
   - git config --global user.name "mhayes"
+  - bower install
 script: ./run-tests.sh
 after_script:
   - git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
