@@ -2,7 +2,7 @@
 
 grunt travis
 rc=$?
-if [[ $rc != 0 ]] ; then
+if [ "$rc" -ne 0 ] ; then
     exit $rc
 fi
 
@@ -21,7 +21,7 @@ bower install ../../dist/assets --save
 cp -f bower_components/foundation/scss/foundation/_settings.scss scss/_settings.scss
 compass compile
 rc=$?
-if [[ $rc != 0 ]] ; then
+if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Compass Build"
     exit $rc
 fi
@@ -29,7 +29,7 @@ rm stylesheets/app.css
 sed -e 's/^\/\/ @/@/' -e 's/^\/\/ \$/\$/' scss/_settings.scss > scss/_settings.scss
 compass compile
 rc=$?
-if [[ $rc != 0 ]] ; then
+if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Compass Build w/_settings.scss"
     exit $rc
 fi
@@ -40,7 +40,7 @@ echo "[SUCCESS] Compass Build"
 cp -f bower_components/foundation/scss/foundation/_settings.scss scss/_settings.scss
 sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
 rc=$?
-if [[ $rc != 0 ]] ; then
+if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Ruby Sass Build"
     exit $rc
 fi
@@ -48,7 +48,7 @@ rm stylesheets/app.css
 sed -e 's/^\/\/ @/@/' -e 's/^\/\/ \$/\$/' scss/_settings.scss > scss/_settings.scss
 sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
 rc=$?
-if [[ $rc != 0 ]] ; then
+if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Ruby Sass Build w/_settings.scss"
     exit $rc
 fi
@@ -67,7 +67,7 @@ bower install ../../dist/assets --save
 cp -f bower_components/foundation/scss/foundation/_settings.scss scss/_settings.scss
 grunt sass:dist
 rc=$?
-if [[ $rc != 0 ]] ; then
+if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Node Libsass Build"
     exit $rc
 fi
@@ -75,7 +75,7 @@ rm css/app.css
 sed -e 's/^\/\/ @/@/' -e 's/^\/\/ \$/\$/' scss/_settings.scss > scss/_settings.scss
 grunt sass:dist
 rc=$?
-if [[ $rc != 0 ]] ; then
+if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Node Libsass Build w/_settings.scss"
     exit $rc
 fi
