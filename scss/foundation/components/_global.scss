@@ -203,11 +203,11 @@ $text-direction: ltr !default;
 $default-float: left !default;
 $opposite-direction: right !default;
 @if $text-direction == ltr {
-  $default-float: left !global;
-  $opposite-direction: right !global;
+  $default-float: left;
+  $opposite-direction: right;
 } @else {
-  $default-float: right !global;
-  $opposite-direction: left !global;
+  $default-float: right;
+  $opposite-direction: left;
 }
 
 // We use these as default colors throughout
