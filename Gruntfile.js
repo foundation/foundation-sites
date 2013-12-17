@@ -79,7 +79,7 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
+          'dist/assets/js/foundation.min.js': ['js/vendor/fastclick.js', '<%= foundation.js %>'],
           'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
