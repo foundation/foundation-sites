@@ -49,14 +49,14 @@ $table-margin-bottom: rem-calc(20) !default;
 
   thead,
   tfoot {
-    background: $table-head-bg;
-    font-weight: $table-head-font-weight;
+    background: $table-head-bg;    
 
     tr {
       th,
       td {
         padding: $table-head-padding;
         font-size: $table-head-font-size;
+        font-weight: $table-head-font-weight;
         color: $table-head-font-color;
         text-align: $default-float;
       }
