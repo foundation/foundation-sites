@@ -13,7 +13,11 @@
 
     init : function (scope, method, options) {
       this.fixed_magellan = $("[data-magellan-expedition]");
+      this.magellan_placeholder = $('<div></div>').css({
+        height: this.fixed_magellan.outerHeight(true)
+      }).hide().insertAfter(this.fixed_magellan);
       this.set_threshold();
+      this.set_active_class(method);
       this.last_destination = $('[data-magellan-destination]').last();
       this.events();
     },
@@ -67,9 +71,11 @@
               if (fixed_position) {
                 $expedition.addClass('fixed');
                 $expedition.css({position:"fixed", top:0});
+                self.magellan_placeholder.show();
               } else {
                 $expedition.removeClass('fixed');
                 $expedition.css({position:"", top:""});
+                self.magellan_placeholder.hide();
               }
               if (fixed_position && typeof attr != 'undefined' && attr != false) {
                 $expedition.css({position:"fixed", top:attr + "px"});
@@ -105,6 +111,12 @@
       if (typeof this.settings.threshold !== 'number') {
         this.settings.threshold = (this.fixed_magellan.length > 0) ?
           this.fixed_magellan.outerHeight(true) : 0;
+      }
+    },
+
+    set_active_class : function (options) {
+      if (options && options.active_class && typeof options.active_class === 'string') {
+        this.settings.active_class = options.active_class;
       }
     },
 

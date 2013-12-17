@@ -29,8 +29,9 @@
   if($('head').has('.foundation-mq-xxlarge').length === 0) {
     $('head').append('<meta class="foundation-mq-xxlarge">');
   }
-  
-  // Enable FastClick
+
+  // Enable FastClick if present
+
   $(function() {
     if(typeof FastClick !== 'undefined') {
       // Don't attach to body if undefined

@@ -72,18 +72,8 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
-        }
-      },
-      vendor: {
-        files: {
-          'dist/assets/js/vendor/placeholder.js': 'bower_components/jquery-placeholder/jquery.placeholder.js',
-          'dist/assets/js/vendor/fastclick.js': 'bower_components/fastclick/lib/fastclick.js',
-          'dist/assets/js/vendor/jquery.cookie.js': 'bower_components/jquery.cookie/jquery.cookie.js',
-          'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/jquery.js',
-          'dist/assets/js/vendor/modernizr.js': 'bower_components/modernizr/modernizr.js'
+          'dist/assets/js/foundation.min.js': ['js/vendor/fastclick.js', '<%= foundation.js %>'],
+          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
     },
