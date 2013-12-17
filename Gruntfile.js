@@ -70,6 +70,9 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        preserveComments: 'some'
+      },
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
