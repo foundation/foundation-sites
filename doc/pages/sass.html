@@ -1,0 +1,87 @@
+# Getting Started With Sass
+
+<h3 class="subheader">Sass is a superset of CSS that adds in amazing features such as variables, nested selectors and loops. It's also the easiest way to customize Foundation!</h3>
+
+***
+
+### System Requirements
+
+Before proceeding, you'll want to install the following on your system:
+
+  * Git
+  * [Ruby 1.9+](https://www.ruby-lang.org/)
+  * [NodeJS](http://nodejs.org)
+
+Starting in Foundation 5, we've started using bower to manage the updating process of Foundation. It only needs to be installed one time using the following command:
+
+<h4>Bash</h4>
+
+```bash
+[sudo] npm install -g bower grunt-cli
+```
+
+Then you can install our CLI using the following command:
+
+<h4>Bash</h4>
+
+```bash
+gem install foundation
+```
+
+***
+
+### Using Foundation With Compass
+
+[Compass](http://compass-style.org/) is the easiest way to get going with Sass. It can be installed with the following commands:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>New Project</h4>
+{{#markdown}}
+```bash
+foundation new MY_PROJECT
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Updating Your Project</h4>
+{{#markdown}}
+```bash
+cd MY_PROJECT
+foundation update
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
+### Using Foundation With Grunt + Libsass
+
+Using [Grunt](http://gruntjs.com) in conjunction with [Libsass](https://github.com/hcatlin/libsass) is the fastest way to compile your Sass stylesheets.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>New Project</h4>
+{{#markdown}}
+```bash
+foundation new MY_PROJECT --libsass
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Updating Your Project</h4>
+{{#markdown}}
+```bash
+cd MY_PROJECT
+foundation update
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
+### Using Foundation with something else
+
+If you prefer using Foundation with a tool that's not listed here, you may want to check out our [community](/develop/tools.html) page to see if there's a port for you.

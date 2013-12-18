@@ -1,0 +1,68 @@
+---
+layout: doc/layouts/default.html
+---
+
+# Utility Classes
+<h3 class="subheader">Foundation includes a handful of helpful utility classes to add certain behaviors to your elements.</h3>
+
+***
+<h3>Float Classes</h3>
+
+You can change the float behavior of an element by adding `.left` or `.right` to an HTML element. To clear floats, add the class `.clearfix` to the parent element.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="panel clearfix">
+	<a class="button right">Float Right</a>
+	<a class="button left">Float Left</a>
+</div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="panel clearfix">
+		<a class="button right">Float Right</a>
+		<a class="button left">Float Left</a>
+	</div>
+
+  </div>
+</div>
+
+***
+
+<h3>Text Align Classes</h3>
+
+You can change the text alignment of an element by adding `.text-left`, `.text-right`, `.text-center` or `.text-justify` to an element. 
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<p class="text-left"><!-- text goes here --></p>
+<p class="text-right"><!-- text goes here --></p>
+<p class="text-center"><!-- text goes here --></p>
+<p class="text-justify"><!-- text goes here --></p>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+	<p class="text-left"><strong>This text is left aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+	<p class="text-right"><strong>This text is right aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+	<p class="text-center"><strong>This text is center aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+	<p class="text-justify"><strong>This text is justified.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+  </div>
+</div>
+
+***
+
+<h3>Hide an Element</h3>
+You can add the class `.hide` to an element to hide it. This will add the property `display: none` to the element.
+```html
+<div class="hide"></div>
+```

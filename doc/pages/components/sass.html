@@ -1,0 +1,257 @@
+---
+title: Sass
+layout: doc/layouts/default.html
+---
+
+# Sass
+
+## Using the Sass Version of Foundation
+
+<h3 class="subheader">Start using Foundation the way you want, with more control than ever before. We've made it really easy to install using Compass so you'll need a little bit of knowledge before you get going. Visit the [Compass](http://compass-style.org) and [Sass](http://sass-lang.com) sites to learn the basics if you don't already know them.</h3>
+***
+#### Recommended Installation
+
+To create your first project using our Compass extension, you'll need to have the <kbd>zurb-foundation</kbd> gem installed. This will install Foundation and all necessary dependencies. Here's the command that will do this for you:
+
+`[sudo] gem install zurb-foundation`
+
+**Note: Make sure ZURB isn't all caps.**
+
+##### Upgrading Your Gem
+
+To upgrade your gem to the latest public release, just paste this snippet into your command line:
+
+`[sudo] gem update zurb-foundation`
+
+##### Release Candidates
+
+Stay on top of the latest before official releases by installing release candidates with this command:
+
+`[sudo] gem install zurb-foundation --pre`
+
+***
+
+<a name="create-compass"></a>
+
+## Creating your first project
+
+##### Compass makes it really easy to start a new project. Since you've installed the Foundation gem by now, you just need to install Compass to get going.
+
+Follow these two steps to get going:
+
+1. `[sudo] gem install compass`
+2. `cd path/to/where-you-want-your-project`
+3. run `compass create <project-name> -r zurb-foundation --using foundation`
+
+***
+
+### Using Sass Standalone
+
+With Foundation 4, we've removed all dependencies from the framework. This means you can use Foundation with Sass alone and add Compass, Bourbon, or whatever on top of it. To help get going using only Sass, you'll just need to download the [files from Github](https://github.com/zurb/foundation/tree/scss-standalone) and put them into your project directory. From there you just need to `@import` the parts of Foundation you need.
+
+<a class="small button secondary" href="https://github.com/zurb/foundation/tree/scss-standalone">Sass Standalone Branch on Github</a>
+
+To import all of Foundation:
+
+{{#markdown}}
+```scss
+@import "/path/to/foundation";
+```
+{{/markdown}}
+
+If you want to override the built in variables, you can find them on each component page or grab the [entire list from Github](https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss). From there, you'll need to link your settings file above your Foundation import, like so:
+
+{{#markdown}}
+```scss
+@import "/path/to/settings";
+@import "/path/to/foundation";
+```
+{{/markdown}}
+
+If you want to pick and choose which pieces of Foundation you want, the pieces you need are:
+
+{{#markdown}}
+```scss
+/* Each individual part that can be added in */
+@import "foundation/components/global";
+@import "foundation/components/grid";
+@import "foundation/components/visibility";
+@import "foundation/components/block-grid";
+@import "foundation/components/type";
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+@import "foundation/components/custom-forms";
+@import "foundation/components/button-groups";
+@import "foundation/components/dropdown-buttons";
+@import "foundation/components/split-buttons";
+@import "foundation/components/flex-video";
+@import "foundation/components/section";
+@import "foundation/components/top-bar";
+@import "foundation/components/orbit";
+@import "foundation/components/reveal";
+@import "foundation/components/joyride";
+@import "foundation/components/clearing";
+@import "foundation/components/alert-boxes";
+@import "foundation/components/breadcrumbs";
+@import "foundation/components/keystrokes";
+@import "foundation/components/labels";
+@import "foundation/components/inline-lists";
+@import "foundation/components/pagination";
+@import "foundation/components/panels";
+@import "foundation/components/pricing-tables";
+@import "foundation/components/progress-bars";
+@import "foundation/components/side-nav";
+@import "foundation/components/sub-nav";
+@import "foundation/components/switch";
+@import "foundation/components/magellan";
+@import "foundation/components/tables";
+@import "foundation/components/thumbs";
+@import "foundation/components/tooltips";
+@import "foundation/components/dropdown";
+```
+{{/markdown}}
+
+***
+
+### Compiling Your SCSS with Compass
+
+To compile your SCSS into CSS you run a simple command that will watch for saves and compile each time you save an SCSS file. From the directory of your <kbd>config.rb</kbd> file, the command is:
+
+`compass watch`
+
+If you are in a different directory you can use the same command, but navigate to where your <kbd>config.rb</kbd> file is. The command looks like:
+
+`compass watch path/to/project`
+
+***
+
+### Compiling Your SCSS with Sass
+
+`sass --watch your/scss/directory:your/css/directory`
+
+You can watch individual files or the entire directory, we usually watch the entire directory when using Sass standalone.
+
+***
+
+<a name="compass-existing"></a>
+
+### Working with Existing projects
+
+##### There are a couple situations to cover here. You might be adding Foundation to an existing project that wasn't build with Foundation or you might be upgrading Foundation for an already created Foundation Compass project.
+
+##### Adding Foundation to existing Compass projects
+
+If you've created a project using Compass, but didn't require the Foundation gem, you'll need to install it separately. When you do this you'll get all the necessary files on top of the ones you already have. If something is a duplicate, Compass will ignore it. The steps you'll take to properly install Foundation are:
+
+1.  run `gem install zurb-foundation`
+2.  Add `require "zurb-foundation"` to your config.rb file
+3.  `cd path/to/your-project`
+4.  run `compass install foundation`
+
+##### Adding Foundation to existing Rails projects
+
+1. Add `gem 'zurb-foundation'` to your Gemfile **under the `assets` group**
+2. run **bundle install**
+3. run **rails g foundation:install**
+
+##### Upgrading Foundation Compass projects
+
+**Javascript Updates:** If you already added Foundation to your Compass project or created the project using Foundation in the first place and just want to copy over any updated JavaScripts/image assets to your project, use the provided <kbd>foundation/upgrade</kbd> pattern below:
+
+1. `cd /path/to/your-project`
+2. run `compass install -r zurb-foundation foundation/upgrade --force`
+
+**Settings file updates:** You can also upgrade Foundation as a whole, which will override the existing Foundation styles and your settings file. So if you've made changes to your settings file and want to make sure your project is on the latest version of Foundation, make sure you backup your settings file before you begin. Alternatively, you can copy/paste the settings from our file and **@import** your own so they don't get erased.
+
+We also recommend creating a `foundation-overrides.scss` file that you can use for your own specific styles. This will ensure that your styles don't get obliterated upon updating. **We do not recommend directly editing the Foundation files if you plan to upgrade.** To update you project, use the following steps:
+
+1.  Make sure you've updated your system version of the gem or upgrading won't work.
+2.  `cd /path/to/your-project`
+3.  run `compass install -r zurb-foundation foundation`
+
+***
+
+<a name="project-git"></a>
+
+### Creating a project from Git
+
+##### Sometimes you want to checkout what we've got even before we decide to deploy a release candidate. For these situations, you can install using Bundler.
+
+There are a few different ways to do this, but here's what we recommend:
+
+1. Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+2. Create a file called `Gemfile` in the folder you just created with this content:
+
+{{#markdown}}
+```ruby
+source "https://rubygems.org"
+gem "zurb-foundation", :git => "git@github.com:zurb/foundation.git"
+gem "compass"
+```
+{{/markdown}}
+
+3. Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:
+
+{{#markdown}}
+```ruby
+bundle exec compass create . -r zurb-foundation --using foundation
+```
+{{/markdown}}
+
+4. When you're working on your project, run: <kbd>bundle exec compass watch</kbd>
+
+***
+
+<a name="multiple-versions"></a>
+
+### Running multiple versions
+
+##### If you're planning on running multiple, potentially incompatible versions of Foundation you can isolate them using Bundler as well.
+
+There are a few different ways to do this, but here's what we recommend:
+
+1. Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+2. Create a file called `Gemfile` in the folder you just created with this content:
+
+{{#markdown}}
+```ruby
+source "https://rubygems.org"
+# Replace 5.0.0 with the version of Foundation you want to use
+gem "zurb-foundation", "5.0.0"
+gem "compass"
+```
+{{/markdown}}
+
+3. Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:
+
+{{#markdown}}
+```bash
+bundle exec compass create . -r zurb-foundation --using foundation
+```
+{{/markdown}}
+
+4. When you're working on your project, run: <kbd>bundle exec compass watch</kbd>
+
+Zach Shnackel recently wrote a good article that goes into a bit more detail on this subject: [http://zslabs.com/articles/versioned-dependencies-with-compass](http://zslabs.com/articles/versioned-dependencies-with-compass)
+
+***
+
+<a name="codekit"></a>
+
+### Compiling with CodeKit
+
+Previous version of Foundation were a bit harder to compile with codekit because of the structure of the Foundation files. We just went through a round of testing with a default project directory, created with the gem. Here are the instructions to follow to get CodeKit working properly:
+
+* Create a project: <kbd>compass create _project-name_ -r zurb-foundation --using foundation</kbd>
+* Open CodeKit and drag that project folder into the side panel or add it with the "+" button.
+* Compile away!
+
+_This works with the default version of Sass and Compass that CodeKit comes with. Since Compass isn't a dependency for Foundation any longer, if you want to use it, make sure you have it installed and @imported at the top of your main .scss file._
+
+***
+
+### Foundation Global Settings and Mixins
+
+We've included a global settings file that holds variables and mixins that are used throughout the entirety of Foundation. Here's a look at that file:
+
+{{> examples_sass_variables}}

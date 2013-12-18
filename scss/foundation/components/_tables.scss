@@ -1,0 +1,93 @@
+@import "global";
+
+//
+// @name _tables.scss
+// @dependencies _global.scss
+//
+
+//
+// @variables
+//
+
+$include-html-table-classes: $include-html-classes !default;
+
+// These control the background color for the table and even rows
+$table-bg: #fff !default;
+$table-even-row-bg: #f9f9f9 !default;
+
+// These control the table cell border style
+$table-border-style: solid !default;
+$table-border-size: 1px !default;
+$table-border-color: #ddd !default;
+
+// These control the table head styles
+$table-head-bg: #f5f5f5 !default;
+$table-head-font-size: rem-calc(14) !default;
+$table-head-font-color: #222 !default;
+$table-head-font-weight: bold !default;
+$table-head-padding: rem-calc(8 10 10) !default;
+
+// These control the row padding and font styles
+$table-row-padding: rem-calc(9 10) !default;
+$table-row-font-size: rem-calc(14) !default;
+$table-row-font-color: #222 !default;
+$table-line-height: rem-calc(18) !default;
+
+// These are for controlling the display and margin of tables
+$table-display: table-cell !default;
+$table-margin-bottom: rem-calc(20) !default;
+
+
+//
+// @mixins
+//
+
+@mixin table {
+  background: $table-bg;
+  margin-bottom: $table-margin-bottom;
+  border: $table-border-style $table-border-size $table-border-color;
+
+  thead,
+  tfoot {
+    background: $table-head-bg;    
+
+    tr {
+      th,
+      td {
+        padding: $table-head-padding;
+        font-size: $table-head-font-size;
+        font-weight: $table-head-font-weight;
+        color: $table-head-font-color;
+        text-align: $default-float;
+      }
+    }
+  }
+
+  tr {
+    th,
+    td {
+      padding: $table-row-padding;
+      font-size: $table-row-font-size;
+      color: $table-row-font-color;
+    }
+
+    &.even,
+    &.alt,
+    &:nth-of-type(even) { background: $table-even-row-bg; }
+  }
+
+  thead tr th,
+  tfoot tr th,
+  tbody tr td,
+  tr td,
+  tfoot tr td { display: $table-display; line-height: $table-line-height; }
+}
+
+
+@include exports("table") {
+  @if $include-html-table-classes {
+    table {
+      @include table;
+    }
+  }
+}

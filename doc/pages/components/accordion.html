@@ -1,0 +1,57 @@
+---
+title: Accordion
+layout: doc/layouts/default.html
+---
+
+# Accordion
+
+<h3 class="subheader">Accordions are elements used to expand and collapse content that is broken into logical sections, much like tabs.</h3>
+
+***
+
+{{> examples_accordion_intro}}
+
+***
+
+<h3>Basic</h3>
+
+You can create an accordion using minimal markup like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_basic}}
+  </div>
+</div>
+
+***
+
+## Customize With Sass
+
+Accordions can be easily customized with the Sass variables provided in the `_settings.scss` file.
+
+<h4>SCSS</h4>
+
+{{> examples_accordion_variables}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/accordion";
+```
+
+

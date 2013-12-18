@@ -1,0 +1,67 @@
+---
+title: Magellan
+layout: doc/layouts/default.html
+---
+
+# Magellan
+
+<h3 class="subheader">Magellan is a style-agnostic plugin that lets you give your site sticky navigation. This fixed-position navigation helps users keep track of where they are on a page without scrolling.</h3>
+
+***
+
+{{> examples_magellan_basic}}
+
+***
+
+<a name="arrival"></a>
+<h3 data-magellan-destination="arrival">Arrival</h3>
+
+You can create the fixed navigation structure for Magellan using minimal markup.
+
+<h4>HTML</h4>
+
+{{> examples_magellan_basic_rendered}}
+
+***
+
+<a name="destination"></a>
+<h3 data-magellan-destination="destination">Destination</h3>
+
+You can create the destination structure for Magellan using minimal markup.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_magellan_destination}}
+```
+{{/markdown}}
+
+***
+
+<a name="js"></a>
+<h3 data-magellan-destination="js">Configure with JS</h3>
+
+It's easy to configure Magellan using our provided JavaScript. You can use with data-attributes or plain old JavaScript. Make sure `jquery.js`, `foundation.js`, and `foundation.magellan.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+
+<h4>HTML</h4>
+
+{{> examples_magellan_javascript}}
+
+<h3>Basic</h3>
+
+Using data-attributes is the preferred method of making changes to our JavaScript.
+
+<h4>HTML</h4>
+
+{{> examples_magellan_library}}
+
+***
+
+<h3>Advanced</h3>
+
+You can adjust lots of settings. For example:
+
+#### JS
+
+{{> examples_magellan_options}}

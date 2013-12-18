@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - '0.10'
+branches:
+  only:
+    - master
+before_install:
+  - npm install -g grunt-cli bower
+  - gem install compass
+before_script:
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --global user.email "mark@zurb.com"
+  - git config --global user.name "mhayes"
+  - bower install
+script: ./run-tests.sh
+after_script:
+  - git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
+  - rm -rf bower-foundation/*
+  - cp -r dist/assets/* bower-foundation/
+  - cd bower-foundation
+  - git remote rm origin
+  - git remote add origin https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
+  - git add -A
+  - git commit -m "Foundation build to bower-foundation"
+  - git push -fq origin master
+  - echo -e "Done with magic\n"
+env:
+  global:
+    secure: USNBfNsfQFF6UgNzXRXA+8mWc66WvOUXjIH5PRjbBRUfUFZkt0a74P7uW/IMJZ0XlQwbWCphzv6Rh1qfI5bbmh6nwlJtBgP6KCc/GrPyN61YrudmPZfiNrHFkylhELz82CE6oWZjZGRwlCsLa3IADo27azmQx7kJhko5t3war5A=
+notifications:
+  email:
+    recipients:
+      - mark@zurb.com

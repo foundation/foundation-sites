@@ -1,0 +1,146 @@
+@import "global";
+
+//
+// @variables
+//
+$include-html-pricing-classes: $include-html-classes !default;
+
+// We use this to control the border color
+$price-table-border: solid 1px #ddd !default;
+
+// We use this to control the bottom margin of the pricing table
+$price-table-margin-bottom: rem-calc(20) !default;
+
+// We use these to control the title styles
+$price-title-bg: #333 !default;
+$price-title-padding: rem-calc(15 20) !default;
+$price-title-align: center !default;
+$price-title-color: #eee !default;
+$price-title-weight: normal !default;
+$price-title-size: rem-calc(16) !default;
+$price-title-font-family: $body-font-family !default;
+
+// We use these to control the price styles
+$price-money-bg: #f6f6f6 !default;
+$price-money-padding: rem-calc(15 20) !default;
+$price-money-align: center !default;
+$price-money-color: #333 !default;
+$price-money-weight: normal !default;
+$price-money-size: rem-calc(32) !default;
+$price-money-font-family: $body-font-family !default;
+
+
+// We use these to control the description styles
+$price-bg: #fff !default;
+$price-desc-color: #777 !default;
+$price-desc-padding: rem-calc(15) !default;
+$price-desc-align: center !default;
+$price-desc-font-size: rem-calc(12) !default;
+$price-desc-weight: normal !default;
+$price-desc-line-height: 1.4 !default;
+$price-desc-bottom-border: dotted 1px #ddd !default;
+
+// We use these to control the list item styles
+$price-item-color: #333 !default;
+$price-item-padding: rem-calc(15) !default;
+$price-item-align: center !default;
+$price-item-font-size: rem-calc(14) !default;
+$price-item-weight: normal !default;
+$price-item-bottom-border: dotted 1px #ddd !default;
+
+// We use these to control the CTA area styles
+$price-cta-bg: #fff !default;
+$price-cta-align: center !default;
+$price-cta-padding: rem-calc(20 20 0) !default;
+
+// @mixins
+//
+// We use this to create the container element for the pricing tables
+@mixin pricing-table-container {
+  border: $price-table-border;
+  margin-#{$default-float}: 0;
+  margin-bottom: $price-table-margin-bottom;
+
+  & * {
+    list-style: none;
+    line-height: 1;
+  }
+}
+// @mixins
+//
+// We use this mixin to create the pricing table title styles
+@mixin pricing-table-title {
+  background-color: $price-title-bg;
+  padding: $price-title-padding;
+  text-align: $price-title-align;
+  color: $price-title-color;
+  font-weight: $price-title-weight;
+  font-size: $price-title-size;
+  font-family: $price-title-font-family;
+}
+
+// @mixins
+//
+// We use this mixin to control the pricing table price styles
+@mixin pricing-table-price {
+  background-color: $price-money-bg;
+  padding: $price-money-padding;
+  text-align: $price-money-align;
+  color: $price-money-color;
+  font-weight: $price-money-weight;
+  font-size: $price-money-size;
+  font-family: $price-money-font-family;
+}
+
+// @mixins
+//
+// We use this mixin to create the description styles for the pricing table
+@mixin pricing-table-description {
+  background-color: $price-bg;
+  padding: $price-desc-padding;
+  text-align: $price-desc-align;
+  color: $price-desc-color;
+  font-size: $price-desc-font-size;
+  font-weight: $price-desc-weight;
+  line-height: $price-desc-line-height;
+  border-bottom: $price-desc-bottom-border;
+}
+
+// @mixins
+//
+// We use this mixin to style the bullet items in the pricing table
+@mixin pricing-table-bullet {
+  background-color: $price-bg;
+  padding: $price-item-padding;
+  text-align: $price-item-align;
+  color: $price-item-color;
+  font-size: $price-item-font-size;
+  font-weight: $price-item-weight;
+  border-bottom: $price-item-bottom-border;
+}
+
+// @mixins
+//
+// We use this mixin to style the CTA area of the pricing tables
+@mixin pricing-table-cta {
+  background-color: $price-cta-bg;
+  text-align: $price-cta-align;
+  padding: $price-cta-padding;
+}
+
+@include exports("pricing-table") {
+  @if $include-html-pricing-classes {
+
+    /* Pricing Tables */
+    .pricing-table {
+      @include pricing-table-container;
+
+      .title { @include pricing-table-title; }
+      .price { @include pricing-table-price; }
+      .description { @include pricing-table-description; }
+      .bullet-item { @include pricing-table-bullet; }
+      .cta-button { @include pricing-table-cta; }
+    }
+
+  }
+}

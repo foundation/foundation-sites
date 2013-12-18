@@ -1,0 +1,30 @@
+@import "global";
+
+//
+// @variables
+//
+$include-html-magellan-classes: $include-html-classes !default;
+
+$magellan-bg: #fff !default;
+$magellan-padding: 10px !default;
+
+@include exports("magellan") {
+  @if $include-html-magellan-classes {
+
+    [data-magellan-expedition] {
+      background: $magellan-bg;
+      z-index: 50;
+      min-width: 100%;
+      padding: $magellan-padding;
+
+      .sub-nav {
+        margin-bottom: 0;
+        dd { margin-bottom: 0; }
+        .active {
+          line-height: 1.8em;
+        }
+      }
+    }
+
+  }
+}

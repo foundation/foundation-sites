@@ -1,0 +1,159 @@
+@import "global";
+
+//
+// @variables
+//
+$include-html-dropdown-classes: $include-html-classes !default;
+
+// We use these to controls height and width styles.
+$f-dropdown-max-width: 200px !default;
+$f-dropdown-height: auto !default;
+$f-dropdown-max-height: none !default;
+$f-dropdown-margin-top: 2px !default;
+
+// We use this to control the background color
+$f-dropdown-bg: #fff !default;
+
+// We use this to set the border styles for dropdowns.
+$f-dropdown-border-style: solid !default;
+$f-dropdown-border-width: 1px !default;
+$f-dropdown-border-color: scale-color(#fff, $lightness: -20%) !default;
+
+// We use these to style the triangle pip.
+$f-dropdown-triangle-size: 6px !default;
+$f-dropdown-triangle-color: #fff !default;
+$f-dropdown-triangle-side-offset: 10px !default;
+
+// We use these to control styles for the list elements.
+$f-dropdown-list-style: none !default;
+$f-dropdown-font-color: #555 !default;
+$f-dropdown-font-size: rem-calc(14) !default;
+$f-dropdown-list-padding: rem-calc(5, 10) !default;
+$f-dropdown-line-height: rem-calc(18) !default;
+$f-dropdown-list-hover-bg: #eeeeee !default;
+$dropdown-mobile-default-float: 0 !default;
+
+// We use this to control the styles for when the dropdown has custom content.
+$f-dropdown-content-padding: rem-calc(20) !default;
+
+//
+// @mixins
+//
+//
+// NOTE: Make default max-width change between list and content types. Can add more width with classes, maybe .small, .medium, .large, etc.;
+// We use this to style the dropdown container element.
+// $content-list - Sets list-style. Default: list. Options: [list, content]
+// $triangle - Sets if dropdown has triangle. Default:true.
+// $max-width - Default: $f-dropdown-max-width || 200px.
+@mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
+  position: absolute;
+  left: -9999px;
+  list-style: $f-dropdown-list-style;
+  margin-#{$default-float}: 0;
+
+  > *:first-child { margin-top: 0; }
+  > *:last-child { margin-bottom: 0; }
+
+  @if $content == list {
+    width: 100%;
+    max-height: $f-dropdown-max-height;
+    height: $f-dropdown-height;
+    background: $f-dropdown-bg;
+    border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
+    font-size: $rem-base;
+    z-index: 99;
+  }
+  @else if $content == content {
+    padding: $f-dropdown-content-padding;
+    width: 100%;
+    height: $f-dropdown-height;
+    max-height: $f-dropdown-max-height;
+    background: $f-dropdown-bg;
+    border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
+    font-size: $rem-base;
+    z-index: 99;
+  }
+
+  @if $triangle {
+    margin-top: $f-dropdown-margin-top;
+
+    &:before {
+      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, bottom);
+      position: absolute;
+      top: -($f-dropdown-triangle-size * 2);
+      #{$default-float}: $f-dropdown-triangle-side-offset;
+      z-index: 99;
+    }
+    &:after {
+      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, bottom);
+      position: absolute;
+      top: -(($f-dropdown-triangle-size + 1) * 2);
+      #{$default-float}: $f-dropdown-triangle-side-offset - 1;
+      z-index: 98;
+    }
+
+    &.right:before {
+      left: auto;
+      right: $f-dropdown-triangle-side-offset;
+    }
+    &.right:after {
+      left: auto;
+      right: $f-dropdown-triangle-side-offset - 1;
+    }
+  }
+
+  @if $max-width { max-width: $max-width; }
+  @else { max-width: $f-dropdown-max-width; }
+
+}
+
+// @MIXIN
+//
+// We use this to style the list elements or content inside the dropdown.
+
+@mixin dropdown-style {
+  font-size: $f-dropdown-font-size;
+  cursor: $cursor-pointer-value;
+
+  line-height: $f-dropdown-line-height;
+  margin: 0;
+
+  &:hover,
+  &:focus { background: $f-dropdown-list-hover-bg; }
+
+  a {
+    display: block;
+    padding: $f-dropdown-list-padding;
+    color: $f-dropdown-font-color;
+  }
+}
+
+@include exports("dropdown") {
+  @if $include-html-dropdown-classes {
+
+    @media #{$small-only} {
+      .f-dropdown {
+        max-width: 100%;
+        #{$default-float}: $dropdown-mobile-default-float;
+      }
+    }
+
+    /* Foundation Dropdowns */
+    .f-dropdown {
+      @include dropdown-container(list);
+      // max-width: none;
+
+      li { @include dropdown-style; }
+
+      // You can also put custom content in these dropdowns
+      &.content { @include dropdown-container(content, $triangle:false); }
+
+      // Sizes
+      &.tiny    { max-width: 200px; }
+      &.small   { max-width: 300px; }
+      &.medium  { max-width: 500px; }
+      &.large   { max-width: 800px; }
+    }
+
+  }
+}

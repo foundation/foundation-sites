@@ -1,0 +1,47 @@
+//
+// @name _global.scss
+// @dependencies n/a
+//
+
+
+//
+// @mixins
+//
+
+@mixin proxima-nova() {
+
+}
+
+@mixin proxima-nova-condensed() {
+
+}
+
+@mixin clearfix {}
+// https://github.com/hcatlin/libsass/issues/72
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: unquote("alpha(opacity=#{$opacity * 100})");
+}
+
+//
+// @functions
+//
+
+@function image-url($pth) {
+  @return unquote("url(../img/#{$pth})");
+}
+@function font-url($pth) {
+  @return unquote("url(../fonts/#{$pth})");
+}
+
+//
+// @variables
+//
+
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+$body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+$rem-base: 18;
+// $topbar-arrows: false;
+
+
+

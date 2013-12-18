@@ -1,0 +1,83 @@
+---
+title: Tables
+layout: doc/layouts/default.html
+---
+
+# Tables
+
+<h3 class="subheader">Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course).</h3>
+
+***
+
+{{> examples_tables_basic}}
+
+***
+
+<h3>Basic</h3>
+
+You can create a table using minimal markup.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<table>
+  <thead>
+    <tr>
+      <th width="200">Table Header</th>
+      <th>Table Header</th>
+      <th width="150">Table Header</th>
+      <th width="150">Table Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+  </tbody>
+</table>
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_tables_basic}}
+
+***
+
+## Customize With Sass
+
+Tables can be easily customized using our Sass variables.
+
+{{> examples_tables_variables}}
+
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_functions.scss**.
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/tables";
+```
+{{/markdown}}

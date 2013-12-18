@@ -1,0 +1,115 @@
+---
+title: Abide
+layout: doc/layouts/default.html
+---
+
+# Abide
+
+<h3 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h3>
+
+***
+
+{{> examples_abide_basic}}
+
+***
+
+## Setting Up Validation
+
+To enable validation with Abide, add the `data-abide` attribute to your `form` element. Then add the `required` attribute to each input that you want to require. Additionaly, you can define a `pattern` to define restraints on what users can input.
+
+{{> examples_abide_basic_rendered}}
+
+***
+
+## Predefined Patterns
+
+Abide has several patterns common validation patterns built into the library:
+
+{{> examples_abide_patterns}}
+
+You can also use these patterns by setting the input's type to the name of the pattern instead of using the pattern attribute:
+
+{{#markdown}}
+```html
+<input type="password" required>
+<input type="email">
+<input type="url">
+```
+{{/markdown}}
+
+There is a good list of valid HTML5 input types on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input). Try avoiding patterns defined by type that do not match the specification.
+
+You can use the following shortcut for named patterns that aren't valid input types:
+
+{{#markdown}}
+```html
+<input type="text" pattern="integer">
+```
+{{/markdown}}
+
+***
+
+## Custom Named Patterns
+
+By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.
+
+{{> examples_abide_custom_patterns}}
+
+You can then use these custom patterns like you would the predfined patterns in your markup:
+
+{{> examples_abide_custom_patterns_rendered}}
+
+***
+
+## Error Messages
+
+To display an error message for your invalid form element, include a `small` tag with an `error` class as a sibling of your input.
+
+{{> examples_abide_errors}}
+
+We have wrapped our input in a div in the example above. This div will receive an `error` class when the input is invalid. This class will show our error message and style the label and input accordingly.
+
+Invalid inputs inherit a `data-invalid` attribute.
+
+***
+
+## Events
+
+If a submit event is fired, a `valid` event is triggered when the form is valid and an `invalid` event is triggered when the form is invalid.
+
+You can bind to these events and fire your own callback:
+
+{{> examples_abide_events}}
+
+***
+
+## Using the JavaScript
+
+<div class="panel">
+  {{!-- TODO FIX JAVASCRIPT PATH --}}
+  Before you can use Abide you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../JavaScript.html) on setting that up.
+</div>
+
+Just add `foundation.abide.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_javascript}}
+
+Required Foundation Library: `foundation.abide.js`
+
+### Optional JavaScript Configuration
+
+{{> examples_abide_javascript_options}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/abide";
+```
+{{/markdown}}

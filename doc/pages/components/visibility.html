@@ -1,0 +1,52 @@
+---
+title: Visibility
+layout: doc/layouts/default.html
+---
+
+# Visibility Classes
+
+<h3 class="subheader">Visibility classes let you show or hide elements based on screen size or device orientation. You can use visibility classes to control which elements users see depending on their browsing environment.</h3>
+
+***
+
+{{> examples_visibility_basic}}
+
+***
+
+### Show by Screen Size
+
+In this example, we use the **show** visibility classes to show certain strings of text based on the device on which users view a page. If their browser meets the class's conditions, the element will be shown. If not, it will be hidden.
+
+{{> examples_visibility_show}}
+
+### Hide by Screen Size
+
+This example shows the opposite: It uses the **hide** visibility classes to state which elements should disappear based on your device's screen size or orientation. Users will see elements on every browser **except** those that meet these conditions.
+
+{{> examples_visibility_hide}}
+
+### Orientation Detection
+
+This straightforward example shows how two strings of text determine whether or not an element is visible in different orientations. This will change on mobile devices when you rotate the device. On desktop, the orientation is almost always reported as landscape.
+
+{{> examples_visibility_orientation}}
+
+### Touch Detection
+
+Finally, there are visibility classes to hide or show content based on whether a device supports touch (as determined by Modernizr).
+
+{{> examples_visibility_touch}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/visibility";
+```
+{{/markdown}}
