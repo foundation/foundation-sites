@@ -390,7 +390,7 @@
       window_half = $(window).height() / 2;
       tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight());
 
-      if (tipOffset > 0) {
+      if (tipOffset != 0) {
         $('html, body').animate({
           scrollTop: tipOffset
         }, this.settings.scroll_speed, 'swing');
