@@ -335,6 +335,11 @@ $select-bg-color: #fafafa !default;
         border-color: $input-focus-border-color;
       }
     }
+
+    select::-ms-expand {
+      display:none;
+    }
+    
     @-moz-document url-prefix() {
       select { background: $select-bg-color; }
       select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
