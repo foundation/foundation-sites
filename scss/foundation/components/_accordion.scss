@@ -31,7 +31,7 @@ $accordion-content-active-bg-color: #fff !default;
           color: $accordion-navigation-font-color;
           padding: $accordion-navigation-padding;
           display: block;
-          font-family: $body-font-family;
+          font-family: $accordion-navigation-font-family;
           font-size: $accordion-navigation-font-size;
           &:hover { background: $accordion-navigation-hover-bg-color; }
         }
