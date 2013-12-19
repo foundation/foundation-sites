@@ -9,7 +9,7 @@
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
-          '<div class="visible-img" style="display: none"><img src="//:0">' +
+          '<div class="visible-img" style="display: none"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" width="0" height="0" alt="" />' +
           '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
           '<a href="#" class="clearing-main-next"><span></span></a></div>'
       },
