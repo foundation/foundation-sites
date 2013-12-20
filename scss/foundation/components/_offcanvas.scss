@@ -240,6 +240,7 @@ $menu-slide: "transform 500ms ease" !default;
     left:0;
     right:0;
     z-index: 1002;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 
     @media #{$medium-up} {
       &:hover {
