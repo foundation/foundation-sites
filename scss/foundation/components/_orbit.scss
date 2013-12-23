@@ -294,14 +294,15 @@ $preloader-class: "preloader" !default;
       top: 10px;
       float: none;
       text-align: center;
-      display: inline-block;
+      display: block;
 
       li {
-        display: block;
+        display: inline-block;
         width: $orbit-bullet-radius;
         height: $orbit-bullet-radius;
         background: $orbit-bullet-nav-color;
-        float: $default-float;
+        // float: $default-float;
+        float: none;
         margin-#{$opposite-direction}: 6px;
         @include radius(1000px);
 
