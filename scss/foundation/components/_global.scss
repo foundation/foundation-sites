@@ -17,9 +17,6 @@ $base-font-size: 100% !default;
 // $base-line-height is 24px while $base-font-size is 16px
 $base-line-height: 150% !default;
 
-// Use Open Sans font
-$include-open-sans: true !default;
-
 //
 // Global Foundation Mixins
 //
@@ -276,9 +273,6 @@ $cursor-text-value: text !default;
 
 
 @include exports("global") {
-  @if $include-open-sans {
-    @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
-  }
   // Used to provide media query values for javascript components.
   // Forward slash placed around everything to convince PhantomJS to read the value.
   meta.foundation-mq-small {
