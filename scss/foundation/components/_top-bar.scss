@@ -199,18 +199,21 @@ meta.foundation-mq-topbar {
           padding-#{$default-float}: 40px;
 
           a {
-            text-indent: -48px;
-            width: 34px;
+            // text-indent: -48px;
             height: 34px;
             line-height: 33px;
             padding: 0;
+            padding-right: 25px;
             color: $topbar-menu-link-color;
+            position: relative;
 
-            span {
+            &::after {
+              content:"";
               position: absolute;
               #{$opposite-direction}: 0;
               display: block;
               width: 16px;
+              top:0;
               height: 0;
               // Shh, don't tell, but box-shadows create the menu icon :)
               @if $experimental {
