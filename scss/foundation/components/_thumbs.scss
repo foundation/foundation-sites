@@ -40,6 +40,7 @@ $thumb-transition-speed: 200ms !default;
   line-height: 0;
   display: inline-block;
   border: $thumb-border-style $border-width $thumb-border-color;
+  max-width: 100%;
   @if $experimental {
     -webkit-box-shadow: $box-shadow;
   }
@@ -65,7 +66,5 @@ $thumb-transition-speed: 200ms !default;
 
       &.radius { @include radius($thumb-radius); }
     }
-    a.th { display: inline-block; max-width:100%; }
-
   }
 }

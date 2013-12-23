@@ -240,11 +240,11 @@ $total-columns: 12 !default;
         }
       }
     }
-    @media #{$xlarge-up} {
-      @include grid-html-classes($size:xlarge);
-    }
-    @media #{$xxlarge-up} {
-      @include grid-html-classes($size:xxlarge);
-    }
+    // @media #{$xlarge-up} {
+    //   @include grid-html-classes($size:xlarge);
+    // }
+    // @media #{$xxlarge-up} {
+    //   @include grid-html-classes($size:xxlarge);
+    // }
   }
 }
