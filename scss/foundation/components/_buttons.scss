@@ -30,7 +30,7 @@ $button-font-align: center !default;
 $button-function-factor: -20% !default;
 
 // We use these to control button border styles.
-$button-border-width: 1px !default;
+$button-border-width: 0px !default;
 $button-border-style: solid !default;
 
 // We use this to set the default radius used throughout the core.
@@ -51,6 +51,8 @@ $button-disabled-opacity: 0.7 !default;
 
 @mixin button-base($style:true, $display:$button-display) {
   @if $style {
+    border-style: $button-border-style;
+    border-width: $button-border-width;
     cursor: $cursor-pointer-value;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
