@@ -43,8 +43,8 @@ $marketing-oc-width: 84%;
     .marketing-right-off-canvas-menu { right: -($marketing-oc-width); }
 
     // Snap them in place
-    .move-left > .inner-wrap { right: $marketing-oc-width; }
-    .move-right > .inner-wrap { left: $marketing-oc-width; }
+    &.move-left > .inner-wrap { right: $marketing-oc-width; }
+    &.move-right > .inner-wrap { left: $marketing-oc-width; }
   }
 
 }

@@ -368,7 +368,7 @@ $menu-slide: "transform 500ms ease" !default;
   @mixin translate($tx,$ty) {
     -webkit-transform: translate($tx,$ty);
     -moz-transform: translate($tx,$ty);
-    -ms-transform: translate($tx,$ty);
+    // -ms-transform: translate($tx,$ty);
     -o-transform: translate($tx,$ty);
     transform: translate($tx,$ty)
   }
