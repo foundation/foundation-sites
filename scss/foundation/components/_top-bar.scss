@@ -391,6 +391,8 @@ meta.foundation-mq-topbar {
               display: block;
             }
           }
+          &.has-form { padding: 8px $topbar-height / 3; }
+          .button { top: auto; }
         }
 
         label {
