@@ -73,8 +73,12 @@
 
           self.close.call(self, $('[data-dropdown-content]'));
         })
-        .on('opened.fndtn.dropdown', '[data-dropdown-content]', this.settings.opened)
-        .on('closed.fndtn.dropdown', '[data-dropdown-content]', this.settings.closed);
+        .on('opened.fndtn.dropdown', '[data-dropdown-content]', function () {
+            self.settings.opened.call(this);
+        })
+        .on('closed.fndtn.dropdown', '[data-dropdown-content]', function () {
+            self.settings.closed.call(this);
+        });
 
       $(window)
         .off('.dropdown')
