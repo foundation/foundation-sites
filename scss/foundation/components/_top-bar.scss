@@ -24,6 +24,7 @@ $topbar-title-font-size: rem-calc(17) !default;
 $topbar-dropdown-bg: #333 !default;
 $topbar-dropdown-link-color: #fff !default;
 $topbar-dropdown-link-bg: #333 !default;
+$topbar-dropdown-link-weight: normal !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.4 !default;
@@ -380,7 +381,7 @@ meta.foundation-mq-topbar {
           height: auto;
 
           a {
-            font-weight: normal;
+            font-weight: $topbar-dropdown-link-weight;
             padding: 8px $topbar-height / 3;
             &.parent-link {
               font-weight: $topbar-link-weight;
