@@ -267,7 +267,7 @@
       var uuid = this.uuid(),
           current_uuid = el.data('uuid');
 
-      if (current_uuid) return this.cache[current_uuid];
+      if (this.cache[current_uuid]) return this.cache[current_uuid];
 
       el.attr('data-uuid', uuid);
 
