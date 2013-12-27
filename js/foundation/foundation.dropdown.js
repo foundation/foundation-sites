@@ -36,7 +36,9 @@
           var $this = $(this);
           clearTimeout(self.timeout);
 
-          self.closeall.call(self);
+          if($(e.target).data('dropdown')) {
+            self.closeall.call(self);
+          }
 
           if ($this.data('dropdown')) {
             var dropdown = $('#' + $this.data('dropdown')),
