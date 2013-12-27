@@ -28,11 +28,15 @@
           var settings = $(this).data('dropdown-init') || self.settings;
           e.preventDefault();
 
+          self.closeall.call(self);
+
           if (!settings.is_hover || Modernizr.touch) self.toggle($(this));
         })
         .on('mouseenter.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
           var $this = $(this);
           clearTimeout(self.timeout);
+
+          self.closeall.call(self);
 
           if ($this.data('dropdown')) {
             var dropdown = $('#' + $this.data('dropdown')),
@@ -96,6 +100,13 @@
             .removeClass(self.settings.active_class);
           $(this).trigger('closed');
         }
+      });
+    },
+
+    closeall: function() {
+      var self = this;
+      $.each($('[data-dropdown-content]'), function() {
+        self.close.call(self, $(this))
       });
     },
 
