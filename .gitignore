@@ -33,3 +33,4 @@ docs/public/*
 *.rbenv-version
 *.ruby-version
 /docs2/public/*
+.settings
