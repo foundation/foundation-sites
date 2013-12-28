@@ -57,13 +57,14 @@
       form
         .off('.abide')
         .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
-          var is_ajax = /ajax/i.test($(this).attr('data-abide'));
-          return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
+          var is_ajax = /ajax/i.test($(this).attr('data-abide')),
+              is_all = /all/i.test($(this).attr('data-abide'));
+          return self.validate($(this).find('input, textarea, select').get(), e, is_all, is_ajax);
         })
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            self.validate([this], e);
+            self.validate([this], e, /all/i.test($(this).attr('data-abide')));
           })
           .on('keydown.fndtn.abide', function (e) {
             var settings = $(this).closest('form').data('abide-init');
@@ -74,8 +75,8 @@
           });
     },
 
-    validate : function (els, e, is_ajax) {
-      var validations = this.parse_patterns(els),
+    validate : function (els, e, is_all, is_ajax) {
+      var validations = this.parse_patterns(els, is_all),
           validation_count = validations.length,
           form = $(els[0]).closest('form'),
           submit_event = /submit/.test(e.type);
@@ -100,12 +101,15 @@
       return true;
     },
 
-    parse_patterns : function (els) {
+    parse_patterns : function (els, is_all) {
       var count = els.length,
           el_patterns = [];
 
       for (var i = count - 1; i >= 0; i--) {
-        el_patterns.push(this.pattern(els[i]));
+        if(is_all || els[i].hasAttribute('data-abide-field'))
+        {
+          el_patterns.push(this.pattern(els[i]));
+        }
       }
 
       return this.check_validation_and_apply_styles(el_patterns);
@@ -145,11 +149,11 @@
             is_checkbox = el.type === "checkbox",
             valid_length = (required) ? (el.value.length > 0) : true;
 
-        if (is_radio && required) {
+        if (is_radio) {
           validations.push(this.valid_radio(el, required));
-        } else if (is_checkbox && required) {
+        } else if (is_checkbox) {
           validations.push(this.valid_checkbox(el, required));
-        } else if (is_equal && required) {
+        } else if (is_equal) {
           validations.push(this.valid_equal(el, required));
         } else {
           if (el_patterns[i][1].test(value) && valid_length ||
@@ -185,7 +189,7 @@
           valid = false;
 
       for (var i=0; i < count; i++) {
-        if (group[i].checked) valid = true;
+        if (group[i].checked || !required) valid = true;
       }
 
       for (var i=0; i < count; i++) {
