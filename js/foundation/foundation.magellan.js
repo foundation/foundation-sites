@@ -71,7 +71,9 @@
               if (fixed_position) {
                 $expedition.addClass('fixed');
                 $expedition.css({position:"fixed", top:0});
-                self.magellan_placeholder.show();
+                if($expedition.css('display') =='block') {
+                 self.magellan_placeholder.show();
+                }
               } else {
                 $expedition.removeClass('fixed');
                 $expedition.css({position:"", top:""});
