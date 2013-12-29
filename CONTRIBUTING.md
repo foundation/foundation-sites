@@ -22,7 +22,9 @@ Now you should have two new commands available. `grunt qunit` will execute all o
 
 If you have a compass project and would like updated assets you can run the following command at any given time from within your project directory:
 
+```bash
 compass create -r zurb-foundation --using foundation
+```
 
 ## Development
 
@@ -46,9 +48,9 @@ bundle exec compass create -r zurb-foundation --using foundation --force
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Test your changes to the best of your ability.  We've provided a test/ folder, feel free to add to it as necessary.
-4. Update the documentation to reflect your changes if they add or changes current functionality. Make sure you are in the docs folder, then run `bundle && bundle exec foreman start` to compile to documentation.
-5. Commit your changes (`git commit -am 'Added some feature'`)
-6. Push to the branch (`git push origin my-new-feature`)
-7. Create new Pull Request
+1. Create your feature branch (`git checkout -b my-new-feature`)
+1. Test your changes to the best of your ability.  We've provided a test/ folder, feel free to add to it as necessary.
+4. Update the documentation to reflect your changes if they add or changes current functionality. Make sure you are in the docs folder, then run `bundle && bundle exec foreman start` to compile 1o documentation.
+1. Commit your changes (`git commit -am 'Added some feature'`)
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create new Pull Request
