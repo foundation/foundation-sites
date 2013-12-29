@@ -14,8 +14,6 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         marked: {
-          gfm: true,
-          sanitize: false,
           highlight: function(code, lang) {
             if (lang === undefined) lang = 'bash';
             if (lang === 'html') lang = 'xml';
@@ -29,9 +27,10 @@ module.exports = function(grunt) {
           flatten: false,
           assets: 'dist/docs/assets',
           data: ['doc/data/*.json'],
-          partials: ['doc/includes/**/*.{html,scss}'],
           helpers: ['doc/helpers/*.js'],
-          layout: 'doc/layouts/default.html'
+          partials: ['doc/includes/**/*.{html,scss}'],
+          layoutdir: 'doc/layouts',
+          layout: 'default.html'
         },
         expand: true,
         cwd: 'doc/pages',
@@ -186,16 +185,16 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-rsync');
-  grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-rsync');
+  grunt.loadNpmTasks('grunt-sass');
 
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);

@@ -36,15 +36,14 @@
           <div class="row">
             <div class="large-3 medium-4 columns">
               <div class="hide-for-small">
-              {{> sidebar}}  
+              {{> sidebar}}
               </div>
             </div>
             <div class="large-9 medium-8 columns">
-
-{{#markdown}}
-{{> body}}
-{{/markdown}}
-
+              <h1>{{title}}</h1>
+              {{#markdown}}
+                {{> body}}
+              {{/markdown}}
             </div>
           </div>
 
