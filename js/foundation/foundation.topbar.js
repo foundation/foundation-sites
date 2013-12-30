@@ -28,7 +28,7 @@
         var topbar = $(this),
             settings = topbar.data('topbar-init'),
             section = $('section', this),
-            titlebar = $('> ul', this).first();
+            titlebar = topbar.children().filter('ul').first();
 
         topbar.data('index', 0);
 
@@ -293,7 +293,7 @@
       var self = this,
           settings = topbar.data('topbar-init'),
           section = $('section', topbar),
-          titlebar = $('> ul', topbar).first();
+          titlebar = $(this).children().filter('ul').first();
 
       // Pull element out of the DOM for manipulation
       section.detach();
