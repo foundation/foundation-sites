@@ -104,6 +104,7 @@ $menu-slide: "transform 500ms ease" !default;
     @include kill-flicker;
     @include wrap-base;
     overflow: hidden;
+    height: 100%;
 }
 
 // INNER WRAP
@@ -112,6 +113,7 @@ $menu-slide: "transform 500ms ease" !default;
     @include kill-flicker;
     @include wrap-base;
     @include clearfix;
+    height: 100%;
 
     -webkit-transition: -webkit-#{$menu-slide};
     -moz-transition: -moz-#{$menu-slide};
