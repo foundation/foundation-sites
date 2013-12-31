@@ -183,6 +183,21 @@ $base-line-height: 150% !default;
   }
 }
 
+// @mixins
+//
+// We use this to translate elements in 2D
+// $horizontal: Default: 0
+// $vertical: Default: 0
+@mixin translate2d($horizontal:0, $vertical:0) {
+  @if $experimental {
+    -webkit-transform: translate($horizontal,$vertical);
+    -moz-transform: translate($horizontal,$vertical);
+    -ms-transform: translate($horizontal,$vertical);
+    -o-transform: translate($horizontal,$vertical);
+  }
+  transform: translate($horizontal,$vertical)
+}
+
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
