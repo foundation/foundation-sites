@@ -5,7 +5,7 @@
     name : 'tooltip',
 
     version : '5.0.0',
-
+    
     settings : {
       additional_inheritable_classes : [],
       tooltip_class : '.tooltip',
@@ -30,41 +30,48 @@
       
       $(this.scope)
         .off('.tooltip')
-        .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip', 
-          '[data-tooltip]', function (e) {
+        .on('mouseenter.fndtn.tooltip touchstart.fndtn.tooltip', 
+            '[data-tooltip]:not(".open")', function (e) {
           var $this = $(this),
               settings = $.extend({}, self.settings, self.data_options($this)),
-              is_touch = false;
-
-          if ($this.hasClass('open')) {
-            if(Modernizr.touch && /touchstart/i.test(e.type)) { e.preventDefault(); }
-            self.hide($this);
-          }
-          else
-          {
-            if(settings.disable_for_touch && Modernizr.touch && /touchstart/i.test(e.type))
-            {
+              is_touch = /touchstart/i.test(e.type);
+            
+            if(settings.disable_for_touch && is_touch) {
               return;
             }
-            else if(!settings.disable_for_touch && Modernizr.touch && /touchstart/i.test(e.type))
-            {
+            else if(!settings.disable_for_touch && self.is_touch) {
               e.preventDefault();
-              $('.tooltip.open').hide();
-              is_touch = true;
             }
-            self.showOrCreateTip($this, is_touch);
+            
+            // Close all tooltips so they don't overlap
+            $('.open[data-tooltip]').each(function() {
+                self.hide($(this));
+            });
+            
+            if(is_touch) {
+              $this.data('tooltip-open-event-type', 'touch');
+            } else {
+              $this.data('tooltip-open-event-type', 'mouse');
+            }
+            
+            self.showOrCreateTip($this);
+        })
+        .on('mouseleave.fndtn.tooltip touchstart.fndtn.tooltip', '.open[data-tooltip]', function (e) {
+          if($(this).data('tooltip-open-event-type') == 'touch' && e.type == 'mouseleave') {
+            return;
           }
+          self.hide($(this));
         });
     },
 
-    showOrCreateTip : function ($target, is_touch) {
+    showOrCreateTip : function ($target) {
       var $tip = this.getTip($target);
       
       if ($tip && $tip.length > 0) {
         return this.show($target);
       }
 
-      return this.create($target, is_touch);
+      return this.create($target);
     },
 
     getTip : function ($target) {
@@ -91,7 +98,7 @@
       return (id && id.length > 0) ? id : dataSelector;
     },
 
-    create : function ($target, is_touch) {
+    create : function ($target) {
       var self = this,
           settings = $.extend({}, this.settings, this.data_options($target)),
           tip_template = this.settings.tip_template;
@@ -105,9 +112,9 @@
           classes = this.inheritable_classes($target);
 
       $tip.addClass(classes).appendTo(settings.append_to);
-      if (is_touch) {
+      if ($target.data('tooltip-open-event-type') == 'touch') {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('touchstart.fndtn.tooltip', function(e) {
+        $tip.on('click.fndtn.tooltip touchstart.fndtn.tooltip', function(e) {
           self.hide($target);
         });
       }
