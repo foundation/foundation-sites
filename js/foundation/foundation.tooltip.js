@@ -5,7 +5,7 @@
     name : 'tooltip',
 
     version : '5.0.0',
-    
+
     settings : {
       additional_inheritable_classes : [],
       tooltip_class : '.tooltip',
@@ -80,10 +80,10 @@
 
     getTip : function ($target) {
       var selector = this.selector($target),
+          settings = $.extend({}, this.settings, this.data_options($target)),
           tip = null;
 
       if (selector) {
-        var settings = $.extend({}, this.settings, this.data_options($('[data-tooltip="' + selector + '"]'))),
         tip = $('[data-selector="' + selector + '"]' + settings.tooltip_class);
       }
 
