@@ -53,14 +53,18 @@
             } else {
               $this.data('tooltip-open-event-type', 'mouse');
             }
-            
+
             self.showOrCreateTip($this);
         })
         .on('mouseleave.fndtn.tooltip touchstart.fndtn.tooltip', '.open[data-tooltip]', function (e) {
           if($(this).data('tooltip-open-event-type') == 'touch' && e.type == 'mouseleave') {
             return;
           }
-          self.hide($(this));
+          else if($(this).data('tooltip-open-event-type') == 'mouse' && e.type == 'touchstart') {
+            self.convert_to_touch($(this));
+          } else {
+            self.hide($(this));
+          }
         });
     },
 
@@ -99,8 +103,7 @@
     },
 
     create : function ($target) {
-      var self = this,
-          settings = $.extend({}, this.settings, this.data_options($target)),
+      var settings = $.extend({}, this.settings, this.data_options($target)),
           tip_template = this.settings.tip_template;
       
       if(typeof settings.tip_template === 'string' && window.hasOwnProperty(settings.tip_template))
@@ -112,12 +115,6 @@
           classes = this.inheritable_classes($target);
 
       $tip.addClass(classes).appendTo(settings.append_to);
-      if ($target.data('tooltip-open-event-type') == 'touch') {
-        $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('click.fndtn.tooltip touchstart.fndtn.tooltip', function(e) {
-          self.hide($target);
-        });
-      }
       $target.removeAttr('title').attr('title','');
       this.show($target);
     },
@@ -188,8 +185,27 @@
       return $.trim(filtered);
     },
 
+    convert_to_touch : function($target) {
+      var self = this,
+          $tip = self.getTip($target),
+          settings = $.extend({}, self.settings, self.data_options($target));
+
+      if($tip.find('.tap-to-close').length === 0) {
+        $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
+        $tip.on('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose', function(e) {
+          self.hide($target);
+        });
+      }
+      
+      $target.data('tooltip-open-event-type', 'touch');
+    },
+
     show : function ($target) {
       var $tip = this.getTip($target);
+
+      if ($target.data('tooltip-open-event-type') == 'touch') {
+        this.convert_to_touch($target);
+      }
 
       this.reposition($target, $tip, $target.attr('class'));
       $target.addClass('open');
@@ -199,8 +215,11 @@
     hide : function ($target) {
       var $tip = this.getTip($target);
       
-      $target.removeClass('open');
-      $tip.fadeOut(150);
+      $tip.fadeOut(150, function() {
+        $tip.find('.tap-to-close').remove();
+        $tip.off('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose');
+        $target.removeClass('open');
+      });
     },
 
     // deprecate reload
