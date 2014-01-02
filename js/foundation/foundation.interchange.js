@@ -53,10 +53,18 @@
 
             return trigger(el[0].src);
           }
+          
           var last_path = el.data('interchange-last-path');
 
           if (last_path == path) return;
 
+          if (new RegExp("/^.(\.jpg|\.jpeg|\.png|\.gif|\.tiff|\.bmp)\??|#?./",'i').test(path)){
+
+              $(el).css('background-image', 'url('+path+')');
+
+              return trigger(path);
+          }
+          
           return $.get(path, function (response) {
             el.html(response);
             el.data('interchange-last-path', path);
