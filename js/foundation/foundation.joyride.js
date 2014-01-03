@@ -456,7 +456,7 @@
 
             this.settings.$next_tip.css({
               top: this.settings.$target.offset().top,
-              left: (this.outerWidth(this.settings.$target) + this.settings.$target.offset().left + nub_width)});
+              left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left + nub_width)});
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'left');
 
@@ -464,7 +464,7 @@
 
             this.settings.$next_tip.css({
               top: this.settings.$target.offset().top,
-              left: (this.settings.$target.offset().left - this.outerWidth(this.settings.$next_tip) - nub_width)});
+              left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_width)});
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'right');
 
