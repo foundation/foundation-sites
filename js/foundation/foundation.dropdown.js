@@ -36,10 +36,6 @@
           var $this = $(this);
           clearTimeout(self.timeout);
 
-          if($(e.target).data('dropdown')) {
-            self.closeall.call(self);
-          }
-
           if ($this.data('dropdown')) {
             var dropdown = $('#' + $this.data('dropdown')),
                 target = $this;
@@ -49,6 +45,11 @@
           }
 
           var settings = target.data('dropdown-init') || self.settings;
+          
+          if($(e.target).data('dropdown') && settings.is_hover) {
+            self.closeall.call(self);
+          }
+          
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
         .on('mouseleave.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
