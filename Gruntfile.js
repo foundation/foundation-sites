@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    vendor: grunt.file.readJSON('.bowerrc').directory,
 
     foundation: {
       js: ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
@@ -13,8 +14,6 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         marked: {
-          gfm: true,
-          sanitize: false,
           highlight: function(code, lang) {
             if (lang === undefined) lang = 'bash';
             if (lang === 'html') lang = 'xml';
@@ -28,9 +27,10 @@ module.exports = function(grunt) {
           flatten: false,
           assets: 'dist/docs/assets',
           data: ['doc/data/*.json'],
-          partials: ['doc/includes/**/*.{html,scss}'],
           helpers: ['doc/helpers/*.js'],
-          layout: 'doc/layouts/default.html'
+          partials: ['doc/includes/**/*.{html,scss}'],
+          layoutdir: 'doc/layouts',
+          layout: 'default.html'
         },
         expand: true,
         cwd: 'doc/pages',
@@ -76,17 +76,17 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/modernizr.js': ['<%= vendor %>/modernizr/modernizr.js'],
+          'dist/docs/assets/js/all.js': ['<%= vendor %>/fastclick/lib/fastclick.js', '<%= vendor %>/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       },
       vendor: {
         files: {
-          'dist/assets/js/vendor/placeholder.js': 'bower_components/jquery-placeholder/jquery.placeholder.js',
-          'dist/assets/js/vendor/fastclick.js': 'bower_components/fastclick/lib/fastclick.js',
-          'dist/assets/js/vendor/jquery.cookie.js': 'bower_components/jquery.cookie/jquery.cookie.js',
-          'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/jquery.js',
-          'dist/assets/js/vendor/modernizr.js': 'bower_components/modernizr/modernizr.js'
+          'dist/assets/js/vendor/placeholder.js': '<%= vendor %>/jquery-placeholder/jquery.placeholder.js',
+          'dist/assets/js/vendor/fastclick.js': '<%= vendor %>/fastclick/lib/fastclick.js',
+          'dist/assets/js/vendor/jquery.cookie.js': '<%= vendor %>/jquery.cookie/jquery.cookie.js',
+          'dist/assets/js/vendor/jquery.js': '<%= vendor %>/jquery/jquery.js',
+          'dist/assets/js/vendor/modernizr.js': '<%= vendor %>/modernizr/modernizr.js'
         }
       }
     },
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
         files: [
           {expand:true, cwd: 'doc/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/docs/assets/', filter:'isFile'},
           {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
-          {src: 'bower_components/jquery/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
+          {src: '<%= vendor %>/jquery/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
           {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
           {src: 'bower.json', dest: 'dist/assets/'}
         ]
@@ -185,16 +185,16 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-rsync');
-  grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-rsync');
+  grunt.loadNpmTasks('grunt-sass');
 
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
