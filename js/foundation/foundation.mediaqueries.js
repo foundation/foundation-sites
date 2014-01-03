@@ -34,9 +34,17 @@
 
 /*
 	$(window).resize(function() {
-		if($('body').attr('data-mediaquery') == "small")
+		var query = $('body').attr('data-mediaquery');
+		
+		if(query == "small")
 			// Small layout
+		else if(query == "medium")
+			// Medium layout
+		else if(query == "large")
+			// Large layout
+		else if(query == "xlarge")
+			// XLarge layout
 		else
-			//this
+			// XXLarge layout
 	});
 */
