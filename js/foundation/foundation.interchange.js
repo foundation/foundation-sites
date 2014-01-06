@@ -44,7 +44,6 @@
           //   console.log($(this).html(), a, b, c);
           // });
 
-          console.log("REPLACE");
           if (/IMG/.test(el[0].nodeName)) {
             var orig_path = el[0].src;
 
@@ -61,10 +60,8 @@
 
           var regex = "/^.(\.jpg|\.jpeg|\.png|\.gif|\.tiff|\.bmp)\??|#?./";
 
-          console.log(new RegExp(regex,'i').test(path),path, last_path );
           if (new RegExp(regex,'i').test(path)){
 
-              console.log("Passed");
               $(el).css('background-image', 'url('+path+')');
 
               return trigger(path);
@@ -82,7 +79,7 @@
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
-      console.log("INIT interchange");
+
       this.data_attr = 'data-' + this.settings.load_attr;
 
       $.extend(true, this.settings, method, options);
@@ -236,7 +233,6 @@
 
     convert_directive : function (directive) {
 
-      console.log("convert_directive",this.trim(directive));
       var trimmed = this.trim(directive);
 
       if (trimmed.length > 0) {
