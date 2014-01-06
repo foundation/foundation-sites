@@ -310,7 +310,10 @@ $cursor-text-value: text !default;
     }
 
     html,
-    body { font-size: $base-font-size; }
+    body {
+      font-size: $base-font-size;
+      height: 100%;
+    }
 
     // Default body styles
     body {
