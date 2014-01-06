@@ -412,21 +412,38 @@
     init: function (scope, method, options) {
       var self = this;
 
-      if (typeof method === 'object') {
-        $.extend(true, self.settings, method);
-      }
+      this.bindings(method, options);
+    },
 
-      if ($(scope).is('[data-orbit]')) {
-        var $el = $(scope);
-        var opts = self.data_options($el);
-        new Orbit($el, $.extend({},self.settings, opts));
-      }
+    events : function () {
+      var self = this;
 
-      $('[data-orbit]', scope).each(function(idx, el) {
-        var $el = $(el);
-        var opts = self.data_options($el);
-        new Orbit($el, $.extend({},self.settings, opts));
-      });
+      if ($(self.scope).is('[data-orbit]')) {
+        var $el = $(self.scope);
+        $el.data(self.name + '-instance', new Orbit($el, $el.data('orbit-init')));
+      } else {
+        $('[data-orbit]', self.scope).each(function(idx, el) {
+          var $el = $(el);
+          $el.data(self.name + '-instance', new Orbit($el, $el.data('orbit-init')));
+        });
+      }
+    },
+
+    reflow : function () {
+      var self = this;
+
+      if ($(self.scope).is('[data-orbit]')) {
+        var $el = $(self.scope);
+        var instance = $el.data(self.name + '-instance');
+        instance.compute_dimensions();
+      } else {
+        $('[data-orbit]', self.scope).each(function(idx, el) {
+          var $el = $(el);
+          var opts = self.data_options($el);
+          var instance = $el.data(self.name + '-instance');
+          instance.compute_dimensions();
+        });
+      }
     }
   };
 
