@@ -4,10 +4,11 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '5.0.0',
+    version : '5.0.3',
 
     settings : {
       focus_on_invalid : true,
+      error_labels: true, // labels with a for="inputId" will recieve an `error` class
       timeout : 1000,
       patterns : {
         alpha: /[a-zA-Z]+/,
@@ -143,6 +144,7 @@
             is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
+            label = $('label[for="' + el.getAttribute('id') + '"]'),
             valid_length = (required) ? (el.value.length > 0) : true;
 
         if (is_radio && required) {
@@ -155,9 +157,13 @@
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
             $(el).removeAttr('data-invalid').parent().removeClass('error');
+            if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
+
             validations.push(true);
           } else {
             $(el).attr('data-invalid', '').parent().addClass('error');
+            if (label.length > 0 && this.settings.error_labels) label.addClass('error');
+
             validations.push(false);
           }
         }

@@ -469,6 +469,19 @@ $select-bg-color: #fafafa !default;
         @include form-error-message;
       }
 
+      > label {
+        > small {
+          color: scale-color($form-label-font-color, $lightness: 15%);
+          background: transparent;
+          padding: 0;
+          text-transform: capitalize;
+          font-style: normal;
+          font-size: 60%;
+          margin: 0;
+          display: inline;
+        }
+      }
+
       span.error-message {
         display: block;
       }
