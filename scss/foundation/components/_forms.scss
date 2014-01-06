@@ -409,6 +409,11 @@ $select-bg-color: #fafafa !default;
       }
     }
     
+    /* Respect enforced amount of rows for textarea */
+    textarea[rows] {
+      height: auto;
+    }
+    
     /* Add height value for select elements to match text input height */
     select {
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
