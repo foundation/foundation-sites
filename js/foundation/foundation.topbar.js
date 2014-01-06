@@ -113,6 +113,10 @@
             var $this = $(this),
                 $selectedLi = $this.closest('li');
 
+            if (isNaN(topbar.data('index'))) {
+              topbar.data('index', 0);
+            }
+
             topbar.data('index', topbar.data('index') + 1);
             $selectedLi.addClass('moved');
             if (!self.rtl) {
