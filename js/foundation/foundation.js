@@ -220,7 +220,7 @@
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
 
-        return this.libs[lib].init.apply(this.libs[lib], args);
+        return this.libs[lib].init.apply(this.libs[lib], [args]);
       }
 
       return function () {};
