@@ -557,13 +557,21 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           height: $topbar-height;
         }
 
-        // Position overrides for ul.right
-        ul.right {
+        // Position overrides for ul.right and ul.left
+        .right {
           li .dropdown {
             left: auto;
             right: 0;
 
             li .dropdown { right: 100%; }
+          }
+        }
+        .left {
+          li .dropdown {
+            right: auto;
+            left: 0;
+
+            li .dropdown { left: 100%; }
           }
         }
       }
