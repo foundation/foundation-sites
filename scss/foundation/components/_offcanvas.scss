@@ -10,6 +10,7 @@ $tabbar-height: rem-calc(45) !default;
 $tabbar-icon-width: $tabbar-height !default;
 $tabbar-line-height: $tabbar-height !default;
 $tabbar-color: #FFF !default;
+$tabbar-link-color: #FFF !default;
 $tabbar-middle-padding: 0 rem-calc(10) !default;
 
 // Off Canvas Divider Styles
@@ -145,6 +146,7 @@ $menu-slide: "transform 500ms ease" !default;
     margin: $tabbar-header-margin;
   }
   h1,h2,h3,h4 { font-size: $h5-font-size; }
+  a { color: $tabbar-link-color; }
 }
 
 // SMALL SECTIONS
@@ -291,7 +293,6 @@ $menu-slide: "transform 500ms ease" !default;
     display: block;
     line-height: $tabbar-menu-icon-line-height;
     padding: $tabbar-menu-icon-padding;
-    color: $topbar-menu-link-color;
     position: relative;
 
     // this is the actual hamburger icon
