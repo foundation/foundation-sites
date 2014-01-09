@@ -115,7 +115,7 @@ $dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + rem-calc(3) !default;
 
 @include exports("dropdown-button") {
   @if $include-html-button-classes {
-    .dropdown.button { @include dropdown-button;
+    .dropdown.button, button.dropdown { @include dropdown-button;
       &.tiny { @include dropdown-button(tiny,$base-style:false); }
       &.small { @include dropdown-button(small,$base-style:false); }
       &.large { @include dropdown-button(large,$base-style:false); }
