@@ -179,7 +179,7 @@
     },
 
     update_nodes : function () {
-      var nodes = this.S('[' + this.data_attr + ']:not(img)'),
+      var nodes = this.S('[' + this.data_attr + ']').not('img'),
           count = nodes.length,
           loaded_count = 0,
           data_attr = this.data_attr;
