@@ -10,6 +10,14 @@ module.exports = function(grunt) {
       scss: ['scss/foundation.scss']
     },
 
+    jst: {
+      compile: {
+        files: {
+          'dist/docs/assets/js/templates.js': ['doc/templates/*.html']
+        }
+      }
+    },
+
     assemble: {
       options: {
         marked: {
@@ -77,7 +85,7 @@ module.exports = function(grunt) {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
           'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/all.js': ['bower_components/lodash/dist/lodash.min.js', 'bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       },
       vendor: {
@@ -155,6 +163,11 @@ module.exports = function(grunt) {
         tasks: ['copy', 'concat', 'uglify'],
         options: {livereload:true}
       },
+      jst: {
+        files: ['doc/templates/*.html'],
+        tasks: ['jst'],
+        options: {livereload:true}
+      },
       assemble_all: {
         files: ['doc/{includes,layouts}/**/*.html'],
         tasks: ['assemble'],
@@ -187,6 +200,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -195,11 +209,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-newer');
+
 
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
 
-  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
