@@ -10,6 +10,7 @@ Inspired by http://ianstormtaylor.com/oocss-plus-sass-is-the-best-way-to-css/
 USE:
 
 *Import both _grid AND _grid-placeholders.
+
 *Apply the styles to your desired element with "extend":
 
     @extend %small-block-grid-2;
