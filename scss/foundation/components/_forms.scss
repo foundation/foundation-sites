@@ -38,6 +38,7 @@ $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
 $legend-bg: #fff !default;
+$legend-font-size: 1rem !default;
 $legend-font-weight: bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
@@ -84,10 +85,12 @@ $select-bg-color: #fafafa !default;
       .column,
       .columns { padding: 0; }
       input {
-        -moz-border-radius-bottom#{$opposite-direction}: 0;
-        -moz-border-radius-top#{$opposite-direction}: 0;
-        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
-        -webkit-border-top-#{$opposite-direction}-radius: 0;
+        @if $experimental {
+          -webkit-border-bottom-#{$opposite-direction}-radius: 0;
+          -webkit-border-top-#{$opposite-direction}-radius: 0;
+        }
+        border-bottom-#{$opposite-direction}-radius: 0;
+        border-top-#{$opposite-direction}-radius: 0
       }
 
     }
@@ -246,6 +249,7 @@ $select-bg-color: #fafafa !default;
 
   // and legend styles
   legend {
+    font-size: $legend-font-size;
     font-weight: $legend-font-weight;
     background: $legend-bg;
     padding: $legend-padding;
@@ -315,7 +319,9 @@ $select-bg-color: #fafafa !default;
     }
 
     select {
-      -webkit-appearance: none !important;
+      @if $experimental {
+        -webkit-appearance: none !important;
+      }
       background:
         $select-bg-color
         url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
@@ -400,8 +406,10 @@ $select-bg-color: #fafafa !default;
     input[type="time"],
     input[type="url"],
     textarea {
-      -webkit-appearance: none;
-      -webkit-border-radius: $input-border-radius;
+      @if $experimental {
+        -webkit-appearance: none;
+        -webkit-border-radius: $input-border-radius;
+      }
       border-radius: $input-border-radius;
       @include form-element;
       @if not $input-include-glowing-effect {
@@ -409,6 +417,11 @@ $select-bg-color: #fafafa !default;
       }
     }
     
+    /* Respect enforced amount of rows for textarea */
+    textarea[rows] {
+      height: auto;
+    }
+
     /* Add height value for select elements to match text input height */
     select {
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
