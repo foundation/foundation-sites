@@ -38,6 +38,7 @@ $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
 $legend-bg: #fff !default;
+$legend-font-size: 1rem !default;
 $legend-font-weight: bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
@@ -248,6 +249,7 @@ $select-bg-color: #fafafa !default;
 
   // and legend styles
   legend {
+    font-size: $legend-font-size;
     font-weight: $legend-font-weight;
     background: $legend-bg;
     padding: $legend-padding;
