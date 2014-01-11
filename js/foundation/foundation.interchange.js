@@ -63,7 +63,7 @@
           if (new RegExp(regex,'i').test(path)){
 
               $(el).css('background-image', 'url('+path+')');
-
+              el.data('interchange-last-path', path);
               return trigger(path);
           }
 
