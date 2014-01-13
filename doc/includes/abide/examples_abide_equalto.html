@@ -1,0 +1,17 @@
+{{#markdown}}
+```html
+<form data-abide>
+  <div class="password-field">
+    <label>Password <small>required</small></label>
+    <input type="password" id="password" required pattern="password">
+    <small class="error">Your password must match the requirements</small>
+  </div>
+  <div class="password-confirmation-field">
+    <label>Confirm Password <small>required</small></label>
+    <input type="password" required pattern="password" data-equalto="password">
+    <small class="error">The password did not match</small>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+```
+{{/markdown}}

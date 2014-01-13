@@ -161,11 +161,20 @@
       }
     };
 
-    self.link_bullet = function(e) {
+    self.link_bullet = function(e) {    
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
-        self._goto(parseInt(index));
+        if(isNaN(parseInt(index)))
+        {
+          var slide = container.find('[data-orbit-slide='+index+']');
+          if (slide.index() != -1) {self._goto(slide.index() + 1);}
+        }
+        else
+        {
+          self._goto(parseInt(index));
+        }
       }
+
     }
 
     self.timer_callback = function() {
@@ -380,7 +389,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '5.0.0',
+    version: '5.0.3',
 
     settings: {
       animation: 'slide',
