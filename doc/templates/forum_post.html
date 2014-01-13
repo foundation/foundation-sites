@@ -6,10 +6,14 @@
             <div class="post-count new already-checked">
                <a href="#">
                <div class="post-count-container new already-checked">
-                  <span class="reply-count new-post already-checked">0</span>
+                  <span class="reply-count new-post already-checked"><%= comments_count %></span>
                </div>
                <div class="total-post-count new total-replies">
-                  <%= comments_count %> Replies
+                  <% if (comments_count == 1) { %>
+                  Reply
+                  <% } else { %>
+                  Replies
+                  <% } %>
                </div>
                </a>
             </div>
@@ -59,10 +63,14 @@
             <div class="post-count new already-checked">
                <a href="<%= url %>">
                <div class="post-count-container new already-checked">
-                  <span class="reply-count new-post already-checked">0</span>
+                  <span class="reply-count new-post already-checked"><%= comments_count %></span>
                </div>
                <div class="total-post-count new total-replies">
-                  <%= comments_count %> Replies
+                  <% if (comments_count == 1) { %>
+                  Reply
+                  <% } else { %>
+                  Replies
+                  <% } %>
                </div>
                </a>
             </div>
