@@ -136,7 +136,7 @@
       }
 
       // generate the tips and insert into dom.
-      if (!this.settings.cookie_monster || this.settings.cookie_monster && $.cookie(this.settings.cookie_name) === null) {
+      if (!this.settings.cookie_monster || this.settings.cookie_monster && !$.cookie(this.settings.cookie_name)) {
         this.settings.$tip_content.each(function (index) {
           var $this = $(this);
           this.settings = $.extend({}, self.defaults, self.data_options($this))
