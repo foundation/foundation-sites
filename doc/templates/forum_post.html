@@ -2,22 +2,35 @@
 <div class="row post impressions new hide-for-small">
    <div class="small-12 columns">
       <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
+         <% if (comments_count > 0) { %>
          <li>
             <div class="post-count new already-checked">
                <a href="#">
                <div class="post-count-container new already-checked">
-                  <span class="reply-count new-post already-checked"><%= comments_count %></span>
+                  <span class="reply-count new-post already-checked">NEW</span>
                </div>
                <div class="total-post-count new total-replies">
                   <% if (comments_count == 1) { %>
-                  Reply
+                  <%= comments_count %> Reply
                   <% } else { %>
-                  Replies
+                  <%= comments_count %> Replies
                   <% } %>
                </div>
                </a>
             </div>
          </li>
+         <% } else { %>
+        <li>
+          <div class="post-count new-general">
+            <a href="<%= url %>">
+              <div class="post-count-container new-general">
+                <span class="reply-count new-general">NEW</span>
+              </div>
+            </a>
+          </div>
+          <a href="<%= url %>"></a>
+        </li>
+         <% } %>
          <li>
            <div class="post-description">
                <h5 class="content-title">
@@ -59,23 +72,38 @@
 <div class="row post impressions new show-for-small">
    <div class="small-12 columns">
       <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
-         <li>
+        <% if (comments_count > 0) { %>
+        <li>
             <div class="post-count new already-checked">
                <a href="<%= url %>">
                <div class="post-count-container new already-checked">
-                  <span class="reply-count new-post already-checked"><%= comments_count %></span>
+                  <span class="reply-count new-post already-checked">NEW</span>
                </div>
+               <% if (comments_count > 0) { %>
                <div class="total-post-count new total-replies">
                   <% if (comments_count == 1) { %>
-                  Reply
+                  <%= comments_count %> Reply
                   <% } else { %>
-                  Replies
+                  <%= comments_count %> Replies
                   <% } %>
                </div>
+               <% } %>
                </a>
             </div>
-         </li>
-         <li>
+        </li>
+        <% } else { %>
+        <li>
+          <div class="post-count new-general">
+            <a href="<%= url %>">
+              <div class="post-count-container new-general">
+                <span class="reply-count new-general">NEW</span>
+              </div>
+            </a>
+          </div>
+          <a href="<%= url %>"></a>
+        </li>
+        <% } %>
+        <li>
             <h5 class="content-title">
                <a href="<%= url %>"><%= title || "Untitled" %></a>
             </h5>
@@ -99,7 +127,7 @@
                <span class="when">about <%= created_at_time_ago %> ago</span>
                <% } %>
             </p>
-         </li>
+        </li>
       </ul>
       <div class="post-description">
          <div class="post-description copy">
