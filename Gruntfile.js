@@ -64,7 +64,8 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         files: {
-          'dist/assets/js/foundation.js': '<%= foundation.js %>'
+          'dist/assets/js/foundation.js': '<%= foundation.js %>',
+          'dist/docs/assets/js/all.js': ['bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
     },
@@ -76,8 +77,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js']
         }
       },
       vendor: {
@@ -148,25 +148,25 @@ module.exports = function(grunt) {
       sass: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
         tasks: ['copy', 'concat', 'uglify'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       assemble_all: {
         files: ['doc/{includes,layouts}/**/*.html'],
         tasks: ['assemble'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       assemble_pages: {
         files: ['doc/pages/**/*.html'],
         tasks: ['newer:assemble'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       assets: {
-        options: {cwd: 'doc/assets/', livereload: true},
+        options: {cwd: 'doc/assets/', livereload: false},
         files: ['**/*','!{scss,js}/**/*'],
         tasks: ['copy']
       }
@@ -197,11 +197,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
 
   grunt.task.renameTask('watch', 'watch_start');
-  grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
 
+  grunt.registerTask('develop', ['karma:dev_watch:start', 'watch_start'])
   grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
-  grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('default', ['build', 'watch_start']);
 };
