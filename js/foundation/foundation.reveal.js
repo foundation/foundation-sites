@@ -66,7 +66,7 @@
 
       $(this.scope)
         .off('.reveal');
-      
+
       $(document)
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
 
@@ -105,7 +105,8 @@
           .on('closed.fndtn.reveal', '[data-reveal]', this.close_video);
       }
 
-      $('body').on('keyup.fndtn.reveal', function ( event ) {
+      // PATCH #1: fixing multiple keyup event trigger from single key press
+      $('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
         var open_modal = $('[data-reveal].open'),
             settings = open_modal.data('reveal-init');
         if ( settings && event.which === 27  && settings.close_on_esc) { // 27 is the keycode for the Escape key
