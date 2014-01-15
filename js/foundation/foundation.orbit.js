@@ -424,24 +424,14 @@
       after_slide_change: noop
     },
 
-    init: function (scope, method, options) {
+    init : function (scope, method, options) {
       var self = this;
-
       this.bindings(method, options);
     },
 
-    events : function () {
-      var self = this;
-
-      if ($(self.scope).is('[data-orbit]')) {
-        var $el = $(self.scope);
-        $el.data(self.name + '-instance', new Orbit($el, $el.data('orbit-init')));
-      } else {
-        $('[data-orbit]', self.scope).each(function(idx, el) {
-          var $el = $(el);
-          $el.data(self.name + '-instance', new Orbit($el, $el.data('orbit-init')));
-        });
-      }
+    events : function (instance) {
+      var orbit_instance = new Orbit($(instance), $(instance).data('orbit-init'));
+      $(instance).data(self.name + '-instance', orbit_instance);
     },
 
     reflow : function () {
