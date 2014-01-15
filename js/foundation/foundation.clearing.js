@@ -212,11 +212,14 @@
     },
 
     keydown : function (e) {
-      var clearing = $('ul[data-clearing]', '.clearing-blackout');
+      var clearing = $('ul[data-clearing]', '.clearing-blackout'),
+          NEXT_KEY = this.rtl ? 37 : 39,
+          PREV_KEY = this.rtl ? 39 : 37,
+          ESC_KEY = 27;
 
-      if (e.which === 39) this.go(clearing, 'next');
-      if (e.which === 37) this.go(clearing, 'prev');
-      if (e.which === 27) $('a.clearing-close').trigger('click');
+      if (e.which === NEXT_KEY) this.go(clearing, 'next');
+      if (e.which === PREV_KEY) this.go(clearing, 'prev');
+      if (e.which === ESC_KEY) $('a.clearing-close').trigger('click');
     },
 
     nav : function (e, direction) {

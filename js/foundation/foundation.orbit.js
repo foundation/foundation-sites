@@ -424,24 +424,31 @@
       after_slide_change: noop
     },
 
-    init: function (scope, method, options) {
+    init : function (scope, method, options) {
+      var self = this;
+      this.bindings(method, options);
+    },
+
+    events : function (instance) {
+      var orbit_instance = new Orbit($(instance), $(instance).data('orbit-init'));
+      $(instance).data(self.name + '-instance', orbit_instance);
+    },
+
+    reflow : function () {
       var self = this;
 
-      if (typeof method === 'object') {
-        $.extend(true, self.settings, method);
+      if ($(self.scope).is('[data-orbit]')) {
+        var $el = $(self.scope);
+        var instance = $el.data(self.name + '-instance');
+        instance.compute_dimensions();
+      } else {
+        $('[data-orbit]', self.scope).each(function(idx, el) {
+          var $el = $(el);
+          var opts = self.data_options($el);
+          var instance = $el.data(self.name + '-instance');
+          instance.compute_dimensions();
+        });
       }
-
-      if ($(scope).is('[data-orbit]')) {
-        var $el = $(scope);
-        var opts = self.data_options($el);
-        new Orbit($el, $.extend({},self.settings, opts));
-      }
-
-      $('[data-orbit]', scope).each(function(idx, el) {
-        var $el = $(el);
-        var opts = self.data_options($el);
-        new Orbit($el, $.extend({},self.settings, opts));
-      });
     }
   };
 
