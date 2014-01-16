@@ -1080,10 +1080,9 @@
 //
 
 // $include-html-type-classes: $include-html-classes;
-// $include-open-sans: true;
 
 // We use these to control header font styles
-// $header-font-family: join("Open Sans", $body-font-family);
+// $header-font-family: $body-font-family;
 // $header-font-weight: 300;
 // $header-font-style: normal;
 // $header-font-color: #222;
