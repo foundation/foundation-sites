@@ -16,12 +16,14 @@
     },
 
     events : function () {
-      $(this.scope).off('.accordion').on('click.fndtn.accordion', '[data-accordion] > dd > a', function (e) {
-        var accordion = $(this).parent(),
+      $(this.scope)
+      .off('.accordion')
+      .on('click.fndtn.accordion', '[data-accordion] dd > a', function (e) {
+        var accordion = $(this).closest('[data-accordion]'),
             target = $('#' + this.href.split('#')[1]),
-            siblings = $('> dd > .content', target.closest('[data-accordion]')),
-            settings = accordion.parent().data('accordion-init'),
-            active = $('> dd > .content.' + settings.active_class, accordion.parent());
+            siblings = $(' dd > .content', accordion),
+            settings = accordion.data('accordion-init'),
+            active = $(' dd > .content.' + settings.active_class, accordion);
 
         e.preventDefault();
 
