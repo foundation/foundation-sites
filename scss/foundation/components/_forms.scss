@@ -325,6 +325,11 @@ $select-bg-color: #fafafa !default;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
       @include radius(0);
+      
+      &[multiple] {
+        background: $select-bg-color;
+      }
+      
       &.radius { @include radius($global-radius); }
       &:hover {
         background:
