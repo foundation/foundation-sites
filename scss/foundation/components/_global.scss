@@ -369,11 +369,6 @@ $cursor-text-value: text !default;
     .text-center  { text-align: center !important; }
     .text-justify { text-align: justify !important; }
     .hide         { display: none; }
-    // Bidi counterparts to .left, .right, .text-left, .text-right
-    .start { float: $default-float !important; }
-    .end   { float: $opposite-direction !important; }
-    .text-start { text-align: $default-float !important; }
-    .text-end   { text-align: $opposite-direction !important; }
 
     // Font smoothing
     // Antialiased font smoothing works best for light text on a dark background.
