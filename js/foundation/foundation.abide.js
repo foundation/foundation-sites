@@ -52,14 +52,14 @@
 
     events : function (scope) {
       var self = this,
-          form = $(scope).attr('novalidate', 'novalidate'),
+          form = self.S(scope).attr('novalidate', 'novalidate'),
           settings = form.data('abide-init');
 
       form
         .off('.abide')
         .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
-          var is_ajax = /ajax/i.test($(this).attr('data-abide'));
-          return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
+          var is_ajax = /ajax/i.test(self.S(this).attr('data-abide'));
+          return self.validate(self.S(this).find('input, textarea, select').get(), e, is_ajax);
         })
         .on('reset', function() {
           return self.reset($(this));
@@ -70,7 +70,7 @@
             self.validate([this], e);
           })
           .on('keydown.fndtn.abide', function (e) {
-            var settings = $(this).closest('form').data('abide-init');
+            var settings = self.S(this).closest('form').data('abide-init');
             clearTimeout(self.timer);
             self.timer = setTimeout(function () {
               self.validate([this], e);
@@ -87,14 +87,14 @@
     validate : function (els, e, is_ajax) {
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
-          form = $(els[0]).closest('form'),
+          form = this.S(els[0]).closest('form'),
           submit_event = /submit/.test(e.type);
 
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
           if (this.settings.focus_on_invalid) els[i].focus();
           form.trigger('invalid');
-          $(els[i]).closest('form').attr('data-invalid', '');
+          this.S(els[i]).closest('form').attr('data-invalid', '');
           return false;
         }
       }
@@ -153,7 +153,7 @@
             is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
-            label = $('label[for="' + el.getAttribute('id') + '"]'),
+            label = this.S('label[for="' + el.getAttribute('id') + '"]'),
             valid_length = (required) ? (el.value.length > 0) : true;
 
         if (is_radio && required) {
@@ -165,13 +165,13 @@
         } else {
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
-            $(el).removeAttr('data-invalid').parent().removeClass('error');
+            this.S(el).removeAttr('data-invalid').parent().removeClass('error');
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
 
             validations.push(true);
             $(el).trigger('valid');
           } else {
-            $(el).attr('data-invalid', '').parent().addClass('error');
+            this.S(el).attr('data-invalid', '').parent().addClass('error');
             if (label.length > 0 && this.settings.error_labels) label.addClass('error');
 
             validations.push(false);
@@ -184,7 +184,7 @@
     },
 
     valid_checkbox : function(el, required) {
-      var el = $(el),
+      var el = this.S(el),
           valid = (el.is(':checked') || !required);
       if (valid) {
         el.removeAttr('data-invalid').parent().removeClass('error');
@@ -207,9 +207,9 @@
 
       for (var i=0; i < count; i++) {
         if (valid) {
-          $(group[i]).removeAttr('data-invalid').parent().removeClass('error');
+          this.S(group[i]).removeAttr('data-invalid').parent().removeClass('error');
         } else {
-          $(group[i]).attr('data-invalid', '').parent().addClass('error');
+          this.S(group[i]).attr('data-invalid', '').parent().addClass('error');
         }
       }
 
@@ -222,9 +222,9 @@
           valid = (from === to);
 
       if (valid) {
-        $(el).removeAttr('data-invalid').parent().removeClass('error');
+        this.S(el).removeAttr('data-invalid').parent().removeClass('error');
       } else {
-        $(el).attr('data-invalid', '').parent().addClass('error');
+        this.S(el).attr('data-invalid', '').parent().addClass('error');
       }
 
       return valid;
