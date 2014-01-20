@@ -229,8 +229,8 @@
 
     patch : function (lib) {
       lib.scope = this.scope;
-      lib['data_options'] = this.lib_methods.data_options;
-      lib['bindings'] = this.lib_methods.bindings;
+      lib['data_options'] = this.utils.data_options;
+      lib['bindings'] = this.utils.bindings;
       lib['S'] = S;
       lib.rtl = this.rtl;
     },
@@ -239,8 +239,8 @@
       var methods_arr = methods.split(' ');
 
       for (var i = methods_arr.length - 1; i >= 0; i--) {
-        if (this.lib_methods.hasOwnProperty(methods_arr[i])) {
-          this.libs[scope.name][methods_arr[i]] = this.lib_methods[methods_arr[i]];
+        if (this.utils.hasOwnProperty(methods_arr[i])) {
+          this.libs[scope.name][methods_arr[i]] = this.utils[methods_arr[i]];
         }
       }
     },
@@ -262,7 +262,7 @@
     libs : {},
 
     // methods that can be inherited in libraries
-    lib_methods : {
+    utils : {
       throttle : function(fun, delay) {
         var timer = null;
 
