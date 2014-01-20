@@ -4,7 +4,7 @@
   Foundation.libs.alert = {
     name : 'alert',
 
-    version : '5.0.3',
+    version : '5.1.0',
 
     settings : {
       animation: 'fadeOut',
@@ -17,13 +17,15 @@
     },
 
     events : function () {
+      var S = this.S;
+
       $(this.scope).off('.alert').on('click.fndtn.alert', '[data-alert] a.close', function (e) {
-          var alertBox = $(this).closest("[data-alert]"),
+          var alertBox = S(this).closest("[data-alert]"),
               settings = alertBox.data('alert-init') || Foundation.libs.alert.settings;
 
         e.preventDefault();
         alertBox[settings.animation](settings.speed, function () {
-          $(this).trigger('closed').remove();
+          S(this).trigger('closed').remove();
           settings.callback();
         });
       });
