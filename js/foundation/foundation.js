@@ -46,15 +46,21 @@
   // getElementById is not available.
   var S = function (selector, context) {
     if (typeof selector === 'string') {
-      if (context) {
-        return $(context.querySelectorAll(selector));
+      if (context) { 
+        var cont;
+        if (context.jquery) {
+          cont = context[0];
+        } else {
+          cont = context;
+        }
+        return $(cont.querySelectorAll(selector));
       }
 
       return $(document.querySelectorAll(selector));
     }
 
     return $(selector, context);
-  };
+  }
 
   /*
     https://github.com/paulirish/matchMedia.js
@@ -176,7 +182,7 @@
   window.Foundation = {
     name : 'Foundation',
 
-    version : '5.0.3',
+    version : '5.1.0',
 
     media_queries : {
       small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
@@ -266,17 +272,7 @@
 
       // Fast Selector wrapper returns jQuery object. 
       // Only use where getElementById is not available.
-      S : function (selector, context) {
-        if (typeof selector === 'string') {
-          if (context) {
-            return $(context.querySelectorAll(selector));
-          }
-
-          return $(document.querySelectorAll(selector));
-        }
-
-        return $(selector, context);
-      },
+      S : S,
 
       throttle : function(fun, delay) {
         var timer = null;
