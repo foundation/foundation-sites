@@ -12,23 +12,24 @@
     },
 
     init : function (scope, method, options) {
-      this.fixed_magellan = $("[data-magellan-expedition]");
+      this.fixed_magellan = this.S("[data-magellan-expedition]");
       this.magellan_placeholder = $('<div></div>').css({
         height: this.fixed_magellan.outerHeight(true)
       }).hide().insertAfter(this.fixed_magellan);
       this.set_threshold();
       this.set_active_class(method);
-      this.last_destination = $('[data-magellan-destination]').last();
+      this.last_destination = this.S('[data-magellan-destination]').last();
       this.events();
     },
 
     events : function () {
-      var self = this;
+      var self = this,
+          S = self.S;
 
-      $(this.scope)
+      S(this.scope)
         .off('.magellan')
         .on('arrival.fndtn.magellan', '[data-magellan-arrival]', function (e) {
-          var $destination = $(this),
+          var $destination = S(this),
               $expedition = $destination.closest('[data-magellan-expedition]'),
               active_class = $expedition.attr('data-magellan-active-class')
                 || self.settings.active_class;
@@ -44,11 +45,11 @@
       this.fixed_magellan
         .off('.magellan')
         .on('update-position.fndtn.magellan', function() {
-          var $el = $(this);
+          var $el = S(this);
         })
         .trigger('update-position');
 
-      $(window)
+      S(window)
         .off('.magellan')
         .on('resize.fndtn.magellan', function() {
           this.fixed_magellan.trigger('update-position');
@@ -86,21 +87,21 @@
 
 
       if (this.last_destination.length > 0) {
-        $(window).on('scroll.fndtn.magellan', function (e) {
-          var windowScrollTop = $(window).scrollTop(),
-              scrolltopPlusHeight = windowScrollTop + $(window).height(),
+        S(window).on('scroll.fndtn.magellan', function (e) {
+          var windowScrollTop = S(window).scrollTop(),
+              scrolltopPlusHeight = windowScrollTop + S(window).height(),
               lastDestinationTop = Math.ceil(self.last_destination.offset().top);
 
-          $('[data-magellan-destination]').each(function () {
-            var $destination = $(this),
+          S('[data-magellan-destination]').each(function () {
+            var $destination = S(this),
                 destination_name = $destination.attr('data-magellan-destination'),
                 topOffset = $destination.offset().top - $destination.outerHeight(true) - windowScrollTop;
             if (topOffset <= self.settings.threshold) {
-              $("[data-magellan-arrival='" + destination_name + "']").trigger('arrival');
+              S("[data-magellan-arrival='" + destination_name + "']").trigger('arrival');
             }
             // In large screens we may hit the bottom of the page and dont reach the top of the last magellan-destination, so lets force it
-            if (scrolltopPlusHeight >= $(self.scope).height() && lastDestinationTop > windowScrollTop && lastDestinationTop < scrolltopPlusHeight) {
-              $('[data-magellan-arrival]').last().trigger('arrival');
+            if (scrolltopPlusHeight >= S(self.scope).height() && lastDestinationTop > windowScrollTop && lastDestinationTop < scrolltopPlusHeight) {
+              S('[data-magellan-arrival]').last().trigger('arrival');
             }
           });
         });
@@ -121,8 +122,8 @@
     },
 
     off : function () {
-      $(this.scope).off('.fndtn.magellan');
-      $(window).off('.fndtn.magellan');
+      this.S(this.scope).off('.fndtn.magellan');
+      this.S(window).off('.fndtn.magellan');
     },
 
     reflow : function () {}
