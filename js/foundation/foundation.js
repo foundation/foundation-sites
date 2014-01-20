@@ -313,10 +313,6 @@
         return opts;
       },
 
-      delay : function (fun, delay) {
-        return setTimeout(fun, delay);
-      },
-
       // test for empty object or array
       empty : function (obj) {
         if (obj.length && obj.length > 0)    return false;
