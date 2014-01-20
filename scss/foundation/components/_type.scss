@@ -4,7 +4,7 @@ $include-html-type-classes: $include-html-classes !default;
 
 // We use these to control header font styles
 $header-font-family: $body-font-family !default;
-$header-font-weight: 300 !default;
+$header-font-weight: normal !default;
 $header-font-style: normal !default;
 $header-font-color: #222 !default;
 $header-line-height: 1.4 !default;
@@ -23,7 +23,7 @@ $h6-font-size: 1rem !default;
 // These control how subheaders are styled.
 $subheader-line-height: 1.4 !default;
 $subheader-font-color: scale-color($header-font-color, $lightness: 35%) !default;
-$subheader-font-weight: 300 !default;
+$subheader-font-weight: normal !default;
 $subheader-top-margin: .2rem !default;
 $subheader-bottom-margin: .5rem !default;
 
