@@ -68,7 +68,7 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'throttle S');
+      Foundation.inherit(this, 'throttle');
 
       this.data_attr = 'data-' + this.settings.load_attr;
       $.extend(true, this.settings, method, options);

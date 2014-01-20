@@ -231,7 +231,7 @@
       lib.scope = this.scope;
       lib['data_options'] = this.utils.data_options;
       lib['bindings'] = this.utils.bindings;
-      lib['S'] = S;
+      lib['S'] = this.utils.S;
       lib.rtl = this.rtl;
     },
 
