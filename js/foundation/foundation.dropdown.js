@@ -28,8 +28,6 @@
           var settings = $(this).data('dropdown-init') || self.settings;
           e.preventDefault();
 
-          self.closeall.call(self);
-
           if (!settings.is_hover || Modernizr.touch) self.toggle($(this));
         })
         .on('mouseenter.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
