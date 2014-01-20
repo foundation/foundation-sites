@@ -4,7 +4,7 @@
   Foundation.libs.tooltip = {
     name : 'tooltip',
 
-    version : '5.0.3',
+    version : '5.1.0',
 
     settings : {
       additional_inheritable_classes : [],
@@ -26,31 +26,32 @@
     },
 
     events : function () {
-      var self = this;
+      var self = this,
+          S = self.S;
 
       if (Modernizr.touch) {
-        $(this.scope)
+        S(this.scope)
           .off('.tooltip')
           .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
             '[data-tooltip]', function (e) {
-            var settings = $.extend({}, self.settings, self.data_options($(this)));
+            var settings = $.extend({}, self.settings, self.data_options(S(this)));
             if (!settings.disable_for_touch) {
               e.preventDefault();
-              $(settings.tooltip_class).hide();
-              self.showOrCreateTip($(this));
+              S(settings.tooltip_class).hide();
+              self.showOrCreateTip(S(this));
             }
           })
           .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
             this.settings.tooltip_class, function (e) {
             e.preventDefault();
-            $(this).fadeOut(150);
+            S(this).fadeOut(150);
           });
       } else {
-        $(this.scope)
+        S(this.scope)
           .off('.tooltip')
           .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', 
             '[data-tooltip]', function (e) {
-            var $this = $(this);
+            var $this = S(this);
 
             if (/enter|over/i.test(e.type)) {
               self.showOrCreateTip($this);
@@ -76,7 +77,7 @@
           tip = null;
 
       if (selector) {
-        tip = $('span[data-selector="' + selector + '"]' + this.settings.tooltip_class);
+        tip = this.S('span[data-selector="' + selector + '"]' + this.settings.tooltip_class);
       }
 
       return (typeof tip === 'object') ? tip : false;
@@ -130,7 +131,7 @@
       objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', target.offset().left);
 
       if (this.small()) {
-        objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', 12.5, $(this.scope).width());
+        objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', 12.5, this.S(this.scope).width());
         tip.addClass('tip-override');
         objPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
@@ -192,8 +193,8 @@
     },
 
     off : function () {
-      $(this.scope).off('.fndtn.tooltip');
-      $(this.settings.tooltip_class).each(function (i) {
+      this.S(this.scope).off('.fndtn.tooltip');
+      this.S(this.settings.tooltip_class).each(function (i) {
         $('[data-tooltip]').get(i).attr('title', $(this).text());
       }).remove();
     },
