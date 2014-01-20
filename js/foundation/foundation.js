@@ -263,6 +263,21 @@
 
     // methods that can be inherited in libraries
     utils : {
+
+      // Fast Selector wrapper returns jQuery object. 
+      // Only use where getElementById is not available.
+      S : function (selector, context) {
+        if (typeof selector === 'string') {
+          if (context) {
+            return $(context.querySelectorAll(selector));
+          }
+
+          return $(document.querySelectorAll(selector));
+        }
+
+        return $(selector, context);
+      },
+
       throttle : function(fun, delay) {
         var timer = null;
 
