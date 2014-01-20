@@ -61,6 +61,9 @@
           var is_ajax = /ajax/i.test($(this).attr('data-abide'));
           return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
         })
+        .on('reset', function() {
+          return self.reset($(this));
+        })
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
@@ -73,6 +76,12 @@
               self.validate([this], e);
             }.bind(this), settings.timeout);
           });
+    },
+
+    reset : function (form) {
+      form.removeAttr('data-invalid');
+      $('[data-invalid]', form).removeAttr('data-invalid');
+      $('.error', form).not('small').removeClass('error');
     },
 
     validate : function (els, e, is_ajax) {
