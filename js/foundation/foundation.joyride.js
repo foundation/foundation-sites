@@ -53,7 +53,7 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'throttle delay');
+      Foundation.inherit(this, 'throttle');
 
       this.settings = this.defaults;
 
@@ -273,7 +273,7 @@
 
               this.settings.$next_tip.show();
 
-              this.delay(function () {
+              setTimeout(function () {
                 $timer.animate({
                   width: $timer.parent().width()
                 }, this.settings.timer, 'linear');
@@ -295,7 +295,7 @@
                 .fadeIn(this.settings.tip_animation_fade_speed)
                 .show();
 
-              this.delay(function () {
+              setTimeout(function () {
                 $timer.animate({
                   width: $timer.parent().width()
                 }, this.settings.timer, 'linear');
