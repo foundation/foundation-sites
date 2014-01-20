@@ -4,7 +4,7 @@
   Foundation.libs.magellan = {
     name : 'magellan',
 
-    version : '5.0.3',
+    version : '5.1.0',
 
     settings : {
       active_class: 'active',
@@ -73,7 +73,7 @@
                 $expedition.css({position:"fixed", top:0});
                 self.magellan_placeholder.show();
               } else {
-                $expedition.removeClass('fixed');
+                $expedition.removeClass('fixed').find('[data-magellan-arrival]').removeClass(self.settings.active_class);
                 $expedition.css({position:"", top:""});
                 self.magellan_placeholder.hide();
               }
