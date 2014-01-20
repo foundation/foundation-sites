@@ -35,7 +35,6 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'delay');
       $.extend(true, this.settings, method, options);
       this.bindings(method, options);
     },
@@ -262,7 +261,7 @@
             opacity: 1
           };
 
-          return this.delay(function () {
+          return setTimeout(function () {
             return el
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
@@ -276,7 +275,7 @@
         if (/fade/i.test(settings.animation)) {
           var end_css = {opacity: 1};
 
-          return this.delay(function () {
+          return setTimeout(function () {
             return el
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
@@ -310,7 +309,7 @@
             opacity: 0
           };
 
-          return this.delay(function () {
+          return setTimeout(function () {
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 this.locked = false;
@@ -323,7 +322,7 @@
         if (/fade/i.test(settings.animation)) {
           var end_css = {opacity: 0};
 
-          return this.delay(function () {
+          return setTimeout(function () {
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 this.locked = false;
