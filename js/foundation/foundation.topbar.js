@@ -302,6 +302,10 @@
         var $link = $(this),
             $dropdown = $link.siblings('.dropdown'),
             url = $link.attr('href');
+        
+        if($dropdown.children('.back').length > 0) {
+          return true;
+        }
 
         if (settings.mobile_show_parent_link && url && url.length > 1) {
           var $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li><a class="parent-link js-generated" href="' + url + '">' + $link.text() +'</a></li>');
