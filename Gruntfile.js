@@ -166,7 +166,7 @@ module.exports = function(grunt) {
       jst: {
         files: ['doc/templates/*.html'],
         tasks: ['jst'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       assemble_all: {
         files: ['doc/{includes,layouts}/**/*.html'],

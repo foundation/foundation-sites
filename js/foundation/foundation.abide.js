@@ -4,16 +4,16 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '5.0.3',
+    version : '5.1.0',
 
     settings : {
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
       timeout : 1000,
       patterns : {
-        alpha: /[a-zA-Z]+/,
-        alpha_numeric : /[a-zA-Z0-9]+/,
-        integer: /-?\d+/,
+        alpha: /^[a-zA-Z]+$/,
+        alpha_numeric : /^[a-zA-Z0-9]+$/,
+        integer: /^\d+$/,
         number: /-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?/,
 
         // generic password: upper-case, lower-case, number/special character, and min 8 characters
