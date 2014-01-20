@@ -27,6 +27,8 @@ $('#autocomplete').autocomplete({
   }
 });
 
+$('input, textarea').placeholder();
+
 $('#interchangeMarkup').on('replace', function () {
   $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false&callback=initializeMaps");
 });
