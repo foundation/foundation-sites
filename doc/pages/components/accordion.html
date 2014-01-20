@@ -34,6 +34,27 @@ You can create an accordion using minimal markup like so:
 
 ***
 
+<h3>Embedded Block Grid</h3>
+
+You can embed a block grid into the accordion for responsive columns:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_grid}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_grid}}
+  </div>
+</div>
+
+***
+
 ## Customize With Sass
 
 Accordions can be easily customized with the Sass variables provided in the `_settings.scss` file.
