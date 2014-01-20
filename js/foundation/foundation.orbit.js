@@ -394,7 +394,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '5.0.3',
+    version: '5.1.0',
 
     settings: {
       animation: 'slide',
@@ -436,20 +436,20 @@
     },
 
     events : function (instance) {
-      var orbit_instance = new Orbit($(instance), $(instance).data('orbit-init'));
-      $(instance).data(self.name + '-instance', orbit_instance);
+      var orbit_instance = new Orbit(this.S(instance), this.S(instance).data('orbit-init'));
+      this.S(instance).data(self.name + '-instance', orbit_instance);
     },
 
     reflow : function () {
       var self = this;
 
-      if ($(self.scope).is('[data-orbit]')) {
-        var $el = $(self.scope);
+      if (self.S(self.scope).is('[data-orbit]')) {
+        var $el = self.S(self.scope);
         var instance = $el.data(self.name + '-instance');
         instance.compute_dimensions();
       } else {
-        $('[data-orbit]', self.scope).each(function(idx, el) {
-          var $el = $(el);
+        self.S('[data-orbit]', self.scope).each(function(idx, el) {
+          var $el = self.S(el);
           var opts = self.data_options($el);
           var instance = $el.data(self.name + '-instance');
           instance.compute_dimensions();
