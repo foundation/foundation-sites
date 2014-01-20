@@ -29,27 +29,28 @@
 
       this.bindings(method, options);
 
-      if ($(this.scope).is('[data-clearing]')) {
-        this.assemble($('li', this.scope));
+      if (self.S(this.scope).is('[data-clearing]')) { 
+        this.assemble(self.S('li', this.scope));
       } else {
-        $('[data-clearing]', this.scope).each(function () {
-          self.assemble($('li', this));
+        self.S('[data-clearing]', this.scope).each(function () {
+          self.assemble(self.S('li', this));
         });
       }
     },
 
     events : function (scope) {
-      var self = this;
+      var self = this,
+      S = self.S;
 
-      $(this.scope)
+      S(this.scope)
         .off('.clearing')
         .on('click.fndtn.clearing', 'ul[data-clearing] li',
           function (e, current, target) {
-            var current = current || $(this),
+            var current = current || S(this),
                 target = target || current,
                 next = current.next('li'),
                 settings = current.closest('[data-clearing]').data('clearing-init'),
-                image = $(e.target);
+                image = S(e.target);
 
             e.preventDefault();
 
@@ -64,7 +65,7 @@
               current[0] === target[0] && 
               next.length > 0 && self.is_open(current)) {
               target = next;
-              image = $('img', target);
+              image = S('img', target);
             }
 
             // set current and target to the clicked li if not otherwise defined.
@@ -81,16 +82,17 @@
         .on('keydown.fndtn.clearing',
           function (e) { self.keydown(e) });
 
-      $(window).off('.clearing').on('resize.fndtn.clearing',
+      S(window).off('.clearing').on('resize.fndtn.clearing',
         function () { self.resize() });
 
       this.swipe_events(scope);
     },
 
     swipe_events : function (scope) {
-      var self = this;
+      var self = this,
+      S = self.S;
 
-      $(this.scope)
+      S(this.scope)
         .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
           if (!e.touches) { e = e.originalEvent; }
           var data = {
@@ -101,7 +103,7 @@
                 is_scrolling: undefined
               };
 
-          $(this).data('swipe-transition', data);
+          S(this).data('swipe-transition', data);
           e.stopPropagation();
         })
         .on('touchmove.fndtn.clearing', '.visible-img', function(e) {
@@ -109,7 +111,7 @@
           // Ignore pinch/zoom events
           if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
-          var data = $(this).data('swipe-transition');
+          var data = S(this).data('swipe-transition');
 
           if (typeof data === 'undefined') {
             data = {};
@@ -129,7 +131,7 @@
           }
         })
         .on('touchend.fndtn.clearing', '.visible-img', function(e) {
-          $(this).data('swipe-transition', {});
+          S(this).data('swipe-transition', {});
           e.stopPropagation();
         });
     },
@@ -140,7 +142,7 @@
       if ($el.parent().hasClass('carousel')) return;
       $el.after('<div id="foundationClearingHolder"></div>');
 
-      var holder = $('#foundationClearingHolder'),
+      var holder = this.S('#foundationClearingHolder'),
           settings = $el.data('clearing-init'),
           grid = $el.detach(),
           data = {
@@ -154,10 +156,11 @@
     },
 
     open : function ($image, current, target) {
-      var root = target.closest('.clearing-assembled'),
-          container = $('div', root).first(),
-          visible_image = $('.visible-img', container),
-          image = $('img', visible_image).not($image);
+      var self = this,
+          root = target.closest('.clearing-assembled'),
+          container = self.S('div', root).first(),
+          visible_image = self.S('.visible-img', container),
+          image = self.S('img', visible_image).not($image);
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
@@ -172,7 +175,7 @@
           container.addClass('clearing-container');
           visible_image.show();
           this.fix_height(target)
-            .caption($('.clearing-caption', visible_image), $image)
+            .caption(self.S('.clearing-caption', visible_image), $image)
             .center(image)
             .shift(current, target, function () {
               target.siblings().removeClass('visible');
@@ -219,7 +222,7 @@
 
       if (e.which === NEXT_KEY) this.go(clearing, 'next');
       if (e.which === PREV_KEY) this.go(clearing, 'prev');
-      if (e.which === ESC_KEY) $('a.clearing-close').trigger('click');
+      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click');
     },
 
     nav : function (e, direction) {
@@ -243,7 +246,7 @@
           self = this;
 
       lis.each(function () {
-          var li = $(this),
+          var li = self.S(this),
               image = li.find('img');
 
           if (li.height() > image.outerHeight()) {
@@ -262,18 +265,18 @@
         .siblings('.visible-img');
 
       if (target.next().length > 0) {
-        $('.clearing-main-next', visible_image)
+        this.S('.clearing-main-next', visible_image)
           .removeClass('disabled');
       } else {
-        $('.clearing-main-next', visible_image)
+        this.S('.clearing-main-next', visible_image)
           .addClass('disabled');
       }
 
       if (target.prev().length > 0) {
-        $('.clearing-main-prev', visible_image)
+        this.S('.clearing-main-prev', visible_image)
           .removeClass('disabled');
       } else {
-        $('.clearing-main-prev', visible_image)
+        this.S('.clearing-main-prev', visible_image)
           .addClass('disabled');
       }
     },
@@ -319,12 +322,12 @@
     img : function (img) {
       if (img.length) {
         var new_img = new Image(),
-            new_a = $('a', img);
+            new_a = this.S('a', img);
 
         if (new_a.length) {
           new_img.src = new_a.attr('href');
         } else {
-          new_img.src = $('img', img).attr('src');
+          new_img.src = this.S('img', img).attr('src');
         }
       }
       return this;
@@ -350,11 +353,11 @@
     // directional methods
 
     go : function ($ul, direction) {
-      var current = $('.visible', $ul),
+      var current = this.S('.visible', $ul),
           target = current[direction]();
 
       if (target.length) {
-        $('img', target)
+        this.S('img', target)
           .trigger('click', [current, target]);
       }
     },
@@ -402,9 +405,9 @@
     },
 
     direction : function ($el, current, target) {
-      var lis = $('li', $el),
+      var lis = this.S('li', $el),
           li_width = lis.outerWidth() + (lis.outerWidth() / 4),
-          up_count = Math.floor($('.clearing-container').outerWidth() / li_width) - 1,
+          up_count = Math.floor(this.S('.clearing-container').outerWidth() / li_width) - 1,
           target_index = lis.index(target),
           response;
 
@@ -451,8 +454,8 @@
     },
 
     off : function () {
-      $(this.scope).off('.fndtn.clearing');
-      $(window).off('.fndtn.clearing');
+      this.S(this.scope).off('.fndtn.clearing');
+      this.S(window).off('.fndtn.clearing');
     },
 
     reflow : function () {
