@@ -150,28 +150,40 @@
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
             value = el.value,
+            direct_parent = this.S(el).parent(),
             is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
             label = this.S('label[for="' + el.getAttribute('id') + '"]'),
             valid_length = (required) ? (el.value.length > 0) : true;
 
+        var parent;
+
+        if (!direct_parent.is('label')) {
+          parent = direct_parent;
+        } else {
+          parent = direct_parent.parent();
+        }
+
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
           validations.push(this.valid_checkbox(el, required));
         } else if (is_equal && required) {
-          validations.push(this.valid_equal(el, required));
+          validations.push(this.valid_equal(el, required, parent));
         } else {
+
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
-            this.S(el).removeAttr('data-invalid').parent().removeClass('error');
+            this.S(el).removeAttr('data-invalid');
+            parent.removeClass('error');
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
 
             validations.push(true);
             $(el).trigger('valid');
           } else {
-            this.S(el).attr('data-invalid', '').parent().addClass('error');
+            this.S(el).attr('data-invalid', '');
+            parent.addClass('error');
             if (label.length > 0 && this.settings.error_labels) label.addClass('error');
 
             validations.push(false);
@@ -216,15 +228,17 @@
       return valid;
     },
 
-    valid_equal: function(el, required) {
+    valid_equal: function(el, required, parent) {
       var from  = document.getElementById(el.getAttribute('data-equalto')).value,
           to    = el.value,
           valid = (from === to);
 
       if (valid) {
-        this.S(el).removeAttr('data-invalid').parent().removeClass('error');
+        this.S(el).removeAttr('data-invalid');
+        parent.removeClass('error');
       } else {
-        this.S(el).attr('data-invalid', '').parent().addClass('error');
+        this.S(el).attr('data-invalid', '');
+        parent.addClass('error');
       }
 
       return valid;
