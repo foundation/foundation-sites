@@ -288,6 +288,7 @@
       // Only use where getElementById is not available.
       S : S,
 
+      // Executes a function a max of once every n seconds 
       throttle : function(fun, delay) {
         var timer = null;
 
@@ -301,7 +302,6 @@
         };
       },
 
-      // parses data-options attribute
       // Executes a function when it stops being invoked for n seconds
       // Modified version of _.debounce() http://underscorejs.org 
       debounce : function(fun, delay) {
@@ -318,6 +318,7 @@
         };
       },
 
+      // Parses data-options attribute
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr, opts_len,
             data_options = el.data('options');
@@ -338,7 +339,6 @@
           return str;
         }
 
-        // parse options
         for (ii = opts_len - 1; ii >= 0; ii--) {
           p = opts_arr[ii].split(':');
 
@@ -354,7 +354,7 @@
         return opts;
       },
 
-      // test for empty object or array
+      // Test for empty object or array
       empty : function (obj) {
         if (obj.length && obj.length > 0)    return false;
         if (obj.length && obj.length === 0)  return true;
@@ -366,6 +366,7 @@
         return true;
       },
 
+      // Adds JS-recognizable media queries
       register_media : function(media, media_class) {
         if(Foundation.media_queries[media] === undefined) {
           $('head').append('<meta class="' + media_class + '">');
@@ -373,6 +374,7 @@
         }
       },
 
+      // Add custom CSS within a JS-defined media query
       addCustomRule : function(rule, media) {
         if(media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
