@@ -66,7 +66,7 @@
 
       $(this.scope)
         .off('.reveal');
-      
+
       $(document)
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
 
@@ -278,6 +278,8 @@
       if (/fade/i.test(settings.animation)) {
         return el.fadeIn(settings.animation_speed / 2);
       }
+
+      this.locked = false;
 
       return el.show();
     },
