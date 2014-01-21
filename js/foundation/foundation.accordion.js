@@ -22,10 +22,9 @@
       .on('click.fndtn.accordion', '[data-accordion] dd > a', function (e) {
         var accordion = S(this).closest('[data-accordion]'),
             target = S('#' + this.href.split('#')[1]),
-            siblings = S(' dd > .content', accordion),
+            siblings = S('dd > .content', accordion),
             settings = accordion.data('accordion-init'),
-            active = S(' dd > .content.' + settings.active_class, accordion);
-
+            active = S('dd > .content.' + settings.active_class, accordion);
 
         e.preventDefault();
 
