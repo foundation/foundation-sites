@@ -279,20 +279,6 @@
       }
     },
 
-    random_str : function (length) {
-      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
-
-      if (!length) {
-        length = Math.floor(Math.random() * chars.length);
-      }
-
-      var str = '';
-      for (var i = 0; i < length; i++) {
-        str += chars[Math.floor(Math.random() * chars.length)];
-      }
-      return str;
-    },
-
     libs : {},
 
     // methods that can be inherited in libraries
@@ -383,6 +369,21 @@
         }
       },
 
+      random_str : function (length) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+
+        if (!length) {
+          length = Math.floor(Math.random() * chars.length);
+        }
+
+        var str = '';
+        for (var i = 0; i < length; i++) {
+          str += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return str;
+      },
+
+      // Performs a callback function when an image is fully loaded
       loaded : function (image, callback) {
         function loaded () {
           callback(image[0]);
