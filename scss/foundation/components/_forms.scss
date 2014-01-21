@@ -13,8 +13,9 @@ $form-spacing: rem-calc(16) !default;
 $form-label-pointer: pointer !default;
 $form-label-font-size: rem-calc(14) !default;
 $form-label-font-weight: normal !default;
+$form-label-line-height: 1.5 !default;
 $form-label-font-color: scale-color(#000, $lightness: 30%) !default;
-$form-label-bottom-margin: rem-calc(8) !default;
+$form-label-bottom-margin: 0 !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
 $input-font-size: rem-calc(14) !default;
@@ -146,6 +147,7 @@ $select-bg-color: #fafafa !default;
     cursor: $form-label-pointer;
     display: block;
     font-weight: $form-label-font-weight;
+    line-height: $form-label-line-height;
     margin-bottom: $form-label-bottom-margin;
   }
 
@@ -459,12 +461,16 @@ $select-bg-color: #fafafa !default;
         margin-bottom: 0;
       }
 
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-bottom: $form-spacing
+      }
+
       label,
       label.error {
         @include form-label-error-color;
       }
 
-      > small,
       small.error {
         @include form-error-message;
       }
