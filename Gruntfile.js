@@ -143,7 +143,7 @@ module.exports = function(grunt) {
       }
     },
 
-    watch_start: {
+    watch: {
       grunt: { files: ['Gruntfile.js'] },
       karma: {
         files: [
@@ -211,10 +211,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.task.renameTask('watch', 'watch_start');
+  // grunt.task.renameTask('watch', 'watch_start');
   grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
+  grunt.registerTask('develop', 'travis');
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
-  grunt.registerTask('default', ['build', 'watch_start']);
+  grunt.registerTask('default', ['build', 'watch']);
 };
