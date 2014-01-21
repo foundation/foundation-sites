@@ -116,9 +116,13 @@
       nub = tip.children('.nub');
       nubHeight = nub.outerHeight();
       nubWidth = nub.outerHeight();
-      
-      tip.css({'width' : (width) ? width : 'auto'});
 
+      if(this.small()) {
+        tip.css({'width' : '100%' });
+      } else {
+        tip.css({'width' : (width) ? width : 'auto'});
+      }
+      
       objPos = function (obj, top, right, bottom, left, width) {
         return obj.css({
           'top' : (top) ? top : 'auto',
@@ -141,6 +145,7 @@
         }
         objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', left);
         tip.removeClass('tip-override');
+        nub.removeAttr( 'style' );
         if (classes && classes.indexOf('tip-top') > -1) {
           objPos(tip, (target.offset().top - tip.outerHeight() - 10), 'auto', 'auto', left)
             .removeClass('tip-override');
