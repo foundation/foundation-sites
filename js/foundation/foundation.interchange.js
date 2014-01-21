@@ -68,7 +68,7 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'throttle');
+      Foundation.inherit(this, 'throttle random_str');
 
       this.data_attr = 'data-' + this.settings.load_attr;
       $.extend(true, this.settings, method, options);
@@ -253,10 +253,11 @@
     },
 
     uuid : function (separator) {
-      var delim = separator || "-";
+      var delim = separator || "-",
+          self = this;
 
       function S4() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        return self.random_str(6);
       }
 
       return (S4() + S4() + delim + S4() + delim + S4()

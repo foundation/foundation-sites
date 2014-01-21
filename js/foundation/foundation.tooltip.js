@@ -22,6 +22,7 @@
     cache : {},
 
     init : function (scope, method, options) {
+      Foundation.inherit(this, 'random_str');
       this.bindings(method, options);
     },
 
@@ -88,7 +89,7 @@
           dataSelector = $target.attr('data-tooltip') || $target.attr('data-selector');
 
       if ((id && id.length < 1 || !id) && typeof dataSelector != 'string') {
-        dataSelector = 'tooltip' + Math.random().toString(36).substring(7);
+        dataSelector = 'tooltip' + this.random_str(6);
         $target.attr('data-selector', dataSelector);
       }
 

@@ -53,7 +53,7 @@
     },
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'throttle');
+      Foundation.inherit(this, 'throttle random_str');
 
       this.settings = this.defaults;
 
@@ -568,7 +568,7 @@
           el,
           origCSS,
           origClasses,
-          randId = 'expose-'+Math.floor(Math.random()*10000);
+          randId = 'expose-' + this.random_str(6);
 
       if (arguments.length > 0 && arguments[0] instanceof $) {
         el = arguments[0];
