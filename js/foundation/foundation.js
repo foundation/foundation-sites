@@ -302,6 +302,22 @@
       },
 
       // parses data-options attribute
+      // Executes a function when it stops being invoked for n seconds
+      // Modified version of _.debounce() http://underscorejs.org 
+      debounce : function(fun, delay) {
+        var timeout, result;
+        return function() {
+          var context = this, args = arguments;
+          var later = function() {
+            timeout = null;
+            result = fun.apply(context, args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, delay);
+          return result;
+        };
+      },
+
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr, opts_len,
             data_options = el.data('options');
