@@ -62,6 +62,34 @@
     return $(selector, context);
   }
 
+  var bindings = function (method, options) {
+    var self = this,
+        should_bind_events = !S(this).data(this.name + '-init');
+
+    if (typeof method === 'string') {
+      return this[method].call(this, options);
+    }
+
+    if (S(this.scope).is('[data-' + this.name +']')) {
+      S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+
+      if (should_bind_events) {
+        this.events(this.scope);
+      }
+
+    } else {
+      S('[data-' + this.name + ']', this.scope).each(function () {
+        var should_bind_events = !S(this).data(self.name + '-init');
+
+        S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+
+        if (should_bind_events) {
+          self.events(this);
+        }
+      });
+    }
+  };
+
   /*
     https://github.com/paulirish/matchMedia.js
   */
@@ -236,7 +264,7 @@
     patch : function (lib) {
       lib.scope = this.scope;
       lib['data_options'] = this.utils.data_options;
-      lib['bindings'] = this.utils.bindings;
+      lib['bindings'] = bindings;
       lib['S'] = this.utils.S;
       lib.rtl = this.rtl;
     },
@@ -381,34 +409,6 @@
           loaded();
         } else {
           bindLoad.call(image);
-        }
-      },
-
-      bindings : function (method, options) {
-        var self = this,
-            should_bind_events = !S(this).data(this.name + '-init');
-
-        if (typeof method === 'string') {
-          return this[method].call(this, options);
-        }
-
-        if (S(this.scope).is('[data-' + this.name +']')) {
-          S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
-
-          if (should_bind_events) {
-            this.events(this.scope);
-          }
-
-        } else {
-          S('[data-' + this.name + ']', this.scope).each(function () {
-            var should_bind_events = !S(this).data(self.name + '-init');
-
-            S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
-
-            if (should_bind_events) {
-              self.events(this);
-            }
-          });
         }
       }
     }
