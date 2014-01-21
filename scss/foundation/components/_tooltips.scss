@@ -23,6 +23,7 @@ $tooltip-close-font-weight: normal !default;
 $tooltip-close-font-color: #777 !default;
 $tooltip-font-size-sml: rem-calc(14) !default;
 $tooltip-radius: $global-radius !default;
+$tooltip-rounded: $global-rounded !default;
 $tooltip-pip-size: 5px !default;
 
 @include exports("tooltip") {
@@ -58,7 +59,6 @@ $tooltip-pip-size: 5px !default;
       width: 100%;
       color: $tooltip-font-color;
       background: $tooltip-bg;
-      @include radius($tooltip-radius);
 
       &>.nub {
         display: block;
@@ -69,6 +69,16 @@ $tooltip-pip-size: 5px !default;
         border: solid $tooltip-pip-size;
         border-color: transparent transparent $tooltip-bg transparent;
         top: -($tooltip-pip-size * 2);
+      }
+
+      &.radius {
+        @include radius($tooltip-radius);
+      }
+      &.round {
+        @include radius($tooltip-rounded);
+        &>.nub {
+          left: 2rem;
+        }
       }
 
       &.opened {
