@@ -246,6 +246,23 @@ $small: $medium-up;
 $medium: $medium-up;
 $large: $large-up;
 
+// Based off of David Walsh's idea for state indication: http://davidwalsh.name/device-state-detection-css-media-queries-javascript
+.state-indicator {
+	position: absolute;
+	top: -999em;
+	left: -999em;
+	@media #{$small-up} { z-index: 1; }
+	@media #{$small-only} { z-index: 2; }
+	@media #{$medium-up} { z-index: 3; }
+	@media #{$medium-only} { z-index: 4; }
+	@media #{$large-up} { z-index: 5; }
+	@media #{$large-only} { z-index: 6; }
+	@media #{$xlarge-up} { z-index: 7; }
+	@media #{$xlarge-only} { z-index: 8; }
+	@media #{$xxlarge-up} { z-index: 9; }
+	@media #{$xxlarge-only} { z-index: 10; }
+}
+
 
 //We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
 $cursor-crosshair-value: crosshair !default;
