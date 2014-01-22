@@ -55,12 +55,12 @@ $side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
     margin: $side-nav-list-margin;
     font-size: $font-size;
 
-    a {
+    a:not(.button) {
       display: block;
       color: $link-color;
     }
 
-    &.active > a:first-child {
+    &.active > a:first-child:not(.button) {
       color: $side-nav-link-color-active;
       font-weight: $side-nav-font-weight;
       font-family: $side-nav-active-font-family;
