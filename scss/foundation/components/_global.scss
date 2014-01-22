@@ -332,10 +332,6 @@ $cursor-text-value: text !default;
     .left   { float: left !important; }
     .right  { float: right !important; }
     .clearfix     { @include clearfix; }
-    .text-left    { text-align: left !important; }
-    .text-right   { text-align: right !important; }
-    .text-center  { text-align: center !important; }
-    .text-justify { text-align: justify !important; }
     .hide         { display: none; }
 
     // Font smoothing
