@@ -354,18 +354,6 @@
         return opts;
       },
 
-      // Test for empty object or array
-      empty : function (obj) {
-        if (obj.length && obj.length > 0)    return false;
-        if (obj.length && obj.length === 0)  return true;
-
-        for (var key in obj) {
-          if (hasOwnProperty.call(obj, key))    return false;
-        }
-
-        return true;
-      },
-
       // Adds JS-recognizable media queries
       register_media : function(media, media_class) {
         if(Foundation.media_queries[media] === undefined) {
