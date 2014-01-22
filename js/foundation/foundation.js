@@ -289,7 +289,7 @@
       S : S,
 
       // Executes a function a max of once every n seconds 
-      throttle : function(fun, delay) {
+      throttle : function(func, delay) {
         var timer = null;
 
         return function () {
@@ -297,7 +297,7 @@
 
           clearTimeout(timer);
           timer = setTimeout(function () {
-            fun.apply(context, args);
+            func.apply(context, args);
           }, delay);
         };
       },
