@@ -137,16 +137,21 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     // Reveal Modals
     .reveal-modal-bg { @include reveal-bg; }
 
-    .#{$reveal-modal-class} {
+    dialog, .#{$reveal-modal-class} {
       @include reveal-modal-base;
       @include reveal-modal-style;
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
     }
 
+    dialog[open] {
+	display:block;
+	visibility: visible;
+    }
+
     @media #{$medium-up} {
 
-      .#{$reveal-modal-class} {
+      dialog, .#{$reveal-modal-class} {
         @include reveal-modal-style(false, $reveal-modal-padding * 1.5, false, $box-shadow: false, $top-offset: $reveal-position-top);
 
         &.tiny  { @include reveal-modal-base(false, 30%); }
@@ -159,7 +164,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
     // Reveal Print Styles
     @media print {
-      .#{$reveal-modal-class} {background: #fff !important;}
+      dialog, .#{$reveal-modal-class} {background: #fff !important;}
     }
   }
 }
