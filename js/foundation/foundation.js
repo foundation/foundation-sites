@@ -274,7 +274,7 @@
 
       for (var i = methods_arr.length - 1; i >= 0; i--) {
         if (this.utils.hasOwnProperty(methods_arr[i])) {
-          this.libs[scope.name][methods_arr[i]] = this.utils[methods_arr[i]];
+          scope[methods_arr[i]] = this.utils[methods_arr[i]];
         }
       }
     },
