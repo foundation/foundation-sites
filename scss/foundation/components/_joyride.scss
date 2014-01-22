@@ -185,7 +185,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
     }
 
 
-    /* Styles for screens that are atleast 768px; */
+    /* Styles for screens that are at least 768px; */
     @media #{$small} {
       .joyride-tip-guide { width: $joyride-tip-default-width; #{$default-float}: inherit;
         .joyride-nub {
