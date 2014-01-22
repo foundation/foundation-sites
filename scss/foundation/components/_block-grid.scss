@@ -29,11 +29,11 @@ $block-grid-media-queries: true !default;
   @if $base-style {
     display: block;
     padding: 0;
-    margin: 0 0 0 (-$spacing/2);
+    margin: 0 (-$spacing/2);
     @include clearfix;
 
     &>li {
-      display: inline;
+      display: block;
       height: auto;
       float: $default-float;
       padding: 0 ($spacing/2) $spacing;
