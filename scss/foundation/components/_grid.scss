@@ -92,9 +92,13 @@ $total-columns: 12 !default;
   $push:false, 
   $pull:false, 
   $collapse:false, 
-  $float:true) {
+  $float:true,
+  $position:false) {
 
-  position: relative;
+  // If positioned for default .column, include relative position
+  @if $position {
+    position: relative;
+  }
 
   // If collapsed, get rid of gutter padding
   @if $collapse {
@@ -169,7 +173,7 @@ $total-columns: 12 !default;
   }
 
   .column,
-  .columns { @include grid-column($columns:false); }
+  .columns { @include grid-column($columns:false, $position:true); }
 
 
   @for $i from 1 through $total-columns {
