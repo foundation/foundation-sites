@@ -304,16 +304,18 @@
 
       // Executes a function when it stops being invoked for n seconds
       // Modified version of _.debounce() http://underscorejs.org 
-      debounce : function(fun, delay) {
+      debounce : function(func, delay, immediate) {
         var timeout, result;
         return function() {
           var context = this, args = arguments;
           var later = function() {
             timeout = null;
-            result = fun.apply(context, args);
+            if (!immediate) result = func.apply(context, args);
           };
+          var callNow = immediate && !timeout;
           clearTimeout(timeout);
           timeout = setTimeout(later, delay);
+          if (callNow) result = func.apply(context, args);
           return result;
         };
       },
