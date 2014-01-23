@@ -43,9 +43,9 @@
     events : function (scope) {
       var self = this;
 
-      $('[data-reveal-id]', this.scope)
+      $(this.scope)
         .off('.reveal')
-        .on('click.fndtn.reveal', function (e) {
+        .on('click.fndtn.reveal', '[data-reveal-id]', function (e) {
           e.preventDefault();
 
           if (!self.locked) {
@@ -63,9 +63,6 @@
             }
           }
         });
-
-      $(this.scope)
-        .off('.reveal');
 
       $(document)
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
