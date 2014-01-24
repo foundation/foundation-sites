@@ -213,12 +213,18 @@ $include-print-styles: true !default;
 $include-html-global-classes: $include-html-classes !default;
 
 
+// We use this to define our Media Query breakpoints.
+$small-breakpoint: 640px;
+$medium-breakpoint: 1024px;
+$large-breakpoint: 1440px;
+$xlarge-breakpoint: 1920px;
+
 // Media Query Ranges
-$small-range: (0em, 40em) !default;
-$medium-range: (40.063em, 64em) !default;
-$large-range: (64.063em, 90em) !default;
-$xlarge-range: (90.063em, 120em) !default;
-$xxlarge-range: (120.063em) !default;
+$small-range: (0, rem-calc($small-breakpoint)) !default;
+$medium-range: (rem-calc($small-breakpoint+1), rem-calc($medium-breakpoint)) !default;
+$large-range: (rem-calc($medium-breakpoint+1), rem-calc($large-breakpoint)) !default;
+$xlarge-range: (rem-calc($large-breakpoint+1), rem-calc($xlarge-breakpoint)) !default;
+$xxlarge-range: (rem-calc($xlarge-breakpoint+1)) !default;
 
 
 $screen: "only screen" !default;
