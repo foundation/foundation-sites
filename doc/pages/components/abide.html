@@ -83,15 +83,11 @@ Invalid inputs inherit a `data-invalid` attribute.
 
 ## Events
 
-If a submit event is fired, a `valid` event is triggered when the form is valid and an `invalid` event is triggered when the form is invalid.
+When any change is made to the fields inside of the form, a 'valid' or 'invalid' event is triggered both to the changed field and the form. Those events are also triggered upon firing either submit or validate event on form element or validate event on the field element. If you do not wish to be notified of form status on every change inside of the field, you can disable that funcionality through validateOnChange setting.
 
 You can bind to these events and fire your own callback:
 
 {{> examples_abide_events}}
-
-To handle the `submit` event yourself, use `data-abide="ajax"` instead of `data-abide` inside the `form` tag.
-
-{{> examples_abide_ajax}}
 
 ***
 
