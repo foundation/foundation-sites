@@ -2,11 +2,18 @@
 ```javascript
 $('#myForm')
   .on('invalid', function () {
-    var invalid_fields = $(this).find('[data-invalid]');
-    console.log(invalid_fields);
+  	$('#submitButton').hide();
   })
   .on('valid', function () {
-    console.log('valid!');
+  	$('#submitButton').show();
+  });
+
+$('#myForm #myField')
+  .on('valid', function () {
+  	$('#moreDetails').show();
+  })
+  .on('invalid', function () {
+  	$('#moreDetails').hide();
   });
 ```
 {{/markdown}}
