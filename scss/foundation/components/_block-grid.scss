@@ -24,26 +24,31 @@ $block-grid-media-queries: true !default;
 @mixin block-grid(
   $per-row:false, 
   $spacing:$block-grid-default-spacing, 
+  $include-spacing:true,
   $base-style:true) {
 
   @if $base-style {
     display: block;
     padding: 0;
-    margin: 0 0 0 (-$spacing/2);
+    margin: 0 (-$spacing/2);
     @include clearfix;
 
     &>li {
-      display: inline;
+      display: block;
       height: auto;
       float: $default-float;
-      padding: 0 ($spacing/2) $spacing;
+      @if $include-spacing {
+        padding: 0 ($spacing/2) $spacing;
+      }
     }
   }
 
   @if $per-row {
     &>li {
       width: 100%/$per-row;
-      padding: 0 ($spacing/2) $spacing;
+      @if $include-spacing {
+        padding: 0 ($spacing/2) $spacing;
+      }
       list-style: none;
 
       &:nth-of-type(n) { clear: none; }
@@ -56,10 +61,10 @@ $block-grid-media-queries: true !default;
 // Generate presentational markup for block grid.
 //
 // $size - Name of class to use, i.e. "large" will generate .large-block-grid-1, .large-block-grid-2, etc.
-@mixin block-grid-html-classes($size) {
+@mixin block-grid-html-classes($size,$include-spacing) {
   @for $i from 1 through $block-grid-elements {
     .#{$size}-block-grid-#{($i)} {
-      @include block-grid($i,$block-grid-default-spacing,false);
+      @include block-grid($i,$block-grid-default-spacing,$include-spacing,false);
     }
   }
 }
@@ -70,15 +75,15 @@ $block-grid-media-queries: true !default;
     [class*="block-grid-"] { @include block-grid; }
 
     @media #{$small-up} {
-      @include block-grid-html-classes($size:small);
+      @include block-grid-html-classes($size:small,$include-spacing:false);
     }
 
     @media #{$medium-up} {
-      @include block-grid-html-classes($size:medium);
+      @include block-grid-html-classes($size:medium,$include-spacing:false);
     }
 
     @media #{$large-up} {
-      @include block-grid-html-classes($size:large);
+      @include block-grid-html-classes($size:large,$include-spacing:false);
     }
   }
 }
