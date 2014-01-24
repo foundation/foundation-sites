@@ -471,6 +471,15 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               &:hover { background: $topbar-link-bg-hover; }
             }
           }
+          &.active:not(.has-form) {
+            a:not(.button) {
+              padding: 0 $topbar-height / 3;
+              line-height: $topbar-height;
+              color: $topbar-link-color-active;
+              background: $topbar-link-bg-active;
+              &:hover { background: $topbar-link-bg-active-hover; }
+            }
+          }
         }
 
         .has-dropdown {
