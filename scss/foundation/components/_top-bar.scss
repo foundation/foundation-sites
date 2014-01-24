@@ -473,6 +473,20 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           }
         }
 
+        li.active {
+          &.hover {
+            > a:not(.button) {
+              background: $topbar-link-bg-active-hover;
+            }
+          }
+          &:not(.has-form) {
+            a:not(.button) {
+              background: $topbar-link-bg-active;
+              &:hover { background: $topbar-link-bg-active-hover; }
+            }
+          }
+        }
+
         .has-dropdown {
 
           @if($topbar-arrows){
