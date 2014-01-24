@@ -69,7 +69,7 @@ You can create an equal height container using a few data attributes. Apply the 
 
 ### Advanced
 
-Perhaps you need to create items that are positioned at the bottom of your input. For example Sign Up buttons on some [Pricing Tables]().
+Perhaps you need to create items that are positioned at the bottom of your input. For example Sign Up buttons on some [pricing tables]({{relative absolute 'dist/docs/components/pricing_tables.html'}}).
 
 #### HTML
 
@@ -117,10 +117,53 @@ Perhaps you need to create items that are positioned at the bottom of your input
 
 ---
 
-## Using the JavaScript
+### Callbacks
 
-Equalizer provides a few hooks to adjust your height. There is a `before-height-change` and `after-height-change` event that you can bind to.
+There are two ways to bind to callbacks in your equalizers.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>Callback Function</h4>
+
+{{#markdown}}
+```js
+$(document).foundation({
+  equalizer: {
+    before_height_change: function(){
+      // do something before the height changes
+    },
+    after_height_change: function(){
+      // do something after the height changes
+    }
+  }
+});
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Events</h4>
+
+{{#markdown}}
+```js
+$(document).on('before-height-change', function(){
+  // do something before the height changes
+});
+
+$(document).on('after-height-change', function(){
+  // do something after the height changes
+});
+```
+{{/markdown}}
+  </div>
+</div>
+
+### Using the JavaScript
+
+Before you can use Interchange you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../javascript.html) on setting that up.
 
 
+Just add `foundation.interchange.js` AFTER the `foundation.js` file. Your markup should look something like this:
 
+{{> examples_equalizer_javascript}}
 
+Required Foundation Library: `foundation.equalizer.js`

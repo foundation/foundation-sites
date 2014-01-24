@@ -7,6 +7,8 @@
     version : '5.1.0',
 
     settings : {
+      before_height_change: $.noop,
+      after_height_change: $.noop
     },
 
     init : function (scope, method, options) {
@@ -25,9 +27,13 @@
     },
 
     equalize: function(equalizer) {
-      var isStacked = false,
+      var self = this,
+          isStacked = false,
           vals = equalizer.find('[data-equalizer-watch]'),
-          firstTopOffset = vals.first().offset().top;
+          firstTopOffset = vals.first().offset().top,
+          settings = equalizer.data('equalizer-init');
+      settings.before_height_change();
+      equalizer.trigger('before-height-change');
       vals.height('inherit');
       vals.each(function(){
         var el = $(this);
@@ -40,6 +46,8 @@
       var heights = vals.map(function(){ return $(this).outerHeight() });
       var max = Math.max.apply(null, heights);
       vals.height(max);
+      settings.after_height_change();
+      equalizer.trigger('after-height-change');
     },
 
     reflow : function () {
