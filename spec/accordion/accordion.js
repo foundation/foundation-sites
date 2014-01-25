@@ -1,7 +1,7 @@
-describe('component:', function() {
+describe('accordion:', function() {
   beforeEach(function() {
     this.addMatchers({
-      // Place abide-specific matchers here...
+      // Place accordion-specific matchers here...
     });
 
     var origFunc = $.fn.foundation;
@@ -11,10 +11,4 @@ describe('component:', function() {
       return result;
     });
   });
-
-  describe('when above the medium breakpoint', when('medium', function() {
-  }));
-
-  describe('when below the medium breakpoint', when_not('medium', function () {
-  }));
 });
