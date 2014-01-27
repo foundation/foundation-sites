@@ -59,7 +59,7 @@ $off-canvas-overlay-box-shadow: -4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000,
 $off-canvas-overlay-background: rgba(#FFF, 0.2) !default;
 $off-canvas-overlay-background-hover: rgba(#FFF, 0.05) !default;
 
-// Transition Variabls
+// Transition Variables
 $menu-slide: "transform 500ms ease" !default;
 
 
@@ -179,7 +179,7 @@ $menu-slide: "transform 500ms ease" !default;
     text-align: left;
   }
 
-  // still need to make these non-presntational
+  // still need to make these non-presentational
   &.left {
     left: 0;
     right: $tabbar-height;
