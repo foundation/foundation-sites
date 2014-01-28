@@ -365,7 +365,7 @@
       },
 
       // Add custom CSS within a JS-defined media query
-      addCustomRule : function(rule, media) {
+      add_custom_rule : function(rule, media) {
         if(media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
         } else {

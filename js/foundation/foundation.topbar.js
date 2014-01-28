@@ -17,7 +17,7 @@
     },
 
     init : function (section, method, options) {
-      Foundation.inherit(this, 'addCustomRule register_media throttle');
+      Foundation.inherit(this, 'add_custom_rule register_media throttle');
       var self = this;
 
       self.register_media('topbar', 'foundation-mq-topbar');
@@ -51,7 +51,7 @@
         }
 
         // Pad body when sticky (scrolled) or fixed.
-        self.addCustomRule('.f-topbar-fixed { padding-top: ' + topbar.data('height') + 'px }');
+        self.add_custom_rule('.f-topbar-fixed { padding-top: ' + topbar.data('height') + 'px }');
 
         if (topbarContainer.hasClass('fixed')) {
           self.S('body').addClass('f-topbar-fixed');
