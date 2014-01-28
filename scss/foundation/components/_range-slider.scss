@@ -92,7 +92,7 @@ $range-slider-handle-cursor: pointer !default;
 // CSS Generation
 @include exports("range-slider-bar") {
   @if $include-html-range-slider-classes {
-    .range-slider-bar {
+    .range-slider {
       @include range-slider-bar-base;
       @include range-slider-bar-style($bg:true, $radius:false);
       &.vertical-range {
