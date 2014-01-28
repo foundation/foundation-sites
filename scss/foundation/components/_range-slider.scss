@@ -37,7 +37,7 @@ $range-slider-handle-border-width: 1px !default;
 $range-slider-handle-border-style: solid !default;
 $range-slider-handle-border-color: scale-color($range-slider-handle-bg-color, $lightness: -10%) !default;
 $range-slider-handle-radius: $global-radius !default;
-$range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -10%) !default;
+$range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%) !default;
 $range-slider-handle-cursor: pointer !default;
 
 //
@@ -116,7 +116,7 @@ $range-slider-handle-cursor: pointer !default;
       position: relative;
       top: -($range-slider-bar-height / 2);
       height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
-      background: scale-color($primary-color, $lightness: 90%);
+      background: scale-color($secondary-color, $lightness: -1%);
     }
     .range-slider-handle {
       @include range-slider-handle-base;
