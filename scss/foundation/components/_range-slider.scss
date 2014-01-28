@@ -27,7 +27,7 @@ $range-slider-bar-bg-color: #fafafa !default;
 $range-slider-handle-width: rem-calc(32) !default;
 $range-slider-handle-height: $range-slider-handle-width !default;
 
-$range-slider-vertical-handle-margin-left: rem-calc(-8) !default;
+$range-slider-vertical-handle-margin-left: -($range-slider-handle-width / 4) !default;
 
 $range-slider-handle-bg-color: $primary-color !default;
 $range-slider-handle-border-width: 1px !default;
