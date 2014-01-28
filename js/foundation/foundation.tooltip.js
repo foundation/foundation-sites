@@ -34,7 +34,7 @@
         S(this.scope)
           .off('.tooltip')
           .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
-            '[data-tooltip]', function (e) {
+            '[data-tooltip]:not(a)', function (e) {
             var settings = $.extend({}, self.settings, self.data_options(S(this)));
             if (!settings.disable_for_touch) {
               e.preventDefault();
