@@ -1,7 +1,7 @@
 @import "global";
 
 //
-// @name _slider-widget.scss
+// @name _range-slider.scss
 // @dependencies _global.scss
 //
 
@@ -9,87 +9,105 @@
 // @variables
 //
 
-$include-html-slider-widget-classes: $include-html-classes !default;
+$include-html-range-slider-classes: $include-html-classes !default;
 
 // These variabels define the slider bar styles
-$slider-widget-bar-width: 100% !default;
-$slider-widget-bar-height: rem-calc(16) !default;
-$slider-widget-bar-border-width: 1px !default;
-$slider-widget-bar-border-style: solid !default;
-$slider-widget-bar-border-color: #ddd !default; 
-$slider-widget-radius: $global-radius !default;
-$slider-widget-bar-bg-color: #fafafa !default;
+$range-slider-bar-width: 100% !default;
+$range-slider-bar-height: rem-calc(16) !default;
+$range-slider-vertical-bar-width: rem-calc(16) !default;
+$range-slider-vertical-bar-height: rem-calc(100) !default;
+
+$range-slider-bar-border-width: 1px !default;
+$range-slider-bar-border-style: solid !default;
+$range-slider-bar-border-color: #ddd !default; 
+$range-slider-radius: $global-radius !default;
+$range-slider-bar-bg-color: #fafafa !default;
 
 // These variabels define the slider handle styles
-$slider-widget-handle-width: rem-calc(32) !default;
-$slider-widget-handle-height: $slider-widget-handle-width !default;
-$slider-widget-handle-bg-color: $primary-color !default;
-$slider-widget-handle-border-width: 1px !default;
-$slider-widget-handle-border-style: solid !default;
-$slider-widget-handle-border-color: scale-color($slider-widget-handle-bg-color, $lightness: -10%) !default;
-$slider-widget-handle-radius: $global-radius !default;
-$slider-widget-handle-bg-hover-color: scale-color($primary-color, $lightness: -10%) !default;
-$slider-widget-handle-cursor: pointer !default;
+$range-slider-handle-width: rem-calc(32) !default;
+$range-slider-handle-height: $range-slider-handle-width !default;
+
+$range-slider-vertical-handle-margin-left: rem-calc(-8) !default;
+
+$range-slider-handle-bg-color: $primary-color !default;
+$range-slider-handle-border-width: 1px !default;
+$range-slider-handle-border-style: solid !default;
+$range-slider-handle-border-color: scale-color($range-slider-handle-bg-color, $lightness: -10%) !default;
+$range-slider-handle-radius: $global-radius !default;
+$range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -10%) !default;
+$range-slider-handle-cursor: pointer !default;
 
 //
 // @mixins
 //
 
-@mixin slider-widget-bar-base() {
+@mixin range-slider-bar-base($vertical: false) {
   display: block;
-  width: $slider-widget-bar-width;
-  height: $slider-widget-bar-height;
-  border: $slider-widget-bar-border-width $slider-widget-bar-border-style $slider-widget-bar-border-color;
+  width: $range-slider-bar-width;
+  height: $range-slider-bar-height;
+  border: $range-slider-bar-border-width $range-slider-bar-border-style $range-slider-bar-border-color;
+  @if $vertical == true {
+    display: inline-block;
+    width: $range-slider-vertical-bar-width;
+    height: $range-slider-vertical-bar-height;
+  }
 }
-@mixin slider-widget-bar-style(
-  $bg: true, 
+@mixin range-slider-bar-style(
+  $bg: true,
   $radius:false) {
-  @if $bg == true { background: $slider-widget-bar-bg-color; }
-  @if $radius == true { @include radius($slider-widget-radius); }
+    @if $bg == true { background: $range-slider-bar-bg-color; }
+    @if $radius == true { @include radius($range-slider-radius); }
+  }
+
+@mixin range-slider-bar(
+  $bg: $range-slider-bar-bg-color, 
+  $radius:false) {
+  @include range-slider-bar-base;
+  @include range-slider-bar-style;
 }
 
-@mixin slider-widget-bar(
-  $bg: $slider-widget-bar-bg-color, 
-  $radius:false) {
-  @include slider-widget-bar-base;
-  @include slider-widget-bar-style;
-}
-
-@mixin slider-widget-handle-base() {
+@mixin range-slider-handle-base() {
   display: block;
   position: relative;
   margin-top: rem-calc(-10);
-  width: $slider-widget-handle-width;
-  height: $slider-widget-handle-height;
-  border: $slider-widget-handle-border-width $slider-widget-handle-border-style $slider-widget-handle-border-color;
-  cursor: $slider-widget-handle-cursor;
+  width: $range-slider-handle-width;
+  height: $range-slider-handle-height;
+  border: $range-slider-handle-border-width $range-slider-handle-border-style $range-slider-handle-border-color;
+  cursor: $range-slider-handle-cursor;
 }
-@mixin slider-widget-handle-style(
+@mixin range-slider-handle-style(
   $bg: true,
   $radius: false) {
-  @if $bg == true { background: $slider-widget-handle-bg-color; }
-  @if $radius == true { @include radius($slider-widget-radius); }
+  @if $bg == true { background: $range-slider-handle-bg-color; }
+  @if $radius == true { @include radius($range-slider-radius); }
   &:hover {
-    background: $slider-widget-handle-bg-hover-color;
+    background: $range-slider-handle-bg-hover-color;
   }
 }
-@mixin slider-widget-handle() {
-  @include slider-widget-handle-base;
-  @include slider-widget-handle-style;
+@mixin range-slider-handle() {
+  @include range-slider-handle-base;
+  @include range-slider-handle-style;
 }
 
 // CSS Generation
-@include exports("slider-widget-bar") {
-  @if $include-html-slider-widget-classes {
-    .slider-widget-bar {
-      @include slider-widget-bar-base;
-      @include slider-widget-bar-style($bg:true, $radius:false);
-      &.radius { @include slider-widget-bar-style($radius:true) }
+@include exports("range-slider-bar") {
+  @if $include-html-range-slider-classes {
+    .range-slider-bar {
+      @include range-slider-bar-base;
+      @include range-slider-bar-style($bg:true, $radius:false);
+      &.vertical-range {
+        @include range-slider-bar-base($vertical: true);
+        .range-slider-handle { margin-left: $range-slider-vertical-handle-margin-left; }
+      }
+      &.radius {
+        @include range-slider-bar-style($radius:true);
+        .range-slider-handle { @include range-slider-handle-style($radius: true); }
+      }
     }
-    .slider-widget-handle {
-      @include slider-widget-handle-base;
-      @include slider-widget-handle-style($bg:true, $radius: false);
-      &.radius { @include slider-widget-handle-style($bg:false, $radius: true); }
+    .range-slider-handle {
+      @include range-slider-handle-base;
+      @include range-slider-handle-style($bg:true, $radius: false);
+      &.radius { @include range-slider-handle-style($bg:false, $radius: true); }
     }
   }
 }

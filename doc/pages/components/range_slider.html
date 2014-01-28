@@ -9,29 +9,34 @@ layout: doc/layouts/default.html
 
 ***
 
-<div class="slider-widget-bar">
-  <span class="slider-widget-handle"></span>
+<div class="range-slider-bar">
+  <span class="range-slider-handle"></span>
 </div>
 
 ***
 
 <h2>Basic</h2>
 
-You can create a progress bar using minimal markup.
+You can create a range slider bar using minimal markup.
 
 <div class="row">
   <div class="large-6 columns">
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-{{> examples_progress_bars_basic}}
+<div class="range-slider-bar">
+  <span class="range-slider-handle"></span>
+</div>
 ```
 {{/markdown}}
 
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    {{> examples_progress_bars_basic}}
+    <div class="range-slider-bar">
+      <span class="range-slider-handle"></span>
+    </div>
+
   </div>
 </div>
 
@@ -39,20 +44,54 @@ You can create a progress bar using minimal markup.
 
 <h2>Advanced</h2>
 
-Additional classes can be added to your progress bar to change its appearance.
+Additional classes can be added to your range slider to change its appearance.
+
+### Add Border Radius
+
+You can add a border radius to the range slider by adding the `radius` class to the `range-slider-bar` element.
 
 <div class="row">
   <div class="large-6 columns">
     <h4>HTML</h4>
-{{> examples_progress_bars_advanced}}
+{{#markdown}}
+```html
+<div class="range-slider-bar radius">
+  <span class="range-slider-handle"></span>
+</div>
+```
+{{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="progress large-9 success round">
-      <span class="meter" style="width: 80%"></span>
+    <div class="range-slider-bar radius">
+      <span class="range-slider-handle"></span>
     </div>
   </div>
 </div>
+
+### Vertical Range Slider
+
+You can create a vertical range slider instead of the default horizontal slider by adding the `vertical-range` class to the `range-slider-bar` element.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="range-slider-bar vertical-range">
+  <span class="range-slider-handle"></span>
+</div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="range-slider-bar vertical-range">
+      <span class="range-slider-handle"></span>
+    </div>
+  </div>
+</div>
+
 
 ***
 
