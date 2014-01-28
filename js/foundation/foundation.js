@@ -392,7 +392,7 @@
       },
 
       // Performs a callback function when an image is fully loaded
-      loaded : function (image, callback) {
+      image_loaded : function (image, callback) {
         function loaded () {
           callback(image[0]);
         }

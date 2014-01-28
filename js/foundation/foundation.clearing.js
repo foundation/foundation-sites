@@ -25,7 +25,7 @@
 
     init : function (scope, method, options) {
       var self = this;
-      Foundation.inherit(this, 'throttle loaded');
+      Foundation.inherit(this, 'throttle image_loaded');
 
       this.bindings(method, options);
 
@@ -168,7 +168,7 @@
           .attr('src', this.load($image))
           .css('visibility', 'hidden');
 
-        this.loaded(image, function () {
+        this.image_loaded(image, function () {
           image.css('visibility', 'visible');
           // toggle the gallery
           root.addClass('clearing-blackout');
