@@ -1,0 +1,95 @@
+@import "global";
+
+//
+// @name _slider-widget.scss
+// @dependencies _global.scss
+//
+
+//
+// @variables
+//
+
+$include-html-slider-widget-classes: $include-html-classes !default;
+
+// These variabels define the slider bar styles
+$slider-widget-bar-width: 100% !default;
+$slider-widget-bar-height: rem-calc(16) !default;
+$slider-widget-bar-border-width: 1px !default;
+$slider-widget-bar-border-style: solid !default;
+$slider-widget-bar-border-color: #ddd !default; 
+$slider-widget-radius: $global-radius !default;
+$slider-widget-bar-bg-color: #fafafa !default;
+
+// These variabels define the slider handle styles
+$slider-widget-handle-width: rem-calc(32) !default;
+$slider-widget-handle-height: $slider-widget-handle-width !default;
+$slider-widget-handle-bg-color: $primary-color !default;
+$slider-widget-handle-border-width: 1px !default;
+$slider-widget-handle-border-style: solid !default;
+$slider-widget-handle-border-color: scale-color($slider-widget-handle-bg-color, $lightness: -10%) !default;
+$slider-widget-handle-radius: $global-radius !default;
+$slider-widget-handle-bg-hover-color: scale-color($primary-color, $lightness: -10%) !default;
+$slider-widget-handle-cursor: pointer !default;
+
+//
+// @mixins
+//
+
+@mixin slider-widget-bar-base() {
+  display: block;
+  width: $slider-widget-bar-width;
+  height: $slider-widget-bar-height;
+  border: $slider-widget-bar-border-width $slider-widget-bar-border-style $slider-widget-bar-border-color;
+}
+@mixin slider-widget-bar-style(
+  $bg: true, 
+  $radius:false) {
+  @if $bg == true { background: $slider-widget-bar-bg-color; }
+  @if $radius == true { @include radius($slider-widget-radius); }
+}
+
+@mixin slider-widget-bar(
+  $bg: $slider-widget-bar-bg-color, 
+  $radius:false) {
+  @include slider-widget-bar-base;
+  @include slider-widget-bar-style;
+}
+
+@mixin slider-widget-handle-base() {
+  display: block;
+  position: relative;
+  margin-top: rem-calc(-10);
+  width: $slider-widget-handle-width;
+  height: $slider-widget-handle-height;
+  border: $slider-widget-handle-border-width $slider-widget-handle-border-style $slider-widget-handle-border-color;
+  cursor: $slider-widget-handle-cursor;
+}
+@mixin slider-widget-handle-style(
+  $bg: true,
+  $radius: false) {
+  @if $bg == true { background: $slider-widget-handle-bg-color; }
+  @if $radius == true { @include radius($slider-widget-radius); }
+  &:hover {
+    background: $slider-widget-handle-bg-hover-color;
+  }
+}
+@mixin slider-widget-handle() {
+  @include slider-widget-handle-base;
+  @include slider-widget-handle-style;
+}
+
+// CSS Generation
+@include exports("slider-widget-bar") {
+  @if $include-html-slider-widget-classes {
+    .slider-widget-bar {
+      @include slider-widget-bar-base;
+      @include slider-widget-bar-style($bg:true, $radius:false);
+      &.radius { @include slider-widget-bar-style($radius:true) }
+    }
+    .slider-widget-handle {
+      @include slider-widget-handle-base;
+      @include slider-widget-handle-style($bg:true, $radius: false);
+      &.radius { @include slider-widget-handle-style($bg:false, $radius: true); }
+    }
+  }
+}
