@@ -9,8 +9,8 @@ layout: doc/layouts/default.html
 
 ***
 
-<div class="range-slider" data-range data-options="lower_bound: 0; upper_bound: 100;">
-  <span class="range-slider-active-segment" style="width: 50%;"></span>
+<div class="range-slider" data-range data-options="range: 0, 100;">
+  <span class="range-slider-active-segment" style="width: 24%;"></span>
   <span class="range-slider-handle"></span>
 </div>
 
@@ -25,14 +25,14 @@ You can create a range slider bar using minimal markup.
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider" data-range data-options="lower_bound: 0; upper_bound: 100;"></div>
+<div class="range-slider" data-range data-options="range: 0, 100;"></div>
 ```
 {{/markdown}}
 
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider" data-range data-options="lower_bound: 0; upper_bound: 100;">
+    <div class="range-slider" data-range data-options="range: 0, 100;;">
       <span class="range-slider-handle"></span>
     </div>
 
@@ -54,13 +54,13 @@ You can add a border radius to the range slider by adding the `radius` class to 
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider radius" data-range data-options="lower_bound: 0; upper_bound: 100;"></div>
+<div class="range-slider radius" data-range data-options="range: 0, 100;"></div>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider radius" data-range data-options="lower_bound: 0; upper_bound: 100;">
+    <div class="range-slider radius" data-range data-options="range: 0, 100;">
       <span class="range-slider-handle"></span>
     </div>
   </div>
@@ -75,13 +75,13 @@ You can create a vertical range slider instead of the default horizontal slider 
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider vertical-range" data-range data-options="lower_bound: 0; upper_bound: 100;"></div>
+<div class="range-slider vertical-range" data-range data-options="range: 0, 100;"></div>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider vertical-range" data-range data-options="lower_bound: 0; upper_bound: 100;">
+    <div class="range-slider vertical-range" data-range data-options="range: 0, 100;">
       <span class="range-slider-handle"></span>
     </div>
   </div>
