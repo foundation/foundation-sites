@@ -270,9 +270,10 @@
     },
 
     inherit : function (scope, methods) {
-      var methods_arr = methods.split(' ');
+      var methods_arr = methods.split(' '),
+          i = methods_arr.length;
 
-      for (var i = methods_arr.length - 1; i >= 0; i--) {
+      while (i--) {
         if (this.utils.hasOwnProperty(methods_arr[i])) {
           scope[methods_arr[i]] = this.utils[methods_arr[i]];
         }
@@ -363,7 +364,7 @@
       //    Options (Javascript Object): Contents of the element's data-options 
       //    attribute.
       data_options : function (el) {
-        var opts = {}, ii, p, opts_arr, opts_len,
+        var opts = {}, ii, p, opts_arr,
             data_options = el.data('options');
 
         if (typeof data_options === 'object') {
@@ -371,7 +372,7 @@
         }
 
         opts_arr = (data_options || ':').split(';'),
-        opts_len = opts_arr.length;
+        ii = opts_arr.length;
 
         function isNumber (o) {
           return ! isNaN (o-0) && o !== null && o !== "" && o !== false && o !== true;
@@ -382,7 +383,7 @@
           return str;
         }
 
-        for (ii = opts_len - 1; ii >= 0; ii--) {
+        while (ii--) {
           p = opts_arr[ii].split(':');
 
           if (/true/i.test(p[1])) p[1] = true;
@@ -485,7 +486,7 @@
         }
 
         var str = '';
-        for (var i = 0; i < length; i++) {
+        while (length--) {
           str += chars[Math.floor(Math.random() * chars.length)];
         }
         return str;
