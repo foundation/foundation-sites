@@ -284,11 +284,32 @@
     // methods that can be inherited in libraries
     utils : {
 
-      // Fast Selector wrapper returns jQuery object. 
-      // Only use where getElementById is not available.
+      // Description:
+      //    Fast Selector wrapper returns jQuery object. Only use where getElementById 
+      //    is not available.
+      //
+      // Arguments:
+      //    Selector (String): CSS selector describing the element(s) to be 
+      //    returned as a jQuery object.
+      //
+      //    Scope (String): CSS selector describing the area to be searched. Default 
+      //    is document.
+      //
+      // Returns:
+      //    Element (jQuery Object): jQuery object containing elements matching the 
+      //    selector within the scope.
       S : S,
 
-      // Executes a function a max of once every n seconds 
+      // Description:
+      //    Executes a function a max of once every n seconds 
+      //
+      // Arguments:
+      //    Func (Function): Function to be throttled.
+      //
+      //    Delay (Integer): Function execution threshold in milliseconds.
+      //
+      // Returns:
+      //    Lazy_function (Function): Function with throttling applied.
       throttle : function(func, delay) {
         var timer = null;
 
@@ -302,8 +323,20 @@
         };
       },
 
-      // Executes a function when it stops being invoked for n seconds
-      // Modified version of _.debounce() http://underscorejs.org 
+      // Description:
+      //    Executes a function when it stops being invoked for n seconds
+      //    Modified version of _.debounce() http://underscorejs.org
+      //
+      // Arguments:
+      //    Func (Function): Function to be debounced.
+      //
+      //    Delay (Integer): Function execution threshold in milliseconds.
+      // 
+      //    Immediate (Bool): Whether the function should be called at the beginning 
+      //    of the delay instead of the end. Default is false.
+      //
+      // Returns:
+      //    Lazy_function (Function): Function with debouncing applied.
       debounce : function(func, delay, immediate) {
         var timeout, result;
         return function() {
@@ -320,7 +353,15 @@
         };
       },
 
-      // Parses data-options attribute
+      // Description:
+      //    Parses data-options attribute
+      //
+      // Arguments:
+      //    El (jQuery Object): Element to be parsed.
+      //
+      // Returns:
+      //    Options (Javascript Object): Contents of the element's data-options 
+      //    attribute.
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr, opts_len,
             data_options = el.data('options');
@@ -356,7 +397,14 @@
         return opts;
       },
 
-      // Adds JS-recognizable media queries
+      // Description:
+      //    Adds JS-recognizable media queries
+      //
+      // Arguments:
+      //    Media (String): Key string for the media query to be stored as in 
+      //    Foundation.media_queries
+      //
+      //    Class (String): Class name for the generated <meta> tag
       register_media : function(media, media_class) {
         if(Foundation.media_queries[media] === undefined) {
           $('head').append('<meta class="' + media_class + '">');
@@ -364,7 +412,14 @@
         }
       },
 
-      // Add custom CSS within a JS-defined media query
+      // Description:
+      //    Add custom CSS within a JS-defined media query
+      //
+      // Arguments:
+      //    Rule (String): CSS rule to be appended to the document.
+      //
+      //    Media (String): Optional media query string for the CSS rule to be 
+      //    nested under.
       add_custom_rule : function(rule, media) {
         if(media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
@@ -377,21 +432,13 @@
         }
       },
 
-      random_str : function (length) {
-        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
-
-        if (!length) {
-          length = Math.floor(Math.random() * chars.length);
-        }
-
-        var str = '';
-        for (var i = 0; i < length; i++) {
-          str += chars[Math.floor(Math.random() * chars.length)];
-        }
-        return str;
-      },
-
-      // Performs a callback function when an image is fully loaded
+      // Description:
+      //    Performs a callback function when an image is fully loaded
+      //
+      // Arguments:
+      //    Image (jQuery Object): Image to check if loaded.
+      //
+      //    Callback (Function): Fundation to execute when image is fully loaded.
       image_loaded : function (image, callback) {
         function loaded () {
           callback(image[0]);
@@ -419,6 +466,29 @@
         } else {
           bindLoad.call(image);
         }
+      },
+
+      // Description:
+      //    Returns a random, alphanumeric string
+      //
+      // Arguments:
+      //    Length (Integer): Length of string to be generated. Defaults to random 
+      //    integer.
+      //
+      // Returns:
+      //    Rand (String): Pseudo-random, alphanumeric string.
+      random_str : function (length) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+
+        if (!length) {
+          length = Math.floor(Math.random() * chars.length);
+        }
+
+        var str = '';
+        for (var i = 0; i < length; i++) {
+          str += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return str;
       }
     }
   };
