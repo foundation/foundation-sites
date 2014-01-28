@@ -125,15 +125,15 @@
       if (count > 0) {
         var el = this.S('[data-uuid="' + uuid + '"]');
 
-        for (var i = count - 1; i >= 0; i--) {
-          var mq, rule = scenarios[i][2];
+        while (count--) {
+          var mq, rule = scenarios[count][2];
           if (this.settings.named_queries.hasOwnProperty(rule)) {
             mq = matchMedia(this.settings.named_queries[rule]);
           } else {
             mq = matchMedia(rule);
           }
           if (mq.matches) {
-            return {el: el, scenario: scenarios[i]};
+            return {el: el, scenario: scenarios[count]};
           }
         }
       }
@@ -152,6 +152,7 @@
     update_images : function () {
       var images = this.S('img[' + this.data_attr + ']'),
           count = images.length,
+          i = count,
           loaded_count = 0,
           data_attr = this.data_attr;
 
@@ -159,7 +160,7 @@
       this.cached_images = [];
       this.images_loaded = (count === 0);
 
-      for (var i = count - 1; i >= 0; i--) {
+      while (i--) {
         loaded_count++;
         if (images[i]) {
           var str = images[i].getAttribute(data_attr) || '';
@@ -181,6 +182,7 @@
     update_nodes : function () {
       var nodes = this.S('[' + this.data_attr + ']').not('img'),
           count = nodes.length,
+          i = count,
           loaded_count = 0,
           data_attr = this.data_attr;
 
@@ -190,7 +192,7 @@
       this.nodes_loaded = (count === 0);
 
 
-      for (var i = count - 1; i >= 0; i--) {
+      while (i--) {
         loaded_count++;
         var str = nodes[i].getAttribute(data_attr) || '';
 
@@ -208,9 +210,9 @@
     },
 
     enhance : function (type) {
-      var count = this['cached_' + type].length;
+      var i = this['cached_' + type].length;
 
-      for (var i = count - 1; i >= 0; i--) {
+      while (i--) {
         this.object($(this['cached_' + type][i]));
       }
 
@@ -233,10 +235,11 @@
 
     object : function(el) {
       var raw_arr = this.parse_data_attr(el),
-          scenarios = [], count = raw_arr.length;
+          scenarios = [], 
+          i = raw_arr.length;
 
-      if (count > 0) {
-        for (var i = count - 1; i >= 0; i--) {
+      if (i > 0) {
+        while (i--) {
           var split = raw_arr[i].split(/\((.*?)(\))$/);
 
           if (split.length > 1) {
@@ -285,9 +288,10 @@
 
     parse_data_attr : function (el) {
       var raw = el.data(this.settings.load_attr).split(/\[(.*?)\]/),
-          count = raw.length, output = [];
+          i = raw.length, 
+          output = [];
 
-      for (var i = count - 1; i >= 0; i--) {
+      while (i--) {
         if (raw[i].replace(/[\W\d]+/, '').length > 4) {
           output.push(raw[i]);
         }
