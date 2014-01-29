@@ -142,7 +142,8 @@
           this.settings = $.extend({}, self.defaults, self.data_options($this))
 
           // Make sure that settings parsed from data_options are integers where necessary
-          for (var i = int_settings_count - 1; i >= 0; i--) {
+          var i = int_settings_count;
+          while (i--) {
             self.settings[integer_settings[i]] = parseInt(self.settings[integer_settings[i]], 10);
           }
           self.create({$li : $this, index : index});
@@ -701,7 +702,7 @@
     },
 
     remove_exposed: function(el){
-      var search, count;
+      var search, i;
       if (el instanceof $) {
         search = el[0]
       } else if (typeof el == 'string'){
@@ -709,9 +710,9 @@
       }
 
       this.settings.exposed = this.settings.exposed || [];
-      count = this.settings.exposed.length;
+      i = this.settings.exposed.length;
 
-      for (var i=0; i < count; i++) {
+      while (i--) {
         if (this.settings.exposed[i] == search) {
           this.settings.exposed.splice(i, 1);
           return;

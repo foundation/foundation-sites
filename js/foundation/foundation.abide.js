@@ -90,6 +90,7 @@
           form = this.S(els[0]).closest('form'),
           submit_event = /submit/.test(e.type);
 
+      // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
           if (this.settings.focus_on_invalid) els[i].focus();
@@ -111,10 +112,10 @@
     },
 
     parse_patterns : function (els) {
-      var count = els.length,
+      var i = els.length,
           el_patterns = [];
 
-      for (var i = count - 1; i >= 0; i--) {
+      while (i--) {
         el_patterns.push(this.pattern(els[i]));
       }
 
@@ -143,10 +144,10 @@
     },
 
     check_validation_and_apply_styles : function (el_patterns) {
-      var count = el_patterns.length,
+      var i = el_patterns.length,
           validations = [];
 
-      for (var i = count - 1; i >= 0; i--) {
+      while (i--) {
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
             value = el.value,
@@ -213,10 +214,12 @@
           count = group.length,
           valid = false;
 
+      // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < count; i++) {
         if (group[i].checked) valid = true;
       }
 
+      // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < count; i++) {
         if (valid) {
           this.S(group[i]).removeAttr('data-invalid').parent().removeClass('error');
