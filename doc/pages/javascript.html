@@ -91,6 +91,14 @@ $(document).foundation({
 
 The above will initialize all of the plugins with default settings as well as customized settings for `reveal`, `tooltip`, and `topbar`.
 
+<h4>Data Options</h4>
+
+Instead of passing the settings to the plugins using Javascript, you can pass them through the markup using `data-options`. To pass in an option, just place it in the `data-options` HTML attribute of the element the plugin is being called on. To pass in multiple options, format them as a semicolon-delimited list.
+
+```html
+<span data-tooltip data-options="disable_for_touch:true;touch_close_text:'close me'" class="has-tip" title="Tooltips are awesome!">Has Tooltip</span>
+```
+
 ***
 
 ### Configure on the fly
