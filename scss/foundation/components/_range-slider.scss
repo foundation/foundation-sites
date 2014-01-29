@@ -29,7 +29,6 @@ $range-slider-vertical-bar-height: rem-calc(200) !default;
 $range-slider-handle-width: rem-calc(32) !default;
 $range-slider-handle-height: $range-slider-handle-width !default;
 $range-slider-handle-margin-top: rem-calc(-10) !default;
-$range-slider-handle-margin-#{$default-float}: -($range-slider-handle-width / 4) !default;
 $range-slider-handle-bg-color: $primary-color !default;
 $range-slider-handle-border-width: 1px !default;
 $range-slider-handle-border-style: solid !default;
@@ -37,9 +36,6 @@ $range-slider-handle-border-color: scale-color($range-slider-handle-bg-color, $l
 $range-slider-handle-radius: $global-radius !default;
 $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%) !default;
 $range-slider-handle-cursor: pointer !default;
-
-// Vertical handle styles
-$range-slider-vertical-handle-margin-#{$default-float}: -($range-slider-handle-width / 4) !default;
 
 
 //
@@ -106,7 +102,7 @@ $range-slider-vertical-handle-margin-#{$default-float}: -($range-slider-handle-w
         @include range-slider-bar-base($vertical: true);
         .range-slider-handle {
           margin-top: 0;
-          margin-#{$default-float}: $range-slider-vertical-handle-margin-left;
+          margin-#{$default-float}: -($range-slider-handle-width / 4);
           position: absolute;
           bottom: -($range-slider-vertical-bar-height - $range-slider-handle-width);
         }
@@ -126,7 +122,7 @@ $range-slider-vertical-handle-margin-#{$default-float}: -($range-slider-handle-w
       position: absolute;
       height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
       background: scale-color($secondary-color, $lightness: -1%);
-      ~ .range-slider-handle { margin-#{$default-float}: $range-slider-vertical-handle-margin-left; }
+      ~ .range-slider-handle { margin-#{$default-float}: -($range-slider-handle-width / 4); }
     }
     .range-slider-handle {
       @include range-slider-handle-base;
