@@ -218,7 +218,7 @@ $small-range: (0em, 40em) !default;
 $medium-range: (40.063em, 64em) !default;
 $large-range: (64.063em, 90em) !default;
 $xlarge-range: (90.063em, 120em) !default;
-$xxlarge-range: (120.063em) !default;
+$xxlarge-range: (120.063em, 99999999em) !default;
 
 
 $screen: "only screen" !default;
