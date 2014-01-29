@@ -164,10 +164,10 @@ $total-columns: 12 !default;
   }
 
   @for $i from 1 through $total-columns - 1 {
-    .#{$size}-push#{-$i} {
+    .#{$size}-push-#{$i} {
       @include grid-column($push:$i, $collapse:null, $float:false);
     }
-    .#{$size}-pull#{-$i} {
+    .#{$size}-pull-#{$i} {
       @include grid-column($pull:$i, $collapse:null, $float:false);
     }
   }
@@ -177,7 +177,7 @@ $total-columns: 12 !default;
 
 
   @for $i from 1 through $total-columns {
-    .#{$size}#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+    .#{$size}-#{$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
   }
 
   [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
@@ -225,10 +225,10 @@ $total-columns: 12 !default;
       @include grid-html-classes($size:medium);
       // Old push and pull classes
       @for $i from 1 through $total-columns - 1 {
-        .push#{-$i} {
+        .push-#{$i} {
           @include grid-column($push:$i, $collapse:null, $float:false);
         }
-        .pull#{-$i} {
+        .pull-#{$i} {
           @include grid-column($pull:$i, $collapse:null, $float:false);
         }
       }
@@ -236,10 +236,10 @@ $total-columns: 12 !default;
     @media #{$large-up} {
       @include grid-html-classes($size:large);
       @for $i from 1 through $total-columns - 1 {
-        .push#{-$i} {
+        .push-#{$i} {
           @include grid-column($push:$i, $collapse:null, $float:false);
         }
-        .pull#{-$i} {
+        .pull-#{$i} {
           @include grid-column($pull:$i, $collapse:null, $float:false);
         }
       }
