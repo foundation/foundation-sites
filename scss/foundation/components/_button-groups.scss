@@ -91,7 +91,7 @@ $button-group-border-width: 1px !default;
       &.round > * { @include button-group-style($radius:$button-round, $float:null); }
 
       @for $i from 2 through 8 {
-        &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
+        &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
       }
     }
 
