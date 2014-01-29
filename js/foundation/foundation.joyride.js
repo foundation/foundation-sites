@@ -6,7 +6,7 @@
   Foundation.libs.joyride = {
     name : 'joyride',
 
-    version : '5.0.0',
+    version : '5.0.3',
 
     defaults : {
       expose               : false,      // turn on or off the expose feature
@@ -136,7 +136,7 @@
       }
 
       // generate the tips and insert into dom.
-      if (!this.settings.cookie_monster || this.settings.cookie_monster && $.cookie(this.settings.cookie_name) === null) {
+      if (!this.settings.cookie_monster || this.settings.cookie_monster && !$.cookie(this.settings.cookie_name)) {
         this.settings.$tip_content.each(function (index) {
           var $this = $(this);
           this.settings = $.extend({}, self.defaults, self.data_options($this))

@@ -16,7 +16,8 @@ $side-nav-list-margin: rem-calc(0 0 7 0) !default;
 
 // We use these to control link styles.
 $side-nav-link-color: $primary-color !default;
-$side-nav-link-color-active: scale-color(#000, $lightness: 30%) !default;
+$side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%) !default;
+$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%) !default;
 $side-nav-font-size: rem-calc(14) !default;
 $side-nav-font-weight: normal !default;
 $side-nav-font-family: $body-font-family !default;
@@ -40,10 +41,12 @@ $side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
 // $divider-color - Border color of divider. Default: $side-nav-divider-color.
 // $font-size - Font size of nav items. Default: $side-nav-font-size.
 // $link-color - Color of navigation links. Default: $side-nav-link-color.
+// $link-color-hover - Color of navigation links when hovered. Default: $side-nav-link-color-hover.
 @mixin side-nav(
   $divider-color:$side-nav-divider-color,
   $font-size:$side-nav-font-size,
-  $link-color:$side-nav-link-color) {
+  $link-color:$side-nav-link-color,
+  $link-color-hover:$side-nav-link-color-hover) {
   display: block;
   margin: 0;
   padding: $side-nav-padding;
@@ -55,12 +58,14 @@ $side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
     margin: $side-nav-list-margin;
     font-size: $font-size;
 
-    a {
+    a:not(.button) {
       display: block;
       color: $link-color;
+      &:hover,
+      &:focus { color: $link-color-hover; }
     }
 
-    &.active > a:first-child {
+    &.active > a:first-child:not(.button) {
       color: $side-nav-link-color-active;
       font-weight: $side-nav-font-weight;
       font-family: $side-nav-active-font-family;

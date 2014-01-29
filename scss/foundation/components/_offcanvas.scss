@@ -61,7 +61,7 @@ $off-canvas-overlay-box-shadow: -4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000,
 $off-canvas-overlay-background: rgba(#FFF, 0.2) !default;
 $off-canvas-overlay-background-hover: rgba(#FFF, 0.05) !default;
 
-// Transition Variabls
+// Transition Variables
 $menu-slide: "transform 500ms ease" !default;
 
 
@@ -182,7 +182,7 @@ $menu-slide: "transform 500ms ease" !default;
     text-align: left;
   }
 
-  // still need to make these non-presntational
+  // still need to make these non-presentational
   &.left {
     left: 0;
     right: $tabbar-icon-width;
@@ -351,33 +351,24 @@ $menu-slide: "transform 500ms ease" !default;
     a.exit-off-canvas { @include back-link; }
   }
 
-  // IE9 HAX
-  // Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
-  .lt-ie10 {
+  // Opera 12.16 and IE9 - don't have 3d transforms
+  .csstransforms.no-csstransforms3d {
+    .left-off-canvas-menu { @include translate2d(-100%, 0); }
+    .right-off-canvas-menu { @include translate2d(100%, 0); }
 
-    // move off canvas menus off the viewport
+    .move-left > .inner-wrap { @include translate2d(-($off-canvas-width),0); }
+    .move-right > .inner-wrap { @include translate2d($off-canvas-width,0); }
+  }
+
+  // Older browsers
+  .no-csstransforms {
     .left-off-canvas-menu { left: -($off-canvas-width); }
     .right-off-canvas-menu { right: -($off-canvas-width); }
 
-    // Snap them in place
     .move-left > .inner-wrap { right: $off-canvas-width; }
     .move-right > .inner-wrap { left: $off-canvas-width; }
   }
+
 }
 
-// Opera 12.16 - don't have 3d transforms
-.csstransforms.no-csstransforms3d {
-  @mixin translate($tx,$ty) {
-    -webkit-transform: translate($tx,$ty);
-    -moz-transform: translate($tx,$ty);
-    // -ms-transform: translate($tx,$ty);
-    -o-transform: translate($tx,$ty);
-    transform: translate($tx,$ty)
-  }
 
-  .left-off-canvas-menu { @include translate(-100%, 0); }
-  .right-off-canvas-menu { @include translate(100%, 0); }
-
-  .move-left > .inner-wrap { @include translate(-($off-canvas-width),0); }
-  .move-right > .inner-wrap { @include translate($off-canvas-width,0) }
-}

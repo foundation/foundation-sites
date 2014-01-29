@@ -4,7 +4,7 @@
   Foundation.libs.tooltip = {
     name : 'tooltip',
 
-    version : '5.0.0',
+    version : '5.0.3',
 
     settings : {
       additional_inheritable_classes : [],
@@ -123,7 +123,7 @@
           'top' : (top) ? top : 'auto',
           'bottom' : (bottom) ? bottom : 'auto',
           'left' : (left) ? left : 'auto',
-          'right' : (right) ? right : 'auto',
+          'right' : (right) ? right : 'auto'
         }).end();
       };
 
@@ -141,7 +141,7 @@
         objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', left);
         tip.removeClass('tip-override');
         if (classes && classes.indexOf('tip-top') > -1) {
-          objPos(tip, (target.offset().top - tip.outerHeight()), 'auto', 'auto', left)
+          objPos(tip, (target.offset().top - tip.outerHeight() - 10), 'auto', 'auto', left)
             .removeClass('tip-override');
         } else if (classes && classes.indexOf('tip-left') > -1) {
           objPos(tip, (target.offset().top + (target.outerHeight() / 2) - (tip.outerHeight() / 2)), 'auto', 'auto', (target.offset().left - tip.outerWidth() - nubHeight))

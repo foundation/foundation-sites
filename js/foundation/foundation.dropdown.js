@@ -4,7 +4,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '5.0.0',
+    version : '5.0.3',
 
     settings : {
       active_class: 'open',
@@ -43,6 +43,11 @@
           }
 
           var settings = target.data('dropdown-init') || self.settings;
+          
+          if($(e.target).data('dropdown') && settings.is_hover) {
+            self.closeall.call(self);
+          }
+          
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
         .on('mouseleave.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
@@ -96,6 +101,13 @@
             .removeClass(self.settings.active_class);
           $(this).trigger('closed');
         }
+      });
+    },
+
+    closeall: function() {
+      var self = this;
+      $.each($('[data-dropdown-content]'), function() {
+        self.close.call(self, $(this))
       });
     },
 

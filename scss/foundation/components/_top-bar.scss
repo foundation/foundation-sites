@@ -14,8 +14,6 @@ $topbar-bg: $topbar-bg-color !default;
 $topbar-height: 45px !default;
 $topbar-margin-bottom: 0 !default;
 
-// Control Input height for top bar
-
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal !default;
 $topbar-title-font-size: rem-calc(17) !default;
@@ -24,6 +22,7 @@ $topbar-title-font-size: rem-calc(17) !default;
 $topbar-dropdown-bg: #333 !default;
 $topbar-dropdown-link-color: #fff !default;
 $topbar-dropdown-link-bg: #333 !default;
+$topbar-dropdown-link-weight: normal !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.4 !default;
@@ -32,6 +31,7 @@ $topbar-dropdown-toggle-alpha: 0.4 !default;
 $topbar-link-color: #fff !default;
 $topbar-link-color-hover: #fff !default;
 $topbar-link-color-active: #fff !default;
+$topbar-link-color-active-hover: #fff !default;
 $topbar-link-weight: normal !default;
 $topbar-link-font-size: rem-calc(13) !default;
 $topbar-link-hover-lightness: -10% !default; // Darken by 10%
@@ -336,6 +336,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           color: $topbar-link-color-active;
           &:hover {
                 background: $topbar-link-bg-active-hover;
+                color: $topbar-link-color-active-hover;
           }
         }
       }
@@ -380,7 +381,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           height: auto;
 
           a {
-            font-weight: normal;
+            font-weight: $topbar-dropdown-link-weight;
             padding: 8px $topbar-height / 3;
             &.parent-link {
               font-weight: $topbar-link-weight;
@@ -556,13 +557,21 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           height: $topbar-height;
         }
 
-        // Position overrides for ul.right
-        ul.right {
+        // Position overrides for ul.right and ul.left
+        .right {
           li .dropdown {
             left: auto;
             right: 0;
 
             li .dropdown { right: 100%; }
+          }
+        }
+        .left {
+          li .dropdown {
+            right: auto;
+            left: 0;
+
+            li .dropdown { left: 100%; }
           }
         }
       }

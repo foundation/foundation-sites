@@ -26,11 +26,12 @@ You'll want to clone the Foundation repo first and install all the dependencies.
 ```
 git clone git@github.com:zurb/foundation.git
 cd foundation
-npm install -g grunt-cli
+npm install -g grunt-cli bower
 npm install
+bower install
 ```
 
-Then just run `grunt` and the documentation will be compiled:
+Then just run `grunt build` and the documentation will be compiled:
 
 ```
 foundation/
@@ -40,4 +41,4 @@ foundation/
 │       └── ...
 ```
 
-Copyright (c) 2013 ZURB, inc.
+Copyright (c) 2014 ZURB, inc.

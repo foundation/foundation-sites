@@ -61,6 +61,14 @@ You can then use these custom patterns like you would the predfined patterns in 
 
 ***
 
+## Equal To
+
+To add a confirmation field, you can define the `data-equalto` attribute.
+
+{{> examples_abide_equalto}}
+
+***
+
 ## Error Messages
 
 To display an error message for your invalid form element, include a `small` tag with an `error` class as a sibling of your input.
@@ -80,6 +88,10 @@ If a submit event is fired, a `valid` event is triggered when the form is valid 
 You can bind to these events and fire your own callback:
 
 {{> examples_abide_events}}
+
+To handle the `submit` event yourself, use `data-abide="ajax"` instead of `data-abide` inside the `form` tag.
+
+{{> examples_abide_ajax}}
 
 ***
 

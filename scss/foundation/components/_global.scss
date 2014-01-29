@@ -7,7 +7,7 @@
 $experimental: true !default;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
-// for compatibility with brower-based text zoom or user-set defaults.
+// for compatibility with browser-based text zoom or user-set defaults.
 
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
@@ -39,46 +39,14 @@ $base-line-height: 150% !default;
 // We use this to create equal side border radius on elements.
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
-  @if $side == left {
-    @if $experimental {
-      -moz-border-radius-bottomleft: $radius;
-      -moz-border-radius-topleft: $radius;
-      -webkit-border-bottom-left-radius: $radius;
-      -webkit-border-top-left-radius: $radius;
-    }
-    border-bottom-left-radius: $radius;
-    border-top-left-radius: $radius;
-  }
-  @else if $side == right {
-    @if $experimental {
-      -moz-border-radius-topright: $radius;
-      -moz-border-radius-bottomright: $radius;
-      -webkit-border-top-right-radius: $radius;
-      -webkit-border-bottom-right-radius: $radius;
-    }
-    border-top-right-radius: $radius;
-    border-bottom-right-radius: $radius;
-  }
-  @else if $side == top {
-    @if $experimental {
-      -moz-border-radius-topright: $radius;
-      -moz-border-radius-topleft: $radius;
-      -webkit-border-top-right-radius: $radius;
-      -webkit-border-top-left-radius: $radius;
-    }
-    border-top-right-radius: $radius;
-    border-top-left-radius: $radius;
-  }
-  @else if $side == bottom {
-    @if $experimental {
-      -moz-border-radius-bottomright: $radius;
-      -moz-border-radius-bottomleft: $radius;
-      -webkit-border-bottom-right-radius: $radius;
-      -webkit-border-bottom-left-radius: $radius;
-    }
-    border-bottom-right-radius: $radius;
-    border-bottom-left-radius: $radius;
-  }
+	@if $experimental {
+		-moz-border-radius-bottom#{$side}: $radius;
+		-moz-border-radius-top#{$side}: $radius;
+		-webkit-border-bottom-#{$side}-radius: $radius;
+		-webkit-border-top-#{$side}-radius: $radius;
+	}
+	border-bottom-#{$side}-radius: $radius;
+	border-top-#{$side}-radius: $radius;
 }
 
 // @mixins
@@ -181,6 +149,21 @@ $base-line-height: 150% !default;
     box-shadow: 0 0 5px $glowing-effect-color;
     border-color: $glowing-effect-color;
   }
+}
+
+// @mixins
+//
+// We use this to translate elements in 2D
+// $horizontal: Default: 0
+// $vertical: Default: 0
+@mixin translate2d($horizontal:0, $vertical:0) {
+  @if $experimental {
+    -webkit-transform: translate($horizontal,$vertical);
+    -moz-transform: translate($horizontal,$vertical);
+    -ms-transform: translate($horizontal,$vertical);
+    -o-transform: translate($horizontal,$vertical);
+  }
+  transform: translate($horizontal,$vertical)
 }
 
 // We use these to control various global styles

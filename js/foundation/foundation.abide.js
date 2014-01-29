@@ -4,16 +4,16 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '5.0.3',
+    version : '5.1.0',
 
     settings : {
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
       timeout : 1000,
       patterns : {
-        alpha: /[a-zA-Z]+/,
-        alpha_numeric : /[a-zA-Z0-9]+/,
-        integer: /-?\d+/,
+        alpha: /^[a-zA-Z]+$/,
+        alpha_numeric : /^[a-zA-Z0-9]+$/,
+        integer: /^\d+$/,
         number: /-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?/,
 
         // generic password: upper-case, lower-case, number/special character, and min 8 characters
@@ -61,6 +61,9 @@
           var is_ajax = /ajax/i.test($(this).attr('data-abide'));
           return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
         })
+        .on('reset', function() {
+          return self.reset($(this));
+        })
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
@@ -73,6 +76,12 @@
               self.validate([this], e);
             }.bind(this), settings.timeout);
           });
+    },
+
+    reset : function (form) {
+      form.removeAttr('data-invalid');
+      $('[data-invalid]', form).removeAttr('data-invalid');
+      $('.error', form).not('small').removeClass('error');
     },
 
     validate : function (els, e, is_ajax) {
@@ -160,11 +169,13 @@
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
 
             validations.push(true);
+            $(el).trigger('valid');
           } else {
             $(el).attr('data-invalid', '').parent().addClass('error');
             if (label.length > 0 && this.settings.error_labels) label.addClass('error');
 
             validations.push(false);
+            $(el).trigger('invalid');
           }
         }
       }

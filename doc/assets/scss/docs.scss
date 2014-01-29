@@ -4,6 +4,9 @@
 @import "marketing-off-canvas";
 @import "footer";
 
+@import "foundation-forum";
+
+
 @mixin box-shadow(
   $shadow-1 : default,
   $shadow-2 : false,
