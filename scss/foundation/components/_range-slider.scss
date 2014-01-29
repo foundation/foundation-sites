@@ -14,8 +14,6 @@ $include-html-range-slider-classes: $include-html-classes !default;
 // These variabels define the slider bar styles
 $range-slider-bar-width: 100% !default;
 $range-slider-bar-height: rem-calc(16) !default;
-$range-slider-vertical-bar-width: rem-calc(16) !default;
-$range-slider-vertical-bar-height: rem-calc(200) !default;
 
 $range-slider-bar-border-width: 1px !default;
 $range-slider-bar-border-style: solid !default;
@@ -23,15 +21,15 @@ $range-slider-bar-border-color: #ddd !default;
 $range-slider-radius: $global-radius !default;
 $range-slider-bar-bg-color: #fafafa !default;
 
+// Vertical bar styles
+$range-slider-vertical-bar-width: rem-calc(16) !default;
+$range-slider-vertical-bar-height: rem-calc(200) !default;
+
 // These variabels define the slider handle styles
 $range-slider-handle-width: rem-calc(32) !default;
 $range-slider-handle-height: $range-slider-handle-width !default;
-
-$range-slider-vertical-handle-margin-left: -($range-slider-handle-width / 4) !default;
-
 $range-slider-handle-margin-top: rem-calc(-10) !default;
 $range-slider-handle-margin-left: -($range-slider-handle-width / 4) !default;
-
 $range-slider-handle-bg-color: $primary-color !default;
 $range-slider-handle-border-width: 1px !default;
 $range-slider-handle-border-style: solid !default;
@@ -40,15 +38,21 @@ $range-slider-handle-radius: $global-radius !default;
 $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%) !default;
 $range-slider-handle-cursor: pointer !default;
 
+// Vertical handle styles
+$range-slider-vertical-handle-margin-left: -($range-slider-handle-width / 4) !default;
+
+
 //
 // @mixins
 //
 
 @mixin range-slider-bar-base($vertical: false) {
   display: block;
+  position: relative;
   width: $range-slider-bar-width;
   height: $range-slider-bar-height;
   border: $range-slider-bar-border-width $range-slider-bar-border-style $range-slider-bar-border-color;
+  margin: rem-calc(20 0);
   @if $vertical == true {
     display: inline-block;
     width: $range-slider-vertical-bar-width;
@@ -73,7 +77,6 @@ $range-slider-handle-cursor: pointer !default;
   display: inline-block;
   position: relative;
   margin-top: $range-slider-handle-margin-top;
-  margin-left: $range-slider-vertical-handle-margin-left;
   width: $range-slider-handle-width;
   height: $range-slider-handle-height;
   border: $range-slider-handle-border-width $range-slider-handle-border-style $range-slider-handle-border-color;
@@ -104,6 +107,13 @@ $range-slider-handle-cursor: pointer !default;
         .range-slider-handle {
           margin-top: 0;
           margin-left: $range-slider-vertical-handle-margin-left;
+          position: absolute;
+          bottom: -($range-slider-vertical-bar-height - $range-slider-handle-width);
+        }
+        .range-slider-active-segment {
+          width: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
+          height: auto;
+          bottom: 0;
         }
       }
       &.radius {
@@ -113,10 +123,10 @@ $range-slider-handle-cursor: pointer !default;
     }
     .range-slider-active-segment {
       display: inline-block;
-      position: relative;
-      top: -($range-slider-bar-height / 2);
+      position: absolute;
       height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
       background: scale-color($secondary-color, $lightness: -1%);
+      ~ .range-slider-handle { margin-left: $range-slider-vertical-handle-margin-left; }
     }
     .range-slider-handle {
       @include range-slider-handle-base;
