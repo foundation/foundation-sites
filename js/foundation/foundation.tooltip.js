@@ -12,6 +12,7 @@
       append_to: 'body',
       touch_close_text: 'Tap To Close',
       disable_for_touch: false,
+      hover_delay: 50,
       tip_template : function (selector, content) {
         return '<span data-selector="' + selector + '" class="' 
           + Foundation.libs.tooltip.settings.tooltip_class.substring(1) 
@@ -22,7 +23,7 @@
     cache : {},
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'random_str');
+      Foundation.inherit(this, 'random_str debounce');
       this.bindings(method, options);
     },
 
@@ -51,7 +52,7 @@
         S(this.scope)
           .off('.tooltip')
           .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', 
-            '[data-tooltip]', function (e) {
+            '[data-tooltip]', this.debounce(function (e) {
             var $this = S(this);
 
             if (/enter|over/i.test(e.type)) {
@@ -59,7 +60,7 @@
             } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
               self.hide($this);
             }
-          });
+          }, this.settings.hover_delay));
       }
     },
 
