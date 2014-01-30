@@ -400,11 +400,6 @@ $select-bg-color: #fafafa !default;
       }
       &.radius {
         @include radius($input-border-radius);
-      }
-      &.round {
-        @include radius($global-rounded);
-      }
-      &.radius, &.round {
         &.prefixed {
           @include side-radius($default-float, 0);
         }
