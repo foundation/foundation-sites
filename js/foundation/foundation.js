@@ -302,7 +302,7 @@
       S : S,
 
       // Description:
-      //    Executes a function a max of once every n seconds 
+      //    Executes a function a max of once every n milliseconds 
       //
       // Arguments:
       //    Func (Function): Function to be throttled.
