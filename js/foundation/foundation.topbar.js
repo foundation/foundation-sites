@@ -293,7 +293,7 @@
 
     assemble : function (topbar) {
       var self = this,
-          settings = topbar.data(self.attr_name(true)),
+          settings = topbar.data(this.attr_name(true)),
           section = self.S('section', topbar),
           titlebar = $('> ul', topbar).first();
 
@@ -330,7 +330,7 @@
     },
 
     assembled : function (topbar) {
-      topbar.data(self.attr_name(true), $.extend({}, topbar.data(self.attr_name(true)), {assembled: true}));
+      topbar.data(this.attr_name(true), $.extend({}, topbar.data(this.attr_name(true)), {assembled: true}));
     },
 
     height : function (ul) {

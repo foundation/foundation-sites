@@ -12,23 +12,17 @@
     },
 
     init : function (scope, method, options) {
-      var self = this;
-
-      self.bindings(method, options);
+      this.bindings(method, options);
     },
 
     events : function () {
-      var self = this;
-
-      // TODO Throttle this event
-      self.S(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
-        self.reflow();
-      });
+      this.S(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
+        this.reflow();
+      }.bind(this));
     },
 
     equalize: function(equalizer) {
-      var self = this,
-          isStacked = false,
+      var isStacked = false,
           vals = equalizer.find('[data-equalizer-watch]'),
           firstTopOffset = vals.first().offset().top,
           settings = equalizer.data('equalizer-init');
@@ -54,7 +48,7 @@
     reflow : function () {
       var self = this;
 
-      self.S('[data-equalizer]', this.scope).each(function(){
+      this.S('[data-equalizer]', this.scope).each(function(){
         self.equalize($(this));
       });
     }

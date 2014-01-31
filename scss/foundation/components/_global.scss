@@ -3,6 +3,9 @@
 // Foundation Variables
 //
 
+// Data attribute namespace
+// styles get applied to [data-mysite-plugin], etc
+$namespace: 'mysite' !default;
 
 $experimental: true !default;
 
@@ -16,6 +19,14 @@ $base-font-size: 100% !default;
 
 // $base-line-height is 24px while $base-font-size is 16px
 $base-line-height: 150% !default;
+
+@function data($attr) {
+  @if $namespace {
+    @return '[data-' + $namespace + '-' + $attr + ']';
+  }
+
+  @return '[data-' + $attr + ']';
+}
 
 //
 // Global Foundation Mixins

@@ -445,7 +445,7 @@ $select-bg-color: #fafafa !default;
 
     /* Error Handling */
 
-    [data-mysite-abide] {
+    #{data('abide')} {
       .error small.error, span.error, small.error {
         @include form-error-message;
       }
