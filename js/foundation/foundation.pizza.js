@@ -29,11 +29,11 @@
 
       this.build($(instance));
 
-      // $(window).off('.pizza').on('resize.pizza', self.throttle(function () {
+      // $(window).off('.pizza').on('resize.fndtn.pizza', self.throttle(function () {
       //   self.init();
       // }, 500));
 
-      $(this.scope).off('.pizza').on('mouseenter.pizza mouseleave.pizza touchstart.pizza', '[data-pie-id] li', function (e) {
+      $(this.scope).off('.pizza').on('mouseenter.fndtn.pizza mouseleave.fndtn.pizza touchstart.fndtn.pizza', '[data-pie-id] li', function (e) {
         var parent = $(this).parent(),
             path = Snap($('#' + parent.data('pizza') + ' path[data-id="s' + $(this).index() + '"]')[0]),
             text = Snap($(path.node).parent()

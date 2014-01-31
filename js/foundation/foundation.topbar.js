@@ -24,9 +24,9 @@
 
       this.bindings(method, options);
 
-      self.S('[data-topbar]', this.scope).each(function () {
+      self.S('[' + this.attr_name() + ']', this.scope).each(function () {
         var topbar = self.S(this),
-            settings = topbar.data('topbar-init'),
+            settings = topbar.data(self.attr_name(true)),
             section = self.S('section', this),
             titlebar = $('> ul', this).first();
 
@@ -64,12 +64,12 @@
       var self = this;
 
       if (toggleEl) {
-        var topbar = self.S(toggleEl).closest('[data-topbar]');
+        var topbar = self.S(toggleEl).closest('[' + this.attr_name() + ']');
       } else {
-        var topbar = self.S('[data-topbar]');
+        var topbar = self.S('[' + this.attr_name() + ']');
       }
 
-      var settings = topbar.data('topbar-init');
+      var settings = topbar.data(this.attr_name(true));
 
       var section = self.S('section, .section', topbar);
 
@@ -135,15 +135,15 @@
 
       S(this.scope)
         .off('.topbar')
-        .on('click.fndtn.topbar', '[data-topbar] .toggle-topbar', function (e) {
+        .on('click.fndtn.topbar', '[' + this.attr_name() + '] .toggle-topbar', function (e) {
           e.preventDefault();
           self.toggle(this);
         })
-        .on('click.fndtn.topbar', '[data-topbar] li.has-dropdown', function (e) {
+        .on('click.fndtn.topbar', '[' + this.attr_name() + '] li.has-dropdown', function (e) {
           var li = S(this),
               target = S(e.target),
-              topbar = li.closest('[data-topbar]'),
-              settings = topbar.data('topbar-init');
+              topbar = li.closest('[' + self.attr_name() + ']'),
+              settings = topbar.data(self.attr_name(true));
 
           if(target.data('revealId')) {
             self.toggle();
@@ -171,13 +171,13 @@
             }
           }
         })
-        .on('click.fndtn.topbar', '[data-topbar] .has-dropdown>a', function (e) {
+        .on('click.fndtn.topbar', '[' + this.attr_name() + '] .has-dropdown>a', function (e) {
           if (self.breakpoint()) {
 
             e.preventDefault();
 
             var $this = S(this),
-                topbar = $this.closest('[data-topbar]'),
+                topbar = $this.closest('[' + self.attr_name() + ']'),
                 section = topbar.find('section, .section'),
                 dropdownHeight = $this.next('.dropdown').outerHeight(),
                 $selectedLi = $this.closest('li');
@@ -208,15 +208,15 @@
           return;
         }
 
-        S('[data-topbar] li').removeClass('hover');
+        S('[' + self.attr_name() + '] li').removeClass('hover');
       });
 
       // Go up a level on Click
-      S(this.scope).on('click.fndtn.topbar', '[data-topbar] .has-dropdown .back', function (e) {
+      S(this.scope).on('click.fndtn.topbar', '[' + this.attr_name() + '] .has-dropdown .back', function (e) {
         e.preventDefault();
 
         var $this = S(this),
-            topbar = $this.closest('[data-topbar]'),
+            topbar = $this.closest('[' + self.attr_name() + ']'),
             section = topbar.find('section, .section'),
             settings = topbar.data('topbar-init'),
             $movedLi = $this.closest('li.moved'),
@@ -248,7 +248,7 @@
       var self = this;
       self.S('[data-topbar]').each(function () {
         var topbar = self.S(this),
-            settings = topbar.data('topbar-init');
+            settings = topbar.data(self.attr_name(true));
 
         var stickyContainer = topbar.parent('.' + self.settings.sticky_class);
         var stickyOffset;
@@ -293,7 +293,7 @@
 
     assemble : function (topbar) {
       var self = this,
-          settings = topbar.data('topbar-init'),
+          settings = topbar.data(self.attr_name(true)),
           section = self.S('section', topbar),
           titlebar = $('> ul', topbar).first();
 
@@ -330,7 +330,7 @@
     },
 
     assembled : function (topbar) {
-      topbar.data('topbar-init', $.extend({}, topbar.data('topbar-init'), {assembled: true}));
+      topbar.data(self.attr_name(true), $.extend({}, topbar.data(self.attr_name(true)), {assembled: true}));
     },
 
     height : function (ul) {

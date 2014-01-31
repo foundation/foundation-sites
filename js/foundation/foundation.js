@@ -62,26 +62,50 @@
     return $(selector, context);
   }
 
+  var attr_name = function (init) {
+    if (init) {
+      return [this.prefix, this.name, 'init'].join('-');
+    }
+
+    return ['data', this.prefix, this.name].join('-');
+  };
+
+  var add_prefix = function (str) {
+    var parts = str.split('-'),
+        i = parts.length,
+        arr = [];
+
+    while(i--) {
+      if (i !== 0) {
+        arr.push(parts[i]);
+      } else {
+        arr.push(this.prefix, parts[i]);
+      }
+    }
+
+    return arr.reverse().join('-');
+  };
+
   var bindings = function (method, options) {
     var self = this,
-        should_bind_events = !S(this).data(this.name + '-init');
+        should_bind_events = !S(this).data(this.attr_name(true));
 
     if (typeof method === 'string') {
       return this[method].call(this, options);
     }
 
-    if (S(this.scope).is('[data-' + this.name +']')) {
-      S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+    if (S(this.scope).is('[' + this.attr_name() +']')) {
+      S(this.scope).data(this.attr_name(true), $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
 
       if (should_bind_events) {
         this.events(this.scope);
       }
 
     } else {
-      S('[data-' + this.name + ']', this.scope).each(function () {
-        var should_bind_events = !S(this).data(self.name + '-init');
+      S('[' + this.attr_name() +']', this.scope).each(function () {
+        var should_bind_events = !S(this).data(self.attr_name(true));
 
-        S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+        S(this).data(self.attr_name(true), $.extend({}, self.settings, (options || method), self.data_options(S(this))));
 
         if (should_bind_events) {
           self.events(this);
@@ -222,6 +246,10 @@
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
+    global: {
+      prefix: ''
+    },
+
     init : function (scope, libraries, method, options, response) {
       var library_arr,
           args = [scope, method, options, response],
@@ -232,6 +260,10 @@
 
       // set foundation global scope
       this.scope = scope || this.scope;
+
+      if (libraries.hasOwnProperty('global')) {
+        this.global = $.extend({}, this.global, libraries.global);
+      }
 
       if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
         if (this.libs.hasOwnProperty(libraries)) {
@@ -263,10 +295,13 @@
 
     patch : function (lib) {
       lib.scope = this.scope;
+      lib.prefix = this.global.prefix;
+      lib.rtl = this.rtl;
       lib['data_options'] = this.utils.data_options;
+      lib['attr_name'] = attr_name;
+      lib['add_prefix'] = add_prefix;
       lib['bindings'] = bindings;
       lib['S'] = this.utils.S;
-      lib.rtl = this.rtl;
     },
 
     inherit : function (scope, methods) {
@@ -365,13 +400,23 @@
       //    attribute.
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr,
-            data_options = el.data('options');
+            data_options = function (el) {
+              var prefix = Foundation.global.prefix;
 
-        if (typeof data_options === 'object') {
-          return data_options;
+              if (prefix.length > 0) {
+                return el.data(prefix + '-options');
+              }
+
+              return el.data('options');
+            };
+
+        var cached_options = data_options(el);
+
+        if (typeof cached_options === 'object') {
+          return cached_options;
         }
 
-        opts_arr = (data_options || ':').split(';'),
+        opts_arr = (cached_options || ':').split(';'),
         ii = opts_arr.length;
 
         function isNumber (o) {
