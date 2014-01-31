@@ -8,8 +8,8 @@
 
     settings : {
       active_class: 'active',
-      threshold: 0,
-      destination_threshold: 20
+      threshold: 0, // pixels from the top of the expedition for it to become fixes
+      destination_threshold: 20 // pixels from the top of destination for it to be considered active
     },
 
     init : function (scope, method, options) {
@@ -20,10 +20,52 @@
     events : function () {
       var self = this,
           S = self.S;
+      
+      // initialize expedition offset
+      self.set_expedition_position();
 
       S(self.scope)
         .off('.magellan')
-        .on('scroll.magellan', self.throttle(this.update_arrivals.bind(this), 60));
+        .on('scroll.magellan', self.throttle(this.check_for_arrivals.bind(this), 60))
+        .on('resize.magellan', self.throttle(this.set_expedition_position.bind(this), 60));
+    },
+
+    check_for_arrivals : function() {
+      var self = this;
+      self.update_arrivals();
+      self.update_expedition_positions();
+    },
+
+    // TODO need to update fixed positions of
+    set_expedition_position : function() {
+      var self = this;
+      $('[data-magellan-expedition=fixed]', self.scope).each(function(idx, el) {
+        var expedition = $(this),
+            styles = expedition.attr('styles'), // save styles
+            top_offset;
+
+        expedition.css('');
+        top_offset = expedition.offset().top;
+
+        expedition.data('magellan-top-offset', top_offset);
+        expedition.attr('style', styles);
+      });
+    },
+
+    update_expedition_positions : function() {
+      var self = this,
+          window_top_offset = $(window).scrollTop();
+
+      $('[data-magellan-expedition=fixed]', self.scope).each(function() {
+        var top_offset = $(this).data('magellan-top-offset');
+        
+        if (window_top_offset >= top_offset) {
+          $(this).css({position:'fixed', top: 0});
+        } else {
+          console.info('clear css');
+          $(this).attr('style','');
+        }
+      });
     },
 
     update_arrivals : function() {
