@@ -117,13 +117,13 @@ $include-html-visibility-classes: $include-html-classes !default;
   th {
     &.show-for-small,
     &.show-for-small-only,
-    &.show-for-medium-down
+    &.show-for-medium-down,
     &.show-for-large-down,
     &.hide-for-medium,
     &.hide-for-medium-up,
     &.hide-for-large,
     &.hide-for-large-up,
-    &.hide-for-xlarge
+    &.hide-for-xlarge,
     &.hide-for-xlarge-up,
     &.hide-for-xxlarge-up { display: table-cell !important; }
   }

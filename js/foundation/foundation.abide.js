@@ -7,6 +7,7 @@
     version : '5.1.0',
 
     settings : {
+      live_validate : true,
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
       timeout : 1000,
@@ -71,10 +72,12 @@
           })
           .on('keydown.fndtn.abide', function (e) {
             var settings = $(this).closest('form').data('abide-init');
-            clearTimeout(self.timer);
-            self.timer = setTimeout(function () {
-              self.validate([this], e);
-            }.bind(this), settings.timeout);
+            if (settings.live_validate === true) {
+              clearTimeout(self.timer);
+              self.timer = setTimeout(function () {
+                self.validate([this], e);
+              }.bind(this), settings.timeout);
+            }
           });
     },
 
