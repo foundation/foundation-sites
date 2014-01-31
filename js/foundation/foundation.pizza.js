@@ -7,44 +7,6 @@
     version : '5.1.0',
 
     settings : {
-      animation: 'fadeOut',
-      speed: 300, // fade out speed
-      callback: function (){}
-    },
-
-    init : function (scope, method, options) {
-      this.bindings(method, options);
-    },
-
-    events : function () {
-      var S = this.S;
-
-      $(this.scope).off('.alert').on('click.fndtn.alert', '[data-alert] a.close', function (e) {
-          var alertBox = S(this).closest("[data-alert]"),
-              settings = alertBox.data('alert-init') || Foundation.libs.alert.settings;
-
-        e.preventDefault();
-        alertBox[settings.animation](settings.speed, function () {
-          S(this).trigger('closed').remove();
-          settings.callback();
-        });
-      });
-    },
-
-    reflow : function () {}
-  };
-}(jQuery, this, this.document));
-
-
-
-
-;(function ($, window, document, undefined) {
-  'use strict';
-
-  var Pizza = {
-    version : '0.1.2',
-
-    settings : {
       donut: false,
       donut_inner_ratio: 0.4,   // between 0 and 1
       percent_offset: 35,       // relative to radius
@@ -57,35 +19,23 @@
                                 //          easeinout, easeout, linear
     },
 
-    init : function (scope, options) {
-      var self = this;
-      this.scope = scope || document.body;
-
-      var pies = $('[data-pie-id]', this.scope);
-
-      $.extend(true, this.settings, options)
-
-      if (pies.length > 0) {
-        pies.each(function () {
-          return self.build($(this), options);
-        });
-      } else if ($(this.scope).is('[data-pie-id]')) {
-        this.build($(this.scope), options);
-      }
-
-      this.events();
+    init : function (scope, method, options) {
+      Foundation.inherit(this, 'throttle');
+      this.bindings(method, options);
     },
 
-    events : function () {
+    events : function (instance) {
       var self = this;
 
-      $(window).off('.pizza').on('resize.pizza', self.throttle(function () {
-        self.init();
-      }, 500));
+      this.build($(instance));
+
+      // $(window).off('.pizza').on('resize.pizza', self.throttle(function () {
+      //   self.init();
+      // }, 500));
 
       $(this.scope).off('.pizza').on('mouseenter.pizza mouseleave.pizza touchstart.pizza', '[data-pie-id] li', function (e) {
         var parent = $(this).parent(),
-            path = Snap($('#' + parent.data('pie-id') + ' path[data-id="s' + $(this).index() + '"]')[0]),
+            path = Snap($('#' + parent.data('pizza') + ' path[data-id="s' + $(this).index() + '"]')[0]),
             text = Snap($(path.node).parent()
               .find('text[data-id="' + path.node.getAttribute('data-id') + '"]')[0]),
             settings = $(this).parent().data('settings');
@@ -428,21 +378,9 @@
     },
 
     identifier : function (legend) {
-      return '#' + legend.data('pie-id');
+      return '#' + legend.data('pizza');
     },
 
-    throttle : function(fun, delay) {
-      var timer = null;
-      return function () {
-        var context = this, args = arguments;
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          fun.apply(context, args);
-        }, delay);
-      };
-    }
+    reflow : function () {}
   };
-
-  window.Pizza = Pizza;
-
-}($, this, this.document));
+}(jQuery, this, this.document));
