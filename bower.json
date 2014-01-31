@@ -10,7 +10,8 @@
     "modernizr": ">= 2.6.2",
     "fastclick": "~0.6.11",
     "jquery.cookie": "~1.4.0",
-    "jquery-placeholder": "~2.0.7"
+    "jquery-placeholder": "~2.0.7",
+    "Snap.svg": "~0.2.0"
   },
   "devDependencies": {
     "jquery.autocomplete": "devbridge/jQuery-Autocomplete#1.2.7",
