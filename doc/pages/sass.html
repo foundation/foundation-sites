@@ -30,17 +30,35 @@ gem install foundation
 
 ***
 
-### Using Foundation With Compass
+### Using Foundation With Grunt + Libsass
 
-[Compass](http://compass-style.org/) is the easiest way to get going with Sass. It can be installed with the following commands:
+At ZURB, we prefer to run Foundation with using [Grunt](http://gruntjs.com) in conjunction with [Libsass](https://github.com/hcatlin/libsass), because it's the fastest way to compile your Sass stylesheets.
+
+###### Create a New Project
+
+First, navigate into the directory where you want to create your project. 
+
+```bash
+cd path/to/sites
+```
+
+Next we'll use the Foundation CLI to create a new project:
+
+```bash
+foundation new project_name --libsass
+```
+
+Boom, your project is created! Now you need to use Grunt to compile everything before you start working. Run this command
+
+
+###### 
+
 
 <div class="row">
   <div class="large-6 columns">
     <h4>New Project</h4>
 {{#markdown}}
-```bash
-foundation new MY_PROJECT
-```
+
 {{/markdown}}
   </div>
   <div class="large-6 columns">
@@ -56,16 +74,16 @@ foundation update
 
 ***
 
-### Using Foundation With Grunt + Libsass
+### Using Foundation With Compass
 
-Using [Grunt](http://gruntjs.com) in conjunction with [Libsass](https://github.com/hcatlin/libsass) is the fastest way to compile your Sass stylesheets.
+[Compass](http://compass-style.org/) is the easiest way to get going with Sass. It can be installed with the following commands:
 
 <div class="row">
   <div class="large-6 columns">
     <h4>New Project</h4>
 {{#markdown}}
 ```bash
-foundation new MY_PROJECT --libsass
+foundation new MY_PROJECT
 ```
 {{/markdown}}
   </div>
