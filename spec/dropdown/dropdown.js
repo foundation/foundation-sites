@@ -12,9 +12,54 @@ describe('dropdown:', function() {
     });
   });
 
-  describe('when above the medium breakpoint', when('medium', function() {
-  }));
+ describe('basic clearing', function() {
+    beforeEach(function() {
+      document.body.innerHTML = __html__['spec/dropdown/basic.html'];
+    });
 
-  describe('when below the medium breakpoint', when_not('medium', function () {
-  }));
+    it('is hidden on initialization', function() {
+      $(document).foundation();
+
+      expect($('#drop1').hasClass('open')).toBe(false);
+      expect($('#drop2').hasClass('open')).toBe(false);
+    });
+
+    it('displays the dropdown on click', function() {
+      $(document).foundation();
+
+      $('#drop1link').click();
+
+      expect($('#drop1').hasClass('open')).toBe(true);
+      expect($('#drop2').hasClass('open')).toBe(false);
+    });
+
+    it('displays the content dropdown on click', function() {
+      $(document).foundation();
+
+      $('#drop2link').click();
+
+      expect($('#drop1').hasClass('open')).toBe(false);
+      expect($('#drop2').hasClass('open')).toBe(true);
+    });
+
+    it('closes an open dropdown when another is clicked', function() {
+      $(document).foundation();
+
+      $('#drop1link').click();
+      $('#drop2link').click();
+
+      expect($('#drop1').hasClass('open')).toBe(false);
+      expect($('#drop2').hasClass('open')).toBe(true);
+    });
+
+    it('closes an open dropdown when the document is clicked elsewhere', function() {
+      $(document).foundation();
+
+      $('#drop1link').click();
+      $('body').click();
+
+      expect($('#drop1').hasClass('open')).toBe(false);
+      expect($('#drop2').hasClass('open')).toBe(false);
+    });
+ });
 });
