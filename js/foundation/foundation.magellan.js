@@ -9,7 +9,8 @@
     settings : {
       active_class: 'active',
       threshold: 0, // pixels from the top of the expedition for it to become fixes
-      destination_threshold: 20 // pixels from the top of destination for it to be considered active
+      destination_threshold: 20, // pixels from the top of destination for it to be considered active
+      throttle_delay: 50
     },
 
     init : function (scope, method, options) {
@@ -19,15 +20,16 @@
 
     events : function () {
       var self = this,
-          S = self.S;
+          S = self.S,
+          settings = self.settings;
       
       // initialize expedition offset
       self.set_expedition_position();
 
       S(self.scope)
         .off('.magellan')
-        .on('scroll.magellan', self.throttle(this.check_for_arrivals.bind(this), 60))
-        .on('resize.magellan', self.throttle(this.set_expedition_position.bind(this), 60));
+        .on('scroll.magellan', self.throttle(this.check_for_arrivals.bind(this), settings.throttle_delay))
+        .on('resize.magellan', self.throttle(this.set_expedition_position.bind(this), settings.throttle_delay));
     },
 
     check_for_arrivals : function() {
