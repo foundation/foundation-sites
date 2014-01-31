@@ -62,7 +62,6 @@
         if (window_top_offset >= top_offset) {
           $(this).css({position:'fixed', top: 0});
         } else {
-          console.info('clear css');
           $(this).attr('style','');
         }
       });
