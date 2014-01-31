@@ -316,22 +316,17 @@ $select-bg-color: #fafafa !default;
 
     select {
       -webkit-appearance: none !important;
-      background:
-        $select-bg-color
-        url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-      background-position-x: 97%;
-      background-position-y: center;
+      background-color: $select-bg-color;
+      background-image: url('data:image/svg+xml;base64, PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwcHgiIGhlaWdodD0iOHB4IiB2aWV3Qm94PSIwIDAgMzkgMzkiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPg0KPHBhdGggZD0iTTM4LjYwNiwwTDE5LjMwMywzOC41NzlMMCwwSDM4LjYwNnoiIGZpbGw9IiM0NDQiIC8+DQo8L3N2Zz4=');
+      background-repeat: no-repeat;
+      background-position: center right $form-spacing / 2;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
       @include radius(0);
       &.radius { @include radius($global-radius); }
       &:hover {
-        background:
-          scale-color($select-bg-color, $lightness: -3%)
-          url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-        background-position-x: 97%;
-        background-position-y: center;
+        background-color: scale-color($select-bg-color, $lightness: -3%);
         border-color: $input-focus-border-color;
       }
     }
@@ -344,6 +339,7 @@ $select-bg-color: #fafafa !default;
       select { background: $select-bg-color; }
       select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
     }
+    
     /* Attach elements to the beginning or end of an input */
     .prefix,
     .postfix { @include prefix-postfix-base; }
