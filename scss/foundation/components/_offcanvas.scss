@@ -63,7 +63,7 @@ $off-canvas-overlay-background-hover: rgba(#FFF, 0.05) !default;
 $menu-slide: "transform 500ms ease" !default;
 
 
-// EXTEND CLASSES
+// MIXINS
 // Remove transition flicker on phones
 @mixin kill-flicker {
   // -webkit-transform: translateZ(0x);
@@ -81,7 +81,6 @@ $menu-slide: "transform 500ms ease" !default;
   width: $off-canvas-width;
   top:0;
   bottom:0;
-  height: 100%;
   position: absolute;
   overflow-y: auto;
   background: $off-canvas-bg;
@@ -268,105 +267,104 @@ $menu-slide: "transform 500ms ease" !default;
 //
 // DEFAULT CLASSES
 //
+@include exports("offcanvas") {
+  @if $include-html-off-canvas-classes {
 
-@if $include-html-off-canvas-classes {
+    .off-canvas-wrap { @include off-canvas-wrap; }
+    .inner-wrap { @include inner-wrap; }
 
-  .off-canvas-wrap { @include off-canvas-wrap; }
-  .inner-wrap { @include inner-wrap; }
+    nav.tab-bar { @include tab-bar-base; }
 
-  nav.tab-bar { @include tab-bar-base; }
+    section.left-small { @include left-small-section; }
+    section.right-small { @include right-small-section; }
 
-  section.left-small { @include left-small-section; }
-  section.right-small { @include right-small-section; }
+    section.tab-bar-section { @include tab-bar-section; }
 
-  section.tab-bar-section { @include tab-bar-section; }
-
-  // MENU BUTTON
-  // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
-  a.menu-icon {
-    text-indent: $tabbar-menu-icon-text-indent;
-    width: $tabbar-height;
-    height: $tabbar-height;
-    display: block;
-    line-height: $tabbar-menu-icon-line-height;
-    padding: $tabbar-menu-icon-padding;
-    color: $topbar-menu-link-color;
-    position: relative;
-
-    // this is the actual hamburger icon
-    span {
-
-      position: absolute;
+    // MENU BUTTON
+    // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
+    a.menu-icon {
+      text-indent: $tabbar-menu-icon-text-indent;
+      width: $tabbar-height;
+      height: $tabbar-height;
       display: block;
-      width: $tabbar-hamburger-icon-width;
-      height: 0;
-      left: $tabbar-hamburger-icon-left;
-      top: $tabbar-hamburger-icon-top;
-      // margin-top: $tabbar-height / 4;
+      line-height: $tabbar-menu-icon-line-height;
+      padding: $tabbar-menu-icon-padding;
+      color: $topbar-menu-link-color;
+      position: relative;
 
-      @if $experimental {
-        -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-color,
-                            1px 16px 1px 1px $tabbar-menu-icon-color,
-                            1px 22px 1px 1px $tabbar-menu-icon-color;
+      // this is the actual hamburger icon
+      span {
+
+        position: absolute;
+        display: block;
+        width: $tabbar-hamburger-icon-width;
+        height: 0;
+        left: $tabbar-hamburger-icon-left;
+        top: $tabbar-hamburger-icon-top;
+        // margin-top: $tabbar-height / 4;
+
+        @if $experimental {
+          -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-color,
+                              1px 16px 1px 1px $tabbar-menu-icon-color,
+                              1px 22px 1px 1px $tabbar-menu-icon-color;
+        }
+          box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
+                              0 16px 0 1px $tabbar-menu-icon-color,
+                              0 22px 0 1px $tabbar-menu-icon-color;
       }
-        box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
-                            0 16px 0 1px $tabbar-menu-icon-color,
-                            0 22px 0 1px $tabbar-menu-icon-color;
-    }
 
-    &:hover span {
-      @if $experimental {
-        -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-hover,
-                            1px 16px 1px 1px $tabbar-menu-icon-hover,
-                            1px 22px 1px 1px $tabbar-menu-icon-hover;
+      &:hover span {
+        @if $experimental {
+          -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-hover,
+                              1px 16px 1px 1px $tabbar-menu-icon-hover,
+                              1px 22px 1px 1px $tabbar-menu-icon-hover;
+        }
+          box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
+                              0 16px 0 1px $tabbar-menu-icon-hover,
+                              0 22px 0 1px $tabbar-menu-icon-hover;
       }
-        box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
-                            0 16px 0 1px $tabbar-menu-icon-hover,
-                            0 22px 0 1px $tabbar-menu-icon-hover;
     }
-  }
 
-  .left-off-canvas-menu { @include left-off-canvas-menu; }
-  .right-off-canvas-menu { @include right-off-canvas-menu; }
+    .left-off-canvas-menu { @include left-off-canvas-menu; }
+    .right-off-canvas-menu { @include right-off-canvas-menu; }
 
-  ul.off-canvas-list { @include off-canvas-list; }
+    ul.off-canvas-list { @include off-canvas-list; }
 
 
-  // ANIMATION CLASSES
-  // These classes are added with JS and trigger the actual animation.
-  .move-right {
-    > .inner-wrap {
-      @include translate3d($off-canvas-width,0,0);
+    // ANIMATION CLASSES
+    // These classes are added with JS and trigger the actual animation.
+    .move-right {
+      > .inner-wrap {
+        @include translate3d($off-canvas-width,0,0);
+      }
+      a.exit-off-canvas { @include back-link;}
     }
-    a.exit-off-canvas { @include back-link;}
-  }
 
-  .move-left {
-    > .inner-wrap {
-      @include translate3d(-($off-canvas-width),0,0);
+    .move-left {
+      > .inner-wrap {
+        @include translate3d(-($off-canvas-width),0,0);
 
+      }
+      a.exit-off-canvas { @include back-link; }
     }
-    a.exit-off-canvas { @include back-link; }
+
+    // Opera 12.16 and IE9 - don't have 3d transforms
+    .csstransforms.no-csstransforms3d {
+      .left-off-canvas-menu { @include translate2d(-100%, 0); }
+      .right-off-canvas-menu { @include translate2d(100%, 0); }
+
+      .move-left > .inner-wrap { @include translate2d(-($off-canvas-width),0); }
+      .move-right > .inner-wrap { @include translate2d($off-canvas-width,0); }
+    }
+
+    // Older browsers
+    .no-csstransforms {
+      .left-off-canvas-menu { left: -($off-canvas-width); }
+      .right-off-canvas-menu { right: -($off-canvas-width); }
+
+      .move-left > .inner-wrap { right: $off-canvas-width; }
+      .move-right > .inner-wrap { left: $off-canvas-width; }
+    }
+
   }
-
-  // Opera 12.16 and IE9 - don't have 3d transforms
-  .csstransforms.no-csstransforms3d {
-    .left-off-canvas-menu { @include translate2d(-100%, 0); }
-    .right-off-canvas-menu { @include translate2d(100%, 0); }
-
-    .move-left > .inner-wrap { @include translate2d(-($off-canvas-width),0); }
-    .move-right > .inner-wrap { @include translate2d($off-canvas-width,0); }
-  }
-
-  // Older browsers
-  .no-csstransforms {
-    .left-off-canvas-menu { left: -($off-canvas-width); }
-    .right-off-canvas-menu { right: -($off-canvas-width); }
-
-    .move-left > .inner-wrap { right: $off-canvas-width; }
-    .move-right > .inner-wrap { left: $off-canvas-width; }
-  }
-
 }
-
-
