@@ -27,10 +27,9 @@
     },
 
     update_arrivals : function() {
-      console.info("update_arrivals");
-      console.info(this);
       var self = this,
           window_top_offset = $(window).scrollTop();
+
       $('[data-magellan-expedition]', self.scope).each(function() {
         var expedition = $(this),
             settings = settings = expedition.data('magellan-expedition-init'),
