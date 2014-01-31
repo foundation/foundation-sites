@@ -164,11 +164,11 @@ $total-columns: 12 !default;
     float: $opposite-direction;
   }
 
-  @for $i from 1 through $total-columns - 1 {
-    .#{$size}-push#{-$i} {
+  @for $i from 0 through $total-columns - 1 {
+    .#{$size}-push-#{$i} {
       @include grid-column($push:$i, $collapse:null, $float:false);
     }
-    .#{$size}-pull#{-$i} {
+    .#{$size}-pull-#{$i} {
       @include grid-column($pull:$i, $collapse:null, $float:false);
     }
   }
@@ -178,14 +178,14 @@ $total-columns: 12 !default;
 
 
   @for $i from 1 through $total-columns {
-    .#{$size}#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+    .#{$size}-#{$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
   }
 
   [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
   [class*="column"] + [class*="column"].end { float: $default-float; }
 
 
-  @for $i from 0 through $total-columns - 2 {
+  @for $i from 0 through $total-columns - 1 {
     .#{$size}-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
   }
   .column.#{$size}-reset-order,
@@ -225,22 +225,22 @@ $total-columns: 12 !default;
     @media #{$medium-up} {
       @include grid-html-classes($size:medium);
       // Old push and pull classes
-      @for $i from 1 through $total-columns - 1 {
-        .push#{-$i} {
+      @for $i from 0 through $total-columns - 1 {
+        .push-#{$i} {
           @include grid-column($push:$i, $collapse:null, $float:false);
         }
-        .pull#{-$i} {
+        .pull-#{$i} {
           @include grid-column($pull:$i, $collapse:null, $float:false);
         }
       }
     }
     @media #{$large-up} {
       @include grid-html-classes($size:large);
-      @for $i from 1 through $total-columns - 1 {
-        .push#{-$i} {
+      @for $i from 0 through $total-columns - 1 {
+        .push-#{$i} {
           @include grid-column($push:$i, $collapse:null, $float:false);
         }
-        .pull#{-$i} {
+        .pull-#{$i} {
           @include grid-column($pull:$i, $collapse:null, $float:false);
         }
       }
