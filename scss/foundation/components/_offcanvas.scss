@@ -100,24 +100,26 @@ $menu-slide: "transform 500ms ease" !default;
 // OFF CANVAS WRAP
 // Wrap visible content and prevent scroll bars
 @mixin off-canvas-wrap {
-    @include kill-flicker;
-    @include wrap-base;
-    overflow: hidden;
+
+  @include kill-flicker;
+  @include wrap-base;
+  overflow: hidden;
+  &.move-right,
+  &.move-left { height: 100%; }
 }
 
 // INNER WRAP
 // Main content area that moves to reveal the off-canvas nav
 @mixin inner-wrap {
-    @include kill-flicker;
-    @include wrap-base;
-    @include clearfix;
-
-    -webkit-transition: -webkit-#{$menu-slide};
-    -moz-transition: -moz-#{$menu-slide};
-    -ms-transition: -ms-#{$menu-slide};
-    -o-transition: -o-#{$menu-slide};
-    transition: #{$menu-slide};
-
+  @include kill-flicker;
+  @include wrap-base;
+  @include clearfix;
+  
+  -webkit-transition: -webkit-#{$menu-slide};
+  -moz-transition: -moz-#{$menu-slide};
+  -ms-transition: -ms-#{$menu-slide};
+  -o-transition: -o-#{$menu-slide};
+  transition: #{$menu-slide};
 }
 
 // TAB BAR
