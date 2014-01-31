@@ -4,565 +4,296 @@
 // Foundation Visibility Classes
 //
 $include-html-visibility-classes: $include-html-classes !default;
+$include-table-visibility-classes: true;
+
+// breakpoints
+$breakpoint_sizes:
+  small,
+  medium,
+  large,
+  xlarge,
+  xxlarge
+;
+$breakpoint_queries:
+  unquote($small-up),
+  unquote($medium-up),
+  unquote($large-up),
+  unquote($xlarge-up),
+  unquote($xxlarge-up)
+;
+
+@mixin visible_loop {
+  
+  @each $current_breakpoint in $breakpoint_sizes {
+    
+    $inherit_list: ();
+    $none_list: ();
+    
+    $table_list: ();
+    $table_header_group_list: ();
+    $table_row_group_list: ();
+    $table_row_list: ();
+    $table_cell_list: ();
+    
+    @each $comparison_breakpoint in $breakpoint_sizes {
+      @if index($breakpoint_sizes, $comparison_breakpoint) < index($breakpoint_sizes, $current_breakpoint) {
+        // smaller than current breakpoint
+        
+        $inherit_list: append($inherit_list, unquote(
+          '.hide-for-#{$comparison_breakpoint}, .hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $none_list: append($none_list, unquote(
+          '.show-for-#{$comparison_breakpoint}, .show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_list: append($table_list, unquote(
+          'table.hide-for-#{$comparison_breakpoint}, table.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_header_group_list: append($table_header_group_list, unquote(
+          'thead.hide-for-#{$comparison_breakpoint}, thead.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_row_group_list: append($table_row_group_list, unquote(
+          'tbody.hide-for-#{$comparison_breakpoint}, tbody.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_row_list: append($table_row_list, unquote(
+          'tr.hide-for-#{$comparison_breakpoint}, tr.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_cell_list: append($table_cell_list, unquote(
+          'th.hide-for-#{$comparison_breakpoint}, th.hide-for-#{$comparison_breakpoint}-only, td.hide-for-#{$comparison_breakpoint}, td.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        
+        // exclude #{$comparison_breakpoint}-down classes for first breakpoint
+        @if index($breakpoint_sizes, $comparison_breakpoint) != 1 {
+          $inherit_list: append($inherit_list, unquote(
+            '.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $none_list: append($none_list, unquote(
+            '.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_list: append($table_list, unquote(
+            'table.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_header_group_list: append($table_header_group_list, unquote(
+            'thead.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_row_group_list: append($table_row_group_list, unquote(
+            'tbody.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_row_list: append($table_row_list, unquote(
+            'tr.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_cell_list: append($table_cell_list, unquote(
+            'th.hide-for-#{$comparison_breakpoint}-down, td.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+        }
+        
+        // exclude #{$comparison_breakpoint}-up classes for last breakpoint
+        @if index($breakpoint_sizes, $comparison_breakpoint) != length($breakpoint_sizes) {
+          $inherit_list: append($inherit_list, unquote(
+            '.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $none_list: append($none_list, unquote(
+            '.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_list: append($table_list, unquote(
+            'table.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_header_group_list: append($table_header_group_list, unquote(
+            'thead.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_row_group_list: append($table_row_group_list, unquote(
+            'tbody.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_row_list: append($table_row_list, unquote(
+            'tr.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_cell_list: append($table_cell_list, unquote(
+            'th.show-for-#{$comparison_breakpoint}-up, td.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+        }
+      } @else if index($breakpoint_sizes, $comparison_breakpoint) > index($breakpoint_sizes, $current_breakpoint) {
+        // larger than current breakpoint
+        
+        $inherit_list: append($inherit_list, unquote(
+          '.hide-for-#{$comparison_breakpoint}, .hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $none_list: append($none_list, unquote(
+          '.show-for-#{$comparison_breakpoint}, .show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_list: append($table_list, unquote(
+          'table.hide-for-#{$comparison_breakpoint}, table.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_header_group_list: append($table_header_group_list, unquote(
+          'thead.hide-for-#{$comparison_breakpoint}, thead.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_row_group_list: append($table_row_group_list, unquote(
+          'tbody.hide-for-#{$comparison_breakpoint}, tbody.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_row_list: append($table_row_list, unquote(
+          'tr.hide-for-#{$comparison_breakpoint}, tr.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_cell_list: append($table_cell_list, unquote(
+          'th.hide-for-#{$comparison_breakpoint}, th.hide-for-#{$comparison_breakpoint}-only, td.hide-for-#{$comparison_breakpoint}, td.hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        
+        // exclude #{$comparison_breakpoint}-down classes for first breakpoint
+        @if index($breakpoint_sizes, $comparison_breakpoint) != 1 {
+          $inherit_list: append($inherit_list, unquote(
+            '.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $none_list: append($none_list, unquote(
+            '.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_list: append($table_list, unquote(
+            'table.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_header_group_list: append($table_header_group_list, unquote(
+            'thead.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_row_group_list: append($table_row_group_list, unquote(
+            'tbody.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_row_list: append($table_row_list, unquote(
+            'tr.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_cell_list: append($table_cell_list, unquote(
+            'th.show-for-#{$comparison_breakpoint}-down, td.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+        }
+        
+        // exclude #{$comparison_breakpoint}-up classes for last breakpoint
+        @if index($breakpoint_sizes, $comparison_breakpoint) != length($breakpoint_sizes) {
+          $inherit_list: append($inherit_list, unquote(
+            '.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $none_list: append($none_list, unquote(
+            '.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_list: append($table_list, unquote(
+            'table.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_header_group_list: append($table_header_group_list, unquote(
+            'thead.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_row_group_list: append($table_row_group_list, unquote(
+            'tbody.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_row_list: append($table_row_list, unquote(
+            'tr.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_cell_list: append($table_cell_list, unquote(
+            'th.hide-for-#{$comparison_breakpoint}-up, td.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+        }
+      } @else {
+        // current breakpoint
+        
+        $inherit_list: append($inherit_list, unquote(
+          '.show-for-#{$comparison_breakpoint}, .show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $none_list: append($none_list, unquote(
+          '.hide-for-#{$comparison_breakpoint}, .hide-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_list: append($table_list, unquote(
+          'table.show-for-#{$comparison_breakpoint}, table.show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_header_group_list: append($table_header_group_list, unquote(
+          'thead.show-for-#{$comparison_breakpoint}, thead.show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_row_group_list: append($table_row_group_list, unquote(
+          'tbody.show-for-#{$comparison_breakpoint}, tbody.show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_row_list: append($table_row_list, unquote(
+          'tr.show-for-#{$comparison_breakpoint}, tr.show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        $table_cell_list: append($table_cell_list, unquote(
+          'th.show-for-#{$comparison_breakpoint}, th.show-for-#{$comparison_breakpoint}-only, td.show-for-#{$comparison_breakpoint}, td.show-for-#{$comparison_breakpoint}-only'
+        ), comma);
+        
+        // exclude #{$comparison_breakpoint}-down classes for first breakpoint
+        @if index($breakpoint_sizes, $comparison_breakpoint) != 1 {
+          $inherit_list: append($inherit_list, unquote(
+            '.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $none_list: append($none_list, unquote(
+            '.hide-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_list: append($table_list, unquote(
+            'table.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_header_group_list: append($table_header_group_list, unquote(
+            'thead.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_row_group_list: append($table_row_group_list, unquote(
+            'tbody.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_row_list: append($table_row_list, unquote(
+            'tr.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+          $table_cell_list: append($table_cell_list, unquote(
+            'th.show-for-#{$comparison_breakpoint}-down, td.show-for-#{$comparison_breakpoint}-down'
+          ), comma);
+        }
+        
+        // exclude #{$comparison_breakpoint}-up classes for last breakpoint
+        @if index($breakpoint_sizes, $comparison_breakpoint) != length($breakpoint_sizes) {
+          $inherit_list: append($inherit_list, unquote(
+            '.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $none_list: append($none_list, unquote(
+            '.hide-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_list: append($table_list, unquote(
+            'table.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_header_group_list: append($table_header_group_list, unquote(
+            'thead.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_row_group_list: append($table_row_group_list, unquote(
+            'tbody.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_row_list: append($table_row_list, unquote(
+            'tr.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+          $table_cell_list: append($table_cell_list, unquote(
+            'th.show-for-#{$comparison_breakpoint}-up, td.show-for-#{$comparison_breakpoint}-up'
+          ), comma);
+        }
+      }
+    }
+    
+    /* #{$current_breakpoint} displays */
+    @media #{nth($breakpoint_queries, index($breakpoint_sizes, $current_breakpoint))} {
+      #{$inherit_list} {
+        display: inherit !important;
+      }
+      #{$none_list} {
+        display: none !important;
+      }
+      @if $include-table-visibility-classes != false {
+        #{$table_list} {
+          display: table;
+        }
+        #{$table_header_group_list} {
+          display: table-header-group !important;
+        }
+        #{$table_row_group_list} {
+          display: table-row-group !important;
+        }
+        #{$table_row_list} {
+          display: table-row !important;
+        }
+        #{$table_cell_list} {
+          display: table-cell !important;
+        }
+      }
+    }
+  }
+}
+
 
 @if $include-html-visibility-classes != false {
 
-//
-// Media Class Names
-//
-
-  /* Foundation Visibility HTML Classes */
-  .show-for-small,
-  .show-for-small-only,
-  .show-for-medium-down,
-  .show-for-large-down,
-  .hide-for-medium,
-  .hide-for-medium-up,
-  .hide-for-medium-only,
-  .hide-for-large,
-  .hide-for-large-up,
-  .hide-for-large-only,
-  .hide-for-xlarge,
-  .hide-for-xlarge-up,
-  .hide-for-xlarge-only,
-  .hide-for-xxlarge-up,
-  .hide-for-xxlarge-only { display: inherit !important; }
-
-  .hide-for-small,
-  .hide-for-small-only,
-  .hide-for-medium-down,
-  .show-for-medium,
-  .show-for-medium-up,
-  .show-for-medium-only,
-  .hide-for-large-down,
-  .show-for-large,
-  .show-for-large-up,
-  .show-for-large-only,
-  .show-for-xlarge,
-  .show-for-xlarge-up,
-  .show-for-xlarge-only,
-  .show-for-xxlarge-up,
-  .show-for-xxlarge-only { display: none !important; }
-
-  /* Specific visibility for tables */
-  table {
-    &.show-for-small,
-    &.show-for-small-only,
-    &.show-for-medium-down,
-    &.show-for-large-down,
-    &.hide-for-medium,
-    &.hide-for-medium-up,
-    &.hide-for-medium-only,
-    &.hide-for-large,
-    &.hide-for-large-up,
-    &.hide-for-large-only,
-    &.hide-for-xlarge,
-    &.hide-for-xlarge-up,
-    &.hide-for-xlarge-only,
-    &.hide-for-xxlarge-up,
-    &.hide-for-xxlarge-only { display: table; }
-  }
-  thead {
-    &.show-for-small,
-    &.show-for-small-only,
-    &.show-for-medium-down,
-    &.show-for-large-down,
-    &.hide-for-medium,
-    &.hide-for-medium-up,
-    &.hide-for-medium-only,
-    &.hide-for-large,
-    &.hide-for-large-up,
-    &.hide-for-large-only,
-    &.hide-for-xlarge,
-    &.hide-for-xlarge-up,
-    &.hide-for-xlarge-only,
-    &.hide-for-xxlarge-up,
-    &.hide-for-xxlarge-only { display: table-header-group !important; }
-  }
-  tbody {
-    &.show-for-small,
-    &.show-for-small-only,
-    &.show-for-medium-down,
-    &.show-for-large-down,
-    &.hide-for-medium,
-    &.hide-for-medium-up,
-    &.hide-for-medium-only,
-    &.hide-for-large,
-    &.hide-for-large-up,
-    &.hide-for-large-only,
-    &.hide-for-xlarge,
-    &.hide-for-xlarge-up,
-    &.hide-for-xlarge-only,
-    &.hide-for-xxlarge-up,
-    &.hide-for-xxlarge-only { display: table-row-group !important; }
-  }
-  tr {
-    &.show-for-small,
-    &.show-for-small-only,
-    &.show-for-medium-down,
-    &.show-for-large-down,
-    &.hide-for-medium,
-    &.hide-for-medium-up,
-    &.hide-for-medium-only,
-    &.hide-for-large,
-    &.hide-for-large-up,
-    &.hide-for-large-only,
-    &.hide-for-xlarge,
-    &.hide-for-xlarge-up,
-    &.hide-for-xlarge-only,
-    &.hide-for-xxlarge-up,
-    &.hide-for-xxlarge-only { display: table-row !important; }
-  }
-  td,
-  th {
-    &.show-for-small,
-    &.show-for-small-only,
-    &.show-for-medium-down
-    &.show-for-large-down,
-    &.hide-for-medium,
-    &.hide-for-medium-up,
-    &.hide-for-large,
-    &.hide-for-large-up,
-    &.hide-for-xlarge
-    &.hide-for-xlarge-up,
-    &.hide-for-xxlarge-up { display: table-cell !important; }
-  }
-
-  /* Medium Displays: 641px and up */
-  @media #{$medium-up} {
-    .hide-for-small,
-    .hide-for-small-only,
-    .show-for-medium,
-    .show-for-medium-down,
-    .show-for-medium-up,
-    .show-for-medium-only,
-    .hide-for-large,
-    .hide-for-large-up,
-    .hide-for-large-only,
-    .hide-for-xlarge,
-    .hide-for-xlarge-up,
-    .hide-for-xlarge-only,
-    .hide-for-xxlarge-up,
-    .hide-for-xxlarge-only { display: inherit !important; }
-
-    .show-for-small,
-    .show-for-small-only,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .hide-for-medium-up,
-    .hide-for-medium-only,
-    .hide-for-large-down,
-    .show-for-large,
-    .show-for-large-up,
-    .show-for-large-only,
-    .show-for-xlarge,
-    .show-for-xlarge-up,
-    .show-for-xlarge-only,
-    .show-for-xxlarge-up,
-    .show-for-xxlarge-only { display: none !important; }
-
-    /* Specific visibility for tables */
-    table {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.show-for-medium,
-      &.show-for-medium-down,
-      &.show-for-medium-up,
-      &.show-for-medium-only,
-      &.hide-for-large,
-      &.hide-for-large-up,
-      &.hide-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table; }
-    }
-    thead {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.show-for-medium,
-      &.show-for-medium-down,
-      &.show-for-medium-up,
-      &.show-for-medium-only,
-      &.hide-for-large,
-      &.hide-for-large-up,
-      &.hide-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-header-group !important; }
-    }
-    tbody {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.show-for-medium,
-      &.show-for-medium-down,
-      &.show-for-medium-up,
-      &.show-for-medium-only,
-      &.hide-for-large,
-      &.hide-for-large-up,
-      &.hide-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-row-group !important; }
-    }
-    tr {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.show-for-medium,
-      &.show-for-medium-down,
-      &.show-for-medium-up,
-      &.show-for-medium-only,
-      &.hide-for-large,
-      &.hide-for-large-up,
-      &.hide-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-row !important; }
-    }
-    td,
-    th {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.show-for-medium,
-      &.show-for-medium-down,
-      &.show-for-medium-up,
-      &.show-for-medium-only,
-      &.hide-for-large,
-      &.hide-for-large-up,
-      &.hide-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-cell !important; }
-    }
-  }
-
-  /* Large Displays: 1024px and up */
-  @media #{$large-up} {
-    .hide-for-small,
-    .hide-for-small-only,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .hide-for-medium-only,
-    .show-for-medium-up,
-    .show-for-large,
-    .show-for-large-up,
-    .show-for-large-only,
-    .hide-for-xlarge,
-    .hide-for-xlarge-up,
-    .hide-for-xlarge-only,
-    .hide-for-xxlarge-up,
-    .hide-for-xxlarge-only { display: inherit !important; }
-
-    .show-for-small-only,
-    .show-for-medium,
-    .show-for-medium-down,
-    .show-for-medium-only,
-    .hide-for-large,
-    .hide-for-large-up,
-    .hide-for-large-only,
-    .show-for-xlarge,
-    .show-for-xlarge-up,
-    .show-for-xlarge-only,
-    .show-for-xxlarge-up,
-    .show-for-xxlarge-only { display: none !important; }
-
-    /* Specific visibility for tables */
-    table {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large,
-      &.show-for-large-up,
-      &.show-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table; }
-    }
-    thead {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large,
-      &.show-for-large-up,
-      &.show-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-header-group !important; }
-    }
-    tbody {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large,
-      &.show-for-large-up,
-      &.show-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-row-group !important; }
-    }
-    tr {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large,
-      &.show-for-large-up,
-      &.show-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-row !important; }
-    }
-    td,
-    th {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large,
-      &.show-for-large-up,
-      &.show-for-large-only,
-      &.hide-for-xlarge,
-      &.hide-for-xlarge-up,
-      &.hide-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-cell !important; }
-    }
-  }
-
-  /* X-Large Displays: 1441 and up */
-  @media #{$xlarge-up} {
-    .hide-for-small,
-    .hide-for-small-only,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .hide-for-medium-only,
-    .show-for-medium-up,
-    .show-for-large-up,
-    .hide-for-large-only,
-    .show-for-xlarge,
-    .show-for-xlarge-up,
-    .show-for-xlarge-only,
-    .hide-for-xxlarge-up,
-    .hide-for-xxlarge-only { display: inherit !important; }
-
-    .show-for-small-only,
-    .show-for-medium,
-    .show-for-medium-down,
-    .show-for-medium-only,
-    .show-for-large,
-    .show-for-large-only,
-    .show-for-large-down,
-    .hide-for-xlarge,
-    .hide-for-xlarge-up,
-    .hide-for-xlarge-only,
-    .show-for-xxlarge-up,
-    .show-for-xxlarge-only { display: none !important; }
-
-    /* Specific visibility for tables */
-    table {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-large-only,
-      &.show-for-xlarge,
-      &.show-for-xlarge-up,
-      &.show-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table; }
-    }
-    thead {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-large-only,
-      &.show-for-xlarge,
-      &.show-for-xlarge-up,
-      &.show-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-header-group !important; }
-    }
-    tbody {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-large-only,
-      &.show-for-xlarge,
-      &.show-for-xlarge-up,
-      &.show-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-row-group !important; }
-    }
-    tr {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-large-only,
-      &.show-for-xlarge,
-      &.show-for-xlarge-up,
-      &.show-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-row !important; }
-    }
-    td,
-    th {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-large-only,
-      &.show-for-xlarge,
-      &.show-for-xlarge-up,
-      &.show-for-xlarge-only,
-      &.hide-for-xxlarge-up,
-      &.hide-for-xxlarge-only { display: table-cell !important; }
-    }
-  }
-
-  /* XX-Large Displays: 1920 and up */
-  @media #{$xxlarge-up} {
-    .hide-for-small,
-    .hide-for-small-only,
-    .hide-for-medium,
-    .hide-for-medium-down,
-    .hide-for-medium-only,
-    .show-for-medium-up,
-    .show-for-large-up,
-    .hide-for-large-only,
-    .hide-for-xlarge-only,
-    .show-for-xlarge-up,
-    .show-for-xxlarge-up,
-    .show-for-xxlarge-only { display: inherit !important; }
-
-    .show-for-small-only,
-    .show-for-medium,
-    .show-for-medium-down,
-    .show-for-medium-only,
-    .show-for-large,
-    .show-for-large-only,
-    .show-for-large-down,
-    .hide-for-xlarge,
-    .show-for-xlarge-only,
-    .hide-for-xxlarge-up,
-    .hide-for-xxlarge-only { display: none !important; }
-
-    /* Specific visibility for tables */
-    table {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-xlarge-only,
-      &.show-for-xlarge-up,
-      &.show-for-xxlarge-up,
-      &.show-for-xxlarge-only { display: table; }
-    }
-    thead {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-xlarge-only,
-      &.show-for-xlarge-up,
-      &.show-for-xxlarge-up,
-      &.show-for-xxlarge-only { display: table-header-group !important; }
-    }
-    tbody {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-xlarge-only,
-      &.show-for-xlarge-up,
-      &.show-for-xxlarge-up,
-      &.show-for-xxlarge-only { display: table-row-group !important; }
-    }
-    tr {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-xlarge-only,
-      &.show-for-xlarge-up,
-      &.show-for-xxlarge-up,
-      &.show-for-xxlarge-only { display: table-row !important; }
-    }
-    td,
-    th {
-      &.hide-for-small,
-      &.hide-for-small-only,
-      &.hide-for-medium,
-      &.hide-for-medium-down,
-      &.hide-for-medium-only,
-      &.show-for-medium-up,
-      &.show-for-large-up,
-      &.hide-for-xlarge-only,
-      &.show-for-xlarge-up,
-      &.show-for-xxlarge-up,
-      &.show-for-xxlarge-only { display: table-cell !important; }
-    }
-  }
-
+  @include visible_loop;
 
   /* Orientation targeting */
   .show-for-landscape,
