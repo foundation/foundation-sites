@@ -319,7 +319,12 @@ $select-bg-color: #fafafa !default;
       background:
         $select-bg-color
         url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-      background-position-x: 97%;
+      @if $text-direction == 'rtl' {
+        background-position-x: 3%;
+      }
+      @else {
+        background-position-x: 97%;
+      }
       background-position-y: center;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
@@ -330,7 +335,12 @@ $select-bg-color: #fafafa !default;
         background:
           scale-color($select-bg-color, $lightness: -3%)
           url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-        background-position-x: 97%;
+        @if $text-direction == 'rtl' {
+          background-position-x: 3%;
+        }
+        @else {
+          background-position-x: 97%;
+        }
         background-position-y: center;
         border-color: $input-focus-border-color;
       }
@@ -352,17 +362,17 @@ $select-bg-color: #fafafa !default;
     .postfix.button { @include button-size(false,false,false); @include postfix(false,true); }
     .prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
 
-    .prefix.button.radius { @include radius(0); @include side-radius(left, $button-radius); }
-    .postfix.button.radius { @include radius(0); @include side-radius(right, $button-radius); }
-    .prefix.button.round { @include radius(0); @include side-radius(left, $button-round); }
-    .postfix.button.round { @include radius(0); @include side-radius(right, $button-round); }
+    .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
+    .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+    .prefix.button.round { @include radius(0); @include side-radius($default-float, $button-round); }
+    .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
 
     /* Separate prefix and postfix styles when on span or label so buttons keep their own */
     span.prefix,label.prefix { @include prefix();
-      &.radius { @include radius(0); @include side-radius(left, $global-radius); }
+      &.radius { @include radius(0); @include side-radius($default-float, $global-radius); }
     }
     span.postfix,label.postfix { @include postfix();
-      &.radius { @include radius(0); @include side-radius(right, $global-radius); }
+      &.radius { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
     }
 
     /* Input groups will automatically style first and last elements of the group */
