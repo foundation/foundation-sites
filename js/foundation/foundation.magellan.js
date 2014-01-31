@@ -1,124 +1,118 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
-  Foundation.libs.magellan = {
-    name : 'magellan',
+  Foundation.libs['magellan-expedition'] = {
+    name : 'magellan-expedition',
 
     version : '5.1.0',
 
     settings : {
       active_class: 'active',
-      threshold: 0
+      threshold: 0, // pixels from the top of the expedition for it to become fixes
+      destination_threshold: 20 // pixels from the top of destination for it to be considered active
     },
 
     init : function (scope, method, options) {
-      this.fixed_magellan = this.S("[data-magellan-expedition]");
-      this.magellan_placeholder = $('<div></div>').css({
-        height: this.fixed_magellan.outerHeight(true)
-      }).hide().insertAfter(this.fixed_magellan);
-      this.set_threshold();
-      this.set_active_class(method);
-      this.last_destination = this.S('[data-magellan-destination]').last();
-      this.events();
+      Foundation.inherit(this, 'throttle');
+      this.bindings(method, options);
     },
 
     events : function () {
       var self = this,
           S = self.S;
+      
+      // initialize expedition offset
+      self.set_expedition_position();
 
-      S(this.scope)
+      S(self.scope)
         .off('.magellan')
-        .on('arrival.fndtn.magellan', '[data-magellan-arrival]', function (e) {
-          var $destination = S(this),
-              $expedition = $destination.closest('[data-magellan-expedition]'),
-              active_class = $expedition.attr('data-magellan-active-class')
-                || self.settings.active_class;
-
-            $destination
-              .closest('[data-magellan-expedition]')
-              .find('[data-magellan-arrival]')
-              .not($destination)
-              .removeClass(active_class);
-            $destination.addClass(active_class);
-        });
-
-      this.fixed_magellan
-        .off('.magellan')
-        .on('update-position.fndtn.magellan', function() {
-          var $el = S(this);
-        })
-        .trigger('update-position');
-
-      S(window)
-        .off('.magellan')
-        .on('resize.fndtn.magellan', function() {
-          this.fixed_magellan.trigger('update-position');
-        }.bind(this))
-        .on('scroll.fndtn.magellan', function() {
-          var windowScrollTop = $(window).scrollTop();
-          self.fixed_magellan.each(function() {
-            var $expedition = $(this);
-            if (typeof $expedition.data('magellan-top-offset') === 'undefined') {
-              $expedition.data('magellan-top-offset', $expedition.offset().top);
-            }
-            if (typeof $expedition.data('magellan-fixed-position') === 'undefined') {
-              $expedition.data('magellan-fixed-position', false);
-            }
-            var fixed_position = (windowScrollTop + self.settings.threshold) > $expedition.data("magellan-top-offset");
-            var attr = $expedition.attr('data-magellan-top-offset');
-
-            if ($expedition.data("magellan-fixed-position") != fixed_position) {
-              $expedition.data("magellan-fixed-position", fixed_position);
-              if (fixed_position) {
-                $expedition.addClass('fixed');
-                $expedition.css({position:"fixed", top:0});
-                self.magellan_placeholder.show();
-              } else {
-                $expedition.removeClass('fixed').find('[data-magellan-arrival]').removeClass(self.settings.active_class);
-                $expedition.css({position:"", top:""});
-                self.magellan_placeholder.hide();
-              }
-              if (fixed_position && typeof attr != 'undefined' && attr != false) {
-                $expedition.css({position:"fixed", top:attr + "px"});
-              }
-            }
-          });
-        });
-
-
-      if (this.last_destination.length > 0) {
-        S(window).on('scroll.fndtn.magellan', function (e) {
-          var windowScrollTop = S(window).scrollTop(),
-              scrolltopPlusHeight = windowScrollTop + S(window).height(),
-              lastDestinationTop = Math.ceil(self.last_destination.offset().top);
-
-          S('[data-magellan-destination]').each(function () {
-            var $destination = S(this),
-                destination_name = $destination.attr('data-magellan-destination'),
-                topOffset = $destination.offset().top - $destination.outerHeight(true) - windowScrollTop;
-            if (topOffset <= self.settings.threshold) {
-              S("[data-magellan-arrival='" + destination_name + "']").trigger('arrival');
-            }
-            // In large screens we may hit the bottom of the page and dont reach the top of the last magellan-destination, so lets force it
-            if (scrolltopPlusHeight >= S(self.scope).height() && lastDestinationTop > windowScrollTop && lastDestinationTop < scrolltopPlusHeight) {
-              S('[data-magellan-arrival]').last().trigger('arrival');
-            }
-          });
-        });
-      }
+        .on('scroll.magellan', self.throttle(this.check_for_arrivals.bind(this), 60))
+        .on('resize.magellan', self.throttle(this.set_expedition_position.bind(this), 60));
     },
 
-    set_threshold : function () {
-      if (typeof this.settings.threshold !== 'number') {
-        this.settings.threshold = (this.fixed_magellan.length > 0) ?
-          this.fixed_magellan.outerHeight(true) : 0;
-      }
+    check_for_arrivals : function() {
+      var self = this;
+      self.update_arrivals();
+      self.update_expedition_positions();
     },
 
-    set_active_class : function (options) {
-      if (options && options.active_class && typeof options.active_class === 'string') {
-        this.settings.active_class = options.active_class;
-      }
+    // TODO need to update fixed positions of
+    set_expedition_position : function() {
+      var self = this;
+      $('[data-magellan-expedition=fixed]', self.scope).each(function(idx, el) {
+        var expedition = $(this),
+            styles = expedition.attr('styles'), // save styles
+            top_offset;
+
+        expedition.css('');
+        top_offset = expedition.offset().top;
+
+        expedition.data('magellan-top-offset', top_offset);
+        expedition.attr('style', styles);
+      });
+    },
+
+    update_expedition_positions : function() {
+      var self = this,
+          window_top_offset = $(window).scrollTop();
+
+      $('[data-magellan-expedition=fixed]', self.scope).each(function() {
+        var top_offset = $(this).data('magellan-top-offset');
+        
+        if (window_top_offset >= top_offset) {
+          $(this).css({position:'fixed', top: 0});
+        } else {
+          console.info('clear css');
+          $(this).attr('style','');
+        }
+      });
+    },
+
+    update_arrivals : function() {
+      var self = this,
+          window_top_offset = $(window).scrollTop();
+
+      $('[data-magellan-expedition]', self.scope).each(function() {
+        var expedition = $(this),
+            settings = settings = expedition.data('magellan-expedition-init'),
+            offsets = self.offsets(expedition, window_top_offset),
+            arrivals = expedition.find('[data-magellan-arrival]'),
+            active_item = false;
+        offsets.each(function(idx, item) {
+          if (item.viewport_offset >= item.top_offset) {
+            var arrivals = expedition.find('[data-magellan-arrival]');
+            arrivals.not(item.arrival).removeClass(settings.active_class);
+            item.arrival.addClass(settings.active_class);
+            active_item = true;
+            return true;
+          }
+        });
+
+        if (!active_item) arrivals.removeClass(settings.active_class);
+      });
+    },
+
+    offsets : function(expedition, window_offset) {
+      var settings = expedition.data('magellan-expedition-init'),
+          viewport_offset = (window_offset + settings.destination_threshold);
+
+      return expedition.find('[data-magellan-arrival]').map(function(idx, el) {
+        var name = $(this).data('magellan-arrival'),
+            dest = $('[data-magellan-destination=' + name + ']');
+        if (dest.length > 0) {
+          var top_offset = dest.offset().top;
+          return {
+            destination : dest,
+            arrival : $(this),
+            top_offset : top_offset,
+            viewport_offset : viewport_offset
+          }
+        }
+      }).sort(function(a, b) {
+        if (a.top_offset < b.top_offset) return -1;
+        if (a.top_offset > b.top_offset) return 1;
+        return 0;
+      });
     },
 
     off : function () {

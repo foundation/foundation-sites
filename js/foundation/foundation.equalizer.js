@@ -32,6 +32,7 @@
           vals = equalizer.find('[data-equalizer-watch]'),
           firstTopOffset = vals.first().offset().top,
           settings = equalizer.data('equalizer-init');
+      if (vals.length === 0) return;
       settings.before_height_change();
       equalizer.trigger('before-height-change');
       vals.height('inherit');
