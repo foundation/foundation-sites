@@ -21,6 +21,7 @@ $sub-nav-font-size: rem-calc(14) !default;
 $sub-nav-font-color: #999 !default;
 $sub-nav-font-weight: normal !default;
 $sub-nav-text-decoration: none !default;
+$sub-nav-padding: rem-calc(3 16) !default;
 $sub-nav-border-radius: 3px !default;
 $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%) !default;
 
@@ -31,7 +32,7 @@ $sub-nav-active-font-weight: normal !default;
 $sub-nav-active-bg: $primary-color !default;
 $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%) !default;
 $sub-nav-active-color: #fff !default;
-$sub-nav-active-padding: rem-calc(3 16) !default;
+$sub-nav-active-padding: $sub-nav-padding !default;
 $sub-nav-active-cursor: default !default;
 
 $sub-nav-item-divider: "" !default;
@@ -80,6 +81,7 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
     a {
       text-decoration: $sub-nav-text-decoration;
       color: $sub-nav-font-color;
+      padding: $sub-nav-padding;
       &:hover {
         color: $sub-nav-font-color-hover;
       }
