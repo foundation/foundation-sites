@@ -6,7 +6,7 @@ describe('alert:', function() {
 
     var origFunc = $.fn.foundation;
     spyOn($.fn, 'foundation').andCallFake(function() {
-      var result = origFunc.apply(this);
+      var result = origFunc.apply(this, arguments);
       jasmine.Clock.tick(1000); // Let things settle...
       return result;
     });
