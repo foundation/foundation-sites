@@ -4,6 +4,7 @@
 // @variables
 //
 $include-html-grid-classes: $include-html-classes !default;
+$include-xl-html-grid-classes: false !default;
 
 $row-width: rem-calc(1000) !default;
 $column-gutter: rem-calc(30) !default;
@@ -244,11 +245,13 @@ $total-columns: 12 !default;
         }
       }
     }
-    // @media #{$xlarge-up} {
-    //   @include grid-html-classes($size:xlarge);
-    // }
-    // @media #{$xxlarge-up} {
-    //   @include grid-html-classes($size:xxlarge);
-    // }
+  }
+  @if $include-xl-html-grid-classes {
+    @media #{$xlarge-up} {
+      @include grid-html-classes($size:xlarge);
+    }
+    @media #{$xxlarge-up} {
+      @include grid-html-classes($size:xxlarge);
+    }
   }
 }
