@@ -41,6 +41,7 @@ $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !def
 $topbar-link-font-family: $body-font-family !default;
 
 $topbar-button-font-size: 0.75rem;
+$topbar-button-top: 7px !default;
 
 $topbar-dropdown-label-color: #777 !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
@@ -431,7 +432,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         .button {
           font-size: rem-calc(14);
           position: relative;
-          top: 7px;
+          top: $topbar-button-top;
         }
 
         &.expanded { background: $topbar-bg; }
