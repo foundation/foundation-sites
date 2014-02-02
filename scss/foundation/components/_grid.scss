@@ -126,6 +126,12 @@ $total-columns: 12 !default;
   @if $push { #{$default-float}: grid-calc($push, $total-columns); #{$opposite-direction}: auto; }
   @if $pull { #{$opposite-direction}: grid-calc($pull, $total-columns); #{$default-float}: auto; }
 
+  @if $float {
+    @if $float == left or $float == true { float: $default-float; }
+    @else if $float == right { float: $opposite-direction; }
+    @else { float: none; }
+  }
+
   // If centered, get rid of float and add appropriate margins
   @if $center {
     margin-#{$default-float}: auto;
@@ -135,12 +141,6 @@ $total-columns: 12 !default;
 
   // If offset, calculate appropriate margins
   @if $offset { margin-#{$default-float}: grid-calc($offset, $total-columns) !important; }
-
-  @if $float {
-    @if $float == left or $float == true { float: $default-float; }
-    @else if $float == right { float: $opposite-direction; }
-    @else { float: none; }
-  }
 
 }
 
