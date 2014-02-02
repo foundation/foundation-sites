@@ -319,7 +319,7 @@ $select-bg-color: #fafafa !default;
       background-color: $select-bg-color;
       background-image: url('data:image/svg+xml;base64, PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwcHgiIGhlaWdodD0iOHB4IiB2aWV3Qm94PSIwIDAgMzkgMzkiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPg0KPHBhdGggZD0iTTM4LjYwNiwwTDE5LjMwMywzOC41NzlMMCwwSDM4LjYwNnoiIGZpbGw9IiM0NDQiIC8+DQo8L3N2Zz4=');
       background-repeat: no-repeat;
-      background-position: center right $form-spacing / 2;
+      background-position: center $opposite-direction $form-spacing / 2;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
