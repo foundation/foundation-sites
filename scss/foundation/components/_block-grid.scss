@@ -9,6 +9,11 @@ $include-html-grid-classes: $include-html-classes !default;
 $block-grid-elements: 12 !default;
 $block-grid-default-spacing: rem-calc(20) !default;
 
+$align-block-grid-to-grid: true;
+@if $align-block-grid-to-grid {
+  $block-grid-default-spacing: $column-gutter;
+}
+
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 $block-grid-media-queries: true !default;
 
@@ -30,7 +35,11 @@ $block-grid-media-queries: true !default;
   @if $base-style {
     display: block;
     padding: 0;
-    margin: 0 (-$spacing/2);
+    @if $align-block-grid-to-grid {
+      margin: 0;
+    } @else {
+      margin: 0 (-$spacing/2);
+    }
     @include clearfix;
 
     &>li {
@@ -53,9 +62,26 @@ $block-grid-media-queries: true !default;
 
       &:nth-of-type(n) { clear: none; }
       &:nth-of-type(#{$per-row}n+1) { clear: both; }
+      @if $align-block-grid-to-grid {
+        @include block-grid-aligned($per-row, $spacing);
+      }
     }
   }
+}
 
+@mixin block-grid-aligned($per-row, $spacing) {
+  @for $i from 1 through $block-grid-elements {
+    @if $per-row >= $i {
+      $grid-column: '+' + $i;
+      @if $per-row == $i {
+        $grid-column: '';
+      }
+      &:nth-child(#{$per-row}n#{unquote($grid-column)}) {
+        padding-left: ($spacing - (($spacing / $per-row) * ($per-row - ($i - 1))));
+        padding-right: ($spacing - (($spacing / $per-row) * $i));
+      }
+    }
+  }
 }
 
 // Generate presentational markup for block grid.
