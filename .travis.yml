@@ -4,6 +4,7 @@ node_js:
 branches:
   only:
     - master
+    - 5.1-wip
 before_install:
   - npm install -g grunt-cli bower
   - gem install compass
