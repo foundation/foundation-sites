@@ -143,7 +143,7 @@
       $el.after('<div id="foundationClearingHolder"></div>');
 
       var holder = this.S('#foundationClearingHolder'),
-          settings = $el.data('clearing-init'),
+          settings = $el.data(this.attr_name(true)),
           grid = $el.detach(),
           data = {
             grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',

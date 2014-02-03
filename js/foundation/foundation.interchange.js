@@ -53,13 +53,13 @@
 
             return trigger(el[0].src);
           }
-          var last_path = el.data('interchange-last-path');
+          var last_path = el.data(this.data_attr() + '-last-path');
 
           if (last_path == path) return;
 
           return $.get(path, function (response) {
             el.html(response);
-            el.data('interchange-last-path', path);
+            el.data(this.data_attr() + '-last-path', path);
             trigger();
           });
 
@@ -123,7 +123,7 @@
       var count = scenarios.length;
 
       if (count > 0) {
-        var el = this.S('[data-uuid="' + uuid + '"]');
+        var el = this.S('[' + this.add_namespace('data-uuid') + '="' + uuid + '"]');
 
         while (count--) {
           var mq, rule = scenarios[count][2];
@@ -269,11 +269,11 @@
 
     store : function (el, scenarios) {
       var uuid = this.uuid(),
-          current_uuid = el.data('uuid');
+          current_uuid = el.data(this.add_namespace('uuid', true));
 
       if (this.cache[current_uuid]) return this.cache[current_uuid];
 
-      el.attr('data-uuid', uuid);
+      el.attr(this.add_namespace('data-uuid'), uuid);
 
       return this.cache[uuid] = scenarios;
     },
@@ -284,6 +284,14 @@
       }
 
       return str;
+    },
+
+    data_attr: function () {
+      if (this.namespace.length > 0) {
+        return this.namespace + '-' + this.name;
+      }
+
+      return this.name;
     },
 
     parse_data_attr : function (el) {

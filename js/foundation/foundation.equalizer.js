@@ -23,9 +23,9 @@
 
     equalize: function(equalizer) {
       var isStacked = false,
-          vals = equalizer.find('[data-equalizer-watch]'),
+          vals = equalizer.find('[' + this.attr_name() + '-watch]'),
           firstTopOffset = vals.first().offset().top,
-          settings = equalizer.data('equalizer-init');
+          settings = equalizer.data(this.attr_name(true));
       if (vals.length === 0) return;
       settings.before_height_change();
       equalizer.trigger('before-height-change');
@@ -48,7 +48,7 @@
     reflow : function () {
       var self = this;
 
-      this.S('[data-equalizer]', this.scope).each(function(){
+      this.S('[' + this.attr_name() + ']', this.scope).each(function(){
         self.equalize($(this));
       });
     }
