@@ -218,7 +218,7 @@
         var $this = S(this),
             topbar = $this.closest('[' + self.attr_name() + ']'),
             section = topbar.find('section, .section'),
-            settings = topbar.data('topbar-init'),
+            settings = topbar.data(self.attr_name(true)),
             $movedLi = $this.closest('li.moved'),
             $previousLevelUl = $movedLi.parent();
 
@@ -246,7 +246,7 @@
 
     resize : function () {
       var self = this;
-      self.S('[data-topbar]').each(function () {
+      self.S('[' + this.attr_name() + ']').each(function () {
         var topbar = self.S(this),
             settings = topbar.data(self.attr_name(true));
 
