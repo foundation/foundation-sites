@@ -19,11 +19,12 @@ after_script:
   - rm -rf bower-foundation/*
   - cp -r dist/assets/* bower-foundation/
   - cd bower-foundation
+  - git checkout -b 5.1-wip
   - git remote rm origin
   - git remote add origin https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
   - git add -A
   - git commit -m "Foundation build to bower-foundation"
-  - git push -fq origin master
+  - git push -fq origin 5.1-wip
   - echo -e "Done with magic\n"
 env:
   global:
