@@ -65,10 +65,12 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
     .tabs-content {
       @include clearfix;
       margin-bottom: $tabs-content-margin-bottom;
+      width: 100%;
       > .content {
         display: none;
         float: $default-float;
         padding: $tabs-content-padding 0;
+        width: 100%;
         &.active { display: block; }
         &.contained { padding: $tabs-content-padding; }
       }

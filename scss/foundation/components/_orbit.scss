@@ -131,6 +131,9 @@ $preloader-class: "preloader" !default;
         padding: 0;
         position: relative;
 
+        // Prevents images (and captions) from disappearing after first rotation on Chrome for Android
+        -webkit-transform: translateZ(0);
+
         img { display: block; max-width: 100%; }
 
         &>* {

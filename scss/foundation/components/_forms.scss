@@ -367,26 +367,6 @@ $select-bg-color: #fafafa !default;
       &.radius { @include radius(0); @include side-radius(right, $global-radius); }
     }
 
-    /* Input groups will automatically style first and last elements of the group */
-    .input-group {
-      &.radius {
-        &>*:first-child,  &>*:first-child * {
-          @include side-radius($default-float, $global-radius);
-        }
-        &>*:last-child, &>*:last-child * {
-          @include side-radius($opposite-direction, $global-radius);
-        }
-      }
-      &.round {
-        &>*:first-child,  &>*:first-child * {
-          @include side-radius($default-float, $button-round);
-        }
-        &>*:last-child, &>*:last-child * {
-          @include side-radius($opposite-direction, $button-round);
-        }
-      }
-    }
-
     /* We use this to get basic styling on all basic form elements */
     input[type="text"],
     input[type="password"],
