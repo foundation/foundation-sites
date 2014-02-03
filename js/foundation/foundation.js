@@ -9,30 +9,23 @@
 (function ($, window, document, undefined) {
   'use strict';
 
-  // Used to retrieve Foundation media queries from CSS.
-  if($('head').has('.foundation-mq-small').length === 0) {
-    $('head').append('<meta class="foundation-mq-small">');
-  }
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
 
-  if($('head').has('.foundation-mq-medium').length === 0) {
-    $('head').append('<meta class="foundation-mq-medium">');
-  }
+    while (i--) {
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '">');
+      }
+    }
+  };
 
-  if($('head').has('.foundation-mq-large').length === 0) {
-    $('head').append('<meta class="foundation-mq-large">');
-  }
-
-  if($('head').has('.foundation-mq-xlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xlarge">');
-  }
-
-  if($('head').has('.foundation-mq-xxlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xxlarge">');
-  }
-
-  if($('head').has('.foundation-data-attribute-namespace').length === 0) {
-    $('head').append('<meta class="foundation-data-attribute-namespace">');
-  }
+  header_helpers([
+    'foundation-mq-small', 
+    'foundation-mq-medium', 
+    'foundation-mq-large', 
+    'foundation-mq-xlarge', 
+    'foundation-mq-xxlarge', 
+    'foundation-data-attribute-namespace']);
 
   // Enable FastClick if present
 
@@ -66,12 +59,24 @@
     return $(selector, context);
   }
 
+  // Namespace functions.
+
   var attr_name = function (init) {
     if (init) {
       return [this.namespace, this.name, 'init'].join('-');
     }
 
     return ['data', this.namespace, this.name].join('-');
+  };
+
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
+
+    while (i--) {
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '">');
+      }
+    }
   };
 
   var add_namespace = function (str) {
@@ -89,6 +94,8 @@
 
     return arr.reverse().join('-');
   };
+
+  // Event binding and data-options updating.
 
   var bindings = function (method, options) {
     var self = this,
