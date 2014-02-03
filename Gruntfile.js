@@ -211,12 +211,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
-  grunt.registerTask('develop', 'travis');
+  grunt.registerTask('develop', ['travis', 'watch']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
   grunt.registerTask('default', ['build', 'watch']);
 };
