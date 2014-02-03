@@ -30,6 +30,10 @@
     $('head').append('<meta class="foundation-mq-xxlarge">');
   }
 
+  if($('head').has('.foundation-data-attribute-namespace').length === 0) {
+    $('head').append('<meta class="foundation-data-attribute-namespace">');
+  }
+
   // Enable FastClick if present
 
   $(function() {
@@ -64,13 +68,13 @@
 
   var attr_name = function (init) {
     if (init) {
-      return [this.prefix, this.name, 'init'].join('-');
+      return [this.namespace, this.name, 'init'].join('-');
     }
 
-    return ['data', this.prefix, this.name].join('-');
+    return ['data', this.namespace, this.name].join('-');
   };
 
-  var add_prefix = function (str) {
+  var add_namespace = function (str) {
     var parts = str.split('-'),
         i = parts.length,
         arr = [];
@@ -79,7 +83,7 @@
       if (i !== 0) {
         arr.push(parts[i]);
       } else {
-        arr.push(this.prefix, parts[i]);
+        arr.push(this.namespace, parts[i]);
       }
     }
 
@@ -247,7 +251,7 @@
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
     global: {
-      prefix: ''
+      namespace: ''
     },
 
     init : function (scope, libraries, method, options, response) {
@@ -261,9 +265,7 @@
       // set foundation global scope
       this.scope = scope || this.scope;
 
-      if (libraries.hasOwnProperty('global')) {
-        this.global = $.extend({}, this.global, libraries.global);
-      }
+      this.global.namespace = this.set_namespace();
 
       if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
         if (this.libs.hasOwnProperty(libraries)) {
@@ -295,11 +297,11 @@
 
     patch : function (lib) {
       lib.scope = this.scope;
-      lib.prefix = this.global.prefix;
+      lib.namespace = this.global.namespace;
       lib.rtl = this.rtl;
       lib['data_options'] = this.utils.data_options;
       lib['attr_name'] = attr_name;
-      lib['add_prefix'] = add_prefix;
+      lib['add_namespace'] = add_namespace;
       lib['bindings'] = bindings;
       lib['S'] = this.utils.S;
     },
@@ -313,6 +315,14 @@
           scope[methods_arr[i]] = this.utils[methods_arr[i]];
         }
       }
+    },
+
+    set_namespace: function () {
+      var namespace = $('.foundation-data-attribute-namespace').css('font-family');
+
+      if (/false/i.test(namespace)) return '';
+
+      return namespace;
     },
 
     libs : {},
@@ -401,10 +411,10 @@
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr,
             data_options = function (el) {
-              var prefix = Foundation.global.prefix;
+              var namespace = Foundation.global.namespace;
 
-              if (prefix.length > 0) {
-                return el.data(prefix + '-options');
+              if (namespace.length > 0) {
+                return el.data(namespace + '-options');
               }
 
               return el.data('options');

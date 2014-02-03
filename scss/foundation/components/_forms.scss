@@ -451,9 +451,11 @@ $select-bg-color: #fafafa !default;
       }
       span.error, small.error { display: none; }
     }
+
     span.error, small.error {
       @include form-error-message;
     }
+
     .error {
       input,
       textarea,

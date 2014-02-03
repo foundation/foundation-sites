@@ -7,6 +7,10 @@
 // styles get applied to [data-mysite-plugin], etc
 $namespace: 'mysite' !default;
 
+meta.foundation-data-attribute-namespace {
+  font-family: #{$namespace};
+}
+
 $experimental: true !default;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
@@ -19,14 +23,6 @@ $base-font-size: 100% !default;
 
 // $base-line-height is 24px while $base-font-size is 16px
 $base-line-height: 150% !default;
-
-@function data($attr) {
-  @if $namespace {
-    @return '[data-' + $namespace + '-' + $attr + ']';
-  }
-
-  @return '[data-' + $attr + ']';
-}
 
 //
 // Global Foundation Mixins

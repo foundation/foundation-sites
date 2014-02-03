@@ -55,7 +55,7 @@
           form = self.S(scope).attr('novalidate', 'novalidate'),
           settings = form.data(this.attr_name(true));
 
-      this.invalid_attr = this.add_prefix('data-invalid');
+      this.invalid_attr = this.add_namespace('data-invalid');
 
       form
         .off('.abide')
@@ -154,7 +154,7 @@
             required = el_patterns[i][2],
             value = el.value,
             direct_parent = this.S(el).parent(),
-            is_equal = el.getAttribute(this.add_prefix('data-equalto')),
+            is_equal = el.getAttribute(this.add_namespace('data-equalto')),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
             label = this.S('label[for="' + el.getAttribute('id') + '"]'),
@@ -235,7 +235,7 @@
     },
 
     valid_equal: function(el, required, parent) {
-      var from  = document.getElementById(el.getAttribute(this.add_prefix('data-equalto'))).value,
+      var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
           to    = el.value,
           valid = (from === to);
 

@@ -27,10 +27,18 @@ $modules: () !default;
   @return nth($range, 2);
 }
 
-
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
+}
+
+// builds a data attribute selector
+@function data($attr) {
+  @if $namespace {
+    @return '[data-' + $namespace + '-' + $attr + ']';
+  }
+
+  @return '[data-' + $attr + ']';
 }
 
 // New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
