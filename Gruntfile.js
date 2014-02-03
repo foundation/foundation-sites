@@ -121,30 +121,30 @@ module.exports = function(grunt) {
       },
       continuous: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS']
+        browsers: ['SmallPhantomJS', 'LargePhantomJS']
       },
       dev: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox'],
         reporters: 'dots'
       },
       dev_watch: {
         background: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox']
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox'],
       },
       mac: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'Safari'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox', 'Safari'],
         reporters: 'dots'
       },
       win: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'IE'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox', 'IE'],
         reporters: 'dots'
       }
     },
 
-    watch: {
+    watch_start: {
       grunt: { files: ['Gruntfile.js'] },
       karma: {
         files: [
@@ -210,9 +210,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
-  grunt.loadNpmTasks('grunt-newer');
 
-  // grunt.task.renameTask('watch', 'watch_start');
+  grunt.task.renameTask('watch', 'watch_start');
+  grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
