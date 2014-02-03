@@ -144,7 +144,7 @@ module.exports = function(grunt) {
       }
     },
 
-    watch: {
+    watch_start: {
       grunt: { files: ['Gruntfile.js'] },
       karma: {
         files: [
@@ -209,7 +209,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
-  grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-newer');
 
   grunt.task.renameTask('watch', 'watch_start');
