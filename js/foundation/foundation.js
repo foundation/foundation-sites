@@ -466,7 +466,7 @@
       //    Performs a callback function when an image is fully loaded
       //
       // Arguments:
-      //    Image (jQuery Object): Image to check if loaded.
+      //    Image (jQuery Object): Image(s) to check if loaded.
       //
       //    Callback (Function): Fundation to execute when image is fully loaded.
       image_loaded : function (images, callback) {
