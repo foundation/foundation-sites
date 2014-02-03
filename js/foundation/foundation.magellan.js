@@ -49,7 +49,7 @@
         expedition.css('');
         top_offset = expedition.offset().top;
 
-        expedition.data('magellan-top-offset', top_offset);
+        expedition.data(self.data_attr('magellan-top-offset'), top_offset);
         expedition.attr('style', styles);
       });
     },
@@ -59,7 +59,7 @@
           window_top_offset = $(window).scrollTop();
 
       $('[' + this.attr_name() + '=fixed]', self.scope).each(function() {
-        var top_offset = $(this).data('magellan-top-offset');
+        var top_offset = $(this).data(self.data_attr('magellan-top-offset'));
         
         if (window_top_offset >= top_offset) {
           $(this).css({position:'fixed', top: 0});

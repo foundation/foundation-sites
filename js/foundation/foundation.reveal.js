@@ -43,14 +43,14 @@
       var self = this,
           S = self.S;
 
-      S('[data-reveal-id]', this.scope)
+      S('[' + this.add_namespace('data-reveal-id') + ']', this.scope)
         .off('.reveal')
         .on('click.fndtn.reveal', function (e) {
           e.preventDefault();
 
           if (!self.locked) {
             var element = S(this),
-                ajax = element.data('reveal-ajax');
+                ajax = element.data(self.data_attr('reveal-ajax'));
 
             self.locked = true;
 
@@ -73,7 +73,7 @@
           e.preventDefault();
 
           if (!self.locked) {
-            var settings = S('[data-reveal].open').data('reveal-init'),
+            var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true)),
                 bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
 
             if (bg_clicked && !settings.close_on_background_click) {
@@ -81,11 +81,11 @@
             }
 
             self.locked = true;
-            self.close.call(self, bg_clicked ? S('[data-reveal].open') : S(this).closest('[data-reveal]'));
+            self.close.call(self, bg_clicked ? S('[' + self.attr_name() + '].open') : S(this).closest('[' + self.attr_name() + ']'));
           }
         });
 
-      if(S('[data-reveal]', this.scope).length > 0) {
+      if(S('[' + self.attr_name() + ']', this.scope).length > 0) {
         S(this.scope)
           // .off('.reveal')
           .on('open.fndtn.reveal', this.settings.open)
@@ -97,12 +97,12 @@
       } else {
         S(this.scope)
           // .off('.reveal')
-          .on('open.fndtn.reveal', '[data-reveal]', this.settings.open)
-          .on('opened.fndtn.reveal', '[data-reveal]', this.settings.opened)
-          .on('opened.fndtn.reveal', '[data-reveal]', this.open_video)
-          .on('close.fndtn.reveal', '[data-reveal]', this.settings.close)
-          .on('closed.fndtn.reveal', '[data-reveal]', this.settings.closed)
-          .on('closed.fndtn.reveal', '[data-reveal]', this.close_video);
+          .on('open.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.open)
+          .on('opened.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.opened)
+          .on('opened.fndtn.reveal', '[' + self.attr_name() + ']', this.open_video)
+          .on('close.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.close)
+          .on('closed.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.closed)
+          .on('closed.fndtn.reveal', '[' + self.attr_name() + ']', this.close_video);
       }
 
       return true;
@@ -114,8 +114,8 @@
 
       // PATCH #1: fixing multiple keyup event trigger from single key press
       self.S('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
-        var open_modal = self.S('[data-reveal].open'),
-            settings = open_modal.data('reveal-init');
+        var open_modal = self.S('[' + self.attr_name() + '].open'),
+            settings = open_modal.data(self.attr_name(true));
         // PATCH #2: making sure that the close event can be called only while unlocked,
         //           so that multiple keyup.fndtn.reveal events don't prevent clean closing of the reveal window.
         if ( settings && event.which === 27  && settings.close_on_esc && !self.locked) { // 27 is the keycode for the Escape key
@@ -136,7 +136,7 @@
       var self = this;
       if (target) {
         if (typeof target.selector !== 'undefined') {
-          var modal = self.S('#' + target.data('reveal-id'));
+          var modal = self.S('#' + target.data(self.data_attr('reveal-id')));
         } else {
           var modal = self.S(this.scope);
 
@@ -146,10 +146,10 @@
         var modal = self.S(this.scope);
       }
 
-      var settings = modal.data('reveal-init');
+      var settings = modal.data(self.attr_name(true));
 
       if (!modal.hasClass('open')) {
-        var open_modal = self.S('[data-reveal].open');
+        var open_modal = self.S('[' + self.attr_name() + '].open');
 
         if (typeof modal.data('css-top') === 'undefined') {
           modal.data('css-top', parseInt(modal.css('top'), 10))
@@ -171,7 +171,7 @@
 
         if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
           if (open_modal.length > 0) {
-            var open_modal_settings = open_modal.data('reveal-init');
+            var open_modal_settings = open_modal.data(self.attr_name(true));
             this.hide(open_modal, open_modal_settings.css.close);
           }
 
@@ -189,7 +189,7 @@
               self.S(modal).foundation('section', 'reflow');
 
               if (open_modal.length > 0) {
-                var open_modal_settings = open_modal.data('reveal-init');
+                var open_modal_settings = open_modal.data(self.attr_name(true));
                 self.hide(open_modal, open_modal_settings.css.close);
               }
               self.show(modal, settings.css.open);
@@ -203,8 +203,8 @@
 
     close : function (modal) {
       var modal = modal && modal.length ? modal : this.S(this.scope),
-          open_modals = this.S('[data-reveal].open'),
-          settings = modal.data('reveal-init');
+          open_modals = this.S('[' + this.attr_name() + '].open'),
+          settings = modal.data(this.attr_name(true));
 
       if (open_modals.length > 0) {
         this.locked = true;
@@ -226,7 +226,7 @@
     },
 
     toggle_bg : function (modal) {
-      var settings = modal.data('reveal-init');
+      var settings = modal.data(this.attr_name(true));
 
       if (this.S('.' + this.settings.bg_class).length === 0) {
         this.settings.bg = $('<div />', {'class': this.settings.bg_class})
@@ -243,10 +243,11 @@
     show : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data('reveal-init');
+        var settings = el.data(this.attr_name(true));
         if (el.parent('body').length === 0) {
           var placeholder = el.wrap('<div style="display: none;" />').parent(),
-              rootElement = this.settings.rootElement || 'body';;
+              rootElement = this.settings.rootElement || 'body';
+
           el.on('closed.fndtn.reveal.wrapped', function() {
             el.detach().appendTo(placeholder);
             el.unwrap().unbind('closed.fndtn.reveal.wrapped');
@@ -305,7 +306,7 @@
     hide : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data('reveal-init');
+        var settings = el.data(this.attr_name(true));
         if (/pop/i.test(settings.animation)) {
           var end_css = {
             top: - $(window).scrollTop() - el.data('offset') + 'px',
@@ -349,8 +350,8 @@
     },
 
     close_video : function (e) {
-      var video = $(e.target).find('.flex-video'),
-          iframe = video.find('iframe');
+      var video = $('.flex-video', e.target),
+          iframe = $('iframe', video);
 
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
@@ -360,7 +361,7 @@
     },
 
     open_video : function (e) {
-      var video = $(e.target).find('.flex-video'),
+      var video = $('.flex-video', e.target),
           iframe = video.find('iframe');
 
       if (iframe.length > 0) {
@@ -374,6 +375,14 @@
         }
         video.show();
       }
+    },
+
+    data_attr: function (str) {
+      if (this.namespace.length > 0) {
+        return this.namespace + '-' + str;
+      }
+
+      return str;
     },
 
     cache_offset : function (modal) {
