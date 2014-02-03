@@ -25,12 +25,12 @@
 
       S(this.scope)
         .off('.dropdown')
-        .on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
-          var settings = S(this).data('dropdown-init') || self.settings;
+        .on('click.fndtn.dropdown', '[' + this.attr_name() + ']', function (e) {
+          var settings = S(this).data(self.attr_name()) || self.settings;
           e.preventDefault();
           if (!settings.is_hover || Modernizr.touch) self.toggle(S(this));
         })
-        .on('mouseenter.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
+        .on('mouseenter.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
           var $this = S(this);
           clearTimeout(self.timeout);
 
@@ -39,10 +39,10 @@
                 target = $this;
           } else {
             var dropdown = $this;
-                target = S("[data-dropdown='" + dropdown.attr('id') + "']");
+                target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
           }
 
-          var settings = target.data('dropdown-init') || self.settings;
+          var settings = target.data(self.attr_name(true)) || self.settings;
           
           if(S(e.target).data('dropdown') && settings.is_hover) {
             self.closeall.call(self);
@@ -50,7 +50,7 @@
           
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
-        .on('mouseleave.fndtn.dropdown', '[data-dropdown], [data-dropdown-content]', function (e) {
+        .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
           var $this = S(this);
           self.timeout = setTimeout(function () {
             if ($this.data('dropdown')) {

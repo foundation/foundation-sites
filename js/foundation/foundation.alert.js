@@ -17,11 +17,12 @@
     },
 
     events : function () {
-      var S = this.S;
+      var self = this,
+          S = this.S;
 
-      $(this.scope).off('.alert').on('click.fndtn.alert', '[data-alert] a.close', function (e) {
-          var alertBox = S(this).closest("[data-alert]"),
-              settings = alertBox.data('alert-init') || Foundation.libs.alert.settings;
+      $(this.scope).off('.alert').on('click.fndtn.alert', '[' + this.attr_name() + '] a.close', function (e) {
+          var alertBox = S(this).closest('[' + self.attr_name() + ']'),
+              settings = alertBox.data(self.attr_name(true)) || Foundation.libs.alert.settings;
 
         e.preventDefault();
         alertBox[settings.animation](settings.speed, function () {
