@@ -35,7 +35,7 @@
         S(this.scope)
           .off('.tooltip')
           .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
-            '[data-tooltip]:not(a)', function (e) {
+            '[' + this.attr_name() + ']:not(a)', function (e) {
             var settings = $.extend({}, self.settings, self.data_options(S(this)));
             if (!settings.disable_for_touch) {
               e.preventDefault();
@@ -52,7 +52,7 @@
         S(this.scope)
           .off('.tooltip')
           .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', 
-            '[data-tooltip]', this.debounce(function (e) {
+            '[' + this.attr_name() + ']', this.debounce(function (e) {
             var $this = S(this);
 
             if (/enter|over/i.test(e.type)) {
@@ -87,7 +87,7 @@
 
     selector : function ($target) {
       var id = $target.attr('id'),
-          dataSelector = $target.attr('data-tooltip') || $target.attr('data-selector');
+          dataSelector = $target.attr(this.attr_name()) || $target.attr('data-selector');
 
       if ((id && id.length < 1 || !id) && typeof dataSelector != 'string') {
         dataSelector = 'tooltip' + this.random_str(6);
@@ -202,7 +202,7 @@
     off : function () {
       this.S(this.scope).off('.fndtn.tooltip');
       this.S(this.settings.tooltip_class).each(function (i) {
-        $('[data-tooltip]').get(i).attr('title', $(this).text());
+        $('[' + this.attr_name() + ']').get(i).attr('title', $(this).text());
       }).remove();
     },
 
