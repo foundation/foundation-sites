@@ -49,14 +49,14 @@
             var current = current || S(this),
                 target = target || current,
                 next = current.next('li'),
-                settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true)),
+                settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init'),
                 image = S(e.target);
 
             e.preventDefault();
 
             if (!settings) {
               self.init();
-              settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true));
+              settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
             }
 
             // if clearing is open and the current image is
@@ -143,7 +143,7 @@
       $el.after('<div id="foundationClearingHolder"></div>');
 
       var holder = this.S('#foundationClearingHolder'),
-          settings = $el.data(this.attr_name(true)),
+          settings = $el.data(this.attr_name(true) + '-init'),
           grid = $el.detach(),
           data = {
             grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',

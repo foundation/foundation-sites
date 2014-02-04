@@ -26,7 +26,7 @@
 
       self.S('[' + this.attr_name() + ']', this.scope).each(function () {
         var topbar = self.S(this),
-            settings = topbar.data(self.attr_name(true)),
+            settings = topbar.data(self.attr_name(true) + '-init'),
             section = self.S('section', this),
             titlebar = $('> ul', this).first();
 
@@ -69,7 +69,7 @@
         var topbar = self.S('[' + this.attr_name() + ']');
       }
 
-      var settings = topbar.data(this.attr_name(true));
+      var settings = topbar.data(this.attr_name(true) + '-init');
 
       var section = self.S('section, .section', topbar);
 
@@ -143,7 +143,7 @@
           var li = S(this),
               target = S(e.target),
               topbar = li.closest('[' + self.attr_name() + ']'),
-              settings = topbar.data(self.attr_name(true));
+              settings = topbar.data(self.attr_name(true) + '-init');
 
           if(target.data('revealId')) {
             self.toggle();
@@ -218,7 +218,7 @@
         var $this = S(this),
             topbar = $this.closest('[' + self.attr_name() + ']'),
             section = topbar.find('section, .section'),
-            settings = topbar.data(self.attr_name(true)),
+            settings = topbar.data(self.attr_name(true) + '-init'),
             $movedLi = $this.closest('li.moved'),
             $previousLevelUl = $movedLi.parent();
 
@@ -248,7 +248,7 @@
       var self = this;
       self.S('[' + this.attr_name() + ']').each(function () {
         var topbar = self.S(this),
-            settings = topbar.data(self.attr_name(true));
+            settings = topbar.data(self.attr_name(true) + '-init');
 
         var stickyContainer = topbar.parent('.' + self.settings.sticky_class);
         var stickyOffset;
@@ -293,7 +293,7 @@
 
     assemble : function (topbar) {
       var self = this,
-          settings = topbar.data(this.attr_name(true)),
+          settings = topbar.data(this.attr_name(true) + '-init'),
           section = self.S('section', topbar),
           titlebar = $('> ul', topbar).first();
 

@@ -75,7 +75,7 @@
 
       $('[' + this.attr_name() + ']', self.scope).each(function() {
         var expedition = $(this),
-            settings = settings = expedition.data(self.attr_name(true)),
+            settings = settings = expedition.data(self.attr_name(true) + '-init'),
             offsets = self.offsets(expedition, window_top_offset),
             arrivals = expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']'),
             active_item = false;
@@ -95,7 +95,7 @@
 
     offsets : function(expedition, window_offset) {
       var self = this,
-          settings = expedition.data(self.attr_name(true)),
+          settings = expedition.data(self.attr_name(true) + '-init'),
           viewport_offset = (window_offset + settings.destination_threshold);
 
       return expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']').map(function(idx, el) {
