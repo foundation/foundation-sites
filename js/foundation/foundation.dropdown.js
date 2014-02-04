@@ -26,7 +26,7 @@
       S(this.scope)
         .off('.dropdown')
         .on('click.fndtn.dropdown', '[' + this.attr_name() + ']', function (e) {
-          var settings = S(this).data(self.attr_name()) || self.settings;
+          var settings = S(this).data(self.attr_name(true) + '-init') || self.settings;
           e.preventDefault();
           if (!settings.is_hover || Modernizr.touch) self.toggle(S(this));
         })
@@ -42,7 +42,7 @@
                 target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
           }
 
-          var settings = target.data(self.attr_name(true)) || self.settings;
+          var settings = target.data(self.attr_name(true) + '-init') || self.settings;
           
           if(S(e.target).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
@@ -54,11 +54,11 @@
           var $this = S(this);
           self.timeout = setTimeout(function () {
             if ($this.data(self.data_attr())) {
-              var settings = $this.data(self.data_attr(true)) || self.settings;
+              var settings = $this.data(self.data_attr(true) + '-init') || self.settings;
               if (settings.is_hover) self.close.call(self, S('#' + $this.data(self.data_attr())));
             } else {
               var target = S('[' + self.attr_name() + '="' + S(this).attr('id') + '"]'),
-                  settings = target.data(self.attr_name(true)) || self.settings;
+                  settings = target.data(self.attr_name(true) + '-init') || self.settings;
               if (settings.is_hover) self.close.call(self, $this);
             }
           }.bind(this), 150);

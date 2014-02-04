@@ -27,7 +27,7 @@
             tabs = tab.closest('[' + self.attr_name() + ']'),
             target = S('#' + this.href.split('#')[1]),
             siblings = tab.siblings(),
-            settings = tabs.data(self.attr_name(true));
+            settings = tabs.data(self.attr_name(true) + '-init');
         
         // allow usage of data-tab-content attribute instead of href
         if (S(this).data(self.data_attr('tab-content'))) {

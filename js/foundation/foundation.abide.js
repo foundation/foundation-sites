@@ -53,7 +53,7 @@
     events : function (scope) {
       var self = this,
           form = self.S(scope).attr('novalidate', 'novalidate'),
-          settings = form.data(this.attr_name(true));
+          settings = form.data(this.attr_name(true) + '-init');
 
       this.invalid_attr = this.add_namespace('data-invalid');
 
@@ -72,7 +72,7 @@
             self.validate([this], e);
           })
           .on('keydown.fndtn.abide', function (e) {
-            var settings = self.S(this).closest('form').data(self.attr_name(true));
+            var settings = self.S(this).closest('form').data(self.attr_name(true) + '-init');
             clearTimeout(self.timer);
             self.timer = setTimeout(function () {
               self.validate([this], e);

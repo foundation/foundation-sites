@@ -89,7 +89,11 @@
       if (i !== 0) {
         arr.push(parts[i]);
       } else {
-        arr.push(this.namespace, parts[i]);
+        if (this.namespace.length > 0) {
+          arr.push(this.namespace, parts[i]);
+        } else {
+          arr.push(parts[i]);
+        }
       }
     }
 
@@ -107,7 +111,7 @@
     }
 
     if (S(this.scope).is('[' + this.attr_name() +']')) {
-      S(this.scope).data(this.attr_name(true), $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+      S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
 
       if (should_bind_events) {
         this.events(this.scope);
@@ -115,9 +119,9 @@
 
     } else {
       S('[' + this.attr_name() +']', this.scope).each(function () {
-        var should_bind_events = !S(this).data(self.attr_name(true));
+        var should_bind_events = !S(this).data(self.attr_name(true) + '-init');
 
-        S(this).data(self.attr_name(true), $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+        S(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
 
         if (should_bind_events) {
           self.events(this);
