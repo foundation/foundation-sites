@@ -7,6 +7,7 @@
     version : '5.1.0',
 
     settings : {
+      use_tallest: true,
       before_height_change: $.noop,
       after_height_change: $.noop
     },
@@ -40,8 +41,13 @@
       if (isStacked) return;
       
       var heights = vals.map(function(){ return $(this).outerHeight() });
-      var max = Math.max.apply(null, heights);
-      vals.height(max);
+      if (settings.use_tallest) {
+        var max = Math.max.apply(null, heights);
+        vals.height(max);
+      } else {
+        var min = Math.min.apply(null, heights);
+        vals.height(min);
+      }
       settings.after_height_change();
       equalizer.trigger('after-height-change');
     },
