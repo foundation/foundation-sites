@@ -10,7 +10,7 @@ $orbit-caption-bg: rgba(51,51,51, 0.8) !default;
 $orbit-caption-font-color: #fff !default;
 $orbit-caption-font-size: rem-calc(14) !default;
 $orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"
-$orbit-caption-padding: rem-calc(10,14) !default;
+$orbit-caption-padding: rem-calc(10 14) !default;
 $orbit-caption-height: auto !default;
 
 // We use these to control the left/right nav styles
@@ -164,8 +164,8 @@ $preloader-class: "preloader" !default;
             background-color: $orbit-caption-bg;
             color: $orbit-caption-font-color;
             width: 100%;
-            padding: 10px 14px;
-            font-size: rem-calc(14);
+            padding: $orbit-caption-padding;
+            font-size: $orbit-caption-font-size;
           }
         }
       }
@@ -244,6 +244,7 @@ $preloader-class: "preloader" !default;
         height: 60px;
         line-height: 50px;
         color: white;
+        background-color: $orbit-nav-bg;
         text-indent: -9999px !important;
         z-index: 10;
 
@@ -293,14 +294,15 @@ $preloader-class: "preloader" !default;
       top: 10px;
       float: none;
       text-align: center;
-      display: inline-block;
+      display: block;
 
       li {
-        display: block;
+        display: inline-block;
         width: $orbit-bullet-radius;
         height: $orbit-bullet-radius;
         background: $orbit-bullet-nav-color;
-        float: $default-float;
+        // float: $default-float;
+        float: none;
         margin-#{$opposite-direction}: 6px;
         @include radius(1000px);
 

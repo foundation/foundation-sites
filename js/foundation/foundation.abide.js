@@ -4,15 +4,17 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '5.0.0',
+    version : '5.1.0',
 
     settings : {
+      live_validate : true,
       focus_on_invalid : true,
+      error_labels: true, // labels with a for="inputId" will recieve an `error` class
       timeout : 1000,
       patterns : {
-        alpha: /[a-zA-Z]+/,
-        alpha_numeric : /[a-zA-Z0-9]+/,
-        integer: /-?\d+/,
+        alpha: /^[a-zA-Z]+$/,
+        alpha_numeric : /^[a-zA-Z0-9]+$/,
+        integer: /^\d+$/,
         number: /-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?/,
 
         // generic password: upper-case, lower-case, number/special character, and min 8 characters
@@ -60,6 +62,9 @@
           var is_ajax = /ajax/i.test($(this).attr('data-abide'));
           return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
         })
+        .on('reset', function() {
+          return self.reset($(this));
+        })
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
@@ -67,11 +72,19 @@
           })
           .on('keydown.fndtn.abide', function (e) {
             var settings = $(this).closest('form').data('abide-init');
-            clearTimeout(self.timer);
-            self.timer = setTimeout(function () {
-              self.validate([this], e);
-            }.bind(this), settings.timeout);
+            if (settings.live_validate === true) {
+              clearTimeout(self.timer);
+              self.timer = setTimeout(function () {
+                self.validate([this], e);
+              }.bind(this), settings.timeout);
+            }
           });
+    },
+
+    reset : function (form) {
+      form.removeAttr('data-invalid');
+      $('[data-invalid]', form).removeAttr('data-invalid');
+      $('.error', form).not('small').removeClass('error');
     },
 
     validate : function (els, e, is_ajax) {
@@ -115,16 +128,16 @@
       var type = el.getAttribute('type'),
           required = typeof el.getAttribute('required') === 'string';
 
-      if (this.settings.patterns.hasOwnProperty(type)) {
-        return [el, this.settings.patterns[type], required];
-      }
-
       var pattern = el.getAttribute('pattern') || '';
 
       if (this.settings.patterns.hasOwnProperty(pattern) && pattern.length > 0) {
         return [el, this.settings.patterns[pattern], required];
       } else if (pattern.length > 0) {
         return [el, new RegExp(pattern), required];
+      }
+      
+      if (this.settings.patterns.hasOwnProperty(type)) {
+        return [el, this.settings.patterns[type], required];
       }
 
       pattern = /.*/;
@@ -143,6 +156,7 @@
             is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
+            label = $('label[for="' + el.getAttribute('id') + '"]'),
             valid_length = (required) ? (el.value.length > 0) : true;
 
         if (is_radio && required) {
@@ -155,10 +169,16 @@
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
             $(el).removeAttr('data-invalid').parent().removeClass('error');
+            if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
+
             validations.push(true);
+            $(el).triggerHandler('valid');
           } else {
             $(el).attr('data-invalid', '').parent().addClass('error');
+            if (label.length > 0 && this.settings.error_labels) label.addClass('error');
+
             validations.push(false);
+            $(el).triggerHandler('invalid');
           }
         }
       }

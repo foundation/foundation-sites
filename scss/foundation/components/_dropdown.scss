@@ -3,7 +3,7 @@
 //
 // @variables
 //
-$include-html-button-classes: $include-html-classes !default;
+$include-html-dropdown-classes: $include-html-classes !default;
 
 // We use these to controls height and width styles.
 $f-dropdown-max-width: 200px !default;
@@ -17,7 +17,7 @@ $f-dropdown-bg: #fff !default;
 // We use this to set the border styles for dropdowns.
 $f-dropdown-border-style: solid !default;
 $f-dropdown-border-width: 1px !default;
-$f-dropdown-border-color: darken(#fff, 20%) !default;
+$f-dropdown-border-color: scale-color(#fff, $lightness: -20%) !default;
 
 // We use these to style the triangle pip.
 $f-dropdown-triangle-size: 6px !default;
@@ -47,7 +47,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 // $max-width - Default: $f-dropdown-max-width || 200px.
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
   position: absolute;
-  top: -9999px;
+  left: -9999px;
   list-style: $f-dropdown-list-style;
   margin-#{$default-float}: 0;
 
@@ -129,7 +129,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 }
 
 @include exports("dropdown") {
-  @if $include-html-button-classes {
+  @if $include-html-dropdown-classes {
 
     @media #{$small-only} {
       .f-dropdown {

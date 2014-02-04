@@ -104,15 +104,15 @@ $alert-padding-bottom: $alert-padding-top + rem-calc(1);
 $alert-font-weight: bold;
 $alert-font-size: rem-calc(14);
 $alert-font-color: #fff;
-$alert-font-color-alt: darken($secondary-color, 60%);
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
 
 // We use this for close hover effect.
-$alert-function-factor: 10%;
+$alert-function-factor: -14%;
 
 // We use these to control border styles.
 $alert-border-style: solid;
 $alert-border-width: 1px;
-$alert-border-color: darken($primary-color, $alert-function-factor);
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
 $alert-bottom-margin: rem-calc(20);
 
 // We use these to style the close buttons
@@ -170,7 +170,7 @@ You can further customize your alert boxes using the provided options in the `al
 .custom-alert-box {
   @include alert(
     // Adjust the background of the alert
-    $bg: '#cccccc',
+    $bg: #cccccc,
     // Give a border to the alert box
     $radius: true
   );
@@ -233,7 +233,7 @@ You can adjust many settings. For example:
 $(document).foundation({
   alert: {
     animation_speed: 500,
-    animation: 'fade'
+    animation: 'fadeOut'
   }
 });
 ```

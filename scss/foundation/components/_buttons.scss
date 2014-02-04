@@ -27,10 +27,10 @@ $button-font-weight: normal !default;
 $button-font-align: center !default;
 
 // We use these to control various hover effects.
-$button-function-factor: 5% !default;
+$button-function-factor: -20% !default;
 
 // We use these to control button border styles.
-$button-border-width: 1px !default;
+$button-border-width: 0px !default;
 $button-border-style: solid !default;
 
 // We use this to set the default radius used throughout the core.
@@ -51,6 +51,8 @@ $button-disabled-opacity: 0.7 !default;
 
 @mixin button-base($style:true, $display:$button-display) {
   @if $style {
+    border-style: $button-border-style;
+    border-width: $button-border-width;
     cursor: $cursor-pointer-value;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
@@ -109,14 +111,14 @@ $button-disabled-opacity: 0.7 !default;
     padding-top: $is-input + rem-calc(.5);
     padding-bottom: $is-input + rem-calc(.5);
     -webkit-appearance: none;
-    border: none; 
+    border: none;
     font-weight: $button-font-weight !important;
   }
   @else if $is-input {
     padding-top: $is-input + rem-calc(1);
     padding-bottom: $is-input;
     -webkit-appearance: none;
-    border: none; 
+    border: none;
     font-weight: $button-font-weight !important;
   }
 }
@@ -137,9 +139,9 @@ $button-disabled-opacity: 0.7 !default;
     $bg-lightness: lightness($bg);
 
     background-color: $bg;
-    border-color: darken($bg, $button-function-factor);
+    border-color: scale-color($bg, $lightness: $button-function-factor);
     &:hover,
-    &:focus { background-color: darken($bg, $button-function-factor); }
+    &:focus { background-color: scale-color($bg, $lightness: $button-function-factor); }
 
     // We control the text color for you based on the background color.
     @if $bg-lightness > 70% {

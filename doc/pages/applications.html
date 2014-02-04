@@ -49,6 +49,13 @@ Append the following lines to your `app/assets/javascripts/application.js` file:
 //= require foundation
 $(document).foundation();
 ```
+### Configure Asset pipeline
+
+Add Modernizr to precompiled assets for production in `config/enviroments/production.rb`.
+
+```ruby
+config.assets.precompile += %w( vendor/modernizr.js )
+```
 
 ### Add Modernizr
 

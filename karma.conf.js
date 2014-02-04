@@ -9,11 +9,11 @@ module.exports = function(config) {
 
     files: [
         {pattern: 'dist/assets/css/*.css', watched: true, served: true, included: false},
-        {pattern: 'dist/assets/js/vendor/custom.modernizr.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/fastclick.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/placeholder.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/jquery.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/jquery.cookie.js', watched: true, served: true, included: true},
+        {pattern: 'bower_components/modernizr/modernizr.js', watched: true, served: true, included: true},
+        {pattern: 'bower_components/fastclick/lib/fastclick.js', watched: true, served: true, included: true},
+        {pattern: 'bower_components/jquery/jquery.js', watched: true, served: true, included: true},
+        {pattern: 'bower_components/jquery-placeholder/jquery.placeholder.js', watched: true, served: true, included: true},
+        {pattern: 'bower_components/jquery.cookie/jquery.cookie.js', watched: true, served: true, included: true},
         {pattern: 'dist/assets/js/foundation/*.js', watched: true, served: true, included: false},
         {pattern: 'spec/**/*.html', watched: true, served: true, included: true},
         {pattern: 'spec/**/*.js', watched: true, served: true, included: true}

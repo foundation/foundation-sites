@@ -3,16 +3,18 @@
 //
 // @name
 // @dependencies _global.scss
-// 
+//
 
 //
 // @variables
 //
 
+// NOTE: Switches have been deprecated in Foundation 5 and will be removed in the future.
+
 $include-html-form-classes: $include-html-classes !default;
 
 // Controlling border styles and background colors for the switch container
-$switch-border-color: darken(#fff, 20%) !default;
+$switch-border-color: scale-color(#fff, $lightness: -20%) !default;
 $switch-border-style: solid !default;
 $switch-border-width: 1px !default;
 $switch-bg: #fff !default;
@@ -33,13 +35,13 @@ $switch-label-side-padding: 6px !default;
 
 // We use these to style the switch-paddle
 $switch-paddle-bg: #fff !default;
-$switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%) !default;
-$switch-paddle-border-color: darken($switch-paddle-bg, 35%) !default;
+$switch-paddle-fade-to-color: scale-color($switch-paddle-bg, $lightness: -10%) !default;
+$switch-paddle-border-color: scale-color($switch-paddle-bg, $lightness: -35%) !default;
 $switch-paddle-border-width: 1px !default;
 $switch-paddle-border-style: solid !default;
 $switch-paddle-transition-speed: .1s !default;
 $switch-paddle-transition-ease: ease-out !default;
-$switch-positive-color: lighten($success-color, 50%) !default;
+$switch-positive-color: scale-color($success-color, $lightness: 94%) !default;
 $switch-negative-color: #f5f5f5 !default;
 
 // Outline Style for tabbing through switches
@@ -55,7 +57,7 @@ $switch-label-outline: 1px dotted #888 !default;
 // $transition-speed - Time in ms for switch to toggle. Default: $switch-paddle-transition-speed.
 // $transition-ease - Easing function to use for animation (i.e. ease-out). Default: $switch-paddle-transition-ease.
 @mixin switch-base(
-  $transition-speed:$switch-paddle-transition-speed, 
+  $transition-speed:$switch-paddle-transition-speed,
   $transition-ease:$switch-paddle-transition-ease) {
 
   // Default position and structure for switch container.
@@ -160,8 +162,8 @@ $switch-label-outline: 1px dotted #888 !default;
 // $font-size - Font size of text in switch. Default: $switch-font-size-med.
 // $line-height - Line height of switch. Default: 2.3rem.
 @mixin switch-size(
-  $height: $switch-height-med, 
-  $font-size: $switch-font-size-med, 
+  $height: $switch-height-med,
+  $font-size: $switch-font-size-med,
   $line-height: 2.3rem) {
 
   height: rem-calc($height);
@@ -195,10 +197,10 @@ $switch-label-outline: 1px dotted #888 !default;
 // $radius - Radius to apply to switch. Default: false.
 // $base-style - Apply base styles? Default: true.
 @mixin switch-style(
-  $paddle-bg:$switch-paddle-bg, 
-  $positive-color:$switch-positive-color, 
-  $negative-color:$switch-negative-color, 
-  $radius:false, 
+  $paddle-bg:$switch-paddle-bg,
+  $positive-color:$switch-positive-color,
+  $negative-color:$switch-negative-color,
+  $radius:false,
   $base-style:true) {
 
   @if $base-style {
@@ -206,13 +208,13 @@ $switch-label-outline: 1px dotted #888 !default;
     border-color: $switch-border-color;
 
     span:last-child {
-      border-color: darken($paddle-bg, 30%);
+      border-color: scale-color($paddle-bg, $lightness: -30%);
       background: $paddle-bg;
       @if $experimental {
-        background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
-        background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+        background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
+        background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
       }
-      background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 5%) 100%);
+      background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
 
       // Building the alternating colored sides of the switch
       @if $experimental {
@@ -232,10 +234,10 @@ $switch-label-outline: 1px dotted #888 !default;
       span:last-child {
         background: $paddle-bg;
         @if $experimental {
-          background: -moz-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
-          background: -webkit-linear-gradient(top, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+          background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
+          background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
         }
-        background: linear-gradient(to bottom, $paddle-bg 0%, darken($paddle-bg, 10%) 100%);
+        background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
       }
     }
 
@@ -267,15 +269,15 @@ $switch-label-outline: 1px dotted #888 !default;
 // $radius - Radius to apply to switch. Default: false.
 // $base-style - Apply base styles? Default: true.
 @mixin switch(
-  $transition-speed: $switch-paddle-transition-speed, 
-  $transition-ease: $switch-paddle-transition-ease, 
-  $height: $switch-height-med, 
-  $font-size: $switch-font-size-med, 
-  $line-height: 2.3rem, 
-  $paddle-bg: $switch-paddle-bg, 
-  $positive-color: $switch-positive-color, 
-  $negative-color: $switch-negative-color, 
-  $radius:false, 
+  $transition-speed: $switch-paddle-transition-speed,
+  $transition-ease: $switch-paddle-transition-ease,
+  $height: $switch-height-med,
+  $font-size: $switch-font-size-med,
+  $line-height: 2.3rem,
+  $paddle-bg: $switch-paddle-bg,
+  $positive-color: $switch-positive-color,
+  $negative-color: $switch-negative-color,
+  $radius:false,
   $base-style:true) {
     @include switch-base($transition-speed, $transition-ease);
     @include switch-size($height, $font-size, $line-height);

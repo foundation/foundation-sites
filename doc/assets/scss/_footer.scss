@@ -3,7 +3,7 @@
 #newsletter { 
   padding: 20px 0;
   background: #085a78; padding: 10px 0 10px 0;
-  h5 { font-size: 20px;font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+  h5 { font-size: 20px;font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
   font-weight: 400; margin-bottom: 0px; margin-top: 10px; color: #fff; line-height: 24px; }
   p { clear: both; font-size: 13px; padding-top: 2px; color: #fff; }
   a { color: #fff; }
@@ -165,7 +165,7 @@
     &.expo { background-image: url("../img/icons/footer-expo-retina.png") left top no-repeat; }
   }
   .zurb-footer-bottom a.zurb-logo { background-image: url("../img/icons/footer-icons-retina.png"); background-size: 100px 1400px; }
-  .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links { background-image: url("icons/footer-top-icons-retina.png"); background-size: 100px 1400px; }
+  .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links { background-image: url("../img/icons/footer-top-icons-retina.png"); background-size: 100px 1400px; }
 }
 @media only screen and (max-width: 320px), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
   .zurb-footer-top .info-padding { background-image: url("../img/icons/footer-large-icon-retina.png"); background-size: 100px 400px; }

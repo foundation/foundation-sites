@@ -3,6 +3,49 @@
 
 ***
 
+### Got a Foundation Question?
+
+<div class="row">
+	<div class="medium-6 columns">
+		<p>Post your questions on the Foundation Forum! We have a strong community where you can:</p> 
+		<ul>
+		  <li>Get helpful answers fast from avid Foundation fans and ZURBians.</li>
+		  <li>Describe your code problem or response design question with text, code and imagery so the community can respond with appropriate advise or answers.</li>
+		  <li>Follow posts and people to learn new things about Foundation.</li>
+		</ul>
+
+		 <p><a href="/forum" class="small secondary button">Sign Up &amp; Get Answers Now &rarr;</a></p>
+
+	</div>
+	<div class="medium-6 columns">
+		<a href="/forum"><img src="http://foundation.zurb.com/assets/img/support/foundation-forum.svg"></a>
+	</div>
+</div>
+
+***
+
+### 5.0.3- January 15, 2014
+
+  * Uses `scale-color` instead of `darken` [#3287](https://github.com/zurb/foundation/pull/3827)
+  * Add `reflow` to Orbit
+  * Add missing large and xlarge visibility classes
+  * Add missing variables to `_settings.scss` file
+  * Abide checkbox validation [b5e8db5133](https://github.com/zurb/foundation/commit/b5e8db5133e56b83c5df3da46ec4cf8b7bb09523)
+  * Fallback to default settings for alerts if no custom settings are provided [0261d71d9d](https://github.com/zurb/foundation/commit/0261d71d9d4b94216d0596966db041b834c8c483)
+  * Setting active_class on Magellan fixed [f737212e47](https://github.com/zurb/foundation/commit/f737212e475226e7ddafcf85681626ca45dcc70f)
+  * Fix FastClick header loading issues and Update FastClick [a4f88e1969](https://github.com/zurb/foundation/commit/a4f88e1969b76f70ff319d3c6832f8c2aaf03434)
+  * Dropdown callbacks patched [fa89000ec2](https://github.com/zurb/foundation/commit/fa89000ec2eba15d9da6edeccb3c9db7174d4678)
+  * Fix bug where joyride fails to scroll up for next tip [fa89000ec2](https://github.com/zurb/foundation/commit/fa89000ec2eba15d9da6edeccb3c9db7174d4678)
+  * Joyride RTL fixes [99668af63d](https://github.com/zurb/foundation/commit/99668af63d6b85ea43842567864353b9702bcb1e)
+  * Dropdowns now auto close [ff21a94199](https://github.com/zurb/foundation/commit/ff21a94199bc9ce66b050bdc8f42ba0b0c1f4538)
+  * Fix Orbit click event to go to next slide [e6c4d0a30c](https://github.com/zurb/foundation/commit/e6c4d0a30cfb3c2fd66a92944947da8579140a11)
+  * Clearing RTL improvements [d1f19f77b0](https://github.com/zurb/foundation/commit/d1f19f77b0f29f85ae4a18da96715929d706174b)
+  * Fix Joyride Cookie Detection [357a365e1a](https://github.com/zurb/foundation/commit/357a365e1abe346886eca8fd9bedde559602cd32)
+  * Fix to Interchange internal caching [66fc386503](https://github.com/zurb/foundation/commit/66fc386503d4fd13c4badfd85cc0daca13d87528)
+  * Lots of bug and documentation fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.0.2...v5.0.3)
+
 ### 5.0.2- November 22, 2013
   
   * Fix issue with clearing images not displaying
@@ -107,7 +150,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Added the ability to use deep-linking inside nested Sections.
 * Added the ability to use HTML in the data-caption for Clearing.
 * Fixes problem with embedded Youtube videos inside of Reveal.
-* Orbit now has pause/resume on hover/mousout capability.
+* Orbit now has pause/resume on hover/mouseout capability.
 * Fixed Section vertical tabs on mobile.
 * Lots of small bug fixes and improvements for many of the JS components.
 
@@ -150,7 +193,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Section is now fully semantic
 * Clicking on current thumbnail in Clearing now advances to next slide
 * data-options support added to Clearing
-* Addressed Foundation loader incompatiblities with non-jQuery and non-Zepto JS libraries
+* Addressed Foundation loader incompatibilities with non-jQuery and non-Zepto JS libraries
 * Fixed Rails generator bug when using CoffeeScript files
 * Added `reflow` to Section js plugin to support dynamic content
 
@@ -195,7 +238,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v4
 * Added modular HTML class variables to control whether or no those classes come through into your CSS.
 * Changed global font size defaults to 100% to let browsers use their default zooming.
 * Fixed bugs with top-bar bottom margin variables.
-* Bug fixes for Reveal click event propigation.
+* Bug fixes for Reveal click event propagation.
 * Bug fixes in the Dropdown plugins for positioning.
 * Removed duplicate binding in sections.
 * Changes all references to `$button-radius` to `$global-radius` to fix customizer blank css files.
@@ -298,7 +341,7 @@ The updates to Foundation itself are as follows:
 * Added [Magellan](http://foundation.zurb.com/docs/magellan.php), a plugin for building design agnostic sticky navs that know where you are on the page.
 * Added [Joyride](http://foundation.zurb.com/docs/joyride.php), our plugin for creating tours of your website or app.
 * Added [Clearing](http://foundation.zurb.com/docs/clearing.php), our new responsive image gallery lightbox plugin.
-* Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipable on mobile as well.
+* Cleaned up Orbit a bit. We now use opacity on each slide so you don't have stacking problems or different image size problems. You can now optionally stack slides on mobile. Orbit can now be swipeable on mobile as well.
 * Updated Reveal
 * Updated index files to use defined header and footer structure
 * Cleaned up some Compass included
@@ -308,12 +351,12 @@ The updates to Foundation itself are as follows:
 * Added mobile-#-up classes to use in conjunction with regular block-grid classes for a different mobile grid.
 * Updated block grids to be really flexible and customizable based on a variable.
 * Added better responsive styling for tooltips.
-* Separated all media queries into their own file for easy droppping.
+* Separated all media queries into their own file for easy dropping.
 * Updated modular scale to use new functions, doesn't effect end-users.
-* Updated visibility classes to use inherit instead of block to accomodate for spans.
+* Updated visibility classes to use inherit instead of block to accommodate for spans.
 * Removed HTML5 Shiv from header since its included in modernizr.
 * Added [pricing tables](http://foundation.zurb.com/docs/elements.php#pricing-tables) UI element
-* Added many new Scss variables to control styling for things like: topbar, clearing, joyride, pricint tables, etc.
+* Added many new Scss variables to control styling for things like: topbar, clearing, joyride, pricing tables, etc.
 * Bug fixes for Topbar.
 * Added 5 [HTML templates](http://foundation.zurb.com/templates.php) to the add-ons section.
 
@@ -347,7 +390,7 @@ Bug fixes and locking down dependencies.
 ### 3.0.8- August 10, 2012
 Numerous bugfixes. Added media query toggle plugin. Removed marketing site from repository and included a new `test/` directory to help contributors test patches.
 
-New features: Media Query Toggler, block-grid mobile layouts, font-size customizer options and included modular scale gem as dependancy for SCSS version.
+New features: Media Query Toggler, block-grid mobile layouts, font-size customizer options and included modular scale gem as dependency for SCSS version.
 
 ---
 

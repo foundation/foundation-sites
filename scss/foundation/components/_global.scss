@@ -3,11 +3,10 @@
 // Foundation Variables
 //
 
-
 $experimental: true !default;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
-// for compatibility with brower-based text zoom or user-set defaults.
+// for compatibility with browser-based text zoom or user-set defaults.
 
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
@@ -17,8 +16,8 @@ $base-font-size: 100% !default;
 // $base-line-height is 24px while $base-font-size is 16px
 $base-line-height: 150% !default;
 
-// Use Open Sans font
-$include-open-sans: true !default;
+// Must be 100% for off cavas to work
+html, body { height: 100%; }
 
 //
 // Global Foundation Mixins
@@ -42,46 +41,14 @@ $include-open-sans: true !default;
 // We use this to create equal side border radius on elements.
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
-  @if $side == left {
-    @if $experimental {
-      -moz-border-radius-bottomleft: $radius;
-      -moz-border-radius-topleft: $radius;
-      -webkit-border-bottom-left-radius: $radius;
-      -webkit-border-top-left-radius: $radius;
-    }
-    border-bottom-left-radius: $radius;
-    border-top-left-radius: $radius;
-  }
-  @else if $side == right {
-    @if $experimental {
-      -moz-border-radius-topright: $radius;
-      -moz-border-radius-bottomright: $radius;
-      -webkit-border-top-right-radius: $radius;
-      -webkit-border-bottom-right-radius: $radius;
-    }
-    border-top-right-radius: $radius;
-    border-bottom-right-radius: $radius;
-  }
-  @else if $side == top {
-    @if $experimental {
-      -moz-border-radius-topright: $radius;
-      -moz-border-radius-topleft: $radius;
-      -webkit-border-top-right-radius: $radius;
-      -webkit-border-top-left-radius: $radius;
-    }
-    border-top-right-radius: $radius;
-    border-top-left-radius: $radius;
-  }
-  @else if $side == bottom {
-    @if $experimental {
-      -moz-border-radius-bottomright: $radius;
-      -moz-border-radius-bottomleft: $radius;
-      -webkit-border-bottom-right-radius: $radius;
-      -webkit-border-bottom-left-radius: $radius;
-    }
-    border-bottom-right-radius: $radius;
-    border-bottom-left-radius: $radius;
-  }
+	@if $experimental {
+		-moz-border-radius-bottom#{$side}: $radius;
+		-moz-border-radius-top#{$side}: $radius;
+		-webkit-border-bottom-#{$side}-radius: $radius;
+		-webkit-border-top-#{$side}-radius: $radius;
+	}
+	border-bottom-#{$side}-radius: $radius;
+	border-top-#{$side}-radius: $radius;
 }
 
 // @mixins
@@ -186,6 +153,21 @@ $include-open-sans: true !default;
   }
 }
 
+// @mixins
+//
+// We use this to translate elements in 2D
+// $horizontal: Default: 0
+// $vertical: Default: 0
+@mixin translate2d($horizontal:0, $vertical:0) {
+  @if $experimental {
+    -webkit-transform: translate($horizontal,$vertical);
+    -moz-transform: translate($horizontal,$vertical);
+    -ms-transform: translate($horizontal,$vertical);
+    -o-transform: translate($horizontal,$vertical);
+  }
+  transform: translate($horizontal,$vertical)
+}
+
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
@@ -276,9 +258,6 @@ $cursor-text-value: text !default;
 
 
 @include exports("global") {
-  @if $include-open-sans {
-    @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
-  }
   // Used to provide media query values for javascript components.
   // Forward slash placed around everything to convince PhantomJS to read the value.
   meta.foundation-mq-small {
@@ -287,7 +266,7 @@ $cursor-text-value: text !default;
   }
 
   meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-only) + "/";
+    font-family: "/" + unquote($medium-up) + "/";
     width: lower-bound($medium-range);
   }
 
@@ -364,8 +343,8 @@ $cursor-text-value: text !default;
     // Font smoothing
     // Antialiased font smoothing works best for light text on a dark background.
     // Apply to single elements instead of globally to body.
-    // Note this only applies to webkit-based desktop browsers on the Mac.
-    .antialiased { -webkit-font-smoothing: antialiased; }
+    // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
+    .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     // Get rid of gap under images by making them display: inline-block; by default
     img {

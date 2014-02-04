@@ -9,7 +9,7 @@ $marketing-oc-width: 84%;
     width: $marketing-oc-width;
     hr { border-color: #444444; margin:5px 0 10px 0 !important; }
     ul.off-canvas-list li.gs { padding: 0 1.08rem; margin-top: 8px; }
-    ul.off-canvas-list li a { border-bottom: none !important; font-size: 1.25rem; padding: 0.2rem 0.95rem ; color: #ccc; font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: 500; }
+    ul.off-canvas-list li a { border-bottom: none !important; font-size: 1.25rem; padding: 0.2rem 0.95rem ; color: #ccc; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: 500; }
     ul.off-canvas-list li label { background: none !important; border-top: none !important; padding: 0.4rem 0.95rem  0.4rem 0.95rem !important; font-size: 0.775rem !important; }
     ul.off-canvas-list li label.first { padding-top: 0.75rem !important; }
 
@@ -43,21 +43,21 @@ $marketing-oc-width: 84%;
     .marketing-right-off-canvas-menu { right: -($marketing-oc-width); }
 
     // Snap them in place
-    .move-left > .inner-wrap { right: $marketing-oc-width; }
-    .move-right > .inner-wrap { left: $marketing-oc-width; }
+    &.move-left > .inner-wrap { right: $marketing-oc-width; }
+    &.move-right > .inner-wrap { left: $marketing-oc-width; }
   }
 
 }
 
 .marketing-left-off-canvas-menu .zurb-links { padding-bottom: 25px; margin-top: -5px; }
 .marketing-left-off-canvas-menu .zurb-links ul.top { margin-top: 15px; }
-.marketing-left-off-canvas-menu .zurb-links ul.top li { display: inline-block; margin-left: 0px; line-height: 1;font-family:"Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+.marketing-left-off-canvas-menu .zurb-links ul.top li { display: inline-block; margin-left: 0px; line-height: 1;font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
 .marketing-left-off-canvas-menu .zurb-links ul.top li.logo { margin-left: 0px;  width: 60px; height: 10px; }
 .marketing-left-off-canvas-menu .zurb-links ul.top li.logo a { margin-top: 1px; padding: 3px 8px 3px 0px !important; display:block; font-size: 0.9rem !important; height: 12px; width: 60px; background:url("../img/offcanvas/zurb-logo.png") no-repeat; background-size: 100%; }
 .marketing-left-off-canvas-menu .zurb-links ul.top li.logo img { width:60px; margin-top: -4px; }
 .marketing-left-off-canvas-menu .zurb-links ul.top li a { color: #727272 !important; text-transform: uppercase; font-size: 11px !important; padding: 5px !important; font-weight: 600 !important; }
 .marketing-left-off-canvas-menu .zurb-links ul.pillars { list-style: none; } 
-.marketing-left-off-canvas-menu .zurb-links .footer-link-block span.title {  padding-bottom:0px;padding-left: 40px; font-family:"Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 1.3rem  !important; margin-bottom: 8px; color: #cccccc;}
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block span.title {  padding-bottom:0px;padding-left: 40px; font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 1.3rem  !important; margin-bottom: 8px; color: #cccccc;}
 .marketing-left-off-canvas-menu .zurb-links .footer-link-block span { display: block; color: #ccc; font-size: 1.0rem  !important;line-height: 18px; margin-bottom: 18px; line-height: 20px; margin-bottom: 24px;  color: #727272; padding-left: 0; font-size: 0.9rem  !important; }
 .marketing-left-off-canvas-menu .zurb-links .footer-link-block { font-weight: normal; background: url("../img/offcanvas/footer-icons.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
 .marketing-left-off-canvas-menu .zurb-links .footer-link-block.expo { background-position: 0 -798px; }

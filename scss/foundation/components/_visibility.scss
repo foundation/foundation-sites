@@ -1,3 +1,5 @@
+@import "global";
+
 //
 // Foundation Visibility Classes
 //
@@ -115,13 +117,13 @@ $include-html-visibility-classes: $include-html-classes !default;
   th {
     &.show-for-small,
     &.show-for-small-only,
-    &.show-for-medium-down
+    &.show-for-medium-down,
     &.show-for-large-down,
     &.hide-for-medium,
     &.hide-for-medium-up,
     &.hide-for-large,
     &.hide-for-large-up,
-    &.hide-for-xlarge
+    &.hide-for-xlarge,
     &.hide-for-xlarge-up,
     &.hide-for-xxlarge-up { display: table-cell !important; }
   }
@@ -597,7 +599,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .hide-for-landscape,
     .show-for-portrait { display: none !important; }
 
-    /* Specific visilbity for tables */
+    /* Specific visibility for tables */
     table {
       &.show-for-landscape,
       &.hide-for-portrait { display: table; }
@@ -627,7 +629,7 @@ $include-html-visibility-classes: $include-html-classes !default;
     .hide-for-portrait,
     .show-for-landscape { display: none !important; }
 
-    /* Specific visilbity for tables */
+    /* Specific visibility for tables */
     table {
       &.show-for-portrait,
       &.hide-for-landscape { display: table; }
@@ -657,7 +659,7 @@ $include-html-visibility-classes: $include-html-classes !default;
   .touch .show-for-touch { display: inherit !important; }
   .touch .hide-for-touch { display: none !important; }
 
-  /* Specific visilbity for tables */
+  /* Specific visibility for tables */
   table.hide-for-touch { display: table; }
   .touch table.show-for-touch { display: table; }
   thead.hide-for-touch { display: table-header-group !important; }

@@ -36,7 +36,7 @@
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'delay');
-      // $.extend(true, this.settings, method, options);
+      $.extend(true, this.settings, method, options);
       this.bindings(method, options);
     },
 
@@ -65,7 +65,9 @@
         });
 
       $(this.scope)
-        .off('.reveal')
+        .off('.reveal');
+
+      $(document)
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
 
           e.preventDefault();
@@ -103,14 +105,30 @@
           .on('closed.fndtn.reveal', '[data-reveal]', this.close_video);
       }
 
-      $('body').on('keyup.fndtn.reveal', function ( event ) {
+      return true;
+    },
+
+    // PATCH #3: turning on key up capture only when a reveal window is open
+    key_up_on : function (scope) {
+      var self = this;
+
+      // PATCH #1: fixing multiple keyup event trigger from single key press
+      $('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
         var open_modal = $('[data-reveal].open'),
             settings = open_modal.data('reveal-init');
-        if ( event.which === 27  && settings.close_on_esc) { // 27 is the keycode for the Escape key
-          open_modal.foundation('reveal', 'close');
+        // PATCH #2: making sure that the close event can be called only while unlocked,
+        //           so that multiple keyup.fndtn.reveal events don't prevent clean closing of the reveal window.
+        if ( settings && event.which === 27  && settings.close_on_esc && !self.locked) { // 27 is the keycode for the Escape key
+          self.close.call(self, open_modal);
         }
       });
 
+      return true;
+    },
+
+    // PATCH #3: turning on key up capture only when a reveal window is open
+    key_up_off : function (scope) {
+      $('body').off('keyup.fndtn.reveal');
       return true;
     },
 
@@ -138,10 +156,17 @@
             .data('offset', this.cache_offset(modal));
         }
 
+        this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
         modal.trigger('open');
 
         if (open_modal.length < 1) {
           this.toggle_bg(modal);
+        }
+
+        if (typeof ajax_settings === 'string') {
+          ajax_settings = {
+            url: ajax_settings
+          };
         }
 
         if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
@@ -183,6 +208,7 @@
 
       if (open_modals.length > 0) {
         this.locked = true;
+        this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
         modal.trigger('close');
         this.toggle_bg(modal);
         this.hide(open_modals, settings.css.close, settings);
@@ -219,13 +245,14 @@
       if (css) {
         var settings = el.data('reveal-init');
         if (el.parent('body').length === 0) {
-          var placeholder = el.wrap('<div style="display: none;" />').parent();
+          var placeholder = el.wrap('<div style="display: none;" />').parent(),
+              rootElement = this.settings.rootElement || 'body';;
           el.on('closed.fndtn.reveal.wrapped', function() {
             el.detach().appendTo(placeholder);
             el.unwrap().unbind('closed.fndtn.reveal.wrapped');
           });
 
-          el.detach().appendTo('body');
+          el.detach().appendTo(rootElement);
         }
 
         if (/pop/i.test(settings.animation)) {
@@ -269,6 +296,8 @@
       if (/fade/i.test(settings.animation)) {
         return el.fadeIn(settings.animation_speed / 2);
       }
+
+      this.locked = false;
 
       return el.show();
     },
@@ -320,7 +349,7 @@
     },
 
     close_video : function (e) {
-      var video = $(this).find('.flex-video'),
+      var video = $(e.target).find('.flex-video'),
           iframe = video.find('iframe');
 
       if (iframe.length > 0) {
@@ -331,7 +360,7 @@
     },
 
     open_video : function (e) {
-      var video = $(this).find('.flex-video'),
+      var video = $(e.target).find('.flex-video'),
           iframe = video.find('iframe');
 
       if (iframe.length > 0) {

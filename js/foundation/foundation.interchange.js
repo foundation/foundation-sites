@@ -4,7 +4,7 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '5.0.0',
+    version : '5.0.3',
 
     cache : {},
 
@@ -179,7 +179,7 @@
     },
 
     update_nodes : function () {
-      var nodes = this.S('[' + this.data_attr + ']:not(img)'),
+      var nodes = this.S('[' + this.data_attr + ']').not('img'),
           count = nodes.length,
           loaded_count = 0,
           data_attr = this.data_attr;
@@ -267,7 +267,7 @@
       var uuid = this.uuid(),
           current_uuid = el.data('uuid');
 
-      if (current_uuid) return this.cache[current_uuid];
+      if (this.cache[current_uuid]) return this.cache[current_uuid];
 
       el.attr('data-uuid', uuid);
 
