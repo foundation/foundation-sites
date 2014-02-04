@@ -296,7 +296,7 @@ add_custom_rule(rule, media) { ... }
 
 While binding to the document ready event is ususally good enough for most plugins that manipulate the DOM, sometimes you need ALL the content to be loaded before you start calculating things like element sizes. This is especially important with images, which can take while to load and drastically affect the layout of the page, depending on their size.
 
-This can be avoided by using the <code>image_loaded</code> method, which lets you pass in a callback to be executed when an image has completely finished loading.
+This can be avoided by using the <code>image_loaded</code> method, which lets you pass in a callback to be executed when an image has completely finished loading. Passing in a jQuery selector that matches multiple images will cause the callback to be executed when all of the images are fully loaded.
 
 <h4>Example</h4>
 {{#markdown}}
@@ -311,7 +311,7 @@ Foundation.utils.image_loaded($('img.wait-for-me'), function(){
 {{#markdown}}
 ```javascript
 // Arguments:
-//    Image (jQuery Object): Image to check if loaded.
+//    Image (jQuery Object): Image(s) to check if loaded.
 //
 //    Callback (Function): Fundation to execute when image is fully loaded.
 

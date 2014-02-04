@@ -57,7 +57,7 @@
     }
 
     return $(selector, context);
-  }
+  };
 
   // Namespace functions.
 
@@ -125,6 +125,35 @@
       });
     }
   };
+
+  var single_image_loaded = function (image, callback) {
+    function loaded () {
+      callback(image[0]);
+    }
+
+    function bindLoad () {
+      this.one('load', loaded);
+
+      if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+        var src = this.attr( 'src' ),
+            param = src.match( /\?/ ) ? '&' : '?';
+
+        param += 'random=' + (new Date()).getTime();
+        this.attr('src', src + param);
+      }
+    }
+
+    if (!image.attr('src')) {
+      loaded();
+      return;
+    }
+
+    if (image[0].complete || image[0].readyState === 4) {
+      loaded();
+    } else {
+      bindLoad.call(image);
+    }
+  }
 
   /*
     https://github.com/paulirish/matchMedia.js
@@ -500,36 +529,21 @@
       //    Performs a callback function when an image is fully loaded
       //
       // Arguments:
-      //    Image (jQuery Object): Image to check if loaded.
+      //    Image (jQuery Object): Image(s) to check if loaded.
       //
       //    Callback (Function): Fundation to execute when image is fully loaded.
-      image_loaded : function (image, callback) {
-        function loaded () {
-          callback(image[0]);
-        }
+      image_loaded : function (images, callback) {
+        var self = this,
+            unloaded = images.length;
 
-        function bindLoad () {
-          this.one('load', loaded);
-
-          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-            var src = this.attr( 'src' ),
-                param = src.match( /\?/ ) ? '&' : '?';
-
-            param += 'random=' + (new Date()).getTime();
-            this.attr('src', src + param);
-          }
-        }
-
-        if (!image.attr('src')) {
-          loaded();
-          return;
-        }
-
-        if (image[0].complete || image[0].readyState === 4) {
-          loaded();
-        } else {
-          bindLoad.call(image);
-        }
+        images.each(function(){
+          single_image_loaded(self.S(this),function(){
+            unloaded -= 1; 
+            if(unloaded == 0){
+              callback(images);
+            }
+          });
+        });
       },
 
       // Description:
