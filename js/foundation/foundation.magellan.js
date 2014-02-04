@@ -46,7 +46,7 @@
 
             $('html, body').stop().animate({
                 'scrollTop': scroll_top
-            }, 900, 'linear', function () {
+            }, 700, 'swing', function () {
                 window.location.hash = '#'+hash;
             });
         })
@@ -55,7 +55,6 @@
     },
 
     check_for_arrivals : function() {
-      console.info('checking for arrivals...');
       var self = this;
       self.update_arrivals();
       self.update_expedition_positions();
