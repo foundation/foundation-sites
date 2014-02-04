@@ -1,17 +1,18 @@
 function when(size, testFunc) {
-  return function() {
-    var runFunc = false;
+  $(document).foundation();
+  if (matchMedia(Foundation.media_queries[size]).matches) {
+    return testFunc;
+  } else {
+    return function() {};
+  }
+}
 
-    if (matchMedia(Foundation.media_queries[size]).matches) {
-      runFunc = true;
-    }
-
-    if (runFunc) {
-      testFunc.apply(this);
-    } else {
-      // Uncomment to verify skipping correct tests for media queries...
-      //console.log('[' + $(document).width().toString() + 'px]: Skipping ' + jasmine.getEnv().currentSpec.getFullName());
-    }
+function when_not(size, testFunc) {
+  $(document).foundation();
+  if (!matchMedia(Foundation.media_queries[size]).matches) {
+    return testFunc;
+  } else {
+    return function() {};
   }
 }
 
@@ -22,11 +23,15 @@ beforeEach(function() {
     $('head').append('<style id="foundation-style"></style>')
   }
 
-  $.ajax({ url: '/base/dist/assets/css/normalize.css', cache: true, async: false, success: function(data) {
+  $.ajax({ url: '/base/dist/assets/css/normalize.css', cache: false, async: false, success: function(data) {
     $('#foundation-style').html(data);
   }});
 
-  $.ajax({ url: '/base/dist/assets/css/foundation.css', cache: true, async: false, success: function(data) {
+  $.ajax({ url: '/base/dist/assets/css/foundation.css', cache: false, async: false, success: function(data) {
     $('#foundation-style').append(data);
   }});
+});
+
+afterEach(function() {
+  $('body').empty().removeClass();
 });
