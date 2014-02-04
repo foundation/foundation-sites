@@ -103,7 +103,7 @@ $menu-slide: "transform 500ms ease" !default;
 
   @include kill-flicker;
   @include wrap-base;
-  overflow: hidden;
+  overflow-x: hidden;
   &.move-right,
   &.move-left { height: 100%; }
 }
