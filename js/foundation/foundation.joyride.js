@@ -120,7 +120,7 @@
 
       if (!this.settings.init) this.events();
 
-      this.settings = $this.data(this.attr_name(true));
+      this.settings = $this.data(this.attr_name(true) + '-init');
 
       // non configureable settings
       this.settings.$content_el = $this;

@@ -22,7 +22,7 @@
 
       $(this.scope).off('.alert').on('click.fndtn.alert', '[' + this.attr_name() + '] a.close', function (e) {
           var alertBox = S(this).closest('[' + self.attr_name() + ']'),
-              settings = alertBox.data(self.attr_name(true)) || Foundation.libs.alert.settings;
+              settings = alertBox.data(self.attr_name(true) + '-init') || Foundation.libs.alert.settings;
 
         e.preventDefault();
         alertBox[settings.animation](settings.speed, function () {
