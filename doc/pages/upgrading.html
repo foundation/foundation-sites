@@ -192,6 +192,29 @@ $('#myTarget').foundation({dropdown: {is_hover: true}});
 ```
 {{/markdown}}
 
+In Foundation 5, we kept the Top-bar markup simple. Adding a data-topbar attribute will tell the Foundation Top-bar JavaScript to load the necessary HTML. Make sure to add this attribute to your top-bar to make it work right.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>The old way</h4>
+
+{{#markdown}}
+```html
+<nav class="top-bar">
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>The new way</h4>
+
+{{#markdown}}
+```html
+<nav class="top-bar" data-topbar>
+```
+{{/markdown}}
+  </div>
+</div>
+
 ***
 
 ### JavaScript Variable Changes
