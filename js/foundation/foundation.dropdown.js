@@ -99,7 +99,7 @@
           $(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
             .removeClass(self.settings.active_class);
-          $(this).trigger('closed');
+          $(this).trigger('closed', [dropdown]);
         }
       });
     },
@@ -115,7 +115,7 @@
         this
           .css(dropdown
             .addClass(this.settings.active_class), target);
-        dropdown.trigger('opened');
+        dropdown.trigger('opened', [dropdown, target]);
     },
 
     toggle : function (target) {
