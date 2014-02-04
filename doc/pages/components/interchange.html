@@ -9,7 +9,7 @@ layout: doc/layouts/default.html
 
 ***
 
-<img data-mysite-interchange="[{{assets}}/img/examples/space-small.jpg, (small)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
+<img data-interchange="[{{assets}}/img/examples/space-small.jpg, (small)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
 <noscript><img src="{{assets}}/img/examples/space-default.jpg"></noscript>
 
 ***
@@ -20,7 +20,7 @@ Interchange can now pull in HTML partials so you can load different sections of 
 
 We use the data-interchange attribute on a markup container (probably a div) to do this. Here's an example which loads up a small, static map on mobile, a larger static map for medium-sized devices, and a full interactive Google map on large display devices.
 
-<div id="interchangeMarkup" data-mysite-interchange="[{{relative absolute 'dist/docs/components/interchange-default.html'}}, (default)], [{{relative absolute 'dist/docs/components/interchange-medium.html'}}, (medium)], [{{relative absolute 'dist/docs/components/interchange-large.html'}}, (large)]">
+<div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/components/interchange-default.html'}}, (default)], [{{relative absolute 'dist/docs/components/interchange-medium.html'}}, (medium)], [{{relative absolute 'dist/docs/components/interchange-large.html'}}, (large)]">
   <p><img src="{{assets}}/img/examples/map-small.png" /></p>
 </div>
 <div><br></div>
@@ -52,7 +52,7 @@ data-interchange="[image_path, (media query)], [image_path, (media query)]"
 If you want to support browsers with Javascript disabled, we recommend setting your default image in a `<noscript>` tag so that these browsers will have a fallback:
 
 ```html
-<img data-mysite-interchange="[/path/to/default.jpg, (default)], [/path/to/bigger-image.jpg, (large)]">
+<img data-interchange="[/path/to/default.jpg, (default)], [/path/to/bigger-image.jpg, (large)]">
 <noscript><img src="/path/to/default.jpg"></noscript>
 ```
 

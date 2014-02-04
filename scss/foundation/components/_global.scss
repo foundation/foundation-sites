@@ -5,7 +5,7 @@
 
 // Data attribute namespace
 // styles get applied to [data-mysite-plugin], etc
-$namespace: 'mysite' !default;
+$namespace: false !default;
 
 meta.foundation-data-attribute-namespace {
   font-family: #{$namespace};

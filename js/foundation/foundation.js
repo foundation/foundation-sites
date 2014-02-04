@@ -62,11 +62,12 @@
   // Namespace functions.
 
   var attr_name = function (init) {
-    if (init) {
-      return [this.namespace, this.name, 'init'].join('-');
-    }
+    var arr = [];
+    if (!init) arr.push('data');
+    if (this.namespace.length > 0) arr.push(this.namespace);
+    arr.push(this.name);
 
-    return ['data', this.namespace, this.name].join('-');
+    return arr.join('-');
   };
 
   var header_helpers = function (class_array) {
@@ -272,7 +273,7 @@
       // set foundation global scope
       this.scope = scope || this.scope;
 
-      this.global.namespace = this.set_namespace();
+      this.set_namespace();
 
       if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
         if (this.libs.hasOwnProperty(libraries)) {
@@ -327,9 +328,9 @@
     set_namespace: function () {
       var namespace = $('.foundation-data-attribute-namespace').css('font-family');
 
-      if (/false/i.test(namespace)) return '';
+      if (/false/i.test(namespace)) return;
 
-      return namespace;
+      this.global.namespace = namespace;
     },
 
     libs : {},
