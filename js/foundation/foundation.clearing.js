@@ -9,7 +9,7 @@
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
-          '<div class="visible-img" style="display: none"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
+          '<div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
           '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
           '<a href="#" class="clearing-main-next"><span></span></a></div>'
       },
@@ -17,6 +17,8 @@
       // comma delimited list of selectors that, on click, will close clearing,
       // add 'div.clearing-blackout, div.visible-img' to close on background click
       close_selectors : '.clearing-close',
+
+      touch_label : '&larr;&nbsp;Swipe to Advance&nbsp;&rarr;',
 
       // event initializers and locks
       init : false,
@@ -150,9 +152,14 @@
             viewing: settings.templates.viewing
           },
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
-            data.grid + '</div></div>';
+            data.grid + '</div></div>',
+          touch_label = this.settings.touch_label;
 
-      return holder.after(wrapper).remove();
+      if (Modernizr.touch) {
+        wrapper = $(wrapper).find('.clearing-touch-label').html(touch_label).end();
+      }
+
+      holder.after(wrapper).remove();
     },
 
     open : function ($image, current, target) {
@@ -160,7 +167,8 @@
           root = target.closest('.clearing-assembled'),
           container = self.S('div', root).first(),
           visible_image = self.S('.visible-img', container),
-          image = self.S('img', visible_image).not($image);
+          image = self.S('img', visible_image).not($image),
+          label = self.S('.clearing-touch-label', container);
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
@@ -176,7 +184,7 @@
           visible_image.show();
           this.fix_height(target)
             .caption(self.S('.clearing-caption', visible_image), $image)
-            .center(image)
+            .center_and_label(image,label)
             .shift(current, target, function () {
               target.siblings().removeClass('visible');
               target.addClass('visible');
@@ -233,10 +241,11 @@
     },
 
     resize : function () {
-      var image = $('img', '.clearing-blackout .visible-img');
+      var image = $('img', '.clearing-blackout .visible-img'),
+          label = $('.clearing-touch-label', '.clearing-blackout');
 
       if (image.length) {
-        this.center(image);
+        this.center_and_label(image, label);
       }
     },
 
@@ -281,16 +290,26 @@
       }
     },
 
-    center : function (target) {
+    center_and_label : function (target, label) {
       if (!this.rtl) {
         target.css({
           marginLeft : -(target.outerWidth() / 2),
           marginTop : -(target.outerHeight() / 2)
         });
+        label.css({
+          marginLeft : -(label.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
+        });
       } else {
         target.css({
           marginRight : -(target.outerWidth() / 2),
           marginTop : -(target.outerHeight() / 2),
+          left: 'auto',
+          right: '50%'
+        });
+        label.css({
+          marginRight : -(label.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
           left: 'auto',
           right: '50%'
         });
