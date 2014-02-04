@@ -73,7 +73,7 @@
           e.preventDefault();
 
           if (!self.locked) {
-            var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true)),
+            var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
                 bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
 
             if (bg_clicked && !settings.close_on_background_click) {
@@ -115,7 +115,7 @@
       // PATCH #1: fixing multiple keyup event trigger from single key press
       self.S('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
         var open_modal = self.S('[' + self.attr_name() + '].open'),
-            settings = open_modal.data(self.attr_name(true));
+            settings = open_modal.data(self.attr_name(true) + '-init');
         // PATCH #2: making sure that the close event can be called only while unlocked,
         //           so that multiple keyup.fndtn.reveal events don't prevent clean closing of the reveal window.
         if ( settings && event.which === 27  && settings.close_on_esc && !self.locked) { // 27 is the keycode for the Escape key
@@ -146,7 +146,7 @@
         var modal = self.S(this.scope);
       }
 
-      var settings = modal.data(self.attr_name(true));
+      var settings = modal.data(self.attr_name(true) + '-init');
 
       if (!modal.hasClass('open')) {
         var open_modal = self.S('[' + self.attr_name() + '].open');
@@ -171,7 +171,7 @@
 
         if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
           if (open_modal.length > 0) {
-            var open_modal_settings = open_modal.data(self.attr_name(true));
+            var open_modal_settings = open_modal.data(self.attr_name(true) + '-init');
             this.hide(open_modal, open_modal_settings.css.close);
           }
 
@@ -204,7 +204,7 @@
     close : function (modal) {
       var modal = modal && modal.length ? modal : this.S(this.scope),
           open_modals = this.S('[' + this.attr_name() + '].open'),
-          settings = modal.data(this.attr_name(true));
+          settings = modal.data(this.attr_name(true) + '-init');
 
       if (open_modals.length > 0) {
         this.locked = true;
@@ -243,7 +243,7 @@
     show : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data(this.attr_name(true));
+        var settings = el.data(this.attr_name(true) + '-init');
         if (el.parent('body').length === 0) {
           var placeholder = el.wrap('<div style="display: none;" />').parent(),
               rootElement = this.settings.rootElement || 'body';
@@ -306,7 +306,7 @@
     hide : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data(this.attr_name(true));
+        var settings = el.data(this.attr_name(true) + '-init');
         if (/pop/i.test(settings.animation)) {
           var end_css = {
             top: - $(window).scrollTop() - el.data('offset') + 'px',
