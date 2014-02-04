@@ -111,7 +111,7 @@
     }
 
     if (S(this.scope).is('[' + this.attr_name() +']')) {
-      S(this.scope).data(this.attr_name(true) + 'init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+      S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
 
       if (should_bind_events) {
         this.events(this.scope);
