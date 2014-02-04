@@ -172,13 +172,13 @@
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
 
             validations.push(true);
-            $(el).trigger('valid');
+            $(el).triggerHandler('valid');
           } else {
             $(el).attr('data-invalid', '').parent().addClass('error');
             if (label.length > 0 && this.settings.error_labels) label.addClass('error');
 
             validations.push(false);
-            $(el).trigger('invalid');
+            $(el).triggerHandler('invalid');
           }
         }
       }
