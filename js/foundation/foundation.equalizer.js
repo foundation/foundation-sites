@@ -25,7 +25,8 @@
       var isStacked = false,
           vals = equalizer.find('[' + this.attr_name() + '-watch]'),
           firstTopOffset = vals.first().offset().top,
-          settings = equalizer.data(this.attr_name(true));
+          settings = equalizer.data(this.attr_name(true)+'-init');
+      
       if (vals.length === 0) return;
       settings.before_height_change();
       equalizer.trigger('before-height-change');
