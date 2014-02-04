@@ -12,26 +12,20 @@
     },
 
     init : function (scope, method, options) {
-      var self = this;
-
-      self.bindings(method, options);
+      this.bindings(method, options);
     },
 
     events : function () {
-      var self = this;
-
-      // TODO Throttle this event
-      self.S(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
-        self.reflow();
-      });
+      this.S(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
+        this.reflow();
+      }.bind(this));
     },
 
     equalize: function(equalizer) {
-      var self = this,
-          isStacked = false,
-          vals = equalizer.find('[data-equalizer-watch]'),
+      var isStacked = false,
+          vals = equalizer.find('[' + this.attr_name() + '-watch]'),
           firstTopOffset = vals.first().offset().top,
-          settings = equalizer.data('equalizer-init');
+          settings = equalizer.data(this.attr_name(true));
       if (vals.length === 0) return;
       settings.before_height_change();
       equalizer.trigger('before-height-change');
@@ -54,7 +48,7 @@
     reflow : function () {
       var self = this;
 
-      self.S('[data-equalizer]', this.scope).each(function(){
+      this.S('[' + this.attr_name() + ']', this.scope).each(function(){
         self.equalize($(this));
       });
     }

@@ -4,7 +4,7 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '5.0.3',
+    version : '5.1.0',
 
     cache : {},
 
@@ -53,13 +53,13 @@
 
             return trigger(el[0].src);
           }
-          var last_path = el.data('interchange-last-path');
+          var last_path = el.data(this.data_attr + '-last-path');
 
           if (last_path == path) return;
 
           return $.get(path, function (response) {
             el.html(response);
-            el.data('interchange-last-path', path);
+            el.data(this.data_attr + '-last-path', path);
             trigger();
           });
 
@@ -70,7 +70,7 @@
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle random_str');
 
-      this.data_attr = 'data-' + this.settings.load_attr;
+      this.data_attr = this.set_data_attr();
       $.extend(true, this.settings, method, options);
 
       this.bindings(method, options);
@@ -84,7 +84,7 @@
       $(window)
         .off('.interchange')
         .on('resize.fndtn.interchange', self.throttle(function () {
-          self.resize.call(self);
+          self.resize();
         }, 50));
 
       return this;
@@ -104,7 +104,7 @@
 
           if (passed) {
             this.settings.directives[passed
-              .scenario[1]](passed.el, passed.scenario[0], function () {
+              .scenario[1]].call(this, passed.el, passed.scenario[0], function () {
                 if (arguments[0] instanceof Array) { 
                   var args = arguments[0];
                 } else { 
@@ -123,7 +123,7 @@
       var count = scenarios.length;
 
       if (count > 0) {
-        var el = this.S('[data-uuid="' + uuid + '"]');
+        var el = this.S('[' + this.add_namespace('data-uuid') + '="' + uuid + '"]');
 
         while (count--) {
           var mq, rule = scenarios[count][2];
@@ -269,11 +269,11 @@
 
     store : function (el, scenarios) {
       var uuid = this.uuid(),
-          current_uuid = el.data('uuid');
+          current_uuid = el.data(this.add_namespace('uuid', true));
 
       if (this.cache[current_uuid]) return this.cache[current_uuid];
 
-      el.attr('data-uuid', uuid);
+      el.attr(this.add_namespace('data-uuid'), uuid);
 
       return this.cache[uuid] = scenarios;
     },
@@ -286,8 +286,25 @@
       return str;
     },
 
+    set_data_attr: function (init) {
+      if (init) {
+        if (this.namespace.length > 0) {
+          return this.namespace + '-' + this.settings.load_attr;
+        }
+
+        return this.settings.load_attr;
+      }
+
+      if (this.namespace.length > 0) {
+        return 'data-' + this.namespace + '-' + this.settings.load_attr;
+      }
+
+      return 'data-' + this.settings.load_attr;
+    },
+
     parse_data_attr : function (el) {
-      var raw = el.data(this.settings.load_attr).split(/\[(.*?)\]/),
+      console.log(this.set_data_attr(true))
+      var raw = el.data(this.set_data_attr(true)).split(/\[(.*?)\]/),
           i = raw.length, 
           output = [];
 

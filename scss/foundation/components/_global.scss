@@ -3,6 +3,13 @@
 // Foundation Variables
 //
 
+// Data attribute namespace
+// styles get applied to [data-mysite-plugin], etc
+$namespace: false !default;
+
+meta.foundation-data-attribute-namespace {
+  font-family: #{$namespace};
+}
 
 $experimental: true !default;
 

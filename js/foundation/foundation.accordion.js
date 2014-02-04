@@ -16,14 +16,15 @@
     },
 
     events : function () {
+      var self = this;
       var S = this.S;
       S(this.scope)
       .off('.fndtn.accordion')
-      .on('click.fndtn.accordion', '[data-accordion] dd > a', function (e) {
-        var accordion = S(this).closest('[data-accordion]'),
+      .on('click.fndtn.accordion', '[' + this.attr_name() + '] dd > a', function (e) {
+        var accordion = S(this).closest('[' + self.attr_name() + ']'),
             target = S('#' + this.href.split('#')[1]),
             siblings = S('dd > .content', accordion),
-            settings = accordion.data('accordion-init'),
+            settings = accordion.data(self.attr_name(true)),
             active = S('dd > .content.' + settings.active_class, accordion);
 
         e.preventDefault();

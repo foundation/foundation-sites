@@ -9,26 +9,23 @@
 (function ($, window, document, undefined) {
   'use strict';
 
-  // Used to retrieve Foundation media queries from CSS.
-  if($('head').has('.foundation-mq-small').length === 0) {
-    $('head').append('<meta class="foundation-mq-small">');
-  }
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
 
-  if($('head').has('.foundation-mq-medium').length === 0) {
-    $('head').append('<meta class="foundation-mq-medium">');
-  }
+    while (i--) {
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '">');
+      }
+    }
+  };
 
-  if($('head').has('.foundation-mq-large').length === 0) {
-    $('head').append('<meta class="foundation-mq-large">');
-  }
-
-  if($('head').has('.foundation-mq-xlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xlarge">');
-  }
-
-  if($('head').has('.foundation-mq-xxlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xxlarge">');
-  }
+  header_helpers([
+    'foundation-mq-small', 
+    'foundation-mq-medium', 
+    'foundation-mq-large', 
+    'foundation-mq-xlarge', 
+    'foundation-mq-xxlarge', 
+    'foundation-data-attribute-namespace']);
 
   // Enable FastClick if present
 
@@ -60,28 +57,71 @@
     }
 
     return $(selector, context);
-  }
+  };
+
+  // Namespace functions.
+
+  var attr_name = function (init) {
+    var arr = [];
+    if (!init) arr.push('data');
+    if (this.namespace.length > 0) arr.push(this.namespace);
+    arr.push(this.name);
+
+    return arr.join('-');
+  };
+
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
+
+    while (i--) {
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '">');
+      }
+    }
+  };
+
+  var add_namespace = function (str) {
+    var parts = str.split('-'),
+        i = parts.length,
+        arr = [];
+
+    while(i--) {
+      if (i !== 0) {
+        arr.push(parts[i]);
+      } else {
+        if (this.namespace.length > 0) {
+          arr.push(this.namespace, parts[i]);
+        } else {
+          arr.push(parts[i]);
+        }
+      }
+    }
+
+    return arr.reverse().join('-');
+  };
+
+  // Event binding and data-options updating.
 
   var bindings = function (method, options) {
     var self = this,
-        should_bind_events = !S(this).data(this.name + '-init');
+        should_bind_events = !S(this).data(this.attr_name(true));
 
     if (typeof method === 'string') {
       return this[method].call(this, options);
     }
 
-    if (S(this.scope).is('[data-' + this.name +']')) {
-      S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+    if (S(this.scope).is('[' + this.attr_name() +']')) {
+      S(this.scope).data(this.attr_name(true), $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
 
       if (should_bind_events) {
         this.events(this.scope);
       }
 
     } else {
-      S('[data-' + this.name + ']', this.scope).each(function () {
-        var should_bind_events = !S(this).data(self.name + '-init');
+      S('[' + this.attr_name() +']', this.scope).each(function () {
+        var should_bind_events = !S(this).data(self.attr_name(true));
 
-        S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+        S(this).data(self.attr_name(true), $.extend({}, self.settings, (options || method), self.data_options(S(this))));
 
         if (should_bind_events) {
           self.events(this);
@@ -89,6 +129,35 @@
       });
     }
   };
+
+  var single_image_loaded = function (image, callback) {
+    function loaded () {
+      callback(image[0]);
+    }
+
+    function bindLoad () {
+      this.one('load', loaded);
+
+      if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+        var src = this.attr( 'src' ),
+            param = src.match( /\?/ ) ? '&' : '?';
+
+        param += 'random=' + (new Date()).getTime();
+        this.attr('src', src + param);
+      }
+    }
+
+    if (!image.attr('src')) {
+      loaded();
+      return;
+    }
+
+    if (image[0].complete || image[0].readyState === 4) {
+      loaded();
+    } else {
+      bindLoad.call(image);
+    }
+  }
 
   /*
     https://github.com/paulirish/matchMedia.js
@@ -222,6 +291,10 @@
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
+    global: {
+      namespace: ''
+    },
+
     init : function (scope, libraries, method, options, response) {
       var library_arr,
           args = [scope, method, options, response],
@@ -232,6 +305,8 @@
 
       // set foundation global scope
       this.scope = scope || this.scope;
+
+      this.set_namespace();
 
       if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
         if (this.libs.hasOwnProperty(libraries)) {
@@ -263,10 +338,13 @@
 
     patch : function (lib) {
       lib.scope = this.scope;
+      lib.namespace = this.global.namespace;
+      lib.rtl = this.rtl;
       lib['data_options'] = this.utils.data_options;
+      lib['attr_name'] = attr_name;
+      lib['add_namespace'] = add_namespace;
       lib['bindings'] = bindings;
       lib['S'] = this.utils.S;
-      lib.rtl = this.rtl;
     },
 
     inherit : function (scope, methods) {
@@ -278,6 +356,14 @@
           scope[methods_arr[i]] = this.utils[methods_arr[i]];
         }
       }
+    },
+
+    set_namespace: function () {
+      var namespace = $('.foundation-data-attribute-namespace').css('font-family');
+
+      if (/false/i.test(namespace)) return;
+
+      this.global.namespace = namespace;
     },
 
     libs : {},
@@ -365,13 +451,23 @@
       //    attribute.
       data_options : function (el) {
         var opts = {}, ii, p, opts_arr,
-            data_options = el.data('options');
+            data_options = function (el) {
+              var namespace = Foundation.global.namespace;
 
-        if (typeof data_options === 'object') {
-          return data_options;
+              if (namespace.length > 0) {
+                return el.data(namespace + '-options');
+              }
+
+              return el.data('options');
+            };
+
+        var cached_options = data_options(el);
+
+        if (typeof cached_options === 'object') {
+          return cached_options;
         }
 
-        opts_arr = (data_options || ':').split(';'),
+        opts_arr = (cached_options || ':').split(';'),
         ii = opts_arr.length;
 
         function isNumber (o) {
@@ -437,36 +533,21 @@
       //    Performs a callback function when an image is fully loaded
       //
       // Arguments:
-      //    Image (jQuery Object): Image to check if loaded.
+      //    Image (jQuery Object): Image(s) to check if loaded.
       //
       //    Callback (Function): Fundation to execute when image is fully loaded.
-      image_loaded : function (image, callback) {
-        function loaded () {
-          callback(image[0]);
-        }
+      image_loaded : function (images, callback) {
+        var self = this,
+            unloaded = images.length;
 
-        function bindLoad () {
-          this.one('load', loaded);
-
-          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-            var src = this.attr( 'src' ),
-                param = src.match( /\?/ ) ? '&' : '?';
-
-            param += 'random=' + (new Date()).getTime();
-            this.attr('src', src + param);
-          }
-        }
-
-        if (!image.attr('src')) {
-          loaded();
-          return;
-        }
-
-        if (image[0].complete || image[0].readyState === 4) {
-          loaded();
-        } else {
-          bindLoad.call(image);
-        }
+        images.each(function(){
+          single_image_loaded(self.S(this),function(){
+            unloaded -= 1; 
+            if(unloaded == 0){
+              callback(images);
+            }
+          });
+        });
       },
 
       // Description:

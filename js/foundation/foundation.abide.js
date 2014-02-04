@@ -53,12 +53,14 @@
     events : function (scope) {
       var self = this,
           form = self.S(scope).attr('novalidate', 'novalidate'),
-          settings = form.data('abide-init');
+          settings = form.data(this.attr_name(true));
+
+      this.invalid_attr = this.add_namespace('data-invalid');
 
       form
         .off('.abide')
         .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
-          var is_ajax = /ajax/i.test(self.S(this).attr('data-abide'));
+          var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
           return self.validate(self.S(this).find('input, textarea, select').get(), e, is_ajax);
         })
         .on('reset', function() {
@@ -70,7 +72,7 @@
             self.validate([this], e);
           })
           .on('keydown.fndtn.abide', function (e) {
-            var settings = self.S(this).closest('form').data('abide-init');
+            var settings = self.S(this).closest('form').data(self.attr_name(true));
             clearTimeout(self.timer);
             self.timer = setTimeout(function () {
               self.validate([this], e);
@@ -79,8 +81,8 @@
     },
 
     reset : function (form) {
-      form.removeAttr('data-invalid');
-      $('[data-invalid]', form).removeAttr('data-invalid');
+      form.removeAttr(this.invalid_attr);
+      $(this.invalid_attr, form).removeAttr(this.invalid_attr);
       $('.error', form).not('small').removeClass('error');
     },
 
@@ -95,7 +97,7 @@
         if (!validations[i] && (submit_event || is_ajax)) {
           if (this.settings.focus_on_invalid) els[i].focus();
           form.trigger('invalid');
-          this.S(els[i]).closest('form').attr('data-invalid', '');
+          this.S(els[i]).closest('form').attr(this.invalid_attr, '');
           return false;
         }
       }
@@ -104,7 +106,7 @@
         form.trigger('valid');
       }
 
-      form.removeAttr('data-invalid');
+      form.removeAttr(this.invalid_attr);
 
       if (is_ajax) return false;
 
@@ -152,7 +154,7 @@
             required = el_patterns[i][2],
             value = el.value,
             direct_parent = this.S(el).parent(),
-            is_equal = el.getAttribute('data-equalto'),
+            is_equal = el.getAttribute(this.add_namespace('data-equalto')),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
             label = this.S('label[for="' + el.getAttribute('id') + '"]'),
@@ -176,14 +178,14 @@
 
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1) {
-            this.S(el).removeAttr('data-invalid');
+            this.S(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
 
             validations.push(true);
             $(el).trigger('valid');
           } else {
-            this.S(el).attr('data-invalid', '');
+            this.S(el).attr(this.invalid_attr, '');
             parent.addClass('error');
             if (label.length > 0 && this.settings.error_labels) label.addClass('error');
 
@@ -199,10 +201,11 @@
     valid_checkbox : function(el, required) {
       var el = this.S(el),
           valid = (el.is(':checked') || !required);
+
       if (valid) {
-        el.removeAttr('data-invalid').parent().removeClass('error');
+        el.removeAttr(this.invalid_attr).parent().removeClass('error');
       } else {
-        el.attr('data-invalid', '').parent().addClass('error');
+        el.attr(this.invalid_attr, '').parent().addClass('error');
       }
 
       return valid;
@@ -222,9 +225,9 @@
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < count; i++) {
         if (valid) {
-          this.S(group[i]).removeAttr('data-invalid').parent().removeClass('error');
+          this.S(group[i]).removeAttr(this.invalid_attr).parent().removeClass('error');
         } else {
-          this.S(group[i]).attr('data-invalid', '').parent().addClass('error');
+          this.S(group[i]).attr(this.invalid_attr, '').parent().addClass('error');
         }
       }
 
@@ -232,15 +235,15 @@
     },
 
     valid_equal: function(el, required, parent) {
-      var from  = document.getElementById(el.getAttribute('data-equalto')).value,
+      var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
           to    = el.value,
           valid = (from === to);
 
       if (valid) {
-        this.S(el).removeAttr('data-invalid');
+        this.S(el).removeAttr(this.invalid_attr);
         parent.removeClass('error');
       } else {
-        this.S(el).attr('data-invalid', '');
+        this.S(el).attr(this.invalid_attr, '');
         parent.addClass('error');
       }
 

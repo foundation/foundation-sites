@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.0.3',
+    version: '5.1.0',
 
     settings : {
       templates : {
@@ -29,10 +29,10 @@
 
       this.bindings(method, options);
 
-      if (self.S(this.scope).is('[data-clearing]')) { 
+      if (self.S(this.scope).is('[' + this.attr_name() + ']')) { 
         this.assemble(self.S('li', this.scope));
       } else {
-        self.S('[data-clearing]', this.scope).each(function () {
+        self.S('[' + this.attr_name() + ']', this.scope).each(function () {
           self.assemble(self.S('li', this));
         });
       }
@@ -44,19 +44,19 @@
 
       S(this.scope)
         .off('.clearing')
-        .on('click.fndtn.clearing', 'ul[data-clearing] li',
+        .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li',
           function (e, current, target) {
             var current = current || S(this),
                 target = target || current,
                 next = current.next('li'),
-                settings = current.closest('[data-clearing]').data('clearing-init'),
+                settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true)),
                 image = S(e.target);
 
             e.preventDefault();
 
             if (!settings) {
               self.init();
-              settings = current.closest('[data-clearing]').data('clearing-init');
+              settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true));
             }
 
             // if clearing is open and the current image is
@@ -143,7 +143,7 @@
       $el.after('<div id="foundationClearingHolder"></div>');
 
       var holder = this.S('#foundationClearingHolder'),
-          settings = $el.data('clearing-init'),
+          settings = $el.data(this.attr_name(true)),
           grid = $el.detach(),
           data = {
             grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',
@@ -200,7 +200,7 @@
         container = $('div', root).first();
         visible_image = $('.visible-img', container);
         this.settings.prev_index = 0;
-        $('ul[data-clearing]', root)
+        $('ul[' + this.attr_name() + ']', root)
           .attr('style', '').closest('.clearing-blackout')
           .removeClass('clearing-blackout');
         container.removeClass('clearing-container');
@@ -215,7 +215,7 @@
     },
 
     keydown : function (e) {
-      var clearing = $('ul[data-clearing]', '.clearing-blackout'),
+      var clearing = $('ul[' + this.attr_name() + ']', '.clearing-blackout'),
           NEXT_KEY = this.rtl ? 37 : 39,
           PREV_KEY = this.rtl ? 39 : 37,
           ESC_KEY = 27;
@@ -226,7 +226,7 @@
     },
 
     nav : function (e, direction) {
-      var clearing = $('ul[data-clearing]', '.clearing-blackout');
+      var clearing = $('ul[' + this.attr_name() + ']', '.clearing-blackout');
 
       e.preventDefault();
       this.go(clearing, direction);

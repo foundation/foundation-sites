@@ -17,20 +17,21 @@
     },
 
     events : function () {
-      var S = this.S;
+      var self = this,
+          S = this.S;
 
-      S(this.scope).off('.tab').on('click.fndtn.tab', '[data-tab] > dd > a', function (e) {
+      S(this.scope).off('.tab').on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
         e.preventDefault();
 
         var tab = S(this).parent(),
-            tabs = tab.closest('[data-tab]'),
+            tabs = tab.closest('[' + self.attr_name() + ']'),
             target = S('#' + this.href.split('#')[1]),
             siblings = tab.siblings(),
-            settings = tabs.data('tab-init');
+            settings = tabs.data(self.attr_name(true));
         
         // allow usage of data-tab-content attribute instead of href
-        if (S(this).data('tab-content')) {
-          target = S('#' + S(this).data('tab-content').split('#')[1]);
+        if (S(this).data(self.data_attr('tab-content'))) {
+          target = S('#' + S(this).data(self.data_attr('tab-content')).split('#')[1]);
         }
         
         tab.addClass(settings.active_class).trigger('opened');
@@ -39,6 +40,14 @@
         settings.callback(tab);
         tabs.trigger('toggled', [tab]);
       });
+    },
+
+    data_attr: function (str) {
+      if (this.namespace.length > 0) {
+        return this.namespace + '-' + str;
+      }
+
+      return str;
     },
 
     off : function () {},
