@@ -56,8 +56,11 @@
             var $this = S(this);
 
             if (/enter|over/i.test(e.type)) {
-              var tip = self.showOrCreateTip($this);
+              this.timer = setTimeout(function () {
+                var tip = self.showOrCreateTip($this);
+              }.bind(this), self.settings.hover_delay);
             } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
+              clearTimeout(this.timer);
               self.hide($this);
             }
           });

@@ -22,6 +22,7 @@
 
       S(this.scope).off('.tab').on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
         e.preventDefault();
+        e.stopPropagation();
 
         var tab = S(this).parent(),
             tabs = tab.closest('[' + self.attr_name() + ']'),
@@ -34,11 +35,11 @@
           target = S('#' + S(this).data(self.data_attr('tab-content')).split('#')[1]);
         }
         
-        tab.addClass(settings.active_class).trigger('opened');
+        tab.addClass(settings.active_class).triggerHandler('opened');
         siblings.removeClass(settings.active_class);
         target.siblings().removeClass(settings.active_class).end().addClass(settings.active_class);
         settings.callback(tab);
-        tabs.trigger('toggled', [tab]);
+        tabs.triggerHandler('toggled', [tab]);
       });
     },
 

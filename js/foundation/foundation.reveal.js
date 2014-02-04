@@ -43,9 +43,9 @@
       var self = this,
           S = self.S;
 
-      S('[' + this.add_namespace('data-reveal-id') + ']', this.scope)
+      S(this.scope)
         .off('.reveal')
-        .on('click.fndtn.reveal', function (e) {
+        .on('click.fndtn.reveal', '[' + this.add_namespace('data-reveal-id') + ']', function (e) {
           e.preventDefault();
 
           if (!self.locked) {
@@ -63,9 +63,6 @@
             }
           }
         });
-
-      S(this.scope)
-        .off('.reveal');
 
       S(document)
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
