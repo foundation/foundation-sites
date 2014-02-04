@@ -25,6 +25,7 @@
             target = $('#' + this.href.split('#')[1]),
             siblings = tab.siblings(),
             settings = tabs.data('tab-init');
+
         
         // allow usage of data-tab-content attribute instead of href
         if ($(this).data('tab-content')) {
