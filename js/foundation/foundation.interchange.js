@@ -170,7 +170,7 @@
           }
         }
 
-        if(loaded_count === count) {
+        if (loaded_count === count) {
           this.images_loaded = true;
           this.enhance('images');
         }
@@ -303,8 +303,7 @@
     },
 
     parse_data_attr : function (el) {
-      console.log(this.set_data_attr(true))
-      var raw = el.data(this.set_data_attr(true)).split(/\[(.*?)\]/),
+      var raw = el.attr(this.attr_name()).split(/\[(.*?)\]/),
           i = raw.length, 
           output = [];
 
