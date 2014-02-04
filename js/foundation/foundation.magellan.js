@@ -16,7 +16,7 @@
       this.magellan_placeholder = $('<div></div>').css({
         height: this.fixed_magellan.outerHeight(true)
       }).hide().insertAfter(this.fixed_magellan);
-      this.set_threshold();
+      this.set_threshold(method);
       this.set_active_class(method);
       this.last_destination = $('[data-magellan-destination]').last();
       this.events();
@@ -107,16 +107,19 @@
       }
     },
 
-    set_threshold : function () {
+    set_threshold : function (options) {
       if (typeof this.settings.threshold !== 'number') {
         this.settings.threshold = (this.fixed_magellan.length > 0) ?
           this.fixed_magellan.outerHeight(true) : 0;
       }
+      if (options && options.threshold && typeof options.threshold === 'number') {
+        this.settings.threshold = options.threshold;
+      }
     },
 
     set_active_class : function (options) {
-      if (options && options.active_class && typeof options.active_class === 'string') {
-        this.settings.active_class = options.active_class;
+      if (options && options.active && typeof options.active === 'string') {
+        this.settings.active_class = options.active;
       }
     },
 
