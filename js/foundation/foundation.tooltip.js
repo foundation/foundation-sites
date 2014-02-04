@@ -23,7 +23,7 @@
     cache : {},
 
     init : function (scope, method, options) {
-      Foundation.inherit(this, 'random_str debounce');
+      Foundation.inherit(this, 'random_str');
       this.bindings(method, options);
     },
 
@@ -32,7 +32,7 @@
           S = self.S;
 
       if (Modernizr.touch) {
-        S(this.scope)
+        S(document)
           .off('.tooltip')
           .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
             '[' + this.attr_name() + ']:not(a)', function (e) {
@@ -49,18 +49,18 @@
             S(this).fadeOut(150);
           });
       } else {
-        S(this.scope)
+        S(document)
           .off('.tooltip')
           .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip', 
-            '[' + this.attr_name() + ']', this.debounce(function (e) {
+            '[' + this.attr_name() + ']', function (e) {
             var $this = S(this);
 
             if (/enter|over/i.test(e.type)) {
-              self.showOrCreateTip($this);
+              var tip = self.showOrCreateTip($this);
             } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
               self.hide($this);
             }
-          }, this.settings.hover_delay));
+          });
       }
     },
 
@@ -183,13 +183,13 @@
       var $tip = this.getTip($target);
 
       this.reposition($target, $tip, $target.attr('class'));
-      $tip.fadeIn(150);
+      return $tip.fadeIn(150);
     },
 
     hide : function ($target) {
       var $tip = this.getTip($target);
 
-      $tip.fadeOut(150);
+      return $tip.fadeOut(150);
     },
 
     // deprecate reload
