@@ -89,7 +89,11 @@
       if (i !== 0) {
         arr.push(parts[i]);
       } else {
-        arr.push(this.namespace, parts[i]);
+        if (this.namespace.length > 0) {
+          arr.push(this.namespace, parts[i]);
+        } else {
+          arr.push(this.namespace, parts[i]);
+        }
       }
     }
 

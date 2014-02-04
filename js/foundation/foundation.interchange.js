@@ -84,7 +84,7 @@
       $(window)
         .off('.interchange')
         .on('resize.fndtn.interchange', self.throttle(function () {
-          self.resize.call(self);
+          self.resize();
         }, 50));
 
       return this;
@@ -303,7 +303,7 @@
     },
 
     parse_data_attr : function (el) {
-      console.log()
+      console.log(this.set_data_attr(true))
       var raw = el.data(this.set_data_attr(true)).split(/\[(.*?)\]/),
           i = raw.length, 
           output = [];
