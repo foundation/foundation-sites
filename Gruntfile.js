@@ -73,7 +73,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.js': '<%= foundation.js %>',
-          'dist/docs/assets/js/all.js': ['bower_components/lodash/dist/lodash.min.js', 'bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', 'bower_components/Snap.svg/dist/snap.svg.js', 'bower_components/jquery-placeholder/jquery.placeholder.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/all.js': ['bower_components/lodash/dist/lodash.min.js', 'bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', 'bower_components/jquery-placeholder/jquery.placeholder.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
     },
@@ -94,8 +94,7 @@ module.exports = function(grunt) {
           'dist/assets/js/vendor/fastclick.js': 'bower_components/fastclick/lib/fastclick.js',
           'dist/assets/js/vendor/jquery.cookie.js': 'bower_components/jquery.cookie/jquery.cookie.js',
           'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/jquery.js',
-          'dist/assets/js/vendor/modernizr.js': 'bower_components/modernizr/modernizr.js',
-          'dist/assets/js/vendor/snap.svg.js': 'bower_components/Snap.svg/dist/snap.svg.js',
+          'dist/assets/js/vendor/modernizr.js': 'bower_components/modernizr/modernizr.js'
         }
       }
     },

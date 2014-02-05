@@ -12,7 +12,7 @@
       append_to: 'body',
       touch_close_text: 'Tap To Close',
       disable_for_touch: false,
-      hover_delay: 50,
+      hover_delay: 200,
       tip_template : function (selector, content) {
         return '<span data-selector="' + selector + '" class="' 
           + Foundation.libs.tooltip.settings.tooltip_class.substring(1) 
