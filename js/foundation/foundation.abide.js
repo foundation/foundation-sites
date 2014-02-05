@@ -7,6 +7,7 @@
     version : '5.1.0',
 
     settings : {
+      live_validate : true,
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
       timeout : 1000,
@@ -72,11 +73,13 @@
             self.validate([this], e);
           })
           .on('keydown.fndtn.abide', function (e) {
-            var settings = self.S(this).closest('form').data(self.attr_name(true) + '-init');
-            clearTimeout(self.timer);
-            self.timer = setTimeout(function () {
-              self.validate([this], e);
-            }.bind(this), settings.timeout);
+            var settings = $(this).closest('form').data('abide-init');
+            if (settings.live_validate === true) {
+              clearTimeout(self.timer);
+              self.timer = setTimeout(function () {
+                self.validate([this], e);
+              }.bind(this), settings.timeout);
+            }
           });
     },
 
@@ -183,14 +186,14 @@
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
 
             validations.push(true);
-            $(el).trigger('valid');
+            $(el).triggerHandler('valid');
           } else {
             this.S(el).attr(this.invalid_attr, '');
             parent.addClass('error');
             if (label.length > 0 && this.settings.error_labels) label.addClass('error');
 
             validations.push(false);
-            $(el).trigger('invalid');
+            $(el).triggerHandler('invalid');
           }
         }
       }
