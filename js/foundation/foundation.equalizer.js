@@ -7,6 +7,7 @@
     version : '5.1.0',
 
     settings : {
+      use_tallest: true,
       before_height_change: $.noop,
       after_height_change: $.noop
     },
@@ -25,7 +26,8 @@
       var isStacked = false,
           vals = equalizer.find('[' + this.attr_name() + '-watch]'),
           firstTopOffset = vals.first().offset().top,
-          settings = equalizer.data(this.attr_name(true));
+          settings = equalizer.data(this.attr_name(true)+'-init');
+      
       if (vals.length === 0) return;
       settings.before_height_change();
       equalizer.trigger('before-height-change');
@@ -39,8 +41,13 @@
       if (isStacked) return;
       
       var heights = vals.map(function(){ return $(this).outerHeight() });
-      var max = Math.max.apply(null, heights);
-      vals.height(max);
+      if (settings.use_tallest) {
+        var max = Math.max.apply(null, heights);
+        vals.height(max);
+      } else {
+        var min = Math.min.apply(null, heights);
+        vals.height(min);
+      }
       settings.after_height_change();
       equalizer.trigger('after-height-change');
     },
