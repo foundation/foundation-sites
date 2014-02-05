@@ -50,7 +50,7 @@
                 window.location.hash = '#'+hash;
             });
         })
-        .on('scroll.fndtn.magellan', self.check_for_arrivals.bind(self))
+        .on('scroll.fndtn.magellan', self.throttle(this.check_for_arrivals.bind(this), settings.throttle_delay))
         .on('resize.fndtn.magellan', self.throttle(this.set_expedition_position.bind(this), settings.throttle_delay));
     },
 
