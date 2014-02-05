@@ -154,7 +154,8 @@
     },
 
     open : function ($image, current, target) {
-      var root = target.closest('.clearing-assembled'),
+      var body = $(document.body),
+          root = target.closest('.clearing-assembled'),
           container = $('div', root).first(),
           visible_image = $('.visible-img', container),
           image = $('img', visible_image).not($image);
@@ -168,6 +169,7 @@
         this.loaded(image, function () {
           image.css('visibility', 'visible');
           // toggle the gallery
+          body.css('overflow', 'hidden');
           root.addClass('clearing-blackout');
           container.addClass('clearing-container');
           visible_image.show();
@@ -191,9 +193,11 @@
             } else {
               return target.closest('.clearing-blackout');
             }
-          }($(el))), container, visible_image;
+          }($(el))),
+          body = $(document.body), container, visible_image;
 
       if (el === e.target && root) {
+        body.css('overflow', '');
         container = $('div', root).first();
         visible_image = $('.visible-img', container);
         this.settings.prev_index = 0;
