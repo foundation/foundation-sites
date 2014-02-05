@@ -189,15 +189,12 @@ $font-smoothing: antialiased !default;
 // We use these to control text direction settings
 $text-direction: ltr !default;
 
-// NOTE: No need to change this conditional statement, $text-direction variable controls it all.
-$default-float: left !default;
-$opposite-direction: right !default;
 @if $text-direction == ltr {
-  $default-float: left;
-  $opposite-direction: right;
+  $default-float: left  !default;
+  $opposite-direction: right  !default;
 } @else {
-  $default-float: right;
-  $opposite-direction: left;
+  $default-float: right !default;
+  $opposite-direction: left !default;
 }
 
 // We use these as default colors throughout
