@@ -67,7 +67,7 @@
             styles = expedition.attr('styles'), // save styles
             top_offset;
 
-        expedition.css('');
+        expedition.attr('style', '');
         top_offset = expedition.offset().top;
 
         expedition.data(self.data_attr('magellan-top-offset'), top_offset);
