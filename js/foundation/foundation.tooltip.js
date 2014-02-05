@@ -146,8 +146,9 @@
       } else {
         var left = target.offset().left;
         if (Foundation.rtl) {
-          left = target.offset().left + target.offset().width - tip.outerWidth();
+          left = target.offset().left + target.outerWidth() - tip.outerWidth();
         }
+
         objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', left);
         tip.removeClass('tip-override');
         nub.removeAttr( 'style' );
