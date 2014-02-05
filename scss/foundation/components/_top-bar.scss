@@ -199,7 +199,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           padding-#{$default-float}: 40px;
 
           a {
-            // text-indent: -48px;
+            @if $text-direction == rtl {
+              text-indent: -58px;
+            }
             height: 34px;
             line-height: 33px;
             padding: 0;
@@ -560,18 +562,18 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         // Position overrides for ul.right and ul.left
         .right {
           li .dropdown {
-            left: auto;
-            right: 0;
+            #{$default-float}: auto;
+            #{$opposite-direction}: 0;
 
-            li .dropdown { right: 100%; }
+            li .dropdown { #{$opposite-direction}: 100%; }
           }
         }
         .left {
           li .dropdown {
-            right: auto;
-            left: 0;
+            #{$opposite-direction}: auto;
+            #{$default-float}: 0;
 
-            li .dropdown { left: 100%; }
+            li .dropdown { #{$default-float}: 100%; }
           }
         }
       }

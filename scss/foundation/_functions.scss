@@ -45,6 +45,14 @@ $modules: () !default;
   @return $value;
 }
 
+@function data($attr) {
+  @if $namespace {
+    @return '[data-' + $namespace + '-' + $attr + ']';
+  }
+
+  @return '[data-' + $attr + ']';
+}
+
 // REM CALC 
 /*
 New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
