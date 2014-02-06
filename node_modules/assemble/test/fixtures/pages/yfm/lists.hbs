@@ -1,0 +1,89 @@
+---
+# This is a Comment
+title: Almost a Haiku
+
+attributes:
+  - attr1
+  - attr2
+  - attr3
+methods: [ getter, setter ]
+
+# Favorite Movies
+movies:
+  - Casablanca
+  - North by Northwest
+  - The Man Who Wasn't There
+
+groceries: [milk, pumpkin pie, eggs, juice]
+
+people:
+  - {name: John Smith, age: 33}
+  - name: Mary Smith
+    age: 27
+
+men: [John Smith, Bill Jones]
+women:
+  - Mary Smith
+  - Susan Williams
+---
+<div class="page-header">
+  <h1>{{{title}}}</h1> 
+</div>
+
+<div class="attributes">
+  <h4>Attributes</h4>
+  <ul>
+  {{#each attributes}}<li>{{.}}</li>
+  {{/each}}
+  </ul>
+</div>
+
+<hr>
+
+<div class="methods">
+  <h4>Methods</h4>
+  <ul>
+  {{#each methods}}<li>{{.}}</li>
+  {{/each}}
+  </ul>
+</div>
+
+<hr>
+
+<div class="examples">
+  <h3>Lists</h3>
+  <h4>Movies</h4>
+  <dl class="dl-horizontal">
+    {{#each movies}}
+      <dt>Movie:</dt> <dd>{{.}}</dd>
+    {{/each}}
+  </dl>
+
+  <h4>Groceries</h4>
+  <dl class="dl-horizontal">
+    {{#each groceries}}
+      <dt>Item:</dt> <dd>{{.}}</dd>
+    {{/each}}
+  </dl>
+</div>
+
+<hr>
+
+<div class="examples">
+  <h3>Hierarchical combinations of elements</h3>
+  <h4>Lists of associative arrays</h4>
+  <dl class="dl-horizontal">
+    {{#each people}}
+      <dt>Name:</dt> <dd>{{name}}</dd>
+      <dt>Age:</dt>  <dd>{{age}}</dd>
+    {{/each}}
+  </dl>
+
+  <h4>Associative arrays of lists</h4>
+  <dl class="dl-horizontal">
+    <div><strong>Men</strong></div>
+    {{#each men}}<dt>Name:</dt> <dd>{{.}}</dd>{{/each}}
+    <div><strong>Women</strong></div>
+    {{#each women}}<dt>Name:</dt> <dd>{{.}}</dd>{{/each}}
+  </dl>
+</div>

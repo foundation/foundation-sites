@@ -1,0 +1,11 @@
+@mixin boo() {
+  @import "foo-imp.scss";
+}
+
+@function foo() {
+  @import "foo-imp.scss";
+}
+
+div {
+  color: foo();
+}

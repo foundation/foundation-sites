@@ -1,0 +1,28 @@
+---
+title: Block Literals
+
+# Newlines Preserved
+poem: |
+    old pond . . .
+    a frog leaps in
+    water’s sound
+
+# Newlines Folded
+another: >
+    old pond . . .
+    a frog leaps in
+    water’s sound
+---
+<div class="page-header">
+  <h4>{{{title}}}</h4>
+</div>
+
+<h4>Newlines preserved</h4>
+<div class="almost-haiku">
+{{{poem}}}
+</div>
+
+<h4>Newlines folded</h4>
+<div class="another">
+{{{another}}}
+</div>

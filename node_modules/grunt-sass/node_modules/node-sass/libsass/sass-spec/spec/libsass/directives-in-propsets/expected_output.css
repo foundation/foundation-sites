@@ -1,0 +1,7 @@
+div {
+  background-something-color: green;
+  background-color: red;
+  background-position: 50%;
+  background-image: url(foo.png);
+  background-groo: foo;
+  width: 0; }

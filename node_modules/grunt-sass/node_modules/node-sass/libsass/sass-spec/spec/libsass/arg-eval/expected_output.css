@@ -1,0 +1,8 @@
+div {
+  content: foobar(3 3/4 11, orange);
+  content: 3 2/3 11 orange;
+  content: 3 2/3 11;
+  content: number;
+  content: color;
+  content: 3 3/4 11;
+  bar-content: 0.75; }

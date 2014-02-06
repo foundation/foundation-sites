@@ -1,0 +1,60 @@
+---
+title: Tags
+description: Different ways to use tags collections.
+---
+<!-- Tags Collection -->
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4>Tags on this page: <span class="badge badge-success">{{default page.tags.length 0}}</span></h4>
+  </div>
+  <div class="panel-body">
+  {{#if page.tags}}
+    {{#page.tags}}
+      <span class="label label-success">{{.}}</span>
+    {{/page.tags}}
+    {{else}}
+    <strong>No tags defined on this page.</strong>
+  {{/if}}
+  </div>
+</div>
+
+<hr>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4>All tags: <span class="badge badge-success">{{default tags.length 0}}</span></h4>
+  </div>
+  <div class="panel-body">
+  {{#if tags}}
+    {{#tags}}
+      <span class="label label-success">{{{tag}}}</span>
+    {{/tags}}
+    {{else}}
+    <strong>No tags have been defined.</strong>
+  {{/if}}
+  </div>
+</div>
+
+<hr>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4>Pages related to each tag</h4>
+  </div>
+  <div class="panel-body">
+  {{#each tags}}
+    <div>Related pages for: <span class="label label-success">{{tag}}</span></div>
+    <ul class="links">
+    {{#if pages}}
+      {{#each pages}}
+        <li{{#is ../../../page.dest dest}} class="active"{{/is}}>
+          <a href="{{relative ../../../page.dest dest}}">{{{filename}}}</a>
+        </li>
+      {{/each}}
+      {{else}}
+      <strong>No pages defined for this tag.</strong>
+    {{/if}}
+    </ul>
+  {{/each}}
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.sprites-nav {
+  color: red;
+}
+
+.sprites-nav_up {
+  color: green;
+}
+
+.mw_nav_button {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin: 10px 10px 10px 0;
+  overflow: hidden;
+  &[data-ur-state="disabled"] {
+    @extend .sprites-nav;
+  }
+  &[data-ur-state="enabled"] {
+    @extend .sprites-nav_up;
+  }
+}

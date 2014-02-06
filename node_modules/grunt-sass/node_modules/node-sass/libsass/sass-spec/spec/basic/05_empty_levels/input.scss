@@ -1,0 +1,38 @@
+div {
+  span {
+    color: red;
+    background: blue;
+  }
+}
+
+div {
+  color: gray;
+  empty {
+    span {
+      color: red;
+      background: blue;
+    }
+  }
+}
+
+empty1 {
+  empty2 {
+    div {
+      blah: blah;
+    }
+  }
+}
+
+empty1 {
+  empty2 {
+    div {
+      bloo: blee;
+      empty3 {
+        span {
+          blah: blah;
+          blah: blah;
+        }
+      }
+    }
+  }
+}

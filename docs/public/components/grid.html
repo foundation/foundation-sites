@@ -1,0 +1,839 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/assets/favicons/apple-touch-icon-precomposed.png">
+    <link rel="icon" href="/assets/favicons/favicon.ico" type="image/x-icon">
+    <title>Foundation Docs: Grid</title>
+    <link rel='stylesheet' href='/assets/normalize.css' />
+    <link rel='stylesheet' href='/assets/docs.css' />
+    <script src='/assets/vendor/custom.modernizr.js'></script>
+    
+  </head>
+  <body class="antialiased off-canvas hide-extras">
+     <nav class="top-bar hide-for-small">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="/">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="/grid.php">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="/templates.php">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="/case-jacquelinewest.php">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="/docs/">Docs</a></li>
+          <li class="divider"></li>
+          <li><a href="/training.php">Training</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    <section class="main">
+     
+      
+      <header class="show-for-small">
+        <a class='sidebar-button show-for-small' id="sidebarButton" href="#sidebar" ><img src="/assets/offcanvas/menu-wht.png" alt="ZURB Menu"><h4>Foundation</h4></a>
+      </header>
+  
+      
+      <div class="row">
+        <div class="large-12 columns">
+          <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation 4 Documentation</a></h1>
+          <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
+          <hr>
+        </div>
+      </div>
+  
+      
+    <style>
+      .row.display { background: #eee; font-size: 11px; margin-bottom: 10px; }
+      .row.display .columns, .row.display .column { background: #e7e7e7; border: 1px solid #ddd; font-size: 13px; font-weight: bold; text-indent: 3px; padding-top: 8px; color: #444; padding-bottom: 8px; }
+    </style>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>Grid</h2>
+        <h4 class="subheader">Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</h4>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <h3>Using our Predefined HTML Classes</h3>
+        <p>These are examples of different ways to use the Foundation Grid. Foundation uses <code>box-sizing: border-box</code> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we'll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-2 large-4 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-4 large-4 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-6 large-4 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-3 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-6 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-3 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-6 large-2 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-6 large-8 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-12 large-2 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-3 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-9 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-4 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-8 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-6 large-5 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-6 large-7 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-6 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-6 columns&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre></div></div>
+
+        <div class="row display">
+          <div class="small-2 large-4 columns"><span class="show-for-small">2</span><span class="hide-for-small">4</span></div>
+          <div class="small-4 large-4 columns">4</div>
+          <div class="small-6 large-4 columns"><span class="show-for-small">6</span><span class="hide-for-small">4</span></div>
+        </div>
+        <div class="row display">
+          <div class="large-3 columns"><span class="show-for-small">full</span><span class="hide-for-small">3</span></div>
+          <div class="large-6 columns"><span class="show-for-small">full</span><span class="hide-for-small">6</span></div>
+          <div class="large-3 columns"><span class="show-for-small">full</span><span class="hide-for-small">3</span></div>
+        </div>
+        <div class="row display">
+          <div class="small-6 large-2 columns"><span class="show-for-small">6</span><span class="hide-for-small">2</span></div>
+          <div class="small-6 large-8 columns"><span class="show-for-small">6</span><span class="hide-for-small">8</span></div>
+          <div class="small-12 large-2 columns"><span class="show-for-small">full</span><span class="hide-for-small">2</span></div>
+        </div>
+        <div class="row display">
+          <div class="small-3 columns">3</div>
+          <div class="small-9 columns">9</div>
+        </div>
+        <div class="row display">
+          <div class="large-4 columns"><span class="show-for-small">full</span><span class="hide-for-small">4</span></div>
+          <div class="large-8 columns"><span class="show-for-small">full</span><span class="hide-for-small">8</span></div>
+        </div>
+        <div class="row display">
+          <div class="small-6 large-5 columns"><span class="show-for-small">6</span><span class="hide-for-small">5</span></div>
+          <div class="small-6 large-7 columns"><span class="show-for-small">6</span><span class="hide-for-small">7</span></div>
+        </div>
+        <div class="row display">
+          <div class="large-6 columns"><span class="show-for-small">full</span><span class="hide-for-small">6</span></div>
+          <div class="large-6 columns"><span class="show-for-small">full</span><span class="hide-for-small">6</span></div>
+        </div>
+
+        <hr>
+
+        <h4>Infinitely Nest Your Grid</h4>
+        <p>The grid allows for nesting down as far as you'd like, though at a certain point it will get absurd. You can use this nesting to create quite complex layouts, as well as some other tricks like form layouts or visual elements.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-8 columns&quot;</span><span class="nt">&gt;</span>8
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-8 columns&quot;</span><span class="nt">&gt;</span>8 Nested
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-8 columns&quot;</span><span class="nt">&gt;</span>8 Nested Again<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-4 columns&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-4 columns&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-4 columns&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre></div></div>
+
+        <div class="row display">
+          <div class="small-8 columns">8
+            <div class="row">
+              <div class="small-8 columns">8 Nested
+                <div class="row">
+                  <div class="small-8 columns">8 Nested Again</div>
+                  <div class="small-4 columns">4</div>
+                </div>
+              </div>
+              <div class="small-4 columns">4</div>
+            </div>
+          </div>
+          <div class="small-4 columns">4</div>
+        </div>
+
+
+<hr>
+
+        <h4>Offsets</h4>
+        <p>Offsets allow you to create additional space between columns in a row. Like the rest of the grid, they're nestable. You can use classes like <code>.large-offset-1</code> and <code>.small-offset-3</code> to manipulate your column positions in different ways. You can offset up to 11 since you wouldn't ever offset a full-width column.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-1 columns&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-11 columns&quot;</span><span class="nt">&gt;</span>11<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-1 columns&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-10 large-offset-1 columns&quot;</span><span class="nt">&gt;</span>10, offset 1<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-1 columns&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-9 large-offset-2 columns&quot;</span><span class="nt">&gt;</span>9, offset 2<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-1 columns&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-8 large-offset-3 columns&quot;</span><span class="nt">&gt;</span>8, offset 3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre></div></div>
+
+        <div class="row display">
+          <div class="large-1 columns">1</div>
+          <div class="large-11 columns">11</div>
+        </div>
+        <div class="row display">
+          <div class="large-1 columns">1</div>
+          <div class="large-10 large-offset-1 columns">10, offset 1</div>
+        </div>
+        <div class="row display">
+          <div class="large-1 columns">1</div>
+          <div class="large-9 large-offset-2 columns">9, offset 2</div>
+        </div>
+        <div class="row display">
+          <div class="large-1 columns">1</div>
+          <div class="large-8 large-offset-3 columns">8, offset 3</div>
+        </div>
+
+        <hr>
+
+        <h4>Centered Columns</h4>
+        <p>Centered columns are placed in the middle of the row. This does not center their content, but centers the grid element, itself. This is accomplished by adding a class of <code>large-centered</code> or <code>small-centered</code> depending on which breakpoint you want the columns to center on. Small versions will carry through all breakpoints if not overridden by a large version. You can center any number of columns you have. To have a column not carry it's small-centered to large, add a class of <code>large-uncentered</code>.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-3 small-centered columns&quot;</span><span class="nt">&gt;</span>3 centered<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-6 large-centered columns&quot;</span><span class="nt">&gt;</span>6 centered<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-9 small-centered large-uncentered columns&quot;</span><span class="nt">&gt;</span>9 centered<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-11 small-centered columns&quot;</span><span class="nt">&gt;</span>11 centered<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre></div></div>
+
+        <div class="row display">
+          <div class="small-3 small-centered columns">3 centered</div>
+        </div>
+        <div class="row display">
+          <div class="small-6 large-centered columns">6 centered, large</div>
+        </div>
+        <div class="row display">
+          <div class="small-9 small-centered large-uncentered columns">9 centered small</div>
+        </div>
+        <div class="row display">
+          <div class="small-11 small-centered columns">11 centered</div>
+        </div>
+
+        <hr>
+
+        <h4>Source Ordering</h4>
+
+        <p>Using these source ordering classes, you can shift columns around between our breakpoints. This means you can have a sub-nav on the left on large displays, but go below on small ones. <code>.push-#</code> is the syntax you'll use.</p>
+
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-10 push-2 columns&quot;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-2 pull-10 columns&quot;</span><span class="nt">&gt;</span>2, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-9 push-3 columns&quot;</span><span class="nt">&gt;</span>9<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-3 pull-9 columns&quot;</span><span class="nt">&gt;</span>3, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-8 push-4 columns&quot;</span><span class="nt">&gt;</span>8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-4 pull-8 columns&quot;</span><span class="nt">&gt;</span>4, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-7 push-5 columns&quot;</span><span class="nt">&gt;</span>7<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-5 pull-7 columns&quot;</span><span class="nt">&gt;</span>5, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-6 push-6 columns&quot;</span><span class="nt">&gt;</span>6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;large-6 pull-6 columns&quot;</span><span class="nt">&gt;</span>6, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre></div></div>
+
+        <div class="row display">
+          <div class="large-10 push-2 columns">10</div>
+          <div class="large-2 pull-10 columns">2, last</div>
+        </div>
+        <div class="row display">
+          <div class="large-9 push-3 columns">9</div>
+          <div class="large-3 pull-9 columns">3, last</div>
+        </div>
+        <div class="row display">
+          <div class="large-8 push-4 columns">8</div>
+          <div class="large-4 pull-8 columns">4, last</div>
+        </div>
+        <div class="row display">
+          <div class="large-7 push-5 columns">7</div>
+          <div class="large-5 pull-7 columns">5, last</div>
+        </div>
+        <div class="row display">
+          <div class="large-6 push-6 columns">6</div>
+          <div class="large-6 pull-6 columns">6, last</div>
+        </div>
+
+        <hr>
+
+        <h4 id="small-grid">Small Grid</h4>
+        <p>As you've probably noticed in the examples above, you have access to a small and large grid. If you know that your grid structure will be the same for small devices as it will be on large devices, just use the small grid. You can override your small grid classes by adding large grid classes to it. To use the mixin, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a target="_blank" href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a target="_blank" href="https://github.com/zurb/foundation/tree/master/scss/foundation/components">_grid.scss</a> from Github and throw them into a Foundation folder in your project directory.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-2 columns&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-10 columns&quot;</span><span class="nt">&gt;</span>10, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-3 columns&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;small-9 columns&quot;</span><span class="nt">&gt;</span>9, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre></div></div>
+
+        <div class="row display">
+          <div class="small-2 columns">2</div>
+          <div class="small-10 columns">10, last</div>
+        </div>
+        <div class="row display">
+          <div class="small-3 columns">3</div>
+          <div class="small-9 columns">9, last</div>
+        </div>
+
+        <hr>
+
+        <h4 id="medium-grid">Medium Grid*</h4>
+        <div class="panel">
+          <p>*This <strong>experimental</strong> feature is currently only available by using SASS and importing the _grid-5.scss file into your Compass project. You can also simply download the <a href="https://gist.github.com/ghaida/6030528">grid-5.css</a> file, and link to it in your HTML head after your foundation.css</p>
+        </div>
+        <p>The small and large grids give you control over mobile and desktop styles. A medium grid now offers greater flexibility and control to create complex layouts for tablets as well.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;medium-2 columns&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;medium-10 columns&quot;</span><span class="nt">&gt;</span>10, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;medium-3 columns&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;medium-9 columns&quot;</span><span class="nt">&gt;</span>9, last<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre></div></div>
+
+        <hr>
+
+        <h3>Building With Mixins</h3>
+        <p>If you are keen on SCSS and use it for your Foundation projects, you have access to grid mixins that will let you layout the page without using presentational classes that you don't want. You can create your own set of classes or even create your own grid. Setting any of the options to 'false' will leave off those styles, giving you lots of control over your CSS output. Here's an example structure you might use with the grid mixin:</p>
+
+        <h5>Basic Mixin Usage</h5>
+<div class='scss'><div class='highlight'><pre class="">
+<span class="cm">/* Mixin options creating rows */
+</span><span class="k">@include</span> <span class="nd">grid-row</span><span class="p">(</span><span class="nv">$behavior</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* The default value is false, which will bring in the default row styles */
+</span><span class="nv">$behavior</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="cm">/* If the element you are creating as a row is nested within another element */
+/* that is also a row, you need to add the proper nesting styles */
+</span><span class="nv">$behavior</span><span class="p">:</span> <span class="n">nest</span>
+
+<span class="cm">/* You can use this option to collapse the container row margins */
+/* This comes in handy when working with forms inside the grid */
+</span><span class="nv">$behavior</span><span class="p">:</span> <span class="nb">collapse</span>
+
+<span class="cm">/* If you have a nested row and want it to be collapsed, you need to add this option */
+</span><span class="nv">$behavior</span><span class="p">:</span> <span class="n">nest-collapse</span>
+</pre></div></div>
+
+<div class='scss'><div class='highlight'><pre class="">
+<span class="cm">/* Mixin options creating columns, these must be nested inside or a row */
+</span><span class="k">@include</span> <span class="nd">grid-column</span><span class="p">(</span><span class="nv">$columns</span><span class="o">,</span> <span class="nv">$last-column</span><span class="o">,</span> <span class="nv">$center</span><span class="o">,</span> <span class="nv">$offset</span><span class="o">,</span> <span class="nv">$push</span><span class="o">,</span> <span class="nv">$pull</span><span class="o">,</span> <span class="nv">$collapse</span><span class="o">,</span> <span class="nv">$float</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* The most commonly used option with a column */
+/* This sets the width properties for the column, use a number to represent columns */
+</span><span class="nv">$columns</span><span class="p">:</span> <span class="err">#</span>
+
+<span class="cm">/* Use this option if your columns do not add up to 12. */
+/* We make the last column default to float:right to keep things aligned */
+/* If you do not want this, set $last-column to true */
+</span><span class="nv">$last-column</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="cm">/* If you have a single column inside a row and want it centered, set this to true */
+</span><span class="nv">$center</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="cm">/* Control how many columns you offset by switching this into a number. */
+</span><span class="nv">$offset</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="cm">/* You can use source ordering with this mixin too, just set this to a number. */
+</span><span class="nv">$push</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="cm">/* You can use source ordering with this mixin too, just set this to a number. */
+</span><span class="nv">$pull</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="cm">/* If you have a collapsed row, you need to set the columns to collapse as well. */
+</span><span class="nv">$collapse</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="cm">/* By default, we include float: left. */
+/* To help control this, we made it an option. Set this to false to not include those styles. */
+</span><span class="nv">$float</span><span class="p">:</span> <span class="nb">left</span>
+</pre></div></div>
+
+<div class='scss'><div class='highlight'><pre class="">
+<span class="nn">#masthead</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">grid-row</span><span class="o">;</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">panel</span><span class="o">;</span>
+  <span class="k">&amp;</span> <span class="o">&gt;</span> <span class="nt">hgroup</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">grid-column</span><span class="o">(</span><span class="nt">4</span><span class="o">);</span> <span class="err">}</span>
+  <span class="k">&amp;</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">grid-column</span><span class="o">(</span><span class="nt">8</span><span class="o">);</span> <span class="err">}</span>
+<span class="err">}</span></pre></div></div>
+
+        <header id="masthead">
+          <hgroup>
+            <h2>Title</h2>
+          </hgroup>
+          <section>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </section>
+        </header>
+
+        <hr>
+
+        <h5>Default SCSS Variables</h5>
+<div class='scss'><div class='highlight'><pre class="">
+<span class="nv">$row-width</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$column-gutter</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">30</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$total-columns</span><span class="p">:</span> <span class="m">12</span> <span class="o">!</span><span class="nb">default</span><span class="err">;</span>
+</pre></div></div>
+
+        <hr>
+
+        <h4>Get Advanced With Media Query Changes</h4>
+        <p>We kept media queries out of the code for our grid mixins. This will enable you to include the mixins inside of whatever breakpoint you'd like, putting you in complete control. If you want to create 10 breakpoints and shift the layout around between each one, by all means. If you want to use only the default breakpoints, <a href="../sass.html">we've got variables for that</a>.</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="large-3 pull-9 columns">
+    <div class="docs section-container accordion" data-section="accordion">
+  <section class="section ">
+    <p class="title"><a href="#">Using Foundation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="../">Get Started</a></li>
+        <li><a href="../javascript.html">Javascript</a></li>
+        <li><a href="../sass.html">Sass</a></li>
+        <li><a href="../rails.html">Rails</a></li>
+        <li><a href="../media-queries.html">Media Queries</a></li>
+        <li><a class="" href="visibility.html">Visibility Classes</a></li>
+        <li><a href="../rtl.html">Right-to-Left Support</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section active">
+    <p class="title"><a href="#">Grid</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="active" href="grid.html">Grid</a></li>
+        <li><a class="" href="block-grid.html">Block Grid</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Navigation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="pagination.html">Pagination</a></li>
+        <li><a class="" href="side-nav.html">Side Nav</a></li>
+        <li><a class="" href="sub-nav.html">Sub Nav</a></li>
+        <li><a class="" href="top-bar.html">Top Bar</a></li>
+        <li><a class="" href="breadcrumbs.html">Breadcrumbs</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Buttons</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="buttons.html">Buttons</a></li>
+        <li><a class="" href="button-groups.html">Button Groups</a></li>
+        <li><a class="" href="dropdown-buttons.html">Dropdown Buttons</a></li>
+        <li><a class="" href="split-buttons.html">Split Buttons</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Forms</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="forms.html">Forms</a></li>
+        <li><a class="" href="custom-forms.html">Custom Forms</a></li>
+        <li><a class="" href="switch.html">Switch</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Typography</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="type.html">Type</a></li>
+        <li><a class="" href="inline-lists.html">Inline Lists</a></li>
+        <li><a class="" href="labels.html">Labels</a></li>
+        <li><a class="" href="keystrokes.html">Keystrokes</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">CSS Components</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="global.html">Global Styles</a></li>
+        <li><a class="" href="alert-boxes.html">Alert Boxes</a></li>
+        <li><a class="" href="panels.html">Panels</a></li>
+        <li><a class="" href="pricing-tables.html">Pricing Tables</a></li>
+        <li><a class="" href="progress-bars.html">Progress Bars</a></li>
+        <li><a class="" href="tables.html">Tables</a></li>
+        <li><a class="" href="thumbnails.html">Thumbnails</a></li>
+        <li><a class="" href="flex-video.html">Flex Video</a></li>
+        <li><a class="" href="tabs.html">Tabs</a></li>
+        <li><a class="" href="accordion.html">Accordion</a></li>
+        <li class="divider"></li>
+        <li><a target="_blank" style="font-style: italic" class="" href="kitchen-sink.html">Kitchen Sink</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Javascript</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="abide.html">Abide</a></li>
+        <li><a class="" href="clearing.html">Clearing</a></li>
+        <li><a class="" href="dropdown.html">Dropdown</a></li>
+        <li><a class="" href="interchange.html">Interchange</a></li>
+        <li><a class="" href="joyride.html">Joyride</a></li>
+        <li><a class="" href="magellan.html">Magellan</a></li>
+        <li><a class="" href="orbit.html">Orbit</a></li>
+        <li><a class="" href="reveal.html">Reveal</a></li>
+        <li><a class="" href="section.html">Section</a></li>
+        <li><a class="" href="tooltips.html">Tooltips</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../faq.html">FAQ</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../support.html">Support</a></p>
+  </section>
+</div>
+
+<p><a href="http://foundation.zurb.com/download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
+
+<div class="jobs hide-for-small">
+  <h5>Awesome product jobs:</h5>
+  <div id="zurbJobsWidget"></div>
+  <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">ZURBjobs</span></a>
+</div>
+
+  </div>
+</div>
+
+      <br>
+      <div class="zurb-footer-top bg-blue">
+      <div class="row property">
+        <div class="large-4 columns">
+        	<div class="property-info">
+            <h3><a href="http://foundation.zurb.com/">Foundation</a></h3>
+            <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.</p>
+        	</div>
+        </div>
+        
+        <div class="large-8 columns">
+          <div class="row collapse">
+    	      <div class="large-4 columns">
+    		      <div class="learn-links">
+    		        <h4 class="hide-for-small">Want More?</h4>
+    		        <ul>
+    		          <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+    		          <li><a href="http://zurb.com/expo/custom">Responsive</a></li>
+    		          <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+    		          <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    		        </ul>
+    		      </div>
+      		  </div>
+    	      <div class="large-4 columns">
+    		      <div class="support-links">
+    	          <h4 class="hide-for-small">Talk to us</h4>
+    	          <p>Call us at <strong>(408) 341-0600</strong></p>
+    	          <p>Not a big talker? Email us at <a href="mailto:foundation@zurb.com">foundation@zurb.com</a></p>
+    		      </div>
+    	      </div>
+            <div class="large-4 columns">
+    	        <div class="connect-links">
+    	          <h4 class="hide-for-small">Stay in touch</h4>
+    	          <p>Keep up with the latest on Foundation. Find us on Github.</p>
+    	          <a href="https://github.com/zurb/foundation" target="_blank" class="small button">Stay Connected</a>         
+    	        </div>
+    	      </div>
+          </div> 
+        </div>
+      </div>
+      <div class="row global">
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/services" class="footer-link-block services">
+            <span class="title">Services</span>
+            <span>Helping more than 200 startups succeed since 1998.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+            <span class="title">Foundation</span>
+            <span>The most advanced front-end framework in the world.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/apps" class="footer-link-block apps">
+            <span class="title">Products</span>
+            <span>Prototype, iterate and collect feedback on your products.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/expo" class="footer-link-block expo">
+            <span class="title">Expo</span>
+            <span>Ideas, thoughts and design resources shared with you.</span>
+          </a>
+      </div>
+      </div>
+    </div>
+      <div class="zurb-footer-bottom">
+      <div class="row">
+        <div class="large-4 large-push-8 columns">
+          <ul class="home-social">
+              <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+              <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+              <li><a href="http://zurb.com/contact" class="mail"></a></li>
+            </ul>
+         </div>
+         <div class="large-8 large-pull-4 columns">
+            <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+            <ul class="zurb-links">
+              <li><a href="http://zurb.com/about">About</a></li>
+              <li><a href="http://zurb.com/blog">Blog</a></li>
+              <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+              <li><a href="http://zurb.com/contact">Contact</a></li>
+              <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+           </ul>
+           <p class="copyright">&copy; 1998&ndash;2013 ZURB, Inc. All rights reserved.</p>
+        </div>          
+      </div>
+    </div>
+    <div class="joyride-modal-bg"></div>
+    </section>
+    
+    
+    <aside id="sidebar" role="complementary">
+      
+      <!-- For Future Use		
+      <div id="passport">
+        <a id="user" href="#">
+      		<h5>Firstname LastName</h5><br>
+      		<p>sign out</p>
+        </a>
+        <a id="ava" href="#">
+    		  <div class="avatar"><img src="placehold.it/75x75"></div>
+    		</a>
+      </div>
+      -->
+    	
+    	<!-- This is the apps main navigation -->	  		  
+      <div class="main-menu">
+    		<h6>Foundation</h6>
+    		<nav id="sideMenu" role="navigation">
+    			<ul id="sideMainNav" class="nav-bar">
+    			  <li class="show-for-small">
+            <a href="index.html">Home</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/grid.php">Features</a>
+    			</li>
+          <li>
+            <a href="http://foundation.zurb.com/templates.php">Add-ons</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/case-jacquelinewest.php">Case Studies</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/docs/">Docs</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/training.php">Training</a>
+    			</li>
+    			</ul>
+    		</nav> 			
+      </div>
+    		
+    	<hr>
+    	
+    	<!-- These links will vary depending on what app it is -->	
+      <div class="more-goodness">		
+    		<h6>More ZURB Goodness</h6>
+    		<nav role="navigation">
+    		  <ul id="secondarySideMainNav" class="nav-bar goodness">
+            <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+            <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+            <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    			</ul>
+    		</nav>
+      </div>
+      
+      <hr>
+      
+      <!-- These links will be the same across all of our proprties & apps -->
+      <div class="zurb-links">		
+    		<ul class="top">
+      		<li class="logo"><a href="http://zurb.com"><img src="/assets/offcanvas/zurb-logo.png" alt="ZURB"></a></li>
+      		<li><a href="http://zurb.com/about">About</a></li>
+      		<li><a href="http://zurb.com/blog">Blog</a></li>
+      		<li><a href="http://zurb.com/contact">Contact</a></li>
+    		</ul>
+    		<ul class="pillars">
+      		<li>
+      		  <a href="http://www.zurb.com/services" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping startups win since '98.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>World's most advanced responsive framework.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/apps" class="footer-link-block apps">
+              <span class="title">ZURB Apps</span>
+              <span>Tools to rapidly prototype and iterate.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/expo" class="footer-link-block expo">
+              <span class="title">Expo</span>
+              <span>Online training for smarter product design.</span>
+            </a>
+          </li> 
+    		</ul>
+      </div>
+    	
+    </aside>
+
+  <!-- Reveal Modals begin -->
+  <div id="firstModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a modal.</h2>
+    <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+    <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+    <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="secondModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a second modal.</h2>
+    <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="videoModal" class="reveal-modal large" data-reveal-modal>
+    <h2>This modal has video</h2>
+    <div class="flex-video">
+      <iframe width="800" height="315" src="http://www.youtube.com/embed/IkOQw96cfyE" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <!-- Reveal Modals end -->
+    
+
+    <script>
+
+      // Google Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script src='/assets/vendor/jquery.js'></script>
+    <script src='/assets/docs.js'></script>
+    
+    <script>
+      $(document)
+      
+        .foundation();
+      
+
+      $.ajax({
+        url: '//zurb.com/jobs/widgets/jobs.json?limit=3',
+        dataType: 'jsonp',
+        success: function(data) {
+          var list = $("<ul></ul>");
+          $.each(data.jobs, function(idx, job) {
+            var item = "<li><a href='"+job.url+"' target='_blank'>" +
+              "<span class='positionTitle'>"+job.title+"</span>" +
+              "<span class='location'><span class='companyName'>"+job.company_name+"</span> in "+job.location+"</span>" +
+              "</a>" +
+              "</li>";
+            list.append(item);
+          });
+            // Customize This
+          $("#zurbJobsWidget").html(list);
+        }
+      });
+
+      // For Kitchen Sink Page
+      $('#start-jr').on('click', function() {
+        $(document).foundation('joyride','start');
+      });
+      
+    </script>
+  </body>
+</html>

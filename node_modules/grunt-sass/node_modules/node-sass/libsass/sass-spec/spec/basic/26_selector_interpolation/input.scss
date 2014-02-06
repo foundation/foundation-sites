@@ -1,0 +1,12 @@
+$x: oo, ba;
+$y: az, hu;
+
+f#{$x}r {
+  p: 1;
+  b#{$y}x {
+    q: 2;
+    mumble#{length($x) + length($y)} {
+      r: 3;
+    }
+  }
+}

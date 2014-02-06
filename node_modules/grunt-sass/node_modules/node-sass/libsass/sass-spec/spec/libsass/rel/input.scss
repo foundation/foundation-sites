@@ -1,0 +1,21 @@
+div {
+  less: 3px < 3pt;
+  less: (1px / 1pt);
+  less: 23fu < 120;
+  eq: hello == hello;
+  eq: "hello" == hello;
+  eq: (1 2 3) == (1 2 3);
+  eq: (1 2 3) == (1, 2, 3);
+  eq: 23px == 23fu;
+  eq: 3.1in == 2.54cm;
+  eq: 2.54cm == 3.1in;
+  eq: (1in) == (1cm*1in/1cm);
+  x: 1in, (1cm*1in/1cm);
+  y: 1cm*1in/1in;
+  eq: (2cm*1in/2cm) == (1in*2cm/2cm);
+  blah: (1cm/1in);
+  in: (1in*2.54cm/1in);
+  lt: 1in < 2.54cm;
+  lt: 2.54cm < 1in;
+  lt: 5 < 4;
+}

@@ -1,0 +1,9 @@
+div {
+  prop: {
+    a: "hello";
+    b: "goodbye";
+    @if true {
+      c: "badbye";
+    }
+  }
+}

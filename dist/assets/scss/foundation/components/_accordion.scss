@@ -1,0 +1,49 @@
+@import "global";
+@import "grid";
+
+//
+// @variables
+//
+
+$include-html-accordion-classes: $include-html-classes !default;
+
+$accordion-navigation-padding: rem-calc(16) !default;
+$accordion-navigation-bg-color: #efefef !default;
+$accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%) !default;
+$accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -3%) !default;
+$accordion-navigation-font-color: #222 !default;
+$accordion-navigation-font-size: rem-calc(16) !default;
+$accordion-navigation-font-family: $body-font-family !default;
+
+$accordion-content-padding: $column-gutter/2 !default;
+$accordion-content-active-bg-color: #fff !default;
+
+@include exports("accordion") {
+  @if $include-html-accordion-classes {
+    .accordion {
+      @include clearfix; margin-bottom: 0;
+      dd {
+        display: block;
+        margin-bottom: 0 !important;
+        &.active a { background: $accordion-navigation-active-bg-color; }
+        > a {
+          background: $accordion-navigation-bg-color;
+          color: $accordion-navigation-font-color;
+          padding: $accordion-navigation-padding;
+          display: block;
+          font-family: $accordion-navigation-font-family;
+          font-size: $accordion-navigation-font-size;
+          &:hover { background: $accordion-navigation-hover-bg-color; }
+        }
+      }
+      .content {
+        display: none;
+        padding: $accordion-content-padding;
+        &.active {
+          display: block;
+          background: $accordion-content-active-bg-color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@function foo($x, $y, $z) {
+  @while $x < $y {
+    $z: transform($z);
+    @return $z;
+  }
+}
+
+@function bar($x) {
+  @if $x {
+    @return YES;
+  }
+}
+
+div {
+  answer: bar(true);
+  flanswer: fudge(mux+flux) + mudge(a/b);
+}

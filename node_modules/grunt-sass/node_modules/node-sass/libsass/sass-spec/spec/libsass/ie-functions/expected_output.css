@@ -1,0 +1,11 @@
+foo {
+  filter: progid:Microsoft.foo.bar.Baz(flip=foobar, bang=#00ff00cc);
+  something: blah(hux=mumble);
+  blah: progid:something.something(flip=foobar, bang=#abc);
+  blah: progid:bar.hux();
+  blah: string;
+  opacity: 0.005;
+  filter: alpha(opacity=0.5);
+  bilter: alpha(opacity=0.5);
+  kilter: string;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFF0000', endColorstr='#FF008000', GradientType=1); }

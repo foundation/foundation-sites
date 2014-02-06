@@ -1,0 +1,14 @@
+$x: 20%;
+
+div {
+  a: -10;
+  b: -10px + 10px;
+  c: +10;
+  d: +10px + -10px;
+  e: -$x;
+  f: +$x;
+  g: -hello;
+  h: +hello;
+  i: + hello;
+  j: type-of(+ hello);
+}

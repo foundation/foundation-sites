@@ -1,0 +1,3 @@
+div {
+  blah: image-url("hello.png", false);
+  blah: image-url("hello.png", true); }

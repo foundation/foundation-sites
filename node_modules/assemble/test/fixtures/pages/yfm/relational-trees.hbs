@@ -1,0 +1,40 @@
+---
+title: Relational Trees - References
+
+# References Example: sequencer protocols for Laser eye surgery
+steps:
+  - step:  &id001                  # defines anchor label &id001
+      instrument:      Lasik 2000
+      pulseEnergy:     5.4
+      pulseDuration:   12
+      repetition:      1000
+      spotSize:        1mm
+
+  - step: &id002
+      instrument:      Lasik 2000
+      pulseEnergy:     5.0
+      pulseDuration:   10
+      repetition:      500
+      spotSize:        2mm
+
+  - step: *id001                   # refers to the first step (with anchor &id001)
+  - step: *id002                   # refers to the second step
+  - step: *id001
+  - step: *id002
+---
+<div class="page-header">
+  <h4>{{{title}}}</h4> 
+</div>
+
+<div class="examples">
+  <h4>Associative arrays</h4>
+  <dl class="dl-horizontal">
+    {{#each steps}}
+      {{#each step}}
+        <dt>{{@key}}</dt> 
+        <dd>{{.}}</dd>
+      {{/each}}
+      <hr>
+    {{/each}}
+  </dl>
+</div>

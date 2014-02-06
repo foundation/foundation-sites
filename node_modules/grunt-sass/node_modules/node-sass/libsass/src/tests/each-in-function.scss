@@ -1,0 +1,17 @@
+$GLOBAL: global;
+
+@function foo($g1, $g2, $g3) {
+  @each $value in $g1, $g2, $g3 {
+    $GLOBAL: $GLOBAL each $value;
+    $GLOBAL: $GLOBAL type1 type-of(nth($value, 1));
+    $GLOBAL: $GLOBAL type2 type-of(nth($value, 2));
+  }
+  @return 0;
+}
+
+div {
+  a: foo(50% 50%, cover circle, red blue);
+  b: $GLOBAL;
+  $colors: red green blue;
+  c: a, b, type-of(nth($colors, 2)), d;
+}

@@ -1,0 +1,28 @@
+---
+title: Associative arrays
+
+# Indented Blocks, common in YAML data files, use indentation and new lines to separate the '''key: value''' pairs
+people:
+  name: John Smith
+  age: 33
+
+# Inline Blocks, common in YAML data streams, use comma+space to separate the '''key: value''' pairs between braces
+morePeople:  {name: Grace Jones, age: 21}
+---
+<div class="page-header">
+  <h1>{{{title}}}</h1> 
+</div>
+
+<div class="examples">
+  <h4>Associative arrays</h4>
+  <dl class="dl-horizontal">
+    {{#people}}
+      <dt>Name:</dt> <dd>{{name}}</dd>
+      <dt>Age:</dt>  <dd>{{age}}</dd>
+    {{/people}}
+    {{#morePeople}}
+      <dt>Name:</dt> <dd>{{name}}</dd>
+      <dt>Age:</dt>  <dd>{{age}}</dd>
+    {{/morePeople}}
+  </dl>
+</div>

@@ -1,0 +1,4 @@
+.mixed {
+  required: foo;
+  arg1: non-default-val1;
+  arg2: non-default-val2; }

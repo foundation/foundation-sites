@@ -1,0 +1,20 @@
+@media screen {
+  1 {
+    color: black;
+    height: 8px; } }
+1 {
+  color: red; }
+  @media screen {
+    1 {
+      color: blue;
+      height: 10px; } }
+
+1 {
+  color: beige; }
+  1  2  {
+    color: teal; }
+    @media screen {
+      1  2  {
+        color: orange; }
+        1  2  3  {
+          height: 12px; } }

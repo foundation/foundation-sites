@@ -1,0 +1,12 @@
+$x: ecks;
+$y: why;
+$z: zee;
+
+div {
+  blah: "hey #{$x} ho";
+  blee: hey#{$y}ho;
+  bluh: "foo #{$x}";
+  bleg: foo#{"hey"}bar;
+  //blag: foo#{"-hey-"}"bar"#{"-ho-"};
+  blug: -#{$x}-#{$y}-foo($z);
+}

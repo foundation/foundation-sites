@@ -1,3 +1,18 @@
+meta.foundation-mq-small {
+  font-family: "only screen and (min-width: 768px)";
+  width: 768px;
+}
+
+meta.foundation-mq-medium {
+  font-family: "only screen and (min-width:1280px)";
+  width: 1280px;
+}
+
+meta.foundation-mq-large {
+  font-family: "only screen and (min-width:1440px)";
+  width: 1440px;
+}
+
 *,
 *:before,
 *:after {
@@ -26,10 +41,6 @@ body {
 
 a:hover {
   cursor: pointer;
-}
-
-a:focus {
-  outline: none;
 }
 
 img,

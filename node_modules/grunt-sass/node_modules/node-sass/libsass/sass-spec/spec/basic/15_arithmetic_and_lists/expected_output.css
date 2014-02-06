@@ -1,0 +1,27 @@
+div {
+  a: 3;
+  b: 3.75;
+  c: 1;
+  /* shouldn't eval the following "300" */
+  d: 300;
+  /* increasingly jacked-up edge cases that combine arithmetic with lists */
+  e: 10.5 2 3;
+  f: 123 4 5 6;
+  g: 112 8 9 6;
+  /* shouldn't perform the following division */
+  h: 15 / 3 / 5;
+  /* should perform the following division now */
+  i: 1;
+  /* this too */
+  j: 1;
+  /* and this */
+  k: 5;
+  l: 1;
+  m: 1/2, 1 2 3 url("www.foo.com/blah.png") blah blah;
+  n: 1 2 3, 1 2 3 4 5 6, 7 8 9;
+  o: 9px;
+  p: 5px;
+  q: 2;
+  r: 64em;
+  s: 2.5em;
+  t: 120.750.8 6/7; }

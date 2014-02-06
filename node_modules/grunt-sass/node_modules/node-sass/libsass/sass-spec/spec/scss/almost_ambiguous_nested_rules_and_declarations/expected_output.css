@@ -1,0 +1,6 @@
+foo {
+  bar: baz bang bop biddle woo look at all these elems; }
+  foo bar:baz:bang:bop:biddle:woo:look:at:all:these:pseudoclasses {
+    a: b; }
+  foo bar:baz bang bop biddle woo look at all these elems {
+    a: b; }

@@ -1,0 +1,13 @@
+@foo div foo(bar) {
+  huz: buz;
+}
+
+div {
+  hey: ho;
+}
+
+// @boo 1+2 type-of("hello") div:nth-of-type(2n+1);
+
+1+2 type-of("hello") {
+  hey: ho;
+}

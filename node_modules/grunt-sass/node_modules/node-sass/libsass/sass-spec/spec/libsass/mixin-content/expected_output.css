@@ -1,0 +1,35 @@
+div {
+  /* with a content block */
+  name: foo;
+  stuff: content for foo;
+  name: bar;
+  stuff: content for bar;
+  stuff: content for foo;
+  /* without */
+  name: foo;
+  name: bar;
+  stuff: content for bar; }
+
+span {
+  color: green; }
+  span div {
+    color: red;
+    background: blue;
+    width: 80%; }
+    @media fudge {
+      span div p {
+        font-weight: bold;
+        font-size: 1.2em; }
+        span div p a {
+          text-decoration: underline; } }
+    span div form {
+      color: orange; }
+      @media fudge {
+        span div form p {
+          font-weight: bold;
+          font-size: 1.2em; }
+          span div form p a {
+            text-decoration: underline; } }
+
+* html #logo {
+  background-image: url(/logo.gif); }

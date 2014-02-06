@@ -1,0 +1,3 @@
+[] make config file optional
+[] move all config into Gruntfile and update docs about that option, once next release
+[ ] FIX - don't fail Grunt on failing tests during watch...

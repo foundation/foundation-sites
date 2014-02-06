@@ -1,0 +1,20 @@
+$x: true;
+
+@mixin foobar() {
+  @if $x {
+    $x: false;
+    content: foo;
+  }
+  @else {
+    $x: true;
+    content: bar;
+  }
+}
+
+div {
+  @include foobar();
+  @include foobar();
+  @include foobar();
+  $x: true;
+  @include foobar();
+}

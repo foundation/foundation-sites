@@ -1,0 +1,32 @@
+{
+  "name": "tags",
+  "inflection": "tag",
+  "sortorder": "DESC",
+  "sortby": "title",
+  "items": [
+    {
+      "tag": "feature",
+      "pages": [
+        { "data": { "title": "z" } },
+        { "data": { "title": "y" } },
+        { "data": { "title": "x" } }
+      ]
+    },
+    {
+      "tag": "priority",
+      "pages": [
+        { "data": { "title": "w" } },
+        { "data": { "title": "m" } },
+        { "data": { "title": "d" } }
+      ]
+    },
+    {
+      "tag": "bug",
+      "pages": [
+        { "data": { "title": "c" } },
+        { "data": { "title": "b" } },
+        { "data": { "title": "a" } }
+      ]
+    }
+  ]
+}

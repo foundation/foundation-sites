@@ -1,0 +1,5 @@
+foo {
+  $var: 2;
+  $another-var: 4;
+  a: $var;
+  b: $var + $another-var;}

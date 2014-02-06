@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Layout name: '{{layout}}'</title>
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{assets}}/validation.css">
+  </head>
+  <body>
+    <div class="container">
+      <section id="validate"></section>
+      <div class="row">
+        <!-- Column: sidebar -->
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <!-- pagination -->
+            {{pager pagination}}
+          </div>
+        </div>
+        <!-- Column: content -->
+        <div class="col-md-9" role="main">
+          <div class="docs-section">
+            <div class="docs-header" id="content">
+              <h3>Layout: {{default this.layout 'No layout was used.'}}</h3>
+              <h3>Template: {{page.src}}</h3>
+            </div>
+            {{> body }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{{assets}}/validation.js"></script>
+  </body>
+</html>

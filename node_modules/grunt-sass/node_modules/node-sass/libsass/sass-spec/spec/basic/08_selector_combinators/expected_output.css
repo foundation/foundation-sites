@@ -1,0 +1,6 @@
+a + b > c {
+  color: red;
+  background: gray; }
+  a + b > c d e {
+    color: blue;
+    background: white; }

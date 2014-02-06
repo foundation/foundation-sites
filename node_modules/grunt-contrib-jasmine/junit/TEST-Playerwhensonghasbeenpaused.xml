@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="Player when song has been paused" errors="0" tests="2" failures="0" time="0.002" timestamp="2013-09-02T18:05:12.847Z">
+    
+      <testcase assertions="2" classname="Player when song has been paused" name="should indicate that the song is currently paused" time="0.001">
+        
+      </testcase>
+    
+      <testcase assertions="2" classname="Player when song has been paused" name="should be possible to resume" time="0">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

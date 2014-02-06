@@ -1,0 +1,94 @@
+div {
+  /* number + whatever */
+  font: 5;
+  font: 53%;
+  font: 15px;
+  font: #141414;
+  font: 3hello;
+  font: "3hello";
+  font: 3true;
+  font: 3false;
+  font: 3not-there(hello);
+  font: 3unquote("hello");
+  font: 3a, b, c;
+  font: 3a b c;
+  /* number - whatever */
+  font: 1;
+  font: -47%;
+  font: -9px;
+  font: 3-#111111;
+  font: 3-hello;
+  font: 3-"hello";
+  font: 3-true;
+  font: 3-false;
+  font: 3-not-there(hello);
+  font: 3-unquote("hello");
+  font: 3-a, b, c;
+  font: 3-a b c;
+  /* number * whatever */
+  font: 6;
+  font: 150%;
+  font: 36px;
+  font: #333333;
+  /* number / whatever */
+  font: 3 / 2;
+  font: 1.5;
+  font: 6;
+  font: 6;
+  font: 3/#111111;
+  font: 3/hello;
+  font: 3/"hello";
+  font: 3/true;
+  font: 3/false;
+  font: 3/not-there(hello);
+  font: 3/unquote("hello");
+  font: 3/a, b, c;
+  font: 3/a b c;
+  /* number % whatever */
+  font: 1;
+  /* */
+  /* percentage + whatever */
+  font: 53%;
+  font: 150%;
+  font: 50%hello;
+  font: "50%hello";
+  font: 50%undefined(hello);
+  font: 50%unquote("hello");
+  font: 50%a, b, c;
+  font: 50%a b c;
+  /* percentage - whatever */
+  font: 47%;
+  font: -50%;
+  font: 50%-#111111;
+  font: 50%-hello;
+  font: 50%-"hello";
+  font: 50%-undefined(hello);
+  font: 50%-unquote("hello");
+  font: 50%-a, b, c;
+  font: 50%-a b c;
+  /* percentage * whatever */
+  font: 150%;
+  /* percentage / whatever */
+  font: 16.66667%;
+  font: 0.5;
+  font: 50%/#111111;
+  font: 50%/hello;
+  font: 50%/"hello";
+  font: 50%/undefined(hello);
+  font: 50%/unquote("hello");
+  font: 50%/a, b, c;
+  font: 50%/a b c;
+  /* percentage % whatever */
+  /* percentage / whatever */
+  font: 2%;
+  font: string;
+  blah: 20/#aabbcc;
+  blah: string;
+  blah: 3true;
+  blah: true3;
+  blah: true-5;
+  blah: #0a0b0c;
+  foo: string;
+  foo: 1 2 3a b c;
+  foo: 10em;
+  foo: 1in; }

@@ -1,0 +1,7 @@
+div {
+  foo: center == "center";
+  foo: (a b c) == (a b c);
+  foo: a b c == a b c;
+  foo: compact(1 2 false 4) == compact(1 2 4);
+  foo: compact(1 2 4) == compact(1 2 4, false);
+}

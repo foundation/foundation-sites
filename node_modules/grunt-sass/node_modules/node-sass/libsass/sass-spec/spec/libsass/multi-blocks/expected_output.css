@@ -1,0 +1,44 @@
+a b {
+  color: red; }
+  a b c d {
+    height: 10; }
+  a b e f {
+    width: 12; }
+
+@media all and (min-width: 960px) {
+  b {
+    font-weight: normal; } }
+@media (min-width: 980px) {
+  a {
+    color: red; } }
+@media screen and (all) {
+  /* hey */
+  p {
+    color: blue; }
+    p a {
+      color: green; }
+      p a:after {
+        content: ">>"; }
+
+  span {
+    display: inline-block; } }
+a b c {
+  /* a */
+  blee: blee;
+  /* b */
+  /* c */
+  /* d */
+  blah: blah; }
+  a b c d e f {
+    blah: blah;
+    bloo: bloo; }
+  @media print and (foo: 1 2 3), (bar: 3px hux(muz)), not screen {
+    a b c g h, a b c i j {
+      /* aa */
+      hey: ho;
+      /* bb */
+      /* cc */
+      haa: hoo;
+      /* dd */ }
+      a b c g h k l m, a b c i j k l m {
+        hee: fee; } }

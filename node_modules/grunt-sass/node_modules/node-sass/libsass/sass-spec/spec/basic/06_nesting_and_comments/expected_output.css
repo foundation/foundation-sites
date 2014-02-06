@@ -1,0 +1,36 @@
+/* top level comment -- should be preserved */
+div {
+  /* another comment that should be preserved */
+  color: red;
+  background: blue;
+  /* the next selector should be indented two spaces */
+  margin: 10px 5px; }
+  div span {
+    font-weight: bold;
+    /* yet another comment that should be preserved */
+    display: inline-block; }
+    div span a {
+      text-decoration: none;
+      /* where will this comment go? */
+      color: green;
+      /* what about this comment? */
+      border: 1px bloo blee red; }
+  div empty not_empty {
+    blah: blah;
+    bloo: bloo; }
+  div p {
+    padding: 10px 8%;
+    -webkit-box-sizing: hux; }
+  div h1 {
+    color: "a 'red' and \"blue\" value"; }
+
+/* last comment, top level again --
+   compare the indentation! */
+div {
+  f: g; }
+  div empty span {
+    a: b; }
+  div empty_with_comment {
+    /* hey now */ }
+    div empty_with_comment span {
+      c: d; }

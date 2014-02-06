@@ -1,0 +1,88 @@
+@import "global";
+
+//
+// @variables
+//
+
+$include-html-nav-classes: $include-html-classes !default;
+
+// We use this to control padding.
+$side-nav-padding: rem-calc(14 0) !default;
+
+// We use these to control list styles.
+$side-nav-list-type: none !default;
+$side-nav-list-position: inside !default;
+$side-nav-list-margin: rem-calc(0 0 7 0) !default;
+
+// We use these to control link styles.
+$side-nav-link-color: $primary-color !default;
+$side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%) !default;
+$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%) !default;
+$side-nav-font-size: rem-calc(14) !default;
+$side-nav-font-weight: normal !default;
+$side-nav-font-family: $body-font-family !default;
+$side-nav-active-font-family: $side-nav-font-family !default;
+
+
+
+// We use these to control border styles
+$side-nav-divider-size: 1px !default;
+$side-nav-divider-style: solid !default;
+$side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
+
+
+//
+// @mixins
+//
+
+
+// We use this to style the side-nav
+//
+// $divider-color - Border color of divider. Default: $side-nav-divider-color.
+// $font-size - Font size of nav items. Default: $side-nav-font-size.
+// $link-color - Color of navigation links. Default: $side-nav-link-color.
+// $link-color-hover - Color of navigation links when hovered. Default: $side-nav-link-color-hover.
+@mixin side-nav(
+  $divider-color:$side-nav-divider-color,
+  $font-size:$side-nav-font-size,
+  $link-color:$side-nav-link-color,
+  $link-color-hover:$side-nav-link-color-hover) {
+  display: block;
+  margin: 0;
+  padding: $side-nav-padding;
+  list-style-type: $side-nav-list-type;
+  list-style-position: $side-nav-list-position;
+  font-family: $side-nav-font-family;
+
+  li {
+    margin: $side-nav-list-margin;
+    font-size: $font-size;
+
+    a:not(.button) {
+      display: block;
+      color: $link-color;
+      &:hover,
+      &:focus { color: $link-color-hover; }
+    }
+
+    &.active > a:first-child:not(.button) {
+      color: $side-nav-link-color-active;
+      font-weight: $side-nav-font-weight;
+      font-family: $side-nav-active-font-family;
+    }
+
+    &.divider {
+      border-top: $side-nav-divider-size $side-nav-divider-style;
+      height: 0;
+      padding: 0;
+      list-style: none;
+      border-top-color: $divider-color;
+    }
+  }
+}
+
+@include exports("side-nav") {
+  @if $include-html-nav-classes {
+    .side-nav { @include side-nav; }
+  }
+}

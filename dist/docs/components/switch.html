@@ -1,0 +1,795 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Toggle Switches | Foundation Docs</title>
+    <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/icons/apple-touch-icon-precomposed.png">
+    
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. Javascript, CSS, components, grid and more." />
+    
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2013" />
+    <link href='../assets/css/docs.css' rel='stylesheet' />
+    <script src="../assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+    <div class="marketing off-canvas-wrap">
+      <div class="inner-wrap">
+
+ <title>Foundation: The Most Advanced Responsive Front-end Framework from ZURB</title><meta name="description" content="Foundation from ZURB is the most advanced responsive front-end framework in the world." />
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="http://foundation.zurb.com/">Foundation</a></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/features.html">Features</a></li>
+          <li><a href="http://foundation.zurb.com/learn/faq.html">FAQ</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-washington-post.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/website-examples.html">Website Examples</a></li>
+          <li><a href="http://foundation.zurb.com/learn/video-started-with-foundation.html">Videos</a></li>
+          <li><a href="http://foundation.zurb.com/learn/training.html">Training</a></li>
+          <li><a href="http://foundation.zurb.com/learn/about.html">About</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/templates.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/templates.html">Add-ons</a></li>
+          <li><a href="http://foundation.zurb.com/docs">Docs</a></li>
+          <li><a href="http://foundation.zurb.com/develop/download.html">Download</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          <li><a href="http://foundation.zurb.com/develop/tools.html">Tools</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/images-and-badges.html">Images &amp; Badges</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/business/services.html" class="">Business</a>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+<nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+    <li><label>Setup</label></li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="SCSS">Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Offcanvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/apps" class="footer-link-block apps">
+          <span class="title">Design Apps</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li> 
+    </ul>
+</div>
+
+  </ul>
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+              <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="SCSS">Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Offcanvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <ul>
+      <li>
+        <a href="http://zurb.com/jobs/894-the-tombras-group-front-end-developer" target="_blank">
+          <span class="positionTitle">Front-End Developer</span>
+          <span class="location"><span class="companyName">The Tombras Group</span> in Knoxville, Tennessee</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/jobs/895-the-tombras-group-back-end-developer" target="_blank">
+          <span class="positionTitle">Back End Developer </span>
+          <span class="location"><span class="companyName">The Tombras Group</span> in Knoxville, Tennessee</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/jobs/984-booking-com-team-lead-development" target="_blank">
+          <span class="positionTitle">Team Lead Development</span>
+          <span class="location"><span class="companyName">Booking.com</span> in Amsterdam, the Netherlands</span>
+        </a>
+      </li>
+    </ul>
+    <a id="via" href="http://zurbjobs.com">via <span class="jobs-link">the Job Board from ZURB</span></a>
+  </section>
+
+</div>  
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+
+<h1 id="switch">Switch</h1>
+<h3 class="subheader">Switches can be used instead of regular radio buttons to switch between two options. They are customizable and use styles that won&#39;t show on phones that don&#39;t support media queries. On these devices, they will appear as regular radio buttons.</h3>
+
+<hr>
+<h3>Basic</h3>
+
+<p>You can create a switch using minimal markup.</p>
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="comment">&lt;!-- Default switch --&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;switch&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">&quot;x&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;switch-x&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;radio&quot;</span> <span class="attribute">checked</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">&quot;x&quot;</span> <span class="attribute">onclick</span>=<span class="value">&quot;&quot;</span>&gt;</span>Off<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">&quot;x1&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;switch-x&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;radio&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">&quot;x1&quot;</span> <span class="attribute">onclick</span>=<span class="value">&quot;&quot;</span>&gt;</span>On<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="comment">&lt;!-- Using class options --&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;switch large round&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">&quot;z&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;switch-z&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;radio&quot;</span> <span class="attribute">checked</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">&quot;z&quot;</span> <span class="attribute">onclick</span>=<span class="value">&quot;&quot;</span>&gt;</span>Off<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">&quot;z1&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;switch-z&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;radio&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">&quot;z1&quot;</span> <span class="attribute">onclick</span>=<span class="value">&quot;&quot;</span>&gt;</span>On<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+<div class="small-2 switch tiny">
+  <input id="a" name="switch-a" type="radio" checked>
+  <label for="a" onclick="">Off</label>
+
+  <input id="a1" name="switch-a" type="radio">
+  <label for="a1" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<div class="small-3 switch small">
+  <input id="b" name="switch-b" type="radio" checked>
+  <label for="b" onclick="">Off</label>
+
+  <input id="b1" name="switch-b" type="radio">
+  <label for="b1" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<div class="small-4 switch radius">
+  <input id="c" name="switch-c" type="radio" checked>
+  <label for="c" onclick="">Off</label>
+
+  <input id="c1" name="switch-c" type="radio">
+  <label for="c1" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<div class="small-6 switch large round">
+  <input id="d" name="switch-d" type="radio" checked>
+  <label for="d" onclick="">Off</label>
+
+  <input id="d1" name="switch-d" type="radio">
+  <label for="d1" onclick="">On</label>
+
+  <span></span>
+</div>
+  </div>
+</div>
+
+<p>The class options:</p>
+<ul>
+<li><code>radius</code>: Add this to the the switch container to get a 3px radius paddle and edges</li>
+<li><code>round</code>: Add this to the the switch container to get a round paddle and edges</li>
+<li><code>tiny</code>: Set the height and text of the switch to tiny</li>
+<li><code>small</code>: Set the height and text of the switch to small</li>
+<li><code>large</code>: Set the height and text of the switch to large</li>
+</ul>
+<hr>
+<h2 id="customize-with-sass">Customize With Sass</h2>
+<p>Switches can be easily customized using our Sass variables.</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container">$include-<span class="tag">html</span>-<span class="tag">form</span>-classes<span class="value">: $include-html-classes;</span>
+
+<span class="comment">/* Controlling border styles and background colors for the switch container */</span>
+$switch-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">20</span>%);</span>
+$switch-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$switch-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$switch-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+
+<span class="comment">/* We use these to control the switch heights for our default classes */</span>
+$switch-<span class="attribute">height</span>-tny<span class="value">: <span class="number">22</span>px;</span>
+$switch-<span class="attribute">height</span>-sml<span class="value">: <span class="number">28</span>px;</span>
+$switch-<span class="attribute">height</span>-med<span class="value">: <span class="number">36</span>px;</span>
+$switch-<span class="attribute">height</span>-lrg<span class="value">: <span class="number">44</span>px;</span>
+$switch-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">/* We use these to control default font sizes for our classes. */</span>
+$switch-<span class="attribute">font-size</span>-tny<span class="value">: <span class="number">11</span>px;</span>
+$switch-<span class="attribute">font-size</span>-sml<span class="value">: <span class="number">12</span>px;</span>
+$switch-<span class="attribute">font-size</span>-med<span class="value">: <span class="number">14</span>px;</span>
+$switch-<span class="attribute">font-size</span>-lrg<span class="value">: <span class="number">17</span>px;</span>
+$switch-<span class="tag">label</span>-side-<span class="attribute">padding</span><span class="value">: <span class="number">6</span>px;</span>
+
+<span class="comment">/* We use these to style the switch-paddle */</span>
+$switch-paddle-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$switch-paddle-fade-to-<span class="attribute">color</span><span class="value">: scale-color($switch-paddle-bg, $lightness: -<span class="number">10</span>%);</span>
+$switch-paddle-<span class="attribute">border-color</span><span class="value">: scale-color($switch-paddle-bg, $lightness: -<span class="number">35</span>%);</span>
+$switch-paddle-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$switch-paddle-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$switch-paddle-<span class="attribute">transition</span>-speed<span class="value">: .<span class="number">1</span>s;</span>
+$switch-paddle-<span class="attribute">transition</span>-ease<span class="value">: ease-out;</span>
+$switch-positive-<span class="attribute">color</span><span class="value">: scale-color($success-color, $lightness: <span class="number">94</span>%);</span>
+$switch-negative-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#f5f5f5</span>;</span>
+
+<span class="comment">/* Outline Style for tabbing through switches */</span>
+$switch-<span class="tag">label</span>-<span class="attribute">outline</span><span class="value">: <span class="number">1</span>px dotted <span class="hexcolor">#888</span>;</span></div></code></pre>
+
+
+<p>The markup is pretty simple, you&#39;ll only need a single class or ID on the container to apply the mixin.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"your-class-name"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"z"</span> <span class="attribute">name</span>=<span class="value">"switch-z"</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">checked</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"z"</span> <span class="attribute">onclick</span>=<span class="value">""</span>&gt;</span>Off<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"z1"</span> <span class="attribute">name</span>=<span class="value">"switch-z"</span> <span class="attribute">type</span>=<span class="value">"radio"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"z1"</span> <span class="attribute">onclick</span>=<span class="value">""</span>&gt;</span>On<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+
+<h5 id="quick-mixin">Quick Mixin</h5>
+<p>You can build your labels using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options for changing the key styles, the rest of the defaults can be modified using the available variables. The global mixin looks like this:</p>
+<pre><code class="language-scss"><div class="code-container"><span class="comment">/* Using the default styles */</span>
+<span class="class">.your-class-name</span> { <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch</span>;</span> }</div></code></pre>
+
+
+<div class="switch">
+  <input id="y" name="switch-y" type="radio" checked>
+  <label for="y" onclick="">Off</label>
+
+  <input id="y1" name="switch-y" type="radio">
+  <label for="y1" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<p>There are <strong>ten options</strong> you can customize on the fly when writing this mixin. These controls things like: padding, text size, color and radius. Setting any of these options to false will negate those styles.</p>
+<pre><code class="language-scss"><div class="code-container"><span class="comment">/* Using the available options */</span>
+<span class="class">.your-class-name</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch</span>($transition-speed, $transition-ease, $height, $font-size, $line-height, $paddle-bg, $positive-color, $negative-color, $radius, $base-style);</span>
+}
+
+<span class="comment">/* This sets the speed at which the switch toggles */</span>
+$<span class="attribute">transition</span>-speed<span class="value">: $switch-paddle-transition-speed;</span>
+
+<span class="comment">/* This sets the ease of the switch transition */</span>
+$<span class="attribute">transition</span>-ease<span class="value">: $switch-paddle-transition-ease;</span>
+
+<span class="comment">/* This controls the overall height of the switch */</span>
+$<span class="attribute">height</span><span class="value">: $switch-height-med;</span>
+
+<span class="comment">/* You can set a different font-size for you switch */</span>
+$<span class="attribute">font-size</span><span class="value">: $switch-font-size-med;</span>
+
+<span class="comment">/* You can set a different line-height too */</span>
+$<span class="attribute">line-height</span><span class="value">: <span class="number">2.3</span>em;</span>
+
+<span class="comment">/* This controls the background of the paddle */</span>
+$paddle-bg<span class="value">: $switch-paddle-bg;</span>
+
+<span class="comment">/* Set the box-shadow color for the right side of the switch */</span>
+$positive-<span class="attribute">color</span><span class="value">: $switch-positive-color;</span>
+
+<span class="comment">/* Set the box-shadow color for the left side of the switch */</span>
+$negative-<span class="attribute">color</span><span class="value">: $switch-negative-color;</span>
+
+<span class="comment">/* Set this to true for default radius or any number for complete control */</span>
+$radius<span class="value">: false;</span>
+
+<span class="comment">/* If you set this to false, base styles are left out */</span>
+$<span class="tag">base</span>-<span class="tag">style</span><span class="value">: true;</span></div></code></pre>
+
+
+<hr>
+<h2 id="semantic-markup-with-sass">Semantic Markup With Sass</h2>
+<p>You can create your own switches using our Sass mixins.</p>
+<h3>Basic</h3>
+
+<div class="switch-custom">
+  <input id="w" name="switch-w" type="radio" checked>
+  <label for="w" onclick="">Off</label>
+
+  <input id="w1" name="switch-w" type="radio">
+  <label for="w1" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<h5 id="base-mixin">Base Mixin</h5>
+<p>You also have access to a few internal mixins that can create parts of the button as needed. The base mixin will create a switch base that only include structural styles.</p>
+<pre><code class="language-scss"><div class="code-container"><span class="class">.your-class-name</span> { <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch-base</span>($transition-speed, $transition-ease);</span> }</div></code></pre>
+
+
+<div class="switch-custom-base">
+  <input id="o" name="switch-o" type="radio" checked>
+  <label for="o" onclick="">Off</label>
+
+  <input id="o1" name="switch-o" type="radio">
+  <label for="o1" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<h5 id="size-mixin">Size Mixin</h5>
+<p>The size mixin will let you control the size of the switch, font-size and line-height.</p>
+<pre><code class="language-scss"><div class="code-container"><span class="class">.your-class-name</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch-base</span>($transition-speed, $transition-ease);</span>
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch-size</span>($height, $font-size, $line-height);</span>
+}</div></code></pre>
+
+
+<div class="switch-custom-base size">
+  <input id="o2" name="switch-o2" type="radio" checked>
+  <label for="o2" onclick="">Off</label>
+
+  <input id="o3" name="switch-o2" type="radio">
+  <label for="o3" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<h5 id="style-mixin">Style Mixin</h5>
+<p>The last internal mixin you have access to for buttons is the style mixin. This will help you style background color, text color, positive/negative color, etc.</p>
+<pre><code class="language-scss"><div class="code-container"><span class="class">.your-class-name</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch-base</span>($transition-speed, $transition-ease);</span>
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch-size</span>($height, $font-size, $line-height);</span>
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> switch-style</span>($paddle-bg, $positive-color, $negative-color, $radius, $base-style);</span>
+}</div></code></pre>
+
+
+<div class="switch-custom-base size style">
+  <input id="o4" name="switch-o3" type="radio" checked>
+  <label for="o4" onclick="">Off</label>
+
+  <input id="o5" name="switch-o3" type="radio">
+  <label for="o5" onclick="">On</label>
+
+  <span></span>
+</div>
+
+<p><strong>Note:</strong> <code>rem-calc();</code> is a function we wrote to convert <code>px</code> to <code>rem</code>. It is included in <strong>_variables.scss</strong>.</p>
+<hr>
+<h5 id="sass-errors-">Sass Errors?</h5>
+<p>If the default &quot;foundation&quot; import was commented out, then make sure you import this file:</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/switch"</span>;</span></div></code></pre>
+
+
+
+
+            </div>
+          </div>
+
+          
+<div id="newsletter">
+  <div class="row">
+
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly <a href="http://zurb.com/responsive/reading">Responsive Reading</a> highlights. <a href="http://www.zurb.com/responsive/reading/2012/10">Read Last Month's Edition »</a></p>
+    </div>
+
+
+  <div class="medium-4 columns">
+    <form method="post" action="http://zurb.com/responsive/subscribe">
+      <div class="row collapse margintop-20px">
+        <div class="small-8 medium-8 columns">
+          <input type="text" name="email" placeholder="signup@example.com">
+        </div>
+        <div class="small-4 medium-4 columns">
+          <input type="submit" href="#" class="postfix small button expand" value="Sign Up">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  
+  </div>
+</div>
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation</h3>
+        <p>Foundation is made by <a href="http://zurb.com">ZURB, a product design</a> company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.
+        </p>
+      </div>
+    </div>
+    
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/business/services.html">Foundation Business</a></li>
+              <li><a href="http://zurb.com/responsive">Responsive</a></li>
+              <li><a href="http://zurb.com/apps">Design Apps</a></li>
+              <li><a href="http://foundation.zurb.com/learn/training.html">Foundation Training</a></li>
+            </ul>
+          </div>
+      </div>
+        <div class="medium-4 columns">
+          <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/foundationzurb">@foundationzurb</a></p>
+            <p>Email us at <br> <a href="mailto:foundation@zurb.com">foundation@zurb.com</a><br> or check our <a href="../../support/support.html">support page</a></p>
+          </div>
+        </div>
+      <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay in touch</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/apps" class="footer-link-block apps">
+        <span class="title">Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2013 ZURB, Inc. All rights reserved.</p>
+    </div>          
+  </div>
+</div>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/templates.js"></script>
+    <script src="../assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

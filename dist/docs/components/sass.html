@@ -1,0 +1,2009 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sass | Foundation Docs</title>
+    <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/icons/apple-touch-icon-precomposed.png">
+    
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. Javascript, CSS, components, grid and more." />
+    
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2013" />
+    <link href='../assets/css/docs.css' rel='stylesheet' />
+    <script src="../assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+    <div class="marketing off-canvas-wrap">
+      <div class="inner-wrap">
+
+ <title>Foundation: The Most Advanced Responsive Front-end Framework from ZURB</title><meta name="description" content="Foundation from ZURB is the most advanced responsive front-end framework in the world." />
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="http://foundation.zurb.com/">Foundation</a></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/features.html">Features</a></li>
+          <li><a href="http://foundation.zurb.com/learn/faq.html">FAQ</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-washington-post.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/website-examples.html">Website Examples</a></li>
+          <li><a href="http://foundation.zurb.com/learn/video-started-with-foundation.html">Videos</a></li>
+          <li><a href="http://foundation.zurb.com/learn/training.html">Training</a></li>
+          <li><a href="http://foundation.zurb.com/learn/about.html">About</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/templates.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/templates.html">Add-ons</a></li>
+          <li><a href="http://foundation.zurb.com/docs">Docs</a></li>
+          <li><a href="http://foundation.zurb.com/develop/download.html">Download</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          <li><a href="http://foundation.zurb.com/develop/tools.html">Tools</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/images-and-badges.html">Images &amp; Badges</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/business/services.html" class="">Business</a>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+<nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+    <li><label>Setup</label></li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="SCSS">Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Offcanvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/apps" class="footer-link-block apps">
+          <span class="title">Design Apps</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li> 
+    </ul>
+</div>
+
+  </ul>
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+              <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="SCSS">Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Offcanvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <ul>
+      <li>
+        <a href="http://zurb.com/jobs/894-the-tombras-group-front-end-developer" target="_blank">
+          <span class="positionTitle">Front-End Developer</span>
+          <span class="location"><span class="companyName">The Tombras Group</span> in Knoxville, Tennessee</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/jobs/895-the-tombras-group-back-end-developer" target="_blank">
+          <span class="positionTitle">Back End Developer </span>
+          <span class="location"><span class="companyName">The Tombras Group</span> in Knoxville, Tennessee</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/jobs/984-booking-com-team-lead-development" target="_blank">
+          <span class="positionTitle">Team Lead Development</span>
+          <span class="location"><span class="companyName">Booking.com</span> in Amsterdam, the Netherlands</span>
+        </a>
+      </li>
+    </ul>
+    <a id="via" href="http://zurbjobs.com">via <span class="jobs-link">the Job Board from ZURB</span></a>
+  </section>
+
+</div>  
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+
+<h1 id="sass">Sass</h1>
+<h2 id="using-the-sass-version-of-foundation">Using the Sass Version of Foundation</h2>
+<p><h3 class="subheader">Start using Foundation the way you want, with more control than ever before. We&#39;ve made it really easy to install using Compass so you&#39;ll need a little bit of knowledge before you get going. Visit the <a href="http://compass-style.org">Compass</a> and <a href="http://sass-lang.com">Sass</a> sites to learn the basics if you don&#39;t already know them.</h3></p>
+<hr>
+<h4 id="recommended-installation">Recommended Installation</h4>
+<p>To create your first project using our Compass extension, you&#39;ll need to have the <kbd>zurb-foundation</kbd> gem installed. This will install Foundation and all necessary dependencies. Here&#39;s the command that will do this for you:</p>
+<p><code>[sudo] gem install zurb-foundation</code></p>
+<p><strong>Note: Make sure ZURB isn&#39;t all caps.</strong></p>
+<h5 id="upgrading-your-gem">Upgrading Your Gem</h5>
+<p>To upgrade your gem to the latest public release, just paste this snippet into your command line:</p>
+<p><code>[sudo] gem update zurb-foundation</code></p>
+<h5 id="release-candidates">Release Candidates</h5>
+<p>Stay on top of the latest before official releases by installing release candidates with this command:</p>
+<p><code>[sudo] gem install zurb-foundation --pre</code></p>
+<hr>
+<p><a name="create-compass"></a></p>
+<h2 id="creating-your-first-project">Creating your first project</h2>
+<h5 id="compass-makes-it-really-easy-to-start-a-new-project-since-you-ve-installed-the-foundation-gem-by-now-you-just-need-to-install-compass-to-get-going-">Compass makes it really easy to start a new project. Since you&#39;ve installed the Foundation gem by now, you just need to install Compass to get going.</h5>
+<p>Follow these two steps to get going:</p>
+<ol>
+<li><code>[sudo] gem install compass</code></li>
+<li><code>cd path/to/where-you-want-your-project</code></li>
+<li>run <code>compass create &lt;project-name&gt; -r zurb-foundation --using foundation</code></li>
+</ol>
+<hr>
+<h3 id="using-sass-standalone">Using Sass Standalone</h3>
+<p>With Foundation 4, we&#39;ve removed all dependencies from the framework. This means you can use Foundation with Sass alone and add Compass, Bourbon, or whatever on top of it. To help get going using only Sass, you&#39;ll just need to download the <a href="https://github.com/zurb/foundation/tree/scss-standalone">files from Github</a> and put them into your project directory. From there you just need to <code>@import</code> the parts of Foundation you need.</p>
+<p><a class="small button secondary" href="https://github.com/zurb/foundation/tree/scss-standalone">Sass Standalone Branch on Github</a></p>
+<p>To import all of Foundation:</p>
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"/path/to/foundation"</span>;</span></div></code></pre>
+
+
+<p>If you want to override the built in variables, you can find them on each component page or grab the <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">entire list from Github</a>. From there, you&#39;ll need to link your settings file above your Foundation import, like so:</p>
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"/path/to/settings"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"/path/to/foundation"</span>;</span></div></code></pre>
+
+
+<p>If you want to pick and choose which pieces of Foundation you want, the pieces you need are:</p>
+<pre><code class="language-scss"><div class="code-container"><span class="comment">/* Each individual part that can be added in */</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/global"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/grid"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/visibility"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/block-grid"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/type"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/buttons"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/forms"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/custom-forms"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/button-groups"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/dropdown-buttons"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/split-buttons"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/flex-video"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/section"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/top-bar"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/orbit"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/reveal"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/joyride"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/clearing"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/alert-boxes"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/breadcrumbs"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/keystrokes"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/labels"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/inline-lists"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/pagination"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/panels"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/pricing-tables"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/progress-bars"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/side-nav"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/sub-nav"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/switch"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/magellan"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/tables"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/thumbs"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/tooltips"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/dropdown"</span>;</span></div></code></pre>
+
+
+<hr>
+<h3 id="compiling-your-scss-with-compass">Compiling Your SCSS with Compass</h3>
+<p>To compile your SCSS into CSS you run a simple command that will watch for saves and compile each time you save an SCSS file. From the directory of your <kbd>config.rb</kbd> file, the command is:</p>
+<p><code>compass watch</code></p>
+<p>If you are in a different directory you can use the same command, but navigate to where your <kbd>config.rb</kbd> file is. The command looks like:</p>
+<p><code>compass watch path/to/project</code></p>
+<hr>
+<h3 id="compiling-your-scss-with-sass">Compiling Your SCSS with Sass</h3>
+<p><code>sass --watch your/scss/directory:your/css/directory</code></p>
+<p>You can watch individual files or the entire directory, we usually watch the entire directory when using Sass standalone.</p>
+<hr>
+<p><a name="compass-existing"></a></p>
+<h3 id="working-with-existing-projects">Working with Existing projects</h3>
+<h5 id="there-are-a-couple-situations-to-cover-here-you-might-be-adding-foundation-to-an-existing-project-that-wasn-t-build-with-foundation-or-you-might-be-upgrading-foundation-for-an-already-created-foundation-compass-project-">There are a couple situations to cover here. You might be adding Foundation to an existing project that wasn&#39;t build with Foundation or you might be upgrading Foundation for an already created Foundation Compass project.</h5>
+<h5 id="adding-foundation-to-existing-compass-projects">Adding Foundation to existing Compass projects</h5>
+<p>If you&#39;ve created a project using Compass, but didn&#39;t require the Foundation gem, you&#39;ll need to install it separately. When you do this you&#39;ll get all the necessary files on top of the ones you already have. If something is a duplicate, Compass will ignore it. The steps you&#39;ll take to properly install Foundation are:</p>
+<ol>
+<li>run <code>gem install zurb-foundation</code></li>
+<li>Add <code>require &quot;zurb-foundation&quot;</code> to your config.rb file</li>
+<li><code>cd path/to/your-project</code></li>
+<li>run <code>compass install foundation</code></li>
+</ol>
+<h5 id="adding-foundation-to-existing-rails-projects">Adding Foundation to existing Rails projects</h5>
+<ol>
+<li>Add <code>gem &#39;zurb-foundation&#39;</code> to your Gemfile <strong>under the <code>assets</code> group</strong></li>
+<li>run <strong>bundle install</strong></li>
+<li>run <strong>rails g foundation:install</strong></li>
+</ol>
+<h5 id="upgrading-foundation-compass-projects">Upgrading Foundation Compass projects</h5>
+<p><strong>Javascript Updates:</strong> If you already added Foundation to your Compass project or created the project using Foundation in the first place and just want to copy over any updated Javascripts/image assets to your project, use the provided <kbd>foundation/upgrade</kbd> pattern below:</p>
+<ol>
+<li><code>cd /path/to/your-project</code></li>
+<li>run <code>compass install -r zurb-foundation foundation/upgrade --force</code></li>
+</ol>
+<p><strong>Settings file updates:</strong> You can also upgrade Foundation as a whole, which will override the existing Foundation styles and your settings file. So if you&#39;ve made changes to your settings file and want to make sure your project is on the latest version of Foundation, make sure you backup your settings file before you begin. Alternatively, you can copy/paste the settings from our file and <strong>@import</strong> your own so they don&#39;t get erased.</p>
+<p>We also recommend creating a <code>foundation-overrides.scss</code> file that you can use for your own specific styles. This will ensure that your styles don&#39;t get obliterated upon updating. <strong>We do not recommend directly editing the Foundation files if you plan to upgrade.</strong> To update you project, use the following steps:</p>
+<ol>
+<li>Make sure you&#39;ve updated your system version of the gem or upgrading won&#39;t work.</li>
+<li><code>cd /path/to/your-project</code></li>
+<li>run <code>compass install -r zurb-foundation foundation</code></li>
+</ol>
+<hr>
+<p><a name="project-git"></a></p>
+<h3 id="creating-a-project-from-git">Creating a project from Git</h3>
+<h5 id="sometimes-you-want-to-checkout-what-we-ve-got-even-before-we-decide-to-deploy-a-release-candidate-for-these-situations-you-can-install-using-bundler-">Sometimes you want to checkout what we&#39;ve got even before we decide to deploy a release candidate. For these situations, you can install using Bundler.</h5>
+<p>There are a few different ways to do this, but here&#39;s what we recommend:</p>
+<ol>
+<li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)</li>
+<li>Create a file called <code>Gemfile</code> in the folder you just created with this content:</li>
+</ol>
+<pre><code class="language-ruby"><div class="code-container">source <span class="string">"https://rubygems.org"</span>
+gem <span class="string">"zurb-foundation"</span>, <span class="symbol">:git</span> =&gt; <span class="string">"git@github.com:zurb/foundation.git"</span>
+gem <span class="string">"compass"</span></div></code></pre>
+
+
+<ol>
+<li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+</ol>
+<pre><code class="language-ruby"><div class="code-container">bundle exec compass create . -r zurb-foundation --using foundation</div></code></pre>
+
+
+<ol>
+<li>When you&#39;re working on your project, run: <kbd>bundle exec compass watch</kbd></li>
+</ol>
+<hr>
+<p><a name="multiple-versions"></a></p>
+<h3 id="running-multiple-versions">Running multiple versions</h3>
+<h5 id="if-you-re-planning-on-running-multiple-potentially-incompatible-versions-of-foundation-you-can-isolate-them-using-bundler-as-well-">If you&#39;re planning on running multiple, potentially incompatible versions of Foundation you can isolate them using Bundler as well.</h5>
+<p>There are a few different ways to do this, but here&#39;s what we recommend:</p>
+<ol>
+<li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)</li>
+<li>Create a file called <code>Gemfile</code> in the folder you just created with this content:</li>
+</ol>
+<pre><code class="language-ruby"><div class="code-container">source <span class="string">"https://rubygems.org"</span>
+<span class="comment"># Replace 5.0.0 with the version of Foundation you want to use</span>
+gem <span class="string">"zurb-foundation"</span>, <span class="string">"5.0.0"</span>
+gem <span class="string">"compass"</span></div></code></pre>
+
+
+<ol>
+<li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+</ol>
+<pre><code class="language-bash"><div class="code-container">bundle exec compass create . -r zurb-foundation --using foundation</div></code></pre>
+
+
+<ol>
+<li>When you&#39;re working on your project, run: <kbd>bundle exec compass watch</kbd></li>
+</ol>
+<p>Zach Shnackel recently wrote a good article that goes into a bit more detail on this subject: <a href="http://zslabs.com/articles/versioned-dependencies-with-compass"><a href="http://zslabs.com/articles/versioned-dependencies-with-compass">http://zslabs.com/articles/versioned-dependencies-with-compass</a></a></p>
+<hr>
+<p><a name="codekit"></a></p>
+<h3 id="compiling-with-codekit">Compiling with CodeKit</h3>
+<p>Previous version of Foundation were a bit harder to compile with codekit because of the structure of the Foundation files. We just went through a round of testing with a default project directory, created with the gem. Here are the instructions to follow to get CodeKit working properly:</p>
+<ul>
+<li>Create a project: <kbd>compass create <em>project-name</em> -r zurb-foundation --using foundation</kbd></li>
+<li>Open CodeKit and drag that project folder into the side panel or add it with the &quot;+&quot; button.</li>
+<li>Compile away!</li>
+</ul>
+<p><em>This works with the default version of Sass and Compass that CodeKit comes with. Since Compass isn&#39;t a dependency for Foundation any longer, if you want to use it, make sure you have it installed and @imported at the top of your main .scss file.</em></p>
+<hr>
+<h3 id="foundation-global-settings-and-mixins">Foundation Global Settings and Mixins</h3>
+<p>We&#39;ve included a global settings file that holds variables and mixins that are used throughout the entirety of Foundation. Here&#39;s a look at that file:</p>
+<pre><code class="language-scss"><div class="code-container"><span class="comment">// Foundation Variables</span>
+
+<span class="comment">// The default font-size is set to 100% of the browser style sheet (usually 16px)</span>
+<span class="comment">// for compatibility with browser-based text zoom or user-set defaults.</span>
+$<span class="tag">base</span>-<span class="attribute">font-size</span><span class="value">: <span class="number">100</span>% !default;</span>
+
+$<span class="tag">base</span>-<span class="attribute">line-height</span> is 24px while $<span class="tag">base</span>-<span class="attribute">font-size</span> is 16px
+$<span class="tag">base</span>-<span class="attribute">line-height</span><span class="value">: <span class="number">150</span>%;</span>
+
+<span class="comment">// This is the default html and body font-size for the base em value.</span>
+
+<span class="comment">// Since the typical default browser font-size is 16px, that makes the calculation for grid size.</span>
+<span class="comment">// If you want your base font-size to be a different size and not have it effect grid size too,</span>
+<span class="comment">// set the value of $rem-base to $base-font-size ($rem-base: $base-font-size;)</span>
+$rem-<span class="tag">base</span><span class="value">: <span class="number">16</span>px !default;</span>
+
+<span class="comment">// It strips the unit of measure and returns it</span>
+<span class="at_rule">@function<span class="preprocessor"> strip-unit</span>($num) {</span>
+  <span class="at_rule">@return $num / ($num *<span class="preprocessor"> 0</span> +<span class="preprocessor"> 1</span>);</span>
+}
+
+<span class="comment">// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em\'s.</span>
+<span class="comment">// Call with 1, 2, 3 or 4 parameters, \'px\' is not required but supported</span>
+<span class="comment">// rem-calc(10 20 30px 40);</span>
+<span class="comment">// Space delimited, if you want to delimit using comma\'s, wrap it in another pair of brackets</span>
+<span class="comment">// rem-calc((10, 20, 30, 40px));</span>
+<span class="comment">// Optionally call with a different base (eg: 8px) to calculate em.</span>
+<span class="comment">// rem-calc(16px 32px 48px, 8px);</span>
+<span class="comment">// If you require to comma separate your list</span>
+<span class="comment">// rem-calc((16px, 32px, 48), 8px);</span>
+
+<span class="at_rule">@function<span class="preprocessor"> convert-to-rem</span>($value, $base-value: $rem-base)  {</span>
+  $value<span class="value">: strip-unit($value) / strip-unit($base-value) * <span class="number">1</span>em;</span>
+  <span class="at_rule">@if ($value ==<span class="preprocessor"> 0em</span>) {</span> $value<span class="value">: <span class="number">0</span>;</span> } <span class="comment">// Turn 0em into 0</span>
+  <span class="at_rule">@return $value;</span>
+}
+
+<span class="at_rule">@function<span class="preprocessor"> rem-calc</span>($values, $base-value: $rem-base) {</span>
+  $max<span class="value">: length($values);</span>
+
+  <span class="at_rule">@if $max ==<span class="preprocessor"> 1</span> {</span> <span class="at_rule">@return<span class="preprocessor"> convert-to-rem</span>(<span class="function">nth($values, <span class="number">1</span>)</span>, $base-value);</span> }
+
+  $remValues<span class="value">: ();</span>
+  <span class="at_rule">@<span class="keyword">for</span> $i<span class="preprocessor"> from</span><span class="preprocessor"> 1</span><span class="preprocessor"> through</span> $max {</span>
+    $remValues<span class="value">: append($remValues, convert-to-rem(nth($values, $i), $base-value));</span>
+  }
+  <span class="at_rule">@return $remValues;</span>
+}
+
+<span class="comment">// Support for the old syntax</span>
+
+<span class="at_rule">@function<span class="preprocessor"> emCalc</span>($values){</span>
+  <span class="at_rule">@return<span class="preprocessor"> rem-calc</span>($values);</span>
+}
+
+<span class="comment">// Maybe you want to create rems with pixels</span>
+<span class="comment">// $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}</span>
+<span class="comment">// @function remCalc($pxWidth) {</span>
+<span class="comment">//   @return $pxWidth / $rem-base * 1rem;</span>
+<span class="comment">// }</span>
+
+<span class="comment">// Change whether or not you include browser prefixes</span>
+$experimental<span class="value">: true !default;</span>
+
+<span class="comment">// Various global styles</span>
+
+$<span class="value">default</span>-<span class="attribute">float</span><span class="value">: left;</span>
+
+$<span class="tag">body</span>-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">body</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$<span class="tag">body</span>-<span class="attribute">font-family</span><span class="value">: <span class="string">"Helvetica Neue"</span>, <span class="string">"Helvetica"</span>, Helvetica, Arial, sans-serif;</span>
+$<span class="tag">body</span>-<span class="attribute">font-weight</span><span class="value">: normal;</span>
+$<span class="tag">body</span>-<span class="attribute">font-style</span><span class="value">: normal;</span>
+
+<span class="comment">// Font-smoothing</span>
+
+$<span class="attribute">font</span>-smoothing<span class="value">: antialiased;</span>
+
+<span class="comment">// Text direction settings</span>
+
+$<span class="value">text</span>-<span class="attribute">direction</span><span class="value">: ltr;</span>
+
+<span class="comment">// Colors</span>
+
+$primary-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#2ba6cb</span>;</span>
+$secondary-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#e9e9e9</span>;</span>
+$alert-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#c60f13</span>;</span>
+$success-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#5da423</span>;</span>
+
+<span class="comment">// Make sure border radius matches unless we want it different.</span>
+
+$global-radius<span class="value">: <span class="number">3</span>px;</span>
+$global-rounded<span class="value">: <span class="number">1000</span>px;</span>
+
+<span class="comment">// Inset shadow shiny edges and depressions.</span>
+
+$shiny-edge-size<span class="value">: <span class="number">0</span> <span class="number">1</span>px <span class="number">0</span>;</span>
+$shiny-edge-<span class="attribute">color</span><span class="value">: rgba(<span class="hexcolor">#fff</span>, .<span class="number">5</span>);</span>
+$shiny-edge-active-<span class="attribute">color</span><span class="value">: rgba(<span class="hexcolor">#000</span>, .<span class="number">2</span>);</span>
+
+<span class="comment">// Control whether or not CSS classes come through in the CSS files.</span>
+
+$include-<span class="tag">html</span>-classes<span class="value">: true;</span>
+$include-print-styles<span class="value">: true;</span>
+$include-<span class="tag">html</span>-global-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-type-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-grid-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="attribute">visibility</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="tag">button</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="tag">form</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-custom-<span class="tag">form</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-media-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="tag">section</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-orbit-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-reveal-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-joyride-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-clearing-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-alert-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="tag">nav</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="attribute">top</span>-bar-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="tag">label</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-panel-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-pricing-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-<span class="tag">progress</span>-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-magellan-classes<span class="value">: $include-html-classes;</span>
+$include-<span class="tag">html</span>-tooltip-classes<span class="value">: $include-html-classes;</span>
+
+<span class="comment">// Media Queries</span>
+
+$<span class="tag">small</span>-screen<span class="value">: <span class="number">768</span>px;</span>
+$<span class="value">medium</span>-screen<span class="value">: <span class="number">1280</span>px;</span>
+$large-screen<span class="value">: <span class="number">1440</span>px;</span>
+
+$screen<span class="value">: <span class="string">"only screen"</span>;</span>
+$<span class="tag">small</span><span class="value">: <span class="string">"only screen and (min-width: #{$small-screen})"</span>;</span>
+$<span class="value">medium</span><span class="value">: <span class="string">"only screen and (min-width: #{$medium-screen})"</span>;</span>
+$large<span class="value">: <span class="string">"only screen and (min-width: #{$large-screen})"</span>;</span>
+$landscape<span class="value">: <span class="string">"only screen and (orientation: landscape)"</span>;</span>
+$portrait<span class="value">: <span class="string">"only screen and (orientation: portrait)"</span>;</span>
+
+<span class="comment">// Cursors</span>
+
+<span class="comment">// Custom use example -&gt; $cursor-default-value: url(http://cursors-site.net/path/to/custom/cursor/default.cur),progress;</span>
+
+$<span class="attribute">cursor</span>-<span class="value">crosshair</span>-value<span class="value">: <span class="string">"crosshair"</span>;</span>
+$<span class="attribute">cursor</span>-<span class="value">default</span>-value<span class="value">: <span class="string">"default"</span>;</span>
+$<span class="attribute">cursor</span>-<span class="value">pointer</span>-value<span class="value">: <span class="string">"pointer"</span>;</span>
+$<span class="attribute">cursor</span>-<span class="value">help</span>-value<span class="value">: <span class="string">"help"</span>;</span>
+
+
+<span class="comment">// Grid Variables</span>
+
+
+$row-<span class="attribute">width</span><span class="value">: rem-calc(<span class="number">1000</span>);</span>
+$column-gutter<span class="value">: rem-calc(<span class="number">30</span>);</span>
+$total-<span class="attribute">columns</span><span class="value">: <span class="number">12</span>;</span>
+
+
+<span class="comment">// Block Grid Variables</span>
+
+
+<span class="comment">// Maximum number of block grid elements per row</span>
+
+$<span class="value">block</span>-grid-elements<span class="value">: <span class="number">12</span>;</span>
+$<span class="value">block</span>-grid-<span class="value">default</span>-spacing<span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Enables media queries for block-grid classes. Set to false if writing semantic HTML.</span>
+
+$<span class="value">block</span>-grid-media-queries<span class="value">: true;</span>
+
+
+<span class="comment">// Typography Variables</span>
+
+
+<span class="comment">// Heading font styles</span>
+
+$<span class="tag">header</span>-<span class="attribute">font-family</span><span class="value">: <span class="string">"Helvetica Neue"</span>, <span class="string">"Helvetica"</span>, Helvetica, Arial, sans-serif;</span>
+$<span class="tag">header</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">header</span>-<span class="attribute">font-style</span><span class="value">: normal;</span>
+$<span class="tag">header</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$<span class="tag">header</span>-<span class="attribute">line-height</span><span class="value">: <span class="number">1.4</span>;</span>
+$<span class="tag">header</span>-<span class="attribute">top</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">2</span>em;</span>
+$<span class="tag">header</span>-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">5</span>em;</span>
+$<span class="tag">header</span>-<span class="attribute">text-rendering</span><span class="value">: optimizeLegibility;</span>
+
+<span class="comment">// Heading font sizes</span>
+
+$<span class="tag">h1</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">44</span>);</span>
+$<span class="tag">h2</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">37</span>);</span>
+$<span class="tag">h3</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">27</span>);</span>
+$<span class="tag">h4</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">23</span>);</span>
+$<span class="tag">h5</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">18</span>);</span>
+$<span class="tag">h6</span>-<span class="attribute">font-size</span><span class="value">: <span class="number">1</span>em;</span>
+
+<span class="comment">// Subheaders</span>
+
+$subheader-<span class="attribute">line-height</span><span class="value">: <span class="number">1.4</span>;</span>
+$subheader-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">35</span>%);</span>
+$subheader-<span class="attribute">font-weight</span><span class="value">: <span class="number">300</span>;</span>
+$subheader-<span class="attribute">top</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">2</span>em;</span>
+$subheader-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">5</span>em;</span>
+
+<span class="comment">// &lt;small&gt; styling</span>
+
+$<span class="tag">small</span>-<span class="attribute">font-size</span><span class="value">: <span class="number">60</span>%;</span>
+$<span class="tag">small</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">35</span>%);</span>
+
+<span class="comment">// Paragraphs</span>
+
+$paragraph-<span class="attribute">font-family</span><span class="value">: inherit;</span>
+$paragraph-<span class="attribute">font-weight</span><span class="value">: normal;</span>
+$paragraph-<span class="attribute">font-size</span><span class="value">: <span class="number">1</span>em;</span>
+$paragraph-<span class="attribute">line-height</span><span class="value">: <span class="number">1.6</span>;</span>
+$paragraph-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$paragraph-<span class="tag">aside</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$paragraph-<span class="tag">aside</span>-<span class="attribute">line-height</span><span class="value">: <span class="number">1.35</span>;</span>
+$paragraph-<span class="tag">aside</span>-<span class="attribute">font-style</span><span class="value">: italic;</span>
+
+<span class="comment">// &lt;code&gt; tags</span>
+
+$<span class="tag">code</span>-<span class="attribute">color</span><span class="value">: scale-color($alert-color, $lightness: -<span class="number">27</span>%);</span>
+$<span class="tag">code</span>-<span class="attribute">font-family</span><span class="value">: Consolas, <span class="string">"Liberation Mono"</span>, Courier, monospace;</span>
+$<span class="tag">code</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+
+<span class="comment">// Anchors</span>
+
+$anchor-<span class="attribute">text-decoration</span><span class="value">: none;</span>
+$anchor-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: $primary-color;</span>
+$anchor-<span class="attribute">font</span>-<span class="attribute">color</span>-hover<span class="value">: scale-color($primary-color, $lightness: -<span class="number">14</span>%);</span>
+
+<span class="comment">// &lt;hr&gt; element</span>
+
+$<span class="tag">hr</span>-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">hr</span>-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$<span class="tag">hr</span>-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+$<span class="tag">hr</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Lists</span>
+
+$<span class="attribute">list-style-position</span><span class="value">: outside;</span>
+$list-side-<span class="attribute">margin</span><span class="value">: <span class="number">0</span>;</span>
+$list-nested-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$definition-list-<span class="tag">header</span>-weight<span class="value">: bold;</span>
+$definition-list-<span class="tag">header</span>-<span class="attribute">margin-bottom</span><span class="value">: .<span class="number">3</span>em;</span>
+$definition-list-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">12</span>);</span>
+
+<span class="comment">// Blockquotes</span>
+
+$<span class="tag">blockquote</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">35</span>%);</span>
+$<span class="tag">blockquote</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">9</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">19</span>);</span>
+$<span class="tag">blockquote</span>-<span class="attribute">border</span><span class="value">: <span class="number">1</span>px solid <span class="hexcolor">#ddd</span>;</span>
+$<span class="tag">blockquote</span>-<span class="tag">cite</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">13</span>);</span>
+$<span class="tag">blockquote</span>-<span class="tag">cite</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">23</span>%);</span>
+$<span class="tag">blockquote</span>-<span class="tag">cite</span>-<span class="tag">link</span>-<span class="attribute">color</span><span class="value">: $blockquote-cite-font-color;</span>
+
+<span class="comment">// Acronym</span>
+
+$<span class="tag">acronym</span>-<span class="value">underline</span><span class="value">: <span class="number">1</span>px dotted <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// Padding and margin</span>
+
+$microformat-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">10</span>, <span class="number">12</span>);</span>
+$microformat-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">0</span>, <span class="number">0</span>, <span class="number">20</span>, <span class="number">0</span>);</span>
+
+<span class="comment">// Border styles</span>
+
+$microformat-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$microformat-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$microformat-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// Full name font styles</span>
+
+$microformat-fullname-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$microformat-fullname-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+
+<span class="comment">// Summary font styles</span>
+
+$microformat-summary-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+
+<span class="comment">// &lt;abbr&gt; padding</span>
+
+$microformat-<span class="tag">abbr</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">0</span>, <span class="number">1</span>);</span>
+
+<span class="comment">// &lt;abbr&gt; font styles</span>
+
+$microformat-<span class="tag">abbr</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$microformat-<span class="tag">abbr</span>-<span class="attribute">font</span>-decoration<span class="value">: none;</span>
+
+
+<span class="comment">// Form Variables</span>
+
+
+<span class="comment">// Base for lots of form spacing and positioning styles</span>
+
+$<span class="tag">form</span>-spacing<span class="value">: rem-calc(<span class="number">16</span>);</span>
+
+<span class="comment">// Labels</span>
+
+$<span class="tag">form</span>-<span class="tag">label</span>-<span class="value">pointer</span><span class="value">: pointer;</span>
+$<span class="tag">form</span>-<span class="tag">label</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$<span class="tag">form</span>-<span class="tag">label</span>-<span class="attribute">font-weight</span><span class="value">: <span class="number">500</span>;</span>
+$<span class="tag">form</span>-<span class="tag">label</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color(<span class="hexcolor">#000</span>, $lightness: <span class="number">30</span>%);</span>
+$<span class="tag">form</span>-<span class="tag">label</span>-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">3</span>);</span>
+$<span class="tag">input</span>-<span class="attribute">font-family</span><span class="value">: inherit;</span>
+$<span class="tag">input</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.75</span>);</span>
+$<span class="tag">input</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$<span class="tag">input</span>-bg-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">input</span>-focus-bg-<span class="attribute">color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">2</span>%);</span>
+$<span class="tag">input</span>-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">20</span>%);</span>
+$<span class="tag">input</span>-focus-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">40</span>%);</span>
+$<span class="tag">input</span>-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$<span class="tag">input</span>-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">input</span>-<span class="value">disabled</span>-bg<span class="value">: <span class="hexcolor">#ddd</span>;</span>
+$<span class="tag">input</span>-<span class="attribute">box-shadow</span><span class="value">: inset <span class="number">0</span> <span class="number">1</span>px <span class="number">2</span>px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>);</span>
+$<span class="tag">input</span>-include-glowing-effect<span class="value">: true;</span>
+
+<span class="comment">// Fieldset border and spacing.</span>
+
+$<span class="tag">fieldset</span>-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$<span class="tag">fieldset</span>-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">fieldset</span>-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+$<span class="tag">fieldset</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$<span class="tag">fieldset</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">18</span>, <span class="number">0</span>);</span>
+
+<span class="comment">// Legends</span>
+
+$<span class="tag">legend</span>-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">legend</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">legend</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">0</span>, <span class="number">3</span>);</span>
+
+<span class="comment">// Prefix and postfix input elements</span>
+
+$<span class="tag">input</span>-prefix-bg<span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">5</span>%);</span>
+$<span class="tag">input</span>-prefix-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">20</span>%);</span>
+$<span class="tag">input</span>-prefix-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">input</span>-prefix-<span class="attribute">border</span>-type<span class="value">: solid;</span>
+$<span class="tag">input</span>-prefix-<span class="attribute">overflow</span><span class="value">: hidden;</span>
+$<span class="tag">input</span>-prefix-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$<span class="tag">input</span>-prefix-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#fff</span>;</span>
+
+<span class="comment">// Error states for inputs and labels</span>
+
+$<span class="tag">input</span>-error-message-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">6</span>, <span class="number">4</span>);</span>
+$<span class="tag">input</span>-error-message-<span class="attribute">top</span><span class="value">: -($form-spacing) - rem-calc(<span class="number">5</span>);</span>
+$<span class="tag">input</span>-error-message-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">12</span>);</span>
+$<span class="tag">input</span>-error-message-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">input</span>-error-message-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">input</span>-error-message-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#333</span>;</span>
+
+<span class="comment">// Glowing effect of inputs when focused</span>
+
+$glowing-effect-fade-<span class="tag">time</span><span class="value">: <span class="number">0.45</span>s;</span>
+$glowing-effect-<span class="attribute">color</span><span class="value">: $input-focus-border-color;</span>
+
+
+<span class="comment">// Button Variables</span>
+
+
+<span class="comment">// Padding for buttons.</span>
+
+$<span class="tag">button</span>-tny<span class="value">: rem-calc(<span class="number">7</span>);</span>
+$<span class="tag">button</span>-sml<span class="value">: rem-calc(<span class="number">9</span>);</span>
+$<span class="tag">button</span>-med<span class="value">: rem-calc(<span class="number">12</span>);</span>
+$<span class="tag">button</span>-lrg<span class="value">: rem-calc(<span class="number">16</span>);</span>
+
+<span class="comment">// Display property.</span>
+
+$<span class="tag">button</span>-<span class="attribute">display</span><span class="value">: inline-block;</span>
+$<span class="tag">button</span>-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Button text styles.</span>
+
+$<span class="tag">button</span>-<span class="attribute">font-family</span><span class="value">: inherit;</span>
+$<span class="tag">button</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">button</span>-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#333</span>;</span>
+$<span class="tag">button</span>-<span class="attribute">font</span>-med<span class="value">: rem-calc(<span class="number">16</span>);</span>
+$<span class="tag">button</span>-<span class="attribute">font</span>-tny<span class="value">: rem-calc(<span class="number">11</span>);</span>
+$<span class="tag">button</span>-<span class="attribute">font</span>-sml<span class="value">: rem-calc(<span class="number">13</span>);</span>
+$<span class="tag">button</span>-<span class="attribute">font</span>-lrg<span class="value">: rem-calc(<span class="number">20</span>);</span>
+$<span class="tag">button</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">button</span>-<span class="attribute">font</span>-align<span class="value">: center;</span>
+
+<span class="comment">// Various hover effects.</span>
+
+$<span class="tag">button</span>-function-factor<span class="value">: <span class="number">10</span>%;</span>
+
+<span class="comment">// Button border styles.</span>
+
+$<span class="tag">button</span>-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">button</span>-<span class="attribute">border-style</span><span class="value">: solid;</span>
+
+<span class="comment">// Radius used throughout the core.</span>
+
+$<span class="tag">button</span>-radius<span class="value">: $global-radius;</span>
+
+<span class="comment">// Opacity for disabled buttons.</span>
+
+$<span class="tag">button</span>-<span class="value">disabled</span>-<span class="attribute">opacity</span><span class="value">: <span class="number">0.6</span>;</span>
+
+
+<span class="comment">// Button Groups</span>
+
+
+<span class="comment">// Sets the margin for the right side by default, and the left margin if right-to-left direction is used</span>
+
+$<span class="tag">button</span>-bar-<span class="attribute">margin</span>-opposite<span class="value">: rem-calc(<span class="number">10</span>);</span>
+
+
+<span class="comment">// Dropdown Button Variables</span>
+
+
+<span class="comment">// Color of the pip in dropdown buttons</span>
+
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#333</span>;</span>
+
+<span class="comment">// Tiny dropdown buttons</span>
+
+$dropdown-<span class="tag">button</span>-<span class="attribute">padding</span>-tny<span class="value">: $button-tny * <span class="number">5</span>;</span>
+$dropdown-<span class="tag">button</span>-pip-size-tny<span class="value">: $button-tny;</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">right</span>-tny<span class="value">: $button-tny * <span class="number">2</span>;</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">top</span>-tny<span class="value">: -$button-tny / <span class="number">2</span> + rem-calc(<span class="number">1</span>);</span>
+
+<span class="comment">// Small dropdown buttons</span>
+
+$dropdown-<span class="tag">button</span>-<span class="attribute">padding</span>-sml<span class="value">: $button-sml * <span class="number">5</span>;</span>
+$dropdown-<span class="tag">button</span>-pip-size-sml<span class="value">: $button-sml;</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">right</span>-sml<span class="value">: $button-sml * <span class="number">2</span>;</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">top</span>-sml<span class="value">: -$button-sml / <span class="number">2</span> + rem-calc(<span class="number">1</span>);</span>
+
+<span class="comment">// Medium dropdown buttons</span>
+
+$dropdown-<span class="tag">button</span>-<span class="attribute">padding</span>-med<span class="value">: $button-med * <span class="number">4</span> + rem-calc(<span class="number">3</span>);</span>
+$dropdown-<span class="tag">button</span>-pip-size-med<span class="value">: $button-med - rem-calc(<span class="number">3</span>);</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">right</span>-med<span class="value">: $button-med * <span class="number">2</span>;</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">top</span>-med<span class="value">: -$button-med / <span class="number">2</span> + rem-calc(<span class="number">2</span>);</span>
+
+<span class="comment">// Large dropdown buttons</span>
+
+$dropdown-<span class="tag">button</span>-<span class="attribute">padding</span>-lrg<span class="value">: $button-lrg * <span class="number">4</span>;</span>
+$dropdown-<span class="tag">button</span>-pip-size-lrg<span class="value">: $button-lrg - rem-calc(<span class="number">6</span>);</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">right</span>-lrg<span class="value">: $button-lrg + rem-calc(<span class="number">12</span>);</span>
+$dropdown-<span class="tag">button</span>-pip-<span class="attribute">top</span>-lrg<span class="value">: -$button-lrg / <span class="number">2</span> + rem-calc(<span class="number">3</span>);</span>
+
+
+<span class="comment">// Split Button Variables</span>
+
+
+<span class="comment">// Shared styles for Split Buttons</span>
+
+$split-<span class="tag">button</span>-function-factor<span class="value">: <span class="number">15</span>%;</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#333</span>;</span>
+$split-<span class="tag">button</span>-active-bg-tint<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>);</span>
+
+<span class="comment">// Tiny split buttons</span>
+
+$split-<span class="tag">button</span>-<span class="attribute">padding</span>-tny<span class="value">: $button-tny * <span class="number">9</span>;</span>
+$split-<span class="tag">button</span>-<span class="tag">span</span>-<span class="attribute">width</span>-tny<span class="value">: $button-tny * <span class="number">6.5</span>;</span>
+$split-<span class="tag">button</span>-pip-size-tny<span class="value">: $button-tny;</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">top</span>-tny<span class="value">: $button-tny * <span class="number">2</span>;</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">left</span>-tny<span class="value">: rem-calc(-<span class="number">5</span>);</span>
+
+<span class="comment">// Small split buttons</span>
+
+$split-<span class="tag">button</span>-<span class="attribute">padding</span>-sml<span class="value">: $button-sml * <span class="number">7</span>;</span>
+$split-<span class="tag">button</span>-<span class="tag">span</span>-<span class="attribute">width</span>-sml<span class="value">: $button-sml * <span class="number">5</span>;</span>
+$split-<span class="tag">button</span>-pip-size-sml<span class="value">: $button-sml;</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">top</span>-sml<span class="value">: $button-sml * <span class="number">1.5</span>;</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">left</span>-sml<span class="value">: rem-calc(-<span class="number">9</span>);</span>
+
+<span class="comment">// Medium split buttons</span>
+
+$split-<span class="tag">button</span>-<span class="attribute">padding</span>-med<span class="value">: $button-med * <span class="number">6.4</span>;</span>
+$split-<span class="tag">button</span>-<span class="tag">span</span>-<span class="attribute">width</span>-med<span class="value">: $button-med * <span class="number">4</span>;</span>
+$split-<span class="tag">button</span>-pip-size-med<span class="value">: $button-med - rem-calc(<span class="number">3</span>);</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">top</span>-med<span class="value">: $button-med * <span class="number">1.5</span>;</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">left</span>-med<span class="value">: rem-calc(-<span class="number">9</span>);</span>
+
+<span class="comment">// Large split buttons</span>
+
+$split-<span class="tag">button</span>-<span class="attribute">padding</span>-lrg<span class="value">: $button-lrg * <span class="number">6</span>;</span>
+$split-<span class="tag">button</span>-<span class="tag">span</span>-<span class="attribute">width</span>-lrg<span class="value">: $button-lrg * <span class="number">3.75</span>;</span>
+$split-<span class="tag">button</span>-pip-size-lrg<span class="value">: $button-lrg - rem-calc(<span class="number">6</span>);</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">top</span>-lrg<span class="value">: $button-lrg + rem-calc(<span class="number">5</span>);</span>
+$split-<span class="tag">button</span>-pip-<span class="attribute">left</span>-lrg<span class="value">: rem-calc(-<span class="number">9</span>);</span>
+
+
+<span class="comment">// Alert Variables</span>
+
+
+<span class="comment">// Alert padding</span>
+
+$alert-<span class="attribute">padding-top</span><span class="value">: rem-calc(<span class="number">11</span>);</span>
+$alert-<span class="attribute">padding</span>-<span class="value">default</span>-<span class="attribute">float</span><span class="value">: $alert-padding-top;</span>
+$alert-<span class="attribute">padding</span>-opposite-<span class="attribute">direction</span><span class="value">: $alert-padding-top + rem-calc(<span class="number">10</span>);</span>
+$alert-<span class="attribute">padding-bottom</span><span class="value">: $alert-padding-top + rem-calc(<span class="number">1</span>);</span>
+
+<span class="comment">// Text style</span>
+
+$alert-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$alert-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$alert-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$alert-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: scale-color($secondary-color, $lightness: -<span class="number">66</span>%);</span>
+
+<span class="comment">// Hover effect</span>
+
+$alert-function-factor<span class="value">: -<span class="number">14</span>%;</span>
+
+<span class="comment">// Border Styles</span>
+
+$alert-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$alert-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$alert-<span class="attribute">border-color</span><span class="value">: scale-color($primary-color, $lightness: $alert-function-factor);</span>
+$alert-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Close Button style</span>
+
+$alert-close-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$alert-close-<span class="attribute">position</span><span class="value">: rem-calc(<span class="number">5</span>);</span>
+$alert-close-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">22</span>);</span>
+$alert-close-<span class="attribute">opacity</span><span class="value">: <span class="number">0.3</span>;</span>
+$alert-close-<span class="attribute">opacity</span>-hover<span class="value">: <span class="number">0.5</span>;</span>
+$alert-close-<span class="attribute">padding</span><span class="value">: <span class="number">5</span>px <span class="number">4</span>px <span class="number">4</span>px;</span>
+
+<span class="comment">// Border radius</span>
+
+$alert-radius<span class="value">: $global-radius;</span>
+
+
+<span class="comment">// Breadcrumb Variables</span>
+
+<span class="comment">// Background color for the breadcrumb container.</span>
+
+$crumb-bg<span class="value">: scale-color($secondary-color, $lightness: <span class="number">55</span>%);</span>
+
+<span class="comment">// Padding around the breadcrumbs.</span>
+
+$crumb-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">6</span>, <span class="number">14</span>, <span class="number">9</span>);</span>
+$crumb-side-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">12</span>);</span>
+
+<span class="comment">// Border styles.</span>
+
+$crumb-function-factor<span class="value">: -<span class="number">10</span>%;</span>
+$crumb-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px;</span>
+$crumb-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$crumb-<span class="attribute">border-color</span><span class="value">: scale-color($crumb-bg, $lightness: $crumb-function-factor);</span>
+$crumb-radius<span class="value">: $global-radius;</span>
+
+<span class="comment">// Various text styles for breadcrumbs.</span>
+
+$crumb-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">11</span>);</span>
+$crumb-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: $primary-color;</span>
+$crumb-<span class="attribute">font</span>-<span class="attribute">color</span>-current<span class="value">: <span class="hexcolor">#333</span>;</span>
+$crumb-<span class="attribute">font</span>-<span class="attribute">color</span>-unavailable<span class="value">: <span class="hexcolor">#999</span>;</span>
+$crumb-<span class="attribute">font</span>-<span class="attribute">transform</span><span class="value">: uppercase;</span>
+$crumb-<span class="tag">link</span>-decor<span class="value">: underline;</span>
+
+<span class="comment">// Slash between breadcrumbs</span>
+
+$crumb-slash-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#aaa</span>;</span>
+$crumb-slash<span class="value">: <span class="string">"/"</span>;</span>
+
+
+<span class="comment">// Clearing Variables</span>
+
+<span class="comment">// Background colors for parts of Clearing.</span>
+
+$clearing-bg<span class="value">: <span class="hexcolor">#111</span>;</span>
+$clearing-<span class="tag">caption</span>-bg<span class="value">: $clearing-bg;</span>
+$clearing-carousel-bg<span class="value">: <span class="hexcolor">#111</span>;</span>
+$clearing-<span class="tag">img</span>-bg<span class="value">: $clearing-bg;</span>
+
+<span class="comment">// Close button</span>
+
+$clearing-close-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$clearing-close-size<span class="value">: <span class="number">40</span>px;</span>
+
+<span class="comment">// Style the arrows</span>
+
+$clearing-arrow-size<span class="value">: <span class="number">16</span>px;</span>
+$clearing-arrow-<span class="attribute">color</span><span class="value">: $clearing-close-color;</span>
+
+<span class="comment">// Style captions</span>
+
+$clearing-<span class="tag">caption</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$clearing-<span class="tag">caption</span>-<span class="attribute">padding</span><span class="value">: <span class="number">10</span>px <span class="number">30</span>px;</span>
+
+<span class="comment">// Make the image and carousel height and style</span>
+
+$clearing-active-<span class="tag">img</span>-<span class="attribute">height</span><span class="value">: <span class="number">75</span>%;</span>
+$clearing-carousel-<span class="attribute">height</span><span class="value">: <span class="number">150</span>px;</span>
+$clearing-carousel-thumb-<span class="attribute">width</span><span class="value">: <span class="number">175</span>px;</span>
+$clearing-carousel-thumb-active-<span class="attribute">border</span><span class="value">: <span class="number">4</span>px solid rgb(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);</span>
+
+
+<span class="comment">// Custom Form Variables</span>
+
+<span class="comment">// Basic form styles input styles</span>
+
+$custom-<span class="tag">form</span>-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ccc</span>;</span>
+$custom-<span class="tag">form</span>-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px;</span>
+$custom-<span class="tag">form</span>-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$custom-<span class="tag">form</span>-bg-<span class="value">disabled</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+$custom-<span class="tag">form</span>-<span class="tag">input</span>-size<span class="value">: <span class="number">16</span>px;</span>
+$custom-<span class="tag">form</span>-check-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$custom-<span class="tag">form</span>-check-size<span class="value">: <span class="number">14</span>px;</span>
+$custom-<span class="tag">form</span>-radio-size<span class="value">: <span class="number">8</span>px;</span>
+$custom-<span class="tag">form</span>-checkbox-radius<span class="value">: <span class="number">0</span>;</span>
+
+<span class="comment">// Custom select form element.</span>
+
+$custom-<span class="tag">select</span>-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$custom-<span class="tag">select</span>-fade-to-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#f3f3f3</span>;</span>
+$custom-<span class="tag">select</span>-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+$custom-<span class="tag">select</span>-triangle-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#aaa</span>;</span>
+$custom-<span class="tag">select</span>-triangle-<span class="attribute">color</span>-open<span class="value">: <span class="hexcolor">#222</span>;</span>
+$custom-<span class="tag">select</span>-<span class="attribute">height</span><span class="value">: rem-calc(<span class="number">13</span>) + ($form-spacing * <span class="number">1.5</span>);</span>
+$custom-<span class="tag">select</span>-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$custom-<span class="tag">select</span>-<span class="attribute">font</span>-<span class="attribute">color</span>-selected<span class="value">: <span class="hexcolor">#141414</span>;</span>
+$custom-<span class="tag">select</span>-<span class="value">disabled</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#888</span>;</span>
+
+<span class="comment">// Custom select dropdown element.</span>
+
+$custom-dropdown-<span class="attribute">height</span><span class="value">: <span class="number">200</span>px;</span>
+$custom-dropdown-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$custom-dropdown-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">20</span>%);</span>
+$custom-dropdown-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$custom-dropdown-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$custom-dropdown-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#555</span>;</span>
+$custom-dropdown-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$custom-dropdown-<span class="attribute">color</span>-selected<span class="value">: <span class="hexcolor">#eeeeee</span>;</span>
+$custom-dropdown-<span class="attribute">font</span>-<span class="attribute">color</span>-selected<span class="value">: <span class="hexcolor">#000</span>;</span>
+$custom-dropdown-shadow<span class="value">: <span class="number">0</span> <span class="number">2</span>px <span class="number">2</span>px <span class="number">0</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>);</span>
+$custom-dropdown-offset-<span class="attribute">top</span><span class="value">: none;</span>
+$custom-dropdown-list-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">4</span>);</span>
+$custom-dropdown-<span class="attribute">left</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">6</span>);</span>
+$custom-dropdown-<span class="attribute">right</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">38</span>);</span>
+$custom-dropdown-<span class="value">list-item</span>-<span class="attribute">min-height</span><span class="value">: rem-calc(<span class="number">24</span>);</span>
+
+
+<span class="comment">// Dropdown Variables</span>
+
+<span class="comment">// Height and width styles.</span>
+
+$f-dropdown-<span class="attribute">max-width</span><span class="value">: <span class="number">200</span>px;</span>
+$f-dropdown-<span class="attribute">height</span><span class="value">: auto;</span>
+$f-dropdown-<span class="attribute">max-height</span><span class="value">: none;</span>
+$f-dropdown-<span class="attribute">margin-top</span><span class="value">: <span class="number">2</span>px;</span>
+
+<span class="comment">// Background color</span>
+
+$f-dropdown-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+
+<span class="comment">// Border styles for dropdowns.</span>
+
+$f-dropdown-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$f-dropdown-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$f-dropdown-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">20</span>%);</span>
+
+<span class="comment">// Triangle pip.</span>
+
+$f-dropdown-triangle-size<span class="value">: <span class="number">6</span>px;</span>
+$f-dropdown-triangle-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$f-dropdown-triangle-side-offset<span class="value">: <span class="number">10</span>px;</span>
+
+<span class="comment">// List elements.</span>
+
+$f-dropdown-<span class="attribute">list-style</span><span class="value">: none;</span>
+$f-dropdown-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#555</span>;</span>
+$f-dropdown-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$f-dropdown-list-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">5</span>, <span class="number">10</span>);</span>
+$f-dropdown-<span class="attribute">line-height</span><span class="value">: rem-calc(<span class="number">18</span>);</span>
+$f-dropdown-list-hover-bg<span class="value">: <span class="hexcolor">#eeeeee</span>;</span>
+$dropdown-mobile-<span class="attribute">left</span><span class="value">: <span class="number">0</span>;</span>
+
+<span class="comment">// When the dropdown has custom content.</span>
+
+$f-dropdown-<span class="attribute">content</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+
+<span class="comment">// Flex Video Variables</span>
+
+
+<span class="comment">// Video container padding and margins</span>
+
+$<span class="attribute">flex</span>-<span class="tag">video</span>-<span class="attribute">padding-top</span><span class="value">: rem-calc(<span class="number">25</span>);</span>
+$<span class="attribute">flex</span>-<span class="tag">video</span>-<span class="attribute">padding-bottom</span><span class="value">: <span class="number">67.5</span>%;</span>
+$<span class="attribute">flex</span>-<span class="tag">video</span>-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">16</span>);</span>
+
+<span class="comment">// Widescreen bottom padding</span>
+
+$<span class="attribute">flex</span>-<span class="tag">video</span>-widescreen-<span class="attribute">padding-bottom</span><span class="value">: <span class="number">57.25</span>%;</span>
+
+
+<span class="comment">// Inline List Variables</span>
+
+
+<span class="comment">// Margins and padding of the inline list.</span>
+
+$<span class="value">inline</span>-list-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">17</span>, -<span class="number">22</span>);</span>
+$<span class="value">inline</span>-list-<span class="attribute">margin</span><span class="value">: <span class="number">0</span> <span class="number">0</span>;</span>
+$<span class="value">inline</span>-list-<span class="attribute">padding</span><span class="value">: <span class="number">0</span>;</span>
+
+<span class="comment">// Overflow of the inline list.</span>
+
+$<span class="value">inline</span>-list-<span class="attribute">overflow</span><span class="value">: hidden;</span>
+
+<span class="comment">// List items</span>
+
+$<span class="value">inline</span>-list-<span class="attribute">display</span><span class="value">: block;</span>
+
+<span class="comment">// Elments within list items</span>
+
+$<span class="value">inline</span>-list-children-<span class="attribute">display</span><span class="value">: block;</span>
+
+
+<span class="comment">// Joyride Variables</span>
+
+
+<span class="comment">// Joyride styles</span>
+
+$joyride-tip-bg<span class="value">: rgb(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span>
+$joyride-tip-<span class="value">default</span>-<span class="attribute">width</span><span class="value">: <span class="number">300</span>px;</span>
+$joyride-tip-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">18</span>, <span class="number">20</span>, <span class="number">24</span>);</span>
+$joyride-tip-<span class="attribute">border</span><span class="value">: solid <span class="number">1</span>px <span class="hexcolor">#555</span>;</span>
+$joyride-tip-radius<span class="value">: <span class="number">4</span>px;</span>
+$joyride-tip-<span class="attribute">position</span>-offset<span class="value">: <span class="number">22</span>px;</span>
+
+<span class="comment">// Tip font styles</span>
+
+$joyride-tip-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$joyride-tip-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$joyride-tip-<span class="tag">header</span>-weight<span class="value">: bold;</span>
+
+<span class="comment">// Changes the nub size</span>
+
+$joyride-tip-nub-size<span class="value">: <span class="number">14</span>px;</span>
+
+<span class="comment">// Adjusts the styles for the timer when its enabled</span>
+
+$joyride-tip-timer-<span class="attribute">width</span><span class="value">: <span class="number">50</span>px;</span>
+$joyride-tip-timer-<span class="attribute">height</span><span class="value">: <span class="number">3</span>px;</span>
+$joyride-tip-timer-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#666</span>;</span>
+
+<span class="comment">// Changes up the styles for the close button</span>
+
+$joyride-tip-close-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#777</span>;</span>
+$joyride-tip-close-size<span class="value">: <span class="number">30</span>px;</span>
+$joyride-tip-close-weight<span class="value">: normal;</span>
+
+<span class="comment">// When Joyride is filling the screen, style for the bg</span>
+
+$joyride-screenfill<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>);</span>
+
+
+<span class="comment">// Keystroke Variables</span>
+
+
+<span class="comment">// Text styles.</span>
+
+$keystroke-<span class="attribute">font</span><span class="value">: <span class="string">"Consolas"</span>, <span class="string">"Menlo"</span>, <span class="string">"Courier"</span>, monospace;</span>
+$keystroke-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+$keystroke-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$keystroke-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$keystroke-function-factor<span class="value">: -<span class="number">7</span>%;</span>
+
+<span class="comment">// Keystroke padding.</span>
+
+$keystroke-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">2</span>, <span class="number">4</span>, <span class="number">0</span>);</span>
+
+<span class="comment">// Background and border styles.</span>
+
+$keystroke-bg<span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: $keystroke-function-factor);</span>
+$keystroke-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$keystroke-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$keystroke-<span class="attribute">border-color</span><span class="value">: scale-color($keystroke-bg, $lightness: $keystroke-function-factor);</span>
+$keystroke-radius<span class="value">: $global-radius;</span>
+
+
+<span class="comment">// Label Variables</span>
+
+
+<span class="comment">// Style the labels</span>
+
+$<span class="tag">label</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">3</span>, <span class="number">10</span>, <span class="number">4</span>);</span>
+$<span class="tag">label</span>-radius<span class="value">: $global-radius;</span>
+
+<span class="comment">// We use these to style the label text</span>
+
+$<span class="tag">label</span>-<span class="attribute">font</span>-sizing<span class="value">: rem-calc(<span class="number">14</span>);</span>
+$<span class="tag">label</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">label</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$<span class="tag">label</span>-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#fff</span>;</span>
+
+
+<span class="comment">// Magellan Variables</span>
+
+
+<span class="comment">// Basic visual styles</span>
+
+$magellan-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$magellan-<span class="attribute">padding</span><span class="value">: <span class="number">10</span>px;</span>
+
+
+<span class="comment">// Orbit Settings</span>
+
+
+<span class="comment">// Caption styles</span>
+
+$orbit-container-bg<span class="value">: <span class="hexcolor">#f5f5f5</span>;</span>
+$orbit-<span class="tag">caption</span>-bg-old<span class="value">: rgb(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span>
+$orbit-<span class="tag">caption</span>-bg<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.6</span>);</span>
+$orbit-<span class="tag">caption</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+
+<span class="comment">// Left/right nav styles</span>
+
+$orbit-<span class="tag">nav</span>-bg-old<span class="value">: rgb(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span>
+$orbit-<span class="tag">nav</span>-bg<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.6</span>);</span>
+
+<span class="comment">// Timer styles</span>
+
+$orbit-timer-bg-old<span class="value">: rgb(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span>
+$orbit-timer-bg<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.6</span>);</span>
+
+<span class="comment">// Bullet nav styles</span>
+
+$orbit-bullet-<span class="tag">nav</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#999</span>;</span>
+$orbit-bullet-<span class="tag">nav</span>-<span class="attribute">color</span>-active<span class="value">: <span class="hexcolor">#222</span>;</span>
+
+<span class="comment">// Slide numbers</span>
+
+$orbit-slide-number-bg<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span>
+$orbit-slide-number-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$orbit-slide-number-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">5</span>);</span>
+
+<span class="comment">// Graceful Loading Wrapper and preloader</span>
+
+$wrapper-class<span class="value">: <span class="string">"slideshow-wrapper"</span>;</span>
+$preloader-class<span class="value">: <span class="string">"preloader"</span> ;</span>
+
+
+<span class="comment">// Pagination Variables</span>
+
+
+<span class="comment">// Pagination container</span>
+
+$pagination-<span class="attribute">height</span><span class="value">: rem-calc(<span class="number">24</span>);</span>
+$pagination-<span class="attribute">margin</span><span class="value">: rem-calc(-<span class="number">5</span>);</span>
+
+<span class="comment">// List-item properties</span>
+
+$pagination-<span class="tag">li</span>-<span class="attribute">float</span><span class="value">: $default-float;</span>
+$pagination-<span class="tag">li</span>-<span class="attribute">height</span><span class="value">: rem-calc(<span class="number">24</span>);</span>
+$pagination-<span class="tag">li</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$pagination-<span class="tag">li</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$pagination-<span class="tag">li</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">5</span>);</span>
+
+<span class="comment">// Pagination anchor links</span>
+
+$pagination-<span class="tag">link</span>-pad<span class="value">: rem-calc(<span class="number">1</span>, <span class="number">7</span>, <span class="number">1</span>);</span>
+$pagination-<span class="tag">link</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#999</span>;</span>
+$pagination-<span class="tag">link</span>-active-bg<span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">10</span>%);</span>
+
+<span class="comment">// Disabled anchor links</span>
+
+$pagination-<span class="tag">link</span>-unavailable-<span class="attribute">cursor</span><span class="value">: $cursor-default-value;</span>
+$pagination-<span class="tag">link</span>-unavailable-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#999</span>;</span>
+$pagination-<span class="tag">link</span>-unavailable-bg-active<span class="value">: transparent;</span>
+
+<span class="comment">// Currently selected anchor links</span>
+
+$pagination-<span class="tag">link</span>-current-<span class="attribute">background</span><span class="value">: $primary-color;</span>
+$pagination-<span class="tag">link</span>-current-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$pagination-<span class="tag">link</span>-current-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$pagination-<span class="tag">link</span>-current-<span class="attribute">cursor</span><span class="value">: $cursor-default-value;</span>
+$pagination-<span class="tag">link</span>-current-active-bg<span class="value">: $primary-color;</span>
+
+
+<span class="comment">// Panel Variables</span>
+
+
+<span class="comment">// Background and border styles</span>
+
+$panel-bg<span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">5</span>%);</span>
+$panel-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$panel-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px;</span>
+
+<span class="comment">// Control how much we darken things on hover</span>
+
+$panel-function-factor<span class="value">: -<span class="number">11</span>%;</span>
+$panel-<span class="attribute">border-color</span><span class="value">: scale-color($panel-bg, $lightness: $panel-function-factor);</span>
+
+<span class="comment">// Inner padding and bottom margin</span>
+
+$panel-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$panel-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Font colors</span>
+
+$panel-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$panel-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$panel-<span class="tag">header</span>-adjust<span class="value">: true;</span> <span class="comment">// Set to false to keep default header styles</span>
+
+<span class="comment">// Pricing Table Variables</span>
+
+
+<span class="comment">// Border color</span>
+
+$price-<span class="tag">table</span>-<span class="attribute">border</span><span class="value">: solid <span class="number">1</span>px <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// Bottom margin of the pricing table</span>
+
+$price-<span class="tag">table</span>-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Control the title styles</span>
+
+$price-<span class="tag">title</span>-bg<span class="value">: <span class="hexcolor">#ddd</span>;</span>
+$price-<span class="tag">title</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">15</span>, <span class="number">20</span>);</span>
+$price-<span class="tag">title</span>-align<span class="value">: center;</span>
+$price-<span class="tag">title</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$price-<span class="tag">title</span>-weight<span class="value">: bold;</span>
+$price-<span class="tag">title</span>-size<span class="value">: rem-calc(<span class="number">16</span>);</span>
+
+<span class="comment">// Control the price styles</span>
+
+$price-money-bg<span class="value">: <span class="hexcolor">#eee</span>;</span>
+$price-money-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">15</span>, <span class="number">20</span>);</span>
+$price-money-align<span class="value">: center;</span>
+$price-money-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$price-money-weight<span class="value">: normal;</span>
+$price-money-size<span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Description styles</span>
+
+$price-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$price-desc-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#777</span>;</span>
+$price-desc-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+$price-desc-align<span class="value">: center;</span>
+$price-desc-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">12</span>);</span>
+$price-desc-weight<span class="value">: normal;</span>
+$price-desc-<span class="attribute">line-height</span><span class="value">: <span class="number">1.4</span>;</span>
+$price-desc-<span class="attribute">bottom</span>-<span class="attribute">border</span><span class="value">: dotted <span class="number">1</span>px <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// List item styles</span>
+
+$price-item-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$price-item-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+$price-item-align<span class="value">: center;</span>
+$price-item-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$price-item-weight<span class="value">: normal;</span>
+$price-item-<span class="attribute">bottom</span>-<span class="attribute">border</span><span class="value">: dotted <span class="number">1</span>px <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// CTA area styles</span>
+
+$price-cta-bg<span class="value">: <span class="hexcolor">#f5f5f5</span>;</span>
+$price-cta-align<span class="value">: center;</span>
+$price-cta-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">20</span>, <span class="number">20</span>, <span class="number">0</span>);</span>
+
+
+<span class="comment">// Progress Bar Variables</span>
+
+
+<span class="comment">// Progress bar height</span>
+
+$<span class="tag">progress</span>-bar-<span class="attribute">height</span><span class="value">: rem-calc(<span class="number">25</span>);</span>
+$<span class="tag">progress</span>-bar-<span class="attribute">color</span><span class="value">: transparent;</span>
+
+<span class="comment">// Border styles</span>
+
+$<span class="tag">progress</span>-bar-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">20</span>%);</span>
+$<span class="tag">progress</span>-bar-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">progress</span>-bar-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$<span class="tag">progress</span>-bar-<span class="attribute">border-radius</span><span class="value">: $global-radius;</span>
+
+<span class="comment">// Margin &amp; padding</span>
+
+$<span class="tag">progress</span>-bar-pad<span class="value">: rem-calc(<span class="number">2</span>);</span>
+$<span class="tag">progress</span>-bar-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">10</span>);</span>
+
+<span class="comment">// Meter colors</span>
+
+$<span class="tag">progress</span>-<span class="tag">meter</span>-<span class="attribute">color</span><span class="value">: $primary-color;</span>
+$<span class="tag">progress</span>-<span class="tag">meter</span>-secondary-<span class="attribute">color</span><span class="value">: $secondary-color;</span>
+$<span class="tag">progress</span>-<span class="tag">meter</span>-success-<span class="attribute">color</span><span class="value">: $success-color;</span>
+$<span class="tag">progress</span>-<span class="tag">meter</span>-alert-<span class="attribute">color</span><span class="value">: $alert-color;</span>
+
+
+<span class="comment">// Reveal Variables</span>
+
+
+<span class="comment">// Reveal overlay.</span>
+
+$reveal-overlay-bg<span class="value">: rgba(<span class="hexcolor">#000</span>, .<span class="number">45</span>);</span>
+$reveal-overlay-bg-old<span class="value">: <span class="hexcolor">#000</span>;</span>
+
+<span class="comment">// Modal itself.</span>
+
+$reveal-modal-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$reveal-<span class="attribute">position</span>-<span class="attribute">top</span><span class="value">: <span class="number">50</span>px;</span>
+$reveal-<span class="value">default</span>-<span class="attribute">width</span><span class="value">: <span class="number">80</span>%;</span>
+$reveal-modal-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$reveal-<span class="attribute">box-shadow</span><span class="value">: <span class="number">0</span> <span class="number">0</span> <span class="number">10</span>px rgba(<span class="hexcolor">#000</span>,.<span class="number">4</span>);</span>
+
+<span class="comment">// Reveal close button</span>
+
+$reveal-close-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">22</span>);</span>
+$reveal-close-<span class="attribute">top</span><span class="value">: rem-calc(<span class="number">8</span>);</span>
+$reveal-close-side<span class="value">: rem-calc(<span class="number">11</span>);</span>
+$reveal-close-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#aaa</span>;</span>
+$reveal-close-weight<span class="value">: bold;</span>
+
+<span class="comment">// Modal border</span>
+
+$reveal-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$reveal-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$reveal-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#666</span>;</span>
+
+$reveal-modal-class<span class="value">: <span class="string">"reveal-modal"</span>;</span>
+$close-reveal-modal-class<span class="value">: <span class="string">"close-reveal-modal"</span>;</span>
+
+
+<span class="comment">// Section Variables</span>
+
+
+<span class="comment">// Padding and hover factor</span>
+
+$<span class="tag">section</span>-<span class="tag">title</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+$<span class="tag">section</span>-<span class="attribute">content</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+$<span class="tag">section</span>-function-factor<span class="value">: -<span class="number">11</span>%;</span>
+
+<span class="comment">// Titles</span>
+
+$<span class="tag">section</span>-<span class="tag">title</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$<span class="tag">section</span>-<span class="tag">title</span>-bg<span class="value">: <span class="hexcolor">#efefef</span>;</span>
+$<span class="tag">section</span>-<span class="tag">title</span>-bg-active<span class="value">: scale-color($section-title-bg, $lightness: $section-function-factor);</span>
+$<span class="tag">section</span>-<span class="tag">title</span>-bg-active-tabs<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">section</span>-<span class="tag">title</span>-bg-hover<span class="value">: scale-color($section-title-bg, $lightness: $section-function-factor/<span class="number">2</span>);</span>
+
+<span class="comment">// Border size</span>
+
+$<span class="tag">section</span>-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">section</span>-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$<span class="tag">section</span>-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ccc</span>;</span>
+
+<span class="comment">// Font controls</span>
+
+$<span class="tag">section</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+
+<span class="comment">// Control the color of the background and some size options</span>
+
+$<span class="tag">section</span>-<span class="attribute">content</span>-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">section</span>-vertical-<span class="tag">nav</span>-<span class="attribute">min-width</span><span class="value">: rem-calc(<span class="number">200</span>);</span>
+$<span class="tag">section</span>-vertical-tabs-<span class="tag">title</span>-<span class="attribute">width</span><span class="value">: rem-calc(<span class="number">200</span>);</span>
+$<span class="tag">section</span>-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+$<span class="tag">title</span>-selector<span class="value">: <span class="string">".title"</span>;</span>
+$<span class="attribute">content</span>-selector<span class="value">: <span class="string">".content"</span>;</span>
+
+
+<span class="comment">// Side Nav Variables</span>
+
+
+<span class="comment">// Padding</span>
+
+$side-<span class="tag">nav</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">14</span>, <span class="number">0</span>);</span>
+
+<span class="comment">// List styles</span>
+
+$side-<span class="tag">nav</span>-list-type<span class="value">: none;</span>
+$side-<span class="tag">nav</span>-list-<span class="attribute">position</span><span class="value">: inside;</span>
+$side-<span class="tag">nav</span>-list-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">0</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">0</span>);</span>
+
+<span class="comment">// Link styles</span>
+
+$side-<span class="tag">nav</span>-<span class="tag">link</span>-<span class="attribute">color</span><span class="value">: $primary-color;</span>
+$side-<span class="tag">nav</span>-<span class="tag">link</span>-<span class="attribute">color</span>-active<span class="value">: scale-color(<span class="hexcolor">#000</span>, $lightness: <span class="number">30</span>%);</span>
+$side-<span class="tag">nav</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$side-<span class="tag">nav</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+
+<span class="comment">// Border styles</span>
+
+$side-<span class="tag">nav</span>-divider-size<span class="value">: <span class="number">1</span>px;</span>
+$side-<span class="tag">nav</span>-divider-<span class="tag">style</span><span class="value">: solid;</span>
+$side-<span class="tag">nav</span>-divider-<span class="attribute">color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: -<span class="number">10</span>%);</span>
+
+
+<span class="comment">// Sub Nav Variables</span>
+
+
+<span class="comment">// Margin and padding</span>
+
+$<span class="tag">sub</span>-<span class="tag">nav</span>-list-<span class="attribute">margin</span><span class="value">: rem-calc(-<span class="number">4</span>, <span class="number">0</span>, <span class="number">18</span>);</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-list-<span class="attribute">padding-top</span><span class="value">: rem-calc(<span class="number">4</span>);</span>
+
+<span class="comment">// Definition</span>
+
+$<span class="tag">sub</span>-<span class="tag">nav</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#999</span>;</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-<span class="attribute">font-weight</span><span class="value">: normal;</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-<span class="attribute">text-decoration</span><span class="value">: none;</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-<span class="attribute">border-radius</span><span class="value">: <span class="number">1000</span>px;</span>
+
+<span class="comment">// Active item styles</span>
+
+$<span class="tag">sub</span>-<span class="tag">nav</span>-active-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-active-bg<span class="value">: $primary-color;</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-active-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-active-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">3</span>, <span class="number">9</span>);</span>
+$<span class="tag">sub</span>-<span class="tag">nav</span>-active-<span class="attribute">cursor</span><span class="value">: $cursor-default-value;</span>
+
+
+<span class="comment">// Switch Variables</span>
+
+
+<span class="comment">// Border styles and background colors for the switch container</span>
+
+$switch-<span class="attribute">border-color</span><span class="value">: scale-color(<span class="hexcolor">#fff</span>, $lightness: <span class="number">20</span>%);</span>
+$switch-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$switch-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$switch-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+
+<span class="comment">// Switch heights for our default classes</span>
+
+$switch-<span class="attribute">height</span>-tny<span class="value">: <span class="number">22</span>px;</span>
+$switch-<span class="attribute">height</span>-sml<span class="value">: <span class="number">28</span>px;</span>
+$switch-<span class="attribute">height</span>-med<span class="value">: <span class="number">36</span>px;</span>
+$switch-<span class="attribute">height</span>-lrg<span class="value">: <span class="number">44</span>px;</span>
+$switch-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// Font sizes for our classes.</span>
+
+$switch-<span class="attribute">font-size</span>-tny<span class="value">: <span class="number">11</span>px;</span>
+$switch-<span class="attribute">font-size</span>-sml<span class="value">: <span class="number">12</span>px;</span>
+$switch-<span class="attribute">font-size</span>-med<span class="value">: <span class="number">14</span>px;</span>
+$switch-<span class="attribute">font-size</span>-lrg<span class="value">: <span class="number">17</span>px;</span>
+$switch-<span class="tag">label</span>-side-<span class="attribute">padding</span><span class="value">: <span class="number">6</span>px;</span>
+
+<span class="comment">// Switch-paddle</span>
+
+$switch-paddle-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$switch-paddle-fade-to-<span class="attribute">color</span><span class="value">: scale-color($switch-paddle-bg, $lightness: -<span class="number">10</span>%);</span>
+$switch-paddle-<span class="attribute">border-color</span><span class="value">: scale-color($switch-paddle-bg, $lightness: -<span class="number">35</span>%);</span>
+$switch-paddle-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$switch-paddle-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$switch-paddle-<span class="attribute">transition</span>-speed<span class="value">: .<span class="number">1</span>s;</span>
+$switch-paddle-<span class="attribute">transition</span>-ease<span class="value">: ease-out;</span>
+$switch-positive-<span class="attribute">color</span><span class="value">: scale-color($success-color, $lightness: <span class="number">94</span>%);</span>
+$switch-negative-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#f5f5f5</span>;</span>
+
+<span class="comment">// Outline Style for tabbing through switches</span>
+
+$switch-<span class="tag">label</span>-<span class="attribute">outline</span><span class="value">: <span class="number">1</span>px dotted <span class="hexcolor">#888</span>;</span>
+
+
+<span class="comment">// Table Variables</span>
+
+<span class="comment">// Background color for the table and even rows</span>
+
+$<span class="tag">table</span>-bg<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$<span class="tag">table</span>-even-row-bg<span class="value">: <span class="hexcolor">#f9f9f9</span>;</span>
+
+<span class="comment">// Table cell border style</span>
+
+$<span class="tag">table</span>-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$<span class="tag">table</span>-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">table</span>-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// Table head styles</span>
+
+$<span class="tag">table</span>-<span class="tag">head</span>-bg<span class="value">: <span class="hexcolor">#f5f5f5</span>;</span>
+$<span class="tag">table</span>-<span class="tag">head</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$<span class="tag">table</span>-<span class="tag">head</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$<span class="tag">table</span>-<span class="tag">head</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">table</span>-<span class="tag">head</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">8</span>, <span class="number">10</span>, <span class="number">10</span>);</span>
+
+<span class="comment">// Row padding and font styles</span>
+
+$<span class="tag">table</span>-row-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">9</span>, <span class="number">10</span>);</span>
+$<span class="tag">table</span>-row-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$<span class="tag">table</span>-row-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$<span class="tag">table</span>-<span class="attribute">line-height</span><span class="value">: rem-calc(<span class="number">18</span>);</span>
+
+<span class="comment">// Display and margin of tables</span>
+
+$<span class="tag">table</span>-<span class="attribute">display</span><span class="value">: table-cell;</span>
+$<span class="tag">table</span>-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+
+<span class="comment">// Image Thumbnail Variables</span>
+
+
+<span class="comment">// Border styles</span>
+
+$thumb-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$thumb-<span class="attribute">border-width</span><span class="value">: <span class="number">4</span>px;</span>
+$thumb-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$thumb-<span class="attribute">box-shadow</span><span class="value">: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>px rgba(<span class="hexcolor">#000</span>,.<span class="number">2</span>);</span>
+$thumb-<span class="attribute">box-shadow</span>-hover<span class="value">: <span class="number">0</span> <span class="number">0</span> <span class="number">6</span>px <span class="number">1</span>px rgba($primary-color,<span class="number">0.5</span>);</span>
+
+<span class="comment">// Radius and transition speed for thumbs</span>
+
+$thumb-radius<span class="value">: $global-radius;</span>
+$thumb-<span class="attribute">transition</span>-speed<span class="value">: <span class="number">200</span>ms;</span>
+
+
+<span class="comment">// Tooltip Variables</span>
+
+
+$has-tip-<span class="attribute">border-bottom</span><span class="value">: dotted <span class="number">1</span>px <span class="hexcolor">#ccc</span>;</span>
+$has-tip-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$has-tip-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#333</span>;</span>
+$has-tip-<span class="attribute">border-bottom</span>-hover<span class="value">: dotted <span class="number">1</span>px scale-color($primary-color, $lightness: -<span class="number">55</span>%);</span>
+$has-tip-<span class="attribute">font</span>-<span class="attribute">color</span>-hover<span class="value">: $primary-color;</span>
+$has-tip-<span class="attribute">cursor</span>-type<span class="value">: help;</span>
+
+$tooltip-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">8</span>);</span>
+$tooltip-bg<span class="value">: <span class="hexcolor">#000</span>;</span>
+$tooltip-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+$tooltip-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$tooltip-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$tooltip-<span class="attribute">line-height</span><span class="value">: <span class="number">1.3</span>;</span>
+$tooltip-close-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">10</span>);</span>
+$tooltip-close-<span class="attribute">font-weight</span><span class="value">: normal;</span>
+$tooltip-close-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#888</span>;</span>
+$tooltip-<span class="attribute">font-size</span>-sml<span class="value">: rem-calc(<span class="number">14</span>);</span>
+$tooltip-radius<span class="value">: $global-radius;</span>
+$tooltip-pip-size<span class="value">: <span class="number">5</span>px;</span>
+
+
+<span class="comment">// Top Bar Variables</span>
+
+
+<span class="comment">// Background color for the top bar</span>
+
+$topbar-bg<span class="value">: <span class="hexcolor">#111</span> !default;</span>
+
+<span class="comment">// Height and margin</span>
+
+$topbar-<span class="attribute">height</span><span class="value">: <span class="number">45</span>px;</span>
+$topbar-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">30</span>);</span>
+
+<span class="comment">// Control Input height for top bar</span>
+
+$topbar-<span class="tag">input</span>-<span class="attribute">height</span><span class="value">: <span class="number">2.45</span>em;</span>
+
+<span class="comment">// Controlling the styles for the title in the top bar</span>
+
+$topbar-<span class="tag">title</span>-weight<span class="value">: bold;</span>
+$topbar-<span class="tag">title</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">17</span>);</span>
+
+<span class="comment">// Style the top bar dropdown elements</span>
+
+$topbar-dropdown-bg<span class="value">: <span class="hexcolor">#222</span>;</span>
+$topbar-dropdown-<span class="tag">link</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$topbar-dropdown-<span class="tag">link</span>-bg<span class="value">: <span class="hexcolor">#333</span>;</span>
+$topbar-dropdown-toggle-size<span class="value">: <span class="number">5</span>px;</span>
+$topbar-dropdown-toggle-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$topbar-dropdown-toggle-alpha<span class="value">: <span class="number">0.5</span>;</span>
+
+<span class="comment">// Set the link colors and styles for top-level nav</span>
+
+$topbar-<span class="tag">link</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$topbar-<span class="tag">link</span>-<span class="attribute">color</span>-hover<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$topbar-<span class="tag">link</span>-<span class="attribute">color</span>-active<span class="value">: <span class="hexcolor">#fff</span>;</span>
+$topbar-<span class="tag">link</span>-weight<span class="value">: normal;</span>
+$topbar-<span class="tag">link</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">13</span>);</span>
+$topbar-<span class="tag">link</span>-hover-lightness<span class="value">: -<span class="number">10</span>%;</span> <span class="comment">// Darken by 10%</span>
+$topbar-<span class="tag">link</span>-bg-hover<span class="value">: <span class="hexcolor">#272727</span>  ;</span>
+$topbar-<span class="tag">link</span>-bg-active<span class="value">: $primary-color;</span>
+$topbar-<span class="tag">link</span>-bg-active-hover<span class="value">: scale-color($primary-color, $lightness: -<span class="number">14</span>%);</span>
+$topbar-<span class="tag">link</span>-<span class="attribute">font-family</span><span class="value">: $body-font-family;</span>
+
+$topbar-dropdown-<span class="tag">label</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#555</span>;</span>
+$topbar-dropdown-<span class="tag">label</span>-<span class="attribute">text-transform</span><span class="value">: uppercase;</span>
+$topbar-dropdown-<span class="tag">label</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$topbar-dropdown-<span class="tag">label</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">10</span>);</span>
+
+<span class="comment">// Top menu icon styles</span>
+
+$topbar-menu-<span class="tag">link</span>-<span class="attribute">transform</span><span class="value">: uppercase;</span>
+$topbar-menu-<span class="tag">link</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">13</span>);</span>
+$topbar-menu-<span class="tag">link</span>-weight<span class="value">: bold;</span>
+$topbar-menu-<span class="tag">link</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$topbar-menu-<span class="attribute">icon</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+$topbar-menu-<span class="tag">link</span>-<span class="attribute">color</span>-toggled<span class="value">: <span class="hexcolor">#888</span>;</span>
+$topbar-menu-<span class="attribute">icon</span>-<span class="attribute">color</span>-toggled<span class="value">: <span class="hexcolor">#888</span>;</span>
+
+<span class="comment">// Transitions and breakpoint styles</span>
+
+$topbar-<span class="attribute">transition</span>-speed<span class="value">: <span class="number">300</span>ms;</span>
+$topbar-breakpoint<span class="value">: rem-calc(<span class="number">940</span>);</span>
+$topbar-media-query<span class="value">: <span class="string">"only screen and (min-width: #{$topbar-breakpoint})"</span>;</span>
+
+<span class="comment">// Divider Styles</span>
+
+$topbar-divider-<span class="attribute">border-bottom</span><span class="value">: solid <span class="number">1</span>px  scale-color($topbar-bg-color, $lightness: <span class="number">13</span>%);</span>
+$topbar-divider-<span class="attribute">border-top</span><span class="value">: solid <span class="number">1</span>px scale-color($topbar-bg-color, $lightness: -<span class="number">50</span>%);</span>
+
+<span class="comment">// Sticky Class</span>
+
+$topbar-sticky-class<span class="value">: <span class="string">".sticky"</span>;</span>
+$topbar-arrows<span class="value">: true;</span> <span class="comment">//Set false to remove the triangle icon from the menu item</span></div></code></pre>
+
+
+
+            </div>
+          </div>
+
+          
+<div id="newsletter">
+  <div class="row">
+
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly <a href="http://zurb.com/responsive/reading">Responsive Reading</a> highlights. <a href="http://www.zurb.com/responsive/reading/2012/10">Read Last Month's Edition »</a></p>
+    </div>
+
+
+  <div class="medium-4 columns">
+    <form method="post" action="http://zurb.com/responsive/subscribe">
+      <div class="row collapse margintop-20px">
+        <div class="small-8 medium-8 columns">
+          <input type="text" name="email" placeholder="signup@example.com">
+        </div>
+        <div class="small-4 medium-4 columns">
+          <input type="submit" href="#" class="postfix small button expand" value="Sign Up">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  
+  </div>
+</div>
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation</h3>
+        <p>Foundation is made by <a href="http://zurb.com">ZURB, a product design</a> company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.
+        </p>
+      </div>
+    </div>
+    
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/business/services.html">Foundation Business</a></li>
+              <li><a href="http://zurb.com/responsive">Responsive</a></li>
+              <li><a href="http://zurb.com/apps">Design Apps</a></li>
+              <li><a href="http://foundation.zurb.com/learn/training.html">Foundation Training</a></li>
+            </ul>
+          </div>
+      </div>
+        <div class="medium-4 columns">
+          <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/foundationzurb">@foundationzurb</a></p>
+            <p>Email us at <br> <a href="mailto:foundation@zurb.com">foundation@zurb.com</a><br> or check our <a href="../../support/support.html">support page</a></p>
+          </div>
+        </div>
+      <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay in touch</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/apps" class="footer-link-block apps">
+        <span class="title">Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2013 ZURB, Inc. All rights reserved.</p>
+    </div>          
+  </div>
+</div>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/templates.js"></script>
+    <script src="../assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

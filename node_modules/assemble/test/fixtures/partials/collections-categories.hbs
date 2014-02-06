@@ -1,0 +1,67 @@
+---
+title: Categories
+description: Different ways to use categories collections.
+categories:
+- collections
+tags:
+- categories
+- collections
+- tags
+- pages
+---
+<!-- Categories -->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h4>categories on this page: <span class="badge badge-info">{{default page.categories.length 0}}</span></h4>
+  </div>
+  <div class="panel-body">
+  {{#if page.categories}}
+    {{#page.categories}}
+      <span class="label label-info">{{.}}</span>
+    {{/page.categories}}
+    {{else}}
+    <strong>No categories defined on this page.</strong>
+  {{/if}}
+  </div>
+</div>
+
+<hr>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h4>All categories: <span class="badge badge-info">{{default categories.length 0}}</span></h4>
+  </div>
+  <div class="panel-body">
+  {{#if categories}}
+    {{#categories}}
+      <span class="label label-info">{{category}}</span>
+    {{/categories}}
+    {{else}}
+    <strong>No categories defined.</strong>
+  {{/if}}
+  </div>
+</div>
+
+<hr>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h4>Pages related to each category</h4>
+  </div>
+  <div class="panel-body">
+    {{#each categories}}
+      <div>Related pages for: <span class="label label-info">{{category}}</span></div>
+      <ul class="links">
+      {{#if pages}}
+        {{#each pages}}
+          <li{{#is ../../../page.dest dest}} class="active"{{/is}}>
+            <a href="{{relative ../../../page.dest dest}}">{{{filename}}}</a>
+          </li>
+        {{/each}}
+        {{else}}
+        <strong>No pages defined for this category.</strong>
+      {{/if}}
+      </ul>
+    {{/each}}
+  </div>
+</div>

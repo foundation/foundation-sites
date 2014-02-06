@@ -1,0 +1,848 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/assets/favicons/apple-touch-icon-precomposed.png">
+    <link rel="icon" href="/assets/favicons/favicon.ico" type="image/x-icon">
+    <title>Foundation Docs: Abide</title>
+    <link rel='stylesheet' href='/assets/normalize.css' />
+    <link rel='stylesheet' href='/assets/docs.css' />
+    <script src='/assets/vendor/custom.modernizr.js'></script>
+    
+  </head>
+  <body class="antialiased off-canvas hide-extras">
+     <nav class="top-bar hide-for-small">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="/">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="/grid.php">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="/templates.php">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="/case-jacquelinewest.php">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="/docs/">Docs</a></li>
+          <li class="divider"></li>
+          <li><a href="/training.php">Training</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    <section class="main">
+     
+      
+      <header class="show-for-small">
+        <a class='sidebar-button show-for-small' id="sidebarButton" href="#sidebar" ><img src="/assets/offcanvas/menu-wht.png" alt="ZURB Menu"><h4>Foundation</h4></a>
+      </header>
+  
+      
+      <div class="row">
+        <div class="large-12 columns">
+          <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation 4 Documentation</a></h1>
+          <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
+          <hr>
+        </div>
+      </div>
+  
+      
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>Abide</h2>
+        <h4 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h4>
+
+        <form class="custom" data-abide>
+          <fieldset>
+            <legend>Fieldset</legend>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label for="password">Password <small>required</small></label>
+                <input type="password" id="password" placeholder="LittleW0men." name="password" required>
+                <small class="error" data-error-message>Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="1 234-567-8910">
+                <small class="error" data-error-message>Please enter a properly formatted telephone number.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-4 columns">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="foundation@zurb.com">
+                <small class="error">Valid email required.</small>
+              </div>
+              <div class="large-4 columns">
+                <label for="url">URL <small>required</small></label>
+                <input type="url" id="url" placeholder="http://zurb.com" required>
+                <small class="error" data-error-message>Valid URL required.</small>
+              </div>
+              <div class="large-4 columns">
+                <div class="row collapse">
+                  <label for="customDropdown1">Hardest to find in grocery <small>required</small></label>
+                  <select id="customDropdown1" class="medium" required>
+                    <option value="">Select grocery item</option>
+                    <option value="first">Green Chilies</option>
+                    <option value="second">Raisins</option>
+                    <option value="third">Panko bread crumbs</option>
+                    <option value="fourth">Assistance</option>
+                  </select>
+                  <small class="error" data-error-message>Broke.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-6 columns">
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 1</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 2</label>
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" required><span class="custom radio"></span> Radio Button 3</label>
+              </div>
+              <div class="large-6 columns">
+                <label for="checkbox1"><input type="checkbox" id="checkbox1" style="display: none;" required><span class="custom checkbox"></span> Label for Checkbox</label>
+                <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED style="display: none;" required><span class="custom checkbox checked"></span> Label for Checkbox</label>
+                <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" style="display: none;" required><span class="custom checkbox checked"></span> Label for Checkbox</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label for="remarks">Closing Remarks</label>
+                <textarea id="remarks" name="remarks" placeholder="Leave your remarks here."></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-12 columns">
+                <button type="submit" class="medium button green">Submit</button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+
+        <h3>Setting up validation</h3>
+        <p>To enable validation with Abide add the <code>data-abide</code> attribute to your <code>&lt;form&gt;</code> element. Then add the <code>required</code> attribute to each input that you want to require. Additionaly, you can define a <code>pattern</code> to define restraints on what users can input.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;form</span> <span class="na">data-abide</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;name-field&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Your name <span class="nt">&lt;small&gt;</span>required<span class="nt">&lt;/small&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">required</span> <span class="na">pattern=</span><span class="s">&quot;[a-zA-Z]+&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">&quot;error&quot;</span><span class="nt">&gt;</span>Name is required and must be a string.<span class="nt">&lt;/small&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;email-field&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Email <span class="nt">&lt;small&gt;</span>required<span class="nt">&lt;/small&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">&quot;error&quot;</span><span class="nt">&gt;</span>An email address is required.<span class="nt">&lt;/small&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div></div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+        <h3>Predefined patterns</h3>
+
+        <p>Abide has several patterns common validation patterns built into the library:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Valid Example or Format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>alpha</td>
+              <td>Foundation</td>
+            </tr>
+            <tr>
+              <td>alpha_numeric</td>
+              <td>A1 Sauce</td>
+            </tr>
+            <tr>
+              <td>integer</td>
+              <td>-1</td>
+            </tr>
+            <tr>
+              <td>number</td>
+              <td>2937</td>
+            </tr>
+            <tr>
+              <td>password</td>
+              <td>LittleW0men.</td>
+            </tr>
+            <tr>
+              <td>card</td>
+              <td>visa, amex, mastercard</td>
+            </tr>
+            <tr>
+              <td>cvv</td>
+              <td>384 or 3284</td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td>foundation@zurb.com</td>
+            </tr>
+            <tr>
+              <td>url</td>
+              <td>http://zurb.com</td>
+            </tr>
+            <tr>
+              <td>domain</td>
+              <td>zurb.com</td>
+            </tr>
+            <tr>
+              <td>datetime</td>
+              <td>YYYY-MM-DDThh:mm:ssTZD</td>
+            </tr>
+            <tr>
+              <td>date</td>
+              <td>YYYY-MM-DD</td>
+            </tr>
+            <tr>
+              <td>time</td>
+              <td>HH:MM:SS</td>
+            </tr>
+            <tr>
+              <td>dateISO</td>
+              <td>not sure yet</td>
+            </tr>
+            <tr>
+              <td>month_day_year</td>
+              <td>MM/DD/YYYY</td>
+            </tr>
+            <tr>
+              <td>color</td>
+              <td>#FFF or #FFFFFF</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>You can also use these patterns by settings the input's type to the name of the pattern instead of using the pattern attribute:</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">required</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;url&quot;</span><span class="nt">&gt;</span>
+</pre></div></div>
+
+        <p>There is a good list of valid HTML5 input types on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">Mozilla Developer Network</a>. Try to avoid using patterns defined by type that do not match the specification.</p>
+
+        <p>For named patterns that are not valid input types you can use the following shortcut:</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">pattern=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>
+</pre></div></div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Custom named patterns</h3>
+        <p>By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.</p>
+
+<div class='js'><div class='highlight'><pre class="">
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">foundation</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">foundation</span><span class="p">(</span><span class="s1">'abide'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">patterns</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">dashes_only</span><span class="p">:</span> <span class="o">/^</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="p">]</span><span class="o">*</span><span class="nx">$</span><span class="o">/</span><span class="p">,</span>
+      <span class="na">ip_address</span><span class="p">:</span> <span class="o">/^</span><span class="p">((</span><span class="mi">25</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]).){</span><span class="mi">3</span><span class="p">}(</span><span class="mi">25</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span><span class="nx">$</span><span class="o">/</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</pre></div></div>
+        
+        <p>You can then use these custom patterns like you would the predfined patterns in your markup:</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;custom&quot;</span> <span class="na">data-abide</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>Serial Number<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">pattern=</span><span class="s">&quot;dashes_only&quot;</span> <span class="na">required</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div></div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+        <h3>Error messages</h3>
+
+        <p>To display an error message for your invalid form element include a <code>&lt;small&gt;</code> tag with an <code>error</code> class as a sibling of your input.</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-wrapper&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>Email Address <span class="nt">&lt;small&gt;</span>required<span class="nt">&lt;/small&gt;&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">&quot;error&quot;</span><span class="nt">&gt;</span>A valid email address is required.<span class="nt">&lt;/small&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div>
+        
+        <p>In the above example we have wrapped our input in a <code>div</code>. This div will receive an <code>error</code> class when the input is invalid. This class will show our error message and style the label and input accordingly.</p>
+
+        <p>Invalid inputs inherit a <code>data-invalid</code> attribute.</p>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <hr>
+          </div>
+        </div>
+
+        <h3>Events</h3>
+
+        <p>If a submit event is fired, a <code>valid</code> event is triggered if the form is valid and an <code>invalid</code> event is triggered if the form is invalid.</p>
+
+        <p>You can bind to these events and fire your own callback:</p>
+
+<div class='js'><div class='highlight'><pre class="">
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#myForm'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'invalid'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">invalid_fields</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'[data-invalid]'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">invalid_fields</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'valid'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'valid!'</span><span class="p">);</span>
+  <span class="p">});</span>
+</pre></div></div>
+
+        <div class="row">
+          <div class="large-12 columns">
+            <hr>
+          </div>
+        </div>
+
+<h3>Using the JavaScript</h3>
+        <div class="panel">
+          Before you can use Abide you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
+
+        <p>Just add <code>foundation.abide.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+
+        <div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;body&gt;</span>
+
+  ...
+
+  <span class="nt">&lt;script&gt;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">'&lt;script src=/js/vendor/'</span>
+        <span class="o">+</span> <span class="p">(</span><span class="s1">'__proto__'</span> <span class="k">in</span> <span class="p">{}</span> <span class="p">?</span> <span class="s1">'zepto'</span> <span class="p">:</span> <span class="s1">'jquery'</span><span class="p">)</span>
+        <span class="o">+</span> <span class="s1">'.js&gt;&lt;\/script&gt;'</span><span class="p">);</span>
+    <span class="nt">&lt;/script&gt;</span>
+
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/foundation/foundation.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/foundation/foundation.abide.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="c">&lt;!-- Other JS plugins can be included here --&gt;</span>
+
+  <span class="nt">&lt;script&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">foundation</span><span class="p">();</span>
+  <span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+        </pre></div></div>
+
+        <p>Required Foundation Library: <code>foundation.abide.js</code></p>
+
+        <h5>Optional JavaScript Configuration</h5>
+
+<div class='js'><div class='highlight'><pre class="">
+<span class="p">{</span>
+  <span class="na">live_validate</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">focus_on_invalid</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">timeout</span> <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+  <span class="na">patterns</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="na">alpha</span><span class="p">:</span> <span class="o">/</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">+</span><span class="sr">/</span><span class="err">,</span>
+    <span class="na">alpha_numeric</span> <span class="p">:</span> <span class="o">/</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="sr">/</span><span class="err">,</span>
+    <span class="na">integer</span><span class="p">:</span> <span class="o">/-</span><span class="p">?</span><span class="err">\</span><span class="nx">d</span><span class="o">+</span><span class="sr">/</span><span class="err">,</span>
+    <span class="nx">number</span><span class="p">:</span> <span class="o">/-</span><span class="p">?(?:</span><span class="err">\</span><span class="nx">d</span><span class="o">+|</span><span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}(?:,</span><span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">3</span><span class="p">})</span><span class="o">+</span><span class="p">)?(?:</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="nx">d</span><span class="o">+</span><span class="p">)?</span><span class="sr">/</span><span class="err">,</span>
+
+    <span class="c1">// generic password: upper-case, lower-case, number/special character, and min 8 characters
+</span>    <span class="nx">password</span> <span class="p">:</span> <span class="o">/</span><span class="p">(?</span><span class="o">=^</span><span class="p">.{</span><span class="mi">8</span><span class="p">,}</span><span class="nx">$</span><span class="p">)((?</span><span class="o">=</span><span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="nx">d</span><span class="p">)</span><span class="o">|</span><span class="p">(?</span><span class="o">=</span><span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="nx">W</span><span class="o">+</span><span class="p">))(?</span><span class="o">!</span><span class="p">[.</span><span class="err">\</span><span class="nx">n</span><span class="p">])(?</span><span class="o">=</span><span class="p">.</span><span class="o">*</span><span class="p">[</span><span class="nx">A</span><span class="o">-</span><span class="nx">Z</span><span class="p">])(?</span><span class="o">=</span><span class="p">.</span><span class="o">*</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">z</span><span class="p">]).</span><span class="o">*</span><span class="nx">$</span><span class="o">/</span><span class="p">,</span>
+
+    <span class="c1">// amex, visa, diners
+</span>    <span class="nx">card</span> <span class="p">:</span> <span class="o">/^</span><span class="p">(?:</span><span class="mi">4</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">12</span><span class="p">}(?:[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">3</span><span class="p">})?</span><span class="o">|</span><span class="mi">5</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">14</span><span class="p">}</span><span class="o">|</span><span class="mi">6</span><span class="p">(?:</span><span class="mi">011</span><span class="o">|</span><span class="mi">5</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">12</span><span class="p">}</span><span class="o">|</span><span class="mi">3</span><span class="p">[</span><span class="mi">47</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">13</span><span class="p">}</span><span class="o">|</span><span class="mi">3</span><span class="p">(?:</span><span class="mi">0</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">68</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">11</span><span class="p">}</span><span class="o">|</span><span class="p">(?:</span><span class="mi">2131</span><span class="o">|</span><span class="mi">1800</span><span class="o">|</span><span class="mi">35</span><span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">3</span><span class="p">})</span><span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">11</span><span class="p">})</span><span class="nx">$</span><span class="o">/</span><span class="p">,</span>
+    <span class="nx">cvv</span> <span class="p">:</span> <span class="o">/^</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]){</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span><span class="nx">$</span><span class="o">/</span><span class="p">,</span>
+
+    <span class="c1">// http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
+</span>    <span class="nx">email</span> <span class="p">:</span> <span class="o">/^</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z0</span><span class="o">-</span><span class="mi">9</span><span class="p">.</span><span class="o">!</span><span class="err">#</span><span class="nx">$</span><span class="o">%&amp;</span><span class="s1">'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+
+    url: /(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="p">)</span><span class="err">\</span><span class="o">*</span><span class="err">\</span><span class="o">+</span><span class="p">,;</span><span class="o">=</span><span class="p">]</span><span class="o">|</span><span class="p">:)</span><span class="o">*</span><span class="err">@</span><span class="p">)?(((</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">1</span><span class="err">\</span><span class="nx">d</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">25</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">])</span><span class="err">\</span><span class="p">.(</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">1</span><span class="err">\</span><span class="nx">d</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">25</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">])</span><span class="err">\</span><span class="p">.(</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">1</span><span class="err">\</span><span class="nx">d</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">25</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">])</span><span class="err">\</span><span class="p">.(</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">1</span><span class="err">\</span><span class="nx">d</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="mi">25</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">]))</span><span class="o">|</span><span class="p">((([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])</span><span class="o">|</span><span class="p">(([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="err">\</span><span class="nx">d</span><span class="o">|-|</span><span class="err">\</span><span class="p">.</span><span class="o">|</span><span class="nx">_</span><span class="o">|~|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])</span><span class="o">*</span><span class="p">([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="err">\</span><span class="nx">d</span><span class="o">|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])))</span><span class="err">\</span><span class="p">.)</span><span class="o">+</span><span class="p">(([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])</span><span class="o">|</span><span class="p">(([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="err">\</span><span class="nx">d</span><span class="o">|-|</span><span class="err">\</span><span class="p">.</span><span class="o">|</span><span class="nx">_</span><span class="o">|~|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])</span><span class="o">*</span><span class="p">([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])))</span><span class="err">\</span><span class="p">.?)(:</span><span class="err">\</span><span class="nx">d</span><span class="o">*</span><span class="p">)?)(</span><span class="err">\</span><span class="o">/</span><span class="p">((([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="err">\</span><span class="nx">d</span><span class="o">|-|</span><span class="err">\</span><span class="p">.</span><span class="o">|</span><span class="nx">_</span><span class="o">|~|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])</span><span class="o">|</span><span class="p">(</span><span class="o">%</span><span class="p">[</span><span class="err">\</span><span class="nx">da</span><span class="o">-</span><span class="nx">f</span><span class="p">]{</span><span class="mi">2</span><span class="p">})</span><span class="o">|</span><span class="p">[</span><span class="o">!</span><span class="err">\</span><span class="nx">$</span><span class="o">&amp;</span><span class="s1">'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="p">)</span><span class="err">\</span><span class="o">*</span><span class="err">\</span><span class="o">+</span><span class="p">,;</span><span class="o">=</span><span class="p">]</span><span class="o">|</span><span class="p">:</span><span class="o">|</span><span class="err">@</span><span class="p">)</span><span class="o">*</span><span class="p">)</span><span class="o">*</span><span class="p">)?)?(</span><span class="err">\</span><span class="p">?((([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="o">|</span><span class="err">\</span><span class="nx">d</span><span class="o">|-|</span><span class="err">\</span><span class="p">.</span><span class="o">|</span><span class="nx">_</span><span class="o">|~|</span><span class="p">[</span><span class="err">\</span><span class="nx">u00A0</span><span class="o">-</span><span class="err">\</span><span class="nx">uD7FF</span><span class="err">\</span><span class="nx">uF900</span><span class="o">-</span><span class="err">\</span><span class="nx">uFDCF</span><span class="err">\</span><span class="nx">uFDF0</span><span class="o">-</span><span class="err">\</span><span class="nx">uFFEF</span><span class="p">])</span><span class="o">|</span><span class="p">(</span><span class="o">%</span><span class="p">[</span><span class="err">\</span><span class="nx">da</span><span class="o">-</span><span class="nx">f</span><span class="p">]{</span><span class="mi">2</span><span class="p">})</span><span class="o">|</span><span class="p">[</span><span class="o">!</span><span class="err">\</span><span class="nx">$</span><span class="o">&amp;</span><span class="s1">'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="p">)</span><span class="err">\</span><span class="o">*</span><span class="err">\</span><span class="o">+</span><span class="p">,;</span><span class="o">=</span><span class="p">]</span><span class="o">|</span><span class="p">:</span><span class="o">|</span><span class="err">@</span><span class="p">)</span><span class="o">|</span><span class="err">\</span><span class="o">/|</span><span class="err">\</span><span class="p">?)</span><span class="o">*</span><span class="p">)?</span><span class="sr">/</span><span class="err">,</span>
+    <span class="c1">// abc.de
+</span>    <span class="nx">domain</span><span class="p">:</span> <span class="o">/^</span><span class="p">([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z0</span><span class="o">-</span><span class="mi">9</span><span class="p">]([</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z0</span><span class="o">-</span><span class="mi">9</span><span class="err">\</span><span class="o">-</span><span class="p">]{</span><span class="mi">0</span><span class="p">,</span><span class="mi">61</span><span class="p">}[</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z0</span><span class="o">-</span><span class="mi">9</span><span class="p">])?</span><span class="err">\</span><span class="p">.)</span><span class="o">+</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]{</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span><span class="nx">$</span><span class="o">/</span><span class="p">,</span>
+
+    <span class="nx">datetime</span><span class="p">:</span> <span class="o">/</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">3</span><span class="p">})</span><span class="err">\</span><span class="o">-</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span><span class="err">\</span><span class="o">-</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span><span class="nx">T</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span><span class="err">\</span><span class="p">:([</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span><span class="err">\</span><span class="p">:([</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])(</span><span class="nx">Z</span><span class="o">|</span><span class="p">([</span><span class="err">\</span><span class="o">-</span><span class="err">\</span><span class="o">+</span><span class="p">]([</span><span class="mi">0</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span><span class="err">\</span><span class="p">:</span><span class="mi">00</span><span class="p">))</span><span class="o">/</span><span class="p">,</span>
+    <span class="c1">// YYYY-MM-DD
+</span>    <span class="nx">date</span><span class="p">:</span> <span class="o">/</span><span class="p">(?:</span><span class="mi">19</span><span class="o">|</span><span class="mi">20</span><span class="p">)[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">2</span><span class="p">}</span><span class="o">-</span><span class="p">(?:(?:</span><span class="mi">0</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span><span class="o">-</span><span class="p">(?:</span><span class="mi">0</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span><span class="o">|</span><span class="p">(?:(?</span><span class="o">!</span><span class="mi">02</span><span class="p">)(?:</span><span class="mi">0</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span><span class="o">-</span><span class="p">(?:</span><span class="mi">30</span><span class="p">))</span><span class="o">|</span><span class="p">(?:(?:</span><span class="mi">0</span><span class="p">[</span><span class="mi">13578</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">02</span><span class="p">])</span><span class="o">-</span><span class="mi">31</span><span class="p">))</span><span class="o">/</span><span class="p">,</span>
+    <span class="c1">// HH:MM:SS
+</span>    <span class="nx">time</span> <span class="p">:</span> <span class="o">/</span><span class="p">(</span><span class="mi">0</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">2</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">3</span><span class="p">])(:[</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]){</span><span class="mi">2</span><span class="p">}</span><span class="o">/</span><span class="p">,</span>
+    <span class="nx">dateISO</span><span class="p">:</span> <span class="o">/</span><span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">4</span><span class="p">}[</span><span class="err">\</span><span class="o">/</span><span class="err">\</span><span class="o">-</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}[</span><span class="err">\</span><span class="o">/</span><span class="err">\</span><span class="o">-</span><span class="p">]</span><span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span><span class="o">/</span><span class="p">,</span>
+    <span class="c1">// MM/DD/YYYY
+</span>    <span class="nx">month_day_year</span> <span class="p">:</span> <span class="o">/</span><span class="p">(</span><span class="mi">0</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">1</span><span class="p">[</span><span class="mi">012</span><span class="p">])[</span><span class="o">-</span> <span class="err">\</span><span class="o">/</span><span class="p">.](</span><span class="mi">0</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="mi">12</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">|</span><span class="mi">3</span><span class="p">[</span><span class="mi">01</span><span class="p">])[</span><span class="o">-</span> <span class="err">\</span><span class="o">/</span><span class="p">.](</span><span class="mi">19</span><span class="o">|</span><span class="mi">20</span><span class="p">)</span><span class="err">\</span><span class="nx">d</span><span class="err">\</span><span class="nx">d</span><span class="o">/</span><span class="p">,</span>
+
+    <span class="c1">// #FFF or #FFFFFF
+</span>    <span class="nx">color</span><span class="p">:</span> <span class="o">/^</span><span class="err">#</span><span class="p">?([</span><span class="nx">a</span><span class="o">-</span><span class="nx">fA</span><span class="o">-</span><span class="nx">F0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">6</span><span class="p">}</span><span class="o">|</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">fA</span><span class="o">-</span><span class="nx">F0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">3</span><span class="p">})</span><span class="nx">$</span><span class="o">/</span>
+  <span class="err">}</span>
+<span class="err">}</span></pre></div></div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="large-3 pull-9 columns">
+    <div class="docs section-container accordion" data-section="accordion">
+  <section class="section ">
+    <p class="title"><a href="#">Using Foundation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="../">Get Started</a></li>
+        <li><a href="../javascript.html">Javascript</a></li>
+        <li><a href="../sass.html">Sass</a></li>
+        <li><a href="../rails.html">Rails</a></li>
+        <li><a href="../media-queries.html">Media Queries</a></li>
+        <li><a class="" href="visibility.html">Visibility Classes</a></li>
+        <li><a href="../rtl.html">Right-to-Left Support</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Grid</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="grid.html">Grid</a></li>
+        <li><a class="" href="block-grid.html">Block Grid</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Navigation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="pagination.html">Pagination</a></li>
+        <li><a class="" href="side-nav.html">Side Nav</a></li>
+        <li><a class="" href="sub-nav.html">Sub Nav</a></li>
+        <li><a class="" href="top-bar.html">Top Bar</a></li>
+        <li><a class="" href="breadcrumbs.html">Breadcrumbs</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Buttons</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="buttons.html">Buttons</a></li>
+        <li><a class="" href="button-groups.html">Button Groups</a></li>
+        <li><a class="" href="dropdown-buttons.html">Dropdown Buttons</a></li>
+        <li><a class="" href="split-buttons.html">Split Buttons</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Forms</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="forms.html">Forms</a></li>
+        <li><a class="" href="custom-forms.html">Custom Forms</a></li>
+        <li><a class="" href="switch.html">Switch</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Typography</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="type.html">Type</a></li>
+        <li><a class="" href="inline-lists.html">Inline Lists</a></li>
+        <li><a class="" href="labels.html">Labels</a></li>
+        <li><a class="" href="keystrokes.html">Keystrokes</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">CSS Components</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="global.html">Global Styles</a></li>
+        <li><a class="" href="alert-boxes.html">Alert Boxes</a></li>
+        <li><a class="" href="panels.html">Panels</a></li>
+        <li><a class="" href="pricing-tables.html">Pricing Tables</a></li>
+        <li><a class="" href="progress-bars.html">Progress Bars</a></li>
+        <li><a class="" href="tables.html">Tables</a></li>
+        <li><a class="" href="thumbnails.html">Thumbnails</a></li>
+        <li><a class="" href="flex-video.html">Flex Video</a></li>
+        <li><a class="" href="tabs.html">Tabs</a></li>
+        <li><a class="" href="accordion.html">Accordion</a></li>
+        <li class="divider"></li>
+        <li><a target="_blank" style="font-style: italic" class="" href="kitchen-sink.html">Kitchen Sink</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section active">
+    <p class="title"><a href="#">Javascript</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="active" href="abide.html">Abide</a></li>
+        <li><a class="" href="clearing.html">Clearing</a></li>
+        <li><a class="" href="dropdown.html">Dropdown</a></li>
+        <li><a class="" href="interchange.html">Interchange</a></li>
+        <li><a class="" href="joyride.html">Joyride</a></li>
+        <li><a class="" href="magellan.html">Magellan</a></li>
+        <li><a class="" href="orbit.html">Orbit</a></li>
+        <li><a class="" href="reveal.html">Reveal</a></li>
+        <li><a class="" href="section.html">Section</a></li>
+        <li><a class="" href="tooltips.html">Tooltips</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../faq.html">FAQ</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../support.html">Support</a></p>
+  </section>
+</div>
+
+<p><a href="http://foundation.zurb.com/download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
+
+<div class="jobs hide-for-small">
+  <h5>Awesome product jobs:</h5>
+  <div id="zurbJobsWidget"></div>
+  <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">ZURBjobs</span></a>
+</div>
+
+  </div>
+</div>
+      <br>
+      <div class="zurb-footer-top bg-blue">
+      <div class="row property">
+        <div class="large-4 columns">
+        	<div class="property-info">
+            <h3><a href="http://foundation.zurb.com/">Foundation</a></h3>
+            <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.</p>
+        	</div>
+        </div>
+        
+        <div class="large-8 columns">
+          <div class="row collapse">
+    	      <div class="large-4 columns">
+    		      <div class="learn-links">
+    		        <h4 class="hide-for-small">Want More?</h4>
+    		        <ul>
+    		          <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+    		          <li><a href="http://zurb.com/expo/custom">Responsive</a></li>
+    		          <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+    		          <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    		        </ul>
+    		      </div>
+      		  </div>
+    	      <div class="large-4 columns">
+    		      <div class="support-links">
+    	          <h4 class="hide-for-small">Talk to us</h4>
+    	          <p>Call us at <strong>(408) 341-0600</strong></p>
+    	          <p>Not a big talker? Email us at <a href="mailto:foundation@zurb.com">foundation@zurb.com</a></p>
+    		      </div>
+    	      </div>
+            <div class="large-4 columns">
+    	        <div class="connect-links">
+    	          <h4 class="hide-for-small">Stay in touch</h4>
+    	          <p>Keep up with the latest on Foundation. Find us on Github.</p>
+    	          <a href="https://github.com/zurb/foundation" target="_blank" class="small button">Stay Connected</a>         
+    	        </div>
+    	      </div>
+          </div> 
+        </div>
+      </div>
+      <div class="row global">
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/services" class="footer-link-block services">
+            <span class="title">Services</span>
+            <span>Helping more than 200 startups succeed since 1998.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+            <span class="title">Foundation</span>
+            <span>The most advanced front-end framework in the world.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/apps" class="footer-link-block apps">
+            <span class="title">Products</span>
+            <span>Prototype, iterate and collect feedback on your products.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/expo" class="footer-link-block expo">
+            <span class="title">Expo</span>
+            <span>Ideas, thoughts and design resources shared with you.</span>
+          </a>
+      </div>
+      </div>
+    </div>
+      <div class="zurb-footer-bottom">
+      <div class="row">
+        <div class="large-4 large-push-8 columns">
+          <ul class="home-social">
+              <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+              <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+              <li><a href="http://zurb.com/contact" class="mail"></a></li>
+            </ul>
+         </div>
+         <div class="large-8 large-pull-4 columns">
+            <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+            <ul class="zurb-links">
+              <li><a href="http://zurb.com/about">About</a></li>
+              <li><a href="http://zurb.com/blog">Blog</a></li>
+              <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+              <li><a href="http://zurb.com/contact">Contact</a></li>
+              <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+           </ul>
+           <p class="copyright">&copy; 1998&ndash;2013 ZURB, Inc. All rights reserved.</p>
+        </div>          
+      </div>
+    </div>
+    <div class="joyride-modal-bg"></div>
+    </section>
+    
+    
+    <aside id="sidebar" role="complementary">
+      
+      <!-- For Future Use		
+      <div id="passport">
+        <a id="user" href="#">
+      		<h5>Firstname LastName</h5><br>
+      		<p>sign out</p>
+        </a>
+        <a id="ava" href="#">
+    		  <div class="avatar"><img src="placehold.it/75x75"></div>
+    		</a>
+      </div>
+      -->
+    	
+    	<!-- This is the apps main navigation -->	  		  
+      <div class="main-menu">
+    		<h6>Foundation</h6>
+    		<nav id="sideMenu" role="navigation">
+    			<ul id="sideMainNav" class="nav-bar">
+    			  <li class="show-for-small">
+            <a href="index.html">Home</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/grid.php">Features</a>
+    			</li>
+          <li>
+            <a href="http://foundation.zurb.com/templates.php">Add-ons</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/case-jacquelinewest.php">Case Studies</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/docs/">Docs</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/training.php">Training</a>
+    			</li>
+    			</ul>
+    		</nav> 			
+      </div>
+    		
+    	<hr>
+    	
+    	<!-- These links will vary depending on what app it is -->	
+      <div class="more-goodness">		
+    		<h6>More ZURB Goodness</h6>
+    		<nav role="navigation">
+    		  <ul id="secondarySideMainNav" class="nav-bar goodness">
+            <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+            <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+            <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    			</ul>
+    		</nav>
+      </div>
+      
+      <hr>
+      
+      <!-- These links will be the same across all of our proprties & apps -->
+      <div class="zurb-links">		
+    		<ul class="top">
+      		<li class="logo"><a href="http://zurb.com"><img src="/assets/offcanvas/zurb-logo.png" alt="ZURB"></a></li>
+      		<li><a href="http://zurb.com/about">About</a></li>
+      		<li><a href="http://zurb.com/blog">Blog</a></li>
+      		<li><a href="http://zurb.com/contact">Contact</a></li>
+    		</ul>
+    		<ul class="pillars">
+      		<li>
+      		  <a href="http://www.zurb.com/services" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping startups win since '98.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>World's most advanced responsive framework.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/apps" class="footer-link-block apps">
+              <span class="title">ZURB Apps</span>
+              <span>Tools to rapidly prototype and iterate.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/expo" class="footer-link-block expo">
+              <span class="title">Expo</span>
+              <span>Online training for smarter product design.</span>
+            </a>
+          </li> 
+    		</ul>
+      </div>
+    	
+    </aside>
+
+  <!-- Reveal Modals begin -->
+  <div id="firstModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a modal.</h2>
+    <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+    <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+    <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="secondModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a second modal.</h2>
+    <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="videoModal" class="reveal-modal large" data-reveal-modal>
+    <h2>This modal has video</h2>
+    <div class="flex-video">
+      <iframe width="800" height="315" src="http://www.youtube.com/embed/IkOQw96cfyE" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <!-- Reveal Modals end -->
+    
+
+    <script>
+
+      // Google Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script src='/assets/vendor/jquery.js'></script>
+    <script src='/assets/docs.js'></script>
+    
+    <script>
+      $(document)
+      
+        .foundation();
+      
+
+      $.ajax({
+        url: '//zurb.com/jobs/widgets/jobs.json?limit=3',
+        dataType: 'jsonp',
+        success: function(data) {
+          var list = $("<ul></ul>");
+          $.each(data.jobs, function(idx, job) {
+            var item = "<li><a href='"+job.url+"' target='_blank'>" +
+              "<span class='positionTitle'>"+job.title+"</span>" +
+              "<span class='location'><span class='companyName'>"+job.company_name+"</span> in "+job.location+"</span>" +
+              "</a>" +
+              "</li>";
+            list.append(item);
+          });
+            // Customize This
+          $("#zurbJobsWidget").html(list);
+        }
+      });
+
+      // For Kitchen Sink Page
+      $('#start-jr').on('click', function() {
+        $(document).foundation('joyride','start');
+      });
+      
+    </script>
+  </body>
+</html>

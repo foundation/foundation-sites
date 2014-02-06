@@ -1,0 +1,33 @@
+# Miscellaneous stuff
+
+.DS_Store
+.sass-cache
+*.gem
+
+# Configuration stuff
+
+aclocal.m4
+autom4te.cache/
+config.h
+config.h.in
+config.log
+config.status
+configure
+Makefile.in
+src/Makefile
+libtool
+stamp-h1
+
+# Build stuff
+
+*.o
+*.lo
+*.a
+.deps/
+.libs/
+
+# Final results
+
+sassc++
+libsass.la
+

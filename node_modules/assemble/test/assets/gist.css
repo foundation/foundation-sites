@@ -1,0 +1,300 @@
+.panel ul {
+  list-style: disc !important;
+}
+.panel ol li,
+.panel ul li {
+  padding-left: 15px !important;
+  margin: 0 0 25px 25px !important;
+}
+.panel ol ol,
+.panel ul ul {
+  list-style-type: circle !important;
+}
+body .gist {
+  color: #333333;
+}
+body .gist blockquote {
+  margin-left: 0;
+}
+body .gist pre {
+  color: #A2A8A8;
+  font: inherit;
+  font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
+  line-height: 1.7em;
+  padding: 25px;
+  white-space: pre;
+}
+body .gist .highlight {
+  display: block;
+  padding: 0;
+  margin: 1em 0 3em;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+body .gist .highlight pre {
+  color: #A2A8A8;
+  padding: 25px;
+  margin: 1em 0 3em;
+  font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.7em;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+body .gist .gist-file {
+  margin-bottom: 3em;
+  font-family: 'Assemble SSm A', 'Assemble SSm B', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border: none;
+}
+body .gist .gist-file .gist-data {
+  overflow: auto;
+  font-size: 100%;
+  word-wrap: normal;
+  background-color: transparent;
+  border-bottom: none;
+}
+body .gist .gist-file .gist-data .line-data {
+  padding: 0.5em !important;
+}
+body .gist .gist-file .gist-data .line-pre {
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
+  background: transparent !important;
+  border: none !important;
+}
+body .gist .gist-file .gist-data .gist-highlight {
+  background: transparent !important;
+}
+body .gist .gist-file .gist-data .line-numbers {
+  padding: 0.5em;
+  color: #aaa;
+  text-align: right;
+  background-color: #ececec;
+  border-right: 1px solid #ddd;
+}
+body .gist .gist-file .gist-data .line-numbers .line-number {
+  display: block;
+  clear: right;
+}
+body .gist-syntax {
+  background: #ffffff;
+  overflow: hidden;
+}
+body .gist-syntax .c {
+  color: #999988;
+  font-style: italic;
+}
+body .gist-syntax .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+body .gist-syntax .k {
+  color: #333333;
+  font-weight: bold;
+}
+body .gist-syntax .o {
+  color: #333333;
+  font-weight: bold;
+}
+body .gist-syntax .cm {
+  color: #999988;
+  font-style: italic;
+}
+body .gist-syntax .cp {
+  color: #999999;
+  font-weight: bold;
+}
+body .gist-syntax .c1 {
+  color: #999988;
+  font-style: italic;
+}
+body .gist-syntax .cs {
+  color: #999999;
+  font-style: italic;
+  font-weight: bold;
+}
+body .gist-syntax .gd {
+  color: #333333;
+  background-color: #ffdddd;
+}
+body .gist-syntax .gd .x {
+  color: #333333;
+  background-color: #ffaaaa;
+}
+body .gist-syntax .ge {
+  color: #333333;
+  font-style: italic;
+}
+body .gist-syntax .gr {
+  color: #aa0000;
+}
+body .gist-syntax .gh {
+  color: #999999;
+}
+body .gist-syntax .gi {
+  color: #333333;
+  background-color: #ddffdd;
+}
+body .gist-syntax .gi .x {
+  color: #333333;
+  background-color: #aaffaa;
+}
+body .gist-syntax .go {
+  color: #888888;
+}
+body .gist-syntax .gp {
+  color: #555555;
+}
+body .gist-syntax .gs {
+  font-weight: bold;
+}
+body .gist-syntax .gu {
+  color: #aaaaaa;
+}
+body .gist-syntax .gt {
+  color: #aa0000;
+}
+body .gist-syntax .kc {
+  color: #333333;
+  font-weight: bold;
+}
+body .gist-syntax .kd {
+  color: #333333;
+  font-weight: bold;
+}
+body .gist-syntax .kp {
+  color: #333333;
+  font-weight: bold;
+}
+body .gist-syntax .kr {
+  color: #333333;
+  font-weight: bold;
+}
+body .gist-syntax .kt {
+  color: #445588;
+  font-weight: bold;
+}
+body .gist-syntax .m {
+  color: #009999;
+}
+body .gist-syntax .s {
+  color: #dd1144;
+}
+body .gist-syntax .na {
+  color: #008080;
+}
+body .gist-syntax .nb {
+  color: #0086b3;
+}
+body .gist-syntax .nc {
+  color: #445588;
+  font-weight: bold;
+}
+body .gist-syntax .no {
+  color: #008080;
+}
+body .gist-syntax .ni {
+  color: #800080;
+}
+body .gist-syntax .ne {
+  color: #990000;
+  font-weight: bold;
+}
+body .gist-syntax .nf {
+  color: #990000;
+  font-weight: bold;
+}
+body .gist-syntax .nn {
+  color: #555555;
+}
+body .gist-syntax .nt {
+  color: #000080;
+}
+body .gist-syntax .nv {
+  color: #008080;
+}
+body .gist-syntax .ow {
+  color: #333333;
+  font-weight: bold;
+}
+body .gist-syntax .w {
+  color: #bbbbbb;
+}
+body .gist-syntax .mf {
+  color: #009999;
+}
+body .gist-syntax .mh {
+  color: #009999;
+}
+body .gist-syntax .mi {
+  color: #009999;
+}
+body .gist-syntax .mo {
+  color: #009999;
+}
+body .gist-syntax .sb {
+  color: #dd1144;
+}
+body .gist-syntax .sc {
+  color: #dd1144;
+}
+body .gist-syntax .sd {
+  color: #dd1144;
+}
+body .gist-syntax .s2 {
+  color: #dd1144;
+}
+body .gist-syntax .se {
+  color: #dd1144;
+}
+body .gist-syntax .sh {
+  color: #dd1144;
+}
+body .gist-syntax .si {
+  color: #dd1144;
+}
+body .gist-syntax .sx {
+  color: #dd1144;
+}
+body .gist-syntax .sr {
+  color: #009926;
+}
+body .gist-syntax .s1 {
+  color: #dd1144;
+}
+body .gist-syntax .ss {
+  color: #990073;
+}
+body .gist-syntax .bp {
+  color: #999999;
+}
+body .gist-syntax .vc {
+  color: #008080;
+}
+body .gist-syntax .vg {
+  color: #008080;
+}
+body .gist-syntax .vi {
+  color: #008080;
+}
+body .gist-syntax .il {
+  color: #009999;
+}
+body .gist .gist-file .gist-meta {
+  display: none !important;
+  padding: 0.5em;
+  overflow: hidden;
+  font-family: 'Assemble SSm A', 'Assemble SSm B', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 85%;
+  color: #666;
+  background-color: #eaeaea;
+}
+body .gist .gist-file .gist-meta a {
+  color: #33b5e5;
+}
+body .gist .gist-file .gist-meta a:visited {
+  color: #773377;
+}

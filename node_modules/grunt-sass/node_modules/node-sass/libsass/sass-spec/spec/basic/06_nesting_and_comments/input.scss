@@ -1,0 +1,52 @@
+$blah: bloo blee;
+$blip: "a 'red' and \"blue\" value";
+
+/* top level comment -- should be preserved */
+div {
+  /* another comment that should be preserved */
+  color: red;
+  background: blue;
+  $blux: hux; // gone!
+  span {
+    font-weight: bold;
+    a {
+      text-decoration: none; /* where will this comment go? */
+      color: green;
+      /* what about this comment? */ border: 1px $blah red;
+    }
+    /* yet another comment that should be preserved */
+    display: inline-block;
+  }  // gone!
+  /* the next selector should be indented two spaces */
+  empty {
+    not_empty {
+      blah: blah; // gone!
+      bloo: bloo;
+    }
+  }
+  p {
+    padding: 10px 8%;
+    -webkit-box-sizing: $blux;
+  }
+  margin: 10px 5px;
+  h1 {
+    color: $blip;
+  }
+}
+/* last comment, top level again --
+   compare the indentation! */
+   
+div {
+  f: g;
+  empty {
+    span {
+      a: b;
+    }
+  }
+  empty_with_comment {
+    /* hey now */
+    span {
+      c: d;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# config/application.yml
+defaults: &defaults
+  cool:
+    sweet: nested settings
+  neat_setting: 24
+
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+

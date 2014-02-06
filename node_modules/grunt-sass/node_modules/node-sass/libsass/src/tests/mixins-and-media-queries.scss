@@ -1,0 +1,22 @@
+@media screen and (orientation:landscape) {
+  span {
+    background: blue;
+  }
+  /* fudge */
+  // @include foo;
+  /* budge */
+  div {
+    color: red;
+  }
+}
+
+@mixin testComments {
+  /* crash */
+  p {
+    width: 100px;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  @include testComments;
+}

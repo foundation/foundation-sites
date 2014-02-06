@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<% testsuites.forEach(function(testsuite) { %>
+  <testsuite name="<%- testsuite.name %>" errors="<%= testsuite.errors %>" tests="<%= testsuite.tests %>" failures="<%= testsuite.failures %>" time="<%= testsuite.time %>" timestamp="<%= testsuite.timestamp %>">
+    <% testsuite.testcases.forEach(function(testcase) { %>
+      <testcase assertions="<%= testcase.assertions %>" classname="<%- testcase.className %>" name="<%- testcase.name %>" time="<%= testcase.time %>">
+        <% testcase.failureMessages.forEach(function(message) { %>
+          <failure><%= message %></failure>
+        <% }) %>
+      </testcase>
+    <% }) %>
+  </testsuite>
+<% }) %>
+</testsuites>

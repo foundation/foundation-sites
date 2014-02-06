@@ -1,0 +1,6 @@
+#a {
+  color: black; }
+  #a > div {
+    color: white; }
+  #a a b {
+    color: gray; }

@@ -1,0 +1,8 @@
+$limit: 10;
+
+@for $x from 1 through $limit {
+  $limit: 4;
+  div {
+    content: $limit thing $x;
+  }
+}

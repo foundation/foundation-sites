@@ -1,0 +1,13 @@
+{
+  "name": "fastclick",
+  "version": "0.6.11",
+  "main": "lib/fastclick.js",
+  "ignore": [
+    "**/.*",
+    "component.json",
+    "package.json",
+    "Makefile",
+    "tests",
+    "examples"
+  ]
+}

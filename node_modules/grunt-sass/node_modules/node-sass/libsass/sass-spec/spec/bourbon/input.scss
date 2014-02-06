@@ -1,0 +1,29 @@
+@import "lib/_bourbon.scss";
+
+box:hover {
+  @include animation-name(scale, slide);
+  @include animation-duration(2s);
+  @include animation-timing-function(ease);
+  @include animation-iteration-count(infinite);
+
+  // Animation shorthand works the same as the CSS3 animation shorthand
+  @include animation(scale 1s ease-in, slide 2s ease);
+}
+
+div {
+  @include appearance(none);
+
+   /* boo boo boo */
+  // Multiple image assets
+  @include background-image(url("/images/a.png"), url("images/b.png"));
+
+  // Image asset with a linear-gradient
+  @include background-image(url("/images/a.png"), linear-gradient(white 0, yellow 50%, transparent 50%));
+
+  // Multiple linear-gradients - Demo
+  @include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%),
+                             linear-gradient(#4e7ba3, darken(#4e7ba4, 10%)));
+
+  // NOT SUPPORTED - Multiple image assets with shorthand notation
+  @include background-image(url("/images/a.png") center no-repeat, url("images/b.png") left repeat);
+}

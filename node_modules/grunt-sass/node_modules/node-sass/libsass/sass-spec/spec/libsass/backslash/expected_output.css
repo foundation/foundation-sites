@@ -1,0 +1,4 @@
+div, span {
+  color: red; }
+  div \ foo, span \ foo {
+    color: blue; }

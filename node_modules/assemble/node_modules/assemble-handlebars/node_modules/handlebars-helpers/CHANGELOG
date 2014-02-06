@@ -1,0 +1,78 @@
+v0.3.3:
+  date: "2013-09-03"
+  changes:
+    - Add fileSize helper.
+    - Add startsWith helper.
+v0.3.2:
+  date: "2013-08-20"
+  changes:
+    - Add glob helper.
+v0.3.0:
+  date: "2013-07-30"
+  changes:
+    - The project has been refactored, cleaned up, and full documentataion has bee put up at http://assemble.io
+v0.2.4:
+  date: "2013-05-11"
+  changes:
+    - Adding object globbing utility functions to be used in helpers later.
+v0.2.3:
+  date: "2013-05-11"
+  changes:
+    - File globbing added to some helpers. Including md and some file helpers.
+v0.2.0:
+  date: "2013-05-07"
+  changes:
+    - A bunch of new tests for markdown and special helpers.
+    - Refactored most of the rest of the helpers to separate functions from Handlebars registration.
+v0.1.32:
+  date: "2013-05-02"
+  changes:
+    - Updated utils and a number of helpers, including value, property, and stringify.
+v0.1.31:
+  date: "2013-04-21"
+  changes:
+    - Fixing relative helper
+v0.1.30:
+  date: "2013-04-20"
+  changes:
+    - Refactoring helpers-collection module to separate the functions from the Handlebars helper registration process.
+v0.1.25:
+  date: "2013-04-16"
+  changes:
+    - Adding defineSection and renderSection helpers to try to get sections populated in a layout from the page.
+v0.1.21:
+  date: "2013-04-07"
+  changes:
+    - Add markdown helpers back, add more tests.
+v0.1.20:
+  date: "2013-04-06"
+  changes:
+    - Generalized helpers structure, externalized utilities.
+v0.1.11:
+  date: "2013-04-05"
+  changes:
+    - New authors and gist helpers, general cleanup and new tests.
+v0.1.10:
+  date: "2013-04-04"
+  changes:
+    - Externalized utility javascript from helpers.js
+v0.1.8:
+  date: "2013-03-28"
+  changes:
+    - Gruntfile updated with mocha tests for 71 helpers, bug fixes.
+v0.1.7:
+  date: "2013-03-18"
+  changes:
+    - New path helper "relative", for resolving relative path from one absolute path to another.
+v0.1.3:
+  date: "2013-03-16"
+  changes:
+    - New helpers, "formatPhoneNumber" and "eachProperty"
+v0.1.2:
+  date: "2013-03-15"
+  changes:
+    - Update README.md with documentation, examples.
+v0.1.0:
+  date: "2013-03-06"
+  changes:
+    - First commit.

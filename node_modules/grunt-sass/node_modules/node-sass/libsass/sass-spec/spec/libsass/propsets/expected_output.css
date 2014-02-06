@@ -1,0 +1,28 @@
+div {
+  background-image: url(foo.png);
+  background-position: 50%; }
+
+span {
+  background-image: url(bar.png);
+  background-position: 100%; }
+
+p {
+  border-upper-left: 2px;
+  border-upper-right: 3px; }
+
+/* 2 + 3 */
+/* 5 */
+foo|div {
+  color: red; }
+
+div sp\ , #abcan {
+  color: red; }
+  div sp\  p, div sp\  |q, #abcan p, #abcan |q {
+    background: blue;
+    color: \hey;
+    width: \10 \20 \ ; }
+    div sp\  p a, div sp\  |q a, #abcan p a, #abcan |q a {
+      height: 1; }
+
+d\ v a, sp\ n a {
+  color: blue; }

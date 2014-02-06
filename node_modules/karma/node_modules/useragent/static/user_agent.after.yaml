@@ -1,0 +1,14 @@
+user_agent_parsers:
+  # browsers
+  - regex: '(Thunderbird)/(\d+)\.(\d+)\.?(\d+)?'
+
+  # command line tools
+  - regex: '(Wget)/(\d+)\.(\d+)\.?([ab]?\d+[a-z]*)'
+
+  - regex: '(curl)/(\d+)\.(\d+)\.(\d+)'
+    family_replacement: 'cURL'
+
+os_parsers:
+  - regex: '(Red Hat)'
+
+device_parsers:

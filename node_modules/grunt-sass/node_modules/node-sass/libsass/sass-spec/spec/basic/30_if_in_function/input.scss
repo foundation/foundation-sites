@@ -1,0 +1,21 @@
+$x: true;
+
+@function foobar() {
+  @if $x {
+    $x: false;
+    @return foo;
+  }
+  @else {
+    $x: true;
+    @return bar;
+  }
+}
+
+div {
+  content: foobar();
+  content: foobar();
+  content: foobar();
+  content: foobar();
+  $x: false;
+  content: foobar();
+}

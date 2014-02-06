@@ -1,0 +1,18 @@
+{
+  "marked": {
+    "breaks": false,
+    "gfm": true,
+    "langPrefix": "language-",
+    "pedantic": false,
+    "sanitize": false,
+    "silent": false,
+    "smartLists": false,
+    "smartypants": false,
+    "tables": true
+  },
+  "flatten": true,
+  "layout": "layout.hbs",
+  "layoutdir": "test/templates/layouts",
+  "helpers": "test/helpers/*.js",
+  "assets": "test/actual/assets"
+}

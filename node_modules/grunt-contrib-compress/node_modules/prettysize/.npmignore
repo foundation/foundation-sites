@@ -1,0 +1,11 @@
+**/node_modules/
+**/npm-debug.log
+node_modules/
+tmp/
+CVS/
+.DS_Store
+.*.swp
+.svn
+*~
+.com.apple.timemachine.supported
+coverage

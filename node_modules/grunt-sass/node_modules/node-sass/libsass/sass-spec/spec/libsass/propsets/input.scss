@@ -1,0 +1,55 @@
+$x: ground;
+$y: e;
+$z: it;
+
+div {
+  back#{$x}: {
+    imag#{$y}: url(foo.png);
+    pos#{$z}ion: 50%;
+  }
+}
+
+span {
+  background: {
+    image: url(bar.png);
+    position: 100%;
+  }
+}
+
+p {
+  border: {
+    upper: {
+      left: 2px;
+      right: 3px;
+    }
+  }
+}
+
+@warn 2 + 3;
+
+/* 2 + 3 */
+/* #{2 + 3} */
+
+foo|div {
+  color: red;
+}
+
+$-hey : hey;
+
+div sp\ ,#abcan {
+  color: red;
+  p, |q {
+    background: blue;
+    color: \hey;
+    width: \10 + \20 \ ;
+    a {
+      height: 1;
+    }
+  }
+}
+
+d\ v, sp\ n {
+  a {
+    color: blue;
+  }
+}

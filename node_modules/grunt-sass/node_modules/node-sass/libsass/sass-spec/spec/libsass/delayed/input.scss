@@ -1,0 +1,39 @@
+$x: a 3/4 b;
+$y: hey;
+
+@function foo() {
+  @return 3/4;
+}
+
+div {
+  hoo: 3/4;
+  goo: nth($x, 2);
+  foo: 15 / nth($x, 2);
+  foo: .25 + nth($x, 2);
+  coo: 2/3 / nth($x, 2);
+  bar: $y and true;
+  bar: false and true;
+  bar: (false) and true;
+  @each $elem in $x {
+    blah: $elem;
+  }
+  bloo: foo();
+  @warn 2/3;
+  blix: "hey #{nth($x, 2)} ho";
+}
+
+@media screen and (hux: 3/4) {
+  div {
+    color: red;
+  }
+}
+
+@warn "blah blah";
+
+div {
+  blah: "ho #{nth($x, 2) } ho";
+}
+
+span {
+  fludge: (true and 3/4);
+}

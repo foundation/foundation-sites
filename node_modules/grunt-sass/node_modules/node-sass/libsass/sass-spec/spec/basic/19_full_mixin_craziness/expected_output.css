@@ -1,0 +1,68 @@
+div {
+  /* begin foo */
+  margin: 1 2;
+  /* end foo */
+  /* begin foo */
+  margin: 1 3;
+  /* end foo */
+  margin: 1 2 zee;
+  margin: 1 kwd-y kwd-z; }
+  div blip {
+    hey: now; }
+  div blip {
+    hey: now; }
+
+div {
+  /* begin hux */
+  color: global-y;
+  /* begin foo */
+  margin: called-from-hux global-y;
+  /* end foo */
+  /* end hux */ }
+  div blip {
+    hey: now; }
+
+div {
+  /* begin hux */
+  color: calling-hux-again;
+  /* begin foo */
+  margin: called-from-hux calling-hux-again;
+  /* end foo */
+  /* end hux */ }
+  div blip {
+    hey: now; }
+
+div {
+  blah: original-bung; }
+
+div {
+  blah: redefined-bung; }
+
+div {
+  /* calls to nullary mixins may omit the empty argument list */
+  blah: redefined-bung; }
+
+div {
+  /* begin foo */
+  margin: kwdarg1 kwdarg2;
+  /* end foo */ }
+  div blip {
+    hey: now; }
+
+hoo {
+  color: boo; }
+
+div {
+  blah: boogoo some other default; }
+
+div {
+  value: original; }
+
+div {
+  value: no longer original; }
+
+div {
+  arg: changed local x;
+  blarg: changed global y;
+  a: global-x;
+  b: changed global y; }

@@ -1,0 +1,16 @@
+@function foo($x) {
+  @while $x {
+    $z: transform($z);
+    @return $z;
+  }
+}
+
+@function bar($x) {
+  @if $x {
+    @return YES;
+  }
+}
+
+div {
+  answer: bar(false);
+}

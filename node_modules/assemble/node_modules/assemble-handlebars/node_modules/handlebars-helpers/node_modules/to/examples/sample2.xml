@@ -1,0 +1,35 @@
+<html>
+<body>
+<h2>markItUp! Universal markup editor</h2>
+<p><img src="../markitup/preview/picture.png" alt="markItUp! Logo" title="markItUp! Logo">
+
+</p>
+<p><strong>markItUp!</strong> is a javascript over <a href="http://www.jquery.com" title="jQuery Website">jQuery</a> plug-in which allow you to turn any textarea in a markup editor.
+
+</p>
+<p><strong>markItUp!</strong> is a lightweight fully customizable engine made to easily fit all developers needs in their CMS, blogs, forums or websites.
+
+</p>
+<p><em>Html, Textile, Wiki Syntax, Markdown, BBcode</em> or even your own Markup system can be easily implemented.
+
+</p>
+<ul>
+<li>integrate it easily</li>
+<li>customize buttons and macros to fit all your need</li>
+<li>customize keyboard shortcuts</li>
+<li>customize toolbar and css look and feel<ul>
+<li>skins</li>
+<li>icons</li>
+<li>dropdown menus</li>
+<li>separators</li>
+</ul>
+</li>
+<li>use the engine from anywhere in the page</li>
+<li>implement any markup language even your own</li>
+<li>implement your own javascript macros even the most advanced</li>
+<li>allows multi-line edition</li>
+<li>preview ajax result dynamically in any markup parser</li>
+<li>offers userfriendly experience and effectiveness</li>
+</ul>
+</body>
+</html>

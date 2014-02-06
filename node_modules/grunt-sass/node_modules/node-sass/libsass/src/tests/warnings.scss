@@ -1,0 +1,33 @@
+@function foo() {
+  @warn "FOO";
+  @return 5;
+}
+
+@mixin moo() {
+  @warn "MOO";
+  moo: moo;
+}
+
+@warn "global!";
+
+div {
+  foo: foo();
+  @include moo();
+  @warn "the end!";
+}
+
+@mixin inner() {
+  @warn "inner";
+  color: red;
+  @include super-inner;
+}
+
+@mixin outer() {
+  @warn "outer";
+  @include inner();
+  color: pink;
+}
+
+div {
+  @include outer();
+}

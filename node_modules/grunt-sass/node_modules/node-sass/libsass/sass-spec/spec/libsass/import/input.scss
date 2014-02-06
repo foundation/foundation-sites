@@ -1,0 +1,8 @@
+@import "hey1.css", "cookie.css", url("hey2.css"), "fudge.css";
+
+$foo:"goodbye";
+div[name="hello"] {
+  color: blue;
+}
+
+@import "bludge.css";

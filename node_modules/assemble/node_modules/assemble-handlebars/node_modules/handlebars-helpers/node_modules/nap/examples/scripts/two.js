@@ -1,0 +1,1 @@
+alert('But sometimes they don’t make sense');

@@ -1,0 +1,1 @@
+alert('Haikus are easy');

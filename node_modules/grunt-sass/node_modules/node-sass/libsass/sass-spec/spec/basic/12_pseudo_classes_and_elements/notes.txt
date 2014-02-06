@@ -1,0 +1,11 @@
+Original Sass and libsass can produce different output for functional pseudo-classes. Original Sass does not normalize whitespace contained within an expression, and it also accepts invalid expressions. Libsass is stricter, and removes superfluous whitespace. E.g., on the following selector:
+
+nth-child( 2n  + 3  )
+
+Original Sass produces:
+
+nth-child(2n  + 3)
+
+whereas libsass produces:
+
+nth-child(2n+3)

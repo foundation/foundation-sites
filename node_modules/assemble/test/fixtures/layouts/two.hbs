@@ -1,0 +1,10 @@
+---
+layout: one.hbs
+---
+<h4>Layout: {{default this.layout 'No layout was used.'}}</h4>
+<p>This is some random content before the body of the actual page.</p>
+
+{{> body }}
+
+<p>This is some random content after the body of the actual page.</p>
+<h4>Layout: {{default this.layout 'No layout was used.'}}</h4>

@@ -1,0 +1,63 @@
+a b {
+  color: red;
+  c d {
+    height: 10;
+  }
+  e f {
+    width: 12;
+  }
+}
+
+@media all and (min-width: 960px) {
+  b {
+    font-weight: normal;
+  }
+}
+
+@media (min-width: 980px) {
+  a {
+    color: red;
+  }
+}
+
+@media screen and (all) {
+  /* hey */
+  p {
+    color: blue;
+    a {
+      color: green;
+      &:after {
+        content: ">>";
+      }
+    }
+  }
+  span {
+    display: inline-block;
+  }
+}
+
+a b c {
+  /* a */
+  blee: blee;
+  /* b */
+  d e f {
+    blah: blah;
+    bloo: bloo;
+  }
+  /* c */
+  g h, i j {
+    @media print and (foo: 1 2 3), (bar: 3px hux(muz)), not screen {
+      /* aa */
+      hey: ho;
+      /* bb */
+      k l m {
+        hee: fee;
+      }
+      /* cc */
+      haa: hoo;
+      /* dd */
+    }
+  }
+  /* d */
+  blah: blah;
+}

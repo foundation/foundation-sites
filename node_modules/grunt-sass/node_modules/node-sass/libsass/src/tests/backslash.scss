@@ -1,0 +1,27 @@
+div, span {
+	color: red;
+	\ foo {
+		color: blue;
+	}
+}
+
+[data-icon='test-1']:before {
+  content:'\\';
+}
+/*
+[data-icon='test-2']:before {
+  content:'\'';
+}
+
+[data-icon='test-3']:before {
+//  content:"\"";
+}
+
+.\E9motion { color: red; }
+.\E9 dition { color: green; }
+.\0000E9dition { color: blue; }
+
+$open-quote: \201C;
+$close-quote: \201D;
+
+*/

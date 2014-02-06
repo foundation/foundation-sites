@@ -1,0 +1,10 @@
+div {
+  a: global x;
+  b: global y;
+  f-a: arg;
+  f-b: global y;
+  f-a: local x changed by foo;
+  f-b: global y changed by foo;
+  f-c: new local z;
+  a: global x;
+  b: global y changed by foo; }

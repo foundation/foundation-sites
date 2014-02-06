@@ -1,0 +1,18 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "undef": false,
+  "boss": true,
+  "eqnull": true,
+  "node": true,
+  "globals": {
+    "module": true,
+    "exports": true,
+    "require": true
+  }
+}

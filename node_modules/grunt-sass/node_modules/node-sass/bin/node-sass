@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+var cli = require('../lib/cli')(process.argv.slice(2));
+
+cli.on('log', function(msg){
+  console.log(msg);
+});
+
+cli.on('error', function(msg){
+  console.error(msg);
+});
+
+cli.on('warn', function(msg){
+  console.warn(msg);
+});

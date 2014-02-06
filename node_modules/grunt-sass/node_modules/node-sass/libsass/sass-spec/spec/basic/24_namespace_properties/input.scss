@@ -1,0 +1,23 @@
+div {
+  a: {
+    p1: q;
+    b: {
+      p2: q;
+    }
+    p3: q;
+  }
+}
+
+foo {
+  bar: baz {
+    bip: bop;
+    bing: type-of("hello");
+    bang: 1 + 2;
+    bung: bap;
+    bong: bup {
+      x: x;
+      y: y;
+      z: z;
+    }
+  }
+}

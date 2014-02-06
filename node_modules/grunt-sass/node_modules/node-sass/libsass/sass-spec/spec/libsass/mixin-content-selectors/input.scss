@@ -1,0 +1,17 @@
+@mixin foo($x: 1) {
+  foo-sel {
+    @content;
+  }
+}
+
+div {
+  $x: hey;
+  @include foo() {
+    bar {
+      color: red;
+      hux {
+        msg: $x;
+      }
+    }
+  }
+}

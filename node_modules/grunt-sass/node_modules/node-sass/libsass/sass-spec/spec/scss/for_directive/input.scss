@@ -1,0 +1,3 @@
+.foo {
+  @for $var from 1 through 5 {a: $var;}
+}

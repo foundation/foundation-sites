@@ -1,0 +1,9 @@
+outer {
+  /* assigning to $x */
+  blah: blah; }
+  outer inner {
+    /* begin foo */
+    /* assigning to $x */
+    x: inside foo;
+    /* end foo */
+    x: inside outer scope; }

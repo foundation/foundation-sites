@@ -1,0 +1,146 @@
+div {
+  /* number + whatever */
+  font: 3 + 2;
+  font: 3 + 50%;
+  font: 3 + 12px;
+  font: 3 + #111111;
+  font: 3 + hello;
+  font: 3 + "hello";
+  font: 3 + true;
+  font: 3 + false;
+  font: 3 + not-there(hello);
+  font: 3 + un#{quo}te("hello");
+  font: 3 + (a, b, c);
+  font: 3 + (a b c);
+  /* number - whatever */
+  font: 3 - 2;
+  font: 3 - 50%;
+  font: 3 - 12px;
+  font: 3 - #111111;
+  font: 3 - hello;
+  font: 3 - "hello";
+  font: 3 - true;
+  font: 3 - false;
+  font: 3 - not-there(hello);
+  font: 3 - un#{quo}te("hello");
+  font: 3 - (a, b, c);
+  font: 3 - (a b c);
+  /* number * whatever */
+  font: 3 * 2;
+  font: 3 * 50%;
+  font: 3 * 12px;
+  font: 3 * #111111;
+  // // the following commented expressions have invalid operands
+  // font: 3 * hello;
+  // font: 3 * "hello";
+  // font: 3 * true;
+  // font: 3 * false;
+  // font: 3 * not-there(hello);
+  // font: 3 * un#{quo}te("hello");
+  // font: 3 * (a, b, c);
+  // font: 3 * (a b c);
+  /* number / whatever */
+  font: 3 / 2;
+  font: (3 / 2);
+  font: 4 * 3 / 2;
+  font: 3 / 2 * 4;
+  // font: (100 / 50%); // results in mixed unit
+  // font: (3 / 12px); // results in mixed unit
+  font: (3 / #111111);
+  font: (3 / hello);
+  font: (3 / "hello");
+  font: (3 / true);
+  font: (3 / false);
+  font: (3 / not-there(hello));
+  font: (3 / un#{quo}te("hello"));
+  font: (3 / (a, b, c));
+  font: (3 / (a b c));
+  /* number % whatever */
+  font: 3 % 2;
+//  font: 3 % 50%; // units not allowed
+//  font: 3 % 12px;
+//  font: 3 % #111111; // invalid operand
+//  font: 3 % hello;
+//  font: 3 % "hello";
+//  font: 3 % true;
+//  font: 3 % false;
+//  font: 3 % not-there(hello);
+//  font: 3 % un#{quo}te("hello");
+//  font: 3 % (a, b, c);
+//  font: 3 % (a b c);
+  /* */
+  /* percentage + whatever */
+  font: 50% + 3;
+  font: 50% + 100%;
+//  font : 50% + 10px; // incompatible units
+//  font: 50% + #111111; // invalid operands
+  font: 50% + hello;
+  font: 50% + "hello";
+  font: 50% + undefined(hello);
+  font: 50% + un#{quo}te("hello");
+  font: 50% + (a, b, c);
+  font: 50% + (a b c);
+  /* percentage - whatever */
+  font: 50% - 3;
+  font: 50% - 100%;
+//  font: 50% - 10px; // incompatible units
+  font: 50% - #111111; // invalid operands
+  font: 50% - hello;
+  font: 50% - "hello";
+  font: 50% - undefined(hello);
+  font: 50% - un#{quo}te("hello");
+  font: 50% - (a, b, c);
+  font: 50% - (a b c);
+  /* percentage * whatever */
+  font: 50% * 3;
+//  font: 50% * 100%; // results in squared units
+//  font: 50% * 10px; // results in mixed units
+//  font: 50% * #111111; // invalid operands
+//  font: 50% * hello;
+//  font: 50% * "hello";
+//  font: 50% * undefined(hello);
+//  font: 50% * un#{quo}te("hello");
+//  font: 50% * (a, b, c);
+//  font: 50% * (a b c);
+  /* percentage / whatever */
+  font: (50% / 3);
+  font: (50% / 100%);
+//  font: (50% / 10px); // incompatible units
+  font: (50% / #111111); // invalid operands
+  font: (50% / hello);
+  font: 50%/"hello";
+  font: (50% / undefined(hello));
+  font: 50% / un#{quo}te("hello");
+  font: 50% / (a, b, c);
+  font: 50% / (a b c);
+  /* percentage % whatever */
+  /* percentage / whatever */
+  font: 50% % 3;
+//  font: 50% % 100%; // not allowed to mod by units
+//  font: 50% % 10px;
+//  font: 50% % #111111; // invalid operands
+//  font: 50% % hello;
+//  font: 50% % "hello";
+//  font: 50% % undefined(hello);
+//  font: 50% % un#{quo}te("hello");
+//  font: 50% % (a, b, c);
+//  font: 50% % (a b c);
+//  font: 20px % 6px;
+  font: type-of(3 + (a b c));
+  blah: (20/#abc);
+  blah: type-of(3 + true);
+  blah: (3 + true);
+  blah: (true + 3);
+  blah: (true - 5);
+
+//  blah: 20px % 6px;
+
+//  blah: 20 % 6px;
+ // blah: 20px % 6hz;
+//  blee: rgba(4,4,4,.3) % rgba(1,1,1,.3);
+  blah: (#abc / #111);
+  foo: type-of((1 2 3) + (a b c));
+  foo: (1 2 3) + (a b c);
+  foo: (2px + 3px)*4em/2px;
+  foo: 1cm*1in/1cm;
+}

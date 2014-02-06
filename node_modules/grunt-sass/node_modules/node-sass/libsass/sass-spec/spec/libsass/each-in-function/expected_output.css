@@ -1,0 +1,4 @@
+div {
+  a: 0;
+  b: global each 50% 50% type1 number type2 number each cover circle type1 string type2 string each red blue type1 color type2 color;
+  c: a, b, color, d; }

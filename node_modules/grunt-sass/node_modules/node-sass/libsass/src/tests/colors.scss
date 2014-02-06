@@ -1,0 +1,10 @@
+p {
+  color: rgb(255, 128, 0);
+  color: red green blue;
+  color: (red) (green) (blue);
+  color: red + green;
+  color: red + hux;
+  color: unquote("red") + green;
+  color: unquote(red) + green;
+  color: unquote(0xf00);
+}

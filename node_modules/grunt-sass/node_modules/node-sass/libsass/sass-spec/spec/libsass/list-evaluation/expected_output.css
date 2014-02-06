@@ -1,0 +1,18 @@
+div {
+  content: red 2/3 blue;
+  content: 2/3;
+  content: number;
+  content: color;
+  /**** 4 ****/
+  content: 0.5 3/40.83333 7/8;
+  content: 0.5 3/4, 0.83333 7/8;
+  /**** ****/
+  foo: 1;
+  bar: 2;
+  foo: 2;
+  bar: 3;
+  foo: 0.75;
+  bar: 1.75;
+  /*** ***/
+  stuff: 1, 2 3/4 5, 6;
+  stuff: 0.25; }

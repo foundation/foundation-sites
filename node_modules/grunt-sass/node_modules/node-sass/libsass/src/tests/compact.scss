@@ -1,0 +1,5 @@
+div {
+  content: compact(yellow, false, false, false, false);
+  content: type-of(compact(yellow, false, false, false, false));
+  content: length(type-of(compact(yellow, false, false, false, false)));
+}

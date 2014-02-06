@@ -1,0 +1,13 @@
+%x {
+  color: red;
+}
+
+foo {
+  width: 10px;
+  @extend %x;
+}
+
+hux {
+  height: 12px;
+  @extend %x;
+}

@@ -1,0 +1,32 @@
+box:hover {
+  -webkit-animation-name: scale, slide;
+  -moz-animation-name: scale, slide;
+  animation-name: scale, slide;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation: scale 1s ease-in, slide 2s ease;
+  -moz-animation: scale 1s ease-in, slide 2s ease;
+  animation: scale 1s ease-in, slide 2s ease; }
+
+div {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  /* boo boo boo */
+  background-image: url("/images/a.png"), url("images/b.png");
+  background-image: url("/images/a.png"), url("images/b.png");
+  background-image: url("/images/a.png"), -webkit-linear-gradient( white 0, yellow 50%, transparent 50%);
+  background-image: url("/images/a.png"), linear-gradient( white 0, yellow 50%, transparent 50%);
+  background-image: -webkit-linear-gradient( rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%), -webkit-linear-gradient( #4e7ba3, #3e6181);
+  background-image: linear-gradient( rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 50%), linear-gradient( #4e7ba3, #3e6181);
+  background-image: -webkit-url("/images/a.png")-gradient( center), -webkit-url("images/b.png")-gradient( left);
+  background-image: url("/images/a.png")-gradient( center), url("images/b.png")-gradient( left); }

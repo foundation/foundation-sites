@@ -1,0 +1,34 @@
+$x: a, b, 1+2;
+
+@if type-of(nth($x, 3)) == number {
+  div {
+    background: gray;
+  }
+}
+
+@if type-of(nth($x, 2)) == number {
+  div {
+    background: gray;
+  }
+}
+@else if type-of(nth($x, 2)) == string {
+  div {
+    background: blue;
+  }
+}
+
+@if type-of(nth($x, 2)) == number {
+  div {
+    background: gray;
+  }
+}
+@else if type-of(nth($x, 2)) == color {
+  div {
+    background: blue;
+  }
+}
+@else {
+  div {
+    background: red;
+  }
+}

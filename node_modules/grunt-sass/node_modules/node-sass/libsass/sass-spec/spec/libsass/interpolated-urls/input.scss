@@ -1,0 +1,12 @@
+$base_url: "/static_loc/";
+div {
+  background-image: "url("#{$base_url}"img/beta.png)";
+}
+
+span {
+  background-image: url(#{$base_url}img/beta.png);
+}
+
+fudge {
+  walnuts: blix"fludge"#{hey now}123;
+}

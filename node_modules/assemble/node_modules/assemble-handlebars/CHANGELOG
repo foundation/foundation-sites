@@ -1,0 +1,4 @@
+v0.1.0:
+  date: "2013-05-05"
+  changes:
+    - New Assemble engine plugin for Handlebars templates.

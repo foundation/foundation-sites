@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Layout filename: ''</title>
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/validation.css">
+  </head>
+  <body style="padding-top: 60px;">
+    <div class="container">
+      <!-- validate assets path -->
+      <section id="validate"></section>
+      <div class="docs-section">
+        <div class="docs-header" id="content">
+          <h4><strong class="text-muted">test/fixtures/assets_path/assets.hbs</strong> &#x2192;   
+            <strong class="text-success">test/actual/assets_base.html</strong>
+          </h4>
+        </div>
+        <hr>
+      </div>
+      <ul class="pager">
+        <li class="previous disabled">
+          <a unselectable="on" class="unselectable">First</a>
+        </li>
+        <li class="previous disabled">
+          <a unselectable="on" class="unselectable">&larr; Previous</a>
+        </li>
+        <li class="active pager-middle">
+          <a href="assets_base.html">1</a>
+        </li>
+        <li class="next disabled">
+          <a unselectable="on" class="unselectable">Last</a>
+        </li>
+        <li class="next disabled">
+          <a unselectable="on" class="unselectable">Next &rarr;</a>
+        </li>
+      </ul>
+      <style>
+      .unselectable {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      </style>
+      <hr>
+      <div class="row">
+        <!-- Column: sidebar -->
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <!-- pagination -->
+            <ul class="nav nav-pills nav-stacked">
+              <li class="prev disabled">
+                <a unselectable="on" class="unselectable">First</a>
+              </li>
+              <li class="prev disabled">
+                <a unselectable="on" class="unselectable">&larr; Previous</a>
+              </li>
+              <li class="active">
+                <a href="assets_base.html">1</a>
+              </li>
+              <li class="next disabled">
+                <a unselectable="on" class="unselectable">Next &rarr;</a>
+              </li>
+              <li class="next disabled">
+                <a unselectable="on" class="unselectable">Last</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Column: content -->
+        <div class="col-md-9" role="main">
+          <div class="docs-section">
+            <div class="docs-header" id="content">
+              <h4><strong>Page layout:</strong> default.hbs</h4>  <h4>
+                <strong>Page src:</strong> test/fixtures/assets_path/assets.hbs
+              </h4>
+              <h4><strong>Page dest:</strong> test/actual/assets_base.html</h4>  <h4>
+                <strong>Dest filename:</strong> assets_base.html
+              </h4>
+              <h4><strong>Dest basename:</strong> assets</h4>  <h4>
+                <strong>Page title:</strong> (no title defined)
+              </h4>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Categories Collection -->
+              </div>
+              <div class="col-md-6">
+              </div>
+            </div>
+            <hr>
+            <p>Examples to test the "relative" and "assets" variables, and to show how they work</p>
+            <h1>Same Folder</h1>
+            <p>Assets folder is in the same dir as dest files.</p>
+            <pre>
+assets_base: {
+  options: {assets: 'test/actual'},
+  files: {'test/actual/assets_base.html': ['test/files/assets.hbs']}
+},
+</pre>
+            <div class="docs-header" id="content">
+              <h1>Content</h1>
+            </div>
+            <ul>
+              <li> <a href="assets_base.html">assets_base.html</a> </li>
+            </ul>
+            <hr>
+            <div style="display: none">
+              <h1>Page</h1>
+              <!--
+              "this"
+              ===============================
+              this.src:      
+              this.dest:     
+              this.layout:   
+              this.dirname:  test/actual
+              this.filename: assets_base.html
+              this.pagename: assets_base.html
+              this.basename: assets
+              this.ext:      .html
+              "page"
+              ===============================
+              page.src:        test/fixtures/assets_path/assets.hbs
+              page.dest:       test/actual/assets_base.html
+              page.layout:     
+              page.dirname:    test/actual
+              page.filename:   assets_base.html
+              page.pagename:   assets_base.html
+              page.basename:   assets
+              page.ext:        .html
+              "root"
+              ===============================
+              src:           
+              dest:          
+              layout:        
+              dirname:       test/actual
+              filename:      assets_base.html
+              pagename:      assets_base.html
+              basename:      assets
+              ext:           .html
+              -->
+              <h1>Each pages</h1>
+              <ul>
+                <li> <a href="assets_base.html">assets_base.html</a> </li>
+                <!--
+                  "this"
+                  ===============================
+                  this.src:      test/fixtures/assets_path/assets.hbs
+                  this.dest:     test/actual/assets_base.html
+                  this.dirname:  test/actual
+                  this.filename: assets_base.html
+                  this.pagename: assets_base.html
+                  this.basename: assets
+                  this.ext:      .html
+                  "page"
+                  ===============================
+                  page.src:      test/fixtures/assets_path/assets.hbs
+                  page.dest:     test/actual/assets_base.html
+                  page.dirname:  test/actual
+                  page.filename: assets_base.html
+                  page.pagename: assets_base.html
+                  page.basename: assets
+                  page.ext:      .html
+                  "root"
+                  ===============================
+                  src:           test/fixtures/assets_path/assets.hbs
+                  dest:          test/actual/assets_base.html
+                  dirname:       test/actual
+                  filename:      assets_base.html
+                  pagename:      assets_base.html
+                  basename:      assets
+                  ext:           .html
+                  -->
+              </ul>
+              <h1>Debug Info</h1>
+              <pre><code class="json">
+{
+  "_page": "all",
+  "assets": "../assets",
+  "basename": "assets",
+  "data": {},
+  "dest": "test/actual/assets_base.html",
+  "dirname": "test/actual",
+  "ext": ".html",
+  "extname": ".html",
+  "filePair": {
+    "src": [
+      "test/fixtures/assets_path/assets.hbs"
+    ],
+    "dest": "test/actual/assets_base.html",
+    "orig": {
+      "src": [
+        "test/fixtures/assets_path/assets.hbs"
+      ],
+      "dest": "test/actual/assets_base.html"
+    }
+  },
+  "filename": "assets_base.html",
+  "first": true,
+  "index": 0,
+  "last": true,
+  "middle": false,
+  "number": 1,
+  "page": "<!DOCTYPE html>\n  <html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Layout filename: '{{layout}}'</title>\n    <link rel=\"stylesheet\" href=\"http://getbootstrap.com/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"{{assets}}/validation.css\">\n  </head>\n  <body style=\"padding-top: 60px;\">\n    <div class=\"container\">\n\n      <!-- validate assets path -->\n      <section id=\"validate\"></section>\n      <div class=\"docs-section\">\n        <div class=\"docs-header\" id=\"content\">\n          <h4><strong class=\"text-muted\">{{page.src}}</strong> &#x2192; <strong class=\"text-success\">{{page.dest}}</strong></h4>\n        </div>\n        <hr>\n      </div>\n\n      {{pager pagination}}\n      <hr>\n\n      <div class=\"row\">\n        <!-- Column: sidebar -->\n        <div class=\"col-md-3\">\n          <div class=\"bs-sidebar hidden-print\" role=\"complementary\">\n            <!-- pagination -->\n            {{nav pagination}}\n          </div>\n        </div>\n        <!-- Column: content -->\n        <div class=\"col-md-9\" role=\"main\">\n          <div class=\"docs-section\">\n            <div class=\"docs-header\" id=\"content\">\n              <h4><strong>Page layout:</strong> {{default originalLayout '(no layout defined)'}}</h4>\n              <h4><strong>Page src:</strong> {{page.src}}</h4>\n              <h4><strong>Page dest:</strong> {{page.dest}}</h4>\n              <h4><strong>Dest filename:</strong> {{page.filename}}</h4>\n              <h4><strong>Dest basename:</strong> {{page.basename}}</h4>\n              <h4>              <strong>Page title:</strong> {{default title '(no title defined)'}}</h4>\n            </div>\n\n            <hr>\n            <div class=\"row\">\n              <div class=\"col-md-6\">\n                <!-- Categories Collection -->\n                {{#if categories}}\n                  {{> collections-categories }}\n                {{/if}}\n              </div>\n              <div class=\"col-md-6\">\n                {{#if tags}}\n                  {{> collections-tags }}\n                {{/if}}\n              </div>\n            </div>\n\n            <hr>\n\n            <p>Examples to test the \"relative\" and \"assets\" variables, and to show how they work</p>\n\n{{#assets_nested}}\n<h1>\"Public\" Folder          </h1>\n<p>Public (assets) folder is in the project root</p>\n<pre>\noriginalAssets: {{originalAssets}}\nassets: {{assets}}\ndest: {{dest}}\nsrc: {{src}}\nassets_nested: {\n  options: {assets: 'test/actual/public'},\n  files: {'test/actual/assets_nested.html': ['test/files/assets.hbs']}\n},\n</pre>\n{{/assets_nested}}\n\n\n{{#assets_base}}\n
+              <h1>Same Folder</h1>\n
+              <p>Assets folder is in the same dir as dest files.</p>\n<pre>\nassets_base: {\n  options: {assets: 'test/actual'},\n  files: {'test/actual/assets_base.html': ['test/files/assets.hbs']}\n},\n</pre>\n{{/assets_base}}\n\n\n{{#assets_trailing_slash}}\n
+              <h1>Project Root</h1>\n
+              <p>Assets folder is in the project root, which is not the same dir as dest files.</p>\n<pre>\nassets_trailing_slash: {\n  options: {assets: ''},\n  files: {'test/actual/assets_trailing_slash.html': ['test/files/assets.hbs']}\n}\n</pre>\n{{/assets_trailing_slash}}\n\n\n{{#assets_dot_slash}}\n
+              <h1>Project Root With Slash</h1>\n
+              <p>Assets folder is in the project rool, which is not the same dir as the dest files.</p>\n<pre>\nassets_dot_slash: {\n  options: {assets: './'},\n  files: {'test/actual/assets_dot_slash.html': ['test/files/assets.hbs']}\n}\n</pre>\n{{/assets_dot_slash}}\n\n\n{{#assets_blank_path}}\n
+              <h1>Same Folder With Slash</h1>\n
+              <p>Assets folder is in the same dir as dest files</p>\n<pre>\nassets_blank_path: {\n  options: {assets: 'test/actual'},\n  files: {'test/actual/assets_blank_path.html': ['test/files/assets.hbs']}\n}\n</pre>\n{{/assets_blank_path}}\n\n
+              <div class=\
+              "docs-header\" id=\ "content\">\n
+                <h1>Content</h1>\n</div>\n
+              <ul>\n {{#each pages}}\n
+                <li> <a href=\ "{{relativeLink}}\">{{filename}}</a> </li>\n {{/each}}\n</ul>\n\n
+              <hr>\n
+              <div style=\ "display: none\">\n\n
+                <h1>Page</h1>\n
+                <!--\n              \"this\"\n              ===============================\n              this.src:      {{this.src}}\n              this.dest:     {{this.dest}}\n              this.layout:   {{this.layout}}\n              this.dirname:  {{this.dirname}}\n              this.filename: {{this.filename}}\n              this.pagename: {{this.pagename}}\n              this.basename: {{this.basename}}\n              this.ext:      {{this.ext}}\n\n              \"page\"\n              ===============================\n              page.src:        {{page.src}}\n              page.dest:       {{page.dest}}\n              page.layout:     {{page.layout}}\n              page.dirname:    {{page.dirname}}\n              page.filename:   {{page.filename}}\n              page.pagename:   {{page.pagename}}\n              page.basename:   {{page.basename}}\n              page.ext:        {{page.ext}}\n\n              \"root\"\n              ===============================\n              src:           {{src}}\n              dest:          {{dest}}\n              layout:        {{layout}}\n              dirname:       {{dirname}}\n              filename:      {{filename}}\n              pagename:      {{pagename}}\n              basename:      {{basename}}\n              ext:           {{ext}}\n              -->\n
+                <h1>Each pages</h1>\n
+                <ul>\n {{#each pages}}
+                  <li> <a href=\ "{{relativeLink}}\">{{filename}}</a> </li>\n
+                  <!--\n                  \"this\"\n                  ===============================\n                  this.src:      {{this.src}}\n                  this.dest:     {{this.dest}}\n                  this.dirname:  {{this.dirname}}\n                  this.filename: {{this.filename}}\n                  this.pagename: {{this.pagename}}\n                  this.basename: {{this.basename}}\n                  this.ext:      {{this.ext}}\n\n                  \"page\"\n                  ===============================\n                  page.src:      {{../page.src}}\n                  page.dest:     {{../page.dest}}\n                  page.dirname:  {{../page.dirname}}\n                  page.filename: {{../page.filename}}\n                  page.pagename: {{../page.pagename}}\n                  page.basename: {{../page.basename}}\n                  page.ext:      {{../page.ext}}\n\n                  \"root\"\n                  ===============================\n                  src:           {{src}}\n                  dest:          {{dest}}\n                  dirname:       {{dirname}}\n                  filename:      {{filename}}\n                  pagename:      {{pagename}}\n                  basename:      {{basename}}\n                  ext:           {{ext}}\n                  -->\n {{/each}}\n</ul>\n\n
+                <h1>Debug Info</h1>\n {{{inspect page 'json'}}}\n</div>\n</div>\n</div>\n</div>\n</div>\n
+      <script src=\ "{{assets}}/validation.js\"></script>\n</body>\n
+</html>\n", "pageName": "assets_base.html", "pagename": "assets_base.html", "src": "test/fixtures/assets_path/assets.hbs" }
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="../assets/validation.js"></script>
+</body>
+</html>

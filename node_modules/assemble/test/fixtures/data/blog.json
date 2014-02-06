@@ -1,0 +1,35 @@
+{
+  "articles": [
+    {
+      "filename": "post1",
+      "data": {
+        "title": "Blog Post #1",
+        "gists": [
+          "5898072"
+        ]
+      },
+      "content": "This \"content\" property is optional and would get passed into the `body` tag. But if you only need to pass the page's metadata to the layout then the content property isn't required."
+    },
+    {
+      "filename": "post2",
+      "data": {
+        "title": "Blog Post #2",
+        "subtitle": "",
+        "gists": [
+          "5898077",
+          "5898078"
+        ]
+      },
+      "content": "<h1>{{title}} | {{site.title}}</h1>\n {{> alert }} This project is brought to you by <%= pkg.name %>."
+    },
+    {
+      "filename": "post3",
+      "data": {
+        "title": "Blog Post #3",
+        "gists": [
+          "5909393"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+foo.a {
+  width: 10px;
+}
+
+bar {
+  color: red;
+  @extend foo;
+}

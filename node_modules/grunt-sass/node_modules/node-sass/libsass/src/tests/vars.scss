@@ -1,0 +1,7 @@
+$x: hello;
+$y: 1/2 3/4 (2+3);
+
+div {
+  content: 1 2 $x;
+  content: $y;
+}

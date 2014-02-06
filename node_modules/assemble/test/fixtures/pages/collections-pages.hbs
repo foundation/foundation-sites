@@ -1,0 +1,15 @@
+---
+title: Pages Collection
+tags:
+- pages
+---
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4>{{title}}</h4>
+  </div>
+  <div class="panel-body">
+    {{#each pages}}
+      <a href="#">{{{data.title}}}</a>
+    {{/each}}
+  </div>
+</div>

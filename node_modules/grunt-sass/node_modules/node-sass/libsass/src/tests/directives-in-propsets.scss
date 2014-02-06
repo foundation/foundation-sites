@@ -1,0 +1,24 @@
+$color: red;
+$position: 50%;
+$x: 0;
+
+@mixin foo() {
+  image: url(foo.png);
+}
+
+div {
+  background: {
+    something: {
+      color: green;
+    }
+    @if (type-of($color) == "color") {
+      color: $color;
+    }
+    @if (type-of($position) == "number") {
+      position: $position;
+      @include foo();
+    }
+    groo: foo;
+  }
+  width: $x;
+}

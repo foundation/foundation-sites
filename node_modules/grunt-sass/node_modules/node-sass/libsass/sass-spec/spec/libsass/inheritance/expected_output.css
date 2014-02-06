@@ -1,0 +1,46 @@
+main content a box, main content a supplemtal text b sidebar, supplemtal text b main content a sidebar {
+  border: solid; }
+
+supplemtal text b sidebar {
+  background: gray; }
+
+/********/
+mammal, human {
+  blood: warm; }
+
+mammal.furry.quadruped, human.furry.quadruped, dog.furry {
+  fur: lots;
+  legs: 4; }
+
+human {
+  says: "hello"; }
+
+dog {
+  says: "woof"; }
+
+/********/
+region.country inhabitant.mouse, region.country citizen.mouse, region.country tax-payer.mouse {
+  eats: cheddar; }
+
+region.city inhabitant.mouse, region.city region.country citizen.mouse, region.country region.city citizen.mouse, region.city tax-payer.mouse {
+  eats: camembert; }
+
+region.country citizen {
+  ssn: 123 45 6789; }
+
+region tax-payer {
+  rate: 17%; }
+
+/********/
+foo, .a.bar, hux {
+  color: red; }
+
+.a.bar {
+  background: gray; }
+
+/********/
+foo, .a.bar, hux {
+  color: red; }
+
+hux, .bar.a {
+  background: blue; }

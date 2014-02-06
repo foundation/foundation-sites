@@ -1,0 +1,8 @@
+div {
+  a: (false and "hey");
+  b: ("hey" and "ho");
+  b: ("hey" or "ho");
+  a: false and "hey";
+  b: "hey" and "ho";
+  b: unquote("hey") or "ho";
+}

@@ -1,0 +1,7 @@
+$foo: 3;
+$bar: 4;
+
+@media only screen and (max-width: $foo) and (min-width: $bar) {
+  /* hey */
+  color: red;
+}

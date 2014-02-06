@@ -1,0 +1,43 @@
+div {
+  span, p, span {
+    color: red;
+  }
+  a.foo.bar.foo {
+    color: green;
+  }
+  &:nth(-3) {
+    color: blue;
+  }
+}
+
+@-webkit-keyframes {
+  from {
+    left: 0px;
+    hence {
+      whatever: hoo;
+    }
+  }
+  to {
+    left: 200px;
+  }
+}
+
+div {
+  @whatever {
+    blah: blah;
+    stuff {
+      blah: bloh;
+    }
+  }
+}
+
+
+a, b {
+  color: red;
+  c, d {
+    height: 10px;
+    e, f {
+      width: 12px;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@mixin foo($x, $y, $zs...) {
+  foo-x: $x;
+  foo-y: $y;
+  foo-zs: $zs;
+}
+
+div {
+  @include foo(a, b, c, d, e);
+}

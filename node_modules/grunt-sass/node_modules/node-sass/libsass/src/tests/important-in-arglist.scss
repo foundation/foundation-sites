@@ -1,0 +1,10 @@
+@mixin foo($x, $y) {
+  style: $x;
+  schtyle: $y;
+}
+
+div {
+  @include foo(0px 0px 0px 0px, #ef8086 inset !important);
+  fludge: foo bar ! important hux;
+  bludge: foo bar ! important;
+}

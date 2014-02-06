@@ -1,0 +1,15 @@
+div {
+  a-p1: q;
+  a-b-p2: q;
+  a-p3: q; }
+
+foo {
+  bar: baz;
+  bar-bip: bop;
+  bar-bing: string;
+  bar-bang: 3;
+  bar-bung: bap;
+  bar-bong: bup;
+  bar-bong-x: x;
+  bar-bong-y: y;
+  bar-bong-z: z; }

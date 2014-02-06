@@ -1,0 +1,2004 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/assets/favicons/apple-touch-icon-precomposed.png">
+    <link rel="icon" href="/assets/favicons/favicon.ico" type="image/x-icon">
+    <title>Foundation Docs: Sass</title>
+    <link rel='stylesheet' href='/assets/normalize.css' />
+    <link rel='stylesheet' href='/assets/docs.css' />
+    <script src='/assets/vendor/custom.modernizr.js'></script>
+    
+  </head>
+  <body class="antialiased off-canvas hide-extras">
+     <nav class="top-bar hide-for-small">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="/">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="/grid.php">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="/templates.php">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="/case-jacquelinewest.php">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="/docs/">Docs</a></li>
+          <li class="divider"></li>
+          <li><a href="/training.php">Training</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    <section class="main">
+     
+      
+      <header class="show-for-small">
+        <a class='sidebar-button show-for-small' id="sidebarButton" href="#sidebar" ><img src="/assets/offcanvas/menu-wht.png" alt="ZURB Menu"><h4>Foundation</h4></a>
+      </header>
+  
+      
+      <div class="row">
+        <div class="large-12 columns">
+          <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation 4 Documentation</a></h1>
+          <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
+          <hr>
+        </div>
+      </div>
+  
+      <div class="row">
+    <div class="large-9 push-3 columns">
+
+    <h2>Using the Sass Version of Foundation</h2>
+    <h4 class="subheader">Start using Foundation the way you want, with more control than ever before. We've made it really easy to install using Compass so you'll need a little bit of knowledge before you get going. Visit the <a href="http://compass-style.org">Compass</a> and <a href="http://sass-lang.com">Sass</a> sites to learn the basics if you don't already know them.</h4>
+
+    <h4>Recommended Installation</h4>
+    <p>To create your first project using our Compass extension, you'll need to have the <kbd>zurb-foundation</kbd> gem installed. This will install Foundation and all necessary dependencies. Here's the command that will do this for you:</p>
+    <p class="btm-marg keystroke">[sudo] gem install zurb-foundation</p>
+    <br>
+    <em style="font-size: 12px;">Note: Make sure ZURB isn't all caps.</em>
+
+    <br><br>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <h5>Upgrading Your Gem</h5>
+        <p>To upgrade your gem to the latest public release, just paste this snippet into your command line:</p>
+        <p class="keystroke">[sudo] gem update zurb-foundation</p>
+      </div>
+      <div class="large-6 columns">
+        <h5>Release Candidates</h5>
+        <p>Stay on top of the latest before official releases by installing release candidates with this command:</p>
+        <p class="btm-marg keystroke">[sudo] gem install zurb-foundation --pre</p>
+      </div>
+    </div>
+
+    <br>
+    <hr>
+
+    <a name="create-compass"></a>
+    <h2>Creating your first project</h2>
+    <h5 class="subheader">Compass makes it really easy to start a new project. Since you've installed the Foundation gem by now, you just need to install Compass to get going.</h5>
+    <p>Follow these two steps to get going:</p>
+    <ol style="margin-left: 20px;">
+      <li><span class="keystroke">[sudo] gem install compass</span></li>
+      <li><span class="keystroke">cd path/to/where-you-want-your-project</span></li>
+      <li>run <span class="keystroke">compass create &lt;project-name&gt; -r zurb-foundation --using foundation</span></li>
+    </ol>
+
+    <hr>
+
+    <h3>Using Sass Standalone</h3>
+    <p>With Foundation 4, we've removed all dependencies from the framework. This means you can use Foundation with Sass alone and add Compass, Bourbon, or whatever on top of it. To help get going using only Sass, you'll just need to download the <a href="https://github.com/zurb/foundation/tree/scss-standalone">files from Github</a> and put them into your project directory. From there you just need to <code>@import</code> the parts of Foundation you need.</p>
+
+    <a class="small button secondary" href="https://github.com/zurb/foundation/tree/scss-standalone">Sass Standalone Branch on Github</a>
+
+    <p>To import all of Foundation:</p>
+<div class='css'><div class='highlight'><pre class="">
+<span class="k">@import</span> <span class="s">&quot;/path/to/foundation&quot;;</span>
+</pre></div></div>
+
+    <p>If you want to override the built in variables, you can find them on each component page or grab the <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">entire list from Github</a>. From there, you'll need to link your settings file above your Foundation import, like so:</p>
+
+<div class='css'><div class='highlight'><pre class="">
+<span class="k">@import</span> <span class="s">&quot;/path/to/settings&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;/path/to/foundation&quot;;</span>
+</pre></div></div>
+
+    <p>If you want to pick and choose which pieces of Foundation you want, the pieces you need are:</p>
+
+<div class='css'><div class='highlight'><pre class="">
+<span class="cm">/* Each individual part that can be added in */
+</span><span class="k">@import</span> <span class="s">&quot;foundation/components/global&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/grid&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/visibility&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/block-grid&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/type&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/buttons&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/forms&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/custom-forms&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/button-groups&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/dropdown-buttons&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/split-buttons&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/flex-video&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/section&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/top-bar&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/orbit&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/reveal&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/joyride&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/clearing&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/alert-boxes&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/breadcrumbs&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/keystrokes&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/labels&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/inline-lists&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/pagination&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/panels&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/pricing-tables&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/progress-bars&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/side-nav&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/sub-nav&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/switch&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/magellan&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/tables&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/thumbs&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/tooltips&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/dropdown&quot;;</span>
+</pre></div></div>
+
+    <hr>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Compiling Your Scss with Compass</h3>
+        <p>To compile your Scss into CSS you run a simple command that will watch for saves and compile each time you save an Scss file. From the directory of your <kbd>config.rb</kbd> file, the command is:</p>
+        <p class="btm-marg keystroke">compass watch</p>
+        <br>
+        <p>If you are in a different directory you can use the same command, but navigate to where your <kbd>config.rb</kbd> file is. The command looks like:</p>
+        <p class="btm-marg keystroke">compass watch path/to/project</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Compiling Your Scss with Sass</h3>
+        <p class="btm-marg keystroke">sass --watch your/scss/directory:your/css/directory</p>
+        <br>
+        <p>You can watch individual files or the entire directory, we usually watch the entire directory when using Sass standalone.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <a name="compass-existing"></a>
+    <h3>Working with Existing projects</h3>
+    <h5 class="subheader">There are a couple situations to cover here. You might be adding Foundation to an existing project that wasn't build with Foundation or you might be upgrading Foundation for an already created Foundation Compass project.</h5>
+
+    <h5>Adding Foundation to existing Compass projects</h5>
+    <p>If you've created a project using Compass, but didn't require the Foundation gem, you'll need to install it separately. When you do this you'll get all the necessary files on top of the ones you already have. If something is a duplicate, Compass will ignore it. The steps you'll take to properly install Foundation are:</p>
+    <ol style="margin-left: 20px;">
+      <li>run <span class="keystroke">gem install zurb-foundation</span></li>
+      <li>Add <span class="keystroke">require "zurb-foundation"</span> to your config.rb file</li>
+      <li><span class="keystroke">cd path/to/your-project</span></li>
+      <li>run <span class="keystroke">compass install foundation</span></li>
+    </ol>
+
+    <h5>Adding Foundation to existing Rails projects</h5>
+    <ol>
+        <li>Add <span class="keystroke">gem 'zurb-foundation'</span> to your Gemfile <b>under the <span class="keystroke">assets</span> group</b></li>
+        <li>run <span class="keystroke">bundle install</span></li>
+        <li>run <span class="keystroke">rails g foundation:install</span></li>
+    </ol>
+
+    <h5>Upgrading Foundation Compass projects</h5>
+    <p><strong>Javascript Updates:</strong> If you already added Foundation to your Compass project or created the project using Foundation in the first place and just want to copy over any updated javascripts/image assets to your project, use the provided <kbd>foundation/upgrade</kbd> pattern below:</p>
+    <ol style="margin-left: 20px;">
+      <li><span class="keystroke">cd /path/to/your-project</span></li>
+      <li>run <span class="keystroke">compass install -r zurb-foundation foundation/upgrade --force</span></li>
+    </ol>
+
+    <p><strong>Settings file updates:</strong> You can also upgrade Foundation as a whole, which will override the existing Foundation styles and your settings file. So if you've made changes to your settings file and want to make sure your project is on the latest version of Foundation, make sure you backup your settings file before you begin. Alternatively, you can copy/paste the settings from our file and <strong>@import</strong> your own so they don't get erased.</p>
+
+    <p>We also recommend creating a <code>foundation-overrides.scss</code> file that you can use for your own specific styles. This will ensure that your styles don't get obliterated upon updating. <strong>We do not recommend directly editing the Foundation files if you plan to upgrade.</strong> To update you project, use the following steps:</p>
+
+    <ol style="margin-left: 20px;">
+      <li>Make sure you've updated your system version of the gem or upgrading won't work.</li>
+      <li><span class="keystroke">cd /path/to/your-project</span></li>
+      <li>run <span class="keystroke">compass install -r zurb-foundation foundation</span></li>
+    </ol>
+
+    <hr>
+
+    <a name="project-git"></a>
+    <h3>Creating a project from Git</h3>
+    <h5 class="subheader">Sometimes you want to checkout what we've got even before we decide to deploy a release candidate. For these situations, you can install using Bundler.</h5>
+
+    <p>There are a few different ways to do this, but here's what we recommend:</p>
+    <ol style="margin-left: 20px;">
+      <li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+      <li>Create a file called <code>Gemfile</code> in the folder you just created with this content: <br>
+<div class='ruby'><div class='highlight'><pre class="">
+<span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
+<span class="n">gem</span> <span class="s2">&quot;zurb-foundation&quot;</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s2">&quot;git@github.com:zurb/foundation.git&quot;</span>
+<span class="n">gem</span> <span class="s2">&quot;compass&quot;</span>
+</pre></div></div>
+      </li>
+      <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+<div class='bash'><div class='highlight'><pre class="">
+bundle <span class="nb">exec </span>compass create . -r zurb-foundation --using foundation
+</pre></div></div>
+      <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
+    </ol>
+
+    <hr>
+
+    <a name="multiple-versions"></a>
+    <h3>Running multiple versions</h3>
+    <h5 class="subheader">If you're planning on running multiple, potentially incompatible versions of Foundation you can isolate them using Bundler as well.</h5>
+
+    <p>There are a few different ways to do this, but here's what we recommend:</p>
+    <ol style="margin-left: 20px;">
+      <li>Setup a folder for your project (i.e. <kbd>mkdir ~/awesomeapp</kbd>)
+      <li>Create a file called <code>Gemfile</code> in the folder you just created with this content: <br>
+<div class='ruby'><div class='highlight'><pre class="">
+<span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
+<span class="c1"># Replace 4.0.3 with the version of Foundation you want to use</span>
+<span class="n">gem</span> <span class="s2">&quot;zurb-foundation&quot;</span><span class="p">,</span> <span class="s2">&quot;4.0.3&quot;</span>
+<span class="n">gem</span> <span class="s2">&quot;compass&quot;</span>
+</pre></div></div>
+      </li>
+      <li>Change into your application directory (<kbd>cd ~/awesomeapp</kbd>) then create a new compass project using the following command:</li>
+<div class='bash'><div class='highlight'><pre class="">
+bundle <span class="nb">exec </span>compass create . -r zurb-foundation --using foundation
+</pre></div></div>
+      <li>When you're working on your project, run: <kbd>bundle exec compass watch</kbd></li>
+    </ol>
+
+    <p>Zach Shnackel recently wrote a good article that goes into a bit more detail on this subject: <a rel="nofollow" href="http://zslabs.com/articles/versioned-dependencies-with-compass">http://zslabs.com/articles/versioned-dependencies-with-compass</a></p>
+
+    <hr>
+
+    <a name="codekit"></a>
+    <h3>Compiling with CodeKit</h3>
+    <p>Previous version of Foundation were a bit harder to compile with codekit because of the structure of the Foundation files. We just went through a round of testing with a default project directory, created with the gem. Here are the instructions to follow to get CodeKit working properly:</p>
+
+    <ul>
+      <li>Create a project: <kbd>compass create <em>project-name</em> -r zurb-foundation --using foundation</kbd></li>
+      <li>Open CodeKit and drag that project folder into the side panel or add it with the "+" button.</li>
+      <li>Compile away!</li>
+    </ul>
+
+    <p><em>This works with the default version of Sass and Compass that CodeKit comes with. Since Compass isn't a dependency for Foundation any longer, if you want to use it, make sure you have it installed and @imported at the top of your main .scss file.</em></p>
+
+    <hr>
+
+    <h3>Foundation Global Settings and Mixins</h3>
+    <p>We've included a global settings file that holds variables and mixins that are used throughout the entirety of Foundation. Here's a look at that file:</p>
+
+<div class='css'><div class='highlight'><pre class="">
+<span class="cm">/* Foundation Variables */
+</span>
+<span class="cm">/* The default font-size is set to 100% of the browser style sheet (usually 16px) */
+/* for compatibility with browser-based text zoom or user-set defaults. */
+</span><span class="nv">$base-font-size</span><span class="p">:</span> <span class="m">100%</span> <span class="o">!</span><span class="nb">default</span><span class="err">;</span>
+
+<span class="err">$</span><span class="nt">base-line-height</span> <span class="nt">is</span> <span class="nt">24px</span> <span class="nt">while</span> <span class="err">$</span><span class="nt">base-font-size</span> <span class="nt">is</span> <span class="nt">16px</span>
+<span class="nv">$base-line-height</span><span class="p">:</span> <span class="m">150%</span><span class="err">;</span>
+
+<span class="cm">/* This is the default html and body font-size for the base em value. */
+</span>
+<span class="cm">/* Since the typical default browser font-size is 16px, that makes the calculation for grid size. */
+/* If you want your base font-size to be a different size and not have it effect grid size too, */
+/* set the value of $em-base to $base-font-size ($em-base: $base-font-size;) */
+</span><span class="nv">$em-base</span><span class="p">:</span> <span class="m">16px</span> <span class="o">!</span><span class="nb">default</span><span class="err">;</span>
+
+<span class="cm">/* It strips the unit of measure and returns it */
+</span><span class="k">@function</span> <span class="nt">strip-unit</span><span class="o">(</span><span class="err">$</span><span class="nt">num</span><span class="o">)</span> <span class="err">{</span>
+  <span class="k">@return</span> <span class="err">$</span><span class="nt">num</span> <span class="o">/</span> <span class="o">(</span><span class="err">$</span><span class="nt">num</span> <span class="o">*</span> <span class="nt">0</span> <span class="o">+</span> <span class="nt">1</span><span class="o">);</span>
+<span class="err">}</span>
+
+<span class="cm">/* New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em's. */
+/* Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported */
+/* em-calc(10 20 30px 40); */
+/* Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets */
+/* em-calc((10, 20, 30, 40px)); */
+/* Optionally call with a different base (eg: 8px) to calculate em. */
+/* em-calc(16px 32px 48px, 8px); */
+/* If you require to comma separate your list */
+/* em-calc((16px, 32px, 48), 8px); */
+</span>
+<span class="k">@function</span> <span class="nt">convert-to-em</span><span class="o">(</span><span class="err">$</span><span class="nt">value</span><span class="o">,</span> <span class="err">$</span><span class="nt">base-value</span><span class="nd">:</span> <span class="err">$</span><span class="nt">em-base</span><span class="o">)</span>  <span class="err">{</span>
+  <span class="nv">$value</span><span class="p">:</span> <span class="nf">strip-unit</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">/</span> <span class="nf">strip-unit</span><span class="p">(</span><span class="nv">$base-value</span><span class="p">)</span> <span class="o">*</span> <span class="m">1em</span><span class="err">;</span>
+  <span class="k">@if</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">==</span> <span class="m">0em</span><span class="p">)</span> <span class="err">{</span> <span class="nv">$value</span><span class="o">:</span> <span class="m">0</span><span class="err">;</span> <span class="err">}</span> <span class="o">/*</span> <span class="n">Turn</span> <span class="m">0em</span> <span class="n">into</span> <span class="m">0</span> <span class="o">*/</span>
+  <span class="k">@return</span> <span class="err">$</span><span class="nt">value</span><span class="o">;</span>
+<span class="err">}</span>
+
+<span class="k">@function</span> <span class="nt">em-calc</span><span class="o">(</span><span class="err">$</span><span class="nt">values</span><span class="o">,</span> <span class="err">$</span><span class="nt">base-value</span><span class="nd">:</span> <span class="err">$</span><span class="nt">em-base</span><span class="o">)</span> <span class="err">{</span>
+  <span class="nv">$max</span><span class="p">:</span> <span class="nf">length</span><span class="p">(</span><span class="nv">$values</span><span class="p">)</span><span class="err">;</span>
+
+  <span class="k">@if</span> <span class="nv">$max</span> <span class="o">==</span> <span class="m">1</span> <span class="err">{</span> <span class="o">@</span><span class="n">return</span> <span class="nf">convert-to-em</span><span class="p">(</span><span class="nf">nth</span><span class="p">(</span><span class="nv">$values</span><span class="o">,</span> <span class="m">1</span><span class="p">)</span><span class="o">,</span> <span class="nv">$base-value</span><span class="p">)</span><span class="err">;</span> <span class="err">}</span>
+
+  <span class="nv">$emValues</span><span class="p">:</span> <span class="p">()</span><span class="err">;</span>
+  <span class="k">@for</span> <span class="nv">$i</span> <span class="ow">from</span> <span class="m">1</span> <span class="ow">through</span> <span class="nv">$max</span> <span class="err">{</span>
+    <span class="nv">$emValues</span><span class="p">:</span> <span class="nf">append</span><span class="p">(</span><span class="nv">$emValues</span><span class="o">,</span> <span class="nf">convert-to-em</span><span class="p">(</span><span class="nf">nth</span><span class="p">(</span><span class="nv">$values</span><span class="o">,</span> <span class="nv">$i</span><span class="p">)</span><span class="o">,</span> <span class="nv">$base-value</span><span class="p">))</span><span class="err">;</span>
+  <span class="err">}</span>
+  <span class="k">@return</span> <span class="err">$</span><span class="nt">emValues</span><span class="o">;</span>
+<span class="err">}</span>
+
+<span class="cm">/* Support for the old syntax */
+</span>
+<span class="k">@function</span> <span class="nt">emCalc</span><span class="o">(</span><span class="err">$</span><span class="nt">values</span><span class="o">)</span><span class="err">{</span>
+  <span class="k">@return</span> <span class="nt">em-calc</span><span class="o">(</span><span class="err">$</span><span class="nt">values</span><span class="o">);</span>
+<span class="err">}</span>
+
+<span class="cm">/* Maybe you want to create rems with pixels */
+/* $rem-base: 0.625 !default; /*Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;} */
+/* @function remCalc($pxWidth) { */
+/*   @return $pxWidth / $rem-base * 1rem; */
+/* }
+</span>
+<span class="cm">/* Change whether or not you include browser prefixes */
+</span><span class="nv">$experimental</span><span class="p">:</span> <span class="n">true</span> <span class="o">!</span><span class="nb">default</span><span class="err">;</span>
+
+<span class="cm">/* Various global styles */
+</span>
+<span class="nv">$default-float</span><span class="p">:</span> <span class="nb">left</span><span class="err">;</span>
+
+<span class="nv">$body-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$body-font-color</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$body-font-family</span><span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="o">,</span> <span class="s2">&quot;Helvetica&quot;</span><span class="o">,</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span><span class="err">;</span>
+<span class="nv">$body-font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$body-font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+
+<span class="cm">/* Font-smoothing */
+</span>
+<span class="nv">$font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="err">;</span>
+
+<span class="cm">/* Text direction settings */
+</span>
+<span class="nv">$text-direction</span><span class="p">:</span> <span class="nb">ltr</span><span class="err">;</span>
+
+<span class="cm">/* Colors */
+</span>
+<span class="nv">$primary-color</span><span class="p">:</span> <span class="mh">#2ba6cb</span><span class="err">;</span>
+<span class="nv">$secondary-color</span><span class="p">:</span> <span class="mh">#e9e9e9</span><span class="err">;</span>
+<span class="nv">$alert-color</span><span class="p">:</span> <span class="mh">#c60f13</span><span class="err">;</span>
+<span class="nv">$success-color</span><span class="p">:</span> <span class="mh">#5da423</span><span class="err">;</span>
+
+<span class="cm">/* Make sure border radius matches unless we want it different. */
+</span>
+<span class="nv">$global-radius</span><span class="p">:</span> <span class="m">3px</span><span class="err">;</span>
+<span class="nv">$global-rounded</span><span class="p">:</span> <span class="m">1000px</span><span class="err">;</span>
+
+<span class="cm">/* Inset shadow shiny edges and depressions. */
+</span>
+<span class="nv">$shiny-edge-size</span><span class="p">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">0</span><span class="err">;</span>
+<span class="nv">$shiny-edge-color</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="mi">.5</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$shiny-edge-active-color</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="mi">.2</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Control whether or not CSS classes come through in the CSS files. */
+</span>
+<span class="nv">$include-html-classes</span><span class="p">:</span> <span class="n">true</span><span class="err">;</span>
+<span class="nv">$include-print-styles</span><span class="p">:</span> <span class="n">true</span><span class="err">;</span>
+<span class="nv">$include-html-global-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-type-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-grid-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-visibility-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-button-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-form-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-custom-form-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-media-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-section-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-orbit-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-reveal-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-joyride-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-clearing-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-alert-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-nav-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-top-bar-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-label-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-panel-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-pricing-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-progress-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-magellan-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+<span class="nv">$include-html-tooltip-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+
+<span class="cm">/* Media Queries */
+</span>
+<span class="nv">$small-screen</span><span class="p">:</span> <span class="m">768px</span><span class="err">;</span>
+<span class="nv">$medium-screen</span><span class="p">:</span> <span class="m">1280px</span><span class="err">;</span>
+<span class="nv">$large-screen</span><span class="p">:</span> <span class="m">1440px</span><span class="err">;</span>
+
+<span class="nv">$screen</span><span class="p">:</span> <span class="s2">&quot;only screen&quot;</span><span class="err">;</span>
+<span class="nv">$small</span><span class="p">:</span> <span class="s2">&quot;only screen and (min-width: </span><span class="si">#{</span><span class="nv">$small-screen</span><span class="si">}</span><span class="s2">)&quot;</span><span class="err">;</span>
+<span class="nv">$medium</span><span class="p">:</span> <span class="s2">&quot;only screen and (min-width: </span><span class="si">#{</span><span class="nv">$medium-screen</span><span class="si">}</span><span class="s2">)&quot;</span><span class="err">;</span>
+<span class="nv">$large</span><span class="p">:</span> <span class="s2">&quot;only screen and (min-width: </span><span class="si">#{</span><span class="nv">$large-screen</span><span class="si">}</span><span class="s2">)&quot;</span><span class="err">;</span>
+<span class="nv">$landscape</span><span class="p">:</span> <span class="s2">&quot;only screen and (orientation: landscape)&quot;</span><span class="err">;</span>
+<span class="nv">$portrait</span><span class="p">:</span> <span class="s2">&quot;only screen and (orientation: portrait)&quot;</span><span class="err">;</span>
+
+<span class="cm">/* Cursors */
+</span>
+<span class="cm">/* Custom use example -&gt; $cursor-default-value: url(http://cursors-site.net/path/to/custom/cursor/default.cur),progress; */
+</span>
+<span class="nv">$cursor-crosshair-value</span><span class="p">:</span> <span class="s2">&quot;crosshair&quot;</span><span class="err">;</span>
+<span class="nv">$cursor-default-value</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="err">;</span>
+<span class="nv">$cursor-pointer-value</span><span class="p">:</span> <span class="s2">&quot;pointer&quot;</span><span class="err">;</span>
+<span class="nv">$cursor-help-value</span><span class="p">:</span> <span class="s2">&quot;help&quot;</span><span class="err">;</span>
+
+
+<span class="cm">/* Grid Variables */
+</span>
+
+<span class="nv">$row-width</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$column-gutter</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">30</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$total-columns</span><span class="p">:</span> <span class="m">12</span><span class="err">;</span>
+
+
+<span class="cm">/* Block Grid Variables */
+</span>
+
+<span class="cm">/* Maximum number of block grid elements per row */
+</span>
+<span class="nv">$block-grid-elements</span><span class="p">:</span> <span class="m">12</span><span class="err">;</span>
+<span class="nv">$block-grid-default-spacing</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Enables media queries for block-grid classes. Set to false if writing semantic HTML. */
+</span>
+<span class="nv">$block-grid-media-queries</span><span class="p">:</span> <span class="n">true</span><span class="err">;</span>
+
+
+<span class="cm">/* Typography Variables */
+</span>
+
+<span class="cm">/* Heading font styles */
+</span>
+<span class="nv">$header-font-family</span><span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="o">,</span> <span class="s2">&quot;Helvetica&quot;</span><span class="o">,</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span><span class="err">;</span>
+<span class="nv">$header-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$header-font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$header-font-color</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$header-line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.4</span><span class="err">;</span>
+<span class="nv">$header-top-margin</span><span class="p">:</span> <span class="mi">.2em</span><span class="err">;</span>
+<span class="nv">$header-bottom-margin</span><span class="p">:</span> <span class="mi">.5em</span><span class="err">;</span>
+<span class="nv">$header-text-rendering</span><span class="p">:</span> <span class="n">optimizeLegibility</span><span class="err">;</span>
+
+<span class="cm">/* Heading font sizes */
+</span>
+<span class="nv">$h1-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">44</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$h2-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">37</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$h3-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">27</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$h4-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">23</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$h5-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">18</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$h6-font-size</span><span class="p">:</span> <span class="m">1em</span><span class="err">;</span>
+
+<span class="cm">/* Subheaders */
+</span>
+<span class="nv">$subheader-line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.4</span><span class="err">;</span>
+<span class="nv">$subheader-font-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$header-font-color</span><span class="o">,</span> <span class="m">30%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$subheader-font-weight</span><span class="p">:</span> <span class="m">300</span><span class="err">;</span>
+<span class="nv">$subheader-top-margin</span><span class="p">:</span> <span class="mi">.2em</span><span class="err">;</span>
+<span class="nv">$subheader-bottom-margin</span><span class="p">:</span> <span class="mi">.5em</span><span class="err">;</span>
+
+<span class="cm">/* &lt;small&gt; styling */
+</span>
+<span class="nv">$small-font-size</span><span class="p">:</span> <span class="m">60%</span><span class="err">;</span>
+<span class="nv">$small-font-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$header-font-color</span><span class="o">,</span> <span class="m">30%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Paragraphs */
+</span>
+<span class="nv">$paragraph-font-family</span><span class="p">:</span> <span class="nb">inherit</span><span class="err">;</span>
+<span class="nv">$paragraph-font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$paragraph-font-size</span><span class="p">:</span> <span class="m">1em</span><span class="err">;</span>
+<span class="nv">$paragraph-line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.6</span><span class="err">;</span>
+<span class="nv">$paragraph-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$paragraph-aside-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$paragraph-aside-line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.35</span><span class="err">;</span>
+<span class="nv">$paragraph-aside-font-style</span><span class="p">:</span> <span class="nb">italic</span><span class="err">;</span>
+
+<span class="cm">/* &lt;code&gt; tags */
+</span>
+<span class="nv">$code-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$alert-color</span><span class="o">,</span> <span class="m">15%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$code-font-family</span><span class="p">:</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">&quot;Liberation Mono&quot;</span><span class="o">,</span> <span class="n">Courier</span><span class="o">,</span> <span class="nb">monospace</span><span class="err">;</span>
+<span class="nv">$code-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+
+<span class="cm">/* Anchors */
+</span>
+<span class="nv">$anchor-text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="err">;</span>
+<span class="nv">$anchor-font-color</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$anchor-font-color-hover</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$primary-color</span><span class="o">,</span> <span class="m">5%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* &lt;hr&gt; element */
+</span>
+<span class="nv">$hr-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$hr-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$hr-border-color</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+<span class="nv">$hr-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Lists */
+</span>
+<span class="nv">$list-style-position</span><span class="p">:</span> <span class="nb">outside</span><span class="err">;</span>
+<span class="nv">$list-side-margin</span><span class="p">:</span> <span class="m">0</span><span class="err">;</span>
+<span class="nv">$list-nested-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$definition-list-header-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$definition-list-header-margin-bottom</span><span class="p">:</span> <span class="mi">.3em</span><span class="err">;</span>
+<span class="nv">$definition-list-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Blockquotes */
+</span>
+<span class="nv">$blockquote-font-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$header-font-color</span><span class="o">,</span> <span class="m">30%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$blockquote-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">9</span><span class="o">,</span> <span class="m">20</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">19</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$blockquote-border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#ddd</span><span class="err">;</span>
+<span class="nv">$blockquote-cite-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">13</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$blockquote-cite-font-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$header-font-color</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$blockquote-cite-link-color</span><span class="p">:</span> <span class="nv">$blockquote-cite-font-color</span><span class="err">;</span>
+
+<span class="cm">/* Acronym */
+</span>
+<span class="nv">$acronym-underline</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">dotted</span> <span class="mh">#ddd</span><span class="err">;</span>
+
+<span class="cm">/* Padding and margin */
+</span>
+<span class="nv">$microformat-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">10</span><span class="o">,</span> <span class="m">12</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$microformat-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">20</span><span class="o">,</span> <span class="m">0</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Border styles */
+</span>
+<span class="nv">$microformat-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$microformat-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$microformat-border-color</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+
+<span class="cm">/* Full name font styles */
+</span>
+<span class="nv">$microformat-fullname-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$microformat-fullname-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Summary font styles */
+</span>
+<span class="nv">$microformat-summary-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+
+<span class="cm">/* &lt;abbr&gt; padding */
+</span>
+<span class="nv">$microformat-abbr-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">1</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* &lt;abbr&gt; font styles */
+</span>
+<span class="nv">$microformat-abbr-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$microformat-abbr-font-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="err">;</span>
+
+
+<span class="cm">/* Form Variables */
+</span>
+
+<span class="cm">/* Base for lots of form spacing and positioning styles */
+</span>
+<span class="nv">$form-spacing</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">16</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Labels */
+</span>
+<span class="nv">$form-label-pointer</span><span class="p">:</span> <span class="nb">pointer</span><span class="err">;</span>
+<span class="nv">$form-label-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$form-label-font-weight</span><span class="p">:</span> <span class="m">500</span><span class="err">;</span>
+<span class="nv">$form-label-font-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">30%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$form-label-bottom-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-font-family</span><span class="p">:</span> <span class="nb">inherit</span><span class="err">;</span>
+<span class="nv">$input-font-color</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.75</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-bg-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$input-focus-bg-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">2%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-focus-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">40%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$input-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$input-disabled-bg</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+<span class="nv">$input-box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">2px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.1</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-include-glowing-effect</span><span class="p">:</span> <span class="n">true</span><span class="err">;</span>
+
+<span class="cm">/* Fieldset border and spacing. */
+</span>
+<span class="nv">$fieldset-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$fieldset-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$fieldset-border-color</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+<span class="nv">$fieldset-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$fieldset-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">18</span><span class="o">,</span> <span class="m">0</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Legends */
+</span>
+<span class="nv">$legend-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$legend-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$legend-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">3</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Prefix and postfix input elements */
+</span>
+<span class="nv">$input-prefix-bg</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">5%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-prefix-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-prefix-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$input-prefix-border-type</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$input-prefix-overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="err">;</span>
+<span class="nv">$input-prefix-font-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$input-prefix-font-color-alt</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+
+<span class="cm">/* Error states for inputs and labels */
+</span>
+<span class="nv">$input-error-message-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">6</span><span class="o">,</span> <span class="m">4</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-error-message-top</span><span class="p">:</span> <span class="nf">-</span><span class="p">(</span><span class="nv">$form-spacing</span><span class="p">)</span> <span class="o">-</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-error-message-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$input-error-message-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$input-error-message-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$input-error-message-font-color-alt</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+
+<span class="cm">/* Glowing effect of inputs when focused */
+</span>
+<span class="nv">$glowing-effect-fade-time</span><span class="p">:</span> <span class="m">0</span><span class="mi">.45s</span><span class="err">;</span>
+<span class="nv">$glowing-effect-color</span><span class="p">:</span> <span class="nv">$input-focus-border-color</span><span class="err">;</span>
+
+
+<span class="cm">/* Button Variables */
+</span>
+
+<span class="cm">/* Padding for buttons. */
+</span>
+<span class="nv">$button-tny</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">7</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$button-sml</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">9</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$button-med</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$button-lrg</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">16</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Display property. */
+</span>
+<span class="nv">$button-display</span><span class="p">:</span> <span class="n">inline-block</span><span class="err">;</span>
+<span class="nv">$button-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Button text styles. */
+</span>
+<span class="nv">$button-font-family</span><span class="p">:</span> <span class="nb">inherit</span><span class="err">;</span>
+<span class="nv">$button-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$button-font-color-alt</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$button-font-med</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">16</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$button-font-tny</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">11</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$button-font-sml</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">13</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$button-font-lrg</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$button-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$button-font-align</span><span class="p">:</span> <span class="nb">center</span><span class="err">;</span>
+
+<span class="cm">/* Various hover effects. */
+</span>
+<span class="nv">$button-function-factor</span><span class="p">:</span> <span class="m">10%</span><span class="err">;</span>
+
+<span class="cm">/* Button border styles. */
+</span>
+<span class="nv">$button-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$button-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$button-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$primary-color</span><span class="o">,</span> <span class="nv">$button-function-factor</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Radius used throughout the core. */
+</span>
+<span class="nv">$button-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+
+<span class="cm">/* Opacity for disabled buttons. */
+</span>
+<span class="nv">$button-disabled-opacity</span><span class="p">:</span> <span class="m">0</span><span class="mi">.6</span><span class="err">;</span>
+
+
+<span class="cm">/* Button Groups */
+</span>
+
+<span class="cm">/* Sets the margin for the right side by default, and the left margin if right-to-left direction is used */
+</span>
+<span class="nv">$button-bar-margin-opposite</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Dropdown Button Variables */
+</span>
+
+<span class="cm">/* Color of the pip in dropdown buttons */
+</span>
+<span class="nv">$dropdown-button-pip-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-color-alt</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+
+<span class="cm">/* Tiny dropdown buttons */
+</span>
+<span class="nv">$dropdown-button-padding-tny</span><span class="p">:</span> <span class="nv">$button-tny</span> <span class="o">*</span> <span class="m">5</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-size-tny</span><span class="p">:</span> <span class="nv">$button-tny</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-right-tny</span><span class="p">:</span> <span class="nv">$button-tny</span> <span class="o">*</span> <span class="m">2</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-top-tny</span><span class="p">:</span> <span class="o">-</span><span class="nv">$button-tny</span> <span class="o">/</span> <span class="m">2</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Small dropdown buttons */
+</span>
+<span class="nv">$dropdown-button-padding-sml</span><span class="p">:</span> <span class="nv">$button-sml</span> <span class="o">*</span> <span class="m">5</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-size-sml</span><span class="p">:</span> <span class="nv">$button-sml</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-right-sml</span><span class="p">:</span> <span class="nv">$button-sml</span> <span class="o">*</span> <span class="m">2</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-top-sml</span><span class="p">:</span> <span class="o">-</span><span class="nv">$button-sml</span> <span class="o">/</span> <span class="m">2</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Medium dropdown buttons */
+</span>
+<span class="nv">$dropdown-button-padding-med</span><span class="p">:</span> <span class="nv">$button-med</span> <span class="o">*</span> <span class="m">4</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-size-med</span><span class="p">:</span> <span class="nv">$button-med</span> <span class="o">-</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-right-med</span><span class="p">:</span> <span class="nv">$button-med</span> <span class="o">*</span> <span class="m">2</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-top-med</span><span class="p">:</span> <span class="o">-</span><span class="nv">$button-med</span> <span class="o">/</span> <span class="m">2</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Large dropdown buttons */
+</span>
+<span class="nv">$dropdown-button-padding-lrg</span><span class="p">:</span> <span class="nv">$button-lrg</span> <span class="o">*</span> <span class="m">4</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-size-lrg</span><span class="p">:</span> <span class="nv">$button-lrg</span> <span class="o">-</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-right-lrg</span><span class="p">:</span> <span class="nv">$button-lrg</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$dropdown-button-pip-top-lrg</span><span class="p">:</span> <span class="o">-</span><span class="nv">$button-lrg</span> <span class="o">/</span> <span class="m">2</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Split Button Variables */
+</span>
+
+<span class="cm">/* Shared styles for Split Buttons */
+</span>
+<span class="nv">$split-button-function-factor</span><span class="p">:</span> <span class="m">15%</span><span class="err">;</span>
+<span class="nv">$split-button-pip-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$split-button-pip-color-alt</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$split-button-active-bg-tint</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.1</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Tiny split buttons */
+</span>
+<span class="nv">$split-button-padding-tny</span><span class="p">:</span> <span class="nv">$button-tny</span> <span class="o">*</span> <span class="m">9</span><span class="err">;</span>
+<span class="nv">$split-button-span-width-tny</span><span class="p">:</span> <span class="nv">$button-tny</span> <span class="o">*</span> <span class="m">6</span><span class="mi">.5</span><span class="err">;</span>
+<span class="nv">$split-button-pip-size-tny</span><span class="p">:</span> <span class="nv">$button-tny</span><span class="err">;</span>
+<span class="nv">$split-button-pip-top-tny</span><span class="p">:</span> <span class="nv">$button-tny</span> <span class="o">*</span> <span class="m">2</span><span class="err">;</span>
+<span class="nv">$split-button-pip-left-tny</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">-5</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Small split buttons */
+</span>
+<span class="nv">$split-button-padding-sml</span><span class="p">:</span> <span class="nv">$button-sml</span> <span class="o">*</span> <span class="m">7</span><span class="err">;</span>
+<span class="nv">$split-button-span-width-sml</span><span class="p">:</span> <span class="nv">$button-sml</span> <span class="o">*</span> <span class="m">5</span><span class="err">;</span>
+<span class="nv">$split-button-pip-size-sml</span><span class="p">:</span> <span class="nv">$button-sml</span><span class="err">;</span>
+<span class="nv">$split-button-pip-top-sml</span><span class="p">:</span> <span class="nv">$button-sml</span> <span class="o">*</span> <span class="m">1</span><span class="mi">.5</span><span class="err">;</span>
+<span class="nv">$split-button-pip-left-sml</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">-9</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Medium split buttons */
+</span>
+<span class="nv">$split-button-padding-med</span><span class="p">:</span> <span class="nv">$button-med</span> <span class="o">*</span> <span class="m">6</span><span class="mi">.4</span><span class="err">;</span>
+<span class="nv">$split-button-span-width-med</span><span class="p">:</span> <span class="nv">$button-med</span> <span class="o">*</span> <span class="m">4</span><span class="err">;</span>
+<span class="nv">$split-button-pip-size-med</span><span class="p">:</span> <span class="nv">$button-med</span> <span class="o">-</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$split-button-pip-top-med</span><span class="p">:</span> <span class="nv">$button-med</span> <span class="o">*</span> <span class="m">1</span><span class="mi">.5</span><span class="err">;</span>
+<span class="nv">$split-button-pip-left-med</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">-9</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Large split buttons */
+</span>
+<span class="nv">$split-button-padding-lrg</span><span class="p">:</span> <span class="nv">$button-lrg</span> <span class="o">*</span> <span class="m">6</span><span class="err">;</span>
+<span class="nv">$split-button-span-width-lrg</span><span class="p">:</span> <span class="nv">$button-lrg</span> <span class="o">*</span> <span class="m">3</span><span class="mi">.75</span><span class="err">;</span>
+<span class="nv">$split-button-pip-size-lrg</span><span class="p">:</span> <span class="nv">$button-lrg</span> <span class="o">-</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$split-button-pip-top-lrg</span><span class="p">:</span> <span class="nv">$button-lrg</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$split-button-pip-left-lrg</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">-9</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Alert Variables */
+</span>
+
+<span class="cm">/* Alert padding */
+</span>
+<span class="nv">$alert-padding-top</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">11</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$alert-padding-default-float</span><span class="p">:</span> <span class="nv">$alert-padding-top</span><span class="err">;</span>
+<span class="nv">$alert-padding-opposite-direction</span><span class="p">:</span> <span class="nv">$alert-padding-top</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$alert-padding-bottom</span><span class="p">:</span> <span class="nv">$alert-padding-top</span> <span class="o">+</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Text style */
+</span>
+<span class="nv">$alert-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$alert-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$alert-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$alert-font-color-alt</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$secondary-color</span><span class="o">,</span> <span class="m">60%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Hover effect */
+</span>
+<span class="nv">$alert-function-factor</span><span class="p">:</span> <span class="m">10%</span><span class="err">;</span>
+
+<span class="cm">/* Border Styles */
+</span>
+<span class="nv">$alert-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$alert-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$alert-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$primary-color</span><span class="o">,</span> <span class="nv">$alert-function-factor</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$alert-bottom-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Close Button style */
+</span>
+<span class="nv">$alert-close-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$alert-close-position</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$alert-close-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">22</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$alert-close-opacity</span><span class="p">:</span> <span class="m">0</span><span class="mi">.3</span><span class="err">;</span>
+<span class="nv">$alert-close-opacity-hover</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5</span><span class="err">;</span>
+<span class="nv">$alert-close-padding</span><span class="p">:</span> <span class="m">5px</span> <span class="m">4px</span> <span class="m">4px</span><span class="err">;</span>
+
+<span class="cm">/* Border radius */
+</span>
+<span class="nv">$alert-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+
+
+<span class="cm">/* Breadcrumb Variables */
+</span>
+<span class="cm">/* Background color for the breadcrumb container. */
+</span>
+<span class="nv">$crumb-bg</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$secondary-color</span><span class="o">,</span> <span class="m">5%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Padding around the breadcrumbs. */
+</span>
+<span class="nv">$crumb-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">6</span><span class="o">,</span> <span class="m">14</span><span class="o">,</span> <span class="m">9</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$crumb-side-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Border styles. */
+</span>
+<span class="nv">$crumb-function-factor</span><span class="p">:</span> <span class="m">10%</span><span class="err">;</span>
+<span class="nv">$crumb-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$crumb-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$crumb-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$crumb-bg</span><span class="o">,</span> <span class="nv">$crumb-function-factor</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$crumb-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+
+<span class="cm">/* Various text styles for breadcrumbs. */
+</span>
+<span class="nv">$crumb-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">11</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$crumb-font-color</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$crumb-font-color-current</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$crumb-font-color-unavailable</span><span class="p">:</span> <span class="mh">#999</span><span class="err">;</span>
+<span class="nv">$crumb-font-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="err">;</span>
+<span class="nv">$crumb-link-decor</span><span class="p">:</span> <span class="nb">underline</span><span class="err">;</span>
+
+<span class="cm">/* Slash between breadcrumbs */
+</span>
+<span class="nv">$crumb-slash-color</span><span class="p">:</span> <span class="mh">#aaa</span><span class="err">;</span>
+<span class="nv">$crumb-slash</span><span class="p">:</span> <span class="s2">&quot;/&quot;</span><span class="err">;</span>
+
+
+<span class="cm">/* Clearing Variables */
+</span>
+<span class="cm">/* Background colors for parts of Clearing. */
+</span>
+<span class="nv">$clearing-bg</span><span class="p">:</span> <span class="mh">#111</span><span class="err">;</span>
+<span class="nv">$clearing-caption-bg</span><span class="p">:</span> <span class="nv">$clearing-bg</span><span class="err">;</span>
+<span class="nv">$clearing-carousel-bg</span><span class="p">:</span> <span class="mh">#111</span><span class="err">;</span>
+<span class="nv">$clearing-img-bg</span><span class="p">:</span> <span class="nv">$clearing-bg</span><span class="err">;</span>
+
+<span class="cm">/* Close button */
+</span>
+<span class="nv">$clearing-close-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$clearing-close-size</span><span class="p">:</span> <span class="m">40px</span><span class="err">;</span>
+
+<span class="cm">/* Style the arrows */
+</span>
+<span class="nv">$clearing-arrow-size</span><span class="p">:</span> <span class="m">16px</span><span class="err">;</span>
+<span class="nv">$clearing-arrow-color</span><span class="p">:</span> <span class="nv">$clearing-close-color</span><span class="err">;</span>
+
+<span class="cm">/* Style captions */
+</span>
+<span class="nv">$clearing-caption-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$clearing-caption-padding</span><span class="p">:</span> <span class="m">10px</span> <span class="m">30px</span><span class="err">;</span>
+
+<span class="cm">/* Make the image and carousel height and style */
+</span>
+<span class="nv">$clearing-active-img-height</span><span class="p">:</span> <span class="m">75%</span><span class="err">;</span>
+<span class="nv">$clearing-carousel-height</span><span class="p">:</span> <span class="m">150px</span><span class="err">;</span>
+<span class="nv">$clearing-carousel-thumb-width</span><span class="p">:</span> <span class="m">175px</span><span class="err">;</span>
+<span class="nv">$clearing-carousel-thumb-active-border</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Custom Form Variables */
+</span>
+<span class="cm">/* Basic form styles input styles */
+</span>
+<span class="nv">$custom-form-border-color</span><span class="p">:</span> <span class="mh">#ccc</span><span class="err">;</span>
+<span class="nv">$custom-form-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$custom-form-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$custom-form-bg-disabled</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+<span class="nv">$custom-form-input-size</span><span class="p">:</span> <span class="m">16px</span><span class="err">;</span>
+<span class="nv">$custom-form-check-color</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$custom-form-check-size</span><span class="p">:</span> <span class="m">14px</span><span class="err">;</span>
+<span class="nv">$custom-form-radio-size</span><span class="p">:</span> <span class="m">8px</span><span class="err">;</span>
+<span class="nv">$custom-form-checkbox-radius</span><span class="p">:</span> <span class="m">0</span><span class="err">;</span>
+
+<span class="cm">/* Custom select form element. */
+</span>
+<span class="nv">$custom-select-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$custom-select-fade-to-color</span><span class="p">:</span> <span class="mh">#f3f3f3</span><span class="err">;</span>
+<span class="nv">$custom-select-border-color</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+<span class="nv">$custom-select-triangle-color</span><span class="p">:</span> <span class="mh">#aaa</span><span class="err">;</span>
+<span class="nv">$custom-select-triangle-color-open</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$custom-select-height</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">13</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$form-spacing</span> <span class="o">*</span> <span class="m">1</span><span class="mi">.5</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-select-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-select-font-color-selected</span><span class="p">:</span> <span class="mh">#141414</span><span class="err">;</span>
+<span class="nv">$custom-select-disabled-color</span><span class="p">:</span> <span class="mh">#888</span><span class="err">;</span>
+
+<span class="cm">/* Custom select dropdown element. */
+</span>
+<span class="nv">$custom-dropdown-height</span><span class="p">:</span> <span class="m">200px</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-font-color</span><span class="p">:</span> <span class="mh">#555</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-color-selected</span><span class="p">:</span> <span class="mh">#eeeeee</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-font-color-selected</span><span class="p">:</span> <span class="mh">#000</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">2px</span> <span class="m">2px</span> <span class="m">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.1</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-offset-top</span><span class="p">:</span> <span class="nb">none</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-list-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">4</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-left-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-right-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">38</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$custom-dropdown-list-item-min-height</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">24</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Dropdown Variables */
+</span>
+<span class="cm">/* Height and width styles. */
+</span>
+<span class="nv">$f-dropdown-max-width</span><span class="p">:</span> <span class="m">200px</span><span class="err">;</span>
+<span class="nv">$f-dropdown-height</span><span class="p">:</span> <span class="nb">auto</span><span class="err">;</span>
+<span class="nv">$f-dropdown-max-height</span><span class="p">:</span> <span class="nb">none</span><span class="err">;</span>
+<span class="nv">$f-dropdown-margin-top</span><span class="p">:</span> <span class="m">2px</span><span class="err">;</span>
+
+<span class="cm">/* Background color */
+</span>
+<span class="nv">$f-dropdown-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+
+<span class="cm">/* Border styles for dropdowns. */
+</span>
+<span class="nv">$f-dropdown-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$f-dropdown-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$f-dropdown-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Triangle pip. */
+</span>
+<span class="nv">$f-dropdown-triangle-size</span><span class="p">:</span> <span class="m">6px</span><span class="err">;</span>
+<span class="nv">$f-dropdown-triangle-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$f-dropdown-triangle-side-offset</span><span class="p">:</span> <span class="m">10px</span><span class="err">;</span>
+
+<span class="cm">/* List elements. */
+</span>
+<span class="nv">$f-dropdown-list-style</span><span class="p">:</span> <span class="nb">none</span><span class="err">;</span>
+<span class="nv">$f-dropdown-font-color</span><span class="p">:</span> <span class="mh">#555</span><span class="err">;</span>
+<span class="nv">$f-dropdown-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$f-dropdown-list-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">5</span><span class="o">,</span> <span class="m">10</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$f-dropdown-line-height</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">18</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$f-dropdown-list-hover-bg</span><span class="p">:</span> <span class="mh">#eeeeee</span><span class="err">;</span>
+<span class="nv">$dropdown-mobile-left</span><span class="p">:</span> <span class="m">0</span><span class="err">;</span>
+
+<span class="cm">/* When the dropdown has custom content. */
+</span>
+<span class="nv">$f-dropdown-content-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Flex Video Variables */
+</span>
+
+<span class="cm">/* Video container padding and margins */
+</span>
+<span class="nv">$flex-video-padding-top</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">25</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$flex-video-padding-bottom</span><span class="p">:</span> <span class="m">67</span><span class="mi">.5%</span><span class="err">;</span>
+<span class="nv">$flex-video-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">16</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Widescreen bottom padding */
+</span>
+<span class="nv">$flex-video-widescreen-padding-bottom</span><span class="p">:</span> <span class="m">57</span><span class="mi">.25%</span><span class="err">;</span>
+
+
+<span class="cm">/* Inline List Variables */
+</span>
+
+<span class="cm">/* Margins and padding of the inline list. */
+</span>
+<span class="nv">$inline-list-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">17</span><span class="o">,</span> <span class="m">-22</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$inline-list-margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span><span class="err">;</span>
+<span class="nv">$inline-list-padding</span><span class="p">:</span> <span class="m">0</span><span class="err">;</span>
+
+<span class="cm">/* Overflow of the inline list. */
+</span>
+<span class="nv">$inline-list-overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="err">;</span>
+
+<span class="cm">/* List items */
+</span>
+<span class="nv">$inline-list-display</span><span class="p">:</span> <span class="nb">block</span><span class="err">;</span>
+
+<span class="cm">/* Elments within list items */
+</span>
+<span class="nv">$inline-list-children-display</span><span class="p">:</span> <span class="nb">block</span><span class="err">;</span>
+
+
+<span class="cm">/* Joyride Variables */
+</span>
+
+<span class="cm">/* Joyride styles */
+</span>
+<span class="nv">$joyride-tip-bg</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$joyride-tip-default-width</span><span class="p">:</span> <span class="m">300px</span><span class="err">;</span>
+<span class="nv">$joyride-tip-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">18</span><span class="o">,</span> <span class="m">20</span><span class="o">,</span> <span class="m">24</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$joyride-tip-border</span><span class="p">:</span> <span class="nb">solid</span> <span class="m">1px</span> <span class="mh">#555</span><span class="err">;</span>
+<span class="nv">$joyride-tip-radius</span><span class="p">:</span> <span class="m">4px</span><span class="err">;</span>
+<span class="nv">$joyride-tip-position-offset</span><span class="p">:</span> <span class="m">22px</span><span class="err">;</span>
+
+<span class="cm">/* Tip font styles */
+</span>
+<span class="nv">$joyride-tip-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$joyride-tip-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$joyride-tip-header-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+
+<span class="cm">/* Changes the nub size */
+</span>
+<span class="nv">$joyride-tip-nub-size</span><span class="p">:</span> <span class="m">14px</span><span class="err">;</span>
+
+<span class="cm">/* Adjusts the styles for the timer when its enabled */
+</span>
+<span class="nv">$joyride-tip-timer-width</span><span class="p">:</span> <span class="m">50px</span><span class="err">;</span>
+<span class="nv">$joyride-tip-timer-height</span><span class="p">:</span> <span class="m">3px</span><span class="err">;</span>
+<span class="nv">$joyride-tip-timer-color</span><span class="p">:</span> <span class="mh">#666</span><span class="err">;</span>
+
+<span class="cm">/* Changes up the styles for the close button */
+</span>
+<span class="nv">$joyride-tip-close-color</span><span class="p">:</span> <span class="mh">#777</span><span class="err">;</span>
+<span class="nv">$joyride-tip-close-size</span><span class="p">:</span> <span class="m">30px</span><span class="err">;</span>
+<span class="nv">$joyride-tip-close-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+
+<span class="cm">/* When Joyride is filling the screen, style for the bg */
+</span>
+<span class="nv">$joyride-screenfill</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.5</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Keystroke Variables */
+</span>
+
+<span class="cm">/* Text styles. */
+</span>
+<span class="nv">$keystroke-font</span><span class="p">:</span> <span class="s2">&quot;Consolas&quot;</span><span class="o">,</span> <span class="s2">&quot;Menlo&quot;</span><span class="o">,</span> <span class="s2">&quot;Courier&quot;</span><span class="o">,</span> <span class="nb">monospace</span><span class="err">;</span>
+<span class="nv">$keystroke-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$keystroke-font-color</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$keystroke-font-color-alt</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$keystroke-function-factor</span><span class="p">:</span> <span class="m">7%</span><span class="err">;</span>
+
+<span class="cm">/* Keystroke padding. */
+</span>
+<span class="nv">$keystroke-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">2</span><span class="o">,</span> <span class="m">4</span><span class="o">,</span> <span class="m">0</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Background and border styles. */
+</span>
+<span class="nv">$keystroke-bg</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="nv">$keystroke-function-factor</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$keystroke-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$keystroke-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$keystroke-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$keystroke-bg</span><span class="o">,</span> <span class="nv">$keystroke-function-factor</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$keystroke-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+
+
+<span class="cm">/* Label Variables */
+</span>
+
+<span class="cm">/* Style the labels */
+</span>
+<span class="nv">$label-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">3</span><span class="o">,</span> <span class="m">10</span><span class="o">,</span> <span class="m">4</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$label-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+
+<span class="cm">/* We use these to style the label text */
+</span>
+<span class="nv">$label-font-sizing</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$label-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$label-font-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$label-font-color-alt</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+
+
+<span class="cm">/* Magellan Variables */
+</span>
+
+<span class="cm">/* Basic visual styles */
+</span>
+<span class="nv">$magellan-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$magellan-padding</span><span class="p">:</span> <span class="m">10px</span><span class="err">;</span>
+
+
+<span class="cm">/* Orbit Settings */
+</span>
+
+<span class="cm">/* Caption styles */
+</span>
+<span class="nv">$orbit-container-bg</span><span class="p">:</span> <span class="mh">#f5f5f5</span><span class="err">;</span>
+<span class="nv">$orbit-caption-bg-old</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$orbit-caption-bg</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.6</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$orbit-caption-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+
+<span class="cm">/* Left/right nav styles */
+</span>
+<span class="nv">$orbit-nav-bg-old</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$orbit-nav-bg</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.6</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Timer styles */
+</span>
+<span class="nv">$orbit-timer-bg-old</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$orbit-timer-bg</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.6</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Bullet nav styles */
+</span>
+<span class="nv">$orbit-bullet-nav-color</span><span class="p">:</span> <span class="mh">#999</span><span class="err">;</span>
+<span class="nv">$orbit-bullet-nav-color-active</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+
+<span class="cm">/* Slide numbers */
+</span>
+<span class="nv">$orbit-slide-number-bg</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$orbit-slide-number-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$orbit-slide-number-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Graceful Loading Wrapper and preloader */
+</span>
+<span class="nv">$wrapper-class</span><span class="p">:</span> <span class="s2">&quot;slideshow-wrapper&quot;</span><span class="err">;</span>
+<span class="nv">$preloader-class</span><span class="p">:</span> <span class="s2">&quot;preloader&quot;</span> <span class="err">;</span>
+
+
+<span class="cm">/* Pagination Variables */
+</span>
+
+<span class="cm">/* Pagination container */
+</span>
+<span class="nv">$pagination-height</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">24</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$pagination-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">-5</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* List-item properties */
+</span>
+<span class="nv">$pagination-li-float</span><span class="p">:</span> <span class="nv">$default-float</span><span class="err">;</span>
+<span class="nv">$pagination-li-height</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">24</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$pagination-li-font-color</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$pagination-li-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$pagination-li-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Pagination anchor links */
+</span>
+<span class="nv">$pagination-link-pad</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">1</span><span class="o">,</span> <span class="m">7</span><span class="o">,</span> <span class="m">1</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$pagination-link-font-color</span><span class="p">:</span> <span class="mh">#999</span><span class="err">;</span>
+<span class="nv">$pagination-link-active-bg</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Disabled anchor links */
+</span>
+<span class="nv">$pagination-link-unavailable-cursor</span><span class="p">:</span> <span class="nv">$cursor-default-value</span><span class="err">;</span>
+<span class="nv">$pagination-link-unavailable-font-color</span><span class="p">:</span> <span class="mh">#999</span><span class="err">;</span>
+<span class="nv">$pagination-link-unavailable-bg-active</span><span class="p">:</span> <span class="nb">transparent</span><span class="err">;</span>
+
+<span class="cm">/* Currently selected anchor links */
+</span>
+<span class="nv">$pagination-link-current-background</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$pagination-link-current-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$pagination-link-current-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$pagination-link-current-cursor</span><span class="p">:</span> <span class="nv">$cursor-default-value</span><span class="err">;</span>
+<span class="nv">$pagination-link-current-active-bg</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+
+
+<span class="cm">/* Panel Variables */
+</span>
+
+<span class="cm">/* Background and border styles */
+</span>
+<span class="nv">$panel-bg</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">5%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$panel-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$panel-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+
+<span class="cm">/* Control how much we darken things on hover */
+</span>
+<span class="nv">$panel-function-factor</span><span class="p">:</span> <span class="m">10%</span><span class="err">;</span>
+<span class="nv">$panel-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$panel-bg</span><span class="o">,</span> <span class="nv">$panel-function-factor</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Inner padding and bottom margin */
+</span>
+<span class="nv">$panel-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$panel-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Font colors */
+</span>
+<span class="nv">$panel-font-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$panel-font-color-alt</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$panel-header-adjust</span><span class="p">:</span> <span class="n">true</span><span class="err">;</span> <span class="o">/*</span> <span class="n">Set</span> <span class="n">to</span> <span class="n">false</span> <span class="n">to</span> <span class="n">keep</span> <span class="nb">default</span> <span class="n">header</span> <span class="n">styles</span> <span class="o">*/</span>
+
+<span class="cm">/* Pricing Table Variables */
+</span>
+
+<span class="cm">/* Border color */
+</span>
+<span class="nv">$price-table-border</span><span class="p">:</span> <span class="nb">solid</span> <span class="m">1px</span> <span class="mh">#ddd</span><span class="err">;</span>
+
+<span class="cm">/* Bottom margin of the pricing table */
+</span>
+<span class="nv">$price-table-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Control the title styles */
+</span>
+<span class="nv">$price-title-bg</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+<span class="nv">$price-title-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="o">,</span> <span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$price-title-align</span><span class="p">:</span> <span class="nb">center</span><span class="err">;</span>
+<span class="nv">$price-title-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$price-title-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$price-title-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">16</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Control the price styles */
+</span>
+<span class="nv">$price-money-bg</span><span class="p">:</span> <span class="mh">#eee</span><span class="err">;</span>
+<span class="nv">$price-money-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="o">,</span> <span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$price-money-align</span><span class="p">:</span> <span class="nb">center</span><span class="err">;</span>
+<span class="nv">$price-money-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$price-money-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$price-money-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Description styles */
+</span>
+<span class="nv">$price-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$price-desc-color</span><span class="p">:</span> <span class="mh">#777</span><span class="err">;</span>
+<span class="nv">$price-desc-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$price-desc-align</span><span class="p">:</span> <span class="nb">center</span><span class="err">;</span>
+<span class="nv">$price-desc-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$price-desc-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$price-desc-line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.4</span><span class="err">;</span>
+<span class="nv">$price-desc-bottom-border</span><span class="p">:</span> <span class="nb">dotted</span> <span class="m">1px</span> <span class="mh">#ddd</span><span class="err">;</span>
+
+<span class="cm">/* List item styles */
+</span>
+<span class="nv">$price-item-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$price-item-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$price-item-align</span><span class="p">:</span> <span class="nb">center</span><span class="err">;</span>
+<span class="nv">$price-item-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$price-item-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$price-item-bottom-border</span><span class="p">:</span> <span class="nb">dotted</span> <span class="m">1px</span> <span class="mh">#ddd</span><span class="err">;</span>
+
+<span class="cm">/* CTA area styles */
+</span>
+<span class="nv">$price-cta-bg</span><span class="p">:</span> <span class="mh">#f5f5f5</span><span class="err">;</span>
+<span class="nv">$price-cta-align</span><span class="p">:</span> <span class="nb">center</span><span class="err">;</span>
+<span class="nv">$price-cta-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="o">,</span> <span class="m">20</span><span class="o">,</span> <span class="m">0</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Progress Bar Variables */
+</span>
+
+<span class="cm">/* Progress bar height */
+</span>
+<span class="nv">$progress-bar-height</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">25</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$progress-bar-color</span><span class="p">:</span> <span class="nb">transparent</span><span class="err">;</span>
+
+<span class="cm">/* Border styles */
+</span>
+<span class="nv">$progress-bar-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$progress-bar-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$progress-bar-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$progress-bar-border-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+
+<span class="cm">/* Margin &amp; padding */
+</span>
+<span class="nv">$progress-bar-pad</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$progress-bar-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Meter colors */
+</span>
+<span class="nv">$progress-meter-color</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$progress-meter-secondary-color</span><span class="p">:</span> <span class="nv">$secondary-color</span><span class="err">;</span>
+<span class="nv">$progress-meter-success-color</span><span class="p">:</span> <span class="nv">$success-color</span><span class="err">;</span>
+<span class="nv">$progress-meter-alert-color</span><span class="p">:</span> <span class="nv">$alert-color</span><span class="err">;</span>
+
+
+<span class="cm">/* Reveal Variables */
+</span>
+
+<span class="cm">/* Reveal overlay. */
+</span>
+<span class="nv">$reveal-overlay-bg</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="mi">.45</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$reveal-overlay-bg-old</span><span class="p">:</span> <span class="mh">#000</span><span class="err">;</span>
+
+<span class="cm">/* Modal itself. */
+</span>
+<span class="nv">$reveal-modal-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$reveal-position-top</span><span class="p">:</span> <span class="m">50px</span><span class="err">;</span>
+<span class="nv">$reveal-default-width</span><span class="p">:</span> <span class="m">80%</span><span class="err">;</span>
+<span class="nv">$reveal-modal-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$reveal-box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,.</span><span class="m">4</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Reveal close button */
+</span>
+<span class="nv">$reveal-close-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">22</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$reveal-close-top</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">8</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$reveal-close-side</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">11</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$reveal-close-color</span><span class="p">:</span> <span class="mh">#aaa</span><span class="err">;</span>
+<span class="nv">$reveal-close-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+
+<span class="cm">/* Modal border */
+</span>
+<span class="nv">$reveal-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$reveal-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$reveal-border-color</span><span class="p">:</span> <span class="mh">#666</span><span class="err">;</span>
+
+<span class="nv">$reveal-modal-class</span><span class="p">:</span> <span class="s2">&quot;reveal-modal&quot;</span><span class="err">;</span>
+<span class="nv">$close-reveal-modal-class</span><span class="p">:</span> <span class="s2">&quot;close-reveal-modal&quot;</span><span class="err">;</span>
+
+
+<span class="cm">/* Section Variables */
+</span>
+
+<span class="cm">/* Padding and hover factor */
+</span>
+<span class="nv">$section-title-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$section-content-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$section-function-factor</span><span class="p">:</span> <span class="m">10%</span><span class="err">;</span>
+
+<span class="cm">/* Titles */
+</span>
+<span class="nv">$section-title-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$section-title-bg</span><span class="p">:</span> <span class="mh">#efefef</span><span class="err">;</span>
+<span class="nv">$section-title-bg-active</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$section-title-bg</span><span class="o">,</span> <span class="nv">$section-function-factor</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$section-title-bg-active-tabs</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$section-title-bg-hover</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$section-title-bg</span><span class="o">,</span> <span class="nv">$section-function-factor</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Border size */
+</span>
+<span class="nv">$section-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$section-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$section-border-color</span><span class="p">:</span> <span class="mh">#ccc</span><span class="err">;</span>
+
+<span class="cm">/* Font controls */
+</span>
+<span class="nv">$section-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Control the color of the background and some size options */
+</span>
+<span class="nv">$section-content-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$section-vertical-nav-min-width</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">200</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$section-vertical-tabs-title-width</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">200</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$section-bottom-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="nv">$title-selector</span><span class="p">:</span> <span class="s2">&quot;.title&quot;</span><span class="err">;</span>
+<span class="nv">$content-selector</span><span class="p">:</span> <span class="s2">&quot;.content&quot;</span><span class="err">;</span>
+
+
+<span class="cm">/* Side Nav Variables */
+</span>
+
+<span class="cm">/* Padding */
+</span>
+<span class="nv">$side-nav-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="o">,</span> <span class="m">0</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* List styles */
+</span>
+<span class="nv">$side-nav-list-type</span><span class="p">:</span> <span class="nb">none</span><span class="err">;</span>
+<span class="nv">$side-nav-list-position</span><span class="p">:</span> <span class="nb">inside</span><span class="err">;</span>
+<span class="nv">$side-nav-list-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">7</span><span class="o">,</span> <span class="m">0</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Link styles */
+</span>
+<span class="nv">$side-nav-link-color</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$side-nav-link-color-active</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">30%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$side-nav-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$side-nav-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+
+<span class="cm">/* Border styles */
+</span>
+<span class="nv">$side-nav-divider-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$side-nav-divider-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$side-nav-divider-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Sub Nav Variables */
+</span>
+
+<span class="cm">/* Margin and padding */
+</span>
+<span class="nv">$sub-nav-list-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">-4</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">18</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$sub-nav-list-padding-top</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">4</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Definition */
+</span>
+<span class="nv">$sub-nav-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$sub-nav-font-color</span><span class="p">:</span> <span class="mh">#999</span><span class="err">;</span>
+<span class="nv">$sub-nav-font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$sub-nav-text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="err">;</span>
+<span class="nv">$sub-nav-border-radius</span><span class="p">:</span> <span class="m">1000px</span><span class="err">;</span>
+
+<span class="cm">/* Active item styles */
+</span>
+<span class="nv">$sub-nav-active-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$sub-nav-active-bg</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$sub-nav-active-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$sub-nav-active-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">3</span><span class="o">,</span> <span class="m">9</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$sub-nav-active-cursor</span><span class="p">:</span> <span class="nv">$cursor-default-value</span><span class="err">;</span>
+
+
+<span class="cm">/* Switch Variables */
+</span>
+
+<span class="cm">/* Border styles and background colors for the switch container */
+</span>
+<span class="nv">$switch-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$switch-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$switch-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$switch-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+
+<span class="cm">/* Switch heights for our default classes */
+</span>
+<span class="nv">$switch-height-tny</span><span class="p">:</span> <span class="m">22px</span><span class="err">;</span>
+<span class="nv">$switch-height-sml</span><span class="p">:</span> <span class="m">28px</span><span class="err">;</span>
+<span class="nv">$switch-height-med</span><span class="p">:</span> <span class="m">36px</span><span class="err">;</span>
+<span class="nv">$switch-height-lrg</span><span class="p">:</span> <span class="m">44px</span><span class="err">;</span>
+<span class="nv">$switch-bottom-margin</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Font sizes for our classes. */
+</span>
+<span class="nv">$switch-font-size-tny</span><span class="p">:</span> <span class="m">11px</span><span class="err">;</span>
+<span class="nv">$switch-font-size-sml</span><span class="p">:</span> <span class="m">12px</span><span class="err">;</span>
+<span class="nv">$switch-font-size-med</span><span class="p">:</span> <span class="m">14px</span><span class="err">;</span>
+<span class="nv">$switch-font-size-lrg</span><span class="p">:</span> <span class="m">17px</span><span class="err">;</span>
+<span class="nv">$switch-label-side-padding</span><span class="p">:</span> <span class="m">6px</span><span class="err">;</span>
+
+<span class="cm">/* Switch-paddle */
+</span>
+<span class="nv">$switch-paddle-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$switch-paddle-fade-to-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$switch-paddle-bg</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$switch-paddle-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$switch-paddle-bg</span><span class="o">,</span> <span class="m">35%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$switch-paddle-border-width</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$switch-paddle-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$switch-paddle-transition-speed</span><span class="p">:</span> <span class="mi">.1s</span><span class="err">;</span>
+<span class="nv">$switch-paddle-transition-ease</span><span class="p">:</span> <span class="n">ease-out</span><span class="err">;</span>
+<span class="nv">$switch-positive-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$success-color</span><span class="o">,</span> <span class="m">50%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$switch-negative-color</span><span class="p">:</span> <span class="mh">#f5f5f5</span><span class="err">;</span>
+
+<span class="cm">/* Outline Style for tabbing through switches */
+</span>
+<span class="nv">$switch-label-outline</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">dotted</span> <span class="mh">#888</span><span class="err">;</span>
+
+
+<span class="cm">/* Table Variables */
+</span>
+<span class="cm">/* Background color for the table and even rows */
+</span>
+<span class="nv">$table-bg</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$table-even-row-bg</span><span class="p">:</span> <span class="mh">#f9f9f9</span><span class="err">;</span>
+
+<span class="cm">/* Table cell border style */
+</span>
+<span class="nv">$table-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$table-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$table-border-color</span><span class="p">:</span> <span class="mh">#ddd</span><span class="err">;</span>
+
+<span class="cm">/* Table head styles */
+</span>
+<span class="nv">$table-head-bg</span><span class="p">:</span> <span class="mh">#f5f5f5</span><span class="err">;</span>
+<span class="nv">$table-head-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$table-head-font-color</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$table-head-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$table-head-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">8</span><span class="o">,</span> <span class="m">10</span><span class="o">,</span> <span class="m">10</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Row padding and font styles */
+</span>
+<span class="nv">$table-row-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">9</span><span class="o">,</span> <span class="m">10</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$table-row-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$table-row-font-color</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$table-line-height</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">18</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Display and margin of tables */
+</span>
+<span class="nv">$table-display</span><span class="p">:</span> <span class="nb">table-cell</span><span class="err">;</span>
+<span class="nv">$table-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="err">;</span>
+
+
+<span class="cm">/* Image Thumbnail Variables */
+</span>
+
+<span class="cm">/* Border styles */
+</span>
+<span class="nv">$thumb-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$thumb-border-width</span><span class="p">:</span> <span class="m">4px</span><span class="err">;</span>
+<span class="nv">$thumb-border-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$thumb-box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,.</span><span class="m">2</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$thumb-box-shadow-hover</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">6px</span> <span class="m">1px</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$primary-color</span><span class="o">,</span><span class="m">0</span><span class="mi">.5</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Radius and transition speed for thumbs */
+</span>
+<span class="nv">$thumb-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+<span class="nv">$thumb-transition-speed</span><span class="p">:</span> <span class="m">200ms</span><span class="err">;</span>
+
+
+<span class="cm">/* Tooltip Variables */
+</span>
+
+<span class="nv">$has-tip-border-bottom</span><span class="p">:</span> <span class="nb">dotted</span> <span class="m">1px</span> <span class="mh">#ccc</span><span class="err">;</span>
+<span class="nv">$has-tip-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$has-tip-font-color</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$has-tip-border-bottom-hover</span><span class="p">:</span> <span class="nb">dotted</span> <span class="m">1px</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$primary-color</span><span class="o">,</span> <span class="m">20%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$has-tip-font-color-hover</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$has-tip-cursor-type</span><span class="p">:</span> <span class="nb">help</span><span class="err">;</span>
+
+<span class="nv">$tooltip-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">8</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$tooltip-bg</span><span class="p">:</span> <span class="mh">#000</span><span class="err">;</span>
+<span class="nv">$tooltip-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">15</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$tooltip-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$tooltip-font-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$tooltip-line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.3</span><span class="err">;</span>
+<span class="nv">$tooltip-close-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$tooltip-close-font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="err">;</span>
+<span class="nv">$tooltip-close-font-color</span><span class="p">:</span> <span class="mh">#888</span><span class="err">;</span>
+<span class="nv">$tooltip-font-size-sml</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">14</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$tooltip-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+<span class="nv">$tooltip-pip-size</span><span class="p">:</span> <span class="m">5px</span><span class="err">;</span>
+
+
+<span class="cm">/* Top Bar Variables */
+</span>
+
+<span class="cm">/* Background color for the top bar */
+</span>
+<span class="nv">$topbar-bg</span><span class="p">:</span> <span class="mh">#111</span> <span class="o">!</span><span class="nb">default</span><span class="err">;</span>
+
+<span class="cm">/* Height and margin */
+</span>
+<span class="nv">$topbar-height</span><span class="p">:</span> <span class="m">45px</span><span class="err">;</span>
+<span class="nv">$topbar-margin-bottom</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">30</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Control Input height for top bar */
+</span>
+<span class="nv">$topbar-input-height</span><span class="p">:</span> <span class="m">2</span><span class="mi">.45em</span><span class="err">;</span>
+
+<span class="cm">/* Controlling the styles for the title in the top bar */
+</span>
+<span class="nv">$topbar-title-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$topbar-title-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">17</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Style the top bar dropdown elements */
+</span>
+<span class="nv">$topbar-dropdown-bg</span><span class="p">:</span> <span class="mh">#222</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-link-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-link-bg</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$topbar-bg</span><span class="o">,</span> <span class="m">5%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-toggle-size</span><span class="p">:</span> <span class="m">5px</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-toggle-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-toggle-alpha</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5</span><span class="err">;</span>
+
+<span class="cm">/* Set the link colors and styles for top-level nav */
+</span>
+<span class="nv">$topbar-link-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$topbar-link-color-hover</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$topbar-link-color-active</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$topbar-link-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$topbar-link-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">13</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$topbar-link-hover-lightness</span><span class="p">:</span> <span class="m">-30%</span><span class="err">;</span> <span class="n">Darken</span> <span class="n">by</span> <span class="m">30%</span>
+<span class="nv">$topbar-link-bg-hover</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$topbar-bg</span><span class="o">,</span> <span class="m">3%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$topbar-link-bg-active</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$topbar-bg</span><span class="o">,</span> <span class="m">3%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="nv">$topbar-dropdown-label-color</span><span class="p">:</span> <span class="mh">#555</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-label-text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-label-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$topbar-dropdown-label-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Top menu icon styles */
+</span>
+<span class="nv">$topbar-menu-link-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="err">;</span>
+<span class="nv">$topbar-menu-link-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">13</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$topbar-menu-link-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="err">;</span>
+<span class="nv">$topbar-menu-link-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$topbar-menu-icon-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="err">;</span>
+<span class="nv">$topbar-menu-link-color-toggled</span><span class="p">:</span> <span class="mh">#888</span><span class="err">;</span>
+<span class="nv">$topbar-menu-icon-color-toggled</span><span class="p">:</span> <span class="mh">#888</span><span class="err">;</span>
+
+<span class="cm">/* Transitions and breakpoint styles */
+</span>
+<span class="nv">$topbar-transition-speed</span><span class="p">:</span> <span class="m">300ms</span><span class="err">;</span>
+<span class="nv">$topbar-breakpoint</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">940</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$topbar-media-query</span><span class="p">:</span> <span class="s2">&quot;only screen and (min-width: </span><span class="si">#{</span><span class="nv">$topbar-breakpoint</span><span class="si">}</span><span class="s2">)&quot;</span><span class="err">;</span>
+
+<span class="cm">/* Divider Styles */
+</span>
+<span class="nv">$topbar-divider-border-bottom</span><span class="p">:</span> <span class="nb">solid</span> <span class="m">1px</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$topbar-bg</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$topbar-divider-border-top</span><span class="p">:</span> <span class="nb">solid</span> <span class="m">1px</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$topbar-bg</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* Sticky Class */
+</span>
+<span class="nv">$topbar-sticky-class</span><span class="p">:</span> <span class="s2">&quot;.sticky&quot;</span><span class="err">;</span>
+<span class="nv">$topbar-arrows</span><span class="p">:</span> <span class="n">true</span><span class="err">;</span> <span class="o">//</span><span class="n">Set</span> <span class="n">false</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">triangle</span> <span class="nb">icon</span> <span class="n">from</span> <span class="n">the</span> <span class="n">menu</span> <span class="n">item</span>
+</pre></div></div>
+
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <div class="docs section-container accordion" data-section="accordion" data-options="one_up: false">
+  <section class="section active">
+    <p class="title"><a href="#">Using Foundation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="index.html">Get Started</a></li>
+        <li><a class="" href="javascript.html">Javascript</a></li>
+        <li><a class="active" href="sass.html">Sass</a></li>
+        <li><a class="" href="rails.html">Rails</a></li>
+        <li><a class="" href="media-queries.html">Media Queries</a></li>
+        <li><a href="components/visibility.html">Visibility Classes</a></li>
+        <li><a class="" href="rtl.html">Right-to-Left Support</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Grid</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/grid.html">Grid</a></li>
+        <li><a href="components/block-grid.html">Block Grid</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Navigation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/pagination.html">Pagination</a></li>
+        <li><a href="components/side-nav.html">Side Nav</a></li>
+        <li><a href="components/sub-nav.html">Sub Nav</a></li>
+        <li><a href="components/top-bar.html">Top Bar</a></li>
+        <li><a href="components/breadcrumbs.html">Breadcrumbs</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Buttons</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/buttons.html">Buttons</a></li>
+        <li><a href="components/button-groups.html">Button Groups</a></li>
+        <li><a href="components/dropdown-buttons.html">Dropdown Buttons</a></li>
+        <li><a href="components/split-buttons.html">Split Buttons</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Forms</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/forms.html">Forms</a></li>
+        <li><a href="components/custom-forms.html">Custom Forms</a></li>
+        <li><a href="components/switch.html">Switch</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Typography</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/type.html">Type</a></li>
+        <li><a href="components/inline-lists.html">Inline Lists</a></li>
+        <li><a href="components/labels.html">Labels</a></li>
+        <li><a href="components/keystrokes.html">Keystrokes</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">CSS Components</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/global.html">Global Styles</a></li>
+        <li><a href="components/alert-boxes.html">Alert Boxes</a></li>
+        <li><a href="components/panels.html">Panels</a></li>
+        <li><a href="components/pricing-tables.html">Pricing Tables</a></li>
+        <li><a href="components/progress-bars.html">Progress Bars</a></li>
+        <li><a href="components/tables.html">Tables</a></li>
+        <li><a href="components/thumbnails.html">Thumbnails</a></li>
+        <li><a href="components/flex-video.html">Flex Video</a></li>
+        <li class="divider"></li>
+        <li><a target="_blank" style="font-style: italic" href="components/kitchen-sink.html">Kitchen Sink</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <p class="title"><a href="#">Javascript</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="components/abide.html">Abide</a></li>
+        <li><a href="components/clearing.html">Clearing</a></li>
+        <li><a href="components/dropdown.html">Dropdown</a></li>
+        <li><a href="components/interchange.html">Interchange</a></li>
+        <li><a href="components/joyride.html">Joyride</a></li>
+        <li><a href="components/magellan.html">Magellan</a></li>
+        <li><a href="components/orbit.html">Orbit</a></li>
+        <li><a href="components/reveal.html">Reveal</a></li>
+        <li><a href="components/section.html">Section</a></li>
+        <li><a href="components/tooltips.html">Tooltips</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="faq.html">FAQ</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="support.html">Support</a></p>
+  </section>
+</div>
+
+<p><a href="http://foundation.zurb.com/download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
+
+<div class="jobs hide-for-small">
+  <h5>Awesome product jobs:</h5>
+  <div id="zurbJobsWidget"></div>
+  <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">ZURBjobs</span></a>
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+      <br>
+      <div class="zurb-footer-top bg-blue">
+      <div class="row property">
+        <div class="large-4 columns">
+        	<div class="property-info">
+            <h3><a href="http://foundation.zurb.com/">Foundation</a></h3>
+            <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.</p>
+        	</div>
+        </div>
+        
+        <div class="large-8 columns">
+          <div class="row collapse">
+    	      <div class="large-4 columns">
+    		      <div class="learn-links">
+    		        <h4 class="hide-for-small">Want More?</h4>
+    		        <ul>
+    		          <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+    		          <li><a href="http://zurb.com/expo/custom">Responsive</a></li>
+    		          <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+    		          <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    		        </ul>
+    		      </div>
+      		  </div>
+    	      <div class="large-4 columns">
+    		      <div class="support-links">
+    	          <h4 class="hide-for-small">Talk to us</h4>
+    	          <p>Call us at <strong>(408) 341-0600</strong></p>
+    	          <p>Not a big talker? Email us at <a href="mailto:foundation@zurb.com">foundation@zurb.com</a></p>
+    		      </div>
+    	      </div>
+            <div class="large-4 columns">
+    	        <div class="connect-links">
+    	          <h4 class="hide-for-small">Stay in touch</h4>
+    	          <p>Keep up with the latest on Foundation. Find us on Github.</p>
+    	          <a href="https://github.com/zurb/foundation" target="_blank" class="small button">Stay Connected</a>         
+    	        </div>
+    	      </div>
+          </div> 
+        </div>
+      </div>
+      <div class="row global">
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/services" class="footer-link-block services">
+            <span class="title">Services</span>
+            <span>Helping more than 200 startups succeed since 1998.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+            <span class="title">Foundation</span>
+            <span>The most advanced front-end framework in the world.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/apps" class="footer-link-block apps">
+            <span class="title">Products</span>
+            <span>Prototype, iterate and collect feedback on your products.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/expo" class="footer-link-block expo">
+            <span class="title">Expo</span>
+            <span>Ideas, thoughts and design resources shared with you.</span>
+          </a>
+      </div>
+      </div>
+    </div>
+      <div class="zurb-footer-bottom">
+      <div class="row">
+        <div class="large-4 large-push-8 columns">
+          <ul class="home-social">
+              <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+              <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+              <li><a href="http://zurb.com/contact" class="mail"></a></li>
+            </ul>
+         </div>
+         <div class="large-8 large-pull-4 columns">
+            <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+            <ul class="zurb-links">
+              <li><a href="http://zurb.com/about">About</a></li>
+              <li><a href="http://zurb.com/blog">Blog</a></li>
+              <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+              <li><a href="http://zurb.com/contact">Contact</a></li>
+              <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+           </ul>
+           <p class="copyright">&copy; 1998&ndash;2013 ZURB, Inc. All rights reserved.</p>
+        </div>          
+      </div>
+    </div>
+    <div class="joyride-modal-bg"></div>
+    </section>
+    
+    
+    <aside id="sidebar" role="complementary">
+      
+      <!-- For Future Use		
+      <div id="passport">
+        <a id="user" href="#">
+      		<h5>Firstname LastName</h5><br>
+      		<p>sign out</p>
+        </a>
+        <a id="ava" href="#">
+    		  <div class="avatar"><img src="placehold.it/75x75"></div>
+    		</a>
+      </div>
+      -->
+    	
+    	<!-- This is the apps main navigation -->	  		  
+      <div class="main-menu">
+    		<h6>Foundation</h6>
+    		<nav id="sideMenu" role="navigation">
+    			<ul id="sideMainNav" class="nav-bar">
+    			  <li class="show-for-small">
+            <a href="index.html">Home</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/grid.php">Features</a>
+    			</li>
+          <li>
+            <a href="http://foundation.zurb.com/templates.php">Add-ons</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/case-jacquelinewest.php">Case Studies</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/docs/">Docs</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/training.php">Training</a>
+    			</li>
+    			</ul>
+    		</nav> 			
+      </div>
+    		
+    	<hr>
+    	
+    	<!-- These links will vary depending on what app it is -->	
+      <div class="more-goodness">		
+    		<h6>More ZURB Goodness</h6>
+    		<nav role="navigation">
+    		  <ul id="secondarySideMainNav" class="nav-bar goodness">
+            <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+            <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+            <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    			</ul>
+    		</nav>
+      </div>
+      
+      <hr>
+      
+      <!-- These links will be the same across all of our proprties & apps -->
+      <div class="zurb-links">		
+    		<ul class="top">
+      		<li class="logo"><a href="http://zurb.com"><img src="/assets/offcanvas/zurb-logo.png" alt="ZURB"></a></li>
+      		<li><a href="http://zurb.com/about">About</a></li>
+      		<li><a href="http://zurb.com/blog">Blog</a></li>
+      		<li><a href="http://zurb.com/contact">Contact</a></li>
+    		</ul>
+    		<ul class="pillars">
+      		<li>
+      		  <a href="http://www.zurb.com/services" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping startups win since '98.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>World's most advanced responsive framework.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/apps" class="footer-link-block apps">
+              <span class="title">ZURB Apps</span>
+              <span>Tools to rapidly prototype and iterate.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/expo" class="footer-link-block expo">
+              <span class="title">Expo</span>
+              <span>Online training for smarter product design.</span>
+            </a>
+          </li> 
+    		</ul>
+      </div>
+    	
+    </aside>
+
+  <!-- Reveal Modals begin -->
+  <div id="firstModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a modal.</h2>
+    <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+    <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+    <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="secondModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a second modal.</h2>
+    <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="videoModal" class="reveal-modal large" data-reveal-modal>
+    <h2>This modal has video</h2>
+    <div class="flex-video">
+      <iframe width="800" height="315" src="http://www.youtube.com/embed/IkOQw96cfyE" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <!-- Reveal Modals end -->
+    
+
+    <script>
+
+      // Google Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script src='/assets/vendor/jquery.js'></script>
+    <script src='/assets/docs.js'></script>
+    
+    <script>
+      $(document)
+      
+        .foundation();
+      
+
+      $.ajax({
+        url: '//zurb.com/jobs/widgets/jobs.json?limit=3',
+        dataType: 'jsonp',
+        success: function(data) {
+          var list = $("<ul></ul>");
+          $.each(data.jobs, function(idx, job) {
+            var item = "<li><a href='"+job.url+"' target='_blank'>" +
+              "<span class='positionTitle'>"+job.title+"</span>" +
+              "<span class='location'><span class='companyName'>"+job.company_name+"</span> in "+job.location+"</span>" +
+              "</a>" +
+              "</li>";
+            list.append(item);
+          });
+            // Customize This
+          $("#zurbJobsWidget").html(list);
+        }
+      });
+
+      // For Kitchen Sink Page
+      $('#start-jr').on('click', function() {
+        $(document).foundation('joyride','start');
+      });
+      
+    </script>
+  </body>
+</html>

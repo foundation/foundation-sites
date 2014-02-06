@@ -1,0 +1,54 @@
+div {
+  noo: false;
+  poo: not 3;
+  doo: false;
+  goo: false;
+  zoo: false2;
+  roo: false;
+  hoo: not not not 3; }
+
+span {
+  a: #641400;
+  b: #aabbcc;
+  c: compact(hello, my, false, name, is, false, aaron, false, false);
+  d: 1, 2, 3, 4, 5, 6;
+  e: a b c d e f;
+  f: #102005;
+  g: #782005;
+  h: #ffc499;
+  h: rgba(204, 86, 0, 0.8);
+  h: rgba(204, 85, 0, 0.8);
+  i: rgba(204, 85, 0, 0.8);
+  foo: url("http://blah/flah/grah");
+  foo: url(http://foo/bar/buzz.css);
+  foo: url(hey4ho.css);
+  foo: url("blah.css");
+  bug: compact(false 1 2 false 3 4 5 false);
+  pug: compact(false, 1, 2, false, 3, 4, 5, false);
+  mug: compact(flug, false, blug, false, krug, false); }
+
+div {
+  flug: url(bug.mug);
+  krug: 2;
+  blug: c;
+  flig: true true true true;
+  flug: true false;
+  flib: false false;
+  glib: false true false false;
+  trib: yellow;
+  trub: here we are; }
+
+@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+  div {
+    background-image: url(fudge);
+    -webkit-background-size: 10px 10px; } }
+@media foo {
+  span div {
+    blah: blah; } }
+
+gudge {
+  fudge: "20%";
+  mudge: 1blang; }
+
+h1:lang(en) {
+  foo: bar; }

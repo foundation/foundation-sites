@@ -1,0 +1,89 @@
+@import "global";
+
+//
+// Block Grid Variables
+//
+$include-html-grid-classes: $include-html-classes !default;
+
+// We use this to control the maximum number of block grid elements per row
+$block-grid-elements: 12 !default;
+$block-grid-default-spacing: rem-calc(20) !default;
+
+// Enables media queries for block-grid classes. Set to false if writing semantic HTML.
+$block-grid-media-queries: true !default;
+
+//
+// Block Grid Mixins
+//
+
+// Create a custom block grid
+//
+// $per-row - # of items to display per row. Default: false.
+// $spacing - # of ems to use as padding on each block item. Default: rem-calc(20).
+// $base-style - Apply a base style to block grid. Default: true.
+@mixin block-grid(
+  $per-row:false, 
+  $spacing:$block-grid-default-spacing, 
+  $include-spacing:true,
+  $base-style:true) {
+
+  @if $base-style {
+    display: block;
+    padding: 0;
+    margin: 0 (-$spacing/2);
+    @include clearfix;
+
+    &>li {
+      display: block;
+      height: auto;
+      float: $default-float;
+      @if $include-spacing {
+        padding: 0 ($spacing/2) $spacing;
+      }
+    }
+  }
+
+  @if $per-row {
+    &>li {
+      width: 100%/$per-row;
+      @if $include-spacing {
+        padding: 0 ($spacing/2) $spacing;
+      }
+      list-style: none;
+
+      &:nth-of-type(n) { clear: none; }
+      &:nth-of-type(#{$per-row}n+1) { clear: both; }
+    }
+  }
+
+}
+
+// Generate presentational markup for block grid.
+//
+// $size - Name of class to use, i.e. "large" will generate .large-block-grid-1, .large-block-grid-2, etc.
+@mixin block-grid-html-classes($size,$include-spacing) {
+  @for $i from 1 through $block-grid-elements {
+    .#{$size}-block-grid-#{($i)} {
+      @include block-grid($i,$block-grid-default-spacing,$include-spacing,false);
+    }
+  }
+}
+
+@include exports("block-grid") {
+  @if $include-html-grid-classes {
+    
+    [class*="block-grid-"] { @include block-grid; }
+
+    @media #{$small-up} {
+      @include block-grid-html-classes($size:small,$include-spacing:false);
+    }
+
+    @media #{$medium-up} {
+      @include block-grid-html-classes($size:medium,$include-spacing:false);
+    }
+
+    @media #{$large-up} {
+      @include block-grid-html-classes($size:large,$include-spacing:false);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+$a: red;
+
+@mixin f($a: $a) {
+  color: $a;
+}
+
+h1 {
+  @include f;
+}
+
+h2 {
+  @include f(blue);
+}

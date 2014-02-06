@@ -1,0 +1,3 @@
+@mixin foo {a: b}
+
+.foo {@include foo();}

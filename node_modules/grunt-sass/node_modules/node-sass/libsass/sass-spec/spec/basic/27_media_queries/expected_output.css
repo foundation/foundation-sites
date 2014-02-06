@@ -1,0 +1,11 @@
+a b c {
+  blee: blee;
+  blah: blah; }
+  a b c d e f {
+    blah: blah;
+    bloo: bloo; }
+  @media print and (foo: 1 2 3), (bar: 3px hux(muz)), not screen {
+    a b c g h, a b c i j {
+      hey: ho; }
+      a b c g h k l m, a b c i j k l m {
+        hee: fee; } }

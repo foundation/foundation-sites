@@ -1,0 +1,3 @@
+$a : a;
+$b : b;
+div { -foo-#{$a}-#{$b}-foo: foo }

@@ -1,0 +1,12 @@
+div {
+  $x: 3;
+  @each $x in singleton {
+    color: $x;
+  }
+  divider: $x;
+  @each $x in foo, bar, hux {
+    span {
+      msg: $x;
+    }
+  }
+}

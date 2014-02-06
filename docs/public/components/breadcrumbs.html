@@ -1,0 +1,614 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/assets/favicons/apple-touch-icon-precomposed.png">
+    <link rel="icon" href="/assets/favicons/favicon.ico" type="image/x-icon">
+    <title>Foundation Docs: Breadcrumbs</title>
+    <link rel='stylesheet' href='/assets/normalize.css' />
+    <link rel='stylesheet' href='/assets/docs.css' />
+    <script src='/assets/vendor/custom.modernizr.js'></script>
+    
+  </head>
+  <body class="antialiased off-canvas hide-extras">
+     <nav class="top-bar hide-for-small">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><a href="/">Foundation</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="/grid.php">Features</a></li>
+          <li class="divider"></li>
+          <li><a href="/templates.php">Add-ons</a></li>
+          <li class="divider"></li>
+          <li><a href="/case-jacquelinewest.php">Case Studies</a></li>
+          <li class="divider"></li>
+          <li><a href="/docs/">Docs</a></li>
+          <li class="divider"></li>
+          <li><a href="/training.php">Training</a></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    <section class="main">
+     
+      
+      <header class="show-for-small">
+        <a class='sidebar-button show-for-small' id="sidebarButton" href="#sidebar" ><img src="/assets/offcanvas/menu-wht.png" alt="ZURB Menu"><h4>Foundation</h4></a>
+      </header>
+  
+      
+      <div class="row">
+        <div class="large-12 columns">
+          <h1 class="docs header"><a href="http://foundation.zurb.com/docs/">Foundation 4 Documentation</a></h1>
+          <h6 class="docs subheader"><a href="http://foundation.zurb.com/old-docs/f3">Want F3 Docs?</a></h6>
+          <hr>
+        </div>
+      </div>
+  
+      
+<div class="row">
+  <div class="large-9 push-3 columns">
+
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>Breadcrumbs</h2>
+        <h4 class="subheader">Breadcrumbs come in handy to show a navigation trail for users clicking through a site or app. They'll conform to 100% of the container width you put them in.</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li class="unavailable"><a href="#">Gene Splicing</a></li>
+          <li class="current"><a href="#">Cloning</a></li>
+        </ul>
+
+        <hr>
+
+        <h3>Build With Predefined HTML Classes</h3>
+        <p>There are two ways to build breadcrumbs in Foundation 4: with our predefined HTML classes or with our structure and mixins. Building breadcrumbs using our predefined class is easy. You'll need an <code>&lt;ul class="breadcrumbs"&gt;</code> with <code>&lt;li&gt;</code> elements inside. You have access to two state classes: <code>&lt;li class="unavailable"&gt;</code> and <code>&lt;li class="current"&gt;</code> to control link intentions. The default markup looks like this:</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;breadcrumbs&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;unavailable&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Gene Splicing<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;current&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Cloning<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="c">&lt;!-- You can also use this markup --&gt;</span>
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;breadcrumbs&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;unavailable&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Gene Splicing<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;current&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Cloning<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></pre></div></div>
+
+        <p>For these styles to come across, make sure you have the <strong>default Foundation CSS package</strong> or that you've selected <strong>breadcrumbs from a custom package</strong>. These should be linked up following our default <a href="../index.html">HTML page structure</a>.</p>
+
+        <hr>
+
+        <h3>Build with Mixins</h3>
+        <p>We've included SCSS mixins used to style breadcrumbs. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_breadcrumbs.scss">_breadcrumbs.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+
+<div class='css'><div class='highlight'><pre class="">
+<span class="k">@import</span> <span class="s">&quot;foundation/variables&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/global&quot;;</span>
+<span class="k">@import</span> <span class="s">&quot;foundation/components/breadcrumbs&quot;;</span>
+</pre></div></div>
+
+        <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
+
+<div class='html'><div class='highlight'><pre class="">
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;your-class-name&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;unavailable&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Gene Splicing<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;current&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Cloning<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span></pre></div></div>
+
+        <h5>Container Mixin</h5>
+        <p>You can build your breadcrumbs using our global mixin by including it on your custom class or ID in your stylesheet. The container mixin will create the necessary style for the <code>&lt;ul&gt;</code>. The global mixin looks like this:</p>
+
+<div class='css'><div class='highlight'><pre class="">
+<span class="nc">.your-class-name</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">crumb-container</span><span class="o">;</span> <span class="err">}</span>
+</pre></div></div>
+
+    <ul class="crumb-container">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li class="unavailable"><a href="#">Gene Splicing</a></li>
+      <li class="current"><a href="#">Cloning</a></li>
+    </ul>
+
+        <h5>Crumbs Mixin</h5>
+        <p>Use this mixin to apply the list item and link styles to items inside the breadcrumb container. You attach this mixin to the list items inside of your container.</p>
+
+
+<div class='css'><div class='highlight'><pre class="">
+<span class="nc">.your-class-name</span> <span class="err">{</span>
+  <span class="k">@include</span> <span class="nd">crumb-container</span><span class="err">;</span>
+
+  <span class="nt">li</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">crumbs</span><span class="o">;</span> <span class="err">}</span>
+<span class="err">}</span>
+</pre></div></div>
+
+    <ul class="crumb-container crumbs">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li class="unavailable"><a href="#">Gene Splicing</a></li>
+      <li class="current"><a href="#">Cloning</a></li>
+    </ul>
+
+        <h5>Radius Mixin</h5>
+        <p>We've also created a global radius mixin that you can use to add border-radius to any element you'd like.</p>
+
+<div class='css'><div class='highlight'><pre class="">
+<span class="nc">.your-class-name</span> <span class="err">{</span>
+  <span class="k">@include</span> <span class="nd">crumb-container</span><span class="err">;</span>
+  <span class="k">@include</span> <span class="nd">radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">)</span><span class="err">;</span>
+
+  <span class="nt">li</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">crumbs</span><span class="o">;</span> <span class="err">}</span>
+<span class="err">}</span>
+</pre></div></div>
+
+    <ul class="crumb-container crumbs radius">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li class="unavailable"><a href="#">Gene Splicing</a></li>
+      <li class="current"><a href="#">Cloning</a></li>
+    </ul>
+
+        <h5>Default SCSS Variables</h5>
+<div class='css'><div class='highlight'><pre class="">
+<span class="nv">$include-html-nav-classes</span><span class="p">:</span> <span class="nv">$include-html-classes</span><span class="err">;</span>
+
+<span class="cm">/* We use this to set the background color for the breadcrumb container. */
+</span><span class="nv">$crumb-bg</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$secondary-color</span><span class="o">,</span> <span class="m">5%</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* We use these to set the padding around the breadcrumbs. */
+</span><span class="nv">$crumb-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">9</span> <span class="m">14</span> <span class="m">9</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$crumb-side-padding</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="err">;</span>
+
+<span class="cm">/* We use these to control border styles. */
+</span><span class="nv">$crumb-function-factor</span><span class="p">:</span> <span class="m">10%</span><span class="err">;</span>
+<span class="nv">$crumb-border-size</span><span class="p">:</span> <span class="m">1px</span><span class="err">;</span>
+<span class="nv">$crumb-border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="err">;</span>
+<span class="nv">$crumb-border-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$crumb-bg</span><span class="o">,</span> <span class="nv">$crumb-function-factor</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$crumb-radius</span><span class="p">:</span> <span class="nv">$global-radius</span><span class="err">;</span>
+
+<span class="cm">/* We use these to set various text styles for breadcrumbs. */
+</span><span class="nv">$crumb-font-size</span><span class="p">:</span> <span class="nf">em-calc</span><span class="p">(</span><span class="m">11</span><span class="p">)</span><span class="err">;</span>
+<span class="nv">$crumb-font-color</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="err">;</span>
+<span class="nv">$crumb-font-color-current</span><span class="p">:</span> <span class="mh">#333</span><span class="err">;</span>
+<span class="nv">$crumb-font-color-unavailable</span><span class="p">:</span> <span class="mh">#999</span><span class="err">;</span>
+<span class="nv">$crumb-font-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="err">;</span>
+<span class="nv">$crumb-link-decor</span><span class="p">:</span> <span class="nb">underline</span><span class="err">;</span>
+
+<span class="cm">/* We use these to control the slash between breadcrumbs */
+</span><span class="nv">$crumb-slash-color</span><span class="p">:</span> <span class="mh">#aaa</span><span class="err">;</span>
+<span class="nv">$crumb-slash</span><span class="p">:</span> <span class="s2">&quot;/&quot;</span><span class="err">;</span>
+</pre></div></div>
+
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="large-3 pull-9 columns">
+    <div class="docs section-container accordion" data-section="accordion">
+  <section class="section ">
+    <p class="title"><a href="#">Using Foundation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a href="../">Get Started</a></li>
+        <li><a href="../javascript.html">Javascript</a></li>
+        <li><a href="../sass.html">Sass</a></li>
+        <li><a href="../rails.html">Rails</a></li>
+        <li><a href="../media-queries.html">Media Queries</a></li>
+        <li><a class="" href="visibility.html">Visibility Classes</a></li>
+        <li><a href="../rtl.html">Right-to-Left Support</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Grid</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="grid.html">Grid</a></li>
+        <li><a class="" href="block-grid.html">Block Grid</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section active">
+    <p class="title"><a href="#">Navigation</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="pagination.html">Pagination</a></li>
+        <li><a class="" href="side-nav.html">Side Nav</a></li>
+        <li><a class="" href="sub-nav.html">Sub Nav</a></li>
+        <li><a class="" href="top-bar.html">Top Bar</a></li>
+        <li><a class="active" href="breadcrumbs.html">Breadcrumbs</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Buttons</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="buttons.html">Buttons</a></li>
+        <li><a class="" href="button-groups.html">Button Groups</a></li>
+        <li><a class="" href="dropdown-buttons.html">Dropdown Buttons</a></li>
+        <li><a class="" href="split-buttons.html">Split Buttons</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Forms</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="forms.html">Forms</a></li>
+        <li><a class="" href="custom-forms.html">Custom Forms</a></li>
+        <li><a class="" href="switch.html">Switch</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Typography</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="type.html">Type</a></li>
+        <li><a class="" href="inline-lists.html">Inline Lists</a></li>
+        <li><a class="" href="labels.html">Labels</a></li>
+        <li><a class="" href="keystrokes.html">Keystrokes</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">CSS Components</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="global.html">Global Styles</a></li>
+        <li><a class="" href="alert-boxes.html">Alert Boxes</a></li>
+        <li><a class="" href="panels.html">Panels</a></li>
+        <li><a class="" href="pricing-tables.html">Pricing Tables</a></li>
+        <li><a class="" href="progress-bars.html">Progress Bars</a></li>
+        <li><a class="" href="tables.html">Tables</a></li>
+        <li><a class="" href="thumbnails.html">Thumbnails</a></li>
+        <li><a class="" href="flex-video.html">Flex Video</a></li>
+        <li><a class="" href="tabs.html">Tabs</a></li>
+        <li><a class="" href="accordion.html">Accordion</a></li>
+        <li class="divider"></li>
+        <li><a target="_blank" style="font-style: italic" class="" href="kitchen-sink.html">Kitchen Sink</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="#">Javascript</a></p>
+    <div class="content">
+      <ul class="side-nav">
+        <li><a class="" href="abide.html">Abide</a></li>
+        <li><a class="" href="clearing.html">Clearing</a></li>
+        <li><a class="" href="dropdown.html">Dropdown</a></li>
+        <li><a class="" href="interchange.html">Interchange</a></li>
+        <li><a class="" href="joyride.html">Joyride</a></li>
+        <li><a class="" href="magellan.html">Magellan</a></li>
+        <li><a class="" href="orbit.html">Orbit</a></li>
+        <li><a class="" href="reveal.html">Reveal</a></li>
+        <li><a class="" href="section.html">Section</a></li>
+        <li><a class="" href="tooltips.html">Tooltips</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../faq.html">FAQ</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../support.html">Support</a></p>
+  </section>
+</div>
+
+<p><a href="http://foundation.zurb.com/download.php" class="button expand" style="margin-bottom: 0;">Download Foundation 4</a></p>
+
+<div class="jobs hide-for-small">
+  <h5>Awesome product jobs:</h5>
+  <div id="zurbJobsWidget"></div>
+  <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">ZURBjobs</span></a>
+</div>
+
+  </div>
+</div>
+
+      <br>
+      <div class="zurb-footer-top bg-blue">
+      <div class="row property">
+        <div class="large-4 columns">
+        	<div class="property-info">
+            <h3><a href="http://foundation.zurb.com/">Foundation</a></h3>
+            <p>Foundation is made by <a href="http://www.zurb.com/">ZURB</a>, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.</p>
+        	</div>
+        </div>
+        
+        <div class="large-8 columns">
+          <div class="row collapse">
+    	      <div class="large-4 columns">
+    		      <div class="learn-links">
+    		        <h4 class="hide-for-small">Want More?</h4>
+    		        <ul>
+    		          <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+    		          <li><a href="http://zurb.com/expo/custom">Responsive</a></li>
+    		          <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+    		          <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    		        </ul>
+    		      </div>
+      		  </div>
+    	      <div class="large-4 columns">
+    		      <div class="support-links">
+    	          <h4 class="hide-for-small">Talk to us</h4>
+    	          <p>Call us at <strong>(408) 341-0600</strong></p>
+    	          <p>Not a big talker? Email us at <a href="mailto:foundation@zurb.com">foundation@zurb.com</a></p>
+    		      </div>
+    	      </div>
+            <div class="large-4 columns">
+    	        <div class="connect-links">
+    	          <h4 class="hide-for-small">Stay in touch</h4>
+    	          <p>Keep up with the latest on Foundation. Find us on Github.</p>
+    	          <a href="https://github.com/zurb/foundation" target="_blank" class="small button">Stay Connected</a>         
+    	        </div>
+    	      </div>
+          </div> 
+        </div>
+      </div>
+      <div class="row global">
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/services" class="footer-link-block services">
+            <span class="title">Services</span>
+            <span>Helping more than 200 startups succeed since 1998.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+            <span class="title">Foundation</span>
+            <span>The most advanced front-end framework in the world.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/apps" class="footer-link-block apps">
+            <span class="title">Products</span>
+            <span>Prototype, iterate and collect feedback on your products.</span>
+          </a>
+        </div>
+        <div class="large-3 small-6 columns">
+          <a href="http://zurb.com/expo" class="footer-link-block expo">
+            <span class="title">Expo</span>
+            <span>Ideas, thoughts and design resources shared with you.</span>
+          </a>
+      </div>
+      </div>
+    </div>
+      <div class="zurb-footer-bottom">
+      <div class="row">
+        <div class="large-4 large-push-8 columns">
+          <ul class="home-social">
+              <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+              <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+              <li><a href="http://zurb.com/contact" class="mail"></a></li>
+            </ul>
+         </div>
+         <div class="large-8 large-pull-4 columns">
+            <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+            <ul class="zurb-links">
+              <li><a href="http://zurb.com/about">About</a></li>
+              <li><a href="http://zurb.com/blog">Blog</a></li>
+              <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+              <li><a href="http://zurb.com/contact">Contact</a></li>
+              <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+           </ul>
+           <p class="copyright">&copy; 1998&ndash;2013 ZURB, Inc. All rights reserved.</p>
+        </div>          
+      </div>
+    </div>
+    <div class="joyride-modal-bg"></div>
+    </section>
+    
+    
+    <aside id="sidebar" role="complementary">
+      
+      <!-- For Future Use		
+      <div id="passport">
+        <a id="user" href="#">
+      		<h5>Firstname LastName</h5><br>
+      		<p>sign out</p>
+        </a>
+        <a id="ava" href="#">
+    		  <div class="avatar"><img src="placehold.it/75x75"></div>
+    		</a>
+      </div>
+      -->
+    	
+    	<!-- This is the apps main navigation -->	  		  
+      <div class="main-menu">
+    		<h6>Foundation</h6>
+    		<nav id="sideMenu" role="navigation">
+    			<ul id="sideMainNav" class="nav-bar">
+    			  <li class="show-for-small">
+            <a href="index.html">Home</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/grid.php">Features</a>
+    			</li>
+          <li>
+            <a href="http://foundation.zurb.com/templates.php">Add-ons</a>
+          </li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/case-jacquelinewest.php">Case Studies</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/docs/">Docs</a>
+    			</li>
+    			<li>
+    			  <a href="http://foundation.zurb.com/training.php">Training</a>
+    			</li>
+    			</ul>
+    		</nav> 			
+      </div>
+    		
+    	<hr>
+    	
+    	<!-- These links will vary depending on what app it is -->	
+      <div class="more-goodness">		
+    		<h6>More ZURB Goodness</h6>
+    		<nav role="navigation">
+    		  <ul id="secondarySideMainNav" class="nav-bar goodness">
+            <li><a href="http://zurb.com/expo/foundation-intro">Foundation Training</a></li>
+            <li><a href="http://zurb.com/services/our-work">Our Work</a></li>
+            <li><a href="http://zurb.com/apps">ZURB Apps</a></li>
+    			</ul>
+    		</nav>
+      </div>
+      
+      <hr>
+      
+      <!-- These links will be the same across all of our proprties & apps -->
+      <div class="zurb-links">		
+    		<ul class="top">
+      		<li class="logo"><a href="http://zurb.com"><img src="/assets/offcanvas/zurb-logo.png" alt="ZURB"></a></li>
+      		<li><a href="http://zurb.com/about">About</a></li>
+      		<li><a href="http://zurb.com/blog">Blog</a></li>
+      		<li><a href="http://zurb.com/contact">Contact</a></li>
+    		</ul>
+    		<ul class="pillars">
+      		<li>
+      		  <a href="http://www.zurb.com/services" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping startups win since '98.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>World's most advanced responsive framework.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/apps" class="footer-link-block apps">
+              <span class="title">ZURB Apps</span>
+              <span>Tools to rapidly prototype and iterate.</span>
+            </a>
+          </li>
+          <li>
+      		  <a href="http://zurb.com/expo" class="footer-link-block expo">
+              <span class="title">Expo</span>
+              <span>Online training for smarter product design.</span>
+            </a>
+          </li> 
+    		</ul>
+      </div>
+    	
+    </aside>
+
+  <!-- Reveal Modals begin -->
+  <div id="firstModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a modal.</h2>
+    <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+    <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+    <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="secondModal" class="reveal-modal" data-reveal-modal>
+    <h2>This is a second modal.</h2>
+    <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="videoModal" class="reveal-modal large" data-reveal-modal>
+    <h2>This modal has video</h2>
+    <div class="flex-video">
+      <iframe width="800" height="315" src="http://www.youtube.com/embed/IkOQw96cfyE" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <!-- Reveal Modals end -->
+    
+
+    <script>
+
+      // Google Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script src='/assets/vendor/jquery.js'></script>
+    <script src='/assets/docs.js'></script>
+    
+    <script>
+      $(document)
+      
+        .foundation();
+      
+
+      $.ajax({
+        url: '//zurb.com/jobs/widgets/jobs.json?limit=3',
+        dataType: 'jsonp',
+        success: function(data) {
+          var list = $("<ul></ul>");
+          $.each(data.jobs, function(idx, job) {
+            var item = "<li><a href='"+job.url+"' target='_blank'>" +
+              "<span class='positionTitle'>"+job.title+"</span>" +
+              "<span class='location'><span class='companyName'>"+job.company_name+"</span> in "+job.location+"</span>" +
+              "</a>" +
+              "</li>";
+            list.append(item);
+          });
+            // Customize This
+          $("#zurbJobsWidget").html(list);
+        }
+      });
+
+      // For Kitchen Sink Page
+      $('#start-jr').on('click', function() {
+        $(document).foundation('joyride','start');
+      });
+      
+    </script>
+  </body>
+</html>

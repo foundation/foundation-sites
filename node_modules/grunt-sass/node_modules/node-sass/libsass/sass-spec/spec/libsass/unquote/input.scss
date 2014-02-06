@@ -1,0 +1,15 @@
+div {
+  a: unquote("foo");
+  b: unquote("I'm a \"fashion\" \"expert\".");
+  c: unquote(\"wha);
+  d: unquote("column1\tcolumn2");
+  e: unquote(23+1);
+  f: percentage(.37);
+  g: type-of(null);
+  // h: hello + null;
+  j: length(null);
+  k: nth(1 2 3, 2);
+  l: join(a, b, auto);
+  m: zip(a b c, 1 2);
+  n: min(1, 2%, 3px);
+}

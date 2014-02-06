@@ -1,0 +1,19 @@
+$x: pop;
+$y: 123;
+
+
+
+div {
+  foo: url(bloo/blah.css);
+  bar: url(http://foo/bar/hux.css);
+  foo: url(fudge#{$x}.css);
+  bar: url("http://fudge#{$x}/styles.css");
+  hux: url(http://box_#{$y}////fudge#{$x}.css);
+  @each $i in (1 2 3 4 5) {
+    hux: url(http://box_#{$y}////fudge#{$x}.css);
+    foo: url(http://blah.com/bar-#{$i}.css);
+  }
+  gloo: url("hey#{1+2}.css");
+  floo: url(hadoop-#{$y+321}.css);
+}
+

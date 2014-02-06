@@ -1,0 +1,13 @@
+$color: blue;
+@mixin context($class, $color: red) {
+  .#{$class} {
+    background-color: $color;
+    @content;
+    border-color: $color;
+  }
+}
+@include context(parent) {
+  @include context(child, $color: yellow) {
+    color: $color;
+  }
+}

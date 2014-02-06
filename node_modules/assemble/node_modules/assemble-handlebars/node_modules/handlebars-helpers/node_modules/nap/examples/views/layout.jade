@@ -1,0 +1,10 @@
+doctype 5
+html
+  head
+    title= title
+    != nap.css('all')
+  body
+    block content
+  #scripts
+    != nap.js('alerts')
+    != nap.jst('templates')

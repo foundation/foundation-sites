@@ -1,0 +1,23 @@
+div {
+  p01: #abc;
+  p02: #aabbcc;
+  p03: #abc + hello;
+  p04: #abc + 1; // add 1 to each triplet
+  p05: #abc + #001; // triplet-wise addition
+  p06: #0000ff + 1; // add 1 to each triplet; ignore overflow because it doesn't correspond to a color name
+  p07: #0000ff + #000001; // convert overflow to name of color (blue)
+  p08: #00ffff + #000101; // aqua
+  p09: #000000;
+  p10: #000000 - 1; // black
+  p11: #000000 - #000001; // black
+  p12: #ffff00 + #010100; // yellow
+  p13: (#101010 / 7);
+  p14: #000 + 0;
+  p15: 10 - #222;
+  p16: #000 - #001;
+  p17: #f0f + #101;
+  p18: 10 #222 + 1;
+  p19: (10 / #222);
+  p20: rgb(10,10,10) + #010001;
+  p21: #010000 + rgb(255, 255, 255);
+}

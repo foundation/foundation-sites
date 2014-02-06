@@ -1,0 +1,5 @@
+div {
+  foo: index(hello goodbye futz, goodbye);
+  bar: index(hello goodbye futz, badbye);
+  baz: index((hello world) (my name) (is aaron), is aaron);
+}

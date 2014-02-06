@@ -1,0 +1,33 @@
+---
+title: Data Types
+
+dataTypes:
+  a: 123                     # an integer
+  b: "123"                   # a string, disambiguated by quotes
+  c: 123.0                   # a float
+# d throws an error
+#  d: !!float 123             # also a float via explicit data type prefixed by (!!)
+  e: !!str 123               # a string, disambiguated by explicit type
+  f: !!str Yes               # a string via explicit type
+  g: Yes                     # a boolean True
+  h: Yes we have No bananas  # a string, "Yes" and "No" disambiguated by context.
+---
+<div class="page-header">
+  <h4>{{{title}}}</h4> 
+</div>
+
+<div class="examples">
+  <h4>Casting data types</h4>
+  <dl class="dl-horizontal">
+    {{#dataTypes}}
+      <dt>a.</dt> <dd>{{{a}}}</dd>
+      <dt>b.</dt> <dd>{{{b}}}</dd>
+      <dt>c.</dt> <dd>{{{c}}}</dd>
+      <dt>d.</dt> <dd>{{{d}}}</dd>
+      <dt>e.</dt> <dd>{{{e}}}</dd>
+      <dt>f.</dt> <dd>{{{f}}}</dd>
+      <dt>g.</dt> <dd>{{{g}}}</dd>
+      <dt>h.</dt> <dd>{{{h}}}</dd>
+    {{/dataTypes}}
+  </dl>
+</div>

@@ -1,0 +1,47 @@
+v0.5.1:
+  date: 2013-07-14
+  changes:
+    - Display filepath when fails to compile.
+v0.5.0:
+  date: 2013-03-06
+  changes:
+    - When `namespace` is false and `amd` is true, return templates directly from AMD wrapper.
+    - Rename `amdwrapper` option to `amd` to match grunt-contrib-handlebars.
+v0.4.1:
+  date: 2013-02-15
+  changes:
+    - First official release for Grunt 0.4.0.
+v0.4.1rc7:
+  date: 2012-01-29
+  changes:
+    - Correct line endings for lodash output on windows.
+v0.4.0rc7:
+  date: 2013-01-23
+  changes:
+    - Updating grunt/gruntplugin dependencies to rc7.
+    - Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+v0.4.0rc5:
+  date: 2013-01-09
+  changes:
+    - Updating to work with grunt v0.4.0rc5.
+    - Switching to this.files api.
+v0.3.1:
+  date: 2012-10-12
+  changes:
+    - Rename grunt-contrib-lib dep to grunt-lib-contrib.
+v0.3.0:
+  date: 2012-08-23
+  changes:
+    - Options no longer accepted from global config key.
+v0.2.3:
+  date: 2012-08-16
+  changes:
+    - Support for nested namespaces.
+v0.2.2:
+  date: 2012-08-12
+  changes:
+    - Added processName functionality & escaping single quotes in filenames.
+v0.2.0:
+  date: 2012-08-10
+  changes:
+    - Refactored from grunt-contrib into individual repo.

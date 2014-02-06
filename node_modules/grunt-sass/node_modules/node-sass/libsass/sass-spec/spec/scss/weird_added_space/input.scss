@@ -1,0 +1,5 @@
+$value : bip;
+
+foo {
+  bar: -moz-#{$value};
+}

@@ -1,0 +1,23 @@
+{
+  "name": "fastclick",
+  "version": "0.6.11",
+  "main": "lib/fastclick.js",
+  "ignore": [
+    "**/.*",
+    "component.json",
+    "package.json",
+    "Makefile",
+    "tests",
+    "examples"
+  ],
+  "homepage": "https://github.com/ftlabs/fastclick",
+  "_release": "0.6.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.6.11",
+    "commit": "57d35f73ca54e31ee37161e32f6ac11786f520d2"
+  },
+  "_source": "git://github.com/ftlabs/fastclick.git",
+  "_target": "~0.6.11",
+  "_originalSource": "fastclick"
+}

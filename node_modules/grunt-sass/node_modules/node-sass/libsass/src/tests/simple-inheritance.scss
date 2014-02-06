@@ -1,0 +1,64 @@
+earth {
+  mammal, bird {
+    blood: warm;
+  }
+}
+
+earth {
+  mammal {
+    produces-milk: true;
+  }
+}
+
+@mixin mammal-says($message) {
+  @extend mammal;
+  says: $message;
+}
+
+dog {
+  @include mammal-says("Woof!");
+}
+
+cat {
+  @include mammal-says("Meow.");
+}
+
+horse, naysayer {
+  @include mammal-says("Nay.");
+}
+
+[hey] {
+  a: b;
+}
+
+ho {
+  @extend [hey];
+  c: d;
+}
+
+fancy outer space vehicle {
+  insides: advanced;
+}
+
+new american mars rover {
+  wheels: big;
+  @extend vehicle;
+}
+
+foo {
+  something: whatever;
+}
+
+a b c {
+  blah: blah;
+  @extend foo;
+}
+
+d e f {
+  blah: blah;
+}
+
+g {
+  @extend f;
+  bloo: bloo;
+}

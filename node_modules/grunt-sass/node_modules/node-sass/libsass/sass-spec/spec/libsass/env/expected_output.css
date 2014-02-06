@@ -1,0 +1,26 @@
+div {
+  /* 0 */
+  font: 0;
+  /* 1 */
+  font: 1;
+  /* 2 */
+  font: 2; }
+  div span {
+    /* 2 */
+    font: 2; }
+  div p {
+    /* 2 */
+    font: 2; }
+
+div {
+  @foo {
+    font: 2; }
+
+  @bar {
+    font: 3; }
+ }
+
+div {
+  content: "foo";
+  font: fudge;
+  width: "block for foo!"; }

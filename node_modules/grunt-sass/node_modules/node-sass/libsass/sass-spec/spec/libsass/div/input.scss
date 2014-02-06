@@ -1,0 +1,13 @@
+$x: 3/4;
+$xs: hey 3/4 ho;
+
+div {
+  /* $x: 3/4 */
+  a: $x;
+  b: hey $x ho;
+  /* $xs: hey 3/4 ho */
+  c: $xs;
+  d: nth($xs, 2);
+  e: nth($xs, 2) == 0.75;
+  f: type-of(nth($xs, 2));
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- If you’re looking for the online demo, it’s here: http://mathiasbynens.be/demo/placeholder -->
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>HTML5 placeholder jQuery Plugin</title>
+  <style>
+   body, input, textarea { font: 1em/1.4 Helvetica, Arial; }
+   label code { cursor: pointer; float: left; width: 150px; }
+   input { width: 14em; }
+   textarea { height: 5em; width: 20em; }
+   .placeholder { color: #aaa; }
+   .note { border: 1px solid orange; padding: 1em; background: #ffffe0; }
+    /* #p { background: lime; } */
+  </style>
+ </head>
+ <body>
+  <h1>HTML5 Placeholder jQuery Plugin</h1>
+  <p>Check out <a href="https://github.com/mathiasbynens/Placeholder-jQuery-Plugin">the HTML5 Placeholder jQuery Plugin project page on GitHub</a>.</p>
+  <pre><code>$(function() {<br> $('input, textarea').placeholder();<br>});</code></pre>
+  <form>
+   <p><label><code>type=search</code> <input type="search" name="search" placeholder="Search this site…"></label></p>
+   <p><label><code>type=text</code> <input type="text" name="name" placeholder="e.g. John Doe"></label></p>
+   <p><label><code>type=email</code> <input type="email" name="email" placeholder="e.g. address@example.ext"></label></p>
+   <p><label><code>type=url</code> <input type="url" name="url" placeholder="e.g. http://mathiasbynens.be/"></label></p>
+   <p><label><code>type=tel</code> <input type="tel" name="tel" placeholder="e.g. +32 472 77 69 88"></label></p>
+   <p><label for="p"><code>type=password</code> </label><input type="password" name="password" placeholder="e.g. hunter2" id="p"></p>
+   <p><label><code>textarea</code> <textarea name="message" placeholder="Your message goes here"></textarea></label></p>
+   <p><input type="submit" value="type=submit"></p>
+  </form>
+  <p>— <a href="http://mathiasbynens.be/" title="Mathias Bynens, front-end developer">Mathias</a></p>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+  <script src="jquery.placeholder.js"></script>
+  <script>
+   // To test the @id toggling on password inputs in browsers that don’t support changing an input’s @type dynamically (e.g. Firefox 3.6 or IE), uncomment this:
+   // $.fn.hide = function() { return this; }
+   // Then uncomment the last rule in the <style> element (in the <head>).
+   $(function() {
+    // Invoke the plugin
+    $('input, textarea').placeholder();
+    // That’s it, really.
+    // Now display a message if the browser supports placeholder natively
+    var html;
+    if ($.fn.placeholder.input && $.fn.placeholder.textarea) {
+     html = '<strong>Your current browser natively supports <code>placeholder</code> for <code>input</code> and <code>textarea</code> elements.</strong> The plugin won’t run in this case, since it’s not needed. If you want to test the plugin, use an older browser ;)';
+    } else if ($.fn.placeholder.input) {
+     html = '<strong>Your current browser natively supports <code>placeholder</code> for <code>input</code> elements, but not for <code>textarea</code> elements.</strong> The plugin will only do its thang on the <code>textarea</code>s.';
+    }
+    if (html) {
+     $('<p class="note">' + html + '</p>').insertAfter('form');
+    }
+   });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,23 @@
+@function foo($x, $y) {
+  @if $x == $y {
+    @return false;
+  }
+}
+
+
+@mixin foo($x, $y: green) {
+  div {
+    color: red;
+    font-color: $y;
+  }
+}
+
+div {
+  content: foobar(1+2 3/4 5+6, orange);
+  content: append(1+2 2/3 5+6, orange);
+  content: 1+2 2/3 5+6;
+  content: type-of(2/3);
+  content: type-of(orange);
+  content: foo();
+  content: 2 3;
+}
