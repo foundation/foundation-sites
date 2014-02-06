@@ -25,7 +25,7 @@ $input-border-color: scale-color(#fff, $lightness: -20%) !default;
 $input-focus-border-color: scale-color(#fff, $lightness: -40%) !default;
 $input-border-style: solid !default;
 $input-border-width: 1px !default;
-$input-border-radius: 0 !default;
+$input-border-radius: $global-radius !default;
 $input-disabled-bg: #ddd !default;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $input-include-glowing-effect: true !default;
@@ -347,7 +347,7 @@ $select-bg-color: #fafafa !default;
     select::-ms-expand {
       display:none;
     }
-    
+
     @-moz-document url-prefix() {
       select { background: $select-bg-color; }
       select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
@@ -389,14 +389,15 @@ $select-bg-color: #fafafa !default;
     input[type="url"],
     textarea {
       -webkit-appearance: none;
-      -webkit-border-radius: $input-border-radius;
-      border-radius: $input-border-radius;
       @include form-element;
       @if not $input-include-glowing-effect {
           @include single-transition(all, 0.15s, linear);
       }
+      &.radius {
+        @include radius($input-border-radius);
+      }
     }
-    
+
     /* Add height value for select elements to match text input height */
     select {
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
