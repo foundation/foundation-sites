@@ -114,7 +114,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include wrap-base;
   @include clearfix;
-  
+
   -webkit-transition: -webkit-#{$menu-slide};
   -moz-transition: -moz-#{$menu-slide};
   -ms-transition: -ms-#{$menu-slide};
@@ -256,13 +256,14 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include off-canvas-menu;
   @include translate3d(-100%,0,0);
+  left: 0;
   * { @include kill-flicker; }
 }
 @mixin right-off-canvas-menu {
   @include kill-flicker;
   @include off-canvas-menu;
   @include translate3d(100%,0,0);
-  right:0;
+  right: 0;
 }
 
 
