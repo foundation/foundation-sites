@@ -84,13 +84,6 @@ $select-bg-color: #fafafa !default;
 
       .column,
       .columns { padding: 0; }
-      input {
-        -moz-border-radius-bottom#{$opposite-direction}: 0;
-        -moz-border-radius-top#{$opposite-direction}: 0;
-        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
-        -webkit-border-top-#{$opposite-direction}-radius: 0;
-      }
-
     }
   }
   input.column,
@@ -389,11 +382,18 @@ $select-bg-color: #fafafa !default;
     input[type="url"],
     textarea {
       -webkit-appearance: none;
-      -webkit-border-radius: $input-border-radius;
-      border-radius: $input-border-radius;
       @include form-element;
       @if not $input-include-glowing-effect {
           @include single-transition(all, 0.15s, linear);
+      }
+      &.radius {
+        @include radius($input-border-radius);
+        &.prefixed {
+          @include side-radius($default-float, 0);
+        }
+        &.postfixed {
+          @include side-radius($opposite-direction, 0);
+        }
       }
     }
     
