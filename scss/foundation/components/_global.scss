@@ -180,7 +180,7 @@ $body-font-style: normal !default;
 $font-smoothing: antialiased !default;
 
 // We use these to control text direction settings
-$text-direction: ltr !default;
+$text-direction: rtl !default;
 $default-float: left !default;
 $opposite-direction: right !default;
 @if $text-direction == ltr {
@@ -289,7 +289,7 @@ $cursor-text-value: text !default;
   meta.foundation-data-attribute-namespace {
     font-family: #{$namespace};
   }
-  
+
   // Must be 100% for off canvas to work
   html, body { height: 100%; }
 
