@@ -14,6 +14,7 @@
 
     init : function (scope, method, options) {
       this.bindings(method, options);
+      this.reflow();
     },
 
     events : function () {
