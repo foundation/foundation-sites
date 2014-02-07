@@ -5,7 +5,7 @@
 //
 $include-html-visibility-classes: $include-html-classes !default;
 $include-table-visibility-classes: true;
-$include-legacy-visibility-classes: false;
+$include-legacy-visibility-classes: true;
 
 //
 // Media Class Names
@@ -38,7 +38,7 @@ $visibility-breakpoint-queries:
 
     @each $visibility-comparison-breakpoint in $visibility-breakpoint-sizes {
       @if index($visibility-breakpoint-sizes, $visibility-comparison-breakpoint) < index($visibility-breakpoint-sizes, $current-visibility-breakpoint) {
-        // smaller than current breakpoint
+        // Smaller than current breakpoint
 
         $visibility-inherit-list: append($visibility-inherit-list, unquote(
           '.hide-for-#{$visibility-comparison-breakpoint}-only, .show-for-#{$visibility-comparison-breakpoint}-up'
@@ -62,7 +62,10 @@ $visibility-breakpoint-queries:
           'th.hide-for-#{$visibility-comparison-breakpoint}-only, td.hide-for-#{$visibility-comparison-breakpoint}-only, th.show-for-#{$visibility-comparison-breakpoint}-up, td.show-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
 
-        @if $include-legacy-visibility-classes {
+        // Foundation 4 compatibility:
+        // Include .show/hide-for-[size] and .show/hide-for-[size]-down classes
+        // for small, medium, and large breakpoints only
+        @if $include-legacy-visibility-classes and index((small, medium, large), $visibility-comparison-breakpoint) != false {
           $visibility-inherit-list: append($visibility-inherit-list, unquote(
             '.hide-for-#{$visibility-comparison-breakpoint}, .hide-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
@@ -87,7 +90,7 @@ $visibility-breakpoint-queries:
         }
 
       } @else if index($visibility-breakpoint-sizes, $visibility-comparison-breakpoint) > index($visibility-breakpoint-sizes, $current-visibility-breakpoint) {
-        // larger than current breakpoint
+        // Larger than current breakpoint
 
         $visibility-inherit-list: append($visibility-inherit-list, unquote(
           '.hide-for-#{$visibility-comparison-breakpoint}-only, .hide-for-#{$visibility-comparison-breakpoint}-up'
@@ -111,7 +114,10 @@ $visibility-breakpoint-queries:
           'th.hide-for-#{$visibility-comparison-breakpoint}-only, td.hide-for-#{$visibility-comparison-breakpoint}-only, th.hide-for-#{$visibility-comparison-breakpoint}-up, td.hide-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
 
-        @if $include-legacy-visibility-classes {
+        // Foundation 4 compatibility:
+        // Include .show/hide-for-[size] and .show/hide-for-[size]-down classes
+        // for small, medium, and large breakpoints only
+        @if $include-legacy-visibility-classes and index((small, medium, large), $visibility-comparison-breakpoint) != false {
           $visibility-inherit-list: append($visibility-inherit-list, unquote(
             '.hide-for-#{$visibility-comparison-breakpoint}, .show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
@@ -136,7 +142,7 @@ $visibility-breakpoint-queries:
         }
 
       } @else {
-        // current breakpoint
+        // Current breakpoint
 
         $visibility-inherit-list: append($visibility-inherit-list, unquote(
           '.show-for-#{$visibility-comparison-breakpoint}-only, .show-for-#{$visibility-comparison-breakpoint}-up'
@@ -160,7 +166,10 @@ $visibility-breakpoint-queries:
           'th.show-for-#{$visibility-comparison-breakpoint}-only, td.show-for-#{$visibility-comparison-breakpoint}-only, th.show-for-#{$visibility-comparison-breakpoint}-up, td.show-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
 
-        @if $include-legacy-visibility-classes {
+        // Foundation 4 compatibility:
+        // Include .show/hide-for-[size] and .show/hide-for-[size]-down classes
+        // for small, medium, and large breakpoints only
+        @if $include-legacy-visibility-classes and index((small, medium, large), $visibility-comparison-breakpoint) != false {
           $visibility-inherit-list: append($visibility-inherit-list, unquote(
             '.show-for-#{$visibility-comparison-breakpoint}, .show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
