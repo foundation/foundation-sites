@@ -272,7 +272,7 @@
         }
 
         if (/fade/i.test(settings.animation)) {
-		  css.top = $(window).scrollTop() + el.data('css-top') + 'px';
+          css.top = $(window).scrollTop() + el.data('css-top') + 'px';
           var end_css = {opacity: 1};
 
           return setTimeout(function () {
