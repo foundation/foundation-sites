@@ -95,6 +95,7 @@
           form = this.S(els[0]).closest('form'),
           submit_event = /submit/.test(e.type);
 
+      form.trigger('validated');
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
