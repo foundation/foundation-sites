@@ -180,7 +180,7 @@ $body-font-style: normal !default;
 $font-smoothing: antialiased !default;
 
 // We use these to control text direction settings
-$text-direction: ltr !default;
+$text-direction: rtl !default;
 $default-float: left !default;
 $opposite-direction: right !default;
 @if $text-direction == ltr {
