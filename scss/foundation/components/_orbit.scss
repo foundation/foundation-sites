@@ -178,7 +178,11 @@ $preloader-class: "preloader" !default;
         top: 10px;
         #{$default-float}: 10px;
         font-size: 12px;
-        span { font-weight: 700; padding: $orbit-slide-number-padding;}
+        span {
+          font-weight: 700;
+          padding: $orbit-slide-number-padding;
+          display: inline-block;
+        }
         color: $orbit-slide-number-font-color;
         background: $orbit-slide-number-bg;
         z-index: 10;
@@ -215,7 +219,7 @@ $preloader-class: "preloader" !default;
           border-top: none;
           border-bottom: none;
         }
-      
+
         // Pause button
         &.paused {
           & > span {
@@ -226,14 +230,14 @@ $preloader-class: "preloader" !default;
             border: inset 8px;
             border-right-style: solid;
             border-color: transparent transparent transparent #fff;
-            &.dark { 
+            &.dark {
               border-color: transparent transparent transparent #333;
             }
           }
         }
       }
-      
-      
+
+
 
       &:hover .orbit-timer > span { display: block; }
 
