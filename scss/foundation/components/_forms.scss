@@ -129,7 +129,7 @@ $select-bg-color: #fafafa !default;
   }
 
   // Disabled background input background color
-  &[disabled] { background-color: $input-disabled-bg; }
+  &[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
 }
 
 // @MIXIN
