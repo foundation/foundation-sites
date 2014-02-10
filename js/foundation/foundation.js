@@ -279,7 +279,7 @@
   window.Foundation = {
     name : 'Foundation',
 
-    version : '5.1.0',
+    version : '5.1.1',
 
     media_queries : {
       small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),

@@ -25,7 +25,7 @@ $input-border-color: scale-color(#fff, $lightness: -20%) !default;
 $input-focus-border-color: scale-color(#fff, $lightness: -40%) !default;
 $input-border-style: solid !default;
 $input-border-width: 1px !default;
-$input-border-radius: 0 !default;
+$input-border-radius: $global-radius !default;
 $input-disabled-bg: #ddd !default;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $input-include-glowing-effect: true !default;
@@ -129,7 +129,7 @@ $select-bg-color: #fafafa !default;
   }
 
   // Disabled background input background color
-  &[disabled] { background-color: $input-disabled-bg; }
+  &[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
 }
 
 // @MIXIN
@@ -327,7 +327,12 @@ $select-bg-color: #fafafa !default;
       background:
         $select-bg-color
         url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-      background-position-x: 97%;
+      @if $text-direction == 'rtl' {
+        background-position-x: 3%;
+      }
+      @else {
+        background-position-x: 97%;
+      }
       background-position-y: center;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
@@ -338,7 +343,12 @@ $select-bg-color: #fafafa !default;
         background:
           scale-color($select-bg-color, $lightness: -3%)
           url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-        background-position-x: 97%;
+        @if $text-direction == 'rtl' {
+          background-position-x: 3%;
+        }
+        @else {
+          background-position-x: 97%;
+        }
         background-position-y: center;
         border-color: $input-focus-border-color;
       }
@@ -347,7 +357,7 @@ $select-bg-color: #fafafa !default;
     select::-ms-expand {
       display:none;
     }
-    
+
     @-moz-document url-prefix() {
       select { background: $select-bg-color; }
       select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
@@ -360,17 +370,17 @@ $select-bg-color: #fafafa !default;
     .postfix.button { @include button-size(false,false,false); @include postfix(false, false, true); }
     .prefix.button { @include button-size(false,false,false); @include prefix(false, false, true); }
 
-    .prefix.button.radius { @include radius(0); @include side-radius(left, $button-radius); }
-    .postfix.button.radius { @include radius(0); @include side-radius(right, $button-radius); }
-    .prefix.button.round { @include radius(0); @include side-radius(left, $button-round); }
-    .postfix.button.round { @include radius(0); @include side-radius(right, $button-round); }
+    .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
+    .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+    .prefix.button.round { @include radius(0); @include side-radius($default-float, $button-round); }
+    .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
 
     /* Separate prefix and postfix styles when on span or label so buttons keep their own */
     span.prefix,label.prefix { @include prefix();
-      &.radius { @include radius(0); @include side-radius(left, $global-radius); }
+      &.radius { @include radius(0); @include side-radius($default-float, $global-radius); }
     }
     span.postfix,label.postfix { @include postfix();
-      &.radius { @include radius(0); @include side-radius(right, $global-radius); }
+      &.radius { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
     }
 
     /* We use this to get basic styling on all basic form elements */
@@ -389,14 +399,15 @@ $select-bg-color: #fafafa !default;
     input[type="url"],
     textarea {
       -webkit-appearance: none;
-      -webkit-border-radius: $input-border-radius;
-      border-radius: $input-border-radius;
       @include form-element;
       @if not $input-include-glowing-effect {
           @include single-transition(all, 0.15s, linear);
       }
+      &.radius {
+        @include radius($input-border-radius);
+      }
     }
-    
+
     /* Add height value for select elements to match text input height */
     select {
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));

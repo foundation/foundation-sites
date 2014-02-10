@@ -60,7 +60,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
     height: $f-dropdown-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
-    font-size: $rem-base;
+    font-size: $f-dropdown-font-size;
     z-index: 99;
   }
   @else if $content == content {
@@ -70,7 +70,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
     max-height: $f-dropdown-max-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
-    font-size: $rem-base;
+    font-size: $f-dropdown-font-size;
     z-index: 99;
   }
 
@@ -130,13 +130,6 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 
 @include exports("dropdown") {
   @if $include-html-dropdown-classes {
-
-    @media #{$small-only} {
-      .f-dropdown {
-        max-width: 100%;
-        #{$default-float}: $dropdown-mobile-default-float;
-      }
-    }
 
     /* Foundation Dropdowns */
     .f-dropdown {

@@ -7,10 +7,6 @@
 // styles get applied to [data-mysite-plugin], etc
 $namespace: false !default;
 
-meta.foundation-data-attribute-namespace {
-  font-family: #{$namespace};
-}
-
 $experimental: true !default;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
@@ -23,9 +19,6 @@ $base-font-size: 100% !default;
 
 // $base-line-height is 24px while $base-font-size is 16px
 $base-line-height: 150% !default;
-
-// Must be 100% for off cavas to work
-html, body { height: 100%; }
 
 //
 // Global Foundation Mixins
@@ -188,15 +181,15 @@ $font-smoothing: antialiased !default;
 
 // We use these to control text direction settings
 $text-direction: ltr !default;
-
+$default-float: left !default;
+$opposite-direction: right !default;
 @if $text-direction == ltr {
-  $default-float: left  !default;
-  $opposite-direction: right  !default;
+  $default-float: left;
+  $opposite-direction: right;
 } @else {
-  $default-float: right !default;
-  $opposite-direction: left !default;
+  $default-float: right;
+  $opposite-direction: left;
 }
-
 // We use these as default colors throughout
 $primary-color: #008CBA !default;
 $secondary-color: #e7e7e7 !default;
@@ -292,6 +285,13 @@ $cursor-text-value: text !default;
     font-family: "/" + unquote($xxlarge-up) + "/";
     width: lower-bound($xxlarge-range);
   }
+
+  meta.foundation-data-attribute-namespace {
+    font-family: #{$namespace};
+  }
+
+  // Must be 100% for off canvas to work
+  html, body { height: 100%; }
 
   @if $include-html-global-classes {
 
