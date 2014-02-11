@@ -28,7 +28,7 @@
             settings = accordion.data(self.attr_name(true) + '-init'),
             active_content = S('dd > .content.' + settings.active_class, accordion),
             active_parent = S('dd.' + settings.active_class, accordion);
-      e.preventDefault();
+        e.preventDefault();
 
         if (active_content[0] == target[0] && settings.toggleable) {
           active_parent.toggleClass(settings.active_class, false);
