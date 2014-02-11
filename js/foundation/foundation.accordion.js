@@ -30,6 +30,8 @@
             active_parent = S('dd.' + settings.active_class, accordion);
         e.preventDefault();
 
+        if (! S(this).closest('dl').is(accordion)) { return; }
+
         if (active_content[0] == target[0] && settings.toggleable) {
           active_parent.toggleClass(settings.active_class, false);
           return target.toggleClass(settings.active_class, false);
