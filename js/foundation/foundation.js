@@ -11,10 +11,11 @@
 
   var header_helpers = function (class_array) {
     var i = class_array.length;
+    var head = $('head');
 
     while (i--) {
-      if($('head').has('.' + class_array[i]).length === 0) {
-        $('head').append('<meta class="' + class_array[i] + '">');
+      if(head.has('.' + class_array[i]).length === 0) {
+        head.append('<meta class="' + class_array[i] + '">');
       }
     }
   };
