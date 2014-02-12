@@ -12,7 +12,7 @@ module.exports = function(config) {
         {pattern: 'dist/assets/css/foundation.css', watched: true, served: true, included: true},
         {pattern: 'bower_components/modernizr/modernizr.js', watched: true, served: true, included: true},
         {pattern: 'bower_components/fastclick/lib/fastclick.js', watched: true, served: true, included: true},
-        {pattern: 'bower_components/jquery/jquery.js', watched: true, served: true, included: true},
+        {pattern: 'bower_components/jquery/dist/jquery.js', watched: true, served: true, included: true},
         {pattern: 'bower_components/jquery-placeholder/jquery.placeholder.js', watched: true, served: true, included: true},
         {pattern: 'bower_components/jquery.cookie/jquery.cookie.js', watched: true, served: true, included: true},
         {pattern: 'dist/assets/js/foundation/foundation.js', watched: true, served: true, included: true},
