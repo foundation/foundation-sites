@@ -152,7 +152,6 @@ $total-columns: 12 !default;
   .column.#{$size}-centered,
   .columns.#{$size}-centered { @include grid-column($center:true, $collapse:null, $float:false); }
 
-
   .column.#{$size}-uncentered,
   .columns.#{$size}-uncentered {
     margin-#{$default-float}: 0;
