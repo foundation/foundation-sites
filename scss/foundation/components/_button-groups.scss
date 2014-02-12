@@ -1,10 +1,15 @@
+@import "global";
+@import "buttons";
+
+
 //
 // Button Group Variables
 //
 $include-html-button-classes: $include-html-classes !default;
 
 // Sets the margin for the right side by default, and the left margin if right-to-left direction is used
-$button-bar-margin-opposite: em-calc(10) !default;
+$button-bar-margin-opposite: rem-calc(10) !default;
+$button-group-border-width: 1px !default;
 
 //
 // Button Group Mixins
@@ -15,6 +20,7 @@ $button-bar-margin-opposite: em-calc(10) !default;
   @if $styles {
     list-style: none;
     margin: 0;
+    #{$default-float}: 0;
     @include clearfix();
   }
   @if $float {
@@ -27,9 +33,20 @@ $button-bar-margin-opposite: em-calc(10) !default;
 // We use this to control styles for button groups
 @mixin button-group-style($radius:false, $even:false, $float:$default-float) {
 
+  > button, .button {
+    border-#{$default-float}: $button-group-border-width solid;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:first-child {
+    button, .button {
+      border-#{$default-float}: 0;
+    }
+  }
+
   // We use this to control the flow, or remove those styles completely.
   @if $float {
-    margin: 0 0 0 (-$button-border-width);
+    margin: 0;
     float: $float;
     // Make sure the first child doesn't get the negative margin.
     &:first-child { margin-#{$default-float}: 0; }
@@ -65,25 +82,23 @@ $button-bar-margin-opposite: em-calc(10) !default;
 
 }
 
-// Only include these CSS classes if $include-html-classes: true
-@if $include-html-button-classes != false {
+@include exports("button-group") {
+  @if $include-html-button-classes {
+    .button-group { @include button-group-container;
 
-  /* Button Groups */
-  .button-group { @include button-group-container;
+      li { @include button-group-style(); }
 
-    &> * { @include button-group-style(); }
+      &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
+      &.round > * { @include button-group-style($radius:$button-round, $float:null); }
 
-    &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
-    &.round > * { @include button-group-style($radius:$button-round, $float:null); }
+      @for $i from 2 through 8 {
+        &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
+      }
+    }
 
-    @for $i from 2 through 8 {
-      &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
+    .button-bar {
+      @include clearfix;
+      .button-group { @include button-group-container($styles:false,$float:true); }
     }
   }
-
-  .button-bar {
-    @include clearfix;
-    .button-group { @include button-group-container($styles:false,$float:true); }
-  }
-
 }

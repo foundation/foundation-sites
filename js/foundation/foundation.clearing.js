@@ -1,17 +1,15 @@
-/*jslint unparam: true, browser: true, indent: 2 */
-
 ;(function ($, window, document, undefined) {
   'use strict';
 
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '4.3.1',
+    version: '5.1.1',
 
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
-          '<div class="visible-img" style="display: none"><img src="//:0">' +
+          '<div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
           '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
           '<a href="#" class="clearing-main-next"><span></span></a></div>'
       },
@@ -20,6 +18,8 @@
       // add 'div.clearing-blackout, div.visible-img' to close on background click
       close_selectors : '.clearing-close',
 
+      touch_label : '&larr;&nbsp;Swipe to Advance&nbsp;&rarr;',
+
       // event initializers and locks
       init : false,
       locked : false
@@ -27,55 +27,39 @@
 
     init : function (scope, method, options) {
       var self = this;
-      Foundation.inherit(this, 'set_data get_data remove_data throttle data_options');
+      Foundation.inherit(this, 'throttle image_loaded');
 
-      if (typeof method === 'object') {
-        options = $.extend(true, this.settings, method);
-      }
+      this.bindings(method, options);
 
-      if (typeof method !== 'string') {
-        $(this.scope).find('ul[data-clearing]').each(function () {
-          var $el = $(this),
-              options = options || {},
-              lis = $el.find('li'),
-              settings = self.get_data($el);
-
-          if (!settings && lis.length > 0) {
-            options.$parent = $el.parent();
-
-            self.set_data($el, $.extend({}, self.settings, options, self.data_options($el)));
-
-            self.assemble($el.find('li'));
-
-            if (!self.settings.init) {
-              self.events().swipe_events();
-            }
-          }
-        });
-
-        return this.settings.init;
+      if (self.S(this.scope).is('[' + this.attr_name() + ']')) { 
+        this.assemble(self.S('li', this.scope));
       } else {
-        // fire method
-        return this[method].call(this, options);
+        self.S('[' + this.attr_name() + ']', this.scope).each(function () {
+          self.assemble(self.S('li', this));
+        });
       }
     },
 
-    // event binding and initial setup
+    events : function (scope) {
+      var self = this,
+      S = self.S;
 
-    events : function () {
-      var self = this;
-
-      $(this.scope)
-        .on('click.fndtn.clearing', 'ul[data-clearing] li',
+      S(this.scope)
+        .off('.clearing')
+        .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li',
           function (e, current, target) {
-            var current = current || $(this),
+            var current = current || S(this),
                 target = target || current,
                 next = current.next('li'),
-                settings = self.get_data(current.parent()),
-                image = $(e.target);
+                settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init'),
+                image = S(e.target);
 
             e.preventDefault();
-            if (!settings) self.init();
+
+            if (!settings) {
+              self.init();
+              settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
+            }
 
             // if clearing is open and the current image is
             // clicked, go to the next image in sequence
@@ -83,7 +67,7 @@
               current[0] === target[0] && 
               next.length > 0 && self.is_open(current)) {
               target = next;
-              image = target.find('img');
+              image = S('img', target);
             }
 
             // set current and target to the clicked li if not otherwise defined.
@@ -92,25 +76,25 @@
           })
 
         .on('click.fndtn.clearing', '.clearing-main-next',
-          function (e) { this.nav(e, 'next') }.bind(this))
+          function (e) { self.nav(e, 'next') })
         .on('click.fndtn.clearing', '.clearing-main-prev',
-          function (e) { this.nav(e, 'prev') }.bind(this))
+          function (e) { self.nav(e, 'prev') })
         .on('click.fndtn.clearing', this.settings.close_selectors,
           function (e) { Foundation.libs.clearing.close(e, this) })
         .on('keydown.fndtn.clearing',
-          function (e) { this.keydown(e) }.bind(this));
+          function (e) { self.keydown(e) });
 
-      $(window).on('resize.fndtn.clearing',
-        function () { this.resize() }.bind(this));
+      S(window).off('.clearing').on('resize.fndtn.clearing',
+        function () { self.resize() });
 
-      this.settings.init = true;
-      return this;
+      this.swipe_events(scope);
     },
 
-    swipe_events : function () {
-      var self = this;
+    swipe_events : function (scope) {
+      var self = this,
+      S = self.S;
 
-      $(this.scope)
+      S(this.scope)
         .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
           if (!e.touches) { e = e.originalEvent; }
           var data = {
@@ -121,7 +105,7 @@
                 is_scrolling: undefined
               };
 
-          $(this).data('swipe-transition', data);
+          S(this).data('swipe-transition', data);
           e.stopPropagation();
         })
         .on('touchmove.fndtn.clearing', '.visible-img', function(e) {
@@ -129,7 +113,7 @@
           // Ignore pinch/zoom events
           if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
-          var data = $(this).data('swipe-transition');
+          var data = S(this).data('swipe-transition');
 
           if (typeof data === 'undefined') {
             data = {};
@@ -149,35 +133,42 @@
           }
         })
         .on('touchend.fndtn.clearing', '.visible-img', function(e) {
-          $(this).data('swipe-transition', {});
+          S(this).data('swipe-transition', {});
           e.stopPropagation();
         });
     },
 
     assemble : function ($li) {
       var $el = $li.parent();
+
+      if ($el.parent().hasClass('carousel')) return;
       $el.after('<div id="foundationClearingHolder"></div>');
 
-      var holder = $('#foundationClearingHolder'),
-          settings = this.get_data($el),
+      var holder = this.S('#foundationClearingHolder'),
+          settings = $el.data(this.attr_name(true) + '-init'),
           grid = $el.detach(),
           data = {
-            grid: '<div class="carousel">' + this.outerHTML(grid[0]) + '</div>',
+            grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',
             viewing: settings.templates.viewing
           },
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
-            data.grid + '</div></div>';
+            data.grid + '</div></div>',
+          touch_label = this.settings.touch_label;
 
-      return holder.after(wrapper).remove();
+      if (Modernizr.touch) {
+        wrapper = $(wrapper).find('.clearing-touch-label').html(touch_label).end();
+      }
+
+      holder.after(wrapper).remove();
     },
 
-    // event callbacks
-
     open : function ($image, current, target) {
-      var root = target.closest('.clearing-assembled'),
-          container = root.find('div').first(),
-          visible_image = container.find('.visible-img'),
-          image = visible_image.find('img').not($image);
+      var self = this,
+          root = target.closest('.clearing-assembled'),
+          container = self.S('div', root).first(),
+          visible_image = self.S('.visible-img', container),
+          image = self.S('img', visible_image).not($image),
+          label = self.S('.clearing-touch-label', container);
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
@@ -185,15 +176,15 @@
           .attr('src', this.load($image))
           .css('visibility', 'hidden');
 
-        this.loaded(image, function () {
+        this.image_loaded(image, function () {
           image.css('visibility', 'visible');
           // toggle the gallery
           root.addClass('clearing-blackout');
           container.addClass('clearing-container');
           visible_image.show();
           this.fix_height(target)
-            .caption(visible_image.find('.clearing-caption'), $image)
-            .center(image)
+            .caption(self.S('.clearing-caption', visible_image), $image)
+            .center_and_label(image,label)
             .shift(current, target, function () {
               target.siblings().removeClass('visible');
               target.addClass('visible');
@@ -214,10 +205,10 @@
           }($(el))), container, visible_image;
 
       if (el === e.target && root) {
-        container = root.find('div').first();
-        visible_image = container.find('.visible-img');
+        container = $('div', root).first();
+        visible_image = $('.visible-img', container);
         this.settings.prev_index = 0;
-        root.find('ul[data-clearing]')
+        $('ul[' + this.attr_name() + ']', root)
           .attr('style', '').closest('.clearing-blackout')
           .removeClass('clearing-blackout');
         container.removeClass('clearing-container');
@@ -228,29 +219,33 @@
     },
 
     is_open : function (current) {
-      return current.parent().attr('style').length > 0;
+      return current.parent().prop('style').length > 0;
     },
 
     keydown : function (e) {
-      var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+      var clearing = $('ul[' + this.attr_name() + ']', '.clearing-blackout'),
+          NEXT_KEY = this.rtl ? 37 : 39,
+          PREV_KEY = this.rtl ? 39 : 37,
+          ESC_KEY = 27;
 
-      if (e.which === 39) this.go(clearing, 'next');
-      if (e.which === 37) this.go(clearing, 'prev');
-      if (e.which === 27) $('a.clearing-close').trigger('click');
+      if (e.which === NEXT_KEY) this.go(clearing, 'next');
+      if (e.which === PREV_KEY) this.go(clearing, 'prev');
+      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click');
     },
 
     nav : function (e, direction) {
-      var clearing = $('.clearing-blackout').find('ul[data-clearing]');
+      var clearing = $('ul[' + this.attr_name() + ']', '.clearing-blackout');
 
       e.preventDefault();
       this.go(clearing, direction);
     },
 
     resize : function () {
-      var image = $('.clearing-blackout .visible-img').find('img');
+      var image = $('img', '.clearing-blackout .visible-img'),
+          label = $('.clearing-touch-label', '.clearing-blackout');
 
       if (image.length) {
-        this.center(image);
+        this.center_and_label(image, label);
       }
     },
 
@@ -260,10 +255,10 @@
           self = this;
 
       lis.each(function () {
-          var li = $(this),
+          var li = self.S(this),
               image = li.find('img');
 
-          if (li.height() > self.outerHeight(image)) {
+          if (li.height() > image.outerHeight()) {
             li.addClass('fix-height');
           }
         })
@@ -279,36 +274,44 @@
         .siblings('.visible-img');
 
       if (target.next().length > 0) {
-        visible_image
-          .find('.clearing-main-next')
+        this.S('.clearing-main-next', visible_image)
           .removeClass('disabled');
       } else {
-        visible_image
-          .find('.clearing-main-next')
+        this.S('.clearing-main-next', visible_image)
           .addClass('disabled');
       }
 
       if (target.prev().length > 0) {
-        visible_image
-          .find('.clearing-main-prev')
+        this.S('.clearing-main-prev', visible_image)
           .removeClass('disabled');
       } else {
-        visible_image
-          .find('.clearing-main-prev')
+        this.S('.clearing-main-prev', visible_image)
           .addClass('disabled');
       }
     },
 
-    center : function (target) {
+    center_and_label : function (target, label) {
       if (!this.rtl) {
         target.css({
-          marginLeft : -(this.outerWidth(target) / 2),
-          marginTop : -(this.outerHeight(target) / 2)
+          marginLeft : -(target.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)
+        });
+        label.css({
+          marginLeft : -(label.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
         });
       } else {
         target.css({
-          marginRight : -(this.outerWidth(target) / 2),
-          marginTop : -(this.outerHeight(target) / 2)
+          marginRight : -(target.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2),
+          left: 'auto',
+          right: '50%'
+        });
+        label.css({
+          marginRight : -(label.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
+          left: 'auto',
+          right: '50%'
         });
       }
       return this;
@@ -335,47 +338,15 @@
         .img($image.closest('li').prev());
     },
 
-    loaded : function (image, callback) {
-      // based on jquery.imageready.js
-      // @weblinc, @jsantell, (c) 2012
-
-      function loaded () {
-        callback();
-      }
-
-      function bindLoad () {
-        this.one('load', loaded);
-
-        if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-          var src = this.attr( 'src' ),
-              param = src.match( /\?/ ) ? '&' : '?';
-
-          param += 'random=' + (new Date()).getTime();
-          this.attr('src', src + param);
-        }
-      }
-
-      if (!image.attr('src')) {
-        loaded();
-        return;
-      }
-
-      if (image[0].complete || image[0].readyState === 4) {
-        loaded();
-      } else {
-        bindLoad.call(image);
-      }
-    },
-
     img : function (img) {
       if (img.length) {
         var new_img = new Image(),
-            new_a = img.find('a');
+            new_a = this.S('a', img);
 
         if (new_a.length) {
           new_img.src = new_a.attr('href');
         } else {
-          new_img.src = img.find('img').attr('src');
+          new_img.src = this.S('img', img).attr('src');
         }
       }
       return this;
@@ -401,12 +372,11 @@
     // directional methods
 
     go : function ($ul, direction) {
-      var current = $ul.find('.visible'),
+      var current = this.S('.visible', $ul),
           target = current[direction]();
 
       if (target.length) {
-        target
-          .find('img')
+        this.S('img', target)
           .trigger('click', [current, target]);
       }
     },
@@ -415,19 +385,25 @@
       var clearing = target.parent(),
           old_index = this.settings.prev_index || target.index(),
           direction = this.direction(clearing, current, target),
+          dir = this.rtl ? 'right' : 'left',
           left = parseInt(clearing.css('left'), 10),
-          width = this.outerWidth(target),
+          width = target.outerWidth(),
           skip_shift;
+
+      var dir_obj = {};
 
       // we use jQuery animate instead of CSS transitions because we
       // need a callback to unlock the next animation
+      // needs support for RTL **
       if (target.index() !== old_index && !/skip/.test(direction)){
         if (/left/.test(direction)) {
           this.lock();
-          clearing.animate({left : left + width}, 300, this.unlock());
+          dir_obj[dir] = left + width;
+          clearing.animate(dir_obj, 300, this.unlock());
         } else if (/right/.test(direction)) {
           this.lock();
-          clearing.animate({left : left - width}, 300, this.unlock());
+          dir_obj[dir] = left - width;
+          clearing.animate(dir_obj, 300, this.unlock());
         }
       } else if (/skip/.test(direction)) {
         // the target image is not adjacent to the current image, so
@@ -436,9 +412,11 @@
         this.lock();
 
         if (skip_shift > 0) {
-          clearing.animate({left : -(skip_shift * width)}, 300, this.unlock());
+          dir_obj[dir] = -(skip_shift * width);
+          clearing.animate(dir_obj, 300, this.unlock());
         } else {
-          clearing.animate({left : 0}, 300, this.unlock());
+          dir_obj[dir] = 0;
+          clearing.animate(dir_obj, 300, this.unlock());
         }
       }
 
@@ -446,9 +424,9 @@
     },
 
     direction : function ($el, current, target) {
-      var lis = $el.find('li'),
-          li_width = this.outerWidth(lis) + (this.outerWidth(lis) / 4),
-          up_count = Math.floor(this.outerWidth($('.clearing-container')) / li_width) - 1,
+      var lis = this.S('li', $el),
+          li_width = lis.outerWidth() + (lis.outerWidth() / 4),
+          up_count = Math.floor(this.S('.clearing-container').outerWidth() / li_width) - 1,
           target_index = lis.index(target),
           response;
 
@@ -494,18 +472,9 @@
       return this.settings.locked;
     },
 
-    // plugin management/browser quirks
-
-    outerHTML : function (el) {
-      // support FireFox < 11
-      return el.outerHTML || new XMLSerializer().serializeToString(el);
-    },
-
     off : function () {
-      $(this.scope).off('.fndtn.clearing');
-      $(window).off('.fndtn.clearing');
-      this.remove_data(); // empty settings cache
-      this.settings.init = false;
+      this.S(this.scope).off('.fndtn.clearing');
+      this.S(window).off('.fndtn.clearing');
     },
 
     reflow : function () {
@@ -513,4 +482,4 @@
     }
   };
 
-}(Foundation.zj, this, this.document));
+}(jQuery, this, this.document));

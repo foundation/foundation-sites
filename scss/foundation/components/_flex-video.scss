@@ -1,18 +1,20 @@
+@import "global";
+
 //
-// Flex Video Variables
+// @variables
 //
 $include-html-media-classes: $include-html-classes !default;
 
 // We use these to control video container padding and margins
-$flex-video-padding-top: em-calc(25) !default;
+$flex-video-padding-top: rem-calc(25) !default;
 $flex-video-padding-bottom: 67.5% !default;
-$flex-video-margin-bottom: em-calc(16) !default;
+$flex-video-margin-bottom: rem-calc(16) !default;
 
 // We use this to control widescreen bottom padding
-$flex-video-widescreen-padding-bottom: 57.25% !default;
+$flex-video-widescreen-padding-bottom: 56.55% !default;
 
 //
-// Flex Video Mixins
+// @mixins
 //
 
 @mixin flex-video-container {
@@ -38,9 +40,8 @@ $flex-video-widescreen-padding-bottom: 57.25% !default;
   }
 }
 
-@if $include-html-media-classes != false {
-
-  /* Flex Video */
-  .flex-video { @include flex-video-container; }
-
+@include exports("flex-video") {
+  @if $include-html-media-classes {
+    .flex-video { @include flex-video-container; }
+  }
 }

@@ -1,24 +1,26 @@
+@import "global";
+
 //
 // Breadcrumb Variables
 //
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use this to set the background color for the breadcrumb container.
-$crumb-bg: lighten($secondary-color, 5%) !default;
+$crumb-bg: scale-color($secondary-color, $lightness: 55%) !default;
 
 // We use these to set the padding around the breadcrumbs.
-$crumb-padding: em-calc(9 14 9) !default;
-$crumb-side-padding: em-calc(12) !default;
+$crumb-padding: rem-calc(9 14 9) !default;
+$crumb-side-padding: rem-calc(12) !default;
 
 // We use these to control border styles.
-$crumb-function-factor: 10% !default;
+$crumb-function-factor: -10% !default;
 $crumb-border-size: 1px !default;
 $crumb-border-style: solid !default;
-$crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
+$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor) !default;
 $crumb-radius: $global-radius !default;
 
 // We use these to set various text styles for breadcrumbs.
-$crumb-font-size: em-calc(11) !default;
+$crumb-font-size: rem-calc(11) !default;
 $crumb-font-color: $primary-color !default;
 $crumb-font-color-current: #333 !default;
 $crumb-font-color-unavailable: #999 !default;
@@ -30,7 +32,7 @@ $crumb-slash-color: #aaa !default;
 $crumb-slash: "/" !default;
 
 //
-// Breakcrumb Mixins
+// Breadcrumb Mixins
 //
 
 // We use this mixin to create a container around our breadcrumbs
@@ -105,20 +107,17 @@ $crumb-slash: "/" !default;
     content: " ";
     margin: 0;
   }
-
 }
 
+@include exports("breadcrumbs") {
+  @if $include-html-nav-classes {
+    .breadcrumbs {
+      @include crumb-container;
+      @include radius($crumb-radius);
 
-@if $include-html-nav-classes != false {
-
-  /* Breadcrumbs */
-  .breadcrumbs {
-    @include crumb-container;
-    @include radius($crumb-radius);
-
-    &>* {
-      @include crumbs;
+      &>* {
+        @include crumbs;
+      }
     }
   }
-
 }

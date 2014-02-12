@@ -1,36 +1,39 @@
+@import "global";
+
 //
 // Alert Box Variables
 //
 $include-html-alert-classes: $include-html-classes !default;
 
 // We use this to control alert padding.
-$alert-padding-top: em-calc(11) !default;
+$alert-padding-top: rem-calc(14) !default;
 $alert-padding-default-float: $alert-padding-top !default;
-$alert-padding-opposite-direction: $alert-padding-top + em-calc(10) !default;
-$alert-padding-bottom: $alert-padding-top + em-calc(1) !default;
+$alert-padding-opposite-direction: $alert-padding-top + rem-calc(10) !default;
+$alert-padding-bottom: $alert-padding-top !default;
 
 // We use these to control text style.
-$alert-font-weight: bold !default;
-$alert-font-size: em-calc(14) !default;
+$alert-font-weight: normal !default;
+$alert-font-size: rem-calc(13) !default;
 $alert-font-color: #fff !default;
-$alert-font-color-alt: darken($secondary-color, 60%) !default;
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%) !default;
 
 // We use this for close hover effect.
-$alert-function-factor: 10% !default;
+$alert-function-factor: -14% !default;
 
 // We use these to control border styles.
 $alert-border-style: solid !default;
 $alert-border-width: 1px !default;
-$alert-border-color: darken($primary-color, $alert-function-factor) !default;
-$alert-bottom-margin: em-calc(20) !default;
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor) !default;
+$alert-bottom-margin: rem-calc(20) !default;
 
 // We use these to style the close buttons
 $alert-close-color: #333 !default;
-$alert-close-position: em-calc(5) !default;
-$alert-close-font-size: em-calc(22) !default;
+$alert-close-top: 50% !default;
+$alert-close-position: rem-calc(4) !default;
+$alert-close-font-size: rem-calc(22) !default;
 $alert-close-opacity: 0.3 !default;
 $alert-close-opacity-hover: 0.5 !default;
-$alert-close-padding: 5px 4px 4px !default;
+$alert-close-padding: 9px 6px 4px !default;
 
 // We use this to control border radius
 $alert-radius: $global-radius !default;
@@ -52,6 +55,8 @@ $alert-radius: $global-radius !default;
 }
 
 // We use this mixin to add alert styles
+//
+// $bg - The background of the alert. Default: $primary-color.
 @mixin alert-style($bg:$primary-color) {
 
   // This find the lightness percentage of the background color.
@@ -59,7 +64,7 @@ $alert-radius: $global-radius !default;
 
   // We control which background color and border come through.
   background-color: $bg;
-  border-color: darken($bg, $alert-function-factor);
+  border-color: scale-color($bg, $lightness: $alert-function-factor);
 
   // We control the text color for you based on the background color.
   @if $bg-lightness > 70% { color: $alert-font-color-alt; }
@@ -73,7 +78,8 @@ $alert-radius: $global-radius !default;
   padding: $alert-close-padding;
   line-height: 0;
   position: absolute;
-  top: $alert-close-position + em-calc(2);
+  top: $alert-close-top;
+  margin-top: -($alert-close-font-size / 2);
   #{$opposite-direction}: $alert-close-position;
   color: $alert-close-color;
   opacity: $alert-close-opacity;
@@ -82,26 +88,30 @@ $alert-radius: $global-radius !default;
 }
 
 // We use this to quickly create alerts with a single mixin.
+//
+// $bg - Background of alert. Default: $primary-color.
+// $radius - Radius of alert box. Default: false.
 @mixin alert($bg:$primary-color, $radius:false) {
   @include alert-base;
   @include alert-style($bg);
   @include radius($radius);
 }
 
-@if $include-html-alert-classes != false {
+@include exports("alert-box") {
+  @if $include-html-alert-classes {
+    .alert-box {
+      @include alert;
 
-  /* Foundation Alerts */
-  .alert-box {
-    @include alert;
+      .close      { @include alert-close; }
 
-    .close { @include alert-close; }
+      &.radius    { @include radius($alert-radius); }
+      &.round     { @include radius($global-rounded); }
 
-    &.radius { @include radius($alert-radius); }
-    &.round { @include radius($global-rounded); }
-
-    &.success { @include alert-style($success-color); }
-    &.alert { @include alert-style($alert-color); }
-    &.secondary { @include alert-style($secondary-color); }
+      &.success   { @include alert-style($success-color); }
+      &.alert     { @include alert-style($alert-color); }
+      &.secondary { @include alert-style($secondary-color); }
+      &.warning { @include alert-style($warning-color); }
+      &.info { @include alert-style($info-color); }
+    }
   }
-
 }

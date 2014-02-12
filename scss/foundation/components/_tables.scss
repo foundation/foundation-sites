@@ -1,6 +1,14 @@
+@import "global";
+
 //
-// Table Variables
+// @name _tables.scss
+// @dependencies _global.scss
 //
+
+//
+// @variables
+//
+
 $include-html-table-classes: $include-html-classes !default;
 
 // These control the background color for the table and even rows
@@ -14,25 +22,26 @@ $table-border-color: #ddd !default;
 
 // These control the table head styles
 $table-head-bg: #f5f5f5 !default;
-$table-head-font-size: em-calc(14) !default;
+$table-head-font-size: rem-calc(14) !default;
 $table-head-font-color: #222 !default;
 $table-head-font-weight: bold !default;
-$table-head-padding: em-calc(8 10 10) !default;
+$table-head-padding: rem-calc(8 10 10) !default;
 
 // These control the row padding and font styles
-$table-row-padding: em-calc(9 10) !default;
-$table-row-font-size: em-calc(14) !default;
+$table-row-padding: rem-calc(9 10) !default;
+$table-row-font-size: rem-calc(14) !default;
 $table-row-font-color: #222 !default;
-$table-line-height: em-calc(18) !default;
+$table-line-height: rem-calc(18) !default;
 
 // These are for controlling the display and margin of tables
 $table-display: table-cell !default;
-$table-margin-bottom: em-calc(20) !default;
+$table-margin-bottom: rem-calc(20) !default;
 
 
 //
-// Table Mixin
+// @mixins
 //
+
 @mixin table {
   background: $table-bg;
   margin-bottom: $table-margin-bottom;
@@ -40,14 +49,14 @@ $table-margin-bottom: em-calc(20) !default;
 
   thead,
   tfoot {
-    background: $table-head-bg;
-    font-weight: $table-head-font-weight;
+    background: $table-head-bg;    
 
     tr {
       th,
       td {
         padding: $table-head-padding;
         font-size: $table-head-font-size;
+        font-weight: $table-head-font-weight;
         color: $table-head-font-color;
         text-align: $default-float;
       }
@@ -74,11 +83,11 @@ $table-margin-bottom: em-calc(20) !default;
   tfoot tr td { display: $table-display; line-height: $table-line-height; }
 }
 
-@if $include-html-table-classes {
 
-  /* Tables */
-  table {
-    @include table;
+@include exports("table") {
+  @if $include-html-table-classes {
+    table {
+      @include table;
+    }
   }
-
 }

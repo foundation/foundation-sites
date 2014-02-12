@@ -1,40 +1,52 @@
+@import "global";
+
 //
-// Label Variables
+// @variables
 //
 $include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
-$label-padding: em-calc(3 10 4) !default;
+$label-padding: rem-calc(4 8 6) !default;
 $label-radius: $global-radius !default;
 
 // We use these to style the label text
-$label-font-sizing: em-calc(14) !default;
-$label-font-weight: bold !default;
+$label-font-sizing: rem-calc(11) !default;
+$label-font-weight: normal !default;
 $label-font-color: #333 !default;
 $label-font-color-alt: #fff !default;
+$label-font-family: $body-font-family !default;
 
 //
-// Label Mixins
+// @mixins
 //
-
 // We use this mixin to create a default label base.
 @mixin label-base {
   font-weight: $label-font-weight;
+  font-family: $label-font-family;
   text-align: center;
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
   display: inline-block;
   position: relative;
+  margin-bottom: inherit;
 }
 
+// @mixins
+//
 // We use this mixin to add label size styles.
+// $padding - Used to determine label padding. Default: $label-padding || rem-calc(3 10 4) !default
+// $text-size - Used to determine label text-size. Default: $text-size found in settings
 @mixin label-size($padding:$label-padding, $text-size:$label-font-sizing) {
   @if $padding { padding: $padding; }
   @if $text-size { font-size: $text-size; }
 }
 
+// @mixins
+//
 // We use this mixin to add label styles.
+// $bg - Default: $primary-color (found in settings file)
+// $radius - Default: false, Options: true, sets radius to $global-radius (found in settings file)
 @mixin label-style($bg:$primary-color, $radius:false) {
 
   // We control which background color comes through
@@ -56,7 +68,13 @@ $label-font-color-alt: #fff !default;
 
 }
 
+// @mixins
+//
 // We use this to add close buttons to alerts
+// $padding - Default: $label-padding,
+// $text-size - Default: $label-font-sizing,
+// $bg - Default: $primary-color(found in settings file)
+// $radius - Default: false, Options: true which sets radius to $global-radius (found in settings file)
 @mixin label($padding:$label-padding, $text-size:$label-font-sizing, $bg:$primary-color, $radius:false) {
 
   @include label-base;
@@ -64,22 +82,19 @@ $label-font-color-alt: #fff !default;
   @include label-style($bg, $radius);
 }
 
+@include exports("label") {
+  @if $include-html-label-classes {
+    .label {
+      @include label-base;
+      @include label-size;
+      @include label-style;
 
-@if $include-html-label-classes != false {
+      &.radius { @include label-style(false, true); }
+      &.round { @include label-style(false, $radius:1000px); }
 
-  /* Labels */
-  .label {
-    @include label-base;
-    @include label-size;
-    @include label-style;
-
-
-    &.radius { @include label-style(false, true); }
-    &.round { @include label-style(false, $radius:1000px); }
-
-    &.alert     { @include label-style($alert-color); }
-    &.success   { @include label-style($success-color); }
-    &.secondary { @include label-style($secondary-color); }
+      &.alert     { @include label-style($alert-color); }
+      &.success   { @include label-style($success-color); }
+      &.secondary { @include label-style($secondary-color); }
+    }
   }
-
 }

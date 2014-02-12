@@ -1,46 +1,167 @@
 /*
  * Foundation Responsive Library
  * http://foundation.zurb.com
- * Copyright 2013, ZURB
+ * Copyright 2014, ZURB
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-/*jslint unparam: true, browser: true, indent: 2 */
-
-// Accommodate running jQuery or Zepto in noConflict() mode by
-// using an anonymous function to redefine the $ shorthand name.
-// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
-// and http://zeptojs.com/
-var libFuncName = null;
-
-if (typeof jQuery === "undefined" &&
-    typeof Zepto === "undefined" &&
-    typeof $ === "function") {
-  libFuncName = $;
-} else if (typeof jQuery === "function") {
-  libFuncName = jQuery;
-} else if (typeof Zepto === "function") {
-  libFuncName = Zepto;
-} else {
-  throw new TypeError();
-}
-
 (function ($, window, document, undefined) {
   'use strict';
 
-  /*
-    matchMedia() polyfill - Test a CSS media 
-    type/query in JS. Authors & copyright (c) 2012: 
-    Scott Jehl, Paul Irish, Nicholas Zakas. 
-    Dual MIT/BSD license
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
 
+    while (i--) {
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '">');
+      }
+    }
+  };
+
+  header_helpers([
+    'foundation-mq-small', 
+    'foundation-mq-medium', 
+    'foundation-mq-large', 
+    'foundation-mq-xlarge', 
+    'foundation-mq-xxlarge', 
+    'foundation-data-attribute-namespace']);
+
+  // Enable FastClick if present
+
+  $(function() {
+    if(typeof FastClick !== 'undefined') {
+      // Don't attach to body if undefined
+      if (typeof document.body !== 'undefined') {
+        FastClick.attach(document.body);
+      }
+    }
+  });
+
+  // private Fast Selector wrapper,
+  // returns jQuery object. Only use where
+  // getElementById is not available.
+  var S = function (selector, context) {
+    if (typeof selector === 'string') {
+      if (context) { 
+        var cont;
+        if (context.jquery) {
+          cont = context[0];
+        } else {
+          cont = context;
+        }
+        return $(cont.querySelectorAll(selector));
+      }
+
+      return $(document.querySelectorAll(selector));
+    }
+
+    return $(selector, context);
+  };
+
+  // Namespace functions.
+
+  var attr_name = function (init) {
+    var arr = [];
+    if (!init) arr.push('data');
+    if (this.namespace.length > 0) arr.push(this.namespace);
+    arr.push(this.name);
+
+    return arr.join('-');
+  };
+
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
+
+    while (i--) {
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '">');
+      }
+    }
+  };
+
+  var add_namespace = function (str) {
+    var parts = str.split('-'),
+        i = parts.length,
+        arr = [];
+
+    while(i--) {
+      if (i !== 0) {
+        arr.push(parts[i]);
+      } else {
+        if (this.namespace.length > 0) {
+          arr.push(this.namespace, parts[i]);
+        } else {
+          arr.push(parts[i]);
+        }
+      }
+    }
+
+    return arr.reverse().join('-');
+  };
+
+  // Event binding and data-options updating.
+
+  var bindings = function (method, options) {
+    var self = this,
+        should_bind_events = !S(this).data(this.attr_name(true));
+
+    if (typeof method === 'string') {
+      return this[method].call(this, options);
+    }
+
+    if (S(this.scope).is('[' + this.attr_name() +']')) {
+      S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+
+      if (should_bind_events) {
+        this.events(this.scope);
+      }
+
+    } else {
+      S('[' + this.attr_name() +']', this.scope).each(function () {
+        var should_bind_events = !S(this).data(self.attr_name(true) + '-init');
+
+        S(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+
+        if (should_bind_events) {
+          self.events(this);
+        }
+      });
+    }
+  };
+
+  var single_image_loaded = function (image, callback) {
+    function loaded () {
+      callback(image[0]);
+    }
+
+    function bindLoad () {
+      this.one('load', loaded);
+
+      if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+        var src = this.attr( 'src' ),
+            param = src.match( /\?/ ) ? '&' : '?';
+
+        param += 'random=' + (new Date()).getTime();
+        this.attr('src', src + param);
+      }
+    }
+
+    if (!image.attr('src')) {
+      loaded();
+      return;
+    }
+
+    if (image[0].complete || image[0].readyState === 4) {
+      loaded();
+    } else {
+      bindLoad.call(image);
+    }
+  }
+
+  /*
     https://github.com/paulirish/matchMedia.js
   */
-
-   $('head').append('<meta class="foundation-mq-small">');
-   $('head').append('<meta class="foundation-mq-medium">');
-   $('head').append('<meta class="foundation-mq-large">');
 
   window.matchMedia = window.matchMedia || (function( doc, undefined ) {
 
@@ -75,268 +196,279 @@ if (typeof jQuery === "undefined" &&
 
   }( document ));
 
-  // add dusty browser stuff
-  if (!Array.prototype.filter) {
-    Array.prototype.filter = function(fun /*, thisp */) {
-      "use strict";
-   
-      if (this == null) {
-        throw new TypeError();
-      }
+  /*
+   * jquery.requestAnimationFrame
+   * https://github.com/gnarf37/jquery-requestAnimationFrame
+   * Requires jQuery 1.8+
+   *
+   * Copyright (c) 2012 Corey Frang
+   * Licensed under the MIT license.
+   */
 
-      var t = Object(this),
-          len = t.length >>> 0;
-      if (typeof fun !== "function") {
-          return;
-      }
+  (function( $ ) {
 
-      var res = [],
-          thisp = arguments[1];
-      for (var i = 0; i < len; i++) {
-        if (i in t) {
-          var val = t[i]; // in case fun mutates this
-          if (fun && fun.call(thisp, val, i, t)) {
-            res.push(val);
-          }
-        }
-      }
+  // requestAnimationFrame polyfill adapted from Erik Möller
+  // fixes from Paul Irish and Tino Zijdel
+  // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+  // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
-      return res;
+
+  var animating,
+    lastTime = 0,
+    vendors = ['webkit', 'moz'],
+    requestAnimationFrame = window.requestAnimationFrame,
+    cancelAnimationFrame = window.cancelAnimationFrame;
+
+  for(; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
+    requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
+    cancelAnimationFrame = cancelAnimationFrame ||
+      window[ vendors[lastTime] + "CancelAnimationFrame" ] || 
+      window[ vendors[lastTime] + "CancelRequestAnimationFrame" ];
+  }
+
+  function raf() {
+    if ( animating ) {
+      requestAnimationFrame( raf );
+      jQuery.fx.tick();
     }
   }
 
-  if (!Function.prototype.bind) {
-    Function.prototype.bind = function (oThis) {
-      if (typeof this !== "function") {
-        // closest thing possible to the ECMAScript 5 internal IsCallable function
-        throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+  if ( requestAnimationFrame ) {
+    // use rAF
+    window.requestAnimationFrame = requestAnimationFrame;
+    window.cancelAnimationFrame = cancelAnimationFrame;
+    jQuery.fx.timer = function( timer ) {
+      if ( timer() && jQuery.timers.push( timer ) && !animating ) {
+        animating = true;
+        raf();
       }
-   
-      var aArgs = Array.prototype.slice.call(arguments, 1), 
-          fToBind = this, 
-          fNOP = function () {},
-          fBound = function () {
-            return fToBind.apply(this instanceof fNOP && oThis
-               ? this
-               : oThis,
-             aArgs.concat(Array.prototype.slice.call(arguments)));
-          };
-   
-      fNOP.prototype = this.prototype;
-      fBound.prototype = new fNOP();
-   
-      return fBound;
     };
+
+    jQuery.fx.stop = function() {
+      animating = false;
+    };
+  } else {
+    // polyfill
+    window.requestAnimationFrame = function( callback, element ) {
+      var currTime = new Date().getTime(),
+        timeToCall = Math.max( 0, 16 - ( currTime - lastTime ) ),
+        id = window.setTimeout( function() {
+          callback( currTime + timeToCall );
+        }, timeToCall );
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+
+    window.cancelAnimationFrame = function(id) {
+      clearTimeout(id);
+    };
+      
   }
 
-  if (!Array.prototype.indexOf) {
-    Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
-      "use strict";
-      if (this == null) {
-        throw new TypeError();
-      }
-      var t = Object(this);
-      var len = t.length >>> 0;
-      if (len === 0) {
-        return -1;
-      }
-      var n = 0;
-      if (arguments.length > 1) {
-        n = Number(arguments[1]);
-        if (n != n) { // shortcut for verifying if it's NaN
-          n = 0;
-        } else if (n != 0 && n != Infinity && n != -Infinity) {
-          n = (n > 0 || -1) * Math.floor(Math.abs(n));
-        }
-      }
-      if (n >= len) {
-          return -1;
-      }
-      var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0);
-      for (; k < len; k++) {
-        if (k in t && t[k] === searchElement) {
-          return k;
-        }
-      }
-      return -1;
+  }( jQuery ));
+
+
+  function removeQuotes (string) {
+    if (typeof string === 'string' || string instanceof String) {
+      string = string.replace(/^['\\/"]+|(;\s?})+|['\\/"]+$/g, '');
     }
-  }
 
-  // fake stop() for zepto.
-  $.fn.stop = $.fn.stop || function() {
-    return this;
-  };
+    return string;
+  }
 
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.3.1',
-
-    cache : {},
+    version : '5.1.1',
 
     media_queries : {
-      small : $('.foundation-mq-small').css('font-family').replace(/\'/g, ''),
-      medium : $('.foundation-mq-medium').css('font-family').replace(/\'/g, ''),
-      large : $('.foundation-mq-large').css('font-family').replace(/\'/g, '')
+      small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      medium : S('.foundation-mq-medium').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      large : S('.foundation-mq-large').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xlarge: S('.foundation-mq-xlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xxlarge: S('.foundation-mq-xxlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, '')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
-    init : function (scope, libraries, method, options, response, /* internal */ nc) {
+    global: {
+      namespace: ''
+    },
+
+    init : function (scope, libraries, method, options, response) {
       var library_arr,
           args = [scope, method, options, response],
-          responses = [],
-          nc = nc || false;
-
-      // disable library error catching,
-      // used for development only
-      if (nc) this.nc = nc;
+          responses = [];
 
       // check RTL
-      this.rtl = /rtl/i.test($('html').attr('dir'));
+      this.rtl = /rtl/i.test(S('html').attr('dir'));
 
       // set foundation global scope
       this.scope = scope || this.scope;
 
+      this.set_namespace();
+
       if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
-        if (/off/i.test(libraries)) return this.off();
-
-        library_arr = libraries.split(' ');
-
-        if (library_arr.length > 0) {
-          for (var i = library_arr.length - 1; i >= 0; i--) {
-            responses.push(this.init_lib(library_arr[i], args));
-          }
+        if (this.libs.hasOwnProperty(libraries)) {
+          responses.push(this.init_lib(libraries, args));
         }
       } else {
-        if (/reflow/i.test(libraries)) args[1] = 'reflow';
-
         for (var lib in this.libs) {
-          responses.push(this.init_lib(lib, args));
+          responses.push(this.init_lib(lib, libraries));
         }
       }
 
-      // if first argument is callback, add to args
-      if (typeof libraries === 'function') {
-        args.unshift(libraries);
-      }
-
-      return this.response_obj(responses, args);
-    },
-
-    response_obj : function (response_arr, args) {
-      for (var i = 0, len = args.length; i < len; i++) {
-        if (typeof args[i] === 'function') {
-          return args[i]({
-            errors: response_arr.filter(function (s) {
-              if (typeof s === 'string') return s;
-            })
-          });
-        }
-      }
-
-      return response_arr;
+      return scope;
     },
 
     init_lib : function (lib, args) {
-      return this.trap(function () {
-        if (this.libs.hasOwnProperty(lib)) {
-          this.patch(this.libs[lib]);
-          return this.libs[lib].init.apply(this.libs[lib], args);
-        } else {
-          return function () {};
-        }
-      }.bind(this), lib);
-    },
+      if (this.libs.hasOwnProperty(lib)) {
+        this.patch(this.libs[lib]);
 
-    trap : function (fun, lib) {
-      if (!this.nc) {
-        try {
-          return fun();
-        } catch (e) {
-          return this.error({name: lib, message: 'could not be initialized', more: e.name + ' ' + e.message});
+        if (args && args.hasOwnProperty(lib)) {
+          return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
+
+        args = args instanceof Array ? args : Array(args);    // PATCH: added this line
+        return this.libs[lib].init.apply(this.libs[lib], args);
       }
 
-      return fun();
+      return function () {};
     },
 
     patch : function (lib) {
-      this.fix_outer(lib);
       lib.scope = this.scope;
+      lib.namespace = this.global.namespace;
       lib.rtl = this.rtl;
+      lib['data_options'] = this.utils.data_options;
+      lib['attr_name'] = attr_name;
+      lib['add_namespace'] = add_namespace;
+      lib['bindings'] = bindings;
+      lib['S'] = this.utils.S;
     },
 
     inherit : function (scope, methods) {
-      var methods_arr = methods.split(' ');
+      var methods_arr = methods.split(' '),
+          i = methods_arr.length;
 
-      for (var i = methods_arr.length - 1; i >= 0; i--) {
-        if (this.lib_methods.hasOwnProperty(methods_arr[i])) {
-          this.libs[scope.name][methods_arr[i]] = this.lib_methods[methods_arr[i]];
+      while (i--) {
+        if (this.utils.hasOwnProperty(methods_arr[i])) {
+          scope[methods_arr[i]] = this.utils[methods_arr[i]];
         }
       }
     },
 
-    random_str : function (length) {
-      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+    set_namespace: function () {
+      var namespace = $('.foundation-data-attribute-namespace').css('font-family');
 
-      if (!length) {
-        length = Math.floor(Math.random() * chars.length);
-      }
+      if (/false/i.test(namespace)) return;
 
-      var str = '';
-      for (var i = 0; i < length; i++) {
-        str += chars[Math.floor(Math.random() * chars.length)];
-      }
-      return str;
+      this.global.namespace = namespace;
     },
 
     libs : {},
 
     // methods that can be inherited in libraries
-    lib_methods : {
-      set_data : function (node, data) {
-        // this.name references the name of the library calling this method
-        var id = [this.name,+new Date(),Foundation.random_str(5)].join('-');
+    utils : {
 
-        Foundation.cache[id] = data;
-        node.attr('data-' + this.name + '-id', id);
-        return data;
-      },
+      // Description:
+      //    Fast Selector wrapper returns jQuery object. Only use where getElementById 
+      //    is not available.
+      //
+      // Arguments:
+      //    Selector (String): CSS selector describing the element(s) to be 
+      //    returned as a jQuery object.
+      //
+      //    Scope (String): CSS selector describing the area to be searched. Default 
+      //    is document.
+      //
+      // Returns:
+      //    Element (jQuery Object): jQuery object containing elements matching the 
+      //    selector within the scope.
+      S : S,
 
-      get_data : function (node) {
-        return Foundation.cache[node.attr('data-' + this.name + '-id')];
-      },
-
-      remove_data : function (node) {
-        if (node) {
-          delete Foundation.cache[node.attr('data-' + this.name + '-id')];
-          node.attr('data-' + this.name + '-id', '');
-        } else {
-          $('[data-' + this.name + '-id]').each(function () {
-            delete Foundation.cache[$(this).attr('data-' + this.name + '-id')];
-            $(this).attr('data-' + this.name + '-id', '');
-          });
-        }
-      },
-
-      throttle : function(fun, delay) {
+      // Description:
+      //    Executes a function a max of once every n milliseconds 
+      //
+      // Arguments:
+      //    Func (Function): Function to be throttled.
+      //
+      //    Delay (Integer): Function execution threshold in milliseconds.
+      //
+      // Returns:
+      //    Lazy_function (Function): Function with throttling applied.
+      throttle : function(func, delay) {
         var timer = null;
+
         return function () {
           var context = this, args = arguments;
+
           clearTimeout(timer);
           timer = setTimeout(function () {
-            fun.apply(context, args);
+            func.apply(context, args);
           }, delay);
         };
       },
 
-      // parses data-options attribute on nodes and turns
-      // them into an object
+      // Description:
+      //    Executes a function when it stops being invoked for n seconds
+      //    Modified version of _.debounce() http://underscorejs.org
+      //
+      // Arguments:
+      //    Func (Function): Function to be debounced.
+      //
+      //    Delay (Integer): Function execution threshold in milliseconds.
+      // 
+      //    Immediate (Bool): Whether the function should be called at the beginning 
+      //    of the delay instead of the end. Default is false.
+      //
+      // Returns:
+      //    Lazy_function (Function): Function with debouncing applied.
+      debounce : function(func, delay, immediate) {
+        var timeout, result;
+        return function() {
+          var context = this, args = arguments;
+          var later = function() {
+            timeout = null;
+            if (!immediate) result = func.apply(context, args);
+          };
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, delay);
+          if (callNow) result = func.apply(context, args);
+          return result;
+        };
+      },
+
+      // Description:
+      //    Parses data-options attribute
+      //
+      // Arguments:
+      //    El (jQuery Object): Element to be parsed.
+      //
+      // Returns:
+      //    Options (Javascript Object): Contents of the element's data-options 
+      //    attribute.
       data_options : function (el) {
-        var opts = {}, ii, p,
-            opts_arr = (el.attr('data-options') || ':').split(';'),
-            opts_len = opts_arr.length;
+        var opts = {}, ii, p, opts_arr,
+            data_options = function (el) {
+              var namespace = Foundation.global.namespace;
+
+              if (namespace.length > 0) {
+                return el.data(namespace + '-options');
+              }
+
+              return el.data('options');
+            };
+
+        var cached_options = data_options(el);
+
+        if (typeof cached_options === 'object') {
+          return cached_options;
+        }
+
+        opts_arr = (cached_options || ':').split(';'),
+        ii = opts_arr.length;
 
         function isNumber (o) {
           return ! isNaN (o-0) && o !== null && o !== "" && o !== false && o !== true;
@@ -347,8 +479,7 @@ if (typeof jQuery === "undefined" &&
           return str;
         }
 
-        // parse options
-        for (ii = opts_len - 1; ii >= 0; ii--) {
+        while (ii--) {
           p = opts_arr[ii].split(':');
 
           if (/true/i.test(p[1])) p[1] = true;
@@ -363,43 +494,30 @@ if (typeof jQuery === "undefined" &&
         return opts;
       },
 
-      delay : function (fun, delay) {
-        return setTimeout(fun, delay);
-      },
-
-      // animated scrolling
-      scrollTo : function (el, to, duration) {
-        if (duration < 0) return;
-        var difference = to - $(window).scrollTop();
-        var perTick = difference / duration * 10;
-
-        this.scrollToTimerCache = setTimeout(function() {
-          if (!isNaN(parseInt(perTick, 10))) {
-            window.scrollTo(0, $(window).scrollTop() + perTick);
-            this.scrollTo(el, to, duration - 10);
-          }
-        }.bind(this), 10);
-      },
-
-      // not supported in core Zepto
-      scrollLeft : function (el) {
-        if (!el.length) return;
-        return ('scrollLeft' in el[0]) ? el[0].scrollLeft : el[0].pageXOffset;
-      },
-
-      // test for empty object or array
-      empty : function (obj) {
-        if (obj.length && obj.length > 0)    return false;
-        if (obj.length && obj.length === 0)  return true;
-
-        for (var key in obj) {
-          if (hasOwnProperty.call(obj, key))    return false;
+      // Description:
+      //    Adds JS-recognizable media queries
+      //
+      // Arguments:
+      //    Media (String): Key string for the media query to be stored as in 
+      //    Foundation.media_queries
+      //
+      //    Class (String): Class name for the generated <meta> tag
+      register_media : function(media, media_class) {
+        if(Foundation.media_queries[media] === undefined) {
+          $('head').append('<meta class="' + media_class + '">');
+          Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
         }
-
-        return true;
       },
 
-      addCustomRule : function(rule, media) {
+      // Description:
+      //    Add custom CSS within a JS-defined media query
+      //
+      // Arguments:
+      //    Rule (String): CSS rule to be appended to the document.
+      //
+      //    Media (String): Optional media query string for the CSS rule to be 
+      //    nested under.
+      add_custom_rule : function(rule, media) {
         if(media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
         } else {
@@ -409,47 +527,54 @@ if (typeof jQuery === "undefined" &&
               Foundation.media_queries[media] + '{ ' + rule + ' }');
           }
         }
+      },
+
+      // Description:
+      //    Performs a callback function when an image is fully loaded
+      //
+      // Arguments:
+      //    Image (jQuery Object): Image(s) to check if loaded.
+      //
+      //    Callback (Function): Fundation to execute when image is fully loaded.
+      image_loaded : function (images, callback) {
+        var self = this,
+            unloaded = images.length;
+        if(unloaded == 0){
+            callback(images);
+        }
+        images.each(function(){
+          single_image_loaded(self.S(this),function(){
+            unloaded -= 1; 
+            if(unloaded == 0){
+              callback(images);
+            }
+          });
+        });
+      },
+
+      // Description:
+      //    Returns a random, alphanumeric string
+      //
+      // Arguments:
+      //    Length (Integer): Length of string to be generated. Defaults to random 
+      //    integer.
+      //
+      // Returns:
+      //    Rand (String): Pseudo-random, alphanumeric string.
+      random_str : function (length) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+
+        if (!length) {
+          length = Math.floor(Math.random() * chars.length);
+        }
+
+        var str = '';
+        while (length--) {
+          str += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return str;
       }
-    },
-
-    fix_outer : function (lib) {
-      lib.outerHeight = function (el, bool) {
-        if (typeof Zepto === 'function') {
-          return el.height();
-        }
-
-        if (typeof bool !== 'undefined') {
-          return el.outerHeight(bool);
-        }
-
-        return el.outerHeight();
-      };
-
-      lib.outerWidth = function (el, bool) {
-        if (typeof Zepto === 'function') {
-          return el.width();
-        }
-
-        if (typeof bool !== 'undefined') {
-          return el.outerWidth(bool);
-        }
-
-        return el.outerWidth();
-      };
-    },
-
-    error : function (error) {
-      return error.name + ' ' + error.message + '; ' + error.more;
-    },
-
-    // remove all foundation events.
-    off: function () {
-      $(this.scope).off('.fndtn');
-      $(window).off('.fndtn');
-      return true;
-    },
-
-    zj : $
+    }
   };
 
   $.fn.foundation = function () {
@@ -461,4 +586,4 @@ if (typeof jQuery === "undefined" &&
     });
   };
 
-}(libFuncName, this, this.document));
+}(jQuery, this, this.document));

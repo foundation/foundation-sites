@@ -1,6 +1,16 @@
+@import "global";
+
+
+
 //
-// Image Thumbnail Variables
+// @name _thumbs.scss
+// @dependencies _globals.scss
 //
+
+//
+// @variables
+//
+
 $include-html-media-classes: $include-html-classes !default;
 
 // We use these to control border styles
@@ -15,14 +25,22 @@ $thumb-radius: $global-radius !default;
 $thumb-transition-speed: 200ms !default;
 
 //
-// Image Thumbnail Mixins
+// @mixins
 //
 
 // We use this to create image thumbnail styles.
-@mixin thumb($border-width:$thumb-border-width, $box-shadow:$thumb-box-shadow, $box-shadow-hover:$thumb-box-shadow-hover) {
+//
+// $border-width - Width of border around thumbnail. Default: $thumb-border-width.
+// $box-shadow - Box shadow to apply to thumbnail. Default: $thumb-box-shadow.
+// $box-shadow-hover - Box shadow to apply on hover. Default: $thumb-box-shadow-hover.
+@mixin thumb(
+  $border-width:$thumb-border-width, 
+  $box-shadow:$thumb-box-shadow, 
+  $box-shadow-hover:$thumb-box-shadow-hover) {
   line-height: 0;
   display: inline-block;
   border: $thumb-border-style $border-width $thumb-border-color;
+  max-width: 100%;
   @if $experimental {
     -webkit-box-shadow: $box-shadow;
   }
@@ -38,16 +56,15 @@ $thumb-transition-speed: 200ms !default;
 }
 
 
-// If html classes are turned on we'll include these classes.
-@if $include-html-media-classes != false {
+@include exports("thumb") {
+  @if $include-html-media-classes {
 
-  /* Image Thumbnails */
-  .th {
-    @include thumb;
-    @include single-transition(all,$thumb-transition-speed,ease-out);
+    /* Image Thumbnails */
+    .th {
+      @include thumb;
+      @include single-transition(all,$thumb-transition-speed,ease-out);
 
-    &.radius { @include radius($thumb-radius); }
+      &.radius { @include radius($thumb-radius); }
+    }
   }
-  a.th { display: inline-block; max-width:100%; }
-
 }

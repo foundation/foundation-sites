@@ -1,3 +1,5 @@
+/bower_components/*
+/dist/*
 *.gem
 *.rbc
 .bundle
@@ -8,7 +10,6 @@
 InstalledFiles
 _yardoc
 coverage
-doc/
 lib/bundler/man
 pkg
 rdoc
@@ -18,7 +19,7 @@ test/tmp
 test/version_tmp
 test/css
 test/scss/output-test
-vendor/
+/vendor/
 tmp
 *.DS_Store
 marketing/.sass-cache/*
@@ -31,3 +32,5 @@ docs/public/*
 *.scssc
 *.rbenv-version
 *.ruby-version
+/docs2/public/*
+.settings

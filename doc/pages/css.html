@@ -1,0 +1,76 @@
+# Getting Started With Foundation CSS
+
+<h3 class="subheader">Here's the simplest way to get going. The straight CSS version of Foundation includes everything you need to start hacking away, right now! It's a perfect way to kickstart a new prototype or create a finished product with Foundation.</h3>
+
+***
+
+### Download and Install
+
+To get going with Foundation, simply download a default or custom CSS package from the download page.
+
+<a href="/develop/download.html" class="button">Download Foundation CSS</a>
+
+***
+
+### What You Get 
+
+When you download the Foundation CSS, you'll see two options: a default download, and a custom download. While both will give you a lot of the same starting files, the default installation includes everything and the kitchen sink, and the custom one allows you to specify which plugins and components you want in the CSS/JS as well as set some of the global properties of your download.
+
+Whichever of those options you choose, you'll receive a .zip archive containing the following files:
+
+- <strong>index.html</strong> &mdash; This is an example index file which contains some sample markup (the grid, buttons, etc) as well as the basic structure of a responsive Foundation page. Feel free to change or destroy this file as you see fit, just bear in mind that some of the document `<head>` is required for the page to work, and the CSS/JS is linked up at the end of the document.
+- <strong>humans.txt</strong> &mdash; A basic humans.txt file you can use as a basis for your site, if you'd like to have a humans.txt file.
+- <strong>robots.txt</strong> &mdash; Another basic starter file, this is a sample robot file you can amend and modify to suit your particular crawling needs.
+- <strong>/css</strong> &mdash; This is where we keep the Foundation CSS files. You will find several files there:
+	- <strong>foundation.css</strong>, is a CSS file you can use in your pages if you don't need to pick apart the actual underlying Foundation CSS.
+	- <strong>foundation.min.css</strong>, which is a minified, much smaller CSS file you can use instead in your pages if you don't need or want to pick apart the actual underlying Foundation CSS.
+	- <strong>normalize.css</strong>, is an instance of the latest (as of the current Foundation distribution) version of Normalizr, an open-source project from Nicolas Gallagher.
+- <strong>/js</strong> &mdash; This is the directory for all of the Javascript files included with Foundation, including:
+	- <strong>foundation.min.js</strong>, is all of the Foundation plugins in one file, minified for a fast load.
+	- <strong>/foundation</strong> is a directory that contains each plugin as a single JS file, so you can check out the source code and, if you'd like, include certain ones but not others, or do your own minifying.
+	- <strong>/vendor</strong> contains a few external JS files that Foundation makes use of including Modernizr, another open-source tool from Paul Irish and Nicolas Gallagher, as well as jQuery 2.
+
+
+***
+
+### HTML Page Markup
+
+As you'll see in our `index.html` sample, Foundation pages have some specific markup required for them to work. This code block is a simple boilerplate for content-free Foundation pages that we hope comes in handy.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foundation 5</title>
+
+  <!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.css">
+
+  <!-- If you are using the gem version, you need this only -->
+  <link rel="stylesheet" href="css/app.css">
+
+  <script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <!-- body content here -->
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
+
+```
+{{/markdown}}

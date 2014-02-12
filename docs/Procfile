@@ -1,2 +1,0 @@
-web: bundle exec rackup -p 4000
-stasis: bundle exec stasis -d
