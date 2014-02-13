@@ -205,7 +205,7 @@ $total-columns: 12 !default;
 
       &.collapse {
          > .column,
-         > .columns { @include grid-column($collapse:true); }
+         > .columns { @include grid-column($collapse:true, $float:false); }
 
         .row {margin-left:0; margin-right:0;}
       }
