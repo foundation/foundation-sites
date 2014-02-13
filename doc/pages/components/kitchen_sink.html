@@ -1,11 +1,11 @@
 ---
 title: Kitchen sink
-layout: doc/layouts/default.html
+layout: doc/layouts/kitchen.html
 ---
 
 # Kitchen Sink
 
-#### This page includes every single Foundation element so that we can make sure things work together smoothly.
+<h3 class="subheader">This page includes every single Foundation element so that we can make sure things work together smoothly.</h3>
 
 #### Alert Boxes
 
@@ -61,12 +61,6 @@ layout: doc/layouts/default.html
 
 ***
 
-#### Custom Forms
-<!-- TODO REMOVE CUSTOM FORMS??? -->
-{{> examples_kitchen_custom_forms}}
-
-***
-
 #### Dropdowns
 
 {{> examples_kitchen_dropdowns}}
@@ -75,9 +69,7 @@ layout: doc/layouts/default.html
 
 #### Flex Video
 
-<div class="flex-video">
-  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
-</div>
+{{> examples_kitchen_flex_video}}
 
 ***
 
@@ -145,11 +137,15 @@ To make something pretty, press and hold <kbd>cmd + alt + shift + w + a + !</kbd
 
 ***
 
-#### Section
+#### Accordion
 
-<!-- TODO REMOVE SECTION IN FAVOR OF TABS AND ...? -->
+{{> examples_kitchen_accordion}}
 
-{{> examples_kitchen_section}}
+***
+
+#### Tabs
+
+{{> examples_kitchen_tabs}}
 
 ***
 
@@ -162,12 +158,6 @@ To make something pretty, press and hold <kbd>cmd + alt + shift + w + a + !</kbd
 #### Sub Nav
 
 {{> examples_kitchen_sub_nav}}
-
-***
-
-#### Switch
-
-{{> examples_kitchen_switch}}
 
 ***
 
@@ -204,10 +194,3 @@ To make something pretty, press and hold <kbd>cmd + alt + shift + w + a + !</kbd
 #### Visibility Classes
 
 {{> examples_kitchen_visibility}}
-
-<script type="text/JavaScript">
-    // For Kitchen Sink Page
-  $('#start-jr').on('click', function() {
-    $(document).foundation('joyride','start');
-  });
-</script>

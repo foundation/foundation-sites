@@ -5,7 +5,7 @@
   Foundation.libs.tab = {
     name : 'tab',
 
-    version : '5.0.3',
+    version : '5.1.1',
 
     settings : {
       active_class: 'active',
@@ -17,26 +17,38 @@
     },
 
     events : function () {
-      $(this.scope).off('.tab').on('click.fndtn.tab', '[data-tab] > dd > a', function (e) {
-        e.preventDefault();
+      var self = this,
+          S = this.S;
 
-        var tab = $(this).parent(),
-            tabs = tab.closest('[data-tab]'),
-            target = $('#' + this.href.split('#')[1]),
+      S(this.scope).off('.tab').on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var tab = S(this).parent(),
+            tabs = tab.closest('[' + self.attr_name() + ']'),
+            target = S('#' + this.href.split('#')[1]),
             siblings = tab.siblings(),
-            settings = tabs.data('tab-init');
+            settings = tabs.data(self.attr_name(true) + '-init');
         
         // allow usage of data-tab-content attribute instead of href
-        if ($(this).data('tab-content')) {
-          target = $('#' + $(this).data('tab-content').split('#')[1]);
+        if (S(this).data(self.data_attr('tab-content'))) {
+          target = S('#' + S(this).data(self.data_attr('tab-content')).split('#')[1]);
         }
         
-        tab.addClass(settings.active_class).trigger('opened');
+        tab.addClass(settings.active_class).triggerHandler('opened');
         siblings.removeClass(settings.active_class);
         target.siblings().removeClass(settings.active_class).end().addClass(settings.active_class);
         settings.callback(tab);
-        tabs.trigger('toggled', [tab]);
+        tabs.triggerHandler('toggled', [tab]);
       });
+    },
+
+    data_attr: function (str) {
+      if (this.namespace.length > 0) {
+        return this.namespace + '-' + str;
+      }
+
+      return str;
     },
 
     off : function () {},

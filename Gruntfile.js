@@ -72,7 +72,8 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         files: {
-          'dist/assets/js/foundation.js': '<%= foundation.js %>'
+          'dist/assets/js/foundation.js': '<%= foundation.js %>',
+          'dist/docs/assets/js/all.js': ['bower_components/lodash/dist/lodash.min.js', 'bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', 'bower_components/jquery-placeholder/jquery.placeholder.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
     },
@@ -84,8 +85,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['bower_components/lodash/dist/lodash.min.js', 'bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', 'bower_components/jquery-placeholder/jquery.placeholder.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js']
         }
       },
       vendor: {
@@ -106,7 +106,7 @@ module.exports = function(grunt) {
           {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
           {src: 'bower_components/jquery/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
           {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
-          {src: 'bower.json', dest: 'dist/assets/'}
+          {src: ['bower.json','sache.json','humans.txt','robots.txt'], dest: 'dist/assets/'}
         ]
       }
     },
@@ -120,30 +120,30 @@ module.exports = function(grunt) {
       },
       continuous: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS']
+        browsers: ['SmallPhantomJS', 'LargePhantomJS']
       },
       dev: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox'],
         reporters: 'dots'
       },
       dev_watch: {
         background: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox']
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox'],
       },
       mac: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'Safari'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox', 'Safari'],
         reporters: 'dots'
       },
       win: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'IE'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox', 'IE'],
         reporters: 'dots'
       }
     },
 
-    watch_start: {
+    watch: {
       grunt: { files: ['Gruntfile.js'] },
       karma: {
         files: [
@@ -209,12 +209,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
-  grunt.loadNpmTasks('grunt-newer');
 
-  grunt.task.renameTask('watch', 'watch_start');
+  grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
+  grunt.registerTask('develop', ['travis', 'watch_start']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
-  grunt.registerTask('default', ['build', 'watch_start']);
+  grunt.registerTask('default', ['build', 'watch']);
 };

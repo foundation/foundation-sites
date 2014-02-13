@@ -11,7 +11,7 @@ $magellan-padding: 10px !default;
 @include exports("magellan") {
   @if $include-html-magellan-classes {
 
-    [data-magellan-expedition] {
+    #{data('magellan-expedition')} {
       background: $magellan-bg;
       z-index: 50;
       min-width: 100%;
@@ -20,7 +20,7 @@ $magellan-padding: 10px !default;
       .sub-nav {
         margin-bottom: 0;
         dd { margin-bottom: 0; }
-        .active {
+        a {
           line-height: 1.8em;
         }
       }

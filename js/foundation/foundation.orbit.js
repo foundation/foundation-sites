@@ -49,7 +49,7 @@
       slides_container.wrap('<div class="'+settings.container_class+'"></div>');
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
-      
+
       if (settings.navigation_arrows) {
         container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
         container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
@@ -82,9 +82,6 @@
       if (settings.stack_on_small) {
         container.addClass(settings.stack_on_small_class);
       }
-
-      self.update_slide_number(0);
-      self.update_active_link(0);
     };
 
     self._goto = function(next_idx, start_timer) {
@@ -103,7 +100,7 @@
         if (!settings.circular) return false;
         next_idx = slides.length - 1;
       }
-      
+
       var current = $(slides.get(idx));
       var next = $(slides.get(next_idx));
 
@@ -114,7 +111,7 @@
       slides_container.trigger('before-slide-change.fndtn.orbit');
       settings.before_slide_change();
       self.update_active_link(next_idx);
-      
+
       var callback = function() {
         var unlock = function() {
           idx = next_idx;
@@ -135,7 +132,7 @@
 
       var start_animation = function() {
         if (dir === 'next') {animate.next(current, next, callback);}
-        if (dir === 'prev') {animate.prev(current, next, callback);}        
+        if (dir === 'prev') {animate.prev(current, next, callback);}
       };
 
       if (next.height() > slides_container.height() && settings.variable_height) {
@@ -144,13 +141,13 @@
         start_animation();
       }
     };
-    
+
     self.next = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
       self._goto(idx + 1);
     };
-    
+
     self.prev = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
@@ -166,7 +163,7 @@
       }
     };
 
-    self.link_bullet = function(e) {    
+    self.link_bullet = function(e) {
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
         if(isNaN(parseInt(index)))
@@ -185,7 +182,7 @@
     self.timer_callback = function() {
       self._goto(idx + 1, true);
     }
-    
+
     self.compute_dimensions = function() {
       var current = $(self.slides().get(idx));
       var h = current.height();
@@ -199,8 +196,8 @@
 
     self.create_timer = function() {
       var t = new Timer(
-        container.find('.'+settings.timer_container_class), 
-        settings, 
+        container.find('.'+settings.timer_container_class),
+        settings,
         self.timer_callback
       );
       return t;
@@ -214,7 +211,7 @@
       var t = container.find('.'+settings.timer_container_class);
       if (t.hasClass(settings.timer_paused_class)) {
         if (typeof timer === 'undefined') {timer = self.create_timer();}
-        timer.start();     
+        timer.start();
       }
       else {
         if (typeof timer === 'object') {timer.stop();}
@@ -223,10 +220,13 @@
 
     self.init = function() {
       self.build_markup();
-      if (settings.timer) {timer = self.create_timer(); timer.start();}
+      if (settings.timer) {
+        timer = self.create_timer();
+        Foundation.utils.image_loaded(this.slides().find('img'), timer.start);
+      }
       animate = new FadeAnimation(settings, slides_container);
-      if (settings.animation === 'slide') 
-        animate = new SlideAnimation(settings, slides_container);        
+      if (settings.animation === 'slide')
+        animate = new SlideAnimation(settings, slides_container);
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
       container.on('click', '[data-orbit-slide]', self.link_bullet);
@@ -280,14 +280,16 @@
           timer.start();
         }
       });
-      
+
       $(document).on('click', '[data-orbit-link]', self.link_custom);
       $(window).on('resize', self.compute_dimensions);
-      $(window).on('load', self.compute_dimensions);
-      $(window).on('load', function(){
+      Foundation.utils.image_loaded(this.slides().find('img'), self.compute_dimensions);
+      Foundation.utils.image_loaded(this.slides().find('img'), function() {
         container.prev('.preloader').css('display', 'none');
+        self.update_slide_number(0);
+        self.update_active_link(0);
+        slides_container.trigger('ready.fndtn.orbit');
       });
-      slides_container.trigger('ready.fndtn.orbit');
     };
 
     self.init();
@@ -297,7 +299,7 @@
     var self = this,
         duration = settings.timer_speed,
         progress = el.find('.'+settings.timer_progress_class),
-        start, 
+        start,
         timeout,
         left = -1;
 
@@ -340,7 +342,7 @@
       el.trigger('timer-stopped.fndtn.orbit');
     };
   };
-  
+
   var SlideAnimation = function(settings, container) {
     var duration = settings.animation_speed;
     var is_rtl = ($('html[dir=rtl]').length === 1);
@@ -394,7 +396,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '5.0.3',
+    version: '5.1.1',
 
     settings: {
       animation: 'slide',
@@ -436,21 +438,20 @@
     },
 
     events : function (instance) {
-      var self = this;
-      var orbit_instance = new Orbit($(instance), $(instance).data('orbit-init'));
-      $(instance).data(self.name + '-instance', orbit_instance);
+      var orbit_instance = new Orbit(this.S(instance), this.S(instance).data('orbit-init'));
+      this.S(instance).data(self.name + '-instance', orbit_instance);
     },
 
     reflow : function () {
       var self = this;
 
-      if ($(self.scope).is('[data-orbit]')) {
-        var $el = $(self.scope);
+      if (self.S(self.scope).is('[data-orbit]')) {
+        var $el = self.S(self.scope);
         var instance = $el.data(self.name + '-instance');
         instance.compute_dimensions();
       } else {
-        $('[data-orbit]', self.scope).each(function(idx, el) {
-          var $el = $(el);
+        self.S('[data-orbit]', self.scope).each(function(idx, el) {
+          var $el = self.S(el);
           var opts = self.data_options($el);
           var instance = $el.data(self.name + '-instance');
           instance.compute_dimensions();
@@ -459,5 +460,5 @@
     }
   };
 
-    
+
 }(jQuery, this, this.document));

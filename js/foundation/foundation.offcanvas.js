@@ -4,7 +4,7 @@
   Foundation.libs.offcanvas = {
     name : 'offcanvas',
 
-    version : '5.0.3',
+    version : '5.1.1',
 
     settings : {},
 
@@ -13,22 +13,24 @@
     },
 
     events : function () {
-      $(this.scope).off('.offcanvas')
+      var S = this.S;
+
+      S(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.left-off-canvas-toggle', function (e) {
           e.preventDefault();
-          $(this).closest('.off-canvas-wrap').toggleClass('move-right');
+          S(this).closest('.off-canvas-wrap').toggleClass('move-right');
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
           e.preventDefault();
-          $(".off-canvas-wrap").removeClass("move-right");
+          S(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
           e.preventDefault();
-          $(this).closest(".off-canvas-wrap").toggleClass("move-left");
+          S(this).closest(".off-canvas-wrap").toggleClass("move-left");
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
           e.preventDefault();
-          $(".off-canvas-wrap").removeClass("move-left");
+          S(".off-canvas-wrap").removeClass("move-left");
         });
     },
 

@@ -20,6 +20,7 @@ $button-group-border-width: 1px !default;
   @if $styles {
     list-style: none;
     margin: 0;
+    #{$default-float}: 0;
     @include clearfix();
   }
   @if $float {
@@ -32,14 +33,14 @@ $button-group-border-width: 1px !default;
 // We use this to control styles for button groups
 @mixin button-group-style($radius:false, $even:false, $float:$default-float) {
 
-  > button, .button { 
-    border-#{$opposite-direction}: $button-group-border-width solid;
-    border-color: rgba(255, 255, 255, 0.5);  
+  > button, .button {
+    border-#{$default-float}: $button-group-border-width solid;
+    border-color: rgba(255, 255, 255, 0.5);
   }
 
-  &:last-child { 
+  &:first-child {
     button, .button {
-      border-#{$opposite-direction}: 0; 
+      border-#{$default-float}: 0;
     }
   }
 
@@ -85,13 +86,13 @@ $button-group-border-width: 1px !default;
   @if $include-html-button-classes {
     .button-group { @include button-group-container;
 
-      &> * { @include button-group-style(); }
+      li { @include button-group-style(); }
 
       &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
       &.round > * { @include button-group-style($radius:$button-round, $float:null); }
 
       @for $i from 2 through 8 {
-        &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
+        &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
       }
     }
 

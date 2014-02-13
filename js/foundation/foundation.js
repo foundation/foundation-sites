@@ -1,7 +1,7 @@
 /*
  * Foundation Responsive Library
  * http://foundation.zurb.com
- * Copyright 2013, ZURB
+ * Copyright 2014, ZURB
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
 */
@@ -9,26 +9,24 @@
 (function ($, window, document, undefined) {
   'use strict';
 
-  // Used to retrieve Foundation media queries from CSS.
-  if($('head').has('.foundation-mq-small').length === 0) {
-    $('head').append('<meta class="foundation-mq-small">');
-  }
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
+    var head = $('head');
 
-  if($('head').has('.foundation-mq-medium').length === 0) {
-    $('head').append('<meta class="foundation-mq-medium">');
-  }
+    while (i--) {
+      if(head.has('.' + class_array[i]).length === 0) {
+        head.append('<meta class="' + class_array[i] + '">');
+      }
+    }
+  };
 
-  if($('head').has('.foundation-mq-large').length === 0) {
-    $('head').append('<meta class="foundation-mq-large">');
-  }
-
-  if($('head').has('.foundation-mq-xlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xlarge">');
-  }
-
-  if($('head').has('.foundation-mq-xxlarge').length === 0) {
-    $('head').append('<meta class="foundation-mq-xxlarge">');
-  }
+  header_helpers([
+    'foundation-mq-small', 
+    'foundation-mq-medium', 
+    'foundation-mq-large', 
+    'foundation-mq-xlarge', 
+    'foundation-mq-xxlarge', 
+    'foundation-data-attribute-namespace']);
 
   // Enable FastClick if present
 
@@ -46,8 +44,14 @@
   // getElementById is not available.
   var S = function (selector, context) {
     if (typeof selector === 'string') {
-      if (context) {
-        return $(context.querySelectorAll(selector));
+      if (context) { 
+        var cont;
+        if (context.jquery) {
+          cont = context[0];
+        } else {
+          cont = context;
+        }
+        return $(cont.querySelectorAll(selector));
       }
 
       return $(document.querySelectorAll(selector));
@@ -55,6 +59,106 @@
 
     return $(selector, context);
   };
+
+  // Namespace functions.
+
+  var attr_name = function (init) {
+    var arr = [];
+    if (!init) arr.push('data');
+    if (this.namespace.length > 0) arr.push(this.namespace);
+    arr.push(this.name);
+
+    return arr.join('-');
+  };
+
+  var header_helpers = function (class_array) {
+    var i = class_array.length;
+
+    while (i--) {
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '">');
+      }
+    }
+  };
+
+  var add_namespace = function (str) {
+    var parts = str.split('-'),
+        i = parts.length,
+        arr = [];
+
+    while(i--) {
+      if (i !== 0) {
+        arr.push(parts[i]);
+      } else {
+        if (this.namespace.length > 0) {
+          arr.push(this.namespace, parts[i]);
+        } else {
+          arr.push(parts[i]);
+        }
+      }
+    }
+
+    return arr.reverse().join('-');
+  };
+
+  // Event binding and data-options updating.
+
+  var bindings = function (method, options) {
+    var self = this,
+        should_bind_events = !S(this).data(this.attr_name(true));
+
+    if (typeof method === 'string') {
+      return this[method].call(this, options);
+    }
+
+    if (S(this.scope).is('[' + this.attr_name() +']')) {
+      S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+
+      if (should_bind_events) {
+        this.events(this.scope);
+      }
+
+    } else {
+      S('[' + this.attr_name() +']', this.scope).each(function () {
+        var should_bind_events = !S(this).data(self.attr_name(true) + '-init');
+
+        S(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+
+        if (should_bind_events) {
+          self.events(this);
+        }
+      });
+    }
+  };
+
+  var single_image_loaded = function (image, callback) {
+    function loaded () {
+      callback(image[0]);
+    }
+
+    function bindLoad () {
+      this.one('load', loaded);
+
+      if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+        var src = this.attr( 'src' ),
+            param = src.match( /\?/ ) ? '&' : '?';
+
+        param += 'random=' + (new Date()).getTime();
+        this.attr('src', src + param);
+      }
+    }
+
+    if (!image.attr('src')) {
+      loaded();
+      return;
+    }
+
+    if (image[0].complete || image[0].readyState === 4) {
+      loaded();
+    } else {
+      bindLoad.call(image);
+    }
+  }
 
   /*
     https://github.com/paulirish/matchMedia.js
@@ -176,7 +280,7 @@
   window.Foundation = {
     name : 'Foundation',
 
-    version : '5.0.3',
+    version : '5.1.1',
 
     media_queries : {
       small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
@@ -188,6 +292,10 @@
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
+    global: {
+      namespace: ''
+    },
+
     init : function (scope, libraries, method, options, response) {
       var library_arr,
           args = [scope, method, options, response],
@@ -198,6 +306,8 @@
 
       // set foundation global scope
       this.scope = scope || this.scope;
+
+      this.set_namespace();
 
       if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
         if (this.libs.hasOwnProperty(libraries)) {
@@ -229,41 +339,66 @@
 
     patch : function (lib) {
       lib.scope = this.scope;
-      lib['data_options'] = this.lib_methods.data_options;
-      lib['bindings'] = this.lib_methods.bindings;
-      lib['S'] = S;
+      lib.namespace = this.global.namespace;
       lib.rtl = this.rtl;
+      lib['data_options'] = this.utils.data_options;
+      lib['attr_name'] = attr_name;
+      lib['add_namespace'] = add_namespace;
+      lib['bindings'] = bindings;
+      lib['S'] = this.utils.S;
     },
 
     inherit : function (scope, methods) {
-      var methods_arr = methods.split(' ');
+      var methods_arr = methods.split(' '),
+          i = methods_arr.length;
 
-      for (var i = methods_arr.length - 1; i >= 0; i--) {
-        if (this.lib_methods.hasOwnProperty(methods_arr[i])) {
-          this.libs[scope.name][methods_arr[i]] = this.lib_methods[methods_arr[i]];
+      while (i--) {
+        if (this.utils.hasOwnProperty(methods_arr[i])) {
+          scope[methods_arr[i]] = this.utils[methods_arr[i]];
         }
       }
     },
 
-    random_str : function (length) {
-      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+    set_namespace: function () {
+      var namespace = $('.foundation-data-attribute-namespace').css('font-family');
 
-      if (!length) {
-        length = Math.floor(Math.random() * chars.length);
-      }
+      if (/false/i.test(namespace)) return;
 
-      var str = '';
-      for (var i = 0; i < length; i++) {
-        str += chars[Math.floor(Math.random() * chars.length)];
-      }
-      return str;
+      this.global.namespace = namespace;
     },
 
     libs : {},
 
     // methods that can be inherited in libraries
-    lib_methods : {
-      throttle : function(fun, delay) {
+    utils : {
+
+      // Description:
+      //    Fast Selector wrapper returns jQuery object. Only use where getElementById 
+      //    is not available.
+      //
+      // Arguments:
+      //    Selector (String): CSS selector describing the element(s) to be 
+      //    returned as a jQuery object.
+      //
+      //    Scope (String): CSS selector describing the area to be searched. Default 
+      //    is document.
+      //
+      // Returns:
+      //    Element (jQuery Object): jQuery object containing elements matching the 
+      //    selector within the scope.
+      S : S,
+
+      // Description:
+      //    Executes a function a max of once every n milliseconds 
+      //
+      // Arguments:
+      //    Func (Function): Function to be throttled.
+      //
+      //    Delay (Integer): Function execution threshold in milliseconds.
+      //
+      // Returns:
+      //    Lazy_function (Function): Function with throttling applied.
+      throttle : function(func, delay) {
         var timer = null;
 
         return function () {
@@ -271,22 +406,70 @@
 
           clearTimeout(timer);
           timer = setTimeout(function () {
-            fun.apply(context, args);
+            func.apply(context, args);
           }, delay);
         };
       },
 
-      // parses data-options attribute
-      data_options : function (el) {
-        var opts = {}, ii, p, opts_arr, opts_len,
-            data_options = el.data('options');
+      // Description:
+      //    Executes a function when it stops being invoked for n seconds
+      //    Modified version of _.debounce() http://underscorejs.org
+      //
+      // Arguments:
+      //    Func (Function): Function to be debounced.
+      //
+      //    Delay (Integer): Function execution threshold in milliseconds.
+      // 
+      //    Immediate (Bool): Whether the function should be called at the beginning 
+      //    of the delay instead of the end. Default is false.
+      //
+      // Returns:
+      //    Lazy_function (Function): Function with debouncing applied.
+      debounce : function(func, delay, immediate) {
+        var timeout, result;
+        return function() {
+          var context = this, args = arguments;
+          var later = function() {
+            timeout = null;
+            if (!immediate) result = func.apply(context, args);
+          };
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, delay);
+          if (callNow) result = func.apply(context, args);
+          return result;
+        };
+      },
 
-        if (typeof data_options === 'object') {
-          return data_options;
+      // Description:
+      //    Parses data-options attribute
+      //
+      // Arguments:
+      //    El (jQuery Object): Element to be parsed.
+      //
+      // Returns:
+      //    Options (Javascript Object): Contents of the element's data-options 
+      //    attribute.
+      data_options : function (el) {
+        var opts = {}, ii, p, opts_arr,
+            data_options = function (el) {
+              var namespace = Foundation.global.namespace;
+
+              if (namespace.length > 0) {
+                return el.data(namespace + '-options');
+              }
+
+              return el.data('options');
+            };
+
+        var cached_options = data_options(el);
+
+        if (typeof cached_options === 'object') {
+          return cached_options;
         }
 
-        opts_arr = (data_options || ':').split(';'),
-        opts_len = opts_arr.length;
+        opts_arr = (cached_options || ':').split(';'),
+        ii = opts_arr.length;
 
         function isNumber (o) {
           return ! isNaN (o-0) && o !== null && o !== "" && o !== false && o !== true;
@@ -297,8 +480,7 @@
           return str;
         }
 
-        // parse options
-        for (ii = opts_len - 1; ii >= 0; ii--) {
+        while (ii--) {
           p = opts_arr[ii].split(':');
 
           if (/true/i.test(p[1])) p[1] = true;
@@ -313,22 +495,14 @@
         return opts;
       },
 
-      delay : function (fun, delay) {
-        return setTimeout(fun, delay);
-      },
-
-      // test for empty object or array
-      empty : function (obj) {
-        if (obj.length && obj.length > 0)    return false;
-        if (obj.length && obj.length === 0)  return true;
-
-        for (var key in obj) {
-          if (hasOwnProperty.call(obj, key))    return false;
-        }
-
-        return true;
-      },
-
+      // Description:
+      //    Adds JS-recognizable media queries
+      //
+      // Arguments:
+      //    Media (String): Key string for the media query to be stored as in 
+      //    Foundation.media_queries
+      //
+      //    Class (String): Class name for the generated <meta> tag
       register_media : function(media, media_class) {
         if(Foundation.media_queries[media] === undefined) {
           $('head').append('<meta class="' + media_class + '">');
@@ -336,7 +510,15 @@
         }
       },
 
-      addCustomRule : function(rule, media) {
+      // Description:
+      //    Add custom CSS within a JS-defined media query
+      //
+      // Arguments:
+      //    Rule (String): CSS rule to be appended to the document.
+      //
+      //    Media (String): Optional media query string for the CSS rule to be 
+      //    nested under.
+      add_custom_rule : function(rule, media) {
         if(media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
         } else {
@@ -348,61 +530,50 @@
         }
       },
 
-      loaded : function (image, callback) {
-        function loaded () {
-          callback(image[0]);
-        }
-
-        function bindLoad () {
-          this.one('load', loaded);
-
-          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-            var src = this.attr( 'src' ),
-                param = src.match( /\?/ ) ? '&' : '?';
-
-            param += 'random=' + (new Date()).getTime();
-            this.attr('src', src + param);
-          }
-        }
-
-        if (!image.attr('src')) {
-          loaded();
-          return;
-        }
-
-        if (image[0].complete || image[0].readyState === 4) {
-          loaded();
-        } else {
-          bindLoad.call(image);
-        }
-      },
-
-      bindings : function (method, options) {
+      // Description:
+      //    Performs a callback function when an image is fully loaded
+      //
+      // Arguments:
+      //    Image (jQuery Object): Image(s) to check if loaded.
+      //
+      //    Callback (Function): Fundation to execute when image is fully loaded.
+      image_loaded : function (images, callback) {
         var self = this,
-            should_bind_events = !S(this).data(this.name + '-init');
-
-        if (typeof method === 'string') {
-          return this[method].call(this, options);
+            unloaded = images.length;
+        if(unloaded == 0){
+            callback(images);
         }
-
-        if (S(this.scope).is('[data-' + this.name +']')) {
-          S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
-
-          if (should_bind_events) {
-            this.events(this.scope);
-          }
-
-        } else {
-          S('[data-' + this.name + ']', this.scope).each(function () {
-            var should_bind_events = !S(this).data(self.name + '-init');
-
-            S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
-
-            if (should_bind_events) {
-              self.events(this);
+        images.each(function(){
+          single_image_loaded(self.S(this),function(){
+            unloaded -= 1; 
+            if(unloaded == 0){
+              callback(images);
             }
           });
+        });
+      },
+
+      // Description:
+      //    Returns a random, alphanumeric string
+      //
+      // Arguments:
+      //    Length (Integer): Length of string to be generated. Defaults to random 
+      //    integer.
+      //
+      // Returns:
+      //    Rand (String): Pseudo-random, alphanumeric string.
+      random_str : function (length) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+
+        if (!length) {
+          length = Math.floor(Math.random() * chars.length);
         }
+
+        var str = '';
+        while (length--) {
+          str += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return str;
       }
     }
   };

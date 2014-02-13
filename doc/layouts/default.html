@@ -2,6 +2,7 @@
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
 <html class="no-js" lang="en">
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{#if title}}{{title}} | {{/if}}Foundation Docs</title>
@@ -17,7 +18,7 @@
     {{#if description}}
     <meta name="description" content="{{description}}"/>
     {{else}}
-    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more." />
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. Javascript, CSS, components, grid and more." />
     {{/if}}
     <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
     <meta name="copyright" content="ZURB, inc. Copyright (c) 2013" />
@@ -36,7 +37,7 @@
           <div class="row">
             <div class="large-3 medium-4 columns">
               <div class="hide-for-small">
-              {{> sidebar}}  
+              {{> sidebar}}
               </div>
             </div>
             <div class="large-9 medium-8 columns">
@@ -73,7 +74,7 @@
       })();
     </script>
     <script>
-            $(document).foundation().foundation('joyride', 'start');
+      $(document).foundation().foundation('joyride', 'start');
     </script>
   </body>
 </html>

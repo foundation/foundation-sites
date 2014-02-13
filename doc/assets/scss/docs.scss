@@ -116,6 +116,25 @@ hr.dashed { border-style: dashed; }
   }
 }
 
+table.plugin-options {
+  width: 100%;
+  border: none;
+  td[rowspan] {
+    background: #f9f9f9;
+    vertical-align: top;
+  }
+  tbody {
+    td:not([rowspan]) {
+      font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    } 
+  }
+  thead {
+    td:first-child {
+      width: 20%;
+    }
+  }
+}
+
 // Modified Panel
 .easel {
   @include panel($bg:$panel-bg-color);
@@ -184,6 +203,10 @@ footer { margin-top: 45px; }
 }
 
 // Examples
+.magellan-container {
+  padding: 10px 0;
+  background: #fff;
+}
 .example-orbit {}
 .example-orbit-content li div {
   color:white;

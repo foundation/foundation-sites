@@ -1,0 +1,198 @@
+---
+title: Range Slider
+layout: doc/layouts/default.html
+---
+
+# Range Slider
+
+<h3 class="subheader">This handy slider will allow you to drag a handle to select a specific value from a range.</h3>
+
+***
+
+<div class="range-slider" data-range data-options="range: 0, 100;">
+  <span class="range-slider-active-segment" style="width: 24%;"></span>
+  <span class="range-slider-handle" style="left: 24%;"></span>
+</div>
+
+***
+
+<h2>Basic</h2>
+
+You can create a range slider bar using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="range-slider" data-range data-options="range: 0, 100;"></div>
+```
+{{/markdown}}
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="range-slider" data-range data-options="range: 0, 100;">
+      <span class="range-slider-handle"></span>
+    </div>
+
+  </div>
+</div>
+
+***
+
+<h2>Advanced</h2>
+
+Additional classes can be added to your range slider to change its appearance.
+
+### Add Border Radius
+
+You can add a border radius to the range slider by adding the `radius` class to the `range-slider` element.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="range-slider radius" data-range data-options="range: 0, 100;"></div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="range-slider radius" data-range data-options="range: 0, 100;">
+      <span class="range-slider-handle"></span>
+    </div>
+  </div>
+</div>
+
+### Vertical Range Slider
+
+You can create a vertical range slider instead of the default horizontal slider by adding the `vertical-range` class to the `range-slider` element.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="range-slider vertical-range" data-range data-options="range: 0, 100;"></div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="range-slider vertical-range" data-range data-options="range: 0, 100;">
+      <span class="range-slider-active-segment" style="height: 24%;"></span>
+      <span class="range-slider-handle" style="bottom: 24%;"></span>
+    </div>
+  </div>
+</div>
+
+### Fixed Steps
+
+You can create a range slider with fixed steps by defining those steps in your `data-range data-options` attribute.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="range-slider" data-range data-options="fixed_steps: 10,20,30,40,50;"></div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="range-slider" data-range data-options="fixed_steps: 10,20,30,40,50;">
+      <span class="range-slider-handle"></span>
+    </div>
+  </div>
+</div>
+
+
+***
+
+## Customize With Sass
+
+Progress bars can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_progress_variables}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own progress bars using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `progress-container()` and `progress-meter()` mixin to create your own progress bars, like so:
+
+##### Container Mixin
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-progress-container {
+  @include progress-container();
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<div class="custom-progress-container"></div>
+```
+{{/markdown}}
+
+##### Meter Mixin
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-progress-container { @include progress-container;
+  & > span { @include progress-meter($bg); }
+}
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your progress bars using the provided options in the `progress-bar()` mixin:
+
+##### Adding Border Radius
+
+We can add a border radius to our progress bar through our mixins:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-progress-container {
+  @include progress-container;
+  @include radius(6px);
+  & > span {
+    @include progress-meter(pink);
+    @include radius(5px);
+  }
+}
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/progress-bars";
+```

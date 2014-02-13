@@ -29,6 +29,7 @@
 // Grid
 
 // $include-html-grid-classes: $include-html-classes;
+// $include-xl-html-grid-classes: false;
 
 // $row-width: rem-calc(1000);
 // $column-gutter: rem-calc(30);
@@ -112,7 +113,7 @@
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: join("Open Sans", $body-font-family);
+// $header-font-family: $body-font-family;
 // $header-font-weight: 300;
 // $header-font-style: normal;
 // $header-font-color: #222;
@@ -477,8 +478,9 @@
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: normal;
+// $form-label-line-height: 1.5;
 // $form-label-font-color: scale-color(#000, $lightness: 30%);
-// $form-label-bottom-margin: rem-calc(8);
+// $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: rem-calc(14);
@@ -488,6 +490,7 @@
 // $input-focus-border-color: scale-color(#fff, $lightness: -40%);
 // $input-border-style: solid;
 // $input-border-width: 1px;
+// $input-border-radius: $global-radius;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 // $input-include-glowing-effect: true;
@@ -1110,6 +1113,7 @@
 // $tooltip-close-font-color: #777;
 // $tooltip-font-size-sml: rem-calc(14);
 // $tooltip-radius: $global-radius;
+// $tooltip-rounded: $global-rounded;
 // $tooltip-pip-size: 5px;
 
 //
@@ -1188,3 +1192,5 @@
 //
 
 // $include-html-visibility-classes: $include-html-classes;
+// $include-table-visibility-classes: true;
+// $include-legacy-visibility-classes: true;
