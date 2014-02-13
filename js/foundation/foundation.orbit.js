@@ -222,7 +222,12 @@
       self.build_markup();
       if (settings.timer) {
         timer = self.create_timer();
-        Foundation.utils.image_loaded(this.slides().find('img'), timer.start);
+        if(this.slides().children('img').length) {
+          Foundation.utils.image_loaded(this.slides().children('img'), timer.start);
+        }
+        else {
+          timer.start();
+        }
       }
       animate = new FadeAnimation(settings, slides_container);
       if (settings.animation === 'slide')
@@ -290,6 +295,9 @@
         self.update_active_link(0);
         slides_container.trigger('ready.fndtn.orbit');
       });
+      if(!this.slides().children('img').length) {
+        self.compute_dimensions();
+      }
     };
 
     self.init();
