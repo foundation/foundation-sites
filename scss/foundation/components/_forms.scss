@@ -66,7 +66,7 @@ $glowing-effect-color: $input-focus-border-color !default;
 
 // Select variables
 $select-bg-color: #fafafa !default;
-
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 //
 // @MIXINS
@@ -334,6 +334,7 @@ $select-bg-color: #fafafa !default;
       @include radius(0);
       &.radius { @include radius($global-radius); }
       &:hover {
+        background-color: $select-hover-bg-color;
         border-color: $input-focus-border-color;
       }
     }
