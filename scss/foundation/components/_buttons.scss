@@ -209,6 +209,7 @@ $button-disabled-opacity: 0.7 !default;
       &.alert     { @include button-style($bg:$alert-color); }
 
       &.large  { @include button-size($padding:$button-lrg); }
+      &.medium { @include button-size($padding:$button-med); }
       &.small  { @include button-size($padding:$button-sml); }
       &.tiny   { @include button-size($padding:$button-tny); }
       &.expand { @include button-size($padding:null,$full-width:true); }
