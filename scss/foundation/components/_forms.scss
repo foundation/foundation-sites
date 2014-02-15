@@ -345,7 +345,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
     @-moz-document url-prefix() {
       select { background: $select-bg-color; }
-      select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
+      select:hover { background: $select-hover-bg-color }
     }
     /* Attach elements to the beginning or end of an input */
     .prefix,
