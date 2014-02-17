@@ -231,7 +231,7 @@
 
       if (this.S('.' + this.settings.bg_class).length === 0) {
         this.settings.bg = $('<div />', {'class': this.settings.bg_class})
-          .appendTo('body');
+          .appendTo('body').hide();
       }
 
       if (this.settings.bg.filter(':visible').length > 0) {
