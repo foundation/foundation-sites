@@ -41,6 +41,9 @@
               </div>
             </div>
             <div class="large-9 medium-8 columns">
+            <span id="will-hide" data-tooltip title="The tooltip message">
+  <a href="#">mouse over me</a>
+</span>
 
 {{#markdown}}
 {{> body}}
@@ -75,6 +78,11 @@
     </script>
     <script>
       $(document).foundation().foundation('joyride', 'start');
+      $('#will-hide').on('mouseenter', function () {
+        setTimeout(function () {
+          $(this).hide();
+        }.bind(this), 3000);
+      })
     </script>
   </body>
 </html>
