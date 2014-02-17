@@ -12,7 +12,7 @@
     },
 
     init : function (scope, method, options) {
-      this.bindings(method, options); 
+      this.bindings(method, options);
     },
 
     events : function () {

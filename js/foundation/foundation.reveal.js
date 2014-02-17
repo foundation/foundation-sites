@@ -73,8 +73,12 @@
             var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
                 bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
 
-            if (bg_clicked && !settings.close_on_background_click) {
-              return;
+            if (bg_clicked) {
+              if (settings.close_on_background_click) {
+                e.stopPropagation();
+              } else {
+                return;
+              }
             }
 
             self.locked = true;
@@ -186,7 +190,7 @@
               self.S(modal).foundation('section', 'reflow');
 
               if (open_modal.length > 0) {
-                var open_modal_settings = open_modal.data(self.attr_name(true));
+                var open_modal_settings = open_modal.data(self.attr_name(true) + '-init');
                 self.hide(open_modal, open_modal_settings.css.close);
               }
               self.show(modal, settings.css.open);
@@ -227,7 +231,7 @@
 
       if (this.S('.' + this.settings.bg_class).length === 0) {
         this.settings.bg = $('<div />', {'class': this.settings.bg_class})
-          .appendTo('body');
+          .appendTo('body').hide();
       }
 
       if (this.settings.bg.filter(':visible').length > 0) {
@@ -272,6 +276,7 @@
         }
 
         if (/fade/i.test(settings.animation)) {
+          css.top = $(window).scrollTop() + el.data('css-top') + 'px';
           var end_css = {opacity: 1};
 
           return setTimeout(function () {

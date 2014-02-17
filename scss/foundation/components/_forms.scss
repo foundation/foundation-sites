@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 @import "buttons";
 
@@ -66,7 +70,7 @@ $glowing-effect-color: $input-focus-border-color !default;
 
 // Select variables
 $select-bg-color: #fafafa !default;
-
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 //
 // @MIXINS
@@ -324,32 +328,17 @@ $select-bg-color: #fafafa !default;
 
     select {
       -webkit-appearance: none !important;
-      background:
-        $select-bg-color
-        url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-      @if $text-direction == 'rtl' {
-        background-position-x: 3%;
-      }
-      @else {
-        background-position-x: 97%;
-      }
-      background-position-y: center;
+      background-color: $select-bg-color;
+      background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
+      background-repeat: no-repeat;
+      background-position: center $opposite-direction 3%;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
       @include radius(0);
       &.radius { @include radius($global-radius); }
       &:hover {
-        background:
-          scale-color($select-bg-color, $lightness: -3%)
-          url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-        @if $text-direction == 'rtl' {
-          background-position-x: 3%;
-        }
-        @else {
-          background-position-x: 97%;
-        }
-        background-position-y: center;
+        background-color: $select-hover-bg-color;
         border-color: $input-focus-border-color;
       }
     }
@@ -360,7 +349,7 @@ $select-bg-color: #fafafa !default;
 
     @-moz-document url-prefix() {
       select { background: $select-bg-color; }
-      select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
+      select:hover { background: $select-hover-bg-color }
     }
     /* Attach elements to the beginning or end of an input */
     .prefix,
