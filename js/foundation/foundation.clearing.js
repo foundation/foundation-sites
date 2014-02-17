@@ -31,7 +31,7 @@
 
       this.bindings(method, options);
 
-      if (self.S(this.scope).is('[' + this.attr_name() + ']')) { 
+      if (self.S(this.scope).is('[' + this.attr_name() + ']')) {
         this.assemble(self.S('li', this.scope));
       } else {
         self.S('[' + this.attr_name() + ']', this.scope).each(function () {

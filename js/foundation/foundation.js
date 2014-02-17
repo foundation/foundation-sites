@@ -21,11 +21,11 @@
   };
 
   header_helpers([
-    'foundation-mq-small', 
-    'foundation-mq-medium', 
-    'foundation-mq-large', 
-    'foundation-mq-xlarge', 
-    'foundation-mq-xxlarge', 
+    'foundation-mq-small',
+    'foundation-mq-medium',
+    'foundation-mq-large',
+    'foundation-mq-xlarge',
+    'foundation-mq-xxlarge',
     'foundation-data-attribute-namespace']);
 
   // Enable FastClick if present
@@ -44,7 +44,7 @@
   // getElementById is not available.
   var S = function (selector, context) {
     if (typeof selector === 'string') {
-      if (context) { 
+      if (context) {
         var cont;
         if (context.jquery) {
           cont = context[0];
@@ -159,7 +159,7 @@
       bindLoad.call(image);
     }
   }
-
+  
   /*
     https://github.com/paulirish/matchMedia.js
   */
