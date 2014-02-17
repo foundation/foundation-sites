@@ -186,7 +186,7 @@
               self.S(modal).foundation('section', 'reflow');
 
               if (open_modal.length > 0) {
-                var open_modal_settings = open_modal.data(self.attr_name(true));
+                var open_modal_settings = open_modal.data(self.attr_name(true) + '-init');
                 self.hide(open_modal, open_modal_settings.css.close);
               }
               self.show(modal, settings.css.open);
