@@ -373,6 +373,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           & > .dropdown {
             display: block;
           }
+          & > a:after {
+            display: none;  
+          }
         }
       }
 
