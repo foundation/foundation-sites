@@ -55,7 +55,7 @@
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle random_str');
 
-      this.settings = $.extend({}, this.defaults, (options || method));
+      this.settings = this.settings || $.extend({}, this.defaults, (options || method));
 
       this.bindings(method, options)
     },
