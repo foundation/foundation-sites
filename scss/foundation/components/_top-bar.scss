@@ -225,9 +225,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               height: 0;
               // Shh, don't tell, but box-shadows create the menu icon :)
               @if $experimental {
-                -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color,
-                                    0 16px 0 1px $topbar-menu-icon-color,
-                                    0 22px 0 1px $topbar-menu-icon-color;
+                -webkit-box-shadow: 1px 10px 1px 1px $topbar-menu-icon-color,
+                                    1px 16px 1px 1px $topbar-menu-icon-color,
+                                    1px 22px 1px 1px $topbar-menu-icon-color;
               }
               box-shadow:         0 10px 0 1px $topbar-menu-icon-color,
                                   0 16px 0 1px $topbar-menu-icon-color,
@@ -249,9 +249,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             span {
               // Shh, don't tell, but box-shadows create the menu icon :)
               @if $experimental {
-                -webkit-box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
-                                    0 16px 0 1px $topbar-menu-icon-color-toggled,
-                                    0 22px 0 1px $topbar-menu-icon-color-toggled;
+                -webkit-box-shadow: 1px 10px 1px 1px $topbar-menu-icon-color-toggled,
+                                    1px 16px 1px 1px $topbar-menu-icon-color-toggled,
+                                    1px 22px 1px 1px $topbar-menu-icon-color-toggled;
               }
               box-shadow:         0 10px 0 1px $topbar-menu-icon-color-toggled,
                                   0 16px 0 1px $topbar-menu-icon-color-toggled,
