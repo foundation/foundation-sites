@@ -16,7 +16,7 @@ $button-group-border-width: 1px !default;
 //
 
 // We use this to add styles for a button group container
-@mixin button-group-container($styles:true, $float:false) {
+@mixin button-group-container($styles:true, $float:false, $segmented:false) {
   @if $styles {
     list-style: none;
     margin: 0;
@@ -26,6 +26,24 @@ $button-group-border-width: 1px !default;
     float: #{$default-float};
     margin-#{$opposite-direction}: $button-bar-margin-opposite;
     & div { overflow: hidden; }
+  }
+  @if $segmented {
+      label {
+	  display:inline;
+	  -webkit-touch-callout: none;
+	  -webkit-user-select: none;
+	  -khtml-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+      }
+      input {
+	  display:none;
+      }
+      button {
+	  z-index:-1;
+	  transition:none;
+      }
   }
 }
 
@@ -93,6 +111,13 @@ $button-group-border-width: 1px !default;
       @for $i from 2 through 8 {
         &.even#{-$i} li { @include button-group-style($even:$i, $float:null); }
       }
+    }
+
+    .button-group-segmented {
+	@include button-group-container($segmented:true);
+	label {
+	    @include button-group-style();
+	}
     }
 
     .button-bar {
