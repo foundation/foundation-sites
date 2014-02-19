@@ -478,7 +478,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             a:not(.button) {
               padding: 0 $topbar-link-padding;
               line-height: $topbar-height;
-              background: $topbar-bg;
               &:hover { background: $topbar-link-bg-hover; }
             }
           }
@@ -572,7 +571,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         }
 
         .has-form {
-          background: $topbar-bg;
           padding: 0 $topbar-link-padding;
           height: $topbar-height;
         }
