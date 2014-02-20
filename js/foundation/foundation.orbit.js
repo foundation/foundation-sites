@@ -108,8 +108,8 @@
       current.removeClass(settings.active_slide_class);
       next.css('zIndex', 4).addClass(settings.active_slide_class);
 
-      slides_container.trigger('before-slide-change.fndtn.orbit');
-      settings.before_slide_change();
+      slides_container.trigger('before-slide-change.fndtn.orbit', [{slide_number: idx, next_slide_number: next_idx}]);
+      settings.before_slide_change(idx, next_idx);
       self.update_active_link(next_idx);
 
       var callback = function() {
