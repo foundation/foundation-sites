@@ -85,7 +85,7 @@
     };
 
     self._goto = function(next_idx, start_timer) {
-      // if (locked) {return false;}
+      if (locked) {return false;}
       if (next_idx === idx) {return false;}
       if (typeof timer === 'object') {timer.restart();}
       var slides = self.slides();
