@@ -374,7 +374,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             display: block;
           }
           & > a:after {
-            display: none;  
+            display: none;
           }
         }
       }
@@ -484,7 +484,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           }
           &.active:not(.has-form) {
             a:not(.button) {
-              padding: 0 $topbar-height / 3;
+              padding: 0 $topbar-link-padding;
               line-height: $topbar-height;
               color: $topbar-link-color-active;
               background: $topbar-link-bg-active;
