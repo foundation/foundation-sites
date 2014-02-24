@@ -132,9 +132,9 @@ $button-disabled-opacity: 0.7 !default;
 // We use this mixin to add button color styles
 //
 // $bg - Primary color set in settings file. Default: $primary-color.
-// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
-@mixin button-style($bg:$primary-color, $radius:false, $disabled:false) {
+@mixin button-style($bg:$primary-color, $radius:true, $disabled:false) {
 
   // We control which background styles are used,
   // these can be removed by setting $bg:false
