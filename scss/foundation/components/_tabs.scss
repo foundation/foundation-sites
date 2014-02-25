@@ -37,10 +37,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
           display: block;
           background: $tabs-navigation-bg-color;
           color: $tabs-navigation-font-color;
-          padding-top: $tabs-navigation-padding;
-          padding-#{$opposite-direction}: $tabs-navigation-padding * 2;
-          padding-bottom: $tabs-navigation-padding + rem-calc(1);
-          padding-#{$default-float}: $tabs-navigation-padding * 2;
+          padding: $tabs-navigation-padding $tabs-navigation-padding * 2;
           font-family: $tabs-navigation-font-family;
           font-size: $tabs-navigation-font-size;
           &:hover { background: $tabs-navigation-hover-bg-color; }
