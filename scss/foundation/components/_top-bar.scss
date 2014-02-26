@@ -17,6 +17,7 @@ $topbar-margin-bottom: 0 !default;
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal !default;
 $topbar-title-font-size: rem-calc(17) !default;
+$topbar-link-text-transform: none;
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
@@ -291,6 +292,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           font-family: $topbar-link-font-family;
           font-size: $topbar-link-font-size;
           font-weight: $topbar-link-weight;
+          text-transform: $topbar-link-text-transform;
           background: $topbar-dropdown-bg;
 
           &.button {
