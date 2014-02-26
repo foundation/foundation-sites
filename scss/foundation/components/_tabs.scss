@@ -98,5 +98,11 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         }
       }
     }
+    .no-js {
+      .tabs-content > .content {
+        display: block;
+        float: none;
+      }
+    }
   }
 }
