@@ -37,7 +37,7 @@ $small-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 
 // We use these to style paragraphs
 $paragraph-font-family: inherit !default;
-$paragraph-font-weight: normal !default;
+$paragraph-font-weight: inherit !default;
 $paragraph-font-size: 1rem !default;
 $paragraph-line-height: 1.6 !default;
 $paragraph-margin-bottom: rem-calc(20) !default;
