@@ -219,7 +219,8 @@
     lastTime = 0,
     vendors = ['webkit', 'moz'],
     requestAnimationFrame = window.requestAnimationFrame,
-    cancelAnimationFrame = window.cancelAnimationFrame;
+    cancelAnimationFrame = window.cancelAnimationFrame,
+    jqueryFxAvailable = 'undefined' !== typeof jQuery.fx;
 
   for(; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
     requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
@@ -231,7 +232,10 @@
   function raf() {
     if ( animating ) {
       requestAnimationFrame( raf );
-      jQuery.fx.tick();
+      
+      if ( jqueryFxAvailable ) {
+        jQuery.fx.tick();
+      }
     }
   }
 
@@ -239,16 +243,19 @@
     // use rAF
     window.requestAnimationFrame = requestAnimationFrame;
     window.cancelAnimationFrame = cancelAnimationFrame;
-    jQuery.fx.timer = function( timer ) {
-      if ( timer() && jQuery.timers.push( timer ) && !animating ) {
-        animating = true;
-        raf();
-      }
-    };
+    
+    if ( jqueryFxAvailable ) {
+      jQuery.fx.timer = function( timer ) {
+        if ( timer() && jQuery.timers.push( timer ) && !animating ) {
+          animating = true;
+          raf();
+        }
+      };
 
-    jQuery.fx.stop = function() {
-      animating = false;
-    };
+      jQuery.fx.stop = function() {
+        animating = false;
+      };
+    }
   } else {
     // polyfill
     window.requestAnimationFrame = function( callback, element ) {
