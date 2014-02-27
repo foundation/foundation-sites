@@ -89,7 +89,9 @@
         .off('.dropdown')
         .on('resize.fndtn.dropdown', self.throttle(function () {
           self.resize.call(self);
-        }, 50)).trigger('resize');
+        }, 50));
+
+      this.resize();
     },
 
     close: function (dropdown) {
