@@ -2,22 +2,6 @@
 
 This is the Foundation project.  We love making super awesome stuff, but even more we like to empower people to make changes on their own.  Feel free to fork and improve Foundation.
 
-<!-- ### JavaScript
-
-The Foundation JS libraries are tested with qUnit. You can run the tests in your browser by opening up the respective `.html` files in `test/javascripts/tests/`.
-
-For more convenient testing using the command line and watcher functionality, you can also run the tests through Grunt with PhantomJS.
-
-**Setting up Grunt for command line testing.**
-
-1. Install [PhantomJS](http://phantomjs.org/)
-2. Install [Node.js](http://nodejs.org/)
-3. You may need to reboot your machine to make sure your PATH is up to date.
-4. From the root of the project, `npm install`. This will install the grunt tasks locally.
-5. Install the grunt command line interface with `npm install -g grunt-cli`.
-
-Now you should have two new commands available. `grunt qunit` will execute all of the qUnit tests. `grunt watch` will watch for changes to the JS files and test files, and execute the tests when something changes. -->
-
 ## Compass Project
 
 If you have a compass project and would like updated assets you can run the following command at any given time from within your project directory:
@@ -47,8 +31,23 @@ bundle exec compass create -r zurb-foundation --using foundation --force
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Test your changes to the best of your ability.  We've provided a test/ folder, feel free to add to it as necessary.
+3. Test your changes to the best of your ability.  We've provided a spec/ folder, please run the tests to ensure your changes didn't break something add tests as necessary.
 4. Update the documentation to reflect your changes if they add or changes current functionality. Make sure you are in the docs folder, then run `bundle && bundle exec foreman start` to compile to documentation.
 5. Commit your changes (`git commit -am 'Added some feature'`)
 6. Push to the branch (`git push origin my-new-feature`)
 7. Create new Pull Request
+
+## JavaScript Testing
+
+The Foundation JS libraries are tested with Jasmine. Grunt can be used to run the test suite.
+
+1. Install `node.js` and `npm` with `brew install node`
+    * You may need to `source` your bash config or restart your terminal client to make sure your PATH is up to date.
+2. From the root of the project, install required packages locally with `npm install`
+3. Install bower with `npm install -g bower` and and required assets locally `bower install`
+4. Install the command line interface for grunt with `npm install -g grunt-cli`
+5. Install PhantomJS with `brew install PhantomJS` (we assume you have Chrome and Firefox installed)
+    * If you get connection errors with PhantomJS when running the suite, ensure `node -v` returns  `v0.10.12` or later. Upgrade with `brew upgrade node`
+6. Run `grunt karma:dev` to run the tests with some real browsers
+7. Run `grunt build:assets` to compile any changes to foundation JS source into testing distribution
+

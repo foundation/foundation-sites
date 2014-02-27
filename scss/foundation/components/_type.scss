@@ -54,7 +54,7 @@ $code-font-weight: bold !default;
 // We use these to style anchors
 $anchor-text-decoration: none !default;
 $anchor-font-color: $primary-color !default;
-$anchor-font-color-hover: scale-color($primary-color, $lightness: -14%) !default;
+$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !default;
 
 // We use these to style the <hr> element
 $hr-border-width: 1px !default;
@@ -291,7 +291,7 @@ $microformat-abbr-font-decoration: none !default;
       border: $hr-border-style $hr-border-color;
       border-width: $hr-border-width 0 0;
       clear: both;
-      margin: $hr-margin 0 ($hr-margin - rem-calc(1));
+      margin: $hr-margin 0 ($hr-margin - em-calc(strip-unit($hr-border-width)));
       height: 0;
     }
 
