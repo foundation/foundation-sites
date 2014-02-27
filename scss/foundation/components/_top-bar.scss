@@ -40,6 +40,7 @@ $topbar-link-color-active-hover: #fff !default;
 $topbar-link-weight: normal !default;
 $topbar-link-font-size: rem-calc(13) !default;
 $topbar-link-hover-lightness: -10% !default; // Darken by 10%
+$topbar-link-bg: $topbar-bg !default;
 $topbar-link-bg-hover: #272727 !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !default;
@@ -494,6 +495,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             a:not(.button) {
               padding: 0 $topbar-link-padding;
               line-height: $topbar-height;
+              background: $topbar-link-bg;
               &:hover { background: $topbar-link-bg-hover; }
             }
           }
@@ -589,7 +591,8 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         }
 
         .has-form {
-          padding: 0 $topbar-link-padding;
+          background: $topbar-link-bg;
+          padding: 0 $topbar-height / 3;
           height: $topbar-height;
         }
 
