@@ -4,7 +4,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '5.1.1',
+    version : '5.2.0',
 
     settings : {
       active_class: 'open',
@@ -101,7 +101,8 @@
           self.S(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
             .removeClass(self.settings.active_class);
-          self.S(this).trigger('closed');
+
+          self.S(this).trigger('closed', [dropdown]);
         }
       });
     },
@@ -117,7 +118,7 @@
         this
           .css(dropdown
             .addClass(this.settings.active_class), target);
-        dropdown.trigger('opened');
+        dropdown.trigger('opened', [dropdown, target]);
     },
 
     data_attr: function () {
