@@ -252,7 +252,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 // We use this mixin to style fieldsets
 @mixin fieldset {
-  border: $fieldset-border-style $fieldset-border-width $fieldset-border-color;
+  border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
   padding: $fieldset-padding;
   margin: $fieldset-margin;
 
