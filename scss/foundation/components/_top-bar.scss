@@ -77,6 +77,19 @@ $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: 
 $topbar-sticky-class: ".sticky" !default;
 $topbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
 
+// Accessibility mixins for hiding and showing the menu dropdown items
+@mixin topbar-hide-dropdown {
+  // Makes an element visually hidden by default, but visible when focused.
+  display: block;
+  @include element-invisible();
+}
+
+@mixin topbar-show-dropdown {
+  display: block;
+  @include element-invisible-off();
+  position: absolute !important; // Reset the position from static to absolute
+}
+
 @include exports("top-bar") {
   // Used to provide media query values for javascript components.
   // This class is generated despite the value of $include-html-top-bar-classes
@@ -371,7 +384,8 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
         &.moved { position: static;
           & > .dropdown {
-            display: block;
+            @include topbar-show-dropdown();
+            width: 100%;
           }
           & > a:after {
             display: none;
@@ -384,8 +398,8 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         position: absolute;
         #{$default-float}: 100%;
         top: 0;
-        display: none;
         z-index: 99;
+        @include topbar-hide-dropdown();
 
         li {
           width: 100%;
@@ -508,12 +522,14 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           }
 
           &.moved { position: relative;
-            & > .dropdown { display: none; }
+            & > .dropdown {
+              @include topbar-hide-dropdown();
+            }
           }
 
           &.hover, &.not-click:hover {
             & > .dropdown {
-              display: block;
+              @include topbar-show-dropdown();
             }
           }
 
@@ -523,7 +539,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
                 border: none;
                 content: "\00bb";
                 top: 1rem;
-                margin-top: -2px;
+                margin-top: -7px;
                 #{$opposite-direction}: 5px;
                 line-height: 1.2;
               }
@@ -614,7 +630,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         .has-dropdown {
           &:hover {
             & > .dropdown {
-              display: block;
+              @include topbar-show-dropdown();
             }
           }
         }

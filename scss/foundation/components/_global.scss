@@ -173,6 +173,29 @@ $base-line-height: 150% !default;
   transform: translate($horizontal,$vertical)
 }
 
+// @mixins
+//
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// @mixins
+//
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
