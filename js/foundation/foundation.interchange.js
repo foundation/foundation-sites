@@ -78,13 +78,25 @@
       this.load('nodes');
     },
 
+    getMediaHash : function() {
+        var mediaHash='';
+        for (var queryName in this.settings.named_queries ) {
+            mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
+        }
+        return mediaHash;
+    },
+
     events : function () {
-      var self = this;
+      var self = this, prevMediaHash;
 
       $(window)
         .off('.interchange')
         .on('resize.fndtn.interchange', self.throttle(function () {
-          self.resize();
+            var currMediaHash = self.getMediaHash();
+            if (currMediaHash !== prevMediaHash) {
+                self.resize();
+            }
+            prevMediaHash = currMediaHash;
         }, 50));
 
       return this;
