@@ -118,7 +118,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include wrap-base;
   overflow-x: hidden;
   &.move-right,
-  &.move-left { height: 100%; }
+  &.move-left { min-height: 100%; }
 }
 
 // INNER WRAP
@@ -241,6 +241,7 @@ $menu-slide: "transform 500ms ease" !default;
     // fill the screen
     display: block;
     position: absolute;
+    height:100%;
     background: $off-canvas-overlay-background;
     top: 0;
     bottom: 0;
@@ -262,8 +263,8 @@ $menu-slide: "transform 500ms ease" !default;
 @include exports("offcanvas") {
   @if $include-html-off-canvas-classes {
 
-    .off-canvas-wrap { @include off-canvas-wrap; }
-    .inner-wrap { @include inner-wrap; }
+    .off-canvas-wrap { @include off-canvas-wrap; background: red; height:100%;}
+    .inner-wrap { @include inner-wrap; background: green; position: relative; height: 100%;}
 
     .tab-bar { @include tab-bar-base; }
 
@@ -271,6 +272,8 @@ $menu-slide: "transform 500ms ease" !default;
     .right-small { @include tabbar-small-section($position: right); }
 
     .tab-bar-section { @include tab-bar-section; }
+
+    .main-section {  background: orange; -webkit-overflow-scrolling: touch; overflow-y: scroll; position: absolute; left:0; right:0; bottom:0; top: $tabbar-height;}
 
     // MENU BUTTON
     // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
@@ -356,6 +359,9 @@ $menu-slide: "transform 500ms ease" !default;
       .move-left > .inner-wrap { right: $off-canvas-width; }
       .move-right > .inner-wrap { left: $off-canvas-width; }
     }
+
+    // Scroll Container
+
 
   }
 }
