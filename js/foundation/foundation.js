@@ -563,18 +563,11 @@
       //
       // Returns:
       //    Rand (String): Pseudo-random, alphanumeric string.
-      random_str : function (length) {
-        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+      random_str : function () {
+        if (!this.fidx) this.fidx = 0;
+        this.prefix = this.prefix || [(this.name || 'F'), (+new Date).toString(36)].join('-');
 
-        if (!length) {
-          length = Math.floor(Math.random() * chars.length);
-        }
-
-        var str = '';
-        while (length--) {
-          str += chars[Math.floor(Math.random() * chars.length)];
-        }
-        return str;
+        return this.prefix + (this.fidx++).toString(36);
       }
     }
   };
