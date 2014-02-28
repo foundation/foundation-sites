@@ -393,9 +393,7 @@
           $window = this.S(window),
           self = this;
 
-      console.log(this.settings.sticky_topbar)
       if (self.is_sticky(this.settings.sticky_topbar,this.settings.sticky_topbar.parent(), this.settings)) {
-        console.log('fire')
         var distance = this.settings.sticky_topbar.data('stickyoffset');
         if (!self.S(klass).hasClass('expanded')) {
           if ($window.scrollTop() > (distance)) {
