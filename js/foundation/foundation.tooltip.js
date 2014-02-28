@@ -124,7 +124,7 @@
 
       $tip.addClass(classes).appendTo(settings.append_to);
 
-      if (is_touch) {
+      if (Modernizr.touch) {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
         $tip.on('touchstart.fndtn.tooltip', function(e) {
           self.hide($target);
