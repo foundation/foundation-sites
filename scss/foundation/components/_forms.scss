@@ -396,6 +396,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         @include radius($input-border-radius);
       }
     }
+    
+    /* Respect enforced amount of rows for textarea */
+    textarea[rows] {
+      height: auto;
+    }
 
     /* Add height value for select elements to match text input height */
     select {

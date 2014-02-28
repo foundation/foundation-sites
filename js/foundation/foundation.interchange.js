@@ -78,8 +78,8 @@
       this.load('nodes');
     },
 
-    getMediaHash : function() {
-        var mediaHash='';
+    get_media_hash : function() {
+        var media_hash='';
         for (var queryName in this.settings.named_queries ) {
             mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
         }
@@ -92,7 +92,7 @@
       $(window)
         .off('.interchange')
         .on('resize.fndtn.interchange', self.throttle(function () {
-            var currMediaHash = self.getMediaHash();
+            var currMediaHash = self.get_media_hash();
             if (currMediaHash !== prevMediaHash) {
                 self.resize();
             }

@@ -71,17 +71,6 @@
     return arr.join('-');
   };
 
-  var header_helpers = function (class_array) {
-    var i = class_array.length;
-    var head = $('head');
-
-    while (i--) {
-      if(head.has('.' + class_array[i]).length === 0) {
-        head.append('<meta class="' + class_array[i] + '">');
-      }
-    }
-  };
-
   var add_namespace = function (str) {
     var parts = str.split('-'),
         i = parts.length,
@@ -216,10 +205,10 @@
 
 
   var animating,
-    lastTime = 0,
-    vendors = ['webkit', 'moz'],
-    requestAnimationFrame = window.requestAnimationFrame,
-    cancelAnimationFrame = window.cancelAnimationFrame;
+      lastTime = 0,
+      vendors = ['webkit', 'moz'],
+      requestAnimationFrame = window.requestAnimationFrame,
+      cancelAnimationFrame = window.cancelAnimationFrame;
 
   for(; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
     requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
@@ -281,7 +270,7 @@
   window.Foundation = {
     name : 'Foundation',
 
-    version : '5.1.1',
+    version : '5.2.0',
 
     media_queries : {
       small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
@@ -563,18 +552,11 @@
       //
       // Returns:
       //    Rand (String): Pseudo-random, alphanumeric string.
-      random_str : function (length) {
-        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+      random_str : function () {
+        if (!this.fidx) this.fidx = 0;
+        this.prefix = this.prefix || [(this.name || 'F'), (+new Date).toString(36)].join('-');
 
-        if (!length) {
-          length = Math.floor(Math.random() * chars.length);
-        }
-
-        var str = '';
-        while (length--) {
-          str += chars[Math.floor(Math.random() * chars.length)];
-        }
-        return str;
+        return this.prefix + (this.fidx++).toString(36);
       }
     }
   };
