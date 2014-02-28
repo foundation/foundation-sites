@@ -90,7 +90,9 @@
         .off('.dropdown')
         .on('resize.fndtn.dropdown', self.throttle(function () {
           self.resize.call(self);
-        }, 50)).trigger('resize');
+        }, 50));
+
+      this.resize();
     },
 
     close: function (dropdown) {
@@ -100,7 +102,8 @@
           self.S(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
             .removeClass(self.settings.active_class);
-          self.S(this).trigger('closed');
+
+          self.S(this).trigger('closed', [dropdown]);
         }
       });
     },
@@ -116,7 +119,7 @@
         this
           .css(dropdown
             .addClass(this.settings.active_class), target);
-        dropdown.trigger('opened');
+        dropdown.trigger('opened', [dropdown, target]);
     },
 
     data_attr: function () {

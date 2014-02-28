@@ -14,8 +14,8 @@
     var head = $('head');
 
     while (i--) {
-      if(head.has('.' + class_array[i]).length === 0) {
-        head.append('<meta class="' + class_array[i] + '">');
+      if($('head').has('.' + class_array[i]).length === 0) {
+        $('head').append('<meta class="' + class_array[i] + '" />');
       }
     }
   };
@@ -148,7 +148,7 @@
     } else {
       bindLoad.call(image);
     }
-  }
+  };
   
   /*
     https://github.com/paulirish/matchMedia.js
@@ -203,12 +203,12 @@
   // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
   // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
-
   var animating,
       lastTime = 0,
       vendors = ['webkit', 'moz'],
       requestAnimationFrame = window.requestAnimationFrame,
-      cancelAnimationFrame = window.cancelAnimationFrame;
+      cancelAnimationFrame = window.cancelAnimationFrame,
+      jqueryFxAvailable = 'undefined' !== typeof jQuery.fx;
 
   for(; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
     requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
@@ -220,7 +220,10 @@
   function raf() {
     if ( animating ) {
       requestAnimationFrame( raf );
-      jQuery.fx.tick();
+      
+      if ( jqueryFxAvailable ) {
+        jQuery.fx.tick();
+      }
     }
   }
 
@@ -228,16 +231,19 @@
     // use rAF
     window.requestAnimationFrame = requestAnimationFrame;
     window.cancelAnimationFrame = cancelAnimationFrame;
-    jQuery.fx.timer = function( timer ) {
-      if ( timer() && jQuery.timers.push( timer ) && !animating ) {
-        animating = true;
-        raf();
-      }
-    };
+    
+    if ( jqueryFxAvailable ) {
+      jQuery.fx.timer = function( timer ) {
+        if ( timer() && jQuery.timers.push( timer ) && !animating ) {
+          animating = true;
+          raf();
+        }
+      };
 
-    jQuery.fx.stop = function() {
-      animating = false;
-    };
+      jQuery.fx.stop = function() {
+        animating = false;
+      };
+    }
   } else {
     // polyfill
     window.requestAnimationFrame = function( callback, element ) {
@@ -317,6 +323,12 @@
         this.patch(this.libs[lib]);
 
         if (args && args.hasOwnProperty(lib)) {
+            if (typeof this.libs[lib].settings !== 'undefined') {
+                $.extend(true, this.libs[lib].settings, args[lib]);
+            }
+            else if (typeof this.libs[lib].defaults !== 'undefined') {
+                $.extend(true, this.libs[lib].defaults, args[lib]);
+            }
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
 

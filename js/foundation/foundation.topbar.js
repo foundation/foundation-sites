@@ -25,10 +25,10 @@
       this.bindings(method, options);
 
       self.S('[' + this.attr_name() + ']', this.scope).each(function () {
-        var topbar = self.S(this),
+        var topbar = $(this),
             settings = topbar.data(self.attr_name(true) + '-init'),
             section = self.S('section', this),
-            titlebar = $('> ul', this).first();
+            titlebar = topbar.children().filter('ul').first();
 
         topbar.data('index', 0);
 
@@ -139,7 +139,7 @@
           e.preventDefault();
           self.toggle(this);
         })
-        .on('click.fndtn.topbar','.top-bar .top-bar-section li a[href^="#"],[data-topbar] .top-bar-section li a[href^="#"]',function (e) {
+        .on('click.fndtn.topbar','.top-bar .top-bar-section li a[href^="#"],[' + this.attr_name() + '] .top-bar-section li a[href^="#"]',function (e) {
             var li = $(this).closest('li');
             if(self.breakpoint() && !li.hasClass('back') && !li.hasClass('has-dropdown'))
             {
@@ -302,7 +302,7 @@
       var self = this,
           settings = topbar.data(this.attr_name(true) + '-init'),
           section = self.S('section', topbar),
-          titlebar = $('> ul', topbar).first();
+          titlebar = $(this).children().filter('ul').first();
 
       // Pull element out of the DOM for manipulation
       section.detach();

@@ -222,14 +222,20 @@
       self.build_markup();
       if (settings.timer) {
         timer = self.create_timer();
-        Foundation.utils.image_loaded(this.slides().find('img'), timer.start);
+        if(this.slides().children('img').length) {
+          Foundation.utils.image_loaded(this.slides().children('img'), timer.start);
+        }
+        else {
+          timer.start();
+        }
       }
       animate = new FadeAnimation(settings, slides_container);
       if (settings.animation === 'slide')
         animate = new SlideAnimation(settings, slides_container);
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
-      container.on('click', '[data-orbit-slide]', self.link_bullet);
+      if (settings.next_on_click)
+        container.on('click', '[data-orbit-slide]', self.link_bullet);
       container.on('click', self.toggle_timer);
       if (settings.swipe) {
         container.on('touchstart.fndtn.orbit', function(e) {
@@ -290,6 +296,9 @@
         self.update_active_link(0);
         slides_container.trigger('ready.fndtn.orbit');
       });
+      if(!this.slides().children('img').length) {
+        self.compute_dimensions();
+      }
     };
 
     self.init();
@@ -403,6 +412,7 @@
       timer_speed: 10000,
       pause_on_hover: true,
       resume_on_mouseout: false,
+      next_on_click: true,
       animation_speed: 500,
       stack_on_small: false,
       navigation_arrows: true,
