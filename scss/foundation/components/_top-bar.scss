@@ -543,7 +543,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
                 border: none;
                 content: "\00bb";
                 top: 1rem;
-                margin-top: -7px;
+                margin-top: -1px;
                 #{$opposite-direction}: 5px;
                 line-height: 1.2;
               }
