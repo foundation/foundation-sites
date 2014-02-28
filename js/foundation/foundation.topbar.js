@@ -13,7 +13,8 @@
       back_text: 'Back',
       is_hover: true,
       mobile_show_parent_link: false,
-      scrolltop : true // jump to top when sticky nav menu toggle is clicked
+      scrolltop : true, // jump to top when sticky nav menu toggle is clicked
+      sticky_on : 'small'
     },
 
     init : function (section, method, options) {
@@ -31,9 +32,8 @@
             titlebar = topbar.children().filter('ul').first();
 
         topbar.data('index', 0);
-
         var topbarContainer = topbar.parent();
-        if(topbarContainer.hasClass('fixed') || topbarContainer.hasClass(settings.sticky_class)) {
+        if(topbarContainer.hasClass('fixed') || self.is_sticky(topbar, topbarContainer, settings) ) {
           self.settings.sticky_class = settings.sticky_class;
           self.settings.sticky_topbar = topbar;
           topbar.data('height', topbarContainer.outerHeight());
@@ -58,6 +58,22 @@
         }
       });
 
+    },
+
+    is_sticky: function (topbar, topbarContainer, settings) {
+      var sticky = topbarContainer.hasClass(settings.sticky_class);
+
+      if (sticky && settings.sticky_on === 'all') {
+        return true;
+      } else if (sticky && this.small() && settings.sticky_on === 'small') {
+        return true;
+      } else if (sticky && this.medium() && settings.sticky_on === 'medium') {
+        return true;
+      } else if (sticky && this.large() && settings.sticky_on === 'large') {
+        return true;
+      }
+
+      return false;
     },
 
     toggle: function (toggleEl) {
@@ -109,7 +125,7 @@
           }
         }
       } else {
-        if(topbar.parent().hasClass(self.settings.sticky_class)) {
+        if(self.is_sticky(topbar, topbar.parent(), settings)) {
           topbar.parent().addClass('fixed');
         }
 
@@ -273,7 +289,7 @@
             }
         }
 
-        if(stickyContainer.length > 0) {
+        if(self.is_sticky(topbar, stickyContainer, settings)) {
           if(stickyContainer.hasClass('fixed')) {
             // Remove the fixed to allow for correct calculation of the offset.
             stickyContainer.removeClass('fixed');
@@ -296,6 +312,18 @@
 
     breakpoint : function () {
       return !matchMedia(Foundation.media_queries['topbar']).matches;
+    },
+
+    small : function () {
+      return matchMedia(Foundation.media_queries['small']).matches;
+    },
+
+    medium : function () {
+      return matchMedia(Foundation.media_queries['medium']).matches;
+    },
+
+    large : function () {
+      return matchMedia(Foundation.media_queries['large']).matches;
     },
 
     assemble : function (topbar) {
@@ -365,8 +393,9 @@
           $window = this.S(window),
           self = this;
 
-
-      if (self.S(klass).length > 0) {
+      console.log(this.settings.sticky_topbar)
+      if (self.is_sticky(this.settings.sticky_topbar,this.settings.sticky_topbar.parent(), this.settings)) {
+        console.log('fire')
         var distance = this.settings.sticky_topbar.data('stickyoffset');
         if (!self.S(klass).hasClass('expanded')) {
           if ($window.scrollTop() > (distance)) {
