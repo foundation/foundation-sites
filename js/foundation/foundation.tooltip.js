@@ -102,7 +102,7 @@
 
       if ((id && id.length < 1 || !id) && typeof dataSelector != 'string') {
         dataSelector = this.random_str(6);
-        $target.attr('data-selector', this.random_str(6));
+        $target.attr('data-selector', dataSelector);
       }
 
       return (id && id.length > 0) ? id : dataSelector;
