@@ -110,7 +110,7 @@
       return (id && id.length > 0) ? id : dataSelector;
     },
 
-    create : function ($target, is_touch) {
+    create : function ($target) {
       var self = this,
           settings = $.extend({}, this.settings, this.data_options($target)),
           tip_template = this.settings.tip_template;
@@ -124,7 +124,7 @@
 
       $tip.addClass(classes).appendTo(settings.append_to);
 
-      if (is_touch) {
+      if (Modernizr.touch) {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
         $tip.on('touchstart.fndtn.tooltip', function(e) {
           self.hide($target);
