@@ -21,7 +21,6 @@ $topbar-margin-bottom: 0 !default;
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal !default;
 $topbar-title-font-size: rem-calc(17) !default;
-$topbar-link-text-transform: none;
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
@@ -45,6 +44,7 @@ $topbar-link-bg-hover: #272727 !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !default;
 $topbar-link-font-family: $body-font-family !default;
+$topbar-link-text-transform: none !default;
 $topbar-link-padding: $topbar-height / 3 !default;
 
 $topbar-button-font-size: 0.75rem;
