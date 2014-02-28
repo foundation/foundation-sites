@@ -79,7 +79,7 @@
     },
 
     get_media_hash : function() {
-        var media_hash='';
+        var mediaHash='';
         for (var queryName in this.settings.named_queries ) {
             mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
         }
