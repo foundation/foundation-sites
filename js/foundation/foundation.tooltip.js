@@ -31,6 +31,8 @@
       var self = this,
           S = self.S;
 
+      self.create(this.S(instance));
+
       $(this.scope)
         .off('.tooltip')
         .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip',
@@ -78,7 +80,7 @@
         });
     },
 
-    showTip : function ($target, is_touch) {
+    showTip : function ($target) {
       var $tip = this.getTip($target);
 
         return this.show($target);
