@@ -110,7 +110,7 @@
       return (id && id.length > 0) ? id : dataSelector;
     },
 
-    create : function ($target, is_touch) {
+    create : function ($target) {
       var self = this,
           settings = $.extend({}, this.settings, this.data_options($target)),
           tip_template = this.settings.tip_template;
