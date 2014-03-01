@@ -46,14 +46,25 @@ $base-line-height: 150% !default;
 // We use this to create equal side border radius on elements.
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
-	@if $experimental {
-		-moz-border-radius-bottom#{$side}: $radius;
-		-moz-border-radius-top#{$side}: $radius;
-		-webkit-border-bottom-#{$side}-radius: $radius;
-		-webkit-border-top-#{$side}-radius: $radius;
-	}
-	border-bottom-#{$side}-radius: $radius;
-	border-top-#{$side}-radius: $radius;
+  @if ($side == left or $side == right) {
+    @if $experimental {
+      -moz-border-radius-bottom#{$side}: $radius;
+      -moz-border-radius-top#{$side}: $radius;
+      -webkit-border-bottom-#{$side}-radius: $radius;
+      -webkit-border-top-#{$side}-radius: $radius;
+    }
+    border-bottom-#{$side}-radius: $radius;
+    border-top-#{$side}-radius: $radius;
+  } @else {
+    @if $experimental {
+      -moz-border-radius-#{$side}left: $radius;
+      -moz-border-radius-#{$side}right: $radius;
+      -webkit-border-#{$side}-left-radius: $radius;
+      -webkit-border-#{$side}-right-radius: $radius;
+    }
+    border-#{$side}-left-radius: $radius;
+    border-#{$side}-right-radius: $radius;
+  }
 }
 
 // @mixins
@@ -171,6 +182,29 @@ $base-line-height: 150% !default;
     -o-transform: translate($horizontal,$vertical);
   }
   transform: translate($horizontal,$vertical)
+}
+
+// @mixins
+//
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// @mixins
+//
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
 }
 
 // We use these to control various global styles

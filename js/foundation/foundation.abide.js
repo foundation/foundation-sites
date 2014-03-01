@@ -17,9 +17,6 @@
         integer: /^\d+$/,
         number: /-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?/,
 
-        // generic password: upper-case, lower-case, number/special character, and min 8 characters
-        password : /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-
         // amex, visa, diners
         card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
         cvv : /^([0-9]){3,4}$/,
@@ -73,7 +70,7 @@
             self.validate([this], e);
           })
           .on('keydown.fndtn.abide', function (e) {
-            var settings = $(this).closest('form').data('abide-init');
+            var settings = $(this).closest('form').data(self.attr_name(true) + '-init');
             if (settings.live_validate === true) {
               clearTimeout(self.timer);
               self.timer = setTimeout(function () {
@@ -180,7 +177,7 @@
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
-            !required && el.value.length < 1) {
+            !required && el.value.length < 1 || $(el).attr('disabled')) {
             this.S(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');

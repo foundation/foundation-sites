@@ -255,7 +255,11 @@
           el.detach().appendTo(rootElement);
         }
 
-        if (/pop/i.test(settings.animation)) {
+        var animData = getAnimationData(settings.animation);
+        if (!animData.animate) {
+          this.locked = false;
+        }
+        if (animData.pop) {
           css.top = $(window).scrollTop() - el.data('offset') + 'px';
           var end_css = {
             top: $(window).scrollTop() + el.data('css-top') + 'px',
@@ -273,7 +277,7 @@
           }.bind(this), settings.animation_speed / 2);
         }
 
-        if (/fade/i.test(settings.animation)) {
+        if (animData.fade) {
           css.top = $(window).scrollTop() + el.data('css-top') + 'px';
           var end_css = {opacity: 1};
 
@@ -294,7 +298,7 @@
       var settings = this.settings;
 
       // should we animate the background?
-      if (/fade/i.test(settings.animation)) {
+      if (getAnimationData(settings.animation).fade) {
         return el.fadeIn(settings.animation_speed / 2);
       }
 
@@ -307,7 +311,11 @@
       // is modal
       if (css) {
         var settings = el.data(this.attr_name(true) + '-init');
-        if (/pop/i.test(settings.animation)) {
+        var animData = getAnimationData(settings.animation);
+        if (!animData.animate) {
+          this.locked = false;
+        }
+        if (animData.pop) {
           var end_css = {
             top: - $(window).scrollTop() - el.data('offset') + 'px',
             opacity: 0
@@ -323,7 +331,7 @@
           }.bind(this), settings.animation_speed / 2);
         }
 
-        if (/fade/i.test(settings.animation)) {
+        if (animData.fade) {
           var end_css = {opacity: 0};
 
           return setTimeout(function () {
@@ -342,7 +350,7 @@
       var settings = this.settings;
 
       // should we animate the background?
-      if (/fade/i.test(settings.animation)) {
+      if (getAnimationData(settings.animation).fade) {
         return el.fadeOut(settings.animation_speed / 2);
       }
 
@@ -399,4 +407,21 @@
 
     reflow : function () {}
   };
+
+  /*
+   * getAnimationData('popAndFade') // {animate: true,  pop: true,  fade: true}
+   * getAnimationData('fade')       // {animate: true,  pop: false, fade: true}
+   * getAnimationData('pop')        // {animate: true,  pop: true,  fade: false}
+   * getAnimationData('foo')        // {animate: false, pop: false, fade: false}
+   * getAnimationData(null)         // {animate: false, pop: false, fade: false}
+   */
+  function getAnimationData(str) {
+    var fade = /fade/i.test(str);
+    var pop = /pop/i.test(str);
+    return {
+      animate: fade || pop,
+      pop: pop,
+      fade: fade
+    };
+  }
 }(jQuery, this, this.document));

@@ -4,10 +4,11 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '5.1.1',
+    version : '5.2.0',
 
     settings : {
       active_class: 'open',
+      align: 'bottom',
       is_hover: false,
       opened: function(){},
       closed: function(){}
@@ -89,7 +90,9 @@
         .off('.dropdown')
         .on('resize.fndtn.dropdown', self.throttle(function () {
           self.resize.call(self);
-        }, 50)).trigger('resize');
+        }, 50));
+
+      this.resize();
     },
 
     close: function (dropdown) {
@@ -99,7 +102,8 @@
           self.S(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
             .removeClass(self.settings.active_class);
-          self.S(this).trigger('closed');
+
+          self.S(this).trigger('closed', [dropdown]);
         }
       });
     },
@@ -115,7 +119,7 @@
         this
           .css(dropdown
             .addClass(this.settings.active_class), target);
-        dropdown.trigger('opened');
+        dropdown.trigger('opened', [dropdown, target]);
     },
 
     data_attr: function () {
@@ -153,41 +157,97 @@
     },
 
     css : function (dropdown, target) {
-      var offset_parent = dropdown.offsetParent(),
-          position = target.offset();
-
-      position.top -= offset_parent.offset().top;
-      position.left -= offset_parent.offset().left;
-
       if (this.small()) {
+        var p = this.dirs._base.call(dropdown, target);
+
         dropdown.css({
           position : 'absolute',
           width: '95%',
           'max-width': 'none',
-          top: position.top + target.outerHeight()
+          top: p.top + target.outerHeight()
         });
+
         dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
       } else {
-        if (!Foundation.rtl && this.S(window).width() > dropdown.outerWidth() + target.offset().left) {
-          var left = position.left;
-          if (dropdown.hasClass('right')) {
-            dropdown.removeClass('right');
-          }
-        } else {
-          if (!dropdown.hasClass('right')) {
-            dropdown.addClass('right');
-          }
-          var left = position.left - (dropdown.outerWidth() - target.outerWidth());
-        }
+        var settings = target.data(this.attr_name(true) + '-init') || this.settings;
+        this.style(dropdown, target, settings);
+      //   if (!Foundation.rtl && this.S(window).width() > dropdown.outerWidth() + target.offset().left) {
+      //     var left = position.left;
+      //     if (dropdown.hasClass('right')) {
+      //       dropdown.removeClass('right');
+      //     }
+      //   } else {
+      //     if (!dropdown.hasClass('right')) {
+      //       dropdown.addClass('right');
+      //     }
+      //     var left = position.left - (dropdown.outerWidth() - target.outerWidth());
+      //   }
 
-        dropdown.attr('style', '').css({
-          position : 'absolute',
-          top: position.top + target.outerHeight(),
-          left: left
-        });
+      //   dropdown.attr('style', '').css({
+      //     position : 'absolute',
+      //     top: position.top + target.outerHeight(),
+      //     left: left
+      //   });
       }
 
       return dropdown;
+    },
+
+    style : function (dropdown, target, settings) {
+      var css = $.extend({position: 'absolute'}, this.dirs[settings.align].call(dropdown, target, settings));
+
+      dropdown.attr('style', '').css(css);
+    },
+
+    // return CSS property object
+    // `this` is the dropdown
+    dirs : {
+      _base : function (t) {
+        var o_p = this.offsetParent(),
+            o = o_p.offset(),
+            p = t.offset();
+
+        p.top -= o.top;
+        p.left -= o.left;
+
+        return p;
+      },
+      top: function (t, s) {
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+
+        this.addClass('drop-top');
+
+        if (Foundation.rtl) {
+          this.addClass('right');
+          return {left: p.left - this.outerWidth() + t.outerWidth(), top: p.top - this.outerHeight()};
+        }
+
+        return {left: p.left, top: p.top - this.outerHeight()};
+      },
+      bottom: function (t, s) {
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+
+        if (Foundation.rtl) {
+          this.addClass('right');
+          return {left: p.left - this.outerWidth() + t.outerWidth(), top: p.top + t.outerHeight()};
+        }
+
+        return {left: p.left, top: p.top + t.outerHeight()};
+      },
+      left: function (t, s) {
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+
+        this.addClass('drop-left');
+
+        return {left: p.left - this.outerWidth(), top: p.top};
+      },
+      right: function (t, s) {
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+
+        this.addClass('drop-right');
+
+        return {left: p.left + t.outerWidth(), top: p.top};
+      }
     },
 
     small : function () {
@@ -200,7 +260,6 @@
       this.S('html, body').off('.fndtn.dropdown');
       this.S(window).off('.fndtn.dropdown');
       this.S('[data-dropdown-content]').off('.fndtn.dropdown');
-      this.settings.init = false;
     },
 
     reflow : function () {}
