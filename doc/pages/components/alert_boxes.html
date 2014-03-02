@@ -125,6 +125,10 @@ $alert-close-padding: 5px 4px 4px;
 
 // We use this to control border radius
 $alert-radius: $global-radius;
+
+// We use this to control close animation
+// $alert-transition-speed: 300ms;
+// $alert-transition-ease: ease-out;
 ```
 {{/markdown}}
 
@@ -202,40 +206,6 @@ It's easy to configure alert boxes using our provided Javascript. You can use wi
 <script src="js/jquery.js"></script>
 <script src="js/foundation.js"></script>
 <script src="js/foundation.alert.js"></script>
-```
-{{/markdown}}
-
-<h3>Basic</h3>
-
-Using data-attributes is the preferred method of making changes to our Javascript.
-
-<br />
-
-<h4>HTML</h4>
-
-{{#markdown}}
-```html
-<div data-alert data-options="animation_speed:500;" class="custom-alert-box">
-  ...
-</div>
-```
-{{/markdown}}
-
-
-<h3>Advanced</h3>
-
-You can adjust many settings. For example:
-
-<h4>JS</h4>
-
-{{#markdown}}
-```js
-$(document).foundation({
-  alert: {
-    animation_speed: 500,
-    animation: 'fadeOut'
-  }
-});
 ```
 {{/markdown}}
 
