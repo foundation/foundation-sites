@@ -42,8 +42,8 @@ $alert-close-padding: 9px 6px 4px !default;
 // We use this to control border radius
 $alert-radius: $global-radius !default;
 
-$alert-transition-time: 300ms !default;
-$alert-transition-type: ease-out !default;
+$alert-transition-speed: 300ms !default;
+$alert-transition-ease: ease-out !default;
 
 //
 // Alert Mixins
@@ -59,6 +59,7 @@ $alert-transition-type: ease-out !default;
   position: relative;
   padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
   font-size: $alert-font-size;
+  @include single-transition(opacity, $alert-transition-speed, $alert-transition-ease)
 }
 
 // We use this mixin to add alert styles
