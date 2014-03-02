@@ -26,7 +26,7 @@
 
         e.preventDefault();
         alertBox[settings.animation](settings.speed, function () {
-          S(this).trigger('closed').remove();
+          S(this).trigger('close').remove();
           settings.callback();
         });
       });
