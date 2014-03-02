@@ -120,6 +120,7 @@ $alert-transition-ease: ease-out !default;
       &.secondary { @include alert-style($secondary-color); }
       &.warning { @include alert-style($warning-color); }
       &.info { @include alert-style($info-color); }
+      &.alert-close { opacity: 0}
     }
   }
 }
