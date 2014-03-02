@@ -25,7 +25,7 @@
         e.preventDefault();
         alertBox.addClass("alert-close");
         alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-          S(this).remove();
+          S(this).trigger('close').remove();
           settings.callback();
         });
       });
