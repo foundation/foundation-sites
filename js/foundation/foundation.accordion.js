@@ -8,6 +8,7 @@
 
     settings : {
       active_class: 'active',
+      multi_expand: false,
       toggleable: true
     },
 
@@ -32,13 +33,16 @@
 
         if (! S(this).closest('dl').is(accordion)) { return; }
 
-        if (active_content[0] == target[0] && settings.toggleable) {
+        if (settings.toggleable && target.is(active_content)) {
           active_parent.toggleClass(settings.active_class, false);
           return target.toggleClass(settings.active_class, false);
         }
 
-        siblings.removeClass(settings.active_class);
-        aunts.removeClass(settings.active_class);
+        if (!settings.multi_expand) {
+          siblings.removeClass(settings.active_class);
+          aunts.removeClass(settings.active_class);
+        }
+
         target.addClass(settings.active_class).parent().addClass(settings.active_class);
       });
     },
