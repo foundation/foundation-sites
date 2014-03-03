@@ -294,44 +294,45 @@ $cursor-text-value: text !default;
 
 
 @include exports("global") {
-  meta.foundation-version {
-    font-family: "/5.1.0/";
-  }
-  // Used to provide media query values for javascript components.
-  // Forward slash placed around everything to convince PhantomJS to read the value.
-  meta.foundation-mq-small {
-    font-family: "/" + unquote($small-only) + "/";
-    width: lower-bound($small-range);
-  }
-
-  meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-up) + "/";
-    width: lower-bound($medium-range);
-  }
-
-  meta.foundation-mq-large {
-    font-family: "/" + unquote($large-up) + "/";
-    width: lower-bound($large-range);
-  }
-
-  meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-up) + "/";
-    width: lower-bound($xlarge-range);
-  }
-
-  meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-up) + "/";
-    width: lower-bound($xxlarge-range);
-  }
-
-  meta.foundation-data-attribute-namespace {
-    font-family: #{$namespace};
-  }
-
-  // Must be 100% for off canvas to work
-  html, body { height: 100%; }
 
   @if $include-html-global-classes {
+
+    meta.foundation-version {
+      font-family: "/5.1.0/";
+    }
+    // Used to provide media query values for javascript components.
+    // Forward slash placed around everything to convince PhantomJS to read the value.
+    meta.foundation-mq-small {
+      font-family: "/" + unquote($small-only) + "/";
+      width: lower-bound($small-range);
+    }
+
+    meta.foundation-mq-medium {
+      font-family: "/" + unquote($medium-up) + "/";
+      width: lower-bound($medium-range);
+    }
+
+    meta.foundation-mq-large {
+      font-family: "/" + unquote($large-up) + "/";
+      width: lower-bound($large-range);
+    }
+
+    meta.foundation-mq-xlarge {
+      font-family: "/" + unquote($xlarge-up) + "/";
+      width: lower-bound($xlarge-range);
+    }
+
+    meta.foundation-mq-xxlarge {
+      font-family: "/" + unquote($xxlarge-up) + "/";
+      width: lower-bound($xxlarge-range);
+    }
+
+    meta.foundation-data-attribute-namespace {
+      font-family: #{$namespace};
+    }
+
+    // Must be 100% for off canvas to work
+    html, body { height: 100%; }
 
     // Set box-sizing globally to handle padding and border widths
     *,

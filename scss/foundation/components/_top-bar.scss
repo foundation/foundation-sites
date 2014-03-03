@@ -21,7 +21,6 @@ $topbar-margin-bottom: 0 !default;
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal !default;
 $topbar-title-font-size: rem-calc(17) !default;
-$topbar-link-text-transform: none;
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
@@ -45,6 +44,7 @@ $topbar-link-bg-hover: #272727 !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !default;
 $topbar-link-font-family: $body-font-family !default;
+$topbar-link-text-transform: none !default;
 $topbar-link-padding: $topbar-height / 3 !default;
 
 $topbar-button-font-size: 0.75rem;
@@ -93,15 +93,16 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 }
 
 @include exports("top-bar") {
-  // Used to provide media query values for javascript components.
-  // This class is generated despite the value of $include-html-top-bar-classes
-  // to ensure width calculations work correctly.
-  meta.foundation-mq-topbar {
-    font-family: "/" + unquote($topbar-media-query) + "/";
-    width: $topbar-breakpoint;
-  }
 
   @if $include-html-top-bar-classes {
+
+    // Used to provide media query values for javascript components.
+    // This class is generated despite the value of $include-html-top-bar-classes
+    // to ensure width calculations work correctly.
+    meta.foundation-mq-topbar {
+      font-family: "/" + unquote($topbar-media-query) + "/";
+      width: $topbar-breakpoint;
+    }
 
     /* Wrapped around .top-bar to contain to grid width */
     .contain-to-grid {
