@@ -1,6 +1,0 @@
-foo, bar {
-  p: 1; }
-  foo baz, foo hux, bar baz, bar hux {
-    q: 2; }
-    foo baz mumble4, foo hux mumble4, bar baz mumble4, bar hux mumble4 {
-      r: 3; }

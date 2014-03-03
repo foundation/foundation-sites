@@ -1,5 +1,0 @@
-@mixin a-mixin($required, $arg1: default-val1, $arg2: default-val2) {
-  required: $required;
-  arg1: $arg1;
-  arg2: $arg2; }
-.mixed { @include a-mixin($arg2: non-default-val2, $arg1: non-default-val1, $required: foo); }

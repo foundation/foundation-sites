@@ -1,2 +1,0 @@
-@mixin foo { @content }
-a { b: c; @include foo {} }

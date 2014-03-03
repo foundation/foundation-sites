@@ -1,3 +1,0 @@
-[submodule "libsass"]
-	path = libsass
-	url = git://github.com/hcatlin/libsass.git

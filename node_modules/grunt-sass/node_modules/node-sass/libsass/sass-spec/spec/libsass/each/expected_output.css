@@ -1,9 +1,0 @@
-div {
-  color: singleton;
-  divider: 3; }
-  div span {
-    msg: foo; }
-  div span {
-    msg: bar; }
-  div span {
-    msg: hux; }

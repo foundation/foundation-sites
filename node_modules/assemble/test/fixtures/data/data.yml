@@ -1,6 +1,0 @@
-# "data.yml" or "data.json" provides access to the root of the context,
-# which means that variables in a "data" file may be used your templates as-is,
-# so you can do this: {{one}} instead of this: {{data.one}}
-one: first
-two: second
-three: third

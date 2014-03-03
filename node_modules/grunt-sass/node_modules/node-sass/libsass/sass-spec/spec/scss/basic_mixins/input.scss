@@ -1,5 +1,0 @@
-@mixin foo {a: b}
-
-bar {
-  @include foo;
-  c: d; }

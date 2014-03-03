@@ -1,9 +1,0 @@
-div {
-  /* $x: 3/4 */
-  a: 0.75;
-  b: hey 0.75 ho;
-  /* $xs: hey 3/4 ho */
-  c: hey 3/4 ho;
-  d: 3/4;
-  e: true;
-  f: number; }
