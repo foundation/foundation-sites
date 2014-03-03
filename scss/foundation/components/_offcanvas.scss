@@ -277,7 +277,7 @@ $menu-slide: "transform 500ms ease" !default;
     .tab-bar-section { @include tab-bar-section; }
 
     // FOR STICKY OFF CANVAS
-    .off-canvas-wrap.sticky {
+    .off-canvas-wrap.fixy {
       height: 100%;
       .inner-wrap { height: 100%; }
       .scroll-container {
