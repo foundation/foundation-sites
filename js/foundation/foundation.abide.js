@@ -158,6 +158,7 @@
             value = el.value,
             direct_parent = this.S(el).parent(),
             is_equal = el.getAttribute(this.add_namespace('data-equalto')),
+            is_oneof = el.getAttribute(this.add_namespace('data-oneof')),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
             label = this.S('label[for="' + el.getAttribute('id') + '"]'),
@@ -177,6 +178,8 @@
           validations.push(this.valid_checkbox(el, required));
         } else if (is_equal && required) {
           validations.push(this.valid_equal(el, required, parent));
+        } else if (is_oneof && is_checkbox) {
+          validations.push(this.valid_oneof(el, required, parent));
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
@@ -248,6 +251,27 @@
       } else {
         this.S(el).attr(this.invalid_attr, '');
         parent.addClass('error');
+      }
+
+      return valid;
+    },
+
+    valid_oneof: function(el, required, parent, doNotValidateOthers) {
+      var el = this.S(el),
+        others = el.closest('form, body').find('[data-oneof="' + el.attr('data-oneof') + '"]'),
+        valid = others.filter(':checked').length > 0;
+
+      if (valid) {
+        el.removeAttr(this.invalid_attr).parent().removeClass('error');
+      } else {
+        el.attr(this.invalid_attr, '').parent().addClass('error');
+      }
+
+      if (!doNotValidateOthers) {
+        var _this = this;
+        others.each(function() {
+          _this.valid_oneof.call(_this, this, null, null, true);
+        });
       }
 
       return valid;
