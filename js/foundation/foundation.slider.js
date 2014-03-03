@@ -36,6 +36,7 @@
         })
         .on('mousemove.fndtn.slider', function(e){
           if (!!self.cache.active) {
+            e.preventDefault();
             var $handle = self.cache.active,
             handle_w = $.data($handle, 'handle_w'),
             handle_o = $.data($handle, 'handle_o'),
