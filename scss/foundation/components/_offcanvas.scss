@@ -276,21 +276,6 @@ $menu-slide: "transform 500ms ease" !default;
 
     .tab-bar-section { @include tab-bar-section; }
 
-    // FOR STICKY OFF CANVAS
-    .off-canvas-wrap.fixy {
-      height: 100%;
-      .inner-wrap { height: 100%; }
-      .scroll-container {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: $tabbar-height;
-        overflow: scroll;
-        -webkit-overflow-scrolling: touch;
-      }
-    }
-
     // MENU BUTTON
     // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
     .tab-bar .menu-icon {
