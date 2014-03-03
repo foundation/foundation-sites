@@ -38,17 +38,44 @@
           if (!!self.cache.active) {
             var $handle = self.cache.active,
             handle_w = $.data($handle, 'handle_w'),
-            bar_o = $.data($handle, 'bar_o'),
-            bar_w = $.data($handle, 'bar_w');
+            handle_o = $.data($handle, 'handle_o'),
+            bar_w = $.data($handle, 'bar_w'),
+            bar_o = $.data($handle, 'bar_o');
             requestAnimationFrame(function(){
-              var pct = Math.min(Math.max(((((e.pageX-handle_w*0.5)-bar_o)/bar_w)*100),0),100);
-              $(self.cache.active).css('left', pct+'%');
+              var pct = self.limit_to((((e.pageX-handle_w*0.5)-bar_o)/bar_w),0,1),
+                  handle_offset = pct*bar_w-handle_w*0.5,
+                  progress_bar_width = pct*100;
+              self.set_translate($(self.cache.active), handle_offset);
+              $(self.cache.active).siblings('.range-slider-active-segment').css('width', progress_bar_width+'%');
+              $('#ranger').val(pct);
             });
           }
         })
         .on('mouseup.fndtn.slider', function(e){
           self.cache.active = null;
         });
+    },
+
+    set_translate : function(ele, offset, vertical) {
+      if (vertical) {
+        $(ele)
+          .css('-webkit-transform', 'translateY('+offset+'px)')
+          .css('-moz-transform', 'translateY('+offset+'px)')
+          .css('-ms-transform', 'translateY('+offset+'px)')
+          .css('-o-transform', 'translateY('+offset+'px)')
+          .css('transform', 'translateY('+offset+'px)');
+      } else {
+        $(ele)
+          .css('-webkit-transform', 'translateX('+offset+'px)')
+          .css('-moz-transform', 'translateX('+offset+'px)')
+          .css('-ms-transform', 'translateX('+offset+'px)')
+          .css('-o-transform', 'translateX('+offset+'px)')
+          .css('transform', 'translateX('+offset+'px)');
+      }
+    },
+
+    limit_to : function(val, min, max) {
+      return Math.min(Math.max(val, min), max);
     },
 
     reflow : function() {}
