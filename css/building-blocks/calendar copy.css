@@ -1,0 +1,91 @@
+/* Styles for Calendar */
+.calendar {
+  padding-bottom: 26px;
+  margin-top: 30px;
+  width: 100%;
+  display: block;
+}
+.calendar thead {
+  display: none;
+}
+@media only screen and (min-width: 767px) {
+  .calendar thead {
+    text-align: center;
+    display: block;
+  }
+}
+.calendar tbody td {
+  display: block;
+  clear: both;
+}
+@media only screen and (min-width: 767px) {
+  .calendar tbody td {
+    display: table-cell;
+    width: 150px;
+    height: 150px;
+    position: relative;
+  }
+}
+.calendar tbody td span {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.calendar .day {
+  display: block;
+  float: left;
+  width: 20px;
+  margin-right: 10px;
+}
+.calendar .inactive {
+  color: #ccc;
+}
+.calendar .event {
+  float: left;
+  border-radius: 3px;
+  display: block;
+  padding: 2px;
+  font-size: 0.9em;
+  cursor: pointer;
+  position: relative;
+  margin-top: 18px;
+  margin-bottom: -12px;
+}
+.calendar .event.blue {
+  background: #3a87ad;
+}
+.calendar .event.yellow {
+  background: #f9c846;
+}
+.calendar .event.green {
+  background: #a7d85b;
+}
+
+/*  ======================================
+displaying for small 
+ ======================================*/
+@media only screen and (max-width: 767px) {
+  .calendar tbody td {
+    width: 100% !important;
+  }
+  .calendar tbody td span {
+    position: relative;
+  }
+  .calendar .event {
+    float: none;
+    margin-top: 5px;
+    position: relative;
+    margin-left: 15px;
+    margin-bottom: 0;
+  }
+  .calendar tbody tr, .calendar tbody {
+    width: 100%;
+    display: block;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .event {
+    width: 100%;
+    display: block;
+  }
+}

@@ -1,0 +1,34 @@
+
+/* Styles for signup */
+
+.signup-panel{
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 30px;
+  i{
+    font-size: 30px;
+    line-height: 50px;
+    color: #999;
+  }
+  form{
+    input, span{
+    height: 50px;
+  }
+  
+  }
+  .welcome{
+    font-size: 26px;
+    text-align: center;
+    margin-left: 0;
+  }
+  p{
+    font-size: 13px;
+    font-weight: 200;
+    margin-left: 25%;
+  }
+  .button{
+    margin-left: 35%;
+  }
+  
+}

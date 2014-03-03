@@ -1,0 +1,113 @@
+/*------------------------------------
+ timeline styles
+------------------------------------*/
+.path-container{
+  margin-top: 50px;
+  margin-bottom: 70px;
+  .path-item{
+    
+    h1{
+       text-align: center;
+       margin-bottom: 70px;
+    }
+    h3 {
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    p {
+      font-size: emCalc(16px);
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+    a {
+      font-weight: bold;
+      font-size: emCalc(14px);
+    }
+    .circle{
+      background-color: #ccc;
+      background-size: 156px 156px;
+      border-radius: 50%;
+      width: 156px;
+      height: 156px;
+      position: relative;
+      margin-bottom: 180px;
+      z-index:2;
+      &.circle-left{
+        left: -7px;
+      }
+      &.circle-right{
+        right: -10px;
+      }
+    }
+  }
+  .line {
+    background: #ddd;
+    width: 2px;
+    bottom: 0;
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    z-index: 0;
+    height: 1164px;
+  }
+}
+  
+/*------------------------------------
+ medium timeline styles
+------------------------------------*/
+	
+	@media only screen and (max-width: 960px) and (min-width: 768px) {
+	.line {
+		display: none !important;
+	}
+	.large-5.columns.path-text {
+		width: 70%;
+		right: 0;
+		margin-left: 15px;
+	}
+	.path-item .large-7 {
+		width: 25%;
+	}
+	.push-5 {
+		left: 0;
+		float: right;
+	}
+  .circle-right{
+    float: left;
+    right: 0px !important;
+  }
+  .circle-left{
+    left: 0px !important;
+  }
+
+}
+
+
+/*------------------------------------
+ mobile timeline styles
+------------------------------------*/
+
+
+@media only screen and (max-width: 767px){ 
+	.path-container {
+		text-align: center;
+		.circle{
+  		top: 0;
+  		right: 0;
+  		left: 0;
+  		float: none;
+  		margin-bottom: 30px !important;
+  		margin-top: 60px;
+  		margin-left: auto;
+  		margin-right: auto;
+    }	
+	}	
+}
+
+
+
+	
+
+
+
+		

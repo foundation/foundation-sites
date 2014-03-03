@@ -1,0 +1,13 @@
+.social-button {
+  margin-top: 40px;
+  float: left;
+}
+.social-button .large {
+  font-size: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+.social-button span {
+  display: block;
+  text-align: center;
+}

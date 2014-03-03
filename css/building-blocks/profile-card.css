@@ -1,0 +1,63 @@
+.bump {
+  margin-top: 50px;
+}
+
+.profile-card {
+  padding-top: 15px;
+  padding-bottom: 0px;
+  border-radius: 5px;
+  background: #2B2937;
+  overflow: hidden;
+}
+.profile-card h4 {
+  font-family: "Proxima Nova","proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 30px;
+  line-height: 26px;
+}
+.profile-card h4 span {
+  font-size: 20px;
+  color: #8C91A7;
+  display: block;
+}
+.profile-card img {
+  border-radius: 50%;
+  border: 4px solid #69708C;
+}
+.profile-card .button-group {
+  width: 101%;
+}
+.profile-card .button-group .button {
+  margin-bottom: 0;
+  border-top: none;
+  border-left: none;
+  border-right: 2px solid #2B2937;
+  border-bottom: none;
+  background-color: #394165;
+  height: 80px;
+  padding-top: 15px;
+  margin-top: 20px;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 26px;
+  color: #8C91A7;
+  box-shadow: none;
+}
+.profile-card .button-group .button span {
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+}
+.profile-card p {
+  font-size: 16px;
+  margin-bottom: 0;
+  color: #8C91A7;
+}
+.profile-card i {
+  font-size: 26px;
+  vertical-align: middle;
+  padding-right: 5px;
+  color: #394165;
+}

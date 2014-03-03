@@ -1,0 +1,41 @@
+/* Styles for search dropdown */
+.search {
+  position: relative;
+  padding-top: 41px;
+  margin-bottom: 0;
+}
+.search input {
+  padding-left: 240px;
+}
+.search .keyword {
+  position: absolute;
+  width: 100px;
+  margin-left: 10px;
+  margin-top: 17px;
+}
+.search i {
+  position: absolute;
+  margin-left: 207px;
+  font-size: 30px;
+  line-height: 50px;
+  color: #ccc;
+}
+.search .search-field {
+  height: 50px;
+}
+.search .arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #2ba6cb;
+  margin-left: 71px;
+  margin-top: -10px;
+}
+
+#drop3.content.open {
+  position: absolute !important;
+  top: 30px !important;
+  left: -10px !important;
+  width: 120% !important;
+}

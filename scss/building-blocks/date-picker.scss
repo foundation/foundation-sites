@@ -1,0 +1,65 @@
+
+/* Styles for Date picker */
+
+.date-picker-header{
+  background: #65BED9;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+ 
+  .arrow-left{
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .arrow-right{
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+}
+
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid #ccc;
+}
+
+.arrow-left {
+	width: 0; 
+	height: 0; 
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent; 
+	border-right:5px solid #ccc; 
+}
+
+
+.week{
+  p{
+    text-align: center;
+   margin-bottom: 0;
+   
+  }
+}
+.days li{
+height: 50px;
+p{
+  color: #888;
+ text-align: center;
+line-height: 50px;
+}
+&:hover{
+background-color:#efefef;
+}
+&.current{
+background-color:#efefef;
+}
+&.disabled{
+background: #efefef;
+&:hover{
+  background:#efefef;
+}
+}
+}

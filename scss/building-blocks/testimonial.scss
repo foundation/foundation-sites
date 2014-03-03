@@ -1,0 +1,59 @@
+h2{
+  margin-top: 40px;
+  font-family: "Proxima Nova","proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 200;
+  color: #333;
+}
+
+
+.centered-text {
+  text-align: center;
+}
+
+.quote {
+  background: #ebf3f5;
+  padding: 15px 20px 5px 15px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  &:after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 20px 18px 0 18px;
+    border-color: #ebf3f5 transparent transparent transparent;
+    position: relative;
+    top: 37px;
+    left: 20px;
+  }
+}
+
+.student {
+  margin-left: 25px;
+  margin-bottom: 80px;
+  .photo{
+    background-color: #ccc;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 10px;
+  }
+  p{
+    font-family: "Proxima Nova Condensed","proxima-nova-condensed","Helvetica Neue",Helvetica,Arial,sans-serif;
+    position: relative;
+    top: 5px;
+    text-transform: uppercase;
+    &:nth-child(2) {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    &:nth-child(3) {
+      font-size: 14px;
+      color: #777;
+    }
+  }
+}
+
+
