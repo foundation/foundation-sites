@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.1.1',
+    version: '5.2.0',
 
     settings : {
       templates : {
