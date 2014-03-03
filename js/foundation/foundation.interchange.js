@@ -199,8 +199,6 @@
           data_attr = this.data_attr;
 
       this.cached_nodes = [];
-      // Set nodes_loaded to true if there are no nodes
-      // this.nodes_loaded = false;
       this.nodes_loaded = (count === 0);
 
 

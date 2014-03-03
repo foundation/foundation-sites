@@ -44,6 +44,10 @@
       var self = this,
       S = self.S;
 
+      if ($('.scroll-container').length > 0) {
+        this.scope = $('.scroll-container');
+      }
+
       S(this.scope)
         .off('.clearing')
         .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li',
@@ -164,11 +168,13 @@
 
     open : function ($image, current, target) {
 
-      var body = $(document.body),
+      var self = this,
+          body = $(document.body),
           root = target.closest('.clearing-assembled'),
           container = $('div', root).first(),
           visible_image = $('.visible-img', container),
-          image = $('img', visible_image).not($image);
+          image = $('img', visible_image).not($image),
+          label = $('.clearing-touch-label', '.clearing-blackout');
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
@@ -185,7 +191,7 @@
           visible_image.show();
           this.fix_height(target)
             .caption(self.S('.clearing-caption', visible_image), $image)
-            .center_and_label(image,label)
+            .center_and_label(image, label)
             .shift(current, target, function () {
               target.siblings().removeClass('visible');
               target.addClass('visible');
@@ -299,10 +305,13 @@
           marginLeft : -(target.outerWidth() / 2),
           marginTop : -(target.outerHeight() / 2)
         });
-        label.css({
-          marginLeft : -(label.outerWidth() / 2),
-          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
-        });
+
+        if (label.length > 0) {
+          label.css({
+            marginLeft : -(label.outerWidth() / 2),
+            marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
+          });
+        }
       } else {
         target.css({
           marginRight : -(target.outerWidth() / 2),
@@ -310,12 +319,15 @@
           left: 'auto',
           right: '50%'
         });
-        label.css({
-          marginRight : -(label.outerWidth() / 2),
-          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
-          left: 'auto',
-          right: '50%'
-        });
+
+        if (label.length > 0) {
+          label.css({
+            marginRight : -(label.outerWidth() / 2),
+            marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
+            left: 'auto',
+            right: '50%'
+          });
+        }
       }
       return this;
     },
