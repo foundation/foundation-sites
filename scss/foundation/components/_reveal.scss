@@ -48,7 +48,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   width: 100%;
   background: $reveal-overlay-bg-old;
   background: $reveal-overlay-bg;
-  z-index: 98;
+  z-index: 99;
   display: none;
   top: 0;
   #{$default-float}: 0;
@@ -67,7 +67,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     display: none;
     position: absolute;
     #{$default-float}: 50%;
-    z-index: 99;
+    z-index: 100;
     height: auto;
 
     // Make sure rows don't have a min-width on them
