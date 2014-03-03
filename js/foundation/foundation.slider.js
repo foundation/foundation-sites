@@ -42,7 +42,7 @@
             bar_w = $.data($handle, 'bar_w'),
             bar_o = $.data($handle, 'bar_o');
             requestAnimationFrame(function(){
-              var pct = self.limit_to((((e.pageX-handle_w*0.5)-bar_o)/bar_w),0,1),
+              var pct = self.limit_to((((e.pageX)-bar_o)/bar_w),0,1),
                   handle_offset = pct*bar_w-handle_w*0.5,
                   progress_bar_width = pct*100;
               self.set_translate($(self.cache.active), handle_offset);
