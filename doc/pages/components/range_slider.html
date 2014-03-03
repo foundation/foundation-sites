@@ -9,9 +9,9 @@ layout: doc/layouts/default.html
 
 ***
 
-<div class="range-slider" data-range data-options="range: 0, 100;">
+<div class="range-slider" data-slider data-options="range: 0, 100;">
   <span class="range-slider-active-segment" style="width: 24%;"></span>
-  <span class="range-slider-handle" style="left: 24%;"></span>
+  <span class="range-slider-handle"></span>
 </div>
 
 ***
@@ -25,14 +25,14 @@ You can create a range slider bar using minimal markup.
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider" data-range data-options="range: 0, 100;"></div>
+<div class="range-slider" data-slider data-options="range: 0, 100;"></div>
 ```
 {{/markdown}}
 
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider" data-range data-options="range: 0, 100;">
+    <div class="range-slider" data-slider data-options="range: 0, 100;">
       <span class="range-slider-handle"></span>
     </div>
 
@@ -54,13 +54,13 @@ You can add a border radius to the range slider by adding the `radius` class to 
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider radius" data-range data-options="range: 0, 100;"></div>
+<div class="range-slider radius" data-slider data-options="range: 0, 100;"></div>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider radius" data-range data-options="range: 0, 100;">
+    <div class="range-slider radius" data-slider data-options="range: 0, 100;">
       <span class="range-slider-handle"></span>
     </div>
   </div>
@@ -75,13 +75,13 @@ You can create a vertical range slider instead of the default horizontal slider 
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider vertical-range" data-range data-options="range: 0, 100;"></div>
+<div class="range-slider vertical-range" data-slider data-options="range: 0, 100;"></div>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider vertical-range" data-range data-options="range: 0, 100;">
+    <div class="range-slider vertical-range" data-slider data-options="range: 0, 100;">
       <span class="range-slider-active-segment" style="height: 24%;"></span>
       <span class="range-slider-handle" style="bottom: 24%;"></span>
     </div>
@@ -90,20 +90,20 @@ You can create a vertical range slider instead of the default horizontal slider 
 
 ### Fixed Steps
 
-You can create a range slider with fixed steps by defining those steps in your `data-range data-options` attribute.
+You can create a range slider with fixed steps by defining those steps in your `data-slider data-options` attribute.
 
 <div class="row">
   <div class="large-6 columns">
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider" data-range data-options="fixed_steps: 10,20,30,40,50;"></div>
+<div class="range-slider" data-slider data-options="fixed_steps: 10,20,30,40,50;"></div>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider" data-range data-options="fixed_steps: 10,20,30,40,50;">
+    <div class="range-slider" data-slider data-options="fixed_steps: 10,20,30,40,50;">
       <span class="range-slider-handle"></span>
     </div>
   </div>
