@@ -59,9 +59,30 @@ Additional classes can be added to your dropdown to change its appearance.
   </div>
 </div>
 
+***
+
 <h3>Directions</h3>
 
-{{> examples_dropdown_directions}}
+You can now position dropdowns on the top, bottom, left, or right of the target element. The default position is *bottom* and you do not need to change anything to get your tooltip positioned *bottom*.
+
+To set other alignments, just specify the <code>align</code> property in <code>data-options</code> on the target element.
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+```html
+<a href="#" class="button" data-dropdown="drop" data-options="align:left">Link Dropdown &raquo;</a>
+<ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    {{> examples_dropdown_directions}}
+  </div>
+</div>
 
 ***
 

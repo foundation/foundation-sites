@@ -204,6 +204,7 @@
     // return CSS property object
     // `this` is the dropdown
     dirs : {
+      // Calculate target offset
       _base : function (t) {
         var o_p = this.offsetParent(),
             o = o_p.offset(),
@@ -256,6 +257,7 @@
       }
     },
 
+    // Insert rule to style psuedo elements
     adjust_pip : function (pip_offset_base, p) {
       var sheet = Foundation.stylesheet;
 
@@ -263,7 +265,6 @@
         pip_offset_base += p.left - 8;
       }
 
-      // Remove the old rules
       this.rule_idx = sheet.cssRules.length;
 
       var sel_before = '.f-dropdown.open:before',
@@ -280,6 +281,7 @@
       }
     },
 
+    // Remove old dropdown rule index
     clear_idx : function () {
       var sheet = Foundation.stylesheet;
 
