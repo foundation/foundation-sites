@@ -10,7 +10,7 @@
       start: 0,
       end: 100,
       step: 1,
-      input_selector: '',
+      display_selector: '',
       on_change: function(){}
     },
 
@@ -92,7 +92,13 @@
       $handle.parent().children('input[type=hidden]').val(value);
 
       if (settings.input_id != '') {
-        $(settings.input_selector).val(value);
+        $(settings.display_selector).each(function(){
+          if (this.hasOwnProperty('value')) {
+            $(this).val(value);
+          } else {
+            $(this).text(value);
+          }
+        });
       }
 
     },
