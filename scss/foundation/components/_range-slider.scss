@@ -31,12 +31,12 @@ $range-slider-vertical-bar-height: rem-calc(200) !default;
 
 // These variabels define the slider handle styles
 $range-slider-handle-width: rem-calc(32) !default;
-$range-slider-handle-height: $range-slider-handle-width !default;
-$range-slider-handle-margin-top: rem-calc(-10) !default;
+$range-slider-handle-height: rem-calc(21) !default;
+$range-slider-handle-margin-top: rem-calc(-11) !default;
 $range-slider-handle-bg-color: $primary-color !default;
 $range-slider-handle-border-width: 1px !default;
 $range-slider-handle-border-style: solid !default;
-$range-slider-handle-border-color: scale-color($range-slider-handle-bg-color, $lightness: -10%) !default;
+$range-slider-handle-border-color: none !default;
 $range-slider-handle-radius: $global-radius !default;
 $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%) !default;
 $range-slider-handle-cursor: pointer !default;
