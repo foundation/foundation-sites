@@ -10,6 +10,7 @@
       start: 0,
       end: 100,
       step: 1,
+      initial: null,
       display_selector: '',
       on_change: function(){}
     },
@@ -140,17 +141,17 @@
     },
 
     initialize_settings : function(handle) {
-      $.data(handle,'bar', $(handle).parent());
-      $.data(handle,'bar_o', $(handle).parent().offset().left);
-      $.data(handle,'bar_w', $(handle).parent().outerWidth());
-      $.data(handle,'handle_o', $(handle).offset().left);
-      $.data(handle,'handle_w', $(handle).outerWidth());
-      $.data(handle,'settings', $.extend({}, this.settings, this.data_options($(handle).parent())));
+      $.data(handle, 'bar', $(handle).parent());
+      $.data(handle, 'bar_o', $(handle).parent().offset().left);
+      $.data(handle, 'bar_w', $(handle).parent().outerWidth());
+      $.data(handle, 'handle_o', $(handle).offset().left);
+      $.data(handle, 'handle_w', $(handle).outerWidth());
+      $.data(handle, 'settings', $.extend({}, this.settings, this.data_options($(handle).parent())));
     },
 
     set_initial_position: function($ele) {
-      var settings = $.extend({}, this.settings, this.data_options($ele)),
-          initial = ((settings.end-settings.start)*0.5/settings.step)*settings.step,
+      var settings = $.data(handle, 'settings'),
+          initial = (!!settings.initial ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step),
           $handle = $ele.children('.range-slider-handle');
       this.set_ui($handle, initial);
     },
