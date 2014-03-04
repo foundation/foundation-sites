@@ -1,5 +1,7 @@
 .bump {
   margin-top: 50px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 .profile-card {
@@ -60,4 +62,15 @@
   vertical-align: middle;
   padding-right: 5px;
   color: #394165;
+}
+
+@media only screen and (max-width: 767px) {
+  .profile-card img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  }
+  .profile-card h4, .profile-card p {
+    text-align: center;
+  }
 }
