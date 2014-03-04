@@ -89,6 +89,8 @@
       $handle.parent().attr(this.attr_name(), value);
       $handle.parent().trigger('change');
 
+      $handle.parent().children('input[type=hidden]').val(value);
+
       if (settings.input_id != '') {
         $(settings.input_selector).val(value);
       }
