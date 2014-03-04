@@ -31,11 +31,12 @@ bundle exec compass create -r zurb-foundation --using foundation --force
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Test your changes to the best of your ability.  We've provided a spec/ folder, please run the tests to ensure your changes didn't break something add tests as necessary.
-4. Update the documentation to reflect your changes if they add or changes current functionality. Make sure you are in the docs folder, then run `bundle && bundle exec foreman start` to compile to documentation.
-5. Commit your changes (`git commit -am 'Added some feature'`)
-6. Push to the branch (`git push origin my-new-feature`)
-7. Create new Pull Request
+3. All code should have a 2 space indentation to avoid conflicts.
+4. Test your changes to the best of your ability.
+5. Update the documentation to reflect your changes if they add or changes current functionality. Make sure you are in the docs folder, then run `bundle && bundle exec foreman start` to compile to documentation.
+6. Commit your changes (`git commit -am 'Added some feature'`)
+7. Push to the branch (`git push origin my-new-feature`)
+8. Create new Pull Request
 
 ## JavaScript Testing
 
