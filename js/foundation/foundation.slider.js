@@ -10,7 +10,8 @@
       start: 0,
       end: 100,
       step: 1,
-      input_selector: ''
+      input_selector: '',
+      on_change: function(){}
     },
 
     cache : {},
@@ -39,8 +40,10 @@
         })
         .on('mouseup.fndtn.slider touchend.fndtn.slider', function(e) {
           self.remove_active_slider();
+        })
+        .on('changed.fndtn.slider', function(e) {
+          self.settings.on_change;
         });
-        // include callback event from settings for on value change
 
       self.S(window)
         .on('resize.fndtn.slider', self.throttle(function(e) {
@@ -84,7 +87,7 @@
       $handle.siblings('.range-slider-active-segment').css('width', progress_bar_width+'%');
       
       $handle.parent().attr(this.attr_name(), value);
-      // trigger value changed event
+      $handle.parent().trigger('change');
 
       if (settings.input_id != '') {
         $(settings.input_selector).val(value);
