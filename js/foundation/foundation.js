@@ -361,10 +361,19 @@
     },
 
     set_namespace: function () {
-      var namespace = $('.foundation-data-attribute-namespace').css('font-family');
+
+      // Don't bother reading the namespace out of the meta tag
+      // if the namespace has been set globally in javascript
+      //
+      // Example: something like Foundation.global.namespace = 'my-namespace';
+      //
+      // Otherwise, if the namespace hasn't been set globally,
+      // read it out of the meta tag
+      //
+      var namespace = this.global.namespace || $('.foundation-data-attribute-namespace').css('font-family');
 
       if (/false/i.test(namespace)) return;
-
+      
       this.global.namespace = namespace;
     },
 
