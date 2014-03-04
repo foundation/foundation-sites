@@ -31,7 +31,7 @@
   // Enable FastClick if present
 
   $(function() {
-    if(typeof FastClick !== 'undefined') {
+    if (typeof FastClick !== 'undefined') {
       // Don't attach to body if undefined
       if (typeof document.body !== 'undefined') {
         FastClick.attach(document.body);
@@ -76,7 +76,7 @@
         i = parts.length,
         arr = [];
 
-    while(i--) {
+    while (i--) {
       if (i !== 0) {
         arr.push(parts[i]);
       } else {
@@ -170,7 +170,7 @@
     fakeBody.style.background = "none";
     fakeBody.appendChild(div);
 
-    return function(q){
+    return function (q) {
 
       div.innerHTML = "&shy;<style media=\"" + q + "\"> #mq-test-1 { width: 42px; }</style>";
 
@@ -196,7 +196,7 @@
    * Licensed under the MIT license.
    */
 
-  (function( $ ) {
+  (function($) {
 
   // requestAnimationFrame polyfill adapted from Erik Möller
   // fixes from Paul Irish and Tino Zijdel
@@ -210,7 +210,7 @@
       cancelAnimationFrame = window.cancelAnimationFrame,
       jqueryFxAvailable = 'undefined' !== typeof jQuery.fx;
 
-  for(; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
+  for (; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
     requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
     cancelAnimationFrame = cancelAnimationFrame ||
       window[ vendors[lastTime] + "CancelAnimationFrame" ] || 
@@ -218,48 +218,48 @@
   }
 
   function raf() {
-    if ( animating ) {
-      requestAnimationFrame( raf );
+    if (animating) {
+      requestAnimationFrame(raf);
       
-      if ( jqueryFxAvailable ) {
+      if (jqueryFxAvailable) {
         jQuery.fx.tick();
       }
     }
   }
 
-  if ( requestAnimationFrame ) {
+  if (requestAnimationFrame) {
     // use rAF
     window.requestAnimationFrame = requestAnimationFrame;
     window.cancelAnimationFrame = cancelAnimationFrame;
     
-    if ( jqueryFxAvailable ) {
-      jQuery.fx.timer = function( timer ) {
-        if ( timer() && jQuery.timers.push( timer ) && !animating ) {
+    if (jqueryFxAvailable) {
+      jQuery.fx.timer = function (timer) {
+        if (timer() && jQuery.timers.push(timer) && !animating) {
           animating = true;
           raf();
         }
       };
 
-      jQuery.fx.stop = function() {
+      jQuery.fx.stop = function () {
         animating = false;
       };
     }
   } else {
     // polyfill
-    window.requestAnimationFrame = function( callback, element ) {
+    window.requestAnimationFrame = function (callback, element) {
       var currTime = new Date().getTime(),
-        timeToCall = Math.max( 0, 16 - ( currTime - lastTime ) ),
-        id = window.setTimeout( function() {
-          callback( currTime + timeToCall );
-        }, timeToCall );
+        timeToCall = Math.max(0, 16 - (currTime - lastTime)),
+        id = window.setTimeout(function () {
+          callback(currTime + timeToCall);
+        }, timeToCall);
       lastTime = currTime + timeToCall;
       return id;
     };
 
-    window.cancelAnimationFrame = function(id) {
+    window.cancelAnimationFrame = function (id) {
       clearTimeout(id);
     };
-      
+
   }
 
   }( jQuery ));
@@ -400,7 +400,7 @@
       //
       // Returns:
       //    Lazy_function (Function): Function with throttling applied.
-      throttle : function(func, delay) {
+      throttle : function (func, delay) {
         var timer = null;
 
         return function () {
@@ -427,11 +427,11 @@
       //
       // Returns:
       //    Lazy_function (Function): Function with debouncing applied.
-      debounce : function(func, delay, immediate) {
+      debounce : function (func, delay, immediate) {
         var timeout, result;
-        return function() {
+        return function () {
           var context = this, args = arguments;
-          var later = function() {
+          var later = function () {
             timeout = null;
             if (!immediate) result = func.apply(context, args);
           };
@@ -477,7 +477,7 @@
           return ! isNaN (o-0) && o !== null && o !== "" && o !== false && o !== true;
         }
 
-        function trim(str) {
+        function trim (str) {
           if (typeof str === 'string') return $.trim(str);
           return str;
         }
@@ -505,7 +505,7 @@
       //    Foundation.media_queries
       //
       //    Class (String): Class name for the generated <meta> tag
-      register_media : function(media, media_class) {
+      register_media : function (media, media_class) {
         if(Foundation.media_queries[media] === undefined) {
           $('head').append('<meta class="' + media_class + '">');
           Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
@@ -520,12 +520,13 @@
       //
       //    Media (String): Optional media query string for the CSS rule to be 
       //    nested under.
-      add_custom_rule : function(rule, media) {
-        if(media === undefined) {
+      add_custom_rule : function (rule, media) {
+        if (media === undefined) {
           Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
         } else {
           var query = Foundation.media_queries[media];
-          if(query !== undefined) {
+
+          if (query !== undefined) {
             Foundation.stylesheet.insertRule('@media ' + 
               Foundation.media_queries[media] + '{ ' + rule + ' }');
           }
@@ -542,13 +543,15 @@
       image_loaded : function (images, callback) {
         var self = this,
             unloaded = images.length;
-        if(unloaded == 0){
+
+        if(unloaded == 0) {
             callback(images);
         }
-        images.each(function(){
-          single_image_loaded(self.S(this),function(){
+
+        images.each(function () {
+          single_image_loaded(self.S(this),function () {
             unloaded -= 1; 
-            if(unloaded == 0){
+            if (unloaded == 0) {
               callback(images);
             }
           });
