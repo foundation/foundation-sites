@@ -172,31 +172,16 @@
         dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
       } else {
         var settings = target.data(this.attr_name(true) + '-init') || this.settings;
-        this.style(dropdown, target, settings);
-      //   if (!Foundation.rtl && this.S(window).width() > dropdown.outerWidth() + target.offset().left) {
-      //     var left = position.left;
-      //     if (dropdown.hasClass('right')) {
-      //       dropdown.removeClass('right');
-      //     }
-      //   } else {
-      //     if (!dropdown.hasClass('right')) {
-      //       dropdown.addClass('right');
-      //     }
-      //     var left = position.left - (dropdown.outerWidth() - target.outerWidth());
-      //   }
 
-      //   dropdown.attr('style', '').css({
-      //     position : 'absolute',
-      //     top: position.top + target.outerHeight(),
-      //     left: left
-      //   });
+        this.style(dropdown, target, settings);
       }
 
       return dropdown;
     },
 
     style : function (dropdown, target, settings) {
-      var css = $.extend({position: 'absolute'}, this.dirs[settings.align].call(dropdown, target, settings));
+      var css = $.extend({position: 'absolute'}, 
+        this.dirs[settings.align].call(dropdown, target, settings));
 
       dropdown.attr('style', '').css(css);
     },
@@ -216,13 +201,17 @@
         return p;
       },
       top: function (t, s) {
-        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+        var self = Foundation.libs.dropdown,
+            p = Foundation.libs.dropdown.dirs._base.call(this, t),
+            pip_offset_base = (t.outerWidth() / 2) - 8;
 
         this.addClass('drop-top');
 
+        self.adjust_pip(pip_offset_base, p);
+
         if (Foundation.rtl) {
-          this.addClass('right');
-          return {left: p.left - this.outerWidth() + t.outerWidth(), top: p.top - this.outerHeight()};
+          return {left: p.left - this.outerWidth() + t.outerWidth(), 
+            top: p.top - this.outerHeight()};
         }
 
         return {left: p.left, top: p.top - this.outerHeight()};
@@ -235,7 +224,6 @@
         self.adjust_pip(pip_offset_base, p);
 
         if (self.rtl) {
-          this.addClass('right');
           return {left: p.left - this.outerWidth() + t.outerWidth(), top: p.top + t.outerHeight()};
         }
 
@@ -258,6 +246,7 @@
     },
 
     // Insert rule to style psuedo elements
+    // TODO: Add RTL support.
     adjust_pip : function (pip_offset_base, p) {
       var sheet = Foundation.stylesheet;
 
