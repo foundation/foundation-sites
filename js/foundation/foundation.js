@@ -111,7 +111,6 @@
     } else {
       S('[' + this.attr_name() +']', this.scope).each(function () {
         var should_bind_events = !S(this).data(self.attr_name(true) + '-init');
-
         S(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
 
         if (should_bind_events) {
