@@ -157,14 +157,16 @@
     },
 
     css : function (dropdown, target) {
-      if (this.small()) {
-        var p = this.dirs._base.call(dropdown, target);
+      this.clear_idx();
 
-        dropdown.css({
+      if (this.small()) {
+        var p = this.dirs.bottom.call(dropdown, target);
+
+        dropdown.attr('style', '').removeClass('drop-left drop-right drop-top').css({
           position : 'absolute',
           width: '95%',
           'max-width': 'none',
-          top: p.top + target.outerHeight()
+          top: p.top
         });
 
         dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
@@ -225,9 +227,13 @@
         return {left: p.left, top: p.top - this.outerHeight()};
       },
       bottom: function (t, s) {
-        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+        var self = Foundation.libs.dropdown,
+            p = self.dirs._base.call(this, t),
+            pip_offset_base = (t.outerWidth() / 2) - 8;
 
-        if (Foundation.rtl) {
+        self.adjust_pip(pip_offset_base, p);
+
+        if (self.rtl) {
           this.addClass('right');
           return {left: p.left - this.outerWidth() + t.outerWidth(), top: p.top + t.outerHeight()};
         }
@@ -247,6 +253,35 @@
         this.addClass('drop-right');
 
         return {left: p.left + t.outerWidth(), top: p.top};
+      }
+    },
+
+    adjust_pip : function (pip_offset_base, p) {
+      var sheet = document.styleSheets[0];
+
+      if (this.small()) {
+        pip_offset_base += p.left - 8;
+      }
+
+      // Remove the old rules
+      this.rule_idx = sheet.rules.length;
+
+      var sel_before = '.f-dropdown.open:before',
+          sel_after  = '.f-dropdown.open:after',
+          css_before = 'left: ' + pip_offset_base + 'px;',
+          css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
+
+      sheet.addRule(sel_before, css_before, this.rule_idx);
+      sheet.addRule(sel_after, css_after, this.rule_idx + 1);
+    },
+
+    clear_idx : function () {
+      var sheet = document.styleSheets[0];
+
+      if (this.rule_idx) {
+        sheet.deleteRule(this.rule_idx);
+        sheet.deleteRule(this.rule_idx);
+        delete this.rule_idx;
       }
     },
 
