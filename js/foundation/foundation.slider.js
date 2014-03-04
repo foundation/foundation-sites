@@ -7,7 +7,11 @@
     version : '5.2.0',
 
     settings: {
-      is: 'setting'
+      range: {
+        start: 0,
+        end: 12,
+        step: 0.25
+      }
     },
 
     cache : {},
@@ -48,13 +52,23 @@
                   progress_bar_width = pct*100;
               self.set_translate($(self.cache.active), handle_offset);
               $(self.cache.active).siblings('.range-slider-active-segment').css('width', progress_bar_width+'%');
-              $('#ranger').val(pct);
+              $('#ranger').val(self.normalized_value(pct));
             });
           }
         })
         .on('mouseup.fndtn.slider', function(e){
           self.cache.active = null;
         });
+    },
+
+    normalized_value : function(val) {
+      var range = this.settings.range.end - this.settings.range.start,
+          step = this.settings.range.step,
+          point = val*range,
+          mod = (point-(point%step)) / step,
+          rem = point % step,
+          round = ( rem >= step*0.5 ? step : 0);
+      return (mod*step + round);
     },
 
     set_translate : function(ele, offset, vertical) {
