@@ -115,14 +115,12 @@ $button-disabled-opacity: 0.7 !default;
     padding-top: $is-input + rem-calc(.5);
     padding-bottom: $is-input + rem-calc(.5);
     -webkit-appearance: none;
-    border: none;
     font-weight: $button-font-weight !important;
   }
   @else if $is-input {
     padding-top: $is-input + rem-calc(1);
     padding-bottom: $is-input;
     -webkit-appearance: none;
-    border: none;
     font-weight: $button-font-weight !important;
   }
 }
