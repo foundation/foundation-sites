@@ -56,7 +56,7 @@
  medium timeline styles
 ------------------------------------*/
 	
-	@media only screen and (max-width: 960px) and (min-width: 768px) {
+@media only screen and (max-width: 800px) and (min-width: 768px) {
 	.line {
 		display: none !important;
 	}
@@ -79,7 +79,6 @@
   .circle-left{
     left: 0px !important;
   }
-
 }
 
 
