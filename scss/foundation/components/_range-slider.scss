@@ -32,8 +32,8 @@ $range-slider-vertical-bar-height: rem-calc(200) !default;
 
 // These variabels define the slider handle styles
 $range-slider-handle-width: rem-calc(32) !default;
-$range-slider-handle-height: rem-calc(21) !default;
-$range-slider-handle-margin-top: rem-calc(-11) !default;
+$range-slider-handle-height: rem-calc(22) !default;
+$range-slider-handle-position-top: rem-calc(-5) !default;
 $range-slider-handle-bg-color: $primary-color !default;
 $range-slider-handle-border-width: 1px !default;
 $range-slider-handle-border-style: solid !default;
@@ -79,8 +79,9 @@ $range-slider-handle-cursor: pointer !default;
 
 @mixin range-slider-handle-base() {
   display: inline-block;
-  position: relative;
-  margin-top: $range-slider-handle-margin-top;
+  position: absolute;
+  z-index: 1;
+  top: $range-slider-handle-position-top;
   width: $range-slider-handle-width;
   height: $range-slider-handle-height;
   border: $range-slider-handle-border-width $range-slider-handle-border-style $range-slider-handle-border-color;
