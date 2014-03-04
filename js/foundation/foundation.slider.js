@@ -77,7 +77,7 @@
           handle_w = $.data($handle[0], 'handle_w'),
           bar_w = $.data($handle[0], 'bar_w'),
           norm_pct = this.normalized_percentage(value, settings.start, settings.end),
-          handle_offset = norm_pct*bar_w-handle_w*0.5,
+          handle_offset = norm_pct*(bar_w-handle_w)-1,
           progress_bar_width = norm_pct*100;
 
       this.set_translate($handle, handle_offset);
