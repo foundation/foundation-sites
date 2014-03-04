@@ -8,13 +8,18 @@ layout: doc/layouts/default.html
 <h3 class="subheader">This handy slider will allow you to drag a handle to select a specific value from a range.</h3>
 
 ***
-
-<div class="range-slider" data-slider>
-  <span class="range-slider-active-segment"></span>
-  <span class="range-slider-handle"></span>
+<div class="row">
+  <div class="small-10 columns">
+    <div class="range-slider" data-slider data-options="input_id:sliderOutput1;">
+      <span class="range-slider-active-segment"></span>
+      <span class="range-slider-handle"></span>
+    </div>
+  </div>
+  <div class="small-2 columns">
+    <input type="text" id="sliderOutput1" style="margin: 8px 0 0;">
+  </div>
 </div>
 
-<input type="text" id="ranger">
 
 ***
 
@@ -34,7 +39,7 @@ You can create a range slider bar using minimal markup.
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider" data-slider data-options="start: 0; end: 100; step: 10;">
+    <div class="range-slider" data-slider="20" data-options="start: 0; end: 100; step: 10;">
       <span class="range-slider-handle"></span>
     </div>
 
