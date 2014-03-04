@@ -23,6 +23,7 @@ $range-slider-bar-border-width: 1px !default;
 $range-slider-bar-border-style: solid !default;
 $range-slider-bar-border-color: #ddd !default; 
 $range-slider-radius: $global-radius !default;
+$range-slider-round: $global-rounded !default;
 $range-slider-bar-bg-color: #fafafa !default;
 
 // Vertical bar styles
@@ -38,6 +39,7 @@ $range-slider-handle-border-width: 1px !default;
 $range-slider-handle-border-style: solid !default;
 $range-slider-handle-border-color: none !default;
 $range-slider-handle-radius: $global-radius !default;
+$range-slider-handle-round: $global-rounded !default;
 $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%) !default;
 $range-slider-handle-cursor: pointer !default;
 
@@ -61,9 +63,11 @@ $range-slider-handle-cursor: pointer !default;
 }
 @mixin range-slider-bar-style(
   $bg: true,
-  $radius:false) {
+  $radius: false,
+  $round: false) {
     @if $bg == true { background: $range-slider-bar-bg-color; }
     @if $radius == true { @include radius($range-slider-radius); }
+    @if $round == true { @include radius($range-slider-round); }
   }
 
 @mixin range-slider-bar(
@@ -84,9 +88,11 @@ $range-slider-handle-cursor: pointer !default;
 }
 @mixin range-slider-handle-style(
   $bg: true,
-  $radius: false) {
+  $radius: false,
+  $round: false) {
   @if $bg == true { background: $range-slider-handle-bg-color; }
   @if $radius == true { @include radius($range-slider-radius); }
+  @if $round == true { @include radius($range-slider-round); }
   &:hover {
     background: $range-slider-handle-bg-hover-color;
   }
@@ -119,6 +125,10 @@ $range-slider-handle-cursor: pointer !default;
       &.radius {
         @include range-slider-bar-style($radius:true);
         .range-slider-handle { @include range-slider-handle-style($radius: true); }
+      }
+      &.round {
+        @include range-slider-bar-style($round:true);
+        .range-slider-handle { @include range-slider-handle-style($round: true); }
       }
     }
     .range-slider-active-segment {
