@@ -9,7 +9,7 @@ layout: doc/layouts/default.html
 
 ***
 
-<div class="range-slider" data-slider data-options="range: 0, 100;">
+<div class="range-slider" data-slider>
   <span class="range-slider-active-segment"></span>
   <span class="range-slider-handle"></span>
 </div>
@@ -27,14 +27,14 @@ You can create a range slider bar using minimal markup.
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider" data-slider data-options="range: 0, 100;"></div>
+<div class="range-slider" data-slider data-options="start: 0; end: 100; step: 10;"></div>
 ```
 {{/markdown}}
 
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider" data-slider data-options="range: 0, 100;">
+    <div class="range-slider" data-slider data-options="start: 0; end: 100; step: 10;">
       <span class="range-slider-handle"></span>
     </div>
 
@@ -56,13 +56,13 @@ You can add a border radius to the range slider by adding the `radius` class to 
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider radius" data-slider data-options="range: 0, 100;"></div>
+<div class="range-slider radius" data-slider data-options="start: 0; end: 12; step: 0.25;"></div>
 ```
 {{/markdown}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider radius" data-slider data-options="range: 0, 100;">
+    <div class="range-slider radius" data-slider data-options="start: 0; end: 12; step: 0.25;">
       <span class="range-slider-handle"></span>
     </div>
   </div>
