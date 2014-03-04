@@ -73,4 +73,10 @@
   .profile-card h4, .profile-card p {
     text-align: center;
   }
+  .profile-card .button {
+    font-size: 14px;
+  }
+  .profile-card .button span {
+    font-size: 20px;
+  }
 }
