@@ -41,7 +41,7 @@
         .on('mouseup.fndtn.slider touchend.fndtn.slider', function(e) {
           self.remove_active_slider();
         })
-        .on('changed.fndtn.slider', function(e) {
+        .on('change.fndtn.slider', function(e) {
           self.settings.on_change;
         });
 
