@@ -257,26 +257,31 @@
     },
 
     adjust_pip : function (pip_offset_base, p) {
-      var sheet = document.styleSheets[0];
+      var sheet = Foundation.stylesheet;
 
       if (this.small()) {
         pip_offset_base += p.left - 8;
       }
 
       // Remove the old rules
-      this.rule_idx = sheet.rules.length;
+      this.rule_idx = sheet.cssRules.length;
 
       var sel_before = '.f-dropdown.open:before',
           sel_after  = '.f-dropdown.open:after',
           css_before = 'left: ' + pip_offset_base + 'px;',
           css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
 
-      sheet.addRule(sel_before, css_before, this.rule_idx);
-      sheet.addRule(sel_after, css_after, this.rule_idx + 1);
+      if (sheet.insertRule) {
+        sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
+        sheet.insertRule([sel_after, '{', css_after, '}'].join(' '), this.rule_idx + 1);
+      } else {
+        sheet.addRule(sel_before, css_before, this.rule_idx);
+        sheet.addRule(sel_after, css_after, this.rule_idx + 1);
+      }
     },
 
     clear_idx : function () {
-      var sheet = document.styleSheets[0];
+      var sheet = Foundation.stylesheet;
 
       if (this.rule_idx) {
         sheet.deleteRule(this.rule_idx);
