@@ -10,7 +10,7 @@
       start: 0,
       end: 100,
       step: 1,
-      input_id: ''
+      input_selector: ''
     },
 
     cache : {},
@@ -49,9 +49,6 @@
     },
 
     set_active_slider : function($handle) {
-      var $bar = $handle.parent(),
-          settings = $.extend({}, this.settings, this.data_options($bar));
-      
       this.cache.active = $handle;
     },
 
@@ -87,10 +84,12 @@
       $handle.siblings('.range-slider-active-segment').css('width', progress_bar_width+'%');
       
       $handle.parent().attr(this.attr_name(), value);
+      // trigger value changed event
 
       if (settings.input_id != '') {
-        $('#' + settings.input_id).val(value);
+        $(settings.input_selector).val(value);
       }
+
     },
 
     normalized_percentage : function(val, start, end) {
