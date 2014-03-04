@@ -93,7 +93,7 @@ module.exports = function(grunt) {
           'dist/assets/js/vendor/placeholder.js': 'bower_components/jquery-placeholder/jquery.placeholder.js',
           'dist/assets/js/vendor/fastclick.js': 'bower_components/fastclick/lib/fastclick.js',
           'dist/assets/js/vendor/jquery.cookie.js': 'bower_components/jquery.cookie/jquery.cookie.js',
-          'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/jquery.js',
+          'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/dist/jquery.js',
           'dist/assets/js/vendor/modernizr.js': 'bower_components/modernizr/modernizr.js'
         }
       }
@@ -104,9 +104,9 @@ module.exports = function(grunt) {
         files: [
           {expand:true, cwd: 'doc/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/docs/assets/', filter:'isFile'},
           {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
-          {src: 'bower_components/jquery/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
+          {src: 'bower_components/jquery/dist/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
           {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
-          {src: ['bower.json','humans.txt','robots.txt'], dest: 'dist/assets/'}
+          {src: ['bower.json','sache.json','humans.txt','robots.txt'], dest: 'dist/assets/'}
         ]
       }
     },

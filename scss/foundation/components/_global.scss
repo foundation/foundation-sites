@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "../functions";
 //
 // Foundation Variables
@@ -6,10 +10,6 @@
 // Data attribute namespace
 // styles get applied to [data-mysite-plugin], etc
 $namespace: false !default;
-
-meta.foundation-data-attribute-namespace {
-  font-family: #{$namespace};
-}
 
 $experimental: true !default;
 
@@ -23,9 +23,6 @@ $base-font-size: 100% !default;
 
 // $base-line-height is 24px while $base-font-size is 16px
 $base-line-height: 150% !default;
-
-// Must be 100% for off cavas to work
-html, body { height: 100%; }
 
 //
 // Global Foundation Mixins
@@ -49,14 +46,25 @@ html, body { height: 100%; }
 // We use this to create equal side border radius on elements.
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
-	@if $experimental {
-		-moz-border-radius-bottom#{$side}: $radius;
-		-moz-border-radius-top#{$side}: $radius;
-		-webkit-border-bottom-#{$side}-radius: $radius;
-		-webkit-border-top-#{$side}-radius: $radius;
-	}
-	border-bottom-#{$side}-radius: $radius;
-	border-top-#{$side}-radius: $radius;
+  @if ($side == left or $side == right) {
+    @if $experimental {
+      -moz-border-radius-bottom#{$side}: $radius;
+      -moz-border-radius-top#{$side}: $radius;
+      -webkit-border-bottom-#{$side}-radius: $radius;
+      -webkit-border-top-#{$side}-radius: $radius;
+    }
+    border-bottom-#{$side}-radius: $radius;
+    border-top-#{$side}-radius: $radius;
+  } @else {
+    @if $experimental {
+      -moz-border-radius-#{$side}left: $radius;
+      -moz-border-radius-#{$side}right: $radius;
+      -webkit-border-#{$side}-left-radius: $radius;
+      -webkit-border-#{$side}-right-radius: $radius;
+    }
+    border-#{$side}-left-radius: $radius;
+    border-#{$side}-right-radius: $radius;
+  }
 }
 
 // @mixins
@@ -176,6 +184,29 @@ html, body { height: 100%; }
   transform: translate($horizontal,$vertical)
 }
 
+// @mixins
+//
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// @mixins
+//
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
@@ -188,15 +219,15 @@ $font-smoothing: antialiased !default;
 
 // We use these to control text direction settings
 $text-direction: ltr !default;
-
+$default-float: left !default;
+$opposite-direction: right !default;
 @if $text-direction == ltr {
-  $default-float: left  !default;
-  $opposite-direction: right  !default;
+  $default-float: left;
+  $opposite-direction: right;
 } @else {
-  $default-float: right !default;
-  $opposite-direction: left !default;
+  $default-float: right;
+  $opposite-direction: left;
 }
-
 // We use these as default colors throughout
 $primary-color: #008CBA !default;
 $secondary-color: #e7e7e7 !default;
@@ -263,37 +294,45 @@ $cursor-text-value: text !default;
 
 
 @include exports("global") {
-  meta.foundation-version {
-    font-family: "/5.1.0/";
-  }
-  // Used to provide media query values for javascript components.
-  // Forward slash placed around everything to convince PhantomJS to read the value.
-  meta.foundation-mq-small {
-    font-family: "/" + unquote($small-only) + "/";
-    width: lower-bound($small-range);
-  }
-
-  meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-up) + "/";
-    width: lower-bound($medium-range);
-  }
-
-  meta.foundation-mq-large {
-    font-family: "/" + unquote($large-up) + "/";
-    width: lower-bound($large-range);
-  }
-
-  meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-up) + "/";
-    width: lower-bound($xlarge-range);
-  }
-
-  meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-up) + "/";
-    width: lower-bound($xxlarge-range);
-  }
 
   @if $include-html-global-classes {
+
+    meta.foundation-version {
+      font-family: "/5.1.0/";
+    }
+    // Used to provide media query values for javascript components.
+    // Forward slash placed around everything to convince PhantomJS to read the value.
+    meta.foundation-mq-small {
+      font-family: "/" + unquote($small-only) + "/";
+      width: lower-bound($small-range);
+    }
+
+    meta.foundation-mq-medium {
+      font-family: "/" + unquote($medium-up) + "/";
+      width: lower-bound($medium-range);
+    }
+
+    meta.foundation-mq-large {
+      font-family: "/" + unquote($large-up) + "/";
+      width: lower-bound($large-range);
+    }
+
+    meta.foundation-mq-xlarge {
+      font-family: "/" + unquote($xlarge-up) + "/";
+      width: lower-bound($xlarge-range);
+    }
+
+    meta.foundation-mq-xxlarge {
+      font-family: "/" + unquote($xxlarge-up) + "/";
+      width: lower-bound($xxlarge-range);
+    }
+
+    meta.foundation-data-attribute-namespace {
+      font-family: #{$namespace};
+    }
+
+    // Must be 100% for off canvas to work
+    html, body { height: 100%; }
 
     // Set box-sizing globally to handle padding and border widths
     *,
@@ -322,12 +361,8 @@ $cursor-text-value: text !default;
   a:hover { cursor: $cursor-pointer-value; }
 
     // Grid Defaults to get images and embeds to work properly
-    img,
-    object,
-    embed { max-width: 100%; height: auto; }
+    img { max-width: 100%; height: auto; }
 
-    object,
-    embed { height: 100%; }
     img { -ms-interpolation-mode: bicubic; }
 
     #map_canvas,

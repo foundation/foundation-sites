@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.1.0',
+    version: '5.2.0',
 
     settings : {
       templates : {
@@ -31,7 +31,7 @@
 
       this.bindings(method, options);
 
-      if (self.S(this.scope).is('[' + this.attr_name() + ']')) { 
+      if (self.S(this.scope).is('[' + this.attr_name() + ']')) {
         this.assemble(self.S('li', this.scope));
       } else {
         self.S('[' + this.attr_name() + ']', this.scope).each(function () {
@@ -43,6 +43,10 @@
     events : function (scope) {
       var self = this,
       S = self.S;
+
+      if ($('.scroll-container').length > 0) {
+        this.scope = $('.scroll-container');
+      }
 
       S(this.scope)
         .off('.clearing')
@@ -163,12 +167,14 @@
     },
 
     open : function ($image, current, target) {
+
       var self = this,
+          body = $(document.body),
           root = target.closest('.clearing-assembled'),
-          container = self.S('div', root).first(),
-          visible_image = self.S('.visible-img', container),
-          image = self.S('img', visible_image).not($image),
-          label = self.S('.clearing-touch-label', container);
+          container = $('div', root).first(),
+          visible_image = $('.visible-img', container),
+          image = $('img', visible_image).not($image),
+          label = $('.clearing-touch-label', '.clearing-blackout');
 
       if (!this.locked()) {
         // set the image to the selected thumbnail
@@ -179,12 +185,13 @@
         this.image_loaded(image, function () {
           image.css('visibility', 'visible');
           // toggle the gallery
+          body.css('overflow', 'hidden');
           root.addClass('clearing-blackout');
           container.addClass('clearing-container');
           visible_image.show();
           this.fix_height(target)
             .caption(self.S('.clearing-caption', visible_image), $image)
-            .center_and_label(image,label)
+            .center_and_label(image, label)
             .shift(current, target, function () {
               target.siblings().removeClass('visible');
               target.addClass('visible');
@@ -202,9 +209,11 @@
             } else {
               return target.closest('.clearing-blackout');
             }
-          }($(el))), container, visible_image;
+          }($(el))),
+          body = $(document.body), container, visible_image;
 
       if (el === e.target && root) {
+        body.css('overflow', '');
         container = $('div', root).first();
         visible_image = $('.visible-img', container);
         this.settings.prev_index = 0;
@@ -296,10 +305,13 @@
           marginLeft : -(target.outerWidth() / 2),
           marginTop : -(target.outerHeight() / 2)
         });
-        label.css({
-          marginLeft : -(label.outerWidth() / 2),
-          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
-        });
+
+        if (label.length > 0) {
+          label.css({
+            marginLeft : -(label.outerWidth() / 2),
+            marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
+          });
+        }
       } else {
         target.css({
           marginRight : -(target.outerWidth() / 2),
@@ -307,12 +319,15 @@
           left: 'auto',
           right: '50%'
         });
-        label.css({
-          marginRight : -(label.outerWidth() / 2),
-          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
-          left: 'auto',
-          right: '50%'
-        });
+
+        if (label.length > 0) {
+          label.css({
+            marginRight : -(label.outerWidth() / 2),
+            marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
+            left: 'auto',
+            right: '50%'
+          });
+        }
       }
       return this;
     },

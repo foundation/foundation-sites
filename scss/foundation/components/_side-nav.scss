@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -20,8 +24,9 @@ $side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%) 
 $side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%) !default;
 $side-nav-font-size: rem-calc(14) !default;
 $side-nav-font-weight: normal !default;
+$side-nav-font-weight-active: $side-nav-font-weight !default;
 $side-nav-font-family: $body-font-family !default;
-$side-nav-active-font-family: $side-nav-font-family !default;
+$side-nav-font-family-active: $side-nav-font-family !default;
 
 
 
@@ -67,8 +72,8 @@ $side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
 
     &.active > a:first-child:not(.button) {
       color: $side-nav-link-color-active;
-      font-weight: $side-nav-font-weight;
-      font-family: $side-nav-active-font-family;
+      font-weight: $side-nav-font-weight-active;
+      font-family: $side-nav-font-family-active;
     }
 
     &.divider {

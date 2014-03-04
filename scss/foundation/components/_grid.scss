@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -136,7 +140,7 @@ $total-columns: 12 !default;
   @if $center {
     margin-#{$default-float}: auto;
     margin-#{$opposite-direction}: auto;
-    float: none;
+    float: none !important;
   }
 
   // If offset, calculate appropriate margins
@@ -205,7 +209,7 @@ $total-columns: 12 !default;
 
       &.collapse {
          > .column,
-         > .columns { @include grid-column($collapse:true); }
+         > .columns { @include grid-column($collapse:true, $float:false); }
 
         .row {margin-left:0; margin-right:0;}
       }
