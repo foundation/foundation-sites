@@ -120,7 +120,7 @@
         this
           .css(dropdown
             .addClass(this.settings.active_class), target);
-        dropdown.prev('[' + self.attr_name() + ']').addClass(this.settings.active_class);
+        dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
         dropdown.trigger('opened', [dropdown, target]);
     },
 
