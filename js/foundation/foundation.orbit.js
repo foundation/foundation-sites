@@ -17,10 +17,9 @@
         timer_container,
         idx = 0,
         animate,
-        timer,
-        locked = false,
         adjust_height_after = false;
 
+    self.cache = {};
 
     self.slides = function() {
       return slides_container.children(settings.slide_selector);
@@ -88,9 +87,16 @@
       var dir = 'next';
       if (next_idx <= idx) { dir = 'prev'; }
       
-      slides_container.removeClass("swipe-prev swipe-next");
-      if (dir === 'next') {slides_container.addClass("swipe-next");}
-      else if (dir === 'prev') {slides_container.addClass("swipe-prev");}
+      // check if no classes are applied, then apply, delay for 100ms
+      // if (!slides_container.hasClass("swipe-prev") && !slides_container.hasClass("swipe-next")) {
+
+      // }
+      
+      setTimeout(function(){
+        slides_container.removeClass("swipe-prev swipe-next");
+        if (dir === 'next') {slides_container.addClass("swipe-next");}
+        else if (dir === 'prev') {slides_container.addClass("swipe-prev");}        
+      },0);
       
       var slides = self.slides();
       if (next_idx >= slides.length) {
@@ -108,12 +114,13 @@
     };
 
     self._goto = function(next_idx, start_timer) {
-      if (locked) {return false;}
+      if (next_idx === null) {return false;}
+      if (self.cache.animating) {return false;}
       if (next_idx === idx) {return false;}
-      if (typeof timer === 'object') {timer.restart();}
+      if (typeof self.cache.timer === 'object') {self.cache.timer.restart();}
       
       var slides = self.slides();
-      locked = true;
+      self.cache.animating = true;
       var res = self._prepare_direction(next_idx)
         , dir = res[0]
         , current = res[1]
@@ -124,13 +131,13 @@
       settings.before_slide_change();
       idx = next_idx;
 
-      current.css("transitionDuration", "500ms");
-      next.css("transitionDuration", "500ms");
+      current.css("transitionDuration", settings.animation_speed+"ms");
+      next.css("transitionDuration", settings.animation_speed+"ms");
       
       var callback = function() {
         var unlock = function() {
-          locked = false;
-          if (start_timer === true) {timer = self.create_timer(); timer.start();}
+          self.cache.animating = false;
+          if (start_timer === true) {self.cache.timer.restart();}
           self.update_slide_number(idx);
           next.addClass(settings.active_slide_class);
           self.update_active_link(next_idx);
@@ -220,25 +227,25 @@
     };
 
     self.stop_timer = function() {
-      if (typeof timer === 'object') timer.stop();
+      if (typeof self.cache.timer === 'object') self.cache.timer.stop();
     };
 
     self.toggle_timer = function() {
       var t = container.find('.'+settings.timer_container_class);
       if (t.hasClass(settings.timer_paused_class)) {
-        if (typeof timer === 'undefined') {timer = self.create_timer();}
-        timer.start();     
+        if (typeof self.cache.timer === 'undefined') {self.cache.timer = self.create_timer();}
+        self.cache.timer.start();     
       }
       else {
-        if (typeof timer === 'object') {timer.stop();}
+        if (typeof self.cache.timer === 'object') {self.cache.timer.stop();}
       }
     };
 
     self.init = function() {
       self.build_markup();
       if (settings.timer) {
-        timer = self.create_timer(); 
-        Foundation.utils.image_loaded(this.slides().children('img'), timer.start);
+        self.cache.timer = self.create_timer(); 
+        Foundation.utils.image_loaded(this.slides().children('img'), self.cache.timer.start);
       }
       // animate = new FadeAnimation(settings, slides_container);
       // if (settings.animation === 'slide') 
@@ -247,74 +254,73 @@
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
 
-      // TODO Create custom event for handling 1:1
-      // container.on('swipeleft');
-      // container.on('swiperight');
       container.on('click', '[data-orbit-slide]', self.link_bullet);
       container.on('click', self.toggle_timer);
       if (settings.swipe) {
-        container.on('touchstart.fndtn.orbit', function(e) {
-          if (!e.touches) {e = e.originalEvent;}
-          var data = {
-            start_page_x: e.touches[0].pageX,
-            start_page_y: e.touches[0].pageY,
-            start_time: (new Date()).getTime(),
-            delta_x: 0,
-            is_scrolling: undefined
-          };
-          self.stop_timer();
-          container.data('swipe-transition', data);
-          e.stopPropagation();
-        })
-        // TODO requestAnimationFrame
-        .on('touchmove.fndtn.orbit', function(e) {
+        slides_container.on('touchstart.fndtn.orbit',function(e) {
+          if (self.cache.animating) {return;}
           e.preventDefault();
           e.stopPropagation();
-          if (!e.touches) { e = e.originalEvent; }
-          // Ignore pinch/zoom events
-          if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
-
-          var data = container.data('swipe-transition');
-          if (typeof data === 'undefined') {data = {};}
-
-          data.delta_x = e.touches[0].pageX - data.start_page_x;
-
-          if ( typeof data.is_scrolling === 'undefined') {
-            data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
-          }
-
-          if (data.scrolling) {return;}
+          if (!e.touches) {e = e.originalEvent;}
           
+          slides_container.children().css({
+            "transform": "",
+            "transitionDuration": ""
+          });
 
+          self.cache.start_page_x = e.touches[0].pageX;
+          self.cache.start_page_y = e.touches[0].pageY;
+          self.cache.start_time = (new Date()).getTime();
+          self.cache.delta_x = 0;
+          self.cache.is_scrolling = null;
+          self.cache.direction = null;
           
-          var direction = (data.delta_x < 0) ? (idx+1) : (idx-1)
-            , res = self._prepare_direction(direction)
-            , dir = res[0]
-            , current = res[1]
-            , next = res[2]
-            , offset
-            , next_offset;
-          
+          self.stop_timer(); // does not appear to prevent callback from occurring          
+        })
+        .on('touchmove.fndtn.orbit',function(e) {
+          if (self.cache.animating) {return;}
+          // console.info('touchmove');
+          e.preventDefault();
+          e.stopPropagation();
+          requestAnimationFrame(function(){
+            if (!e.touches) { e = e.originalEvent; }
+            // Ignore pinch/zoom events
+            if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
-          offset = (data.delta_x / container.width()) * 100;
-          if (offset >= 0) {next_offset = -(100 - offset);}
-          else {next_offset = 100 + offset;}
+            self.cache.delta_x = e.touches[0].pageX - self.cache.start_page_x;
 
-          current.css("transform","translate3d("+offset+"%,0,0)");
-          next.css("transform","translate3d("+next_offset+"%,0,0)");
+            if (self.cache.is_scrolling === null) {
+              self.cache.is_scrolling = !!( self.cache.is_scrolling || Math.abs(self.cache.delta_x) < Math.abs(e.touches[0].pageY - self.cache.start_page_y) );
+            }
 
-          data.direction = direction;
+            if (self.cache.is_scrolling) {return;}
+            
+            
+            var direction = (self.cache.delta_x < 0) ? (idx+1) : (idx-1);
+            if (self.cache.direction !== direction) {
+              var res = self._prepare_direction(direction);
+              self.cache.direction = direction;
+              self.cache.dir = res[0];
+              self.cache.current = res[1];
+              self.cache.next = res[2];
+            }
 
-          
+            var offset, next_offset;
+            
+
+            offset = (self.cache.delta_x / container.width()) * 100;
+            if (offset >= 0) {next_offset = -(100 - offset);}
+            else {next_offset = 100 + offset;}
+
+            self.cache.current.css("transform","translate3d("+offset+"%,0,0)");
+            self.cache.next.css("transform","translate3d("+next_offset+"%,0,0)");
+          });
         })
         .on('touchend.fndtn.orbit', function(e) {
-          var direction = container.data('swipe-transition').direction;
-          container.data('swipe-transition', {});
-          // e.stopPropagation();
-          // e.stopImmediatePropagation();
-          // e.preventDefault();
-          // FIXME Adding CSS class doesn't override styles already present
-          self._goto(direction);
+          if (self.cache.animating) {return;}
+          e.preventDefault();
+          e.stopPropagation();
+          self._goto(self.cache.direction);
         })
       }
       container.on('mouseenter.fndtn.orbit', function(e) {
@@ -324,7 +330,7 @@
       })
       .on('mouseleave.fndtn.orbit', function(e) {
         if (settings.timer && settings.resume_on_mouseout) {
-          timer.start();
+          self.cache.timer.start();
         }
       });
       
@@ -342,7 +348,6 @@
     self.init();
   };
 
-  // TODO Make sure this only gets called on requestAnimationFrame
   var Timer = function(el, settings, callback) {
     var self = this,
         duration = settings.timer_speed,
@@ -404,8 +409,12 @@
         next.removeClass("animate-in");
         callback();
       });
-      current.css({"transform":"", "transitionDuration":""}).addClass("animate-out");
-      next.css({"transform":"", "transitionDuration":""}).addClass("animate-in");
+      container.children().css({
+        "transform":"", 
+        "transitionDuration":""
+      });
+      current.addClass("animate-out");
+      next.addClass("animate-in");
     };
 
     this.prev = function(current, prev, callback) {
