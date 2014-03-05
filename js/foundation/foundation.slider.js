@@ -28,18 +28,18 @@
 
       $(this.scope)
         .off('.slider')
-        .on('mousedown.fndtn.slider touchstart.fndtn.slider', '[' + self.attr_name() + '] .range-slider-handle', function(e) {
+        .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider', '[' + self.attr_name() + '] .range-slider-handle', function(e) {
           if (!self.cache.active) {
             self.set_active_slider($(e.target));
           }
         })
-        .on('mousemove.fndtn.slider touchmove.fndtn.slider', function(e) {
+        .on('mousemove.fndtn.slider touchmove.fndtn.slider pointermove.fndtn.slider', function(e) {
           if (!!self.cache.active) {
-            e.preventDefault();
-            self.calculate_position(self.cache.active, e.pageX || e.originalEvent.touches[0].clientX);
+            e.preventDefault(); 
+            self.calculate_position(self.cache.active, e.pageX || e.originalEvent.touches[0].clientX || e.currentPoint.x);
           }
         })
-        .on('mouseup.fndtn.slider touchend.fndtn.slider', function(e) {
+        .on('mouseup.fndtn.slider touchend.fndtn.slider pointerup.fndtn.slider', function(e) {
           self.remove_active_slider();
         })
         .on('change.fndtn.slider', function(e) {
