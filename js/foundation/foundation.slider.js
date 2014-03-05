@@ -69,8 +69,15 @@
           bar_o = $.data($handle[0], 'bar_o');
 
       requestAnimationFrame(function(){
-        var pct = self.limit_to((((cursor_x)-bar_o)/bar_w),0,1),
-            norm = self.normalized_value(pct, settings.start, settings.end, settings.step);
+        var pct;
+        
+        if (Foundation.rtl) {
+          pct = self.limit_to(((bar_o+bar_w-cursor_x)/bar_w),0,1);
+        } else {
+          pct = self.limit_to(((cursor_x-bar_o)/bar_w),0,1);
+        }
+          
+        var norm = self.normalized_value(pct, settings.start, settings.end, settings.step);
 
         self.set_ui($handle, norm);
       }); 
@@ -83,6 +90,10 @@
           norm_pct = this.normalized_percentage(value, settings.start, settings.end),
           handle_offset = norm_pct*(bar_w-handle_w)-1,
           progress_bar_width = norm_pct*100;
+
+      if (Foundation.rtl) {
+        handle_offset = -handle_offset;
+      }
 
       this.set_translate($handle, handle_offset);
       $handle.siblings('.range-slider-active-segment').css('width', progress_bar_width+'%');
