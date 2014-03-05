@@ -87,16 +87,13 @@
       var dir = 'next';
       if (next_idx <= idx) { dir = 'prev'; }
       
-      // check if no classes are applied, then apply, delay for 100ms
-      // if (!slides_container.hasClass("swipe-prev") && !slides_container.hasClass("swipe-next")) {
-
-      // }
-      
-      setTimeout(function(){
-        slides_container.removeClass("swipe-prev swipe-next");
-        if (dir === 'next') {slides_container.addClass("swipe-next");}
-        else if (dir === 'prev') {slides_container.addClass("swipe-prev");}        
-      },0);
+      if (settings.animation === 'slide') {    
+        setTimeout(function(){
+          slides_container.removeClass("swipe-prev swipe-next");
+          if (dir === 'next') {slides_container.addClass("swipe-next");}
+          else if (dir === 'prev') {slides_container.addClass("swipe-prev");}
+        },0);
+      }
       
       var slides = self.slides();
       if (next_idx >= slides.length) {
@@ -269,6 +266,7 @@
       // animate = new FadeAnimation(settings, slides_container);
       // if (settings.animation === 'slide') 
       //   animate = new SlideAnimation(settings, slides_container);
+      if(settings.animation === 'fade') {slides_container.addClass('fade');}
       animate = new CSSAnimation(settings, slides_container);
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
@@ -293,7 +291,6 @@
         })
         .on('touchmove.fndtn.orbit',function(e) {
           if (self.cache.animating) {return;}
-
           e.preventDefault();
           e.stopPropagation();
           requestAnimationFrame(function(){
@@ -309,7 +306,6 @@
 
             if (self.cache.is_scrolling) {return;}
             
-            
             var direction = (self.cache.delta_x < 0) ? (idx+1) : (idx-1);
             if (self.cache.direction !== direction) {
               var res = self._prepare_direction(direction);
@@ -319,14 +315,16 @@
               self.cache.next = res[2];
             }
 
-            var offset, next_offset;
-            
-            offset = (self.cache.delta_x / container.width()) * 100;
-            if (offset >= 0) {next_offset = -(100 - offset);}
-            else {next_offset = 100 + offset;}
+            if (settings.animation === 'slide') {
+              var offset, next_offset;
+              
+              offset = (self.cache.delta_x / container.width()) * 100;
+              if (offset >= 0) {next_offset = -(100 - offset);}
+              else {next_offset = 100 + offset;}
 
-            self.cache.current.css("transform","translate3d("+offset+"%,0,0)");
-            self.cache.next.css("transform","translate3d("+next_offset+"%,0,0)");
+              self.cache.current.css("transform","translate3d("+offset+"%,0,0)");
+              self.cache.next.css("transform","translate3d("+next_offset+"%,0,0)");
+            }
           });
         })
         .on('touchend.fndtn.orbit', function(e) {
@@ -413,9 +411,6 @@
 
   var CSSAnimation = function(settings, container) {
     var animation_end = "webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend";
-    // var duration = settings.animation_speed;
-    // var is_rtl = ($('html[dir=rtl]').length === 1);
-    // var margin = is_rtl ? 'marginRight' : 'marginLeft';
 
     this.next = function(current, next, callback) {
       next.on(animation_end, function(e){

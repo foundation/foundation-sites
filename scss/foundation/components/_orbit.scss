@@ -140,6 +140,27 @@ $preloader-class: "preloader" !default;
 
         img { display: block; max-width: 100%; }
         
+        &.fade > * {
+          -webkit-transform: translate3d(0,0,0);
+          opacity: 0.01;
+          transition: opacity .25s ease-in-out;
+          -moz-transition: opacity .25s ease-in-out;
+          -webkit-transition: opacity .25s ease-in-out;
+          &.animate-in {
+            opacity: 1;
+            z-index: 20;
+            transition: opacity 500ms ease-in-out;
+            -moz-transition: opacity 500ms ease-in-out;
+            -webkit-transition: opacity 500ms ease-in-out;
+          }
+          &.animate-out {
+            opacity: 0.01;
+            z-index: 10;
+            transition: opacity 500ms ease-in-out;
+            -moz-transition: opacity 500ms ease-in-out;
+            -webkit-transition: opacity 500ms ease-in-out;
+          }
+        }
         &.swipe-next > * {
           -webkit-transform: translate3d(100%,0,0);
           &.animate-in {
@@ -208,6 +229,7 @@ $preloader-class: "preloader" !default;
           transform:translate3d(100%,0,0);
 
           &.active {
+            opacity: 1;
             top: 0;
             left: 0;
             -webkit-transform:translate3d(0,0,0);
