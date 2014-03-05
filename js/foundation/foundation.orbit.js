@@ -297,7 +297,7 @@
           
 
           offset = (data.delta_x / container.width()) * 100;
-          if (offset >= 0) {next_offset = 100 - offset;}
+          if (offset >= 0) {next_offset = -(100 - offset);}
           else {next_offset = 100 + offset;}
 
           current.css("transform","translate3d("+offset+"%,0,0)");
