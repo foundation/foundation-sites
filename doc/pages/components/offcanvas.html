@@ -271,6 +271,36 @@ Off-canvas layouts can be easily customized using our provided Sass variables.
 
 ***
 
+### Using the Javascript
+
+<div class="panel">
+  Before you can use Off-canvas you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{#markdown}}
+```html
+<body>
+
+  ...
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.offcanvas.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+```
+{{/markdown}}
+
+Required Foundation Library: `foundation.offcanvas.js`
+
+***
+
 ### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
