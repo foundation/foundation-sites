@@ -48,6 +48,7 @@
         var cont;
         if (context.jquery) {
           cont = context[0];
+          if (!cont) return context;
         } else {
           cont = context;
         }
@@ -361,10 +362,19 @@
     },
 
     set_namespace: function () {
-      var namespace = $('.foundation-data-attribute-namespace').css('font-family');
+
+      // Don't bother reading the namespace out of the meta tag
+      // if the namespace has been set globally in javascript
+      //
+      // Example: something like Foundation.global.namespace = 'my-namespace';
+      //
+      // Otherwise, if the namespace hasn't been set globally,
+      // read it out of the meta tag
+      //
+      var namespace = this.global.namespace || $('.foundation-data-attribute-namespace').css('font-family');
 
       if (/false/i.test(namespace)) return;
-
+      
       this.global.namespace = namespace;
     },
 
@@ -486,7 +496,13 @@
 
           if (/true/i.test(p[1])) p[1] = true;
           if (/false/i.test(p[1])) p[1] = false;
-          if (isNumber(p[1])) p[1] = parseInt(p[1], 10);
+          if (isNumber(p[1])) {
+            if (p[1].indexOf('.') === -1) {
+              p[1] = parseInt(p[1], 10);
+            } else {
+              p[1] = parseFloat(p[1], 10);
+            }
+          }
 
           if (p.length === 2 && p[0].length > 0) {
             opts[trim(p[0])] = trim(p[1]);

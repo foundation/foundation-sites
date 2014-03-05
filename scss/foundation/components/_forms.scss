@@ -57,7 +57,7 @@ $input-prefix-font-color-alt: #fff !default;
 
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: rem-calc(6 9 9) !default;
-$input-error-message-top: -1px;
+$input-error-message-top: -1px !default;
 $input-error-message-font-size: rem-calc(12) !default;
 $input-error-message-font-weight: normal !default;
 $input-error-message-font-style: italic !default;

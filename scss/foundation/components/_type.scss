@@ -110,6 +110,58 @@ $microformat-abbr-font-decoration: none !default;
 // Responsive Text alignment
 //
 
+// Text Breakpoints
+$text-breakpoint-sizes:
+  small,
+  medium,
+  large,
+  xlarge,
+  xxlarge
+;
+$text-breakpoint-only-queries:
+  unquote($small-only),
+  unquote($medium-only),
+  unquote($large-only),
+  unquote($xlarge-only),
+  unquote($xxlarge-only)
+;
+$text-breakpoint-up-queries:
+  unquote($small-up),
+  unquote($medium-up),
+  unquote($large-up),
+  unquote($xlarge-up),
+  unquote($xxlarge-up)
+;
+
+@mixin text-alignment-loop {
+  $text-alignments: left, right, center, justify;
+  
+  // Global Text Styles
+  @each $alignment in $text-alignments {
+    .text-#{$alignment} {
+      text-align: #{$alignment} !important;
+    }
+  }
+  
+  @each $current-text-breakpoint in $text-breakpoint-sizes {
+    @media #{nth($text-breakpoint-only-queries, index($text-breakpoint-sizes, $current-text-breakpoint))} {
+      @each $alignment in $text-alignments {
+        .#{$current-text-breakpoint}-only-text-#{$alignment} {
+          text-align: #{$alignment} !important;
+        }
+      }
+    }
+    @media #{nth($text-breakpoint-up-queries, index($text-breakpoint-sizes, $current-text-breakpoint))} {
+      @each $alignment in $text-alignments {
+        .#{$current-text-breakpoint}-text-#{$alignment} {
+          text-align: #{$alignment} !important;
+        }
+      }
+    }
+  }
+}
+
+@include text-alignment-loop;
 
 //
 // Typography Placeholders
