@@ -246,7 +246,6 @@
     },
 
     // Insert rule to style psuedo elements
-    // TODO: Add RTL support.
     adjust_pip : function (pip_offset_base, p) {
       var sheet = Foundation.stylesheet;
 
