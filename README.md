@@ -14,6 +14,7 @@ To get going with Foundation you can:
 
   * [Download the latest release](http://foundation.zurb.com/cdn/releases/foundation-latest.zip)
   * [Install with Bower](http://bower.io): `bower install zurb/bower-foundation`
+  * [Install with Component](https://github.com/component/component): `component install thinkerous/foundation@addComponent`
 
 ## Documentation
 
