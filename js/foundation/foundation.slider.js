@@ -28,8 +28,10 @@
 
       $(this.scope)
         .off('.slider')
-        .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider', '[' + self.attr_name() + '] .range-slider-handle', function(e) {
+        .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider', 
+        '[' + self.attr_name() + '] .range-slider-handle', function(e) {
           if (!self.cache.active) {
+            e.preventDefault();
             self.set_active_slider($(e.target));
           }
         })
