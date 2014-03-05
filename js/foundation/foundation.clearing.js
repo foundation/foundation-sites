@@ -84,8 +84,9 @@
         .on('click.fndtn.clearing', '.clearing-main-prev',
           function (e) { self.nav(e, 'prev') })
         .on('click.fndtn.clearing', this.settings.close_selectors,
-          function (e) { Foundation.libs.clearing.close(e, this) })
-        .on('keydown.fndtn.clearing',
+          function (e) { Foundation.libs.clearing.close(e, this) });
+
+      $(document).on('keydown.fndtn.clearing',
           function (e) { self.keydown(e) });
 
       S(window).off('.clearing').on('resize.fndtn.clearing',
@@ -232,7 +233,7 @@
     },
 
     keydown : function (e) {
-      var clearing = $('ul[' + this.attr_name() + ']', '.clearing-blackout'),
+      var clearing = $('.clearing-blackout ul[' + this.attr_name() + ']'),
           NEXT_KEY = this.rtl ? 37 : 39,
           PREV_KEY = this.rtl ? 39 : 37,
           ESC_KEY = 27;
