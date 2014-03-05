@@ -6,8 +6,9 @@
   "dependencies": {
     "components/jquery": "*"
   },
-  "main": "js/foundation/foundation.js",
+  "main": "js/index.js",
   "scripts": [
+    "js/index.js",
     "js/foundation/foundation.abide.js",
     "js/foundation/foundation.accordion.js",
     "js/foundation/foundation.alert.js",
@@ -25,8 +26,7 @@
     "js/foundation/foundation.tooltip.js",
     "js/foundation/foundation.topbar.js"
   ],
-  "styles": [
-  ],
+  "styles": [],
   "files": [
     "scss/normalize.scss",
     "scss/foundation.scss",

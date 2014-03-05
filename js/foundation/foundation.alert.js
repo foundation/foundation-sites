@@ -1,5 +1,24 @@
-;(function ($, window, document, undefined) {
+(function (root, factory) {
+
+  // Set up AMD dependencies
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery', './foundation'], factory);
+
+  // Set up CommonJS dependencies
+  } else if (typeof exports === 'object') {
+    var $ = require("jquery");
+    var Foundation = require("./foundation");
+    module.exports = factory($, Foundation);
+
+  // Set up browser global
+  } else {
+    factory((root.jQuery || root.$), root.Foundation);
+  }
+  
+}(this, function ($, Foundation) {
   'use strict';
+
+  var jQuery = $;
 
   Foundation.libs.alert = {
     name : 'alert',
@@ -34,4 +53,4 @@
 
     reflow : function () {}
   };
-}(jQuery, this, this.document));
+}));

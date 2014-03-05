@@ -6,8 +6,26 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-(function ($, window, document, undefined) {
+(function (root, factory) {
+
+  // Set up AMD dependencies
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory);
+
+  // Set up CommonJS dependencies
+  } else if (typeof exports === 'object') {
+    var $ = require("jquery");
+    module.exports = factory($);
+
+  // Set up browser global
+  } else {
+    root.Foundation = factory(root.jQuery || root.$);
+  }
+  
+}(this, function ($) {
   'use strict';
+
+  var jQuery = $;
 
   var header_helpers = function (class_array) {
     var i = class_array.length;
@@ -284,7 +302,7 @@
     return string;
   }
 
-  window.Foundation = {
+  var Foundation = {
     name : 'Foundation',
 
     version : '5.1.1',
@@ -609,4 +627,6 @@
     });
   };
 
-}(jQuery, this, this.document));
+  return Foundation;
+
+}));
