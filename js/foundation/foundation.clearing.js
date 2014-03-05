@@ -238,8 +238,6 @@
           PREV_KEY = this.rtl ? 39 : 37,
           ESC_KEY = 27;
 
-      console.log(NEXT_KEY, PREV_KEY, ESC_KEY, clearing)
-
       if (e.which === NEXT_KEY) this.go(clearing, 'next');
       if (e.which === PREV_KEY) this.go(clearing, 'prev');
       if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click');
