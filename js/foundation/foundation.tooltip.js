@@ -35,19 +35,21 @@
 
       $(this.scope)
         .off('.tooltip')
-        .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip',
+        .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip',
           '[' + this.attr_name() + ']:not(a)', function (e) {
           var $this = S(this),
               settings = $.extend({}, self.settings, self.data_options($this)),
               is_touch = false;
 
+          if (/mouse/i.test(e.type) && self.ie_touch(e)) return false;
+
           if ($this.hasClass('open')) {
-            if (Modernizr.touch && /touchstart/i.test(e.type)) e.preventDefault();
+            if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) e.preventDefault();
             self.hide($this);
           } else {
-            if (settings.disable_for_touch && Modernizr.touch && /touchstart/i.test(e.type)) {
+            if (settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               return;
-            } else if(!settings.disable_for_touch && Modernizr.touch && /touchstart/i.test(e.type)) {
+            } else if(!settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               e.preventDefault();
               S(settings.tooltip_class + '.open').hide();
               is_touch = true;
@@ -65,11 +67,13 @@
             }
           }
         })
-        .on('mouseleave.fndtn.tooltip touchstart.fndtn.tooltip', '.open[' + this.attr_name() + ']', function (e) {
+        .on('mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', '[' + this.attr_name() + '].open', function (e) {
+          if (/mouse/i.test(e.type) && self.ie_touch(e)) return false;
+
           if($(this).data('tooltip-open-event-type') == 'touch' && e.type == 'mouseleave') {
             return;
           }
-          else if($(this).data('tooltip-open-event-type') == 'mouse' && e.type == 'touchstart') {
+          else if($(this).data('tooltip-open-event-type') == 'mouse' && /MSPointerDown|touchstart/i.test(e.type)) {
             self.convert_to_touch($(this));
           } else {
             self.hide($(this));
@@ -78,6 +82,11 @@
         .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function (e) {
           self.hide(S(this));
         });
+    },
+
+    ie_touch : function (e) {
+      // How do I distinguish between IE11 and Windows Phone 8?????
+      return false;
     },
 
     showTip : function ($target) {
@@ -126,7 +135,7 @@
 
       if (Modernizr.touch) {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('touchstart.fndtn.tooltip', function(e) {
+        $tip.on('touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', function(e) {
           self.hide($target);
         });
       }
@@ -215,7 +224,7 @@
 
       if ($tip.find('.tap-to-close').length === 0) {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose', function(e) {
+        $tip.on('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose MSPointerDown.fndtn.tooltip.tapclose', function(e) {
           self.hide($target);
         });
       }
@@ -240,7 +249,7 @@
 
       $tip.fadeOut(150, function() {
         $tip.find('.tap-to-close').remove();
-        $tip.off('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose');
+        $tip.off('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose MSPointerDown.fndtn.tapclose');
         $target.removeClass('open');
       });
     },
