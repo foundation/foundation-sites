@@ -87,7 +87,6 @@
     self._prepare_direction = function(next_idx, current_direction) {
       var dir = 'next';
       if (next_idx <= idx) { dir = 'prev'; }
-      // if (typeof current_direction !== 'undefined' && (dir === current_direction)) {}
       
       slides_container.removeClass("swipe-prev swipe-next");
       if (dir === 'next') {slides_container.addClass("swipe-next");}
@@ -263,6 +262,7 @@
             delta_x: 0,
             is_scrolling: undefined
           };
+          self.stop_timer();
           container.data('swipe-transition', data);
           e.stopPropagation();
         })
