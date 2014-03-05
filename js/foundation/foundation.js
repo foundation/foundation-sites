@@ -559,14 +559,14 @@
         var self = this,
             unloaded = images.length;
 
-        if(unloaded == 0) {
-            callback(images);
+        if (unloaded === 0) {
+          callback(images);
         }
 
         images.each(function () {
-          single_image_loaded(self.S(this),function () {
-            unloaded -= 1; 
-            if (unloaded == 0) {
+          single_image_loaded(self.S(this), function () {
+            unloaded -= 1;
+            if (unloaded === 0) {
               callback(images);
             }
           });
