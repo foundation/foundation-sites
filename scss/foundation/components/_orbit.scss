@@ -83,7 +83,7 @@ $preloader-class: "preloader" !default;
       .orbit-container { background-color: transparent;
 
         // Show images when .orbit-container is loaded
-        ul li { display: block;
+        li { display: block;
 
           .orbit-caption { display: block; }
         }
@@ -139,25 +139,42 @@ $preloader-class: "preloader" !default;
         -webkit-transform: translateZ(0);
 
         img { display: block; max-width: 100%; }
+        
+        &.swipe-next > * {
+          -webkit-transform: translate3d(100%,0,0);
+          &.animate-in {
+            -webkit-transform: translate3d(0,0,0);
+            -webkit-transition-duration: 500ms;
+          }
+          &.animate-out {
+            -webkit-transform: translate3d(-100%,0,0);
+            -webkit-transition-duration: 500ms;
+          }
+        }
+
+        &.swipe-prev > * {
+          -webkit-transform: translate3d(-100%,0,0);
+          &.animate-in {
+            -webkit-transform: translate3d(0,0,0);
+            -webkit-transition-duration: 500ms;
+          }
+          &.animate-out {
+            -webkit-transform: translate3d(100%,0,0);
+            -webkit-transition-duration: 500ms;
+          }
+        }
 
         &>* {
           position: absolute;
           top: 0;
+          left: 0;
           width: 100%;
-          @if $text-direction == rtl {
-            margin-right: 100%;
-          }
-          @else {
-            margin-left: 100%;
-          }
+          -webkit-transform: translate3d(100%,0,0);
 
-          &:first-child {
-            @if $text-direction == rtl {
-            margin-right: 0%;
-            }
-            @else {
-            margin-left: 0%;
-            }
+          &.active {
+            top: 0;
+            left: 0;
+            -webkit-transform: translate3d(0,0,0);
           }
 
           .orbit-caption {
@@ -182,11 +199,7 @@ $preloader-class: "preloader" !default;
         top: 10px;
         #{$default-float}: 10px;
         font-size: 12px;
-        span {
-          font-weight: 700;
-          padding: $orbit-slide-number-padding;
-          display: inline-block;
-        }
+        span { font-weight: 700; padding: $orbit-slide-number-padding;}
         color: $orbit-slide-number-font-color;
         background: $orbit-slide-number-bg;
         z-index: 10;
@@ -223,7 +236,7 @@ $preloader-class: "preloader" !default;
           border-top: none;
           border-bottom: none;
         }
-
+      
         // Pause button
         &.paused {
           & > span {
@@ -234,14 +247,14 @@ $preloader-class: "preloader" !default;
             border: inset 8px;
             border-right-style: solid;
             border-color: transparent transparent transparent #fff;
-            &.dark {
+            &.dark { 
               border-color: transparent transparent transparent #333;
             }
           }
         }
       }
-
-
+      
+      
 
       &:hover .orbit-timer > span { display: block; }
 

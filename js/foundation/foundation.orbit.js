@@ -40,7 +40,7 @@
     };
 
     self.update_active_link = function(index) {
-      var link = $('[data-orbit-link="'+self.slides().eq(index).attr('data-orbit-slide')+'"]');
+      var link = $('a[data-orbit-link="'+self.slides().eq(index).attr('data-orbit-slide')+'"]');
       link.siblings().removeClass(settings.bullets_active_class);
       link.addClass(settings.bullets_active_class);
     };
@@ -49,7 +49,7 @@
       slides_container.wrap('<div class="'+settings.container_class+'"></div>');
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
-
+      
       if (settings.navigation_arrows) {
         container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
         container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
@@ -84,15 +84,16 @@
       }
     };
 
-    self._goto = function(next_idx, start_timer) {
-      if (locked) {return false;}
-      if (next_idx === idx) {return false;}
-      if (typeof timer === 'object') {timer.restart();}
-      var slides = self.slides();
-
+    self._prepare_direction = function(next_idx, current_direction) {
       var dir = 'next';
-      locked = true;
-      if (next_idx < idx) {dir = 'prev';}
+      if (next_idx <= idx) { dir = 'prev'; }
+      // if (typeof current_direction !== 'undefined' && (dir === current_direction)) {}
+      
+      slides_container.removeClass("swipe-prev swipe-next");
+      if (dir === 'next') {slides_container.addClass("swipe-next");}
+      else if (dir === 'prev') {slides_container.addClass("swipe-prev");}
+      
+      var slides = self.slides();
       if (next_idx >= slides.length) {
         if (!settings.circular) return false;
         next_idx = 0;
@@ -100,24 +101,40 @@
         if (!settings.circular) return false;
         next_idx = slides.length - 1;
       }
+      var current = $(slides.get(idx))
+        , next = $(slides.get(next_idx));
+      
 
-      var current = $(slides.get(idx));
-      var next = $(slides.get(next_idx));
+      return [dir, current, next, next_idx];
+    };
 
-      current.css('zIndex', 2);
-      current.removeClass(settings.active_slide_class);
-      next.css('zIndex', 4).addClass(settings.active_slide_class);
+    self._goto = function(next_idx, start_timer) {
+      if (locked) {return false;}
+      if (next_idx === idx) {return false;}
+      if (typeof timer === 'object') {timer.restart();}
+      
+      var slides = self.slides();
+      locked = true;
+      var res = self._prepare_direction(next_idx)
+        , dir = res[0]
+        , current = res[1]
+        , next = res[2]
+        , next_idx = res[3];
 
-      slides_container.trigger('before-slide-change.fndtn.orbit', [{slide_number: idx, next_slide_number: next_idx}]);
-      settings.before_slide_change(idx, next_idx);
-      self.update_active_link(next_idx);
+      slides_container.trigger('before-slide-change.fndtn.orbit');
+      settings.before_slide_change();
+      idx = next_idx;
 
+      current.css("transitionDuration", "500ms");
+      next.css("transitionDuration", "500ms");
+      
       var callback = function() {
         var unlock = function() {
-          idx = next_idx;
           locked = false;
           if (start_timer === true) {timer = self.create_timer(); timer.start();}
           self.update_slide_number(idx);
+          next.addClass(settings.active_slide_class);
+          self.update_active_link(next_idx);
           slides_container.trigger('after-slide-change.fndtn.orbit',[{slide_number: idx, total_slides: slides.length}]);
           settings.after_slide_change(idx, slides.length);
         };
@@ -132,7 +149,7 @@
 
       var start_animation = function() {
         if (dir === 'next') {animate.next(current, next, callback);}
-        if (dir === 'prev') {animate.prev(current, next, callback);}
+        if (dir === 'prev') {animate.prev(current, next, callback);}        
       };
 
       if (next.height() > slides_container.height() && settings.variable_height) {
@@ -141,13 +158,13 @@
         start_animation();
       }
     };
-
+    
     self.next = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
       self._goto(idx + 1);
     };
-
+    
     self.prev = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
@@ -163,7 +180,7 @@
       }
     };
 
-    self.link_bullet = function(e) {
+    self.link_bullet = function(e) {    
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
         if(isNaN(parseInt(index)))
@@ -182,7 +199,7 @@
     self.timer_callback = function() {
       self._goto(idx + 1, true);
     }
-
+    
     self.compute_dimensions = function() {
       var current = $(self.slides().get(idx));
       var h = current.height();
@@ -196,8 +213,8 @@
 
     self.create_timer = function() {
       var t = new Timer(
-        container.find('.'+settings.timer_container_class),
-        settings,
+        container.find('.'+settings.timer_container_class), 
+        settings, 
         self.timer_callback
       );
       return t;
@@ -211,7 +228,7 @@
       var t = container.find('.'+settings.timer_container_class);
       if (t.hasClass(settings.timer_paused_class)) {
         if (typeof timer === 'undefined') {timer = self.create_timer();}
-        timer.start();
+        timer.start();     
       }
       else {
         if (typeof timer === 'object') {timer.stop();}
@@ -221,21 +238,20 @@
     self.init = function() {
       self.build_markup();
       if (settings.timer) {
-        timer = self.create_timer();
-        if(this.slides().children('img').length) {
-          Foundation.utils.image_loaded(this.slides().children('img'), timer.start);
-        }
-        else {
-          timer.start();
-        }
+        timer = self.create_timer(); 
+        Foundation.utils.image_loaded(this.slides().children('img'), timer.start);
       }
-      animate = new FadeAnimation(settings, slides_container);
-      if (settings.animation === 'slide')
-        animate = new SlideAnimation(settings, slides_container);
+      // animate = new FadeAnimation(settings, slides_container);
+      // if (settings.animation === 'slide') 
+      //   animate = new SlideAnimation(settings, slides_container);
+      animate = new CSSAnimation(settings, slides_container);
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
-      if (settings.next_on_click)
-        container.on('click', '[data-orbit-slide]', self.link_bullet);
+
+      // TODO Create custom event for handling 1:1
+      // container.on('swipeleft');
+      // container.on('swiperight');
+      container.on('click', '[data-orbit-slide]', self.link_bullet);
       container.on('click', self.toggle_timer);
       if (settings.swipe) {
         container.on('touchstart.fndtn.orbit', function(e) {
@@ -250,7 +266,10 @@
           container.data('swipe-transition', data);
           e.stopPropagation();
         })
+        // TODO requestAnimationFrame
         .on('touchmove.fndtn.orbit', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
           if (!e.touches) { e = e.originalEvent; }
           // Ignore pinch/zoom events
           if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
@@ -264,16 +283,38 @@
             data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
           }
 
-          if (!data.is_scrolling && !data.active) {
-            e.preventDefault();
-            var direction = (data.delta_x < 0) ? (idx+1) : (idx-1);
-            data.active = true;
-            self._goto(direction);
-          }
+          if (data.scrolling) {return;}
+          
+
+          
+          var direction = (data.delta_x < 0) ? (idx+1) : (idx-1)
+            , res = self._prepare_direction(direction)
+            , dir = res[0]
+            , current = res[1]
+            , next = res[2]
+            , offset
+            , next_offset;
+          
+
+          offset = (data.delta_x / container.width()) * 100;
+          if (offset >= 0) {next_offset = 100 - offset;}
+          else {next_offset = 100 + offset;}
+
+          current.css("transform","translate3d("+offset+"%,0,0)");
+          next.css("transform","translate3d("+next_offset+"%,0,0)");
+
+          data.direction = direction;
+
+          
         })
         .on('touchend.fndtn.orbit', function(e) {
+          var direction = container.data('swipe-transition').direction;
           container.data('swipe-transition', {});
-          e.stopPropagation();
+          // e.stopPropagation();
+          // e.stopImmediatePropagation();
+          // e.preventDefault();
+          // FIXME Adding CSS class doesn't override styles already present
+          self._goto(direction);
         })
       }
       container.on('mouseenter.fndtn.orbit', function(e) {
@@ -286,29 +327,27 @@
           timer.start();
         }
       });
-
+      
       $(document).on('click', '[data-orbit-link]', self.link_custom);
       $(window).on('resize', self.compute_dimensions);
-      Foundation.utils.image_loaded(this.slides().find('img'), self.compute_dimensions);
-      Foundation.utils.image_loaded(this.slides().find('img'), function() {
+      Foundation.utils.image_loaded(this.slides().children('img'), self.compute_dimensions);
+      Foundation.utils.image_loaded(this.slides().children('img'), function() {
         container.prev('.preloader').css('display', 'none');
         self.update_slide_number(0);
         self.update_active_link(0);
         slides_container.trigger('ready.fndtn.orbit');
       });
-      if(!this.slides().children('img').length) {
-        self.compute_dimensions();
-      }
     };
 
     self.init();
   };
 
+  // TODO Make sure this only gets called on requestAnimationFrame
   var Timer = function(el, settings, callback) {
     var self = this,
         duration = settings.timer_speed,
         progress = el.find('.'+settings.timer_progress_class),
-        start,
+        start, 
         timeout,
         left = -1;
 
@@ -352,50 +391,32 @@
     };
   };
 
-  var SlideAnimation = function(settings, container) {
-    var duration = settings.animation_speed;
-    var is_rtl = ($('html[dir=rtl]').length === 1);
-    var margin = is_rtl ? 'marginRight' : 'marginLeft';
-    var animMargin = {};
-    animMargin[margin] = '0%';
+  var CSSAnimation = function(settings, container) {
+    var animation_end = "webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend";
+    // var duration = settings.animation_speed;
+    // var is_rtl = ($('html[dir=rtl]').length === 1);
+    // var margin = is_rtl ? 'marginRight' : 'marginLeft';
 
     this.next = function(current, next, callback) {
-      current.animate({marginLeft:'-100%'}, duration);
-      next.animate(animMargin, duration, function() {
-        current.css(margin, '100%');
+      next.on(animation_end, function(e){
+        next.unbind(animation_end);
+        current.removeClass("active animate-out");
+        next.removeClass("animate-in");
         callback();
       });
+      current.css({"transform":"", "transitionDuration":""}).addClass("animate-out");
+      next.css({"transform":"", "transitionDuration":""}).addClass("animate-in");
     };
 
     this.prev = function(current, prev, callback) {
-      current.animate({marginLeft:'100%'}, duration);
-      prev.css(margin, '-100%');
-      prev.animate(animMargin, duration, function() {
-        current.css(margin, '100%');
+      prev.on(animation_end, function(e){
+        prev.unbind(animation_end);
+        current.removeClass("active animate-out");
+        prev.removeClass("animate-in");
         callback();
       });
-    };
-  };
-
-  var FadeAnimation = function(settings, container) {
-    var duration = settings.animation_speed;
-    var is_rtl = ($('html[dir=rtl]').length === 1);
-    var margin = is_rtl ? 'marginRight' : 'marginLeft';
-
-    this.next = function(current, next, callback) {
-      next.css({'margin':'0%', 'opacity':'0.01'});
-      next.animate({'opacity':'1'}, duration, 'linear', function() {
-        current.css('margin', '100%');
-        callback();
-      });
-    };
-
-    this.prev = function(current, prev, callback) {
-      prev.css({'margin':'0%', 'opacity':'0.01'});
-      prev.animate({'opacity':'1'}, duration, 'linear', function() {
-        current.css('margin', '100%');
-        callback();
-      });
+      current.css({"transform":"", "transitionDuration":""}).addClass("animate-out");
+      prev.css({"transform":"", "transitionDuration":""}).addClass("animate-in");
     };
   };
 
@@ -405,14 +426,13 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '5.1.1',
+    version: '5.2.0',
 
     settings: {
       animation: 'slide',
       timer_speed: 10000,
       pause_on_hover: true,
       resume_on_mouseout: false,
-      next_on_click: true,
       animation_speed: 500,
       stack_on_small: false,
       navigation_arrows: true,
@@ -449,7 +469,7 @@
 
     events : function (instance) {
       var orbit_instance = new Orbit(this.S(instance), this.S(instance).data('orbit-init'));
-      this.S(instance).data(this.name + '-instance', orbit_instance);
+      this.S(instance).data(self.name + '-instance', orbit_instance);
     },
 
     reflow : function () {
@@ -470,5 +490,5 @@
     }
   };
 
-
+    
 }(jQuery, this, this.document));
