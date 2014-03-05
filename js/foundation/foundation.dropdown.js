@@ -202,12 +202,14 @@
       },
       top: function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = Foundation.libs.dropdown.dirs._base.call(this, t),
+            p = self.dirs._base.call(this, t),
             pip_offset_base = (t.outerWidth() / 2) - 8;
 
         this.addClass('drop-top');
 
-        self.adjust_pip(pip_offset_base, p);
+        if (t.outerWidth() < this.outerWidth() || self.small()) {
+          self.adjust_pip(pip_offset_base, p);
+        }
 
         if (Foundation.rtl) {
           return {left: p.left - this.outerWidth() + t.outerWidth(), 
@@ -221,7 +223,9 @@
             p = self.dirs._base.call(this, t),
             pip_offset_base = (t.outerWidth() / 2) - 8;
 
-        self.adjust_pip(pip_offset_base, p);
+        if (t.outerWidth() < this.outerWidth() || self.small()) {
+          self.adjust_pip(pip_offset_base, p);
+        }
 
         if (self.rtl) {
           return {left: p.left - this.outerWidth() + t.outerWidth(), top: p.top + t.outerHeight()};
