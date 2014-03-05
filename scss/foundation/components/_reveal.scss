@@ -67,15 +67,15 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     display: none;
     position: absolute;
     z-index: 99;
-    height: 100vh;
-    min-height:100vh;
     width: 100vw;
     top:0;
     #{$default-float}: 0;
+    @media #{$small-only} {
+      height: 100vh;
+      min-height:100vh;
+    }
     @media #{$medium-up} {
       #{$default-float}: 50%;
-      height: auto;
-      min-height:auto;
     }
 
     // Make sure rows don't have a min-width on them
