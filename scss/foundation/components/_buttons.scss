@@ -36,6 +36,8 @@ $button-function-factor: -20% !default;
 // We use these to control button border styles.
 $button-border-width: 0px !default;
 $button-border-style: solid !default;
+$bg: $primary-color !default;
+$button-border-color: scale-color($bg, $lightness: $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
 $button-radius: $global-radius !default;
@@ -141,7 +143,7 @@ $button-disabled-opacity: 0.7 !default;
     $bg-lightness: lightness($bg);
 
     background-color: $bg;
-    border-color: scale-color($bg, $lightness: $button-function-factor);
+    border-color: $button-border-color;
     &:hover,
     &:focus { background-color: scale-color($bg, $lightness: $button-function-factor); }
 
