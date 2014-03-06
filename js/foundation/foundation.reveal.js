@@ -4,7 +4,7 @@
   Foundation.libs.reveal = {
     name : 'reveal',
 
-    version : '5.1.1',
+    version : '5.2.0',
 
     locked : false,
 
@@ -65,7 +65,7 @@
         });
 
       S(document)
-        .on('click.fndtn.reveal', this.close_targets(), function (e) {
+        .on('touchend.fndtn.reveal click.fndtn.reveal', this.close_targets(), function (e) {
 
           e.preventDefault();
 

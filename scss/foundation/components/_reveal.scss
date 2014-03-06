@@ -23,7 +23,7 @@ $reveal-modal-padding: rem-calc(20) !default;
 $reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
 
 // We use these to style the reveal close button
-$reveal-close-font-size: rem-calc(22) !default;
+$reveal-close-font-size: rem-calc(40) !default;
 $reveal-close-top: rem-calc(8) !default;
 $reveal-close-side: rem-calc(11) !default;
 $reveal-close-color: #aaa !default;
@@ -66,9 +66,17 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     visibility: hidden;
     display: none;
     position: absolute;
-    #{$default-float}: 50%;
-    z-index: 100;
-    height: auto;
+    z-index: 99;
+    width: 100vw;
+    top:0;
+    #{$default-float}: 0;
+    @media #{$small-only} {
+      height: 100vh;
+      min-height:100vh;
+    }
+    @media #{$medium-up} {
+      #{$default-float}: 50%;
+    }
 
     // Make sure rows don't have a min-width on them
     .column,
@@ -80,8 +88,10 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   }
 
   @if $width {
-    margin-#{$default-float}: -($width / 2);
-    width: $width;
+    @media #{$medium-up} {
+      margin-#{$default-float}: -($width / 2);
+      width: $width;
+    }
   }
 }
 
@@ -118,7 +128,11 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     box-shadow: $reveal-box-shadow;
   }
 
-  @if $top-offset { top: $top-offset; }
+  @if $top-offset {
+    @media #{$medium-up} {
+      top: $top-offset;
+    }
+  }
 }
 
 // We use this to create a close button for the reveal modal
@@ -163,6 +177,17 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
         &.medium  { @include reveal-modal-base(false, 60%); }
         &.large { @include reveal-modal-base(false, 70%); }
         &.xlarge { @include reveal-modal-base(false, 95%); }
+      }
+
+      dialog, .#{$reveal-modal-class} {
+        &.full {
+          @include reveal-modal-base(false, 100vw);
+          top:0;
+          left:0;
+          height: 100vh;
+          min-height:100vh;
+          margin-left: 0 !important;
+        }
       }
     }
 

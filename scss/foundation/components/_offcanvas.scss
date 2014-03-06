@@ -16,8 +16,9 @@ $tabbar-color: #fff !default;
 $tabbar-middle-padding: 0 rem-calc(10) !default;
 
 // Off Canvas Divider Styles
-$tabbar-right-section-border: solid 1px scale-color($tabbar-bg, $lightness: 13%) !default;
 $tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -50%) !default;
+$tabbar-right-section-border: $tabbar-left-section-border;
+
 
 // Off Canvas Tab Bar Headers
 $tabbar-header-color: #fff !default;
@@ -92,6 +93,7 @@ $menu-slide: "transform 500ms ease" !default;
   background: $off-canvas-bg;
   z-index: 1001;
   box-sizing: content-box;
+  -webkit-overflow-scrolling: touch;
   @if $position == left {
     @include translate3d(-100%,0,0);
     left: 0;
@@ -168,12 +170,12 @@ $menu-slide: "transform 500ms ease" !default;
   top: 0;
   @if $position == left {
     border-right: $tabbar-left-section-border;
-    box-shadow: 1px 0 0 scale-color($tabbar-bg, $lightness: 13%);
+    // box-shadow: 1px 0 0 scale-color($tabbar-bg, $lightness: 13%);
     left: 0;
   }
   @if $position == right {
     border-left: $tabbar-right-section-border;
-    box-shadow: -1px 0 0 scale-color($tabbar-bg, $lightness: -50%);
+    // box-shadow: -1px 0 0 scale-color($tabbar-bg, $lightness: -50%);
     right:0;
   }
 }
@@ -224,6 +226,8 @@ $menu-slide: "transform 500ms ease" !default;
       padding: $off-canvas-link-padding;
       color: $off-canvas-link-color;
       border-bottom: $off-canvas-link-border-bottom;
+      &:hover { background: scale-color($tabbar-bg, $lightness: -30%); }
+      transition: background 300ms ease;
     }
   }
 

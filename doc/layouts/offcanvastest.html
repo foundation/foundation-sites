@@ -26,31 +26,69 @@
     <script src="{{assets}}/js/modernizr.js"></script>
   </head>
   <body class="antialiased hide-extras">
-    <div class="marketing off-canvas-wrap">
+    
+    <div class="off-canvas-wrap sticky">
       <div class="inner-wrap">
+        <nav class="tab-bar">
+          <section class="left-small">
+            <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+          </section>
 
-{{> topbar}}
-{{> offcanvas-nav}}
+          <section class="middle tab-bar-section">
+            <h1 class="title">Foundation</h1>
+          </section>
 
-        <section role="main" class="scroll-container">
+          <section class="right-small">
+            <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+          </section>
+        </nav>
 
-          <div class="row">
-            <div class="large-3 medium-4 columns">
-              <div class="hide-for-small">
-              {{> sidebar}}
-              </div>
-            </div>
-            <div class="large-9 medium-8 columns">
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Foundation</label></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+          </ul>
+        </aside>
 
-{{#markdown}}
-{{> body}}
-{{/markdown}}
+        <aside class="right-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Users</label></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+          </ul>
+        </aside>
 
-            </div>
-          </div>
+        <section class="scroll-container">
+        
+          {{#markdown}}
+          {{> body}}
+          {{/markdown}}
 
-          {{> footer}}
         </section>
+
+      <a class="exit-off-canvas"></a>
 
       </div>
     </div>

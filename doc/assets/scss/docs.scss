@@ -1,4 +1,4 @@
-@import "global";
+ @import "global";
 @import "foundation";
 @import "code";
 @import "marketing-off-canvas";
@@ -282,7 +282,7 @@ footer { margin-top: 45px; }
     text-rendering: $header-text-rendering;
     margin-top: $header-top-margin;
     margin-bottom: $header-bottom-margin;
-    line-height: $header-line-height - rem-calc(3);
+    line-height: $header-line-height;
     text-transform: none;
 
     small {

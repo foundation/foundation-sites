@@ -93,15 +93,16 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 }
 
 @include exports("top-bar") {
-  // Used to provide media query values for javascript components.
-  // This class is generated despite the value of $include-html-top-bar-classes
-  // to ensure width calculations work correctly.
-  meta.foundation-mq-topbar {
-    font-family: "/" + unquote($topbar-media-query) + "/";
-    width: $topbar-breakpoint;
-  }
 
   @if $include-html-top-bar-classes {
+
+    // Used to provide media query values for javascript components.
+    // This class is generated despite the value of $include-html-top-bar-classes
+    // to ensure width calculations work correctly.
+    meta.foundation-mq-topbar {
+      font-family: "/" + unquote($topbar-media-query) + "/";
+      width: $topbar-breakpoint;
+    }
 
     /* Wrapped around .top-bar to contain to grid width */
     .contain-to-grid {
@@ -543,7 +544,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
                 border: none;
                 content: "\00bb";
                 top: 1rem;
-                margin-top: -7px;
+                margin-top: -1px;
                 #{$opposite-direction}: 5px;
                 line-height: 1.2;
               }
