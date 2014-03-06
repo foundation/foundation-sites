@@ -211,7 +211,7 @@
         container.addClass('clearing-container');
         visible_image.show();
         this.fix_height(target)
-          .caption($('.clearing-caption', visible_image), $image)
+          .caption($('.clearing-caption', visible_image), target)
           .center_and_label(image, label)
           .shift(current, target, function () {
             target.siblings().removeClass('visible');
@@ -399,8 +399,8 @@
 
     // image caption
 
-    caption : function (container, $image) {
-      var caption = $image.data('caption');
+    caption : function (container, target) {
+      var caption = $(this.S('img', target)).data('caption');
 
       if (caption) {
         container
