@@ -146,14 +146,23 @@
     assemble : function ($li) {
       var $el = $li.parent();
 
-      if ($el.parent().hasClass('carousel')) return;
+      if ($el.parent().hasClass('carousel')) {
+        return;
+      }
+
       $el.after('<div id="foundationClearingHolder"></div>');
+      var grid = $el.detach();
+      var grid_outerHTML = '';
+      if (grid[0] == null) {
+        return;
+      } else {
+        grid_outerHTML = grid[0].outerHTML;
+      }
 
       var holder = this.S('#foundationClearingHolder'),
           settings = $el.data(this.attr_name(true) + '-init'),
-          grid = $el.detach(),
           data = {
-            grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',
+            grid: '<div class="carousel">' + grid_outerHTML + '</div>',
             viewing: settings.templates.viewing
           },
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
@@ -202,7 +211,7 @@
         container.addClass('clearing-container');
         visible_image.show();
         this.fix_height(target)
-          .caption(self.S('.clearing-caption', visible_image), $image)
+          .caption($('.clearing-caption', visible_image), target)
           .center_and_label(image, label)
           .shift(current, target, function () {
             target.siblings().removeClass('visible');
@@ -390,8 +399,8 @@
 
     // image caption
 
-    caption : function (container, $image) {
-      var caption = $image.data('caption');
+    caption : function (container, target) {
+      var caption = $(this.S('img', target)).data('caption');
 
       if (caption) {
         container
