@@ -15,7 +15,7 @@
       load_attr : 'interchange',
 
       named_queries : {
-        'default' : Foundation.media_queries.small,
+        'default' : 'only screen',
         small : Foundation.media_queries.small,
         medium : Foundation.media_queries.medium,
         large : Foundation.media_queries.large,
