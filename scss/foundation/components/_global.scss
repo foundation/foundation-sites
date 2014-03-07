@@ -1,13 +1,20 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "../functions";
 //
 // Foundation Variables
 //
 
+// Data attribute namespace
+// styles get applied to [data-mysite-plugin], etc
+$namespace: false !default;
 
 $experimental: true !default;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
-// for compatibility with brower-based text zoom or user-set defaults.
+// for compatibility with browser-based text zoom or user-set defaults.
 
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
@@ -39,45 +46,24 @@ $base-line-height: 150% !default;
 // We use this to create equal side border radius on elements.
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
-  @if $side == left {
+  @if ($side == left or $side == right) {
     @if $experimental {
-      -moz-border-radius-bottomleft: $radius;
-      -moz-border-radius-topleft: $radius;
-      -webkit-border-bottom-left-radius: $radius;
-      -webkit-border-top-left-radius: $radius;
+      -moz-border-radius-bottom#{$side}: $radius;
+      -moz-border-radius-top#{$side}: $radius;
+      -webkit-border-bottom-#{$side}-radius: $radius;
+      -webkit-border-top-#{$side}-radius: $radius;
     }
-    border-bottom-left-radius: $radius;
-    border-top-left-radius: $radius;
-  }
-  @else if $side == right {
+    border-bottom-#{$side}-radius: $radius;
+    border-top-#{$side}-radius: $radius;
+  } @else {
     @if $experimental {
-      -moz-border-radius-topright: $radius;
-      -moz-border-radius-bottomright: $radius;
-      -webkit-border-top-right-radius: $radius;
-      -webkit-border-bottom-right-radius: $radius;
+      -moz-border-radius-#{$side}left: $radius;
+      -moz-border-radius-#{$side}right: $radius;
+      -webkit-border-#{$side}-left-radius: $radius;
+      -webkit-border-#{$side}-right-radius: $radius;
     }
-    border-top-right-radius: $radius;
-    border-bottom-right-radius: $radius;
-  }
-  @else if $side == top {
-    @if $experimental {
-      -moz-border-radius-topright: $radius;
-      -moz-border-radius-topleft: $radius;
-      -webkit-border-top-right-radius: $radius;
-      -webkit-border-top-left-radius: $radius;
-    }
-    border-top-right-radius: $radius;
-    border-top-left-radius: $radius;
-  }
-  @else if $side == bottom {
-    @if $experimental {
-      -moz-border-radius-bottomright: $radius;
-      -moz-border-radius-bottomleft: $radius;
-      -webkit-border-bottom-right-radius: $radius;
-      -webkit-border-bottom-left-radius: $radius;
-    }
-    border-bottom-right-radius: $radius;
-    border-bottom-left-radius: $radius;
+    border-#{$side}-left-radius: $radius;
+    border-#{$side}-right-radius: $radius;
   }
 }
 
@@ -198,6 +184,29 @@ $base-line-height: 150% !default;
   transform: translate($horizontal,$vertical)
 }
 
+// @mixins
+//
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// @mixins
+//
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
@@ -210,8 +219,6 @@ $font-smoothing: antialiased !default;
 
 // We use these to control text direction settings
 $text-direction: ltr !default;
-
-// NOTE: No need to change this conditional statement, $text-direction variable controls it all.
 $default-float: left !default;
 $opposite-direction: right !default;
 @if $text-direction == ltr {
@@ -221,7 +228,6 @@ $opposite-direction: right !default;
   $default-float: right;
   $opposite-direction: left;
 }
-
 // We use these as default colors throughout
 $primary-color: #008CBA !default;
 $secondary-color: #e7e7e7 !default;
@@ -250,7 +256,7 @@ $small-range: (0em, 40em) !default;
 $medium-range: (40.063em, 64em) !default;
 $large-range: (64.063em, 90em) !default;
 $xlarge-range: (90.063em, 120em) !default;
-$xxlarge-range: (120.063em) !default;
+$xxlarge-range: (120.063em, 99999999em) !default;
 
 
 $screen: "only screen" !default;
@@ -288,34 +294,45 @@ $cursor-text-value: text !default;
 
 
 @include exports("global") {
-  // Used to provide media query values for javascript components.
-  // Forward slash placed around everything to convince PhantomJS to read the value.
-  meta.foundation-mq-small {
-    font-family: "/" + unquote($small-only) + "/";
-    width: lower-bound($small-range);
-  }
-
-  meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-up) + "/";
-    width: lower-bound($medium-range);
-  }
-
-  meta.foundation-mq-large {
-    font-family: "/" + unquote($large-up) + "/";
-    width: lower-bound($large-range);
-  }
-
-  meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-up) + "/";
-    width: lower-bound($xlarge-range);
-  }
-
-  meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-up) + "/";
-    width: lower-bound($xxlarge-range);
-  }
 
   @if $include-html-global-classes {
+
+    meta.foundation-version {
+      font-family: "/5.2.0/";
+    }
+    // Used to provide media query values for javascript components.
+    // Forward slash placed around everything to convince PhantomJS to read the value.
+    meta.foundation-mq-small {
+      font-family: "/" + unquote($small-only) + "/";
+      width: lower-bound($small-range);
+    }
+
+    meta.foundation-mq-medium {
+      font-family: "/" + unquote($medium-up) + "/";
+      width: lower-bound($medium-range);
+    }
+
+    meta.foundation-mq-large {
+      font-family: "/" + unquote($large-up) + "/";
+      width: lower-bound($large-range);
+    }
+
+    meta.foundation-mq-xlarge {
+      font-family: "/" + unquote($xlarge-up) + "/";
+      width: lower-bound($xlarge-range);
+    }
+
+    meta.foundation-mq-xxlarge {
+      font-family: "/" + unquote($xxlarge-up) + "/";
+      width: lower-bound($xxlarge-range);
+    }
+
+    meta.foundation-data-attribute-namespace {
+      font-family: #{$namespace};
+    }
+
+    // Must be 100% for off canvas to work
+    html, body { height: 100%; }
 
     // Set box-sizing globally to handle padding and border widths
     *,
@@ -344,12 +361,8 @@ $cursor-text-value: text !default;
   a:hover { cursor: $cursor-pointer-value; }
 
     // Grid Defaults to get images and embeds to work properly
-    img,
-    object,
-    embed { max-width: 100%; height: auto; }
+    img { max-width: 100%; height: auto; }
 
-    object,
-    embed { height: 100%; }
     img { -ms-interpolation-mode: bicubic; }
 
     #map_canvas,
@@ -364,16 +377,7 @@ $cursor-text-value: text !default;
     .left   { float: left !important; }
     .right  { float: right !important; }
     .clearfix     { @include clearfix; }
-    .text-left    { text-align: left !important; }
-    .text-right   { text-align: right !important; }
-    .text-center  { text-align: center !important; }
-    .text-justify { text-align: justify !important; }
     .hide         { display: none; }
-    // Bidi counterparts to .left, .right, .text-left, .text-right
-    .start { float: $default-float !important; }
-    .end   { float: $opposite-direction !important; }
-    .text-start { text-align: $default-float !important; }
-    .text-end   { text-align: $opposite-direction !important; }
 
     // Font smoothing
     // Antialiased font smoothing works best for light text on a dark background.

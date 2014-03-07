@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 // @variables
@@ -131,26 +135,108 @@ $preloader-class: "preloader" !default;
         padding: 0;
         position: relative;
 
+        // Prevents images (and captions) from disappearing after first rotation on Chrome for Android
+        -webkit-transform: translateZ(0);
+
         img { display: block; max-width: 100%; }
+        
+        &.fade > * {
+          -webkit-transform: translate3d(0,0,0);
+          opacity: 0.01;
+          transition: opacity .25s ease-in-out;
+          -moz-transition: opacity .25s ease-in-out;
+          -webkit-transition: opacity .25s ease-in-out;
+          &.animate-in {
+            opacity: 1;
+            z-index: 20;
+            transition: opacity 500ms ease-in-out;
+            -moz-transition: opacity 500ms ease-in-out;
+            -webkit-transition: opacity 500ms ease-in-out;
+          }
+          &.animate-out {
+            opacity: 0.01;
+            z-index: 10;
+            transition: opacity 500ms ease-in-out;
+            -moz-transition: opacity 500ms ease-in-out;
+            -webkit-transition: opacity 500ms ease-in-out;
+          }
+        }
+        &.swipe-next > * {
+          -webkit-transform: translate3d(100%,0,0);
+          &.animate-in {
+            -webkit-transform:translate3d(0,0,0);
+            -moz-transform:translate3d(0,0,0);
+            -ms-transform:translate3d(0,0,0);
+            -o-transform:translate3d(0,0,0);
+            transform:translate3d(0,0,0);
+            -webkit-transition-duration:500ms;
+            -moz-transition-duration:500ms;
+            -o-transition-duration:500ms;
+            transition-duration:500ms;
+          }
+          &.animate-out {
+            -webkit-transform:translate3d(-100%,0,0);
+            -moz-transform:translate3d(-100%,0,0);
+            -ms-transform:translate3d(-100%,0,0);
+            -o-transform:translate3d(-100%,0,0);
+            transform:translate3d(-100%,0,0);
+            -webkit-transition-duration:500ms;
+            -moz-transition-duration:500ms;
+            -o-transition-duration:500ms;
+            transition-duration:500ms;
+          }
+        }
+
+        &.swipe-prev > * {
+          -webkit-transform:translate3d(-100%,0,0);
+          -moz-transform:translate3d(-100%,0,0);
+          -ms-transform:translate3d(-100%,0,0);
+          -o-transform:translate3d(-100%,0,0);
+          transform:translate3d(-100%,0,0);
+          &.animate-in {
+            -webkit-transform:translate3d(0,0,0);
+            -moz-transform:translate3d(0,0,0);
+            -ms-transform:translate3d(0,0,0);
+            -o-transform:translate3d(0,0,0);
+            transform:translate3d(0,0,0);
+            -webkit-transition-duration:500ms;
+            -moz-transition-duration:500ms;
+            -o-transition-duration:500ms;
+            transition-duration:500ms;
+          }
+          &.animate-out {
+            -webkit-transform:translate3d(100%,0,0);
+            -moz-transform:translate3d(100%,0,0);
+            -ms-transform:translate3d(100%,0,0);
+            -o-transform:translate3d(100%,0,0);
+            transform:translate3d(100%,0,0);
+            -webkit-transition-duration:500ms;
+            -moz-transition-duration:500ms;
+            -o-transition-duration:500ms;
+            transition-duration:500ms;
+          }
+        }
 
         &>* {
           position: absolute;
           top: 0;
+          left: 0;
           width: 100%;
-          @if $text-direction == rtl {
-            margin-right: 100%;
-          }
-          @else {
-            margin-left: 100%;
-          }
+          -webkit-transform:translate3d(100%,0,0);
+          -moz-transform:translate3d(100%,0,0);
+          -ms-transform:translate3d(100%,0,0);
+          -o-transform:translate3d(100%,0,0);
+          transform:translate3d(100%,0,0);
 
-          &:first-child {
-            @if $text-direction == rtl {
-            margin-right: 0%;
-            }
-            @else {
-            margin-left: 0%;
-            }
+          &.active {
+            opacity: 1;
+            top: 0;
+            left: 0;
+            -webkit-transform:translate3d(0,0,0);
+            -moz-transform:translate3d(0,0,0);
+            -ms-transform:translate3d(0,0,0);
+            -o-transform:translate3d(0,0,0);
+            transform:translate3d(0,0,0);
           }
 
           .orbit-caption {

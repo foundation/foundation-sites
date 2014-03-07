@@ -10,6 +10,14 @@ module.exports = function(grunt) {
       scss: ['scss/foundation.scss']
     },
 
+    jst: {
+      compile: {
+        files: {
+          'dist/docs/assets/js/templates.js': ['doc/templates/*.html']
+        }
+      }
+    },
+
     assemble: {
       options: {
         marked: {
@@ -64,7 +72,8 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         files: {
-          'dist/assets/js/foundation.js': '<%= foundation.js %>'
+          'dist/assets/js/foundation.js': '<%= foundation.js %>',
+          'dist/docs/assets/js/all.js': ['bower_components/lodash/dist/lodash.min.js', 'bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', 'bower_components/jquery-placeholder/jquery.placeholder.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
     },
@@ -76,8 +85,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['bower_components/fastclick/lib/fastclick.js', 'bower_components/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/modernizr.js': ['bower_components/modernizr/modernizr.js']
         }
       },
       vendor: {
@@ -85,7 +93,7 @@ module.exports = function(grunt) {
           'dist/assets/js/vendor/placeholder.js': 'bower_components/jquery-placeholder/jquery.placeholder.js',
           'dist/assets/js/vendor/fastclick.js': 'bower_components/fastclick/lib/fastclick.js',
           'dist/assets/js/vendor/jquery.cookie.js': 'bower_components/jquery.cookie/jquery.cookie.js',
-          'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/jquery.js',
+          'dist/assets/js/vendor/jquery.js': 'bower_components/jquery/dist/jquery.js',
           'dist/assets/js/vendor/modernizr.js': 'bower_components/modernizr/modernizr.js'
         }
       }
@@ -96,9 +104,9 @@ module.exports = function(grunt) {
         files: [
           {expand:true, cwd: 'doc/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/docs/assets/', filter:'isFile'},
           {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
-          {src: 'bower_components/jquery/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
+          {src: 'bower_components/jquery/dist/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
           {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
-          {src: 'bower.json', dest: 'dist/assets/'}
+          {src: ['bower.json','sache.json','humans.txt','robots.txt'], dest: 'dist/assets/'}
         ]
       }
     },
@@ -112,30 +120,30 @@ module.exports = function(grunt) {
       },
       continuous: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS']
+        browsers: ['SmallPhantomJS', 'LargePhantomJS']
       },
       dev: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox'],
         reporters: 'dots'
       },
       dev_watch: {
         background: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox']
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox'],
       },
       mac: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'Safari'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox', 'Safari'],
         reporters: 'dots'
       },
       win: {
         singleRun: true,
-        browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'IE'],
+        browsers: ['SmallPhantomJS', 'LargePhantomJS', 'SmallChrome', 'Firefox', 'IE'],
         reporters: 'dots'
       }
     },
 
-    watch_start: {
+    watch: {
       grunt: { files: ['Gruntfile.js'] },
       karma: {
         files: [
@@ -148,25 +156,30 @@ module.exports = function(grunt) {
       sass: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
         tasks: ['copy', 'concat', 'uglify'],
-        options: {livereload:true}
+        options: {livereload:false}
+      },
+      jst: {
+        files: ['doc/templates/*.html'],
+        tasks: ['jst'],
+        options: {livereload:false}
       },
       assemble_all: {
         files: ['doc/{includes,layouts}/**/*.html'],
         tasks: ['assemble'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       assemble_pages: {
         files: ['doc/pages/**/*.html'],
         tasks: ['newer:assemble'],
-        options: {livereload:true}
+        options: {livereload:false}
       },
       assets: {
-        options: {cwd: 'doc/assets/', livereload: true},
+        options: {cwd: 'doc/assets/', livereload: false},
         files: ['**/*','!{scss,js}/**/*'],
         tasks: ['copy']
       }
@@ -187,6 +200,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -196,12 +210,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.task.renameTask('watch', 'watch_start');
-  grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
-
-  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
+  grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
+  grunt.registerTask('develop', ['travis', 'watch_start']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
   grunt.registerTask('default', ['build', 'watch']);
 };

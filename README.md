@@ -1,6 +1,6 @@
 # [Foundation](http://foundation.zurb.com)
 
-[![Build Status](https://travis-ci.org/zurb/foundation.png)](https://travis-ci.org/[zurb]/[foundation])
+[![Build Status](https://travis-ci.org/zurb/foundation.png)](https://travis-ci.org/zurb/foundation)
 
 
 Foundation is the most advanced responsive front-end framework in the world. You can quickly prototype and build sites or apps that work on any kind of device with Foundation, which includes layout constructs (like a fully responsive grid), elements and best practices.
@@ -26,11 +26,12 @@ You'll want to clone the Foundation repo first and install all the dependencies.
 ```
 git clone git@github.com:zurb/foundation.git
 cd foundation
-npm install -g grunt-cli
+npm install -g grunt-cli bower
 npm install
+bower install
 ```
 
-Then just run `grunt` and the documentation will be compiled:
+Then just run `grunt build` and the documentation will be compiled:
 
 ```
 foundation/
@@ -40,4 +41,4 @@ foundation/
 │       └── ...
 ```
 
-Copyright (c) 2013 ZURB, inc.
+Copyright (c) 2014 ZURB, inc.

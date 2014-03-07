@@ -3,6 +3,87 @@
 
 ***
 
+### Got a Foundation Question?
+
+<div class="row">
+	<div class="medium-6 columns">
+		<p>Post your questions on the Foundation Forum! We have a strong community where you can:</p> 
+		<ul>
+		  <li>Get helpful answers fast from avid Foundation fans and ZURBians.</li>
+		  <li>Describe your code problem or response design question with text, code and imagery so the community can respond with appropriate advise or answers.</li>
+		  <li>Follow posts and people to learn new things about Foundation.</li>
+		</ul>
+
+		 <p><a href="/forum" class="small secondary button">Sign Up &amp; Get Answers Now &rarr;</a></p>
+
+	</div>
+	<div class="medium-6 columns">
+		<a href="/forum"><img src="http://foundation.zurb.com/assets/img/support/foundation-forum.svg"></a>
+	</div>
+</div>
+
+***
+
+### 5.2.0- March 5, 2014
+
+  * RTL fix for tooltips [0ec2262](https://github.com/zurb/foundation/commit/0ec22625d08bcc8cf6c147975888be209d27e5a4)
+  * Fixes clearing keyboard event bindings [fe1a5d5](https://github.com/zurb/foundation/commit/fe1a5d51b7e59a4c1d429d17cbd4be01890e667e)
+  * Adds 1:1 touch support to Orbit [bdb6dba](https://github.com/zurb/foundation/commit/bdb6dba3c9a083df98ce124f117f1caab8ee9445)
+  * Add CSS3 animations to Orbit [61fac2e](https://github.com/zurb/foundation/commit/61fac2ef67a87f4d535cba0f819fc57aa2adaf24)
+  * Add range slider component [7dd607b](https://github.com/zurb/foundation/commit/7dd607b8431105580524e6bf672214cf76339174)
+  * Drop ups, drop lefts, and drop rights support [8eb56c0](https://github.com/zurb/foundation/commit/8eb56c0d337a0a0098eee4ec27b57c7d035f1634)
+  * Added ability to set responsive background-image on divs within interchange [ffd8528](https://github.com/zurb/foundation/commit/ffd85282ab5d8c4327a95116e86103feff6d4b8b)
+  * No longer validate disabled inputs in Abide [5786277](https://github.com/zurb/foundation/commit/5786277d53c58fdcf6e7597e1c0630f86794d60e)
+  * Enable Joyride to be reinitialized [794dd8f](https://github.com/zurb/foundation/commit/794dd8f3d8fbd164e325e42151feb250bea2209b)
+  * Remove tooltips if target no longer exists [9c09e28](https://github.com/zurb/foundation/commit/9c09e2802fb3c8f3c57ea934f9a84afb238e2d65)
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.1.1...v5.2.0)
+
+### 5.1.1- February 6, 2014
+
+  * Offcanvas RTL fix [27f672a](https://github.com/zurb/foundation/commit/27f672a3b2d60563c3ca53ff238ae743586158fa)
+  * Adds missing namespace declarations in magellan [a3d729f](https://github.com/zurb/foundation/commit/a3d729f943eb9fd72a96ad1c9a1dec6286a3f5f7)
+  * Reflow equalizer on initialization otherwise equal height doesn't take affect until window resize [8fb50b3](https://github.com/zurb/foundation/commit/8fb50b39265eab5c4543fb6d5f04d7c678508f23)
+  * Fixed a bug with a comment and couple properties being over included as a result of an improper export [09ed05e](https://github.com/zurb/foundation/commit/09ed05e02b1a6ac380824a698ca60526313c206b)
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.1.0...v5.1.1)
+
+### 5.1.0- February 5, 2014
+
+  * Disable tooltips for `<a>` tags on touch screens to avoid interefering with link and document the edge case [c38d3e3](https://github.com/zurb/foundation/commit/c38d3e3e72ba88348891b3c4f66b06a7d22dbaad)
+  * Add hover delay variable to Tooltip [33cf987](https://github.com/zurb/foundation/commit/33cf987f73992a1331e74fb3c5d715fcc8e9041f)
+  * Add upper range to xxlarge media query. [2072ee3](https://github.com/zurb/foundation/commit/2072ee304aea6351320f0020543b1b6230a46ecc)
+  * Add destination thresholds for magellan. [2bb7134](https://github.com/zurb/foundation/commit/2bb7134c17e68d97ab1f9c058c67c6a473e59c54)
+  * Fix Clearing+Block-grid margin issue. [c8781df](https://github.com/zurb/foundation/commit/c8781df595220e2f0bf8d56f7166f15b18c657be)
+  * Lower specificity on {size}-reset-order classes in grid.scss to prevent smaller reset-order classes from overriding larger push- and pull- classes. [2318709](https://github.com/zurb/foundation/commit/231870965d65633cb9d4b10f3c50115a5ab7c3c2)
+  * Allow data attributes to be namespaced. [774bca5](https://github.com/zurb/foundation/commit/774bca59abd02fa7407617a03a4d8ec3aff5220f)
+  * Added `Foundation.utils` Javascript helper methods.
+  * Added `foundation.equalizer.js` plugin to create equal height content.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.0.3...v5.1.0)
+
+### 5.0.3- January 15, 2014
+
+  * Uses `scale-color` instead of `darken` [#3287](https://github.com/zurb/foundation/pull/3827)
+  * Add `reflow` to Orbit
+  * Add missing large and xlarge visibility classes
+  * Add missing variables to `_settings.scss` file
+  * Abide checkbox validation [b5e8db5133](https://github.com/zurb/foundation/commit/b5e8db5133e56b83c5df3da46ec4cf8b7bb09523)
+  * Fallback to default settings for alerts if no custom settings are provided [0261d71d9d](https://github.com/zurb/foundation/commit/0261d71d9d4b94216d0596966db041b834c8c483)
+  * Setting active_class on Magellan fixed [f737212e47](https://github.com/zurb/foundation/commit/f737212e475226e7ddafcf85681626ca45dcc70f)
+  * Fix FastClick header loading issues and Update FastClick [a4f88e1969](https://github.com/zurb/foundation/commit/a4f88e1969b76f70ff319d3c6832f8c2aaf03434)
+  * Dropdown callbacks patched [fa89000ec2](https://github.com/zurb/foundation/commit/fa89000ec2eba15d9da6edeccb3c9db7174d4678)
+  * Fix bug where joyride fails to scroll up for next tip [fa89000ec2](https://github.com/zurb/foundation/commit/fa89000ec2eba15d9da6edeccb3c9db7174d4678)
+  * Joyride RTL fixes [99668af63d](https://github.com/zurb/foundation/commit/99668af63d6b85ea43842567864353b9702bcb1e)
+  * Dropdowns now auto close [ff21a94199](https://github.com/zurb/foundation/commit/ff21a94199bc9ce66b050bdc8f42ba0b0c1f4538)
+  * Fix Orbit click event to go to next slide [e6c4d0a30c](https://github.com/zurb/foundation/commit/e6c4d0a30cfb3c2fd66a92944947da8579140a11)
+  * Clearing RTL improvements [d1f19f77b0](https://github.com/zurb/foundation/commit/d1f19f77b0f29f85ae4a18da96715929d706174b)
+  * Fix Joyride Cookie Detection [357a365e1a](https://github.com/zurb/foundation/commit/357a365e1abe346886eca8fd9bedde559602cd32)
+  * Fix to Interchange internal caching [66fc386503](https://github.com/zurb/foundation/commit/66fc386503d4fd13c4badfd85cc0daca13d87528)
+  * Lots of bug and documentation fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.0.2...v5.0.3)
+
 ### 5.0.2- November 22, 2013
   
   * Fix issue with clearing images not displaying

@@ -20,11 +20,11 @@ You can create a reveal modal using minimal markup.
 <div class="row">
   <div class="large-6 columns">
     <h4>HTML</h4>
-    {{> examples_reveal_basic_rendered}}
+    {{> examples_reveal_basic}}
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-{{> examples_reveal_basic}}
+    {{> examples_reveal_basic_rendered}}
   </div>
 </div>
 
@@ -56,7 +56,9 @@ The class options:
 
 {{> examples_reveal_data}}
 
-You can also open and close Reveal via JavaScript:
+You can also open and close Reveal via Javascript:
+
+{{> examples_reveal_open_close}}
 
 <h5>Firing a Reveal Modal with Ajax Content</h5>
 
@@ -68,7 +70,7 @@ To use an url from `href` attribute just add `data-reveal-ajax="true"` instead.
 
 {{> examples_reveal_ajax}}
 
-Ajax-based Reveal modals can also be opened via JavaScript:
+Ajax-based Reveal modals can also be opened via Javascript:
 
 <h4>JS</h4>
 
@@ -190,10 +192,10 @@ $(document).on('closed', '[data-reveal]', function () {
 
 ***
 
-<h2>Using the JavaScript</h2>
+<h2>Using the Javascript</h2>
 
 <div class="panel">
-  Before you can use Reveal you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../JavaScript.html) on setting that up.
+  Before you can use Reveal you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../Javascript.html) on setting that up.
 </div>
 
 <p>Just add `foundation.reveal.js` AFTER the `foundation.js` file. Your markup should look something like this:</p>
@@ -202,7 +204,7 @@ $(document).on('closed', '[data-reveal]', function () {
 
 <p>Required Foundation Library: `foundation.reveal.js`</p>
 
-<h5>Optional JavaScript Configuration</h5>
+<h5>Optional Javascript Configuration</h5>
 
 <p>Reveal options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>opened</i>, <i>close</i>, and <i>closed</i> events.</p>
 

@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -111,14 +115,12 @@ $button-disabled-opacity: 0.7 !default;
     padding-top: $is-input + rem-calc(.5);
     padding-bottom: $is-input + rem-calc(.5);
     -webkit-appearance: none;
-    border: none;
     font-weight: $button-font-weight !important;
   }
   @else if $is-input {
     padding-top: $is-input + rem-calc(1);
     padding-bottom: $is-input;
     -webkit-appearance: none;
-    border: none;
     font-weight: $button-font-weight !important;
   }
 }
@@ -128,7 +130,7 @@ $button-disabled-opacity: 0.7 !default;
 // We use this mixin to add button color styles
 //
 // $bg - Primary color set in settings file. Default: $primary-color.
-// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
 @mixin button-style($bg:$primary-color, $radius:false, $disabled:false) {
 
@@ -202,7 +204,7 @@ $button-disabled-opacity: 0.7 !default;
       @include button-style;
 
       @include single-transition(background-color);
-      @include button-size($padding:false, $is-input:$button-med);
+      @include button-size($padding:$button-med, $full-width:false, $is-input:false);
 
       &.secondary { @include button-style($bg:$secondary-color); }
       &.success   { @include button-style($bg:$success-color); }

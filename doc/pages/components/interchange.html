@@ -33,7 +33,7 @@ We use the data-interchange attribute on a markup container (probably a div) to 
 
 Each rule passed to `data-interchange` is comma delimited and encapsulated in square brackets, and each argument within a rule is also comma delimited. The first parameter is the path to your image, and the second parameter is your media query, surrounded by parenthesis.
 
-The last rule that evaluates to true will be the image that gets loaded. Exluding the `src` attribute keeps the browser from making two requests for images.
+The last rule that evaluates to true will be the image that gets loaded. Excluding the `src` attribute keeps the browser from making two requests for images.
 
 ***
 
@@ -59,6 +59,22 @@ If you want to support browsers with JavaScript disabled, we recommend setting y
 You should always specify a `default` directive for Interchange.
 
 ***
+
+### Using Interchange with background-images
+
+When you add a data-interchange attribute containing image paths (.jpg, .jpeg, .png, .gif, .bmp, .tiff), instead of replacing the element content it will set a background-image css property with the corresponding path. 
+
+{{#markdown}}
+```html
+<div data-interchange="[/path/to/default.jpg, (default)], [/path/to/bigger-image.jpg, (large)]"></div>
+```
+{{/markdown}}
+
+This solution does not support browsers with JavaScript disabled. To add a fallback you can add a default background-image in your css but this can result in loading more than one image on some device.  This method is only switching the background-image on the element. You will need to set the others background properties in your css (background-repeat, background-position, background-size...). 
+
+
+***
+
 
 ### Using Retina Images
 

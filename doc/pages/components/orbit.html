@@ -17,7 +17,7 @@ layout: doc/layouts/default.html
 
 ## How to Setup Orbit
 
-Orbit requires minimal HTML markup to function. Our JavaScript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
+Orbit requires minimal HTML markup to function. Our Javascript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
 
 <h4>HTML</h4>
 
@@ -140,7 +140,7 @@ $preloader-class: "preloader";
 
 ## Configuring Orbit
 
-It's easy to configure Orbit using our provided JavaScript. You can use with data-attributes or plain old JavaScript. Make sure `jquery.js`, `foundation.js`, and `foundation.orbit.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
+It's easy to configure Orbit using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.orbit.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
 
 ```html
 <script src="js/jquery.js"></script>
@@ -150,7 +150,7 @@ It's easy to configure Orbit using our provided JavaScript. You can use with dat
 
 ### Basic
 
-Using data-attributes is the preferred method of making changes to our JavaScript.
+Using data-attributes is the preferred method of making changes to our Javascript.
 
 ```html
 <ul data-orbit data-options="animation_speed:1500;">
@@ -162,7 +162,7 @@ Using data-attributes is the preferred method of making changes to our JavaScrip
 
 ### Advanced
 
-You can also adjust settings using plain old JavaScript. Here's all the available settings:
+You can also adjust settings using plain old Javascript. Here's all the available settings:
 
 #### JS
 ```js
@@ -172,6 +172,7 @@ $(document).foundation({
       timer_speed: 10000, // Sets the amount of time in milliseconds before transitioning a slide
       pause_on_hover: true, // Pauses on the current slide while hovering
       resume_on_mouseout: false, // If pause on hover is set to true, this setting resumes playback after mousing out of slide
+      next_on_click: true, // Advance to next slide on click
       animation_speed: 500, // Sets the amount of time in milliseconds the transition between slides will last
       stack_on_small: false,
       navigation_arrows: true,
@@ -184,8 +185,9 @@ $(document).foundation({
       timer_container_class: 'orbit-timer', // Class name given to the timer
       timer_paused_class: 'paused', // Class name given to the paused button
       timer_progress_class: 'orbit-progress', // Class name given to the progress bar
-      slides_container_class: 'orbit-slides-container', // Class name given to the slides container
+      slides_container_class: 'orbit-slides-container', // Class name given to the 
       bullets_container_class: 'orbit-bullets',
+      slide_selector: 'li', // Default is '*' which selects all children under the container
       bullets_active_class: 'active', // Class name given to the active bullet
       slide_number_class: 'orbit-slide-number', // Class name given to the slide number
       caption_class: 'orbit-caption', // Class name given to the caption
@@ -211,7 +213,7 @@ $(document).foundation({
 
   <div class="row">
     <section class="large-6 columns">
-      <h4 class="">JavaScript</h4>
+      <h4 class="">Javascript</h4>
       <div class="code-container">
 
 {{#markdown}}
@@ -240,7 +242,6 @@ $(document).foundation({
 ```html
 <ul data-orbit
     data-options="animation:slide;
-                  animation_speed:1000;
                   pause_on_hover:true;
                   animation_speed:500;
                   navigation_arrows:true;
@@ -256,7 +257,6 @@ $(document).foundation({
     <section class="full-grid">
       <ul data-orbit data-options="
         animation:slide;
-        animation_speed:1000;
         pause_on_hover:true;
         animation_speed:500;
         navigation_arrows:true;

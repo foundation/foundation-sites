@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -71,7 +75,7 @@ $callout-panel-link-color: $primary-color !default;
 
       &.callout {
         @include panel(scale-color($primary-color, $lightness: 94%));
-        a {
+        a:not(.button) {
           color: $callout-panel-link-color;
         }
       }
