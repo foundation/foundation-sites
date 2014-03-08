@@ -160,7 +160,7 @@ $total-columns: 12 !default;
   .columns.#{$size}-uncentered {
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
-    float: $default-float;
+    float: $default-float !important;
   }
 
   .column.#{$size}-uncentered.opposite,
