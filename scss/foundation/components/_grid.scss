@@ -140,7 +140,7 @@ $total-columns: 12 !default;
   @if $center {
     margin-#{$default-float}: auto;
     margin-#{$opposite-direction}: auto;
-    float: none !important;
+    float: none;
   }
 
   // If offset, calculate appropriate margins
@@ -171,6 +171,7 @@ $total-columns: 12 !default;
   }
 
   [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
+  [class*="column"] + [class*="column"].centered:last-child { float: none; }
   [class*="column"] + [class*="column"].end { float: $default-float; }
 
 
@@ -192,7 +193,7 @@ $total-columns: 12 !default;
   .columns.#{$size}-uncentered {
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
-    float: $default-float !important;
+    float: $default-float;
   }
 
   .column.#{$size}-uncentered.opposite,
