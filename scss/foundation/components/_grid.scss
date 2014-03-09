@@ -193,6 +193,18 @@ $total-columns: 12 !default;
     float: $default-float;
   }
 
+  // Fighting [class*="column"] + [class*="column"]:last-child
+  .column.#{$size}-centered:last-child,
+  .columns.#{$size}-centered:last-child{
+    float: none;
+  }
+
+  // Fighting .column.#{$previous-size}-centered:last-child
+  .column.#{$size}-uncentered:last-child,
+  .columns.#{$size}-uncentered:last-child {
+    float: $default-float;
+  }
+
   .column.#{$size}-uncentered.opposite,
   .columns.#{$size}-uncentered.opposite {
     float: $opposite-direction;
