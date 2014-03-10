@@ -118,7 +118,7 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin off-canvas-wrap {
   @include kill-flicker;
   @include wrap-base;
-  overflow-x: hidden;
+  overflow: hidden;
   &.move-right,
   &.move-left { height: 100%; }
 }
