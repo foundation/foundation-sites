@@ -308,49 +308,122 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 }
 
 @include exports("form") {
-  @if $include-html-form-classes {
-    /* Standard Forms */
-    form { margin: 0 0 $form-spacing; }
+  /* Standard Forms */
+  form { margin: 0 0 $form-spacing; }
 
+  label {
+    @include form-label;
+    /* Styles for required inputs */
+    small {
+      text-transform: capitalize;
+      color: scale-color($form-label-font-color, $lightness: 15%);
+    }
+  }
+
+  select {
+    -webkit-appearance: none !important;
+    background-color: $select-bg-color;
+    background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
+    background-repeat: no-repeat;
+    background-position: center $opposite-direction 3%;
+    border: $input-border-width $input-border-style $input-border-color;
+    padding: $form-spacing / 2;
+    font-size: $input-font-size;
+    @include radius(0);
+    &:hover {
+      background-color: $select-hover-bg-color;
+      border-color: $input-focus-border-color;
+    }
+  }
+
+  select::-ms-expand {
+    display:none;
+  }
+
+  @-moz-document url-prefix() {
+    select { background: $select-bg-color; }
+    select:hover { background: $select-hover-bg-color }
+  }
+
+  /* We use this to get basic styling on all basic form elements */
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="week"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  textarea {
+    -webkit-appearance: none;
+    @include form-element;
+    @if not $input-include-glowing-effect {
+      @include single-transition(all, 0.15s, linear);
+    }
+    // Include nested @if statement to reduce redundant code
+    @if $include-html-form-classes {
+      &.radius {
+        @include radius($input-border-radius);
+      }
+    }
+  }
+
+  /* Respect enforced amount of rows for textarea */
+  textarea[rows] {
+    height: auto;
+  }
+
+  /* Add height value for select elements to match text input height */
+  select {
+    height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  }
+
+  /* Adjust margin for form elements below */
+  input[type="file"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
+    margin: 0 0 $form-spacing 0;
+  }
+
+  input[type="checkbox"] + label,
+  input[type="radio"] + label {
+    display: inline-block;
+    margin-#{$default-float}: $form-spacing * .5;
+    margin-#{$opposite-direction}: $form-spacing;
+    margin-bottom: 0;
+    vertical-align: baseline;
+  }
+
+  /* Normalize file input width */
+  input[type="file"] {
+    width:100%;
+  }
+
+  /* We add basic fieldset styling */
+  fieldset {
+    @include fieldset;
+  }
+
+  @if $include-html-form-classes {
     /* Using forms within rows, we need to set some defaults */
     form .row { @include form-row-base; }
 
     /* Label Styles */
-    label { @include form-label;
+    label {
       &.right { @include form-label(right,false); }
       &.inline { @include form-label(inline,false); }
-      /* Styles for required inputs */
-      small {
-        text-transform: capitalize;
-        color: scale-color($form-label-font-color, $lightness: 15%);
-      }
     }
 
     select {
-      -webkit-appearance: none !important;
-      background-color: $select-bg-color;
-      background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
-      background-repeat: no-repeat;
-      background-position: center $opposite-direction 3%;
-      border: $input-border-width $input-border-style $input-border-color;
-      padding: $form-spacing / 2;
-      font-size: $input-font-size;
-      @include radius(0);
       &.radius { @include radius($global-radius); }
-      &:hover {
-        background-color: $select-hover-bg-color;
-        border-color: $input-focus-border-color;
-      }
     }
 
-    select::-ms-expand {
-      display:none;
-    }
-
-    @-moz-document url-prefix() {
-      select { background: $select-bg-color; }
-      select:hover { background: $select-hover-bg-color }
-    }
     /* Attach elements to the beginning or end of an input */
     .prefix,
     .postfix { @include prefix-postfix-base; }
@@ -370,68 +443,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     }
     span.postfix,label.postfix { @include postfix();
       &.radius { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
-    }
-
-    /* We use this to get basic styling on all basic form elements */
-    input[type="text"],
-    input[type="password"],
-    input[type="date"],
-    input[type="datetime"],
-    input[type="datetime-local"],
-    input[type="month"],
-    input[type="week"],
-    input[type="email"],
-    input[type="number"],
-    input[type="search"],
-    input[type="tel"],
-    input[type="time"],
-    input[type="url"],
-    textarea {
-      -webkit-appearance: none;
-      @include form-element;
-      @if not $input-include-glowing-effect {
-          @include single-transition(all, 0.15s, linear);
-      }
-      &.radius {
-        @include radius($input-border-radius);
-      }
-    }
-    
-    /* Respect enforced amount of rows for textarea */
-    textarea[rows] {
-      height: auto;
-    }
-
-    /* Add height value for select elements to match text input height */
-    select {
-      height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-    }
-
-    /* Adjust margin for form elements below */
-    input[type="file"],
-    input[type="checkbox"],
-    input[type="radio"],
-    select {
-      margin: 0 0 $form-spacing 0;
-    }
-
-    input[type="checkbox"] + label,
-    input[type="radio"] + label {
-      display: inline-block;
-      margin-#{$default-float}: $form-spacing * .5;
-      margin-#{$opposite-direction}: $form-spacing;
-      margin-bottom: 0;
-      vertical-align: baseline;
-    }
-
-    /* Normalize file input width */
-    input[type="file"] {
-      width:100%;
-    }
-
-    /* We add basic fieldset styling */
-    fieldset {
-      @include fieldset;
     }
 
     /* Error Handling */
