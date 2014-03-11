@@ -28,7 +28,9 @@
           e.preventDefault();
           var href = $(this).attr('href');
           S('.off-canvas-wrap').on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-              window.location.href = href
+              if(href) {
+                window.location.href = href
+              }
               S('.off-canvas-wrap').off('transitionend webkitTransitionEnd oTransitionEnd');
           });
           S(".off-canvas-wrap").removeClass("move-right");
@@ -45,7 +47,9 @@
           e.preventDefault();
           var href = $(this).attr('href');
           S('.off-canvas-wrap').on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-              window.location.href = href
+              if(href) {
+                window.location.href = href
+              }
               S('.off-canvas-wrap').off('transitionend webkitTransitionEnd oTransitionEnd');
           });
           S(".off-canvas-wrap").removeClass("move-left");
