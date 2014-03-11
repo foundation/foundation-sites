@@ -275,8 +275,6 @@
       container.on('click', self.toggle_timer);
       if (settings.swipe) {
         slides_container.on('touchstart.fndtn.orbit',function(e) {
-          e.preventDefault();
-          e.stopPropagation();
           if (self.cache.animating) {return;}
           if (!e.touches) {e = e.originalEvent;}
 
@@ -290,11 +288,15 @@
           self.stop_timer(); // does not appear to prevent callback from occurring          
         })
         .on('touchmove.fndtn.orbit',function(e) {
-          if (self.cache.animating) {return;}
-          e.preventDefault();
-          e.stopPropagation();
+          if (Math.abs(self.cache.delta_x) > 5) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+
+          if (self.cache.animating) {return;}          
           requestAnimationFrame(function(){
             if (!e.touches) { e = e.originalEvent; }
+
             // Ignore pinch/zoom events
             if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
 
@@ -304,7 +306,9 @@
               self.cache.is_scrolling = !!( self.cache.is_scrolling || Math.abs(self.cache.delta_x) < Math.abs(e.touches[0].pageY - self.cache.start_page_y) );
             }
 
-            if (self.cache.is_scrolling) {return;}
+            if (self.cache.is_scrolling) {
+              return;
+            }
             
             var direction = (self.cache.delta_x < 0) ? (idx+1) : (idx-1);
             if (self.cache.direction !== direction) {
