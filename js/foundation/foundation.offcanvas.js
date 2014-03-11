@@ -52,6 +52,27 @@
         });
     },
 
+    click_toggle_class: function(e, class_name) {
+      e.preventDefault();
+      this.S(e.target).closest('.off-canvas-wrap').toggleClass(class_name);
+    },
+
+    click_remove_class: function(e, class_name) {
+      e.preventDefault();
+      this.S('.off-canvas-wrap').removeClass(class_name);
+    },
+
+    click_add_animation_handler: function(e, class_name) {
+      e.preventDefault();
+      self = this.S
+      var href = $(e.target).attr('href');
+      self('.off-canvas-wrap').on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
+          window.location = href
+          self('.off-canvas-wrap').off('transitionend webkitTransitionEnd oTransitionEnd');
+      });
+      self(".off-canvas-wrap").removeClass(class_name);
+    },
+
     reflow : function () {}
   };
 }(jQuery, this, this.document));
