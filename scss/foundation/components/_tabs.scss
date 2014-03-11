@@ -71,7 +71,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         float: $default-float;
         padding: $tabs-content-padding 0;
         width: 100%;
-        &.active { display: block; }
+        &.active { display: block; float: none; }
         &.contained { padding: $tabs-content-padding; }
       }
       &.vertical {
