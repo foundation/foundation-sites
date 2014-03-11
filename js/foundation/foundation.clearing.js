@@ -67,8 +67,8 @@
 
             // if clearing is open and the current image is
             // clicked, go to the next image in sequence
-            if (target.hasClass('visible') && 
-              current[0] === target[0] && 
+            if (target.hasClass('visible') &&
+              current[0] === target[0] &&
               next.length > 0 && self.is_open(current)) {
               target = next;
               image = S('img', target);
@@ -202,7 +202,7 @@
         container.addClass('clearing-container');
         visible_image.show();
         this.fix_height(target)
-          .caption(self.S('.clearing-caption', visible_image), $image)
+          .caption(self.S('.clearing-caption', visible_image), self.S('img', target))
           .center_and_label(image, label)
           .shift(current, target, function () {
             target.siblings().removeClass('visible');
@@ -217,7 +217,7 @@
           .css('visibility', 'hidden');
 
         startLoad.call(this);
-        
+
       }
     },
 
@@ -391,7 +391,7 @@
     // image caption
 
     caption : function (container, $image) {
-      var caption = $image.data('caption');
+      var caption = $image.attr('data-caption');
 
       if (caption) {
         container
