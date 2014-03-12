@@ -344,7 +344,7 @@ $text-breakpoint-up-queries:
       border: $hr-border-style $hr-border-color;
       border-width: $hr-border-width 0 0;
       clear: both;
-      margin: $hr-margin 0 ($hr-margin - em-calc(strip-unit($hr-border-width)));
+      margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
       height: 0;
     }
 
