@@ -9,7 +9,7 @@
 // @variables
 //
 $include-html-form-classes: $include-html-classes !default;
-
+$include-html-form-styles: true !default;
 // We use this to set the base for lots of form spacing and positioning styles
 $form-spacing: rem-calc(16) !default;
 
@@ -80,23 +80,23 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 @mixin form-row-base {
   .row { margin: 0 ((-$form-spacing) / 2);
 
-    .column,
-    .columns { padding: 0 $form-spacing / 2; }
+         .column,
+         .columns { padding: 0 $form-spacing / 2; }
 
-    // Use this to collapse the margins of a form row
-    &.collapse { margin: 0;
+         // Use this to collapse the margins of a form row
+         &.collapse { margin: 0;
 
-      .column,
-      .columns { padding: 0; }
-      input {
-        -moz-border-radius-bottom#{$opposite-direction}: 0;
-        -moz-border-radius-top#{$opposite-direction}: 0;
-        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
-        -webkit-border-top-#{$opposite-direction}-radius: 0;
-      }
+                      .column,
+                      .columns { padding: 0; }
+                      input {
+                        -moz-border-radius-bottom#{$opposite-direction}: 0;
+                        -moz-border-radius-top#{$opposite-direction}: 0;
+                        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
+                        -webkit-border-top-#{$opposite-direction}-radius: 0;
+                      }
 
-    }
-  }
+                    }
+       }
   input.column,
   input.columns,
   textarea.column,
@@ -308,17 +308,12 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 }
 
 @include exports("form") {
-  @if $include-html-form-classes {
+  @if $include-html-form-styles {
     /* Standard Forms */
     form { margin: 0 0 $form-spacing; }
 
-    /* Using forms within rows, we need to set some defaults */
-    form .row { @include form-row-base; }
-
-    /* Label Styles */
-    label { @include form-label;
-      &.right { @include form-label(right,false); }
-      &.inline { @include form-label(inline,false); }
+    label {
+      @include form-label;
       /* Styles for required inputs */
       small {
         text-transform: capitalize;
@@ -336,7 +331,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
       @include radius(0);
-      &.radius { @include radius($global-radius); }
       &:hover {
         background-color: $select-hover-bg-color;
         border-color: $input-focus-border-color;
@@ -350,26 +344,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     @-moz-document url-prefix() {
       select { background: $select-bg-color; }
       select:hover { background: $select-hover-bg-color }
-    }
-    /* Attach elements to the beginning or end of an input */
-    .prefix,
-    .postfix { @include prefix-postfix-base; }
-
-    /* Adjust padding, alignment and radius if pre/post element is a button */
-    .postfix.button { @include button-size(false,false,false); @include postfix(false, false, true); }
-    .prefix.button { @include button-size(false,false,false); @include prefix(false, false, true); }
-
-    .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
-    .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
-    .prefix.button.round { @include radius(0); @include side-radius($default-float, $button-round); }
-    .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
-
-    /* Separate prefix and postfix styles when on span or label so buttons keep their own */
-    span.prefix,label.prefix { @include prefix();
-      &.radius { @include radius(0); @include side-radius($default-float, $global-radius); }
-    }
-    span.postfix,label.postfix { @include postfix();
-      &.radius { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
     }
 
     /* We use this to get basic styling on all basic form elements */
@@ -390,13 +364,16 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       -webkit-appearance: none;
       @include form-element;
       @if not $input-include-glowing-effect {
-          @include single-transition(all, 0.15s, linear);
+        @include single-transition(all, 0.15s, linear);
       }
-      &.radius {
-        @include radius($input-border-radius);
+      // Include nested @if statement to reduce redundant code
+      @if $include-html-form-classes {
+        &.radius {
+          @include radius($input-border-radius);
+        }
       }
     }
-    
+
     /* Respect enforced amount of rows for textarea */
     textarea[rows] {
       height: auto;
@@ -433,6 +410,42 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     fieldset {
       @include fieldset;
     }
+  }
+
+  @if $include-html-form-classes {
+    /* Using forms within rows, we need to set some defaults */
+    form .row { @include form-row-base; }
+
+    /* Label Styles */
+    label {
+      &.right { @include form-label(right,false); }
+      &.inline { @include form-label(inline,false); }
+    }
+
+    select {
+      &.radius { @include radius($global-radius); }
+    }
+
+    /* Attach elements to the beginning or end of an input */
+    .prefix,
+    .postfix { @include prefix-postfix-base; }
+
+    /* Adjust padding, alignment and radius if pre/post element is a button */
+    .postfix.button { @include button-size(false,false,false); @include postfix(false, false, true); }
+    .prefix.button { @include button-size(false,false,false); @include prefix(false, false, true); }
+
+    .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
+    .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+    .prefix.button.round { @include radius(0); @include side-radius($default-float, $button-round); }
+    .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+
+    /* Separate prefix and postfix styles when on span or label so buttons keep their own */
+    span.prefix,label.prefix { @include prefix();
+                               &.radius { @include radius(0); @include side-radius($default-float, $global-radius); }
+                             }
+    span.postfix,label.postfix { @include postfix();
+                                 &.radius { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
+                               }
 
     /* Error Handling */
 
