@@ -179,8 +179,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   border-width: $input-prefix-border-size;
   overflow: $input-prefix-overflow;
   font-size: $form-label-font-size;
-  height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
-  line-height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 }
 
 // @MIXIN
