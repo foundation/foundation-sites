@@ -6,7 +6,7 @@
   Foundation.libs.joyride = {
     name : 'joyride',
 
-    version : '5.2.0',
+    version : '5.2.1',
 
     defaults : {
       expose                   : false,     // turn on or off the expose feature
