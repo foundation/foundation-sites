@@ -198,7 +198,7 @@ $visibility-breakpoint-queries:
       #{$visibility-none-list} {
         display: none !important;
       }
-      @if $include-table-visibility-classes != false {
+      @if $include-table-visibility-classes == false {
         #{$visibility-table-list} {
           display: table;
         }
