@@ -36,6 +36,12 @@ $(document).foundation({
 
       // #FFF or #FFFFFF
       color: /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+    },
+    validators: {
+      diceRoll: function(el, required, parent) {
+        var possibilities = [true, false];
+        return possibilities[Math.round(Math.random())];
+      }
     }
   }
 });

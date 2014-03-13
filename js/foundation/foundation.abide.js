@@ -39,6 +39,15 @@
 
         // #FFF or #FFFFFF
         color: /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+      },
+      validators : {
+        equalTo: function(el, required, parent) {
+          var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
+              to    = el.value,
+              valid = (from === to);
+
+          return valid;
+        }
       }
     },
 
@@ -135,7 +144,7 @@
       } else if (pattern.length > 0) {
         return [el, new RegExp(pattern), required];
       }
-      
+
       if (this.settings.patterns.hasOwnProperty(type)) {
         return [el, this.settings.patterns[type], required];
       }
@@ -154,13 +163,16 @@
             required = el_patterns[i][2],
             value = el.value,
             direct_parent = this.S(el).parent(),
-            is_equal = el.getAttribute(this.add_namespace('data-equalto')),
+            validator = el.getAttribute(this.add_namespace('data-abide-validator')),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
             label = this.S('label[for="' + el.getAttribute('id') + '"]'),
             valid_length = (required) ? (el.value.length > 0) : true;
 
-        var parent;
+        var parent, valid;
+
+        // support old way to do equalTo validations
+        if(el.getAttribute(this.add_namespace('data-equalto'))) { validator = "equalTo" }
 
         if (!direct_parent.is('label')) {
           parent = direct_parent;
@@ -172,8 +184,17 @@
           validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
           validations.push(this.valid_checkbox(el, required));
-        } else if (is_equal && required) {
-          validations.push(this.valid_equal(el, required, parent));
+        } else if (validator) {
+          valid = this.settings.validators[validator].apply(this, [el, required, parent])
+          validations.push(valid);
+
+          if (valid) {
+            this.S(el).removeAttr(this.invalid_attr);
+            parent.removeClass('error');
+          } else {
+            this.S(el).attr(this.invalid_attr, '');
+            parent.addClass('error');
+          }
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
@@ -229,22 +250,6 @@
         } else {
           this.S(group[i]).attr(this.invalid_attr, '').parent().addClass('error');
         }
-      }
-
-      return valid;
-    },
-
-    valid_equal: function(el, required, parent) {
-      var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
-          to    = el.value,
-          valid = (from === to);
-
-      if (valid) {
-        this.S(el).removeAttr(this.invalid_attr);
-        parent.removeClass('error');
-      } else {
-        this.S(el).attr(this.invalid_attr, '');
-        parent.addClass('error');
       }
 
       return valid;
