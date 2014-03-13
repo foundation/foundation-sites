@@ -116,7 +116,6 @@ $menu-slide: "transform 500ms ease" !default;
 // OFF CANVAS WRAP
 // Wrap visible content and prevent scroll bars
 @mixin off-canvas-wrap {
-  @include kill-flicker;
   @include wrap-base;
   overflow-x: hidden;
   &.move-right,
@@ -126,7 +125,6 @@ $menu-slide: "transform 500ms ease" !default;
 // INNER WRAP
 // Main content area that moves to reveal the off-canvas nav
 @mixin inner-wrap {
-  @include kill-flicker;
   @include wrap-base;
   @include clearfix;
   -webkit-transition: -webkit-#{$menu-slide};
