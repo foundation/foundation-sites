@@ -95,6 +95,35 @@ To handle the `submit` event yourself, use `data-abide="ajax"` instead of `data-
 
 ***
 
+## Custom Validators
+
+`equalTo` is actually an example of a built-in validator. To get an idea of how validators work, check out the implementation of `equalTo`:
+
+{{#markdown}}
+```javascript
+equalTo: function(el, required, parent) {
+  var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
+      to    = el.value,
+      valid = (from === to);
+
+  return valid;
+}
+```
+{{/markdown}}
+
+Your function will be passed three arguments: `el`, `required`, and `parent`. These are the elements being validated, whether or not it was marked as required, and the parent of the element being validated, respectively.
+Your function should return `true` if the element is valid, or `false` if it is invalid. You can define your custom validators and pass them into abide options when initializing foundation. See the Configuration section for more details on defining custom validators.
+
+Suppose you've defined a custom validator `diceRoll` which randomly marks your element as valid or invalid. You would use it like so:
+
+{{#markdown}}
+```html
+<input type="text" data-abide-validator="diceRoll">
+```
+{{/markdown}}
+
+***
+
 ## Using the Javascript
 
 <div class="panel">
