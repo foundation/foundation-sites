@@ -54,8 +54,10 @@ $tabbar-menu-icon-line-height: rem-calc(33) !default;
 $tabbar-menu-icon-padding: 0 !default;
 
 $tabbar-hamburger-icon-width: rem-calc(16) !default;
-$tabbar-hamburger-icon-left: rem-calc(13) !default;
-$tabbar-hamburger-icon-top: rem-calc(5) !default;
+$tabbar-hamburger-icon-left: false !default;
+$tabbar-hamburger-icon-top: false !default;
+$tapbar-hamburger-icon-thickness: 1px !default;
+$tapbar-hamburger-icon-gap: 6px !default;
 
 // Off Canvas Back-Link Overlay
 $off-canvas-overlay-transition: background 300ms ease !default;
@@ -260,6 +262,65 @@ $menu-slide: "transform 500ms ease" !default;
     }
 }
 
+// @MIXIN
+//
+// We use this mixin to generate hamburger icon
+//
+// $width - Width of hamburger icon in rem Default: $tabbar-hamburger-icon-width.
+// $left - If false, icon will be centered horizontally || explicitly set value in rem Default: $tabbar-hamburger-icon-left= False
+// $top - If false, icon will be centered vertically || explicitly set value in rem Default: $tabbar-hamburger-icon-top= False
+// $thickness - thickness of lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-thickness = 1px
+// $gap - spacing between the lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-gap = 6px
+// $color - icon color Default: $tabbar-menu-icon-color
+// $hover-color - icon color when hovered Default: $tabbar-menu-icon-hover
+@mixin hamburger($width:$tabbar-hamburger-icon-width,
+                 $left: $tabbar-hamburger-icon-left,
+                 $top: $tabbar-hamburger-icon-top,
+                 $thickness:$tapbar-hamburger-icon-thickness,
+                 $gap:$tapbar-hamburger-icon-gap,
+                 $color:$tabbar-menu-icon-color,
+                 $hover-color:$tabbar-menu-icon-hover) {
+  span {
+    position: absolute;
+    display: block;
+    height: 0;
+    width: $width;
+
+    // disable height centering if $top is not false
+    @if $top {
+      top: $tabbar-hamburger-icon-top;
+    }
+    @else {
+      top: ($tabbar-menu-icon-height - rem-calc(3 * $thickness) - rem-calc(2 * $gap))/2;
+    }
+    // disable width centering if $top is not false
+    @if $left {
+      left: $tabbar-hamburger-icon-left;
+    }
+    @else {
+      left: ($tabbar-menu-icon-width - $width)/2;
+    }
+    @if $experimental {
+      -webkit-box-shadow: 1px 0px                       1px $thickness $color,
+                          1px ($gap + $thickness)       1px $thickness $color,
+                          1px (2*$gap + 2*$thickness)   1px $thickness $color;
+    }
+      box-shadow:         0   0px                       0   $thickness $color,
+                          0   $gap + $thickness         0   $thickness $color,
+                          0   (2 * $gap + 2*$thickness) 0   $thickness $color;
+  }
+  &:hover span {
+    @if $experimental {
+      -webkit-box-shadow: 1px 0px                       1px $thickness $hover-color,
+                          1px ($gap + $thickness)       1px $thickness $hover-color,
+                          1px (2*$gap + 2*$thickness)   1px $thickness $hover-color;
+    }
+      box-shadow:         0   0px                       0   $thickness $hover-color,
+                          0   $gap + $thickness         0   $thickness $hover-color,
+                          0   (2 * $gap + 2*$thickness) 0   $thickness $hover-color;
+  }
+}
+
 //
 // DEFAULT CLASSES
 //
@@ -289,35 +350,7 @@ $menu-slide: "transform 500ms ease" !default;
       position: relative;
 
       // this is the actual hamburger icon
-      span {
-        position: absolute;
-        display: block;
-        width: $tabbar-hamburger-icon-width;
-        height: 0;
-        left: $tabbar-hamburger-icon-left;
-        top: $tabbar-hamburger-icon-top;
-        // margin-top: $tabbar-height / 4;
-
-        @if $experimental {
-          -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-color,
-                              1px 16px 1px 1px $tabbar-menu-icon-color,
-                              1px 22px 1px 1px $tabbar-menu-icon-color;
-        }
-          box-shadow:         0 10px 0 1px $tabbar-menu-icon-color,
-                              0 16px 0 1px $tabbar-menu-icon-color,
-                              0 22px 0 1px $tabbar-menu-icon-color;
-      }
-
-      &:hover span {
-        @if $experimental {
-          -webkit-box-shadow: 1px 10px 1px 1px $tabbar-menu-icon-hover,
-                              1px 16px 1px 1px $tabbar-menu-icon-hover,
-                              1px 22px 1px 1px $tabbar-menu-icon-hover;
-        }
-          box-shadow:         0 10px 0 1px $tabbar-menu-icon-hover,
-                              0 16px 0 1px $tabbar-menu-icon-hover,
-                              0 22px 0 1px $tabbar-menu-icon-hover;
-      }
+      @include hamburger();
     }
 
     .left-off-canvas-menu { @include off-canvas-menu($position: left); }
