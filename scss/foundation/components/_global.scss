@@ -111,7 +111,7 @@ $base-line-height: 150% !default;
 
 // @mixins
 //
-// We use this to create equilateral triangles
+// We use this to create isosceles triangles
 // $triangle-size - Used to set border-size. No default, set a px or em size.
 // $triangle-color - Used to set border-color which makes up triangle. No default
 // $triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right
@@ -250,6 +250,7 @@ $include-html-classes: true !default;
 $include-print-styles: true !default;
 $include-html-global-classes: $include-html-classes !default;
 
+$column-gutter: rem-calc(30) !default;
 
 // Media Query Ranges
 $small-range: (0em, 40em) !default;
