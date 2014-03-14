@@ -34,6 +34,9 @@ $reveal-border-style: solid !default;
 $reveal-border-width: 1px !default;
 $reveal-border-color: #666 !default;
 
+// We use this to set the default radius used throughout the core.
+$reveal-radius: $global-radius !default;
+
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
 
@@ -172,6 +175,12 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
       dialog, .#{$reveal-modal-class} {
         @include reveal-modal-style(false, $reveal-modal-padding * 1.5, false, $box-shadow: false, $top-offset: $reveal-position-top);
 
+        // Remove all padding with collapse class
+        &.collapse { padding:0; }
+
+        // Add radius to modal
+        &.radius { @include radius($reveal-radius); }
+
         &.tiny  { @include reveal-modal-base(false, 30%); }
         &.small { @include reveal-modal-base(false, 40%); }
         &.medium  { @include reveal-modal-base(false, 60%); }
@@ -182,6 +191,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
       dialog, .#{$reveal-modal-class} {
         &.full {
           @include reveal-modal-base(false, 100vw);
+          @include radius(0);
           top:0;
           left:0;
           height: 100vh;
