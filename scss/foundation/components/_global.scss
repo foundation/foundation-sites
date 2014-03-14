@@ -303,7 +303,7 @@ $cursor-text-value: text !default;
     // Used to provide media query values for javascript components.
     // Forward slash placed around everything to convince PhantomJS to read the value.
     meta.foundation-mq-small {
-      font-family: "/" + unquote($small-only) + "/";
+      font-family: "/" + unquote($small-up) + "/";
       width: lower-bound($small-range);
     }
 
