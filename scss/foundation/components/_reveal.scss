@@ -175,6 +175,10 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
       dialog, .#{$reveal-modal-class} {
         @include reveal-modal-style(false, $reveal-modal-padding * 1.5, false, $box-shadow: false, $top-offset: $reveal-position-top);
 
+        // Remove all padding with collapse class
+        &.collapse { padding:0; }
+
+        // Add radius to modal
         &.radius { @include radius($reveal-radius); }
 
         &.tiny  { @include reveal-modal-base(false, 30%); }
