@@ -285,6 +285,7 @@ $menu-slide: "transform 500ms ease" !default;
     display: block;
     height: 0;
     width: $width;
+    line-height: 1;
 
     // disable height centering if $top is not false
     @if $top {
