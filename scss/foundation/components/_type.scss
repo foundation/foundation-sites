@@ -135,14 +135,14 @@ $text-breakpoint-up-queries:
 
 @mixin text-alignment-loop {
   $text-alignments: left, right, center, justify;
-  
+
   // Global Text Styles
   @each $alignment in $text-alignments {
     .text-#{$alignment} {
       text-align: #{$alignment} !important;
     }
   }
-  
+
   @each $current-text-breakpoint in $text-breakpoint-sizes {
     @media #{nth($text-breakpoint-only-queries, index($text-breakpoint-sizes, $current-text-breakpoint))} {
       @each $alignment in $text-alignments {
@@ -180,6 +180,48 @@ $text-breakpoint-up-queries:
   margin-top: $subheader-top-margin;
   margin-bottom: $subheader-bottom-margin;
 }
+
+//
+// Font size mixins
+//
+
+@mixin alpha {
+  font-size: $h1-font-size - rem-calc(10);
+  @media #{$medium-up} {
+    font-size: $h1-font-size;
+  }
+}
+
+@mixin beta {
+  font-size: $h2-font-size - rem-calc(10);
+  @media #{$medium-up} {
+    font-size: $h2-font-size;
+  }
+}
+
+@mixin gamma {
+  font-size: $h3-font-size - rem-calc(5);
+  @media #{$medium-up} {
+    font-size: $h3-font-size;
+  }
+}
+
+@mixin delta {
+  font-size: $h4-font-size - rem-calc(5);
+  @media #{$medium-up} {
+    font-size: $h4-font-size;
+  }
+}
+
+@mixin epsilon {
+  font-size: $h5-font-size;
+}
+
+@mixin zeta {
+  font-size: $h6-font-size;
+}
+
+
 @include exports("type") {
   @if $include-html-type-classes {
 
@@ -331,12 +373,35 @@ $text-breakpoint-up-queries:
       }
     }
 
-    h1 { font-size: $h1-font-size - rem-calc(10); }
-    h2 { font-size: $h2-font-size - rem-calc(10); }
-    h3 { font-size: $h3-font-size - rem-calc(5); }
-    h4 { font-size: $h4-font-size - rem-calc(5); }
-    h5 { font-size: $h5-font-size; }
-    h6 { font-size: $h6-font-size; }
+    h1,
+    .alpha {
+      @include alpha;
+    }
+
+    h2,
+    .beta {
+      @include beta;
+    }
+
+    h3,
+    .gamma {
+      @include gamma;
+    }
+
+    h4,
+    .delta {
+      @include delta;
+    }
+
+    h5,
+    .epsilon {
+      @include epsilon;
+    }
+
+    h6,
+    .zeta {
+      @include zeta;
+    }
 
     .subheader { @include subheader; }
 
@@ -506,15 +571,6 @@ $text-breakpoint-up-queries:
         border: none;
         padding: $microformat-abbr-padding;
       }
-    }
-
-
-    @media #{$medium-up} {
-      h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
-      h1 { font-size: $h1-font-size; }
-      h2 { font-size: $h2-font-size; }
-      h3 { font-size: $h3-font-size; }
-      h4 { font-size: $h4-font-size; }
     }
 
     // Only include these styles if you want them.
