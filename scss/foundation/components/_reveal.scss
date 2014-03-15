@@ -111,15 +111,15 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 // $radius - If true, set to modal radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
 // $top-offset - Default: $reveal-position-top || 50px
 @mixin reveal-modal-style(
-  $bg:$reveal-modal-bg,
-  $padding:$reveal-modal-padding,
-  $border:true,
+  $bg:false,
+  $padding:false,
+  $border:false,
   $border-style:$reveal-border-style,
   $border-width:$reveal-border-width,
   $border-color:$reveal-border-color,
-  $box-shadow:true,
+  $box-shadow:false,
   $radius:false,
-  $top-offset:$reveal-position-top) {
+  $top-offset:false) {
 
   @if $bg { background-color: $bg; }
   @if $padding != false { padding: $padding; }
@@ -167,25 +167,31 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
     dialog, .#{$reveal-modal-class} {
       @include reveal-modal-base;
-      @include reveal-modal-style;
+      @include reveal-modal-style(
+        $bg:$reveal-modal-bg,
+        $padding:$reveal-modal-padding,
+        $border:true,
+        $box-shadow:true,
+        $radius:false,
+        $top-offset:$reveal-position-top);
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
     }
 
     dialog[open] {
-    	display:block;
-    	visibility: visible;
+      display:block;
+      visibility: visible;
     }
 
     @media #{$medium-up} {
 
       dialog, .#{$reveal-modal-class} {
-        @include reveal-modal-style($bg: false, $padding: $reveal-modal-padding * 1.5, $border: false, $box-shadow: false, $top-offset: $reveal-position-top);
+        @include reveal-modal-style($padding:$reveal-modal-padding * 1.5);
 
-        &.radius { @include reveal-modal-style($bg: false, $padding: false, $border: false, $box-shadow: false, $radius: true, $top-offset: false); }
-        &.round  { @include reveal-modal-style($bg: false, $padding: false, $border: false, $box-shadow: false, $radius: $reveal-round, $top-offset: false); }
+        &.radius { @include reveal-modal-style($radius:true); }
+        &.round  { @include reveal-modal-style($radius:$reveal-round); }
         
-        &.collapse { @include reveal-modal-style($bg: false, $padding: 0, $top-offset: false); }
+        &.collapse { @include reveal-modal-style($padding:0); }
 
         &.tiny  { @include reveal-modal-base(false, 30%); }
         &.small { @include reveal-modal-base(false, 40%); }
