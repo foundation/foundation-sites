@@ -102,10 +102,10 @@ module.exports = function(grunt) {
     copy: {
       dist: {
         files: [
-          {expand:true, cwd: 'doc/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/docs/assets/', filter:'isFile'},
-          {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
+          {expand: true, cwd: 'doc/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/docs/assets/', filter:'isFile'},
+          {expand: true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
           {src: 'bower_components/jquery/dist/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
-          {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
+          {expand: true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
           {src: ['bower.json','sache.json','humans.txt','robots.txt'], dest: 'dist/assets/'}
         ]
       }
@@ -156,30 +156,43 @@ module.exports = function(grunt) {
       sass: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
-        options: {livereload:false}
+        options: {
+          livereload: false
+        }
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
         tasks: ['copy', 'concat', 'uglify'],
-        options: {livereload:false}
+        options: {
+          livereload: false
+        }
       },
       jst: {
         files: ['doc/templates/*.html'],
         tasks: ['jst'],
-        options: {livereload:false}
+        options: {
+          livereload: false
+        }
       },
       assemble_all: {
         files: ['doc/{includes,layouts}/**/*.html'],
         tasks: ['assemble'],
-        options: {livereload:false}
+        options: {
+          livereload: false
+        }
       },
       assemble_pages: {
         files: ['doc/pages/**/*.html'],
         tasks: ['newer:assemble'],
-        options: {livereload:false}
+        options: {
+          livereload: false
+        }
       },
       assets: {
-        options: {cwd: 'doc/assets/', livereload: false},
+        options: {
+          cwd: 'doc/assets/', 
+          livereload: false
+        },
         files: ['**/*','!{scss,js}/**/*'],
         tasks: ['copy']
       }
