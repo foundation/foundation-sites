@@ -25,12 +25,6 @@
           S(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.left-off-canvas-menu a', function (e) {
-          e.preventDefault();
-          var href = $(this).attr('href');
-          S('.off-canvas-wrap').on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-              window.location = href
-              S('.off-canvas-wrap').off('transitionend webkitTransitionEnd oTransitionEnd');
-          });
           S(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
@@ -42,12 +36,6 @@
           S(".off-canvas-wrap").removeClass("move-left");
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
-          e.preventDefault();
-          var href = $(this).attr('href');
-          S('.off-canvas-wrap').on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-              window.location = href
-              S('.off-canvas-wrap').off('transitionend webkitTransitionEnd oTransitionEnd');
-          });
           S(".off-canvas-wrap").removeClass("move-left");
         });
     },
