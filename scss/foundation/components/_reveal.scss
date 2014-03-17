@@ -128,9 +128,6 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
   // We can choose whether or not to include the default box-shadow.
   @if $box-shadow {
-    @if $experimental {
-      -webkit-box-shadow: $reveal-box-shadow;
-    }
     box-shadow: $reveal-box-shadow;
   }
 

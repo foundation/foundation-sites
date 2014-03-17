@@ -11,7 +11,7 @@
 // styles get applied to [data-mysite-plugin], etc
 $namespace: false !default;
 
-$experimental: true !default;
+$experimental: false !default;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
@@ -34,9 +34,6 @@ $base-line-height: 150% !default;
 // $radius - Default: $global-radius || 4px
 @mixin radius($radius:$global-radius) {
   @if $radius {
-    @if $experimental {
-      -webkit-border-radius: $radius;
-    }
     border-radius: $radius;
   }
 }
@@ -47,21 +44,9 @@ $base-line-height: 150% !default;
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
   @if ($side == left or $side == right) {
-    @if $experimental {
-      -moz-border-radius-bottom#{$side}: $radius;
-      -moz-border-radius-top#{$side}: $radius;
-      -webkit-border-bottom-#{$side}-radius: $radius;
-      -webkit-border-top-#{$side}-radius: $radius;
-    }
     border-bottom-#{$side}-radius: $radius;
     border-top-#{$side}-radius: $radius;
   } @else {
-    @if $experimental {
-      -moz-border-radius-#{$side}left: $radius;
-      -moz-border-radius-#{$side}right: $radius;
-      -webkit-border-#{$side}-left-radius: $radius;
-      -webkit-border-#{$side}-right-radius: $radius;
-    }
     border-#{$side}-left-radius: $radius;
     border-#{$side}-right-radius: $radius;
   }
@@ -72,15 +57,9 @@ $base-line-height: 150% !default;
 // We can control whether or not we have inset shadows edges.
 // $active - Default: true, Options: false
 @mixin inset-shadow($active:true) {
-  @if $experimental {
-    -webkit-box-shadow: $shiny-edge-size $shiny-edge-color inset;
-  }
   box-shadow: $shiny-edge-size $shiny-edge-color inset;
 
   @if $active { &:active {
-    @if $experimental {
-      -webkit-box-shadow: $shiny-edge-size $shiny-edge-active-color inset;
-    }
     box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
 }
 
@@ -91,10 +70,6 @@ $base-line-height: 150% !default;
 // $speed - Default: 300ms
 // $ease - Default:ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
 @mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
-  @if $experimental {
-    -webkit-transition: $property $speed $ease;
-    -moz-transition: $property $speed $ease;
-  }
   transition: $property $speed $ease;
 }
 
@@ -102,10 +77,6 @@ $base-line-height: 150% !default;
 //
 // We use this to add box-sizing across browser prefixes
 @mixin box-sizing($type:border-box) {
-  @if $experimental {
-    -moz-box-sizing: $type;
-    -webkit-box-sizing: $type;
-  }
   box-sizing: $type;
 }
 
@@ -153,17 +124,9 @@ $base-line-height: 150% !default;
 // $fade-time - Default: 300ms
 // $glowing-effect-color - Default: fade-out($primary-color, .25)
 @mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($primary-color, .25)) {
-  @if $experimental {
-    -webkit-transition: -webkit-box-shadow $fade-time, border-color $fade-time ease-in-out;
-    -moz-transition: -moz-box-shadow $fade-time, border-color $fade-time ease-in-out;
-  }
   transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
 
   &:#{$selector} {
-    @if $experimental {
-      -webkit-box-shadow: 0 0 5px $glowing-effect-color;
-      -moz-box-shadow: 0 0 5px $glowing-effect-color;
-    }
     box-shadow: 0 0 5px $glowing-effect-color;
     border-color: $glowing-effect-color;
   }
@@ -175,12 +138,6 @@ $base-line-height: 150% !default;
 // $horizontal: Default: 0
 // $vertical: Default: 0
 @mixin translate2d($horizontal:0, $vertical:0) {
-  @if $experimental {
-    -webkit-transform: translate($horizontal,$vertical);
-    -moz-transform: translate($horizontal,$vertical);
-    -ms-transform: translate($horizontal,$vertical);
-    -o-transform: translate($horizontal,$vertical);
-  }
   transform: translate($horizontal,$vertical)
 }
 

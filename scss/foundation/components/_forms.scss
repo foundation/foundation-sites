@@ -110,9 +110,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   background-color: $input-bg-color;
   font-family: $input-font-family;
   border: $input-border-width $input-border-style $input-border-color;
-  @if $experimental {
-    -webkit-box-shadow: $input-box-shadow;
-  }
   box-shadow: $input-box-shadow;
   color: $input-font-color;
   display: block;

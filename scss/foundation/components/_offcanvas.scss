@@ -301,24 +301,14 @@ $menu-slide: "transform 500ms ease" !default;
     @else {
       left: ($tabbar-menu-icon-width - $width)/2;
     }
-    @if $experimental {
-      -webkit-box-shadow: 1px 0px                       1px $thickness $color,
-                          1px ($gap + $thickness)       1px $thickness $color,
-                          1px (2*$gap + 2*$thickness)   1px $thickness $color;
-    }
-      box-shadow:         0   0px                       0   $thickness $color,
-                          0   $gap + $thickness         0   $thickness $color,
-                          0   (2 * $gap + 2*$thickness) 0   $thickness $color;
+    box-shadow: 0   0px                       0   $thickness $color,
+                0   $gap + $thickness         0   $thickness $color,
+                0   (2 * $gap + 2*$thickness) 0   $thickness $color;
   }
   &:hover span {
-    @if $experimental {
-      -webkit-box-shadow: 1px 0px                       1px $thickness $hover-color,
-                          1px ($gap + $thickness)       1px $thickness $hover-color,
-                          1px (2*$gap + 2*$thickness)   1px $thickness $hover-color;
-    }
-      box-shadow:         0   0px                       0   $thickness $hover-color,
-                          0   $gap + $thickness         0   $thickness $hover-color,
-                          0   (2 * $gap + 2*$thickness) 0   $thickness $hover-color;
+    box-shadow: 0   0px                       0   $thickness $hover-color,
+                0   $gap + $thickness         0   $thickness $hover-color,
+                0   (2 * $gap + 2*$thickness) 0   $thickness $hover-color;
   }
 }
 

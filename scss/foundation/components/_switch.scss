@@ -214,33 +214,19 @@ $switch-label-outline: 1px dotted #888 !default;
     span:last-child {
       border-color: scale-color($paddle-bg, $lightness: -30%);
       background: $paddle-bg;
-      @if $experimental {
-        background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
-        background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
-      }
       background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
 
       // Building the alternating colored sides of the switch
-      @if $experimental {
-        -webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07),
-                            1000px 0 0 1000px $positive-color,
-                            -2px 0 10px 0 rgba(0,0,0,0.07),
-                            -1000px 0 0 1000px $negative-color;
-      }
-      box-shadow:         2px 0 10px 0 rgba(0,0,0,0.07),
-                          1000px 0 0 980px $positive-color,
-                          -2px 0 10px 0 rgba(0,0,0,0.07),
-                          -1000px 0 0 1000px $negative-color;
+      box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07),
+                  1000px 0 0 980px $positive-color,
+                  -2px 0 10px 0 rgba(0,0,0,0.07),
+                  -1000px 0 0 1000px $negative-color;
     }
 
     &:hover,
     &:focus {
       span:last-child {
         background: $paddle-bg;
-        @if $experimental {
-          background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
-          background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
-        }
         background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
       }
     }
@@ -315,6 +301,6 @@ $switch-label-outline: 1px dotted #888 !default;
 
       }
 
-      @if $experimental { @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } } }
+      // @if $experimental { @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } } }
   }
 }
