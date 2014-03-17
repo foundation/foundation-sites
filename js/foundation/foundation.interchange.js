@@ -58,9 +58,9 @@
           if (last_path == path) return;
 
 
-          var regex = "/^.(\.jpg|\.jpeg|\.png|\.gif|\.tiff|\.bmp)\??|#?./";
+          var image_regex = /\.(gif|jpg|jpeg|tiff|png)$/i;
 
-          if (new RegExp(regex,'i').test(path)){
+          if (image_regex.test(path)){
 
               $(el).css('background-image', 'url('+path+')');
               el.data('interchange-last-path', path);
