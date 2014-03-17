@@ -58,7 +58,7 @@
           if (last_path == path) return;
 
 
-          var regex = "/^.(\.jpg|\.jpeg|\.png|\.gif|\.tiff|\.bmp)\??|#?./";
+          var regex = "/(\.jpg|\.jpeg|\.png|\.gif|\.tiff|\.bmp)$/";
 
           if (new RegExp(regex,'i').test(path)){
 
