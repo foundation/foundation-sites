@@ -4,6 +4,7 @@
 
 @import "global";
 @import "grid";
+@import "buttons";
 
 //
 // Top Bar Variables
@@ -47,7 +48,7 @@ $topbar-link-font-family: $body-font-family !default;
 $topbar-link-text-transform: none !default;
 $topbar-link-padding: $topbar-height / 3 !default;
 
-$topbar-button-font-size: 0.75rem;
+$topbar-button-font-size: 0.75rem !default;
 $topbar-button-top: 7px !default;
 
 $topbar-dropdown-label-color: #777 !default;
@@ -160,7 +161,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
       input { height: auto; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
-      .button {
+      .button, button {
         padding-top: .45rem;
         padding-bottom: .35rem;
         margin-bottom: 0;
@@ -318,34 +319,27 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           text-transform: $topbar-link-text-transform;
           background: $topbar-dropdown-bg;
 
-          &.button {
-            background: $primary-color;
-            font-size: $topbar-link-font-size;
-             padding-#{$opposite-direction}: $topbar-link-padding;
-             padding-#{$default-float}: $topbar-link-padding;
-            &:hover {
-              background: scale-color($primary-color, $lightness: -27%);
-            }
-          }
-          &.button.secondary {
-            background: $secondary-color;
-            &:hover {
-              background: scale-color($secondary-color, $lightness: -11%);
-            }
-          }
-          &.button.success {
-            background: $success-color;
-            &:hover {
-              background: scale-color($success-color, $lightness: -21%);
-            }
-          }
-          &.button.alert {
-            background: $alert-color;
-            &:hover {
-              background: scale-color($alert-color, $lightness: -18%);
-            }
-          }
 
+          &.button {
+            font-size: $topbar-link-font-size;
+            padding-#{$opposite-direction}: $topbar-link-padding;
+            padding-#{$default-float}: $topbar-link-padding;
+            @include button-style($bg:$primary-color);
+          }
+          &.button.secondary { @include button-style($bg:$secondary-color); }
+          &.button.success   { @include button-style($bg:$success-color); }
+          &.button.alert     { @include button-style($bg:$alert-color); }
+        }
+
+        > button {
+          font-size: $topbar-link-font-size;
+          padding-#{$opposite-direction}: $topbar-link-padding;
+          padding-#{$default-float}: $topbar-link-padding;
+          @include button-style($bg:$primary-color);
+
+          &.secondary { @include button-style($bg:$secondary-color); }
+          &.success   { @include button-style($bg:$success-color); }
+          &.alert     { @include button-style($bg:$alert-color); }
         }
 
         // Apply the hover link color when it has that class
@@ -425,7 +419,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             }
           }
           &.has-form { padding: 8px $topbar-link-padding; }
-          .button { top: auto; }
+          .button, button { top: auto; }
         }
 
         label {
@@ -455,7 +449,8 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         .name h1 a { width: auto; }
 
         input,
-        .button {
+        .button,
+        button {
           font-size: rem-calc(14);
           position: relative;
           top: $topbar-button-top;

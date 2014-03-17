@@ -13,7 +13,7 @@ $include-html-grid-classes: $include-html-classes !default;
 $block-grid-elements: 12 !default;
 $block-grid-default-spacing: rem-calc(20) !default;
 
-$align-block-grid-to-grid: true;
+$align-block-grid-to-grid: true !default;
 @if $align-block-grid-to-grid {
   $block-grid-default-spacing: $column-gutter;
 }

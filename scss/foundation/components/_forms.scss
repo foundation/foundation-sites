@@ -179,8 +179,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   border-width: $input-prefix-border-size;
   overflow: $input-prefix-overflow;
   font-size: $form-label-font-size;
-  height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
-  line-height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 }
 
 // @MIXIN
@@ -331,7 +331,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       background-color: $select-bg-color;
       background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
       background-repeat: no-repeat;
-      background-position: center $opposite-direction 3%;
+      background-position: if($text-direction == 'rtl', 3%, 97%) center;
       border: $input-border-width $input-border-style $input-border-color;
       padding: $form-spacing / 2;
       font-size: $input-font-size;
@@ -356,8 +356,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     .postfix { @include prefix-postfix-base; }
 
     /* Adjust padding, alignment and radius if pre/post element is a button */
-    .postfix.button { @include button-size(false,false,false); @include postfix(false, false, true); }
-    .prefix.button { @include button-size(false,false,false); @include prefix(false, false, true); }
+    .postfix.button { @include button-size(false,false); @include postfix(false, false, true); }
+    .prefix.button { @include button-size(false,false); @include prefix(false, false, true); }
 
     .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
     .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }

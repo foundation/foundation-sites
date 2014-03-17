@@ -4,7 +4,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version: '5.2.0',
+    version: '5.2.1',
 
     settings : {
       index : 0,
@@ -187,6 +187,8 @@
               .removeClass('hover');
           } else {
             li.addClass('hover');
+
+            $(li).siblings().removeClass('hover');
 
             if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
               e.preventDefault();

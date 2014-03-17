@@ -4,7 +4,7 @@
   Foundation.libs.tooltip = {
     name : 'tooltip',
 
-    version : '5.2.0',
+    version : '5.2.1',
 
     settings : {
       additional_inheritable_classes : [],
@@ -201,7 +201,8 @@
     },
 
     small : function () {
-      return matchMedia(Foundation.media_queries.small).matches;
+      return matchMedia(Foundation.media_queries.small).matches &&
+        !matchMedia(Foundation.media_queries.medium).matches;
     },
 
     inheritable_classes : function ($target) {
