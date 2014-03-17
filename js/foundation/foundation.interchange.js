@@ -58,7 +58,7 @@
           if (last_path == path) return;
 
 
-          var image_regex = /\.(gif|jpg|jpeg|tiff|png)$/i;
+          var image_regex = /\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i;
 
           if (image_regex.test(path)){
 
