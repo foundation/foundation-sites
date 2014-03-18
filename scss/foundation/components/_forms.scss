@@ -89,10 +89,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       .column,
       .columns { padding: 0; }
       input {
-        -moz-border-radius-bottom#{$opposite-direction}: 0;
-        -moz-border-radius-top#{$opposite-direction}: 0;
-        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
-        -webkit-border-top-#{$opposite-direction}-radius: 0;
+        @include side-radius($opposite-direction, 0);
       }
 
     }
