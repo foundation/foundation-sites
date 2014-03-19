@@ -21,13 +21,13 @@
           self.click_toggle_class(e, 'move-right');
         })
         .on('click.fndtn.offcanvas', '.left-off-canvas-menu a', function (e) {
-          self.click_remove_class(e, 'move-right');
+          S(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
           self.click_toggle_class(e, 'move-left');
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
-          self.click_remove_class(e, 'move-left');
+          S(".off-canvas-wrap").removeClass("move-left");
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
           self.click_remove_class(e, 'move-left');
