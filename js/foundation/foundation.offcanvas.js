@@ -13,7 +13,8 @@
     },
 
     events : function () {
-      var S = this.S;
+      var self = this,
+          S = self.S;
 
       S(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.left-off-canvas-toggle', function (e) {
@@ -38,6 +39,16 @@
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
           S(".off-canvas-wrap").removeClass("move-left");
         });
+    },
+
+    click_toggle_class: function(e, class_name) {
+      e.preventDefault();
+      this.S(e.target).closest('.off-canvas-wrap').toggleClass(class_name);
+    },
+
+    click_remove_class: function(e, class_name) {
+      e.preventDefault();
+      this.S('.off-canvas-wrap').removeClass(class_name);
     },
 
     reflow : function () {}
