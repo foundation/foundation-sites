@@ -28,7 +28,7 @@
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
           self.click_remove_class(e, 'move-left');
-        });
+        })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
           self.click_remove_class(e, 'move-left');
           self.click_remove_class(e, 'move-right');
