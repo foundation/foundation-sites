@@ -103,6 +103,8 @@
         if (self.S(this).hasClass(self.settings.active_class)) {
           self.S(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
+            .removeClass(self.settings.active_class)
+            .prev('[' + self.attr_name() + ']')
             .removeClass(self.settings.active_class);
 
           self.S(this).trigger('closed', [dropdown]);
@@ -121,6 +123,7 @@
         this
           .css(dropdown
             .addClass(this.settings.active_class), target);
+        dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
         dropdown.trigger('opened', [dropdown, target]);
     },
 
