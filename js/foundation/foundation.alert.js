@@ -7,8 +7,6 @@
     version : '5.2.1',
 
     settings : {
-      animation: 'fadeOut',
-      speed: 300, // fade out speed
       callback: function (){}
     },
 
@@ -25,7 +23,8 @@
               settings = alertBox.data(self.attr_name(true) + '-init') || self.settings;
 
         e.preventDefault();
-        alertBox[settings.animation](settings.speed, function () {
+        alertBox.addClass("alert-close");
+        alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
           S(this).trigger('close').remove();
           settings.callback();
         });
