@@ -23,11 +23,18 @@
               settings = alertBox.data(self.attr_name(true) + '-init') || self.settings;
 
         e.preventDefault();
-        alertBox.addClass("alert-close");
-        alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-          S(this).trigger('close').remove();
-          settings.callback();
-        });
+        if ('transitionend' in window || 'webkitTransitionEnd' in window || 'oTransitionEnd' in window) {
+          alertBox.addClass("alert-close");
+          alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
+            S(this).trigger('close').remove();
+            settings.callback();
+          });
+        } else {
+          alertBox.fadeOut(300, function () {
+            S(this).trigger('close').remove();
+            settings.callback();
+          });
+        }
       });
     },
 
