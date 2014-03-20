@@ -122,10 +122,6 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include wrap-base;
   @include clearfix;
-  -webkit-transition: -webkit-#{$menu-slide};
-  -moz-transition: -moz-#{$menu-slide};
-  -ms-transition: -ms-#{$menu-slide};
-  -o-transition: -o-#{$menu-slide};
   transition: #{$menu-slide};
 }
 
