@@ -10,7 +10,7 @@ $rem-base: 16px !default;
 $modules: () !default;
 @mixin exports($name) {
   @if (index($modules, $name) == false) {
-    $modules: append($modules, $name);
+    $modules: append($modules, $name) !global;
     @content;
   }
 }
