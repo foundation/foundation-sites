@@ -97,22 +97,13 @@ $menu-slide: "transform 500ms ease" !default;
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch;
   @if $position == left {
-    @include translate3d(-100%,0,0);
+    transform: translate3d(-100%,0,0);
     left: 0;
   }
   @if $position == right {
-    @include translate3d(100%,0,0);
+    transform: translate3d(100%,0,0);
     right: 0;
   }
-}
-
-// TRANSLATE 3D
-@mixin translate3d($tx,$ty,$tz) {
-  -webkit-transform: translate3d($tx,$ty,$tz);
-  -moz-transform: translate3d($tx,$ty,$tz);
-  -ms-transform: translate3d($tx,$ty,$tz);
-  -o-transform: translate3d($tx,$ty,$tz);
-  transform: translate3d($tx,$ty,$tz)
 }
 
 // OFF CANVAS WRAP
@@ -131,10 +122,6 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include wrap-base;
   @include clearfix;
-  -webkit-transition: -webkit-#{$menu-slide};
-  -moz-transition: -moz-#{$menu-slide};
-  -ms-transition: -ms-#{$menu-slide};
-  -o-transition: -o-#{$menu-slide};
   transition: #{$menu-slide};
 }
 
@@ -301,24 +288,14 @@ $menu-slide: "transform 500ms ease" !default;
     @else {
       left: ($tabbar-menu-icon-width - $width)/2;
     }
-    @if $experimental {
-      -webkit-box-shadow: 1px 0px                       1px $thickness $color,
-                          1px ($gap + $thickness)       1px $thickness $color,
-                          1px (2*$gap + 2*$thickness)   1px $thickness $color;
-    }
-      box-shadow:         0   0px                       0   $thickness $color,
-                          0   $gap + $thickness         0   $thickness $color,
-                          0   (2 * $gap + 2*$thickness) 0   $thickness $color;
+    box-shadow: 0   0px                       0   $thickness $color,
+                0   $gap + $thickness         0   $thickness $color,
+                0   (2 * $gap + 2*$thickness) 0   $thickness $color;
   }
   &:hover span {
-    @if $experimental {
-      -webkit-box-shadow: 1px 0px                       1px $thickness $hover-color,
-                          1px ($gap + $thickness)       1px $thickness $hover-color,
-                          1px (2*$gap + 2*$thickness)   1px $thickness $hover-color;
-    }
-      box-shadow:         0   0px                       0   $thickness $hover-color,
-                          0   $gap + $thickness         0   $thickness $hover-color,
-                          0   (2 * $gap + 2*$thickness) 0   $thickness $hover-color;
+    box-shadow: 0   0px                       0   $thickness $hover-color,
+                0   $gap + $thickness         0   $thickness $hover-color,
+                0   (2 * $gap + 2*$thickness) 0   $thickness $hover-color;
   }
 }
 
@@ -349,7 +326,7 @@ $menu-slide: "transform 500ms ease" !default;
       padding: $tabbar-menu-icon-padding;
       color: $topbar-menu-link-color;
       position: relative;
-      @include translate3d(0,0,0);
+      transform: translate3d(0,0,0);
 
       // this is the actual hamburger icon
       @include hamburger();
@@ -365,14 +342,14 @@ $menu-slide: "transform 500ms ease" !default;
     // These classes are added with JS and trigger the actual animation.
     .move-right {
       > .inner-wrap {
-        @include translate3d($off-canvas-width,0,0);
+        transform: translate3d($off-canvas-width,0,0);
       }
       .exit-off-canvas { @include back-link;}
     }
 
     .move-left {
       > .inner-wrap {
-        @include translate3d(-($off-canvas-width),0,0);
+        transform: translate3d(-($off-canvas-width),0,0);
 
       }
       .exit-off-canvas { @include back-link; }

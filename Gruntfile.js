@@ -49,14 +49,22 @@ module.exports = function(grunt) {
           'dist/assets/css/normalize.css': 'scss/normalize.scss',
           'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss'
         }
+      }
+    },
+
+    autoprefixer: {
+      options: {
+        browsers: ['Explorer >= 9', 'Android >= 2', 'iOS >= 5', '> 1%']
       },
+      dist: {
+        src: ['dist/assets/css/foundation.css', 'dist/docs/assets/css/docs.css']
+      }
+    },
+
+    cssmin: {
       dist_compressed: {
-        options: {
-          outputStyle:'compressed',
-          includePaths: ['scss']
-        },
         files: {
-          'dist/assets/css/foundation.min.css': '<%= foundation.scss %>'
+          'dist/assets/css/foundation.min.css': 'dist/assets/css/foundation.css'
         }
       }
     },
@@ -147,8 +155,10 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
-        tasks: ['sass'],
-        options: {livereload:true}
+        tasks: ['sass', 'cssmin'],
+        options: {
+          livereload:true
+        }
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
@@ -195,11 +205,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
 
-  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
