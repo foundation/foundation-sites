@@ -6,7 +6,9 @@ This is the Foundation project.  We love making super awesome stuff, but even mo
 
 If you have a compass project and would like updated assets you can run the following command at any given time from within your project directory:
 
+```bash
 compass create -r zurb-foundation --using foundation
+```
 
 ## Development
 
@@ -51,4 +53,3 @@ The Foundation JS libraries are tested with Jasmine. Grunt can be used to run th
     * If you get connection errors with PhantomJS when running the suite, ensure `node -v` returns  `v0.10.12` or later. Upgrade with `brew upgrade node`
 6. Run `grunt karma:dev` to run the tests with some real browsers
 7. Run `grunt build:assets` to compile any changes to foundation JS source into testing distribution
-
