@@ -89,10 +89,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       .column,
       .columns { padding: 0; }
       input {
-        -moz-border-radius-bottom#{$opposite-direction}: 0;
-        -moz-border-radius-top#{$opposite-direction}: 0;
-        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
-        -webkit-border-top-#{$opposite-direction}-radius: 0;
+        @include side-radius($opposite-direction, 0);
       }
 
     }
@@ -110,9 +107,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   background-color: $input-bg-color;
   font-family: $input-font-family;
   border: $input-border-width $input-border-style $input-border-color;
-  @if $experimental {
-    -webkit-box-shadow: $input-box-shadow;
-  }
   box-shadow: $input-box-shadow;
   color: $input-font-color;
   display: block;
