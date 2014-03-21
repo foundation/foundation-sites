@@ -17,7 +17,8 @@
         timer_container,
         idx = 0,
         animate,
-        adjust_height_after = false;
+        adjust_height_after = false,
+        has_init_active = slides_container.find("." + settings.active_slide_class).length > 0;
 
     self.cache = {};
 
@@ -25,7 +26,7 @@
       return slides_container.children(settings.slide_selector);
     };
 
-    self.slides().first().addClass(settings.active_slide_class);
+    if (!has_init_active) {self.slides().first().addClass(settings.active_slide_class)};
 
     self.update_slide_number = function(index) {
       if (settings.slide_number) {
@@ -268,6 +269,9 @@
       //   animate = new SlideAnimation(settings, slides_container);
       if(settings.animation === 'fade') {slides_container.addClass('fade');}
       animate = new CSSAnimation(settings, slides_container);
+      if (has_init_active) {
+        self._goto(slides_container.find("." + settings.active_slide_class).index());
+      }
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
 
@@ -359,8 +363,8 @@
       Foundation.utils.image_loaded(this.slides().children('img'), self.compute_dimensions);
       Foundation.utils.image_loaded(this.slides().children('img'), function() {
         container.prev('.preloader').css('display', 'none');
-        self.update_slide_number(0);
-        self.update_active_link(0);
+        self.update_slide_number(idx);
+        self.update_active_link(idx);
         slides_container.trigger('ready.fndtn.orbit');
       });
     };
