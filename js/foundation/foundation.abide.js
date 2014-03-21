@@ -196,6 +196,7 @@
             this.S(el).attr(this.invalid_attr, '');
             parent.addClass('error');
           }
+          
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
@@ -251,6 +252,43 @@
         } else {
           this.S(group[i]).attr(this.invalid_attr, '').parent().addClass('error');
         }
+      }
+
+      return valid;
+    },
+
+    valid_equal: function(el, required, parent) {
+      var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
+          to    = el.value,
+          valid = (from === to);
+
+      if (valid) {
+        this.S(el).removeAttr(this.invalid_attr);
+        parent.removeClass('error');
+      } else {
+        this.S(el).attr(this.invalid_attr, '');
+        parent.addClass('error');
+      }
+
+      return valid;
+    },
+
+    valid_oneof: function(el, required, parent, doNotValidateOthers) {
+      var el = this.S(el),
+        others = el.closest('form, body').find('[data-oneof="' + el.attr('data-oneof') + '"]'),
+        valid = others.filter(':checked').length > 0;
+
+      if (valid) {
+        el.removeAttr(this.invalid_attr).parent().removeClass('error');
+      } else {
+        el.attr(this.invalid_attr, '').parent().addClass('error');
+      }
+
+      if (!doNotValidateOthers) {
+        var _this = this;
+        others.each(function() {
+          _this.valid_oneof.call(_this, this, null, null, true);
+        });
       }
 
       return valid;
