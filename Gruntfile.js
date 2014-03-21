@@ -11,6 +11,14 @@ module.exports = function(grunt) {
       scss: ['scss/foundation.scss']
     },
 
+    jst: {
+      compile: {
+        files: {
+          'dist/docs/assets/js/templates.js': ['doc/templates/*.html']
+        }
+      }
+    },
+
     assemble: {
       options: {
         marked: {
@@ -85,7 +93,7 @@ module.exports = function(grunt) {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
           'dist/docs/assets/js/modernizr.js': ['<%= vendor %>/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['<%= vendor %>/fastclick/lib/fastclick.js', '<%= vendor %>/jquery-placeholder/jquery.placeholder.js', '<%= vendor %>/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/all.js': ['vendor/lodash/dist/lodash.min.js','<%= vendor %>/fastclick/lib/fastclick.js', '<%= vendor %>/jquery-placeholder/jquery.placeholder.js', '<%= vendor %>/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       },
       vendor: {
@@ -143,7 +151,7 @@ module.exports = function(grunt) {
       }
     },
 
-    watch_start: {
+    watch: {
       grunt: { files: ['Gruntfile.js'] },
       karma: {
         files: [
@@ -179,6 +187,11 @@ module.exports = function(grunt) {
         options: {cwd: 'doc/assets/', livereload: true},
         files: ['**/*','!{scss,js}/**/*'],
         tasks: ['copy']
+      },
+      jst: {
+        files: ['doc/templates/*.html'],
+        tasks: ['jst'],
+        options: {livereload:false}
       }
     },
 
@@ -205,15 +218,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-
-  grunt.task.renameTask('watch', 'watch_start');
-  grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
-
+  
+  grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
+  grunt.registerTask('develop', ['travis', 'watch_start']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
   grunt.registerTask('default', ['build', 'watch']);
 };
