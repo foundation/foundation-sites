@@ -73,8 +73,6 @@ $panel-bg-color: #FAFAFA;
 }
 .sidebar {
   input[type="search"]:focus {
-    -moz-box-shadow: 0 0 0 !important;
-    -webkit-box-shadow: 0 0 0 !important;
     box-shadow: 0 0 0 !important;
   }
 }
