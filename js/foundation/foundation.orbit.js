@@ -271,8 +271,10 @@
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
 
-      if (settings.next_on_click)
+      if (settings.next_on_click) {
         container.on('click', '[data-orbit-slide]', self.link_bullet);
+      }
+      
       container.on('click', self.toggle_timer);
       if (settings.swipe) {
         slides_container.on('touchstart.fndtn.orbit',function(e) {
