@@ -236,7 +236,7 @@
 
     valid_radio : function (el, required) {
       var name = el.getAttribute('name'),
-          group = document.getElementsByName(name),
+          group = this.S(el).closest("form").find("[name="+name+"]"),
           count = group.length,
           valid = false;
 
