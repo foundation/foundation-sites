@@ -163,7 +163,7 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
-        tasks: ['sass', 'cssmin'],
+        tasks: ['sass', 'autoprefixer', 'cssmin'],
         options: {
           livereload:true
         }
@@ -221,7 +221,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  
+
   grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
