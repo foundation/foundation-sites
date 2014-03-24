@@ -116,6 +116,14 @@ $menu-slide: "transform 500ms ease" !default;
   &.move-left { height: 100%; }
 }
 
+@mixin translate3d($tx,$ty,$tz) {
+  -webkit-transform: translate3d($tx,$ty,$tz);
+  -moz-transform: translate3d($tx,$ty,$tz);
+  -ms-transform: translate3d($tx,$ty,$tz);
+  -o-transform: translate3d($tx,$ty,$tz);
+  transform: translate3d($tx,$ty,$tz)
+}
+
 // INNER WRAP
 // Main content area that moves to reveal the off-canvas nav
 @mixin inner-wrap {
