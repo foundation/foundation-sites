@@ -28,7 +28,7 @@
 
       $(this.scope)
         .off('.slider')
-        .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider', 
+        .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider',
         '[' + self.attr_name() + '] .range-slider-handle', function(e) {
           if (!self.cache.active) {
             e.preventDefault();
@@ -37,7 +37,7 @@
         })
         .on('mousemove.fndtn.slider touchmove.fndtn.slider pointermove.fndtn.slider', function(e) {
           if (!!self.cache.active) {
-            e.preventDefault(); 
+            e.preventDefault();
             self.calculate_position(self.cache.active, e.pageX || e.originalEvent.touches[0].clientX || e.currentPoint.x);
           }
         })
@@ -45,7 +45,7 @@
           self.remove_active_slider();
         })
         .on('change.fndtn.slider', function(e) {
-          self.settings.on_change;
+          self.settings.on_change();
         });
 
       self.S(window)
@@ -72,17 +72,17 @@
 
       requestAnimationFrame(function(){
         var pct;
-        
+
         if (Foundation.rtl) {
           pct = self.limit_to(((bar_o+bar_w-cursor_x)/bar_w),0,1);
         } else {
           pct = self.limit_to(((cursor_x-bar_o)/bar_w),0,1);
         }
-          
+
         var norm = self.normalized_value(pct, settings.start, settings.end, settings.step);
 
         self.set_ui($handle, norm);
-      }); 
+      });
     },
 
     set_ui : function($handle, value) {
@@ -99,7 +99,7 @@
 
       this.set_translate($handle, handle_offset);
       $handle.siblings('.range-slider-active-segment').css('width', progress_bar_width+'%');
-      
+
       $handle.parent().attr(this.attr_name(), value);
       $handle.parent().trigger('change');
 
@@ -186,7 +186,7 @@
         var handle = $(this).children('.range-slider-handle')[0],
             val = $(this).attr(self.attr_name());
         self.initialize_settings(handle);
-        
+
         if (val) {
           self.set_ui($(handle), parseInt(val));
         } else {
