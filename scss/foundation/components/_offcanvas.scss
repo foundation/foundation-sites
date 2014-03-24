@@ -326,7 +326,7 @@ $menu-slide: "transform 500ms ease" !default;
       padding: $tabbar-menu-icon-padding;
       color: $topbar-menu-link-color;
       position: relative;
-      transform: translate3d(0,0,0);
+      @include translate3d(0,0,0);
 
       // this is the actual hamburger icon
       @include hamburger();
