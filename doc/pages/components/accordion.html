@@ -62,6 +62,40 @@ Accordions can be easily customized with the Sass variables provided in the `_se
 
 ***
 
+## Configure With Javascript
+
+It's easy to configure dropdowns using our provided Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js` and `foundation.accordion.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+
+{{#markdown}}
+  ```html
+<script src="js/jquery.js"></script>
+<script src="js/foundation.js"></script>
+<script src="js/foundation.accordion.js"></script>
+  ```
+{{/markdown}}
+
+### Optional Javascript Configuration
+
+#### JS
+
+{{#markdown}}
+```js
+$(document).foundation({
+  accordion: {
+    // specify the class used for active (or open) accordion panels
+    active_class: 'active',
+    // allow multiple accordion panels to be active at the same time
+    multi_expand: false,
+    // allow accordion panels to be closed by clicking on their headers
+    // setting to false only closes accordion panels when another is opened
+    toggleable: true
+  }
+});
+```
+{{/markdown}}
+
+***
+
 ##### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
@@ -71,5 +105,3 @@ If the default "foundation" import was commented out, then make sure you import 
 ```scss
 @import "foundation/components/accordion";
 ```
-
-
