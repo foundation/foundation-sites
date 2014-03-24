@@ -19,14 +19,14 @@ $marketing-oc-width: 84%;
   // These classes are added with JS and trigger the actual animation.
   &.move-right {
     > .inner-wrap {
-      @include translate3d(83.5%,0,0);
+      transform: translate3d(83.5%,0,0);
     }
     a.exit-off-canvas { @include back-link;}
   }
 
   &.move-left {
     > .inner-wrap {
-      @include translate3d(-(83.5%),0,0);
+      transform: translate3d(-(83.5%),0,0);
 
     }
     a.exit-off-canvas { @include back-link; }

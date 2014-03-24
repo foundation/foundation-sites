@@ -4,7 +4,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '5.2.0',
+    version : '5.2.1',
 
     settings : {
       active_class: 'open',
@@ -28,8 +28,10 @@
         .off('.dropdown')
         .on('click.fndtn.dropdown', '[' + this.attr_name() + ']', function (e) {
           var settings = S(this).data(self.attr_name(true) + '-init') || self.settings;
-          e.preventDefault();
-          if (!settings.is_hover || Modernizr.touch) self.toggle(S(this));
+          if (!settings.is_hover || Modernizr.touch) {
+            e.preventDefault();
+            self.toggle($(this));
+          }
         })
         .on('mouseenter.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
           var $this = S(this);
@@ -101,6 +103,8 @@
         if (self.S(this).hasClass(self.settings.active_class)) {
           self.S(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
+            .removeClass(self.settings.active_class)
+            .prev('[' + self.attr_name() + ']')
             .removeClass(self.settings.active_class);
 
           self.S(this).trigger('closed', [dropdown]);
@@ -119,6 +123,7 @@
         this
           .css(dropdown
             .addClass(this.settings.active_class), target);
+        dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
         dropdown.trigger('opened', [dropdown, target]);
     },
 

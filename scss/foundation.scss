@@ -7,6 +7,7 @@
 
 // Behold, here are all the Foundation components.
 @import
+  "foundation/components/grid",
   "foundation/components/accordion",
   "foundation/components/alert-boxes",
   "foundation/components/block-grid",
@@ -18,7 +19,6 @@
   "foundation/components/dropdown-buttons",
   "foundation/components/flex-video",
   "foundation/components/forms",
-  "foundation/components/grid",
   "foundation/components/inline-lists",
   "foundation/components/joyride",
   "foundation/components/keystrokes",
@@ -43,5 +43,3 @@
   "foundation/components/type",
   "foundation/components/offcanvas",
   "foundation/components/visibility";
-
-  // * { border-radius: 500px !important; }

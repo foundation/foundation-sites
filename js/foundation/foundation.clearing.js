@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.2.0',
+    version: '5.2.1',
 
     settings : {
       templates : {
@@ -18,7 +18,7 @@
       // add 'div.clearing-blackout, div.visible-img' to close on background click
       close_selectors : '.clearing-close',
 
-      touch_label : '&larr;&nbsp;Swipe to Advance&nbsp;&rarr;',
+      touch_label : '',
 
       // event initializers and locks
       init : false,
@@ -146,14 +146,24 @@
     assemble : function ($li) {
       var $el = $li.parent();
 
-      if ($el.parent().hasClass('carousel')) return;
+      if ($el.parent().hasClass('carousel')) {
+        return;
+      }
+      
       $el.after('<div id="foundationClearingHolder"></div>');
-
+      var grid = $el.detach();
+      var grid_outerHTML = '';
+      if (grid[0] == null) {
+        return;
+      } else {
+        grid_outerHTML = grid[0].outerHTML;
+      }
+      
       var holder = this.S('#foundationClearingHolder'),
           settings = $el.data(this.attr_name(true) + '-init'),
           grid = $el.detach(),
           data = {
-            grid: '<div class="carousel">' + grid[0].outerHTML + '</div>',
+            grid: '<div class="carousel">' + grid_outerHTML + '</div>',
             viewing: settings.templates.viewing
           },
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
@@ -171,10 +181,10 @@
       var self = this,
           body = $(document.body),
           root = target.closest('.clearing-assembled'),
-          container = $('div', root).first(),
-          visible_image = $('.visible-img', container),
-          image = $('img', visible_image).not($image),
-          label = $('.clearing-touch-label', '.clearing-blackout'),
+          container = self.S('div', root).first(),
+          visible_image = self.S('.visible-img', container),
+          image = self.S('img', visible_image).not($image),
+          label = self.S('.clearing-touch-label', container),
           error = false;
 
       image.error(function () {

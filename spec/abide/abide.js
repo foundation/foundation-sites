@@ -90,4 +90,84 @@ describe('abide:', function() {
       expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
     });
   });
+
+  describe('advanced validation', function() {
+    beforeEach(function() {
+      document.body.innerHTML = __html__['spec/abide/advanced.html'];
+    });
+
+    it('should support builtin equalTo validator', function() {
+      $(document).foundation({
+        abide: {
+          validators: {
+            range: function(){ return true; }
+          }
+        }
+      });
+
+
+      expect($('input[name="user_password"]')).not.toHaveAttr('data-invalid');
+      expect($('input[name="user_password_confirmation"]')).not.toHaveAttr('data-invalid');
+
+      $('input[name="user_password"]').val("foobarbaz");
+      // now they're not equal
+      $('form').submit();
+
+      var invalid_fields = $('form').find('[data-invalid]');
+      expect(invalid_fields.length).toBe(1);
+      expect($('input[name="user_password_confirmation"]')).toHaveAttr('data-invalid');
+
+      $('input[name="user_password_confirmation"]').val("foobarbaz");
+      // now they're equal
+      spyOnEvent('form', 'invalid');
+      spyOnEvent('form', 'valid');
+
+      $('form').submit();
+
+      expect('valid').toHaveBeenTriggeredOn('form');
+      expect($('input[name="user_password"]')).not.toHaveAttr('data-invalid');
+      expect($('input[name="user_password_confirmation"]')).not.toHaveAttr('data-invalid');
+    });
+
+    it('should support custom validators', function() {
+      $(document).foundation({
+        abide: {
+          validators: {
+            range: function(el, required, parent) {
+              var start = parseInt(this.S("[name='user_start_num']").val()),
+                  end = parseInt(el.value);
+
+              return start < end;
+            }
+          }
+        }
+      });
+
+      expect($('input[name="user_start_num"]')).not.toHaveData('invalid');
+      expect($('input[name="user_end_num"]')).not.toHaveData('invalid');
+
+      // invalid
+      $('input[name="user_start_num"]').val("10");
+      $('input[name="user_end_num"]').val("2");
+
+      $('form').submit();
+
+      var invalid_fields = $('form').find('[data-invalid]');
+      expect(invalid_fields.length).toBe(1);
+
+      expect($('input[name="user_start_num"]')).not.toHaveAttr('data-invalid');
+      expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
+
+      // valid now
+      $('input[name="user_end_num"]').val("12");
+      spyOnEvent('form', 'invalid');
+      spyOnEvent('form', 'valid');
+
+      $('form').submit();
+
+      expect('valid').toHaveBeenTriggeredOn('form');
+      expect($('input[name="user_start_num"]')).not.toHaveAttr('data-invalid');
+      expect($('input[name="user_end_num"]')).not.toHaveAttr('data-invalid');
+    });
+  });
 });

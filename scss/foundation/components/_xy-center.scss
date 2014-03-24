@@ -10,15 +10,11 @@
 @mixin x-center() {
   position:absolute;
   left:50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 @mixin y-center() {
   position:relative;
   top:50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -26,8 +22,6 @@
   position:absolute;
   top:50%;
   left:50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 

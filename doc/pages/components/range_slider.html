@@ -1,21 +1,18 @@
 ---
 title: Range Slider
-layout: doc/layouts/default.html
 ---
-
-# Range Slider
 
 <h3 class="subheader">This handy slider will allow you to drag a handle to select a specific value from a range.</h3>
 
 ***
 <div class="row">
-  <div class="small-11 columns">
+  <div class="small-10 medium-11 columns">
     <div class="range-slider" data-slider data-options="display_selector:#sliderOutput1;">
       <span class="range-slider-handle"></span>
       <span class="range-slider-active-segment"></span>
     </div>
   </div>
-  <div class="small-1 columns">
+  <div class="small-2 medium-1 columns">
     <span id="sliderOutput1" style="display: block;margin-top: 17px;"></span>
   </div>
 </div>
@@ -141,33 +138,6 @@ You can create a range slider with custom range by setting the `start` and `end`
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
     <div class="range-slider" data-slider data-options="start: 1; end: 10;">
-      <span class="range-slider-handle"></span>
-      <span class="range-slider-active-segment"></span>
-      <input type="hidden">
-    </div>
-  </div>
-</div>
-
-### Custom Starting Point
-
-You can create a range slider with custom initial setting by adjusting the `initial` variable in the `data-options` attribute.
-
-<div class="row">
-  <div class="large-6 columns">
-    <h4>HTML</h4>
-{{#markdown}}
-```html
-<div class="range-slider" data-slider data-options="start: 1; end: 10; initial: 9;">
-  <span class="range-slider-handle"></span>
-  <span class="range-slider-active-segment"></span>
-  <input type="hidden">
-</div>
-```
-{{/markdown}}
-  </div>
-  <div class="large-6 columns">
-    <h4>Rendered HTML</h4>
-    <div class="range-slider" data-slider data-options="start: 1; end: 10; initial: 9;">
       <span class="range-slider-handle"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">

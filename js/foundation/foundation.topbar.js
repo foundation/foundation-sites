@@ -4,7 +4,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version: '5.2.0',
+    version: '5.2.1',
 
     settings : {
       index : 0,
@@ -188,6 +188,8 @@
           } else {
             li.addClass('hover');
 
+            $(li).siblings().removeClass('hover');
+
             if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
               e.preventDefault();
             }
@@ -230,7 +232,7 @@
           return;
         }
 
-        S('[' + self.attr_name() + '] li').removeClass('hover');
+        S('[' + self.attr_name() + '] li.hover').removeClass('hover');
       });
 
       // Go up a level on Click

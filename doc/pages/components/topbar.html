@@ -1,71 +1,70 @@
 ---
-title: Top-bar navigation
-layout: doc/layouts/default.html
+title: Top Bar
+meta: Top-bar navigation
 ---
 
-# Top Bar
-
 <h3 class="subheader">The Foundation Top Bar gives you a great way to display a complex navigation bar on small, medium or large screens.</h3>
+
 ***
 
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <!-- Title Area -->
-      <li class="name">
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
 
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="left">
+      <li class="has-dropdown"><a href="#">Item 1</a>
+
+        <ul class="dropdown">
+          <li><label>Level One</label></li>
+          <li><a href="#">Sub-item 1</a></li>
+          <li><a href="#">Sub-item 2</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Sub-item 3</a></li>
+          <li class="has-dropdown"><a href="#">Sub-item 4</a>
+
+            <ul class="dropdown">
+              <li><label>Level Two</label></li>
+              <li class="has-dropdown"><a href="#">Sub-item 1</a>
+
+                <ul class="dropdown">
+                  <li><label>Level Three</label></li>
+                  <li class="has-dropdown"><a href="#">Sub-item 1</a>
+
+                    <ul class="dropdown">
+                      <li><label>Level Four</label></li>
+                      <li><a href="#">Sub-item 1</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Sub-item 2</a></li>
+                  <li><a href="#">Sub-item 3</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Sub-item 4</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Sub-item 2</a></li>
+              <li><a href="#">Sub-item 3</a></li>
+              <li><a href="#">Sub-item 4</a>
+            </ul>
+          </li>
+          <li><a href="#">Sub-item 5</a></li>
+        </ul>
       </li>
-      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="">Menu</a></li>
+      <li class="divider"></li>
     </ul>
-
-    <section class="top-bar-section">
-      <ul class="left">
-        <li class="has-dropdown"><a href="#">Item 1</a>
-
-          <ul class="dropdown">
-            <li><label>Level One</label></li>
-            <li><a href="#">Sub-item 1</a></li>
-            <li><a href="#">Sub-item 2</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Sub-item 3</a></li>
-            <li class="has-dropdown"><a href="#">Sub-item 4</a>
-
-              <ul class="dropdown">
-                <li><label>Level Two</label></li>
-                <li class="has-dropdown"><a href="#">Sub-item 1</a>
-
-                  <ul class="dropdown">
-                    <li><label>Level Three</label></li>
-                    <li class="has-dropdown"><a href="#">Sub-item 1</a>
-
-                      <ul class="dropdown">
-                        <li><label>Level Four</label></li>
-                        <li><a href="#">Sub-item 1</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Sub-item 2</a></li>
-                    <li><a href="#">Sub-item 3</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Sub-item 4</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Sub-item 2</a></li>
-                <li><a href="#">Sub-item 3</a></li>
-                <li><a href="#">Sub-item 4</a>
-              </ul>
-            </li>
-            <li><a href="#">Sub-item 5</a></li>
-          </ul>
-        </li>
-        <li class="divider"></li>
-      </ul>
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="divider"></li>
-        <li><a href="#">Item 2</a></li>
-      </ul>
-    </section>
-  </nav>
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider"></li>
+      <li><a href="#">Item 2</a></li>
+    </ul>
+  </section>
+</nav>
  
 ***
 
@@ -177,8 +176,8 @@ You may also wrap your top bar in `div class="sticky"` and put it anywhere withi
 
 {{#markdown}}
 ```html
-<div class="contain-to-grid sticky" data-options="sticky_on: large">
-  <nav class="top-bar" data-topbar>
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar data-options="sticky_on: large">
     ...
   </nav>
 </div>
