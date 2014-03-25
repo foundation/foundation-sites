@@ -479,7 +479,7 @@
           return cached_options;
         }
 
-        opts_arr = (cached_options || ':').split(';'),
+        opts_arr = (cached_options || ':').split(';');
         ii = opts_arr.length;
 
         function isNumber (o) {
