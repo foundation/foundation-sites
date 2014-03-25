@@ -127,7 +127,7 @@ $('.button').on('click', function(e){
 });
 
 // Resize function
-$(document).on('resize', function(e){
+$(window).on('resize', function(e){
   // Do responsive stuff
 });
 ```
@@ -143,7 +143,7 @@ $('.button').on('click', Foundation.utils.debounce(function(e){
 }, 300, true));
 
 // Throttled resize function
-$(document).on('resize', Foundation.utils.throttle(function(e){
+$(window).on('resize', Foundation.utils.throttle(function(e){
   // Do responsive stuff
 }, 300));
 ```
