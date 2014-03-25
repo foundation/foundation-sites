@@ -154,7 +154,7 @@
     https://github.com/paulirish/matchMedia.js
   */
 
-  window.matchMedia = window.matchMedia || (function( doc, undefined ) {
+  window.matchMedia = window.matchMedia || (function( doc ) {
 
     "use strict";
 
@@ -246,7 +246,7 @@
     }
   } else {
     // polyfill
-    window.requestAnimationFrame = function (callback, element) {
+    window.requestAnimationFrame = function (callback) {
       var currTime = new Date().getTime(),
         timeToCall = Math.max(0, 16 - (currTime - lastTime)),
         id = window.setTimeout(function () {
@@ -293,8 +293,7 @@
     },
 
     init : function (scope, libraries, method, options, response) {
-      var library_arr,
-          args = [scope, method, options, response],
+      var args = [scope, method, options, response],
           responses = [];
 
       // check RTL
