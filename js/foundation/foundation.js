@@ -14,8 +14,8 @@
     var head = $('head');
 
     while (i--) {
-      if($('head').has('.' + class_array[i]).length === 0) {
-        $('head').append('<meta class="' + class_array[i] + '" />');
+      if(head.has('.' + class_array[i]).length === 0) {
+          head.append('<meta class="' + class_array[i] + '" />');
       }
     }
   };
@@ -154,7 +154,7 @@
     https://github.com/paulirish/matchMedia.js
   */
 
-  window.matchMedia = window.matchMedia || (function( doc, undefined ) {
+  window.matchMedia = window.matchMedia || (function( doc ) {
 
     "use strict";
 
@@ -246,7 +246,7 @@
     }
   } else {
     // polyfill
-    window.requestAnimationFrame = function (callback, element) {
+    window.requestAnimationFrame = function (callback) {
       var currTime = new Date().getTime(),
         timeToCall = Math.max(0, 16 - (currTime - lastTime)),
         id = window.setTimeout(function () {
@@ -293,8 +293,7 @@
     },
 
     init : function (scope, libraries, method, options, response) {
-      var library_arr,
-          args = [scope, method, options, response],
+      var args = [scope, method, options, response],
           responses = [];
 
       // check RTL
@@ -332,7 +331,7 @@
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
 
-        args = args instanceof Array ? args : Array(args);    // PATCH: added this line
+        args = args instanceof Array ? args : new Array(args);    // PATCH: added this line
         return this.libs[lib].init.apply(this.libs[lib], args);
       }
 
@@ -479,7 +478,7 @@
           return cached_options;
         }
 
-        opts_arr = (cached_options || ':').split(';'),
+        opts_arr = (cached_options || ':').split(';');
         ii = opts_arr.length;
 
         function isNumber (o) {
@@ -500,7 +499,7 @@
             if (p[1].indexOf('.') === -1) {
               p[1] = parseInt(p[1], 10);
             } else {
-              p[1] = parseFloat(p[1], 10);
+              p[1] = parseFloat(p[1]);
             }
           }
 
