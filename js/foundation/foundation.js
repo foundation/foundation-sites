@@ -500,7 +500,7 @@
             if (p[1].indexOf('.') === -1) {
               p[1] = parseInt(p[1], 10);
             } else {
-              p[1] = parseFloat(p[1], 10);
+              p[1] = parseFloat(p[1]);
             }
           }
 
