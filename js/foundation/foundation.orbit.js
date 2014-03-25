@@ -359,9 +359,10 @@
       });
       
       $(document).on('click', '[data-orbit-link]', self.link_custom);
-      $(window).on('resize', self.compute_dimensions);
-      Foundation.utils.image_loaded(this.slides().children('img'), self.compute_dimensions);
-      Foundation.utils.image_loaded(this.slides().children('img'), function() {
+      $(window).on('load resize', self.compute_dimensions);
+      var children = this.slides().find('img');
+      Foundation.utils.image_loaded(children, self.compute_dimensions);
+      Foundation.utils.image_loaded(children, function() {
         container.prev('.preloader').css('display', 'none');
         self.update_slide_number(idx);
         self.update_active_link(idx);
