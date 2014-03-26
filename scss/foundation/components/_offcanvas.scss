@@ -113,7 +113,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include wrap-base;
   overflow: hidden;
   &.move-right,
-  &.move-left { height: 100%; }
+  &.move-left { min-height: 100%; }
 }
 
 @mixin translate3d($tx,$ty,$tz) {
