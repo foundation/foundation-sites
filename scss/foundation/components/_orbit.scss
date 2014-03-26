@@ -118,7 +118,7 @@ $preloader-class: "preloader" !default;
         
         &.fade > * {
           -webkit-transform: translate3d(0,0,0);
-          opacity: 0.01;
+          opacity: 0;
           transition: opacity .25s $orbit-animation-ease;
           &.animate-in {
             opacity: 1;
@@ -126,7 +126,7 @@ $preloader-class: "preloader" !default;
             transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
           &.animate-out {
-            opacity: 0.01;
+            opacity: 0;
             z-index: 10;
             transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
