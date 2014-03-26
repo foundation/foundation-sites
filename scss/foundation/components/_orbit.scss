@@ -300,35 +300,36 @@ $preloader-class: "preloader" !default;
           border-#{$default-float}-color: $orbit-nav-arrow-color-hover;
         }
       }
-    }
 
-    .orbit-bullets-container { text-align: center; }
-    .orbit-bullets {
-      margin: 0 auto 30px auto;
-      overflow: hidden;
-      position: relative;
-      top: 10px;
-      float: none;
-      text-align: center;
-      display: block;
-
-      li {
-        display: inline-block;
-        width: $orbit-bullet-radius;
-        height: $orbit-bullet-radius;
-        background: $orbit-bullet-nav-color;
-        // float: $default-float;
+      .orbit-bullets-container { text-align: center; }
+      .orbit-bullets {
+        margin: 0 auto 30px auto;
+        overflow: hidden;
+        position: relative;
+        top: 10px;
         float: none;
-        margin-#{$opposite-direction}: 6px;
-        @include radius(1000px);
+        text-align: center;
+        display: block;
 
-        &.active {
-          background: $orbit-bullet-nav-color-active;
+        li {
+          display: inline-block;
+          width: $orbit-bullet-radius;
+          height: $orbit-bullet-radius;
+          background: $orbit-bullet-nav-color;
+          // float: $default-float;
+          float: none;
+          margin-#{$opposite-direction}: 6px;
+          @include radius(1000px);
+
+          &.active {
+            background: $orbit-bullet-nav-color-active;
+          }
+
+          &:last-child { margin-#{$opposite-direction}: 0; }
         }
-
-        &:last-child { margin-#{$opposite-direction}: 0; }
       }
     }
+
 
     .touch {
       .orbit-container {
