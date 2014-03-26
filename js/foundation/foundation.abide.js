@@ -14,7 +14,7 @@
       patterns : {
         alpha: /^[a-zA-Z]+$/,
         alpha_numeric : /^[a-zA-Z0-9]+$/,
-        integer: /^\d+$/,
+        integer: /^[-+]?\d+$/,
         number: /^[1-9]\d*$/,
 
         // amex, visa, diners
