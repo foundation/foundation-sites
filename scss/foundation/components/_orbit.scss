@@ -37,6 +37,10 @@ $orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: rem-calc(5) !default;
 
+// We use these to controls the css animation
+$orbit-animation-speed: 500ms !default;
+$orbit-animation-ease: ease-in-out !default;
+
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper" !default;
 $preloader-class: "preloader" !default;
@@ -115,27 +119,27 @@ $preloader-class: "preloader" !default;
         &.fade > * {
           -webkit-transform: translate3d(0,0,0);
           opacity: 0.01;
-          transition: opacity .25s ease-in-out;
+          transition: opacity .25s $orbit-animation-ease;
           &.animate-in {
             opacity: 1;
             z-index: 20;
-            transition: opacity 500ms ease-in-out;
+            transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
           &.animate-out {
             opacity: 0.01;
             z-index: 10;
-            transition: opacity 500ms ease-in-out;
+            transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
         }
         &.swipe-next > * {
           -webkit-transform: translate3d(100%,0,0);
           &.animate-in {
             transform:translate3d(0,0,0);
-            transition-duration:500ms;
+            transition-duration:$orbit-animation-speed;
           }
           &.animate-out {
             transform:translate3d(-100%,0,0);
-            transition-duration:500ms;
+            transition-duration:$orbit-animation-speed;
           }
         }
 
@@ -143,11 +147,11 @@ $preloader-class: "preloader" !default;
           transform:translate3d(-100%,0,0);
           &.animate-in {
             transform:translate3d(0,0,0);
-            transition-duration:500ms;
+            transition-duration:$orbit-animation-speed;
           }
           &.animate-out {
             transform:translate3d(100%,0,0);
-            transition-duration:500ms;
+            transition-duration:$orbit-animation-speed;
           }
         }
 
