@@ -131,28 +131,32 @@ $preloader-class: "preloader" !default;
             transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
         }
-        &.swipe-next > * {
-          -webkit-transform: translate3d(100%,0,0);
-          &.animate-in {
-            transform:translate3d(0,0,0);
-            transition-duration:$orbit-animation-speed;
-          }
-          &.animate-out {
-            transform:translate3d(-100%,0,0);
-            transition-duration:$orbit-animation-speed;
-          }
-        }
 
-        &.swipe-prev > * {
-          transform:translate3d(-100%,0,0);
-          &.animate-in {
-            transform:translate3d(0,0,0);
-            transition-duration:$orbit-animation-speed;
-          }
-          &.animate-out {
-            transform:translate3d(100%,0,0);
-            transition-duration:$orbit-animation-speed;
-          }
+        &.slide {
+            
+            &.swipe-next > * {
+              -webkit-transform: translate3d(100%,0,0);
+              &.animate-in {
+                transform:translate3d(0,0,0);
+                transition-duration:$orbit-animation-speed;
+              }
+              &.animate-out {
+                transform:translate3d(-100%,0,0);
+                transition-duration:$orbit-animation-speed;
+              }
+            }
+
+            &.swipe-prev > * {
+              transform:translate3d(-100%,0,0);
+              &.animate-in {
+                transform:translate3d(0,0,0);
+                transition-duration:$orbit-animation-speed;
+              }
+              &.animate-out {
+                transform:translate3d(100%,0,0);
+                transition-duration:$orbit-animation-speed;
+              }
+            }
         }
 
         &>* {

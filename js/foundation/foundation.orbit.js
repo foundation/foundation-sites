@@ -49,6 +49,7 @@
       slides_container.wrap('<div class="'+settings.container_class+'"></div>');
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
+      slides_container.addClass(settings.animation);
       
       if (settings.stack_on_small) {
         container.addClass(settings.stack_on_small_class);
@@ -265,14 +266,13 @@
         self.cache.timer = self.create_timer(); 
         Foundation.utils.image_loaded(this.slides().children('img'), self.cache.timer.start);
       }
-      // animate = new FadeAnimation(settings, slides_container);
-      // if (settings.animation === 'slide') 
-      //   animate = new SlideAnimation(settings, slides_container);
-      if(settings.animation === 'fade') {slides_container.addClass('fade');}
+      
       animate = new CSSAnimation(settings, slides_container);
+
       if (has_init_active) {
         self._goto(slides_container.find("." + settings.active_slide_class).index());
       }
+
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
 
