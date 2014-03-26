@@ -354,17 +354,21 @@ $preloader-class: "preloader" !default;
     }
 
     @media #{$small-only} {
-      .orbit-stack-on-small {
-        .orbit-slides-container {height: auto !important;}
-        .orbit-slides-container > * {
-          position: relative;
-          margin-left: 0% !important;
+        .orbit-stack-on-small {
+
+            .orbit-slides-container {height: auto !important;}
+            .orbit-slides-container > * {
+                position: relative;
+                margin-left: 0% !important;
+                opacity:1 !important;
+                -webkit-transform:none !important;
+                transition:none !important;
+            }
+            .orbit-timer,
+            .orbit-next,
+            .orbit-prev,
+            .orbit-bullets {display: none;}
         }
-        .orbit-timer,
-        .orbit-next,
-        .orbit-prev,
-        .orbit-bullets {display: none;}
-      }
     }
 
   }

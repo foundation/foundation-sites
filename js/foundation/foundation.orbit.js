@@ -50,6 +50,10 @@
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
       
+      if (settings.stack_on_small) {
+        container.addClass(settings.stack_on_small_class);
+      }
+
       if (settings.navigation_arrows) {
         container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
         container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
@@ -78,10 +82,7 @@
           bullets_container.append(bullet);
         });
       }
-
-      if (settings.stack_on_small) {
-        container.addClass(settings.stack_on_small_class);
-      }
+      
     };
 
     self._prepare_direction = function(next_idx, current_direction) {
