@@ -78,25 +78,25 @@ $preloader-class: "preloader" !default;
           .orbit-caption { display: block; }
         }
       }
-    }
 
-    // Orbit preloader
-    .#{$preloader-class} {
-      display: block;
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-top: -20px;
-      margin-left: -20px;
-      border: solid 3px;
-      border-color: #555 #fff;
-      @include radius(1000px);
-      animation-name: rotate;
-      animation-duration: 1.5s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
+      // Orbit preloader
+      .#{$preloader-class} {
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -20px;
+        margin-left: -20px;
+        border: solid 3px;
+        border-color: #555 #fff;
+        @include radius(1000px);
+        animation-name: rotate;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
     }
 
     .orbit-container {
