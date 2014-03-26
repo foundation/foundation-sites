@@ -50,6 +50,10 @@
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
       
+      if (settings.stack_on_small) {
+        container.addClass(settings.stack_on_small_class);
+      }
+
       if (settings.navigation_arrows) {
         container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
         container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
@@ -79,9 +83,6 @@
         });
       }
 
-      if (settings.stack_on_small) {
-        container.addClass(settings.stack_on_small_class);
-      }
     };
 
     self._prepare_direction = function(next_idx, current_direction) {
@@ -363,7 +364,7 @@
       var children = this.slides().find('img');
       Foundation.utils.image_loaded(children, self.compute_dimensions);
       Foundation.utils.image_loaded(children, function() {
-        container.prev('.preloader').css('display', 'none');
+        container.prev('.'+settings.preloader_class).css('display', 'none');
         self.update_slide_number(idx);
         self.update_active_link(idx);
         slides_container.trigger('ready.fndtn.orbit');
@@ -479,6 +480,7 @@
       timer_paused_class: 'paused',
       timer_progress_class: 'orbit-progress',
       slides_container_class: 'orbit-slides-container',
+      preloader_class: 'preloader',
       slide_selector: '*',
       bullets_container_class: 'orbit-bullets',
       bullets_active_class: 'active',
