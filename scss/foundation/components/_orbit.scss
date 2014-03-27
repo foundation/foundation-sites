@@ -45,6 +45,11 @@ $orbit-animation-ease: ease-in-out !default;
 $wrapper-class: "slideshow-wrapper" !default;
 $preloader-class: "preloader" !default;
 
+// Hide controls on small
+$orbit-nav-hide-for-small: true !default;
+$orbit-bullet-hide-for-small: true !default;
+$orbit-timer-hide-for-small: true !default;
+
 // CSS Transform 
 // This function is needed in order to put in all of the browser prefixes. 
 // The normal tranform attribute still does not work properly across all browsers. 
@@ -382,10 +387,16 @@ $preloader-class: "preloader" !default;
                 transform:none !important;
                 transition:none !important;
             }
-            .orbit-timer,
-            .orbit-next,
-            .orbit-prev,
-            .orbit-bullets {display: none;}
+
+            @if $orbit-timer-hide-for-small {
+                .orbit-timer{display: none;}
+            }
+            @if $orbit-nav-hide-for-small {
+                .orbit-next,.orbit-prev{display: none;}
+            }
+            @if $orbit-bullet-hide-for-small {
+                .orbit-bullets{display: none;}
+            }
         }
     }
 
