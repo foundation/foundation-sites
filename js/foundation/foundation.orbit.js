@@ -109,7 +109,6 @@
       var current = $(slides.get(idx))
         , next = $(slides.get(next_idx));
       
-
       return [dir, current, next, next_idx];
     };
 
@@ -126,6 +125,9 @@
         , current = res[1]
         , next = res[2]
         , next_idx = res[3];
+
+      // This means that circular is disabled and we most likely reached the last slide.
+      if (res === false) return false;
 
       slides_container.trigger('before-slide-change.fndtn.orbit');
       settings.before_slide_change();
