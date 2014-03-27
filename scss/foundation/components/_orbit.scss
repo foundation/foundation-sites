@@ -45,6 +45,18 @@ $orbit-animation-ease: ease-in-out !default;
 $wrapper-class: "slideshow-wrapper" !default;
 $preloader-class: "preloader" !default;
 
+// CSS Transform 
+// This function is needed in order to put in all of the browser prefixes. 
+// The normal tranform attribute still does not work properly across all browsers. 
+// In order to receive the transitionEnd events then you will still need to use the vendor prefixes
+@mixin translate3d($x,$y,$z) {
+  -webkit-transform:translate3d($x,$y,$z);
+  -moz-transform:translate3d($x,$y,$z);
+  -ms-transform:translate3d($x,$y,$z);
+  -o-transform:translate3d($x,$y,$z);
+  transform:translate3d($x,$y,$z);
+}
+
 @include exports("orbit") {
   @if $include-html-orbit-classes {
 
@@ -117,46 +129,42 @@ $preloader-class: "preloader" !default;
         img { display: block; max-width: 100%; }
         
         &.fade > * {
-          -webkit-transform: translate3d(0,0,0);
           opacity: 0;
-          transition: opacity .25s $orbit-animation-ease;
+          transition: opacity $orbit-animation-speed $orbit-animation-ease;
+          @include translate3d(0,0,0);
           &.animate-in {
             opacity: 1;
             z-index: 20;
             transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
           &.animate-out {
-            opacity: 0;
             z-index: 10;
             transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
         }
-
-        &.slide {
             
-            &.swipe-next > * {
-              -webkit-transform: translate3d(100%,0,0);
-              &.animate-in {
-                transform:translate3d(0,0,0);
-                transition-duration:$orbit-animation-speed;
-              }
-              &.animate-out {
-                transform:translate3d(-100%,0,0);
-                transition-duration:$orbit-animation-speed;
-              }
-            }
+        &.swipe-next > * {
+          @include translate3d(100%,0,0);
+          &.animate-in {
+            @include translate3d(0,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
+          &.animate-out {
+            @include translate3d(-100%,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
+        }
 
-            &.swipe-prev > * {
-              transform:translate3d(-100%,0,0);
-              &.animate-in {
-                transform:translate3d(0,0,0);
-                transition-duration:$orbit-animation-speed;
-              }
-              &.animate-out {
-                transform:translate3d(100%,0,0);
-                transition-duration:$orbit-animation-speed;
-              }
-            }
+        &.swipe-prev > * {
+          @include translate3d(-100%,0,0);
+          &.animate-in {
+            @include translate3d(0,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
+          &.animate-out {
+            @include translate3d(100%,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
         }
 
         &>* {
@@ -164,13 +172,13 @@ $preloader-class: "preloader" !default;
           top: 0;
           left: 0;
           width: 100%;
-          transform:translate3d(100%,0,0);
+          @include translate3d(100%,0,0);
 
           &.active {
             opacity: 1;
             top: 0;
             left: 0;
-            transform:translate3d(0,0,0);
+            @include translate3d(0,0,0);
           }
 
           .orbit-caption {
@@ -367,6 +375,10 @@ $preloader-class: "preloader" !default;
                 margin-left: 0% !important;
                 opacity:1 !important;
                 -webkit-transform:none !important;
+                -moz-transform:none !important;
+                -ms-transform:none !important;
+                -o-transform:none !important;
+                transform:none !important;
                 transition:none !important;
             }
             .orbit-timer,
