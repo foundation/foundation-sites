@@ -58,20 +58,20 @@ span{
           <li><a href="#" class="menu"> <i class="fi-list"></i> <span> Menu</span></a> </li>
           <li><a href="#" class="search-icon "><i class="fi-magnifying-glass large"></i></a> </li>
           <li class="search-field">
-                      <form>
-                        <div class="row collapse">
-                          <div class="small-12 columns">
-                            <input type="text" class="dream-search" placeholder="Search SeaDream">
-                          </div>
-                        </div>
-                      </form>
-                    </li>
+            <form>
+              <div class="row collapse">
+                <div class="small-12 columns">
+                  <input type="text" class="dream-search" placeholder="Search SeaDream">
+                </div>
+              </div>
+            </form>
+          </li>
         </ul>
       </div>
     </div>
   </div>
    
-  <!-- This space is for the app's content -->
+
   
 
   <script>
@@ -86,18 +86,17 @@ span{
   </script>
   
   
-  <script> 
-    // Search Icon Slide
-// Search Icon Slide
-$('.tertiary-nav .search-icon').click(function(event) {
-    if ($('.inline-list li.search-field').hasClass('open')){
-      $('.inline-list li.search-field').animate({width: "0px", margin: "0px"}, 500).removeClass('open')
-      $('.inline-list').style({margin: "0 -10px 0 0"})
-    } else {
-      $('.inline-list li.search-field').animate({width: "185px", margin: "0 0 0 10px"}, 500).addClass('open')
-    }
-});
-  </script>
+<script> 
+  // Search Icon Slide
+  $('.tertiary-nav .search-icon').click(function(event) {
+      if ($('.inline-list li.search-field').hasClass('open')){
+        $('.inline-list li.search-field').animate({width: "0px", margin: "0px"}, 500).removeClass('open')
+        $('.inline-list').style({margin: "0 -10px 0 0"})
+      } else {
+        $('.inline-list li.search-field').animate({width: "185px", margin: "0 0 0 10px"}, 500).addClass('open')
+      }
+  });
+</script>
 
 </body>
 </html>
