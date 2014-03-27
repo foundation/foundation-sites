@@ -256,11 +256,26 @@
     },
 
     off : function () {
-      var self = this;
+           // Get the original collection of nodes that are defined as tooltips
+           // Should be something like: [data-tip]
+      var $tips = this.S('[' + this.attr_name() + ']'),
+           // Get the collection of created foundation tooltip elements with the tooltip class
+           // Might be something like span.tooltip
+          $tooltips = this.S(this.settings.tooltip_class)
+      ;
+
+      // Undelegate events of the scoped element
       this.S(this.scope).off('.fndtn.tooltip');
-      this.S(this.settings.tooltip_class).each(function (i) {
-        $('[' + self.attr_name() + ']').eq(i).attr('title', $(this).text());
-      }).remove();
+      
+      // Reset the title attribute of the original nodes
+      $tips.attr('title', function(i){
+
+        return $tooltips.eq(i).text();
+        
+      });
+
+      // Destroy the foundation tooltip elements
+      $tooltips.remove();
     },
 
     reflow : function () {}
