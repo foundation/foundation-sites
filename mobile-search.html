@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Mobile Top Bar and Button Bar</title>
+
+ <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/building-blocks/social-button-group.css" />
+    <link rel="stylesheet" href="css/foundation-icons.css" />
+    <script src="js/vendor/custom.modernizr.js"></script>
+
+  <style>
+  
+.search-field{
+  width: 0;
+}
+
+.top-bar{
+  height: 60px;
+}
+body {
+  max-width: 400px;
+}
+.search-icon{
+  margin-top: 15px; 
+}
+.menu{
+  margin-top: 15px;
+}
+.top-bar input{
+  top: 0;
+  height: 40px;
+  margin-top: 10px;
+}
+    
+span{ 
+  padding-left: 5px;  
+  color: #fff; 
+}
+.fi-magnifying-glass, .fi-list{
+  font-size: 20px;
+  color: #fff;
+}
+  </style>
+
+</head>
+<body>
+
+
+  <div class="tertiary-nav">
+    <div class="row top-bar">
+      <div class="small-12  columns">
+        <ul class="inline-list right">
+          <li><a href="#" class="menu"> <i class="fi-list"></i> <span> Menu</span></a> </li>
+          <li><a href="#" class="search-icon "><i class="fi-magnifying-glass large"></i></a> </li>
+          <li class="search-field">
+                      <form>
+                        <div class="row collapse">
+                          <div class="small-12 columns">
+                            <input type="text" class="dream-search" placeholder="Search SeaDream">
+                          </div>
+                        </div>
+                      </form>
+                    </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+   
+  <!-- This space is for the app's content -->
+  
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  
+  
+  <script> 
+    // Search Icon Slide
+// Search Icon Slide
+$('.tertiary-nav .search-icon').click(function(event) {
+    if ($('.inline-list li.search-field').hasClass('open')){
+      $('.inline-list li.search-field').animate({width: "0px", margin: "0px"}, 500).removeClass('open')
+      $('.inline-list').style({margin: "0 -10px 0 0"})
+    } else {
+      $('.inline-list li.search-field').animate({width: "185px", margin: "0 0 0 10px"}, 500).addClass('open')
+    }
+});
+  </script>
+
+</body>
+</html>
