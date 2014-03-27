@@ -266,7 +266,7 @@
 
       // Undelegate events of the scoped element
       this.S(this.scope).off('.fndtn.tooltip');
-      
+
       // Reset the title attribute of the original nodes
       $tips.attr('title', function(i){
 
