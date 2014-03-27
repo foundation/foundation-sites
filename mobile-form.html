@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Mobile Top Bar and Button Bar</title>
+
+ <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/building-blocks/social-button-group.css" />
+    <link rel="stylesheet" href="css/foundation-icons.css" />
+    <script src="js/vendor/custom.modernizr.js"></script>
+
+  <style>
+  .search{
+    margin-top: 50px;
+  }
+   h2{
+      text-align: center;
+    }
+    form.custom .custom.dropdown{
+      height: 45px;
+    }
+    label{
+      margin-bottom: 10px;
+    }
+    form.custom .custom.dropdown{
+      padding-top: 5px;
+    }
+    form.custom .custom.dropdown .selector{
+      top: 5px;
+    }
+    .button{
+      height: 45px;
+      margin-top:25px; 
+    }
+  </style>
+
+</head>
+<body>
+
+
+  <section class="search">
+  <div class="row">
+    <div class="small-12 large-10 columns small-centered">
+      <h2>Find a Cool Restaurant! </h2>
+      <form class="custom">
+        <div class="row">
+        
+          <div class="large-3 small-12 columns">
+            <label>
+              Food Type:
+            </label>
+              <select>
+                <option value="All">All</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Fast">Fast Food</option>
+                <option value="Vegetarian">Vegetarian</option>
+                
+              </select>
+            
+          </div>
+          <div class="large-3 small-6 columns">
+            <label>
+              Price Range:
+            </label>
+              <select>
+                <option value="0-5">&#36;0-&#36;5</option>
+                <option value="5-10">&#36;5-&#36;10</option>
+                <option value="10-15">&#36;10-&#36;15</option>
+                <option value="15-20">&#36;15-&#36;20</option>
+                <option value="20-25">&#36;20-&#36;25</option>
+                <option value="25-30">&#36;25-&#36;30</option>
+                <option value="more">more than &#36;30</option>
+                
+              </select>
+            
+          </div>
+          <div class="large-3 small-6 columns">
+            <label>
+             Location:
+              </label>
+              <select>
+                <option value="mile"> near me</option>
+                <option value="2-mile">2 miles</option>
+                <option value="5-mile">5 miles</option>
+                <option value="25-mile">25 miles</option>
+                <option value="more-mile">more</option>
+              </select>
+           
+          </div>
+          <div class="large-3 small-12 columns expand">
+            <a href="#" class="button expand">Search</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+   
+
+  
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  
+
+</body>
+</html>
