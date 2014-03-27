@@ -249,10 +249,11 @@ $preloader-class: "preloader" !default;
             width: 11px;
             height: 14px;
             border: inset 8px;
-            border-right-style: solid;
-            border-color: transparent transparent transparent #fff;
+            border-left-style: solid;
+            transform : rotate(180deg);
+            border-color: transparent #fff transparent transparent;
             &.dark { 
-              border-color: transparent transparent transparent #333;
+              border-color: transparent #333 transparent transparent;
             }
           }
         }
