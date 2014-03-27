@@ -38,12 +38,14 @@
 
       S(this.scope)
         .off('.tab')
+        // Click event: tab title
         .on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
           var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           e.preventDefault();
           e.stopPropagation();
           if (!settings.is_hover || Modernizr.touch) self.toggle_active_tab(S(this).parent());
         })
+        // Hover event: tab title
         .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
           var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           if (settings.is_hover) self.toggle_active_tab(S(this).parent());
