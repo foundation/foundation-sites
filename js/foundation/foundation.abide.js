@@ -105,7 +105,9 @@
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
-          if (this.settings.focus_on_invalid) els[i].focus();
+          if (this.settings.focus_on_invalid) {
+            els[i].focus();
+          }
           form.trigger('invalid');
           this.S(els[i]).closest('form').attr(this.invalid_attr, '');
           return false;
@@ -143,7 +145,7 @@
       if (this.settings.patterns.hasOwnProperty(pattern) && pattern.length > 0) {
         return [el, this.settings.patterns[pattern], required];
       } else if (pattern.length > 0) {
-        return [el, new RegExp('/^'+pattern+'$/'), required];
+        return [el, new RegExp('^'+pattern+'$'), required];
       }
 
       if (this.settings.patterns.hasOwnProperty(type)) {
