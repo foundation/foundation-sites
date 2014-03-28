@@ -1,0 +1,53 @@
+/* Styles for expanding search element */
+.search-field {
+  width: 0;
+}
+
+.top-bar {
+  height: 60px;
+}
+
+.search-icon {
+  margin-top: 15px;
+}
+
+.menu {
+  margin-top: 15px;
+}
+
+.top-bar input {
+  top: 0;
+  height: 40px;
+  margin-top: 10px;
+  padding: 0;
+  border: none;
+}
+
+span {
+  padding-left: 5px;
+  color: #fff;
+}
+
+.icon {
+  font-size: 20px;
+  color: #fff;
+}
+
+/*  ======================================
+displaying for large 
+ ======================================*/
+@media only screen and (min-width: 600px) {
+  .search-field, .search-field input {
+    width: 385px !important;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .top-bar input {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+}

@@ -5,46 +5,16 @@
 <head>
 	<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>Mobile Expanding Search</title>
+  <title>Mobile-First Expanding Search</title>
 
  <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="css/building-blocks/social-button-group.css" />
+    <link rel="stylesheet" href="css/building-blocks/expanding-search.css" />
     <link rel="stylesheet" href="css/foundation-icons.css" />
     <script src="js/vendor/custom.modernizr.js"></script>
 
   <style>
   
-.search-field{
-  width: 0;
-}
-
-.top-bar{
-  height: 60px;
-}
-body {
-  max-width: 400px;
-}
-.search-icon{
-  margin-top: 15px; 
-}
-.menu{
-  margin-top: 15px;
-}
-.top-bar input{
-  top: 0;
-  height: 40px;
-  margin-top: 10px;
-}
-    
-span{ 
-  padding-left: 5px;  
-  color: #fff; 
-}
-.fi-magnifying-glass, .fi-list{
-  font-size: 20px;
-  color: #fff;
-}
   </style>
 
 </head>
@@ -55,13 +25,14 @@ span{
     <div class="row top-bar">
       <div class="small-12  columns">
         <ul class="inline-list right">
-          <li><a href="#" class="menu"> <i class="fi-list"></i> <span> Menu</span></a> </li>
-          <li><a href="#" class="search-icon "><i class="fi-magnifying-glass large"></i></a> </li>
+          <li><a href="#" class="menu"> <i class="fi-list icon"></i> <span> Menu</span></a> </li>
+          <li><a href="#" class="search-icon "><i class="fi-magnifying-glass large icon"></i></a> </li>
+         
           <li class="search-field">
             <form>
               <div class="row collapse">
                 <div class="small-12 columns">
-                  <input type="text" class="dream-search" placeholder="Search SeaDream">
+                  <input type="text" class="dream-search" placeholder="Search all things">
                 </div>
               </div>
             </form>
