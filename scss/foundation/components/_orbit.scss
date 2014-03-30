@@ -230,6 +230,8 @@ $orbit-timer-hide-for-small: true !default;
             position: relative;
             right: 20px;
             top: 5px;
+          } @else {
+              display:none; // This is used by the Javascript to not create a handler.
           }
         }
 
