@@ -75,7 +75,9 @@ $base-line-height: 150% !default;
 //
 // We use this to add box-sizing across browser prefixes
 @mixin box-sizing($type:border-box) {
-  box-sizing: $type;
+  -webkit-box-sizing: $type; // Android < 2.3, iOS < 4
+	   -moz-box-sizing: $type; // Firefox < 29
+	        box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
 }
 
 // @mixins
