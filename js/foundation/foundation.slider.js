@@ -188,7 +188,7 @@
         self.initialize_settings(handle);
 
         if (val) {
-          self.set_ui($(handle), parseInt(val));
+          self.set_ui($(handle), parseFloat(val));
         } else {
           self.set_initial_position($(this));
         }
