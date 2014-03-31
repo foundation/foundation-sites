@@ -81,7 +81,7 @@ $block-grid-media-queries: true !default;
       @if $per-row == $i {
         $grid-column: '';
       }
-      &:nth-child(#{$per-row}n#{unquote($grid-column)}) {
+      &:nth-of-type(#{$per-row}n#{unquote($grid-column)}) {
         padding-left: ($spacing - (($spacing / $per-row) * ($per-row - ($i - 1))));
         padding-right: ($spacing - (($spacing / $per-row) * $i));
       }
