@@ -75,7 +75,6 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     top:0;
     #{$default-float}: 0;
     @media #{$small-only} {
-      height: 100vh;
       min-height:100vh;
     }
     @media #{$medium-up} {
