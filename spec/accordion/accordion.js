@@ -74,7 +74,7 @@ describe('accordion:', function() {
     });
 
     it('should default to the active panel', function() {
-      $(document).foundation({ multi_expand: true });
+      $(document).foundation('accordion', { multi_expand: true });
 
       expect($('#panel1')).toBeHidden();
       expect($('#panel2')).toBeVisible();
@@ -82,7 +82,7 @@ describe('accordion:', function() {
     });
 
     it('should open the clicked section, leaving previous active panels open', function() {
-      $(document).foundation({ multi_expand: true });
+      $(document).foundation('accordion', { multi_expand: true });
 
       $('#panel3').prev().click();
 
