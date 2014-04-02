@@ -385,7 +385,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     textarea {
       -webkit-appearance: none;
       @include form-element;
-      @if not $input-include-glowing-effect {
+      @if $input-include-glowing-effect == false {
           @include single-transition(all, 0.15s, linear);
       }
       &.radius {
