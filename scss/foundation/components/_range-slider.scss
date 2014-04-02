@@ -55,8 +55,8 @@ $range-slider-handle-cursor: pointer !default;
   height: $range-slider-bar-height;
   border: $range-slider-bar-border-width $range-slider-bar-border-style $range-slider-bar-border-color;
   margin: rem-calc(20 0);
-  touch-action: none;
   -ms-touch-action: none;
+  touch-action: none;
   @if $vertical == true {
     display: inline-block;
     width: $range-slider-vertical-bar-width;
