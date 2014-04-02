@@ -129,7 +129,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include wrap-base;
   overflow: hidden;
   &.move-right,
-  &.move-left { min-height: 100%; }
+  &.move-left { min-height: 100%; -webkit-overflow-scrolling: touch; }
 }
 
 // INNER WRAP

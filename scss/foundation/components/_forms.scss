@@ -321,7 +321,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       }
     }
 
-    select {
+    @mixin form-select  {
       -webkit-appearance: none !important;
       background-color: $select-bg-color;
       background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
@@ -400,6 +400,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
     /* Add height value for select elements to match text input height */
     select {
+      @include form-select;
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
     }
 
