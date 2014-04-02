@@ -62,12 +62,20 @@ $orbit-timer-hide-for-small: true !default;
   transform:translate3d($x,$y,$z);
 }
 
+@mixin rotate($d) {
+  -webkit-transform: rotate($d);
+  -moz-transform: rotate($d);
+  -ms-transform: rotate($d);
+  -o-transform: rotate($d);
+  transform: rotate($d);
+}
+
 @include exports("orbit") {
   @if $include-html-orbit-classes {
 
     @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from { @include rotate(0deg); }
+      to { @include rotate(360deg); }
     }
 
     /* Orbit Graceful Loading */
@@ -257,7 +265,7 @@ $orbit-timer-hide-for-small: true !default;
             height: 14px;
             border: inset 8px;
             border-left-style: solid;
-            transform : rotate(180deg);
+            @include rotate(180deg);
             border-color: transparent #fff transparent transparent;
             &.dark { 
               border-color: transparent #333 transparent transparent;
