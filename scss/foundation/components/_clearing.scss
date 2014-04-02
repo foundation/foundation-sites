@@ -201,6 +201,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
               position: relative;
               cursor: $cursor-pointer-value;
               opacity: 0.4;
+              clear: none;
 
               &.fix-height {
                 img {
