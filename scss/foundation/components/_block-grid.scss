@@ -8,6 +8,7 @@
 // Block Grid Variables
 //
 $include-html-grid-classes: $include-html-classes !default;
+$include-xl-html-block-grid-classes: false !default;
 
 // We use this to control the maximum number of block grid elements per row
 $block-grid-elements: 12 !default;
@@ -31,8 +32,8 @@ $block-grid-media-queries: true !default;
 // $spacing - # of ems to use as padding on each block item. Default: rem-calc(20).
 // $base-style - Apply a base style to block grid. Default: true.
 @mixin block-grid(
-  $per-row:false, 
-  $spacing:$block-grid-default-spacing, 
+  $per-row:false,
+  $spacing:$block-grid-default-spacing,
   $include-spacing:true,
   $base-style:true) {
 
@@ -80,7 +81,7 @@ $block-grid-media-queries: true !default;
       @if $per-row == $i {
         $grid-column: '';
       }
-      &:nth-child(#{$per-row}n#{unquote($grid-column)}) {
+      &:nth-of-type(#{$per-row}n#{unquote($grid-column)}) {
         padding-left: ($spacing - (($spacing / $per-row) * ($per-row - ($i - 1))));
         padding-right: ($spacing - (($spacing / $per-row) * $i));
       }
@@ -101,20 +102,30 @@ $block-grid-media-queries: true !default;
 
 @include exports("block-grid") {
   @if $include-html-grid-classes {
-    
+
     [class*="block-grid-"] { @include block-grid; }
-    
+
     @if $block-grid-media-queries {
       @media #{$small-up} {
         @include block-grid-html-classes($size:small,$include-spacing:false);
       }
-  
+
       @media #{$medium-up} {
         @include block-grid-html-classes($size:medium,$include-spacing:false);
       }
-  
+
       @media #{$large-up} {
         @include block-grid-html-classes($size:large,$include-spacing:false);
+      }
+
+      @if $include-xl-html-block-grid-classes {
+        @media #{$xlarge-up} {
+          @include block-grid-html-classes($size:xlarge,$include-spacing:false);
+        }
+
+        @media #{$xxlarge-up} {
+          @include block-grid-html-classes($size:xxlarge,$include-spacing:false);
+        }
       }
     }
   }

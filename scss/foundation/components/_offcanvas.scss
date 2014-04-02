@@ -83,6 +83,22 @@ $menu-slide: "transform 500ms ease" !default;
   width: 100%;
 }
 
+@mixin translate2d($tx,$ty) {
+  -webkit-transform: translate2d($tx,$ty);
+     -moz-transform: translate2d($tx,$ty);
+      -ms-transform: translate2d($tx,$ty);
+       -o-transform: translate2d($tx,$ty);
+          transform: translate2d($tx,$ty)
+}
+
+@mixin translate3d($tx,$ty,$tz) {
+  -webkit-transform: translate3d($tx,$ty,$tz);
+     -moz-transform: translate3d($tx,$ty,$tz);
+      -ms-transform: translate3d($tx,$ty,$tz);
+       -o-transform: translate3d($tx,$ty,$tz);
+          transform: translate3d($tx,$ty,$tz)
+}
+
 // basic styles for off-canvas menu container
 @mixin off-canvas-menu($position) {
   @include kill-flicker;
@@ -97,11 +113,11 @@ $menu-slide: "transform 500ms ease" !default;
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch;
   @if $position == left {
-    transform: translate3d(-100%,0,0);
+    @include translate3d(-100%,0,0);
     left: 0;
   }
   @if $position == right {
-    transform: translate3d(100%,0,0);
+    @include translate3d(100%,0,0);
     right: 0;
   }
 }
@@ -113,7 +129,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include wrap-base;
   overflow: hidden;
   &.move-right,
-  &.move-left { height: 100%; }
+  &.move-left { min-height: 100%; }
 }
 
 // INNER WRAP
@@ -122,6 +138,10 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include wrap-base;
   @include clearfix;
+  -webkit-transition: -webkit-#{$menu-slide};
+  -moz-transition: -moz-#{$menu-slide};
+  -ms-transition: -ms-#{$menu-slide};
+  -o-transition: -o-#{$menu-slide};
   transition: #{$menu-slide};
 }
 
@@ -342,14 +362,14 @@ $menu-slide: "transform 500ms ease" !default;
     // These classes are added with JS and trigger the actual animation.
     .move-right {
       > .inner-wrap {
-        transform: translate3d($off-canvas-width,0,0);
+        @include translate3d($off-canvas-width,0,0);
       }
       .exit-off-canvas { @include back-link;}
     }
 
     .move-left {
       > .inner-wrap {
-        transform: translate3d(-($off-canvas-width),0,0);
+        @include translate3d(-($off-canvas-width),0,0);
 
       }
       .exit-off-canvas { @include back-link; }

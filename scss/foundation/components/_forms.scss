@@ -19,6 +19,7 @@ $form-label-font-size: rem-calc(14) !default;
 $form-label-font-weight: normal !default;
 $form-label-line-height: 1.5 !default;
 $form-label-font-color: scale-color(#000, $lightness: 30%) !default;
+$form-label-small-transform: capitalize !default;
 $form-label-bottom-margin: 0 !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
@@ -315,7 +316,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       &.inline { @include form-label(inline,false); }
       /* Styles for required inputs */
       small {
-        text-transform: capitalize;
+        text-transform: $form-label-small-transform;
         color: scale-color($form-label-font-color, $lightness: 15%);
       }
     }
@@ -380,6 +381,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type="tel"],
     input[type="time"],
     input[type="url"],
+    input[type="submit"],
     textarea {
       -webkit-appearance: none;
       @include form-element;
@@ -390,7 +392,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         @include radius($input-border-radius);
       }
     }
-    
+
     /* Respect enforced amount of rows for textarea */
     textarea[rows] {
       height: auto;
@@ -467,7 +469,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
           color: scale-color($form-label-font-color, $lightness: 15%);
           background: transparent;
           padding: 0;
-          text-transform: capitalize;
+          text-transform: $form-label-small-transform;
           font-style: normal;
           font-size: 60%;
           margin: 0;

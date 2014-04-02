@@ -11,7 +11,8 @@
       active_class: 'active',
       callback : function () {},
       deep_linking: false,
-      scroll_to_content: true
+      scroll_to_content: true,
+      is_hover: false
     },
 
     default_tab_hashes: [],
@@ -35,12 +36,22 @@
       var self = this,
           S = this.S;
 
-      // Click event: tab title
-      S(this.scope).off('.tab').on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        self.toggle_active_tab(S(this).parent());
-      });
+      S(this.scope)
+        .off('.tab')
+        // Click event: tab title
+        .on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
+          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
+          if (!settings.is_hover || Modernizr.touch) {
+            e.preventDefault();
+            e.stopPropagation();
+            self.toggle_active_tab(S(this).parent());
+          }
+        })
+        // Hover event: tab title
+        .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
+          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
+          if (settings.is_hover) self.toggle_active_tab(S(this).parent());
+        });
 
       // Location hash change event
       S(window).on('hashchange.fndtn.tab', function (e) {

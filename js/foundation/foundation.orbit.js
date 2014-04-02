@@ -49,7 +49,12 @@
       slides_container.wrap('<div class="'+settings.container_class+'"></div>');
       container = slides_container.parent();
       slides_container.addClass(settings.slides_container_class);
+      slides_container.addClass(settings.animation);
       
+      if (settings.stack_on_small) {
+        container.addClass(settings.stack_on_small_class);
+      }
+
       if (settings.navigation_arrows) {
         container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
         container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
@@ -58,7 +63,9 @@
       if (settings.timer) {
         timer_container = $('<div>').addClass(settings.timer_container_class);
         timer_container.append('<span>');
-        timer_container.append($('<div>').addClass(settings.timer_progress_class));
+        if (settings.timer_show_progress_bar) {
+            timer_container.append($('<div>').addClass(settings.timer_progress_class));
+        }
         timer_container.addClass(settings.timer_paused_class);
         container.append(timer_container);
       }
@@ -79,9 +86,6 @@
         });
       }
 
-      if (settings.stack_on_small) {
-        container.addClass(settings.stack_on_small_class);
-      }
     };
 
     self._prepare_direction = function(next_idx, current_direction) {
@@ -107,7 +111,6 @@
       var current = $(slides.get(idx))
         , next = $(slides.get(next_idx));
       
-
       return [dir, current, next, next_idx];
     };
 
@@ -124,6 +127,9 @@
         , current = res[1]
         , next = res[2]
         , next_idx = res[3];
+
+      // This means that circular is disabled and we most likely reached the last slide.
+      if (res === false) return false;
 
       slides_container.trigger('before-slide-change.fndtn.orbit');
       settings.before_slide_change();
@@ -264,14 +270,13 @@
         self.cache.timer = self.create_timer(); 
         Foundation.utils.image_loaded(this.slides().children('img'), self.cache.timer.start);
       }
-      // animate = new FadeAnimation(settings, slides_container);
-      // if (settings.animation === 'slide') 
-      //   animate = new SlideAnimation(settings, slides_container);
-      if(settings.animation === 'fade') {slides_container.addClass('fade');}
+      
       animate = new CSSAnimation(settings, slides_container);
+
       if (has_init_active) {
         self._goto(slides_container.find("." + settings.active_slide_class).index());
       }
+
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
 
@@ -359,10 +364,11 @@
       });
       
       $(document).on('click', '[data-orbit-link]', self.link_custom);
-      $(window).on('resize', self.compute_dimensions);
-      Foundation.utils.image_loaded(this.slides().children('img'), self.compute_dimensions);
-      Foundation.utils.image_loaded(this.slides().children('img'), function() {
-        container.prev('.preloader').css('display', 'none');
+      $(window).on('load resize', self.compute_dimensions);
+      var children = this.slides().find('img');
+      Foundation.utils.image_loaded(children, self.compute_dimensions);
+      Foundation.utils.image_loaded(children, function() {
+        container.prev('.'+settings.preloader_class).css('display', 'none');
         self.update_slide_number(idx);
         self.update_active_link(idx);
         slides_container.trigger('ready.fndtn.orbit');
@@ -376,6 +382,7 @@
     var self = this,
         duration = settings.timer_speed,
         progress = el.find('.'+settings.timer_progress_class),
+        do_progress = progress && progress.css('display') != 'none',
         start, 
         timeout,
         left = -1;
@@ -392,7 +399,7 @@
       clearTimeout(timeout);
       el.addClass(settings.timer_paused_class);
       left = -1;
-      self.update_progress(0);
+      if (do_progress) {self.update_progress(0);}
       self.start();
     };
 
@@ -400,8 +407,10 @@
       if (!el.hasClass(settings.timer_paused_class)) {return true;}
       left = (left === -1) ? duration : left;
       el.removeClass(settings.timer_paused_class);
-      start = new Date().getTime();
-      progress.animate({'width': '100%'}, left, 'linear');
+      if (do_progress) {
+          start = new Date().getTime();
+          progress.animate({'width': '100%'}, left, 'linear');
+      }
       timeout = setTimeout(function() {
         self.restart();
         callback();
@@ -413,10 +422,12 @@
       if (el.hasClass(settings.timer_paused_class)) {return true;}
       clearTimeout(timeout);
       el.addClass(settings.timer_paused_class);
-      var end = new Date().getTime();
-      left = left - (end - start);
-      var w = 100 - ((left / duration) * 100);
-      self.update_progress(w);
+      if (do_progress) {
+          var end = new Date().getTime();
+          left = left - (end - start);
+          var w = 100 - ((left / duration) * 100);
+          self.update_progress(w);
+      }
       el.trigger('timer-stopped.fndtn.orbit');
     };
   };
@@ -478,6 +489,7 @@
       timer_paused_class: 'paused',
       timer_progress_class: 'orbit-progress',
       slides_container_class: 'orbit-slides-container',
+      preloader_class: 'preloader',
       slide_selector: '*',
       bullets_container_class: 'orbit-bullets',
       bullets_active_class: 'active',

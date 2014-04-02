@@ -219,8 +219,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jst');
-  grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'copy', 'jst']);

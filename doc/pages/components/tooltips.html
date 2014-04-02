@@ -2,7 +2,7 @@
 title: Tooltips
 ---
 
-<h3 class="subheader">Tooltips are a quick way to provide <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.</h3>
+<h3 class="subheader">Tooltips are a quick way to provide <a href="//google.com" data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</a> on a term or action on a page.</h3>
 
 ***
 
@@ -42,6 +42,20 @@ Additional classes can be added to your tooltips to change its appearance.
 <h4>Rendered HTML</h4>
 
 <span data-tooltip class="has-tip tip-bottom radius" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span> 
+
+
+<p>You can now also add `show_on` to your `data-options` attribute to allow your tooltips to show on `small`, `medium`, or `large` when the page loads. They will show on all screen sizes by default.</p>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_tooltips_show_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_tooltips_show}}
+  </div>
+</div>
 
 &nbsp;
 

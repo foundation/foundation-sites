@@ -14,8 +14,8 @@
     var head = $('head');
 
     while (i--) {
-      if($('head').has('.' + class_array[i]).length === 0) {
-        $('head').append('<meta class="' + class_array[i] + '" />');
+      if(head.has('.' + class_array[i]).length === 0) {
+          head.append('<meta class="' + class_array[i] + '" />');
       }
     }
   };
@@ -154,7 +154,7 @@
     https://github.com/paulirish/matchMedia.js
   */
 
-  window.matchMedia = window.matchMedia || (function( doc, undefined ) {
+  window.matchMedia = window.matchMedia || (function( doc ) {
 
     "use strict";
 
@@ -246,7 +246,7 @@
     }
   } else {
     // polyfill
-    window.requestAnimationFrame = function (callback, element) {
+    window.requestAnimationFrame = function (callback) {
       var currTime = new Date().getTime(),
         timeToCall = Math.max(0, 16 - (currTime - lastTime)),
         id = window.setTimeout(function () {
@@ -289,12 +289,11 @@
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
     global: {
-      namespace: ''
+      namespace: undefined
     },
 
     init : function (scope, libraries, method, options, response) {
-      var library_arr,
-          args = [scope, method, options, response],
+      var args = [scope, method, options, response],
           responses = [];
 
       // check RTL
@@ -332,7 +331,7 @@
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
 
-        args = args instanceof Array ? args : Array(args);    // PATCH: added this line
+        args = args instanceof Array ? args : new Array(args);    // PATCH: added this line
         return this.libs[lib].init.apply(this.libs[lib], args);
       }
 
@@ -363,19 +362,24 @@
 
     set_namespace: function () {
 
-      // Don't bother reading the namespace out of the meta tag
-      // if the namespace has been set globally in javascript
+      // Description:
+      //    Don't bother reading the namespace out of the meta tag
+      //    if the namespace has been set globally in javascript
       //
-      // Example: something like Foundation.global.namespace = 'my-namespace';
+      // Example: 
+      //    Foundation.global.namespace = 'my-namespace';
+      // or make it an empty string:
+      //    Foundation.global.namespace = '';
       //
-      // Otherwise, if the namespace hasn't been set globally,
-      // read it out of the meta tag
       //
-      var namespace = this.global.namespace || $('.foundation-data-attribute-namespace').css('font-family');
 
-      if (/false/i.test(namespace)) return;
+      // If the namespace has not been set (is undefined), try to read it out of the meta element. 
+      // Otherwise use the globally defined namespace, even if it's empty ('')
+      var namespace = ( this.global.namespace === undefined ) ? $('.foundation-data-attribute-namespace').css('font-family') : this.global.namespace;
       
-      this.global.namespace = namespace;
+      // Finally, if the namsepace is either undefined or false, set it to an empty string. 
+      // Otherwise use the namespace value.
+      this.global.namespace = ( namespace === undefined || /false/i.test(namespace) ) ? '' : namespace;
     },
 
     libs : {},
@@ -415,10 +419,12 @@
         return function () {
           var context = this, args = arguments;
 
-          clearTimeout(timer);
-          timer = setTimeout(function () {
-            func.apply(context, args);
-          }, delay);
+          if (timer == null) {
+            timer = setTimeout(function () {
+              func.apply(context, args);
+              timer = null;
+            }, delay);
+          }
         };
       },
 
@@ -479,7 +485,7 @@
           return cached_options;
         }
 
-        opts_arr = (cached_options || ':').split(';'),
+        opts_arr = (cached_options || ':').split(';');
         ii = opts_arr.length;
 
         function isNumber (o) {
@@ -500,7 +506,7 @@
             if (p[1].indexOf('.') === -1) {
               p[1] = parseInt(p[1], 10);
             } else {
-              p[1] = parseFloat(p[1], 10);
+              p[1] = parseFloat(p[1]);
             }
           }
 

@@ -179,7 +179,7 @@ You can further customize your dropdowns with the options in the `dropdown-conta
 
 ## Configure With Javascript
 
-It's easy to configure dropdowns using our provided Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js` `foundation.js` and `foundation.dropdown.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+It's easy to configure dropdowns using our provided Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js` and `foundation.dropdown.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
 
 {{#markdown}}
   ```html
@@ -193,12 +193,13 @@ It's easy to configure dropdowns using our provided Javascript. You can use data
 
 #### JS
 
-{{!-- TODO: Initialization is incorrect? --}}
 {{#markdown}}
 ```js
 $(document).foundation({
-  // specify the class used for active dropdowns
-  active_class: 'open'
+  dropdown: {
+    // specify the class used for active dropdowns
+    active_class: 'open'
+  }
 });
 ```
 {{/markdown}}
