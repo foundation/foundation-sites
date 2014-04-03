@@ -949,6 +949,7 @@
 // $side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%);
 // $side-nav-font-size: rem-calc(14);
 // $side-nav-font-weight: normal;
+// $side-nav-font-weight-active: $side-nav-font-weight;
 // $side-nav-font-family: $body-font-family;
 // $side-nav-active-font-family: $side-nav-font-family;
 
@@ -957,7 +958,7 @@
 // We use these to control border styles
 // $side-nav-divider-size: 1px;
 // $side-nav-divider-style: solid;
-// $side-nav-divider-color: scale-color(#fff, $lightness: -10%);
+// $side-nav-divider-color: scale-color(#fff, $lightness: 10%);
 
 // Split Buttons
 
