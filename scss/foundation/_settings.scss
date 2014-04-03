@@ -403,7 +403,18 @@
 // $f-dropdown-max-width: 200px;
 // $f-dropdown-height: auto;
 // $f-dropdown-max-height: none;
+
+// Used for bottom position
 // $f-dropdown-margin-top: 2px;
+
+// Used for right position
+// $f-dropdown-margin-left: $f-dropdown-margin-top;
+
+// Used for left position
+// $f-dropdown-margin-right: $f-dropdown-margin-top;
+
+// Used for top position
+// $f-dropdown-margin-bottom: $f-dropdown-margin-top;
 
 // We use this to control the background color
 // $f-dropdown-bg: #fff;
