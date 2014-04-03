@@ -442,11 +442,14 @@
         next.unbind(animation_end);
         current.removeClass("active animate-out");
         next.removeClass("animate-in");
+        container.children().css({
+          "transform":"",
+          "-webkit-transition-duration":"",
+          "-moz-transition-duration": "",
+          "-o-transition-duration": "",
+          "transition-duration":""
+        });
         callback();
-      });
-      container.children().css({
-        "transform":"", 
-        "transitionDuration":""
       });
       current.addClass("animate-out");
       next.addClass("animate-in");
@@ -457,10 +460,17 @@
         prev.unbind(animation_end);
         current.removeClass("active animate-out");
         prev.removeClass("animate-in");
+        container.children().css({
+          "transform":"",
+          "-webkit-transition-duration":"",
+          "-moz-transition-duration": "",
+          "-o-transition-duration": "",
+          "transition-duration":""
+        });
         callback();
       });
-      current.css({"transform":"", "transitionDuration":""}).addClass("animate-out");
-      prev.css({"transform":"", "transitionDuration":""}).addClass("animate-in");
+      current.addClass("animate-out");
+      prev.addClass("animate-in");
     };
   };
 
