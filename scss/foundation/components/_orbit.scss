@@ -141,7 +141,7 @@ $orbit-timer-hide-for-small: true !default;
 
         img { display: block; max-width: 100%; }
         
-        &.fade > * {
+        &.fade li {
           opacity: 0;
           transition: opacity $orbit-animation-speed $orbit-animation-ease;
           @include translate3d(0,0,0);
@@ -156,7 +156,7 @@ $orbit-timer-hide-for-small: true !default;
           }
         }
             
-        &.swipe-next > * {
+        &.swipe-next li {
           @include translate3d(100%,0,0);
           &.animate-in {
             @include translate3d(0,0,0);
@@ -168,7 +168,7 @@ $orbit-timer-hide-for-small: true !default;
           }
         }
 
-        &.swipe-prev > * {
+        &.swipe-prev li {
           @include translate3d(-100%,0,0);
           &.animate-in {
             @include translate3d(0,0,0);
@@ -180,7 +180,7 @@ $orbit-timer-hide-for-small: true !default;
           }
         }
 
-        &>* {
+        li {
           position: absolute;
           top: 0;
           left: 0;
