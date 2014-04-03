@@ -443,21 +443,39 @@
     var animation_end = "webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend";
 
     this.next = function(current, next, callback) {
-      next.on(animation_end, function(e){
-        next.unbind(animation_end);
-        current.removeClass("active animate-out");
-        next.removeClass("animate-in");
-        container.children().css({
-          "transform":"",
-          "-webkit-transition-duration":"",
-          "-moz-transition-duration": "",
-          "-o-transition-duration": "",
-          "transition-duration":""
+      if (Modernizr.csstransitions) {
+        next.on(animation_end, function(e){
+          next.unbind(animation_end);
+          current.removeClass("active animate-out");
+          next.removeClass("animate-in");
+          container.children().css({
+            "transform":"",
+            "-ms-transform":"",
+            "-webkit-transition-duration":"",
+            "-moz-transition-duration": "",
+            "-o-transition-duration": "",
+            "transition-duration":""
+          });
+          callback();
         });
-        callback();
-      });
+      } else {
+        setTimeout(function(){
+          current.removeClass("active animate-out");
+          next.removeClass("animate-in");
+          container.children().css({
+            "transform":"",
+            "-ms-transform":"",
+            "-webkit-transition-duration":"",
+            "-moz-transition-duration": "",
+            "-o-transition-duration": "",
+            "transition-duration":""
+          });
+          callback();
+        }, settings.animation_speed);
+      }
       container.children().css({
         "transform":"",
+        "-ms-transform":"",
         "-webkit-transition-duration":"",
         "-moz-transition-duration": "",
         "-o-transition-duration": "",
@@ -468,21 +486,39 @@
     };
 
     this.prev = function(current, prev, callback) {
-      prev.on(animation_end, function(e){
-        prev.unbind(animation_end);
-        current.removeClass("active animate-out");
-        prev.removeClass("animate-in");
-        container.children().css({
-          "transform":"",
-          "-webkit-transition-duration":"",
-          "-moz-transition-duration": "",
-          "-o-transition-duration": "",
-          "transition-duration":""
+      if (Modernizr.csstransitions) {
+        prev.on(animation_end, function(e){
+          prev.unbind(animation_end);
+          current.removeClass("active animate-out");
+          prev.removeClass("animate-in");
+          container.children().css({
+            "transform":"",
+            "-ms-transform":"",
+            "-webkit-transition-duration":"",
+            "-moz-transition-duration": "",
+            "-o-transition-duration": "",
+            "transition-duration":""
+          });
+          callback();
         });
-        callback();
-      });
+      } else {
+        setTimeout(function(){
+          current.removeClass("active animate-out");
+          prev.removeClass("animate-in");
+          container.children().css({
+            "transform":"",
+            "-ms-transform":"",
+            "-webkit-transition-duration":"",
+            "-moz-transition-duration": "",
+            "-o-transition-duration": "",
+            "transition-duration":""
+          });
+          callback();
+        }, settings.animation_speed);
+      }
       container.children().css({
         "transform":"",
+        "-ms-transform":"",
         "-webkit-transition-duration":"",
         "-moz-transition-duration": "",
         "-o-transition-duration": "",

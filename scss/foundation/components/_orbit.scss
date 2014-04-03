@@ -55,9 +55,10 @@ $orbit-timer-hide-for-small: true !default;
 // The normal tranform attribute still does not work properly across all browsers. 
 // In order to receive the transitionEnd events then you will still need to use the vendor prefixes
 @mixin translate3d($x,$y,$z) {
+  -ms-transform:translate($x,$y);
   -webkit-transform:translate3d($x,$y,$z);
   -moz-transform:translate3d($x,$y,$z);
-  -ms-transform:translate3d($x,$y,$z);
+  // -ms-transform:translate3d($x,$y,$z);
   -o-transform:translate3d($x,$y,$z);
   transform:translate3d($x,$y,$z);
 }
