@@ -274,7 +274,9 @@
       animate = new CSSAnimation(settings, slides_container);
 
       if (has_init_active) {
-        self._goto(slides_container.find("." + settings.active_slide_class).index());
+        var $init_target = slides_container.find("." + settings.active_slide_class);
+        $init_target.removeClass('active');
+        self._goto($init_target.index());
       }
 
       container.on('click', '.'+settings.next_class, self.next);
