@@ -294,6 +294,8 @@
         slides_container.on('touchstart.fndtn.orbit',function(e) {
           if (self.cache.animating) {return;}
           if (!e.touches) {e = e.originalEvent;}
+          e.preventDefault();
+          e.stopPropagation();
 
           self.cache.start_page_x = e.touches[0].pageX;
           self.cache.start_page_y = e.touches[0].pageY;
@@ -454,6 +456,13 @@
         });
         callback();
       });
+      container.children().css({
+        "transform":"",
+        "-webkit-transition-duration":"",
+        "-moz-transition-duration": "",
+        "-o-transition-duration": "",
+        "transition-duration":""
+      });
       current.addClass("animate-out");
       next.addClass("animate-in");
     };
@@ -471,6 +480,13 @@
           "transition-duration":""
         });
         callback();
+      });
+      container.children().css({
+        "transform":"",
+        "-webkit-transition-duration":"",
+        "-moz-transition-duration": "",
+        "-o-transition-duration": "",
+        "transition-duration":""
       });
       current.addClass("animate-out");
       prev.addClass("animate-in");
