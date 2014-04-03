@@ -1012,17 +1012,17 @@
 // $sub-nav-font-color: #999;
 // $sub-nav-font-weight: normal;
 // $sub-nav-text-decoration: none;
+// $sub-nav-padding: rem-calc(3 16);
 // $sub-nav-border-radius: 3px;
 // $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 
 // We use these to control the active item styles
-
 // $sub-nav-active-font-weight: normal;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
 // $sub-nav-active-color: #fff;
-// $sub-nav-active-padding: rem-calc(3 16);
+// $sub-nav-active-padding: $sub-nav-padding;
 // $sub-nav-active-cursor: default;
 
 // $sub-nav-item-divider: "";
