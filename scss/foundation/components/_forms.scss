@@ -382,7 +382,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type="tel"],
     input[type="time"],
     input[type="url"],
-    input[type="submit"],
     textarea {
       -webkit-appearance: none;
       @include form-element;
@@ -392,6 +391,10 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       &.radius {
         @include radius($input-border-radius);
       }
+    }
+
+    input[type="submit"] {
+      -webkit-appearance: none;
     }
 
     /* Respect enforced amount of rows for textarea */
