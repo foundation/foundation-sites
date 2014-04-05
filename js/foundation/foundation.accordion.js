@@ -4,10 +4,11 @@
   Foundation.libs.accordion = {
     name : 'accordion',
 
-    version : '5.1.1',
+    version : '5.2.2',
 
     settings : {
       active_class: 'active',
+      multi_expand: false,
       toggleable: true
     },
 
@@ -23,22 +24,26 @@
       .on('click.fndtn.accordion', '[' + this.attr_name() + '] dd > a', function (e) {
         var accordion = S(this).closest('[' + self.attr_name() + ']'),
             target = S('#' + this.href.split('#')[1]),
+            group = accordion.attr(self.attr_name());
             siblings = S('dd > .content', accordion),
-            aunts = $('> dd', accordion),
+            siblings.add('[' + self.attr_name() + '=' + group + '] dd > .content');
+            aunts = $('dd', accordion),
+            aunts.add('[' + self.attr_name() + '=' + group + '] dd');
             settings = accordion.data(self.attr_name(true) + '-init'),
             active_content = S('dd > .content.' + settings.active_class, accordion),
             active_parent = S('dd.' + settings.active_class, accordion);
         e.preventDefault();
 
-        if (! S(this).closest('dl').is(accordion)) { return; }
-
-        if (active_content[0] == target[0] && settings.toggleable) {
+        if (settings.toggleable && target.is(active_content)) {
           active_parent.toggleClass(settings.active_class, false);
           return target.toggleClass(settings.active_class, false);
         }
 
-        siblings.removeClass(settings.active_class);
-        aunts.removeClass(settings.active_class);
+        if (!settings.multi_expand) {
+          siblings.removeClass(settings.active_class);
+          aunts.removeClass(settings.active_class);
+        }
+
         target.addClass(settings.active_class).parent().addClass(settings.active_class);
       });
     },
