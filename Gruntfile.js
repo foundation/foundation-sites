@@ -113,6 +113,15 @@ module.exports = function(grunt) {
 
     clean: ['dist/'],
 
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: 'dist/'
+        }
+      }
+    },
+
     karma: {
       options: {
         configFile: 'karma.conf.js',
@@ -208,6 +217,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -224,4 +234,5 @@ module.exports = function(grunt) {
   grunt.registerTask('develop', ['travis', 'watch_start']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
   grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('server', ['connect:server:keepalive']);
 };
