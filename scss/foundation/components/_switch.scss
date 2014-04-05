@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -139,16 +143,6 @@ $switch-label-outline: 1px dotted #888 !default;
   // Hiding custom form spans since we auto-create them
   span.custom { display: none !important; }
 
-  // FIXME We should be able to remove this going forward.
-  // Bugfix for older Webkit, including mobile Webkit. Adapted from:
-  // http://css-tricks.com/webkit-sibling-bug/
-  // @media only screen and (-webkit-min-device-pixel-ratio:0) and (max-device-width:480px) {
-  //   @if $experimental { -webkit-animation: webkitSiblingBugfix infinite 1s; }
-  // }
-  // @media only screen and (-webkit-min-device-pixel-ratio:1.5) {
-  //   @if $experimental { -webkit-animation: none 0; }
-  // }
-
   form.custom & .hidden-field {
     margin-left: auto;
     position: absolute;
@@ -210,33 +204,19 @@ $switch-label-outline: 1px dotted #888 !default;
     span:last-child {
       border-color: scale-color($paddle-bg, $lightness: -30%);
       background: $paddle-bg;
-      @if $experimental {
-        background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
-        background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
-      }
       background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -5%) 100%);
 
       // Building the alternating colored sides of the switch
-      @if $experimental {
-        -webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07),
-                            1000px 0 0 1000px $positive-color,
-                            -2px 0 10px 0 rgba(0,0,0,0.07),
-                            -1000px 0 0 1000px $negative-color;
-      }
-      box-shadow:         2px 0 10px 0 rgba(0,0,0,0.07),
-                          1000px 0 0 980px $positive-color,
-                          -2px 0 10px 0 rgba(0,0,0,0.07),
-                          -1000px 0 0 1000px $negative-color;
+      box-shadow: 2px 0 10px 0 rgba(0,0,0,0.07),
+                  1000px 0 0 980px $positive-color,
+                  -2px 0 10px 0 rgba(0,0,0,0.07),
+                  -1000px 0 0 1000px $negative-color;
     }
 
     &:hover,
     &:focus {
       span:last-child {
         background: $paddle-bg;
-        @if $experimental {
-          background: -moz-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
-          background: -webkit-linear-gradient(top, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
-        }
         background: linear-gradient(to bottom, $paddle-bg 0%, scale-color($paddle-bg, $lightness: -10%) 100%);
       }
     }
@@ -310,7 +290,5 @@ $switch-label-outline: 1px dotted #888 !default;
         }
 
       }
-
-      @if $experimental { @-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } } }
   }
 }

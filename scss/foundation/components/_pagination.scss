@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -73,6 +77,7 @@ $pagination-link-current-active-bg: $primary-color !default;
     color: $pagination-link-current-font-color;
     font-weight: $pagination-link-current-font-weight;
     cursor: $pagination-link-current-cursor;
+    @include radius;
 
     &:hover,
     &:focus { background: $pagination-link-current-active-bg; }
@@ -102,7 +107,7 @@ $pagination-link-current-active-bg: $primary-color !default;
         display: block;
         padding: $pagination-link-pad;
         color: $pagination-link-font-color;
-        @include radius($global-radius)
+        @include radius;
       }
 
       &:hover a,

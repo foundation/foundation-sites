@@ -1,13 +1,17 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
 // @variables
 //
-$include-html-type-classes: $include-html-classes !default;
+$include-html-keystroke-classes: $include-html-classes !default;
 
 // We use these to control text styles.
 $keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
-$keystroke-font-size: rem-calc(14) !default;
+$keystroke-font-size: inherit !default;
 $keystroke-font-color: #222 !default;
 $keystroke-font-color-alt: #fff !default;
 $keystroke-function-factor: -7% !default;
@@ -47,7 +51,7 @@ $keystroke-radius: $global-radius !default;
 }
 
 @include exports("keystroke") {
-  @if $include-html-type-classes  {
+  @if $include-html-keystroke-classes  {
     .keystroke,
     kbd {
       @include keystroke;

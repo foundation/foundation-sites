@@ -1,9 +1,6 @@
 ---
 title: Interchange
-layout: doc/layouts/default.html
 ---
-
-# Interchange
 
 <h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for different users' browsers.</h3>
 
@@ -59,6 +56,22 @@ If you want to support browsers with JavaScript disabled, we recommend setting y
 You should always specify a `default` directive for Interchange.
 
 ***
+
+### Using Interchange with background-images
+
+When you add a data-interchange attribute containing image paths (.jpg, .jpeg, .png, .gif, .bmp, .tiff), instead of replacing the element content it will set a background-image css property with the corresponding path. 
+
+{{#markdown}}
+```html
+<div data-interchange="[/path/to/default.jpg, (default)], [/path/to/bigger-image.jpg, (large)]"></div>
+```
+{{/markdown}}
+
+This solution does not support browsers with JavaScript disabled. To add a fallback you can add a default background-image in your css but this can result in loading more than one image on some device.  This method is only switching the background-image on the element. You will need to set the others background properties in your css (background-repeat, background-position, background-size...). 
+
+
+***
+
 
 ### Using Retina Images
 
@@ -118,14 +131,4 @@ Required Foundation Library: `foundation.interchange.js`
 
 ***
 
-### Sass Errors?
 
-If the default "foundation" import was commented out, then make sure you import this file:
-
-<h4>SCSS</h4>
-
-{{#markdown}}
-```scss
-@import "foundation/components/interchange";
-```
-{{/markdown}}

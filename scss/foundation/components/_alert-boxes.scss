@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -38,6 +42,9 @@ $alert-close-padding: 9px 6px 4px !default;
 // We use this to control border radius
 $alert-radius: $global-radius !default;
 
+$alert-transition-speed: 300ms !default;
+$alert-transition-ease: ease-out !default;
+
 //
 // Alert Mixins
 //
@@ -52,6 +59,7 @@ $alert-radius: $global-radius !default;
   position: relative;
   padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
   font-size: $alert-font-size;
+  @include single-transition(opacity, $alert-transition-speed, $alert-transition-ease)
 }
 
 // We use this mixin to add alert styles
@@ -112,6 +120,7 @@ $alert-radius: $global-radius !default;
       &.secondary { @include alert-style($secondary-color); }
       &.warning { @include alert-style($warning-color); }
       &.info { @include alert-style($info-color); }
+      &.alert-close { opacity: 0}
     }
   }
 }

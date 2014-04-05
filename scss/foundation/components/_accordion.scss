@@ -1,5 +1,8 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
-@import "grid";
 
 //
 // @variables
@@ -25,7 +28,7 @@ $accordion-content-active-bg-color: #fff !default;
       dd {
         display: block;
         margin-bottom: 0 !important;
-        &.active a { background: $accordion-navigation-active-bg-color; }
+        &.active > a { background: $accordion-navigation-active-bg-color; }
         > a {
           background: $accordion-navigation-bg-color;
           color: $accordion-navigation-font-color;

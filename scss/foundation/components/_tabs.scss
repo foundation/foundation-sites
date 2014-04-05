@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 @import "grid";
 
@@ -28,16 +32,12 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
       dd {
         position: relative;
         margin-bottom: 0 !important;
-        top: 1px;
         float: $default-float;
         > a {
           display: block;
           background: $tabs-navigation-bg-color;
           color: $tabs-navigation-font-color;
-          padding-top: $tabs-navigation-padding;
-          padding-#{$opposite-direction}: $tabs-navigation-padding * 2;
-          padding-bottom: $tabs-navigation-padding + rem-calc(1);
-          padding-#{$default-float}: $tabs-navigation-padding * 2;
+          padding: $tabs-navigation-padding $tabs-navigation-padding * 2;
           font-family: $tabs-navigation-font-family;
           font-size: $tabs-navigation-font-size;
           &:hover { background: $tabs-navigation-hover-bg-color; }
@@ -71,7 +71,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         float: $default-float;
         padding: $tabs-content-padding 0;
         width: 100%;
-        &.active { display: block; }
+        &.active { display: block; float: none; }
         &.contained { padding: $tabs-content-padding; }
       }
       &.vertical {
@@ -93,6 +93,12 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
           float: $default-float;
           margin-#{$default-float}: -1px;
         }
+      }
+    }
+    .no-js {
+      .tabs-content > .content {
+        display: block;
+        float: none;
       }
     }
   }

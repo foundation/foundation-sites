@@ -61,9 +61,6 @@ $rem-base: 16px !default;
 //   @return $pxWidth / $rem-base * 1rem;
 // }
 
-// Change whether or not you include browser prefixes
-$experimental: true !default;
-
 // Various global styles
 
 $default-float: left;
@@ -301,7 +298,9 @@ $form-spacing: rem-calc(16);
 $form-label-pointer: pointer;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: 500;
+$form-label-line-height: 1.5;
 $form-label-font-color: scale-color(#000, $lightness: 30%);
+$form-label-small-transform: capitalize;
 $form-label-bottom-margin: rem-calc(3);
 $input-font-family: inherit;
 $input-font-color: rgba(0,0,0,0.75);
@@ -529,6 +528,10 @@ $alert-close-padding: 5px 4px 4px;
 
 $alert-radius: $global-radius;
 
+// Transition effects
+
+$alert-transition-speed: 300ms;
+$alert-transition-ease: ease-out;
 
 // Breadcrumb Variables
 

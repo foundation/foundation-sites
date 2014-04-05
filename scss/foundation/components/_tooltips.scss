@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -69,6 +73,11 @@ $tooltip-pip-size: 5px !default;
         border: solid $tooltip-pip-size;
         border-color: transparent transparent $tooltip-bg transparent;
         top: -($tooltip-pip-size * 2);
+
+        &.rtl {
+          left: auto;
+          #{$opposite-direction}: $tooltip-pip-size;
+        }
       }
 
       &.radius {

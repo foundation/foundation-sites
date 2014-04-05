@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -7,7 +11,6 @@ $include-html-grid-classes: $include-html-classes !default;
 $include-xl-html-grid-classes: false !default;
 
 $row-width: rem-calc(1000) !default;
-$column-gutter: rem-calc(30) !default;
 $total-columns: 12 !default;
 
 //
@@ -33,7 +36,7 @@ $total-columns: 12 !default;
 
 // For creating container, nested, and collapsed rows.
 //
-// 
+//
 // $behavior - Any special behavior for this row? Default: false. Options: nest, collapse, nest-collapse, false.
 @mixin grid-row($behavior: false) {
 
@@ -86,18 +89,19 @@ $total-columns: 12 !default;
 // $collapse - Get rid of gutter padding on column? Default: false.
 // $float - Should this float? Default: true. Options: true, false, left, right.
 @mixin grid-column(
-  $columns:false, 
-  $last-column:false, 
-  $center:false, 
-  $offset:false, 
-  $push:false, 
-  $pull:false, 
-  $collapse:false, 
+  $columns:false,
+  $last-column:false,
+  $center:false,
+  $offset:false,
+  $push:false,
+  $pull:false,
+  $collapse:false,
   $float:true,
   $position:false) {
 
   // If positioned for default .column, include relative position
-  @if $position {
+  // push and pull require position set
+  @if $position or $push or $pull {
     position: relative;
   }
 
@@ -149,21 +153,6 @@ $total-columns: 12 !default;
 // $size - Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
 @mixin grid-html-classes($size) {
 
-  .column.#{$size}-centered,
-  .columns.#{$size}-centered { @include grid-column($center:true, $collapse:null, $float:false); }
-
-  .column.#{$size}-uncentered,
-  .columns.#{$size}-uncentered {
-    margin-#{$default-float}: 0;
-    margin-#{$opposite-direction}: 0;
-    float: $default-float;
-  }
-
-  .column.#{$size}-uncentered.opposite,
-  .columns.#{$size}-uncentered.opposite {
-    float: $opposite-direction;
-  }
-
   @for $i from 0 through $total-columns - 1 {
     .#{$size}-push-#{$i} {
       @include grid-column($push:$i, $collapse:null, $float:false);
@@ -194,7 +183,22 @@ $total-columns: 12 !default;
     margin-#{$opposite-direction}: 0;
     left: auto;
     right: auto;
-    float: $default-float; 
+    float: $default-float;
+  }
+
+  .column.#{$size}-centered,
+  .columns.#{$size}-centered { @include grid-column($center:true, $collapse:null, $float:false); }
+
+  .column.#{$size}-uncentered,
+  .columns.#{$size}-uncentered {
+    margin-#{$default-float}: 0;
+    margin-#{$opposite-direction}: 0;
+    float: $default-float !important;
+  }
+
+  .column.#{$size}-uncentered.opposite,
+  .columns.#{$size}-uncentered.opposite {
+    float: $opposite-direction;
   }
 }
 
@@ -205,7 +209,7 @@ $total-columns: 12 !default;
 
       &.collapse {
          > .column,
-         > .columns { @include grid-column($collapse:true); }
+         > .columns { @include grid-column($collapse:true, $float:false); }
 
         .row {margin-left:0; margin-right:0;}
       }

@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -11,7 +15,7 @@ $magellan-padding: 10px !default;
 @include exports("magellan") {
   @if $include-html-magellan-classes {
 
-    #{data('magellan-expedition')} {
+    #{data('magellan-expedition')}, #{data('magellan-expedition-clone')} {
       background: $magellan-bg;
       z-index: 50;
       min-width: 100%;

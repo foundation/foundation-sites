@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 
@@ -41,16 +45,10 @@ $thumb-transition-speed: 200ms !default;
   display: inline-block;
   border: $thumb-border-style $border-width $thumb-border-color;
   max-width: 100%;
-  @if $experimental {
-    -webkit-box-shadow: $box-shadow;
-  }
   box-shadow: $box-shadow;
 
   &:hover,
   &:focus {
-    @if $experimental {
-      -webkit-box-shadow: $box-shadow-hover;
-    }
     box-shadow: $box-shadow-hover;
   }
 }
