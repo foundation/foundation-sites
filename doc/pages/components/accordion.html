@@ -31,6 +31,27 @@ You can create an accordion using minimal markup like so:
 
 ***
 
+<h3>Distributed accordion groups</h3>
+
+You can name the accordion so that it can be spread across different parent containers.  In this example the accordion is named *myAccordionGroup* and it is split between different columns in a block grid.  This allows the accordion to be responsive to screen width.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_grid}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_grid}}
+  </div>
+</div>
+
+***
+
 ## Customize With Sass
 
 Accordions can be easily customized with the Sass variables provided in the `_settings.scss` file.
