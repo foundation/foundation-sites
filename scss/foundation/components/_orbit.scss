@@ -408,6 +408,10 @@ $orbit-timer-hide-for-small: true !default;
             @if $orbit-bullet-hide-for-small {
                 .orbit-bullets{display: none;}
             }
+
+            .orbit-slide-number {
+              display: none;
+            }
         }
     }
 
