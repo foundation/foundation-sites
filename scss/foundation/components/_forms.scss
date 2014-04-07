@@ -312,6 +312,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   border: $input-border-width $input-border-style $input-border-color;
   padding: $form-spacing / 2;
   font-size: $input-font-size;
+  color: $input-font-color;
   @include radius(0);
   &.radius { @include radius($global-radius); }
   &:hover {
