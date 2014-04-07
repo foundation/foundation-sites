@@ -56,19 +56,19 @@ $orbit-timer-hide-for-small: true !default;
 // In order to receive the transitionEnd events then you will still need to use the vendor prefixes
 @mixin translate3d($x,$y,$z) {
   -ms-transform:translate($x,$y);
-  -webkit-transform:translate3d($x,$y,$z);
-  -moz-transform:translate3d($x,$y,$z);
-  // -ms-transform:translate3d($x,$y,$z);
-  -o-transform:translate3d($x,$y,$z);
-  transform:translate3d($x,$y,$z);
+  
+  -webkit-transform: translate3d($x,$y,$z);
+     -moz-transform: translate3d($x,$y,$z);
+       -o-transform: translate3d($x,$y,$z);
+          transform: translate3d($x,$y,$z);
 }
 
 @mixin rotate($d) {
   -webkit-transform: rotate($d);
-  -moz-transform: rotate($d);
-  -ms-transform: rotate($d);
-  -o-transform: rotate($d);
-  transform: rotate($d);
+     -moz-transform: rotate($d);
+      -ms-transform: rotate($d);
+       -o-transform: rotate($d);
+          transform: rotate($d);
 }
 
 @include exports("orbit") {
@@ -390,13 +390,13 @@ $orbit-timer-hide-for-small: true !default;
             .orbit-slides-container > * {
                 position: relative !important;
                 margin-left: 0% !important;
-                opacity:1 !important;
-                -webkit-transform:none !important;
-                -moz-transform:none !important;
-                -ms-transform:none !important;
-                -o-transform:none !important;
-                transform:none !important;
-                transition:none !important;
+                opacity: 1 !important;
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                     -o-transform: none !important;
+                        transform: none !important;
+                transition: none !important;
             }
 
             @if $orbit-timer-hide-for-small {
