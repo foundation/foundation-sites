@@ -35,7 +35,7 @@ This is the outer-most element. It contains the entire off-canvas layout and hid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap"><!-- page layout goes here --></div>
+<div class="off-canvas-wrap" data-offcanvas><!-- page layout goes here --></div>
 ```
 
 ### Inner Wrap
@@ -45,7 +45,7 @@ This is the element that is animated. All of your page content needs to be insid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap">
+<div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap"><!-- all content goes here --></div>
 </div>
 ```
@@ -296,6 +296,10 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 {{/markdown}}
 
 Required Foundation Library: `foundation.offcanvas.js`
+
+### Optional Javascript Configuration
+
+{{> examples_offcanvas_javascript_options}}
 
 ***
 
