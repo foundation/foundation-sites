@@ -388,7 +388,7 @@ $orbit-timer-hide-for-small: true !default;
 
             .orbit-slides-container {height: auto !important;}
             .orbit-slides-container > * {
-                position: relative;
+                position: relative !important;
                 margin-left: 0% !important;
                 opacity:1 !important;
                 -webkit-transform:none !important;
