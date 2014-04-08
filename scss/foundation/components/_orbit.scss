@@ -188,6 +188,8 @@ $orbit-timer-hide-for-small: true !default;
           width: 100%;
           @include translate3d(100%,0,0);
 
+          > a { display: block; }
+
           &.active {
             opacity: 1;
             // "relative" positioning is required for variable height of children.
