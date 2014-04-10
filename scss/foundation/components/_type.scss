@@ -53,6 +53,7 @@ $code-font-weight: bold !default;
 
 // We use these to style anchors
 $anchor-text-decoration: none !default;
+$anchor-text-decoration-hover: none !default;
 $anchor-font-color: $primary-color !default;
 $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !default;
 
@@ -202,7 +203,12 @@ $align-class-breakpoints:
       line-height: inherit;
 
       &:hover,
-      &:focus { color: $anchor-font-color-hover; }
+      &:focus {
+        color: $anchor-font-color-hover;
+        @if $anchor-text-decoration-hover != $anchor-text-decoration {
+        	text-decoration: $anchor-text-decoration-hover;
+        }
+      }
 
       img { border:none; }
     }
