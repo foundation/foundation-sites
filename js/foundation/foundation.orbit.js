@@ -212,19 +212,22 @@
         {
           var slide = container.find('[data-orbit-slide='+index+']');
           if (slide.index() != -1) {
+            index = slide.index() + 1;
+            self._prepare_direction(index);
             setTimeout(function(){
-              self._goto(slide.index() + 1);
+              self._goto(index);
             },100);
           }
         }
         else
         {
+          index = parseInt(index);
+          self._prepare_direction(index);
           setTimeout(function(){
-            self._goto(parseInt(index));
+            self._goto(index);
           },100);
         }
       }
-
     }
 
     self.timer_callback = function() {
