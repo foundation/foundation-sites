@@ -95,7 +95,7 @@
             placeholder.attr(self.add_namespace('data-magellan-expedition-clone'),'');
             expedition.before(placeholder);
           }
-          expedition.css({position:'fixed', top: 0});
+          expedition.css({position:'fixed', top: 0}).addClass('fixed');
         } else {
           expedition.prev('[' + self.add_namespace('data-magellan-expedition-clone') + ']').remove();
           expedition.attr('style','');
