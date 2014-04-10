@@ -283,7 +283,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         width: 100%;
         height: auto;
         display: block;
-        background: $topbar-dropdown-bg;
         font-size: $rem-base;
         margin: 0;
       }
@@ -383,6 +382,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
       // Styling elements inside of dropdowns
       .dropdown {
+        padding: 0;
         position: absolute;
         #{$default-float}: 100%;
         top: 0;
@@ -480,7 +480,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           &:not(.has-form) {
             a:not(.button) {
               padding: 0 $topbar-link-padding;
-              line-height: $topbar-height;
               background: $topbar-link-bg;
               &:hover { background: $topbar-link-bg-hover; }
             }
@@ -488,7 +487,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           &.active:not(.has-form) {
             a:not(.button) {
               padding: 0 $topbar-link-padding;
-              line-height: $topbar-height;
               color: $topbar-link-color-active;
               background: $topbar-link-bg-active;
               &:hover { background: $topbar-link-bg-active-hover; }
@@ -547,7 +545,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           li {
             a {
               color: $topbar-dropdown-link-color;
-              line-height: 1;
+              line-height: $topbar-height;
               white-space: nowrap;
               padding: 12px $topbar-link-padding;
               background: $topbar-dropdown-link-bg;
