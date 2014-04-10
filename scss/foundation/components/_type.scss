@@ -63,6 +63,10 @@ $hr-border-color: #ddd !default;
 $hr-margin: rem-calc(20) !default;
 
 // We use these to style lists
+$list-font-family: $paragraph-font-family !default;
+$list-font-size: $paragraph-font-size !default;
+$list-line-height: $paragraph-line-height !default;
+$list-margin-bottom: $paragraph-margin-bottom !default;
 $list-style-position: outside !default;
 $list-side-margin: 1.1rem !default;
 $list-ordered-side-margin: 1.4rem !default;
@@ -288,11 +292,11 @@ $align-class-breakpoints:
     ul,
     ol,
     dl {
-      font-size: $paragraph-font-size;
-      line-height: $paragraph-line-height;
-      margin-bottom: $paragraph-margin-bottom;
+      font-size: $list-font-size;
+      line-height: $list-line-height;
+      margin-bottom: $list-margin-bottom;
       list-style-position: $list-style-position;
-      font-family: $paragraph-font-family;
+      font-family: $list-font-family;
     }
 
     ul {
