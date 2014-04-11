@@ -28,8 +28,7 @@
             aunts = $('dd', accordion),
             groupSelector = self.attr_name() + '=' + accordion.attr(self.attr_name()),
             settings = accordion.data(self.attr_name(true) + '-init'),
-            active_content = S('dd > .content.' + settings.active_class, accordion),
-            active_parent = S('dd.' + settings.active_class, accordion);
+            active_content = S('dd > .content.' + settings.active_class, accordion);
         e.preventDefault();
 
         if (accordion.attr(self.attr_name())) {
@@ -38,7 +37,7 @@
         }
 
         if (settings.toggleable && target.is(active_content)) {
-          active_parent.toggleClass(settings.active_class, false);
+          target.parent('dd').toggleClass(settings.active_class, false);
           return target.toggleClass(settings.active_class, false);
         }
 
