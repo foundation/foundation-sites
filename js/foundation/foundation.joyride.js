@@ -429,15 +429,18 @@
       }
 
       if (!/body/i.test(this.settings.$target.selector)) {
+      	  var topAdjustment = this.settings.tip_settings.tipAdjustmentY ? parseInt(this.settings.tip_settings.tipAdjustmentY) : 0,
+			        leftAdjustment = this.settings.tip_settings.tipAdjustmentX ? parseInt(this.settings.tip_settings.tipAdjustmentX) : 0;
+          
           if (this.bottom()) {
             if (this.rtl) {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
-                left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
+                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight() + topAdjustment),
+                left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth() + leftAdjustment});
             } else {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
-                left: this.settings.$target.offset().left});
+                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight() + topAdjustment),
+                left: this.settings.$target.offset().left + leftAdjustment});
             }
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'top');
@@ -445,12 +448,12 @@
           } else if (this.top()) {
             if (this.rtl) {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
+                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height + topAdjustment),
                 left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
             } else {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
-                left: this.settings.$target.offset().left});
+                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height + topAdjustment),
+                left: this.settings.$target.offset().left + leftAdjustment});
             }
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'bottom');
@@ -458,16 +461,16 @@
           } else if (this.right()) {
 
             this.settings.$next_tip.css({
-              top: this.settings.$target.offset().top,
-              left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left + nub_width)});
+              top: this.settings.$target.offset().top + topAdjustment,
+              left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left + nub_width + leftAdjustment)});
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'left');
 
           } else if (this.left()) {
 
             this.settings.$next_tip.css({
-              top: this.settings.$target.offset().top,
-              left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_width)});
+              top: this.settings.$target.offset().top + topAdjustment,
+              left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_width + leftAdjustment)});
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'right');
 
