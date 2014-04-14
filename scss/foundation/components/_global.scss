@@ -317,7 +317,9 @@ $cursor-text-value: text !default;
       position: relative;
       cursor: $cursor-default-value;
     }
-
+    
+  a:active { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  
   a:hover { cursor: $cursor-pointer-value; }
 
     // Grid Defaults to get images and embeds to work properly
