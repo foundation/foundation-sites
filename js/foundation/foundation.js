@@ -467,17 +467,17 @@
       // Returns:
       //    Options (Javascript Object): Contents of the element's data-options
       //    attribute.
-      data_options : function (el, dataAttrName) {
-        dataAttrName = dataAttrName || 'options';
+      data_options : function (el, data_attr_name) {
+        data_attr_name = data_attr_name || 'options';
         var opts = {}, ii, p, opts_arr,
             data_options = function (el) {
               var namespace = Foundation.global.namespace;
 
               if (namespace.length > 0) {
-                return el.data(namespace + '-' + dataAttrName);
+                return el.data(namespace + '-' + data_attr_name);
               }
 
-              return el.data(dataAttrName);
+              return el.data(data_attr_name);
             };
 
         var cached_options = data_options(el);
