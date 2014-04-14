@@ -140,9 +140,9 @@ $preloader-class: "preloader";
 It's easy to configure Orbit using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.orbit.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
 
 ```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.orbit.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.orbit.js"></script>
 ```
 
 ### Basic
@@ -183,7 +183,7 @@ $(document).foundation({
       timer_paused_class: 'paused', // Class name given to the paused button
       timer_progress_class: 'orbit-progress', // Class name given to the progress bar
       timer_show_progress_bar: true, // If the progress bar should get shown (false skips computation)
-      slides_container_class: 'orbit-slides-container', // Class name given to the 
+      slides_container_class: 'orbit-slides-container', // Class name given to the
       bullets_container_class: 'orbit-bullets',
       slide_selector: 'li', // Default is '*' which selects all children under the container
       bullets_active_class: 'active', // Class name given to the active bullet
