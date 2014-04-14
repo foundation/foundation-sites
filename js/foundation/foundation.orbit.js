@@ -81,7 +81,8 @@
         container.append(bullets_container);
         bullets_container.wrap('<div class="orbit-bullets-container"></div>');
         self.slides().each(function(idx, el) {
-          var bullet = $('<li>').attr('data-orbit-slide', idx);
+          var bullet = $('<li>').attr('data-orbit-slide', idx)
+            .on('click', self.link_bullet);
           bullets_container.append(bullet);
         });
       }
@@ -205,6 +206,7 @@
       }
     };
 
+    // Click handler for slides and bullets.
     self.link_bullet = function(e) {    
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
@@ -288,7 +290,7 @@
       container.on('click', '.'+settings.prev_class, self.prev);
 
       if (settings.next_on_click) {
-        container.on('click', '[data-orbit-slide]', self.link_bullet);
+        container.on('click', '.'+settings.slides_container_class+' [data-orbit-slide]', self.link_bullet);
       }
       
       container.on('click', self.toggle_timer);
