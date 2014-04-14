@@ -125,7 +125,6 @@ $base-line-height: 150% !default;
 
 // We use this to do clear floats
 @mixin clearfix {
-  *zoom:1;
   &:before, &:after { content: " "; display: table; }
   &:after { clear: both; }
 }
@@ -271,7 +270,7 @@ $cursor-text-value: text !default;
   // Forward slash placed around everything to convince PhantomJS to read the value.
   
   meta.foundation-version {
-    font-family: "/5.2.1/";
+    font-family: "/5.2.2/";
   }
   
   meta.foundation-mq-small {

@@ -302,6 +302,26 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   @else { color: $input-error-message-font-color-alt; }
 }
 
+// We use this mixin to style select elements
+@mixin form-select  {
+  -webkit-appearance: none !important;
+  background-color: $select-bg-color;
+  background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
+  background-repeat: no-repeat;
+  background-position: if($text-direction == 'rtl', 3%, 97%) center;
+  border: $input-border-width $input-border-style $input-border-color;
+  padding: $form-spacing / 2;
+  font-size: $input-font-size;
+  color: $input-font-color;
+  line-height: normal;
+  @include radius(0);
+  &.radius { @include radius($global-radius); }
+  &:hover {
+    background-color: $select-hover-bg-color;
+    border-color: $input-focus-border-color;
+  }
+}
+
 @include exports("form") {
   @if $include-html-form-classes {
     /* Standard Forms */
@@ -318,23 +338,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       small {
         text-transform: $form-label-small-transform;
         color: scale-color($form-label-font-color, $lightness: 15%);
-      }
-    }
-
-    select {
-      -webkit-appearance: none !important;
-      background-color: $select-bg-color;
-      background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
-      background-repeat: no-repeat;
-      background-position: if($text-direction == 'rtl', 3%, 97%) center;
-      border: $input-border-width $input-border-style $input-border-color;
-      padding: $form-spacing / 2;
-      font-size: $input-font-size;
-      @include radius(0);
-      &.radius { @include radius($global-radius); }
-      &:hover {
-        background-color: $select-hover-bg-color;
-        border-color: $input-focus-border-color;
       }
     }
 
@@ -381,16 +384,19 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type="tel"],
     input[type="time"],
     input[type="url"],
-    input[type="submit"],
     textarea {
       -webkit-appearance: none;
       @include form-element;
-      @if not $input-include-glowing-effect {
+      @if $input-include-glowing-effect == false {
           @include single-transition(all, 0.15s, linear);
       }
       &.radius {
         @include radius($input-border-radius);
       }
+    }
+
+    input[type="submit"] {
+      -webkit-appearance: none;
     }
 
     /* Respect enforced amount of rows for textarea */
@@ -400,6 +406,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
     /* Add height value for select elements to match text input height */
     select {
+      @include form-select;
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
     }
 

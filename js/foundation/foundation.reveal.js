@@ -4,7 +4,7 @@
   Foundation.libs.reveal = {
     name : 'reveal',
 
-    version : '5.2.1',
+    version : '5.2.2',
 
     locked : false,
 
@@ -137,7 +137,8 @@
       var self = this;
       if (target) {
         if (typeof target.selector !== 'undefined') {
-          var modal = self.S('#' + target.data(self.data_attr('reveal-id')));
+          // Find the named node; only use the first one found, since the rest of the code assumes there's only one node
+          var modal = self.S('#' + target.data(self.data_attr('reveal-id'))).first();
         } else {
           var modal = self.S(this.scope);
 
@@ -161,7 +162,7 @@
         modal.trigger('open');
 
         if (open_modal.length < 1) {
-          this.toggle_bg(modal);
+          this.toggle_bg(modal, true);
         }
 
         if (typeof ajax_settings === 'string') {
@@ -187,6 +188,7 @@
 
               modal.html(data);
               self.S(modal).foundation('section', 'reflow');
+              self.S(modal).children().foundation();
 
               if (open_modal.length > 0) {
                 self.hide(open_modal, settings.css.close);
@@ -209,7 +211,7 @@
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
         modal.trigger('close');
-        this.toggle_bg(modal);
+        this.toggle_bg(modal, false);
         this.hide(open_modals, settings.css.close, settings);
       }
     },
@@ -224,18 +226,19 @@
       return base;
     },
 
-    toggle_bg : function (modal) {
-      var settings = modal.data(this.attr_name(true));
-
+    toggle_bg : function (modal, state) {
       if (this.S('.' + this.settings.bg_class).length === 0) {
         this.settings.bg = $('<div />', {'class': this.settings.bg_class})
           .appendTo('body').hide();
       }
 
-      if (this.settings.bg.filter(':visible').length > 0) {
-        this.hide(this.settings.bg);
-      } else {
-        this.show(this.settings.bg);
+      var visible = this.settings.bg.filter(':visible').length > 0;
+      if ( state != visible ) {
+        if ( state == undefined ? visible : !state ) {
+          this.hide(this.settings.bg);
+        } else {
+          this.show(this.settings.bg);
+        }
       }
     },
 

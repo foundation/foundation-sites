@@ -7,14 +7,14 @@
 //
 // @variables
 //
-$include-html-nav-classes: $include-html-classes !default;
+$include-pagination-classes: $include-html-classes !default;
 
 // We use these to control the pagination container
 $pagination-height: rem-calc(24) !default;
 $pagination-margin: rem-calc(-5) !default;
 
 // We use these to set the list-item properties
-$pagination-li-float: $default-float;
+$pagination-li-float: $default-float !default;
 $pagination-li-height: rem-calc(24) !default;
 $pagination-li-font-color: #222 !default;
 $pagination-li-font-size: rem-calc(14) !default;
@@ -133,7 +133,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 }
 
 @include exports("pagination") {
-  @if $include-html-nav-classes {
+  @if $include-pagination-classes {
     ul.pagination {
       @include pagination;
     }

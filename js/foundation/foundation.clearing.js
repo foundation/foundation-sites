@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.2.1',
+    version: '5.2.2',
 
     settings : {
       templates : {
@@ -218,16 +218,17 @@
             target.siblings().removeClass('visible');
             target.addClass('visible');
           });
+        visible_image.trigger('opened.fndtn.clearing')
       }
 
       if (!this.locked()) {
+        visible_image.trigger('open.fndtn.clearing');
         // set the image to the selected thumbnail
         image
           .attr('src', this.load($image))
           .css('visibility', 'hidden');
 
         startLoad.call(this);
-
       }
     },
 
@@ -247,12 +248,14 @@
         body.css('overflow', '');
         container = $('div', root).first();
         visible_image = $('.visible-img', container);
+        visible_image.trigger('close.fndtn.clearing');
         this.settings.prev_index = 0;
         $('ul[' + this.attr_name() + ']', root)
           .attr('style', '').closest('.clearing-blackout')
           .removeClass('clearing-blackout');
         container.removeClass('clearing-container');
         visible_image.hide();
+        visible_image.trigger('closed.fndtn.clearing');        
       }
 
       return false;
@@ -286,6 +289,7 @@
 
       if (image.length) {
         this.center_and_label(image, label);
+        image.trigger('resized.fndtn.clearing')
       }
     },
 
@@ -423,7 +427,8 @@
 
       if (target.length) {
         this.S('img', target)
-          .trigger('click', [current, target]);
+          .trigger('click', [current, target])
+          .trigger('change.fndtn.clearing');
       }
     },
 

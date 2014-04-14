@@ -35,7 +35,7 @@ This is the outer-most element. It contains the entire off-canvas layout and hid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap"><!-- page layout goes here --></div>
+<div class="off-canvas-wrap" data-offcanvas><!-- page layout goes here --></div>
 ```
 
 ### Inner Wrap
@@ -45,7 +45,7 @@ This is the element that is animated. All of your page content needs to be insid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap">
+<div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap"><!-- all content goes here --></div>
 </div>
 ```
@@ -182,7 +182,7 @@ The last thing we need is a section for the tab bar content. Add `section.tab-ba
 </nav>
 ```
 
-Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`.
+Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`. This will allow you to place the text (link) on the tabbar more to the left, right, or middle.
 
 <h4>HTML</h4>
 
@@ -296,6 +296,10 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 {{/markdown}}
 
 Required Foundation Library: `foundation.offcanvas.js`
+
+### Optional Javascript Configuration
+
+{{> examples_offcanvas_javascript_options}}
 
 ***
 

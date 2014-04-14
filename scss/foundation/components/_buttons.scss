@@ -67,6 +67,8 @@ $button-disabled-opacity: 0.7 !default;
     position: relative;
     text-decoration: none;
     text-align: $button-font-align;
+    -webkit-appearance: none;
+    -webkit-border-radius:0;
   }
   @if $display { display: $display; }
 }

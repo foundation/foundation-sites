@@ -83,15 +83,8 @@ $menu-slide: "transform 500ms ease" !default;
   width: 100%;
 }
 
-@mixin translate2d($tx,$ty) {
-  -webkit-transform: translate2d($tx,$ty);
-     -moz-transform: translate2d($tx,$ty);
-      -ms-transform: translate2d($tx,$ty);
-       -o-transform: translate2d($tx,$ty);
-          transform: translate2d($tx,$ty)
-}
-
 @mixin translate3d($tx,$ty,$tz) {
+      -ms-transform: translate($tx,$ty);
   -webkit-transform: translate3d($tx,$ty,$tz);
      -moz-transform: translate3d($tx,$ty,$tz);
       -ms-transform: translate3d($tx,$ty,$tz);
@@ -129,7 +122,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include wrap-base;
   overflow: hidden;
   &.move-right,
-  &.move-left { min-height: 100%; }
+  &.move-left { min-height: 100%; -webkit-overflow-scrolling: touch; }
 }
 
 // INNER WRAP
@@ -373,15 +366,6 @@ $menu-slide: "transform 500ms ease" !default;
 
       }
       .exit-off-canvas { @include back-link; }
-    }
-
-    // Opera 12.16 and IE9 - don't have 3d transforms
-    .csstransforms.no-csstransforms3d {
-      .left-off-canvas-menu { @include translate2d(-100%, 0); }
-      .right-off-canvas-menu { @include translate2d(100%, 0); }
-
-      .move-left > .inner-wrap { @include translate2d(-($off-canvas-width),0); }
-      .move-right > .inner-wrap { @include translate2d($off-canvas-width,0); }
     }
 
     // Older browsers

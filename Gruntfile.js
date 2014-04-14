@@ -93,16 +93,16 @@ module.exports = function(grunt) {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
           'dist/docs/assets/js/modernizr.js': ['<%= vendor %>/modernizr/modernizr.js'],
-          'dist/docs/assets/js/all.js': ['vendor/lodash/dist/lodash.min.js','<%= vendor %>/fastclick/lib/fastclick.js', '<%= vendor %>/jquery-placeholder/jquery.placeholder.js', '<%= vendor %>/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/all.js': ['<%= vendor %>/jquery/dist/jquery.js', 'vendor/lodash/dist/lodash.min.js','<%= vendor %>/fastclick/lib/fastclick.js', '<%= vendor %>/jquery-placeholder/jquery.placeholder.js', '<%= vendor %>/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       },
       vendor: {
         files: {
-          'dist/docs/assets/js/placeholder.js': '<%= vendor %>/jquery-placeholder/jquery.placeholder.js',
-          'dist/docs/assets/js/fastclick.js': '<%= vendor %>/fastclick/lib/fastclick.js',
-          'dist/docs/assets/js/jquery.cookie.js': '<%= vendor %>/jquery.cookie/jquery.cookie.js',
-          'dist/docs/assets/js/jquery.js': '<%= vendor %>/jquery/dist/jquery.js',
-          'dist/docs/assets/js/modernizr.js': '<%= vendor %>/modernizr/modernizr.js'
+          'dist/assets/js/vendor/placeholder.js': '<%= vendor %>/jquery-placeholder/jquery.placeholder.js',
+          'dist/assets/js/vendor/fastclick.js': '<%= vendor %>/fastclick/lib/fastclick.js',
+          'dist/assets/js/vendor/jquery.cookie.js': '<%= vendor %>/jquery.cookie/jquery.cookie.js',
+          'dist/assets/js/vendor/jquery.js': '<%= vendor %>/jquery/dist/jquery.js',
+          'dist/assets/js/vendor/modernizr.js': '<%= vendor %>/modernizr/modernizr.js'
         }
       }
     },
@@ -120,6 +120,15 @@ module.exports = function(grunt) {
     },
 
     clean: ['dist/'],
+
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: 'dist/'
+        }
+      }
+    },
 
     karma: {
       options: {
@@ -152,7 +161,12 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      grunt: { files: ['Gruntfile.js'] },
+      grunt: {
+        options: {
+          reload: true
+        },
+        files: ['Gruntfile.js']
+      },
       karma: {
         files: [
           'dist/assets/js/*.js',
@@ -211,6 +225,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -227,4 +242,5 @@ module.exports = function(grunt) {
   grunt.registerTask('develop', ['travis', 'watch_start']);
   grunt.registerTask('deploy', ['build', 'rsync:dist']);
   grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('server', ['connect:server:keepalive']);
 };
