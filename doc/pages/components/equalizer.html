@@ -32,11 +32,9 @@ layout: doc/layouts/default.html
   </div>
 </div>
 
-### Basic
+## Basic
 
 You can create an equal height container using a few data attributes. Apply the `data-equalizer` attribute to a parent container. Then apply the `data-equalizer-watch` attribute to each element you'd like to have an equal height. The height of `data-equalizer-watch` attribute will be equal to that of the tallest element.
-
-**NOTE:** If items with equal height become stacked their heights will reset. This will ensure that unneccessary whitespace isn't introduced.
 
 <div class="row">
   <div class="large-6 columns">
@@ -67,11 +65,11 @@ You can create an equal height container using a few data attributes. Apply the 
   </div>
 </div>
 
-### Advanced
+## Advanced
 
 Perhaps you need to create items that are positioned at the bottom of your input. For example Sign Up buttons on some [pricing tables]({{relative absolute 'dist/docs/components/pricing_tables.html'}}).
 
-#### HTML
+### HTML
 
 ```html
 <div class="row" data-equalizer>
@@ -89,7 +87,7 @@ Perhaps you need to create items that are positioned at the bottom of your input
   </div>
 ```
 
-#### Rendered HTML
+### Rendered HTML
 <div class="row" data-equalizer>
   <div class="large-6 columns">
     <ul class="pricing-table" data-equalizer-watch>
@@ -117,7 +115,33 @@ Perhaps you need to create items that are positioned at the bottom of your input
 
 ---
 
-### Callbacks
+## Using the Javascript
+
+Before you can use Equalizer you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+
+
+Just add `foundation.equalizer.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_equalizer_javascript}}
+
+Required Foundation Library: `foundation.equalizer.js`
+
+### Optional Javascript Configuration
+
+#### JS
+
+{{#markdown}}
+```js
+$(document).foundation({
+  equalizer:
+    // specify if Equalizer should make elements equal height on the small media query range
+    equalize_on_small: false
+});
+```
+
+---
+
+## Callbacks
 
 There are two ways to bind to callbacks in your equalizers.
 
@@ -157,13 +181,4 @@ $(document).on('after-height-change', function(){
   </div>
 </div>
 
-### Using the Javascript
 
-Before you can use Equalizer you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
-
-
-Just add `foundation.equalizer.js` AFTER the `foundation.js` file. Your markup should look something like this:
-
-{{> examples_equalizer_javascript}}
-
-Required Foundation Library: `foundation.equalizer.js`
