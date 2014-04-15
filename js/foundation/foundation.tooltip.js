@@ -20,7 +20,9 @@
       }
     },
 
-    cache : {},
+    cache : {
+      tooltips: []
+    },
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'random_str');
@@ -82,10 +84,29 @@
           } else {
             self.hide($(this));
           }
-        })
-        .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function (e) {
-          self.hide(S(this));
         });
+
+      var observer = new MutationObserver(function(mutations, observer) {
+        for (var i = 0; i < mutations.length; ++i) {
+          var removedNodes = mutations[i].removedNodes;
+          for (var j = 0; j < removedNodes.length; ++j) {
+            if(removedNodes[j].nodeType === 1) {
+              for (var k = 0; k < self.cache.tooltips.length; ++k) {
+                var tooltip = self.cache.tooltips[k];
+                if(removedNodes[j].compareDocumentPosition(tooltip) === 20) {
+                  self.hide(S(tooltip));
+                  self.cache.tooltips.splice(k, 1);
+                }
+              }
+            }
+          }
+        }
+      });
+
+      observer.observe(document, {
+        'childList': true,
+        'subtree': true
+      });
     },
 
     ie_touch : function (e) {
@@ -143,6 +164,8 @@
           self.hide($target);
         });
       }
+
+      self.cache.tooltips.push($target.get(0));
 
       $target.removeAttr('title').attr('title','');
     },
@@ -261,6 +284,7 @@
 
     off : function () {
       var self = this;
+      self.cache.tooltips = [];
       this.S(this.scope).off('.fndtn.tooltip');
       this.S(this.settings.tooltip_class).each(function (i) {
         $('[' + self.attr_name() + ']').eq(i).attr('title', $(this).text());
