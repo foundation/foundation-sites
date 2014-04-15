@@ -9,7 +9,8 @@
     settings : {
       use_tallest: true,
       before_height_change: $.noop,
-      after_height_change: $.noop
+      after_height_change: $.noop,
+      equalize_on_small: false
     },
 
     init : function (scope, method, options) {
@@ -39,7 +40,9 @@
           isStacked = true;
         }
       });
-      if (isStacked) return;
+      if(settings.equalize_on_small === false){
+        if (isStacked) return;
+      };
       
       var heights = vals.map(function(){ return $(this).outerHeight() });
       if (settings.use_tallest) {
