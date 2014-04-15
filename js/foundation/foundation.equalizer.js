@@ -42,7 +42,7 @@
         }
       });
 
-      if(settings.equalize_on_small === false){
+      if (settings.equalize_on_small === false) {
         if (isStacked) return;
       };
 
@@ -70,8 +70,5 @@
       });
     }
   };
-<<<<<<< HEAD
-}(jQuery, this, this.document));
-=======
 }(jQuery, window, window.document));
->>>>>>> df57ab6d14f5bad956f6d7b98925ba7889950f5e
+
