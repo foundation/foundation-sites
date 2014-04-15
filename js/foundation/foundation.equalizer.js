@@ -45,8 +45,8 @@
       if(settings.equalize_on_small === false){
         if (isStacked) return;
       };
-      
-      var heights = vals.map(function(){ return $(this).outerHeight() }).get();
+
+      var heights = vals.map(function(){ return $(this).outerHeight(false) }).get();
 
       if (settings.use_tallest) {
         var max = Math.max.apply(null, heights);
@@ -70,4 +70,8 @@
       });
     }
   };
+<<<<<<< HEAD
 }(jQuery, this, this.document));
+=======
+}(jQuery, window, window.document));
+>>>>>>> df57ab6d14f5bad956f6d7b98925ba7889950f5e

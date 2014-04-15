@@ -27,14 +27,13 @@
             siblings = S('dd > .content', accordion),
             aunts = $('dd', accordion),
             settings = accordion.data(self.attr_name(true) + '-init'),
-            active_content = S('dd > .content.' + settings.active_class, accordion),
-            active_parent = S('dd.' + settings.active_class, accordion);
+            active_content = S('dd > .content.' + settings.active_class, accordion);
         e.preventDefault();
 
         if (! S(this).closest('dl').is(accordion)) { return; }
 
         if (settings.toggleable && target.is(active_content)) {
-          active_parent.toggleClass(settings.active_class, false);
+          target.parent('dd').toggleClass(settings.active_class, false);
           return target.toggleClass(settings.active_class, false);
         }
 
@@ -51,4 +50,4 @@
 
     reflow : function () {}
   };
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));
