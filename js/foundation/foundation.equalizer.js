@@ -42,7 +42,7 @@
       });
       if (isStacked) return;
 
-      var heights = vals.map(function(){ return $(this).outerHeight() }).get();
+      var heights = vals.map(function(){ return $(this).outerHeight(false) }).get();
       if (settings.use_tallest) {
         var max = Math.max.apply(null, heights);
         vals.css('height', max);
