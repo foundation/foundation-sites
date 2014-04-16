@@ -1,9 +1,6 @@
 ---
 title: Alert boxes
-layout: doc/layouts/default.html
 ---
-
-# Alert Boxes
 
 <h3 class="subheader">Alerts are handy elements you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.</h3>
 
@@ -125,6 +122,10 @@ $alert-close-padding: 5px 4px 4px;
 
 // We use this to control border radius
 $alert-radius: $global-radius;
+
+// We use this to control transition effects
+$alert-transition-speed: 300ms;
+$alert-transition-ease: ease-out;
 ```
 {{/markdown}}
 
@@ -199,43 +200,9 @@ It's easy to configure alert boxes using our provided Javascript. You can use wi
 
 {{#markdown}}
 ```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.alert.js"></script>
-```
-{{/markdown}}
-
-<h3>Basic</h3>
-
-Using data-attributes is the preferred method of making changes to our Javascript.
-
-<br />
-
-<h4>HTML</h4>
-
-{{#markdown}}
-```html
-<div data-alert data-options="animation_speed:500;" class="custom-alert-box">
-  ...
-</div>
-```
-{{/markdown}}
-
-
-<h3>Advanced</h3>
-
-You can adjust many settings. For example:
-
-<h4>JS</h4>
-
-{{#markdown}}
-```js
-$(document).foundation({
-  alert: {
-    animation_speed: 500,
-    animation: 'fadeOut'
-  }
-});
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.alert.js"></script>
 ```
 {{/markdown}}
 

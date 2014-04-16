@@ -67,4 +67,28 @@ describe('accordion:', function() {
       expect($('#panel6c')).toBeHidden();
     });
   });
+
+  describe('multi-expand accordion', function() {
+    beforeEach(function() {
+      document.body.innerHTML = __html__['spec/accordion/multiexpand.html'];
+    });
+
+    it('should default to the active panel', function() {
+      $(document).foundation('accordion', { multi_expand: true });
+
+      expect($('#panel1')).toBeHidden();
+      expect($('#panel2')).toBeVisible();
+      expect($('#panel3')).toBeHidden();
+    });
+
+    it('should open the clicked section, leaving previous active panels open', function() {
+      $(document).foundation('accordion', { multi_expand: true });
+
+      $('#panel3').prev().click();
+
+      expect($('#panel1')).toBeHidden();
+      expect($('#panel2')).toBeVisible();
+      expect($('#panel3')).toBeVisible();
+    });
+  });
 });

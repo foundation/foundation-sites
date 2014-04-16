@@ -18,7 +18,7 @@ $orbit-caption-padding: rem-calc(10 14) !default;
 $orbit-caption-height: auto !default;
 
 // We use these to control the left/right nav styles
-$orbit-nav-bg: none !default;
+$orbit-nav-bg: transparent !default;
 $orbit-nav-bg-hover: rgba(0,0,0,0.3) !default;
 $orbit-nav-arrow-color: #fff !default;
 $orbit-nav-arrow-color-hover: #fff !default;
@@ -37,30 +37,46 @@ $orbit-slide-number-bg: rgba(0,0,0,0) !default;
 $orbit-slide-number-font-color: #fff !default;
 $orbit-slide-number-padding: rem-calc(5) !default;
 
+// We use these to controls the css animation
+$orbit-animation-speed: 500ms !default;
+$orbit-animation-ease: ease-in-out !default;
+
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper" !default;
 $preloader-class: "preloader" !default;
 
+// Hide controls on small
+$orbit-nav-hide-for-small: true !default;
+$orbit-bullet-hide-for-small: true !default;
+$orbit-timer-hide-for-small: true !default;
+
+// CSS Transform 
+// This function is needed in order to put in all of the browser prefixes. 
+// The normal tranform attribute still does not work properly across all browsers. 
+// In order to receive the transitionEnd events then you will still need to use the vendor prefixes
+@mixin translate3d($x,$y,$z) {
+  -ms-transform:translate($x,$y);
+  
+  -webkit-transform: translate3d($x,$y,$z);
+     -moz-transform: translate3d($x,$y,$z);
+       -o-transform: translate3d($x,$y,$z);
+          transform: translate3d($x,$y,$z);
+}
+
+@mixin rotate($d) {
+  -webkit-transform: rotate($d);
+     -moz-transform: rotate($d);
+      -ms-transform: rotate($d);
+       -o-transform: rotate($d);
+          transform: rotate($d);
+}
+
 @include exports("orbit") {
   @if $include-html-orbit-classes {
 
-    @if $experimental {
-      @-webkit-keyframes rotate {
-        from { -webkit-transform: rotate(0deg); }
-        to { -webkit-transform: rotate(360deg); }
-      }
-      @-moz-keyframes rotate {
-        from { -moz-transform: rotate(0deg); }
-        to { -moz-transform: rotate(360deg); }
-      }
-      @-o-keyframes rotate {
-        from { -o-transform: rotate(0deg); }
-        to { -o-transform: rotate(360deg); }
-      }
-    }
     @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from { @include rotate(0deg); }
+      to { @include rotate(360deg); }
     }
 
     /* Orbit Graceful Loading */
@@ -88,39 +104,25 @@ $preloader-class: "preloader" !default;
           .orbit-caption { display: block; }
         }
       }
-    }
 
-    // Orbit preloader
-    .#{$preloader-class} {
-      display: block;
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-top: -20px;
-      margin-left: -20px;
-      border: solid 3px;
-      border-color: #555 #fff;
-      @include radius(1000px);
-      @if $experimental {
-        -webkit-animation-name: rotate;
-        -webkit-animation-duration: 1.5s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-timing-function: linear;
-        -moz-animation-name: rotate;
-        -moz-animation-duration: 1.5s;
-        -moz-animation-iteration-count: infinite;
-        -moz-animation-timing-function: linear;
-        -o-animation-name: rotate;
-        -o-animation-duration: 1.5s;
-        -o-animation-iteration-count: infinite;
-        -o-animation-timing-function: linear;
+      // Orbit preloader
+      .#{$preloader-class} {
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -20px;
+        margin-left: -20px;
+        border: solid 3px;
+        border-color: #555 #fff;
+        @include radius(1000px);
+        animation-name: rotate;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
       }
-      animation-name: rotate;
-      animation-duration: 1.5s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
     }
 
     .orbit-container {
@@ -139,25 +141,62 @@ $preloader-class: "preloader" !default;
         -webkit-transform: translateZ(0);
 
         img { display: block; max-width: 100%; }
+        
+        &.fade li {
+          opacity: 0;
+          transition: opacity $orbit-animation-speed $orbit-animation-ease;
+          @include translate3d(0,0,0);
+          &.animate-in {
+            opacity: 1;
+            z-index: 20;
+            transition: opacity $orbit-animation-speed $orbit-animation-ease;
+          }
+          &.animate-out {
+            z-index: 10;
+            transition: opacity $orbit-animation-speed $orbit-animation-ease;
+          }
+        }
+            
+        &.swipe-next li {
+          @include translate3d(100%,0,0);
+          &.animate-in {
+            @include translate3d(0,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
+          &.animate-out {
+            @include translate3d(-100%,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
+        }
 
-        &>* {
+        &.swipe-prev li {
+          @include translate3d(-100%,0,0);
+          &.animate-in {
+            @include translate3d(0,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
+          &.animate-out {
+            @include translate3d(100%,0,0);
+            transition-duration:$orbit-animation-speed;
+          }
+        }
+
+        li {
           position: absolute;
           top: 0;
+          left: 0;
           width: 100%;
-          @if $text-direction == rtl {
-            margin-right: 100%;
-          }
-          @else {
-            margin-left: 100%;
-          }
+          @include translate3d(100%,0,0);
 
-          &:first-child {
-            @if $text-direction == rtl {
-            margin-right: 0%;
-            }
-            @else {
-            margin-left: 0%;
-            }
+          > a { display: block; }
+
+          &.active {
+            opacity: 1;
+            // "relative" positioning is required for variable height of children.
+            position:relative;
+            top: 0;
+            left: 0;
+            @include translate3d(0,0,0);
           }
 
           .orbit-caption {
@@ -182,11 +221,7 @@ $preloader-class: "preloader" !default;
         top: 10px;
         #{$default-float}: 10px;
         font-size: 12px;
-        span {
-          font-weight: 700;
-          padding: $orbit-slide-number-padding;
-          display: inline-block;
-        }
+        span { font-weight: 700; padding: $orbit-slide-number-padding;}
         color: $orbit-slide-number-font-color;
         background: $orbit-slide-number-bg;
         z-index: 10;
@@ -208,6 +243,8 @@ $preloader-class: "preloader" !default;
             position: relative;
             right: 20px;
             top: 5px;
+          } @else {
+              display:none; // This is used by the Javascript to not create a handler.
           }
         }
 
@@ -223,7 +260,7 @@ $preloader-class: "preloader" !default;
           border-top: none;
           border-bottom: none;
         }
-
+      
         // Pause button
         &.paused {
           & > span {
@@ -232,16 +269,17 @@ $preloader-class: "preloader" !default;
             width: 11px;
             height: 14px;
             border: inset 8px;
-            border-right-style: solid;
-            border-color: transparent transparent transparent #fff;
-            &.dark {
-              border-color: transparent transparent transparent #333;
+            border-left-style: solid;
+            @include rotate(180deg);
+            border-color: transparent #fff transparent transparent;
+            &.dark { 
+              border-color: transparent #333 transparent transparent;
             }
           }
         }
       }
-
-
+      
+      
 
       &:hover .orbit-timer > span { display: block; }
 
@@ -295,35 +333,36 @@ $preloader-class: "preloader" !default;
           border-#{$default-float}-color: $orbit-nav-arrow-color-hover;
         }
       }
-    }
 
-    .orbit-bullets-container { text-align: center; }
-    .orbit-bullets {
-      margin: 0 auto 30px auto;
-      overflow: hidden;
-      position: relative;
-      top: 10px;
-      float: none;
-      text-align: center;
-      display: block;
-
-      li {
-        display: inline-block;
-        width: $orbit-bullet-radius;
-        height: $orbit-bullet-radius;
-        background: $orbit-bullet-nav-color;
-        // float: $default-float;
+      .orbit-bullets-container { text-align: center; }
+      .orbit-bullets {
+        margin: 0 auto 30px auto;
+        overflow: hidden;
+        position: relative;
+        top: 10px;
         float: none;
-        margin-#{$opposite-direction}: 6px;
-        @include radius(1000px);
+        text-align: center;
+        display: block;
 
-        &.active {
-          background: $orbit-bullet-nav-color-active;
+        li {
+          display: inline-block;
+          width: $orbit-bullet-radius;
+          height: $orbit-bullet-radius;
+          background: $orbit-bullet-nav-color;
+          // float: $default-float;
+          float: none;
+          margin-#{$opposite-direction}: 6px;
+          @include radius(1000px);
+
+          &.active {
+            background: $orbit-bullet-nav-color-active;
+          }
+
+          &:last-child { margin-#{$opposite-direction}: 0; }
         }
-
-        &:last-child { margin-#{$opposite-direction}: 0; }
       }
     }
+
 
     .touch {
       .orbit-container {
@@ -349,17 +388,35 @@ $preloader-class: "preloader" !default;
     }
 
     @media #{$small-only} {
-      .orbit-stack-on-small {
-        .orbit-slides-container {height: auto !important;}
-        .orbit-slides-container > * {
-          position: relative;
-          margin-left: 0% !important;
+        .orbit-stack-on-small {
+
+            .orbit-slides-container {height: auto !important;}
+            .orbit-slides-container > * {
+                position: relative !important;
+                margin-left: 0% !important;
+                opacity: 1 !important;
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                     -o-transform: none !important;
+                        transform: none !important;
+                transition: none !important;
+            }
+
+            @if $orbit-timer-hide-for-small {
+                .orbit-timer{display: none;}
+            }
+            @if $orbit-nav-hide-for-small {
+                .orbit-next,.orbit-prev{display: none;}
+            }
+            @if $orbit-bullet-hide-for-small {
+                .orbit-bullets{display: none;}
+            }
+
+            .orbit-slide-number {
+              display: none;
+            }
         }
-        .orbit-timer,
-        .orbit-next,
-        .orbit-prev,
-        .orbit-bullets {display: none;}
-      }
     }
 
   }

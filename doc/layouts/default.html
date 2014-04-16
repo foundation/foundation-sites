@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{#if title}}{{title}} | {{/if}}Foundation Docs</title>
+    <title>{{default title meta}} | Foundation Docs</title>
     <link rel="icon" href="{{assets}}/img/icons/favicon.ico" type="image/x-icon">
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{assets}}/img/icons/apple-touch-icon-144x144-precomposed.png">
@@ -15,13 +15,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{assets}}/img/icons/apple-touch-icon-72x72-precomposed.png">
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <link rel="apple-touch-icon-precomposed" href="{{assets}}/img/icons/apple-touch-icon-precomposed.png">
-    {{#if description}}
-    <meta name="description" content="{{description}}"/>
-    {{else}}
-    <meta name="description" content="Documentation and reference library for ZURB Foundation. Javascript, CSS, components, grid and more." />
-    {{/if}}
-    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
-    <meta name="copyright" content="ZURB, inc. Copyright (c) 2013" />
+
+    <meta name="description" content="{{default description "Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more."}}">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
     <link href='{{assets}}/css/docs.css' rel='stylesheet' />
     <script src="{{assets}}/js/modernizr.js"></script>
   </head>
@@ -29,23 +27,22 @@
     <div class="marketing off-canvas-wrap">
       <div class="inner-wrap">
 
-{{> topbar}}
-{{> offcanvas-nav}}
+        {{> topbar}}
+        {{> offcanvas-nav}}
 
-        <section role="main">
+        <section role="main" class="scroll-container">
 
           <div class="row">
             <div class="large-3 medium-4 columns">
               <div class="hide-for-small">
-              {{> sidebar}}
+                {{> sidebar}}
               </div>
             </div>
             <div class="large-9 medium-8 columns">
-
-{{#markdown}}
-{{> body}}
-{{/markdown}}
-
+              <h1 id="{{slugify title}}">{{title}}</h1>
+              {{#markdown}}
+                {{> body}}
+              {{/markdown}}
             </div>
           </div>
 
@@ -55,7 +52,6 @@
       </div>
     </div>
 
-    <script src="{{assets}}/js/jquery.js"></script>
     <script src="{{assets}}/js/templates.js"></script>
     <script src="{{assets}}/js/all.js"></script>
     <script>

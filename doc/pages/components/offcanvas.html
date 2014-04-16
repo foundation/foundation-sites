@@ -1,9 +1,7 @@
 ---
-title: Off-canvas navigation
-layout: doc/layouts/default.html
+title: Off Canvas
+meta: Off-canvas navigation
 ---
-
-# Off Canvas
 
 <h3 class="subheader">Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.</h3>
 
@@ -37,7 +35,7 @@ This is the outer-most element. It contains the entire off-canvas layout and hid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap"><!-- page layout goes here --></div>
+<div class="off-canvas-wrap" data-offcanvas><!-- page layout goes here --></div>
 ```
 
 ### Inner Wrap
@@ -47,7 +45,7 @@ This is the element that is animated. All of your page content needs to be insid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap">
+<div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap"><!-- all content goes here --></div>
 </div>
 ```
@@ -184,7 +182,7 @@ The last thing we need is a section for the tab bar content. Add `section.tab-ba
 </nav>
 ```
 
-Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`.
+Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`. This will allow you to place the text (link) on the tabbar more to the left, right, or middle.
 
 <h4>HTML</h4>
 
@@ -268,6 +266,41 @@ Off-canvas layouts can be easily customized using our provided Sass variables.
 <h4>SCSS</h4>
 
 {{> examples_offcanvas_variables}}
+
+***
+
+### Using the Javascript
+
+<div class="panel">
+  Before you can use Off-canvas you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{#markdown}}
+```html
+<body>
+
+  ...
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.offcanvas.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+```
+{{/markdown}}
+
+Required Foundation Library: `foundation.offcanvas.js`
+
+### Optional Javascript Configuration
+
+{{> examples_offcanvas_javascript_options}}
 
 ***
 
