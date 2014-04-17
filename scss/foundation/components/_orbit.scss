@@ -50,13 +50,13 @@ $orbit-nav-hide-for-small: true !default;
 $orbit-bullet-hide-for-small: true !default;
 $orbit-timer-hide-for-small: true !default;
 
-// CSS Transform 
-// This function is needed in order to put in all of the browser prefixes. 
-// The normal tranform attribute still does not work properly across all browsers. 
+// CSS Transform
+// This function is needed in order to put in all of the browser prefixes.
+// The normal tranform attribute still does not work properly across all browsers.
 // In order to receive the transitionEnd events then you will still need to use the vendor prefixes
 @mixin translate3d($x,$y,$z) {
   -ms-transform:translate($x,$y);
-  
+
   -webkit-transform: translate3d($x,$y,$z);
      -moz-transform: translate3d($x,$y,$z);
        -o-transform: translate3d($x,$y,$z);
@@ -141,8 +141,8 @@ $orbit-timer-hide-for-small: true !default;
         -webkit-transform: translateZ(0);
 
         img { display: block; max-width: 100%; }
-        
-        &.fade li {
+
+        &.fade > li {
           opacity: 0;
           transition: opacity $orbit-animation-speed $orbit-animation-ease;
           @include translate3d(0,0,0);
@@ -156,8 +156,8 @@ $orbit-timer-hide-for-small: true !default;
             transition: opacity $orbit-animation-speed $orbit-animation-ease;
           }
         }
-            
-        &.swipe-next li {
+
+        &.swipe-next > li {
           @include translate3d(100%,0,0);
           &.animate-in {
             @include translate3d(0,0,0);
@@ -169,7 +169,7 @@ $orbit-timer-hide-for-small: true !default;
           }
         }
 
-        &.swipe-prev li {
+        &.swipe-prev > li {
           @include translate3d(-100%,0,0);
           &.animate-in {
             @include translate3d(0,0,0);
@@ -181,7 +181,7 @@ $orbit-timer-hide-for-small: true !default;
           }
         }
 
-        li {
+        > li {
           position: absolute;
           top: 0;
           left: 0;
@@ -260,7 +260,7 @@ $orbit-timer-hide-for-small: true !default;
           border-top: none;
           border-bottom: none;
         }
-      
+
         // Pause button
         &.paused {
           & > span {
@@ -272,14 +272,14 @@ $orbit-timer-hide-for-small: true !default;
             border-left-style: solid;
             @include rotate(180deg);
             border-color: transparent #fff transparent transparent;
-            &.dark { 
+            &.dark {
               border-color: transparent #333 transparent transparent;
             }
           }
         }
       }
-      
-      
+
+
 
       &:hover .orbit-timer > span { display: block; }
 
