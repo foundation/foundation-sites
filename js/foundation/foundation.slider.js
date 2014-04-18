@@ -41,15 +41,15 @@
             self.calculate_position(self.cache.active, e.pageX || e.originalEvent.clientX || e.originalEvent.touches[0].clientX || e.currentPoint.x);
           }
         })
-        .on('mouseup.fndtn.slider touchend.fndtn.slider pointerup.fndtn.slider', function(e) {
+        .on('mouseup.fndtn.slider touchend.fndtn.slider pointerup.fndtn.slider', function() {
           self.remove_active_slider();
         })
-        .on('change.fndtn.slider', function(e) {
+        .on('change.fndtn.slider', function() {
           self.settings.on_change();
         });
 
       self.S(window)
-        .on('resize.fndtn.slider', self.throttle(function(e) {
+        .on('resize.fndtn.slider', self.throttle(function() {
           self.reflow();
         }, 300));
     },
@@ -105,13 +105,16 @@
 
       $handle.parent().children('input[type=hidden]').val(value);
 
+      // TODO?: can't find "input_id" in docs?
       if (settings.input_id != '') {
-        $(settings.display_selector).each(function(){
+        $(settings.display_selector).each(function() {
+
           if (this.hasOwnProperty('value')) {
             $(this).val(value);
           } else {
             $(this).text(value);
           }
+
         });
       }
 
@@ -123,7 +126,6 @@
 
     normalized_value : function(val, start, end, step) {
       var range = end - start,
-          step = step,
           point = val*range,
           mod = (point-(point%step)) / step,
           rem = point % step,
@@ -192,6 +194,7 @@
         } else {
           self.set_initial_position($(this));
         }
+
       });
     }
 
