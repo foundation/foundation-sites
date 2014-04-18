@@ -2,36 +2,36 @@
   'use strict';
 
   Foundation.libs.interchange = {
-    name : 'interchange',
+    name: 'interchange',
 
-    version : '5.2.2',
+    version: '5.2.2',
 
-    cache : {},
+    cache: {},
 
-    images_loaded : false,
-    nodes_loaded : false,
+    images_loaded: false,
+    nodes_loaded: false,
 
-    settings : {
-      load_attr : 'interchange',
+    settings: {
+      load_attr: 'interchange',
 
-      named_queries : {
-        'default' : 'only screen',
-        small : Foundation.media_queries.small,
-        medium : Foundation.media_queries.medium,
-        large : Foundation.media_queries.large,
-        xlarge : Foundation.media_queries.xlarge,
+      named_queries: {
+        'default': 'only screen',
+        small: Foundation.media_queries.small,
+        medium: Foundation.media_queries.medium,
+        large: Foundation.media_queries.large,
+        xlarge: Foundation.media_queries.xlarge,
         xxlarge: Foundation.media_queries.xxlarge,
-        landscape : 'only screen and (orientation: landscape)',
-        portrait : 'only screen and (orientation: portrait)',
-        retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
-          'only screen and (min--moz-device-pixel-ratio: 2),' +
-          'only screen and (-o-min-device-pixel-ratio: 2/1),' +
-          'only screen and (min-device-pixel-ratio: 2),' +
-          'only screen and (min-resolution: 192dpi),' +
-          'only screen and (min-resolution: 2dppx)'
+        landscape: 'only screen and (orientation: landscape)',
+        portrait: 'only screen and (orientation: portrait)',
+        retina: 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+        'only screen and (min--moz-device-pixel-ratio: 2),' +
+        'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+        'only screen and (min-device-pixel-ratio: 2),' +
+        'only screen and (min-resolution: 192dpi),' +
+        'only screen and (min-resolution: 2dppx)'
       },
 
-      directives : {
+      directives: {
         replace: function (el, path, trigger) {
           // The trigger argument, if called within the directive, fires
           // an event named after the directive on the element, passing
@@ -47,7 +47,9 @@
           if (/IMG/.test(el[0].nodeName)) {
             var orig_path = el[0].src;
 
-            if (new RegExp(path, 'i').test(orig_path)) return;
+            if (new RegExp(path, 'i').test(orig_path)) {
+              return;
+            }
 
             el[0].src = path;
 
@@ -55,10 +57,12 @@
           }
           var last_path = el.data(this.data_attr + '-last-path');
 
-          if (last_path == path) return;
+          if (last_path == path) {
+            return;
+          }
 
           if (/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i.test(path)) {
-            $(el).css('background-image', 'url('+path+')');
+            $(el).css('background-image', 'url(' + path + ')');
             el.data('interchange-last-path', path);
             return trigger(path);
           }
@@ -73,7 +77,7 @@
       }
     },
 
-    init : function (scope, method, options) {
+    init: function (scope, method, options) {
       Foundation.inherit(this, 'throttle random_str');
 
       this.data_attr = this.set_data_attr();
@@ -83,34 +87,35 @@
       this.load('nodes');
     },
 
-    get_media_hash : function() {
-        var mediaHash='';
-        for (var queryName in this.settings.named_queries ) {
-            mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
-        }
-        return mediaHash;
+    get_media_hash: function () {
+      var mediaHash = '';
+      for (var queryName in this.settings.named_queries) {
+        mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
+      }
+      return mediaHash;
     },
 
-    events : function () {
+    events: function () {
       var self = this, prevMediaHash;
 
       $(window)
-        .off('.interchange')
-        .on('resize.fndtn.interchange', self.throttle(function () {
+          .off('.interchange')
+          .on('resize.fndtn.interchange', self.throttle(function () {
             var currMediaHash = self.get_media_hash();
             if (currMediaHash !== prevMediaHash) {
-                self.resize();
+              self.resize();
             }
             prevMediaHash = currMediaHash;
-        }, 50));
+          }, 50));
 
       return this;
     },
 
-    resize : function () {
+    resize: function () {
       var cache = this.cache;
 
-      if(!this.images_loaded || !this.nodes_loaded) {
+      if (!this.images_loaded || !this.nodes_loaded
+      ) {
         setTimeout($.proxy(this.resize, this), 50);
         return;
       }
@@ -121,22 +126,23 @@
 
           if (passed) {
             this.settings.directives[passed
-              .scenario[1]].call(this, passed.el, passed.scenario[0], function () {
-                if (arguments[0] instanceof Array) { 
-                  var args = arguments[0];
-                } else { 
-                  var args = Array.prototype.slice.call(arguments, 0);
-                }
+                .scenario[1]].call(this, passed.el, passed.scenario[0], function () {
 
-                passed.el.trigger(passed.scenario[1], args);
-              });
+                  if (arguments[0] instanceof Array) {
+                    var args = arguments[0];
+                  } else {
+                    var args = Array.prototype.slice.call(arguments, 0);
+                  }
+
+                  passed.el.trigger(passed.scenario[1], args);
+                });
           }
         }
       }
 
     },
 
-    results : function (uuid, scenarios) {
+    results: function (uuid, scenarios) {
       var count = scenarios.length;
 
       if (count > 0) {
@@ -144,29 +150,35 @@
 
         while (count--) {
           var mq, rule = scenarios[count][2];
+
           if (this.settings.named_queries.hasOwnProperty(rule)) {
             mq = matchMedia(this.settings.named_queries[rule]);
           } else {
             mq = matchMedia(rule);
           }
+
           if (mq.matches) {
             return {el: el, scenario: scenarios[count]};
           }
+
         }
       }
 
       return false;
     },
 
-    load : function (type, force_update) {
-      if (typeof this['cached_' + type] === 'undefined' || force_update) {
+    load: function (type, force_update) {
+      if (
+          force_update
+          || typeof this['cached_' + type] === 'undefined'
+      ) {
         this['update_' + type]();
       }
 
       return this['cached_' + type];
     },
 
-    update_images : function () {
+    update_images: function () {
       var images = this.S('img[' + this.data_attr + ']'),
           count = images.length,
           i = count,
@@ -196,7 +208,7 @@
       return this;
     },
 
-    update_nodes : function () {
+    update_nodes: function () {
       var nodes = this.S('[' + this.data_attr + ']').not('img'),
           count = nodes.length,
           i = count,
@@ -215,7 +227,7 @@
           this.cached_nodes.push(nodes[i]);
         }
 
-        if(loaded_count === count) {
+        if (loaded_count === count) {
           this.nodes_loaded = true;
           this.enhance('nodes');
         }
@@ -224,7 +236,7 @@
       return this;
     },
 
-    enhance : function (type) {
+    enhance: function (type) {
       var i = this['cached_' + type].length;
 
       while (i--) {
@@ -234,11 +246,11 @@
       return $(window).trigger('resize');
     },
 
-    parse_params : function (path, directive, mq) {
+    parse_params: function (path, directive, mq) {
       return [this.trim(path), this.convert_directive(directive), this.trim(mq)];
     },
 
-    convert_directive : function (directive) {
+    convert_directive: function (directive) {
 
       var trimmed = this.trim(directive);
 
@@ -249,9 +261,9 @@
       return 'replace';
     },
 
-    object : function(el) {
+    object: function (el) {
       var raw_arr = this.parse_data_attr(el),
-          scenarios = [], 
+          scenarios = [],
           i = raw_arr.length;
 
       if (i > 0) {
@@ -261,7 +273,7 @@
           if (split.length > 1) {
             var cached_split = split[0].split(','),
                 params = this.parse_params(cached_split[0],
-                  cached_split[1], split[1]);
+                    cached_split[1], split[1]);
 
             scenarios.push(params);
           }
@@ -271,18 +283,20 @@
       return this.store(el, scenarios);
     },
 
-    store : function (el, scenarios) {
+    store: function (el, scenarios) {
       var uuid = this.random_str(),
           current_uuid = el.data(this.add_namespace('uuid', true));
 
-      if (this.cache[current_uuid]) return this.cache[current_uuid];
+      if (this.cache[current_uuid]) {
+        return this.cache[current_uuid];
+      }
 
       el.attr(this.add_namespace('data-uuid'), uuid);
 
       return this.cache[uuid] = scenarios;
     },
 
-    trim : function(str) {
+    trim: function (str) {
 
       if (typeof str === 'string') {
         return $.trim(str);
@@ -296,7 +310,7 @@
         if (this.namespace.length > 0) {
           return this.namespace + '-' + this.settings.load_attr;
         }
-
+        
         return this.settings.load_attr;
       }
 
@@ -307,9 +321,9 @@
       return 'data-' + this.settings.load_attr;
     },
 
-    parse_data_attr : function (el) {
+    parse_data_attr: function (el) {
       var raw = el.attr(this.attr_name()).split(/\[(.*?)\]/),
-          i = raw.length, 
+          i = raw.length,
           output = [];
 
       while (i--) {
@@ -321,7 +335,7 @@
       return output;
     },
 
-    reflow : function () {
+    reflow: function () {
       this.load('images', true);
       this.load('nodes', true);
     }
