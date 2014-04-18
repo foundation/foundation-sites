@@ -1,15 +1,15 @@
-/*jslint unparam: true, browser: true, indent: 2 */
 ;(function ($, window, document, undefined) {
   'use strict';
 
   Foundation.libs.tab = {
-    name : 'tab',
+    name: 'tab',
 
-    version : '5.2.2',
+    version: '5.2.2',
 
-    settings : {
+    settings: {
       active_class: 'active',
-      callback : function () {},
+      callback: function () {
+      },
       deep_linking: false,
       scroll_to_content: true,
       is_hover: false
@@ -17,7 +17,7 @@
 
     default_tab_hashes: [],
 
-    init : function (scope, method, options) {
+    init: function (scope, method, options) {
       var self = this,
           S = this.S;
 
@@ -32,26 +32,32 @@
       });
     },
 
-    events : function () {
+    events: function () {
       var self = this,
           S = this.S;
 
       S(this.scope)
-        .off('.tab')
-        // Click event: tab title
-        .on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
-          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
-          if (!settings.is_hover || Modernizr.touch) {
-            e.preventDefault();
-            e.stopPropagation();
-            self.toggle_active_tab(S(this).parent());
-          }
-        })
-        // Hover event: tab title
-        .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
-          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
-          if (settings.is_hover) self.toggle_active_tab(S(this).parent());
-        });
+          .off('.tab')
+          // Click event: tab title
+          .on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
+            var settings = S(this).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
+
+            if (!settings.is_hover || Modernizr.touch) {
+              e.preventDefault();
+              e.stopPropagation();
+              self.toggle_active_tab(S(this).parent());
+            }
+
+          })
+          // Hover event: tab title
+          .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
+            var settings = S(this).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
+
+            if (settings.is_hover) {
+              self.toggle_active_tab(S(this).parent());
+            }
+            
+          });
 
       // Location hash change event
       S(window).on('hashchange.fndtn.tab', function (e) {
@@ -60,7 +66,7 @@
       });
     },
 
-    handle_location_hash_change : function () {
+    handle_location_hash_change: function () {
       var self = this,
           S = this.S;
 
@@ -73,10 +79,15 @@
             // Check whether the location hash references a tab content div or
             // another element on the page (inside or outside the tab content div)
             var hash_element = S(hash);
-            if (hash_element.hasClass('content') && hash_element.parent().hasClass('tab-content')) {
+
+            if (
+                hash_element.hasClass('content')
+                && hash_element.parent().hasClass('tab-content')
+            ) {
               // Tab content div
               self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=' + hash + ']').parent());
-            } else {
+            }
+            else {
               // Not the tab content div. If inside the tab content, find the
               // containing tab and toggle it as active.
               var hash_tab_container_id = hash_element.closest('.content').attr('id');
@@ -84,6 +95,7 @@
                 self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=#' + hash_tab_container_id + ']').parent(), hash);
               }
             }
+
           } else {
             // Reference the default tab hashes which were initialized in the init function
             for (var ind in self.default_tab_hashes) {
@@ -91,8 +103,8 @@
             }
           }
         }
-       });
-     },
+      });
+    },
 
     toggle_active_tab: function (tab, location_hash) {
       var S = this.S,
@@ -124,21 +136,31 @@
         }
 
         if (settings.scroll_to_content) {
+
           // If the user is requesting the content of a tab, then scroll to the
           // top of the title area; otherwise, scroll to the element within
           // the content area as defined by the hash value.
-          if (location_hash == undefined || location_hash == target_hash) {
+          if (
+              location_hash == undefined
+              || location_hash == target_hash
+          ) {
             tab.parent()[0].scrollIntoView();
           } else {
             S(target_hash)[0].scrollIntoView();
           }
+
         } else {
+
           // Adjust the scrollbar to the Y position prior to setting the hash
           // Only do this for the tab content anchor, otherwise there will be
           // conflicts with in-tab anchor links nested in the tab-content div
-          if (location_hash == undefined || location_hash == target_hash) {
+          if (
+              location_hash == undefined
+              || location_hash == target_hash
+          ) {
             $('body,html').scrollTop(cur_ypos);
           }
+
         }
       }
 
@@ -161,8 +183,10 @@
       return str;
     },
 
-    off : function () {},
+    off: function () {
+    },
 
-    reflow : function () {}
+    reflow: function () {
+    }
   };
 }(jQuery, window, window.document));
