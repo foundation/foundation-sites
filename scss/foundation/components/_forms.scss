@@ -152,7 +152,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // Alignment options
   @if $alignment == right {
-    float: none;
+    float: none !important;
     text-align: right;
   }
   @else if $alignment == inline {
