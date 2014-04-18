@@ -20,7 +20,7 @@
       this.bindings(method, options);
     },
 
-    events : function (scope) {
+    events : function () {
       var self = this,
           S = self.S;
 
@@ -34,15 +34,17 @@
           }
         })
         .on('mouseenter.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
-          var $this = S(this);
+          var $this = S(this),
+              dropdown,
+              target;
           clearTimeout(self.timeout);
 
           if ($this.data(self.data_attr())) {
-            var dropdown = S('#' + $this.data(self.data_attr())),
-                target = $this;
+            dropdown = S('#' + $this.data(self.data_attr()));
+            target = $this;
           } else {
-            var dropdown = $this;
-                target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
+            dropdown = $this;
+            target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
@@ -53,16 +55,27 @@
           
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
-        .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
+        .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function () {
           var $this = S(this);
           self.timeout = setTimeout(function () {
+            var settings;
+
             if ($this.data(self.data_attr())) {
-              var settings = $this.data(self.data_attr(true) + '-init') || self.settings;
-              if (settings.is_hover) self.close.call(self, S('#' + $this.data(self.data_attr())));
+              settings = $this.data(self.data_attr(true) + '-init') || self.settings;
+
+              if (settings.is_hover) {
+                self.close.call(self, S('#' + $this.data(self.data_attr())));
+              }
+
             } else {
-              var target = S('[' + self.attr_name() + '="' + S(this).attr('id') + '"]'),
-                  settings = target.data(self.attr_name(true) + '-init') || self.settings;
-              if (settings.is_hover) self.close.call(self, $this);
+              var target = S('[' + self.attr_name() + '="' + S(this).attr('id') + '"]');
+
+              settings = target.data(self.attr_name(true) + '-init') || self.settings;
+
+              if (settings.is_hover) {
+                self.close.call(self, $this);
+              }
+
             }
           }.bind(this), 150);
         })
@@ -147,7 +160,7 @@
       if (dropdown.hasClass(this.settings.active_class)) {
         this.close.call(this, dropdown);
       } else {
-        this.close.call(this, this.S('[' + this.attr_name() + '-content]'))
+        this.close.call(this, this.S('[' + this.attr_name() + '-content]'));
         this.open.call(this, dropdown, target);
       }
     },
@@ -205,7 +218,7 @@
 
         return p;
       },
-      top: function (t, s) {
+      top: function (t) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
             pip_offset_base = (t.outerWidth() / 2) - 8;
@@ -223,7 +236,7 @@
 
         return {left: p.left, top: p.top - this.outerHeight()};
       },
-      bottom: function (t, s) {
+      bottom: function (t) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
             pip_offset_base = (t.outerWidth() / 2) - 8;
@@ -238,14 +251,14 @@
 
         return {left: p.left, top: p.top + t.outerHeight()};
       },
-      left: function (t, s) {
+      left: function (t) {
         var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-left');
 
         return {left: p.left - this.outerWidth(), top: p.top};
       },
-      right: function (t, s) {
+      right: function (t) {
         var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-right');
