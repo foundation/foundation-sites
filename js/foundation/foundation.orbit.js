@@ -17,7 +17,6 @@
         timer_container,
         idx = 0,
         animate,
-        adjust_height_after = false,
         has_init_active = slides_container.find("." + settings.active_slide_class).length > 0;
 
     self.cache = {};
@@ -26,7 +25,9 @@
       return slides_container.children(settings.slide_selector);
     };
 
-    if (!has_init_active) {self.slides().first().addClass(settings.active_slide_class)};
+    if (!has_init_active) {
+      self.slides().first().addClass(settings.active_slide_class)
+    }
 
     self.update_slide_number = function(index) {
       if (settings.slide_number) {
@@ -91,24 +92,35 @@
 
     self._prepare_direction = function(next_idx, current_direction) {
       var dir = 'next';
-      if (next_idx <= idx) { dir = 'prev'; }
+      if (next_idx <= idx) {
+        dir = 'prev';
+      }
       
       if (settings.animation === 'slide') {    
         setTimeout(function(){
           slides_container.removeClass("swipe-prev swipe-next");
-          if (dir === 'next') {slides_container.addClass("swipe-next");}
-          else if (dir === 'prev') {slides_container.addClass("swipe-prev");}
+
+          if (dir === 'next') {
+            slides_container.addClass("swipe-next");
+          }
+          else if (dir === 'prev') {
+            slides_container.addClass("swipe-prev");
+          }
+
         },0);
       }
       
       var slides = self.slides();
+
       if (next_idx >= slides.length) {
-        if (!settings.circular) return false;
+        if (!settings.circular) { return false; }
         next_idx = 0;
-      } else if (next_idx < 0) {
-        if (!settings.circular) return false;
+      }
+      else if (next_idx < 0) {
+        if (!settings.circular) { return false; }
         next_idx = slides.length - 1;
       }
+
       var current = $(slides.get(idx))
         , next = $(slides.get(next_idx));
       
@@ -116,10 +128,18 @@
     };
 
     self._goto = function(next_idx, start_timer) {
-      if (next_idx === null) {return false;}
-      if (self.cache.animating) {return false;}
-      if (next_idx === idx) {return false;}
-      if (typeof self.cache.timer === 'object') {self.cache.timer.restart();}
+
+      if (
+          next_idx === null
+          || self.cache.animating
+          || next_idx === idx
+      ) {
+        return false;
+      }
+
+      if (typeof self.cache.timer === 'object') {
+        self.cache.timer.restart();
+      }
       
       var slides = self.slides();
       self.cache.animating = true;
@@ -130,7 +150,9 @@
         , next_idx = res[3];
 
       // This means that circular is disabled and we most likely reached the last slide.
-      if (res === false) return false;
+      if (res === false) {
+        return false;
+      }
 
       slides_container.trigger('before-slide-change.fndtn.orbit');
       settings.before_slide_change();
@@ -141,31 +163,47 @@
       
       var callback = function() {
         var unlock = function() {
-          if (start_timer === true) {self.cache.timer.restart();}
+
+          if (start_timer === true) {
+            self.cache.timer.restart();
+          }
+
           self.update_slide_number(idx);
           // Remove "animate-in" class as late as possible to avoid "flickering" (especially with variable_height).
           next.removeClass("animate-in");
           next.addClass(settings.active_slide_class);
           self.update_active_link(next_idx);
-          slides_container.trigger('after-slide-change.fndtn.orbit',[{slide_number: idx, total_slides: slides.length}]);
+          slides_container.trigger('after-slide-change.fndtn.orbit', [
+            {slide_number: idx, total_slides: slides.length}
+          ]);
           settings.after_slide_change(idx, slides.length);
           setTimeout(function(){
             self.cache.animating = false;
           }, 100);
           
         };
+
         if (slides_container.height() != next.height() && settings.variable_height) {
           slides_container.animate({'min-height': next.height()}, 250, 'linear', unlock);
         } else {
           unlock();
         }
+
       };
 
-      if (slides.length === 1) {callback(); return false;}
+      if (slides.length === 1) {
+        callback();
+        return false;
+      }
 
       var start_animation = function() {
-        if (dir === 'next') {animate.next(current, next, callback);}
-        if (dir === 'prev') {animate.prev(current, next, callback);}        
+        if (dir === 'next') {
+          animate.next(current, next, callback);
+        }
+
+        if (dir === 'prev') {
+          animate.prev(current, next, callback);
+        }
       };
 
       if (next.height() > slides_container.height() && settings.variable_height) {
@@ -179,16 +217,16 @@
       e.stopImmediatePropagation();
       e.preventDefault();
       self._prepare_direction(idx + 1);
-      setTimeout(function(){
+      setTimeout(function() {
         self._goto(idx + 1);
-    }, 100);
+      }, 100);
     };
     
     self.prev = function(e) {
       e.stopImmediatePropagation();
       e.preventDefault();
       self._prepare_direction(idx - 1);
-      setTimeout(function(){
+      setTimeout(function() {
         self._goto(idx - 1)
       }, 100);
     };
@@ -207,7 +245,7 @@
     };
 
     // Click handler for slides and bullets.
-    self.link_bullet = function(e) {    
+    self.link_bullet = function() {
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
         if(isNaN(parseInt(index)))
@@ -230,11 +268,11 @@
           },100);
         }
       }
-    }
+    };
 
     self.timer_callback = function() {
       self._goto(idx + 1, true);
-    }
+    };
     
     self.compute_dimensions = function() {
       var current = $(self.slides().get(idx));
@@ -248,12 +286,11 @@
     };
 
     self.create_timer = function() {
-      var t = new Timer(
+      return new Timer(
         container.find('.'+settings.timer_container_class), 
         settings, 
         self.timer_callback
       );
-      return t;
     };
 
     self.stop_timer = function() {
@@ -366,12 +403,13 @@
           }, 50);
         });
       }
-      container.on('mouseenter.fndtn.orbit', function(e) {
+      container.
+      on('mouseenter.fndtn.orbit', function() {
         if (settings.timer && settings.pause_on_hover) {
           self.stop_timer();
         }
       })
-      .on('mouseleave.fndtn.orbit', function(e) {
+      .on('mouseleave.fndtn.orbit', function() {
         if (settings.timer && settings.resume_on_mouseout) {
           self.cache.timer.start();
         }
@@ -451,7 +489,7 @@
 
     this.next = function(current, next, callback) {
       if (Modernizr.csstransitions) {
-        next.on(animation_end, function(e){
+        next.on(animation_end, function(){
           next.unbind(animation_end);
           current.removeClass("active animate-out");
           container.children().css({
@@ -492,7 +530,7 @@
 
     this.prev = function(current, prev, callback) {
       if (Modernizr.csstransitions) {
-        prev.on(animation_end, function(e){
+        prev.on(animation_end, function(){
           prev.unbind(animation_end);
           current.removeClass("active animate-out");
           container.children().css({
@@ -578,7 +616,6 @@
     },
 
     init : function (scope, method, options) {
-      var self = this;
       this.bindings(method, options);
     },
 
@@ -598,7 +635,6 @@
       } else {
         self.S('[data-orbit]', self.scope).each(function(idx, el) {
           var $el = self.S(el);
-          var opts = self.data_options($el);
           var instance = $el.data(self.name + '-instance');
           instance.compute_dimensions();
         });
