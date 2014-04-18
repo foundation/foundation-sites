@@ -30,8 +30,9 @@
                 active_content = S('dd > .content.' + settings.active_class, accordion);
             e.preventDefault();
 
-            if (!S(this).closest('dl').is(accordion)) {
-              return;
+            if (accordion.attr(self.attr_name())) {
+              siblings = siblings.add('[' + groupSelector + '] dd > .content');
+              aunts = aunts.add('[' + groupSelector + '] dd');
             }
 
             if (
@@ -39,7 +40,6 @@
                 && target.is(active_content)
             ) {
               target.parent('dd').toggleClass(settings.active_class, false);
-
               return target.toggleClass(settings.active_class, false);
             }
 
