@@ -218,7 +218,7 @@ $visibility-breakpoint-queries:
             '.visible-for-#{$visibility-comparison-breakpoint}, .visible-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
           $visibility-hidden-list: append($visibility-hidden-list, unquote(
-            '.hidden-for-#{$visibility-comparison-breakpoint}, .hiddne-for-#{$visibility-comparison-breakpoint}-down'
+            '.hidden-for-#{$visibility-comparison-breakpoint}, .hidden-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
           $visibility-table-list: append($visibility-table-list, unquote(
             'table.show-for-#{$visibility-comparison-breakpoint}, table.show-for-#{$visibility-comparison-breakpoint}-down'
