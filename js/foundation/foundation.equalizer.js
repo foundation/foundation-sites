@@ -1,6 +1,8 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
+  var noop = function() {};
+
   Foundation.libs.equalizer = {
     name : 'equalizer',
 
@@ -8,8 +10,8 @@
 
     settings : {
       use_tallest: true,
-      before_height_change: $.noop,
-      after_height_change: $.noop,
+      before_height_change: noop,
+      after_height_change: noop,
       equalize_on_stack: false
     },
 
