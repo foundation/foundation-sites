@@ -39,7 +39,7 @@
       this.bindings(method, options);
     },
 
-    events : function (scope) {
+    events : function () {
       var self = this,
           S = self.S;
 
@@ -110,7 +110,7 @@
     },
 
     // PATCH #3: turning on key up capture only when a reveal window is open
-    key_up_on : function (scope) {
+    key_up_on : function () {
       var self = this;
 
       // PATCH #1: fixing multiple keyup event trigger from single key press
@@ -128,24 +128,26 @@
     },
 
     // PATCH #3: turning on key up capture only when a reveal window is open
-    key_up_off : function (scope) {
+    key_up_off : function () {
       this.S('body').off('keyup.fndtn.reveal');
       return true;
     },
 
     open : function (target, ajax_settings) {
-      var self = this;
+      var self = this,
+          modal;
+      
       if (target) {
         if (typeof target.selector !== 'undefined') {
           // Find the named node; only use the first one found, since the rest of the code assumes there's only one node
-          var modal = self.S('#' + target.data(self.data_attr('reveal-id'))).first();
+          modal = self.S('#' + target.data(self.data_attr('reveal-id'))).first();
         } else {
-          var modal = self.S(this.scope);
+          modal = self.S(this.scope);
 
           ajax_settings = target;
         }
       } else {
-        var modal = self.S(this.scope);
+        modal = self.S(this.scope);
       }
 
       var settings = modal.data(self.attr_name(true) + '-init');
@@ -203,8 +205,9 @@
     },
 
     close : function (modal) {
-      var modal = modal && modal.length ? modal : this.S(this.scope),
-          open_modals = this.S('[' + this.attr_name() + '].open'),
+      modal = modal && modal.length ? modal : this.S(this.scope);
+
+      var open_modals = this.S('[' + this.attr_name() + '].open'),
           settings = modal.data(this.attr_name(true) + '-init');
 
       if (open_modals.length > 0) {
@@ -245,7 +248,9 @@
     show : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data(this.attr_name(true) + '-init');
+        var settings = el.data(this.attr_name(true) + '-init'),
+            end_css;
+
         if (el.parent('body').length === 0) {
           var placeholder = el.wrap('<div style="display: none;" />').parent(),
               rootElement = this.settings.rootElement || 'body';
@@ -262,9 +267,10 @@
         if (!animData.animate) {
           this.locked = false;
         }
+
         if (animData.pop) {
           css.top = $(window).scrollTop() - el.data('offset') + 'px';
-          var end_css = {
+          end_css = {
             top: $(window).scrollTop() + el.data('css-top') + 'px',
             opacity: 1
           };
@@ -282,7 +288,7 @@
 
         if (animData.fade) {
           css.top = $(window).scrollTop() + el.data('css-top') + 'px';
-          var end_css = {opacity: 1};
+          end_css = {opacity: 1};
 
           return setTimeout(function () {
             return el
@@ -298,7 +304,7 @@
         return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened');
       }
 
-      var settings = this.settings;
+      settings = this.settings;
 
       // should we animate the background?
       if (getAnimationData(settings.animation).fade) {
@@ -313,13 +319,16 @@
     hide : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data(this.attr_name(true) + '-init');
-        var animData = getAnimationData(settings.animation);
+        var settings = el.data(this.attr_name(true) + '-init'),
+            animData = getAnimationData(settings.animation),
+            end_css;
+
         if (!animData.animate) {
           this.locked = false;
         }
+
         if (animData.pop) {
-          var end_css = {
+          end_css = {
             top: - $(window).scrollTop() - el.data('offset') + 'px',
             opacity: 0
           };
@@ -335,7 +344,7 @@
         }
 
         if (animData.fade) {
-          var end_css = {opacity: 0};
+          end_css = {opacity: 0};
 
           return setTimeout(function () {
             return el
@@ -350,7 +359,7 @@
         return el.hide().css(css).removeClass('open').trigger('closed');
       }
 
-      var settings = this.settings;
+      settings = this.settings;
 
       // should we animate the background?
       if (getAnimationData(settings.animation).fade) {
