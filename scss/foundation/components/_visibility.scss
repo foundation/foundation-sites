@@ -249,10 +249,10 @@ $visibility-breakpoint-queries:
       }
       @if $include-accessibility-classes != false {
         #{$visibility-visible-list} {
-          @include element-invisible-off();
+          @include element-invisible-off;
         }
         #{$visbility-hidden-list} {
-          @include element-invisible();
+          @include element-invisible;
         }
       }
       @if $include-table-visibility-classes != false {
