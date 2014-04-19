@@ -34,9 +34,9 @@ $visibility-breakpoint-queries:
   @each $current-visibility-breakpoint in $visibility-breakpoint-sizes {
     $visibility-inherit-list: ();
     $visibility-none-list: ();
-    
+
     $visibility-visible-list: ();
-    $visbility-hidden-list: ();
+    $visibility-hidden-list: ();
 
     $visibility-table-list: ();
     $visibility-table-header-group-list: ();
@@ -57,7 +57,7 @@ $visibility-breakpoint-queries:
         $visibility-visible-list: append($visibility-visible-list, unquote(
           '.hidden-for-#{$visibility-comparison-breakpoint}-only, .visible-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
-        $visbility-hidden-list: append($visbility-hidden-list, unquote(
+        $visibility-hidden-list: append($visibility-hidden-list, unquote(
           '.visible-for-#{$visibility-comparison-breakpoint}-only, .hidden-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
         $visibility-table-list: append($visibility-table-list, unquote(
@@ -89,7 +89,7 @@ $visibility-breakpoint-queries:
           $visibility-visible-list: append($visibility-visible-list, unquote(
             '.hidden-for-#{$visibility-comparison-breakpoint}, .hidden-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
-          $visbility-hidden-list: append($visbility-hidden-list, unquote(
+          $visibility-hidden-list: append($visibility-hidden-list, unquote(
             '.visible-for-#{$visibility-comparison-breakpoint}, .visible-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
           $visibility-table-list: append($visibility-table-list, unquote(
@@ -121,7 +121,7 @@ $visibility-breakpoint-queries:
         $visibility-visible-list: append($visibility-visible-list, unquote(
           '.hidden-for-#{$visibility-comparison-breakpoint}-only, .hidden-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
-        $visbility-hidden-list: append($visbility-hidden-list, unquote(
+        $visibility-hidden-list: append($visibility-hidden-list, unquote(
           '.visible-for-#{$visibility-comparison-breakpoint}-only, .visible-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
         $visibility-table-list: append($visibility-table-list, unquote(
@@ -251,7 +251,7 @@ $visibility-breakpoint-queries:
         #{$visibility-visible-list} {
           @include element-invisible-off;
         }
-        #{$visbility-hidden-list} {
+        #{$visibility-hidden-list} {
           @include element-invisible;
         }
       }

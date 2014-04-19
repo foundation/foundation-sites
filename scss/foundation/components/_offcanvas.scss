@@ -4,7 +4,6 @@
 
 @import "global";
 @import "type";
-@import "top-bar";
 
 // Off Canvas Tab Bar Variables
 $include-html-off-canvas-classes: $include-html-classes !default;
@@ -337,7 +336,7 @@ $menu-slide: "transform 500ms ease" !default;
       display: block;
       line-height: $tabbar-menu-icon-line-height;
       padding: $tabbar-menu-icon-padding;
-      color: $topbar-menu-link-color;
+      color: $tabbar-menu-icon-color;
       position: relative;
       @include translate3d(0,0,0);
 
