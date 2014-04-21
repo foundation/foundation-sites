@@ -34,6 +34,12 @@ $table-foot-font-color: $table-head-font-color !default;
 $table-foot-font-weight: $table-head-font-weight !default;
 $table-foot-padding: $table-head-padding !default;
 
+// These control the caption
+$table-caption-bg: transparent !default;
+$table-caption-font-color: $table-head-font-color !default;
+$table-caption-font-size: rem-calc(16) !default;
+$table-caption-font-weight: bold !default;
+
 // These control the row padding and font styles
 $table-row-padding: rem-calc(9 10) !default;
 $table-row-font-size: rem-calc(14) !default;
@@ -53,6 +59,15 @@ $table-margin-bottom: rem-calc(20) !default;
   background: $table-bg;
   margin-bottom: $table-margin-bottom;
   border: $table-border-style $table-border-size $table-border-color;
+
+  caption {
+    background: $table-caption-bg;
+    color: $table-caption-font-color;
+    font: {
+      size: $table-caption-font-size;
+      weight: $table-caption-font-weight;
+    }
+  }
 
   thead {
     background: $table-head-bg;
