@@ -61,7 +61,6 @@
           })
           .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
             self.click_remove_class(e, 'offcanvas-overlap');
-            self.click_remove_class(e, 'offcanvas-overlap');
           })
       } else {
         return;
