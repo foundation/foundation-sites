@@ -34,7 +34,7 @@ $visibility-breakpoint-queries:
   @each $current-visibility-breakpoint in $visibility-breakpoint-sizes {
     $visibility-inherit-list: ();
     $visibility-none-list: ();
-    
+
     $visibility-visible-list: ();
     $visibility-hidden-list: ();
 
