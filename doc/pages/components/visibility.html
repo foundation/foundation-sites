@@ -31,9 +31,19 @@ This straightforward example shows how two strings of text determine whether or 
 
 ### Touch Detection
 
-Finally, there are visibility classes to hide or show content based on whether a device supports touch (as determined by Modernizr).
+There are also visibility classes to hide or show content based on whether a device supports touch (as determined by Modernizr).
 
 {{> examples_visibility_touch}}
+
+### Accessibility
+
+Finally, if you want to hide some content but still make it accessible for screen readers, use the **hidden** visibility classes. Do not confuse these classes with **hide** visibility classes. Use these classes in conjunction with the **hide** and **show** visibility classes to control complex layouts while offering accessibility for those using screen readers.
+
+{{> examples_accessibility_hidden}}
+
+To reverse the rules defined by **hidden**, use the **visible** visibility classes.
+
+{{> examples_accessibility_visible}}
 
 ***
 
