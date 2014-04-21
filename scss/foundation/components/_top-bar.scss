@@ -483,6 +483,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           &:not(.has-form) {
             a:not(.button) {
               padding: 0 $topbar-link-padding;
+              line-height: $topbar-height;
               background: $topbar-link-bg;
               &:hover { background: $topbar-link-bg-hover; }
             }
@@ -490,6 +491,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           &.active:not(.has-form) {
             a:not(.button) {
               padding: 0 $topbar-link-padding;
+              line-height: $topbar-height;
               color: $topbar-link-color-active;
               background: $topbar-link-bg-active;
               &:hover { background: $topbar-link-bg-active-hover; }
