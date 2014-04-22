@@ -55,19 +55,19 @@
         container.addClass(settings.stack_on_small_class);
       }
 
-        if (settings.navigation_arrows) {
-          if (settings.navigation_container) {
-            var nav_selector = settings.navigation_container_selector;
-            container.append($('<' + nav_selector + '></' + nav_selector + '>').addClass(settings.navigation_container_class));
+      if (settings.navigation_arrows) {
+        if (settings.navigation_container) {
+          var nav_selector = settings.navigation_container_selector;
+          container.append($('<' + nav_selector + '></' + nav_selector + '>').addClass(settings.navigation_container_class));
 
-            var nav_container = container.find(nav_selector + '.' + settings.navigation_container_class);
-            nav_container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class))
-            nav_container.append($('<a href="#"><span></span></a>').addClass(settings.next_class))
-          } else {
-            container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
-            container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
-          }
+          var nav_container = container.find(nav_selector + '.' + settings.navigation_container_class);
+          nav_container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class))
+          nav_container.append($('<a href="#"><span></span></a>').addClass(settings.next_class))
+        } else {
+          container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
+          container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
         }
+      }
 
       if (settings.timer) {
         timer_container = $('<div>').addClass(settings.timer_container_class);
