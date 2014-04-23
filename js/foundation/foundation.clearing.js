@@ -18,6 +18,9 @@
       // add 'div.clearing-blackout, div.visible-img' to close on background click
       close_selectors : '.clearing-close',
 
+      // Default to the entire li element.
+      open_selectors : '',
+
       touch_label : '',
 
       // event initializers and locks
@@ -50,8 +53,9 @@
 
       S(this.scope)
         .off('.clearing')
-        .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li',
+        .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li ' + this.settings.open_selectors,
           function (e, current, target) {
+            console.log('opened...');
             var current = current || S(this),
                 target = target || current,
                 next = current.next('li'),
@@ -62,6 +66,7 @@
 
             if (!settings) {
               self.init();
+      console.log(this.attr_name());
               settings = current.closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
             }
 
