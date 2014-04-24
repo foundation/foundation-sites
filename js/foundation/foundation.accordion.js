@@ -9,7 +9,8 @@
     settings : {
       active_class: 'active',
       multi_expand: false,
-      toggleable: true
+      toggleable: true,
+      callback : function () {}
     },
 
     init : function (scope, method, options) {
@@ -47,6 +48,7 @@
         }
 
         target.addClass(settings.active_class).parent().addClass(settings.active_class);
+        settings.callback(target);
       });
     },
 
