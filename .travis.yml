@@ -14,7 +14,7 @@ before_script:
   - git config --global user.name "mhayes"
   - bower install
 script: ./run-tests.sh
-after_script:
+after_success:
   - git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
   - rm -rf bower-foundation/*
   - cp -r dist/assets/* bower-foundation/
