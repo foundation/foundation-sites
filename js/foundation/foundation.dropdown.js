@@ -162,6 +162,8 @@
     },
 
     css : function (dropdown, target) {
+      var left_offset = (target.width() - dropdown.width()) / 2;
+      
       this.clear_idx();
 
       if (this.small()) {
@@ -174,7 +176,7 @@
           top: p.top
         });
 
-        dropdown.css(Foundation.rtl ? 'right':'left', '2.5%');
+        dropdown.css(Foundation.rtl ? 'right':'left', left_offset);
       } else {
         var settings = target.data(this.attr_name(true) + '-init') || this.settings;
 
@@ -226,7 +228,7 @@
       bottom: function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
-            pip_offset_base = (t.outerWidth() / 2) - 8;
+            pip_offset_base = (this.outerWidth() / 2) - 8;
 
         if (t.outerWidth() < this.outerWidth() || self.small()) {
           self.adjust_pip(pip_offset_base, p);
