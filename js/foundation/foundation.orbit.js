@@ -301,7 +301,6 @@
         slides_container.on('touchstart.fndtn.orbit',function(e) {
           if (self.cache.animating) {return;}
           if (!e.touches) {e = e.originalEvent;}
-          e.preventDefault();
           e.stopPropagation();
 
           self.cache.start_page_x = e.touches[0].pageX;
@@ -316,7 +315,7 @@
         .on('touchmove.fndtn.orbit',function(e) {
           if (Math.abs(self.cache.delta_x) > 5) {
             e.preventDefault();
-            e.stopPropagation();
+            if(!self.cache.is_scrolling) e.stopPropagation();
           }
 
           if (self.cache.animating) {return;}          
@@ -360,7 +359,7 @@
         .on('touchend.fndtn.orbit', function(e) {
           if (self.cache.animating) {return;}
           e.preventDefault();
-          e.stopPropagation();
+          if(!self.cache.is_scrolling) e.stopPropagation();
           setTimeout(function(){
             self._goto(self.cache.direction);
           }, 50);
