@@ -7,7 +7,7 @@
     version : '5.2.2',
 
     settings : {
-      close_on_click: true,
+      close_on_click: true
     },
 
     init : function (scope, method, options) {
@@ -52,7 +52,7 @@
     },
 
     get_settings: function(e) {
-      var offcanvas  = this.S(e.target).closest('[' + this.attr_name() + ']')
+      var offcanvas  = this.S(e.target).closest('[' + this.attr_name() + ']');
       return offcanvas.data(this.attr_name(true) + '-init') || this.settings;
     },
 
