@@ -140,7 +140,7 @@ $total-columns: 12 !default;
   @if $center {
     margin-#{$default-float}: auto;
     margin-#{$opposite-direction}: auto;
-    float: none;
+    float: none !important;
   }
 
   // If offset, calculate appropriate margins
