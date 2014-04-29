@@ -246,9 +246,10 @@
       // is modal
       if (css) {
         var settings = el.data(this.attr_name(true) + '-init');
-        if (el.parent('body').length === 0) {
-          var placeholder = el.wrap('<div style="display: none;" />').parent(),
-              rootElement = this.settings.rootElement || 'body';
+        var rootElement = this.settings.rootElement || 'body';
+
+        if (el.parent(rootElement).length === 0) {
+          var placeholder = el.wrap('<div style="display: none;" />').parent();
 
           el.on('closed.fndtn.reveal.wrapped', function() {
             el.detach().appendTo(placeholder);
