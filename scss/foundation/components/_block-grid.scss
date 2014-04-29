@@ -65,7 +65,7 @@ $block-grid-media-queries: true !default;
       }
       list-style: none;
 
-      &:nth-of-type(n) { clear: none; }
+      &:nth-of-type(1n) { clear: none; }
       &:nth-of-type(#{$per-row}n+1) { clear: both; }
       @if $align-block-grid-to-grid {
         @include block-grid-aligned($per-row, $spacing);
