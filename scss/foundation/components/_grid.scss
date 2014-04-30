@@ -140,7 +140,7 @@ $total-columns: 12 !default;
   @if $center {
     margin-#{$default-float}: auto;
     margin-#{$opposite-direction}: auto;
-    float: none;
+    float: none !important;
   }
 
   // If offset, calculate appropriate margins
@@ -177,7 +177,6 @@ $total-columns: 12 !default;
   @for $i from 0 through $total-columns - 1 {
     .#{$size}-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
   }
-  .#{$size}-reset-order,
   .#{$size}-reset-order {
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;

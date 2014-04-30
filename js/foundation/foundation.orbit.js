@@ -81,7 +81,8 @@
         container.append(bullets_container);
         bullets_container.wrap('<div class="orbit-bullets-container"></div>');
         self.slides().each(function(idx, el) {
-          var bullet = $('<li>').attr('data-orbit-slide', idx);
+          var bullet = $('<li>').attr('data-orbit-slide', idx)
+            .on('click', self.link_bullet);
           bullets_container.append(bullet);
         });
       }
@@ -205,6 +206,7 @@
       }
     };
 
+    // Click handler for slides and bullets.
     self.link_bullet = function(e) {    
       var index = $(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
@@ -212,19 +214,22 @@
         {
           var slide = container.find('[data-orbit-slide='+index+']');
           if (slide.index() != -1) {
+            index = slide.index() + 1;
+            self._prepare_direction(index);
             setTimeout(function(){
-              self._goto(slide.index() + 1);
+              self._goto(index);
             },100);
           }
         }
         else
         {
+          index = parseInt(index);
+          self._prepare_direction(index);
           setTimeout(function(){
-            self._goto(parseInt(index));
+            self._goto(index);
           },100);
         }
       }
-
     }
 
     self.timer_callback = function() {
@@ -288,7 +293,7 @@
       container.on('click', '.'+settings.prev_class, self.prev);
 
       if (settings.next_on_click) {
-        container.on('click', '[data-orbit-slide]', self.link_bullet);
+        container.on('click', '.'+settings.slides_container_class+' [data-orbit-slide]', self.link_bullet);
       }
       
       container.on('click', self.toggle_timer);
@@ -602,4 +607,4 @@
   };
 
     
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));

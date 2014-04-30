@@ -149,7 +149,7 @@
       bindLoad.call(image);
     }
   };
-  
+
   /*
     https://github.com/paulirish/matchMedia.js
   */
@@ -213,14 +213,14 @@
   for (; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
     requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
     cancelAnimationFrame = cancelAnimationFrame ||
-      window[ vendors[lastTime] + "CancelAnimationFrame" ] || 
+      window[ vendors[lastTime] + "CancelAnimationFrame" ] ||
       window[ vendors[lastTime] + "CancelRequestAnimationFrame" ];
   }
 
   function raf() {
     if (animating) {
       requestAnimationFrame(raf);
-      
+
       if (jqueryFxAvailable) {
         jQuery.fx.tick();
       }
@@ -231,7 +231,7 @@
     // use rAF
     window.requestAnimationFrame = requestAnimationFrame;
     window.cancelAnimationFrame = cancelAnimationFrame;
-    
+
     if (jqueryFxAvailable) {
       jQuery.fx.timer = function (timer) {
         if (timer() && jQuery.timers.push(timer) && !animating) {
@@ -366,18 +366,18 @@
       //    Don't bother reading the namespace out of the meta tag
       //    if the namespace has been set globally in javascript
       //
-      // Example: 
+      // Example:
       //    Foundation.global.namespace = 'my-namespace';
       // or make it an empty string:
       //    Foundation.global.namespace = '';
       //
       //
 
-      // If the namespace has not been set (is undefined), try to read it out of the meta element. 
+      // If the namespace has not been set (is undefined), try to read it out of the meta element.
       // Otherwise use the globally defined namespace, even if it's empty ('')
       var namespace = ( this.global.namespace === undefined ) ? $('.foundation-data-attribute-namespace').css('font-family') : this.global.namespace;
-      
-      // Finally, if the namsepace is either undefined or false, set it to an empty string. 
+
+      // Finally, if the namsepace is either undefined or false, set it to an empty string.
       // Otherwise use the namespace value.
       this.global.namespace = ( namespace === undefined || /false/i.test(namespace) ) ? '' : namespace;
     },
@@ -388,23 +388,23 @@
     utils : {
 
       // Description:
-      //    Fast Selector wrapper returns jQuery object. Only use where getElementById 
+      //    Fast Selector wrapper returns jQuery object. Only use where getElementById
       //    is not available.
       //
       // Arguments:
-      //    Selector (String): CSS selector describing the element(s) to be 
+      //    Selector (String): CSS selector describing the element(s) to be
       //    returned as a jQuery object.
       //
-      //    Scope (String): CSS selector describing the area to be searched. Default 
+      //    Scope (String): CSS selector describing the area to be searched. Default
       //    is document.
       //
       // Returns:
-      //    Element (jQuery Object): jQuery object containing elements matching the 
+      //    Element (jQuery Object): jQuery object containing elements matching the
       //    selector within the scope.
       S : S,
 
       // Description:
-      //    Executes a function a max of once every n milliseconds 
+      //    Executes a function a max of once every n milliseconds
       //
       // Arguments:
       //    Func (Function): Function to be throttled.
@@ -436,8 +436,8 @@
       //    Func (Function): Function to be debounced.
       //
       //    Delay (Integer): Function execution threshold in milliseconds.
-      // 
-      //    Immediate (Bool): Whether the function should be called at the beginning 
+      //
+      //    Immediate (Bool): Whether the function should be called at the beginning
       //    of the delay instead of the end. Default is false.
       //
       // Returns:
@@ -465,18 +465,19 @@
       //    El (jQuery Object): Element to be parsed.
       //
       // Returns:
-      //    Options (Javascript Object): Contents of the element's data-options 
+      //    Options (Javascript Object): Contents of the element's data-options
       //    attribute.
-      data_options : function (el) {
+      data_options : function (el, data_attr_name) {
+        data_attr_name = data_attr_name || 'options';
         var opts = {}, ii, p, opts_arr,
             data_options = function (el) {
               var namespace = Foundation.global.namespace;
 
               if (namespace.length > 0) {
-                return el.data(namespace + '-options');
+                return el.data(namespace + '-' + data_attr_name);
               }
 
-              return el.data('options');
+              return el.data(data_attr_name);
             };
 
         var cached_options = data_options(el);
@@ -499,6 +500,7 @@
 
         while (ii--) {
           p = opts_arr[ii].split(':');
+          p = [p[0], p.slice(1).join(':')];
 
           if (/true/i.test(p[1])) p[1] = true;
           if (/false/i.test(p[1])) p[1] = false;
@@ -522,7 +524,7 @@
       //    Adds JS-recognizable media queries
       //
       // Arguments:
-      //    Media (String): Key string for the media query to be stored as in 
+      //    Media (String): Key string for the media query to be stored as in
       //    Foundation.media_queries
       //
       //    Class (String): Class name for the generated <meta> tag
@@ -539,7 +541,7 @@
       // Arguments:
       //    Rule (String): CSS rule to be appended to the document.
       //
-      //    Media (String): Optional media query string for the CSS rule to be 
+      //    Media (String): Optional media query string for the CSS rule to be
       //    nested under.
       add_custom_rule : function (rule, media) {
         if (media === undefined && Foundation.stylesheet) {
@@ -548,7 +550,7 @@
           var query = Foundation.media_queries[media];
 
           if (query !== undefined) {
-            Foundation.stylesheet.insertRule('@media ' + 
+            Foundation.stylesheet.insertRule('@media ' +
               Foundation.media_queries[media] + '{ ' + rule + ' }');
           }
         }
@@ -583,7 +585,7 @@
       //    Returns a random, alphanumeric string
       //
       // Arguments:
-      //    Length (Integer): Length of string to be generated. Defaults to random 
+      //    Length (Integer): Length of string to be generated. Defaults to random
       //    integer.
       //
       // Returns:
@@ -606,4 +608,4 @@
     });
   };
 
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));

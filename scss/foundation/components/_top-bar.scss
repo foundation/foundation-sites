@@ -73,7 +73,7 @@ $topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px 
 $topbar-media-query: $medium-up !default;
 
 // Divider Styles
-$topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%) !default;
+$topbar-divider-border-bottom: solid 1px scale-color($topbar-bg-color, $lightness: 13%) !default;
 $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%) !default;
 
 // Sticky Class
@@ -280,10 +280,10 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       @include single-transition($default-float, $topbar-transition-speed);
 
       ul {
+        padding: 0;
         width: 100%;
         height: auto;
         display: block;
-        background: $topbar-dropdown-bg;
         font-size: $rem-base;
         margin: 0;
       }
@@ -297,6 +297,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       }
 
       ul li {
+        background: $topbar-dropdown-bg;
         & > a {
           display: block;
           width: 100%;
@@ -307,7 +308,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           font-size: $topbar-link-font-size;
           font-weight: $topbar-link-weight;
           text-transform: $topbar-link-text-transform;
-          background: $topbar-dropdown-bg;
 
 
           &.button {
@@ -317,8 +317,8 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             @include button-style($bg:$primary-color);
           }
           &.button.secondary { @include button-style($bg:$secondary-color); }
-          &.button.success   { @include button-style($bg:$success-color); }
-          &.button.alert     { @include button-style($bg:$alert-color); }
+          &.button.success { @include button-style($bg:$success-color); }
+          &.button.alert { @include button-style($bg:$alert-color); }
         }
 
         > button {
@@ -328,8 +328,8 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           @include button-style($bg:$primary-color);
 
           &.secondary { @include button-style($bg:$secondary-color); }
-          &.success   { @include button-style($bg:$success-color); }
-          &.alert     { @include button-style($bg:$alert-color); }
+          &.success { @include button-style($bg:$success-color); }
+          &.alert { @include button-style($bg:$alert-color); }
         }
 
         // Apply the hover link color when it has that class
@@ -383,6 +383,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
       // Styling elements inside of dropdowns
       .dropdown {
+        padding: 0;
         position: absolute;
         #{$default-float}: 100%;
         top: 0;
@@ -401,7 +402,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             }
           }
 
-          &.title h5 { margin-bottom: 0;
+          &.title h5 {
+            margin-bottom: 0;
+            margin-top: 0;
             a {
               color: $topbar-link-color;
               line-height: $topbar-height / 2;
@@ -547,7 +550,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           li {
             a {
               color: $topbar-dropdown-link-color;
-              line-height: 1;
+              line-height: $topbar-height;
               white-space: nowrap;
               padding: 12px $topbar-link-padding;
               background: $topbar-dropdown-link-bg;
@@ -555,7 +558,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
             &:not(.has-form) a:not(.button) {
               color: $topbar-dropdown-link-color;
-              background: $topbar-dropdown-link-bg;   
+              background: $topbar-dropdown-link-bg;
             }
             &:not(.has-form):hover > a:not(.button) {
               color: $topbar-link-color-hover;

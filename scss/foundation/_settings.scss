@@ -166,6 +166,7 @@
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
+// $anchor-text-decoration-hover: none;
 // $anchor-font-color: $primary-color;
 // $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
 
@@ -176,6 +177,10 @@
 // $hr-margin: rem-calc(20);
 
 // We use these to style lists
+// $list-font-family: $paragraph-font-family;
+// $list-font-size: $paragraph-font-size;
+// $list-line-height: $paragraph-line-height;
+// $list-margin-bottom: $paragraph-margin-bottom;
 // $list-style-position: outside;
 // $list-side-margin: 1.1rem;
 // $list-ordered-side-margin: 1.4rem;
@@ -352,7 +357,7 @@
 // We use these to control button border styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $bg: $primary-color;
+// $button-bg: $primary-color;
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
@@ -1200,6 +1205,7 @@
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
+// $topbar-link-bg-color-hover: #272727;
 // $topbar-link-bg-hover: #272727;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);

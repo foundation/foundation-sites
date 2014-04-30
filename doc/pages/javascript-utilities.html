@@ -53,7 +53,7 @@ user.init();
 
 While jQuery&#8217;s selector engine is quite versatile, it can sometimes be a bit slow. Foundation&#8217;s &#8220;Big S&#8221; selector leverages the native browser API by using <code>querySelectorAll()</code>, making it up to 20% faster.
 
-&#8220;Big S&#8221; can be used as a drop-in replacement for the jQuery $ selector in most cases. 
+&#8220;Big S&#8221; can be used as a drop-in replacement for the jQuery $ selector in most cases.
 
 <div class="row">
   <div class="large-6 columns">
@@ -92,14 +92,14 @@ Foundation.utils.S('dd > .content', '#accordion');
 {{#markdown}}
 ```javascript
 // Arguments:
-//    Selector (String): CSS selector describing the element(s) to be 
+//    Selector (String): CSS selector describing the element(s) to be
 //    returned as a jQuery object.
 //
-//    Scope (String): CSS selector describing the area to be searched. Default 
+//    Scope (String): CSS selector describing the area to be searched. Default
 //    is document.
 //
 // Returns:
-//    Element (jQuery Object): jQuery object containing elements matching the 
+//    Element (jQuery Object): jQuery object containing elements matching the
 //    selector within the scope.
 
 S(selector, scope) { ... }
@@ -114,7 +114,7 @@ Many times when you create a callback, it&#8217;s advantageous to add a delay in
 
 <strong>Throttle</strong> prevents a function from being executed more than once every n milliseconds. Throttling is often used in cases where it&#8217;s disadvantageous to trigger a callback every time an event is triggered (during a continuous action), but you still want to trigger a reaction while the event is occurring. Examples of this would be reacting to the browser window being resized, or animating an element.
 
-<strong>Debounce</strong> prevents a function from being executed until it stops being invoked for n milliseconds. Debouncing is often used to prevent an action from being performed twice, such as double clicking a submit button, or to delay an event from occurring accidentially, such as an even triggered by hover. 
+<strong>Debounce</strong> prevents a function from being executed until it stops being invoked for n milliseconds. Debouncing is often used to prevent an action from being performed twice, such as double clicking a submit button, or to delay an event from occurring accidentially, such as an even triggered by hover.
 
 <div class="row">
   <div class="large-6 columns">
@@ -168,8 +168,8 @@ throttle(func, delay) { ... }
 //    Func (Function): Function to be debounced.
 //
 //    Delay (Integer): Function execution threshold in milliseconds.
-// 
-//    Immediate (Bool): Whether the function should be called at the beginning 
+//
+//    Immediate (Bool): Whether the function should be called at the beginning
 //    of the delay instead of the end. Default is false.
 //
 // Returns:
@@ -208,13 +208,14 @@ var settings = Foundation.utils.data_options($('#target'));
 {{#markdown}}
 ```javascript
 // Arguments:
-//    El (jQuery Object): Element to be parsed.
+//    el (jQuery Object): Element to be parsed.
+//    data_attr_name (string): Optional name of the data attribute containing the options string (defaults to 'options').
 //
 // Returns:
-//    Options (Javascript Object): Contents of the element's data-options 
+//    Options (Javascript Object): Contents of the element's data-options
 //    attribute.
 
-data_options(el) { ... }
+data_options(el, data_attr_name) { ... }
 ```
 {{/markdown}}
 
@@ -235,10 +236,10 @@ Media queries are the backbone of most responsive CSS techniques, though they ca
     <h4>CSS</h4>
 {{#markdown}}
 ```css
-/* 
-* Note: The media query string in the font-family property has to be surrounded 
-* by slashes to be recognized by Phantom.js 
-* 
+/*
+* Note: The media query string in the font-family property has to be surrounded
+* by slashes to be recognized by Phantom.js
+*
 * Note: Instead of being defined in the CSS, the following style rule could also
 * be added to the document using Foundation.utils.add_custom_rule().
 */
@@ -272,7 +273,7 @@ Foundation.utils.add_custom_rule('.js-generated-element { padding-top: ' + eleme
 {{#markdown}}
 ```javascript
 // Arguments:
-//    Media (String): Key string for the media query to be stored as in 
+//    Media (String): Key string for the media query to be stored as in
 //    Foundation.media_queries
 //
 //    Class (String): Class name for the generated <meta> tag
@@ -282,7 +283,7 @@ register_media(media, class) { ... }
 // Arguments:
 //    Rule (String): CSS rule to be appended to the document.
 //
-//    Media (String): Optional media query string for the CSS rule to be 
+//    Media (String): Optional media query string for the CSS rule to be
 //    nested under.
 
 add_custom_rule(rule, media) { ... }
@@ -340,7 +341,7 @@ The <code>random_str</code> method is a helper for generating random strings of 
 {{#markdown}}
 ```javascript
 // Arguments:
-//    Length (Integer): Length of string to be generated. Defaults to random 
+//    Length (Integer): Length of string to be generated. Defaults to random
 //    integer.
 //
 // Returns:

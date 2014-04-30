@@ -4,7 +4,6 @@
 
 @import "global";
 @import "type";
-@import "top-bar";
 
 // Off Canvas Tab Bar Variables
 $include-html-off-canvas-classes: $include-html-classes !default;
@@ -104,6 +103,7 @@ $menu-slide: "transform 500ms ease" !default;
   background: $off-canvas-bg;
   z-index: 1001;
   box-sizing: content-box;
+  transition: transform 500ms ease 0s;
   -webkit-overflow-scrolling: touch;
   @if $position == left {
     @include translate3d(-100%,0,0);
@@ -330,14 +330,14 @@ $menu-slide: "transform 500ms ease" !default;
 
     // MENU BUTTON
     // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
-    .tab-bar .menu-icon {
+    .menu-icon {
       text-indent: $tabbar-menu-icon-text-indent;
       width: $tabbar-height;
       height: $tabbar-height;
       display: block;
       line-height: $tabbar-menu-icon-line-height;
       padding: $tabbar-menu-icon-padding;
-      color: $topbar-menu-link-color;
+      color: $tabbar-menu-icon-color;
       position: relative;
       transform: translate3d(0,0,0);
 
@@ -366,6 +366,20 @@ $menu-slide: "transform 500ms ease" !default;
 
       }
       .exit-off-canvas { @include back-link; }
+    }
+    .offcanvas-overlap {
+      .left-off-canvas-menu, .right-off-canvas-menu {
+        -ms-transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+        z-index: 1003;
+      }
+      .exit-offcanvas-menu {
+        @include back-link;
+        z-index: 1002;
+      }
     }
 
     // Older browsers

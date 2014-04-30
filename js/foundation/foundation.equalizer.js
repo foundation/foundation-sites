@@ -9,7 +9,8 @@
     settings : {
       use_tallest: true,
       before_height_change: $.noop,
-      after_height_change: $.noop
+      after_height_change: $.noop,
+      equalize_on_stack: false
     },
 
     init : function (scope, method, options) {
@@ -27,10 +28,10 @@
     equalize: function(equalizer) {
       var isStacked = false,
           vals = equalizer.find('[' + this.attr_name() + '-watch]:visible'),
-          firstTopOffset = vals.first().offset().top,
           settings = equalizer.data(this.attr_name(true)+'-init');
 
       if (vals.length === 0) return;
+      var firstTopOffset = vals.first().offset().top;
       settings.before_height_change();
       equalizer.trigger('before-height-change');
       vals.height('inherit');
@@ -40,9 +41,13 @@
           isStacked = true;
         }
       });
-      if (isStacked) return;
 
-      var heights = vals.map(function(){ return $(this).outerHeight() }).get();
+      if (settings.equalize_on_stack === false) {
+        if (isStacked) return;
+      };
+
+      var heights = vals.map(function(){ return $(this).outerHeight(false) }).get();
+
       if (settings.use_tallest) {
         var max = Math.max.apply(null, heights);
         vals.css('height', max);
@@ -65,4 +70,5 @@
       });
     }
   };
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));
+
