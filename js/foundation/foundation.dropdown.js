@@ -105,7 +105,8 @@
             .css(Foundation.rtl ? 'right':'left', '-99999px')
             .removeClass(self.settings.active_class)
             .prev('[' + self.attr_name() + ']')
-            .removeClass(self.settings.active_class);
+            .removeClass(self.settings.active_class)
+            .removeData('target');
 
           self.S(this).trigger('closed', [dropdown]);
         }
@@ -124,7 +125,7 @@
           .css(dropdown
             .addClass(this.settings.active_class), target);
         dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
-        dropdown.trigger('opened', [dropdown, target]);
+        dropdown.data('target', target.get(0)).trigger('opened', [dropdown, target]);
     },
 
     data_attr: function () {
@@ -146,8 +147,9 @@
 
       if (dropdown.hasClass(this.settings.active_class)) {
         this.close.call(this, dropdown);
+        if (dropdown.data('target') !== target.get(0))
+          this.open.call(this, dropdown, target);
       } else {
-        this.close.call(this, this.S('[' + this.attr_name() + '-content]'))
         this.open.call(this, dropdown, target);
       }
     },
