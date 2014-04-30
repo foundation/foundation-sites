@@ -67,7 +67,7 @@ $alert-transition-ease: ease-out !default;
 // $bg - The background of the alert. Default: $primary-color.
 @mixin alert-style($bg:$primary-color) {
 
-  // This find the lightness percentage of the background color.
+  // This finds the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
 
   // We control which background color and border come through.
