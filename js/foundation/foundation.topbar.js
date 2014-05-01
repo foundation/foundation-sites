@@ -4,7 +4,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version: '5.2.2',
+    version: '5.2.1',
 
     settings : {
       index : 0,
@@ -232,7 +232,7 @@
           return;
         }
 
-        S('[' + self.attr_name() + '] li').removeClass('hover');
+        S('[' + self.attr_name() + '] li.hover').removeClass('hover');
       });
 
       // Go up a level on Click
@@ -419,4 +419,4 @@
 
     reflow : function () {}
   };
-}(jQuery, window, window.document));
+}(jQuery, this, this.document));
