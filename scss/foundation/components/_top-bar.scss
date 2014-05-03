@@ -233,8 +233,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             position: relative;
 
             &::after {
-              #{$opposite-direction}: 0;
-              
               // @include hamburger icon
               //
               // We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
@@ -247,6 +245,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               // $hover-color - icon color during hover, here it is set the same as $color because the values are changed on line 264
               // $offcanvas - Set to false of @include in topbar
               @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, $topbar-menu-icon-color, false );
+              #{$opposite-direction}: 0;
             }
           }
         }
