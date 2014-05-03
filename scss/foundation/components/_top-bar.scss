@@ -234,6 +234,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
             &::after {
               #{$opposite-direction}: 0;
+              
               // @include hamburger icon
               //
               // We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
