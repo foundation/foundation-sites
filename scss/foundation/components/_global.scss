@@ -119,9 +119,9 @@ $base-line-height: 150% !default;
 // $thickness - thickness of lines in hamburger icon, set value in px
 // $gap - spacing between the lines in hamburger icon, set value in px
 // $color - icon color
-// $hover-color
-
-@mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color) {
+// $hover-color - icon color during hover
+// $offcanvas - Set to true of @include in offcanvas
+@mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
   span:after {
     content: '';
     position: absolute;
