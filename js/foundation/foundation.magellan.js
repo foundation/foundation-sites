@@ -10,7 +10,8 @@
       active_class: 'active',
       threshold: 0, // pixels from the top of the expedition for it to become fixes
       destination_threshold: 20, // pixels from the top of destination for it to be considered active
-      throttle_delay: 30 // calculation throttling to increase framerate
+      throttle_delay: 30, // calculation throttling to increase framerate
+      fixed_top: 0 // top distance in pixels assigend to the fixed element on scroll
     }, 
 
     init : function (scope, method, options) {
@@ -70,7 +71,7 @@
             top_offset;
 
         expedition.attr('style', '');
-        top_offset = expedition.offset().top;
+        top_offset = expedition.offset().top + self.settings.threshold;
 
         expedition.data(self.data_attr('magellan-top-offset'), top_offset);
         expedition.attr('style', styles);
@@ -95,7 +96,7 @@
             placeholder.attr(self.add_namespace('data-magellan-expedition-clone'),'');
             expedition.before(placeholder);
           }
-          expedition.css({position:'fixed', top: 0}).addClass('fixed');
+          expedition.css({position:'fixed', top: self.settings.fixed_top});
         } else {
           expedition.prev('[' + self.add_namespace('data-magellan-expedition-clone') + ']').remove();
           expedition.attr('style','').removeClass('fixed');

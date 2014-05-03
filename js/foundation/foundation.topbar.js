@@ -419,4 +419,4 @@
 
     reflow : function () {}
   };
-}(jQuery, window, window.document));
+}(jQuery, this, this.document));
