@@ -218,8 +218,8 @@
           .caption(self.S('.clearing-caption', visible_image), self.S('img', target))
           .center_and_label(image, label)
           .shift(current, target, function () {
-            target.siblings().removeClass('visible');
-            target.addClass('visible');
+            target.closest('li').siblings().removeClass('visible');
+            target.closest('li').addClass('visible');
           });
         visible_image.trigger('opened.fndtn.clearing')
       }
@@ -316,6 +316,7 @@
     },
 
     update_paddles : function (target) {
+      target = target.closest('li');
       var visible_image = target
         .closest('.carousel')
         .siblings('.visible-img');
@@ -420,7 +421,7 @@
           .hide();
       }
       return this;
-    },
+    }, 
 
     // directional methods
 
