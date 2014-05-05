@@ -22,7 +22,7 @@ $tabbar-right-section-border: $tabbar-left-section-border;
 
 // Off Canvas Tab Bar Headers
 $tabbar-header-color: #fff !default;
-$tabbar-header-weight: bold !default;
+$tabbar-header-weight: $font-weight-bold !default;
 $tabbar-header-line-height: $tabbar-height !default;
 $tabbar-header-margin: 0 !default;
 
@@ -34,7 +34,7 @@ $off-canvas-bg: #333 !default;
 $off-canvas-label-padding: 0.3rem rem-calc(15) !default;
 $off-canvas-label-color: #999 !default;
 $off-canvas-label-text-transform: uppercase !default;
-$off-canvas-label-font-weight: bold !default;
+$off-canvas-label-font-weight: $font-weight-bold !default;
 $off-canvas-label-bg: #444 !default;
 $off-canvas-label-border-top: 1px solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
 $off-canvas-label-border-bottom: none !default;

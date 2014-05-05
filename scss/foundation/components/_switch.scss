@@ -82,7 +82,7 @@ $switch-label-outline: 1px dotted #888 !default;
     width: 50%;
     height: 100%;
     margin: 0;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     text-align: $default-float;
 
     // Transition for the switch label to follow paddle

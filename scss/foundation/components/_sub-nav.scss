@@ -23,7 +23,7 @@ $sub-nav-list-padding-top: rem-calc(4) !default;
 $sub-nav-font-family: $body-font-family !default;
 $sub-nav-font-size: rem-calc(14) !default;
 $sub-nav-font-color: #999 !default;
-$sub-nav-font-weight: normal !default;
+$sub-nav-font-weight: $font-weight-normal !default;
 $sub-nav-text-decoration: none !default;
 $sub-nav-padding: rem-calc(3 16) !default;
 $sub-nav-border-radius: 3px !default;
@@ -32,7 +32,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%) !d
 
 // We use these to control the active item styles
 
-$sub-nav-active-font-weight: normal !default;
+$sub-nav-active-font-weight: $font-weight-normal !default;
 $sub-nav-active-bg: $primary-color !default;
 $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%) !default;
 $sub-nav-active-color: #fff !default;
