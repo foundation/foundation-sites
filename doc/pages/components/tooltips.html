@@ -102,7 +102,7 @@ You can adjust lots of settings. For example:
 {{#markdown}}
 ```js
 $(document).foundation({
-  tooltips: {
+  tooltip: {
     selector : '.has-tip',
     additional_inheritable_classes : [],
     tooltip_class : '.tooltip',
@@ -110,7 +110,7 @@ $(document).foundation({
     disable_for_touch: false,
     tip_template : function (selector, content) {
       return '<span data-selector="' + selector + '" class="'
-        + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
+        + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
         + '">' + content + '<span class="nub"></span></span>';
     }
   }
