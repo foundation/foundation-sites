@@ -238,7 +238,7 @@
 
     valid_radio : function (el, required) {
       var name = el.getAttribute('name'),
-          group = this.S(el).closest('[data-' + this.attr_name(true) + ']').find("[name="+name+"]"),
+          group = this.S(el).closest('[data-' + this.attr_name(true) + ']').find("[name='"+name+"']"),
           count = group.length,
           valid = false;
 
