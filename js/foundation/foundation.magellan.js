@@ -67,7 +67,7 @@
       var self = this;
       $('[' + this.attr_name() + '=fixed]', self.scope).each(function(idx, el) {
         var expedition = $(this),
-            styles = expedition.attr('styles'), // save styles
+            styles = expedition.attr('style'), // save styles
             top_offset;
 
         expedition.attr('style', '');
@@ -84,6 +84,7 @@
 
       $('[' + this.attr_name() + '=fixed]', self.scope).each(function() {
         var expedition = $(this),
+            styles = expedition.attr('style'), // save styles
             top_offset = expedition.data('magellan-top-offset');
 
         if (window_top_offset >= top_offset) {
@@ -99,7 +100,7 @@
           expedition.css({position:'fixed', top: self.settings.fixed_top});
         } else {
           expedition.prev('[' + self.add_namespace('data-magellan-expedition-clone') + ']').remove();
-          expedition.attr('style','').removeClass('fixed');
+          expedition.attr('style',styles).css('position','').css('top','').removeClass('fixed');
         }
       });
     },
