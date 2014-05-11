@@ -91,6 +91,21 @@ $menu-slide: "transform 500ms ease" !default;
           transform: translate3d($tx,$ty,$tz)
 }
 
+@mixin translateNone {
+      -ms-transform: none;
+  -webkit-transform: none;
+     -moz-transform: none;
+       -o-transform: none;
+          transform: none;
+}
+
+@mixin off-canvas-transition {
+  -webkit-transition: -webkit-#{$menu-slide};
+  -moz-transition: -moz-#{$menu-slide};
+  -ms-transition: -ms-#{$menu-slide};
+  -o-transition: -o-#{$menu-slide};
+  transition: #{$menu-slide};
+}
 // basic styles for off-canvas menu container
 @mixin off-canvas-menu($position) {
   @include kill-flicker;
@@ -131,11 +146,13 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include wrap-base;
   @include clearfix;
-  -webkit-transition: -webkit-#{$menu-slide};
-  -moz-transition: -moz-#{$menu-slide};
-  -ms-transition: -ms-#{$menu-slide};
-  -o-transition: -o-#{$menu-slide};
-  transition: #{$menu-slide};
+  @include off-canvas-transition;
+}
+
+@mixin off-canvas-fixed {
+  @include off-canvas-transition;
+  height: $tabbar-height;
+  @include translate3d(0, 0, 0);
 }
 
 // TAB BAR
@@ -369,11 +386,7 @@ $menu-slide: "transform 500ms ease" !default;
     }
     .offcanvas-overlap {
       .left-off-canvas-menu, .right-off-canvas-menu {
-        -ms-transform: none;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -o-transform: none;
-        transform: none;
+        @include translateNone;
         z-index: 1003;
       }
       .exit-offcanvas-menu {
