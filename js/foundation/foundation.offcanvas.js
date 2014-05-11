@@ -12,6 +12,8 @@
     },
 
     init : function (scope, method, options) {
+      Foundation.inherit(this, 'throttle');
+
       this.bindings(method, options);
     },
 
@@ -65,6 +67,14 @@
       } else {
         return;
       }
+      if (S(this.scope).find('.off-canvas-fixed').length > 0) {
+        S(window)
+          .off('.offcanvas')
+          .on('resize.fndtn.offcanvas', self.throttle(function () {
+            self.resize_fixed.call(self, $(this).height());
+          }, 50));
+          self.resize_fixed();
+      }
     },
 
     click_toggle_class: function(e, class_name) {
@@ -82,6 +92,12 @@
       return offcanvas.data(this.attr_name(true) + '-init') || this.settings;
     },
 
-    reflow : function () {}
+    reflow : function () {},
+
+    resize_fixed: function(height) {
+      height = height || window.innerHeight;
+      this.S('.off-canvas-fixed .right-off-canvas-menu, .off-canvas-fixed .left-off-canvas-menu')
+        .height(height);
+    }
   };
 }(jQuery, window, window.document));
