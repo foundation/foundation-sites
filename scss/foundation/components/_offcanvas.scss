@@ -106,6 +106,7 @@ $menu-slide: "transform 500ms ease" !default;
   -o-transition: -o-#{$menu-slide};
   transition: #{$menu-slide};
 }
+
 // basic styles for off-canvas menu container
 @mixin off-canvas-menu($position) {
   @include kill-flicker;
@@ -374,13 +375,18 @@ $menu-slide: "transform 500ms ease" !default;
       > .inner-wrap {
         @include translate3d($off-canvas-width,0,0);
       }
+      > .off-canvas-fixed {
+        @include translate3d($off-canvas-width,0,0);
+      }
       .exit-off-canvas { @include back-link;}
     }
 
     .move-left {
       > .inner-wrap {
         @include translate3d(-($off-canvas-width),0,0);
-
+      }
+      > .off-canvas-fixed {
+        @include translate3d(-$off-canvas-width,0,0);
       }
       .exit-off-canvas { @include back-link; }
     }
@@ -392,6 +398,19 @@ $menu-slide: "transform 500ms ease" !default;
       .exit-offcanvas-menu {
         @include back-link;
         z-index: 1002;
+      }
+    }
+    .off-canvas-fixed {
+      @include off-canvas-fixed;
+      .left-off-canvas-menu, .right-off-canvas-menu {
+        @include translateNone;
+        overflow-y: auto;
+      }
+      .left-off-canvas-menu {
+        margin-left: -$off-canvas-width;
+      }
+      .right-off-canvas-menu {
+        margin-right: -$off-canvas-width;
       }
     }
 
