@@ -257,6 +257,36 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
   </div>
 </div>
 
+### Fixed Tab Bar
+
+For using a fixed tab bar and off-canvas menu, remove the `.tab-bar` and `.[left|right]-off-canvas-menu` from the `.inner-wrap` container and place them inside `.off-canvas-fixed`. Page content and the `.exit-off-canvas` link still goes in `.inner-wrap`.
+
+<h4>HTML</h4>
+
+```html
+<div class="off-canvas-wrap">
+  <!-- Fixed container for nav & menu -->
+  <div class="fixed off-canvas-fixed">
+    <div class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+      </section>
+    </div>
+
+    <aside class="left-off-canvas-menu">
+      <!-- Menu here -->
+    </aside>
+  </div>
+
+  <!-- .inner-wrap for content and close link -->
+  <div class="inner-wrap">
+    <!-- Content here -->
+    <a class="exit-off-canvas"></a>
+  </div>
+</div>
+
+```
+
 ***
 
 ## Customize With Sass
