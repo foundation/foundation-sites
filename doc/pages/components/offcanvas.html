@@ -259,6 +259,36 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
 
 ***
 
+### Event Bindings
+
+There are a series of events that you can bind to for triggering callbacks:
+
+```js
+$(document).on('open', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+$(document).on('close', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+```
+
+For example, to freeze scrolling when active:
+
+```js
+$(document)
+.on('open', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'hidden');
+})
+.on('close', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'auto');
+})
+
+```
+
+***
+
 ## Customize With Sass
 
 Off-canvas layouts can be easily customized using our provided Sass variables.
