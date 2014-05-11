@@ -37,7 +37,7 @@
         .on('click.fndtn.offcanvas', '.left-off-canvas-menu a', function (e) {
           var settings = self.get_settings(e);
           if (settings.close_on_click) {
-            self.hide.call(self, move_class + right_postfix);
+            self.hide.call(self, move_class + right_postfix, self.get_wrapper(e));
           }
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
@@ -46,7 +46,7 @@
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
           var settings = self.get_settings(e);
           if (settings.close_on_click) {
-            self.hide.call(self, move_class + left_postfix);
+            self.hide.call(self, move_class + left_postfix, self.get_wrapper(e));
           }
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
@@ -56,34 +56,37 @@
 
     },
 
-    toggle: function(class_name) {
-      if (this.get_wrapper().is(class_name)) {
-        this.hide(class_name);
+    toggle: function(class_name, $off_canvas) {
+      $off_canvas = $off_canvas || this.get_wrapper();
+      if ($off_canvas.is('.' + class_name)) {
+        this.hide(class_name, $off_canvas);
       } else {
-        this.show(class_name);
+        this.show(class_name, $off_canvas);
       }
     },
 
-    show: function(class_name) {
-      var $off_canvas = this.get_wrapper();
+    show: function(class_name, $off_canvas) {
+      $off_canvas = $off_canvas || this.get_wrapper();
       $off_canvas.trigger('open');
       $off_canvas.addClass(class_name);
     },
 
-    hide: function(class_name) {
-      var $off_canvas = this.get_wrapper();
+    hide: function(class_name, $off_canvas) {
+      $off_canvas = $off_canvas || this.get_wrapper();
       $off_canvas.trigger('close');
       $off_canvas.removeClass(class_name);
     },
 
     click_toggle_class: function(e, class_name) {
       e.preventDefault();
-      this.toggle(class_name);
+      var $off_canvas = this.get_wrapper(e);
+      this.toggle(class_name, $off_canvas);
     },
 
     click_remove_class: function(e, class_name) {
       e.preventDefault();
-      this.hide(class_name);
+      var $off_canvas = this.get_wrapper(e);
+      this.hide(class_name, $off_canvas);
     },
 
     get_settings: function(e) {
@@ -91,9 +94,13 @@
       return offcanvas.data(this.attr_name(true) + '-init') || this.settings;
     },
 
-    get_wrapper: function() {
-      // TODO - cache this, right?
-      return this.S('.off-canvas-wrap');
+    get_wrapper: function(e) {
+      var $off_canvas = this.S(e ? e.target : this.scope).closest('.off-canvas-wrap');
+
+      if ($off_canvas.length === 0) {
+        $off_canvas = this.S('.off-canvas-wrap');
+      }
+      return $off_canvas;
     },
 
     reflow : function () {}
