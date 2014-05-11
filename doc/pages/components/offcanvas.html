@@ -329,6 +329,18 @@ $(document)
 })
 
 ```
+
+### Programmatic open / close / toggle
+
+The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, or `offcanvas-overlap`.
+
+```js
+$('.off-canvas-wrap').foundation('offcanvas', 'open', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'close', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+
+```
+
 ***
 
 ### Sass Errors?
