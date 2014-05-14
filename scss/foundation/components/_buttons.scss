@@ -27,7 +27,7 @@ $button-font-tny: rem-calc(11) !default;
 $button-font-sml: rem-calc(13) !default;
 $button-font-med: rem-calc(16) !default;
 $button-font-lrg: rem-calc(20) !default;
-$button-font-weight: normal !default;
+$button-font-weight: $font-weight-normal !default;
 $button-font-align: center !default;
 
 // We use these to control various hover effects.
