@@ -94,7 +94,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 
   @if $base-style {
     display: block;
-    height: $pagination-height;
+    min-height: $pagination-height;
     margin-#{$default-float}: $pagination-margin;
 
     li {
