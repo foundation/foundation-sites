@@ -259,7 +259,7 @@
           var split = raw_arr[i].split(/\((.*?)(\))$/);
 
           if (split.length > 1) {
-            var cached_split = split[0].split(','),
+            var cached_split = split[0].split(/\, /),
                 params = this.parse_params(cached_split[0],
                   cached_split[1], split[1]);
 
