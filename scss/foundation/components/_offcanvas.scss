@@ -21,7 +21,7 @@ $tabbar-right-section-border: $tabbar-left-section-border;
 
 // Off Canvas Tab Bar Headers
 $tabbar-header-color: #fff !default;
-$tabbar-header-weight: bold !default;
+$tabbar-header-weight: $font-weight-bold !default;
 $tabbar-header-line-height: $tabbar-height !default;
 $tabbar-header-margin: 0 !default;
 
@@ -33,7 +33,7 @@ $off-canvas-bg: #333 !default;
 $off-canvas-label-padding: 0.3rem rem-calc(15) !default;
 $off-canvas-label-color: #999 !default;
 $off-canvas-label-text-transform: uppercase !default;
-$off-canvas-label-font-weight: bold !default;
+$off-canvas-label-font-weight: $font-weight-bold !default;
 $off-canvas-label-bg: #444 !default;
 $off-canvas-label-border-top: 1px solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
 $off-canvas-label-border-bottom: none !default;
@@ -262,56 +262,6 @@ $menu-slide: "transform 500ms ease" !default;
     }
 }
 
-// @MIXIN
-//
-// We use this mixin to generate hamburger icon
-//
-// $width - Width of hamburger icon in rem Default: $tabbar-hamburger-icon-width.
-// $left - If false, icon will be centered horizontally || explicitly set value in rem Default: $tabbar-hamburger-icon-left= False
-// $top - If false, icon will be centered vertically || explicitly set value in rem Default: $tabbar-hamburger-icon-top= False
-// $thickness - thickness of lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-thickness = 1px
-// $gap - spacing between the lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-gap = 6px
-// $color - icon color Default: $tabbar-menu-icon-color
-// $hover-color - icon color when hovered Default: $tabbar-menu-icon-hover
-@mixin hamburger($width:$tabbar-hamburger-icon-width,
-                 $left: $tabbar-hamburger-icon-left,
-                 $top: $tabbar-hamburger-icon-top,
-                 $thickness:$tapbar-hamburger-icon-thickness,
-                 $gap:$tapbar-hamburger-icon-gap,
-                 $color:$tabbar-menu-icon-color,
-                 $hover-color:$tabbar-menu-icon-hover) {
-  span {
-    position: absolute;
-    display: block;
-    height: 0;
-    width: $width;
-    line-height: 1;
-
-    // disable height centering if $top is not false
-    @if $top {
-      top: $tabbar-hamburger-icon-top;
-    }
-    @else {
-      top: ($tabbar-menu-icon-height - rem-calc(3 * $thickness) - rem-calc(2 * $gap))/2;
-    }
-    // disable width centering if $top is not false
-    @if $left {
-      left: $tabbar-hamburger-icon-left;
-    }
-    @else {
-      left: ($tabbar-menu-icon-width - $width)/2;
-    }
-    box-shadow: 0   0px                       0   $thickness $color,
-                0   $gap + $thickness         0   $thickness $color,
-                0   (2 * $gap + 2*$thickness) 0   $thickness $color;
-  }
-  &:hover span {
-    box-shadow: 0   0px                       0   $thickness $hover-color,
-                0   $gap + $thickness         0   $thickness $hover-color,
-                0   (2 * $gap + 2*$thickness) 0   $thickness $hover-color;
-  }
-}
-
 //
 // DEFAULT CLASSES
 //
@@ -341,8 +291,18 @@ $menu-slide: "transform 500ms ease" !default;
       position: relative;
       @include translate3d(0,0,0);
 
-      // this is the actual hamburger icon
-      @include hamburger();
+      // @include for the hamburger menu-icon
+      //
+      // Arguments as follows: ($width, $left, $top, $thickness, $gap, $color, $hover-color)
+      // $width - Width of hamburger icon in rem Default: $tabbar-hamburger-icon-width.
+      // $left - If false, icon will be centered horizontally || explicitly set value in rem Default: $tabbar-hamburger-icon-left= False
+      // $top - If false, icon will be centered vertically || explicitly set value in rem Default: = False
+      // $thickness - thickness of lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-thickness = 1px
+      // $gap - spacing between the lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-gap = 6px
+      // $color - icon color Default: $tabbar-menu-icon-color
+      // $hover-color - icon color when hovered Default: $tabbar-menu-icon-hover
+      // $offcanvas - Set to true
+      @include hamburger($tabbar-hamburger-icon-width, $tabbar-hamburger-icon-left, $tabbar-hamburger-icon-top, $tapbar-hamburger-icon-thickness, $tapbar-hamburger-icon-gap, $tabbar-menu-icon-color, $tabbar-menu-icon-hover, true)
     }
 
     .left-off-canvas-menu { @include off-canvas-menu($position: left); }

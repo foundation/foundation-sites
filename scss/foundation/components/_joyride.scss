@@ -20,7 +20,7 @@ $joyride-tip-position-offset: 22px !default;
 // Here, we're setting the tip font styles
 $joyride-tip-font-color: #fff !default;
 $joyride-tip-font-size: rem-calc(14) !default;
-$joyride-tip-header-weight: bold !default;
+$joyride-tip-header-weight: $font-weight-bold !default;
 
 // This changes the nub size
 $joyride-tip-nub-size: 10px !default;
@@ -33,7 +33,7 @@ $joyride-tip-timer-color: #666 !default;
 // This changes up the styles for the close button
 $joyride-tip-close-color: #777 !default;
 $joyride-tip-close-size: 24px !default;
-$joyride-tip-close-weight: normal !default;
+$joyride-tip-close-weight: $font-weight-normal !default;
 
 // When Joyride is filling the screen, we use this style for the bg
 $joyride-screenfill: rgba(0,0,0,0.5) !default;
@@ -57,7 +57,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
       top: 0;
       #{$default-float}: 2.5%;
       font-family: inherit;
-      font-weight: normal;
+      font-weight: $font-weight-normal;
       width: 95%;
     }
 
