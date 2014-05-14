@@ -827,7 +827,7 @@
       $('.joyride-modal-bg').hide();
       this.settings.$current_tip.hide();
 
-      if (typeof abort === 'undefined') {
+      if (typeof abort === 'undefined' || abort === false) {
         this.settings.post_step_callback(this.settings.$li.index(), this.settings.$current_tip);
         this.settings.post_ride_callback(this.settings.$li.index(), this.settings.$current_tip);
       }
