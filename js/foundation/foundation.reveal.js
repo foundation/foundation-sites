@@ -266,27 +266,17 @@
         var animData = getAnimationData(settings.animation);
         if (!animData.animate) {
           this.locked = false;
-        }
-        if (animData.pop) {
-          css.top = $(window).scrollTop() - el.data('offset') + 'px';
-          var end_css = {
-            top: $(window).scrollTop() + el.data('css-top') + 'px',
-            opacity: 1
-          };
-
-          return setTimeout(function () {
-            return el
-              .css(css)
-              .animate(end_css, settings.animation_speed, 'linear', function () {
-                this.locked = false;
-                el.trigger('opened');
-              }.bind(this))
-              .addClass('open');
-          }.bind(this), settings.animation_speed / 2);
-        }
-
-        if (animData.fade) {
-          var end_css = {opacity: 1};
+        } else {
+          var end_css;
+          if (animData.pop) {
+            end_css = {
+              top: css.top,
+              opacity: 1
+            };
+            css.top = $(window).scrollTop() - el.data('offset') + 'px';
+          } else if (animData.fade) {
+            end_css = {opacity: 1};
+          }
 
           return setTimeout(function () {
             return el
