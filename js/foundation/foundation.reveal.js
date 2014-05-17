@@ -313,25 +313,16 @@
         var animData = getAnimationData(settings.animation);
         if (!animData.animate) {
           this.locked = false;
-        }
-        if (animData.pop) {
-          var end_css = {
-            top: - $(window).scrollTop() - el.data('offset') + 'px',
-            opacity: 0
-          };
-
-          return setTimeout(function () {
-            return el
-              .animate(end_css, settings.animation_speed, 'linear', function () {
-                this.locked = false;
-                el.css(css).trigger('closed');
-              }.bind(this))
-              .removeClass('open');
-          }.bind(this), settings.animation_speed / 2);
-        }
-
-        if (animData.fade) {
-          var end_css = {opacity: 0};
+        } else {
+          var end_css;
+          if (animData.pop) {
+            end_css = {
+              top: - $(window).scrollTop() - el.data('offset') + 'px',
+              opacity: 0
+            };
+          } else if (animData.fade) {
+            end_css = {opacity: 0};
+          }
 
           return setTimeout(function () {
             return el
