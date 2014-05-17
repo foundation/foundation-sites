@@ -261,6 +261,8 @@
           el.detach().appendTo(rootElement);
         }
 
+        css.top = $(window).scrollTop() + el.data('css-top') + 'px';
+
         var animData = getAnimationData(settings.animation);
         if (!animData.animate) {
           this.locked = false;
@@ -284,7 +286,6 @@
         }
 
         if (animData.fade) {
-          css.top = $(window).scrollTop() + el.data('css-top') + 'px';
           var end_css = {opacity: 1};
 
           return setTimeout(function () {
