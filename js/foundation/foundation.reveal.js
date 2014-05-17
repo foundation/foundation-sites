@@ -249,6 +249,7 @@
         var settings = el.data(this.attr_name(true) + '-init');
         settings = settings || this.settings;
 
+        // Relocate element temporarily
         if (el.parent('body').length === 0) {
           var placeholder = el.wrap('<div style="display: none;" />').parent(),
               rootElement = this.settings.rootElement || 'body';
@@ -261,23 +262,29 @@
           el.detach().appendTo(rootElement);
         }
 
+        // Calculate top offset
         css.top = $(window).scrollTop() + el.data('css-top') + 'px';
 
         var animData = getAnimationData(settings.animation);
         if (!animData.animate) {
+          // No animation - unlock immediately
           this.locked = false;
         } else {
+          // Animate with $.animate
           var end_css;
           if (animData.pop) {
+            // "Pop" in from top, and fade in
             end_css = {
               top: css.top,
               opacity: 1
             };
             css.top = $(window).scrollTop() - el.data('offset') + 'px';
           } else if (animData.fade) {
+            // Just fade in - no position animation
             end_css = {opacity: 1};
           }
 
+          // Delay momentarily while background enters
           return setTimeout(function () {
             return el
               .css(css)
@@ -312,18 +319,23 @@
 
         var animData = getAnimationData(settings.animation);
         if (!animData.animate) {
+          // No animation - unlock immediately
           this.locked = false;
         } else {
+          // Animate with $.animate
           var end_css;
           if (animData.pop) {
+            // "Pop" out to top
             end_css = {
               top: - $(window).scrollTop() - el.data('offset') + 'px',
               opacity: 0
             };
           } else if (animData.fade) {
+            // Just fade out
             end_css = {opacity: 0};
           }
 
+          // Delay momentarily while background exits
           return setTimeout(function () {
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
