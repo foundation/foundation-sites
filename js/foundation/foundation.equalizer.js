@@ -70,5 +70,5 @@
       });
     }
   };
-},100)(jQuery, window, window.document));
+}(jQuery, window, window.document)),200);
 
