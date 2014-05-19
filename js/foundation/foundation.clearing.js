@@ -42,10 +42,11 @@
 
     events : function (scope) {
       var self = this,
-      S = self.S;
+          S = self.S,
+          $scroll_container = $('.scroll-container');
 
-      if ($('.scroll-container').length > 0) {
-        this.scope = $('.scroll-container');
+      if ($scroll_container.length > 0) {
+        this.scope = $scroll_container;
       }
 
       S(this.scope)
@@ -151,8 +152,10 @@
       }
       
       $el.after('<div id="foundationClearingHolder"></div>');
-      var grid = $el.detach();
-      var grid_outerHTML = '';
+
+      var grid = $el.detach(),
+          grid_outerHTML = '';
+
       if (grid[0] == null) {
         return;
       } else {
@@ -161,7 +164,6 @@
       
       var holder = this.S('#foundationClearingHolder'),
           settings = $el.data(this.attr_name(true) + '-init'),
-          grid = $el.detach(),
           data = {
             grid: '<div class="carousel">' + grid_outerHTML + '</div>',
             viewing: settings.templates.viewing
@@ -205,7 +207,7 @@
 
       function cb (image) {
         var $image = $(image);
-        image.css('visibility', 'visible');
+        $image.css('visibility', 'visible');
         // toggle the gallery
         body.css('overflow', 'hidden');
         root.addClass('clearing-blackout');
@@ -299,15 +301,15 @@
           self = this;
 
       lis.each(function () {
-          var li = self.S(this),
-              image = li.find('img');
+        var li = self.S(this),
+            image = li.find('img');
 
-          if (li.height() > image.outerHeight()) {
-            li.addClass('fix-height');
-          }
-        })
-        .closest('ul')
-        .width(lis.length * 100 + '%');
+        if (li.height() > image.outerHeight()) {
+          li.addClass('fix-height');
+        }
+      })
+      .closest('ul')
+      .width(lis.length * 100 + '%');
 
       return this;
     },
@@ -318,19 +320,15 @@
         .siblings('.visible-img');
 
       if (target.next().length > 0) {
-        this.S('.clearing-main-next', visible_image)
-          .removeClass('disabled');
+        this.S('.clearing-main-next', visible_image).removeClass('disabled');
       } else {
-        this.S('.clearing-main-next', visible_image)
-          .addClass('disabled');
+        this.S('.clearing-main-next', visible_image).addClass('disabled');
       }
 
       if (target.prev().length > 0) {
-        this.S('.clearing-main-prev', visible_image)
-          .removeClass('disabled');
+        this.S('.clearing-main-prev', visible_image).removeClass('disabled');
       } else {
-        this.S('.clearing-main-prev', visible_image)
-          .addClass('disabled');
+        this.S('.clearing-main-prev', visible_image).addClass('disabled');
       }
     },
 
@@ -370,10 +368,12 @@
     // image loading and preloading
 
     load : function ($image) {
+      var href;
+
       if ($image[0].nodeName === "A") {
-        var href = $image.attr('href');
+        href = $image.attr('href');
       } else {
-        var href = $image.parent().attr('href');
+        href = $image.parent().attr('href');
       }
 
       this.preload($image);
@@ -484,11 +484,9 @@
       this.settings.up_count = up_count;
 
       if (this.adjacent(this.settings.prev_index, target_index)) {
-        if ((target_index > up_count)
-          && target_index > this.settings.prev_index) {
+        if ((target_index > up_count) && target_index > this.settings.prev_index) {
           response = 'right';
-        } else if ((target_index > up_count - 1)
-          && target_index <= this.settings.prev_index) {
+        } else if ((target_index > up_count - 1) && target_index <= this.settings.prev_index) {
           response = 'left';
         } else {
           response = false;
