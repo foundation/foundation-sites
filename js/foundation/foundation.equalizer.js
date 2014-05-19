@@ -1,4 +1,4 @@
-;(function ($, window, document, undefined) {
+;(setTimeout(function ($, window, document, undefined) {
   'use strict';
 
   Foundation.libs.equalizer = {
@@ -70,5 +70,5 @@
       });
     }
   };
-}(jQuery, window, window.document));
+}(jQuery, window, window.document)),200);
 
