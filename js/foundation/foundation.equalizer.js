@@ -1,6 +1,8 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
+  var noop = function() {};
+
   Foundation.libs.equalizer = {
     name : 'equalizer',
 
@@ -8,8 +10,8 @@
 
     settings : {
       use_tallest: true,
-      before_height_change: $.noop,
-      after_height_change: $.noop,
+      before_height_change: noop,
+      after_height_change: noop,
       equalize_on_stack: false
     },
 
@@ -20,7 +22,7 @@
     },
 
     events : function () {
-      this.S(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
+      this.S(window).off('.equalizer').on('resize.fndtn.equalizer', function(){
         this.reflow();
       }.bind(this));
     },
@@ -43,10 +45,14 @@
       });
 
       if (settings.equalize_on_stack === false) {
-        if (isStacked) return;
-      };
+        if (isStacked) {
+          return;
+        }
+      }
 
-      var heights = vals.map(function(){ return $(this).outerHeight(false) }).get();
+      var heights = vals.map(function() {
+        return $(this).outerHeight(false);
+      }).get();
 
       if (settings.use_tallest) {
         var max = Math.max.apply(null, heights);
