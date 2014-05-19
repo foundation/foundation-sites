@@ -38,8 +38,7 @@
         .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip',
           '[' + this.attr_name() + ']', function (e) {
           var $this = S(this),
-              settings = $.extend({}, self.settings, self.data_options($this)),
-              is_touch = false;
+              settings = $.extend({}, self.settings, self.data_options($this));
 
           if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type) && S(e.target).is('a')) {
             return false;
@@ -56,12 +55,11 @@
             } else if(!settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               e.preventDefault();
               S(settings.tooltip_class + '.open').hide();
-              is_touch = true;
             }
 
             if (/enter|over/i.test(e.type)) {
               this.timer = setTimeout(function () {
-                var tip = self.showTip($this);
+                self.showTip($this);
               }.bind(this), self.settings.hover_delay);
             } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
               clearTimeout(this.timer);
@@ -83,20 +81,18 @@
             self.hide($(this));
           }
         })
-        .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function (e) {
+        .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function () {
           self.hide(S(this));
         });
     },
 
-    ie_touch : function (e) {
+    ie_touch : function () {
       // How do I distinguish between IE11 and Windows Phone 8?????
       return false;
     },
 
     showTip : function ($target) {
-      var $tip = this.getTip($target);
-
-        return this.show($target);
+      return this.show($target);
     },
 
     getTip : function ($target) {
@@ -139,7 +135,7 @@
 
       if (Modernizr.touch) {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', function(e) {
+        $tip.on('touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', function() {
           self.hide($target);
         });
       }
@@ -148,14 +144,13 @@
     },
 
     reposition : function (target, tip, classes) {
-      var width, nub, nubHeight, nubWidth, column, objPos;
+      var width, nub, nubHeight, objPos;
 
       tip.css('visibility', 'hidden').show();
 
       width = target.data('width');
       nub = tip.children('.nub');
       nubHeight = nub.outerHeight();
-      nubWidth = nub.outerHeight();
 
       if (this.small()) {
         tip.css({'width' : '100%' });
@@ -163,7 +158,7 @@
         tip.css({'width' : (width) ? width : 'auto'});
       }
 
-      objPos = function (obj, top, right, bottom, left, width) {
+      objPos = function (obj, top, right, bottom, left) {
         return obj.css({
           'top' : (top) ? top : 'auto',
           'bottom' : (bottom) ? bottom : 'auto',
@@ -229,7 +224,7 @@
 
       if ($tip.find('.tap-to-close').length === 0) {
         $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose MSPointerDown.fndtn.tooltip.tapclose', function(e) {
+        $tip.on('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose MSPointerDown.fndtn.tooltip.tapclose', function() {
           self.hide($target);
         });
       }
