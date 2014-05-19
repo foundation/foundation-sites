@@ -123,7 +123,6 @@
 
     normalized_value : function(val, start, end, step) {
       var range = end - start,
-          step = step,
           point = val*range,
           mod = (point-(point%step)) / step,
           rem = point % step,
