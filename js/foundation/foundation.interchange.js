@@ -47,7 +47,9 @@
           if (/IMG/.test(el[0].nodeName)) {
             var orig_path = el[0].src;
 
-            if (new RegExp(path, 'i').test(orig_path)) return;
+            if (new RegExp(path, 'i').test(orig_path)) {
+              return;
+            }
 
             el[0].src = path;
 
@@ -55,11 +57,14 @@
           }
           var last_path = el.data(this.data_attr + '-last-path');
 
-          if (last_path == path) return;
+          if (last_path == path) {
+            return;
+          }
 
           if (/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i.test(path)) {
             $(el).css('background-image', 'url('+path+')');
             el.data('interchange-last-path', path);
+
             return trigger(path);
           }
 
@@ -84,11 +89,13 @@
     },
 
     get_media_hash : function() {
-        var mediaHash='';
-        for (var queryName in this.settings.named_queries ) {
-            mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
+      var mediaHash = '';
+      for (var queryName in this.settings.named_queries) {
+        if (this.settings.named_queries.hasOwnProperty(queryName)) {
+          mediaHash += matchMedia(this.settings.named_queries[queryName]).matches.toString();
         }
-        return mediaHash;
+      }
+      return mediaHash;
     },
 
     events : function () {
@@ -108,7 +115,8 @@
     },
 
     resize : function () {
-      var cache = this.cache;
+      var cache = this.cache,
+          args;
 
       if(!this.images_loaded || !this.nodes_loaded) {
         setTimeout($.proxy(this.resize, this), 50);
@@ -122,10 +130,11 @@
           if (passed) {
             this.settings.directives[passed
               .scenario[1]].call(this, passed.el, passed.scenario[0], function () {
-                if (arguments[0] instanceof Array) { 
-                  var args = arguments[0];
-                } else { 
-                  var args = Array.prototype.slice.call(arguments, 0);
+
+                if (arguments[0] instanceof Array) {
+                  args = arguments[0];
+                } else {
+                  args = Array.prototype.slice.call(arguments, 0);
                 }
 
                 passed.el.trigger(passed.scenario[1], args);
@@ -275,7 +284,9 @@
       var uuid = this.random_str(),
           current_uuid = el.data(this.add_namespace('uuid', true));
 
-      if (this.cache[current_uuid]) return this.cache[current_uuid];
+      if (this.cache[current_uuid]) {
+        return this.cache[current_uuid];
+      }
 
       el.attr(this.add_namespace('data-uuid'), uuid);
 
