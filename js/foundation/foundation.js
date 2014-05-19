@@ -4,7 +4,7 @@
  * Copyright 2014, ZURB
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
-*/
+ */
 
 (function ($, window, document, undefined) {
   'use strict';
@@ -14,8 +14,8 @@
     var head = $('head');
 
     while (i--) {
-      if(head.has('.' + class_array[i]).length === 0) {
-          head.append('<meta class="' + class_array[i] + '" />');
+      if (head.has('.' + class_array[i]).length === 0) {
+        head.append('<meta class="' + class_array[i] + '" />');
       }
     }
   };
@@ -48,10 +48,15 @@
         var cont;
         if (context.jquery) {
           cont = context[0];
-          if (!cont) return context;
+
+          if (!cont) {
+            return context;
+          }
+
         } else {
           cont = context;
         }
+
         return $(cont.querySelectorAll(selector));
       }
 
@@ -65,8 +70,15 @@
 
   var attr_name = function (init) {
     var arr = [];
-    if (!init) arr.push('data');
-    if (this.namespace.length > 0) arr.push(this.namespace);
+
+    if (!init) {
+      arr.push('data');
+    }
+
+    if (this.namespace.length > 0) {
+      arr.push(this.namespace);
+    }
+
     arr.push(this.name);
 
     return arr.join('-');
@@ -81,11 +93,13 @@
       if (i !== 0) {
         arr.push(parts[i]);
       } else {
+
         if (this.namespace.length > 0) {
           arr.push(this.namespace, parts[i]);
         } else {
           arr.push(parts[i]);
         }
+
       }
     }
 
@@ -502,8 +516,14 @@
           p = opts_arr[ii].split(':');
           p = [p[0], p.slice(1).join(':')];
 
-          if (/true/i.test(p[1])) p[1] = true;
-          if (/false/i.test(p[1])) p[1] = false;
+          if (/true/i.test(p[1])) {
+            p[1] = true;
+          }
+
+          if (/false/i.test(p[1])) {
+            p[1] = false;
+          }
+
           if (isNumber(p[1])) {
             if (p[1].indexOf('.') === -1) {
               p[1] = parseInt(p[1], 10);
@@ -562,7 +582,7 @@
       // Arguments:
       //    Image (jQuery Object): Image(s) to check if loaded.
       //
-      //    Callback (Function): Fundation to execute when image is fully loaded.
+      //    Callback (Function): Foundation to execute when image is fully loaded.
       image_loaded : function (images, callback) {
         var self = this,
             unloaded = images.length;
@@ -591,7 +611,11 @@
       // Returns:
       //    Rand (String): Pseudo-random, alphanumeric string.
       random_str : function () {
-        if (!this.fidx) this.fidx = 0;
+
+        if (!this.fidx) {
+          this.fidx = 0;
+        }
+
         this.prefix = this.prefix || [(this.name || 'F'), (+new Date).toString(36)].join('-');
 
         return this.prefix + (this.fidx++).toString(36);
