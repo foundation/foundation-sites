@@ -34,15 +34,18 @@
           }
         })
         .on('mouseenter.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
-          var $this = S(this);
+          var $this = S(this),
+              dropdown,
+              target;
+
           clearTimeout(self.timeout);
 
           if ($this.data(self.data_attr())) {
-            var dropdown = S('#' + $this.data(self.data_attr())),
-                target = $this;
+            dropdown = S('#' + $this.data(self.data_attr()));
+            target = $this;
           } else {
-            var dropdown = $this;
-                target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
+            dropdown = $this;
+            target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
