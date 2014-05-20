@@ -68,10 +68,15 @@
       $('[' + this.attr_name() + '=fixed]', self.scope).each(function(idx, el) {
         var expedition = $(this),
             styles = expedition.attr('styles'), // save styles
-            top_offset;
+            top_offset, fixed_top;
 
         expedition.attr('style', '');
         top_offset = expedition.offset().top + self.settings.threshold;
+
+        //set fixed-top by attribute
+        fixed_top = parseInt(expedition.data('magellan-fixed-top'));
+        if(!isNaN(fixed_top))
+            self.settings.fixed_top = fixed_top;
 
         expedition.data(self.data_attr('magellan-top-offset'), top_offset);
         expedition.attr('style', styles);
@@ -86,7 +91,8 @@
         var expedition = $(this),
             top_offset = expedition.data('magellan-top-offset');
 
-        if (window_top_offset >= top_offset) {
+        //scroll to the top distance
+        if (window_top_offset+self.settings.fixed_top >= top_offset) {
           // Placeholder allows height calculations to be consistent even when
           // appearing to switch between fixed/non-fixed placement
           var placeholder = expedition.prev('[' + self.add_namespace('data-magellan-expedition-clone') + ']');
