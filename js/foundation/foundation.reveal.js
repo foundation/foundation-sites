@@ -208,7 +208,7 @@
     close : function (modal) {
       var modal = modal && modal.length ? modal : this.S(this.scope),
           open_modals = this.S('[' + this.attr_name() + '].open'),
-          settings = modal.data(this.attr_name(true) + '-init');
+          settings = modal.data(this.attr_name(true) + '-init') || this.settings;
 
       if (open_modals.length > 0) {
         this.locked = true;

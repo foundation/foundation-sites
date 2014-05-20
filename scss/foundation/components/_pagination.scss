@@ -33,7 +33,7 @@ $pagination-link-unavailable-bg-active: transparent !default;
 // We use these for currently selected anchor links
 $pagination-link-current-background: $primary-color !default;
 $pagination-link-current-font-color: #fff !default;
-$pagination-link-current-font-weight: bold !default;
+$pagination-link-current-font-weight: $font-weight-bold !default;
 $pagination-link-current-cursor: default !default;
 $pagination-link-current-active-bg: $primary-color !default;
 
@@ -94,7 +94,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 
   @if $base-style {
     display: block;
-    height: $pagination-height;
+    min-height: $pagination-height;
     margin-#{$default-float}: $pagination-margin;
 
     li {

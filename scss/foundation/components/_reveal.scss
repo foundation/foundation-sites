@@ -27,7 +27,7 @@ $reveal-close-font-size: rem-calc(40) !default;
 $reveal-close-top: rem-calc(8) !default;
 $reveal-close-side: rem-calc(11) !default;
 $reveal-close-color: #aaa !default;
-$reveal-close-weight: bold !default;
+$reveal-close-weight: $font-weight-bold !default;
 
 // We use this to set the default radius used throughout the core.
 $reveal-radius: $global-radius !default;
