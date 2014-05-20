@@ -46,11 +46,12 @@
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
-          
+
           if(S(e.target).data(self.data_attr()) && settings.is_hover) {
-            self.closeall.call(self);
+            var parent = target.closest('[' + self.attr_name() + '-content]');
+            self.close.call(self, self.S('[' + self.attr_name() + '-content]').not(parent));
           }
-          
+
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
         .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
@@ -67,14 +68,17 @@
           }.bind(this), 150);
         })
         .on('click.fndtn.dropdown', function (e) {
-          var parent = S(e.target).closest('[' + self.attr_name() + '-content]');
-
           if (S(e.target).data(self.data_attr()) || S(e.target).parent().data(self.data_attr())) {
             return;
           }
-          if (!(S(e.target).data('revealId')) && 
-            (parent.length > 0 && (S(e.target).is('[' + self.attr_name() + '-content]') || 
+          var parent = S(e.target).closest('[' + self.attr_name() + '-content]');
+          if (!(S(e.target).data('revealId')) &&
+            (parent.length > 0 && (S(e.target).is('[' + self.attr_name() + '-content]') ||
               $.contains(parent.first()[0], e.target)))) {
+            var child = parent.find('.' + self.settings.active_class + '[' + self.attr_name() + '-content]');
+            if (child.length > 0) {
+              self.close.call(self, child);
+            }
             e.stopPropagation();
             return;
           }
@@ -143,7 +147,8 @@
         return;
       }
 
-      this.close.call(this, this.S('[' + this.attr_name() + '-content]').not(dropdown));
+      var parent = target.closest('[' + this.attr_name() + '-content]');
+      this.close.call(this, this.S('[' + this.attr_name() + '-content]').not(dropdown).not(parent));
 
       if (dropdown.hasClass(this.settings.active_class)) {
         this.close.call(this, dropdown);
