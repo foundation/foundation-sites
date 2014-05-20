@@ -90,7 +90,7 @@ $button-group-border-width: 1px !default;
   @if $include-html-button-classes {
     .button-group { @include button-group-container;
 
-      li { @include button-group-style(); }
+      & > li { @include button-group-style(); }
 
       &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
       &.round > * { @include button-group-style($radius:$button-round, $float:null); }

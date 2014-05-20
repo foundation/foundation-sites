@@ -60,23 +60,6 @@ module.exports = function(grunt) {
       }
     },
 
-    autoprefixer: {
-      options: {
-        browsers: ['Explorer >= 9', 'Android >= 2', 'iOS >= 5', '> 1%']
-      },
-      dist: {
-        src: ['dist/assets/css/foundation.css', 'dist/docs/assets/css/docs.css']
-      }
-    },
-
-    cssmin: {
-      dist_compressed: {
-        files: {
-          'dist/assets/css/foundation.min.css': 'dist/assets/css/foundation.css'
-        }
-      }
-    },
-
     concat: {
       dist: {
         files: {
