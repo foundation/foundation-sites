@@ -11,6 +11,9 @@
 // styles get applied to [data-mysite-plugin], etc
 $namespace: false !default;
 
+// Control the inclusion of experimental properties
+$experimental: true !default;
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -25,6 +28,16 @@ $base-line-height: 150% !default;
 //
 // Global Foundation Mixins
 //
+
+// @mixins
+//
+// We use this to optionally include experimental or 
+// explicitly vendor prefixed properties
+@mixin experimental() {
+  @if $experimental {
+    @content;
+  }
+}
 
 // @mixins
 //

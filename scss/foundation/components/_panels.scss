@@ -81,7 +81,6 @@ $callout-panel-link-color: $primary-color !default;
       }
 
       &.radius {
-        @include panel($bg:false);
         @include radius;
       }
 

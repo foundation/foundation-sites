@@ -30,7 +30,13 @@
     "karma-jasmine": "~0.1.3",
     "karma-phantomjs-launcher": "~0.1.0",
     "karma-safari-launcher": "~0.1.1",
-    "karma-script-launcher": "~0.1.0"
+    "karma-script-launcher": "~0.1.0",
+    "grunt-karma": "~0.6.2",
+    "grunt-rsync": "~0.2.1",
+    "grunt-contrib-jst": "~0.5.1",
+    "jasmine-jquery": "~1.3.3",
+    "grunt-autoprefixer": "~0.7.2",
+    "grunt-contrib-cssmin": "~0.9.0"
   },
   "repository" : { 
     "type" : "git",
