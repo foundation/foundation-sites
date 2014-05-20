@@ -30,9 +30,11 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
     .tabs {
       @include clearfix;
       margin-bottom: 0 !important;
-      dd {
+      margin-left: 0;
+      dd, .tab-title {
         position: relative;
         margin-bottom: 0 !important;
+        list-style: none;
         float: $default-float;
         > a {
           display: block;
@@ -46,15 +48,15 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         &.active a { background: $tabs-navigation-active-bg-color; }
       }
       &.radius {
-        dd:first-child {
+        dd:first-child, .tab:first-child {
           a { @include side-radius($default-float, $global-radius); }
         }
-        dd:last-child {
+        dd:last-child, .tab:last-child {
           a { @include side-radius($opposite-direction, $global-radius); }
         }
       }
       &.vertical {
-        dd {
+        dd, .tab {
           position: inherit;
           float: none;
           display: block;
