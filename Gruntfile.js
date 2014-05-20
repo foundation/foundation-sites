@@ -208,7 +208,7 @@ module.exports = function(grunt) {
           src: "./dist/docs/",
           recursive: true,
           dest: "/home/deployer/sites/foundation-docs/current",
-          host: "deployer@foundation5.zurb.com"
+          host: "deployer@72.32.134.77"
         }
       }
     }
