@@ -340,7 +340,7 @@
       self.S('.has-dropdown>a', section).each(function () {
         var $link = self.S(this),
             $dropdown = $link.siblings('.dropdown'),
-            url = $link.attr('href')
+            url = $link.attr('href'),
             $titleLi;
 
         if (!$dropdown.find('.title.back').length) {
