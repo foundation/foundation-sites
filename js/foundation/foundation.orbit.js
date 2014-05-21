@@ -275,7 +275,7 @@
       self.build_markup();
       if (settings.timer) {
         self.cache.timer = self.create_timer(); 
-        Foundation.utils.image_loaded(this.slides().children('img'), self.cache.timer.start);
+        Foundation.utils.image_loaded(this.slides().find('img'), self.cache.timer.start);
       }
       
       animate = new CSSAnimation(settings, slides_container);
