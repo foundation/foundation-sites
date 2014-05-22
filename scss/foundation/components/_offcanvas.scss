@@ -33,6 +33,7 @@ $off-canvas-bg: #333 !default;
 $off-canvas-label-padding: 0.3rem rem-calc(15) !default;
 $off-canvas-label-color: #999 !default;
 $off-canvas-label-text-transform: uppercase !default;
+$off-canvas-label-font-size: rem-calc(12) !default;
 $off-canvas-label-font-weight: $font-weight-bold !default;
 $off-canvas-label-bg: #444 !default;
 $off-canvas-label-border-top: 1px solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
@@ -214,9 +215,11 @@ $menu-slide: "transform 500ms ease" !default;
 
   li {
     label {
+      display: block;
       padding: $off-canvas-label-padding;
       color: $off-canvas-label-color;
       text-transform: $off-canvas-label-text-transform;
+      font-size: $off-canvas-label-font-size;
       font-weight: $off-canvas-label-font-weight;
       background: $off-canvas-label-bg;
       border-top: $off-canvas-label-border-top;
