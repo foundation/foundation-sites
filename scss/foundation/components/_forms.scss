@@ -128,7 +128,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
 
   // Disabled background input background color
-  &[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
+  &[disabled], &[readonly], fieldset[disabled] & { background-color: $input-disabled-bg; }
 }
 
 // @MIXIN
