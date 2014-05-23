@@ -52,6 +52,43 @@ You can name the accordion so that it can be spread across different parent cont
 
 ***
 
+### Callbacks
+
+There are two ways to bind to callbacks in your tabs.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Callback function</h4>
+```html
+<script>
+  $(document).foundation({
+    accordion: {
+      callback : function (accordion) {
+        console.log(accordion);
+      }
+    }
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Toggled Event</h4>
+```html
+<script>
+  $('#myAccordionGroup').on('toggled', function (event, accordion) {
+    console.log(accordion);
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
 ## Customize With Sass
 
 Accordions can be easily customized with the Sass variables provided in the `_settings.scss` file.
