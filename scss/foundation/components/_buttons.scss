@@ -212,6 +212,9 @@ $button-disabled-opacity: 0.7 !default;
       }
     }
 
+    //firefox 2px fix
+    button::-moz-focus-inner {border:0; padding:0;}
+
     @media #{$medium-up} {
       button, .button {
         @include button-base($style:false, $display:inline-block);
