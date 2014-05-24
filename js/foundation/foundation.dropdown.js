@@ -9,7 +9,7 @@
     settings : {
       active_class: 'open',
       align: 'bottom',
-      bounds: 'window', // 'off', 'window', 'document'
+      bounds: 'window',
       is_hover: false,
       opened: function(){},
       closed: function(){}
@@ -274,7 +274,7 @@
         max_y = w.height() + min_y;
       }
       else if (s.bounds === 'document') {
-        var d = self.dropdown.S(document);
+        var d = self.S(document);
         max_x = d.width();
         max_y = d.height();
       }
