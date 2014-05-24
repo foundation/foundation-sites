@@ -263,26 +263,30 @@
       var self = Foundation.libs.dropdown,
         min_x = 0,
         min_y = 0,
-        max_x,
-        max_y;
+        bounds;
 
-      if (s.bounds === 'window') {
-        var w = self.S(window);
-        min_x = w.scrollLeft();
-        min_y = w.scrollTop();
-        max_x = w.width() + min_x;
-        max_y = w.height() + min_y;
-      }
-      else if (s.bounds === 'document') {
-        var d = self.S(document);
-        max_x = d.width();
-        max_y = d.height();
-      }
-      else {
-        return p;
+      switch (s.bounds) {
+        case 'window':
+          bounds = self.S(window);
+          break;
+        case 'document':
+          bounds = self.S(document);
+          break;
+        case 'container':
+          bounds = this.closest('[' + self.attr_name() + '-container]') || self.S(window);
+          break;
+        default:
+          return p;
       }
 
-      var zone = 3, // clear zone around document bounds
+      if (s.bounds !== 'document') {
+        min_x = bounds.scrollLeft();
+        min_y = bounds.scrollTop();
+      }
+
+      var max_x = bounds.width() + min_x,
+        max_y = bounds.height() + min_y,
+        zone = 3, // clear zone around document bounds
         dd_w = this.outerWidth(),
         dd_h = this.outerHeight(),
         t_h = t.outerHeight(),
@@ -303,12 +307,16 @@
         return self.fit_bounds.call(this, self.dirs.bottom.call(this, t, s), t, s);
       }
 
-      if (s.align === 'left' && res.left - o.left - zone < min_x) {
+      if (s.align === 'left' && res.left + o.left - zone < min_x) {
         return self.fit_bounds.call(this, self.dirs.right.call(this, t, s), t, s);
       }
 
       if ((s.align === 'bottom' || s.align === 'top') && res.left + o.left + dd_w + zone > max_x) {
         res.left = Math.max(zone, res.left + t_w - dd_w);
+      }
+
+      if ((s.align === 'left' || s.align === 'right') && res.top + o.top + dd_h + zone > max_y) {
+        res.top = Math.max(zone, res.top + t_h - dd_h);
       }
 
       return res;
