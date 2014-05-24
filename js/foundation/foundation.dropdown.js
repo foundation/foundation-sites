@@ -9,6 +9,7 @@
     settings : {
       active_class: 'open',
       align: 'bottom',
+      bounds: 'window', // 'off', 'window', 'document'
       is_hover: false,
       opened: function(){},
       closed: function(){}
@@ -187,8 +188,9 @@
     },
 
     style : function (dropdown, target, settings) {
-      var css = $.extend({position: 'absolute'}, 
-        this.dirs[settings.align].call(dropdown, target, settings));
+      var p = this.dirs[settings.align].call(dropdown, target, settings),
+        css = $.extend({position: 'absolute'},
+        this.fit_bounds.call(dropdown, p, target, settings));
 
       dropdown.attr('style', '').css(css);
     },
@@ -254,6 +256,62 @@
 
         return {left: p.left + t.outerWidth(), top: p.top};
       }
+    },
+
+    // Make sure the dropdown is entirely visible within chosen bounds
+    fit_bounds : function(p, t, s) {
+      var self = Foundation.libs.dropdown,
+        min_x = 0,
+        min_y = 0,
+        max_x,
+        max_y;
+
+      if (s.bounds === 'window') {
+        var w = self.S(window);
+        min_x = w.scrollLeft();
+        min_y = w.scrollTop();
+        max_x = w.width() + min_x;
+        max_y = w.height() + min_y;
+      }
+      else if (s.bounds === 'document') {
+        var d = self.dropdown.S(document);
+        max_x = d.width();
+        max_y = d.height();
+      }
+      else {
+        return p;
+      }
+
+      var zone = 3, // clear zone around document bounds
+        dd_w = this.outerWidth(),
+        dd_h = this.outerHeight(),
+        t_h = t.outerHeight(),
+        t_w = t.outerWidth(),
+        o_p = this.offsetParent(),
+        o = o_p.offset(),
+        res = p;
+
+      if (s.align === 'bottom' && res.top + o.top + dd_h + zone > max_y) {
+        return self.fit_bounds.call(this, self.dirs.top.call(this, t, s), t, s);
+      }
+
+      if (s.align === 'right' && res.left + o.left + dd_w + zone > max_x) {
+        return self.fit_bounds.call(this, self.dirs.left.call(this, t, s), t, s);
+      }
+
+      if (s.align === 'top' && res.top - o.top - zone < min_y) {
+        return self.fit_bounds.call(this, self.dirs.bottom.call(this, t, s), t, s);
+      }
+
+      if (s.align === 'left' && res.left - o.left - zone < min_x) {
+        return self.fit_bounds.call(this, self.dirs.right.call(this, t, s), t, s);
+      }
+
+      if ((s.align === 'bottom' || s.align === 'top') && res.left + o.left + dd_w + zone > max_x) {
+        res.left = Math.max(zone, res.left + t_w - dd_w);
+      }
+
+      return res;
     },
 
     // Insert rule to style psuedo elements
