@@ -63,15 +63,15 @@ This is the panel that slides in and out when activated. You can place it on eit
 
 ### Target Off-Canvas Menu
 
-To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
+To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.  These anchor elements require the `href` attribute to <a href="http://foundation.zurb.com/forum/posts/1651-cant-get-off-canvas-to-toggle-on-mobile">work on iphones</a>.
 
 <h4>HTML</h4>
 
 ```html
 <!-- target the leftside menu -->
-<a class="left-off-canvas-toggle">Left Menu</a>
+<a class="left-off-canvas-toggle" href="#">Left Menu</a>
 <!-- target the rightside menu -->
-<a class="right-off-canvas-toggle">Right Menu</a>
+<a class="right-off-canvas-toggle" href="#">Right Menu</a>
 
 <aside class="left-off-canvas-menu"></aside>
 <aside class="right-off-canvas-menu"></aside>
@@ -132,7 +132,7 @@ The button containers, `section.left-small` and `section.right-small`, contain t
 To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
 
 ```html
-<a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
 ```
 
 Now put it all together...
@@ -142,10 +142,10 @@ Now put it all together...
 ```html
 <nav class="tab-bar">
   <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
   <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
 </nav>
 ```
@@ -171,13 +171,13 @@ The last thing we need is a section for the tab bar content. Add `section.tab-ba
 ```html
 <nav class="tab-bar">
   <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
   <section class="middle tab-bar-section">
     <h1 class="title">Foundation</h1>
   </section>
   <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
 </nav>
 ```
@@ -206,19 +206,19 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 <!-- that's what she said, lol -->
 
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
   <section class="right tab-bar-section"><h1>Left Section</h1></section>
 </nav>
 &nbsp;
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
   <section class="middle tab-bar-section"><h1>Middle Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
 </nav>
 &nbsp;
 <nav class="tab-bar">
   <section class="left tab-bar-section"><h1>Right Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
 </nav>
 &nbsp;
 
