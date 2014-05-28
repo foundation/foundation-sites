@@ -4,7 +4,7 @@
   Foundation.libs.reveal = {
     name : 'reveal',
 
-    version : '5.2.2',
+    version : '5.2.3',
 
     locked : false,
 
@@ -134,18 +134,20 @@
     },
 
     open : function (target, ajax_settings) {
-      var self = this;
+      var self = this,
+          modal;
+
       if (target) {
         if (typeof target.selector !== 'undefined') {
           // Find the named node; only use the first one found, since the rest of the code assumes there's only one node
-          var modal = self.S('#' + target.data(self.data_attr('reveal-id'))).first();
+          modal = self.S('#' + target.data(self.data_attr('reveal-id'))).first();
         } else {
-          var modal = self.S(this.scope);
+          modal = self.S(this.scope);
 
           ajax_settings = target;
         }
       } else {
-        var modal = self.S(this.scope);
+        modal = self.S(this.scope);
       }
 
       var settings = modal.data(self.attr_name(true) + '-init');

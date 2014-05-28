@@ -390,4 +390,19 @@ $visibility-breakpoint-queries:
   th.hide-for-touch { display: table-cell !important; }
   .touch th.show-for-touch { display: table-cell !important; }
 
+
+  /* Print visibility */
+  @media print {
+    .show-for-print { display: block; }
+    .hide-for-print { display: none; }
+
+    table.show-for-print { display: table; }
+    thead.show-for-print { display: table-header-group !important; }
+    tbody.show-for-print { display: table-row-group !important; }
+    tr.show-for-print { display: table-row !important; }
+    td.show-for-print { display: table-cell !important; }
+    th.show-for-print { display: table-cell !important; }
+
+  }
+
 }
