@@ -8,7 +8,7 @@ title: JavaScript Setup
 
 ### Installation
 
-Foundation Javascript was designed to work with <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. In the `<head>` section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements that older browsers may not recognize, and provides detection for mobile devices.
+Foundation JavaScript was designed to work with <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. In the `<head>` section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements that older browsers may not recognize, and provides detection for mobile devices:
 
 ```html
 <script src="/js/vendor/modernizr.js"></script>
@@ -23,7 +23,7 @@ Before the closing `body` tag, insert JQuery and FastClick.
 <script src="/js/vendor/fastclick.js"></script>
 ```
 
-Then either load each plugin individually, or include `foundation.min.js`, which automatically loads the Foundation Core and all Javascript plugins.
+Then either load each plugin individually, or include `foundation.min.js`, which automatically loads the Foundation Core and all JavaScript plugins.
 
 <h4>HTML</h4>
 
@@ -43,7 +43,7 @@ Then either load each plugin individually, or include `foundation.min.js`, which
 
 ### Initialize Foundation
 
-After you have included the Foundation Javascript, just add a simple call to initialize all plugins on your page.
+After you have included the Foundation JavaScript, just add a simple call to initialize all plugins on your page.
 
 
 We recommend that you initialize Foundation at the end of the page `<body>`.
@@ -95,7 +95,7 @@ The above will initialize all of the plugins with default settings as well as cu
 
 <h4 id="dataOptions">Data Options</h4>
 
-Instead of passing the settings to the plugins using Javascript, you can pass them through the markup using `data-options`. To pass in an option, just place it in the `data-options` HTML attribute of the element the plugin is being called on. To pass in multiple options, format them as a semicolon-delimited list.
+Instead of passing the settings to the plugins using JavaScript, you can pass them through the markup using `data-options`. To pass in an option, just place it in the `data-options` HTML attribute of the element the plugin is being called on. To pass in multiple options, format them as a semicolon-delimited list:
 
 ```html
 <span data-tooltip data-options="disable_for_touch:true;touch_close_text:'close me'" class="has-tip" title="Tooltips are awesome!">Has Tooltip</span>
@@ -116,7 +116,7 @@ A chart of of all the available data-options is below.
 
 New to Foundation 5, you can now reconfigure instances of your plugin after the page has loaded and Foundation has already been initialized.
 
-Lets pretend that we have an alert that was on our page when Foundation was first initialized:
+Let's pretend that we have an alert that was on our page when Foundation was first initialized:
 
 <h4>HTML</h4>
 
@@ -127,7 +127,7 @@ Lets pretend that we have an alert that was on our page when Foundation was firs
 </div>
 ```
 
-The default fade out speed is 300 miliseconds, if we wanted to change this to 3 seconds we could do the following:
+The default fade out speed is 300 milliseconds, if we wanted to change this to 3 seconds we could do the following:
 
 <h4>JS</h4>
 
@@ -141,7 +141,7 @@ You can set any configuration option or callback this way.
 
 ### Calling Internal Methods
 
-Foundation Javascript allows you call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, which are not initialized on page load by default.
+Foundation JavaScript allows you call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, which are not initialized on page load by default.
 
 This will fire the `start` method on Joyride:
 
