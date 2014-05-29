@@ -4,7 +4,7 @@
   Foundation.libs.accordion = {
     name : 'accordion',
 
-    version : '5.2.2',
+    version : '5.2.3',
 
     settings : {
       active_class: 'active',

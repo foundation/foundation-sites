@@ -19,6 +19,7 @@ $panel-bg-color: #FAFAFA;
   }
 .side-nav li a {
   padding: rem-calc(6) 0;
+  &:not(.button) { padding: rem-calc(6) 0; }
   &:hover {
     color: darken($primary-color, 20%);
     span {
