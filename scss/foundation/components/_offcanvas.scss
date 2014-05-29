@@ -289,7 +289,7 @@ $menu-slide: "transform 500ms ease" !default;
       padding: $tabbar-menu-icon-padding;
       color: $tabbar-menu-icon-color;
       position: relative;
-      @include translate3d(0,0,0);
+      transform: translate3d(0,0,0);
 
       // @include for the hamburger menu-icon
       //

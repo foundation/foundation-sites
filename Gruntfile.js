@@ -57,15 +57,6 @@ module.exports = function(grunt) {
           'dist/assets/css/normalize.css': 'scss/normalize.scss',
           'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss'
         }
-      },
-      dist_compressed: {
-        options: {
-          outputStyle:'compressed',
-          includePaths: ['scss']
-        },
-        files: {
-          'dist/assets/css/foundation.min.css': '<%= foundation.scss %>'
-        }
       }
     },
 
@@ -208,7 +199,7 @@ module.exports = function(grunt) {
           src: "./dist/docs/",
           recursive: true,
           dest: "/home/deployer/sites/foundation-docs/current",
-          host: "deployer@foundation5.zurb.com"
+          host: "deployer@72.32.134.77"
         }
       }
     }
@@ -226,7 +217,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jst');
-
+  
   grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
