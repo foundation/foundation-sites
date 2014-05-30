@@ -32,7 +32,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
       @include clearfix;
       margin-bottom: 0 !important;
       margin-left: 0;
-      dd, .tab-title {
+      li, .tab-title {
         position: relative;
         margin-bottom: 0 !important;
         list-style: none;
@@ -49,15 +49,15 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         &.active a { background: $tabs-navigation-active-bg-color; color:$tabs-navigation-active-font-color; }
       }
       &.radius {
-        dd:first-child, .tab:first-child {
+        li:first-child, .tab:first-child {
           a { @include side-radius($default-float, $global-radius); }
         }
-        dd:last-child, .tab:last-child {
+        li:last-child, .tab:last-child {
           a { @include side-radius($opposite-direction, $global-radius); }
         }
       }
       &.vertical {
-        dd, .tab-title {
+        li, .tab-title {
           position: inherit;
           float: none;
           display: block;
