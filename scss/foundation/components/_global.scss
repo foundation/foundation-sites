@@ -11,6 +11,9 @@
 // styles get applied to [data-mysite-plugin], etc
 $namespace: false !default;
 
+// Control the inclusion of experimental properties
+$experimental: true !default;
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -25,6 +28,16 @@ $base-line-height: 150% !default;
 //
 // Global Foundation Mixins
 //
+
+// @mixins
+//
+// We use this to optionally include experimental or 
+// explicitly vendor prefixed properties
+@mixin experimental() {
+  @if $experimental {
+    @content;
+  }
+}
 
 // @mixins
 //
@@ -110,6 +123,54 @@ $base-line-height: 150% !default;
   }
 }
 
+// @mixins
+//
+// We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
+// $width - Width of hamburger icon in rem
+// $left - If false, icon will be centered horizontally || explicitly set value in rem
+// $top - If false, icon will be centered vertically || explicitly set value in rem
+// $thickness - thickness of lines in hamburger icon, set value in px
+// $gap - spacing between the lines in hamburger icon, set value in px
+// $color - icon color
+// $hover-color - icon color during hover
+// $offcanvas - Set to true of @include in offcanvas
+@mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
+  span:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 0;
+    
+    @if $offcanvas {
+      @if $top {
+        top: $top;
+      }
+      @else {
+        top: 50%;
+        margin-top: -$width/2;
+      }
+    	@if $left {
+    	  left: $left;
+    	}
+    	@else {
+    	  left: ($tabbar-menu-icon-width - $width)/2;
+    	}
+    }
+    	
+    box-shadow:
+      0 0px 0 $thickness $color,
+      0 $gap + $thickness 0 $thickness $color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $color;
+    width: $width;
+  }
+  span:hover:after {
+    box-shadow:
+      0 0px 0 $thickness $hover-color,
+      0 $gap + $thickness 0 $thickness $hover-color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
+  }
+}
+
 // We use this to do clear floats
 @mixin clearfix {
   &:before, &:after { content: " "; display: table; }
@@ -163,11 +224,15 @@ $base-line-height: 150% !default;
   clip: auto;
 }
 
+// We use these to define default font weights
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
 $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
-$body-font-weight: normal !default;
+$body-font-weight: $font-weight-normal !default;
 $body-font-style: normal !default;
 
 // We use this to control font-smoothing
@@ -257,7 +322,7 @@ $cursor-text-value: text !default;
   // Forward slash placed around everything to convince PhantomJS to read the value.
   
   meta.foundation-version {
-    font-family: "/5.2.2/";
+    font-family: "/5.2.3/";
   }
   
   meta.foundation-mq-small {

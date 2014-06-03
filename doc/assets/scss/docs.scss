@@ -507,7 +507,6 @@ footer { margin-top: 45px; }
 }
 
 // Thumbnail Styles
-
 .th-custom {
   @include thumb(10px,0 0 0 2px black, 0 0 10px 2px rgba(orange,0.5));
   @include radius(6);
@@ -584,3 +583,9 @@ $custom-active-bg:darken($custom-link-color, 5%);
 
 .docs-bar .top-bar-section .has-dropdown > a:after { display: none; }
 .docs-bar .top-bar-section .has-dropdown a { padding-#{$opposite-direction}: 15px !important; }
+
+
+// Fix for Google Maps
+div#interchangeMarkup img{
+  max-width: none;
+}

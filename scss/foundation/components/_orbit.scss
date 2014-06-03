@@ -221,7 +221,7 @@ $orbit-timer-hide-for-small: true !default;
         top: 10px;
         #{$default-float}: 10px;
         font-size: 12px;
-        span { font-weight: 700; padding: $orbit-slide-number-padding;}
+        span { font-weight: $font-weight-bold; padding: $orbit-slide-number-padding;}
         color: $orbit-slide-number-font-color;
         background: $orbit-slide-number-bg;
         z-index: 10;

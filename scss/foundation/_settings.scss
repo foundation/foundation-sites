@@ -12,6 +12,8 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+// $experimental: true;
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -42,7 +44,7 @@
 // $body-bg: #fff;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $body-font-weight: normal;
+// $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
 // We use this to control font-smoothing
@@ -119,7 +121,7 @@
 
 // We use these to control header font styles
 // $header-font-family: $body-font-family;
-// $header-font-weight: normal;
+// $header-font-weight: $font-weight-normal;
 // $header-font-style: normal;
 // $header-font-color: #222;
 // $header-line-height: 1.4;
@@ -135,10 +137,18 @@
 // $h5-font-size: rem-calc(18);
 // $h6-font-size: 1rem;
 
+// We use these to control header size reduction on small screens
+// $h1-font-reduction: rem-calc(10) !default;
+// $h2-font-reduction: rem-calc(10) !default;
+// $h3-font-reduction: rem-calc(5) !default;
+// $h4-font-reduction: rem-calc(5) !default;
+// $h5-font-reduction: 0 !default;
+// $h6-font-reduction: 0 !default;
+
 // These control how subheaders are styled.
 // $subheader-line-height: 1.4;
 // $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
-// $subheader-font-weight: normal;
+// $subheader-font-weight: $font-weight-normal;
 // $subheader-top-margin: .2rem;
 // $subheader-bottom-margin: .5rem;
 
@@ -148,7 +158,7 @@
 
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
-// $paragraph-font-weight: normal;
+// $paragraph-font-weight: $font-weight-normal;
 // $paragraph-font-size: 1rem;
 // $paragraph-line-height: 1.6;
 // $paragraph-margin-bottom: rem-calc(20);
@@ -160,7 +170,7 @@
 // We use these to style <code> tags
 // $code-color: scale-color($alert-color, $lightness: -27%);
 // $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
-// $code-font-weight: bold;
+// $code-font-weight: $font-weight-bold;
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
@@ -175,12 +185,16 @@
 // $hr-margin: rem-calc(20);
 
 // We use these to style lists
+// $list-font-family: $paragraph-font-family;
+// $list-font-size: $paragraph-font-size;
+// $list-line-height: $paragraph-line-height;
+// $list-margin-bottom: $paragraph-margin-bottom;
 // $list-style-position: outside;
 // $list-side-margin: 1.1rem;
 // $list-ordered-side-margin: 1.4rem;
 // $list-side-margin-no-bullet: 0;
 // $list-nested-margin: rem-calc(20);
-// $definition-list-header-weight: bold;
+// $definition-list-header-weight: $font-weight-bold;
 // $definition-list-header-margin-bottom: .3rem;
 // $definition-list-margin-bottom: rem-calc(12);
 
@@ -205,17 +219,17 @@
 // $microformat-border-color: #ddd;
 
 // We use these to control full name font styles
-// $microformat-fullname-font-weight: bold;
+// $microformat-fullname-font-weight: $font-weight-bold;
 // $microformat-fullname-font-size: rem-calc(15);
 
 // We use this to control the summary font styles
-// $microformat-summary-font-weight: bold;
+// $microformat-summary-font-weight: $font-weight-bold;
 
 // We use this to control abbr padding
 // $microformat-abbr-padding: rem-calc(0 1);
 
 // We use this to control abbr font styles
-// $microformat-abbr-font-weight: bold;
+// $microformat-abbr-font-weight: $font-weight-bold;
 // $microformat-abbr-font-decoration: none;
 
 // Accordion
@@ -244,7 +258,7 @@
 // $alert-padding-bottom: $alert-padding-top;
 
 // We use these to control text style.
-// $alert-font-weight: normal;
+// $alert-font-weight: $font-weight-normal;
 // $alert-font-size: rem-calc(13);
 // $alert-font-color: #fff;
 // $alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
@@ -342,7 +356,7 @@
 // $button-font-sml: rem-calc(13);
 // $button-font-med: rem-calc(16);
 // $button-font-lrg: rem-calc(20);
-// $button-font-weight: normal;
+// $button-font-weight: $font-weight-normal;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
@@ -351,7 +365,7 @@
 // We use these to control button border styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $bg: $primary-color;
+// $button-bg: $primary-color;
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
@@ -503,7 +517,7 @@
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
-// $form-label-font-weight: normal;
+// $form-label-font-weight: $font-weight-normal;
 // $form-label-line-height: 1.5;
 // $form-label-font-color: scale-color(#000, $lightness: 30%);
 // $form-label-small-transform: capitalize;
@@ -531,7 +545,7 @@
 
 // We use these to style the legends when you use them
 // $legend-bg: #fff;
-// $legend-font-weight: bold;
+// $legend-font-weight: $font-weight-bold;
 // $legend-padding: rem-calc(0 3);
 
 // We use these to style the prefix and postfix input elements
@@ -547,7 +561,7 @@
 // $input-error-message-padding: rem-calc(6 9 9);
 // $input-error-message-top: -1px;
 // $input-error-message-font-size: rem-calc(12);
-// $input-error-message-font-weight: normal;
+// $input-error-message-font-weight: $font-weight-normal;
 // $input-error-message-font-style: italic;
 // $input-error-message-font-color: #fff;
 // $input-error-message-font-color-alt: #333;
@@ -597,7 +611,7 @@
 // Here, we're setting the tip dont styles
 // $joyride-tip-font-color: #fff;
 // $joyride-tip-font-size: rem-calc(14);
-// $joyride-tip-header-weight: bold;
+// $joyride-tip-header-weight: $font-weight-bold;
 
 // This changes the nub size
 // $joyride-tip-nub-size: 10px;
@@ -610,7 +624,7 @@
 // This changes up the styles for the close button
 // $joyride-tip-close-color: #777;
 // $joyride-tip-close-size: 24px;
-// $joyride-tip-close-weight: normal;
+// $joyride-tip-close-weight: $font-weight-normal;
 
 // When Joyride is filling the screen, we use this style for the bg
 // $joyride-screenfill: rgba(0,0,0,0.5);
@@ -646,7 +660,7 @@
 
 // We use these to style the label text
 // $label-font-sizing: rem-calc(11);
-// $label-font-weight: normal;
+// $label-font-weight: $font-weight-normal;
 // $label-font-color: #333;
 // $label-font-color-alt: #fff;
 // $label-font-family: $body-font-family;
@@ -674,7 +688,7 @@
 
 // Off Canvas Tab Bar Headers
 // $tabbar-header-color: #fff;
-// $tabbar-header-weight: bold;
+// $tabbar-header-weight: $font-weight-bold;
 // $tabbar-header-line-height: $tabbar-height;
 // $tabbar-header-margin: 0;
 
@@ -686,7 +700,7 @@
 // $off-canvas-label-padding: 0.3rem rem-calc(15);
 // $off-canvas-label-color: #999;
 // $off-canvas-label-text-transform: uppercase;
-// $off-canvas-label-font-weight: bold;
+// $off-canvas-label-font-weight: $font-weight-bold;
 // $off-canvas-label-bg: #444;
 // $off-canvas-label-border-top: 1px solid scale-color(#444, $lightness: 14%);
 // $off-canvas-label-border-bottom: none;
@@ -795,7 +809,7 @@
 // We use these for currently selected anchor links
 // $pagination-link-current-background: $primary-color;
 // $pagination-link-current-font-color: #fff;
-// $pagination-link-current-font-weight: bold;
+// $pagination-link-current-font-weight: $font-weight-bold;
 // $pagination-link-current-cursor: default;
 // $pagination-link-current-active-bg: $primary-color;
 
@@ -838,7 +852,7 @@
 // $price-title-padding: rem-calc(15 20);
 // $price-title-align: center;
 // $price-title-color: #eee;
-// $price-title-weight: normal;
+// $price-title-weight: $font-weight-normal;
 // $price-title-size: rem-calc(16);
 // $price-title-font-family: $body-font-family;
 
@@ -847,7 +861,7 @@
 // $price-money-padding: rem-calc(15 20);
 // $price-money-align: center;
 // $price-money-color: #333;
-// $price-money-weight: normal;
+// $price-money-weight: $font-weight-normal;
 // $price-money-size: rem-calc(32);
 // $price-money-font-family: $body-font-family;
 
@@ -858,7 +872,7 @@
 // $price-desc-padding: rem-calc(15);
 // $price-desc-align: center;
 // $price-desc-font-size: rem-calc(12);
-// $price-desc-weight: normal;
+// $price-desc-weight: $font-weight-normal;
 // $price-desc-line-height: 1.4;
 // $price-desc-bottom-border: dotted 1px #ddd;
 
@@ -867,7 +881,7 @@
 // $price-item-padding: rem-calc(15);
 // $price-item-align: center;
 // $price-item-font-size: rem-calc(14);
-// $price-item-weight: normal;
+// $price-item-weight: $font-weight-normal;
 // $price-item-bottom-border: dotted 1px #ddd;
 
 // We use these to control the CTA area styles
@@ -919,7 +933,7 @@
 // $reveal-close-top: rem-calc(8);
 // $reveal-close-side: rem-calc(11);
 // $reveal-close-color: #aaa;
-// $reveal-close-weight: bold;
+// $reveal-close-weight: $font-weight-bold;
 
 // We use this to set the default radius used throughout the core.
 // $reveal-radius: $global-radius;
@@ -950,7 +964,7 @@
 // $side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
 // $side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%);
 // $side-nav-font-size: rem-calc(14);
-// $side-nav-font-weight: normal;
+// $side-nav-font-weight: $font-weight-normal;
 // $side-nav-font-weight-active: $side-nav-font-weight;
 // $side-nav-font-family: $body-font-family;
 // $side-nav-active-font-family: $side-nav-font-family;
@@ -1012,7 +1026,7 @@
 // $sub-nav-font-family: $body-font-family;
 // $sub-nav-font-size: rem-calc(14);
 // $sub-nav-font-color: #999;
-// $sub-nav-font-weight: normal;
+// $sub-nav-font-weight: $font-weight-normal;
 // $sub-nav-text-decoration: none;
 // $sub-nav-padding: rem-calc(3 16);
 // $sub-nav-border-radius: 3px;
@@ -1020,7 +1034,7 @@
 
 
 // We use these to control the active item styles
-// $sub-nav-active-font-weight: normal;
+// $sub-nav-active-font-weight: $font-weight-normal;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
 // $sub-nav-active-color: #fff;
@@ -1087,7 +1101,7 @@
 // $table-head-bg: #f5f5f5  ;
 // $table-head-font-size: rem-calc(14);
 // $table-head-font-color: #222;
-// $table-head-font-weight: bold;
+// $table-head-font-weight: $font-weight-bold;
 // $table-head-padding: rem-calc(8 10 10);
 
 // These control the row padding and font styles
@@ -1111,6 +1125,7 @@
 // $tabs-navigation-active-bg-color: #fff;
 // $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
 // $tabs-navigation-font-color: #222;
+// $tabs-navigation-active-font-color: $tabs-navigation-font-color;
 // $tabs-navigation-font-size: rem-calc(16);
 // $tabs-navigation-font-family: $body-font-family;
 
@@ -1143,7 +1158,7 @@
 // $include-html-tooltip-classes: $include-html-classes;
 
 // $has-tip-border-bottom: dotted 1px #ccc;
-// $has-tip-font-weight: bold;
+// $has-tip-font-weight: $font-weight-bold;
 // $has-tip-font-color: #333;
 // $has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
 // $has-tip-font-color-hover: $primary-color;
@@ -1152,11 +1167,11 @@
 // $tooltip-padding: rem-calc(12);
 // $tooltip-bg: #333;
 // $tooltip-font-size: rem-calc(14);
-// $tooltip-font-weight: normal;
+// $tooltip-font-weight: $font-weight-normal;
 // $tooltip-font-color: #fff;
 // $tooltip-line-height: 1.3;
 // $tooltip-close-font-size: rem-calc(10);
-// $tooltip-close-font-weight: normal;
+// $tooltip-close-font-weight: $font-weight-normal;
 // $tooltip-close-font-color: #777;
 // $tooltip-font-size-sml: rem-calc(14);
 // $tooltip-radius: $global-radius;
@@ -1178,14 +1193,14 @@
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
-// $topbar-title-weight: normal;
+// $topbar-title-weight: $font-weight-normal;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: #333;
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-link-bg: #333;
-// $topbar-dropdown-link-weight: normal;
+// $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;
 // $topbar-dropdown-toggle-alpha: 0.4;
@@ -1195,10 +1210,11 @@
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
 // $topbar-link-color-active-hover: #fff;
-// $topbar-link-weight: normal;
+// $topbar-link-weight: $font-weight-normal;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
+// $topbar-link-bg-color-hover: #272727;
 // $topbar-link-bg-hover: #272727;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1211,14 +1227,14 @@
 
 // $topbar-dropdown-label-color: #777;
 // $topbar-dropdown-label-text-transform: uppercase;
-// $topbar-dropdown-label-font-weight: bold;
+// $topbar-dropdown-label-font-weight: $font-weight-bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
 // $topbar-dropdown-label-bg: #333;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
-// $topbar-menu-link-weight: bold;
+// $topbar-menu-link-weight: $font-weight-bold;
 // $topbar-menu-link-color: #fff;
 // $topbar-menu-icon-color: #fff;
 // $topbar-menu-link-color-toggled: #888;

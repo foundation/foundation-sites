@@ -4,7 +4,7 @@
   Foundation.libs.equalizer = {
     name : 'equalizer',
 
-    version : '5.2.2',
+    version : '5.2.3',
 
     settings : {
       use_tallest: true,
@@ -28,10 +28,10 @@
     equalize: function(equalizer) {
       var isStacked = false,
           vals = equalizer.find('[' + this.attr_name() + '-watch]:visible'),
-          firstTopOffset = vals.first().offset().top,
           settings = equalizer.data(this.attr_name(true)+'-init');
 
       if (vals.length === 0) return;
+      var firstTopOffset = vals.first().offset().top;
       settings.before_height_change();
       equalizer.trigger('before-height-change');
       vals.height('inherit');
@@ -70,5 +70,5 @@
       });
     }
   };
-}(jQuery, window, window.document));
+})(jQuery, window, window.document);
 

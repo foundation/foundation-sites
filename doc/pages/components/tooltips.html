@@ -43,6 +43,20 @@ Additional classes can be added to your tooltips to change its appearance.
 
 <span data-tooltip class="has-tip tip-bottom radius" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span>
 
+
+<p>You can now also add `show_on` to your `data-options` attribute to allow your tooltips to show on `small`, `medium`, or `large` when the page loads. They will show on all screen sizes by default.</p>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_tooltips_show_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_tooltips_show}}
+  </div>
+</div>
+
 &nbsp;
 
 <h3>Disable for touch events</h3>
@@ -102,7 +116,7 @@ You can adjust lots of settings. For example:
 {{#markdown}}
 ```js
 $(document).foundation({
-  tooltips: {
+  tooltip: {
     selector : '.has-tip',
     additional_inheritable_classes : [],
     tooltip_class : '.tooltip',
@@ -110,7 +124,7 @@ $(document).foundation({
     disable_for_touch: false,
     tip_template : function (selector, content) {
       return '<span data-selector="' + selector + '" class="'
-        + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
+        + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
         + '">' + content + '<span class="nub"></span></span>';
     }
   }

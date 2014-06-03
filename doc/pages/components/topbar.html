@@ -14,7 +14,7 @@ meta: Top-bar navigation
 
     </li>
     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="">Menu</a></li>
+    <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
   </ul>
 
   <section class="top-bar-section">
@@ -79,7 +79,7 @@ The top bar is a pretty complex piece of magical UI goodness. We rely on many pr
         <li class="name">
           <h1><a href="#">My Site</a></h1>
         </li>
-        <li class="toggle-topbar menu-icon"><a href="">Menu</a></li>
+        <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
       </ul>
 
       <section class="top-bar-section">
@@ -172,7 +172,7 @@ You may also wrap your top bar in `div class="sticky"` and put it anywhere withi
 </div>
 <div><br></div>
 
-<p>You can now also add `sticky_on` to your `data-options` attribute to allow your sticky bar to work on `small`, `medium`, or `large` when the page loads. It will be sticky on all screen sizes by default.</p>
+<p>You can also add `sticky_on` to your `data-options` attribute to allow your sticky bar to work on `small`, `medium`, or `large` when the page loads. This works in conjunction with the sticky class wrapper to target sticky for small, medium, or large. It will be sticky on all screen sizes by default.</p>
 
 {{#markdown}}
 ```html
@@ -220,7 +220,7 @@ Several common elements have been supported by default, each one of these elemen
     <li class="name"><h1><a href="#">Sexy Top Bar</a></h1></li>
 
     <!-- Mobile Menu Toggle -->
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
 
   <!-- Top Bar Section -->
