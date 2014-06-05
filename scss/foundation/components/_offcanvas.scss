@@ -50,7 +50,6 @@ $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%) 
 $tabbar-menu-icon-text-indent: rem-calc(35) !default;
 $tabbar-menu-icon-width: $tabbar-height !default;
 $tabbar-menu-icon-height: $tabbar-height !default;
-$tabbar-menu-icon-line-height: rem-calc(33) !default;
 $tabbar-menu-icon-padding: 0 !default;
 
 $tabbar-hamburger-icon-width: rem-calc(16) !default;
@@ -288,7 +287,6 @@ $menu-slide: "transform 500ms ease" !default;
       width: $tabbar-height;
       height: $tabbar-height;
       display: block;
-      line-height: $tabbar-menu-icon-line-height;
       padding: $tabbar-menu-icon-padding;
       color: $tabbar-menu-icon-color;
       position: relative;
