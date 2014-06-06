@@ -12,6 +12,8 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+// $experimental: true;
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -134,6 +136,14 @@
 // $h4-font-size: rem-calc(23);
 // $h5-font-size: rem-calc(18);
 // $h6-font-size: 1rem;
+
+// We use these to control header size reduction on small screens
+// $h1-font-reduction: rem-calc(10) !default;
+// $h2-font-reduction: rem-calc(10) !default;
+// $h3-font-reduction: rem-calc(5) !default;
+// $h4-font-reduction: rem-calc(5) !default;
+// $h5-font-reduction: 0 !default;
+// $h6-font-reduction: 0 !default;
 
 // These control how subheaders are styled.
 // $subheader-line-height: 1.4;
@@ -1115,6 +1125,7 @@
 // $tabs-navigation-active-bg-color: #fff;
 // $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
 // $tabs-navigation-font-color: #222;
+// $tabs-navigation-active-font-color: $tabs-navigation-font-color;
 // $tabs-navigation-font-size: rem-calc(16);
 // $tabs-navigation-font-family: $body-font-family;
 
@@ -1203,6 +1214,7 @@
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
+// $topbar-link-bg-color-hover: #272727;
 // $topbar-link-bg-hover: #272727;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
