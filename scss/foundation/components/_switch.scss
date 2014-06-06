@@ -179,6 +179,8 @@ $switch-label-outline: 1px dotted #888 !default;
   span:last-child {
     width: rem-calc($height);
     height: rem-calc($height);
+    line-height: rem-calc($height);
+    text-align: center;
   }
 
 }
