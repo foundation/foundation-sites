@@ -148,7 +148,7 @@ $menu-slide: "transform 500ms ease" !default;
   background: $tabbar-bg;
   color: $tabbar-color;
   height: $tabbar-height;
-  line-height: $tabbar-height;
+  line-height: $tabbar-line-height;
 
   // make sure it's below the .exit-offcanvas link
   position: relative;
