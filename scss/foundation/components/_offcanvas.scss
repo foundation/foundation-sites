@@ -167,7 +167,7 @@ $menu-slide: "transform 500ms ease" !default;
 
 // SMALL SECTIONS
 // These are small sections on the left and right that contain the off-canvas toggle buttons;
-@mixin tabbar-small-section {
+@mixin tabbar-small-section($position) {
   width: $tabbar-icon-width;
   height: $tabbar-height;
   position: absolute;
