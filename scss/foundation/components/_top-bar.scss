@@ -335,7 +335,10 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
         // Apply the hover link color when it has that class
         &:hover:not(.has-form) > a {
-          background: $topbar-link-bg-hover;
+          background-color: $topbar-link-bg-color-hover;
+          @if ($topbar-link-bg-hover) {
+            background: $topbar-link-bg-hover;
+          }
           color: $topbar-link-color-hover;
 
         }
@@ -477,7 +480,10 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         li {
           &.hover {
             > a:not(.button) {
-              background: $topbar-link-bg-hover;
+              background-color: $topbar-link-bg-color-hover;
+              @if ($topbar-link-bg-hover) {
+                background: $topbar-link-bg-hover;
+              }
               color: $topbar-link-color-hover;
             }
           }
@@ -486,7 +492,12 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               padding: 0 $topbar-link-padding;
               line-height: $topbar-height;
               background: $topbar-link-bg;
-              &:hover { background: $topbar-link-bg-hover; }
+              &:hover {
+                background-color: $topbar-link-bg-color-hover;
+                @if ($topbar-link-bg-hover) {
+                  background: $topbar-link-bg-hover;
+                }
+              }
             }
           }
           &.active:not(.has-form) {
@@ -563,7 +574,10 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             }
             &:not(.has-form):hover > a:not(.button) {
               color: $topbar-link-color-hover;
-              background: $topbar-link-bg-hover;
+              background-color: $topbar-link-bg-color-hover;
+              @if ($topbar-link-bg-hover) {
+                background: $topbar-link-bg-hover;
+              }
             }
 
             label {
@@ -620,7 +634,10 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
         ul li {
           // Apply the hover link color when it has that class
           &:hover > a {
-            background: $topbar-link-bg-hover;
+            background-color: $topbar-link-bg-color-hover;
+            @if ($topbar-link-bg-hover) {
+              background: $topbar-link-bg-hover;
+            }
             color: $topbar-link-color-hover;
           }
 
