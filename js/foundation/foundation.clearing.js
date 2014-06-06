@@ -18,6 +18,9 @@
       // add 'div.clearing-blackout, div.visible-img' to close on background click
       close_selectors : '.clearing-close',
 
+      // Default to the entire li element.
+      open_selectors : '',
+
       touch_label : '',
 
       // event initializers and locks
@@ -51,7 +54,7 @@
 
       S(this.scope)
         .off('.clearing')
-        .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li',
+        .on('click.fndtn.clearing', 'ul[' + this.attr_name() + '] li ' + this.settings.open_selectors,
           function (e, current, target) {
             var current = current || S(this),
                 target = target || current,
@@ -217,8 +220,8 @@
           .caption(self.S('.clearing-caption', visible_image), self.S('img', target))
           .center_and_label(image, label)
           .shift(current, target, function () {
-            target.siblings().removeClass('visible');
-            target.addClass('visible');
+            target.closest('li').siblings().removeClass('visible');
+            target.closest('li').addClass('visible');
           });
         visible_image.trigger('opened.fndtn.clearing')
       }
@@ -315,6 +318,7 @@
     },
 
     update_paddles : function (target) {
+      target = target.closest('li');
       var visible_image = target
         .closest('.carousel')
         .siblings('.visible-img');
@@ -417,7 +421,7 @@
           .hide();
       }
       return this;
-    },
+    }, 
 
     // directional methods
 
