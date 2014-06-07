@@ -56,8 +56,8 @@ $tabbar-menu-icon-padding: 0 !default;
 $tabbar-hamburger-icon-width: rem-calc(16) !default;
 $tabbar-hamburger-icon-left: false !default;
 $tabbar-hamburger-icon-top: false !default;
-$tapbar-hamburger-icon-thickness: 1px !default;
-$tapbar-hamburger-icon-gap: 6px !default;
+$tabbar-hamburger-icon-thickness: 1px !default;
+$tabbar-hamburger-icon-gap: 6px !default;
 
 // Off Canvas Back-Link Overlay
 $off-canvas-overlay-transition: background 300ms ease !default;
@@ -300,12 +300,12 @@ $menu-slide: "transform 500ms ease" !default;
       // $width - Width of hamburger icon in rem Default: $tabbar-hamburger-icon-width.
       // $left - If false, icon will be centered horizontally || explicitly set value in rem Default: $tabbar-hamburger-icon-left= False
       // $top - If false, icon will be centered vertically || explicitly set value in rem Default: = False
-      // $thickness - thickness of lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-thickness = 1px
-      // $gap - spacing between the lines in hamburger icon, set value in px Default: $tapbar-hamburger-icon-gap = 6px
+      // $thickness - thickness of lines in hamburger icon, set value in px Default: $tabbar-hamburger-icon-thickness = 1px
+      // $gap - spacing between the lines in hamburger icon, set value in px Default: $tabbar-hamburger-icon-gap = 6px
       // $color - icon color Default: $tabbar-menu-icon-color
       // $hover-color - icon color when hovered Default: $tabbar-menu-icon-hover
       // $offcanvas - Set to true
-      @include hamburger($tabbar-hamburger-icon-width, $tabbar-hamburger-icon-left, $tabbar-hamburger-icon-top, $tapbar-hamburger-icon-thickness, $tapbar-hamburger-icon-gap, $tabbar-menu-icon-color, $tabbar-menu-icon-hover, true)
+      @include hamburger($tabbar-hamburger-icon-width, $tabbar-hamburger-icon-left, $tabbar-hamburger-icon-top, $tabbar-hamburger-icon-thickness, $tabbar-hamburger-icon-gap, $tabbar-menu-icon-color, $tabbar-menu-icon-hover, true)
     }
 
     .left-off-canvas-menu { @include off-canvas-menu($position: left); }
