@@ -284,8 +284,10 @@
         var $init_target = slides_container.find("." + settings.active_slide_class),
             animation_speed = settings.animation_speed;
         settings.animation_speed = 1;
-        $init_target.removeClass('active');
-        self._goto($init_target.index());
+        if current != $init_target.index() {
+            $init_target.removeClass('active');
+            self._goto($init_target.index());
+        }
         settings.animation_speed = animation_speed;
       }
 
