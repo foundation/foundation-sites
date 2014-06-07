@@ -285,7 +285,7 @@
             animation_speed = settings.animation_speed;
         settings.animation_speed = 1;
         if current != $init_target.index() {
-            $init_target.removeClass('active');
+            $init_target.removeClass(settings.active_slide_class);
             self._goto($init_target.index());
         }
         settings.animation_speed = animation_speed;
