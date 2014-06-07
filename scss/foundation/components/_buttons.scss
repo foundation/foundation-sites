@@ -9,6 +9,9 @@
 //
 $include-html-button-classes: $include-html-classes !default;
 
+// We use these to set the background color.
+$button-bg: $primary-color !default;
+
 // We use these to build padding for buttons.
 $button-tny: rem-calc(10) !default;
 $button-sml: rem-calc(14) !default;
@@ -36,8 +39,7 @@ $button-function-factor: -20% !default;
 // We use these to control button border styles.
 $button-border-width: 0px !default;
 $button-border-style: solid !default;
-$button-bg: $primary-color !default;
-$button-border-color: scale-color($button-bg, $lightness: $button-function-factor) !default;
+$button-border-color: scale-color($primary-color, $lightness: $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
 $button-radius: $global-radius !default;
@@ -120,7 +122,7 @@ $button-disabled-opacity: 0.7 !default;
 // $bg - Primary color set in settings file. Default: $button-bg.
 // $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
-@mixin button-style($bg:$button-bg, $radius:false, $disabled:false) {
+@mixin button-style($bg:$button-bg, $border-color:$button-border-color, $radius:false, $disabled:false) {
 
   // We control which background styles are used,
   // these can be removed by setting $bg:false
@@ -129,7 +131,7 @@ $button-disabled-opacity: 0.7 !default;
     $bg-lightness: lightness($bg);
 
     background-color: $bg;
-    border-color: scale-color($bg, $lightness: $button-function-factor);
+    border-color: scale-color($border-color, $lightness: $button-function-factor);
     &:hover,
     &:focus { background-color: scale-color($bg, $lightness: $button-function-factor); }
 
@@ -175,7 +177,7 @@ $button-disabled-opacity: 0.7 !default;
 @mixin button($padding:$button-med, $bg:$button-bg, $radius:false, $full-width:false, $disabled:false, $is-prefix:false) {
   @include button-base;
   @include button-size($padding, $full-width);
-  @include button-style($bg, $radius, $disabled);
+  @include button-style($bg, $border-color, $radius, $disabled);
 }
 
 
