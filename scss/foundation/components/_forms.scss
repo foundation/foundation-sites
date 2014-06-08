@@ -346,8 +346,15 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     }
 
     @-moz-document url-prefix() {
-      select { background: $select-bg-color; }
-      select:hover { background: $select-hover-bg-color }
+      select {
+        background-color: $select-bg-color;
+        text-indent: 0.01px;
+        text-overflow: '';
+        -moz-appearance: none;
+      }
+      select:hover {
+        background-color: $select-hover-bg-color;
+      }
     }
     /* Attach elements to the beginning or end of an input */
     .prefix,
