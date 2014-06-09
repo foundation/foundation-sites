@@ -31,7 +31,7 @@ $base-line-height: 150% !default;
 
 // @mixins
 //
-// We use this to optionally include experimental or 
+// We use this to optionally include experimental or
 // explicitly vendor prefixed properties
 @mixin experimental() {
   @if $experimental {
@@ -135,12 +135,12 @@ $base-line-height: 150% !default;
 // $hover-color - icon color during hover
 // $offcanvas - Set to true of @include in offcanvas
 @mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
-  span:after {
-    content: '';
+  span::after {
+    content: "";
     position: absolute;
     display: block;
     height: 0;
-    
+
     @if $offcanvas {
       @if $top {
         top: $top;
@@ -156,7 +156,12 @@ $base-line-height: 150% !default;
     	  left: ($tabbar-menu-icon-width - $width)/2;
     	}
     }
-    	
+    @else {
+      top: 50%;
+      margin-top: -$width/2;
+      #{$opposite-direction}: $topbar-link-padding;
+    }
+
     box-shadow:
       0 0px 0 $thickness $color,
       0 $gap + $thickness 0 $thickness $color,
@@ -320,11 +325,11 @@ $cursor-text-value: text !default;
   // Meta styles are included in all builds, as they are a dependancy of the Javascript.
   // Used to provide media query values for javascript components.
   // Forward slash placed around everything to convince PhantomJS to read the value.
-  
+
   meta.foundation-version {
     font-family: "/5.2.3/";
   }
-  
+
   meta.foundation-mq-small {
     font-family: "/" + unquote($small-up) + "/";
     width: lower-bound($small-range);

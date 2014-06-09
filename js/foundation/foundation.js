@@ -98,9 +98,6 @@
     var self = this,
         should_bind_events = !S(this).data(this.attr_name(true));
 
-    if (typeof method === 'string') {
-      return this[method].call(this, options);
-    }
 
     if (S(this.scope).is('[' + this.attr_name() +']')) {
       S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
@@ -119,6 +116,11 @@
         }
       });
     }
+    // # Patch to fix #5043 to move this *after* the if/else clause in order for Backbone and similar frameworks to have improved control over event binding and data-options updating. 
+    if (typeof method === 'string') {
+      return this[method].call(this, options);
+    }
+
   };
 
   var single_image_loaded = function (image, callback) {
