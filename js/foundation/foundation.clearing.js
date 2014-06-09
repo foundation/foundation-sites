@@ -16,7 +16,7 @@
 
       // comma delimited list of selectors that, on click, will close clearing,
       // add 'div.clearing-blackout, div.visible-img' to close on background click
-      close_selectors : '.clearing-close',
+      close_selectors : '.clearing-close, div.clearing-blackout', 
 
       // Default to the entire li element.
       open_selectors : '',
