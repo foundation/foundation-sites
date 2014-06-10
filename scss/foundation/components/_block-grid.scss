@@ -7,7 +7,7 @@
 //
 // Block Grid Variables
 //
-$include-html-grid-classes: $include-html-classes !default;
+$include-html-block-grid-classes: $include-html-classes !default;
 $include-xl-html-block-grid-classes: false !default;
 
 // We use this to control the maximum number of block grid elements per row
@@ -101,7 +101,7 @@ $block-grid-media-queries: true !default;
 }
 
 @include exports("block-grid") {
-  @if $include-html-grid-classes {
+  @if $include-html-block-grid-classes {
 
     [class*="block-grid-"] { @include block-grid; }
 
