@@ -345,9 +345,13 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       display:none;
     }
 
+    /* Workaround to hide the select arrow on Firefox */
     @-moz-document url-prefix() {
-      select { background: $select-bg-color; }
-      select:hover { background: $select-hover-bg-color }
+      select {
+        text-indent: 0.01px;
+        text-overflow: '';
+        -moz-appearance: none;
+      }
     }
     /* Attach elements to the beginning or end of an input */
     .prefix,
