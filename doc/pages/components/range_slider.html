@@ -5,17 +5,37 @@ title: Range Slider
 <h3 class="subheader">This handy slider will allow you to drag a handle to select a specific value from a range.</h3>
 
 ***
+
 <div class="row">
-  <div class="small-10 medium-11 columns">
-    <div class="range-slider" data-slider data-options="display_selector:#sliderOutput1;">
-      <span class="range-slider-handle"></span>
-      <span class="range-slider-active-segment"></span>
+  <div class="medium-2 columns">
+    <div class="row">
+      <div class="small-3 small-offset-3 medium-4 medium-offset-0 columns">
+        <div class="range-slider vertical-range" data-slider data-options="display_selector:#sliderOutput2;vertical:true;">
+          <span class="range-slider-handle"></span>
+          <span class="range-slider-active-segment"></span>
+        </div>
+      </div>
+      <div class="small-4 small-offset-2 medium-8 medium-offset-0 columns">
+        <span id="sliderOutput2" style="display: block;margin-top: 98px;"></span>
+      </div>
     </div>
   </div>
-  <div class="small-2 medium-1 columns">
-    <span id="sliderOutput1" style="display: block;margin-top: 17px;"></span>
+  <div class="medium-9 medium-offset-1 columns" style="margin-top: 79px;">
+    <div class="row">
+      <div class="small-10 medium-11 columns">
+        <div class="range-slider" data-slider data-options="display_selector:#sliderOutput1;">
+          <span class="range-slider-handle"></span>
+          <span class="range-slider-active-segment"></span>
+        </div>
+      </div>
+      <div class="small-2 medium-1 columns">
+        <span id="sliderOutput1" style="display: block;margin-top: 17px;"></span>
+      </div>
+    </div>
   </div>
 </div>
+
+
 
 
 ***
@@ -38,7 +58,31 @@ You can create a range slider bar using minimal markup.
 {{/markdown}}
   </div>
   <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
     <div class="range-slider" data-slider>
+      <span class="range-slider-handle"></span>
+      <span class="range-slider-active-segment"></span>
+      <input type="hidden">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="range-slider vertical-range" data-slider>
+  <span class="range-slider-handle"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="range-slider vertical-range" data-slider data-options="vertical:true;">
       <span class="range-slider-handle"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
