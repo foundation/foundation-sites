@@ -63,6 +63,13 @@ $orbit-timer-hide-for-small: true !default;
           transform: translate3d($x,$y,$z);
 }
 
+@mixin transition-duration($x) {
+  -webkit-transition-duration: $x;
+     -moz-transition-duration: $x;
+       -o-transition-duration: $x;
+          transition-duration: $x;
+}
+
 @mixin rotate($d) {
   -webkit-transform: rotate($d);
      -moz-transform: rotate($d);
@@ -161,11 +168,11 @@ $orbit-timer-hide-for-small: true !default;
           @include translate3d(100%,0,0);
           &.animate-in {
             @include translate3d(0,0,0);
-            transition-duration:$orbit-animation-speed;
+            @include transition-duration($orbit-animation-speed);
           }
           &.animate-out {
             @include translate3d(-100%,0,0);
-            transition-duration:$orbit-animation-speed;
+            @include transition-duration($orbit-animation-speed);
           }
         }
 
@@ -173,11 +180,11 @@ $orbit-timer-hide-for-small: true !default;
           @include translate3d(-100%,0,0);
           &.animate-in {
             @include translate3d(0,0,0);
-            transition-duration:$orbit-animation-speed;
+            @include transition-duration($orbit-animation-speed);
           }
           &.animate-out {
             @include translate3d(100%,0,0);
-            transition-duration:$orbit-animation-speed;
+            @include transition-duration($orbit-animation-speed);
           }
         }
 
