@@ -497,6 +497,7 @@
         prev.on(animation_end, function(e){
           prev.unbind(animation_end);
           current.removeClass("active animate-out");
+          container.removeClass("swipe-prev").addClass("swipe-next");
           container.children().css({
             "transform":"",
             "-ms-transform":"",
