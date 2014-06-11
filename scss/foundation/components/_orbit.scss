@@ -223,9 +223,10 @@ $orbit-timer-hide-for-small: true !default;
             height: 14px;
             border: inset 8px;
             border-left-style: solid;
-            border-color: transparent #fff transparent transparent;
+            border-color: transparent;
+            border-left-color: #fff;
             &.dark { 
-              border-color: transparent #333 transparent transparent;
+              border-left-color: #333;
             }
           }
         }
