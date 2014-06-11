@@ -122,7 +122,6 @@
       if (typeof self.cache.timer === 'object') {self.cache.timer.restart();}
       
       var slides = self.slides();
-      self.cache.animating = true;
       var res = self._prepare_direction(next_idx)
         , dir = res[0]
         , current = res[1]
@@ -132,6 +131,7 @@
       // This means that circular is disabled and we most likely reached the last slide.
       if (res === false) return false;
 
+      self.cache.animating = true;
       slides_container.trigger('before-slide-change.fndtn.orbit');
       settings.before_slide_change();
       idx = next_idx;
