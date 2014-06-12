@@ -44,6 +44,10 @@ title: Range Slider
 
 You can create a range slider bar using minimal markup. The slider's value will be assigned to any `<input type="hidden">` elements inside the `data-slider` div and as the value of the `data-slider` attribute.
 
+### Horizontal
+
+By default, the range slider displays horizontally.
+
 <div class="row">
   <div class="large-6 columns">
     <h4>HTML</h4>
@@ -67,12 +71,16 @@ You can create a range slider bar using minimal markup. The slider's value will 
   </div>
 </div>
 
+### Vertical
+
+Adding the `vertical-range` class to the outer `<div>` and passing the data-option `vertical: true;` displays the slider vertically instead of horizontally.
+
 <div class="row">
   <div class="large-6 columns">
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<div class="range-slider vertical-range" data-slider>
+<div class="range-slider vertical-range" data-slider data-options="vertical: true;">
   <span class="range-slider-handle"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
@@ -82,7 +90,7 @@ You can create a range slider bar using minimal markup. The slider's value will 
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    <div class="range-slider vertical-range" data-slider data-options="vertical:true;">
+    <div class="range-slider vertical-range" data-slider data-options="vertical: true;">
       <span class="range-slider-handle"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
