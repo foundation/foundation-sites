@@ -135,9 +135,9 @@ You can use the `display_selector` data option to pass in an element (or input) 
 
 Additional classes and data options can be added to your range slider to change its appearance and function.
 
-### Add Border Radius or Rounding
+### Styling Classes
 
-You can add a border radius to the range slider by adding the `radius` class to the `range-slider` element, or fully round it by adding the `round` class.
+You can add a border radius to the range slider by adding the `radius` class to the `range-slider` element, or fully round it by adding the `round` class. Adding the `disabled` class or attribute to the slider will disable it completely.
 
 <div class="row">
   <div class="large-6 columns">
@@ -155,6 +155,12 @@ You can add a border radius to the range slider by adding the `radius` class to 
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
+
+<div class="range-slider disabled" data-slider disabled>
+  <span class="range-slider-handle"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
 ```
 {{/markdown}}
   </div>
@@ -167,6 +173,12 @@ You can add a border radius to the range slider by adding the `radius` class to 
     </div> 
     <br><br>
     <div class="range-slider round" data-slider>
+      <span class="range-slider-handle"></span>
+      <span class="range-slider-active-segment"></span>
+      <input type="hidden">
+    </div>
+    <br><br>
+    <div class="range-slider disabled" data-slider disabled>
       <span class="range-slider-handle"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
