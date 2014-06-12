@@ -514,7 +514,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           @if($topbar-arrows){
 
             & > a {
-              padding-#{$opposite-direction}: $topbar-link-padding + 20 !important;
+              padding-#{$opposite-direction}: $topbar-link-padding + rem-calc(20) !important;
               &:after {
                 @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
                 margin-top: -($topbar-dropdown-toggle-size / 2);
