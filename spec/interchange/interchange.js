@@ -57,4 +57,17 @@ describe('interchange:', function() {
         });
       });
   }));
+
+  describe('setting data-interchange-last-path', function() {
+    beforeEach(function() {
+      document.body.innerHTML = __html__['spec/interchange/basic.html'];
+    });
+
+    it('should set data-interchange-last-path on element when replace occurs', function() {
+      Foundation.libs.interchange.update_nodes();
+      Foundation.libs.interchange.resize();
+
+      expect($('div[data-interchange]').data('data-interchange-last-path')).toMatch(/.+html$/)
+    });
+  });
 });

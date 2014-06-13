@@ -58,6 +58,10 @@ $button-group-border-width: 1px !default;
 
   // We use these to control left and right radius on first/last buttons in the group.
   @if $radius == true {
+    &,
+    & > a,
+    & > button,
+    & > .button { @include radius(0); }
     &:first-child,
     &:first-child > a,
     &:first-child > button,
@@ -68,6 +72,10 @@ $button-group-border-width: 1px !default;
     &:last-child > .button { @include side-radius($opposite-direction, $button-radius); }
   }
   @else if $radius {
+    &,
+    & > a,
+    & > button,
+    & > .button { @include radius(0); }
     &:first-child,
     &:first-child > a,
     &:first-child > button,

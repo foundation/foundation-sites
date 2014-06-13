@@ -30,15 +30,19 @@
 // $include-print-styles: true;
 // $include-html-global-classes: $include-html-classes;
 
-// Grid
+// Grid 
 
-// $include-html-grid-classes: $include-html-classes;
+// $include-html-block-grid-classes: $include-html-classes; 
 // $include-xl-html-grid-classes: false;
 
 // $row-width: rem-calc(1000);
 // $total-columns: 12;
 
 // Global
+
+// We use these to define default font weights
+// $font-weight-normal: normal !default
+// $font-weight-bold: bold !default
 
 // We use these to control various global styles
 // $body-bg: #fff;
@@ -716,14 +720,13 @@
 // $tabbar-menu-icon-text-indent: rem-calc(35);
 // $tabbar-menu-icon-width: $tabbar-height;
 // $tabbar-menu-icon-height: $tabbar-height;
-// $tabbar-menu-icon-line-height: rem-calc(33);
 // $tabbar-menu-icon-padding: 0;
 
 // $tabbar-hamburger-icon-width: rem-calc(16);
 // $tabbar-hamburger-icon-left: false;
 // $tabbar-hamburger-icon-top: false;
-// $tapbar-hamburger-icon-thickness: 1px;
-// $tapbar-hamburger-icon-gap: 6px;
+// $tabbar-hamburger-icon-thickness: 1px;
+// $tabbar-hamburger-icon-gap: 6px;
 
 // Off Canvas Back-Link Overlay
 // $off-canvas-overlay-transition: background 300ms ease;
@@ -767,10 +770,6 @@
 // $orbit-slide-number-bg: rgba(0,0,0,0);
 // $orbit-slide-number-font-color: #fff;
 // $orbit-slide-number-padding: rem-calc(5);
-
-// We use these to controls the css animation
-// $orbit-animation-speed: 500ms;
-// $orbit-animation-ease: ease-in-out;
 
 // Hide controls on small
 // $orbit-nav-hide-for-small: true;
@@ -1214,7 +1213,7 @@
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-color-hover: #272727;
+// $topbar-link-bg-color-hover: #555555;
 // $topbar-link-bg-hover: #272727;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
