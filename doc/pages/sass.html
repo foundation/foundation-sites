@@ -42,14 +42,14 @@ title: Getting Started With Sass
 <div class="row">
   <div class="small-12 columns">
     <h2>What You Will Need</h2>
-    <p>Before proceeding, you'll want to install the following on your system:</p>
+    <p class="subheader">Before proceeding, you'll want to install the following on your system:</p>
   </div>
 </div>
 
-<div class="row text-center">
+<div class="row">
   <div class="medium-4 columns">
     <img src="assets/img/images/git_logo.svg" class="git">
-    <h3>GIT</h3>
+    <h3>Git</h3>
     <p>
     Git is a version control system for GitHub. It is basically the commands tools you will use in the command line to interface with Github.
     </p>
@@ -62,7 +62,7 @@ title: Getting Started With Sass
     <img src="assets/img/images/nodejs_logo.svg" class="node">
     <h3>NodeJS</h3>
     <p>
-
+    Node allows JavaScript to run outside of the browser. This is necessary for Bower (a package manger) to do it's work of packaging all the files into the project and linking them together.
     </p>
     <p>
     <a href="http://nodejs.org/">Download NodeJS →</a>
@@ -81,28 +81,238 @@ title: Getting Started With Sass
   </div>
 </div>
 
+***
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>How to install the CLI</h2>
+    <p class="subheader">
+    Using the CLI to install Foundation 5 only takes two easy commands. You only have to install the CLI once.
+    </p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="medium-6 columns">
+
+    <h4>Bash</h4>
+    {{#markdown}}
+    ``` 
+    npm install -g bower grunt-cli
+    ```
+    {{/markdown}}
+    <p>
+    We use Bower to manage updates that we commit to the Foundation GIT.
+    </p>
+  </div>
+  <div class="medium-6 columns">
+
+    <h4>Bash</h4>
+    {{#markdown}}
+    ``` 
+    gem install foundation
+    ```
+    {{/markdown}}    
+    <p>
+    Install the Foundation on your computer only takes one command function.
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <p class="subheader">
+    If you run into permission errors running these commands in the CLI you can add the word 'sudo' before the line inside the interface:
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-6 columns">
+
+    <h4>Bash</h4>
+    {{#markdown}}
+    ``` 
+    sudo npm install -g bower grunt-cli
+    ```
+    {{/markdown}}    
+  </div>
+  <div class="medium-6 columns">
+
+    <h4>Bash</h4>
+    {{#markdown}}
+    ``` 
+    sudo gem install foundation
+    ```
+    {{/markdown}}
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Compiling Sass into CSS & Creating a Project</h2>
+    <h3 class="subheader">There are two easy ways our CLI helps you compile Sass: Compass or Libsass with Grunt.</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-6 columns">
+    <h3>Compass</h3>
+    <p class="subheader">Creating a Compass project</p>
+    <p>
+    <strong>Step 1:</strong> Compass is the easiest way to get going with Sass. If you do not already have installed here it can be installed with the following command:    
+    </p>
+    <p>
+      {{#markdown}}
+      ```
+      gem install compass
+      ```
+      {{/markdown}}
+    </p>
+    <p>
+    <strong>Step 2:</strong> Next we'll use the Foundation CLI to create a new project:
+    </p>
+    <p>
+      {{#markdown}}
+      ```
+      foundation new MY_PROJECT
+      ```
+      {{/markdown}}
+    </p>
+    <p>
+    <strong>Step 3:</strong> Boom, your project is created! Now updating Found will be easy.
+    </p>
+    <p>
+      {{#markdown}}
+      ```
+      cd MY_PROJECT
+      foundation update
+      ```
+      {{/markdown}}
+    </p>
+    <h3>Now You're Ready to Make Changes</h3>
+    <p>
+    Make sure to run ```compass watch``` to compile your SCSS in CSS.
+    </p>
+  </div>
+  <div class="medium-6 columns">
+    <h3>Libsass with Grunt</h3>
+    <p class="subheader">
+    Creating a Libsass project
+    </p>
+    <p>
+    <strong>Step 1:</strong> First, navigate into the directory where you want to create your project.
+    </p>
+    <p>
+    {{#markdown}}
+    ```
+    cd path/to/sites
+    ```
+    {{/markdown}}
+    </p>
+    <p>
+    <strong>Step 2:</strong> Next we'll use the Foundation CLI to create a new project:
+    </p>
+    <p>
+    {{#markdown}}
+    ```
+    foundation new project_name --libsass
+    ```
+    {{/markdown}}
+    </p>
+    <p>
+    <strong>Step 3:</strong> Boom, your project is created! Now you need to use Grunt to compile everything before you start working:
+    </p>
+    <p>
+    {{#markdown}}
+    ```
+    cd project_name
+    grunt build
+    ```
+    {{/markdown}}
+    </p>
+    <h3>Now You're Ready to Make Changes</h3>
+    <p>
+    Make sure to run the command ```grunt``` to compile your SCSS in CSS.
+    </p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+  <h2>
+    Downloading SCSS files and getting set up
+  </h2>
+  <h3 class="subheader">
+  You can harness the power of SCSS without the CLI if you want. Here' how:
+  </h3>
+  <p>
+  Download the files here: https://github.com/zurb/bower-foundation
+  </p>
+  <p>
+  <strong>Step 1:</strong> kblmskdbmdflkbmds
+  </p>
+  <p>
+  <strong>Step 2:</strong> fbsdfbs ebs ber breberb er b
+  </p>
+  <p>
+  <strong>Step 3:</strong> reb ebr erbreb rb erb
+  </p>
+  <p>
+  <strong>Step 4:</strong>  erba ebraebrebraevb
+  </p>
+  </div>
+</div>
+
 <hr>
 
 
+<div class="row">
+    <div class="medium-6 columns">
+       <h2>Mixture</h2>
+       <h3 class="subheader">Get started quicker &amp; build faster with Foundation using Mixture.io</h3>
+       <p>Publish your project online. It’s as easy as one click. Share your published URL, password protect, get feedback, client sign-off or even add your own domain and host your site.</p>
+       <a href="http://mixture.io/" class="medium button" target="blank">Learn More</a>
+    </div>
+    <div class="medium-6 columns">
+        <img src="{{assets}}/img/images/mixture_yeti.svg" />
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Cactus</h2>
+    <h3 class="subheader">
+     Wow wow wow
+    </h3>
+    <p>
+  This is some text about it
+    </p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+  <h2>Codeish</h2>
+    <h3 class="subheader">
+     Wow wow wow
+    </h3>
+    <p>
+  This is some text about it
+    </p>
+  </div>
+</div>
 
 
-Starting in Foundation 5, we've started using Bower to manage the updating process of Foundation. It only needs to be installed one time using the following command:
-
-<h4>Bash</h4>
-
-```bash
-[sudo] npm install -g bower grunt-cli
-```
-
-Then you can install our CLI using the following command:
-
-<h4>Bash</h4>
-
-```bash
-gem install foundation
-```
-
-***
+<!--
 
 ### Using Foundation With Grunt + Libsass
 
@@ -119,7 +329,7 @@ cd path/to/sites
 Next we'll use the Foundation CLI to create a new project:
 
 ```bash
-foundation new project_name --libsass
+foundation new project_name libsass
 ```
 
 Boom, your project is created! Now you need to use Grunt to compile everything before you start working:
@@ -182,6 +392,7 @@ foundation update
 
 ***
 
+
 ### Using Foundation with something else
 
-If you prefer using Foundation with a tool that's not listed here, you may want to check out our [community](/develop/tools.html) page to see if there's a port for you.
+If you prefer using Foundation with a tool that's not listed here, you may want to check out our [community](/develop/tools.html) page to see if there's a port for you.-->
