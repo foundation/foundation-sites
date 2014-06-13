@@ -43,6 +43,7 @@ $range-slider-handle-round: $global-rounded !default;
 $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%) !default;
 $range-slider-handle-cursor: pointer !default;
 
+$range-slider-disabled-opacity: 0.7 !default;
 
 //
 // @mixins
@@ -66,11 +67,16 @@ $range-slider-handle-cursor: pointer !default;
 @mixin range-slider-bar-style(
   $bg: true,
   $radius: false,
-  $round: false) {
-    @if $bg == true { background: $range-slider-bar-bg-color; }
-    @if $radius == true { @include radius($range-slider-radius); }
-    @if $round == true { @include radius($range-slider-round); }
+  $round: false,
+  $disabled: false) {
+  @if $bg == true { background: $range-slider-bar-bg-color; }
+  @if $radius == true { @include radius($range-slider-radius); }
+  @if $round == true { @include radius($range-slider-round); }
+  @if $disabled == true {
+    cursor: $cursor-default-value;
+    opacity: $range-slider-disabled-opacity;
   }
+}
 
 @mixin range-slider-bar(
   $bg: $range-slider-bar-bg-color, 
@@ -92,10 +98,15 @@ $range-slider-handle-cursor: pointer !default;
 @mixin range-slider-handle-style(
   $bg: true,
   $radius: false,
-  $round: false) {
+  $round: false,
+  $disabled: false) {
   @if $bg == true { background: $range-slider-handle-bg-color; }
   @if $radius == true { @include radius($range-slider-radius); }
   @if $round == true { @include radius($range-slider-round); }
+  @if $disabled == true {
+    cursor: $cursor-default-value;
+    opacity: $range-slider-disabled-opacity;
+  }
   &:hover {
     background: $range-slider-handle-bg-hover-color;
   }
@@ -132,6 +143,10 @@ $range-slider-handle-cursor: pointer !default;
       &.round {
         @include range-slider-bar-style($round:true);
         .range-slider-handle { @include range-slider-handle-style($round: true); }
+      }
+      &.disabled, &[disabled] {
+        @include range-slider-bar-style($disabled:true);
+        .range-slider-handle { @include range-slider-handle-style($disabled: true); }
       }
     }
     .range-slider-active-segment {
