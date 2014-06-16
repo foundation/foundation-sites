@@ -130,7 +130,11 @@
 
           data.delta_x = e.touches[0].pageX - data.start_page_x;
 
-          if ( typeof data.is_scrolling === 'undefined') {
+          if (Foundation.rtl) {
+            data.delta_x = -data.delta_x;
+          }
+
+          if (typeof data.is_scrolling === 'undefined') {
             data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
           }
 
