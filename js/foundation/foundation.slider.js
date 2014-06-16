@@ -222,7 +222,6 @@
         }
       });
     }
-
   };
 
 }(jQuery, window, window.document));
