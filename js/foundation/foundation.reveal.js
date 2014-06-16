@@ -248,12 +248,11 @@
     show : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data(this.attr_name(true) + '-init');
-        settings = settings || this.settings;
+        var settings = el.data(this.attr_name(true) + '-init') || this.settings,
+            rootElement = settings.rootElement || 'body';
 
-        if (el.parent('body').length === 0) {
-          var placeholder = el.wrap('<div style="display: none;" />').parent(),
-              rootElement = this.settings.rootElement || 'body';
+        if (el.parent(rootElement).length === 0) {
+          var placeholder = el.wrap('<div style="display: none;" />').parent();
 
           el.on('closed.fndtn.reveal.wrapped', function() {
             el.detach().appendTo(placeholder);
