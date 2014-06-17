@@ -15,6 +15,7 @@
       close_on_esc: true,
       dismiss_modal_class: 'close-reveal-modal',
       bg_class: 'reveal-modal-bg',
+      root_element: 'body',
       open: function(){},
       opened: function(){},
       close: function(){},
@@ -248,19 +249,18 @@
     show : function (el, css) {
       // is modal
       if (css) {
-        var settings = el.data(this.attr_name(true) + '-init');
-        settings = settings || this.settings;
+        var settings = el.data(this.attr_name(true) + '-init') || this.settings,
+            root_element = settings.root_element;
 
-        if (el.parent('body').length === 0) {
-          var placeholder = el.wrap('<div style="display: none;" />').parent(),
-              rootElement = this.settings.rootElement || 'body';
+        if (el.parent(root_element).length === 0) {
+          var placeholder = el.wrap('<div style="display: none;" />').parent();
 
           el.on('closed.fndtn.reveal.wrapped', function() {
             el.detach().appendTo(placeholder);
             el.unwrap().unbind('closed.fndtn.reveal.wrapped');
           });
 
-          el.detach().appendTo(rootElement);
+          el.detach().appendTo(root_element);
         }
 
         var animData = getAnimationData(settings.animation);
