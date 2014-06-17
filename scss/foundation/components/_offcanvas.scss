@@ -10,6 +10,7 @@ $include-html-off-canvas-classes: $include-html-classes !default;
 
 $tabbar-bg: #333 !default;
 $tabbar-height: rem-calc(45) !default;
+$tabbar-icon-width: $tabbar-height !default;
 $tabbar-line-height: $tabbar-height !default;
 $tabbar-color: #fff !default;
 $tabbar-middle-padding: 0 rem-calc(10) !default;
@@ -48,7 +49,7 @@ $tabbar-menu-icon-color: #FFF !default;
 $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%) !default;
 
 $tabbar-menu-icon-text-indent: rem-calc(35) !default;
-$tabbar-menu-icon-width: $tabbar-height !default;
+$tabbar-menu-icon-width: $tabbar-icon-width !default;
 $tabbar-menu-icon-height: $tabbar-height !default;
 $tabbar-menu-icon-padding: 0 !default;
 
@@ -166,7 +167,7 @@ $menu-slide: "transform 500ms ease" !default;
 // SMALL SECTIONS
 // These are small sections on the left and right that contain the off-canvas toggle buttons;
 @mixin tabbar-small-section($position) {
-  width: $tabbar-height;
+  width: $tabbar-icon-width;
   height: $tabbar-height;
   position: absolute;
   top: 0;
@@ -193,15 +194,15 @@ $menu-slide: "transform 500ms ease" !default;
   // still need to make these non-presentational
   &.left {
     left: 0;
-    right: $tabbar-height;
+    right: $tabbar-icon-width;
   }
   &.right {
-    left: $tabbar-height;
+    left: $tabbar-icon-width;
     right: 0;
   }
   &.middle {
-    left: $tabbar-height;
-    right: $tabbar-height;
+    left: $tabbar-icon-width;
+    right: $tabbar-icon-width;
   }
 }
 
