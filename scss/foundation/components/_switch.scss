@@ -110,7 +110,7 @@ $switch-label-outline: 1px dotted #888 !default;
   span:last-child {
     position: absolute;
     top: -1px;
-    #{$default-float}: -1px;
+    #{$default-float}: -1 * $switch-paddle-border-width;
     z-index: 1;
     display: block;
     padding: 0;
