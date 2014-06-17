@@ -133,6 +133,31 @@ $(document).foundation({
 
 ***
 
+## Semantic Markup With Sass Mixins 
+
+You can use the a `accordion-container()`, `accordion-navigation`, and `accordion-navigation` mixins to create your own accordion with semantic markup, like so:
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.your-accordion-class  {
+  @include accordion-container;
+
+  .your-accordion-navigation-class  {
+    @include accordion-navigation;
+  }
+
+  .your-accordion-content-class  {
+    @include accordion-content;
+  }
+}
+```
+{{/markdown}}
+  </div>
+</div>
 ##### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
