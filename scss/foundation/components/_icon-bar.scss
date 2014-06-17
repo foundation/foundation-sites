@@ -1,0 +1,126 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import "global";
+
+
+// @name
+// @dependencies _global.scss
+
+
+
+// @variables
+
+// We use these to style the icon-bar and items
+$icon-bar-bg: #333 !default;
+$icon-bar-font-color: #fff !default;
+$icon-bar-font-size: 1rem !default;
+$icon-bar-hover-color: $primary-color !default;
+$icon-bar-icon-color: #fff !default;
+$icon-bar-icon-size: 1.875rem !default;
+$icon-bar-image-width: 1.875rem !default;
+$icon-bar-image-height: 1.875rem !default;
+$icon-bar-active-color: $primary-color !default;
+$icon-bar-item-padding: 1.25rem !default;
+
+// We use these to control the icon-bar heights for our default classes
+$icon-bar-height-tny: 1.5rem !default;
+$icon-bar-height-sml: 2rem !default;
+$icon-bar-height-med: 3rem !default;
+$icon-bar-height-lrg: 4rem !default;
+
+/* toolbar styles */
+
+.icon-bar {
+	background: $icon-bar-bg;
+	width: 100%;
+	font-size: 0;
+	display: inline-block;
+
+	.item {
+		text-align: center;
+		font-size: $icon-bar-font-size;
+		width: 25%;
+		margin: 0 auto;
+		display: block;
+		padding: $icon-bar-item-padding;
+		float: left;
+
+		&:hover { background: $icon-bar-hover-color; }
+
+		i, img { 
+			display: block;
+			margin: 0 auto; 
+
+			& + label {
+				margin-top: .0625rem;
+			}
+		}
+
+		label { color: $icon-bar-font-color; }
+
+		i {
+			font-size: $icon-bar-icon-size;
+			color: $icon-bar-icon-color;
+			vertical-align: middle;
+		}
+
+		img {
+			width: $icon-bar-image-width;
+			height: $icon-bar-image-height;
+		}
+	}
+
+	&.label-right .item {
+
+		i, img { 
+			margin: 0 .0625rem 0 0; 
+			display: inline-block;
+
+			& + label {
+				margin-top: 0;
+			}
+		}
+
+		label { display: inline-block; }
+	}
+
+	&.vertical.label-right .item {
+		text-align: left;
+	}
+
+	&.vertical {
+		height: 100%;
+		width: auto;
+
+		.item {
+			width: auto;
+			margin: auto;
+			float: none;
+		}
+	}
+
+	// Counts
+
+	&.two-up {
+		.item { width: 50%; }
+		&.vertical .item { width: auto; }
+	}
+	&.three-up {
+		.item { width: 33.3333%; }
+		&.vertical .item { width: auto; }
+	}
+	&.four-up {
+		.item { width: 25%; }
+		&.vertical .item { width: auto; }
+	}
+	&.five-up {
+		.item { width: 20%; }
+		&.vertical .item { width: auto; }
+	}
+	&.six-up {
+		.item { width: 16.66667%; }
+		&.vertical .item { width: auto; }
+	}
+}
