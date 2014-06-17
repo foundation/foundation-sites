@@ -264,6 +264,11 @@ You can create a range slider with custom range by setting the `start` and `end`
 
 There are two ways to bind to callbacks in your sliders.
 
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the slider plugin emitted an un-namespaced `change` event, however, this has been replaced by the namespaced `change.fndtn.slider` event. The un-namespaced event will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
+
 <div class="row">
   <div class="large-6 columns">
     <h4>Callback Function</h4>
@@ -285,7 +290,7 @@ $(document).foundation({
 
 {{#markdown}}
 ```js
-$('[data-slider]').on('change', function(){
+$('[data-slider]').on('change.fndtn.slider', function(){
   // do something when the value changes
 });
 ```

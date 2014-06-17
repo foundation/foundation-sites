@@ -306,12 +306,17 @@ Required Foundation Library: `foundation.offcanvas.js`
 
 There are a series of events that you can bind to for triggering callbacks:
 
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the offcanvas plugin emitted un-namespaced `open` and `close` events, however, these have been replaced by the namespaced `open.fndtn.offcanvas` and `close.fndtn.offcanvas` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
+
 ```js
-$(document).on('open', '[data-offcanvas]', function () {
+$(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function () {
   var off_canvas_wrap = $(this);
 });
 
-$(document).on('close', '[data-offcanvas]', function () {
+$(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function () {
   var off_canvas_wrap = $(this);
 });
 
@@ -321,10 +326,10 @@ For example, to freeze scrolling when active:
 
 ```js
 $(document)
-.on('open', '[data-offcanvas]', function() {
+.on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
   $('html').css('overflow', 'hidden');
 })
-.on('close', '[data-offcanvas]', function() {
+.on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
   $('html').css('overflow', 'auto');
 })
 
