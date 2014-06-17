@@ -25,6 +25,7 @@ $range-slider-bar-border-color: #ddd !default;
 $range-slider-radius: $global-radius !default;
 $range-slider-round: $global-rounded !default;
 $range-slider-bar-bg-color: #fafafa !default;
+$range-slider-active-segment-bg-color: scale-color($secondary-color, $lightness: -1%) !default;
 
 // Vertical bar styles
 $range-slider-vertical-bar-width: rem-calc(16) !default;
@@ -138,7 +139,7 @@ $range-slider-handle-cursor: pointer !default;
       display: inline-block;
       position: absolute;
       height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
-      background: scale-color($secondary-color, $lightness: -1%);
+      background: $range-slider-active-segment-bg-color;
     }
     .range-slider-handle {
       @include range-slider-handle-base;
