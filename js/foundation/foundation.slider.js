@@ -193,7 +193,6 @@
         }
       });
     }
-
   };
 
 }(jQuery, window, window.document));

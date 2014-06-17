@@ -39,7 +39,11 @@
 
         if (settings.toggleable && target.is(active_content)) {
           target.parent('dd').toggleClass(settings.active_class, false);
-          return target.toggleClass(settings.active_class, false);
+          target.toggleClass(settings.active_class, false);
+          settings.callback(target);
+          target.triggerHandler('toggled', [accordion]);
+          accordion.triggerHandler('toggled', [target]);
+          return;
         }
 
         if (!settings.multi_expand) {
@@ -49,6 +53,8 @@
 
         target.addClass(settings.active_class).parent().addClass(settings.active_class);
         settings.callback(target);
+        target.triggerHandler('toggled', [accordion]);
+        accordion.triggerHandler('toggled', [target]);
       });
     },
 
