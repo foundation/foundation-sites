@@ -81,6 +81,7 @@ $switch-label-outline: 1px dotted #888 !default;
     float: $default-float;
     width: 50%;
     height: 100%;
+    verical-align: middle;
     margin: 0;
     font-weight: $font-weight-bold;
     text-align: $default-float;
@@ -163,8 +164,8 @@ $switch-label-outline: 1px dotted #888 !default;
   height: rem-calc($height);
 
   label {
-    padding: rem-calc(0, $switch-label-side-padding);
-    line-height: $line-height;
+    padding: 0 rem-calc($switch-label-side-padding);
+    line-height: rem-calc($height);
     font-size: rem-calc($font-size);
   }
 
