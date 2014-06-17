@@ -21,10 +21,11 @@ $range-slider-bar-height: rem-calc(16) !default;
 
 $range-slider-bar-border-width: 1px !default;
 $range-slider-bar-border-style: solid !default;
-$range-slider-bar-border-color: $gainsboro !default; 
+$range-slider-bar-border-color: $gainsboro !default;
 $range-slider-radius: $global-radius !default;
 $range-slider-round: $global-rounded !default;
 $range-slider-bar-bg-color: $ghost !default;
+$range-slider-active-segment-bg-color: scale-color($secondary-color, $lightness: -1%) !default;
 
 // Vertical bar styles
 $range-slider-vertical-bar-width: rem-calc(16) !default;
@@ -79,7 +80,7 @@ $range-slider-disabled-opacity: 0.7 !default;
 }
 
 @mixin range-slider-bar(
-  $bg: $range-slider-bar-bg-color, 
+  $bg: $range-slider-bar-bg-color,
   $radius:false) {
   @include range-slider-bar-base;
   @include range-slider-bar-style;
@@ -153,7 +154,7 @@ $range-slider-disabled-opacity: 0.7 !default;
       display: inline-block;
       position: absolute;
       height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
-      background: scale-color($secondary-color, $lightness: -1%);
+      background: $range-slider-active-segment-bg-color;
     }
     .range-slider-handle {
       @include range-slider-handle-base;
