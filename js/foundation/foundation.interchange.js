@@ -232,7 +232,7 @@
         this.object($(this['cached_' + type][i]));
       }
 
-      return $(window).trigger('resize');
+      return $(window).trigger('resize').trigger('resize.fndtn.interchange');
     },
 
     convert_directive : function (directive) {

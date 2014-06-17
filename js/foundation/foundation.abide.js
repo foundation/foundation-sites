@@ -101,19 +101,19 @@
           settings = form.data(this.attr_name(true) + '-init') || {},
           submit_event = /submit/.test(e.type);
 
-      form.trigger('validated');
+      form.trigger('validated').trigger('validated.fndtn.abide');
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
           if (settings.focus_on_invalid) els[i].focus();
-          form.trigger('invalid');
+          form.trigger('invalid').trigger('invalid.fndtn.abide');
           this.S(els[i]).closest('[data-' + this.attr_name(true) + ']').attr(this.invalid_attr, '');
           return false;
         }
       }
 
       if (submit_event || is_ajax) {
-        form.trigger('valid');
+        form.trigger('valid').trigger('valid.fndtn.abide');
       }
 
       form.removeAttr(this.invalid_attr);

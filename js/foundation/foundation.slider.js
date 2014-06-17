@@ -119,8 +119,7 @@
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
 
-      $handle.parent().attr(this.attr_name(), value);
-      $handle.parent().trigger('change');
+      $handle.parent().attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
 
       $handle.parent().children('input[type=hidden]').val(value);
 

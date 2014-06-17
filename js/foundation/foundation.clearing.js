@@ -282,7 +282,7 @@
 
       if (e.which === NEXT_KEY) this.go(clearing, 'next');
       if (e.which === PREV_KEY) this.go(clearing, 'prev');
-      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click');
+      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click').trigger('click.fndtn.clearing');
     },
 
     nav : function (e, direction) {
@@ -435,7 +435,7 @@
 
       if (target.length) {
         this.S('img', target)
-          .trigger('click', [current, target])
+          .trigger('click', [current, target]).trigger('click.fndtn.clearing', [current, target])
           .trigger('change.fndtn.clearing');
       }
     },

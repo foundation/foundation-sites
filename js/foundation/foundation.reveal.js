@@ -163,7 +163,7 @@
         }
 
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
-        modal.trigger('open');
+        modal.trigger('open').trigger('open.fndtn.reveal');
 
         if (open_modal.length < 1) {
           this.toggle_bg(modal, true);
@@ -214,7 +214,7 @@
       if (open_modals.length > 0) {
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
-        modal.trigger('close');
+        modal.trigger('close').trigger('close.fndtn.reveal');
         this.toggle_bg(modal, false);
         this.hide(open_modals, settings.css.close, settings);
       }
@@ -279,7 +279,7 @@
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 this.locked = false;
-                el.trigger('opened');
+                el.trigger('opened').trigger('opened.fndtn.reveal');
               }.bind(this))
               .addClass('open');
           }.bind(this), settings.animation_speed / 2);
@@ -294,13 +294,13 @@
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 this.locked = false;
-                el.trigger('opened');
+                el.trigger('opened').trigger('opened.fndtn.reveal');
               }.bind(this))
               .addClass('open');
           }.bind(this), settings.animation_speed / 2);
         }
 
-        return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened');
+        return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened').trigger('opened.fndtn.reveal');
       }
 
       var settings = this.settings;
@@ -335,7 +335,7 @@
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 this.locked = false;
-                el.css(css).trigger('closed');
+                el.css(css).trigger('closed').trigger('closed.fndtn.reveal');
               }.bind(this))
               .removeClass('open');
           }.bind(this), settings.animation_speed / 2);
@@ -348,13 +348,13 @@
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 this.locked = false;
-                el.css(css).trigger('closed');
+                el.css(css).trigger('closed').trigger('closed.fndtn.reveal');
               }.bind(this))
               .removeClass('open');
           }.bind(this), settings.animation_speed / 2);
         }
 
-        return el.hide().css(css).removeClass('open').trigger('closed');
+        return el.hide().css(css).removeClass('open').trigger('closed').trigger('closed.fndtn.reveal');
       }
 
       var settings = this.settings;

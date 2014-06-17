@@ -230,7 +230,7 @@
       
       S(window).off('.topbar').on('resize.fndtn.topbar', self.throttle(function () {
         self.resize.call(self);
-      }, 50)).trigger('resize');
+      }, 50)).trigger('resize').trigger('resize.fndtn.topbar');
 
       S('body').off('.topbar').on('click.fndtn.topbar touchstart.fndtn.topbar', function (e) {
         var parent = S(e.target).closest('li').closest('li.hover');

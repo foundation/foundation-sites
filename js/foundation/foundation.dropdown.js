@@ -111,7 +111,7 @@
             .removeClass(self.settings.active_class)
             .removeData('target');
 
-          self.S(this).trigger('closed', [dropdown]);
+          self.S(this).trigger('closed').trigger('closed.fndtn.dropdown', [dropdown]);
         }
       });
     },
@@ -128,7 +128,7 @@
           .css(dropdown
             .addClass(this.settings.active_class), target);
         dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
-        dropdown.data('target', target.get(0)).trigger('opened', [dropdown, target]);
+        dropdown.data('target', target.get(0)).trigger('opened').trigger('opened.fndtn.dropdown', [dropdown, target]);
     },
 
     data_attr: function () {
