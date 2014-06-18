@@ -1,0 +1,104 @@
+
+/* Styles for Calendar */
+.calendar  {
+  padding-bottom: 26px;
+  margin-top: 30px;
+  width: 100%;  
+  display:block;
+  thead {
+    display:none;
+    @media only screen and (min-width: 767px) {
+      text-align: center; display:block;
+    }
+  }
+  tbody td {
+    display:block;
+    clear:both;
+    @media only screen and (min-width: 767px) {
+      display:table-cell;
+      width: 150px;
+      height:150px; 
+      position: relative;
+    }
+    span {
+      position: absolute;
+      top: 5px;
+      left: 5px; 
+    }
+  }
+  .day {
+    display:block;
+    float:left;
+    width: 20px;
+    margin-right:10px;
+  }
+  .inactive {
+    color: #ccc;
+  }
+  .event {
+    float:left;
+    border-radius:3px;
+    display:block;
+    padding: 2px;
+    font-size: 0.9em;
+    cursor: pointer;
+    position: relative;
+    margin-top: 18px;
+    margin-bottom: -12px;
+   
+    &.blue {
+      background: #3a87ad;
+      
+    }
+    &.yellow {
+      background: #f9c846;
+    }
+    &.green {
+      background: #a7d85b;
+    }
+  }
+  
+}
+
+
+
+
+
+/*  ======================================
+displaying for small 
+ ======================================*/
+ 
+@media only screen and (max-width: 767px){
+  .calendar {
+    tbody td{
+      width: 100% !important;
+      span{
+        position: relative;
+      }
+    } 
+    .event {
+      float: none;
+      margin-top: 5px;
+      position: relative;
+      margin-left: 15px;
+      margin-bottom: 0;
+    }
+    
+    tbody tr, tbody {
+       width: 100% ; 
+       display: block;
+     }
+
+  }
+}
+
+
+@media only screen and (min-width: 767px){
+  .event{
+    width: 100%;
+    display: block;
+  }
+}
+
+
+

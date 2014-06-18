@@ -8,14 +8,53 @@
   <title>Foundation 4</title>
 
   <link rel="stylesheet" href="css/normalize.css" />
-  
   <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/building-blocks/timeline-comparison.css" />
+  <link rel="stylesheet" href="css/foundation-icons.css" />
   
 
   <script src="js/vendor/custom.modernizr.js"></script>
 
 </head>
 <body>
+  <div class="row">
+    <div class="large-8 columns small-centered">
+      <div class="exp-timeline">
+        <div class="container">
+          <ul class="items">
+            <li>
+              <h5>One</h5>
+              <div class="active" style="width: 30%">
+                <div class="finish"></div>
+              </div>
+              <div class="inactive" style="width: 70%"></div>
+            </li>
+            <li>
+              <h5>Two</h5>
+              <div class="inactive" style="width: 30%"></div>
+              <div class="active" style="width: 70%">
+                <div class="start"></div>
+              </div>
+            </li>
+            <li>
+              <h5>Three</h5>
+              <div class="inactive" style="width: 90%"></div>
+              <div class="active" style="width: 10%">
+                <div class="start"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <ul class="inline-list dates">
+          <li>2014</li>
+          <li>2013</li>
+          <li>2012</li>
+          <li>2011</li>
+          <li>2010</li>
+        </ul>  
+      </div>
+    </div>
+  </div>
 
   <script>
   document.write('<script src=' +
