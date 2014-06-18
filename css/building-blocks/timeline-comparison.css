@@ -1,50 +1,44 @@
 /* Styles for Timeline Comparison */
 .exp-timeline {
   margin-top: 100px;
-
-  ul.items {
-    margin-left: 0;
-
-    li {
-      display: block;
-      margin-bottom: 2.5rem;
-
-      .active {
-        background: #008cba;
-        height: 0.625rem;
-        float: left;
-        position: relative;
-      }
-
-      .start {
-        height: 1.25rem;
-        width: 1.25rem;
-        position: absolute;
-        left: 0;
-        background: #008cba;
-        border-radius: 50%;
-        top: -0.3125rem;
-        left: -0.625rem;
-      }
-
-      .finish {
-        height: 1.25rem;
-        width: 1.25rem;
-        position: absolute;
-        right: 0;
-        background: #008cba;
-        border-radius: 50%;
-        top: -0.3125rem;
-        right: -0.625rem;
-      }
-
-      .inactive {
-        background: #eee;
-        height: 0.625rem;
-        float: left;
-      }
-    }
-  }  
+}
+.exp-timeline ul.items {
+  margin-left: 0;
+}
+.exp-timeline ul.items li {
+  display: block;
+  margin-bottom: 2.5rem;
+}
+.exp-timeline ul.items li .active {
+  background: #008cba;
+  height: 0.625rem;
+  float: left;
+  position: relative;
+}
+.exp-timeline ul.items li .start {
+  height: 1.25rem;
+  width: 1.25rem;
+  position: absolute;
+  left: 0;
+  background: #008cba;
+  border-radius: 50%;
+  top: -0.3125rem;
+  left: -0.625rem;
+}
+.exp-timeline ul.items li .finish {
+  height: 1.25rem;
+  width: 1.25rem;
+  position: absolute;
+  right: 0;
+  background: #008cba;
+  border-radius: 50%;
+  top: -0.3125rem;
+  right: -0.625rem;
+}
+.exp-timeline ul.items li .inactive {
+  background: #eee;
+  height: 0.625rem;
+  float: left;
 }
 
 ul.dates {
@@ -52,13 +46,12 @@ ul.dates {
   width: 100%;
   height: 2.5rem;
   margin: 0;
-
-  li {
-    color: #fff;
-    margin: 0.625rem 0 0 0;
-    width: 20%;
-    font-weight: bold;
-    font-size: 0.8125rem;
-    text-align: center;  
-  }
+}
+ul.dates li {
+  color: #fff;
+  margin: 0.625rem 0 0 0;
+  width: 20%;
+  font-weight: bold;
+  font-size: 0.8125rem;
+  text-align: center;
 }
