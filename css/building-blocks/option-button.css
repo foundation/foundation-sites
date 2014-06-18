@@ -1,0 +1,41 @@
+/* Styles for Option Button */
+.wrapper {
+  overflow: hidden;
+  display: inline-block;
+  border: 2px solid #008cba;
+  border-radius: 999px;
+  text-align: center;
+  width: 100%;
+  background: #fff;
+  margin-top: 50px;
+}
+.wrapper:hover {
+  border: none;
+  background-color: #008cba;
+  transition: background-color 0.3s ease;
+}
+.wrapper:hover .inside {
+  display: block;
+  font-size: 16px;
+  padding: 22px;
+  float: left;
+}
+.wrapper:hover .inside:hover {
+  transition: background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.wrapper:hover label {
+  display: none;
+}
+.wrapper .inside {
+  display: none;
+  color: #fff;
+  width: 50%;
+  z-index: 9999;
+}
+.wrapper label {
+  padding: 16px;
+  color: #008cba;
+  font-size: 16px;
+  font-weight: bold;
+}
