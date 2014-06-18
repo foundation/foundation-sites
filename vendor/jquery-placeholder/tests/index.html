@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jquery-placeholder test suite</title>
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+		<style>
+			.placeholder { color: #aaa; }
+			#input-type-password { border: 5px solid lime; }
+		</style>
+	</head>
+	<body>
+		<div id="qunit"></div>
+		<div id="fixtures">
+			<!-- I explicitly want these to be visible in the page, for easier debugging. -->
+			<form>
+				<p><label><code>type=search</code> <input id="input-type-search" type="search" name="search" placeholder="Search this site..."></label></p>
+				<p><label><code>type=text</code> <input id="input-type-text" type="text" name="name" placeholder="e.g. John Doe"></label></p>
+				<p><label><code>type=email</code> <input id="input-type-email" type="email" name="email" placeholder="e.g. address@example.ext"></label></p>
+				<p><label><code>type=url</code> <input id="input-type-url" type="url" name="url" placeholder="e.g. http://mathiasbynens.be/"></label></p>
+				<p><label><code>type=tel</code> <input id="input-type-tel" type="tel" name="tel" placeholder="e.g. +32 472 77 69 88"></label></p>
+				<p><label for="input-type-password"><code>type=password</code> </label><input id="input-type-password" type="password" name="password" placeholder="e.g. hunter2"></p>
+				<p><label><code>textarea</code> <textarea id="textarea" name="message" placeholder="Your message goes here"></textarea></label></p>
+				<p><input type="submit" value="type=submit"></p>
+			</form>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+		<script src="../jquery.placeholder.js"></script>
+		<script src="tests.js"></script>
+	</body>
+</html>

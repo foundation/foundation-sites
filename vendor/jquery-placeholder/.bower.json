@@ -1,0 +1,17 @@
+{
+  "name": "jquery-placeholder",
+  "version": "2.0.8",
+  "main": [
+    "jquery.placeholder.js"
+  ],
+  "homepage": "https://github.com/mathiasbynens/jquery-placeholder",
+  "_release": "2.0.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.8",
+    "commit": "051f21ef5279f4887d9caf6af7af211d933ba670"
+  },
+  "_source": "git://github.com/mathiasbynens/jquery-placeholder.git",
+  "_target": "~2.0.7",
+  "_originalSource": "jquery-placeholder"
+}
