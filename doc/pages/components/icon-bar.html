@@ -2,36 +2,88 @@
 title: Icon Bar
 ---
 
-<h3 class="subheader">Alerts are handy elements you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.</h3>
+<h3 class="subheader">An Icon Bar provides a menu to quickly navigate an app. Use the Icon Bar horizontally or vertically, with the labels below the icons or to the right. Have it your way.</h3>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, earum, quas temporibus hic atque nobis. Et, consequatur, quos neque consectetur quo impedit ipsa voluptatibus! Natus, est, ex, in, neque dolores unde debitis ullam officiis molestias facere optio atque tempore rerum.</p>
+***
 
-<div class="icon-bar six-up">
-  <a class="item">
-    <img src="../assets/img/icons/footer-foundation-retina.png">
-    <label>One</label>
-  </a>
-  <a class="item">
-    <img src="../assets/img/icons/footer-foundation-retina.png">
-    <label>Two</label>
-  </a>
-  <a class="item">
-    <img src="../assets/img/icons/footer-foundation-retina.png">
-    <label>Three</label>
-  </a>
-  <a class="item">
-    <img src="../assets/img/icons/footer-foundation-retina.png">
-    <label>Four</label>
-  </a>
-  <a class="item">
-    <img src="../assets/img/icons/footer-foundation-retina.png">
-    <label>Five</label>
-  </a>
-  <a class="item">
-    <img src="../assets/img/icons/footer-foundation-retina.png">
-    <label>Six</label>
-  </a>
+{{> examples_icon_bar_rendered}}
+
+***
+
+<h3>Basic</h3>
+
+You can create an Icon Bar using minimal markup. Specifying the number of items `one-up` through `six-up` will ensure the items are evenly spaced.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_icon_bar}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_icon_bar_rendered}}
+  </div>
 </div>
+
+***
+
+<h3>Vertical Icon Bar</h3>
+
+It's easy. Just add a class of `.vertical` to make the Icon Bar stack up.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_icon_bar_vert}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_icon_bar_vert_rendered}}
+  </div>
+</div>
+
+***
+
+### Other Options
+
+The default orientation for the labels are on the bottom. By adding a class of `.label-right` you can have the label on the right and icon on the left.
+
+***
+
+## Customize With Sass 
+
+Icon Bar can be easily customized using our provided Sass variables.
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+// We use these to style the icon-bar and items
+$icon-bar-bg: #333 !default;
+$icon-bar-font-color: #fff !default;
+$icon-bar-font-size: 1rem !default;
+$icon-bar-hover-color: $primary-color !default;
+$icon-bar-icon-color: #fff !default;
+$icon-bar-icon-size: 1.875rem !default;
+$icon-bar-image-width: 1.875rem !default;
+$icon-bar-image-height: 1.875rem !default;
+$icon-bar-active-color: $primary-color !default;
+$icon-bar-item-padding: 1.25rem !default;
+```
+{{/markdown}}
+  </div>
+</div>
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/accordion";
+```
 
 <p>Change the default orientation of the toolbar by adding a class of "vertical".</p>
 <p>Change the orientation of the labels by adding a class of "label-right" or "label-bottom" to the toolbar element.</p>
