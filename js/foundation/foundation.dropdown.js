@@ -167,7 +167,7 @@
     },
 
     css : function (dropdown, target) {
-      var left_offset = (target.width() - dropdown.width()) / 2;
+      var left_offset = Math.max((target.width() - dropdown.width()) / 2, 8);
       
       this.clear_idx();
 
