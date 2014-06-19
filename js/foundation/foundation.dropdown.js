@@ -215,7 +215,7 @@
       top: function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
-            pip_offset_base = (t.outerWidth() / 2) - 8;
+            pip_offset_base = 8;
 
         this.addClass('drop-top');
 
@@ -233,7 +233,7 @@
       bottom: function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
-            pip_offset_base = (this.outerWidth() / 2) - 8;
+            pip_offset_base = 8;
 
         if (t.outerWidth() < this.outerWidth() || self.small()) {
           self.adjust_pip(pip_offset_base, p);
