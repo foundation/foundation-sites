@@ -4,7 +4,7 @@
   Foundation.libs.tooltip = {
     name : 'tooltip',
 
-    version : '5.2.3',
+    version : '5.3.0',
 
     settings : {
       additional_inheritable_classes : [],
