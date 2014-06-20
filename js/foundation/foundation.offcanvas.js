@@ -4,7 +4,7 @@
   Foundation.libs.offcanvas = {
     name : 'offcanvas',
 
-    version : '5.2.2',
+    version : '5.2.1',
 
     settings : {
     	close_on_click: true
