@@ -17,11 +17,11 @@
     events : function () {
       var self = this,
           S = self.S;
-
+      
       S(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.left-off-canvas-toggle', function (e) {
             self.click_toggle_class(e, 'move-right');
-            S(".left-off-canvas-submenu").removeClass('move-right');
+            S(".left-submenu").removeClass('move-right');
         })
         .on('click.fndtn.offcanvas', '.left-off-canvas-menu a', function (e) {
           if(self.settings.close_on_click && !S(this).parent().hasClass("has-submenu") && !S(this).parent().hasClass("back")){
@@ -29,7 +29,7 @@
             S(this).parent().parent().removeClass('move-right');
           }else if(S(this).parent().hasClass("has-submenu")){
             e.preventDefault();
-            S(this).siblings(".left-off-canvas-submenu").toggleClass('move-right');
+            S(this).siblings(".left-submenu").toggleClass('move-right');
           }else if(S(this).parent().hasClass("back")){
             e.preventDefault();
             S(this).parent().parent().removeClass('move-right');
@@ -37,7 +37,7 @@
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
           self.click_toggle_class(e, 'move-left');
-          S(".right-off-canvas-submenu").removeClass('move-left');
+          S(".right-submenu").removeClass('move-left');
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
           if(self.settings.close_on_click && !S(this).parent().hasClass("has-submenu") && !S(this).parent().hasClass("back")){
@@ -45,7 +45,7 @@
             S(this).parent().parent().removeClass('move-left');
           }else if(S(this).parent().hasClass("has-submenu")){
             e.preventDefault();
-            S(this).siblings(".right-off-canvas-submenu").toggleClass('move-left');
+            S(this).siblings(".right-submenu").toggleClass('move-left');
           }else if(S(this).parent().hasClass("back")){
             e.preventDefault();
             S(this).parent().parent().removeClass('move-left');
@@ -54,8 +54,8 @@
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
           self.click_remove_class(e, 'move-left');
           self.click_remove_class(e, 'move-right');
-          S(".left-off-canvas-submenu").removeClass('move-right');
-          S(".right-off-canvas-submenu").removeClass('move-left');
+          S(".left-submenu").removeClass('move-right');
+          S(".right-submenu").removeClass('move-left');
         })
     },
     click_toggle_class: function(e, class_name) {
