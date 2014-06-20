@@ -9,6 +9,9 @@
 //
 $include-html-button-classes: $include-html-classes !default;
 
+// We use this to control the default button color.
+$button-default-color: $primary-color !default;
+
 // We use these to build padding for buttons.
 $button-tny: rem-calc(10) !default;
 $button-sml: rem-calc(14) !default;
@@ -36,7 +39,7 @@ $button-function-factor: -20% !default;
 // We use these to control button border styles.
 $button-border-width: 0px !default;
 $button-border-style: solid !default;
-$button-bg: $primary-color !default;
+$button-bg: $button-default-color !default;
 $button-border-color: scale-color($button-bg, $lightness: $button-function-factor) !default;
 
 // We use this to set the default radius used throughout the core.
@@ -117,7 +120,7 @@ $button-disabled-opacity: 0.7 !default;
 //
 // We use this mixin to add button color styles
 //
-// $bg - Primary color set in settings file. Default: $button-bg.
+// $bg - Default color set in settings file. Default: $primary-color.
 // $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
 @mixin button-style($bg:$button-bg, $radius:false, $disabled:false) {
@@ -166,7 +169,7 @@ $button-disabled-opacity: 0.7 !default;
 // We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
 //
 // $padding - Used to build padding for buttons Default: $button-med ||= rem-calc(12)
-// $bg - Primary color set in settings file. Default: $button-bg.
+// $bg - Default color set in settings file. Default: $primary-color.
 // $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default:false.
 // $full-width - We can set $full-width:true to remove side padding extend width. Default:false.
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default:false.
@@ -190,7 +193,12 @@ $button-disabled-opacity: 0.7 !default;
 
       @include single-transition(background-color);
 
-      &.secondary { @include button-style($bg:$secondary-color); }
+      @if($button-default-color != $primary-color) {
+        &.primary { @include button-style($bg: $primary-color, $disabled:true); }
+      }
+      @if($button-default-color != $secondary-color) {
+        &.secondary { @include button-style($bg: $secondary-color, $disabled:true); }
+      }
       &.success   { @include button-style($bg:$success-color); }
       &.alert     { @include button-style($bg:$alert-color); }
 
@@ -205,8 +213,13 @@ $button-disabled-opacity: 0.7 !default;
       &.radius { @include button-style($bg:false, $radius:true); }
       &.round  { @include button-style($bg:false, $radius:$button-round); }
 
-      &.disabled, &[disabled] { @include button-style($bg:$button-bg, $disabled:true);
-        &.secondary { @include button-style($bg:$secondary-color, $disabled:true); }
+      &.disabled, &[disabled] { @include button-style($bg:$button-default-color, $disabled:true);
+        @if($button-default-color != $primary-color) {
+          &.primary { @include button-style($bg: $primary-color); }
+        }
+        @if($button-default-color != $secondary-color) {
+          &.secondary { @include button-style($bg: $secondary-color); }
+        }
         &.success { @include button-style($bg:$success-color, $disabled:true); }
         &.alert { @include button-style($bg:$alert-color, $disabled:true); }
       }
