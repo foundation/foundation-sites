@@ -157,14 +157,12 @@
 
     check_validation_and_apply_styles : function (el_patterns) {
       var i = el_patterns.length,
-          validations = [],
-          form = this.S(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
-          settings = form.data(this.attr_name(true) + '-init') || {};
+          validations = [];
 
       while (i--) {
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
-            value = el.value.trim(),
+            value = el.value,
             direct_parent = this.S(el).parent(),
             validator = el.getAttribute(this.add_namespace('data-abide-validator')),
             is_radio = el.type === "radio",
@@ -187,36 +185,32 @@
           validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
           validations.push(this.valid_checkbox(el, required));
-        } else if (validator) {
-          valid = this.settings.validators[validator].apply(this, [el, required, parent])
-          validations.push(valid);
-
-          if (valid) {
-            this.S(el).removeAttr(this.invalid_attr);
-            parent.removeClass('error');
-          } else {
-            this.S(el).attr(this.invalid_attr, '');
-            parent.addClass('error');
-          }
-
         } else {
+          
+          if (validator) {
+            valid = this.settings.validators[validator].apply(this, [el, required, parent]);
+            validations.push(valid);
+          }
 
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1 || $(el).attr('disabled')) {
+            validations.push(true);
+          } else {
+            validations.push(false);
+          }
+
+          if(validations.every(function(valid){return valid;})){
             this.S(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
-            if (label.length > 0 && settings.error_labels) label.removeClass('error');
-
-            validations.push(true);
+            if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
             $(el).triggerHandler('valid');
           } else {
-            this.S(el).attr(this.invalid_attr, '');
             parent.addClass('error');
-            if (label.length > 0 && settings.error_labels) label.addClass('error');
-
-            validations.push(false);
+            this.S(el).attr(this.invalid_attr, '');
+            if (label.length > 0 && this.settings.error_labels) label.addClass('error');
             $(el).triggerHandler('invalid');
           }
+
         }
       }
 
