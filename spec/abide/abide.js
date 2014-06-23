@@ -155,7 +155,7 @@ describe('abide:', function() {
       var invalid_fields = $('form').find('[data-invalid]');
       // includes other fields with validators
       expect(invalid_fields.length).toBe(3);
-      expect( $('input[name="user_end_num"]').val("2").toHaveAttr('data-invalid'));
+      expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
 
       expect($('input[name="user_start_num"]')).not.toHaveAttr('data-invalid');
       expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
