@@ -160,7 +160,6 @@
           validations = [],
           form = this.S(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
           settings = form.data(this.attr_name(true) + '-init') || {};
-
       while (i--) {
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
@@ -201,7 +200,9 @@
             validations.push(false);
           }
 
-          if(validations.every(function(valid){return valid;})){
+          validations = [validations.every(function(valid){return valid;})];
+
+          if(validations[0]){
             this.S(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
