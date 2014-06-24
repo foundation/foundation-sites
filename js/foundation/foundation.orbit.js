@@ -229,8 +229,10 @@
       if (settings.animation === 'slide') 
         animate = new SlideAnimation(settings, slides_container);        
 
-      container.on('click', '.'+settings.next_class, self.next);
-      container.on('click', '.'+settings.prev_class, self.prev);
+      var next_class = settings.next_class.split(" ").join('.');
+      var prev_class = settings.prev_class.split(" ").join('.');
+      container.on('click', '.'+next_class, self.next);
+      container.on('click', '.'+prev_class, self.prev);
 
       if (settings.next_on_click) {
         container.on('click', '.'+settings.slides_container_class+' [data-orbit-slide]', self.link_bullet);
