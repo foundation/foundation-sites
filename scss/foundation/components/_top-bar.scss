@@ -31,7 +31,6 @@ $topbar-dropdown-link-weight: $font-weight-normal !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: #fff !default;
 $topbar-dropdown-toggle-alpha: 0.4 !default;
-$topbar-dropdown-back-font-family: $header-font-family !default;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: #fff !default;
@@ -409,7 +408,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             margin-bottom: 0;
             margin-top: 0;
             a {
-              font-family: $topbar-dropdown-back-font-family;
               color: $topbar-link-color;
               line-height: $topbar-height / 2;
               display: block;
