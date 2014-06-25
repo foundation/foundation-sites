@@ -55,8 +55,17 @@
       }
 
       if (settings.navigation_arrows) {
-        container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
-        container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
+        if (settings.navigation_container) {
+          var nav_selector = settings.navigation_container_selector;
+          container.append($('<' + nav_selector + '></' + nav_selector + '>').addClass(settings.navigation_container_class));
+
+          var nav_container = container.find(nav_selector + '.' + settings.navigation_container_class);
+          nav_container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class))
+          nav_container.append($('<a href="#"><span></span></a>').addClass(settings.next_class))
+        } else {
+          container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
+          container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
+        }
       }
 
       if (settings.timer) {
@@ -413,6 +422,9 @@
       animation_speed: 500,
       stack_on_small: false,
       navigation_arrows: true,
+      navigation_container: true,
+      navigation_container_selector: 'div',
+      navigation_container_class: 'orbit-navigation',
       slide_number: true,
       slide_number_text: 'of',
       container_class: 'orbit-container',
