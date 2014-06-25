@@ -199,31 +199,33 @@ $icon-bar-item-padding: 1.25rem !default;
   }
 }
 
+@if $include-html-form-classes {
 
-/* toolbar styles */
+	// toolbar styles
 
-.icon-bar {
+	.icon-bar {
 
-	// Counts
+		// Counts
 
-	&.two-up {
-		.item { width: 50%; }
-		&.vertical .item { width: auto; }
-	}
-	&.three-up {
-		.item { width: 33.3333%; }
-		&.vertical .item { width: auto; }
-	}
-	&.four-up {
-		.item { width: 25%; }
-		&.vertical .item { width: auto; }
-	}
-	&.five-up {
-		.item { width: 20%; }
-		&.vertical .item { width: auto; }
-	}
-	&.six-up {
-		.item { width: 16.66667%; }
-		&.vertical .item { width: auto; }
+		&.two-up {
+			.item { width: 50%; }
+			&.vertical .item { width: auto; }
+		}
+		&.three-up {
+			.item { width: 33.3333%; }
+			&.vertical .item { width: auto; }
+		}
+		&.four-up {
+			.item { width: 25%; }
+			&.vertical .item { width: auto; }
+		}
+		&.five-up {
+			.item { width: 20%; }
+			&.vertical .item { width: auto; }
+		}
+		&.six-up {
+			.item { width: 16.66667%; }
+			&.vertical .item { width: auto; }
+		}
 	}
 }
