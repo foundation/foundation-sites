@@ -26,9 +26,9 @@
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
-// $include-html-classes: true;
+$include-html-classes: true;
 // $include-print-styles: true;
-// $include-html-global-classes: $include-html-classes;
+$include-html-global-classes: $include-html-classes;
 
 // Grid 
 
@@ -44,7 +44,8 @@
 // $body-bg: #fff;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $body-font-weight: $font-weight-normal;
+$font-weight-normal:normal;
+$body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
 // We use this to control font-smoothing
@@ -56,7 +57,7 @@
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
+$primary-color: #008CBA;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
@@ -670,7 +671,7 @@
 // $include-html-magellan-classes: $include-html-classes;
 
 // $magellan-bg: #fff;
-// $magellan-padding: 10px;
+$magellan-padding: 0 !important;
 
 // Off-canvas
 
@@ -1027,18 +1028,18 @@
 // $sub-nav-font-color: #999;
 // $sub-nav-font-weight: $font-weight-normal;
 // $sub-nav-text-decoration: none;
-// $sub-nav-padding: rem-calc(3 16);
+$sub-nav-padding: rem-calc(3 16);
 // $sub-nav-border-radius: 3px;
 // $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 
 // We use these to control the active item styles
-// $sub-nav-active-font-weight: $font-weight-normal;
-// $sub-nav-active-bg: $primary-color;
-// $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
-// $sub-nav-active-color: #fff;
-// $sub-nav-active-padding: $sub-nav-padding;
-// $sub-nav-active-cursor: default;
+$sub-nav-active-font-weight: $font-weight-normal;
+$sub-nav-active-bg: $primary-color;
+$sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
+$sub-nav-active-color: #fff;
+$sub-nav-active-padding: $sub-nav-padding;
+$sub-nav-active-cursor: default;
 
 // $sub-nav-item-divider: "";
 // $sub-nav-item-divider-margin: rem-calc(12);

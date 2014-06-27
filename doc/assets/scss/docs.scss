@@ -1,37 +1,22 @@
+
+//Mixins
 @import "global";
-@import "foundation";
-@import "code";
-@import "marketing-off-canvas";
-@import "footer";
-@import "foundation-forum";
-@import "footer-banner";
+
+//Foundation Libraries
+@import 
+  "scss/foundation/settings",
+  "foundation";
+
+//Marketing Site Common Library
+@import 
+  "code",
+  "marketing-off-canvas",
+  "footer",
+  "foundation-forum",
+  "footer-banner";
 
 
-@mixin box-shadow(
-  $shadow-1 : default,
-  $shadow-2 : false,
-  $shadow-3 : false,
-  $shadow-4 : false,
-  $shadow-5 : false,
-  $shadow-6 : false,
-  $shadow-7 : false,
-  $shadow-8 : false,
-  $shadow-9 : false,
-  $shadow-10: false
-) { }
 
-@mixin border-direction($direction:top,
-                        $style:solid,
-                        $width:2px,
-                        $color:darken($panel-bg-color, 1%)) {
-  border-#{$direction}: #{$style} #{$width} #{$color};
-}
-
-@mixin border($style:solid,
-              $width:2px,
-              $color:darken($panel-bg-color, 1%)) {
-  border: #{$style} #{$width} #{$color};
-}
 
 .row {
   max-width: rem-calc(1440);
@@ -206,6 +191,8 @@ footer { margin-top: 45px; }
 .magellan-container {
   padding: 10px 0;
   background: #fff;
+
+
 }
 .example-orbit {}
 .example-orbit-content li div {
@@ -590,19 +577,165 @@ div#interchangeMarkup img{
   max-width: none;
 }
 
-img.git {
-  max-height: 65px;
-  margin:20px;
+.youwillneed img {
+  width: 160px;
+  margin:20px 0;
 }
 
-img.node {
-  max-height: 65px;
-  margin:20px;
+.youwillneed h4 {
+  font-size: 1.3rem;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+.note {
+  p {
+    font-size: rem-calc(16);
+  }
+}
+
+img.codekit {
+  max-height: 180px;
+  margin: 10px;
+}
+
+img.cactus {
+  max-height: 180px;
+  margin: 10px 20px 0 0;
+}
+
+img.flow {
+  margin: 0 10px 20px 0;
+
+  @media #{$small-only} { 
+    margin:20px;
+  }
+
 
 }
 
-img.ruby {
-  max-height: 65px;
-  margin:20px;
-
+@media #{$small-only} {
+   .other-uses {
+    .button {
+      display: block !important;
+    }
+  }
 }
+
+
+
+/*------------------------------------
+ timeline styles
+------------------------------------*/
+.path-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.path-container .path-item {
+  // font-size: emCalc(16px);
+  // line-height: 1.7;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+// .path-container .path-item a {
+//   font-weight: bold;
+//   font-size: emCalc(14px);
+// }
+
+.circlenumber {
+  background-color: #fff;
+  border-radius: 50%;
+  border:2px solid #0b4f69;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  margin-left: 0.83333rem;
+  margin-right: 18px; 
+  margin-bottom: 5px;
+  z-index: 2;
+}
+
+.circlenumber h3 {
+  color: #0b4f69;
+  position: relative;
+  text-align: center;
+  top: 7%;
+  font-size: 24px;
+}
+
+// .path-container .line {
+//   background: #d1d3d4;
+//   width: 2px;
+//   bottom: 0;
+//   position: absolute;
+//   top: 160px;
+//   left: 50%;
+//   z-index: -10;
+//   height: 700px;
+// }
+
+// .howtoinstall .circle {
+//   background-color: #0b4f69;
+//   border-radius:50%;
+//   width:48px;
+//   height:48px;
+//   position:relative;
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+// }
+
+// .howtoinstall .circle h3 {
+//   line-height: 1.9;  
+//   color:#fff;
+//   position: relative;
+//   text-align:center;
+// }
+
+/*------------------------------------
+ mobile timeline styles
+------------------------------------*/
+
+@media only screen and (max-width: 1800px) {
+  .path-container {
+
+  }
+  .path-container .circle {
+    top: 0;
+    right: 0;
+    left: 0;
+    float: none;
+    padding-top: 0px;
+    margin-right: auto;
+  }
+}
+
+// .path-text {
+//   background: #fff;
+// }
+
+.sub-nav {
+  background-color: $panel-bg;
+  padding: 10px;
+  margin: 0;
+}
+
+.markdown .panel {
+  border: none;
+  font-family: Consolas, 'Liberation Mono', Courier, monospace;
+  font-weight: normal;
+  // font-size: emCalc(18px) !important;
+}
+
+.otherapps {
+  margin-bottom: 20px !important; 
+}
+
+.markdown code {
+  color:$primary-color;
+}
+
+.dashed {
+  border-style: dashed;
+}
+
