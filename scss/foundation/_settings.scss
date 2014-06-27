@@ -368,7 +368,7 @@
 // $button-border-width: 0px;
 // $button-border-style: solid;
 // $button-bg: $primary-color;
-// $button-border-color: scale-color($bg, $lightness: $button-function-factor);
+// $button-border-color: scale-color($button-bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
