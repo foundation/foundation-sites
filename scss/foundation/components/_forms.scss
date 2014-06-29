@@ -432,6 +432,24 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       vertical-align: baseline;
     }
 
+    /*  Vertical formatting for a group of checkboxes and radio buttons */
+    .checkbox-group, .radio-group {
+      label {
+        padding-left: 20px;
+        margin-bottom: 0;
+        font-weight: normal;
+        cursor: pointer;
+    
+        input[type="checkbox"], input[type="radio"] {
+          float: left;
+          margin-left: -20px;
+          margin-top: 4px;
+        }
+      }
+    
+      margin: 0 0 $form_spacing 0;
+    }
+
     /* Normalize file input width */
     input[type="file"] {
       width:100%;
