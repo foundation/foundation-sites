@@ -577,10 +577,16 @@ div#interchangeMarkup img{
   max-width: none;
 }
 
+.youwillneed {
+  margin-bottom: -10px;
+}
+
 .youwillneed img {
   width: 160px;
-  margin:20px 0;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
+
 
 .youwillneed h4 {
   font-size: 1.3rem;
@@ -588,31 +594,33 @@ div#interchangeMarkup img{
   text-transform: capitalize;
 }
 
-.note {
-  p {
-    font-size: rem-calc(16);
-  }
+p.note  {
+  font-size: rem-calc(16px);
+
 }
 
-img.codekit {
+img.others {
   max-height: 180px;
-  margin: 10px;
+  display: block;
+  margin: 10px auto;
 }
 
-img.cactus {
-  max-height: 180px;
-  margin: 10px 20px 0 0;
-}
 
 img.flow {
-  margin: 0 10px 20px 0;
+  margin: 10px 10px 15px 0;
 
   @media #{$small-only} { 
     margin:20px;
   }
-
-
 }
+
+img.cli {
+  @media #{$small-only} {
+    margin:20px;
+  }
+}
+
+
 
 @media #{$small-only} {
    .other-uses {
@@ -622,37 +630,41 @@ img.flow {
   }
 }
 
-
+.recommended {
+  padding-top:10px;
+}
 
 /*------------------------------------
  timeline styles
 ------------------------------------*/
-.path-container {
+.two-column {
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .path-container .path-item {
-  // font-size: emCalc(16px);
-  // line-height: 1.7;
   margin-top: 10px;
   margin-bottom: 25px;
 }
-// .path-container .path-item a {
-//   font-weight: bold;
-//   font-size: emCalc(14px);
-// }
+
+
+.path-container h4 {
+  font-size: 1.3rem;
+  font-weight: normal;
+  text-transform: capitalize;
+  padding-bottom: 10px;
+}
 
 .circlenumber {
   background-color: #fff;
   border-radius: 50%;
   border:2px solid #0b4f69;
-  width: 48px;
-  height: 48px;
+  width: 35px;
+  height: 35px;
   position: relative;
-  margin-left: 0.83333rem;
+  margin-top: emCalc(6px);
   margin-right: 18px; 
   margin-bottom: 5px;
+  margin-left: 0.83333rem;
   z-index: 2;
 }
 
@@ -660,37 +672,33 @@ img.flow {
   color: #0b4f69;
   position: relative;
   text-align: center;
-  top: 7%;
-  font-size: 24px;
+  top: 2.5%;
+  font-weight: bold;
+  font-size: 16px;
 }
 
-// .path-container .line {
-//   background: #d1d3d4;
-//   width: 2px;
-//   bottom: 0;
-//   position: absolute;
-//   top: 160px;
-//   left: 50%;
-//   z-index: -10;
-//   height: 700px;
-// }
 
-// .howtoinstall .circle {
-//   background-color: #0b4f69;
-//   border-radius:50%;
-//   width:48px;
-//   height:48px;
-//   position:relative;
-//   margin-top: 10px;
-//   margin-bottom: 10px;
-// }
+@media only screen and (min-width: 0) and (max-width: 64.063em){ 
+  .path-item {
+    padding-left: 0.83333rem; 
+    .circlenumber {
+      left:emCalc(-12px);
+    }
+  }
+}
 
-// .howtoinstall .circle h3 {
-//   line-height: 1.9;  
-//   color:#fff;
-//   position: relative;
-//   text-align:center;
-// }
+
+@media only screen and (min-width: 64.063em) { 
+  .path-item {
+    padding-left: 65px;
+    position: relative;
+    .circlenumber {
+    position: absolute;
+    left: 0;
+    }
+  }
+}
+
 
 /*------------------------------------
  mobile timeline styles
@@ -710,30 +718,36 @@ img.flow {
   }
 }
 
-// .path-text {
-//   background: #fff;
-// }
+.path-container code {
+  color:$primary-color;
+}
 
 .sub-nav {
   background-color: $panel-bg;
-  padding: 10px;
-  margin: 0;
+  padding: 10px 10px 10px 0;
+  margin-bottom: 10px !important;
 }
 
-.markdown .panel {
+.above-magellan {
+  margin-bottom: 30px
+}
+
+.path-container .panel {
   border: none;
   font-family: Consolas, 'Liberation Mono', Courier, monospace;
   font-weight: normal;
-  // font-size: emCalc(18px) !important;
+  padding-left:rem-calc(20);
 }
 
 .otherapps {
   margin-bottom: 20px !important; 
 }
 
-.markdown code {
-  color:$primary-color;
+.path-item:last-child, .path-item p:last-child, .nocli ul:last-child, .other-uses .button:last-child, .path-container p:last-child{
+  margin-bottom: 0;
 }
+
+
 
 .dashed {
   border-style: dashed;
