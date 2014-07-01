@@ -696,7 +696,7 @@ circles
   .path-item {
     padding-left: 0.83333rem; 
     .circlenumber {
-      left:emCalc(-12px);
+      left: -12px;
     }
   }
 }
@@ -729,18 +729,16 @@ circles
     border: none;
     font-family: Consolas, 'Liberation Mono', Courier, monospace;
     font-weight: normal;
-    padding-left:rem-calc(20);
+    padding-left:20px;
     } 
   }
 }
-
-
 
 /*------------------------------------
 misc
 ------------------------------------*/
 p.note  {
-  font-size: rem-calc(16px);
+  font-size: 16px;
 }
 
 @media #{$small-only} {
@@ -758,4 +756,25 @@ p.note  {
 .dashed {
   border-style: dashed;
 }
+
+/*------------------------------------
+what you get
+------------------------------------*/
+.header-container {
+  padding: 20px 30px 20px 30px;
+  background: #0b4f69;
+  h3 {
+    color:#fff;
+  }
+}
+
+.info-list {
+  list-style: none;
+  margin: 0;
+  li {
+    padding: 20px 30px;
+  }
+}
+
+
 
