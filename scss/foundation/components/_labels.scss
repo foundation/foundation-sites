@@ -97,6 +97,7 @@ $label-font-family: $body-font-family !default;
       &.round { @include label-style(false, $radius:1000px); }
 
       &.alert     { @include label-style($alert-color); }
+      &.warning   { @include label-style($warning-color); }
       &.success   { @include label-style($success-color); }
       &.secondary { @include label-style($secondary-color); }
     }

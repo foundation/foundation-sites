@@ -97,20 +97,25 @@ Ajax-based Reveal modals can also be opened via Javascript:
 
 There are a series of events that you can bind to for triggering callbacks:
 
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the reveal plugin emitted un-namespaced `open`, `opened`, `close` and `closed` events, however, these have been replaced by the namespaced `open.fndtn.reveal`, `opened.fndtn.reveal`, `close.fndtn.reveal` and `closed.fndtn.reveal` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
+
 ```js
-$(document).on('open', '[data-reveal]', function () {
+$(document).on('open.fndtn.reveal', '[data-reveal]', function () {
   var modal = $(this);
 });
 
-$(document).on('opened', '[data-reveal]', function () {
+$(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
   var modal = $(this);
 });
 
-$(document).on('close', '[data-reveal]', function () {
+$(document).on('close.fndtn.reveal', '[data-reveal]', function () {
   var modal = $(this);
 });
 
-$(document).on('closed', '[data-reveal]', function () {
+$(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
   var modal = $(this);
 });
 ```
@@ -209,7 +214,7 @@ $(document).on('closed', '[data-reveal]', function () {
 <h2>Using the Javascript</h2>
 
 <div class="panel">
-  Before you can use Reveal you'll want to verify that jQuery and `foundation.min.js` are available on your page. You can refer to the [Javascript documentation](../Javascript.html) on setting that up.
+  Before you can use Reveal you'll want to verify that jQuery and `foundation.min.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
 </div>
 
 <p>If you are not using foundation.min.js and individually adding plugins, include `foundation.reveal.js` AFTER the `foundation.js` file. Your markup should look something like this:</p>

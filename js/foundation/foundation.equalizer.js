@@ -4,7 +4,7 @@
   Foundation.libs.equalizer = {
     name : 'equalizer',
 
-    version : '5.2.3',
+    version : '5.3.0',
 
     settings : {
       use_tallest: true,
@@ -33,7 +33,7 @@
       if (vals.length === 0) return;
       var firstTopOffset = vals.first().offset().top;
       settings.before_height_change();
-      equalizer.trigger('before-height-change');
+      equalizer.trigger('before-height-change').trigger('before-height-change.fndth.equalizer');
       vals.height('inherit');
       vals.each(function(){
         var el = $(this);
@@ -56,7 +56,7 @@
         vals.css('height', min);
       }
       settings.after_height_change();
-      equalizer.trigger('after-height-change');
+      equalizer.trigger('after-height-change').trigger('after-height-change.fndtn.equalizer');
     },
 
     reflow : function () {

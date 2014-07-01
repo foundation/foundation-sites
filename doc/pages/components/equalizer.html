@@ -146,6 +146,11 @@ $(document).foundation({
 
 There are two ways to bind to callbacks in your equalizers.
 
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the equalizer plugin emitted un-namespaced `before-height-change` and `after-height-change` events, however, these have been replaced by the namespaced `before-height-change.fndtn.equalizer` and `after-height-change.fndtn.equalizer` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
+
 <div class="row">
   <div class="large-6 columns">
     <h4>Callback Function</h4>
@@ -170,11 +175,11 @@ $(document).foundation({
 
 {{#markdown}}
 ```js
-$(document).on('before-height-change', function(){
+$(document).on('before-height-change.fndtn.equalizer', function(){
   // do something before the height changes
 });
 
-$(document).on('after-height-change', function(){
+$(document).on('after-height-change.fndtn.equalizer', function(){
   // do something after the height changes
 });
 ```

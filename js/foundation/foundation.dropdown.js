@@ -4,7 +4,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '5.2.3',
+    version : '5.3.0',
 
     settings : {
       active_class: 'open',
@@ -111,7 +111,7 @@
             .removeClass(self.settings.active_class)
             .removeData('target');
 
-          self.S(this).trigger('closed', [dropdown]);
+          self.S(this).trigger('closed').trigger('closed.fndtn.dropdown', [dropdown]);
         }
       });
     },
@@ -128,7 +128,7 @@
           .css(dropdown
             .addClass(this.settings.active_class), target);
         dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
-        dropdown.data('target', target.get(0)).trigger('opened', [dropdown, target]);
+        dropdown.data('target', target.get(0)).trigger('opened').trigger('opened.fndtn.dropdown', [dropdown, target]);
     },
 
     data_attr: function () {
@@ -167,7 +167,7 @@
     },
 
     css : function (dropdown, target) {
-      var left_offset = (target.width() - dropdown.width()) / 2;
+      var left_offset = Math.max((target.width() - dropdown.width()) / 2, 8);
       
       this.clear_idx();
 
@@ -215,7 +215,7 @@
       top: function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
-            pip_offset_base = (t.outerWidth() / 2) - 8;
+            pip_offset_base = 8;
 
         this.addClass('drop-top');
 
@@ -233,7 +233,7 @@
       bottom: function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
-            pip_offset_base = (this.outerWidth() / 2) - 8;
+            pip_offset_base = 8;
 
         if (t.outerWidth() < this.outerWidth() || self.small()) {
           self.adjust_pip(pip_offset_base, p);
