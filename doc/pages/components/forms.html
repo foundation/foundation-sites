@@ -1,9 +1,6 @@
 ---
 title: Forms
-layout: doc/layouts/default.html
 ---
-
-# Forms
 
 <h3 class="subheader">We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do almost anything.</h3>
 
@@ -11,7 +8,7 @@ layout: doc/layouts/default.html
 
 ## Building Forms With HTML
 
-Ceating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as the Grid (rows and columns).
+Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as the Grid (rows and columns).
 
 Form elements in Foundation are styled based on their type attribute rather than a class, and can be sized in a couple of ways:
 
@@ -187,7 +184,7 @@ We use this mixin to create prefix label styles
 .custom-prefix-class {
   @include prefix-postfix-base();
   @include prefix(
-    // Control the background color, which also effect the border and font color. Default:$input-prefix-bg (darken(#fff, 5%))
+    // Control the background color, which also effect the border and font color. Default:$input-prefix-bg (scale-color(#fff, $lightness: -5%))
     $bg: $input-prefix-bg,
     // Toggle position settings if prefix is a button. Default:false
     $is-button: false

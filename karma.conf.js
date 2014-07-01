@@ -8,15 +8,20 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     files: [
-        {pattern: 'dist/assets/css/*.css', watched: true, served: true, included: false},
-        {pattern: 'dist/assets/js/vendor/custom.modernizr.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/fastclick.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/placeholder.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/jquery.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/vendor/jquery.cookie.js', watched: true, served: true, included: true},
-        {pattern: 'dist/assets/js/foundation/*.js', watched: true, served: true, included: false},
+        {pattern: 'dist/assets/css/normalize.css', watched: true, served: true, included: true},
+        {pattern: 'dist/assets/css/foundation.css', watched: true, served: true, included: true},
+        {pattern: 'vendor/modernizr/modernizr.js', watched: true, served: true, included: true},
+        {pattern: 'vendor/fastclick/lib/fastclick.js', watched: true, served: true, included: true},
+        {pattern: 'vendor/jquery/dist/jquery.js', watched: true, served: true, included: true},
+        {pattern: 'vendor/jquery-placeholder/jquery.placeholder.js', watched: true, served: true, included: true},
+        {pattern: 'vendor/jquery.cookie/jquery.cookie.js', watched: true, served: true, included: true},
+        {pattern: 'dist/assets/js/foundation/foundation.js', watched: true, served: true, included: true},
+        {pattern: 'dist/assets/js/foundation/foundation.*.js', watched: true, served: true, included: true},
         {pattern: 'spec/**/*.html', watched: true, served: true, included: true},
-        {pattern: 'spec/**/*.js', watched: true, served: true, included: true}
+        {pattern: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js', watched: true, served: true, included: true},
+        {pattern: 'spec/helpers.js', watched: true, served: true, included: true},
+        {pattern: 'spec/**/*.js', watched: true, served: true, included: true},
+        {pattern: 'spec/**/*.gif', watched: true, served: true, included: false}
     ],
 
     // list of files to exclude
@@ -48,27 +53,27 @@ module.exports = function(config) {
     // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
     // - PhantomJS
     // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
-    browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
+    browsers: ['SmallPhantomJS', 'LargePhantomJS', 'LargeChrome', 'Firefox'],
 
     customLaunchers: {
-        TinyChrome: {
+        SmallChrome: {
             base: 'Chrome',
             flags: ['--window-size=320,400']
         },
-        SmallChrome: {
+        LargeChrome: {
             base: 'Chrome',
-            flags: ['--window-size=800,400']
+            flags: ['--window-size=1025,400']
         },
-        TinyPhantomJS: {
+        SmallPhantomJS: {
             base: 'PhantomJS',
             options: {
                 viewportSize: { width: 320, height: 400 }
             }
         },
-        SmallPhantomJS: {
+        LargePhantomJS: {
             base: 'PhantomJS',
             options: {
-                viewportSize: { width: 800, height: 400 }
+                viewportSize: { width: 1025, height: 400 }
             }
         },
         bs_iphone5: {

@@ -1,9 +1,6 @@
 ---
 title: Alert boxes
-layout: doc/layouts/default.html
 ---
-
-# Alert Boxes
 
 <h3 class="subheader">Alerts are handy elements you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.</h3>
 
@@ -57,6 +54,16 @@ You can add more classes to your alert box to change its appearance.
   This is an info alert with a radius.
   <a href="#" class="close">&times;</a>
 </div>
+
+<div data-alert class="alert-box alert round">
+  This is an alert - alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box secondary">
+  This is a secondary alert.
+  <a href="#" class="close">&times;</a>
+</div>
 ```
 {{/markdown}}
 
@@ -76,6 +83,16 @@ You can add more classes to your alert box to change its appearance.
 
 <div data-alert class="alert-box info radius">
   This is an info alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box alert round">
+  This is an alert - alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box secondary">
+  This is a secondary alert.
   <a href="#" class="close">&times;</a>
 </div>
 
@@ -104,15 +121,15 @@ $alert-padding-bottom: $alert-padding-top + rem-calc(1);
 $alert-font-weight: bold;
 $alert-font-size: rem-calc(14);
 $alert-font-color: #fff;
-$alert-font-color-alt: darken($secondary-color, 60%);
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
 
 // We use this for close hover effect.
-$alert-function-factor: 10%;
+$alert-function-factor: -14%;
 
 // We use these to control border styles.
 $alert-border-style: solid;
 $alert-border-width: 1px;
-$alert-border-color: darken($primary-color, $alert-function-factor);
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
 $alert-bottom-margin: rem-calc(20);
 
 // We use these to style the close buttons
@@ -125,6 +142,10 @@ $alert-close-padding: 5px 4px 4px;
 
 // We use this to control border radius
 $alert-radius: $global-radius;
+
+// We use this to control transition effects
+$alert-transition-speed: 300ms;
+$alert-transition-ease: ease-out;
 ```
 {{/markdown}}
 
@@ -170,7 +191,7 @@ You can further customize your alert boxes using the provided options in the `al
 .custom-alert-box {
   @include alert(
     // Adjust the background of the alert
-    $bg: '#cccccc',
+    $bg: #cccccc,
     // Give a border to the alert box
     $radius: true
   );
@@ -191,51 +212,17 @@ You can further customize your alert boxes using the provided options in the `al
 
 <hr>
 
-<h2>Configure With JavaScript</h2>
+<h2>Configure With Javascript</h2>
 
-<p>It's easy to configure alert boxes using our provided JavaScript. You can use with data-attributes or plain old JavaScript. Make sure `jquery.js`, `foundation.js`, and `foundation.alert.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:</p>
-
-<h4>HTML</h4>
-
-{{#markdown}}
-```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.alert.js"></script>
-```
-{{/markdown}}
-
-<h3>Basic</h3>
-
-Using data-attributes is the preferred method of making changes to our JavaScript.
-
-<br />
+It's easy to configure alert boxes using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.alert.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
 
 <h4>HTML</h4>
 
 {{#markdown}}
 ```html
-<div data-alert data-options="animation_speed:500;" class="custom-alert-box">
-  ...
-</div>
-```
-{{/markdown}}
-
-
-<h3>Advanced</h3>
-
-You can adjust many settings. For example:
-
-<h4>JS</h4>
-
-{{#markdown}}
-```js
-$(document).foundation({
-  orbit: {
-    animation_speed: 500,
-    animation: 'fade'
-  }
-});
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.alert.js"></script>
 ```
 {{/markdown}}
 

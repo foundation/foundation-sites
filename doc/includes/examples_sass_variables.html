@@ -61,9 +61,6 @@ $rem-base: 16px !default;
 //   @return $pxWidth / $rem-base * 1rem;
 // }
 
-// Change whether or not you include browser prefixes
-$experimental: true !default;
-
 // Various global styles
 
 $default-float: left;
@@ -197,7 +194,7 @@ $h6-font-size: 1em;
 // Subheaders
 
 $subheader-line-height: 1.4;
-$subheader-font-color: lighten($header-font-color, 30%);
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%);
 $subheader-font-weight: 300;
 $subheader-top-margin: .2em;
 $subheader-bottom-margin: .5em;
@@ -205,7 +202,7 @@ $subheader-bottom-margin: .5em;
 // <small> styling
 
 $small-font-size: 60%;
-$small-font-color: lighten($header-font-color, 30%);
+$small-font-color: scale-color($header-font-color, $lightness: 35%);
 
 // Paragraphs
 
@@ -220,7 +217,7 @@ $paragraph-aside-font-style: italic;
 
 // <code> tags
 
-$code-color: darken($alert-color, 15%);
+$code-color: scale-color($alert-color, $lightness: -27%);
 $code-font-family: Consolas, "Liberation Mono", Courier, monospace;
 $code-font-weight: bold;
 
@@ -228,7 +225,7 @@ $code-font-weight: bold;
 
 $anchor-text-decoration: none;
 $anchor-font-color: $primary-color;
-$anchor-font-color-hover: darken($primary-color, 5%);
+$anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
 
 // <hr> element
 
@@ -248,11 +245,11 @@ $definition-list-margin-bottom: rem-calc(12);
 
 // Blockquotes
 
-$blockquote-font-color: lighten($header-font-color, 30%);
+$blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
 $blockquote-padding: rem-calc(9, 20, 0, 19);
 $blockquote-border: 1px solid #ddd;
 $blockquote-cite-font-size: rem-calc(13);
-$blockquote-cite-font-color: lighten($header-font-color, 20%);
+$blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%);
 $blockquote-cite-link-color: $blockquote-cite-font-color;
 
 // Acronym
@@ -301,15 +298,17 @@ $form-spacing: rem-calc(16);
 $form-label-pointer: pointer;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: 500;
-$form-label-font-color: lighten(#000, 30%);
+$form-label-line-height: 1.5;
+$form-label-font-color: scale-color(#000, $lightness: 30%);
+$form-label-small-transform: capitalize;
 $form-label-bottom-margin: rem-calc(3);
 $input-font-family: inherit;
 $input-font-color: rgba(0,0,0,0.75);
 $input-font-size: rem-calc(14);
 $input-bg-color: #fff;
-$input-focus-bg-color: darken(#fff, 2%);
-$input-border-color: darken(#fff, 20%);
-$input-focus-border-color: darken(#fff, 40%);
+$input-focus-bg-color: scale-color(#fff, $lightness: -2%);
+$input-border-color: scale-color(#fff, $lightness: -20%);
+$input-focus-border-color: scale-color(#fff, $lightness: -40%);
 $input-border-style: solid;
 $input-border-width: 1px;
 $input-disabled-bg: #ddd;
@@ -332,8 +331,8 @@ $legend-padding: rem-calc(0, 3);
 
 // Prefix and postfix input elements
 
-$input-prefix-bg: darken(#fff, 5%);
-$input-prefix-border-color: darken(#fff, 20%);
+$input-prefix-bg: scale-color(#fff, $lightness: -5%);
+$input-prefix-border-color: scale-color(#fff, $lightness: -20%);
 $input-prefix-border-size: 1px;
 $input-prefix-border-type: solid;
 $input-prefix-overflow: hidden;
@@ -390,7 +389,6 @@ $button-function-factor: 10%;
 
 $button-border-width: 1px;
 $button-border-style: solid;
-$button-border-color: darken($primary-color, $button-function-factor);
 
 // Radius used throughout the core.
 
@@ -504,17 +502,17 @@ $alert-padding-bottom: $alert-padding-top + rem-calc(1);
 $alert-font-weight: bold;
 $alert-font-size: rem-calc(14);
 $alert-font-color: #fff;
-$alert-font-color-alt: darken($secondary-color, 60%);
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
 
 // Hover effect
 
-$alert-function-factor: 10%;
+$alert-function-factor: -14%;
 
 // Border Styles
 
 $alert-border-style: solid;
 $alert-border-width: 1px;
-$alert-border-color: darken($primary-color, $alert-function-factor);
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
 $alert-bottom-margin: rem-calc(20);
 
 // Close Button style
@@ -530,12 +528,16 @@ $alert-close-padding: 5px 4px 4px;
 
 $alert-radius: $global-radius;
 
+// Transition effects
+
+$alert-transition-speed: 300ms;
+$alert-transition-ease: ease-out;
 
 // Breadcrumb Variables
 
 // Background color for the breadcrumb container.
 
-$crumb-bg: lighten($secondary-color, 5%);
+$crumb-bg: scale-color($secondary-color, $lightness: 55%);
 
 // Padding around the breadcrumbs.
 
@@ -544,10 +546,10 @@ $crumb-side-padding: rem-calc(12);
 
 // Border styles.
 
-$crumb-function-factor: 10%;
+$crumb-function-factor: -10%;
 $crumb-border-size: 1px;
 $crumb-border-style: solid;
-$crumb-border-color: darken($crumb-bg, $crumb-function-factor);
+$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor);
 $crumb-radius: $global-radius;
 
 // Various text styles for breadcrumbs.
@@ -627,7 +629,7 @@ $custom-select-disabled-color: #888;
 
 $custom-dropdown-height: 200px;
 $custom-dropdown-bg: #fff;
-$custom-dropdown-border-color: darken(#fff, 20%);
+$custom-dropdown-border-color: scale-color(#fff, $lightness: -20%);
 $custom-dropdown-border-width: 1px;
 $custom-dropdown-border-style: solid;
 $custom-dropdown-font-color: #555;
@@ -659,7 +661,7 @@ $f-dropdown-bg: #fff;
 
 $f-dropdown-border-style: solid;
 $f-dropdown-border-width: 1px;
-$f-dropdown-border-color: darken(#fff, 20%);
+$f-dropdown-border-color: scale-color(#fff, $lightness: -20%);
 
 // Triangle pip.
 
@@ -766,7 +768,7 @@ $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
 $keystroke-font-size: rem-calc(15);
 $keystroke-font-color: #222;
 $keystroke-font-color-alt: #fff;
-$keystroke-function-factor: 7%;
+$keystroke-function-factor: -7%;
 
 // Keystroke padding.
 
@@ -774,10 +776,10 @@ $keystroke-padding: rem-calc(2, 4, 0);
 
 // Background and border styles.
 
-$keystroke-bg: darken(#fff, $keystroke-function-factor);
+$keystroke-bg: scale-color(#fff, $lightness: $keystroke-function-factor);
 $keystroke-border-style: solid;
 $keystroke-border-width: 1px;
-$keystroke-border-color: darken($keystroke-bg, $keystroke-function-factor);
+$keystroke-border-color: scale-color($keystroke-bg, $lightness: $keystroke-function-factor);
 $keystroke-radius: $global-radius;
 
 
@@ -863,7 +865,7 @@ $pagination-li-margin: rem-calc(5);
 
 $pagination-link-pad: rem-calc(1, 7, 1);
 $pagination-link-font-color: #999;
-$pagination-link-active-bg: darken(#fff, 10%);
+$pagination-link-active-bg: scale-color(#fff, $lightness: -10%);
 
 // Disabled anchor links
 
@@ -885,14 +887,14 @@ $pagination-link-current-active-bg: $primary-color;
 
 // Background and border styles
 
-$panel-bg: darken(#fff, 5%);
+$panel-bg: scale-color(#fff, $lightness: -5%);
 $panel-border-style: solid;
 $panel-border-size: 1px;
 
 // Control how much we darken things on hover
 
-$panel-function-factor: 10%;
-$panel-border-color: darken($panel-bg, $panel-function-factor);
+$panel-function-factor: -11%;
+$panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor);
 
 // Inner padding and bottom margin
 
@@ -971,7 +973,7 @@ $progress-bar-color: transparent;
 
 // Border styles
 
-$progress-bar-border-color: darken(#fff, 20%);
+$progress-bar-border-color: scale-color(#fff, $lightness: -20%);
 $progress-bar-border-size: 1px;
 $progress-bar-border-style: solid;
 $progress-bar-border-radius: $global-radius;
@@ -1030,15 +1032,15 @@ $close-reveal-modal-class: "close-reveal-modal";
 
 $section-title-padding: rem-calc(15);
 $section-content-padding: rem-calc(15);
-$section-function-factor: 10%;
+$section-function-factor: -11%;
 
 // Titles
 
 $section-title-color: #333;
 $section-title-bg: #efefef;
-$section-title-bg-active: darken($section-title-bg, $section-function-factor);
+$section-title-bg-active: scale-color($section-title-bg, $lightness: $section-function-factor);
 $section-title-bg-active-tabs: #fff;
-$section-title-bg-hover: darken($section-title-bg, $section-function-factor/2);
+$section-title-bg-hover: scale-color($section-title-bg, $lightness: $section-function-factor/2);
 
 // Border size
 
@@ -1077,7 +1079,7 @@ $side-nav-list-margin: rem-calc(0, 0, 7, 0);
 // Link styles
 
 $side-nav-link-color: $primary-color;
-$side-nav-link-color-active: lighten(#000, 30%);
+$side-nav-link-color-active: scale-color(#000, $lightness: 30%);
 $side-nav-font-size: rem-calc(14);
 $side-nav-font-weight: bold;
 
@@ -1085,7 +1087,7 @@ $side-nav-font-weight: bold;
 
 $side-nav-divider-size: 1px;
 $side-nav-divider-style: solid;
-$side-nav-divider-color: darken(#fff, 10%);
+$side-nav-divider-color: scale-color(#fff, $lightness: -10%);
 
 
 // Sub Nav Variables
@@ -1118,7 +1120,7 @@ $sub-nav-active-cursor: $cursor-default-value;
 
 // Border styles and background colors for the switch container
 
-$switch-border-color: darken(#fff, 20%);
+$switch-border-color: scale-color(#fff, $lightness: 20%);
 $switch-border-style: solid;
 $switch-border-width: 1px;
 $switch-bg: #fff;
@@ -1142,13 +1144,13 @@ $switch-label-side-padding: 6px;
 // Switch-paddle
 
 $switch-paddle-bg: #fff;
-$switch-paddle-fade-to-color: darken($switch-paddle-bg, 10%);
-$switch-paddle-border-color: darken($switch-paddle-bg, 35%);
+$switch-paddle-fade-to-color: scale-color($switch-paddle-bg, $lightness: -10%);
+$switch-paddle-border-color: scale-color($switch-paddle-bg, $lightness: -35%);
 $switch-paddle-border-width: 1px;
 $switch-paddle-border-style: solid;
 $switch-paddle-transition-speed: .1s;
 $switch-paddle-transition-ease: ease-out;
-$switch-positive-color: lighten($success-color, 50%);
+$switch-positive-color: scale-color($success-color, $lightness: 94%);
 $switch-negative-color: #f5f5f5;
 
 // Outline Style for tabbing through switches
@@ -1213,7 +1215,7 @@ $thumb-transition-speed: 200ms;
 $has-tip-border-bottom: dotted 1px #ccc;
 $has-tip-font-weight: bold;
 $has-tip-font-color: #333;
-$has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
+$has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
 $has-tip-font-color-hover: $primary-color;
 $has-tip-cursor-type: help;
 
@@ -1256,7 +1258,7 @@ $topbar-title-font-size: rem-calc(17);
 
 $topbar-dropdown-bg: #222;
 $topbar-dropdown-link-color: #fff;
-$topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
+$topbar-dropdown-link-bg: #333;
 $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: #fff;
 $topbar-dropdown-toggle-alpha: 0.5;
@@ -1266,11 +1268,13 @@ $topbar-dropdown-toggle-alpha: 0.5;
 $topbar-link-color: #fff;
 $topbar-link-color-hover: #fff;
 $topbar-link-color-active: #fff;
-$topbar-link-weight: bold;
+$topbar-link-weight: normal;
 $topbar-link-font-size: rem-calc(13);
-$topbar-link-hover-lightness: -30%; Darken by 30%
-$topbar-link-bg-hover: darken($topbar-bg, 3%);
-$topbar-link-bg-active: darken($topbar-bg, 3%);
+$topbar-link-hover-lightness: -10%; // Darken by 10%
+$topbar-link-bg-hover: #272727  ;
+$topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-font-family: $body-font-family;
 
 $topbar-dropdown-label-color: #555;
 $topbar-dropdown-label-text-transform: uppercase;
@@ -1295,8 +1299,8 @@ $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 // Divider Styles
 
-$topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
-$topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
+$topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%);
+$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
 
 // Sticky Class
 

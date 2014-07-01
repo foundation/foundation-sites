@@ -1,15 +1,30 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
 // @variables
 //
-$include-html-button-classes: $include-html-classes !default;
+$include-html-dropdown-classes: $include-html-classes !default;
 
 // We use these to controls height and width styles.
 $f-dropdown-max-width: 200px !default;
 $f-dropdown-height: auto !default;
 $f-dropdown-max-height: none !default;
+
+// Used for bottom position
 $f-dropdown-margin-top: 2px !default;
+
+// Used for right position
+$f-dropdown-margin-left: $f-dropdown-margin-top !default;
+
+// Used for left position
+$f-dropdown-margin-right: $f-dropdown-margin-top !default;
+
+// Used for top position
+$f-dropdown-margin-bottom: $f-dropdown-margin-top !default;
 
 // We use this to control the background color
 $f-dropdown-bg: #fff !default;
@@ -17,7 +32,7 @@ $f-dropdown-bg: #fff !default;
 // We use this to set the border styles for dropdowns.
 $f-dropdown-border-style: solid !default;
 $f-dropdown-border-width: 1px !default;
-$f-dropdown-border-color: darken(#fff, 20%) !default;
+$f-dropdown-border-color: scale-color(#fff, $lightness: -20%) !default;
 
 // We use these to style the triangle pip.
 $f-dropdown-triangle-size: 6px !default;
@@ -47,7 +62,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 // $max-width - Default: $f-dropdown-max-width || 200px.
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
   position: absolute;
-  top: -9999px;
+  left: -9999px;
   list-style: $f-dropdown-list-style;
   margin-#{$default-float}: 0;
 
@@ -60,7 +75,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
     height: $f-dropdown-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
-    font-size: $rem-base;
+    font-size: $f-dropdown-font-size;
     z-index: 99;
   }
   @else if $content == content {
@@ -70,11 +85,11 @@ $f-dropdown-content-padding: rem-calc(20) !default;
     max-height: $f-dropdown-max-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
-    font-size: $rem-base;
+    font-size: $f-dropdown-font-size;
     z-index: 99;
   }
 
-  @if $triangle {
+  @if $triangle == bottom {
     margin-top: $f-dropdown-margin-top;
 
     &:before {
@@ -100,6 +115,75 @@ $f-dropdown-content-padding: rem-calc(20) !default;
       left: auto;
       right: $f-dropdown-triangle-side-offset - 1;
     }
+  }
+
+  @if $triangle == left {
+    margin-top: 0;
+    margin-left: $f-dropdown-margin-right;
+
+    &:before {
+      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, right);
+      position: absolute;
+      top: $f-dropdown-triangle-side-offset;
+      #{$default-float}: -($f-dropdown-triangle-size * 2);
+      z-index: 99;
+    }
+    &:after {
+      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, right);
+      position: absolute;
+      top: $f-dropdown-triangle-side-offset - 1;
+      #{$default-float}: -($f-dropdown-triangle-size * 2) - 2;
+      z-index: 98;
+    }
+
+  }
+
+  @if $triangle == right {
+    margin-top: 0;
+    margin-left: -$f-dropdown-margin-right;
+
+    &:before {
+      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, left);
+      position: absolute;
+      top: $f-dropdown-triangle-side-offset;
+      #{$opposite-direction}: -($f-dropdown-triangle-size * 2);
+      left: auto;
+      z-index: 99;
+    }
+    &:after {
+      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, left);
+      position: absolute;
+      top: $f-dropdown-triangle-side-offset - 1;
+      #{$opposite-direction}: -($f-dropdown-triangle-size * 2) - 2;
+      left: auto;
+      z-index: 98;
+    }
+
+  }
+
+  @if $triangle == top {
+    margin-top: -$f-dropdown-margin-bottom;
+    margin-left: 0;
+
+    &:before {
+      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, top);
+      position: absolute;
+      top: auto;
+      bottom: -($f-dropdown-triangle-size * 2);
+      #{$default-float}: $f-dropdown-triangle-side-offset;
+      right: auto;
+      z-index: 99;
+    }
+    &:after {
+      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, top);
+      position: absolute;
+      top: auto;
+      bottom: -($f-dropdown-triangle-size * 2) - 2;
+      #{$default-float}: $f-dropdown-triangle-side-offset - 1;
+      right: auto;
+      z-index: 98;
+    }
+
   }
 
   @if $max-width { max-width: $max-width; }
@@ -129,18 +213,23 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 }
 
 @include exports("dropdown") {
-  @if $include-html-button-classes {
-
-    @media #{$small-only} {
-      .f-dropdown {
-        max-width: 100%;
-        #{$default-float}: $dropdown-mobile-default-float;
-      }
-    }
+  @if $include-html-dropdown-classes {
 
     /* Foundation Dropdowns */
     .f-dropdown {
-      @include dropdown-container(list);
+      @include dropdown-container(list, bottom);
+
+      &.drop-right {
+        @include dropdown-container(list, left);
+      }
+
+      &.drop-left {
+        @include dropdown-container(list, right);
+      }
+
+      &.drop-top {
+        @include dropdown-container(list, top);
+      }
       // max-width: none;
 
       li { @include dropdown-style; }

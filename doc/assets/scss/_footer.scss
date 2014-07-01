@@ -3,7 +3,7 @@
 #newsletter { 
   padding: 20px 0;
   background: #085a78; padding: 10px 0 10px 0;
-  h5 { font-size: 20px;font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+  h5 { font-size: 20px;font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
   font-weight: 400; margin-bottom: 0px; margin-top: 10px; color: #fff; line-height: 24px; }
   p { clear: both; font-size: 13px; padding-top: 2px; color: #fff; }
   a { color: #fff; }
@@ -12,7 +12,7 @@
   }
   .row.collapse form {
     input[type="text"] { font-size: 17px; font-weight: 200; color: #999; border: 0; }
-    .button { border: 0; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; background: #257696; }
+    .button { border: 0; box-shadow: none; background: #257696; }
     .button:hover { background: #1b566d; }
   }
 }
@@ -30,7 +30,7 @@
     h2 {
       margin: 0; padding: 0 !important; 
       a {
-        -webkit-transition: all .25s ease-in-out; -moz-transition: all .25s ease-in-out; -o-transition: all .25s ease-in-out; transition: all .25s ease-in-out; font-family: "zurb-logo"; font-weight: normal; font-size: em-calc(18px); padding: 0; 
+        transition: all .25s ease-in-out; font-family: "zurb-logo"; font-weight: normal; font-size: em-calc(18px); padding: 0; 
         &:hover { @include opacity(0.8); }
         &.services { width: 190px; }
         span { display: none; }
@@ -55,7 +55,7 @@
     .support-links { background-position: center -635px; }
     .connect-links {
       padding: 50px 20px 0; background-position: center -9px;
-      .button { font-size: 12px; font-weight: normal; background: rgba(0, 0, 0, 0.1); color: #FFF !important; font-weight: bold; text-shadow: none; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; border: none; padding: 6px 16px; } 
+      .button { font-size: 12px; font-weight: normal; background: rgba(0, 0, 0, 0.1); color: #FFF !important; font-weight: bold; text-shadow: none; box-shadow: none; border: none; padding: 6px 16px; } 
     }
 
     .global {
@@ -165,7 +165,7 @@
     &.expo { background-image: url("../img/icons/footer-expo-retina.png") left top no-repeat; }
   }
   .zurb-footer-bottom a.zurb-logo { background-image: url("../img/icons/footer-icons-retina.png"); background-size: 100px 1400px; }
-  .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links { background-image: url("icons/footer-top-icons-retina.png"); background-size: 100px 1400px; }
+  .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links { background-image: url("../img/icons/footer-top-icons-retina.png"); background-size: 100px 1400px; }
 }
 @media only screen and (max-width: 320px), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
   .zurb-footer-top .info-padding { background-image: url("../img/icons/footer-large-icon-retina.png"); background-size: 100px 400px; }

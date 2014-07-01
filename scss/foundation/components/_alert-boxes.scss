@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -12,18 +16,18 @@ $alert-padding-opposite-direction: $alert-padding-top + rem-calc(10) !default;
 $alert-padding-bottom: $alert-padding-top !default;
 
 // We use these to control text style.
-$alert-font-weight: normal !default;
+$alert-font-weight: $font-weight-normal !default;
 $alert-font-size: rem-calc(13) !default;
 $alert-font-color: #fff !default;
-$alert-font-color-alt: darken($secondary-color, 60%) !default;
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%) !default;
 
 // We use this for close hover effect.
-$alert-function-factor: 5% !default;
+$alert-function-factor: -14% !default;
 
 // We use these to control border styles.
 $alert-border-style: solid !default;
 $alert-border-width: 1px !default;
-$alert-border-color: darken($primary-color, $alert-function-factor) !default;
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor) !default;
 $alert-bottom-margin: rem-calc(20) !default;
 
 // We use these to style the close buttons
@@ -37,6 +41,9 @@ $alert-close-padding: 9px 6px 4px !default;
 
 // We use this to control border radius
 $alert-radius: $global-radius !default;
+
+$alert-transition-speed: 300ms !default;
+$alert-transition-ease: ease-out !default;
 
 //
 // Alert Mixins
@@ -52,6 +59,7 @@ $alert-radius: $global-radius !default;
   position: relative;
   padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
   font-size: $alert-font-size;
+  @include single-transition(opacity, $alert-transition-speed, $alert-transition-ease)
 }
 
 // We use this mixin to add alert styles
@@ -59,12 +67,12 @@ $alert-radius: $global-radius !default;
 // $bg - The background of the alert. Default: $primary-color.
 @mixin alert-style($bg:$primary-color) {
 
-  // This find the lightness percentage of the background color.
+  // This finds the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
 
   // We control which background color and border come through.
   background-color: $bg;
-  border-color: darken($bg, $alert-function-factor);
+  border-color: scale-color($bg, $lightness: $alert-function-factor);
 
   // We control the text color for you based on the background color.
   @if $bg-lightness > 70% { color: $alert-font-color-alt; }
@@ -112,6 +120,7 @@ $alert-radius: $global-radius !default;
       &.secondary { @include alert-style($secondary-color); }
       &.warning { @include alert-style($warning-color); }
       &.info { @include alert-style($info-color); }
+      &.alert-close { opacity: 0}
     }
   }
 }

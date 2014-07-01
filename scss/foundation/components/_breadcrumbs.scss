@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -6,17 +10,17 @@
 $include-html-nav-classes: $include-html-classes !default;
 
 // We use this to set the background color for the breadcrumb container.
-$crumb-bg: lighten($secondary-color, 5%) !default;
+$crumb-bg: scale-color($secondary-color, $lightness: 55%) !default;
 
 // We use these to set the padding around the breadcrumbs.
 $crumb-padding: rem-calc(9 14 9) !default;
 $crumb-side-padding: rem-calc(12) !default;
 
 // We use these to control border styles.
-$crumb-function-factor: 10% !default;
+$crumb-function-factor: -10% !default;
 $crumb-border-size: 1px !default;
 $crumb-border-style: solid !default;
-$crumb-border-color: darken($crumb-bg, $crumb-function-factor) !default;
+$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor) !default;
 $crumb-radius: $global-radius !default;
 
 // We use these to set various text styles for breadcrumbs.
@@ -32,7 +36,7 @@ $crumb-slash-color: #aaa !default;
 $crumb-slash: "/" !default;
 
 //
-// Breakcrumb Mixins
+// Breadcrumb Mixins
 //
 
 // We use this mixin to create a container around our breadcrumbs
@@ -57,13 +61,13 @@ $crumb-slash: "/" !default;
   margin: 0;
   float: $default-float;
   font-size: $crumb-font-size;
+  line-height: $crumb-font-size;
   text-transform: $crumb-font-transform;
+  color: $crumb-font-color;
 
   &:hover a, &:focus a { text-decoration: $crumb-link-decor; }
 
-  a,
-  span {
-    text-transform: $crumb-font-transform;
+  a {
     color: $crumb-font-color;
   }
 

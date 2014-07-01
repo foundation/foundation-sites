@@ -1,38 +1,42 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
 // @variables
 //
-$include-html-type-classes: $include-html-classes !default;
+$include-html-keystroke-classes: $include-html-classes !default;
 
 // We use these to control text styles.
 $keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
-$keystroke-font-size: rem-calc(14) !default;
+$keystroke-font-size: inherit !default;
 $keystroke-font-color: #222 !default;
 $keystroke-font-color-alt: #fff !default;
-$keystroke-function-factor: 7% !default;
+$keystroke-function-factor: -7% !default;
 
 // We use this to control keystroke padding.
 $keystroke-padding: rem-calc(2 4 0) !default;
 
 // We use these to control background and border styles.
-$keystroke-bg: darken(#fff, $keystroke-function-factor) !default;
+$keystroke-bg: scale-color(#fff, $lightness: $keystroke-function-factor) !default;
 $keystroke-border-style: solid !default;
 $keystroke-border-width: 1px !default;
-$keystroke-border-color: darken($keystroke-bg, $keystroke-function-factor) !default;
+$keystroke-border-color: scale-color($keystroke-bg, $lightness: $keystroke-function-factor) !default;
 $keystroke-radius: $global-radius !default;
 
 //
 // @mixins
 //
 // We use this mixin to create keystroke styles.
-// $bg - Default: $keystroke-bg || darken(#fff, $keystroke-function-factor) !default;
+// $bg - Default: $keystroke-bg || scale-color(#fff, $lightness: $keystroke-function-factor) !default;
 @mixin keystroke($bg:$keystroke-bg) {
   // This find the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
 
   background-color: $bg;
-  border-color: darken($bg, $keystroke-function-factor);
+  border-color: scale-color($bg, $lightness: $keystroke-function-factor);
 
   // We adjust the font color based on the brightness of the background.
   @if $bg-lightness > 70% { color: $keystroke-font-color; }
@@ -47,7 +51,7 @@ $keystroke-radius: $global-radius !default;
 }
 
 @include exports("keystroke") {
-  @if $include-html-type-classes  {
+  @if $include-html-keystroke-classes  {
     .keystroke,
     kbd {
       @include keystroke;

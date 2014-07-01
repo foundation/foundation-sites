@@ -9,8 +9,8 @@ $tabbar-color: #FFF !default;
 $tabbar-middle-padding: 0 rem-calc(10) !default;
 
 // Off Canvas Divider Styles
-$tabbar-right-section-border: solid 1px lighten($tabbar-bg, 10%) !default;
-$tabbar-left-section-border: solid 1px darken($tabbar-bg, 10%) !default;
+$tabbar-right-section-border: solid 1px scale-color($tabbar-bg, $lightness: 13%) !default;
+$tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -50%);
 
 // Off Canvas Tab Bar Headers
 $tabbar-header-color: #FFF !default;
@@ -26,23 +26,23 @@ $off-canvas-bg: #333 !default;
 $off-canvas-label-padding: 0.3rem rem-calc(15) !default;
 $off-canvas-label-color: #999 !default;
 $off-canvas-label-text-transform: uppercase !default;
+$off-canvas-label-font-size: rem-calc(12) !default;
 $off-canvas-label-font-weight: bold !default;
 $off-canvas-label-bg: #444 !default;
-$off-canvas-label-border-top: 1px solid lighten(#444, 10%) !default;
+$off-canvas-label-border-top: 1px solid scale-color(#444, $lightness: 14%) !default;
 $off-canvas-label-border-bottom: none !default;
 $off-canvas-label-margin:0 !default;
 $off-canvas-link-padding: rem-calc(10, 15) !default;
 $off-canvas-link-color: rgba(#FFF, 0.7) !default;
-$off-canvas-link-border-bottom: 1px solid darken($off-canvas-bg, 5%) !default;
+$off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: -25%);
 
 // Off Canvas Menu Icon Variables
 $tabbar-menu-icon-color: #FFF !default;
-$tabbar-menu-icon-hover: darken($tabbar-menu-icon-color, 30%) !default;
+$tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
 
 $tabbar-menu-icon-text-indent: rem-calc(35) !default;
 $tabbar-menu-icon-width: $tabbar-height !default;
 $tabbar-menu-icon-height: $tabbar-height !default;
-$tabbar-menu-icon-line-height: rem-calc(33) !default;
 $tabbar-menu-icon-padding: 0 !default;
 
 $tabbar-hamburger-icon-width: rem-calc(16) !default;

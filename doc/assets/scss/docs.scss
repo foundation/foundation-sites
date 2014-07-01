@@ -1,41 +1,22 @@
+
+//Mixins
 @import "global";
-@import "foundation";
-@import "code";
-@import "marketing-off-canvas";
-@import "footer";
 
-@mixin box-shadow(
-  $shadow-1 : default,
-  $shadow-2 : false,
-  $shadow-3 : false,
-  $shadow-4 : false,
-  $shadow-5 : false,
-  $shadow-6 : false,
-  $shadow-7 : false,
-  $shadow-8 : false,
-  $shadow-9 : false,
-  $shadow-10: false
-) { }
+//Foundation Libraries
+@import 
+  "scss/foundation/settings",
+  "foundation";
 
-@mixin border-direction($direction:top,
-                        $style:solid,
-                        $width:2px,
-                        $color:darken($panel-bg-color, 1%)) {
-  border-#{$direction}: #{$style} #{$width} #{$color};
-}
-
-@mixin border($style:solid,
-              $width:2px,
-              $color:darken($panel-bg-color, 1%)) {
-  border: #{$style} #{$width} #{$color};
-}
+//Marketing Site Common Library
+@import 
+  "code",
+  "marketing-off-canvas",
+  "footer",
+  "foundation-forum",
+  "footer-banner";
 
 
 
-body {
-  //font-size: rem-calc(14);
-  //font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-}
 
 .row {
   max-width: rem-calc(1440);
@@ -45,8 +26,8 @@ body {
     margin-bottom: 10px;
     line-height: 2rem;
     border: solid 1px #c6c6c6;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-#{$default-float}: 0 !important;
+    margin-#{$opposite-direction}: 0 !important;
     .columns {
       &:nth-child(2),
       &.small-centered,
@@ -56,11 +37,11 @@ body {
     }
   }
 }
-.top-bar-section ul li > a{ font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;font-size: 0.8125rem !important; }
+.top-bar-section ul li > a{ font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;font-size: 0.8125rem !important; }
 h1 { margin-top: 20px; }
 // h2, h3 { margin: 1rem 0 0.15rem; }
 h3.subheader { margin: 0 0 10px 0; font-size: 1.25rem; }
-h4 { font-size: 0.75rem; font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
+h4 { font-size: 0.75rem; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
 
 
 .top30 { margin-top: 30px; }
@@ -120,6 +101,25 @@ hr.dashed { border-style: dashed; }
   }
 }
 
+table.plugin-options {
+  width: 100%;
+  border: none;
+  td[rowspan] {
+    background: #f9f9f9;
+    vertical-align: top;
+  }
+  tbody {
+    td:not([rowspan]) {
+      font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    } 
+  }
+  thead {
+    td:first-child {
+      width: 20%;
+    }
+  }
+}
+
 // Modified Panel
 .easel {
   @include panel($bg:$panel-bg-color);
@@ -154,7 +154,7 @@ hr.dashed { border-style: dashed; }
   @include border(solid, 1px, darken($panel-bg-color, 4%));
   border-radius: 4px;
   ul {
-    margin-left: 20px;
+    margin-#{$default-float}: 20px;
   }
   dt { color: #008080; }
 }
@@ -188,6 +188,12 @@ footer { margin-top: 45px; }
 }
 
 // Examples
+.magellan-container {
+  padding: 10px 0;
+  background: #fff;
+
+
+}
 .example-orbit {}
 .example-orbit-content li div {
   color:white;
@@ -222,7 +228,6 @@ footer { margin-top: 45px; }
   td {
     margin:0;
     padding:0;
-    direction: $text-direction;
   }
 
   /* Default Link Styles */
@@ -264,7 +269,7 @@ footer { margin-top: 45px; }
     text-rendering: $header-text-rendering;
     margin-top: $header-top-margin;
     margin-bottom: $header-bottom-margin;
-    line-height: $header-line-height - rem-calc(3);
+    line-height: $header-line-height;
     text-transform: none;
 
     small {
@@ -489,7 +494,6 @@ footer { margin-top: 45px; }
 }
 
 // Thumbnail Styles
-
 .th-custom {
   @include thumb(10px,0 0 0 2px black, 0 0 10px 2px rgba(orange,0.5));
   @include radius(6);
@@ -534,8 +538,8 @@ $custom-active-bg:darken($custom-link-color, 5%);
   color: lighten(#004054,20%);
   position: relative;
   margin: 0 -20px;
-  padding-left:20px;
-  padding-right: 20px;
+  padding-#{$default-float}:20px;
+  padding-#{$opposite-direction}: 20px;
   background: rgba(#004054, 0.05);
 
   // &::before {
@@ -551,13 +555,13 @@ $custom-active-bg:darken($custom-link-color, 5%);
     color: lighten(#004054,10%);
     position: relative;
     margin: 0 -20px;
-    padding-left:20px;
-    padding-right: 20px;
+    padding-#{$default-float}:20px;
+    padding-#{$opposite-direction}: 20px;
     background: rgba(#004054, 0.03);
   }
 
 // Compatibility
-.row.support { padding: 9px 0; margin-left:0; margin-right:0; }
+.row.support { padding: 9px 0; margin-#{$default-float}:0; margin-#{$opposite-direction}:0; }
 .row.support:nth-child(2n) { background: #f4f4f4; }
 
 .support .win { color: #4ea600; font-weight: bold; }
@@ -565,4 +569,212 @@ $custom-active-bg:darken($custom-link-color, 5%);
 .support .fail { color: #cc0000; font-weight: bold; }
 
 .docs-bar .top-bar-section .has-dropdown > a:after { display: none; }
-.docs-bar .top-bar-section .has-dropdown a { padding-right: 15px !important; }
+.docs-bar .top-bar-section .has-dropdown a { padding-#{$opposite-direction}: 15px !important; }
+
+
+// Fix for Google Maps
+div#interchangeMarkup img {
+  max-width: none;
+}
+
+/*------------------------------------
+you will need
+------------------------------------*/
+.you-will-need {
+  a {
+    margin-bottom: 0px;
+  }
+  img {
+    width: 160px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  } 
+}
+
+
+
+/*------------------------------------
+images
+------------------------------------*/
+.others {
+  max-height: 180px;
+  display: block;
+  margin: 10px auto;
+}
+
+
+.flow-chart {
+  margin: 10px 10px 15px 0;
+  @media #{$small-only} { 
+    margin:20px;
+  }
+}
+
+.command-line {
+  @media #{$small-only} {
+    margin:20px;
+  }
+}
+
+/*------------------------------------
+padding
+------------------------------------*/
+.recommended {
+  padding-top:10px;
+}
+
+.path-container code {
+  color:$primary-color;
+}
+
+.sub-nav {
+  background-color: $panel-bg;
+  padding: 10px 10px 10px 0;
+}
+
+.above-magellan {
+  margin-bottom: 30px
+}
+
+.otherapps {
+  margin-bottom: 20px !important; 
+}
+
+/*------------------------------------
+ timeline styles
+------------------------------------*/
+.two-column {
+  margin-top: 20px;
+}
+
+.path-container {
+  .path-item {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+  }
+}
+
+
+/*------------------------------------
+circles
+------------------------------------*/
+.circlenumber {
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #0b4f69;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  margin-top: 6px;
+  margin-right: 18px; 
+  margin-bottom: 5px;
+  margin-left: 0.83333rem;
+  z-index: 2;
+  h3 {
+    color: #0b4f69;
+    position: relative;
+    text-align: center;
+    top: 2.5%;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+
+@media only screen and (min-width: 0) and (max-width: 64.063em){ 
+  .path-item {
+    padding-left: 0.83333rem; 
+    .circlenumber {
+      left: -12px;
+    }
+  }
+}
+
+@media only screen and (min-width: 64.063em) { 
+  .path-item {
+    padding-left: 65px;
+    position: relative;
+    .circlenumber {
+    position: absolute;
+    left: 0;
+    }
+  }
+}
+
+/*------------------------------------
+ mobile timeline styles
+------------------------------------*/
+@media only screen and (max-width: 1800px) {
+  .path-container {
+    .circle {
+    top: 0;
+    right: 0;
+    left: 0;
+    float: none;
+    padding-top: 0px;
+    margin-right: auto;
+    }
+  .panel {
+    border: none;
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    font-weight: normal;
+    padding-left:20px;
+    } 
+  }
+}
+
+/*------------------------------------
+misc
+------------------------------------*/
+p.note  {
+  font-size: 16px;
+}
+
+@media #{$small-only} {
+   .other-uses {
+    .button {
+      display: block !important;
+    }
+  }
+}
+
+.path-item:last-child, .path-item p:last-child, .nocli ul:last-child, .other-uses .button:last-child, .path-container p:last-child{
+  margin-bottom: 0;
+}
+
+.dashed {
+  border-style: dashed;
+}
+
+/*------------------------------------
+what you get
+------------------------------------*/
+.header-container {
+  padding: 20px 30px 20px 30px;
+  background: #0b4f69;
+  h3 {
+    color:#fff;
+  }
+}
+
+.info-list {
+  list-style: none;
+  margin: 0;
+  li {
+    padding: 20px 30px;
+  }
+}
+
+
+

@@ -1,9 +1,6 @@
 ---
 title: Clearing
-layout: doc/layouts/default.html
 ---
-
-# Clearing
 
 <h3 class="subheader">Since we didn't intend Orbit to handle variable-height content, we decided to create a plugin that would. Clearing makes it easy to create responsive lightboxes with any size image.</h3>
 
@@ -15,7 +12,7 @@ layout: doc/layouts/default.html
 
 ## Build Your Clearing Lightbox
 
-There is only one way to build a Clearing lightbox, using our predefined class and data-attribute structure. We've made it really easy: gather some images, decide on their order, and put them into a url with a `.clearing-thumbs` class. In order to get Clearing to build itself properly, you'll need to have JavaScript properly included. We outline [Clearing JS](#js) a bit further down the page.
+There is only one way to build a Clearing lightbox, using our predefined class and data-attribute structure. We've made it really easy: gather some images, decide on their order, and put them into an ul with a `.clearing-thumbs` class. In order to get Clearing to build itself properly, you'll need to have JavaScript properly included. We outline [Clearing JS](#js) a bit further down the page.
 
 Once you get your JS hooked up, you'll need to add `data-clearing` to your list container. Here's an example of the most basic markup needed:
 
@@ -61,10 +58,10 @@ We opted not to create mixins for this plugin because it relies on classes in th
 
 ***
 
-## Using the JavaScript
+## Using the Javascript
 
 <div class="panel">
-  Before you can use Clearing you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [JavaScript documentation](../JavaScript.html) on setting that up.
+  Before you can use Clearing you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation]({{relative absolute 'dist/docs/javascript.html'}}) on setting that up.
 </div>
 
 Just add `foundation.clearing.js` AFTER the `foundation.js` file. Your markup should look something like this:
@@ -75,13 +72,32 @@ Just add `foundation.clearing.js` AFTER the `foundation.js` file. Your markup sh
 
 Required Foundation Library: `foundation.clearing.js`
 
-### Optional JavaScript Configuration
+### Optional Javascript Configuration
 
 Clearing supports `data-options` on-the-fly configuration:
 
 <h4>JS</h4>
 
 {{> examples_clearing_data_options}}
+
+### Available Javascript Events
+
+Clearing supports several javascript events that you can listen to:
+
+<ul>
+  <li><code>open.clearing.fndtn</code> before a thumbnail is expanded</li>
+  <li><code>opened.clearing.fndtn</code> after the large image has opened</li>
+  <li><code>close.clearing.fndtn</code> before the large image is closed</li>
+  <li><code>closed.clearing.fndtn</code> after the large image has closed</li>
+  <li><code>change.clearing.fndtn</code> when the large image changes</li>
+  <li><code>resized.clearing.fndtn</code> after the large image is resized, before it becomes visible</li>
+</ul>
+
+<p>Here is an example of binding to the open event.</p>
+
+<h4>JS</h4>
+
+{{> examples_clearing_events}}
 
 ***
 

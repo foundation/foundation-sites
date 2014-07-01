@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -13,17 +17,21 @@ $reveal-overlay-bg-old: #000 !default;
 
 // We use these to control the style of the modal itself.
 $reveal-modal-bg: #fff !default;
-$reveal-position-top: 50px !default;
+$reveal-position-top: rem-calc(100) !default;
 $reveal-default-width: 80% !default;
 $reveal-modal-padding: rem-calc(20) !default;
 $reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
 
 // We use these to style the reveal close button
-$reveal-close-font-size: rem-calc(22) !default;
+$reveal-close-font-size: rem-calc(40) !default;
 $reveal-close-top: rem-calc(8) !default;
 $reveal-close-side: rem-calc(11) !default;
 $reveal-close-color: #aaa !default;
-$reveal-close-weight: bold !default;
+$reveal-close-weight: $font-weight-bold !default;
+
+// We use this to set the default radius used throughout the core.
+$reveal-radius: $global-radius !default;
+$reveal-round: $global-rounded !default;
 
 // We use these to control the modal border
 $reveal-border-style: solid !default;
@@ -44,7 +52,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   width: 100%;
   background: $reveal-overlay-bg-old;
   background: $reveal-overlay-bg;
-  z-index: 98;
+  z-index: 99;
   display: none;
   top: 0;
   #{$default-float}: 0;
@@ -62,9 +70,16 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     visibility: hidden;
     display: none;
     position: absolute;
-    #{$default-float}: 50%;
-    z-index: 99;
-    height: auto;
+    z-index: 100;
+    width: 100vw;
+    top:0;
+    #{$default-float}: 0;
+    @media #{$small-only} {
+      min-height:100vh;
+    }
+    @media #{$medium-up} {
+      #{$default-float}: 50%;
+    }
 
     // Make sure rows don't have a min-width on them
     .column,
@@ -76,8 +91,10 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   }
 
   @if $width {
-    margin-#{$default-float}: -($width / 2);
-    width: $width;
+    @media #{$medium-up} {
+      margin-#{$default-float}: -($width / 2);
+      width: $width;
+    }
   }
 }
 
@@ -90,31 +107,38 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 // $border-width - Width of border (i.e. 1px). Default: $reveal-border-width.
 // $border-color - Color of border. Default: $reveal-border-color.
 // $box-shadow - Choose whether or not to include the default box-shadow. Default: true, Options: false
+// $radius - If true, set to modal radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
 // $top-offset - Default: $reveal-position-top || 50px
 @mixin reveal-modal-style(
-  $bg:$reveal-modal-bg,
-  $padding:$reveal-modal-padding,
-  $border:true,
+  $bg:false,
+  $padding:false,
+  $border:false,
   $border-style:$reveal-border-style,
   $border-width:$reveal-border-width,
   $border-color:$reveal-border-color,
-  $box-shadow:true,
-  $top-offset:$reveal-position-top) {
+  $box-shadow:false,
+  $radius:false,
+  $top-offset:false) {
 
   @if $bg { background-color: $bg; }
-  @if $padding { padding: $padding; }
+  @if $padding != false { padding: $padding; }
 
   @if $border { border: $border-style $border-width $border-color; }
 
   // We can choose whether or not to include the default box-shadow.
   @if $box-shadow {
-    @if $experimental {
-      -webkit-box-shadow: $reveal-box-shadow;
-    }
     box-shadow: $reveal-box-shadow;
   }
 
-  @if $top-offset { top: $top-offset; }
+  // We can control how much radius is used on the modal
+  @if $radius == true { @include radius($reveal-radius); }
+  @else if $radius { @include radius($radius); }
+
+  @if $top-offset {
+    @media #{$medium-up} {
+      top: $top-offset;
+    }
+  }
 }
 
 // We use this to create a close button for the reveal modal
@@ -137,17 +161,33 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     // Reveal Modals
     .reveal-modal-bg { @include reveal-bg; }
 
-    .#{$reveal-modal-class} {
+    dialog, .#{$reveal-modal-class} {
       @include reveal-modal-base;
-      @include reveal-modal-style;
+      @include reveal-modal-style(
+        $bg:$reveal-modal-bg,
+        $padding:$reveal-modal-padding,
+        $border:true,
+        $box-shadow:true,
+        $radius:false,
+        $top-offset:$reveal-position-top);
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
     }
 
+    dialog[open] {
+      display:block;
+      visibility: visible;
+    }
+
     @media #{$medium-up} {
 
-      .#{$reveal-modal-class} {
-        @include reveal-modal-style(false, rem-calc(30), false, $box-shadow: false, $top-offset: rem-calc(100));
+      dialog, .#{$reveal-modal-class} {
+        @include reveal-modal-style($padding:$reveal-modal-padding * 1.5);
+
+        &.radius { @include reveal-modal-style($radius:true); }
+        &.round  { @include reveal-modal-style($radius:$reveal-round); }
+        
+        &.collapse { @include reveal-modal-style($padding:0); }
 
         &.tiny  { @include reveal-modal-base(false, 30%); }
         &.small { @include reveal-modal-base(false, 40%); }
@@ -155,11 +195,22 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
         &.large { @include reveal-modal-base(false, 70%); }
         &.xlarge { @include reveal-modal-base(false, 95%); }
       }
+
+      dialog, .#{$reveal-modal-class} {
+        &.full {
+          @include reveal-modal-base(false, 100vw);
+          top:0;
+          left:0;
+          height: 100vh;
+          min-height:100vh;
+          margin-left: 0 !important;
+        }
+      }
     }
 
     // Reveal Print Styles
     @media print {
-      .#{$reveal-modal-class} {background: #fff !important;}
+      dialog, .#{$reveal-modal-class} {background: #fff !important;}
     }
   }
 }

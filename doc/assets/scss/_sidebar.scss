@@ -19,6 +19,7 @@ $panel-bg-color: #FAFAFA;
   }
 .side-nav li a {
   padding: rem-calc(6) 0;
+  &:not(.button) { padding: rem-calc(6) 0; }
   &:hover {
     color: darken($primary-color, 20%);
     span {
@@ -73,8 +74,6 @@ $panel-bg-color: #FAFAFA;
 }
 .sidebar {
   input[type="search"]:focus {
-    -moz-box-shadow: 0 0 0 !important;
-    -webkit-box-shadow: 0 0 0 !important;
     box-shadow: 0 0 0 !important;
   }
 }

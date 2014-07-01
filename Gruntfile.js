@@ -4,17 +4,25 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    vendor: grunt.file.readJSON('.bowerrc').directory,
 
     foundation: {
       js: ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-      scss: ['scss/foundation.scss']
+      scss: ['scss/foundation.scss','scss/settings.scss']
+
+    },
+
+    jst: {
+      compile: {
+        files: {
+          'dist/docs/assets/js/templates.js': ['doc/templates/*.html']
+        }
+      }
     },
 
     assemble: {
       options: {
         marked: {
-          gfm: true,
-          sanitize: false,
           highlight: function(code, lang) {
             if (lang === undefined) lang = 'bash';
             if (lang === 'html') lang = 'xml';
@@ -23,47 +31,33 @@ module.exports = function(grunt) {
           }
         }
       },
-      dist_docs: {
+      dist: {
         options: {
           flatten: false,
           assets: 'dist/docs/assets',
           data: ['doc/data/*.json'],
-          partials: ['doc/includes/**/*.{html,scss}'],
           helpers: ['doc/helpers/*.js'],
-          layout: 'doc/layouts/default.html'
+          partials: ['doc/includes/**/*.{html,scss}'],
+          layoutdir: 'doc/layouts',
+          layout: 'default.html'
         },
         expand: true,
         cwd: 'doc/pages',
         src: '**/*.{html,md}',
         dest: 'dist/docs/'
-      },
-      dist_download: {
-        options: {
-          assets: 'dist/assets'
-        },
-        src: 'index.html',
-        dest: 'dist/index.html'
       }
     },
 
     sass: {
       dist: {
         options: {
-          includePaths: ['scss']
+          includePaths: ['scss'],
+          sourceMap: true
         },
         files: {
           'dist/assets/css/foundation.css': '<%= foundation.scss %>',
           'dist/assets/css/normalize.css': 'scss/normalize.scss',
           'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss'
-        }
-      },
-      dist_compressed: {
-        options: {
-          outputStyle:'compressed',
-          includePaths: ['scss']
-        },
-        files: {
-          'dist/assets/css/foundation.min.css': '<%= foundation.scss %>'
         }
       }
     },
@@ -77,10 +71,23 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        preserveComments: 'some'
+      },
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+          'dist/docs/assets/js/modernizr.js': ['<%= vendor %>/modernizr/modernizr.js'],
+          'dist/docs/assets/js/all.js': ['<%= vendor %>/jquery/dist/jquery.js', 'vendor/lodash/dist/lodash.min.js','<%= vendor %>/fastclick/lib/fastclick.js', '<%= vendor %>/jquery-placeholder/jquery.placeholder.js', '<%= vendor %>/jquery.autocomplete/dist/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
+        }
+      },
+      vendor: {
+        files: {
+          'dist/assets/js/vendor/placeholder.js': '<%= vendor %>/jquery-placeholder/jquery.placeholder.js',
+          'dist/assets/js/vendor/fastclick.js': '<%= vendor %>/fastclick/lib/fastclick.js',
+          'dist/assets/js/vendor/jquery.cookie.js': '<%= vendor %>/jquery.cookie/jquery.cookie.js',
+          'dist/assets/js/vendor/jquery.js': '<%= vendor %>/jquery/dist/jquery.js',
+          'dist/assets/js/vendor/modernizr.js': '<%= vendor %>/modernizr/modernizr.js'
         }
       }
     },
@@ -88,16 +95,25 @@ module.exports = function(grunt) {
     copy: {
       dist: {
         files: [
-          {cwd: 'doc/assets/', expand:true, filter: 'isFile', src: 'img/**/*', dest: 'dist/docs/assets/'},
-          {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor}/**/*.js'], dest: 'dist/assets/js'},
-          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: ['**/*.js'], dest: 'dist/docs/assets/js/'},
-          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
+          {expand:true, cwd: 'doc/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/docs/assets/', filter:'isFile'},
+          {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'dist/assets/js', filter: 'isFile'},
+          {src: '<%= vendor %>/jquery/jquery.min.js', dest: 'dist/docs/assets/js/jquery.js'},
+          {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'dist/assets/scss/', filter: 'isFile'},
           {src: 'bower.json', dest: 'dist/assets/'}
         ]
       }
     },
 
     clean: ['dist/'],
+
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: 'dist/'
+        }
+      }
+    },
 
     karma: {
       options: {
@@ -129,8 +145,13 @@ module.exports = function(grunt) {
       }
     },
 
-    watch_start: {
-      grunt: { files: ['Gruntfile.js'] },
+    watch: {
+      grunt: {
+        options: {
+          reload: true
+        },
+        files: ['Gruntfile.js']
+      },
       karma: {
         files: [
           'dist/assets/js/*.js',
@@ -139,41 +160,37 @@ module.exports = function(grunt) {
         ],
         tasks: ['karma:dev_watch:run']
       },
-
-      styles: {
+      sass: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
         tasks: ['sass'],
-        options: {livereload:true}
+        options: {
+          livereload:true
+        }
       },
       js: {
         files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
         tasks: ['copy', 'concat', 'uglify'],
         options: {livereload:true}
       },
-      dist_docs: {
-        files: ['doc/{includes,layouts,pages}/**/*.html'],
+      assemble_all: {
+        files: ['doc/{includes,layouts}/**/*.html'],
         tasks: ['assemble'],
         options: {livereload:true}
       },
-      dist_download: {
-        files: ['index.html'],
-        tasks: ['assemble:dist_download']
+      assemble_pages: {
+        files: ['doc/pages/**/*.html'],
+        tasks: ['newer:assemble'],
+        options: {livereload:true}
       },
       assets: {
-        files: ['doc/assets/{img}/**/*'],
-        tasks: ['copy'],
-        options: {livereload:true}
-      }
-    },
-
-    compress: {
-      dist: {
-        options: {
-          archive: 'dist/foundation.tar.gz'
-        },
-        files: [
-          {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
-        ]
+        options: {cwd: 'doc/assets/', livereload: true},
+        files: ['**/*','!{scss,js}/**/*'],
+        tasks: ['copy']
+      },
+      jst: {
+        files: ['doc/templates/*.html'],
+        tasks: ['jst'],
+        options: {livereload:false}
       }
     },
 
@@ -184,32 +201,31 @@ module.exports = function(grunt) {
           src: "./dist/docs/",
           recursive: true,
           dest: "/home/deployer/sites/foundation-docs/current",
-          host: "deployer@foundation5.zurb.com"
+          host: "deployer@72.32.134.77"
         }
       }
     }
-
   });
 
-  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-rsync');
-  grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
-
-  grunt.task.renameTask('watch', 'watch_start');
-  grunt.task.registerTask('watch', ['karma:dev_watch:start', 'watch_start']);
-
-  grunt.registerTask('compile:assets', ['clean', 'sass', 'concat', 'uglify', 'copy']);
-  grunt.registerTask('compile', ['compile:assets', 'assemble']);
-  grunt.registerTask('build', ['compile', 'compress']);
-  grunt.registerTask('default', ['compile', 'watch']);
-  grunt.registerTask('travis', ['compile', 'karma:continuous']);
-  grunt.registerTask('deploy', ['compile', 'rsync:dist']);
+  grunt.loadNpmTasks('grunt-rsync');
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-jst');
+  
+  grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
+  grunt.registerTask('build', ['build:assets', 'assemble']);
+  grunt.registerTask('travis', ['build', 'karma:continuous']);
+  grunt.registerTask('develop', ['travis', 'watch_start']);
+  grunt.registerTask('deploy', ['build', 'rsync:dist']);
+  grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('server', ['connect:server:keepalive']);
 };

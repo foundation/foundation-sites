@@ -24,8 +24,21 @@ $table-border-color: #ddd !default;
 $table-head-bg: #f5f5f5 !default;
 $table-head-font-size: rem-calc(14) !default;
 $table-head-font-color: #222 !default;
-$table-head-font-weight: bold !default;
+$table-head-font-weight: $font-weight-bold !default;
 $table-head-padding: rem-calc(8 10 10) !default;
+
+// These control the table foot styles
+$table-foot-bg: $table-head-bg !default;
+$table-foot-font-size: $table-head-font-size !default;
+$table-foot-font-color: $table-head-font-color !default;
+$table-foot-font-weight: $table-head-font-weight !default;
+$table-foot-padding: $table-head-padding !default;
+
+// These control the caption
+$table-caption-bg: transparent !default;
+$table-caption-font-color: $table-head-font-color !default;
+$table-caption-font-size: rem-calc(16) !default;
+$table-caption-font-weight: bold !default;
 
 // These control the row padding and font styles
 $table-row-padding: rem-calc(9 10) !default;
@@ -47,18 +60,39 @@ $table-margin-bottom: rem-calc(20) !default;
   margin-bottom: $table-margin-bottom;
   border: $table-border-style $table-border-size $table-border-color;
 
-  thead,
-  tfoot {
+  caption {
+    background: $table-caption-bg;
+    color: $table-caption-font-color;
+    font: {
+      size: $table-caption-font-size;
+      weight: $table-caption-font-weight;
+    }
+  }
+
+  thead {
     background: $table-head-bg;
-    font-weight: $table-head-font-weight;
 
     tr {
       th,
       td {
         padding: $table-head-padding;
         font-size: $table-head-font-size;
+        font-weight: $table-head-font-weight;
         color: $table-head-font-color;
-        text-align: $default-float;
+      }
+    }
+  }
+
+  tfoot {
+    background: $table-foot-bg;
+
+    tr {
+      th,
+      td {
+        padding: $table-foot-padding;
+        font-size: $table-foot-font-size;
+        font-weight: $table-foot-font-weight;
+        color: $table-foot-font-color;
       }
     }
   }
@@ -69,6 +103,7 @@ $table-margin-bottom: rem-calc(20) !default;
       padding: $table-row-padding;
       font-size: $table-row-font-size;
       color: $table-row-font-color;
+      text-align: $default-float;
     }
 
     &.even,
@@ -78,9 +113,10 @@ $table-margin-bottom: rem-calc(20) !default;
 
   thead tr th,
   tfoot tr th,
+  tfoot tr td,
+  tbody tr th,
   tbody tr td,
-  tr td,
-  tfoot tr td { display: $table-display; line-height: $table-line-height; }
+  tr td { display: $table-display; line-height: $table-line-height; }
 }
 
 

@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -10,6 +14,7 @@ $inline-list-top-margin: 0 !default;
 $inline-list-opposite-margin: 0 !default;
 $inline-list-bottom-margin: rem-calc(17) !default;
 $inline-list-default-float-margin: rem-calc(-22) !default;
+$inline-list-default-float-list-margin: rem-calc(22) !default;
 
 $inline-list-padding: 0 !default;
 
@@ -19,7 +24,7 @@ $inline-list-overflow: hidden !default;
 // We use this to control the list items
 $inline-list-display: block !default;
 
-// We use this to control any elments within list items
+// We use this to control any elements within list items
 $inline-list-children-display: block !default;
 
 //
@@ -37,7 +42,7 @@ $inline-list-children-display: block !default;
   & > li {
     list-style: none;
     float: $default-float;
-    margin-#{$default-float}: rem-calc(22);
+    margin-#{$default-float}: $inline-list-default-float-list-margin;
     display: $inline-list-display;
     &>* { display: $inline-list-children-display; }
   }

@@ -1,9 +1,6 @@
 ---
 title: Grid
-layout: doc/layouts/default.html
 ---
-
-# Grid
 
 <h3 class="subheader">Create powerful multi-device layouts quickly and easily with the default 12-column, nest-able Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</h3>
 
@@ -11,7 +8,7 @@ layout: doc/layouts/default.html
 
 <h3>Basic</h3>
 
-Start by adding an element with a class of `row`. This will create a horizontal block to contain vertical columns. Then add divs with a `column` class within that row. You can use `column` or `column**s**` — the only difference is grammar. Specify the widths of each column with the small-#, medium-#, and large-# classes.
+Start by adding an element with a class of `row`. This will create a horizontal block to contain vertical columns. Then add divs with a `column` class within that row. You can use `column` or `columns` - the only difference is grammar. Specify the widths of each column with the small-#, medium-#, and large-# classes.
 
 **Foundation is mobile-first**. Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 
@@ -78,6 +75,20 @@ Move blocks up to 11 columns to the right by using classes like `.large-offset-1
 
 ***
 
+### Incomplete Rows
+
+In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of `end` in order to override that behavior.
+
+<h4>HTML</h4>
+
+{{> examples_grid_end}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_grid_end_rendered}}
+
+***
+
 ### Centered Columns
 
 Center your columns by adding a class of `small-centered` to your `column`. Large will inherit small centering by default, but you can also center solely on large by applying a `large-centered` class. To uncenter on large screens use `large-uncentered`.
@@ -94,7 +105,7 @@ Center your columns by adding a class of `small-centered` to your `column`. Larg
 
 ### Source Ordering
 
-Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `small-pull-#`, `medium-push-#`, `large-push-#` is the syntax you'll use.
+Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `medium-push-#`, `large-push-#` is the syntax you'll use. Use `large-reset-order` to reset pushed or pulled columns to their original position on large screens.
 
 <h4>HTML</h4>
 

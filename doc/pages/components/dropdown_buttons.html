@@ -1,9 +1,6 @@
 ---
 title: Dropdown buttons
-layout: doc/layouts/default.html
 ---
-
-# Dropdown Buttons
 
 <h3 class="subheader">Dropdown buttons are elements that, when tapped, reveal additional content. We've simplified our dropdown buttons by getting rid of the dedicated ones associated with the various buttons styles. Instead, you'll use our [new dropdown plugin]({{relative absolute 'dist/docs/components/dropdown.html'}}) to attach a dropdown to the button style of your choice.</h3>
 
@@ -151,11 +148,12 @@ You can further customize your dropdown buttons using the provided options in th
 
 ### Sass Errors?
 
-If the default "foundation" import was commented out, then make sure you import this file:
+If the default "foundation" import was commented out, then make sure you import theses files:
 
 <h4>SCSS</h4>
 
 ```scss
 @import "foundation/components/buttons";
+@import "foundation/components/dropdown";
 @import "foundation/components/dropdown-buttons";
 ```

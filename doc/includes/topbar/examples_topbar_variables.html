@@ -19,7 +19,7 @@ $topbar-title-font-size: rem-calc(17);
 /* Style the top bar dropdown elements */
 $topbar-dropdown-bg: #222;
 $topbar-dropdown-link-color: #fff;
-$topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
+$topbar-dropdown-link-bg: #333;
 $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: #fff;
 $topbar-dropdown-toggle-alpha: 0.5;
@@ -28,11 +28,15 @@ $topbar-dropdown-toggle-alpha: 0.5;
 $topbar-link-color: #fff;
 $topbar-link-color-hover: #fff;
 $topbar-link-color-active: #fff;
-$topbar-link-weight: bold;
+$topbar-link-color-active-hover: #fff;
+$topbar-link-weight: normal;
 $topbar-link-font-size: rem-calc(13);
-$topbar-link-hover-lightness: -30%; /* Darken by 30% */
-$topbar-link-bg-hover: darken($topbar-bg, 3%);
-$topbar-link-bg-active: darken($topbar-bg, 3%);
+$topbar-link-hover-lightness: -10%; // Darken by 10%
+$topbar-link-bg-color-hover: #555555;
+$topbar-link-bg-hover: #272727  ;
+$topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-font-family: $body-font-family;
 
 $topbar-dropdown-label-color: #555;
 $topbar-dropdown-label-text-transform: uppercase;
@@ -54,8 +58,8 @@ $topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px 
 $topbar-media-query: $medium-up !default;
 
 /* Divider Styles */
-$topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
-$topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
+$topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%);
+$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
 
 /* Sticky Class */
 $topbar-sticky-class: ".sticky";

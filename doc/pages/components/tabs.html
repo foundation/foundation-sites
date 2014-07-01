@@ -1,9 +1,6 @@
 ---
 title: Tabs
-layout: doc/layouts/default.html
 ---
-
-# Tabs
 
 <h3 class="subheader">Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.</h3>
 
@@ -56,6 +53,55 @@ You can create a group of vertical tabs using minimal markup.
 <h4>Rendered HTML</h4>
 
 {{> examples_tabs_vertical_basic_rendered}}
+
+<div class="clearfix"></div>
+
+***
+
+### Deep linking to tabs or tab contents
+
+The tabs Foundation component can parse the location hash value and open the corresponding tab content pane. To enable deep linking set `data-options="deep_linking:true"`. If the location hash maps to an element ID within a tab content pane, then the appropriate tab will become active and the browser window will scroll to the specified element. If you do not want to scroll to the specified element then set `data-options="scroll_to_content: false"`.
+
+In the following example, deep linking is enabled. If the location hash is `#tabs-deeplink-2` then the second tab will become active. If the location hash is `#tabs-deeplink-content-2` then the second tab will become active, and the browser will scroll to the paragraph tag with ID, tabs-deeplink-content-2.
+
+{{> examples_tabs_deep_linking}}
+
+***
+
+### Callbacks
+
+There are two ways to bind to callbacks in your tabs.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Callback function</h4>
+```html
+<script>
+  $(document).foundation({
+    tab: {
+      callback : function (tab) {
+        console.log(tab);
+      }
+    }
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Toggled Event</h4>
+```html
+<script>
+  $('#myTabs').on('toggled', function (event, tab) {
+    console.log(tab);
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+</div>
 
 ***
 

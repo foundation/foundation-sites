@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -19,19 +23,20 @@ $sub-nav-list-padding-top: rem-calc(4) !default;
 $sub-nav-font-family: $body-font-family !default;
 $sub-nav-font-size: rem-calc(14) !default;
 $sub-nav-font-color: #999 !default;
-$sub-nav-font-weight: normal !default;
+$sub-nav-font-weight: $font-weight-normal !default;
 $sub-nav-text-decoration: none !default;
+$sub-nav-padding: rem-calc(3 16) !default;
 $sub-nav-border-radius: 3px !default;
-$sub-nav-font-color-hover: darken($sub-nav-font-color, 15%) !default;
+$sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%) !default;
 
 
 // We use these to control the active item styles
 
-$sub-nav-active-font-weight: normal !default;
+$sub-nav-active-font-weight: $font-weight-normal !default;
 $sub-nav-active-bg: $primary-color !default;
-$sub-nav-active-bg-hover: darken($sub-nav-active-bg, 5%) !default;
+$sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%) !default;
 $sub-nav-active-color: #fff !default;
-$sub-nav-active-padding: rem-calc(3 16) !default;
+$sub-nav-active-padding: $sub-nav-padding !default;
 $sub-nav-active-cursor: default !default;
 
 $sub-nav-item-divider: "" !default;
@@ -47,11 +52,12 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
 // $font-color - Font color. Default: $sub-nav-font-color.
 // $font-size - Font size. Default: $sub-nav-font-size.
 // $active-bg - Background of active nav item. Default: $sub-nav-active-bg.
+// $active-bg-hover - Background of active nav item, when hovered. Default: $sub-nav-active-bg-hover.
 @mixin sub-nav(
-  $font-color:$sub-nav-font-color,
-  $font-size:$sub-nav-font-size,
-  $active-bg:$sub-nav-active-bg,
-  $active-bg-hover:darken($active-bg, 5%)) {
+  $font-color: $sub-nav-font-color,
+  $font-size: $sub-nav-font-size,
+  $active-bg: $sub-nav-active-bg,
+  $active-bg-hover: $sub-nav-active-bg-hover) {
   display: block;
   width: auto;
   overflow: hidden;
@@ -61,7 +67,7 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
   margin-#{$default-float}: rem-calc(-12);
 
   dt {
-	  text-transform: uppercase;
+    text-transform: uppercase;
   }
 
   dt,
@@ -79,20 +85,21 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
     a {
       text-decoration: $sub-nav-text-decoration;
       color: $sub-nav-font-color;
+      padding: $sub-nav-padding;
       &:hover {
-	      color: $active-bg-hover;
+        color: $sub-nav-font-color-hover;
       }
     }
 
     &.active a {
-      @include radius($global-radius);
+      @include radius($sub-nav-border-radius);
       font-weight: $sub-nav-active-font-weight;
       background: $active-bg;
       padding: $sub-nav-active-padding;
       cursor: $sub-nav-active-cursor;
       color: $sub-nav-active-color;
       &:hover {
-	      background: $active-bg-hover;
+        background: $active-bg-hover;
       }
     }
     @if $sub-nav-item-divider != "" {

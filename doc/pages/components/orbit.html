@@ -1,9 +1,6 @@
 ---
 title: Orbit
-layout: doc/layouts/default.html
 ---
-
-# Orbit
 
 <h3 class="subheader">Orbit is an easy, powerful, responsive image slider that allows users to swipe on touch-enabled devices.</h3>
 
@@ -13,11 +10,21 @@ layout: doc/layouts/default.html
 
 ***
 
+<h4 class="warn">Deprecation Notice:</h4>
+
+Orbit has been deprecated, meaning that it is no longer supported. There's no need to worry though as we decided to leave it in Foundation if you choose to continue using it. We explain it <a href="http://foundation.zurb.com/forum/posts/14504-moving-on-from-developing-orbit">here.</a> 
+
+There are other great options if you need an image slider. A lot of them have features based on Orbit and may have added one ot two more features.
+
+This image slider is really slick: <a href="http://kenwheeler.github.io/slick/">Slick Carousel</a>. It has all the features Orbit has and can also be used as a carousel for single image sliding. It's easy to set up and is <a href="https://github.com/kenwheeler/slick/">well supported.</a>
+
+***
+
 <a name="setup"></a>
 
 ## How to Setup Orbit
 
-Orbit requires minimal HTML markup to function. Our JavaScript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
+Orbit requires minimal HTML markup to function. Our Javascript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
 
 <h4>HTML</h4>
 
@@ -128,6 +135,11 @@ $orbit-slide-number-bg: rgba(0,0,0,0);
 $orbit-slide-number-font-color: #fff;
 $orbit-slide-number-padding: rem-calc(5px);
 
+// Hide controls on small
+$orbit-nav-hide-for-small: true;
+$orbit-bullet-hide-for-small: true;
+$orbit-timer-hide-for-small: true;
+
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper";
 $preloader-class: "preloader";
@@ -140,512 +152,71 @@ $preloader-class: "preloader";
 
 ## Configuring Orbit
 
-Here is Orbit in its most basic configuration. You can choose to either initialize with JavaScript or use data-attributes, which are explained below.
+It's easy to configure Orbit using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.orbit.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
 
-<div class="row">
-  <div class="large-6 columns">
-    <h4>JS</h4>
-{{#markdown}}
-```js
-$(document).foundation('orbit', {
-  animation_speed: 1500
-});
+```html
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.orbit.js"></script>
 ```
-{{/markdown}}
-  </div>
-  <div class="large-6 columns">
-    <h4>HTML</h4>
-{{#markdown}}
+
+### Basic
+
+Using data-attributes is the preferred method of making changes to our Javascript.
+
 ```html
 <ul data-orbit data-options="animation_speed:1500;">
   ...
 </ul>
 ```
-{{/markdown}}
-  </div>
-</div>
 
-&nbsp;
 
-  <div class="row">
-    <section class="large-6 columns">
-      <h3 class="">Code Example</h3>
-    </section>
-    <section class="large-6 columns">
-      <h3 class="">Description</h3>
-    </section>
-  </div>
-  <br/>
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
+
+### Advanced
+
+You can also adjust settings using plain old Javascript. Here's all the available settings:
+
+#### JS
 ```js
-$(document).foundation('orbit', {
+$(document).foundation({
+  orbit: {
+      animation: 'slide', // Sets the type of animation used for transitioning between slides, can also be 'fade'
+      timer_speed: 10000, // Sets the amount of time in milliseconds before transitioning a slide
+      pause_on_hover: true, // Pauses on the current slide while hovering
+      resume_on_mouseout: false, // If pause on hover is set to true, this setting resumes playback after mousing out of slide
+      next_on_click: true, // Advance to next slide on click
+      animation_speed: 500, // Sets the amount of time in milliseconds the transition between slides will last
+      stack_on_small: false,
+      navigation_arrows: true,
+      slide_number: true,
+      slide_number_text: 'of',
+      container_class: 'orbit-container',
+      stack_on_small_class: 'orbit-stack-on-small',
+      next_class: 'orbit-next', // Class name given to the next button
+      prev_class: 'orbit-prev', // Class name given to the previous button
+      timer_container_class: 'orbit-timer', // Class name given to the timer
+      timer_paused_class: 'paused', // Class name given to the paused button
+      timer_progress_class: 'orbit-progress', // Class name given to the progress bar
+      slides_container_class: 'orbit-slides-container', // Class name given to the slide container
+      preloader_class: 'preloader', // Class given to the perloader
+      slide_selector: 'li', // Default is '*' which selects all children under the container
+      bullets_container_class: 'orbit-bullets',
+      bullets_active_class: 'active', // Class name given to the active bullet
+      slide_number_class: 'orbit-slide-number', // Class name given to the slide number
+      caption_class: 'orbit-caption', // Class name given to the caption
+      active_slide_class: 'active', // Class name given to the active slide
+      orbit_transition_class: 'orbit-transitioning',
+      bullets: true, // Does the slider have bullets visible?
+      circular: true, // Does the slider should go to the first slide after showing the last?
+      timer: true, // Does the slider have a timer active? Setting to false disables the timer.
+      variable_height: false, // Does the slider have variable height content?
+      swipe: true,
+      before_slide_change: noop, // Execute a function before the slide changes
+      after_slide_change: noop // Execute a function after the slide changes
+  }
+});
 ```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>Initialization</dt>
-        <dd>Initializes orbit</dd>
-      </dl>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  animation: 'fade',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>animation</dt>
-        <dd>Sets the type of animation used for transitioning between slides. Default: fade</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  timer_speed: 10000,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>timer_speed</dt>
-        <dd>Sets the amount of time in milliseconds before transitioning a slide. Default: 10000</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  pause_on_hover: true,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>pause_on_hover</dt>
-        <dd>Pauses on the current slide while hovering. Default: true</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  resume_on_mouseout: false,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>resume_on_mouseout</dt>
-        <dd>If pause on hover is set to true, this setting resumes playback after mousing out of slide. Default: false</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  animation_speed: 500,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>animation_speed</dt>
-        <dd>Sets the amount of time in milliseconds the transition between slides will last. Default: 500</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  stack_on_small: true,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>stack_on_small</dt>
-        <dd>Default: true</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  navigation_arrows: true,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>navigation_arrows</dt>
-        <dd>Default: true</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  slide_number: true,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>slide_number</dt>
-        <dd>Default: true</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  container_class: 'orbit-container',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>container_class</dt>
-        <dd>Default: orbit-container</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  container_class: 'stack_on_small_class',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>stack_on_small_class</dt>
-        <dd>Default: 'orbit-stack-on-small'</dd>
-      </dl>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  next_class: 'orbit-next',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>next_class</dt>
-        <dd>Class name given to the next button. Default: 'orbit-stack-on-small'</dd>
-      </dl>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  prev_class: 'orbit-prev',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>prev_class</dt>
-        <dd>Class name given to the previous button. Default: 'orbit-prev'</dd>
-      </dl>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  timer_container_class: 'orbit-timer',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>timer_container</dt>
-        <dd>Class name given to the timer. Default: 'orbit_timer'</dd>
-      </dl>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  timer_paused_class: 'paused',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>timer_paused_class</dt>
-        <dd>Class name given to the paused button. Default: 'paused'</dd>
-      </dl>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  timer_progress_class: 'orbit-progress',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>timer_progress_class</dt>
-        <dd>Class name given to the progress bar. Default: 'orbit-progress'</dd>
-      </dl>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  slides_container_class: 'orbit-slides-container',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>slides_container_class</dt>
-        <dd>Class name given to the slides container. Default: 'orbit-stack-on-small'</dd>
-      </dl>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  bullets_container_class: 'orbit-bullets',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>bullets_container_class</dt>
-        <dd>Default: 'orbit-bullets'</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  bullets_active_class: 'active',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>bullets_active_class</dt>
-        <dd>Class name given to the active bullet. Default: 'active'</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  slide_number_class: 'orbit-slide-number',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>slide_number_class</dt>
-        <dd>Class name given to the slide number. Default: 'orbit-slide_number'</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  caption_class: 'orbit-caption',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>caption_class</dt>
-        <dd>Class name given to the caption. Default: 'orbit-caption'</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  active_slide_class: 'active',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>active_slide_class</dt>
-        <dd>Class name given to the active slide. Default: 'active'</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  orbit_transition_class: 'orbit-transitioning',
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>orbit_transition_class</dt>
-        <dd>Class name given to ?? Default: 'orbit-transitioning'</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  bullets: true,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>bullets</dt>
-        <dd>Does the slider have bullets visible? Default: true</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  timer: true,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>bullets_container_class</dt>
-        <dd>Does the slider have a timer visible. Default: true</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-next_on_click: false,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>next_on_click</dt>
-        <dd>Default: false</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  variable_height: false,
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>variable_height</dt>
-        <dd>Does the slider have variable height images? Default: false</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  before_slide_change: function() {}
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>before_slide_change</dt>
-        <dd>Execute a function before the slide changes. Default: function() {}</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 columns">
-{{#markdown}}
-```js
-  after_slide_changes: function() {}
-```
-{{/markdown}}
-    </div>
-    <div class="large-6 columns">
-      <dl>
-        <dt>after_slide_changes</dt>
-        <dd>Execute a function after the slide changes. Default: function() {}</dd>
-      </dl>
-    </div>
-  </div>
 
 ***
 
@@ -655,7 +226,7 @@ next_on_click: false,
 
   <div class="row">
     <section class="large-6 columns">
-      <h4 class="">JavaScript</h4>
+      <h4 class="">Javascript</h4>
       <div class="code-container">
 
 {{#markdown}}
@@ -667,8 +238,7 @@ $(document).foundation({
     pause_on_hover: true,
     animation_speed: 500,
     navigation_arrows: true,
-    bullets: false,
-    next_on_click: true
+    bullets: false
   }
 });
 ```
@@ -685,12 +255,10 @@ $(document).foundation({
 ```html
 <ul data-orbit
     data-options="animation:slide;
-                  animation_speed:1000;
                   pause_on_hover:true;
                   animation_speed:500;
                   navigation_arrows:true;
-                  bullets:false;
-                  next_on_click:true;">
+                  bullets:false;">
 </ul>
 ```
 {{/markdown}}
@@ -702,12 +270,10 @@ $(document).foundation({
     <section class="full-grid">
       <ul data-orbit data-options="
         animation:slide;
-        animation_speed:1000;
         pause_on_hover:true;
         animation_speed:500;
         navigation_arrows:true;
-        bullets:false;
-        next_on_click:true;">
+        bullets:false;">
         <li><img src="{{assets}}/img/examples/andromeda-orbit.jpg" alt="slide 1"></li>
         <li><img src="{{assets}}/img/examples/satelite-orbit.jpg" alt="slide 2"></li>
         <li><img src="{{assets}}/img/examples/launch-orbit.jpg" alt="slide 3"></li>
@@ -719,152 +285,34 @@ $(document).foundation({
 
 ## Events
 
-You can bind to the following events in your code.
+There are several events that you can bind to in Orbit. Here's an example of how you can bind to these events:
 
-  <div class="row">
-    <section class="large-6 columns">
-      <h3 class="">Events</h3>
-    </section>
-    <section class="large-6 columns">
-      <h3 class="">Description</h3>
-    </section>
-  </div>
-  <br/>
-  <div class="row">
-    <section class="large-6 columns">
-{{#markdown}}
-```js
-orbit:ready
-```
-{{/markdown}}
-    </section>
-    <section class="large-6 columns">
-      <dl>
-        <dt>event</dt>
-        <dd>Fires when the slider has loaded</dd>
-      </dl>
-    </section>
-  </div>
-
-  <div class="row">
-    <section class="large-6 columns">
-{{#markdown}}
-```js
-orbit:before-slide-change
-```
-{{/markdown}}
-    </section>
-    <section class="large-6 columns">
-      <dl>
-        <dt>event</dt>
-        <dd>Fires before the slide changes</dd>
-      </dl>
-    </section>
-  </div>
-
-  <div class="row">
-    <section class="large-6 columns">
-{{#markdown}}
-```js
-orbit:after-slide-change
-```
-{{/markdown}}
-    </section>
-    <section class="large-6 columns">
-      <dl>
-        <dt>event, orbit</dt>
-        <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and total_slides</code></dd>
-      </dl>
-    </section>
-  </div>
-
-  <div class="row">
-    <section class="large-6 columns">
-{{#markdown}}
-```js
-orbit:after-slide-change
-```
-{{/markdown}}
-    </section>
-    <section class="large-6 columns">
-      <dl>
-        <dt>event</dt>
-        <dd>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number and total_slides</code></dd>
-      </dl>
-    </section>
-  </div>
-
-  <div class="row">
-    <section class="large-6 columns">
-{{#markdown}}
-```js
-orbit:timer-started
-```
-{{/markdown}}
-    </section>
-    <section class="large-6 columns">
-      <dl>
-        <dt>event</dt>
-        <dd>Fires each time the timer is started/resumed</dd>
-      </dl>
-    </section>
-  </div>
-
-  <div class="row">
-    <section class="large-6 columns">
-{{#markdown}}
-```js
-orbit:timer-stopped
-```
-{{/markdown}}
-    </section>
-    <section class="large-6 columns">
-      <dl>
-        <dt>event</dt>
-        <dd>Fires each time the timer is paused/stopped</dd>
-      </dl>
-    </section>
-  </div>
-
-  {{!-- End Events Section --}}
-
-  <div class="row">
-    <section class="full-grid">
-      <h3>Example</h3>
-      <p>Here's an example of how you can bind to these events:</p>
-      <h4>HTML</h4>
-{{#markdown}}
+#### HTML
 ```html
 <ul id="featured1" data-orbit>
   ...
 </ul>
 ```
-{{/markdown}}
 
-<p>You can then bind using the following markup:</p>
-
-{{#markdown}}
+#### JS
 ```js
-$("#featured1").on("orbit:ready", function(event) {
+$("#featured1").on("ready.fndtn.orbit", function(event) {
   console.info("ready");
 });
-$("#featured1").on("orbit:before-slide-change", function(event) {
+$("#featured1").on("before-slide-change.fndtn.orbit", function(event) {
   console.info("before slide change");
 });
-$("#featured1").on("orbit:after-slide-change", function(event, orbit) {
+$("#featured1").on("after-slide-change.fndtn.orbit", function(event, orbit) {
   console.info("after slide change");
   console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
 });
-$("#featured1").on("orbit:timer-started", function(event, orbit) {
+$("#featured1").on("timer-started.fndtn.orbit", function(event, orbit) {
   console.info("timer started");
 });
-$("#featured1").on("orbit:timer-stopped", function(event, orbit) {
+$("#featured1").on("timer-stopped.fndtn.orbit", function(event, orbit) {
   console.info("timer stopped");
 });
 ```
-{{/markdown}}
-  </section>
-</div>
 
 ***
 

@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 @import "buttons";
 @import "dropdown-buttons";
@@ -78,7 +82,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       border-#{$default-float}: solid 1px;
 
       // Building the triangle pip indicator
-      &:before {
+      &:after {
         position: absolute;
         content: "";
         width: 0;
@@ -106,7 +110,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
     padding-#{$opposite-direction}: $split-button-padding-tny;
 
     span { width: $split-button-span-width-tny;
-      &:before {
+      &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-tny;
         top: 48%;
@@ -120,7 +124,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
     padding-#{$opposite-direction}: $split-button-padding-sml;
 
     span { width: $split-button-span-width-sml;
-      &:before {
+      &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-sml;
         top: 48%;
@@ -134,7 +138,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
     padding-#{$opposite-direction}: $split-button-padding-med;
 
     span { width: $split-button-span-width-med;
-      &:before {
+      &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-med;
         top: 48%;
@@ -148,7 +152,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
     padding-#{$opposite-direction}: $split-button-padding-lrg;
 
     span { width: $split-button-span-width-lrg;
-      &:before {
+      &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-lrg;
         top: 48%;
@@ -159,7 +163,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 
   // Control the color of the triangle pip
   @if $pip-color {
-    span:before { border-color: $pip-color transparent transparent transparent; }
+    span:after { border-color: $pip-color transparent transparent transparent; }
   }
 }
 
