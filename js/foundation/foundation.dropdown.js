@@ -9,8 +9,14 @@
     settings : {
       active_class: 'open',
       align: 'bottom',
-      bounds: 'window',
       is_hover: false,
+      smart_position: true,
+      smart_position_arrays: {
+        right:   ['right', 'bottom', 'top', 'left', 'right'],
+        left:    ['left', 'right', 'bottom', 'top', 'left'],
+        top:     ['top', 'right', 'bottom', 'left', 'top'],
+        bottom : ['bottom', 'top', 'right', 'left', 'bottom']
+      },
       opened: function(){},
       closed: function(){}
     },
@@ -191,11 +197,44 @@
     },
 
     style : function (dropdown, target, settings) {
-      var p = this.dirs[settings.align].call(dropdown, target, settings),
-        css = $.extend({position: 'absolute'},
-        this.fit_bounds.call(dropdown, p, target, settings));
+      var css = $.extend({position: 'absolute'},
+        this.position(dropdown, target, settings));
 
       dropdown.attr('style', '').css(css);
+    },
+    // return CSS property object
+    position: function(d, t, s) {
+      var res = {},
+        vp = {},
+        list = s.smart_position_arrays[s.align],
+        len = list.length,
+        dd_w = d.outerWidth(),
+        dd_h = d.outerHeight(),
+        o = d.offsetParent().offset();
+
+        if (s.smart_position) {
+          var $win = $(window);
+          vp.top =  $win.scrollTop();
+          vp.left = $win.scrollLeft();
+          vp.right  = vp.left + $win.width();
+          vp.bottom = vp.top + $win.height();
+
+          for (var i=0; i < len; i++) {
+            res = this.dirs[list[i]].call(d, t, s);
+            if (this.is_out(vp, res.top + o.top, res.left + o.left, dd_w, dd_h, 3) === false)
+              break;
+          }
+        }
+        else {
+          res = this.dirs[s.align].call(d, t, s);
+        }
+
+        return res;
+    },
+
+    is_out: function (vp, top, left, width, height, buffer) {
+      return (top < vp.top + buffer || left < vp.left + buffer
+           || top + height > vp.bottom - buffer || left + width > vp.right - buffer);
     },
 
     // return CSS property object
@@ -261,69 +300,6 @@
       }
     },
 
-    // Make sure the dropdown is entirely visible within chosen bounds
-    fit_bounds : function(p, t, s) {
-      var self = Foundation.libs.dropdown,
-        min_x = 0,
-        min_y = 0,
-        bounds;
-
-      switch (s.bounds) {
-        case 'window':
-          bounds = self.S(window);
-          break;
-        case 'document':
-          bounds = self.S(document);
-          break;
-        case 'container':
-          bounds = this.closest('[' + self.attr_name() + '-container]') || self.S(window);
-          break;
-        default:
-          return p;
-      }
-
-      if (s.bounds !== 'document') {
-        min_x = bounds.scrollLeft();
-        min_y = bounds.scrollTop();
-      }
-
-      var max_x = bounds.width() + min_x,
-        max_y = bounds.height() + min_y,
-        zone = 3, // clear zone around document bounds
-        dd_w = this.outerWidth(),
-        dd_h = this.outerHeight(),
-        t_h = t.outerHeight(),
-        t_w = t.outerWidth(),
-        o_p = this.offsetParent(),
-        o = o_p.offset(),
-        res = p;
-
-      if (s.align === 'bottom' && res.top + o.top + dd_h + zone > max_y) {
-        return self.fit_bounds.call(this, self.dirs.top.call(this, t, s), t, s);
-      }
-
-      if (s.align === 'right' && res.left + o.left + dd_w + zone > max_x) {
-        return self.fit_bounds.call(this, self.dirs.left.call(this, t, s), t, s);
-      }
-
-      if (s.align === 'top' && res.top - o.top - zone < min_y) {
-        return self.fit_bounds.call(this, self.dirs.bottom.call(this, t, s), t, s);
-      }
-
-      if (s.align === 'left' && res.left + o.left - zone < min_x) {
-        return self.fit_bounds.call(this, self.dirs.right.call(this, t, s), t, s);
-      }
-
-      if ((s.align === 'bottom' || s.align === 'top') && res.left + o.left + dd_w + zone > max_x) {
-        res.left = Math.max(zone, res.left + t_w - dd_w);
-      }
-
-      if ((s.align === 'left' || s.align === 'right') && res.top + o.top + dd_h + zone > max_y) {
-        res.top = Math.max(zone, res.top + t_h - dd_h);
-      }
-
-      return res;
-    },
 
     // Insert rule to style psuedo elements
     adjust_pip : function (pip_offset_base, p) {
