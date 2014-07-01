@@ -573,48 +573,49 @@ $custom-active-bg:darken($custom-link-color, 5%);
 
 
 // Fix for Google Maps
-div#interchangeMarkup img{
+div#interchangeMarkup img {
   max-width: none;
 }
 
 /*------------------------------------
 you will need
 ------------------------------------*/
-.you-will-need a {
-  margin-bottom: 0px;
+.you-will-need {
+  a {
+    margin-bottom: 0px;
+  }
+  img {
+    width: 160px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  } 
 }
 
-.you-will-need img {
-  width: 160px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-}
 
-.you-will-need h4 {
-  font-size: 1.3rem;
-  font-weight: normal;
-  text-transform: capitalize;
-}
 
 /*------------------------------------
 images
 ------------------------------------*/
-img.others {
+.others {
   max-height: 180px;
   display: block;
   margin: 10px auto;
 }
 
 
-img.flow-chart {
+.flow-chart {
   margin: 10px 10px 15px 0;
-
   @media #{$small-only} { 
     margin:20px;
   }
 }
 
-img.command-line {
+.command-line {
   @media #{$small-only} {
     margin:20px;
   }
@@ -651,17 +652,19 @@ padding
   margin-top: 20px;
 }
 
-.path-container .path-item {
-  margin-top: 10px;
-  margin-bottom: 25px;
+.path-container {
+  .path-item {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+  }
 }
 
-.path-container h4 {
-  font-size: 1.3rem;
-  font-weight: normal;
-  text-transform: capitalize;
-  padding-bottom: 10px;
-}
 
 /*------------------------------------
 circles
@@ -669,25 +672,25 @@ circles
 .circlenumber {
   background-color: #fff;
   border-radius: 50%;
-  border:2px solid #0b4f69;
+  border: 2px solid #0b4f69;
   width: 35px;
   height: 35px;
   position: relative;
-  margin-top: emCalc(6px);
+  margin-top: 6px;
   margin-right: 18px; 
   margin-bottom: 5px;
   margin-left: 0.83333rem;
   z-index: 2;
+  h3 {
+    color: #0b4f69;
+    position: relative;
+    text-align: center;
+    top: 2.5%;
+    font-weight: bold;
+    font-size: 16px;
+  }
 }
 
-.circlenumber h3 {
-  color: #0b4f69;
-  position: relative;
-  text-align: center;
-  top: 2.5%;
-  font-weight: bold;
-  font-size: 16px;
-}
 
 @media only screen and (min-width: 0) and (max-width: 64.063em){ 
   .path-item {
@@ -714,24 +717,24 @@ circles
 ------------------------------------*/
 @media only screen and (max-width: 1800px) {
   .path-container {
-
-  }
-  .path-container .circle {
+    .circle {
     top: 0;
     right: 0;
     left: 0;
     float: none;
     padding-top: 0px;
     margin-right: auto;
+    }
+  .panel {
+    border: none;
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    font-weight: normal;
+    padding-left:rem-calc(20);
+    } 
   }
 }
 
-.path-container .panel {
-  border: none;
-  font-family: Consolas, 'Liberation Mono', Courier, monospace;
-  font-weight: normal;
-  padding-left:rem-calc(20);
-}
+
 
 /*------------------------------------
 misc
@@ -752,7 +755,7 @@ p.note  {
   margin-bottom: 0;
 }
 
-hr.dashed {
+.dashed {
   border-style: dashed;
 }
 
