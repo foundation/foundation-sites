@@ -29,6 +29,7 @@ $tooltip-font-size-sml: rem-calc(14) !default;
 $tooltip-radius: $global-radius !default;
 $tooltip-rounded: $global-rounded !default;
 $tooltip-pip-size: 5px !default;
+$tooltip-max-width: 300px !default;
 
 @include exports("tooltip") {
   @if $include-html-tooltip-classes {
@@ -58,7 +59,7 @@ $tooltip-pip-size: 5px !default;
       font-size: $tooltip-font-size;
       line-height: $tooltip-line-height;
       padding: $tooltip-padding;
-      max-width: 85%;
+      max-width: $tooltip-max-width;
       #{$default-float}: 50%;
       width: 100%;
       color: $tooltip-font-color;

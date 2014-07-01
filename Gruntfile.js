@@ -51,7 +51,8 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         options: {
-          includePaths: ['scss']
+          includePaths: ['scss'],
+          sourceMap: true
         },
         files: {
           'dist/assets/css/foundation.css': '<%= foundation.scss %>',

@@ -54,9 +54,12 @@ $callout-panel-link-color: $primary-color !default;
 
     @if $adjust {
       // We set the font color based on the darkness of the bg.
-      @if $bg-lightness >= 50% and $bg == blue { h1,h2,h3,h4,h5,h6,p,li { color: $panel-font-color-alt; } }
-      @else if $bg-lightness >= 50%            { h1,h2,h3,h4,h5,h6,p,li { color: $panel-font-color; } }
-      @else                                    { h1,h2,h3,h4,h5,h6,p,li { color: $panel-font-color-alt; } }
+      @if $bg-lightness >= 50% { 
+        h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color; }
+      }
+      @else { 
+        h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color-alt; }
+      }
 
       // reset header line-heights for panels
       h1,h2,h3,h4,h5,h6 {
