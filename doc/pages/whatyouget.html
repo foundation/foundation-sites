@@ -11,25 +11,34 @@ title: What You Get
   <div class="large-6 columns">
     <div class="header-container">
       <h3>Customization</h3> 
-      <p></p>
     </div>
     <ul class="info-list">
-      <li>a</li>
-      <li>b</li>
-      <li>c</li>
+      <li><strong>app.css</strong><br>Here you can determine what stylings will be in your project. By default all of Foundation is imported, but you can deactivate and select specific styles you want to import.</li>
+      <li><strong>_settings.scss</strong><br>Here you can activate preselected customization variables and customize Sass where it will be compiled into CSS.</li>
+      <li><strong>app.css</strong>We include a stylesheets folder where you can customize your CSS. This files has basic Foundation CSS styling and can be customized here. Add any additional css style sheets in this folder.</li>
     </ul>
   </div>
 
   <div class="large-6 columns">
     <div class="header-container">
-      <h3>Javascript</h3> 
-      <p></p>
+      <h3>JavaScript</h3> 
     </div>
     <ul class="info-list">
-      <li>d</li>
-      <li>e</li>
-      <li>f</li>
+      <li><strong>app.js</strong><br>This is where you should put your javascript plugins or custom scripts to be imported into your index file. We do this to keep the markup on the html clean and simple by keeping your JS in a separate place.</li>
+      <li><strong>index.html</strong><br>Your Index file should import both the minified versions of the Foundation JavaScript and the jQuery as well as the app.js.<br><a href="#">See how this looks →</a></li>
     </ul>
   </div>
 
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="header-container">
+      <h3>Bower Components</h3> 
+    </div>
+    <ul class="info-list">
+      <li>The recommended install uses Bower to package up all the Foundation components and manage these updates.</li>
+      <li>Any changes to the customizations in this folder will be overwritten when your file is compiled into CSS.</li>
+    </ul>
+  </div>
 </div>
