@@ -7,7 +7,12 @@ title: What You Get
 <hr>
 
 <div class="row">
+  <div class="small-12 columns">
+    <p><a href="http://foundation.zurb.com/docs/sass.html">← Back to Getting Started</a></p>
+  </div>
+</div>
 
+<div class="row">
   <div class="large-6 columns">
     <div class="header-container">
       <h3>Customization</h3> 
@@ -15,7 +20,7 @@ title: What You Get
     <ul class="info-list">
       <li><strong>app.css</strong><br>Here you can determine what stylings will be in your project. By default all of Foundation is imported, but you can deactivate and select specific styles you want to import.</li>
       <li><strong>_settings.scss</strong><br>Here you can activate preselected customization variables and customize Sass where it will be compiled into CSS.</li>
-      <li><strong>app.css</strong>We include a stylesheets folder where you can customize your CSS. This files has basic Foundation CSS styling and can be customized here. Add any additional css style sheets in this folder.</li>
+      <li><strong>stylesheets folder</strong><br>We include a stylesheets folder where you can customize your CSS. This files has basic Foundation CSS styling and can be customized here. Add any additional css style sheets in this folder.</li>
     </ul>
   </div>
 
@@ -25,10 +30,16 @@ title: What You Get
     </div>
     <ul class="info-list">
       <li><strong>app.js</strong><br>This is where you should put your javascript plugins or custom scripts to be imported into your index file. We do this to keep the markup on the html clean and simple by keeping your JS in a separate place.</li>
-      <li><strong>index.html</strong><br>Your Index file should import both the minified versions of the Foundation JavaScript and the jQuery as well as the app.js.<br><a href="#">See how this looks →</a></li>
+      <li><strong>jquery.min.js</strong><br>A minified jQuery 2 file which is required for some Foundation JavaScript to work.</li>
+      <li>These files that you should have linked up at the bottom of the page before the closing ```</body>``` tag:
+{{#markdown}}
+```html
+{{> examples_what_you_get_javascript_include}}
+```
+{{/markdown}}</li>
+
     </ul>
   </div>
-
 </div>
 
 <div class="row">
@@ -37,8 +48,40 @@ title: What You Get
       <h3>Bower Components</h3> 
     </div>
     <ul class="info-list">
-      <li>The recommended install uses Bower to package up all the Foundation components and manage these updates.</li>
-      <li>Any changes to the customizations in this folder will be overwritten when your file is compiled into CSS.</li>
+      <li>The recommended install uses Bower to package up all the Foundation components and manage any updates. Any changes made to files in this folder will be overwritten when your file is compiled.</li>
+      <li><strong>fastclick.js</strong><br>We’ve integrated fastclick.js so you have the option to give your mobile users have a snappier experience.</li>
+      <li><strong>foundation folder</strong><br>This is where we keep all the files that make foundation work. Any CSS and SCSS partials and javascript live here. Including the components here allows you to easily update your project with ```bower update``` command.</li>
+      <li><strong>jquery</strong><br> We've included jQuery 2.0 in here because anytime there is an update to jQuery with a Foundation release it will be updated as well.</li>
+      <li><strong>jquery.cookie</strong><br>This is included in Foundation for our Joyride feature. It allows the browser to create a cookie specifically for the option to not show the Joyride tour a second time.</li>
+      <li><strong>modernizr</strong><br>This acts as a shim for HTML5 elements that older browsers may not recognize, and provides detection for mobile devices:</li>
+      <li><strong>normalize.scss</strong><br>We've included a copy of Normalize here to give you the option to remove quirks in browsers so that all webpages render elements consistently.</li>
+    </ul>
+  </div>
+  <div class="large-6 columns">
+    <div class="header-container">
+      <h3>Pre-Packaged Essentials</h3> 
+    </div>
+    <ul class="info-list">
+      <li><strong>index.html</strong><br>This is an example index file which contains some sample markup (the grid, buttons, etc) as well as the basic structure of a responsive Foundation page. Feel free to change or destroy this file as you see fit, just bear in mind that some of the document ```<head>``` is required for the page to work, and the CSS/JS is linked up at the end of the document.</li>
+      <li><strong>humans.txt</strong><br>A basic humans.txt file you can use as a basis for your site, if you'd like to have a humans.txt file</li>
+      <li><strong>robots.txt</strong><br>Another basic starter file, this is a sample robot file you can amend and modify to suit your particular crawling needs.</li>
+      <li><strong>bower.json</strong><br>During updates, this the file you can specify what version to update to.</li>
+      <li><strong>config.rb</strong><br>This is where Ruby is told what assets to assemble and how to map your project's file locations.</li>
     </ul>
   </div>
 </div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>HTML Page Markup</h2>
+    <p>As you'll see in our ```index.html``` sample, Foundation pages have some specific markup required for them to work. This code block is a simple boilerplate for content-free Foundation pages that we hope comes in handy.</p>
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_what_you_get_index_include}}
+```
+{{/markdown}}
+  </div>
+</div>
+
+
