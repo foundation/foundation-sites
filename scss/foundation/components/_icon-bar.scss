@@ -188,7 +188,7 @@ $icon-bar-item-padding: 1.25rem !default;
   $base-style:true) {
     @include icon-bar-base();
     @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
-    @include icon-bar-style($bar-bg, $bar-font-color, $bar-hover-color, $bar-icon-color, $bar-active-color, $base-style: true);
+    @include icon-bar-style($bar-bg, $bar-font-color, $bar-hover-color, $bar-icon-color, $bar-active-color, $base-style);
 }
 
 @include exports("icon-bar") {
