@@ -763,16 +763,25 @@ what you get
 .header-container {
   padding: 20px 30px 20px 30px;
   background: #0b4f69;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   h3 {
     color:#fff;
   }
 }
 
 .info-list {
+  background: #fafafa;
   list-style: none;
-  margin: 0;
+  margin: 0 0 40px 0;
   li {
     padding: 20px 30px;
+    pre {
+      margin-bottom: 0;
+    }
+  }
+  li:nth-child(even) {
+    background: #f5f5f5;
   }
 }
 

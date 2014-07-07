@@ -1063,10 +1063,10 @@ $sub-nav-active-cursor: default;
 // $switch-bg: #fff;
 
 // We use these to control the switch heights for our default classes
-// $switch-height-tny: 22px;
-// $switch-height-sml: 28px;
-// $switch-height-med: 36px;
-// $switch-height-lrg: 44px;
+// $switch-height-tny: rem-calc(22);
+// $switch-height-sml: rem-calc(28);
+// $switch-height-med: rem-calc(36);
+// $switch-height-lrg: rem-calc(44);
 // $switch-bottom-margin: rem-calc(20);
 
 // We use these to control default font sizes for our classes.
