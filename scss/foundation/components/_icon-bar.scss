@@ -8,7 +8,7 @@
 // @name
 // @dependencies _global.scss
 
-$include-html-form-classes: $include-html-classes !default;
+$include-html-icon-bar-classes: $include-html-classes !default;
 
 // @variables
 
@@ -188,18 +188,18 @@ $icon-bar-item-padding: 1.25rem !default;
   $base-style:true) {
     @include icon-bar-base();
     @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
-    @include icon-bar-style($bar-bg, $bar-font-color, $bar-hover-color, $bar-icon-color, $bar-active-color, $base-style: true);
+    @include icon-bar-style($bar-bg, $bar-font-color, $bar-hover-color, $bar-icon-color, $bar-active-color, $base-style);
 }
 
 @include exports("icon-bar") {
-  @if $include-html-form-classes {
+  @if $include-html-icon-bar-classes {
     div.icon-bar {
       @include icon-bar;
     }
   }
 }
 
-@if $include-html-form-classes {
+@if $include-html-icon-bar-classes {
 
 	// toolbar styles
 
