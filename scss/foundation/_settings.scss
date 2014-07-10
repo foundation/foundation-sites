@@ -12,8 +12,6 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
-// $experimental: true;
-
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -30,15 +28,19 @@ $include-html-classes: true;
 // $include-print-styles: true;
 $include-html-global-classes: $include-html-classes;
 
-// Grid 
+// Grid
 
-// $include-html-block-grid-classes: $include-html-classes; 
+// $include-html-grid-classes: $include-html-classes;
 // $include-xl-html-grid-classes: false;
 
 // $row-width: rem-calc(1000);
 // $total-columns: 12;
 
 // Global
+
+// We use these to define default font weights
+// $font-weight-normal: normal !default;
+// $font-weight-bold: bold !default;
 
 // We use these to control various global styles
 // $body-bg: #fff;
@@ -291,7 +293,7 @@ $primary-color: #008CBA;
 
 // Block Grid
 
-// $include-html-grid-classes: $include-html-classes;
+// $include-html-block-grid-classes: $include-html-classes;
 // $include-xl-html-block-grid-classes: false;
 
 // We use this to control the maximum number of block grid elements per row
@@ -367,7 +369,7 @@ $primary-color: #008CBA;
 // $button-border-width: 0px;
 // $button-border-style: solid;
 // $button-bg: $primary-color;
-// $button-border-color: scale-color($bg, $lightness: $button-function-factor);
+// $button-border-color: scale-color($button-bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
@@ -679,6 +681,7 @@ $magellan-padding: 0 !important;
 
 // $tabbar-bg: #333;
 // $tabbar-height: rem-calc(45);
+// $tabbar-icon-width: $tabbar-height;
 // $tabbar-line-height: $tabbar-height;
 // $tabbar-color: #fff;
 // $tabbar-middle-padding: 0 rem-calc(10);
@@ -767,10 +770,6 @@ $magellan-padding: 0 !important;
 // $orbit-slide-number-bg: rgba(0,0,0,0);
 // $orbit-slide-number-font-color: #fff;
 // $orbit-slide-number-padding: rem-calc(5);
-
-// We use these to controls the css animation
-// $orbit-animation-speed: 500ms;
-// $orbit-animation-ease: ease-in-out;
 
 // Hide controls on small
 // $orbit-nav-hide-for-small: true;
@@ -963,13 +962,20 @@ $magellan-padding: 0 !important;
 // $side-nav-link-color: $primary-color;
 // $side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
 // $side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%);
+// $side-nav-link-bg-hover: hsla(0, 0, 0, 0.025);
+// $side-nav-link-margin: 0;
+// $side-nav-link-padding: rem-calc(7 14);
 // $side-nav-font-size: rem-calc(14);
 // $side-nav-font-weight: $font-weight-normal;
 // $side-nav-font-weight-active: $side-nav-font-weight;
 // $side-nav-font-family: $body-font-family;
 // $side-nav-active-font-family: $side-nav-font-family;
 
-
+// We use these to control heading styles.
+// $side-nav-heading-color: $side-nav-link-color;
+// $side-nav-heading-font-size: $side-nav-font-size;
+// $side-nav-heading-font-weight: bold;
+// $side-nav-heading-text-transform: uppercase;
 
 // We use these to control border styles
 // $side-nav-divider-size: 1px;
@@ -1057,10 +1063,10 @@ $sub-nav-active-cursor: default;
 // $switch-bg: #fff;
 
 // We use these to control the switch heights for our default classes
-// $switch-height-tny: 22px;
-// $switch-height-sml: 28px;
-// $switch-height-med: 36px;
-// $switch-height-lrg: 44px;
+// $switch-height-tny: rem-calc(22);
+// $switch-height-sml: rem-calc(28);
+// $switch-height-med: rem-calc(36);
+// $switch-height-lrg: rem-calc(44);
 // $switch-bottom-margin: rem-calc(20);
 
 // We use these to control default font sizes for our classes.
@@ -1177,6 +1183,7 @@ $sub-nav-active-cursor: default;
 // $tooltip-radius: $global-radius;
 // $tooltip-rounded: $global-rounded;
 // $tooltip-pip-size: 5px;
+// $tooltip-max-width: 300px;
 
 //
 // TOP BAR
@@ -1254,6 +1261,21 @@ $sub-nav-active-cursor: default;
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 
+// ICON BAR
+
+// We use these to style the icon-bar and items
+// $include-html-icon-bar-classes: $include-html-classes;
+// $icon-bar-bg: #333;
+// $icon-bar-font-color: #fff;
+// $icon-bar-font-size: 1rem;
+// $icon-bar-hover-color: $primary-color;
+// $icon-bar-icon-color: #fff;
+// $icon-bar-icon-size: 1.875rem;
+// $icon-bar-image-width: 1.875rem;
+// $icon-bar-image-height: 1.875rem;
+// $icon-bar-active-color: $primary-color;
+// $icon-bar-item-padding: 1.25rem;
+
 //
 // VISIBILITY CLASSES
 //
@@ -1261,6 +1283,7 @@ $sub-nav-active-cursor: default;
 // $include-html-visibility-classes: $include-html-classes;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
+// $include-accessibility-classes: true;
 
 //
 // RANGE SLIDER

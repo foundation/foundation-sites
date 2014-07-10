@@ -573,45 +573,172 @@ $custom-active-bg:darken($custom-link-color, 5%);
 
 
 // Fix for Google Maps
-div#interchangeMarkup img{
+div#interchangeMarkup img {
   max-width: none;
 }
 
-.youwillneed img {
-  width: 160px;
-  margin:20px 0;
-}
-
-.youwillneed h4 {
-  font-size: 1.3rem;
-  font-weight: normal;
-  text-transform: capitalize;
-}
-
-.note {
-  p {
-    font-size: rem-calc(16);
+/*------------------------------------
+you will need
+------------------------------------*/
+.you-will-need {
+  a {
+    margin-bottom: 0px;
   }
+  img {
+    width: 160px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  } 
 }
 
-img.codekit {
+
+
+/*------------------------------------
+images
+------------------------------------*/
+.others {
   max-height: 180px;
-  margin: 10px;
+  display: block;
+  margin: 10px auto;
 }
 
-img.cactus {
-  max-height: 180px;
-  margin: 10px 20px 0 0;
-}
 
-img.flow {
-  margin: 0 10px 20px 0;
-
+.flow-chart {
+  margin: 10px 10px 15px 0;
   @media #{$small-only} { 
     margin:20px;
   }
+}
+
+.command-line {
+  @media #{$small-only} {
+    margin:20px;
+  }
+}
+
+/*------------------------------------
+padding
+------------------------------------*/
+.recommended {
+  padding-top:10px;
+}
+
+.path-container code {
+  color:$primary-color;
+}
+
+.sub-nav {
+  background-color: $panel-bg;
+  padding: 10px 10px 10px 0;
+}
+
+.above-magellan {
+  margin-bottom: 30px
+}
+
+.otherapps {
+  margin-bottom: 20px !important; 
+}
+
+/*------------------------------------
+ timeline styles
+------------------------------------*/
+.two-column {
+  margin-top: 20px;
+}
+
+.path-container {
+  .path-item {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+  }
+}
 
 
+/*------------------------------------
+circles
+------------------------------------*/
+.circlenumber {
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #0b4f69;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  margin-top: 6px;
+  margin-right: 18px; 
+  margin-bottom: 5px;
+  margin-left: 0.83333rem;
+  z-index: 2;
+  h3 {
+    color: #0b4f69;
+    position: relative;
+    text-align: center;
+    top: 2.5%;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+
+@media only screen and (min-width: 0) and (max-width: 64.063em){ 
+  .path-item {
+    padding-left: 0.83333rem; 
+    .circlenumber {
+      left: -12px;
+    }
+  }
+}
+
+@media only screen and (min-width: 64.063em) { 
+  .path-item {
+    padding-left: 65px;
+    position: relative;
+    .circlenumber {
+    position: absolute;
+    left: 0;
+    }
+  }
+}
+
+/*------------------------------------
+ mobile timeline styles
+------------------------------------*/
+@media only screen and (max-width: 1800px) {
+  .path-container {
+    .circle {
+    top: 0;
+    right: 0;
+    left: 0;
+    float: none;
+    padding-top: 0px;
+    margin-right: auto;
+    }
+  .panel {
+    border: none;
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    font-weight: normal;
+    padding-left:20px;
+    } 
+  }
+}
+
+/*------------------------------------
+misc
+------------------------------------*/
+p.note  {
+  font-size: 16px;
 }
 
 @media #{$small-only} {
@@ -622,124 +749,97 @@ img.flow {
   }
 }
 
-
-
-/*------------------------------------
- timeline styles
-------------------------------------*/
-.path-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.path-container .path-item {
-  // font-size: emCalc(16px);
-  // line-height: 1.7;
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
-// .path-container .path-item a {
-//   font-weight: bold;
-//   font-size: emCalc(14px);
-// }
-
-.circlenumber {
-  background-color: #fff;
-  border-radius: 50%;
-  border:2px solid #0b4f69;
-  width: 48px;
-  height: 48px;
-  position: relative;
-  margin-left: 0.83333rem;
-  margin-right: 18px; 
-  margin-bottom: 5px;
-  z-index: 2;
-}
-
-.circlenumber h3 {
-  color: #0b4f69;
-  position: relative;
-  text-align: center;
-  top: 7%;
-  font-size: 24px;
-}
-
-// .path-container .line {
-//   background: #d1d3d4;
-//   width: 2px;
-//   bottom: 0;
-//   position: absolute;
-//   top: 160px;
-//   left: 50%;
-//   z-index: -10;
-//   height: 700px;
-// }
-
-// .howtoinstall .circle {
-//   background-color: #0b4f69;
-//   border-radius:50%;
-//   width:48px;
-//   height:48px;
-//   position:relative;
-//   margin-top: 10px;
-//   margin-bottom: 10px;
-// }
-
-// .howtoinstall .circle h3 {
-//   line-height: 1.9;  
-//   color:#fff;
-//   position: relative;
-//   text-align:center;
-// }
-
-/*------------------------------------
- mobile timeline styles
-------------------------------------*/
-
-@media only screen and (max-width: 1800px) {
-  .path-container {
-
-  }
-  .path-container .circle {
-    top: 0;
-    right: 0;
-    left: 0;
-    float: none;
-    padding-top: 0px;
-    margin-right: auto;
-  }
-}
-
-// .path-text {
-//   background: #fff;
-// }
-
-.sub-nav {
-  background-color: $panel-bg;
-  padding: 10px;
-  margin: 0;
-}
-
-.markdown .panel {
-  border: none;
-  font-family: Consolas, 'Liberation Mono', Courier, monospace;
-  font-weight: normal;
-  // font-size: emCalc(18px) !important;
-}
-
-.otherapps {
-  margin-bottom: 20px !important; 
-}
-
-.markdown code {
-  color:$primary-color;
+.path-item:last-child, .path-item p:last-child, .nocli ul:last-child, .other-uses .button:last-child, .path-container p:last-child{
+  margin-bottom: 0;
 }
 
 .dashed {
   border-style: dashed;
 }
 
-div {
-  border: 1px solid red;
+/*------------------------------------
+what you get
+------------------------------------*/
+.header-container {
+  padding: 15px 30px 10px 30px;
+  background: #0b4f69;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  h3 {
+    color:#fff;
+  }
 }
+
+.info-list {
+  font-size: .95rem;
+  background: #fafafa;
+  list-style: none;
+  margin: 0 0 20px 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  li {
+    padding: 20px 30px;
+    pre {
+      margin-bottom: 0;
+    }
+  }
+  li:nth-child(even) {
+    background: #f5f5f5;
+  }
+}
+
+.file_list {
+  ul {
+    list-style: none;
+    margin-bottom: 12px;
+  }
+
+  img {
+  border-radius: 5px;
+  }
+
+  hr {
+    margin-bottom: 4px;
+    margin-top: 2px;
+    width: 30%;
+  }
+
+  .fi-folder {
+    color: #0b4f69;
+  }
+
+  .fi-page{
+    color: #6f6f6f;
+  }
+}
+
+.setting_sass {
+  padding-top: 23px;
+}
+
+.app-image {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.arrow-list {
+  margin-bottom: 0;
+  li {
+    padding-left: 20px;
+    list-style: none;
+    position:relative;
+    i {
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+.using-sass {
+  pre:last-child {
+    margin-bottom: 0;
+  }
+}
+
 

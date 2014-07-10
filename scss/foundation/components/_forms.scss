@@ -128,7 +128,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
 
   // Disabled background input background color
-  &[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
+  &[disabled], &[readonly], fieldset[disabled] & { background-color: $input-disabled-bg; }
 }
 
 // @MIXIN
@@ -305,10 +305,17 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // We use this mixin to style select elements
 @mixin form-select  {
   -webkit-appearance: none !important;
+  -webkit-border-radius: 0px;
   background-color: $select-bg-color;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
+  
+  // The custom arrow have some fake horizontal padding so we can align it
+  // from the right side of the element without relying on CSS3
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  
+  // We can safely use leftmost and rightmost now
+  background-position: if($text-direction == 'rtl', 0%, 100%) center;
+  
   background-repeat: no-repeat;
-  background-position: if($text-direction == 'rtl', 3%, 97%) center;
   border: $input-border-width $input-border-style $input-border-color;
   padding: $form-spacing / 2;
   font-size: $input-font-size;
@@ -345,14 +352,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       display:none;
     }
 
-    /* Workaround to hide the select arrow on Firefox */
-    @-moz-document url-prefix() {
-      select {
-        text-indent: 0.01px;
-        text-overflow: '';
-        -moz-appearance: none;
-      }
-    }
     /* Attach elements to the beginning or end of an input */
     .prefix,
     .postfix { @include prefix-postfix-base; }
@@ -390,6 +389,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type="url"],
     textarea {
       -webkit-appearance: none;
+      -webkit-border-radius: 0px;
       @include form-element;
       @if $input-include-glowing-effect == false {
           @include single-transition(all, 0.15s, linear);
@@ -401,6 +401,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
     input[type="submit"] {
       -webkit-appearance: none;
+      -webkit-border-radius: 0px;
     }
 
     /* Respect enforced amount of rows for textarea */
@@ -444,7 +445,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     /* Error Handling */
 
     #{data('abide')} {
-      .error small.error, span.error, small.error {
+      .error small.error, .error span.error, span.error, small.error {
         @include form-error-message;
       }
       span.error, small.error { display: none; }

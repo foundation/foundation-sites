@@ -38,6 +38,8 @@ $button-border-width: 0px !default;
 $button-border-style: solid !default;
 $button-bg: $primary-color !default;
 $button-border-color: scale-color($button-bg, $lightness: $button-function-factor) !default;
+$button-hover-color: scale-color($button-bg, $lightness: $button-function-factor) !default;
+
 
 // We use this to set the default radius used throughout the core.
 $button-radius: $global-radius !default;
@@ -118,9 +120,11 @@ $button-disabled-opacity: 0.7 !default;
 // We use this mixin to add button color styles
 //
 // $bg - Primary color set in settings file. Default: $button-bg.
+// $bc - Button Border Color. Default: $button-border-color
+// $bh - Button Hover Color. Default: $button-hover-color
 // $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
-@mixin button-style($bg:$button-bg, $radius:true, $disabled:false) {
+@mixin button-style($bg:$button-bg, $radius:false, $disabled:false, $bc:$button-border-color, $bh:$button-hover-color) {
 
   // We control which background styles are used,
   // these can be removed by setting $bg:false
@@ -129,9 +133,9 @@ $button-disabled-opacity: 0.7 !default;
     $bg-lightness: lightness($bg);
 
     background-color: $bg;
-    border-color: scale-color($bg, $lightness: $button-function-factor);
+    border-color: $bc;
     &:hover,
-    &:focus { background-color: scale-color($bg, $lightness: $button-function-factor); }
+    &:focus { background-color: $bh; }
 
     // We control the text color for you based on the background color.
     @if $bg-lightness > 70% {
@@ -211,6 +215,9 @@ $button-disabled-opacity: 0.7 !default;
         &.alert { @include button-style($bg:$alert-color, $disabled:true); }
       }
     }
+
+    //firefox 2px fix
+    button::-moz-focus-inner {border:0; padding:0;}
 
     @media #{$medium-up} {
       button, .button {

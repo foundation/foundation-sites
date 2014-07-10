@@ -140,7 +140,7 @@ $total-columns: 12 !default;
   @if $center {
     margin-#{$default-float}: auto;
     margin-#{$opposite-direction}: auto;
-    float: none !important;
+    float: none;
   }
 
   // If offset, calculate appropriate margins
@@ -170,8 +170,6 @@ $total-columns: 12 !default;
     .#{$size}-#{$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
   }
 
-  [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
-  [class*="column"] + [class*="column"].end { float: $default-float; }
 
 
   @for $i from 0 through $total-columns - 1 {
@@ -192,7 +190,19 @@ $total-columns: 12 !default;
   .columns.#{$size}-uncentered {
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
-    float: $default-float !important;
+    float: $default-float;
+  }
+
+  // Fighting [class*="column"] + [class*="column"]:last-child
+  .column.#{$size}-centered:last-child,
+  .columns.#{$size}-centered:last-child{
+    float: none;
+  }
+
+  // Fighting .column.<previous-size>-centered:last-child
+  .column.#{$size}-uncentered:last-child,
+  .columns.#{$size}-uncentered:last-child {
+    float: $default-float;
   }
 
   .column.#{$size}-uncentered.opposite,
@@ -220,6 +230,9 @@ $total-columns: 12 !default;
 
     .column,
     .columns { @include grid-column($columns:$total-columns); }
+
+    [class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
+    [class*="column"] + [class*="column"].end { float: $default-float; }
 
     @media #{$small-up} {
       @include grid-html-classes($size:small);

@@ -4,7 +4,7 @@
   Foundation.libs.accordion = {
     name : 'accordion',
 
-    version : '5.2.3',
+    version : '5.3.0',
 
     settings : {
       active_class: 'active',
@@ -26,7 +26,7 @@
         var accordion = S(this).closest('[' + self.attr_name() + ']'),
             target = S('#' + this.href.split('#')[1]),
             siblings = S('dd > .content', accordion),
-            aunts = $('dd', accordion),
+            aunts = $('>dd', accordion),
             groupSelector = self.attr_name() + '=' + accordion.attr(self.attr_name()),
             settings = accordion.data(self.attr_name(true) + '-init'),
             active_content = S('dd > .content.' + settings.active_class, accordion);
@@ -39,7 +39,11 @@
 
         if (settings.toggleable && target.is(active_content)) {
           target.parent('dd').toggleClass(settings.active_class, false);
-          return target.toggleClass(settings.active_class, false);
+          target.toggleClass(settings.active_class, false);
+          settings.callback(target);
+          target.triggerHandler('toggled', [accordion]);
+          accordion.triggerHandler('toggled', [target]);
+          return;
         }
 
         if (!settings.multi_expand) {
@@ -49,6 +53,8 @@
 
         target.addClass(settings.active_class).parent().addClass(settings.active_class);
         settings.callback(target);
+        target.triggerHandler('toggled', [accordion]);
+        accordion.triggerHandler('toggled', [target]);
       });
     },
 

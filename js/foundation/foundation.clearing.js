@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.2.3',
+    version: '5.3.0',
 
     settings : {
       templates : {
@@ -130,7 +130,11 @@
 
           data.delta_x = e.touches[0].pageX - data.start_page_x;
 
-          if ( typeof data.is_scrolling === 'undefined') {
+          if (Foundation.rtl) {
+            data.delta_x = -data.delta_x;
+          }
+
+          if (typeof data.is_scrolling === 'undefined') {
             data.is_scrolling = !!( data.is_scrolling || Math.abs(data.delta_x) < Math.abs(e.touches[0].pageY - data.start_page_y) );
           }
 
@@ -205,7 +209,7 @@
               cb.call(this, image);
             }
           }.bind(this));
-        }.bind(this), 50);
+        }.bind(this), 100);
       }
 
       function cb (image) {
@@ -278,7 +282,7 @@
 
       if (e.which === NEXT_KEY) this.go(clearing, 'next');
       if (e.which === PREV_KEY) this.go(clearing, 'prev');
-      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click');
+      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click').trigger('click.fndtn.clearing');
     },
 
     nav : function (e, direction) {
@@ -431,7 +435,7 @@
 
       if (target.length) {
         this.S('img', target)
-          .trigger('click', [current, target])
+          .trigger('click', [current, target]).trigger('click.fndtn.clearing', [current, target])
           .trigger('change.fndtn.clearing');
       }
     },

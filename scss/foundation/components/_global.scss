@@ -11,9 +11,6 @@
 // styles get applied to [data-mysite-plugin], etc
 $namespace: false !default;
 
-// Control the inclusion of experimental properties
-$experimental: true !default;
-
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -28,16 +25,6 @@ $base-line-height: 150% !default;
 //
 // Global Foundation Mixins
 //
-
-// @mixins
-//
-// We use this to optionally include experimental or
-// explicitly vendor prefixed properties
-@mixin experimental() {
-  @if $experimental {
-    @content;
-  }
-}
 
 // @mixins
 //
@@ -327,7 +314,7 @@ $cursor-text-value: text !default;
   // Forward slash placed around everything to convince PhantomJS to read the value.
 
   meta.foundation-version {
-    font-family: "/5.2.3/";
+    font-family: "/5.3.0/";
   }
 
   meta.foundation-mq-small {

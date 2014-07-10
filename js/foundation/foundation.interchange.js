@@ -4,7 +4,7 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '5.2.3',
+    version : '5.3.0',
 
     cache : {},
 
@@ -232,11 +232,7 @@
         this.object($(this['cached_' + type][i]));
       }
 
-      return $(window).trigger('resize');
-    },
-
-    parse_params : function (path, directive, mq) {
-      return [this.trim(path), this.convert_directive(directive), this.trim(mq)];
+      return $(window).trigger('resize').trigger('resize.fndtn.interchange');
     },
 
     convert_directive : function (directive) {
@@ -250,6 +246,25 @@
       return 'replace';
     },
 
+    parse_scenario : function (scenario) {
+      // This logic had to be made more complex since some users were using commas in the url path
+      // So we cannot simply just split on a comma
+      var directive_match = scenario[0].match(/(.+),\s*(\w+)\s*$/),
+      media_query         = scenario[1];
+
+      if (directive_match) {
+        var path  = directive_match[1],
+        directive = directive_match[2];
+      }
+      else {
+        var cached_split = scenario[0].split(/,\s*$/),
+        path             = cached_split[0],
+        directive        = '';               
+      }
+
+      return [this.trim(path), this.convert_directive(directive), this.trim(media_query)];
+    },
+
     object : function(el) {
       var raw_arr = this.parse_data_attr(el),
           scenarios = [], 
@@ -260,10 +275,7 @@
           var split = raw_arr[i].split(/\((.*?)(\))$/);
 
           if (split.length > 1) {
-            var cached_split = split[0].split(/\, /),
-                params = this.parse_params(cached_split[0],
-                  cached_split[1], split[1]);
-
+            var params = this.parse_scenario(split);
             scenarios.push(params);
           }
         }
