@@ -445,7 +445,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     /* Error Handling */
 
     #{data('abide')} {
-      .error small.error, span.error, small.error {
+      .error small.error, .error span.error, span.error, small.error {
         @include form-error-message;
       }
       span.error, small.error { display: none; }

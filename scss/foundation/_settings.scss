@@ -369,7 +369,7 @@ $primary-color: #008CBA;
 // $button-border-width: 0px;
 // $button-border-style: solid;
 // $button-bg: $primary-color;
-// $button-border-color: scale-color($bg, $lightness: $button-function-factor);
+// $button-border-color: scale-color($button-bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
@@ -1063,10 +1063,10 @@ $sub-nav-active-cursor: default;
 // $switch-bg: #fff;
 
 // We use these to control the switch heights for our default classes
-// $switch-height-tny: 22px;
-// $switch-height-sml: 28px;
-// $switch-height-med: 36px;
-// $switch-height-lrg: 44px;
+// $switch-height-tny: rem-calc(22);
+// $switch-height-sml: rem-calc(28);
+// $switch-height-med: rem-calc(36);
+// $switch-height-lrg: rem-calc(44);
 // $switch-bottom-margin: rem-calc(20);
 
 // We use these to control default font sizes for our classes.
@@ -1264,6 +1264,7 @@ $sub-nav-active-cursor: default;
 // ICON BAR
 
 // We use these to style the icon-bar and items
+// $include-html-icon-bar-classes: $include-html-classes;
 // $icon-bar-bg: #333;
 // $icon-bar-font-color: #fff;
 // $icon-bar-font-size: 1rem;
