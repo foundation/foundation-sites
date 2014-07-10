@@ -761,7 +761,7 @@ p.note  {
 what you get
 ------------------------------------*/
 .header-container {
-  padding: 20px 30px 20px 30px;
+  padding: 15px 30px 10px 30px;
   background: #0b4f69;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -771,9 +771,12 @@ what you get
 }
 
 .info-list {
+  font-size: .95rem;
   background: #fafafa;
   list-style: none;
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   li {
     padding: 20px 30px;
     pre {
@@ -785,5 +788,60 @@ what you get
   }
 }
 
+.file_list {
+  ul {
+    list-style: none;
+    margin-bottom: 12px;
+  }
 
+  img {
+  border-radius: 5px;
+  }
 
+  hr {
+    margin-bottom: 4px;
+    margin-top: 2px;
+    width: 30%;
+  }
+
+  .fi-folder {
+    color: #0b4f69;
+  }
+
+  .fi-page{
+    color: #6f6f6f;
+  }
+}
+
+.setting_sass {
+  padding-top: 23px;
+}
+
+.app-image {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.arrow-list {
+  margin-bottom: 0;
+  li {
+    padding-left: 20px;
+    list-style: none;
+    position:relative;
+    i {
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+.using-sass {
+  pre:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.minus {
+  margin-top: 30px;
+}

@@ -1,0 +1,97 @@
+---
+title: How to Use
+---
+
+<h3 class="subheader">Customizing your project with Foundation is easy, we recommend making different changes in different files which we will go over here.</h3>
+
+<hr>
+
+<div class="row">
+	<div class="small-12 columns">
+    <p><a href="http://foundation.zurb.com/docs/sass.html">← Back to Getting Started</a></p>
+    <h2>Settings.SCSS</h2>
+    <h3 class="subheader">You will want to make changes to the settings file which includes tons of variables here that can be customized for each component.</h3>
+    <div class="row">
+      <div class="medium-6 columns setting_sass">
+        <p>You can write vanilla css here, but it better to do so in a CSS file located in the ```stylesheets``` folder like the ```app.css``` file included here. But inside the settings file you can write custom sass like so:</p>
+      </div>
+      <div class="medium-6 columns">
+{{#markdown}}
+```scss
+{{> examples_img_panel_include}}
+```
+{{/markdown}} 
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="small-12 columns">
+        <p>Making changes is simple, be sure to to run grunt (libsass) or compass watch (compass) then in ```_settings.scss``` find the element you want to style (command/ctrl+f). Find the variable, uncomment the style, and change its value.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-6 columns">
+        <img src="{{assets}}/img/images/button_settings.png">
+      </div>
+      <div class="medium-6 columns">
+        <p>Here we've made some example changes to the buttons. 
+          <ul>
+            <li>First, we changed the margin on the bottom of the buttons.</li>
+            <li>Next the colors have been changed to dodger blue.</li>
+            <li>Finally, we changed the radius on the corners.</li>
+          </ul>    
+        Now just save your changes and your Sass will compile. All you need to do is refresh your page to see yours changes, bam!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Mixins</h2>
+    <h3 class="subheader">We use for when you want to provide a lot of optional features for a lass or you want to use a particular feature in a lot of different classes.</h3>
+    <p>A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. You can create custom mixins to speed up development, another example regarding buttons:</p>
+{{#markdown}}
+```scss
+{{> examples_custom_button_include}}
+```
+{{/markdown}}
+    <p>Here is an example of some variables you can customize:</p>
+{{#markdown}}
+```scss
+{{> examples_button_variable_include}}
+```
+{{/markdown}}
+    <p>Then you can use your new custom button by simply include the following html:</p>
+{{#markdown}}
+```html
+{{> examples_button_html_include}}
+```
+{{/markdown}}
+  </div>
+</div>
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>App.SCSS</h2>
+    <h3 class="subheader">In this file we recommend that you create an new custom classes for your project.</h3>
+    <div class="row">
+      <div class="medium-6 columns">
+        <p>In this file we automatically import all of the default Foundation styles so that when your Sass gets compiled it includes all the styles in the ```app.css``` file located within the stylesheets folder. If you would rather only include a few elements into your project you can comment out the main import function and selectively import the features you want.</p>
+      </div>
+      <div class="medium-6 columns">
+        <img class="app_image" src="{{assets}}/img/images/app_scss.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+
+
+link to global mixins 
+mention that individual components have mixins you can create -->
