@@ -227,7 +227,9 @@
       }
       animate = new FadeAnimation(settings, slides_container);
       if (settings.animation === 'slide') 
-        animate = new SlideAnimation(settings, slides_container);        
+        animate = new SlideAnimation(settings, slides_container);
+      if (settings.animation === 'scroll') 
+        animate = new ScrollAnimation(settings, slides_container);            
 
       container.on('click', '.'+settings.next_class, self.next);
       container.on('click', '.'+settings.prev_class, self.prev);
@@ -366,6 +368,31 @@
 
     this.prev = function(current, prev, callback) {
       current.animate({marginLeft:'100%'}, duration);
+      prev.css(margin, '-100%');
+      prev.animate(animMargin, duration, function() {
+        current.css(margin, '100%');
+        callback();
+      });
+    };
+  };
+  
+  var ScrollAnimation = function(settings, container) {
+    var duration = settings.animation_speed;
+    var is_rtl = ($('html[dir=rtl]').length === 1);
+    var margin = is_rtl ? 'marginBottom' : 'marginTop';
+    var animMargin = {};
+    animMargin[margin] = '0%';
+
+    this.next = function(current, next, callback) {
+      current.animate({marginTop:'-100%'}, duration);
+      next.animate(animMargin, duration, function() {
+        current.css(margin, '100%');
+        callback();
+      });
+    };
+
+    this.prev = function(current, prev, callback) {
+      current.animate({marginTop:'100%'}, duration);
       prev.css(margin, '-100%');
       prev.animate(animMargin, duration, function() {
         current.css(margin, '100%');
