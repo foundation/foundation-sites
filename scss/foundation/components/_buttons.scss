@@ -176,7 +176,7 @@ $button-disabled-opacity: 0.7 !default;
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default:false.
 // $is-input - <input>'s and <button>'s take on strange padding. We added this to help fix that. Default:false.
 // $is-prefix - Not used? Default:false.
-@mixin button($padding:$button-med, $bg:$button-bg, $radius:false, $full-width:false, $disabled:false, $is-prefix:false) {
+@mixin button($padding:$button-med, $bg:$button-bg, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
   @include button-base;
   @include button-size($padding, $full-width);
   @include button-style($bg, $radius, $disabled);
