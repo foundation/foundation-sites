@@ -21,6 +21,9 @@
       // Default to the entire li element.
       open_selectors : '',
 
+      // Image will be skipped in carousel.
+      skip_selector : '',
+
       touch_label : '',
 
       // event initializers and locks
@@ -432,6 +435,11 @@
     go : function ($ul, direction) {
       var current = this.S('.visible', $ul),
           target = current[direction]();
+
+      // Check for skip selector.
+      if (this.settings.skip_selector && target.find(this.settings.skip_selector).length != 0) {
+        target = target[direction]();
+      }
 
       if (target.length) {
         this.S('img', target)
