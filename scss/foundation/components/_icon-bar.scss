@@ -193,7 +193,7 @@ $icon-bar-item-padding: 1.25rem !default;
 
 @include exports("icon-bar") {
   @if $include-html-icon-bar-classes {
-    div.icon-bar {
+    .icon-bar {
       @include icon-bar;
     }
   }
