@@ -34,9 +34,33 @@
       &.large-centered {
         background: darken(#eee, 5%);
       }
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
     }
   }
 }
+
+.row {
+  max-width: rem-calc(1440);
+  &.display-end {
+    background: #fff;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    border: solid 1px #c6c6c6;
+    margin-#{$default-float}: 0 !important;
+    margin-#{$opposite-direction}: 0 !important;
+    .columns {
+      background: darken(#eee, 5%);
+      border-left: 1px solid #c6c6c6;
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
+    }
+  }
+}
+
 .top-bar-section ul li > a{ font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;font-size: 0.8125rem !important; }
 h1 { margin-top: 20px; }
 // h2, h3 { margin: 1rem 0 0.15rem; }
