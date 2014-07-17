@@ -1,11 +1,8 @@
 ---
 title: Tooltips
-layout: doc/layouts/default.html
 ---
 
-# Tooltips
-
-<h3 class="subheader">Tooltips are a quick way to provide <span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.</h3>
+<h3 class="subheader">Tooltips are a quick way to provide <a data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</a> on a term or action on a page.</h3>
 
 ***
 
@@ -44,7 +41,21 @@ Additional classes can be added to your tooltips to change its appearance.
 
 <h4>Rendered HTML</h4>
 
-<span data-tooltip class="has-tip tip-bottom radius" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span> 
+<span data-tooltip class="has-tip tip-bottom radius" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span>
+
+
+<p>You can now also add `show_on` to your `data-options` attribute to allow your tooltips to show on `small`, `medium`, or `large` when the page loads. They will show on all screen sizes by default.</p>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_tooltips_show_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_tooltips_show}}
+  </div>
+</div>
 
 &nbsp;
 
@@ -78,9 +89,9 @@ It's easy to configure tooltips using our Javascript. You can use data-attribute
 
 {{#markdown}}
 ```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.tooltip.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.tooltip.js"></script>
 ```
 {{/markdown}}
 
@@ -105,7 +116,7 @@ You can adjust lots of settings. For example:
 {{#markdown}}
 ```js
 $(document).foundation({
-  tooltips: {
+  tooltip: {
     selector : '.has-tip',
     additional_inheritable_classes : [],
     tooltip_class : '.tooltip',
@@ -113,7 +124,7 @@ $(document).foundation({
     disable_for_touch: false,
     tip_template : function (selector, content) {
       return '<span data-selector="' + selector + '" class="'
-        + Foundation.libs.tooltips.settings.tooltipClass.substring(1)
+        + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
         + '">' + content + '<span class="nub"></span></span>';
     }
   }

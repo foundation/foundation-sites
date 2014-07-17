@@ -18,7 +18,7 @@ $orbit-caption-padding: rem-calc(10 14) !default;
 $orbit-caption-height: auto !default;
 
 // We use these to control the left/right nav styles
-$orbit-nav-bg: none !default;
+$orbit-nav-bg: transparent !default;
 $orbit-nav-bg-hover: rgba(0,0,0,0.3) !default;
 $orbit-nav-arrow-color: #fff !default;
 $orbit-nav-arrow-color-hover: #fff !default;
@@ -41,22 +41,26 @@ $orbit-slide-number-padding: rem-calc(5) !default;
 $wrapper-class: "slideshow-wrapper" !default;
 $preloader-class: "preloader" !default;
 
+// Hide controls on small
+$orbit-nav-hide-for-small: true !default;
+$orbit-bullet-hide-for-small: true !default;
+$orbit-timer-hide-for-small: true !default;
+
+
 @include exports("orbit") {
   @if $include-html-orbit-classes {
 
-    @if $experimental {
-      @-webkit-keyframes rotate {
-        from { -webkit-transform: rotate(0deg); }
-        to { -webkit-transform: rotate(360deg); }
-      }
-      @-moz-keyframes rotate {
-        from { -moz-transform: rotate(0deg); }
-        to { -moz-transform: rotate(360deg); }
-      }
-      @-o-keyframes rotate {
-        from { -o-transform: rotate(0deg); }
-        to { -o-transform: rotate(360deg); }
-      }
+    @-webkit-keyframes rotate {
+      from { -webkit-transform: rotate(0deg); }
+      to { -webkit-transform: rotate(360deg); }
+    }
+    @-moz-keyframes rotate {
+      from { -moz-transform: rotate(0deg); }
+      to { -moz-transform: rotate(360deg); }
+    }
+    @-o-keyframes rotate {
+      from { -o-transform: rotate(0deg); }
+      to { -o-transform: rotate(360deg); }
     }
     @keyframes rotate {
       from { transform: rotate(0deg); }
@@ -87,42 +91,32 @@ $preloader-class: "preloader" !default;
 
           .orbit-caption { display: block; }
         }
+        .orbit-bullets li {
+          display: inline-block;
+        }
+      }
+
+      // Orbit preloader
+      .#{$preloader-class} {
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -20px;
+        margin-left: -20px;
+        border: solid 3px;
+        border-color: #555 #fff;
+        @include radius(1000px);
+        animation-name: rotate;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
       }
     }
 
-    // Orbit preloader
-    .#{$preloader-class} {
-      display: block;
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-top: -20px;
-      margin-left: -20px;
-      border: solid 3px;
-      border-color: #555 #fff;
-      @include radius(1000px);
-      @if $experimental {
-        -webkit-animation-name: rotate;
-        -webkit-animation-duration: 1.5s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-timing-function: linear;
-        -moz-animation-name: rotate;
-        -moz-animation-duration: 1.5s;
-        -moz-animation-iteration-count: infinite;
-        -moz-animation-timing-function: linear;
-        -o-animation-name: rotate;
-        -o-animation-duration: 1.5s;
-        -o-animation-iteration-count: infinite;
-        -o-animation-timing-function: linear;
-      }
-      animation-name: rotate;
-      animation-duration: 1.5s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-    }
-
+ 
     .orbit-container {
       overflow: hidden;
       width: 100%;
@@ -139,104 +133,25 @@ $preloader-class: "preloader" !default;
         -webkit-transform: translateZ(0);
 
         img { display: block; max-width: 100%; }
-        
-        &.fade > * {
-          -webkit-transform: translate3d(0,0,0);
-          opacity: 0.01;
-          transition: opacity .25s ease-in-out;
-          -moz-transition: opacity .25s ease-in-out;
-          -webkit-transition: opacity .25s ease-in-out;
-          &.animate-in {
-            opacity: 1;
-            z-index: 20;
-            transition: opacity 500ms ease-in-out;
-            -moz-transition: opacity 500ms ease-in-out;
-            -webkit-transition: opacity 500ms ease-in-out;
-          }
-          &.animate-out {
-            opacity: 0.01;
-            z-index: 10;
-            transition: opacity 500ms ease-in-out;
-            -moz-transition: opacity 500ms ease-in-out;
-            -webkit-transition: opacity 500ms ease-in-out;
-          }
-        }
-        &.swipe-next > * {
-          -webkit-transform: translate3d(100%,0,0);
-          &.animate-in {
-            -webkit-transform:translate3d(0,0,0);
-            -moz-transform:translate3d(0,0,0);
-            -ms-transform:translate3d(0,0,0);
-            -o-transform:translate3d(0,0,0);
-            transform:translate3d(0,0,0);
-            -webkit-transition-duration:500ms;
-            -moz-transition-duration:500ms;
-            -o-transition-duration:500ms;
-            transition-duration:500ms;
-          }
-          &.animate-out {
-            -webkit-transform:translate3d(-100%,0,0);
-            -moz-transform:translate3d(-100%,0,0);
-            -ms-transform:translate3d(-100%,0,0);
-            -o-transform:translate3d(-100%,0,0);
-            transform:translate3d(-100%,0,0);
-            -webkit-transition-duration:500ms;
-            -moz-transition-duration:500ms;
-            -o-transition-duration:500ms;
-            transition-duration:500ms;
-          }
-        }
-
-        &.swipe-prev > * {
-          -webkit-transform:translate3d(-100%,0,0);
-          -moz-transform:translate3d(-100%,0,0);
-          -ms-transform:translate3d(-100%,0,0);
-          -o-transform:translate3d(-100%,0,0);
-          transform:translate3d(-100%,0,0);
-          &.animate-in {
-            -webkit-transform:translate3d(0,0,0);
-            -moz-transform:translate3d(0,0,0);
-            -ms-transform:translate3d(0,0,0);
-            -o-transform:translate3d(0,0,0);
-            transform:translate3d(0,0,0);
-            -webkit-transition-duration:500ms;
-            -moz-transition-duration:500ms;
-            -o-transition-duration:500ms;
-            transition-duration:500ms;
-          }
-          &.animate-out {
-            -webkit-transform:translate3d(100%,0,0);
-            -moz-transform:translate3d(100%,0,0);
-            -ms-transform:translate3d(100%,0,0);
-            -o-transform:translate3d(100%,0,0);
-            transform:translate3d(100%,0,0);
-            -webkit-transition-duration:500ms;
-            -moz-transition-duration:500ms;
-            -o-transition-duration:500ms;
-            transition-duration:500ms;
-          }
-        }
 
         &>* {
           position: absolute;
           top: 0;
-          left: 0;
           width: 100%;
-          -webkit-transform:translate3d(100%,0,0);
-          -moz-transform:translate3d(100%,0,0);
-          -ms-transform:translate3d(100%,0,0);
-          -o-transform:translate3d(100%,0,0);
-          transform:translate3d(100%,0,0);
+          @if $text-direction == rtl {
+            margin-right: 100%;
+          }
+          @else {
+            margin-left: 100%;
+          }
 
-          &.active {
-            opacity: 1;
-            top: 0;
-            left: 0;
-            -webkit-transform:translate3d(0,0,0);
-            -moz-transform:translate3d(0,0,0);
-            -ms-transform:translate3d(0,0,0);
-            -o-transform:translate3d(0,0,0);
-            transform:translate3d(0,0,0);
+          &:first-child {
+            @if $text-direction == rtl {
+            margin-right: 0%;
+            }
+            @else {
+            margin-left: 0%;
+            }
           }
 
           .orbit-caption {
@@ -307,10 +222,11 @@ $preloader-class: "preloader" !default;
             width: 11px;
             height: 14px;
             border: inset 8px;
-            border-right-style: solid;
-            border-color: transparent transparent transparent #fff;
+            border-left-style: solid;
+            border-color: transparent;
+            border-left-color: #fff;
             &.dark { 
-              border-color: transparent transparent transparent #333;
+              border-left-color: #333;
             }
           }
         }
@@ -383,6 +299,7 @@ $preloader-class: "preloader" !default;
       display: block;
 
       li {
+        cursor:pointer;
         display: inline-block;
         width: $orbit-bullet-radius;
         height: $orbit-bullet-radius;
@@ -428,14 +345,24 @@ $preloader-class: "preloader" !default;
         .orbit-slides-container {height: auto !important;}
         .orbit-slides-container > * {
           position: relative;
-          margin-left: 0% !important;
+          margin:0% !important;
+          opacity:1 !important;
         }
-        .orbit-timer,
-        .orbit-next,
-        .orbit-prev,
-        .orbit-bullets {display: none;}
+
+        .orbit-slide-number {
+          display: none;
+        }
+      }
+
+      @if $orbit-timer-hide-for-small {
+         .orbit-timer{display: none;}
+      }
+      @if $orbit-nav-hide-for-small {
+         .orbit-next,.orbit-prev{display: none;}
+      }
+      @if $orbit-bullet-hide-for-small {
+         .orbit-bullets{display: none;}
       }
     }
-
   }
 }

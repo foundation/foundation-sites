@@ -1,4 +1,7 @@
-# Changelog
+---
+title: Changelog
+---
+
 <h3 class="subheader">Here's a summary of all of our releases of Foundation so far.</h3>
 
 ***
@@ -10,7 +13,7 @@
 		<p>Post your questions on the Foundation Forum! We have a strong community where you can:</p> 
 		<ul>
 		  <li>Get helpful answers fast from avid Foundation fans and ZURBians.</li>
-		  <li>Describe your code problem or response design question with text, code and imagery so the community can respond with appropriate advise or answers.</li>
+		  <li>Describe your code problem or response design question with text, code and imagery so the community can respond with appropriate advice or answers.</li>
 		  <li>Follow posts and people to learn new things about Foundation.</li>
 		</ul>
 
@@ -23,6 +26,71 @@
 </div>
 
 ***
+
+### 5.3.1- July 17, 2014
+
+  * Fix for clearing issue on mobile where lightbox allows vertical scroll outside container - [57bc2bf](https://github.com/zurb/foundation/commit/57bc2bf3af632b07e73a5f60572e2415608afe87)
+  * Fixes Reveal bug with modals locking when target is clicked while modal is open - [1c966e7](https://github.com/zurb/foundation/commit/1c966e765d3de74c885a873df2ee344add773775)
+  * Adds Scss variables for Icon-bar to _settings.scss - [52d9a7e](https://github.com/zurb/foundation/commit/52d9a7e96bd14d657f9960a3bdc72fae406c13c4)
+  * Remove experimental variable and mixin which caused deprecation messages [3b3c67d](https://github.com/zurb/foundation/commit/3b3c67d4573ed69f5b8fc0d1ea54e07cf6060a8b)
+  * Update _settings.scss to include missing Side Nav variables - [a7d8239](https://github.com/zurb/foundation/commit/a7d82394e96cf85d783f6cb8288592dcbcaef644)
+  * Added Warning-Color in labels - [b9ba74f](https://github.com/zurb/foundation/commit/b9ba74fd2978534d0c5c5fa970f5443156f757ce) 
+  * Fix for Incompatible units: 'rem' and 'px' in _settings.scss for switches - [aef0164](https://github.com/zurb/foundation/commit/aef01647769828112439f30998968321965a27b9)
+  * Fixes icon-bar scss variables - [37f7587, 4f1112a](https://github.com/zurb/foundation/commit/a25d524057d791b74194f9f67451d1df19406f65)
+  * Added 'Semantic Markup with CSS' section to Icon Bar Component Page - [ec2dfc9](https://github.com/zurb/foundation/commit/d353f6775ef53ed77525526909e62f4e04facb82)
+  * Fixes for Magellan active state on click - [97ed451](https://github.com/zurb/foundation/commit/5c7d627b6067f7a61360e928523dd3ccdad6b026)
+  * Fixing reveal modals w/video issue. Forcing iframe reload when re-opened - [8638964](https://github.com/zurb/foundation/commit/3779e3ab092ae3e5946390f582e62f769cd835a8)
+  * Fix for vertical sliders touch issue on mobile - [9de2ee7](https://github.com/zurb/foundation/commit/9de2ee7cac147fd2d29f8cd399187d11b5006d03)
+  * More detailed Sass install page, and 2 new Sass pages to expalin project structure &amp; how to use - (http://foundation.zurb.com/docs/sass.html), (http://foundation.zurb.com/docs/sass-files.html), (http://foundation.zurb.com/docs/using-sass.html)
+  * And tons of other fixes and improvements. Includes 95 important commits in this release. #powerful!
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.3.0...v5.3.1)
+
+### 5.3- June 19, 2014
+
+  * Adds new component - Switches [1268cc3](https://github.com/zurb/foundation/commit/3fbcfa1369c80f2c9409ef2ff8d7959fbb1b1d21)
+  * Adds new component - Icon Bar (ios style tab-bar) [1268cc3](https://github.com/zurb/foundation/commit/1268cc357a3eeddf34f2533c708664af09776b5f)
+  * Adds new component - Vertical Range Sliders [e63beb1](https://github.com/zurb/foundation/commit/e63beb14f94c37e46190da070aa9d6a9587bd8b3)
+  * All the emitted JS events are now namespaced with .fndtn{.plug-in-name} [cf0156d](https://github.com/zurb/foundation/commit/179f3d1fc2a0bc785438ec1a74faf5ef86855f81)
+  * Fixes clearing bug on load for Firefox and Safari browsers [f9f38d0](https://github.com/zurb/foundation/commit/52599b3d5ef3de50d77c24f1e8200f23727274dd)
+  * Orbit got a version revision and fixes that brings it back to it's last most stable state [060f01a](https://github.com/zurb/foundation/commit/060f01a4b8a445c8da38235c0dcc8f8c5d19fc81) 
+  * Added disabled state to range-sliders [3f01103](https://github.com/zurb/foundation/commit/3f011035f7e120342bda43249f70a6c898b50d54)
+  * Added accordion mixins [f10731d](https://github.com/zurb/foundation/commit/f10731db277b0b9797f27c577d1f349200e1026e)
+  * Decoupled binding some UI elements from very specific markup (ex: add a class instead of tying styles to ul) [f10731d](https://github.com/zurb/foundation/commit/f10731db277b0b9797f27c577d1f349200e1026e)
+  * Fixes form select arrow issue in Firefox. [f057733](https://github.com/zurb/foundation/commit/f05773348f000b9e8299dbdaa004774ca879081f)
+  * And tons of other fixes and improvements. Over 180 important commits in this release. Enjoy it!
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.2.3...v5.3.0)
+
+### 5.2.3- May 28, 2014
+
+  * Lots of documentation updates, class options, explanations, markup examples
+  * Equalizer can now equalize when stacked, or in block grid [931f047](https://github.com/zurb/foundation/commit/931f047b86223257c04806a1a162062c654aff33)
+  * Accordion can now be spread across different parent containers [3acb3e7](https://github.com/zurb/foundation/commit/3acb3e7c7dc0fb5152b39c550cc94e577b028c8b)
+  * Adds accessibility classes [db38232](https://github.com/zurb/foundation/commit/db38232a23ef8fede62ad6b45c19857f8237e6ac)
+  * Joyride Threshold implemented and fixed top option added [9cc7098](https://github.com/zurb/foundation/commit/9cc709802443f90639eeccfdf6a7836dd9744652)
+  * Added accordion toggle callback [2344a82](https://github.com/zurb/foundation/commit/fd42e979aaf9bd7e8ad171c37e2c250fbbb4a5a1)
+  * Offcanvas can now overlap content instead of pushing content [5cc0934](https://github.com/zurb/foundation/commit/66097454aac5f44e04ed08c74dabfee8ab745176)
+  * Added event bindings and much more to Offcanvas [7a799ba](https://github.com/zurb/foundation/commit/0912a932ff8313dbb1770f09c51c8d0ef447d2d4)
+  * Allow controlling heading sizes on small screens [596d5f9](https://github.com/zurb/foundation/commit/596d5f9e0eaa79faa89c821fca1f760884df4f09)
+  * Numerous fixes and changes to Orbit for performance and functionality
+  * And tons of other fixes and improvements. Over 320 commits in this release. Boom!
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.2.2...v5.2.3)
+
+### 5.2.2- April 3, 2014
+
+  * Numerous fixes and changes to Orbit for performance and functionality
+  * Updated _settings.scss to include all variables and options [f98b939](https://github.com/zurb/foundation/commit/f98b9393c21fb10d805c8a7b51fc6209f60907c5)
+  * Equalizer now only calculates height for visible objects [d4f2147](https://github.com/zurb/foundation/commit/d4f214730bbef7d6e451a7fa47dc2d6c295430e4)
+  * Off-canvas objects now retain momentum scrolling on iOS [19ff539](https://github.com/zurb/foundation/commit/19ff53944266726a9d2c3665af65034ac10c36a4)
+  * Fixed the dropdown color variable in top-bar [95e9eca](https://github.com/zurb/foundation/commit/95e9eca6c68bfd41702b6dfc8a3adb56e188a2f1)
+  * Fixed clearing to allow use of block-grids [64d4b79d](https://github.com/zurb/foundation/commit/64d4b79dc83777fc350e5897eb38bdd985853934)
+  * Allows decimals in Abide 'number' pattern [d69a076a](https://github.com/zurb/foundation/commit/d69a076ab90c273b1c4446b135154f4ae39625c1)
+  * Added block-grid support for XL and XXL viewports when enabled [745dc78](https://github.com/zurb/foundation/commit/745dc7837dc5749f5819c338fbf4ed6411b81824)
+  * Seriously, about a hundred other things. Also resolved over 360 issues for this release. Word.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.2.1...v5.2.2)
 
 ### 5.2.1- March 13, 2014
 
@@ -94,7 +162,7 @@ You can compare the commits [here](https://github.com/zurb/foundation/compare/v5
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.0.2...v5.0.3)
 
 ### 5.0.2- November 22, 2013
-  
+
   * Fix issue with clearing images not displaying
 
 You can compare the commits [here](https://github.com/zurb/foundation/compare/v5.0.1...v5.0.2)

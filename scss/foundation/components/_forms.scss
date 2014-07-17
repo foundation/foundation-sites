@@ -16,9 +16,10 @@ $form-spacing: rem-calc(16) !default;
 // We use these to style the labels in different ways
 $form-label-pointer: pointer !default;
 $form-label-font-size: rem-calc(14) !default;
-$form-label-font-weight: normal !default;
+$form-label-font-weight: $font-weight-normal !default;
 $form-label-line-height: 1.5 !default;
 $form-label-font-color: scale-color(#000, $lightness: 30%) !default;
+$form-label-small-transform: capitalize !default;
 $form-label-bottom-margin: 0 !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
@@ -43,7 +44,7 @@ $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
 $legend-bg: #fff !default;
-$legend-font-weight: bold !default;
+$legend-font-weight: $font-weight-bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
 // We use these to style the prefix and postfix input elements
@@ -59,7 +60,7 @@ $input-prefix-font-color-alt: #fff !default;
 $input-error-message-padding: rem-calc(6 9 9) !default;
 $input-error-message-top: -1px !default;
 $input-error-message-font-size: rem-calc(12) !default;
-$input-error-message-font-weight: normal !default;
+$input-error-message-font-weight: $font-weight-normal !default;
 $input-error-message-font-style: italic !default;
 $input-error-message-font-color: #fff !default;
 $input-error-message-font-color-alt: #333 !default;
@@ -89,10 +90,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       .column,
       .columns { padding: 0; }
       input {
-        -moz-border-radius-bottom#{$opposite-direction}: 0;
-        -moz-border-radius-top#{$opposite-direction}: 0;
-        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
-        -webkit-border-top-#{$opposite-direction}-radius: 0;
+        @include side-radius($opposite-direction, 0);
       }
 
     }
@@ -110,9 +108,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   background-color: $input-bg-color;
   font-family: $input-font-family;
   border: $input-border-width $input-border-style $input-border-color;
-  @if $experimental {
-    -webkit-box-shadow: $input-box-shadow;
-  }
   box-shadow: $input-box-shadow;
   color: $input-font-color;
   display: block;
@@ -133,7 +128,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
 
   // Disabled background input background color
-  &[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
+  &[disabled], &[readonly], fieldset[disabled] & { background-color: $input-disabled-bg; }
 }
 
 // @MIXIN
@@ -157,12 +152,12 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // Alignment options
   @if $alignment == right {
-    float: none;
+    float: none !important;
     text-align: right;
   }
   @else if $alignment == inline {
     margin: 0 0 $form-spacing 0;
-    padding: $form-spacing / 2 + rem-calc($input-border-width * 2) 0;
+    padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
   }
 }
 
@@ -307,6 +302,33 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   @else { color: $input-error-message-font-color-alt; }
 }
 
+// We use this mixin to style select elements
+@mixin form-select  {
+  -webkit-appearance: none !important;
+  -webkit-border-radius: 0px;
+  background-color: $select-bg-color;
+  
+  // The custom arrow have some fake horizontal padding so we can align it
+  // from the right side of the element without relying on CSS3
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  
+  // We can safely use leftmost and rightmost now
+  background-position: if($text-direction == 'rtl', 0%, 100%) center;
+  
+  background-repeat: no-repeat;
+  border: $input-border-width $input-border-style $input-border-color;
+  padding: $form-spacing / 2;
+  font-size: $input-font-size;
+  color: $input-font-color;
+  line-height: normal;
+  @include radius(0);
+  &.radius { @include radius($global-radius); }
+  &:hover {
+    background-color: $select-hover-bg-color;
+    border-color: $input-focus-border-color;
+  }
+}
+
 @include exports("form") {
   @if $include-html-form-classes {
     /* Standard Forms */
@@ -321,25 +343,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       &.inline { @include form-label(inline,false); }
       /* Styles for required inputs */
       small {
-        text-transform: capitalize;
+        text-transform: $form-label-small-transform;
         color: scale-color($form-label-font-color, $lightness: 15%);
-      }
-    }
-
-    select {
-      -webkit-appearance: none !important;
-      background-color: $select-bg-color;
-      background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
-      background-repeat: no-repeat;
-      background-position: if($text-direction == 'rtl', 3%, 97%) center;
-      border: $input-border-width $input-border-style $input-border-color;
-      padding: $form-spacing / 2;
-      font-size: $input-font-size;
-      @include radius(0);
-      &.radius { @include radius($global-radius); }
-      &:hover {
-        background-color: $select-hover-bg-color;
-        border-color: $input-focus-border-color;
       }
     }
 
@@ -347,10 +352,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       display:none;
     }
 
-    @-moz-document url-prefix() {
-      select { background: $select-bg-color; }
-      select:hover { background: $select-hover-bg-color }
-    }
     /* Attach elements to the beginning or end of an input */
     .prefix,
     .postfix { @include prefix-postfix-base; }
@@ -388,15 +389,21 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type="url"],
     textarea {
       -webkit-appearance: none;
+      -webkit-border-radius: 0px;
       @include form-element;
-      @if not $input-include-glowing-effect {
+      @if $input-include-glowing-effect == false {
           @include single-transition(all, 0.15s, linear);
       }
       &.radius {
         @include radius($input-border-radius);
       }
     }
-    
+
+    input[type="submit"] {
+      -webkit-appearance: none;
+      -webkit-border-radius: 0px;
+    }
+
     /* Respect enforced amount of rows for textarea */
     textarea[rows] {
       height: auto;
@@ -404,6 +411,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
     /* Add height value for select elements to match text input height */
     select {
+      @include form-select;
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
     }
 
@@ -437,7 +445,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     /* Error Handling */
 
     #{data('abide')} {
-      .error small.error, span.error, small.error {
+      .error small.error, .error span.error, span.error, small.error {
         @include form-error-message;
       }
       span.error, small.error { display: none; }
@@ -473,7 +481,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
           color: scale-color($form-label-font-color, $lightness: 15%);
           background: transparent;
           padding: 0;
-          text-transform: capitalize;
+          text-transform: $form-label-small-transform;
           font-style: normal;
           font-size: 60%;
           margin: 0;

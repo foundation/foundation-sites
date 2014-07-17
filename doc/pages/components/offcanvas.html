@@ -1,9 +1,7 @@
 ---
-title: Off-canvas navigation
-layout: doc/layouts/default.html
+title: Off Canvas
+meta: Off-canvas navigation
 ---
-
-# Off Canvas
 
 <h3 class="subheader">Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.</h3>
 
@@ -37,7 +35,7 @@ This is the outer-most element. It contains the entire off-canvas layout and hid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap"><!-- page layout goes here --></div>
+<div class="off-canvas-wrap" data-offcanvas><!-- page layout goes here --></div>
 ```
 
 ### Inner Wrap
@@ -47,7 +45,7 @@ This is the element that is animated. All of your page content needs to be insid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap">
+<div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap"><!-- all content goes here --></div>
 </div>
 ```
@@ -65,15 +63,15 @@ This is the panel that slides in and out when activated. You can place it on eit
 
 ### Target Off-Canvas Menu
 
-To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
+To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.  These anchor elements require the `href` attribute to <a href="http://foundation.zurb.com/forum/posts/1651-cant-get-off-canvas-to-toggle-on-mobile">work on iphones</a>.
 
 <h4>HTML</h4>
 
 ```html
 <!-- target the leftside menu -->
-<a class="left-off-canvas-toggle">Left Menu</a>
+<a class="left-off-canvas-toggle" href="#">Left Menu</a>
 <!-- target the rightside menu -->
-<a class="right-off-canvas-toggle">Right Menu</a>
+<a class="right-off-canvas-toggle" href="#">Right Menu</a>
 
 <aside class="left-off-canvas-menu"></aside>
 <aside class="right-off-canvas-menu"></aside>
@@ -134,7 +132,7 @@ The button containers, `section.left-small` and `section.right-small`, contain t
 To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
 
 ```html
-<a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
 ```
 
 Now put it all together...
@@ -144,10 +142,10 @@ Now put it all together...
 ```html
 <nav class="tab-bar">
   <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
   <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
 </nav>
 ```
@@ -173,18 +171,18 @@ The last thing we need is a section for the tab bar content. Add `section.tab-ba
 ```html
 <nav class="tab-bar">
   <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
   <section class="middle tab-bar-section">
     <h1 class="title">Foundation</h1>
   </section>
   <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
 </nav>
 ```
 
-Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`.
+Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`. This will allow you to place the text (link) on the tabbar more to the left, right, or middle.
 
 <h4>HTML</h4>
 
@@ -208,19 +206,19 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 <!-- that's what she said, lol -->
 
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
   <section class="right tab-bar-section"><h1>Left Section</h1></section>
 </nav>
 &nbsp;
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
   <section class="middle tab-bar-section"><h1>Middle Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
 </nav>
 &nbsp;
 <nav class="tab-bar">
   <section class="left tab-bar-section"><h1>Right Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" ><span></span></a></section>
+  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
 </nav>
 &nbsp;
 
@@ -285,6 +283,7 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 
   ...
 
+  <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation/foundation.js"></script>
   <script src="js/foundation/foundation.offcanvas.js"></script>
   <!-- Other JS plugins can be included here -->
@@ -298,6 +297,54 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 {{/markdown}}
 
 Required Foundation Library: `foundation.offcanvas.js`
+
+### Optional Javascript Configuration
+
+{{> examples_offcanvas_javascript_options}}
+
+### Event Bindings
+
+There are a series of events that you can bind to for triggering callbacks:
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the offcanvas plugin emitted un-namespaced `open` and `close` events, however, these have been replaced by the namespaced `open.fndtn.offcanvas` and `close.fndtn.offcanvas` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
+
+```js
+$(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+$(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+```
+
+For example, to freeze scrolling when active:
+
+```js
+$(document)
+.on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'hidden');
+})
+.on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'auto');
+})
+
+```
+
+### Programmatic open / close / toggle
+
+The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, or `offcanvas-overlap`.
+
+```js
+$('.off-canvas-wrap').foundation('offcanvas', 'open', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'close', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+
+```
 
 ***
 

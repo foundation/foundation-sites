@@ -1,9 +1,6 @@
 ---
-title: Dropdown menus
-layout: doc/layouts/default.html
+title: Dropdown
 ---
-
-# Dropdown
 
 <h3 class="subheader">We removed the various dropdowns within different UI elements for Foundation 5. Instead, we created a universal dropdown plugin that will attach dropdowns or popovers to whatever element you need.</h3>
 
@@ -15,7 +12,7 @@ layout: doc/layouts/default.html
 
 <h3>Basic</h3>
 
-You can create a dropdown using minimal markup.
+You can create a dropdown using minimal markup. <strong>On a small device, the tooltips are full-width and bottom aligned.</strong>
 
 <div class="row">
   <div class="large-6 columns">
@@ -182,13 +179,13 @@ You can further customize your dropdowns with the options in the `dropdown-conta
 
 ## Configure With Javascript
 
-It's easy to configure dropdowns using our provided Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js` `foundation.js` and `foundation.dropdown.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+It's easy to configure dropdowns using our provided Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js` and `foundation.dropdown.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
 
 {{#markdown}}
   ```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.dropdown.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.dropdown.js"></script>
   ```
 {{/markdown}}
 
@@ -196,12 +193,13 @@ It's easy to configure dropdowns using our provided Javascript. You can use data
 
 #### JS
 
-{{!-- TODO: Initialization is incorrect? --}}
 {{#markdown}}
 ```js
 $(document).foundation({
-  // specify the class used for active dropdowns
-  active_class: 'open'
+  dropdown: {
+    // specify the class used for active dropdowns
+    active_class: 'open'
+  }
 });
 ```
 {{/markdown}}

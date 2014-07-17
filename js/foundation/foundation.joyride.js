@@ -6,7 +6,7 @@
   Foundation.libs.joyride = {
     name : 'joyride',
 
-    version : '5.2.1',
+    version : '5.3.1',
 
     defaults : {
       expose                   : false,     // turn on or off the expose feature
@@ -28,6 +28,7 @@
       cookie_domain            : false,     // Will this cookie be attached to a domain, ie. '.notableapp.com'
       cookie_expires           : 365,       // set when you would like the cookie to expire.
       tip_container            : 'body',    // Where will the tip be attached
+      abort_on_close           : true,      // When true, the close event will not fire any callback
       tip_location_patterns    : {
         top: ['bottom'],
         bottom: [], // bottom should not need to be repositioned
@@ -84,7 +85,7 @@
 
         .on('click.fndtn.joyride', '.joyride-close-tip', function (e) {
           e.preventDefault();
-          this.end();
+          this.end(this.settings.abort_on_close);
         }.bind(this));
 
       $(window)
@@ -104,7 +105,7 @@
             if (self.is_phone()) {
               self.pos_phone();
             } else {
-              self.pos_default(false, true);
+              self.pos_default(false);
             }
           }
         }, 100));
@@ -139,7 +140,7 @@
       if (!this.settings.cookie_monster || this.settings.cookie_monster && !$.cookie(this.settings.cookie_name)) {
         this.settings.$tip_content.each(function (index) {
           var $this = $(this);
-          this.settings = $.extend({}, self.defaults, self.data_options($this))
+          this.settings = $.extend({}, self.defaults, self.data_options($this));
 
           // Make sure that settings parsed from data_options are integers where necessary
           var i = int_settings_count;
@@ -195,7 +196,7 @@
     },
 
     button_text : function (txt) {
-      if (this.settings.next_button) {
+      if (this.settings.tip_settings.next_button) {
         txt = $.trim(txt) || 'Next';
         txt = $(this.settings.template.button).append(txt)[0].outerHTML;
       } else {
@@ -205,6 +206,7 @@
     },
 
     create : function (opts) {
+      this.settings.tip_settings = $.extend({}, this.settings, this.data_options(opts.$li));
       var buttonText = opts.$li.attr(this.add_namespace('data-button')) 
         || opts.$li.attr(this.add_namespace('data-text')),
         tipClass = opts.$li.attr('class'),
@@ -301,7 +303,7 @@
                 $timer.animate({
                   width: $timer.parent().width()
                 }, this.settings.timer, 'linear');
-              }.bind(this), this.settings.tip_animation_fadeSpeed);
+              }.bind(this), this.settings.tip_animation_fade_speed);
 
             } else {
               this.settings.$next_tip.fadeIn(this.settings.tip_animation_fade_speed);
@@ -393,7 +395,7 @@
       tipOffset = Math.ceil(this.settings.$target.offset().top - window_half + this.settings.$next_tip.outerHeight());
 
       if (tipOffset != 0) {
-        $('html, body').animate({
+        $('html, body').stop().animate({
           scrollTop: tipOffset
         }, this.settings.scroll_speed, 'swing');
       }
@@ -409,10 +411,8 @@
       this.show('init');
     },
 
-    pos_default : function (init, resizing) {
-      var half_fold = Math.ceil($(window).height() / 2),
-          tip_position = this.settings.$next_tip.offset(),
-          $nub = this.settings.$next_tip.find('.joyride-nub'),
+    pos_default : function (init) {
+      var $nub = this.settings.$next_tip.find('.joyride-nub'),
           nub_width = Math.ceil($nub.outerWidth() / 2),
           nub_height = Math.ceil($nub.outerHeight() / 2),
           toggle = init || false;
@@ -423,20 +423,19 @@
         this.settings.$next_tip.show();
       }
 
-      if (typeof resizing === 'undefined') {
-        resizing = false;
-      }
-
       if (!/body/i.test(this.settings.$target.selector)) {
+      	  var topAdjustment = this.settings.tip_settings.tipAdjustmentY ? parseInt(this.settings.tip_settings.tipAdjustmentY) : 0,
+			        leftAdjustment = this.settings.tip_settings.tipAdjustmentX ? parseInt(this.settings.tip_settings.tipAdjustmentX) : 0;
+          
           if (this.bottom()) {
             if (this.rtl) {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
-                left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
+                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight() + topAdjustment),
+                left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth() + leftAdjustment});
             } else {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight()),
-                left: this.settings.$target.offset().left});
+                top: (this.settings.$target.offset().top + nub_height + this.settings.$target.outerHeight() + topAdjustment),
+                left: this.settings.$target.offset().left + leftAdjustment});
             }
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'top');
@@ -444,12 +443,12 @@
           } else if (this.top()) {
             if (this.rtl) {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
+                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height + topAdjustment),
                 left: this.settings.$target.offset().left + this.settings.$target.outerWidth() - this.settings.$next_tip.outerWidth()});
             } else {
               this.settings.$next_tip.css({
-                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height),
-                left: this.settings.$target.offset().left});
+                top: (this.settings.$target.offset().top - this.settings.$next_tip.outerHeight() - nub_height + topAdjustment),
+                left: this.settings.$target.offset().left + leftAdjustment});
             }
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'bottom');
@@ -457,16 +456,16 @@
           } else if (this.right()) {
 
             this.settings.$next_tip.css({
-              top: this.settings.$target.offset().top,
-              left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left + nub_width)});
+              top: this.settings.$target.offset().top + topAdjustment,
+              left: (this.settings.$target.outerWidth() + this.settings.$target.offset().left + nub_width + leftAdjustment)});
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'left');
 
           } else if (this.left()) {
 
             this.settings.$next_tip.css({
-              top: this.settings.$target.offset().top,
-              left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_width)});
+              top: this.settings.$target.offset().top + topAdjustment,
+              left: (this.settings.$target.offset().left - this.settings.$next_tip.outerWidth() - nub_width + leftAdjustment)});
 
             this.nub_position($nub, this.settings.tip_settings.nub_position, 'right');
 
@@ -808,7 +807,7 @@
       }
     },
 
-    end : function () {
+    end : function (abort) {
       if (this.settings.cookie_monster) {
         $.cookie(this.settings.cookie_name, 'ridden', { expires: this.settings.cookie_expires, domain: this.settings.cookie_domain });
       }
@@ -825,8 +824,12 @@
 
       $('.joyride-modal-bg').hide();
       this.settings.$current_tip.hide();
-      this.settings.post_step_callback(this.settings.$li.index(), this.settings.$current_tip);
-      this.settings.post_ride_callback(this.settings.$li.index(), this.settings.$current_tip);
+
+      if (typeof abort === 'undefined' || abort === false) {
+        this.settings.post_step_callback(this.settings.$li.index(), this.settings.$current_tip);
+        this.settings.post_ride_callback(this.settings.$li.index(), this.settings.$current_tip);
+      }
+
       $('.joyride-tip-guide').remove();
     },
 
@@ -841,4 +844,4 @@
 
     reflow : function () {}
   };
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));
