@@ -365,11 +365,18 @@ $primary-color: #008CBA;
 // We use these to control various hover effects.
 // $button-function-factor: -20%;
 
-// We use these to control button border styles.
+// We use these to control button border and hover styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
 // $button-bg: $primary-color;
-// $button-border-color: scale-color($button-bg, $lightness: $button-function-factor);
+// $button-bg-hover: scale-color($button-bg, $lightness: $button-function-factor);
+// $button-border-color: $button-bg-hover;
+// $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
+// $secondary-button-border-color: $secondary-button-bg-hover;
+// $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
+// $success-button-border-color: $success-button-bg-hover;
+// $alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor);
+// $alert-button-border-color: $alert-button-bg-hover;
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
