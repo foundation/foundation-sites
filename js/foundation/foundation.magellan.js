@@ -145,7 +145,7 @@
         var name = $(this).data(self.data_attr('magellan-arrival')),
             dest = $('[' + self.add_namespace('data-magellan-destination') + '=' + name + ']');
         if (dest.length > 0) {
-          var top_offset = dest.offset().top - settings.destination_threshold - expedition.outerHeight();
+          var top_offset = Math.floor(dest.offset().top - settings.destination_threshold - expedition.outerHeight());
           return {
             destination : dest,
             arrival : $(this),
