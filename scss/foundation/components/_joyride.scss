@@ -39,7 +39,7 @@ $joyride-tip-close-weight: $font-weight-normal !default;
 $joyride-screenfill: rgba(0,0,0,0.5) !default;
 
 
-// We decided not to make a mixin for this because it relies on 
+// We decided not to make a mixin for this because it relies on
 // predefined classes to work properly.
 @include exports("joyride") {
   @if $include-html-joyride-classes {
@@ -73,6 +73,8 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
       padding: $joyride-tip-padding;
 
       .button { margin-bottom: 0 !important; }
+
+      .joyride-prev-tip { margin-right: 10px; }
     }
 
     /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
