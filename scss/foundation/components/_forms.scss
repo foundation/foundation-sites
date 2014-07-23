@@ -56,6 +56,9 @@ $input-prefix-overflow: hidden !default;
 $input-prefix-font-color: #333 !default;
 $input-prefix-font-color-alt: #fff !default;
 
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+$input-number-spinners: true !default;
+
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: rem-calc(6 9 9) !default;
 $input-error-message-top: -1px !default;
@@ -329,6 +332,18 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
 }
 
+// We use this mixin to turn on/off HTML5 number spinners
+@mixin html5number($browser, $on:true) {
+  @if $on==false {
+      @if $browser==webkit {
+        -webkit-appearance: none;
+        margin: 0;
+      } @else if $browser==moz {
+        -moz-appearance: textfield;
+      }
+  }
+}
+
 @include exports("form") {
   @if $include-html-form-classes {
     /* Standard Forms */
@@ -435,6 +450,15 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     /* Normalize file input width */
     input[type="file"] {
       width:100%;
+    }
+
+    /* HTML5 Number spinners settings */
+    input[type=number] {
+      @include html5number(moz, $input-number-spinners)
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      @include html5number(webkit, $input-number-spinners);
     }
 
     /* We add basic fieldset styling */
