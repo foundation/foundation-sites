@@ -280,7 +280,7 @@
 
       $tip.fadeOut(150, function() {
         $tip.find('.tap-to-close').remove();
-        $tip.off('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose MSPointerDown.fndtn.tapclose');
+        $tip.off('click.fndtn.tooltip.tapclose MSPointerDown.fndtn.tapclose');
         $target.removeClass('open');
       });
     },

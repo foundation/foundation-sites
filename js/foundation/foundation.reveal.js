@@ -66,7 +66,7 @@
         });
 
       S(document)
-        .on('touchend.fndtn.reveal click.fndtn.reveal', this.close_targets(), function (e) {
+        .on('click.fndtn.reveal', this.close_targets(), function (e) {
 
           e.preventDefault();
 
