@@ -79,9 +79,9 @@ $switch-active-color: $primary-color;
     position: absolute; top: .25rem; left: .25rem;
     width: $switch-height-med - 0.5rem; height: $switch-height-med - 0.5rem;
 
-    -webkit-transition: left 0.15s ease-out;
-    -moz-transition: left 0.15s ease-out;
-    transition: left 0.15s ease-out;
+    -webkit-transition: left $transition-speed $transition-ease;
+    -moz-transition: left $transition-speed $transition-ease;
+    transition: left $transition-speed $transition-ease;
   }
 
   input:checked + label {
