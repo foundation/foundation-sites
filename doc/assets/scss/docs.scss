@@ -907,7 +907,6 @@ what you get
     padding: 10px;
     margin-bottom: 0;
     text-align: center;
-    // background: #EEEEEE;
   }
 }
 
@@ -940,3 +939,8 @@ what you get
   }
 }
 
+.gs-navigation {
+  label {
+    margin-top: 1rem;
+  }
+}
