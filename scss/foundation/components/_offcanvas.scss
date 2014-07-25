@@ -47,6 +47,7 @@ $off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness
 // Off Canvas Menu Icon Variables
 $tabbar-menu-icon-color: #FFF !default;
 $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%) !default;
+$tabbar-menu-icon-bg-color: $tabbar-bg !default;
 
 $tabbar-menu-icon-text-indent: rem-calc(35) !default;
 $tabbar-menu-icon-width: $tabbar-icon-width !default;
@@ -289,7 +290,12 @@ $menu-slide: "transform 500ms ease" !default;
       height: $tabbar-menu-icon-height;
       display: block;
       padding: $tabbar-menu-icon-padding;
+<<<<<<< HEAD
       color: $tabbar-menu-icon-color;
+=======
+      color: $topbar-menu-link-color;
+      background-color: $tabbar-menu-icon-bg-color;
+>>>>>>> origin/patch-5
       position: relative;
       transform: translate3d(0,0,0);
 
@@ -352,6 +358,5 @@ $menu-slide: "transform 500ms ease" !default;
       .move-left > .inner-wrap { right: $off-canvas-width; }
       .move-right > .inner-wrap { left: $off-canvas-width; }
     }
-
   }
 }
