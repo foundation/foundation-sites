@@ -149,7 +149,6 @@ $button-disabled-opacity: 0.7 !default;
 
     // This find the lightness percentage of the background color.
     $bg-lightness: lightness($bg);
-
     $bgh-lightness: lightness($bgh);
 
     background-color: $bg;
