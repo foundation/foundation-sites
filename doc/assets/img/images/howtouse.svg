@@ -2,54 +2,69 @@
 <!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 252.4 252.3" enable-background="new 0 0 252.4 252.3" xml:space="preserve">
+	 viewBox="0 0 253 253" enable-background="new 0 0 253 253" xml:space="preserve">
 <g>
-	<circle fill="#074E68" cx="126.2" cy="126.1" r="126"/>
+	<circle fill="#074E68" cx="126.2" cy="126" r="125.8"/>
 	<g opacity="0.5" enable-background="new    ">
 		<g>
 			<g>
-				<defs>
-					<circle id="SVGID_1_" cx="125.8" cy="125.9" r="126"/>
-				</defs>
-				<clipPath id="SVGID_2_">
-					<use xlink:href="#SVGID_1_"  overflow="visible"/>
-				</clipPath>
-				<g clip-path="url(#SVGID_2_)">
-					<g>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="220" y1="344.4" x2="220" y2="-78.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="202.9" y1="344.4" x2="202.9" y2="-78.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="237.1" y1="344" x2="237.1" y2="-78.5"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="254.2" y1="344.4" x2="254.2" y2="-78.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="151.6" y1="344.4" x2="151.6" y2="-78.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="134.5" y1="344.4" x2="134.5" y2="-78.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="168.7" y1="344" x2="168.7" y2="-78.5"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="185.8" y1="344.4" x2="185.8" y2="-78.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="83.6" y1="344.7" x2="83.6" y2="-77.9"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="66.5" y1="344.7" x2="66.5" y2="-77.9"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="100.7" y1="344.2" x2="100.7" y2="-78.3"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="117.8" y1="344.7" x2="117.8" y2="-77.9"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="15.3" y1="344.7" x2="15.3" y2="-77.9"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-1.8" y1="344.7" x2="-1.8" y2="-77.9"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="32.4" y1="344.2" x2="32.4" y2="-78.3"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="49.4" y1="344.7" x2="49.4" y2="-77.9"/>
-					</g>
-					<g>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="219.6" x2="345.7" y2="219.6"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="202.5" x2="345.7" y2="202.5"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.4" y1="236.7" x2="346.1" y2="236.7"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="253.8" x2="345.7" y2="253.8"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="151.2" x2="345.7" y2="151.2"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="134.1" x2="345.7" y2="134.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.4" y1="168.3" x2="346.1" y2="168.3"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="185.4" x2="345.7" y2="185.4"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-77.1" y1="83.2" x2="345.5" y2="83.2"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-77.1" y1="66.1" x2="345.5" y2="66.1"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.6" y1="100.3" x2="345.9" y2="100.3"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-77.1" y1="117.4" x2="345.5" y2="117.4"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-77.1" y1="14.8" x2="345.5" y2="14.8"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-77.1" y1="-2.2" x2="345.5" y2="-2.2"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.6" y1="31.9" x2="345.9" y2="31.9"/>
-						<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-77.1" y1="49" x2="345.5" y2="49"/>
+				<g>
+					<defs>
+						<circle id="SVGID_1_" cx="125.8" cy="125.8" r="125.8"/>
+					</defs>
+					<clipPath id="SVGID_2_">
+						<use xlink:href="#SVGID_1_"  overflow="visible"/>
+					</clipPath>
+					<g clip-path="url(#SVGID_2_)">
+						<g>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="219.9" y1="344" x2="219.9" y2="-77.9"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="202.8" y1="344" x2="202.8" y2="-77.9"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="236.9" y1="343.6" x2="236.9" y2="-78.3"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="254" y1="344" x2="254" y2="-77.9"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="151.6" y1="344" x2="151.6" y2="-77.9"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="134.5" y1="344" x2="134.5" y2="-77.9"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="168.7" y1="343.6" x2="168.7" y2="-78.3"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="185.7" y1="344" x2="185.7" y2="-77.9"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="83.7" y1="344.3" x2="83.7" y2="-77.7"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="66.6" y1="344.3" x2="66.6" y2="-77.7"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="100.8" y1="343.8" x2="100.8" y2="-78.1"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="117.8" y1="344.3" x2="117.8" y2="-77.7"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="15.5" y1="344.3" x2="15.5" y2="-77.7"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-1.6" y1="344.3" x2="-1.6" y2="-77.7"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="32.6" y1="343.8" x2="32.6" y2="-78.1"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="49.5" y1="344.3" x2="49.5" y2="-77.7"/>
+						</g>
+						<g>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.5" y1="219.4" x2="345.4" y2="219.4"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.5" y1="202.3" x2="345.4" y2="202.3"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.1" y1="236.4" x2="345.8" y2="236.4"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.5" y1="253.5" x2="345.4" y2="253.5"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.5" y1="151.1" x2="345.4" y2="151.1"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.5" y1="134" x2="345.4" y2="134"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.1" y1="168.1" x2="345.8" y2="168.1"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.5" y1="185.2" x2="345.4" y2="185.2"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="83.2" x2="345.2" y2="83.2"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="66.1" x2="345.2" y2="66.1"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.3" y1="100.2" x2="345.6" y2="100.2"/>
+							
+								<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="117.3" x2="345.2" y2="117.3"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="14.9" x2="345.2" y2="14.9"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="-2.1" x2="345.2" y2="-2.1"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.3" y1="31.9" x2="345.6" y2="31.9"/>
+							<line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="-76.8" y1="49" x2="345.2" y2="49"/>
+						</g>
 					</g>
 				</g>
 			</g>
@@ -57,19 +72,24 @@
 	</g>
 </g>
 <g>
-	<path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M183.9,115.3l-11.1-1c-1.2-4.6-3-9-5.4-13l7.1-8.6
+	<path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M183.8,115.2l-11.1-1c-1.2-4.6-3-9-5.4-13l7.1-8.6
 		c0.4-0.4,0.4-1.1,0-1.5l-6.8-6.8l-6.8-6.8c-0.4-0.4-1.1-0.4-1.5,0l-8.6,7.1c-4-2.4-8.4-4.2-13-5.4l-1-11.1c0-0.6-0.5-1.1-1.1-1.1
 		H126h-9.6c-0.6,0-1.1,0.5-1.1,1.1l-1,11.1c-4.6,1.2-9,3-13,5.4l-8.6-7.1c-0.4-0.4-1.1-0.4-1.5,0l-6.8,6.8l-6.8,6.8
 		c-0.4,0.4-0.4,1.1,0,1.5l7.1,8.6c-2.4,4-4.2,8.4-5.4,13l-11.1,1c-0.6,0-1.1,0.5-1.1,1.1v9.6v9.6c0,0.6,0.5,1.1,1.1,1.1l11.1,1
 		c1.2,4.6,3,9,5.4,13l-7.1,8.6c-0.4,0.4-0.4,1.1,0,1.5l6.8,6.8l6.8,6.8c0.4,0.4,1.1,0.4,1.5,0l8.6-7.1c4,2.4,8.4,4.2,13,5.4l1,11.1
 		c0,0.6,0.5,1.1,1.1,1.1h9.6h9.6c0.6,0,1.1-0.5,1.1-1.1l1-11.1c4.6-1.2,9-3,13-5.4l8.6,7.1c0.4,0.4,1.1,0.4,1.5,0l6.8-6.8l6.8-6.8
-		c0.4-0.4,0.4-1.1,0-1.5l-7.1-8.6c2.4-4,4.2-8.4,5.4-13l11.1-1c0.6,0,1.1-0.5,1.1-1.1V126v-9.6C184.9,115.8,184.5,115.3,183.9,115.3
-		z"/>
-	<circle fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" cx="126" cy="126" r="24.1"/>
+		c0.4-0.4,0.4-1.1,0-1.5l-7.1-8.6c2.4-4,4.2-8.4,5.4-13l11.1-1c0.6,0,1.1-0.5,1.1-1.1v-9.6v-9.6
+		C184.8,115.7,184.4,115.2,183.8,115.2z"/>
+	<circle fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" cx="126" cy="125.9" r="24.1"/>
 </g>
 <g>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="194.5" y1="183.5" x2="194.5" y2="68.6"/>
-	<polygon fill="#FFFFFF" points="194.5,185 191.6,182.1 197.4,182.1 	"/>
-	<polygon fill="#FFFFFF" points="194.5,67.2 197.4,70.1 191.6,70.1 	"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="194.4" y1="183.3" x2="194.4" y2="68.6"/>
+	<polygon fill="#FFFFFF" points="194.4,184.8 191.5,181.9 197.3,181.9 	"/>
+	<polygon fill="#FFFFFF" points="194.4,67.2 197.3,70.1 191.5,70.1 	"/>
+</g>
+<g>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="68.9" y1="194.8" x2="183.6" y2="194.8"/>
+	<polygon fill="#FFFFFF" points="67.4,194.8 70.3,191.9 70.3,197.7 	"/>
+	<polygon fill="#FFFFFF" points="185,194.8 182.1,197.7 182.1,191.9 	"/>
 </g>
 </svg>
