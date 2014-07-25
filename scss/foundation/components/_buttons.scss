@@ -138,9 +138,7 @@ $button-disabled-opacity: 0.7 !default;
   // We control which background styles are used,
   // these can be removed by setting $bg:false
   @if $bg {
-    // This find the lightness percentage of the background color.
-    $bg-lightness: lightness($bg);
-    
+
     @if $bgh == null {
       $bgh: if($bg == $button-bg, $button-bg-hover, scale-color($bg, $lightness: $button-function-factor));
     }
@@ -148,7 +146,10 @@ $button-disabled-opacity: 0.7 !default;
     @if $bc == null {
       $bc: if($bg == $button-bg, $button-border-color, scale-color($bg, $lightness: $button-function-factor));
     }
-    
+
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
     $bgh-lightness: lightness($bgh);
 
     background-color: $bg;
@@ -157,27 +158,11 @@ $button-disabled-opacity: 0.7 !default;
     &:focus { background-color: $bgh; }
 
     // We control the text color for you based on the background color.
-    @if $bg-lightness > 70% {
-      color: $button-font-color-alt;
-      @if $bgh-lightness > 70% {
-        &:hover,
-        &:focus { color: $button-font-color-alt; }
-      }
-      @else {
-        &:hover,
-        &:focus { color: $button-font-color; }
-      }
-    }
-    @else {
-      color: $button-font-color;
-      @if $bgh-lightness > 70% {
-        &:hover,
-        &:focus { color: $button-font-color-alt; }
-      }
-      @else {
-        &:hover,
-        &:focus { color: $button-font-color; }
-      }
+    color: if($bg-lightness > 70%, $button-font-color-alt, $button-font-color);
+
+    &:hover,
+    &:focus {
+      color: if($bgh-lightness > 70%, $button-font-color-alt, $button-font-color);
     }
   }
 
