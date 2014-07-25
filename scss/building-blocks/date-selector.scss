@@ -1,6 +1,4 @@
-
-
-/* Styles for Product Card */
+/* Styles for Date Selector */
 
 $primary-color: #008cba;
 
@@ -101,6 +99,7 @@ body {
       &:hover {
         border-radius: 5px;
         background: #f9f9f9;
+        color: $primary-color;
       }
 
       &.active {

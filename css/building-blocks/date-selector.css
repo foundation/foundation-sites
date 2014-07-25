@@ -1,4 +1,4 @@
-/* Styles for Product Card */
+/* Styles for Date Selector */
 body {
   padding-top: 100px;
 }
@@ -89,6 +89,7 @@ body {
 .calendar ul li a:hover {
   border-radius: 5px;
   background: #f9f9f9;
+  color: #008cba;
 }
 .calendar ul li a.active {
   border-radius: 5px;
