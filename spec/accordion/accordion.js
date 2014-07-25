@@ -39,4 +39,56 @@ describe('accordion:', function() {
       expect($('#panel3')).toBeHidden();
     });
   });
+
+  describe('embedded grid accordion', function() {
+    beforeEach(function() {
+      document.body.innerHTML = __html__['spec/accordion/grid.html'];
+    });
+
+    it('should switch to the clicked section', function() {
+      $(document).foundation();
+
+      $('#panel1c').prev().click();
+
+      expect($('#panel1c')).toBeVisible();
+      expect($('#panel2c')).toBeHidden();
+      expect($('#panel3c')).toBeHidden();
+      expect($('#panel4c')).toBeHidden();
+      expect($('#panel5c')).toBeHidden();
+      expect($('#panel6c')).toBeHidden();
+
+      $('#panel4c').prev().click();
+
+      expect($('#panel1c')).toBeHidden();
+      expect($('#panel2c')).toBeHidden();
+      expect($('#panel3c')).toBeHidden();
+      expect($('#panel4c')).toBeVisible();
+      expect($('#panel5c')).toBeHidden();
+      expect($('#panel6c')).toBeHidden();
+    });
+  });
+
+  describe('multi-expand accordion', function() {
+    beforeEach(function() {
+      document.body.innerHTML = __html__['spec/accordion/multiexpand.html'];
+    });
+
+    it('should default to the active panel', function() {
+      $(document).foundation('accordion', { multi_expand: true });
+
+      expect($('#panel1')).toBeHidden();
+      expect($('#panel2')).toBeVisible();
+      expect($('#panel3')).toBeHidden();
+    });
+
+    it('should open the clicked section, leaving previous active panels open', function() {
+      $(document).foundation('accordion', { multi_expand: true });
+
+      $('#panel3').prev().click();
+
+      expect($('#panel1')).toBeHidden();
+      expect($('#panel2')).toBeVisible();
+      expect($('#panel3')).toBeVisible();
+    });
+  });
 });

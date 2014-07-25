@@ -1,9 +1,6 @@
 ---
 title: Equalizer
-layout: doc/layouts/default.html
 ---
-
-# Equalizer
 
 <h3 class="subheader">Equalizer is a great way to create equal height content on your page.</h3>
 
@@ -32,11 +29,9 @@ layout: doc/layouts/default.html
   </div>
 </div>
 
-### Basic
+## Basic
 
 You can create an equal height container using a few data attributes. Apply the `data-equalizer` attribute to a parent container. Then apply the `data-equalizer-watch` attribute to each element you'd like to have an equal height. The height of `data-equalizer-watch` attribute will be equal to that of the tallest element.
-
-**NOTE:** If items with equal height become stacked their heights will reset. This will ensure that unneccessary whitespace isn't introduced.
 
 <div class="row">
   <div class="large-6 columns">
@@ -67,12 +62,13 @@ You can create an equal height container using a few data attributes. Apply the 
   </div>
 </div>
 
-### Advanced
+## Advanced
 
 Perhaps you need to create items that are positioned at the bottom of your input. For example Sign Up buttons on some [pricing tables]({{relative absolute 'dist/docs/components/pricing_tables.html'}}).
 
-#### HTML
+### HTML
 
+{{#markdown}}
 ```html
 <div class="row" data-equalizer>
   <div class="large-6 columns">
@@ -88,10 +84,11 @@ Perhaps you need to create items that are positioned at the bottom of your input
     </ul>    
   </div>
 ```
+{{/markdown}}
 
-#### Rendered HTML
+### Rendered HTML
 <div class="row" data-equalizer>
-  <div class="large-6 columns">
+  <div class="small-6 columns">
     <ul class="pricing-table" data-equalizer-watch>
       <li class="title">Standard</li>
       <li class="price">$99.99</li>
@@ -101,7 +98,7 @@ Perhaps you need to create items that are positioned at the bottom of your input
       <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
     </ul>    
   </div>
-  <div class="large-6 columns">
+  <div class="small-6 columns">
     <ul class="pricing-table" data-equalizer-watch>
       <li class="title">Cadillac</li>
       <li class="price">$999.99</li>
@@ -117,9 +114,42 @@ Perhaps you need to create items that are positioned at the bottom of your input
 
 ---
 
-### Callbacks
+## Using the Javascript
+
+Before you can use Equalizer you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+
+
+Just add `foundation.equalizer.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_equalizer_javascript}}
+
+Required Foundation Library: `foundation.equalizer.js`
+
+### Optional Javascript Configuration
+
+#### JS
+
+{{#markdown}}
+```js
+$(document).foundation({
+  equalizer : {
+    // Specify if Equalizer should make elements equal height once they become stacked.
+    equalize_on_stack: false
+  }
+});
+```
+{{/markdown}}
+
+---
+
+## Callbacks
 
 There are two ways to bind to callbacks in your equalizers.
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the equalizer plugin emitted un-namespaced `before-height-change` and `after-height-change` events, however, these have been replaced by the namespaced `before-height-change.fndtn.equalizer` and `after-height-change.fndtn.equalizer` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
 
 <div class="row">
   <div class="large-6 columns">
@@ -145,11 +175,11 @@ $(document).foundation({
 
 {{#markdown}}
 ```js
-$(document).on('before-height-change', function(){
+$(document).on('before-height-change.fndtn.equalizer', function(){
   // do something before the height changes
 });
 
-$(document).on('after-height-change', function(){
+$(document).on('after-height-change.fndtn.equalizer', function(){
   // do something after the height changes
 });
 ```
@@ -157,13 +187,4 @@ $(document).on('after-height-change', function(){
   </div>
 </div>
 
-### Using the Javascript
 
-Before you can use Equalizer you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
-
-
-Just add `foundation.equalizer.js` AFTER the `foundation.js` file. Your markup should look something like this:
-
-{{> examples_equalizer_javascript}}
-
-Required Foundation Library: `foundation.equalizer.js`

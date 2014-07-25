@@ -1,9 +1,6 @@
 ---
 title: Abide
-layout: doc/layouts/default.html
 ---
-
-# Abide
 
 <h3 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h3>
 
@@ -31,8 +28,7 @@ You can also use these patterns by setting the input's type to the name of the p
 
 {{#markdown}}
 ```html
-<input type="password" required>
-<input type="email">
+<input type="email" required>
 <input type="url">
 ```
 {{/markdown}}
@@ -83,7 +79,12 @@ Invalid inputs inherit a `data-invalid` attribute.
 
 ## Events
 
-If a submit event is fired, a `valid` event is triggered when the form is valid and an `invalid` event is triggered when the form is invalid.
+If a submit event is fired, a `valid.fndtn.abide` event is triggered when the form is valid and an `invalid.fndtn.abide` event is triggered when the form is invalid.
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the abide plugin emitted un-namespaced `valid` and `invalid` events, however, these have been replaced by the namespaced `valid.fndtn.abide` and `invalid.fndtn.abide` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
 
 You can bind to these events and fire your own callback:
 
@@ -92,6 +93,35 @@ You can bind to these events and fire your own callback:
 To handle the `submit` event yourself, use `data-abide="ajax"` instead of `data-abide` inside the `form` tag.
 
 {{> examples_abide_ajax}}
+
+***
+
+## Custom Validators
+
+`equalTo` is actually an example of a built-in validator. To get an idea of how validators work, check out the implementation of `equalTo`:
+
+{{#markdown}}
+```javascript
+equalTo: function(el, required, parent) {
+  var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
+      to    = el.value,
+      valid = (from === to);
+
+  return valid;
+}
+```
+{{/markdown}}
+
+Your function will be passed three arguments: `el`, `required`, and `parent`. These are the elements being validated, whether or not it was marked as required, and the parent of the element being validated, respectively.
+Your function should return `true` if the element is valid, or `false` if it is invalid. You can define your custom validators and pass them into abide options when initializing foundation. See the Configuration section for more details on defining custom validators.
+
+Suppose you've defined a custom validator `diceRoll` which randomly marks your element as valid or invalid. You would use it like so:
+
+{{#markdown}}
+```html
+<input type="text" data-abide-validator="diceRoll">
+```
+{{/markdown}}
 
 ***
 
@@ -113,14 +143,4 @@ Required Foundation Library: `foundation.abide.js`
 
 ***
 
-### Sass Errors?
 
-If the default "foundation" import was commented out, then make sure you import this file:
-
-<h4>SCSS</h4>
-
-{{#markdown}}
-```scss
-@import "foundation/components/abide";
-```
-{{/markdown}}

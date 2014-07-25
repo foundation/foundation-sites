@@ -12,7 +12,7 @@
   }
   .row.collapse form {
     input[type="text"] { font-size: 17px; font-weight: 200; color: #999; border: 0; }
-    .button { border: 0; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; background: #257696; }
+    .button { border: 0; box-shadow: none; background: #257696; }
     .button:hover { background: #1b566d; }
   }
 }
@@ -30,7 +30,7 @@
     h2 {
       margin: 0; padding: 0 !important; 
       a {
-        -webkit-transition: all .25s ease-in-out; -moz-transition: all .25s ease-in-out; -o-transition: all .25s ease-in-out; transition: all .25s ease-in-out; font-family: "zurb-logo"; font-weight: normal; font-size: em-calc(18px); padding: 0; 
+        transition: all .25s ease-in-out; font-family: "zurb-logo"; font-weight: normal; font-size: em-calc(18px); padding: 0; 
         &:hover { @include opacity(0.8); }
         &.services { width: 190px; }
         span { display: none; }
@@ -55,7 +55,7 @@
     .support-links { background-position: center -635px; }
     .connect-links {
       padding: 50px 20px 0; background-position: center -9px;
-      .button { font-size: 12px; font-weight: normal; background: rgba(0, 0, 0, 0.1); color: #FFF !important; font-weight: bold; text-shadow: none; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; border: none; padding: 6px 16px; } 
+      .button { font-size: 12px; font-weight: normal; background: rgba(0, 0, 0, 0.1); color: #FFF !important; font-weight: bold; text-shadow: none; box-shadow: none; border: none; padding: 6px 16px; } 
     }
 
     .global {

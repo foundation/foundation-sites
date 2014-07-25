@@ -6,14 +6,15 @@ branches:
     - master
 before_install:
   - npm install -g grunt-cli bower
-  - gem install compass
+  - gem install bundler
+  - bundle install
 before_script:
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "mark@zurb.com"
   - git config --global user.name "mhayes"
   - bower install
 script: ./run-tests.sh
-after_script:
+after_success:
   - git clone https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
   - rm -rf bower-foundation/*
   - cp -r dist/assets/* bower-foundation/
@@ -30,4 +31,4 @@ env:
 notifications:
   email:
     recipients:
-      - mark@zurb.com
+      - eric@zurb.com

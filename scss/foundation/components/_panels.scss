@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -50,9 +54,12 @@ $callout-panel-link-color: $primary-color !default;
 
     @if $adjust {
       // We set the font color based on the darkness of the bg.
-      @if $bg-lightness >= 50% and $bg == blue { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
-      @else if $bg-lightness >= 50%            { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color; } }
-      @else                                    { h1,h2,h3,h4,h5,h6,p { color: $panel-font-color-alt; } }
+      @if $bg-lightness >= 50% { 
+        h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color; }
+      }
+      @else { 
+        h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color-alt; }
+      }
 
       // reset header line-heights for panels
       h1,h2,h3,h4,h5,h6 {
@@ -71,13 +78,12 @@ $callout-panel-link-color: $primary-color !default;
 
       &.callout {
         @include panel(scale-color($primary-color, $lightness: 94%));
-        a {
+        a:not(.button) {
           color: $callout-panel-link-color;
         }
       }
 
       &.radius {
-        @include panel($bg:false);
         @include radius;
       }
 

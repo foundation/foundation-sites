@@ -45,4 +45,32 @@ $rem-base: 18;
 // $text-direction: rtl;
 
 
+@mixin box-shadow(
+  $shadow-1 : default,
+  $shadow-2 : false,
+  $shadow-3 : false,
+  $shadow-4 : false,
+  $shadow-5 : false,
+  $shadow-6 : false,
+  $shadow-7 : false,
+  $shadow-8 : false,
+  $shadow-9 : false,
+  $shadow-10: false
+) { }
+
+@mixin border-direction($direction:top,
+                        $style:solid,
+                        $width:2px,
+                        $color:darken($panel-bg-color, 1%)) {
+  border-#{$direction}: #{$style} #{$width} #{$color};
+}
+
+@mixin border($style:solid,
+              $width:2px,
+              $color:darken($panel-bg-color, 1%)) {
+  border: #{$style} #{$width} #{$color};
+}
+
+
+
 

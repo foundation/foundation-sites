@@ -19,7 +19,7 @@ git clone git://github.com/zurb/${FOUNDATION_COMPASS_TEMPLATE}.git
 cd $FOUNDATION_COMPASS_TEMPLATE
 bower install ../../dist/assets --save
 cp -f bower_components/foundation/scss/foundation/_settings.scss scss/_settings.scss
-compass compile
+bundle exec compass compile
 rc=$?
 if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Compass Build"
@@ -27,7 +27,7 @@ if [ "$rc" -ne 0 ] ; then
 fi
 rm stylesheets/app.css
 sed -e 's/^\/\/ @/@/' -e 's/^\/\/ \$/\$/' scss/_settings.scss > scss/_settings.scss
-compass compile
+bundle exec compass compile
 rc=$?
 if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Compass Build w/_settings.scss"
@@ -38,7 +38,7 @@ echo "[SUCCESS] Compass Build"
 
 # test sass-only install
 cp -f bower_components/foundation/scss/foundation/_settings.scss scss/_settings.scss
-sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
+bundle exec sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
 rc=$?
 if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Ruby Sass Build"
@@ -46,7 +46,7 @@ if [ "$rc" -ne 0 ] ; then
 fi
 rm stylesheets/app.css
 sed -e 's/^\/\/ @/@/' -e 's/^\/\/ \$/\$/' scss/_settings.scss > scss/_settings.scss
-sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
+bundle exec sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
 rc=$?
 if [ "$rc" -ne 0 ] ; then
     echo "[FAILURE] Ruby Sass Build w/_settings.scss"

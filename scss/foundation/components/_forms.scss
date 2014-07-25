@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 @import "buttons";
 
@@ -12,9 +16,10 @@ $form-spacing: rem-calc(16) !default;
 // We use these to style the labels in different ways
 $form-label-pointer: pointer !default;
 $form-label-font-size: rem-calc(14) !default;
-$form-label-font-weight: normal !default;
+$form-label-font-weight: $font-weight-normal !default;
 $form-label-line-height: 1.5 !default;
 $form-label-font-color: scale-color(#000, $lightness: 30%) !default;
+$form-label-small-transform: capitalize !default;
 $form-label-bottom-margin: 0 !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
@@ -39,7 +44,7 @@ $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
 $legend-bg: #fff !default;
-$legend-font-weight: bold !default;
+$legend-font-weight: $font-weight-bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
 // We use these to style the prefix and postfix input elements
@@ -51,11 +56,14 @@ $input-prefix-overflow: hidden !default;
 $input-prefix-font-color: #333 !default;
 $input-prefix-font-color-alt: #fff !default;
 
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+$input-number-spinners: true !default;
+
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: rem-calc(6 9 9) !default;
-$input-error-message-top: -1px;
+$input-error-message-top: -1px !default;
 $input-error-message-font-size: rem-calc(12) !default;
-$input-error-message-font-weight: normal !default;
+$input-error-message-font-weight: $font-weight-normal !default;
 $input-error-message-font-style: italic !default;
 $input-error-message-font-color: #fff !default;
 $input-error-message-font-color-alt: #333 !default;
@@ -66,7 +74,7 @@ $glowing-effect-color: $input-focus-border-color !default;
 
 // Select variables
 $select-bg-color: #fafafa !default;
-
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 //
 // @MIXINS
@@ -85,10 +93,7 @@ $select-bg-color: #fafafa !default;
       .column,
       .columns { padding: 0; }
       input {
-        -moz-border-radius-bottom#{$opposite-direction}: 0;
-        -moz-border-radius-top#{$opposite-direction}: 0;
-        -webkit-border-bottom-#{$opposite-direction}-radius: 0;
-        -webkit-border-top-#{$opposite-direction}-radius: 0;
+        @include side-radius($opposite-direction, 0);
       }
 
     }
@@ -106,9 +111,6 @@ $select-bg-color: #fafafa !default;
   background-color: $input-bg-color;
   font-family: $input-font-family;
   border: $input-border-width $input-border-style $input-border-color;
-  @if $experimental {
-    -webkit-box-shadow: $input-box-shadow;
-  }
   box-shadow: $input-box-shadow;
   color: $input-font-color;
   display: block;
@@ -129,7 +131,7 @@ $select-bg-color: #fafafa !default;
   }
 
   // Disabled background input background color
-  &[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
+  &[disabled], &[readonly], fieldset[disabled] & { background-color: $input-disabled-bg; }
 }
 
 // @MIXIN
@@ -153,12 +155,12 @@ $select-bg-color: #fafafa !default;
 
   // Alignment options
   @if $alignment == right {
-    float: none;
+    float: none !important;
     text-align: right;
   }
   @else if $alignment == inline {
     margin: 0 0 $form-spacing 0;
-    padding: $form-spacing / 2 + rem-calc($input-border-width * 2) 0;
+    padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
   }
 }
 
@@ -175,8 +177,8 @@ $select-bg-color: #fafafa !default;
   border-width: $input-prefix-border-size;
   overflow: $input-prefix-overflow;
   font-size: $form-label-font-size;
-  height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
-  line-height: ($form-label-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 }
 
 // @MIXIN
@@ -248,7 +250,7 @@ $select-bg-color: #fafafa !default;
 
 // We use this mixin to style fieldsets
 @mixin fieldset {
-  border: $fieldset-border-style $fieldset-border-width $fieldset-border-color;
+  border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
   padding: $fieldset-padding;
   margin: $fieldset-margin;
 
@@ -303,6 +305,45 @@ $select-bg-color: #fafafa !default;
   @else { color: $input-error-message-font-color-alt; }
 }
 
+// We use this mixin to style select elements
+@mixin form-select  {
+  -webkit-appearance: none !important;
+  -webkit-border-radius: 0px;
+  background-color: $select-bg-color;
+  
+  // The custom arrow have some fake horizontal padding so we can align it
+  // from the right side of the element without relying on CSS3
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  
+  // We can safely use leftmost and rightmost now
+  background-position: if($text-direction == 'rtl', 0%, 100%) center;
+  
+  background-repeat: no-repeat;
+  border: $input-border-width $input-border-style $input-border-color;
+  padding: $form-spacing / 2;
+  font-size: $input-font-size;
+  color: $input-font-color;
+  line-height: normal;
+  @include radius(0);
+  &.radius { @include radius($global-radius); }
+  &:hover {
+    background-color: $select-hover-bg-color;
+    border-color: $input-focus-border-color;
+  }
+}
+
+// We use this mixin to turn on/off HTML5 number spinners
+@mixin html5number($browser, $on:true) {
+  @if $on==false {
+      @if $browser==webkit {
+        -webkit-appearance: none;
+        margin: 0;
+      } @else if $browser==moz {
+        -moz-appearance: textfield;
+      }
+  }
+}
+
 @include exports("form") {
   @if $include-html-form-classes {
     /* Standard Forms */
@@ -317,40 +358,8 @@ $select-bg-color: #fafafa !default;
       &.inline { @include form-label(inline,false); }
       /* Styles for required inputs */
       small {
-        text-transform: capitalize;
+        text-transform: $form-label-small-transform;
         color: scale-color($form-label-font-color, $lightness: 15%);
-      }
-    }
-
-    select {
-      -webkit-appearance: none !important;
-      background:
-        $select-bg-color
-        url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-      @if $text-direction == 'rtl' {
-        background-position-x: 3%;
-      }
-      @else {
-        background-position-x: 97%;
-      }
-      background-position-y: center;
-      border: $input-border-width $input-border-style $input-border-color;
-      padding: $form-spacing / 2;
-      font-size: $input-font-size;
-      @include radius(0);
-      &.radius { @include radius($global-radius); }
-      &:hover {
-        background:
-          scale-color($select-bg-color, $lightness: -3%)
-          url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
-        @if $text-direction == 'rtl' {
-          background-position-x: 3%;
-        }
-        @else {
-          background-position-x: 97%;
-        }
-        background-position-y: center;
-        border-color: $input-focus-border-color;
       }
     }
 
@@ -358,17 +367,13 @@ $select-bg-color: #fafafa !default;
       display:none;
     }
 
-    @-moz-document url-prefix() {
-      select { background: $select-bg-color; }
-      select:hover { background: scale-color($select-bg-color, $lightness: -3%); }
-    }
     /* Attach elements to the beginning or end of an input */
     .prefix,
     .postfix { @include prefix-postfix-base; }
 
     /* Adjust padding, alignment and radius if pre/post element is a button */
-    .postfix.button { @include button-size(false,false,false); @include postfix(false, false, true); }
-    .prefix.button { @include button-size(false,false,false); @include prefix(false, false, true); }
+    .postfix.button { @include button-size(false,false); @include postfix(false, false, true); }
+    .prefix.button { @include button-size(false,false); @include prefix(false, false, true); }
 
     .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
     .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
@@ -399,8 +404,9 @@ $select-bg-color: #fafafa !default;
     input[type="url"],
     textarea {
       -webkit-appearance: none;
+      -webkit-border-radius: 0px;
       @include form-element;
-      @if not $input-include-glowing-effect {
+      @if $input-include-glowing-effect == false {
           @include single-transition(all, 0.15s, linear);
       }
       &.radius {
@@ -408,8 +414,19 @@ $select-bg-color: #fafafa !default;
       }
     }
 
+    input[type="submit"] {
+      -webkit-appearance: none;
+      -webkit-border-radius: 0px;
+    }
+
+    /* Respect enforced amount of rows for textarea */
+    textarea[rows] {
+      height: auto;
+    }
+
     /* Add height value for select elements to match text input height */
     select {
+      @include form-select;
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
     }
 
@@ -435,6 +452,15 @@ $select-bg-color: #fafafa !default;
       width:100%;
     }
 
+    /* HTML5 Number spinners settings */
+    input[type=number] {
+      @include html5number(moz, $input-number-spinners)
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      @include html5number(webkit, $input-number-spinners);
+    }
+
     /* We add basic fieldset styling */
     fieldset {
       @include fieldset;
@@ -443,7 +469,7 @@ $select-bg-color: #fafafa !default;
     /* Error Handling */
 
     #{data('abide')} {
-      .error small.error, span.error, small.error {
+      .error small.error, .error span.error, span.error, small.error {
         @include form-error-message;
       }
       span.error, small.error { display: none; }
@@ -479,7 +505,7 @@ $select-bg-color: #fafafa !default;
           color: scale-color($form-label-font-color, $lightness: 15%);
           background: transparent;
           padding: 0;
-          text-transform: capitalize;
+          text-transform: $form-label-small-transform;
           font-style: normal;
           font-size: 60%;
           margin: 0;

@@ -1,9 +1,6 @@
 ---
 title: Magellan
-layout: doc/layouts/default.html
 ---
-
-# Magellan
 
 <h3 class="subheader">Magellan is a style-agnostic plugin that lets you give your site sticky navigation. This fixed-position navigation helps users keep track of where they are on a page without scrolling.</h3>
 
@@ -65,3 +62,15 @@ You can adjust lots of settings. For example:
 #### JS
 
 {{> examples_magellan_options}}
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/magellan";
+```
+{{/markdown}}

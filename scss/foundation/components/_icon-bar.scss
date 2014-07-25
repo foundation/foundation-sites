@@ -1,0 +1,230 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import "global";
+
+
+// @name
+// @dependencies _global.scss
+
+$include-html-icon-bar-classes: $include-html-classes !default;
+
+// @variables
+
+// We use these to style the icon-bar and items
+$icon-bar-bg: #333 !default;
+$icon-bar-font-color: #fff !default;
+$icon-bar-font-size: 1rem !default;
+$icon-bar-hover-color: $primary-color !default;
+$icon-bar-icon-color: #fff !default;
+$icon-bar-icon-size: 1.875rem !default;
+$icon-bar-image-width: 1.875rem !default;
+$icon-bar-image-height: 1.875rem !default;
+$icon-bar-active-color: $primary-color !default;
+$icon-bar-item-padding: 1.25rem !default;
+
+//
+// @mixins
+//
+
+// We use this mixin to create the base styles for our switch element.
+//
+// $transition-speed - Time in ms for switch to toggle. Default: $switch-paddle-transition-speed.
+// $transition-ease - Easing function to use for animation (i.e. ease-out). Default: $switch-paddle-transition-ease.
+@mixin icon-bar-base() {
+ 
+ 	width: 100%;
+	font-size: 0;
+	display: inline-block;
+
+	& > * {
+		text-align: center;
+		font-size: $icon-bar-font-size;
+		width: 25%;
+		margin: 0 auto;
+		display: block;
+		padding: $icon-bar-item-padding;
+		float: left;
+
+		i, img { 
+			display: block;
+			margin: 0 auto; 
+
+			& + label {
+				margin-top: .0625rem;
+			}
+		}
+
+		i {
+			font-size: $icon-bar-icon-size;
+			vertical-align: middle;
+		}
+
+		img {
+			width: $icon-bar-image-width;
+			height: $icon-bar-image-height;
+		}
+	}
+
+	&.label-right > * {
+
+		i, img { 
+			margin: 0 .0625rem 0 0; 
+			display: inline-block;
+
+			& + label {
+				margin-top: 0;
+			}
+		}
+
+		label { display: inline-block; }
+	}
+
+	&.vertical.label-right > * {
+		text-align: left;
+	}
+
+	&.vertical {
+		height: 100%;
+		width: auto;
+
+		.item {
+			width: auto;
+			margin: auto;
+			float: none;
+		}
+	}
+}
+
+// We use this mixin to create the size styles for icon bars.
+//
+// $height - Height (in px) of the switch. Default: $switch-height-med.
+// $font-size - Font size of text in switch. Default: $switch-font-size-med.
+@mixin icon-bar-size(
+	$padding: $icon-bar-item-padding,
+	$font-size: $icon-bar-font-size,
+	$icon-size: $icon-bar-icon-size,
+	$image-width: $icon-bar-image-width,
+	$image-height: $icon-bar-image-height) {
+
+	& > * {
+		font-size: $icon-bar-font-size;
+		padding: $icon-bar-item-padding;
+
+		i, img { 
+
+			& + label {
+				margin-top: .0625rem;
+			}
+		}
+
+		i {
+			font-size: $icon-bar-icon-size;
+		}
+
+		img {
+			width: $icon-bar-image-width;
+			height: $icon-bar-image-height;
+		}
+	}
+
+}
+
+// We use this mixin to add color and other fanciness to the switches.
+//
+// $paddle-bg - Background of switch paddle. Default: $switch-paddle-bg.
+// $active-color - Background color of positive side of switch. Default: $switch-positive-color.
+// $negative-color - Background color of negative side of switch. Default: $switch-negative-color.
+// $radius - Radius to apply to switch. Default: false.
+// $base-style - Apply base styles? Default: true.
+@mixin icon-bar-style(
+  $bar-bg:$icon-bar-bg,
+  $bar-font-color:$icon-bar-font-color,
+  $bar-hover-color:$icon-bar-hover-color,
+  $bar-icon-color:$icon-bar-icon-color,
+  $bar-active-color:$icon-bar-active-color,
+  $base-style:true) {
+
+	@if $base-style {
+	
+		background: $bar-bg;
+
+		& > * {
+
+			&:hover { background: $bar-hover-color; }
+
+			label { color: $bar-font-color; }
+
+			i {
+				color: $bar-icon-color;
+			}
+		}
+	}
+
+}
+
+// We use this to quickly create icon bars with a single mixin
+// $height – The overall calculated height of the icon bar (horizontal)
+// $bar-bg – the background color of the bar
+// $bar-font-color – the font color
+// $bar-hover-color – okay these are pretty obvious variables
+// $bar-icon-color – maybe we could skip explaining them all? Okay this one does change icon color if you use an icon font
+// $bar-active-color – the color of an active / hover state
+// $base-style - Apply base styles? Default: true.
+
+@mixin icon-bar(
+  $bar-bg:$icon-bar-bg,
+  $bar-font-color:$icon-bar-font-color,
+  $bar-hover-color:$icon-bar-hover-color,
+  $bar-icon-color:$icon-bar-icon-color,
+  $bar-active-color:$icon-bar-active-color,
+  $padding: $icon-bar-item-padding,
+	$font-size: $icon-bar-font-size,
+	$icon-size: $icon-bar-icon-size,
+	$image-width: $icon-bar-image-width,
+	$image-height: $icon-bar-image-height,
+  $base-style:true) {
+    @include icon-bar-base();
+    @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
+    @include icon-bar-style($bar-bg, $bar-font-color, $bar-hover-color, $bar-icon-color, $bar-active-color, $base-style);
+}
+
+@include exports("icon-bar") {
+  @if $include-html-icon-bar-classes {
+    .icon-bar {
+      @include icon-bar;
+    }
+  }
+}
+
+@if $include-html-icon-bar-classes {
+
+	// toolbar styles
+
+	.icon-bar {
+
+		// Counts
+
+		&.two-up {
+			.item { width: 50%; }
+			&.vertical .item { width: auto; }
+		}
+		&.three-up {
+			.item { width: 33.3333%; }
+			&.vertical .item { width: auto; }
+		}
+		&.four-up {
+			.item { width: 25%; }
+			&.vertical .item { width: auto; }
+		}
+		&.five-up {
+			.item { width: 20%; }
+			&.vertical .item { width: auto; }
+		}
+		&.six-up {
+			.item { width: 16.66667%; }
+			&.vertical .item { width: auto; }
+		}
+	}
+}
