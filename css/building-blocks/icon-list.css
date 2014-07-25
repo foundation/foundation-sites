@@ -1,0 +1,36 @@
+.file-list {
+  /* HR Styles */
+  /* Icon Font Styles */
+}
+.file-list ul {
+  list-style: none;
+  margin-bottom: 12px;
+}
+.file-list hr {
+  margin-bottom: 4px;
+  margin-top: 2px;
+}
+.file-list .folder {
+  width: 140px;
+}
+.file-list .subfolder {
+  width: 120px;
+}
+.file-list .fi-folder, .file-list .fi-torso, .file-list .fi-torsos, .file-list .fi-torsos-all, .file-list .fi-torso-business, .file-list .fi-laptop, .file-list .fi-megaphone {
+  color: #0b4f69;
+}
+.file-list .fi-page {
+  color: #6f6f6f;
+}
+.file-list .fi-yen, .file-list .fi-dollar, .file-list .fi-euro {
+  color: #e5c100;
+}
+.file-list .fi-graph-trend, .file-list .fi-graph-pie, .file-list .fi-graph-bar {
+  color: #7A3E48;
+}
+.file-list .fi-social-twitter, .file-list .fi-social-tumblr, .file-list .fi-social-facebook {
+  color: #336699;
+}
+.file-list .fi-social-apple, .file-list .fi-social-windows {
+  color: #8cc739;
+}

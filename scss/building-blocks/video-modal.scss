@@ -1,0 +1,57 @@
+
+.container {
+  background: url('http://foundation.zurb.com/assets/img/support/goodies/wallpaper-6(2880x1800).jpg') no-repeat left bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 800px;
+}
+
+
+#videoModal {
+  padding:15px 50px 0 50px;
+  width: 100%;
+  background: #125069;
+  top: 0;
+  left: 0;
+  margin: 0;
+  height: 100%;
+  .close-reveal-modal {
+    color: #fff;
+  }
+}
+
+
+// styles for the play button
+.play-button{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  display: block;
+  .play {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    span {
+      border-top: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-left: 40px solid #fff;
+      margin-top: 20px;
+      margin-left: 30px;
+      display: inline-block;
+    }
+  }
+  &:hover{
+    .play {
+      border: 5px solid #41637C;
+      span {
+        border-left: 40px solid #41637C;
+      }
+    }
+  }
+}
+

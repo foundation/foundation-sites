@@ -1,0 +1,48 @@
+.file-list {
+  ul {
+    list-style: none;
+    margin-bottom: 12px;
+  }
+
+/* HR Styles */
+  hr {
+    margin-bottom: 4px;
+    margin-top: 2px;
+  }
+
+  .folder {
+    width: 140px;
+  }
+  .subfolder {
+    width: 120px;
+  }
+
+/* Icon Font Styles */
+  .fi-folder, .fi-torso, .fi-torsos, .fi-torsos-all, .fi-torso-business, .fi-laptop, .fi-megaphone {
+    color: #0b4f69;
+  }
+
+  .fi-page {
+    color: #6f6f6f;
+  }
+
+  .fi-yen, .fi-dollar, .fi-euro {
+    color: #e5c100;
+  }
+
+  .fi-graph-trend, .fi-graph-pie, .fi-graph-bar {
+    color: #7A3E48;
+  }
+
+  .fi-social-twitter, .fi-social-tumblr, .fi-social-facebook {
+    color: #336699;
+  }
+
+  .fi-social-apple, .fi-social-windows {
+    color: #8cc739;
+  }
+}
+
+
+
+

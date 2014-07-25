@@ -1,0 +1,93 @@
+/* Styles for Step By Step */
+/* Cirlce Styles */
+.circlenumber {
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #0b4f69;
+  position: relative;
+  h3 {
+    line-height: 1px;
+    color: #0b4f69;
+    position: relative;
+    text-align: center;
+    font-weight: normal;
+  }
+}
+
+/* Circle Style One Mobile */   
+
+@media only screen and (min-width: 0) and (max-width: 40em){ 
+  .step-by-step-style-one {
+    .circlenumber {
+      width: 80px;
+      height: 80px;
+      left: -12px;
+      margin: 30px auto 15px auto;
+      h3 {
+        padding-top: 35px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+/* Circle Style One Medium and Large */   
+
+@media only screen and (min-width: 40em) { 
+  .step-by-step-style-one {
+    .path-item {
+      padding-left:55px;
+      position: relative;
+      .circlenumber {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        margin-top: 6px;
+        left: 0;
+        h3 {
+          padding-top: 15px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+/* Circle Style Two Mobile */   
+
+@media only screen and (min-width: 40em) { 
+  .step-by-step-style-two {
+    .circlenumber {
+      width: 80px;
+      height: 80px;
+      left: -12px;
+      margin: 30px auto 15px auto;
+      h3 {
+        padding-top: 35px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+/* Circle Style Two Medium and Large */   
+
+@media only screen and (min-width: 0) and (max-width: 40em){ 
+  .step-by-step-style-two {
+    .path-item {
+      padding-left:55px;
+      position: relative;
+      .circlenumber {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        margin-top: 6px;
+        left: 0;
+        h3 {
+          padding-top: 15px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
