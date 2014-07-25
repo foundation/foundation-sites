@@ -365,11 +365,18 @@ $primary-color: #008CBA;
 // We use these to control various hover effects.
 // $button-function-factor: -20%;
 
-// We use these to control button border styles.
+// We use these to control button border and hover styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
 // $button-bg: $primary-color;
-// $button-border-color: scale-color($button-bg, $lightness: $button-function-factor);
+// $button-bg-hover: scale-color($button-bg, $lightness: $button-function-factor);
+// $button-border-color: $button-bg-hover;
+// $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
+// $secondary-button-border-color: $secondary-button-bg-hover;
+// $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
+// $success-button-border-color: $success-button-bg-hover;
+// $alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor);
+// $alert-button-border-color: $alert-button-bg-hover;
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
@@ -537,7 +544,6 @@ $primary-color: #008CBA;
 // $input-border-radius: $global-radius;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-// $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
@@ -560,6 +566,9 @@ $primary-color: #008CBA;
 // $input-prefix-font-color: #333;
 // $input-prefix-font-color-alt: #fff;
 
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+// $input-number-spinners: true;
+
 // We use these to style the error states for inputs and labels
 // $input-error-message-padding: rem-calc(6 9 9);
 // $input-error-message-top: -1px;
@@ -570,6 +579,7 @@ $primary-color: #008CBA;
 // $input-error-message-font-color-alt: #333;
 
 // We use this to style the glowing effect of inputs when focused
+// $input-include-glowing-effect: true;
 // $glowing-effect-fade-time: 0.45s;
 // $glowing-effect-color: $input-focus-border-color;
 
@@ -716,6 +726,7 @@ $magellan-padding: 0 !important;
 // Off Canvas Menu Icon Variables
 // $tabbar-menu-icon-color: #fff;
 // $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
+// $tabbar-menu-icon-bg-color: $tabbar-bg;
 
 // $tabbar-menu-icon-text-indent: rem-calc(35);
 // $tabbar-menu-icon-width: $tabbar-height;
