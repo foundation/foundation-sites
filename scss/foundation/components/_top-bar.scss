@@ -160,7 +160,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       form,
       input { margin-bottom: 0; }
 
-      input { height: auto; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
+      input { height: 1.8rem; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
       .button, button {
         padding-top: .45rem;

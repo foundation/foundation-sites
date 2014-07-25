@@ -34,9 +34,33 @@
       &.large-centered {
         background: darken(#eee, 5%);
       }
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
     }
   }
 }
+
+.row {
+  max-width: rem-calc(1440);
+  &.display-end {
+    background: #fff;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    border: solid 1px #c6c6c6;
+    margin-#{$default-float}: 0 !important;
+    margin-#{$opposite-direction}: 0 !important;
+    .columns {
+      background: darken(#eee, 5%);
+      border-left: 1px solid #c6c6c6;
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
+    }
+  }
+}
+
 .top-bar-section ul li > a{ font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;font-size: 0.8125rem !important; }
 h1 { margin-top: 20px; }
 // h2, h3 { margin: 1rem 0 0.15rem; }
@@ -580,7 +604,7 @@ div#interchangeMarkup img {
 /*------------------------------------
 you will need
 ------------------------------------*/
-.you-will-need {
+.circle-list {
   a {
     margin-bottom: 0px;
   }
@@ -846,3 +870,73 @@ what you get
 .minus {
   margin-top: 30px;
 }
+
+.skill-level {
+  font-size: 0.77778rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  i {
+    font-size: 120%;
+    color: #FDC441;
+  }
+}
+
+.gs-example {
+  .row {
+    // margin-right: -0.3rem;
+    // margin-left: -0.3rem;
+    border: 1px solid #c6c6c6;
+    margin: 0.3rem !important;
+    .row {
+      margin: 0;
+    }
+  }
+  .border-none {
+    border-right: none !important;
+  }
+  .columns {
+    padding-left: inherit;
+    padding-right: inherit;
+    border: 3px solid #fff;
+    background: #eee;
+  }
+  .columns:nth-child(2), {
+    background: #e1e1e1;
+  }
+  p {
+    padding: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    // background: #EEEEEE;
+  }
+}
+
+.off-canvas-example {
+  background: #efefef;
+  .main-section {
+    padding: 0 20px;
+  }
+}
+
+.tabs-example {
+  border: 1px solid #ccc;
+  margin-bottom: 1.3rem;
+  .tab-title.active a {
+    background: #eee;
+  }
+  .tab-title > a {
+    background: #e1e1e1;
+    &:hover {
+      background: scale-color(#eee, $lightness: -14%);
+    }
+  }
+  .tabs-content {
+    border-top: 1px solid #ccc; 
+    margin: 0;
+    padding: 1rem;
+  }
+  .tabs-content > .content {
+    padding: 0;
+  }
+}
+
