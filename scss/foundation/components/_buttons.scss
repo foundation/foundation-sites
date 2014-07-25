@@ -45,8 +45,9 @@ $button-hover-color: scale-color($button-bg, $lightness: $button-function-factor
 $button-radius: $global-radius !default;
 $button-round: $global-rounded !default;
 
-// We use this to set default opacity for disabled buttons.
+// We use this to set default opacity and cursor for disabled buttons.
 $button-disabled-opacity: 0.7 !default;
+$button-disabled-cursor: $cursor-default-value !default;
 
 
 //
@@ -152,7 +153,7 @@ $button-disabled-opacity: 0.7 !default;
 
   // We can set $disabled:true to create a disabled transparent button.
   @if $disabled {
-    cursor: $cursor-default-value;
+    cursor: $button-disabled-cursor;
     opacity: $button-disabled-opacity;
     box-shadow: none;
     &:hover,
