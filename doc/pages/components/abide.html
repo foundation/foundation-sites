@@ -123,6 +123,15 @@ Suppose you've defined a custom validator `diceRoll` which randomly marks your e
 ```
 {{/markdown}}
 
+
+Additionally, if you are using a custom validator and specify an input type or a pattern on the input, Abide will check both when validating the input. The following will check your input value against the built in email pattern as well as your isAllowed custom validator function:
+
+{{#markdown}}
+```html
+<input type="email" data-abide-validator="isAllowed">
+```
+{{/markdown}}
+
 ***
 
 ## Using the Javascript

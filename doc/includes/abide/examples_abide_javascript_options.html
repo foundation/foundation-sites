@@ -39,6 +39,10 @@ $(document).foundation({
       diceRoll: function(el, required, parent) {
         var possibilities = [true, false];
         return possibilities[Math.round(Math.random())];
+      },
+      isAllowed: function(el, required, parent) {
+        var possibilities = ['a@zurb.com', 'b.zurb.com'];
+        return possibilities.indexOf(el.val) > -1;
       }
     }
   }
