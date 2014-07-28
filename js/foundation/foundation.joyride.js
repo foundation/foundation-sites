@@ -11,7 +11,7 @@
     defaults : {
       expose                   : false,     // turn on or off the expose feature
       modal                    : true,      // Whether to cover page with modal during the tour
-      keyboard                 : false,      // enable left, right and esc keystrokes
+      keyboard                 : true,      // enable left, right and esc keystrokes
       tip_location             : 'bottom',  // 'top' or 'bottom' in relation to parent
       nub_position             : 'auto',    // override on a per tooltip bases
       scroll_speed             : 1500,      // Page scrolling speed in milliseconds, 0 = no scroll animation
