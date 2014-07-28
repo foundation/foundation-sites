@@ -11,6 +11,7 @@
       sticky_class : 'sticky',
       custom_back_text: true,
       back_text: 'Back',
+      mobile_show_parent_link: true,
       is_hover: true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       sticky_on : 'all'
@@ -348,9 +349,17 @@
             url = $link.attr('href'),
             $titleLi;
 
+
         if (!$dropdown.find('.title.back').length) {
-          $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li>');
-  
+
+          if (settings.mobile_show_parent_link == true && url && url.length > 1) {
+            console.log('Parent On');
+            $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li class="parent-link show-for-small"><h6><a class="parent-link js-generated" href="#">' + $link.html() +'</a></h6></li>');
+          } else {
+            console.log('Parent off');
+            $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5>');
+          }
+          
           // Copy link to subnav
           if (settings.custom_back_text == true) {
             $('h5>a', $titleLi).html(settings.back_text);

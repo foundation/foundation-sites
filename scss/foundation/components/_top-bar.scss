@@ -266,9 +266,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           }
         }
       }
-
-
-
     }
 
     // Right and Left Navigation that stacked by default
@@ -404,7 +401,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             }
           }
 
-          &.title h5 {
+          &.title h5, &.parent-link h6 {
             margin-bottom: 0;
             margin-top: 0;
             a {
