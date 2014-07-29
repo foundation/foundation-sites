@@ -2,8 +2,12 @@
 ```javascript
 $(document).foundation({
   offcanvas : {
-    open_method: 'move', // Sets method in which offcanvas opens, can also be 'overlap'
-    close_on_click : true
+    // Sets method in which offcanvas opens.
+    // [ move | overlap ]
+    open_method: 'move', 
+    // Should the menu close when a menu link is clicked?
+    // [ true | false ]
+    close_on_click : false
   }
 });
 ```

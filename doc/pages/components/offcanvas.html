@@ -269,7 +269,7 @@ Off-canvas layouts can be easily customized using our provided Sass variables.
 
 ***
 
-### Using the Javascript
+## Using the Javascript
 
 <div class="panel">
   Before you can use Off-canvas you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
@@ -298,7 +298,14 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 
 Required Foundation Library: `foundation.offcanvas.js`
 
+***
+
 ### Optional Javascript Configuration
+
+**open_method** <br> Default: `move` <br> Defines how the off-canvas menu behaves. Can be `move` or `overlay`.
+
+**close_on_click** <br/> Default: `false` <br> Control whether or not clicking menu links will close the menu.
+
 
 {{> examples_offcanvas_javascript_options}}
 
