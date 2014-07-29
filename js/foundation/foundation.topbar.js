@@ -352,11 +352,9 @@
 
         if (!$dropdown.find('.title.back').length) {
 
-          if (settings.mobile_show_parent_link == true && url && url.length > 1) {
-            console.log('Parent On');
-            $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li class="parent-link show-for-small"><h6><a class="parent-link js-generated" href="#">' + $link.html() +'</a></h6></li>');
+          if (settings.mobile_show_parent_link == true && url) {
+            $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li class="parent-link show-for-small"><a class="parent-link js-generated" href="' + url + '">' + $link.html() +'</a></li>');
           } else {
-            console.log('Parent off');
             $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5>');
           }
           
