@@ -11,10 +11,10 @@ title: Getting Started
     <h2>What is Foundation?</h2>
     <h2 class="subheader">Foundation is the most advanced responsive, front-end framework in the world. We've built it to be mobile friendly and ready for all your personal customizations.</h2>
     <div class="row whatis">
-      <div class="large-8 columns">
+      <div class="large-7 columns">
         <img data-interchange="[{{assets}}/img/images/responsive-medium.svg, (default)], [{{assets}}/img/images/responsive.svg, (large)]">
       </div>
-      <div class="large-4 columns">
+      <div class="large-5 columns">
         <p>Millions of designers and engineers use Foundation in their workflows. It was the first framework to introduce the concepts of responsive design, semantics, mobile first and partials. Foundation is the pro choice for designers and engineers.</p> 
         <p><a href="http://foundation.zurb.com/business/why-foundation.html">Learn more about why →</a></p>
       </div>
@@ -65,74 +65,75 @@ title: Getting Started
     <h2 class="subheader">Foundation has a ton of components and structures to help you build a responsive site without having to worry about all of your baseline, foundational (see what we did there?) code. Here's a snapshot of what Foundation includes:</h2>
   </div>
 </div>
+<section class="what-comes-with">
+  <!--================================= 
+  Grid
+  ==================================-->
+  <section class="grid-example">
+    <div class="row">
+      <div class="large-6 columns">
+        <h3>The Grid</h3>
+        <p>Our grid works on almost any device and has support for nesting, source ordering, offsets and device presentation. Frankly, it's a little too easy. In no time, you'll be creating complex layouts like this.</p> 
+        <p>Need a head start on some of your designs or some extra inspiration to see the full potential of a responsive front-end frame work? <a href="#resources">Check out a list of our Foundation resources!</a></p>
+        <!-- <p>Try out our templates to get a head start on your design or to see more of what the grid can do. <a href="http://foundation.zurb.com/templates.html">Check it out!</a></p>
+        <p>Want to see the full potential of a responsive front end framework like Foundation? <a href="http://zurb.com/responsive">Check out our responsive gallery to get inspired.</a></p> -->
+      </div>
+      <div class="large-6 columns">
+    {{> gs_grid_example}}
+      </div>
+    </div>
+  </section>
 
-<!--================================= 
-Grid
-==================================-->
+  <hr class="dashed">
 
-<div class="row">
-  <div class="large-6 columns">
-    <h3>The Grid</h3>
-    <p>Our grid works on almost any device and has support for nesting, source ordering, offsets and device presentation. Frankly, it's a little too easy. In no time, you'll be creating complex layouts like this.</p> 
-    <p>Need a head start on some of your designs or some extra inspiration to see the full potential of a responsive front-end frame work? <a href="#resources">Check out a list of our Foundation resources!</a></p>
-    <!-- <p>Try out our templates to get a head start on your design or to see more of what the grid can do. <a href="http://foundation.zurb.com/templates.html">Check it out!</a></p>
-    <p>Want to see the full potential of a responsive front end framework like Foundation? <a href="http://zurb.com/responsive">Check out our responsive gallery to get inspired.</a></p> -->
+  <!--================================= 
+  Buttons
+  ==================================-->
+
+  <div class="row">
+    <div class="large-6 columns">
+      <h3 class="button-title">Buttons</h3>
+      <p>Clicking on stuff is awesome, so hook up your users with buttons to do stuff. We have included some lightweight button styles for size, presentation, and color to make customizing your own button as easy as adding a class.</p>
+    </div>
+    <div class="large-6 columns">
+  {{> gs_button_example}}
+    </div>
   </div>
-  <div class="large-6 columns">
-{{> gs_grid_example}}
+
+  <hr class="dashed">
+
+  <!--================================= 
+  Navigation
+  ==================================-->
+
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Navigation</h3>
+      <p>People have to get around. Navigation styles in Foundation include a bitchin' off-canvas implementation, a robust top bar, and a bunch of other navigational constructs.</p>
+    </div>
+    <div class="large-6 columns">
+  {{> gs_navigation_example}}
+    </div>
   </div>
-</div>
 
-<hr class="dashed">
+  <hr class="dashed">
 
-<!--================================= 
-Buttons
-==================================-->
-
-<div class="row">
-  <div class="large-6 columns">
-    <h3 class="button-title">Buttons</h3>
-    <p>Clicking on stuff is awesome, so hook up your users with buttons to do stuff. We have included some lightweight button styles for size, presentation, and color to make customizing your own button as easy as adding a class.</p>
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Plugins</h3>
+      <p>We've included a ton of JavaScript plugins written just for Foundation to optimize your page (Interchange), show off images (Clearing), pop up modals (Reveal) and tons more.</p>
+    </div>
+    <div class="large-6 columns">
+  {{> gs_plugins_example}}
+    </div>
   </div>
-  <div class="large-6 columns">
-{{> gs_button_example}}
+  <br>
+  <div class="row">
+    <div class="small-12 columns">
+      <p>We've put all out Foundation's components into one page called the Kitchen Sink, <a href="{{rel 'components/kitchen_sink.html'}}">come check out what we have to offer →</a></p>
+    </div>
   </div>
-</div>
-
-<hr class="dashed">
-
-<!--================================= 
-Navigation
-==================================-->
-
-<div class="row">
-  <div class="large-6 columns">
-    <h3>Navigation</h3>
-    <p>People have to get around. Navigation styles in Foundation include a bitchin' off-canvas implementation, a robust top bar, and a bunch of other navigational constructs.</p>
-  </div>
-  <div class="large-6 columns">
-{{> gs_navigation_example}}
-  </div>
-</div>
-
-<hr class="dashed">
-
-<div class="row">
-  <div class="large-6 columns">
-    <h3>Plugins</h3>
-    <p>We've included a ton of JavaScript plugins written just for Foundation to optimize your page (Interchange), show off images (Clearing), pop up modals (Reveal) and tons more.</p>
-  </div>
-  <div class="large-6 columns">
-{{> gs_plugins_example}}
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="small-12 columns">
-    <p>We've put all out Foundation's components into one page called the Kitchen Sink, <a href="{{rel 'components/kitchen_sink.html'}}">come check out what we have to offer! →</a></p>
-  </div>
-</div>
-
+</section>
 
 <hr>
 
@@ -147,21 +148,26 @@ Navigation
     <div class="small-12 columns">
       <ul class="tabs" data-tab>
         <li class="tab-title active"><a href="#panel2-1">Foundation Grid</a></li>
-        <li class="tab-title "><a href="#panel2-2">Stuff</a></li>
+        <li class="tab-title "><a href="#panel2-2">Navigation</a></li>
         <li class="tab-title"><a href="#panel2-3">Forms</a></li>
+        <li class="tab-title"><a href="#panel2-4">Interchange</a></li>
       </ul>
       <div class="tabs-content">
         <div class="content active" id="panel2-1">
-          <p>We put together a small demo of how easy it is to start playing around with the Foundation Grid! We've used visibility classes, a medium grid, and even source ordering will minimal custom CSS. You can play with this Codepen yourself. </p>
-          <div class="codepen">
-            <p data-height="320" data-theme-id="7558" data-slug-hash="olduj" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/ZURBFoundation/pen/olduj/'>Grid Example</a> by ZURB Foundation (<a href='http://codepen.io/ZURBFoundation'>@ZURBFoundation</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
-          </div>
+          <p>We put together a small demo to show easy it is to start creating with the Foundation Grid! We've used visibility classes, a medium grid, and even source ordering. You can play with this Codepen yourself. Go ahead and fork it, change it, enjoy it!</p>
+          <p data-height="350" data-theme-id="7558" data-slug-hash="olduj" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/ZURBFoundation/pen/olduj/'>Grid Example</a> by ZURB Foundation (<a href='http://codepen.io/ZURBFoundation'>@ZURBFoundation</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
         </div>
         <div class="content " id="panel2-2">
-          <p data-height="300" data-theme-id="0" data-slug-hash="sazHb" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Prestonmcpeak/pen/sazHb/'>Menu Icon to X animation</a> by Preston McPeak (<a href='http://codepen.io/Prestonmcpeak'>@Prestonmcpeak</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
+          <p>We put together a small demo to show you how to use a visibility class to have a Top bar on medium and large screens and an Offcanvas menu for small screens. You can play with this Codepen yourself. Go ahead and fork it, change it, enjoy it!</p>
+          <p data-height="350" data-theme-id="7558" data-slug-hash="vKwHa" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/ZURBFoundation/pen/vKwHa/'>Navigation Example</a> by ZURB Foundation (<a href='http://codepen.io/ZURBFoundation'>@ZURBFoundation</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
         </div>
         <div class="content" id="panel2-3">
-          <p data-height="300" data-theme-id="0" data-slug-hash="ptiqg" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Prestonmcpeak/pen/ptiqg/'>ptiqg</a> by Preston McPeak (<a href='http://codepen.io/Prestonmcpeak'>@Prestonmcpeak</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
+          <p>We put together a small demo to show you how to use a our forms. We have check boxes, input boxes, and so much more. You can play with this Codepen yourself. Go ahead and fork it, change it, enjoy it!</p>
+          <p data-height="350" data-theme-id="7558" data-slug-hash="AuvoL" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/ZURBFoundation/pen/AuvoL/'>Foundation Forms</a> by ZURB Foundation (<a href='http://codepen.io/ZURBFoundation'>@ZURBFoundation</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
+        </div>
+        <div class="content" id="panel2-4">
+          <p>We have a small demo to show off one our coolest features, Interchange! Take a look at the code, you can even play with this Codepen yourself. Go ahead and fork it, change it, enjoy it!</p>
+          <p data-height="350" data-theme-id="7558" data-slug-hash="fcFnq" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/ZURBFoundation/pen/fcFnq/'>fcFnq</a> by ZURB Foundation (<a href='http://codepen.io/ZURBFoundation'>@ZURBFoundation</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
         </div>
       </div>
     </div>
@@ -170,7 +176,7 @@ Navigation
 
 <hr>
 
-<div class="row">
+<div class="row gs-resources">
   <div class="small-12 columns">
     <h2 id="resources">Foundation Resources</h2>
     <h2 class="subheader">Don't think we've prepared things to get you started? Well you're wrong there, check out all of the cool things we've got for you.</h2>
@@ -223,7 +229,7 @@ Navigation
     <img src="{{assets}}/img/images/support-business-gs.svg">
     <h4>Business Support</h4>
     <p>Have questions that you need answered with Foundation for your business? We have a knowlegeable team that can help you find the fixes that meet your business goals.</p>
-    <p><a href="http://foundation.zurb.com/business/services.html">Get Questions Answered →</a></p>
+    <p><a href="http://foundation.zurb.com/business/services.html">Foundation Business Support →</a></p>
   </div>
 </div>
 

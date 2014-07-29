@@ -64,8 +64,8 @@
 .top-bar-section ul li > a{ font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;font-size: 0.8125rem !important; }
 h1 { margin-top: 20px; }
 // h2, h3 { margin: 1rem 0 0.15rem; }
-h2.subheader { margin: -10px 0 20px 0; font-size: 1.25rem; }
-h3.subheader { margin: -10px 0 20px 0; font-size: 1.25rem; }
+h2.subheader { margin: 0 0 20px 0; font-size: 1.25rem; }
+h3.subheader { margin: 0 0 20px 0; font-size: 1.25rem; }
 h4 { font-size: 0.75rem; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
 
 
@@ -969,12 +969,9 @@ what you get
 }
 
 .codepen-demo {
-  .codepen {
-    border: #ccc solid 1px;
-  }
   .tabs-content {
-    border: 1px solid #ccc;
     padding: 15px;
+    background: #f3f3f3;
   }
   .tab-title > a {
     border-top-right-radius: 5px;
@@ -983,21 +980,53 @@ what you get
     color: #fff;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    margin-right: 10px;
+    margin-right: 5px;
     &:hover {
       background: scale-color(#333, $lightness: 15%);
     }
   }
   .tab-title.active a {
-    background: #ccc;
+    background: #f3f3f3;
     color: #333;
   }
 }
 
-
-
-.gs-navigation {
-  label {
-    margin-top: 1rem;
+.what-comes-with { 
+  hr {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
   }
+  .pagination {
+    margin-bottom: 0;
+  }
+  .grid-example {
+    margin-top: 10px;
+  }
+
+  .gs-buttongroup {
+    text-align: center;
+  }
+
+  .gs-iconbar {
+    margin-bottom: 10px;
+  }
+
+  .gs-topbar {
+    margin-bottom: 15px;
+  }
+
+  .gs-hoverbutton {
+    .button {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gs-resources {
+  h4 {
+    margin-top: 20px;
+  }
+}
+.reveal-modal {
+  z-index: 1002;
 }
