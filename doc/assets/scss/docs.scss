@@ -959,6 +959,38 @@ what you get
   }
 }
 
+.button-title {
+  margin-top: -7px;
+}
+
+.codepen-demo {
+  .codepen {
+    border: #ccc solid 1px;
+  }
+  .tabs-content {
+    border: 1px solid #ccc;
+    padding: 15px;
+  }
+  .tab-title > a {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #333;
+    color: #fff;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-right: 10px;
+    &:hover {
+      background: scale-color(#333, $lightness: 15%);
+    }
+  }
+  .tab-title.active a {
+    background: #ccc;
+    color: #333;
+  }
+}
+
+
+
 .gs-navigation {
   label {
     margin-top: 1rem;
