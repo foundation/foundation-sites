@@ -130,6 +130,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     border-color: $input-focus-border-color;
     outline: none;
   }
+  // Disbaled Styles
+  &:disabled {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
 
   // Disabled background input background color
   &[disabled],
@@ -335,6 +340,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   &:hover {
     background-color: $select-hover-bg-color;
     border-color: $input-focus-border-color;
+  }
+  // Disbaled Styles
+  &:disabled {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
   }
 }
 
