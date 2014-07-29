@@ -1,11 +1,10 @@
-/*jslint unparam: true, browser: true, indent: 2 */
 ;(function ($, window, document, undefined) {
   'use strict';
 
   Foundation.libs.tab = {
     name : 'tab',
 
-    version : '5.2.1',
+    version : '5.3.1',
 
     settings : {
       active_class: 'active',
@@ -27,7 +26,7 @@
       // Store the default active tabs which will be referenced when the
       // location hash is absent, as in the case of navigating the tabs and
       // returning to the first viewing via the browser Back button.
-      S('[' + this.attr_name() + '] > dd.active > a', this.scope).each(function () {
+      S('[' + this.attr_name() + '] > .active > a', this.scope).each(function () {
         self.default_tab_hashes.push(this.hash);
       });
     },
@@ -39,7 +38,7 @@
       S(this.scope)
         .off('.tab')
         // Click event: tab title
-        .on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
+        .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
           var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
@@ -48,7 +47,7 @@
           }
         })
         // Hover event: tab title
-        .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
+        .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
           var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           if (settings.is_hover) self.toggle_active_tab(S(this).parent());
         });
@@ -75,19 +74,19 @@
             var hash_element = S(hash);
             if (hash_element.hasClass('content') && hash_element.parent().hasClass('tab-content')) {
               // Tab content div
-              self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=' + hash + ']').parent());
+              self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=' + hash + ']').parent());
             } else {
               // Not the tab content div. If inside the tab content, find the
               // containing tab and toggle it as active.
               var hash_tab_container_id = hash_element.closest('.content').attr('id');
               if (hash_tab_container_id != undefined) {
-                self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=#' + hash_tab_container_id + ']').parent(), hash);
+                self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=#' + hash_tab_container_id + ']').parent(), hash);
               }
             }
           } else {
             // Reference the default tab hashes which were initialized in the init function
             for (var ind in self.default_tab_hashes) {
-              self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=' + self.default_tab_hashes[ind] + ']').parent());
+              self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=' + self.default_tab_hashes[ind] + ']').parent());
             }
           }
         }
@@ -165,4 +164,4 @@
 
     reflow : function () {}
   };
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));

@@ -8,6 +8,7 @@
 // Foundation Visibility Classes
 //
 $include-html-visibility-classes: $include-html-classes !default;
+$include-accessibility-classes: true !default;
 $include-table-visibility-classes: true !default;
 $include-legacy-visibility-classes: true !default;
 
@@ -34,6 +35,9 @@ $visibility-breakpoint-queries:
     $visibility-inherit-list: ();
     $visibility-none-list: ();
 
+    $visibility-visible-list: ();
+    $visibility-hidden-list: ();
+
     $visibility-table-list: ();
     $visibility-table-header-group-list: ();
     $visibility-table-row-group-list: ();
@@ -49,6 +53,12 @@ $visibility-breakpoint-queries:
         ), comma);
         $visibility-none-list: append($visibility-none-list, unquote(
           '.show-for-#{$visibility-comparison-breakpoint}-only, .hide-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-visible-list: append($visibility-visible-list, unquote(
+          '.hidden-for-#{$visibility-comparison-breakpoint}-only, .visible-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-hidden-list: append($visibility-hidden-list, unquote(
+          '.visible-for-#{$visibility-comparison-breakpoint}-only, .hidden-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
         $visibility-table-list: append($visibility-table-list, unquote(
           'table.hide-for-#{$visibility-comparison-breakpoint}-only, table.show-for-#{$visibility-comparison-breakpoint}-up'
@@ -76,6 +86,12 @@ $visibility-breakpoint-queries:
           $visibility-none-list: append($visibility-none-list, unquote(
             '.show-for-#{$visibility-comparison-breakpoint}, .show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
+          $visibility-visible-list: append($visibility-visible-list, unquote(
+            '.hidden-for-#{$visibility-comparison-breakpoint}, .hidden-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
+          $visibility-hidden-list: append($visibility-hidden-list, unquote(
+            '.visible-for-#{$visibility-comparison-breakpoint}, .visible-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
           $visibility-table-list: append($visibility-table-list, unquote(
             'table.hide-for-#{$visibility-comparison-breakpoint}, table.hide-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
@@ -101,6 +117,12 @@ $visibility-breakpoint-queries:
         ), comma);
         $visibility-none-list: append($visibility-none-list, unquote(
           '.show-for-#{$visibility-comparison-breakpoint}-only, .show-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-visible-list: append($visibility-visible-list, unquote(
+          '.hidden-for-#{$visibility-comparison-breakpoint}-only, .hidden-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-hidden-list: append($visibility-hidden-list, unquote(
+          '.visible-for-#{$visibility-comparison-breakpoint}-only, .visible-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
         $visibility-table-list: append($visibility-table-list, unquote(
           'table.hide-for-#{$visibility-comparison-breakpoint}-only, table.hide-for-#{$visibility-comparison-breakpoint}-up'
@@ -128,6 +150,12 @@ $visibility-breakpoint-queries:
           $visibility-none-list: append($visibility-none-list, unquote(
             '.show-for-#{$visibility-comparison-breakpoint}, .hide-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
+          $visibility-visible-list: append($visibility-visible-list, unquote(
+            '.hidden-for-#{$visibility-comparison-breakpoint}, .visible-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
+          $visibility-hidden-list: append($visibility-hidden-list, unquote(
+            '.visible-for-#{$visibility-comparison-breakpoint}, .hidden-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
           $visibility-table-list: append($visibility-table-list, unquote(
             'table.hide-for-#{$visibility-comparison-breakpoint}, table.show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
@@ -153,6 +181,12 @@ $visibility-breakpoint-queries:
         ), comma);
         $visibility-none-list: append($visibility-none-list, unquote(
           '.hide-for-#{$visibility-comparison-breakpoint}-only, .hide-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-visible-list: append($visibility-visible-list, unquote(
+          '.visible-for-#{$visibility-comparison-breakpoint}-only, .visible-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-hidden-list: append($visibility-hidden-list, unquote(
+          '.hidden-for-#{$visibility-comparison-breakpoint}-only, .hidden-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
         $visibility-table-list: append($visibility-table-list, unquote(
           'table.show-for-#{$visibility-comparison-breakpoint}-only, table.show-for-#{$visibility-comparison-breakpoint}-up'
@@ -180,6 +214,12 @@ $visibility-breakpoint-queries:
           $visibility-none-list: append($visibility-none-list, unquote(
             '.hide-for-#{$visibility-comparison-breakpoint}, .hide-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
+          $visibility-visible-list: append($visibility-visible-list, unquote(
+            '.visible-for-#{$visibility-comparison-breakpoint}, .visible-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
+          $visibility-hidden-list: append($visibility-hidden-list, unquote(
+            '.hidden-for-#{$visibility-comparison-breakpoint}, .hidden-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
           $visibility-table-list: append($visibility-table-list, unquote(
             'table.show-for-#{$visibility-comparison-breakpoint}, table.show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
@@ -206,6 +246,14 @@ $visibility-breakpoint-queries:
       }
       #{$visibility-none-list} {
         display: none !important;
+      }
+      @if $include-accessibility-classes != false {
+        #{$visibility-visible-list} {
+          @include element-invisible-off;
+        }
+        #{$visibility-hidden-list} {
+          @include element-invisible;
+        }
       }
       @if $include-table-visibility-classes != false {
         #{$visibility-table-list} {
@@ -341,5 +389,20 @@ $visibility-breakpoint-queries:
   .touch td.show-for-touch { display: table-cell !important; }
   th.hide-for-touch { display: table-cell !important; }
   .touch th.show-for-touch { display: table-cell !important; }
+
+
+  /* Print visibility */
+  @media print {
+    .show-for-print { display: block; }
+    .hide-for-print { display: none; }
+
+    table.show-for-print { display: table; }
+    thead.show-for-print { display: table-header-group !important; }
+    tbody.show-for-print { display: table-row-group !important; }
+    tr.show-for-print { display: table-row !important; }
+    td.show-for-print { display: table-cell !important; }
+    th.show-for-print { display: table-cell !important; }
+
+  }
 
 }

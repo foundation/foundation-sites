@@ -7,14 +7,14 @@
 //
 // @variables
 //
-$include-html-nav-classes: $include-html-classes !default;
+$include-pagination-classes: $include-html-classes !default;
 
 // We use these to control the pagination container
 $pagination-height: rem-calc(24) !default;
 $pagination-margin: rem-calc(-5) !default;
 
 // We use these to set the list-item properties
-$pagination-li-float: $default-float;
+$pagination-li-float: $default-float !default;
 $pagination-li-height: rem-calc(24) !default;
 $pagination-li-font-color: #222 !default;
 $pagination-li-font-size: rem-calc(14) !default;
@@ -33,7 +33,7 @@ $pagination-link-unavailable-bg-active: transparent !default;
 // We use these for currently selected anchor links
 $pagination-link-current-background: $primary-color !default;
 $pagination-link-current-font-color: #fff !default;
-$pagination-link-current-font-weight: bold !default;
+$pagination-link-current-font-weight: $font-weight-bold !default;
 $pagination-link-current-cursor: default !default;
 $pagination-link-current-active-bg: $primary-color !default;
 
@@ -48,12 +48,16 @@ $pagination-link-current-active-bg: $primary-color !default;
 // @mixins
 // Style unavailable list items
 @mixin pagination-unavailable-item {
-  a {
+  a, button {
     cursor: $pagination-link-unavailable-cursor;
     color: $pagination-link-unavailable-font-color;
   }
   &:hover a,
-  & a:focus { background: $pagination-link-unavailable-bg-active; }
+  & a:focus,
+
+  &:hover button,
+  & button:focus
+  { background: $pagination-link-unavailable-bg-active; }
 }
 // @mixins
 // Style the current list item. Do not assume that the current item has
@@ -61,7 +65,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 // $has-anchor - Default: true, Options: false
 @mixin pagination-current-item($has-anchor: true) {
   @if $has-anchor {
-    a {
+    a, button {
       background: $pagination-link-current-background;
       color: $pagination-link-current-font-color;
       font-weight: $pagination-link-current-font-weight;
@@ -94,7 +98,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 
   @if $base-style {
     display: block;
-    height: $pagination-height;
+    min-height: $pagination-height;
     margin-#{$default-float}: $pagination-margin;
 
     li {
@@ -103,15 +107,23 @@ $pagination-link-current-active-bg: $primary-color !default;
       font-size: $pagination-li-font-size;
       margin-#{$default-float}: $pagination-li-margin;
 
-      a {
+      a, button {
         display: block;
         padding: $pagination-link-pad;
         color: $pagination-link-font-color;
+        background: none;
         @include radius;
+        font-weight: normal;
+        font-size: 1em;
+        line-height: inherit;
+        @include single-transition(background-color);
       }
 
       &:hover a,
-      a:focus { background: $pagination-link-active-bg; }
+      a:focus,
+      &:hover button,
+      button:focus
+      { background: $pagination-link-active-bg; }
 
       @if $use-default-classes {
         &.unavailable { @include pagination-unavailable-item(); }
@@ -133,7 +145,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 }
 
 @include exports("pagination") {
-  @if $include-html-nav-classes {
+  @if $include-pagination-classes {
     ul.pagination {
       @include pagination;
     }

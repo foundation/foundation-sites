@@ -31,6 +31,64 @@ You can create an accordion using minimal markup like so:
 
 ***
 
+<h3>Distributed accordion groups</h3>
+
+You can name the accordion so that it can be spread across different parent containers.  In this example the accordion is named *myAccordionGroup* and it is split between different columns in a block grid.  This allows the accordion to be responsive to screen width.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_grid}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_grid}}
+  </div>
+</div>
+
+***
+
+### Callbacks
+
+There are two ways to bind to callbacks in your tabs.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Callback function</h4>
+```html
+<script>
+  $(document).foundation({
+    accordion: {
+      callback : function (accordion) {
+        console.log(accordion);
+      }
+    }
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Toggled Event</h4>
+```html
+<script>
+  $('#myAccordionGroup').on('toggled', function (event, accordion) {
+    console.log(accordion);
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
 ## Customize With Sass
 
 Accordions can be easily customized with the Sass variables provided in the `_settings.scss` file.
@@ -47,9 +105,9 @@ It's easy to configure dropdowns using our provided Javascript. You can use data
 
 {{#markdown}}
   ```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.accordion.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.accordion.js"></script>
   ```
 {{/markdown}}
 
@@ -75,6 +133,31 @@ $(document).foundation({
 
 ***
 
+## Semantic Markup With Sass Mixins 
+
+You can use the a `accordion-container()`, `accordion-navigation`, and `accordion-navigation` mixins to create your own accordion with semantic markup, like so:
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.your-accordion-class  {
+  @include accordion-container;
+
+  .your-accordion-navigation-class  {
+    @include accordion-navigation;
+  }
+
+  .your-accordion-content-class  {
+    @include accordion-content;
+  }
+}
+```
+{{/markdown}}
+  </div>
+</div>
 ##### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:

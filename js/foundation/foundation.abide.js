@@ -4,7 +4,7 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '5.2.2',
+    version : '5.3.1',
 
     settings : {
       live_validate : true,
@@ -15,7 +15,7 @@
         alpha: /^[a-zA-Z]+$/,
         alpha_numeric : /^[a-zA-Z0-9]+$/,
         integer: /^[-+]?\d+$/,
-        number: /^[-+]?\d*(?:\.\d+)?$/,
+        number: /^[-+]?\d*(?:[\.\,]\d+)?$/,
 
         // amex, visa, diners
         card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
@@ -35,7 +35,7 @@
         time : /^(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}$/,
         dateISO: /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/,
         // MM/DD/YYYY
-        month_day_year : /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/,
+        month_day_year : /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d{4}$/,
 
         // #FFF or #FFFFFF
         color: /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
@@ -101,19 +101,19 @@
           settings = form.data(this.attr_name(true) + '-init') || {},
           submit_event = /submit/.test(e.type);
 
-      form.trigger('validated');
+      form.trigger('validated').trigger('validated.fndtn.abide');
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
           if (settings.focus_on_invalid) els[i].focus();
-          form.trigger('invalid');
+          form.trigger('invalid').trigger('invalid.fndtn.abide');
           this.S(els[i]).closest('[data-' + this.attr_name(true) + ']').attr(this.invalid_attr, '');
           return false;
         }
       }
 
       if (submit_event || is_ajax) {
-        form.trigger('valid');
+        form.trigger('valid').trigger('valid.fndtn.abide');
       }
 
       form.removeAttr(this.invalid_attr);
@@ -164,7 +164,7 @@
       while (i--) {
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
-            value = el.value,
+            value = el.value.trim(),
             direct_parent = this.S(el).parent(),
             validator = el.getAttribute(this.add_namespace('data-abide-validator')),
             is_radio = el.type === "radio",
@@ -238,7 +238,7 @@
 
     valid_radio : function (el, required) {
       var name = el.getAttribute('name'),
-          group = this.S(el).closest('[data-' + this.attr_name(true) + ']').find("[name="+name+"]"),
+          group = this.S(el).closest('[data-' + this.attr_name(true) + ']').find("[name='"+name+"']"),
           count = group.length,
           valid = false;
 
@@ -296,4 +296,4 @@
       return valid;
     }
   };
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));

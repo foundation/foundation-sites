@@ -1,25 +1,24 @@
 {{#markdown}}
 ```html
-<!-- Default switch -->
 <div class="switch">
-  <input id="x" name="switch-x" type="radio" checked>
-  <label for="x" onclick="">Off</label>
+  <input id="exampleCheckboxSwitch" type="checkbox">
+  <label for="exampleCheckboxSwitch"></label>
+</div> 
 
-  <input id="x1" name="switch-x" type="radio">
-  <label for="x1" onclick="">On</label>
+<!-- Using radio buttons – each switch turns off the other two -->
+<div class="switch small">
+  <input id="exampleRadioSwitch1" type="radio" checked name="testGroup">
+  <label for="exampleRadioSwitch1"></label>
+</div> 
 
-  <span></span>
-</div>
+<div class="switch radius">
+  <input id="exampleRadioSwitch2" type="radio" name="testGroup">
+  <label for="exampleRadioSwitch2"></label>
+</div> 
 
-<!-- Using class options -->
-<div class="switch large round">
-  <input id="z" name="switch-z" type="radio" checked>
-  <label for="z" onclick="">Off</label>
-
-  <input id="z1" name="switch-z" type="radio">
-  <label for="z1" onclick="">On</label>
-
-  <span></span>
+<div class="switch round large">
+  <input id="exampleRadioSwitch3" type="radio" name="testGroup">
+  <label for="exampleRadioSwitch3"></label>
 </div>
 ```
 {{/markdown}}

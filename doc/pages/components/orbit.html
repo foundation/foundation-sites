@@ -10,6 +10,16 @@ title: Orbit
 
 ***
 
+<h4 class="warn">Deprecation Notice:</h4>
+
+Orbit has been deprecated, meaning that it is no longer supported. There's no need to worry though as we decided to leave it in Foundation if you choose to continue using it. We explain it <a href="http://foundation.zurb.com/forum/posts/14504-moving-on-from-developing-orbit">here.</a> 
+
+There are other great options if you need an image slider. A lot of them have features based on Orbit and may have added one ot two more features.
+
+This image slider is really slick: <a href="http://kenwheeler.github.io/slick/">Slick Carousel</a>. It has all the features Orbit has and can also be used as a carousel for single image sliding. It's easy to set up and is <a href="https://github.com/kenwheeler/slick/">well supported.</a>
+
+***
+
 <a name="setup"></a>
 
 ## How to Setup Orbit
@@ -125,6 +135,11 @@ $orbit-slide-number-bg: rgba(0,0,0,0);
 $orbit-slide-number-font-color: #fff;
 $orbit-slide-number-padding: rem-calc(5px);
 
+// Hide controls on small
+$orbit-nav-hide-for-small: true;
+$orbit-bullet-hide-for-small: true;
+$orbit-timer-hide-for-small: true;
+
 // Graceful Loading Wrapper and preloader
 $wrapper-class: "slideshow-wrapper";
 $preloader-class: "preloader";
@@ -140,9 +155,9 @@ $preloader-class: "preloader";
 It's easy to configure Orbit using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.orbit.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
 
 ```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.orbit.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.orbit.js"></script>
 ```
 
 ### Basic
@@ -182,10 +197,10 @@ $(document).foundation({
       timer_container_class: 'orbit-timer', // Class name given to the timer
       timer_paused_class: 'paused', // Class name given to the paused button
       timer_progress_class: 'orbit-progress', // Class name given to the progress bar
-      timer_show_progress_bar: true, // If the progress bar should get shown (false skips computation)
-      slides_container_class: 'orbit-slides-container', // Class name given to the 
-      bullets_container_class: 'orbit-bullets',
+      slides_container_class: 'orbit-slides-container', // Class name given to the slide container
+      preloader_class: 'preloader', // Class given to the perloader
       slide_selector: 'li', // Default is '*' which selects all children under the container
+      bullets_container_class: 'orbit-bullets',
       bullets_active_class: 'active', // Class name given to the active bullet
       slide_number_class: 'orbit-slide-number', // Class name given to the slide number
       caption_class: 'orbit-caption', // Class name given to the caption
