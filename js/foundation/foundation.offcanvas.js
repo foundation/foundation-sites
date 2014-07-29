@@ -7,7 +7,7 @@
     version : '5.3.1',
 
     settings : {
-      open_method: 'overlap',
+      open_method: 'move',
       close_on_click: false
     },
 
