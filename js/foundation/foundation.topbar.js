@@ -352,7 +352,7 @@
 
         if (!$dropdown.find('.title.back').length) {
 
-          if (settings.mobile_show_parent_link == true && url && url.length > 1) {
+          if (settings.mobile_show_parent_link == true && url) {
             console.log('Parent On');
             $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li class="parent-link show-for-small"><h6><a class="parent-link js-generated" href="#">' + $link.html() +'</a></h6></li>');
           } else {
