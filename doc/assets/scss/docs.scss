@@ -849,7 +849,7 @@ what you get
 }
 
 .whatis {
-  margin-top: 10px;
+  margin-top: 30px !important;
   @media only screen and (min-width: 0) and (max-width: 64.063em) {
     img {
       margin-bottom: 15px;
@@ -969,8 +969,9 @@ what you get
 }
 
 .codepen-demo {
+  margin-top: 20px;
   .tabs-content {
-    padding: 15px;
+    padding: 5px 15px;
     background: #f3f3f3;
   }
   .tab-title > a {
@@ -1005,6 +1006,15 @@ what you get
 
   .gs-buttongroup {
     text-align: center;
+    .button-group {
+      min-width: 100%;
+      li {
+        min-width: 50%;
+        a {
+          min-width: 100%;
+        }
+      }
+    }
   }
 
   .gs-iconbar {
