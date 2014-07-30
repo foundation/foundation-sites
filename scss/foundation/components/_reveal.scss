@@ -52,7 +52,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   width: 100%;
   background: $reveal-overlay-bg-old;
   background: $reveal-overlay-bg;
-  z-index: 99;
+  z-index: 1004;
   display: none;
   top: 0;
   #{$default-float}: 0;
@@ -70,7 +70,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     visibility: hidden;
     display: none;
     position: absolute;
-    z-index: 100;
+    z-index: 1005;
     width: 100vw;
     top:0;
     #{$default-float}: 0;
@@ -179,32 +179,30 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
       visibility: visible;
     }
 
-    @media #{$medium-up} {
+    dialog, .#{$reveal-modal-class} {
+      @include reveal-modal-style($padding:$reveal-modal-padding * 1.5);
 
-      dialog, .#{$reveal-modal-class} {
-        @include reveal-modal-style($padding:$reveal-modal-padding * 1.5);
+      &.radius { @include reveal-modal-style($radius:true); }
+      &.round  { @include reveal-modal-style($radius:$reveal-round); }
+      
+      &.collapse { @include reveal-modal-style($padding:0); }
 
-        &.radius { @include reveal-modal-style($radius:true); }
-        &.round  { @include reveal-modal-style($radius:$reveal-round); }
-        
-        &.collapse { @include reveal-modal-style($padding:0); }
+      &.tiny  { @include reveal-modal-base(false, 30%); }
+      &.small { @include reveal-modal-base(false, 40%); }
+      &.medium  { @include reveal-modal-base(false, 60%); }
+      &.large { @include reveal-modal-base(false, 70%); }
+      &.xlarge { @include reveal-modal-base(false, 95%); }
+    }
 
-        &.tiny  { @include reveal-modal-base(false, 30%); }
-        &.small { @include reveal-modal-base(false, 40%); }
-        &.medium  { @include reveal-modal-base(false, 60%); }
-        &.large { @include reveal-modal-base(false, 70%); }
-        &.xlarge { @include reveal-modal-base(false, 95%); }
-      }
-
-      dialog, .#{$reveal-modal-class} {
-        &.full {
-          @include reveal-modal-base(false, 100vw);
-          top:0;
-          left:0;
-          height: 100vh;
-          min-height:100vh;
-          margin-left: 0 !important;
-        }
+    dialog, .#{$reveal-modal-class} {
+      &.full {
+        @include reveal-modal-base(false, 100vw);
+        top:0;
+        left:0;
+        height:100%;
+        height: 100vh;
+        min-height:100vh;
+        margin-left: 0 !important;
       }
     }
 

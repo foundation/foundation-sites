@@ -4,12 +4,417 @@ title: Getting Started
 
 <h3 class="subheader">Getting started With Foundation is easy. Whether you are a master of Sass, building a new app, or making your existing site responsive, we've got you covered. How would you like to get started?</h3>
 
-
-<a href="/develop/download.html" class="download button">Download Foundation</a>
-
-***
+<hr>
 
 <div class="row">
+  <div class="small-12 columns">
+    <h2>What is Foundation?</h2>
+    <h3 class="subheader">Foundation is a front-end responsive framework. We've built it to be mobile friendly and ready for all your personal customizations.</h3>
+    <img data-interchange="[{{assets}}/img/images/responsive-medium.svg, (default)], [{{assets}}/img/images/responsive.svg, (large)]">
+
+
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>What Are You Building?</h2>
+    <h3 class="subheader">We have three different packages to get you started:</h3>
+  </div>
+</div>
+
+<div class="row circle-list">
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/css.svg" >
+    <h4>Hack on CSS</h4>
+    <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i></p>
+    <p>As the simplest way to get started, the straight CSS version is perfect if you want to just start writing code or hacking on a simple, static site. We'll give you all the pieces you need, no setup required.</p>
+    <p><a href="{{relative absolute 'dist/docs/css.html'}}">CSS Guide →</a></p>
+  </div>
+
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/scss.svg">
+    <h4>Customize with Sass</h4>
+    <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
+    <p>Want more control? Check out how to get started with Sass (SCSS) which will let you customize … well, everything. Setup is straightforward and if you haven't used Sass before, once you do, you'll never look back.</p>
+    <p><a href="{{relative absolute 'dist/docs/sass.html'}}">Sass Guide →</a></p>
+  </div>
+
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/rails.svg">
+    <h4>Build an App</h4>
+    <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
+    <p>If you want to build or integrate with a web app, check out this guide. We'll show you how to use the Foundation gem, as well as give you other tools for working with a modern web app.</p>
+    <p><a href="{{relative absolute 'dist/docs/applications.html'}}">App Guide →</a></p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>What Comes With Foundation?</h2>
+    <h3 class="subheader">Foundation has a ton of components and structures to help you build a responsive site without having to worry about all of your baseline, foundational (see what we did there?) code. Here's a snapshot of what every version of Foundation includes:</h3>
+  </div>
+</div>
+
+<!--================================= 
+Grid
+==================================-->
+
+<div class="row">
+  <div class="large-6 columns">
+    <h3>The Grid</h3>
+    <p>Our grid works on almost any device and has support for nesting, source ordering, offsets and device presentation. Frankly, it's a little too easy.</p>
+  </div>
+  <div class="large-6 columns">
+    <section class="gs-example">
+      <div class="row collapse">
+        <div class="small-12 columns">
+          <p>12</p>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-6 columns border-none">
+          <p>6</p>
+        </div>
+        <div class="small-6 columns">
+          <p>6</p>
+          <div class="row">
+            <div class="small-6 columns border-none">
+              <p>6</p>
+            </div>
+            <div class="small-6 columns">
+              <p>6</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-4 columns border-none">
+          <p>4</p>
+          <div class="row">
+            <div class="small-4 columns border-none">
+              <p>4</p>
+            </div>
+            <div class="small-8 columns">
+              <p>8</p>
+            </div>
+          </div>
+        </div>
+        <div class="small-4 columns border-none">
+          <p>4</p>
+          <div class="row">
+            <div class="small-3 columns border-none">
+              <p>3</p>
+            </div>
+            <div class="small-9 columns">
+              <p>9</p>
+            </div>
+          </div>
+        </div>
+        <div class="small-4 columns">
+          <p>4</p>
+          <div class="row">
+            <div class="small-3 columns border-none">
+              <p>3</p>
+            </div>
+            <div class="small-3 columns border-none">
+              <p>3</p>
+            </div>
+            <div class="small-6 columns">
+              <p>6</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!--================================= 
+Buttons
+==================================-->
+
+<div class="row">
+  <div class="large-6 columns">
+    <h3>Buttons</h3>
+    <p>Clicking on stuff is awesome, so hook up your users with buttons to do stuff. We've included styles for size, presentation, color and more so making a button is as easy as adding a class.</p>
+  </div>
+  <div class="large-6 columns">
+    <div class="row">
+      <div class="small-4 columns">
+        <a href="#" class="button">Default</a>
+      </div>
+      <div class="small-4 columns">
+        <a href="#" class="button success">Success</a>
+      </div> 
+      <div class="small-4 columns">
+        <a href="#" class="button alert">Alert</a>
+      </div> 
+    </div>
+    <div class="row">
+      <div class="small-4 columns">
+        <a href="#" class="button">Default</a>
+      </div>
+      <div class="small-4 columns">
+        <a href="#" class="button radius">Radius</a>
+      </div> 
+      <div class="small-4 columns">
+        <a href="#" class="button round">Round</a>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="small-12 columns">
+        <ul class="button-group round expand">
+          <li><a href="#" class="button alert">Button 1</a></li>
+          <li><a href="#" class="button alert">Button 2</a></li>
+          <li><a href="#" class="button alert">Button 3</a></li>
+          <li><a href="#" class="button alert">Button 4</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 columns">
+        <a href="#" class="button round split">Split Button <span data-dropdown="drop"></span></a><br>
+        <ul id="drop" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+      </div>
+      <div class="small-6 columns">
+        <a href="#" class="alert button" data-options="is_hover:true">Hover Button <span data-dropdown="hover1"></span></a><br>
+        <ul id="hover1" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--================================= 
+Navigation
+==================================-->
+
+<div class="row">
+  <div class="large-6 columns">
+    <h3>Navigation</h3>
+    <p>People have to get around. Navigation styles in Foundation include a bitchin' off-canvas implementation, a robust top bar, and a bunch of other navigational constructs.</p>
+  </div>
+  <div class="large-6 columns">
+    <ul class="breadcrumbs">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li class="unavailable"><a href="#">Gene Splicing</a></li>
+      <li class="current"><a href="#">Cloning</a></li>
+    </ul>
+    <ul class="pagination">
+      <li class="arrow unavailable"><a href="">&laquo;</a></li>
+      <li class="current"><a href="">1</a></li>
+      <li><a href="">2</a></li>
+      <li><a href="">3</a></li>
+      <li><a href="">4</a></li>
+      <li class="unavailable"><a href="">&hellip;</a></li>
+      <li><a href="">12</a></li>
+      <li><a href="">13</a></li>
+      <li class="arrow"><a href="">&raquo;</a></li>
+    </ul>
+      <!--================================= 
+      Off Canvas
+      ==================================-->
+    <div class="off-canvas-wrap off-canvas-example" data-offcanvas>
+      <div class="inner-wrap">
+        <nav class="tab-bar">
+          <section class="left-small">
+            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          </section>
+
+          <section class="middle tab-bar-section">
+            <h1 class="title">Foundation</h1>
+          </section>
+
+          <section class="right-small">
+            <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Foundation</label></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Encyclopedists</a></li>
+            <li><a href="#">The Mayors</a></li>
+          </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Users</label></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Salvor Hardin</a></li>
+            <li><a href="#">Gaal Dornick</a></li>
+          </ul>
+        </aside>
+
+        <section class="main-section">
+          <div class="row">
+            <div class="large-12 columns">
+              <br>
+              <h4 class="">The Psychohistorians</h4>
+              <p>Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire.</p>
+            </div>
+          </div>
+        </section>
+        <a class="exit-off-canvas"></a>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="small-12 columns">
+        <nav class="top-bar" data-topbar>
+          <ul class="title-area">
+            <li class="name">
+              <h1><a href="#">Title</a></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+          </ul>
+
+          <section class="top-bar-section">
+            <ul class="right">
+              <li class="has-form">
+                <div class="row collapse">
+                  <div class="large-8 small-9 columns">
+                    <input type="text" placeholder="Find Stuff">
+                  </div>
+                  <div class="large-4 small-3 columns">
+                    <a href="#" class="alert button expand">Search</a>
+                  </div>
+                </div>
+              </li>
+              <li class="active"><a href="#">Button</a></li>
+              <li class="has-dropdown">
+                <a href="#">Dropdown</a>
+                <ul class="dropdown">
+                  <li><a href="#">First link in dropdown</a></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+       </nav>
+      </div>
+    </div>
+    <br>
+    <div class="icon-bar five-up">
+      <a class="item">
+        <img src="{{assets}}/img/images/fi-home.svg">
+      </a>
+      <a class="item">
+        <img src="{{assets}}/img/images/fi-bookmark.svg">
+      </a>
+      <a class="item">
+        <img src="{{assets}}/img/images/fi-info.svg">
+      </a>
+      <a class="item">
+        <img src="{{assets}}/img/images/fi-mail.svg">
+      </a>
+      <a class="item">
+        <img src="{{assets}}/img/images/fi-like.svg">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h3>Plugins</h3>
+    <p>We've included a ton of JavaScript plugins written just for Foundation to optimize your page (Interchange), show off images (Clearing), pop up modals (Reveal) and tons more.</p>
+  </div>
+  <div class="large-6 columns">
+    <a href="#" data-reveal-id="firstModal" class="radius button">Click me to Reveal a Modal</a>
+    <div id="firstModal" class="reveal-modal" data-reveal>
+      <h2>This is a modal.</h2>
+      <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+      <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+      <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <div id="secondModal" class="reveal-modal" data-reveal>
+      <h2>This is a second modal.</h2>
+      <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <form data-abide>
+      <div class="name-field">
+        <label>Today's date <small>required</small>
+          <input type="date" required pattern="[a-zA-Z]+">
+        </label>
+        <small class="error">Name is required and must be a string.</small>
+      </div>
+    </form>
+    <section class="tabs-example">
+      <ul class="tabs" data-tab>
+        <li class="tab-title active"><a href="#panel2-1">Tab 1</a></li>
+        <li class="tab-title"><a href="#panel2-2">Tab 2</a></li>
+        <li class="tab-title"><a href="#panel2-3">Tab 3</a></li>
+      </ul>
+      <div class="tabs-content">
+        <div class="content active" id="panel2-1">
+          <p>First panel content goes here...</p>
+        </div>
+        <div class="content" id="panel2-2">
+          <p>Second panel content goes here...</p>
+        </div>
+        <div class="content" id="panel2-3">
+          <p>Third panel content goes here...</p>
+        </div>
+      </div>
+    </section>
+    <div data-alert class="alert-box warning round">
+      This is a warning alert that is rounded.
+      <a href="#" class="close">&times;</a>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Test Drive Foundation</h2>
+    <h3 class="subheader">Want to give Foundation a quick spin? We've set up a Codepen where you can play around with the default Foundation download — HTML, CSS and JS. It's a pretty swanky way to just see what Foundation has to offer.</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 large-6 columns">
+    <div class="tabs-content">
+      <div class="content active" id="panel2-1">
+        <p data-height="268" data-theme-id="0" data-slug-hash="sazHb" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Prestonmcpeak/pen/sazHb/'>Menu Icon to X animation</a> by Preston McPeak (<a href='http://codepen.io/Prestonmcpeak'>@Prestonmcpeak</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
+      </div>
+      <div class="content" id="panel2-2">
+        <p data-height="268" data-theme-id="0" data-slug-hash="lkzdr" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Prestonmcpeak/pen/lkzdr/'>lkzdr</a> by Preston McPeak (<a href='http://codepen.io/Prestonmcpeak'>@Prestonmcpeak</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
+      </div>
+      <div class="content" id="panel2-3">
+        <p data-height="268" data-theme-id="0" data-slug-hash="ptiqg" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/Prestonmcpeak/pen/ptiqg/'>ptiqg</a> by Preston McPeak (<a href='http://codepen.io/Prestonmcpeak'>@Prestonmcpeak</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
+      </div>
+    </div>
+    <ul class="tabs" data-tab>
+      <li class="tab-title active"><a href="#panel2-1">Stuff</a></li>
+      <li class="tab-title"><a href="#panel2-2">Buttons</a></li>
+      <li class="tab-title"><a href="#panel2-3">Forms</a></li>
+    </ul>
+  </div>
+  <div class="small-12 large-6 columns">
+    <p>Lorem Ipsum</p>
+  </div>
+</div>
+
+<!-- <div class="row">
   <div class="medium-4 columns">
     <h3><a href="{{relative absolute 'dist/docs/css.html'}}">Hack on <strong>CSS</strong></a></h3>
     <p>As the simplest way to get started, the straight CSS version is perfect if you want to just start writing code or hacking on a simple, static site. We'll give you all the pieces you need, no setup required.</p>
@@ -30,27 +435,27 @@ title: Getting Started
 
     <p><a href="{{relative absolute 'dist/docs/applications.html'}}" class="small secondary button">App Guide &rarr;</a></p>
   </div>
-</div>
+</div> -->
 
-***
+<!-- <hr>
 
-### Try Foundation in the Browser
+<h3>Try Foundation in the Browser</h3>
 
 Want to give Foundation a quick spin? We've set up a Codepen where you can play around with the default Foundation download &mdash; HTML, CSS and JS. It's a pretty swanky way to just see what Foundation has to offer.
 
 <a href="http://codepen.io/mhayes/pen/qdCAc" class="secondary button">Try Foundation on Codepen &rarr;</a>
 
-***
+<hr>
 
-### Coming From Foundation 4?
+<h3>Coming From Foundation 4?</h3>
 
 We've put together a totally rad migration guide, so upgrading is easy peasy.
 
 <a href="{{relative absolute 'dist/docs/upgrading.html'}}" class="secondary button">Migration Guide &rarr;</a>
 
-***
+<hr>
 
-### What Comes With Foundation?
+<h3> What Comes With Foundation?</h3>
 
 Well, almost everything you need, we hope. Foundation has a ton of components and structures to help you build a responsive site without having to worry about all of your baseline, foundational (see what we did there?) code. Here's a snapshot of what every version of Foundation includes:
 
@@ -76,20 +481,21 @@ Well, almost everything you need, we hope. Foundation has a ton of components an
   </div>
 </div>
 
-###&hellip;and so much more. Seriously.
+<h3>&hellip;and so much more. Seriously.</h3>
 
 That's just a snapshot of everything in Foundation. Check out all the components here through the docs &mdash; there are explanations, code examples, rendered examples and everything you need to build the components in Foundation with HTML, CSS, or Sass. Go forth and make awesome things.
 
-***
+<hr>
 
-### Got a Foundation question we didn't cover in the docs?
+<h3>Got a Foundation question we didn't cover in the docs?</h3>
 
 {{> forum-intro}}
 
-***
+<hr>
 
-### Trending Forum Topics
+<h3>Trending Forum Topics</h3>
 
 {{> forum-topics}}
 
-***
+<hr>
+ -->

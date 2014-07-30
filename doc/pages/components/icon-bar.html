@@ -60,6 +60,8 @@ Icon Bar can be easily customized using our provided Sass variables.
     <h4>SCSS</h4>
 {{#markdown}}
 ```scss
+$include-html-icon-bar-classes: $include-html-classes
+
 // We use these to style the icon-bar and items
 $icon-bar-bg: #333 
 $icon-bar-font-color: #fff 
@@ -75,6 +77,67 @@ $icon-bar-item-padding: 1.25rem
 {{/markdown}}
   </div>
 </div>
+
+***
+
+## Semantic Markup with Sass
+### Basic
+You can use the `icon-bar()` mixin to create your own icon-bar, like so:
+
+{{#markdown}}
+```scss
+.my-custom-class {
+  @include icon-bar();
+}
+```
+{{/markdown}}
+
+{{#markdown}}
+```html
+<div class="my-custom-class"> </div> 
+```
+{{/markdown}}
+
+### Advanced
+You can further customize your icon bar using the provided options in the `icon bar` mixin:
+#### SCSS
+{{#markdown}}
+```scss
+.my-custom-class {
+@include icon-bar(
+  
+  // Set the background color of the icon bar. Default: $icon-bar-bg.
+  $bar-bg: $icon-bar-bg,
+  //  Set the font color of the icon bar. Default: $icon-bar-font-color.
+  $bar-font-color: $icon-bar-font-color,
+  // Set the hover background color for the icon bar. Default: $icon-bar-hover-color.
+  $bar-hover-color,
+  // Set the color of the icons for the icon bar. Default: $icon-bar-icon-color
+  $bar-icon-color: $icon-bar-icon-color,
+  // Set the background of the color when the icon bar is clicked or tapped on (or items within the icon bar). Default: $icon-bar-active-color.
+  $bar-active-color,
+  // Set the padding for icon bar. Default: $icon-bar-item-padding.
+  $padding,
+  // Set the font-size of the icon bar. Default: $icon-bar-font-size.
+  $font-size,
+  // Set the size of the icons within the icon bar. Default: $icon-bar-icon-size.
+  $icon-size,
+  // Set the width of images within the icon bar. Default: $icon-bar-image-width
+  $image-width,
+  // Set the height of images within the icon bar. Default: $icon-bar-image-height
+  $image-height,
+  // Assign whether or not base styles usually associated with the icon bar to appear the way it usually does should be included. Default: true.
+  $base-style: true
+  );
+}
+
+```
+{{/markdown}}
+
+#### HTML
+```html
+<div class="my-custom-class five-up">Items for the Icon Bar goes here.</div>
+```
 ##### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:

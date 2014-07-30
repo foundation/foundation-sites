@@ -8,7 +8,8 @@ module.exports = function(grunt) {
 
     foundation: {
       js: ['js/foundation/foundation.js', 'js/foundation/foundation.*.js'],
-      scss: ['scss/foundation.scss']
+      scss: ['scss/foundation.scss','scss/settings.scss']
+
     },
 
     jst: {

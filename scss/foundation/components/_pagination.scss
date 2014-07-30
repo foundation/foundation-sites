@@ -48,12 +48,16 @@ $pagination-link-current-active-bg: $primary-color !default;
 // @mixins
 // Style unavailable list items
 @mixin pagination-unavailable-item {
-  a {
+  a, button {
     cursor: $pagination-link-unavailable-cursor;
     color: $pagination-link-unavailable-font-color;
   }
   &:hover a,
-  & a:focus { background: $pagination-link-unavailable-bg-active; }
+  & a:focus,
+
+  &:hover button,
+  & button:focus
+  { background: $pagination-link-unavailable-bg-active; }
 }
 // @mixins
 // Style the current list item. Do not assume that the current item has
@@ -61,7 +65,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 // $has-anchor - Default: true, Options: false
 @mixin pagination-current-item($has-anchor: true) {
   @if $has-anchor {
-    a {
+    a, button {
       background: $pagination-link-current-background;
       color: $pagination-link-current-font-color;
       font-weight: $pagination-link-current-font-weight;
@@ -103,15 +107,23 @@ $pagination-link-current-active-bg: $primary-color !default;
       font-size: $pagination-li-font-size;
       margin-#{$default-float}: $pagination-li-margin;
 
-      a {
+      a, button {
         display: block;
         padding: $pagination-link-pad;
         color: $pagination-link-font-color;
+        background: none;
         @include radius;
+        font-weight: normal;
+        font-size: 1em;
+        line-height: inherit;
+        @include single-transition(background-color);
       }
 
       &:hover a,
-      a:focus { background: $pagination-link-active-bg; }
+      a:focus,
+      &:hover button,
+      button:focus
+      { background: $pagination-link-active-bg; }
 
       @if $use-default-classes {
         &.unavailable { @include pagination-unavailable-item(); }

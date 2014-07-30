@@ -8,7 +8,7 @@
 // @name
 // @dependencies _global.scss
 
-$include-html-form-classes: $include-html-classes !default;
+$include-html-icon-bar-classes: $include-html-classes !default;
 
 // @variables
 
@@ -165,7 +165,6 @@ $icon-bar-item-padding: 1.25rem !default;
 }
 
 // We use this to quickly create icon bars with a single mixin
-//
 // $height – The overall calculated height of the icon bar (horizontal)
 // $bar-bg – the background color of the bar
 // $bar-font-color – the font color
@@ -188,18 +187,18 @@ $icon-bar-item-padding: 1.25rem !default;
   $base-style:true) {
     @include icon-bar-base();
     @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
-    @include icon-bar-style($bar-bg, $bar-font-color, $bar-hover-color, $bar-icon-color, $bar-active-color, $base-style: true);
+    @include icon-bar-style($bar-bg, $bar-font-color, $bar-hover-color, $bar-icon-color, $bar-active-color, $base-style);
 }
 
 @include exports("icon-bar") {
-  @if $include-html-form-classes {
-    div.icon-bar {
+  @if $include-html-icon-bar-classes {
+    .icon-bar {
       @include icon-bar;
     }
   }
 }
 
-@if $include-html-form-classes {
+@if $include-html-icon-bar-classes {
 
 	// toolbar styles
 

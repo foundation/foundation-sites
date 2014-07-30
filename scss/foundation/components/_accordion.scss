@@ -79,7 +79,7 @@ $accordion-content-active-bg-color: #fff !default;
         font-size: $accordion-navigation-font-size;
       }
       @else{
-        @warn "`#{$font-size}` is not a valid number and the default value of $accordion-navigation-font-size is not defined. A value of `null` will be returned to not generate a value for font-size.";
+        @warn "`#{$font-size}` is not a valid number and the default value of $accordion-navigation-font-size is not defined. A value of `null` will be returned to not generate an invalid value for font-size.";
         font-size: null;
 
       }
