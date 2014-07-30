@@ -87,15 +87,18 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
       .tabs {
         &.vertical {
           width: 20%;
+          max-width: 20%;
           float: $default-float;
-          margin-bottom: $tabs-vertical-navigation-margin-bottom;
+          margin: 0 0 $tabs-vertical-navigation-margin-bottom;
         }
       }
       .tabs-content {
         &.vertical {
           width: 80%;
+          max-width: 80%;
           float: $default-float;
           margin-#{$default-float}: -1px;
+          padding-#{$default-float}: 1rem;
         }
       }
     }
