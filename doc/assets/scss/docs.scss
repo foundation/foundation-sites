@@ -1042,6 +1042,13 @@ what you get
     margin-top: 20px;
   }
 }
-.reveal-modal {
-  z-index: 1002;
+.gs-modal {
+  .reveal-modal {
+    z-index: 1002;
+  }
+  .reveal-modal-bg {
+    z-index: 1000;
+  }
 }
+
+
