@@ -1018,7 +1018,10 @@ what you get
 
   .gs-iconbar {
     margin-bottom: 10px;
-    a {
+    i {
+      color: #dadada;
+    }
+    a &:hover {
       color: #fff;
     }
   }
