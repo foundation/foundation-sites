@@ -302,7 +302,7 @@ Required Foundation Library: `foundation.offcanvas.js`
 
 ### Optional Javascript Configuration
 
-**open_method** <br> Default: `move` <br> Defines how the off-canvas menu behaves. Can be `move` or `overlay`.
+**open_method** <br> Default: `move` <br> Defines how the off-canvas menu behaves. Can be `move` `overlap_single` or `overlap`.
 
 **close_on_click** <br/> Default: `false` <br> Control whether or not clicking menu links will close the menu.
 
@@ -344,7 +344,7 @@ $(document)
 
 ### Programmatic open / close / toggle
 
-The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, or `offcanvas-overlap`.
+The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, `offcanvas-overlap-left`, `offcanvas-overlap-right` or `offcanvas-overlap`.
 
 ```js
 $('.off-canvas-wrap').foundation('offcanvas', 'open', 'move-right');

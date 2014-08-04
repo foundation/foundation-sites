@@ -340,6 +340,28 @@ $menu-slide: "transform 500ms ease" !default;
       }
       .exit-off-canvas { @include back-link; }
     }
+    .offcanvas-overlap-left {
+      .right-off-canvas-menu {
+        -ms-transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+        z-index: 1003;
+      }
+      .exit-off-canvas { @include back-link; }
+    }
+    .offcanvas-overlap-right {
+      .left-off-canvas-menu {
+        -ms-transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+        z-index: 1003;
+      }
+      .exit-off-canvas { @include back-link; }
+    }
 
     // Older browsers
     .no-csstransforms {
