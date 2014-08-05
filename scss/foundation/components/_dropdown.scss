@@ -108,28 +108,28 @@ $f-dropdown-content-padding: rem-calc(20) !default;
     }
 
     &.right:before {
-      left: auto;
-      right: $f-dropdown-triangle-side-offset;
+      #{$default-float}: auto;
+      #{$opposite-direction}: $f-dropdown-triangle-side-offset;
     }
     &.right:after {
-      left: auto;
-      right: $f-dropdown-triangle-side-offset - 1;
+      #{$default-float}: auto;
+      #{$opposite-direction}: $f-dropdown-triangle-side-offset - 1;
     }
   }
 
-  @if $triangle == left {
+  @if $triangle == #{$default-float} {
     margin-top: 0;
-    margin-left: $f-dropdown-margin-right;
+    margin-#{$default-float}: $f-dropdown-margin-right;
 
     &:before {
-      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, right);
+      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, #{$opposite-direction});
       position: absolute;
       top: $f-dropdown-triangle-side-offset;
       #{$default-float}: -($f-dropdown-triangle-size * 2);
       z-index: 99;
     }
     &:after {
-      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, right);
+      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, #{$opposite-direction});
       position: absolute;
       top: $f-dropdown-triangle-side-offset - 1;
       #{$default-float}: -($f-dropdown-triangle-size * 2) - 2;
@@ -138,24 +138,24 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 
   }
 
-  @if $triangle == right {
+  @if $triangle == #{$opposite-direction} {
     margin-top: 0;
-    margin-left: -$f-dropdown-margin-right;
+    margin-#{$default-float}: -$f-dropdown-margin-right;
 
     &:before {
-      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, left);
+      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, #{$default-float});
       position: absolute;
       top: $f-dropdown-triangle-side-offset;
       #{$opposite-direction}: -($f-dropdown-triangle-size * 2);
-      left: auto;
+      #{$default-float}: auto;
       z-index: 99;
     }
     &:after {
-      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, left);
+      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, #{$default-float});
       position: absolute;
       top: $f-dropdown-triangle-side-offset - 1;
       #{$opposite-direction}: -($f-dropdown-triangle-size * 2) - 2;
-      left: auto;
+      #{$default-float}: auto;
       z-index: 98;
     }
 
@@ -171,7 +171,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
       top: auto;
       bottom: -($f-dropdown-triangle-size * 2);
       #{$default-float}: $f-dropdown-triangle-side-offset;
-      right: auto;
+      #{$opposite-direction}: auto;
       z-index: 99;
     }
     &:after {
@@ -180,7 +180,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
       top: auto;
       bottom: -($f-dropdown-triangle-size * 2) - 2;
       #{$default-float}: $f-dropdown-triangle-side-offset - 1;
-      right: auto;
+      #{$opposite-direction}: auto;
       z-index: 98;
     }
 
@@ -219,12 +219,12 @@ $f-dropdown-content-padding: rem-calc(20) !default;
     .f-dropdown {
       @include dropdown-container(list, bottom);
 
-      &.drop-right {
-        @include dropdown-container(list, left);
+      &.drop-#{$opposite-direction} {
+        @include dropdown-container(list, #{$default-float});
       }
 
-      &.drop-left {
-        @include dropdown-container(list, right);
+      &.drop-#{$default-float} {
+        @include dropdown-container(list, #{$opposite-direction});
       }
 
       &.drop-top {

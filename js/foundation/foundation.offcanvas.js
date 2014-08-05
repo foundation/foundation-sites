@@ -4,7 +4,7 @@
   Foundation.libs.offcanvas = {
     name : 'offcanvas',
 
-    version : '5.3.1',
+    version : '5.3.3',
 
     settings : {
       open_method: 'move',
@@ -24,6 +24,10 @@
 
       if (this.settings.open_method === 'move') {
         move_class = 'move-';
+        right_postfix = 'right';
+        left_postfix = 'left';
+      } else if (this.settings.open_method === 'overlap_single') {
+        move_class = 'offcanvas-overlap-';
         right_postfix = 'right';
         left_postfix = 'left';
       } else if (this.settings.open_method === 'overlap') {
