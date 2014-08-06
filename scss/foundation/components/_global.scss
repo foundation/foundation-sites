@@ -216,6 +216,55 @@ $base-line-height: 150% !default;
   clip: auto;
 }
 
+// We use these as default colors throughout
+$primary-color: #008CBA !default;   // bondi-blue
+$secondary-color: #e7e7e7 !default; // white-lilac
+$alert-color: #f04124 !default;     // cinnabar
+$success-color: #43AC6A !default;   // sea-green
+$warning-color: #f08a24 !default;   // carrot
+$info-color: #a0d3e8 !default;      // cornflower
+
+$values:
+  white         #FFFFFF,
+  ghost         #FAFAFA,
+  snow          #F9F9F9,
+  whiter-smoke  #F6F6F6,
+  white-smoke   #F5F5F5,
+  silver        #EFEFEF,
+  smoke         #EEEEEE,
+  gainsboro     #DDDDDD,
+  iron          #CCCCCC,
+  base          #AAAAAA,
+  aluminum      #999999,
+  jumbo         #888888,
+  monsoon       #777777,
+  steel         #666666,
+  charcoal      #555555,
+  tuatara       #444444,
+  oil           #333333,
+  jet           #222222,
+  black         #000000;
+
+$light-secondary: #efefef;
+$gray: #ddd;
+$darkest-gray: #222; 
+$dark-gray: #333; 
+$crumb-font-color-unavailable: #999;
+$crumb-slash-color: #aaa;
+$clearing-close-color: #ccc;
+// $f-dropdown-font-color: #555;
+// $f-dropdown-list-hover-bg: #eeeeee  ;
+// $select-bg-color: #fafafa;
+// $joyride-tip-timer-color: #666;
+// $joyride-tip-close-color: #777;
+// $off-canvas-label-bg: #444;
+// $switch-negative-color: #f5f5f5;
+// $price-money-bg: #f6f6f6  ;
+// $reveal-close-color: #aaa;
+// $switch-label-outline: 1px dotted #888;
+// $table-even-row-bg: #f9f9f9  ;
+
+
 // We use these to define default font weights
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
@@ -241,13 +290,6 @@ $opposite-direction: right !default;
   $default-float: right;
   $opposite-direction: left;
 }
-// We use these as default colors throughout
-$primary-color: #008CBA !default;
-$secondary-color: #e7e7e7 !default;
-$alert-color: #f04124 !default;
-$success-color: #43AC6A !default;
-$warning-color: #f08a24 !default;
-$info-color: #a0d3e8 !default;
 
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;
