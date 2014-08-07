@@ -9,9 +9,10 @@
 //
 // a. Base
 // b. Grid
-// c. Global
-// d. Media Query Ranges
-// e. Typography
+// c. Colors
+// d. Global
+// e. Media Query Ranges
+// f. Typography
 // 01. Accordion
 // 02. Alert Boxes
 // 03. Block Grid
@@ -83,7 +84,33 @@ $include-html-global-classes: $include-html-classes;
 // $total-columns: 12;
 // $column-gutter: rem-calc(30);
 
-// c. Global
+// c. Colors
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Cool
+// $blue: #008CBA;
+// $blue-light: #a0d3e8;
+// $green: #43AC6A;
+
+// Warm
+// $red: #f04124;
+// $yellow: #f08a24;
+
+// Gray Scale
+// $white: #fff;
+// $silver: #efefef;
+// $gray: #aaa;
+// $black: #111;
+
+// We use these as default colors throughout
+// $primary-color: $blue;
+// $secondary-color: $silver;
+// $alert-color: $red;
+// $success-color: $green;
+// $warning-color: $yellow;
+// $info-color: $blue-light;
+
+// d. Global
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font weights
@@ -112,14 +139,6 @@ $include-html-global-classes: $include-html-classes;
 // $opposite-direction: right;
 // $default-float: left;
 
-// We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
-// $warning-color: #f08a24;
-// $info-color: #a0d3e8;
-
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
 // $global-rounded: 1000px;
@@ -129,7 +148,7 @@ $include-html-global-classes: $include-html-classes;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
-// d. Media Query Ranges
+// e. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // $small-range: (0em, 40em);
@@ -170,7 +189,7 @@ $include-html-global-classes: $include-html-classes;
 // $cursor-help-value: help;
 // $cursor-text-value: text;
 
-// e. Typography
+// f. Typography
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // $include-html-type-classes: $include-html-classes;

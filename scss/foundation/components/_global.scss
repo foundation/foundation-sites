@@ -216,39 +216,33 @@ $base-line-height: 150% !default;
   clip: auto;
 }
 
+// Colors
+//
+// We use these to define the default color scheme
+
+// Cool
+$blue: #008CBA !default; // bondi-blue
+$blue-light: #a0d3e8; //cornflower
+$green: #43AC6A !default; // sea-green
+
+// Warm
+$red: #f04124 !default; // cinnabar
+$yellow: #f08a24 !default; // carrot
+
+// Gray Scale
+$white: #fff !default;
+$silver: #efefef !default;
+$gray: #aaa !default;
+$black: #111 !default;
+
 // We use these as default colors throughout
-$primary-color: #008CBA !default;   // bondi-blue
-$secondary-color: #e7e7e7 !default; // white-lilac
-$alert-color: #f04124 !default;     // cinnabar
-$success-color: #43AC6A !default;   // sea-green
-$warning-color: #f08a24 !default;   // carrot
-$info-color: #a0d3e8 !default;      // cornflower
+$primary-color: $blue !default;
+$secondary-color: $silver !default;
+$alert-color: $red !default;
+$success-color: $green !default;
+$warning-color: $yellow !default;
+$info-color: $blue-light !default;
 
-$values:
-  white         #FFFFFF,
-  ghost         #FAFAFA,
-  snow          #F9F9F9,
-  whiter-smoke  #F6F6F6,
-  white-smoke   #F5F5F5,
-  silver        #EFEFEF,
-  smoke         #EEEEEE,
-  gainsboro     #DDDDDD,
-  iron          #CCCCCC,
-  base          #AAAAAA,
-  aluminum      #999999,
-  jumbo         #888888,
-  monsoon       #777777,
-  steel         #666666,
-  charcoal      #555555,
-  tuatara       #444444,
-  oil           #333333,
-  jet           #222222,
-  black         #000000;
-
-$light-secondary: #efefef;
-$gray: #ddd;
-$darkest-gray: #222; 
-$dark-gray: #333; 
 $crumb-font-color-unavailable: #999;
 $crumb-slash-color: #aaa;
 $clearing-close-color: #ccc;
@@ -263,7 +257,6 @@ $clearing-close-color: #ccc;
 // $reveal-close-color: #aaa;
 // $switch-label-outline: 1px dotted #888;
 // $table-even-row-bg: #f9f9f9  ;
-
 
 // We use these to define default font weights
 $font-weight-normal: normal !default;
