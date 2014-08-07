@@ -36,8 +36,6 @@
           self.settings.sticky_topbar = topbar;
           topbar.data('height', topbarContainer.outerHeight());
           topbar.data('stickyoffset', topbarContainer.offset().top);
-          // Ensure that the offset is calculated after all of the pages resources have loaded
-          self.S(window).load(function(){ topbar.data('stickyoffset', topbarContainer.offset().top); });
         } else {
           topbar.data('height', topbar.outerHeight());
         }
@@ -231,9 +229,12 @@
           }
         });
 
-      S(window).off('.topbar').on('resize.fndtn.topbar', self.throttle(function () {
-        self.resize.call(self);
-      }, 50)).trigger('resize').trigger('resize.fndtn.topbar');
+      S(window).off(".topbar").on("resize.fndtn.topbar", self.throttle(function() {
+          self.resize.call(self);
+      }, 50)).trigger("resize").trigger("resize.fndtn.topbar").load(function(){
+          // Ensure that the offset is calculated after all of the pages resources have loaded
+          S(this).trigger("resize.fndtn.topbar");
+      });
 
       S('body').off('.topbar').on('click.fndtn.topbar', function (e) {
         var parent = S(e.target).closest('li').closest('li.hover');
