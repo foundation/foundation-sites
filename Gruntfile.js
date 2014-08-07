@@ -48,6 +48,19 @@ module.exports = function(grunt) {
       }
     },
 
+    'string-replace': {
+      dist: {
+        files: {
+          'dist/':'dist/**/*.*'
+        },
+        options: {
+          replacements: [
+            {pattern: /{{\s*VERSION\s*}}/g, replacement: '<%= pkg.version %>'}
+          ]
+        }
+      }
+    },
+
     sass: {
       dist: {
         options: {
@@ -65,7 +78,7 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         files: {
-          'dist/assets/js/foundation.js': '<%= foundation.js %>'
+          'dist/assets/js/foundation.js':'<%= foundation.js %>'
         }
       }
     },
@@ -219,9 +232,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jst');
-  
+  grunt.loadNpmTasks('grunt-string-replace');
+
   grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
-  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst', 'string-replace']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
   grunt.registerTask('develop', ['travis', 'watch_start']);
