@@ -13,10 +13,11 @@
     "grunt-contrib-jst": "~0.6.0",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-string-replace": "~0.2.7",
     "grunt-karma": "~0.6.2",
     "grunt-newer": "~0.7.0",
     "grunt-rsync": "~0.5.0",
-    "grunt-sass": "~0.11.0",
+    "grunt-sass": "~0.13.0",
     "handlebars-helper-rel": "~0.1.2",
     "handlebars-helper-slugify": "~0.2.0",
     "highlight.js": "~7.3.0",
@@ -36,7 +37,7 @@
     "grunt-contrib-jst": "~0.5.1",
     "jasmine-jquery": "~1.3.3"
   },
-  "repository" : { 
+  "repository" : {
     "type" : "git",
     "url" : "https://github.com/zurb/foundation"
   },
