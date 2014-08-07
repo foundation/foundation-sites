@@ -28,7 +28,7 @@
       self.S('[' + this.attr_name() + ']', this.scope).each(function () {
         var topbar = $(this),
             settings = topbar.data(self.attr_name(true) + '-init'),
-            section = self.S('section', this);
+            section = self.S('section, .section', this);
         topbar.data('index', 0);
         var topbarContainer = topbar.parent();
         if (topbarContainer.hasClass('fixed') || self.is_sticky(topbar, topbarContainer, settings) ) {
@@ -338,7 +338,7 @@
     assemble : function (topbar) {
       var self = this,
           settings = topbar.data(this.attr_name(true) + '-init'),
-          section = self.S('section', topbar);
+          section = self.S('section, .section', topbar);
 
       // Pull element out of the DOM for manipulation
       section.detach();
