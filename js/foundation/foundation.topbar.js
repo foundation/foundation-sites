@@ -36,6 +36,8 @@
           self.settings.sticky_topbar = topbar;
           topbar.data('height', topbarContainer.outerHeight());
           topbar.data('stickyoffset', topbarContainer.offset().top);
+          // Ensure that the offset is calculated after all of the pages resources have loaded
+          $(window).load(function(){ topbar.data('stickyoffset', topbarContainer.offset().top); });
         } else {
           topbar.data('height', topbar.outerHeight());
         }
