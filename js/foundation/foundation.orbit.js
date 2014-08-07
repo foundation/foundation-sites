@@ -354,10 +354,12 @@
     var is_rtl = ($('html[dir=rtl]').length === 1);
     var margin = is_rtl ? 'marginRight' : 'marginLeft';
     var animMargin = {};
+    var animMarginEnd = {};
     animMargin[margin] = '0%';
+    animMarginEnd[margin] = '-100%';
 
     this.next = function(current, next, callback) {
-      current.animate({marginLeft:'-100%'}, duration);
+      current.animate(animMarginEnd, duration);
       next.animate(animMargin, duration, function() {
         current.css(margin, '100%');
         callback();
@@ -365,7 +367,7 @@
     };
 
     this.prev = function(current, prev, callback) {
-      current.animate({marginLeft:'100%'}, duration);
+      current.animate(animMarginEnd, duration);
       prev.css(margin, '-100%');
       prev.animate(animMargin, duration, function() {
         current.css(margin, '100%');
