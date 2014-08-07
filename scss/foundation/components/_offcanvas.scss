@@ -7,6 +7,7 @@
 
 // Off Canvas Tab Bar Variables
 $include-html-off-canvas-classes: $include-html-classes !default;
+$include-off-canvas-kill-flicker: true !default
 
 $tabbar-bg: #333 !default;
 $tabbar-height: rem-calc(45) !default;
@@ -69,12 +70,13 @@ $off-canvas-overlay-background-hover: rgba(#FFF, 0.05) !default;
 // Transition Variables
 $menu-slide: "transform 500ms ease" !default;
 
-
 // MIXINS
 // Remove transition flicker on phones
 @mixin kill-flicker {
   // -webkit-transform: translateZ(0x);
-  -webkit-backface-visibility: hidden;
+  @if ($include-off-canvas-kill-flicker) {
+    -webkit-backface-visibility: hidden;
+  }
 }
 
 // Basic properties for the content wraps
@@ -189,7 +191,7 @@ $menu-slide: "transform 500ms ease" !default;
   text-align: center;
   height: $tabbar-height;
   top: 0;
-  @media #{$medium-up} { 
+  @media #{$medium-up} {
     &.left, &.right { text-align: left; }
   }
 
