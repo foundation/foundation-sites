@@ -116,7 +116,7 @@
         }
       });
     }
-    // # Patch to fix #5043 to move this *after* the if/else clause in order for Backbone and similar frameworks to have improved control over event binding and data-options updating. 
+    // # Patch to fix #5043 to move this *after* the if/else clause in order for Backbone and similar frameworks to have improved control over event binding and data-options updating.
     if (typeof method === 'string') {
       return this[method].call(this, options);
     }
@@ -315,6 +315,18 @@
           responses.push(this.init_lib(lib, libraries));
         }
       }
+
+      S(window).load(function(){
+        S(window)
+          .trigger('resize.fndtn.clearing')
+          .trigger('resize.fndtn.dropdown')
+          .trigger('resize.fndtn.equalizer')
+          .trigger('resize.fndtn.interchange')
+          .trigger('resize.fndtn.joyride')
+          .trigger('resize.fndtn.magellan')
+          .trigger('resize.fndtn.topbar')
+          .trigger('resize.fndtn.slider');
+      });
 
       return scope;
     },
