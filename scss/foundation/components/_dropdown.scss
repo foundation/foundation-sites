@@ -117,7 +117,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
     }
   }
 
-  @if $triangle == #{$default-float} {
+  @if $triangle == $default-float {
     margin-top: 0;
     margin-#{$default-float}: $f-dropdown-margin-right;
 
@@ -138,7 +138,7 @@ $f-dropdown-content-padding: rem-calc(20) !default;
 
   }
 
-  @if $triangle == #{$opposite-direction} {
+  @if $triangle == $opposite-direction {
     margin-top: 0;
     margin-#{$default-float}: -$f-dropdown-margin-right;
 
