@@ -174,6 +174,12 @@ Adding a size to the front of a text alignment class will cause it to only be ap
     <td>`.xxlarge-text-center`</td>
     <td>`.xxlarge-text-justify`</td>
   </tr>
+  <tr>
+    <td>`.xxlarge-only-text-left`</td>
+    <td>`.xxlarge-only-text-right`</td>
+    <td>`.xxlarge-only-text-center`</td>
+    <td>`.xxlarge-only-text-justify`</td>
+  </tr>
   <thead>
     <td>Align Left</td>
     <td>Align Right</td>
@@ -182,6 +188,186 @@ Adding a size to the front of a text alignment class will cause it to only be ap
   </thead>
 </table>
 
+***
+
+<h3>Box Modelling Classes</h3>
+
+You can change the margins and paddings of an element by adding `.no-margin-POSITION` and `.no-padding-POSITION` to an element. Replace `POSITION` with `top`, `right`, `bottom` or `left`.
+
+Adding a size to the front of a box modelling class will cause it to only be applied on that size screen or larger (ex. `.medium-no-margin-top` will remove top margin for everything except small screens). Adding a size and only will apply the box modelling just for that media query (ex. `.medium-only-no-margin-top` will remove top margin just for medium screens).
+
+<div class="row">
+  <div class="large-12 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="no-margin-top"><!-- content goes here --></div>
+<div class="no-margin-right"><!-- content goes here --></div>
+<div class="no-margin-bottom"><!-- content goes here --></div>
+<div class="no-margin-left"><!-- content goes here --></div>
+
+<div class="no-padding-top"><!-- content goes here --></div>
+<div class="no-padding-right"><!-- content goes here --></div>
+<div class="no-padding-bottom"><!-- content goes here --></div>
+<div class="no-padding-left"><!-- content goes here --></div>
+```
+{{/markdown}}
+  </div>
+</div>
+
+<h4>Available Box Modelling Classes for margins</h4>
+<table style="width:100%;">
+  <tr>
+    <td>`.no-margin-top`</td>
+    <td>`.no-margin-right`</td>
+    <td>`.no-margin-bottom`</td>
+    <td>`.no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.small-no-margin-top`</td>
+    <td>`.small-no-margin-right`</td>
+    <td>`.small-no-margin-bottom`</td>
+    <td>`.small-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.small-only-no-margin-top`</td>
+    <td>`.small-only-no-margin-right`</td>
+    <td>`.small-only-no-margin-bottom`</td>
+    <td>`.small-only-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.medium-no-margin-top`</td>
+    <td>`.medium-no-margin-right`</td>
+    <td>`.medium-no-margin-bottom`</td>
+    <td>`.medium-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.medium-only-no-margin-top`</td>
+    <td>`.medium-only-no-margin-right`</td>
+    <td>`.medium-only-no-margin-bottom`</td>
+    <td>`.medium-only-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.large-no-margin-top`</td>
+    <td>`.large-no-margin-right`</td>
+    <td>`.large-no-margin-bottom`</td>
+    <td>`.large-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.large-only-no-margin-top`</td>
+    <td>`.large-only-no-margin-right`</td>
+    <td>`.large-only-no-margin-bottom`</td>
+    <td>`.large-only-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.xlarge-no-margin-top`</td>
+    <td>`.xlarge-no-margin-right`</td>
+    <td>`.xlarge-no-margin-bottom`</td>
+    <td>`.xlarge-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.xlarge-only-no-margin-top`</td>
+    <td>`.xlarge-only-no-margin-right`</td>
+    <td>`.xlarge-only-no-margin-bottom`</td>
+    <td>`.xlarge-only-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.xxlarge-no-margin-top`</td>
+    <td>`.xxlarge-no-margin-right`</td>
+    <td>`.xxlarge-no-margin-bottom`</td>
+    <td>`.xxlarge-no-margin-left`</td>
+  </tr>
+  <tr>
+    <td>`.xxlarge-only-no-margin-top`</td>
+    <td>`.xxlarge-only-no-margin-right`</td>
+    <td>`.xxlarge-only-no-margin-bottom`</td>
+    <td>`.xxlarge-only-no-margin-left`</td>
+  </tr>
+  <thead>
+    <td>Remove Top Margin</td>
+    <td>Remove Right Margin</td>
+    <td>Remove Bottom Margin</td>
+    <td>Remove Left Margin</td>
+  </thead>
+</table>
+
+<h4>Available Box Modelling Classes for paddings</h4>
+<table style="width:100%;">
+  <tr>
+    <td>`.no-padding-top`</td>
+    <td>`.no-padding-right`</td>
+    <td>`.no-padding-bottom`</td>
+    <td>`.no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.small-no-padding-top`</td>
+    <td>`.small-no-padding-right`</td>
+    <td>`.small-no-padding-bottom`</td>
+    <td>`.small-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.small-only-no-padding-top`</td>
+    <td>`.small-only-no-padding-right`</td>
+    <td>`.small-only-no-padding-bottom`</td>
+    <td>`.small-only-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.medium-no-padding-top`</td>
+    <td>`.medium-no-padding-right`</td>
+    <td>`.medium-no-padding-bottom`</td>
+    <td>`.medium-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.medium-only-no-padding-top`</td>
+    <td>`.medium-only-no-padding-right`</td>
+    <td>`.medium-only-no-padding-bottom`</td>
+    <td>`.medium-only-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.large-no-padding-top`</td>
+    <td>`.large-no-padding-right`</td>
+    <td>`.large-no-padding-bottom`</td>
+    <td>`.large-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.large-only-no-padding-top`</td>
+    <td>`.large-only-no-padding-right`</td>
+    <td>`.large-only-no-padding-bottom`</td>
+    <td>`.large-only-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.xlarge-no-padding-top`</td>
+    <td>`.xlarge-no-padding-right`</td>
+    <td>`.xlarge-no-padding-bottom`</td>
+    <td>`.xlarge-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.xlarge-only-no-padding-top`</td>
+    <td>`.xlarge-only-no-padding-right`</td>
+    <td>`.xlarge-only-no-padding-bottom`</td>
+    <td>`.xlarge-only-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.xxlarge-no-padding-top`</td>
+    <td>`.xxlarge-no-padding-right`</td>
+    <td>`.xxlarge-no-padding-bottom`</td>
+    <td>`.xxlarge-no-padding-left`</td>
+  </tr>
+  <tr>
+    <td>`.xxlarge-only-no-padding-top`</td>
+    <td>`.xxlarge-only-no-padding-right`</td>
+    <td>`.xxlarge-only-no-padding-bottom`</td>
+    <td>`.xxlarge-only-no-padding-left`</td>
+  </tr>
+  <thead>
+    <td>Remove Top Padding</td>
+    <td>Remove Right Padding</td>
+    <td>Remove Bottom Padding</td>
+    <td>Remove Left Padding</td>
+  </thead>
+</table>
+
+<div class="callout panel text-center">You can use the shortcuts <strong>.no-mt</strong>, <strong>.no-mb</strong>, <strong>.no-ml</strong>, <strong>.no-mr</strong> for margins and <strong>.no-pt</strong>, <strong>.no-pb</strong>, <strong>.no-pl</strong>, <strong>.no-pr</strong> for paddings.</div>
 
 ***
 

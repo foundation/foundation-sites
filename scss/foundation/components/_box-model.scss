@@ -1,0 +1,58 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import "global";
+
+$include-html-box-model-classes: $include-html-classes !default;
+
+// Box modelling class names
+$box-model-class-names:
+  small-only,
+  small,
+  medium-only,
+  medium,
+  large-only,
+  large,
+  xlarge-only,
+  xlarge,
+  xxlarge-only,
+  xxlarge;
+
+// Box modelling breakpoints
+$box-model-class-breakpoints:
+  $small-only,
+  $small-up,
+  $medium-only,
+  $medium-up,
+  $large-only,
+  $large-up,
+  $xlarge-only,
+  $xlarge-up,
+  $xxlarge-only,
+  $xxlarge-up;
+
+// Generates margin and padding box modelling classes
+@mixin box-model-classes{
+  .no-margin-top, .no-mt     { margin-top: 0 !important; }
+  .no-margin-bottom, .no-mb  { margin-bottom: 0 !important; }
+  .no-margin-left, .no-ml    { margin-left: 0 !important; }
+  .no-margin-right, .no-mr   { margin-right: 0 !important; }
+  .no-padding-top, .no-pt    { padding-top: 0 !important; }
+  .no-padding-bottom, .no-pb { padding-bottom: 0 !important; }
+  .no-padding-left, .no-pl   { padding-left: 0 !important; }
+  .no-padding-right, .no-pr  { padding-right: 0 !important; }
+
+  @for $i from 1 through length($box-model-class-names) {
+    @media #{(nth($box-model-class-breakpoints, $i))} {
+      .#{(nth($box-model-class-names, $i))}-no-margin-top, .#{(nth($box-model-class-names, $i))}no-mt     { margin-top: 0 !important; }
+      .#{(nth($box-model-class-names, $i))}-no-margin-bottom, .#{(nth($box-model-class-names, $i))}no-mb  { margin-bottom: 0 !important; }
+      .#{(nth($box-model-class-names, $i))}-no-margin-left, .#{(nth($box-model-class-names, $i))}no-ml    { margin-left: 0 !important; }
+      .#{(nth($box-model-class-names, $i))}-no-margin-right, .#{(nth($box-model-class-names, $i))}no-mr   { margin-right: 0 !important; }
+      .#{(nth($box-model-class-names, $i))}-no-padding-top, .#{(nth($box-model-class-names, $i))}no-pt    { padding-top: 0 !important; }
+      .#{(nth($box-model-class-names, $i))}-no-padding-bottom, .#{(nth($box-model-class-names, $i))}no-pb { padding-bottom: 0 !important; }
+      .#{(nth($box-model-class-names, $i))}-no-padding-left, .#{(nth($box-model-class-names, $i))}no-pl   { padding-left: 0 !important; }
+      .#{(nth($box-model-class-names, $i))}-no-padding-right, .#{(nth($box-model-class-names, $i))}no-pr  { padding-right: 0 !important; }
+    }
+  }
+}
