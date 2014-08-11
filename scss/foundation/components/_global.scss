@@ -42,9 +42,13 @@ $base-line-height: 150% !default;
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
   @if ($side == left or $side == right) {
+    -webkit-border-bottom-#{$side}-radius: $radius;
+    -webkit-border-top-#{$side}-radius: $radius;
     border-bottom-#{$side}-radius: $radius;
     border-top-#{$side}-radius: $radius;
   } @else {
+    -webkit-#{$side}-left-radius: $radius;
+    -webkit-#{$side}-right-radius: $radius;
     border-#{$side}-left-radius: $radius;
     border-#{$side}-right-radius: $radius;
   }
