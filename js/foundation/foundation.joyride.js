@@ -109,7 +109,7 @@
       $(window)
         .off('.joyride')
         .on('resize.fndtn.joyride', self.throttle(function () {
-          if ($('[' + self.attr_name() + ']').length > 0 && self.settings.$next_tip) {
+          if ($('[' + self.attr_name() + ']').length > 0 && self.settings.$next_tip && self.settings.riding) {
             if (self.settings.exposed.length > 0) {
               var $els = $(self.settings.exposed);
 
@@ -148,6 +148,7 @@
       this.settings.$tip_content = this.settings.$content_el.find('> li');
       this.settings.paused = false;
       this.settings.attempts = 0;
+      this.settings.riding = true;
 
       // can we create cookies?
       if (typeof $.cookie !== 'function') {
@@ -861,6 +862,7 @@
       }
 
       this.settings.$next_tip.data('closed', true);
+      this.settings.riding = false;
 
       $('.joyride-modal-bg').hide();
       this.settings.$current_tip.hide();
