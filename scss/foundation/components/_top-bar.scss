@@ -163,13 +163,18 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       input { height: 1.8rem; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
       .button, button {
-        padding-top: .45rem;
-        padding-bottom: .35rem;
+        padding-top: .35rem + rem-calc(1);
+        padding-bottom: .35rem + rem-calc(1);
         margin-bottom: 0;
         font-size: $topbar-button-font-size;
           // position: relative;
           // top: -1px;
-
+        
+        // Corrects a slight misalignment when put next to an input field
+        @media #{$small-only} {
+          position: relative;
+          top: -1px;
+        }
       }
 
       // Title Area
