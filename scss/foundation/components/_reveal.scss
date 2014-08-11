@@ -19,6 +19,7 @@ $reveal-overlay-bg-old: #000 !default;
 $reveal-modal-bg: #fff !default;
 $reveal-position-top: rem-calc(100) !default;
 $reveal-default-width: 80% !default;
+$reveal-max-width: $row-width !default;
 $reveal-modal-padding: rem-calc(20) !default;
 $reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
 
@@ -65,7 +66,9 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 //
 @mixin reveal-modal-base(
   $base-style:true,
-  $width:$reveal-default-width) {
+  $width:$reveal-default-width,
+  $max-width:$reveal-max-width,
+  $border-radius: $reveal-radius) {
   @if $base-style {
     visibility: hidden;
     display: none;
@@ -73,12 +76,10 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     z-index: 1005;
     width: 100vw;
     top:0;
+    border-radius: $border-radius; 
     #{$default-float}: 0;
     @media #{$small-only} {
       min-height:100vh;
-    }
-    @media #{$medium-up} {
-      #{$default-float}: 50%;
     }
 
     // Make sure rows don't have a min-width on them
@@ -92,8 +93,11 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
   @if $width {
     @media #{$medium-up} {
-      margin-#{$default-float}: -($width / 2);
       width: $width;
+      max-width: $max-width;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
     }
   }
 }
