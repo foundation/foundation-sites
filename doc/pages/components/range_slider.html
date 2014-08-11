@@ -354,7 +354,20 @@ Required Foundation Library: `foundation.slider.js`
 
 ***
 
-## Customize with Sass
+## Accessibility
+
+Because the range slider is a non-standard form input, assistive devices need some additional information to understand what they are. On the slider handle itself, you need the attribute `role="slider"`. If the slider has a label, the label should be connected to the slider by giving the label a unique ID, and giving the slider the attribute `aria-labelledby`, using the ID of the label as the value.
+
+```html
+<label id="sliderLabel">Slider</label>
+<div class="range-slider" data-slider>
+  <span class="range-slider-handle" role="slider" aria-labelledby="sliderLabel"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+```
+
+***
 
 Sliders can be easily customized using our provided Sass variables.
 
