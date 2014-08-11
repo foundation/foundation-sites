@@ -74,6 +74,7 @@ $tooltip-max-width: 300px !default;
         border: solid $tooltip-pip-size;
         border-color: transparent transparent $tooltip-bg transparent;
         top: -($tooltip-pip-size * 2);
+        pointer-events: none;
 
         &.rtl {
           left: auto;

@@ -6,7 +6,7 @@ title: JavaScript Utilities
 
 ***
 
-<h3 id="using">Using the JavaScript Utilities</h3>
+<h2 id="using">Using the JavaScript Utilities</h2>
 
 There are two ways to use the Foundation utilities: by calling them within the Foundation.utils namespace and by inheriting them into an object.
 
@@ -49,7 +49,7 @@ user.init();
 
 ***
 
-<h3 id="selector">Selector Engine</h3>
+<h2 id="selector">Selector Engine</h2>
 
 While jQuery&#8217;s selector engine is quite versatile, it can sometimes be a bit slow. Foundation&#8217;s &#8220;Big S&#8221; selector leverages the native browser API by using <code>querySelectorAll()</code>, making it up to 20% faster.
 
@@ -108,7 +108,7 @@ S(selector, scope) { ... }
 
 ***
 
-<h3 id="delay">Throttle &amp; Debounce</h3>
+<h2 id="delay">Throttle &amp; Debounce</h2>
 
 Many times when you create a callback, it&#8217;s advantageous to add a delay in order to prevent it from being triggered multiple times. Foundation includes two types of callback delays: <code>throttle</code> and <code>debounce</code>.
 
@@ -181,7 +181,7 @@ debounce(func, delay, immediate) { ... }
 
 ***
 
-<h3 id="data-options">Data Options</h3>
+<h2 id="data-options">Data Options</h2>
 
 The <code>data_options</code> method parses a semicolon delimited set of values in the selected element&#8217;s <code>data-options</code> HTML attribute. It&#8217;s useful for allowing settings to be passed into a script or plugin from the markup.
 
@@ -221,7 +221,7 @@ data_options(el, data_attr_name) { ... }
 
 ***
 
-<h3 id="media-queries">Media Queries</h3>
+<h2 id="media-queries">Media Queries</h2>
 
 Media queries are the backbone of most responsive CSS techniques, though they can be a bit unwieldy to deal with. To make them easier to deal with, we&#8217;ve included two helper methods (<code>register_media</code> and <code>add_custom_rule</code>), as well as polyfilled the native function <code>matchMedia</code> to work with all the browsers Foundation supports.
 
@@ -292,7 +292,7 @@ add_custom_rule(rule, media) { ... }
 
 ***
 
-<h3 id="image-loaded">Image Loaded</h3>
+<h2 id="image-loaded">Image Loaded</h2>
 
 While binding to the document ready event is usually good enough for most plugins that manipulate the DOM, sometimes you need ALL the content to be loaded before you start calculating things like element sizes. This is especially important with images, which can take a while to load and significantly affect the layout of the page, depending on their size.
 
@@ -321,7 +321,7 @@ image_loaded(image, callback) { ... }
 
 ***
 
-<h3 id="random">Random String</h3>
+<h2 id="random">Random String</h2>
 
 The <code>random_str</code> method is a helper for generating random strings of a given length. This method is used by some of the Foundation plugins to ensure a reasonable probability of non-collision for IDs in dynamically generated DOM objects. Note that <code>random_str</code> should not be considered cryptographically secure.
 

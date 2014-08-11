@@ -36,17 +36,23 @@ $button-function-factor: -20% !default;
 // We use these to control button border styles.
 $button-border-width: 0px !default;
 $button-border-style: solid !default;
-$button-bg: $primary-color !default;
-$button-border-color: scale-color($button-bg, $lightness: $button-function-factor) !default;
-$button-hover-color: scale-color($button-bg, $lightness: $button-function-factor) !default;
-
+$button-bg-color: $primary-color !default;
+$button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor) !default;
+$button-border-color: $button-bg-hover !default;
+$secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor) !default;
+$secondary-button-border-color: $secondary-button-bg-hover !default;
+$success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor) !default;
+$success-button-border-color: $success-button-bg-hover !default;
+$alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor) !default;
+$alert-button-border-color: $alert-button-bg-hover !default;
 
 // We use this to set the default radius used throughout the core.
 $button-radius: $global-radius !default;
 $button-round: $global-rounded !default;
 
-// We use this to set default opacity for disabled buttons.
+// We use this to set default opacity and cursor for disabled buttons.
 $button-disabled-opacity: 0.7 !default;
+$button-disabled-cursor: $cursor-default-value !default;
 
 
 //
@@ -117,42 +123,52 @@ $button-disabled-opacity: 0.7 !default;
 
 // @MIXIN
 //
+// we use this mixin to create the button hover and border colors
+
+// @MIXIN
+//
 // We use this mixin to add button color styles
 //
 // $bg - Primary color set in settings file. Default: $button-bg.
-// $bc - Button Border Color. Default: $button-border-color
-// $bh - Button Hover Color. Default: $button-hover-color
 // $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
-@mixin button-style($bg:$button-bg, $radius:false, $disabled:false, $bc:$button-border-color, $bh:$button-hover-color) {
+// $bg-hover - Button Hover Background Color. Default: $button-bg-hover
+// $border-color - Button Border Color. Default: $button-border-color
+@mixin button-style($bg:$button-bg-color, $radius:false, $disabled:false, $bg-hover:null, $border-color:null) {
 
   // We control which background styles are used,
   // these can be removed by setting $bg:false
   @if $bg {
+
+    @if $bg-hover == null {
+      $bg-hover: if($bg == $button-bg-color, $button-bg-hover, scale-color($bg, $lightness: $button-function-factor));
+    }
+
+    @if $border-color == null {
+      $border-color: if($bg == $button-bg-color, $button-border-color, scale-color($bg, $lightness: $button-function-factor));
+    }
+
     // This find the lightness percentage of the background color.
     $bg-lightness: lightness($bg);
+    $bg-hover-lightness: lightness($bg-hover);
 
     background-color: $bg;
-    border-color: $bc;
+    border-color: $border-color;
     &:hover,
-    &:focus { background-color: $bh; }
+    &:focus { background-color: $bg-hover; }
 
     // We control the text color for you based on the background color.
-    @if $bg-lightness > 70% {
-      color: $button-font-color-alt;
-      &:hover,
-      &:focus { color: $button-font-color-alt; }
-    }
-    @else {
-      color: $button-font-color;
-      &:hover,
-      &:focus { color: $button-font-color; }
+    color: if($bg-lightness > 70%, $button-font-color-alt, $button-font-color);
+
+    &:hover,
+    &:focus {
+      color: if($bg-hover-lightness > 70%, $button-font-color-alt, $button-font-color);
     }
   }
 
   // We can set $disabled:true to create a disabled transparent button.
   @if $disabled {
-    cursor: $cursor-default-value;
+    cursor: $button-disabled-cursor;
     opacity: $button-disabled-opacity;
     box-shadow: none;
     &:hover,
@@ -176,10 +192,17 @@ $button-disabled-opacity: 0.7 !default;
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default:false.
 // $is-input - <input>'s and <button>'s take on strange padding. We added this to help fix that. Default:false.
 // $is-prefix - Not used? Default:false.
-@mixin button($padding:$button-med, $bg:$button-bg, $radius:false, $full-width:false, $disabled:false, $is-prefix:false) {
+// $bg-hover - Button Hover Color - Default null - see button-style mixin
+// $border-color - Button Border Color - Default null - see button-style mixin
+// $transition - We can control whether or not to include the background-color transition property - Default:true.
+@mixin button($padding:$button-med, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true) {
   @include button-base;
   @include button-size($padding, $full-width);
-  @include button-style($bg, $radius, $disabled);
+  @include button-style($bg, $radius, $disabled, $bg-hover, $border-color);
+
+  @if $transition {
+    @include single-transition(background-color);
+  }
 }
 
 
@@ -194,9 +217,9 @@ $button-disabled-opacity: 0.7 !default;
 
       @include single-transition(background-color);
 
-      &.secondary { @include button-style($bg:$secondary-color); }
-      &.success   { @include button-style($bg:$success-color); }
-      &.alert     { @include button-style($bg:$alert-color); }
+      &.secondary { @include button-style($bg:$secondary-color, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color); }
+      &.success   { @include button-style($bg:$success-color, $bg-hover:$success-button-bg-hover, $border-color:$success-button-border-color); }
+      &.alert     { @include button-style($bg:$alert-color, $bg-hover:$alert-button-bg-hover, $border-color:$alert-button-border-color); }
 
       &.large  { @include button-size($padding:$button-lrg); }
       &.small  { @include button-size($padding:$button-sml); }
@@ -209,10 +232,10 @@ $button-disabled-opacity: 0.7 !default;
       &.radius { @include button-style($bg:false, $radius:true); }
       &.round  { @include button-style($bg:false, $radius:$button-round); }
 
-      &.disabled, &[disabled] { @include button-style($bg:$button-bg, $disabled:true);
-        &.secondary { @include button-style($bg:$secondary-color, $disabled:true); }
-        &.success { @include button-style($bg:$success-color, $disabled:true); }
-        &.alert { @include button-style($bg:$alert-color, $disabled:true); }
+      &.disabled, &[disabled] { @include button-style($bg:$button-bg-color, $disabled:true, $bg-hover:$button-bg-hover, $border-color:$button-border-color);
+        &.secondary { @include button-style($bg:$secondary-color, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color); }
+        &.success { @include button-style($bg:$success-color, $disabled:true, $bg-hover:$success-button-bg-hover, $border-color:$success-button-border-color); }
+        &.alert { @include button-style($bg:$alert-color, $disabled:true, $bg-hover:$alert-button-bg-hover, $border-color:$alert-button-border-color); }
       }
     }
 

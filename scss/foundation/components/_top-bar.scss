@@ -160,7 +160,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       form,
       input { margin-bottom: 0; }
 
-      input { height: auto; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
+      input { height: 1.8rem; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
       .button, button {
         padding-top: .45rem;
@@ -266,9 +266,6 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           }
         }
       }
-
-
-
     }
 
     // Right and Left Navigation that stacked by default
@@ -404,13 +401,14 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             }
           }
 
-          &.title h5 {
+          &.title h5, &.parent-link {
             margin-bottom: 0;
             margin-top: 0;
             a {
               color: $topbar-link-color;
               line-height: $topbar-height / 2;
               display: block;
+              &:hover { background:none; }
             }
           }
           &.has-form { padding: 8px $topbar-link-padding; }
@@ -504,7 +502,10 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               line-height: $topbar-height;
               color: $topbar-link-color-active;
               background: $topbar-link-bg-active;
-              &:hover { background: $topbar-link-bg-active-hover; }
+              &:hover {
+                background: $topbar-link-bg-active-hover;
+                color: $topbar-link-color-active-hover;
+              }
             }
           }
         }

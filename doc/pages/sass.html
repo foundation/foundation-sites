@@ -12,7 +12,7 @@ Magellan
 <div class="row">
   <div class="small-12 columns">
     <h2>Three Easy Ways to Get Started</h2>
-    <h3 class="subheader">Setting up Foundation 5 Sass is quick and easy!</h3>
+    <h2 class="subheader">Setting up Foundation 5 Sass is quick and easy!</h2>
     <p class="above-magellan">We recommend using the Command Line Interface. We've perfected the command line for quick and easy power, but you can use Foundation with just the files or other applications, like Mixture or CodeKit.</p>
     <div data-magellan-expedition="fixed" data-options="sticky_on:large">
       <dl class="sub-nav">
@@ -54,23 +54,28 @@ Ruby/Git/Node
   </div>
 </div>
 
-<div class="row you-will-need">
+<div class="row circle-list">
   <div class="medium-4 columns">
-    <img src="{{assets}}/img/images/git1.svg" >
+    <img src="{{assets}}/img/images/git.svg" >
     <h4>Git</h4>
-    <p>Git is GitHub's version control system, and basically commands the tools you'll use in the command line to work within GitHub.</p>
+    <p>Git is GitHub's version control system, this install basically commands the tools you'll use in the command line to work within GitHub.</p>
     <p><a href="http://git-scm.com/">Download Git →</a></p>
   </div>
 
+  <hr class="dashed hide-for-medium-up">
+
+
   <div class="medium-4 columns">
-    <img src="{{assets}}/img/images/node1.svg">
+    <img src="{{assets}}/img/images/node.svg">
     <h4>NodeJS</h4>
     <p>Node allows JavaScript to run outside of the browser, and is necessary for Bower to package all the files into the project and link them together.</p>
     <p><a href="http://nodejs.org/">Download NodeJS →</a></p>
   </div>
 
+  <hr class="dashed hide-for-medium-up">
+
   <div class="medium-4 columns">
-    <img src="{{assets}}/img/images/ruby1.svg">
+    <img src="{{assets}}/img/images/ruby.svg">
     <h4>Ruby 1.9+</h4>
     <p>We wrote a Ruby script that downloads the Sass files and scaffolds the project. If you have a Mac, you probably already have Ruby installed.</p>
     <p><a href="https://www.ruby-lang.org/en/">Download Ruby →</a></p>
@@ -86,8 +91,7 @@ How to Install
 <div class="row">
   <div class="small-12 path-container columns">
     <h3>How to Install the CLI</h3>
-    <p class="subheader">Using the CLI to install Foundation 5 only takes two easy commands. You only have to install the CLI once. Don't want to read? <a href="http://foundation.zurb.com/learn/video-started-with-foundation.html">Check out this video we made to help you out.</a></p>
-    <br>
+    <h3 class="subheader">Using the CLI to install Foundation 5 only takes two easy commands. You only have to install the CLI once. Don't want to read? <a href="http://foundation.zurb.com/learn/video-started-with-foundation.html">Check out this video we made to help you out.</a></h3>
     <div class="path-item"> 
       <div class="circlenumber">
         <h3>1</h3>
@@ -115,7 +119,7 @@ Compass/Libsass
 
 <div class="row">
   <div class="small-12 columns">
-    <h3>Compiling Sass into CSS &amp;- Creating a Project</h3>
+    <h3>Compiling Sass into CSS &amp; Creating a Project</h3>
     <h3 class="subheader">Sass is a great way to speed up front-end development. </h3>
     <p>SCSS (Sassy CSS) syntax was introduced as "the new main syntax" for Sass and builds on the existing syntax of CSS. We created a SCSS version to allow more friendly and dynamic styling. This version also allows for greater customization than the HTML/CSS version. There are two easy ways our CLI helps you compile SCSS: Compass or Libsass with Grunt.</p>
     <img class="flow-chart" data-interchange="[{{assets}}/img/images/scssflow-small.svg, (small)], [{{assets}}/img/images/scssflow-med.svg, (medium)], [{{assets}}/img/images/scssflow.svg, (large)]">  
@@ -128,7 +132,7 @@ Compass/Libsass
       <h4>Creating a Compass Project</h4>
       <div class="circlenumber">
         <h3>1</h3>
-      </div>If it's not installed yet, you can install it using the following command:</p>
+      </div><p>If it's not installed yet, you can install it using the following command:</p>
       <p class="panel">gem install compass</p>
     </div>
     <div class="path-item">
@@ -143,7 +147,7 @@ Compass/Libsass
         <h3>3</h3>
       </div>
       <p>Boom, your project is created! Now Foundation will be easy.</p>
-      <p class="panel">cd MY_PROJECT<br>foundation update</p>
+      <p class="panel">cd MY_PROJECT</p>
     </div>
     <div class="path-item">
       <div class="circlenumber">
@@ -154,7 +158,10 @@ Compass/Libsass
     </div>
   </div>
 
+
   <div class="large-5 large-pull-1 columns path-container two-column">
+    <hr class="dashed hide-for-large-up">
+
     <div class="path-item">
     <h4>Creating a Libsass Project</h4>
       <div class="circlenumber">
@@ -189,7 +196,7 @@ Compass/Libsass
 
 <div class="row">
   <div class="small-12 columns two-column">
-    <p class="subheader"><a href="http://foundation.zurb.com/docs/sass-files.html">Check out what you get with the Sass download package. →</a></p>
+    <p class="subheader"><a href="{{rel 'sass-files.html'}}">Check out what you get with the Sass download package. →</a></p>
   </div>
 </div>
 
@@ -204,8 +211,7 @@ How to Update
 <div class="row">
   <div class="small-12 columns path-container">
     <h3>How to Update</h3>
-    <p class="subheader">Once you have Foundation installed updating your file is easy.</p>
-    <br>
+    <h3 class="subheader">Once you have Foundation installed updating your file is easy.</h3>
     <div class="path-item">
       <div class="circlenumber">
         <h3>1</h3>
@@ -236,7 +242,7 @@ Manually
 <div class="row">
   <div class="small-12 columns nocli">
     <h2 data-magellan-destination="nocli"><a name="nocli"></a>Install Foundation Manually</h2>
-    <h3 class="subheader">You can download our SCSS files and get set up to harness the power of Foundation without the CLI if you want. Here's how:</h3>
+    <h2 class="subheader">You can download our SCSS files and get set up to harness the power of Foundation without the CLI if you want. Here's how:</h2>
     <ul>
       <li>First you will need to clone or download the <a href="https://github.com/zurb/foundation/archive/master.zip">master zip of the Foundation Compass Template</a> from Github. This will be the root of your project.</li>
       <li>Then you will create a directory called bower_components.</li>
@@ -280,7 +286,7 @@ Upgrade Manually
       <p class="panel">bower install</p>
       <p>This will create a directory called bower_components/ in your project. Foundation's Sass and JavaScript files will be placed in the bower_components/foundation folder.</p>
     </div>
-    <p><a href="http://foundation.zurb.com/docs/sass-files.html">Check out what you get with the Sass download package. →</a></p>
+    <p><a href="{{rel 'sass-files.html'}}">Check out what you get with the Sass download package. →</a></p>
   </div>
 </div>
 
@@ -293,7 +299,7 @@ Other Applications
 <div class="row otherapps">
   <div class="small-12 columns">
     <h2 data-magellan-destination="other"><a name="other"></a>Third Party Applications</h2>
-    <h3 class="subheader">If you want a more hands-off and simple build of Foundation you can use these platforms to code with Foundation.</h3>
+    <h2 class="subheader">If you want a more hands-off and simple build of Foundation you can use these platforms to code with Foundation.</h2>
   </div>
 </div>
 <br>
@@ -337,41 +343,37 @@ Other Applications
   </div>
 </div>
 
-
-
-<!--
-What You Get
-**IMPORTANT**
-Need to uncomment the *checkout* hyperlinks above
--->
-
-
 <hr>
 
 <div class="row">
   <div class="small-12 columns">
-    <h3>What's Next?</h3>
-    <h3 class="subheader">Now that you have Foundation Sass installed, check out the the awesome stuff you get and how to use it.</h3>
+    <h2>What's Next?</h2>
+    <h2 class="subheader">Now that you have Foundation Sass installed, check out the awesome stuff you get and how to use it.</h2>
   </div>
-</div>Here we will show you all the files and components that you get when you download our Sass package. 
-
-<div class="row you-will-need">
+</div>
+<div class="row circle-list">
   <div class="medium-4 columns">
     <img src="{{assets}}/img/images/whatyouget.svg">
     <h4>What You Get</h4>
     <p>The complete package! We'll cover the important files that are included when you download Sass and where to make customizations.</p>
-    <p><a href="http://foundation.zurb.com/docs/sass-files.html">See What's Inside →</a></p>
+    <p><a href="{{rel 'sass-files.html'}}">See What's Inside →</a></p>
   </div>
+
+  <hr class="dashed hide-for-medium-up">
+
   <div class="medium-4 columns">
     <img src="{{assets}}/img/images/howtouse.svg">
     <h4>How to Use</h4>
     <p>Harness SCSS's variable features easily through the included _settings.scss file. We cover important tips on the settings file, writing sass, and using mixins.</p>
-    <p><a href="http://foundation.zurb.com/docs/using-sass.html">Find Out How →</a></p>
+    <p><a href="{{rel 'using-sass.html'}}">Find Out How →</a></p>
   </div>
+
+  <hr class="dashed hide-for-medium-up">
+  
   <div class="medium-4 columns">
     <img src="{{assets}}/img/images/globalstyles.svg">
     <h4>Global Styles</h4>
     <p>Every Foundation project needs to include these styles in order to work properly. These include things like basic formatting and global utility classes.</p>
-    <p><a href="http://foundation.zurb.com/docs/components/global.html">Take a Look →</a></p>
+    <p><a href="{{rel 'components/global.html'}}">Take a Look →</a></p>
   </div>
 </div>

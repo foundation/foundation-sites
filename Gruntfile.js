@@ -65,7 +65,7 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         files: {
-          'dist/assets/js/foundation.js': '<%= foundation.js %>'
+          'dist/assets/js/foundation.js':'<%= foundation.js %>'
         }
       }
     },
@@ -219,7 +219,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jst');
-  
+
   grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
   grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
   grunt.registerTask('build', ['build:assets', 'assemble']);

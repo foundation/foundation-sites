@@ -259,7 +259,7 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
 
 ***
 
-## Customize With Sass
+## Customize with Sass
 
 Off-canvas layouts can be easily customized using our provided Sass variables.
 
@@ -269,7 +269,7 @@ Off-canvas layouts can be easily customized using our provided Sass variables.
 
 ***
 
-### Using the Javascript
+## Using the Javascript
 
 <div class="panel">
   Before you can use Off-canvas you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
@@ -298,7 +298,14 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 
 Required Foundation Library: `foundation.offcanvas.js`
 
+***
+
 ### Optional Javascript Configuration
+
+**open_method** <br> Default: `move` <br> Defines how the off-canvas menu behaves. Can be `move` `overlap_single` or `overlap`.
+
+**close_on_click** <br/> Default: `false` <br> Control whether or not clicking menu links will close the menu.
+
 
 {{> examples_offcanvas_javascript_options}}
 
@@ -337,7 +344,7 @@ $(document)
 
 ### Programmatic open / close / toggle
 
-The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, or `offcanvas-overlap`.
+The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, `offcanvas-overlap-left`, `offcanvas-overlap-right` or `offcanvas-overlap`.
 
 ```js
 $('.off-canvas-wrap').foundation('offcanvas', 'open', 'move-right');

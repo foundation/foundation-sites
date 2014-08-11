@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.3.0',
+    version: '{{ VERSION }}',
 
     settings : {
       templates : {
@@ -20,6 +20,9 @@
 
       // Default to the entire li element.
       open_selectors : '',
+
+      // Image will be skipped in carousel.
+      skip_selector : '',
 
       touch_label : '',
 
@@ -196,6 +199,11 @@
           label = self.S('.clearing-touch-label', container),
           error = false;
 
+      // Event to disable scrolling on touch devices when Clearing is activated
+      $('body').on('touchmove',function(e){
+        e.preventDefault();
+      });
+
       image.error(function () {
         error = true;
       });
@@ -266,6 +274,9 @@
         visible_image.hide();
         visible_image.trigger('closed.fndtn.clearing');        
       }
+
+      // Event to re-enable scrolling on touch devices
+      $('body').off('touchmove');
 
       return false;
     },
@@ -432,6 +443,11 @@
     go : function ($ul, direction) {
       var current = this.S('.visible', $ul),
           target = current[direction]();
+
+      // Check for skip selector.
+      if (this.settings.skip_selector && target.find(this.settings.skip_selector).length != 0) {
+        target = target[direction]();
+      }
 
       if (target.length) {
         this.S('img', target)
