@@ -214,10 +214,8 @@ footer { margin-top: 45px; }
 
 // Examples
 .magellan-container {
-  padding: 0;
+  padding: 0 !important;
   background: #fff;
-
-
 }
 .example-orbit {}
 .example-orbit-content li div {
