@@ -4,7 +4,7 @@
   Foundation.libs.equalizer = {
     name : 'equalizer',
 
-    version : '{{ VERSION }}',
+    version : '5.3.3',
 
     settings : {
       use_tallest: true,
