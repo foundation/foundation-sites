@@ -185,22 +185,25 @@
         } else if (is_checkbox && required) {
           validations.push(this.valid_checkbox(el, required));
         } else {
+
+          var validationsMulti = [];
           
           if (validator) {
             valid = this.settings.validators[validator].apply(this, [el, required, parent]);
-            validations.push(valid);
+            validationsMulti.push(valid);
           }
 
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1 || $(el).attr('disabled')) {
-            validations.push(true);
+            validationsMulti.push(true);
           } else {
-            validations.push(false);
+            validationsMulti.push(false);
           }
 
-          validations = [validations.every(function(valid){return valid;})];
+          validationsMulti = [validationsMulti.every(function(valid){return valid;})];
+          validations.push(validationsMulti[0]);
 
-          if(validations[0]){
+          if(validationsMulti[0]){
             this.S(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
             if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
