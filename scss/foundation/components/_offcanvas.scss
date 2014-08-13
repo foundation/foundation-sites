@@ -396,47 +396,52 @@ $menu-slide: "transform 500ms ease" !default;
     border-top: $off-canvas-label-border-top;
     border-bottom: $off-canvas-label-border-bottom;
     margin: $off-canvas-label-margin;
+    @if $position == right {
+      &:after {
+        @include icon-double-arrows($position: right);        
+      }      
+    }
+    @if $position == left {
+      &:before {
+        @include icon-double-arrows($position: left);
+      }
+    }
   }
 }
 //Left double angle quote or Right double angle quote chars
 @mixin icon-double-arrows ($position){
   @if $position == left {
-      content: "\AB";
-      margin-right: 0.5rem;
-    } 
-    @if $position == right {
-      content: "\BB";
-      margin-left: 0.5rem;
-    }
+    content: "\AB";
+    margin-right: 0.5rem;
+  } 
+  @if $position == right {
+    content: "\BB";
+    margin-left: 0.5rem;
+  }
+  display: inline;
+  position: relative;
 }
 
 @if $include-html-off-canvas-classes {
-
-  .left-submenu { @include off-canvas-submenu($position: left); 
+  .left-submenu {
+    @include off-canvas-submenu($position: left);   
     &.move-right {
       @include translate3d(0%,0,0);
     }
   }
-    
-  .right-submenu { @include off-canvas-submenu($position: right); 
+  
+  .right-submenu { 
+    @include off-canvas-submenu($position: right);    
     &.move-left {
       @include translate3d(0%,0,0);
     }
   }
   
-  ul.off-canvas-list {
-    li {
-      a.icon-left:before { 
-        @include icon-double-arrows($position: left);
-        display: inline;        
-        position: relative;
-      }
-      a.icon-right:after {
-        @include icon-double-arrows($position: right);
-        display: inline;        
-        position: relative;
-      }
-      
-    }
-  }  
+  .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after { 
+    @include icon-double-arrows($position: right);    
+  }
+  
+  .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before { 
+    @include icon-double-arrows($position: left);    
+  }
 }
