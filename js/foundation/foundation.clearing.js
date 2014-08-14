@@ -35,7 +35,9 @@
       var self = this;
       Foundation.inherit(this, 'throttle image_loaded');
 
-      this.bindings(method, options);
+        this.settings = $.extend({}, this.settings, this.data_options(self.S('[' + this.attr_name() + ']', this.scope)));
+
+        this.bindings(method, options);
 
       if (self.S(this.scope).is('[' + this.attr_name() + ']')) {
         this.assemble(self.S('li', this.scope));
