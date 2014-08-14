@@ -39,14 +39,25 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         float: $default-float;
         > a {
           display: block;
-          background: $tabs-navigation-bg-color;
+          background: {
+            color: $tabs-navigation-bg-color;
+          }
           color: $tabs-navigation-font-color;
           padding: $tabs-navigation-padding $tabs-navigation-padding * 2;
           font-family: $tabs-navigation-font-family;
           font-size: $tabs-navigation-font-size;
-          &:hover { background: $tabs-navigation-hover-bg-color; }
+          &:hover {
+            background: {
+              color: $tabs-navigation-hover-bg-color;
+            }
+          }
         }
-        &.active a { background: $tabs-navigation-active-bg-color; color:$tabs-navigation-active-font-color; }
+        &.active a {
+          background: {
+            color: $tabs-navigation-active-bg-color;
+          }
+          color:$tabs-navigation-active-font-color;
+          }
       }
       &.radius {
         dd:first-child, .tab:first-child {
