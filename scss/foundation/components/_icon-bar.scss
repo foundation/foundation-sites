@@ -109,8 +109,8 @@ $icon-bar-item-padding: 1.25rem !default;
 	$image-height: $icon-bar-image-height) {
 
 	& > * {
-		font-size: $icon-bar-font-size;
-		padding: $icon-bar-item-padding;
+		font-size: $font-size;
+		padding: $padding;
 
 		i, img { 
 
@@ -120,12 +120,12 @@ $icon-bar-item-padding: 1.25rem !default;
 		}
 
 		i {
-			font-size: $icon-bar-icon-size;
+			font-size: $icon-size;
 		}
 
 		img {
-			width: $icon-bar-image-width;
-			height: $icon-bar-image-height;
+			width: $image-width;
+			height: $image-height;
 		}
 	}
 
