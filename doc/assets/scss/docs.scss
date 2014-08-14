@@ -1,37 +1,22 @@
+
+//Mixins
 @import "global";
-@import "foundation";
-@import "code";
-@import "marketing-off-canvas";
-@import "footer";
 
-@import "foundation-forum";
+//Foundation Libraries
+@import 
+  "scss/foundation/settings",
+  "foundation";
+
+//Marketing Site Common Library
+@import 
+  "code",
+  "marketing-off-canvas",
+  "footer",
+  "foundation-forum",
+  "footer-banner";
 
 
-@mixin box-shadow(
-  $shadow-1 : default,
-  $shadow-2 : false,
-  $shadow-3 : false,
-  $shadow-4 : false,
-  $shadow-5 : false,
-  $shadow-6 : false,
-  $shadow-7 : false,
-  $shadow-8 : false,
-  $shadow-9 : false,
-  $shadow-10: false
-) { }
 
-@mixin border-direction($direction:top,
-                        $style:solid,
-                        $width:2px,
-                        $color:darken($panel-bg-color, 1%)) {
-  border-#{$direction}: #{$style} #{$width} #{$color};
-}
-
-@mixin border($style:solid,
-              $width:2px,
-              $color:darken($panel-bg-color, 1%)) {
-  border: #{$style} #{$width} #{$color};
-}
 
 .row {
   max-width: rem-calc(1440);
@@ -49,13 +34,38 @@
       &.large-centered {
         background: darken(#eee, 5%);
       }
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
     }
   }
 }
+
+.row {
+  max-width: rem-calc(1440);
+  &.display-end {
+    background: #fff;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    border: solid 1px #c6c6c6;
+    margin-#{$default-float}: 0 !important;
+    margin-#{$opposite-direction}: 0 !important;
+    .columns {
+      background: darken(#eee, 5%);
+      border-left: 1px solid #c6c6c6;
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
+    }
+  }
+}
+
 .top-bar-section ul li > a{ font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;font-size: 0.8125rem !important; }
 h1 { margin-top: 20px; }
 // h2, h3 { margin: 1rem 0 0.15rem; }
-h3.subheader { margin: 0 0 10px 0; font-size: 1.25rem; }
+h2.subheader { margin: 0 0 20px 0; font-size: 1.25rem; }
+h3.subheader { margin: 0 0 20px 0; font-size: 1.25rem; }
 h4 { font-size: 0.75rem; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
 
 
@@ -204,7 +214,7 @@ footer { margin-top: 45px; }
 
 // Examples
 .magellan-container {
-  padding: 10px 0;
+  padding: 0 !important;
   background: #fff;
 }
 .example-orbit {}
@@ -507,7 +517,6 @@ footer { margin-top: 45px; }
 }
 
 // Thumbnail Styles
-
 .th-custom {
   @include thumb(10px,0 0 0 2px black, 0 0 10px 2px rgba(orange,0.5));
   @include radius(6);
@@ -584,3 +593,460 @@ $custom-active-bg:darken($custom-link-color, 5%);
 
 .docs-bar .top-bar-section .has-dropdown > a:after { display: none; }
 .docs-bar .top-bar-section .has-dropdown a { padding-#{$opposite-direction}: 15px !important; }
+
+
+// Fix for Google Maps
+div#interchangeMarkup img {
+  max-width: none;
+}
+
+/*------------------------------------
+you will need
+------------------------------------*/
+.circle-list {
+  a {
+    margin-bottom: 0px;
+  }
+  img {
+    width: 160px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  } 
+}
+
+
+/*------------------------------------
+images
+------------------------------------*/
+.others {
+  max-height: 180px;
+  display: block;
+  margin: 10px auto;
+}
+
+
+.flow-chart {
+  margin: 10px 10px 15px 0;
+  @media #{$small-only} { 
+    margin:20px;
+  }
+}
+
+.command-line {
+  @media #{$small-only} {
+    margin:20px;
+  }
+}
+
+/*------------------------------------
+padding
+------------------------------------*/
+.recommended {
+  padding-top:10px;
+}
+
+.path-container code {
+  color:$primary-color;
+}
+
+.sub-nav {
+  background-color: $panel-bg;
+  padding: 10px 10px 10px 0;
+}
+
+.above-magellan {
+  margin-bottom: 30px
+}
+
+.otherapps {
+  margin-bottom: 20px !important; 
+}
+
+/*------------------------------------
+ timeline styles
+------------------------------------*/
+.two-column {
+  margin-top: 20px;
+}
+
+.path-container {
+  .path-item {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+  h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+  }
+}
+
+
+/*------------------------------------
+circles
+------------------------------------*/
+.circlenumber {
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #0b4f69;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  margin-top: 6px;
+  margin-right: 18px; 
+  margin-bottom: 5px;
+  margin-left: 0.83333rem;
+  z-index: 2;
+  h3 {
+    color: #0b4f69;
+    position: relative;
+    text-align: center;
+    top: 2.5%;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+
+@media only screen and (min-width: 0) and (max-width: 64.063em){ 
+  .path-item {
+    padding-left: 0.83333rem; 
+    .circlenumber {
+      left: -12px;
+    }
+  }
+}
+
+@media only screen and (min-width: 64.063em) { 
+  .path-item {
+    padding-left: 65px;
+    position: relative;
+    .circlenumber {
+    position: absolute;
+    left: 0;
+    }
+  }
+}
+
+/*------------------------------------
+ mobile timeline styles
+------------------------------------*/
+@media only screen and (max-width: 1800px) {
+  .path-container {
+    .circle {
+    top: 0;
+    right: 0;
+    left: 0;
+    float: none;
+    padding-top: 0px;
+    margin-right: auto;
+    }
+  .panel {
+    border: none;
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    font-weight: normal;
+    padding-left:20px;
+    } 
+  }
+}
+
+/*------------------------------------
+misc
+------------------------------------*/
+p.note  {
+  font-size: 16px;
+}
+
+@media #{$small-only} {
+   .other-uses {
+    .button {
+      display: block !important;
+    }
+  }
+}
+
+.path-item:last-child, .path-item p:last-child, .nocli ul:last-child, .other-uses .button:last-child, .path-container p:last-child{
+  margin-bottom: 0;
+}
+
+.dashed {
+  border-style: dashed;
+}
+
+/*------------------------------------
+what you get
+------------------------------------*/
+.header-container {
+  padding: 15px 30px 10px 30px;
+  background: #0b4f69;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  h3 {
+    color:#fff;
+  }
+}
+
+.info-list {
+  font-size: .95rem;
+  background: #fafafa;
+  list-style: none;
+  margin: 0 0 20px 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  li {
+    padding: 20px 30px;
+    pre {
+      margin-bottom: 0;
+    }
+  }
+  li:nth-child(even) {
+    background: #f5f5f5;
+  }
+}
+
+.file-list {
+  ul {
+    list-style: none;
+    margin-bottom: 12px;
+  }
+
+  img {
+    border-radius: 5px;
+    padding-bottom: 20px;
+  }
+
+  hr {
+    margin-bottom: 4px;
+    margin-top: 2px;
+    width: 30%;
+  }
+
+  .fi-folder {
+    color: #0b4f69;
+  }
+
+  .fi-page{
+    color: #6f6f6f;
+  }
+
+  &.resources {
+    ul {
+      margin-left: 0;
+    }
+    .button {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.whatis {
+  margin-top: 30px !important;
+  @media only screen and (min-width: 0) and (max-width: 64.063em) {
+    img {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.setting_sass {
+  padding-top: 23px;
+}
+
+.app-image {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.arrow-list {
+  margin-bottom: 0;
+  li {
+    padding-left: 20px;
+    list-style: none;
+    position:relative;
+    i {
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+.using-sass {
+  pre:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.minus {
+  margin-top: 30px;
+}
+
+.skill-list h4 {
+  margin-bottom: 0;
+}
+
+.skill-level {
+  font-size: 0.77778rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  margin-top: 0;
+  i {
+    font-size: 120%;
+    color: #FDC441;
+  }
+}
+
+.gs-example {
+  .row {
+    // margin-right: -0.3rem;
+    // margin-left: -0.3rem;
+    border: 1px solid #c6c6c6;
+    margin: 0.3rem !important;
+    .row {
+      margin: 0;
+    }
+  }
+  .border-none {
+    border-right: none !important;
+  }
+  .columns {
+    padding-left: inherit;
+    padding-right: inherit;
+    border: 3px solid #fff;
+    background: #eee;
+  }
+  .columns:nth-child(2) {
+    background: #e1e1e1;
+  }
+  p {
+    padding: 10px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+.off-canvas-example {
+  background: #efefef;
+  .main-section {
+    padding: 0 20px;
+  }
+}
+
+.tabs-example {
+  border: 1px solid #ccc;
+  margin-bottom: 1.3rem;
+  .tab-title.active a {
+    background: #eee;
+  }
+  .tab-title > a {
+    background: #e1e1e1;
+    &:hover {
+      background: scale-color(#eee, $lightness: -14%);
+    }
+  }
+  .tabs-content {
+    border-top: 1px solid #ccc; 
+    margin: 0;
+    padding: 1rem;
+  }
+  .tabs-content > .content {
+    padding: 0;
+  }
+}
+
+.button-title {
+  margin-top: -7px;
+}
+
+.codepen-demo {
+  margin-top: 20px;
+  .tabs-content {
+    padding: 5px 15px;
+    background: #f3f3f3;
+  }
+  .tab-title > a {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #333;
+    color: #fff;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-right: 5px;
+    &:hover {
+      background: scale-color(#333, $lightness: 15%);
+    }
+  }
+  .tab-title.active a {
+    background: #f3f3f3;
+    color: #333;
+  }
+}
+
+.what-comes-with { 
+  hr {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .pagination {
+    margin-bottom: 0;
+  }
+  .grid-example {
+    margin-top: 10px;
+  }
+
+  .gs-buttongroup {
+    text-align: center;
+    .button-group {
+      min-width: 100%;
+      li {
+        min-width: 50%;
+        a {
+          min-width: 100%;
+        }
+      }
+    }
+  }
+
+  .gs-iconbar {
+    margin-bottom: 10px;
+    i {
+      color: #dadada;
+    }
+    a &:hover {
+      color: #fff;
+    }
+  }
+
+  .gs-topbar {
+    margin-bottom: 15px;
+  }
+
+  .gs-hoverbutton {
+    .button {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gs-resources {
+  h4 {
+    margin-top: 20px;
+  }
+}
+.gs-modal {
+  .reveal-modal {
+    z-index: 1002;
+  }
+  .reveal-modal-bg {
+    z-index: 1000;
+  }
+}
+
+

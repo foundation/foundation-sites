@@ -111,9 +111,13 @@ Interchange triggers a `replace` event when a rule evaluates to true and the con
 
 ### Adding New Interchange Content After Page Load
 
-If you add new content after the page has been loaded, you will need to trigger a `reflow` by running one of the following:
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
 
-{{> examples_interchange_images}}
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
 
 ***
 

@@ -16,7 +16,7 @@ $alert-padding-opposite-direction: $alert-padding-top + rem-calc(10) !default;
 $alert-padding-bottom: $alert-padding-top !default;
 
 // We use these to control text style.
-$alert-font-weight: normal !default;
+$alert-font-weight: $font-weight-normal !default;
 $alert-font-size: rem-calc(13) !default;
 $alert-font-color: #fff !default;
 $alert-font-color-alt: scale-color($secondary-color, $lightness: -66%) !default;
@@ -67,7 +67,7 @@ $alert-transition-ease: ease-out !default;
 // $bg - The background of the alert. Default: $primary-color.
 @mixin alert-style($bg:$primary-color) {
 
-  // This find the lightness percentage of the background color.
+  // This finds the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
 
   // We control which background color and border come through.

@@ -4,14 +4,15 @@
   Foundation.libs.offcanvas = {
     name : 'offcanvas',
 
-    version : '5.2.1',
+    version : '5.3.3',
 
     settings : {
-      close_on_click: true
+      open_method: 'move',
+      close_on_click: false
     },
 
     init : function (scope, method, options) {
-      this.events();
+      this.bindings(method, options);
     },
 
     events : function () {
@@ -60,14 +61,30 @@
     },
     click_toggle_class: function(e, class_name) {
       e.preventDefault();
-      this.S(e.target).closest('.off-canvas-wrap').toggleClass(class_name);
+      var $off_canvas = this.get_wrapper(e);
+      this.toggle(class_name, $off_canvas);
     },
 
     click_remove_class: function(e, class_name) {
       e.preventDefault();
-      this.S('.off-canvas-wrap').removeClass(class_name);
+      var $off_canvas = this.get_wrapper(e);
+      this.hide(class_name, $off_canvas);
+    },
+
+    get_settings: function(e) {
+      var offcanvas  = this.S(e.target).closest('[' + this.attr_name() + ']');
+      return offcanvas.data(this.attr_name(true) + '-init') || this.settings;
+    },
+
+    get_wrapper: function(e) {
+      var $off_canvas = this.S(e ? e.target : this.scope).closest('.off-canvas-wrap');
+
+      if ($off_canvas.length === 0) {
+        $off_canvas = this.S('.off-canvas-wrap');
+      }
+      return $off_canvas;
     },
 
     reflow : function () {}
   };
-}(jQuery, this, this.document));
+}(jQuery, window, window.document));

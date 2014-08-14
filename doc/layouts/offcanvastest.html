@@ -26,8 +26,8 @@
     <script src="{{assets}}/js/modernizr.js"></script>
   </head>
   <body class="antialiased hide-extras">
-    
-    <div class="off-canvas-wrap sticky">
+
+    <div class="off-canvas-wrap sticky" data-offcanvas>
       <div class="inner-wrap">
         <nav class="tab-bar">
           <section class="left-small">
@@ -81,7 +81,7 @@
         </aside>
 
         <section class="scroll-container">
-        
+
           {{#markdown}}
           {{> body}}
           {{/markdown}}

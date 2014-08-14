@@ -1,5 +1,5 @@
 ---
-title: Alert boxes
+title: Alerts
 ---
 
 <h3 class="subheader">Alerts are handy elements you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.</h3>
@@ -54,6 +54,16 @@ You can add more classes to your alert box to change its appearance.
   This is an info alert with a radius.
   <a href="#" class="close">&times;</a>
 </div>
+
+<div data-alert class="alert-box alert round">
+  This is an alert - alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box secondary">
+  This is a secondary alert.
+  <a href="#" class="close">&times;</a>
+</div>
 ```
 {{/markdown}}
 
@@ -76,12 +86,22 @@ You can add more classes to your alert box to change its appearance.
   <a href="#" class="close">&times;</a>
 </div>
 
+<div data-alert class="alert-box alert round">
+  This is an alert - alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box secondary">
+  This is a secondary alert.
+  <a href="#" class="close">&times;</a>
+</div>
+
   </div>
 </div>
 
 ---
 
-## Customize With Sass
+## Customize with Sass
 
 Alert boxes can be easily customized using our Sass variables.
 
@@ -200,9 +220,9 @@ It's easy to configure alert boxes using our provided Javascript. You can use wi
 
 {{#markdown}}
 ```html
-<script src="js/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.alert.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.alert.js"></script>
 ```
 {{/markdown}}
 
