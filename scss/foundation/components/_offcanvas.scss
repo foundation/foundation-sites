@@ -394,13 +394,25 @@ $menu-slide: "transform 500ms ease" !default;
     border-bottom: $off-canvas-label-border-bottom;
     margin: $off-canvas-label-margin;
     @if $position == right {
-      &:after {
-        @include icon-double-arrows($position: right);        
+      @if $text-direction == rtl {
+        &:before {
+          @include icon-double-arrows($position: left);        
+        }
+      } @else {
+        &:after {
+          @include icon-double-arrows($position: right);        
+        }
       }      
     }
     @if $position == left {
-      &:before {
-        @include icon-double-arrows($position: left);
+      @if $text-direction == rtl {
+        &:after {
+          @include icon-double-arrows($position: right);        
+        }
+      } @else {
+        &:before {
+          @include icon-double-arrows($position: left);
+        }
       }
     }
   }
@@ -409,11 +421,19 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin icon-double-arrows ($position){
   @if $position == left {
     content: "\AB";
-    margin-right: 0.5rem;
+    @if $text-direction == rtl {
+      margin-left: 0.5rem;
+    } @else {
+      margin-right: 0.5rem;
+    }
   } 
   @if $position == right {
     content: "\BB";
-    margin-left: 0.5rem;
+    @if $text-direction == rtl {
+      margin-right: 0.5rem;
+    } @else {
+      margin-left: 0.5rem;
+    }
   }
   display: inline;
   position: relative;
@@ -434,11 +454,19 @@ $menu-slide: "transform 500ms ease" !default;
     }
   }
   
-  .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after { 
-    @include icon-double-arrows($position: right);    
-  }
-  
-  .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before { 
-    @include icon-double-arrows($position: left);    
+  @if $text-direction == rtl {
+    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before { 
+      @include icon-double-arrows($position: left);
+    }
+    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after { 
+      @include icon-double-arrows($position: right);
+    }
+  } @else {
+    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after { 
+       @include icon-double-arrows($position: right);
+    }
+    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before { 
+       @include icon-double-arrows($position: left);
+    }
   }
 }
