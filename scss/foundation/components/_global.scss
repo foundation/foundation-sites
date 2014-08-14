@@ -46,11 +46,15 @@ $base-line-height: 150% !default;
     -webkit-border-top-#{$side}-radius: $radius;
     border-bottom-#{$side}-radius: $radius;
     border-top-#{$side}-radius: $radius;
+    -webkit-border-bottom-#{$side}-radius: $radius !important;
+    -webkit-border-top-#{$side}-radius: $radius !important;
   } @else {
     -webkit-#{$side}-left-radius: $radius;
     -webkit-#{$side}-right-radius: $radius;
     border-#{$side}-left-radius: $radius;
     border-#{$side}-right-radius: $radius;
+    -webkit-border-#{$side}-left-radius: $radius !important;
+    -webkit-border-#{$side}-right-radius: $radius !important;
   }
 }
 
