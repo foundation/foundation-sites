@@ -32,6 +32,7 @@ $input-border-style: solid !default;
 $input-border-width: 1px !default;
 $input-border-radius: $global-radius !default;
 $input-disabled-bg: #ddd !default;
+$input-disabled-cursor: $cursor-default-value !default;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $input-include-glowing-effect: true !default;
 
@@ -55,6 +56,9 @@ $input-prefix-border-type: solid !default;
 $input-prefix-overflow: hidden !default;
 $input-prefix-font-color: #333 !default;
 $input-prefix-font-color-alt: #fff !default;
+
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+$input-number-spinners: true !default;
 
 // We use these to style the error states for inputs and labels
 $input-error-message-padding: rem-calc(6 9 9) !default;
@@ -126,9 +130,19 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     border-color: $input-focus-border-color;
     outline: none;
   }
+  // Disbaled Styles
+  &:disabled {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
 
   // Disabled background input background color
-  &[disabled], &[readonly], fieldset[disabled] & { background-color: $input-disabled-bg; }
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
 }
 
 // @MIXIN
@@ -327,6 +341,23 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     background-color: $select-hover-bg-color;
     border-color: $input-focus-border-color;
   }
+  // Disbaled Styles
+  &:disabled {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
+}
+
+// We use this mixin to turn on/off HTML5 number spinners
+@mixin html5number($browser, $on:true) {
+  @if $on==false {
+      @if $browser==webkit {
+        -webkit-appearance: none;
+        margin: 0;
+      } @else if $browser==moz {
+        -moz-appearance: textfield;
+      }
+  }
 }
 
 @include exports("form") {
@@ -437,6 +468,15 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       width:100%;
     }
 
+    /* HTML5 Number spinners settings */
+    input[type=number] {
+      @include html5number(moz, $input-number-spinners)
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      @include html5number(webkit, $input-number-spinners);
+    }
+
     /* We add basic fieldset styling */
     fieldset {
       @include fieldset;
@@ -495,7 +535,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     }
 
     input.error,
-    textarea.error {
+    textarea.error,
+    select.error {
       margin-bottom: 0;
     }
     label.error { @include form-label-error-color; }

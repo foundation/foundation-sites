@@ -314,7 +314,7 @@ $cursor-text-value: text !default;
   // Forward slash placed around everything to convince PhantomJS to read the value.
 
   meta.foundation-version {
-    font-family: "/5.3.1/";
+    font-family: "/5.3.3/";
   }
 
   meta.foundation-mq-small {
@@ -370,7 +370,7 @@ $cursor-text-value: text !default;
       font-family: $body-font-family;
       font-weight: $body-font-weight;
       font-style: $body-font-style;
-      line-height: 1; // Set to $base-line-height to take on browser default of 150%
+      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
       position: relative;
       cursor: $cursor-default-value;
     }

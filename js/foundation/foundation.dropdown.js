@@ -4,7 +4,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '5.3.1',
+    version : '5.3.3',
 
     settings : {
       active_class: 'open',
@@ -72,7 +72,7 @@
         .on('click.fndtn.dropdown', function (e) {
           var parent = S(e.target).closest('[' + self.attr_name() + '-content]');
 
-          if (S(e.target).data(self.data_attr()) || S(e.target).parent().data(self.data_attr())) {
+          if (S(e.target).closest('[' + self.attr_name() + ']').length > 0) {
             return;
           }
           if (!(S(e.target).data('revealId')) && 

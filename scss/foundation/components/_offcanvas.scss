@@ -107,11 +107,11 @@ $menu-slide: "transform 500ms ease" !default;
   transition: transform 500ms ease 0s;
   -webkit-overflow-scrolling: touch;
   @if $position == left {
-    @include translate3d(-100%,0,0);
+    @include translate3d(-100.5%,0,0);
     left: 0;
   }
   @if $position == right {
-    @include translate3d(100%,0,0);
+    @include translate3d(100.5%,0,0);
     right: 0;
   }
 }
@@ -150,7 +150,7 @@ $menu-slide: "transform 500ms ease" !default;
   height: $tabbar-height;
   line-height: $tabbar-line-height;
 
-  // make sure it's below the .exit-offcanvas link
+  // make sure it's below the .exit-off-canvas link
   position: relative;
   // z-index: 999;
 
@@ -338,10 +338,7 @@ $menu-slide: "transform 500ms ease" !default;
         transform: none;
         z-index: 1003;
       }
-      .exit-offcanvas-menu {
-        @include back-link;
-        z-index: 1002;
-      }
+      .exit-off-canvas { @include back-link; }
     }
 
     // Older browsers

@@ -4,7 +4,7 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '5.3.1',
+    version : '5.3.3',
 
     settings : {
       live_validate : true,
@@ -97,23 +97,21 @@
     validate : function (els, e, is_ajax) {
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
-          form = this.S(els[0]).closest('[data-' + this.attr_name(true) + ']'),
-          settings = form.data(this.attr_name(true) + '-init') || {},
+          form = this.S(els[0]).closest('form'),
           submit_event = /submit/.test(e.type);
 
-      form.trigger('validated').trigger('validated.fndtn.abide');
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
-          if (settings.focus_on_invalid) els[i].focus();
-          form.trigger('invalid').trigger('invalid.fndtn.abide');
-          this.S(els[i]).closest('[data-' + this.attr_name(true) + ']').attr(this.invalid_attr, '');
+          if (this.settings.focus_on_invalid) els[i].focus();
+          form.trigger('invalid');
+          this.S(els[i]).closest('form').attr(this.invalid_attr, '');
           return false;
         }
       }
 
       if (submit_event || is_ajax) {
-        form.trigger('valid').trigger('valid.fndtn.abide');
+        form.trigger('valid');
       }
 
       form.removeAttr(this.invalid_attr);
@@ -143,7 +141,7 @@
       if (this.settings.patterns.hasOwnProperty(pattern) && pattern.length > 0) {
         return [el, this.settings.patterns[pattern], required];
       } else if (pattern.length > 0) {
-        return [el, new RegExp('^'+pattern+'$'), required];
+        return [el, new RegExp(pattern), required];
       }
 
       if (this.settings.patterns.hasOwnProperty(type)) {
@@ -160,7 +158,6 @@
           validations = [],
           form = this.S(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
           settings = form.data(this.attr_name(true) + '-init') || {};
-
       while (i--) {
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
@@ -187,36 +184,34 @@
           validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
           validations.push(this.valid_checkbox(el, required));
-        } else if (validator) {
-          valid = this.settings.validators[validator].apply(this, [el, required, parent])
-          validations.push(valid);
-
-          if (valid) {
-            this.S(el).removeAttr(this.invalid_attr);
-            parent.removeClass('error');
-          } else {
-            this.S(el).attr(this.invalid_attr, '');
-            parent.addClass('error');
-          }
-
         } else {
+          
+          if (validator) {
+            valid = this.settings.validators[validator].apply(this, [el, required, parent]);
+            validations.push(valid);
+          }
 
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1 || $(el).attr('disabled')) {
+            validations.push(true);
+          } else {
+            validations.push(false);
+          }
+
+          validations = [validations.every(function(valid){return valid;})];
+
+          if(validations[0]){
             this.S(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
-            if (label.length > 0 && settings.error_labels) label.removeClass('error');
-
-            validations.push(true);
+            if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
             $(el).triggerHandler('valid');
           } else {
-            this.S(el).attr(this.invalid_attr, '');
             parent.addClass('error');
-            if (label.length > 0 && settings.error_labels) label.addClass('error');
-
-            validations.push(false);
+            this.S(el).attr(this.invalid_attr, '');
+            if (label.length > 0 && this.settings.error_labels) label.addClass('error');
             $(el).triggerHandler('invalid');
           }
+
         }
       }
 

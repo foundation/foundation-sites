@@ -277,7 +277,7 @@ We've included a nice multilevel pattern for list in the off-canvas menu. Add a 
 
 ***
 
-## Customize With Sass
+## Customize with Sass
 
 Off-canvas layouts can be easily customized using our provided Sass variables.
 
@@ -287,7 +287,7 @@ Off-canvas layouts can be easily customized using our provided Sass variables.
 
 ***
 
-### Using the Javascript
+## Using the Javascript
 
 <div class="panel">
   Before you can use Off-canvas you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
@@ -314,6 +314,64 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 {{/markdown}}
 
 Required Foundation Library: `foundation.offcanvas.js`
+<<<<<<< HEAD
+=======
+
+***
+
+### Optional Javascript Configuration
+
+**open_method** <br> Default: `move` <br> Defines how the off-canvas menu behaves. Can be `move` or `overlay`.
+
+**close_on_click** <br/> Default: `false` <br> Control whether or not clicking menu links will close the menu.
+
+
+{{> examples_offcanvas_javascript_options}}
+
+### Event Bindings
+
+There are a series of events that you can bind to for triggering callbacks:
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the offcanvas plugin emitted un-namespaced `open` and `close` events, however, these have been replaced by the namespaced `open.fndtn.offcanvas` and `close.fndtn.offcanvas` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+</div>
+
+```js
+$(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+$(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+```
+
+For example, to freeze scrolling when active:
+
+```js
+$(document)
+.on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'hidden');
+})
+.on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'auto');
+})
+
+```
+
+### Programmatic open / close / toggle
+
+The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, or `offcanvas-overlap`.
+
+```js
+$('.off-canvas-wrap').foundation('offcanvas', 'open', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'close', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+
+```
+>>>>>>> refs/tags/v5.3.3
 
 ***
 

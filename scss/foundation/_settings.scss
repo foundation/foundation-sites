@@ -171,9 +171,14 @@ $primary-color: #008CBA;
 // $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style <code> tags
-// $code-color: scale-color($alert-color, $lightness: -27%);
+// $code-color: #333;
 // $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
-// $code-font-weight: $font-weight-bold;
+// $code-font-weight: $font-weight-normal;
+// $code-background-color: scale-color($secondary-color, $lightness: 70%);
+// $code-border-size: 1px;
+// $code-border-style: solid;
+// $code-border-color: scale-color($code-background-color, $lightness: -10%);
+// $code-padding: rem-calc(2) rem-calc(5) rem-calc(1);
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
@@ -365,18 +370,26 @@ $primary-color: #008CBA;
 // We use these to control various hover effects.
 // $button-function-factor: -20%;
 
-// We use these to control button border styles.
+// We use these to control button border and hover styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $button-bg: $primary-color;
-// $button-border-color: scale-color($button-bg, $lightness: $button-function-factor);
+// $button-bg-color: $primary-color;
+// $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
+// $button-border-color: $button-bg-hover;
+// $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
+// $secondary-button-border-color: $secondary-button-bg-hover;
+// $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
+// $success-button-border-color: $success-button-bg-hover;
+// $alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor);
+// $alert-button-border-color: $alert-button-bg-hover;
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
 // $button-round: $global-rounded;
 
-// We use this to set default opacity for disabled buttons.
+// We use this to set default opacity and cursor for disabled buttons.
 // $button-disabled-opacity: 0.7;
+// $button-disabled-cursor: $cursor-default-value;
 
 // Button Groups
 
@@ -536,8 +549,8 @@ $primary-color: #008CBA;
 // $input-border-width: 1px;
 // $input-border-radius: $global-radius;
 // $input-disabled-bg: #ddd;
+// $input-disabled-cursor: $cursor-default-value;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-// $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
@@ -560,6 +573,9 @@ $primary-color: #008CBA;
 // $input-prefix-font-color: #333;
 // $input-prefix-font-color-alt: #fff;
 
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+// $input-number-spinners: true;
+
 // We use these to style the error states for inputs and labels
 // $input-error-message-padding: rem-calc(6 9 9);
 // $input-error-message-top: -1px;
@@ -570,6 +586,7 @@ $primary-color: #008CBA;
 // $input-error-message-font-color-alt: #333;
 
 // We use this to style the glowing effect of inputs when focused
+// $input-include-glowing-effect: true;
 // $glowing-effect-fade-time: 0.45s;
 // $glowing-effect-color: $input-focus-border-color;
 

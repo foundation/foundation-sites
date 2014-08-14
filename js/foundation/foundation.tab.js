@@ -4,7 +4,7 @@
   Foundation.libs.tab = {
     name : 'tab',
 
-    version : '5.3.1',
+    version : '5.3.3',
 
     settings : {
       active_class: 'active',

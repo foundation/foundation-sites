@@ -4,7 +4,7 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '5.3.1',
+    version : '5.3.3',
 
     cache : {},
 

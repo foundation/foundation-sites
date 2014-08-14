@@ -22,6 +22,7 @@ describe('dropdown:', function() {
 
       expect($('#drop1').hasClass('open')).toBe(false);
       expect($('#drop2').hasClass('open')).toBe(false);
+      expect($('#drop3').hasClass('open')).toBe(false);
     });
 
     it('displays the dropdown on click', function() {
@@ -31,6 +32,7 @@ describe('dropdown:', function() {
 
       expect($('#drop1').hasClass('open')).toBe(true);
       expect($('#drop2').hasClass('open')).toBe(false);
+      expect($('#drop3').hasClass('open')).toBe(false);
     });
 
     it('displays the content dropdown on click', function() {
@@ -40,6 +42,7 @@ describe('dropdown:', function() {
 
       expect($('#drop1').hasClass('open')).toBe(false);
       expect($('#drop2').hasClass('open')).toBe(true);
+      expect($('#drop3').hasClass('open')).toBe(false);
     });
 
     it('closes an open dropdown when another is clicked', function() {
@@ -50,6 +53,7 @@ describe('dropdown:', function() {
 
       expect($('#drop1').hasClass('open')).toBe(false);
       expect($('#drop2').hasClass('open')).toBe(true);
+      expect($('#drop3').hasClass('open')).toBe(false);
     });
 
     it('closes an open dropdown when the document is clicked elsewhere', function() {
@@ -60,6 +64,17 @@ describe('dropdown:', function() {
 
       expect($('#drop1').hasClass('open')).toBe(false);
       expect($('#drop2').hasClass('open')).toBe(false);
+      expect($('#drop3').hasClass('open')).toBe(false);
+    });
+
+    it('displays a dropdown even if the dropdown button has deeply nested content', function() {
+      $(document).foundation();
+
+      $('#drop3span').click();
+
+      expect($('#drop1').hasClass('open')).toBe(false);
+      expect($('#drop2').hasClass('open')).toBe(false);
+      expect($('#drop3').hasClass('open')).toBe(true);
     });
  });
 });

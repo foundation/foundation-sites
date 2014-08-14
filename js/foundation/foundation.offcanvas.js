@@ -4,11 +4,11 @@
   Foundation.libs.offcanvas = {
     name : 'offcanvas',
 
-    version : '5.3.1',
+    version : '5.3.3',
 
     settings : {
       open_method: 'move',
-      close_on_click: true
+      close_on_click: false
     },
 
     init : function (scope, method, options) {
