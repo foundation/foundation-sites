@@ -31,4 +31,4 @@ env:
 notifications:
   email:
     recipients:
-      - eric@zurb.com
+      - arthur@zurb.com
