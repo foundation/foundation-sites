@@ -397,12 +397,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
 
     /* Separate prefix and postfix styles when on span or label so buttons keep their own */
-    span.prefix,label.prefix { @include prefix();
-      &.radius { @include radius(0); @include side-radius($default-float, $global-radius); }
-    }
-    span.postfix,label.postfix { @include postfix();
-      &.radius { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
-    }
+    span.prefix,label.prefix { @include prefix(); }
+    span.postfix,label.postfix { @include postfix(); }
 
     /* We use this to get basic styling on all basic form elements */
     input[type="text"],
@@ -436,12 +432,26 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         .prefix-radius.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
+          select { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+          .prefix { @include radius(0); @include side-radius($default-float, $button-radius); }
         }
         .postfix-radius.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($default-float, $global-radius); }
+          select { @include radius(0); @include side-radius($default-float, $button-radius); }
+          .postfix { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+        }
+        .prefix-round.row.collapse {
+          input,
+          textarea,
+          select { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+          .prefix { @include radius(0); @include side-radius($default-float, $button-round); }
+        }
+        .postfix-round.row.collapse {
+          input,
+          textarea,
+          select { @include radius(0); @include side-radius($default-float, $button-round); }
+          .postfix { @include radius(0); @include side-radius($opposite-direction, $button-round); }
         }
       }
     }
