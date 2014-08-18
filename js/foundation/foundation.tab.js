@@ -60,6 +60,7 @@
     },
 
     handle_location_hash_change : function () {
+
       var self = this,
           S = this.S;
 
@@ -67,7 +68,13 @@
         var settings = S(this).data(self.attr_name(true) + '-init');
         if (settings.deep_linking) {
           // Match the location hash to a label
-          var hash = self.scope.location.hash;
+          var hash;
+          if (settings.scroll_to_content) {
+            hash = self.scope.location.hash;
+          } else {
+            // prefix the hash to prevent anchor scrolling
+            hash = self.scope.location.hash.replace('fndtn-', '');
+          }
           if (hash != '') {
             // Check whether the location hash references a tab content div or
             // another element on the page (inside or outside the tab content div)
@@ -109,34 +116,21 @@
       }
 
       if (settings.deep_linking) {
-        // Get the scroll Y position prior to moving to the hash ID
-        var cur_ypos = $('body,html').scrollTop();
-
-        // Update the location hash to preserve browser history
-        // Note that the hash does not need to correspond to the
-        // tab content ID anchor; it can be an ID inside or outside of the tab
-        // content div.
-        if (location_hash != undefined) {
-          window.location.hash = location_hash;
-        } else {
-          window.location.hash = target_hash;
-        }
 
         if (settings.scroll_to_content) {
-          // If the user is requesting the content of a tab, then scroll to the
-          // top of the title area; otherwise, scroll to the element within
-          // the content area as defined by the hash value.
+          // retain current hash to scroll to content
+          window.location.hash = location_hash || target_hash;
           if (location_hash == undefined || location_hash == target_hash) {
             tab.parent()[0].scrollIntoView();
           } else {
             S(target_hash)[0].scrollIntoView();
           }
         } else {
-          // Adjust the scrollbar to the Y position prior to setting the hash
-          // Only do this for the tab content anchor, otherwise there will be
-          // conflicts with in-tab anchor links nested in the tab-content div
-          if (location_hash == undefined || location_hash == target_hash) {
-            $('body,html').scrollTop(cur_ypos);
+          // prefix the hashes so that the browser doesn't scroll down
+          if (location_hash != undefined) {
+            window.location.hash = 'fndtn-' + location_hash.replace('#', '');
+          } else {
+            window.location.hash = 'fndtn-' + target_hash.replace('#', '');
           }
         }
       }
