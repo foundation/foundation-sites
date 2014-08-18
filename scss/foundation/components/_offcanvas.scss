@@ -43,6 +43,12 @@ $off-canvas-label-margin:0 !default;
 $off-canvas-link-padding: rem-calc(10, 15) !default;
 $off-canvas-link-color: rgba(#FFF, 0.7) !default;
 $off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: -25%) !default;
+$off-canvas-back-bg: #444 !default;
+$off-canvas-back-border-top: $off-canvas-label-border-top !default;
+$off-canvas-back-border-bottom: $off-canvas-label-border-bottom !default;
+$off-canvas-back-hover-bg: scale-color($off-canvas-back-bg, $lightness: -30%) !default;
+$off-canvas-back-hover-border-top: 1px solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
+$off-canvas-back-hover-border-bottom: none !default;
 
 // Off Canvas Menu Icon Variables
 $tabbar-menu-icon-color: #FFF !default;
@@ -389,9 +395,14 @@ $menu-slide: "transform 500ms ease" !default;
     color: $off-canvas-label-color;
     text-transform: $off-canvas-label-text-transform;
     font-weight: $off-canvas-label-font-weight;
-    background: $off-canvas-label-bg;
-    border-top: $off-canvas-label-border-top;
-    border-bottom: $off-canvas-label-border-bottom;
+    background: $off-canvas-back-bg;
+    border-top: $off-canvas-back-border-top;
+    border-bottom: $off-canvas-back-border-bottom;
+    &:hover {
+    	background: $off-canvas-back-hover-bg;
+    	border-top: $off-canvas-back-hover-border-top;
+    	border-bottom: $off-canvas-back-hover-border-bottom;
+    }
     margin: $off-canvas-label-margin;
     @if $position == right {
       @if $text-direction == rtl {
