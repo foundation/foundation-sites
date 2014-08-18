@@ -71,8 +71,13 @@ Tooltips applied to <kbd>&lt;a&gt;</kbd> tags will automatically be disabled for
 
 ***
 
-## Customize with Sass
+## Accessibility
 
+Tooltips need the attribute `role="tooltip"` so assistive devices understand what they are. On the text connected to the tooltip, you need the attribute `aria-describedby`, where the value is the ID of the tooltip it's connected to. Lucky for you, our JavaScript handles all of this for you!
+
+***
+
+## Customize With Sass
 Tooltips can be easily customized using our provided Sass variables.
 
 <h4>SCSS</h4>
