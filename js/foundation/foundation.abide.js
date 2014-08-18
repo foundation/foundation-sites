@@ -202,13 +202,19 @@
 
           if(validations[0]){
             this.S(el).removeAttr(this.invalid_attr);
+            el.setAttribute('aria-invalid', 'false');
             parent.removeClass('error');
-            if (label.length > 0 && this.settings.error_labels) label.removeClass('error');
+            if (label.length > 0 && this.settings.error_labels) {
+              label.removeClass('error').removeAttr('role');
+            }
             $(el).triggerHandler('valid');
           } else {
-            parent.addClass('error');
             this.S(el).attr(this.invalid_attr, '');
-            if (label.length > 0 && this.settings.error_labels) label.addClass('error');
+            el.setAttribute('aria-invalid', 'true');
+            parent.addClass('error');
+            if (label.length > 0 && this.settings.error_labels) {
+              label.addClass('error').attr('role', 'alert');
+            }
             $(el).triggerHandler('invalid');
           }
 
