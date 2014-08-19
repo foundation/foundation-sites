@@ -13,11 +13,11 @@ $include-html-icon-bar-classes: $include-html-classes !default;
 // @variables
 
 // We use these to style the icon-bar and items
-$icon-bar-bg: #333 !default;
-$icon-bar-font-color: #fff !default;
+$icon-bar-bg: $oil !default;
+$icon-bar-font-color: $white !default;
 $icon-bar-font-size: 1rem !default;
 $icon-bar-hover-color: $primary-color !default;
-$icon-bar-icon-color: #fff !default;
+$icon-bar-icon-color: $white !default;
 $icon-bar-icon-size: 1.875rem !default;
 $icon-bar-image-width: 1.875rem !default;
 $icon-bar-image-height: 1.875rem !default;
