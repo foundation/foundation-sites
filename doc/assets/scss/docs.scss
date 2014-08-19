@@ -670,7 +670,7 @@ padding
 /*------------------------------------
  timeline styles
 ------------------------------------*/
-.two-column {
+.two-paths {
   margin-top: 20px;
 }
 
@@ -684,6 +684,7 @@ padding
     font-weight: normal;
     text-transform: capitalize;
     padding-bottom: 10px;
+
   }
 }
 
@@ -698,7 +699,7 @@ circles
   width: 35px;
   height: 35px;
   position: relative;
-  margin-top: 6px;
+  margin-top: -5px;
   margin-right: 18px; 
   margin-bottom: 5px;
   margin-left: 0.83333rem;
@@ -723,7 +724,7 @@ circles
   }
 }
 
-@media only screen and (min-width: 64.063em) { 
+@media #{$large-up} { 
   .path-item {
     padding-left: 65px;
     position: relative;

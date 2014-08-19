@@ -34,7 +34,7 @@ To get going with Foundation, simply download a default or custom CSS package fr
       <div class="circlenumber">
         <h3>3</h3>
       </div>
-      <p>Next, you should create a new stylesheet and link it into the header of your HTML file like so:</p> 
+      <p>Next, you should create a new stylesheet and link it in the header of your HTML file, like so:</p> 
 {{#markdown}}
 ```
   <link rel="stylesheet" href="css/foundation.css">
@@ -48,7 +48,7 @@ To get going with Foundation, simply download a default or custom CSS package fr
 ```
 {{/markdown}}
 
-      <p class="subheader note"><strong>Note:</strong> At ZURB we call our custom stylesheets ```app.css```. It is important that for updating purposes, if you are going to add custom stylings to Foundation components, the code should be copied into your ```app.css``` file and edited there.</p>
+      <p class="subheader note"><strong>Note:</strong> At ZURB, we call our custom stylesheets ```app.css```. This is important for updating purposes: if you are going to add custom stylings to Foundation components, the code should be copied into your ```app.css``` file and edited there.</p>
     </div>
   </div>
 </div>
@@ -70,11 +70,11 @@ To get going with Foundation, simply download a default or custom CSS package fr
     <ul class="info-list">
       <li>
         <strong>foundation.css</strong> 
-        <p>The default CSS for Foundation is kept here. You can find the component and the settings for that component there. While you are developing you will use this file as it is easier to read.</p>
+        <p>The default CSS for Foundation is kept here. You can find the component and and its settings there. You will use this file as you are developing because it's easier to read.</p>
       </li>
       <li>
         <strong>foundation.min.css</strong>
-        <p>A minified, much smaller CSS file you can use instead in your pages if you don't need or want to pick apart the actual underlying Foundation CSS.</p>
+        <p>A minified, much smaller CSS file you can use if you don't need or want to pick apart the actual underlying Foundation CSS.</p>
       </li>
       <li>
         <strong>normalize.css</strong>
@@ -97,11 +97,11 @@ To get going with Foundation, simply download a default or custom CSS package fr
       </li>
       <li>
         <strong>/foundation</strong>
-        <p>is a directory that contains each plugin as a single JavaScript file, so you can check out the source code and, if you'd like, include certain ones but not others, or do your own minifying.</p>
+        <p>This is a directory that contains each plugin as a single JavaScript file, so you can check out the source code. And if you'd like, include certain ones but not others, or do your own minifying.</p>
       </li>
       <li>
         <strong>/vendor</strong>
-        <p>contains a few external JS files that Foundation makes use of including Modernizr, another open-source tool from Paul Irish and Nicolas Gallagher, as well as jQuery 2.</p>
+        <p>This folder contains a few external JS files that Foundation makes use of including: Modernizr, another open-source tool from Paul Irish and Nicolas Gallagher, as well as jQuery 2.</p>
       </li>
     </ul>
   </div>
@@ -112,7 +112,7 @@ To get going with Foundation, simply download a default or custom CSS package fr
     <ul class="info-list">
       <li><strong>index.html</strong><p>This is an example index file which contains some sample markup (the grid, buttons, etc) as well as the basic structure of a responsive Foundation page. Feel free to change or destroy this file as you see fit, just bear in mind that some of the document ```<head>``` is required for the page to work including the CSS/JS that is linked up at the end of the document.</p></li>
       <li><strong>humans.txt</strong><p>Located in the site root just next to the robots.txt file. You don't have to use if you don't want. You can mention the developer, the designer, the copywriter, the webmaster, the SEO, SEM or SMO. Name as many people who helped make the site, or not.</p></li>
-      <li><strong>robots.txt</strong><p>Website owners use the robots.txt file to give instructions about their site to web-crawling robots (also known as Web Wanderers, Crawlers, or Spiders); this is called The Robots Exclusion Protocol. Adding this page allows you to block web robots from indexing parts of your site. You can read more about it <a href="http://zurb.us/1jixgzu">here</a>.</p></li>
+      <li><strong>robots.txt</strong><p>Website owners use the robots.txt file to give instructions about their site to web-crawling robots (also known as Web Wanderers, Crawlers, or Spiders). This is called The Robots Exclusion Protocol. Adding this page allows you to block web robots from indexing parts of your site. You can read more about it <a href="http://zurb.us/1jixgzu">here</a>.</p></li>
     </ul>
   </div>
 </div>
@@ -123,11 +123,17 @@ To get going with Foundation, simply download a default or custom CSS package fr
 <div class="row">
   <div class="small-12 path-container columns">
     <h2>Best Practices</h2>
-    <h2 class="subheader">In order to optimize your experience with the Foundation CSS download we recommend you to some of our best practices.</h2>
-    <img class="round-margin" src="{{assets}}/img/images/using-css.png">
+    <h2 class="subheader">We have some best practice recommendations to help you optimize your experience with the Foundation CSS package.</h2>
     <h3>Making Changes to Foundation Default Stylings</h3>
-    <p>In order to update your Foundation CSS when we release a new version, we recommend keeping your ```foundation.css``` file clean of any changes. Any components that you want to add your own stylings to should be copied to your ```app.css``` file where you can make changes there.</p>
-    <p class="subheader"><strong>Note:</strong> be sure to link the ```app.css``` stylesheet into the ```<head>``` of your file.</p>
+    <div class="row">
+      <div class="large-7 columns">
+        <img class="round-margin" src="{{assets}}/img/images/using-css.png">
+      </div>
+      <div class="large-5 columns">
+        <p>In order to update your Foundation CSS when we release a new version, we recommend keeping your ```foundation.css``` file clean of any changes. Any components that you want to add your own stylings to should be copied to your ```app.css``` file where you can make changes there.</p>
+        <p class="subheader"><strong>Note:</strong> be sure to link the ```app.css``` stylesheet into the ```<head>``` of your file.</p>
+      </div>
+    </div>
   </div>
 </div>
 
