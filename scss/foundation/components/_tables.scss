@@ -1,3 +1,7 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
 
 //
@@ -59,6 +63,8 @@ $table-margin-bottom: rem-calc(20) !default;
   background: $table-bg;
   margin-bottom: $table-margin-bottom;
   border: $table-border-style $table-border-size $table-border-color;
+  table-layout:fixed;
+  width:100%;
 
   caption {
     background: $table-caption-bg;

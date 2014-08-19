@@ -34,13 +34,38 @@
       &.large-centered {
         background: darken(#eee, 5%);
       }
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
     }
   }
 }
+
+.row {
+  max-width: rem-calc(1440);
+  &.display-end {
+    background: #fff;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    border: solid 1px #c6c6c6;
+    margin-#{$default-float}: 0 !important;
+    margin-#{$opposite-direction}: 0 !important;
+    .columns {
+      background: darken(#eee, 5%);
+      border-left: 1px solid #c6c6c6;
+      &.color-end {
+        background: darken(#eee, 10%)
+      }
+    }
+  }
+}
+
 .top-bar-section ul li > a{ font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;font-size: 0.8125rem !important; }
 h1 { margin-top: 20px; }
 // h2, h3 { margin: 1rem 0 0.15rem; }
-h3.subheader { margin: 0 0 10px 0; font-size: 1.25rem; }
+h2.subheader { margin: 0 0 20px 0; font-size: 1.25rem; }
+h3.subheader { margin: 0 0 20px 0; font-size: 1.25rem; }
 h4 { font-size: 0.75rem; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: 900; }
 
 
@@ -189,10 +214,8 @@ footer { margin-top: 45px; }
 
 // Examples
 .magellan-container {
-  padding: 10px 0;
+  padding: 0 !important;
   background: #fff;
-
-
 }
 .example-orbit {}
 .example-orbit-content li div {
@@ -580,7 +603,7 @@ div#interchangeMarkup img {
 /*------------------------------------
 you will need
 ------------------------------------*/
-.you-will-need {
+.circle-list {
   a {
     margin-bottom: 0px;
   }
@@ -595,7 +618,6 @@ you will need
     text-transform: capitalize;
   } 
 }
-
 
 
 /*------------------------------------
@@ -795,8 +817,8 @@ what you get
   }
 
   img {
-  border-radius: 5px;
-  padding-bottom: 20px;
+    border-radius: 5px;
+    padding-bottom: 20px;
   }
 
   hr {
@@ -811,6 +833,24 @@ what you get
 
   .fi-page{
     color: #6f6f6f;
+  }
+
+  &.resources {
+    ul {
+      margin-left: 0;
+    }
+    .button {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.whatis {
+  margin-top: 30px !important;
+  @media only screen and (min-width: 0) and (max-width: 64.063em) {
+    img {
+      margin-bottom: 15px;
+    }
   }
 }
 
@@ -846,3 +886,171 @@ what you get
 .minus {
   margin-top: 30px;
 }
+
+.skill-list h4 {
+  margin-bottom: 0;
+}
+
+.skill-level {
+  font-size: 0.77778rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  margin-top: 0;
+  i {
+    font-size: 120%;
+    color: #FDC441;
+  }
+}
+
+.gs-example {
+  .row {
+    // margin-right: -0.3rem;
+    // margin-left: -0.3rem;
+    border: 1px solid #c6c6c6;
+    margin: 0.3rem !important;
+    .row {
+      margin: 0;
+    }
+  }
+  .border-none {
+    border-right: none !important;
+  }
+  .columns {
+    padding-left: inherit;
+    padding-right: inherit;
+    border: 3px solid #fff;
+    background: #eee;
+  }
+  .columns:nth-child(2) {
+    background: #e1e1e1;
+  }
+  p {
+    padding: 10px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+.off-canvas-example {
+  background: #efefef;
+  .main-section {
+    padding: 0 20px;
+  }
+}
+
+.tabs-example {
+  border: 1px solid #ccc;
+  margin-bottom: 1.3rem;
+  .tab-title.active a {
+    background: #eee;
+  }
+  .tab-title > a {
+    background: #e1e1e1;
+    &:hover {
+      background: scale-color(#eee, $lightness: -14%);
+    }
+  }
+  .tabs-content {
+    border-top: 1px solid #ccc; 
+    margin: 0;
+    padding: 1rem;
+  }
+  .tabs-content > .content {
+    padding: 0;
+  }
+}
+
+.button-title {
+  margin-top: -7px;
+}
+
+.codepen-demo {
+  margin-top: 20px;
+  .tabs-content {
+    padding: 5px 15px;
+    background: #f3f3f3;
+  }
+  .tab-title > a {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #333;
+    color: #fff;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-right: 5px;
+    &:hover {
+      background: scale-color(#333, $lightness: 15%);
+    }
+  }
+  .tab-title.active a {
+    background: #f3f3f3;
+    color: #333;
+  }
+}
+
+.what-comes-with { 
+  hr {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .pagination {
+    margin-bottom: 0;
+  }
+  .grid-example {
+    margin-top: 10px;
+  }
+
+  .gs-buttongroup {
+    text-align: center;
+    .button-group {
+      min-width: 100%;
+      li {
+        min-width: 50%;
+        a {
+          min-width: 100%;
+        }
+      }
+    }
+  }
+
+  .gs-iconbar {
+    margin-bottom: 10px;
+    i {
+      color: #dadada;
+    }
+    a &:hover {
+      color: #fff;
+    }
+  }
+
+  .gs-topbar {
+    margin-bottom: 15px;
+  }
+
+  .gs-hoverbutton {
+    .button {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gs-resources {
+  h4 {
+    margin-top: 20px;
+  }
+  .bottom-link {
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+}
+.gs-modal {
+  .reveal-modal {
+    z-index: 1002;
+  }
+  .reveal-modal-bg {
+    z-index: 1000;
+  }
+}
+
+

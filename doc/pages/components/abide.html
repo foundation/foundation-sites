@@ -1,5 +1,5 @@
 ---
-title: Abide
+title: Abide Validation
 ---
 
 <h3 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h3>
@@ -51,7 +51,7 @@ By overriding Abide during Foundation initilization, you can define your own cus
 
 {{> examples_abide_custom_patterns}}
 
-You can then use these custom patterns like you would the predfined patterns in your markup:
+You can then use these custom patterns like you would the predefined patterns in your markup:
 
 {{> examples_abide_custom_patterns_rendered}}
 
@@ -120,6 +120,15 @@ Suppose you've defined a custom validator `diceRoll` which randomly marks your e
 {{#markdown}}
 ```html
 <input type="text" data-abide-validator="diceRoll">
+```
+{{/markdown}}
+
+
+Additionally, if you are using a custom validator and specify an input type or a pattern on the input, Abide will check both when validating the input. The following will check your input value against the built in email pattern as well as your isAllowed custom validator function:
+
+{{#markdown}}
+```html
+<input type="email" data-abide-validator="isAllowed">
 ```
 {{/markdown}}
 

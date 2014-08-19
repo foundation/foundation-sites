@@ -42,9 +42,13 @@ $base-line-height: 150% !default;
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
   @if ($side == left or $side == right) {
+    -webkit-border-bottom-#{$side}-radius: $radius;
+    -webkit-border-top-#{$side}-radius: $radius;
     border-bottom-#{$side}-radius: $radius;
     border-top-#{$side}-radius: $radius;
   } @else {
+    -webkit-#{$side}-left-radius: $radius;
+    -webkit-#{$side}-right-radius: $radius;
     border-#{$side}-left-radius: $radius;
     border-#{$side}-right-radius: $radius;
   }
@@ -145,7 +149,7 @@ $base-line-height: 150% !default;
     }
     @else {
       top: 50%;
-      margin-top: -$width/2;
+      margin-top: -($width/2);
       #{$opposite-direction}: $topbar-link-padding;
     }
 
@@ -314,7 +318,7 @@ $cursor-text-value: text !default;
   // Forward slash placed around everything to convince PhantomJS to read the value.
 
   meta.foundation-version {
-    font-family: "/5.3.0/";
+    font-family: "/{{ VERSION }}/";
   }
 
   meta.foundation-mq-small {
@@ -370,7 +374,7 @@ $cursor-text-value: text !default;
       font-family: $body-font-family;
       font-weight: $body-font-weight;
       font-style: $body-font-style;
-      line-height: 1; // Set to $base-line-height to take on browser default of 150%
+      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
       position: relative;
       cursor: $cursor-default-value;
     }

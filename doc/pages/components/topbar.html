@@ -91,6 +91,7 @@ The top bar is a pretty complex piece of magical UI goodness. We rely on many pr
             <a href="#">Right Button Dropdown</a>
             <ul class="dropdown">
               <li><a href="#">First link in dropdown</a></li>
+              <li class="active"><a href="#">Active link in dropdown</a></li>
             </ul>
           </li>
         </ul>
@@ -101,6 +102,7 @@ The top bar is a pretty complex piece of magical UI goodness. We rely on many pr
             <a href="#">Right Dropdown</a>
             <ul class="dropdown">
               <li><a href="#">First link in dropdown</a></li>
+              <li class="active"><a href="#">Active link in dropdown</a></li>
             </ul>
           </li>
         </ul>
@@ -204,6 +206,19 @@ You can now make the top bar clickable by adding a data-attribute to the nav ele
 <nav class="top-bar" data-topbar data-options="is_hover: false">
 ```
 {{/markdown}}
+
+***
+
+### Mobile Parent Links
+
+Foundation will show the parent link on mobile navigation. A helpful way for mobile users navigate your site. Don't want them? Simply change the settings in the topbar.js file.
+
+<div class="row">
+  <div class="large-12 columns">
+    {{> examples_topbar_mobile_parent_links}}
+  </div>
+</div>
+<div><br></div>
 
 ***
 
