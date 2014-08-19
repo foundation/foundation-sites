@@ -567,15 +567,18 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               background: $topbar-dropdown-link-bg;
             }
 
-            &:not(.has-form) a:not(.button) {
-              color: $topbar-dropdown-link-color;
-              background: $topbar-dropdown-link-bg;
-            }
-            &:not(.has-form):hover > a:not(.button) {
-              color: $topbar-link-color-hover;
-              background-color: $topbar-link-bg-color-hover;
-              @if ($topbar-link-bg-hover) {
-                background: $topbar-link-bg-hover;
+            &:not(.has-form):not(.active) {
+              & > a:not(.button) {
+                color: $topbar-dropdown-link-color;
+                background: $topbar-dropdown-link-bg;
+              }
+
+              &:hover > a:not(.button) {
+                color: $topbar-link-color-hover;
+                background-color: $topbar-link-bg-color-hover;
+                @if ($topbar-link-bg-hover) {
+                  background: $topbar-link-bg-hover;
+                }
               }
             }
 
