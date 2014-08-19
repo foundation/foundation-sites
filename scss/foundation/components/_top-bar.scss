@@ -226,7 +226,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             }
             height: 34px;
             line-height: 33px;
-            padding: 0 $topbar-link-padding+25 0 $topbar-link-padding;
+            padding: 0 $topbar-link-padding + rem-calc(25) 0 $topbar-link-padding;
             color: $topbar-menu-link-color;
             position: relative;
 
@@ -257,12 +257,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
         .toggle-topbar {
           a { color: $topbar-menu-link-color-toggled;
-            &::after {
-              // Shh, don't tell, but box-shadows create the menu icon :)
-              box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
-                          0 16px 0 1px $topbar-menu-icon-color-toggled,
-                          0 22px 0 1px $topbar-menu-icon-color-toggled;
-            }
+            @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color-toggled, $topbar-menu-icon-color-toggled, false);
           }
         }
       }
@@ -515,7 +510,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           @if($topbar-arrows){
 
             & > a {
-              padding-#{$opposite-direction}: $topbar-link-padding + 20 !important;
+              padding-#{$opposite-direction}: $topbar-link-padding + rem-calc(20) !important;
               &:after {
                 @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
                 margin-top: -($topbar-dropdown-toggle-size / 2);
