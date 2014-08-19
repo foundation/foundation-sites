@@ -177,6 +177,15 @@ $button-group-border-width: 1px !default;
       }
 
       &.round > * { @include button-group-style($radius:$button-round, $float:null); }
+      &.round.stack > * { @include button-group-style($radius:$button-med, $float:null, $orientation:vertical); }
+      &.round.stack-for-small > * { 
+        @media #{$medium-up} {
+          @include button-group-style($radius:$button-round, $orientation:horizontal);
+        }
+        @media #{$small-only} { 
+          @include button-group-style($radius:$button-med, $orientation:vertical);
+        }
+      }
 
       @for $i from 2 through 8 {
         &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
