@@ -21,8 +21,8 @@ $button-margin-bottom: rem-calc(20) !default;
 
 // We use these to control button text styles.
 $button-font-family: $body-font-family !default;
-$button-font-color: #fff !default;
-$button-font-color-alt: #333 !default;
+$button-font-color: $white !default;
+$button-font-color-alt: $oil !default;
 $button-font-tny: rem-calc(11) !default;
 $button-font-sml: rem-calc(13) !default;
 $button-font-med: rem-calc(16) !default;

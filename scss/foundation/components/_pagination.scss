@@ -16,23 +16,23 @@ $pagination-margin: rem-calc(-5) !default;
 // We use these to set the list-item properties
 $pagination-li-float: $default-float !default;
 $pagination-li-height: rem-calc(24) !default;
-$pagination-li-font-color: #222 !default;
+$pagination-li-font-color: $jet !default;
 $pagination-li-font-size: rem-calc(14) !default;
 $pagination-li-margin: rem-calc(5) !default;
 
 // We use these for the pagination anchor links
 $pagination-link-pad: rem-calc(1 10 1) !default;
-$pagination-link-font-color: #999 !default;
-$pagination-link-active-bg: scale-color(#fff, $lightness: -10%) !default;
+$pagination-link-font-color: $aluminum !default;
+$pagination-link-active-bg: scale-color($white, $lightness: -10%) !default;
 
 // We use these for disabled anchor links
 $pagination-link-unavailable-cursor: default !default;
-$pagination-link-unavailable-font-color: #999 !default;
+$pagination-link-unavailable-font-color: $aluminum !default;
 $pagination-link-unavailable-bg-active: transparent !default;
 
 // We use these for currently selected anchor links
 $pagination-link-current-background: $primary-color !default;
-$pagination-link-current-font-color: #fff !default;
+$pagination-link-current-font-color: $white !default;
 $pagination-link-current-font-weight: $font-weight-bold !default;
 $pagination-link-current-cursor: default !default;
 $pagination-link-current-active-bg: $primary-color !default;

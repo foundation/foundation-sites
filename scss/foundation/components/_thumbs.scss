@@ -18,8 +18,8 @@ $include-html-media-classes: $include-html-classes !default;
 // We use these to control border styles
 $thumb-border-style: solid !default;
 $thumb-border-width: 4px !default;
-$thumb-border-color: #fff !default;
-$thumb-box-shadow: 0 0 0 1px rgba(#000,.2) !default;
+$thumb-border-color: $white !default;
+$thumb-box-shadow: 0 0 0 1px rgba($black,.2) !default;
 $thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5) !default;
 
 // Radius and transition speed for thumbs
