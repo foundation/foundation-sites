@@ -304,6 +304,7 @@ $large: $large-up;
 
 
 //We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
+$cursor-auto-value: auto !default;
 $cursor-crosshair-value: crosshair !default;
 $cursor-default-value: default !default;
 $cursor-pointer-value: pointer !default;
@@ -376,7 +377,7 @@ $cursor-text-value: text !default;
       font-style: $body-font-style;
       line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
       position: relative;
-      cursor: $cursor-default-value;
+      cursor: $cursor-auto-value;
     }
 
   a:hover { cursor: $cursor-pointer-value; }
