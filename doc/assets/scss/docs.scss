@@ -214,10 +214,8 @@ footer { margin-top: 45px; }
 
 // Examples
 .magellan-container {
-  padding: 0;
+  padding: 0 !important;
   background: #fff;
-
-
 }
 .example-orbit {}
 .example-orbit-content li div {
@@ -1040,6 +1038,10 @@ what you get
 .gs-resources {
   h4 {
     margin-top: 20px;
+  }
+  .bottom-link {
+    margin-bottom: 0;
+    margin-top: 10px;
   }
 }
 .gs-modal {

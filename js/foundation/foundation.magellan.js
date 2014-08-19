@@ -4,7 +4,7 @@
   Foundation.libs['magellan-expedition'] = {
     name : 'magellan-expedition',
 
-    version : '{{ VERSION }}',
+    version : '5.3.3',
 
     settings : {
       active_class: 'active',
@@ -111,7 +111,7 @@
             placeholder.attr(self.add_namespace('data-magellan-expedition-clone'),'');
             expedition.before(placeholder);
           }
-          expedition.css({position:'fixed', top: settings.fixed_top});
+          expedition.css({position:'fixed', top: settings.fixed_top}).addClass('fixed');
         } else {
           expedition.prev('[' + self.add_namespace('data-magellan-expedition-clone') + ']').remove();
           expedition.attr('style',styles).css('position','').css('top','').removeClass('fixed');
