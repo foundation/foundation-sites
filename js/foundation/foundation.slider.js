@@ -141,7 +141,7 @@
     },
 
     normalized_percentage : function(val, start, end) {
-      return (val - start)/(end - start);
+      return Math.min(1, (val - start)/(end - start));
     },
 
     normalized_value : function(val, start, end, step) {
