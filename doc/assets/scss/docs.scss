@@ -887,6 +887,8 @@ what you get
   margin-top: 30px;
 }
 
+// Styling for Skill Level with Icon fonts on Index page
+
 .skill-list h4 {
   margin-bottom: 0;
 }
@@ -905,8 +907,6 @@ what you get
 
 .gs-example {
   .row {
-    // margin-right: -0.3rem;
-    // margin-left: -0.3rem;
     border: 1px solid #c6c6c6;
     margin: 0.3rem !important;
     .row {
@@ -965,6 +965,8 @@ what you get
   margin-top: -7px;
 }
 
+// Styles Codepen on Index Page
+
 .codepen-demo {
   margin-top: 20px;
   .tabs-content {
@@ -988,6 +990,8 @@ what you get
     color: #333;
   }
 }
+
+// Stlyings for Getting Started Examples
 
 .what-comes-with { 
   hr {
@@ -1013,6 +1017,8 @@ what you get
       }
     }
   }
+
+  // Adds stylings to Index page
 
   .gs-iconbar {
     margin-bottom: 10px;
@@ -1051,6 +1057,13 @@ what you get
   .reveal-modal-bg {
     z-index: 1000;
   }
+}
+
+
+// Used on CSS Page to add rounded corners and padding to images
+img.round-margin {
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 
