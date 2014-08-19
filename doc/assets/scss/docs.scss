@@ -803,6 +803,9 @@ what you get
     padding: 20px 30px;
     pre {
       margin-bottom: 0;
+      code {
+        background: #fff;
+      }
     }
   }
   li:nth-child(even) {
