@@ -355,6 +355,12 @@ If you want a bar that doesn't include a title, just take out the content within
 
 ***
 
+## Accessibility
+
+The top bar is a complex component with a lot of different features. However, it's still fully keyboard and screen reader accessible. The main thing you need to add if upgrading from an older version of Foundation is the attribute `role="navigation"` to the top bar container. Additionally, if your page uses top bar and off-canvas navigation, add the attribute `aria-hidden="true"` to one of them&mdash;otherwise, the user's device will tab through (and possibly read) both of them before reaching any content.
+
+***
+
 ### Available SCSS Variables
 
 We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile first, so they are much easier to override than the previous iteration of the top bar.
