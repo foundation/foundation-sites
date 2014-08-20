@@ -10,8 +10,8 @@
 $include-html-button-classes: $include-html-classes !default;
 
 // We use these to set the color of the pip in dropdown buttons
-$dropdown-button-pip-color: #fff !default;
-$dropdown-button-pip-color-alt: #333 !default;
+$dropdown-button-pip-color: $white !default;
+$dropdown-button-pip-color-alt: $oil !default;
 
 $button-pip-tny: rem-calc(6) !default;
 $button-pip-sml: rem-calc(7) !default;
@@ -49,10 +49,10 @@ $dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + rem-calc(3) !default;
 // We use this mixin to build off of the button mixin and add dropdown button styles
 //
 // $padding - Determines the size of button you're working with. Default: medium. Options [tiny, small, medium, large]
-// $pip-color - Color of the little triangle that points to the dropdown. Default: #fff.
+// $pip-color - Color of the little triangle that points to the dropdown. Default: $white.
 // $base-style - Add in base-styles. This can be set to false. Default:true
 
-@mixin dropdown-button($padding:medium, $pip-color:#fff, $base-style:true) {
+@mixin dropdown-button($padding:medium, $pip-color:$white, $base-style:true) {
 
   // We add in base styles, but they can be negated by setting to 'false'.
   @if $base-style {

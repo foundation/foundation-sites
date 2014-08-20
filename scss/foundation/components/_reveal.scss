@@ -12,22 +12,22 @@
 $include-html-reveal-classes: $include-html-classes !default;
 
 // We use these to control the style of the reveal overlay.
-$reveal-overlay-bg: rgba(#000, .45) !default;
-$reveal-overlay-bg-old: #000 !default;
+$reveal-overlay-bg: rgba($black, .45) !default;
+$reveal-overlay-bg-old: $black !default;
 
 // We use these to control the style of the modal itself.
-$reveal-modal-bg: #fff !default;
+$reveal-modal-bg: $white !default;
 $reveal-position-top: rem-calc(100) !default;
 $reveal-default-width: 80% !default;
 $reveal-max-width: $row-width !default;
 $reveal-modal-padding: rem-calc(20) !default;
-$reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
+$reveal-box-shadow: 0 0 10px rgba($black,.4) !default;
 
 // We use these to style the reveal close button
 $reveal-close-font-size: rem-calc(40) !default;
 $reveal-close-top: rem-calc(8) !default;
 $reveal-close-side: rem-calc(11) !default;
-$reveal-close-color: #aaa !default;
+$reveal-close-color: $base !default;
 $reveal-close-weight: $font-weight-bold !default;
 
 // We use this to set the default radius used throughout the core.
@@ -37,7 +37,7 @@ $reveal-round: $global-rounded !default;
 // We use these to control the modal border
 $reveal-border-style: solid !default;
 $reveal-border-width: 1px !default;
-$reveal-border-color: #666 !default;
+$reveal-border-color: $steel !default;
 
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
@@ -105,7 +105,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
 // We use this to style the reveal modal defaults
 //
-// $bg - Sets background color of reveal modal. Default: $reveal-modal-bg || #fff
+// $bg - Sets background color of reveal modal. Default: $reveal-modal-bg || $white
 // $padding - Padding to apply to reveal modal. Default: $reveal-modal-padding.
 // $border - Choose whether reveal uses a border. Default: true, Options: false
 // $border-style - Set reveal border style. Default: $reveal-border-style || solid
@@ -148,7 +148,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
 // We use this to create a close button for the reveal modal
 //
-// $color - Default: $reveal-close-color || #aaa
+// $color - Default: $reveal-close-color || $base
 @mixin reveal-close($color:$reveal-close-color) {
   font-size: $reveal-close-font-size;
   line-height: 1;
@@ -211,7 +211,10 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
     // Reveal Print Styles: It should be invislbe, adds no value being printed.
     @media print {
-      dialog, .#{$reveal-modal-class} { display: none }
+      dialog, .#{$reveal-modal-class} { 
+        display: none;
+        background: $white !important;
+      }
     }
   }
 }

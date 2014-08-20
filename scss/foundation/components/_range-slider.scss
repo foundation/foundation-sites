@@ -21,10 +21,10 @@ $range-slider-bar-height: rem-calc(16) !default;
 
 $range-slider-bar-border-width: 1px !default;
 $range-slider-bar-border-style: solid !default;
-$range-slider-bar-border-color: #ddd !default; 
+$range-slider-bar-border-color: $gainsboro !default; 
 $range-slider-radius: $global-radius !default;
 $range-slider-round: $global-rounded !default;
-$range-slider-bar-bg-color: #fafafa !default;
+$range-slider-bar-bg-color: $ghost !default;
 
 // Vertical bar styles
 $range-slider-vertical-bar-width: rem-calc(16) !default;

@@ -35,7 +35,7 @@ $button-group-border-width: 1px !default;
 }
 
 // We use this to control styles for button groups
-@mixin button-group-style($radius:false, $even:false, $float:$default-float) {
+@mixin button-group-style($radius:false, $even:false, $float:false, $orientation:horizontal) {
 
   > button, .button {
     border-#{$default-float}: $button-group-border-width solid;
@@ -52,8 +52,32 @@ $button-group-border-width: 1px !default;
   @if $float {
     margin: 0;
     float: $float;
+    display: list-item;
     // Make sure the first child doesn't get the negative margin.
     &:first-child { margin-#{$default-float}: 0; }
+  }
+  @else {
+    margin: 0 -2px;
+    float: none;
+    display: inline-block;
+  }
+
+  @if $orientation == vertical {
+    display:block;
+    margin:0;
+    > button, .button {
+    border-top: $button-group-border-width solid;
+    border-color: rgba(255, 255, 255, 0.5);
+    border-left-width: 0px;
+    margin:0;
+    display: block;
+    }
+
+    &:first-child {
+      button, .button {
+        border-top: 0;
+      }
+    }
   }
 
   // We use these to control left and right radius on first/last buttons in the group.
@@ -65,11 +89,25 @@ $button-group-border-width: 1px !default;
     &:first-child,
     &:first-child > a,
     &:first-child > button,
-    &:first-child > .button { @include side-radius($default-float, $button-radius); }
+    &:first-child > .button {   
+      @if $orientation == vertical {
+        @include side-radius(top, $button-radius);
+      }
+      @else {
+        @include side-radius($default-float, $button-radius);
+      }
+    }
     &:last-child,
     &:last-child > a,
     &:last-child > button,
-    &:last-child > .button { @include side-radius($opposite-direction, $button-radius); }
+    &:last-child > .button { 
+      @if $orientation == vertical {
+        @include side-radius(bottom, $button-radius);
+      }
+      @else {
+        @include side-radius($opposite-direction, $button-radius); 
+      }
+    }
   }
   @else if $radius {
     &,
@@ -79,11 +117,25 @@ $button-group-border-width: 1px !default;
     &:first-child,
     &:first-child > a,
     &:first-child > button,
-    &:first-child > .button { @include side-radius($default-float, $radius); }
+    &:first-child > .button { 
+      @if $orientation == vertical {
+        @include side-radius(top, $radius);
+      }
+      @else {
+        @include side-radius($default-float, $radius);
+      } 
+    }
     &:last-child,
     &:last-child > a,
     &:last-child > button,
-    &:last-child > .button { @include side-radius($opposite-direction, $radius); }
+    &:last-child > .button { 
+      @if $orientation == vertical {
+        @include side-radius(bottom, $radius);
+      }
+      @else {
+        @include side-radius($opposite-direction, $radius); 
+      } 
+    }
   }
 
   // We use this to make the buttons even width across their container
@@ -100,8 +152,40 @@ $button-group-border-width: 1px !default;
 
       & > li { @include button-group-style(); }
 
+      &.stack {
+        & > li { @include button-group-style($orientation:vertical); }
+      }
+
+      &.stack-for-small {
+        & > li {
+          @include button-group-style($orientation:horizontal);
+          @media #{$small-only} { 
+            @include button-group-style($orientation:vertical);
+          }
+        }
+      }
+
       &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
+      &.radius.stack > * { @include button-group-style($radius:$button-radius, $float:null, $orientation:vertical); }
+      &.radius.stack-for-small > * { 
+        @media #{$medium-up} {
+          @include button-group-style($radius:$button-radius, $orientation:horizontal);
+        }
+        @media #{$small-only} { 
+          @include button-group-style($radius:$button-radius, $orientation:vertical);
+        }
+      }
+
       &.round > * { @include button-group-style($radius:$button-round, $float:null); }
+      &.round.stack > * { @include button-group-style($radius:$button-med, $float:null, $orientation:vertical); }
+      &.round.stack-for-small > * { 
+        @media #{$medium-up} {
+          @include button-group-style($radius:$button-round, $orientation:horizontal);
+        }
+        @media #{$small-only} { 
+          @include button-group-style($radius:$button-med, $orientation:vertical);
+        }
+      }
 
       @for $i from 2 through 8 {
         &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }

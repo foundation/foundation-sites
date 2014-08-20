@@ -11,7 +11,7 @@ $include-html-orbit-classes: $include-html-classes !default;
 // We use these to control the caption styles
 $orbit-container-bg: none !default;
 $orbit-caption-bg: rgba(51,51,51, 0.8) !default;
-$orbit-caption-font-color: #fff !default;
+$orbit-caption-font-color: $white !default;
 $orbit-caption-font-size: rem-calc(14) !default;
 $orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"
 $orbit-caption-padding: rem-calc(10 14) !default;
@@ -20,21 +20,21 @@ $orbit-caption-height: auto !default;
 // We use these to control the left/right nav styles
 $orbit-nav-bg: transparent !default;
 $orbit-nav-bg-hover: rgba(0,0,0,0.3) !default;
-$orbit-nav-arrow-color: #fff !default;
-$orbit-nav-arrow-color-hover: #fff !default;
+$orbit-nav-arrow-color: $white !default;
+$orbit-nav-arrow-color-hover: $white !default;
 
 // We use these to control the timer styles
 $orbit-timer-bg: rgba(255,255,255,0.3) !default;
 $orbit-timer-show-progress-bar: true !default;
 
 // We use these to control the bullet nav styles
-$orbit-bullet-nav-color: #ccc !default;
-$orbit-bullet-nav-color-active: #999 !default;
+$orbit-bullet-nav-color: $iron !default;
+$orbit-bullet-nav-color-active: $aluminum !default;
 $orbit-bullet-radius: rem-calc(9) !default;
 
 // We use these to controls the style of slide numbers
 $orbit-slide-number-bg: rgba(0,0,0,0) !default;
-$orbit-slide-number-font-color: #fff !default;
+$orbit-slide-number-font-color: $white !default;
 $orbit-slide-number-padding: rem-calc(5) !default;
 
 // Graceful Loading Wrapper and preloader
@@ -107,7 +107,7 @@ $orbit-timer-hide-for-small: true !default;
         margin-top: -20px;
         margin-left: -20px;
         border: solid 3px;
-        border-color: #555 #fff;
+        border-color: $charcoal $white;
         @include radius(1000px);
         animation-name: rotate;
         animation-duration: 1.5s;
@@ -209,7 +209,7 @@ $orbit-timer-hide-for-small: true !default;
           #{$opposite-direction}: 0;
           width: 11px;
           height: 14px;
-          border: solid 4px #fff;
+          border: solid 4px $white;
           border-top: none;
           border-bottom: none;
         }
@@ -224,9 +224,9 @@ $orbit-timer-hide-for-small: true !default;
             border: inset 8px;
             border-left-style: solid;
             border-color: transparent;
-            border-left-color: #fff;
+            border-left-color: $white;
             &.dark { 
-              border-left-color: #333;
+              border-left-color: $oil;
             }
           }
         }
