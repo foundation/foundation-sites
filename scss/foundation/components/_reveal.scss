@@ -198,12 +198,15 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
     dialog {
       @extend .#{$reveal-modal-class};
+      display: none;
 
       &::backdrop, & + .backdrop {
         @include reveal-bg(false);
       }
 
-      //&[open]{ display: block; }  As far as I know, this is no longer needed; this is the expected behavior in all browsers that currently support dialog or browsers that plan to with their nightly builds.
+      &[open]{
+        display: block;
+      }
     }
 
     // Reveal Print Styles: It should be invislbe, adds no value being printed.
