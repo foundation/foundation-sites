@@ -543,6 +543,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               @include topbar-show-dropdown();
             }
           }
+          > a:focus + .dropdown {
+            @include topbar-show-dropdown();
+          }
 
           .dropdown li.has-dropdown {
             & > a {
@@ -662,6 +665,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             & > .dropdown {
               @include topbar-show-dropdown();
             }
+          }
+          > a:focus + .dropdown {
+            @include topbar-show-dropdown();
           }
         }
       }
