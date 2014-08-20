@@ -274,6 +274,15 @@
           $movedLi.removeClass('moved');
         }, 300);
       });
+
+      // Show dropdown menus when their items are focused
+      S(this.scope).find('.dropdown a')
+        .focus(function() {
+          $(this).parents('.has-dropdown').addClass('hover');
+        })
+        .blur(function() {
+          $(this).parents('.has-dropdown').removeClass('hover');
+        });
     },
 
     resize : function () {
