@@ -203,6 +203,7 @@
           if(validations[0]){
             this.S(el).removeAttr(this.invalid_attr);
             el.setAttribute('aria-invalid', 'false');
+            el.removeAttribute('aria-describedby');
             parent.removeClass('error');
             if (label.length > 0 && this.settings.error_labels) {
               label.removeClass('error').removeAttr('role');
@@ -211,6 +212,12 @@
           } else {
             this.S(el).attr(this.invalid_attr, '');
             el.setAttribute('aria-invalid', 'true');
+
+            // Try to find the error associated with the input
+            var errorID = parent.find('small.error, span.error')[0].id;
+            if (errorID.length > 0) el.setAttribute('aria-describedby', errorID);
+
+            // el.setAttribute('aria-describedby', $(el).find('.error')[0].id);
             parent.addClass('error');
             if (label.length > 0 && this.settings.error_labels) {
               label.addClass('error').attr('role', 'alert');
