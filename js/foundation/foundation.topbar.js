@@ -31,8 +31,8 @@
           self.settings.$topbar = $(this);
           self.settings.$section = self.settings.$topbar.find('section');
           self.settings.$titlebar = self.settings.$topbar.children('ul').first();
-          if(self.settings.$topbar.data('custom_back_text')!=null){
-            self.settings.back_text = self.settings.$topbar.data('custom_back_text');
+          if(self.settings.$topbar.data('custom-back-text')!=null){
+            self.settings.back_text = self.settings.$topbar.data('custom-back-text');
           }
 
           self.settings.$topbar.data('index', 0);
