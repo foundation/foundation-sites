@@ -61,20 +61,22 @@ Instead of images you can use Icon Fonts. This will help you change the colors a
 
 ### ARIA Accessible
 
-Here is how to use `aria-label` when using the Icon Bar to make it accessible to screen readers.
+Here is how to use `role`, `aria-label`, and `tabindex` when using the Icon Bar to make it accessible to screen readers.
 
 <div class="row">
   <div class="large-6 columns">
+    <h4>Rendered HTML - Icon Bar w/o Text</h4>
+    {{> examples_icon_bar_iconfont_aria_rendered}}
     <h4>HTML</h4>
-{{> examples_icon_bar_iconfont_aria}}
+    {{> examples_icon_bar_iconfont_aria}}
   </div>
   <div class="large-6 columns">
-    <h4>Rendered HTML</h4>
-    {{> examples_icon_bar_iconfont_aria_rendered}}
+    <h4>Rendered HTML - Icon Bar with Text</h4>
+    {{> examples_icon_bar_text_aria_rendered}}
+    <h4>HTML</h4>
+    {{> examples_icon_bar_text_aria}}
   </div>
 </div>
-
-
 
 ### Other Options
 
