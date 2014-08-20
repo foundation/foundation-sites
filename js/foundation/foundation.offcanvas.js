@@ -40,11 +40,12 @@
           if (self.settings.open_method !== 'overlap'){
             S(".left-submenu").removeClass(move_class + right_postfix);
           }
+          $('.left-off-canvas-toggle').attr('aria-expanded', 'true');
         })
         .on('click.fndtn.offcanvas', '.left-off-canvas-menu a', function (e) {
           var settings = self.get_settings(e);
           var parent = S(this).parent();
-          
+
           if(settings.close_on_click && !parent.hasClass("has-submenu") && !parent.hasClass("back")){
             self.hide.call(self, move_class + right_postfix, self.get_wrapper(e));
             parent.parent().removeClass(move_class + right_postfix);
@@ -61,6 +62,11 @@
           if (self.settings.open_method !== 'overlap'){
             S(".right-submenu").removeClass(move_class + left_postfix);
           }
+          $('.left-off-canvas-toggle').attr('aria-expanded', 'true');
+        })
+        .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
+          self.click_toggle_class(e, move_class + left_postfix);
+          $('.right-off-canvas-toggle').attr('aria-expanded', 'true');
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
           var settings = self.get_settings(e);
@@ -83,6 +89,15 @@
           if (right_postfix){
             self.click_remove_class(e, move_class + right_postfix);
             S(".left-submenu").removeClass(move_class + left_postfix);
+          }
+          $('.right-off-canvas-toggle').attr('aria-expanded', 'true');
+        })
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          self.click_remove_class(e, move_class + left_postfix);
+          $('.left-off-canvas-toggle').attr('aria-expanded', 'false');
+          if (right_postfix) {
+            self.click_remove_class(e, move_class + right_postfix);
+            $('.right-off-canvas-toggle').attr('aria-expanded', "false");
           }
         });
     },
