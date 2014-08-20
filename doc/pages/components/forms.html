@@ -83,7 +83,9 @@ We don't see them too much, but one of the useful form elements included with Fo
 
 ### Pre/Postfix Labels &amp; Actions
 
-Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`. Keep in mind, if you also want to make sure the input has a radius then you can wrap your input and prefix/postfix in `<div class="row collapse prefix-radius">` or `<div class="row collapse postfix-radius">` accordingly, this way you don't also have to include the `.radius` class anywhere except on the parent element. Likewise, you can also use either `<div class="row collapse prefix-round">` or `<div class="row collapse postfix-round">`. Here are a few examples:
+Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`.
+
+You can also give a button / input pair a radius or a rounded edge by adding the classes `prefix-radius`, `postfix-radius`, `prefix-round` or `postfix-round` to the row that contains the elements. For example, `<div class="row collapse postfix-round">` will add a rounded edge to the left side of the input field, and to the right side of the button, creating a cohesive rounded input. Here are a few examples:
 
 <div class="row">
   <div class="large-6 columns">
