@@ -418,6 +418,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type="tel"],
     input[type="time"],
     input[type="url"],
+    input[type="color"],
     textarea {
       -webkit-appearance: none;
       -webkit-border-radius: 0px;
